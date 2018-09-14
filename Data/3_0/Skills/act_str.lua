@@ -7,9 +7,9 @@
 local skills, mod, flag, skill = ...
 
 skills["AbyssalCry"] = {
-	name = "Abyssal Cry",
+	name = "深渊战吼",
 	color = 1,
-	description = "Performs a warcry, Hindering nearby enemies and causing them to explode when killed. The Hinder effect is proportional to the number of surrounding enemies. Taunts all nearby enemies to attack the user. Shares a cooldown with other Warcry skills.",
+	description = "施展战吼, 使周围敌人缓速, 并在被击败时爆裂. 缓速效果随着周围敌人数量提升. 嘲讽周围所有敌人, 使他们攻击施放者. 与其他战吼技能共享技能冷却.",
 	skillTypes = { [11] = true, [12] = true, [50] = true, [10] = true, [74] = true, },
 	baseFlags = {
 		warcry = true,
@@ -79,23 +79,23 @@ skills["AbyssalCry"] = {
 	},
 }
 skills["TotemMelee"] = {
-	name = "Ancestral Protector",
+	name = "先祖卫士",
 	color = 1,
-	description = "Summons an Ancestor Totem which will attack enemies with melee strikes while you stand close to it. Being near it grants you more attack speed.",
+	description = "召唤一个先祖图腾, 当你在附近时这个图腾将使用武器攻击周围的敌人. 接近图腾时增加你的攻击速度. ",
 	skillTypes = { [1] = true, [30] = true, [25] = true, [24] = true, },
 	weaponTypes = {
-		["None"] = true,
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["None"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	skillTotemId = 13,
 	baseFlags = {
@@ -172,23 +172,23 @@ skills["TotemMelee"] = {
 	},
 }
 skills["AncestorTotemSlam"] = {
-	name = "Ancestral Warchief",
+	name = "先祖战士长",
 	color = 1,
-	description = "Summons an Ancestor Totem that will attack enemies with a powerful main hand slam while you stand close to it. Being near it grants you more melee damage.",
+	description = "召唤一个当你在附近时会使用主手强力攻击的先祖图腾. 靠近时给予你更多近战伤害.",
 	skillTypes = { [1] = true, [30] = true, [24] = true, [11] = true, },
 	weaponTypes = {
-		["None"] = true,
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["None"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	skillTotemId = 15,
 	baseFlags = {
@@ -268,23 +268,23 @@ skills["AncestorTotemSlam"] = {
 	},
 }
 skills["VaalAncestralWarchief"] = {
-	name = "Vaal Ancestral Warchief",
+	name = "瓦尔.先祖战士长",
 	color = 1,
-	description = "Summons an Ancestor Totem that will attack enemies with a powerful cascading slam while you're near it. If the enemies are far away, this slam will also include a leap to bring it closer. Being near it grants you more melee damage.",
+	description = "召唤一个当你在附近时会使用强力连环攻击的先祖图腾。若敌人远离你，该攻击则会跳跃过去，拉近距离。靠近它可以使你的近战总伤害提高。",
 	skillTypes = { [1] = true, [30] = true, [24] = true, [11] = true, [43] = true, },
 	weaponTypes = {
-		["None"] = true,
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["None"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	skillTotemId = 16,
 	baseFlags = {
@@ -364,9 +364,9 @@ skills["VaalAncestralWarchief"] = {
 	},
 }
 skills["Anger"] = {
-	name = "Anger",
+	name = "愤怒",
 	color = 1,
-	description = "Casts an aura that adds fire damage to the attacks and spells of you and your allies.",
+	description = "施放一个光环, 使你与受光环影响友军在攻击和施放法术时额外附带火焰伤害.",
 	skillTypes = { [2] = true, [11] = true, [5] = true, [15] = true, [27] = true, [16] = true, [18] = true, [44] = true, [33] = true, [75] = true, },
 	baseFlags = {
 		spell = true,
@@ -435,9 +435,9 @@ skills["Anger"] = {
 	},
 }
 skills["AnimateArmour"] = {
-	name = "Animate Guardian",
+	name = "幻化守卫",
 	color = 1,
-	description = "Animates a melee weapon or armour, attaching it to an invisible Guardian that fights by your side. Animating multiple items attaches them to the same Guardian. You cannot animate unidentified items.",
+	description = "操控一件武器或防具, 使其依附在一个隐形的守卫身上并为你而战. 你可以武器或更多的防具依附在该守卫身上, 但是无法依附未鉴定的物品.",
 	skillTypes = { [2] = true, [9] = true, [21] = true, [18] = true, [36] = true, [49] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [28] = true, },
 	minionHasItemSet = true,
@@ -518,16 +518,16 @@ skills["AnimateArmour"] = {
 	},
 }
 skills["Cleave"] = {
-	name = "Cleave",
+	name = "劈砍",
 	color = 1,
-	description = "The character swings their weapon (or both weapons if dual wielding) in an arc towards the target. Also does damage to other nearby monsters. Only works with Axes and Swords.",
+	description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 并同时对多名敌人造成伤害. 限定斧与剑.",
 	skillTypes = { [1] = true, [8] = true, [11] = true, [28] = true, [24] = true, [53] = true, },
 	weaponTypes = {
+		["One Handed Sword"] = true,
+		["Two Handed Sword"] = true,
+		["One Handed Axe"] = true,
 		["Two Handed Axe"] = true,
 		["Thrusting One Handed Sword"] = true,
-		["One Handed Axe"] = true,
-		["Two Handed Sword"] = true,
-		["One Handed Sword"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -595,21 +595,21 @@ skills["Cleave"] = {
 	},
 }
 skills["ConsecratedPath"] = {
-	name = "Consecrated Path",
+	name = "奉献之路",
 	color = 1,
-	description = "Attacks with your main hand, slamming the ground at a targeted location. If there is an enemy close to the targeted location, you'll teleport to it from a short distance away before performing the slam, and additionally create consecrated ground. Cannot be supported by Multistrike. Requires a Sword, Axe, Mace, Staff or Unarmed.",
+	description = "使用主手武器进行攻击，猛砸目标区域的地面。若有敌人靠近该目标区域，你可以在猛砸地面之前短距离传送至该区域，并额外造成奉献地面。无法被多重打击辅助。需要装备剑、斧、锤、长杖或徒手。",
 	skillTypes = { [24] = true, [1] = true, [11] = true, [38] = true, [57] = true, [10] = true, [12] = true, [7] = true, [33] = true, },
 	weaponTypes = {
-		["None"] = true,
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Staff"] = true,
 		["Two Handed Axe"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["Sceptre"] = true,
+		["None"] = true,
 		["One Handed Sword"] = true,
+		["Two Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -677,9 +677,9 @@ skills["ConsecratedPath"] = {
 	},
 }
 skills["DecoyTotem"] = {
-	name = "Decoy Totem",
+	name = "诱饵图腾",
 	color = 1,
-	description = "Summons a totem that taunts nearby monsters to attack it.",
+	description = "召唤一个图腾, 它会持续的嘲讽周围的敌人对其进行攻击.",
 	skillTypes = { [2] = true, [17] = true, [19] = true, [11] = true, [30] = true, [26] = true, },
 	skillTotemId = 6,
 	baseFlags = {
@@ -753,9 +753,9 @@ skills["DecoyTotem"] = {
 	},
 }
 skills["Determination"] = {
-	name = "Determination",
+	name = "坚定",
 	color = 1,
-	description = "Casts an aura that grants armour to you and your allies.",
+	description = "施放一个光环, 使你与受光环影响友军获得额外的护甲.",
 	skillTypes = { [2] = true, [11] = true, [5] = true, [15] = true, [27] = true, [16] = true, [18] = true, [44] = true, [75] = true, },
 	baseFlags = {
 		spell = true,
@@ -821,9 +821,9 @@ skills["Determination"] = {
 	},
 }
 skills["DevouringTotem"] = {
-	name = "Devouring Totem",
+	name = "吞噬图腾",
 	color = 1,
-	description = "Summons a totem that can consume nearby corpses. If you are hurt, it will destroy a corpse to leech life to you.",
+	description = "召唤一个图腾, 它会吞噬附近的灵柩并为你回复生命.",
 	skillTypes = { [2] = true, [17] = true, [19] = true, [30] = true, },
 	skillTotemId = 7,
 	baseFlags = {
@@ -893,24 +893,24 @@ skills["DevouringTotem"] = {
 	},
 }
 skills["DominatingBlow"] = {
-	name = "Dominating Blow",
+	name = "霸气之击",
 	color = 1,
-	description = "Attacks the enemy with a melee strike, applying a debuff for a short duration. If a non-unique enemy dies while affected by the debuff, the enemy's corpse will be consumed and a Sentinel of Dominance with the same rarity, prefix and suffix modifiers will be summoned for a longer secondary duration.",
+	description = "凝聚霸气, 对目标造成猛力的一击. 受到霸气灌体, 非传奇的敌人在短时间内死亡时会复活为玩家的仆从以供驱使, 直到霸气散去.",
 	skillTypes = { [1] = true, [9] = true, [12] = true, [21] = true, [25] = true, [28] = true, [24] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [28] = true, [11] = true, },
 	weaponTypes = {
-		["None"] = true,
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
 		["Two Handed Axe"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
-		["Claw"] = true,
+		["Staff"] = true,
+		["None"] = true,
+		["Sceptre"] = true,
+		["Two Handed Sword"] = true,
+		["Dagger"] = true,
 		["One Handed Sword"] = true,
+		["Claw"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -981,17 +981,17 @@ skills["DominatingBlow"] = {
 	},
 }
 skills["Earthquake"] = {
-	name = "Earthquake",
+	name = "震地",
 	color = 1,
-	description = "Smashes the ground with an Axe, Mace or Staff, dealing damage in an area and cracking the earth. The crack will erupt in a powerful aftershock after a short duration. Earthquakes created before the first one has erupted will not generate their own aftershocks.",
+	description = "使用斧, 锤, 或长杖重击地面, 对周围造成大量伤害, 并在地面上留下裂隙. 一段时间过后, 地面的裂隙将会释放冲击波造成更多的伤害. 在冲击波还未释放前再次使用技能不会刷新地面的裂隙. ",
 	skillTypes = { [1] = true, [11] = true, [24] = true, [7] = true, [28] = true, [12] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
+		["Two Handed Axe"] = true,
 		["Sceptre"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
-		["Two Handed Axe"] = true,
 		["Staff"] = true,
+		["One Handed Mace"] = true,
 	},
 	parts = {
 		{
@@ -1069,17 +1069,17 @@ skills["Earthquake"] = {
 	},
 }
 skills["VaalEarthquake"] = {
-	name = "Vaal Earthquake",
+	name = "瓦尔.震地",
 	color = 1,
-	description = "Smashes the ground with an Axe, Mace or Staff, dealing damage in an area and cracking the earth. The crack will erupt in a powerful aftershock after a short duration. After using this skill, your steps will deal damage around you, cracking the earth if the previous cracks have erupted. This effect ends after a secondary duration, or after a maximum number of aftershocks.",
+	description = "使用斧、锤或长杖重击地面，对周围造成大量伤害, 并在地面上留下多处裂隙。短时间后，裂隙会喷发出三股强大的震波。使用此技能后，你的脚步会对你周围的区域造成伤害，若之前的裂隙已经喷发，则会再次造成裂隙。该效果会在第二次持续结束后消退，或是在震波喷发至最大数量后消退。",
 	skillTypes = { [1] = true, [11] = true, [24] = true, [7] = true, [12] = true, [43] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
+		["Two Handed Axe"] = true,
 		["Sceptre"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
-		["Two Handed Axe"] = true,
 		["Staff"] = true,
+		["One Handed Mace"] = true,
 	},
 	parts = {
 		{
@@ -1157,9 +1157,9 @@ skills["VaalEarthquake"] = {
 	},
 }
 skills["EnduringCry"] = {
-	name = "Enduring Cry",
+	name = "坚决战吼",
 	color = 1,
-	description = "Performs a warcry, adding endurance charges proportional to the number of surrounding enemies and granting life regeneration to you for a short time if there are nearby enemies. Taunts all nearby enemies to attack the user. Shares a cooldown with other Warcry skills.",
+	description = "发出怒吼, 嘲讽周围的敌人来攻击自己. 视周围被嘲讽敌人的数量增加耐力球充能数, 若周围有敌人时给与施放者短暂时间的生命恢复. 与其他战吼技能共享技能冷却. 【打我啊. 笨蛋. 】",
 	skillTypes = { [5] = true, [11] = true, [12] = true, [74] = true, },
 	baseFlags = {
 		warcry = true,
@@ -1226,9 +1226,9 @@ skills["EnduringCry"] = {
 	},
 }
 skills["FlameTotem"] = {
-	name = "Flame Totem",
+	name = "火舌图腾",
 	color = 1,
-	description = "Summons a totem that fires a stream of flame at nearby enemies.",
+	description = "召唤一个图腾, 它会持续的对附近的敌人喷射火焰.",
 	skillTypes = { [2] = true, [3] = true, [68] = true, [10] = true, [17] = true, [19] = true, [30] = true, [33] = true, },
 	skillTotemId = 8,
 	baseFlags = {
@@ -1303,15 +1303,15 @@ skills["FlameTotem"] = {
 	},
 }
 skills["GlacialHammer"] = {
-	name = "Glacial Hammer",
+	name = "冰霜之锤",
 	color = 1,
-	description = "Hits the enemy, converting some of your physical damage to cold damage. If the enemy is frozen and is on less than one third life, they will shatter when hit by Glacial Hammer. Requires a Mace or Staff.",
+	description = "凝聚冰霜之力, 转换一部分的物理伤害为冰霜伤害以重击目标. 若受到攻击的敌人被冰冻且生命少于 1 / 3 , 则被冰霜之锤命中时会碎成冰屑. 限定锤或长杖.",
 	skillTypes = { [1] = true, [25] = true, [28] = true, [24] = true, [34] = true, [53] = true, },
 	weaponTypes = {
-		["Two Handed Mace"] = true,
 		["Staff"] = true,
-		["One Handed Mace"] = true,
 		["Sceptre"] = true,
+		["Two Handed Mace"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -1379,15 +1379,15 @@ skills["GlacialHammer"] = {
 	},
 }
 skills["VaalGlacialHammer"] = {
-	name = "Vaal Glacial Hammer",
+	name = "瓦尔.冰霜之锤",
 	color = 1,
-	description = "Hits the enemy, converting some of your physical damage to cold damage. It traps the enemy with you in a circle of ice so that it can't escape. Requires a Mace or Staff.",
+	description = "凝聚冰霜之力, 转换一部分的物理伤害为冰霜伤害以重击目标, 同时在目标周围造成一个不可侵犯, 让敌人无处可逃的冰墙. 限定锤与长杖.",
 	skillTypes = { [1] = true, [25] = true, [24] = true, [12] = true, [11] = true, [43] = true, [34] = true, },
 	weaponTypes = {
-		["Two Handed Mace"] = true,
 		["Staff"] = true,
-		["One Handed Mace"] = true,
 		["Sceptre"] = true,
+		["Two Handed Mace"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -1457,17 +1457,17 @@ skills["VaalGlacialHammer"] = {
 	},
 }
 skills["GroundSlam"] = {
-	name = "Ground Slam",
+	name = "裂地之击",
 	color = 1,
-	description = "The character slams the ground in front of them with their main hand weapon, creating a wave that travels forward and damages enemies with an increased chance to stun. The wave deals more damage to closer enemies. Only works with Staves, Axes or Maces.",
+	description = "角色使用主手武器猛击前方地面，制造一股向前袭来的冲击波，对敌人造成伤害，将其晕眩的几率也随之提高。敌人距离越近则冲击波伤害越高。限定长杖、斧或锤。",
 	skillTypes = { [1] = true, [7] = true, [11] = true, [28] = true, [24] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
+		["Two Handed Axe"] = true,
 		["Sceptre"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
-		["Two Handed Axe"] = true,
 		["Staff"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -1535,17 +1535,17 @@ skills["GroundSlam"] = {
 	},
 }
 skills["VaalGroundSlam"] = {
-	name = "Vaal Ground Slam",
+	name = "瓦尔.裂地之击",
 	color = 1,
-	description = "The character slams the ground in front of them with their main hand weapon, creating a wave that travels in all directions that damages and stuns enemies. The wave deals more damage to closer enemies. Only works with Staves, Axes or Maces.",
+	description = "角色使用主手武器猛击前方地面，制造一股向四面八方袭来的冲击波，对敌人造成伤害并使其晕眩。敌人距离越近则冲击波伤害越高。限定长杖、斧或锤。",
 	skillTypes = { [1] = true, [7] = true, [11] = true, [24] = true, [43] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
+		["Two Handed Axe"] = true,
 		["Sceptre"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
-		["Two Handed Axe"] = true,
 		["Staff"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -1613,20 +1613,20 @@ skills["VaalGroundSlam"] = {
 	},
 }
 skills["HeavyStrike"] = {
-	name = "Heavy Strike",
+	name = "重击",
 	color = 1,
-	description = "Attacks the enemy with a forceful blow, knocking them back. Requires a Mace, Axe, Sword or Two-Handed Weapon.",
+	description = "对目标进行一次强力攻击并击退目标. 限定斧, 锤, 剑或双手武器.",
 	skillTypes = { [1] = true, [25] = true, [28] = true, [24] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
-		["One Handed Sword"] = true,
+		["Staff"] = true,
+		["Two Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["Two Handed Axe"] = true,
+		["Sceptre"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -1691,9 +1691,9 @@ skills["HeavyStrike"] = {
 	},
 }
 skills["HeraldOfAsh"] = {
-	name = "Herald of Ash",
+	name = "灰烬之捷",
 	color = 1,
-	description = "Grants a buff providing fire damage based on your physical damage. While you have this buff, if you kill an enemy, other enemies near them will be burned based on the overkill damage. The burn inflicted by this skill can only be affected by modifiers to damage over time (burning damage is damage over time).",
+	description = "于手中凝聚火焰之力, 为物理伤害额外增加火焰伤害. 若是你击败了一个敌人, 溢出的伤害将会以点燃的形式扩散至附近的敌人.该技能引起的燃烧只会受到持续伤害词缀的影响(燃烧属于持续伤害)",
 	skillTypes = { [2] = true, [5] = true, [15] = true, [16] = true, [29] = true, [11] = true, [40] = true, [33] = true, [27] = true, [63] = true, [12] = true, [75] = true, },
 	baseFlags = {
 		spell = true,
@@ -1761,9 +1761,9 @@ skills["HeraldOfAsh"] = {
 	},
 }
 skills["HeraldOfPurity"] = {
-	name = "Herald of Purity",
+	name = "纯净之捷",
 	color = 1,
-	description = "Grants a buff which adds physical damage to your spells and attacks. When you kill an enemy while you have this buff, this skill will summon a Sentinel of Purity, or if you already have the maximum number, it will refresh the duration and life of an existing one instead. The Sentinels of Purity have a single-target melee attack and an area melee attack",
+	description = "给予一个可以为你的法术和攻击附加物理伤害的增益。若你击败敌人时带有此增益，该技能会召唤一个纯净哨兵，若你召唤的纯净哨兵已达上限，则会刷新现有的某个纯净哨兵的持续时间和生命。纯净哨兵可以进行单体攻击和区域性近战攻击。",
 	skillTypes = { [2] = true, [5] = true, [15] = true, [16] = true, [63] = true, [9] = true, [75] = true, [12] = true, },
 	minionSkillTypes = { [10] = true, [1] = true, [24] = true, [25] = true, [28] = true, [11] = true, },
 	baseFlags = {
@@ -1833,21 +1833,21 @@ skills["HeraldOfPurity"] = {
 	},
 }
 skills["IceCrash"] = {
-	name = "Ice Crash",
+	name = "寒冰冲击",
 	color = 1,
-	description = "Slam the ground with your main hand weapon, damaging enemies in an area around the impact in three stages. Enemies take slightly less damage on the second and third stage. Works with Swords, Maces, Axes, Staves and Unarmed.",
+	description = "以主手武器敲击地面, 对于范围内的敌人造成三段冲击伤害. 敌人所受到的第二段和第三段伤害的伤害较低. 限定剑, 锤, 斧, 长杖和空手.",
 	skillTypes = { [1] = true, [11] = true, [24] = true, [7] = true, [34] = true, [28] = true, },
 	weaponTypes = {
-		["None"] = true,
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Staff"] = true,
 		["Two Handed Axe"] = true,
 		["Two Handed Mace"] = true,
-		["One Handed Axe"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["Staff"] = true,
+		["Two Handed Sword"] = true,
+		["None"] = true,
 		["One Handed Sword"] = true,
+		["Sceptre"] = true,
+		["One Handed Axe"] = true,
+		["One Handed Mace"] = true,
 	},
 	parts = {
 		{
@@ -1927,9 +1927,9 @@ skills["IceCrash"] = {
 	},
 }
 skills["ImmortalCall"] = {
-	name = "Immortal Call",
+	name = "不朽怒嚎",
 	color = 1,
-	description = "Discharges Endurance Charges, making the character invulnerable to physical damage for a short time, proportional to how many endurance charges were expended.",
+	description = "仰天怒吼, 释放耐力球, 并使你的角色免疫物理攻击一小段时间. 免疫物理攻击时间长短视释放的耐力球数量而定. 【金! 钟! 罩! 】",
 	skillTypes = { [2] = true, [5] = true, [12] = true, [18] = true, [36] = true, },
 	baseFlags = {
 		spell = true,
@@ -1993,9 +1993,9 @@ skills["ImmortalCall"] = {
 	},
 }
 skills["VaalImmortalCall"] = {
-	name = "Vaal Immortal Call",
+	name = "瓦尔.不朽怒嚎",
 	color = 1,
-	description = "Discharges Endurance Charges, making the character unable to die for a short time, proportional to how many endurance charges were expended.",
+	description = "仰天怒吼, 释放耐力球, 并使你的角色无敌一小段时间. 无敌时间长短视释放的耐力球数量而定. 【万. 佛. 朝. 宗! 】",
 	skillTypes = { [2] = true, [5] = true, [12] = true, [18] = true, [43] = true, },
 	baseFlags = {
 		spell = true,
@@ -2060,21 +2060,21 @@ skills["VaalImmortalCall"] = {
 	},
 }
 skills["InfernalBlow"] = {
-	name = "Infernal Blow",
+	name = "炼狱之击",
 	color = 1,
-	description = "Hit the target enemy, applying a charged debuff to it, and an uncharged debuff to any other enemies hit. Upon reaching 6 charges, expiring, or the enemy's death, the charged debuff is removed, and it deals damage to that and other nearby enemies. Enemies with either debuff explode when they die, damaging other nearby enemies. Damage from this explosion cannot be reflected. Requires a Sword, Axe, Mace, Staff or Unarmed.",
+	description = "炼狱之击的目标敌人会带上一种有层数的减益效果，在短时间内也会对其他敌人附加不带有层数的减益效果。若敌人死亡时带有任何此类减益效果，则会爆炸, 并对周围的敌人造成火焰伤害. 爆炸的伤害无法被反射. 若带层数的减益效果结束或是叠满 6 层，将会对目标敌人及其周围大面积内的其他敌人造成伤害，数值等同于你攻击伤害的一部分。限定剑, 斧, 锤, 长杖或是空手.",
 	skillTypes = { [1] = true, [11] = true, [25] = true, [28] = true, [24] = true, [33] = true, [12] = true, },
 	weaponTypes = {
-		["None"] = true,
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Staff"] = true,
 		["Two Handed Axe"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["Sceptre"] = true,
+		["None"] = true,
 		["One Handed Sword"] = true,
+		["Two Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -2142,20 +2142,20 @@ skills["InfernalBlow"] = {
 	},
 }
 skills["LeapSlam"] = {
-	name = "Leap Slam",
+	name = "跃击",
 	color = 1,
-	description = "Jump into the air, damaging enemies (and knocking back some) with your main hand where you land. Enemies you would land on are pushed out of the way. Requires an axe, mace, sword or staff. Cannot be supported by Multistrike.",
+	description = "朝着目标区域跃起, 并在落地时以主手武器重击（并击退一些）范围内的敌人. 被踩到的敌人将会被推出去. 限定一把斧, 锤, 剑或是长杖.",
 	skillTypes = { [1] = true, [7] = true, [11] = true, [24] = true, [38] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Staff"] = true,
 		["Two Handed Axe"] = true,
 		["Two Handed Mace"] = true,
-		["One Handed Axe"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["Staff"] = true,
+		["Two Handed Sword"] = true,
 		["One Handed Sword"] = true,
+		["Sceptre"] = true,
+		["One Handed Axe"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -2222,9 +2222,9 @@ skills["LeapSlam"] = {
 	},
 }
 skills["MoltenShell"] = {
-	name = "Molten Shell",
+	name = "熔岩护盾",
 	color = 1,
-	description = "Summons fiery elemental shields providing additional armour for a short duration. If cumulative physical damage prevented by your blocking or armour reaches a threshold, the shields explode outwards, dealing fire damage to surrounding enemies.",
+	description = "召唤炽热的火焰之盾, 在一定时间内提供额外的护甲. 当格挡或是护甲所累积受到的物理伤害达到限界值时, 火焰之盾将会爆开, 并对周围的敌人造成伤害.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [12] = true, [18] = true, [31] = true, [36] = true, [33] = true, [75] = true, },
 	baseFlags = {
 		spell = true,
@@ -2298,9 +2298,9 @@ skills["MoltenShell"] = {
 	},
 }
 skills["VaalMoltenShell"] = {
-	name = "Vaal Molten Shell",
+	name = "瓦尔.熔岩护盾",
 	color = 1,
-	description = "Summons fiery elemental shields providing additional armour for a short duration. Whenever you prevent any amount of physical damage from a hit, the shields cause a burst of flame, dealing fire damage to surrounding enemies.",
+	description = "召唤炽热的火焰之盾, 在一定时间内提供额外的护甲. 在火焰之盾存在的时间内, 每当被击中时都会造成爆发并对周围的敌人造成火焰伤害.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [12] = true, [18] = true, [31] = true, [43] = true, [33] = true, },
 	baseFlags = {
 		spell = true,
@@ -2372,22 +2372,22 @@ skills["VaalMoltenShell"] = {
 	},
 }
 skills["MoltenStrike"] = {
-	name = "Molten Strike",
+	name = "熔岩之击",
 	color = 1,
-	description = "Attacks a target with physical and fire damage, causing balls of molten magma to launch forth from your weapon as you swing. These will explode, causing AoE attack damage to enemies where they land.",
+	description = "对目标造成物理及火焰伤害, 并在挥击的途中从武器弹射出熔岩球. 这些熔岩球在着地时会爆炸, 并对附近的敌人造成伤害.",
 	skillTypes = { [1] = true, [3] = true, [11] = true, [24] = true, [25] = true, [28] = true, [33] = true, [48] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	parts = {
 		{
@@ -2471,9 +2471,9 @@ skills["MoltenStrike"] = {
 	},
 }
 skills["Punishment"] = {
-	name = "Punishment",
+	name = "惩戒",
 	color = 1,
-	description = "Curses all targets in an area, causing them to grant a buff to anyone they hit with melee attacks. The buff grants more Melee Damage and increased Attack Speed.",
+	description = "对目标区域施放诅咒, 受到诅咒的敌人在近战攻击命中时给与击中的目标一个增益. 此增益给与更多近战伤害和攻击速度. ",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [67] = true, },
 	baseFlags = {
 		spell = true,
@@ -2542,9 +2542,9 @@ skills["Punishment"] = {
 	},
 }
 skills["FireResistAura"] = {
-	name = "Purity of Fire",
+	name = "火焰净化",
 	color = 1,
-	description = "Casts an aura that grants fire resistance to you and your allies.",
+	description = "施放一个光环, 使你与受光环影响的友军获得额外的火焰抗性.",
 	skillTypes = { [2] = true, [11] = true, [5] = true, [15] = true, [27] = true, [16] = true, [18] = true, [44] = true, [33] = true, [75] = true, },
 	baseFlags = {
 		spell = true,
@@ -2611,9 +2611,9 @@ skills["FireResistAura"] = {
 	},
 }
 skills["FireImpurity"] = {
-	name = "Vaal Impurity of Fire",
+	name = "瓦尔.不净之火",
 	color = 1,
-	description = "Casts an aura that reduces fire damage taken and provides ignite immunity to you and nearby allies, and makes hits against nearby enemies ignore their fire resistance. ",
+	description = "施放一个光环，使你和周围友军受到的火焰伤害降低，并免疫点燃效果，并在击中周围敌人时无视他们的火焰抗性。 ",
 	skillTypes = { [2] = true, [5] = true, [11] = true, [18] = true, [27] = true, [12] = true, [43] = true, [44] = true, },
 	baseFlags = {
 		spell = true,
@@ -2682,9 +2682,9 @@ skills["FireImpurity"] = {
 	},
 }
 skills["RallyingCry"] = {
-	name = "Rallying Cry",
+	name = "激励战吼",
 	color = 1,
-	description = "Performs a warcry, granting increased damage and mana regeneration to the user and nearby allies if there are nearby enemies. The damage increase is proportional to the number of surrounding enemies. Taunts all nearby enemies to attack the user. Shares a cooldown with other Warcry skills.",
+	description = "施展战吼, 使自身和盟友伤害和魔力恢复增加. 伤害增加量随着周围敌人数量提升. 嘲讽周围所有敌人, 使他们攻击施放者. 与其他战吼技能共享技能冷却.",
 	skillTypes = { [5] = true, [11] = true, [12] = true, [74] = true, },
 	baseFlags = {
 		warcry = true,
@@ -2752,19 +2752,19 @@ skills["RallyingCry"] = {
 	},
 }
 skills["Reckoning"] = {
-	name = "Reckoning",
+	name = "清算",
 	color = 1,
-	description = "Perform a swift counter-attack against enemies in a cone shape when you block with your shield.",
+	description = "当盾牌格档时对敌人进行一次迅速的反击. 此反击会对锥状区域造成伤害.",
 	skillTypes = { [1] = true, [7] = true, [13] = true, [24] = true, [11] = true, [47] = true, [57] = true, },
 	weaponTypes = {
-		["None"] = true,
-		["Claw"] = true,
-		["One Handed Mace"] = true,
+		["One Handed Sword"] = true,
 		["Sceptre"] = true,
+		["None"] = true,
+		["Dagger"] = true,
+		["Claw"] = true,
 		["Thrusting One Handed Sword"] = true,
 		["One Handed Axe"] = true,
-		["Dagger"] = true,
-		["One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -2832,9 +2832,9 @@ skills["Reckoning"] = {
 	},
 }
 skills["RejuvenationTotem"] = {
-	name = "Rejuvenation Totem",
+	name = "回春图腾",
 	color = 1,
-	description = "Summons a totem that has an aura which regenerates life for you and your nearby allies.",
+	description = "召唤一个图腾, 它会施放一个光环并使你与受光环影响友军获得额外的生命回复.",
 	skillTypes = { [2] = true, [5] = true, [11] = true, [15] = true, [27] = true, [17] = true, [19] = true, [30] = true, [44] = true, },
 	skillTotemId = 4,
 	baseFlags = {
@@ -2906,9 +2906,9 @@ skills["RejuvenationTotem"] = {
 	},
 }
 skills["SearingBond"] = {
-	name = "Searing Bond",
+	name = "灼热连接",
 	color = 1,
-	description = "Summons a totem that casts a beam of fire at you and each other totem you control, dealing burning damage to enemies caught in the beam. Enemies near either end of a beam also suffer burning damage.",
+	description = "召唤一个图腾, 它会与你和你所操控的所有图腾之间产生火焰连接, 经过火焰连接或是靠近火焰连接尾端的敌人将会受到燃烧伤害.",
 	skillTypes = { [2] = true, [40] = true, [17] = true, [19] = true, [27] = true, [29] = true, [30] = true, [36] = true, [33] = true, },
 	skillTotemId = 9,
 	baseFlags = {
@@ -2977,19 +2977,19 @@ skills["SearingBond"] = {
 	},
 }
 skills["NewShieldCharge"] = {
-	name = "Shield Charge",
+	name = "重盾冲锋",
 	color = 1,
-	description = "Charges at a targeted location or enemy, pushing away enemies in your path and repeatedly dealing damage in a small area in front of you. You deal damage in a larger area when you reach the target. The further you travel, the more damage you deal, and the greater your chance of stunning enemies. Cannot be supported by Multistrike.",
+	description = "向目标区域或敌人冲锋，在路径上的敌人将会被推向两旁，并反复对你前方小范围区域内造成伤害。 抵达目标处时造成大范围伤害。伤害与击晕几率将视冲锋距离而定。无法被多重打击辅助。",
 	skillTypes = { [1] = true, [7] = true, [13] = true, [24] = true, [11] = true, [38] = true, },
 	weaponTypes = {
-		["None"] = true,
-		["Claw"] = true,
-		["One Handed Mace"] = true,
+		["One Handed Sword"] = true,
 		["Sceptre"] = true,
+		["None"] = true,
+		["Dagger"] = true,
+		["Claw"] = true,
 		["Thrusting One Handed Sword"] = true,
 		["One Handed Axe"] = true,
-		["Dagger"] = true,
-		["One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -3058,9 +3058,9 @@ skills["NewShieldCharge"] = {
 	},
 }
 skills["ShockwaveTotem"] = {
-	name = "Shockwave Totem",
+	name = "震波图腾",
 	color = 1,
-	description = "Summons a totem that shakes the earth around it, knocking back and damaging nearby enemies",
+	description = "召唤一个图腾, 它会持续的震动附近的地面, 击退附近的敌人并造成伤害.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [19] = true, [30] = true, [26] = true, },
 	skillTotemId = 5,
 	baseFlags = {
@@ -3135,21 +3135,21 @@ skills["ShockwaveTotem"] = {
 	},
 }
 skills["Smite"] = {
-	name = "Smite",
+	name = "惩击",
 	color = 1,
-	description = "Performs a main-hand melee attack, and causes lightning to strike a targeted location or nearby enemy, dealing damage in an area. If the melee attack hits its target, that enemy cannot also be hit by the area damage. If this skill hits an enemy, you gain an aura buff, granting you and your allies additional lightning damage for a duration. Requires a Sword, Axe, Mace, Staff or Unarmed.",
+	description = "发动一次主手近战攻击，用闪电攻击目标区域或周围的敌人，造成范围伤害。若该近战攻击击中目标，则该目标不会受到该技能的范围伤害。若该技能击中敌人，你获得一个光环增益，为你和友军附加额外闪电伤害并有一定几率造成感电。需要装备剑、斧、锤、长杖或徒手。",
 	skillTypes = { [24] = true, [1] = true, [11] = true, [12] = true, [28] = true, [10] = true, [7] = true, [25] = true, [44] = true, [5] = true, [35] = true, },
 	weaponTypes = {
-		["None"] = true,
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Staff"] = true,
 		["Two Handed Axe"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["Sceptre"] = true,
+		["None"] = true,
 		["One Handed Sword"] = true,
+		["Two Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -3221,22 +3221,22 @@ skills["Smite"] = {
 	},
 }
 skills["StaticStrike"] = {
-	name = "Static Strike",
+	name = "充能打击",
 	color = 1,
-	description = "Attack with a melee weapon, gaining a buff if you hit your target. While you have this buff, you'll frequently hit a number of nearby enemies with beams, dealing attack damage, which will be higher if the beams strike while you're moving. You can stack the buff up to three times, each increasing the frequency with which the beams strike.",
+	description = "使用近战武器攻击，如果击中目标则获得一个增益。获得后，你将会频繁使用光束击中周围一定数量的敌人，造成攻击伤害，移动时该伤害会提高。该增益最多可以叠加三层，每层都会加快光束攻击的频率。",
 	skillTypes = { [1] = true, [25] = true, [28] = true, [24] = true, [11] = true, [12] = true, [35] = true, [23] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	parts = {
 		{
@@ -3320,9 +3320,9 @@ skills["StaticStrike"] = {
 	},
 }
 skills["SummonFireGolem"] = {
-	name = "Summon Flame Golem",
+	name = "召唤烈焰魔像",
 	color = 1,
-	description = "Summons a Flame Golem that grants you increased Damage. The Flame Golem can use a fire spray, a wave of fire damage, and an explosive arcing projectile.",
+	description = "召唤烈焰魔像, 启动时会使你增加伤害. 烈焰魔像会使用火焰放射, 持续造成火焰伤害, 及射出会爆炸的弧状移动投射物. ",
 	skillTypes = { [36] = true, [33] = true, [19] = true, [9] = true, [21] = true, [26] = true, [2] = true, [18] = true, [17] = true, [49] = true, [62] = true, },
 	minionSkillTypes = { [10] = true, [11] = true, [3] = true, [68] = true, [2] = true, },
 	minionList = {
@@ -3397,9 +3397,9 @@ skills["SummonFireGolem"] = {
 	},
 }
 skills["SummonRockGolem"] = {
-	name = "Summon Stone Golem",
+	name = "召唤巨石魔像",
 	color = 1,
-	description = "Summons a Stone Golem that grants you life regeneration. In addition to its melee attack, the Stone Golem uses a rolling charge and a powerful slam that can taunt enemies.",
+	description = "召唤一个为你提供额外生命回复的巨石魔像. 除了一般的近战攻击外, 巨石魔像会使用滚动冲撞, 还有沉重的冲击波来嘲讽附近的敌人. ",
 	skillTypes = { [36] = true, [19] = true, [9] = true, [21] = true, [26] = true, [2] = true, [18] = true, [17] = true, [49] = true, [62] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [38] = true, [11] = true, [28] = true, },
 	minionList = {
@@ -3474,17 +3474,17 @@ skills["SummonRockGolem"] = {
 	},
 }
 skills["Sunder"] = {
-	name = "Sunder",
+	name = "大地震击",
 	color = 1,
-	description = "Slams the ground with your main hand weapon, creating a wave of broken ground that damages enemies in an area in front of you. Enemies hit by the wave will release a circular shockwave, dealing damage to other enemies around them. Requires a Mace, Axe, or Staff.",
+	description = "使用你主手的锤, 斧或长杖重击地面, 破坏前方的地面, 用冲击波对敌人造成伤害. 击中目标后冲击波会再次伤害目标周围的敌人. ",
 	skillTypes = { [1] = true, [7] = true, [11] = true, [28] = true, [24] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
+		["Two Handed Axe"] = true,
 		["Sceptre"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
-		["Two Handed Axe"] = true,
 		["Staff"] = true,
+		["One Handed Mace"] = true,
 	},
 	parts = {
 		{
@@ -3559,15 +3559,15 @@ skills["Sunder"] = {
 	},
 }
 skills["Sweep"] = {
-	name = "Sweep",
+	name = "横扫",
 	color = 1,
-	description = "Swings a two handed melee weapon in a circle, knocking back some monsters around the character.",
+	description = "使用双手近战武器在身体周围横扫, 并将部分怪物击退.",
 	skillTypes = { [1] = true, [11] = true, [28] = true, [24] = true, },
 	weaponTypes = {
+		["Two Handed Axe"] = true,
 		["Two Handed Mace"] = true,
 		["Two Handed Sword"] = true,
 		["Staff"] = true,
-		["Two Handed Axe"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -3635,21 +3635,21 @@ skills["Sweep"] = {
 	},
 }
 skills["EnduranceChargeSlam"] = {
-	name = "Tectonic Slam",
+	name = "破釜一击",
 	color = 1,
-	description = "Slam the ground with your main hand weapon, unleashing a fiery fissure in front of you, dealing area damage and releasing a random number of smaller fissures branching off from it. If you have Endurance Charges, the number of fissures will be maximised, and one Endurance Charge will be consumed. Requires a Mace, Sword, Axe, Staff, or Unarmed.",
+	description = "使用武器砸向大地，破坏地面造成炙热的裂缝。当你拥有耐力球时，耐力球会被消耗，造成额外的炙热裂缝。需要使用锤，剑，斧，长杖或空手时使用。",
 	skillTypes = { [1] = true, [7] = true, [11] = true, [28] = true, [24] = true, [33] = true, },
 	weaponTypes = {
-		["None"] = true,
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
-		["One Handed Sword"] = true,
+		["Staff"] = true,
+		["Sceptre"] = true,
+		["None"] = true,
+		["Two Handed Sword"] = true,
+		["Two Handed Axe"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -3716,22 +3716,22 @@ skills["EnduranceChargeSlam"] = {
 	},
 }
 skills["Vengeance"] = {
-	name = "Vengeance",
+	name = "复仇",
 	color = 1,
-	description = "Chance to perform a swift counter-attack against all enemies around you when you are hit. Weapon range increases the area of this attack. Requires a Melee Weapon.",
+	description = "你被击中时有机会对周围的敌人进行一次快速的反击. 攻击区域范围会受到武器攻击范围的影响. ",
 	skillTypes = { [1] = true, [11] = true, [24] = true, [47] = true, [57] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -3798,22 +3798,22 @@ skills["Vengeance"] = {
 	},
 }
 skills["VigilantStrike"] = {
-	name = "Vigilant Strike",
+	name = "戒备打击",
 	color = 1,
-	description = "Attacks the enemy with a powerful melee strike. You gain the Fortify buff, granting damage reduction. The cooldown can be bypassed by expending an Endurance Charge. Requires a Melee Weapon.",
+	description = "对敌人进行奋力一击. 你获得护体增益, 带有减伤效果. 持续时间可以透过消耗耐力球来延长. 需要近战武器. ",
 	skillTypes = { [1] = true, [5] = true, [24] = true, [28] = true, [25] = true, [53] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -3880,9 +3880,9 @@ skills["VigilantStrike"] = {
 	},
 }
 skills["Vitality"] = {
-	name = "Vitality",
+	name = "活力",
 	color = 1,
-	description = "Casts an aura that grants life regeneration to you and your allies.",
+	description = "施放一个光环, 使你与受光环影响友军获得额外的生命回复.",
 	skillTypes = { [2] = true, [11] = true, [5] = true, [15] = true, [27] = true, [16] = true, [18] = true, [44] = true, [75] = true, },
 	baseFlags = {
 		spell = true,
@@ -3948,9 +3948,9 @@ skills["Vitality"] = {
 	},
 }
 skills["Vulnerability"] = {
-	name = "Vulnerability",
+	name = "脆弱",
 	color = 1,
-	description = "Curse all targets in an area, causing them to take increased physical damage and further increased physical damage over time. Attacks against cursed enemies have a chance to inflict bleeding and maim.",
+	description = "对目标区域施放诅咒, 受到诅咒的敌人将会受到增加的物理伤害及物理持续伤害.  攻击被诅咒的目标有机会造成流血和瘫痪效果。",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [67] = true, },
 	baseFlags = {
 		spell = true,
@@ -4021,9 +4021,9 @@ skills["Vulnerability"] = {
 	},
 }
 skills["WarlordsMark"] = {
-	name = "Warlord's Mark",
+	name = "督军印记",
 	color = 1,
-	description = "Curses all targets in an area, making them more vulnerable to stuns. Hitting the cursed targets will leech life and mana, and killing them will result in a chance to gain an endurance charge.",
+	description = "对目标区域施放诅咒, 受到诅咒的敌人将更容易被晕眩, 更慢恢复. 在击中带有印记的敌人时会获得额外的生命与魔力偷取, 此外在击败带有印记的敌人时会有机会获得耐力球.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [67] = true, },
 	baseFlags = {
 		spell = true,

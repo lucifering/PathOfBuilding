@@ -2,86 +2,86 @@
 -- Item data (c) Grinding Gear Games
 local itemBases = ...
 
-itemBases["Cured Quiver"] = {
+itemBases["火焰箭袋"] = {
 	type = "Quiver",
 	hidden = true,
 	tags = { default = true, quiver = true, },
-	implicit = "Adds 2 to 4 Fire Damage to Attacks",
+	implicit = "攻击附加 2 - 4 基础火焰伤害",
 	req = { },
 }
-itemBases["Rugged Quiver"] = {
+itemBases["冰晶箭袋"] = {
 	type = "Quiver",
 	hidden = true,
 	tags = { default = true, quiver = true, },
-	implicit = "Adds 2 to 3 Cold Damage to Attacks",
+	implicit = "攻击附加 2 - 3 基础冰霜伤害",
 	req = { },
 }
-itemBases["Conductive Quiver"] = {
+itemBases["电光箭袋"] = {
 	type = "Quiver",
 	hidden = true,
 	tags = { default = true, quiver = true, },
-	implicit = "Adds 1 to 5 Lightning Damage to Attacks",
+	implicit = "攻击附加 1 - 5 基础闪电伤害",
 	req = { },
 }
-itemBases["Heavy Quiver"] = {
+itemBases["重矢箭袋"] = {
 	type = "Quiver",
 	hidden = true,
 	tags = { default = true, quiver = true, },
-	implicit = "Adds 1 to 4 Physical Damage to Attacks",
+	implicit = "攻击附加 1 - 4 基础物理伤害",
 	req = { level = 5, },
 }
-itemBases["Light Quiver"] = {
+itemBases["轻巧箭袋"] = {
 	type = "Quiver",
 	hidden = true,
 	tags = { default = true, quiver = true, },
-	implicit = "+(30-40) to Dexterity",
+	implicit = "+(30-40) 敏捷",
 	req = { level = 12, },
 }
-itemBases["Serrated Arrow Quiver"] = {
+itemBases["锯齿箭袋"] = {
 	type = "Quiver",
 	tags = { default = true, quiver = true, },
-	implicit = "Adds 1 to 4 Physical Damage to Bow Attacks",
+	implicit = "持弓攻击附加 1 - 4 基础物理伤害",
 	req = { level = 5, },
 }
-itemBases["Two-Point Arrow Quiver"] = {
+itemBases["双锋箭袋"] = {
 	type = "Quiver",
 	tags = { default = true, quiver = true, },
-	implicit = "(20-30)% increased Global Accuracy Rating",
+	implicit = "命中值提高 (20-30)%",
 	req = { level = 4, },
 }
-itemBases["Sharktooth Arrow Quiver"] = {
+itemBases["鲨齿箭袋"] = {
 	type = "Quiver",
 	tags = { default = true, quiver = true, },
-	implicit = "+(3-4) Life gained for each Enemy hit by your Attacks",
+	implicit = "你的攻击击中每个敌人会回复 +(3-4) 生命",
 	req = { level = 10, },
 }
-itemBases["Blunt Arrow Quiver"] = {
+itemBases["钝矢箭袋"] = {
 	type = "Quiver",
 	tags = { default = true, quiver = true, },
-	implicit = "(25-35)% increased Stun Duration on Enemies",
+	implicit = "敌人被晕眩时间延长 (25-35)%",
 	req = { level = 16, },
 }
-itemBases["Fire Arrow Quiver"] = {
+itemBases["火灵箭袋"] = {
 	type = "Quiver",
 	tags = { default = true, quiver = true, },
-	implicit = "Adds 4 to 8 Fire Damage to Bow Attacks",
+	implicit = "持弓攻击附加 4 - 8 基础火焰伤害",
 	req = { level = 22, },
 }
-itemBases["Broadhead Arrow Quiver"] = {
+itemBases["宽矢箭袋"] = {
 	type = "Quiver",
 	tags = { default = true, quiver = true, },
-	implicit = "Adds 6 to 12 Physical Damage to Bow Attacks",
+	implicit = "持弓攻击附加 6 - 12 基础物理伤害",
 	req = { level = 28, },
 }
-itemBases["Penetrating Arrow Quiver"] = {
+itemBases["穿射箭袋"] = {
 	type = "Quiver",
 	tags = { default = true, quiver = true, },
-	implicit = "Arrows Pierce an additional Target",
+	implicit = "箭矢会穿透 1 个额外目标",
 	req = { level = 36, },
 }
-itemBases["Spike-Point Arrow Quiver"] = {
+itemBases["刺锋箭袋"] = {
 	type = "Quiver",
 	tags = { default = true, quiver = true, },
-	implicit = "(20-30)% increased Global Critical Strike Chance",
+	implicit = "攻击和法术暴击率提高 (20-30)%",
 	req = { level = 45, },
 }

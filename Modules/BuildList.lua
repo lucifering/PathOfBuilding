@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Module: Build List
 -- Displays the list of builds.
@@ -10,9 +10,9 @@ local ipairs = ipairs
 local t_insert = table.insert
 
 local buildSortDropList = {
-	{ label = "Sort by Name", sortMode = "NAME" },
-	{ label = "Sort by Class", sortMode = "CLASS" },
-	{ label = "Sort by Last Edited", sortMode = "EDITED"},
+{ label = "名称排序", sortMode = "NAME" },
+{ label = "职业排序", sortMode = "CLASS" },
+{ label = "最后编辑时间", sortMode = "EDITED"},
 }
 
 local listMode = common.New("ControlHost")
@@ -35,25 +35,25 @@ function listMode:Init(selBuildName, subPath)
 	self.subPath = subPath or ""
 	self.list = { }
 
-	self.controls.new = common.New("ButtonControl", {"TOP",self.anchor,"TOP"}, -259, 0, 60, 20, "New", function()
+self.controls.new = common.New("ButtonControl", {"TOP",self.anchor,"TOP"}, -259, 0, 60, 20, "新建", function()
 		main:SetMode("BUILD", false, "Unnamed build")
 	end)
-	self.controls.newFolder = common.New("ButtonControl", {"LEFT",self.controls.new,"RIGHT"}, 8, 0, 90, 20, "New Folder", function()
+self.controls.newFolder = common.New("ButtonControl", {"LEFT",self.controls.new,"RIGHT"}, 8, 0, 90, 20, "新建文件夹", function()
 		self.controls.buildList:NewFolder()
 	end)
-	self.controls.open = common.New("ButtonControl", {"LEFT",self.controls.newFolder,"RIGHT"}, 8, 0, 60, 20, "Open", function()
+self.controls.open = common.New("ButtonControl", {"LEFT",self.controls.newFolder,"RIGHT"}, 8, 0, 60, 20, "打开", function()
 		self.controls.buildList:LoadBuild(self.controls.buildList.selValue)
 	end)
 	self.controls.open.enabled = function() return self.controls.buildList.selValue ~= nil end
-	self.controls.copy = common.New("ButtonControl", {"LEFT",self.controls.open,"RIGHT"}, 8, 0, 60, 20, "Copy", function()
+self.controls.copy = common.New("ButtonControl", {"LEFT",self.controls.open,"RIGHT"}, 8, 0, 60, 20, "复制", function()
 		self.controls.buildList:RenameBuild(self.controls.buildList.selValue, true)
 	end)
 	self.controls.copy.enabled = function() return self.controls.buildList.selValue ~= nil end
-	self.controls.rename = common.New("ButtonControl", {"LEFT",self.controls.copy,"RIGHT"}, 8, 0, 60, 20, "Rename", function()
+self.controls.rename = common.New("ButtonControl", {"LEFT",self.controls.copy,"RIGHT"}, 8, 0, 60, 20, "重命名", function()
 		self.controls.buildList:RenameBuild(self.controls.buildList.selValue)
 	end)
 	self.controls.rename.enabled = function() return self.controls.buildList.selValue ~= nil end
-	self.controls.delete = common.New("ButtonControl", {"LEFT",self.controls.rename,"RIGHT"}, 8, 0, 60, 20, "Delete", function()
+self.controls.delete = common.New("ButtonControl", {"LEFT",self.controls.rename,"RIGHT"}, 8, 0, 60, 20, "删除", function()
 		self.controls.buildList:DeleteBuild(self.controls.buildList.selValue)
 	end)
 	self.controls.delete.enabled = function() return self.controls.buildList.selValue ~= nil end

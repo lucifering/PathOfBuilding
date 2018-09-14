@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Module: Calc Tools
 -- Various functions used by the calculation modules
@@ -45,7 +45,7 @@ function calcLib.validateGemLevel(gemInstance)
 			gemInstance.level = gemInstance.gemData.defaultLevel
 		else
 			-- Try limiting to the level range of the skill
-			gemInstance.level = m_max(1, gemInstance.level)
+gemInstance.level = m_max(1, gemInstance.level or 1)
 			if #grantedEffect.levels > 0 then
 				gemInstance.level = m_min(#grantedEffect.levels, gemInstance.level)
 			end

@@ -7,9 +7,9 @@
 local skills, mod, flag, skill = ...
 
 skills["Arc"] = {
-	name = "Arc",
+	name = "电弧",
 	color = 3,
-	description = "An arc of lightning stretches from the caster to a targeted enemy and chains on to other nearby enemies. Each time the main beam chains it will also chain to a second enemy, but that secondary arc cannot chain further.",
+	description = "一道电弧从施放者射向目标, 并会弹跳至周围其他敌人。每次主电弧弹射时，也会向第二个敌人进行二次弹射，但二次弹射仅生效一次。",
 	skillTypes = { [2] = true, [10] = true, [17] = true, [18] = true, [19] = true, [23] = true, [26] = true, [36] = true, [45] = true, [35] = true, },
 	baseFlags = {
 		spell = true,
@@ -78,9 +78,9 @@ skills["Arc"] = {
 	},
 }
 skills["VaalArcChain"] = {
-	name = "Vaal Arc",
+	name = "瓦尔.电弧",
 	color = 3,
-	description = "A shocking arc of lightning stretches from the caster to a targeted enemy and chains to other nearby enemies. Each time the beam chains it will also chain simultaneously to a second enemy, but no enemy can be hit twice by the beams. Also grants a buff making you lucky when damaging enemies with Arc for a short duration.",
+	description = "一道电弧从施放者射向目标, 并会弹跳至周围其他敌人。每次主电弧弹射时，也会向第二个敌人进行二次弹射，但敌人只能被弹射一次。当该电弧对敌人造成伤害时，短时间内还会赋予你一个“特别幸运”的增益效果。",
 	skillTypes = { [2] = true, [10] = true, [17] = true, [18] = true, [19] = true, [23] = true, [43] = true, [35] = true, [12] = true, },
 	baseFlags = {
 		spell = true,
@@ -150,9 +150,9 @@ skills["VaalArcChain"] = {
 	},
 }
 skills["ArcticBreath"] = {
-	name = "Arctic Breath",
+	name = "极地吐息",
 	color = 3,
-	description = "Fires a frozen skull projectile that leaves a trail of ground ice behind it. It explodes on impact, creating more ground ice and damaging targets within an area.",
+	description = "射出一个寒冰魔侍投射物, 它所经过的路径都会结冰. 在接触到敌人时会爆炸, 使附近地面结冰且对该范围敌人造成伤害.",
 	skillTypes = { [2] = true, [3] = true, [68] = true, [10] = true, [17] = true, [18] = true, [19] = true, [12] = true, [11] = true, [26] = true, [36] = true, [34] = true, [60] = true, },
 	baseFlags = {
 		spell = true,
@@ -220,9 +220,9 @@ skills["ArcticBreath"] = {
 	},
 }
 skills["AssassinsMark"] = {
-	name = "Assassin's Mark",
+	name = "暗影印记",
 	color = 3,
-	description = "Curses all targets in an area, making them more vulnerable to Critical Strikes. Killing the cursed targets will grant life and mana, and a chance to gain a power charge.",
+	description = "对目标区域施放诅咒, 受到诅咒的敌人更容易, 受到更多暴击伤害. 此外, 在击败带有印记的敌人时会获得生命与魔力, 并有机会获得暴击球.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [67] = true, },
 	baseFlags = {
 		spell = true,
@@ -294,9 +294,9 @@ skills["AssassinsMark"] = {
 	},
 }
 skills["BallLightning"] = {
-	name = "Ball Lightning",
+	name = "天雷之珠",
 	color = 3,
-	description = "Fires a slow-moving projectile that periodically damages enemies in an area around it with bolts of lightning.",
+	description = "射出一个移动缓慢的天雷之珠, 将会周期性的对周围的敌人施放闪电并造成伤害.",
 	skillTypes = { [2] = true, [10] = true, [3] = true, [68] = true, [11] = true, [18] = true, [17] = true, [19] = true, [26] = true, [36] = true, [45] = true, [35] = true, },
 	baseFlags = {
 		spell = true,
@@ -363,9 +363,9 @@ skills["BallLightning"] = {
 	},
 }
 skills["Blight"] = {
-	name = "Blight",
+	name = "枯萎",
 	color = 3,
-	description = "Apply a debuff to enemies in front of you which deals chaos damage over time. Enemies who aren't already debuffed by Blight are also hindered for a shorter secondary duration, slowing their movement. Continued channelling adds layers of damage to the debuff, each with their own duration.",
+	description = "持续吟唱该技能会对前方锥形范围内的敌人造成一个可叠加的减益效果和持续混沌伤害. 当敌人刚被法术命中时会被短暂的减速. 每层可叠加的减益和伤害都有独自的持续时间.",
 	skillTypes = { [2] = true, [50] = true, [11] = true, [18] = true, [58] = true, [12] = true, [40] = true, [59] = true, [52] = true, },
 	baseFlags = {
 		spell = true,
@@ -436,9 +436,9 @@ skills["Blight"] = {
 	},
 }
 skills["VaalBlight"] = {
-	name = "Vaal Blight",
+	name = "瓦尔.枯萎",
 	color = 3,
-	description = "Apply a powerful debuff to enemies around you which deals chaos damage over time. Then applies two additional layers in a larger area, growing greatly in size each time. Enemies are also substantially hindered for a shorter secondary duration, slowing their movement.",
+	description = "对你周围的敌人施加一个强力的减益效果，持续对其造成混沌伤害。随后在一片较大的区域内施加额外两层，每一次施加都会大幅扩大面积。被主要作用区域影响的敌人还会遭受短时间的减速效果。",
 	skillTypes = { [2] = true, [50] = true, [11] = true, [18] = true, [12] = true, [40] = true, [59] = true, [52] = true, [43] = true, },
 	baseFlags = {
 		spell = true,
@@ -507,9 +507,9 @@ skills["VaalBlight"] = {
 	},
 }
 skills["CorpseWarp"] = {
-	name = "Bodyswap",
+	name = "灵体转换",
 	color = 3,
-	description = "Your body explodes, dealing spell damage in an area around you, and a targeted corpse also explodes, dealing damage around it. Your body is recreated at the location of the corpse. The explosion of the corpse is not affected by modifiers to spell damage, and cannot be reflected. This spell cannot be repeated.",
+	description = "你将对自身和目标灵柩周围造成范围法术伤害。随后你的身体将被传送到目标灵柩的位置。该法术无法被重复施法。",
 	skillTypes = { [38] = true, [2] = true, [10] = true, [11] = true, [18] = true, [19] = true, [17] = true, [36] = true, [33] = true, },
 	parts = {
 		{
@@ -600,9 +600,9 @@ skills["CorpseWarp"] = {
 	},
 }
 skills["BoneOffering"] = {
-	name = "Bone Offering",
+	name = "骸骨奉献",
 	color = 3,
-	description = "Consumes a corpse, granting all of your minions the power to block both attacks and spells. The skill consumes other nearby corpses, increasing the duration for each corpse consumed.",
+	description = "献祭一具灵柩, 使你的召唤生物获得格挡攻击与法术的能力. 这个技能会持续献祭附近的灵柩, 每具献祭的灵柩将会延长强化召唤生物的时间.",
 	skillTypes = { [2] = true, [5] = true, [12] = true, [36] = true, [9] = true, [49] = true, [17] = true, [19] = true, [18] = true, [67] = true, },
 	baseFlags = {
 		spell = true,
@@ -670,9 +670,9 @@ skills["BoneOffering"] = {
 	},
 }
 skills["Clarity"] = {
-	name = "Clarity",
+	name = "清晰",
 	color = 3,
-	description = "Casts an aura that grants mana regeneration to you and your allies.",
+	description = "施放一个光环, 使你与受光环影响友军获得额外的魔力回复.",
 	skillTypes = { [2] = true, [11] = true, [5] = true, [15] = true, [27] = true, [18] = true, [44] = true, [75] = true, },
 	baseFlags = {
 		spell = true,
@@ -738,9 +738,9 @@ skills["Clarity"] = {
 	},
 }
 skills["VaalClarity"] = {
-	name = "Vaal Clarity",
+	name = "瓦尔.清晰",
 	color = 3,
-	description = "Casts a temporary aura that lets you and your allies cast skills without paying their mana costs.",
+	description = "施放一个短暂的光环, 使你与受光环影响友军施放技能时无须消耗魔力.",
 	skillTypes = { [2] = true, [5] = true, [11] = true, [18] = true, [27] = true, [12] = true, [43] = true, [44] = true, },
 	baseFlags = {
 		spell = true,
@@ -807,9 +807,9 @@ skills["VaalClarity"] = {
 	},
 }
 skills["ColdSnap"] = {
-	name = "Cold Snap",
+	name = "霜暴",
 	color = 3,
-	description = "Creates a sudden burst of cold in a targeted area, damaging enemies. This also creates an expanding area which is filled with chilled ground, and deals cold damage over time to enemies. Enemies that die while in the area have a chance to grant Frenzy Charges. The cooldown can be bypassed by expending a Frenzy Charge.",
+	description = "在目标区域创造一股急促的寒流，并对敌人造成伤害。此攻击还会创造一片开散的冰缓地面效果，并持续对敌人造成冰霜伤害。在此区域内被击败的敌人会生成狂怒球。消耗狂怒球可以加速冷却。",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [34] = true, [60] = true, [67] = true, [12] = true, },
 	baseFlags = {
 		spell = true,
@@ -884,9 +884,9 @@ skills["ColdSnap"] = {
 	},
 }
 skills["VaalColdSnap"] = {
-	name = "Vaal Cold Snap",
+	name = "瓦尔.霜暴",
 	color = 3,
-	description = "Creates a sudden burst of cold around you, damaging enemies. This also creates an expanding area around you which chills surrounding enemies and deals cold damage over time to them. Enemies that die while in the area grant Frenzy Charges, and you will passively gain Frenzy Charges while there are enemies in the area.",
+	description = "在你身边创造一股急促的寒流，并对敌人造成伤害。此攻击还会在你身边创造一片开散的冰缓地面效果，并持续对周围的敌人造成冰霜伤害。在此区域内被击败的敌人会生成狂怒球。若你在此区域内，则可以自动获得这些狂怒球。",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [12] = true, [43] = true, [34] = true, },
 	baseFlags = {
 		spell = true,
@@ -961,9 +961,9 @@ skills["VaalColdSnap"] = {
 	},
 }
 skills["Conductivity"] = {
-	name = "Conductivity",
+	name = "导电",
 	color = 3,
-	description = "Curses all targets in an area, making them less resistant to lightning damage and giving them a chance to be shocked by lightning damage.",
+	description = "对目标区域施放诅咒, 使受到诅咒敌人的闪电抗性降低, 并在受到闪电伤害时有几率被感电.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [45] = true, [35] = true, [67] = true, },
 	baseFlags = {
 		spell = true,
@@ -1032,9 +1032,9 @@ skills["Conductivity"] = {
 	},
 }
 skills["Contagion"] = {
-	name = "Contagion",
+	name = "瘟疫",
 	color = 3,
-	description = "Unleashes a vile contagion on enemies, dealing chaos damage over time. If an enemy dies while affected by Contagion, it spreads to other enemies.",
+	description = "对你的敌人造成持续的混沌伤害, 并且当敌人因此而死亡时, 瘟疫的效果将会传染到周边敌人的身上. ",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [40] = true, [50] = true, [26] = true, [36] = true, [19] = true, [52] = true, [59] = true, [67] = true, },
 	baseFlags = {
 		spell = true,
@@ -1103,9 +1103,9 @@ skills["Contagion"] = {
 	},
 }
 skills["ConversionTrap"] = {
-	name = "Conversion Trap",
+	name = "迷魅陷阱",
 	color = 3,
-	description = "Throws a trap that, when triggered by an enemy, converts that enemy to your side for a short duration. Does not affect unique monsters or players.",
+	description = "投掷一个陷阱, 触发该陷阱的敌人将会短暂的转化为你的手下为你而战.",
 	skillTypes = { [2] = true, [12] = true, [19] = true, [37] = true, },
 	baseFlags = {
 		spell = true,
@@ -1173,9 +1173,9 @@ skills["ConversionTrap"] = {
 	},
 }
 skills["Convocation"] = {
-	name = "Convocation",
+	name = "号召",
 	color = 3,
-	description = "Recalls all minions that are following you to your location, and grants them a temporary life regeneration effect.",
+	description = "将所有由你控制的召唤生物召回你的所在之处, 并短暂的使它们获得生命恢复效果.",
 	skillTypes = { [2] = true, [5] = true, [12] = true, [36] = true, [9] = true, [49] = true, [75] = true, },
 	baseFlags = {
 		spell = true,
@@ -1242,9 +1242,9 @@ skills["Convocation"] = {
 	},
 }
 skills["DarkPact"] = {
-	name = "Dark Pact",
+	name = "暗夜血契",
 	color = 3,
-	description = "This spell removes some life from one of your Skeleton minions near you or the targeted location to deal chaos damage in an area around it. This effect will chain to your other nearby skeletons. If you have no skeletons near you or the targeted location, it will sacrifice your own life to deal damage instead.",
+	description = "该法术会消耗一个你或光标附近魔侍的部分生命值来对其周围造成混沌伤害. 该效果会连锁到你在附近的其他魔侍. 如果你或光标附近已没有魔侍, 则会牺牲你自己的部分生命来造成混沌伤害.",
 	skillTypes = { [2] = true, [10] = true, [19] = true, [18] = true, [11] = true, [17] = true, [49] = true, [36] = true, [26] = true, [23] = true, [50] = true, [9] = true, },
 --baseMod skill("radius", 24)
 	parts = {
@@ -1336,9 +1336,9 @@ skills["DarkPact"] = {
 	},
 }
 skills["Despair"] = {
-	name = "Despair",
+	name = "绝望",
 	color = 3,
-	description = "Curse all targets in an area, making them less resistant to chaos damage and causing them to take increased damage over time. Cursed enemies also take additional chaos damage when hit.",
+	description = "对目标区域施放诅咒，使他们的混沌抗性降低并受到更多的持续伤害。被诅咒的敌人被击中时也会受到额外的混沌伤害。",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [67] = true, [50] = true, },
 	baseFlags = {
 		spell = true,
@@ -1409,9 +1409,9 @@ skills["Despair"] = {
 	},
 }
 skills["Discharge"] = {
-	name = "Discharge",
+	name = "解放",
 	color = 3,
-	description = "Discharge all the character's charges to deal elemental damage to all nearby monsters.",
+	description = "释放角色身上所有的能量球并对周围所有敌人造成元素伤害.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [18] = true, [26] = true, [36] = true, [45] = true, [33] = true, [34] = true, [35] = true, [60] = true, },
 	baseFlags = {
 		spell = true,
@@ -1484,9 +1484,9 @@ skills["Discharge"] = {
 	},
 }
 skills["Discipline"] = {
-	name = "Discipline",
+	name = "纪律",
 	color = 3,
-	description = "Casts an aura that grants additional energy shield and increased energy shield recharge rate to you and your allies.",
+	description = "施放一个光环, 使你与受光环影响友军获得额外的能量护盾.",
 	skillTypes = { [2] = true, [11] = true, [5] = true, [15] = true, [27] = true, [16] = true, [18] = true, [44] = true, [75] = true, },
 	baseFlags = {
 		spell = true,
@@ -1553,9 +1553,9 @@ skills["Discipline"] = {
 	},
 }
 skills["VaalDiscipline"] = {
-	name = "Vaal Discipline",
+	name = "瓦尔.纪律",
 	color = 3,
-	description = "Casts a temporary aura that prevents energy shield recharge being delayed by damage taken for you and your allies.",
+	description = "施放一个短暂的光环, 使你与受光环影响友军获得额外的能量护盾, 并且不会因为受到攻击而延迟护盾的回复.",
 	skillTypes = { [2] = true, [5] = true, [11] = true, [18] = true, [27] = true, [12] = true, [43] = true, [44] = true, },
 	baseFlags = {
 		spell = true,
@@ -1623,9 +1623,9 @@ skills["VaalDiscipline"] = {
 	},
 }
 skills["ElementalWeakness"] = {
-	name = "Elemental Weakness",
+	name = "元素要害",
 	color = 3,
-	description = "Curses all targets in an area, making them less resistant to elemental damage.",
+	description = "对目标区域施放诅咒, 受到诅咒的敌人对于元素的抗性将会降低.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [67] = true, },
 	baseFlags = {
 		spell = true,
@@ -1693,9 +1693,9 @@ skills["ElementalWeakness"] = {
 	},
 }
 skills["Enfeeble"] = {
-	name = "Enfeeble",
+	name = "衰弱",
 	color = 3,
-	description = "Curses all targets in an area, making their attacks and spells less effective.",
+	description = "对目标区域施放诅咒, 受到诅咒的敌人所造成的攻击或法术将会比较无力.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [67] = true, },
 	baseFlags = {
 		spell = true,
@@ -1767,9 +1767,9 @@ skills["Enfeeble"] = {
 	},
 }
 skills["EssenceDrain"] = {
-	name = "Essence Drain",
+	name = "灵魂吸取",
 	color = 3,
-	description = "Fires a projectile that applies a damage over time debuff when it hits. You are healed for a portion of the debuff damage. The debuff is spread by Contagion. This skill cannot be used by Traps or Mines.",
+	description = "投射出一个击中后造成持续混沌伤害的投射物。所造成的伤害将治疗你。这个减益效果可由【瘟疫】一起传染. 该主动技能无法被陷阱或地雷所使用。",
 	skillTypes = { [2] = true, [3] = true, [68] = true, [12] = true, [18] = true, [26] = true, [40] = true, [50] = true, [10] = true, [36] = true, },
 	baseFlags = {
 		spell = true,
@@ -1842,9 +1842,9 @@ skills["EssenceDrain"] = {
 	},
 }
 skills["FireNovaMine"] = {
-	name = "Fire Nova Mine",
+	name = "火焰新星地雷",
 	color = 3,
-	description = "Lay a remote mine that you can detonate to create a series of fire novas. Each sequential nova from the same mine will do higher damage than the previous.",
+	description = "设置一个遥控地雷, 引爆时施放数道火焰新星. 同一个地雷所施放出的数道火焰新星, 每道的伤害会比前一道高.",
 	skillTypes = { [2] = true, [10] = true, [36] = true, [11] = true, [33] = true, [26] = true, [41] = true, },
 	baseFlags = {
 		spell = true,
@@ -1917,9 +1917,9 @@ skills["FireNovaMine"] = {
 	},
 }
 skills["Fireball"] = {
-	name = "Fireball",
+	name = "火球",
 	color = 3,
-	description = "Unleashes a ball of fire towards a target which explodes, damaging nearby foes.",
+	description = "释放一颗球型火焰向前飞射, 接触到怪物时会爆炸并对周围敌人造成伤害",
 	skillTypes = { [3] = true, [68] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [33] = true, },
 	parts = {
 		{
@@ -1998,9 +1998,9 @@ skills["Fireball"] = {
 	},
 }
 skills["VaalFireballSpiralNova"] = {
-	name = "Vaal Fireball",
+	name = "瓦尔.火球",
 	color = 3,
-	description = "Launches a series of fireballs in all directions around the caster.",
+	description = "以施法者为中心螺旋型散发大量的火球, 接触到怪物时会爆炸并对周围敌人造成伤害.",
 	skillTypes = { [3] = true, [68] = true, [70] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [43] = true, [33] = true, },
 	parts = {
 		{
@@ -2080,9 +2080,9 @@ skills["VaalFireballSpiralNova"] = {
 	},
 }
 skills["Firestorm"] = {
-	name = "Firestorm",
+	name = "烈炎风暴",
 	color = 3,
-	description = "Flaming bolts rain down over the targeted area. They explode when landing, dealing damage to nearby enemies.",
+	description = "低语呢喃, 呼唤无数火焰之球如雨一般洒落在目标区域. 每颗火球落地时将会爆炸, 并对周围的敌人造成伤害.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [33] = true, [67] = true, },
 	baseFlags = {
 		spell = true,
@@ -2154,9 +2154,9 @@ skills["Firestorm"] = {
 	},
 }
 skills["FlameDash"] = {
-	name = "Flame Dash",
+	name = "烈焰冲刺",
 	color = 3,
-	description = "Teleport to a location, damaging enemies and leaving a trail of burning ground in your wake.",
+	description = "传送到指定地点, 对敌人造成伤害并在路线上造成燃烧. ",
 	skillTypes = { [2] = true, [38] = true, [10] = true, [40] = true, [12] = true, [18] = true, [36] = true, [33] = true, [17] = true, [19] = true, },
 	baseFlags = {
 		spell = true,
@@ -2227,9 +2227,9 @@ skills["FlameDash"] = {
 	},
 }
 skills["FlameWhip"] = {
-	name = "Flame Surge",
+	name = "怒焰奔腾",
 	color = 3,
-	description = "Strikes enemies in front of you with a surge of flame. Burning enemies are dealt more damage.",
+	description = "释放怒焰之力对敌人进行攻击. 燃烧中的敌人将会受到更多伤害.",
 	skillTypes = { [2] = true, [10] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [11] = true, [33] = true, },
 	baseFlags = {
 		spell = true,
@@ -2297,9 +2297,9 @@ skills["FlameWhip"] = {
 	},
 }
 skills["Flameblast"] = {
-	name = "Flameblast",
+	name = "烈焰爆破",
 	color = 3,
-	description = "Channels to build up a large explosion, which is released when you stop using the skill. The longer you channel, the larger the area of effect and damage of the explosion, up to 10 stages.",
+	description = "可蓄力（持续施放）来施放大型的爆炸. 蓄力的时间越长, 爆炸的范围与造成的伤害越大. 当停止蓄力后一段时间或使用其他技能时便会触发爆炸.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [18] = true, [33] = true, [58] = true, },
 	parts = {
 		{
@@ -2378,9 +2378,9 @@ skills["Flameblast"] = {
 	},
 }
 skills["VaalFlameblast"] = {
-	name = "Vaal Flameblast",
+	name = "瓦尔.烈焰爆破",
 	color = 3,
-	description = "Targets an area and builds up stages in that area based on cast speed. It explodes every 5 stages, until it reaches a maximum of 15. As it gains more stages, the area gets smaller but the damage gets higher.",
+	description = "指定一片区域，在其中根据施法速度来叠加效果。每五层爆炸一次，直至叠满 15 层。叠加层数时区域会逐渐变小，但伤害随之提高。",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [18] = true, [43] = true, [33] = true, },
 	baseFlags = {
 		spell = true,
@@ -2450,9 +2450,9 @@ skills["VaalFlameblast"] = {
 	},
 }
 skills["Flammability"] = {
-	name = "Flammability",
+	name = "易燃",
 	color = 3,
-	description = "Curses all targets in an area, making them less resistant to fire damage and giving them a chance to be ignited by fire damage.",
+	description = "对目标区域施放诅咒, 使受到诅咒敌人的火焰抗性降低, 并在受到火焰伤害时有几率被点燃.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [33] = true, [67] = true, },
 	baseFlags = {
 		spell = true,
@@ -2521,9 +2521,9 @@ skills["Flammability"] = {
 	},
 }
 skills["FleshOffering"] = {
-	name = "Flesh Offering",
+	name = "血肉奉献",
 	color = 3,
-	description = "Consumes a corpse, which temporarily empowers your minions with swiftness. The skill consumes other nearby corpses, increasing the duration for each corpse consumed.",
+	description = "献祭一具灵柩, 短暂的强化与加速你的召唤生物. 这个技能会持续献祭附近的灵柩, 每具献祭的灵柩将会延长强化召唤生物的时间.",
 	skillTypes = { [2] = true, [5] = true, [12] = true, [36] = true, [9] = true, [49] = true, [17] = true, [19] = true, [18] = true, [67] = true, },
 	baseFlags = {
 		spell = true,
@@ -2591,9 +2591,9 @@ skills["FleshOffering"] = {
 	},
 }
 skills["FreezingPulse"] = {
-	name = "Freezing Pulse",
+	name = "冰霜脉冲",
 	color = 3,
-	description = "An icy projectile which has a chance to freeze enemies it passes through. The projectile fades quickly, reducing damage and freezing chance until it dissipates.",
+	description = "发出一个半月形的寒冰投射物, 被击中的敌人将有几率被冰冻. 这个投射物很快就会消散, 而其伤害与冻结几率将会随着飞行时间递减.",
 	skillTypes = { [2] = true, [3] = true, [68] = true, [10] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [34] = true, [60] = true, },
 	setupFunc = function(env, output)
 		env.modDB:NewMod("Damage", "MORE", -50, "Skill:FreezingPulse", { type = "DistanceRamp", ramp = {{0,0},{60*output.ProjectileSpeedMod,1}} })
@@ -2664,9 +2664,9 @@ skills["FreezingPulse"] = {
 	},
 }
 skills["FrostBomb"] = {
-	name = "Frost Bomb",
+	name = "寒霜爆",
 	color = 3,
-	description = "Creates a crystal that pulses with cold for a duration. Each pulse applies a debuff to nearby enemies for a secondary duration which lowers their cold resistance, reduces life and energy shield regeneration rate, and reduces energy shield recharge rate. When the crystal's duration ends, it explodes, dealing heavy cold damage to enemies around it.",
+	description = "创造出一个冰晶, 不断地释放冰霜的能量, 降低其周围的敌人的冰霜抗性和生命回复. 当持续时间结束, 冰晶将会爆裂, 并对敌人造成大量冰霜伤害. ",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [34] = true, [10] = true, [26] = true, [18] = true, [17] = true, [19] = true, [36] = true, [60] = true, [67] = true, },
 	baseFlags = {
 		spell = true,
@@ -2741,9 +2741,9 @@ skills["FrostBomb"] = {
 	},
 }
 skills["FrostWall"] = {
-	name = "Frost Wall",
+	name = "冰墙",
 	color = 3,
-	description = "Creates a wall of ice which holds back enemies. Targets under the wall are damaged and pushed back.",
+	description = "聚集空气中的水分, 制造一堵能阻挡敌人行动的冰墙. 在冰墙成形位置的敌人将会受到伤害并且被击退.",
 	skillTypes = { [2] = true, [10] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [34] = true, [60] = true, [67] = true, },
 	baseFlags = {
 		spell = true,
@@ -2810,9 +2810,9 @@ skills["FrostWall"] = {
 	},
 }
 skills["Frostbite"] = {
-	name = "Frostbite",
+	name = "冻伤",
 	color = 3,
-	description = "Curses all targets in an area, making them less resistant to cold damage and giving them a chance to be frozen by cold damage.",
+	description = "对目标区域施放诅咒, 使受到诅咒敌人的冰霜抗性降低, 并在受到冰霜伤害时有几率被冰冻.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [34] = true, [60] = true, [67] = true, },
 	baseFlags = {
 		spell = true,
@@ -2881,9 +2881,9 @@ skills["Frostbite"] = {
 	},
 }
 skills["FrostBolt"] = {
-	name = "Frostbolt",
+	name = "寒冰弹",
 	color = 3,
-	description = "Fires a slow-moving projectile that pierces through enemies, dealing cold damage.",
+	description = "发射出一个缓慢移动并可以穿透敌人的投射物, 造成冰霜伤害. ",
 	skillTypes = { [2] = true, [3] = true, [68] = true, [10] = true, [17] = true, [18] = true, [19] = true, [26] = true, [34] = true, [36] = true, [60] = true, },
 	baseFlags = {
 		spell = true,
@@ -2948,9 +2948,9 @@ skills["FrostBolt"] = {
 	},
 }
 skills["GlacialCascade"] = {
-	name = "Glacial Cascade",
+	name = "冰川之刺",
 	color = 3,
-	description = "Icicles emerge from the ground in a series of small bursts, each damaging enemies caught in the area.",
+	description = "从地面上不断的冒出冰结之刺, 宛如川流一般向前攻击并对敌人造成伤害.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [34] = true, [60] = true, },
 	baseFlags = {
 		spell = true,
@@ -3019,9 +3019,9 @@ skills["GlacialCascade"] = {
 	},
 }
 skills["HeraldOfThunder"] = {
-	name = "Herald of Thunder",
+	name = "闪电之捷",
 	color = 3,
-	description = "Channel lightning through your hands, adding lightning damage to spells and attacks. If you kill a shocked enemy, lightning bolts will strike enemies around you for a short duration. The lightning bolt damage inflicted by this skill is not affected by modifiers to spell damage.",
+	description = "于手中凝聚闪电之力, 为法术与攻击额外增加闪电伤害. 若是你击败了一个受到感电状态的敌人, 闪电将会在一小段时间内持续攻击你附近的敌人.",
 	skillTypes = { [2] = true, [5] = true, [15] = true, [16] = true, [10] = true, [11] = true, [12] = true, [35] = true, [27] = true, [63] = true, [75] = true, },
 	baseFlags = {
 		cast = true,
@@ -3095,9 +3095,9 @@ skills["HeraldOfThunder"] = {
 	},
 }
 skills["IceNova"] = {
-	name = "Ice Nova",
+	name = "冰霜新星",
 	color = 3,
-	description = "A chilling circle of ice expands from the caster. If the caster targets near one of their Frostbolt projectiles, it will expand from the projectile instead.",
+	description = "从施法者散发出一圈寒冰之环.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [34] = true, [60] = true, },
 	baseFlags = {
 		spell = true,
@@ -3164,9 +3164,9 @@ skills["IceNova"] = {
 	},
 }
 skills["VaalIceNova"] = {
-	name = "Vaal Ice Nova",
+	name = "瓦尔.冰霜新星",
 	color = 3,
-	description = "A chilling circle of ice expands from the caster, repeating from every enemy it hits. If the caster targets near one of their Frostbolt projectiles, it will expand from the projectile instead.",
+	description = "从施法者散发出一圈寒冰之环, 并在每位被击中的敌人身上再次散发.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [43] = true, [34] = true, },
 	baseFlags = {
 		spell = true,
@@ -3232,9 +3232,9 @@ skills["VaalIceNova"] = {
 	},
 }
 skills["IceSpear"] = {
-	name = "Ice Spear",
+	name = "冰矛",
 	color = 3,
-	description = "Launches a shard of ice that pierces close enemies, before exploding on a distant enemy with a much higher critical strike chance.",
+	description = "凝聚冰之碎片为矛并向前射出, 此冰矛将会穿透附近的敌人, 并对一定距离以外的敌人具有较高的暴击率.",
 	skillTypes = { [2] = true, [3] = true, [68] = true, [10] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [34] = true, [60] = true, },
 	parts = {
 		{
@@ -3311,9 +3311,9 @@ skills["IceSpear"] = {
 	},
 }
 skills["ExpandingFireCone"] = {
-	name = "Incinerate",
+	name = "烧毁",
 	color = 3,
-	description = "Continuously launches a torrent of fire from your hand, repeatedly damaging enemies. As you channel this spell longer, the flames spread wider close to you and spread longer directly in front of you. When you stop channelling you release a wave of fire damage over a wide and long area that will apply a powerful Ignite.",
+	description = "持续从手中发出烈焰洪流，反复对敌人造成伤害。你吟唱此法术时间越长，烈焰在你近身的面积就越广，在你前方的波及范围就越长。当你停止吟唱，则对已波及的面积和范围内造成一股火焰伤害，并附加强大的点燃效果。",
 	skillTypes = { [2] = true, [10] = true, [18] = true, [33] = true, [58] = true, [11] = true, },
 	parts = {
 		{
@@ -3403,9 +3403,9 @@ skills["ExpandingFireCone"] = {
 	},
 }
 skills["ClusterBurst"] = {
-	name = "Kinetic Blast",
+	name = "力量爆破",
 	color = 3,
-	description = "Fires a projectile from a Wand that causes a series of small explosions surrounding its point of impact, each damaging enemies caught in the area.",
+	description = "从法杖中射出一个投射物, 在接触到物体或敌人时对周围连续爆破造成伤害.",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [68] = true, [11] = true, [17] = true, [19] = true, [22] = true, },
 	weaponTypes = {
 		["Wand"] = true,
@@ -3487,9 +3487,9 @@ skills["ClusterBurst"] = {
 	},
 }
 skills["LightningTowerTrap"] = {
-	name = "Lightning Spire Trap",
+	name = "电塔陷阱",
 	color = 3,
-	description = "Throws a trap which, once triggered, will repeatedly strike multiple areas around it for a duration, dealing lightning damage. Modifiers to cast speed will affect how frequently it strikes. Has a higher chance to critically strike Shocked enemies.",
+	description = "投掷陷阱，触发会在一定时间内连续电击多个区域，并造成闪电伤害。施法速度会影响其电击的频率。有很大几率对感电敌人造成暴击。",
 	skillTypes = { [2] = true, [12] = true, [10] = true, [19] = true, [11] = true, [37] = true, [35] = true, [52] = true, },
 	baseFlags = {
 		spell = true,
@@ -3565,9 +3565,9 @@ skills["LightningTowerTrap"] = {
 	},
 }
 skills["LightningTendrilsChannelled"] = {
-	name = "Lightning Tendrils",
+	name = "电能释放",
 	color = 3,
-	description = "While you channel this skill, it releases pulses of electrical energy, dealing lightning damage in a semicircular area in front of you.",
+	description = "汇聚雷霆之力并从手中快速的释放多次闪电, 对你面前弧状区域内的所有敌人造成伤害.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [18] = true, [35] = true, [58] = true, },
 	baseFlags = {
 		spell = true,
@@ -3636,9 +3636,9 @@ skills["LightningTendrilsChannelled"] = {
 	},
 }
 skills["LightningTrap"] = {
-	name = "Lightning Trap",
+	name = "闪电陷阱",
 	color = 3,
-	description = "Throws a trap that launches a ring of projectiles through the enemy that set it off, dealing lightning damage to them and subsequent targets.",
+	description = "投掷一个陷阱, 该陷阱被触发时将会向全方位散射出闪电投射物, 投射物将会对触发及接触到的敌人造成闪电伤害.",
 	skillTypes = { [2] = true, [10] = true, [3] = true, [68] = true, [37] = true, [19] = true, [35] = true, },
 	baseFlags = {
 		spell = true,
@@ -3713,9 +3713,9 @@ skills["LightningTrap"] = {
 	},
 }
 skills["VaalLightningTrap"] = {
-	name = "Vaal Lightning Trap",
+	name = "瓦尔.闪电陷阱",
 	color = 3,
-	description = "Throws a trap that launches a ring of projectiles through the enemy that set it off, dealing lightning damage to them and subsequent targets and leaving a trail of shocking ground.",
+	description = "投掷一个陷阱, 该陷阱被触发时将会向全方位散射出闪电投射物, 投射物将会对触发及接触到的敌人造成闪电伤害, 且同时在地面留下感电效果.",
 	skillTypes = { [2] = true, [10] = true, [3] = true, [68] = true, [37] = true, [19] = true, [12] = true, [43] = true, [35] = true, },
 	baseFlags = {
 		spell = true,
@@ -3793,9 +3793,9 @@ skills["VaalLightningTrap"] = {
 	},
 }
 skills["LightningWarp"] = {
-	name = "Lightning Warp",
+	name = "闪电传送",
 	color = 3,
-	description = "Casts a delayed teleport to a target destination. When the teleport occurs, lightning damage is dealt to the area around both where the player was and where they teleported to.",
+	description = "在指定位置施放一个法阵, 在数秒之后将你传送过去. 当传送时, 在原本位置与传送法阵位置的敌人都会受到闪电伤害.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [36] = true, [38] = true, [45] = true, [35] = true, },
 	baseFlags = {
 		spell = true,
@@ -3865,9 +3865,9 @@ skills["LightningWarp"] = {
 	},
 }
 skills["VaalLightningWarpInstant"] = {
-	name = "Vaal Lightning Warp",
+	name = "瓦尔.闪电传送",
 	color = 3,
-	description = "Casts a delayed teleport for nearby enemies to a target destination. When the teleport occurs, lightning damage is dealt to the enemies both before and after they teleport.",
+	description = "在指定位置施放一个法阵, 在数秒之后将周围的敌人传送过去. 当传送时, 在原本位置与传送法阵位置的敌人都会受到闪电伤害.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [43] = true, [35] = true, },
 	baseFlags = {
 		spell = true,
@@ -3935,9 +3935,9 @@ skills["VaalLightningWarpInstant"] = {
 	},
 }
 skills["MagmaOrb"] = {
-	name = "Magma Orb",
+	name = "熔岩之核",
 	color = 3,
-	description = "Lob a fiery orb that explodes as it strikes the ground. The skill chains, releasing another fiery orb that repeats this effect.",
+	description = "抛投出撞击地面时会爆炸的岩浆球. 技能可以连锁, 当岩浆球爆炸时释放出另一个岩浆球. ",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [19] = true, [18] = true, [36] = true, [33] = true, [3] = true, [68] = true, [26] = true, [23] = true, },
 	baseFlags = {
 		spell = true,
@@ -4007,9 +4007,9 @@ skills["MagmaOrb"] = {
 	},
 }
 skills["OrbOfStorms"] = {
-	name = "Orb of Storms",
+	name = "风暴漩涡",
 	color = 3,
-	description = "Creates a stationary electrical orb that frequently unleashes a splitting bolt of lightning at a nearby enemy. Modifers to cast speed will increase how frequently it does this. Using a lightning skill while inside the orb's cloud unleashes additional bolts. Casting this skill again will replace the previous orb.",
+	description = "创造出一个带电的球, 不断地释放出一道道的闪电攻击敌人. 施法速度也会影响释放闪电的频率。当在云的范围里使用其他的闪电技能, 会触发风暴漩涡释放闪电. 再次使用技能会取代旧的漩涡. 此技能只能由你主动施放. ",
 	skillTypes = { [2] = true, [10] = true, [35] = true, [12] = true, [11] = true, [23] = true, [36] = true, [17] = true, [19] = true, [18] = true, },
 	baseFlags = {
 		spell = true,
@@ -4081,9 +4081,9 @@ skills["OrbOfStorms"] = {
 	},
 }
 skills["PowerSiphon"] = {
-	name = "Power Siphon",
+	name = "力量抽取",
 	color = 3,
-	description = "Fires your wand to unleash projectiles that fire toward enemies in front of you or to your sides, dealing increased damage and granting you a power charge if an enemy is killed by, or soon after, the hit.",
+	description = "挥动你的法杖，向你前方或身侧的敌人发射投射物，伤害得以提高，若敌人因此被击败，则产生一颗暴击球.",
 	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [68] = true, [22] = true, [17] = true, [19] = true, },
 	weaponTypes = {
 		["Wand"] = true,
@@ -4154,9 +4154,9 @@ skills["PowerSiphon"] = {
 	},
 }
 skills["VaalPowerSiphon"] = {
-	name = "Vaal Power Siphon",
+	name = "瓦尔.力量抽取",
 	color = 3,
-	description = "Fires your wand simultaneously at all nearby enemies, culling those close to death and granting you a power charge for each. Cannot be supported by Volley.",
+	description = "挥动你的法杖同时攻击附近的所有敌人. 濒死的敌人将会被终结, 并产生同等数量的暴击球. 无法被齐射辅助。",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [22] = true, [17] = true, [19] = true, [43] = true, },
 	weaponTypes = {
 		["Wand"] = true,
@@ -4228,9 +4228,9 @@ skills["VaalPowerSiphon"] = {
 	},
 }
 skills["Purity"] = {
-	name = "Purity of Elements",
+	name = "元素净化",
 	color = 3,
-	description = "Casts an aura that grants elemental resistances to you and your allies.",
+	description = "施放一个光环, 使你与受光环影响友军获得额外的元素抗性.",
 	skillTypes = { [2] = true, [11] = true, [5] = true, [15] = true, [27] = true, [16] = true, [18] = true, [44] = true, [75] = true, },
 	baseFlags = {
 		spell = true,
@@ -4299,9 +4299,9 @@ skills["Purity"] = {
 	},
 }
 skills["LightningResistAura"] = {
-	name = "Purity of Lightning",
+	name = "闪电净化",
 	color = 3,
-	description = "Casts an aura that grants lightning resistance to you and your allies.",
+	description = "施放一个光环, 使你与受光环影响的友军获得额外的闪电抗性.",
 	skillTypes = { [2] = true, [11] = true, [5] = true, [15] = true, [27] = true, [16] = true, [18] = true, [44] = true, [35] = true, [75] = true, },
 	baseFlags = {
 		spell = true,
@@ -4368,9 +4368,9 @@ skills["LightningResistAura"] = {
 	},
 }
 skills["LightningImpurity"] = {
-	name = "Vaal Impurity of Lightning",
+	name = "瓦尔.不净之雷",
 	color = 3,
-	description = "Casts an aura that reduces lightning damage taken and provides shock immunity to you and nearby allies, and makes hits against nearby enemies ignore their lightning resistance. ",
+	description = "施放一个光环，使你和周围友军受到的闪电伤害降低，并免疫感电效果，并在击中周围敌人时无视他们的闪电抗性。 ",
 	skillTypes = { [2] = true, [5] = true, [11] = true, [18] = true, [27] = true, [12] = true, [43] = true, [44] = true, },
 	baseFlags = {
 		spell = true,
@@ -4439,9 +4439,9 @@ skills["LightningImpurity"] = {
 	},
 }
 skills["RaiseSpectre"] = {
-	name = "Raise Spectre",
+	name = "召唤灵体",
 	color = 3,
-	description = "Raises a spectral version of a defeated foe as a minion to fight for you in battle.",
+	description = "唱名唤魂, 从目标灵柩唤醒其灵体并使它为你而战.",
 	skillTypes = { [2] = true, [9] = true, [21] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [49] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [28] = true, [2] = true, [10] = true, [11] = true, [3] = true, [23] = true, [12] = true, [30] = true, [37] = true, [41] = true, [40] = true, [58] = true, [32] = true, [48] = true, [68] = true, },
 	minionList = {
@@ -4515,9 +4515,9 @@ skills["RaiseSpectre"] = {
 	},
 }
 skills["RaiseZombie"] = {
-	name = "Raise Zombie",
+	name = "魔卫复苏",
 	color = 3,
-	description = "Raises a zombie minion from a corpse, which will follow you and attack enemies with a melee attack and an area of effect slam which cannot be evaded.",
+	description = "从一个灵柩中复苏一只魔卫, 它会跟随你并攻击敌人。魔卫会近战攻击，也会使用一种无法闪避的范围重击。",
 	skillTypes = { [2] = true, [9] = true, [21] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [49] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [28] = true, [11] = true, },
 	minionList = {
@@ -4586,9 +4586,9 @@ skills["RaiseZombie"] = {
 	},
 }
 skills["RighteousFire"] = {
-	name = "Righteous Fire",
+	name = "正义之火",
 	color = 3,
-	description = "Engulfs you in magical fire that rapidly burns you and nearby enemies. Your spell damage is substantially increased while under this effect. The effect ends when you have 1 life remaining.",
+	description = "以魔法之火快速的燃烧自己及周围的敌人. 在此效果下, 你的法术伤害大幅增加. 当你的生命只剩下 1 时将会自动停止此法术.",
 	skillTypes = { [2] = true, [5] = true, [11] = true, [29] = true, [40] = true, [33] = true, [18] = true, [36] = true, [75] = true, },
 	setupFunc = function(actor, output)
 		if actor.mainSkill.skillFlags.totem then
@@ -4663,9 +4663,9 @@ skills["RighteousFire"] = {
 	},
 }
 skills["VaalRighteousFire"] = {
-	name = "Vaal Righteous Fire",
+	name = "瓦尔.正义之火",
 	color = 3,
-	description = "Sacrifices a portion of your Life and Energy Shield to engulf you in magical fire that rapidly burns nearby enemies for a duration. Your spell damage is substantially increased while under this effect.",
+	description = "献祭自己一部分生命和能量护盾，以魔法之火快速的燃烧自己及周围的敌人，并持续一段时间。在此效果下, 你的法术伤害大幅增加。",
 	skillTypes = { [2] = true, [5] = true, [11] = true, [29] = true, [40] = true, [33] = true, [18] = true, [43] = true, [12] = true, },
 	baseFlags = {
 		spell = true,
@@ -4731,9 +4731,9 @@ skills["VaalRighteousFire"] = {
 	},
 }
 skills["FireBeam"] = {
-	name = "Scorching Ray",
+	name = "灼热光线",
 	color = 3,
-	description = "Unleash a beam of fire that burns enemies it touches, and decreases their fire resistance. Remaining in the beam intensifies the burning, adding a portion of the beam's damage in stages. Enemies who leave the beam continue to burn for a duration. Increasing cast speed also increases the rate at which the beam can turn.",
+	description = "发出一束灼热光线, 被击中的敌人会受到不断叠加的燃烧效果并降低火焰抗性. 每叠加一层效果都会附加一定比例的光线基础伤害. 脱离光线范围后的一段时间内依然会受到燃烧伤害. 增加施法速度和光线的转角速度.",
 	skillTypes = { [2] = true, [18] = true, [40] = true, [33] = true, [29] = true, [12] = true, [58] = true, [59] = true, [52] = true, },
 	parts = {
 		{
@@ -4816,9 +4816,9 @@ skills["FireBeam"] = {
 	},
 }
 skills["ShockNova"] = {
-	name = "Shock Nova",
+	name = "闪电新星",
 	color = 3,
-	description = "Casts a ring of Lightning around you, followed by a larger Lightning nova. Each effect hits enemies caught in their area with Lightning Damage.",
+	description = "从施法者散发出一圈闪电之环, 接着散发出更大范围的一圈闪电之环. 每次被击中的敌人会受到闪电伤害. ",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [45] = true, [35] = true, },
 	parts = {
 		{
@@ -4895,9 +4895,9 @@ skills["ShockNova"] = {
 	},
 }
 skills["IceSiphonTrap"] = {
-	name = "Siphoning Trap",
+	name = "虹吸陷阱",
 	color = 3,
-	description = "Throws a trap that applies debuff beams to a number of nearby enemies for a duration. The beams chill enemies and deal cold damage over time. A beam is also applied to you, granting life and mana regeneration based on the number of debuff beams affecting enemies.",
+	description = "投掷陷阱，在一定时间内对周围一定数量的敌人发射带有减益效果的光线。光线会冰缓敌人，并造成持续性冰霜伤害。光线也会基于被其射中的敌人数量，来使你获得一定额度的生命和魔力回复。",
 	skillTypes = { [2] = true, [12] = true, [19] = true, [11] = true, [37] = true, [34] = true, [40] = true, [59] = true, },
 	baseFlags = {
 		spell = true,
@@ -4970,9 +4970,9 @@ skills["IceSiphonTrap"] = {
 	},
 }
 skills["Spark"] = {
-	name = "Spark",
+	name = "电球",
 	color = 3,
-	description = "Launches unpredictable sparks that move randomly until they hit an enemy or expire.",
+	description = "施放出多颗变幻莫测的电球, 这些电球将会随机移动直到撞到敌人或是自然消失.",
 	skillTypes = { [2] = true, [3] = true, [68] = true, [10] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [45] = true, [35] = true, },
 	baseFlags = {
 		spell = true,
@@ -5040,9 +5040,9 @@ skills["Spark"] = {
 	},
 }
 skills["VaalSparkSpiralNova"] = {
-	name = "Vaal Spark",
+	name = "瓦尔.电球",
 	color = 3,
-	description = "Continuously launches unpredictable sparks in all directions that move randomly until they hit an enemy or expire.",
+	description = "持续的施放出大量变幻莫测的电球, 这些电球将会随机移动直到撞到敌人或是自然消失.",
 	skillTypes = { [2] = true, [3] = true, [68] = true, [70] = true, [10] = true, [12] = true, [17] = true, [18] = true, [19] = true, [43] = true, [35] = true, },
 	baseFlags = {
 		spell = true,
@@ -5113,9 +5113,9 @@ skills["VaalSparkSpiralNova"] = {
 	},
 }
 skills["SpiritOffering"] = {
-	name = "Spirit Offering",
+	name = "灵魂奉献",
 	color = 3,
-	description = "Consumes a corpse, granting energy shield, extra chaos damage and elemental resistances to your minions. The new energy shield is recovered as it's granted. The skill consumes other nearby corpses, increasing the duration and amount of energy shield granted for each corpse consumed.",
+	description = "消耗一具灵柩, 给予你的召唤物能量护盾, 额外混沌伤害和火焰, 冰霜和闪电抗性. 获得能量护盾的同时也回复魔力护盾. 此技能会消耗其他在附近的灵柩, 每具消耗的灵柩会增加获得的能量护盾及持续时间.",
 	skillTypes = { [2] = true, [5] = true, [12] = true, [36] = true, [9] = true, [49] = true, [17] = true, [19] = true, [18] = true, [67] = true, },
 	baseFlags = {
 		spell = true,
@@ -5183,9 +5183,9 @@ skills["SpiritOffering"] = {
 	},
 }
 skills["StormBurst"] = {
-	name = "Storm Burst",
+	name = "裂风雷球",
 	color = 3,
-	description = "Unleash a stream of projectiles while you channel this spell, which pierce through enemies, dealing lightning damage. When you stop channelling, the projectiles explode, dealing significant damage in an area around them. Additional projectiles are added in sequence.",
+	description = "在你持续吟唱该技能的过程中释放出一连串能穿透敌人的风雷投射物并造成闪电伤害. 当你停止吟唱时, 所有投射物爆炸,对周围造成大量伤害. 持续吟唱会不断放出新的投射物.",
 	skillTypes = { [2] = true, [3] = true, [68] = true, [10] = true, [18] = true, [35] = true, [58] = true, [11] = true, },
 	parts = {
 		{
@@ -5264,9 +5264,9 @@ skills["StormBurst"] = {
 	},
 }
 skills["StormCall"] = {
-	name = "Storm Call",
+	name = "风暴呼唤",
 	color = 3,
-	description = "Sets a marker at a location. After a short duration, lightning strikes the marker, dealing damage around it. When this happens, it will also set off the lightning at any other markers you've cast.",
+	description = "在目标区域设置一个标记. 经过一小段时间后, 闪电会攻击那个标记, 并对该标记周围的敌人造成伤害, 同时其他的标记也会陆续受到闪电攻击.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [36] = true, [26] = true, [45] = true, [35] = true, [67] = true, },
 	baseFlags = {
 		spell = true,
@@ -5337,9 +5337,9 @@ skills["StormCall"] = {
 	},
 }
 skills["VaalStormCall"] = {
-	name = "Vaal Storm Call",
+	name = "瓦尔.风暴呼唤",
 	color = 3,
-	description = "Sets a marker at a location. Lightning strikes random enemies around the marker repeatedly over the skill's duration, dealing damage in an area around the strike. Modifiers to the skill's duration will also affect the delay between these strikes. When the duration ends, a large bolt of lightning strikes the marker, dealing damage around it.",
+	description = "在目标区域设置一个标记. 当标记存在时, 闪电将会随机攻击标记附近的敌人, 对其造成伤害. 该技能的持续时间也会影响闪电发射的间隔。经过一小段时间后, 强力的闪电会攻击那个标记, 并对该标记周围的敌人造成伤害, 同时其他的标记也会陆续受到闪电攻击.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [43] = true, [35] = true, },
 	baseFlags = {
 		spell = true,
@@ -5409,9 +5409,9 @@ skills["VaalStormCall"] = {
 	},
 }
 skills["SummonChaosGolem"] = {
-	name = "Summon Chaos Golem",
+	name = "召唤混沌魔像",
 	color = 3,
-	description = "Summons a Chaos Golem that grants you Physical Damage Reduction. The Chaos Golem can use a damage over time Chaos aura and a cascade of Chaos spikes in addition to its melee attack.",
+	description = "召唤混沌魔像, 启动时会使你获得物理伤害减伤. 混沌魔像会施放一个造成持续伤害的混沌灵气并在近战攻击附加额外的混沌之刺. ",
 	skillTypes = { [36] = true, [50] = true, [19] = true, [9] = true, [21] = true, [26] = true, [2] = true, [18] = true, [17] = true, [49] = true, [62] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [12] = true, [2] = true, [10] = true, [11] = true, [28] = true, },
 	minionList = {
@@ -5487,9 +5487,9 @@ skills["SummonChaosGolem"] = {
 	},
 }
 skills["SummonRelic"] = {
-	name = "Summon Holy Relic",
+	name = "召唤圣物",
 	color = 3,
-	description = "Summons a Holy Relic that stays close to you. When you hit an enemy with an attack, the Holy Relic triggers a nova spell that deals physical damage to enemies and grants life regeneration to allies. This life regeneration has a significantly higher value when applied to minions. The relic's nova spell has a very short cooldown.",
+	description = "召唤一个停留在你身旁的圣物。当你使用攻击击中敌人，圣物会触发一个新星法术，对敌人造成物理伤害并为友方回复生命。圣物的新星法术冷却时间非常短。",
 	skillTypes = { [36] = true, [19] = true, [9] = true, [21] = true, [26] = true, [2] = true, [18] = true, [17] = true, [49] = true, },
 	minionSkillTypes = { [10] = true, [2] = true, [11] = true, [42] = true, [52] = true, },
 	baseFlags = {
@@ -5552,9 +5552,9 @@ skills["SummonRelic"] = {
 	},
 }
 skills["SummonLightningGolem"] = {
-	name = "Summon Lightning Golem",
+	name = "召唤闪电魔像",
 	color = 3,
-	description = "Summons a Lightning Golem that grants you increased Attack and Cast speed. The Lightning Golem fires a projectile spell, creates orbs of Lightning that zap nearby enemies, and casts a temporary aura that grants added Lightning Damage to spells and attacks used by the Golem and its nearby allies.",
+	description = "召唤一个闪电魔像, 给予你额外的攻击和施法速度. 魔像会对敌人进行雷击, 召唤会对电击敌人的能量球, 偶尔施放一个攻击魔像附近的敌人时附加额外闪电伤害的光环. ",
 	skillTypes = { [36] = true, [35] = true, [19] = true, [9] = true, [21] = true, [26] = true, [2] = true, [18] = true, [17] = true, [49] = true, [45] = true, [62] = true, },
 	minionSkillTypes = { [10] = true, [11] = true, [44] = true, [3] = true, [68] = true, [12] = true, [2] = true, [5] = true, },
 	minionList = {
@@ -5629,9 +5629,9 @@ skills["SummonLightningGolem"] = {
 	},
 }
 skills["SummonRagingSpirit"] = {
-	name = "Summon Raging Spirit",
+	name = "召唤愤怒狂灵",
 	color = 3,
-	description = "Summons a short-lived flaming skull that rushes at nearby enemies and attacks them rapidly. Enemies will not directly engage these spirits, and can pass through them.",
+	description = "召唤只能存在极短时间的愤怒狂灵, 这些火焰魔侍将会冲至敌人身边并快速的进行攻击. 敌方生物将不会主动攻击这些狂灵, 并可以穿越它们.",
 	skillTypes = { [2] = true, [9] = true, [12] = true, [21] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [49] = true, [33] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [28] = true, },
 	minionList = {
@@ -5700,9 +5700,9 @@ skills["SummonRagingSpirit"] = {
 	},
 }
 skills["SummonSkeletons"] = {
-	name = "Summon Skeleton",
+	name = "召唤魔侍",
 	color = 3,
-	description = "Summons a slow moving skeletal minion that dies after a duration. Does not require a corpse to be consumed.",
+	description = "召唤移动缓慢并且只能持续一段时间的魔侍. 不需灵柩来召唤.",
 	skillTypes = { [2] = true, [9] = true, [12] = true, [21] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [49] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [54] = true, [28] = true, [66] = true, [68] = true, },
 	minionList = {
@@ -5774,9 +5774,9 @@ skills["SummonSkeletons"] = {
 	},
 }
 skills["VaalSummonSkeletons"] = {
-	name = "Vaal Summon Skeletons",
+	name = "瓦尔.召唤魔侍",
 	color = 3,
-	description = "Summons an army of skeletal warriors, archers and mages, led by a powerful general.",
+	description = "召唤一支由强大的魔侍将军所统率, 由魔侍战士, 魔侍弓箭手与魔侍法师所组成的魔侍大军.",
 	skillTypes = { [2] = true, [9] = true, [12] = true, [21] = true, [17] = true, [18] = true, [19] = true, [43] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [3] = true, [48] = true, [68] = true, [28] = true, [2] = true, [11] = true, [66] = true, },
 	minionList = {
@@ -5850,9 +5850,9 @@ skills["VaalSummonSkeletons"] = {
 	},
 }
 skills["TempestShield"] = {
-	name = "Tempest Shield",
+	name = "暴风之盾",
 	color = 3,
-	description = "Enchants your shield with the power of storms, which lashes out to deal arcing lightning damage to attackers when you block them. Blocking refreshes the duration of Tempest Shield.",
+	description = "以暴风之力强化你的盾牌, 当你格挡攻击时将会对攻击者造成闪电伤害.",
 	skillTypes = { [2] = true, [10] = true, [13] = true, [27] = true, [35] = true, [23] = true, [45] = true, [36] = true, [12] = true, },
 	baseFlags = {
 		spell = true,
@@ -5923,9 +5923,9 @@ skills["TempestShield"] = {
 	},
 }
 skills["FrostBoltNova"] = {
-	name = "Vortex",
+	name = "漩涡",
 	color = 3,
-	description = "An icy blast explodes around the caster, dealing cold damage to enemies, and leaving behind a whirling vortex that continues to deal cold damage over time and chill enemies caught in it. If the caster targets near one of their Frostbolt projectiles, it will explode from the projectile instead, destroying it.",
+	description = "一个会在施法者周围爆炸的冰爆, 对敌人造成冰霜伤害, 并留下一个漩涡, 对于在其中的敌人继续造成持续冰霜伤害和冰缓. 若施法目标区域附近存在着寒冰弹, 冰爆则会出现在寒冰弹的位置. ",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [34] = true, [36] = true, [12] = true, [60] = true, },
 	baseFlags = {
 		spell = true,
@@ -5995,9 +5995,9 @@ skills["FrostBoltNova"] = {
 	},
 }
 skills["Wither"] = {
-	name = "Wither",
+	name = "死亡凋零",
 	color = 3,
-	description = "Casts a debilitating debuff on enemies in an area, hindering their movement and also inflicts the Withered debuff, which increases the Chaos Damage they take and can stack up to 15 times.",
+	description = "施放一个对敌人造成虚弱的范围效果, 造成缓速并且叠加一个使他们增加受到的混沌伤害之减益效果. 此减益效果可叠加 15 层. ",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [18] = true, [50] = true, [58] = true, },
 	parts = {
 		{
@@ -6083,9 +6083,9 @@ skills["Wither"] = {
 	},
 }
 skills["Wrath"] = {
-	name = "Wrath",
+	name = "雷霆",
 	color = 3,
-	description = "Casts an aura that adds lightning damage to the attacks of you and your allies, and makes your spells deal more lightning damage.",
+	description = "施放一个光环, 使你与受光环影响友军在攻击时额外附带闪电伤害, 并且造成更多法术闪电伤害.",
 	skillTypes = { [2] = true, [11] = true, [5] = true, [15] = true, [27] = true, [16] = true, [18] = true, [44] = true, [35] = true, [75] = true, },
 	baseFlags = {
 		spell = true,

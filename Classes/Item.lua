@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Class: Item
 -- Equippable item class
@@ -11,12 +11,12 @@ local m_min = math.min
 local m_max = math.max
 local m_floor = math.floor
 
-local dmgTypeList = {"Physical", "Lightning", "Cold", "Fire", "Chaos"}
+local dmgTypeList = {"Physical", "Lightning", "Cold", "Fire", "Chaos"}--这个不要处理
 
 local ItemClass = common.NewClass("Item", function(self, targetVersion, raw)
 	self.targetVersion = targetVersion
-	if raw then
-		self:ParseRaw(itemLib.sanitiseItemText(raw))
+	if raw and raw~=nil then
+		self:ParseRaw(itemLib.sanitiseItemText(raw))--self:ParseRaw(itemLib.sanitiseItemText(raw))
 	end	
 end)
 
@@ -25,29 +25,31 @@ function ItemClass:ParseRaw(raw)
 	self.raw = raw
 	local verData = data[self.targetVersion]
 	self.name = "?"
-	self.rarity = "UNIQUE"
+self.rarity = "传奇"
 	self.quality = nil
 	self.rawLines = { }
+	local alltext="" --lucifer
 	for line in string.gmatch(self.raw .. "\r\n", "([^\r\n]*)\r?\n") do
 		line = line:gsub("^%s+",""):gsub("%s+$","")
 		if #line > 0 then
+			alltext=alltext..line.."\r\n" --lucifer
 			t_insert(self.rawLines, line)
 		end
 	end
 	local mode = "WIKI"
 	local l = 1
 	if self.rawLines[l] then
-		local rarity = self.rawLines[l]:match("^Rarity: (%a+)")
+local rarity = self.rawLines[l]:match("^稀 有 度: (.+)")
 		if rarity then
 			mode = "GAME"
 			if colorCodes[rarity:upper()] then
 				self.rarity = rarity:upper()
 			end
-			if self.rarity == "NORMAL" then
+if self.rarity == "普通" then
 				-- Hack for relics
 				for _, line in ipairs(self.rawLines) do
-					if line == "Relic Unique" then
-						self.rarity = "RELIC"
+					if line == "古藏传奇" then
+						self.rarity = "遗产"
 						break
 					end
 				end
@@ -61,7 +63,7 @@ function ItemClass:ParseRaw(raw)
 	end
 	self.namePrefix = ""
 	self.nameSuffix = ""
-	if self.rarity == "NORMAL" or self.rarity == "MAGIC" then
+if self.rarity == "普通" or self.rarity == "魔法" then
 		for baseName, baseData in pairs(verData.itemBases) do
 			local s, e = self.name:find(baseName, 1, true)
 			if s then
@@ -145,34 +147,34 @@ function ItemClass:ParseRaw(raw)
 			elseif gameModeStage == "EXPLICIT" then
 				gameModeStage = "DONE"
 			end
-		elseif line == "Corrupted" then
+elseif line == "已腐化" then
 			self.corrupted = true
-		elseif line == "Shaper Item" then
+elseif line == "塑界之器" then
 			self.shaper = true
-		elseif line == "Elder Item" then
+elseif line == "裂界之器" then
 			self.elder = true
 		else
-			local specName, specVal = line:match("^([%a ]+): (%x+)$")
+				local specName, specVal = line:match("^(.+): (%x+)$") --lucifer
 			if not specName then
-				specName, specVal = line:match("^([%a ]+): %+?([%d%-%.]+)")
+				specName, specVal = line:match("^(.+): %+?([%d%-%.]+)")--lucifer
 				if not tonumber(specVal) then
 					specName = nil
 				end
 			end
 			if not specName then
-				specName, specVal = line:match("^([%a ]+): (.+)$")
+				specName, specVal = line:match("^(.+): (.+)$") --lucifer
 			end
 			if not specName then
-				specName, specVal = line:match("^(Requires) (.+)$")
+				specName, specVal = line:match("^(augmented) (.+)$")--lucifer
 			end
 			if specName then
 				if specName == "Unique ID" then
 					self.uniqueID = specVal
-				elseif specName == "Item Level" then
+elseif specName == "物品等级" then
 					self.itemLevel = tonumber(specVal)
-				elseif specName == "Quality" then
+elseif specName == "品质" then
 					self.quality = tonumber(specVal)
-				elseif specName == "Sockets" then
+elseif specName == "插槽" then
 					local group = 0
 					for c in specVal:gmatch(".") do
 						if c:match("[RGBWA]") then
@@ -181,16 +183,16 @@ function ItemClass:ParseRaw(raw)
 							group = group + 1
 						end
 					end
-				elseif specName == "Radius" and self.type == "Jewel" then
+elseif specName == "范围" and self.type == "Jewel" then
 					for index, data in pairs(verData.jewelRadius) do
-						if specVal:match("^%a+") == data.label then
+if specVal:match("^.+") == data.label then
 							self.jewelRadiusIndex = index
 							break
 						end
 					end
-				elseif specName == "Limited to" and self.type == "Jewel" then
+elseif specName == "仅限" and self.type == "Jewel" then
 					self.limit = tonumber(specVal)
-				elseif specName == "Variant" then
+elseif specName == "版本" then
 					if not self.variantList then
 						self.variantList = { }
 					end
@@ -203,44 +205,44 @@ function ItemClass:ParseRaw(raw)
 					else
 						t_insert(self.variantList, specVal)
 					end
-				elseif specName == "Requires" then
+elseif specName == "需求" then
 					self.requirements.level = tonumber(specVal:match("Level (%d+)"))
-				elseif specName == "Level" then
+elseif specName == "等级" then
 					-- Requirements from imported items can't always be trusted
 					importedLevelReq = tonumber(specVal)
-				elseif specName == "LevelReq" then
+elseif specName == "等级需求" then
 					self.requirements.level = tonumber(specVal)
-				elseif specName == "Has Alt Variant" then
+elseif specName == "Has Alt Variant" then
 					self.hasAltVariant = true
-				elseif specName == "Selected Variant" then
+elseif specName == "Selected Variant" then
 					self.variant = tonumber(specVal)
-				elseif specName == "Selected Alt Variant" then
+elseif specName == "Selected Alt Variant" then
 					self.variantAlt = tonumber(specVal)
-				elseif specName == "League" then
+elseif specName == "联盟" then
 					self.league = specVal
-				elseif specName == "Crafted" then
+elseif specName == "工艺" then
 					self.crafted = true
-				elseif specName == "Prefix" then
+elseif specName == "前缀" then
 					local range, affix = specVal:match("{range:([%d.]+)}(.+)")
 					t_insert(self.prefixes, {
 						modId = affix or specVal,
 						range = tonumber(range),
 					})
-				elseif specName == "Suffix" then
+elseif specName == "后缀" then
 					local range, affix = specVal:match("{range:([%d.]+)}(.+)")
 					t_insert(self.suffixes, {
 						modId = affix or specVal,
 						range = tonumber(range),
 					})
-				elseif specName == "Implicits" then
+elseif specName == "固定基底词缀" then
 					self.implicitLines = tonumber(specVal) or 0
 					gameModeStage = "EXPLICIT"
-				elseif specName == "Unreleased" then
+elseif specName == "未公开" then
 					self.unreleased = (specVal == "true")
-				elseif specName == "Upgrade" then
+elseif specName == "升级" then
 					self.upgradePaths = self.upgradePaths or { }
 					t_insert(self.upgradePaths, specVal)
-				elseif specName == "Source" then
+elseif specName == "源" then
 					self.source = specVal
 				elseif specName == "Evasion Rating" then
 					if self.baseName == "Two-Toned Boots (Armour/Energy Shield)" then
@@ -248,7 +250,7 @@ function ItemClass:ParseRaw(raw)
 						self.baseName = "Two-Toned Boots (Armour/Evasion)"
 						self.base = verData.itemBases[self.baseName]
 					end
-				elseif specName == "Energy Shield" then
+elseif specName == "能量护盾" then
 					if self.baseName == "Two-Toned Boots (Armour/Evasion)" then
 						-- Yet another hack for Two-Toned Boots
 						self.baseName = "Two-Toned Boots (Evasion/Energy Shield)"
@@ -256,12 +258,12 @@ function ItemClass:ParseRaw(raw)
 					end
 				end
 			end
-			if line == "Prefixes:" then
+if line == "前缀:" then
 				foundExplicit = true
 				gameModeStage = "EXPLICIT"
 			end
 			if not specName or foundExplicit then
-				local varSpec = line:match("{variant:([%d,]+)}")
+local varSpec = line:match("{variant:([%d,]+)}")
 				local variantList
 				if varSpec then
 					variantList = { }
@@ -269,19 +271,20 @@ function ItemClass:ParseRaw(raw)
 						variantList[tonumber(varId)] = true
 					end
 				end
-				local rangeSpec = line:match("{range:([%d.]+)}")
-				local crafted = line:match("{crafted}")
-				local custom = line:match("{custom}")
+local rangeSpec = line:match("{range:([%d.]+)}")
+local crafted = line:match("{crafted}")
+local custom = line:match("{custom}")
 				line = line:gsub("%b{}", "")
 				local rangedLine
-				if line:match("%(%d+%-%d+ to %d+%-%d+%)") or line:match("%(%-?[%d%.]+ to %-?[%d%.]+%)") or line:match("%(%-?[%d%.]+%-[%d%.]+%)") then
+				--lucifer
+if line:match("%(%d+%-%d+ %- %d+%-%d+%)")  or line:match("%(%-?[%d%.]+ %- %-?[%d%.]+%)") or line:match("%(%-?[%d%.]+%-[%d%.]+%)") and line:match(":")==nil and line:match("^Requires")==nil then
 					rangedLine = itemLib.applyRange(line, 1)
 				end
 				local modList, extra = modLib.parseMod[self.targetVersion](rangedLine or line)
 				if (not modList or extra) and self.rawLines[l+1] then
 					-- Try to combine it with the next line
 					local combLine = line.." "..self.rawLines[l+1]
-					if combLine:match("%(%d+%-%d+ to %d+%-%d+%)") or combLine:match("%(%-?[%d%.]+ to %-?[%d%.]+%)") or combLine:match("%(%-?[%d%.]+%-[%d%.]+%)") then
+if combLine:match("%(%d+%-%d+ %- %d+%-%d+%)") or combLine:match("%(%-?[%d%.]+ %- %-?[%d%.]+%)") or combLine:match("%(%-?[%d%.]+%-[%d%.]+%)") and line:match(":")==nil  and line:match("^Requires")==nil then
 						rangedLine = itemLib.applyRange(combLine, 1)
 					end
 					modList, extra = modLib.parseMod[self.targetVersion](rangedLine or combLine, true)
@@ -292,7 +295,7 @@ function ItemClass:ParseRaw(raw)
 						modList, extra = modLib.parseMod[self.targetVersion](rangedLine or line)
 					end
 				end
-				if modList then
+				if modList and  string.find(line,":")==nil then --lucifer
 					t_insert(self.modLines, { line = line, extra = extra, modList = modList, variantList = variantList, crafted = crafted, custom = custom, range = rangedLine and (tonumber(rangeSpec) or 0.5) })
 					if mode == "GAME" then
 						if gameModeStage == "FINDIMPLICIT" then
@@ -338,9 +341,9 @@ function ItemClass:ParseRaw(raw)
 	if self.crafted then
 		if not self.affixes then 
 			self.crafted = false
-		elseif self.rarity == "MAGIC" then
+elseif self.rarity == "魔法" then
 			self.affixLimit = 2
-		elseif self.rarity == "RARE" then
+elseif self.rarity == "稀有" then
 			self.affixLimit = (self.type == "Jewel" and 4 or 6)
 		else
 			self.crafted = false
@@ -411,7 +414,7 @@ end
 
 function ItemClass:BuildRaw()
 	local rawLines = { }
-	t_insert(rawLines, "Rarity: "..self.rarity)
+t_insert(rawLines, "稀 有 度: "..self.rarity)
 	if self.title then
 		t_insert(rawLines, self.title)
 		t_insert(rawLines, self.baseName)
@@ -428,18 +431,18 @@ function ItemClass:BuildRaw()
 		t_insert(rawLines, "Unreleased: true")
 	end
 	if self.shaper then
-		t_insert(rawLines, "Shaper Item")
+t_insert(rawLines, "塑界之器")
 	end
 	if self.elder then
-		t_insert(rawLines, "Elder Item")
+t_insert(rawLines, "裂界之器")
 	end
 	if self.crafted then
-		t_insert(rawLines, "Crafted: true")
+t_insert(rawLines, "工艺: true")
 		for i, affix in ipairs(self.prefixes or { }) do
-			t_insert(rawLines, "Prefix: "..(affix.range and ("{range:"..round(affix.range,3).."}") or "")..affix.modId)
+t_insert(rawLines, "前缀: "..(affix.range and ("{range:"..round(affix.range,3).."}") or "")..affix.modId)
 		end
 		for i, affix in ipairs(self.suffixes or { }) do
-			t_insert(rawLines, "Suffix: "..(affix.range and ("{range:"..round(affix.range,3).."}") or "")..affix.modId)
+t_insert(rawLines, "后缀: "..(affix.range and ("{range:"..round(affix.range,3).."}") or "")..affix.modId)
 		end
 	end
 	if self.itemLevel then
@@ -447,7 +450,7 @@ function ItemClass:BuildRaw()
 	end
 	if self.variantList then
 		for _, variantName in ipairs(self.variantList) do
-			t_insert(rawLines, "Variant: "..variantName)
+t_insert(rawLines, "版本: "..variantName)
 		end
 		t_insert(rawLines, "Selected Variant: "..self.variant)
 		if self.hasAltVariant then
@@ -456,10 +459,10 @@ function ItemClass:BuildRaw()
 		end
 	end
 	if self.quality then
-		t_insert(rawLines, "Quality: "..self.quality)
+t_insert(rawLines, "品质: "..self.quality)
 	end
 	if self.sockets and #self.sockets > 0 then
-		local line = "Sockets: "
+local line = "插槽: "
 		for i, socket in pairs(self.sockets) do
 			line = line .. socket.color
 			if self.sockets[i+1] then
@@ -469,15 +472,15 @@ function ItemClass:BuildRaw()
 		t_insert(rawLines, line)
 	end
 	if self.requirements and self.requirements.level then
-		t_insert(rawLines, "LevelReq: "..self.requirements.level)
+t_insert(rawLines, "等级需求: "..self.requirements.level)
 	end
 	if self.jewelRadiusIndex then
-		t_insert(rawLines, "Radius: "..data.jewelRadius[self.jewelRadiusIndex].label)
+t_insert(rawLines, "范围: "..data.jewelRadius[self.jewelRadiusIndex].label)
 	end
 	if self.limit then
-		t_insert(rawLines, "Limited to: "..self.limit)
+t_insert(rawLines, "仅限: "..self.limit)
 	end
-	t_insert(rawLines, "Implicits: "..self.implicitLines)
+t_insert(rawLines, "固定基底词缀: "..self.implicitLines)
 	for _, modLine in ipairs(self.modLines) do
 		if not modLine.buff then
 			local line = modLine.line
@@ -501,7 +504,7 @@ function ItemClass:BuildRaw()
 		end
 	end
 	if self.corrupted then
-		t_insert(rawLines, "Corrupted")
+t_insert(rawLines, "已腐化")
 	end
 	return table.concat(rawLines, "\n")
 end

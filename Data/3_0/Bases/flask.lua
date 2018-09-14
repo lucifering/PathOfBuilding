@@ -2,84 +2,84 @@
 -- Item data (c) Grinding Gear Games
 local itemBases = ...
 
-itemBases["Small Life Flask"] = {
+itemBases["小型生命药剂"] = {
 	type = "Flask",
 	subType = "Life",
 	tags = { default = true, flask = true, life_flask = true, },
 	flask = { life = 70, duration = 6, chargesUsed = 7, chargesMax = 21, },
 	req = { },
 }
-itemBases["Medium Life Flask"] = {
+itemBases["中型生命药剂"] = {
 	type = "Flask",
 	subType = "Life",
 	tags = { default = true, flask = true, life_flask = true, },
 	flask = { life = 150, duration = 6.5, chargesUsed = 8, chargesMax = 28, },
 	req = { level = 3, },
 }
-itemBases["Large Life Flask"] = {
+itemBases["大型生命药剂"] = {
 	type = "Flask",
 	subType = "Life",
 	tags = { default = true, flask = true, life_flask = true, },
 	flask = { life = 250, duration = 7, chargesUsed = 9, chargesMax = 30, },
 	req = { level = 6, },
 }
-itemBases["Greater Life Flask"] = {
+itemBases["良质生命药剂"] = {
 	type = "Flask",
 	subType = "Life",
 	tags = { default = true, flask = true, life_flask = true, },
 	flask = { life = 360, duration = 7, chargesUsed = 10, chargesMax = 32, },
 	req = { level = 12, },
 }
-itemBases["Grand Life Flask"] = {
+itemBases["优质生命药剂"] = {
 	type = "Flask",
 	subType = "Life",
 	tags = { default = true, flask = true, life_flask = true, },
 	flask = { life = 640, duration = 6, chargesUsed = 10, chargesMax = 25, },
 	req = { level = 18, },
 }
-itemBases["Giant Life Flask"] = {
+itemBases["巨型生命药剂"] = {
 	type = "Flask",
 	subType = "Life",
 	tags = { default = true, flask = true, life_flask = true, },
 	flask = { life = 830, duration = 8, chargesUsed = 10, chargesMax = 30, },
 	req = { level = 24, },
 }
-itemBases["Colossal Life Flask"] = {
+itemBases["高阶生命药剂"] = {
 	type = "Flask",
 	subType = "Life",
 	tags = { default = true, flask = true, life_flask = true, },
 	flask = { life = 1000, duration = 7, chargesUsed = 10, chargesMax = 32, },
 	req = { level = 30, },
 }
-itemBases["Sacred Life Flask"] = {
+itemBases["圣语生命药剂"] = {
 	type = "Flask",
 	subType = "Life",
 	tags = { default = true, flask = true, life_flask = true, },
 	flask = { life = 1200, duration = 6, chargesUsed = 10, chargesMax = 25, },
 	req = { level = 36, },
 }
-itemBases["Hallowed Life Flask"] = {
+itemBases["祝福生命药剂"] = {
 	type = "Flask",
 	subType = "Life",
 	tags = { default = true, flask = true, life_flask = true, },
 	flask = { life = 1990, duration = 8, chargesUsed = 10, chargesMax = 30, },
 	req = { level = 42, },
 }
-itemBases["Sanctified Life Flask"] = {
+itemBases["圣化生命药剂"] = {
 	type = "Flask",
 	subType = "Life",
 	tags = { default = true, flask = true, life_flask = true, },
 	flask = { life = 1460, duration = 3, chargesUsed = 15, chargesMax = 30, },
 	req = { level = 50, },
 }
-itemBases["Divine Life Flask"] = {
+itemBases["不朽生命药剂"] = {
 	type = "Flask",
 	subType = "Life",
 	tags = { default = true, flask = true, life_flask = true, not_for_sale = true, },
 	flask = { life = 2400, duration = 7, chargesUsed = 15, chargesMax = 45, },
 	req = { level = 60, },
 }
-itemBases["Eternal Life Flask"] = {
+itemBases["永恒生命药剂"] = {
 	type = "Flask",
 	subType = "Life",
 	tags = { default = true, flask = true, life_flask = true, not_for_sale = true, },
@@ -87,84 +87,84 @@ itemBases["Eternal Life Flask"] = {
 	req = { level = 65, },
 }
 
-itemBases["Small Mana Flask"] = {
+itemBases["小型魔力药剂"] = {
 	type = "Flask",
 	subType = "Mana",
 	tags = { default = true, flask = true, mana_flask = true, },
 	flask = { mana = 60, duration = 5, chargesUsed = 10, chargesMax = 30, },
 	req = { },
 }
-itemBases["Medium Mana Flask"] = {
+itemBases["中型魔力药剂"] = {
 	type = "Flask",
 	subType = "Mana",
 	tags = { default = true, flask = true, mana_flask = true, },
 	flask = { mana = 90, duration = 6, chargesUsed = 12, chargesMax = 36, },
 	req = { level = 3, },
 }
-itemBases["Large Mana Flask"] = {
+itemBases["大型魔力药剂"] = {
 	type = "Flask",
 	subType = "Mana",
 	tags = { default = true, flask = true, mana_flask = true, },
 	flask = { mana = 110, duration = 7, chargesUsed = 10, chargesMax = 35, },
 	req = { level = 6, },
 }
-itemBases["Greater Mana Flask"] = {
+itemBases["良质魔力药剂"] = {
 	type = "Flask",
 	subType = "Mana",
 	tags = { default = true, flask = true, mana_flask = true, },
 	flask = { mana = 140, duration = 5.6, chargesUsed = 12, chargesMax = 32, },
 	req = { level = 12, },
 }
-itemBases["Grand Mana Flask"] = {
+itemBases["优质魔力药剂"] = {
 	type = "Flask",
 	subType = "Mana",
 	tags = { default = true, flask = true, mana_flask = true, },
 	flask = { mana = 210, duration = 10, chargesUsed = 8, chargesMax = 30, },
 	req = { level = 18, },
 }
-itemBases["Giant Mana Flask"] = {
+itemBases["巨型魔力药剂"] = {
 	type = "Flask",
 	subType = "Mana",
 	tags = { default = true, flask = true, mana_flask = true, },
 	flask = { mana = 340, duration = 7, chargesUsed = 10, chargesMax = 40, },
 	req = { level = 24, },
 }
-itemBases["Colossal Mana Flask"] = {
+itemBases["高阶魔力药剂"] = {
 	type = "Flask",
 	subType = "Mana",
 	tags = { default = true, flask = true, mana_flask = true, },
 	flask = { mana = 200, duration = 5.6, chargesUsed = 5, chargesMax = 25, },
 	req = { level = 30, },
 }
-itemBases["Sacred Mana Flask"] = {
+itemBases["圣语魔力药剂"] = {
 	type = "Flask",
 	subType = "Mana",
 	tags = { default = true, flask = true, mana_flask = true, },
 	flask = { mana = 660, duration = 9, chargesUsed = 10, chargesMax = 40, },
 	req = { level = 36, },
 }
-itemBases["Hallowed Mana Flask"] = {
+itemBases["祝福魔力药剂"] = {
 	type = "Flask",
 	subType = "Mana",
 	tags = { default = true, flask = true, mana_flask = true, },
 	flask = { mana = 290, duration = 7, chargesUsed = 4, chargesMax = 20, },
 	req = { level = 42, },
 }
-itemBases["Sanctified Mana Flask"] = {
+itemBases["圣化魔力药剂"] = {
 	type = "Flask",
 	subType = "Mana",
 	tags = { default = true, flask = true, mana_flask = true, },
 	flask = { mana = 1050, duration = 14, chargesUsed = 10, chargesMax = 40, },
 	req = { level = 50, },
 }
-itemBases["Divine Mana Flask"] = {
+itemBases["不朽魔力药剂"] = {
 	type = "Flask",
 	subType = "Mana",
 	tags = { default = true, flask = true, mana_flask = true, not_for_sale = true, },
 	flask = { mana = 400, duration = 5, chargesUsed = 5, chargesMax = 30, },
 	req = { level = 60, },
 }
-itemBases["Eternal Mana Flask"] = {
+itemBases["永恒魔力药剂"] = {
 	type = "Flask",
 	subType = "Mana",
 	tags = { default = true, flask = true, mana_flask = true, not_for_sale = true, },
@@ -172,42 +172,42 @@ itemBases["Eternal Mana Flask"] = {
 	req = { level = 65, },
 }
 
-itemBases["Small Hybrid Flask"] = {
+itemBases["小型复合药剂"] = {
 	type = "Flask",
 	subType = "Hybrid",
 	tags = { default = true, flask = true, hybrid_flask = true, },
 	flask = { life = 100, mana = 70, duration = 5, chargesUsed = 20, chargesMax = 40, },
 	req = { level = 10, },
 }
-itemBases["Medium Hybrid Flask"] = {
+itemBases["中型复合药剂"] = {
 	type = "Flask",
 	subType = "Hybrid",
 	tags = { default = true, flask = true, hybrid_flask = true, },
 	flask = { life = 230, mana = 100, duration = 5, chargesUsed = 20, chargesMax = 40, },
 	req = { level = 20, },
 }
-itemBases["Large Hybrid Flask"] = {
+itemBases["大型复合药剂"] = {
 	type = "Flask",
 	subType = "Hybrid",
 	tags = { default = true, flask = true, hybrid_flask = true, },
 	flask = { life = 510, mana = 140, duration = 5, chargesUsed = 20, chargesMax = 40, },
 	req = { level = 30, },
 }
-itemBases["Colossal Hybrid Flask"] = {
+itemBases["高阶复合药剂"] = {
 	type = "Flask",
 	subType = "Hybrid",
 	tags = { default = true, flask = true, hybrid_flask = true, },
 	flask = { life = 690, mana = 200, duration = 5, chargesUsed = 20, chargesMax = 40, },
 	req = { level = 40, },
 }
-itemBases["Sacred Hybrid Flask"] = {
+itemBases["圣语复合药剂"] = {
 	type = "Flask",
 	subType = "Hybrid",
 	tags = { default = true, flask = true, hybrid_flask = true, },
 	flask = { life = 1440, mana = 400, duration = 5, chargesUsed = 20, chargesMax = 40, },
 	req = { level = 50, },
 }
-itemBases["Hallowed Hybrid Flask"] = {
+itemBases["祝福复合药剂"] = {
 	type = "Flask",
 	subType = "Hybrid",
 	tags = { default = true, flask = true, hybrid_flask = true, not_for_sale = true, },
@@ -215,118 +215,118 @@ itemBases["Hallowed Hybrid Flask"] = {
 	req = { level = 60, },
 }
 
-itemBases["Diamond Flask"] = {
+itemBases["宝钻药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, no_effect_flask_mod = true, },
-	flask = { duration = 4, chargesUsed = 20, chargesMax = 40, buff = { "Your Critical Strike Chance is Lucky" }, },
+	flask = { duration = 4, chargesUsed = 20, chargesMax = 40, buff = { "幸运的暴击率" }, },
 	req = { level = 27, },
 }
-itemBases["Ruby Flask"] = {
+itemBases["红玉药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, },
-	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "+6% to maximum Fire Resistance", "+50% to Fire Resistance" }, },
+	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "+6% 火焰抗性上限", "+50% 火焰抗性" }, },
 	req = { level = 18, },
 }
-itemBases["Sapphire Flask"] = {
+itemBases["蓝玉药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, },
-	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "+6% to maximum Cold Resistance", "+50% to Cold Resistance" }, },
+	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "+6% 冰霜抗性上限", "+50% 冰霜抗性" }, },
 	req = { level = 18, },
 }
-itemBases["Topaz Flask"] = {
+itemBases["黄玉药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, },
-	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "+6% to maximum Lightning Resistance", "+50% to Lightning Resistance" }, },
+	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "+6% 闪电抗性上限", "+50% 闪电抗性" }, },
 	req = { level = 18, },
 }
-itemBases["Granite Flask"] = {
+itemBases["坚岩药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, },
-	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "+3000 to Armour" }, },
+	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "+3000 护甲" }, },
 	req = { level = 27, },
 }
-itemBases["Quicksilver Flask"] = {
+itemBases["水银药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, },
-	flask = { duration = 4, chargesUsed = 20, chargesMax = 50, buff = { "40% increased Movement Speed" }, },
+	flask = { duration = 4, chargesUsed = 20, chargesMax = 50, buff = { "移动速度提高 40%" }, },
 	req = { },
 }
-itemBases["Amethyst Flask"] = {
+itemBases["紫晶药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, },
-	flask = { duration = 3.5, chargesUsed = 30, chargesMax = 60, buff = { "+35% to Chaos Resistance" }, },
+	flask = { duration = 3.5, chargesUsed = 30, chargesMax = 60, buff = { "+35% 混沌抗性" }, },
 	req = { level = 18, },
 }
-itemBases["Quartz Flask"] = {
+itemBases["石英药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, },
-	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "10% chance to Dodge Attack Hits", "10% chance to Dodge Spell Hits", "Phasing" }, },
+	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "10% 几率躲避攻击击中", "10% 几率躲避法术击中", "【迷踪】状态" }, },
 	req = { level = 27, },
 }
-itemBases["Jade Flask"] = {
+itemBases["翠玉药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, },
-	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "+3000 to Evasion Rating" }, },
+	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "+3000 点闪避值" }, },
 	req = { level = 27, },
 }
-itemBases["Basalt Flask"] = {
+itemBases["石化药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, },
-	flask = { duration = 4.5, chargesUsed = 40, chargesMax = 60, buff = { "15% additional Physical Damage Reduction", "20% of Melee Physical Damage taken reflected to Attacker" }, },
+	flask = { duration = 4.5, chargesUsed = 40, chargesMax = 60, buff = { "15% 额外物理伤害减伤", "受到近战物理伤害的 20% 会反射给攻击者" }, },
 	req = { level = 40, },
 }
-itemBases["Aquamarine Flask"] = {
+itemBases["海蓝药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, },
-	implicit = "Creates Chilled Ground on Use",
-	flask = { duration = 5, chargesUsed = 15, chargesMax = 40, buff = { "20% chance to Avoid Cold Damage when Hit" }, },
+	implicit = "使用时制造冰缓地面",
+	flask = { duration = 5, chargesUsed = 15, chargesMax = 40, buff = { "被击中时有 20% 几率避免冰霜伤害" }, },
 	req = { level = 27, },
 }
-itemBases["Stibnite Flask"] = {
+itemBases["迷雾药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, },
-	implicit = "Creates a Smoke Cloud on Use",
-	flask = { duration = 5, chargesUsed = 10, chargesMax = 30, buff = { "100% increased Evasion Rating" }, },
+	implicit = "使用时制造一团烟雾",
+	flask = { duration = 5, chargesUsed = 10, chargesMax = 30, buff = { "闪避值提高 100%" }, },
 	req = { level = 14, },
 }
-itemBases["Sulphur Flask"] = {
+itemBases["硫磺药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, },
-	implicit = "Creates Consecrated Ground on Use",
-	flask = { duration = 4, chargesUsed = 20, chargesMax = 60, buff = { "40% increased Damage" }, },
+	implicit = "使用时制造奉献地面",
+	flask = { duration = 4, chargesUsed = 20, chargesMax = 60, buff = { "伤害提高 40%" }, },
 	req = { level = 35, },
 }
-itemBases["Silver Flask"] = {
+itemBases["真银药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, no_effect_flask_mod = true, },
-	flask = { duration = 5, chargesUsed = 40, chargesMax = 60, buff = { "Onslaught" }, },
+	flask = { duration = 5, chargesUsed = 40, chargesMax = 60, buff = { "猛攻" }, },
 	req = { level = 22, },
 }
-itemBases["Bismuth Flask"] = {
+itemBases["灰岩药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, },
-	flask = { duration = 5, chargesUsed = 20, chargesMax = 50, buff = { "+35% to all Elemental Resistances" }, },
+	flask = { duration = 5, chargesUsed = 20, chargesMax = 50, buff = { "获得 +35% 火焰、冰霜、闪电抗性" }, },
 	req = { level = 8, },
 }
-itemBases["Diamond Flask"] = {
+itemBases["宝钻药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, critical_utility_flask = true, not_for_sale = true, no_effect_flask_mod = true, },
-	flask = { duration = 4, chargesUsed = 20, chargesMax = 40, buff = { "Your Critical Strike Chance is Lucky" }, },
+	flask = { duration = 4, chargesUsed = 20, chargesMax = 40, buff = { "幸运的暴击率" }, },
 	req = { level = 27, },
 }

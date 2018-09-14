@@ -1,0 +1,4 @@
+Downloading =Classes守护者.png
+url =https://web.poecdn.com/gen/image/YTozOntpOjA7aToyMjtp/OjI7YToyOntzOjE6InQi/O2k6Mzk7czoyOiJzcCI7/ZDowLjM4MzU7fWk6MTtz/OjMyOiJhYzViZjEzM2Vi/ZmExYmVkNTVjMDE4OWVh/MWE2YzMwZiI7fQ,,/5a3e85abe0/Guardian.png
+Downloading =Classes守护者.png
+url =http://web.poecdn.com/gen/image/YTozOntpOjA7aToyMjtp/OjI7YToyOntzOjE6InQi/O2k6Mzk7czoyOiJzcCI7/ZDowLjM4MzU7fWk6MTtz/OjMyOiJhYzViZjEzM2Vi/ZmExYmVkNTVjMDE4OWVh/MWE2YzMwZiI7fQ,,/5a3e85abe0/Guardian.png

@@ -2,65 +2,65 @@
 -- Item data (c) Grinding Gear Games
 local itemBases = ...
 
-itemBases["Rustic Sash"] = {
+itemBases["素布腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, },
-	implicit = "(12-24)% increased Global Physical Damage",
+	implicit = "物理伤害提高 (12-24)%",
 	req = { },
 }
-itemBases["Chain Belt"] = {
+itemBases["扣链腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, },
-	implicit = "+(9-20) to maximum Energy Shield",
+	implicit = "+(9-20) 最大能量护盾",
 	req = { },
 }
-itemBases["Leather Belt"] = {
+itemBases["皮革腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, },
-	implicit = "+(25-40) to maximum Life",
+	implicit = "+(25-40) 最大生命",
 	req = { level = 8, },
 }
-itemBases["Heavy Belt"] = {
+itemBases["重革腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, },
-	implicit = "+(25-35) to Strength",
+	implicit = "+(25-35) 力量",
 	req = { level = 8, },
 }
-itemBases["Cloth Belt"] = {
+itemBases["饰布腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, },
-	implicit = "(15-25)% increased Stun and Block Recovery",
+	implicit = "晕眩回复和格挡回复提高 (15-25)%",
 	req = { level = 16, },
 }
-itemBases["Studded Belt"] = {
+itemBases["扣钉腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, },
-	implicit = "(20-30)% increased Stun Duration on Enemies",
+	implicit = "敌人被晕眩时间延长 (20-30)%",
 	req = { level = 16, },
 }
-itemBases["Vanguard Belt"] = {
+itemBases["先锋腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, not_for_sale = true, atlas_base_type = true, beltatlas1 = true, },
-	implicit = "+(260-320) to Armour and Evasion Rating",
+	implicit = "+(260-320) 护甲和闪避值",
 	req = { level = 78, },
 }
-itemBases["Crystal Belt"] = {
+itemBases["水晶腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, not_for_sale = true, atlas_base_type = true, beltatlas2 = true, },
-	implicit = "+(60-80) to maximum Energy Shield",
+	implicit = "+(60-80) 最大能量护盾",
 	req = { level = 79, },
 }
-itemBases["Stygian Vise"] = {
+itemBases["深渊腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, not_for_sale = true, },
-	implicit = "Has 1 Abyssal Socket",
+	implicit = "拥有 1 个深渊插槽",
 	req = { },
 }
 
-itemBases["Golden Obi"] = {
+itemBases["金羽腰带"] = {
 	type = "Belt",
 	hidden = true,
 	tags = { default = true, belt = true, not_for_sale = true, },
-	implicit = "(20-30)% increased Rarity of Items found",
+	implicit = "物品稀有度提高 (20-30)%",
 	req = { },
 }

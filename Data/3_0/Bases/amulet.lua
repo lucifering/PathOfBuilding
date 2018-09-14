@@ -3,333 +3,333 @@
 local itemBases = ...
 
 
-itemBases["Paua Amulet"] = {
+itemBases["海灵护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, },
-	implicit = "(20-30)% increased Mana Regeneration Rate",
+	implicit = "魔力回复速度提高 (20-30)%",
 	req = { },
 }
-itemBases["Coral Amulet"] = {
+itemBases["珊瑚护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, },
-	implicit = "(2-4) Life Regenerated per second",
+	implicit = "(2-4) 每秒生命回复",
 	req = { },
 }
-itemBases["Amber Amulet"] = {
+itemBases["琥珀护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, },
-	implicit = "+(20-30) to Strength",
+	implicit = "+(20-30) 力量",
 	req = { level = 5, },
 }
-itemBases["Jade Amulet"] = {
+itemBases["翠玉护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, },
-	implicit = "+(20-30) to Dexterity",
+	implicit = "+(20-30) 敏捷",
 	req = { level = 5, },
 }
-itemBases["Lapis Amulet"] = {
+itemBases["海玉护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, },
-	implicit = "+(20-30) to Intelligence",
+	implicit = "+(20-30) 智慧",
 	req = { level = 5, },
 }
-itemBases["Gold Amulet"] = {
+itemBases["帝金护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, },
-	implicit = "(12-20)% increased Rarity of Items found",
+	implicit = "物品稀有度提高 (12-20)%",
 	req = { level = 8, },
 }
-itemBases["Onyx Amulet"] = {
+itemBases["黑曜护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, },
-	implicit = "+(10-16) to all Attributes",
+	implicit = "+(10-16) 全属性",
 	req = { level = 20, },
 }
-itemBases["Turquoise Amulet"] = {
+itemBases["青玉护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, },
-	implicit = "+(16-24) to Dexterity and Intelligence",
+	implicit = "+(16-24) 敏捷与智慧",
 	req = { level = 16, },
 }
-itemBases["Agate Amulet"] = {
+itemBases["玛瑙护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, },
-	implicit = "+(16-24) to Strength and Intelligence",
+	implicit = "+(16-24) 力量和智慧",
 	req = { level = 16, },
 }
-itemBases["Citrine Amulet"] = {
+itemBases["黄晶护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, },
-	implicit = "+(16-24) to Strength and Dexterity",
+	implicit = "+(16-24) 力量和敏捷",
 	req = { level = 16, },
 }
-itemBases["Ruby Amulet"] = {
+itemBases["血色护身符"] = {
 	type = "Amulet",
 	hidden = true,
 	tags = { default = true, amulet = true, not_for_sale = true, },
-	implicit = "+(20-30)% to Fire Resistance",
+	implicit = "+(20-30)% 火焰抗性",
 	req = { },
 }
-itemBases["Blue Pearl Amulet"] = {
+itemBases["碧珠护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, not_for_sale = true, atlas_base_type = true, amuletatlas1 = true, },
-	implicit = "(48-56)% increased Mana Regeneration Rate",
+	implicit = "魔力回复速度提高 (48-56)%",
 	req = { level = 77, },
 }
-itemBases["Marble Amulet"] = {
+itemBases["大理石护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, not_for_sale = true, atlas_base_type = true, amuletatlas2 = true, },
-	implicit = "(1.2-1.6)% of Life Regenerated per second",
+	implicit = "每秒回复 (1.2-1.6)% 生命",
 	req = { level = 74, },
 }
 
-itemBases["Jet Amulet"] = {
+itemBases["杰特护身符"] = {
 	type = "Amulet",
 	hidden = true,
 	tags = { default = true, amulet = true, not_for_sale = true, },
-	implicit = "+(8-12)% to all Elemental Resistances",
+	implicit = "获得 +(8-12)% 火焰、冰霜、闪电抗性",
 	req = { level = 12, },
 }
 
-itemBases["Black Maw Talisman"] = {
+itemBases["黑牙魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "Has 1 Socket",
+	implicit = "有 1 个插槽",
 	req = { },
 }
-itemBases["Bonespire Talisman"] = {
+itemBases["脊骨魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "(20-30)% increased maximum Mana",
+	implicit = "最大魔力提高 (20-30)%",
 	req = { },
 }
-itemBases["Ashscale Talisman"] = {
+itemBases["灰烬魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "(20-30)% increased Fire Damage",
+	implicit = "火焰伤害提高 (20-30)%",
 	req = { },
 }
-itemBases["Lone Antler Talisman"] = {
+itemBases["孤角魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "(20-30)% increased Lightning Damage",
+	implicit = "闪电伤害提高 (20-30)%",
 	req = { },
 }
-itemBases["Deep One Talisman"] = {
+itemBases["深渊魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "(20-30)% increased Cold Damage",
+	implicit = "冰霜伤害提高 (20-30)%",
 	req = { },
 }
-itemBases["Breakrib Talisman"] = {
+itemBases["碎骨魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "(20-30)% increased Global Physical Damage",
+	implicit = "物理伤害提高 (20-30)%",
 	req = { },
 }
-itemBases["Deadhand Talisman"] = {
+itemBases["亡手魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "(19-31)% increased Chaos Damage",
+	implicit = "混沌伤害提高 (19-31)%",
 	req = { },
 }
-itemBases["Undying Flesh Talisman"] = {
+itemBases["不朽魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "+1 to maximum number of Zombies",
+	implicit = "+1 魔卫数量上限",
 	req = { },
 }
-itemBases["Rot Head Talisman"] = {
+itemBases["腐首魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "(30-40)% increased Fish Bite Sensitivity",
+	implicit = "鱼咬的灵敏度提高 (30-40)%",
 	req = { },
 }
-itemBases["Mandible Talisman"] = {
+itemBases["巨颚魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "(6-10)% increased Attack and Cast Speed",
+	implicit = "攻击与施法速度提高 (6-10)%",
 	req = { },
 }
-itemBases["Chrysalis Talisman"] = {
+itemBases["虫蛹魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "(20-30)% increased Spell Damage",
+	implicit = "法术伤害提高 (20-30)%",
 	req = { },
 }
-itemBases["Writhing Talisman"] = {
+itemBases["狂癫魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "(20-30)% increased Attack Damage",
+	implicit = "攻击伤害提高 (20-30)%",
 	req = { },
 }
-itemBases["Hexclaw Talisman"] = {
+itemBases["幻爪魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "(40-50)% increased Global Critical Strike Chance",
+	implicit = "攻击和法术暴击率提高 (40-50)%",
 	req = { },
 }
-itemBases["Primal Skull Talisman"] = {
+itemBases["皇骨魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "2% of Life Regenerated per second",
+	implicit = "每秒回复 2% 生命",
 	req = { },
 }
-itemBases["Wereclaw Talisman"] = {
+itemBases["亡爪魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "+(24-36)% to Global Critical Strike Multiplier",
+	implicit = "+(24-36)% 攻击和法术暴击伤害加成",
 	req = { },
 }
-itemBases["Splitnewt Talisman"] = {
+itemBases["断螈魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "(4-6)% chance to Freeze, Shock and Ignite",
+	implicit = "(4-6)% 几率使敌人受到冰冻，感电与点燃",
 	req = { },
 }
-itemBases["Clutching Talisman"] = {
+itemBases["咒箍魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "(15-25)% increased Global Defences",
+	implicit = "全局防御提高 (15-25)%",
 	req = { },
 }
-itemBases["Avian Twins Talisman"] = {
+itemBases["双子魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "50% of Fire Damage from Hits taken as Cold Damage",
+	implicit = "受到击中火焰伤害的 50% 转为冰霜伤害",
 	req = { },
 }
-itemBases["Avian Twins Talisman"] = {
+itemBases["双子魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "50% of Fire Damage from Hits taken as Lightning Damage",
+	implicit = "受到击中火焰伤害的 50% 转为闪电伤害",
 	req = { },
 }
-itemBases["Avian Twins Talisman"] = {
+itemBases["双子魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "50% of Cold Damage from Hits taken as Fire Damage",
+	implicit = "受到击中冰霜伤害的 50% 转为火焰伤害",
 	req = { },
 }
-itemBases["Avian Twins Talisman"] = {
+itemBases["双子魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "50% of Cold Damage from Hits taken as Lightning Damage",
+	implicit = "受到击中冰霜伤害的 50% 转为闪电伤害",
 	req = { },
 }
-itemBases["Avian Twins Talisman"] = {
+itemBases["双子魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "50% of Lightning Damage from Hits taken as Cold Damage",
+	implicit = "受到击中闪电伤害的 50% 转为冰霜伤害",
 	req = { },
 }
-itemBases["Avian Twins Talisman"] = {
+itemBases["双子魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "50% of Lightning Damage from Hits taken as Fire Damage",
+	implicit = "受到击中闪电伤害的 50% 转为火焰伤害",
 	req = { },
 }
-itemBases["Fangjaw Talisman"] = {
+itemBases["齿鲨魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "(8-12)% increased maximum Life",
+	implicit = "最大生命提高 (8-12)%",
 	req = { },
 }
-itemBases["Horned Talisman"] = {
+itemBases["尖角魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "Projectiles Pierce 2 additional Targets",
+	implicit = "投射物会穿透 2 个额外目标",
 	req = { },
 }
-itemBases["Spinefuse Talisman"] = {
+itemBases["潜能魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "(6-10)% increased Quantity of Items found",
+	implicit = "物品掉落数量提高 (6-10)%",
 	req = { },
 }
-itemBases["Three Rat Talisman"] = {
+itemBases["三鼠魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "(12-16)% increased Attributes",
+	implicit = "所有属性提高 (12-16)%",
 	req = { },
 }
-itemBases["Monkey Twins Talisman"] = {
+itemBases["双猴魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "(5-8)% increased Area of Effect",
+	implicit = "范围效果扩大 (5-8)%",
 	req = { },
 }
-itemBases["Longtooth Talisman"] = {
+itemBases["长牙魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "(4-6)% additional Physical Damage Reduction",
+	implicit = "(4-6)% 额外物理伤害减伤",
 	req = { },
 }
-itemBases["Rotfeather Talisman"] = {
+itemBases["死羽魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "(25-35)% increased Damage",
+	implicit = "伤害提高 (25-35)%",
 	req = { },
 }
-itemBases["Monkey Paw Talisman"] = {
+itemBases["猴掌魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "10% chance to gain a Power Charge on Kill",
+	implicit = "击败敌人有 10% 几率获得暴击球",
 	req = { },
 }
-itemBases["Monkey Paw Talisman"] = {
+itemBases["猴掌魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "10% chance to gain a Frenzy Charge on Kill",
+	implicit = "击败敌人有 10% 几率获得狂怒球",
 	req = { },
 }
-itemBases["Monkey Paw Talisman"] = {
+itemBases["猴掌魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "10% chance to gain an Endurance Charge on Kill",
+	implicit = "击败敌人有 10% 几率时获得耐力球",
 	req = { },
 }
-itemBases["Three Hands Talisman"] = {
+itemBases["三手魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "Gain (6-12)% of Physical Damage as Extra Damage of a random Element",
+	implicit = "获得等同 (6-12)% 物理伤害的 1 个随机火焰、冰霜、闪电伤害",
 	req = { },
 }
-itemBases["Greatwolf Talisman"] = {
+itemBases["狼王魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, },

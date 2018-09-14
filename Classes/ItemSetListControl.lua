@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Class: Item Set List
 -- Item set list control.
@@ -13,7 +13,7 @@ local s_format = string.format
 local ItemSetListClass = common.NewClass("ItemSetList", "ListControl", function(self, anchor, x, y, width, height, itemsTab)
 	self.ListControl(anchor, x, y, width, height, 16, true, itemsTab.itemSetOrderList)
 	self.itemsTab = itemsTab
-	self.controls.copy = common.New("ButtonControl", {"BOTTOMLEFT",self,"TOP"}, 2, -4, 60, 18, "Copy", function()
+self.controls.copy = common.New("ButtonControl", {"BOTTOMLEFT",self,"TOP"}, 2, -4, 60, 18, "复制", function()
 		local newSet = copyTable(itemsTab.itemSets[self.selValue])
 		newSet.id = 1
 		while itemsTab.itemSets[newSet.id] do
@@ -25,19 +25,19 @@ local ItemSetListClass = common.NewClass("ItemSetList", "ListControl", function(
 	self.controls.copy.enabled = function()
 		return self.selValue ~= nil
 	end
-	self.controls.delete = common.New("ButtonControl", {"LEFT",self.controls.copy,"RIGHT"}, 4, 0, 60, 18, "Delete", function()
+self.controls.delete = common.New("ButtonControl", {"LEFT",self.controls.copy,"RIGHT"}, 4, 0, 60, 18, "删除", function()
 		self:OnSelDelete(self.selIndex, self.selValue)
 	end)
 	self.controls.delete.enabled = function()
 		return self.selValue ~= nil and #self.list > 1
 	end
-	self.controls.rename = common.New("ButtonControl", {"BOTTOMRIGHT",self,"TOP"}, -2, -4, 60, 18, "Rename", function()
+self.controls.rename = common.New("ButtonControl", {"BOTTOMRIGHT",self,"TOP"}, -2, -4, 60, 18, "重命名", function()
 		self:RenameSet(itemsTab.itemSets[self.selValue])
 	end)
 	self.controls.rename.enabled = function()
 		return self.selValue ~= nil
 	end
-	self.controls.new = common.New("ButtonControl", {"RIGHT",self.controls.rename,"LEFT"}, -4, 0, 60, 18, "New", function()
+self.controls.new = common.New("ButtonControl", {"RIGHT",self.controls.rename,"LEFT"}, -4, 0, 60, 18, "新建", function()
 		local newSet = itemsTab:NewItemSet()
 		self:RenameSet(newSet, true)
 	end)
@@ -45,11 +45,11 @@ end)
 
 function ItemSetListClass:RenameSet(itemSet, addOnName)
 	local controls = { }
-	controls.label = common.New("LabelControl", nil, 0, 20, 0, 16, "^7Enter name for this item set:")
+controls.label = common.New("LabelControl", nil, 0, 20, 0, 16, "^7输入本套装名称:")
 	controls.edit = common.New("EditControl", nil, 0, 40, 350, 20, itemSet.title, nil, nil, 100, function(buf)
 		controls.save.enabled = buf:match("%S")
 	end)
-	controls.save = common.New("ButtonControl", nil, -45, 70, 80, 20, "Save", function()
+controls.save = common.New("ButtonControl", nil, -45, 70, 80, 20, "保存", function()
 		itemSet.title = controls.edit.buf
 		self.itemsTab.modFlag = true
 		if addOnName then
@@ -61,19 +61,19 @@ function ItemSetListClass:RenameSet(itemSet, addOnName)
 		main:ClosePopup()
 	end)
 	controls.save.enabled = false
-	controls.cancel = common.New("ButtonControl", nil, 45, 70, 80, 20, "Cancel", function()
+controls.cancel = common.New("ButtonControl", nil, 45, 70, 80, 20, "取消", function()
 		if addOnName then
-			self.itemsTab.itemSets[itemSet.id] = nil
+			--self.itemsTab.itemSets[itemSet.id] = nil
 		end
 		main:ClosePopup()
 	end)
-	main:OpenPopup(370, 100, itemSet.title and "Rename" or "Set Name", controls, "save", "edit", "cancel")
+main:OpenPopup(370, 100, itemSet.title and "重命名" or "套装名称", controls, "save", "edit", "cancel")
 end
 
 function ItemSetListClass:GetRowValue(column, index, itemSetId)
 	local itemSet = self.itemsTab.itemSets[itemSetId]
 	if column == 1 then
-		return (itemSet.title or "Default") .. (itemSetId == self.itemsTab.activeItemSetId and "  ^9(Current)" or "")
+return (itemSet.title or "Default") .. (itemSetId == self.itemsTab.activeItemSetId and "  ^9(当前使用)" or "")
 	end
 end
 
@@ -121,7 +121,7 @@ end
 function ItemSetListClass:OnSelDelete(index, itemSetId)
 	local itemSet = self.itemsTab.itemSets[itemSetId]
 	if #self.list > 1 then
-		main:OpenConfirmPopup("Delete Item Set", "Are you sure you want to delete '"..(itemSet.title or "Default").."'?\nThis will not delete any items used by the set.", "Delete", function()
+main:OpenConfirmPopup("套装删除", "你确定要删除套装 '"..(itemSet.title or "Default").."'?\n这不会删除套装中的装备物品.", "Delete", function()
 			t_remove(self.list, index)
 			self.itemsTab.itemSets[itemSetId] = nil
 			self.selIndex = nil

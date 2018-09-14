@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Module: Items Tab
 -- Items tab for the current build.
@@ -17,11 +17,11 @@ local m_floor = math.floor
 local m_modf = math.modf
 
 local rarityDropList = { 
-	{ label = colorCodes.NORMAL.."Normal", rarity = "NORMAL" },
-	{ label = colorCodes.MAGIC.."Magic", rarity = "MAGIC" },
-	{ label = colorCodes.RARE.."Rare", rarity = "RARE" },
-	{ label = colorCodes.UNIQUE.."Unique", rarity = "UNIQUE" },
-	{ label = colorCodes.RELIC.."Relic", rarity = "RELIC" }
+{ label = colorCodes.NORMAL.."普通", rarity = "普通" },
+{ label = colorCodes.MAGIC.."魔法", rarity = "魔法" },
+{ label = colorCodes.RARE.."稀有", rarity = "稀有" },
+{ label = colorCodes.UNIQUE.."传奇", rarity = "传奇" },
+{ label = colorCodes.RELIC.."遗产", rarity = "遗产" }
 }
 
 local socketDropList = {
@@ -59,8 +59,8 @@ local ItemsTabClass = common.NewClass("ItemsTab", "UndoHandler", "ControlHost", 
 			self:AddItemSetTooltip(tooltip, self.itemSets[self.itemSetOrderList[index]])
 		end
 	end
-	self.controls.setLabel = common.New("LabelControl", {"RIGHT",self.controls.setSelect,"LEFT"}, -2, 0, 0, 16, "^7Item set:")
-	self.controls.setManage = common.New("ButtonControl", {"LEFT",self.controls.setSelect,"RIGHT"}, 4, 0, 90, 20, "Manage...", function()
+self.controls.setLabel = common.New("LabelControl", {"RIGHT",self.controls.setSelect,"LEFT"}, -2, 0, 0, 16, "^7套装:")
+self.controls.setManage = common.New("ButtonControl", {"LEFT",self.controls.setSelect,"RIGHT"}, 4, 0, 90, 20, "管理...", function()
 		self:OpenItemSetManagePopup()
 	end)
 
@@ -118,7 +118,7 @@ local ItemsTabClass = common.NewClass("ItemsTab", "UndoHandler", "ControlHost", 
 		self.sockets[node.id] = socketControl
 		self.slotOrder["Jewel "..node.id] = #self.orderedSlots
 	end
-	self.controls.slotHeader = common.New("LabelControl", {"BOTTOMLEFT",self.slotAnchor,"TOPLEFT"}, 0, -4, 0, 16, "^7Equipped items:")
+self.controls.slotHeader = common.New("LabelControl", {"BOTTOMLEFT",self.slotAnchor,"TOPLEFT"}, 0, -4, 0, 16, "^7已装备:")
 	self.controls.weaponSwap1 = common.New("ButtonControl", {"BOTTOMRIGHT",self.slotAnchor,"TOPRIGHT"}, -20, -2, 18, 18, "I", function()
 		if self.activeItemSet.useSecondWeaponSet then
 			self.activeItemSet.useSecondWeaponSet = false
@@ -159,17 +159,17 @@ local ItemsTabClass = common.NewClass("ItemsTab", "UndoHandler", "ControlHost", 
 	self.controls.weaponSwap2.locked = function()
 		return self.activeItemSet.useSecondWeaponSet
 	end
-	self.controls.weaponSwapLabel = common.New("LabelControl", {"RIGHT",self.controls.weaponSwap1,"LEFT"}, -4, 0, 0, 14, "^7Weapon Set:")
+self.controls.weaponSwapLabel = common.New("LabelControl", {"RIGHT",self.controls.weaponSwap1,"LEFT"}, -4, 0, 0, 14, "^7武器列表:")
 
 	-- All items list
 	self.controls.itemList = common.New("ItemList", {"TOPLEFT",self.slotAnchor,"TOPRIGHT"}, 20, -20, 360, 308, self)
 
 	-- Database selector
-	self.controls.selectDBLabel = common.New("LabelControl", {"TOPLEFT",self.controls.itemList,"BOTTOMLEFT"}, 0, 14, 0, 16, "^7Import from:")
+self.controls.selectDBLabel = common.New("LabelControl", {"TOPLEFT",self.controls.itemList,"BOTTOMLEFT"}, 0, 14, 0, 16, "^7导入目标:")
 	self.controls.selectDBLabel.shown = function()
 		return self.height < 980
 	end
-	self.controls.selectDB = common.New("DropDownControl", {"LEFT",self.controls.selectDBLabel,"RIGHT"}, 4, 0, 150, 18, { "Uniques", "Rare Templates" })
+self.controls.selectDB = common.New("DropDownControl", {"LEFT",self.controls.selectDBLabel,"RIGHT"}, 4, 0, 150, 18, { "内置传奇", "金装模板" })
 
 	-- Unique database
 	self.controls.uniqueDB = common.New("ItemDB", {"TOPLEFT",self.controls.itemList,"BOTTOMLEFT"}, 0, 76, 360, function(c) return m_min(244, self.maxY - select(2, c:GetPos())) end, self, main.uniqueDB[build.targetVersion], "UNIQUE")
@@ -190,22 +190,22 @@ local ItemsTabClass = common.NewClass("ItemsTab", "UndoHandler", "ControlHost", 
 	end
 
 	-- Create/import item
-	self.controls.craftDisplayItem = common.New("ButtonControl", {"TOPLEFT",self.controls.itemList,"TOPRIGHT"}, 20, 0, 120, 20, "Craft item...", function()
+self.controls.craftDisplayItem = common.New("ButtonControl", {"TOPLEFT",self.controls.itemList,"TOPRIGHT"}, 20, 0, 120, 20, "创建装备...", function()
 		self:CraftItem()
 	end)
 	self.controls.craftDisplayItem.shown = function()
 		return self.displayItem == nil 
 	end
-	self.controls.newDisplayItem = common.New("ButtonControl", {"TOPLEFT",self.controls.craftDisplayItem,"TOPRIGHT"}, 8, 0, 120, 20, "Create custom...", function()
+self.controls.newDisplayItem = common.New("ButtonControl", {"TOPLEFT",self.controls.craftDisplayItem,"TOPRIGHT"}, 8, 0, 120, 20, "自定义装备...", function()
 		self:EditDisplayItemText()
 	end)
 	self.controls.displayItemTip = common.New("LabelControl", {"TOPLEFT",self.controls.craftDisplayItem,"BOTTOMLEFT"}, 0, 8, 100, 16, 
-[[^7Double-click an item from one of the lists,
-or copy and paste an item from in game (hover over the item and Ctrl+C)
-to view or edit the item and add it to your build.
-You can Control + Click an item to equip it, or drag it onto the slot.
-This will also add it to your build if it's from the unique/template list.
-If there's 2 slots an item can go in, holding Shift will put it in the second.]])
+[[^7双击右边的装备列表中的装备，
+或者复制粘贴一个物品（鼠标移到物品上查看信息，然后按下Ctrl+C），
+来查看或编辑一个装备，最后加入你的build中。
+你可以按下Ctrl+鼠标点击来装备到身上，或者拖放到目标位置上，
+一样可以加入你的build中（如果是内置传奇或金装模板中的装备的话）。
+如果有2个位置都可以装备那件物品，那么想快捷装备到第二个位置，那么多按一个Shift键。]])
 	self.controls.sharedItemList = common.New("SharedItemList", {"TOPLEFT",self.controls.craftDisplayItem, "BOTTOMLEFT"}, 0, 142, 360, 308, self)
 
 	-- Display item
@@ -219,12 +219,12 @@ If there's 2 slots an item can go in, holding Shift will put it in the second.]]
 		self:AddDisplayItem()
 	end)
 	self.controls.addDisplayItem.label = function()
-		return self.items[self.displayItem.id] and "Save" or "Add to build"
+return self.items[self.displayItem.id] and "保存" or "加入 build"
 	end
-	self.controls.editDisplayItem = common.New("ButtonControl", {"LEFT",self.controls.addDisplayItem,"RIGHT"}, 8, 0, 60, 20, "Edit...", function()
+self.controls.editDisplayItem = common.New("ButtonControl", {"LEFT",self.controls.addDisplayItem,"RIGHT"}, 8, 0, 60, 20, "编辑...", function()
 		self:EditDisplayItemText()
 	end)
-	self.controls.removeDisplayItem = common.New("ButtonControl", {"LEFT",self.controls.editDisplayItem,"RIGHT"}, 8, 0, 60, 20, "Cancel", function()
+self.controls.removeDisplayItem = common.New("ButtonControl", {"LEFT",self.controls.editDisplayItem,"RIGHT"}, 8, 0, 60, 20, "取消", function()
 		self:SetDisplayItem()
 	end)
 
@@ -253,6 +253,8 @@ If there's 2 slots an item can go in, holding Shift will put it in the second.]]
 
 	-- Section: Sockets and Links
 	self.controls.displayItemSectionSockets = common.New("Control", {"TOPLEFT",self.controls.displayItemSectionVariant,"BOTTOMLEFT"}, 0, 0, 0, function()
+	--lucifer
+		if  self.displayItem.selectableSocketCount == nil then self.displayItem.selectableSocketCount=0 end
 		return self.displayItem.selectableSocketCount > 0 and 28 or 0
 	end)
 	for i = 1, 6 do
@@ -306,7 +308,7 @@ If there's 2 slots an item can go in, holding Shift will put it in the second.]]
 	self.controls.displayItemSectionImplicit = common.New("Control", {"TOPLEFT",self.controls.displayItemSectionSockets,"BOTTOMLEFT"}, 0, 0, 0, function()
 		return (self.controls.displayItemShaperElder:IsShown() or self.controls.displayItemEnchant:IsShown() or self.controls.displayItemCorrupt:IsShown()) and 28 or 0
 	end)
-	self.controls.displayItemShaperElder = common.New("DropDownControl", {"TOPLEFT",self.controls.displayItemSectionImplicit,"TOPLEFT"}, 0, 0, 100, 20, {"Normal","Shaper","Elder"}, function(index, value)
+self.controls.displayItemShaperElder = common.New("DropDownControl", {"TOPLEFT",self.controls.displayItemSectionImplicit,"TOPLEFT"}, 0, 0, 100, 20, {"通常","塑界者","裂界者"}, function(index, value)
 		self.displayItem.shaper = (index == 2)
 		self.displayItem.elder = (index == 3)
 		if self.displayItem.crafted then
@@ -322,13 +324,13 @@ If there's 2 slots an item can go in, holding Shift will put it in the second.]]
 	self.controls.displayItemShaperElder.shown = function()
 		return self.displayItem and self.displayItem.canBeShaperElder
 	end
-	self.controls.displayItemEnchant = common.New("ButtonControl", {"TOPLEFT",self.controls.displayItemShaperElder,"TOPRIGHT",true}, 8, 0, 160, 20, "Apply Enchantment...", function()
+self.controls.displayItemEnchant = common.New("ButtonControl", {"TOPLEFT",self.controls.displayItemShaperElder,"TOPRIGHT",true}, 8, 0, 160, 20, "增加附魔...", function()
 		self:EnchantDisplayItem()
 	end)
 	self.controls.displayItemEnchant.shown = function()
 		return self.displayItem and self.displayItem.enchantments
 	end
-	self.controls.displayItemCorrupt = common.New("ButtonControl", {"TOPLEFT",self.controls.displayItemEnchant,"TOPRIGHT",true}, 8, 0, 100, 20, "Corrupt...", function()
+self.controls.displayItemCorrupt = common.New("ButtonControl", {"TOPLEFT",self.controls.displayItemEnchant,"TOPRIGHT",true}, 8, 0, 100, 20, "腐化装备...", function()
 		self:CorruptDisplayItem()
 	end)
 	self.controls.displayItemCorrupt.shown = function()
@@ -451,7 +453,7 @@ If there's 2 slots an item can go in, holding Shift will put it in the second.]]
 		drop.slider = slider
 		self.controls["displayItemAffix"..i] = drop
 		self.controls["displayItemAffixLabel"..i] = common.New("LabelControl", {"RIGHT",drop,"LEFT"}, -4, 0, 0, 14, function()
-			return drop.outputTable == "prefixes" and "^7Prefix:" or "^7Suffix:"
+return drop.outputTable == "prefixes" and "^7前缀:" or "^7后缀:"
 		end)
 		self.controls["displayItemAffixRange"..i] = slider
 		self.controls["displayItemAffixRangeLabel"..i] = common.New("LabelControl", {"RIGHT",slider,"LEFT"}, -4, 0, 0, 14, function()
@@ -463,21 +465,25 @@ If there's 2 slots an item can go in, holding Shift will put it in the second.]]
 	self.controls.displayItemSectionCustom = common.New("Control", {"TOPLEFT",self.controls.displayItemSectionAffix,"BOTTOMLEFT"}, 0, 0, 0, function()
 		return self.controls.displayItemAddCustom:IsShown() and 28 + self.displayItem.customCount * 22 or 0
 	end)
-	self.controls.displayItemAddCustom = common.New("ButtonControl", {"TOPLEFT",self.controls.displayItemSectionCustom,"TOPLEFT"}, 0, 0, 120, 20, "Add modifier...", function()
+self.controls.displayItemAddCustom = common.New("ButtonControl", {"TOPLEFT",self.controls.displayItemSectionCustom,"TOPLEFT"}, 0, 0, 120, 20, "增加词缀...", function()
 		self:AddCustomModifierToDisplayItem()
 	end)
 	self.controls.displayItemAddCustom.shown = function()
-		return self.displayItem.rarity == "MAGIC" or self.displayItem.rarity == "RARE"
+return self.displayItem.rarity == "魔法" or self.displayItem.rarity == "稀有"
 	end
 
 	-- Section: Modifier Range
 	self.controls.displayItemSectionRange = common.New("Control", {"TOPLEFT",self.controls.displayItemSectionCustom,"BOTTOMLEFT"}, 0, 0, 0, function()
+	--lucifer
+	if self.displayItem.rangeLineList==nil then return 0 end
 		return self.displayItem.rangeLineList[1] and 28 or 0
 	end)
 	self.controls.displayItemRangeLine = common.New("DropDownControl", {"TOPLEFT",self.controls.displayItemSectionRange,"TOPLEFT"}, 0, 0, 350, 18, nil, function(index, value)
 		self.controls.displayItemRangeSlider.val = self.displayItem.rangeLineList[index].range
 	end)
 	self.controls.displayItemRangeLine.shown = function()
+	--lucifer
+		if self.displayItem.rangeLineList==nil then return true end
 		return self.displayItem.rangeLineList[1] ~= nil
 	end
 	self.controls.displayItemRangeSlider = common.New("SliderControl", {"LEFT",self.controls.displayItemRangeLine,"RIGHT"}, 8, 0, 100, 18, function(val)
@@ -1132,7 +1138,7 @@ function ItemsTabClass:UpdateCustomControls()
 					if not self.controls["displayItemCustomModifier"..i] then
 						self.controls["displayItemCustomModifier"..i] = common.New("LabelControl", {"TOPLEFT",self.controls.displayItemSectionCustom,"TOPLEFT"}, 55, i * 22 + 4, 0, 16)
 						self.controls["displayItemCustomModifierLabel"..i] = common.New("LabelControl", {"RIGHT",self.controls["displayItemCustomModifier"..i],"LEFT"}, -2, 0, 0, 16)
-						self.controls["displayItemCustomModifierRemove"..i] = common.New("ButtonControl", {"LEFT",self.controls["displayItemCustomModifier"..i],"RIGHT"}, 4, 0, 70, 20, "^7Remove")
+self.controls["displayItemCustomModifierRemove"..i] = common.New("ButtonControl", {"LEFT",self.controls["displayItemCustomModifier"..i],"RIGHT"}, 4, 0, 70, 20, "^7移除")
 					end
 					self.controls["displayItemCustomModifier"..i].shown = true
 					local label = itemLib.formatModLine(modLine)
@@ -1140,7 +1146,7 @@ function ItemsTabClass:UpdateCustomControls()
 						label = label:sub(1, DrawStringCursorIndex(16, "VAR", label, 310, 10)) .. "..."
 					end
 					self.controls["displayItemCustomModifier"..i].label = label
-					self.controls["displayItemCustomModifierLabel"..i].label = modLine.crafted and "^7Crafted:" or "^7Custom:"
+self.controls["displayItemCustomModifierLabel"..i].label = modLine.crafted and "^7创建:" or "^7自定义:"
 					self.controls["displayItemCustomModifierRemove"..i].onClick = function()
 						t_remove(item.modLines, index)
 						local id = item.id
@@ -1221,7 +1227,7 @@ function ItemsTabClass:OpenItemSetManagePopup()
 	controls.close = common.New("ButtonControl", nil, 0, 260, 90, 20, "Done", function()
 		main:ClosePopup()
 	end)
-	main:OpenPopup(630, 290, "Manage Item Sets", controls)
+main:OpenPopup(630, 290, "套装 管理", controls)
 end
 
 -- Opens the item crafting popup
@@ -1259,20 +1265,20 @@ function ItemsTabClass:CraftItem()
 		item:BuildAndParseRaw()
 		return item
 	end
-	controls.rarityLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 50, 20, 0, 16, "Rarity:")
+controls.rarityLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 50, 20, 0, 16, "稀有度:")
 	controls.rarity = common.New("DropDownControl", nil, -80, 20, 100, 18, rarityDropList)
 	controls.rarity.selIndex = self.lastCraftRaritySel or 3
 	controls.title = common.New("EditControl", nil, 70, 20, 190, 18, "", "Name")
 	controls.title.shown = function()
 		return controls.rarity.selIndex >= 3
 	end
-	controls.typeLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 50, 45, 0, 16, "Type:")
+controls.typeLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 50, 45, 0, 16, "类型:")
 	controls.type = common.New("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 55, 45, 295, 18, self.build.data.itemBaseTypeList, function(index, value)
 		controls.base.list = self.build.data.itemBaseLists[self.build.data.itemBaseTypeList[index]]
 		controls.base.selIndex = 1
 	end)
 	controls.type.selIndex = self.lastCraftTypeSel or 1
-	controls.baseLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 50, 70, 0, 16, "Base:")
+controls.baseLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 50, 70, 0, 16, "基底:")
 	controls.base = common.New("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 55, 70, 200, 18, self.build.data.itemBaseLists[self.build.data.itemBaseTypeList[controls.type.selIndex]])
 	controls.base.selIndex = self.lastCraftBaseSel or 1
 	controls.base.tooltipFunc = function(tooltip, mode, index, value)
@@ -1281,21 +1287,21 @@ function ItemsTabClass:CraftItem()
 			self:AddItemTooltip(tooltip, makeItem(value), nil, true)
 		end
 	end
-	controls.save = common.New("ButtonControl", nil, -45, 100, 80, 20, "Create", function()
+controls.save = common.New("ButtonControl", nil, -45, 100, 80, 20, "创建", function()
 		main:ClosePopup()
 		local item = makeItem(controls.base.list[controls.base.selIndex])
 		self:SetDisplayItem(item)
-		if not item.crafted and item.rarity ~= "NORMAL" then
+if not item.crafted and item.rarity ~= "普通" then
 			self:EditDisplayItemText()
 		end
 		self.lastCraftRaritySel = controls.rarity.selIndex
 		self.lastCraftTypeSel = controls.type.selIndex
 		self.lastCraftBaseSel = controls.base.selIndex
 	end)
-	controls.cancel = common.New("ButtonControl", nil, 45, 100, 80, 20, "Cancel", function()
+controls.cancel = common.New("ButtonControl", nil, 45, 100, 80, 20, "取消", function()
 		main:ClosePopup()
 	end)
-	main:OpenPopup(370, 130, "Craft Item", controls)
+	main:OpenPopup(370, 130, "装备制作", controls)
 end
 
 -- Opens the item text editor popup
@@ -1303,16 +1309,16 @@ function ItemsTabClass:EditDisplayItemText()
 	local controls = { }
 	local function buildRaw()
 		local editBuf = controls.edit.buf
-		if editBuf:match("^Rarity: ") then
+if editBuf:match("^稀 有 度: ") then
 			return editBuf
 		else
-			return "Rarity: "..controls.rarity.list[controls.rarity.selIndex].rarity.."\n"..controls.edit.buf
+			return "稀 有 度: "..controls.rarity.list[controls.rarity.selIndex].rarity.."\n"..controls.edit.buf
 		end
 	end
 	controls.rarity = common.New("DropDownControl", nil, -190, 10, 100, 18, rarityDropList)
 	controls.edit = common.New("EditControl", nil, 0, 40, 480, 420, "", nil, "^%C\t\n", nil, nil, 14)
 	if self.displayItem then
-		controls.edit:SetText(self.displayItem:BuildRaw():gsub("Rarity: %w+\n",""))
+controls.edit:SetText(self.displayItem:BuildRaw():gsub("稀 有 度: %w+\n",""))
 		controls.rarity:SelByValue(self.displayItem.rarity, "rarity")
 	else
 		controls.rarity.selIndex = 3
@@ -1337,19 +1343,19 @@ function ItemsTabClass:EditDisplayItemText()
 		if item.base then
 			self:AddItemTooltip(tooltip, item, nil, true)
 		else
-			tooltip:AddLine(14, "The item is invalid.")
-			tooltip:AddLine(14, "Check that the item's title and base name are in the correct format.")
-			tooltip:AddLine(14, "For Rare and Unique items, the first 2 lines must be the title and base name. E.g:")
-			tooltip:AddLine(14, "Abberath's Horn")
-			tooltip:AddLine(14, "Goat's Horn")
-			tooltip:AddLine(14, "For Normal and Magic items, the base name must be somewhere in the first line. E.g:")
-			tooltip:AddLine(14, "Scholar's Platinum Kris of Joy")
+tooltip:AddLine(14, "物品格式解析失败.")
+tooltip:AddLine(14, "检查下物品名称或物品基底的名称是否正确。")
+tooltip:AddLine(14, "稀有或传奇物品的前2行，必须由装备名称和装备基底名称构成，例如：")
+tooltip:AddLine(14, "艾贝拉斯之角")
+tooltip:AddLine(14, "羊角法杖")
+tooltip:AddLine(14, "对于普通或魔法物品，物品基底的名称必须包含在第一行中，例如:")
+tooltip:AddLine(14, "神秘学者的喜悦之白金波刃")
 		end
 	end	
 	controls.cancel = common.New("ButtonControl", nil, 45, 470, 80, 20, "Cancel", function()
 		main:ClosePopup()
 	end)
-	main:OpenPopup(500, 500, self.displayItem and "Edit Item Text" or "Create Custom Item from Text", controls, nil, "edit")
+main:OpenPopup(500, 500, self.displayItem and "编辑装备文本" or "从文本中创建自定义物品", controls, nil, "edit")
 end
 
 -- Opens the item enchanting popup
@@ -1413,32 +1419,32 @@ function ItemsTabClass:EnchantDisplayItem()
 		return item
 	end
 	if haveSkills then
-		controls.skillLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 20, 0, 16, "^7Skill:")
+controls.skillLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 20, 0, 16, "^7技能:")
 		controls.skill = common.New("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 20, 180, 18, skillList, function(index, value)
 			buildLabyrinthList()
 			buildEnchantmentList()
 			controls.enchantment:SetSel(1)
 		end)
-		controls.allSkills = common.New("CheckBoxControl", {"TOPLEFT",nil,"TOPLEFT"}, 350, 20, 18, "All skills:", function(state)
+controls.allSkills = common.New("CheckBoxControl", {"TOPLEFT",nil,"TOPLEFT"}, 350, 20, 18, "所有技能:", function(state)
 			buildSkillList(not state)
 			controls.skill:SetSel(1)
 			buildEnchantmentList()
 			controls.enchantment:SetSel(1)
 		end)
-		controls.allSkills.tooltipText = "Show all skills, not just those used by this build."
+controls.allSkills.tooltipText = "显示所有技能，不仅是本build包含的."
 		if not next(skillsUsed) then
 			controls.allSkills.state = true
 			controls.allSkills.enabled = false
 		end
 	end
-	controls.labyrinthLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 45, 0, 16, "^7Labyrinth:")
+controls.labyrinthLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 45, 0, 16, "^7迷宫:")
 	controls.labyrinth = common.New("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 45, 100, 18, labyrinthList, function(index, value)
 		buildEnchantmentList()
 		controls.enchantment:SetSel(m_min(controls.enchantment.selIndex, #enchantmentList))
 	end)
-	controls.enchantmentLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 70, 0, 16, "^7Enchantment:")
+controls.enchantmentLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 70, 0, 16, "^7附魔:")
 	controls.enchantment = common.New("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 70, 440, 18, enchantmentList)
-	controls.save = common.New("ButtonControl", nil, -45, 100, 80, 20, "Enchant", function()
+controls.save = common.New("ButtonControl", nil, -45, 100, 80, 20, "附魔", function()
 		self:SetDisplayItem(enchantItem())
 		main:ClosePopup()
 	end)
@@ -1446,10 +1452,10 @@ function ItemsTabClass:EnchantDisplayItem()
 		tooltip:Clear()
 		self:AddItemTooltip(tooltip, enchantItem(), nil, true)
 	end	
-	controls.close = common.New("ButtonControl", nil, 45, 100, 80, 20, "Cancel", function()
+controls.close = common.New("ButtonControl", nil, 45, 100, 80, 20, "取消", function()
 		main:ClosePopup()
 	end)
-	main:OpenPopup(550, 130, "Enchant Item", controls)
+main:OpenPopup(550, 130, "装备附魔", controls)
 end
 
 -- Opens the item corrupting popup
@@ -1507,17 +1513,17 @@ function ItemsTabClass:CorruptDisplayItem()
 		item:BuildAndParseRaw()
 		return item
 	end
-	controls.implicitLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 75, 20, 0, 16, "^7Implicit #1:")
+controls.implicitLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 75, 20, 0, 16, "^7基底词缀#1:")
 	controls.implicit = common.New("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 80, 20, 440, 18, nil, function()
 		buildList(controls.implicit2, controls.implicit)
 	end)
-	controls.implicit2Label = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 75, 40, 0, 16, "^7Implicit #2:")
+controls.implicit2Label = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 75, 40, 0, 16, "^7基底词缀#2:")
 	controls.implicit2 = common.New("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 80, 40, 440, 18, nil, function()
 		buildList(controls.implicit, controls.implicit2)
 	end)
 	buildList(controls.implicit, controls.implicit2)
 	buildList(controls.implicit2, controls.implicit)
-	controls.save = common.New("ButtonControl", nil, -45, 70, 80, 20, "Corrupt", function()
+controls.save = common.New("ButtonControl", nil, -45, 70, 80, 20, "腐化", function()
 		self:SetDisplayItem(corruptItem())
 		main:ClosePopup()
 	end)
@@ -1525,10 +1531,10 @@ function ItemsTabClass:CorruptDisplayItem()
 		tooltip:Clear()
 		self:AddItemTooltip(tooltip, corruptItem(), nil, true)
 	end	
-	controls.close = common.New("ButtonControl", nil, 45, 70, 80, 20, "Cancel", function()
+controls.close = common.New("ButtonControl", nil, 45, 70, 80, 20, "取消", function()
 		main:ClosePopup()
 	end)
-	main:OpenPopup(540, 100, "Corrupt Item", controls)
+main:OpenPopup(540, 100, "腐化装备", controls)
 end
 
 -- Opens the custom modifier popup
@@ -1619,13 +1625,13 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 		item:BuildAndParseRaw()
 		return item
 	end
-	controls.sourceLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 20, 0, 16, "^7Source:")
+controls.sourceLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 20, 0, 16, "^7来自：")
 	controls.source = common.New("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 20, 100, 18, sourceList, function(index, value)
 		buildMods(value.sourceId)
 		controls.modSelect:SetSel(1)
 	end)
 	controls.source.enabled = #sourceList > 1
-	controls.modSelectLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 45, 0, 16, "^7Modifier:")
+controls.modSelectLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 45, 0, 16, "^7加成:")
 	controls.modSelect = common.New("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 45, 600, 18, modList)
 	controls.modSelect.shown = function()
 		return sourceList[controls.source.selIndex].sourceId ~= "CUSTOM"
@@ -1650,7 +1656,7 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 		tooltip:Clear()
 		self:AddItemTooltip(tooltip, addModifier())
 	end	
-	controls.close = common.New("ButtonControl", nil, 45, 75, 80, 20, "Cancel", function()
+controls.close = common.New("ButtonControl", nil, 45, 75, 80, 20, "取消", function()
 		main:ClosePopup()
 	end)
 	main:OpenPopup(710, 105, "Add Modifier to Item", controls, "save", sourceList[controls.source.selIndex].sourceId == "CUSTOM" and "custom")	
@@ -1697,19 +1703,19 @@ function ItemsTabClass:AddItemTooltip(tooltip, item, slot, dbMode)
 	if dbMode then
 		if item.variantList then
 			if #item.variantList == 1 then
-				tooltip:AddLine(16, "^xFFFF30Variant: "..item.variantList[1])
+tooltip:AddLine(16, "^xFFFF30版本: "..item.variantList[1])
 			else
-				tooltip:AddLine(16, "^xFFFF30Variant: "..item.variantList[item.variant].." ("..#item.variantList.." variants)")
+tooltip:AddLine(16, "^xFFFF30版本: "..item.variantList[item.variant].." ("..#item.variantList.." variants)")
 			end
 		end
 		if item.league then
-			tooltip:AddLine(16, "^xFF5555Exclusive to: "..item.league)
+tooltip:AddLine(16, "^xFF5555专属: "..item.league)
 		end
 		if item.unreleased then
-			tooltip:AddLine(16, "^1Not yet available")
+tooltip:AddLine(16, "^1未公开")
 		end
 		if item.source then
-			tooltip:AddLine(16, colorCodes.SOURCE.."Source: "..self:FormatItemSource(item.source))
+tooltip:AddLine(16, colorCodes.SOURCE..""..self:FormatItemSource(item.source))
 		end
 		if item.upgradePaths then
 			for _, path in ipairs(item.upgradePaths) do
@@ -1727,77 +1733,77 @@ function ItemsTabClass:AddItemTooltip(tooltip, item, slot, dbMode)
 		local weaponData = item.weaponData[slotNum]
 		tooltip:AddLine(16, s_format("^x7F7F7F%s", self.build.data.weaponTypeInfo[base.type].label or base.type))
 		if item.quality > 0 then
-			tooltip:AddLine(16, s_format("^x7F7F7FQuality: "..colorCodes.MAGIC.."+%d%%", item.quality))
+tooltip:AddLine(16, s_format("^x7F7F7F品质: "..colorCodes.MAGIC.."+%d%%", item.quality))
 		end
 		local totalDamageTypes = 0
 		if weaponData.PhysicalDPS then
-			tooltip:AddLine(16, s_format("^x7F7F7FPhysical Damage: "..colorCodes.MAGIC.."%d-%d (%.1f DPS)", weaponData.PhysicalMin, weaponData.PhysicalMax, weaponData.PhysicalDPS))
+tooltip:AddLine(16, s_format("^x7F7F7F物理伤害: "..colorCodes.MAGIC.."%d-%d (%.1f DPS)", weaponData.PhysicalMin, weaponData.PhysicalMax, weaponData.PhysicalDPS))
 			totalDamageTypes = totalDamageTypes + 1
 		end
 		if weaponData.ElementalDPS then
 			local elemLine
 			for _, var in ipairs({"Fire","Cold","Lightning"}) do
 				if weaponData[var.."DPS"] then
-					elemLine = elemLine and elemLine.."^x7F7F7F, " or "^x7F7F7FElemental Damage: "
+elemLine = elemLine and elemLine.."^x7F7F7F, " or "^x7F7F7F元素伤害: "
 					elemLine = elemLine..s_format("%s%d-%d", colorCodes[var:upper()], weaponData[var.."Min"], weaponData[var.."Max"])
 				end
 			end
 			tooltip:AddLine(16, elemLine)
-			tooltip:AddLine(16, s_format("^x7F7F7FElemental DPS: "..colorCodes.MAGIC.."%.1f", weaponData.ElementalDPS))
+tooltip:AddLine(16, s_format("^x7F7F7F元素 DPS: "..colorCodes.MAGIC.."%.1f", weaponData.ElementalDPS))
 			totalDamageTypes = totalDamageTypes + 1	
 		end
 		if weaponData.ChaosDPS then
-			tooltip:AddLine(16, s_format("^x7F7F7FChaos Damage: "..colorCodes.CHAOS.."%d-%d "..colorCodes.MAGIC.."(%.1f DPS)", weaponData.ChaosMin, weaponData.ChaosMax, weaponData.ChaosDPS))
+tooltip:AddLine(16, s_format("^x7F7F7F混沌伤害: "..colorCodes.CHAOS.."%d-%d "..colorCodes.MAGIC.."(%.1f DPS)", weaponData.ChaosMin, weaponData.ChaosMax, weaponData.ChaosDPS))
 			totalDamageTypes = totalDamageTypes + 1
 		end
 		if totalDamageTypes > 1 then
-			tooltip:AddLine(16, s_format("^x7F7F7FTotal DPS: "..colorCodes.MAGIC.."%.1f", weaponData.TotalDPS))
+tooltip:AddLine(16, s_format("^x7F7F7F总 DPS: "..colorCodes.MAGIC.."%.1f", weaponData.TotalDPS))
 		end
-		tooltip:AddLine(16, s_format("^x7F7F7FCritical Strike Chance: %s%.2f%%", main:StatColor(weaponData.CritChance, base.weapon.CritChanceBase), weaponData.CritChance))
-		tooltip:AddLine(16, s_format("^x7F7F7FAttacks per Second: %s%.2f", main:StatColor(weaponData.AttackRate, base.weapon.AttackRateBase), weaponData.AttackRate))
+tooltip:AddLine(16, s_format("^x7F7F7F攻击暴击率: %s%.2f%%", main:StatColor(weaponData.CritChance, base.weapon.CritChanceBase), weaponData.CritChance))
+tooltip:AddLine(16, s_format("^x7F7F7F每秒攻击次数: %s%.2f", main:StatColor(weaponData.AttackRate, base.weapon.AttackRateBase), weaponData.AttackRate))
 		if weaponData.range then
-			tooltip:AddLine(16, s_format("^x7F7F7FWeapon Range: %s%d", main:StatColor(weaponData.range, self.build.data.weaponTypeInfo[base.type].range), weaponData.range))
+tooltip:AddLine(16, s_format("^x7F7F7F武器范围: %s%d", main:StatColor(weaponData.range, self.build.data.weaponTypeInfo[base.type].range), weaponData.range))
 		end
 	elseif base.armour then
 		-- Armour-specific info
 		local armourData = item.armourData
 		if item.quality > 0 then
-			tooltip:AddLine(16, s_format("^x7F7F7FQuality: "..colorCodes.MAGIC.."+%d%%", item.quality))
+tooltip:AddLine(16, s_format("^x7F7F7F品质: "..colorCodes.MAGIC.."+%d%%", item.quality))
 		end
 		if base.armour.BlockChance and armourData.BlockChance > 0 then
-			tooltip:AddLine(16, s_format("^x7F7F7FChance to Block: %s%d%%", main:StatColor(armourData.BlockChance, base.armour.BlockChance), armourData.BlockChance))
+tooltip:AddLine(16, s_format("^x7F7F7F格挡几率: %s%d%%", main:StatColor(armourData.BlockChance, base.armour.BlockChance), armourData.BlockChance))
 		end
 		if armourData.Armour > 0 then
-			tooltip:AddLine(16, s_format("^x7F7F7FArmour: %s%d", main:StatColor(armourData.Armour, base.armour.ArmourBase), armourData.Armour))
+tooltip:AddLine(16, s_format("^x7F7F7F护甲: %s%d", main:StatColor(armourData.Armour, base.armour.ArmourBase), armourData.Armour))
 		end
 		if armourData.Evasion > 0 then
-			tooltip:AddLine(16, s_format("^x7F7F7FEvasion Rating: %s%d", main:StatColor(armourData.Evasion, base.armour.EvasionBase), armourData.Evasion))
+tooltip:AddLine(16, s_format("^x7F7F7F闪避: %s%d", main:StatColor(armourData.Evasion, base.armour.EvasionBase), armourData.Evasion))
 		end
 		if armourData.EnergyShield > 0 then
-			tooltip:AddLine(16, s_format("^x7F7F7FEnergy Shield: %s%d", main:StatColor(armourData.EnergyShield, base.armour.EnergyShieldBase), armourData.EnergyShield))
+tooltip:AddLine(16, s_format("^x7F7F7F能量护盾: %s%d", main:StatColor(armourData.EnergyShield, base.armour.EnergyShieldBase), armourData.EnergyShield))
 		end
 	elseif base.flask then
 		-- Flask-specific info
 		local flaskData = item.flaskData
 		if item.quality > 0 then
-			tooltip:AddLine(16, s_format("^x7F7F7FQuality: "..colorCodes.MAGIC.."+%d%%", item.quality))
+tooltip:AddLine(16, s_format("^x7F7F7F品质: "..colorCodes.MAGIC.."+%d%%", item.quality))
 		end
 		if flaskData.lifeTotal then
-			tooltip:AddLine(16, s_format("^x7F7F7FRecovers %s%d ^x7F7F7FLife over %s%.1f0 ^x7F7F7FSeconds", 
+tooltip:AddLine(16, s_format("^x7F7F7F回复 %s%d ^x7F7F7F生命 在 %s%.1f0 ^x7F7F7F秒内", 
 				main:StatColor(flaskData.lifeTotal, base.flask.life), flaskData.lifeTotal,
 				main:StatColor(flaskData.duration, base.flask.duration), flaskData.duration
 			))
 		end
 		if flaskData.manaTotal then
-			tooltip:AddLine(16, s_format("^x7F7F7FRecovers %s%d ^x7F7F7FMana over %s%.1f0 ^x7F7F7FSeconds", 
+tooltip:AddLine(16, s_format("^x7F7F7F回复 %s%d ^x7F7F7F魔力 在 %s%.1f0 ^x7F7F7F秒内", 
 				main:StatColor(flaskData.manaTotal, base.flask.mana), flaskData.manaTotal, 
 				main:StatColor(flaskData.duration, base.flask.duration), flaskData.duration
 			))
 		end
 		if not flaskData.lifeTotal and not flaskData.manaTotal then
-			tooltip:AddLine(16, s_format("^x7F7F7FLasts %s%.2f ^x7F7F7FSeconds", main:StatColor(flaskData.duration, base.flask.duration), flaskData.duration))
+tooltip:AddLine(16, s_format("^x7F7F7F持续 %s%.2f ^x7F7F7F秒", main:StatColor(flaskData.duration, base.flask.duration), flaskData.duration))
 		end
-		tooltip:AddLine(16, s_format("^x7F7F7FConsumes %s%d ^x7F7F7Fof %s%d ^x7F7F7FCharges on use",
+tooltip:AddLine(16, s_format("^x7F7F7F每次使用消耗 %s%d ^x7F7F7F充能，共 %s%d ^x7F7F7F充能",
 			main:StatColor(flaskData.chargesUsed, base.flask.chargesUsed), flaskData.chargesUsed,
 			main:StatColor(flaskData.chargesMax, base.flask.chargesMax), flaskData.chargesMax
 		))
@@ -1809,10 +1815,10 @@ function ItemsTabClass:AddItemTooltip(tooltip, item, slot, dbMode)
 	elseif item.type == "Jewel" then
 		-- Jewel-specific info
 		if item.limit then
-			tooltip:AddLine(16, "^x7F7F7FLimited to: ^7"..item.limit)
+tooltip:AddLine(16, "^x7F7F7F仅限: ^7"..item.limit)
 		end
 		if item.jewelRadiusIndex then
-			tooltip:AddLine(16, "^x7F7F7FRadius: ^7"..data.jewelRadius[item.jewelRadiusIndex].label)
+tooltip:AddLine(16, "^x7F7F7F范围: ^7"..data.jewelRadius[item.jewelRadiusIndex].label)
 		end
 		if item.jewelRadiusData and slot and item.jewelRadiusData[slot.nodeId] then
 			local radiusData = item.jewelRadiusData[slot.nodeId]
@@ -1824,7 +1830,7 @@ function ItemsTabClass:AddItemTooltip(tooltip, item, slot, dbMode)
 				end
 			end
 			if line then
-				tooltip:AddLine(16, "^x7F7F7FAttributes in Radius: "..line)
+tooltip:AddLine(16, "^x7F7F7F范围内属性: "..line)
 			end
 		end
 	end
@@ -1855,7 +1861,7 @@ function ItemsTabClass:AddItemTooltip(tooltip, item, slot, dbMode)
 			end
 			line = line .. code .. socket.color
 		end
-		tooltip:AddLine(16, "^x7F7F7FSockets: "..line)
+tooltip:AddLine(16, "^x7F7F7F插槽: "..line)
 	end
 	tooltip:AddSeparator(10)
 
@@ -1936,24 +1942,24 @@ function ItemsTabClass:AddItemTooltip(tooltip, item, slot, dbMode)
 			end
 		else
 			if durInc ~= 0 then
-				t_insert(stats, s_format("^8Flask effect duration: ^7%.1f0s", flaskData.duration * (1 + durInc / 100)))
+t_insert(stats, s_format("^8药剂效果持续时间: ^7%.1f0s", flaskData.duration * (1 + durInc / 100)))
 			end
 		end
 		local effectMod = 1 + (flaskData.effectInc + effectInc) / 100
 		if effectMod ~= 1 then
-			t_insert(stats, s_format("^8Flask effect modifier: ^7%+d%%", effectMod * 100 - 100))
+t_insert(stats, s_format("^8药剂效果加成: ^7%+d%%", effectMod * 100 - 100))
 		end
 		local usedInc = modDB:Sum("INC", nil, "FlaskChargesUsed")
 		if usedInc ~= 0 then
 			local used = m_floor(flaskData.chargesUsed * (1 + usedInc / 100))
-			t_insert(stats, s_format("^8Charges used: ^7%d ^8of ^7%d ^8(^7%d ^8uses)", used, flaskData.chargesMax, m_floor(flaskData.chargesMax / used)))
+t_insert(stats, s_format("^8充能使用: ^7%d ^8of ^7%d ^8(^7%d ^8uses)", used, flaskData.chargesMax, m_floor(flaskData.chargesMax / used)))
 		end
 		local gainMod = flaskData.gainMod * (1 + modDB:Sum("INC", nil, "FlaskChargesGained") / 100)
 		if gainMod ~= 1 then
-			t_insert(stats, s_format("^8Charge gain modifier: ^7%+d%%", gainMod * 100 - 100))
+t_insert(stats, s_format("^8充能获取加成: ^7%+d%%", gainMod * 100 - 100))
 		end
 		if stats[1] then
-			tooltip:AddLine(14, "^7Effective flask stats:")
+tooltip:AddLine(14, "^7有效药剂状态:")
 			for _, stat in ipairs(stats) do
 				tooltip:AddLine(14, stat)
 			end
@@ -1961,9 +1967,9 @@ function ItemsTabClass:AddItemTooltip(tooltip, item, slot, dbMode)
 		local output = calcFunc({ toggleFlask = item })
 		local header
 		if self.build.calcsTab.mainEnv.flasks[item] then
-			header = "^7Deactivating this flask will give you:"
+header = "^7取消激活这个药剂会让你:"
 		else
-			header = "^7Activating this flask will give you:"
+header = "^7激活这个药剂会给你:"
 		end
 		self.build:AddStatComparesToTooltip(tooltip, calcBase, output, header)
 	else
@@ -1998,9 +2004,9 @@ function ItemsTabClass:AddItemTooltip(tooltip, item, slot, dbMode)
 			local output = calcFunc({ repSlotName = slot.slotName, repItem = item ~= selItem and item })
 			local header
 			if item == selItem then
-				header = "^7Removing this item from "..slot.label.." will give you:"
+header = "^7从 "..slot.label.." 移除本装备会让你:"
 			else
-				header = string.format("^7Equipping this item in %s will give you:%s", slot.label, selItem and "\n(replacing "..colorCodes[selItem.rarity]..selItem.name.."^7)" or "")
+header = string.format("^7装备本物品到 %s 会让你:%s", slot.label, selItem and "\n(替换掉 "..colorCodes[selItem.rarity]..selItem.name.."^7)" or "")
 			end
 			self.build:AddStatComparesToTooltip(tooltip, calcBase, output, header)
 		end

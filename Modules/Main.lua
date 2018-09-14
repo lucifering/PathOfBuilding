@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Module: Main
 -- Main module of program.
@@ -79,6 +79,7 @@ local classList = {
 	"CalcsTab",
 	"CalcSectionControl",
 	"CalcBreakdownControl",
+	"AboutTab",
 }
 for _, className in ipairs(classList) do
 	LoadModule("Classes/"..className, launch, main)
@@ -135,7 +136,7 @@ function main:Init()
 		self.uniqueDB[targetVersion] = { list = { } }
 		for type, typeList in pairs(data.uniques) do
 			for _, raw in pairs(typeList) do
-				local newItem = common.New("Item", targetVersion, "Rarity: Unique\n"..raw)
+local newItem = common.New("Item", targetVersion, "稀 有 度: 传奇\n"..raw)
 				if newItem.base then
 					newItem:NormaliseQuality()
 					self.uniqueDB[targetVersion].list[newItem.name] = newItem
@@ -146,7 +147,7 @@ function main:Init()
 		end
 		self.rareDB[targetVersion] = { list = { } }
 		for _, raw in pairs(data[targetVersion].rares) do
-			local newItem = common.New("Item", targetVersion, "Rarity: Rare\n"..raw)
+local newItem = common.New("Item", targetVersion, "稀 有 度: 稀有\n"..raw)
 			if newItem.base then
 				newItem:NormaliseQuality()
 				if newItem.crafted then
@@ -197,18 +198,18 @@ function main:Init()
 	self.anchorMain.y = function()
 		return self.screenH - 4
 	end
-	self.controls.options = common.New("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 0, 0, 70, 20, "Options", function()
+self.controls.options = common.New("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 0, 0, 70, 20, "选项", function()
 		self:OpenOptionsPopup()
 	end)
 	self.controls.patreon = common.New("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 112, 0, 74, 20, "", function()
 		OpenURL("https://www.patreon.com/openarl")
 	end)
 	self.controls.patreon:SetImage("Assets/patreon_logo.png")
-	self.controls.patreon.tooltipText = "Help support the development of Path of Building by pledging a monthly donation!"
+self.controls.patreon.tooltipText = "给国际服的原作者捐款赞助！"
 	self.controls.about = common.New("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 228, 0, 70, 20, "About", function()
 		self:OpenAboutPopup()
 	end)
-	self.controls.applyUpdate = common.New("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 0, -24, 140, 20, "^x50E050Update Ready", function()
+self.controls.applyUpdate = common.New("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 0, -24, 140, 20, "^x50E050准备更新", function()
 		self:OpenUpdatePopup()
 	end)
 	self.controls.applyUpdate.shown = function()
@@ -221,7 +222,7 @@ function main:Init()
 		return not launch.devMode and (not launch.updateAvailable or launch.updateAvailable == "none")
 	end
 	self.controls.checkUpdate.label = function()
-		return launch.updateCheckRunning and launch.updateProgress or "Check for Update"
+return launch.updateCheckRunning and launch.updateProgress or "检查更新"
 	end
 	self.controls.checkUpdate.enabled = function()
 		return not launch.updateCheckRunning
@@ -230,11 +231,11 @@ function main:Init()
 	self.controls.versionLabel.label = function()
 		return "^8Version: "..launch.versionNumber..(launch.versionBranch == "dev" and " (Dev)" or "")
 	end
-	self.controls.devMode = common.New("LabelControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 0, -26, 0, 20, "^1Dev Mode")
+self.controls.devMode = common.New("LabelControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 0, -26, 0, 20, "^1开发模式")
 	self.controls.devMode.shown = function()
 		return launch.devMode
 	end
-	self.controls.dismissToast = common.New("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 0, function() return -self.mainBarHeight + self.toastHeight end, 80, 20, "Dismiss", function()
+self.controls.dismissToast = common.New("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 0, function() return -self.mainBarHeight + self.toastHeight end, 80, 20, "取消", function()
 		self.toastMode = "HIDING"
 		self.toastStart = GetTime()
 	end)
@@ -310,15 +311,15 @@ function main:OnFrame()
 	self:CallMode("OnFrame", self.inputEvents, self.viewPort)
 
 	if launch.updateErrMsg then
-		t_insert(self.toastMessages, string.format("Update check failed!\n%s", launch.updateErrMsg))
+t_insert(self.toastMessages, string.format("检查更新失败!\n%s", launch.updateErrMsg))
 		launch.updateErrMsg = nil
 	end
 	if launch.updateAvailable then
 		if launch.updateAvailable == "none" then
-			t_insert(self.toastMessages, "No update available\nYou are running the latest version.")
+t_insert(self.toastMessages, "当前程序是最新版，无需更新.")
 			launch.updateAvailable = nil
 		elseif not self.updateAvailableShown then
-			t_insert(self.toastMessages, "Update Available\nAn update has been downloaded and is ready\nto be applied.")
+t_insert(self.toastMessages, "有更新\n更新文件已经下载完毕，等待应用更新.")
 			self.updateAvailableShown = true
 		end
 	end
@@ -439,14 +440,14 @@ function main:LoadSettings()
 	if not setXML then
 		return true
 	elseif setXML[1].elem ~= "PathOfBuilding" then
-		launch:ShowErrMsg("^1Error parsing 'Settings.xml': 'PathOfBuilding' root element missing")
+launch:ShowErrMsg("^1文件解析失败 'Settings.xml': 'PathOfBuilding'子节点丢失")
 		return true
 	end
 	for _, node in ipairs(setXML[1]) do
 		if type(node) == "table" then
 			if node.elem == "Mode" then
 				if not node.attrib.mode or not self.modes[node.attrib.mode] then
-					launch:ShowErrMsg("^1Error parsing 'Settings.xml': Invalid mode attribute in 'Mode' element")
+launch:ShowErrMsg("^1文件解析失败 'Settings.xml':  'Mode' 节点错误")
 					return true
 				end
 				local args = { }
@@ -650,29 +651,29 @@ function main:OpenUpdatePopup()
 			if #changeList > 0 then
 				t_insert(changeList, { height = 12 })
 			end
-			t_insert(changeList, { height = 20, "^7Version "..ver.." ("..date..")" })
+t_insert(changeList, { height = 20, "^7版本 "..ver.." ("..date..")" })
 		else
 			t_insert(changeList, { height = 14, "^7"..line })
 		end
 	end
 	local controls = { }
 	controls.changeLog = common.New("TextListControl", nil, 0, 20, 780, 192, nil, changeList)
-	controls.update = common.New("ButtonControl", nil, -45, 220, 80, 20, "Update", function()
+controls.update = common.New("ButtonControl", nil, -45, 220, 80, 20, "更新", function()
 		self:ClosePopup()
 		local ret = self:CallMode("CanExit", "UPDATE")
 		if ret == nil or ret == true then
 			launch:ApplyUpdate(launch.updateAvailable)
 		end
 	end)
-	controls.cancel = common.New("ButtonControl", nil, 45, 220, 80, 20, "Cancel", function()
+controls.cancel = common.New("ButtonControl", nil, 45, 220, 80, 20, "取消", function()
 		self:ClosePopup()
 	end)
 	controls.patreon = common.New("ButtonControl", {"BOTTOMLEFT",nil,"BOTTOMLEFT"}, 10, -10, 82, 22, "", function()
 		OpenURL("https://www.patreon.com/openarl")
 	end)
 	controls.patreon:SetImage("Assets/patreon_logo.png")
-	controls.patreon.tooltipText = "Help support the development of Path of Building by pledging a monthly donation!"
-	self:OpenPopup(800, 250, "Update Available", controls)
+controls.patreon.tooltipText = "给pob原作者：Openarl 捐款赞助!"
+self:OpenPopup(800, 250, "【可用更新】", controls)
 end
 
 function main:OpenAboutPopup()
@@ -689,24 +690,24 @@ function main:OpenAboutPopup()
 		end
 	end
 	local controls = { }
-	controls.close = common.New("ButtonControl", {"TOPRIGHT",nil,"TOPRIGHT"}, -10, 10, 50, 20, "Close", function()
+controls.close = common.New("ButtonControl", {"TOPRIGHT",nil,"TOPRIGHT"}, -10, 10, 50, 20, "关闭", function()
 		self:ClosePopup()
 	end)
-	controls.version = common.New("LabelControl", nil, 0, 18, 0, 18, "Path of Building v"..launch.versionNumber.." by Openarl")
-	controls.forum = common.New("ButtonControl", nil, 0, 42, 420, 18, "Forum Thread: ^x4040FFhttps://www.pathofexile.com/forum/view-thread/1716360", function(control)
-		OpenURL("https://www.pathofexile.com/forum/view-thread/1716360")
+controls.version = common.New("LabelControl", nil, 0, 18, 0, 18, "Path of Building v"..launch.versionNumber.." 作者：Openarl 汉化：光影路西法")
+controls.forum = common.New("ButtonControl", nil, 0, 42, 420, 18, "国服版反馈: ^x4040FFhttp://bbs.17173.com/forum-9987-1.html", function(control)
+OpenURL("http://bbs.17173.com/forum-9987-1.html")
 	end)
-	controls.github = common.New("ButtonControl", nil, 0, 64, 340, 18, "GitHub page: ^x4040FFhttps://github.com/Openarl/PathOfBuilding", function(control)
-		OpenURL("https://github.com/Openarl/PathOfBuilding")
+controls.github = common.New("ButtonControl", nil, 0, 64, 340, 18, "gitee page: ^x4040FFhttps://gitee.com/poecn/PathOfBuildingCN17173", function(control)
+OpenURL("https://gitee.com/poecn/PathOfBuildingCN17173")
 	end)
 	controls.patreon = common.New("ButtonControl", {"TOPLEFT",nil,"TOPLEFT"}, 10, 10, 82, 22, "", function()
 		OpenURL("https://www.patreon.com/openarl")
 	end)
 	controls.patreon:SetImage("Assets/patreon_logo.png")
-	controls.patreon.tooltipText = "Help support the development of Path of Building by pledging a monthly donation!"
-	controls.verLabel = common.New("LabelControl", {"TOPLEFT",nil,"TOPLEFT"}, 10, 82, 0, 18, "^7Version history:")
+controls.patreon.tooltipText = "给pob原作者：Openarl 捐款赞助!"
+controls.verLabel = common.New("LabelControl", {"TOPLEFT",nil,"TOPLEFT"}, 10, 82, 0, 18, "^7版本信息:")
 	controls.changelog = common.New("TextListControl", nil, 0, 100, 630, 290, nil, changeList)
-	self:OpenPopup(650, 400, "About", controls)
+self:OpenPopup(650, 400, "【  17173·国服版  】", controls)
 end
 
 function main:DrawBackground(viewPort)
@@ -960,12 +961,15 @@ do
 				s = #str + 1
 				e = #str + 1
 			end
+			if lineStart == nil then break end
 			if DrawStringWidth(height, "VAR", str:sub(lineStart, s - 1)) > width then
 				t_insert(wrapTable, str:sub(lineStart, lastBreak))
 				lineStart = lastSpace
 			end
 			if s > #str then
-				t_insert(wrapTable, str:sub(lineStart, -1))
+--if str~=nil then  t_insert(wrapTable, str:sub(lineStart, -1)) end
+if str~=nil and lineStart~=nil then  t_insert(wrapTable, str:sub(lineStart, -1)) end --lucifer
+
 				break
 			end
 			lastBreak = s - 1

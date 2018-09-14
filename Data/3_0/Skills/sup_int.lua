@@ -7,8 +7,8 @@
 local skills, mod, flag, skill = ...
 
 skills["SupportAddedChaosDamage"] = {
-	name = "Added Chaos Damage",
-	description = "Supports any skill that hits enemies.",
+	name = "附加混沌伤害(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -69,8 +69,8 @@ skills["SupportAddedChaosDamage"] = {
 	},
 }
 skills["SupportAddedLightningDamage"] = {
-	name = "Added Lightning Damage",
-	description = "Supports any skill that hits enemies.",
+	name = "附加闪电伤害(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 1, 10, },
@@ -131,8 +131,8 @@ skills["SupportAddedLightningDamage"] = {
 	},
 }
 skills["SupportArcaneSurge"] = {
-	name = "Arcane Surge",
-	description = "Each supported spell will track how much mana you spend on it, granting a buff when the total mana spent reaches a threshold. Cannot support skills used by totems, traps, or mines.",
+	name = "秘术增强(辅)",
+	description = "所有被辅助的法术技能会记录你消耗的魔力, 当消耗的总魔力达到指定值时获得一个增益. 无法辅助图腾, 陷阱或地雷所施放的技能。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 2, },
@@ -196,8 +196,8 @@ skills["SupportArcaneSurge"] = {
 	},
 }
 skills["SupportBlasphemy"] = {
-	name = "Blasphemy",
-	description = "Supports curse skills, turning them into auras that will apply their effect to all enemies in an area around you.",
+	name = "诅咒光环(辅)",
+	description = "辅助诅咒技能, 使诅咒以光环形式施放并影响周围的敌人",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 32, },
@@ -260,8 +260,8 @@ skills["SupportBlasphemy"] = {
 	},
 }
 skills["SupportCastOnStunned"] = {
-	name = "Cast when Stunned",
-	description = "Each supported spell skill will have a chance to be triggered when you are stunned. Cannot support skills used by totems, traps, or mines. Vaal skills and skills that reserve mana cannot be triggered.",
+	name = "晕眩时施放(辅)",
+	description = "所有被辅助的法术技能有几率在你被晕眩时施放. 无法辅助图腾, 陷阱或地雷所施放的技能. 瓦尔技能或魔力保留类技能无法被触发施放",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 36, },
@@ -323,8 +323,8 @@ skills["SupportCastOnStunned"] = {
 	},
 }
 skills["SupportCastWhileChannelling"] = {
-	name = "Cast while Channelling",
-	description = "Must support both a channelling skill and a non-channelling spell skill to work. The channelling skill will trigger a spell periodically while channelling.  Cannot support skills used by totems, traps, or mines. Vaal skills and skills that reserve mana cannot be triggered.",
+	name = "吟唱时施放(辅)",
+	description = "必须同时连接一个持续吟唱技能和一个非吟唱法术技能才能生效. 吟唱技能在吟唱过程中每隔一段时间会触发法术技能. 无法辅助图腾, 陷阱或地雷所施放的技能. 召唤生物无法用该方式施放诅咒",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 58, 36, },
@@ -386,8 +386,8 @@ skills["SupportCastWhileChannelling"] = {
 	},
 }
 skills["SupportChanceToIgnite"] = {
-	name = "Combustion",
-	description = "Supports any skill that hits enemies.",
+	name = "几率点燃(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -449,8 +449,8 @@ skills["SupportChanceToIgnite"] = {
 	},
 }
 skills["SupportConcentratedEffect"] = {
-	name = "Concentrated Effect",
-	description = "Supports any skill with an area of effect, regardless of whether that skill deals damage.",
+	name = "集中效应(辅)",
+	description = "辅助任意有范围效果的技能, 不论该技能是否造成伤害",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 11, 21, 53, },
@@ -511,8 +511,8 @@ skills["SupportConcentratedEffect"] = {
 	},
 }
 skills["SupportControlledDestruction"] = {
-	name = "Controlled Destruction",
-	description = "Supports attack skills, or spell skills that deal damage.",
+	name = "精准破坏(辅)",
+	description = "辅助能造成伤害的攻击或法术技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 10, 1, 59, },
@@ -573,8 +573,8 @@ skills["SupportControlledDestruction"] = {
 	},
 }
 skills["SupportCurseOnHit"] = {
-	name = "Curse On Hit",
-	description = "Must support both a skill that hits enemies, and a curse skill to work. The curse will be applied when enemies are hit by the other skill. Cannot support totems, traps, or mines. Minions cannot apply curses this way.",
+	name = "击中附加诅咒(辅)",
+	description = "必须同时连接一个能击中敌人的技能和一个诅咒技能才能生效. 诅咒技能会在另一个技能击中敌人时施放. 无法辅助图腾, 陷阱或地雷. 召唤生物无法用该方式施放诅咒",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 1, 10, 32, },
@@ -635,8 +635,8 @@ skills["SupportCurseOnHit"] = {
 	},
 }
 skills["SupportDecay"] = {
-	name = "Decay",
-	description = "Supports any skill that hits enemies.",
+	name = "腐蚀(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -696,8 +696,8 @@ skills["SupportDecay"] = {
 	},
 }
 skills["SupportEfficacy"] = {
-	name = "Efficacy",
-	description = "Supports any skill that deals damage or has a duration.",
+	name = "效能(辅)",
+	description = "辅助任意能造成伤害或有持续时间的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 10, 1, 59, 12, 55, 40, },
@@ -759,8 +759,8 @@ skills["SupportEfficacy"] = {
 	},
 }
 skills["SupportElementalFocus"] = {
-	name = "Elemental Focus",
-	description = "Supports any skill that hits or burns enemies.",
+	name = "元素集中(辅)",
+	description = "辅助任意能击中或点燃敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 10, 1, 29, },
@@ -821,8 +821,8 @@ skills["SupportElementalFocus"] = {
 	},
 }
 skills["SupportElementalProliferation"] = {
-	name = "Elemental Proliferation",
-	description = "Supports any skill that hits enemies, or could otherwise apply elemental ailments.",
+	name = "元素扩散(辅)",
+	description = "辅助任意能击中敌人或对敌人造成元素异常状态的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 10, 1, 20, },
@@ -885,8 +885,8 @@ skills["SupportElementalProliferation"] = {
 	},
 }
 skills["SupportAdditionalXP"] = {
-	name = "Enlighten",
-	description = "Supports any skill gem. Once this gem reaches level 2 or above, will apply a mana multiplier to supported gems. Cannot support skills that don't come from gems.",
+	name = "启蒙(辅)",
+	description = "辅助任意技能. 当该宝石达到 2 级或以上时, 降低被辅助技能的法力消耗. 无法辅助非技能宝石带来的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { },
@@ -916,8 +916,8 @@ skills["SupportAdditionalXP"] = {
 	},
 }
 skills["SupportFasterCast"] = {
-	name = "Faster Casting",
-	description = "Supports non-instant spell skills.",
+	name = "快速施法(辅)",
+	description = "辅助法术技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 2, },
@@ -977,8 +977,8 @@ skills["SupportFasterCast"] = {
 	},
 }
 skills["SupportIgniteProliferation"] = {
-	name = "Ignite Proliferation",
-	description = "Supports any skill that hits enemies.",
+	name = "点燃扩散(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -1039,8 +1039,8 @@ skills["SupportIgniteProliferation"] = {
 	},
 }
 skills["SupportImmolation"] = {
-	name = "Immolate",
-	description = "Supports any skill that hits enemies.",
+	name = "献祭(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -1101,8 +1101,8 @@ skills["SupportImmolation"] = {
 	},
 }
 skills["SupportIncreasedAreaOfEffect"] = {
-	name = "Increased Area of Effect",
-	description = "Supports any skill with an area of effect.",
+	name = "增大范围(辅)",
+	description = "辅助任意有范围效果的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 11, 21, 53, },
@@ -1162,8 +1162,8 @@ skills["SupportIncreasedAreaOfEffect"] = {
 	},
 }
 skills["SupportIncreasedCriticalDamage"] = {
-	name = "Increased Critical Damage",
-	description = "Supports any skill that hits enemies.",
+	name = "提高暴击伤害(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -1223,8 +1223,8 @@ skills["SupportIncreasedCriticalDamage"] = {
 	},
 }
 skills["SupportIncreasedCriticalStrikes"] = {
-	name = "Increased Critical Strikes",
-	description = "Supports any skill that hits enemies.",
+	name = "提高暴击几率(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -1285,8 +1285,8 @@ skills["SupportIncreasedCriticalStrikes"] = {
 	},
 }
 skills["SupportOnslaughtOnSlayingShockedEnemy"] = {
-	name = "Innervate",
-	description = "Supports any skill you use to hit enemies yourself. Cannot support skills used by totems, traps, or mines",
+	name = "闪电支配(辅)",
+	description = "辅助任意你用来击中敌人的技能. 无法辅助图腾, 陷阱和地雷所施放的技能.",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -1352,8 +1352,8 @@ skills["SupportOnslaughtOnSlayingShockedEnemy"] = {
 	},
 }
 skills["SupportItemRarity"] = {
-	name = "Item Rarity",
-	description = "Supports any skill that can kill enemies.",
+	name = "物品稀有度增幅(辅)",
+	description = "辅助任意能击败敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 10, 1, 40, },
@@ -1412,8 +1412,8 @@ skills["SupportItemRarity"] = {
 	},
 }
 skills["SupportLightningPenetration"] = {
-	name = "Lightning Penetration",
-	description = "Supports any skill that hits enemies, making those hits penetrate enemy lightning resistance.",
+	name = "闪电穿透(辅)",
+	description = "辅助任意击中敌人的技能, 使击中能穿透敌人的闪电抗性",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -1473,8 +1473,8 @@ skills["SupportLightningPenetration"] = {
 	},
 }
 skills["SupportMinefield"] = {
-	name = "Minefield",
-	description = "Supports skills which place mines.",
+	name = "地雷网(辅)",
+	description = "辅助地雷技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 41, },
@@ -1536,8 +1536,8 @@ skills["SupportMinefield"] = {
 	},
 }
 skills["SupportMinionDamage"] = {
-	name = "Minion Damage",
-	description = "Supports minion skills.",
+	name = "召唤生物伤害(辅)",
+	description = "辅助召唤生物技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 9, },
@@ -1597,8 +1597,8 @@ skills["SupportMinionDamage"] = {
 	},
 }
 skills["SupportMinionLife"] = {
-	name = "Minion Life",
-	description = "Supports minion skills.",
+	name = "召唤生物生命(辅)",
+	description = "辅助召唤生物技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 9, },
@@ -1658,8 +1658,8 @@ skills["SupportMinionLife"] = {
 	},
 }
 skills["SupportMinionSpeed"] = {
-	name = "Minion Speed",
-	description = "Supports minion skills.",
+	name = "召唤生物速度(辅)",
+	description = "辅助召唤生物技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 9, },
@@ -1721,8 +1721,8 @@ skills["SupportMinionSpeed"] = {
 	},
 }
 skills["SupportSummonElementalResistances"] = {
-	name = "Minion and Totem Elemental Resistance",
-	description = "Supports minion or totem skills.",
+	name = "召唤生物与图腾元素抗性(辅)",
+	description = "辅助召唤生物或图腾类技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 9, 30, },
@@ -1787,8 +1787,8 @@ skills["SupportSummonElementalResistances"] = {
 	},
 }
 skills["SupportPhysicalToLightning"] = {
-	name = "Physical to Lightning",
-	description = "Supports any skill that hits enemies.",
+	name = "物理转闪电(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -1850,8 +1850,8 @@ skills["SupportPhysicalToLightning"] = {
 	},
 }
 skills["SupportPowerChargeOnCrit"] = {
-	name = "Power Charge On Critical",
-	description = "Supports any skill that hits enemies.",
+	name = "暴击获得暴击球(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -1912,8 +1912,8 @@ skills["SupportPowerChargeOnCrit"] = {
 	},
 }
 skills["SupportRemoteMine"] = {
-	name = "Remote Mine",
-	description = "Supports spells, or attacks that use bows or wands. Instead of using that skill, you will place a mine that will use the skill for you when you detonate it.",
+	name = "遥控地雷(辅)",
+	description = "辅助法术技能, 或使用弓箭和法杖的攻击技能. 你将不再直接施放被辅助的技能, 技能会以地雷的形式施放",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 19, },
@@ -1982,8 +1982,8 @@ skills["SupportRemoteMine"] = {
 	},
 }
 skills["SupportSpellCascade"] = {
-	name = "Spell Cascade",
-	description = "Supports spell skills that apply an effect to an area around a targeted location. Cannot support Vaal skills, minion skills, or skills used by totems, traps, or mines.",
+	name = "多重范围施法(辅)",
+	description = "能够辅助对目标造成范围伤害的法术技能。无法辅助瓦尔技能，召唤生物技能或图腾，陷阱和地雷使用的技能。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 67, },
@@ -2045,8 +2045,8 @@ skills["SupportSpellCascade"] = {
 	},
 }
 skills["SupportMulticast"] = {
-	name = "Spell Echo",
-	description = "Supports spell skills, making them repeat when cast. Cannot support Vaal skills, totem skills, channelling skills, triggered skills, instant skills, or skills which reserve mana.",
+	name = "施法回响(辅)",
+	description = "辅助法术技能, 使该技能在使用时被自动重复 1 次. 无法辅助瓦尔技能, 图腾技能, 持续吟唱技能, 触发类技能, 瞬发类技能或魔力保留类技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 26, },
@@ -2108,8 +2108,8 @@ skills["SupportMulticast"] = {
 	},
 }
 skills["SupportStormBarrier"] = {
-	name = "Storm Barrier",
-	description = "Supports any channelling skill, protecting you from damage while you channel it. Cannot support Minions that channel skills.",
+	name = "风暴屏障(辅)",
+	description = "辅助任何吟唱技能，在你持续吟唱时保护你。无法辅助召唤生物类技能。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 58, },
@@ -2171,8 +2171,8 @@ skills["SupportStormBarrier"] = {
 	},
 }
 skills["SupportSummonGhostOnKill"] = {
-	name = "Summon Phantasm on Kill",
-	description = "Supports skills that can hit enemies, or create minions. When those skills or minions kill enemies, they will have a chance to summon a Phantasm minion, which uses a piercing projectile spell that deals physical damage.",
+	name = "击败召唤幻影(辅)",
+	description = "能够辅助可以击中敌人或召唤生物的技能。当该技能或召唤生物击败敌人，有一定几率召唤一个幽灵生物，该生物可以使用投射物穿刺法术造成物理伤害。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 1, 10, 9, },
@@ -2241,8 +2241,8 @@ skills["SupportSummonGhostOnKill"] = {
 	},
 }
 skills["SupportAilments"] = {
-	name = "Unbound Ailments",
-	description = "Supports any skill that hits enemies.",
+	name = "异常爆发(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { 10, 1, 20, },

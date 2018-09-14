@@ -3,146 +3,146 @@
 local itemBases = ...
 
 
-itemBases["Iron Ring"] = {
+itemBases["锻铁戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
-	implicit = "Adds 1 to 4 Physical Damage to Attacks",
+	implicit = "攻击附加 1 - 4 基础物理伤害",
 	req = { },
 }
-itemBases["Coral Ring"] = {
+itemBases["珊瑚戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
-	implicit = "+(20-30) to maximum Life",
+	implicit = "+(20-30) 最大生命",
 	req = { },
 }
-itemBases["Paua Ring"] = {
+itemBases["海灵戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
-	implicit = "+(20-25) to maximum Mana",
+	implicit = "+(20-25) 最大魔力",
 	req = { },
 }
-itemBases["Gold Ring"] = {
+itemBases["金光戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
-	implicit = "(6-15)% increased Rarity of Items found",
+	implicit = "物品稀有度提高 (6-15)%",
 	req = { level = 20, },
 }
-itemBases["Topaz Ring"] = {
+itemBases["黄玉戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
-	implicit = "+(20-30)% to Lightning Resistance",
+	implicit = "+(20-30)% 闪电抗性",
 	req = { level = 12, },
 }
-itemBases["Sapphire Ring"] = {
+itemBases["蓝玉戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
-	implicit = "+(20-30)% to Cold Resistance",
+	implicit = "+(20-30)% 冰霜抗性",
 	req = { level = 8, },
 }
-itemBases["Ruby Ring"] = {
+itemBases["红玉戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
-	implicit = "+(20-30)% to Fire Resistance",
+	implicit = "+(20-30)% 火焰抗性",
 	req = { level = 16, },
 }
-itemBases["Prismatic Ring"] = {
+itemBases["三相戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
-	implicit = "+(8-10)% to all Elemental Resistances",
+	implicit = "获得 +(8-10)% 火焰、冰霜、闪电抗性",
 	req = { level = 30, },
 }
-itemBases["Moonstone Ring"] = {
+itemBases["月光石戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
-	implicit = "+(15-25) to maximum Energy Shield",
+	implicit = "+(15-25) 最大能量护盾",
 	req = { level = 20, },
 }
-itemBases["Amethyst Ring"] = {
+itemBases["紫晶戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
-	implicit = "+(9-13)% to Chaos Resistance",
+	implicit = "+(9-13)% 混沌抗性",
 	req = { level = 30, },
 }
-itemBases["Diamond Ring"] = {
+itemBases["宝钻戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
-	implicit = "(20-30)% increased Global Critical Strike Chance",
+	implicit = "攻击和法术暴击率提高 (20-30)%",
 	req = { level = 20, },
 }
-itemBases["Two-Stone Ring"] = {
+itemBases["双玉戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, twostonering = true, },
-	implicit = "+(12-16)% to Fire and Lightning Resistances",
+	implicit = "+(12-16)% 火焰与闪电抗性",
 	req = { level = 20, },
 }
-itemBases["Two-Stone Ring"] = {
+itemBases["双玉戒指"] = {
 	type = "Ring",
 	hidden = true,
 	tags = { default = true, ring = true, twostonering = true, },
-	implicit = "+(12-16)% to Cold and Lightning Resistances",
+	implicit = "+(12-16)% 冰霜与闪电抗性",
 	req = { level = 20, },
 }
-itemBases["Two-Stone Ring"] = {
+itemBases["双玉戒指"] = {
 	type = "Ring",
 	hidden = true,
 	tags = { default = true, ring = true, twostonering = true, },
-	implicit = "+(12-16)% to Fire and Cold Resistances",
+	implicit = "+(12-16)% 火焰与冰霜抗性",
 	req = { level = 20, },
 }
-itemBases["Unset Ring"] = {
+itemBases["潜能之戒"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, unset_ring = true, },
-	implicit = "Has 1 Socket",
+	implicit = "有 1 个插槽",
 	req = { level = 5, },
 }
 itemBases["Two-Stone Ring (Fire/Lightning)"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, twostonering = true, },
-	implicit = "+(12-16)% to Fire and Lightning Resistances",
+	implicit = "+(12-16)% 火焰与闪电抗性",
 	req = { level = 20, },
 }
 itemBases["Two-Stone Ring (Cold/Lightning)"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, twostonering = true, },
-	implicit = "+(12-16)% to Cold and Lightning Resistances",
+	implicit = "+(12-16)% 冰霜与闪电抗性",
 	req = { level = 20, },
 }
 itemBases["Two-Stone Ring (Fire/Cold)"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, twostonering = true, },
-	implicit = "+(12-16)% to Fire and Cold Resistances",
+	implicit = "+(12-16)% 火焰与冰霜抗性",
 	req = { level = 20, },
 }
-itemBases["Steel Ring"] = {
+itemBases["合金戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, not_for_sale = true, atlas_base_type = true, ringatlas1 = true, },
-	implicit = "Adds (3-4) to (10-14) Physical Damage to Attacks",
+	implicit = "攻击附加 (3-4) - (10-14) 基础物理伤害",
 	req = { level = 80, },
 }
-itemBases["Opal Ring"] = {
+itemBases["蛋白石戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, not_for_sale = true, atlas_base_type = true, ringatlas2 = true, },
-	implicit = "(15-25)% increased Elemental Damage",
+	implicit = "火焰、冰霜、闪电伤害提高 (15-25)%",
 	req = { level = 80, },
 }
 
-itemBases["Breach Ring"] = {
+itemBases["裂隙戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, not_for_sale = true, },
-	implicit = "Properties are doubled while in a Breach",
+	implicit = "属性在裂隙内得到加倍",
 	req = { },
 }
-itemBases["Golden Hoop"] = {
+itemBases["金环"] = {
 	type = "Ring",
 	hidden = true,
 	tags = { default = true, ring = true, not_for_sale = true, },
-	implicit = "+(8-12) to all Attributes",
+	implicit = "+(8-12) 全属性",
 	req = { level = 12, },
 }
-itemBases["Jet Ring"] = {
+itemBases["杰特戒指"] = {
 	type = "Ring",
 	hidden = true,
 	tags = { default = true, ring = true, not_for_sale = true, },
-	implicit = "(5-10)% increased Global Defences",
+	implicit = "全局防御提高 (5-10)%",
 	req = { },
 }

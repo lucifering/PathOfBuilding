@@ -1,989 +1,988 @@
 ﻿-- Item data (c) Grinding Gear Games
-
 return {
 -- Body: Armour
 [[
-Bramblejack
-Plate Vest
-Upgrade: Upgrades to unique{Wall of Brambles} via prophecy{The King and the Brambles}
-Adds 2 to 4 Physical Damage to Attacks
-+(12-20) to maximum Life
-−2 Physical Damage taken from Attacks
-40% of Melee Physical Damage taken reflected to Attacker
+刺棘宝甲
+铁制背心
+升级: 使用 预言【国王和荆棘】 升级为 传奇【荆棘之墙】
+攻击附加 2 - 4 基础物理伤害
++(12-20) 最大生命
+承受攻击造成的物理伤害 -2
+受到近战物理伤害的 40% 会反射给攻击者
 ]],[[
-Wall of Brambles
-Plate Vest
-Source: Upgraded from unique{Bramblejack} using prophecy{The King and the Brambles}
-Requires Level 30
-Adds 2 to 4 Physical Damage to Attacks
-+2000 to Armour
-+(12-20) to maximum Life
-−2 Physical Damage taken from Attacks
-40% of Melee Physical Damage taken reflected to Attacker
+荆棘之墙
+铁制背心
+源: 由传奇【刺棘宝甲】 使用 预言【国王和荆棘】 升级
+等级需求: 30
+攻击附加 2 - 4 基础物理伤害
++2000 护甲
++(12-20) 最大生命
+承受攻击造成的物理伤害 -2
+受到近战物理伤害的 40% 会反射给攻击者
 ]],[[
-The Brass Dome
-Gladiator Plate
-Source: Drops from unique{Guardian of the Minotaur}
-Requires Level 65, 177 Str
-30% reduced Chance to Block Attacks and Spells
-(600-650)% increased Armour
-10% reduced Movement Speed
-50% increased Shock Duration on You
-Take no Extra Damage from Critical Strikes
+巨铜之顶
+角斗重铠
+源: 传奇Boss【牛头人守卫】 专属掉落
+等级需求: 65, 177 Str
+攻击及法术伤害格挡几率降低 30%
+护甲提高 (600-650)%
+移动速度降低 10%
+你被感电的持续时间延长 50%
+不会受到暴击所造成的额外暴击伤害
 ]],[[
-Craiceann's Carapace
-Golden Plate
-League: Bestiary
-Source: Drops from unique{Craiceann, First of the Deep}
-Requires Level 56
-Grants Level 20 Aspect of the Crab Skill
-(300–350)% increased Armour
-+(100–120) to maximum Life
-+(25–30)% to Fire and Cold Resistances
-Cannot be inflicted with Bleeding
-+5 to Maximum number of Crab Barriers
+深海魔甲
+金耀之铠
+联盟: 猎魔笔记
+源: 传奇Boss【深海初子 克林斯昂】 专属掉落
+等级需求: 56
+获得 20 级的主动技能【蟹之势】
+护甲提高 (300-350)%
++(100-120) 最大生命
++(25-30)% 火焰与冰霜抗性
+免疫流血
++5 【深海屏障】数量上限
 ]],[[
-Death's Oath
-Astral Plate
-Variant: Pre 2.0.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 62, 180 Str
-+(8-12)% to all Elemental Resistances
-{variant:3}Grants level 20 Death Aura Skill
-+(40-50) to all Attributes
-{variant:3}+(60-70) to maximum Life
-(10-15)% increased Attack Speed
-(180-220)% increased Armour
-{variant:1}5% of Physical Attack Damage Leeched as Life
-{variant:2}1% of Physical Attack Damage Leeched as Life
-{variant:3}1% of Attack Damage Leeched as Life
-{variant:1,2}Deals 450 Chaos Damage per second to nearby Enemies
-{variant:1}You take 450 Chaos Damage per second for 10 seconds on Kill
-{variant:2,3}You take 450 Chaos Damage per second for 3 seconds on Kill
-Gore Footprints
+冥使之体
+星芒战铠
+版本: 2.0.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 62, 180 Str
+获得 +(8-12)% 火焰、冰霜、闪电抗性
+{variant:3}获得 20 级【死神光环】
++(40-50) 全属性
+{variant:3}+(60-70) 最大生命
+攻击速度提高 (10-15)%
+护甲提高 (180-220)%
+{variant:1}物理攻击伤害的 5% 会转化为生命偷取
+{variant:2}物理攻击伤害的 1% 会转化为生命偷取
+{variant:3}攻击伤害的 1% 转化为生命偷取
+{variant:1,2}每秒对周围敌人造成 450 混沌伤害
+{variant:1}击败敌人后 10 秒内持续承受 450 混沌伤害
+{variant:2,3}击败敌人后 3 秒内持续承受 450 混沌伤害
+瘀血爪印
 ]],[[
-Greed's Embrace
-Golden Plate
-Requires Level 56, 106 Str
-(10-15)% increased Quantity of Items found
-(30-50)% increased Rarity of Items found
-−10% to Fire Resistance
-+(20-30)% to Cold Resistance
-−20% to Lightning Resistance
-20% reduced Movement Speed
-30% reduced Strength Requirement
+贪婪之拥
+金耀之铠
+等级需求: 56, 106 Str
+物品掉落数量提高 (10-15)%
+物品稀有度提高 (30-50)%
+-10% 火焰抗性
++(20-30)% 冰霜抗性
+-20% 闪电抗性
+移动速度降低 20%
+力量需求降低 30%
 ]],[[
-Kaom's Heart
-Glorious Plate
-Variant: Pre 1.0.0
-Variant: Current
-Requires Level 68, 191 Str
-Has no Sockets
-{variant:1}+1000 to maximum Life
-{variant:2}+500 to maximum Life
-{variant:2}(20-40)% increased Fire Damage
+冈姆的壮志
+荣耀战铠
+版本: 1.0.0以前
+版本: 当前
+等级需求: 68, 191 Str
+没有插槽
+{variant:1}+1000 最大生命
+{variant:2}+500 最大生命
+{variant:2}火焰伤害提高 (20-40)%
 ]],[[
-Lioneye's Vision
-Crusader Plate
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 59, 160 Str
-(200-250)% increased Armour
-+(60-100) to maximum Life
-0.4% of Physical Attack Damage Leeched as Mana
-Socketed Gems are Supported by level 15 Pierce
+狮眼的视线
+征战重铠
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 59, 160 Str
+护甲提高 (200-250)%
++(60-100) 最大生命
+物理攻击伤害的 0.4% 转化为魔力偷取
+此物品上的技能石受到 15 级的穿透辅助
 {variant:1}+20% chance to be Pierced by Projectiles
-{variant:2}Projectiles Pierce you
+{variant:2}敌人的投射物会穿透你
 ]],[[
-Iron Heart
-Crusader Plate
-Upgrade: Upgrades to unique{The Iron Fortress} via prophecy{Battle Hardended}
-Requires Level 59
-(80–100)% increased Armour 
-10% reduced Movement Speed 
-(8–12)% Chance to Block 
-Cannot Block Spells 
-Strength's Damage Bonus instead grants 3% increased Melee Physical Damage per 10 Strength
+钢铁之心
+征战重铠
+Requires Level: 59
+护甲提高 (80-100)%
+移动速度降低 10%
+(8-12)% 攻击格挡率
+无法格挡法术
+不再通过力量获得伤害加成，每 10 点力量会使近战伤害提高 3%
+----------------------------
+【*】上面这条词缀游戏中是会换行的，如果从游戏中复制或导入，那么需要手动修改为1行
 ]],[[
-Solaris Lorica
-Copper Plate
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 17, 53 Str
-+(10-20) to Strength
-(60-80)% increased Armour
-25% increased Light Radius
-Chaos Damage does not bypass Energy Shield
-{variant:1}−10 Chaos Damage taken
-{variant:2}-(30-40) Chaos Damage taken
-{variant:2}25% reduced Chaos Damage Taken Over Time
+烈阳铠
+铜锻板甲
+版本: 2.6.0以前
+版本: 当前
+等级需求: 17, 53 Str
++(10-20) 力量
+护甲提高 (60-80)%
+照亮范围扩大 25%
+混沌伤害不能穿透能量护盾
+{variant:1}−10 承受的混沌伤害
+{variant:2}-(30-40) 承受的混沌伤害
+{variant:2}受到的持续性混沌伤害降低 25%
 ]],
 -- Body: Evasion
 [[
-Ashrend
-Buckskin Tunic
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 17, 53 Dex
-{variant:2}Socketed Gems are Supported by level 10 Added Fire Damage
-(80-100)% increased Evasion Rating
-{variant:2}+(30-50) to maximum Life
-+(40-50)% to Fire Resistance
-Cannot be Ignited
-(10-15)% increased Physical Damage with Ranged Weapons
-−(5-7) Physical Damage taken from Attacks
+拂烬
+鹿皮外套
+版本: 2.6.0以前
+版本: 当前
+等级需求: 17, 53 Dex
+{variant:2}此物品上的技能石受到 10 级的 附加火焰伤害 辅助
+闪避值提高 (80-100)%
+{variant:2}+(30-50) 最大生命
++(40-50)% 火焰抗性
+免疫点燃
+远程武器攻击的物理伤害提高 (10-15)%
+承受攻击造成的物理伤害 (-7--5)
 ]],[[
-Briskwrap
-Strapped Leather
-Upgrade: Upgrades to unique{Wildwrap} via prophecy{Last of the Wildmen}
-Variant: Pre 2.0.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 9, 32 Dex
-{variant:1,2}5% increased Attack Speed
-{variant:3}10% increased Attack Speed
-+(120-180) to Evasion Rating
-+(30-40)% to Cold Resistance
-5% increased Movement Speed
-(20-25)% increased Mana Recovery from Flasks
-{variant:1}5% increased Dexterity
-{variant:2,3}15% increased Dexterity
+荒途
+扣环皮甲
+升级: 使用 预言【最后一个野人】 升级为 传奇【荒野之绕】
+版本: 2.0.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 9, 32 Dex
+{variant:1,2}攻击速度提高 5%
+{variant:3}攻击速度提高 10%
++(120-180) 点闪避值
++(30-40)% 冰霜抗性
+移动速度提高 5%
+药剂回复的魔力提高 (20-25)%
+{variant:1}敏捷提高 5%
+{variant:2,3}敏捷提高 15%
 ]],[[
-Wildwrap
-Strapped Leather
-Source: Upgraded from unique{Briskwrap} via prophecy{Last of the Wildmen}
-Requires Level 57
-(5–8)% increased Attack Speed
-+(600–700) to Evasion Rating
-+(30–40)% to Cold Resistance
-5% increased Movement Speed
-(20–25)% increased Mana Recovery from Flasks
-15% increased Dexterity
-1% increased Damage per 15 Dexterity
+荒野之绕
+扣环皮甲
+源: 由传奇【荒途】 使用 预言【最后一个野人】 升级
+等级需求: 57
+攻击速度提高 (5-8)%
++(600-700) 点闪避值
++(30-40)% 冰霜抗性
+移动速度提高 5%
+药剂回复的魔力提高 (20-25)%
+敏捷提高 15%
+每 15 点敏捷可使伤害提高 1%
 ]],[[
-Bronn's Lithe
-Cutthroat's Garb
-Variant: Pre 2.0.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 53, 144 Dex
-+2 to Level of Socketed Movement Gems
-10% increased Attack Speed
-{variant:2,3}(35-50)% increased Damage with Movement Skills
-{variant:3}15% increased Attack and Cast Speed if you've used a Movement Skill Recently
-(200-250)% increased Evasion Rating
-10% increased Movement Speed
+布隆的影衣
+死神之装
+版本: 2.0.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 53, 144 Dex
+此物品上装备的【移动技能石】等级 +2
+攻击速度提高 10%
+{variant:2,3}移动技能的伤害提高 (35-50)%
+{variant:3}近期内你若使用过移动技能，则攻击和施法速度提高 15%
+闪避值提高 (200-250)%
+移动速度提高 10%
 ]],[[
-Cospri's Will
-Assassin's Garb
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 68, 183 Dex
-3% increased Movement Speed
-(120-160)% increased Evasion Rating
-+(17-29)% to Chaos Resistance
-Enemies can have 1 additional Curse
-Your Curses can apply to Hexproof Enemies
-{variant:1}Poison Cursed Enemies on hit
-{variant:2}60% chance to Poison on Hit against Cursed Enemies
+卡斯普里意志
+暗影之装
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 68, 183 Dex
+移动速度提高 3%
+闪避值提高 (120-160)%
++(17-29)% 混沌抗性
+可以对敌人施放 1 个额外诅咒
+你的诅咒对有【无咒】词缀的敌人依然有效
+{variant:1}击中被诅咒的敌人时造成中毒
+{variant:2}已被诅咒的敌人有 60% 几率被击中后中毒
 ]],[[
-Foxshade
-Wild Leather
-Upgrade: Upgrades to unique{Fox's Fortune} via prophecy{Dark Instincts}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 25, 73 Dex
-Adds 5 to 12 Physical Damage to Attacks
-+(20-30) to Dexterity
-{variant:1}You gain 150 Evasion Rating when on Full Life
-{variant:2}You gain 500 Evasion Rating when on Full Life
-(50-70)% increased Evasion Rating
-10% increased Movement Speed
+狐毛铠
+野性皮甲
+源: 使用 预言【黑暗本能】 升级为 传奇【狐运强铠】
+版本: 2.6.0以前
+版本: 当前
+等级需求: 25, 73 Dex
+攻击附加 5 - 12 基础物理伤害
++(20-30) 敏捷
+{variant:1}满血时闪避值提高 +150
+{variant:2}满血时闪避值提高 +500
+闪避值提高 (50-70)%
+移动速度提高 10%
 ]],[[
-Fox's Fortune
-Wild Leather
-Source: Upgraded from unique{Foxshade} via prophecy{Dark Instincts}
-Requires level 54
-Adds 5 to 12 Physical Damage to Attacks
-+(20–30) to Dexterity
-+1500 to Evasion Rating while on Full Life
-+(400–500) to Evasion Rating
-(120–150)% increased Evasion Rating
-10% increased Movement Speed
-Enemies are Unlucky when Damaging you while you are on Full Life
+狐运强铠
+野性皮甲
+源:由传奇【狐毛铠】 使用 预言【黑暗本能】 升级 
+等级需求: 54
+攻击附加 5 - 12 基础物理伤害
++(20-30) 敏捷
+满血时闪避值提高 +1500
++(400-500) 点闪避值
+闪避值提高 (120-150)%
+移动速度提高 10%
+满血时，敌人攻击你会特别不幸
 ]],[[
-Hyrri's Ire
-Zodiac Leather
-Variant: Pre 1.0.0
-Variant: Pre 2.0.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 65, 197 Dex
-{variant:1,2,3}+(20-30) to Dexterity
-{variant:4}+(40-50) to Dexterity
-{variant:1,2,3}Adds 13 to 24 Cold Damage to Attacks
-{variant:4}Adds (50-60) to (70-80) Cold Damage to Attacks
-{variant:1}(80-120)% increased Evasion Rating
-{variant:2,3,4}(140-220)% increased Evasion Rating
-25% increased Chill Duration on Enemies
-{variant:1,2}Acrobatics
-{variant:3,4}10% chance to Dodge Attacks
-{variant:3,4}10% chance to Dodge Spell Damage
+西里的战衣
+星辰皮甲
+版本: 1.0.0以前
+版本: 2.0.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 65, 197 Dex
+{variant:1,2,3}+(20-30) 敏捷
+{variant:4}+(40-50) 敏捷
+{variant:1,2,3}攻击附加 13 - 24 基础冰霜伤害
+{variant:4}攻击附加 (50-60) - (70-80) 基础冰霜伤害
+{variant:1}闪避值提高 (80-120)%
+{variant:2,3,4}闪避值提高 (140-220)%
+敌人被冰缓的持续时间延长 25%
+{variant:1,2}移形换影
+{variant:3,4}10% 几率躲避攻击击中
+{variant:3,4}10% 几率躲避法术击中
 ]],[[
-Kintsugi
-Exquisite Leather
-Source: prophecy{Deadly Rivalry V}
-Requires Level 62, 170 Dex
-(100-120)% increased Evasion Rating
-+(60-80) to maximum Life
-+30% to Fire Resistance
-20% less Damage taken if you have not been Hit Recently
-50% increased Evasion if you have been Hit Recently
+金珏之缮
+精制皮甲
+源: 预言【死对头 V】
+等级需求: 62, 170 Dex
+闪避值提高 (100-120)%
++(60-80) 最大生命
++30% 火焰抗性
+近期内你若未被击中，则受到的总伤害额外降低 20%
+近期内你若被击中，则闪避值提高 50%
 ]],[[
-Queen of the Forest
-Destiny Leather
-Variant: {2_6}Pre 3.1.0
-Variant: Current
-Requires Level 59, 160 Dex
-{variant:1}(240-380)% increased Evasion Rating
-{variant:2}(200-240)% increased Evasion Rating
-+(60-70) to maximum Life
-+(6-10)% to Fire Resistance
-+(26-40)% to Cold Resistance
-+(11-25)% to Lightning Resistance
-25% reduced Movement Speed
-1% increased Movement Speed per 450 Evasion Rating, up to 100%
-−(50-40) Physical Damage taken when hit by Animals
+森林之后
+命运皮甲
+版本: {2_6}3.1.0 以前
+版本: 当前
+等级需求: 59, 160 Dex
+{variant:1}闪避值提高 (240-380)%
+{variant:2}闪避值提高 (200-240)%
++(60-70) 最大生命
++(6-10)% 火焰抗性
++(26-40)% 冰霜抗性
++(11-25)% 闪电抗性
+移动速度降低 25%
+每 450 闪避值提高 1% 移动速度，最多 100%
+被动物击中时承受 (-50--40) 物理伤害
 ]],[[
-The Rat Cage
-Sharkskin Tunic
-League: Torment
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 56, 152 Dex
-(100-120)% increased Evasion Rating
-+(160-200) to maximum Life
-{variant:1}−5% to maximum Fire Resistance
-{variant:2}-50% to Fire Resistance
-15% increased Movement Speed
-20% increased Fire Damage taken
-10% of Fire Damage taken as Physical Damage
+疫鼠囚笼
+鲨皮之衣
+联盟: 苦痛
+版本: 2.6.0以前
+版本: 当前
+等级需求: 56, 152 Dex
+闪避值提高 (100-120)%
++(160-200) 最大生命
+{variant:1}−5% 火焰抗性上限
+{variant:2}-50% 火焰抗性
+移动速度提高 15%
+受到的火焰伤害提高 20%
+受到击中火焰伤害的 10% 转化为物理伤害
 ]],[[
-The Snowblind Grace
-Coronal Leather
-League: Breach
-Source: Drops in Tul Breach or from unique{Tul, Creeping Avalanche}
-Upgrade: Upgrades to unique{The Perfect Form} using currency{Blessing of Tul}
-Requires Level 49, 134 Dex
-+(30-40) to Dexterity
-(30-50)% increased Evasion Rating
-+(40-60) to maximum Life
-10% chance to Dodge Spell Damage
-25% increased Arctic Armour Buff Effect
-Evasion Rating is increased by Uncapped Cold Resistance
+雪盲恩惠
+光耀皮甲
+联盟: 裂隙
+源: 地图【托沃领域】 或 传奇Boss【崩雪‧托沃】 专属掉落
+源: 使用 通货【托沃的祝福】 升级 传奇【完美姿态】
+等级需求: 49, 134 Dex
++(30-40) 敏捷
+闪避值提高 (30-50)%
++(40-60) 最大生命
+10% 几率躲避法术击中
+【极地装甲】的增益效果提高 25%
+闪避值将随绝对冰霜抗性提高
 ]],[[
-The Perfect Form
-Zodiac Leather
-League: Breach
-Source: Upgraded from unique{The Snowblind Grace} using currency{Blessing of Tul}
-Requires Level 65, 197 Dex
-(30-50)% increased Evasion Rating
-+(50-80) to maximum Life
--30% to Cold Resistance
-(5-10)% increased Dexterity
-100% reduced Arctic Armour Mana Reservation
-Evasion Rating is increased by Uncapped Cold Resistance
-Phase Acrobatics
+完美姿态
+星辰皮甲
+联盟: 裂隙
+源: 传奇【雪盲恩惠】 使用 通货【托沃的祝福】 升级
+等级需求: 65, 197 Dex
+闪避值提高 (30-50)%
++(50-80) 最大生命
+-30% 冰霜抗性
+敏捷提高 (5-10)%
+【极地装甲】的魔力保留降低 100%
+闪避值将随绝对冰霜抗性提高
+移灵换影
 ]],[[
-Yriel's Fostering
-Exquisite Leather
-Source: Drops from The Pale Council
-Variant: Rhoa
-Variant: Snake
-Variant: Ursa
-Requires Level 62, 170 Dex
-{variant:1}Grants level 20 Summon Beastial Rhoa Skill
-{variant:2}Grants level 20 Summon Beastial Snake Skill
-{variant:3}Grants level 20 Summon Beastial Ursa Skill
-+(300-400) to Accuracy Rating
-(130-150)% increased Evasion Rating
-+(90-100) to maximum Life
-Projectile Attack Skills have (40-60)% increased Critical Strike Chance
-{variant:1}Projectiles from Attacks have 20% chance to Maim on Hit while you have a Beastial Minion
-{variant:2}Projectiles from Attacks have 20% chance to Poison on Hit while you have a Beastial Minion
-{variant:3}Projectiles from Attacks have 20% chance to inflict Bleeding on Hit while you have a Beastial Minion
-{variant:1}(10-15)% increased Attack and Movement Speed while you have a Beastial Minion
-{variant:2}Adds (13-19)-(23-29) Chaos Damage to Attacks while you have a Beastial Minion
-{variant:3}Adds (11-16)-(21-25) Physical Damage to Attacks while you have a Beastial Minion
+伊瑞的精通
+精制皮甲
+源: 地图【苍白议会】 专属掉落
+版本: 恐喙鸟
+版本: 巨蛇
+版本: 之爪
+等级需求: 62, 170 Dex
+{variant:1}获得 20 级的【召唤兽化恐喙鸟】
+{variant:2}获得 20 级的【召唤兽化巨蛇】
+{variant:3}获得 20 级的【召唤兽化之爪】
++(300-400) 命中值
+闪避值提高 (130-150)%
++(90-100) 最大生命
+投射物攻击技能的暴击率提高 (40-60)%
+{variant:1}当你拥有兽化的召唤生物时，投射物攻击击中时有 20% 几率造成瘫痪
+{variant:2}当你拥有兽化的召唤生物时，投射物攻击击中时有 20% 几率造成中毒
+{variant:3}当你拥有兽化的召唤生物时，投射物攻击击中时有 20% 几率造成流血
+{variant:1}当你拥有兽化的召唤生物时，攻击和移动速度提高 (10-15)%
+{variant:2}当你拥有兽化的召唤生物时，攻击时附加 (13-19) - (23-29) 基础混沌伤害
+{variant:3}当你拥有兽化的召唤生物时，攻击附加 (11-16) - (21-25) 基础物理伤害
 ]],
 -- Body: Energy Shield
 [[
-The Beast Fur Shawl
-Vaal Regalia
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 68, 194 Int
-40% increased Spell Damage
-(110-130)% increased Energy Shield
-{variant:1}+(50-65) to maximum Energy Shield
-{variant:2}+(15–25) to maximum Energy Shield
-10% increased Area of Effect of Area Skills
-5% increased Damage taken
-(30-40)% increased Energy Shield Recovery Rate
+兽毛披肩
+瓦尔法衣
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 68, 194 Int
+法术伤害提高 40%
+该装备的能量护盾提高 (110-130)%
+{variant:1}+(50-65) 最大能量护盾
+{variant:2}+(15-25) 最大能量护盾
+范围效果扩大 10%
+承受伤害提高 5%
+能量护盾回复速度提高 (30-40)%
 ]],[[
-Cloak of Flame
-Scholar's Robe
-Requires Level 18, 55 Int
-+(30-50)% to Fire Resistance
-(30-50)% increased Ignite Duration on Enemies
-10% chance to Ignite
-Reflects 15 Fire Damage to Melee Attackers
-20% of Physical Damage taken as Fire Damage
+烈炎之袍
+学者之袍
+等级需求: 18, 55 Int
++(30-50)% 火焰抗性
+敌人被点燃的持续时间延长 (30-50)%
+火焰伤害击中时有 10% 几率点燃敌人
+反射 15 火焰伤害给近战攻击者
+受到击中物理伤害的 20% 转化为火焰伤害
 ]],[[
-Cloak of Tawm'r Isley
-Savant's Robe
-Source: Level 8 Master
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 56, 152 Int
-{variant:1}(250-300)% increased Energy Shield
-{variant:2}(150–200)% increased Energy Shield
-Minions cannot be Blinded
-Minions have 15% chance to Blind Enemies on hit
-Socketed Minion Gems are Supported by Level 16 Life Leech
-Found Magic Items drop Identified
+塔温的披风
+智者之袍
+源: 8级大师出售
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 56, 152 Int
+{variant:1}该装备的能量护盾提高 (250-300)%
+{variant:2}该装备的能量护盾提高 (150-200)%
+召唤生物免疫致盲
+召唤生物击中时有 15% 几率使敌人致盲
+此物品上的【召唤生物技能石】由 16 级的 生命偷取 辅助
+掉落的魔法物品会被鉴定
 ]],[[
-The Coming Calamity
-Destroyer Regalia
-Requires Level 53, 144 Int
-+2 to Level of Socketed Herald Gems
-(80-100)% increased Energy Shield
-35% chance to avoid being Stunned for each Herald Skill affecting you
-Mana Reservation of Herald Skills is always 45%
+灵魂甲胄
+灭世法衣
+等级需求: 53, 144 Int
+此物品上装备的【捷技能石】等级 +2
+该装备的能量护盾提高 (80-100)%
+每有一个影响你的捷光环，则避免晕眩的几率提高 35%
+捷光环的魔力保留总是 45%
 ]],[[
-The Covenant
-Spidersilk Robe
-Variant: Pre 1.0.0
-Variant: Pre 2.0.0
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 49, 134 Int
-Socketed Gems are Supported by level 15 Added Chaos Damage
-+(20-30) to Intelligence
-{variant:1,2,3}20% reduced maximum Life
-{variant:4,5}10% increased maximum Life
-{variant:1}(125-150)% increased Energy Shield
-{variant:2}(180-220)% increased Energy Shield
-{variant:3,4}(280-320)% increased Energy Shield
-{variant:5}(210–250)% increased Energy Shield
-{variant:1,2,3}Blood Magic
-{variant:4,5}Socketed Gems have Blood Magic
+血誓
+蛛丝之袍
+版本: 1.0.0以前
+版本: 2.0.0以前
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 49, 134 Int
+此物品上的技能石受到 15 级的 附加混沌伤害 辅助
++(20-30) 智慧
+{variant:1,2,3}最大生命降低 20%
+{variant:4,5}最大生命提高 10%
+{variant:1}该装备的能量护盾提高 (125-150)%
+{variant:2}该装备的能量护盾提高 (180-220)%
+{variant:3,4}该装备的能量护盾提高 (280-320)%
+{variant:5}该装备的能量护盾提高 (210-250)%
+{variant:1,2,3}血魔法
+{variant:4,5}此物品上的技能石受到 血魔法 辅助
 ]],[[
-Dialla's Malefaction
-Sage's Robe
-Requires Level 37
-Gems can be Socketed in this Item ignoring Socket Colour 
-Gems Socketed in Red Sockets have +1 to Level 
-Gems Socketed in Green Sockets have +10% to Quality 
-Gems Socketed in Blue Sockets gain 25% increased Experience 
-Has no Attribute Requirements
+无悔之爱
+贤者之袍
+等级需求: 37
+技能石可以无视此物品上的插槽颜色
+红色插槽内的技能石 +1 等级
+绿色插槽内的技能石 +10% 品质
+蓝色插槽内的技能石额外获得 25% 经验
+穿戴对人物属性无需求
 ]],[[
-Doedre's Skin
-Widowsilk Robe
+德瑞之肤
+毒蛛丝之袍
 Requires Level: 65
-Socketed Curse Gems are Supported by Level 20 Blasphemy 
-Grants Level 20 Summon Doedre's Effigy Skill
-Socketed Curse Skills are Triggered by Doedre's Effigy when Summoned
-Socketed Curse Skills ignore Curse Limit 
-+(30–40) to Intelligence 
-(130–150)% increased Energy Shield 
-(25–33)% reduced Effect of your Curses
+此物品上的诅咒技能石受到 20 级的 诅咒光环 辅助
+获得 20 级的的主动技能【召唤德瑞的塑像】技能
+召唤【德瑞的塑像】时可以触发插槽内的诅咒技能
+插槽内的诅咒技能无视诅咒限制
++(30-40) 智慧
+该装备的能量护盾提高 (130-150)%
+你所施放诅咒的效果降低 (25-33)%
 ]],[[
-Fenumus' Shroud
-Widowsilk Robe
-League: Bestiary
-Source: Drops from unique{Fenumus, First of the Night}
-Requires Level 65
-+(30–40) to Intelligence
-(120–140)% increased Energy Shield
-(80–100) Energy Shield Regenerated per second
-Enemies affected by your Spider's Webs deal 10% reduced Damage
-Enemies affected by your Spider's Webs have -10% to All Resistances
-(50–70)% increased Aspect of the Spider Area of Effect
+暗夜弑衣
+毒蛛丝之袍
+联盟: 猎魔笔记
+源: 传奇Boss【暗夜初子 费努姆斯】 专属掉落
+等级需求: 65
++(30-40) 智慧
+该装备的能量护盾提高 (120-140)%
+每秒回复 (80-100) 能量护盾
+被你至少覆盖 1 层蜘蛛网的敌人伤害降低 10%
+受你至少 1 层蜘蛛网影响的敌人，所有抗性 -10%
+【蛛之势】的范围效果扩大 (50-70)%
 ]],[[
-Infernal Mantle
-Widowsilk Robe
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 65, 187 Int
-+1 to Level of Socketed Fire Gems
-(25-35)% increased Fire Damage
-100% increased Global Critical Strike Chance
-{variant:1}(190-230)% increased Energy Shield
-{variant:2}(120–160)% increased Energy Shield
-15% of Fire Damage Converted to Chaos Damage
-{variant:1}100% increased Spell Damage taken when on Low Mana
-{variant:2}25% increased Spell Damage taken when on Low Mana
+炼狱之心
+毒蛛丝之袍
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 65, 187 Int
+此物品上装备的【火焰技能石】等级 +1
+火焰伤害提高 (25-35)%
+攻击和法术暴击率提高 100%
+{variant:1}该装备的能量护盾提高 (190-230)%
+{variant:2}该装备的能量护盾提高 (120-160)%
+15% 的火焰伤害转换为混沌伤害
+{variant:1}低魔时受到的法术伤害提高 100%
+{variant:2}低魔时受到的法术伤害提高 25%
 ]],[[
-Infernal Mantle
-Occultist's Vestment
-Variant: Pre 2.0.0
-Requires Level 65, 187 Int
-(3-10)% increased Spell Damage
-+1 to Level of Socketed Fire Gems
-(25-35)% increased Fire Damage
-100% increased Global Critical Strike Chance
-(190-230)% increased Energy Shield
-15% of Fire Damage Converted to Chaos Damage
-100% increased Spell Damage taken when on Low Mana
+炼狱之心
+毒蛛丝之袍
+版本: 2.0.0以前
+等级需求: 65, 187 Int
+法术伤害提高 (3-10)%
+此物品上装备的【火焰技能石】等级 +1
+火焰伤害提高 (25-35)%
+攻击和法术暴击率提高 100%
+该装备的能量护盾提高 (190-230)%
+15% 的火焰伤害转换为混沌伤害
+低魔时受到的法术伤害提高 100%
 ]],[[
-Shavronne's Wrappings
-Occultist's Vestment
-Variant: Pre 1.0.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 62, 180 Int
-(3-10)% increased Spell Damage
-{variant:1}(200-250)% increased Energy Shield
-{variant:2}(140-200)% increased Energy Shield
-{variant:3}(100–150)% increased Energy Shield
-10% faster start of Energy Shield Recharge
-+(30-40)% to Lightning Resistance
-Reflects 1 to 250 Lightning Damage to Melee Attackers
-Chaos Damage does not bypass Energy Shield
+薛朗的护身长袍
+秘术长衣
+版本: 1.0.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 62, 180 Int
+法术伤害提高 (3-10)%
+{variant:1}该装备的能量护盾提高 (200-250)%
+{variant:2}该装备的能量护盾提高 (140-200)%
+{variant:3}该装备的能量护盾提高 (100-150)%
+能量护盾启动回复比平常快 10%
++(30-40)% 闪电抗性
+反射 1 - 250 闪电伤害给近战攻击者
+混沌伤害不能穿透能量护盾
 ]],[[
-Skin of the Loyal
-Simple Robe
-League: Breach
-Source: Drops in Chayula Breach or from unique{Chayula, Who Dreamt}
-Upgrade: Upgrades to unique{Skin of the Lords} using currency{Blessing of Chayula}
-Implicits: 0
-Sockets cannot be modified
-+1 to Level of Socketed Gems
-100% increased Global Defences
+忠诚之肤
+简易之袍
+联盟: 裂隙
+源: 地图【夏乌拉领域】 或 传奇Boss【逐梦者‧夏乌拉】 专属掉落
+升级: 使用 通货【夏乌拉的祝福】 升级 传奇【君主之肤】
+固定基底词缀: 0
+插槽无法被调整
+此物品上装备的技能石等级 +1
+全局防御提高 100%
 ]],[[
-Skin of the Lords
-Simple Robe
-League: Breach
-Source: Upgraded from unique{Skin of the Loyal} using currency{Blessing of Chayula}
-Variant: Acrobatics
-Variant: Ancestral Bond
-Variant: Arrow Dancing
-Variant: Avatar of Fire
-Variant: Blood Magic
-Variant: Conduit
-Variant: Crimson Dance
-Variant: Eldritch Battery
-Variant: Elemental Equilibrium
-Variant: Elemental Overload
-Variant: Ghost Reaver
-Variant: Iron Grip
-Variant: Iron Reflexes
-Variant: Mind Over Matter
-Variant: Minion Instability
-Variant: Pain Attunement
-Variant: Perfect Agony
-Variant: Phase Acrobatics
-Variant: Point Blank
-Variant: Resolute Technique
-Variant: Unwavering Stance
-Variant: Vaal Pact
-Variant: Zealot's Oath
-Implicits: 0
-Sockets cannot be modified
-+1 to Level of Socketed Gems
-100% increased Global Defences
-You can only Socket Corrupted Gems in this item
-{variant:1}Acrobatics
-{variant:2}Ancestral Bond
-{variant:3}Arrow Dancing
-{variant:4}Avatar of Fire
-{variant:5}Blood Magic
-{variant:6}Conduit
-{variant:7}Crimson Dance
-{variant:8}Eldritch Battery
-{variant:9}Elemental Equilibrium
-{variant:10}Elemental Overload
-{variant:11}Ghost Reaver
-{variant:12}Iron Grip
-{variant:13}Iron Reflexes
-{variant:14}Mind Over Matter
-{variant:15}Minion Instability
-{variant:16}Pain Attunement
-{variant:17}Perfect Agony
-{variant:18}Phase Acrobatics
-{variant:19}Point Blank
-{variant:20}Resolute Technique
-{variant:21}Unwavering Stance
-{variant:22}Vaal Pact
-{variant:23}Zealot's Oath
-Corrupted
+君主之肤
+简易之袍
+联盟: 裂隙
+源: 传奇【忠诚之肤】 使用 通货【夏乌拉的祝福】 升级
+版本: 移形换影
+版本: 先祖魂约
+版本: 箭矢闪跃
+版本: 火之化身
+版本: 血魔法
+版本: 能量连接
+版本: 玫红之舞
+版本: 异能魔力
+版本: 元素之相
+版本: 元素超载
+版本: 灵能护体
+版本: 钢铁之握
+版本: 霸体
+版本: 心灵升华
+版本: 复仇之灵
+版本: 苦痛灵曲
+版本: 完美苦痛
+版本: 移灵换影
+版本: 零点射击
+版本: 坚毅之心
+版本: 烈士意志
+版本: 瓦尔冥约
+版本: 狂热誓言
+固定基底词缀: 0
+插槽无法被调整
+此物品上装备的技能石等级 +1
+全局防御提高 100%
+只能在此物品上放入已腐化的技能石
+{variant:1}移形换影
+{variant:2}先祖魂约
+{variant:3}箭矢闪跃
+{variant:4}火之化身
+{variant:5}血魔法
+{variant:6}能量连接
+{variant:7}玫红之舞
+{variant:8}异能魔力
+{variant:9}元素之相
+{variant:10}元素超载
+{variant:11}灵能护体
+{variant:12}钢铁之握
+{variant:13}霸体
+{variant:14}心灵升华
+{variant:15}复仇之灵
+{variant:16}苦痛灵曲
+{variant:17}完美苦痛
+{variant:18}移灵换影
+{variant:19}零点射击
+{variant:20}坚毅之心
+{variant:21}烈士意志
+{variant:22}瓦尔冥约
+{variant:23}狂热誓言
+已腐化
 ]],[[
-Soul Mantle
-Spidersilk Robe
-Variant: Pre 1.2.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 49, 134 Int
-{variant:1,2}Socketed Gems are Supported by level 14 Spell Totem
-{variant:3}Socketed Gems are Supported by level 20 Spell Totem
-(20-25)% increased Spell Damage
-(100-120)% increased Energy Shield
-{variant:1}25% increased Totem Life
-{variant:2,3}50% increased Totem Life
-Can have up to 1 additional Totem summoned at a time
-Inflicts a random level 20 Curse on you when your Totems die
+祖灵之约
+蛛丝之袍
+版本: 1.2.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 49, 134 Int
+{variant:1,2}此物品上的技能石受到 14 级的 法术图腾 辅助
+{variant:3}此物品上的技能石受到 20 级的 法术图腾 辅助
+法术伤害提高 (20-25)%
+该装备的能量护盾提高 (100-120)%
+{variant:1}图腾的生命提高 25%
+{variant:2,3}图腾的生命提高 50%
+最多同时可以额外召唤 1 个图腾
+当你的图腾死亡时，玩家受到 1 个 20 级的随机诅咒
 ]],[[
-Tabula Rasa
-Simple Robe
+无尽之衣
+简易之袍
 Sockets: W-W-W-W-W-W
 ]],[[
-Thousand Ribbons
-Simple Robe
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Socketed Gems are Supported by level 5 Elemental Proliferation
-{variant:1}Adds 2 to 3 Fire Damage to Attacks
-{variant:2}Adds 2 to 3 Fire Damage to Spells and Attacks
-{variant:1}Adds 2 to 3 Cold Damage to Attacks
-{variant:2}Adds 2 to 3 Cold Damage to Spells and Attacks
-{variant:1}Adds 1 to 4 Lightning Damage to Attacks
-{variant:2}Adds 1 to 4 Lightning Damage to Spells and Attacks
-{variant:1}10% reduced Cast Speed
-+(10-20) to Evasion Rating
-+6 to maximum Life
-+6 to maximum Mana
-+(10-20) to maximum Energy Shield
-+(5-10)% to Fire Resistance
-+(5-10)% to Cold Resistance
-+(5-10)% to Lightning Resistance
+千缎
+简易之袍
+版本: {2_6}3.0.0以前
+版本: 当前
+此物品上的技能石受到 5 级的 元素扩散 辅助
+{variant:1}攻击附加 2-3 基础火焰伤害
+{variant:2}攻击和法术附加 2-3 基础火焰伤害
+{variant:1}攻击附加 2 - 3 基础冰霜伤害
+{variant:2}攻击和法术附加 2 - 3 基础冰霜伤害
+{variant:1}攻击附加 1 - 4 基础闪电伤害
+{variant:2}攻击和法术附加 1 - 4 基础闪电伤害
+{variant:1}施法速度降低 10%
++(10-20) 点闪避值
++6 最大生命
++6 最大魔力
++(10-20) 最大能量护盾
++(5-10)% 火焰抗性
++(5-10)% 冰霜抗性
++(5-10)% 闪电抗性
 ]],[[
-Vis Mortis
-Necromancer Silks
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 59, 160 Int
-+(20-30) to maximum Mana
-{variant:1}(100-120)% increased Energy Shield
-{variant:2}(200-220)% increased Energy Shield
-Minions have 20% reduced Maximum Life
-Minions deal 15% increased Damage
-+1 to Maximum number of Spectres
-{variant:1}Minions gain Unholy Might for 5 seconds on Kill
-{variant:2}Minions gain Unholy Might for 10 seconds on Kill
+兀鸣
+操灵者背心
+版本: 2.6.0以前
+版本: 当前
+等级需求: 59, 160 Int
++(20-30) 最大魔力
+{variant:1}该装备的能量护盾提高 (100-120)%
+{variant:2}该装备的能量护盾提高 (200-220)%
+召唤生物的最大生命降低 20%
+召唤生物的伤害提高 15%
++1 灵体数量上限
+{variant:1}击败敌人时，召唤生物获得【不洁之力】，持续 5 秒
+{variant:2}击败敌人时，召唤生物获得【不洁之力】，持续 10 秒
 ]],[[
-Zahndethus' Cassock
-Sage's Robe
-Variant: Pre 1.0.0
-Variant: Pre 1.3.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 37, 104 Int
-{variant:1}Adds 1 to 25 Lightning Damage
-{variant:2,3,4}Adds 1 to 40 Lightning Damage to Attacks
-{variant:1,2,3}(75-100)% increased Energy Shield
-{variant:4}(125-150)% increased Energy Shield
-{variant:1}+(20-25)% to Chaos Resistance
-{variant:2,3,4}+(40-50)% to Chaos Resistance
-25% increased Light Radius
-{variant:1}25% chance on Block to create Consecrated Ground
-{variant:2}50% chance on Block to create Consecrated Ground
-{variant:3,4}100% chance on Block to create Consecrated Ground
+札德图斯的圣衣
+贤者之袍
+版本: 1.0.0以前
+版本: 1.3.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 37, 104 Int
+{variant:1}附加 1 - 25 基础闪电伤害
+{variant:2,3,4}攻击附加 1 - 40 基础闪电伤害
+{variant:1,2,3}该装备的能量护盾提高 (75-100)%
+{variant:4}该装备的能量护盾提高 (125-150)%
+{variant:1}+(20-25)% 混沌抗性
+{variant:2,3,4}+(40-50)% 混沌抗性
+照亮范围扩大 25%
+{variant:1}格挡时有 25% 几率制造奉献地面
+{variant:2}格挡时有 50% 几率制造奉献地面
+{variant:3,4}格挡时有 100% 几率制造奉献地面
 ]],
 -- Body: Armour/Evasion
 [[
-Belly of the Beast
-Full Wyrmscale
-Requires Level 46, 68 Str, 68 Dex
-(150-200)% increased Armour
-(30-40)% increased maximum Life
-+(10-15)% to all Elemental Resistances
-50% increased Flask Life Recovery rate
-Extra Gore
+兽腹
+连身龙鳞战甲
+等级需求: 46, 68 Str, 68 Dex
+护甲提高 (150-200)%
+最大生命提高 (30-40)%
+获得 +(10-15)% 火焰、冰霜、闪电抗性
+药剂生命回复速度提高 50%
+更明显打击效果
 ]],[[
-Cherrubim's Maleficence
-Triumphant Lamellar
-Variant: Pre 2.0.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 69, 95 Str, 116 Dex
-{variant:1,2}(10-20)% increased Chaos Damage
-{variant:3}(50-80)% increased Chaos Damage
-(160-200)% increased Armour and Evasion
-+(70-100) to maximum Life
-{variant:1}30% increased Life Leeched per second
-{variant:2,3}100% increased Life Leeched per second
+薛鲁宾的恶作剧
+胜利盔甲
+版本: 2.0.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 69, 95 Str, 116 Dex
+{variant:1,2}混沌伤害提高 (10-20)%
+{variant:3}混沌伤害提高 (50-80)%
+该装备的护甲与闪避提高 (160-200)%
++(70-100) 最大生命
+{variant:1}每秒生命偷取提高 30%
+{variant:2,3}每秒生命偷取提高 100%
 ]],[[
-Daresso's Defiance
-Full Dragonscale
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 63, 115 Str, 94 Dex
-(160-200)% increased Armour and Evasion
-+(40-60) to maximum Life
-(0.4-0.6)% of Physical Attack Damage Leeched as Life
-6% Chance to Dodge Attacks
-You lose all Endurance Charges when Hit
-You gain an Endurance Charge on Kill
-{variant:1}You gain Onslaught for 1 second per Endurance Charge when Hit
-{variant:2}You gain Onslaught for 2 second per Endurance Charge when Hit
+德瑞索的卫衣
+连身龙鳞铠
+版本: 2.6.0以前
+版本: 当前
+等级需求: 63, 115 Str, 94 Dex
+该装备的护甲与闪避提高 (160-200)%
++(40-60) 最大生命
+物理攻击伤害的 (0.4-0.6)% 会转化为生命偷取
+6% 几率躲避攻击击中
+被击中时，你失去所有的耐力球
+击败敌人时，你获得 1 颗耐力球
+{variant:1}被击中时，每个耐力球可使你获得 1 秒的【猛攻】状态
+{variant:2}被击中时，每个耐力球可使你获得 2 秒的【猛攻】状态
 ]],[[
-Farrul's Fur
-Triumphant Lamellar
-League: Bestiary
-Source: Drops from unique{Farrul, First of the Plains}
-Requires Level 69
-(100–150)% increased Armour and Evasion
-+(90–100) to maximum Life
-Aspect of the Cat Reserves no Mana
-+2 seconds to Cat's Stealth Duration
-Gain up to your maximum number of Frenzy and Power Charges when you gain Cat's Stealth
-You have Phasing while you have Cat's Stealth
+大地之护
+胜利盔甲
+联盟: 猎魔笔记
+源: Boss 传奇 【大地初子 法瑞尔】 专属掉落
+等级需求: 69
+该装备的护甲与闪避提高 (100-150)%
++(90-100) 最大生命
+【猫之势】不保留魔力值
+【猫之隐匿】的持续时间 +2 秒
+你获得【猫之隐匿】时也会同时获得自身最大数量的狂怒球和暴击球
+拥有【猫之隐匿】时获得【迷踪】状态
 ]],[[
-Gruthkul's Pelt
-Wyrmscale Doublet
-Requires Level 38, 57 Str, 57 Dex
-(60-100)% increased Physical Damage
-+(130-160) to maximum Life
-+(20-40)% to Cold Resistance
-2% of Life Regenerated per second
-15% increased Character Size
-Spell Skills deal no Damage
-Your Spells are disabled
+欺诈獠牙
+龙鳞战甲
+等级需求: 38, 57 Str, 57 Dex
+物理伤害提高 (60-100)%
++(130-160) 最大生命
++(20-40)% 冰霜抗性
+每秒回复 2% 生命
+角色体型增大 15%
+法术技能无法造成伤害
+你的法术被禁用了
 ]],[[
-Lightning Coil
-Desert Brigandine
-Variant: Pre 1.3.0
-Variant: Current
-Requires Level 60, 96 Str, 96 Dex
-Adds 1 to (20-30) Lightning Damage to Attacks
-(90-120)% increased Armour and Evasion
-+(60-80) to maximum Life
-−60% to Lightning Resistance
-{variant:1}40% of Physical Damage taken as Lightning Damage
-{variant:2}30% of Physical Damage taken as Lightning Damage
+雷语
+荒野锁铠
+版本: 1.3.0以前
+版本: 当前
+等级需求: 60, 96 Str, 96 Dex
+攻击附加 1 - (20-30) 基础闪电伤害
+该装备的护甲与闪避提高 (90-120)%
++(60-80) 最大生命
+-60% 闪电抗性
+{variant:1}受到击中物理伤害的 40% 转化为闪电伤害
+{variant:2}受到击中物理伤害的 30% 转化为闪电伤害
 ]],[[
-Viper's Scales
-Full Scale Armour
-Source: Drops in The Lord's Labyrinth
-Requires Level 28, 43 Str, 43 Dex
-(80-100)% increased Armour and Evasion
-+(30-40) to maximum Life
-+(15-25)% to Cold Resistance
-5% increased Movement Speed
-20% chance to Poison on Hit with Attacks
-Cannot be Poisoned
+毒蛇之度
+连身鳞甲
+源: 帝王试炼迷宫专属掉落
+等级需求: 28, 43 Str, 43 Dex
+该装备的护甲与闪避提高 (80-100)%
++(30-40) 最大生命
++(15-25)% 冰霜抗性
+移动速度提高 5%
+攻击击中时有 20% 几率使目标中毒
+免疫中毒
 ]],
 -- Body: Armour/Energy Shield
 [[
-Ambu's Charge
-Crusader Chainmail
-Variant: Pre 1.0.0
-Variant: Pre 2.0.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 43, 64 Str, 64 Int
-{variant:1}(80-100)% increased Armour and Energy Shield
-{variant:2}(140-180)% increased Armour and Energy Shield
-{variant:3,4}(180-220)% increased Armour and Energy Shield
-{variant:4}+(60-80) to maximum Life
-{variant:1,2}+10% to all Elemental Resistances
-{variant:3,4}+15% to all Elemental Resistances
-Gain an Endurance Charge when you take a Critical Strike
-{variant:1,2,3}2% of Life Regenerated per Second while on Low Life
-{variant:4}2% of Life Regenerated per Second if you've been Hit Recently
-Share Endurance Charges with nearby party members
+安姆布的战甲
+圣战锁甲
+版本: 1.0.0以前
+版本: 2.0.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 43, 64 Str, 64 Int
+{variant:1}该装备的护甲与能量护盾提高 (80-100)%
+{variant:2}该装备的护甲与能量护盾提高 (140-180)%
+{variant:3,4}该装备的护甲与能量护盾提高 (180-220)%
+{variant:4}+(60-80) 最大生命
+{variant:1,2}获得 +10% 火焰、冰霜、闪电抗性
+{variant:3,4}获得 +15% 火焰、冰霜、闪电抗性
+受到暴击时获得 1 个耐力球
+{variant:1,2,3}低血时每秒回复 2% 生命
+{variant:4}近期内你若被击中，则每秒回复 2% 生命
+与周围队友分享耐力球
 ]],[[
-Chains of Command
-Saintly Chainmail
-Requires Level 70, 99 Str, 115 Int
-(150-190)% increased Armour and Energy Shield
-+(60-90) to maximum Life
-Animated Guardian deals 5% increased Damage per Animated Weapon
-Animated Minions' Melee Attacks deal Splash Damage to surrounding targets
-Animated Minions' Melee Attacks deal 50% less Damage to surrounding targets
-Trigger Level 20 Animate Guardian's Weapon when Animated Guardian Kills an Enemy
-10% chance to Trigger Level 18 Animate Guardian's Weapon when Animated Weapon Kills an Enemy
-You cannot have non-Animated Minions
+将军的复生
+圣洁锁甲
+等级需求: 70, 99 Str, 115 Int
+该装备的护甲与能量护盾提高 (150-190)%
++(60-90) 最大生命
+每把幻化武器可使幻化守卫的伤害提高 5%
+幻化类召唤生物的近战攻击会对对周围目标造成溅射伤害
+幻化类召唤生物的近战攻击对周围目标造成的总伤害额外降低 50%
+当幻化守卫击败一个敌人时，触发 20 级的【幻化守卫武器】
+当幻化武器击败一个敌人时，有 10% 几率触发 18 级的【幻化守卫武器】
+你无法拥有非幻化类召唤生物
 ]],[[
-Geofri's Sanctuary
-Elegant Ringmail
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 64, 90 Str, 105 Int
-(50-75)% increased Armour and Energy Shield
-+(50-70) to maximum Life
-{variant:1,2}+(70-80) to maximum Energy Shield
-{variant:3}+(30–40) to maximum Energy Shield
-+(14-18)% to all Elemental Resistances
-{variant:1}+1 maximum Energy Shield per 5 Strength
-{variant:2,3}+2 maximum Energy Shield per 5 Strength
-Zealot's Oath
+吉尔菲的圣殿
+权贵环甲
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 64, 90 Str, 105 Int
+该装备的护甲与能量护盾提高 (50-75)%
++(50-70) 最大生命
+{variant:1,2}+(70-80) 最大能量护盾
+{variant:3}+(30-40) 最大能量护盾
+获得 +(14-18)% 火焰、冰霜、闪电抗性
+{variant:1}每 5 点力量使最大能量护盾提高 +1
+{variant:2,3}每 5 点力量使最大能量护盾提高 +2
+狂热誓言
 ]],[[
-Icetomb
-Latticed Ringmail
-Upgrade: Upgrades to unique{Crystal Vault} via prophecy{End of the Light}
-Variant: Pre 2.0.0
-Variant: Current
-Requires Level 39, 59 Str, 59 Int
-{variant:1}+15 to Strength
-{variant:2}+(30-40) to Strength
-{variant:1}+15 to Intelligence
-{variant:2}+(30-40) to Intelligence
-(140-160)% increased Armour and Energy Shield
-+(50-75)% to Cold Resistance
-Cannot be Chilled
-150% increased Chill Duration on Enemies
+冰息
+精制环甲
+源: 使用 预言【光之终点】 升级为 传奇【水晶墓穴】
+版本: 2.0.0以前
+版本: 当前
+等级需求: 39, 59 Str, 59 Int
+{variant:1}+15 力量
+{variant:2}+(30-40) 力量
+{variant:1}+15 智慧
+{variant:2}+(30-40) 智慧
+该装备的护甲与能量护盾提高 (140-160)%
++(50-75)% 冰霜抗性
+免疫冰缓
+敌人被冰缓的持续时间延长 150%
 ]],[[
-Crystal Vault
-Latticed Ringmail
-Source: Upgraded from unique{Icetomb} via prophecy{End of the Light}
-Requires Level 49
-+(30–40) to Strength
-+(30–40) to Intelligence
-(140–160)% increased Armour and Energy Shield
-+(50–75)% to Cold Resistance
-Cannot be Chilled
-Cannot be Frozen
-20% of Physical Damage from Hits taken as Cold Damage
-30% of Fire Damage from Hits taken as Cold Damage
-(15–20)% increased Effect of Chill
+水晶墓穴
+精制环甲
+源: 由【冰息】 使用 预言【光之终点】 升级
+等级需求: 49
++(30-40) 力量
++(30-40) 智慧
+该装备的护甲与能量护盾提高 (140-160)%
++(50-75)% 冰霜抗性
+免疫冰缓
+免疫冰冻
+受到击中物理伤害的 20% 转化为冰霜伤害
+受到击中火焰伤害的 30% 转为冰霜伤害
+冰缓效果提高 (15-20)%
 ]],[[
-Incandescent Heart
-Saintly Chainmail
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 70, 99 Str, 115 Int
-{variant:1}+(60-80) to Armour
-{variant:1}(120-140)% increased Armour and Energy Shield
-{variant:2}(220-240)% increased Armour and Energy Shield
-+(80-90) to maximum Life
-{variant:2}Gain (10-20)% of Elemental Damage as Extra Chaos Damage
-{variant:1}(0.8-1)% of Physical Attack Damage Leeched as Life
-{variant:2}(0.8-1)% of Attack Damage Leeched as Life
-25% of Elemental Damage taken as Chaos Damage
-(20-30)% increased Light Radius
-Light Radius is based on Energy Shield instead of Life
+烈炎之心
+圣洁锁甲
+版本: 2.6.0以前
+版本: 当前
+等级需求: 70, 99 Str, 115 Int
+{variant:1}+(60-80) 护甲
+{variant:1}该装备的护甲与能量护盾提高 (120-140)%
+{variant:2}该装备的护甲与能量护盾提高 (220-240)%
++(80-90) 最大生命
+{variant:2}获得额外混沌伤害，其数值等同于火焰、冰霜、闪电伤害的 (10-20)%
+{variant:1}物理攻击伤害的 (0.8-1)% 会转化为生命偷取
+{variant:2}攻击伤害的 (0.8-1)% 转化为生命偷取
+受到击中火焰、冰霜、闪电伤害的 25% 转换为混沌伤害
+照亮范围扩大 (20-30)%
+照亮范围将基于能量护盾的属性
 ]],[[
-Kingsguard
-Conquest Chainmail
-Requires Level 61, 96 Str, 96 Int
-(150-170)% increased Armour and Energy Shield
-+(60-90) to maximum Life
-+(50-70) to maximum Mana
-30% increased Endurance Charge Duration
-Gain 100 Life when an Endurance Charge expires or is consumed
+皇家卫甲
+征战锁甲
+等级需求: 61, 96 Str, 96 Int
+该装备的护甲与能量护盾提高 (150-170)%
++(60-90) 最大生命
++(50-70) 最大魔力
+耐力球持续时间延长 30%
+当耐力球被使用或失效时，获得 100 生命
 ]],[[
-Lightbane Raiment
-Ornate Ringmail
-Variant: Pre 1.0.0
-Variant: Pre 1.3.0
-Variant: Pre 2.0.0
-Variant: Current
-Requires Level 47, 69 Str, 69 Int
-{variant:1}(80-100)% increased Armour and Energy Shield
-{variant:2,3,4}(120-140)% increased Armour and Energy Shield
-{variant:1,2,3}10% of Physical Damage Converted to Chaos Damage
-{variant:4}30% of Physical Damage Converted to Chaos Damage
-{variant:1}Reflects (10-20) Chaos Damage to Melee Attackers
-{variant:2,3,4}Reflects 30 Chaos Damage to Melee Attackers
-25% reduced Light Radius
-{variant:1}25% chance on Block to create Desecrated Ground
-{variant:2}50% chance on Block to create Desecrated Ground
-{variant:3,4}100% chance on Block to create Desecrated Ground
+魔道之衣
+华丽环甲
+版本: 1.0.0以前
+版本: 1.3.0以前
+版本: 2.0.0以前
+版本: 当前
+等级需求: 47, 69 Str, 69 Int
+{variant:1}该装备的护甲与能量护盾提高 (80-100)%
+{variant:2,3,4}该装备的护甲与能量护盾提高 (120-140)%
+{variant:1,2,3}10% 的物理伤害转换为混沌伤害
+{variant:4}30% 的物理伤害转换为混沌伤害
+{variant:1}反射 (10-20) 混沌伤害给近战攻击者
+{variant:2,3,4}反射 30 混沌伤害给近战攻击者
+照亮范围缩小 25%
+{variant:1}格挡时有 25% 几率制造腐化地面
+{variant:2}格挡时有 50% 几率制造腐化地面
+{variant:3,4}格挡时有 100% 几率制造腐化地面
 ]],[[
-Loreweave
-Elegant Ringmail
-Source: Vendor Recipe
-Requires Level 64
-Has 6 Sockets
-Adds (4–10) to (14–36) Physical Damage to Attacks
-+(8–24) to all Attributes
-(20–60)% increased Global Critical Strike Chance
-+(15–50) to maximum Energy Shield
-+(20–60) to maximum Life
-+(20–50) to maximum Mana
-(6–30)% increased Rarity of Items found
-(15–50)% increased Elemental Damage
-Your Maximum Resistances are (76–80)%
+满溢之甲
+权贵环甲
+源: 商店配方
+等级需求: 64
+有 6 个插槽
+攻击附加 (4-10) - (14-36) 基础物理伤害
++(8-24) 全属性
+攻击和法术暴击率提高 (20-60)%
++(15-50) 最大能量护盾
++(20-60) 最大生命
++(20-50) 最大魔力
+物品稀有度提高 (6-30)%
+火焰、冰霜、闪电伤害提高 (15-50)%
+你的最大抗性为 (76-80)%
 ]],[[
-Voll's Protector
-Holy Chainmail
-Requires Level 35, 53 Str, 53 Int
-60% increased Armour and Energy Shield
-50% reduced maximum Mana
-Gain a Power Charge for each Enemy you hit with a Critical Strike
+福尔的战铠
+圣语锁甲
+等级需求: 35, 53 Str, 53 Int
+该装备的护甲与能量护盾提高 60%
+最大魔力降低 50%
+每个被暴击的敌人给予你 1 个暴击球
 ]],
 -- Body: Evasion/Energy Shield
 [[
-Bloodbond
-Bone Armour
-Requires Level 35
-Grants Level 15 Blood Offering Skill 
-(100–120)% increased Evasion and Energy Shield 
-(15–25)% increased maximum Life 
-Minions have (20–30)% increased maximum Life 
-1% of Life Regenerated per second 
-Minions have (6–10)% chance to Dodge Attacks 
+血脉相连
+骨制战甲
+等级需求: 35
+获得 15 级的的主动技能【血脉奉献】
+该装备的闪避与能量护盾提高 (100-120)%
+最大生命提高 (15-25)%
+召唤生物的最大生命提高 (20-30)%
+每秒回复 1% 生命
+召唤生物有额外 (6-10)% 躲避击中几率
 ]],[[
-Carcass Jack
-Varnished Coat
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 62, 96 Dex, 96 Int
-(120-150)% increased Evasion and Energy Shield
-+(50-70) to maximum Life
-+(9-12)% to all Elemental Resistances
-20% increased Area of Effect of Area Skills
-{variant:1}12% increased Area Damage
-{variant:2}(40–50)% increased Area Damage
-Extra gore
+致命之体
+映彩外套
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 62, 96 Dex, 96 Int
+该装备的闪避与能量护盾提高 (120-150)%
++(50-70) 最大生命
+获得 +(9-12)% 火焰、冰霜、闪电抗性
+范围效果扩大 20%
+{variant:1}范围伤害提高 12%
+{variant:2}范围伤害提高 (40-50)%
+更明显打击效果
 ]],[[
-Cloak of Defiance
-Lacquered Garb
-Variant: Pre 1.3.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 52, 76 Dex, 76 Int
-(110-150)% increased Evasion and Energy Shield
-{variant:1,2}+(90-110) to maximum Mana
-{variant:3}+(100-150) to maximum Mana
-{variant:1,2}(40-50)% increased Mana Regeneration Rate
-{variant:1}When hit, 10% of Damage is taken from Mana before Life
-{variant:3}10% of Damage is taken from Mana before Life
-{variant:3}1% of Mana Regenerated per second
-Mind Over Matter
+卫道之袍
+漆彩束衣
+版本: 1.3.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 52, 76 Dex, 76 Int
+该装备的闪避与能量护盾提高 (110-150)%
+{variant:1,2}+(90-110) 最大魔力
+{variant:3}+(100-150) 最大魔力
+{variant:1,2}魔力回复速度提高 (40-50)%
+{variant:1}被击中时, 10% 的伤害优先从魔力扣除
+{variant:3}10% 的伤害优先从魔力扣除
+{variant:3}每秒 1% 魔力回复
+心灵升华
 ]],[[
-Dendrobate
-Sentinel Jacket
-Requires Level 59, 86 Dex, 86 Int
-Socketed Gems are Supported by Level 10 Lesser Poison
-(130-150)% increased Evasion and Energy Shield
-+40 to maximum Energy Shield
-+(15-25)% to all Elemental Resistances
-(75-100)% increased Damage with Poison if you have at least 300 Dexterity
-(15-25)% increased Poison Duration if you have at least 150 Intelligence
+箭丽毒蛙
+哨兵之衣
+等级需求: 59, 86 Dex, 86 Int
+插槽内的的技能石被 10 级的低阶毒化辅助
+该装备的闪避与能量护盾提高 (130-150)%
++40 最大能量护盾
+获得 +(15-25)% 火焰、冰霜、闪电抗性
+若你有至少 300 点敏捷，则中毒伤害提高 (75-100)%
+若你有至少 150 点智慧，则中毒持续时间延长 (15-25)%
 ]],[[
-Inpulsa's Broken Heart
-Sadist Garb
-Requires Level 68
-+(60–80) to maximum Life 
-(20–50)% increased Damage if you have Shocked an Enemy Recently 
-(25–40)% increased Effect of Shock 
-Unaffected by Shock 
-Shocked Enemies you Kill Explode, dealing (5–10)% of
-their Maximum Life as Lightning Damage which cannot Shock
+速度之力
+狂虐者束衣
+等级需求: 68
++(60-80) 最大生命
+近期内你若感电任意敌人，则伤害提高 (20-50)%
+感电效果提高 (25-40)%
+不受感电影响
+击败感电敌人时会爆炸，造成等同敌人最大生命 (5-10)% 的闪电伤害
 ]],[[
-The Restless Ward
-Carnal Armour
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 71, 88 Dex, 122 Int
-+(20-25) to maximum Mana
-{variant:1}+(40-60) to maximum Life
-{variant:2}+(60-80) to maximum Life
-{variant:1}(120-150)% increased Evasion and Energy Shield
-{variant:2}(220-250)% increased Evasion and Energy Shield
-1% increased Movement Speed per Frenzy Charge
-100% increased Endurance, Frenzy and Power Charge Duration
-{variant:1}(15-20) Life Regenerated per second per Endurance Charge
-{variant:2}(20-30) Life Regenerated per second per Endurance Charge
+无尽之卫
+禁礼之甲
+版本: 2.6.0以前
+版本: 当前
+等级需求: 71, 88 Dex, 122 Int
++(20-25) 最大魔力
+{variant:1}+(40-60) 最大生命
+{variant:2}+(60-80) 最大生命
+{variant:1}该装备的闪避与能量护盾提高 (120-150)%
+{variant:2}该装备的闪避与能量护盾提高 (220-250)%
+每个狂怒球可使移动速度提高 1%
+耐力球，狂怒球，以及暴击球的持续时间延长 100%
+{variant:1}每个耐力球可使每秒生命回复提高 (15-20) 
+{variant:2}每个耐力球可使每秒生命回复提高 (20-30) 
 ]],[[
-Saqawal's Nest
-Blood Raiment
-League: Bestiary
-Source: Drops from unique{Saqawal, First of the Sky}
-Requires Level 65
-+(25–75) to all Attributes
-+(30–40)% to Lightning Resistance
-(6–10)% reduced Mana Reserved
-100% increased Aspect of the Avian Buff Effect
-Aspect of the Avian also grants Avian's Might and Avian's Flight to nearby Allies
-+(120–150) to Evasion Rating and Energy Shield
+苍空之巢
+血色之衣
+联盟: 猎魔笔记
+源: 传奇Boss【苍空初子 萨奇沃】 专属掉落
+等级需求: 65
++(25-75) 全属性
++(30-40)% 闪电抗性
+魔力保留降低 (6-10)%
+【鸟之势】增益效果提高 100%
+【鸟之势】也会使周围友军获得【鸟之力量】和【鸟之斗魄】
++(120-150) 点闪避值和能量护盾
 ]],[[
-Shroud of the Lightless
-Carnal Armour
-League: Abyss
-Source: Drops from Abyssal Liches
-Variant: One Abyssal Socket
-Variant: Two Abyssal Sockets
+泯光寿衣
+禁礼之甲
+联盟: 深渊
+源: 深渊巫妖掉落
+版本: 一个深渊插槽  
+版本: 两个深渊插槽 
 Requires Level: 71
-+(20–25) to maximum Mana 
-{variant:1}Has 1 Abyssal Socket
-{variant:2}Has 2 Abyssal Sockets
-Socketed Gems are Supported by Level 20 Elemental Penetration 
-20% chance to Trigger Level 20 Shade Form when you Use a Socketed Skill 
-(160–180)% increased Evasion and Energy Shield 
-(6–10)% increased maximum Life 
-(9–15)% increased maximum Mana 
-1% increased Maximum Life per Abyss Jewel affecting you 
-1% increased Maximum Mana per Abyss Jewel affecting you
++(20-25) 最大魔力
+{variant:1}拥有 1 个深渊插槽
+{variant:2}拥有 2 个深渊插槽
+此物品上的技能石受到 20 级的 元素穿透 辅助
+当你使用物品上的技能时，有 20% 的几率触发 20 级的 【暗影姿态】
+该装备的闪避与能量护盾提高 (160-180)%
+最大生命提高 (6-10)%
+最大魔力提高 (9-15)%
+每个影响你的【深渊珠宝】可使最大生命提高 1%
+每个影响你的【深渊珠宝】可使最大魔力提高 1%
 ]],[[
-Tinkerskin
-Sadist Garb
-Requires Level 68, 103 Dex, 109 Int
-(140-170)% increased Evasion and Energy Shield
-+(60-90) to maximum Life
-(10-15)% increased Cooldown Recovery Speed for throwing Traps
-15% chance to gain a Frenzy Charge when your Trap is triggered by an Enemy
-30% chance to gain Phasing for 4 seconds when your Trap is triggered by an Enemy
-Recover 100 Life when your Trap is triggered by an Enemy
-Recover 50 Energy Shield when your Trap is triggered by an Enemy
+钟表匠的华服
+狂虐者束衣
+等级需求: 68, 103 Dex, 109 Int
+该装备的闪避与能量护盾提高 (140-170)%
++(60-90) 最大生命
+陷阱冷却回复速度提高 (10-15)%
+当你的陷阱被敌人触发时，有 15% 几率获得 1 个狂怒球
+陷阱被敌人触发时，有 30% 几率获得 4 秒暗影迷踪
+你的陷阱被敌人触发时回复 100 生命
+你的陷阱被敌人触发时回复 50 能量护盾
 ]],[[
-Victario's Influence
-Lacquered Garb
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 52, 76 Dex, 76 Int
-+1 to Level of Socketed Aura Gems
-{variant:1}Socketed Gems have 20% reduced Mana Reservation
-{variant:2}Socketed Gems have 30% reduced Mana Reservation
-{variant:1}Socketed Gems are Supported by level 1 Generosity
-{variant:2}Socketed Gems are Supported by level 30 Generosity
-(120-150)% increased Evasion and Energy Shield
-{variant:1}(10-20)% increased Radius of Auras
-{variant:2}(20-40)% increased Area of Effect of Aura Skills
-(10-15)% increased effect of Non-Curse Auras you Cast
+维多里奥之绝响
+漆彩束衣
+版本: 2.6.0以前
+版本: 当前
+等级需求: 52, 76 Dex, 76 Int
+此物品上装备的【光环技能石】等级 +1
+{variant:1}此物品上的技能石降低 20% 魔力保留
+{variant:2}此物品上的技能石降低 30% 魔力保留
+{variant:1}此物品上的技能石受到 1 级的 和善 辅助
+{variant:2}此物品上的技能石受到 30 级的 和善 辅助
+该装备的闪避与能量护盾提高 (120-150)%
+{variant:1}光环技能范围提高 (20-40)%
+{variant:2}光环技能范围提高 (20-40)%
+非诅咒类光环的效果提高 (10-15)%
 ]],
 -- Body: Armour/Evasion/Energy Shield
 [[
-Atziri's Splendour
-Sacrificial Garb
-Source: Drops from unique{Atziri, Queen of the Vaal} in normal{The Alluring Abyss}
-Variant: Pre 3.0.0 (Armour)
-Variant: Pre 3.0.0 (Armour/Evasion)
-Variant: Pre 3.0.0 (Evasion)
-Variant: Pre 3.0.0 (Evasion/ES + Life)
-Variant: Pre 3.0.0 (Evasion/ES + ES)
-Variant: Pre 3.0.0 (Energy Shield)
-Variant: Pre 3.0.0 (Armour/ES + Life)
-Variant: Pre 3.0.0 (Armour/ES + ES)
-Variant: {2_6}Pre 3.0.0 (Armour/Evasion/ES)
-Variant: Current (Armour)
-Variant: Current (Armour/Evasion)
-Variant: Current (Evasion)
-Variant: Current (Evasion/ES + Life)
-Variant: Current (Evasion/ES + ES)
-Variant: Current (Energy Shield)
-Variant: Current (Armour/ES + Life)
-Variant: Current (Armour/ES + ES)
-Variant: Current (Armour/Evasion/ES)
-Requires Level 75, 66 Str, 66 Dex, 66 Int
-{variant:1,10}(380-420)% increased Armour
-{variant:2,11}(200-220)% increased Evasion Rating and Armour
-{variant:3,12}(380-420)% increased Evasion Rating
-{variant:4,5,13,14}(200-220)% increased Evasion and Energy Shield
-{variant:6,15}(270-300)% increased Energy Shield
-{variant:7,8,16,17}(200-220)% increased Armour and Energy Shield
-{variant:9,18}(270-340)% increased Armour, Evasion and Energy Shield
-{variant:1,2,3,4,7,10,11,12,13,16}+(90-100) to Maximum Life
-{variant:5,6,8}+(90-100) to Maximum Energy Shield
-{variant:14,15,17}+(70-80) to Maximum Energy Shield
-+(20-24)% to all Elemental Resistances
-+100 Life Gained on Kill
-+100 Mana Gained on Kill
+阿兹里的威权
+祭礼束衣
+源: 传奇Boss【瓦尔女王阿兹里】 专属掉落（地图【诱人的深渊】） 
+版本: 3.0.0以前（护甲）
+版本: 3.0.0以前（护甲/闪避）
+版本: 3.0.0以前（闪避）
+版本: 3.0.0以前（闪避/ES+生命）
+版本: 3.0.0以前（闪避/ES+ES）
+版本: 3.0.0以前（能量护盾）
+版本: 3.0.0以前（护甲）
+版本: 3.0.0以前（护甲/ES+生命）
+版本: {2_6}3.0.0以前（护甲/闪避/ES）
+版本: 当前 （护甲）
+版本: 当前 （护甲/闪避）
+版本: 当前 （闪避）
+版本: 当前 （闪避/ES+生命）
+版本: 当前 （闪避/ES+ES）
+版本: 当前 （能量护盾）
+版本: 当前 （护甲/ES+生命）
+版本: 当前 （护甲/ES +ES）
+版本: 当前 （护甲/闪避/ES）
+等级需求: 75, 66 Str, 66 Dex, 66 Int
+{variant:1,10}护甲提高 (380-420)%
+{variant:2,11}闪避值与护甲提高 (200-220)%
+{variant:3,12}闪避值提高 (380-420)%
+{variant:4,5,13,14}该装备的闪避与能量护盾提高 (200-220)%
+{variant:6,15}该装备的能量护盾提高 (270-300)%
+{variant:7,8,16,17}该装备的护甲与能量护盾提高 (200-220)%
+{variant:9,18}该装备的护甲、闪避和能量护盾提高 (270-340)%
+{variant:1,2,3,4,7,10,11,12,13,16}+(90-100) 最大生命
+{variant:5,6,8}+(90-100) 最大能量护盾
+{variant:14,15,17}+(70-80) 最大能量护盾
+获得 +(20-24)% 火焰、冰霜、闪电抗性
+击败敌人回复 +100 生命
+击败敌人回复 +100 魔力
 ]],
 }

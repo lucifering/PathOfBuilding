@@ -1,636 +1,632 @@
--- Item data (c) Grinding Gear Games
-
+﻿-- Item data (c) Grinding Gear Games
 return {
 -- Boots: Armour
 [[
-Craiceann's Tracks
-Goliath Greaves
-League: Bestiary
-Source: Drops from unique{Craiceann, First of the Deep}
-Requires Level 54
-(150�180)% increased Armour
-+(50�70) to maximum Life
-+(25�30)% to Cold Resistance
-25% increased Movement Speed
-Cannot be Stunned if you have at least 10 Crab Barriers
-You only lose (5�7) Crab Barriers when you take Physical Damage from a Hit
+深海魔足
+巨灵胫甲
+联盟: 猎魔笔记
+源: 传奇Boss【深海初子 克林斯昂】 专属掉落
+等级需求: 54
+护甲提高 (150-180)%
++(50-70) 最大生命
++(25-30)% 冰霜抗性
+移动速度提高 25%
+若你拥有 10 个以上的【深海屏障】，则无法被晕眩
+当你被击中一次并受到物理伤害时，你只会丢失 (5-7) 个【深海屏障】
 ]],[[
-The Infinite Pursuit
-Goliath Greaves
-League: Breach
-Source: Drops in Uul-Netol Breach or from unique{Uul-Netol, Unburdened Flesh}
-Upgrade: Upgrades to unique{The Red Trail} using currency{Blessing of Uul-Netol}
-Requires Level 54, 95 Str
-+(30-60) to maximum Life
-20% increased Movement Speed
-Moving while Bleeding doesn't cause you to take extra Damage
-15% increased Movement Speed while Bleeding
-50% chance to be inflicted with Bleeding when Hit by an Attack
+无尽之距
+巨灵胫甲
+联盟: 裂隙
+源: 地图【乌尔尼多领域】 或 传奇Boss【截载者‧乌尔尼多】 专属掉落
+升级: 使用 通货【乌尔尼多的祝福】 升级为 传奇【赤红踪迹】
+等级需求: 54, 95 Str
++(30-60) 最大生命
+移动速度提高 20%
+流血状态下移动不再承受额外的伤害
+流血时移动速度提高 15%
+被攻击击中时，有 50% 几率流血
 ]],[[
-The Red Trail
-Titan Greaves
-League: Breach
-Source: Upgraded from unique{The Infinite Pursuit} using currency{Blessing of Uul-Netol}
-Requires Level 68, 120 Str
-(60-80)% increased Armour
-+(50-70) to maximum Life
-25% increased Movement Speed
-Gain a Frenzy Charge on Hit while Bleeding
-15% increased Movement Speed while Bleeding
-10% additional Physical Damage Reduction while stationary
-50% chance to be inflicted with Bleeding when Hit by an Attack
-Gore Footprints
+赤红踪迹
+巨人胫甲
+联盟: 裂隙
+源: 由传奇【无尽之距】 使用 通货【乌尔尼多的祝福】 升级
+等级需求: 68, 120 Str
+护甲提高 (60-80)%
++(50-70) 最大生命
+移动速度提高 25%
+流血时击中敌人将获得 1 个狂怒球
+流血时移动速度提高 15%
+静止时受到的物理伤害降低 10%
+被攻击击中时，有 50% 几率流血
+瘀血爪印
 ]],[[
-Kaom's Roots
-Titan Greaves
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 68, 120 Str
-Has no Sockets
-Cannot be Knocked Back
-{variant:1}+(120-150) to maximum Life
-{variant:2}+(150-200) to maximum Life
-Unwavering Stance
-{variant:2}Cannot Be Slowed to Below Base Speed
+冈姆的稳重之靴
+巨人胫甲
+版本: 2.6.0以前
+版本: 当前
+等级需求: 68, 120 Str
+没有插槽
+无法被击退
+{variant:1}+(120-150) 最大生命
+{variant:2}+(150-200) 最大生命
+烈士意志
+{variant:2}你无法被减速至基础速度以下
 ]],[[
-Redblade Tramplers
-Ancient Greaves
-League: Warbands
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 46, 82 Str
-{variant:2}+(50-70) to maximum Life
-Adds (2-5) to (7-10) Physical Damage to Attacks
-(5-10)% reduced Enemy Stun Threshold
-(150-200)% increased Armour
-+(20-30)% to Fire Resistance
-{variant:1}20% increased Movement Speed
-{variant:2}25% increased Movement Speed
-Unaffected by Burning Ground
+红刃蹂躏靴
+远古胫甲
+联盟: 军团
+版本: 2.6.0以前
+版本: 当前
+等级需求: 46, 82 Str
+{variant:2}+(50-70) 最大生命
+攻击附加 (2-5) - (7-10) 基础物理伤害
+敌人晕眩门槛降低 (5-10)%
+护甲提高 (150-200)%
++(20-30)% 火焰抗性
+{variant:1}移动速度提高 20%
+{variant:2}移动速度提高 25%
+不受燃烧地面影响
 ]],[[
-Stormcharger
-Plated Greaves
+风暴骑士
+坚铁胫甲
 Requires Level: 23
-+(1�50)% to Lightning Resistance 
-20% increased Movement Speed 
-50% increased Shock Duration on Enemies 
-30% of Physical Damage Converted to Lightning Damage 
-(15�25)% increased Effect of Shock
++(1-50)% 闪电抗性
+移动速度提高 20%
+对敌人的感电效果持续时间延长 50%
+物理伤害的 30% 转换为闪电伤害
+感电效果提高 (15-25)%
 ]],[[
-Windscream
-Reinforced Greaves
-Upgrade: Upgrades to unique{Windshriek} via prophecy{Darktongue's Shriek}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 33, 60 Str
-(50-80)% increased Armour
-+(10-15)% to all Elemental Resistances
-{variant:1}10% increased Movement Speed
-{variant:2}15% increased Movement Speed
-{variant:1}10% increased Elemental Damage
-{variant:2}(10-20)% increased Elemental Damage
-Enemies can have 1 additional Curse
+恶风足迹
+强化胫甲
+升级:使用 预言【暗语者的尖哮】 升级为 传奇【风哮】
+版本: 2.6.0以前
+版本: 当前
+等级需求: 33, 60 Str
+护甲提高 (50-80)%
+获得 +(10-15)% 火焰、冰霜、闪电抗性
+{variant:1}移动速度提高 10%
+{variant:2}移动速度提高 15%
+{variant:1}火焰、冰霜、闪电伤害提高 10%
+{variant:2}火焰、冰霜、闪电伤害提高 (10-20)%
+可以对敌人施放 1 个额外诅咒
 ]],[[
-Windshriek
-Reinforced Greaves
-Source: Upgraded from unique{Windscream} via prophecy{Darktongue's Shriek}
-Requires Level 60
-(200�250)% increased Armour
-+(10�15)% to all Elemental Resistances
-25% increased Movement Speed
-(10�20)% increased Elemental Damage
-Enemies can have 1 additional Curse
-60% increased Area of Effect of Curse Skills
+风哮
+强化胫甲
+源: 由 传奇【恶风足迹】 使用 预言【暗语者的尖哮】 升级
+等级需求: 60
+护甲提高 (200-250)%
+获得 +(10-15)% 火焰、冰霜、闪电抗性
+移动速度提高 25%
+火焰、冰霜、闪电伤害提高 (10-20)%
+可以对敌人施放 1 个额外诅咒
+诅咒范围扩大 60%
 ]],
 -- Boots: Evasion
 [[
-Abberath's Hooves
-Goathide Boots
-Requires Level 12, 26 Dex
-+(20-30) to Strength
-15% increased Movement Speed
-(6-10)% chance to Ignite
-Ignite a nearby Enemy on Killing an Ignited Enemy
-Casts level 7 Abberath's Fury when equipped
-1% increased Fire Damage per 20 Strength
-Burning Hoofprints
+地动
+羊皮短靴
+等级需求: 12, 26 Dex
++(20-30) 力量
+移动速度提高 15%
+火焰伤害击中时有 (6-10)% 几率点燃敌人
+当你击败 1 名点燃敌人，对周围敌人造成相同的点燃效果
+装备时施放 7 级的【艾贝拉斯之怒】
+每 20 点力量可使火焰伤害提高 1%
+燃烧蹄印
 ]],[[
-Atziri's Step
-Slink Boots
-Source: Drops from unique{Atziri, Queen of the Vaal} in normal{The Apex of Sacrifice}
-Requires Level 69, 120 Dex
-180% increased Evasion Rating
-+(55-75) to maximum Life
-30% increased Movement Speed
-(14-16)% Chance to Dodge Spell Damage
+阿兹里的金履
+迷踪短靴
+源: 传奇Boss【瓦尔女王阿兹里】 专属掉落（地图【生贽之尖】） 
+等级需求: 69, 120 Dex
+闪避值提高 180%
++(55-75) 最大生命
+移动速度提高 30%
+(14-16)% 几率躲避法术击中
 ]],[[
-The Blood Dance
-Sharkskin Boots
-Variant: Pre 1.0.0
-Variant: Pre 2.1.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 44, 79 Dex
-+(30-40) to Dexterity
-20% increased Movement Speed
-2% increased Movement Speed per Frenzy Charge
-3% reduced Attack and Cast Speed per Frenzy Charge
-{variant:1,2}1% of Life Regenerated per Second per Frenzy Charge
-{variant:3,4}0.5% of Life Regenerated per Second per Frenzy Charge
-(20-30)% chance to gain a Frenzy Charge on Kill
-Gore Footprints
-{variant:1}3% increased Damage against Enemies on Low Life per Frenzy Charge
-{variant:2,3}6% increased Damage against Enemies on Low Life per Frenzy Charge
-{variant:4}6% increased Damage per Frenzy Charge with Hits against Enemies on Low Life
+血影
+鲨皮短靴
+版本: 1.0.0以前
+版本: 2.1.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 44, 79 Dex
++(30-40) 敏捷
+移动速度提高 20%
+每个狂怒球可使移动速度提高 2%
+每个狂怒球可使攻击速度降低 3%
+{variant:1,2}每个狂怒球每秒回复 1% 生命
+{variant:3,4}每个狂怒球每秒回复 0.5% 生命
+击败敌人后有 (20-30)% 几率获得 1 个狂怒球
+瘀血爪印
+{variant:1}对低血敌人，每个狂怒球可使伤害提高 3%
+{variant:2,3}对低血敌人，每个狂怒球可使伤害提高 6%
+{variant:4}对低血敌人，每个狂怒球可使伤害提高 6%
 ]],[[
-Deerstalker
-Deerskin Boots
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 22, 42 Dex
-Socketed Gems are Supported by level 11 Trap
-(160-200)% increased Evasion Rating
-+(35-45) to maximum Life
-(14-18)% increased Trap Throwing Speed
-{variant:2}15% increased Movement Speed
-{variant:1}30% increased Movement Speed for 9 seconds on Throwing a Trap
-{variant:2}15% increased Movement Speed for 9 seconds on Throwing a Trap
+猎踪
+鹿皮短靴
+版本: 2.6.0以前
+版本: 当前
+等级需求: 22, 42 Dex
+此物品上的技能石受到 11 级的 技能陷阱化 辅助
+闪避值提高 (160-200)%
++(35-45) 最大生命
+陷阱投掷速度提高 (14-18)%
+{variant:2}移动速度提高 15%
+{variant:1}投掷陷阱时移动速度提高 30%，持续 9 秒
+{variant:2}投掷陷阱时移动速度提高 15%，持续 9 秒
 ]],[[
-Farrul's Chase
-Slink Boots
-League: Bestiary
-Source: Drops from unique{Farrul, First of the Plains}
-Requires Level 69
-Trigger Level 20 Intimidating Cry when you lose Cat's Stealth
-(110�150)% increased Evasion Rating
-+(50�70) to maximum Life
-20% increased Movement Speed
-(40�50)% chance to avoid Bleeding
-20% increased Movement Speed while you have Cat's Stealth
+大地之痕
+迷踪短靴
+联盟: 猎魔笔记
+源: Boss 传奇 【大地初子 法瑞尔】 专属掉落
+等级需求: 69
+当你失去【猫之隐匿】时，触发 20 级的【威吓战吼】
+闪避值提高 (110-150)%
++(50-70) 最大生命
+移动速度提高 20%
+(40-50)% 几率免疫流血
+你获得【猫之隐匿】时移动速度提高 20%
 ]],[[
-Goldwyrm
-Nubuck Boots
-Variant: Pre 1.1.0
-Variant: Current
-Requires Level 34, 62 Dex
-60% increased Mana Regeneration Rate
-{variant:1}(20-30)% increased Quantity of Items Found
-{variant:2}(14-20)% increased Quantity of Items Found
-+(40-50)% to Fire Resistance
-10% increased Movement Speed
+龙炎足迹
+砂影短靴
+版本: 1.1.0以前
+版本: 当前
+等级需求: 34, 62 Dex
+魔力回复速度提高 60%
+{variant:1}物品掉落数量提高 (20-30)%
+{variant:2}物品掉落数量提高 (14-20)%
++(40-50)% 火焰抗性
+移动速度提高 10%
 ]],[[
-Garukhan's Flight
-Stealth Boots
-Requires Level 62, 117 Dex
-+(30-40) to Dexterity
-(80-120)% increased Evasion Rating
-30% increased Movement Speed
-Immune to Burning Ground, Shocked Ground and Chilled Ground
-Regenerate 100 Life per second while moving
-+1 to Maximum Life per 10 Dexterity
+盖卢坎的飞升
+匿踪短靴
+等级需求: 62, 117 Dex
++(30-40) 敏捷
+闪避值提高 (80-120)%
+移动速度提高 30%
+免疫燃烧地面，感电地面和冰缓地面
+移动时每秒回复 100 生命
+每 10 点敏捷提高 +1 最大生命
 ]],[[
-Seven-League Step
-Rawhide Boots
-League: Perandus
-50% increased Movement Speed
+盟誓之迹
+生皮短靴
+联盟: 普兰德斯
+移动速度提高 50%
 ]],[[
-Three-step Assault
-Shagreen Boots
-Variant: Pre 2.6.0
-Variant: Current
+强袭者
+粗革短靴
+版本: 2.6.0以前
+版本: 当前
 Evasion: (198-203)
-Requires Level 55, 97 Dex
-+(25-35) to Dexterity
-(20-40)% increased Evasion Rating
-{variant:1}40% increased Evasion Rating while you have Onslaught
-{variant:2}100% increased Evasion Rating while you have Onslaught
-{variant:1}+(30-60) to maximum Life
-{variant:2}+(50-70) to maximum Life
-{variant:1}20% increased Movement Speed
-{variant:2}25% increased Movement Speed
-10% chance to Dodge Spells while Phasing
+等级需求: 55, 97 Dex
++(25-35) 敏捷
+闪避值提高 (20-40)%
+{variant:1}获得【猛攻】时闪避值提高 40%
+{variant:2}获得【猛攻】时闪避值提高 100%
+{variant:1}+(30-60) 最大生命
+{variant:2}+(50-70) 最大生命
+{variant:1}移动速度提高 20%
+{variant:2}移动速度提高 25%
+【迷踪】状态时有 10% 几率躲避法术伤害击中
 ]],[[
-Victario's Flight
-Goathide Boots
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 12, 26 Dex
-+15 to Dexterity
-+15 to Intelligence
-(100-150)% increased Evasion Rating
-{variant:1}30% increased Movement Speed when on Low Life
-{variant:2}15% increased Movement Speed
-{variant:2}You and nearby allies have 10% increased Movement Speed
-(5-10)% of Damage taken Gained as Mana over 4 seconds when Hit
+维多里奥的飞升
+羊皮短靴
+版本: 2.6.0以前
+版本: 当前
+等级需求: 12, 26 Dex
++15 敏捷
++15 智慧
+闪避值提高 (100-150)%
+{variant:1}低血时移动速度提高 30%
+{variant:2}移动速度提高 15%
+{variant:2}你和周围队友的移动速度提高 10%
+被击中时， 4 秒内回复等同于 (5-10)% 伤害的魔力
 ]],
 -- Boots: Energy Shield
 [[
-Bones of Ullr
-Silk Slippers
-Requires Level 22, 42 Int
-+20 to maximum Life
-+20 to maximum Mana
-(40-60)% increased Energy Shield
-(5-15)% increased Movement Speed
-+1 to Maximum number of Zombies
-+1 to Maximum number of Spectres
+灵骸之履
+丝绸便鞋
+等级需求: 22, 42 Int
++20 最大生命
++20 最大魔力
+该装备的能量护盾提高 (40-60)%
+移动速度提高 (5-15)%
++1 魔卫数量上限
++1 灵体数量上限
 ]],[[
-Inya's Epiphany
-Arcanist Slippers
-Source: Drops from The Pale Council
-Requires Level 61, 119 Int
-+(50-70) to maximum Life
-25% increased Movement Speed
-(5-8)% increased Intelligence
-5% increased Damage per Power Charge
-25% chance that if you would gain Power Charges, you instead gain up to
-your maximum number of Power Charges
+茵雅的启蒙
+秘术便鞋
+源: 地图【苍白议会】 专属掉落
+等级需求: 61, 119 Int
++(50-70) 最大生命
+移动速度提高 25%
+智慧提高 (5-8)%
+每个暴击球可使伤害提高 5%
+当你可能获得暴击球时，有 25% 几率直接获得最大数量的暴击球
 ]],[[
-Rainbowstride
-Conjurer Boots
-Variant: Pre 1.0.0
-Variant: Pre 1.1.0
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Pre 3.4.0
-Variant: Current
-Requires Level 53, 94 Int
-{variant:1,2,3,4}(20-25)% of Block Chance applied to Spells
-{variant:5}+(6-7)% chance to Block Spell Damage
-{variant:6}+(4-6)% chance to Block Spell Damage
-{variant:1,2}+(80-100) to maximum Mana
-{variant:3,4,5,6}+(40-60) to maximum Mana
-{variant:1,2}(150-200)% increased Energy Shield
-{variant:3,4,5,6}(140-180)% increased Energy Shield
-{variant:2}+8% to all Elemental Resistances
-{variant:1,3,4,5,6}+20% to all Elemental Resistances
-{variant:1,2,3}20% increased Movement Speed
-{variant:4,5,6}25% increased Movement Speed
+虹幕
+咒者长靴
+版本: 1.0.0以前
+版本: 1.1.0以前
+版本: 2.6.0以前
+版本: 3.4.0以前
+版本: 当前
+等级需求: 53, 94 Int
+{variant:4}(20-25)% 的攻击格挡率同样套用于法术格挡
+{variant:5}(4–6)% 法术伤害格挡几率
+{variant:1,2}+(80-100) 最大魔力
+{variant:3,4,5}+(40-60) 最大魔力
+{variant:1,2}该装备的能量护盾提高 (150-200)%
+{variant:3,4,5}该装备的能量护盾提高 (140-180)%
+{variant:2}获得 +8% 火焰、冰霜、闪电抗性
+{variant:1,3,4,5}获得 +20% 火焰、冰霜、闪电抗性
+{variant:1,2,3}移动速度提高 20%
+{variant:4,5}移动速度提高 25%
 ]],[[
-Shavronne's Pace
-Scholar Boots
-Upgrade: Upgrades to unique{Shavronne's Gambit} via prophecy{The Flow of Energy}
-Variant: Pre 2.0.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 32, 54 Int
-+10 to Dexterity
-{variant:1}+10 to Intelligence
-{variant:2,3}+(20-30) to Intelligence
-{variant:1}(50-70)% increased Energy Shield
-{variant:2,3}(100-140)% increased Energy Shield
-{variant:3}15% increased Movement Speed
-{variant:1,2}35% increased Movement Speed when on Full Life
-{variant:3}20% increased Movement Speed when on Full Life
-(10-15)% increased Stun Recovery
+薛朗的秘术长靴
+学者长靴
+升级: 使用 预言【能源流动】 升级为 传奇【薛朗的诡计】
+版本: 2.0.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 32, 54 Int
++10 敏捷
+{variant:1}+10 智慧
+{variant:2,3}+(20-30) 智慧
+{variant:1}该装备的能量护盾提高 (50-70)%
+{variant:2,3}该装备的能量护盾提高 (100-140)%
+{variant:3}移动速度提高 15%
+{variant:1,2}满血时移动速度提高 35%
+{variant:3}满血时移动速度提高 20%
+晕眩回复和格挡回复提高 (10-15)%
 ]],[[
-Shavronne's Gambit
-Scholar Boots
-Source: Upgraded from unique{Shavronne's Pace} via prophecy{The Flow of Energy}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 32, 54 Int
-+10 to Dexterity
-+(20-30) to Intelligence
-(100-140)% increased Energy Shield
-{variant:2}15% increased Movement Speed
-{variant:1}35% increased Movement Speed when on Full Life
-{variant:2}20% increased Movement Speed when on Full Life
-{variant:1}2% of Energy Shield regenerated per second while on Low Life
-{variant:2}1% of Energy Shield regenerated per second
-(10-15)% increased Stun Recovery
+薛朗的诡计
+学者长靴
+源: 由 传奇【薛朗的秘术长靴】 使用 预言【能源流动】 升级
+版本: 2.6.0以前
+版本: 当前
+等级需求: 32, 54 Int
++10 敏捷
++(20-30) 智慧
+该装备的能量护盾提高 (100-140)%
+{variant:2}移动速度提高 15%
+{variant:1}满血时移动速度提高 35%
+{variant:2}满血时移动速度提高 20%
+{variant:1}低血时获得每秒 2% 能量护盾回复
+{variant:2}每秒回复 1% 能量护盾
+晕眩回复和格挡回复提高 (10-15)%
 ]],[[
-Skyforth
-Sorcerer Boots
+空向
+术士长靴
 Energy Shield: 64
-Requires Level 67, 123 Int
-+(60-120) to maximum Mana
-30% increased Movement Speed
-25% chance to gain a Power Charge on Critical Strike
-6% reduced Mana Reserved
-You have no Life Regeneration
-Stun Threshold is based on 500% of your Mana instead of Life
+等级需求: 67, 123 Int
++(60-120) 最大魔力
+移动速度提高 30%
+暴击时有 25% 几率获得暴击球
+魔力保留降低 6%
+无法回复生命
+你的晕眩门槛将基于魔力的 500%，而非生命
 ]],[[
-Steppan Eard
-Sorcerer Boots
-League: Warbands
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 67, 123 Int
-{variant:1}(110-140)% increased Energy Shield
-{variant:2}(50�80)% increased Energy Shield
-+(20-30) to maximum Energy Shield
-30% increased Movement Speed
-20% increased Movement Speed on Shocked Ground
-50% increased Damage on Burning Ground
-2% of Life Regenerated Per Second on Chilled Ground
-Unaffected by Desecrated Ground
+绝地魔履
+术士长靴
+联盟: 军团
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 67, 123 Int
+{variant:1}该装备的能量护盾提高 (110-140)%
+{variant:2}该装备的能量护盾提高 (50-80)%
++(20-30) 最大能量护盾
+移动速度提高 30%
+在感电地面上的移动速度提高 20%
+在燃烧地面上的伤害提高 50%
+在冰缓地面上每秒回复 2% 生命
+不受腐化地面影响
 ]],[[
-Wanderlust
-Wool Shoes
-+5 to Dexterity
-(20-40)% increased Mana Regeneration Rate
-+(10-20) to maximum Energy Shield
-20% increased Movement Speed
-Cannot be Frozen
+苦行之履
+羊毛之鞋
++5 敏捷
++(10-20) 最大能量护盾
+移动速度提高 20%
+魔力回复速度提高 (20-40)%
+免疫冰冻
 ]],[[
-Wondertrap
-Velvet Slippers
-Upgrade: Upgrades to unique{Greedtrap} via prophecy{Greed's Folly}
-Variant: Pre 1.0.0
-Variant: Current
-Requires Level 9, 21 Int
-+(5-10) to Strength
-+(5-10) to Dexterity
-+(5-10) to Intelligence
-+(10-16) to maximum Energy Shield
-100% increased Rarity of Items found when on Low Life
-{variant:1}15% increased Movement Speed
-{variant:2}10% increased Movement Speed
+回光之迹
+丝绒便鞋
+升级: 使用 预言【贪婪者的讽刺】 升级为 传奇【贪欲之诱】
+版本: 1.0.0以前
+版本: 当前
+等级需求: 9, 21 Int
++(5-10) 力量
++(5-10) 敏捷
++(5-10) 智慧
++(10-16) 最大能量护盾
+低血时物品稀有度提高 100%
+{variant:1}移动速度提高 15%
+{variant:2}移动速度提高 10%
 ]],[[
-Greedtrap
-Velvet Slippers
-Source: Upgraded from unique{Wondertrap} via prophecy{Greed's Folly}
-Requires Level 52
-+(5�10) to Strength
-+(5�10) to Dexterity
-+(5�10) to Intelligence
-+(90�110) to maximum Energy Shield
-(10�16)% increased Quantity of Items found when on Low Life
-20% increased Movement Speed
+贪婪之诱
+丝绒便鞋
+源: 由 传奇【回光之迹】 使用 预言【贪婪者的讽刺】 升级
+等级需求: 52
++(5-10) 力量
++(5-10) 敏捷
++(5-10) 智慧
++(90-110) 最大能量护盾
+低血时物品掉落数量提高 (10-16)%
+移动速度提高 20%
 ]],
 -- Boots: Armour/Evasion
 [[
-Darkray Vectors
-Dragonscale Boots
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 65, 62 Str, 62 Dex
-{variant:2}(40-70)% increased Armour and Evasion
-+(20-40)% to Lightning Resistance
-5% increased Movement Speed per Frenzy Charge
-+1 to Maximum Frenzy Charge
-{variant:1}50% reduced Frenzy Charge Duration
-{variant:2}40% reduced Frenzy Charge Duration
-25% reduced Light Radius
-2% chance to Dodge Attacks per Frenzy Charge
+暗雷
+龙鳞长靴
+版本: 2.6.0以前
+版本: 当前
+等级需求: 65, 62 Str, 62 Dex
+{variant:2}该装备的护甲与闪避提高 (40-70)%
++(20-40)% 闪电抗性
+每个狂怒球可使移动速度提高 5%
++1 狂怒球数量上限
+{variant:1}狂怒球持续时间缩短 50%
+{variant:2}狂怒球持续时间缩短 40%
+照亮范围缩小 25%
+每拥有 1 个狂怒球，有 2% 几率躲避攻击击中
 ]],[[
-Dusktoe
-Ironscale Boots
-Upgrade: Upgrades to unique{Duskblight} via prophecy{Agony at Dusk}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 18
-(40-60)% increased Armour and Evasion
-{variant:1}+(10-20) to maximum Life
-{variant:2}+(20-30) to maximum Life
-{variant:1}+(10-20) to maximum Mana
-15% increased Movement Speed
-50% increased Stun Recovery
-20% reduced Light Radius
-{variant:2}Adds (15-20) to (25-30) Chaos Damage to Spells and Attacks while using a Flask
-+50% to Chaos Resistance while using a Flask
+迎暮
+铁影长靴
+升级: 使用 预言【暮色之痛】 升级为 传奇【幽暗凋零】
+版本: 2.6.0以前
+版本: 当前
+等级需求: 18
+该装备的护甲与闪避提高 (40-60)%
+{variant:1}+(10-20) 最大生命
+{variant:2}+(20-30) 最大生命
+{variant:1}+(10-20) 最大魔力
+移动速度提高 15%
+晕眩回复和格挡回复提高 50%
+照亮范围缩小 20%
+{variant:2}药剂持续期间，攻击和法术附加 (15-20)-(25-30) 基础混沌伤害
+药剂持续期间，提高 +50% 混沌抗性
 ]],[[
-Dusktoe
-Leatherscale Boots
-Variant: Pre 2.0.0
-Requires Level 18
-(40-60)% increased Armour and Evasion
-+(10-20) to maximum Life
-+(10-20) to maximum Mana
-15% increased Movement Speed
-50% increased Stun Recovery
-20% reduced Light Radius
-+50% to Chaos Resistance while using a Flask
+迎暮
+铁影长靴
+版本: 2.0.0以前
+等级需求: 18
+该装备的护甲与闪避提高 (40-60)%
++(10-20) 最大生命
++(10-20) 最大魔力
+移动速度提高 15%
+晕眩回复和格挡回复提高 50%
+照亮范围缩小 20%
+药剂持续期间，提高 +50% 混沌抗性
 ]],[[
-Duskblight
-Ironscale Boots
-Source: Upgraded from unique{Dusktoe} via prophecy{Agony at Dusk}
-Requires Level 40
-Socketed Gems are Supported by Level 15 Added Chaos Damage
-(120�150)% increased Armour and Evasion
-+(50�60) to maximum Life
-20% increased Movement Speed
-50% increased Stun and Block Recovery
-20% reduced Light Radius
-+50% to Chaos Resistance during any Flask Effect
+幽暗凋零
+铁影长靴
+源: 由 传奇【迎暮】 使用 预言【暮色之痛】 升级
+等级需求: 40
+此物品上的技能石受到 15 级的 附加混沌伤害 辅助
+该装备的护甲与闪避提高 (120-150)%
++(50-60) 最大生命
+移动速度提高 20%
+晕眩和格挡回复降低 50%
+照亮范围缩小 20%
+药剂持续期间，提高 +50% 混沌抗性
 ]],[[
-Lioneye's Paws
-Bronzescale Boots
-Requires Level 30, 30 Str, 30 Dex
-+(40-60) to Strength
-+(40-60) to Dexterity
-Adds 12 to 24 Fire Damage to Attacks
-20% increased Movement Speed
-40% reduced Movement Speed when on Low Life
-20% increased Stun Recovery
-Cannot be Stunned when on Low Life
+狮眼的斗志
+铜影长靴
+等级需求: 30, 30 Str, 30 Dex
++(40-60) 力量
++(40-60) 敏捷
+攻击附加 12 - 24 基础火焰伤害
+移动速度提高 20%
+低血时移动速度降低 40%
+晕眩回复和格挡回复提高 20%
+低血时免疫晕眩
 ]],[[
-Mutewind Whispersteps
-Serpentscale Boots
-League: Warbands
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 42, 40 Str, 40 Dex
-{variant:1}Adds (15-19) to (28-35) Cold Damage to Spells
-{variant:2}Adds (25-30) to (40-50) Cold Damage to Spells
-{variant:1}(20-40)% increased Critical Strike Chance for Spells
-{variant:2}(50-70)% increased Critical Strike Chance for Spells
-(100-150)% increased Evasion Rating
-+(20-30)% to Cold Resistance
-{variant:1}20% increased Movement Speed
-{variant:2}25% increased Movement Speed
-Unaffected by Chilled Ground
+哑风轻步
+蛇鳞长靴
+联盟: 军团
+版本: 2.6.0以前
+版本: 当前
+等级需求: 42, 40 Str, 40 Dex
+{variant:1}法术附加 (15-19) - (28-35) 基础冰霜伤害
+{variant:2}法术附加 (25-30) - (40-50) 基础冰霜伤害
+{variant:1}法术暴击率提高 (20-40)%
+{variant:2}法术暴击率提高 (50-70)%
+闪避值提高 (100-150)%
++(20-30)% 冰霜抗性
+{variant:1}移动速度提高 20%
+{variant:2}移动速度提高 25%
+不受冰缓地面影响
 ]],[[
-Saqawal's Talons
-Hydrascale Boots
-League: Bestiary
-Source: Drops from unique{Saqawal, First of the Sky}
-Requires Level 59
-Grants Level 20 Aspect of the Avian Skill
-(100�150)% increased Armour and Evasion
-(20�30)% increased Movement Speed
-+(-2�2) seconds to Avian's Flight Duration
-100 Life Regenerated per Second while you have Avian's Flight
-12 Mana Regenerated per Second while you have Avian's Flight
+苍空之爪
+火蝮鳞长靴
+联盟: 猎魔笔记
+源: 传奇Boss【苍空初子 萨奇沃】 专属掉落
+等级需求: 59
+获得 20 级的主动技能【鸟之势】
+该装备的护甲与闪避提高 (100-150)%
+移动速度提高 (20-30)%
+【鸟之斗魄】的持续时间 +(-2-2) 秒
+拥有【鸟之斗魄】时每秒回复 100 生命
+拥有【鸟之斗魄】时每秒回复 12 魔力
 ]],
 -- Boots: Armour/Energy Shield
 [[
-Alberon's Warpath
-Soldier Boots
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 49, 47 Str, 47 Int
-Adds 1 to 80 Chaos Damage to Attacks
-+(180-220) to Armour
-+(9-12)% to Chaos Resistance
-20% increased Movement Speed
-{variant:1}+2 to Maximum number of Skeletons
-{variant:2}+1 to Maximum number of Skeletons
-(15-18)% increased Strength
+阿尔贝隆的征途
+战士之靴
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 49, 47 Str, 47 Int
+攻击附加 1 - 80 基础混沌伤害
++(180-220) 护甲
++(9-12)% 混沌抗性
+移动速度提高 20%
+{variant:1}+2 魔侍数量上限
+{variant:2}+1 魔侍数量上限
+力量提高 (15-18)%
 ]],[[
-Death's Door
-Crusader Boots
-Source: Drops in The Eternal Labyrinth
-Requires Level 64, 62 Str, 62 Int
-+(20-40) to Strength
-200% increased Armour and Energy Shield
-+(10-15)% to all Elemental Resistances
-25% increased Movement Speed
-+1 to Maximum Endurance Charges
-50% increased Elemental Ailment Duration on You
-You are Immune to Bleeding
+死亡大门
+圣战长靴
+源: 永恒帝王迷宫专属掉落
+等级需求: 64, 62 Str, 62 Int
++(20-40) 力量
+该装备的护甲与能量护盾提高 200%
+获得 +(10-15)% 火焰、冰霜、闪电抗性
+移动速度提高 25%
++1 耐力球数量上限
+自身受到的元素异常状态时间延长 50%
+免疫流血
 ]],[[
-Gang's Momentum
-Legion Boots
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 58, 54 Str, 54 Int
-(160-180)% increased Armour and Energy Shield
-+(50-60)% to Fire Resistance
-25% increased Movement Speed
-{variant:1}(5-7)% chance to Ignite
-{variant:2}(10-15)% chance to Ignite
-{variant:1}15% increased Damage against Ignited Enemies
-{variant:2}(25-40)% increased Damage against Ignited Enemies
+刚勇
+军团长靴
+版本: 2.6.0以前
+版本: 当前
+等级需求: 58, 54 Str, 54 Int
+该装备的护甲与能量护盾提高 (160-180)%
++(50-60)% 火焰抗性
+移动速度提高 25%
+{variant:1}火焰伤害击中时有 (5-7)% 几率点燃敌人
+{variant:2}火焰伤害击中时有 (10-15)% 几率点燃敌人
+{variant:1}对被点燃敌人的伤害提高 15%
+{variant:2}对被点燃敌人的伤害提高 (25-40)%
 ]],[[
-Ralakesh's Impatience
-Riveted Boots
-Requires Level 36
-+(15�25)% to Cold Resistance 
-+(15�25)% to Chaos Resistance 
-20% increased Movement Speed 
-Gain a Frenzy, Endurance, or Power Charge once per second while you are Stationary 
-Lose all Frenzy, Endurance, and Power Charges when you Move
+拉克斯的渴望
+仪式短靴
+等级需求: 36
++(15-25)% 冰霜抗性
++(15-25)% 混沌抗性
+移动速度提高 20%
+当你静止时，每秒获得 1 个狂怒球，耐力球或暴击球
+移动时失去所有暴击球，耐力球和狂怒球
 ]],[[
-Wake of Destruction
-Mesh Boots
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 28, 28 Str, 28 Int
-{variant:2}15% increased Movement Speed
-Adds 1 to 120 Lightning Damage to Attacks
-+(10-20) Life gained on Kill
-(20-60)% increased Armour and Energy Shield
-10% Chance to Cause Monsters to Flee
+覆灭之兆
+网眼长靴
+版本: 2.6.0以前
+版本: 当前
+等级需求: 28, 28 Str, 28 Int
+{variant:2}移动速度提高 15%
+攻击附加 1 - 120 基础闪电伤害
+击败敌人回复 +(10-20) 生命
+该装备的护甲与能量护盾提高 (20-60)%
+10% 几率使敌人逃跑
 ]],
 -- Boots: Evasion/Energy Shield
 [[
-Brinerot Whalers
-Trapper Boots
-League: Warbands
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 41, 40 Dex, 40 Int
-{variant:1}+(60-80) to maximum Energy Shield
-{variant:2}+(120-150) to maximum Energy Shield
-{variant:3}+(80�100) to maximum Energy Shield
-20% increased Physical Damage
-{variant:1}20% increased Movement Speed
-{variant:2,3}25% increased Movement Speed
-+(20-30)% to Lightning Resistance
-(20-40)% increased Projectile Damage
-Unaffected by Shocked Ground
+布琳洛特-加龙省岸行者
+猎人之靴
+联盟: 军团
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 41, 40 Dex, 40 Int
+{variant:1}+(60-80) 最大能量护盾
+{variant:2}+(120-150) 最大能量护盾
+{variant:3}+(80-100) 最大能量护盾
+物理伤害提高 20%
+{variant:1}移动速度提高 20%
+{variant:2,3}移动速度提高 25%
++(20-30)% 闪电抗性
+投射物伤害提高 (20-40)%
+不受感电地面影响
 ]],[[
-Bubonic Trail
-Murder Boots
-League: Abyss
-Source: Drops from Abyssal Liches
-Variant: One Abyssal Socket
-Variant: Two Abyssal Sockets
-Requires Level 69, 82 Dex, 42 Int
-{variant:1}Has 1 Abyssal Socket
-{variant:2}Has 2 Abyssal Sockets
-Triggers level 20 Death Walk when Equipped
-4% increased maximum Life
-30% increased Movement Speed
-10% increased Damage for each type of Abyssal Jewel affecting you
+鼠疫之源
+暗影者长靴
+联盟: 深渊
+源: 深渊巫妖掉落
+版本: 一个深渊插槽  
+版本: 两个深渊插槽 
+等级需求: 69, 82 Dex, 42 Int
+{variant:1}拥有 1 个深渊插槽
+{variant:2}拥有 2 个深渊插槽
+装备时触发 20 级的【泯灭之舞】
+最大生命提高 4%
+移动速度提高 30%
+每种影响你的【深渊珠宝】可使伤害提高 10%
 ]],[[
-Fenumus' Spinnerets
-Assassin's Boots
-League: Bestiary
-Source: Drops from unique{Fenumus, First of the Night}
-Requires Level 63
-(160�200)% increased Evasion and Energy Shield
-+(20�30)% to Lightning Resistance
-+(17�23)% to Chaos Resistance
-25% increased Movement Speed
-Aspect of the Spider can inflict Spider's Web on Enemies an additional time
-Gain (15�20) Energy Shield for each Enemy you Hit which is affected by a Spider's Web
-(40�50)% increased Aspect of the Spider Debuff Duration
+暗夜刺足
+暗影之靴
+联盟: 猎魔笔记
+源: 传奇Boss【暗夜初子 费努姆斯】 专属掉落
+等级需求: 63
+该装备的闪避与能量护盾提高 (160-200)%
++(20-30)% 闪电抗性
++(17-23)% 混沌抗性
+移动速度提高 25%
+【蛛之势】可对敌人额外造成 1 层蜘蛛网
+你每击中 1 个被【蜘蛛网】覆盖的敌人，便获得 (15-20) 能量护盾
+【蛛之势】的减益持续时间提高 (40-50)%
 ]],[[
-Nomic's Storm
-Strapped Boots
-Variant: Pre 2.0.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 16, 18 Dex, 18 Int
-+(20-30) to Dexterity
-+(30-50) to Evasion Rating
-+(15-30) to maximum Energy Shield
-20% increased Movement Speed
-+20% to Cold Resistance
-{variant:1}30% increased Physical Damage taken
-{variant:2}20% increased Physical Damage taken
-{variant:3}15% increased Damage taken while on Full Energy Shield
-20% increased Movement Speed when on Full Energy Shield
+诺米克的风暴
+扣环短靴
+版本: 2.0.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 16, 18 Dex, 18 Int
++(20-30) 敏捷
++(30-50) 点闪避值
++(15-30) 最大能量护盾
+移动速度提高 20%
++20% 冰霜抗性
+{variant:1}受到的物理伤害提高 30%
+{variant:2}受到的物理伤害提高 20%
+{variant:3}能量护盾全满时，受到的伤害提高 15%
+能量护盾全满时，移动速度提高 20%
 ]],[[
-Sin Trek
-Stealth Boots
-Variant: Pre 2.0.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 62, 117 Dex
-+(20-30) to Dexterity
-+(20-30) to Intelligence
-(80-100)% increased Evasion Rating
-{variant:1}+(50-70) to maximum Energy Shield
-{variant:2}+(70-100) to maximum Energy Shield
-{variant:3}+(100-160) to maximum Energy Shield
-30% increased Movement Speed
-Enemies Cannot Leech Life From You
+敏锐思维
+匿踪短靴
+版本: 2.0.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 62, 117 Dex
++(20-30) 敏捷
++(20-30) 智慧
+闪避值提高 (80-100)%
+{variant:1}+(50-70) 最大能量护盾
+{variant:2}+(70-100) 最大能量护盾
+{variant:3}+(100-160) 最大能量护盾
+移动速度提高 30%
+敌人无法偷取你的生命
 ]],[[
-Sundance
-Clasped Boots
-Upgrade: Upgrades to unique{Sunspite} via prophecy{Sun's Punishment}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 27, 27 Dex, 27 Int
-10% increased Attack Speed
-(80-120)% increased Evasion Rating
-(20-30)% increased Rarity of Items found
-+(30-40)% to Fire Resistance
-{variant:1}10% increased Movement Speed
-{variant:2}20% increased Movement Speed
+日耀
+环带长靴
+升级: 使用 预言【烈日惩罚】 升级为 传奇【日怨】
+版本: 2.6.0以前
+版本: 当前
+等级需求: 27, 27 Dex, 27 Int
+攻击速度提高 10%
+闪避值提高 (80-120)%
+物品稀有度提高 (20-30)%
++(30-40)% 火焰抗性
+{variant:1}移动速度提高 10%
+{variant:2}移动速度提高 20%
 ]],[[
-Sunspite
-Clasped Boots
-Source: Upgraded from unique{Sundance} via prophecy{Sun's Punishment}
-Requires Level 59
-10% increased Attack Speed
-(260�300)% increased Evasion and Energy Shield
-(20�30)% increased Rarity of Items found
-+(30�40)% to Fire Resistance
-20% increased Movement Speed
-(10�20)% increased Movement Speed while Ignited
-+25% chance to be Ignited
-(75�125) Life Regenerated per second while Ignited
+日怨
+环带长靴
+源: 传奇【日耀】 使用 预言【烈日惩罚】 升级
+等级需求: 59
+攻击速度提高 10%
+该装备的闪避与能量护盾提高 (260-300)%
+物品稀有度提高 (20-30)%
++(30-40)% 火焰抗性
+移动速度提高 20%
+被点燃时移动速度提高 (10-20)%
++25% 几率被点燃
+被点燃时，获得 (75-125) 每秒生命回复
 ]],[[
-Voidwalker
-Murder Boots
-Source: Drops from unique{The Shaper}
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 69, 82 Dex, 42 Int
-+(30-50) to Dexterity
-(140-180)% increased Evasion and Energy Shield
-30% increased Movement Speed
-20% chance to Avoid Projectiles while Phasing
-You have Phasing if you've Killed Recently
+虚空行者
+暗影者长靴
+源: 传奇Boss【塑界者】 专属掉落
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 69, 82 Dex, 42 Int
++(30-50) 敏捷
+该装备的闪避与能量护盾提高 (140-180)%
+移动速度提高 30%
+【迷踪】状态时有 20% 几率躲避投射物
+近期内你若有击败敌人，则进入【迷踪】状态
 {variant:1}Projectiles Pierce while Phasing
-{variant:2}Projectiles Pierce 5 additional Targets while you have Phasing
-Celestial Footprints
-Shaper Item
+{variant:2}处于【迷踪】状态时，投射物穿透 5 个额外目标
+绚丽众星行走特效
+塑界之器
 ]],
 }

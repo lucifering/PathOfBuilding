@@ -10,7 +10,7 @@ skills["Melee"] = {
 	name = "Default Attack",
 	hidden = true,
 	color = 4,
-	description = "Strike your foes down with a powerful blow.",
+	description = "对你的敌人无情痛击.",
 	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [25] = true, [28] = true, [24] = true, },
 	baseFlags = {
 		attack = true,
@@ -32,9 +32,9 @@ skills["Melee"] = {
 	},
 }
 skills["GemDetonateMines"] = {
-	name = "Detonate Mines",
+	name = "遥控地雷",
 	color = 4,
-	description = "Detonates all the Remote Mines you have placed.",
+	description = "引爆所有你放置的遥控地雷.",
 	skillTypes = { [2] = true, [17] = true, [18] = true, [36] = true, },
 	baseFlags = {
 		spell = true,
@@ -64,9 +64,9 @@ skills["GemDetonateMines"] = {
 	},
 }
 skills["Portal"] = {
-	name = "Portal",
+	name = "时空之门",
 	color = 4,
-	description = "Creates a portal to the current area's town.",
+	description = "开启一个连接城镇的时空之门.",
 	skillTypes = { [2] = true, [17] = true, [18] = true, [19] = true, [36] = true, [27] = true, },
 	baseFlags = {
 		spell = true,
@@ -95,9 +95,9 @@ skills["Portal"] = {
 	},
 }
 skills["VaalBreach"] = {
-	name = "Vaal Breach",
+	name = "瓦尔.裂隙",
 	color = 4,
-	description = "Creates a breach, making you vulnerable to its powerful inhabitants.",
+	description = "创造一个裂隙, 使你能够遭遇裂隙中强大的敌人. ",
 	skillTypes = { [2] = true, [17] = true, [18] = true, [19] = true, [27] = true, [43] = true, },
 	baseFlags = {
 		spell = true,
@@ -173,10 +173,10 @@ skills["SupportUniqueCosprisMaliceColdSpellsCastOnMeleeCriticalStrike"] = {
 	},
 }
 skills["RepeatingShockwave"] = {
-	name = "Abberath's Fury",
+	name = "重复冲击波",
 	hidden = true,
 	color = 4,
-	description = "While you run, this skill creates a small explosion with each step, dealing fire damage in an area around you.",
+	description = "此技能在你移动中仍然会持续释放冲击波",
 	skillTypes = { [11] = true, [36] = true, [42] = true, [2] = true, [10] = true, [61] = true, [33] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -205,10 +205,10 @@ skills["RepeatingShockwave"] = {
 	},
 }
 skills["BirdAspect"] = {
-	name = "Aspect of the Avian",
+	name = "鸟之势",
 	hidden = true,
 	color = 4,
-	description = "While active, grants the Avian's Might and Avian's Flight buffs in sequence. Avian's Might grants you and your minions a chance to deal Double Damage with hits for a duration. Avian's Flight grants you and your minions increased Movement Speed for a secondary duration.",
+	description = "当生效时，依次轮流赋予玩家鸟之力量和鸟之斗魄。鸟之力量会让你和你的召唤生物被击中后短时间内有一定几率造成双倍伤害。鸟之斗魄会让你和你的召唤生物移动速度增加。",
 	skillTypes = { [5] = true, [16] = true, [2] = true, [15] = true, [12] = true, [75] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -237,10 +237,10 @@ skills["BirdAspect"] = {
 	},
 }
 skills["CatAspect"] = {
-	name = "Aspect of the Cat",
+	name = "猫之势",
 	hidden = true,
 	color = 4,
-	description = "While active, grants the Cat's Stealth and Cat's Agility buffs in sequence. Cat's Stealth increases your critical strike chance, makes you harder to see, and gives you a chance to avoid damage for a short duration. Cat's Agility increases your attack and cast speed for a longer secondary duration.",
+	description = "当生效时，依次轮流赋予玩家猫之隐匿和猫之敏捷。猫之隐匿会提高暴击率，短时间内有一定几率避免伤害，并使你更难被敌人发现。猫之敏捷会在一段时间内增加你的攻击和施法速度。",
 	skillTypes = { [5] = true, [16] = true, [2] = true, [15] = true, [12] = true, [75] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -269,10 +269,10 @@ skills["CatAspect"] = {
 	},
 }
 skills["CrabAspect"] = {
-	name = "Aspect of the Crab",
+	name = "蟹之势",
 	hidden = true,
 	color = 4,
-	description = "While active, periodically adds Crab Barriers to you, and grants additional Physical Damage reduction for each Crab Barrier you have. All Crab Barriers are lost when you take physical damage from a hit.",
+	description = "当生效时，每隔一段时间获得深海屏障，每个深海屏障使你获得额外物理伤害减少。所有的深海屏障会在你受到物理伤害时失去。",
 	skillTypes = { [5] = true, [16] = true, [2] = true, [15] = true, [75] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -295,10 +295,10 @@ skills["CrabAspect"] = {
 	},
 }
 skills["SpiderAspect"] = {
-	name = "Aspect of the Spider",
+	name = "蛛之势",
 	hidden = true,
 	color = 4,
-	description = "While active, periodically applies a Spider's Web debuff to nearby Enemies, and Hinders them. Each Spider's Web on an Enemy increases the Damage they take. Hinder reduces their movement speed.",
+	description = "当生效时，每隔一段时间对周围敌人施加蜘蛛网减益效果，并减缓他们的移动速度。每层敌人身上的蜘蛛网会增加他们受到的伤害。",
 	skillTypes = { [5] = true, [16] = true, [2] = true, [15] = true, [12] = true, [75] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -327,10 +327,10 @@ skills["SpiderAspect"] = {
 	},
 }
 skills["BloodOffering"] = {
-	name = "Blood Offering",
+	name = "血脉奉献",
 	hidden = true,
 	color = 3,
-	description = "Consumes a corpse, and sacrifices a portion of your life, granting your minions life regeneration based on the life sacrificed, and a bonus to damage. The skill consumes other nearby corpses, increasing the duration and life regeneration for each corpse consumed.",
+	description = "消耗一具灵柩，牺牲你的一部分生命，根据牺牲量给予你的召唤生物生命回复以及伤害加成的效果。技能会消耗附近的灵柩，每消耗一具灵柩就会增加持续时间和生命回复。",
 	skillTypes = { [2] = true, [5] = true, [12] = true, [36] = true, [9] = true, [49] = true, [17] = true, [19] = true, [18] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -360,10 +360,10 @@ skills["BloodOffering"] = {
 	},
 }
 skills["TriggeredBoneNova"] = {
-	name = "Bone Nova",
+	name = "裂骨新星",
 	hidden = true,
 	color = 4,
-	description = "A nova of bones erupts around you, dealing physical damage.",
+	description = "从施法者散发出一圈刺骨之环, 造成物理伤害.",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [68] = true, [10] = true, [57] = true, [47] = true, [61] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -391,10 +391,10 @@ skills["TriggeredBoneNova"] = {
 	},
 }
 skills["ColdAegis"] = {
-	name = "Cold Aegis",
+	name = "凝冰守护",
 	hidden = true,
 	color = 4,
-	description = "Calls forth a protective aegis which takes cold damage from hits for you until depleted. The aegis will be restored to its full value after a short delay if you stop taking cold damage from hits.",
+	description = "灵唤一个守护护盾，在消散前抵挡击中造成的冰霜伤害。该护盾在一段时间未受到冰霜伤害后会自动回复满值。",
 	skillTypes = { [2] = true, [36] = true, [42] = true, [61] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -420,7 +420,7 @@ skills["TriggeredConsecrate"] = {
 	name = "Consecrate",
 	hidden = true,
 	color = 4,
-	description = "Creates an area of Consecrated Ground, providing life regeneration for you and allies who stand in it.",
+	description = "创造一片奉献地面, 恢复其中的友军（包括你自己）生命. ",
 	skillTypes = { [2] = true, [12] = true, [36] = true, [11] = true, [42] = true, [61] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -446,10 +446,10 @@ skills["TriggeredConsecrate"] = {
 	},
 }
 skills["TriggeredSummonLesserShrine"] = {
-	name = "Create Lesser Shrine",
+	name = "创造低等神殿",
 	hidden = true,
 	color = 4,
-	description = "Creates a Lesser Shrine, which will grant a bonus when touched. The Lesser Shrine will disappear after a short duration, or when used. This skill starts on cooldown.",
+	description = "创造一个低等神殿, 触摸即可获得加成. 使用后或是放置一段时间后低等神殿即会消失. 技能冷却开始生效. ",
 	skillTypes = { [2] = true, [36] = true, [42] = true, [61] = true, [12] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -473,10 +473,10 @@ skills["TriggeredSummonLesserShrine"] = {
 	},
 }
 skills["ChaosDegenAuraUnique"] = {
-	name = "Death Aura",
+	name = "死神光环",
 	hidden = true,
 	color = 4,
-	description = "Casts an aura that deals Chaos Damage over Time to nearby Enemies. This skill cannot be cast by Totems.",
+	description = "施放一个光环对周围敌人造成持续混沌伤害. 该技能无法被图腾施放.",
 	skillTypes = { [2] = true, [5] = true, [11] = true, [40] = true, [44] = true, [64] = true, [50] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -500,10 +500,10 @@ skills["ChaosDegenAuraUnique"] = {
 	},
 }
 skills["DeathWalk"] = {
-	name = "Death Walk",
+	name = "泯灭之舞",
 	hidden = true,
 	color = 4,
-	description = "While you walk, this skill causes corpses near your steps to explode, dealing fire damage in an area. The explosions of the corpses are not affected by modifiers to spell damage, and cannot be reflected.",
+	description = "在你移动时，该技能会引爆周围的灵柩，造成火焰范围伤害。灵柩的爆炸无法被法术伤害词缀加成，并且该伤害无法被反射。",
 	skillTypes = { [11] = true, [36] = true, [42] = true, [2] = true, [10] = true, [61] = true, [33] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -533,10 +533,10 @@ skills["DeathWalk"] = {
 	},
 }
 skills["TouchOfGod"] = {
-	name = "Doryani's Touch",
+	name = "多里亚尼之触",
 	hidden = true,
 	color = 1,
-	description = "The character uses their fist to slam the ground in front of them, with less attack speed, but more damage. This attack deals Lightning Damage to enemies in a large area, with a chance to Shock them. Cannot be used while wielding a Weapon.",
+	description = "角色以拳头敲击前方的地面, 攻速较慢, 伤害较高. 该攻击能对大范围内的敌人造成闪电伤害, 并有几率对其造成感电效果. 持有武器时无法使用. ",
 	skillTypes = { [1] = true, [11] = true, [35] = true, [24] = true, [28] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -606,10 +606,10 @@ skills["TouchOfGod"] = {
 	},
 }
 skills["ElementalAegis"] = {
-	name = "Elemental Aegis",
+	name = "元素守护",
 	hidden = true,
 	color = 4,
-	description = "Calls forth a protective aegis which takes elemental damage from hits for you until depleted. The aegis will be restored to its full value after a short delay if you stop taking elemental damage from hits.",
+	description = "灵唤一个守护护盾，在消散前抵挡击中造成的元素伤害。该护盾在一段时间未受到元素伤害后会自动回复满值。",
 	skillTypes = { [2] = true, [36] = true, [42] = true, [61] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -654,10 +654,10 @@ skills["SupportElementalPenetration"] = {
 	},
 }
 skills["OnHitWhileCursedTriggeredCurseNova"] = {
-	name = "Elemental Warding",
+	name = "元素守卫",
 	hidden = true,
 	color = 4,
-	description = "Fires projectiles in a nova, converting all their physical damage to a random element, and grants a buff which makes you immune to curses for a duration.",
+	description = "向四周发射一圈投射物，将这些投射物所有物理伤害转化成随机元素伤害，并在一段时间内使你免疫诅咒。",
 	skillTypes = { [2] = true, [10] = true, [36] = true, [42] = true, [61] = true, [3] = true, [68] = true, [33] = true, [34] = true, [35] = true, [45] = true, [60] = true, [12] = true, [5] = true, },
 	fromItem = true,
 	parts = {
@@ -703,10 +703,10 @@ skills["OnHitWhileCursedTriggeredCurseNova"] = {
 	},
 }
 skills["Envy"] = {
-	name = "Envy",
+	name = "嫉妒",
 	hidden = true,
 	color = 3,
-	description = "Casts an aura that adds chaos damage to the attacks and spells of you and your allies.",
+	description = "施放一个光环, 使你与受光环影响友军在攻击和施放法术时额外附带混沌伤害.",
 	skillTypes = { [2] = true, [11] = true, [5] = true, [15] = true, [27] = true, [16] = true, [18] = true, [44] = true, [50] = true, [75] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -737,10 +737,10 @@ skills["Envy"] = {
 	},
 }
 skills["FireAegis"] = {
-	name = "Fire Aegis",
+	name = "烈焰守护",
 	hidden = true,
 	color = 4,
-	description = "Calls forth a protective aegis which takes fire damage from hits for you until depleted. The aegis will be restored to its full value after a short delay if you stop taking fire damage from hits.",
+	description = "灵唤一个守护护盾，在消散前抵挡击中造成的火焰伤害。该护盾在一段时间未受到火焰伤害后会自动回复满值。",
 	skillTypes = { [2] = true, [36] = true, [42] = true, [61] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -763,10 +763,10 @@ skills["FireAegis"] = {
 	},
 }
 skills["FireBurstOnHit"] = {
-	name = "Fire Burst",
+	name = "火焰爆破",
 	hidden = true,
 	color = 4,
-	description = "A burst of flame errupts from the location of a hit, dealing fire damage.",
+	description = "喷发出一道火焰, 造成火焰伤害.",
 	skillTypes = { [2] = true, [11] = true, [10] = true, [33] = true, [36] = true, [42] = true, [61] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -823,10 +823,10 @@ skills["FireBurstOnHit"] = {
 	},
 }
 skills["VaalAuraElementalDamageHealing"] = {
-	name = "Gluttony of Elements",
+	name = "元素之愈",
 	hidden = true,
 	color = 4,
-	description = "Casts an aura that causes taking elemental damage to heal you and nearby allies instead.",
+	description = "施展治愈你和友方的灵气, 治愈量等同所受的元素伤害量. ",
 	skillTypes = { [2] = true, [5] = true, [11] = true, [12] = true, [18] = true, [43] = true, [44] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -852,10 +852,10 @@ skills["VaalAuraElementalDamageHealing"] = {
 	},
 }
 skills["IcestormUniqueStaff12"] = {
-	name = "Icestorm",
+	name = "冰风暴",
 	hidden = true,
 	color = 3,
-	description = "Icy bolts rain down over the targeted area. They explode when landing, dealing damage to nearby enemies and chilling them, as well as causing patches of chilled ground. Skill damage is based on Intelligence.",
+	description = "冰箭如雨般洒落在目标区域. 落地时将会爆炸, 对周围敌人造成伤害并冰缓它们, 并造成冰结地面. 技能伤害以智慧数值为基础.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [34] = true, [60] = true, [67] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -892,10 +892,10 @@ skills["IcestormUniqueStaff12"] = {
 	},
 }
 skills["TriggeredIcicleNova"] = {
-	name = "Icicle Burst",
+	name = "爆环冰刺",
 	hidden = true,
 	color = 4,
-	description = "This attack fires icy projectiles in a nova around you, dealing attack damage with all physical damage converted to cold.",
+	description = "该攻击会将冰刺在你周围环状发射，该攻击的所有物理伤害将会被转化为冰霜伤害。",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [68] = true, [10] = true, [57] = true, [47] = true, [61] = true, [34] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -925,10 +925,10 @@ skills["TriggeredIcicleNova"] = {
 	},
 }
 skills["MerveilWarp"] = {
-	name = "Illusory Warp",
+	name = "幻象传送",
 	hidden = true,
 	color = 4,
-	description = "Teleport to a target destination. Chilled ground is spread in an area around both where the caster was and where they teleported to.",
+	description = "传送至指定目的地. 起点跟终点产生一圈冰缓地面.",
 	skillTypes = { [2] = true, [38] = true, [12] = true, [34] = true, [11] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -952,10 +952,10 @@ skills["MerveilWarp"] = {
 	},
 }
 skills["LightningSpell"] = {
-	name = "Lightning Bolt",
+	name = "雷霆万钧",
 	hidden = true,
 	color = 3,
-	description = "A bolt of lightning strikes an area, dealing lightning damage.",
+	description = "使用雷击攻击一个区域, 造成闪电伤害.",
 	skillTypes = { [2] = true, [42] = true, [35] = true, [11] = true, [10] = true, [45] = true, [61] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1011,10 +1011,10 @@ skills["LightningSpell"] = {
 	},
 }
 skills["UniqueAnimateWeapon"] = {
-	name = "Manifest Dancing Dervish",
+	name = "幻化之刃德尔维希",
 	hidden = true,
 	color = 4,
-	description = "Manifests Dancing Dervish to fight by your side. While Dancing Dervish is manifested, you have Onslaught and cannot use Weapons. Cannot be supported by supports that would create other minions.",
+	description = "召唤幻化之刃德尔维希, 当它存在时你获得猛攻, 但武器失效. ",
 	skillTypes = { [2] = true, [9] = true, [21] = true, [36] = true, [61] = true, [72] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [11] = true, [38] = true, [28] = true, },
 	fromItem = true,
@@ -1051,10 +1051,10 @@ skills["UniqueAnimateWeapon"] = {
 	},
 }
 skills["TriggeredMoltenStrike"] = {
-	name = "Molten Burst",
+	name = " 熔岩爆破",
 	hidden = true,
 	color = 1,
-	description = "Launch molten projectiles from the point of impact, causing AoE attack damage to enemies where they land.",
+	description = "对目标造成物理及火焰伤害, 并在挥击的途中从武器弹射出熔岩球. 这些熔岩球在着地时会爆炸, 并对附近的敌人造成伤害. ",
 	skillTypes = { [3] = true, [1] = true, [11] = true, [33] = true, [57] = true, [47] = true, [48] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1082,10 +1082,10 @@ skills["TriggeredMoltenStrike"] = {
 	},
 }
 skills["TriggeredSummonSpider"] = {
-	name = "Raise Spiders",
+	name = "召唤毒蛛",
 	hidden = true,
 	color = 3,
-	description = "Raise two spectral spiders from each nearby corpse that will leap towards and attack your enemies. Enemies will not engage the spiders directly.",
+	description = "周遭每具灵柩召唤两只幽魂巨蛛, 他们将扑向你的敌人. 敌人将不会主动攻击你的蜘蛛.",
 	skillTypes = { [2] = true, [9] = true, [36] = true, [49] = true, [42] = true, [61] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [28] = true, },
 	fromItem = true,
@@ -1119,10 +1119,10 @@ skills["TriggeredSummonSpider"] = {
 	},
 }
 skills["ShadeForm"] = {
-	name = "Shade Form",
+	name = "暗影姿态",
 	hidden = true,
 	color = 4,
-	description = "Makes you immune to physical damage, and harder for enemies to detect, for a duration.",
+	description = "在一段时间内使你对物理伤害免疫，同时很难被敌人发现。",
 	skillTypes = { [2] = true, [12] = true, [5] = true, [36] = true, [42] = true, [61] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1146,10 +1146,10 @@ skills["ShadeForm"] = {
 	},
 }
 skills["TriggeredShockedGround"] = {
-	name = "Shock Ground",
+	name = "电击地面",
 	hidden = true,
 	color = 4,
-	description = "Creates a patch of Shocked Ground in a radius around you.",
+	description = "在你周围创造一片电击地面. ",
 	skillTypes = { [2] = true, [11] = true, [36] = true, [12] = true, [42] = true, [45] = true, [61] = true, [35] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1175,10 +1175,10 @@ skills["TriggeredShockedGround"] = {
 	},
 }
 skills["SpiritBurst"] = {
-	name = "Spirit Burst",
+	name = "精神冲击",
 	hidden = true,
 	color = 3,
-	description = "Consumes a spirit charge to fire projectiles which deals physical damage.",
+	description = "消耗一个精神能量球发射一个投射物并造成物理伤害。",
 	skillTypes = { [2] = true, [10] = true, [36] = true, [42] = true, [61] = true, [3] = true, [68] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1208,10 +1208,10 @@ skills["SpiritBurst"] = {
 	},
 }
 skills["StormCascadeTriggered"] = {
-	name = "Storm Cascade",
+	name = "风暴突袭",
 	hidden = true,
 	color = 3,
-	description = "Lightning crackles in a series of small bursts, each damaging enemies caught in the area.",
+	description = "放出一连串会爆裂的小雷球, 每个对撞上的敌人造成范围伤害.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [34] = true, [60] = true, [61] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1271,10 +1271,10 @@ skills["StormCascadeTriggered"] = {
 	},
 }
 skills["SummonBeastialRhoa"] = {
-	name = "Summon Bestial Rhoa",
+	name = "召唤兽化恐喙鸟",
 	hidden = true,
 	color = 3,
-	description = "Summons a Bestial Rhoa. In addition to its melee attack, the Bestial Rhoa uses a charge and has an aura that intimidates enemies. This minion's hits cannot be evaded.",
+	description = "召唤一个兽化恐喙鸟.  兽化恐喙鸟能进行近战攻击并拥有冲锋技能.而且附带能恐吓敌人的光环. 兽化恐喙鸟的攻击无法被闪避.",
 	skillTypes = { [36] = true, [19] = true, [9] = true, [21] = true, [26] = true, [2] = true, [18] = true, [17] = true, [49] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [10] = true, [11] = true, [28] = true, },
 	fromItem = true,
@@ -1305,10 +1305,10 @@ skills["SummonBeastialRhoa"] = {
 	},
 }
 skills["SummonBeastialSnake"] = {
-	name = "Summon Bestial Snake",
+	name = "召唤兽化巨蛇",
 	hidden = true,
 	color = 3,
-	description = "Summons a Bestial Snake. The Bestial Snake fires powerful chaos projectile attacks. This minion's hits cannot be evaded.",
+	description = "召唤一个兽化巨蛇. 兽化巨蛇的攻击能射出强大的混沌投射物. 兽化巨蛇的攻击无法被闪避.",
 	skillTypes = { [36] = true, [19] = true, [9] = true, [21] = true, [26] = true, [2] = true, [18] = true, [17] = true, [49] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [28] = true, [3] = true, [68] = true, [23] = true, [48] = true, },
 	fromItem = true,
@@ -1339,10 +1339,10 @@ skills["SummonBeastialSnake"] = {
 	},
 }
 skills["SummonBeastialUrsa"] = {
-	name = "Summon Bestial Ursa",
+	name = "召唤兽化之爪",
 	hidden = true,
 	color = 3,
-	description = "Summons a Bestial Ursa. In addition to its melee attack, the Bestial Ursa uses a powerful Ground Slam and Rallying Cry. This minion's hits cannot be evaded.",
+	description = "召唤一个兽化之爪. 兽化之爪能进行近战攻击并拥有裂地之击技能.而且附带激励战吼. 兽化之爪的攻击无法被闪避.",
 	skillTypes = { [36] = true, [19] = true, [9] = true, [21] = true, [26] = true, [2] = true, [18] = true, [17] = true, [49] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [10] = true, [11] = true, [28] = true, },
 	fromItem = true,
@@ -1373,10 +1373,10 @@ skills["SummonBeastialUrsa"] = {
 	},
 }
 skills["SummonEssenceSpirits"] = {
-	name = "Spectral Spirits",
+	name = "幽鬼之灵 ",
 	hidden = true,
 	color = 3,
-	description = "Summons three invulnerable spectral skulls that rush at nearby enemies and attack them rapidly. Enemies will not engage these spirits, and can pass through them.",
+	description = "召唤三个不会受到伤害的幽鬼之灵快速冲向并攻击附近的敌人. 敌人无法解除幽鬼之灵, 并且可以穿过幽鬼之灵.",
 	skillTypes = { [2] = true, [9] = true, [36] = true, [49] = true, [42] = true, [61] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [28] = true, },
 	fromItem = true,
@@ -1436,10 +1436,10 @@ skills["SummonEssenceSpirits"] = {
 	},
 }
 skills["SummonHarbingerOfTheArcane"] = {
-	name = "Summon Harbinger of the Arcane",
+	name = "召唤秘法先驱者",
 	hidden = true,
 	color = 4,
-	description = "Summons an immortal Harbinger minion. The minion will occasionally cast Arcane Surge on you, granting More Spell Damage, Cast Speed and Mana Regeneration.",
+	description = "召唤一个不死的秘法先驱者. 先驱者偶尔会对你施放秘术增强, 额外增加法术总伤害, 施法总速度和魔力回复总速度",
 	skillTypes = { [36] = true, [19] = true, [9] = true, [21] = true, [26] = true, [2] = true, [18] = true, [17] = true, [49] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1462,10 +1462,10 @@ skills["SummonHarbingerOfTheArcane"] = {
 	},
 }
 skills["SummonHarbingerOfBrutality"] = {
-	name = "Summon Harbinger of Brutality",
+	name = "召唤残暴先驱者",
 	hidden = true,
 	color = 4,
-	description = "Summons an immortal Harbinger minion. The minion will occasionally grant you significantly increased Damage, Attack Speed, Movement Speed, and reduce the Damage you take.",
+	description = "召唤一个不死的残暴先驱者. 先驱者偶尔会对你施放一个增益, 显著增加伤害, 攻击速度, 移动速度并减少你受到的伤害.",
 	skillTypes = { [36] = true, [19] = true, [9] = true, [21] = true, [26] = true, [2] = true, [18] = true, [17] = true, [49] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1488,10 +1488,10 @@ skills["SummonHarbingerOfBrutality"] = {
 	},
 }
 skills["SummonHarbingerOfDirections"] = {
-	name = "Summon Harbinger of Directions",
+	name = "召唤射术先驱者",
 	hidden = true,
 	color = 4,
-	description = "Summons an immortal Harbinger minion. The minion will cast a random buff on you that grants one or all of the following: 1 additional Projectile, +1 Chain, Pierce 1 additional Target, and Projectiles Fork.",
+	description = "召唤一个不死的射术先驱者. 先驱者会对你施放随机增益, 附加以下任意一个或全部效果: 1 个额外投射物, +1 连锁, 穿透 1 个额外目标, 投射物分裂.",
 	skillTypes = { [36] = true, [19] = true, [9] = true, [21] = true, [26] = true, [2] = true, [18] = true, [17] = true, [49] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1514,10 +1514,10 @@ skills["SummonHarbingerOfDirections"] = {
 	},
 }
 skills["SummonHarbingerOfFocus"] = {
-	name = "Summon Harbinger of Focus",
+	name = "召唤不屈先驱者",
 	hidden = true,
 	color = 4,
-	description = "Summons an immortal Harbinger minion. While you are channelling, the minion will occasionally cast a buff on you that reduces the Damage you take, and makes you avoid all Stuns and Ailments.",
+	description = "召唤一个不死的不屈先驱者. 在你持续吟唱时, 先驱者偶尔会对你施放一个增益, 减少你受到的伤害, 使你免疫所有晕眩和异常状态.",
 	skillTypes = { [36] = true, [19] = true, [9] = true, [21] = true, [26] = true, [2] = true, [18] = true, [17] = true, [49] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1540,10 +1540,10 @@ skills["SummonHarbingerOfFocus"] = {
 	},
 }
 skills["SummonHarbingerOfStorms"] = {
-	name = "Summon Harbinger of Storms",
+	name = "召唤冰雷先驱者",
 	hidden = true,
 	color = 4,
-	description = "Summons an immortal Harbinger minion. The minion will occasionally apply a Chill or Shock to an enemy that chains to other nearby enemies.",
+	description = "召唤一个不死的冰雷先驱者. 先驱者偶尔会冰缓或感电敌人并连锁到附近的敌人.",
 	skillTypes = { [36] = true, [19] = true, [9] = true, [21] = true, [26] = true, [2] = true, [18] = true, [17] = true, [49] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1566,10 +1566,10 @@ skills["SummonHarbingerOfStorms"] = {
 	},
 }
 skills["SummonHarbingerOfTime"] = {
-	name = "Summon Harbinger of Time",
+	name = "召唤时空先驱者",
 	hidden = true,
 	color = 4,
-	description = "Summons an immortal Harbinger minion. The minion will occasionally create a Slipstream aura on you that increases the Action Speed of you, and all allies and enemies near you.",
+	description = "召唤一个不死的时空先驱者. 先驱者偶尔会对你施放迅捷之域, 增加你和你周围所有敌我单位的行动速度.",
 	skillTypes = { [36] = true, [19] = true, [9] = true, [21] = true, [26] = true, [2] = true, [18] = true, [17] = true, [49] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1592,10 +1592,10 @@ skills["SummonHarbingerOfTime"] = {
 	},
 }
 skills["SummonRigwaldsPack"] = {
-	name = "Summon Spectral Wolf",
+	name = "召唤幽狼",
 	hidden = true,
 	color = 4,
-	description = "Summons a spectral wolf companion that attacks near by enemies and dies after a duration.",
+	description = "召唤一匹幽狼攻击周围的敌人, 并在一段时间内死亡. ",
 	skillTypes = { [2] = true, [9] = true, [12] = true, [21] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [49] = true, [42] = true, [61] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [28] = true, },
 	fromItem = true,
@@ -1629,7 +1629,7 @@ skills["SummonVoidSphere"] = {
 	name = "Summon Volatile Anomaly",
 	hidden = true,
 	color = 3,
-	description = "Creates an orb which moves towards nearby enemies, exploding after a duration or when it gets close enough. The explosion deals cold spell damage in an area, and leaves behind a Vortex on the ground for a secondary duration which continues to deal cold damage over time and chill enemies caught in it.",
+	description = "制造一个奇点并向最近的敌人移动，过程中发出造成范围冰霜伤害的冰爆。并留下一个漩涡, 对于在其中的敌人继续造成持续冰霜伤害和冰缓.。",
 	skillTypes = { [2] = true, [36] = true, [42] = true, [61] = true, [12] = true, [11] = true, [10] = true, [34] = true, [60] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1663,10 +1663,10 @@ skills["SummonVoidSphere"] = {
 	},
 }
 skills["TentacleSmash"] = {
-	name = "Tentacle Whip",
+	name = "藤蔓抽击",
 	hidden = true,
 	color = 4,
-	description = "This attack causes three otherworldly tentacles to strike the ground around you, each dealing your attack damage in an area.",
+	description = "制造 3 条巨大的藤蔓砸向地面造成一定范围内的武器伤害。每条藤蔓造成一定范围的攻击伤害。",
 	skillTypes = { [1] = true, [10] = true, [11] = true, [7] = true, [57] = true, [47] = true, [61] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1691,10 +1691,10 @@ skills["TentacleSmash"] = {
 	},
 }
 skills["AvianTornado"] = {
-	name = "Tornado",
+	name = "鸟之龙卷",
 	hidden = true,
 	color = 3,
-	description = "Launches an unpredictable, piercing tornado projectile that moves randomly for a duration, repeatedly dealing damage to enemies it intersects.",
+	description = "发出一个无法预测，带有穿刺特性的龙卷投射物，该投射物将随机移动一段时间，并反复对接触的敌人造成伤害。",
 	skillTypes = { [2] = true, [3] = true, [68] = true, [10] = true, [12] = true, [36] = true, [42] = true, [61] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1725,10 +1725,10 @@ skills["AvianTornado"] = {
 	},
 }
 skills["VoidGaze"] = {
-	name = "Void Gaze",
+	name = "虚空凝视",
 	hidden = true,
 	color = 3,
-	description = "Applies a debuff to Enemies, removing some of their resistance to Chaos damage.",
+	description = "对敌人施加一个减益, 移除他们部分混沌抗性.",
 	skillTypes = { [2] = true, [50] = true, [11] = true, [18] = true, [12] = true, [61] = true, [36] = true, },
 	fromItem = true,
 	baseFlags = {

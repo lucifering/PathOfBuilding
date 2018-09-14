@@ -1,587 +1,583 @@
--- Item data (c) Grinding Gear Games
-
+﻿-- Item data (c) Grinding Gear Games
 return {
 -- Gloves: Armour
 [[
-Atziri's Acuity
-Vaal Gauntlets
-Source: Drops from unique{Atziri, Queen of the Vaal} in normal{The Alluring Abyss}
-Variant: {2_6}Pre 3.0.0
-Variant: Pre 3.1.0
-Variant: Current
-Requires Level 75, 100 Str
-+(60-80) to Intelligence
-+(60-75) to maximum Life
-(200-220)% increased Armour
-(25-35)% increased Global Critical Strike Chance
+阿兹里的捷思
+瓦尔护手
+源: 传奇Boss【瓦尔女王阿兹里】 专属掉落（地图【诱人的深渊】） 
+版本: {2_6}3.0.0以前
+版本: 3.1.0以前
+版本: 当前
+等级需求: 75, 100 Str
++(60-80) 智慧
++(60-75) 最大生命
+护甲提高 (200-220)%
+攻击和法术暴击率提高 (25-35)%
 {variant:1}Leech applies instantly on Critical Strike
-{variant:2}Gain Life and Mana from Leech instantly on Critical Strike
-{variant:3}You have Vaal Pact if you've dealt a Critical Strike Recently
+{variant:2}暴击时立即获得生命和魔力偷取
+{variant:3}近期内你若打出过暴击，则获得【瓦尔冥约】
 ]],[[
-Craiceann's Pincers
-Titan Gauntlets
-League: Bestiary
-Source: Drops from unique{Craiceann, First of the Deep}
-Requires Level 69
-(150�200)% increased Armour
-(50�70) Life Regenerated per second
-+(30�40)% to Fire Resistance
-3% increased Damage per Crab Barrier
-10% chance that if you would gain a Crab Barrier, you instead gain up to
-your maximum number of Crab Barriers
+深海魔钳
+巨人护手
+联盟: 猎魔笔记
+源: 传奇Boss【深海初子 克林斯昂】 专属掉落
+等级需求: 69
+护甲提高 (150-200)%
+(50-70) 每秒生命回复
++(30-40)% 火焰抗性
+每个【深海屏障】可使伤害提高 3%
+有 10% 几率在你获得 1 个【深海屏障】时，直接获得最大上限的【深海屏障】
 ]],[[
-Doryani's Fist
-Vaal Gauntlets
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 63, 100 Str
-{variant:2}Grants level 20 Doryani's Touch Skill
-+30 to maximum Energy Shield
-10% chance to Shock
-Adds (225-335) to (785-900) Lightning Damage to Unarmed Attacks
-Adds (60-90) to (210-240) Lightning Damage to Spells while Unarmed
-+30 Energy Shield gained on Killing a Shocked Enemy
+多里亚尼之拳
+瓦尔护手
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 63, 100 Str
+{variant:2}获得 20 级的主动技能【多里亚尼之触】，且可被此道具上的技能石辅助
++30 最大能量护盾
+闪电伤害击中时有 10% 几率使敌人受到感电效果影响
+空手时攻击附加 (225-335) - (785-900) 基础闪电伤害
+空手时法术附加 (60-90) - (210-240) 基础闪电伤害
+击败每个感电的敌人回复 +30 能量护盾
 ]],[[
-Empire's Grasp
-Goliath Gauntlets
-Requires Level 53, 76 Str
-+(400-600) to Armour
-Knockback direction is reversed
-Socketed Gems are Supported by level 10 Knockback
+帝国之掌
+巨灵护手
+等级需求: 53, 76 Str
++(400-600) 护甲
+击退方向颠倒
+此物品上的技能石受到 10 级的 击退 辅助
 ]],[[
-Giantsbane
-Bronze Gauntlets
+巨灵灾星
+青铜护手
 Requires Level: 23
-Adds (3�6) to (10�12) Physical Damage to Attacks 
-+(30�40) to Strength 
-(80�100)% increased Armour 
-Iron Grip
+攻击附加 (3-6) - (10-12) 基础物理伤害
++(30-40) 力量
+护甲提高 (80-100)%
+钢铁之握
 ]],[[
-Lochtonial Caress
-Iron Gauntlets
-Variant: Pre 2.6.0
-Variant: Current
-(10-15)% increased Attack Speed
-{variant:1}+(10-20) to Armour
-{variant:2}+(20-30) to maximum Life
-(10-15)% reduced maximum Mana
-(10-15)% increased Cast Speed
-{variant:2}10% chance to gain a Frenzy, Power or Endurance Charge on Kill
-Conduit
+意识之缘
+铁锻护手
+版本: 2.6.0以前
+版本: 当前
+最大魔力降低 (10-15)%
+施法速度提高 (10-15)%
+攻击速度提高 (10-15)%
++(20-30) 最大生命
+击败敌人时有 10% 几率获得 1 个随机能量球
+能量连接
 ]],[[
-Meginord's Vise
-Steel Gauntlets
-Variant: Pre 1.1.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 35, 52 Str
-10% increased Physical Damage
-+100 to Strength
-{variant:1}(5-15)% reduced Attack Speed
-(40-60)% increased Armour
-{variant:3}2% of Life Regenerated per second with at least 400 Strength
+梅吉诺德的巨力腕甲
+冷钢护手
+版本: 1.1.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 35, 52 Str
+物理伤害提高 10%
++100 力量
+{variant:1}攻击速度降低 (5-15)%
+护甲提高 (40-60)%
+{variant:3}当力量超过 400 点时，每秒回复 2% 生命
 ]],[[
-Veruso's Battering Rams
-Titan Gauntlets
-Requires Level 69, 98 Str
-(8-13)% increased Attack Speed
-(120-180)% increased Armour
-(3-5)% increased Movement Speed
-50% increased Stun Duration on you
-4% increased Melee Damage per Endurance Charge
-You cannot be Shocked while at maximum Endurance Charges
+陨落之环
+巨人护手
+等级需求: 69, 98 Str
+攻击速度提高 (8-13)%
+护甲提高 (120-180)%
+移动速度提高 (3-5)%
+你被晕眩的时间延长 50%
+每 1 个耐力球可使近战伤害提高 4%
+你在耐力球达到上限时无法被感电
 ]],[[
-Winds of Change
-Ancient Gauntlets
-Source: Drops in The Lord's Labyrinth
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 47, 68 Str
-+(30-60) to maximum Life
-30% increased Projectile Speed
-{variant:1}10% reduced Movement Speed
-{variant:2}(5-10)% reduced Movement Speed
-10% chance to Knock Enemies Back on hit
-(30-50)% increased Projectile Damage
+升华之风
+远古护手
+源: 帝王试炼迷宫专属掉落
+版本: 2.6.0以前
+版本: 当前
+等级需求: 47, 68 Str
++(30-60) 最大生命
+投射物速度提高 30%
+{variant:1}移动速度降低 10%
+{variant:2}移动速度降低 (5-10)%
+击中时有 10% 几率击退敌人
+投射物伤害提高 (30-50)%
 ]],
 -- Gloves: Evasion
 [[
-Blasphemer's Grasp
-Assassin's Mitts
-Source: Drops from unique{The Elder}
-Requires Level 58
-+(40�50) to Dexterity 
-(150�200)% increased Evasion and Energy Shield 
-+(50�60) to maximum Life 
-15% increased Damage with Ailments per Elder Item Equipped 
-+6 to Maximum Life per Elder Item Equipped 
-8% increased Effect of non-Damaging Ailments per Elder Item Equipped 
-Remove an Ailment when you use a Flask if all Equipped Items are Elder Items
-Elder Item
+亵渎者之握
+暗影护手
+源: 传奇Boss【裂界者】 专属掉落
+等级需求: 58
++(40-50) 敏捷
+该装备的闪避与能量护盾提高 (150-200)%
++(50-60) 最大生命
+每装备 1 个【裂界之器】，异常状态的伤害便提高 15%
+每装备 1 个【裂界之器】，最大生命提高 +6
+每装备 1 个【裂界之器】，非伤害性异常状态的效果便提高 8%
+若所有装备均为【裂界之器】，使用药剂时移除 1 个异常状态
+裂界之器
 ]],[[
-Hrimsorrow
-Goathide Gloves
-Upgrade: Upgrades to unique{Hrimburn} via prophecy{Fire and Ice}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 9, 17 Dex
-+(20-30) to Strength
-{variant:1}50% increased Evasion Rating
-{variant:2}+(40-50) to Evasion Rating
-{variant:1}+(10-20)% to Cold Resistance
-{variant:2}+(20-30)% to Cold Resistance
-{variant:2}Adds (5-7) to (13-15) Cold Damage to Spells and Attacks
-{variant:1}25% of Physical Damage Converted to Cold Damage
-{variant:2}50% of Physical Damage Converted to Cold Damage
-Reflects 10 Cold Damage to Melee Attackers
+李姆本
+羊皮手套
+升级: 由 传奇【冰冷之眼】 使用 预言【冰与火】 升级
+版本: 2.6.0以前
+版本: 当前
+等级需求: 24, 17 Dex
++(20-30) 力量
+{variant:1}闪避值提高 50%
+{variant:2}+(40-50) 点闪避值
+{variant:1}+(10-20)% 冰霜抗性
+{variant:2}+(20-30)% 冰霜抗性
+{variant:2}攻击和法术附加 (5-7) - (13-15) 基础冰霜伤害
+{variant:1}25% 的物理伤害转换为冰霜伤害
+{variant:2}50% 的物理伤害转换为冰霜伤害
+反射 10 冰霜伤害给近战攻击者
+你的冰霜伤害可以点燃
 ]],[[
-Hrimburn
-Goathide Gloves
-Source: Upgraded from unique{Hrimsorrow} via prophecy{Fire and Ice}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 24, 17 Dex
-+(20-30) to Strength
-{variant:1}50% increased Evasion Rating
-{variant:2}+(40-50) to Evasion Rating
-{variant:1}+(10-20)% to Cold Resistance
-{variant:2}+(20-30)% to Cold Resistance
-{variant:2}Adds (5-7) to (13-15) Cold Damage to Spells and Attacks
-{variant:1}25% of Physical Damage Converted to Cold Damage
-{variant:2}50% of Physical Damage Converted to Cold Damage
-Reflects 10 Cold Damage to Melee Attackers
-Your Cold Damage can Ignite
+冰冷之眼
+羊皮手套
+源: 使用 预言【冰与火】 升级为 传奇【李姆本】
+版本: 2.6.0以前
+版本: 当前
+等级需求: 9, 17 Dex
++(20-30) 力量
+{variant:1}闪避值提高 50%
+{variant:2}+(40-50) 点闪避值
+{variant:1}+(10-20)% 冰霜抗性
+{variant:2}+(20-30)% 冰霜抗性
+{variant:2}攻击和法术附加 (5-7) - (13-15) 基础冰霜伤害
+{variant:1}25% 的物理伤害转换为冰霜伤害
+{variant:2}50% 的物理伤害转换为冰霜伤害
+反射 10 冰霜伤害给近战攻击者
 ]],[[
-Maligaro's Virtuosity
-Deerskin Gloves
-Variant: Pre 1.1.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 21, 33 Dex
-+(20-30) to Dexterity
-5% increased Attack Speed
-50% increased Global Critical Strike Chance
-{variant:1}+(40-50)% to Global Critical Strike Multiplier
-{variant:2}+(28-36)% to Global Critical Strike Multiplier
-{variant:3}+(20-30)% to Global Critical Strike Multiplier
-(60-80)% increased Evasion Rating
+马雷格罗的玫红手套
+鹿皮手套
+版本: 1.1.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 21, 33 Dex
++(20-30) 敏捷
+攻击速度提高 5%
+攻击和法术暴击率提高 50%
+{variant:1}+(40-50)% 攻击和法术暴击伤害加成
+{variant:2}+(28-36)% 攻击和法术暴击伤害加成
+{variant:3}+(20-30)% 攻击和法术暴击伤害加成
+闪避值提高 (60-80)%
 ]],[[
-Oskarm
-Nubuck Gloves
-Requires Level 33
-(30�40)% increased Accuracy Rating 
-+(40�50) to maximum Life 
-+(-20�-10)% to Chaos Resistance 
-(7�8)% chance to Dodge Spell Damage 
-Curse Enemies with Level 10 Assassin's Mark on Hit 
-2% increased Attack Critical Strike Chance per 200 Accuracy Rating
+欧斯卡姆
+砂影手套
+等级需求: 33
+命中值提高 (30-40)%
++(40-50) 最大生命
+-(20-10)% 混沌抗性
+(7-8)% 几率躲避法术击中
+击中敌人时，用 10 级的【暗影印记】诅咒敌人
+每 200 点命中值可使攻击暴击率提高 2%
 ]],
 -- Gloves: Energy Shield
 [[
-Allelopathy
-Sorcerer Gloves
-Requires Level 69, 97 Int
-Grants level 22 Blight Skill
-(20-30)% increased Damage over Time
-(100-120)% increased Energy Shield
-10% increased Area of Effect of Area Skills
-Blight has (20-30)% increased Hinder Duration
-You cannot be Hindered
+相生相克
+术士手套
+等级需求: 69, 97 Int
+获得 22 级的主动技能【枯萎】，且可被此道具上的技能石辅助
+持续伤害效果提高 (20-30)%
+该装备的能量护盾提高 (100-120)%
+范围效果扩大 10%
+【枯萎】技能会使干扰持续时间延长 (20-30)%
+你无法被缓速
 ]],[[
-Asenath's Gentle Touch
-Silk Gloves
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 25, 39 Int
-+(20-30) to Intelligence
-+(20-30) to maximum Life
-+(20-30) to maximum Mana
-{variant:1}Curse Enemies with Temporal Chains on Hit
-{variant:2}Curse Enemies with level 10 Temporal Chains on Hit
+安赛娜丝的安抚之语
+丝绸手套
+版本: 2.6.0以前
+版本: 当前
+等级需求: 25, 39 Int
++(20-30) 智慧
++(20-30) 最大生命
++(20-30) 最大魔力
+{variant:1}击中敌人时，用【时空锁链】诅咒敌人
+{variant:2}击中敌人时，用 10 级的【时空锁链】诅咒敌人
 ]],[[
-Doedre's Tenure
-Velvet Gloves
-Upgrade: Upgrades to unique{Doedre's Malevolence} via prophecy{The Malevolent Witch}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 12, 21 Int
-{variant:1}(40-50)% increased Spell Damage
-{variant:2}(50-60)% increased Spell Damage
-{variant:1}+10 to Intelligence
-{variant:2}+20 to Intelligence
-{variant:1}20% reduced Cast Speed
-{variant:2}15% reduced Cast Speed
-{variant:1}+16 to maximum Energy Shield
-{variant:2}+32 to maximum Energy Shield
+德瑞的精神手套
+丝绒手套
+升级: 使用 预言【邪灵女巫】 升级为 传奇【德瑞的恶念】
+版本: 2.6.0以前
+版本: 当前
+等级需求: 12, 21 Int
+{variant:1}法术伤害提高 (40-50)%
+{variant:2}法术伤害提高 (50-60)%
+{variant:1}+10 智慧
+{variant:2}+20 智慧
+{variant:1}施法速度降低 20%
+{variant:2}施法速度降低 15%
+{variant:1}+16 最大能量护盾
+{variant:2}+32 最大能量护盾
 ]],[[
-Doedre's Malevolence
-Velvet Gloves
-Source: Upgraded from unique{Doedre's Tenure} via prophecy{The Malevolent Witch}
-Requires Level 64
-(50�60)% increased Spell Damage
-+20 to Intelligence
-Adds (48�56) to (73�84) Chaos Damage to Spells
-15% reduced Cast Speed
-+(64�96) to maximum Energy Shield
-+50 to Total Mana Cost of Skills
+德瑞的恶念
+丝绒手套
+源: 由 传奇【德瑞的精神手套】 使用 预言【邪灵女巫】 升级
+等级需求: 64
+法术伤害提高 (50-60)%
++20 智慧
+法术附加 (48-56) - (73-84) 基础混沌伤害
+施法速度降低 15%
++(64-96) 最大能量护盾
+技能的总魔力消耗 +50 
 ]],[[
-Grip of the Council
-Arcanist Gloves
-Source: prophecy{The Unbreathing Queen V}
-Requires Level 60, 95 Int
-+30 to Strength
-+(30-50) to maximum Life
-+(20-40)% to Cold Resistance
-Minions have 10% reduced Movement Speed
-Minions have +40% to Cold Resistance
-Minions gain 20% of Physical Damage as Extra Cold Damage
+议会之握
+秘术手套
+源: 预言【无息女皇 V】
+等级需求: 60, 95 Int
++30 力量
++(30-50) 最大生命
++(20-40)% 冰霜抗性
+召唤生物的移动速度降低 10%
+召唤生物有 +40% 冰霜抗性
+召唤生物获得等同 20% 物理伤害的额外冰霜伤害
 ]],[[
-Kalisa's Grace
-Samite Gloves
-Requires Level 47
-Socketed Gems are Supported by Level 18 Faster Casting
-+(20�30) to Intelligence 
-+(50�80) to maximum Energy Shield 
-+(50�70) to maximum Life 
-Gain +2% to Critical Strike Chance for 2 seconds when you Spend a total of 800 Mana
+卡莉莎的优雅之影
+绣布手套
+等级需求: 47
+此物品上的技能石受到 18 级的快速施法辅助
++(20-30) 智慧
++(50-80) 最大能量护盾
++(50-70) 最大生命
+当你总计消耗超过 800 点魔力后，获得 +2% 攻击和法术基础暴击率，持续 2 秒
 ]],[[
-Sadima's Touch
-Wool Gloves
-Variant: Pre 1.1.0
-Variant: Current
-Requires Level 11
-Adds 4 to 8 Fire Damage to Attacks
-Adds 1 to 13 Lightning Damage to Attacks
-+18 to maximum Energy Shield
-{variant:1}(18-24)% increased Quantity of Items found
-{variant:2}(12-16)% increased Quantity of Items found
+猎宝者的护手
+羊毛手套
+版本: 1.1.0以前
+版本: 当前
+等级需求: 11
+攻击附加 4 - 8 基础火焰伤害
+攻击附加 1 - 13 基础闪电伤害
++18 最大能量护盾
+{variant:1}物品掉落数量提高 (18-24)%
+{variant:2}物品掉落数量提高 (12-16)%
 ]],[[
-Voidbringer
-Conjurer Gloves
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 55, 79 Int
-(125-150)% increased Critical Strike Chance for Spells
-{variant:1,2}(280-350)% increased Energy Shield
-{variant:3}(180�250)% increased Energy Shield
-{variant:1}80% increased Mana Cost of Skills
-{variant:2,3}(40-80)% increased Mana Cost of Skills
-+(15-20) Energy Shield gained on Kill
-+1 to Level of Socketed Elemental Gems
+虚空之力
+咒者手套
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 55, 79 Int
+法术暴击率提高 (125-150)%
+{variant:1,2}该装备的能量护盾提高 (280-350)%
+{variant:3}该装备的能量护盾提高 (180-250)%
+{variant:1}技能魔力消耗提高 80%
+{variant:2,3}技能魔力消耗提高 (40-80)%
+击败敌人回复 +(15-20) 能量护盾
+此物品上的火焰、冰霜、闪电技能石等级 +1
 ]],
 -- Gloves: Armour/Evasion
 [[
-Aurseize
-Steelscale Gauntlets
-Requires Level 36, 29 Str, 29 Dex
-(40-60)% increased Armour and Evasion
-+15% to all Elemental Resistances
-(40-50)% increased Rarity of Items found
-5% reduced Movement Speed
+富贵之运
+钢影护手
+等级需求: 36, 29 Str, 29 Dex
+该装备的护甲与闪避提高 (40-60)%
+获得 +15% 火焰、冰霜、闪电抗性
+物品稀有度提高 (40-50)%
+移动速度降低 5%
 ]],[[
-Farrul's Pounce
-Hydrascale Gauntlets
-League: Bestiary
-Source: Drops from unique{Farrul, First of the Plains}
-Requires Level 59
-(100�140)% increased Armour and Evasion
-+(50�70) to maximum Life
-+(400�500) to Accuracy against Bleeding Enemies
-Attacks always inflict Bleeding while you have Cat's Stealth
-(40�50)% increased Damage with Hits and Ailments against Bleeding Enemies
-You have Crimson Dance while you have Cat's Stealth
+大地之握
+火蝮鳞手套
+联盟: 猎魔笔记
+源: Boss 传奇 【大地初子 法瑞尔】 专属掉落
+等级需求: 59
+该装备的护甲与闪避提高 (100-140)%
++(50-70) 最大生命
+对流血敌人的命中值 +(400-500)
+拥有【猫之隐匿】时，你的攻击必定造成流血
+击中和异常状态对流血敌人的伤害提高 (40-50)%
+拥有【猫之隐匿】时获得【玫红之舞】
 ]],[[
-Flesh and Spirit
-Ironscale Gauntlets
-League: Rampage
-Requires Level 15
-(6-9)% increased Attack Speed
-(80-120)% increased Armour and Evasion
-(3-4) Life Regenerated per second
-Recover 20% of your Maximum Life on Rampage
-Gain 5 Souls for Vaal Skills on Rampage
-Rampage
+肉体与魂灵
+铁影手套
+联盟: 暴走
+等级需求: 15
+攻击速度提高 (6-9)%
+该装备的护甲与闪避提高 (80-120)%
+(3-4) 每秒生命回复
+暴走状态时回复 20% 最大生命
+暴走状态时为瓦尔技能补充 5 个灵魂
+暴走
 ]],[[
-Haemophilia
-Serpentscale Gauntlets
-Requires Level 43, 34 Str, 34 Dex
-+(20�30) to Strength 
-25% increased Damage over Time 
-Attacks have 25% chance to cause Bleeding 
-(25�40)% increased Attack Damage against Bleeding Enemies 
-Bleeding Enemies you Kill Explode, dealing 5% of
-their Maximum Life as Physical Damage 
-25% reduced Bleed duration
+血友病
+蛇鳞手套
+等级需求: 43, 34 Str, 34 Dex
++(20-30) 力量
+持续伤害效果提高 25%
+攻击击中有 25% 几率使敌人流血
+对流血敌人的攻击伤害提高 (25-40)%
+击败流血的敌人时产生爆炸，造成等同其 5% 最大生命的物理伤害
+流血持续时间缩短 25%
 ]],[[
-Slitherpinch
-Bronzescale Gauntlets
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 27, 22 Str, 22 Dex
-+(40-50) to Dexterity
-{variant:1}5% increased Attack Speed
-{variant:2}(5-10)% increased Attack Speed
-(60-100)% increased Evasion Rating
-0.6% of Physical Attack Damage Leeched as Life
-0.4% of Physical Attack Damage Leeched as Mana
+苍蟒之鳞
+铜影手套
+版本: 2.6.0以前
+版本: 当前
+等级需求: 27, 22 Str, 22 Dex
++(40-50) 敏捷
+{variant:1}攻击速度提高 5%
+{variant:2}攻击速度提高 (5-10)%
+闪避值提高 (60-100)%
+物理攻击伤害的 0.6% 会转化为生命偷取
+物理攻击伤害的 0.4% 转化为魔力偷取
 ]],[[
-Surgebinders
-Dragonscale Gauntlets
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 67, 51 Str, 51 Dex
-(90-110)% increased Armour and Evasion
-(4-7)% increased Elemental Damage per Frenzy Charge
-(4-7)% increased Physical Damage per Endurance Charge
-(4-7)% increased Spell Damage per Power Charge
-10% chance to Steal Power, Frenzy, and Endurance Charges on Hit
-{variant:1}(10-30)% reduced Endurance, Frenzy and Power Charge Duration
+浪涌缚者
+龙鳞手套
+版本: 2.6.0以前
+版本: 当前
+等级需求: 67, 51 Str, 51 Dex
+该装备的护甲与闪避提高 (90-110)%
+每个狂怒球可使火焰、冰霜、闪电伤害提高 (4-7)%
+每个耐力球可使物理伤害提高 (4-7)%
+每个暴击球可使法术伤害提高 (4-7)%
+击中时有 10% 几率偷取暴击，狂怒和耐力球
+{variant:1}耐力球，狂怒球，以及暴击球的持续时间缩短 (10-30)%
 ]],[[
-Tombfist
-Steelscale Gauntlets
-League: Abyss
-Source: Drops from Abyssal Liches
-Variant: One Abyssal Socket
-Variant: Two Abyssal Sockets
+陵拳
+钢影护手
+联盟: 深渊
+源: 深渊巫妖掉落
+版本: 一个深渊插槽  
+版本: 两个深渊插槽 
 Requires Level: 36
-{variant:1}Has 1 Abyssal Socket
-{variant:2}Has 2 Abyssal Sockets
-(6�10)% increased Attack Speed 
-(4�6)% increased maximum Life 
-With a Murderous Eye Jewel Socketed, Intimidate Enemies for 4 seconds on Hit with Attacks 
-With a Searching Eye Jewel Socketed, Maim Enemies for 4 seconds on Hit with Attacks
+{variant:1}拥有 1 个深渊插槽
+{variant:2}拥有 2 个深渊插槽
+攻击速度提高 (6-10)%
+最大生命提高 (4-6)%
+当插槽内有 1 个【凶残之凝】珠宝时，攻击击中敌人会恐吓它们 4 秒
+当插槽内有 1 个【锐利之凝】珠宝时，攻击击中敌人会瘫痪它们 4 秒
 ]],[[
-Vaal Caress
-Bronzescale Gauntlets
-League: Ambush, Invasion
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 27, 22 Str, 22 Dex
-+2 to Level of Socketed Vaal Gems
-(120-140)% increased Armour and Evasion
-{variant:1}+(30-40) to maximum Life
-{variant:2}+(50-70) to maximum Life
-{variant:1}+30% to Cold Resistance
-{variant:2}+40% to Cold Resistance
-You gain Onslaught for 5 seconds on using a Vaal Skill
+瓦尔的灵手
+铜影手套
+联盟: 伏击, 侵略
+版本: 2.6.0以前
+版本: 当前
+等级需求: 27, 22 Str, 22 Dex
+此物品上装备的【瓦尔技能石】等级 +2
+该装备的护甲与闪避提高 (120-140)%
+{variant:1}+(30-40) 最大生命
+{variant:2}+(50-70) 最大生命
+{variant:1}+30% 冰霜抗性
+{variant:2}+40% 冰霜抗性
+使用瓦尔技能时，获得【猛攻】状态，持续 5 秒
 ]],[[
-Wyrmsign
-Wyrmscale Gauntlets
-Requires Level 49, 38 Str, 38 Dex
-Socketed Gems are Supported by level 5 Concentrated Effect
-(120-160)% increased Armour and Evasion
-+(50-70) to maximum Life
-4% reduced Mana Cost per Endurance Charge
-Gain Rampage while at Maximum Endurances Charges
-Lose all Endurance Charges when Rampage ends
+龙族印记
+蝮鳞手套
+等级需求: 49, 38 Str, 38 Dex
+此物品上的技能石受到 5 级的 集中效应 辅助
+该装备的护甲与闪避提高 (120-160)%
++(50-70) 最大生命
+每个耐力球会使魔力消耗降低 4%
+耐力球达到上限时进入暴走状态
+暴走状态结束时失去所有耐力球
 ]],
 -- Gloves: Armour/Energy Shield
 [[
-Null and Void
-Legion Gloves
-League: Rampage
-Requires Level 57, 44 Str, 44 Int
-+(20-30) to Strength
-(150-180)% increased Armour and Energy Shield
-+(50-70) to maximum Life
-(20-40)% increased Mana Regeneration Rate
-Dispels Elemental Ailments on Rampage
-Gain Immunity to Physical Damage for 1.5 seconds on Rampage
-Rampage
+虚空
+军团手套
+联盟: 暴走
+等级需求: 57, 44 Str, 44 Int
++(20-30) 力量
+该装备的护甲与能量护盾提高 (150-180)%
++(50-70) 最大生命
+魔力回复速度提高 (20-40)%
+暴走时驱散元素异常状态
+暴走状态时免疫物理伤害 1.5 秒
+暴走
 ]],[[
-Repentance
-Crusader Gloves
-Requires Level 66, 306 Str, 306 Int
-(0-30)% reduced Spell Damage
-(120-180)% increased Armour and Energy Shield
-+(8-16) to maximum Energy Shield
-500% increased Attribute Requirements
-Iron Will
+悔悟之掌
+圣战手套
+等级需求: 66, 306 Str, 306 Int
+法术伤害降低 (0-30)%
+该装备的护甲与能量护盾提高 (120-180)%
++(8-16) 最大能量护盾
+属性需求提高 500%
+钢铁意志
 ]],[[
-Saqawal's Winds
-Soldier Gloves
-League: Bestiary
-Source: Drops from unique{Saqawal, First of the Sky}
-Requires Level 51
-(140�180)% increased Armour and Energy Shield
-+(30�60) to maximum Life
-+(20�25)% to Cold and Lightning Resistances
-+(-2�2) seconds to Avian's Might Duration
-Adds (20�25) to (37�40) Cold Damage while you have Avian's Might
-Adds (1�3) to (55�62) Lightning Damage while you have Avian's Might
+苍空之翼
+战士手套
+联盟: 猎魔笔记
+源: 传奇Boss【苍空初子 萨奇沃】 专属掉落
+等级需求: 51
+该装备的护甲与能量护盾提高 (140-180)%
++(30-60) 最大生命
++(20-25)% 冰霜与闪电抗性
+【鸟之力量】的持续时间 +(-2-2) 秒
+拥有【鸟之力量】时附加 (20-25) - (37-40) 基础冰霜伤害
+拥有【鸟之力量】时附加 (1-3) - (55-62) 基础闪电伤害
 ]],[[
-Shackles of the Wretched
-Chain Gloves
-Variant: Pre 1.2.0
-Variant: Current
-Requires Level 7, 17 Dex
-(40-60)% increased Stun Recovery
-Curses in this item are reflected back to you
-You cannot be Chilled for 3 seconds after being Chilled
-You cannot be Frozen for 3 seconds after being Frozen
-You cannot be Ignited for 3 seconds after being Ignited
-{variant:1}You cannot be Shocked for 1 second after being Shocked
-{variant:2}You cannot be Shocked for 3 seconds after being Shocked
-You grant (4-6) Frenzy Charges to allies on Death
+悲运之缚
+链甲手套
+版本: 1.2.0以前
+版本: 当前
+等级需求: 7, 17 Dex
+晕眩回复和格挡回复提高 (40-60)%
+此物品上的诅咒会被反弹回自己
+被冰缓后，你有 3 秒免疫冰缓
+被冰冻后，你有 3 秒免疫冰冻
+在被点燃后，你有 3 秒免疫点燃
+{variant:1}被感电后，你有 1 秒免疫感电
+{variant:2}被感电后，你有 3 秒免疫感电
+你死亡时给予队友 (4-6) 个狂怒球
 ]],[[
-Shaper's Touch 
-Crusader Gloves
-Source: Drops from unique{The Shaper}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 66, 51 Str, 51 Int
-(80-120)% increased Armour and Energy Shield
-{variant:1}+2 Accuracy Rating per 2 Intelligence
-{variant:2}+4 Accuracy Rating per 2 Intelligence
-+1 Life per 4 Dexterity
-{variant:1}+1 Mana per 4 Strength
-{variant:2}+2 Mana per 4 Strength
-{variant:1}1% increased Energy Shield per 10 Strength
-{variant:2}2% increased Energy Shield per 10 Strength
-{variant:1}1% increased Evasion Rating per 10 Intelligence
-{variant:2}2% increased Evasion Rating per 10 Intelligence
-{variant:1}1% increased Melee Physical Damage per 10 Dexterity
-{variant:2}2% increased Melee Physical Damage per 10 Dexterity
-Shaper Item
+塑界之触
+圣战手套
+源: 传奇Boss【塑界者】 专属掉落
+版本: 2.6.0以前
+版本: 当前
+等级需求: 66, 51 Str, 51 Int
+该装备的护甲与能量护盾提高 (80-120)%
+{variant:1}每 2 点智慧 +2 命中值
+{variant:2}每 2 点智慧 +4 命中值
+每 4 点敏捷 +1 生命
+{variant:1}每 4 点力量 +1 魔力
+{variant:2}每 4 点力量 +2 魔力
+{variant:1}每 10 点力量提高 1% 能量护盾
+{variant:2}每 10 点力量提高 2% 能量护盾
+{variant:1}每 10 点智慧提高 1% 闪避值
+{variant:2}每 10 点智慧提高 2% 闪避值
+{variant:1}每 10 点敏捷可使近战物理伤害提高 1%
+{variant:2}每 10 点敏捷可使近战物理伤害提高 2%
+塑界之器
 ]],[[
-Southbound
-Soldier Gloves
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 51, 40 Str, 40 Int
-Adds (30-36) to (44-50) Cold Damage to Attacks
-(12-16)% increased maximum Life
-+(40-50)% to Cold Resistance
-{variant:2}50% increased Herald of Ice Damage
-25% increased Freeze Duration on Enemies
-Your Hits can only Kill Frozen enemies
+南方
+战士手套
+版本: 2.6.0以前
+版本: 当前
+等级需求: 51, 40 Str, 40 Int
+攻击附加 (30-36) - (44-50) 基础冰霜伤害
+最大生命提高 (12-16)%
++(40-50)% 冰霜抗性
+{variant:2}【寒冰之捷】的伤害提高 50%
+敌人被冰冻的持续时间延长 25%
+你只能击败被冰冻的敌人
 ]],[[
-Volkuur's Guidance
-Zealot Gloves
-Source: Drops from The Pale Council
-Variant: Fire
-Variant: Cold
-Variant: Lightning
-Requires Level 43, 34 Str, 34 Int
-{variant:1}Adds (16-20) to (25-30) Fire Damage to Spells and Attacks
-{variant:2}Adds (16-20) to (25-30) Cold Damage to Spells and Attacks
-{variant:3}Adds (1-3) to (42-47) Lightning Damage to Spells and Attacks
-+(50-70) to maximum Life
-{variant:1}+(30-40)% to Fire Resistance
-{variant:2}+(30-40)% to Cold Resistance
-{variant:3}+(30-40)% to Lightning Resistance
-50% less Poison Duration
-{variant:1}Your Fire Damage can Poison
-{variant:2}Your Cold Damage can Poison
-{variant:3}Your Lightning Damage can Poison
-{variant:1}Fire Skills have 20% chance to Poison on Hit
-{variant:2}Cold Skills have 20% chance to Poison on Hit
-{variant:3}Lightning Skills have 20% chance to Poison on Hit
+福库尔的手
+狂热者手套
+源: 地图【苍白议会】 专属掉落
+版本: 火焰
+版本: 冰霜
+版本: 闪电
+等级需求: 43, 34 Str, 34 Int
+{variant:1}攻击和法术附加 (16-20)-(25-30) 基础火焰伤害
+{variant:2}攻击和法术附加 (16-20) - (25-30) 基础冰霜伤害
+{variant:3}攻击和法术附加 (1-3) - (42-47) 基础闪电伤害
++(50-70) 最大生命
+{variant:1}+(30-40)% 火焰抗性
+{variant:2}+(30-40)% 冰霜抗性
+{variant:3}+(30-40)% 闪电抗性
+中毒持续总时间额外降低 50%
+{variant:1}你的火焰伤害会使敌人中毒
+{variant:2}你的冰霜伤害会使敌人中毒
+{variant:3}你的闪电伤害会使敌人中毒
+{variant:1}火焰技能有 20% 几率使敌人中毒
+{variant:2}冰霜技能有 20% 几率使敌人中毒
+{variant:3}闪电技能击中有 20% 几率造成中毒
 ]],
 -- Gloves: Evasion/Energy Shield
 [[
-The Embalmer
-Carnal Mitts
-Requires Level 50, 39 Dex, 39 Int
-Socketed Gems are Supported by Level 20 Vile Toxins
-Adds (13-17) to (23-29) Chaos Damage
-+(50-70) to maximum Life
-+(17-29)% to Chaos Resistance
-(20-25)% increased Poison Duration
+入殓师
+禁礼护手
+等级需求: 50, 39 Dex, 39 Int
+插槽内的的技能石被 20 级的 猛毒 辅助
+附加 (13-17) - (23-29) 基础混沌伤害
++(50-70) 最大生命
++(17-29)% 混沌抗性
+中毒持续时间延长 (20-25)%
 ]],[[
-Facebreaker
-Strapped Mitts
-Variant: Pre 1.0.0
-Variant: Pre 2.2.0
-Variant: Pre 2.5.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 16, 14 Dex, 14 Int
-{variant:1,2}+60% to Global Critical Strike Multiplier
-{variant:3}+90% to Global Critical Strike Multiplier
-{variant:4}+45% to Global Critical Strike Multiplier
-{variant:5}+30% to Global Critical Strike Multiplier
-10% reduced Enemy Stun Threshold
-{variant:1}(800-1000)% more Unarmed Physical Damage
-{variant:2,3,4,5}(600-800)% more Unarmed Physical Damage
-Extra gore
+毁面者
+扣环护手
+版本: 1.0.0以前
+版本: 2.2.0以前
+版本: 2.5.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 16, 14 Dex, 14 Int
+{variant:1,2}+60% 攻击和法术暴击伤害加成
+{variant:3}+90% 攻击和法术暴击伤害加成
+{variant:4}+45% 攻击和法术暴击伤害加成
+{variant:5}+30% 攻击和法术暴击伤害加成
+敌人晕眩门槛降低 10%
+{variant:1}空手攻击时的物理总伤害额外提高 (800-1000)%
+{variant:2,3,4,5}空手攻击时的物理总伤害额外提高 (600-800)%
+更明显打击效果
 ]],[[
-Fenumus' Weave
-Carnal Mitts
-League: Bestiary
-Source: Drops from unique{Fenumus, First of the Night}
-Requires Level 50
-Grants Level 20 Aspect of the Spider Skill
-(120�170)% increased Evasion and Energy Shield
-+(40�50) to maximum Life
-(6�9)% increased Attack and Cast Speed
-(40�60)% increased Damage with Hits and Ailments against Enemies affected by 3 Spider's Webs
-Adds (8�10) to (13�15) Chaos Damage for each Spider's Web on the Enemy
+暗夜织礼
+禁礼护手
+联盟: 猎魔笔记
+源: 传奇Boss【暗夜初子 费努姆斯】 专属掉落
+等级需求: 50
+获得 20 级的主动技能【蛛之势】
+该装备的闪避与能量护盾提高 (120-170)%
++(40-50) 最大生命
+攻击与施法速度提高 (6-9)%
+对受 3 层蜘蛛网影响的敌人，击中和异常状态伤害提高 (40-60)%
+敌人身上每有 1 层蜘蛛网，则附加 (8-10) - (13-15) 混沌伤害
 ]],[[
-Ondar's Clasp
-Wrapped Mitts
-Variant: Pre 1.1.0
-Variant: Current
-Requires Level 5
-{variant:1}20% increased Attack Speed when on Full Life
-{variant:2}30% increased Attack Speed when on Full Life
-Adds 1 to 13 Lightning Damage to Attacks
-+(50-80) to Accuracy Rating
-{variant:1}(10-15)% increased Movement Speed when on Low Life
-{variant:2}20% increased Movement Speed when on Low Life
+恩德的迅影
+裹趾护手
+版本: 1.1.0以前
+版本: 当前
+等级需求: 5
+{variant:1}满血时攻击速度提高 20%
+{variant:2}满血时攻击速度提高 30%
+攻击附加 1 - 13 基础闪电伤害
++(50-80) 命中值
+{variant:1}低血时移动速度提高 (10-15)%
+{variant:2}低血时移动速度提高 20%
 ]],[[
-Malachai's Mark
-Murder Mitts
-Requires Level 67, 51 Dex, 51 Int
-(80-100)% increased Evasion and Energy Shield
-+(60-80) to maximum Life
-+(15-25) Life gained on Kill
-+(15-25) Energy Shield gained on Kill
-Grants Malachai's Endurance, Frenzy and Power for 6 seconds each, in sequence
+马拉凯之记
+暗影者护手
+等级需求: 67, 51 Dex, 51 Int
+该装备的闪避与能量护盾提高 (80-100)%
++(60-80) 最大生命
+击败敌人回复 +(15-25) 生命
+击败敌人回复 +(15-25) 能量护盾
+每 6 秒会交替给予玩家以【玛拉凯的不同奇术】
 ]],[[
-Shadows and Dust
-Clasped Mitts
-League: Rampage
-Variant: Pre 2.2.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 31, 25 Dex, 25 Int
-(20-30)% increased Global Critical Strike Chance
-{variant:1}+(15-30)% to Global Critical Strike Multiplier
-{variant:2}+(25-45)% to Global Critical Strike Multiplier
-{variant:3}+(20-30)% to Global Critical Strike Multiplier
-(100-130)% increased Evasion and Energy Shield
-0.2% of Physical Attack Damage Leeched as Mana
-Creates a Smoke Cloud on Rampage
-Gain Unholy Might for 3 seconds on Rampage
-Rampage
+沙尘之影
+环带护手
+联盟: 暴走
+版本: 2.2.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 31, 25 Dex, 25 Int
+攻击和法术暴击率提高 (20-30)%
+{variant:1}+(15-30)% 攻击和法术暴击伤害加成
+{variant:2}+(25-45)% 攻击和法术暴击伤害加成
+{variant:3}+(20-30)% 攻击和法术暴击伤害加成
+该装备的闪避与能量护盾提高 (100-130)%
+物理攻击伤害的 0.2% 转化为魔力偷取
+暴走状态时创造一团烟雾
+暴走状态时获得【不洁之力】3 秒
+暴走
 ]],[[
-Snakebite
-Assassin's Mitts
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 58, 45 Dex, 45 Int
-(150-180)% increased Evasion Rating
-+(60-70) to maximum Life
-2% increased Attack Speed per Frenzy Charge
-6% increased Accuracy Rating per Frenzy Charge
-10% reduced Frenzy Charge Duration per Frenzy Charge
-{variant:1}While at Maximum Frenzy Charges, Attacks Poison Enemies
-{variant:2}Attacks have 60% chance to Poison while at maximum Frenzy Charges
+蝮吻
+暗影护手
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 58, 45 Dex, 45 Int
+闪避值提高 (150-180)%
++(60-70) 最大生命
+每个狂怒球可使攻击速度提高 2%
+每个狂怒球可使命中值提高 6%
+每个狂怒球持续时间缩短 10%
+{variant:1}当你拥有最大数量的狂怒球时，攻击使敌人中毒
+{variant:2}拥有最大数量的狂怒球时，攻击有 60% 几率使敌人中毒
 ]],[[
-Thunderfist
-Murder Mitts
-Variant: Pre 1.0.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 67, 51 Dex, 51 Int
-Socketed Gems are Supported by level 18 Added Lightning Damage
-{variant:1,3}Adds 1 to 100 Lightning Damage to Attacks
-{variant:2}Adds 1 to 40 Lightning Damage to Attacks
-10% increased Attack Speed
-+(25-30) to maximum Energy Shield
-100% increased Shock Duration on Enemies
-10% increased Stun Duration on Enemies
+轰天雷
+暗影者护手
+版本: 1.0.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 67, 51 Dex, 51 Int
+此物品上的技能石受到 18 级的 附加闪电伤害 辅助
+{variant:1,3}攻击附加 1 - 100 基础闪电伤害
+{variant:2}攻击附加 1 - 40 基础闪电伤害
+攻击速度提高 10%
++(25-30) 最大能量护盾
+对敌人的感电效果持续时间延长 100%
+敌人被晕眩时间延长 10% 
 ]],
 }

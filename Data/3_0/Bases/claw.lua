@@ -2,203 +2,203 @@
 -- Item data (c) Grinding Gear Games
 local itemBases = ...
 
-itemBases["Nailed Fist"] = {
+itemBases["拳钉"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "+3 Life gained for each Enemy hit by Attacks",
+	implicit = "攻击击中每个敌人会回复 +3 生命",
 	weapon = { PhysicalMin = 4, PhysicalMax = 11, CritChanceBase = 6.2, AttackRateBase = 1.6, },
 	req = { dex = 11, int = 11, },
 }
-itemBases["Sharktooth Claw"] = {
+itemBases["鲨颚爪"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "+6 Life gained for each Enemy hit by Attacks",
+	implicit = "攻击击中每个敌人会回复 +6 生命",
 	weapon = { PhysicalMin = 7, PhysicalMax = 18, CritChanceBase = 6.5, AttackRateBase = 1.4, },
 	req = { level = 7, dex = 14, int = 20, },
 }
-itemBases["Awl"] = {
+itemBases["凿钉"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "+7 Life gained for each Enemy hit by Attacks",
+	implicit = "攻击击中每个敌人会回复 +7 生命",
 	weapon = { PhysicalMin = 7, PhysicalMax = 24, CritChanceBase = 6.3, AttackRateBase = 1.5, },
 	req = { level = 12, dex = 25, int = 25, },
 }
-itemBases["Cat's Paw"] = {
+itemBases["猫爪刃"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "+8 Life gained for each Enemy hit by Attacks",
+	implicit = "攻击击中每个敌人会回复 +8 生命",
 	weapon = { PhysicalMin = 12, PhysicalMax = 22, CritChanceBase = 6, AttackRateBase = 1.6, },
 	req = { level = 17, dex = 39, int = 27, },
 }
-itemBases["Blinder"] = {
+itemBases["袭眼钩"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "+12 Life gained for each Enemy hit by Attacks",
+	implicit = "攻击击中每个敌人会回复 +12 生命",
 	weapon = { PhysicalMin = 12, PhysicalMax = 32, CritChanceBase = 6.3, AttackRateBase = 1.5, },
 	req = { level = 22, dex = 41, int = 41, },
 }
-itemBases["Timeworn Claw"] = {
+itemBases["远古战爪"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "+19 Life gained for each Enemy hit by Attacks",
+	implicit = "攻击击中每个敌人会回复 +19 生命",
 	weapon = { PhysicalMin = 16, PhysicalMax = 43, CritChanceBase = 6.5, AttackRateBase = 1.3, },
 	req = { level = 26, dex = 39, int = 56, },
 }
-itemBases["Sparkling Claw"] = {
+itemBases["眩目爪刃"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "+15 Life gained for each Enemy hit by Attacks",
+	implicit = "攻击击中每个敌人会回复 +15 生命",
 	weapon = { PhysicalMin = 14, PhysicalMax = 38, CritChanceBase = 6, AttackRateBase = 1.6, },
 	req = { level = 30, dex = 64, int = 44, },
 }
-itemBases["Fright Claw"] = {
+itemBases["恐惧之爪"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "+20 Life gained for each Enemy hit by Attacks",
+	implicit = "攻击击中每个敌人会回复 +20 生命",
 	weapon = { PhysicalMin = 12, PhysicalMax = 46, CritChanceBase = 6.3, AttackRateBase = 1.5, },
 	req = { level = 34, dex = 61, int = 61, },
 }
-itemBases["Double Claw"] = {
+itemBases["双刃爪"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "+15 Life gained for each Enemy hit by Attacks\n+6 Mana gained for each Enemy hit by Attacks",
+	implicit = "攻击击中每个敌人会回复 +15 生命\n攻击击中每个敌人会回复 +6 魔力",
 	weapon = { PhysicalMin = 15, PhysicalMax = 44, CritChanceBase = 6.3, AttackRateBase = 1.5, },
 	req = { level = 36, dex = 67, int = 67, },
 }
-itemBases["Thresher Claw"] = {
+itemBases["撕裂尖爪"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "+25 Life gained for each Enemy hit by Attacks",
+	implicit = "攻击击中每个敌人会回复 +25 生命",
 	weapon = { PhysicalMin = 20, PhysicalMax = 53, CritChanceBase = 6.5, AttackRateBase = 1.3, },
 	req = { level = 37, dex = 53, int = 77, },
 }
-itemBases["Gouger"] = {
+itemBases["穿体凿"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "+24 Life gained for each Enemy hit by Attacks",
+	implicit = "攻击击中每个敌人会回复 +24 生命",
 	weapon = { PhysicalMin = 15, PhysicalMax = 51, CritChanceBase = 6.3, AttackRateBase = 1.5, },
 	req = { level = 40, dex = 70, int = 70, },
 }
-itemBases["Tiger's Paw"] = {
+itemBases["虎爪刃"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "1.6% of Physical Attack Damage Leeched as Life",
+	implicit = "物理攻击伤害的 1.6% 会转化为生命偷取",
 	weapon = { PhysicalMin = 23, PhysicalMax = 43, CritChanceBase = 6, AttackRateBase = 1.6, },
 	req = { level = 43, dex = 88, int = 61, },
 }
-itemBases["Gut Ripper"] = {
+itemBases["裂脏钩"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "+44 Life gained for each Enemy hit by Attacks",
+	implicit = "攻击击中每个敌人会回复 +44 生命",
 	weapon = { PhysicalMin = 20, PhysicalMax = 53, CritChanceBase = 6.3, AttackRateBase = 1.5, },
 	req = { level = 46, dex = 80, int = 80, },
 }
-itemBases["Prehistoric Claw"] = {
+itemBases["史前战爪"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "2% of Physical Attack Damage Leeched as Life",
+	implicit = "物理攻击伤害的 2% 会转化为生命偷取",
 	weapon = { PhysicalMin = 26, PhysicalMax = 68, CritChanceBase = 6.5, AttackRateBase = 1.3, },
 	req = { level = 49, dex = 69, int = 100, },
 }
-itemBases["Noble Claw"] = {
+itemBases["贵族战爪"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "+40 Life gained for each Enemy hit by Attacks",
+	implicit = "攻击击中每个敌人会回复 +40 生命",
 	weapon = { PhysicalMin = 21, PhysicalMax = 56, CritChanceBase = 6, AttackRateBase = 1.6, },
 	req = { level = 52, dex = 105, int = 73, },
 }
-itemBases["Eagle Claw"] = {
+itemBases["鹰爪刃"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "2% of Physical Attack Damage Leeched as Life",
+	implicit = "物理攻击伤害的 2% 会转化为生命偷取",
 	weapon = { PhysicalMin = 17, PhysicalMax = 69, CritChanceBase = 6.3, AttackRateBase = 1.5, },
 	req = { level = 55, dex = 94, int = 94, },
 }
-itemBases["Twin Claw"] = {
+itemBases["重刃爪"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "+28 Life gained for each Enemy hit by Attacks\n+10 Mana gained for each Enemy hit by Attacks",
+	implicit = "攻击击中每个敌人会回复 +28 生命\n攻击击中每个敌人会回复 +10 魔力",
 	weapon = { PhysicalMin = 21, PhysicalMax = 64, CritChanceBase = 6.3, AttackRateBase = 1.5, },
 	req = { level = 57, dex = 103, int = 103, },
 }
-itemBases["Great White Claw"] = {
+itemBases["白灵之爪"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "+46 Life gained for each Enemy hit by Attacks",
+	implicit = "攻击击中每个敌人会回复 +46 生命",
 	weapon = { PhysicalMin = 30, PhysicalMax = 78, CritChanceBase = 6.5, AttackRateBase = 1.3, },
 	req = { level = 58, dex = 81, int = 117, },
 }
-itemBases["Throat Stabber"] = {
+itemBases["刺喉刃"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "+40 Life gained for each Enemy hit by Attacks",
+	implicit = "攻击击中每个敌人会回复 +40 生命",
 	weapon = { PhysicalMin = 21, PhysicalMax = 73, CritChanceBase = 6.3, AttackRateBase = 1.5, },
 	req = { level = 60, dex = 113, int = 113, },
 }
-itemBases["Hellion's Paw"] = {
+itemBases["魔爪刃"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "1.6% of Physical Attack Damage Leeched as Life",
+	implicit = "物理攻击伤害的 1.6% 会转化为生命偷取",
 	weapon = { PhysicalMin = 29, PhysicalMax = 55, CritChanceBase = 6, AttackRateBase = 1.6, },
 	req = { level = 62, dex = 131, int = 95, },
 }
-itemBases["Eye Gouger"] = {
+itemBases["刺眼钩"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "+50 Life gained for each Enemy hit by Attacks",
+	implicit = "攻击击中每个敌人会回复 +50 生命",
 	weapon = { PhysicalMin = 26, PhysicalMax = 68, CritChanceBase = 6.3, AttackRateBase = 1.5, },
 	req = { level = 64, dex = 113, int = 113, },
 }
-itemBases["Vaal Claw"] = {
+itemBases["瓦尔战爪"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "2% of Physical Attack Damage Leeched as Life",
+	implicit = "物理攻击伤害的 2% 会转化为生命偷取",
 	weapon = { PhysicalMin = 29, PhysicalMax = 76, CritChanceBase = 6.5, AttackRateBase = 1.3, },
 	req = { level = 66, dex = 95, int = 131, },
 }
-itemBases["Imperial Claw"] = {
+itemBases["帝国战爪"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "+46 Life gained for each Enemy hit by Attacks",
+	implicit = "攻击击中每个敌人会回复 +46 生命",
 	weapon = { PhysicalMin = 25, PhysicalMax = 65, CritChanceBase = 6, AttackRateBase = 1.6, },
 	req = { level = 68, dex = 131, int = 95, },
 }
-itemBases["Terror Claw"] = {
+itemBases["恐惧之牙"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, },
-	implicit = "2% of Physical Attack Damage Leeched as Life",
+	implicit = "物理攻击伤害的 2% 会转化为生命偷取",
 	weapon = { PhysicalMin = 18, PhysicalMax = 71, CritChanceBase = 6.3, AttackRateBase = 1.5, },
 	req = { level = 70, dex = 113, int = 113, },
 }
-itemBases["Gemini Claw"] = {
+itemBases["双子战爪"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "+38 Life gained for each Enemy hit by Attacks\n+14 Mana gained for each Enemy hit by Attacks",
+	implicit = "攻击击中每个敌人会回复 +38 生命\n攻击击中每个敌人会回复 +14 魔力",
 	weapon = { PhysicalMin = 23, PhysicalMax = 68, CritChanceBase = 6.3, AttackRateBase = 1.5, },
 	req = { level = 72, dex = 121, int = 121, },
 }

@@ -1,396 +1,394 @@
 ﻿-- Item data (c) Grinding Gear Games
-
 return {
 -- Belt
 [[
-Ascent From Flesh
-Chain Belt
-Source: prophecy{Thaumaturgical History IV}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 44
-+(9-20) to maximum Energy Shield
-+300 to Evasion Rating
-{variant:1}+(35-45) to maximum Energy Shield
-{variant:2}+(75-80) to maximum Energy Shield
-+(10-15)% to Elemental Resistances
-You have Phasing if Energy Shield Recharge has started Recently
-6% chance to Dodge Attacks while Phasing
-10% increased Movement Speed while Phasing
+变节者
+扣链腰带
+源: 预言【奇术史 IV】
+版本: 2.6.0以前
+版本: 当前
+等级需求: 44
++(9-20) 最大能量护盾
++300 点闪避值
+{variant:1}+(35-45) 最大能量护盾
+{variant:2}+(75-80) 最大能量护盾
+获得 +(10-15)% 火焰、冰霜、闪电抗性
+近期内你若有能量护盾开始回复，则获得【迷踪】状态
+【迷踪】状态时有 6% 几率躲避攻击击中
+【迷踪】状态时移动速度提高 10%
 ]],[[
-Auxium
-Chain Belt
-Variant: Pre 2.6.0
-Requires Level 70
-+(9-20) to maximum Energy Shield
-(10-20)% increased Elemental Damage with Weapons
-+(45-55) to maximum Mana
-+(60-70) to maximum Energy Shield
-0.2% of Physical Attack Damage Leeched as Mana per Power Charge
-Chill and Freeze duration on you is based on 65% of Energy Shield
+奥术之符
+水晶腰带
+版本: 2.6.0以前
+等级需求: 70
++(9-20) 最大能量护盾
+武器攻击的火焰、冰霜、闪电伤害提高 (10-20)%
++(45-55) 最大魔力
++(60-70) 最大能量护盾
+每个暴击球所获得物理攻击伤害的 0.2% 转化为魔力偷取
+冰缓效果和冰冻时长基于你能量护盾的 65% 计算
 ]],[[
-Auxium
-Crystal Belt
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 70
-+(60-80) to maximum Energy Shield
-{variant:1}(10-20)% increased Elemental Damage with Weapons
-{variant:2}(10-20)% increased Elemental Damage with Attack Skills
-+(45-55) to maximum Mana
-+(60-70) to maximum Energy Shield
-0.2% of Attack Damage Leeched as Mana per Power Charge
-Chill and Freeze duration on you is based on 65% of Energy Shield
+奥术之符
+水晶腰带
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 70
++(60-80) 最大能量护盾
+{variant:1}武器攻击的火焰、冰霜、闪电伤害提高 (10-20)%
+{variant:2}攻击技能的火焰、冰霜、闪电伤害提高 (10-20)%
++(45-55) 最大魔力
++(60-70) 最大能量护盾
+每个暴击球会提供攻击伤害 0.2% 的魔力偷取
+冰缓效果和冰冻时长基于你能量护盾的 65% 计算
 ]],[[
-Bated Breath
-Chain Belt
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 22
-+(9-20) to maximum Energy Shield
-10% increased Damage
-+(15-25) to Intelligence
-+(20-30) to maximum Energy Shield
-{variant:2}20% increased maximum Energy Shield
-50% increased Energy Shield Recharge Rate
+凝息
+扣链腰带
+版本: 2.6.0以前
+版本: 当前
+等级需求: 22
++(9-20) 最大能量护盾
+伤害提高 10%
++(15-25) 智慧
++(20-30) 最大能量护盾
+{variant:2}最大能量护盾提高 20%
+能量护盾的回复速度提高 50%
 ]],[[
-Belt of the Deceiver
-Heavy Belt
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 20
-+(25-35) to Strength
-{variant:1}10% reduced Chance to Block Attacks and Spells
-(15-25)% increased Physical Damage
-You take 30% reduced Extra Damage from Critical Strikes
-+(30-40) to maximum Life
-{variant:1}+(6-10)% to all Elemental Resistances
-{variant:2}+(10-15)% to all Elemental Resistances
-{variant:2}Nearby Enemies are Intimidated
+狡徒束腰
+重革腰带
+版本: 2.6.0以前
+版本: 当前
+等级需求: 20
++(25-35) 力量
+{variant:1}攻击及法术格挡率降低 10%
+物理伤害提高 (15-25)%
+受到的暴击伤害降低 30%
++(30-40) 最大生命
+{variant:1}获得 +(6-10)% 火焰、冰霜、闪电抗性
+{variant:2}获得 +(10-15)% 火焰、冰霜、闪电抗性
+{variant:2}周围的敌人会被恐吓
 ]],[[
-Bisco's Leash
-Heavy Belt
-Requires Level 30
-+(25-35) to Strength
-5% increased Quantity of Items found
-+(20–40)% to Cold Resistance
-Rampage
-1% increased Rarity of Items found per 15 Rampage Kills
+比斯克的缰绳
+重革腰带
+等级需求: 30
++(25-35) 力量
+物品掉落数量提高 5%
++(20-40)% 冰霜抗性
+暴走
+每 15 层暴走能量增加 1% 物品稀有度
 ]],[[
-Cyclopean Coil
-Leather Belt
-Source: Drops from unique{The Elder}
-Requires Level 68
-+(25-40) to maximum Life
-+(60–80) to maximum Life 
-(5–15)% increased Attributes
-Cannot be Frozen if Dexterity is higher than Intelligence
-Cannot be Ignited if Strength is higher than Dexterity
-Cannot be Shocked if Intelligence is higher than Strength
-1% increased Damage per 5 of your lowest Attribute
-Elder Item
+巨岩指套
+皮革腰带
+源: 传奇Boss【裂界者】 专属掉落
+等级需求: 68
++(25-40) 最大生命
++(60-80) 最大生命
+所有属性提高 (5-15)%
+若敏捷高于智慧，则无法被冰冻
+若力量高于敏捷，则无法被点燃
+若智慧高于力量，则无法被感电
+你最低的属性每有 5 点，伤害提高 1%
+裂界之器
 ]],[[
-Darkness Enthroned
-Stygian Vise
-League: Abyss
-Source: Drops from Abyssal Liches
-Has 1 Abyssal Socket
-Has 1 Abyssal Socket
-50% increased Effect of Socketed Jewels
+夜临
+深渊腰带
+联盟: 深渊
+源: 深渊巫妖掉落
+拥有 1 个深渊插槽
+拥有 1 个深渊插槽
+插槽内的珠宝效果提高 50%
 ]],[[
-Doryani's Invitation
-Heavy Belt
-Source: Drops from unique{Atziri, Queen of the Vaal} in normal{The Apex of Sacrifice}
-Variant: Physical
-Variant: Fire
-Variant: Cold
-Variant: Lightning
-Requires Level 68
-+(25-35) to Strength
-{variant:1}(20-30)% increased Physical Damage
-{variant:2}(20-30)% increased Fire Damage
-{variant:3}(20-30)% increased Cold Damage
-{variant:4}(20-30)% increased Lightning Damage
-{variant:2,3,4}+(300-350) to Armour
-{variant:1,3,4}+(30-35)% to Fire Resistance
-{variant:1,2,4}+(30-35)% to Cold Resistance
-{variant:1,2,3}+(30-35)% to Lightning Resistance
-{variant:1}0.2% of Physical Damage Leeched as Life
-{variant:2}0.2% of Fire Damage Leeched as Life
-{variant:3}0.2% of Cold Damage Leeched as Life
-{variant:4}0.2% of Lightning Damage Leeched as Life
-{variant:1}Your Flasks grant 25% reduced Enemy Stun Threshold during flask effect
-{variant:2}Your Flasks grant 10% chance to Ignite during flask effect
-{variant:3}Your Flasks grant 10% chance to Freeze during flask effect
-{variant:4}Your Flasks grant 10% chance to Shock during flask effect
+多里亚尼之约
+重革腰带
+源: 传奇Boss【瓦尔女王阿兹里】 专属掉落（地图【生贽之尖】） 
+版本: 物理
+版本: 火焰
+版本: 冰霜
+版本: 闪电
+等级需求: 68
++(25-35) 力量
+{variant:1}物理伤害提高 (20-30)%
+{variant:2}火焰伤害提高 (20-30)%
+{variant:3}冰霜伤害提高 (20-30)%
+{variant:4}闪电伤害提高 (20-30)%
+{variant:2,3,4}+(300-350) 护甲
+{variant:1,3,4}+(30-35)% 火焰抗性
+{variant:1,2,4}+(30-35)% 冰霜抗性
+{variant:1,2,3}+(30-35)% 闪电抗性
+{variant:1}物理伤害的 0.2% 转化为生命偷取
+{variant:2}火焰伤害的 0.2% 转化为生命偷取
+{variant:3}冰霜伤害的 0.2% 转化为生命偷取
+{variant:4}闪电伤害的 0.2% 转化为生命偷取
+{variant:1}药剂持续期间，敌人晕眩门槛降低 25%
+{variant:2}药剂持续期间，有 10% 几率点燃
+{variant:3}药剂持续期间，有 10% 几率冰冻
+{variant:4}药剂持续期间，有 10% 几率感电
 ]],[[
-Dyadian Dawn
-Heavy Belt
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 52
-+(25-35) to Strength
-+(70-85) to maximum Life
-+(20-40)% to Fire Resistance
-+(20-40)% to Cold Resistance
-{variant:1}0.6% of Attack Damage Leeched as Life against Chilled enemies
-{variant:2}1% of Attack Damage Leeched as Life against Chilled enemies
-{variant:1}Enemies Ignited by an Attack Burn 20% faster
-{variant:2}Enemies Ignited by an Attack Burn 35% faster
-Deal no Physical Damage
+戴亚迪安的晨曦
+重革腰带
+版本: 2.6.0以前
+版本: 当前
+等级需求: 52
++(25-35) 力量
++(70-85) 最大生命
++(20-40)% 火焰抗性
++(20-40)% 冰霜抗性
+{variant:1}对被冰缓敌人所造成的攻击伤害的 0.6% 转化为生命偷取
+{variant:2}对被冰缓敌人所造成的攻击伤害的 1% 转化为生命偷取
+{variant:1}攻击被点燃敌人会使燃烧加快 20%
+{variant:2}攻击被点燃敌人会使燃烧加快 35%
+没有物理伤害
 ]],[[
-Faminebind
-Rustic Sash
-League: Talisman Standard, Talisman Hardcore
-Requires Level 18
-(12-24)% increased Physical Damage
-+(20-30)% to Cold Resistance
-60% increased Flask effect duration
-Deals 50 Chaos Damage per second to nearby Enemies
-20% increased Projectile Damage
-30% reduced Flask Charges gained while using a Flask
+饥荒之结
+素布腰带
+联盟: 魔符·标准, 魔符·专家
+等级需求: 18
+物理伤害提高 (12-24)%
++(20-30)% 冰霜抗性
+药剂持续期间间延长 60%
+每秒对周围敌人造成 50 混沌伤害
+投射物伤害提高 20%
+药剂持续期间，获得的充能数降低 30%
 ]],[[
-Feastbind
-Rustic Sash
-League: Talisman Standard, Talisman Hardcore
-Requires Level 11
-(12-24)% increased Physical Damage
-Adds 5 to 10 Physical Damage to Attacks
-+(20-40) to maximum Life
-0.2% of Physical Attack Damage Leeched as Life
-50% increased Flask Charges gained while using a Flask
-50% increased Mana Regeneration while using a Flask
+盛宴之结
+素布腰带
+联盟: 魔符·标准, 魔符·专家
+等级需求: 11
+物理伤害提高 (12-24)%
+攻击附加 5 - 10 基础物理伤害
++(20-40) 最大生命
+物理攻击伤害的 0.2% 会转化为生命偷取
+药剂持续期间，获得的充能数提高 50%
+药剂持续期间，魔力回复提高 50%
 ]],[[
-The Flow Untethered
-Cloth Belt
-League: Harbinger
-Requires Level 60
-(15-25)% increased Stun and Block Recovery
-Grants Summon Harbinger of Time Skill
-(10-15)% increased Attack and Cast Speed
-(15-20)% increased Life Recovery rate
-(15-20)% increased Energy Shield Recovery rate
-(15-20)% increased Cooldown Recovery Speed
-Debuffs on you expire (15-20)% faster
+流逝之时
+饰布腰带
+联盟: 先驱者
+等级需求: 60
+晕眩和格挡回复降低 (15-25)%
+获得【召唤时空先驱者】
+攻击与施法速度提高 (10-15)%
+生命回复速度提高 (15-20)%
+能量护盾回复速度提高 (15-20)%
+冷却回复速度提高 (15-20)%
+你身上的减益效果消失速度提高 (15-20)%
 ]],[[
-Gluttony
-Leather Belt
-Requires Level 48
-+(25-40) to maximum Life
-+(60-80) to maximum Life
-Culling Strike against Enemies Cursed with Poacher's Mark
-Curse Enemies with Level 30 Poacher's Mark on Hit, which can apply to Hexproof Enemies
-Take (100-200) Physical Damage when you use a Movement Skill
-You have no Armour or Energy Shield
+暴食
+皮革腰带
+等级需求: 48
++(25-40) 最大生命
++(60-80) 最大生命
+对受到【盗猎者印记】诅咒的敌人附带【终结】效果
+击中时用 30 级的【盗猎者印记】诅咒敌人，对诅咒免疫的敌人也有效
+使用移动技能时，承受 (100-200) 额外物理伤害
+解除护甲或能量护盾
 ]],[[
-Headhunter
-Leather Belt
-League: Nemesis
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 40
-+(25-40) to maximum Life
-+(40-55) to Strength
-+(40-55) to Dexterity
-+(50-60) to maximum Life
-{variant:1}(20-30)% increased Damage against Rare monsters
-{variant:2}(20-30)% increased Damage with Hits against Rare monsters
-When you Kill a Rare monster, you gain its mods for 20 seconds
+猎首
+皮革腰带
+联盟: 复仇
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 40
++(25-40) 最大生命
++(40-55) 力量
++(40-55) 敏捷
++(50-60) 最大生命
+{variant:1}对稀有怪的击中伤害提高 (20-30)%
+{variant:2}对稀有怪的击中伤害提高 (20-30)%
+当你击败稀有怪物时，会获得该怪物属性 20 秒
 ]],[[
-Immortal Flesh
-Leather Belt
-Variant: Pre 1.3.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 50
-+(25-40) to maximum Life
-+(75-100) to maximum Life
-(67-75) Life Regenerated per second
-(8-10) Mana Regenerated per second
-{variant:1}−40% to all Elemental Resistances
-{variant:3}−(15-25)% to all Elemental Resistances
-{variant:1}−10% to all maximum Resistances
-{variant:2}−5% to all maximum Resistances
-−(50-40) Physical Damage taken from Attacks
-40% increased Armour while not Ignited, Frozen or Shocked
+永生
+皮革腰带
+版本: 1.3.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 50
++(25-40) 最大生命
++(75-100) 最大生命
+(67-75) 每秒生命回复
+(8-10) 每秒魔力回复
+{variant:1}获得 -40% 火焰、冰霜、闪电抗性
+{variant:3}获得 -(25-15)% 火焰、冰霜、闪电抗性
+{variant:1}−10% 全部抗性上限
+{variant:2}−5% 全部抗性上限
+承受攻击造成的物理伤害 (-50--40)
+没有被点燃，冰冻，感电时，护甲提高 40%
 ]],[[
-The Magnate
-Studded Belt
-Upgrade: Upgrades to unique{The Nomad} via prophecy{The Great Leader of the North}
-Upgrade: Upgrades to unique{The Tactician} via prophecy{The Great Mind of the North}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 16
-(20-30)% increased Stun Duration on Enemies
-(25-40)% increased Physical Damage
-+(40-50) to Strength
-50% increased Flask Charges gained
-{variant:2}+(20-25)% to all Elemental Resistances while you have at least 200 Strength
+坚毅之环
+扣钉腰带
+升级: 使用 预言【北方的精神支柱】 升级为 传奇【谋士之环】
+升级: 使用 预言【北方的伟大领袖】升级为 传奇【游牧之环】
+版本: 2.6.0以前
+版本: 当前
+等级需求: 16
+敌人被晕眩时间延长 (20-30)% 
+物理伤害提高 (25-40)%
++(40-50) 力量
+药剂充能获取提高 50%
+{variant:2}至少有 200 点力量时，+(20-25)% 火焰、冰霜、闪电抗性
 ]],[[
-The Nomad
-Studded Belt
-Source: Upgraded from unique{The Magnate} via prophecy{The Great Leader of the North}
-Requires Level 48
-(20-30)% increased Stun Duration on Enemies
-(25-40)% increased Global Physical Damage
-+(40-50) to Strength
-+(40-50) to Dexterity
-+(20-25)% to all Elemental Resistances while you have at least 200 Strength
-(40–50)% increased Projectile Attack Damage while you have at least 200 Dexterity
+游牧之环
+扣钉腰带
+源: 传奇【坚毅之环】 使用 预言【北方的精神支柱】 升级
+等级需求: 48
+敌人被晕眩时间延长 (20-30)% 
+物理伤害提高 (25-40)%
++(40-50) 力量
++(40-50) 敏捷
+至少有 200 点力量时，+(20-25)% 火焰、冰霜、闪电抗性
+至少有 200 点敏捷时，投射物攻击伤害提高 (40-50)%
 ]],[[
-The Tactician
-Studded Belt
-Source: Upgraded from unique{The Magnate} via prophecy{The Great Mind of the North}
-Requires Level 48
-(20-30)% increased Stun Duration on Enemies
-(25-40)% increased Global Physical Damage
-+(40-50) to Strength
-+(40-50) to Intelligence
-50% increased Flask Charges gained
-+(20-25)% to all Elemental Resistances while you have at least 200 Strength
-(50–60)% increased Critical Strike Chance while you have at least 200 Intelligence
+谋士之环
+扣钉腰带
+源: 传奇【坚毅之环】 使用 预言【北方的伟大领袖】 升级
+等级需求: 48
+敌人被晕眩时间延长 (20-30)% 
+物理伤害提高 (25-40)%
++(40-50) 力量
++(40-50) 智慧
+药剂充能获取提高 50%
+至少有 200 点力量时，+(20-25)% 火焰、冰霜、闪电抗性
+至少有 200 点智慧时，暴击率提高 (50-60)%
 ]],[[
-Maligaro's Restraint
-Chain Belt
-Requires Level 44
-+(9-20) to maximum Energy Shield
-Adds 1 to (30-50) Lightning Damage to Attacks
-100% increased Shock Duration on You
-Shocks you cause are reflected back to you
-60% increased Damage while Shocked
-15% increased Movement Speed while Shocked
+马雷格罗的染血之环
+扣链腰带
+等级需求: 44
++(9-20) 最大能量护盾
+攻击附加 1 - (30-50) 基础闪电伤害
+你被感电的持续时间延长 100%
+感电会反射回自己身上
+感电时伤害提高 60%
+感电时移动速度提高 15%
 ]],[[
-Meginord's Girdle
-Heavy Belt
-Variant: Pre 2.0.0
-Variant: Current
-Requires Level 8
-+(25-35) to Strength
-{variant:1}Adds 10 to 20 Physical Damage to Attacks
-{variant:2}Adds 5 to 15 Physical Damage to Attacks
-+25 to Strength
-10% increased maximum Life
-+(10-20)% to Cold Resistance
-25% increased Flask Life Recovery rate
+梅吉诺德的力量泉源
+重革腰带
+版本: 2.0.0以前
+版本: 当前
+等级需求: 8
++(25-35) 力量
+{variant:1}攻击附加 10 - 20 基础物理伤害
+{variant:2}攻击附加 5 - 15 基础物理伤害
++25 力量
+最大生命提高 10%
++(10-20)% 冰霜抗性
+药剂生命回复速度提高 25%
 ]],[[
-Perandus Blazon
-Cloth Belt
-Variant: Pre 1.1.0
-Variant: Current
-Requires Level 16
-(15-25)% increased Stun Recovery
-+(20-30) to all Attributes
-{variant:1}(8-12)% increased Quantity of Items found
-{variant:2}(6-8)% increased Quantity of Items found
-+20% to Fire Resistance
-20% increased Flask effect duration
-−2 Physical Damage taken from Attacks
+普兰德斯之印
+饰布腰带
+版本: 1.1.0以前
+版本: 当前
+等级需求: 16
+晕眩回复和格挡回复提高 (15-25)%
++(20-30) 全属性
+{variant:1}物品掉落数量提高 (8-12)%
+{variant:2}物品掉落数量提高 (6-8)%
++20% 火焰抗性
+药剂持续期间间延长 20%
+承受攻击造成的物理伤害 -2
 ]],[[
-Perseverance
-Vanguard Belt
-Requires Level 78
-+(260-320) to Armour and Evasion Rating
-(4-8)% increased maximum Life
-+(20-40)% to Cold Resistance
-1% increased Attack Damage per 300 of the lowest of Armour and Evasion Rating
-(14-20)% chance to gain Fortify on Melee Stun
-You have Onslaught while you have Fortify
+恒毅意志
+先锋腰带
+等级需求: 78
++(260-320) 护甲和闪避值
+最大生命提高 (4-8)%
++(20-40)% 冰霜抗性
+取护甲和闪避值之间的较低者，每 300 点可使攻击伤害提高 1%
+你的近战伤害晕眩敌人时有 (14-20)% 几率获得护体
+当你拥有护体时获得【猛攻】状态
 ]],[[
-Prismweave
-Rustic Sash
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 25
-(12-24)% increased Physical Damage
-{variant:1,2}10% increased Elemental Damage with Weapons
-{variant:3}10% increased Elemental Damage with Attack Skills
-{variant:1}Adds (3-4) to (7-8) Fire Damage to Attacks
-{variant:2,3}Adds (7-8) to (15-16) Fire Damage to Attacks
-{variant:1}Adds (2-3) to (5-7) Cold Damage to Attacks
-{variant:2,3}Adds (5-6) to (12-14) Cold Damage to Attacks
-{variant:1}Adds 1 to (13-17) Lightning Damage to Attacks
-{variant:2,3}Adds 1 to (30-34) Lightning Damage to Attacks
-+(6-8)% to all Elemental Resistances
-{variant:1,2}30% increased Elemental Damage with Weapons while using a Flask
-{variant:3}30% increased Elemental Damage with Attack Skills while using a Flask
+幻彩菱织
+素布腰带
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 25
+物理伤害提高 (12-24)%
+{variant:1,2}武器攻击的火焰、冰霜、闪电伤害提高 10%
+{variant:3}攻击技能的火焰、冰霜、闪电伤害提高 10%
+{variant:1}攻击附加 (3-4) - (7-8) 基础火焰伤害
+{variant:2,3}攻击附加 (7-8) - (15-16) 基础火焰伤害
+{variant:1}攻击附加 (2-3) - (5-7) 基础冰霜伤害
+{variant:2,3}攻击附加 (5-6) - (12-14) 基础冰霜伤害
+{variant:1}攻击附加 1 - (13-17) 基础闪电伤害
+{variant:2,3}攻击附加 1 - (30-34) 基础闪电伤害
+获得 +(6-8)% 火焰、冰霜、闪电抗性
+{variant:1,2}药剂持续期间，攻击技能造成的火焰、冰霜、闪电伤害提高 30%
+{variant:3}药剂持续期间，攻击技能造成的火焰、冰霜、闪电伤害提高 30%
 ]],[[
-The Retch
-Rustic Sash
-League: Talisman Standard, Talisman Hardcore
-Source: Vendor recipe
-Requires Level 44
-(12-24)% increased Physical Damage
-+(60-80) to maximum Life
-+(25-40)% to Cold Resistance
-0.4% of Physical Attack Damage Leeched as Life
-60% increased Flask Effect Duration
-30% reduced Flask Charges gained while using a Flask
-200% of Life Leech applies to enemies as Chaos Damage
-15% increased Movement Speed while using a Flask
+呕吐
+素布腰带
+联盟: 魔符·标准, 魔符·专家
+源: 商店配方
+等级需求: 44
+物理伤害提高 (12-24)%
++(60-80) 最大生命
++(25-40)% 冰霜抗性
+物理攻击伤害的 0.4% 会转化为生命偷取
+药剂持续期间间延长 60%
+药剂充能获取降低 30%
+生命偷取造成伤害的 200% 转化为混沌伤害
+药剂持续期间，移动速度提高 15%
 ]],[[
-Ryslatha's Coil
-Studded Belt
-Requires Level 20
-(20–30)% increased Stun Duration on Enemies 
-+(20–40) to Strength 
-Adds 1 to (15–20) Physical Damage to Attacks 
-Gain 50 Life when you Stun an Enemy 
-20% less Minimum Physical Attack Damage 
-20% more Maximum Physical Attack Damage
+瑞斯拉萨的线圈
+扣钉腰带
+等级需求: 20
+敌人被晕眩时间延长 (20-30)% 
++(20-40) 力量
+攻击附加 1 - (15-20) 基础物理伤害
+晕眩敌人时获得 50 生命
+最小物理攻击总伤害额外降低 20%
+最大物理攻击总伤害额外提高 20%
 ]],[[
-Soul Tether
-Cloth Belt
-Requires Level 48
-(15-25)% increased Stun and Block Recovery
-+(20-40) to Intelligence
-Your Energy Shield starts at zero
-You cannot Recharge Energy Shield
-You cannot Regenerate Energy Shield
-You lose 5% of Energy Shield per second
-Life Leech is applied to Energy Shield instead while on Full Life
-Gain (4-6)% of Maximum Life as Extra Maximum Energy Shield
+灵魂羁绊
+饰布腰带
+等级需求: 48
+晕眩和格挡回复降低 (15-25)%
++(20-40) 智慧
+你的能量护盾从 0 开始
+无法充能能量护盾
+无法自动回复能量护盾
+每秒失去 5% 能量护盾
+生命全满时，生命偷取套用于能量护盾
+获得等同 (4-6)% 最大生命的额外能量护盾
 ]],[[
-Soulthirst
-Cloth Belt
-Requires Level 45
-(15-25)% increased Stun Recovery
-+(60-80) to maximum Life
-+15% to all Elemental Resistances
-(20-30)% increased Mana Recovery from Flasks
-(20-30)% reduced Flask effect duration
-Gain Soul Eater during Flask Effect
-Lose Souls gained from Soul Eater on Flask Use
+嗜魂
+饰布腰带
+等级需求: 45
+晕眩回复和格挡回复提高 (15-25)%
++(60-80) 最大生命
+获得 +15% 火焰、冰霜、闪电抗性
+药剂回复的魔力提高 (20-30)%
+药剂持续期间间缩短 (20-30)%
+药剂持续期间，获得噬魂者
+使用药剂时，失去从噬魂者获得的效果
 ]],[[
-Sunblast
-Cloth Belt
-Requires Level 37
-(15-25)% increased Stun Recovery
-(30-40)% increased Trap Damage
-20% increased Mana Regeneration Rate
-+(20-30)% to Fire Resistance
-80% reduced Trap Duration
-25% increased Light Radius
-Traps trigger at the end of their Duration
+日炎
+饰布腰带
+等级需求: 37
+晕眩回复和格挡回复提高 (15-25)%
+陷阱伤害提高 (30-40)%
+魔力回复速度提高 20%
++(20-30)% 火焰抗性
+陷阱持续时间缩短 80%
+照亮范围扩大 25%
 ]],[[
-Umbilicus Immortalis
-Leather Belt
-League: Perandus
-Requires Level 30
-+(25-40) to maximum Life
-(8-12)% increased maximum Life
-2% of Life Regenerated per second
-Flasks do not apply to You
-Flasks apply to your Zombies and Spectres
+不朽系命
+皮革腰带
+联盟: 普兰德斯
+等级需求: 30
++(25-40) 最大生命
+最大生命提高 (8-12)%
+每秒回复 2% 生命
+不会获得药剂的效果
+药剂效果套用于你的魔卫和灵体身上
 ]],[[
-Wurm's Molt
-Leather Belt
-Requires Level 8
-+(25-40) to Maximum Life
-+(20-30) to Strength
-+(20-30) to Intelligence
-+(10-20)% to Cold Resistance
-0.4% of Physical Attack Damage Leeched as Life
-0.4% of Physical Attack Damage Leeched as Mana
+龙蜕之带
+皮革腰带
+等级需求: 8
++(25-40) 最大生命
++(20-30) 力量
++(20-30) 智慧
++(10-20)% 冰霜抗性
+物理攻击伤害的 0.4% 会转化为生命偷取
+物理攻击伤害的 0.4% 转化为魔力偷取
 ]],
 }

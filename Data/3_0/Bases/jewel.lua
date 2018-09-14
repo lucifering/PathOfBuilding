@@ -2,46 +2,46 @@
 -- Item data (c) Grinding Gear Games
 local itemBases = ...
 
-itemBases["Crimson Jewel"] = {
+itemBases["赤红珠宝"] = {
 	type = "Jewel",
 	tags = { default = true, jewel = true, not_dex = true, not_int = true, not_for_sale = true, strjewel = true, },
 	req = { },
 }
-itemBases["Viridian Jewel"] = {
+itemBases["翠绿珠宝"] = {
 	type = "Jewel",
 	tags = { default = true, jewel = true, not_str = true, not_int = true, not_for_sale = true, dexjewel = true, },
 	req = { },
 }
-itemBases["Cobalt Jewel"] = {
+itemBases["钴蓝珠宝"] = {
 	type = "Jewel",
 	tags = { default = true, jewel = true, not_dex = true, not_str = true, not_for_sale = true, intjewel = true, },
 	req = { },
 }
-itemBases["Prismatic Jewel"] = {
+itemBases["三相珠宝"] = {
 	type = "Jewel",
 	tags = { default = true, jewel = true, intjewel = true, dexjewel = true, strjewel = true, not_for_sale = true, },
 	req = { },
 }
 
-itemBases["Ghastly Eye Jewel"] = {
+itemBases["苍白之凝珠宝"] = {
 	type = "Jewel",
 	subType = "Abyss",
 	tags = { default = true, not_for_sale = true, abyss_jewel_summoner = true, abyss_jewel = true, },
 	req = { },
 }
-itemBases["Hypnotic Eye Jewel"] = {
+itemBases["安睡之凝珠宝"] = {
 	type = "Jewel",
 	subType = "Abyss",
 	tags = { default = true, not_for_sale = true, abyss_jewel_caster = true, abyss_jewel = true, },
 	req = { },
 }
-itemBases["Murderous Eye Jewel"] = {
+itemBases["凶残之凝珠宝"] = {
 	type = "Jewel",
 	subType = "Abyss",
 	tags = { default = true, not_for_sale = true, abyss_jewel_melee = true, abyss_jewel = true, },
 	req = { },
 }
-itemBases["Searching Eye Jewel"] = {
+itemBases["锐利之凝珠宝"] = {
 	type = "Jewel",
 	subType = "Abyss",
 	tags = { default = true, not_for_sale = true, abyss_jewel_ranged = true, abyss_jewel = true, },

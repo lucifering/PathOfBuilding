@@ -1,766 +1,245 @@
--- Item data (c) Grinding Gear Games
+﻿return{
 
-return {
--- Helmet
 [[
-Armour Helmet
-Eternal Burgonet
-Crafted: true
-Prefix: LocalIncreasedPhysicalDamageReductionRating3
-Prefix: LocalIncreasedPhysicalDamageReductionRatingPercent5
-Prefix: IncreasedLife7
-]],[[
-Evasion Helmet
-Lion Pelt
-Crafted: true
-Prefix: LocalIncreasedEvasionRating3
-Prefix: LocalIncreasedEvasionRatingPercent5
-Prefix: IncreasedLife7
-]],[[
-Energy Shield Helmet
-Hubris Circlet
-Crafted: true
-Prefix: IncreasedLife7
-Prefix: LocalIncreasedEnergyShieldPercent5
-Prefix: LocalIncreasedEnergyShield7
-]],[[
-Armour/Evasion Helmet
-Nightmare Bascinet
-Crafted: true
-Prefix: LocalBaseArmourAndEvasionRating3
-Prefix: LocalIncreasedArmourAndEvasion5
-Prefix: IncreasedLife7
-]],[[
-Armour/Energy Shield Helmet
-Praetor Crown
-Crafted: true
-Prefix: LocalBaseArmourAndEnergyShield3
-Prefix: LocalIncreasedArmourAndEnergyShield5
-Prefix: IncreasedLife7
-]],[[
-Armour/Energy Shield Helmet
-Bone Helmet
-Crafted: true
-Prefix: LocalBaseArmourAndEnergyShield3
-Prefix: LocalIncreasedArmourAndEnergyShield5
-Prefix: IncreasedLife7
-]],[[
-Evasion/Energy Shield Helmet
-Deicide Mask
-Crafted: true
-Prefix: LocalBaseEvasionRatingAndEnergyShield3
-Prefix: LocalIncreasedEvasionAndEnergyShield5
-Prefix: IncreasedLife7
-]],
--- Gloves
-[[
-Armour Gloves
-Titan Gauntlets
-Crafted: true
-Prefix: LocalIncreasedPhysicalDamageReductionRating2
-Prefix: LocalIncreasedPhysicalDamageReductionRatingPercent5
-Prefix: IncreasedLife6
-]],[[
-Armour Gloves
-Spiked Gloves
-Crafted: true
-Prefix: LocalIncreasedPhysicalDamageReductionRating2
-Prefix: LocalIncreasedPhysicalDamageReductionRatingPercent5
-Prefix: IncreasedLife6
-]],[[
-Evasion Gloves
-Slink Gloves
-Crafted: true
-Prefix: LocalIncreasedEvasionRating2
-Prefix: LocalIncreasedEvasionRatingPercent5
-Prefix: IncreasedLife6
-]],[[
-Evasion Gloves
-Gripped Gloves
-Crafted: true
-Prefix: LocalIncreasedEvasionRating2
-Prefix: LocalIncreasedEvasionRatingPercent5
-Prefix: IncreasedLife6
-]],[[
-Energy Shield Gloves
-Sorcerer Gloves
-Crafted: true
-Prefix: IncreasedLife6
-Prefix: LocalIncreasedEnergyShieldPercent5
-Prefix: LocalIncreasedEnergyShield6
-]],[[
-Energy Shield Gloves
-Fingerless Silk Gloves
-Crafted: true
-Prefix: IncreasedLife6
-Prefix: LocalIncreasedEnergyShieldPercent5
-Prefix: LocalIncreasedEnergyShield6
-]],[[
-Armour/Evasion Gloves
-Dragonscale Gauntlets
-Crafted: true
-Prefix: LocalBaseArmourAndEvasionRating2
-Prefix: LocalIncreasedArmourAndEvasion5
-Prefix: IncreasedLife6
-]],[[
-Armour/Energy Shield Gloves
-Crusader Gloves
-Crafted: true
-Prefix: LocalBaseArmourAndEnergyShield2_
-Prefix: LocalIncreasedArmourAndEnergyShield5
-Prefix: IncreasedLife6
-]],[[
-Evasion/Energy Shield Gloves
-Murder Mitts
-Crafted: true
-Prefix: LocalBaseEvasionRatingAndEnergyShield2
-Prefix: LocalIncreasedEvasionAndEnergyShield5_
-Prefix: IncreasedLife6
-]],
--- Body Armour
-[[
-Armour Chest
-Glorious Plate
-Crafted: true
-Prefix: LocalIncreasedPhysicalDamageReductionRating5
-Prefix: LocalIncreasedPhysicalDamageReductionRatingPercent5
-Prefix: IncreasedLife9
-]],[[
-Armour Chest
-Astral Plate
-Crafted: true
-Prefix: LocalIncreasedPhysicalDamageReductionRating5
-Prefix: LocalIncreasedPhysicalDamageReductionRatingPercent5
-Prefix: IncreasedLife9
-]],[[
-Evasion Chest
-Assassin's Garb
-Crafted: true
-Prefix: LocalIncreasedEvasionRating5
-Prefix: LocalIncreasedEvasionRatingPercent5
-Prefix: IncreasedLife9
-]],[[
-Evasion Chest
-Zodiac Leather
-Crafted: true
-Prefix: LocalIncreasedEvasionRating5
-Prefix: LocalIncreasedEvasionRatingPercent5
-Prefix: IncreasedLife9
-]],[[
-Energy Shield Chest
-Vaal Regalia
-Crafted: true
-Prefix: IncreasedLife9
-Prefix: LocalIncreasedEnergyShieldPercent5
-Prefix: LocalIncreasedEnergyShield10
-]],[[
-Armour/Evasion Chest
-Triumphant Lamellar
-Crafted: true
-Prefix: LocalBaseArmourAndEvasionRating5
-Prefix: LocalIncreasedArmourAndEvasion5
-Prefix: IncreasedLife9
-]],[[
-Armour/Energy Shield Chest
-Saintly Chainmail
-Crafted: true
-Prefix: LocalBaseArmourAndEnergyShield5
-Prefix: LocalIncreasedArmourAndEnergyShield5
-Prefix: IncreasedLife9
-]],[[
-Evasion/Energy Shield Chest
-Carnal Armour
-Crafted: true
-Prefix: LocalBaseEvasionRatingAndEnergyShield5_
-Prefix: LocalIncreasedEvasionAndEnergyShield5_
-Prefix: IncreasedLife9
-]],
--- Boots
-[[
-Armour Boots
-Titan Greaves
-Crafted: true
-Prefix: LocalIncreasedPhysicalDamageReductionRatingPercent5
-Prefix: IncreasedLife6
-Prefix: MovementVelocity5
-]],[[
-Evasion Boots
-Slink Boots
-Crafted: true
-Prefix: LocalIncreasedEvasionRatingPercent5
-Prefix: IncreasedLife6
-Prefix: MovementVelocity5
-]],[[
-Energy Shield Boots
-Sorcerer Boots
-Crafted: true
-Prefix: IncreasedLife6
-Prefix: LocalIncreasedEnergyShieldPercent5
-Prefix: MovementVelocity5
-]],[[
-Armour/Evasion Boots
-Dragonscale Boots
-Crafted: true
-Prefix: LocalIncreasedArmourAndEvasion5
-Prefix: IncreasedLife6
-Prefix: MovementVelocity5
-]],[[
-Armour/Evasion Boots
-Two-Toned Boots (Armour/Evasion)
-Crafted: true
-Prefix: LocalIncreasedArmourAndEvasion5
-Prefix: IncreasedLife6
-Prefix: MovementVelocity5
-]],[[
-Armour/Energy Shield Boots
-Crusader Boots
-Crafted: true
-Prefix: LocalIncreasedArmourAndEnergyShield5
-Prefix: IncreasedLife6
-Prefix: MovementVelocity5
-]],[[
-Armour/Energy Shield Boots
-Two-Toned Boots (Armour/Energy Shield)
-Crafted: true
-Prefix: LocalIncreasedArmourAndEnergyShield5
-Prefix: IncreasedLife6
-Prefix: MovementVelocity5
-]],[[
-Evasion/Energy Shield Boots
-Murder Boots
-Crafted: true
-Prefix: LocalIncreasedEvasionAndEnergyShield5_
-Prefix: IncreasedLife6
-Prefix: MovementVelocity5
-]],[[
-Evasion/Energy Shield Boots
-Two-Toned Boots (Evasion/Energy Shield)
-Crafted: true
-Prefix: LocalIncreasedEvasionAndEnergyShield5_
-Prefix: IncreasedLife6
-Prefix: MovementVelocity5
-]],
--- Shields
-[[
-Armour Shield
-Pinnacle Tower Shield
-Crafted: true
-Prefix: LocalIncreasedPhysicalDamageReductionRating5
-Prefix: LocalIncreasedPhysicalDamageReductionRatingPercent5
-Prefix: IncreasedLife8
-]],[[
-Evasion Shield
-Imperial Buckler
-Crafted: true
-Prefix: LocalIncreasedEvasionRating5
-Prefix: LocalIncreasedEvasionRatingPercent5
-Prefix: IncreasedLife8
-]],[[
-Energy Shield Shield
-Titanium Spirit Shield
-Crafted: true
-Prefix: IncreasedLife8
-Prefix: LocalIncreasedEnergyShieldPercent5
-Prefix: LocalIncreasedEnergyShield9
-]],[[
-Armour/Evasion Shield
-Elegant Round Shield
-Crafted: true
-Prefix: LocalBaseArmourAndEvasionRating5
-Prefix: LocalIncreasedArmourAndEvasion5
-Prefix: IncreasedLife8
-]],[[
-Armour/Energy Shield Shield
-Archon Kite Shield
-Crafted: true
-Prefix: LocalBaseArmourAndEnergyShield5
-Prefix: LocalIncreasedArmourAndEnergyShield5
-Prefix: IncreasedLife8
-]],[[
-Evasion/Energy Shield Shield
-Supreme Spiked Shield
-Crafted: true
-Prefix: LocalBaseEvasionRatingAndEnergyShield5_
-Prefix: LocalIncreasedEvasionAndEnergyShield5_
-Prefix: IncreasedLife8
-]],
--- Amulets
-[[
-Amulet
-Amber Amulet
-Crafted: true
-]],[[
-Amulet
-Jade Amulet
-Crafted: true
-]],[[
-Amulet
-Lapis Amulet
-Crafted: true
-]],[[
-Amulet
-Onyx Amulet
-Crafted: true
-]],[[
-Amulet
-Agate Amulet
-Crafted: true
-]],[[
-Amulet
-Turquoise Amulet
-Crafted: true
-]],[[
-Amulet
-Citrine Amulet
-Crafted: true
-]],[[
-Amulet
-Paua Amulet
-Crafted: true
-]],[[
-Amulet
-Marble Amulet
-Crafted: true
-]],[[
-Amulet
-Blue Pearl Amulet
-Crafted: true
-]],
--- Rings
-[[
-Ring
-Paua Ring
-Crafted: true
-]],[[
-Ring
-Moonstone Ring
-Crafted: true
-]],[[
-Ring
-Diamond Ring
-Crafted: true
-]],[[
-Ring
-Ruby Ring
-Crafted: true
-]],[[
-Ring
-Sapphire Ring
-Crafted: true
-]],[[
-Ring
-Topaz Ring
-Crafted: true
-]],[[
-Ring
-Amethyst Ring
-Crafted: true
-]],[[
-Ring
-Ruby Ring
-Crafted: true
-]],[[
-Ring
-Coral Ring
-Crafted: true
-]],[[
-Ring
-Prismatic Ring
-Crafted: true
-]],[[
-Ring
-Two-Stone Ring
-Variant: Fire and Cold
-Variant: Cold and Lightning
-Variant: Fire and Lightning
-Crafted: true
-Implicits: 3
-{variant:1}+(12 to 16)% to Fire and Cold Resistances
-{variant:2}+(12 to 16)% to Cold and Lightning Resistances
-{variant:3}+(12 to 16)% to Fire and Lightning Resistances
-]],[[
-Ring
-Unset Ring
-Crafted: true
-]],[[
-Ring
-Steel Ring
-Crafted: true
-]],[[
-Ring
-Opal Ring
-Crafted: true
-]],
--- Belts
-[[
-Belt
-Rustic Sash
-Crafted: true
-]],[[
-Belt
-Chain Belt
-Crafted: true
-]],[[
-Belt
-Leather Belt
-Crafted: true
-]],[[
-Belt
-Heavy Belt
-Crafted: true
-]],[[
-Belt
-Crystal Belt
-Crafted: true
-]],[[
-Belt
-Vanguard Belt
-Crafted: true
-]],
--- Quivers
-[[
-Quiver
-Spike-Point Arrow Quiver
-Crafted: true
-Prefix: AddedPhysicalDamage3
-Prefix: IncreasedLife7
-Prefix: WeaponElementalDamage3
-Suffix: IncreasedAttackSpeed1
-Suffix: CriticalStrikeChance4
-Suffix: CriticalMultiplier4
-]],
--- Weapons
-[[
-Physical 1H Axe
-Runic Hatchet
-Crafted: true
-Prefix: LocalIncreasedPhysicalDamagePercent5
-Prefix: LocalIncreasedPhysicalDamagePercentAndAccuracyRating5
-Prefix: LocalAddedPhysicalDamage6
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Elemental 1H Axe
-Vaal Hatchet
-Crafted: true
-Prefix: WeaponElementalDamageOnWeapons4
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Physical 2H Axe
-Fleshripper
-Crafted: true
-Prefix: LocalIncreasedPhysicalDamagePercent5
-Prefix: LocalIncreasedPhysicalDamagePercentAndAccuracyRating5
-Prefix: LocalAddedPhysicalDamageTwoHand6
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Elemental 2H Axe
-Despot Axe
-Crafted: true
-Prefix: WeaponElementalDamageOnWeapons4
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Physical Bow
-Harbinger Bow
-Crafted: true
-Prefix: LocalIncreasedPhysicalDamagePercent5
-Prefix: LocalIncreasedPhysicalDamagePercentAndAccuracyRating5
-Prefix: LocalAddedPhysicalDamageTwoHand6
-Suffix: LocalIncreasedAttackSpeed2
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Elemental Bow
-Thicket Bow
-Crafted: true
-Prefix: WeaponElementalDamageOnWeapons4
-Suffix: LocalIncreasedAttackSpeed2
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-+3 Bow
-Thicket Bow
-Crafted: true
-Prefix: LocalIncreaseSocketedGemLevel1
-Prefix: LocalIncreaseSocketedBowGemLevel2
-Suffix: LocalIncreasedAttackSpeed2
-]],[[
-Physical Claw
-Gemini Claw
-Crafted: true
-Prefix: LocalIncreasedPhysicalDamagePercent5
-Prefix: LocalIncreasedPhysicalDamagePercentAndAccuracyRating5
-Prefix: LocalAddedPhysicalDamage6
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Elemental Claw
-Imperial Claw
-Crafted: true
-Prefix: WeaponElementalDamageOnWeapons4
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Physical Dagger
-Ambusher
-Crafted: true
-Prefix: LocalIncreasedPhysicalDamagePercent5
-Prefix: LocalIncreasedPhysicalDamagePercentAndAccuracyRating5
-Prefix: LocalAddedPhysicalDamage6
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Elemental Dagger
-Ambusher
-Crafted: true
-Prefix: WeaponElementalDamageOnWeapons4
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Spell Dagger
-Platinum Kris
-Crafted: true
-Prefix: SpellDamageOnWeapon5
-Prefix: SpellDamageAndManaOnWeapon4
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: SpellCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Vagan Dagger
-Royal Skean
-Crafted: true
-Prefix: SpellDamageOnWeapon5
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-{custom}Hits can't be Evaded
-]],[[
-Spell Sceptre
-Void Sceptre
-Crafted: true
-Prefix: SpellDamageOnWeapon5
-Prefix: SpellDamageAndManaOnWeapon4
-Suffix: SpellCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Physical 1H Mace
-Behemoth Mace
-Crafted: true
-Prefix: LocalIncreasedPhysicalDamagePercent5
-Prefix: LocalIncreasedPhysicalDamagePercentAndAccuracyRating5
-Prefix: LocalAddedPhysicalDamage6
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Physical Sceptre
-Void Sceptre
-Crafted: true
-Prefix: LocalIncreasedPhysicalDamagePercent5
-Prefix: LocalIncreasedPhysicalDamagePercentAndAccuracyRating5
-Prefix: LocalAddedPhysicalDamage6
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Elemental 1H Mace
-Behemoth Mace
-Crafted: true
-Prefix: WeaponElementalDamageOnWeapons4
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Elemental Sceptre
-Void Sceptre
-Crafted: true
-Prefix: WeaponElementalDamageOnWeapons4
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Physical 2H Mace
-Coronal Maul
-Crafted: true
-Prefix: LocalIncreasedPhysicalDamagePercent5
-Prefix: LocalIncreasedPhysicalDamagePercentAndAccuracyRating5
-Prefix: LocalAddedPhysicalDamageTwoHand6
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Elemental 2H Mace
-Coronal Maul
-Crafted: true
-Prefix: WeaponElementalDamageOnWeapons4
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Physical Staff
-Eclipse Staff
-Crafted: true
-Prefix: LocalIncreasedPhysicalDamagePercent5
-Prefix: LocalIncreasedPhysicalDamagePercentAndAccuracyRating5
-Prefix: LocalAddedPhysicalDamageTwoHand6
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Elemental Staff
-Eclipse Staff
-Crafted: true
-Prefix: WeaponElementalDamageOnWeapons4
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Spell Staff
-Eclipse Staff
-Crafted: true
-Prefix: SpellDamageOnTwoHandWeapon5
-Prefix: SpellDamageAndManaOnTwoHandWeapon4
-Suffix: SpellCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-+3 Fire Staff
-Maelstrom Staff
-Crafted: true
-Prefix: LocalIncreaseSocketedGemLevel1
-Prefix: LocalIncreaseSocketedFireGemLevel2_
-Prefix: SpellDamageOnTwoHandWeapon5
-Suffix: SpellCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-+3 Cold Staff
-Maelstrom Staff
-Crafted: true
-Prefix: LocalIncreaseSocketedGemLevel1
-Prefix: LocalIncreaseSocketedColdGemLevel2
-Prefix: SpellDamageOnTwoHandWeapon5
-Suffix: SpellCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-+3 Lightning Staff
-Maelstrom Staff
-Crafted: true
-Prefix: LocalIncreaseSocketedGemLevel1
-Prefix: LocalIncreaseSocketedLightningGemLevel2
-Prefix: SpellDamageOnTwoHandWeapon5
-Suffix: SpellCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-+3 Chaos Staff
-Maelstrom Staff
-Crafted: true
-Prefix: LocalIncreaseSocketedGemLevel1
-Prefix: LocalIncreaseSocketedChaosGemLevel2
-Prefix: SpellDamageOnTwoHandWeapon5
-Suffix: SpellCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Physical 1H Sword
-Tiger Hook
-Crafted: true
-Prefix: LocalIncreasedPhysicalDamagePercent5
-Prefix: LocalIncreasedPhysicalDamagePercentAndAccuracyRating5
-Prefix: LocalAddedPhysicalDamage6
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Physical 1H Sword
-Jewelled Foil
-Crafted: true
-Prefix: LocalIncreasedPhysicalDamagePercent5
-Prefix: LocalIncreasedPhysicalDamagePercentAndAccuracyRating5
-Prefix: LocalAddedPhysicalDamage6
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Elemental 1H Sword
-Eternal Sword
-Crafted: true
-Prefix: WeaponElementalDamageOnWeapons4
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Elemental 1H Sword
-Jewelled Foil
-Crafted: true
-Prefix: WeaponElementalDamageOnWeapons4
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Physical 2H Sword
-Exquisite Blade
-Crafted: true
-Prefix: LocalIncreasedPhysicalDamagePercent5
-Prefix: LocalIncreasedPhysicalDamagePercentAndAccuracyRating5
-Prefix: LocalAddedPhysicalDamageTwoHand6
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Elemental 2H Sword
-Reaver Sword
-Crafted: true
-Prefix: WeaponElementalDamageOnWeapons4
-Suffix: LocalIncreasedAttackSpeed3
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Physical Wand
-Imbued Wand
-Crafted: true
-Prefix: LocalIncreasedPhysicalDamagePercent5
-Prefix: LocalIncreasedPhysicalDamagePercentAndAccuracyRating5
-Prefix: LocalAddedPhysicalDamage6
-Suffix: LocalIncreasedAttackSpeed2
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Elemental Wand
-Imbued Wand
-Crafted: true
-Prefix: WeaponElementalDamageOnWeapons4
-Suffix: LocalIncreasedAttackSpeed2
-Suffix: LocalCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],[[
-Spell Wand
-Prophecy Wand
-Crafted: true
-Prefix: SpellDamageOnWeapon5
-Prefix: SpellDamageAndManaOnWeapon4
-Suffix: SpellCriticalStrikeChance3
-Suffix: LocalCriticalMultiplier4
-]],
--- Jewels
-[[
-Jewel
-Crimson Jewel
-Crafted: true
-]],[[
-Jewel
-Viridian Jewel
-Crafted: true
-]],[[
-Jewel
-Cobalt Jewel
-Crafted: true
++3弓
+林野猎弓
+工艺: true
+前缀: {range:0.5}LocalIncreaseSocketedGemLevel1
+前缀: {range:1}LocalIncreaseSocketedBowGemLevel2
+前缀: None
+后缀: None
+后缀: None
+后缀: {range:1}LocalIncreasedAttackSpeed2
+品质: 20
+插槽: G-G-G-G-G-G
+等级需求: 56
+固定基底词缀: 0
+此物品上装备的技能石等级 +1
+此物品上装备的【弓技能石】等级 +2
+攻击速度提高 10%
+]],[[
++3弓（火焰）
+短弓
+工艺: true
+前缀: {range:0.5}LocalIncreaseSocketedGemLevel1
+前缀: None
+前缀: None
+后缀: None
+后缀: None
+后缀: {range:1}LocalIncreasedAttackSpeed2
+品质: 20
+插槽: G-G-G-G-G-G
+等级需求: 40
+固定基底词缀: 0
+此物品上装备的技能石等级 +1
+攻击速度提高 10%
+{custom}此物品上装备的【火焰技能石】等级 +2
+]],[[
+浮夸弓
+粗制弓
+工艺: true
+前缀: {range:0.5}WeaponElementalDamageOnWeapons3_
+前缀: None
+前缀: None
+后缀: {range:0.5}Dexterity5
+后缀: None
+后缀: {range:1}LocalIncreasedAttackSpeed2
+品质: 20
+插槽: G-B-B-B-B-R
+等级需求: 35
+固定基底词缀: 0
++30 敏捷
+攻击速度提高 10%
+攻击技能的火焰、冰霜、闪电伤害提高 26%
+{custom}击中时有 10% 几率施放 20 级的【火焰爆破】
+]],[[
++3火灵杖
+风暴长杖
+工艺: true
+前缀: {range:0.5}LocalIncreaseSocketedGemLevel1
+前缀: {range:1}LocalIncreaseSocketedFireGemLevel2_
+前缀: None
+后缀: None
+后缀: None
+后缀: {range:0.5}IncreasedCastSpeedTwoHand4
+品质: 20
+插槽: B-B-B-B-B-B
+等级需求: 64
+固定基底词缀: 1
+20% 攻击格挡率
+此物品上装备的技能石等级 +1
+此物品上装备的【火焰技能石】等级 +2
+施法速度提高 23%
+{custom}可以拥有多个大师工艺属性
+{crafted}此物品上的技能石受到 1 级的 血魔法 辅助
+{crafted}受到的持续性伤害降低 5%
+]],[[
+双附加短杖
+恶魔短杖
+塑界之器
+工艺: true
+前缀: {range:1}ElementalDamagePercentAddedAsChaosUber1
+前缀: {range:0.5}PhysicalAddedAsLightningUber2
+前缀: None
+后缀: None
+后缀: None
+后缀: None
+品质: 20
+插槽: R-R-R
+等级需求: 70
+固定基底词缀: 1
+伤害穿透 6% 火焰、冰霜、闪电抗性
+获得额外闪电伤害， 其数值等同于物理伤害的 31%
+获得额外混沌伤害，其数值等同于火焰、冰霜、闪电伤害的 15%
+]],[[
+正火头
+永恒坚盔
+裂界之器
+工艺: true
+前缀: {range:0.5}AreaDamageSupportedUber2_
+前缀: None
+前缀: None
+后缀: None
+后缀: {range:0.901}IncreasedBurningDamageSupportedUber2
+后缀: None
+品质: 20
+插槽: R-R-R-R
+等级需求: 69
+固定基底词缀: 0
+此物品上的技能石受到 18 级的 提高燃烧伤害 辅助
+此物品上的技能石受到 18 级的 集中效应 辅助
+燃烧伤害提高 30%
+范围伤害提高 21%
+{custom}此物品上的技能石火焰、冰霜、闪电总伤害额外提高 30%
+]],[[
+攻速生命手套
+扣钉手套
+工艺: true
+前缀: {range:0.035}IncreasedLife7
+前缀: None
+前缀: None
+后缀: {range:0.324}IncreasedAttackSpeed3
+后缀: {range:0.268}FireResist6
+后缀: {range:0.239}LightningResist6
+品质: 20
+插槽: R-R-R-R
+等级需求: 70
+固定基底词缀: 1
+{range:0.5}近战伤害提高 (16-20)%
+攻击速度提高 12%
++70 最大生命
++37% 火焰抗性
++37% 闪电抗性
+]],[[
+生命跑鞋
+迷踪短靴
+工艺: true
+前缀: {range:0.352}IncreasedLife7
+前缀: {range:0.204}MovementVelocity5
+前缀: None
+后缀: {range:1}FireResist4
+后缀: {range:1}LightningResist4
+后缀: {range:1}ColdResist4
+品质: 20
+插槽: G-G-G-G
+等级需求: 69
+固定基底词缀: 0
++73 最大生命
++29% 火焰抗性
++29% 冰霜抗性
++29% 闪电抗性
+移动速度提高 30%
+]],[[
+格挡转换盾
+瓦尔轻盾
+塑界之器
+工艺: true
+前缀: None
+前缀: None
+前缀: None
+后缀: {range:0.592}BlockAppliesToSpellsShieldUber2_
+后缀: {range:1}RecoverLifePercentOnBlockUber1_
+后缀: None
+品质: 20
+插槽: G-G-G
+等级需求: 63
+固定基底词缀: 1
+移动速度提高 3%
+46% 的攻击格挡率同样套用于法术格挡
+格挡时回复 5% 最大生命
+{crafted}+(55-64) 最大生命
+]],[[
+空手珠宝
+凶残之凝珠宝
+工艺: true
+前缀: {range:1}AbyssJewelAddedLife2
+前缀: None
+后缀: {range:1}AbyssAddedPhysicalSuffixJewel3
+后缀: {range:1}AbyssAllResistancesJewel1
+品质: 0
+等级需求: 48
+固定基底词缀: 0
+攻击附加 5 - 8 基础物理伤害
++35 最大生命
+获得 +10% 火焰、冰霜、闪电抗性
+]],[[
+召唤深渊珠宝
+苍白之凝珠宝
+工艺: true
+前缀: {range:1}AbyssJewelAddedLife2
+前缀: None
+后缀: {range:0.5}AbyssMinionDamageIfMinionSkillUsedRecentlyJewel1
+后缀: None
+品质: 0
+等级需求: 28
+固定基底词缀: 0
++35 最大生命
+近期内你若使用了召唤生物技能，则召唤生物伤害提高 18%
+]],[[
+双附加闪电（弓）
+锐利之凝珠宝
+工艺: true
+前缀: {range:0.183}AbyssAddedLightningDamageWithBowsJewel5
+前缀: None
+后缀: {range:0.486}AbyssAddedLightningSuffixJewel4
+后缀: None
+品质: 0
+等级需求: 56
+固定基底词缀: 0
+攻击附加 3 - 53 基础闪电伤害
+弓攻击附加 4 - 58 基础闪电伤害
+]],[[
+双附加闪电（法杖）
+锐利之凝珠宝
+工艺: true
+前缀: {range:0.056}AbyssAddedLightningDamageWithWandsJewel5
+前缀: None
+后缀: {range:0.521}AbyssAddedLightningSuffixJewel4
+后缀: None
+品质: 0
+等级需求: 56
+固定基底词缀: 0
+攻击附加 4 - 53 基础闪电伤害
+法杖攻击附加 3 - 57 基础闪电伤害
+]],[[
+M神双打细剑
+宝饰细剑
+工艺: true
+前缀: {range:0.986}LocalIncreasedPhysicalDamagePercent1
+前缀: {range:0.479}LocalAddedColdDamage8
+前缀: None
+后缀: {range:0.394}LocalIncreasedAttackSpeed7
+后缀: {range:0.746}LocalCriticalStrikeChance3
+后缀: None
+品质: 20
+插槽: G-G-G
+等级需求: 68
+固定基底词缀: 1
++25% 攻击和法术暴击伤害加成
+该装备的物理伤害提高 49%
+附加 36 - 68 基础冰霜伤害
+攻击速度提高 24%
+{range:0.5}该装备的攻击暴击率提高 23%
+{crafted}{range:0.524}附加 11 - 21 基础物理伤害
 ]],
 }

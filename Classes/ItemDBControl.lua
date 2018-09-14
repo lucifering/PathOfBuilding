@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Class: Item DB
 -- Item DB control.
@@ -31,7 +31,7 @@ local ItemDBClass = common.NewClass("ItemDB", "ListControl", function(self, anch
 	local typeFlag = { }
 	for _, item in pairs(db.list) do
 		if item.league then
-			for leagueName in item.league:gmatch(" ?([%w ]+),?") do
+for leagueName in item.league:gmatch(" ?(.+),?") do
 				leagueFlag[leagueName] = true
 			end
 		end
@@ -42,8 +42,8 @@ local ItemDBClass = common.NewClass("ItemDB", "ListControl", function(self, anch
 		t_insert(self.leagueList, leagueName)
 	end
 	table.sort(self.leagueList)
-	t_insert(self.leagueList, 1, "Any league")
-	t_insert(self.leagueList, 2, "No league")
+t_insert(self.leagueList, 1, "任意联盟")
+t_insert(self.leagueList, 2, "非联盟专属")
 	self.typeList = { }
 	for type in pairs(typeFlag) do
 		t_insert(self.typeList, type)

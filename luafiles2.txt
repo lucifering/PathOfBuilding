@@ -1,0 +1,5 @@
+Assets/game_ui_small.png
+Assets/patreon_logo.png
+Assets/range_guide.png
+Assets/ring.png
+Assets/small_ring.png

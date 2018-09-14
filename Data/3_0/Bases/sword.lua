@@ -3,418 +3,418 @@
 local itemBases = ...
 
 
-itemBases["Rusted Sword"] = {
+itemBases["锈剑"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "40% increased Global Accuracy Rating",
+	implicit = "命中值提高 40%",
 	weapon = { PhysicalMin = 4, PhysicalMax = 10, CritChanceBase = 5, AttackRateBase = 1.45, },
 	req = { str = 8, dex = 8, },
 }
-itemBases["Copper Sword"] = {
+itemBases["青铜短剑"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "+45 to Accuracy Rating",
+	implicit = "+45 命中值",
 	weapon = { PhysicalMin = 7, PhysicalMax = 15, CritChanceBase = 5, AttackRateBase = 1.4, },
 	req = { level = 5, str = 14, dex = 14, },
 }
-itemBases["Sabre"] = {
+itemBases["旧军刀"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "40% increased Global Accuracy Rating",
+	implicit = "命中值提高 40%",
 	weapon = { PhysicalMin = 5, PhysicalMax = 22, CritChanceBase = 5, AttackRateBase = 1.55, },
 	req = { level = 10, str = 18, dex = 26, },
 }
-itemBases["Broad Sword"] = {
+itemBases["阔剑"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "40% increased Global Accuracy Rating",
+	implicit = "命中值提高 40%",
 	weapon = { PhysicalMin = 17, PhysicalMax = 25, CritChanceBase = 5, AttackRateBase = 1.3, },
 	req = { level = 15, str = 30, dex = 30, },
 }
-itemBases["War Sword"] = {
+itemBases["征战之剑"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "40% increased Global Accuracy Rating",
+	implicit = "命中值提高 40%",
 	weapon = { PhysicalMin = 20, PhysicalMax = 37, CritChanceBase = 5, AttackRateBase = 1.2, },
 	req = { level = 20, str = 41, dex = 35, },
 }
-itemBases["Ancient Sword"] = {
+itemBases["远古之剑"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "+165 to Accuracy Rating",
+	implicit = "+165 命中值",
 	weapon = { PhysicalMin = 20, PhysicalMax = 38, CritChanceBase = 5, AttackRateBase = 1.3, },
 	req = { level = 24, str = 44, dex = 44, },
 }
-itemBases["Elegant Sword"] = {
+itemBases["贵族之剑"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "+190 to Accuracy Rating",
+	implicit = "+190 命中值",
 	weapon = { PhysicalMin = 20, PhysicalMax = 33, CritChanceBase = 5, AttackRateBase = 1.5, },
 	req = { level = 28, str = 46, dex = 55, },
 }
-itemBases["Dusk Blade"] = {
+itemBases["暮色之刃"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "40% increased Global Accuracy Rating",
+	implicit = "命中值提高 40%",
 	weapon = { PhysicalMin = 19, PhysicalMax = 54, CritChanceBase = 5, AttackRateBase = 1.3, },
 	req = { level = 32, str = 57, dex = 57, },
 }
-itemBases["Hook Sword"] = {
+itemBases["钩爪剑"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "4% chance to Dodge Attack Hits",
+	implicit = "4% 几率躲避攻击击中",
 	weapon = { PhysicalMin = 28, PhysicalMax = 60, CritChanceBase = 5, AttackRateBase = 1.15, },
 	req = { level = 34, str = 64, dex = 64, },
 }
-itemBases["Variscite Blade"] = {
+itemBases["碧铜短剑"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "+240 to Accuracy Rating",
+	implicit = "+240 命中值",
 	weapon = { PhysicalMin = 25, PhysicalMax = 53, CritChanceBase = 5, AttackRateBase = 1.3, },
 	req = { level = 35, str = 62, dex = 62, },
 }
-itemBases["Cutlass"] = {
+itemBases["军用长刃"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "40% increased Global Accuracy Rating",
+	implicit = "命中值提高 40%",
 	weapon = { PhysicalMin = 13, PhysicalMax = 53, CritChanceBase = 5, AttackRateBase = 1.55, },
 	req = { level = 38, str = 55, dex = 79, },
 }
-itemBases["Baselard"] = {
+itemBases["冷光长剑"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "40% increased Global Accuracy Rating",
+	implicit = "命中值提高 40%",
 	weapon = { PhysicalMin = 37, PhysicalMax = 53, CritChanceBase = 5, AttackRateBase = 1.3, },
 	req = { level = 41, str = 72, dex = 72, },
 }
-itemBases["Battle Sword"] = {
+itemBases["士兵长剑"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "40% increased Global Accuracy Rating",
+	implicit = "命中值提高 40%",
 	weapon = { PhysicalMin = 38, PhysicalMax = 70, CritChanceBase = 5, AttackRateBase = 1.2, },
 	req = { level = 44, str = 83, dex = 70, },
 }
-itemBases["Elder Sword"] = {
+itemBases["智者长剑"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "+330 to Accuracy Rating",
+	implicit = "+330 命中值",
 	weapon = { PhysicalMin = 36, PhysicalMax = 66, CritChanceBase = 5, AttackRateBase = 1.3, },
 	req = { level = 47, str = 81, dex = 81, },
 }
-itemBases["Graceful Sword"] = {
+itemBases["权贵之剑"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "+350 to Accuracy Rating",
+	implicit = "+350 命中值",
 	weapon = { PhysicalMin = 34, PhysicalMax = 55, CritChanceBase = 5, AttackRateBase = 1.5, },
 	req = { level = 50, str = 78, dex = 94, },
 }
-itemBases["Twilight Blade"] = {
+itemBases["暮光长剑"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "40% increased Global Accuracy Rating",
+	implicit = "命中值提高 40%",
 	weapon = { PhysicalMin = 30, PhysicalMax = 86, CritChanceBase = 5, AttackRateBase = 1.3, },
 	req = { level = 53, str = 91, dex = 91, },
 }
-itemBases["Grappler"] = {
+itemBases["捕捉者"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "4% chance to Dodge Attack Hits",
+	implicit = "4% 几率躲避攻击击中",
 	weapon = { PhysicalMin = 44, PhysicalMax = 94, CritChanceBase = 5, AttackRateBase = 1.15, },
 	req = { level = 55, str = 99, dex = 99, },
 }
-itemBases["Gemstone Sword"] = {
+itemBases["宝石之剑"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "+400 to Accuracy Rating",
+	implicit = "+400 命中值",
 	weapon = { PhysicalMin = 39, PhysicalMax = 83, CritChanceBase = 5, AttackRateBase = 1.3, },
 	req = { level = 56, str = 96, dex = 96, },
 }
-itemBases["Corsair Sword"] = {
+itemBases["海贼长刀"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "40% increased Global Accuracy Rating",
+	implicit = "命中值提高 40%",
 	weapon = { PhysicalMin = 20, PhysicalMax = 80, CritChanceBase = 5, AttackRateBase = 1.55, },
 	req = { level = 58, str = 81, dex = 117, },
 }
-itemBases["Gladius"] = {
+itemBases["斗士长剑"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "40% increased Global Accuracy Rating",
+	implicit = "命中值提高 40%",
 	weapon = { PhysicalMin = 54, PhysicalMax = 78, CritChanceBase = 5, AttackRateBase = 1.3, },
 	req = { level = 60, str = 113, dex = 113, },
 }
-itemBases["Legion Sword"] = {
+itemBases["军团长剑"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "40% increased Global Accuracy Rating",
+	implicit = "命中值提高 40%",
 	weapon = { PhysicalMin = 53, PhysicalMax = 98, CritChanceBase = 5, AttackRateBase = 1.2, },
 	req = { level = 62, str = 122, dex = 104, },
 }
-itemBases["Vaal Blade"] = {
+itemBases["瓦尔军刃"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "+460 to Accuracy Rating",
+	implicit = "+460 命中值",
 	weapon = { PhysicalMin = 46, PhysicalMax = 86, CritChanceBase = 5, AttackRateBase = 1.3, },
 	req = { level = 64, str = 113, dex = 113, },
 }
-itemBases["Eternal Sword"] = {
+itemBases["永恒之剑"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "+475 to Accuracy Rating",
+	implicit = "+475 命中值",
 	weapon = { PhysicalMin = 41, PhysicalMax = 68, CritChanceBase = 5, AttackRateBase = 1.5, },
 	req = { level = 66, str = 104, dex = 122, },
 }
-itemBases["Midnight Blade"] = {
+itemBases["夜语长剑"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, },
-	implicit = "40% increased Global Accuracy Rating",
+	implicit = "命中值提高 40%",
 	weapon = { PhysicalMin = 35, PhysicalMax = 99, CritChanceBase = 5, AttackRateBase = 1.3, },
 	req = { level = 68, str = 113, dex = 113, },
 }
-itemBases["Tiger Hook"] = {
+itemBases["虎钩"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "6% chance to Dodge Attack Hits",
+	implicit = "6% 几率躲避攻击击中",
 	weapon = { PhysicalMin = 49, PhysicalMax = 105, CritChanceBase = 5, AttackRateBase = 1.15, },
 	req = { level = 70, str = 119, dex = 119, },
 }
 
-itemBases["Charan's Sword"] = {
+itemBases["查兰之剑"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, not_for_sale = true, },
-	implicit = "40% increased Global Accuracy Rating",
+	implicit = "命中值提高 40%",
 	weapon = { PhysicalMin = 5, PhysicalMax = 11, CritChanceBase = 5, AttackRateBase = 1.45, },
 	req = { str = 9, dex = 9, },
 }
 
-itemBases["Rusted Spike"] = {
+itemBases["锈刺剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+25% to Global Critical Strike Multiplier",
+	implicit = "+25% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 5, PhysicalMax = 13, CritChanceBase = 5.5, AttackRateBase = 1.4, },
 	req = { dex = 20, },
 }
-itemBases["Whalebone Rapier"] = {
+itemBases["鲸骨细刃"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+25% to Global Critical Strike Multiplier",
+	implicit = "+25% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 4, PhysicalMax = 18, CritChanceBase = 5.5, AttackRateBase = 1.55, },
 	req = { level = 7, dex = 32, },
 }
-itemBases["Battered Foil"] = {
+itemBases["钝刃细剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+25% to Global Critical Strike Multiplier",
+	implicit = "+25% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 12, PhysicalMax = 22, CritChanceBase = 6, AttackRateBase = 1.4, },
 	req = { level = 12, dex = 47, },
 }
-itemBases["Basket Rapier"] = {
+itemBases["练武者细剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+25% to Global Critical Strike Multiplier",
+	implicit = "+25% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 11, PhysicalMax = 26, CritChanceBase = 5.5, AttackRateBase = 1.5, },
 	req = { level = 17, dex = 62, },
 }
-itemBases["Jagged Foil"] = {
+itemBases["锯状薄刃"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+25% to Global Critical Strike Multiplier",
+	implicit = "+25% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 12, PhysicalMax = 29, CritChanceBase = 5.5, AttackRateBase = 1.6, },
 	req = { level = 22, dex = 77, },
 }
-itemBases["Antique Rapier"] = {
+itemBases["古代细剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+25% to Global Critical Strike Multiplier",
+	implicit = "+25% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 12, PhysicalMax = 46, CritChanceBase = 6.5, AttackRateBase = 1.3, },
 	req = { level = 26, dex = 89, },
 }
-itemBases["Elegant Foil"] = {
+itemBases["贵族细剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+25% to Global Critical Strike Multiplier",
+	implicit = "+25% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 18, PhysicalMax = 33, CritChanceBase = 5.5, AttackRateBase = 1.6, },
 	req = { level = 30, dex = 101, },
 }
-itemBases["Thorn Rapier"] = {
+itemBases["棘刺细剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+35% to Global Critical Strike Multiplier",
+	implicit = "+35% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 19, PhysicalMax = 44, CritChanceBase = 5.7, AttackRateBase = 1.4, },
 	req = { level = 34, dex = 113, },
 }
-itemBases["Smallsword"] = {
+itemBases["小剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, not_for_sale = true, maraketh = true, },
-	implicit = "15% chance to cause Bleeding on Hit",
+	implicit = "击中时 15% 几率造成流血",
 	weapon = { PhysicalMin = 19, PhysicalMax = 40, CritChanceBase = 6, AttackRateBase = 1.55, },
 	req = { level = 36, dex = 124, },
 }
-itemBases["Wyrmbone Rapier"] = {
+itemBases["龙骨细剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+25% to Global Critical Strike Multiplier",
+	implicit = "+25% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 13, PhysicalMax = 51, CritChanceBase = 5.5, AttackRateBase = 1.5, },
 	req = { level = 37, dex = 122, },
 }
-itemBases["Burnished Foil"] = {
+itemBases["冷芒刺剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+25% to Global Critical Strike Multiplier",
+	implicit = "+25% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 25, PhysicalMax = 46, CritChanceBase = 6, AttackRateBase = 1.4, },
 	req = { level = 40, dex = 131, },
 }
-itemBases["Estoc"] = {
+itemBases["穿甲刺剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+25% to Global Critical Strike Multiplier",
+	implicit = "+25% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 21, PhysicalMax = 50, CritChanceBase = 5.5, AttackRateBase = 1.5, },
 	req = { level = 43, dex = 140, },
 }
-itemBases["Serrated Foil"] = {
+itemBases["锯齿细剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+25% to Global Critical Strike Multiplier",
+	implicit = "+25% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 21, PhysicalMax = 49, CritChanceBase = 5.5, AttackRateBase = 1.6, },
 	req = { level = 46, dex = 149, },
 }
-itemBases["Primeval Rapier"] = {
+itemBases["古典刺剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+25% to Global Critical Strike Multiplier",
+	implicit = "+25% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 18, PhysicalMax = 73, CritChanceBase = 6.5, AttackRateBase = 1.3, },
 	req = { level = 49, dex = 158, },
 }
-itemBases["Fancy Foil"] = {
+itemBases["华丽细剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+25% to Global Critical Strike Multiplier",
+	implicit = "+25% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 28, PhysicalMax = 51, CritChanceBase = 5.5, AttackRateBase = 1.6, },
 	req = { level = 52, dex = 167, },
 }
-itemBases["Apex Rapier"] = {
+itemBases["锐锋细剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+35% to Global Critical Strike Multiplier",
+	implicit = "+35% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 29, PhysicalMax = 67, CritChanceBase = 5.7, AttackRateBase = 1.4, },
 	req = { level = 55, dex = 176, },
 }
-itemBases["Courtesan Sword"] = {
+itemBases["花魁之剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, not_for_sale = true, maraketh = true, },
-	implicit = "15% chance to cause Bleeding on Hit",
+	implicit = "击中时 15% 几率造成流血",
 	weapon = { PhysicalMin = 29, PhysicalMax = 60, CritChanceBase = 6, AttackRateBase = 1.55, },
 	req = { level = 57, dex = 190, },
 }
-itemBases["Dragonbone Rapier"] = {
+itemBases["龙骨细剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+25% to Global Critical Strike Multiplier",
+	implicit = "+25% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 19, PhysicalMax = 75, CritChanceBase = 5.5, AttackRateBase = 1.5, },
 	req = { level = 58, dex = 185, },
 }
-itemBases["Tempered Foil"] = {
+itemBases["强化细剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+25% to Global Critical Strike Multiplier",
+	implicit = "+25% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 35, PhysicalMax = 65, CritChanceBase = 6, AttackRateBase = 1.4, },
 	req = { level = 60, dex = 212, },
 }
-itemBases["Pecoraro"] = {
+itemBases["寒光刺剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+25% to Global Critical Strike Multiplier",
+	implicit = "+25% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 29, PhysicalMax = 69, CritChanceBase = 5.5, AttackRateBase = 1.5, },
 	req = { level = 62, dex = 212, },
 }
-itemBases["Spiraled Foil"] = {
+itemBases["螺纹细剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+25% to Global Critical Strike Multiplier",
+	implicit = "+25% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 27, PhysicalMax = 64, CritChanceBase = 5.5, AttackRateBase = 1.6, },
 	req = { level = 64, dex = 212, },
 }
-itemBases["Vaal Rapier"] = {
+itemBases["瓦尔细剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+25% to Global Critical Strike Multiplier",
+	implicit = "+25% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 22, PhysicalMax = 87, CritChanceBase = 6.5, AttackRateBase = 1.3, },
 	req = { level = 66, dex = 212, },
 }
-itemBases["Jewelled Foil"] = {
+itemBases["宝饰细剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+25% to Global Critical Strike Multiplier",
+	implicit = "+25% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 32, PhysicalMax = 60, CritChanceBase = 5.5, AttackRateBase = 1.6, },
 	req = { level = 68, dex = 212, },
 }
-itemBases["Harpy Rapier"] = {
+itemBases["魔喙细剑"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, },
-	implicit = "+35% to Global Critical Strike Multiplier",
+	implicit = "+35% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 31, PhysicalMax = 72, CritChanceBase = 5.7, AttackRateBase = 1.4, },
 	req = { level = 70, dex = 212, },
 }
-itemBases["Dragoon Sword"] = {
+itemBases["骑兵军刀"] = {
 	type = "Thrusting One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, rapier = true, not_for_sale = true, maraketh = true, },
-	implicit = "20% chance to cause Bleeding on Hit",
+	implicit = "击中时 20% 几率造成流血",
 	weapon = { PhysicalMin = 32, PhysicalMax = 66, CritChanceBase = 6, AttackRateBase = 1.5, },
 	req = { level = 72, dex = 220, },
 }
 
-itemBases["Keyblade"] = {
+itemBases["宝钥之刃"] = {
 	type = "Two Handed Sword",
 	hidden = true,
 	socketLimit = 6,
@@ -422,179 +422,179 @@ itemBases["Keyblade"] = {
 	weapon = { PhysicalMin = 1, PhysicalMax = 1, CritChanceBase = 5, AttackRateBase = 1.2, },
 	req = { str = 8, dex = 8, },
 }
-itemBases["Corroded Blade"] = {
+itemBases["锈斑巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "40% increased Global Accuracy Rating",
+	implicit = "命中值提高 40%",
 	weapon = { PhysicalMin = 7, PhysicalMax = 13, CritChanceBase = 5, AttackRateBase = 1.45, },
 	req = { str = 11, dex = 11, },
 }
-itemBases["Longsword"] = {
+itemBases["大剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "+60 to Accuracy Rating",
+	implicit = "+60 命中值",
 	weapon = { PhysicalMin = 10, PhysicalMax = 24, CritChanceBase = 5, AttackRateBase = 1.35, },
 	req = { level = 8, str = 20, dex = 17, },
 }
-itemBases["Bastard Sword"] = {
+itemBases["重剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "40% increased Global Accuracy Rating",
+	implicit = "命中值提高 40%",
 	weapon = { PhysicalMin = 15, PhysicalMax = 25, CritChanceBase = 5, AttackRateBase = 1.45, },
 	req = { level = 12, str = 21, dex = 30, },
 }
-itemBases["Two-Handed Sword"] = {
+itemBases["双手剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "+120 to Accuracy Rating",
+	implicit = "+120 命中值",
 	weapon = { PhysicalMin = 19, PhysicalMax = 34, CritChanceBase = 5, AttackRateBase = 1.35, },
 	req = { level = 17, str = 33, dex = 33, },
 }
-itemBases["Etched Greatsword"] = {
+itemBases["术雕巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "40% increased Global Accuracy Rating",
+	implicit = "命中值提高 40%",
 	weapon = { PhysicalMin = 22, PhysicalMax = 46, CritChanceBase = 5, AttackRateBase = 1.3, },
 	req = { level = 22, str = 45, dex = 38, },
 }
-itemBases["Ornate Sword"] = {
+itemBases["名贵巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "+185 to Accuracy Rating",
+	implicit = "+185 命中值",
 	weapon = { PhysicalMin = 26, PhysicalMax = 43, CritChanceBase = 5, AttackRateBase = 1.4, },
 	req = { level = 27, str = 45, dex = 54, },
 }
-itemBases["Spectral Sword"] = {
+itemBases["幽魂巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "30% increased Global Accuracy Rating",
+	implicit = "命中值提高 30%",
 	weapon = { PhysicalMin = 27, PhysicalMax = 56, CritChanceBase = 5, AttackRateBase = 1.35, },
 	req = { level = 32, str = 57, dex = 57, },
 }
-itemBases["Curved Blade"] = {
+itemBases["弯刃"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "+40% to Global Critical Strike Multiplier",
+	implicit = "+40% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 35, PhysicalMax = 58, CritChanceBase = 6, AttackRateBase = 1.35, },
 	req = { level = 35, str = 62, dex = 73, },
 }
-itemBases["Butcher Sword"] = {
+itemBases["冷血巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "+250 to Accuracy Rating",
+	implicit = "+250 命中值",
 	weapon = { PhysicalMin = 29, PhysicalMax = 68, CritChanceBase = 5, AttackRateBase = 1.3, },
 	req = { level = 36, str = 69, dex = 58, },
 }
-itemBases["Footman Sword"] = {
+itemBases["士兵巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "40% increased Global Accuracy Rating",
+	implicit = "命中值提高 40%",
 	weapon = { PhysicalMin = 34, PhysicalMax = 56, CritChanceBase = 5, AttackRateBase = 1.45, },
 	req = { level = 40, str = 57, dex = 83, },
 }
-itemBases["Highland Blade"] = {
+itemBases["高山重刃"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "+305 to Accuracy Rating",
+	implicit = "+305 命中值",
 	weapon = { PhysicalMin = 39, PhysicalMax = 72, CritChanceBase = 5, AttackRateBase = 1.35, },
 	req = { level = 44, str = 77, dex = 77, },
 }
-itemBases["Engraved Greatsword"] = {
+itemBases["符文巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "40% increased Global Accuracy Rating",
+	implicit = "命中值提高 40%",
 	weapon = { PhysicalMin = 42, PhysicalMax = 87, CritChanceBase = 5, AttackRateBase = 1.3, },
 	req = { level = 48, str = 91, dex = 76, },
 }
-itemBases["Tiger Sword"] = {
+itemBases["虎牙巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "+360 to Accuracy Rating",
+	implicit = "+360 命中值",
 	weapon = { PhysicalMin = 46, PhysicalMax = 76, CritChanceBase = 5, AttackRateBase = 1.4, },
 	req = { level = 51, str = 80, dex = 96, },
 }
-itemBases["Wraith Sword"] = {
+itemBases["凶灵巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "30% increased Global Accuracy Rating",
+	implicit = "命中值提高 30%",
 	weapon = { PhysicalMin = 45, PhysicalMax = 93, CritChanceBase = 5, AttackRateBase = 1.35, },
 	req = { level = 54, str = 93, dex = 93, },
 }
-itemBases["Lithe Blade"] = {
+itemBases["细刃"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "+40% to Global Critical Strike Multiplier",
+	implicit = "+40% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 54, PhysicalMax = 89, CritChanceBase = 6, AttackRateBase = 1.35, },
 	req = { level = 56, str = 96, dex = 113, },
 }
-itemBases["Headman's Sword"] = {
+itemBases["行刑巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "+400 to Accuracy Rating",
+	implicit = "+400 命中值",
 	weapon = { PhysicalMin = 47, PhysicalMax = 109, CritChanceBase = 5, AttackRateBase = 1.3, },
 	req = { level = 57, str = 106, dex = 89, },
 }
-itemBases["Reaver Sword"] = {
+itemBases["残暴巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "40% increased Global Accuracy Rating",
+	implicit = "命中值提高 40%",
 	weapon = { PhysicalMin = 52, PhysicalMax = 86, CritChanceBase = 5, AttackRateBase = 1.45, },
 	req = { level = 59, str = 82, dex = 119, },
 }
-itemBases["Ezomyte Blade"] = {
+itemBases["艾兹麦巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "+435 to Accuracy Rating",
+	implicit = "+435 命中值",
 	weapon = { PhysicalMin = 55, PhysicalMax = 102, CritChanceBase = 5, AttackRateBase = 1.35, },
 	req = { level = 61, str = 113, dex = 113, },
 }
-itemBases["Vaal Greatsword"] = {
+itemBases["瓦尔巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "40% increased Global Accuracy Rating",
+	implicit = "命中值提高 40%",
 	weapon = { PhysicalMin = 55, PhysicalMax = 113, CritChanceBase = 5, AttackRateBase = 1.3, },
 	req = { level = 63, str = 122, dex = 104, },
 }
-itemBases["Lion Sword"] = {
+itemBases["狮爪巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "+470 to Accuracy Rating",
+	implicit = "+470 命中值",
 	weapon = { PhysicalMin = 57, PhysicalMax = 94, CritChanceBase = 5, AttackRateBase = 1.4, },
 	req = { level = 65, str = 104, dex = 122, },
 }
-itemBases["Infernal Sword"] = {
+itemBases["狱炎重剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "30% increased Global Accuracy Rating",
+	implicit = "命中值提高 30%",
 	weapon = { PhysicalMin = 52, PhysicalMax = 108, CritChanceBase = 5, AttackRateBase = 1.35, },
 	req = { level = 67, str = 113, dex = 113, },
 }
-itemBases["Exquisite Blade"] = {
+itemBases["精致之刃"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "+60% to Global Critical Strike Multiplier",
+	implicit = "+60% 攻击和法术暴击伤害加成",
 	weapon = { PhysicalMin = 56, PhysicalMax = 94, CritChanceBase = 6, AttackRateBase = 1.35, },
 	req = { level = 70, str = 119, dex = 131, },
 }

@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Module: Item Tools
 -- Various functions for dealing with items.
@@ -15,8 +15,8 @@ itemLib = { }
 
 -- Apply range value (0 to 1) to a modifier that has a range: (x to x) or (x-x to x-x)
 function itemLib.applyRange(line, range)
-	return line:gsub("%((%d+)%-(%d+) to (%d+)%-(%d+)%)", "(%1-%2) to (%3-%4)")
-		:gsub("(%+?)%((%-?%d+) to (%d+)%)", "%1(%2-%3)")
+return line:gsub("%((%d+)%-(%d+) %- (%d+)%-(%d+)%)", "(%1-%2) %- (%3-%4)")
+:gsub("(%+?)%((%-?%d+) %- (%d+)%)", "%1(%2-%3)")
 		:gsub("(%+?)%((%-?%d+)%-(%d+)%)", 
 		function(plus, min, max) 
 			local numVal = m_floor(tonumber(min) + range * (tonumber(max) - tonumber(min)) + 0.5)
@@ -32,13 +32,17 @@ function itemLib.applyRange(line, range)
 			local numVal = m_floor((tonumber(min) + range * (tonumber(max) - tonumber(min))) * 10 + 0.5) / 10
 			return tostring(numVal) 
 		end)
-		:gsub("%-(%d+%%) increased", function(num) return num.." reduced" end)
+:gsub("提高 %-(%d+%%)", function(num) return "降低 "..num end)
 end
 
 -- Clean item text by removing or replacing unsupported or redundant characters or sequences
+--lucifer
 function itemLib.sanitiseItemText(text)
 	-- Something something unicode support something grumble
-	return text:gsub("^%s+",""):gsub("%s+$",""):gsub("\r\n","\n"):gsub("%b<>",""):gsub("�","-"):gsub("\226\128\147","-"):gsub("\226\136\146","-"):gsub("�","o"):gsub("\195\182","o"):gsub("[\128-\255]","?")
+	return text:gsub("^%s+",""):gsub("%s+$",""):gsub("\r\n","\n"):gsub("%b<>",""):gsub("^%s*(.-)%s*$", "%1")
+	--:gsub("?,"-")
+	--:gsub("?,"o")
+	--:gsub("\195\182","o"):gsub("[\128-\255]","?"):gsub("\226\128\147","-"):gsub("\226\136\146","-")
 end
 
 function itemLib.formatModLine(modLine, dbMode)

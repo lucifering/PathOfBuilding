@@ -5,6 +5,11 @@
 --
 
 colorCodes = {
+普通 = "^xC8C8C8",
+	魔法 = "^x8888FF",
+	稀有 = "^xFFFF77",
+	传奇 = "^xAF6025",
+	遗产 = "^x60C060",
 	NORMAL = "^xC8C8C8",
 	MAGIC = "^x8888FF",
 	RARE = "^xFFFF77",

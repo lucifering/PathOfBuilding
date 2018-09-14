@@ -1,319 +1,318 @@
--- Item data (c) Grinding Gear Games
-
+﻿-- Item data (c) Grinding Gear Games
 return {
 -- Weapon: One Handed Axe
 [[
-Dreadarc
-Cleaver
-Upgrade: Upgrades to unique{Dreadsurge} via prophecy{Burning Dread}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 16, 48 Str
-Adds (5-15) to (20-25) Physical Damage
-Adds (5-15) to (20-25) Fire Damage
-5% increased Movement Speed
-(7-10)% Increased Attack Speed
-+(15-25)% to Fire Resistance
-{variant:1}Curse Enemies with Flammability on Hit
-{variant:2}Curse Enemies with level 10 Flammability on Hit
+恐惧之镰
+切割者
+升级: 使用 预言【烈焰之怖】 升级为 传奇【恐怖巨镰】
+版本: 2.6.0以前
+版本: 当前
+等级需求: 16, 48 Str
+附加 (5-15) - (20-25) 基础物理伤害
+附加 (5-15) - (20-25) 基础火焰伤害
+移动速度提高 5%
+攻击速度提高 (7-10)%
++(15-25)% 火焰抗性
+{variant:1}击中受诅咒的敌人时造成易燃
+{variant:2}击中敌人时，用 10 级的【易燃】诅咒敌人
 ]],[[
-Dreadsurge
-Cleaver
-Source: Upgraded from unique{Dreadarc} via prophecy{Burning Dread}
-Requires Level 60
-Adds (5-15) to (20-25) Physical Damage
-Adds (223�250) to (264�280) Fire Damage
-5% increased Movement Speed
-(7�10)% increased Attack Speed
-+(15�25)% to Fire Resistance
-Hits ignore Enemy Monster Fire Resistance while you are Ignited
+恐怖巨镰
+切割者
+源: 由传奇【恐惧之镰】 使用 预言【烈焰之怖】 升级
+等级需求: 60
+附加 (5-15) - (20-25) 基础物理伤害
+附加 (223-250) - (264-280) 基础火焰伤害
+移动速度提高 5%
+攻击速度提高 (7-10)%
++(15-25)% 火焰抗性
+你被点燃时，击中怪物敌人无视其火焰抗性
 ]],[[
-Dyadus
-Infernal Axe
-Variant: Pre 2.6.0
-Variant: Pre 3.3.0
-Variant: Current
-Requires Level 69, 158 Str, 76 Dex
-{variant:1}Adds (170-190) to (200-220) Fire Damage in Main Hand
-{variant:2,3}Adds (255-285) to (300-330) Fire Damage in Main Hand
-{variant:1}Adds (170-190) to (200-220) Cold Damage in Off Hand
-{variant:2,3}Adds (255-285) to (300-330) Cold Damage in Off Hand
-(10-15)% increased Attack Speed
-{variant:1}Enemies Chilled by you take 40% increased Burning Damage
-{variant:2}Enemies Chilled by you take 100% increased Burning Damage
-{variant:3}100% increased Damage with Ignites inflicted on Chilled Enemies
-25% Chance to Ignite when in Main Hand
-{variant:1}100% increased Chill Duration on Enemies when in Off Hand
-{variant:2,3}Chill Enemies for 1 second on Hit with this Weapon when in Off Hand
+龙凤吟
+狱火之刃
+版本: 2.6.0以前
+版本: 3.3.0以前
+版本: 当前
+等级需求: 69, 158 Str, 76 Dex
+{variant:1}主手附加 (170-190) - (200-220) 基础火焰伤害
+{variant:2,3}主手附加 (255-285) - (300-330) 基础火焰伤害
+{variant:1}副手攻击和法术附加 (170-190) - (200-220) 基础冰霜伤害
+{variant:2,3}副手攻击和法术附加 (255-285) - (300-330) 基础冰霜伤害
+攻击速度提高 (10-15)%
+{variant:1}被冰缓的敌人受到的燃烧伤害提高 40%
+{variant:2}被冰缓的敌人受到的燃烧伤害提高 100%
+{variant:3}对冰缓敌人造成的点燃伤害提高 100%
+在主手时，有 25% 几率点燃
+{variant:1}在副手时，对敌人的冰缓持续时间延长 100%
+{variant:2,3}若此武器装备在副手，此武器击中敌人时造成 1 秒的冰缓
 ]],[[
-The Screaming Eagle
-Jade Hatchet
-Upgrade: Upgrades to unique{The Gryphon} via prophecy{The Apex Predator}
-Variant: Pre 2.0.0
-Variant: Current
-Requires Level 6, 21 Str
-{variant:1}Adds (8-12) to (18-22) Physical Damage
-{variant:2}Adds (10-15) to (25-30) Physical Damage
-+(10-15) to maximum Life
-+(5-7) Life gained on Kill
-10% increased Movement Speed
-Socketed Gems are supported by level 2 Chance to Flee
+鹰啸
+碎玉斧
+升级: 使用 预言【顶尖掠食者】 升级为 传奇【狮鹫】
+版本: 2.0.0以前
+版本: 当前
+等级需求: 6, 21 Str
+{variant:1}附加 (8-12) - (18-22) 基础物理伤害
+{variant:2}附加 (10-15) - (25-30) 基础物理伤害
++(10-15) 最大生命
+击败敌人回复 +(5-7) 生命
+移动速度提高 10%
+此物品上的技能石受到 2 级的几率逃跑辅助
 ]],[[
-The Gryphon
-Jade Hatchet
-Source: Upgraded from unique{The Screaming Eagle} via prophecy{The Apex Predator}
-Requires Level 32, 21 Str
-Socketed Gems are supported by level 2 Chance to Flee
-(170-190)% increased Physical Damage
-Adds (10-15) to (25-30) Physical Damage
-+(10-15) to maximum Life
-+(5-7) Life gained on Kill
-10% increased Movement Speed
-15% increased Movement Speed if you've Killed Recently
+狮鹫
+碎玉斧
+源: 由传奇【鹰啸】 使用 预言【顶尖掠食者】 升级
+等级需求: 32, 21 Str
+此物品上的技能石受到 2 级的几率逃跑辅助
+物理伤害提高 (170-190)%
+附加 (10-15) - (25-30) 基础物理伤害
++(10-15) 最大生命
+击败敌人回复 +(5-7) 生命
+移动速度提高 10%
+近期内你若有击败敌人，则移动速度提高 15%
 ]],[[
-Jack, the Axe
-Vaal Hatchet
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 65, 140 Str, 86 Dex
-(90-110)% increased Physical Damage
-Adds (11-14) to (18-23) Physical Damage
-(10-15)% increased Attack Speed
-2% of Physical Attack Damage Leeched as Life
-50% reduced Life Leeched per second
-{variant:1}Causes Bleeding on Hit
-{variant:2}25% chance to cause Bleeding on Hit
+刽子手.杰克
+瓦尔战斧
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 65, 140 Str, 86 Dex
+物理伤害提高 (90-110)%
+附加 (11-14) - (18-23) 基础物理伤害
+攻击速度提高 (10-15)%
+物理攻击伤害的 2% 会转化为生命偷取
+每秒生命偷取降低 50%
+{variant:1}击中时造成流血
+{variant:2}击中时有 25% 几率造成流血
 ]],[[
-Moonbender's Wing
-Tomahawk
-Requires Level 39, 81 Str, 56 Dex
-(70-90)% increased Physical Damage
-Adds (5-9) to (13-17) Physical Damage
-(30-50)% increased Critical Strike Chance
-25% of Physical Damage Converted to Cold Damage
-25% of Physical Damage Converted to Lightning Damage
-Grants level 1 Lightning Warp Skill
+月岚
+征战之斧
+等级需求: 39, 81 Str, 56 Dex
+物理伤害提高 (70-90)%
+附加 (5-9) - (13-17) 基础物理伤害
+该装备的攻击暴击率提高 (30-50)%
+25% 的物理伤害转换为冰霜伤害
+物理伤害的 25% 转换为闪电伤害
+获得 1 级的主动技能【闪电传送】，且可被此道具上的技能石辅助
 ]],[[
-Relentless Fury
-Decorative Axe
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 29, 80 Str, 23 Dex
-(60-80)% increased Physical Damage
-Adds (3-5) to (7-10) Physical Damage
-{variant:1}0.6% of Physical Attack Damage Leeched as Life
-{variant:2}2% of Physical Attack Damage Leeched as Life
-Culling Strike
-You gain Onslaught for 3 seconds on Culling Strike
-Cannot be Chilled while you have Onslaught
+无尽愤怒
+富贵之斧
+版本: 2.6.0以前
+版本: 当前
+等级需求: 29, 80 Str, 23 Dex
+物理伤害提高 (60-80)%
+附加 (3-5) - (7-10) 基础物理伤害
+{variant:1}物理攻击伤害的 0.6% 会转化为生命偷取
+{variant:2}物理攻击伤害的 2% 会转化为生命偷取
+终结
+使用终结时获得【猛攻】状态 3 秒
+当你获得【猛攻】状态时状态时无法被冰缓
 ]],[[
-Rigwald's Savagery
-Royal Axe
-League: Talisman Standard, Talisman Hardcore
-Source: Drops from unique{Rigwald, the Wolven King} (Level 75+)
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 67, 167 Str, 57 Dex
-Adds (50-70) to (135-165) Physical Damage
-40% increased Physical Weapon Damage while Dual Wielding
-(10-15)% increased Attack Speed
-35% increased Attack Speed with Swords
-{variant:1}Causes Bleeding on Hit
-{variant:2}25% chance to cause Bleeding on Hit
+野性瑞佛
+皇家之斧
+联盟: 魔符·标准, 魔符·专家
+源: Boss 传奇 【狼王瑞佛】 专属掉落 (等级 75+)
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 67, 167 Str, 57 Dex
+附加 (50-70) - (135-165) 基础物理伤害
+双持攻击时武器的物理伤害提高 40%
+攻击速度提高 (10-15)%
+剑类攻击的攻击速度提高 35%
+{variant:1}击中时造成流血
+{variant:2}击中时有 25% 几率造成流血
 ]],[[
-Soul Taker
-Siege Axe
-Variant: Pre 1.0.0
-Variant: Current
-Requires Level 59, 119 Str, 82 Dex
-{variant:1}(160-200)% increased Physical Damage
-{variant:2}(100-140)% increased Physical Damage
-Adds 10 to 20 Physical Damage
-(20-25)% increased Attack Speed
-+(20-25)% to Cold Resistance
-Insufficient Mana doesn't prevent your Melee Attacks
-Your Physical Damage can Chill
+开膛斧
+破城斧
+版本: 1.0.0以前
+版本: 当前
+等级需求: 59, 119 Str, 82 Dex
+{variant:1}物理伤害提高 (160-200)%
+{variant:2}物理伤害提高 (100-140)%
+附加 10 - 20 基础物理伤害
+攻击速度提高 (20-25)%
++(20-25)% 冰霜抗性
+魔力不足仍然可以使用近战攻击
+物理伤害可以造成冰缓
 ]],
 -- Weapon: Two Handed Axe
 [[
-Atziri's Disfavour
-Vaal Axe
-Source: Drops from unique{Atziri, Queen of the Vaal} in normal{The Alluring Abyss}
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 75, 158 Str, 76 Dex
-+2 to Level of Socketed Support Gems
-Adds (220-235) to (270-290) Physical Damage
-(12-16)% increased Attack Speed
-{variant:1}Causes Bleeding on Hit
-{variant:2}25% chance to cause Bleeding on Hit
-+2 to Weapon range
+阿兹里的刑刃
+瓦尔巨斧
+源: 传奇Boss【瓦尔女王阿兹里】 专属掉落（地图【诱人的深渊】） 
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 75, 158 Str, 76 Dex
+此物品上装备的【辅助技能石】等级 +2
+附加 (220-235) - (270-290) 基础物理伤害
+攻击速度提高 (12-16)%
+{variant:1}击中时造成流血
+{variant:2}击中时有 25% 几率造成流血
++2 武器攻击范围
 ]],[[
-The Blood Reaper
-Headsman Axe
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 45, 99 Str, 57 Dex
-{variant:1}(100-120)% increased Physical Damage
-{variant:2}(180�200)% increased Physical Damage
-+100 to maximum Life
-10.0 Life Regenerated per second
-1% of Physical Attack Damage Leeched as Life
-50% increased Mana Cost of Skills
-{variant:1}Causes Bleeding on Hit
-{variant:2}50% chance to cause Bleeding on Hit
+竭血之镰
+行刑巨斧
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 45, 99 Str, 57 Dex
+{variant:1}物理伤害提高 (100-120)%
+{variant:2}物理伤害提高 (180-200)%
++100 最大生命
+10.0 每秒生命回复
+物理攻击伤害的 1% 会转化为生命偷取
+技能魔力消耗提高 50%
+{variant:1}击中时造成流血
+{variant:2}击中有 50% 几率造成流血
 ]],[[
-Debeon's Dirge
-Despot Axe
-Requires Level 66, 140 Str, 86 Dex
-Adds (310-350) to (460-500) Cold Damage
-15% increased Movement Speed if you've used a Warcry Recently
-150% increased Elemental Damage if you've used a Warcry Recently
-Warcries Knock Enemies Back in an Area
+战歌
+霸主巨斧
+等级需求: 66, 140 Str, 86 Dex
+附加 (310-350) - (460-500) 基础冰霜伤害
+近期内你若使用过战吼，则移动速度提高 15%
+近期内你若有使用战吼，则火焰、冰霜、闪电伤害提高 150%
+战吼将击退区域内的敌人
 ]],[[
-The Harvest
-Jasper Chopper
-League: Beyond
-Requires Level 37, 100 Str, 29 Dex
-(120-140)% increased Physical Damage
-1.2% of Damage Leeched as Life on Critical Strike
-3% increased Global Critical Strike Chance per Level
-Gain Flask Charges when you deal a Critical Strike
+收割者
+灵玉巨斧
+联盟: 超越
+等级需求: 37, 100 Str, 29 Dex
+物理伤害提高 (120-140)%
+暴击时偷取等同 1.2% 伤害的生命
+攻击和法术暴击率每级提高 3%
+暴击时获得 1 点充能
 ]],[[
-Hezmana's Bloodlust
-Vaal Axe
-Requires Level 64, 158 Str, 76 Dex
-(150-170)% increased Physical Damage
-Adds (7-12) to (16-25) Physical Damage
-1% of Physical Attack Damage Leeched as Life
-Attacks have Blood Magic
+嗜血黑兹玛娜
+瓦尔巨斧
+等级需求: 64, 158 Str, 76 Dex
+物理伤害提高 (150-170)%
+附加 (7-12) - (16-25) 基础物理伤害
+物理攻击伤害的 1% 会转化为生命偷取
+所有攻击都受到血魔法辅助
 ]],[[
-Kaom's Primacy
-Karui Chopper
-Requires Level 58, 151 Str, 43 Dex
-(160-220)% increased Physical Damage
-Adds (16-21) to (32-38) Fire Damage
-+(150-250) to Accuracy Rating
-+20 Life gained on Kill
-Culling Strike
+冈姆的霸业
+卡鲁巨斧
+等级需求: 58, 151 Str, 43 Dex
+物理伤害提高 (160-220)%
+附加 (16-21) - (32-38) 基础火焰伤害
++(150-250) 命中值
+击败敌人回复 +20 生命
+终结
 ]],[[
-Kingmaker
-Despot Axe
-Source: Vendor recipe
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 66, 140 Str, 86 Dex
-(200-250)% increased Physical Damage
-(7-12)% increased Attack Speed
-{variant:2}(30-40)% increased Critical Strike Chance
-{variant:1}+(100-150) to maximum Mana
-{variant:2}Insufficient Mana doesn't prevent your Melee Attacks
-Nearby Allies have 30% increased Item Rarity
+王者之刃
+霸主巨斧
+源: 商店配方
+版本: 2.6.0以前
+版本: 当前
+等级需求: 66, 140 Str, 86 Dex
+物理伤害提高 (200-250)%
+攻击速度提高 (7-12)%
+{variant:2}该装备的攻击暴击率提高 (30-40)%
+{variant:1}+(100-150) 最大魔力
+{variant:2}魔力不足仍然可以使用近战攻击
+周围友军获得物品稀有度提高 30% 
 {variant:1}Nearby Allies' spells have Culling Strike
-{variant:2}Nearby Allies have Culling Strike
+{variant:2}周围友军获得【终结】效果
 ]],[[
-Kitava's Feast
-Void Axe
-Requires Level 68, 149 Str, 76 Dex
-Socketed Gems are supported by level 25 Melee Splash
-(250-300)% increased Physical Damage
-1% of Physical Attack Damage Leeched as Life
-1% of Physical Attack Damage Leeched as Mana
-Recover 5% of Maximum Life on Kill
-Enemies you hit are destroyed on Kill
+奇塔弗之盛宴
+虚影巨斧
+等级需求: 68, 149 Str, 76 Dex
+此物品上的技能石受到 25 级的 近战伤害扩散 辅助
+物理伤害提高 (250-300)%
+物理攻击伤害的 1% 会转化为生命偷取
+物理攻击伤害的 1% 转化为魔力偷取
+击败敌人时回复 5% 最大生命
+你所击败的敌人将会被歼灭
 ]],[[
-Limbsplit
-Woodsplitter
-Upgrade: Upgrades to unique{The Cauteriser} via prophecy{Severed Limbs}
-Requires Level 13, 36 Str, 17 Dex
-+1 to Level of Socketed Strength Gems
-(80-100)% increased Physical Damage
-Adds 5 to 10 Physical Damage
-+(15-30) to Strength
-Culling Strike
+断罪
+柴斧
+升级: 使用 预言【肢解】 升级为 传奇【烧灼器】
+等级需求: 13, 36 Str, 17 Dex
+此物品上装备的【红色技能石】等级 +1 
+物理伤害提高 (80-100)%
+附加 5 - 10 基础物理伤害
++(15-30) 力量
+终结
 ]],[[
-The Cauteriser
-Woodsplitter
-Source: Upgraded from unique{Limbsplit} using prophecy{Severed Limbs}
-Requires Level 40, 36 Str, 17 Dex
-+1 to Level of Socketed Strength Gems
-(80-100)% increased Physical Damage
-Adds (35-45) to (80-90) Physical Damage
-+(15-30) to Strength
-Gain 70% of Physical Damage as Extra Fire Damage
-Culling Strike
+烧灼器
+柴斧
+源: 由传奇【断罪】 使用 预言【肢解】 升级
+等级需求: 40, 36 Str, 17 Dex
+此物品上装备的【红色技能石】等级 +1 
+物理伤害提高 (80-100)%
+附加 (35-45) - (80-90) 基础物理伤害
++(15-30) 力量
+获得额外火焰伤害， 其数值等同于物理伤害的 70%
+终结
 ]],[[
-Ngamahu's Flame
-Abyssal Axe
-Requires Level 55, 128 Str, 60 Dex
-(190-230)% increased Physical Damage
-(8-12)% increased Attack Speed
-50% of Physical Damage Converted to Fire Damage
-Damage Penetrates 20% Fire Resistance
-20% chance to attack with Level 16 Molten Burst on Melee Hit
+努葛玛呼之耀
+深渊巨斧
+等级需求: 55, 128 Str, 60 Dex
+物理伤害提高 (190-230)%
+攻击速度提高 (8-12)%
+50% 的物理伤害转换为火焰伤害
+伤害穿透 20% 火焰抗性
+近战击中有 20% 几率触发 16 级的【熔岩爆破】
 ]],[[
-Reaper's Pursuit
-Shadow Axe
-Requires Level 33, 80 Str, 37 Dex
-(100-125)% increased Physical Damage
-+10 Life Gained on Kill
-(30-40)% increased Rarity of Items found
-15% increased Movement Speed when on Full Life
-Culling Strike
-Hits can't be Evaded
+死神的取魂器
+幽影巨斧
+等级需求: 33, 80 Str, 37 Dex
+物理伤害提高 (100-125)%
+击败敌人回复 +10 生命
+物品稀有度提高 (30-40)%
+满血时移动速度提高 15%
+终结
+攻击和法术无法被闪避
 ]],[[
-Uul-Netol's Kiss
-Labrys
-League: Breach
-Source: Drops in Uul-Netol Breach or from unique{Uul-Netol, Unburdened Flesh}
-Upgrade: Upgrades to unique{Uul-Netol's Embrace} using currency{Blessing of Uul-Netol}
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 49, 122 Str, 53 Dex
-(140-170)% increased Physical Damage
-15% reduced Attack Speed
-25% chance to Curse Enemies with level 10 Vulnerability on Hit
-{variant:1}Attacks Cause Bleeding when Hitting Cursed Enemies
-{variant:2}Attacks have 25% chance to cause Bleeding when Hitting Cursed Enemies
+乌尔尼多之吻
+双影巨斧
+联盟: 裂隙
+源: 地图【乌尔尼多领域】 或 传奇Boss【截载者‧乌尔尼多】 专属掉落
+升级: 使用 通货【乌尔尼多的祝福】 升级为 传奇【乌尔尼多的拥抱】
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 49, 122 Str, 53 Dex
+物理伤害提高 (140-170)%
+攻击速度降低 15%
+击中时有 25% 几率用 10 级的【脆弱】诅咒敌人
+{variant:1}攻击击中受诅咒的敌人时造成流血
+{variant:2}攻击击中被诅咒敌人时有 25% 几率造成流血
 ]],[[
-Uul-Netol's Embrace
-Vaal Axe
-League: Breach
-Source: Upgraded from unique{Uul-Netol's Kiss} using currency{Blessing of Uul-Netol}
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 64, 158 Str, 76 Dex
-(280-320)% increased Physical Damage
-(30-25)% reduced Attack Speed
-{variant:1}Attacks Cause Bleeding when Hitting Cursed Enemies
-{variant:2}Attacks have 25% chance to cause Bleeding when Hitting Cursed Enemies
-Trigger Level 20 Bone Nova when you Kill a Bleeding Enemy
+乌尔尼多的拥抱
+瓦尔巨斧
+联盟: 裂隙
+源: 传奇【乌尔尼多之吻】 使用 通货【乌尔尼多的祝福】 升级
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 64, 158 Str, 76 Dex
+物理伤害提高 (280-320)%
+攻击速度降低 (30-25)%
+{variant:1}攻击击中受诅咒的敌人时造成流血
+{variant:2}攻击击中被诅咒敌人时有 25% 几率造成流血
+击败流血敌人时触发 20 级的【裂骨新星】
 ]],[[
-Wideswing
-Poleaxe
-Requires Level 18, 44 Str, 25 Dex
-Socketed Gems are Supported by level 20 Increased Area of Effect
-(120-160)% increased Physical Damage
-+10 to Strength
-+(50-80) to Accuracy Rating
-+10 Mana Gained on Kill
-+2 to Weapon range
+阔斩
+巨战斧
+等级需求: 18, 44 Str, 25 Dex
+此物品上的技能石受到 20 级的 增大范围 辅助
+物理伤害提高 (120-160)%
++10 力量
++(50-80) 命中值
+击败敌人回复 +10 魔力
++2 武器攻击范围
 ]],[[
-Wings of Entropy
-Sundering Axe
-Variant: Pre 1.3.0
-Variant: Pre 2.0.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 60, 149 Str, 76 Dex
-{variant:1,2,3}25% of Block Chance applied to Spells
-{variant:4}+7% chance to Block Spell Damage
-{variant:1}10% additional Chance to Block while Dual Wielding
-{variant:2,3,4}8% additional Chance to Block while Dual Wielding
-{variant:1,2}(80-120)% increased Physical Damage
-{variant:3,4}(100-120)% increased Physical Damage
-Adds (55-65) to (100-120) Fire Damage in Main Hand
-Adds (55-65) to (100-120) Chaos Damage in Off Hand
-Counts as Dual Wielding
+乱世之翼
+裂甲巨斧
+版本: 1.3.0以前
+版本: 2.0.0以前
+版本: 3.4.0以前
+版本: 当前
+等级需求: 60, 149 Str, 76 Dex
+{variant:3}25% 的攻击格挡率同样套用于法术格挡
+{variant:4}25% 法术格挡几率
+{variant:1}双持时攻击格挡率提高 10%
+{variant:2,3,4}双持时攻击格挡率提高 8%
+{variant:1,2}物理伤害提高 (80-120)%
+{variant:3,4}物理伤害提高 (100-120)%
+主手附加 (55-65) - (100-120) 基础火焰伤害
+副手攻击和法术附加 (55-65) - (100-120) 基础混沌伤害
+视作双持武器
 ]],
 }

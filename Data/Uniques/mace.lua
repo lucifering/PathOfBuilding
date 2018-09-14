@@ -1,633 +1,631 @@
 ﻿-- Item data (c) Grinding Gear Games
-
 return {
 -- Weapon: One Handed Mace
 [[
-Brightbeak
-War Hammer
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 20, 71 Str
-Implicits: 2
-{variant:1}20% increased Stun Duration on Enemies
-{variant:2}10% reduced Enemy Stun Threshold
-(50-75)% increased Physical Damage
-50% increased Attack Speed
-25% increased Critical Strike Chance
-+(20-30)% to Fire Resistance
-+(20-30)% to Lightning Resistance
+光耀之锤
+战锤
+版本: 2.6.0以前
+版本: 当前
+等级需求: 20, 71 Str
+固定基底词缀: 2
+{variant:1}敌人被晕眩时间延长 20% 
+{variant:2}敌人晕眩门槛降低 10%
+物理伤害提高 (50-75)%
+攻击速度提高 50%
+该装备的攻击暴击率提高 25%
++(20-30)% 火焰抗性
++(20-30)% 闪电抗性
 ]],[[
-Callinellus Malleus
-Auric Mace
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 66, 212 Str
-Implicits: 2
-{variant:1}40% increased Stun Duration on Enemies
-{variant:2}15% reduced Enemy Stun Threshold
-Adds (5-10) to (15-23) Physical Damage
-(150-200)% increased Physical Damage
-(15-25)% reduced Enemy Stun Threshold with this Weapon
-Cannot Knock Enemies Back
-All Attack Damage Chills when you Stun
+坚定之刃
+圣约之锤
+版本: 2.6.0以前
+版本: 当前
+等级需求: 66, 212 Str
+固定基底词缀: 2
+{variant:1}敌人被晕眩时间延长 40% 
+{variant:2}敌人晕眩门槛降低 15%
+附加 (5-10) - (15-23) 基础物理伤害
+物理伤害提高 (150-200)%
+使用该武器时，敌人晕眩门槛降低 (15-25)%
+无法击退敌人
+晕眩时所有攻击伤害造成冰缓
 ]],[[
-Cameria's Maul
-Gavel
-Upgrade: Upgrades to unique{Cameria's Avarice} via prophecy{Cold Greed}
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 60, 212 Str
-Implicits: 2
-{variant:1}40% increased Stun Duration on Enemies
-{variant:2,3}15% reduced Enemy Stun Threshold
-(140-180)% increased Physical Damage
-Adds (10-20) to (30-50) Cold Damage
-(15-40)% increased Critical Strike Chance
-{variant:1,2}(30-40)% increased Cold Damage with Weapons
-{variant:3}(30-40)% increased Cold Damage with Attack Skills
-40% increased Rarity of Items Dropped by Frozen Enemies
+卡美利亚之锤
+坚锤
+升级: 使用 预言【冷酷的贪婪】 升级为 传奇【卡美利亚之贪婪】
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 60, 212 Str
+固定基底词缀: 2
+{variant:1}敌人被晕眩时间延长 40% 
+{variant:2,3}敌人晕眩门槛降低 15%
+物理伤害提高 (140-180)%
+附加 (10-20) - (30-50) 基础冰霜伤害
+该装备的攻击暴击率提高 (15-40)%
+{variant:1,2}武器攻击的冰霜伤害提高 (30-40)%
+{variant:3}攻击技能的冰霜伤害提高 (30-40)%
+冰冻的敌人物品稀有度提高 40%
 ]],[[
-Cameria's Avarice
-Gavel
-Source: Upgraded from unique{Cameria's Maul} via prophecy{Cold Greed}
-Requires Level 60
-15% reduced Enemy Stun Threshold
-(140–180)% increased Physical Damage
-Adds (11–14) to (17–21) Physical Damage
-(15–40)% increased Critical Strike Chance
-40% increased Rarity of Items Dropped by Frozen Enemies
-(30–40)% increased Cold Damage with Attack Skills
-Trigger Level 20 Icicle Burst when you Kill a Frozen Enemy
+卡美利亚之贪婪
+坚锤
+源: 由 传奇【卡美利亚之锤】 使用 预言【冷酷的贪婪】 升级
+等级需求: 60
+敌人晕眩门槛降低 15%
+物理伤害提高 (140-180)%
+附加 (11-14) - (17-21) 基础物理伤害
+该装备的攻击暴击率提高 (15-40)%
+冰冻的敌人物品稀有度提高 40%
+攻击技能的冰霜伤害提高 (30-40)%
+你击败被冻结的敌人时触发 20 级的【爆环冰刺】
 ]],[[
-Clayshaper
-Rock Breaker
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 41, 134 Str
-Implicits: 2
-{variant:1}40% increased Stun Duration on Enemies
-{variant:2}15% reduced Enemy Stun Threshold
-Adds (24-30) to (34-40) Physical Damage
-(8-10)% increased Attack Speed
-Minions have (20-30)% increased maximum Life
-Minions' Attacks deal (5-8) to (12-16) additional Physical Damage
-Can Summon up to 1 additional Golem at a time
-Grants level 12 Summon Stone Golem
+塑泥者
+破岩锤
+版本: 2.6.0以前
+版本: 当前
+等级需求: 41, 134 Str
+固定基底词缀: 2
+{variant:1}敌人被晕眩时间延长 40% 
+{variant:2}敌人晕眩门槛降低 15%
+附加 (24-30) - (34-40) 基础物理伤害
+攻击速度提高 (8-10)%
+召唤生物的最大生命提高 (20-30)%
+召唤生物的攻击额外造成 (5-8) - (12-16) 物理伤害
+最多可同时拥有额外 1 个魔像
+获得 12 级的【召唤巨石魔像】
 ]],[[
-Flesh-Eater
-Dream Mace
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 32, 107 Str
-Implicits: 2
-{variant:1}20% increased Stun Duration on Enemies
-{variant:2}10% reduced Enemy Stun Threshold
-(60-80)% increased Physical Damage
-Adds 10 to 15 Physical Damage
-10% increased Attack Speed
-1% of Physical Attack Damage leeched as Life
-{variant:1}10% Chance to cause Bleeding on Hit
-{variant:2}30% Chance to cause Bleeding on Hit
-{variant:1}1% of Attack Damage leeched as Life against Bleeding Enemies
-{variant:2}3% of Attack Damage leeched as Life against Bleeding Enemies
+血肉之嗜
+梦境之锤
+版本: 2.6.0以前
+版本: 当前
+等级需求: 32, 107 Str
+固定基底词缀: 2
+{variant:1}敌人被晕眩时间延长 20% 
+{variant:2}敌人晕眩门槛降低 10%
+物理伤害提高 (60-80)%
+附加 10 - 15 基础物理伤害
+攻击速度提高 10%
+物理攻击伤害的 1% 会转化为生命偷取
+{variant:1}击中时 10% 几率造成流血
+{variant:2}击中时 30% 几率造成流血
+{variant:1}对流血敌人造成的攻击伤害的 1% 转化为生命偷取
+{variant:2}对流血敌人造成的攻击伤害的 3% 转化为生命偷取
 ]],[[
-Frostbreath
-Ornate Mace
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 50, 161 Str
-Implicits: 2
-{variant:1}40% increased Stun Duration on Enemies
-{variant:2,3}15% reduced Enemy Stun Threshold
-{variant:1,2}Adds (16-22) to (26-32) Physical Damage
-{variant:3}Adds (26–32) to (36–42) Physical Damage
-{variant:1,2}Adds (16-22) to (26-32) Cold Damage
-{variant:3}Adds (26–32) to (36–42) Cold Damage
-(8-14)% increased Attack Speed
-+(40-50)% to Fire Resistance
-(35-50)% increased Chill Duration on Enemies
-Attacks with this Weapon deal double Damage to Chilled Enemies
+霜息
+华丽之锤
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 50, 161 Str
+固定基底词缀: 2
+{variant:1}敌人被晕眩时间延长 40% 
+{variant:2,3}敌人晕眩门槛降低 15%
+{variant:1,2}附加 (16-22) - (26-32) 基础物理伤害
+{variant:3}附加 (26-32) - (36-42) 基础物理伤害
+{variant:1,2}附加 (16-22) - (26-32) 基础冰霜伤害
+{variant:3}附加 (26-32) - (36-42) 基础冰霜伤害
+攻击速度提高 (8-14)%
++(40-50)% 火焰抗性
+敌人被冰缓的持续时间延长 (35-50)%
+此武器的攻击对冰缓的敌人造成双倍伤害
 ]],[[
-Gorebreaker
-Spiked Club
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 10, 41 Str
-Implicits: 2
-{variant:1}20% increased Stun Duration on Enemies
-{variant:2}10% reduced Enemy Stun Threshold
-(300-360)% increased Physical Damage
-20% reduced Attack Speed
-(10-20)% reduced Enemy Stun Threshold
-(30-50)% increased Stun Duration on Enemies
-30% increased Melee Damage against Bleeding Enemies
+血裂
+钝钉木棒
+版本: 2.6.0以前
+版本: 当前
+等级需求: 10, 41 Str
+固定基底词缀: 2
+{variant:1}敌人被晕眩时间延长 20% 
+{variant:2}敌人晕眩门槛降低 10%
+物理伤害提高 (300-360)%
+攻击速度降低 20%
+敌人晕眩门槛降低 (10-20)%
+敌人被晕眩时间延长 (30-50)% 
+对流血敌人的近战伤害提高 30%
 ]],[[
-Lavianga's Wisdom
-War Hammer
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 20, 71 Str
-Implicits: 2
-{variant:1}20% increased Stun Duration on Enemies
-{variant:2}10% reduced Enemy Stun Threshold
-+(10-20) to maximum Life
-+(10-20) to maximum Mana
-(130-160)% increased Physical Damage
-5% reduced Movement Speed
-10% increased Area of Effect of Area Skills
-(10-15)% increased Area Damage
+拉维安加的智慧
+战锤
+版本: 2.6.0以前
+版本: 当前
+等级需求: 20, 71 Str
+固定基底词缀: 2
+{variant:1}敌人被晕眩时间延长 20% 
+{variant:2}敌人晕眩门槛降低 10%
++(10-20) 最大生命
++(10-20) 最大魔力
+物理伤害提高 (130-160)%
+移动速度降低 5%
+范围效果扩大 10%
+范围伤害提高 (10-15)%
 ]],[[
-Mjölner
-Gavel
-Variant: Pre 2.0.0
-Variant: Pre 2.4.0
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 60, 412 Str, 300 Int
-Implicits: 2
-{variant:1,2,3}40% increased Stun Duration on Enemies
-{variant:4,5}15% reduced Enemy Stun Threshold
-(80-120)% increased Physical Damage
-Skills Chain +1 times
-{variant:1,2,3,4}(30-40)% increased Lightning Damage with Weapons
-{variant:5}(30-40)% increased Lightning Damage with Attack Skills
-+200 Strength Requirement
-+300 Intelligence Requirement
-{variant:1}50% chance to Cast a Socketed Lightning Spell on Hit
-{variant:2}30% chance to Cast a Socketed Lightning Spell on Hit
-{variant:3,4,5}Trigger a Socketed Lightning Spell on Hit
-Socketed Lightning Spells deal 100% increased Spell Damage if Triggered
+沉默之雷
+坚锤
+版本: 2.0.0以前
+版本: 2.4.0以前
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 60, 412 Str, 300 Int
+固定基底词缀: 2
+{variant:1,2,3}敌人被晕眩时间延长 40% 
+{variant:4,5}敌人晕眩门槛降低 15%
+物理伤害提高 (80-120)%
+投射物可以连锁弹射 +1 次
+{variant:1,2,3,4}武器攻击的闪电伤害提高 (30-40)%
+{variant:5}攻击技能的闪电伤害提高 (30-40)%
++200 力量需求
++300 智慧需求
+{variant:1}击中时 50% 几率触发插槽内的闪电法术
+{variant:2}击中时 30% 几率触发插槽内的闪电法术
+{variant:3,4,5}击中时触发插槽内的闪电法术
+触发后，插槽内闪电法术的法术伤害提高 100%
 ]],[[
-Nebuloch
-Nightmare Mace
-Source: Drops from unique{The Elder} (Tier 6+)
-Variant: Pre 3.4.0
-Variant: Current
-Requires Level 68
-10% reduced Enemy Stun Threshold
-Adds (45–60) to (100–120) Physical Damage 
-Gain (30–40)% of Physical Attack Damage as Extra Fire Damage 
-+4% to Chaos Resistance per Endurance Charge 
-1% reduced Elemental Damage taken when Hit per Endurance Charge 
-Adds 5 to 8 Physical Damage per Endurance Charge 
-+500 to Armour per Endurance Charge 
-{variant:1}400 Fire Damage taken per second per Endurance Charge if you've been Hit Recently
-{variant:2}200 Fire Damage taken per second per Endurance Charge if you've been Hit Recently
-Elder Item
+尼布洛克
+梦魇之锤
+源:源: 传奇Boss【裂界者】 专属掉落 (T6地图或以上)
+版本: 3.4.0以前
+版本: 当前
+等级需求: 68
+敌人晕眩门槛降低 10%
+附加 (45-60) - (100-120) 基础物理伤害
+获得等同 (30-40)% 物理攻击伤害的火焰伤害
+每个耐力球附加 +4% 混沌抗性
+每个耐力球可使被击中时受到的火焰、冰霜、闪电伤害降低 1%
+每个耐力球附加 5 - 8 基础物理伤害
+每个耐力球增加 +500 点护甲
+{variant:1}近期内你若被击中过，则每有 1 个耐力球，就会每秒受到 400 火焰伤害
+{variant:2}近期内你若被击中过，则每有 1 个耐力球，就会每秒受到 200 火焰伤害
+裂界之器
 ]],
 -- Weapon: Sceptre
 [[
-Augyre
-Void Sceptre
-Source: Drops from unique{The Purifier} (Tier 11+)
-Requires Level 68
-40% increased Elemental Damage 
-(180–200)% increased Physical Damage 
-(10–15)% increased Attack Speed 
-(80–100)% increased Critical Strike Chance 
-50% of Physical Damage Converted to Lightning Damage 
-Every 16 seconds you gain Elemental Overload for 8 seconds 
-You have Resolute Technique while you do not have Elemental Overload
-Elder Item
+占星
+虚影短杖
+源: 传奇Boss【裂界守卫：净世】 专属掉落（T11地图或以上）
+等级需求: 68
+火焰、冰霜、闪电伤害提高 40%
+物理伤害提高 (180-200)%
+攻击速度提高 (10-15)%
+该装备的攻击暴击率提高 (80-100)%
+物理伤害的 50% 转换为闪电伤害
+每 16 秒获得一次【元素超载】，持续 8 秒
+当你没有获得【元素超载】时，获得【坚毅之心】
+裂界之器
 ]],[[
-Axiom Perpetuum
-Bronze Sceptre
-Variant: Pre 2.3.0
-Variant: Current
-Requires Level 10, 22 Str, 22 Int
-Implicits: 2
-{variant:1}10% increased Elemental Damage
-{variant:2}12% increased Elemental Damage
-(4-6)% increased Cast Speed
-(100-140)% increased Critical Strike Chance for Spells
-Adds (2-3) to (5-6) Fire Damage to Spells
-Adds (2-3) to (5-6) Cold Damage to Spells
-Adds 1 to (10-12) Lightning Damage to Spells
+历史公理
+铜锻短杖
+版本: 2.3.0以前
+版本: 当前
+等级需求: 10, 22 Str, 22 Int
+固定基底词缀: 2
+{variant:1}火焰、冰霜、闪电伤害提高 10%
+{variant:2}火焰、冰霜、闪电伤害提高 12%
+施法速度提高 (4-6)%
+法术暴击率提高 (100-140)%
+法术附加 (2-3) - (5-6) 基础火焰伤害
+法术附加 (2-3) - (5-6) 基础冰霜伤害
+法术附加 1 - (10-12) 基础闪电伤害
 ]],[[
-Balefire
-Opal Sceptre
-Requires Level 60
-40% increased Elemental Damage
-Grants Level 25 Scorching Ray Skill
-(12–20)% increased Cast Speed 
-Recover (1–3)% of Maximum Life on Kill 
-Recover (1–3)% of Maximum Mana on Kill
-10% increased Scorching Ray beam length
+灾难之光
+灵石短杖
+等级需求: 60
+火焰、冰霜、闪电伤害提高 40%
+获得 25 级的主动技能【灼热光线】，且可被此道具上的技能石辅助
+施法速度提高 (12-20)%
+击败敌人时回复 (1-3)% 最大生命
+击败敌人时回复 (1-3)% 最大魔力
+【灼热光线】的光束长度延长 10%
 ]],[[
-Bitterdream
-Shadow Sceptre
-Variant: Pre 2.3.0
-Variant: Current
-Requires Level 32, 52 Str, 62 Int
-Implicits: 2
-{variant:1}15% increased Elemental Damage
-{variant:2}22% increased Elemental Damage
-Socketed Gems are Supported by level 1 Hypothermia
-Socketed Gems are Supported by level 1 Ice Bite
-Socketed Gems are Supported by level 1 Cold Penetration
-Socketed Gems are Supported by level 1 Mana Leech
-Socketed Gems are Supported by level 10 Added Cold Damage
-Socketed Gems are Supported by level 1 Reduced Mana
+苦梦
+影语短杖
+版本: 2.3.0以前
+版本: 当前
+等级需求: 32, 52 Str, 62 Int
+固定基底词缀: 2
+{variant:1}火焰、冰霜、闪电伤害提高 15%
+{variant:2}火焰、冰霜、闪电伤害提高 22%
+此物品上的技能石受到 1 级的 急冻 辅助
+此物品上的技能石受到 1 级的 霜咬 辅助
+此物品上的技能石受到 1 级的 冰霜穿透 辅助
+此物品上的技能石受到 1 级的 魔力偷取 辅助
+此物品上的技能石受到 10 级的 附加冰霜伤害 辅助
+此物品上的技能石受到 1 级的 魔力减免 辅助
 ]],[[
-Breath of the Council
-Carnal Sceptre
-Source: prophecy{The Plaguemaw V}
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 66, 113 Str, 113 Int
-32% increased Elemental Damage
-(260-310)% increased Physical Damage
-{variant:1}(60-80)% increased Chaos Damage
-{variant:2}(80-100)% increased Chaos Damage
-10% increased Area of Effect of Area Skills
-40% increased Chaos Skill Effect Duration
+议会之息
+禁礼短杖
+源: 预言【疫病大嘴兽 V】
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 66, 113 Str, 113 Int
+火焰、冰霜、闪电伤害提高 32%
+物理伤害提高 (260-310)%
+{variant:1}混沌伤害提高 (60-80)%
+{variant:2}混沌伤害提高 (80-100)%
+范围效果扩大 10%
+混沌技能效果持续时间延长 40%
 ]],[[
-Brutus' Lead Sprinkler
-Ritual Sceptre
-League: Torment
-Variant: Pre 2.3.0
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 28, 51 Str, 51 Int
-Implicits: 2
-{variant:1}10% increased Elemental Damage
-{variant:2,3,4}16% increased Elemental Damage
-20% increased Physical Damage
-{variant:1,2}Adds 15 to 25 Fire Damage against Ignited Enemies
-Adds (8-13) to (26-31) Physical Damage
-{variant:3}Adds 2 to 4 Fire Damage to Attacks per 10 Strength
-{variant:4}Adds 4 to 7 Fire Damage to Attacks with this Weapon per 10 Strength
-30% increased Fire Damage
-(15-20)% increased Attack Speed
-(30-40)% increased Critical Strike Chance
+布鲁特斯的刑具
+祭仪短杖
+联盟: 苦痛
+版本: 2.3.0以前
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 28, 51 Str, 51 Int
+固定基底词缀: 2
+{variant:1}火焰、冰霜、闪电伤害提高 10%
+{variant:2,3,4}火焰、冰霜、闪电伤害提高 16%
+物理伤害提高 20%
+{variant:1,2}对被点燃敌人附加 15 - 25 基础火焰伤害
+附加 (8-13) - (26-31) 基础物理伤害
+{variant:3}每 10 点力量可以为攻击附加 2 - 4 基础火焰伤害
+{variant:4}使用此武器攻击时，每 10 点力量附加 4 - 7 基础火焰伤害
+火焰伤害提高 30%
+攻击速度提高 (15-20)%
+该装备的攻击暴击率提高 (30-40)%
 ]],[[
-The Dark Seer
-Shadow Sceptre
-League: Beyond
-Variant: Pre 2.3.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current (Life/Mana)
-Variant: Current (Life/ES)
-Variant: Current (Mana/ES)
-Requires Level 32, 52 Str, 62 Int
-Implicits: 2
-{variant:1}15% increased Elemental Damage
-{variant:2,3,4,5}22% increased Elemental Damage
-(30-50)% increased Damage
-7% Global chance to Blind Enemies on hit
-{variant:1,2}+1 Mana gained on Kill per Level
-{variant:1,2}+1 Energy Shield gained on Kill per Level
-{variant:3,4}+1 to maximum Life per Level
-{variant:3,5}+1 to maximum Mana per Level
-{variant:4,5}+1 to maximum Energy Shield per Level
-Cannot be Blinded
+黯黑贤者
+影语短杖
+联盟: 超越
+版本: 2.3.0以前
+版本: {2_6}3.0.0以前
+版本: 当前（生命/魔力）
+版本: 当前（生命/能量护盾）
+版本: 当前（魔力/能量护盾）
+等级需求: 32, 52 Str, 62 Int
+固定基底词缀: 2
+{variant:1}火焰、冰霜、闪电伤害提高 15%
+{variant:2,3,4,5}火焰、冰霜、闪电伤害提高 22%
+伤害提高 (30-50)%
+击中时有 7% 几率使敌人致盲
+{variant:1,2}每一级在击败敌人时获得 +1 魔力
+{variant:1,2}每一级在击败敌人时获得 +1 能量护盾
+{variant:3,4}每级 +1 生命
+{variant:3,5}每级 +1 魔力
+{variant:4,5}每级 +1 能量护盾
+不会被致盲
 ]],[[
-Death's Hand
-Karui Sceptre
-Variant: Pre 2.3.0
-Variant: Current
-Requires Level 56, 96 Str, 96 Int
-Implicits: 2
-{variant:1}10% increased Elemental Damage
-{variant:2}26% increased Elemental Damage
-Adds (30-41) to (80-123) Physical Damage
-(20-50)% increased Critical Strike Chance
-30% chance to gain a Power Charge when you Stun
-Gain Unholy Might for 2 seconds on Critical Strike
+死神之手
+卡鲁短杖
+版本: 2.3.0以前
+版本: 当前
+等级需求: 56, 96 Str, 96 Int
+固定基底词缀: 2
+{variant:1}火焰、冰霜、闪电伤害提高 10%
+{variant:2}火焰、冰霜、闪电伤害提高 26%
+附加 (30-41) - (80-123) 基础物理伤害
+该装备的攻击暴击率提高 (20-50)%
+晕眩时有 30% 几率获得暴击球
+暴击时获得【不洁之力】 2 秒
 ]],[[
-Doon Cuebiyari
-Vaal Sceptre
-Variant: Pre 2.3.0
-Variant: Current
-Requires Level 64, 113 Str, 113 Int
-Implicits: 2
-{variant:1}10% increased Elemental Damage
-{variant:2}32% increased Elemental Damage
-+(50-70) to Strength
-(15-18)% increased Cast Speed
-+(20-30) to maximum Mana
-Socketed Gems are Supported by level 30 Iron Will
-1% increased Damage per 8 Strength when in Main Hand
-1% increased Armour per 16 Strength when in Off Hand
+黑钢
+瓦尔短杖
+版本: 2.3.0以前
+版本: 当前
+等级需求: 64, 113 Str, 113 Int
+固定基底词缀: 2
+{variant:1}火焰、冰霜、闪电伤害提高 10%
+{variant:2}火焰、冰霜、闪电伤害提高 32%
++(50-70) 力量
+施法速度提高 (15-18)%
++(20-30) 最大魔力
+此物品上的技能石受到 30 级的钢铁意志辅助
+在主手时，每 8 力量提高 1% 伤害
+在副手时，每 16 力量提高 1% 护甲
 ]],[[
-Doryani's Catalyst
-Vaal Sceptre
-Source: Drops from unique{Atziri, Queen of the Vaal} in normal{The Apex of Sacrifice}
-Variant: Pre 2.3.0
-Variant: Current
-Requires Level 75, 113 Str, 113 Int
-Implicits: 2
-{variant:1}10% increased Elemental Damage
-{variant:2}32% increased Elemental Damage
-Socketed Gems are Supported by level 20 Elemental Proliferation
-Adds (65-85) to (100-160) Physical Damage
-(11-15)% increased Attack Speed
-(6-10)% increased Cast Speed
-(30-40)% increased Global Critical Strike Chance
-0.2% of Elemental Damage Leeched as Life
-(80-100)% increased Elemental Damage
+多里亚尼的幻化之杖
+瓦尔短杖
+源: 传奇Boss【瓦尔女王阿兹里】 专属掉落（地图【生贽之尖】） 
+版本: 2.3.0以前
+版本: 当前
+等级需求: 75, 113 Str, 113 Int
+固定基底词缀: 2
+{variant:1}火焰、冰霜、闪电伤害提高 10%
+{variant:2}火焰、冰霜、闪电伤害提高 32%
+此物品上的技能石受到 20 级的 元素扩散 辅助
+附加 (65-85) - (100-160) 基础物理伤害
+攻击速度提高 (11-15)%
+施法速度提高 (6-10)%
+攻击和法术暴击率提高 (30-40)%
+火焰、冰霜、闪电伤害的 0.2% 转化为生命偷取
+火焰、冰霜、闪电伤害提高 (80-100)%
 ]],[[
-Mon'tregul's Grasp
-Void Sceptre
-Variant: Pre 1.2.0
-Variant: Pre 2.3.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 68, 104 Str, 122 Int
-Implicits: 2
-{variant:1,2}15% increased Elemental Damage
-{variant:3,4}40% increased Elemental Damage
-50% reduced number of Zombies allowed
-{variant:1}+500 to Zombie maximum Life
-{variant:2,3}+2000 to Zombie maximum Life
-{variant:4}+5000 to Zombie maximum Life
-(25-30)% increased Zombie Resistances
-25% increased Zombie Size
-{variant:1,2,3}Zombies deal (80-100)% increased Physical Damage
-{variant:4}Zombies deal (80-100)% more Physical Damage
-Enemies killed by Zombies explode dealing Fire Damage
+凋灵魔爪
+虚影短杖
+版本: 1.2.0以前
+版本: 2.3.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 68, 104 Str, 122 Int
+固定基底词缀: 2
+{variant:1,2}火焰、冰霜、闪电伤害提高 15%
+{variant:3,4}火焰、冰霜、闪电伤害提高 40%
+魔卫数量上限降低 50%
+{variant:1}+500 魔卫最大生命
+{variant:2,3}+2000 魔卫最大生命
+{variant:4}+5000 魔卫最大生命
+魔卫抗性提高 (25-30)%
+魔卫体型增大 25%
+{variant:1,2,3}魔卫的物理伤害提高 (80-100)%
+{variant:4}魔卫的物理总伤害额外提高 (80-100)%
+魔卫击败敌人时，产生的爆炸会造成火焰伤害
 ]],[[
-Nycta's Lantern
-Crystal Sceptre
-Variant: Pre 2.0.0
-Variant: Pre 2.3.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 41, 59 Str, 85 Int
-Implicits: 2
-{variant:1,2}20% increased Elemental Damage
-{variant:3,4}30% increased Elemental Damage
-{variant:4}+2 to Level of Socketed Fire Gems
-{variant:1,2,3}Socketed Gems are Supported by level 10 Added Fire Damage
-{variant:1,2,3}Socketed Gems are Supported by level 10 Cold to Fire
-Socketed Gems are Supported by level 10 Fire Penetration
-{variant:4}Socketed Gems deal 63 to 94 additional Fire Damage
-(20-30)% increased Spell Damage
-{variant:2,3,4}(150-200)% increased Physical Damage
-+(6-10) Life gained for each Enemy hit by Attacks
-25% increased Light Radius
+奈可妲之灯
+水晶短杖
+版本: 2.0.0以前
+版本: 2.3.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 41, 59 Str, 85 Int
+固定基底词缀: 2
+{variant:1,2}火焰、冰霜、闪电伤害提高 20%
+{variant:3,4}火焰、冰霜、闪电伤害提高 30%
+{variant:4}此物品上装备的【火焰技能石】等级 +2
+{variant:1,2,3}此物品上的技能石受到 10 级的 附加火焰伤害 辅助
+{variant:1,2,3}此物品上的技能石受到 10 级的 寒冰转烈焰 辅助
+此物品上的技能石受到 10 级的 火焰穿透 辅助
+{variant:4}此物品上的技能石额外造成 63 - 94 火焰伤害
+法术伤害提高 (20-30)%
+{variant:2,3,4}物理伤害提高 (150-200)%
+攻击击中每个敌人会回复 +(6-10) 生命
+照亮范围扩大 25%
 ]],[[
-Singularity
-Platinum Sceptre
-Variant: Pre 2.3.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 62, 113 Str, 113 Int
-Implicits: 2
-{variant:1}10% increased Elemental Damage
-{variant:2,3}30% increased Elemental Damage
-Adds (30-40) to (60-70) Lightning Damage to Spells
-(14-18)% increased Cast Speed
-(6-8)% reduced Mana Cost of Skills
-Nearby Enemies are Hindered, with 25% reduced Movement Speed
-{variant:1,2}(60-80)% increased Damage against Hindered Enemies
-{variant:3}(60-80)% increased Damage with Hits and Ailments against Hindered Enemies
+奇异
+白金短杖
+版本: 2.3.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 62, 113 Str, 113 Int
+固定基底词缀: 2
+{variant:1}火焰、冰霜、闪电伤害提高 10%
+{variant:2,3}火焰、冰霜、闪电伤害提高 30%
+法术附加 (30-40) - (60-70) 闪电伤害
+施法速度提高 (14-18)%
+技能魔力消耗降低 (6-8)%
+周围敌人被干扰，移动速度降低 25%
+{variant:1,2}对被干扰敌人的伤害提高 (60-80)%
+{variant:3}击中和异常状态对被干扰敌人的伤害提高 (60-80)%
 ]],[[
-Spine of the First Claimant
-Iron Sceptre
-Source: Drops in The Lord's Labyrinth
-Variant: Pre 2.3.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 20, 38 Str, 38 Int
-Implicits: 2
-{variant:1}10% increased Elemental Damage
-{variant:2,3}14% increased Elemental Damage
-(100-140)% increased Physical Damage
-{variant:1,2}40% increased Damage against Frozen Enemies
-{variant:3}40% increased Damage with Hits against Frozen Enemies
-(30-50)% increased Cold Damage
-(5-10)% increased Attack Speed
-(4-8)% increased Cast Speed
-5% chance to Freeze
+先驱之脊
+冷铁短杖
+源: 帝王试炼迷宫专属掉落
+版本: 2.3.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 20, 38 Str, 38 Int
+固定基底词缀: 2
+{variant:1}火焰、冰霜、闪电伤害提高 10%
+{variant:2,3}火焰、冰霜、闪电伤害提高 14%
+物理伤害提高 (100-140)%
+{variant:1,2}对被冰冻敌人的击中伤害提高 40%
+{variant:3}对被冰冻敌人的击中伤害提高 40%
+冰霜伤害提高 (30-50)%
+攻击速度提高 (5-10)%
+施法速度提高 (4-8)%
+冰霜伤害击中时有 5% 的几率冰冻敌人
 ]],[[
-The Supreme Truth
-Crystal Sceptre
-Variant: Pre 2.0.0
-Variant: Pre 2.3.0
-Variant: Current
-Requires Level 41, 59 Str, 136 Int
-Implicits: 2
-{variant:1,2}20% increased Elemental Damage
-{variant:3}30% increased Elemental Damage
-+1 to Level of Socketed Gems
-(80-100)% increased Physical Damage
-(10-20)% increased Attack Speed
-{variant:1}5% increased Experience gain
-{variant:2,3}3% increased Experience gain
-20% increased Elemental Damage
-60% increased Intelligence Requirement
+无上箴言
+水晶短杖
+版本: 2.0.0以前
+版本: 2.3.0以前
+版本: 当前
+等级需求: 41, 59 Str, 136 Int
+固定基底词缀: 2
+{variant:1,2}火焰、冰霜、闪电伤害提高 20%
+{variant:3}火焰、冰霜、闪电伤害提高 30%
+此物品上装备的技能石等级 +1
+物理伤害提高 (80-100)%
+攻击速度提高 (10-20)%
+{variant:1}经验值获取提高 5%
+{variant:2,3}经验值获取提高 3%
+火焰、冰霜、闪电伤害提高 20%
+智慧需求提高 60%
 ]],
 -- Weapon: Two Handed Mace
 [[
-Brain Rattler 
-Meatgrinder
-Source: Drops from unique{Guardian of the Minotaur}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 63, 212 Str
-Implicits: 2
-{variant:1}20% increased Stun Duration on Enemies
-{variant:2}30% increased Stun Duration on Enemies
-Adds (80-100) to (320–370) Physical Damage
-50% of Physical Damage Converted to Lightning Damage
-15% chance to Shock
-10% chance to Cause Monsters to Flee
-Enemies you Shock have 30% reduced Cast Speed
-Enemies you Shock have 20% reduced Movement Speed
-Damage Penetrates 20% Lightning Resistance
+脑乱者
+戮魂重锤
+源: 传奇Boss【牛头人守卫】 专属掉落
+版本: 2.6.0以前
+版本: 当前
+等级需求: 63, 212 Str
+固定基底词缀: 2
+{variant:1}敌人被晕眩时间延长 20% 
+{variant:2}敌人被晕眩时间延长 30% 
+附加 (80-100) - (320-370) 基础物理伤害
+物理伤害的 50% 转换为闪电伤害
+闪电伤害击中时有 15% 几率使敌人受到感电效果影响
+10% 几率使敌人逃跑
+被你感电的敌人施法速度降低 30%
+被你感电的敌人移动速度降低 20%
+伤害穿透 20% 闪电抗性
 ]],[[
-Chober Chaber
-Great Mallet
-Upgrade: Upgrades to unique{Chaber Cairn} via prophecy{Faith Exhumed}
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 40, 104 Str
-Implicits: 2
-{variant:1}20% increased Stun Duration on Enemies
-{variant:2,3}30% increased Stun Duration on Enemies
-+1 to Level of Socketed Melee Gems
-+1 to Level of Socketed Minion Gems
-{variant:1,2}(100-120)% increased Physical Damage
-{variant:3}(200–220)% increased Physical Damage
-25% increased maximum Mana
-Minions have (20-40)% increased maximum Life
-15% increased Skill Effect Duration
-20% reduced Strength Requirement
+忠诚之锤
+刚猛巨锤
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 40, 104 Str
+固定基底词缀: 2
+{variant:1}敌人被晕眩时间延长 20% 
+{variant:2,3}敌人被晕眩时间延长 30% 
+此物品上装备的【近战技能石】等级 +1
+此物品上装备的【召唤生物技能石】等级 +1
+{variant:1,2}物理伤害提高 (100-120)%
+{variant:3}物理伤害提高 (200-220)%
+最大魔力提高 25%
+召唤生物的最大生命提高 (20-40)%
+技能效果持续时间延长 15%
+力量需求降低 20%
 ]],[[
-Geofri's Baptism
-Brass Maul
-Upgrade: Upgrades to unique{Geofri's Devotion} via prophecy{Black Devotion}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 27, 92 Str
-Implicits: 2
-{variant:1}20% increased Stun Duration on Enemies
-{variant:2}30% increased Stun Duration on Enemies
-200% increased Physical Damage
-Adds 11 to 23 Cold Damage
-(10-20)% increased Stun Duration on Enemies
-Never deal Critical Strikes
+吉尔菲的净罪之锤
+铜影巨锤
+升级: 使用 预言【黑暗狂热】 升级 传奇【吉尔菲的奉献之锤】
+版本: 2.6.0以前
+版本: 当前
+等级需求: 27, 92 Str
+固定基底词缀: 2
+{variant:1}敌人被晕眩时间延长 20% 
+{variant:2}敌人被晕眩时间延长 30% 
+物理伤害提高 200%
+附加 11 - 23 基础冰霜伤害
+敌人被晕眩时间延长 (10-20)% 
+无法造成暴击
 ]],[[
-Geofri's Devotion
-Brass Maul
-Source: Upgraded from unique{Geofri's Baptism} via prophecy{Black Devotion}
-Requires Level 61
-20% increased Stun Duration on Enemies
-Trigger Level 20 Elemental Warding when you Hit an Enemy while Cursed
-200% increased Physical Damage
-Adds (50–56) to (73–78) Physical Damage
-Adds 11 to 23 Cold Damage
-(10–20)% increased Stun Duration on Enemies
-Never deal Critical Strikes
+吉尔菲的奉献之锤
+铜影巨锤
+源: 由 传奇【吉尔菲的净罪之锤】 使用 预言【黑暗狂热】 升级
+等级需求: 61
+敌人被晕眩时间延长 20% 
+被诅咒时你击中一个敌人，触发 20 级的【元素守卫】
+物理伤害提高 200%
+附加 (50-56) - (73-78) 基础物理伤害
+附加 11 - 23 基础冰霜伤害
+敌人被晕眩时间延长 (10-20)% 
+无法造成暴击
 ]],[[
-Hrimnor's Hymn
-Sledgehammer
-Upgrade: Upgrades to unique{Hrimnor's Dirge} via prophecy{Winter's Mournful Melodies}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 17, 62 Str
-Implicits: 2
-{variant:1}40% increased Stun Duration on Enemies
-{variant:2}45% increased Stun Duration on Enemies
-(140-200)% increased Physical Damage
-+10 to Strength
-15% reduced Enemy Stun Threshold
-1% of Physical Attack Damage Leeched as Life
-(40-50)% increased Stun Duration on Enemies
+雷姆诺的挽歌
+冷铁重锤
+升级: 使用 预言【冬季悲歌】 升级为 传奇【雷姆诺的挽歌】
+版本: 2.6.0以前
+版本: 当前
+等级需求: 36, 62 Str
+固定基底词缀: 2
+{variant:1}敌人被晕眩时间延长 40% 
+{variant:2}敌人被晕眩时间延长 45% 
+物理伤害提高 (140-200)%
+附加 (10-20) - (30-40) 基础物理伤害
++10 力量
+敌人晕眩门槛降低 15%
+物理攻击伤害的 1% 会转化为生命偷取
+敌人被晕眩时间延长 (40-50)% 
+获得额外冰霜伤害， 其数值等同于物理伤害的 50%
 ]],[[
-Hrimnor's Dirge
-Sledgehammer
-Source: Upgraded from unique{Hrimnor's Hymn} using prophecy{Winter's Mournful Melodies}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 36, 62 Str
-Implicits: 2
-{variant:1}40% increased Stun Duration on Enemies
-{variant:2}45% increased Stun Duration on Enemies
-(140-200)% increased Physical Damage
-Adds (10-20) to (30-40) Physical Damage
-+10 to Strength
-15% reduced Enemy Stun Threshold
-1% of Physical Attack Damage Leeched as Life
-(40-50)% increased Stun Duration on Enemies
-Gain 50% of Physical Damage as Extra Cold Damage
+雷姆诺的夺命凶器
+冷铁重锤
+源: 由 传奇【雷姆诺的夺命凶器】 使用 预言【冬季悲歌】 升级
+版本: 2.6.0以前
+版本: 当前
+等级需求: 17, 62 Str
+固定基底词缀: 2
+{variant:1}敌人被晕眩时间延长 40% 
+{variant:2}敌人被晕眩时间延长 45% 
+物理伤害提高 (140-200)%
++10 力量
+敌人晕眩门槛降低 15%
+物理攻击伤害的 1% 会转化为生命偷取
+敌人被晕眩时间延长 (40-50)% 
 ]],[[
-Jorrhast's Blacksteel
-Steelhead
-League: Tempest
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 44, 143 Str
-Implicits: 2
-{variant:1}40% increased Stun Duration on Enemies
-{variant:2}45% increased Stun Duration on Enemies
-(150-200)% increased Physical Damage
-(8-12)% increased Cast Speed
-(8-12)% increased Attack Speed
-30% less Animate Weapon Duration
-Weapons you Animate create an additional copy
-{variant:2}25% chance to Trigger level 20 Animate Weapon on Kill
+乔赫黑钢
+沉钢重锤
+联盟: 风暴
+版本: 2.6.0以前
+版本: 当前
+等级需求: 44, 143 Str
+固定基底词缀: 2
+{variant:1}敌人被晕眩时间延长 40% 
+{variant:2}敌人被晕眩时间延长 45% 
+物理伤害提高 (150-200)%
+施法速度提高 (8-12)%
+攻击速度提高 (8-12)%
+30% 较少幻化武器时间
+你幻化的武器将额外复制 1 把
+{variant:2}击败敌人时有 25% 几率触发 20 级的【幻化武器】
 ]],[[
-Kongor's Undying Rage
-Terror Maul
-Variant: Pre 2.0.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 67, 212 Str
-Implicits: 2
-{variant:1,2}20% increased Stun Duration on Enemies
-{variant:3}30% increased Stun Duration on Enemies
-{variant:1}Adds (27-36) to (270-360) Physical Damage
-{variant:2,3}Adds (27-56) to (270-400) Physical Damage
-{variant:2,3}(30-40)% increased Critical Strike Chance
-+(15-20)% to all Elemental Resistances
-Hits can't be Evaded
-Your Critical Strikes do not deal extra Damage
-{variant:1,2}You gain Onslaught for 2 seconds on Critical Strike
-{variant:3}You gain Onslaught for 4 seconds on Critical Strike
+康戈的战炎
+惧灵重锤
+版本: 2.0.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 67, 212 Str
+固定基底词缀: 2
+{variant:1,2}敌人被晕眩时间延长 20% 
+{variant:3}敌人被晕眩时间延长 30% 
+{variant:1}附加 (27-36) - (270-360) 基础物理伤害
+{variant:2,3}附加 (27-56) - (270-400) 基础物理伤害
+{variant:2,3}该装备的攻击暴击率提高 (30-40)%
+获得 +(15-20)% 火焰、冰霜、闪电抗性
+攻击和法术无法被闪避
+你的暴击不造成额外暴击伤害
+{variant:1,2}暴击后获得 2 秒的【猛攻】状态
+{variant:3}暴击后获得 4 秒的【猛攻】状态
 ]],[[
-Marohi Erqi
-Karui Maul
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 57, 182 Str
-Implicits: 2
-{variant:1}20% increased Stun Duration on Enemies
-{variant:2}30% increased Stun Duration on Enemies
-Socketed Gems are Supported by level 15 Increased Area of Effect
-(220-250)% increased Physical Damage
-Adds 10 to 20 Physical Damage
-10% reduced Attack Speed
-−100 to Accuracy Rating
-10% reduced Movement Speed
-(40-50)% increased Stun Duration on Enemies
+尔奇的巨灵之锤
+卡鲁重锤
+版本: 2.6.0以前
+版本: 当前
+等级需求: 57, 182 Str
+固定基底词缀: 2
+{variant:1}敌人被晕眩时间延长 20% 
+{variant:2}敌人被晕眩时间延长 30% 
+此物品上的技能石受到 15 级的 增大范围 辅助
+物理伤害提高 (220-250)%
+附加 10 - 20 基础物理伤害
+攻击速度降低 10%
+-100 命中值
+移动速度降低 10%
+敌人被晕眩时间延长 (40-50)% 
 ]],[[
-Quecholli
-Jagged Maul
-Upgrade: Upgrades to unique{Panquetzaliztli} via prophecy{The Fall of an Empire}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 22, 77 Str
-Implicits: 2
-{variant:1}20% increased Stun Duration on Enemies
-{variant:2}30% increased Stun Duration on Enemies
-(80-100)% increased Physical Damage
-Adds 5 to 25 Physical Damage
-+(25-50) to all Attributes
-+10 Life gained on Kill
-Enemies killed explode dealing 10% of their Life as Fire Damage
+重击之锤
+狼牙重锤
+升级: 使用 预言【帝王之陨】 升级为 传奇【巨击之锤】
+版本: 2.6.0以前
+版本: 当前
+等级需求: 22, 77 Str
+固定基底词缀: 2
+{variant:1}敌人被晕眩时间延长 20% 
+{variant:2}敌人被晕眩时间延长 30% 
+物理伤害提高 (80-100)%
+附加 5 - 25 基础物理伤害
++(25-50) 全属性
+击败敌人回复 +10 生命
+敌人死后爆炸，造成敌人生命 10% 的火焰伤害
 ]],[[
-Panquetzaliztli
-Jagged Maul
-Source: Upgraded from unique{Quecholli} via prophecy{The Fall of an Empire}
-Requires Level 61
-30% increased Stun Duration on Enemies
-(80-100)% increased Physical Damage
-Adds (94-98) to (115-121) Physical Damage
-+(25-50) to all Attributes
-Enemies killed explode dealing 10% of their Life as Fire Damage
-Recover 5% of Maximum Life on Kill
+巨击之锤
+狼牙重锤
+源: 由传奇【重击之锤】 使用 预言【帝王之陨】 升级
+等级需求: 61
+敌人被晕眩时间延长 30% 
+物理伤害提高 (80-100)%
+附加 (94-98) - (115-121) 基础物理伤害
++(25-50) 全属性
+敌人死后爆炸，造成敌人生命 10% 的火焰伤害
+击败敌人时回复 5% 最大生命
 ]],[[
-Tidebreaker
-Imperial Maul
-Requires Level 65, 212 Str
-30% increased Stun Duration on Enemies
-Socketed Gems are Supported by Level 20 Endurance Charge on Melee Stun
-Adds (60–70) to (300–350) Physical Damage
-+40 to Intelligence
-10% increased Physical Damage per Endurance Charge
-(20–30)% reduced Enemy Stun Threshold with this Weapon
+局势逆转者
+帝国重锤
+等级需求: 65, 212 Str
+敌人被晕眩时间延长 30% 
+插槽内的技能石受到 20 级的 近战击晕获得耐力球 辅助
+附加 (60-70) - (300-350) 基础物理伤害
++40 智慧
+每个耐力球可使物理伤害提高 10%
+使用该武器时，敌人晕眩门槛降低 (20-30)%
 ]],[[
-Trypanon
-Great Mallet
-League: Perandus
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 40, 131 Str
-Implicits: 2
-{variant:1}20% increased Stun Duration on Enemies
-{variant:2}30% increased Stun Duration on Enemies
-50% reduced Attack Speed
-All Attacks with this Weapon are Critical Strikes
+裂颅
+刚猛巨锤
+联盟: 普兰德斯
+版本: 2.6.0以前
+版本: 当前
+等级需求: 40, 131 Str
+固定基底词缀: 2
+{variant:1}敌人被晕眩时间延长 20% 
+{variant:2}敌人被晕眩时间延长 30% 
+攻击速度降低 50%
+此武器进行的所有攻击皆是暴击
 ]],[[
-Voidhome
-Dread Maul
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 54, 173 Str
-Implicits: 2
-{variant:1}20% increased Stun Duration on Enemies
-{variant:2}30% increased Stun Duration on Enemies
-150% increased Physical Damage
-50% increased Attack Speed
-(30-50)% reduced Rarity of Items found
-(30-50)% reduced Experience gain
-0.4% of Physical Attack Damage Leeched as Mana
+逝空之锤
+威权巨锤
+版本: 2.6.0以前
+版本: 当前
+等级需求: 54, 173 Str
+固定基底词缀: 2
+{variant:1}敌人被晕眩时间延长 20% 
+{variant:2}敌人被晕眩时间延长 30% 
+物理伤害提高 150%
+攻击速度提高 50%
+物品稀有度降低 (30-50)%
+经验值获取降低 (30-50)%
+物理攻击伤害的 0.4% 转化为魔力偷取
 ]],
 }

@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Module: Build
 -- Loads and manages the current build.
@@ -33,10 +33,10 @@ local mercilessBanditDropList = {
 	{ label = "Alira (Cast Speed)", banditId = "Alira" },
 }
 local fooBanditDropList = {
-	{ label = "2 Passive Points", banditId = "None" },
-	{ label = "Oak (Life Regen, Phys.Dmg. Reduction, Phys.Dmg)", banditId = "Oak" },
-	{ label = "Kraityn (Attack/Cast Speed, Attack Dodge, Move Speed)", banditId = "Kraityn" },
-	{ label = "Alira (Mana Regen, Crit Multiplier, Resists)", banditId = "Alira" },
+{ label = "全杀（2点天赋点）", banditId = "None" },
+{ label = "欧克 (生命回复，物理伤害，物理减伤)", banditId = "Oak" },
+{ label = "克雷顿 (攻击/施法速度，攻击躲避，移动速度)", banditId = "Kraityn" },
+{ label = "阿莉亚 (魔力回复，暴击伤害，抗性)", banditId = "Alira" },
 }
 
 local buildMode = common.New("ControlHost")
@@ -68,7 +68,7 @@ function buildMode:Init(dbFileName, buildName, buildXML, targetVersion)
 
 	-- Controls: top bar, left side
 	self.anchorTopBarLeft = common.New("Control", nil, 4, 4, 0, 20)
-	self.controls.back = common.New("ButtonControl", {"LEFT",self.anchorTopBarLeft,"RIGHT"}, 0, 0, 60, 20, "<< Back", function()
+self.controls.back = common.New("ButtonControl", {"LEFT",self.anchorTopBarLeft,"RIGHT"}, 0, 0, 60, 20, "<<返回", function()
 		if self.unsaved then
 			self:OpenSavePopup("LIST")
 		else
@@ -92,7 +92,7 @@ function buildMode:Init(dbFileName, buildName, buildXML, targetVersion)
 		DrawImage(nil, x + 92, y + 1, self.strWidth + 4, 18)
 		SetDrawColor(1, 1, 1)
 		SetViewport(x, y + 2, self.strWidth + 94, 16)
-		DrawString(0, 0, "LEFT", 16, "VAR", "Current build:  "..self.buildName)
+DrawString(0, 0, "LEFT", 16, "VAR", "当前的 build :  "..self.buildName)
 		SetViewport()
 		if control:IsMouseInBounds() then
 			SetDrawLayer(nil, 10)
@@ -106,13 +106,13 @@ function buildMode:Init(dbFileName, buildName, buildXML, targetVersion)
 			SetDrawLayer(nil, 0)
 		end
 	end
-	self.controls.save = common.New("ButtonControl", {"LEFT",self.controls.buildName,"RIGHT"}, 8, 0, 50, 20, "Save", function()
+self.controls.save = common.New("ButtonControl", {"LEFT",self.controls.buildName,"RIGHT"}, 8, 0, 50, 20, "保存", function()
 		self:SaveDBFile()
 	end)
 	self.controls.save.enabled = function()
 		return not self.dbFileName or self.unsaved
 	end
-	self.controls.saveAs = common.New("ButtonControl", {"LEFT",self.controls.save,"RIGHT"}, 8, 0, 70, 20, "Save As", function()
+self.controls.saveAs = common.New("ButtonControl", {"LEFT",self.controls.save,"RIGHT"}, 8, 0, 70, 20, "另存为", function()
 		self:OpenSaveAsPopup()
 	end)
 	self.controls.saveAs.enabled = function()
@@ -194,7 +194,7 @@ function buildMode:Init(dbFileName, buildName, buildXML, targetVersion)
 				self.spec:AddUndoState()
 				self.buildFlag = true
 			else
-				main:OpenConfirmPopup("Class Change", "Changing class to "..value.label.." will reset your passive tree.\nThis can be avoided by connecting one of the "..value.label.." starting nodes to your tree.", "Continue", function()
+main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会重置你目前的天赋树.\n你可以考虑连接当前的天赋点到 "..value.label.." 出门点就不会被重置了。", "Continue", function()
 					self.spec:SelectClass(value.classId)
 					self.spec:AddUndoState()
 					self.buildFlag = true					
@@ -212,106 +212,106 @@ function buildMode:Init(dbFileName, buildName, buildXML, targetVersion)
 	-- This defines the stats in the side bar, and also which stats show in node/item comparisons
 	-- This may be user-customisable in the future
 	self.displayStats = {
-		{ stat = "ActiveMinionLimit", label = "Active Minion Limit", fmt = "d" },
-		{ stat = "AverageHit", label = "Average Hit", fmt = ".1f", compPercent = true },
-		{ stat = "AverageDamage", label = "Average Damage", fmt = ".1f", compPercent = true, flag = "attack" },
-		{ stat = "Speed", label = "Attack Rate", fmt = ".2f", compPercent = true, flag = "attack" },
-		{ stat = "Speed", label = "Cast Rate", fmt = ".2f", compPercent = true, flag = "spell" },
-		{ stat = "HitSpeed", label = "Hit Rate", fmt = ".2f" },
-		{ stat = "TrapThrowingTime", label = "Trap Throwing Time", fmt = ".2fs", compPercent = true, lowerIsBetter = true, },
-		{ stat = "TrapCooldown", label = "Trap Cooldown", fmt = ".2fs", lowerIsBetter = true },
-		{ stat = "MineLayingTime", label = "Mine Laying Time", fmt = ".2fs", compPercent = true, lowerIsBetter = true, },
-		{ stat = "TotemPlacementTime", label = "Totem Placement Time", fmt = ".2fs", compPercent = true, lowerIsBetter = true, },
-		{ stat = "PreEffectiveCritChance", label = "Crit Chance", fmt = ".2f%%" },
-		{ stat = "CritChance", label = "Effective Crit Chance", fmt = ".2f%%", condFunc = function(v,o) return v ~= o.PreEffectiveCritChance end },
-		{ stat = "CritMultiplier", label = "Crit Multiplier", fmt = "d%%", pc = true, condFunc = function(v,o) return (o.CritChance or 0) > 0 end },
-		{ stat = "HitChance", label = "Hit Chance", fmt = ".0f%%", flag = "attack" },
-		{ stat = "TotalDPS", label = "Total DPS", fmt = ".1f", compPercent = true, flag = "notAverage" },
-		{ stat = "TotalDot", label = "DoT DPS", fmt = ".1f", compPercent = true },
-		{ stat = "BleedDPS", label = "Bleed DPS", fmt = ".1f", compPercent = true },
-		{ stat = "IgniteDPS", label = "Ignite DPS", fmt = ".1f", compPercent = true },
-		{ stat = "IgniteDamage", label = "Total Damage per Ignite", fmt = ".1f", compPercent = true },
-		{ stat = "WithIgniteDPS", label = "Total DPS inc. Ignite", fmt = ".1f", compPercent = true },
-		{ stat = "WithIgniteAverageDamage", label = "Average Dmg. inc. Ignite", fmt = ".1f", compPercent = true },
-		{ stat = "PoisonDPS", label = "Poison DPS", fmt = ".1f", compPercent = true },
-		{ stat = "PoisonDamage", label = "Total Damage per Poison", fmt = ".1f", compPercent = true },
-		{ stat = "WithPoisonDPS", label = "Total DPS inc. Poison", fmt = ".1f", compPercent = true, flag = "poison", condFunc = function(v,o) return v ~= o.TotalDPS end },
-		{ stat = "WithPoisonAverageDamage", label = "Average Dmg. inc. Poison", fmt = ".1f", compPercent = true, flag = "poison", condFunc = function(v,o) return v ~= o.AverageDamage end },
-		{ stat = "DecayDPS", label = "Decay DPS", fmt = ".1f", compPercent = true },
-		{ stat = "Cooldown", label = "Skill Cooldown", fmt = ".2fs", lowerIsBetter = true },
-		{ stat = "AreaOfEffectRadius", label = "AoE Radius", fmt = "d" },
-		{ stat = "ManaCost", label = "Mana Cost", fmt = "d", compPercent = true, lowerIsBetter = true, condFunc = function() return true end },
+{ stat = "ActiveMinionLimit", label = "召唤生物数量", fmt = "d" },
+{ stat = "AverageHit", label = "平均击中", fmt = ".1f", compPercent = true },
+{ stat = "AverageDamage", label = "平均伤害", fmt = ".1f", compPercent = true, flag = "attack" },
+{ stat = "Speed", label = "攻击速度", fmt = ".2f", compPercent = true, flag = "attack" },
+{ stat = "Speed", label = "施法速度", fmt = ".2f", compPercent = true, flag = "spell" },
+{ stat = "HitSpeed", label = "击中速率", fmt = ".2f" },
+{ stat = "TrapThrowingTime", label = "陷阱投掷时间", fmt = ".2fs", compPercent = true, lowerIsBetter = true, },
+{ stat = "TrapCooldown", label = "陷阱CD", fmt = ".2fs", lowerIsBetter = true },
+{ stat = "MineLayingTime", label = "地雷放置时间", fmt = ".2fs", compPercent = true, lowerIsBetter = true, },
+{ stat = "TotemPlacementTime", label = "图腾放置时间", fmt = ".2fs", compPercent = true, lowerIsBetter = true, },
+{ stat = "PreEffectiveCritChance", label = "暴击几率", fmt = ".2f%%" },
+{ stat = "CritChance", label = "有效暴击几率", fmt = ".2f%%", condFunc = function(v,o) return v ~= o.PreEffectiveCritChance end },
+{ stat = "CritMultiplier", label = "暴击伤害加成", fmt = "d%%", pc = true, condFunc = function(v,o) return (o.CritChance or 0) > 0 end },
+{ stat = "HitChance", label = "命中率", fmt = ".0f%%", flag = "attack" },
+{ stat = "TotalDPS", label = "总 DPS", fmt = ".1f", compPercent = true, flag = "notAverage" },
+{ stat = "TotalDot", label = "持续伤害 DPS", fmt = ".1f", compPercent = true },
+{ stat = "BleedDPS", label = "流血 DPS", fmt = ".1f", compPercent = true },
+{ stat = "IgniteDPS", label = "点燃 DPS", fmt = ".1f", compPercent = true },
+{ stat = "IgniteDamage", label = "每个点燃总伤害", fmt = ".1f", compPercent = true },
+{ stat = "WithIgniteDPS", label = "点燃伤害给总 DPS 增加", fmt = ".1f", compPercent = true },
+{ stat = "WithIgniteAverageDamage", label = "点燃伤害给平均伤害增加", fmt = ".1f", compPercent = true },
+{ stat = "PoisonDPS", label = "中毒 DPS", fmt = ".1f", compPercent = true },
+{ stat = "PoisonDamage", label = "每个中毒总伤害", fmt = ".1f", compPercent = true },
+{ stat = "WithPoisonDPS", label = "中毒伤害给总 DPS 增加", fmt = ".1f", compPercent = true, flag = "poison", condFunc = function(v,o) return v ~= o.TotalDPS end },
+{ stat = "WithPoisonAverageDamage", label = "中毒伤害给平均伤害增加", fmt = ".1f", compPercent = true, flag = "poison", condFunc = function(v,o) return v ~= o.AverageDamage end },
+{ stat = "DecayDPS", label = "腐化 DPS", fmt = ".1f", compPercent = true },
+{ stat = "Cooldown", label = "技能CD", fmt = ".2fs", lowerIsBetter = true },
+{ stat = "AreaOfEffectRadius", label = "范围半径", fmt = "d" },
+{ stat = "ManaCost", label = "魔力消耗", fmt = "d", compPercent = true, lowerIsBetter = true, condFunc = function() return true end },
 		{ },
-		{ stat = "Str", label = "Strength", fmt = "d" },
-		{ stat = "ReqStr", label = "Strength Required", fmt = "d", lowerIsBetter = true, condFunc = function(v,o) return v > o.Str end },
-		{ stat = "Dex", label = "Dexterity", fmt = "d" },
-		{ stat = "ReqDex", label = "Dexterity Required", fmt = "d", lowerIsBetter = true, condFunc = function(v,o) return v > o.Dex end },
-		{ stat = "Int", label = "Intelligence", fmt = "d" },
-		{ stat = "ReqInt", label = "Intelligence Required", fmt = "d", lowerIsBetter = true, condFunc = function(v,o) return v > o.Int end },
+{ stat = "Str", label = "力量", fmt = "d" },
+{ stat = "ReqStr", label = "需求力量", fmt = "d", lowerIsBetter = true, condFunc = function(v,o) return v > o.Str end },
+{ stat = "Dex", label = "敏捷", fmt = "d" },
+{ stat = "ReqDex", label = "需求敏捷", fmt = "d", lowerIsBetter = true, condFunc = function(v,o) return v > o.Dex end },
+{ stat = "Int", label = "智慧", fmt = "d" },
+{ stat = "ReqInt", label = "需求智慧", fmt = "d", lowerIsBetter = true, condFunc = function(v,o) return v > o.Int end },
 		{ },
-		{ stat = "Life", label = "Total Life", fmt = "d", compPercent = true },
-		{ stat = "Spec:LifeInc", label = "%Inc Life from Tree", fmt = "d%%", condFunc = function(v,o) return v > 0 and o.Life > 1 end },
-		{ stat = "LifeUnreserved", label = "Unreserved Life", fmt = "d", condFunc = function(v,o) return v < o.Life end, compPercent = true },
-		{ stat = "LifeUnreservedPercent", label = "Unreserved Life", fmt = "d%%", condFunc = function(v,o) return v < 100 end },
-		{ stat = "LifeRegen", label = "Life Regen", fmt = ".1f" },
-		{ stat = "LifeLeechGainRate", label = "Life Leech/On Hit Rate", fmt = ".1f", compPercent = true },
-		{ stat = "LifeLeechGainPerHit", label = "Life Leech/Gain per Hit", fmt = ".1f", compPercent = true },
+{ stat = "Life", label = "总生命", fmt = "d", compPercent = true },
+{ stat = "Spec:LifeInc", label = "天赋树的生命加成", fmt = "d%%", condFunc = function(v,o) return v > 0 and o.Life > 1 end },
+{ stat = "LifeUnreserved", label = "未保留的生命", fmt = "d", condFunc = function(v,o) return v < o.Life end, compPercent = true },
+{ stat = "LifeUnreservedPercent", label = "未保留生命", fmt = "d%%", condFunc = function(v,o) return v < 100 end },
+{ stat = "LifeRegen", label = "生命回复", fmt = ".1f" },
+{ stat = "LifeLeechGainRate", label = "生命偷取/击中回复速率", fmt = ".1f", compPercent = true },
+{ stat = "LifeLeechGainPerHit", label = "每次击中的生命偷取/击中回复速率", fmt = ".1f", compPercent = true },
 		{ },
-		{ stat = "Mana", label = "Total Mana", fmt = "d", compPercent = true },
-		{ stat = "Spec:ManaInc", label = "%Inc Mana from Tree", fmt = "d%%" },
-		{ stat = "ManaUnreserved", label = "Unreserved Mana", fmt = "d", condFunc = function(v,o) return v < o.Mana end, compPercent = true },
-		{ stat = "ManaUnreservedPercent", label = "Unreserved Mana", fmt = "d%%", condFunc = function(v,o) return v < 100 end },
-		{ stat = "ManaRegen", label = "Mana Regen", fmt = ".1f" },
-		{ stat = "ManaLeechGainRate", label = "Mana Leech/On Hit Rate", fmt = ".1f", compPercent = true },
-		{ stat = "ManaLeechGainPerHit", label = "Mana Leech/Gain per Hit", fmt = ".1f", compPercent = true },
+{ stat = "Mana", label = "总魔力", fmt = "d", compPercent = true },
+{ stat = "Spec:ManaInc", label = "天赋树的魔力加成", fmt = "d%%" },
+{ stat = "ManaUnreserved", label = "未保留的魔力", fmt = "d", condFunc = function(v,o) return v < o.Mana end, compPercent = true },
+{ stat = "ManaUnreservedPercent", label = "未保留魔力", fmt = "d%%", condFunc = function(v,o) return v < 100 end },
+{ stat = "ManaRegen", label = "魔力回复", fmt = ".1f" },
+{ stat = "ManaLeechGainRate", label = "魔力偷取/击中回复速率", fmt = ".1f", compPercent = true },
+{ stat = "ManaLeechGainPerHit", label = "每次击中的魔力偷取/击中回复速率", fmt = ".1f", compPercent = true },
 		{ },
 		{ stat = "TotalDegen", label = "Total Degen", fmt = ".1f", lowerIsBetter = true },
-		{ stat = "NetRegen", label = "Net Regen", fmt = "+.1f" },
-		{ stat = "NetLifeRegen", label = "Net Life Regen", fmt = "+.1f" },
-		{ stat = "NetManaRegen", label = "Net Mana Regen", fmt = "+.1f" },
+{ stat = "NetRegen", label = "Net Regen", fmt = "+.1f" },
+{ stat = "NetLifeRegen", label = "Net Life Regen", fmt = "+.1f" },
+{ stat = "NetManaRegen", label = "Net Mana Regen", fmt = "+.1f" },
 		{ },
-		{ stat = "EnergyShield", label = "Energy Shield", fmt = "d", compPercent = true },
-		{ stat = "Spec:EnergyShieldInc", label = "%Inc ES from Tree", fmt = "d%%" },
-		{ stat = "EnergyShieldRegen", label = "Energy Shield Regen", fmt = ".1f" },
-		{ stat = "EnergyShieldLeechGainRate", label = "ES Leech/On Hit Rate", fmt = ".1f", compPercent = true },
-		{ stat = "EnergyShieldLeechGainPerHit", label = "ES Leech/Gain per Hit", fmt = ".1f", compPercent = true },
-		{ stat = "Evasion", label = "Evasion rating", fmt = "d", compPercent = true },
-		{ stat = "Spec:EvasionInc", label = "%Inc Evasion from Tree", fmt = "d%%" },
-		{ stat = "MeleeEvadeChance", label = "Evade Chance", fmt = "d%%", condFunc = function(v,o) return v > 0 and o.MeleeEvadeChance == o.ProjectileEvadeChance end },
-		{ stat = "MeleeEvadeChance", label = "Melee Evade Chance", fmt = "d%%", condFunc = function(v,o) return v > 0 and o.MeleeEvadeChance ~= o.ProjectileEvadeChance end },
-		{ stat = "ProjectileEvadeChance", label = "Projectile Evade Chance", fmt = "d%%", condFunc = function(v,o) return v > 0 and o.MeleeEvadeChance ~= o.ProjectileEvadeChance end },
-		{ stat = "Armour", label = "Armour", fmt = "d", compPercent = true },
-		{ stat = "Spec:ArmourInc", label = "%Inc Armour from Tree", fmt = "d%%" },
-		{ stat = "PhysicalDamageReduction", label = "Phys. Damage Reduction", fmt = "d%%" },
-		{ stat = "EffectiveMovementSpeedMod", label = "Movement Speed Modifier", fmt = "+d%%", mod = true, condFunc = function() return true end },
-		{ stat = "BlockChance", label = "Block Chance", fmt = "d%%" },
-		{ stat = "SpellBlockChance", label = "Spell Block Chance", fmt = "d%%" },
-		{ stat = "AttackDodgeChance", label = "Attack Dodge Chance", fmt = "d%%" },
-		{ stat = "SpellDodgeChance", label = "Spell Dodge Chance", fmt = "d%%" },
+{ stat = "EnergyShield", label = "能量护盾", fmt = "d", compPercent = true },
+{ stat = "Spec:EnergyShieldInc", label = "天赋树的能量护盾加成", fmt = "d%%" },
+{ stat = "EnergyShieldRegen", label = "能量护盾回复", fmt = ".1f" },
+{ stat = "EnergyShieldLeechGainRate", label = "能量护盾偷取/击中回复速率", fmt = ".1f", compPercent = true },
+{ stat = "EnergyShieldLeechGainPerHit", label = "每次击中的能量护盾偷取/击中回复速率", fmt = ".1f", compPercent = true },
+{ stat = "Evasion", label = "闪避", fmt = "d", compPercent = true },
+{ stat = "Spec:EvasionInc", label = "天赋树的闪避加成", fmt = "d%%" },
+{ stat = "MeleeEvadeChance", label = "闪避几率", fmt = "d%%", condFunc = function(v,o) return v > 0 and o.MeleeEvadeChance == o.ProjectileEvadeChance end },
+{ stat = "MeleeEvadeChance", label = "近战闪避几率 ", fmt = "d%%", condFunc = function(v,o) return v > 0 and o.MeleeEvadeChance ~= o.ProjectileEvadeChance end },
+{ stat = "ProjectileEvadeChance", label = "投射物闪避几率", fmt = "d%%", condFunc = function(v,o) return v > 0 and o.MeleeEvadeChance ~= o.ProjectileEvadeChance end },
+{ stat = "Armour", label = "护甲", fmt = "d", compPercent = true },
+{ stat = "Spec:ArmourInc", label = "天赋树的护甲加成", fmt = "d%%" },
+{ stat = "PhysicalDamageReduction", label = "物理伤害减伤", fmt = "d%%" },
+{ stat = "EffectiveMovementSpeedMod", label = "移动速度加成", fmt = "+d%%", mod = true, condFunc = function() return true end },
+{ stat = "BlockChance", label = "攻击格挡几率", fmt = "d%%" },
+{ stat = "SpellBlockChance", label = "法术格挡几率", fmt = "d%%" },
+{ stat = "AttackDodgeChance", label = "攻击躲避几率", fmt = "d%%" },
+{ stat = "SpellDodgeChance", label = "法术躲避几率", fmt = "d%%" },
 		{ },
-		{ stat = "FireResist", label = "Fire Resistance", fmt = "d%%", condFunc = function() return true end },
-		{ stat = "ColdResist", label = "Cold Resistance", fmt = "d%%", condFunc = function() return true end },
-		{ stat = "LightningResist", label = "Lightning Resistance", fmt = "d%%", condFunc = function() return true end },
-		{ stat = "ChaosResist", label = "Chaos Resistance", fmt = "d%%", condFunc = function() return true end },
-		{ stat = "FireResistOverCap", label = "Fire Res. Over Max", fmt = "d%%" },
-		{ stat = "ColdResistOverCap", label = "Cold Res. Over Max", fmt = "d%%" },
-		{ stat = "LightningResistOverCap", label = "Lightning Res. Over Max", fmt = "d%%" },
-		{ stat = "ChaosResistOverCap", label = "Chaos Res. Over Max", fmt = "d%%" },
+{ stat = "FireResist", label = "火焰抗性", fmt = "d%%", condFunc = function() return true end },
+{ stat = "ColdResist", label = "冰霜抗性", fmt = "d%%", condFunc = function() return true end },
+{ stat = "LightningResist", label = "闪电抗性", fmt = "d%%", condFunc = function() return true end },
+{ stat = "ChaosResist", label = "混沌抗性", fmt = "d%%", condFunc = function() return true end },
+{ stat = "FireResistOverCap", label = "火焰抗性溢出", fmt = "d%%" },
+{ stat = "ColdResistOverCap", label = "冰霜抗性溢出", fmt = "d%%" },
+{ stat = "LightningResistOverCap", label = "闪电抗性溢出", fmt = "d%%" },
+{ stat = "ChaosResistOverCap", label = "混沌抗性溢出", fmt = "d%%" },
 	}
 	self.minionDisplayStats = {
-		{ stat = "AverageDamage", label = "Average Damage", fmt = ".1f", compPercent = true },
-		{ stat = "Speed", label = "Attack/Cast Rate", fmt = ".2f", compPercent = true },
-		{ stat = "HitSpeed", label = "Hit Rate", fmt = ".2f" },
-		{ stat = "TotalDPS", label = "Total DPS", fmt = ".1f", compPercent = true },
-		{ stat = "TotalDot", label = "DoT DPS", fmt = ".1f", compPercent = true },
-		{ stat = "BleedDPS", label = "Bleed DPS", fmt = ".1f", compPercent = true },
-		{ stat = "IgniteDPS", label = "Ignite DPS", fmt = ".1f", compPercent = true },
-		{ stat = "WithPoisonDPS", label = "DPS inc. Poison", fmt = ".1f", compPercent = true },
-		{ stat = "DecayDPS", label = "Decay DPS", fmt = ".1f", compPercent = true },
-		{ stat = "Cooldown", label = "Skill Cooldown", fmt = ".2fs", lowerIsBetter = true },
-		{ stat = "Life", label = "Total Life", fmt = ".1f", compPercent = true },
-		{ stat = "LifeRegen", label = "Life Regen", fmt = ".1f" },
-		{ stat = "LifeLeechGainRate", label = "Life Leech/On Hit Rate", fmt = ".1f", compPercent = true },
+{ stat = "AverageDamage", label = "平均伤害", fmt = ".1f", compPercent = true },
+{ stat = "Speed", label = "攻击/施法速度", fmt = ".2f", compPercent = true },
+{ stat = "HitSpeed", label = "击中速率", fmt = ".2f" },
+{ stat = "TotalDPS", label = "总 DPS", fmt = ".1f", compPercent = true },
+{ stat = "TotalDot", label = "持续伤害 DPS", fmt = ".1f", compPercent = true },
+{ stat = "BleedDPS", label = "流血 DPS", fmt = ".1f", compPercent = true },
+{ stat = "IgniteDPS", label = "点燃 DPS", fmt = ".1f", compPercent = true },
+{ stat = "WithPoisonDPS", label = "中毒伤害给总 DPS增加", fmt = ".1f", compPercent = true },
+{ stat = "DecayDPS", label = "腐化 DPS", fmt = ".1f", compPercent = true },
+{ stat = "Cooldown", label = "技能CD", fmt = ".2fs", lowerIsBetter = true },
+{ stat = "Life", label = "总生命", fmt = ".1f", compPercent = true },
+{ stat = "LifeRegen", label = "生命回复", fmt = ".1f" },
+{ stat = "LifeLeechGainRate", label = "生命偷取/击中回复速率", fmt = ".1f", compPercent = true },
 	}
 	self.extraSaveStats = {
 		"PowerCharges",
@@ -365,31 +365,42 @@ function buildMode:Init(dbFileName, buildName, buildXML, targetVersion)
 
 	-- Controls: Side bar
 	self.anchorSideBar = common.New("Control", nil, 4, 36, 0, 0)
-	self.controls.modeImport = common.New("ButtonControl", {"TOPLEFT",self.anchorSideBar,"TOPLEFT"}, 0, 0, 134, 20, "Import/Export Build", function()
+self.controls.modeImport = common.New("ButtonControl", {"TOPLEFT",self.anchorSideBar,"TOPLEFT"}, 0, 0, 72, 20, "导入/导出", function()
 		self.viewMode = "IMPORT"
 	end)
 	self.controls.modeImport.locked = function() return self.viewMode == "IMPORT" end
-	self.controls.modeNotes = common.New("ButtonControl", {"LEFT",self.controls.modeImport,"RIGHT"}, 4, 0, 58, 20, "Notes", function()
+--self.controls.modeNotes = common.New("ButtonControl", {"LEFT",self.controls.modeImport,"RIGHT"}, 4, 0, 58, 20, "BD备注", function()
+self.controls.modeNotes = common.New("ButtonControl", {"LEFT",self.controls.modeImport,"RIGHT"}, 4, 0, 72, 20, "BD备注", function()
+	
 		self.viewMode = "NOTES"
 	end)
 	self.controls.modeNotes.locked = function() return self.viewMode == "NOTES" end
-	self.controls.modeConfig = common.New("ButtonControl", {"TOPRIGHT",self.anchorSideBar,"TOPLEFT"}, 300, 0, 100, 20, "Configuration", function()
+--self.controls.modeConfig = common.New("ButtonControl", {"TOPRIGHT",self.anchorSideBar,"TOPLEFT"}, 300, 0, 100, 20, "配置", function()
+self.controls.modeConfig = common.New("ButtonControl",  {"TOPRIGHT",self.anchorSideBar,"TOPLEFT"}, 225, 0, 72, 20, "配置", function()
+
 		self.viewMode = "CONFIG"
 	end)
+	
+	-- lucifer
+self.controls.aboutTab = common.New("ButtonControl",  {"TOPRIGHT",self.anchorSideBar,"TOPLEFT"}, 300, 0, 72, 20, "国服版", function()
+		self.viewMode = "ABOUT"
+	end)
+	self.controls.aboutTab.locked = function() return self.viewMode == "ABOUT" end
+	--
 	self.controls.modeConfig.locked = function() return self.viewMode == "CONFIG" end
-	self.controls.modeTree = common.New("ButtonControl", {"TOPLEFT",self.anchorSideBar,"TOPLEFT"}, 0, 26, 72, 20, "Tree", function()
+self.controls.modeTree = common.New("ButtonControl", {"TOPLEFT",self.anchorSideBar,"TOPLEFT"}, 0, 26, 72, 20, "天赋树", function()
 		self.viewMode = "TREE"
 	end)
 	self.controls.modeTree.locked = function() return self.viewMode == "TREE" end
-	self.controls.modeSkills = common.New("ButtonControl", {"LEFT",self.controls.modeTree,"RIGHT"}, 4, 0, 72, 20, "Skills", function()
+self.controls.modeSkills = common.New("ButtonControl", {"LEFT",self.controls.modeTree,"RIGHT"}, 4, 0, 72, 20, "技能组", function()
 		self.viewMode = "SKILLS"
 	end)
 	self.controls.modeSkills.locked = function() return self.viewMode == "SKILLS" end
-	self.controls.modeItems = common.New("ButtonControl", {"LEFT",self.controls.modeSkills,"RIGHT"}, 4, 0, 72, 20, "Items", function()
+self.controls.modeItems = common.New("ButtonControl", {"LEFT",self.controls.modeSkills,"RIGHT"}, 4, 0, 72, 20, "装备物品", function()
 		self.viewMode = "ITEMS"
 	end)
 	self.controls.modeItems.locked = function() return self.viewMode == "ITEMS" end
-	self.controls.modeCalcs = common.New("ButtonControl", {"LEFT",self.controls.modeItems,"RIGHT"}, 4, 0, 72, 20, "Calcs", function()
+self.controls.modeCalcs = common.New("ButtonControl", {"LEFT",self.controls.modeItems,"RIGHT"}, 4, 0, 72, 20, "计算", function()
 		self.viewMode = "CALCS"
 	end)
 	self.controls.modeCalcs.locked = function() return self.viewMode == "CALCS" end
@@ -418,9 +429,9 @@ function buildMode:Init(dbFileName, buildName, buildXML, targetVersion)
 			self.modFlag = true
 			self.buildFlag = true
 		end)
-		self.controls.banditLabel = common.New("LabelControl", {"BOTTOMLEFT",self.controls.bandit,"TOPLEFT"}, 0, 0, 0, 14, "^7Bandit:")
+self.controls.banditLabel = common.New("LabelControl", {"BOTTOMLEFT",self.controls.bandit,"TOPLEFT"}, 0, 0, 0, 14, "^7盗贼:")
 	end	
-	self.controls.mainSkillLabel = common.New("LabelControl", {"TOPLEFT",self.anchorSideBar,"TOPLEFT"}, 0, 95, 300, 16, "^7Main Skill:")
+self.controls.mainSkillLabel = common.New("LabelControl", {"TOPLEFT",self.anchorSideBar,"TOPLEFT"}, 0, 95, 300, 16, "^7主要技能:")
 	self.controls.mainSocketGroup = common.New("DropDownControl", {"TOPLEFT",self.controls.mainSkillLabel,"BOTTOMLEFT"}, 0, 2, 300, 16, nil, function(index, value)
 		self.mainSocketGroup = index
 		self.modFlag = true
@@ -501,7 +512,7 @@ function buildMode:Init(dbFileName, buildName, buildXML, targetVersion)
 	self.treeTab = common.New("TreeTab", self)
 	self.skillsTab = common.New("SkillsTab", self)
 	self.calcsTab = common.New("CalcsTab", self)
-
+self.aboutTab = common.New("AboutTab", self)--lucifer
 	-- Load sections from the build file
 	self.savers = {
 		["Config"] = self.configTab,
@@ -512,6 +523,7 @@ function buildMode:Init(dbFileName, buildName, buildXML, targetVersion)
 		["Skills"] = self.skillsTab,
 		["Calcs"] = self.calcsTab,
 		["Import"] = self.importTab,
+			["AboutTab"]=self.aboutTab ,--
 	}
 	self.legacyLoaders = { -- Special loaders for legacy sections
 		["Spec"] = self.treeTab,
@@ -774,6 +786,8 @@ function buildMode:OnFrame(inputEvents)
 		self.itemsTab:Draw(tabViewPort, inputEvents)
 	elseif self.viewMode == "CALCS" then
 		self.calcsTab:Draw(tabViewPort, inputEvents)
+	elseif self.viewMode == "ABOUT" then
+		self.aboutTab:Draw(tabViewPort, inputEvents)
 	end
 
 	self.unsaved = self.modFlag or self.notesTab.modFlag or self.configTab.modFlag or self.treeTab.modFlag or self.spec.modFlag or self.skillsTab.modFlag or self.itemsTab.modFlag or self.calcsTab.modFlag
@@ -835,14 +849,14 @@ function buildMode:OpenSavePopup(mode, newVersion)
 		["VERSION"] = "before converting?",
 	}
 	local controls = { }
-	controls.label = common.New("LabelControl", nil, 0, 20, 0, 16, "^7This build has unsaved changes.\nDo you want to save them "..modeDesc[mode])
+controls.label = common.New("LabelControl", nil, 0, 20, 0, 16, "^7这个Build有修改的地方还没有保存.\n你想要保存它们吗? ")
 	controls.save = common.New("ButtonControl", nil, -90, 70, 80, 20, "Save", function()
 		main:ClosePopup()
 		self.actionOnSave = mode
 		self.versionOnSave = newVersion
 		self:SaveDBFile()
 	end)
-	controls.noSave = common.New("ButtonControl", nil, 0, 70, 80, 20, "Don't Save", function()
+controls.noSave = common.New("ButtonControl", nil, 0, 70, 80, 20, "不保存", function()
 		main:ClosePopup()
 		if mode == "LIST" then
 			self:CloseBuild()
@@ -855,10 +869,10 @@ function buildMode:OpenSavePopup(mode, newVersion)
 			self:Init(self.dbFileName, self.buildName, nil, newVersion)
 		end
 	end)
-	controls.close = common.New("ButtonControl", nil, 90, 70, 80, 20, "Cancel", function()
+controls.close = common.New("ButtonControl", nil, 90, 70, 80, 20, "取消", function()
 		main:ClosePopup()
 	end)
-	main:OpenPopup(300, 100, "Save Changes", controls)
+main:OpenPopup(300, 100, "保存修改", controls)
 end
 
 function buildMode:OpenSaveAsPopup()
@@ -878,12 +892,12 @@ function buildMode:OpenSaveAsPopup()
 			end
 		end
 	end
-	controls.label = common.New("LabelControl", nil, 0, 20, 0, 16, "^7Enter new build name:")
+controls.label = common.New("LabelControl", nil, 0, 20, 0, 16, "^7输入新的Build名称（不建议中文，报错的话左上角【另存为】重试）:")
 	controls.edit = common.New("EditControl", nil, 0, 40, 450, 20, self.dbFileName and self.buildName, nil, "\\/:%*%?\"<>|%c", 100, function(buf)
 		updateBuildName()
 	end)
-	controls.folderLabel = common.New("LabelControl", {"TOPLEFT",nil,"TOPLEFT"}, 10, 70, 0, 16, "^7Folder:")
-	controls.newFolder = common.New("ButtonControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 67, 94, 20, "New Folder...", function()
+controls.folderLabel = common.New("LabelControl", {"TOPLEFT",nil,"TOPLEFT"}, 10, 70, 0, 16, "^7文件夹:")
+controls.newFolder = common.New("ButtonControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 67, 94, 20, "新建文件夹...", function()
 		main:OpenNewFolderPopup(main.buildPath..controls.folder.subPath, function(newFolderName)
 			if newFolderName then
 				controls.folder:OpenFolder(newFolderName)
@@ -893,7 +907,7 @@ function buildMode:OpenSaveAsPopup()
 	controls.folder = common.New("FolderList", nil, 0, 115, 450, 100, self.dbFileSubPath, function(subPath)
 		updateBuildName()
 	end)
-	controls.save = common.New("ButtonControl", nil, -45, 225, 80, 20, "Save", function()
+controls.save = common.New("ButtonControl", nil, -45, 225, 80, 20, "保存", function()
 		main:ClosePopup()
 		self.dbFileName = newFileName
 		self.buildName = newBuildName
@@ -901,12 +915,12 @@ function buildMode:OpenSaveAsPopup()
 		self:SaveDBFile()
 	end)
 	controls.save.enabled = false
-	controls.close = common.New("ButtonControl", nil, 45, 225, 80, 20, "Cancel", function()
+controls.close = common.New("ButtonControl", nil, 45, 225, 80, 20, "取消", function()
 		main:ClosePopup()
 		self.actionOnSave = nil
 		self.versionOnSave = nil
 	end)
-	main:OpenPopup(470, 255, self.dbFileName and "Save As" or "Save", controls, "save", "edit", "close")
+main:OpenPopup(470, 255, self.dbFileName and "另存为" or "保存", controls, "save", "edit", "close")
 end
 
 -- Open the spectre library popup
@@ -1056,13 +1070,13 @@ end
 function buildMode:RefreshStatList()
 	local statBoxList = wipeTable(self.controls.statBox.list)
 	if self.calcsTab.mainEnv.minion then
-		t_insert(statBoxList, { height = 18, "^7Minion:" })
+t_insert(statBoxList, { height = 18, "^7召唤生物:" })
 		self:AddDisplayStatList(self.minionDisplayStats, self.calcsTab.mainEnv.minion)
 		t_insert(statBoxList, { height = 10 })
-		t_insert(statBoxList, { height = 18, "^7Player:" })
+t_insert(statBoxList, { height = 18, "^7玩家:" })
 	end
 	if self.calcsTab.mainEnv.player.mainSkill.skillFlags.disable then
-		t_insert(statBoxList, { height = 16, "^7Skill disabled:" })
+t_insert(statBoxList, { height = 16, "^7技能不起作用:" })
 		t_insert(statBoxList, { height = 14, align = "CENTER_X", x = 140, self.calcsTab.mainEnv.player.mainSkill.disableReason })
 	end
 	self:AddDisplayStatList(self.displayStats, self.calcsTab.mainEnv.player)
@@ -1122,19 +1136,19 @@ do
 	local req = { }
 	function buildMode:AddRequirementsToTooltip(tooltip, level, str, dex, int, strBase, dexBase, intBase)
 		if level and level > 0 then
-			t_insert(req, s_format("^x7F7F7FLevel %s%d", main:StatColor(level, nil, self.characterLevel), level))
+t_insert(req, s_format("^x7F7F7FLevel %s%d", main:StatColor(level, nil, self.characterLevel), level))
 		end
 		if str and (str > 14 or str > self.calcsTab.mainOutput.Str) then
-			t_insert(req, s_format("%s%d ^x7F7F7FStr", main:StatColor(str, strBase, self.calcsTab.mainOutput.Str), str))
+t_insert(req, s_format("%s%d ^x7F7F7F力量", main:StatColor(str, strBase, self.calcsTab.mainOutput.Str), str))
 		end
 		if dex and (dex > 14 or dex > self.calcsTab.mainOutput.Dex) then
-			t_insert(req, s_format("%s%d ^x7F7F7FDex", main:StatColor(dex, dexBase, self.calcsTab.mainOutput.Dex), dex))
+t_insert(req, s_format("%s%d ^x7F7F7F敏捷", main:StatColor(dex, dexBase, self.calcsTab.mainOutput.Dex), dex))
 		end
 		if int and (int > 14 or int > self.calcsTab.mainOutput.Int) then
-			t_insert(req, s_format("%s%d ^x7F7F7FInt", main:StatColor(int, intBase, self.calcsTab.mainOutput.Int), int))
+t_insert(req, s_format("%s%d ^x7F7F7F智慧", main:StatColor(int, intBase, self.calcsTab.mainOutput.Int), int))
 		end
 		if req[1] then
-			tooltip:AddLine(16, "^x7F7F7FRequires "..table.concat(req, "^x7F7F7F, "))
+tooltip:AddLine(16, "^x7F7F7F需求 "..table.concat(req, "^x7F7F7F, "))
 			tooltip:AddSeparator(10)
 		end	
 		wipeTable(req)
@@ -1145,10 +1159,10 @@ function buildMode:LoadDB(xmlText, fileName)
 	-- Parse the XML
 	local dbXML, errMsg = common.xml.ParseXML(xmlText)
 	if not dbXML then
-		launch:ShowErrMsg("^1Error loading '%s': %s", fileName, errMsg)
+launch:ShowErrMsg("^1加载错误 '%s': %s", fileName, errMsg)
 		return true
 	elseif dbXML[1].elem ~= "PathOfBuilding" then
-		launch:ShowErrMsg("^1Error parsing '%s': 'PathOfBuilding' root element missing", fileName)
+launch:ShowErrMsg("^1解析错误 '%s': 'PathOfBuilding' 节点不存在", fileName)
 		return true
 	end
 
@@ -1223,7 +1237,7 @@ function buildMode:SaveDBFile()
 	end
 	local file = io.open(self.dbFileName, "w+")
 	if not file then
-		main:OpenMessagePopup("Error", "Couldn't save the build file:\n"..self.dbFileName.."\nMake sure the save folder exists and is writable.")
+main:OpenMessagePopup("错误", "不能保存当前bd文件:\n"..self.dbFileName.."\n可能是保存目录不存在、不可写或没有权限.")
 		return true
 	end
 	file:write(xmlText)

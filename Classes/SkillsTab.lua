@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Module: Skills Tab
 -- Skills tab for the current build.
@@ -13,18 +13,18 @@ local m_min = math.min
 local m_max = math.max
 
 local groupSlotDropList = {
-	{ label = "None" },
-	{ label = "Weapon 1", slotName = "Weapon 1" },
-	{ label = "Weapon 2", slotName = "Weapon 2" },
-	{ label = "Weapon 1 (Swap)", slotName = "Weapon 1 Swap" },
-	{ label = "Weapon 2 (Swap)", slotName = "Weapon 2 Swap" },
-	{ label = "Helmet", slotName = "Helmet" },
-	{ label = "Body Armour", slotName = "Body Armour" },
-	{ label = "Gloves", slotName = "Gloves" },
-	{ label = "Boots", slotName = "Boots" }, 
-	{ label = "Amulet", slotName = "Amulet" },
-	{ label = "Ring 1", slotName = "Ring 1" },
-	{ label = "Ring 2", slotName = "Ring 2" },
+{ label = "无" },
+{ label = "主手", slotName = "Weapon 1" },
+{ label = "副手", slotName = "Weapon 2" },
+{ label = "第二武器栏主手", slotName = "Weapon 1 Swap" },
+{ label = "第二武器栏副手", slotName = "Weapon 2 Swap" },
+{ label = "头盔", slotName = "Helmet" },
+{ label = "胸甲", slotName = "Body Armour" },
+{ label = "手套", slotName = "Gloves" },
+{ label = "鞋子", slotName = "Boots" }, 
+{ label = "项链", slotName = "Amulet" },
+{ label = "戒指 1", slotName = "Ring 1" },
+{ label = "戒指 2", slotName = "Ring 2" },
 }
 
 local SkillsTabClass = common.NewClass("SkillsTab", "UndoHandler", "ControlHost", "Control", function(self, build)
@@ -40,22 +40,22 @@ local SkillsTabClass = common.NewClass("SkillsTab", "UndoHandler", "ControlHost"
 
 	-- Socket group list
 	self.controls.groupList = common.New("SkillList", {"TOPLEFT",self,"TOPLEFT"}, 20, 24, 360, 300, self)
-	self.controls.groupTip = common.New("LabelControl", {"TOPLEFT",self.controls.groupList,"BOTTOMLEFT"}, 0, 8, 0, 14, "^7Tip: You can copy/paste socket groups using Ctrl+C and Ctrl+V.")
+self.controls.groupTip = common.New("LabelControl", {"TOPLEFT",self.controls.groupList,"BOTTOMLEFT"}, 0, 8, 0, 14, "^7提示: 可以使用 Ctrl+C 和 Ctrl+V 来复制和粘贴技能组.")
 
 	-- Gem options
-	self.controls.optionSection = common.New("SectionControl", {"TOPLEFT",self.controls.groupList,"BOTTOMLEFT"}, 0, 50, 250, 100, "Gem Options")
-	self.controls.sortGemsByDPS = common.New("CheckBoxControl", {"TOPLEFT",self.controls.groupList,"BOTTOMLEFT"}, 150, 70, 20, "Sort gems by DPS:", function(state)
+self.controls.optionSection = common.New("SectionControl", {"TOPLEFT",self.controls.groupList,"BOTTOMLEFT"}, 0, 50, 250, 100, "技能选项")
+self.controls.sortGemsByDPS = common.New("CheckBoxControl", {"TOPLEFT",self.controls.groupList,"BOTTOMLEFT"}, 150, 70, 20, "根据 DPS排序:", function(state)
 		self.sortGemsByDPS = state
 	end)
 	self.controls.sortGemsByDPS.state = true
 	self.controls.defaultLevel = common.New("EditControl", {"TOPLEFT",self.controls.groupList,"BOTTOMLEFT"}, 150, 94, 60, 20, nil, nil, "%D", 2, function(buf)
 		self.defaultGemLevel = tonumber(buf)
 	end)
-	self.controls.defaultLevelLabel = common.New("LabelControl", {"RIGHT",self.controls.defaultLevel,"LEFT"}, -4, 0, 0, 16, "^7Default gem level:")
+self.controls.defaultLevelLabel = common.New("LabelControl", {"RIGHT",self.controls.defaultLevel,"LEFT"}, -4, 0, 0, 16, "^7技能默认等级:")
 	self.controls.defaultQuality = common.New("EditControl", {"TOPLEFT",self.controls.groupList,"BOTTOMLEFT"}, 150, 118, 60, 20, nil, nil, "%D", 2, function(buf)
 		self.defaultGemQuality = tonumber(buf)
 	end)
-	self.controls.defaultQualityLabel = common.New("LabelControl", {"RIGHT",self.controls.defaultQuality,"LEFT"}, -4, 0, 0, 16, "^7Default gem quality:")
+self.controls.defaultQualityLabel = common.New("LabelControl", {"RIGHT",self.controls.defaultQuality,"LEFT"}, -4, 0, 0, 16, "^7技能默认品质:")
 
 	-- Socket group details
 	self.anchorGroupDetail = common.New("Control", {"TOPLEFT",self.controls.groupList,"TOPRIGHT"}, 20, 0, 0, 0)
@@ -68,7 +68,7 @@ local SkillsTabClass = common.NewClass("SkillsTab", "UndoHandler", "ControlHost"
 		self:AddUndoState()
 		self.build.buildFlag = true
 	end)
-	self.controls.groupSlotLabel = common.New("LabelControl", {"TOPLEFT",self.anchorGroupDetail,"TOPLEFT"}, 0, 30, 0, 16, "^7Socketed in:")
+self.controls.groupSlotLabel = common.New("LabelControl", {"TOPLEFT",self.anchorGroupDetail,"TOPLEFT"}, 0, 30, 0, 16, "^7装备部位:")
 	self.controls.groupSlot = common.New("DropDownControl", {"TOPLEFT",self.anchorGroupDetail,"TOPLEFT"}, 85, 28, 130, 20, groupSlotDropList, function(index, value)
 		self.displayGroup.slot = value.slotName
 		self:AddUndoState()
@@ -77,22 +77,22 @@ local SkillsTabClass = common.NewClass("SkillsTab", "UndoHandler", "ControlHost"
 	self.controls.groupSlot.tooltipFunc = function(tooltip, mode, index, value)
 		tooltip:Clear()
 		if mode == "OUT" or index == 1 then
-			tooltip:AddLine(16, "Select the item in which this skill is socketed.")
-			tooltip:AddLine(16, "This will allow the skill to benefit from modifiers on the item that affect socketed gems.")
+tooltip:AddLine(16, "选择装备部位来插放这个技能组.")
+tooltip:AddLine(16, "这样可以让技能组受到装备上面某些词缀的加成.")
 		else
 			local slot = self.build.itemsTab.slots[value.slotName]
 			local ttItem = self.build.itemsTab.items[slot.selItemId]
 			if ttItem then
 				self.build.itemsTab:AddItemTooltip(tooltip, ttItem, slot)
 			else
-				tooltip:AddLine(16, "No item is equipped in this slot.")
+tooltip:AddLine(16, "这个部位没有装备.")
 			end
 		end
 	end
 	self.controls.groupSlot.enabled = function()
 		return self.displayGroup.source == nil
 	end
-	self.controls.groupEnabled = common.New("CheckBoxControl", {"LEFT",self.controls.groupSlot,"RIGHT"}, 70, 0, 20, "Enabled:", function(state)
+self.controls.groupEnabled = common.New("CheckBoxControl", {"LEFT",self.controls.groupSlot,"RIGHT"}, 70, 0, 20, "启用:", function(state)
 		self.displayGroup.enabled = state
 		self:AddUndoState()
 		self.build.buildFlag = true
@@ -105,13 +105,13 @@ local SkillsTabClass = common.NewClass("SkillsTab", "UndoHandler", "ControlHost"
 		local item = self.displayGroup.sourceItem or { rarity = "NORMAL", name = "?" }
 		local itemName = colorCodes[item.rarity]..item.name.."^7"
 		local activeGem = self.displayGroup.gemList[1]
-		local label = [[^7This is a special group created for the ']]..activeGem.color..(activeGem.grantedEffect and activeGem.grantedEffect.name or activeGem.nameSpec)..[[^7' skill,
-which is being provided by ']]..itemName..[['.
-You cannot delete this group, but it will disappear if you un-equip the item.]]
+local label = [[^7这个特殊的技能组: ']]..activeGem.color..(activeGem.grantedEffect and activeGem.grantedEffect.name or activeGem.nameSpec)..[[^7'
+ 是由物品【']]..itemName..[['】自带的。
+你不能手动删除它.但是你可以取消该装备，它就会自动消失]]
 		if not self.displayGroup.noSupports then
-			label = label .. "\n\n" .. [[You cannot add support gems to this group, but support gems in
-any other group socketed into ']]..itemName..[['
-will automatically apply to the skill.]]
+label = label .. "\n\n" .. [[你不能为这组技能增加辅助技能，
+但是其他任意插入这个物品：【 ']]..itemName..[['】
+的辅助技能都会自动辅助这一组.]]
 		end
 		return label
 	end
@@ -120,10 +120,10 @@ will automatically apply to the skill.]]
 	self.anchorGemSlots = common.New("Control", {"TOPLEFT",self.anchorGroupDetail,"TOPLEFT"}, 0, 28 + 28 + 16, 0, 0)
 	self.gemSlots = { }
 	self:CreateGemSlot(1)
-	self.controls.gemNameHeader = common.New("LabelControl", {"BOTTOMLEFT",self.gemSlots[1].nameSpec,"TOPLEFT"}, 0, -2, 0, 16, "^7Gem name:")
-	self.controls.gemLevelHeader = common.New("LabelControl", {"BOTTOMLEFT",self.gemSlots[1].level,"TOPLEFT"}, 0, -2, 0, 16, "^7Level:")
-	self.controls.gemQualityHeader = common.New("LabelControl", {"BOTTOMLEFT",self.gemSlots[1].quality,"TOPLEFT"}, 0, -2, 0, 16, "^7Quality:")
-	self.controls.gemEnableHeader = common.New("LabelControl", {"BOTTOMLEFT",self.gemSlots[1].enabled,"TOPLEFT"}, -16, -2, 0, 16, "^7Enabled:")
+self.controls.gemNameHeader = common.New("LabelControl", {"BOTTOMLEFT",self.gemSlots[1].nameSpec,"TOPLEFT"}, 0, -2, 0, 16, "^7技能名称:")
+self.controls.gemLevelHeader = common.New("LabelControl", {"BOTTOMLEFT",self.gemSlots[1].level,"TOPLEFT"}, 0, -2, 0, 16, "^7等级:")
+self.controls.gemQualityHeader = common.New("LabelControl", {"BOTTOMLEFT",self.gemSlots[1].quality,"TOPLEFT"}, 0, -2, 0, 16, "^7品质:")
+self.controls.gemEnableHeader = common.New("LabelControl", {"BOTTOMLEFT",self.gemSlots[1].enabled,"TOPLEFT"}, -16, -2, 0, 16, "^7启用:")
 end)
 
 function SkillsTabClass:Load(xml, fileName)
@@ -266,7 +266,7 @@ function SkillsTabClass:CopySocketGroup(socketGroup)
 		skillText = skillText .. "Slot: "..socketGroup.slot.."\r\n"
 	end
 	for _, gemInstance in ipairs(socketGroup.gemList) do
-		skillText = skillText .. string.format("%s %d/%d %s\r\n", gemInstance.nameSpec, gemInstance.level, gemInstance.quality, gemInstance.enabled and "" or "DISABLED")
+skillText = skillText .. string.format("@%s %d/%d %s\r\n", gemInstance.nameSpec, gemInstance.level, gemInstance.quality, gemInstance.enabled and "" or "DISABLED")
 	end
 	Copy(skillText)
 end
@@ -283,7 +283,7 @@ function SkillsTabClass:PasteSocketGroup()
 		if slot then
 			newGroup.slot = slot
 		end
-		for nameSpec, level, quality, state in skillText:gmatch("([ %a']+) (%d+)/(%d+) ?(%a*)") do
+for nameSpec, level, quality, state in skillText:gmatch("@([^\\x00-\\xff]*) (%d+)/(%d+) ?(%a*)") do
 			t_insert(newGroup.gemList, { nameSpec = nameSpec, level = tonumber(level) or 20, quality = tonumber(quality) or 0, enabled = state ~= "DISABLED" })
 		end
 		if #newGroup.gemList > 0 then
@@ -423,7 +423,7 @@ function SkillsTabClass:CreateGemSlot(index)
 					self.displayGroup.gemList[index].enabled = not self.displayGroup.gemList[index].enabled
 					local output = calcFunc()
 					self.displayGroup.gemList[index].enabled = not self.displayGroup.gemList[index].enabled
-					self.build:AddStatComparesToTooltip(tooltip, calcBase, output, self.displayGroup.gemList[index].enabled and "^7Disabling this gem will give you:" or "^7Enabling this gem will give you:")
+self.build:AddStatComparesToTooltip(tooltip, calcBase, output, self.displayGroup.gemList[index].enabled and "^7禁用本技能会给你:" or "^7启用本技能会让你:")
 				end
 			end
 		end
@@ -620,7 +620,7 @@ end
 
 function SkillsTabClass:AddSocketGroupTooltip(tooltip, socketGroup)
 	if socketGroup.enabled and not socketGroup.slotEnabled then
-		tooltip:AddLine(16, "^7Note: this group is disabled because it is socketed in the inactive weapon set.")
+tooltip:AddLine(16, "^7注意: 这组技能已禁用，因为插在了不启用的武器上.")
 	end
 	if socketGroup.sourceItem then
 		tooltip:AddLine(18, "^7Source: "..colorCodes[socketGroup.sourceItem.rarity]..socketGroup.sourceItem.name)
@@ -631,7 +631,7 @@ function SkillsTabClass:AddSocketGroupTooltip(tooltip, socketGroup)
 		if index > 1 then
 			tooltip:AddSeparator(10)
 		end
-		tooltip:AddLine(16, "^7Active Skill #"..index..":")
+tooltip:AddLine(16, "^7主动技能 #"..index..":")
 		for _, skillEffect in ipairs(activeSkill.effectList) do
 			tooltip:AddLine(20, string.format("%s%s ^7%d%s/%d%s", 
 				data.skillColorMap[skillEffect.grantedEffect.color], 
@@ -647,7 +647,7 @@ function SkillsTabClass:AddSocketGroupTooltip(tooltip, socketGroup)
 		end
 		if activeSkill.minion then
 			tooltip:AddSeparator(10)
-			tooltip:AddLine(16, "^7Active Skill #"..index.."'s Main Minion Skill:")
+tooltip:AddLine(16, "^7主动技能 #"..index.."'的主要召唤生物技能:")
 			local activeEffect = activeSkill.minion.mainSkill.effectList[1]
 			tooltip:AddLine(20, string.format("%s%s ^7%d%s/%d%s", 
 				data.skillColorMap[activeEffect.grantedEffect.color], 
@@ -668,7 +668,7 @@ function SkillsTabClass:AddSocketGroupTooltip(tooltip, socketGroup)
 			if showOtherHeader then
 				showOtherHeader = false
 				tooltip:AddSeparator(10)
-				tooltip:AddLine(16, "^7Inactive Gems:")
+tooltip:AddLine(16, "^7不起作用的技能:")
 			end
 			local reason = ""
 			local displayEffect = gemInstance.displayEffect or gemInstance

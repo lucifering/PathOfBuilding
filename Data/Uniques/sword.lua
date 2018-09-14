@@ -1,738 +1,737 @@
--- Item data (c) Grinding Gear Games
-
+﻿-- Item data (c) Grinding Gear Games
 return {
 -- Weapon: One Handed Sword
 [[
-Ahn's Might
-Midnight Blade
-Requires Level 68, 313 Str, 113 Dex
-40% increased Accuracy Rating
-Adds (80-115) to (150-205) Physical Damage
-(15-25)% increased Critical Strike Chance
--1 to Maximum Frenzy Charges
-10% increased Area of Effect
-+100 Strength Requirement
-+50% Global Critical Strike Multiplier while you have no Frenzy Charges
-+(400-500) to Accuracy Rating while at Maximum Frenzy Charges
+汉恩的力量
+夜语长剑
+等级需求: 68, 313 Str, 113 Dex
+命中值提高 40%
+附加 (80-115) - (150-205) 基础物理伤害
+该装备的攻击暴击率提高 (15-25)%
+-1 狂怒球数量上限
+范围效果扩大 10%
++100 力量需求
+当你没有狂怒球时，+50% 全局暴击伤害加成
+狂怒球达到上限时，+(400-500) 命中值
 ]],[[
-Beltimber Blade
-Eternal Sword
-Source: Drops from unique{The Constrictor} (Tier 11+)
-Requires Level 66
-+475 to Accuracy Rating 
-(170�190)% increased Physical Damage 
-(10�15)% increased Attack Speed 
-80% increased Evasion Rating while moving 
-2 additional Projectiles if you've used a Movement Skill Recently 
-Far Shot
+芯木腰刀
+永恒之剑
+源: 传奇Boss【裂界守卫：约束】 专属掉落（T11地图或以上）
+等级需求: 66
++475 命中值
+物理伤害提高 (170-190)%
+攻击速度提高 (10-15)%
+移动时闪避值提高 80%
+近期内你若使用过移动技能，技能可以额外发射 2 个投射物
+远射
 ]],[[
-Dreamfeather
-Eternal Sword
-Variant: Pre 2.0.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 66, 104 Str, 122 Dex
-Implicits: 2
-{variant:1,2}18% increased Accuracy Rating
-{variant:3}+475 to Accuracy Rating
-{variant:1}Adds (15-30) to (35-50) Physical Damage
-{variant:2}Adds (20-40) to (55-70) Physical Damage
-{variant:3}Adds (30-50) to (65-80) Physical Damage
-(20-25)% increased Attack Speed
-+(180-200) to Accuracy Rating
-+(180-200) to Evasion Rating
-3% increased Movement Speed
-1% increased Attack Damage per 450 Evasion Rating
+幻梦飞羽
+永恒之剑
+版本: 2.0.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 66, 104 Str, 122 Dex
+固定基底词缀: 2
+{variant:1,2}命中值提高 18%
+{variant:3}+475 命中值
+{variant:1}附加 (15-30) - (35-50) 基础物理伤害
+{variant:2}附加 (20-40) - (55-70) 基础物理伤害
+{variant:3}附加 (30-50) - (65-80) 基础物理伤害
+攻击速度提高 (20-25)%
++(180-200) 命中值
++(180-200) 点闪避值
+移动速度提高 3%
+每 450 点闪避值可使攻击伤害提高 1%
 ]],[[
-Ephemeral Edge
-Dusk Blade
-Variant: Pre 2.0.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 32, 57 Str, 57 Dex
-Implicits: 2
-{variant:1,2}18% increased Accuracy Rating
-{variant:3}40% increased Accuracy Rating
-{variant:1}100% increased Physical Damage
-{variant:2,3}150% increased Physical Damage
-+10 to Intelligence
-50% increased Global Critical Strike Chance
-(0.6-1)% of Physical Attack Damage Leeched as Mana
-10% reduced Maximum Life
-(40-50)% increased Maximum Energy Shield
+影殒
+暮色之刃
+版本: 2.0.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 32, 57 Str, 57 Dex
+固定基底词缀: 2
+{variant:1,2}命中值提高 18%
+{variant:3}命中值提高 40%
+{variant:1}物理伤害提高 100%
+{variant:2,3}物理伤害提高 150%
++10 智慧
+攻击和法术暴击率提高 50%
+物理攻击伤害的 (0.6-1)% 转化为魔力偷取
+最大生命降低 10%
+最大能量护盾提高 (40-50)%
 ]],[[
-The Goddess Scorned
-Elegant Sword
-Source: Vendor Recipe
-Variant: Pre 2.2.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 28, 46 Str, 55 Dex
-Implicits: 2
-{variant:1,2}18% Increased Accuracy Rating
-{variant:3}+190 to Accuracy Rating
-Uses both hand slots
-(250-300)% increased Physical Damage
-(90-110)% increased Critical Strike Chance
-{variant:1}+(15-20)% to Global Critical Strike Multiplier
-{variant:2,3}+(20-30)% to Global Critical Strike Multiplier
-+(40-50)% to Fire Resistance
-Cannot be Ignited
-100% of Physical Damage Converted to Fire Damage
-Ignited Enemies Burn 50% faster
-You can only deal Damage with this Weapon and Ignite
+女神的怒炎
+贵族之剑
+源: 商店配方
+版本: 2.2.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 28, 46 Str, 55 Dex
+固定基底词缀: 2
+{variant:1,2}命中值提高 18%
+{variant:3}+190 命中值
+占用所有武器栏位
+物理伤害提高 (250-300)%
+该装备的攻击暴击率提高 (90-110)%
+{variant:1}+(15-20)% 攻击和法术暴击伤害加成
+{variant:2,3}+(20-30)% 攻击和法术暴击伤害加成
++(40-50)% 火焰抗性
+免疫点燃
+100% 的物理伤害转换为火焰伤害
+被点燃敌人的燃烧加快 50%
+只能使用此武器造成伤害并点燃
 ]],[[
-The Goddess Unleashed
-Eternal Sword
-Source: Vendor Recipe
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 51, 104 Str, 122 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2}+475 to Accuracy Rating
-Uses both hand slots
-Adds (3-6) to (33-66) Physical Damage
-(44-66)% increased Critical Strike Chance
-33% increased Ignite Duration on Enemies
-(66-99)% of Sword Physical Damage Added as Fire Damage
-Gain Her Blessing for 3 seconds when you Ignite an Enemy
-33% chance to Blind nearby Enemies when gaining Her Blessing
-Cannot be Frozen, Chilled or Ignited with Her Blessing
-20% increased Attack and Movement Speed with Her Blessing
+女神的束缚
+永恒之剑
+源: 商店配方
+版本: 2.6.0以前
+版本: 当前
+等级需求: 51, 104 Str, 122 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2}+475 命中值
+占用所有武器栏位
+附加 (3-6) - (33-66) 基础物理伤害
+该装备的攻击暴击率提高 (44-66)%
+敌人被点燃的持续时间延长 33%
+获得额外火焰伤害，其数值等同于 (66-99)% 剑类物理伤害
+点燃敌人时获得【女神的祝福】 3 秒
+获得【女神的祝福】时有 33% 几率致盲周围敌人
+获得【女神的祝福】时无法被冰冻，冰缓，或点燃
+获得【女神的祝福】时攻击速度和移动速度提高 20%
 ]],[[
-Grelwood Shank
-Eternal Sword
-Source: Drops from unique{The Constrictor}
-Requires Level 66
-+475 to Accuracy Rating
-(170�190)% increased Physical Damage 
-(15�20)% increased Attack Speed
-80% increased Armour while stationary
-2 additional Projectiles if you've been Hit Recently
-Point Blank
-Iron Reflexes while stationary
+韧木曲刃
+永恒之剑
+源: 传奇Boss【裂界守卫：约束】 专属掉落
+等级需求: 66
++475 命中值
+物理伤害提高 (170-190)%
+攻击速度提高 (15-20)%
+静止时护甲提高 80%
+近期内你若被击中，技能可以额外发射 2 个投射物
+零点射击
+静止时获得【霸体】
 ]],[[
-Hyaon's Fury
-Legion Sword
-Variant: Pre 1.3.0
-Variant: Pre 2.0.0
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 62, 122 Str, 104 Dex
-Implicits: 2
-{variant:1,2,3}18% increased Accuracy Rating
-{variant:4,5}40% increased Accuracy Rating
-{variant:1,2}Adds 1 to (500-600) Lightning Damage
-{variant:3,4,5}Adds 1 to (550-650) Lightning Damage
-(7-10)% increased Attack Speed
-{variant:1}6% increased Damage taken per Frenzy Charge
-{variant:2,3,4}3% increased Damage taken per Frenzy Charge
-{variant:5}1% increased Damage taken per Frenzy Charge
-12% increased Lightning Damage per Frenzy Charge
-+20 Life gained on Kill per Frenzy Charge
+海昂的狂怒
+军团长剑
+版本: 1.3.0以前
+版本: 2.0.0以前
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 62, 122 Str, 104 Dex
+固定基底词缀: 2
+{variant:1,2,3}命中值提高 18%
+{variant:4,5}命中值提高 40%
+{variant:1,2}附加 1 - (500-600) 基础闪电伤害
+{variant:3,4,5}附加 1 - (550-650) 基础闪电伤害
+攻击速度提高 (7-10)%
+{variant:1}每个狂怒球会使承受的伤害提高 6%
+{variant:2,3,4}每个狂怒球会使承受的伤害提高 3%
+{variant:5}每个狂怒球会使承受的伤害提高 1%
+每个狂怒球会使闪电伤害提高 12%
+击败敌人时，每个狂怒球可以回复 +20 生命
 ]],[[
-Ichimonji
-Corsair Sword
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 58, 81 Str, 117 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2}40% increased Accuracy Rating
-Adds (5-10) to (13-20) Physical Damage
-{variant:1}(60-80)% increased Physical Damage
-{variant:2}(80-95)% increased Physical Damage
-{variant:1}(10-15)% increased Attack Speed
-{variant:2}(20-25)% increased Attack Speed
-5% reduced Mana Reserved
-Allies' Aura Buffs do not affect you
-Your Aura Buffs do not affect allies
-10% increased Effect of Buffs on you
+一文字
+海贼长刀
+版本: 2.6.0以前
+版本: 当前
+等级需求: 58, 81 Str, 117 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2}命中值提高 40%
+附加 (5-10) - (13-20) 基础物理伤害
+{variant:1}物理伤害提高 (60-80)%
+{variant:2}物理伤害提高 (80-95)%
+{variant:1}攻击速度提高 (10-15)%
+{variant:2}攻击速度提高 (20-25)%
+魔力保留降低 5%
+无法获得友方光环效果
+光环效果对友方没有作用
+你身上的增益效果提高 10%
 ]],[[
-Innsbury Edge
-Elder Sword
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 47, 81 Str, 81 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2}40% increased Accuracy Rating
-(100-140)% increased Physical Damage
-(17-25)% increased Attack Speed
-0.2% of Chaos Damage Leeched as Life
-25% of Physical Damage Converted to Chaos Damage
-Attacks with this Weapon Maim on hit
+英斯贝理之极
+智者长剑
+版本: 2.6.0以前
+版本: 当前
+等级需求: 47, 81 Str, 81 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2}命中值提高 40%
+物理伤害提高 (100-140)%
+攻击速度提高 (17-25)%
+混沌伤害的 0.2% 转化为生命偷取
+25% 的物理伤害转换为混沌伤害
+使用此武器攻击击中时造成瘫痪
 ]],[[
-Lakishu's Blade
-Elegant Sword
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 28, 46 Str, 55 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2}+190 to Accuracy Rating
-(60-80)% increased Physical Damage
-Adds (5-8) to (10-14) Physical Damage
-(10-15)% increased Attack Speed
-(30-40)% reduced Stun Recovery
-20% chance to Avoid being Stunned
-Socketed Gems are supported by level 1 Multistrike
+拉奇许之刃
+贵族之剑
+版本: 2.6.0以前
+版本: 当前
+等级需求: 28, 46 Str, 55 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2}+190 命中值
+物理伤害提高 (60-80)%
+附加 (5-8) - (10-14) 基础物理伤害
+攻击速度提高 (10-15)%
+晕眩回复和格挡回复降低 (30-40)%
+20% 几率避免被晕眩
+此物品上的技能石受到 1 级的 多重打击 辅助
 ]],[[
-Oni-Goroshi
-Charan's Sword
-Source: Drops from unique{Hillock}
+鬼弑
+查兰之剑
+源: 传奇Boss【西拉克】专属掉落（第一章	【绝望岩滩】）
 Sockets: R-R-R-R-R-R
 Requires Level: 2
-40% increased Accuracy Rating
-Uses both hand slots
-(70�90)% increased Critical Strike Chance
-Adds 2 to 3 Physical Damage to Attacks per Level
-Gain Her Embrace for 3 seconds when you Ignite an Enemy
-While in Her Embrace, take 0.5% of your total Maximum Life and Energy Shield as Fire Damage per second per Level
+命中值提高 40%
+占用所有武器栏位
+该装备的攻击暴击率提高 (70-90)%
+每一级为你的攻击附加 2 - 3 基础物理伤害
+点燃敌人时获得 3 秒【她的拥抱】效果
+受到【她的拥抱】影响时，每级根据你的最大生命和最大护盾总量，造成每秒 0.5% 火焰伤害
 ]],[[
-The Princess
-Sabre
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 10, 18 Str, 26 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2}40% increased Accuracy Rating
-(20-50)% increased Physical Damage
-Adds (3-4) to (5-8) Physical Damage
-15% increased Attack Speed
-{variant:1}Gain 10% of Physical Damage as Extra Cold Damage
-{variant:2}Gain (25-30)% of Physical Damage as Extra Cold Damage
-10% increased Damage taken from Skeletons
-10% increased Damage taken from Ghosts
+女爵
+旧军刀
+版本: 2.6.0以前
+版本: 当前
+等级需求: 10, 18 Str, 26 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2}命中值提高 40%
+物理伤害提高 (20-50)%
+附加 (3-4) - (5-8) 基础物理伤害
+攻击速度提高 15%
+{variant:1}获得额外冰霜伤害， 其数值等同于物理伤害的 10%
+{variant:2}获得额外冰霜伤害， 其数值等同于物理伤害的 (25-30)%
+受到魔侍的伤害提高 10%
+受到鬼魂的伤害提高 10%
 ]],[[
-Prismatic Eclipse
-Twilight Blade
-Variant: Pre 1.3.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 53, 91 Str, 91 Dex
-Implicits: 2
-{variant:1,2}18% increased Accuracy Rating
-{variant:3}40% increased Accuracy Rating
-{variant:1}10% additional Chance to Block while Dual Wielding
-{variant:2,3}8% additional Chance to Block while Dual Wielding
-Adds (20-30) to (31-40) Physical Damage
-25% increased Physical Damage with Weapons per Red Socket
-12% increased Global Attack Speed per Green Socket
-0.4% of Physical Attack Damage Leeched as Mana per Blue Socket
-+2 to Melee Weapon Range per White Socket
+虹耀之月
+暮光长剑
+版本: 1.3.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 53, 91 Str, 91 Dex
+固定基底词缀: 2
+{variant:1,2}命中值提高 18%
+{variant:3}命中值提高 40%
+{variant:1}双持时攻击格挡率提高 10%
+{variant:2,3}双持时攻击格挡率提高 8%
+附加 (20-30) - (31-40) 基础物理伤害
+武器上的每个红色插槽使物理伤害提高 25%
+每个绿色插槽会使全局攻击速度提高 12%
+每个蓝色插槽会使你物理攻击伤害的 0.4% 转化为魔力偷取
+每个白色插槽可以扩大 +2 近战武器范围
 ]],[[
-Razor of the Seventh Sun 
-Midnight Blade
-Source: Drops from unique{Guardian of the Phoenix}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 68, 113 Str, 113 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2}40% increased Accuracy Rating
-Adds (65-75) to (110-130) Physical Damage
-100% increased Burning Damage if you've Ignited an Enemy Recently
-Recover 1% of Maximum Life when you Ignite an Enemy
-100% increased Melee Physical Damage against Ignited Enemies
+七日锋
+夜语长剑
+源: 传奇Boss【凤凰守卫】 专属掉落
+版本: 2.6.0以前
+版本: 当前
+等级需求: 68, 113 Str, 113 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2}命中值提高 40%
+附加 (65-75) - (110-130) 基础物理伤害
+点燃 1 个敌人后的短时间内，燃烧伤害提高 100%
+点燃 1 个敌人后回复 1% 最大生命
+对点燃敌人的近战物理伤害提高 100%
 ]],[[
-Rebuke of the Vaal
-Vaal Blade
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 64, 113 Str, 113 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2}+460 to Accuracy Rating
-Adds (19-28) to (31-40) Physical Damage
-Adds (19-28) to (31-40) Fire Damage
-Adds (19-28) to (31-40) Cold Damage
-Adds 1 to (50-70) Lightning Damage
-Adds (19-28) to (31-40) Chaos Damage
-(10-20)% increased Attack Speed
+瓦尔战刃
+瓦尔军刃
+版本: 2.6.0以前
+版本: 当前
+等级需求: 64, 113 Str, 113 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2}+460 命中值
+附加 (19-28) - (31-40) 基础物理伤害
+附加 (19-28) - (31-40) 基础火焰伤害
+附加 (19-28) - (31-40) 基础冰霜伤害
+附加 1 - (50-70) 基础闪电伤害
+附加 (19-28) - (31-40) 基础混沌伤害
+攻击速度提高 (10-20)%
 ]],[[
-Redbeak
-Rusted Sword
-Upgrade: Upgrades to unique{Dreadbeak} via prophecy{The Dreaded Rhoa}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 2
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2}40% increased Accuracy Rating
-100% increased Damage when on Low Life
-50% increased Physical Damage
-Adds 2 to 6 Physical Damage
-10% increased Attack Speed
-+(20-30) to maximum Life
-+2 Life Gained for each Enemy hit by Attacks
+赤红短刃
+锈剑
+升级: 使用 预言【恐怖的邪喙鸟】 升级为 传奇【恐惧利刃】
+版本: 2.6.0以前
+版本: 当前
+等级需求: 2
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2}命中值提高 40%
+低血时伤害提高 100%
+物理伤害提高 50%
+附加 2 - 6 基础物理伤害
+攻击速度提高 10%
++(20-30) 最大生命
+攻击击中每个敌人会回复 +2 生命
 ]],[[
-Dreadbeak
-Rusted Sword
-Source: Upgraded from unique{Redbeak} via prophecy{The Dreaded Rhoa}
-Requires Level 61
-18% increased Accuracy Rating
-100% increased Damage when on Low Life
-50% increased Physical Damage
-Adds (90�98) to (133�140) Physical Damage
-10% increased Attack Speed
-+(20�30) to maximum Life
-+2 Life gained for each Enemy hit by Attacks
-You have Onslaught while on Low Life
+恐惧利刃
+锈剑
+源: 由 传奇【赤红短刃】 使用 预言【恐怖的邪喙鸟】 升级
+等级需求: 61
+命中值提高 18%
+低血时伤害提高 100%
+物理伤害提高 50%
+附加 (90-98) - (133-140) 基础物理伤害
+攻击速度提高 10%
++(20-30) 最大生命
+攻击击中每个敌人会回复 +2 生命
+低血时获得【猛攻】
 ]],[[
-Rigwald's Command
-Midnight Blade
-League: Talisman Standard, Talisman Hardcore
-Source: Drops from unique{Rigwald, the Wolven King} (Level 75+)
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 68, 113 Str, 113 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2}40% increased Accuracy Rating
-10% additional Block Chance while Dual Wielding
-Adds (60-80) to (150-180) Physical Damage
-80% increased Physical Damage with Axes
-+(350-400) to Accuracy Rating
-15% chance to gain a Frenzy Charge on Kill
+瑞佛统帅
+夜语长剑
+联盟: 魔符·标准, 魔符·专家
+源: Boss 传奇 【狼王瑞佛】 专属掉落 (等级 75+)
+版本: 2.6.0以前
+版本: 当前
+等级需求: 68, 113 Str, 113 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2}命中值提高 40%
+双持时攻击格挡率提高 10%
+附加 (60-80) - (150-180) 基础物理伤害
+斧类攻击的物理伤害提高 80%
++(350-400) 命中值
+击败敌人后有 15% 几率获得 1 个狂怒球
 ]],[[
-The Rippling Thoughts
-Legion Sword
-League: Harbinger
-Requires Level 62, 122 Str, 104 Dex
-40% increased Accuracy Rating
-Grants Summon Harbinger of the Arcane Skill
-Trigger level 20 Storm Cascade when you Attack
-(75-90)% increased Spell Damage
-(140-160)% increased Physical Damage
-Adds 1 to (60-70) Lightning Damage
-Adds 1 to (60-70) Lightning Damage to Spells
-10% increased Area of Effect of Area Skills
+秘法君临
+军团长剑
+联盟: 先驱者
+等级需求: 62, 122 Str, 104 Dex
+命中值提高 40%
+获得【召唤秘法先驱者】
+当你攻击时触发 20 级的【风暴突袭】
+法术伤害提高 (75-90)%
+物理伤害提高 (140-160)%
+附加 1 - (60-70) 基础闪电伤害
+法术附加 1 - (60-70) 基础闪电伤害
+范围效果扩大 10%
 ]],[[
-Scaeva
-Gladius
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 60, 113 Str, 113 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2}40% increased Accuracy Rating
-Adds (75-92) to (125-154) Physical Damage
-(15-25)% increased Critical Strike Chance
-0.3% of Physical Attack Damage Leeched as Life per Red Socket
-+10% to Global Critical Strike Multiplier per Green Socket
-0.3% of Physical Attack Damage Leeched as Mana per Blue Socket
-8% increased Global Defences per White Socket
-(60-80)% increased Critical Strike Chance when in Main Hand
-8% additional chance to Block when in Off Hand
+食蚜
+斗士长剑
+版本: 2.6.0以前
+版本: 当前
+等级需求: 60, 113 Str, 113 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2}命中值提高 40%
+附加 (75-92) - (125-154) 基础物理伤害
+该装备的攻击暴击率提高 (15-25)%
+每个红色插槽会使你物理攻击伤害的 0.3% 转化为生命偷取
+每个绿色插槽 +10% 攻击和法术暴击伤害加成
+每个蓝色插槽会使你物理攻击伤害的 0.3% 转化为魔力偷取
+每个白色插槽会使防御提高 8%
+装备在主手时全局暴击率提高 (60-80)%
+装备于副手时有 8% 额外格挡几率
 ]],[[
-Severed in Sleep
-Cutlass
-League: Breach
-Source: Drops in Chayula Breach or from unique{Chayula, Who Dreamt}
-Upgrade: Upgrades to unique{United in Dream} using currency{Blessing of Chayula}
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 38, 55 Str, 79 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2,3}40% increased Accuracy Rating
-+(10-20) to all Attributes
-Minions deal (20-30)% increased Damage
-Minions have +17% to Chaos Resistance
-{variant:1,2}Minions Poison Enemies on Hit
-{variant:3}Minions have 60% chance to Poison Enemies on Hit
-Minions Recover 20% of Maximum Life on Killing a Poisoned Enemy
+离异梦寐
+军用长刃
+联盟: 裂隙
+源: 地图【夏乌拉领域】 或 传奇Boss【逐梦者‧夏乌拉】 专属掉落
+升级: 使用 通货【夏乌拉的祝福】 升级为 传奇【合流梦寐】
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 38, 55 Str, 79 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2,3}命中值提高 40%
++(10-20) 全属性
+召唤生物的伤害提高 (20-30)%
+召唤生物有 +17% 混沌抗性
+{variant:1,2}召唤生物击中敌人时会使其中毒
+{variant:3}召唤生物击中时有 60% 几率使目标中毒
+击败中毒敌人后，召唤生物回复 20% 的最大生命
 ]],[[
-United in Dream
-Cutlass
-Source: Upgraded from unique{Severed in Sleep} using currency{Blessing of Chayula}
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-League: Breach
-Requires Level 69, 55 Str, 79 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2,3}40% increased Accuracy Rating
-Grants level 15 Envy Skill
-Minions deal (30-40)% increased Damage
-Minions have +29% to Chaos Resistance
-{variant:1,2}Minions Poison Enemies on Hit
-{variant:3}Minions have 60% chance to Poison Enemies on Hit
-Minions Leech 5% of Damage as Life against Poisoned Enemies
+合流梦寐
+军用长刃
+源: 由 传奇【离异梦寐】 使用 通货【夏乌拉的祝福】 升级
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+联盟: 裂隙
+等级需求: 69, 55 Str, 79 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2,3}命中值提高 40%
+获得 15 级的主动技能【嫉妒】，且可被此道具上的技能石辅助
+召唤生物的伤害提高 (30-40)%
+召唤生物有 +29% 混沌抗性
+{variant:1,2}召唤生物击中敌人时会使其中毒
+{variant:3}召唤生物击中时有 60% 几率使目标中毒
+召唤生物对中毒的敌人造成伤害的 5% 转化为生命偷取
 ]],[[
-The Tempestuous Steel
-War Sword
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 20, 41 Str, 35 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2}40% increased Accuracy Rating
-Adds (5-8) to (15-20) Physical Damage
-(8-14)% increased Attack Speed
-Hits can't be Evaded
-Attacks with this Weapon Penetrate 30% Elemental Resistances
-15% of Physical Attack Damage Added as Lightning Damage
-15% of Physical Attack Damage Added as Fire Damage
+暴风之钢
+征战之剑
+版本: 2.6.0以前
+版本: 当前
+等级需求: 20, 41 Str, 35 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2}命中值提高 40%
+附加 (5-8) - (15-20) 基础物理伤害
+攻击速度提高 (8-14)%
+攻击和法术无法被闪避
+此武器的攻击穿透 30% 火焰、冰霜、闪电抗性
+获得等同 15% 物理攻击伤害的闪电伤害
+获得等同 15% 物理攻击伤害的火焰伤害
 ]],[[
-Varunastra
-Vaal Blade
-League: Perandus
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 64, 113 Str, 113 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2}+460 to Accuracy Rating
-(40-60)% increased Physical Damage
-Adds (30-45) to (80-100) Physical Damage
-+(2-3) Mana gained for each Enemy hit by Attacks
-Counts as all One Handed Melee Weapon Types
+黑鲨
+瓦尔军刃
+联盟: 普兰德斯
+版本: 2.6.0以前
+版本: 当前
+等级需求: 64, 113 Str, 113 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2}+460 命中值
+物理伤害提高 (40-60)%
+附加 (30-45) - (80-100) 基础物理伤害
+攻击击中每个敌人会回复 +(2-3) 魔力
+可视为所有类型的单手近战武器
 ]],
 -- Weapon: Thrusting Sword
 [[
-Aurumvorax
-Basket Rapier
-Variant: Pre 2.2.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 17, 62 Dex
-Implicits: 3
-{variant:1}+20% to Global Critical Strike Multiplier
-{variant:2}+30% to Global Critical Strike Multiplier
-{variant:3}+25% to Global Critical Strike Multiplier
-(120-150)% increased Physical Damage
-20% reduced Rarity of Items found
-+(40-60)% to all Elemental Resistances
-+3 Life gained for each Enemy hit by your Attacks
+灵护
+练武者细剑
+版本: 2.2.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 17, 62 Dex
+固定基底词缀: 3
+{variant:1}+20% 攻击和法术暴击伤害加成
+{variant:2}+30% 攻击和法术暴击伤害加成
+{variant:3}+25% 攻击和法术暴击伤害加成
+物理伤害提高 (120-150)%
+物品稀有度降低 20%
+获得 +(40-60)% 火焰、冰霜、闪电抗性
+你的攻击击中每个敌人会回复 +3 生命
 ]],[[
-Chitus' Needle
-Elegant Foil
-Variant: Pre 2.2.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 30, 101 Dex
-Implicits: 3
-{variant:1}+20% to Global Critical Strike Multiplier
-{variant:2}+30% to Global Critical Strike Multiplier
-{variant:3}+25% to Global Critical Strike Multiplier
-(140-160)% increased Physical Damage
-+30 to Strength
-+30 to Maximum Mana
-5% increased Movement Speed
-30% increased Elemental Damage
-+2 to Weapon Range
+切特斯之针
+贵族细剑
+版本: 2.2.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 30, 101 Dex
+固定基底词缀: 3
+{variant:1}+20% 攻击和法术暴击伤害加成
+{variant:2}+30% 攻击和法术暴击伤害加成
+{variant:3}+25% 攻击和法术暴击伤害加成
+物理伤害提高 (140-160)%
++30 力量
++30 最大魔力
+移动速度提高 5%
+火焰、冰霜、闪电伤害提高 30%
++2 武器攻击范围
 ]],[[
-Cospri's Malice 
-Jewelled Foil
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 68, 212 Dex, 257 Int
-Implicits: 2
-{variant:1}+30% to Global Critical Strike Multiplier
-{variant:2}+25% to Global Critical Strike Multiplier
-No Physical Damage
-Adds (80�100) to (160�200) Cold Damage
-Adds (40�60) to (90�110) Cold Damage to Spells
-(8-14)% increased Attack Speed
-+257 Intelligence Requirement
-60% increased Critical Strike Chance against Chilled Enemies
-Cast a Socketed Cold Spell on Melee Critical Strike
+卡斯普里怨恨
+宝饰细剑
+版本: 2.6.0以前
+版本: 当前
+等级需求: 68, 212 Dex, 257 Int
+固定基底词缀: 2
+{variant:1}+30% 攻击和法术暴击伤害加成
+{variant:2}+25% 攻击和法术暴击伤害加成
+无法造成物理伤害
+附加 (80-100) - (160-200) 基础冰霜伤害
+法术附加 (40-60) - (90-110) 基础冰霜伤害
+攻击速度提高 (8-14)%
++257 智慧需求
+对冰缓的目标的暴击率提高 60%
+近战暴击时触发插槽内的冰霜技能
 ]],[[
-Daresso's Passion
-Estoc
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 43, 140 Dex
-Implicits: 2
-{variant:1}+30% to Global Critical Strike Multiplier
-{variant:2}+25% to Global Critical Strike Multiplier
-Adds (30-38) to (40-50) Physical Damage
-Adds (30-38) to (40-50) Cold Damage
-20% reduced Frenzy Charge Duration
-25% chance to gain a Frenzy Charge on Kill
-(60-80)% increased Damage while you have no Frenzy Charges
+德瑞索的热情
+穿甲刺剑
+版本: 2.6.0以前
+版本: 当前
+等级需求: 43, 140 Dex
+固定基底词缀: 2
+{variant:1}+30% 攻击和法术暴击伤害加成
+{variant:2}+25% 攻击和法术暴击伤害加成
+附加 (30-38) - (40-50) 基础物理伤害
+附加 (30-38) - (40-50) 基础冰霜伤害
+狂怒球持续时间缩短 20%
+击败敌人后有 25% 几率获得 1 个狂怒球
+当你身上没有狂怒球时，伤害提高 (60-80)%
 ]],[[
-Ewar's Mirage
-Antique Rapier
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 26, 89 Dex
-Implicits: 2
-{variant:1}+30% to Global Critical Strike Multiplier
-{variant:2,3}+25% to Global Critical Strike Multiplier
-{variant:1,2}(40-55)% increased Elemental Damage with Weapons
-{variant:3}(40-55)% increased Elemental Damage with Attack Skills
-Adds 1 to (45-55) Lightning Damage
-(16-22)% increased Attack Speed
-Attacks Chain an additional time when in Main Hand
-Attacks have an additional Projectile when in Off Hand
+伊沃幻像
+古代细剑
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 26, 89 Dex
+固定基底词缀: 2
+{variant:1}+30% 攻击和法术暴击伤害加成
+{variant:2,3}+25% 攻击和法术暴击伤害加成
+{variant:1,2}武器攻击的火焰、冰霜、闪电伤害提高 (40-55)%
+{variant:3}攻击技能的火焰、冰霜、闪电伤害提高 (40-55)%
+附加 1 - (45-55) 基础闪电伤害
+攻击速度提高 (16-22)%
+装备于主手时，攻击额外连锁弹射 1 次
+装备在副手时，攻击可以额外发射 1 个投射物
 ]],[[
-Fidelitas' Spike
-Jagged Foil
-Variant: Pre 2.2.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 22, 77 Dex
-Implicits: 3
-{variant:1}+20% to Global Critical Strike Multiplier
-{variant:2}+30% to Global Critical Strike Multiplier
-{variant:3}+25% to Global Critical Strike Multiplier
-No Physical Damage
-Adds 1 to (40-50) Lightning Damage
-(25-30)% increased Attack Speed
-+2 Life gained for each Enemy hit by Attacks
-{variant:1,2}5% Chance to Shock
-{variant:3}(15-20)% Chance to Shock
-{variant:3}50% increased Herald of Thunder Buff Effect
+费德利塔斯之锋
+锯状薄刃
+版本: 2.2.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 22, 77 Dex
+固定基底词缀: 3
+{variant:1}+20% 攻击和法术暴击伤害加成
+{variant:2}+30% 攻击和法术暴击伤害加成
+{variant:3}+25% 攻击和法术暴击伤害加成
+无法造成物理伤害
+附加 1 - (40-50) 基础闪电伤害
+攻击速度提高 (25-30)%
+攻击击中每个敌人会回复 +2 生命
+{variant:1,2}闪电伤害击中时有 5% 几率使敌人受到感电效果影响
+{variant:3}闪电伤害击中时有 (15-20)% 几率使敌人受到感电效果影响
+{variant:3}【闪电之捷】的增益效果提高 50%
 ]],[[
-The Goddess Bound
-Whalebone Rapier
-Variant: Pre 2.2.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 7, 32 Dex
-Implicits: 3
-{variant:1}+20% to Global Critical Strike Multiplier
-{variant:2}+30% to Global Critical Strike Multiplier
-{variant:3}+25% to Global Critical Strike Multiplier
-+1 to Level of Socketed Melee Gems
-Uses both hand slots
-(250-300)% increased Physical Damage
-Adds 3 to 7 Fire Damage
-20% increased Attack Speed
-30% increased Global Critical Strike Chance
-+(20-40) to Evasion Rating
-20% reduced Rarity of Items found
-30% increased Movement Speed when on Low Life
+女神的灵缚
+鲸骨细刃
+版本: 2.2.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 7, 32 Dex
+固定基底词缀: 3
+{variant:1}+20% 攻击和法术暴击伤害加成
+{variant:2}+30% 攻击和法术暴击伤害加成
+{variant:3}+25% 攻击和法术暴击伤害加成
+此物品上装备的【近战技能石】等级 +1
+占用所有武器栏位
+物理伤害提高 (250-300)%
+附加 3 - 7 基础火焰伤害
+攻击速度提高 20%
+攻击和法术暴击率提高 30%
++(20-40) 点闪避值
+物品稀有度降低 20%
+低血时移动速度提高 30%
 ]],
 -- Weapon: Two Handed Sword
 [[
-The Dancing Dervish
-Reaver Sword
-Upgrade: Upgrades to unique{The Dancing Duo} via prophecy{Dance of Steel}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 59, 82 Str, 119 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2}40% increased Accuracy Rating
-(160-190)% increased Physical Damage
-(25-30)% increased Attack Speed
-5% increased Movement Speed
-Rampage
-Triggers Level 15 Manifest Dancing Dervish on Rampage
-Manifested Dancing Dervish disables both weapon slots
-Manifested Dancing Dervish dies when Rampage ends
+禅意苦行僧
+残暴巨剑
+升级: 使用 预言【钢铁之舞】 升级为 传奇【杀孽戒刀】
+版本: 2.6.0以前
+版本: 当前
+等级需求: 59, 82 Str, 119 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2}命中值提高 40%
+物理伤害提高 (160-190)%
+攻击速度提高 (25-30)%
+移动速度提高 5%
+暴走
+暴走时触发 15 级的【幻化之刃德尔维希】
+【幻化之刃德尔维希】会使你主手和副手武器装备栏失效
+【幻化之刃德尔维希】在暴走结束时死亡
 ]],[[
-The Dancing Duo
-Reaver Sword
-Source: Upgraded from unique{The Dancing Dervish} via prophecy{Dance of Steel}
-Requires Level 65
-40% increased Accuracy Rating
-(160-190)% increased Physical Damage
-(25-30)% increased Attack Speed
-5% increased Movement Speed
-Rampage
-Triggers Level 15 Manifest Dancing Dervish on Rampage
-Manifested Dancing Dervish disables both weapon slots
-Manifested Dancing Dervish dies when Rampage ends
-Manifested Dancing Dervish also manifests a copy of Dancing Dervish
+杀孽戒刀
+残暴巨剑
+源: 由 传奇【禅意苦行僧】 使用 预言【钢铁之舞】 升级
+等级需求: 65
+命中值提高 40%
+物理伤害提高 (160-190)%
+攻击速度提高 (25-30)%
+移动速度提高 5%
+暴走
+暴走时触发 15 级的【幻化之刃德尔维希】
+【幻化之刃德尔维希】会使你主手和副手武器装备栏失效
+【幻化之刃德尔维希】在暴走结束时死亡
+【幻化之刃德尔维希】也会幻化一个【禅意苦行僧】的复制品
 ]],[[
-Doomsower
-Lion Sword
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 65, 104 Str, 122 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2,3}+470 to Accuracy Rating
-Socketed Melee Gems have 15% increased Area of Effect
-Socketed Red Gems get 10% Physical Damage as Extra Fire Damage
-(50-70)% increased Physical Damage
-{variant:1,2}Adds (50-75) to (85-110) Physical Damage
-{variant:3}Adds (65�75) to (100�110) Physical Damage
-(6-12)% increased Attack Speed
+终末之始
+狮爪巨剑
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 65, 104 Str, 122 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2,3}+470 命中值
+插槽内的的近战技能石范围扩大 15%
+此物品上的红色技能石额外获得 10% 的物理伤害，并转化为火焰伤害
+物理伤害提高 (50-70)%
+{variant:1,2}附加 (50-75) - (85-110) 基础物理伤害
+{variant:3}附加 (65-75) - (100-110) 基础物理伤害
+攻击速度提高 (6-12)%
 ]],[[
-Edge of Madness
-Etched Greatsword
-League: Beyond
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 22, 45 Str, 38 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2}40% increased Accuracy Rating
-+1 to Level of Active Socketed Skill Gems
-(40-60)% increased Physical Damage
-Adds (60-65) to (90-105) Chaos Damage
-{variant:2}Adds 1 to 2 Physical Damage to Attacks per Level
-{variant:1}+1 Life gained on Kill per Level
-{variant:1}1% increased Elemental Damage per Level
-1% increased Chaos Damage per Level
+疯狂边界
+术雕巨剑
+联盟: 超越
+版本: Pre 2.6.0
+版本: Current
+等级需求: 22, 45 Str, 38 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2}命中值提高 40%
+此物品上装备的【主动技能石】等级 +1
+物理伤害提高 (40-60)%
+附加 (60-65) - (90-105) 基础混沌伤害
+{variant:2}每一级为你的攻击附加 1 - 2 基础物理伤害
+{variant:1}每一级在击败敌人时获得 +1 生命
+{variant:1}每级提高 1%火焰、冰霜、闪电伤害
+每级提高 1% 混沌伤害
 ]],[[
-Hiltless
-Reaver Sword
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 59, 82 Str, 119 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2}40% increased Accuracy Rating
-Socketed Gems are Supported by level 1 Blood Magic
-Adds (90-115) to (230-260) Physical Damage
-(40-50)% increased Critical Strike Chance
-Enemies you Attack Reflect 100 Physical Damage to you
-+2 to Weapon range
+无击
+残暴巨剑
+版本: 2.6.0以前
+版本: 当前
+等级需求: 59, 82 Str, 119 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2}命中值提高 40%
+此物品上的技能石受到 1 级的 血魔法 辅助
+附加 (90-115) - (230-260) 基础物理伤害
+该装备的攻击暴击率提高 (40-50)%
+你攻击的目标会反射 100 物理伤害
++2 武器攻击范围
 ]],[[
-Kondo's Pride 
-Ezomyte Blade
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 61, 113 Str, 113 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2,3}+435 to Accuracy Rating
-(270-320)% increased Physical Damage
-0.6% of Physical Attack Damage Leeched as Life
-50% increased Melee Damage against Bleeding Enemies
-Cannot Leech Life from Critical Strikes
-30% chance to Blind Enemies on Critical Strike
-{variant:1,2}Causes Bleeding on Melee Critical Strike
-{variant:3}50% chance to cause Bleeding on Critical Strike
+刚多的虚荣
+艾兹麦巨剑
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 61, 113 Str, 113 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2,3}+435 命中值
+物理伤害提高 (270-320)%
+物理攻击伤害的 0.6% 会转化为生命偷取
+对流血敌人的近战伤害提高 50%
+暴击无法吸血
+暴击时有 30% 几率致盲敌人
+{variant:1,2}近战暴击会造成流血
+{variant:3}暴击时有 50% 几率造成流血
 ]],[[
-Oro's Sacrifice
-Infernal Sword
-Variant: Pre 1.3.0
-Variant: Current
-Requires Level 67, 113 Str, 113 Dex
-30% increased Accuracy Rating
-No Physical Damage
-Adds (425-475) to (550-600) Fire Damage
-(10-15)% increased Attack Speed
-20% chance to Ignite
-{variant:1}20% increased Physical Damage taken
-{variant:2}10% increased Physical Damage taken
-{variant:1}20% increased Fire Damage taken
-{variant:2}10% increased Fire Damage taken
-Culling Strike against Burning Enemies
-Gain a Frenzy Charge if an Attack Ignites an Enemy
+欧罗的贡品
+狱炎重剑
+版本: 1.3.0以前
+版本: 当前
+等级需求: 67, 113 Str, 113 Dex
+命中值提高 30%
+无法造成物理伤害
+附加 (425-475) - (550-600) 基础火焰伤害
+攻击速度提高 (10-15)%
+火焰伤害击中时有 20% 几率点燃敌人
+{variant:1}受到的物理伤害提高 20%
+{variant:2}受到的物理伤害提高 10%
+{variant:1}受到的火焰伤害提高 20%
+{variant:2}受到的火焰伤害提高 10%
+终结燃烧中的敌人
+当攻击使怪物点燃时，获得 1 个狂怒球
 ]],[[
-Queen's Decree
-Ornate Sword
-Upgrade: Upgrades to unique{Queen's Escape} via prophecy{The Misunderstood Queen}
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 27, 56 Str, 54 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2,3}+185 to Accuracy Rating
-Minions have (10-15)% increased maximum Life
-(150-200)% increased Skeleton Duration
-Minions deal (10-15)% increased Damage
-+1 to maximum number of Zombies
-+1 to maximum number of Spectres
-{variant:1,2}+2 to maximum number of Skeletons
-{variant:3}+1 to maximum number of Skeletons
-25% increased Strength Requirement
+威严之刃
+名贵巨剑
+升级: 使用 预言【误会女王】 升级为 传奇【逃亡女王】
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 27, 56 Str, 54 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2,3}+185 命中值
+召唤生物的最大生命提高 (10-15)%
+魔侍的持续时间延长 (150-200)%
+召唤生物的伤害提高 (10-15)%
++1 魔卫数量上限
++1 灵体数量上限
+{variant:1,2}+2 魔侍数量上限
+{variant:3}+1 魔侍数量上限
+力量需求提高 25%
 ]],[[
-Queen's Escape
-Ornate Sword
-Source: Upgraded from unique{Queen's Decree} using prophecy{The Misunderstood Queen}
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 38, 56 Str, 54 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2,3}+185 to Accuracy Rating
-Minions have (10-15)% increased maximum Life
-Minions have (80-100)% increased Movement Speed
-(150-200)% increased Skeleton Duration
-Minions deal (10-15)% increased Damage
-+1 to maximum number of Zombies
-+1 to maximum number of Spectres
-{variant:1,2}+2 to maximum number of Skeletons
-{variant:3}+1 to maximum number of Skeletons
-25% increased Strength Requirement
+逃亡女王
+名贵巨剑
+源: 由 传奇【威严之刃】 使用 预言【误会女王】 升级
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 38, 56 Str, 54 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2,3}+185 命中值
+召唤生物的最大生命提高 (10-15)%
+召唤生物的移动速度提高 (80-100)%
+魔侍的持续时间延长 (150-200)%
+召唤生物的伤害提高 (10-15)%
++1 魔卫数量上限
++1 灵体数量上限
+{variant:1,2}+2 魔侍数量上限
+{variant:3}+1 魔侍数量上限
+力量需求提高 25%
 ]],[[
-Rigwald's Charge
-Highland Blade
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 44, 77 Str, 77 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2}+305 to Accuracy Rating
-(120-150)% increased Physical Damage
-20% increased Attack Speed
-+(150-200) to Accuracy Rating
-10% increased Movement Speed
+瑞佛的奋战长剑
+高山重刃
+版本: 2.6.0以前
+版本: 当前
+等级需求: 44, 77 Str, 77 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2}+305 命中值
+物理伤害提高 (120-150)%
+攻击速度提高 20%
++(150-200) 命中值
+移动速度提高 10%
 ]],[[
-Shiversting
-Bastard Sword
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 14, 21 Str, 30 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2}40% increased Accuracy Rating
-(80-100)% increased Physical Damage
-Adds 35 to 70 Cold Damage
-0.6% of Physical Attack Damage Leeched as Mana
-Cannot be Frozen
+寒光剑
+重剑
+版本: 2.6.0以前
+版本: 当前
+等级需求: 14, 21 Str, 30 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2}命中值提高 40%
+物理伤害提高 (80-100)%
+附加 35 - 70 基础冰霜伤害
+物理攻击伤害的 0.6% 转化为魔力偷取
+免疫冰冻
 ]],[[
-Starforge 
-Infernal Sword
-Source: Drops from unique{The Shaper}
-Requires Level 67, 113 Str, 113 Dex
-30% increased Accuracy Rating
-(400-500)% increased Physical Damage
-(5-8)% increased Attack Speed
-+(90-100) to maximum Life
-20% increased Area of Effect for Attacks
-Deal no Elemental Damage
-Your Physical Damage can Shock
-Shaper Item
+塑星者
+狱炎重剑
+源: 传奇Boss【塑界者】 专属掉落
+等级需求: 67, 113 Str, 113 Dex
+命中值提高 30%
+物理伤害提高 (400-500)%
+攻击速度提高 (5-8)%
++(90-100) 最大生命
+攻击技能的范围效果扩大 20%
+无法造成火焰、冰霜、闪电伤害
+你的物理伤害造成感电
+塑界之器
 ]],[[
-Terminus Est
-Tiger Sword
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 51, 80 Str, 96 Dex
-Implicits: 2
-{variant:1}18% increased Accuracy Rating
-{variant:2}+360 to Accuracy Rating
-{variant:1}(120-180)% increased Physical Damage
-{variant:2}(220-260)% increased Physical Damage
-{variant:2}(50-75)% increased Critical Strike Chance
-20% increased Attack Speed
-+10 Mana Gained on Kill
-10% increased Movement Speed
-Gain a Frenzy Charge on Critical Strike
+行刑之刃
+虎牙巨剑
+版本: 2.6.0以前
+版本: 当前
+等级需求: 51, 80 Str, 96 Dex
+固定基底词缀: 2
+{variant:1}命中值提高 18%
+{variant:2}+360 命中值
+{variant:1}物理伤害提高 (120-180)%
+{variant:2}物理伤害提高 (220-260)%
+{variant:2}该装备的攻击暴击率提高 (50-75)%
+攻击速度提高 20%
+击败敌人回复 +10 魔力
+移动速度提高 10%
+暴击时获得狂怒球
 ]],[[
-Voidforge
-Infernal Sword
-Source: Drops from unique{The Elder} (Uber)
-Requires Level 67
-30% increased Accuracy Rating
-(50�100)% increased Physical Damage
-(5�8)% increased Attack Speed
-+(90�100) to maximum Life
-Your Elemental Damage can Shock
-Gain 300% of Weapon Physical Damage as Extra Damage of an Element
-20% increased Area of Effect for Attacks
-Deal no Non-Elemental Damage
-Elder Item
+裂空者
+狱炎重剑
+源: 传奇Boss【裂界者】 专属掉落（永恒·T18）
+等级需求: 67
+命中值提高 30%
+物理伤害提高 (50-100)%
+攻击速度提高 (5-8)%
++(90-100) 最大生命
+你的火焰、冰霜、闪电伤害可以造成感电
+获得等同武器物理伤害 300% 的随机一种额外火焰，冰霜，或者闪电伤害
+攻击技能的范围效果扩大 20%
+无法造成非火焰、冰霜、闪电伤害
+裂界之器
 ]],
 }

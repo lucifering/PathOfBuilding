@@ -1,216 +1,215 @@
 ﻿-- Item data (c) Grinding Gear Games
-
 return {
 -- Quiver
 [[
-Asphyxia's Wrath
-Two-Point Arrow Quiver
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 10
-(20-30)% increased Accuracy Rating
-{variant:2}Grants level 5 Frostbite Skill
-(8-12)% increased Attack Speed
-+(30-40)% to Cold Resistance
-(30-40)% increased Chill Duration on Enemies
-{variant:1}20% of Physical Damage Converted to Cold Damage
-{variant:2}Gain 20% of Physical Damage as Extra Cold Damage
-(7-10)% chance to Freeze
-{variant:1}40% reduced Area of Effect of Curse Skills
-Curses on Slain Enemies are transferred to a nearby Enemy
+冰灵之吼
+双锋箭袋
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 10
+命中值提高 (20-30)%
+{variant:2}获得 5 级的主动技能【冻伤】，且可被此道具上的技能石辅助
+攻击速度提高 (8-12)%
++(30-40)% 冰霜抗性
+敌人被冰缓的持续时间延长 (30-40)%
+{variant:1}20% 的物理伤害转换为冰霜伤害
+{variant:2}获得额外冰霜伤害， 其数值等同于物理伤害的 20%
+冰霜伤害击中时有 (7-10)% 的几率冰冻敌人
+{variant:1}诅咒范围缩小 40%
+被击败的敌人身上的诅咒将转移给周围 1 个敌人
 ]],[[
-Blackgleam
-Fire Arrow Quiver
-Upgrade: Upgrades to unique{The Signal Fire} via prophecy{Fire and Brimstone}
-Variant: Pre 2.0.0
-Variant: Current
-Requires Level 22
-Adds 4 to 8 Fire Damage to Attacks with Bows
-10% increased Attack Speed
-+(80-100) to Evasion Rating
-+(10-30) to maximum Mana
-{variant:1}(30-50)% of Physical Damage Converted to Fire Damage
-{variant:2}50% of Physical Damage Converted to Fire Damage
-Adds 5 to 10 Fire Damage to Attacks with Bows
+黑炎之芒
+火灵箭袋
+升级: 使用 预言【火和硫磺】 升级为 传奇【狼烟】
+版本: 2.0.0以前
+版本: 当前
+等级需求: 22
+攻击附加 2 - 4 基础火焰伤害
+攻击速度提高 10%
++(80-100) 点闪避值
++(10-30) 最大魔力
+{variant:1}(30-50)% 的物理伤害转换为火焰伤害
+{variant:2}50% 的物理伤害转换为火焰伤害
+持弓攻击附加 5 - 10 基础火焰伤害
 ]],[[
-The Signal Fire
-Fire Arrow Quiver
-Source: Upgraded from unique{Blackgleam} using prophecy{Fire and Brimstone}
-Requires Level 24
-Adds 4 to 8 Fire Damage to Attacks with Bows
-10% increased Attack Speed
-+(80-100) to Evasion Rating
-+(10-30) to maximum Mana
-Gain (25-35)% of Physical Damage as Extra Fire Damage
-50% of Physical Damage Converted to Fire Damage
-Adds 5 to 10 Fire Damage to Attacks with Bows
+狼烟
+火灵箭袋
+源: 由 传奇【黑炎之芒】 使用 预言【火和硫磺】 升级
+等级需求: 24
+攻击附加 2 - 4 基础火焰伤害
+攻击速度提高 10%
++(80-100) 点闪避值
++(10-30) 最大魔力
+获得额外火焰伤害， 其数值等同于物理伤害的 (25-35)%
+50% 的物理伤害转换为火焰伤害
+持弓攻击附加 5 - 10 基础火焰伤害
 ]],[[
-Craghead
-Serrated Arrow Quiver
-Upgrade: Upgrades to unique{Cragfall} via prophecy{Heavy Blows}
-Requires Level 5
-Adds 1 to 4 Physical Damage to Attacks with Bows
-(20-25)% reduced Enemy Stun Threshold
-25% reduced Projectile Speed
-(60-80)% increased Stun Duration on Enemies
-Adds 6 to 10 Physical Damage to Attacks with Bows
+岩头
+锯齿箭袋
+升级: 使用 预言【沉重打击】 升级为 传奇【落石】
+等级需求: 5
+攻击附加 1 - 4 基础火焰伤害
+敌人晕眩门槛降低 (20-25)%
+投射物速度降低 25%
+敌人被晕眩时间延长 (60-80)% 
+持弓攻击附加 6 - 10 基础物理伤害
 ]],[[
-Cragfall
-Serrated Arrow Quiver
-Source: Upgraded from unique{Craghead} using prophecy{Heavy Blows}
-Requires Level 5
-Adds 1 to 4 Physical Damage to Attacks with Bows
-(20-25)% reduced Enemy Stun Threshold
-25% reduced Projectile Speed
-(60-80)% increased Stun Duration on Enemies
-Adds 6 to 10 Physical Damage to Attacks with Bows
-50% chance to double Stun Duration
+落石
+锯齿箭袋
+源: 由 传奇【岩头】 使用 预言【沉重打击】 升级
+等级需求: 5
+持弓攻击附加 1 - 4 基础物理伤害
+敌人晕眩门槛降低 (20-25)%
+投射物速度降低 25%
+敌人被晕眩时间延长 (60-80)% 
+持弓攻击附加 6 - 10 基础物理伤害
+有 50% 几率使晕眩时间延长 1 倍
 ]],[[
-Drillneck
-Penetrating Arrow Quiver
-Requires Level 36
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Implicits: 2
+穿心
+穿射箭袋
+等级需求: 36
+版本: {2_6}3.0.0以前
+版本: 当前
+固定基底词缀: 2
 {variant:1}10% chance of Arrows Piercing
-{variant:2}Arrows Pierce an additional Target
-(8-12)% increased Attack Speed
-+350 to Evasion Rating
-+(40-50) to maximum Life
-Adds (10-14) to (19-24) Physical Damage to Attacks with Bows
+{variant:2}箭矢会穿透 1 个额外目标
+攻击速度提高 (8-12)%
++350 点闪避值
++(40-50) 最大生命
+持弓攻击附加 (10-14) - (19-24) 基础物理伤害
 {variant:1}Projectile Damage increased by 50% of Arrow Pierce Chance
-{variant:2}Arrows deal 50% increased Damage with Hits and Ailments to Targets they Pierce
+{variant:2}箭矢对其穿透的目标所造成的击中伤害和异常状态伤害提高 50%
 ]],[[
-The Fracturing Spinner
-Blunt Arrow Quiver
-League: Harbinger
-Requires Level 60
-(25-35)% increased Stun Duration on Enemies
-Grants Summon Harbinger of Directions Skill
-Adds (19-22) to (30-35) Fire Damage to Spells and Attacks
-Adds (19-22) to (30-35) Cold Damage to Spells and Attacks
-+(30-50) to Strength and Dexterity
-+(15-25)% to Fire and Cold Resistances
+爆裂之射
+钝矢箭袋
+联盟: 先驱者
+等级需求: 60
+敌人被晕眩时间延长 (25-35)% 
+获得【召唤射术先驱者】
+攻击和法术附加 (19-22)-(30-35) 基础火焰伤害
+攻击和法术附加 (19-22) - (30-35) 基础冰霜伤害
++(30-50) 力量和敏捷
++(15-25)% 火焰与冰霜抗性
 ]],[[
-Hyrri's Bite
-Sharktooth Arrow Quiver
-Upgrade: Upgrades to unique{Hyrri's Demise} via prophecy{A Dishonourable Death}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 10
-+(3-4) Life gained for each Enemy hit by your Attacks
-+(15-25) to Strength
-+(35-45) to Dexterity
-+(15-25) to Intelligence
-{variant:2}Adds 10 to 20 Cold Damage to Attacks
-(7-10)% increased Attack Speed
-+(2-3) Life gained for each Enemy hit by your Attacks
-10% increased Area of Effect of Area Skills
+西里的嗜血之矢
+鲨齿箭袋
+升级: 使用 预言【卑贱之死】 升级为 传奇【西里之逝】 
+版本: 2.6.0以前
+版本: 当前
+等级需求: 10
+你的攻击击中每个敌人会回复 +(3-4) 生命
++(15-25) 力量
++(35-45) 敏捷
++(15-25) 智慧
+{variant:2}攻击附加 10 - 20 基础冰霜伤害
+攻击速度提高 (7-10)%
+你的攻击击中每个敌人会回复 +(2-3) 生命
+范围效果扩大 10%
 ]],[[
-Hyrri's Demise
-Sharktooth Arrow Quiver
-Source: Upgraded from unique{Hyrri's Bite} via prophecy{A Dishonourable Death}
-Requires Level 45
-+(3–4) Life gained for each Enemy hit by your Attacks
-+(15–30) to all Attributes
-(7–10)% increased Attack Speed
-+(2–3) Life gained for each Enemy hit by your Attacks
-10% increased Area of Effect
-Adds 1 to 2 Cold Damage to Attacks per 10 Dexterity
-Adds 1 to 2 Fire Damage to Attacks per 10 Strength
-Adds 0 to 3 Lightning Damage to Attacks per 10 Intelligence
+西里之逝
+鲨齿箭袋
+源: 由 传奇【西里的嗜血之矢】 使用 预言【卑贱之死】 升级
+等级需求: 45
+你的攻击击中每个敌人会回复 +(3-4) 生命
++(15-30) 全属性
+攻击速度提高 (7-10)%
+你的攻击击中每个敌人会回复 +(2-3) 生命
+范围效果扩大 10%
+每 10 点敏捷可以为攻击附加 1 - 2 基础冰霜伤害
+每 10 点力量可以为攻击附加 1 - 2 基础火焰伤害
+每 10 点智慧可以为攻击附加 0 - 3 基础闪电伤害
 ]],[[
-Maloney's Nightfall
-Blunt Arrow Quiver
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 55
-(25-35)% increased Stun Duration on Enemies
-{variant:1}(8-10)% increased Attack Speed
-{variant:2,3}10% increased Attack Speed
-+(50-70) to maximum Life
-+(12-16)% to Chaos Resistance
-{variant:1}Adds (5-7) to (8-10) Physical Damage to Attacks with Bows
-{variant:2,3}Adds (8-10) to (14-16) Physical Damage to Attacks with Bows
-{variant:1}10% chance to create a Smoke Cloud when Hit
-{variant:2,3}25% chance to create a Smoke Cloud when Hit
-{variant:1}(20-40)% increased Damage against Blinded Enemies
-{variant:2}(40-60)% increased Damage against Blinded Enemies
-{variant:3}(40-60)% increased Damage with Hits and Ailments against Blinded Enemies
+马洛尼的暮光
+钝矢箭袋
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 55
+敌人被晕眩时间延长 (25-35)% 
+{variant:1}攻击速度提高 (8-10)%
+{variant:2,3}攻击速度提高 10%
++(50-70) 最大生命
++(12-16)% 混沌抗性
+{variant:1}持弓攻击附加 (5-7) - (8-10) 基础物理伤害
+{variant:2,3}持弓攻击附加 (8-10) - (14-16) 基础物理伤害
+{variant:1}被击中时有 10% 几率制造一团烟雾
+{variant:2,3}被击中时有 25% 几率制造一团烟雾
+{variant:1}对致盲的敌人的击中和异常状态伤害提高 (20-40)%
+{variant:2}对致盲的敌人的击中和异常状态伤害提高 (20-40)%
+{variant:3}对致盲的敌人的击中和异常状态伤害提高 (40-60)%
 ]],[[
-Rearguard
-Broadhead Arrow Quiver
-Requires Level 28
-Adds 6 to 12 Physical Damage to Attacks with Bows
-+(400-450) to Armour
-(20-30)% increased Projectile Speed
-50% increased Stun Recovery
-(15-20)% increased Projectile Damage
-(20-24)% Chance to Block
-(12-15)% Chance to Block Spells
+寒锋之卫
+宽矢箭袋
+等级需求: 28
+持弓攻击附加 6 - 12 基础物理伤害
++(400-450) 护甲
+投射物速度提高 (20-30)%
+晕眩回复和格挡回复提高 50%
+投射物伤害提高 (15-20)%
+(20-24)% 攻击格挡率
+(12-15)% 法术格挡率
 ]],[[
-Rigwald's Quills
-Two-Point Arrow Quiver
-League: Talisman Standard, Talisman Hardcore
-Source: Drops from unique{Rigwald, The Wolven King} (Level 70+)
-Requires Level 56
-(20-30)% increased Accuracy Rating
-−10% to Fire Resistance
-+(20-30)% to Lightning Resistance
-+7 Life gained for each Enemy hit by your Attacks
-20% reduced Projectile Speed
-(30-50)% increased Projectile Damage
-Projectiles Fork
+瑞佛之羽
+双锋箭袋
+联盟: 魔符·标准, 魔符·专家
+源: 传奇Boss【狼王瑞佛】 专属掉落 (等级 70+)
+等级需求: 56
+命中值提高 (20-30)%
+-10% 火焰抗性
++(20-30)% 闪电抗性
+你的攻击击中每个敌人会回复 +7 生命
+投射物速度降低 20%
+投射物伤害提高 (30-50)%
+投射物会分裂
 ]],[[
-Saemus' Gift
-Spike-Point Arrow Quiver
-Requires Level 45
-(20-30)% increased Global Critical Strike Chance
-+(30-40) to Dexterity
-(8-12)% increased Cast Speed
-+(30-60) to maximum Life
-+(20-40)% to Lightning Resistance
-20% chance to Avoid being Stunned
-1% increased Lightning Damage per 10 Intelligence
+勇者之礼
+刺锋箭袋
+等级需求: 45
+攻击和法术暴击率提高 (20-30)%
++(30-40) 敏捷
+施法速度提高 (8-12)%
++(30-60) 最大生命
++(20-40)% 闪电抗性
+20% 几率避免被晕眩
+每 10 点智慧可使闪电伤害提高 1%
 ]],[[
-Skirmish
-Two-Point Arrow Quiver
-Requires Level 19
-(20-30)% increased Accuracy Rating
-+(15-25) to Intelligence
-+(30-50) to maximum Mana
-(20-30)% increased Mana Regeneration Rate
-0.2% of Physical Attack Damage Leeched as Mana
-Attack skills can have 1 additional Totem Summoned at a time
+小会战
+双锋箭袋
+等级需求: 19
+命中值提高 (20-30)%
++(15-25) 智慧
++(30-50) 最大魔力
+魔力回复速度提高 (20-30)%
+物理攻击伤害的 0.2% 转化为魔力偷取
+攻击技能可以额外召唤 1 个图腾
 ]],[[
-Soul Strike
-Spike-Point Arrow Quiver
-Variant: Pre 2.5.0
-Variant: Current
-Requires Level 64
-(20-30)% increased Global Critical Strike Chance
-+30 to Dexterity
-Adds (13-18) to (26-32) Chaos Damage to Attacks
-(8-12)% increased Attack Speed
-+(100-120) to maximum Energy Shield
-40% reduced Energy Shield Recharge Rate
-{variant:1}150% faster start of Energy Shield Recharge
-{variant:2}80% faster start of Energy Shield Recharge
+灵魂打击
+刺锋箭袋
+版本: 2.5.0以前
+版本: 当前
+等级需求: 64
+攻击和法术暴击率提高 (20-30)%
++30 敏捷
+攻击附加 (13-18) - (26-32) 基础混沌伤害
+攻击速度提高 (8-12)%
++(100-120) 最大能量护盾
+能量护盾的回复速度降低 40%
+{variant:1}能量护盾启动回复比平常快 150%
+{variant:2}能量护盾启动回复比平常快 80%
 ]],[[
-Voidfletcher
-Penetrating Arrow Quiver
-Source: Drops from unique{The Elder} (Uber)
-Requires Level 68
-Arrows Pierce an additional Target
-Consumes a Void Charge to Trigger Level 20 Void Shot when you fire Arrows
-Adds (30–40) to (80–100) Cold Damage to Attacks
-+(80–120) to maximum Energy Shield
-+(20–30)% to Cold Resistance
-+(20–40) Mana gained on Kill
-30% increased Projectile Speed
-5 Maximum Void Charges
-Gain a Void Charge every second
-Elder Item
+虚空制箭者
+穿射箭袋
+源: 传奇Boss【裂界者】 专属掉落（永恒·T18）
+等级需求: 68
+箭矢会穿透 1 个额外目标
+当你发射箭矢时，会消耗 1 个虚空之矢来触发 20 级的【虚空射击】
+攻击附加 (30-40) - (80-100) 基础冰霜伤害
++(80-120) 最大能量护盾
++(20-30)% 冰霜抗性
+击败敌人回复 +(20-40) 魔力
+投射物速度提高 30%
+5 最大虚空之矢数量
+每秒获得 1 个虚空之矢
+裂界之器
 ]],
 }

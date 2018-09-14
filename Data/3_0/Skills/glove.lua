@@ -7,10 +7,10 @@
 local skills, mod, flag, skill = ...
 
 skills["EnchantmentOfBladesOnHit"] = {
-	name = "Word of Blades",
+	name = "刀锋之誓",
 	hidden = true,
 	color = 4,
-	description = "Fires a chaining burst of ethereal blades.",
+	description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [3] = true, [36] = true, [42] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -41,10 +41,10 @@ skills["EnchantmentOfBladesOnHit"] = {
 	},
 }
 skills["EnchantmentOfBladesOnHit2"] = {
-	name = "Edict of Blades",
+	name = "刀锋之律",
 	hidden = true,
 	color = 4,
-	description = "Fires a chaining burst of ethereal blades.",
+	description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [3] = true, [36] = true, [42] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -75,10 +75,10 @@ skills["EnchantmentOfBladesOnHit2"] = {
 	},
 }
 skills["EnchantmentOfBladesOnHit3"] = {
-	name = "Decree of Blades",
+	name = "刀锋之令",
 	hidden = true,
 	color = 4,
-	description = "Fires a chaining burst of ethereal blades.",
+	description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [3] = true, [36] = true, [42] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -109,10 +109,10 @@ skills["EnchantmentOfBladesOnHit3"] = {
 	},
 }
 skills["EnchantmentOfBladesOnHit4"] = {
-	name = "Commandment of Blades",
+	name = "刀锋之诫",
 	hidden = true,
 	color = 4,
-	description = "Fires a chaining burst of ethereal blades.",
+	description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [3] = true, [36] = true, [42] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -143,10 +143,10 @@ skills["EnchantmentOfBladesOnHit4"] = {
 	},
 }
 skills["EnchantmentOfFlamesOnHit"] = {
-	name = "Word of Flames",
+	name = "烈火之誓",
 	hidden = true,
 	color = 4,
-	description = "Releases a nova of fire around you, damaging nearby enemies.",
+	description = "释放一个火焰的新星, 有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [10] = true, [33] = true, [36] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -174,10 +174,10 @@ skills["EnchantmentOfFlamesOnHit"] = {
 	},
 }
 skills["EnchantmentOfFlamesOnHit2"] = {
-	name = "Edict of Flames",
+	name = "烈火之律",
 	hidden = true,
 	color = 4,
-	description = "Releases a nova of fire around you, damaging nearby enemies.",
+	description = "释放一个火焰的新星, 有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [10] = true, [33] = true, [36] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -205,10 +205,10 @@ skills["EnchantmentOfFlamesOnHit2"] = {
 	},
 }
 skills["EnchantmentOfFlamesOnHit3"] = {
-	name = "Decree of Flames",
+	name = "烈火之令",
 	hidden = true,
 	color = 4,
-	description = "Releases a nova of fire around you, damaging nearby enemies.",
+	description = "释放一个火焰的新星, 有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [10] = true, [33] = true, [36] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -236,10 +236,10 @@ skills["EnchantmentOfFlamesOnHit3"] = {
 	},
 }
 skills["EnchantmentOfFlamesOnHit4"] = {
-	name = "Commandment of Flames",
+	name = "烈火之诫",
 	hidden = true,
 	color = 4,
-	description = "Releases a nova of fire around you, damaging nearby enemies.",
+	description = "释放一个火焰的新星, 有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [10] = true, [33] = true, [36] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -267,10 +267,10 @@ skills["EnchantmentOfFlamesOnHit4"] = {
 	},
 }
 skills["EnchantmentOfForceOnHit"] = {
-	name = "Word of Force",
+	name = "原力之誓",
 	hidden = true,
 	color = 4,
-	description = "Release an arc of force from your weapon or fists, damaging enemies in front of you.",
+	description = "对你面前的敌人们造成普通攻击的伤害. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [11] = true, [10] = true, [47] = true, [57] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -296,10 +296,10 @@ skills["EnchantmentOfForceOnHit"] = {
 	},
 }
 skills["EnchantmentOfForceOnHit2"] = {
-	name = "Edict of Force",
+	name = "原力之律",
 	hidden = true,
 	color = 4,
-	description = "Release an arc of force from your weapon or fists, damaging enemies in front of you.",
+	description = "对你面前的敌人们造成普通攻击的伤害. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [11] = true, [10] = true, [47] = true, [57] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -325,10 +325,10 @@ skills["EnchantmentOfForceOnHit2"] = {
 	},
 }
 skills["EnchantmentOfForceOnHit3"] = {
-	name = "Decree of Force",
+	name = "原力之令",
 	hidden = true,
 	color = 4,
-	description = "Release an arc of force from your weapon or fists, damaging enemies in front of you.",
+	description = "对你面前的敌人们造成普通攻击的伤害. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [11] = true, [10] = true, [47] = true, [57] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -354,10 +354,10 @@ skills["EnchantmentOfForceOnHit3"] = {
 	},
 }
 skills["EnchantmentOfForceOnHit4"] = {
-	name = "Commandment of Force",
+	name = "原力之诫",
 	hidden = true,
 	color = 4,
-	description = "Release an arc of force from your weapon or fists, damaging enemies in front of you.",
+	description = "对你面前的敌人们造成普通攻击的伤害. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [11] = true, [10] = true, [47] = true, [57] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -383,10 +383,10 @@ skills["EnchantmentOfForceOnHit4"] = {
 	},
 }
 skills["EnchantmentOfFrostOnKill"] = {
-	name = "Word of Frost",
+	name = "寒冰之誓",
 	hidden = true,
 	color = 4,
-	description = "Fire a nova of icy projectiles.",
+	description = "制造一个寒冰投射物的新星. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [3] = true, [36] = true, [42] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -417,10 +417,10 @@ skills["EnchantmentOfFrostOnKill"] = {
 	},
 }
 skills["EnchantmentOfFrostOnKill2"] = {
-	name = "Edict of Frost",
+	name = "寒冰之律",
 	hidden = true,
 	color = 4,
-	description = "Fire a nova of icy projectiles.",
+	description = "制造一个寒冰投射物的新星. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [3] = true, [36] = true, [42] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -451,10 +451,10 @@ skills["EnchantmentOfFrostOnKill2"] = {
 	},
 }
 skills["EnchantmentOfFrostOnKill3"] = {
-	name = "Decree of Frost",
+	name = "寒冰之令",
 	hidden = true,
 	color = 4,
-	description = "Fire a nova of icy projectiles.",
+	description = "制造一个寒冰投射物的新星. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [3] = true, [36] = true, [42] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -485,10 +485,10 @@ skills["EnchantmentOfFrostOnKill3"] = {
 	},
 }
 skills["EnchantmentOfFrostOnKill4"] = {
-	name = "Commandment of Frost",
+	name = "寒冰之诫",
 	hidden = true,
 	color = 4,
-	description = "Fire a nova of icy projectiles.",
+	description = "制造一个寒冰投射物的新星. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [3] = true, [36] = true, [42] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -519,25 +519,25 @@ skills["EnchantmentOfFrostOnKill4"] = {
 	},
 }
 skills["EnchantmentOfFuryOnHit"] = {
-	name = "Word of Fury",
+	name = "狂怒之誓",
 	hidden = true,
 	color = 4,
-	description = "Repeatedly fires a piercing projectile based on your weapon, converting some physical damage to fire. The projectiles form an arc in front of you.",
+	description = "发射一个定必穿透敌人的你的武器的复制品或是投射物的投射物. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [47] = true, [57] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Wand"] = true,
-		["Bow"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Wand"] = true,
+		["Staff"] = true,
+		["Two Handed Sword"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Thrusting One Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Bow"] = true,
+		["One Handed Mace"] = true,
 	},
 	fromItem = true,
 	baseFlags = {
@@ -572,25 +572,25 @@ skills["EnchantmentOfFuryOnHit"] = {
 	},
 }
 skills["EnchantmentOfFuryOnHit2"] = {
-	name = "Edict of Fury",
+	name = "狂怒之律",
 	hidden = true,
 	color = 4,
-	description = "Repeatedly fires a piercing projectile based on your weapon, converting some physical damage to fire. The projectiles form an arc in front of you.",
+	description = "发射一个定必穿透敌人的你的武器的复制品或是投射物的投射物. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [47] = true, [57] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Wand"] = true,
-		["Bow"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Wand"] = true,
+		["Staff"] = true,
+		["Two Handed Sword"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Thrusting One Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Bow"] = true,
+		["One Handed Mace"] = true,
 	},
 	fromItem = true,
 	baseFlags = {
@@ -625,25 +625,25 @@ skills["EnchantmentOfFuryOnHit2"] = {
 	},
 }
 skills["EnchantmentOfFuryOnHit3"] = {
-	name = "Decree of Fury",
+	name = "狂怒之令",
 	hidden = true,
 	color = 4,
-	description = "Repeatedly fires a piercing projectile based on your weapon, converting some physical damage to fire. The projectiles form an arc in front of you.",
+	description = "发射一个定必穿透敌人的你的武器的复制品或是投射物的投射物. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [47] = true, [57] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Wand"] = true,
-		["Bow"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Wand"] = true,
+		["Staff"] = true,
+		["Two Handed Sword"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Thrusting One Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Bow"] = true,
+		["One Handed Mace"] = true,
 	},
 	fromItem = true,
 	baseFlags = {
@@ -678,25 +678,25 @@ skills["EnchantmentOfFuryOnHit3"] = {
 	},
 }
 skills["EnchantmentOfFuryOnHit4"] = {
-	name = "Commandment of Fury",
+	name = "狂怒之诫",
 	hidden = true,
 	color = 4,
-	description = "Repeatedly fires a piercing projectile based on your weapon, converting some physical damage to fire. The projectiles form an arc in front of you.",
+	description = "发射一个定必穿透敌人的你的武器的复制品或是投射物的投射物. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [47] = true, [57] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Wand"] = true,
-		["Bow"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Wand"] = true,
+		["Staff"] = true,
+		["Two Handed Sword"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Thrusting One Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Bow"] = true,
+		["One Handed Mace"] = true,
 	},
 	fromItem = true,
 	baseFlags = {
@@ -731,10 +731,10 @@ skills["EnchantmentOfFuryOnHit4"] = {
 	},
 }
 skills["EnchantmentOfInfernoOnKill"] = {
-	name = "Word of Inferno",
+	name = "炼狱之誓",
 	hidden = true,
 	color = 4,
-	description = "Drops a meteor from above on a nearby foe, dealing fire damage in an area around them.",
+	description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [33] = true, [36] = true, [42] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -766,10 +766,10 @@ skills["EnchantmentOfInfernoOnKill"] = {
 	},
 }
 skills["EnchantmentOfInfernoOnKill2"] = {
-	name = "Edict of Inferno",
+	name = "炼狱之律",
 	hidden = true,
 	color = 4,
-	description = "Drops a meteor from above on a nearby foe, dealing fire damage in an area around them.",
+	description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [33] = true, [36] = true, [42] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -801,10 +801,10 @@ skills["EnchantmentOfInfernoOnKill2"] = {
 	},
 }
 skills["EnchantmentOfInfernoOnKill3"] = {
-	name = "Decree of Inferno",
+	name = "炼狱之令",
 	hidden = true,
 	color = 4,
-	description = "Drops a meteor from above on a nearby foe, dealing fire damage in an area around them.",
+	description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [33] = true, [36] = true, [42] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -836,10 +836,10 @@ skills["EnchantmentOfInfernoOnKill3"] = {
 	},
 }
 skills["EnchantmentOfInfernoOnKill4"] = {
-	name = "Commandment of Inferno",
+	name = "炼狱之诫",
 	hidden = true,
 	color = 4,
-	description = "Drops a meteor from above on a nearby foe, dealing fire damage in an area around them.",
+	description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [33] = true, [36] = true, [42] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -871,25 +871,25 @@ skills["EnchantmentOfInfernoOnKill4"] = {
 	},
 }
 skills["EnchantmentOfIreWhenHit"] = {
-	name = "Word of Ire",
+	name = "雷霆之誓",
 	hidden = true,
 	color = 2,
-	description = "Release a lightning charged spinning copy of your weapon or its projectiles that rotates around a point, damaging enemies in an area.",
+	description = "复制并释放出一个你所使用的武器或其投射物, 并带有闪电在一个定点旋转, 对区域中的敌人造成伤害. 有 10 秒冷却时间. ",
 	skillTypes = { [1] = true, [10] = true, [11] = true, [12] = true, [18] = true, [47] = true, [57] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Wand"] = true,
-		["Bow"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Wand"] = true,
+		["Staff"] = true,
+		["Two Handed Sword"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Thrusting One Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Bow"] = true,
+		["One Handed Mace"] = true,
 	},
 	fromItem = true,
 	baseFlags = {
@@ -921,25 +921,25 @@ skills["EnchantmentOfIreWhenHit"] = {
 	},
 }
 skills["EnchantmentOfIreWhenHit2"] = {
-	name = "Edict of Ire",
+	name = "雷霆之律",
 	hidden = true,
 	color = 2,
-	description = "Release a lightning charged spinning copy of your weapon or its projectiles that rotates around a point, damaging enemies in an area.",
+	description = "复制并释放出一个你所使用的武器或其投射物, 并带有闪电在一个定点旋转, 对区域中的敌人造成伤害. 有 10 秒冷却时间. ",
 	skillTypes = { [1] = true, [10] = true, [11] = true, [12] = true, [18] = true, [47] = true, [57] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Wand"] = true,
-		["Bow"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Wand"] = true,
+		["Staff"] = true,
+		["Two Handed Sword"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Thrusting One Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Bow"] = true,
+		["One Handed Mace"] = true,
 	},
 	fromItem = true,
 	baseFlags = {
@@ -971,25 +971,25 @@ skills["EnchantmentOfIreWhenHit2"] = {
 	},
 }
 skills["EnchantmentOfIreWhenHit3"] = {
-	name = "Decree of Ire",
+	name = "雷霆之令",
 	hidden = true,
 	color = 2,
-	description = "Release a lightning charged spinning copy of your weapon or its projectiles that rotates around a point, damaging enemies in an area.",
+	description = "复制并释放出一个你所使用的武器或其投射物, 并带有闪电在一个定点旋转, 对区域中的敌人造成伤害. 有 10 秒冷却时间. ",
 	skillTypes = { [1] = true, [10] = true, [11] = true, [12] = true, [18] = true, [47] = true, [57] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Wand"] = true,
-		["Bow"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Wand"] = true,
+		["Staff"] = true,
+		["Two Handed Sword"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Thrusting One Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Bow"] = true,
+		["One Handed Mace"] = true,
 	},
 	fromItem = true,
 	baseFlags = {
@@ -1021,25 +1021,25 @@ skills["EnchantmentOfIreWhenHit3"] = {
 	},
 }
 skills["EnchantmentOfIreWhenHit4"] = {
-	name = "Commandment of Ire",
+	name = "雷霆之诫",
 	hidden = true,
 	color = 2,
-	description = "Release a lightning charged spinning copy of your weapon or its projectiles that rotates around a point, damaging enemies in an area.",
+	description = "复制并释放出一个你所使用的武器或其投射物, 并带有闪电在一个定点旋转, 对区域中的敌人造成伤害. 有 10 秒冷却时间. ",
 	skillTypes = { [1] = true, [10] = true, [11] = true, [12] = true, [18] = true, [47] = true, [57] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Wand"] = true,
-		["Bow"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Wand"] = true,
+		["Staff"] = true,
+		["Two Handed Sword"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Thrusting One Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Bow"] = true,
+		["One Handed Mace"] = true,
 	},
 	fromItem = true,
 	baseFlags = {
@@ -1071,10 +1071,10 @@ skills["EnchantmentOfIreWhenHit4"] = {
 	},
 }
 skills["EnchantmentOfLightWhenCrit"] = {
-	name = "Word of Light",
+	name = "光之誓",
 	hidden = true,
 	color = 4,
-	description = "Deals a portion of your main hand damage in an area around you and creates Consecrated Ground, causing you and your allies to regenerate life.",
+	description = "在你的四周制造奉献地面, 并造成一定比例的主手武器伤害. 奉献地面增加你和你的队友额外生命回复. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [11] = true, [12] = true, [7] = true, [47] = true, [57] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1103,10 +1103,10 @@ skills["EnchantmentOfLightWhenCrit"] = {
 	},
 }
 skills["EnchantmentOfLightWhenCrit2"] = {
-	name = "Edict of Light",
+	name = "光之律",
 	hidden = true,
 	color = 4,
-	description = "Deals a portion of your main hand damage in an area around you and creates Consecrated Ground, causing you and your allies to regenerate life.",
+	description = "在你的四周制造奉献地面, 并造成一定比例的主手武器伤害. 奉献地面增加你和你的队友额外生命回复. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [11] = true, [12] = true, [7] = true, [47] = true, [57] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1135,10 +1135,10 @@ skills["EnchantmentOfLightWhenCrit2"] = {
 	},
 }
 skills["EnchantmentOfLightWhenCrit3"] = {
-	name = "Decree of Light",
+	name = "光之令",
 	hidden = true,
 	color = 4,
-	description = "Deals a portion of your main hand damage in an area around you and creates Consecrated Ground, causing you and your allies to regenerate life.",
+	description = "在你的四周制造奉献地面, 并造成一定比例的主手武器伤害. 奉献地面增加你和你的队友额外生命回复. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [11] = true, [12] = true, [7] = true, [47] = true, [57] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1167,10 +1167,10 @@ skills["EnchantmentOfLightWhenCrit3"] = {
 	},
 }
 skills["EnchantmentOfLightWhenCrit4"] = {
-	name = "Commandment of Light",
+	name = "光之诫",
 	hidden = true,
 	color = 4,
-	description = "Deals a portion of your main hand damage in an area around you and creates Consecrated Ground, causing you and your allies to regenerate life.",
+	description = "在你的四周制造奉献地面, 并造成一定比例的主手武器伤害. 奉献地面增加你和你的队友额外生命回复. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [11] = true, [12] = true, [7] = true, [47] = true, [57] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1199,10 +1199,10 @@ skills["EnchantmentOfLightWhenCrit4"] = {
 	},
 }
 skills["EnchantmentOfReflectionWhenHit"] = {
-	name = "Word of Reflection",
+	name = "倒影之誓",
 	hidden = true,
 	color = 4,
-	description = "Creates a clone of you that attacks with your weapon.",
+	description = "制造一个与你使用同样武器的复制体. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [9] = true, [21] = true, [42] = true, [12] = true, [36] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [3] = true, [68] = true, [28] = true, },
 	minionList = {
@@ -1239,10 +1239,10 @@ skills["EnchantmentOfReflectionWhenHit"] = {
 	},
 }
 skills["EnchantmentOfReflectionWhenHit2"] = {
-	name = "Edict of Reflection",
+	name = "倒影之律",
 	hidden = true,
 	color = 4,
-	description = "Creates a clone of you that attacks with your weapon.",
+	description = "制造一个与你使用同样武器的复制体. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [9] = true, [21] = true, [42] = true, [12] = true, [36] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [3] = true, [68] = true, [28] = true, },
 	minionList = {
@@ -1279,10 +1279,10 @@ skills["EnchantmentOfReflectionWhenHit2"] = {
 	},
 }
 skills["EnchantmentOfReflectionWhenHit3"] = {
-	name = "Decree of Reflection",
+	name = "倒影之令",
 	hidden = true,
 	color = 4,
-	description = "Creates a clone of you that attacks with your weapon.",
+	description = "制造一个与你使用同样武器的复制体. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [9] = true, [21] = true, [42] = true, [12] = true, [36] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [3] = true, [68] = true, [28] = true, },
 	minionList = {
@@ -1319,10 +1319,10 @@ skills["EnchantmentOfReflectionWhenHit3"] = {
 	},
 }
 skills["EnchantmentOfReflectionWhenHit4"] = {
-	name = "Commandment of Reflection",
+	name = "倒影之诫",
 	hidden = true,
 	color = 4,
-	description = "Creates a clone of you that attacks with your weapon.",
+	description = "制造一个与你使用同样武器的复制体. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [9] = true, [21] = true, [42] = true, [12] = true, [36] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [3] = true, [68] = true, [28] = true, },
 	minionList = {
@@ -1359,25 +1359,25 @@ skills["EnchantmentOfReflectionWhenHit4"] = {
 	},
 }
 skills["EnchantmentOfSpiteWhenHit"] = {
-	name = "Word of Spite",
+	name = "怨恨之誓",
 	hidden = true,
 	color = 4,
-	description = "Releases a nova of projectiles based on your weapon, leaving chilling ground in their wake.",
+	description = "制造一个你的武器的复制品或是投射物的新星, 并在其路径上留下冰缓地面. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [47] = true, [57] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Wand"] = true,
-		["Bow"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Wand"] = true,
+		["Staff"] = true,
+		["Two Handed Sword"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Thrusting One Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Bow"] = true,
+		["One Handed Mace"] = true,
 	},
 	fromItem = true,
 	baseFlags = {
@@ -1412,25 +1412,25 @@ skills["EnchantmentOfSpiteWhenHit"] = {
 	},
 }
 skills["EnchantmentOfSpiteWhenHit2"] = {
-	name = "Edict of Spite",
+	name = "怨恨之律",
 	hidden = true,
 	color = 4,
-	description = "Releases a nova of projectiles based on your weapon, leaving chilling ground in their wake.",
+	description = "制造一个你的武器的复制品或是投射物的新星, 并在其路径上留下冰缓地面. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [47] = true, [57] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Wand"] = true,
-		["Bow"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Wand"] = true,
+		["Staff"] = true,
+		["Two Handed Sword"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Thrusting One Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Bow"] = true,
+		["One Handed Mace"] = true,
 	},
 	fromItem = true,
 	baseFlags = {
@@ -1465,25 +1465,25 @@ skills["EnchantmentOfSpiteWhenHit2"] = {
 	},
 }
 skills["EnchantmentOfSpiteWhenHit3"] = {
-	name = "Decree of Spite",
+	name = "怨恨之令",
 	hidden = true,
 	color = 4,
-	description = "Releases a nova of projectiles based on your weapon, leaving chilling ground in their wake.",
+	description = "制造一个你的武器的复制品或是投射物的新星, 并在其路径上留下冰缓地面. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [47] = true, [57] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Wand"] = true,
-		["Bow"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Wand"] = true,
+		["Staff"] = true,
+		["Two Handed Sword"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Thrusting One Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Bow"] = true,
+		["One Handed Mace"] = true,
 	},
 	fromItem = true,
 	baseFlags = {
@@ -1518,25 +1518,25 @@ skills["EnchantmentOfSpiteWhenHit3"] = {
 	},
 }
 skills["EnchantmentOfSpiteWhenHit4"] = {
-	name = "Commandment of Spite",
+	name = "怨恨之诫",
 	hidden = true,
 	color = 4,
-	description = "Releases a nova of projectiles based on your weapon, leaving chilling ground in their wake.",
+	description = "制造一个你的武器的复制品或是投射物的新星, 并在其路径上留下冰缓地面. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [47] = true, [57] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Wand"] = true,
-		["Bow"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Wand"] = true,
+		["Staff"] = true,
+		["Two Handed Sword"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Thrusting One Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Bow"] = true,
+		["One Handed Mace"] = true,
 	},
 	fromItem = true,
 	baseFlags = {
@@ -1571,10 +1571,10 @@ skills["EnchantmentOfSpiteWhenHit4"] = {
 	},
 }
 skills["EnchantmentOfTempestOnHit"] = {
-	name = "Word of the Tempest",
+	name = "风暴之誓",
 	hidden = true,
 	color = 4,
-	description = "Charges you with lightning which lasts a duration before unleashing, damaging surrounding enemies.",
+	description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. 有短暂的冷却时间. ",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [36] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1605,10 +1605,10 @@ skills["EnchantmentOfTempestOnHit"] = {
 	},
 }
 skills["EnchantmentOfTempestOnHit2"] = {
-	name = "Edict of the Tempest",
+	name = "风暴之律",
 	hidden = true,
 	color = 4,
-	description = "Charges you with lightning which lasts a duration before unleashing, damaging surrounding enemies.",
+	description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. 有短暂的冷却时间. ",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [36] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1639,10 +1639,10 @@ skills["EnchantmentOfTempestOnHit2"] = {
 	},
 }
 skills["EnchantmentOfTempestOnHit3"] = {
-	name = "Decree of the Tempest",
+	name = "风暴之令",
 	hidden = true,
 	color = 4,
-	description = "Charges you with lightning which lasts a duration before unleashing, damaging surrounding enemies.",
+	description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. 有短暂的冷却时间. ",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [36] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1673,10 +1673,10 @@ skills["EnchantmentOfTempestOnHit3"] = {
 	},
 }
 skills["EnchantmentOfTempestOnHit4"] = {
-	name = "Commandment of the Tempest",
+	name = "风暴之诫",
 	hidden = true,
 	color = 4,
-	description = "Charges you with lightning which lasts a duration before unleashing, damaging surrounding enemies.",
+	description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. 有短暂的冷却时间. ",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [36] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1707,10 +1707,10 @@ skills["EnchantmentOfTempestOnHit4"] = {
 	},
 }
 skills["EnchantmentOfTheGraveOnKill"] = {
-	name = "Word of the Grave",
+	name = "冰墓之誓",
 	hidden = true,
 	color = 4,
-	description = "Summons three icy skull minions that explode at the end of their duration.",
+	description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [9] = true, [21] = true, [34] = true, [36] = true, [42] = true, [12] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [28] = true, },
 	minionList = {
@@ -1743,10 +1743,10 @@ skills["EnchantmentOfTheGraveOnKill"] = {
 	},
 }
 skills["EnchantmentOfTheGraveOnKill2"] = {
-	name = "Edict of the Grave",
+	name = "冰墓之律",
 	hidden = true,
 	color = 4,
-	description = "Summons three icy skull minions that explode at the end of their duration.",
+	description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [9] = true, [21] = true, [34] = true, [36] = true, [42] = true, [12] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [28] = true, },
 	minionList = {
@@ -1779,10 +1779,10 @@ skills["EnchantmentOfTheGraveOnKill2"] = {
 	},
 }
 skills["EnchantmentOfTheGraveOnKill3"] = {
-	name = "Decree of the Grave",
+	name = "冰墓之令",
 	hidden = true,
 	color = 4,
-	description = "Summons three icy skull minions that explode at the end of their duration.",
+	description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [9] = true, [21] = true, [34] = true, [36] = true, [42] = true, [12] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [28] = true, },
 	minionList = {
@@ -1815,10 +1815,10 @@ skills["EnchantmentOfTheGraveOnKill3"] = {
 	},
 }
 skills["EnchantmentOfTheGraveOnKill4"] = {
-	name = "Commandment of the Grave",
+	name = "冰墓之诫",
 	hidden = true,
 	color = 4,
-	description = "Summons three icy skull minions that explode at the end of their duration.",
+	description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [9] = true, [21] = true, [34] = true, [36] = true, [42] = true, [12] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [28] = true, },
 	minionList = {
@@ -1851,10 +1851,10 @@ skills["EnchantmentOfTheGraveOnKill4"] = {
 	},
 }
 skills["EnchantmentOfThunderOnKill"] = {
-	name = "Word of Thunder",
+	name = "雷电之誓",
 	hidden = true,
 	color = 4,
-	description = "Damaging cones of lightning surround you.",
+	description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [31] = true, [35] = true, [42] = true, [36] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1882,10 +1882,10 @@ skills["EnchantmentOfThunderOnKill"] = {
 	},
 }
 skills["EnchantmentOfThunderOnKill2"] = {
-	name = "Edict of Thunder",
+	name = "雷电之律",
 	hidden = true,
 	color = 4,
-	description = "Damaging cones of lightning surround you.",
+	description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [31] = true, [35] = true, [42] = true, [36] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1913,10 +1913,10 @@ skills["EnchantmentOfThunderOnKill2"] = {
 	},
 }
 skills["EnchantmentOfThunderOnKill3"] = {
-	name = "Decree of Thunder",
+	name = "雷电之令",
 	hidden = true,
 	color = 4,
-	description = "Damaging cones of lightning surround you.",
+	description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [31] = true, [35] = true, [42] = true, [36] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1944,10 +1944,10 @@ skills["EnchantmentOfThunderOnKill3"] = {
 	},
 }
 skills["EnchantmentOfThunderOnKill4"] = {
-	name = "Commandment of Thunder",
+	name = "雷电之诫",
 	hidden = true,
 	color = 4,
-	description = "Damaging cones of lightning surround you.",
+	description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [31] = true, [35] = true, [42] = true, [36] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -1975,25 +1975,25 @@ skills["EnchantmentOfThunderOnKill4"] = {
 	},
 }
 skills["EnchantmentOfWarOnKill"] = {
-	name = "Word of War",
+	name = "战争之誓",
 	hidden = true,
 	color = 4,
-	description = "This attack is performed repeatedly by a ghostly imitation of your weapon.",
+	description = "召唤一个你所使用的武器的复制体来攻击敌人. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [7] = true, [25] = true, [28] = true, [24] = true, [12] = true, [47] = true, [57] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Wand"] = true,
-		["Bow"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Wand"] = true,
+		["Staff"] = true,
+		["Two Handed Sword"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Thrusting One Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Bow"] = true,
+		["One Handed Mace"] = true,
 	},
 	fromItem = true,
 	baseFlags = {
@@ -2018,25 +2018,25 @@ skills["EnchantmentOfWarOnKill"] = {
 	},
 }
 skills["EnchantmentOfWarOnKill2"] = {
-	name = "Edict of War",
+	name = "战争之律",
 	hidden = true,
 	color = 4,
-	description = "This attack is performed repeatedly by a ghostly imitation of your weapon.",
+	description = "召唤一个你所使用的武器的复制体来攻击敌人. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [7] = true, [25] = true, [28] = true, [24] = true, [12] = true, [47] = true, [57] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Wand"] = true,
-		["Bow"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Wand"] = true,
+		["Staff"] = true,
+		["Two Handed Sword"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Thrusting One Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Bow"] = true,
+		["One Handed Mace"] = true,
 	},
 	fromItem = true,
 	baseFlags = {
@@ -2061,25 +2061,25 @@ skills["EnchantmentOfWarOnKill2"] = {
 	},
 }
 skills["EnchantmentOfWarOnKill3"] = {
-	name = "Decree of War",
+	name = "战争之令",
 	hidden = true,
 	color = 4,
-	description = "This attack is performed repeatedly by a ghostly imitation of your weapon.",
+	description = "召唤一个你所使用的武器的复制体来攻击敌人. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [7] = true, [25] = true, [28] = true, [24] = true, [12] = true, [47] = true, [57] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Wand"] = true,
-		["Bow"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Wand"] = true,
+		["Staff"] = true,
+		["Two Handed Sword"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Thrusting One Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Bow"] = true,
+		["One Handed Mace"] = true,
 	},
 	fromItem = true,
 	baseFlags = {
@@ -2104,25 +2104,25 @@ skills["EnchantmentOfWarOnKill3"] = {
 	},
 }
 skills["EnchantmentOfWarOnKill4"] = {
-	name = "Commandment of War",
+	name = "战争之诫",
 	hidden = true,
 	color = 4,
-	description = "This attack is performed repeatedly by a ghostly imitation of your weapon.",
+	description = "召唤一个你所使用的武器的复制体来攻击敌人. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [7] = true, [25] = true, [28] = true, [24] = true, [12] = true, [47] = true, [57] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Wand"] = true,
-		["Bow"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Wand"] = true,
+		["Staff"] = true,
+		["Two Handed Sword"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Thrusting One Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Bow"] = true,
+		["One Handed Mace"] = true,
 	},
 	fromItem = true,
 	baseFlags = {
@@ -2147,10 +2147,10 @@ skills["EnchantmentOfWarOnKill4"] = {
 	},
 }
 skills["EnchantmentOfWinterWhenHit"] = {
-	name = "Word of Winter",
+	name = "冬之誓",
 	hidden = true,
 	color = 4,
-	description = "Unleashes an icy projectile that pulses with cold as it travels.",
+	description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却时间.",
 	skillTypes = { [3] = true, [68] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [42] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -2180,10 +2180,10 @@ skills["EnchantmentOfWinterWhenHit"] = {
 	},
 }
 skills["EnchantmentOfWinterWhenHit2"] = {
-	name = "Edict of Winter",
+	name = "冬之律",
 	hidden = true,
 	color = 4,
-	description = "Unleashes an icy projectile that pulses with cold as it travels.",
+	description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却时间.",
 	skillTypes = { [3] = true, [68] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [42] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -2213,10 +2213,10 @@ skills["EnchantmentOfWinterWhenHit2"] = {
 	},
 }
 skills["EnchantmentOfWinterWhenHit3"] = {
-	name = "Decree of Winter",
+	name = "冬之令",
 	hidden = true,
 	color = 4,
-	description = "Unleashes an icy projectile that pulses with cold as it travels.",
+	description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却时间.",
 	skillTypes = { [3] = true, [68] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [42] = true, },
 	fromItem = true,
 	baseFlags = {
@@ -2246,10 +2246,10 @@ skills["EnchantmentOfWinterWhenHit3"] = {
 	},
 }
 skills["EnchantmentOfWinterWhenHit4"] = {
-	name = "Commandment of Winter",
+	name = "冬之诫",
 	hidden = true,
 	color = 4,
-	description = "Unleashes an icy projectile that pulses with cold as it travels.",
+	description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却时间.",
 	skillTypes = { [3] = true, [68] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [42] = true, },
 	fromItem = true,
 	baseFlags = {

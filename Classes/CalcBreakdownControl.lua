@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Class: Calc Breakdown Control
 -- Calculation breakdown control used in the Calcs tab
@@ -153,12 +153,12 @@ function CalcBreakdownClass:AddBreakdownSection(sectionData)
 			type = "TABLE",
 			rowList = breakdown.reservations,
 			colList = { 
-				{ label = "Skill", key = "skillName" },
-				{ label = "Base", key = "base" },
-				{ label = "MCM", key = "mult" },
-				{ label = "More/less", key = "more" },
-				{ label = "Inc/red", key = "inc" },
-				{ label = "Reservation", key = "total" },
+{ label = "【技能】", key = "skillName" },
+{ label = "【基础】", key = "base" },
+{ label = "【每个】", key = "mult" },
+{ label = "【额外 提高/降低】", key = "more" },
+{ label = "【提高/降低】", key = "inc" },
+{ label = "【保留】", key = "total" },
 			}
 		}
 		t_insert(self.sectionList, section)
@@ -169,13 +169,13 @@ function CalcBreakdownClass:AddBreakdownSection(sectionData)
 			type = "TABLE",
 			rowList = breakdown.damageTypes,
 			colList = { 
-				{ label = "From", key = "source", right = true },
-				{ label = "Base", key = "base" },
-				{ label = "Inc/red", key = "inc" },
-				{ label = "More/less", key = "more" },
-				{ label = "Converted Damage", key = "convSrc" },
-				{ label = "Total", key = "total" },
-				{ label = "Conversion", key = "convDst" },
+{ label = "【来自】", key = "source", right = true },
+{ label = "【基础】", key = "base" },
+{ label = "【提高/降低】", key = "inc" },
+{ label = "【额外 提高/降低】", key = "more" },
+{ label = "【伤害转换】", key = "convSrc" },
+{ label = "【总】", key = "total" },
+{ label = "【转换】", key = "convDst" },
 			}
 		}
 		t_insert(self.sectionList, section)
@@ -187,12 +187,12 @@ function CalcBreakdownClass:AddBreakdownSection(sectionData)
 			type = "TABLE",
 			rowList = breakdown.slots,
 			colList = { 
-				{ label = "Base", key = "base", right = true },
-				{ label = "Inc/red", key = "inc" },
-				{ label = "More/less", key = "more" },
-				{ label = "Total", key = "total", right = true },
-				{ label = "Source", key = "source" },
-				{ label = "Name", key = "sourceLabel" },
+{ label = "【基础】", key = "base", right = true },
+{ label = "【提高/降低】", key = "inc" },
+{ label = "【额外 提高/降低】", key = "more" },
+{ label = "【总】", key = "total", right = true },
+{ label = "【来源】", key = "source" },
+{ label = "【名称】", key = "sourceLabel" },
 			},
 		}
 		t_insert(self.sectionList, section)
@@ -243,12 +243,12 @@ function CalcBreakdownClass:AddModSection(sectionData, modList)
 		label = sectionData.label,
 		rowList = rowList,
 		colList = { 
-			{ label = "Value", key = "displayValue" },
-			{ label = "Stat", key = "name" },
-			{ label = "Skill types", key = "flags" },
-			{ label = "Notes", key = "tags" },
-			{ label = "Source", key = "source" },
-			{ label = "Source Name", key = "sourceName" },
+{ label = "【值】", key = "displayValue" },
+{ label = "【状态】", key = "name" },
+{ label = "【技能类型】", key = "flags" },
+{ label = "【注意】", key = "tags" },
+{ label = "【来源】", key = "source" },
+{ label = "【来源名称】", key = "sourceName" },
 		},
 	}
 	t_insert(self.sectionList, section)

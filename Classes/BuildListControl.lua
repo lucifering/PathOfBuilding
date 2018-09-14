@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Class: Build List
 -- Build list control.
@@ -69,7 +69,7 @@ end
 
 function BuildListClass:RenameBuild(build, copyOnName)
 	local controls = { }
-	controls.label = common.New("LabelControl", nil, 0, 20, 0, 16, "^7Enter the new name for this "..(build.folderName and "folder:" or "build:"))
+controls.label = common.New("LabelControl", nil, 0, 20, 0, 16, "^7输入新的Build名 "..(build.folderName and "folder:" or "build:"))
 	controls.edit = common.New("EditControl", nil, 0, 40, 350, 20, build.folderName or build.buildName, nil, "\\/:%*%?\"<>|%c", 100, function(buf)
 		controls.save.enabled = false
 		if build.folderName then
@@ -100,7 +100,7 @@ function BuildListClass:RenameBuild(build, copyOnName)
 			else
 				local res, msg = os.rename(build.fullFileName, main.buildPath..build.subPath..newBuildName)
 				if not res then
-					main:OpenMessagePopup("Error", "Couldn't rename '"..build.fullFileName.."' to '"..newBuildName.."': "..msg)
+main:OpenMessagePopup("Error", "无法重命名 '"..build.fullFileName.."' 为 '"..newBuildName.."': "..msg)
 					return
 				end
 			end
@@ -110,13 +110,13 @@ function BuildListClass:RenameBuild(build, copyOnName)
 			if copyOnName then
 				local res, msg = copyFile(build.fullFileName, main.buildPath..build.subPath..newFileName)
 				if not res then
-					main:OpenMessagePopup("Error", "Couldn't copy build: "..msg)
+main:OpenMessagePopup("Error", "无法复制Build: "..msg)
 					return
 				end
 			else
 				local res, msg = os.rename(build.fullFileName, main.buildPath..build.subPath..newFileName)
 				if not res then
-					main:OpenMessagePopup("Error", "Couldn't rename '"..build.fullFileName.."' to '"..newFileName.."': "..msg)
+main:OpenMessagePopup("Error", "无法重命名 '"..build.fullFileName.."' 为 '"..newFileName.."': "..msg)
 					return
 				end
 			end
@@ -137,11 +137,11 @@ end
 function BuildListClass:DeleteBuild(build)
 	if build.folderName then
 		if NewFileSearch(build.fullFileName.."/*") or NewFileSearch(build.fullFileName.."/*", true) then
-			main:OpenMessagePopup("Delete Folder", "The folder is not empty.")
+main:OpenMessagePopup("文件夹删除", "这个文件夹不为空.")
 		else
 			local res, msg = RemoveDir(build.fullFileName)
 			if not res then
-				main:OpenMessagePopup("Error", "Couldn't delete '"..build.fullFileName.."': "..msg)
+main:OpenMessagePopup("Error", "无法删除 '"..build.fullFileName.."': "..msg)
 				return
 			end
 			self.listMode:BuildList()
@@ -149,7 +149,7 @@ function BuildListClass:DeleteBuild(build)
 			self.selValue = nil
 		end
 	else
-		main:OpenConfirmPopup("Confirm Delete", "Are you sure you want to delete build:\n"..build.buildName.."\nThis cannot be undone.", "Delete", function()
+main:OpenConfirmPopup("删除前确认", "你确定要删除这个Build:\n"..build.buildName.."\n删除后无法还原.", "删除", function()
 			os.remove(build.fullFileName)
 			self.listMode:BuildList()
 			self.selIndex = nil
@@ -181,7 +181,7 @@ function BuildListClass:GetRowValue(column, index, build)
 		end
 	elseif column == 2 then
 		if build.buildName then
-			return s_format("%sLevel %d %s", 
+return s_format("%s等级 %d %s", 
 				build.className and colorCodes[build.className:upper()] or "^7", 
 				build.level or 1, 
 				(build.ascendClassName ~= "None" and build.ascendClassName) or build.className or "?"

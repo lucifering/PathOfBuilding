@@ -1,698 +1,696 @@
 ﻿-- Item data (c) Grinding Gear Games
-
 return {
 -- Amulet
 [[
-The Anvil
-Amber Amulet
-Variant: Pre 1.3.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 45
-+(20-30) to Strength
-10% reduced Attack Speed
-10% reduced Cast Speed
-+(400-500) to Armour
-{variant:1}+(30-40) Life gained when you Block
-{variant:2,3}+(34-48) Life gained when you Block
-{variant:1}+(10-20) Mana gained when you Block
-{variant:2,3}+(10-24) Mana gained when you Block
-{variant:1}20% reduced Movement Speed
-{variant:2}10% reduced Movement Speed
-+3% to maximum Block Chance
-{variant:1}10% Chance to Block
-{variant:2,3}8% Chance to Block
-{variant:1}Reflects 200 to 250 Physical Damage to Attackers on Block
-{variant:2,3}Reflects 240 to 300 Physical Damage to Attackers on Block
+信念之砧
+琥珀护身符
+版本: 1.3.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 45
++(20-30) 力量
+攻击速度降低 10%
+施法速度降低 10%
++(400-500) 护甲
+{variant:1}格挡时回复 +(30-40) 生命
+{variant:2,3}格挡时回复 +(34-48) 生命
+{variant:1}格挡时回复 +(10-20) 魔力
+{variant:2,3}格挡时回复 +(10-24) 魔力
+{variant:1}移动速度降低 20%
+{variant:2}移动速度降低 10%
++3% 攻击和法术格挡率上限
+{variant:1}10% 攻击格挡率
+{variant:2,3}8% 攻击格挡率
+{variant:1}格挡攻击时反射 200 - 250 物理伤害
+{variant:2,3}格挡攻击时反射 240 - 300 物理伤害
 ]],[[
-Araku Tiki
-Coral Amulet
-Upgrade: Upgrades to unique{Ngamahu Tiki} via prophecy{A Forest of False Idols}
-(2-4) Life Regenerated per second
-You gain 100 Evasion Rating when on Low Life
-+(30-50) to maximum Life
-+(20-30)% to Fire Resistance
-1% of Life Regenerated per Second while on Low Life
+隐灵之符
+珊瑚护身符
+升级: 使用 预言【伪神之林】 升级为 传奇【努葛玛呼之像】
+(2-4) 每秒生命回复
+低血时闪避值提高 +100
++(30-50) 最大生命
++(20-30)% 火焰抗性
+低血时每秒回复 1% 生命
 ]],[[
-Ngamahu Tiki
-Coral Amulet
-Source: Upgraded from unique{Araku Tiki} via prophecy{A Forest of False Idols}
-Requires Level 36
-(2-4) Life Regenerated per second
-(50-70)% increased Fire Damage
-You gain 100 Evasion Rating when on Low Life
-+(30-50) to maximum Life
-+(20-30)% to Fire Resistance
-1% of Life Regenerated per Second while on Low Life
+努葛玛呼之像
+珊瑚护身符
+源: 由传奇【隐灵之符】 使用 预言【伪神之林】 升级
+等级需求: 36
+(2-4) 每秒生命回复
+火焰伤害提高 (50-70)%
+低血时闪避值提高 +100
++(30-50) 最大生命
++(20-30)% 火焰抗性
+低血时每秒回复 1% 生命
 ]],[[
-The Ascetic
-Gold Amulet
-Source: prophecy{The Ambitious Bandit III}
-Requires Level 8
-(12-20)% increased Rarity of Items found
-(80-100)% increased Rarity of Items found with a Normal Item equipped
-(10-15)% increased Quantity of Items found with a Magic Item equipped
+苦行
+帝金护身符
+源: 预言【盗贼的野望 III】
+等级需求: 8
+物品稀有度提高 (12-20)%
+装备 1 件魔法物品时，物品掉落数量提高 (10-15)%
+装备 1 件普通物品时，物品稀有度提高 (80-100)%
 ]],[[
-Astramentis
-Onyx Amulet
-Requires Level 20
-+(10-16) to all Attributes
-+(80-100) to all Attributes
-–4 Physical Damage taken from Attacks
+均衡之符
+黑曜护身符
+等级需求: 20
++(10-16) 全属性
++(80-100) 全属性
+承受攻击造成的物理伤害 -4
 ]],[[
-Atziri's Foible
-Paua Amulet
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 16
-(20-30)% increased Mana Regeneration Rate
-{variant:1}+50 to maximum Mana
-{variant:2}+100 to maximum Mana
-{variant:1}(8-12)% increased maximum Mana
-{variant:2}(16-24)% increased maximum Mana
-{variant:1}(40-60)% increased Mana Regeneration Rate
-{variant:2}(80-100)% increased Mana Regeneration Rate
-Items and Gems have 25% reduced Attribute Requirements
+阿兹里圣徽
+海灵护身符
+版本: 2.6.0以前
+版本: 当前
+等级需求: 16
+魔力回复速度提高 (20-30)%
+{variant:1}+50 最大魔力
+{variant:2}+100 最大魔力
+{variant:1}最大魔力提高 (8-12)%
+{variant:2}最大魔力提高 (16-24)%
+{variant:1}魔力回复速度提高 (40-60)%
+{variant:2}魔力回复速度提高 (80-100)%
+装备和技能石的属性需求降低 25%
 ]],[[
-The Aylardex
-Agate Amulet
-Variant: Pre 2.5.0
-Variant: Current
-Requires Level 32
-+(16-24) to Strength and Intelligence
-+(30-50) to maximum Life
-+(50-70) to maximum Mana
-+1 to Maximum Power Charges
-10% increased Mana Regeneration Rate Per Power Charge
-{variant:2}(80-100)% increased Power Charge Duration
-1% of Damage is taken from Mana before Life per Power Charge
-40% reduced Critical Strike Chance per Power Charge
+埃拉黛丝
+玛瑙护身符
+版本: 2.5.0以前
+版本: 当前
+等级需求: 32
++(16-24) 力量和智慧
++(30-50) 最大生命
++(50-70) 最大魔力
++1 暴击球数量上限
+每个暴击球提高 10% 魔力回复速度
+{variant:2}暴击球的持续时间延长 (80-100)%
+每有一个暴击球，你受到伤害的 1% 由魔力先承担
+每个暴击球暴击率降低 40%
 ]],[[
-Bisco's Collar
-Gold Amulet
-Variant: {2_6}Pre 3.0.0
-Variant: Pre 3.2.0
-Variant: Current
-Requires Level 30
-(12-20)% increased Rarity of Items found
-{variant:1}150% increased Rarity of Items Dropped by Slain Magic Enemies
-{variant:2,3}(100-150)% increased Rarity of Items Dropped by Slain Magic Enemies
-{variant:1}100% increased Quantity of Items Dropped by Slain Normal Enemies
-{variant:2}(50-100)% increased Quantity of Items Dropped by Slain Normal Enemies
-{variant:3}(35-50)% increased Quantity of Items Dropped by Slain Normal Enemies
+比斯克的项圈
+帝金护身符
+版本: {2_6}3.0.0以前
+版本: 3.2.0以前
+版本: 当前
+等级需求: 30
+物品稀有度提高 (12-20)%
+{variant:1}击败魔法怪物后的物品稀有度提高 150%
+{variant:2,3}击败魔法怪物后的物品稀有度提高 (100-150)%
+{variant:1}击败普通怪物的物品掉落数量提高 100%
+{variant:2}击败普通怪物的物品掉落数量提高 (50-100)%
+{variant:3}击败普通怪物的物品掉落数量提高 (35-50)%
 ]],[[
-Blightwell
-Clutching Talisman
-League: Talisman Hardcore
-Requires Level 28
+枯井
+咒箍魔符
+联盟: 魔符·专家
+等级需求: 28
 Talisman Tier: 2
-(15-25)% increased Defences
-+(20-30) to maximum Energy Shield
-+(15-30)% to Fire Resistance
-+(15-30)% to Lightning Resistance
-30% slower start of Energy Shield Recharge during Flask Effect
-400% increased Energy Shield Recharge Rate during Flask Effect
-Corrupted
+全局防御提高 (15-25)%
++(20-30) 最大能量护盾
++(15-30)% 火焰抗性
++(15-30)% 闪电抗性
+药剂持续期间，能量护盾延后 30% 开始回复
+药剂持续期间，能量护盾回复速度提高 400%
+已腐化
 ]],[[
-Blood of Corruption
-Amber Amulet
-Source: Use currency{Vaal Orb} on unique{Tear of Purity}
-Requires Level 20
-+(20-30) to Strength
-Grants level 10 Gluttony of Elements Skill
-Adds 19-43 Chaos Damage to Attacks
-−(10-5)% to all Elemental Resistances
-+(17-29)% to Chaos Resistance
-Corrupted
+堕落之血
+琥珀护身符
+源: 由 传奇【纯净之泪】 使用 通货【瓦尔宝珠】 升级
+等级需求: 20
++(20-30) 力量
+获得 10 级的主动技能【元素之愈】
+攻击附加 19 - 43 基础混沌伤害
+获得 -(10-5)% 火焰、冰霜、闪电抗性
++(17-29)% 混沌抗性
+已腐化
 ]],[[
-Bloodgrip
-Coral Amulet
-Variant: Pre 3.0.0
-Requires Level 55
-(2-4) Life Regenerated per second
-Adds 10 to 20 Physical Damage to Attacks
-+(60-70) to maximum Life
-(8-12) Life Regenerated per second
-100% increased Life Recovery from Flasks
-Moving while Bleeding doesn't cause you to take extra Damage
+鲜血支配
+珊瑚护身符
+版本: 3.0.0以前
+等级需求: 55
+(2-4) 每秒生命回复
+攻击附加 10 - 20 基础物理伤害
++(60-70) 最大生命
+(8-12) 每秒生命回复
+药剂回复的生命提高 100%
+流血状态下移动不再承受额外的伤害
 ]],[[
-Bloodgrip
-Marble Amulet
-Variant: Current
-Requires Level 74
-(1.2-1.6)% of Life Regenerated per second
-Adds 10 to 20 Physical Damage to Attacks
-+(60-70) to maximum Life
-(8-12) Life Regenerated per second
-100% increased Life Recovery from Flasks
-Moving while Bleeding doesn't cause you to take extra Damage
+鲜血支配
+珊瑚护身符
+版本: 当前
+等级需求: 74
+每秒回复 (1.2-1.6)% 生命
+攻击附加 10 - 20 基础物理伤害
++(60-70) 最大生命
+(8-12) 每秒生命回复
+药剂回复的生命提高 100%
+流血状态下移动不再承受额外的伤害
 ]],[[
-Carnage Heart
-Onyx Amulet
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 20
-+(10-16) to all Attributes
-+(20-40) to all Attributes
-{variant:1}25% reduced maximum Life
-{variant:1}25% reduced maximum Energy Shield
-+(10-20)% to all Elemental Resistances
-(1.2-2)% of Physical Attack Damage Leeched as Life
-{variant:2}(30-40)% increased Damage while Leeching
-{variant:2}50% increased Life Leeched per second
-Extra Gore
+屠戮之心
+黑曜护身符
+版本: 2.6.0以前
+版本: 当前
+等级需求: 20
++(10-16) 全属性
++(20-40) 全属性
+{variant:1}最大生命降低 25%
+{variant:1}最大能量护盾降低 25%
+获得 +(10-20)% 火焰、冰霜、闪电抗性
+物理攻击伤害的 (1.2-2)% 会转化为生命偷取
+{variant:2}偷取时伤害提高 (30-40)%
+{variant:2}每秒生命偷取提高 50%
+更明显打击效果
 ]],[[
-Daresso's Salute
-Citrine Amulet
-League: Anarchy
-Requires Level 16
-+(16-24) to Strength and Dexterity
-50% reduced maximum Energy Shield
-+(30-40)% to Fire Resistance
-+(30-40)% to Cold Resistance
-10% increased Movement Speed when on Full Life
-+2 to Melee Weapon and Unarmed range
-60% increased Melee Damage when on Full Life
+德瑞索的战礼
+黄晶护身符
+联盟: 混乱
+等级需求: 16
++(16-24) 力量和敏捷
+最大能量护盾降低 50%
++(30-40)% 火焰抗性
++(30-40)% 冰霜抗性
+满血时移动速度提高 10%
++2 近战与空手攻击范围
+满血时近战伤害提高 60%
 ]],[[
-Extractor Mentis
-Agate Amulet
-Requires Level 16
-+(16-24) to Strength and Intelligence
-+(30-50) to Strength
-5% chance to grant Unholy Might to nearby Enemies on Kill
-5% chance to grant Onslaught to nearby Enemies on Kill
-5% chance to gain Unholy Might for 3 seconds on Kill
-5% chance to gain Onslaught for 3 seconds on Kill
-Recover 1% of Maximum Life on Kill
+心灵抽取
+玛瑙护身符
+等级需求: 16
++(16-24) 力量和智慧
++(30-50) 力量
+击败敌人时有 5% 几率给予周围敌人不洁之力
+击败敌人时有 5% 几率给予周围敌人【猛攻】状态
+击败敌人时有 5% 几率获得不洁之力 3 秒
+击败敌人时有 5% 几率获得 3 秒【猛攻】状态
+击败敌人时回复 1% 最大生命
 ]],[[
-Eye of Chayula
-Onyx Amulet
-Upgrade: Upgrades to unique{Presence of Chayula} using currency{Blessing of Chayula}
-Requires Level 20
-+(10-16) to all Attributes
-20% reduced maximum Life
-30% increased Rarity of Items found
-Cannot be Stunned
+寻宝者的心眼
+黑曜护身符
+升级: 使用 通货【夏乌拉的祝福】 升级为 【夏乌拉之印】
+等级需求: 20
++(10-16) 全属性
+最大生命降低 20%
+物品稀有度提高 30%
+免疫晕眩
 ]],[[
-Presence of Chayula
-Onyx Amulet
-League: Breach
-Source: Upgraded from unique{Eye of Chayula} using currency{Blessing of Chayula}
-Requires Level 60
-+(10-16) to all Attributes
-30% increased Rarity of Items found
-+60% to Chaos Resistance
-Cannot be Stunned
-20% of Maximum Life Converted to Energy Shield
+夏乌拉之印
+黑曜护身符
+联盟: 裂隙
+源: 由传奇【寻宝者的心眼】 使用通货【夏乌拉的祝福】 升级
+等级需求: 60
++(10-16) 全属性
+物品稀有度提高 30%
++60% 混沌抗性
+免疫晕眩
+20% 的最大生命转化为能量护盾
 ]],[[
-Eye of Innocence 
-Citrine Amulet
-Source: Drops from unique{Guardian of the Phoenix}
-Requires Level 68
-+(16-24) to Strength and Dexterity
-10% chance to Ignite
-(50-70)% increased Damage while Ignited
-Take 100 Fire Damage when you Ignite an Enemy
-2% of Fire Damage Leeched as Life while Ignited
+无罪之眼
+黄晶护身符
+源: 传奇Boss【凤凰守卫】 专属掉落
+等级需求: 68
++(16-24) 力量和敏捷
+火焰伤害击中时有 10% 几率点燃敌人
+被点燃时伤害提高 (50-70)%
+每点燃 1 个敌人，则受到 100 火焰伤害
+被点燃时，火焰伤害的 2% 转化为生命偷取
 ]],[[
-Eyes of the Greatwolf
-Greatwolf Talisman
-Requires Level 52
+巨狼之眼
+狼王魔符
+等级需求: 52
 Has Alt Variant: true
-Variant: Attributes
-Variant: Global Defences
-Variant: Chaos Damage
-Variant: Attack Damage
-Variant: Cold Damage
-Variant: Fire Damage
-Variant: Lightning Damage
-Variant: Spell Damage
-Variant: Global Physical Damage
-Variant: Mana
-Variant: Damage
-Variant: Physical Damage Reduction
-Variant: Chance to Freeze, Shock and Ignite
-Variant: Crit Chance
-Variant: Area of Effect
-Variant: Attack/Cast Speed
-Variant: Item Quantity
-Variant: Life
-Variant: Crit Multiplier
-Variant: Maximum number of Zombies
-Variant: Frenzy Charge on Kill
-Variant: Power Charge on Kill
-Variant: Endurance Charge on Kill
-Variant: Life Regen
-Variant: Cold taken as Fire
-Variant: Cold taken as Lightning
-Variant: Fire taken as Cold
-Variant: Fire taken as Lightning
-Variant: Lightning taken as Cold
-Variant: Lightning taken as Fire
-Variant: Gain Physical as random Element
-Variant: Extra Pierces
+版本: 属性
+版本: 全域防御
+版本: 混沌伤害
+版本: 攻击伤害
+版本: 冰霜伤害
+版本: 火焰伤害
+版本: 闪电伤害
+版本: 法术伤害
+版本: 全域物理伤害
+版本: 魔力
+版本: 伤害
+版本: 物理伤害减伤
+版本: 冰冻、感电与点燃
+版本: 暴击几率
+版本: 范围效果
+版本: 攻击和施法速度
+版本: 物品数量
+版本: 生命
+版本: 暴击伤害
+版本: 魔卫数量上限
+版本: 击败获得狂怒球
+版本: 击败获得暴击球
+版本: 击败获得耐力球
+版本: 生命回复
+版本: 承受冰霜转火焰
+版本: 承受冰霜转闪电
+版本: 承受火焰转冰霜
+版本: 承受火焰转闪电
+版本: 承受闪电转冰霜
+版本: 承受闪电转火焰
+版本: 获得物理伤害的随机元素
+版本: 额外穿透
 Implicits: 32
-{variant:1}(24-32)% increased Attributes
-{variant:2}(30-50)% increased Global Defences
-{variant:3}(38-62)% increased Chaos Damage
-{variant:4}(40-60)% increased Attack Damage
-{variant:5}(40-60)% increased Cold Damage
-{variant:6}(40-60)% increased Fire Damage
-{variant:7}(40-60)% increased Lightning Damage
-{variant:8}(40-60)% increased Spell Damage
-{variant:9}(40-60)% increased Global Physical Damage
-{variant:10}(40-60)% increased maximum Mana
-{variant:11}(50-70)% increased Damage
-{variant:12}(8-12)% increased Physical Damage Reduction
-{variant:13}(8-12)% chance to Freeze, Shock and Ignite
-{variant:14}(80-100)% increased Global Critical Strike Chance
-{variant:15}(10-16)% increased Area of Effect
-{variant:16}(12-20)% increased Attack and Cast Speed
-{variant:17}(12-20)% increased Quantity of Items found
-{variant:18}(16-24)% increased maximum Life
-{variant:19}+(48-72)% to Global Critical Strike Multiplier
-{variant:20}+2 to maximum number of Zombies
-{variant:21}20% chance to gain a Frenzy Charge on Kill
-{variant:22}20% chance to gain a Power Charge on Kill
-{variant:23}20% chance to gain a Endurance Charge on Kill
-{variant:24}4% of Life Regenerated per second
-{variant:25}100% of Cold Damage from Hits taken as Fire Damage
-{variant:26}100% of Cold Damage from Hits taken as Lightning Damage
-{variant:27}100% of Fire Damage from Hits taken as Cold Damage
-{variant:28}100% of Fire Damage from Hits taken as Lightning Damage
-{variant:29}100% of Lightning Damage from Hits taken as Cold Damage
-{variant:30}100% of Lightning Damage from Hits taken as Fire Damage
-{variant:31}Gain (12-24)% of Physical Damage as Extra Damage of a random Element
-{variant:32}Projectiles Pierce (4-6) additional Targets
-Implicit Modifier magnitudes are doubled
+{variant:1}所有属性提高 (24-32)%
+{variant:2}全局防御提高 (30-50)%
+{variant:3}混沌伤害提高 (38-62)%
+{variant:4}攻击伤害提高 (40-60)%
+{variant:5}冰霜伤害提高 (40-60)%
+{variant:6}火焰伤害提高 (40-60)%
+{variant:7}闪电伤害提高 (40-60)%
+{variant:8}法术伤害提高 (40-60)%
+{variant:9}物理伤害提高 (40-60)%
+{variant:10}最大魔力提高 (40-60)%
+{variant:11}伤害提高 (50-70)%
+{variant:12}(8-12)% 额外物理伤害减伤
+{variant:13}(8-12)% 几率造成冰冻、感电与点燃效果
+{variant:14}攻击和法术暴击率提高 (80-100)%
+{variant:15}范围效果扩大 (10-16)%
+{variant:16}攻击与施法速度提高 (12-20)%
+{variant:17}物品掉落数量提高 (12-20)%
+{variant:18}最大生命提高 (16-24)%
+{variant:19}+(48-72)% 攻击和法术暴击伤害加成
+{variant:20}+2 魔卫数量上限
+{variant:21}击败敌人后有 20% 几率获得 1 个狂怒球
+{variant:22}击败敌人有 20% 几率获得暴击球
+{variant:23}击败敌人有 20% 几率时获得耐力球
+{variant:24}每秒回复 4% 生命
+{variant:25}受到击中冰霜伤害的 100% 转为火焰伤害
+{variant:26}受到击中冰霜伤害的 100% 转为闪电伤害
+{variant:27}受到击中火焰伤害的 100% 转为冰霜伤害
+{variant:28}受到击中火焰伤害的 100% 转为闪电伤害
+{variant:29}受到击中闪电伤害的 100% 转为冰霜伤害
+{variant:30}受到击中闪电伤害的 100% 转为火焰伤害
+{variant:31}获得等同 (12-24)% 物理伤害的 1 个随机火焰、冰霜、闪电伤害
+{variant:32}投射物会穿透 (4-6) 个额外目标
+固定基底词缀两倍效果加成
 ]],[[
-Gloomfang
-Blue Pearl Amulet
-Source: Drops from unique{The Purifier}
+昏暗之牙
+碧珠护身符
+源: 传奇Boss【裂界守卫：净世】 专属掉落
 Requires 77
-(48–56)% increased Mana Regeneration Rate 
-0.5% of Chaos Damage Leeched as Life 
-Lose (10–15) Life for each Enemy hit by your Spells 
-Lose (20–25) Life for each Enemy hit by your Attacks 
-Skills Chain +1 times 
-Projectiles gain (15–20)% of Non-Chaos Damage as extra Chaos Damage per Chain
+固定基底词缀: 1
+魔力回复速度提高 (48-56)%
+混沌伤害的 0.5% 转化为生命偷取
+你的法术击中每个敌人会失去 (10-15) 生命
+你的攻击击中每个敌人会失去 (20-25) 生命
+投射物可以连锁弹射 +1 次
+每连锁弹射 1 次，投射物获得额外混沌伤害，其数值等同于非混沌伤害的 (15-20)%
 ]],[[
-The Halcyon
-Jade Amulet
-League: Breach
-Source: Drops in Tul Breach or from unique{Tul, Creeping Avalanche}
-Upgrade: Upgrades to unique{The Pandemonius} using currency{Blessing of Tul}
-Requires Level 35
-+(20-30) to Dexterity
-(10-20)% increased Cold Damage
-+(35-40)% to Cold Resistance
-30% increased Freeze Duration on Enemies
-10% chance to Freeze
-60% increased Damage if you've Frozen an Enemy Recently
+太平
+翠玉护身符
+联盟: 裂隙
+源: 地图【托沃领域】 或 传奇Boss【崩雪‧托沃】 专属掉落
+升级: 使用 通货【托沃的祝福】 升级为 传奇【群魔殿】
+等级需求: 35
++(20-30) 敏捷
+冰霜伤害提高 (10-20)%
++(35-40)% 冰霜抗性
+敌人被冰冻的持续时间延长 30%
+冰霜伤害击中时有 10% 的几率冰冻敌人
+近期内你若有冰冻敌人，则伤害提高 60%
 ]],[[
-The Pandemonius
-Jade Amulet
-League: Breach
-Source: Upgraded from unique{The Halcyon} using currency{Blessing of Tul}
-Requires Level 64
-+(20-30) to Dexterity
-(20-30)% increased Cold Damage
-+(35-40)% to Cold Resistance
-Chill Enemy for 1 second when Hit
-Blind Chilled Enemies on Hit
-Damage Penetrates 20% Cold Resistance against Chilled Enemies
+群魔殿
+翠玉护身符
+联盟: 裂隙
+源: 由 传奇【太平】 使用 通货【托沃的祝福】 升级
+等级需求: 64
++(20-30) 敏捷
+冰霜伤害提高 (20-30)%
++(35-40)% 冰霜抗性
+击中敌人后使其冰缓 1 秒，速度降低 30%
+击中冰缓的敌人时使其致盲
+对冰缓敌人穿透其 20% 冰霜抗性
 ]],[[
-Hinekora's Sight
-Onyx Amulet
-Source: Any prophecy{Prophecy} enemy
-Requires Level 20
-+(10-16) to all Attributes
-+1000 to Accuracy Rating
-(6-10)% chance to Dodge Attacks
-(6-10)% chance to Dodge Spell Damage
-Cannot be Blinded
+辛格拉的凝视
+黑曜护身符
+源: 任意预言
+等级需求: 20
++(10-16) 全属性
++1000 命中值
+(6-10)% 几率躲避攻击击中
+(6-10)% 几率躲避法术击中
+不会被致盲
 ]],[[
-The Ignomon
-Gold Amulet
-Upgrade: Upgrades to unique{The Effigon} via prophecy{Blind Faith}
-Requires Level 8
-(12-20)% increased Rarity of Items found
-+10 to Dexterity
-Adds 12 to 24 Fire Damage to Attacks
-+(100-150) to Accuracy Rating
-+(100-150) to Evasion Rating
-+20% to Fire Resistance
+烈阳徽记
+帝金护身符
+升级: 使用 【盲信】 升级为 【耀阳徽记】
+等级需求: 8
+物品稀有度提高 (12-20)%
++10 敏捷
+攻击附加 12 - 24 基础火焰伤害
++(100-150) 命中值
++(100-150) 点闪避值
++20% 火焰抗性
 ]],[[
-The Effigon
-Gold Amulet
-Source: Upgraded from unique{The Ignomon} via prophecy{Blind Faith}
-Requires Level 57
-(12–20)% increased Rarity of Items found
-+10 to Dexterity
-Adds 12 to 24 Fire Damage to Attacks
-+(100–150) to Accuracy Rating
-+(100–150) to Evasion Rating
-+20% to Fire Resistance
-Your Hits can't be Evaded by Blinded Enemies
-Damage Penetrates 10% Fire Resistance against Blinded Enemies
+耀阳徽记
+帝金护身符
+源: 由 传奇【烈阳徽记】 使用 预言【盲信】 升级
+等级需求: 57
+物品稀有度提高 (12-20)%
++10 敏捷
+攻击附加 12 - 24 基础火焰伤害
++(100-150) 命中值
++(100-150) 点闪避值
++20% 火焰抗性
+你的攻击和法术无法被致盲的敌人所闪避
+对致盲敌人的伤害穿透 10% 火焰抗性
 ]],[[
-Impresence
-Onyx Amulet
-Source: Drops from unique{The Elder} (Tier 11+)
-Variant: Physical
-Variant: Fire
-Variant: Cold
-Variant: Lightning
-Variant: Chaos
-Requires Level 64
-+(10-16) to all Attributes
-{variant:1}Adds (12–16) to (20–25) Physical Damage
-{variant:2}Adds (20–24) to (33–36) Fire Damage
-{variant:3}Adds (20–24) to (33–36) Cold Damage
-{variant:4}Adds (10–13) to (43–47) Lightning Damage
-{variant:5}Adds (17–19) to (23–29) Chaos Damage
-{variant:1}+(450–500) to Armour
-{variant:2}1% of Life Regenerated per second
-{variant:3}(45–50)% increased Mana Regeneration Rate
-{variant:4}1% of Energy Shield Regenerated per second
-{variant:5}(30–40)% increased Damage over Time
-+(50–70) to maximum Life
-{variant:1}(30–40)% increased Stun and Block Recovery
-{variant:2}+(20–25)% to Fire Resistance
-{variant:3}+(20–25)% to Cold Resistance
-{variant:4}+(20–25)% to Lightning Resistance
-{variant:5}+(17–23)% to Chaos Resistance
-{variant:1}100% reduced Vulnerability Mana Reservation
-{variant:2}100% reduced Flammability Mana Reservation
-{variant:3}100% reduced Frostbite Mana Reservation
-{variant:4}100% reduced Conductivity Mana Reservation
-{variant:5}100% reduced Despair Mana Reservation
-Gain Maddening Presence for 10 seconds when you Kill a Rare or Unique Enemy
-Elder Item
+隐逝
+黑曜护身符
+源: 传奇Boss【裂界者】 专属掉落 (T11地图或以上)
+版本: 物理
+版本: 火焰
+版本: 冰霜
+版本: 闪电
+版本: 混沌
+等级需求: 64
++(10-16) 全属性
+{variant:1}附加 (12-16) - (20-25) 基础物理伤害
+{variant:2}附加 (20-24) - (33-36) 基础火焰伤害
+{variant:3}附加 (20-24) - (33-36) 基础冰霜伤害
+{variant:4}附加 (10-13) - (43-47) 基础闪电伤害
+{variant:5}附加 (17-19) - (23-29) 基础混沌伤害
+{variant:1}+(450-500) 护甲
+{variant:2}每秒回复 1% 生命
+{variant:3}魔力回复速度提高 (45-50)%
+{variant:4}每秒回复 1% 能量护盾
+{variant:5}持续伤害效果提高 (30-40)%
++(50-70) 最大生命
+{variant:1}晕眩和格挡回复降低 (30-40)%
+{variant:2}+(20-25)% 火焰抗性
+{variant:3}+(20-25)% 冰霜抗性
+{variant:4}+(20-25)% 闪电抗性
+{variant:5}+(17-23)% 混沌抗性
+{variant:1}【脆弱】的魔力保留降低 100%
+{variant:2}【易燃】的魔力保留降低 100%
+{variant:3}【冻伤】的魔力保留降低 100%
+{variant:4}【导电】的魔力保留降低 100%
+{variant:5}【绝望】的魔力保留降低 100%
+击败稀有或者传奇敌人时，获得【癫狂】状态 10 秒
+裂界之器
 ]],[[
-Karui Ward
-Jade Amulet
-Upgrade: Upgrades to unique{Karui Charge} via prophecy{The Karui Rebellion}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 5
-+(20-30) to Dexterity
-+(20-30) to Strength
-+100 to Accuracy Rating
-{variant:2}30% increased Projectile Damage
-30% increased Projectile Speed
-10% increased Movement Speed
+卡鲁的战徽
+翠玉护身符
+升级: 使用 预言【卡鲁叛军】 升级为 传奇【卡鲁充能】
+版本: 2.6.0以前
+版本: 当前
+等级需求: 5
++(20-30) 敏捷
++(20-30) 力量
++100 命中值
+{variant:2}投射物伤害提高 30%
+投射物速度提高 30%
+移动速度提高 10%
 ]],[[
-Karui Charge
-Jade Amulet
-Source: Upgraded from unique{Karui Ward} via prophecy{The Karui Rebellion}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 24
-+(20-30) to Dexterity
-+(20-30) to Strength
-{variant:1}(15-20)% increased Attack Speed
-{variant:2}(5-10)% increased Attack Speed
-+100 to Accuracy Rating
-{variant:2}30% increased Projectile Damage
-30% increased Projectile Speed
-10% increased Movement Speed
+卡鲁充能
+翠玉护身符
+源: 由 传奇【卡鲁的战徽】 使用 预言【卡鲁叛军】 升级
+版本: 2.6.0以前
+版本: 当前
+等级需求: 24
++(20-30) 敏捷
++(20-30) 力量
+{variant:1}攻击速度提高 (15-20)%
+{variant:2}攻击速度提高 (5-10)%
++100 命中值
+{variant:2}投射物伤害提高 30%
+投射物速度提高 30%
+移动速度提高 10%
 ]],[[
-Maligaro's Cruelty
-Turquoise Amulet
-Requires Level 20
-+(16-24) to Dexterity and Intelligence
-(4-8)% increased maximum Life
-(25-30)% chance to gain a Frenzy Charge on Killing an Enemy affected by 5 or more Poisons
-(12-15)% chance to gain a Power Charge on Killing an Enemy affected by fewer than 5 Poisons
-10% increased Damage with Poison per Frenzy Charge
-3% increased Poison Duration per Power Charge
+马雷格罗的残酷
+青玉护身符
+等级需求: 20
++(16-24) 敏捷和智慧
+最大生命提高 (4-8)%
+击败中毒 5 层以上的敌人时，有 (25-30)% 几率获得 1 个狂怒球
+击败少于 5 层中毒状态的敌人时，有 (12-15)% 几率获得 1 个暴击球
+每个狂怒球可使中毒伤害提高 10%
+每个暴击球可使中毒持续时间延长 3%
 ]],[[
-Marylene's Fallacy
-Lapis Amulet
-Variant: Pre 1.3.0
-Variant: Pre 2.0.0
-Variant: Pre 2.2.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 40
-+(20-30) to Intelligence
-+(80-120) to Accuracy Rating
-{variant:1,2,3}+(140-160)% to Global Critical Strike Multiplier
-{variant:4,5}+(210-240)% to Global Critical Strike Multiplier
-+(80-100) to Evasion Rating
-(10-15)% increased Light Radius
-{variant:1,2}Non-critical strikes deal 25% Damage
-{variant:3,4}Non-critical strikes deal 40% Damage
-{variant:1}60% less Critical Strike Chance
-{variant:2}50% less Critical Strike Chance
-{variant:3,4,5}40% less Critical Strike Chance
-Your Critical Strikes have Culling Strike
+玛莉琳的护体之符
+海玉护身符
+版本: 1.3.0以前
+版本: 2.0.0以前
+版本: 2.2.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 40
++(20-30) 智慧
++(80-120) 命中值
+{variant:1,2,3}+(140-160)% 攻击和法术暴击伤害加成
+{variant:4,5}+(210-240)% 攻击和法术暴击伤害加成
++(80-100) 点闪避值
+照亮范围扩大 (10-15)%
+{variant:1,2}非暴击造成 25% 伤害
+{variant:3,4}非暴击造成 40% 伤害
+{variant:1}攻击和法术总暴击率额外降低 60%
+{variant:2}攻击和法术总暴击率额外降低 50%
+{variant:3,4,5}攻击和法术总暴击率额外降低 40%
+暴击拥有终结能力
 ]],[[
-Natural Hierarchy
-Rotfeather Talisman
-League: Talisman Standard, Talisman Hardcore
-Requires Level 44
+自然组织
+死羽魔符
+联盟: 魔符·标准, 魔符·专家
+等级需求: 44
 Talisman Tier: 3
-(25-35)% increased Damage
-(10-15)% increased Physical Damage
-(25-30)% increased Fire Damage
-(20-25)% increased Cold Damage
-(15-20)% increased Lightning Damage
-(30-35)% increased Chaos Damage
-Corrupted
+伤害提高 (25-35)%
+物理伤害提高 (10-15)%
+火焰伤害提高 (25-30)%
+冰霜伤害提高 (20-25)%
+闪电伤害提高 (15-20)%
+混沌伤害提高 (30-35)%
+已腐化
 ]],[[
-Night's Hold
-Black Maw Talisman
-League: Talisman Standard, Talisman Hardcore
-Requires Level 25
+夜守
+黑牙魔符
+联盟: 魔符·标准, 魔符·专家
+等级需求: 25
 Talisman Tier: 1
-Has 1 Socket
-+2 to Level of Socketed Gems
-Socketed Gems are Supported by level 10 Added Chaos Damage
-Socketed Gems are Supported by level 10 Blind
-Socketed Gems are Supported by level 10 Cast When Stunned
-Corrupted
+有 1 个插槽
+此物品上装备的技能石等级 +2
+此物品上的技能石受到 10 级的 附加混沌伤害 辅助
+此物品上的技能石受到 10 级的 致盲 辅助
+此物品上的技能石受到 10 级的 晕眩时施放 辅助
+已腐化
 ]],[[
-Rashkaldor's Patience
-Jade Amulet
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 61
-+(20-30) to Dexterity
-+(40-80) to maximum Life
-+(20-40) to maximum Mana
-{variant:1}20% increased Duration of Elemental Status Ailments on Enemies
-{variant:2}20% increased Duration of Elemental Ailments on Enemies
-Items and Gems have 10% reduced Attribute Requirements
-5% chance to Freeze, Shock and Ignite
-Cannot gain Power Charges
+拉什卡德的耐心
+翠玉护身符
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 61
++(20-30) 敏捷
++(40-80) 最大生命
++(20-40) 最大魔力
+{variant:1}敌人受到的元素异常状态时间延长 20%
+{variant:2}敌人受到的元素异常状态时间延长 20%
+装备和技能石的属性需求降低 10%
+5% 几率造成冰冻、感电与点燃效果
+无法获得暴击球
 ]],[[
-Rigwald's Curse
-Wereclaw Talisman
-League: Talisman Standard
-Variant: Pre 2.2.0
-Variant: Current
-Requires Level 28
+瑞佛诅咒
+亡爪魔符
+联盟: 魔符·标准
+版本: 2.2.0以前
+版本: 当前
+等级需求: 28
 Talisman Tier: 2
-Implicits: 2
-{variant:1}+(16-24)% to Global Critical Strike Multiplier
-{variant:2}+(24-36)% to Global Critical Strike Multiplier
-+7% Base Unarmed Critical Strike Chance
-Modifiers to Claw Damage also apply to Unarmed Attack Damage
-Modifiers to Claw Attack Speed also apply to Unarmed Attack Speed
-Modifiers to Claw Critical Strike Chance also apply to Unarmed Attack Critical Strike Chance
-Corrupted
+固定基底词缀: 2
+{variant:1}+(16-24)% 攻击和法术暴击伤害加成
+{variant:2}+(24-36)% 攻击和法术暴击伤害加成
+空手攻击时攻击和法术基础暴击率 +7%
+对爪类武器的伤害加成同时套用于空手攻击伤害上
+对爪类武器的攻击速度加成同时套用于空手攻击速度上
+对爪类武器的攻击暴击率加成同时套用于空手攻击暴击率上
+已腐化
 ]],[[
-Shaper's Seed
-Agate Amulet
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 16
-+(16-24) to Strength and Intelligence
-(30-50)% increased Mana Regeneration Rate
-2% of Life Regenerated per Second
-{variant:1}Nearby Allies gain 1% of Life Regenerated per Second
-{variant:2}Nearby Allies gain 2% of Life Regenerated per Second
-Nearby Allies gain 40% increased Mana Regeneration Rate
+塑界者之籽
+玛瑙护身符
+版本: 2.6.0以前
+版本: 当前
+等级需求: 16
++(16-24) 力量和智慧
+魔力回复速度提高 (30-50)%
+每秒回复 2% 生命
+{variant:1}周围友军获得每秒回复 1% 生命
+{variant:2}周围友军获得每秒回复 2% 生命
+周围友军获得 40% 魔力回复
 ]],[[
-Sidhebreath
-Paua Amulet
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-(20-30)% increased Mana Regeneration Rate
-+25% to Cold Resistance
-0.2% of Physical Attack Damage Leeched as Mana
-Minions have (10-15)% increased maximum Life
-Minions have (10-15)% increased Movement Speed
-Minions deal (10-15)% increased Damage
-{variant:2}(10-15)% reduced Mana Cost of Minion Skills
+魔灵之符
+海灵护身符
+版本: {2_6}3.0.0以前
+版本: 当前
+魔力回复速度提高 (20-30)%
++25% 冰霜抗性
+物理攻击伤害的 0.2% 转化为魔力偷取
+召唤生物的移动速度提高 (10-15)%
+召唤生物的最大生命提高 (10-15)%
+召唤生物的伤害提高 (10-15)%
+{variant:2}召唤生物技能的魔力消耗降低 (10-15)%
 ]],[[
-Star of Wraeclast
-Ruby Amulet
-Source: Vendor recipe
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 28
-+(20-30)% to Fire Resistance
-(30-50)% increased Cold Damage
-+(10-15)% to all Elemental Resistances
+瓦尔克拉斯之星
+血色护身符
+源: 商店配方
+版本: 2.6.0以前
+版本: 当前
+等级需求: 28
++(20-30)% 火焰抗性
+冰霜伤害提高 (30-50)%
+获得 +(10-15)% 火焰、冰霜、闪电抗性
 {variant:1}30% increased Radius of Curse Skills
-{variant:2}60% increased Area of Effect of Curse Skills
-You are Immune to Silence
-Grants level 20 Illusory Warp Skill
-Corrupted
+{variant:2}诅咒范围扩大 60%
+免疫沉默诅咒
+获得 20 级的【幻象传送】
+已腐化
 ]],[[
-Stone of Lazhwar
-Lapis Amulet
-Variant: {2_6}Pre 3.0.0
-Variant: Pre 3.4.0
-Variant: Current
-Requires Level 5
-+(20-30) to Intelligence
-{variant:1}50% of Block Chance applied to Spells
-{variant:2}+15% chance to Block Spell Damage
-{variant:3}+(12-15)% chance to Block Spell Damage
-(10-15)% increased Cast Speed
-+(30-50) to maximum Mana
+拉兹瓦的灵石
+海玉护身符
+版本: 3.4.0以前
+版本: 当前
+等级需求: 5
++(20-30) 智慧
+施法速度提高 (10-15)%
++(30-50) 最大魔力
+{variant:1}50% 的攻击格挡率同样套用于法术格挡
+{variant:2}(12-15)% 法术伤害格挡几率
 ]],[[
-Tear of Purity
-Lapis Amulet
-Requires Level 20
-+(20-30) to Intelligence
-Grants level 10 Purity of Elements Skill
-+(5-10) to all Attributes
-+(20-40) to maximum Life
-5% chance to avoid Elemental Ailments
+纯净之泪
+海玉护身符
+等级需求: 20
++(20-30) 智慧
+获得 10 级的主动技能【元素净化】，且可被此道具上的技能石辅助
++(5-10) 全属性
++(20-40) 最大生命
+5% 几率避免元素异常状态
 ]],[[
-Ungil's Harmony
-Turquoise Amulet
-Variant: Pre 2.2.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 23
-+(16-24) to Dexterity and Intelligence
-100% increased Global Critical Strike Chance
-{variant:1}−50% to Global Critical Strike Multiplier
-{variant:2}−75% to Global Critical Strike Multiplier
-{variant:3}−25% to Global Critical Strike Multiplier
-+(30-50) to maximum Life
-+(30-50) to maximum Mana
-40% increased Stun Recovery
+恩吉尔的和谐
+青玉护身符
+版本: 2.2.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 23
++(16-24) 敏捷和智慧
+攻击和法术暴击率提高 100%
+{variant:1}−50% 攻击和法术暴击伤害加成
+{variant:2}−75% 攻击和法术暴击伤害加成
+{variant:3}−25% 攻击和法术暴击伤害加成
++(30-50) 最大生命
++(30-50) 最大魔力
+晕眩回复和格挡回复提高 40%
 ]],[[
-Victario's Acuity
-Turquoise Amulet
-League: Onslaught
-Requires Level 16
-+(16-24) to Dexterity and Intelligence
-+(30-40)% to Lightning Resistance
-+(8-10)% to Chaos Resistance
-10% chance to gain a Frenzy Charge on Kill
-10% chance to gain a Power Charge on Kill
-5% increased Projectile Speed per Frenzy Charge
-5% increased Projectile Damage per Power Charge
+维多里奥的捷思
+青玉护身符
+联盟: 猛攻
+等级需求: 16
++(16-24) 敏捷和智慧
++(30-40)% 闪电抗性
++(8-10)% 混沌抗性
+击败敌人后有 10% 几率获得 1 个狂怒球
+击败敌人有 10% 几率获得暴击球
+每个狂怒球可使投射物速度提高 5%
+每个暴击球可使投射物伤害提高 5%
 ]],[[
-Voice of the Storm
-Lapis Amulet
-League: Breach
-Source: Drops in Esh Breach or from unique{Esh, Forked Thought}
-Upgrade: Upgrades to unique{Choir of the Storm} using currency{Blessing of Esh}
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 40
-+(20-30) to Intelligence
-+(10-15) to all Attributes
-(10-20)% increased maximum Mana
-{variant:1}Critical Strike Chance is increased by Uncapped Lightning Resistance
-{variant:2}Critical Strike Chance is increased by Lightning Resistance
-Trigger Level 12 Lightning Bolt when you deal a Critical Strike
+暴风之言
+海玉护身符
+联盟: 裂隙
+源: 地图【艾许领域】 或 传奇Boss【异念‧艾许】 专属掉落
+升级: 使用 通货【艾许的祝福】 升级为 传奇【暴风之语】
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 40
++(20-30) 智慧
++(10-15) 全属性
+最大魔力提高 (10-20)%
+{variant:1}暴击率将随绝对闪电抗性而提高
+{variant:2}暴击率随闪电抗性提高
+暴击时触发 12 级的【雷霆万钧】
 ]],[[
-Choir of the Storm
-Lapis Amulet
-League: Breach
-Source: Upgraded from unique{Voice of the Storm} using currency{Blessing of Esh}
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 69
-+(20-30) to Intelligence
-(10-20)% increased maximum Mana
-{variant:1}-30% to Lightning Resistance
-{variant:1}Critical Strike Chance is increased by Uncapped Lightning Resistance
-{variant:2}Critical Strike Chance is increased by Lightning Resistance
+暴风之语
+海玉护身符
+联盟: 裂隙
+源: 由传奇【暴风之言】 使用 通货【艾许的祝福】 升级
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 69
++(20-30) 智慧
+最大魔力提高 (10-20)%
+{variant:1}--30% 闪电抗性
+{variant:1}暴击率将随绝对闪电抗性而提高
+{variant:2}暴击率随闪电抗性提高
 {variant:1}Critical Strikes deal 50% increased Lightning Damage
-{variant:2}50% increased Lightning Damage
-Trigger Level 20 Lightning Bolt when you deal a Critical Strike
+{variant:2}闪电伤害提高 50%
+暴击时触发 20 级的【雷霆万钧】
 ]],[[
-Voll's Devotion
-Agate Amulet
-League: Anarchy, Onslaught
-Requires Level 32
-+(16-24) to Strength and Intelligence
-+(30-40) to maximum Life
-+(20-30) to maximum Energy Shield
-+(15-20)% to all Elemental Resistances
-30% reduced Endurance Charge Duration
-30% reduced Power Charge Duration
-Gain an Endurance Charge when a Power Charge expires or is consumed
+福尔的忠诚之符
+玛瑙护身符
+联盟: 混乱, 猛攻
+等级需求: 32
++(16-24) 力量和智慧
++(30-40) 最大生命
++(20-30) 最大能量护盾
+获得 +(15-20)% 火焰、冰霜、闪电抗性
+耐力球持续时间缩短 30%
+暴击球的持续时间缩短 30%
+当暴击球被消耗或过期时获得耐力球
 ]],[[
-Warped Timepiece
-Turquoise Amulet
-Requires Level 50
-+(16-24) to Dexterity and Intelligence
-(8-12)% increased Attack Speed
-(8-12)% increased Cast Speed
-12% increased Movement Speed
-(8-12)% reduced Skill Effect Duration
-30% increased Life Leeched per second
-30% increased Mana Leeched per second
+时空扭曲
+青玉护身符
+等级需求: 50
++(16-24) 敏捷和智慧
+攻击速度提高 (8-12)%
+施法速度提高 (8-12)%
+移动速度提高 12%
+技能效果持续时间缩短 (8-12)%
+每秒生命偷取提高 30%
+每秒魔力偷取提高 30%
 ]],[[
-Winterheart
-Gold Amulet
-Requires Level 42
-(12-20)% increased Rarity of Items found
-+(20-30) to Dexterity
-+(50-70) to maximum Life
-+75% to Cold Resistance
-Cannot be Chilled
-20% of Life Regenerated per Second while Frozen
+冬之心
+帝金护身符
+等级需求: 42
+物品稀有度提高 (12-20)%
++(20-30) 敏捷
++(50-70) 最大生命
++75% 冰霜抗性
+免疫冰缓
+冰冻时每秒回复 20% 生命
 ]],[[
-Xoph's Heart
-Amber Amulet
-League: Breach
-Source: Drops in Xoph Breach or from unique{Xoph, Dark Embers}
-Upgrade: Upgrades to unique{Xoph's Blood} using currency{Blessing of Xoph}
-Requires Level 35
-+(20-30) to Strength
-+(20-30) to Strength
-25% increased Fire Damage
-+(25-35) to maximum Life
-+(20-40)% to Fire Resistance
-Cover Enemies in Ash when they Hit you
+索伏之心
+琥珀护身符
+联盟: 裂隙
+源: 地图【索伏领域】 或 传奇Boss【黑暗余烬‧索伏】 专属掉落
+升级: 使用 通货【索伏的祝福】 升级为 传奇【索伏之血】
+等级需求: 35
++(20-30) 力量
++(20-30) 力量
+火焰伤害提高 25%
++(25-35) 最大生命
++(20-40)% 火焰抗性
+被击中时让敌人受到【灰烬缠身】
 ]],[[
-Xoph's Blood
-Amber Amulet
-League: Breach
-Source: Upgraded from unique{Xoph's Heart} using currency{Blessing of Xoph}
-Requires Level 64
-+(20-30) to Strength
-10% increased maximum Life
-+(20-40)% to Fire Resistance
-10% increased Strength
-Damage Penetrates 10% Fire Resistance
-Cover Enemies in Ash when they Hit you
-Avatar of Fire
+索伏之血
+琥珀护身符
+联盟: 裂隙
+源: 由 传奇【索伏之心】 使用 通货【索伏的祝福】升级 
+等级需求: 64
++(20-30) 力量
+最大生命提高 10%
++(20-40)% 火焰抗性
+力量提高 10%
+伤害穿透 10% 火焰抗性
+被击中时让敌人受到【灰烬缠身】
+火之化身
 ]],[[
-Yoke of Suffering
-Onyx Amulet
-Source: Drops from unique{The Eradicator} (Tier 11+)
-Requires Level 25
-+(10–16) to all Attributes 
-+(10–20)% to Fire Resistance 
-+(10–20)% to Cold Resistance 
-+(20–40)% to Lightning Resistance 
-30% reduced Duration of Ailments on Enemies 
-(5–10)% chance to Shock 
-Enemies take 5% increased Damage for each type of Ailment you have inflicted on them 
-Your Elemental Damage can Shock
+苦难羁绊
+黑曜护身符
+源: 传奇Boss【裂界守卫：寂灭】 专属掉落(T11地图或以上)
+等级需求: 25
++(10-16) 全属性
++(10-20)% 火焰抗性
++(10-20)% 冰霜抗性
++(20-40)% 闪电抗性
+造成的异常状态持续时间缩短 30%
+闪电伤害击中时有 (5-10)% 几率使敌人受到感电效果影响
+你每使敌人受到一种异常状态，它们受到的伤害便提高 5%
+你的火焰、冰霜、闪电伤害可以造成感电
 ]],
 }

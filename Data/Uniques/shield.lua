@@ -1,754 +1,747 @@
 ﻿-- Item data (c) Grinding Gear Games
-
 return {
 -- Shield: Armour
 [[
-Ahn's Heritage
-Colossal Tower Shield
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 67, 159 Str
-Implicits: 1
-{variant:2}+(10-20) to maximum Life
-(50-100)% increased Armour
-+(60-80) to maximum Life
--1 to maximum Endurance Charges
--10% to maximum Block Chance
-+6% Chance to Block
-+3% to all maximum Resistances while you have no Endurance Charges
-You have Onslaught while at maximum Endurance Charges
+汉恩的遗产
+巨型塔盾
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 67, 159 Str
+固定基底词缀: 1
+{variant:2}+(10-20) 最大生命
+护甲提高 (50-100)%
++(60-80) 最大生命
+-1 耐力球数量上限
+-10% 攻击和法术格挡率上限
++6% 攻击格挡率
+当不拥有耐力球时，所有属性的最大抗性上限 +3%
+耐力球达到上限时获得【猛攻】状态
 ]],[[
-The Anticipation
-Ezomyte Tower Shield
-League: Breach
-Source: Drops in Uul-Netol Breach or from unique{Uul-Netol, Unburdened Flesh}
-Upgrade: Upgrades to unique{} using currency{Blessing of Uul-Netol}
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 64, 159 Str
-Implicits: 1
-{variant:2}+(30-40) to maximum Life
-(120-160)% increased Armour
-+(50-70) to maximum Life
-+6% Chance to Block
-+1000 Armour if you've Blocked Recently
-Permanently Intimidate Enemies on Block
+悬念
+艾兹麦塔盾
+联盟: 裂隙
+源: 地图【乌尔尼多领域】 或 传奇Boss【截载者‧乌尔尼多】 专属掉落
+升级: 使用 通货【乌尔尼多的祝福】 升级为 传奇【降伏】
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 64, 159 Str
+固定基底词缀: 1
+{variant:2}+(30-40) 最大生命
+护甲提高 (120-160)%
++(50-70) 最大生命
++6% 攻击格挡率
+格挡后的短时间内 +1000 护甲
+格挡时永久恐吓敌人
 ]],[[
-The Surrender
-Ezomyte Tower Shield
-League: Breach
-Source: Upgraded from unique{} using currency{Blessing of Uul-Netol}
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 64, 159 Str
-Implicits: 1
-{variant:2}+(30-40) to maximum Life
-Grants level 30 Reckoning Skill
-(130-170)% increased Armour
-+(65-80) to maximum Life
-Recover 250 Life when you Block
-+6% Chance to Block
-+1500 Armour if you've Blocked Recently
+降伏
+艾兹麦塔盾
+联盟: 裂隙
+源: 由 传奇【悬念】 使用 通货【乌尔尼多的祝福】 升级
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 64, 159 Str
+固定基底词缀: 1
+{variant:2}+(30-40) 最大生命
+获得 30 级的主动技能【清算】，且可被此道具上的技能石辅助
+护甲提高 (130-170)%
++(65-80) 最大生命
+格挡时回复 250 生命
++6% 攻击格挡率
+格挡后的短时间内 +1500 护甲
 ]],[[
-Chernobog's Pillar
-Ebony Tower Shield
-Variant: Pre 2.0.0
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 61, 159 Str
-Implicits: 1
-{variant:4}+(20-30) to maximum Life
-{variant:2}Adds (7-10) to (15-25) Fire Damage to Attacks
-{variant:3,4}Adds (12-15) to (30-35) Fire Damage to Spells and Attacks
-(120-150)% increased Armour
-{variant:3,4}+(60-80) to maximum Life
-+(35-50)% to Fire Resistance
-25% of Physical Damage Converted to Fire Damage
-{variant:1}5% chance to Curse Enemies with Enfeeble on Hit
-{variant:2}10% chance to Curse Enemies with Enfeeble on Hit
-{variant:3,4}25% chance to Curse un-cursed Enemies with Enfeeble on Hit
+五芒屏障
+乌木塔盾
+版本: 2.0.0以前
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 61, 159 Str
+固定基底词缀: 1
+{variant:4}+(20-30) 最大生命
+{variant:2}攻击附加 (7-10) - (15-25) 基础火焰伤害
+{variant:3,4}攻击和法术附加 (12-15)-(30-35) 基础火焰伤害
+护甲提高 (120-150)%
+{variant:3,4}+(60-80) 最大生命
++(35-50)% 火焰抗性
+25% 的物理伤害转换为火焰伤害
+{variant:1}击中敌人时有 5% 几率使敌人被衰弱
+{variant:2}击中敌人时有 10% 几率使敌人被衰弱
+{variant:3,4}击中时有 25% 几率对未受诅咒的敌人施放【衰弱】诅咒
 ]],[[
-Lioneye's Remorse
-Pinnacle Tower Shield
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 70, 159 Str
-Implicits: 1
-{variant:3}+(20-30) to maximum Life
-(200-250)% increased Armour
-{variant:1}+(80-100) to maximum Life
-{variant:2,3}+(160-180) to maximum Life
-5% reduced Movement Speed
-20% increased Stun Recovery
-−25 Physical Damage taken from Projectile Attacks
-+5% Chance to Block
+狮眼的荣耀之盾
+坚毅塔盾
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 70, 159 Str
+固定基底词缀: 1
+{variant:3}+(20-30) 最大生命
+护甲提高 (200-250)%
+{variant:1}+(80-100) 最大生命
+{variant:2,3}+(160-180) 最大生命
+移动速度降低 5%
+晕眩回复和格挡回复提高 20%
+承受投射物攻击造成的物理伤害 -25
++5% 攻击格挡率
 ]],[[
-Lycosidae
-Rawhide Tower Shield
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 11, 33 Str
-Implicits: 1
-{variant:2}+(10-20) to maximum Life
-+(120-160) to Armour
-+(30-40) to maximum Life
-Your hits can't be Evaded
-+(3-5)% Chance to Block
-Adds 250 to 300 Cold Damage to Counterattacks
+狼蛛
+生皮塔盾
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 11, 33 Str
+固定基底词缀: 1
+{variant:2}+(10-20) 最大生命
++(120-160) 护甲
++(30-40) 最大生命
+你的攻击和法术无法被闪避
+该装备 +(3-5)% 攻击格挡率
+反击附加 250 - 300 基础冰霜伤害
 ]],[[
-Magna Eclipsis
-Pinnacle Tower Shield
-Source: Vendor recipe
-Requires Level 70
-+(20–30) to maximum Life 
-+2 to Level of Socketed Gems 
-Triggers Level 20 Elemental Aegis when Equipped 
-(180–220)% increased Armour 
-+(60–80) to maximum Life 
-+(80–100) to Evasion Rating and Energy Shield
+坚毅之食
+坚毅塔盾
+源: 商店配方
+等级需求: 70
++(20-30) 最大生命
+此物品上装备的技能石等级 +2
+装备时触发 20 级的【元素神盾】
+护甲提高 (180-220)%
++(60-80) 最大生命
++(80-100) 点闪避值和能量护盾
 ]],[[
-Redblade Banner
-Painted Tower Shield
-League: Warbands
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 35, 87 Str
-Implicits: 1
-{variant:3}+(20-30) to maximum Life
-{variant:1}+(20-60) to maximum Life
-{variant:2,3}+(50-60) to maximum Life
-{variant:1}+1 to Level of Socketed Warcry Gems
-{variant:2,3}(80-100)% increased Armour
-{variant:2,3}2% of Attack Damage Leeched as Life against Taunted Enemies
-{variant:2,3}50% increased Warcry Cooldown Recovery Speed
-+5% Chance to Block
-{variant:1}20% increased Endurance Charge Duration
-Gain +10 Life when you Taunt an Enemy
+红刃旗帜
+彩绘塔盾
+联盟: 军团
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 35, 87 Str
+固定基底词缀: 1
+{variant:3}+(20-30) 最大生命
+{variant:1}+(20-60) 最大生命
+{variant:2,3}+(50-60) 最大生命
+{variant:1}此物品上装备的【战吼技能石】等级 +1
+{variant:2,3}护甲提高 (80-100)%
+{variant:2,3}攻击被嘲讽的敌人时，攻击伤害的 2% 转化为生命偷取
+{variant:2,3}战吼冷却回复速度提高 50%
++5% 攻击格挡率
+{variant:1}耐力球持续时间延长 20%
+每嘲讽 1 个敌人回复 +10 生命
 ]],[[
-Titucius' Span
-Reinforced Tower Shield
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 30, 76 Str
-Implicits: 1
-{variant:3}+(10-20) to maximum Life
-(60-80)% increased Armour
-+(30-50) to maximum Life
-{variant:1}−10 Physical Damage taken from Projectile Attacks
-{variant:2,3}−(50-80) Physical Damage taken from Projectile Attacks
-200% increased Armour against Projectiles
-+25% additional Block Chance against Projectiles
+提图库斯的坚盾
+强化塔盾
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 30, 76 Str
+固定基底词缀: 1
+{variant:3}+(10-20) 最大生命
+护甲提高 (60-80)%
++(30-50) 最大生命
+{variant:1}承受投射物攻击造成的物理伤害 -10
+{variant:2,3}承受投射物攻击造成的物理伤害 (-80--50)
+承受投射物的攻击时，护甲提高 200%
++25% 对投射物格挡率
 ]],[[
-Trolltimber Spire
-Cedar Tower Shield
-League: Tempest
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 17, 46 Str
-Implicits: 1
-{variant:3}+(20-30) to maximum Life
-+(40-60) to maximum Life
-{variant:2,3}(130-150)% increased Armour
-0.5% of Life Regenerated per Second
-15% increased Area of Effect for Skills used by Totems
-{variant:1}1% of Damage Leeched as Life for Skills used by Totems
-{variant:2,3}0.5% of Damage dealt by your Totems is Leeched to you as Life
+巫木
+松木塔盾
+联盟: 风暴
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 17, 46 Str
+固定基底词缀: 1
+{variant:3}+(20-30) 最大生命
++(40-60) 最大生命
+{variant:2,3}护甲提高 (130-150)%
+每秒回复 0.5% 生命
+图腾使用技能的范围效果扩大 15%
+{variant:1}图腾使用技能造成伤害的 1% 转化为生命偷取
+{variant:2,3}你偷取生命，数值等同于你的图腾造成伤害的 0.5%
 ]],[[
-Tukohama's Fortress
-Ebony Tower Shield
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 61, 159 Str
-Implicits: 1
-{variant:2}+(20-30) to maximum Life
-40% increased Totem Damage
-+(80-100) to maximum Life
-Can have up to 1 additional Totem summoned at a time
-+300 Armour per active Totem
-Blood Magic
+图克玛哈堡垒
+乌木塔盾
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 61, 159 Str
+固定基底词缀: 1
+{variant:2}+(20-30) 最大生命
+图腾伤害提高 40%
++(80-100) 最大生命
+最多同时可以额外召唤 1 个图腾
+每个激活的图腾提供 +300 护甲
+血魔法
 ]],
 -- Shield: Evasion
 [[
-Atziri's Mirror
-Golden Buckler
-Upgrade: Upgrades to unique{Atziri's Reflection} via prophecy{The Queen's Sacrifice}
-Variant: Pre 2.0.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 54, 130 Dex
-Implicits: 1
-{variant:3}6% increased Movement Speed
-+(40-60) to Intelligence
-{variant:1,2}(80-100)% increased Evasion Rating
-{variant:3}(180–200)% increased Evasion Rating
-+(20-30) to all Elemental Resistances
-{variant:2,3}50% reduced Duration of Curses on you
-{variant:3}10% additional Block chance while not Cursed
-{variant:3}20% additional Spell Block chance while Cursed
-Curse Reflection
+阿兹里之镜
+金阳轻盾
+升级: 使用 预言【女王的牺牲】 升级为 传奇【阿兹里的反击】
+版本: 2.0.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 54, 130 Dex
+固定基底词缀: 1
+{variant:3}移动速度提高 6%
++(40-60) 智慧
+{variant:1,2}闪避值提高 (80-100)%
+{variant:3}闪避值提高 (180-200)%
+获得 +(20-30)% 火焰、冰霜、闪电抗性
+{variant:2,3}受到诅咒的持续时间缩短 50%
+{variant:3}未被诅咒时攻击伤害格挡几率 +10%
+{variant:3}被诅咒时法术伤害格挡几率提高 20%
+诅咒反射
 ]],[[
-Atziri's Reflection
-Golden Buckler
-Source: Upgraded from unique{Atziri's Mirror} via prophecy{The Queen's Sacrifice}
-Requires Level 68
-6% increased Movement Speed
-+(40–60) to Intelligence
-(180–200)% increased Evasion Rating
-+(180–200) to maximum Energy Shield
-+(20–30)% to all Elemental Resistances
-Curse Reflection
-Unaffected by Curses
-(15–20)% increased Effect of your Curses
+阿兹里的反击
+金阳轻盾
+源: 由 传奇【阿兹里之镜】 使用 预言【女王的牺牲】 升级
+等级需求: 68
+移动速度提高 6%
++(40-60) 智慧
+闪避值提高 (180-200)%
++(180-200) 最大能量护盾
+获得 +(20-30)% 火焰、冰霜、闪电抗性
+诅咒反射
+不受诅咒影响
+你所施放诅咒的效果提高 (15-20)%
 ]],[[
-Chalice of Horrors
-War Buckler
-Upgrade: Upgrades to unique{Thirst for Horrors} via prophecy{Mouth of Horrors}
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 29, 74 Dex
-Implicits: 1
-{variant:3}9% increased Movement Speed
-+1 to Level of Socketed Curse Gems
-(30-50)% increased Evasion Rating
-{variant:2,3}+(40-50) to maximum Life
-{variant:2,3}+(50-70) to maximum Energy Shield
-100% increased Curse Duration
-+5% Chance to Block
-10% Chance to Cause Monster to Flee on Block
+恐惧之缶
+战争轻盾
+升级: 使用 预言【恐惧之口】 升级为 传奇【颤栗之饥】
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 29, 74 Dex
+固定基底词缀: 1
+{variant:3}移动速度提高 9%
+此物品上装备的【诅咒技能石】等级 +1
+闪避值提高 (30-50)%
+{variant:2,3}+(40-50) 最大生命
+{variant:2,3}+(50-70) 最大能量护盾
+诅咒持续时间延长 100%
++5% 攻击格挡率
+格挡时有 10% 几率使怪物逃跑
 ]],[[
-Thirst for Horrors
-War Buckler
-Source: Upgraded from unique{Chalice of Horrors} using prophecy{Mouth of Horrors}
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 32, 74 Dex
-Implicits: 1
-{variant:3}9% increased Movement Speed
-+1 to Level of Socketed Curse Gems
-(30-50)% increased Evasion Rating
-{variant:2,3}+(40-50) to maximum Life
-{variant:2,3}+(50-70) to maximum Energy Shield
-100% increased Curse Duration
-+5% Chance to Block
-10% Chance to Cause Monster to Flee on Block
-1% of Damage Leeched as Life against Cursed Enemies
+颤栗之饥
+战争轻盾
+源: 由 传奇【恐惧之缶】 使用 预言【恐惧之口】 升级
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 32, 74 Dex
+固定基底词缀: 1
+{variant:3}移动速度提高 9%
+此物品上装备的【诅咒技能石】等级 +1
+闪避值提高 (30-50)%
+{variant:2,3}+(40-50) 最大生命
+{variant:2,3}+(50-70) 最大能量护盾
+诅咒持续时间延长 100%
++5% 攻击格挡率
+格挡时有 10% 几率使怪物逃跑
+对受诅咒敌人造成伤害的 1% 转化为生命偷取
 ]],[[
-Crest of Perandus
-Pine Buckler
-Variant: Pre 1.3.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 8, 26 Dex
-Implicits: 1
-{variant:3}3% increased Movement Speed
-+(60-80) to maximum Life
-(5-8) Life Regenerated per second
-+30% to Lightning Resistance
-0.6% of Physical Attack Damage Leeched as Life
-{variant:1}+10% Chance to Block
-{variant:2,3}+5% Chance to Block
+普兰德斯之徽
+松木轻盾
+版本: 1.3.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 8, 26 Dex
+固定基底词缀: 1
+{variant:3}移动速度提高 3%
++(60-80) 最大生命
+(5-8) 每秒生命回复
++30% 闪电抗性
+物理攻击伤害的 0.6% 会转化为生命偷取
+{variant:1}+10% 攻击格挡率
+{variant:2,3}+5% 攻击格挡率
 ]],[[
-Great Old One's Ward
-Corrugated Buckler
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 46, 112 Dex
-Implicits: 1
-{variant:2}3% increased Movement Speed
-Adds (8-12) to (15-20) Physical Damage to Attacks
-(6-10)% increased Attack Speed
-+(50-70) to maximum Life
-(8-12)% Chance to Block Spells
+邪神庇护
+波纹轻盾
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 46, 112 Dex
+固定基底词缀: 1
+{variant:2}移动速度提高 3%
+攻击附加 (8-12) - (15-20) 基础物理伤害
+攻击速度提高 (6-10)%
++(50-70) 最大生命
+(8-12)% 法术格挡率
 ]],[[
-Kaltenhalt
-Painted Buckler
-Upgrade: Upgrades to unique{Kaltensoul} via prophecy{The Snuffed Flame}
-Variant: Pre 1.0.0
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 16, 44 Dex
-Implicits: 1
-{variant:4}6% increased Movement Speed
-(60-100)% increased Evasion Rating
-+5% to maximum Cold Resistance
-+50% to Cold Resistance
-{variant:3,4}Gain (10-15)% of Physical Damage as Extra Cold Damage
-{variant:1}Reflects (5-10) Cold Damage to Melee Attackers
-{variant:2,3,4}Reflects (25-50) Cold Damage to Melee Attackers
-+5% Chance to Block
+冰霜之镜
+彩绘轻盾
+升级: 使用 预言【火焰气息】 升级为 传奇【冰霜之魂】 
+版本: 1.0.0以前
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 16, 44 Dex
+固定基底词缀: 1
+{variant:4}移动速度提高 6%
+闪避值提高 (60-100)%
++5% 冰霜抗性上限
++50% 冰霜抗性
+{variant:3,4}获得额外冰霜伤害， 其数值等同于物理伤害的 (10-15)%
+{variant:1}反射 (5-10) 冰霜伤害给近战攻击者
+{variant:2,3,4}反射 (25-50) 冰霜伤害给近战攻击者
++5% 攻击格挡率
 ]],[[
-Kaltensoul
-Painted Buckler
-Source: Upgraded from unique{Kaltenhalt} using prophecy{The Snuffed Flame}
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 16, 44 Dex
-Implicits: 1
-{variant:3}6% increased Movement Speed
-(60-100)% increased Evasion Rating
-+5% to maximum Cold Resistance
-+50% to Cold Resistance
-{variant:2,3}Gain (10-15)% of Physical Damage as Extra Cold Damage
-Reflects (25-50) Cold Damage to Melee Attackers
-+5% Chance to Block
-20% of Fire Damage taken as Cold Damage
+冰霜之魂
+彩绘轻盾
+源: 由 传奇【冰霜之镜】 使用 预言【火焰气息】 升级
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 16, 44 Dex
+固定基底词缀: 1
+{variant:3}移动速度提高 6%
+闪避值提高 (60-100)%
++5% 冰霜抗性上限
++50% 冰霜抗性
+{variant:2,3}获得额外冰霜伤害， 其数值等同于物理伤害的 (10-15)%
+反射 (25-50) 冰霜伤害给近战攻击者
++5% 攻击格挡率
+受到击中火焰伤害的 20% 转为冰霜伤害
 ]],[[
-Mutewind Pennant
-Enameled Buckler
-League: Warbands
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 42, 103 Dex
-Implicits: 1
-{variant:3}6% increased Movement Speed
-+(20-40)% to Cold Resistance
-{variant:1}+1 to Level of Socketed Warcry Gems
-{variant:2,3}(80-100)% Increased Evasion Rating
-10% increased Area of Effect of Area Skills
-{variant:1}(20-30)% increased Chaos Damage
-{variant:1}You gain Onslaught for 2 seconds on Killing Taunted Enemies
-{variant:2,3}You gain Onslaught for 4 seconds on using a Warcry
-{variant:2,3}25% Increased Warcry Effect
+哑风尖旗
+釉彩轻盾
+联盟: 军团
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 42, 103 Dex
+固定基底词缀: 1
+{variant:3}移动速度提高 6%
++(20-40)% 冰霜抗性
+{variant:1}此物品上装备的【战吼技能石】等级 +1
+{variant:2,3}闪避值提高 (80-100)%
+范围效果扩大 10%
+{variant:1}混沌伤害提高 (20-30)%
+{variant:1}击败被嘲讽的敌人获得 2 秒【猛攻】状态
+{variant:2,3}使用战吼后获得持续 4 秒的【猛攻】状态
+{variant:2,3}战吼的增益效果提高 25%
 ]],[[
-Thousand Teeth Temu
-Vaal Buckler
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 63, 159 Dex
-Implicits: 1
-{variant:3}3% increased Movement Speed
-(100-120)% increased Evasion Rating
-+(70-90) to maximum Life
-0.4% of Physical Attack Damage Leeched as Life
-+5% Chance to Block
-Reflects 1 to 1000 Physical Damage to Attackers on Block
-{variant:2,3}10% of Damage Reflected Gained as Life
+千齿
+瓦尔轻盾
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 63, 159 Dex
+固定基底词缀: 1
+{variant:3}移动速度提高 3%
+闪避值提高 (100-120)%
++(70-90) 最大生命
+物理攻击伤害的 0.4% 会转化为生命偷取
++5% 攻击格挡率
+格挡攻击时反射 1 - 1000 物理伤害
+{variant:2,3}你反射给怪物的 10% 伤害会变为回复生命
 ]],
 -- Shield: Energy Shield
 [[
-Brinerot Flag
-Tarnished Spirit Shield
-League: Warbands
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 23, 60 Int
-Implicits: 2
-{variant:1,2}5% increased Spell Damage
-{variant:3}(5-10)% increased Spell Damage
-+(70-90) to maximum Energy Shield
-{variant:1}(8-12)% increased Attack Speed
-{variant:2,3}(8-12)% increased Cast Speed
-(20-40)% increased Mana Regeneration Rate
-{variant:1}+1 to Level of Socketed Warcry Gems
-{variant:2,3}+3 to Level of Socketed Warcry Gems
-{variant:1}Gain +3 Mana when you hit a Taunted Enemy
-{variant:2,3}Gain 2 Power Charges on Using a Warcry
+布琳洛特-加龙省之旗
+环形魔盾
+联盟: 军团
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 23, 60 Int
+固定基底词缀: 2
+{variant:1,2}法术伤害提高 5%
+{variant:3}法术伤害提高 (5-10)%
++(70-90) 最大能量护盾
+{variant:1}攻击速度提高 (8-12)%
+{variant:2,3}施法速度提高 (8-12)%
+魔力回复速度提高 (20-40)%
+{variant:1}此物品上装备的【战吼技能石】等级 +1
+{variant:2,3}此物品上装备的【战吼技能石】等级 +3
+{variant:1}击中被嘲讽的敌人回复 +3 魔力
+{variant:2,3}使用战吼时获得 2 个暴击球
 ]],[[
-Esh's Mirror
-Thorium Spirit Shield
-League: Breach
-Source: Drops in Esh Breach or from unique{Esh, Forked Thought}
-Upgrade: Upgrades to unique{Esh's Visage} using currency{Blessing of Esh}
-Requires Level 53, 128 Int
-+(20-30) to Intelligence
-+(40-70) to maximum Life
-(80-100)% increased Energy Shield
-+(35-40)% to Lightning Resistance
-Adds 1 to 10 Lightning Damage for each Shocked Enemy you've Killed Recently
-Shock Reflection
+艾许之镜
+暗金魔盾
+联盟: 裂隙
+源: 地图【艾许领域】 或 传奇Boss【异念‧艾许】 专属掉落
+升级: 使用 通货【艾许的祝福】 升级为 传奇【艾许之面】
+等级需求: 53, 128 Int
++(20-30) 智慧
++(40-70) 最大生命
+该装备的能量护盾提高 (80-100)%
++(35-40)% 闪电抗性
+近期内你每击败 1 个感电敌人，则附加 1-10 基础闪电伤害
+反射感电
 ]],[[
-Esh's Visage
-Vaal Spirit Shield
-League: Breach
-Source: Upgraded from unique{Esh's Mirror} using currency{Blessing of Esh}
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 62, 159 Int
-Implicits: 2
-{variant:1}5% increased Spell Damage
-{variant:2}(5-10)% increased Spell Damage
-+(40-70) to maximum Life
-(240-260)% increased Energy Shield
-+(30-40)% to Lightning Resistance
-+(17-29)% to Chaos Resistance
-Chaos Damage does not bypass Energy Shield while not on Low Life or Low Mana
-Reflect Shocks applied to you to all Nearby Enemies
+艾许之面
+瓦尔魔盾
+联盟: 裂隙
+源: 由 传奇【艾许之镜】 使用 通货【艾许的祝福】 升级
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 62, 159 Int
+固定基底词缀: 2
+{variant:1}法术伤害提高 5%
+{variant:2}法术伤害提高 (5-10)%
++(40-70) 最大生命
+该装备的能量护盾提高 (240-260)%
++(30-40)% 闪电抗性
++(17-29)% 混沌抗性
+当不处于低血或低魔状态时，混沌伤害无法穿透能量护盾
+将你身上的感电状态反射给周围所有敌人
 ]],[[
-Kongming's Stratagem
-Ivory Spirit Shield
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 41, 100 Int
-Implicits: 2
-{variant:1}15% increased Spell Damage
-{variant:2}(15-20)% increased Spell Damage
-+(20-30) to Intelligence
-(80-120)% increased Energy Shield
-Socketed Trap Skills create a Smoke Cloud when triggered
-{variant:1}30% increased Fire Damage against Blinded Enemies
-{variant:2}30% increased Fire Damage with Hits and Ailments against Blinded Enemies
-30% reduced Spell Damage taken from Blinded Enemies
-No Block Chance
+孔明的神算
+象牙魔盾
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 41, 100 Int
+固定基底词缀: 2
+{variant:1}法术伤害提高 15%
+{variant:2}法术伤害提高 (15-20)%
++(20-30) 智慧
+该装备的能量护盾提高 (80-120)%
+此物品上的陷阱技能石触发时制造一阵烟雾
+{variant:1}对致盲敌人的火焰伤害提高 30%
+{variant:2}击中和异常状态对致盲敌人的火焰伤害提高 30%
+承受来自致盲敌人的法术伤害降低 30%
+没有格档率
 ]],[[
-Light of Lunaris
-Jingling Spirit Shield
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 28, 71 Int
-Implicits: 2
-{variant:1}10% increased Spell Damage
-{variant:2}(10-15)% increased Spell Damage
-(60-80)% increased Critical Strike Chance for Spells
-(100-140)% increased Energy Shield
-+(3-5)% Chance to Block
-+1% to Critical Strike Multiplier per 1% Block Chance
-+25% to Critical Strike Multiplier if you've dealt a Non-Critical Strike Recently
+月影之耀
+灵相魔盾
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 28, 71 Int
+固定基底词缀: 2
+{variant:1}法术伤害提高 10%
+{variant:2}法术伤害提高 (10-15)%
+法术暴击率提高 (60-80)%
+该装备的能量护盾提高 (100-140)%
+该装备 +(3-5)% 攻击格挡率
+每 1% 攻击格挡率 +1% 基础暴击伤害加成
+近期内你若没有打出过暴击，则 +25% 暴击伤害加成
 ]],[[
-Malachai's Loop
-Harmonic Spirit Shield
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 65, 159 Int
-Implicits: 2
-{variant:1,2}10% increased Spell Damage
-{variant:3}(10-15)% increased Spell Damage
-{variant:1}(160-200)% increased Energy Shield
-{variant:2,3}(210-250)% increased Energy Shield
-+2 to Maximum Power Charges
-20% chance to gain a Power Charge on Hit
-6% increased Spell Damage per Power Charge
-Lose all Power Charges on reaching Maximum Power Charges
-You are Shocked for 4 seconds on reaching Maximum Power Charges
+轮回
+和谐魔盾
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 65, 159 Int
+固定基底词缀: 2
+{variant:1,2}法术伤害提高 10%
+{variant:3}法术伤害提高 (10-15)%
+{variant:1}该装备的能量护盾提高 (160-200)%
+{variant:2,3}该装备的能量护盾提高 (210-250)%
++2 暴击球数量上限
+攻击技能有 20% 几率获得暴击球
+每个暴击球可使法术伤害提高 6%
+暴击球达到最大数量时，失去所有的暴击球
+暴击球达到最大数量时，你被感电
 ]],[[
-Matua Tupuna
-Tarnished Spirit Shield
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 23, 60 Int
-Implicits: 2
-{variant:1}5% increased Spell Damage
-{variant:2}(5-10)% increased Spell Damage
-+2 to Level of Socketed Minion Gems
-+(15-25) to maximum Mana
-(40-80)% increased Energy Shield
-10% increased Effect of Auras on You
-10% increased Effect of Auras on your Minions
-Spreads Tar when you take a Critical Strike
+远祖之颅
+环形魔盾
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 23, 60 Int
+固定基底词缀: 2
+{variant:1}法术伤害提高 5%
+{variant:2}法术伤害提高 (5-10)%
+此物品上装备的【召唤生物技能石】等级 +2
++(15-25) 最大魔力
+该装备的能量护盾提高 (40-80)%
+你身上的光环效果提高 10%
+召唤生物身上的光环效果提高 10%
+暴击时喷洒焦油
 ]],[[
-Rathpith Globe
-Titanium Spirit Shield
-Variant: {2_6}Pre 3.0.0
-Variant: Pre 3.4.0
-Variant: Current
-Requires Level 68, 159 Int
-{variant:1}(40-60)% of Block Chance applied to Spells
-{variant:2}+(12-18)% chance to Block Spell Damage
-{variant:3}+(10-15)% chance to Block Spell Damage
-(40-60)% increased Spell Damage
-10% increased maximum Life
-(120-160)% increased Energy Shield
-+25% to Lightning Resistance
+献祭之心
+巨人魔盾
+版本: 3.4.0以前
+版本: 当前
+等级需求: 68, 159 Int
+{variant:1}(40-60)% 的攻击格挡率同样套用于法术格挡
+{variant:2}(10-15)% 法术伤害格挡几率
+法术伤害提高 (40-60)%
+最大生命提高 10%
+该装备的能量护盾提高 (120-160)%
++25% 闪电抗性
 ]],[[
-Sentari's Answer
-Brass Spirit Shield
-Variant: {2_6}Pre 3.0.0
-Variant: Pre 3.4.0
-Variant: Current
-Requires Level 33, 82 Int
-{variant:1}25% of Block Chance applied to Spells
-{variant:2}+7% chance to Block Spell Damage
-{variant:3}+10% chance to Block Spell Damage
-+(20-30) to Intelligence
-(4-8)% increased Quantity of Items found
-+5% Chance to Block
-Applies level 15 Punishment on Blocking a Melee Attack
-Applies level 15 Temporal Chains on Blocking a Projectile Attack
-Applies level 15 Elemental Weakness on Blocking a Spell
+山特立的回应
+铜锻魔盾
+版本: 3.4.0以前
+版本: 当前
+等级需求: 33, 82 Int
+{variant:1}25% 的攻击格挡率同样套用于法术格挡
+{variant:2}10% 法术伤害格挡几率
++(20-30) 智慧
+物品掉落数量提高 (4-8)%
++5% 攻击格挡率
+无视诅咒数量上限，当格挡近战攻击时施放 15 级【惩戒】
+无视诅咒数量上限，当格挡投射物攻击时施放 15 级【时空锁链】
+无视诅咒数量上限，当格挡法术时施放 15 级【元素要害】
 ]],
 -- Shield: Armour/Evasion
 [[
-Daresso's Courage
-Baroque Round Shield
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Pre 3.4.0
-Variant: Current
-Requires Level 54, 70 Str, 70 Dex
-120% increased Block Recovery
-20% increased Physical Damage
-(100-120)% increased Armour and Evasion
-{variant:1}+(10-20)% to Fire Resistance
-{variant:1}+(10-20)% to Cold Resistance
-{variant:1}+(10-20)% to Lightning Resistance
-{variant:2,3,4}+(10-20)% to all Elemental Resistances
-{variant:1,2}120% of Block Chance applied to Spells when on Low Life
-{variant:3}+36% chance to Block Spell Damage while on Low Life
-{variant:4}+30% chance to Block Spell Damage while on Low Life
-+(3-6)% Chance to Block
-{variant:2,3,4}20% chance to Block Spells if you've Blocked an Attack Recently
-{variant:2,3,4}20% chance to Block Attacks if you've Blocked a Spell Recently
+德瑞索的勇者之盾
+古代圆盾
+版本: 2.6.0以前
+版本: 3.4.0以前
+版本: 当前
+等级需求: 54, 70 Str, 70 Dex
+格挡回复提高 120%
+物理伤害提高 20%
+该装备的护甲与闪避提高 (100-120)%
+{variant:1}+(10-20)% 火焰抗性
+{variant:1}+(10-20)% 冰霜抗性
+{variant:1}+(10-20)% 闪电抗性
+{variant:2,3}获得 +(10-20)% 火焰、冰霜、闪电抗性
+{variant:2}低血时，120% 的攻击格挡率套用于法术格挡
+{variant:3}低血时，法术伤害格挡几率额外 +30%
+该装备 +(3-6)% 攻击格挡率
+{variant:2}近期内你若格挡过攻击，则有 20% 几率格挡法术
+{variant:2}近期内你若格挡过法术，则有 20% 几率格挡攻击
+{variant:3}近期内你若格挡过攻击伤害，则有 20% 几率格挡法术伤害
+{variant:3}近期内你若格挡过法术，攻击伤害格挡几率 +20%
 ]],[[
-The Deep One's Hide
-Studded Round Shield
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 20, 28 Str, 28 Dex
-60% increased Block Recovery
-Adds 4 to 8 Physical Damage to Attacks
-{variant:1}Adds 4 to 8 Cold Damage to Attacks
-{variant:2}Adds 12 to 15 Cold Damage to Attacks
-(90-130)% increased Armour and Evasion
-+(30-50)% to Fire Resistance
-Curse Enemies with level 5 Vulnerability on Block
+深渊绝壁
+铆钉圆盾
+版本: 2.6.0以前
+版本: 当前
+等级需求: 20, 28 Str, 28 Dex
+格挡回复提高 60%
+攻击附加 4 - 8 基础物理伤害
+{variant:1}攻击附加 4 - 8 基础冰霜伤害
+{variant:2}攻击附加 12 - 15 基础冰霜伤害
+该装备的护甲与闪避提高 (90-130)%
++(30-50)% 火焰抗性
+格挡时，用 5 级的【脆弱】诅咒敌人
 ]],[[
-Vix Lunaris
-Cardinal Round Shield
+影月
+祭者圆盾
 Requires Level: 66
-+2 to Level of Socketed Gems 
-Triggers Level 20 Cold Aegis when Equipped 
-(200–250)% increased Armour and Evasion 
-+(60–80) to maximum Life 
-Cannot be Frozen
+此物品上装备的技能石等级 +2
+装备时触发 20 级的【寒冰神盾】
+该装备的护甲与闪避提高 (200-250)%
++(60-80) 最大生命
+免疫冰冻
 ]],[[
-Wheel of the Stormsail
-Rotted Round Shield
-Requires Level 5
-60% increased Block Recovery
-+(5-10) to Armour
-(30-40)% increased Rarity of Items found
-25% increased Curse Duration
-100% increased Duration of Curses on you
-+5% Chance to Block
+暴雨之舵
+朽木圆盾
+等级需求: 5
+格挡回复提高 60%
++(5-10) 护甲
+物品稀有度提高 (30-40)%
+诅咒持续时间延长 25%
+受到诅咒的持续时间延长 100%
++5% 攻击格挡率
 ]],
 -- Shield: Armour/Energy Shield
 [[
-Aegis Aurora
-Champion Kite Shield
-Variant: Pre 1.1.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 62, 85 Str, 85 Int
-{variant:1,2}(10-20)% increased Elemental Damage with Weapons
-{variant:3}(10-20)% increased Elemental Damage with Attack Skills
-(80-100)% increased Armour and Energy Shield
-+10% to all Elemental Resistances
-+5% to maximum Cold Resistance
-+6% Chance to Block
-{variant:1}Replenishes Energy Shield by 4% of Armour when you Block
-{variant:2,3}Replenishes Energy Shield by 2% of Armour when you Block
+幻芒圣盾
+斗士鸢盾
+版本: 1.1.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 62, 85 Str, 85 Int
+{variant:1,2}武器攻击的火焰、冰霜、闪电伤害提高 (10-20)%
+{variant:3}攻击技能的火焰、冰霜、闪电伤害提高 (10-20)%
+该装备的护甲与能量护盾提高 (80-100)%
+获得 +10% 火焰、冰霜、闪电抗性
++5% 冰霜抗性上限
++6% 攻击格挡率
+{variant:1}格挡时回复能量护盾，数值等同于 4% 的护甲
+{variant:2,3}格挡时回复能量护盾，数值等同于 2% 的护甲
 ]],[[
-Broken Faith
-Archon Kite Shield
-League: Warbands
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 68, 85 Str, 85 Int
-+12% to all Elemental Resistances
-0.4% of Chaos Damage Leeched as Life
-Gain (5-10)% of Physical Damage as Extra Chaos Damage
-{variant:1}-10% Chance to Block
-{variant:2}5% Chance to Block
-{variant:1}(20-30)% increased Damage when you have no Energy Shield
-{variant:2}100% increased Global Armour when you have no Energy Shield
-{variant:1}30% Chance to gain Unholy Might on Block for 3 seconds
-{variant:2}You gain Unholy Might for 10 seconds on Block
+破碎信念
+威能鸢盾
+联盟: 军团
+版本: 2.6.0以前
+版本: 当前
+等级需求: 68, 85 Str, 85 Int
+获得 +12% 火焰、冰霜、闪电抗性
+混沌伤害的 0.4% 转化为生命偷取
+获得额外混沌伤害，其数值等同于物理伤害的 (5-10)%
+{variant:1}-10% 攻击格挡率
+{variant:2}5% 攻击格挡率
+{variant:1}当能量护盾归零时，伤害提高 (20-30)%
+{variant:2}当你没有能量护盾时，护甲提高 100%
+{variant:1}格挡时有 30% 几率获得 3 秒不洁之力
+{variant:2}格挡时获得 10 秒不洁之力
 ]],[[
-Invictus Solaris
-Archon Kite Shield
+耀日
+威能鸢盾
 Requires Level: 68
-+12% to all Elemental Resistances
-+2 to Level of Socketed Gems 
-Triggers Level 20 Fire Aegis when Equipped 
-(200–250)% increased Armour and Energy Shield 
-+(60–80) to maximum Life 
-Cannot be Ignited
+获得 +12% 火焰、冰霜、闪电抗性
+此物品上装备的技能石等级 +2
+装备时触发 20 级的【火焰神盾】
+该装备的护甲与能量护盾提高 (200-250)%
++(60-80) 最大生命
+免疫点燃
 ]],[[
-Prism Guardian
-Archon Kite Shield
-Variant: Pre 1.1.0
-Variant: Pre 2.0.0
-Variant: Current
-Requires Level 68, 85 Str, 85 Int
-Implicits: 2
-{variant:1}+24% to all Elemental Resistances
-{variant:2,3}+12% to all Elemental Resistances
-{variant:1,2}+1 to Level of Aura Gems in this item
-{variant:3}+2 to Level of Socketed Aura Gems
-Socketed Gems have Blood Magic
-Socketed Gems have 25% reduced Mana Reservation
-+(20-30) to Dexterity
-+25% to all Elemental Resistances
+元素的庇护
+威能鸢盾
+版本: 1.1.0以前
+版本: 2.0.0以前
+版本: 当前
+等级需求: 68, 85 Str, 85 Int
+固定基底词缀: 2
+{variant:1}获得 +24% 火焰、冰霜、闪电抗性
+{variant:2,3}获得 +12% 火焰、冰霜、闪电抗性
+{variant:1,2}此物品上装备的【光环技能石】等级 +1
+{variant:3}此物品上装备的【光环技能石】等级 +2
+此物品上的技能石受到 血魔法 辅助
+此物品上的技能石降低 25% 魔力保留
++(20-30) 敏捷
+获得 +25% 火焰、冰霜、闪电抗性
 ]],[[
-Rise of the Phoenix
-Mosaic Kite Shield
-Variant: Pre 1.1.0
-Variant: {2_6}Pre 3.1.0
-Variant: Current
-Requires Level 65, 85 Str, 85 Int
-Implicits: 2
-{variant:1}+16% to all Elemental Resistances
-{variant:2,3}+8% to all Elemental Resistances
-{variant:3}+(40-60) Maximum Life
-(80-100)% increased Armour and Energy Shield
-{variant:1,2}6 Life Regenerated per second 
-{variant:3}(15-20) Life Regenerated per second
-{variant:1,2}+8% to maximum Fire Resistance 
-{variant:3}+5% to maximum Fire Resistance
-+(20-25)% to Fire Resistance
-25% increased Fire Resistance while on Low Life
-10% increased Movement Speed when on Low Life
-Cannot be Ignited while on Low Life
+烈炎之翼
+厚装鸢盾
+版本: 1.1.0以前
+版本: {2_6}3.1.0 以前
+版本: 当前
+等级需求: 65, 85 Str, 85 Int
+固定基底词缀: 2
+{variant:1}获得 +16% 火焰、冰霜、闪电抗性
+{variant:2,3}获得 +8% 火焰、冰霜、闪电抗性
+{variant:3}+(40-60) 最大生命
+该装备的护甲与能量护盾提高 (80-100)%
+{variant:1,2}6 每秒生命回复
+{variant:3}(15-20) 每秒生命回复
+{variant:1,2}+8% 火焰抗性上限
+{variant:3}+5% 火焰抗性上限
++(20-25)% 火焰抗性
+低血时 +25% 火焰抗性
+低血时移动速度提高 10%
+低血时不会被点燃
 ]],[[
-Saffell's Frame
-Branded Kite Shield
-Variant: Pre 1.1.0
-Variant: {2_6}Pre 3.0.0
-Variant: Pre 3.4.0
-Variant: Current
-Requires Level 59, 76 Str, 76 Int
-Implicits: 2
-{variant:1}+8% to all Elemental Resistances
-{variant:2,3,4}+4% to all Elemental Resistances
-{variant:1}(100-120)% of Block Chance applied to Spells
-{variant:2}(70-80)% of Block Chance applied to Spells
-{variant:3}+(21-24)% chance to Block Spell Damage
-{variant:4}+(15-20)% chance to Block Spell Damage
-(20-30)% increased Spell Damage
-+10% to all Elemental Resistances
-{variant:1}+5% to all maximum Resistances
-{variant:2,3,4}+4% to all maximum Resistances
-Cannot Block Attacks
+萨费尔的智慧
+圣记鸢盾
+版本: 1.1.0以前
+版本: 3.4.0以前
+版本: 当前
+等级需求: 59, 76 Str, 76 Int
+固定基底词缀: 2
+{variant:1}获得 +8% 火焰、冰霜、闪电抗性
+{variant:2,3}获得 +4% 火焰、冰霜、闪电抗性
+{variant:1}(100-120)% 的攻击格挡率同样套用于法术格挡
+{variant:2}(70-80)% 的攻击格挡率同样套用于法术格挡
+{variant:3}(15-20)% 法术伤害格挡几率
+法术伤害提高 (20-30)%
+获得 +10% 火焰、冰霜、闪电抗性
+{variant:1}+5% 全部抗性上限
+{variant:2,3}+4% 全部抗性上限
+无法格挡攻击
 ]],[[
-Springleaf
-Plank Kite Shield
-Upgrade: Upgrades to unique{The Oak} via prophecy{Nature's Resilience}
-Variant: Pre 1.1.0
-Variant: Pre 2.0.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 7
-Implicits: 2
-{variant:1}+8% to all Elemental Resistances
-{variant:2,3,4}+4% to all Elemental Resistances
-(80-120)% increased Armour and Energy Shield
-50% reduced Freeze Duration on You
-{variant:3}1% of Life Regenerated per Second
-{variant:4}3% of Life Regenerated per Second
-{variant:1,2}6% of Life Regenerated per Second while on Low Life
-{variant:3}5% of Life Regenerated per Second while on Low Life
-{variant:4}3% of Life Regenerated per Second while on Low Life
+新生之徽
+朽木鸢盾
+升级: 使用 预言【自然的抵抗】 升级为 【橡树】
+版本: 1.1.0以前
+版本: 2.0.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 7
+固定基底词缀: 2
+{variant:1}获得 +8% 火焰、冰霜、闪电抗性
+{variant:2,3,4}获得 +4% 火焰、冰霜、闪电抗性
+该装备的护甲与能量护盾提高 (80-120)%
+你被冰冻的持续时间缩短 50%
+{variant:3}每秒回复 1% 生命
+{variant:4}每秒回复 3% 生命
+{variant:1,2}低血时每秒回复 6% 生命
+{variant:3}低血时每秒回复 5% 生命
+{variant:4}低血时每秒回复 3% 生命
 ]],[[
-The Oak
-Plank Kite Shield
-Source: Upgraded from unique{Springleaf} using prophecy{Nature's Resilience}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 40
-+4% to all Elemental Resistances
-(80-120)% increased Armour and Energy Shield
-+(100-150) to maximum Life
-50% reduced Freeze Duration on You
-{variant:1}1% of Life Regenerated per Second
-{variant:2}3% of Life Regenerated per Second
-{variant:1}5% of Life Regenerated per Second while on Low Life
-{variant:2}3% of Life Regenerated per Second while on Low Life
+橡树
+朽木鸢盾
+源: 由 传奇【新生之徽】 使用 预言【自然的抵抗】 升级
+版本: 2.6.0以前
+版本: 当前
+等级需求: 40
+获得 +4% 火焰、冰霜、闪电抗性
+该装备的护甲与能量护盾提高 (80-120)%
++(100-150) 最大生命
+你被冰冻的持续时间缩短 50%
+{variant:1}每秒回复 1% 生命
+{variant:2}每秒回复 3% 生命
+{variant:1}低血时每秒回复 5% 生命
+{variant:2}低血时每秒回复 3% 生命
 ]],[[
-The Unshattered Will
-Archon Kite Shield
-League: Harbinger
-Requires Level 68, 85 Str, 85 Int
-+12% to all Elemental Resistances
-Grants Summon Harbinger of Focus Skill
-+(60-80) to maximum Life
-+(10-15)% to all Elemental Resistances
-+(30-50) Mana gained when you Block
-+5% Chance to Block
-(50-70)% increased Damage with Channelling Skills
+不屈之志
+威能鸢盾
+联盟: 先驱者
+等级需求: 68, 85 Str, 85 Int
+获得 +12% 火焰、冰霜、闪电抗性
+获得【召唤不屈先驱者】
++(60-80) 最大生命
+获得 +(10-15)% 火焰、冰霜、闪电抗性
+格挡时回复 +(30-50) 魔力
++5% 攻击格挡率
+持续吟唱技能伤害提高 (50-70)%
 ]],[[
-Victario's Charity
-Laminated Kite Shield
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 50, 64 Str, 64 Int
-+8% to all Elemental Resistances
-+(50-70) to maximum Life
-+(20-30)% to Lightning Resistance
-+11% to Chaos Resistance
+维多里奥的贡献
+合板鸢盾
+版本: 2.6.0以前
+版本: 当前
+等级需求: 50, 64 Str, 64 Int
+获得 +8% 火焰、冰霜、闪电抗性
++(50-70) 最大生命
++(20-30)% 闪电抗性
++11% 混沌抗性
 {variant:1}10% increased Radius of Aura Skills
-{variant:2}20% increased Area of Effect of Aura Skills
-10% chance to grant a Power Charge to nearby Allies on Kill
-5% chance to grant a Frenzy Charge to nearby Allies on Hit
+{variant:2}光环技能范围提高 20%
+击败敌人时有 10% 几率给予周围友军 1 个暴击球
+击中时有 5% 几率给予周围友军 1 个狂怒球
 ]],
 -- Shield: Evasion/Energy Shield
 [[
-Glitterdisc
-Burnished Spiked Shield
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 27, 36 Dex, 36 Int
-Implicits: 2
-{variant:1}Reflects (10-23) Physical Damage to Melee Attackers
-{variant:2}4% chance to Dodge Attacks
-(120-140)% increased Evasion and Energy Shield
-+(30-50) to maximum Life
-+(20-30) to maximum Energy Shield
-10% increased Rarity of Items found
-25% chance to avoid Fire Damage when Hit
-{variant:2}You always Ignite while Burning
+七彩碟
+冷芒刺盾
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 27, 36 Dex, 36 Int
+固定基底词缀: 2
+{variant:1}反射 (10-23) 物理伤害给近战攻击者
+{variant:2}4% 几率躲避攻击击中
+该装备的闪避与能量护盾提高 (120-140)%
++(30-50) 最大生命
++(20-30) 最大能量护盾
+物品稀有度提高 10%
+被击中时有 25% 几率避免火焰伤害
+{variant:2}你正在燃烧时总能点燃敌人
 ]],[[
-Jaws of Agony
-Supreme Spiked Shield
-Variant: Pre 2.0.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 70, 85 Dex, 85 Int
-Implicits: 2
-{variant:1,2}Reflects (221-260) Physical Damage to Melee Attackers
-{variant:3}4% chance to Dodge Spell Damage
-(18-28)% increased Trap Damage
-(15-25)% increased Physical Damage
-+(60-80) to maximum Life
-−(14-18) Physical Damage taken from Attacks
-{variant:1}15% chance to gain a Power Charge on Throwing a Trap
-{variant:2,3}25% chance to gain a Power Charge on Throwing a Trap
-Grants level 20 Bear Trap Skill
+苦痛狂鲨
+霸者刺盾
+版本: 2.0.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 70, 85 Dex, 85 Int
+固定基底词缀: 2
+{variant:1,2}反射 (221-260) 物理伤害给近战攻击者
+{variant:3}4% 几率躲避法术击中
+陷阱伤害提高 (18-28)%
+物理伤害提高 (15-25)%
++(60-80) 最大生命
+承受攻击造成的物理伤害 (-18--14)
+{variant:1}投掷陷阱时，有 15% 的几率获得 1 个暴击球
+{variant:2,3}投掷陷阱时，有 25% 的几率获得 1 个暴击球
+获得 20 级的【捕熊陷阱】
 ]],[[
-Leper's Alms
-Mirrored Spiked Shield
-Source: Drops from unique{The Eradicator}
-Requires Level 66
-4% chance to Dodge Attacks 
-(130–150)% increased Evasion and Energy Shield 
-+(60–80) to maximum Life 
-40% increased Duration of Ailments on Enemies 
-+(3–4)% Chance to Block 
-Shared Suffering
+临死的施舍
+钢镜刺盾
+源: 传奇Boss【裂界守卫：寂灭】专属掉落
+等级需求: 66
+4% 几率躲避攻击击中
+该装备的闪避与能量护盾提高 (130-150)%
++(60-80) 最大生命
+造成的异常状态持续时间延长 40%
+该装备 +(3-4)% 攻击格挡率
+苦痛共享
 ]],[[
-Maligaro's Lens
-Compound Spiked Shield
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 45, 58 Dex, 58 Int
-Implicits: 2
-{variant:1}Reflects (51-70) Physical Damage to Melee Attackers
-{variant:2}2% chance to Dodge Spell Damage
-(10-15)% increased Attack Speed
-(10-20)% increased maximum Life
-−50% to all Elemental Resistances
-10% increased Area of Effect of Area Skills
-Nearby allies Recover 2% of your maximum Life when you Die
+马雷格罗的染血透镜
+复合刺盾
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 45, 58 Dex, 58 Int
+固定基底词缀: 2
+{variant:1}反射 (51-70) 物理伤害给近战攻击者
+{variant:2}2% 几率躲避法术击中
+攻击速度提高 (10-15)%
+最大生命提高 (10-20)%
+获得 -50% 火焰、冰霜、闪电抗性
+范围效果扩大 10%
+周围盟友在你死亡时，会回复等同你最大生命 2% 的生命
 ]],
 }

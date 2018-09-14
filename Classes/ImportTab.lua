@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Module: Import Tab
 -- Import/Export tab for the current build.
@@ -16,27 +16,27 @@ local ImportTabClass = common.NewClass("ImportTab", "ControlHost", "Control", fu
 
 	self.charImportMode = build.targetVersion == liveTargetVersion and "GETACCOUNTNAME" or "VERSIONWARNING"
 	self.charImportStatus = "Idle"
-	self.controls.sectionCharImport = common.New("SectionControl", {"TOPLEFT",self,"TOPLEFT"}, 10, 18, 600, 250, "Character Import")
+self.controls.sectionCharImport = common.New("SectionControl", {"TOPLEFT",self,"TOPLEFT"}, 10, 18, 600, 250, "【导入国服角色】")
 	self.controls.charImportVersionWarning = common.New("LabelControl", {"TOPLEFT",self.controls.sectionCharImport,"TOPLEFT"}, 6, 20, 0, 16, colorCodes.WARNING..[[
-Warning:^7 Characters may not import into this build correctly, 
-as the build's game version is different from the live game version.
-Some passives may be deallocated, and some gems may not be recognised.
-If possible, change the game version in the Configuration tab before importing.]])
+角色导入可能会出现问题，
+比如游戏版本和pob支持的版本不同。
+一些天赋点可能出现错位，一些新技能可能导入失败。
+最好导入前确定下pob是否支持该版本。]])
 	self.controls.charImportVersionWarning.shown = function()
 		return self.charImportMode == "VERSIONWARNING"
 	end
-	self.controls.charImportVersionWarningGo = common.New("ButtonControl", {"TOPLEFT",self.controls.charImportVersionWarning,"TOPLEFT"}, 0, 70, 80, 20, "Continue", function()
+self.controls.charImportVersionWarningGo = common.New("ButtonControl", {"TOPLEFT",self.controls.charImportVersionWarning,"TOPLEFT"}, 0, 70, 80, 20, "继续", function()
 		self.charImportMode = "GETACCOUNTNAME"
 	end)
 	self.controls.charImportStatusLabel = common.New("LabelControl", {"TOPLEFT",self.controls.sectionCharImport,"TOPLEFT"}, 6, 14, 200, 16, function()
-		return "^7Character import status: "..self.charImportStatus
+return "^7角色导入状态: "..self.charImportStatus
 	end)
 	self.controls.charImportStatusLabel.shown = function()
 		return self.charImportMode ~= "VERSIONWARNING"
 	end
 
 	-- Stage: input account name
-	self.controls.accountNameHeader = common.New("LabelControl", {"TOPLEFT",self.controls.sectionCharImport,"TOPLEFT"}, 6, 40, 200, 16, "^7To start importing a character, enter the character's account name:")
+self.controls.accountNameHeader = common.New("LabelControl", {"TOPLEFT",self.controls.sectionCharImport,"TOPLEFT"}, 6, 40, 200, 16, "^7请输入你的论坛名（登录官网论坛头像下的那个）:")
 	self.controls.accountNameHeader.shown = function()
 		return self.charImportMode == "GETACCOUNTNAME"
 	end
@@ -48,39 +48,39 @@ If possible, change the game version in the Configuration tab before importing.]
 			end)
 		end)
 	end
-	self.controls.accountNameGo = common.New("ButtonControl", {"LEFT",self.controls.accountName,"RIGHT"}, 8, 0, 60, 20, "Start", function()
+self.controls.accountNameGo = common.New("ButtonControl", {"LEFT",self.controls.accountName,"RIGHT"}, 8, 0, 60, 20, "开始", function()
 		self.controls.sessionInput.buf = ""
 		self:DownloadCharacterList()
 	end)
 	self.controls.accountNameGo.enabled = function()
 		return self.controls.accountName.buf:match("%S")
 	end
-	self.controls.accountNameUnicode = common.New("LabelControl", {"TOPLEFT",self.controls.accountName,"BOTTOMLEFT"}, 0, 16, 0, 14, "^7Note: if the account name contains non-ASCII characters then it must be URL encoded first.")
-	self.controls.accountNameURLEncoder = common.New("ButtonControl", {"TOPLEFT",self.controls.accountNameUnicode,"BOTTOMLEFT"}, 0, 4, 170, 18, "^x4040FFhttps://www.urlencoder.org/", function()
-		OpenURL("https://www.urlencoder.org/")
+self.controls.accountNameUnicode = common.New("LabelControl", {"TOPLEFT",self.controls.accountName,"BOTTOMLEFT"}, 0, 16, 0, 14, "^7注意！你需要先去官网公开你的角色.")
+self.controls.accountNameURLEncoder = common.New("ButtonControl", {"TOPLEFT",self.controls.accountNameUnicode,"BOTTOMLEFT"}, 0, 4, 270, 18, "^x4040FFhttps://poe.game.qq.com/login/tencent", function()
+OpenURL("https://poe.game.qq.com/login/tencent")
 	end)
 
 	-- Stage: input POESESSID
 	self.controls.sessionHeader = common.New("LabelControl", {"TOPLEFT",self.controls.sectionCharImport,"TOPLEFT"}, 6, 40, 200, 14)
 	self.controls.sessionHeader.label = function()
 		return [[
-^7The list of characters on ']]..self.controls.accountName.buf..[[' couldn't be retrieved. This may be because:
-1. The account name is wrong, or
-2. The account's privacy settings hide the characters tab (this is the default setting).
-If this is your account, you can either:
-1. Change your privacy settings to show you characters tab and then retry, or
-2. Enter a valid POESESSID below. 
-You can get this from your web browser's cookies while logged into the Path of Exile website.
+^7无法获取账户']]..self.controls.accountName.buf..[['的角色列表，可能的原因有 :
+1. 账户名输入错误
+2、没有公开自己的角色
+如果这是你的账户，你可以考虑
+到官网的个人中心 --隐私设定 -取消勾选“隐藏角色标签”
+或者在下面输入你的 POESESSID。
+你可以在登录官网后浏览器的cookies中拿到。
 		]]
 	end
 	self.controls.sessionHeader.shown = function()
 		return self.charImportMode == "GETSESSIONID"
 	end
-	self.controls.sessionRetry = common.New("ButtonControl", {"TOPLEFT",self.controls.sessionHeader,"TOPLEFT"}, 0, 108, 60, 20, "Retry", function()
+self.controls.sessionRetry = common.New("ButtonControl", {"TOPLEFT",self.controls.sessionHeader,"TOPLEFT"}, 0, 108, 60, 20, "重试", function()
 		self.controls.sessionInput.buf = ""
 		self:DownloadCharacterList()
 	end)
-	self.controls.sessionCancel = common.New("ButtonControl", {"LEFT",self.controls.sessionRetry,"RIGHT"}, 8, 0, 60, 20, "Cancel", function()
+self.controls.sessionCancel = common.New("ButtonControl", {"LEFT",self.controls.sessionRetry,"RIGHT"}, 8, 0, 60, 20, "取消", function()
 		self.charImportMode = "GETACCOUNTNAME"
 		self.charImportStatus = "Idle"
 	end)
@@ -93,11 +93,11 @@ You can get this from your web browser's cookies while logged into the Path of E
 	end
 
 	-- Stage: select character and import data
-	self.controls.charSelectHeader = common.New("LabelControl", {"TOPLEFT",self.controls.sectionCharImport,"TOPLEFT"}, 6, 40, 200, 16, "^7Choose character to import data from:")
+self.controls.charSelectHeader = common.New("LabelControl", {"TOPLEFT",self.controls.sectionCharImport,"TOPLEFT"}, 6, 40, 200, 16, "^7选择要导入的角色:")
 	self.controls.charSelectHeader.shown = function()
 		return self.charImportMode == "SELECTCHAR" or self.charImportMode == "IMPORTING"
 	end
-	self.controls.charSelectLeagueLabel = common.New("LabelControl", {"TOPLEFT",self.controls.charSelectHeader,"BOTTOMLEFT"}, 0, 6, 0, 14, "^7League:")
+self.controls.charSelectLeagueLabel = common.New("LabelControl", {"TOPLEFT",self.controls.charSelectHeader,"BOTTOMLEFT"}, 0, 6, 0, 14, "^7联盟:")
 	self.controls.charSelectLeague = common.New("DropDownControl", {"LEFT",self.controls.charSelectLeagueLabel,"RIGHT"}, 4, 0, 150, 18, nil, function(index, value)
 		self:BuildCharacterList(value.league)
 	end)
@@ -105,10 +105,10 @@ You can get this from your web browser's cookies while logged into the Path of E
 	self.controls.charSelect.enabled = function()
 		return self.charImportMode == "SELECTCHAR"
 	end
-	self.controls.charImportHeader = common.New("LabelControl", {"TOPLEFT",self.controls.charSelect,"BOTTOMLEFT"}, 0, 16, 200, 16, "Import:")
-	self.controls.charImportTree = common.New("ButtonControl", {"LEFT",self.controls.charImportHeader, "RIGHT"}, 8, 0, 170, 20, "Passive Tree and Jewels", function()
+self.controls.charImportHeader = common.New("LabelControl", {"TOPLEFT",self.controls.charSelect,"BOTTOMLEFT"}, 0, 16, 200, 16, "导入:")
+self.controls.charImportTree = common.New("ButtonControl", {"LEFT",self.controls.charImportHeader, "RIGHT"}, 8, 0, 170, 20, "天赋树和珠宝", function()
 		if self.build.spec:CountAllocNodes() > 0 then
-			main:OpenConfirmPopup("Character Import", "Importing the passive tree will overwrite your current tree.", "Import", function()
+main:OpenConfirmPopup("角色导入", "导入天赋树会覆盖你当前的天赋树.", "导入", function()
 				self:DownloadPassiveTree()
 			end)
 		else
@@ -118,42 +118,42 @@ You can get this from your web browser's cookies while logged into the Path of E
 	self.controls.charImportTree.enabled = function()
 		return self.charImportMode == "SELECTCHAR"
 	end
-	self.controls.charImportTreeClearJewels = common.New("CheckBoxControl", {"LEFT",self.controls.charImportTree,"RIGHT"}, 90, 0, 18, "Delete jewels:")
-	self.controls.charImportTreeClearJewels.tooltipText = "Delete all existing jewels when importing."
-	self.controls.charImportItems = common.New("ButtonControl", {"LEFT",self.controls.charImportTree, "LEFT"}, 0, 36, 110, 20, "Items and Skills", function()
+self.controls.charImportTreeClearJewels = common.New("CheckBoxControl", {"LEFT",self.controls.charImportTree,"RIGHT"}, 90, 0, 18, "删除珠宝:")
+self.controls.charImportTreeClearJewels.tooltipText = "导入时删除原有珠宝信息."
+self.controls.charImportItems = common.New("ButtonControl", {"LEFT",self.controls.charImportTree, "LEFT"}, 0, 36, 110, 20, "装备和技能", function()
 		self:DownloadItems()
 	end)
 	self.controls.charImportItems.enabled = function()
 		return self.charImportMode == "SELECTCHAR"
 	end
-	self.controls.charImportItemsClearSkills = common.New("CheckBoxControl", {"LEFT",self.controls.charImportItems,"RIGHT"}, 85, 0, 18, "Delete skills:")
-	self.controls.charImportItemsClearSkills.tooltipText = "Delete all existing skills when importing."
-	self.controls.charImportItemsClearItems = common.New("CheckBoxControl", {"LEFT",self.controls.charImportItems,"RIGHT"}, 220, 0, 18, "Delete equipment:")
-	self.controls.charImportItemsClearItems.tooltipText = "Delete all equipped items when importing."
-	self.controls.charBanditNote = common.New("LabelControl", {"TOPLEFT",self.controls.charImportHeader,"BOTTOMLEFT"}, 0, 50, 200, 14, "^7Tip: After you finish importing a character, make sure you update the bandit choices,\nas these cannot be imported.")
-	self.controls.charDone = common.New("ButtonControl", {"TOPLEFT",self.controls.charImportHeader,"BOTTOMLEFT"}, 0, 90, 60, 20, "Done", function()
+self.controls.charImportItemsClearSkills = common.New("CheckBoxControl", {"LEFT",self.controls.charImportItems,"RIGHT"}, 85, 0, 18, "删除技能:")
+self.controls.charImportItemsClearSkills.tooltipText = "导入时删除原有技能信息."
+self.controls.charImportItemsClearItems = common.New("CheckBoxControl", {"LEFT",self.controls.charImportItems,"RIGHT"}, 220, 0, 18, "删除装备:")
+self.controls.charImportItemsClearItems.tooltipText = "导入时删除原有所有装备"
+self.controls.charBanditNote = common.New("LabelControl", {"TOPLEFT",self.controls.charImportHeader,"BOTTOMLEFT"}, 0, 50, 200, 14, "^7提示: 导入完成后要手动配置好盗贼任务,\n因为盗贼任务是不能导入的.")
+self.controls.charDone = common.New("ButtonControl", {"TOPLEFT",self.controls.charImportHeader,"BOTTOMLEFT"}, 0, 90, 60, 20, "完成", function()
 		self.charImportMode = "GETACCOUNTNAME"
 		self.charImportStatus = "Idle"
 	end)
 
 	-- Build import/export
-	self.controls.sectionBuild = common.New("SectionControl", {"TOPLEFT",self.controls.sectionCharImport,"BOTTOMLEFT"}, 0, 18, 600, 200, "Build Sharing")
-	self.controls.generateCodeLabel = common.New("LabelControl", {"TOPLEFT",self.controls.sectionBuild,"TOPLEFT"}, 6, 14, 0, 16, "^7Generate a code to share this build with other Path of Building users:")
-	self.controls.generateCode = common.New("ButtonControl", {"LEFT",self.controls.generateCodeLabel,"RIGHT"}, 4, 0, 80, 20, "Generate", function()
+self.controls.sectionBuild = common.New("SectionControl", {"TOPLEFT",self.controls.sectionCharImport,"BOTTOMLEFT"}, 0, 18, 600, 200, "Build分享")
+self.controls.generateCodeLabel = common.New("LabelControl", {"TOPLEFT",self.controls.sectionBuild,"TOPLEFT"}, 6, 14, 0, 16, "^7生成代码给其他POB用户（仅限17173汉化版）:")
+self.controls.generateCode = common.New("ButtonControl", {"LEFT",self.controls.generateCodeLabel,"RIGHT"}, 4, 0, 80, 20, "生成", function()
 		self.controls.generateCodeOut:SetText(common.base64.encode(Deflate(self.build:SaveDB("code"))):gsub("+","-"):gsub("/","_"))
 	end)
-	self.controls.generateCodeOut = common.New("EditControl", {"TOPLEFT",self.controls.generateCodeLabel,"BOTTOMLEFT"}, 0, 8, 250, 20, "", "Code", "%Z")
+self.controls.generateCodeOut = common.New("EditControl", {"TOPLEFT",self.controls.generateCodeLabel,"BOTTOMLEFT"}, 0, 8, 250, 20, "", "代码", "%Z")
 	self.controls.generateCodeOut.enabled = function()
 		return #self.controls.generateCodeOut.buf > 0
 	end
-	self.controls.generateCodeCopy = common.New("ButtonControl", {"LEFT",self.controls.generateCodeOut,"RIGHT"}, 8, 0, 60, 20, "Copy", function()
+self.controls.generateCodeCopy = common.New("ButtonControl", {"LEFT",self.controls.generateCodeOut,"RIGHT"}, 8, 0, 60, 20, "复制", function()
 		Copy(self.controls.generateCodeOut.buf)
 		self.controls.generateCodeOut:SetText("")
 	end)
 	self.controls.generateCodeCopy.enabled = function()
 		return #self.controls.generateCodeOut.buf > 0
 	end
-	self.controls.generateCodePastebin = common.New("ButtonControl", {"LEFT",self.controls.generateCodeCopy,"RIGHT"}, 8, 0, 140, 20, "Share with Pastebin", function()
+self.controls.generateCodePastebin = common.New("ButtonControl", {"LEFT",self.controls.generateCodeCopy,"RIGHT"}, 8, 0, 140, 20, "生成Pastebin地址", function()
 		local id = LaunchSubScript([[
 			local code, proxyURL = ...
 			local curl = require("lcurl.safe")
@@ -180,9 +180,9 @@ You can get this from your web browser's cookies while logged into the Path of E
 		]], "", "", self.controls.generateCodeOut.buf, launch.proxyURL)
 		if id then
 			self.controls.generateCodeOut:SetText("")
-			self.controls.generateCodePastebin.label = "Creating paste..."
+self.controls.generateCodePastebin.label = "生成中..."
 			launch:RegisterSubScript(id, function(pasteLink, errMsg)
-				self.controls.generateCodePastebin.label = "Share with Pastebin"
+self.controls.generateCodePastebin.label = "生成Pastebin地址"
 				if errMsg then
 					main:OpenMessagePopup("Pastebin.com", "Error creating paste:\n"..errMsg)
 				else
@@ -194,8 +194,8 @@ You can get this from your web browser's cookies while logged into the Path of E
 	self.controls.generateCodePastebin.enabled = function()
 		return #self.controls.generateCodeOut.buf > 0 and not self.controls.generateCodeOut.buf:match("pastebin%.com")
 	end
-	self.controls.generateCodeNote = common.New("LabelControl", {"TOPLEFT",self.controls.generateCodeOut,"BOTTOMLEFT"}, 0, 4, 0, 14, "^7Note: this code can be very long; you can use 'Share with Pastebin' to shrink it.")
-	self.controls.importCodeHeader = common.New("LabelControl", {"TOPLEFT",self.controls.generateCodeNote,"BOTTOMLEFT"}, 0, 26, 0, 16, "^7To import a build, enter the code here:")
+self.controls.generateCodeNote = common.New("LabelControl", {"TOPLEFT",self.controls.generateCodeOut,"BOTTOMLEFT"}, 0, 4, 0, 14, "^7注意: 这个代码很长，你可以用【生成Pastebin地址】来简化.")
+self.controls.importCodeHeader = common.New("LabelControl", {"TOPLEFT",self.controls.generateCodeNote,"BOTTOMLEFT"}, 0, 26, 0, 16, "^7从代码中导入（仅限17173国服版代码）:")
 	self.controls.importCodeIn = common.New("EditControl", {"TOPLEFT",self.controls.importCodeHeader,"BOTTOMLEFT"}, 0, 4, 250, 20, "", nil, "^%w_%-=", nil, function(buf)
 		if #buf == 0 then
 			self.importCodeState = nil
@@ -217,18 +217,18 @@ You can get this from your web browser's cookies while logged into the Path of E
 	end)
 	self.controls.importCodeState = common.New("LabelControl", {"LEFT",self.controls.importCodeIn,"RIGHT"}, 4, 0, 0, 16)
 	self.controls.importCodeState.label = function()
-		return (self.importCodeState == "VALID" and colorCodes.POSITIVE.."Code is valid") or (self.importCodeState == "INVALID" and colorCodes.NEGATIVE.."Invalid code") or ""
+return (self.importCodeState == "VALID" and colorCodes.POSITIVE.."代码错误") or (self.importCodeState == "INVALID" and colorCodes.NEGATIVE.."代码错误") or ""
 	end
-	self.controls.importCodePastebin = common.New("ButtonControl", {"LEFT",self.controls.importCodeIn,"RIGHT"}, 90, 0, 160, 20, "Import from Pastebin...", function()
+self.controls.importCodePastebin = common.New("ButtonControl", {"LEFT",self.controls.importCodeIn,"RIGHT"}, 90, 0, 160, 20, "从Pastebin导入...", function()
 		self:OpenPastebinImportPopup()
 	end)
-	self.controls.importCodeMode = common.New("DropDownControl", {"TOPLEFT",self.controls.importCodeIn,"BOTTOMLEFT"}, 0, 4, 160, 20, { "Import to this build", "Import to a new build" })
+self.controls.importCodeMode = common.New("DropDownControl", {"TOPLEFT",self.controls.importCodeIn,"BOTTOMLEFT"}, 0, 4, 160, 20, { "导入到当前build", "导入到新build" })
 	self.controls.importCodeMode.enabled = function()
 		return self.importCodeState == "VALID" and self.build.dbFileName
 	end
-	self.controls.importCodeGo = common.New("ButtonControl", {"TOPLEFT",self.controls.importCodeMode,"BOTTOMLEFT"}, 0, 8, 60, 20, "Import", function()
+self.controls.importCodeGo = common.New("ButtonControl", {"TOPLEFT",self.controls.importCodeMode,"BOTTOMLEFT"}, 0, 8, 60, 20, "导入", function()
 		if self.controls.importCodeMode.selIndex == 1 then
-			main:OpenConfirmPopup("Build Import", colorCodes.WARNING.."Warning:^7 Importing to the current build will erase ALL existing data for this build.", "Import", function()
+main:OpenConfirmPopup("Build Import", colorCodes.WARNING.."警告:^7 导入到当前build会删除原有build信息", "导入", function()
 				self.build:Shutdown()
 				self.build:Init(self.build.dbFileName, self.build.buildName, self.importCodeXML)
 				self.build.viewMode = "TREE"
@@ -278,52 +278,52 @@ end
 
 function ImportTabClass:DownloadCharacterList()
 	self.charImportMode = "DOWNLOADCHARLIST"
-	self.charImportStatus = "Retrieving character list..."
+self.charImportStatus = "正在获取角色列表..."
 	local accountName = self.controls.accountName.buf
 	local sessionID = #self.controls.sessionInput.buf == 32 and self.controls.sessionInput.buf or (main.gameAccounts[accountName] and main.gameAccounts[accountName].sessionID)
-	launch:DownloadPage("https://www.pathofexile.com/character-window/get-characters?accountName="..accountName, function(page, errMsg)
+launch:DownloadPage("https://poe.game.qq.com/character-window/get-characters?accountName="..accountName, function(page, errMsg)
 		if errMsg == "Response code: 403" then
-			self.charImportStatus = colorCodes.NEGATIVE.."Account profile is private."
+self.charImportStatus = colorCodes.NEGATIVE.."角色没有公开."
 			self.charImportMode = "GETSESSIONID"
 			return
 		elseif errMsg == "Response code: 404" then
-			self.charImportStatus = colorCodes.NEGATIVE.."Account name is incorrect."
+self.charImportStatus = colorCodes.NEGATIVE.."论坛名错误."
 			self.charImportMode = "GETACCOUNTNAME"
 			return
 		elseif errMsg then
-			self.charImportStatus = colorCodes.NEGATIVE.."Error retrieving character list, try again ("..errMsg:gsub("\n"," ")..")"
+self.charImportStatus = colorCodes.NEGATIVE.."获取角色列表失败，请重试 ("..errMsg:gsub("\n"," ")..")"
 			self.charImportMode = "GETACCOUNTNAME"
 			return
 		end
 		local charList, errMsg = self:ProcessJSON(page)
 		if errMsg then
-			self.charImportStatus = colorCodes.NEGATIVE.."Error processing character list, try again later"
+self.charImportStatus = colorCodes.NEGATIVE.."获取角色列表失败，请稍后重试"
 			self.charImportMode = "GETACCOUNTNAME"
 			return
 		end
 		--ConPrintTable(charList)
 		if #charList == 0 then
-			self.charImportStatus = colorCodes.NEGATIVE.."The account has no characters to import."
+self.charImportStatus = colorCodes.NEGATIVE.."这个账户没有角色."
 			self.charImportMode = "GETACCOUNTNAME"
 			return
 		end
 		-- GGG's character API has an issue where for /get-characters the account name is not case-sensitive, but for /get-passive-skills and /get-items it is.
 		-- This workaround grabs the profile page and extracts the correct account name from one of the URLs.
-		launch:DownloadPage("https://www.pathofexile.com/account/view-profile/"..accountName, function(page, errMsg)
+launch:DownloadPage("https://poe.game.qq.com/account/view-profile/"..accountName, function(page, errMsg)
 			if errMsg then
-				self.charImportStatus = colorCodes.NEGATIVE.."Error retrieving character list, try again ("..errMsg:gsub("\n"," ")..")"
+self.charImportStatus = colorCodes.NEGATIVE.."获取角色列表失败，请重试 ("..errMsg:gsub("\n"," ")..")"
 				self.charImportMode = "GETACCOUNTNAME"
 				return
 			end
 			local realAccountName = page:match("/account/view%-profile/([^/]+)/characters"):gsub(".", function(c) if c:byte(1) > 127 then return string.format("%%%2X",c:byte(1)) else return c end end)
 			if not realAccountName then
-				self.charImportStatus = colorCodes.NEGATIVE.."Failed to retrieve character list."
+self.charImportStatus = colorCodes.NEGATIVE.."接收角色列表失败."
 				self.charImportMode = "GETSESSIONID"
 				return
 			end
 			self.controls.accountName:SetText(realAccountName)
 			accountName = realAccountName
-			self.charImportStatus = "Character list successfully retrieved."
+self.charImportStatus = "接收角色列表成功."
 			self.charImportMode = "SELECTCHAR"
 			self.lastAccountHash = common.sha1(accountName)
 			main.lastAccountName = accountName
@@ -357,7 +357,7 @@ function ImportTabClass:BuildCharacterList(league)
 	for i, char in ipairs(self.lastCharList) do
 		if not league or char.league == league then
 			t_insert(self.controls.charSelect.list, {
-				label = string.format("%s: Level %d %s in %s", char.name or "?", char.level or 0, char.class or "?", char.league or "?"),
+label = string.format("%s: 等级 %d %s 在 %s", char.name or "?", char.level or 0, char.class or "?", char.league or "?"),
 				char = char,
 			})
 		end
@@ -383,13 +383,13 @@ function ImportTabClass:DownloadPassiveTree()
 	local sessionID = #self.controls.sessionInput.buf == 32 and self.controls.sessionInput.buf or (main.gameAccounts[accountName] and main.gameAccounts[accountName].sessionID)
 	local charSelect = self.controls.charSelect
 	local charData = charSelect.list[charSelect.selIndex].char
-	launch:DownloadPage("https://www.pathofexile.com/character-window/get-passive-skills?accountName="..accountName.."&character="..charData.name, function(page, errMsg)
+launch:DownloadPage("https://poe.game.qq.com/character-window/get-passive-skills?accountName="..accountName.."&character="..charData.name, function(page, errMsg)
 		self.charImportMode = "SELECTCHAR"
 		if errMsg then
-			self.charImportStatus = colorCodes.NEGATIVE.."Error importing character data, try again ("..errMsg:gsub("\n"," ")..")"
+self.charImportStatus = colorCodes.NEGATIVE.."导入角色装备失败，请重试 ("..errMsg:gsub("\n"," ")..")"
 			return
 		elseif page == "false" then
-			self.charImportStatus = colorCodes.NEGATIVE.."Failed to retrieve character data, try again."
+self.charImportStatus = colorCodes.NEGATIVE.."导入角色装备失败，请重试."
 			return
 		end
 		self.lastCharacterHash = common.sha1(charData.name)
@@ -399,18 +399,18 @@ end
 
 function ImportTabClass:DownloadItems()
 	self.charImportMode = "IMPORTING"
-	self.charImportStatus = "Retrieving character items..."
+self.charImportStatus = "获取角色装备中..."
 	local accountName = self.controls.accountName.buf
 	local sessionID = #self.controls.sessionInput.buf == 32 and self.controls.sessionInput.buf or (main.gameAccounts[accountName] and main.gameAccounts[accountName].sessionID)
 	local charSelect = self.controls.charSelect
 	local charData = charSelect.list[charSelect.selIndex].char
-	launch:DownloadPage("https://www.pathofexile.com/character-window/get-items?accountName="..accountName.."&character="..charData.name, function(page, errMsg)
+launch:DownloadPage("https://poe.game.qq.com/character-window/get-items?accountName="..accountName.."&character="..charData.name, function(page, errMsg)
 		self.charImportMode = "SELECTCHAR"
 		if errMsg then
-			self.charImportStatus = colorCodes.NEGATIVE.."Error importing character data, try again ("..errMsg:gsub("\n"," ")..")"
+self.charImportStatus = colorCodes.NEGATIVE.."导入角色装备失败，请重试 ("..errMsg:gsub("\n"," ")..")"
 			return
 		elseif page == "false" then
-			self.charImportStatus = colorCodes.NEGATIVE.."Failed to retrieve character data, try again."
+self.charImportStatus = colorCodes.NEGATIVE.."导入角色装备失败，请重试."
 			return
 		end
 		self.lastCharacterHash = common.sha1(charData.name)
@@ -424,10 +424,10 @@ function ImportTabClass:ImportPassiveTreeAndJewels(json, charData)
 	--out:close()
 	local charPassiveData, errMsg = self:ProcessJSON(json)
 	if errMsg then
-		self.charImportStatus = colorCodes.NEGATIVE.."Error processing character data, try again later."
+self.charImportStatus = colorCodes.NEGATIVE.."处理角色物品和技能错误，请重试."
 		return
 	end
-	self.charImportStatus = colorCodes.POSITIVE.."Passive tree and jewels successfully imported."
+self.charImportStatus = colorCodes.POSITIVE.."天赋树和珠宝导入成功."
 	--ConPrintTable(charPassiveData)
 	if self.controls.charImportTreeClearJewels.state then
 		for _, slot in pairs(self.build.itemsTab.slots) do
@@ -458,7 +458,7 @@ function ImportTabClass:ImportItemsAndSkills(json)
 	--out:close()
 	local charItemData, errMsg = self:ProcessJSON(json)
 	if errMsg then
-		self.charImportStatus = colorCodes.NEGATIVE.."Error processing character data, try again later."
+self.charImportStatus = colorCodes.NEGATIVE.."处理角色物品和技能错误，请重试."
 		return
 	end
 	if self.controls.charImportItemsClearItems.state then
@@ -480,7 +480,7 @@ function ImportTabClass:ImportItemsAndSkills(json)
 		end
 		wipeTable(self.build.skillsTab.socketGroupList)
 	end
-	self.charImportStatus = colorCodes.POSITIVE.."Items and skills successfully imported."
+self.charImportStatus = colorCodes.POSITIVE.."物品和技能导入成功."
 	--ConPrintTable(charItemData)
 	for _, itemData in pairs(charItemData.items) do
 		self:ImportItem(itemData)
@@ -531,7 +531,7 @@ function ImportTabClass:ImportItemsAndSkills(json)
 	return charItemData.character -- For the wrapper
 end
 
-local rarityMap = { [0] = "NORMAL", "MAGIC", "RARE", "UNIQUE", [9] = "RELIC" }
+local rarityMap = { [0] = "普通", "魔法", "稀有", "传奇", [9] = "遗产" }
 local slotMap = { ["Weapon"] = "Weapon 1", ["Offhand"] = "Weapon 2", ["Weapon2"] = "Weapon 1 Swap", ["Offhand2"] = "Weapon 2 Swap", ["Helm"] = "Helmet", ["BodyArmour"] = "Body Armour", ["Gloves"] = "Gloves", ["Boots"] = "Boots", ["Amulet"] = "Amulet", ["Ring"] = "Ring 1", ["Ring2"] = "Ring 2", ["Belt"] = "Belt" }
 
 function ImportTabClass:ImportItem(itemData, sockets, slotName)
@@ -607,16 +607,16 @@ function ImportTabClass:ImportItem(itemData, sockets, slotName)
 	end
 	if itemData.properties then
 		for _, property in pairs(itemData.properties) do
-			if property.name == "Quality" then
+if property.name == "品质" then
 				item.quality = tonumber(property.values[1][1]:match("%d+"))
-			elseif property.name == "Radius" then
+elseif property.name == "范围" then
 				for index, data in pairs(self.build.data.jewelRadius) do
 					if property.values[1][1] == data.label then
 						item.jewelRadiusIndex = index
 						break
 					end
 				end
-			elseif property.name == "Limited to" then
+elseif property.name == "仅限" then
 				item.limit = tonumber(property.values[1][1])
 			elseif property.name == "Evasion Rating" then
 				if item.baseName == "Two-Toned Boots (Armour/Energy Shield)" then
@@ -726,9 +726,9 @@ function ImportTabClass:ImportSocketedItems(item, socketedItems, slotName)
 			gemInstance.nameSpec = socketedItem.typeLine:gsub(" Support","")
 			gemInstance.support = socketedItem.support
 			for _, property in pairs(socketedItem.properties) do
-				if property.name == "Level" then
+if property.name == "等级" then
 					gemInstance.level = tonumber(property.values[1][1]:match("%d+"))
-				elseif property.name == "Quality" then
+elseif property.name == "品质" then
 					gemInstance.quality = tonumber(property.values[1][1]:match("%d+"))
 				end
 			end
@@ -781,14 +781,14 @@ end
 
 function ImportTabClass:OpenPastebinImportPopup()
 	local controls = { }
-	controls.editLabel = common.New("LabelControl", nil, 0, 20, 0, 16, "Enter Pastebin.com link:")
+controls.editLabel = common.New("LabelControl", nil, 0, 20, 0, 16, "输入Pastebin.com连接（由17173国服版分享的）:")
 	controls.edit = common.New("EditControl", nil, 0, 40, 250, 18, "", nil, "^%w%p%s", nil, function(buf)
 		controls.msg.label = ""
 	end)
 	controls.msg = common.New("LabelControl", nil, 0, 58, 0, 16, "")
-	controls.import = common.New("ButtonControl", nil, -45, 80, 80, 20, "Import", function()
+controls.import = common.New("ButtonControl", nil, -45, 80, 80, 20, "导入", function()
 		controls.import.enabled = false
-		controls.msg.label = "Retrieving paste..."
+controls.msg.label = "获取中..."
 		controls.edit.buf = controls.edit.buf:gsub("^%s+", ""):gsub("%s+$", "") -- Quick Trim
 		launch:DownloadPage(controls.edit.buf:gsub("pastebin%.com/(%w+)%s*$","pastebin.com/raw/%1"), function(page, errMsg)
 			if errMsg then
@@ -803,10 +803,10 @@ function ImportTabClass:OpenPastebinImportPopup()
 	controls.import.enabled = function()
 		return #controls.edit.buf > 0 and controls.edit.buf:match("pastebin%.com/%w+")
 	end
-	controls.cancel = common.New("ButtonControl", nil, 45, 80, 80, 20, "Cancel", function()
+controls.cancel = common.New("ButtonControl", nil, 45, 80, 80, 20, "取消", function()
 		main:ClosePopup()
 	end)
-	main:OpenPopup(280, 110, "Import from Pastebin", controls, "import", "edit")
+main:OpenPopup(380, 110, "从Pastebin导入", controls, "导入", "编辑")
 end
 
 function ImportTabClass:ProcessJSON(json)

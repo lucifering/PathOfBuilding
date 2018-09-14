@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Class: Passive Spec
 -- Passive tree spec class.
@@ -92,7 +92,7 @@ function PassiveSpecClass:Save(xml)
 	}
 	t_insert(xml, {
 		elem = "URL", 
-		[1] = self:EncodeURL("https://www.pathofexile.com/passive-skill-tree/")
+[1] = self:EncodeURL("https://poe.game.qq.com/passive-skill-tree/")
 	})
 	local sockets = {
 		elem = "Sockets"

@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Class: Shared Item Set List
 -- Shared item set list control.
@@ -13,7 +13,7 @@ local s_format = string.format
 local SharedItemSetListClass = common.NewClass("SharedItemSetList", "ListControl", function(self, anchor, x, y, width, height, itemsTab)
 	self.ListControl(anchor, x, y, width, height, 16, true, main.sharedItemSetList)
 	self.itemsTab = itemsTab
-	self.defaultText = "^x7F7F7FThis is a list of item sets that will be shared\nbetween all of your builds.\nYou can add sets to this list by dragging them\nfrom the build's set list."
+self.defaultText = "^x7F7F7F这里是你的不同Build之间共享的套装装备\n 你可以从左边的Build套装中拖拽套装\n到这个共享列表."
 	self.controls.delete = common.New("ButtonControl", {"BOTTOMLEFT",self,"TOP"}, 2, -4, 60, 18, "Delete", function()
 		self:OnSelDelete(self.selIndex, self.selValue)
 	end)
@@ -30,25 +30,25 @@ end)
 
 function SharedItemSetListClass:RenameSet(sharedItemSet)
 	local controls = { }
-	controls.label = common.New("LabelControl", nil, 0, 20, 0, 16, "^7Enter name for this item set:")
+controls.label = common.New("LabelControl", nil, 0, 20, 0, 16, "^7输入这个套装的名字:")
 	controls.edit = common.New("EditControl", nil, 0, 40, 350, 20, sharedItemSet.title, nil, nil, 100, function(buf)
 		controls.save.enabled = buf:match("%S")
 	end)
-	controls.save = common.New("ButtonControl", nil, -45, 70, 80, 20, "Save", function()
+controls.save = common.New("ButtonControl", nil, -45, 70, 80, 20, "保存", function()
 		sharedItemSet.title = controls.edit.buf
 		self.itemsTab.modFlag = true
 		main:ClosePopup()
 	end)
 	controls.save.enabled = false
-	controls.cancel = common.New("ButtonControl", nil, 45, 70, 80, 20, "Cancel", function()
+controls.cancel = common.New("ButtonControl", nil, 45, 70, 80, 20, "取消", function()
 		main:ClosePopup()
 	end)
-	main:OpenPopup(370, 100, sharedItemSet.title and "Rename" or "Set Name", controls, "save", "edit")
+main:OpenPopup(370, 100, sharedItemSet.title and "重命名" or "套装名称", controls, "save", "edit")
 end
 
 function SharedItemSetListClass:GetRowValue(column, index, sharedItemSet)
 	if column == 1 then
-		return sharedItemSet.title or "Default"
+return sharedItemSet.title or "默认"
 	end
 end
 
@@ -100,7 +100,7 @@ function SharedItemSetListClass:ReceiveDrag(type, value, source)
 end
 
 function SharedItemSetListClass:OnSelDelete(index, sharedItemSet)
-	main:OpenConfirmPopup("Delete Item Set", "Are you sure you want to delete '"..(sharedItemSet.title or "Default").."' from the shared item set list?", "Delete", function()
+main:OpenConfirmPopup("删除套装", "你确定要从共享列表中移除 '"..(sharedItemSet.title or "Default").."' 这个套装吗 ?", "移除", function()
 		t_remove(self.list, index)
 		self.selIndex = nil
 		self.selValue = nil

@@ -7,9 +7,9 @@
 local skills, mod, flag, skill = ...
 
 skills["AnimateWeapon"] = {
-	name = "Animate Weapon",
+	name = "幻化武器",
 	color = 2,
-	description = "Animates a melee weapon to fight by your side. You cannot animate unidentified weapons.",
+	description = "操控一把近战武器来为你而战. 操控的数量并无上限, 但是无法操控未鉴定的武器.",
 	skillTypes = { [36] = true, [12] = true, [9] = true, [21] = true, [2] = true, [18] = true, [49] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [28] = true, [54] = true, [68] = true, [56] = true, },
 	minionHasItemSet = true,
@@ -86,9 +86,9 @@ skills["AnimateWeapon"] = {
 	},
 }
 skills["ArcticArmour"] = {
-	name = "Arctic Armour",
+	name = "极地装甲",
 	color = 2,
-	description = "Conjures an icy barrier that chills enemies when they hit you. You drop chilled ground while moving, and take less Fire and Physical damage while stationary.",
+	description = "召唤冰霜之盾, 作用期间对击中你的敌人造成冰缓. 移动时造成冰冻地面, 并且静止不移动时受到较少火焰及物理伤害. ",
 	skillTypes = { [2] = true, [5] = true, [18] = true, [12] = true, [15] = true, [27] = true, [34] = true, [16] = true, [20] = true, [75] = true, },
 	baseFlags = {
 		spell = true,
@@ -153,13 +153,13 @@ skills["ArcticArmour"] = {
 	},
 }
 skills["Barrage"] = {
-	name = "Barrage",
+	name = "弹幕",
 	color = 2,
-	description = "After a short preparation time, you attack repeatedly with a ranged weapon. These attacks have a small randomised spread. Only works with Bows and Wands.",
+	description = "在短暂的准备之后, 你使用远程武器进行重复的攻击. 这个攻击会稍微随机散射. 限定弓与法杖.",
 	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [68] = true, [22] = true, [17] = true, [19] = true, },
 	weaponTypes = {
-		["Wand"] = true,
 		["Bow"] = true,
+		["Wand"] = true,
 	},
 	parts = {
 		{
@@ -237,9 +237,9 @@ skills["Barrage"] = {
 	},
 }
 skills["BearTrap"] = {
-	name = "Bear Trap",
+	name = "捕熊陷阱",
 	color = 2,
-	description = "Throws a trap that damages and immobilises a single enemy for a duration based on how much damage was dealt. After the immobilise expires, a debuff remains on the enemy for a duration, lowering their movement speed by an amount which lessens over time. The affected enemy will take increased damage from traps and mines until the debuff expires. Modifiers to spell damage do not affect this skill's damage.",
+	description = "投掷一个陷阱，对单个敌人造成伤害并使其定身，定身时长由造成的伤害决定。定身结束后，敌人将承受一个移动速度降低的减益效果。被该减益影响的敌人承受陷阱和地雷的伤害会提高。法术伤害加成不会影响该技能。",
 	skillTypes = { [2] = true, [12] = true, [19] = true, [37] = true, [10] = true, },
 	baseFlags = {
 		cast = true,
@@ -316,15 +316,15 @@ skills["BearTrap"] = {
 	},
 }
 skills["ChargedAttack"] = {
-	name = "Blade Flurry",
+	name = "刀刃乱舞",
 	color = 2,
-	description = "Repeatedly strike at enemies in a circle in front of you while channelling, dealing damage to and around the struck enemy. The damage is continually boosted while channelling. You unleash an additional strike for each stage reached once the channelling ends. Requires a Dagger, Claw or One-Handed Sword.",
+	description = "持续吟唱时对前方圆周范围内的敌人造成多次伤害. 伤害会随吟唱持续增加. 吟唱结束时会根据吟唱的层数额外施放一次刀刃. 限定单手剑, 匕首或爪. ",
 	skillTypes = { [1] = true, [11] = true, [58] = true, [24] = true, },
 	weaponTypes = {
-		["Thrusting One Handed Sword"] = true,
 		["One Handed Sword"] = true,
-		["Dagger"] = true,
 		["Claw"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["Dagger"] = true,
 	},
 	parts = {
 		{
@@ -406,9 +406,9 @@ skills["ChargedAttack"] = {
 	},
 }
 skills["BladeVortex"] = {
-	name = "Blade Vortex",
+	name = "飞刃风暴",
 	color = 2,
-	description = "This spell creates ethereal blades which orbit in an area around you, dealing damage every 0.6 seconds to all enemies in their radius. As more blades are added, the damage becomes greater and more frequent.",
+	description = "在你的四周召唤出虚空的刀刃, 以你为中心不断飞舞旋转, 刀刃每隔0.6秒对周围敌人造成一次伤害. 随着刀刃的增加, 伤害也会增加.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [12] = true, [18] = true, [26] = true, [36] = true, [27] = true, },
 	parts = {
 		{
@@ -500,9 +500,9 @@ skills["BladeVortex"] = {
 	},
 }
 skills["VaalBladeVortex"] = {
-	name = "Vaal Blade Vortex",
+	name = "瓦尔.飞刃风暴",
 	color = 2,
-	description = "Creates an independently-moving vortex of ethereal blades which lasts for a duration. The vortex moves toward nearby enemies, repeatedly damaging enemies that it passes through.",
+	description = "创造独立飞行的飞刃或虚空的武器，并持续一段时间。飞刃以你为中心不断飞舞旋转, 将周围的敌人削成肉泥. ",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [12] = true, [18] = true, [27] = true, [43] = true, },
 	baseFlags = {
 		spell = true,
@@ -576,9 +576,9 @@ skills["VaalBladeVortex"] = {
 	},
 }
 skills["Bladefall"] = {
-	name = "Bladefall",
+	name = "虚空刀雨",
 	color = 2,
-	description = "Ethereal weapons rain from the sky, dealing damage to enemies in a sequence of volleys, each wider but less damaging than the last. Enemies can be hit multiple times where these overlap.",
+	description = "召唤出从天空降下的虚空武器,随着刀雨的远离, 技能的涵盖范围也跟着提升. 敌人可被击中复数次. ",
 	skillTypes = { [2] = true, [11] = true, [17] = true, [19] = true, [18] = true, [10] = true, [36] = true, [26] = true, [67] = true, },
 	baseFlags = {
 		spell = true,
@@ -647,9 +647,9 @@ skills["Bladefall"] = {
 	},
 }
 skills["BlastRain"] = {
-	name = "Blast Rain",
+	name = "爆裂箭雨",
 	color = 2,
-	description = "Fires an arrow up in the air, which splits and rains down in a series of explosions over an area. The explosions will always overlap on the targeted area.",
+	description = "朝着天空发出大量的火焰箭矢, 并且在落地时产生爆炸. 所有的爆炸皆会在指定的地点重迭. ",
 	skillTypes = { [1] = true, [11] = true, [14] = true, [22] = true, [17] = true, [19] = true, [33] = true, [48] = true, [69] = true, [57] = true, },
 	weaponTypes = {
 		["Bow"] = true,
@@ -732,9 +732,9 @@ skills["BlastRain"] = {
 	},
 }
 skills["BlinkArrow"] = {
-	name = "Blink Arrow",
+	name = "闪现射击",
 	color = 2,
-	description = "Fires an arrow at the target destination. When the arrow lands, you are teleported to it and a clone is summoned at your old location. The clone is a minion that uses your bow and quiver.",
+	description = "对目标地点射出一支箭, 当箭到达时将你传送至目标地, 并在原地留下一个你的复制体. 这个复制体使用跟你一样的弓与箭袋.",
 	skillTypes = { [14] = true, [1] = true, [9] = true, [48] = true, [21] = true, [12] = true, [22] = true, [17] = true, [19] = true, [38] = true, },
 	minionSkillTypes = { [1] = true, [3] = true, [48] = true, },
 	weaponTypes = {
@@ -814,9 +814,9 @@ skills["BlinkArrow"] = {
 	},
 }
 skills["BloodRage"] = {
-	name = "Blood Rage",
+	name = "鲜血狂怒",
 	color = 2,
-	description = "Adds a buff that deals Physical Damage over time, while increasing Attack Speed and Life Leech. Killing an enemy while this buff is active refreshes the buff duration, and can grant a Frenzy Charge.",
+	description = "使用后将会给予角色时间内一个物理攻击增益. 此增益会对角色增加攻击速度以及给予额外的生命偷取. 击败任意敌人将会重置此增益的时间, 且获得一个狂怒球.",
 	skillTypes = { [2] = true, [5] = true, [12] = true, [18] = true, [36] = true, [75] = true, },
 	baseFlags = {
 		spell = true,
@@ -885,9 +885,9 @@ skills["BloodRage"] = {
 	},
 }
 skills["BurningArrow"] = {
-	name = "Burning Arrow",
+	name = "燃烧箭矢",
 	color = 2,
-	description = "Fires an arrow that deals fire damage to its target and has an increased chance of igniting it.",
+	description = "射出一发带有火焰能量的箭矢, 对敌人造成额外火焰伤害并且有较高的几率造成点燃.",
 	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [68] = true, [22] = true, [17] = true, [19] = true, [33] = true, [53] = true, [55] = true, },
 	weaponTypes = {
 		["Bow"] = true,
@@ -957,9 +957,9 @@ skills["BurningArrow"] = {
 	},
 }
 skills["VaalBurningArrow"] = {
-	name = "Vaal Burning Arrow",
+	name = "瓦尔.燃烧箭矢",
 	color = 2,
-	description = "Fires an arrow that explodes, dealing fire damage to its target and other nearby enemies, with an increased chance of igniting them.",
+	description = "射出一发带有火焰能量的箭矢, 接触到敌人时会爆炸, 并对其与周围的敌人造成额外火焰伤害, 同时有较高的几率造成点燃.",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [68] = true, [22] = true, [17] = true, [19] = true, [11] = true, [43] = true, [33] = true, [55] = true, },
 	weaponTypes = {
 		["Bow"] = true,
@@ -1033,9 +1033,9 @@ skills["VaalBurningArrow"] = {
 	},
 }
 skills["PoisonArrow"] = {
-	name = "Caustic Arrow",
+	name = "腐蚀箭矢",
 	color = 2,
-	description = "Fires an arrow which deals chaos damage in an area on impact, and spreads caustic ground. Enemies standing on the caustic ground take chaos damage over time.",
+	description = "射出一发带有腐蚀效果的箭矢, 对击中的敌人造成额外混沌伤害, 并且产生腐蚀地面。站在地面上的敌人将会持续的受到混沌伤害.",
 	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [68] = true, [11] = true, [12] = true, [17] = true, [19] = true, [22] = true, [40] = true, [50] = true, },
 	weaponTypes = {
 		["Bow"] = true,
@@ -1113,22 +1113,22 @@ skills["PoisonArrow"] = {
 	},
 }
 skills["ChargedDash"] = {
-	name = "Charged Dash",
+	name = "蓄力疾风闪",
 	color = 2,
-	description = "Channel to project an illusion which you steer. You gain stages while it moves, until it stops at a maximum total distance. Waves of area damage frequently pulse along its path, based on your attack speed. Stop channelling to teleport to the illusion, dealing a final wave of damage.",
+	description = "向你朝向的方向吟唱并发射一个幻象。幻象移动时你获得层数，直至其移动到最大距离为止。幻象行进的路径上会根据你的攻击速度来频繁爆发范围伤害。停止吟唱后可将自己传送至幻象处，并以一波伤害作为技能收尾。",
 	skillTypes = { [38] = true, [11] = true, [10] = true, [58] = true, [1] = true, [24] = true, [35] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -1200,9 +1200,9 @@ skills["ChargedDash"] = {
 	},
 }
 skills["CorpseEruption"] = {
-	name = "Cremation",
+	name = "火葬",
 	color = 2,
-	description = "A targeted corpse explodes, dealing area damage and turning into a volcanic geyser, which will repeatedly unleash projectiles sequentially over the surrounding area for a duration. The explosion of the corpse is not affected by modifiers to spell damage, and cannot be reflected.",
+	description = "使目标灵柩爆炸，造成范围伤害并转化为一座喷射的火山。它将在一段时间内持续向周围放出投射物。灵柩的爆炸无法被法术伤害词缀加成，并且无法被重复施法。",
 	skillTypes = { [2] = true, [11] = true, [33] = true, [12] = true, [3] = true, [26] = true, [17] = true, [18] = true, [19] = true, [36] = true, [10] = true, [67] = true, [3] = true, },
 	parts = {
 		{
@@ -1288,23 +1288,23 @@ skills["CorpseEruption"] = {
 	},
 }
 skills["Cyclone"] = {
-	name = "Cyclone",
+	name = "旋风斩",
 	color = 2,
-	description = "Damage enemies around you, then perform a spinning series of attacks as you travel to a target location. Cannot be supported by Ruthless or Multistrike.",
+	description = "对周围敌人造成伤害, 接而进行一连串的旋转攻击, 边向目标地点前进边攻击路径上的敌人, 无法被多重打击和无情辅助.",
 	skillTypes = { [1] = true, [11] = true, [24] = true, [38] = true, [65] = true, },
 	weaponTypes = {
-		["None"] = true,
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["None"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -1375,23 +1375,23 @@ skills["Cyclone"] = {
 	},
 }
 skills["VaalCyclone"] = {
-	name = "Vaal Cyclone",
+	name = "瓦尔.旋风斩",
 	color = 2,
-	description = "Spin and attack in place, damaging nearby enemies and pulling others towards you. Cannot be supported by Ruthless.",
+	description = "以自体为中心在原地进行旋转攻击, 周围的敌人将会被拉向你并受到伤害. 无法被无情辅助.",
 	skillTypes = { [1] = true, [11] = true, [24] = true, [12] = true, [43] = true, [65] = true, },
 	weaponTypes = {
-		["None"] = true,
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["None"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -1463,9 +1463,9 @@ skills["VaalCyclone"] = {
 	},
 }
 skills["Desecrate"] = {
-	name = "Desecrate",
+	name = "亵渎",
 	color = 2,
-	description = "Desecrates the ground, summoning corpses and dealing chaos damage to all enemies in the area. The corpses will be chosen from the monsters in the current area and any Spectres that have existed in this instance.",
+	description = "腐化一块地面, 召唤灵柩并对所有站在该地面上的敌人造成混沌伤害.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [36] = true, [40] = true, [26] = true, [50] = true, [67] = true, },
 	baseFlags = {
 		spell = true,
@@ -1535,9 +1535,9 @@ skills["Desecrate"] = {
 	},
 }
 skills["DetonateDead"] = {
-	name = "Detonate Dead",
+	name = "爆灵术",
 	color = 2,
-	description = "Targets a corpse, and deals spell damage to enemies around the corpse, as well as causing the corpse to explode, dealing fire damage. The explosion is not affected by modifiers to spell damage and cannot be reflected.",
+	description = "对一个灵柩施法，使其周围目标都受到一个法术伤害。同时使该灵柩爆炸， 对附近的敌人造成火焰伤害。爆炸造成的伤害无法被法术伤害词缀加成，并且无法被反射。",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [33] = true, [67] = true, },
 	parts = {
 		{
@@ -1617,9 +1617,9 @@ skills["DetonateDead"] = {
 	},
 }
 skills["VaalDetonateDead"] = {
-	name = "Vaal Detonate Dead",
+	name = "瓦尔.爆灵术",
 	color = 2,
-	description = "Targets a corpse, and deals spell damage to enemies around the corpse, as well as causing the corpse to explode, dealing fire damage. The explosion is not affected by modifiers to spell damage and cannot be reflected. This will continue to target other corpses in the area, with an increasing delay between each one, until it runs out of corpses or has destroyed 22 corpses.",
+	description = "对一个灵柩施法，使其周围目标都受到一个法术伤害。同时使该灵柩爆炸， 对附近的敌人造成火焰伤害。爆炸造成的伤害无法被法术伤害词缀加成，并且无法被反射。爆炸会继续指定区域内的其他灵柩，每个灵柩之间的爆炸间隔持续延长，直到灵柩消耗殆尽或有 22 个灵柩被引爆。",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [43] = true, [33] = true, },
 	parts = {
 		{
@@ -1697,22 +1697,22 @@ skills["VaalDetonateDead"] = {
 	},
 }
 skills["DoubleStrike"] = {
-	name = "Double Strike",
+	name = "双重打击",
 	color = 2,
-	description = "Performs two fast attacks on target enemy with your main hand melee weapon.",
+	description = "使用你的主手近战武器对着目标进行两次快速的攻击.",
 	skillTypes = { [1] = true, [7] = true, [25] = true, [28] = true, [24] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -1779,22 +1779,22 @@ skills["DoubleStrike"] = {
 	},
 }
 skills["VaalDoubleStrike"] = {
-	name = "Vaal Double Strike",
+	name = "瓦尔.双重打击",
 	color = 2,
-	description = "Performs two fast attacks on target enemy with your main hand melee weapon, each of which summons a double of you for a duration to continuously attack monsters in this fashion.",
+	description = "使用你的主手近战武器对着目标进行两次快速的攻击, 并同时召唤你的影分身持续使用双重打击攻击敌人一段时间.  ",
 	skillTypes = { [1] = true, [7] = true, [25] = true, [24] = true, [12] = true, [43] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -1866,19 +1866,19 @@ skills["VaalDoubleStrike"] = {
 	},
 }
 skills["DualStrike"] = {
-	name = "Dual Strike",
+	name = "双持打击",
 	color = 2,
-	description = "Attacks with both weapons, dealing the damage of both in one strike. Dual wield only. Does not work with wands.",
+	description = "使用两把武器对目标同时进行攻击并造成伤害. 限定双持（不包含法杖）.",
 	skillTypes = { [1] = true, [4] = true, [25] = true, [28] = true, [24] = true, [53] = true, },
 	weaponTypes = {
-		["Two Handed Axe"] = true,
-		["Claw"] = true,
-		["One Handed Mace"] = true,
+		["One Handed Sword"] = true,
 		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Claw"] = true,
 		["Thrusting One Handed Sword"] = true,
 		["One Handed Axe"] = true,
-		["Dagger"] = true,
-		["One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -1942,9 +1942,9 @@ skills["DualStrike"] = {
 	},
 }
 skills["ElementalHit"] = {
-	name = "Elemental Hit",
+	name = "元素打击",
 	color = 2,
-	description = "Each attack with this skill will choose an element at random, and will only be able to deal damage of that element. If the attack hits an enemy, it will also deal damage in an area around them, with the radius being larger if that enemy is suffering from an ailment of the chosen element. It will avoid choosing the same element twice in a row.",
+	description = "该技能的每次攻击都会随机选择一种元素，并只能造成该元素的伤害。若击中敌人，还会在他们周围造成伤害，若该敌人正承受所选元素的异常状态，则伤害范围扩大。不能连续选择同一种元素。",
 	skillTypes = { [1] = true, [3] = true, [68] = true, [22] = true, [17] = true, [19] = true, [25] = true, [28] = true, [24] = true, [33] = true, [34] = true, [35] = true, [48] = true, [69] = true, [11] = true, },
 	parts = {
 		{
@@ -2046,9 +2046,9 @@ skills["ElementalHit"] = {
 	},
 }
 skills["EtherealKnives"] = {
-	name = "Ethereal Knives",
+	name = "虚空匕首",
 	color = 2,
-	description = "Fires an arc of knives in front of the caster which deals physical damage.",
+	description = "向前依弧形射出数支匕首, 对敌人造成物理伤害.",
 	skillTypes = { [2] = true, [10] = true, [3] = true, [68] = true, [18] = true, [17] = true, [19] = true, [26] = true, [36] = true, },
 	baseFlags = {
 		spell = true,
@@ -2114,9 +2114,9 @@ skills["EtherealKnives"] = {
 	},
 }
 skills["ExplosiveArrow"] = {
-	name = "Explosive Arrow",
+	name = "爆炸箭矢",
 	color = 2,
-	description = "Fires an arrow which acts as a short duration fuse. Applying additional arrows to an enemy extends the duration. When the target dies or the fuses expire, the arrows explode, dealing fire AoE damage to nearby enemies. The AoE radius is proportional to the number of arrows upon death.",
+	description = "射出一发带着引线充满爆炸能量的箭矢. 当被命中的目标死亡或是引线烧完, 该箭矢将会爆炸并对周围的敌人造成火焰伤害. 再次被爆炸箭矢命中会延长爆炸的时间. 爆炸的范围大小将视目标被击中的箭数所决定.",
 	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [68] = true, [10] = true, [11] = true, [12] = true, [22] = true, [17] = true, [19] = true, [33] = true, },
 	weaponTypes = {
 		["Bow"] = true,
@@ -2214,9 +2214,9 @@ skills["ExplosiveArrow"] = {
 	},
 }
 skills["ShrapnelTrap"] = {
-	name = "Explosive Trap",
+	name = "爆炸陷阱",
 	color = 2,
-	description = "Throws a trap that creates a large explosion when triggered, dealing spell damage in an area. A number of smaller explosions occur around this area in quick succession after the first.",
+	description = "投掷陷阱，触发后造成大面积的爆炸，在区域内造成法术伤害。第一次爆炸后该区域内会连续快速产生多次小爆炸。",
 	skillTypes = { [2] = true, [10] = true, [19] = true, [11] = true, [37] = true, [33] = true, [52] = true, },
 	baseFlags = {
 		spell = true,
@@ -2288,9 +2288,9 @@ skills["ShrapnelTrap"] = {
 	},
 }
 skills["FireTrap"] = {
-	name = "Fire Trap",
+	name = "火焰陷阱",
 	color = 2,
-	description = "Throws a trap that explodes when triggered, dealing fire damage to surrounding enemies and leaving an area of burning ground that damages enemies who walk through it.",
+	description = "投掷一个陷阱, 该陷阱被触发时会爆炸并对周围的敌人造成火焰伤害, 且该区域的地面会持续燃烧, 踩在上面的敌人会持续受到伤害.",
 	skillTypes = { [2] = true, [12] = true, [10] = true, [19] = true, [11] = true, [29] = true, [37] = true, [40] = true, [33] = true, },
 	baseFlags = {
 		spell = true,
@@ -2369,9 +2369,9 @@ skills["FireTrap"] = {
 	},
 }
 skills["FlamethrowerTrap"] = {
-	name = "Flamethrower Trap",
+	name = "掷火陷阱",
 	color = 2,
-	description = "Throws a trap that releases a number of flames in different directions around it when triggered. The flames last for a duration, rotating around the trap and repeatedly dealing damage. Burning enemies are dealt more damage.",
+	description = "投掷陷阱，触发后向不同方向喷射烈焰。烈焰持续一段时间，会在陷阱周围旋转，并重复造成伤害。对燃烧的敌人造成更多伤害。",
 	skillTypes = { [2] = true, [12] = true, [10] = true, [19] = true, [11] = true, [37] = true, [33] = true, [52] = true, },
 	baseFlags = {
 		spell = true,
@@ -2447,22 +2447,22 @@ skills["FlamethrowerTrap"] = {
 	},
 }
 skills["FlickerStrike"] = {
-	name = "Flicker Strike",
+	name = "闪现打击",
 	color = 2,
-	description = "Teleports the character to a nearby monster and attacks it with a melee weapon. If no specific monster is chosen, one is picked at random. The cooldown can be bypassed by expending a Frenzy Charge.",
+	description = "传送至目标怪物身边并用近战武器对其造成伤害. 若是未指定目标, 则系统会为其随机指定一只怪物. 释放一颗狂怒球能重置其技能冷却.",
 	skillTypes = { [1] = true, [24] = true, [25] = true, [28] = true, [38] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -2529,9 +2529,9 @@ skills["FlickerStrike"] = {
 	},
 }
 skills["FreezeMine"] = {
-	name = "Freeze Mine",
+	name = "冰冻地雷",
 	color = 2,
-	description = "Lays a remote mine that you can detonate to freeze all enemies in the area.",
+	description = "放置一个遥控地雷, 你可以引爆它以冰冻该区域内的所有敌人.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [41] = true, [34] = true, },
 	baseFlags = {
 		spell = true,
@@ -2603,9 +2603,9 @@ skills["FreezeMine"] = {
 	},
 }
 skills["Frenzy"] = {
-	name = "Frenzy",
+	name = "狂怒",
 	color = 2,
-	description = "Performs an attack that gives the character a frenzy charge if it hits. Frenzy charges increase your attack speed.",
+	description = "进行一次攻击, 若是命中敌人则累积一颗狂怒球. 带着狂怒球的状态下将会增加你的攻击速度.",
 	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [68] = true, [22] = true, [17] = true, [19] = true, [25] = true, [28] = true, [24] = true, },
 	baseFlags = {
 		attack = true,
@@ -2673,22 +2673,22 @@ skills["Frenzy"] = {
 	},
 }
 skills["FrostBlades"] = {
-	name = "Frost Blades",
+	name = "冰霜之刃",
 	color = 2,
-	description = "Attack an enemy with increased range, releasing icy blades from the targeted enemy which fly at other enemies. Requires a Melee Weapon.",
+	description = "增加攻击范围, 当被击飞的敌人与其他敌人碰撞时释放冰霜之刃. 限定近战武器. ",
 	skillTypes = { [1] = true, [3] = true, [25] = true, [28] = true, [24] = true, [34] = true, [48] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	parts = {
 		{
@@ -2769,9 +2769,9 @@ skills["FrostBlades"] = {
 	},
 }
 skills["Grace"] = {
-	name = "Grace",
+	name = "优雅",
 	color = 2,
-	description = "Casts an aura that grants evasion to you and your allies.",
+	description = "施放一个光环, 使你与受光环影响友军获得额外的闪避.",
 	skillTypes = { [2] = true, [11] = true, [5] = true, [15] = true, [27] = true, [16] = true, [18] = true, [44] = true, [75] = true, },
 	baseFlags = {
 		spell = true,
@@ -2837,9 +2837,9 @@ skills["Grace"] = {
 	},
 }
 skills["VaalGrace"] = {
-	name = "Vaal Grace",
+	name = "瓦尔.优雅",
 	color = 2,
-	description = "Casts a temporary aura that grants you and your allies the ability to dodge attacks and spells.",
+	description = "施放一个短暂的光环, 使你与受光环影响友军获得躲避法术与攻击的能力.",
 	skillTypes = { [2] = true, [5] = true, [11] = true, [18] = true, [27] = true, [12] = true, [43] = true, [44] = true, },
 	baseFlags = {
 		spell = true,
@@ -2908,9 +2908,9 @@ skills["VaalGrace"] = {
 	},
 }
 skills["Haste"] = {
-	name = "Haste",
+	name = "迅捷",
 	color = 2,
-	description = "Casts an aura that increases the movement speed, attack speed and cast speed of you and your allies.",
+	description = "施放一个光环, 使你与受光环影响友军获得额外的移动速度, 攻击速度以及施法速度.",
 	skillTypes = { [2] = true, [11] = true, [5] = true, [15] = true, [27] = true, [16] = true, [18] = true, [44] = true, [75] = true, },
 	baseFlags = {
 		spell = true,
@@ -2978,9 +2978,9 @@ skills["Haste"] = {
 	},
 }
 skills["VaalHaste"] = {
-	name = "Vaal Haste",
+	name = "瓦尔.迅捷",
 	color = 2,
-	description = "Casts a temporary aura that increases the movement speed, attack speed and cast speed of you and your allies.",
+	description = "施放一个短暂的光环, 使你与受光环影响友军获得额外移动速度, 攻击速度以及施法速度.",
 	skillTypes = { [2] = true, [5] = true, [11] = true, [18] = true, [27] = true, [12] = true, [43] = true, [44] = true, },
 	baseFlags = {
 		spell = true,
@@ -3050,9 +3050,9 @@ skills["VaalHaste"] = {
 	},
 }
 skills["Hatred"] = {
-	name = "Hatred",
+	name = "憎恨",
 	color = 2,
-	description = "Casts an aura that grants extra cold damage based on physical damage to you and your allies.",
+	description = "施放一个光环, 使你与受光环影响友军获得额外冰霜伤害.",
 	skillTypes = { [2] = true, [11] = true, [5] = true, [15] = true, [27] = true, [16] = true, [18] = true, [44] = true, [34] = true, [75] = true, },
 	baseFlags = {
 		spell = true,
@@ -3118,9 +3118,9 @@ skills["Hatred"] = {
 	},
 }
 skills["HeraldOfAgony"] = {
-	name = "Herald of Agony",
+	name = "苦痛之捷",
 	color = 2,
-	description = "Grants a buff giving more poison damage and a chance to inflict poison. When you poison an enemy while you have this buff, you gain Virulence, and summon an Agony Crawler minion that uses projectile and area attacks. You will lose Virulence over time, at a rate which increases the more Virulence you have. The Agony Crawler will die when you have no Virulence.",
+	description = "给予一个增益效果，使中毒伤害提高，并有几率造成中毒。当你带有此增益时使敌人中毒，你会获得【毒力】，并且召唤一个会投掷投射物和范围攻击的【苦痛爬行者】。你会持续失去【毒力】，【毒力】越高，失去的速度越快。【毒力】消退后【苦痛爬行者】就会死亡。",
 	skillTypes = { [2] = true, [5] = true, [15] = true, [16] = true, [63] = true, [9] = true, [75] = true, },
 	minionSkillTypes = { [10] = true, [1] = true, [50] = true, [3] = true, [48] = true, },
 	baseFlags = {
@@ -3190,9 +3190,9 @@ skills["HeraldOfAgony"] = {
 	},
 }
 skills["HeraldOfIce"] = {
-	name = "Herald of Ice",
+	name = "寒冰之捷",
 	color = 2,
-	description = "Channel ice through your hands, adding cold damage to spells and attacks. If you shatter an enemy, they explode and deal AoE cold damage to enemies near them. The AoE cold damage inflicted by this skill is not affected by modifiers to spell damage.",
+	description = "于手中凝聚冰霜之力, 为法术与攻击额外增加冰霜伤害. 若是你粉碎了一个敌人, 它们将会爆炸并对附近的敌人造成冰霜伤害.",
 	skillTypes = { [2] = true, [5] = true, [15] = true, [16] = true, [10] = true, [11] = true, [34] = true, [27] = true, [63] = true, [75] = true, },
 	baseFlags = {
 		cast = true,
@@ -3265,9 +3265,9 @@ skills["HeraldOfIce"] = {
 	},
 }
 skills["IceShot"] = {
-	name = "Ice Shot",
+	name = "冰霜射击",
 	color = 2,
-	description = "Fires an arrow that converts some physical damage to cold on its target and converts all physical damage to cold in a cone behind that target. Creates a patch of ground ice under the target.",
+	description = "射出一发带有冰霜能量的箭矢, 部分物理伤害转为冰霜伤害且在击中敌人之后粉碎为冰屑并向后散射, 对其背后锥形范围内的其他敌人造成等同全部物理伤害的冰霜伤害. 同时被击中者所站立处的地面也会结冰.",
 	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [68] = true, [11] = true, [12] = true, [22] = true, [17] = true, [19] = true, [34] = true, },
 	weaponTypes = {
 		["Bow"] = true,
@@ -3349,9 +3349,9 @@ skills["IceShot"] = {
 	},
 }
 skills["IceTrap"] = {
-	name = "Ice Trap",
+	name = "冰冻陷阱",
 	color = 2,
-	description = "Throws a trap that creates a series of icy runic explosions when triggered, dealing cold damage to all enemies caught in the blasts.",
+	description = "抛出一个触发时会制造一连串冰霜印记爆破的陷阱, 对所有在爆破范围内的敌人造成冰霜伤害. ",
 	skillTypes = { [2] = true, [10] = true, [19] = true, [11] = true, [37] = true, [34] = true, },
 	baseFlags = {
 		spell = true,
@@ -3421,15 +3421,15 @@ skills["IceTrap"] = {
 	},
 }
 skills["DoubleSlash"] = {
-	name = "Lacerate",
+	name = "破空斩",
 	color = 2,
-	description = "Slashes twice, releasing waves of force that damage enemies they hit. Enemies in the middle of the slashes can be hit by both. If you are dual wielding, you attack with your Main Hand, then your Off Hand. Can be used with Axes and Swords.",
+	description = "挥斩两次, 释放出击中敌人会造成伤害的冲击波. 在中间的敌人会被两个冲击波击中. 若双持时, 你会先使用主手挥斩, 再使用副手挥斩. 限定斧和剑.",
 	skillTypes = { [1] = true, [11] = true, [28] = true, [24] = true, },
 	weaponTypes = {
 		["Two Handed Axe"] = true,
-		["Thrusting One Handed Sword"] = true,
 		["Two Handed Sword"] = true,
 		["One Handed Axe"] = true,
+		["Thrusting One Handed Sword"] = true,
 		["One Handed Sword"] = true,
 	},
 	parts = {
@@ -3507,9 +3507,9 @@ skills["DoubleSlash"] = {
 	},
 }
 skills["LightningArrow"] = {
-	name = "Lightning Arrow",
+	name = "闪电箭矢",
 	color = 2,
-	description = "Fires a charged arrow at the target, causing them to be struck by a bolt of lightning which damages nearby enemies.",
+	description = "射出一发充满闪电能量的箭矢, 对敌人造成伤害的同时也对附近额外 3 名敌人造成同等的伤害.",
 	skillTypes = { [1] = true, [48] = true, [69] = true, [11] = true, [3] = true, [68] = true, [22] = true, [17] = true, [19] = true, [35] = true, },
 	weaponTypes = {
 		["Bow"] = true,
@@ -3577,22 +3577,22 @@ skills["LightningArrow"] = {
 	},
 }
 skills["LightningStrike"] = {
-	name = "Lightning Strike",
+	name = "闪电打击",
 	color = 2,
-	description = "Infuses your melee weapon with electrical energies as you swing. In addition to converting some of your physical damage to lightning damage, the stored energy is released from the weapon as projectiles as you strike, flying out behind your target to hit farther-away enemies. The projectiles cannot miss if the melee attack hit its target.",
+	description = "凝聚闪电之力, 转换一部分的物理伤害为闪电伤害以重击目标. 充盈的闪电之力在击中后会穿透并分裂成数道投射物, 袭击远方的敌人. 在第一击击中的情况下, 后续的闪电投射物将无法被躲避.",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [25] = true, [28] = true, [24] = true, [35] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	parts = {
 		{
@@ -3673,22 +3673,22 @@ skills["LightningStrike"] = {
 	},
 }
 skills["VaalLightningStrike"] = {
-	name = "Vaal Lightning Strike",
+	name = "瓦尔.闪电打击",
 	color = 2,
-	description = "Infuses your melee weapon with electrical energies as you swing. In addition to converting some of your physical damage to lightning damage, the stored energy becomes an orb attached to the enemy you hit, or the ground if you don't hit an enemy. The orb will periodically fire projectiles at other nearby enemies for a duration, which will also damage the enemy the orb is attached to.",
+	description = "凝聚闪电之力, 转换一部分的物理伤害为闪电伤害以重击目标. 闪电之力在击中敌人后会在其身旁形成电球，若未击中敌人则在地面生成电球。电球会持续向其他周围的敌人发射投射物，也会对附加电球的敌人造成伤害。",
 	skillTypes = { [1] = true, [25] = true, [24] = true, [12] = true, [43] = true, [35] = true, [3] = true, [48] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	parts = {
 		{
@@ -3766,9 +3766,9 @@ skills["VaalLightningStrike"] = {
 	},
 }
 skills["MirrorArrow"] = {
-	name = "Mirror Arrow",
+	name = "魅影射击",
 	color = 2,
-	description = "Fires an arrow at the target destination. When the arrow lands, a clone is summoned. The clone is a minion that uses your bow and quiver.",
+	description = "对目标地点射出一支箭, 当箭到达时在目标地创造一个你的复制体. 这个复制体使用跟你一样的弓与箭袋.",
 	skillTypes = { [14] = true, [1] = true, [9] = true, [48] = true, [69] = true, [21] = true, [12] = true, [22] = true, [17] = true, [19] = true, },
 	minionSkillTypes = { [1] = true, [3] = true, [48] = true, },
 	weaponTypes = {
@@ -3849,9 +3849,9 @@ skills["MirrorArrow"] = {
 	},
 }
 skills["NewPhaseRun"] = {
-	name = "Phase Run",
+	name = "暗影迷踪",
 	color = 2,
-	description = "Gain a buff that makes you faster, harder to detect, and grants Phasing, letting you pass through enemies. Performing any skill replaces this buff with one that boosts melee damage of skills you use yourself (it will not apply to your melee skills used by totems). Consumes Frenzy Charges to increase duration.",
+	description = "使你的身影难以被发现, 且增加你的移动速度. 移动时不再被敌人阻挡. 使用任何技能将移除此增益效果, 并给予你自身另一个增加攻击伤害的短暂增益效果(这个增益不会对你的图腾生效). 可以使用狂怒球延长持续时间. ",
 	skillTypes = { [2] = true, [5] = true, [12] = true, [36] = true, [38] = true, [75] = true, },
 	baseFlags = {
 		spell = true,
@@ -3919,9 +3919,9 @@ skills["NewPhaseRun"] = {
 	},
 }
 skills["PoachersMark"] = {
-	name = "Poacher's Mark",
+	name = "盗猎者印记",
 	color = 2,
-	description = "Curses all targets in an area, making them less evasive. Hitting the cursed targets will grant life and mana, and killing them will result in more flask charges and a chance to gain a frenzy charge.",
+	description = "对目标区域施放诅咒, 受到诅咒的敌人更不容易闪避攻击. 此外, 在攻击击中带有印记的敌人时会获得生命, 魔力, 在击败怪物时获得更多的药剂充能数并有机会获得狂怒球.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [67] = true, },
 	baseFlags = {
 		spell = true,
@@ -3993,9 +3993,9 @@ skills["PoachersMark"] = {
 	},
 }
 skills["ProjectileWeakness"] = {
-	name = "Projectile Weakness",
+	name = "投射物要害",
 	color = 2,
-	description = "Curses all targets in an area, making them easier to pierce and to knock back, and increasing the damage they take from projectiles.",
+	description = "对目标区域施放诅咒, 受到诅咒的敌人将更容易被投射物穿透, 击退以及受到更多投射物造成的伤害.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [67] = true, },
 	baseFlags = {
 		spell = true,
@@ -4065,17 +4065,17 @@ skills["ProjectileWeakness"] = {
 	},
 }
 skills["Puncture"] = {
-	name = "Puncture",
+	name = "放血",
 	color = 2,
-	description = "Punctures the target, causing a bleeding debuff, which will be affected by modifiers to skill duration. Puncture works with bows, daggers, claws or swords.",
+	description = "对目标进行一个放血攻击, 对其造成一个流血的减益效果. 该减益受到技能持续时间词缀的影响. 流血中的目标在移动时会受到更多的伤害. 限定弓, 匕首, 爪与剑.",
 	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [68] = true, [12] = true, [17] = true, [19] = true, [22] = true, [25] = true, [28] = true, [24] = true, [40] = true, },
 	weaponTypes = {
-		["Bow"] = true,
-		["Claw"] = true,
-		["Thrusting One Handed Sword"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Sword"] = true,
 		["Dagger"] = true,
-		["One Handed Sword"] = true,
+		["Claw"] = true,
+		["Bow"] = true,
+		["Thrusting One Handed Sword"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -4145,9 +4145,9 @@ skills["Puncture"] = {
 	},
 }
 skills["ColdResistAura"] = {
-	name = "Purity of Ice",
+	name = "冰霜净化",
 	color = 2,
-	description = "Casts an aura that grants cold resistance to you and your allies.",
+	description = "施放一个光环, 使你与受光环影响的友军获得额外的冰霜抗性.",
 	skillTypes = { [2] = true, [11] = true, [5] = true, [15] = true, [27] = true, [16] = true, [18] = true, [44] = true, [34] = true, [75] = true, },
 	baseFlags = {
 		spell = true,
@@ -4214,9 +4214,9 @@ skills["ColdResistAura"] = {
 	},
 }
 skills["ColdImpurity"] = {
-	name = "Vaal Impurity of Ice",
+	name = "瓦尔.不净之冰",
 	color = 2,
-	description = "Casts an aura that reduces cold damage taken and provides freeze and chill immunity to you and nearby allies, and makes hits against nearby enemies ignore their cold resistance. ",
+	description = "施放一个光环，使你和周围友军受到的冰霜伤害降低，并免疫冰缓效果，并在击中周围敌人时无视他们的冰霜抗性。 ",
 	skillTypes = { [2] = true, [5] = true, [11] = true, [18] = true, [27] = true, [12] = true, [43] = true, [44] = true, },
 	baseFlags = {
 		spell = true,
@@ -4286,9 +4286,9 @@ skills["ColdImpurity"] = {
 	},
 }
 skills["RainOfArrows"] = {
-	name = "Rain of Arrows",
+	name = "箭雨",
 	color = 2,
-	description = "Fires multiple arrows into the air, to land in sequence after a delay, starting at the targeted location and spreading outwards in all directions. Each arrow deals damage in an area around it. Half of the arrows will land directly on targets if there are targets in their range.",
+	description = "向空中射出多支箭矢，飞行一段时间后陆续抵达，先发射至一个指定位置，抵达后向四面八方展开。每支箭矢会对其周围区域造成伤害。若范围内有目标，则一半数量的箭矢会直接飞向目标。",
 	skillTypes = { [1] = true, [48] = true, [69] = true, [11] = true, [14] = true, [73] = true, [22] = true, [17] = true, [19] = true, },
 	weaponTypes = {
 		["Bow"] = true,
@@ -4361,9 +4361,9 @@ skills["RainOfArrows"] = {
 	},
 }
 skills["VaalRainOfArrows"] = {
-	name = "Vaal Rain of Arrows",
+	name = "瓦尔.箭雨",
 	color = 2,
-	description = "Fires multiple arrows into the air, to land in multiple sequences after a delay, each starting at the targeted location and spreading outwards in all directions. Each arrow deals damage in an area around it. Half of the arrows will land directly on targets if there are targets in their range.",
+	description = "向空中射出多支箭矢，飞行一段时间后陆续抵达，先发射至一个指定位置，抵达后向四面八方展开。每支箭矢会对其周围区域造成伤害。若范围内有目标，则一半数量的箭矢会直接飞向目标。",
 	skillTypes = { [1] = true, [48] = true, [11] = true, [14] = true, [73] = true, [22] = true, [17] = true, [19] = true, [43] = true, },
 	weaponTypes = {
 		["Bow"] = true,
@@ -4440,15 +4440,15 @@ skills["VaalRainOfArrows"] = {
 	},
 }
 skills["Reave"] = {
-	name = "Reave",
+	name = "冲击波",
 	color = 2,
-	description = "Attacks a small area in front of you. Each Reave that hits an enemy increases the area of effect. The area is reset after a short period without hitting anything. Only works with Daggers, Claws, and One-Handed Swords.",
+	description = "对前方一小块区域进行攻击, 每击中一个敌人将会使冲击波的范围增大. 若是一段时间内没有使用冲击波击中敌人或是使用了其他技能, 此范围将会还原. 限定匕首, 爪, 单手剑.",
 	skillTypes = { [1] = true, [11] = true, [28] = true, [24] = true, },
 	weaponTypes = {
-		["Thrusting One Handed Sword"] = true,
 		["One Handed Sword"] = true,
-		["Dagger"] = true,
 		["Claw"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["Dagger"] = true,
 	},
 	parts = {
 		{
@@ -4528,15 +4528,15 @@ skills["Reave"] = {
 	},
 }
 skills["VaalReave"] = {
-	name = "Vaal Reave",
+	name = "瓦尔.冲击波",
 	color = 2,
-	description = "Repeatedly attacks a large area in different directions. Each Vaal Reave that hits an enemy increases the area of effect. The area is reset after a short period without hitting anything. Only works with Daggers, Claws, and One-Handed Swords.",
+	description = "重复对不同方向进行范围攻击. 每击中一个敌人将会使瓦尔. 冲击波的范围增大. 若是一段时间内没有使用瓦尔. 冲击波击中敌人或是使用了其他技能, 此范围将会还原. 限定匕首, 爪, 单手剑.",
 	skillTypes = { [1] = true, [11] = true, [24] = true, [43] = true, },
 	weaponTypes = {
-		["Thrusting One Handed Sword"] = true,
 		["One Handed Sword"] = true,
-		["Dagger"] = true,
 		["Claw"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["Dagger"] = true,
 	},
 	parts = {
 		{
@@ -4622,23 +4622,23 @@ skills["VaalReave"] = {
 	},
 }
 skills["Riposte"] = {
-	name = "Riposte",
+	name = "击刃",
 	color = 2,
-	description = "Perform a deadly counter-attack when you block. Uses both weapons while you're dual wielding.",
+	description = "格挡时进行一次致命的反击. 双持时会使用两把武器进行反击.",
 	skillTypes = { [1] = true, [24] = true, [25] = true, [47] = true, [57] = true, },
 	weaponTypes = {
-		["None"] = true,
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["None"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -4705,9 +4705,9 @@ skills["Riposte"] = {
 	},
 }
 skills["ScourgeArrow"] = {
-	name = "Scourge Arrow",
+	name = "天灾之箭",
 	color = 2,
-	description = "Channel this skill to draw an arrow and infuse it with chaos, gaining stages while it is held. Release to fire this as a single piercing arrow, which drops a spore pod along its path for each stage reached while channelling. Each spore pod will bloom, firing a nova of thorn arrows. Modifiers that cause additional projectiles to be fired will only apply to these thorn arrows.",
+	description = "吟唱此技能，抽出一根箭矢并用混沌将其灌注，搭箭时获得阶数。释放后成为一支穿刺之箭，吟唱时每蓄满一阶，则会在飞行路径上投下一个孢囊。孢囊会绽放，喷射出荆棘之箭的新星。发射额外投射物的效果只对荆棘之箭有效。",
 	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [68] = true, [22] = true, [10] = true, [58] = true, },
 	weaponTypes = {
 		["Bow"] = true,
@@ -4793,9 +4793,9 @@ skills["ScourgeArrow"] = {
 	},
 }
 skills["PhysCascadeTrap"] = {
-	name = "Seismic Trap",
+	name = "震波陷阱",
 	color = 2,
-	description = "Throws a trap which, once triggered, repeatedly releases a number of waves for a duration. Each wave deals damage in a series of small bursts in a line, ending with a larger burst. Modifiers to cast speed affects how frequently it releases waves.",
+	description = "投掷陷阱，触发后会在一定时间内持续发射冲击波。每股冲击波都会在其行进线路上产生连续的小冲击，最后以一次大冲击结束。你的施法速度会影响释放冲击波的频率。",
 	skillTypes = { [2] = true, [12] = true, [10] = true, [19] = true, [11] = true, [37] = true, },
 	baseFlags = {
 		spell = true,
@@ -4869,9 +4869,9 @@ skills["PhysCascadeTrap"] = {
 	},
 }
 skills["ShrapnelShot"] = {
-	name = "Shrapnel Shot",
+	name = "流星射击",
 	color = 2,
-	description = "Fires an arrow that pierces through enemies. Arrows are fired with such force that they create a burst of lightning, damaging all enemies in a cone in front of the archer.",
+	description = "发射一发会穿透敌人的箭矢. 箭矢发射时的巨大力量爆发出一道闪电, 对前方扇形区域敌人造成伤害. ",
 	skillTypes = { [1] = true, [3] = true, [68] = true, [11] = true, [22] = true, [17] = true, [19] = true, [35] = true, [48] = true, [69] = true, },
 	weaponTypes = {
 		["Bow"] = true,
@@ -4952,9 +4952,9 @@ skills["ShrapnelShot"] = {
 	},
 }
 skills["SiegeBallista"] = {
-	name = "Siege Ballista",
+	name = "攻城炮台",
 	color = 2,
-	description = "Summons a totem that attacks with piercing arrows. It attacks slowly, but deals increased damage.",
+	description = "制造出一个自动化的弩箭发射器, 不断的朝敌人放箭. 它的速度虽慢, 但伤害会不断提升. ",
 	skillTypes = { [1] = true, [3] = true, [68] = true, [48] = true, [17] = true, [19] = true, [30] = true, },
 	weaponTypes = {
 		["Bow"] = true,
@@ -5031,9 +5031,9 @@ skills["SiegeBallista"] = {
 	},
 }
 skills["SmokeMine"] = {
-	name = "Smoke Mine",
+	name = "烟雾地雷",
 	color = 2,
-	description = "Places a mine that will teleport you to it when detonated. It covers both your escape and arrival with a cloud of smoke that blinds enemies, and gives you a temporary buff to movement speed.",
+	description = "设置一个地雷, 当你启动时会将你传送至该地雷所在处. 当传送时, 在原本位置与地雷所在位置的区块都会被充满烟雾, 致盲身在烟雾中的敌人, 并提升你的移动速度.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [38] = true, [41] = true, },
 	baseFlags = {
 		spell = true,
@@ -5101,9 +5101,9 @@ skills["SmokeMine"] = {
 	},
 }
 skills["ThrownShield"] = {
-	name = "Spectral Shield Throw",
+	name = "灵盾投掷",
 	color = 2,
-	description = "Throws a spectral copy of your shield as a projectile which cannot pierce, and deals off-hand damage augmented by the defences of the shield. When it collides with something it will shatter, launching a number of smaller shards as projectiles in all directions. Modifiers that cause additional projectiles to be fired will add more shards, not more copies of the shield.",
+	description = "使用念能力复制副手上的盾并且掷出制造出根据盾防御属性的副手伤害。该投射物无法穿透敌人，当击中敌人时，该投射物会碎裂，制造出射向各方的小的碎片投射物。影响投射物数量的词缀会增加碎片的数量，但不会增加投掷盾的数量。",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [68] = true, [71] = true, },
 	parts = {
 		{
@@ -5183,22 +5183,22 @@ skills["ThrownShield"] = {
 	},
 }
 skills["ThrownWeapon"] = {
-	name = "Spectral Throw",
+	name = "灵体投掷",
 	color = 2,
-	description = "Throws a spectral copy of your melee weapon. It flies out and then returns to you, in a spinning attack that strikes enemies in its path.",
+	description = "使用念能力复制一把手中的近战武器, 并将此灵体投掷出去. 此灵体将会向外飞出并如同回力镖一般回到你的身边, 对所有碰触到的敌人造成伤害.",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [68] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -5262,22 +5262,22 @@ skills["ThrownWeapon"] = {
 	},
 }
 skills["VaalThrownWeapon"] = {
-	name = "Vaal Spectral Throw",
+	name = "瓦尔.灵体投掷",
 	color = 2,
-	description = "Throws a spectral copy of your melee weapon. It spirals out in a spinning attack that strikes enemies in its path.",
+	description = "使用念能力复制一把手中的近战武器, 并将此灵体投掷出去. 此灵体将会以你为圆心螺旋状的飞行出去, 对所有碰触到的敌人造成伤害.",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [68] = true, [43] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -5344,9 +5344,9 @@ skills["VaalThrownWeapon"] = {
 	},
 }
 skills["RainOfSpores"] = {
-	name = "Toxic Rain",
+	name = "毒雨",
 	color = 2,
-	description = "Fire a number of arrows into the air that rain down around the targeted area, dealing damage to enemies they hit and creating spore pods where they land. Each spore pod deals chaos damage over time to nearby enemies and lessens their movement speed. After a short duration, the pods burst, dealing area damage.",
+	description = "向天空射出一串箭矢，并洒向目标区域，对击中的敌人造成伤害，并在落地后创造孢囊。每个孢囊会对周围的敌人持续造成混沌伤害，并减低他们的移动速度。短时间后，孢囊会爆炸，造成范围伤害。",
 	skillTypes = { [1] = true, [48] = true, [69] = true, [11] = true, [14] = true, [22] = true, [17] = true, [19] = true, [10] = true, [50] = true, [12] = true, [40] = true, [73] = true, [50] = true, },
 	weaponTypes = {
 		["Bow"] = true,
@@ -5424,9 +5424,9 @@ skills["RainOfSpores"] = {
 	},
 }
 skills["SplitArrow"] = {
-	name = "Split Arrow",
+	name = "分裂箭矢",
 	color = 2,
-	description = "Fires multiple arrows at different targets.",
+	description = "对不同的目标射出多重箭矢.",
 	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [68] = true, [22] = true, [17] = true, [19] = true, },
 	weaponTypes = {
 		["Bow"] = true,
@@ -5493,9 +5493,9 @@ skills["SplitArrow"] = {
 	},
 }
 skills["SummonIceGolem"] = {
-	name = "Summon Ice Golem",
+	name = "召唤寒冰魔像",
 	color = 2,
-	description = "Summons an Ice Golem that grants you increased Critical Strike Chance and Accuracy. The Ice Golem can use an icy barrage spell and a chilling spinning dash in addition to its melee attack.",
+	description = "召唤寒冰魔像, 启动时会使你提高暴击和命中. 寒冰魔像会施放寒冰弹幕并在近战攻击时附加额外的冰旋斩. ",
 	skillTypes = { [36] = true, [34] = true, [19] = true, [9] = true, [21] = true, [26] = true, [2] = true, [18] = true, [17] = true, [49] = true, [60] = true, [62] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [3] = true, [68] = true, [2] = true, [10] = true, [38] = true, [28] = true, },
 	minionList = {
@@ -5571,9 +5571,9 @@ skills["SummonIceGolem"] = {
 	},
 }
 skills["TemporalChains"] = {
-	name = "Temporal Chains",
+	name = "时空锁链",
 	color = 2,
-	description = "Curses all targets in an area, Slowing them, and making effects on them expire more slowly.",
+	description = "对目标区域施放诅咒, 受到诅咒的敌人变慢, 并且延长它们所受到的效果之持续时间.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [67] = true, },
 	baseFlags = {
 		spell = true,
@@ -5643,9 +5643,9 @@ skills["TemporalChains"] = {
 	},
 }
 skills["TornadoShot"] = {
-	name = "Tornado Shot",
+	name = "龙卷射击",
 	color = 2,
-	description = "Fires a piercing shot that travels until it reaches the targeted location. It will then fire projectiles out in all directions from that point.",
+	description = "射出一只穿透之箭直到它抵达目标地. 当它抵达目标地后, 会在该地产生一道龙卷, 向全方位射出飞箭.",
 	skillTypes = { [1] = true, [3] = true, [68] = true, [17] = true, [19] = true, [22] = true, [48] = true, [69] = true, },
 	weaponTypes = {
 		["Bow"] = true,
@@ -5713,9 +5713,9 @@ skills["TornadoShot"] = {
 	},
 }
 skills["BoneLance"] = {
-	name = "Unearth",
+	name = "亵渎之矛",
 	color = 2,
-	description = "Fires a projectile that will pierce through enemies to impact the ground at the targeted location, creating a Bone Archer corpse where it lands.",
+	description = "发射一个能够穿透敌人的投射物，在目标地点着地后会创造一个骨弓手灵柩。",
 	skillTypes = { [2] = true, [3] = true, [68] = true, [18] = true, [19] = true, [17] = true, [36] = true, [10] = true, [26] = true, },
 	baseFlags = {
 		spell = true,
@@ -5783,16 +5783,16 @@ skills["BoneLance"] = {
 	},
 }
 skills["ViperStrike"] = {
-	name = "Viper Strike",
+	name = "毒蛇打击",
 	color = 2,
-	description = "Hits the enemy, adding some of your physical damage as chaos damage and applying poison. Requires a claw, dagger or sword.",
+	description = "对敌人进行攻击, 额外造成等同于物理伤害一定比例的混沌伤害, 并使敌人中毒. 限定爪, 匕首与剑.",
 	skillTypes = { [1] = true, [12] = true, [28] = true, [24] = true, [25] = true, [40] = true, [50] = true, },
 	weaponTypes = {
-		["Claw"] = true,
-		["Thrusting One Handed Sword"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Sword"] = true,
 		["Dagger"] = true,
-		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["Claw"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -5862,9 +5862,9 @@ skills["ViperStrike"] = {
 	},
 }
 skills["VolatileDead"] = {
-	name = "Volatile Dead",
+	name = "灵体火球",
 	color = 2,
-	description = "Corpses near the targeted location explode, dealing damage in a small area and creating an orb which moves towards nearby enemies before dealing spell damage in a larger area. The explosion of the corpse is not affected by modifiers to spell damage, and cannot be reflected.",
+	description = "目标附近的灵柩爆炸造成小范围伤害，并召唤一个自动追踪敌人的火球，可以造成较大范围的法术伤害。灵柩爆炸造成的伤害无法被法术伤害词缀加成，并且无法被反射。",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [33] = true, [67] = true, },
 	parts = {
 		{
@@ -5945,15 +5945,15 @@ skills["VolatileDead"] = {
 	},
 }
 skills["WhirlingBlades"] = {
-	name = "Whirling Blades",
+	name = "回旋之刃",
 	color = 2,
-	description = "Dive through enemies, dealing weapon damage. Only works with daggers, claws and one handed swords. Cannot be supported by Multistrike.",
+	description = "迅速穿越敌人并同时造成武器伤害. 限定匕首, 爪以及单手剑. ",
 	skillTypes = { [1] = true, [24] = true, [38] = true, },
 	weaponTypes = {
+		["One Handed Sword"] = true,
 		["Thrusting One Handed Sword"] = true,
 		["Claw"] = true,
 		["Dagger"] = true,
-		["One Handed Sword"] = true,
 	},
 	baseFlags = {
 		attack = true,
@@ -6018,22 +6018,22 @@ skills["WhirlingBlades"] = {
 	},
 }
 skills["WildStrike"] = {
-	name = "Wild Strike",
+	name = "野性打击",
 	color = 2,
-	description = "Your melee weapon strikes an enemy, converting physical damage to a random element. Then, depending on the element chosen, it releases a fiery explosion, an arcing bolt of lightning, or an icy wave.",
+	description = "使用近战武器打击敌人, 将物理伤害转换为随机的元素伤害. 根据转换成的元素释放出爆破, 闪电或冰霜. ",
 	skillTypes = { [1] = true, [25] = true, [28] = true, [24] = true, [35] = true, [34] = true, [33] = true, [3] = true, [11] = true, [23] = true, [48] = true, },
 	weaponTypes = {
-		["One Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["Staff"] = true,
-		["Two Handed Axe"] = true,
+		["One Handed Sword"] = true,
 		["Two Handed Mace"] = true,
 		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
 		["Claw"] = true,
-		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
 	},
 	parts = {
 		{

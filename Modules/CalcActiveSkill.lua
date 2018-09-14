@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Module: Calc Active Skill
 -- Active skill setup.
@@ -222,7 +222,7 @@ function calcs.buildActiveSkillModList(env, actor, activeSkill)
 	if (skillTypes[SkillType.Shield] or skillFlags.shieldAttack) and not activeSkill.summonSkill and (not actor.itemList["Weapon 2"] or actor.itemList["Weapon 2"].type ~= "Shield") then
 		-- Skill requires a shield to be equipped
 		skillFlags.disable = true
-		activeSkill.disableReason = "This skill requires a Shield"
+activeSkill.disableReason = "这个技能需要装备盾牌"
 	end
 
 	if skillFlags.shieldAttack then
@@ -248,7 +248,7 @@ function calcs.buildActiveSkillModList(env, actor, activeSkill)
 		elseif skillTypes[SkillType.DualWield] or skillTypes[SkillType.MainHandOnly] or skillFlags.forceMainHand then
 			-- Skill requires a compatible main hand weapon
 			skillFlags.disable = true
-			activeSkill.disableReason = "Main Hand weapon is not usable with this skill"
+activeSkill.disableReason = "主手武器不适合这个技能"
 		end
 		if not skillTypes[SkillType.MainHandOnly] and not skillFlags.forceMainHand then
 			local weapon2Flags = getWeaponFlags(env, actor.weaponData2, weaponTypes)
@@ -258,11 +258,11 @@ function calcs.buildActiveSkillModList(env, actor, activeSkill)
 			elseif skillTypes[SkillType.DualWield] then
 				-- Skill requires a compatible off hand weapon
 				skillFlags.disable = true
-				activeSkill.disableReason = activeSkill.disableReason or "Off Hand weapon is not usable with this skill"
+activeSkill.disableReason = activeSkill.disableReason or "副手武器不支持这个技能"
 			elseif not skillFlags.weapon1Attack then
 				-- Neither weapon is compatible
 				skillFlags.disable = true
-				activeSkill.disableReason = "No usable weapon equipped"
+activeSkill.disableReason = "没有可用武器"
 			end
 		end
 		skillFlags.bothWeaponAttack = skillFlags.weapon1Attack and skillFlags.weapon2Attack
@@ -361,7 +361,7 @@ function calcs.buildActiveSkillModList(env, actor, activeSkill)
 	activeSkill.skillCfg = {
 		flags = bor(skillModFlags, activeSkill.weapon1Flags or activeSkill.weapon2Flags or 0),
 		keywordFlags = skillKeywordFlags,
-		skillName = activeGrantedEffect.name:gsub("^Vaal ",""):gsub("Summon Skeletons","Summon Skeleton"), -- This allows modifiers that target specific skills to also apply to their Vaal counterpart
+skillName = activeGrantedEffect.name:gsub("^瓦尔.",""):gsub("召唤魔侍","召唤魔侍"), 
 		summonSkillName = activeSkill.summonSkill and activeSkill.summonSkill.activeEffect.grantedEffect.name,
 		skillGem = activeEffect.gemData,
 		skillGrantedEffect = activeGrantedEffect,
@@ -388,7 +388,7 @@ function calcs.buildActiveSkillModList(env, actor, activeSkill)
 
 	if actor.modDB and actor.modDB:Sum("FLAG", activeSkill.skillCfg, "DisableSkill") then
 		skillFlags.disable = true
-		activeSkill.disableReason = "Skills of this type are disabled"
+activeSkill.disableReason = "技能被禁用"
 	end
 
 	if skillFlags.disable then

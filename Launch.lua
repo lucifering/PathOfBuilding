@@ -305,6 +305,7 @@ function launch:CheckForUpdate(inBackground)
 end
 
 function launch:ShowPrompt(r, g, b, str, func)
+self.promptMsg = utf8.sub(str,0) --lucifer
 	self.promptMsg = str
 	self.promptCol = {r, g, b}
 	self.promptFunc = func or function(key)
@@ -320,6 +321,17 @@ end
 function launch:ShowErrMsg(fmt, ...)
 	if not self.promptMsg then
 		self:ShowPrompt(1, 0, 0, "^1Error:\n\n^0" .. string.format(fmt, ...) .. "\n\nPress Enter/Escape to Dismiss, or F5 to restart the application.")
+	end
+end
+
+
+function launch:ShowErrMsg2(fmt)
+	if not self.promptMsg then
+	if fmt ~=nil then
+		self:ShowPrompt(1, 0, 0, "【开发信息】\n\n" ..fmt .. "\n\n回车或ESC关闭本提示, F5重启程序.")
+	else
+		self:ShowPrompt(1, 0, 0, "【开发信息】\n\nNIL\n\n回车或ESC关闭本提示, F5重启程序.")
+	end
 	end
 end
 
@@ -349,4 +361,47 @@ function launch:DrawPopup(r, g, b, fmt, ...)
 	SetDrawColor(1, 1, 1)
 	DrawImage(nil, ox + 4, oy + 4, w - 8, h - 8)
 	DrawString(0, oy + 10, "CENTER", 20, "VAR", txt)
+end
+
+
+function launch:ToStringEx(value)
+    if type(value)=='table' then
+       return launch:TableToStr(value)
+    elseif type(value)=='string' then
+        return "\'"..value.."\'"
+    else
+       return tostring(value)
+    end
+end
+
+function launch:TableToStr(t)
+    if t == nil then return "" end
+    local retstr= "{"
+
+    local i = 1
+    for key,value in pairs(t) do
+        local signal = ","
+        if i==1 then
+          signal = ""
+        end
+
+        if key == i then
+            retstr = retstr..signal..launch:ToStringEx(value).."\r\n"
+        else
+            if type(key)=='number' or type(key) == 'string' then
+                retstr = retstr..signal..'['..launch:ToStringEx(key).."]="..launch:ToStringEx(value).."\r\n"
+            else
+                if type(key)=='userdata' then
+                    retstr = retstr..signal.."*s"..launch:TableToStr(getmetatable(key)).."*e".."="..launch:ToStringEx(value).."\r\n"
+                else
+                    retstr = retstr..signal..key.."="..launch:ToStringEx(value).."\r\n"
+                end
+            end
+        end
+
+        i = i+1
+    end
+
+     retstr = retstr.."}"
+     return retstr
 end

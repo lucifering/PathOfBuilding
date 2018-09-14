@@ -1,534 +1,484 @@
 ﻿--
 -- Upcoming uniques will live here until their mods/rolls are finalised
 --
-
 data.uniques.new = {
 -- 3.4 General
 [[
 Aul's Uprising
-Onyx Amulet
-Requires Level 55
-+(10–16) to all Attributes
-+(20–30) to Intelligence
-(15–20)% increased maximum Energy Shield
-+(50–70) to maximum Life
-2% additional Chance to receive a Critical Strike
-Nearby Enemies have an additional 2% chance to receive a Critical Strike
-Wrath Reserves no Mana
-]],[[
-Cerberus Limb
-Blood Sceptre
-Requires Level 47
-24% increased Elemental Damage
-(70–100)% increased Spell Damage
-(15–20)% increased Cast Speed
-0.5% of Spell Damage Leeched as Life if Equipped Shield has at least 30% Chance to Block
-+1 to Maximum Energy Shield per 5 Armour on Equipped Shield
-+5 to Armour per 5 Evasion Rating on Equipped Shield
-+20 to Evasion Rating per 5 Maximum Energy Shield on Equipped Shield
-]],[[
-Chaber Cairn
-Great Mallet
-Source: Upgraded from unique{Chober Chaber} using prophecy{Faith Exhumed}
-Requires Level 60
-30% increased Stun Duration on Enemies
-+1 to Level of Socketed Melee Gems
-+2 to Level of Socketed Minion Gems
-(200–220)% increased Physical Damage
-Adds (25–35) to (45–55) Physical Damage
-25% increased maximum Mana
-Minions have (20–40)% increased maximum Life
-30% increased Skill Effect Duration
-]],[[
-Curtain Call
-Plague Mask
-Requires Level 20
-+23 to maximum Life
-Skills which Place Mines place up to 1 additional Mine if you have at least 500 Intelligence
-Skills which Place Mines place up to 1 additional Mine if you have at least 500 Dexterity
-(10–15)% reduced Mine Laying Speed
-(40–50)% increased Mine Arming Speed
-]],[[
-Demon Stitcher
-Satin Gloves
-Requires Level 41
-(15–20)% increased Cast Speed
-+(50–70) to maximum Energy Shield
-+(50–70) to maximum Life
-Sacrifice 5% of Life to gain that much Energy Shield when you Cast a Spell
-]],[[
-The Eternal Apple
-Chiming Spirit Shield
-Requires Level 49
-(10–15)% increased Spell Damage
-You lose all Endurance Charges at maximum Endurance Charges
-Trigger a Socketed Warcry Skill when you lose Endurance Charges
-+(60–80) to maximum Life
-+(17–23)% to Chaos Resistance
-50% increased Warcry Cooldown Recovery Speed
-Cannot Block
-]],[[
-Geofri's Legacy
-Great Crown
-Source: Upgraded from unique{Geofri's Crest} using prophecy{The Bishop's Legacy}
-Requires Level 62
-+1 to Level of Socketed Gems
-(60–80)% increased Armour and Energy Shield
-+(15–20)% to Fire Resistance
-+(15–20)% to Cold Resistance
-+(15–20)% to Lightning Resistance
-+(20–30)% to Chaos Resistance
-+1 to maximum number of Summoned Holy Relics
-Summoned Holy Relics have (20–25)% reduced Cooldown Recovery Speed
-]],[[
-The Grey Spire
-Judgement Staff
-Requires Level 68
-+18% Chance to Block Attack Damage while wielding a Staff
-Has no Sockets
-(250–300)% increased Global Damage
-(20–30)% increased Attack Speed
-+(1–4)% to all maximum Resistances
-]],[[
-The Iron Fortress
-Crusader Plate
-Requires Level 68
-Source: Upgraded from unique{Iron Heart} using prophecy{Battle Hardened}
-Strength's Damage Bonus instead grants 3% increased Melee
-Physical Damage per 10 Strength
-10% reduced Movement Speed
-(80–100)% increased Armour
-+1% Chance to Block Attack Damage per 50 Strength
-Chance to Block Spell Damage is Unlucky
-+(60–120) to Strength
-]],[[
-Mark of Submission
-Unset Ring
-Requires Level 24
-Has 1 Socket
-Curse Enemies with Socketed Curse Gem on Hit
-]],[[
-Perquil's Toe
-Gold Amulet
-Requires Level 29
-(12–20)% increased Rarity of Items found
-Lightning Damage from Enemies Hitting you is Lucky
-+(40–50) to Dexterity
-Nearby Allies' Damage with Hits is Lucky
-(5–8)% increased Movement Speed
-]],[[
-The Primordial Chain
-Coral Amulet
-Requires Level 34
-(2–4) Life Regenerated per second
-Can Summon up to 3 additional Golems at a time
-You cannot have non-Golem Minions
-25% reduced Golem Size
-Golems Deal (35–45)% less Damage
-Golems have (35–45)% less Life
-Golems have (80–100)% increased Movement Speed
-Primordial
-]],[[
-Soulwrest
-Ezomyte Staff
-Requires Level 62
-+18% Chance to Block Attack Damage while wielding a Staff
-Trigger Level 20 Summon Phantasm Skill when you Consume a Corpse
-(100–140)% increased Spell Damage
-(25–30)% increased Cast Speed
-(80–100)% increased Mana Regeneration Rate
-Minions deal (45–51) to (66–78) additional Physical Damage
-If you Consumed a Corpse Recently, you and nearby Allies regenerate 5% of Life per second
-]],[[
-Unnatural Instinct
-Viridian Jewel
-Limited to: 1
-Radius: Small
-Allocated Small Passive Skills in Radius grant nothing
-Grants all bonuses of Unallocated Small Passive Skills in Radius
+黑曜护身符
+联盟: 至暗地心
+等级需求: 55
++(10-16) 全属性
++27 智慧
+最大能量护盾提高 15%
++70 最大生命
+周围敌人有额外 2% 几率被暴击
+【雷霆】无魔力保留
 ]],
-
--- 3.4 Delve
+[[
+Geofri's Legacy
+强化巨盔
+联盟: 至暗地心
+等级需求: 53
+此物品上装备的技能石等级 +1
+该装备的护甲与能量护盾提高 69%
++18% 火焰抗性
++16% 冰霜抗性
++17% 闪电抗性
++25% 混沌抗性
++1 to maximum number of Summoned Holy Relics
+Summoned Holy Relics have 20% reduced Cooldown Recovery Speed
+]],
+[[
+Chaber Cairn
+刚猛巨锤
+联盟: 至暗地心
+等级需求: 40
+敌人被晕眩时间延长 30%
+此物品上装备的【近战技能石】等级 +1
+此物品上装备的【召唤生物技能石】等级 +2
+物理伤害提高 201%
+附加 29 - 51 基础物理伤害
+最大魔力提高 25%
+召唤生物的最大生命提高 38%
+技能效果持续时间延长 30%
+]],
+[[
+Soulwrest
+艾兹麦长杖
+联盟: 至暗地心
+等级需求: 62
+18% 攻击格挡率
+当你吞噬灵柩时触发 20 级的【召唤幻灵】技能
+法术伤害提高 140%
+施法速度提高 26%
+魔力回复速度提高 96%
+召唤生物附加 45 - 66 基础物理伤害
+近期内你若有消耗灵柩，则你和周围友军每秒回复 5% 生命
+]],
+[[
+Doryani's Delusion
+巨人胫甲
+联盟: 至暗地心
+等级需求: 68
+获得 25 级的主动技能【火焰净化】，且可被此道具上的技能石辅助
+攻击和法术附加 26 - 45 基础火焰伤害
+护甲提高 112%
++63 最大生命
+移动速度提高 30%
+]],
+[[
+Demon Stitcher
+缎布手套
+联盟: 至暗地心
+等级需求: 41
+施法速度提高 15%
++66 最大能量护盾
++62 最大生命
+使用法术时献祭 5% 最大生命并获得等量的能量护盾
+]],
+[[
+Crown of the Tyrant
+行政者战冠
+联盟: 至暗地心
+等级需求: 58
+有 1 个插槽
++95 最大生命
+周围敌人获得 -10% 全部抗性
+每个红色插槽会使你和周围友军附加 64 - 85 基础火焰伤害
+每个绿色插槽会使你和周围友军附加 56 - 88 基础冰霜伤害
+每个蓝色插槽会使你和周围友军附加 16 - 144 基础闪电伤害
+每个白色插槽会使你和周围友军附加 47 - 61 基础混沌伤害
+]],
+[[
+Mark of Submission
+潜能之戒
+联盟: 至暗地心
+等级需求: 24
+有 1 个插槽
+击中敌人时，用插槽内的诅咒技能诅咒敌人
+]],
 [[
 Command of the Pit
-Riveted Gloves
-League: Delve
-Variant: One Abyssal Socket
-Variant: Two Abyssal Sockets
-Requires Level 37
-{variant:1}Has 1 Abyssal Socket
-{variant:2}Has 2 Abyssal Sockets
-(6–10)% increased Cast Speed
-(4–6)% increased maximum Life
-With a Ghastly Eye Jewel Socketed, Minions have +1000 to Accuracy Rating
-With a Hypnotic Eye Jewel Socketed, gain Arcane Surge on Hit with Spells
-]],[[
-Crown of the Tyrant
-Magistrate Crown
-League: Delve
-Requires Level 58
-Has 1 Socket
-+(50–100) to maximum Life
-Nearby Enemies have -10% to all Resistances
-You and Nearby Allies have 64 to 96 added Fire Damage per Red Socket
-You and Nearby Allies have 56 to 88 added Cold Damage per Green Socket
-You and Nearby Allies have 16 to 144 added Lightning Damage per Blue Socket
-You and Nearby Allies have 47 to 61 added Chaos Damage per White Socket
-]],[[
-Doryani's Delusion
-Titan Greaves
-League: Delve
-Requires Level 68
-Grants Level 25 Purity of Fire Skill
-Adds (25–30) to (40–45) Fire Damage to Spells and Attacks
-(100–120)% increased Armour
-+(50–70) to maximum Life
-30% increased Movement Speed
-]],[[
-Hale Negator
-Mind Cage
-Requires Level 65
-League: Delve
-Has 1 Abyssal Socket
-(6–8)% increased maximum Life
-Recover (2–3)% of Energy Shield when you lose a Spirit Charge
-Recover (2–3)% of Life when you lose a Spirit Charge
-Gain a Spirit Charge every second
-You lose all Spirit Charges when taking a Savage Hit
-+1 to Maximum Spirit Charges per Abyss Jewel affecting you
+仪式手套
+联盟: 至暗地心
+源: 深渊巫妖掉落
+版本: 一个深渊插槽  
+版本: 两个深渊插槽 
+Requires Level: 36
+{variant:1}拥有 1 个深渊插槽
+{variant:2}拥有 2 个深渊插槽
+施法速度提高 (6-10)%
+最大生命提高 (4-6)%
+当插槽内有 1 个【苍白之凝】珠宝时，召唤生物 +1000 命中值
+当插槽内有 1 个【安睡之凝】珠宝时，法术击中敌人时获得【秘术增强】
 ]],
-
-
-
-
+[[
+Cerberus Limb
+血色短杖
+联盟: 至暗地心
+等级需求: 47
+火焰、冰霜、闪电伤害提高 24%
+法术伤害提高 99%
+施法速度提高 19%
+若装备的盾牌至少有30%格挡率,则给予0.5% 法术伤害吸血
+盾牌装备上每有 5 点护甲值，便 +1 最大能量护盾
+盾牌装备上每有 5 点闪避值，便 +5 护甲值
+盾牌装备上每有 5 点能量护盾，便 +20 闪避值
+]],
+[[
+The Grey Spire
+审判长杖
+联盟: 至暗地心
+等级需求: 68
+18% 攻击格挡率
+没有插槽
+伤害提高 297%
+攻击速度提高 29%
++4% 全部抗性上限
+]],[[
+The Primordial Chain
+珊瑚护身符
+联盟: 至暗地心
+等级需求: 3
+(2-4) 每秒生命回复
+最多可同时拥有额外 3 个魔像
+你无法拥有非魔像类召唤生物
+魔像体型缩小 25%
+魔像总伤害额外降低 40%
+魔像总生命额外降低 35%
+魔像的移动速度提高 83%
+起源珠宝
+]],
 -- 3.3 General
 [[
-Combat Focus
-Crimson Jewel
-Limited to: 2
-Radius: Medium
-Elemental Hit deals (10–15)% increased Damage
-With 40 total Strength and Intelligence in Radius, Elemental Hit cannot choose Cold
-With 40 total Strength and Intelligence in Radius, Elemental Hit deals 50% less Cold Damage
+战斗专注
+赤红珠宝
+仅限: 2
+范围: 中
+【元素打击】的伤害提高 (10-15)%
+范围内配置的力量和智慧总计 40 点时，【元素打击】无法选择冰霜元素
+范围内含的力量和智慧总计 40 点时，【元素打击】的冰冷伤害降低 50%
+(【注意，这个国服翻译问题。应该为【元素打击】的总冰冷伤害额外降低】)
 ]],[[
-Combat Focus
-Cobalt Jewel
-Limited to: 2
-Radius: Medium
-Elemental Hit deals (10–15)% increased Damage
-With 40 total Intelligence and Dexterity in Radius, Elemental Hit cannot choose Fire
-With 40 total Intelligence and Dexterity in Radius, Elemental Hit deals 50% less Fire Damage
+战斗专注
+翠绿珠宝
+仅限: 2
+范围: 中
+【元素打击】的伤害提高 (10-15)%
+范围内配置的力量和敏捷总计 40 点时，【元素打击】无法选择闪电元素
+范围内含的敏捷和力量总计 40 点时，【元素打击】的闪电伤害降低 50%
+(【注意，这个国服翻译问题。应该为【元素打击】的总闪电伤害额外降低】)
 ]],[[
-Combat Focus
-Viridian Jewel
-Limited to: 2
-Radius: Medium
-Elemental Hit deals (10–15)% increased Damage
-With 40 total Dexterity and Strength in Radius, Elemental Hit cannot choose Lightning
-With 40 total Dexterity and Strength in Radius, Elemental Hit deals 50% less Lightning Damage
+战斗专注
+钴蓝珠宝
+仅限: 2
+范围: 中
+【元素打击】的伤害提高 (10-15)%
+范围内配置的智慧和敏捷总计 40 点时，【元素打击】无法选择火焰元素
+范围内含的智慧和敏捷总计 40 点时，【元素打击】的火焰伤害降低 50%
+(【注意，这个国服翻译问题。应该为【元素打击】的火焰冷伤害额外降低】)
 ]],[[
-Earendel's Embrace
-Grinning Fetish
-Requires Level 35
-18% increased Elemental Damage
-+(20–30) to all Attributes
-Minions deal (30–40)% increased Damage
-Summoned Skeletons Cover Enemies in Ash on Hit
-Summoned Skeletons take (15–30)% of their Maximum Life per second as Fire Damage
-Summoned Skeletons have Avatar of Fire
+叶兰德尔的拥抱
+远古之祭
+等级需求: 35
+火焰、冰霜、闪电伤害提高 18%
++(20-30) 全属性
+召唤生物的伤害提高 (30-40)%
+异灵魔侍被击中时让敌人受到【灰烬缠身】
+异灵魔侍每秒将其最大生命的 (15-30)% 转化为火焰伤害
+异灵魔侍获得【火之化身】
 ]],[[
-Sinvicta's Mettle
-Ezomyte Axe
-Requires Level 62
-(200–212)% increased Physical Damage
-(8–12)% increased Attack Speed
-Rampage
-2% increased Area of Effect per 25 Rampage Kills
-Gain a Frenzy Charge on every 50th Rampage Kill
+勇气之魄
+艾兹麦巨斧
+等级需求: 62
+物理伤害提高 (200-212)%
+攻击速度提高 (8-12)%
+暴走
+每完成 25 次暴走连击，范围效果扩大 2%
+每达到 50 次暴走连击，就获得 1 个狂怒球
 ]],[[
-Unyielding Flame
-Archon Kite Shield
-Requires Level 68
-+12% to all Elemental Resistances
-Trigger Commandment of Inferno on Critical Strike
-(50–70)% increased Global Critical Strike Chance
-+(50–70) to maximum Life
-+(20–30)% to Fire Resistance
-(8–12)% increased Attack Speed if you've dealt a Critical Strike Recently
-(8–12)% increased Cast Speed if you've dealt a Critical Strike Recently
+不屈烈焰
+威能鸢盾
+等级需求: 68
+获得 +12% 火焰、冰霜、闪电抗性
+暴击时触发【炼狱之诫】
+攻击和法术暴击率提高 (50-70)%
++(50-70) 最大生命
++(20-30)% 火焰抗性
+近期内你若打出过暴击，则攻击速度提高 (8-12)%
+近期内你若有打出过暴击，则施法速度提高 (8-12)%
 ]],[[
-Zeel's Amplifier
-Polished Spiked Shield
-Requires Level 49
-4% chance to Dodge Attacks
-(40–50)% increased Spell Damage
-+(60–80) to maximum Energy Shield
-+(50–70) to maximum Life
-1% increased Area of Effect per Enemy killed recently, up to 50%
-You have Zealot's Oath if you haven't been hit recently
+泽尔的放大器
+光辉刺盾
+等级需求: 49
+4% 几率躲避攻击击中
+法术伤害提高 (40-50)%
++(60-80) 最大能量护盾
++(50-70) 最大生命
+近期内你若有击败敌人，则范围效果扩大 1%，最多 50%
+近期内你若没有被击中，则获得【狂热誓言】
 ]],
-
 -- 3.3 Incursion
 [[
-Apep's Slumber
-Ancient Spirit Shield
-League: Incursion
-Upgrade: Upgrades to unique{Apep's Supremacy} via currency{Vial of Awakening}
-Requires Level 45
-(5–10)% increased Spell Damage
-Adds 22 to 35 Chaos Damage
-+96 to maximum Energy Shield
-+25% chance to be Poisoned
-+3% to all maximum Resistances while Poisoned
-50 Energy Shield Regenerated per Second per Poison on you, up to 250 per second
-Poisons on you expire 50% slower
+艾普之梦
+远古魔盾
+联盟: 穿越
+升级: 使用 通货【觉醒魔瓶】 升级为 传奇【艾普的霸权】
+等级需求: 45
+法术伤害提高 (5-10)%
+附加 (20-22) - (30-37) 基础混沌伤害
++(80-100) 最大能量护盾
++25% 几率中毒
+中毒时 +3% 全部抗性上限
+你身上的每层中毒状态使你每秒回复 50 能量护盾，最多可有 250 秒
+你身上的中毒效果消失速度减慢 50%
 ]],[[
-Apep's Supremacy
-Vaal Spirit Shield
-League: Incursion
-Source: Upgraded from unique{Apep's Slumber} via currency{Vial of Awakening}
-Requires Level 62
-(5–10)% increased Spell Damage
-Adds 55 to 76 Chaos Damage
-+144 to maximum Energy Shield
-45% faster start of Energy Shield Recharge
-You take Chaos Damage instead of Physical Damage from Bleeding
-+25% chance to be Poisoned
-+3% to all maximum Resistances while Poisoned
-Poisons on you expire 50% slower
+艾普的霸权
+瓦尔魔盾
+联盟: 穿越
+源: 由 传奇【艾普之梦】 使用 通货【觉醒魔瓶】 升级
+等级需求: 62
+法术伤害提高 (5-10)%
+附加 (50-55) - (72-80) 基础混沌伤害
++(130-150) 最大能量护盾
+能量护盾启动回复比平常快 (30-50)%
+你承受的流血伤害改为混沌伤害
++25% 几率中毒
+中毒时 +3% 全部抗性上限
+你身上的中毒效果消失速度减慢 50%
 ]],[[
-Architect's Hand
-Strapped Mitts
-League: Incursion
-Upgrade: Upgrades to unique{Slavedriver's Hand} via currency{Vial of Dominance}
-Requires Level 16
-+(30–40) to Dexterity
-(100–125)% increased Evasion and Energy Shield
-(20–30)% reduced Trap Throwing Speed
-Skills used by Traps have (10–20)% increased Area of Effect
-Increases and Reductions to Cast Speed also Apply to Trap Throwing Speed
+建筑师之手
+扣环护手
+联盟: 穿越
+升级: 使用 通货【统御魔瓶】 升级为 传奇【奴隶贩子之手】
+等级需求: 16
++(30-40) 敏捷
+该装备的闪避与能量护盾提高 (100-125)%
+陷阱投掷速度降低 (20-30)%
+陷阱所使用的技能范围扩大 (10-20)%
+施法速度的提高和降低也同样作用于陷阱投掷速度
 ]],[[
-Slavedriver's Hand
-Ambush Mitts
-League: Incursion
-Source: Upgraded from unique{Architect's Hand} via currency{Vial of Dominance}
-Requires Level 45
-+35 to Dexterity
-217% increased Evasion and Energy Shield
-30% reduced Trap Throwing Speed
-10% increased Area of Effect for Traps
-Increases and Reductions to Cast Speed also Apply to Trap Throwing Speed
-10% chance to gain an Endurance, Frenzy or Power Charge when a Trap is Triggered by an Enemy
-Skills which throw Traps have Blood Magic
+奴隶贩子之手
+伏击护手
+联盟: 穿越
+源: 由 传奇【建筑师之手】 使用 通货【统御魔瓶】 升级
+等级需求: 45
++(30-40) 敏捷
+该装备的闪避与能量护盾提高 (200-250)%
+陷阱投掷速度降低 (20-30)%
+投掷陷阱的技能受到血魔法辅助
+陷阱所使用的技能范围扩大 (10-20)%
+施法速度的提高和降低也同样作用于陷阱投掷速度
+当你的任何陷阱被敌人触发时，有 10% 的几率获得 1 个耐力球、狂怒球或暴击球
 ]],[[
-Coward's Chains
-Chain Belt
-League: Incursion
-Upgrade: Upgrades to unique{Coward's Legacy} via currency{Vial of Consequence}
-Requires Level 22
-+(9–20) to maximum Energy Shield
-22% increased Damage
-+14 to all Attributes
-7% increased Movement Speed
-Enemies are Unlucky when Damaging you while you are Cursed with Vulnerability
-You are cursed with Level 10 Vulnerability
+懦夫之链
+扣链腰带
+联盟: 穿越
+升级: 使用 通货【结论魔瓶】 升级为 传奇【懦夫之遗】
+等级需求: 22
++(9-20) 最大能量护盾
+伤害提高 (20-25)%
++(10-15) 全属性
+移动速度提高 7%
+受到【脆弱】诅咒时，敌人攻击你会特别不幸
+你受到 10 级【脆弱】的诅咒
 ]],[[
-Coward's Legacy
-Chain Belt
-League: Incursion
-Source: Upgraded from unique{Coward's Chains} via currency{Vial of Consequence}
-Requires Level 52
-+(9–20) to maximum Energy Shield
-+20 to all Attributes
-5% increased Movement Speed
-50% increased Effect of Curses on you
-You are Cursed with Level 20 Vulnerability
-You count as on Low Life while you are Cursed with Vulnerability
+懦夫之遗
+扣链腰带
+联盟: 穿越
+源: 由 传奇【懦夫之链】 使用 通货【结论魔瓶】 升级
+等级需求: 52
++(9-20) 最大能量护盾
++(15-20) 全属性
+移动速度提高 (5-10)%
+你受到的诅咒效果提高 50%
+你受到 20 级【脆弱】的诅咒
+受到【脆弱】诅咒时，非满血时被视作低血状态
 ]],[[
-Dance of the Offered
-Shackled Boots
-League: Incursion
-Upgrade: Upgrades to unique{Omeyocan} via currency{Vial of the Ritual}
-Requires Level 34
-+51 to maximum Mana
-+15% to Lightning Resistance
-25% increased Movement Speed
-You have Onslaught while not on Low Mana
-Lose 33.5 Mana per Second
+献祭舞鞋
+缚足长靴
+联盟: 穿越
+升级: 使用 通货【仪祭魔瓶】 升级为 传奇【至高天堂】
+等级需求: 34
++(50-60) 最大魔力
++(15-20)% 闪电抗性
+移动速度提高 25%
+低魔时获得【猛攻】
+每秒失去 (30-40) 魔力
 ]],[[
-Omeyocan
-Carnal Boots
-League: Incursion
-Source: Upgraded from unique{Dance of the Offered} via currency{Vial of the Ritual}
-Requires Level 55
-19% increased maximum Mana
-+28% to Lightning Resistance
-30% increased Movement Speed
-2% chance to Dodge Attack and Spell Hits per 500 Maximum Mana, up to 20%
-You have Onslaught while not on Low Mana
-Lose 7% of maximum Mana per Second
+至高天堂
+禁礼之靴
+联盟: 穿越
+源: 由 传奇【献祭舞鞋】 使用 通货【仪祭魔瓶】 升级
+等级需求: 55
+最大魔力提高 (15-20)%
++(25-30)% 闪电抗性
+移动速度提高 30%
+最大魔力每有 500 点，则有 2% 几率不被攻击和法术击中，最多 20%
+低魔时获得【猛攻】
+每秒失去 7% 最大魔力
 ]],[[
-Story of the Vaal
-Variscite Blade
-League: Incursion
-Upgrade: Upgrades to unique{Fate of the Vaal} via currency{Vial of Fate}
-Requires Level 35
-+240 to Accuracy Rating
-116% increased Physical Damage
-12% increased Attack Speed
-+26 Life gained on Kill
-50% of Physical Damage from Hits with this Weapon is Converted to a random Element
-Hits with this Weapon always inflict Elemental Ailments
+瓦尔传说
+碧铜短剑
+联盟: 穿越
+升级: 使用 通货【命运魔瓶】 升级为 传奇【瓦尔命运】
+等级需求: 35
++240 命中值
+物理伤害提高 (110-120)%
+攻击速度提高 (8-12)%
+击败敌人回复 +(20-30) 生命
+该武器击中后造成的 50% 物理伤害转换为一种随机元素伤害
+该武器击中时必定造成元素异常状态
 ]],[[
-Fate of the Vaal
-Gemstone Sword
-League: Incursion
-Source: Upgraded from unique{Story of the Vaal} via currency{Vial of Fate}
-Requires Level 56
-+400 to Accuracy Rating
-178% increased Physical Damage
-11% increased Attack Speed
-100% of Physical Damage from Hits with this Weapon is Converted to a random Element
-Hits with this Weapon always inflict Elemental Ailments
-Hits with this Weapon deal 57% increased Damage to Ignited Enemies
-Hits with this Weapon deal 52% increased Damage to Frozen Enemies
-Hits with this Weapon deal 46% increased Damage to Shocked Enemies
+瓦尔命运
+宝石之剑
+联盟: 穿越
+源: 由 传奇【瓦尔传说】 使用 通货【命运魔瓶】 升级
+等级需求: 56
++400 命中值
+物理伤害提高 (160-180)%
+攻击速度提高 (8-12)%
+该武器击中后造成的 100% 物理伤害转换为一种随机元素伤害
+该武器击中时必定造成元素异常状态
+该武器对被点燃敌人的击中伤害提高 (30-60)%
+该武器对被冰冻敌人的击中伤害提高 (30-60)%
+该武器对被感电敌人的击中伤害提高 (30-60)%
 ]],[[
-Mask of the Spirit Drinker
-Crusader Helmet
-League: Incursion
-Upgrade: Upgrades to unique{Mask of the Stitched Demon} via currency{Vial of Summoning}
-Requires Level 31
-65% increased Armour and Energy Shield
-+46 to maximum Life
-Your Energy Shield starts at zero
-Cannot gain Energy Shield
-50 Life Regenerated per second if you have at least 500 Maximum Energy Shield
-100 Life Regenerated per second if you have at least 1000 Maximum Energy Shield
-150 Life Regenerated per second if you have at least 1500 Maximum Energy Shield
+饮魂者面罩
+圣战之盔
+联盟: 穿越
+升级: 使用 通货【召唤魔瓶】 升级为 传奇【缝合恶魔面罩】
+等级需求: 31
+该装备的护甲与能量护盾提高 (60-80)%
++(30-50) 最大生命
+你的能量护盾从 0 开始
+无法获得能量护盾
+若你至少拥有 500 层能量护盾，则每秒回复 50 生命
+若你至少拥有 1000 层能量护盾，则每秒回复 100 生命
+若你至少拥有 1500 层能量护盾，则每秒回复 150 生命
 ]],[[
-Mask of the Stitched Demon
-Magistrate Crown
-League: Incursion
-Source: Upgraded from unique{Mask of the Spirit Drinker} via currency{Vial of Summoning}
-Requires Level 58
-+45 to Intelligence
-+180 to maximum Energy Shield
-Strength provides no bonus to Maximum Life
-Intelligence provides no bonus to Maximum Mana
-+1 to Maximum Life per 2 Intelligence
-Your Energy Shield starts at zero
-Cannot gain Energy Shield
-1% of Life Regenerated per second per 500 Maximum Energy Shield
+缝合恶魔面罩
+行政者战冠
+联盟: 穿越
+源: 由 传奇【饮魂者面罩】 使用 通货【召唤魔瓶】 升级
+等级需求: 58
++(40-50) 智慧
++(160-180) 最大能量护盾
+力量不对最大生命提供加成
+智慧不对最大魔力提供加成
+每 2 点智慧 +1 最大生命
+你的能量护盾从 0 开始
+无法获得能量护盾
+每有 500 层能量护盾可每秒回复 1% 生命
 ]],[[
-Sacrificial Heart
-Paua Amulet
-League: Incursion
-Upgrade: Upgrades to unique{Zerphi's Heart} via currency{Vial of Sacrifice}
-Requires Level 32
-(20–30)% increased Mana Regeneration Rate
-Adds 25 to 38 Fire Damage
-Adds 21 to 35 Cold Damage
-Adds 1 to 51 Lightning Damage
-Gain a Power Charge when you use a Vaal Skill
-10 Life gained for each Enemy Hit if you have used a Vaal Skill Recently
-10% increased Movement Speed if you have used a Vaal Skill Recently
+祭祀之心
+海灵护身符
+联盟: 穿越
+升级: 使用 通货【献祭魔瓶】 升级为 传奇【泽佛伊之心】
+等级需求: 32
+魔力回复速度提高 (20-30)%
+附加 (22-27) - (34-38) 基础火焰伤害
+附加 (20-23) - (31-35) 基础冰霜伤害
+附加 (1-3) - (47-52) 基础闪电伤害
+你使用瓦尔技能时获得 1 个暴击球
+近期内你若使用过瓦尔技能，则击中每个敌人回复 10 生命
+近期内你若使用过瓦尔技能，则移动速度提高 10%
 ]],[[
-Zerphi's Heart
-Paua Amulet
-League: Incursion
-Source: Upgraded from unique{Sacrificial Heart} via currency{Vial of Sacrifice}
-Requires Level 70
-(20–30)% increased Mana Regeneration Rate
-Adds 51 to 59 Chaos Damage
-Items and Gems have 50% increased Attribute Requirements
-Chaos Damage can Ignite, Chill and Shock
-Gain Soul Eater for 10 seconds when you use a Vaal Skill
+泽佛伊之心
+海灵护身符
+联盟: 穿越
+源: 由 传奇【祭祀之心】 使用 通货【献祭魔瓶】 升级
+等级需求: 70
+魔力回复速度提高 (20-30)%
+附加 (48-53) - (58-60) 基础混沌伤害
+装备和技能石的属性需求提高 50%
+混沌伤害可以造成点燃、冰缓和感电效果
+当你使用瓦尔技能时，获得噬魂者 10 秒
 ]],[[
-Shadowstitch
-Sacrificial Garb
-League: Incursion
-Requires Level 72
-Implicits: 0
-Has an additional Implicit Mod
-+(20–30) to all Attributes
-Recover (3–5)% of Maximum Life on Kill
-Recover (3–5)% of Maximum Energy Shield on Kill
--(6-4)% to all Resistances for each Equipped Corrupted Item
-8% increased Maximum Energy Shield for each Equipped Corrupted Item
-6% increased Maximum Life for each Equipped Corrupted Item
-Corrupted
+暗影缝合
+祭礼束衣
+联盟: 穿越
+等级需求: 72
+固定基底词缀: 0
+拥有 1 个额外的固有词缀
++(20-30) 全属性
+击败敌人时回复 (3-5)% 最大生命
+击败敌人会回复自身 (3-5)% 最大能量护盾
+每装备 1 个被腐化的物品，所有抗性 -(6-4)%
+每装备 1 个被腐化的物品，最大能量护盾提高 8%
+每装备 1 个被腐化的物品，最大生命提高 6%
+已腐化
 ]],[[
-Soul Catcher
-Quartz Flask
-League: Incursion
-Upgrade: Upgrades to unique{Soul Ripper} via currency{Vial of the Ghost}
-Requires Level 27
-Cannot gain Mana during effect
-Vaal Skills deal 69% increased Damage during effect
-Vaal Skills have 25% reduced Soul Cost during effect
-Vaal Skills used during effect have 31% reduced Soul Gain Prevention Duration
+捕魂者
+石英药剂
+联盟: 穿越
+升级: 使用 通货【鬼魂魔瓶】 升级为 传奇【裂魂者】
+等级需求: 27
+药剂持续期间无法获得魔力
+生效期间，瓦尔技能的伤害提高 (60-100)%
+生效期间，瓦尔技能的灵魂消耗降低 25%
+生效期间，使用瓦尔技能有 (20-40)% 几率降低阻灵术的持续时间
 ]],[[
-Soul Ripper
-Quartz Flask
-League: Incursion
-Source: Upgraded from unique{Soul Catcher} via currency{Vial of the Ghost}
-Requires Level 27
-100% increased Charges used
-Vaal Skills deal 33% more Damage during effect
-Vaal Skills used during effect do not apply Soul Gain Prevention
-Gains no Charges During effect of any Soul Ripper Flask
+裂魂者
+石英药剂
+联盟: 穿越
+源: 由 传奇【捕魂者】 使用 通货【鬼魂魔瓶】 升级
+等级需求: 27
+提高 100% 药剂充能消耗
+生效期间，瓦尔技能的总伤害额外提高 (30-40)%
+药剂持续期间，使用的瓦尔技能无法附加阻灵术效果
+在任何灵魂撕裂者药剂持续期间无法获得药剂充能
 ]],[[
-Tempered Flesh
-Crimson Jewel
-League: Incursion
-Upgrade: Upgrades to unique{Transcendent Flesh} via currency{Vial of Transcendence}
-Radius: Medium
--1 Strength per 1 Strength on Allocated Passives in Radius
-+5% to Critical Strike Multiplier per 10 Strength on Unallocated Passives in Radius
+淬火之躯
+赤红珠宝
+联盟: 穿越
+升级: 使用 通货【超越魔瓶】 升级为 传奇【升华之躯】
+范围: 中
+范围内每配置 1 点力量，便获得 -1 点力量
+范围内若未配置力量，则每 10 点 +5% 攻击和法术暴击伤害加成
 ]],[[
-Transcendent Flesh
-Crimson Jewel
-League: Incursion
-Source: Upgraded from unique{Tempered Flesh} via currency{Vial of Transcendence}
-Radius: Medium
--1 Strength per 1 Strength on Allocated Passives in Radius
-1% additional Physical Damage Reduction per 10 Strength on Allocated Passives in Radius
-+5% to Critical Strike Multiplier per 10 Strength on Unallocated Passives in Radius
+升华之躯
+赤红珠宝
+联盟: 穿越
+源: 由 传奇【淬火之躯】 使用 通货【超越魔瓶】 升级
+范围: 中
+范围内每配置 1 点力量，便获得 -1 点力量
+范围内每配置 10 点力量，便获得 1% 额外物理伤害减免
+范围内若未配置力量，则每 10 点 +5% 攻击和法术暴击伤害加成
 ]],[[
-Tempered Mind
-Cobalt Jewel
-League: Incursion
-Upgrade: Upgrades to unique{Transcendent Mind} via currency{Vial of Transcendence}
-Radius: Medium
--1 Intelligence per 1 Intelligence on Allocated Passives in Radius
-+100 to Accuracy Rating per 10 Intelligence on Unallocated Passives in Radius
+淬火之心
+钴蓝珠宝
+联盟: 穿越
+升级: 使用 通货【超越魔瓶】 升级为 传奇【升华之心】
+范围: 中
+范围内每配置 1 点智慧，便获得 -1 点智慧
+范围内若未配置智慧，则每 10 点 +100 最大命中值
 ]],[[
-Transcendent Mind
-Cobalt Jewel
-League: Incursion
-Source: Upgraded from unique{Tempered Mind} via currency{Vial of Transcendence}
-Radius: Medium
--1 Intelligence per 1 Intelligence on Allocated Passives in Radius
-0.4% of Energy Shield Regenerated per Second for
-every 10 Intelligence on Allocated Passives in Radius
-+100 to Accuracy Rating per 10 Intelligence on Unallocated Passives in Radius
+升华之心
+钴蓝珠宝
+联盟: 穿越
+源: 由 传奇【淬火之心】 使用 通货【超越魔瓶】 升级
+范围: 中
+范围内每配置 1 点智慧，便获得 -1 点智慧
+范围内每配置 10 点智慧，则每秒回复 0.4% 能量护盾
+范围内若未配置智慧，则每 10 点 +100 最大命中值
 ]],[[
-Tempered Spirit
-Viridian Jewel
-League: Incursion
-Upgrade: Upgrades to unique{Transcendent Spirit} via currency{Vial of Transcendence}
-Radius: Medium
--1 Dexterity per 1 Dexterity on Allocated Passives in Radius
-+15 to Maximum Mana per 10 Dexterity on Unallocated Passives in Radius
+淬火之魂
+翠绿珠宝
+联盟: 穿越
+升级: 使用 通货【超越魔瓶】 升级为 传奇【升华之魂】
+范围: 中
+范围内每配置 1 点敏捷，便获得 -1 点敏捷
+范围内若未配置敏捷，则每 10 点 +15 最大魔力
 ]],[[
-Transcendent Spirit
-Viridian Jewel
-League: Incursion
-Source: Upgraded from unique{Tempered Spirit} via currency{Vial of Transcendence}
-Radius: Medium
--1 Dexterity per 1 Dexterity on Allocated Passives in Radius
-2% increased Movement Speed per 10 Dexterity on Allocated Passives in Radius
-+15 to Maximum Mana per 10 Dexterity on Unallocated Passives in Radius
+升华之魂
+翠绿珠宝
+联盟: 穿越
+源: 由 传奇【淬火之魂】 使用 通货【超越魔瓶】 升级
+范围: 中
+范围内每配置 1 点敏捷，便获得 -1 点敏捷
+范围内每配置 10 点敏捷，移动速度提高 2%
+范围内若未配置敏捷，则每 10 点 +15 最大魔力
 ]],
 }

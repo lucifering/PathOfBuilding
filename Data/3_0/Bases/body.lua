@@ -3,7 +3,7 @@
 local itemBases = ...
 
 
-itemBases["Plate Vest"] = {
+itemBases["铁制背心"] = {
 	type = "Body Armour",
 	subType = "Armour",
 	socketLimit = 6,
@@ -11,7 +11,7 @@ itemBases["Plate Vest"] = {
 	armour = { ArmourBase = 19, MovementPenalty = 3, },
 	req = { str = 12, },
 }
-itemBases["Chestplate"] = {
+itemBases["胸甲"] = {
 	type = "Body Armour",
 	subType = "Armour",
 	socketLimit = 6,
@@ -19,7 +19,7 @@ itemBases["Chestplate"] = {
 	armour = { ArmourBase = 68, MovementPenalty = 5, },
 	req = { level = 6, str = 25, },
 }
-itemBases["Copper Plate"] = {
+itemBases["铜锻板甲"] = {
 	type = "Body Armour",
 	subType = "Armour",
 	socketLimit = 6,
@@ -27,7 +27,7 @@ itemBases["Copper Plate"] = {
 	armour = { ArmourBase = 176, MovementPenalty = 5, },
 	req = { level = 17, str = 53, },
 }
-itemBases["War Plate"] = {
+itemBases["战争之铠"] = {
 	type = "Body Armour",
 	subType = "Armour",
 	socketLimit = 6,
@@ -35,7 +35,7 @@ itemBases["War Plate"] = {
 	armour = { ArmourBase = 216, MovementPenalty = 5, },
 	req = { level = 21, str = 63, },
 }
-itemBases["Full Plate"] = {
+itemBases["连身铠甲"] = {
 	type = "Body Armour",
 	subType = "Armour",
 	socketLimit = 6,
@@ -43,7 +43,7 @@ itemBases["Full Plate"] = {
 	armour = { ArmourBase = 284, MovementPenalty = 5, },
 	req = { level = 28, str = 81, },
 }
-itemBases["Arena Plate"] = {
+itemBases["斗者之铠"] = {
 	type = "Body Armour",
 	subType = "Armour",
 	socketLimit = 6,
@@ -51,7 +51,7 @@ itemBases["Arena Plate"] = {
 	armour = { ArmourBase = 324, MovementPenalty = 5, },
 	req = { level = 32, str = 91, },
 }
-itemBases["Lordly Plate"] = {
+itemBases["领主护铠"] = {
 	type = "Body Armour",
 	subType = "Armour",
 	socketLimit = 6,
@@ -59,7 +59,7 @@ itemBases["Lordly Plate"] = {
 	armour = { ArmourBase = 353, MovementPenalty = 5, },
 	req = { level = 35, str = 99, },
 }
-itemBases["Bronze Plate"] = {
+itemBases["青铜铠甲"] = {
 	type = "Body Armour",
 	subType = "Armour",
 	socketLimit = 6,
@@ -67,7 +67,7 @@ itemBases["Bronze Plate"] = {
 	armour = { ArmourBase = 373, MovementPenalty = 5, },
 	req = { level = 37, str = 104, },
 }
-itemBases["Battle Plate"] = {
+itemBases["战铠"] = {
 	type = "Body Armour",
 	subType = "Armour",
 	socketLimit = 6,
@@ -75,7 +75,7 @@ itemBases["Battle Plate"] = {
 	armour = { ArmourBase = 412, MovementPenalty = 5, },
 	req = { level = 41, str = 114, },
 }
-itemBases["Sun Plate"] = {
+itemBases["日光之铠"] = {
 	type = "Body Armour",
 	subType = "Armour",
 	socketLimit = 6,
@@ -83,7 +83,7 @@ itemBases["Sun Plate"] = {
 	armour = { ArmourBase = 451, MovementPenalty = 5, },
 	req = { level = 45, str = 124, },
 }
-itemBases["Colosseum Plate"] = {
+itemBases["决斗之铠"] = {
 	type = "Body Armour",
 	subType = "Armour",
 	socketLimit = 6,
@@ -91,7 +91,7 @@ itemBases["Colosseum Plate"] = {
 	armour = { ArmourBase = 491, MovementPenalty = 5, },
 	req = { level = 49, str = 134, },
 }
-itemBases["Majestic Plate"] = {
+itemBases["庄严之铠"] = {
 	type = "Body Armour",
 	subType = "Armour",
 	socketLimit = 6,
@@ -99,7 +99,7 @@ itemBases["Majestic Plate"] = {
 	armour = { ArmourBase = 530, MovementPenalty = 5, },
 	req = { level = 53, str = 144, },
 }
-itemBases["Golden Plate"] = {
+itemBases["金耀之铠"] = {
 	type = "Body Armour",
 	subType = "Armour",
 	socketLimit = 6,
@@ -107,7 +107,7 @@ itemBases["Golden Plate"] = {
 	armour = { ArmourBase = 559, MovementPenalty = 5, },
 	req = { level = 56, str = 152, },
 }
-itemBases["Crusader Plate"] = {
+itemBases["征战重铠"] = {
 	type = "Body Armour",
 	subType = "Armour",
 	socketLimit = 6,
@@ -115,16 +115,16 @@ itemBases["Crusader Plate"] = {
 	armour = { ArmourBase = 601, MovementPenalty = 5, },
 	req = { level = 59, str = 160, },
 }
-itemBases["Astral Plate"] = {
+itemBases["星芒战铠"] = {
 	type = "Body Armour",
 	subType = "Armour",
 	socketLimit = 6,
 	tags = { default = true, armour = true, body_armour = true, str_armour = true, },
-	implicit = "+(8-12)% to all Elemental Resistances",
+	implicit = "获得 +(8-12)% 火焰、冰霜、闪电抗性",
 	armour = { ArmourBase = 711, MovementPenalty = 5, },
 	req = { level = 62, str = 180, },
 }
-itemBases["Gladiator Plate"] = {
+itemBases["角斗重铠"] = {
 	type = "Body Armour",
 	subType = "Armour",
 	socketLimit = 6,
@@ -132,7 +132,7 @@ itemBases["Gladiator Plate"] = {
 	armour = { ArmourBase = 738, MovementPenalty = 5, },
 	req = { level = 65, str = 177, },
 }
-itemBases["Glorious Plate"] = {
+itemBases["荣耀战铠"] = {
 	type = "Body Armour",
 	subType = "Armour",
 	socketLimit = 6,
@@ -141,7 +141,7 @@ itemBases["Glorious Plate"] = {
 	req = { level = 68, str = 191, },
 }
 
-itemBases["Shabby Jerkin"] = {
+itemBases["破旧外套"] = {
 	type = "Body Armour",
 	subType = "Evasion",
 	socketLimit = 6,
@@ -149,7 +149,7 @@ itemBases["Shabby Jerkin"] = {
 	armour = { EvasionBase = 29, MovementPenalty = 3, },
 	req = { dex = 14, },
 }
-itemBases["Strapped Leather"] = {
+itemBases["扣环皮甲"] = {
 	type = "Body Armour",
 	subType = "Evasion",
 	socketLimit = 6,
@@ -157,7 +157,7 @@ itemBases["Strapped Leather"] = {
 	armour = { EvasionBase = 98, MovementPenalty = 3, },
 	req = { level = 9, dex = 32, },
 }
-itemBases["Buckskin Tunic"] = {
+itemBases["鹿皮外套"] = {
 	type = "Body Armour",
 	subType = "Evasion",
 	socketLimit = 6,
@@ -165,7 +165,7 @@ itemBases["Buckskin Tunic"] = {
 	armour = { EvasionBase = 176, MovementPenalty = 3, },
 	req = { level = 17, dex = 53, },
 }
-itemBases["Wild Leather"] = {
+itemBases["野性皮甲"] = {
 	type = "Body Armour",
 	subType = "Evasion",
 	socketLimit = 6,
@@ -173,7 +173,7 @@ itemBases["Wild Leather"] = {
 	armour = { EvasionBase = 255, MovementPenalty = 3, },
 	req = { level = 25, dex = 73, },
 }
-itemBases["Full Leather"] = {
+itemBases["连身皮甲"] = {
 	type = "Body Armour",
 	subType = "Evasion",
 	socketLimit = 6,
@@ -181,7 +181,7 @@ itemBases["Full Leather"] = {
 	armour = { EvasionBase = 284, MovementPenalty = 3, },
 	req = { level = 28, dex = 81, },
 }
-itemBases["Sun Leather"] = {
+itemBases["日光皮甲"] = {
 	type = "Body Armour",
 	subType = "Evasion",
 	socketLimit = 6,
@@ -189,7 +189,7 @@ itemBases["Sun Leather"] = {
 	armour = { EvasionBase = 324, MovementPenalty = 3, },
 	req = { level = 32, dex = 91, },
 }
-itemBases["Thief's Garb"] = {
+itemBases["窃贼之装"] = {
 	type = "Body Armour",
 	subType = "Evasion",
 	socketLimit = 6,
@@ -197,7 +197,7 @@ itemBases["Thief's Garb"] = {
 	armour = { EvasionBase = 353, MovementPenalty = 3, },
 	req = { level = 35, dex = 99, },
 }
-itemBases["Eelskin Tunic"] = {
+itemBases["鳗皮之衣"] = {
 	type = "Body Armour",
 	subType = "Evasion",
 	socketLimit = 6,
@@ -205,7 +205,7 @@ itemBases["Eelskin Tunic"] = {
 	armour = { EvasionBase = 373, MovementPenalty = 3, },
 	req = { level = 37, dex = 104, },
 }
-itemBases["Frontier Leather"] = {
+itemBases["边戍皮甲"] = {
 	type = "Body Armour",
 	subType = "Evasion",
 	socketLimit = 6,
@@ -213,7 +213,7 @@ itemBases["Frontier Leather"] = {
 	armour = { EvasionBase = 412, MovementPenalty = 3, },
 	req = { level = 41, dex = 114, },
 }
-itemBases["Glorious Leather"] = {
+itemBases["荣耀皮甲"] = {
 	type = "Body Armour",
 	subType = "Evasion",
 	socketLimit = 6,
@@ -221,7 +221,7 @@ itemBases["Glorious Leather"] = {
 	armour = { EvasionBase = 451, MovementPenalty = 3, },
 	req = { level = 45, dex = 124, },
 }
-itemBases["Coronal Leather"] = {
+itemBases["光耀皮甲"] = {
 	type = "Body Armour",
 	subType = "Evasion",
 	socketLimit = 6,
@@ -229,7 +229,7 @@ itemBases["Coronal Leather"] = {
 	armour = { EvasionBase = 491, MovementPenalty = 3, },
 	req = { level = 49, dex = 134, },
 }
-itemBases["Cutthroat's Garb"] = {
+itemBases["死神之装"] = {
 	type = "Body Armour",
 	subType = "Evasion",
 	socketLimit = 6,
@@ -237,7 +237,7 @@ itemBases["Cutthroat's Garb"] = {
 	armour = { EvasionBase = 530, MovementPenalty = 3, },
 	req = { level = 53, dex = 144, },
 }
-itemBases["Sharkskin Tunic"] = {
+itemBases["鲨皮之衣"] = {
 	type = "Body Armour",
 	subType = "Evasion",
 	socketLimit = 6,
@@ -245,7 +245,7 @@ itemBases["Sharkskin Tunic"] = {
 	armour = { EvasionBase = 559, MovementPenalty = 3, },
 	req = { level = 56, dex = 152, },
 }
-itemBases["Destiny Leather"] = {
+itemBases["命运皮甲"] = {
 	type = "Body Armour",
 	subType = "Evasion",
 	socketLimit = 6,
@@ -253,7 +253,7 @@ itemBases["Destiny Leather"] = {
 	armour = { EvasionBase = 601, MovementPenalty = 3, },
 	req = { level = 59, dex = 160, },
 }
-itemBases["Exquisite Leather"] = {
+itemBases["精制皮甲"] = {
 	type = "Body Armour",
 	subType = "Evasion",
 	socketLimit = 6,
@@ -261,7 +261,7 @@ itemBases["Exquisite Leather"] = {
 	armour = { EvasionBase = 704, MovementPenalty = 3, },
 	req = { level = 62, dex = 170, },
 }
-itemBases["Zodiac Leather"] = {
+itemBases["星辰皮甲"] = {
 	type = "Body Armour",
 	subType = "Evasion",
 	socketLimit = 6,
@@ -269,17 +269,17 @@ itemBases["Zodiac Leather"] = {
 	armour = { EvasionBase = 854, MovementPenalty = 3, },
 	req = { level = 65, dex = 197, },
 }
-itemBases["Assassin's Garb"] = {
+itemBases["暗影之装"] = {
 	type = "Body Armour",
 	subType = "Evasion",
 	socketLimit = 6,
 	tags = { default = true, armour = true, body_armour = true, dex_armour = true, },
-	implicit = "3% increased Movement Speed",
+	implicit = "移动速度提高 3%",
 	armour = { EvasionBase = 737, },
 	req = { level = 68, dex = 183, },
 }
 
-itemBases["Simple Robe"] = {
+itemBases["简易之袍"] = {
 	type = "Body Armour",
 	subType = "Energy Shield",
 	socketLimit = 6,
@@ -287,7 +287,7 @@ itemBases["Simple Robe"] = {
 	armour = { EnergyShieldBase = 12, MovementPenalty = 3, },
 	req = { int = 17, },
 }
-itemBases["Silken Vest"] = {
+itemBases["绸缎背心"] = {
 	type = "Body Armour",
 	subType = "Energy Shield",
 	socketLimit = 6,
@@ -295,7 +295,7 @@ itemBases["Silken Vest"] = {
 	armour = { EnergyShieldBase = 27, MovementPenalty = 3, },
 	req = { level = 11, int = 37, },
 }
-itemBases["Scholar's Robe"] = {
+itemBases["学者之袍"] = {
 	type = "Body Armour",
 	subType = "Energy Shield",
 	socketLimit = 6,
@@ -303,7 +303,7 @@ itemBases["Scholar's Robe"] = {
 	armour = { EnergyShieldBase = 39, MovementPenalty = 3, },
 	req = { level = 18, int = 55, },
 }
-itemBases["Silken Garb"] = {
+itemBases["丝绸之衣"] = {
 	type = "Body Armour",
 	subType = "Energy Shield",
 	socketLimit = 6,
@@ -311,7 +311,7 @@ itemBases["Silken Garb"] = {
 	armour = { EnergyShieldBase = 52, MovementPenalty = 3, },
 	req = { level = 25, int = 73, },
 }
-itemBases["Mage's Vestment"] = {
+itemBases["博学长衣"] = {
 	type = "Body Armour",
 	subType = "Energy Shield",
 	socketLimit = 6,
@@ -319,7 +319,7 @@ itemBases["Mage's Vestment"] = {
 	armour = { EnergyShieldBase = 58, MovementPenalty = 3, },
 	req = { level = 28, int = 81, },
 }
-itemBases["Silk Robe"] = {
+itemBases["丝质之袍"] = {
 	type = "Body Armour",
 	subType = "Energy Shield",
 	socketLimit = 6,
@@ -327,7 +327,7 @@ itemBases["Silk Robe"] = {
 	armour = { EnergyShieldBase = 65, MovementPenalty = 3, },
 	req = { level = 32, int = 91, },
 }
-itemBases["Cabalist Regalia"] = {
+itemBases["秘术法衣"] = {
 	type = "Body Armour",
 	subType = "Energy Shield",
 	socketLimit = 6,
@@ -335,7 +335,7 @@ itemBases["Cabalist Regalia"] = {
 	armour = { EnergyShieldBase = 71, MovementPenalty = 3, },
 	req = { level = 35, int = 99, },
 }
-itemBases["Sage's Robe"] = {
+itemBases["贤者之袍"] = {
 	type = "Body Armour",
 	subType = "Energy Shield",
 	socketLimit = 6,
@@ -343,7 +343,7 @@ itemBases["Sage's Robe"] = {
 	armour = { EnergyShieldBase = 74, MovementPenalty = 3, },
 	req = { level = 37, int = 104, },
 }
-itemBases["Silken Wrap"] = {
+itemBases["丝绒背心"] = {
 	type = "Body Armour",
 	subType = "Energy Shield",
 	socketLimit = 6,
@@ -351,7 +351,7 @@ itemBases["Silken Wrap"] = {
 	armour = { EnergyShieldBase = 82, MovementPenalty = 3, },
 	req = { level = 41, int = 114, },
 }
-itemBases["Conjurer's Vestment"] = {
+itemBases["咒者长衣"] = {
 	type = "Body Armour",
 	subType = "Energy Shield",
 	socketLimit = 6,
@@ -359,7 +359,7 @@ itemBases["Conjurer's Vestment"] = {
 	armour = { EnergyShieldBase = 89, MovementPenalty = 3, },
 	req = { level = 45, int = 124, },
 }
-itemBases["Spidersilk Robe"] = {
+itemBases["蛛丝之袍"] = {
 	type = "Body Armour",
 	subType = "Energy Shield",
 	socketLimit = 6,
@@ -367,7 +367,7 @@ itemBases["Spidersilk Robe"] = {
 	armour = { EnergyShieldBase = 96, MovementPenalty = 3, },
 	req = { level = 49, int = 134, },
 }
-itemBases["Destroyer Regalia"] = {
+itemBases["灭世法衣"] = {
 	type = "Body Armour",
 	subType = "Energy Shield",
 	socketLimit = 6,
@@ -375,7 +375,7 @@ itemBases["Destroyer Regalia"] = {
 	armour = { EnergyShieldBase = 104, MovementPenalty = 3, },
 	req = { level = 53, int = 144, },
 }
-itemBases["Savant's Robe"] = {
+itemBases["智者之袍"] = {
 	type = "Body Armour",
 	subType = "Energy Shield",
 	socketLimit = 6,
@@ -383,7 +383,7 @@ itemBases["Savant's Robe"] = {
 	armour = { EnergyShieldBase = 109, MovementPenalty = 3, },
 	req = { level = 56, int = 152, },
 }
-itemBases["Necromancer Silks"] = {
+itemBases["操灵者背心"] = {
 	type = "Body Armour",
 	subType = "Energy Shield",
 	socketLimit = 6,
@@ -391,16 +391,16 @@ itemBases["Necromancer Silks"] = {
 	armour = { EnergyShieldBase = 117, MovementPenalty = 3, },
 	req = { level = 59, int = 160, },
 }
-itemBases["Occultist's Vestment"] = {
+itemBases["秘术长衣"] = {
 	type = "Body Armour",
 	subType = "Energy Shield",
 	socketLimit = 6,
 	tags = { default = true, armour = true, body_armour = true, int_armour = true, },
-	implicit = "(3-10)% increased Spell Damage",
+	implicit = "法术伤害提高 (3-10)%",
 	armour = { EnergyShieldBase = 130, MovementPenalty = 3, },
 	req = { level = 62, int = 180, },
 }
-itemBases["Widowsilk Robe"] = {
+itemBases["毒蛛丝之袍"] = {
 	type = "Body Armour",
 	subType = "Energy Shield",
 	socketLimit = 6,
@@ -408,7 +408,7 @@ itemBases["Widowsilk Robe"] = {
 	armour = { EnergyShieldBase = 150, MovementPenalty = 3, },
 	req = { level = 65, int = 187, },
 }
-itemBases["Vaal Regalia"] = {
+itemBases["瓦尔法衣"] = {
 	type = "Body Armour",
 	subType = "Energy Shield",
 	socketLimit = 6,
@@ -417,7 +417,7 @@ itemBases["Vaal Regalia"] = {
 	req = { level = 68, int = 194, },
 }
 
-itemBases["Scale Vest"] = {
+itemBases["细鳞背心"] = {
 	type = "Body Armour",
 	subType = "Armour/Evasion",
 	socketLimit = 6,
@@ -425,7 +425,7 @@ itemBases["Scale Vest"] = {
 	armour = { ArmourBase = 27, EvasionBase = 27, MovementPenalty = 3, },
 	req = { str = 10, dex = 10, },
 }
-itemBases["Light Brigandine"] = {
+itemBases["轻锁甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Evasion",
 	socketLimit = 6,
@@ -433,7 +433,7 @@ itemBases["Light Brigandine"] = {
 	armour = { ArmourBase = 48, EvasionBase = 48, MovementPenalty = 3, },
 	req = { level = 8, str = 16, dex = 16, },
 }
-itemBases["Scale Doublet"] = {
+itemBases["合身鳞甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Evasion",
 	socketLimit = 6,
@@ -441,7 +441,7 @@ itemBases["Scale Doublet"] = {
 	armour = { ArmourBase = 97, EvasionBase = 97, MovementPenalty = 3, },
 	req = { level = 17, str = 28, dex = 28, },
 }
-itemBases["Infantry Brigandine"] = {
+itemBases["步兵锁甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Evasion",
 	socketLimit = 6,
@@ -449,7 +449,7 @@ itemBases["Infantry Brigandine"] = {
 	armour = { ArmourBase = 119, EvasionBase = 119, MovementPenalty = 3, },
 	req = { level = 21, str = 34, dex = 34, },
 }
-itemBases["Full Scale Armour"] = {
+itemBases["连身鳞甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Evasion",
 	socketLimit = 6,
@@ -457,7 +457,7 @@ itemBases["Full Scale Armour"] = {
 	armour = { ArmourBase = 156, EvasionBase = 156, MovementPenalty = 3, },
 	req = { level = 28, str = 43, dex = 43, },
 }
-itemBases["Soldier's Brigandine"] = {
+itemBases["战士锁甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Evasion",
 	socketLimit = 6,
@@ -465,7 +465,7 @@ itemBases["Soldier's Brigandine"] = {
 	armour = { ArmourBase = 178, EvasionBase = 178, MovementPenalty = 3, },
 	req = { level = 32, str = 48, dex = 48, },
 }
-itemBases["Field Lamellar"] = {
+itemBases["野战薄甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Evasion",
 	socketLimit = 6,
@@ -473,7 +473,7 @@ itemBases["Field Lamellar"] = {
 	armour = { ArmourBase = 194, EvasionBase = 194, MovementPenalty = 3, },
 	req = { level = 35, str = 53, dex = 53, },
 }
-itemBases["Wyrmscale Doublet"] = {
+itemBases["龙鳞战甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Evasion",
 	socketLimit = 6,
@@ -481,7 +481,7 @@ itemBases["Wyrmscale Doublet"] = {
 	armour = { ArmourBase = 210, EvasionBase = 210, MovementPenalty = 3, },
 	req = { level = 38, str = 57, dex = 57, },
 }
-itemBases["Hussar Brigandine"] = {
+itemBases["轻骑锁甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Evasion",
 	socketLimit = 6,
@@ -489,7 +489,7 @@ itemBases["Hussar Brigandine"] = {
 	armour = { ArmourBase = 232, EvasionBase = 232, MovementPenalty = 3, },
 	req = { level = 42, str = 62, dex = 62, },
 }
-itemBases["Full Wyrmscale"] = {
+itemBases["连身龙鳞战甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Evasion",
 	socketLimit = 6,
@@ -497,7 +497,7 @@ itemBases["Full Wyrmscale"] = {
 	armour = { ArmourBase = 254, EvasionBase = 254, MovementPenalty = 3, },
 	req = { level = 46, str = 68, dex = 68, },
 }
-itemBases["Commander's Brigandine"] = {
+itemBases["指挥者锁甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Evasion",
 	socketLimit = 6,
@@ -505,7 +505,7 @@ itemBases["Commander's Brigandine"] = {
 	armour = { ArmourBase = 275, EvasionBase = 275, MovementPenalty = 3, },
 	req = { level = 50, str = 73, dex = 73, },
 }
-itemBases["Battle Lamellar"] = {
+itemBases["争战鳞甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Evasion",
 	socketLimit = 6,
@@ -513,7 +513,7 @@ itemBases["Battle Lamellar"] = {
 	armour = { ArmourBase = 297, EvasionBase = 297, MovementPenalty = 3, },
 	req = { level = 54, str = 79, dex = 79, },
 }
-itemBases["Dragonscale Doublet"] = {
+itemBases["龙鳞护甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Evasion",
 	socketLimit = 6,
@@ -521,7 +521,7 @@ itemBases["Dragonscale Doublet"] = {
 	armour = { ArmourBase = 313, EvasionBase = 313, MovementPenalty = 3, },
 	req = { level = 57, str = 83, dex = 83, },
 }
-itemBases["Desert Brigandine"] = {
+itemBases["荒野锁铠"] = {
 	type = "Body Armour",
 	subType = "Armour/Evasion",
 	socketLimit = 6,
@@ -529,7 +529,7 @@ itemBases["Desert Brigandine"] = {
 	armour = { ArmourBase = 376, EvasionBase = 376, MovementPenalty = 3, },
 	req = { level = 60, str = 96, dex = 96, },
 }
-itemBases["Full Dragonscale"] = {
+itemBases["连身龙鳞铠"] = {
 	type = "Body Armour",
 	subType = "Armour/Evasion",
 	socketLimit = 6,
@@ -537,7 +537,7 @@ itemBases["Full Dragonscale"] = {
 	armour = { ArmourBase = 470, EvasionBase = 373, MovementPenalty = 3, },
 	req = { level = 63, str = 115, dex = 94, },
 }
-itemBases["General's Brigandine"] = {
+itemBases["将军铠甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Evasion",
 	socketLimit = 6,
@@ -545,7 +545,7 @@ itemBases["General's Brigandine"] = {
 	armour = { ArmourBase = 415, EvasionBase = 415, MovementPenalty = 3, },
 	req = { level = 66, str = 103, dex = 103, },
 }
-itemBases["Triumphant Lamellar"] = {
+itemBases["胜利盔甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Evasion",
 	socketLimit = 6,
@@ -554,7 +554,7 @@ itemBases["Triumphant Lamellar"] = {
 	req = { level = 69, str = 95, dex = 116, },
 }
 
-itemBases["Chainmail Vest"] = {
+itemBases["锁链背心"] = {
 	type = "Body Armour",
 	subType = "Armour/Energy Shield",
 	socketLimit = 6,
@@ -562,7 +562,7 @@ itemBases["Chainmail Vest"] = {
 	armour = { ArmourBase = 27, EnergyShieldBase = 8, MovementPenalty = 5, },
 	req = { str = 10, int = 10, },
 }
-itemBases["Chainmail Tunic"] = {
+itemBases["链甲外衣"] = {
 	type = "Body Armour",
 	subType = "Armour/Energy Shield",
 	socketLimit = 6,
@@ -570,7 +570,7 @@ itemBases["Chainmail Tunic"] = {
 	armour = { ArmourBase = 48, EnergyShieldBase = 12, MovementPenalty = 5, },
 	req = { level = 8, str = 16, int = 16, },
 }
-itemBases["Ringmail Coat"] = {
+itemBases["环甲外套"] = {
 	type = "Body Armour",
 	subType = "Armour/Energy Shield",
 	socketLimit = 6,
@@ -578,7 +578,7 @@ itemBases["Ringmail Coat"] = {
 	armour = { ArmourBase = 97, EnergyShieldBase = 21, MovementPenalty = 5, },
 	req = { level = 17, str = 28, int = 28, },
 }
-itemBases["Chainmail Doublet"] = {
+itemBases["护体锁甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Energy Shield",
 	socketLimit = 6,
@@ -586,7 +586,7 @@ itemBases["Chainmail Doublet"] = {
 	armour = { ArmourBase = 119, EnergyShieldBase = 25, MovementPenalty = 5, },
 	req = { level = 21, str = 34, int = 34, },
 }
-itemBases["Full Ringmail"] = {
+itemBases["连身环甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Energy Shield",
 	socketLimit = 6,
@@ -594,7 +594,7 @@ itemBases["Full Ringmail"] = {
 	armour = { ArmourBase = 156, EnergyShieldBase = 32, MovementPenalty = 5, },
 	req = { level = 28, str = 43, int = 43, },
 }
-itemBases["Full Chainmail"] = {
+itemBases["连身锁甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Energy Shield",
 	socketLimit = 6,
@@ -602,7 +602,7 @@ itemBases["Full Chainmail"] = {
 	armour = { ArmourBase = 178, EnergyShieldBase = 36, MovementPenalty = 5, },
 	req = { level = 32, str = 48, int = 48, },
 }
-itemBases["Holy Chainmail"] = {
+itemBases["圣语锁甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Energy Shield",
 	socketLimit = 6,
@@ -610,7 +610,7 @@ itemBases["Holy Chainmail"] = {
 	armour = { ArmourBase = 194, EnergyShieldBase = 39, MovementPenalty = 5, },
 	req = { level = 35, str = 53, int = 53, },
 }
-itemBases["Latticed Ringmail"] = {
+itemBases["精制环甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Energy Shield",
 	socketLimit = 6,
@@ -618,7 +618,7 @@ itemBases["Latticed Ringmail"] = {
 	armour = { ArmourBase = 216, EnergyShieldBase = 43, MovementPenalty = 5, },
 	req = { level = 39, str = 59, int = 59, },
 }
-itemBases["Crusader Chainmail"] = {
+itemBases["圣战锁甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Energy Shield",
 	socketLimit = 6,
@@ -626,7 +626,7 @@ itemBases["Crusader Chainmail"] = {
 	armour = { ArmourBase = 237, EnergyShieldBase = 47, MovementPenalty = 5, },
 	req = { level = 43, str = 64, int = 64, },
 }
-itemBases["Ornate Ringmail"] = {
+itemBases["华丽环甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Energy Shield",
 	socketLimit = 6,
@@ -634,7 +634,7 @@ itemBases["Ornate Ringmail"] = {
 	armour = { ArmourBase = 259, EnergyShieldBase = 51, MovementPenalty = 5, },
 	req = { level = 47, str = 69, int = 69, },
 }
-itemBases["Chain Hauberk"] = {
+itemBases["锁子长甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Energy Shield",
 	socketLimit = 6,
@@ -642,7 +642,7 @@ itemBases["Chain Hauberk"] = {
 	armour = { ArmourBase = 281, EnergyShieldBase = 55, MovementPenalty = 5, },
 	req = { level = 51, str = 75, int = 75, },
 }
-itemBases["Devout Chainmail"] = {
+itemBases["虔诚链甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Energy Shield",
 	socketLimit = 6,
@@ -650,7 +650,7 @@ itemBases["Devout Chainmail"] = {
 	armour = { ArmourBase = 302, EnergyShieldBase = 59, MovementPenalty = 5, },
 	req = { level = 55, str = 80, int = 80, },
 }
-itemBases["Loricated Ringmail"] = {
+itemBases["覆体环甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Energy Shield",
 	socketLimit = 6,
@@ -658,7 +658,7 @@ itemBases["Loricated Ringmail"] = {
 	armour = { ArmourBase = 325, EnergyShieldBase = 63, MovementPenalty = 5, },
 	req = { level = 58, str = 84, int = 84, },
 }
-itemBases["Conquest Chainmail"] = {
+itemBases["征战锁甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Energy Shield",
 	socketLimit = 6,
@@ -666,7 +666,7 @@ itemBases["Conquest Chainmail"] = {
 	armour = { ArmourBase = 387, EnergyShieldBase = 75, MovementPenalty = 5, },
 	req = { level = 61, str = 96, int = 96, },
 }
-itemBases["Elegant Ringmail"] = {
+itemBases["权贵环甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Energy Shield",
 	socketLimit = 6,
@@ -674,7 +674,7 @@ itemBases["Elegant Ringmail"] = {
 	armour = { ArmourBase = 377, EnergyShieldBase = 87, MovementPenalty = 5, },
 	req = { level = 64, str = 90, int = 105, },
 }
-itemBases["Saint's Hauberk"] = {
+itemBases["圣者链甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Energy Shield",
 	socketLimit = 6,
@@ -682,7 +682,7 @@ itemBases["Saint's Hauberk"] = {
 	armour = { ArmourBase = 443, EnergyShieldBase = 73, MovementPenalty = 5, },
 	req = { level = 67, str = 109, int = 94, },
 }
-itemBases["Saintly Chainmail"] = {
+itemBases["圣洁锁甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Energy Shield",
 	socketLimit = 6,
@@ -691,7 +691,7 @@ itemBases["Saintly Chainmail"] = {
 	req = { level = 70, str = 99, int = 115, },
 }
 
-itemBases["Padded Vest"] = {
+itemBases["薄衬衣"] = {
 	type = "Body Armour",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 6,
@@ -699,7 +699,7 @@ itemBases["Padded Vest"] = {
 	armour = { EvasionBase = 27, EnergyShieldBase = 8, MovementPenalty = 3, },
 	req = { dex = 10, int = 10, },
 }
-itemBases["Oiled Vest"] = {
+itemBases["防水背心"] = {
 	type = "Body Armour",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 6,
@@ -707,7 +707,7 @@ itemBases["Oiled Vest"] = {
 	armour = { EvasionBase = 54, EnergyShieldBase = 13, MovementPenalty = 3, },
 	req = { level = 9, dex = 17, int = 17, },
 }
-itemBases["Padded Jacket"] = {
+itemBases["长袖棉袄"] = {
 	type = "Body Armour",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 6,
@@ -715,7 +715,7 @@ itemBases["Padded Jacket"] = {
 	armour = { EvasionBase = 102, EnergyShieldBase = 22, MovementPenalty = 3, },
 	req = { level = 18, dex = 30, int = 30, },
 }
-itemBases["Oiled Coat"] = {
+itemBases["防水外衣"] = {
 	type = "Body Armour",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 6,
@@ -723,7 +723,7 @@ itemBases["Oiled Coat"] = {
 	armour = { EvasionBase = 124, EnergyShieldBase = 26, MovementPenalty = 3, },
 	req = { level = 22, dex = 35, int = 35, },
 }
-itemBases["Scarlet Raiment"] = {
+itemBases["炽红之衣"] = {
 	type = "Body Armour",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 6,
@@ -731,7 +731,7 @@ itemBases["Scarlet Raiment"] = {
 	armour = { EvasionBase = 156, EnergyShieldBase = 32, MovementPenalty = 3, },
 	req = { level = 28, dex = 43, int = 43, },
 }
-itemBases["Waxed Garb"] = {
+itemBases["蜡封束衣"] = {
 	type = "Body Armour",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 6,
@@ -739,7 +739,7 @@ itemBases["Waxed Garb"] = {
 	armour = { EvasionBase = 178, EnergyShieldBase = 36, MovementPenalty = 3, },
 	req = { level = 32, dex = 48, int = 48, },
 }
-itemBases["Bone Armour"] = {
+itemBases["骨制战甲"] = {
 	type = "Body Armour",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 6,
@@ -747,7 +747,7 @@ itemBases["Bone Armour"] = {
 	armour = { EvasionBase = 194, EnergyShieldBase = 39, MovementPenalty = 3, },
 	req = { level = 35, dex = 53, int = 53, },
 }
-itemBases["Quilted Jacket"] = {
+itemBases["菱纹外衣"] = {
 	type = "Body Armour",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 6,
@@ -755,7 +755,7 @@ itemBases["Quilted Jacket"] = {
 	armour = { EvasionBase = 221, EnergyShieldBase = 44, MovementPenalty = 3, },
 	req = { level = 40, dex = 60, int = 60, },
 }
-itemBases["Sleek Coat"] = {
+itemBases["滑布外套"] = {
 	type = "Body Armour",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 6,
@@ -763,7 +763,7 @@ itemBases["Sleek Coat"] = {
 	armour = { EvasionBase = 243, EnergyShieldBase = 48, MovementPenalty = 3, },
 	req = { level = 44, dex = 65, int = 65, },
 }
-itemBases["Crimson Raiment"] = {
+itemBases["绯红之衣"] = {
 	type = "Body Armour",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 6,
@@ -771,7 +771,7 @@ itemBases["Crimson Raiment"] = {
 	armour = { EvasionBase = 264, EnergyShieldBase = 52, MovementPenalty = 3, },
 	req = { level = 48, dex = 71, int = 71, },
 }
-itemBases["Lacquered Garb"] = {
+itemBases["漆彩束衣"] = {
 	type = "Body Armour",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 6,
@@ -779,7 +779,7 @@ itemBases["Lacquered Garb"] = {
 	armour = { EvasionBase = 286, EnergyShieldBase = 56, MovementPenalty = 3, },
 	req = { level = 52, dex = 76, int = 76, },
 }
-itemBases["Crypt Armour"] = {
+itemBases["地穴战甲"] = {
 	type = "Body Armour",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 6,
@@ -787,7 +787,7 @@ itemBases["Crypt Armour"] = {
 	armour = { EvasionBase = 308, EnergyShieldBase = 60, MovementPenalty = 3, },
 	req = { level = 56, dex = 82, int = 82, },
 }
-itemBases["Sentinel Jacket"] = {
+itemBases["哨兵之衣"] = {
 	type = "Body Armour",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 6,
@@ -795,7 +795,7 @@ itemBases["Sentinel Jacket"] = {
 	armour = { EvasionBase = 330, EnergyShieldBase = 64, MovementPenalty = 3, },
 	req = { level = 59, dex = 86, int = 86, },
 }
-itemBases["Varnished Coat"] = {
+itemBases["映彩外套"] = {
 	type = "Body Armour",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 6,
@@ -803,7 +803,7 @@ itemBases["Varnished Coat"] = {
 	armour = { EvasionBase = 387, EnergyShieldBase = 75, MovementPenalty = 3, },
 	req = { level = 62, dex = 96, int = 96, },
 }
-itemBases["Blood Raiment"] = {
+itemBases["血色之衣"] = {
 	type = "Body Armour",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 6,
@@ -811,7 +811,7 @@ itemBases["Blood Raiment"] = {
 	armour = { EvasionBase = 436, EnergyShieldBase = 70, MovementPenalty = 3, },
 	req = { level = 65, dex = 107, int = 90, },
 }
-itemBases["Sadist Garb"] = {
+itemBases["狂虐者束衣"] = {
 	type = "Body Armour",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 6,
@@ -819,17 +819,17 @@ itemBases["Sadist Garb"] = {
 	armour = { EvasionBase = 427, EnergyShieldBase = 88, MovementPenalty = 3, },
 	req = { level = 68, dex = 103, int = 109, },
 }
-itemBases["Carnal Armour"] = {
+itemBases["禁礼之甲"] = {
 	type = "Body Armour",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 6,
 	tags = { default = true, armour = true, body_armour = true, dex_int_armour = true, },
-	implicit = "+(20-25) to maximum Mana",
+	implicit = "+(20-25) 最大魔力",
 	armour = { EvasionBase = 353, EnergyShieldBase = 98, MovementPenalty = 3, },
 	req = { level = 71, dex = 88, int = 122, },
 }
 
-itemBases["Sacrificial Garb"] = {
+itemBases["祭礼束衣"] = {
 	type = "Body Armour",
 	subType = "Armour/Evasion/Energy Shield",
 	socketLimit = 6,
@@ -837,13 +837,13 @@ itemBases["Sacrificial Garb"] = {
 	armour = { ArmourBase = 329, EvasionBase = 329, EnergyShieldBase = 64, MovementPenalty = 3, },
 	req = { level = 72, str = 66, dex = 66, int = 66, },
 }
-itemBases["Golden Mantle"] = {
+itemBases["黄金战甲"] = {
 	type = "Body Armour",
 	subType = "Armour/Evasion/Energy Shield",
 	hidden = true,
 	socketLimit = 6,
 	tags = { default = true, armour = true, body_armour = true, str_dex_int_armour = true, not_for_sale = true, },
-	implicit = "+(15-25)% to all Elemental Resistances",
+	implicit = "获得 +(15-25)% 火焰、冰霜、闪电抗性",
 	armour = { ArmourBase = 75, EvasionBase = 75, EnergyShieldBase = 16, },
 	req = { level = 20, str = 8, dex = 8, int = 8, },
 }

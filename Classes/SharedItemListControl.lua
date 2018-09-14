@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Class: Item list
 -- Shared item list control.
@@ -12,10 +12,10 @@ local t_remove = table.remove
 local SharedItemListClass = common.NewClass("SharedItemList", "ListControl", function(self, anchor, x, y, width, height, itemsTab)
 	self.ListControl(anchor, x, y, width, height, 16, true, main.sharedItemList)
 	self.itemsTab = itemsTab
-	self.label = "^7Shared items:"
-	self.defaultText = "^x7F7F7FThis is a list of items that will be shared between all of\nyour builds.\nYou can add items to this list by dragging them from\none of the other lists."
+self.label = "^7Build之间分享装备:"
+self.defaultText = "^x7F7F7F这是一个装备列表，\n可以在你的所有Build之间分享你的装备。\n你可以从其他装备列表中拖放装备到\n这里列表中来."
 	self.dragTargetList = { }
-	self.controls.delete = common.New("ButtonControl", {"BOTTOMRIGHT",self,"TOPRIGHT"}, 0, -2, 60, 18, "Delete", function()
+self.controls.delete = common.New("ButtonControl", {"BOTTOMRIGHT",self,"TOPRIGHT"}, 0, -2, 60, 18, "删除", function()
 		self:OnSelDelete(self.selIndex, self.selValue)
 	end)
 	self.controls.delete.enabled = function()

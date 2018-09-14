@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Class: Passive Tree View
 -- Passive skill tree viewer.
@@ -293,8 +293,21 @@ function PassiveTreeViewClass:Draw(build, viewPort, inputEvents)
 			if group.isAscendancyStart then
 				if group.ascendancyName ~= spec.curAscendClassName then
 					SetDrawColor(1, 1, 1, 0.25)
-				end
-				self:DrawAsset(tree.assets["Classes"..group.ascendancyName], scrX, scrY, scale)
+				end			
+			 
+			 
+			    local s = string.gsub(group.ascendancyName, "([^%w%.%- ])", function(c) return string.format("%%%02x", string.byte(c)) end)
+				s=string.gsub(s, " ", "_")
+				s=string.gsub(s, "%%", "_")
+				 
+
+local f=io.open("2.txt","a+")
+f:write("Classes"..s.."\r\n")
+f:flush()
+f:close()
+
+
+				self:DrawAsset(tree.assets["Classes"..s], scrX, scrY, scale)
 				SetDrawColor(1, 1, 1)
 			end
 		elseif group.oo[3] then
@@ -594,13 +607,13 @@ function PassiveTreeViewClass:AddNodeName(tooltip, node, build)
 			end
 		end
 		if attribTotals["Str"] >= 40 then
-			tooltip:AddLine(16, "^7Can support "..colorCodes.STRENGTH.."Strength ^7threshold jewels")
+tooltip:AddLine(16, "^7可以支持"..colorCodes.STRENGTH.."力量需求型的 ^7门槛珠宝")
 		end
 		if attribTotals["Dex"] >= 40 then
-			tooltip:AddLine(16, "^7Can support "..colorCodes.DEXTERITY.."Dexterity ^7threshold jewels")
+tooltip:AddLine(16, "^7可以支持"..colorCodes.DEXTERITY.."敏捷需求型的 ^7门槛珠宝")
 		end
 		if attribTotals["Int"] >= 40 then
-			tooltip:AddLine(16, "^7Can support "..colorCodes.INTELLIGENCE.."Intelligence ^7threshold jewels")
+tooltip:AddLine(16, "^7可以支持"..colorCodes.INTELLIGENCE.."智慧需求型的 ^7门槛珠宝")
 		end
 	end
 end
@@ -616,9 +629,9 @@ function PassiveTreeViewClass:AddNodeTooltip(tooltip, node, build)
 		end
 		tooltip:AddSeparator(14)
 		if socket:IsEnabled() then
-			tooltip:AddLine(14, colorCodes.TIP.."Tip: Right click this socket to go to the items page and choose the jewel for this socket.")
+tooltip:AddLine(14, colorCodes.TIP.."提示: 右键点击插槽可以跳转到装备界面，进行珠宝的配置.")
 		end
-		tooltip:AddLine(14, colorCodes.TIP.."Tip: Hold Shift to hide this tooltip.")
+tooltip:AddLine(14, colorCodes.TIP.."提示: 按住Shift隐藏提示.")
 		return
 	end
 	
@@ -686,38 +699,38 @@ function PassiveTreeViewClass:AddNodeTooltip(tooltip, node, build)
 				pathOutput = calcFunc({ addNodes = pathNodes })
 			end
 		end
-		local count = build:AddStatComparesToTooltip(tooltip, calcBase, nodeOutput, node.alloc and "^7Unallocating this node will give you:" or "^7Allocating this node will give you:")
+local count = build:AddStatComparesToTooltip(tooltip, calcBase, nodeOutput, node.alloc and "^7取消这个天赋点会让你：:" or "^7点亮这个天赋点会给你:")
 		if pathLength > 1 then
-			count = count + build:AddStatComparesToTooltip(tooltip, calcBase, pathOutput, node.alloc and "^7Unallocating this node and all nodes depending on it will give you:" or "^7Allocating this node and all nodes leading to it will give you:", pathLength)
+count = count + build:AddStatComparesToTooltip(tooltip, calcBase, pathOutput, node.alloc and "^7取消这个天赋点和关联节点会让你:" or "^7点亮这个天赋点和关联节点会给你:", pathLength)
 		end
 		if count == 0 then
-			tooltip:AddLine(14, string.format("^7No changes from %s this node%s.", node.alloc and "unallocating" or "allocating", pathLength > 1 and " or the nodes leading to it" or ""))
+tooltip:AddLine(14, string.format("^7 %s这个天赋点%s，没有任何变化", node.alloc and "取消" or "点亮", pathLength > 1 and " 和其关联节点" or ""))
 		end
-		tooltip:AddLine(14, colorCodes.TIP.."Tip: Press Ctrl+D to disable the display of stat differences.")
+tooltip:AddLine(14, colorCodes.TIP.."提示: 按下 Ctrl+D 可以隐藏节点加成预览.")
 	else
 		tooltip:AddSeparator(14)
-		tooltip:AddLine(14, colorCodes.TIP.."Tip: Press Ctrl+D to enable the display of stat differences.")
+tooltip:AddLine(14, colorCodes.TIP.."提示: 按下 Ctrl+D 可以显示节点加成预览")
 	end
 
 	-- Pathing distance
 	tooltip:AddSeparator(14)
 	if node.path and #node.path > 0 then
 		if self.traceMode and isValueInArray(self.tracePath, node) then
-			tooltip:AddLine(14, "^7"..#self.tracePath .. " nodes in trace path")
+tooltip:AddLine(14, "^7距离 "..#self.tracePath .. " 个天赋点")
 		else
-			tooltip:AddLine(14, "^7"..#node.path .. " points to node")
+tooltip:AddLine(14, "^7距离 "..#node.path .. " 个天赋点")
 			if #node.path > 1 then
 				-- Handy hint!
 				tooltip:AddLine(14, colorCodes.TIP)
-				tooltip:AddLine(14, "Tip: To reach this node by a different path, hold Shift, then trace the path and click this node")
+tooltip:AddLine(14, "提示: 想查看其它路径到这个天赋点的加成，可以按住Shift然后一个个点鼠标短时间停留，然后一路过来")
 			end
 		end
 	end
 	if node.type == "Socket" then
-		tooltip:AddLine(14, colorCodes.TIP.."Tip: Hold Shift to hide this tooltip.")
+tooltip:AddLine(14, colorCodes.TIP.."提示: 按住Shift隐藏提示.")
 	end
 	if node.depends and #node.depends > 1 then
 		tooltip:AddSeparator(14)
-		tooltip:AddLine(14, "^7"..#node.depends .. " points gained from unallocating these nodes")
+tooltip:AddLine(14, "^7取消这些节点可以让你获得 "..#node.depends .. "点未使用的天赋点")
 	end
 end

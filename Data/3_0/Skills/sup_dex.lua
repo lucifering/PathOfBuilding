@@ -7,8 +7,8 @@
 local skills, mod, flag, skill = ...
 
 skills["SupportAddedColdDamage"] = {
-	name = "Added Cold Damage",
-	description = "Supports any skill that hits enemies.",
+	name = "附加冰霜伤害(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 1, 10, },
@@ -69,8 +69,8 @@ skills["SupportAddedColdDamage"] = {
 	},
 }
 skills["SupportAdditionalAccuracy"] = {
-	name = "Additional Accuracy",
-	description = "Supports attack skills.",
+	name = "额外命中(辅)",
+	description = "辅助攻击技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 1, 56, },
@@ -129,8 +129,8 @@ skills["SupportAdditionalAccuracy"] = {
 	},
 }
 skills["SupportBlind"] = {
-	name = "Blind",
-	description = "Supports any skill that hits enemies.",
+	name = "致盲(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -190,8 +190,8 @@ skills["SupportBlind"] = {
 	},
 }
 skills["SupportBlockReduction"] = {
-	name = "Block Chance Reduction",
-	description = "Supports any skill that hits enemies.",
+	name = "减少格挡几率(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -251,8 +251,8 @@ skills["SupportBlockReduction"] = {
 	},
 }
 skills["SupportCastOnCrit"] = {
-	name = "Cast On Critical Strike",
-	description = "Must support both an attack skill and a spell skill to work. The attack skill will trigger a spell when it critically strikes an enemy. Cannot support totems, traps, or mines. Vaal skills and skills that reserve mana cannot be triggered.",
+	name = "暴击时施放(辅)",
+	description = "必须同时连接一个攻击技能和一个法术技能才能生效. 法术技能会在攻击技能暴击敌人时施放. 无法辅助图腾, 陷阱或地雷. 瓦尔技能和魔力保留类技能无法被触发施放",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 1, 36, },
@@ -316,8 +316,8 @@ skills["SupportCastOnCrit"] = {
 	},
 }
 skills["SupportCastOnDeath"] = {
-	name = "Cast on Death",
-	description = "Each supported spell skill will be triggered when you die. Cannot support skills used by totems, traps, or mines. Vaal skills and skills that reserve mana cannot be triggered.",
+	name = "死亡时施放(辅)",
+	description = "所有被辅助的法术技能会在你被击败时施放. 无法辅助图腾, 陷阱或地雷所施放的技能. 瓦尔技能或魔力保留类技能无法被触发施放",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 36, },
@@ -380,8 +380,8 @@ skills["SupportCastOnDeath"] = {
 	},
 }
 skills["SupportChain"] = {
-	name = "Chain",
-	description = "Supports projectile skills, and any other skills that chain.",
+	name = "连锁(辅)",
+	description = "辅助投射物和其他任意能连锁的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 23, 3, 54, 56, },
@@ -442,8 +442,8 @@ skills["SupportChain"] = {
 	},
 }
 skills["SupportChanceToFlee"] = {
-	name = "Chance to Flee",
-	description = "Supports any skill that hits enemies.",
+	name = "几率逃跑(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 1, 10, },
@@ -502,8 +502,8 @@ skills["SupportChanceToFlee"] = {
 	},
 }
 skills["SupportGemFrenzyPowerOnTrapTrigger"] = {
-	name = "Charged Traps",
-	description = "Supports skills which throw traps.",
+	name = "充能陷阱辅助宝石",
+	description = "可投掷陷阱的技能。",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 37, },
@@ -566,8 +566,8 @@ skills["SupportGemFrenzyPowerOnTrapTrigger"] = {
 	},
 }
 skills["SupportClusterTrap"] = {
-	name = "Cluster Traps",
-	description = "Supports traps skills, making them throw extra traps randomly around the targeted location.",
+	name = "散弹陷阱(辅)",
+	description = "辅助陷阱技能, 使该技能在目标周围随机扔出额外陷阱",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 37, },
@@ -630,8 +630,8 @@ skills["SupportClusterTrap"] = {
 	},
 }
 skills["SupportColdPenetration"] = {
-	name = "Cold Penetration",
-	description = "Supports any skill that hits enemies, making those hits penetrate enemy cold resistance.",
+	name = "冰霜穿透(辅)",
+	description = "辅助任意击中敌人的技能, 使击中能穿透敌人的冰霜抗性",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -691,8 +691,8 @@ skills["SupportColdPenetration"] = {
 	},
 }
 skills["SupportCullingStrike"] = {
-	name = "Culling Strike",
-	description = "Supports any skill that hits enemies. If enemies are left below 10% of maximum life after being hit by these skills, they will be killed.",
+	name = "终结(辅)",
+	description = "辅助任意击中敌人的技能, 如果敌人在被击中后小于 10% 最大生命值则会被立即击败",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -756,8 +756,8 @@ skills["SupportCullingStrike"] = {
 	},
 }
 skills["SupportDeadlyAilments"] = {
-	name = "Deadly Ailments",
-	description = "Supports any skill that hits enemies.",
+	name = "致命异常状态(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -818,8 +818,8 @@ skills["SupportDeadlyAilments"] = {
 	},
 }
 skills["SupportAdditionalQuality"] = {
-	name = "Enhance",
-	description = "Supports any skill gem. Once this gem reaches level 2 or above, will raise the quality of supported gems. Cannot support skills that don't come from gems.",
+	name = "增幅(辅)",
+	description = "辅助任意技能. 当该宝石达到 2 级或以上时, 提升被辅助技能的品质. 无法辅助非技能宝石带来的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { },
@@ -850,8 +850,8 @@ skills["SupportAdditionalQuality"] = {
 	},
 }
 skills["SupportFasterAttack"] = {
-	name = "Faster Attacks",
-	description = "Supports attack skills.",
+	name = "快速攻击(辅)",
+	description = "辅助攻击技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 1, 56, },
@@ -911,8 +911,8 @@ skills["SupportFasterAttack"] = {
 	},
 }
 skills["SupportFasterProjectiles"] = {
-	name = "Faster Projectiles",
-	description = "Supports projectile skills.",
+	name = "快速投射(辅)",
+	description = "辅助投射物技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 3, 14, 54, 56, },
@@ -974,8 +974,8 @@ skills["SupportFasterProjectiles"] = {
 	},
 }
 skills["SupportFork"] = {
-	name = "Fork",
-	description = "Supports projectile skills, making their projectiles fork into two projectiles the first time they hit an enemy and don't pierce it.",
+	name = "分裂(辅)",
+	description = "辅助投射物技能, 使该技能的投射物在首次击中敌人时不再穿透并分裂成 2 个",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 3, 54, 56, },
@@ -1036,8 +1036,8 @@ skills["SupportFork"] = {
 	},
 }
 skills["SupportGreaterMultipleProjectiles"] = {
-	name = "Greater Multiple Projectiles",
-	description = "Supports projectile skills.",
+	name = "高阶多重投射(辅)",
+	description = "辅助投射物技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 3, 54, 56, 73, },
@@ -1100,8 +1100,8 @@ skills["SupportGreaterMultipleProjectiles"] = {
 	},
 }
 skills["SupportDamageAgainstChilled"] = {
-	name = "Hypothermia",
-	description = "Supports any skill that deals damage.",
+	name = "急冻(辅)",
+	description = "辅助任意造成伤害的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 10, 1, 40, },
@@ -1164,8 +1164,8 @@ skills["SupportDamageAgainstChilled"] = {
 	},
 }
 skills["SupportFrenzyChargeOnSlayingFrozenEnemy"] = {
-	name = "Ice Bite",
-	description = "Supports any skill you use to hit enemies yourself. Cannot support skills used by totems, traps, or mines.",
+	name = "霜咬(辅)",
+	description = "辅助任意你用来击中敌人的技能. 无法辅助图腾, 陷阱和地雷所施放的技能.",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -1230,8 +1230,8 @@ skills["SupportFrenzyChargeOnSlayingFrozenEnemy"] = {
 	},
 }
 skills["SupportLesserMultipleProjectiles"] = {
-	name = "Lesser Multiple Projectiles",
-	description = "Supports projectile skills.",
+	name = "低阶多重投射(辅)",
+	description = "辅助投射物技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 3, 54, 56, 73, },
@@ -1294,8 +1294,8 @@ skills["SupportLesserMultipleProjectiles"] = {
 	},
 }
 skills["SupportLesserPoison"] = {
-	name = "Lesser Poison",
-	description = "Supports any skill that hits enemies.",
+	name = "低阶毒化(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -1357,8 +1357,8 @@ skills["SupportLesserPoison"] = {
 	},
 }
 skills["SupportManaLeech"] = {
-	name = "Mana Leech",
-	description = "Supports any skill that hits enemies, causing those hits to leech mana based on damage dealt.",
+	name = "魔力偷取(辅)",
+	description = "辅助任意击中敌人的技能, 击中造成的伤害偷取魔力",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -1418,8 +1418,8 @@ skills["SupportManaLeech"] = {
 	},
 }
 skills["SupportGemMirageArcher"] = {
-	name = "Mirage Archer",
-	description = "Supports attack skills that can be used with bows. Supported skills can only be used with bows. Cannot support Vaal skills, minion skills, movement skills, or skills used by totems, traps, or mines.",
+	name = "幻影射手(辅)",
+	description = "能够辅助使用弓的攻击技能。被辅助的技能只能用弓才能生效。无法辅助瓦尔技能，召唤生物技能，移动类技能或图腾，陷阱和地雷使用的技能。",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 69, },
@@ -1485,8 +1485,8 @@ skills["SupportGemMirageArcher"] = {
 	},
 }
 skills["SupportMultiTrap"] = {
-	name = "Multiple Traps",
-	description = "Supports traps skills, making them throw extra traps in a line.",
+	name = "多重陷阱(辅)",
+	description = "辅助陷阱技能, 使该技能在一条线上扔出额外陷阱",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 37, },
@@ -1548,8 +1548,8 @@ skills["SupportMultiTrap"] = {
 	},
 }
 skills["SupportOnslaught"] = {
-	name = "Onslaught",
-	description = "Supports any skill that hits enemies.",
+	name = "猛攻(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -1610,8 +1610,8 @@ skills["SupportOnslaught"] = {
 	},
 }
 skills["SupportPierce"] = {
-	name = "Pierce",
-	description = "Supports projectile skills.",
+	name = "穿透(辅)",
+	description = "辅助投射物技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 3, 54, 56, },
@@ -1672,8 +1672,8 @@ skills["SupportPierce"] = {
 	},
 }
 skills["SupportPointBlank"] = {
-	name = "Point Blank",
-	description = "Supports projectile skills.",
+	name = "零点射击(辅)",
+	description = "辅助投射物技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 48, 56, },
@@ -1734,8 +1734,8 @@ skills["SupportPointBlank"] = {
 	},
 }
 skills["SupportPoison"] = {
-	name = "Poison",
-	description = "Supports any skill that hits enemies.",
+	name = "毒化(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -1796,8 +1796,8 @@ skills["SupportPoison"] = {
 	},
 }
 skills["SupportRapidDecay"] = {
-	name = "Swift Affliction",
-	description = "Supports any skill that has a duration, or can hit enemies to inflict ailments on them.",
+	name = "极速腐化(辅)",
+	description = "辅助任意有持续时间或能通过击中造成异常状态的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 12, 55, 10, 1, },
@@ -1858,8 +1858,8 @@ skills["SupportRapidDecay"] = {
 	},
 }
 skills["SupportSlowerProjectiles"] = {
-	name = "Slower Projectiles",
-	description = "Supports projectile skills.",
+	name = "投射物减速(辅)",
+	description = "辅助投射物技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 3, 14, 54, 56, },
@@ -1920,8 +1920,8 @@ skills["SupportSlowerProjectiles"] = {
 	},
 }
 skills["SupportTrap"] = {
-	name = "Trap",
-	description = "Supports spells, or attacks that use bows or wands. Instead of using that skill, you will throw a trap that will use the skill for you when an enemy walks near it.",
+	name = "陷阱(辅)",
+	description = "辅助法术技能, 或使用弓箭和法杖的攻击技能. 你将不再直接施放被辅助的技能, 技能会以陷阱的形式被投出",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 17, },
@@ -1989,8 +1989,8 @@ skills["SupportTrap"] = {
 	},
 }
 skills["SupportTrapCooldown"] = {
-	name = "Advanced Traps",
-	description = "Supports skills which throw traps.",
+	name = "陷阱冷却(辅)",
+	description = "辅助陷阱技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 37, },
@@ -2052,8 +2052,8 @@ skills["SupportTrapCooldown"] = {
 	},
 }
 skills["SupportTrapAndMineDamage"] = {
-	name = "Trap and Mine Damage",
-	description = "Supports trap or mine skills.",
+	name = "陷阱及地雷伤害(辅)",
+	description = "辅助陷阱或地雷技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 37, 41, },
@@ -2115,8 +2115,8 @@ skills["SupportTrapAndMineDamage"] = {
 	},
 }
 skills["SupportPhysicalProjectileAttackDamage"] = {
-	name = "Vicious Projectiles",
-	description = "Supports projectile attack skills.",
+	name = "邪恶投掷(辅)",
+	description = "辅助发射投射物的攻击技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 48, 56, },
@@ -2179,8 +2179,8 @@ skills["SupportPhysicalProjectileAttackDamage"] = {
 	},
 }
 skills["SupportDebilitate"] = {
-	name = "Vile Toxins",
-	description = "Supports any skill that hits enemies.",
+	name = "猛毒(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -2242,8 +2242,8 @@ skills["SupportDebilitate"] = {
 	},
 }
 skills["SupportVoidManipulation"] = {
-	name = "Void Manipulation",
-	description = "Supports any skill that deals damage.",
+	name = "虚空操纵(辅)",
+	description = "辅助任意造成伤害的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 10, 1, 40, },
@@ -2304,8 +2304,8 @@ skills["SupportVoidManipulation"] = {
 	},
 }
 skills["SupportParallelProjectiles"] = {
-	name = "Volley",
-	description = "Supports skills that fire projectiles from the user. Does not affect projectiles fired from other locations as secondary effects.",
+	name = "齐射(辅)",
+	description = "只能辅助玩家自生产生的投射物。不会影响其他来源或二次产生的投射物。",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 68, },
@@ -2368,8 +2368,8 @@ skills["SupportParallelProjectiles"] = {
 	},
 }
 skills["SupportChaosAttacks"] = {
-	name = "Withering Touch",
-	description = "Supports attack skills.",
+	name = "凋零之触（辅）",
+	description = "辅助攻击技能。",
 	color = 2,
 	support = true,
 	requireSkillTypes = { 1, },

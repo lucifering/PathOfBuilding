@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Module: Calcs Tab
 -- Calculations breakdown tab for the current build.
@@ -22,10 +22,10 @@ for _, targetVersion in ipairs(targetVersionList) do
 end
 
 local buffModeDropList = {
-	{ label = "Unbuffed", buffMode = "UNBUFFED" },
-	{ label = "Buffed", buffMode = "BUFFED" },
-	{ label = "In Combat", buffMode = "COMBAT" },
-	{ label = "Effective DPS", buffMode = "EFFECTIVE" } 
+{ label = "无buff", buffMode = "UNBUFFED" },
+{ label = "Buff", buffMode = "BUFFED" },
+{ label = "战斗模式", buffMode = "COMBAT" },
+{ label = "有效 DPS", buffMode = "EFFECTIVE" } 
 }
 
 local CalcsTabClass = common.NewClass("CalcsTab", "UndoHandler", "ControlHost", "Control", function(self, build)
@@ -45,22 +45,22 @@ local CalcsTabClass = common.NewClass("CalcsTab", "UndoHandler", "ControlHost", 
 	self.sectionList = { }
 
 	-- Special section for skill/mode selection
-	self:NewSection(3, "SkillSelect", 1, "View Skill Details", colorCodes.NORMAL, {
-		{ label = "Socket Group", { controlName = "mainSocketGroup", 
+self:NewSection(3, "SkillSelect", 1, "查看技能详情", colorCodes.NORMAL, {
+{ label = "技能组", { controlName = "mainSocketGroup", 
 			control = common.New("DropDownControl", nil, 0, 0, 300, 16, nil, function(index, value) 
 				self.input.skill_number = index 
 				self:AddUndoState()
 				self.build.buildFlag = true
 			end)
 		}, },
-		{ label = "Active Skill", { controlName = "mainSkill", 
+{ label = "主动技能", { controlName = "mainSkill", 
 			control = common.New("DropDownControl", nil, 0, 0, 300, 16, nil, function(index, value)
 				local mainSocketGroup = self.build.skillsTab.socketGroupList[self.input.skill_number]
 				mainSocketGroup.mainActiveSkillCalcs = index
 				self.build.buildFlag = true
 			end)
 		}, },
-		{ label = "Skill Part", playerFlag = "multiPart", { controlName = "mainSkillPart", 
+{ label = "Skill Part", playerFlag = "multiPart", { controlName = "mainSkillPart", 
 			control = common.New("DropDownControl", nil, 0, 0, 130, 16, nil, function(index, value)
 				local mainSocketGroup = self.build.skillsTab.socketGroupList[self.input.skill_number]
 				local srcInstance = mainSocketGroup.displaySkillListCalcs[mainSocketGroup.mainActiveSkillCalcs].activeEffect.srcInstance
@@ -69,13 +69,13 @@ local CalcsTabClass = common.NewClass("CalcsTab", "UndoHandler", "ControlHost", 
 				self.build.buildFlag = true
 			end)
 		}, },
-		{ label = "Show Minion Stats", flag = "haveMinion", { controlName = "showMinion", 
+{ label = "显示召唤生物状态", flag = "haveMinion", { controlName = "showMinion", 
 			control = common.New("CheckBoxControl", nil, 0, 0, 18, nil, function(state)
 				self.input.showMinion = state
 				self:AddUndoState()
 			end, "Show stats for the minion instead of the player.")
 		}, },
-		{ label = "Minion", flag = "minion", { controlName = "mainSkillMinion",
+{ label = "召唤生物", flag = "minion", { controlName = "mainSkillMinion",
 			control = common.New("DropDownControl", nil, 0, 0, 160, 16, nil, function(index, value)
 				local mainSocketGroup = self.build.skillsTab.socketGroupList[self.input.skill_number]
 				local srcInstance = mainSocketGroup.displaySkillListCalcs[mainSocketGroup.mainActiveSkillCalcs].activeEffect.srcInstance
@@ -88,12 +88,12 @@ local CalcsTabClass = common.NewClass("CalcsTab", "UndoHandler", "ControlHost", 
 				self.build.buildFlag = true
 			end)
 		} },
-		{ label = "Spectre Library", flag = "spectre", { controlName = "mainSkillMinionLibrary",
+{ label = "内置幽魂数据", flag = "spectre", { controlName = "mainSkillMinionLibrary",
 			control = common.New("ButtonControl", nil, 0, 0, 100, 16, "Manage Spectres...", function()
 				self.build:OpenSpectreLibrary()
 			end)
 		} },
-		{ label = "Minion Skill", flag = "haveMinion", { controlName = "mainSkillMinionSkill",
+{ label = "召唤生物技能", flag = "haveMinion", { controlName = "mainSkillMinionSkill",
 			control = common.New("DropDownControl", nil, 0, 0, 200, 16, nil, function(index, value)
 				local mainSocketGroup = self.build.skillsTab.socketGroupList[self.input.skill_number]
 				local srcInstance = mainSocketGroup.displaySkillListCalcs[mainSocketGroup.mainActiveSkillCalcs].activeEffect.srcInstance
@@ -102,24 +102,24 @@ local CalcsTabClass = common.NewClass("CalcsTab", "UndoHandler", "ControlHost", 
 				self.build.buildFlag = true
 			end)
 		} },
-		{ label = "Calculation Mode", { 
+{ label = "计算模式", { 
 			controlName = "mode", 
 			control = common.New("DropDownControl", nil, 0, 0, 100, 16, buffModeDropList, function(index, value) 
 				self.input.misc_buffMode = value.buffMode 
 				self:AddUndoState()
 				self.build.buildFlag = true
 			end, [[
-This controls the calculation of the stats shown in this tab.
-The stats in the sidebar are always shown in Effective DPS mode, regardless of this setting.
+切换这个来让下面面板显示不同状态下的计算数据。
+不管你这里切换的模式，左边侧边栏显示的都是【有效 DPS】模式。
 
-Unbuffed: No auras, buffs, or other support skills or effects will apply. This is equivelant to standing in town.
-Buffed: Aura and buff skills apply. This is equivelant to standing in your hideout with auras and buffs turned on.
-In Combat: Charges and combat buffs such as Onslaught will also apply. This will show your character sheet stats in combat.
-Effective DPS: Curses and enemy properties (such as resistances and status conditions) will also apply. This estimates your true DPS.]]) 
+无Buff：没有光环、buff或者其他技能影响的情况下，相当于站在城里的数值。
+Buff：光环和buff会生效，相当于你在藏身处的数值。
+战斗模式：会计算充能球，猛攻之类的buff，相当于角色在进行战斗的数值。
+有效 DPS：还会计算诅咒和敌人状态（比如敌人的抗性和一些特殊状态），这显示了你的真正DPS。]]) 
 		}, },
-		{ label = "Aura and Buff Skills", flag = "buffs", textSize = 12, { format = "{output:BuffList}", { breakdown = "SkillBuffs" } }, },
-		{ label = "Combat Buffs", flag = "combat", textSize = 12, { format = "{output:CombatList}" }, },
-		{ label = "Curses and Debuffs", flag = "effective", textSize = 12, { format = "{output:CurseList}", { breakdown = "SkillDebuffs" } }, },
+{ label = "光环和Buff技能", flag = "buffs", textSize = 12, { format = "{output:BuffList}", { breakdown = "SkillBuffs" } }, },
+{ label = "战斗Buffs", flag = "combat", textSize = 12, { format = "{output:CombatList}" }, },
+{ label = "诅咒和Debuff", flag = "effective", textSize = 12, { format = "{output:CurseList}", { breakdown = "SkillDebuffs" } }, },
 	}, function(section)
 		self.build:RefreshSkillSelectControls(section.controls, self.input.skill_number, "Calcs")
 		section.controls.showMinion.state = self.input.showMinion

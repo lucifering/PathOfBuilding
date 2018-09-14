@@ -7,8 +7,8 @@
 local skills, mod, flag, skill = ...
 
 skills["SupportAddedFireDamage"] = {
-	name = "Added Fire Damage",
-	description = "Supports any skill that hits enemies.",
+	name = "附加火焰伤害(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -68,8 +68,8 @@ skills["SupportAddedFireDamage"] = {
 	},
 }
 skills["SupportSpiritStrike"] = {
-	name = "Ancestral Call",
-	description = "Supports single-target melee attack skills, causing them to attack multiple targets simultaneously. If supporting a minion attack skill, the minion's skills will not also attack multiple targets. Cannot support triggered skills.",
+	name = "先祖召唤(辅)",
+	description = "能够辅助单体近战攻击技能，使该技能可以同时作用于多个目标，如果用来辅助召唤生物的攻击技能，则该召唤生物不会攻击多个目标。",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 25, },
@@ -130,8 +130,8 @@ skills["SupportSpiritStrike"] = {
 	},
 }
 skills["SupportBloodMagic"] = {
-	name = "Blood Magic",
-	description = "Supports any skill.",
+	name = "血魔法(辅)",
+	description = "辅助任意技能",
 	color = 1,
 	support = true,
 	requireSkillTypes = { },
@@ -191,8 +191,8 @@ skills["SupportBloodMagic"] = {
 	},
 }
 skills["SupportBloodlust"] = {
-	name = "Bloodlust",
-	description = "Supports melee attack skills, causing them to deal more damage against bleeding enemies, but preventing those skills from inflicting bleeding on enemies in any way.",
+	name = "嗜血(辅)",
+	description = "辅助近战攻击技能, 使该技能对流血敌人造成更多伤害, 但该技能无法再使敌人流血",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 24, },
@@ -253,8 +253,8 @@ skills["SupportBloodlust"] = {
 	},
 }
 skills["SupportBrutality"] = {
-	name = "Brutality",
-	description = "Supports any skill that hits enemies.",
+	name = "残暴(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -316,8 +316,8 @@ skills["SupportBrutality"] = {
 	},
 }
 skills["SupportIncreasedBurningDamage"] = {
-	name = "Burning Damage",
-	description = "Supports any skill that hits enemies, or can deal burning damage directly.",
+	name = "增加燃烧伤害(辅)",
+	description = "辅助任意能击中敌人或能直接造成燃烧伤害的技能",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 10, 1, 29, },
@@ -377,8 +377,8 @@ skills["SupportIncreasedBurningDamage"] = {
 	},
 }
 skills["SupportCastOnMeleeKill"] = {
-	name = "Cast on Melee Kill",
-	description = "Must support both a melee attack skill and a spell skill to work. The attack skill will trigger a spell when it kills an enemy.  Cannot support totems, traps, or mines. Vaal skills and skills that reserve mana cannot be triggered.",
+	name = "近战击败时施放(辅)",
+	description = "必须同时连接一个近战攻击技能和一个法术技能才能生效. 法术技能会在攻击技能击败敌人时施放. 无法辅助图腾, 陷阱或地雷. 瓦尔技能和魔力保留类技能无法被触发施放",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 24, 36, },
@@ -441,8 +441,8 @@ skills["SupportCastOnMeleeKill"] = {
 	},
 }
 skills["SupportCastOnDamageTaken"] = {
-	name = "Cast when Damage Taken",
-	description = "Each supported spell skill will track damage you take, and be triggered when the total damage taken reaches a threshold. Cannot support skills used by totems, traps, or mines. Vaal skills and skills that reserve mana cannot be triggered.",
+	name = "受伤时施放(辅)",
+	description = "所有被辅助的法术技能会记录你受到的伤害, 当受到的总伤害达到指定值时触发该宝石技能. 无法辅助图腾, 陷阱或地雷所施放的技能. 瓦尔技能或魔力保留类技能无法被触发施放",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 36, },
@@ -507,8 +507,8 @@ skills["SupportCastOnDamageTaken"] = {
 	},
 }
 skills["SupportChanceToBleed"] = {
-	name = "Chance to Bleed",
-	description = "Supports attack skills. Cannot support minion skills.",
+	name = "几率流血(辅)",
+	description = "辅助攻击技能. 无法辅助召唤生物",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 1, },
@@ -571,8 +571,8 @@ skills["SupportChanceToBleed"] = {
 	},
 }
 skills["SupportColdToFire"] = {
-	name = "Cold to Fire",
-	description = "Supports any skill that hits enemies.",
+	name = "寒冰转烈焰(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -634,8 +634,8 @@ skills["SupportColdToFire"] = {
 	},
 }
 skills["SupportMeleeDamageOnFullLife"] = {
-	name = "Damage on Full Life",
-	description = "Supports attack skills, providing a bonus to all damage dealt by those skills while your life is full.",
+	name = "满血攻击物理伤害(辅)",
+	description = "辅助攻击技能, 当你满生命值时该技能造成的所有伤害增加",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 1, },
@@ -695,8 +695,8 @@ skills["SupportMeleeDamageOnFullLife"] = {
 	},
 }
 skills["SupportWeaponElementalDamage"] = {
-	name = "Elemental Damage with Attacks",
-	description = "Supports attack skills.",
+	name = "武器元素伤害(辅)",
+	description = "辅助攻击技能",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 1, 56, },
@@ -756,8 +756,8 @@ skills["SupportWeaponElementalDamage"] = {
 	},
 }
 skills["SupportAdditionalLevel"] = {
-	name = "Empower",
-	description = "Supports any skill gem. Once this gem reaches level 2 or above, will raise the level of supported gems. Cannot support skills that don't come from gems.",
+	name = "赋予(辅)",
+	description = "辅助任意技能. 当该宝石达到 2 级或以上时, 提升被辅助技能的等级. 无法辅助非技能宝石带来的技能",
 	color = 1,
 	support = true,
 	requireSkillTypes = { },
@@ -788,8 +788,8 @@ skills["SupportAdditionalLevel"] = {
 	},
 }
 skills["EnduranceChargeOnMeleeStun"] = {
-	name = "Endurance Charge on Melee Stun",
-	description = "Supports melee attack skills.",
+	name = "近战击晕获得耐力球(辅)",
+	description = "辅助近战攻击技能",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 24, },
@@ -851,8 +851,8 @@ skills["EnduranceChargeOnMeleeStun"] = {
 	},
 }
 skills["SupportFirePenetration"] = {
-	name = "Fire Penetration",
-	description = "Supports any skill that hits enemies, making those hits penetrate enemy fire resistance.",
+	name = "火焰穿透(辅)",
+	description = "辅助任意击中敌人的技能, 使击中能穿透敌人的火焰抗性",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -912,8 +912,8 @@ skills["SupportFirePenetration"] = {
 	},
 }
 skills["SupportFortify"] = {
-	name = "Fortify",
-	description = "Supports melee attack skills that are not triggered.",
+	name = "护体(辅)",
+	description = "辅助并非被触发施放的近战攻击技能",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 24, },
@@ -975,8 +975,8 @@ skills["SupportFortify"] = {
 	},
 }
 skills["SupportGenerosity"] = {
-	name = "Generosity",
-	description = "Supports aura skills that affect you and allies, increasing the aura's effect on allies, but preventing it from affecting you at all. Cannot support curse auras, or other auras that only affect enemies. Cannot support skills used by totems.",
+	name = "和善(辅)",
+	description = "辅助影响你和友军的光环技能. 增加光环对除你外的友军效果. 无法辅助诅咒类光环, 或其他只影响敌人的光环. 无法辅助图腾所施放的技能。",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 44, },
@@ -1036,8 +1036,8 @@ skills["SupportGenerosity"] = {
 	},
 }
 skills["SupportIncreasedDuration"] = {
-	name = "Increased Duration",
-	description = "Supports any skill with a duration.",
+	name = "持续时间延长(辅)",
+	description = "辅助任意有持续时间的技能",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 12, 55, },
@@ -1097,8 +1097,8 @@ skills["SupportIncreasedDuration"] = {
 	},
 }
 skills["SupportIronGrip"] = {
-	name = "Iron Grip",
-	description = "Supports attack skills that fire projectiles, making the increase to physical melee damage from strength also increase their physical projectile damage.",
+	name = "钢铁之握(辅)",
+	description = "辅助发射投射物的攻击技能, 使力量属性也会像增加近战物理伤害一样的增加投射物物理伤害",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 48, 56, },
@@ -1158,8 +1158,8 @@ skills["SupportIronGrip"] = {
 	},
 }
 skills["SupportIronWill"] = {
-	name = "Iron Will",
-	description = "Supports spell skills, making the increase to physical melee damage from strength also increase their spell damage.",
+	name = "钢铁意志(辅)",
+	description = "辅助法术技能. 使力量属性也会像增加近战物理伤害一样的增加法术伤害",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 10, 52, 59, 66, },
@@ -1219,8 +1219,8 @@ skills["SupportIronWill"] = {
 	},
 }
 skills["SupportItemQuantity"] = {
-	name = "Item Quantity",
-	description = "Supports any skill that can kill enemies.",
+	name = "物品数量增幅(辅)",
+	description = "辅助任意能击败敌人的技能",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 10, 1, 40, },
@@ -1279,8 +1279,8 @@ skills["SupportItemQuantity"] = {
 	},
 }
 skills["SupportKnockback"] = {
-	name = "Knockback",
-	description = "Supports any skill that hits enemies.",
+	name = "击退(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -1340,8 +1340,8 @@ skills["SupportKnockback"] = {
 	},
 }
 skills["SupportReducedDuration"] = {
-	name = "Less Duration",
-	description = "Supports any skill that has a duration.",
+	name = "持续时间缩短(辅)",
+	description = "辅助任意有持续时间的技能",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 12, 55, },
@@ -1402,8 +1402,8 @@ skills["SupportReducedDuration"] = {
 	},
 }
 skills["SupportLifeGainOnHit"] = {
-	name = "Life Gain on Hit",
-	description = "Supports attack skills.",
+	name = "击中生命回复(辅)",
+	description = "辅助攻击技能",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 1, 56, },
@@ -1463,8 +1463,8 @@ skills["SupportLifeGainOnHit"] = {
 	},
 }
 skills["SupportLifeLeech"] = {
-	name = "Life Leech",
-	description = "Supports any skill that hits enemies, causing those hits to leech life based on damage dealt.",
+	name = "生命偷取(辅)",
+	description = "辅助任意击中敌人的技能, 击中造成的伤害偷取生命",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 10, 1, },
@@ -1525,8 +1525,8 @@ skills["SupportLifeLeech"] = {
 	},
 }
 skills["SupportMaim"] = {
-	name = "Maim",
-	description = "Supports attack skills.",
+	name = "瘫痪(辅)",
+	description = "辅助攻击技能",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 1, },
@@ -1588,8 +1588,8 @@ skills["SupportMaim"] = {
 	},
 }
 skills["SupportMeleePhysicalDamage"] = {
-	name = "Melee Physical Damage",
-	description = "Supports melee attack skills.",
+	name = "近战物理伤害(辅)",
+	description = "辅助近战攻击技能",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 24, },
@@ -1650,8 +1650,8 @@ skills["SupportMeleePhysicalDamage"] = {
 	},
 }
 skills["SupportMeleeSplash"] = {
-	name = "Melee Splash",
-	description = "Supports single-target melee attack skills, causing their melee strike to deal splash damage around the target.",
+	name = "近战伤害扩散(辅)",
+	description = "辅助单体近战攻击技能, 使该技能对目标周围也造成溅射伤害",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 25, },
@@ -1714,8 +1714,8 @@ skills["SupportMeleeSplash"] = {
 	},
 }
 skills["SupportMultistrike"] = {
-	name = "Multistrike",
-	description = "Supports melee attack skills, making them repeat twice when used, targeting a random enemy each time. Cannot support Vaal skills, totem skills, channelling skills, or triggered skills.",
+	name = "多重打击(辅)",
+	description = "辅助近战攻击技能, 使该技能在使用时被自动重复 1 次(瞄准任意目标). 无法辅助瓦尔技能, 图腾技能, 持续吟唱技能或触发类技能",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 28, },
@@ -1777,8 +1777,8 @@ skills["SupportMultistrike"] = {
 	},
 }
 skills["SupportRangedAttackTotem"] = {
-	name = "Ranged Attack Totem",
-	description = "Supports any bow or wand attack skill. Instead of using that skill, you will summon a totem that uses the skill for you.",
+	name = "远距离攻击图腾(辅)",
+	description = "辅助任意弓或法杖技能, 你将不再直接施放被辅助的技能, 技能会以召唤图腾的形式施放",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 22, },
@@ -1848,8 +1848,8 @@ skills["SupportRangedAttackTotem"] = {
 	},
 }
 skills["SupportReducedMana"] = {
-	name = "Reduced Mana",
-	description = "Supports any skill, reducing its mana cost. Does not affect skills that reserve mana.",
+	name = "魔力减免(辅)",
+	description = "辅助任意消耗魔力的技能. 不能辅助魔力保留类技能",
 	color = 1,
 	support = true,
 	requireSkillTypes = { },
@@ -1908,8 +1908,8 @@ skills["SupportReducedMana"] = {
 	},
 }
 skills["SupportRuthless"] = {
-	name = "Ruthless",
-	description = "Supports melee attack skills. Every third time you use a supported attack, that use of the skill will be more powerful. Cannot support channelling skills.",
+	name = "无情(辅)",
+	description = "辅助近战攻击技能. 每当第 3 次使用该技能时, 该技能会更强大. 无法辅助持续吟唱技能",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 24, },
@@ -1972,8 +1972,8 @@ skills["SupportRuthless"] = {
 	},
 }
 skills["SupportSpellTotem"] = {
-	name = "Spell Totem",
-	description = "Supports spell skills that do not reserve mana. Instead of using that skill, you will summon a totem that uses the skill for you.",
+	name = "法术图腾(辅)",
+	description = "辅助非魔力保留类的法术技能, 你将不再直接施放被辅助的技能, 技能会以召唤图腾的形式施放",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 18, },
@@ -2042,8 +2042,8 @@ skills["SupportSpellTotem"] = {
 	},
 }
 skills["SupportStun"] = {
-	name = "Stun",
-	description = "Supports any skill that hits enemies, making it easier to stun enemies with those skills.",
+	name = "击晕(辅)",
+	description = "辅助任意击中敌人的技能, 使技能更容易晕眩敌人",
 	color = 1,
 	support = true,
 	requireSkillTypes = { 10, 1, },

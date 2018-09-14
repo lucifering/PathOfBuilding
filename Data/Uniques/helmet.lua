@@ -1,780 +1,781 @@
 ﻿-- Item data (c) Grinding Gear Games
-
 return {
 -- Helmet: Armour
 [[
-Abyssus
-Ezomyte Burgonet
-Variant: Pre 2.2.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 60, 138 Str
-Adds 40 to 60 Physical Damage to Attacks
-+(20-25) to all Attributes
-{variant:1}+(100-150)% to Melee Critical Strike Multiplier
-{variant:2}+(150-225)% to Melee Critical Strike Multiplier
-{variant:3}+(100-125)% to Melee Critical Strike Multiplier
-(100-120)% increased Armour
-(40-50)% increased Physical Damage taken
+深渊之唤
+艾兹麦坚盔
+版本: 2.2.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 60, 138 Str
+攻击附加 40 - 60 基础物理伤害
++(20-25) 全属性
+{variant:1}+(100-150)% 近战攻击暴击伤害加成
+{variant:2}+(150-225)% 近战攻击暴击伤害加成
+{variant:3}+(100-125)% 近战攻击暴击伤害加成
+护甲提高 (100-120)%
+受到的物理伤害提高 (40-50)%
 ]],[[
-The Baron
-Close Helmet
-Requires Level 26, 58 Str
-+2 to Level of Socketed Minion Gems
-+(20–40) to Strength
-Minions have 20% increased maximum Life
-Half of your Strength is added to your Minions
-+1 to maximum number of Zombies per 300 Strength
-With 1000 or more Strength 2% of Damage dealt by your Zombies is Leeched to you as Life
+男爵
+护面盔
+等级需求: 26, 58 Str
+此物品上装备的【召唤生物技能石】等级 +2
++(20-40) 力量
+召唤生物的最大生命提高 20%
+你一半的力量属性将添加至你的召唤生物身上
+每 300 点力量可使魔卫召唤上限额外提高 1 个
+当力量超过 1000 时，魔卫造成伤害的 2% 将会转化为给你的生命偷取
 ]],[[
-Ezomyte Peak
-Iron Hat
-Upgrade: Upgrades to unique{Ezomyte Hold} via prophecy{The Bloody Flowers Redux}
-20% increased Physical Damage
-+(15-25) to Armour
-+(25-50) to maximum Life
-Cannot Evade Enemy Attacks
+艾兹麦的荣光
+粗铁盔
+等级需求: 1, 9 Str
+升级: 使用 预言【终极鲜血之花】 升级为 传奇【艾兹麦之握】
++(25-50) 最大生命
+物理伤害提高 20%
++(15-25) 护甲
+无法闪避敌人攻击
 ]],[[
-Ezomyte Hold
-Iron Hat
-Source: Upgraded from unique{Ezomyte Peak} using prophecy{The Bloody Flowers Redux}
-20% increased Physical Damage
-+(15-25) to Armour
-+(25-50) to maximum Life
-Cannot Evade Enemy Attacks
-Cannot be Stunned
+艾兹麦之握
+粗铁盔
+等级需求: 1, 9 Str
+源: 由 传奇【艾兹麦的荣光】 使用 预言【终极鲜血之花】 升级
++(25-50) 最大生命
+物理伤害提高 20%
++(15-25) 护甲
+无法闪避敌人攻击
+免疫晕眩
 ]],[[
-The Formless Flame
-Siege Helmet
-League: Breach
-Source: Drops in Xoph Breach or from unique{Xoph, Dark Embers}
-Upgrade: Upgrades to unique{The Formless Inferno} using currency{Blessing of Xoph}
-Requires Level 48, 101 Str
-+(100-120) to Armour
-+(40-50) to maximum Life
--20 Fire Damage taken when Hit
-Armour is increased by Uncapped Fire Resistance
+无形火炬
+破城之盔
+联盟: 裂隙
+源: 地图【索伏领域】 或 传奇Boss【黑暗余烬‧索伏】 专属掉落
+升级: 使用 通货【索伏的祝福】 升级为 传奇【无形炼狱】 
+等级需求: 48, 101 Str
++(100-120) 护甲
++(40-50) 最大生命
+被击中时承受额外 -20 火焰伤害
+护甲将随绝对火焰抗性而提高
 ]],[[
-The Formless Inferno
-Royal Burgonet
-League: Breach
-Source: Upgraded from unique{The Formless Flame} using currency{Blessing of Xoph}
-Requires Level 65, 148 Str
-(80-120)% increased Armour
-+(40-50) to maximum Life
--30% to Fire Resistance
-8% of Physical Damage taken as Fire Damage
-Armour is increased by Uncapped Fire Resistance
+无形炼狱
+皇室坚盔
+联盟: 裂隙
+源: 由传奇【无形火炬】 使用 通货【索伏的祝福】 升级
+等级需求: 65, 148 Str
+护甲提高 (80-120)%
++(40-50) 最大生命
+-30% 火焰抗性
+受到击中物理伤害的 8% 转化为火焰伤害
+护甲将随绝对火焰抗性而提高
 ]],[[
-Hrimnor's Resolve
-Samite Helmet
-Variant: Pre 2.0.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 55, 114 Str
-{variant:1}(10-30)% increased Fire Damage
-{variant:2,3}(30-40)% increased Fire Damage
-{variant:1}(40-60)% increased Armour
-{variant:2,3}(100-120)% increased Armour
-{variant:3}+(50-70) to maximum Life
-+30% to Cold Resistance
-{variant:1,2}50% chance to Avoid being Chilled
-{variant:1,2}50% chance to Avoid being Frozen
-{variant:1,2}10% increased Stun and Block Recovery
-{variant:3}Cannot be Frozen or Chilled if you've used a Fire Skill Recently
+雷姆诺的豪情
+绣领之盔
+版本: 2.0.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 55, 114 Str
+{variant:1}火焰伤害提高 (10-30)%
+{variant:2,3}火焰伤害提高 (30-40)%
+{variant:1}护甲提高 (40-60)%
+{variant:2,3}护甲提高 (100-120)%
+{variant:3}+(50-70) 最大生命
++30% 冰霜抗性
+{variant:1,2}50% 几率避免被冰缓
+{variant:1,2}50% 几率避免被冰冻
+{variant:1,2}晕眩和格挡回复降低 10%
+{variant:3}近期内你若使用过火焰技能，则不会被冰冻或冰缓
 ]],
 -- Helmet: Evasion
 [[
-Alpha's Howl
-Sinner Tricorne
-Requires Level 64, 138 Dex
-+2 to Level of Socketed Aura Gems
-(80-100)% increased Evasion Rating
-+(20-30)% to Cold Resistance
-25% chance to Avoid being Chilled
-Cannot be Frozen
-8% reduced Mana Reserved
+极地之眼
+罪者之帽
+等级需求: 64, 138 Dex
+此物品上装备的【光环技能石】等级 +2
+闪避值提高 (80-100)%
++(20-30)% 冰霜抗性
+25% 几率避免被冰缓
+免疫冰冻
+魔力保留降低 8%
 ]],[[
-Fairgraves' Tricorne
-Tricorne
-Requires Level 12, 27 Dex
-Adds 6 to 12 Cold Damage to Attacks
-70% increased Evasion Rating
-+(15-30) to maximum Mana
-+(20-30)% to Lightning Resistance
-Cannot be Shocked
-15% increased Stun Recovery
+费尔之帽
+三角帽
+等级需求: 12, 27 Dex
+攻击附加 6 - 12 基础冰霜伤害
+闪避值提高 70%
++(15-30) 最大魔力
++(20-30)% 闪电抗性
+免疫感电
+晕眩回复和格挡回复提高 15%
 ]],[[
-Goldrim
-Leather Cap
-+(30-50) to Evasion Rating
-10% increased Rarity of Items found
-+(30-40)% to all Elemental Resistances
-Reflects 4 Physical Damage to Melee Attackers
+金缕帽
+皮帽
+等级需求: 3, 13 Dex
++(30-50) 点闪避值
+物品稀有度提高 10%
+获得 +(30-40)% 火焰、冰霜、闪电抗性
+反射 4 物理伤害给近战攻击者
 ]],[[
-Heatshiver
-Leather Hood
-Upgrade: Upgrades to unique{Frostferno} via prophecy{A Vision of Ice and Fire}
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 20, 46 Dex
-{variant:1}+1 to Level of Socketed Fire Gems
-{variant:1}+1 to Level of Socketed Cold Gems
-{variant:2}(20–30)% increased Cold Damage if you have used a Fire Skill Recently
-{variant:2}(20–30)% increased Fire Damage if you have used a Cold Skill Recently
-(80-100)% increased Evasion Rating
-60% increased Mana Regeneration Rate
-{variant:1}−(20-10)% to Fire Resistance
-{variant:2}+(20-30)% to Fire Resistance
-{variant:1}−(20-10)% to Cold Resistance
-{variant:2}+(20-30)% to Cold Resistance
+寒焰
+革兜
+升级: 使用 预言【冰与火的视界】 升级为 传奇【冰狱】
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 20, 46 Dex
+{variant:1}此物品上装备的【火焰技能石】等级 +1
+{variant:1}此物品上装备的【冰霜技能石】等级 +1
+{variant:2}近期内你若使用过火焰技能，则冰霜伤害提高 (20-30)%
+{variant:2}近期内你若使用过冰霜技能，则火焰伤害提高 (20-30)%
+闪避值提高 (80-100)%
+魔力回复速度提高 60%
+{variant:1}-(20-10)% 火焰抗性
+{variant:2}+(20-30)% 火焰抗性
+{variant:1}-(20-10)% 冰霜抗性
+{variant:2}+(20-30)% 冰霜抗性
 ]],[[
-Frostferno
-Leather Hood
-Source: Upgraded from unique{Heatshiver} via prophecy{A Vision of Ice and Fire}
-Requires Level 60
-+2 to Level of Socketed Fire Gems
-+2 to Level of Socketed Cold Gems
-Socketed Gems are Supported by Level 30 Cold to Fire
-(450–500)% increased Evasion Rating
-60% increased Mana Regeneration Rate
-+(20–30)% to Fire and Cold Resistances
+冰狱
+革兜
+源: 由 传奇【寒焰】 使用 预言【冰与火的视界】 升级
+等级需求: 60
+此物品上装备的【火焰技能石】等级 +2
+此物品上装备的【冰霜技能石】等级 +2
+此物品上的技能石受到 30 级的 寒冰转烈焰 辅助
+闪避值提高 (450-500)%
+魔力回复速度提高 60%
++(20-30)% 火焰与冰霜抗性
 ]],[[
-Obscurantis 
-Lion Pelt
-Source: Drops from unique{Guardian of the Chimera}
-Requires Level 70, 150 Dex
-+(300-500) to Accuracy Rating
-(100-120)% increased Evasion Rating
-+(50-80) to maximum Life
-1% increased Projectile Attack Damage per 200 Accuracy Rating
+厌食者
+狮首皮盔
+源: 传奇Boss【奇美拉守卫】 专属掉落
+等级需求: 70, 150 Dex
++(300-500) 命中值
+闪避值提高 (100-120)%
++(50-80) 最大生命
+每 200 命中值可使攻击造成的投射物伤害提高 1%
 ]],[[
-Rat's Nest
-Ursine Pelt
-Requires Level 55, 114 Dex
-15% increased Attack Speed
-(60-75)% increased Global Critical Strike Chance
-150% increased Evasion Rating
-(20-25)% increased Rarity of Items found
-10% increased Movement Speed
-10% reduced Character Size
+鼠巢
+熊首皮盔
+等级需求: 55, 114 Dex
+攻击速度提高 15%
+攻击和法术暴击率提高 (60-75)%
+闪避值提高 150%
+物品稀有度提高 (20-25)%
+移动速度提高 10%
+角色体型缩小 10%
 ]],[[
-Saqawal's Flock
-Silken Hood
-League: Bestiary
-Source: Drops from unique{Saqawal, First of the Sky}
-Requires Level 60
-25% chance to Trigger Level 20 Tornado when you gain Avian's Might or Avian's Flight
-(60–80)% increased Evasion Rating
-+(40–60) to maximum Life
-+(30–40)% to Lightning Resistance
-(10–15)% increased Movement Speed
+苍空之翎
+绸缎之兜
+联盟: 猎魔笔记
+源: 传奇Boss【苍空初子 萨奇沃】 专属掉落
+等级需求: 60
+你获得【鸟之力量】或【鸟之斗魄】时有 25% 几率触发 20 级的【鸟之龙卷】
+闪避值提高 (60-80)%
++(40-60) 最大生命
++(30-40)% 闪电抗性
+移动速度提高 (10-15)%
 ]],[[
-Starkonja's Head
-Silken Hood
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 60, 138 Dex
-50% reduced Damage when on Low Life
-{variant:2}(100-130)% increased Evasion Rating
-{variant:1}+(30-50) to Dexterity
-{variant:2}+(50-70) to Dexterity
-10% increased Attack Speed
-25% increased Global Critical Strike Chance
-+(80-100) to maximum Life
-{variant:1}50% increased Global Evasion Rating when on Low Life
-{variant:2}150% increased Global Evasion Rating when on Low Life
+斯塔空加之首
+绸缎之兜
+版本: 2.6.0以前
+版本: 当前
+等级需求: 60, 138 Dex
+低血时伤害降低 50%
+{variant:2}闪避值提高 (100-130)%
+{variant:1}+(30-50) 敏捷
+{variant:2}+(50-70) 敏捷
+攻击速度提高 10%
+攻击和法术暴击率提高 25%
++(80-100) 最大生命
+{variant:1}低血时最大闪避值提高 50%
+{variant:2}低血时最大闪避值提高 150%
 ]],
 -- Helmet: Energy Shield
 [[
-Asenath's Mark
-Iron Circlet
-Upgrade: Upgrades to unique{Asenath's Chant} via prophecy{Song of the Sekhema}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 8, 23 Int
-(10-15)% increased Attack Speed
-(10-15)% increased Cast Speed
-30% increased Mana Regeneration Rate
-{variant:1}50% increased Energy Shield
-{variant:2}+(30-50) to maximum Energy Shield
-5% increased Movement Speed
-(10-15)% increased Stun Recovery
+安赛娜丝的迅敏之冠
+铁锻之冠
+升级: 使用 预言【丝克玛之歌】 升级为 传奇【安赛娜丝的优雅之歌】
+版本: 2.6.0以前
+版本: 当前
+等级需求: 8, 23 Int
+攻击速度提高 (10-15)%
+施法速度提高 (10-15)%
+魔力回复速度提高 30%
+{variant:1}该装备的能量护盾提高 50%
+{variant:2}+(30-50) 最大能量护盾
+移动速度提高 5%
+晕眩回复和格挡回复提高 (10-15)%
 ]],[[
-Asenath's Chant
-Iron Circlet
-Source: Upgraded from unique{Asenath's Mark} via prophecy{Song of the Sekhema}
-Requires Level 45
-Implicits: 0
-25% chance to Trigger a Socketed Spell when you Attack with a Bow
-(10–15)% increased Attack Speed
-(10–15)% increased Cast Speed
-+(100–120) to maximum Energy Shield
-(30–40)% increased Stun and Block Recovery
-30% increased Mana Regeneration Rate
-5% increased Movement Speed
+安赛娜丝的优雅之歌
+铁锻之冠
+源: 由 传奇【安赛娜丝的迅敏之冠】 使用 预言【丝克玛之歌】 升级
+等级需求: 45
+固定基底词缀: 0
+当你用弓攻击时，有 25% 几率触发一个插槽内的法术
+攻击速度提高 (10-15)%
+施法速度提高 (10-15)%
++(100-120) 最大能量护盾
+晕眩和格挡回复降低 (30-40)%
+魔力回复速度提高 30%
+移动速度提高 5%
 ]],[[
-Chitus' Apex
-Necromancer Circlet
-Requires Level 54, 112 Int
-+(20-30) to Strength
-+(20-30) to maximum Mana
-+10% to all Elemental Resistances
-5% increased Experience gain
-(10-20)% increased Elemental Damage
+切特斯的威权
+操灵者之冠
+等级需求: 54, 112 Int
++(20-30) 力量
++(20-30) 最大魔力
+获得 +10% 火焰、冰霜、闪电抗性
+经验值获取提高 5%
+火焰、冰霜、闪电伤害提高 (10-20)%
 ]],[[
-Crown of Eyes
-Hubris Circlet
-Requires Level 69, 154 Int
-+(200-250) to Accuracy Rating
-(120-150)% increased Energy Shield
-−30% to Fire Resistance
-(0.4-0.8)% of Physical Attack Damage Leeched as Life
-(0.2-0.4)% of Physical Attack Damage Leeched as Mana
-Increases and Reductions to Spell Damage also apply to Attacks
+邪眼之冠
+灵主之环
+等级需求: 69, 154 Int
++(200-250) 命中值
+该装备的能量护盾提高 (120-150)%
+-30% 火焰抗性
+物理攻击伤害的 (0.4-0.8)% 会转化为生命偷取
+物理攻击伤害的 (0.2-0.4)% 转化为魔力偷取
+对法术伤害的增幅与减益也会套用于攻击上
 ]],[[
-Crown of Thorns
-Vine Circlet
-Upgrade: Upgrades to unique{Martyr's Crown} via prophecy{Pleasure and Pain}
-Variant: Pre 1.2.0
-Variant: Current
-{variant:1}+(12-24) to maximum Energy Shield
-{variant:2}+(60-80) to maximum Energy Shield
-Reflects 5 Physical Damage to Melee Attackers
-Take 5 Physical Damage when hit by Attacks
-Pain Attunement
+刺棘之冠
+藤蔓之冠
+升级: 使用 预言【快乐与苦痛】 升级为 传奇【烈士之冠】
+版本: 1.2.0以前
+版本: 当前
+等级需求: 3, 13 Int
+{variant:1}+(12-24) 最大能量护盾
+{variant:2}+(60-80) 最大能量护盾
+反射 5 物理伤害给近战攻击者
+被击中时承受 5 额外物理伤害
+苦痛灵曲
 ]],[[
-Martyr's Crown
-Vine Circlet
-Source: Upgraded from unique{Crown of Thorns} using prophecy{Pleasure and Pain}
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 52
-{variant:1}+(260-300) to maximum Energy Shield
-{variant:2}+(170–210) to maximum Energy Shield
-Reflects 5 Physical Damage to Melee Attackers
-Take 5 Physical Damage when hit by Attacks
-Pain Attunement
+烈士之冠
+藤蔓之冠
+源: 由 传奇【刺棘之冠】 使用 预言【快乐与苦痛】 升级
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 52
+{variant:1}+(260-300) 最大能量护盾
+{variant:2}+(170-210) 最大能量护盾
+反射 5 物理伤害给近战攻击者
+被击中时承受 5 额外物理伤害
+苦痛灵曲
 ]],[[
-Doedre's Scorn
-Lunaris Circlet
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 39, 83 Int
-{variant:1}+1 to Level of Socketed Curse Gems
-{variant:2,3}+2 to Level of Socketed Curse Gems
-{variant:2,3}+(100-120) to maximum Energy Shield
-+(20-30) to Intelligence
-(30-50)% increased Curse Duration
-20% increased Elemental Damage
-{variant:1,2}(10-20)% increased Damage per Curse on Enemy
-{variant:3}(10–20)% increased Damage with Hits and Ailments per Curse on Enemy
+德瑞的蔑视
+月影之冠
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 39, 83 Int
+{variant:1}此物品上装备的【诅咒技能石】等级 +1
+{variant:2,3}此物品上装备的【诅咒技能石】等级 +2
+{variant:2,3}+(100-120) 最大能量护盾
++(20-30) 智慧
+诅咒持续时间延长 (30-50)%
+火焰、冰霜、闪电伤害提高 20%
+{variant:1,2}敌人身上每个诅咒可使伤害提高 (10-20)%
+{variant:3}敌人身上每个诅咒可使击中和异常状态的伤害提高 (10-20)%
 ]],[[
-Eber's Unification
-Hubris Circlet
-Source: Drops from The Pale Council
-Requires Level 69, 154 Int
-Implicits: 0
-Trigger level 10 Void Gaze when you use a Skill
-+(50-80) to maximum Mana
-(120-150)% increased Energy Shield
-50% increased Stun and Block Recovery
-Gain (5-8)% of Elemental Damage as Extra Chaos Damage
+希伯的霸权
+灵主之环
+源: 地图【苍白议会】 专属掉落
+等级需求: 69, 154 Int
+固定基底词缀: 0
+当你使用技能时触发 10 级的【虚空凝视】
++(50-80) 最大魔力
+该装备的能量护盾提高 (120-150)%
+晕眩和格挡回复降低 50%
+获得额外混沌伤害，其数值等同于火焰、冰霜、闪电伤害的 (5-8)%
 ]],[[
-Fenumus' Toxins
-Necromancer Circlet
-League: Bestiary
-Source: Drops from unique{Fenumus, First of the Night}
-Requires Level 54
-Adds (16–21) to (31–36) Chaos Damage to Spells
-(220–250)% increased Energy Shield
-10% chance to gain a Power Charge on hitting an Enemy affected by a Spider's Web
-(6–10)% chance to Poison per Power Charge
-(15–20)% increased Damage with Poison per Power Charge
-Aspect of the Spider inflicts Spider's Webs and Hinder every 0.5 Seconds instead
+暗夜毒牙
+操灵者之冠
+联盟: 猎魔笔记
+源: 传奇Boss【暗夜初子 费努姆斯】 专属掉落
+等级需求: 54
+法术附加 (16-21) - (31-36) 基础混沌伤害
+该装备的能量护盾提高 (220-250)%
+击中被 1 层蜘蛛网影响的敌人时，有 10% 几率获得 1 个暴击球
+每拥有 1 个暴击球，有 (6-10)% 几率造成中毒
+每个暴击球可使中毒伤害提高 (15-20)%
+【蛛之势】改为每 0.5 秒喷出蜘蛛网和缓速效果
 ]],[[
-Indigon
-Hubris Circlet
-Source: Drops from unique{The Elder} (Uber)
-Requires Level 69
-(150–180)% increased Energy Shield
-(6–10)% increased maximum Mana
-Recover (8–10)% of maximum Life when you use a Mana Flask
-Non-instant Mana recovery from Flasks is also recovered as Life
-(50–60)% increased Mana Cost of Skills for each 200 total Mana you have Spent Recently
-(50–60)% increased Spell Damage for each 200 total Mana you have Spent Recently
-Shaper Item
+靛蓝之冠
+灵主之环
+源: 传奇Boss【裂界者】 专属掉落（永恒·T18）
+等级需求: 69
+该装备的能量护盾提高 (150-180)%
+最大魔力提高 (6-10)%
+使用魔力药剂时也会回复 (8-10)% 最大生命
+药剂的非即时生效类魔力回复也会同时回复生命
+近期你每消耗 200 魔力，技能的魔力消耗就提高 (50-60)%
+近期你每消耗 200 魔力，法术伤害便提高 (50-60)%
+塑界之器
 ]],[[
-Mark of the Red Covenant
-Tribal Circlet
-Requires Level 26
-+(30–50) to maximum Energy Shield
-Minions have (10–15)% increased Movement Speed
-Raging Spirits have (130–150)% increased Damage
-75% reduced Maximum number of Summoned Raging Spirits
-Raging Spirits' Hits always Ignite
-Raging Spirits refresh their Duration when they Kill an Ignited Enemy
+红契符印
+祭仪之冠
+等级需求: 26
++(30-50) 最大能量护盾
+召唤生物的移动速度提高 (10-15)%
+【召唤愤怒狂灵】的伤害提高 (130-150)%
+召唤愤怒狂灵的最大数量减少 75%
+【愤怒狂灵】击中后必定造成点燃
+【愤怒狂灵】击败被点燃的敌人后会刷新自身持续时间。
 ]],[[
-Rime Gaze
-Mind Cage
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 65, 138 Int
-{variant:1}Socketed Gems are Supported by level 15 Concentrated Effect
-{variant:2}Socketed Gems are Supported by level 20 Concentrated Effect
-30% increased Cold Damage
-+(40-60) to maximum Mana
-{variant:1}(100-120)% increased Energy Shield
-{variant:2}(180-200)% increased Energy Shield
-{variant:1}50% slower start of Energy Shield Recharge
-{variant:2}50% reduced Energy Shield Recharge Rate
+酷寒的凝视
+灵能之笼
+版本: 2.6.0以前
+版本: 当前
+等级需求: 65, 138 Int
+{variant:1}此物品上的技能石受到 15 级的 集中效应 辅助
+{variant:2}此物品上的技能石受到 20 级的 集中效应 辅助
+冰霜伤害提高 30%
++(40-60) 最大魔力
+{variant:1}该装备的能量护盾提高 (100-120)%
+{variant:2}该装备的能量护盾提高 (180-200)%
+{variant:1}能量护盾启动回复比平常慢 50%
+{variant:2}能量护盾的回复速度降低 50%
 ]],[[
-Scold's Bridle
-Mind Cage
-League: Torment
-Requires Level 65, 138 Int
-(80-100)% increased Spell Damage
-15% reduced Cast Speed
-+(30-60) to maximum Mana
-Your Skills deal you 400% of Mana Cost as Physical Damage
+禁语
+灵能之笼
+联盟: 苦痛
+等级需求: 65, 138 Int
+法术伤害提高 (80-100)%
+施法速度降低 15%
++(30-60) 最大魔力
+你的技能对你造成等同 400% 魔力消耗的物理伤害
 ]],[[
-Wraithlord
-Bone Circlet
+幽冥灵王
+灵骨之冠
 Requires Level: 34
-+2 to Level of Socketed Minion Gems 
-(120–150)% increased Energy Shield 
-Minions Regenerate 1% Life per second 
-+1000 to Spectre maximum Life
+此物品上装备的【召唤生物技能石】等级 +2
+该装备的能量护盾提高 (120-150)%
+召唤生物每秒回复 1% 生命
++1000 灵体最大生命
 ]],[[
-Ylfeban's Trickery
-Hubris Circlet
-League: Tempest
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 69, 154 Int
-{variant:2}Trigger Level 10 Shock Ground when Hit
-Adds 1 to (60-80) Lightning Damage to Spells and Attacks
-(130-170)% increased Energy Shield
-+(25-35)% to Lightning Resistance
-{variant:1}10% chance to Curse Enemies with a random Curse on Hit
-{variant:2}20% chance to Curse non-Cursed Enemies with a random Curse on Hit
-{variant:1}5% chance to create Shocked Ground when Hit
+伊芙班的诡计
+灵主之环
+联盟: 风暴
+版本: 2.6.0以前
+版本: 当前
+等级需求: 69, 154 Int
+{variant:2}被击中时触发 10 级的感电地面
+攻击和法术附加 1 - (60-80) 基础闪电伤害
+该装备的能量护盾提高 (130-170)%
++(25-35)% 闪电抗性
+{variant:1}击中时有 10% 几率对敌人施放 1 个随机诅咒
+{variant:2}击中未被诅咒目标时，有 20% 几率对其施放任意诅咒
+{variant:1}被击中时有 5% 几率制造感电地面
 ]],
 -- Helmet: Armour/Evasion
 [[
-Black Sun Crest
-Lacquered Helmet
-Requires Level 51, 57 Str, 57 Dex
-+1 to Level of Socketed Gems
-(100-150)% increased Armour
-40% reduced Light Radius
-(5-15)% increased Dexterity
-(5-15)% increased Strength
-(5-15)% increased Intelligence
+黑阳之冠
+漆彩之盔
+等级需求: 51, 57 Str, 57 Dex
+此物品上装备的技能石等级 +1
+护甲提高 (100-150)%
+照亮范围缩小 40%
+敏捷提高 (5-15)%
+力量提高 (5-15)%
+智慧提高 (5-15)%
 ]],[[
-The Bringer of Rain
-Nightmare Bascinet
-Variant: Pre 1.1.0
-Variant: Pre 1.3.0
-Variant: Current
-Requires Level 67, 62 Str, 85 Dex
-Socketed Gems are Supported by level 18 Melee Physical Damage
-{variant:1}Socketed Gems are Supported by level 18 Faster Attacks
-{variant:2,3}Socketed Gems are Supported by level 12 Faster Attacks
-{variant:1}Socketed Gems are Supported by level 18 Blind
-{variant:2,3}Socketed Gems are Supported by level 6 Blind
-Adds 20 to 30 Physical Damage to Attacks
-(200-300)% increased Armour and Evasion
-{variant:1}+(200-220) to maximum Life
-{variant:2,3}+(120-160) to maximum Life
-{variant:1,2}10% chance to gain an Endurance Charge when you Block
-{variant:3}20% chance to gain an Endurance Charge when you Block
-Extra gore
-Can't use Chest armour
-{variant:1,2}15% Chance to Block
-{variant:3}6% Chance to Block
+祭礼之雨
+梦魇战盔
+版本: 1.1.0以前
+版本: 1.3.0以前
+版本: 当前
+等级需求: 67, 62 Str, 85 Dex
+此物品上的技能石受到 18 级的 近战物理伤害 辅助
+{variant:1}此物品上的技能石受到 18 级的 快速攻击 辅助
+{variant:2,3}此物品上的技能石受到 12 级的 快速攻击 辅助
+{variant:1}此物品上的技能石受到 18 级的 致盲 辅助
+{variant:2,3}此物品上的技能石受到 6 级的 致盲 辅助
+攻击附加 20 - 30 基础物理伤害
+该装备的护甲与闪避提高 (200-300)%
+{variant:1}+(200-220) 最大生命
+{variant:2,3}+(120-160) 最大生命
+{variant:1,2}格挡时 10% 几率获得耐力球
+{variant:3}格挡时 20% 几率获得耐力球
+更明显打击效果
+不能使用胸甲
+{variant:1,2}15% 攻击格挡率
+{variant:3}6% 攻击格挡率
 ]],[[
-Deidbell
-Gilded Sallet
-Upgrade: Upgrades to unique{Deidbellow} via prophecy{Dying Cry}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 33, 38 Str, 38 Dex
-+(20-30) to Strength
-+(20-30) to Dexterity
-+(200-300) to Armour
-{variant:2}Adds 10-20 Physical Damage to Attacks
-20% increased Melee Damage
-Cannot Leech when on Low Life
+丧钟
+金面护盔
+升级: 使用 预言【死亡之泣】 升级为 传奇【丧吼】
+版本: 2.6.0以前
+版本: 当前
+等级需求: 33, 38 Str, 38 Dex
++(20-30) 力量
++(20-30) 敏捷
++(200-300) 护甲
+{variant:2}攻击附加 10 - 20 基础物理伤害
+近战伤害提高 20%
+低血时不能偷取
 ]],[[
-Deidbellow
-Gilded Sallet
-Source: Upgraded from unique{Deidbell} using prophecy{Dying Cry}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 33, 38 Str, 38 Dex
-+(20-30) to Strength
-+(20-30) to Dexterity
-+(200-300) to Armour
-{variant:2}Adds 10-20 Physical Damage to Attacks
-20% increased Melee Damage
-Cannot Leech when on Low Life
-You and nearby allies have 20% increased Attack, Cast and Movement
-Speed if you've used a Warcry Recently
+丧吼
+金面护盔
+源: 由 传奇【丧钟】 使用 预言【死亡之泣】 升级
+版本: 2.6.0以前
+版本: 当前
+等级需求: 33, 38 Str, 38 Dex
++(20-30) 力量
++(20-30) 敏捷
++(200-300) 护甲
+{variant:2}攻击附加 10 - 20 基础物理伤害
+近战伤害提高 20%
+低血时不能偷取
+近期内你若有使用战吼，你和周围友军的攻击，施法和移动速度提高 20%
 ]],[[
-Devoto's Devotion
-Nightmare Bascinet
-Requires Level 67, 62 Str, 85 Dex
-10% reduced Physical Damage
-+(50-65) to Dexterity
-16% increased Attack Speed
-(150-200)% increased Armour and Evasion
-+(15-25)% to Chaos Resistance
-20% increased Movement Speed
-Mercury Footprints
+德沃托的信念之盔
+梦魇战盔
+等级需求: 67, 62 Str, 85 Dex
+物理伤害降低 10%
++(50-65) 敏捷
+攻击速度提高 16%
+该装备的护甲与闪避提高 (150-200)%
++(15-25)% 混沌抗性
+移动速度提高 20%
+水银爪印
 ]],[[
-The Peregrine
-Visored Sallet
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 23, 28 Str, 28 Dex
-{variant:1}+100 to Accuracy Rating
-{variant:2}+300 to Accuracy Rating
-(40-60)% increased Armour and Evasion
-(20-30)% increased Rarity of Items found
-+30% to Lightning Resistance
-{variant:1}0.2% of Physical Attack Damage Leeched as Mana
-{variant:2}0.4% of Attack Damage Leeched as Mana
-10% increased Movement Speed
+疾风的沉思
+清视护盔
+版本: 2.6.0以前
+版本: 当前
+等级需求: 23, 28 Str, 28 Dex
+{variant:1}+100 命中值
+{variant:2}+300 命中值
+该装备的护甲与闪避提高 (40-60)%
+物品稀有度提高 (20-30)%
++30% 闪电抗性
+{variant:1}物理攻击伤害的 0.2% 转化为魔力偷取
+{variant:2}攻击伤害的 0.4% 转化为魔力偷取
+移动速度提高 10%
 ]],[[
-Skullhead
-Secutor Helm
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 36, 42 Str, 42 Dex
-(60-80)% increased Armour and Evasion
-+(50-70) to maximum Life
-+(50-70) to maximum Mana
-{variant:2}+(10-20)% to all Elemental Resistances
-Minions have 10% Chance to Block
-Minions have +(300-350) to Armour
-Minions Regenerate 2% Life per Second
+光辉之颅
+精兵之盔
+版本: 2.6.0以前
+版本: 当前
+等级需求: 36, 42 Str, 42 Dex
+该装备的护甲与闪避提高 (60-80)%
++(50-70) 最大生命
++(50-70) 最大魔力
+{variant:2}获得 +(10-20)% 火焰、冰霜、闪电抗性
+召唤生物有 10% 攻击格挡率
+召唤生物有 +(300-350) 点护甲
+召唤生物每秒回复 2% 生命
 ]],
 -- Helmet: Armour/Energy Shield
 [[
-Ahn's Contempt
-Praetor Crown
-Requires Level 68
-+(15–20) to all Attributes 
-(60–140)% increased Armour and Energy Shield 
-+(60–70) to maximum Life 
--1 to Maximum Power Charges 
-Gain (8–12)% of Physical Damage as Extra Chaos Damage while at maximum Power Charges 
-You take 50% reduced Extra Damage from Critical Strikes while you have no Power Charges
+汉恩的蔑视
+领主战冠
+等级需求: 68
++(15-20) 全属性
+该装备的护甲与能量护盾提高 (60-140)%
++(60-70) 最大生命
+-1 暴击球数量上限
+当暴击球达到上限时，获得等同 (8-12)% 物理伤害的混沌伤害
+当你没有暴击球时，受到的暴击伤害降低 50%
 ]],[[
-The Brine Crown
-Prophet Crown
-Requires Level 63, 85 Str, 62 Int
-(100-120)% increased Armour and Energy Shield
-+(50-70) to maximum Life
-+(30-50)% to Cold Resistance
-Cannot be Frozen
-+800 Armour while stationary
-60% increased Mana Regeneration Rate while stationary
-15% chance to create Chilled Ground when Hit with an Attack
+海王冠冕
+箴言战冠
+等级需求: 63, 85 Str, 62 Int
+该装备的护甲与能量护盾提高 (100-120)%
++(50-70) 最大生命
++(30-50)% 冰霜抗性
+免疫冰冻
+静止时 +800 护甲
+静止时魔力回复提高 60%
+被攻击击中时，有 15% 几率制造冰缓地面
 ]],[[
-The Broken Crown
-Prophet Crown
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 63, 85 Str, 62 Int
-Socketed Gems are supported by level 20 Cast on Death
-20% increased Damage when on Low Life
-+(10-15) to all Attributes
-(60-100)% increased Armour and Energy Shield
-20% reduced Mana Regeneration Rate
-{variant:1}+(20-30) to maximum Energy Shield
-{variant:2}+(70-90) to maximum Energy Shield
-{variant:3}+(50–70) to maximum Energy Shield
-+(43-61)% to Chaos Resistance
+缺角帝冠
+箴言战冠
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 63, 85 Str, 62 Int
+此物品上的技能石受到 20 级的 死亡时施放 辅助
+低血时伤害提高 20%
++(10-15) 全属性
+该装备的护甲与能量护盾提高 (60-100)%
+魔力回复速度降低 20%
+{variant:1}+(20-30) 最大能量护盾
+{variant:2}+(70-90) 最大能量护盾
+{variant:3}+(50-70) 最大能量护盾
++(43-61)% 混沌抗性
 ]],[[
-Craiceann's Chitin
-Magistrate Crown
-Variant: Pre 3.4.0
-Variant: Current
-League: Bestiary
-Source: Drops from unique{Craiceann, First of the Deep}
-Requires Level 58
-{variant:1}+(7-9)% chance to Block Spell Damage
-{variant:2}+(4-6)% chance to Block Spell Damage
-(140–180)% increased Armour and Energy Shield
-(4–7)% increased maximum Life
-Cannot lose Crab Barriers if you have lost Crab Barriers Recently
-3% additional Chance to Block while you have at least 5 Crab Barriers
-5% additional Chance to Block while you have at least 10 Crab Barriers
+深海魔角
+行政者战冠
+联盟: 猎魔笔记
+源: 传奇Boss【深海初子 克林斯昂】 专属掉落
+版本: 3.4.0以前
+版本: 当前
+等级需求: 58
+{variant:1}(25-30)% 的攻击格挡率同样套用于法术格挡
+{variant:2}(4-6)% 法术伤害格挡几率
+该装备的护甲与能量护盾提高 (140-180)%
+最大生命提高 (4-7)%
+近期你若失去过【深海屏障】，则不会再失去【深海屏障】
+你拥有至少 5 个【深海屏障】时，格挡几率额外提高 3%
+你拥有至少 10 个【深海屏障】时，格挡几率额外提高 5%
 ]],[[
-Geofri's Crest
-Great Crown
-Upgrade: Upgrades to unique{Geofri's Legacy} via prophecy{The Bishop's Legacy}
-Requires Level 53, 59 Str, 59 Int
-+1 to Level of Socketed Gems
-(60-80)% increased Armour and Energy Shield
-+(15-20)% to Fire Resistance
-+(15-20)% to Cold Resistance
-+(15-20)% to Lightning Resistance
-+(20-30)% to Chaos Resistance
+吉尔菲的荣光
+强化巨盔
+等级需求: 53, 59 Str, 59 Int
+此物品上装备的技能石等级 +1
+该装备的护甲与能量护盾提高 (60-80)%
++(15-20)% 火焰抗性
++(15-20)% 冰霜抗性
++(15-20)% 闪电抗性
++(20-30)% 混沌抗性
 ]],[[
-Honourhome
-Soldier Helmet
-Requires Level 12, 16 Str, 16 Int
-Adds 1 to 13 Lightning Damage to Attacks
-(40-50)% increased Armour and Energy Shield
-+(10-20)% to all Elemental Resistances
-+20% to all Elemental Resistances while on Low Life
-20% reduced Mana Cost of Skills when on Low Life
+私欲的光辉
+士兵之盔
+等级需求: 12, 16 Str, 16 Int
+攻击附加 1 - 13 基础闪电伤害
+该装备的护甲与能量护盾提高 (40-50)%
+获得 +(10-20)% 火焰、冰霜、闪电抗性
+低血时 +20% 火焰、冰霜、闪电抗性
+低血时，技能魔力消耗降低 20%
 ]],[[
-Kitava's Thirst 
-Zealot Helmet
-Requires Level 44, 50 Str, 50 Int
-15% reduced Cast Speed
-(70-80)% increased Armour and Energy Shield
-+(30-50) to maximum Mana
-30% chance to Cast Socketed Spells when 
-you Spend at least 100 Mana to Use a Skill
+奇塔弗之渴望
+热战之盔
+等级需求: 44, 50 Str, 50 Int
+施法速度降低 15%
+该装备的护甲与能量护盾提高 (70-80)%
++(30-50) 最大魔力
+使用至少 100 魔力施放技能时，有 30% 几率触发插槽内的法术
 ]],[[
-Lightpoacher
-Great Crown
-League: Abyss
-Source: Drops from Abyssal Liches
-Variant: One Abyssal Socket
-Variant: Two Abyssal Sockets
-{variant:1}Has 1 Abyssal Socket
-{variant:2}Has 2 Abyssal Sockets
-Trigger Level 20 Spirit Burst when you Use a Skill while you have a Spirit Charge 
-+(10–15)% to all Elemental Resistances 
-Recover (4–5)% of Life when a Spirit Charge expires or is consumed 
-(15–20)% chance to gain a Spirit Charge on Kill 
-+1 to Maximum Spirit Charges per Abyss Jewel affecting you
+光明偷猎者
+强化巨盔
+联盟: 深渊
+源: 深渊巫妖掉落
+版本: 一个深渊插槽  
+版本: 两个深渊插槽 
+等级需求: 53, 59 Str, 59 Int
+{variant:1}拥有 1 个深渊插槽
+{variant:2}拥有 2 个深渊插槽
+在你有精神球时使用技能，触发 20 级的【精神冲击】
+获得 +(10-15)% 火焰、冰霜、闪电抗性
+当精神球失效或被消耗时，回复 (4-5)% 生命
+击败敌人后有 (15-20)% 几率获得 1 个精神球
+每个影响你的【深渊珠宝】可使最大精神球数量 +1
 ]],[[
-Malachai's Vision
-Praetor Crown
-Source: Use currency{Vaal Orb} on unique{Voll's Vision}
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 68, 62 Str, 91 Int
-Adds (13-17) to (29-37) Chaos Damage
-{variant:1}+(200-250) to maximum Energy Shield
-{variant:2}+(150–200) to maximum Energy Shield
-+(32-40)% to Cold Resistance
-+(15-20)% to Lightning Resistance
-Regenerate 100 Energy Shield per second if all Equipped Items are Corrupted
-Regenerate 35 Mana per second if all Equipped Items are Corrupted
-Corrupted
+玛拉凯的远见
+领主战冠
+源: 由 传奇【福尔的远见】 使用 通货【瓦尔宝珠】 升级
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 68, 62 Str, 91 Int
+附加 (13-17) - (29-37) 基础混沌伤害
+{variant:1}+(200-250) 最大能量护盾
+{variant:2}+(150-200) 最大能量护盾
++(32-40)% 冰霜抗性
++(15-20)% 闪电抗性
+所有身上装备的物品皆为已腐化时，每秒回复 100 能量护盾
+所有身上穿戴的物品皆为已腐化时，每秒回复 35 魔力
+已腐化
 ]],[[
-Memory Vault
-Praetor Crown
-Source: Drops from unique{The Enslaver}
-Requires Level 68
-+(130–160) to maximum Energy Shield 
-+(150–200) to maximum Mana 
-(30–40)% increased Mana Regeneration Rate 
-+(20–25)% to Fire Resistance 
-10% increased Mana Reserved 
-Gain Armour equal to your Reserved Mana
+记忆囚笼
+领主战冠
+源: 传奇Boss【裂界守卫：奴役】 专属掉落
+等级需求: 68
++(130-160) 最大能量护盾
++(150-200) 最大魔力
+魔力回复速度提高 (30-40)%
++(20-25)% 火焰抗性
+魔力保留提高 10%
+获得等同于你魔力保留数值的护甲
 ]],[[
-Mindspiral
-Aventail Helmet
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 37, 42 Str, 42 Int
-(10-15)% increased Cold Damage
-(10-15)% increased Lightning Damage
-{variant:1}+(100-150) to maximum Mana
-{variant:2}+(100-120) to maximum Mana
-{variant:2}Gain (5-10)% of Maximum Mana as Extra Maximum Energy Shield
-Enemies Cannot Leech Mana From You
-(5-10)% of Damage taken Gained as Mana over 4 seconds when Hit
-Cannot Leech Mana
+灵漩
+战意之盔
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 37, 42 Str, 42 Int
+冰霜伤害提高 (10-15)%
+闪电伤害提高 (10-15)%
+{variant:1}+(100-150) 最大魔力
+{variant:2}+(100-120) 最大魔力
+{variant:2}获得等同 (5-10)% 魔力的额外能量护盾
+敌人无法偷取你的魔力
+被击中时， 4 秒内回复等同于 (5-10)% 伤害的魔力
+不能偷取魔力
 ]],[[
-Speaker's Wreath
-Prophet Crown
+众生指引
+箴言战冠
 Quality: +20%
 Armour: 268
 Energy Shield: 36
-Requires Level 63, 85 Str, 62 Int
-+(20-40) to Dexterity
-(10-15)% increased Skill Effect Duration
-2% increased Minion Attack Speed per 50 Dexterity
-2% increased Minion Movement Speed per 50 Dexterity
-Minions' Hits can only Kill Ignited Enemies
+等级需求: 63, 85 Str, 62 Int
++(20-40) 敏捷
+技能效果持续时间延长 (10-15)%
+每 50 点敏捷可使召唤生物的攻击速度提高 2%
+每 50 点敏捷可使召唤生物的移动速度提高 2%
+召唤生物只能击败被点燃的敌人
 ]],[[
-Veil of the Night
-Great Helmet
-Requires Level 22, 27 Str, 27 Int
-(20-22)% increased Stun Recovery
-40% reduced Light Radius
-Reflects 1 to (180-220) Lightning Damage to Attackers on Block
-(18-22)% increased Global Defences
-Elemental Resistances are Zero
+夜幕
+巨盔
+等级需求: 22, 27 Str, 27 Int
+晕眩回复和格挡回复提高 (20-22)%
+照亮范围缩小 40%
+格挡攻击时反射 1 - (180-220) 闪电伤害
+全局防御提高 (18-22)%
+火焰、冰霜、闪电抗性为零
 ]],[[
-Voll's Vision
-Praetor Crown
-Requires Level 68, 62 Str, 91 Int
-+(260-300) to Armour
-+(26-32)% to Fire Resistance
-+(8-16)% to Chaos Resistance
-20% increased Light Radius
-(8-12)% increased maximum Life if no Equipped Items are Corrupted
-Regenerate 100 Life per second if no Equipped Items are Corrupted
+福尔的远见
+领主战冠
+等级需求: 68, 62 Str, 91 Int
++(260-300) 护甲
++(26-32)% 火焰抗性
++(8-16)% 混沌抗性
+照亮范围扩大 20%
+身上未装备已腐化的物品时，最大生命提高 (8-12)%
+身上未装备已腐化的物品时，每秒回复 100 生命
 ]],
 -- Helmet: Evasion/Energy Shield
 [[
-Crown of the Pale King
-Regicide Mask
-League: Tempest
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 52, 58 Dex, 58 Int
-{variant:2}+(60-80) to maximum Life
-(150-200)% increased Evasion and Energy Shield
-(0.4-0.8)% of Physical Attack Damage Leeched as Life
-Reflects 100 to 150 Physical Damage to Melee Attackers
-30% of Damage you Reflect to enemies is gained as Life
+殒皇之冠
+弑君之面
+联盟: 风暴
+版本: 2.6.0以前
+版本: 当前
+等级需求: 52, 58 Dex, 58 Int
+{variant:2}+(60-80) 最大生命
+该装备的闪避与能量护盾提高 (150-200)%
+物理攻击伤害的 (0.4-0.8)% 会转化为生命偷取
+反射 100 - 150 物理伤害给近战攻击者
+你反射给怪物的 30% 伤害会变为回复生命
 ]],[[
-Farrul's Bite
-Harlequin Mask
-League: Bestiary
-Source: Drops from unique{Farrul, First of the Plains}
-Requires Level 57
-Grants Level 20 Aspect of the Cat Skill
-(180–220)% increased Evasion and Energy Shield
-+(25–35)% to Cold Resistance
-+1% to Critical Strike Chance while affected by Aspect of the Cat
-Critical Strikes have (10–20)% chance to Blind Enemies while you have Cat's Stealth
-(40–50)% increased Damage with Hits and Ailments against Blinded Enemies
+大地之牙
+鹰喙之面
+联盟: 猎魔笔记
+源: Boss 传奇 【大地初子 法瑞尔】 专属掉落
+等级需求: 57
+获得 20 级的主动技能【猫之势】
+该装备的闪避与能量护盾提高 (180-220)%
++(25-35)% 冰霜抗性
+受到【猫之势】影响时，+1% 攻击和法术基础暴击率
+拥有【猫之隐匿】时，暴击有 (10-20)% 几率致盲敌人
+对致盲的敌人的击中和异常状态伤害提高 (40-50)%
 ]],[[
-Gorgon's Gaze
-Regicide Mask
-Requires Level 52
-Implicits: 0
-Grants Level 20 Summon Petrification Statue Skill
-(200–250)% increased Energy Shield
-+(60–80) to maximum Life
-(5–10)% increased Attack and Cast Speed
-5% additional Physical Damage Reduction while moving
-5% reduced Elemental Damage taken while stationary
+葛尔贡的凝视
+弑君之面
+等级需求: 52
+固定基底词缀: 0
+获得 20 级的的主动技能【召唤石化雕像】
+该装备的能量护盾提高 (200-250)%
++(60-80) 最大生命
+攻击与施法速度提高 (5-10)%
+移动时获得额外 5% 物理伤害减免
+静止时受到的火焰、冰霜、闪电伤害降低 5%
 ]],[[
-The Gull
-Raven Mask
-League: Domination
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 38, 44 Dex, 44 Int
-{variant:2,3}Trigger level 1 Create Lesser Shrine when you Kill an Enemy
-(120-150)% increased Evasion and Energy Shield
-{variant:2}+(40-65) to maximum Energy Shield
-{variant:3}+(30–45) to maximum Energy Shield
-{variant:1}+(30-40) to maximum Mana
-{variant:2,3}+(60-80) to maximum Life
-{variant:2,3}+(30-40)% to Cold Resistance
-{variant:1}+(15-20) Life gained on Kill
-{variant:1}+(10-15) Energy Shield gained on Kill
-75% increased Effect of Shrine Buffs on you
-50% increased Duration of Shrine Effects on you
+鸥喙
+祸鸦之面
+联盟: 支配
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 38, 44 Dex, 44 Int
+{variant:2,3}击败敌人时召唤 1 级的低阶神殿
+该装备的闪避与能量护盾提高 (120-150)%
+{variant:2}+(40-65) 最大能量护盾
+{variant:3}+(30-45) 最大能量护盾
+{variant:1}+(30-40) 最大魔力
+{variant:2,3}+(60-80) 最大生命
+{variant:2,3}+(30-40)% 冰霜抗性
+{variant:1}击败敌人回复 +(15-20) 生命
+{variant:1}击败敌人回复 +(10-15) 能量护盾
+神殿效果提高 75%
+神殿持续时间延长 50%
 ]],[[
-Heretic's Veil
-Deicide Mask
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 67, 73 Dex, 88 Int
-+(40-50) to maximum Energy Shield
-{variant:1,2}(130-150)% increased Evasion and Energy Shield
-{variant:3}(90–110)% increased Evasion and Energy Shield
-{variant:1}+2 to Level of Socketed Curse Gems
-{variant:2,3}+1 to Level of Socketed Curse Gems
-Socketed Curse Gems are Supported by Level 22 Blasphemy
-Socketed Curse Gems have 12% reduced Mana Reservation
+异教面纱
+弑神之面
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 67, 73 Dex, 88 Int
++(40-50) 最大能量护盾
+{variant:1,2}该装备的闪避与能量护盾提高 (130-150)%
+{variant:3}该装备的闪避与能量护盾提高 (90-110)%
+{variant:1}此物品上装备的【诅咒技能石】等级 +2
+{variant:2,3}此物品上装备的【诅咒技能石】等级 +1
+此物品上的诅咒技能石受到 22 级的 诅咒光环 辅助
+此物品上的诅咒技能石降低 12% 魔力保留
 ]],[[
-Leer Cast
-Festival Mask
-Requires Level 28, 33 Dex, 33 Int
-30% reduced Damage
-+(20-30) to Dexterity
-+(20-30) to maximum Life
-+(20-30) to maximum Mana
-You and nearby allies gain 15% increased Damage
+共鸣之面
+节庆之面
+等级需求: 28, 33 Dex, 33 Int
+伤害降低 30%
++(20-30) 敏捷
++(20-30) 最大生命
++(20-30) 最大魔力
+你和队友的伤害提高 15%
 ]],[[
-Malachai's Simula
-Iron Mask
-Upgrade: Upgrades to unique{Malachai's Awakening} via prophecy{The Nightmare Awakens}
-Variant: Pre 1.0.0
-Variant: Pre 2.0.0
-Variant: Current
-Requires Level 17, 21 Dex, 21 Int
-(15-30)% increased Spell Damage
-+20 to Strength
-(20-30)% increased Lightning Damage
-+10% to Lightning Resistance
-{variant:1}100% increased Mana Cost of Skills
-{variant:2}20% increased Mana Cost of Skills
-Blood Magic
+玛拉凯的祭具
+铁锻之面
+升级: 使用 预言【梦魇苏醒】 升级为 传奇【玛拉凯之觉醒】
+版本: 1.0.0以前
+版本: 2.0.0以前
+版本: 当前
+等级需求: 17, 21 Dex, 21 Int
+法术伤害提高 (15-30)%
++20 力量
+闪电伤害提高 (20-30)%
++10% 闪电抗性
+{variant:1}技能魔力消耗提高 100%
+{variant:2}技能魔力消耗提高 20%
+血魔法
 ]],[[
-Malachai's Awakening
-Iron Mask
-Source: Upgraded from unique{Malachai's Simula} via prophecy{The Nightmare Awakens}
-Requires Level 60
-(15–30)% increased Spell Damage
-+20 to Strength
-+10% to all Elemental Resistances
-Adds (42–54) to (78–88) Cold Damage to Spells while no Life is Reserved
-Adds (54–64) to (96–107) Fire Damage to Spells while no Life is Reserved
-Adds (5–14) to (160–173) Lightning Damage to Spells while no Life is Reserved
-Blood Magic
+玛拉凯之觉醒
+铁锻之面
+源: 由 传奇【玛拉凯的祭具】 使用 预言【梦魇苏醒】 升级
+等级需求: 60
+法术伤害提高 (15-30)%
++20 力量
+获得 +10% 火焰、冰霜、闪电抗性
+无生命保留时法术附加 (42-54) - (78-88) 基础冰霜伤害
+无生命保留时法术附加 (54-64) - (96-107) 基础火焰伤害
+无生命保留时法术附加 (5-14) - (160-173) 基础闪电伤害
+血魔法
 ]],[[
-Mind of the Council
-Harlequin Mask
-Source: prophecy{Unbearable Whispers V}
-Requires Level 57, 64 Dex, 64 Int
-(230-260)% increased Evasion and Energy Shield
-(20-30)% increased maximum Mana
-10% chance to Shock
-+20% chance to be Shocked
-30% of Lightning Damage is taken from Mana before Life when Hit
-Recover 3% of Maximum Mana when you Shock an Enemy
+智者之秘
+鹰喙之面
+源: 预言【尖刺耳语 V】
+等级需求: 57, 64 Dex, 64 Int
+该装备的闪避与能量护盾提高 (230-260)%
+最大魔力提高 (20-30)%
+闪电伤害击中时有 10% 几率使敌人受到感电效果影响
++20% 几率被感电
+被击中时 30% 的闪电伤害优先从魔力优先扣除
+你使敌人感电时，回复 3% 最大魔力
 ]],[[
-The Tempest's Binding
-Callous Mask
-League: Harbinger
-Requires Level 45, 51 Dex, 51 Int
-Socketed Gems are Supported by Level 18 Ice Bite
-Socketed Gems are Supported by Level 18 Innervate
-Grants Summon Harbinger of Storms Skill
-+(100-150) to Evasion Rating
-+(60-80) to maximum Life
-+(40-60) to maximum Energy Shield
-+(10-15)% to all Elemental Resistances
+风暴拘束
+无情之面
+联盟: 先驱者
+等级需求: 45, 51 Dex, 51 Int
+此物品上的技能石受到 18 级的 霜咬 辅助
+插槽内的技能石被 18 级的 闪电支配 辅助
+获得【召唤冰雷先驱者】
++(100-150) 点闪避值
++(60-80) 最大生命
++(40-60) 最大能量护盾
+获得 +(10-15)% 火焰、冰霜、闪电抗性
 ]],[[
-The Three Dragons
-Golden Mask
-Requires Level 35, 40 Dex, 40 Int
-+(26-30)% to all Elemental Resistances
-Your Fire Damage can Shock but not Ignite
-Your Cold Damage can Ignite but not Freeze or Chill
-Your Lightning Damage can Freeze but not Shock
+三龙战纪
+黄金之面
+等级需求: 35, 40 Dex, 40 Int
+获得 +(26-30)% 火焰、冰霜、闪电抗性
+你的火焰伤害可以感电但无法点燃
+你的冰霜伤害可以点燃但无法冰冻或冰缓
+你的闪电伤害可以冰冻但无法感电
 ]],[[
-The Vertex
-Vaal Mask
-Source: Drops from unique{Atziri, Queen of the Vaal} in normal{The Alluring Abyss}
-Requires Level 62, 79 Dex, 72 Int
-+1 to Level of Socketed Gems
-(245-280)% increased Evasion and Energy Shield
-+(30-40) to maximum Energy Shield
-+(24-30)% to Chaos Resistance
-Enemies cannot Leech Mana from You
-Socketed Gems have 50% reduced Mana Cost
+谜容
+瓦尔之面
+源: 传奇Boss【瓦尔女王阿兹里】 专属掉落（地图【诱人的深渊】） 
+等级需求: 62, 79 Dex, 72 Int
+此物品上装备的技能石等级 +1
+该装备的闪避与能量护盾提高 (245-280)%
++(30-40) 最大能量护盾
++(24-30)% 混沌抗性
+敌人无法偷取你的魔力
+此物品上的技能石魔力消耗降低 50%
 ]],
 }

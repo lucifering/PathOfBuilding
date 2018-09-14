@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Module: Calc Setup
 -- Initialises the environment for calculations.
@@ -472,11 +472,11 @@ function calcs.initEnv(build, mode, override)
 			if item.type ~= "Jewel" and item.type ~= "Flask" then
 				-- Update item counts
 				local key
-				if item.rarity == "UNIQUE" or item.rarity == "RELIC" then
+if item.rarity == "传奇" or item.rarity == "遗产" then
 					key = "UniqueItem"
-				elseif item.rarity == "RARE" then
+elseif item.rarity == "稀有" then
 					key = "RareItem"
-				elseif item.rarity == "MAGIC" then
+elseif item.rarity == "魔法" then
 					key = "MagicItem"
 				else
 					key = "NormalItem"

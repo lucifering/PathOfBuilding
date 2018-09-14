@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Class: Item list
 -- Build item list control.
@@ -11,17 +11,17 @@ local t_insert = table.insert
 local ItemListClass = common.NewClass("ItemList", "ListControl", function(self, anchor, x, y, width, height, itemsTab)
 	self.ListControl(anchor, x, y, width, height, 16, true, itemsTab.itemOrderList)
 	self.itemsTab = itemsTab
-	self.label = "^7All items:"
-	self.defaultText = "^x7F7F7FThis is the list of items that have been added to this build.\nYou can add items to this list by dragging them from\none of the other lists, or by clicking 'Add to build' when\nviewing an item."
+self.label = "^7所有装备:"
+self.defaultText = "^x7F7F7F这里显示的是所有加入build的装备物品.\n你可以从下面的预设装备列表中拖拽装备到这里\n或者在查看装备的时候点击【加入Build】按钮放入这里"
 	self.dragTargetList = { }
-	self.controls.delete = common.New("ButtonControl", {"BOTTOMRIGHT",self,"TOPRIGHT"}, 0, -2, 60, 18, "Delete", function()
+self.controls.delete = common.New("ButtonControl", {"BOTTOMRIGHT",self,"TOPRIGHT"}, 0, -2, 60, 18, "删除", function()
 		self:OnSelDelete(self.selIndex, self.selValue)
 	end)
 	self.controls.delete.enabled = function()
 		return self.selValue ~= nil
 	end
-	self.controls.deleteAll = common.New("ButtonControl", {"RIGHT",self.controls.delete,"LEFT"}, -4, 0, 70, 18, "Delete All", function()
-		main:OpenConfirmPopup("Delete All", "Are you sure you want to delete all items in this build?", "Delete", function()
+self.controls.deleteAll = common.New("ButtonControl", {"RIGHT",self.controls.delete,"LEFT"}, -4, 0, 70, 18, "删除所有", function()
+main:OpenConfirmPopup("Delete All", "你确定要删除这个build的所有装备?", "Delete", function()
 			for _, slot in pairs(itemsTab.slots) do
 				slot:SetSelItemId(0)
 			end
@@ -42,7 +42,7 @@ local ItemListClass = common.NewClass("ItemList", "ListControl", function(self, 
 	self.controls.deleteAll.enabled = function()
 		return #self.list > 0
 	end
-	self.controls.sort = common.New("ButtonControl", {"RIGHT",self.controls.deleteAll,"LEFT"}, -4, 0, 60, 18, "Sort", function()
+self.controls.sort = common.New("ButtonControl", {"RIGHT",self.controls.deleteAll,"LEFT"}, -4, 0, 60, 18, "排序", function()
 		itemsTab:SortItemList()
 	end)
 end)
@@ -53,9 +53,9 @@ function ItemListClass:GetRowValue(column, index, itemId)
 		local used = ""
 		local slot, itemSet = self.itemsTab:GetEquippedSlotForItem(item)
 		if not slot then
-			used = "  ^9(Unused)"
+used = "  ^9(未使用)"
 		elseif itemSet then
-			used = "  ^9(Used in '" .. (itemSet.title or "Default") .. "')"
+used = "  ^9(装备在 '" .. (itemSet.title or "Default") .. "')"
 		end
 		return colorCodes[item.rarity] .. item.name .. used
 	end
@@ -133,7 +133,7 @@ function ItemListClass:OnSelDelete(index, itemId)
 	local equipSlot, equipSet = self.itemsTab:GetEquippedSlotForItem(item)
 	if equipSlot then
 		local inSet = equipSet and (" in set '"..(equipSet.title or "Default").."'") or ""
-		main:OpenConfirmPopup("Delete Item", item.name.." is currently equipped in "..equipSlot.label..inSet..".\nAre you sure you want to delete it?", "Delete", function()
+main:OpenConfirmPopup("Delete Item", item.name.." 已经装备在了 "..equipSlot.label..inSet..".\n你确定要删除吗?", "删除", function()
 			self.itemsTab:DeleteItem(item)
 			self.selIndex = nil
 			self.selValue = nil

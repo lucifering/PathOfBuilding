@@ -1,280 +1,278 @@
--- Item data (c) Grinding Gear Games
-
+﻿-- Item data (c) Grinding Gear Games
 return {
 -- Weapon: Wand
 [[
-Abberath's Horn
-Goat's Horn
-Variant: Pre 2.3.0
-Variant: Current
-Requires Level 6, 29 Int
-Implicits: 2
-{variant:1}(9-12)% increased Spell Damage
-{variant:2}(10-14)% increased Spell Damage
-(20-30)% increased Fire Damage
-Adds (4-6) to (8-12) Fire Damage to Spells
-(40-60)% increased Global Critical Strike Chance
-+10 Life Gained on Killing Ignited Enemies
-25% reduced Ignite Duration on Enemies
+艾贝拉斯之角
+羊角法杖
+版本: 2.3.0以前
+版本: 当前
+等级需求: 6, 29 Int
+固定基底词缀: 2
+{variant:1}法术伤害提高 (9-12)%
+{variant:2}法术伤害提高 (10-14)%
+火焰伤害提高 (20-30)%
+法术附加 (4-6) - (8-12) 基础火焰伤害
+攻击和法术暴击率提高 (40-60)%
+击败被点燃的敌人回复 +10 生命
+敌人被点燃的持续时间缩短 25%
 ]],[[
-Apep's Rage
-Opal Wand
-Variant: Pre 2.3.0
-Variant: Current
-Requires Level 62, 212 Int
-Implicits: 2
-{variant:1}(17-20)% increased Spell Damage
-{variant:2}(38-42)% increased Spell Damage
-Adds (50-65) to (90-105) Chaos Damage to Spells
-(25-30)% increased Cast Speed
-+(5-10)% to Chaos Resistance
-40% increased Mana Cost of Skills
+艾普之怒
+灵石法杖
+版本: 2.3.0以前
+版本: 当前
+等级需求: 62, 212 Int
+固定基底词缀: 2
+{variant:1}法术伤害提高 (17-20)%
+{variant:2}法术伤害提高 (38-42)%
+法术附加 (50-65) - (90-105) 基础混沌伤害
+施法速度提高 (25-30)%
++(5-10)% 混沌抗性
+技能魔力消耗提高 40%
 ]],[[
-Ashcaller
-Quartz Wand
-Requires Level 18, 65 Int
-(18-22)% increased Spell Damage
-Adds (10-14) to (18-22) Fire Damage
-Adds (4-6) to (7-9) Fire Damage to Spells
-(40-50)% increased Burning Damage
-(16-22)% chance to Ignite
-10% chance to Trigger Level 8 Summon Raging Spirit on Kill
+灰烬行者
+石英法杖
+等级需求: 18, 65 Int
+法术伤害提高 (18-22)%
+附加 (10-14) - (18-22) 基础火焰伤害
+法术附加 (4-6) - (7-9) 基础火焰伤害
+燃烧伤害提高 (40-50)%
+火焰伤害击中时有 (16-22)% 几率点燃敌人
+击败敌人时有 10% 几率触发 8 级的【召唤愤怒狂灵】
 ]],[[
-Eclipse Solaris
-Crystal Wand
-Upgrade: Upgrades to unique{Corona Solaris} via prophecy{Blinding Light}
-Variant: Pre 2.2.0
-Variant: Pre 2.3.0
-Variant: Current
-Requires Level 45, 146 Int
-Implicits: 2
-{variant:1,2}(14-18)% increased Spell Damage
-{variant:3}(29-33)% increased Spell Damage
-Adds (18-22) to (36-44) Physical Damage
-{variant:1}+(18-30)% to Global Critical Strike Multiplier
-{variant:2,3}+(27-33)% to Global Critical Strike Multiplier
-20% increased Light Radius
-Nearby Enemies are Blinded
-(120-140)% increased Critical Strike Chance against Blinded Enemies
+宇蚀
+水晶法杖
+升级: 使用 预言【蔽目之光】 升级为 传奇【日耀之冠】
+版本: 2.2.0以前
+版本: 2.3.0以前
+版本: 当前
+等级需求: 45, 146 Int
+固定基底词缀: 2
+{variant:1,2}法术伤害提高 (14-18)%
+{variant:3}法术伤害提高 (29-33)%
+附加 (18-22) - (36-44) 基础物理伤害
+{variant:1}+(18-30)% 攻击和法术暴击伤害加成
+{variant:2,3}+(27-33)% 攻击和法术暴击伤害加成
+照亮范围扩大 20%
+周围敌人被致盲
+对致盲的敌人时，攻击和法术暴击率提高 (120-140)%
 ]],[[
-Corona Solaris
-Crystal Wand
-Source: Upgraded from unique{Eclipse Solaris} via prophecy{Blinding Light}
-Requires Level 63, 146 Int
-(29-33)% increased Spell Damage
-Triggers Level 20 Blinding Aura when Equipped
-Adds (18-22) to (36-44) Physical Damage
-+(27-33)% to Global Critical Strike Multiplier
-20% increased Light Radius
-(120-140)% increased Critical Strike Chance against Blinded Enemies
-Increases and Reductions to Light Radius also apply to Accuracy
-Adds (145-157) to (196-210) Fire Damage to Hits with this Weapon against Blinded Enemies
+日耀之冠
+水晶法杖
+源: 由 传奇【宇蚀】 使用 预言【蔽目之光】 升级
+等级需求: 63, 146 Int
+法术伤害提高 (29-33)%
+装备时触发 20 级的主动技能【失明光环】
+附加 (18-22) - (36-44) 基础物理伤害
++(27-33)% 攻击和法术暴击伤害加成
+照亮范围扩大 20%
+对致盲的敌人时，攻击和法术暴击率提高 (120-140)%
+照亮范围的扩大和缩小也同样作用于命中值
+该武器击中致盲敌人时，附加 (145-157) - (196-210) 基础火焰伤害
 ]],[[
-Lifesprig
-Driftwood Wand
-Requires Level 2
-(8-12)% increased Spell Damage
-+1 to Level of Socketed Spell Gems
-(20-28)% increased Spell Damage
-(5-8)% increased Cast Speed
-+(15-20) to maximum Life
-+(15-20) to maximum Mana
-Regenerate (6-8) Life over 1 second for each Spell you Cast
+生机之记
+朽木法杖
+等级需求: 2
+法术伤害提高 (8-12)%
+此物品上装备的【法术技能石】等级 +1
+法术伤害提高 (20-28)%
+施法速度提高 (5-8)%
++(15-20) 最大生命
++(15-20) 最大魔力
+施放法术后 1 秒内回复 (6-8) 生命
 ]],[[
-Midnight Bargain
-Engraved Wand
-Variant: Pre 2.3.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 40, 131 Int
-Implicits: 2
-{variant:1}(12-16)% increased Spell Damage
-{variant:2,3}(22-26)% increased Spell Damage
-+(10-20) to Intelligence
-Minions have (10-20)% increased Movement Speed
-Minions deal (10-30)% increased Damage
-+1 to Maximum number of Zombies
-+1 to Maximum number of Spectres
-{variant:1,2}+2 to Maximum number of Skeletons
-{variant:3}+1 to Maximum number of Skeletons
-Reserves 30% of Life
-Cannot be used with Chaos Inoculation
+冥约
+符文法杖
+版本: 2.3.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 40, 131 Int
+固定基底词缀: 2
+{variant:1}法术伤害提高 (12-16)%
+{variant:2,3}法术伤害提高 (22-26)%
++(10-20) 智慧
+召唤生物的移动速度提高 (10-20)%
+召唤生物的伤害提高 (10-30)%
++1 魔卫数量上限
++1 灵体数量上限
+{variant:1,2}+2 魔侍数量上限
+{variant:3}+1 魔侍数量上限
+保留 30% 生命
+不能搭配【异灵之体】
 ]],[[
-Moonsorrow
-Imbued Wand
-Variant: Pre 2.0.0
-Variant: Pre 2.3.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 59, 188 Int
-Implicits: 2
-{variant:1,2}(15-19)% increased Spell Damage
-{variant:3,4}(33-37)% increased Spell Damage
-{variant:1,2,3}Socketed Gems are supported by level 5 Blind
-{variant:4}Socketed Gems are supported by level 20 Blind
-(30-40)% increased Spell Damage
-{variant:1}125% increased Physical Damage
-{variant:2,3}175% increased Physical Damage
-{variant:4}(250�275)% increased Physical Damage
-+10 to Intelligence
-(20-30)% increased Lightning Damage
-10% increased Cast Speed
-10% chance to Blind Enemies on hit
+泣月
+魔性法杖
+版本: 2.0.0以前
+版本: 2.3.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 59, 188 Int
+固定基底词缀: 2
+{variant:1,2}法术伤害提高 (15-19)%
+{variant:3,4}法术伤害提高 (33-37)%
+{variant:1,2,3}此物品上的技能石受到 5 级的 致盲 辅助
+{variant:4}此物品上的技能石受到 20 级的 致盲 辅助
+法术伤害提高 (30-40)%
+{variant:1}物理伤害提高 125%
+{variant:2,3}物理伤害提高 175%
+{variant:4}物理伤害提高 (250-275)%
++10 智慧
+闪电伤害提高 (20-30)%
+施法速度提高 10%
+击中时有 10% 几率致盲敌人
 ]],[[
-Obliteration
-Demon's Horn
-Variant: Pre 2.3.0
-Variant: Current
-Requires Level 56, 179 Int
-Implicits: 2
-{variant:1}(15-18)% increased Spell Damage
-{variant:2}(31-35)% increased Spell Damage
-Adds (24-30) to (80-92) Physical Damage
-(26-32)% increased Critical Strike Chance
-Gain (13-15)% of Physical Damage as Extra Chaos Damage
-Enemies you Kill have a 20% chance to Explode, dealing a quarter
-of their maximum Life as Chaos Damage.
+抹灭
+魔角法杖
+版本: 2.3.0以前
+版本: 当前
+等级需求: 56, 179 Int
+固定基底词缀: 2
+{variant:1}法术伤害提高 (15-18)%
+{variant:2}法术伤害提高 (31-35)%
+附加 (24-30) - (80-92) 基础物理伤害
+该装备的攻击暴击率提高 (26-32)%
+获得额外混沌伤害，其数值等同于物理伤害的 (13-15)%
+你击败的敌人有 20% 几率爆炸，造成等同该敌人最大生命四分之一的混沌伤害
 ]],[[
-Piscator's Vigil
-Tornado Wand
-Variant: Pre 2.3.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 65, 212 Int
-Implicits: 2
-{variant:1}(16-19)% increased Spell Damage
-{variant:2,3}(35-39)% increased Spell Damage
-No Physical Damage
-(10-18)% increased Attack Speed
-+(340-400) to Accuracy Rating
-(20-30)% increased Critical Strike Chance
-Attacks with this Weapon have (100-115)% increased Elemental Damage
-{variant:3}Attacks with this Weapon Penetrate 5% Elemental Resistances
+皮斯卡托的慧眼
+狂风法杖
+版本: 2.3.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 65, 212 Int
+固定基底词缀: 2
+{variant:1}法术伤害提高 (16-19)%
+{variant:2,3}法术伤害提高 (35-39)%
+无法造成物理伤害
+攻击速度提高 (10-18)%
++(340-400) 命中值
+该装备的攻击暴击率提高 (20–30)%
+此武器攻击造成的火焰、冰霜、闪电伤害提高 (100-115)%
+{variant:3}此武器的攻击穿透 5% 火焰、冰霜、闪电抗性
 ]],[[
-The Poet's Pen
-Carved Wand
-Requires Level 12
-(11�15)% increased Spell Damage 
-+1 to Level of Socketed Active Skill Gems per 25 Player Levels 
-Adds 3 to 5 Physical Damage to Attacks with this Weapon per 3 Player Levels 
-(8�12)% increased Attack Speed 
-Trigger a Socketed Spell when you Attack
+诗人之笔
+粗纹法杖
+等级需求: 12
+法术伤害提高 (11-15)%
+人物等级每到达 25 级，该插槽内的【主动技能石】等级 +1
+玩家等级每提高 3 级，该武器攻击时便附加 3 - 5 物理伤害
+攻击速度提高 (8-12)%
+当你攻击时触发一个插槽内的法术
 ]],[[
-Reverberation Rod
-Spiraled Wand
-Upgrade: Upgrades to unique{Amplification Rod} via prophecy{Power Magnified}
-Variant: Pre 2.3.0
-Variant: Current
-Requires Level 24, 83 Int
-Implicits: 2
-{variant:1}(10-14)% increased Spell Damage
-{variant:2}(15-19)% increased Spell Damage
-+1 to Level of Socketed Gems
-Socketed Gems are Supported by level 1 Spell Echo
-+(10-30) to Intelligence
+混响
+螺纹法杖
+升级: 使用 预言【力量扩大】 升级为 传奇【增幅杖】
+版本: 2.3.0以前
+版本: 当前
+等级需求: 24, 83 Int
+固定基底词缀: 2
+{variant:1}法术伤害提高 (10-14)%
+{variant:2}法术伤害提高 (15-19)%
+此物品上装备的技能石等级 +1
+此物品上的技能石受到 1 级的 施法回响 辅助
++(10-30) 智慧
 ]],[[
-Amplification Rod
-Spiraled Wand
-Source: Upgraded from unique{Reverberation Rod} using prophecy{Power Magnified}
-Requires Level 36, 83 Int
-(15-19)% increased Spell Damage
-+1 to Level of Socketed Gems
-Socketed Gems are Supported by level 1 Spell Echo
-Socketed Gems are Supported by level 1 Increased Area of Effect
-Socketed Gems are Supported by level 1 Controlled Destruction
-+(10-30) to Intelligence
+增幅杖
+螺纹法杖
+源: 由 传奇【混响】 使用 预言【力量扩大】 升级
+等级需求: 36, 83 Int
+法术伤害提高 (15-19)%
+此物品上装备的技能石等级 +1
+此物品上的技能石受到 1 级的 施法回响 辅助
+此物品上的技能石受到 1 级的 增大范围 辅助
+此物品上的技能石由 1 级的 精准破坏 辅助
++(10-30) 智慧
 ]],[[
-Shade of Solaris
-Sage Wand
-Requires Level 30, 119 Int
-(17-21)% increased Spell Damage
-Gain (10-20)% of Elemental Damage as Extra Chaos Damage
-Critical Strikes deal no Damage
-120% increased Spell Damage if you've dealt a Critical Strike Recently
+日耀之影
+贤者法杖
+等级需求: 30, 119 Int
+法术伤害提高 (17-21)%
+获得额外混沌伤害，其数值等同于火焰、冰霜、闪电伤害的 (10-20)%
+暴击无法造成伤害
+近期若打出过暴击，则法术伤害提高 120%
 ]],[[
-Shimmeron
-Tornado Wand
-Source: Drops from unique{The Elder} (Tier 6+)
-Variant: Pre 3.4.0
-Variant: Current
-Requires Level 65
-(35�39)% increased Spell Damage 
-(30�40)% increased Spell Damage 
-Adds (26�35) to (95�105) Lightning Damage to Spells 
-+(6�10)% to Critical Strike Multiplier per Power Charge 
-+0.3% Critical Strike Chance per Power Charge 
-2% additional Chance to Block Spells per Power Charge 
-Adds 3 to 9 Lightning Damage to Spells per Power Charge 
-{variant:1}400 Lightning Damage taken per second per Power Charge if you've dealt a Critical Strike Recently
-{variant:2}200 Lightning Damage taken per second per Power Charge if your Skills have dealt a Critical Strike Recently
-Elder Item
+低伏暗光
+狂风法杖
+源:源: 传奇Boss【裂界者】 专属掉落 (T6地图或以上)
+版本: 3.4.0以前
+版本: 当前
+等级需求: 65
+法术伤害提高 (35-39)%
+法术伤害提高 (20-45)%
+法术附加 (26-35) - (95-105) 闪电伤害
+每个暴击球 +(6-10)% 暴击伤害加成
+每个暴击球 +0.3% 攻击和法术基础暴击率
+每个暴击球可使法术格挡几率提高 2%
+每个暴击球可使法术附加 3 - 9 基础闪电伤害
+{variant:1}近期内你若打出过暴击，则每有 1 个暴击球，就会每秒受到 400 闪电伤害
+{variant:2}近期内你的技能若打出过暴击，则每有 1 个暴击球，就会每秒受到 200 闪电伤害
+裂界之器
 ]],[[
-Storm Prison
-Carved Wand
-Variant: Pre 2.3.0
-Variant: Current
-Requires Level 12, 47 Int
-Implicits: 2
-{variant:1}(9-13)% increased Spell Damage
-{variant:2}(11-15)% increased Spell Damage
-(40-60)% increased Physical Damage
-Adds 1 to (35-45) Lightning Damage
-(15-25)% increased Mana Regeneration Rate
-+1 Maximum Power Charge
-(25-35)% chance to gain a Power Charge on Kill
+禁锢暴风
+粗纹法杖
+版本: 2.3.0以前
+版本: 当前
+等级需求: 12, 47 Int
+固定基底词缀: 2
+{variant:1}法术伤害提高 (9-13)%
+{variant:2}法术伤害提高 (11-15)%
+物理伤害提高 (40-60)%
+附加 1 - (35-45) 基础闪电伤害
+魔力回复速度提高 (15-25)%
++1 暴击球数量上限
+击败敌人有 (25-35)% 几率获得暴击球
 ]],[[
-Tulborn
-Spiraled Wand
-League: Breach
-Source: Drops in Tul Breach or from unique{Tul, Creeping Avalanche}
-Upgrade: Upgrades to unique{Tulfall} using currency{Blessing of Tul}
-Requires Level 24, 83 Int
-(15-19)% increased Spell Damage
-(10-15)% increased Cast Speed
-50% chance to gain a Power Charge on Killing a Frozen Enemy
-Adds 10 to 20 Cold Damage to Spells per Power Charge
-+(20-25) Mana gained on Killing a Frozen Enemy
+托沃崩
+螺纹法杖
+联盟: 裂隙
+源: 地图【托沃领域】 或 传奇Boss【崩雪‧托沃】 专属掉落
+升级: 使用 通货【托沃的祝福】 升级为 传奇【托沃卧】
+等级需求: 24, 83 Int
+法术伤害提高 (15-19)%
+施法速度提高 (10-15)%
+击败被冰冻的敌人时有 50% 几率获得暴击球
+每个暴击球为法术附加 10 - 20 基础冰霜伤害
+击败 1 个被冰冻敌人时 +(20-25) 魔力
 ]],[[
-Tulfall
-Tornado Wand
-League: Breach
-Source: Upgraded from unique{Tulborn} using currency{Blessing of Tul}
-Requires Level 65, 212 Int
-(35-39)% increased Spell Damage
-(10-15)% increased Cast Speed
-50% chance to gain a Power Charge on Killing a Frozen Enemy
-Adds 15 to 25 Cold Damage to Spells per Power Charge
-Lose all Power Charges on reaching Maximum Power Charges
-Gain a Frenzy Charge on reaching Maximum Power Charges
-(10-15)% increased Cold Damage per Frenzy Charge
+托沃卧
+狂风法杖
+联盟: 裂隙
+源: 由 传奇【托沃崩】 使用 通货【托沃的祝福】 升级
+等级需求: 65, 212 Int
+法术伤害提高 (35-39)%
+施法速度提高 (10-15)%
+击败被冰冻的敌人时有 50% 几率获得暴击球
+每个暴击球为法术附加 15 - 25 基础冰霜伤害
+暴击球达到最大数量时，失去所有的暴击球
+暴击球达到最大数量时，获得 1 个狂怒球
+每个狂怒球可使冰霜伤害提高 (10-15)%
 ]],[[
-Twyzel
-Sage Wand
-Variant: Pre 2.3.0
-Variant: Current
-Requires Level 30, 119 Int
-Implicits: 2
-{variant:1}(11-14)% increased Spell Damage
-{variant:2}(17-21)% increased Spell Damage
-(80-120)% increased Physical Damage
-Adds (5-8) to (13-17) Physical Damage
-(5-10)% increased Attack Speed
-(10-20)% increased Critical Strike Chance
-Socketed Gems fire an additional Projectile
+峡湾之星
+贤者法杖
+版本: 2.3.0以前
+版本: 当前
+等级需求: 30, 119 Int
+固定基底词缀: 2
+{variant:1}法术伤害提高 (11-14)%
+{variant:2}法术伤害提高 (17-21)%
+物理伤害提高 (80-120)%
+附加 (5-8) - (13-17) 基础物理伤害
+攻击速度提高 (5-10)%
+该装备的攻击暴击率提高 (10–20)%
+此物品上的技能石可以发射 1 个额外投射物
 ]],[[
-Void Battery
-Prophecy Wand
-Variant: Pre 2.3.0
-Variant: Current
-Requires Level 68, 245 Int
-Implicits: 2
-{variant:1}(16-20)% increased Spell Damage
-{variant:2}(36-40)% increased Spell Damage
-80% reduced Spell Damage
-(10-20)% increased Cast Speed
-(50-65)% increased Global Critical Strike Chance
-+(40-50) to maximum Mana
-+1 to Maximum Power Charges
-25% increased Spell Damage per Power Charge
+潜能魔棒
+箴言法杖
+版本: 2.3.0以前
+版本: 当前
+等级需求: 68, 245 Int
+固定基底词缀: 2
+{variant:1}法术伤害提高 (16-20)%
+{variant:2}法术伤害提高 (36-40)%
+法术伤害降低 80%
+施法速度提高 (10-20)%
+攻击和法术暴击率提高 (50-65)%
++(40-50) 最大魔力
++1 暴击球数量上限
+每个暴击球可使法术伤害提高 25%
 ]],
 }

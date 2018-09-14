@@ -1,287 +1,286 @@
--- Item data (c) Grinding Gear Games
-
+﻿-- Item data (c) Grinding Gear Games
 return {
 -- Weapon: Claw
 [[
-Advancing Fortress
-Gut Ripper
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 46, 80 Dex, 80 Int
-Implicits: 2
-{variant:1}+21 Life gained for each Enemy hit by Attacks
-{variant:2}+44 Life gained for each Enemy hit by Attacks
-Socketed Gems are Supported by level 12 Fortify
-(100-120)% increased Physical Damage
-+110 to Evasion Rating
-+(30-50) to maximum Life
-+35 to maximum Energy Shield
-Reflects (71-90) Physical Damage to Melee Attackers
-15% Chance to Block
+超越壁垒
+裂脏钩
+版本: 2.6.0以前
+版本: 当前
+等级需求: 46, 80 Dex, 80 Int
+固定基底词缀: 2
+{variant:1}攻击击中每个敌人会回复 +21 生命
+{variant:2}攻击击中每个敌人会回复 +44 生命
+此物品上的技能石受到 12 级的 护体 辅助
+物理伤害提高 (100-120)%
++110 点闪避值
++(30-50) 最大生命
++35 最大能量护盾
+反射 (71-90) 物理伤害给近战攻击者
+15% 攻击格挡率
 ]],[[
-Al Dhih
-Timeworn Claw
-Variant: Pre 2.0.0
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 26, 39 Dex, 56 Int
-Implicits: 3
-{variant:1}+8 Life gained for each Enemy hit by Attacks
-{variant:2}2% of Physical Attack Damage Leeched as Life
-{variant:3,4}+19 Life gained for each Enemy hit by Attacks
-{variant:1}(60-80)% increased Physical Damage
-{variant:2,3,4}(100-120)% increased Physical Damage
-3% of Physical Attack Damage Leeched as Life
-10% reduced Enemy Stun Threshold with this Weapon
-Socketed Gems have 10% chance to cause Enemies to Flee on Hit
-{variant:4}Trigger Level 1 Abyssal Cry on Hit
+鬣犬之牙
+远古战爪
+版本: 2.0.0以前
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 26, 39 Dex, 56 Int
+固定基底词缀: 3
+{variant:1}攻击击中每个敌人会回复 +8 生命
+{variant:2}物理攻击伤害的 2% 会转化为生命偷取
+{variant:3,4}攻击击中每个敌人会回复 +19 生命
+{variant:1}物理伤害提高 (60-80)%
+{variant:2,3,4}物理伤害提高 (100-120)%
+物理攻击伤害的 3% 会转化为生命偷取
+使用该武器时，敌人晕眩门槛降低 10%
+此物品上的技能石有 10% 几率使敌人逃跑
+{variant:4}击中时触发 1 级的【深渊战吼】
 ]],[[
-Allure
-Vaal Claw
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 66, 131 Dex, 95 Int
-2% of Physical Attack Damage Leeched as Life
-{variant:1}(80-100)% increased Physical Damage
-{variant:2}(110�130)% increased Physical Damage
-Adds (15-20) to (30-40) Physical Damage
-(8-12)% increased Attack Speed
-15% increased Movement Speed while Phasing
-{variant:1}You gain Phasing for 3 seconds on using a Vaal Skill
-{variant:2}You gain Phasing for 10 seconds on using a Vaal Skill
+魅惑
+瓦尔战爪
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 66, 131 Dex, 95 Int
+物理攻击伤害的 2% 会转化为生命偷取
+{variant:1}物理伤害提高 (80-100)%
+{variant:2}物理伤害提高 (110-130)%
+附加 (15-20) - (30-40) 基础物理伤害
+攻击速度提高 (8-12)%
+【迷踪】状态时移动速度提高 15%
+{variant:1}使用瓦尔技能时，获得【迷踪】状态，持续 3 秒
+{variant:2}使用瓦尔技能时，获得【迷踪】状态，持续 10 秒
 ]],[[
-Bloodseeker
-Hellion's Paw
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 62, 131 Dex, 95 Int
-1.6% of Physical Attack Damage Leeched as Life
-{variant:1}(100-120)% increased Physical Damage
-{variant:2}(150�170)% increased Physical Damage
-Adds 10 to 12 Physical Damage
-5% increased Attack Speed
-1.2% of Physical Attack Damage Leeched as Life
-5% increased Movement Speed
-{variant:1}Life Leech from Hits with this Weapon applies instantly
-{variant:2}Gain Life from Leech instantly from Hits with this Weapon
+嗜血之爪
+魔爪刃
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 62, 131 Dex, 95 Int
+物理攻击伤害的 1.6% 会转化为生命偷取
+{variant:1}物理伤害提高 (100-120)%
+{variant:2}物理伤害提高 (150-170)%
+附加 10 - 12 基础物理伤害
+攻击速度提高 5%
+物理攻击伤害的 1.2% 会转化为生命偷取
+移动速度提高 5%
+{variant:1}使用此武器击中敌人立即获得生命偷取
+{variant:2}使用此武器击中敌人立即获得生命偷取
 ]],[[
-Cybil's Paw
-Thresher Claw
-Variant: Pre 2.0.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 37, 53 Dex, 77 Int
-Implicits: 3
-{variant:1}+15 Life gained for each Enemy hit by Attacks
-{variant:2}+21 Life gained for each Enemy hit by Attacks
-{variant:3}+25 Life gained for each Enemy hit by Attacks
-(8-12)% increased Cast Speed
-+(30-40) to maximum Mana
-+(5-8) Life gained for each Enemy hit by your Spells
-{variant:1}6% increased Spell Damage per 5% Block Chance
-{variant:2,3}8% increased Spell Damage per 5% Block Chance
+希比尔的冰爪
+撕裂尖爪
+版本: 2.0.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 37, 53 Dex, 77 Int
+固定基底词缀: 3
+{variant:1}攻击击中每个敌人会回复 +15 生命
+{variant:2}攻击击中每个敌人会回复 +21 生命
+{variant:3}攻击击中每个敌人会回复 +25 生命
+施法速度提高 (8-12)%
++(30-40) 最大魔力
+你的法术击中每个敌人会回复 +(5-8) 生命
+{variant:1}每 5% 的攻击格挡率会使法术伤害提高 6%
+{variant:2,3}每 5% 的攻击格挡率会使法术伤害提高 8%
 ]],[[
-Essentia Sanguis
-Eye Gouger
-Variant: Pre 1.3.0
-Variant: Pre 2.0.0
-Variant: Pre 2.6.0
-Requires Level 64, 113 Dex, 113 Int
-Implicits: 2
-{variant:1,2}0.6% of Physical Attack Damage Leeched as Life
-{variant:3}+31 Life gained for each Enemy hit by Attacks
-{variant:1}10% additional Chance to Block while Dual Wielding Claws
-{variant:2,3}8% additional Chance to Block while Dual Wielding Claws
-{variant:1}(80-120)% increased Physical Damage
-{variant:2,3}(140-180)% increased Physical Damage
-{variant:1}Adds 1 to 50 Lightning Damage
-{variant:2,3}Adds 1 to 80 Lightning Damage
-(20-30)% increased Attack Speed
-+(30-40) to maximum Energy Shield
-Ghost Reaver
+精华收割器
+瓦尔战爪
+版本: 1.3.0以前
+版本: 2.0.0以前
+版本: 2.6.0以前
+等级需求: 64, 113 Dex, 113 Int
+固定基底词缀: 2
+{variant:1,2}物理攻击伤害的 0.6% 会转化为生命偷取
+{variant:3}攻击击中每个敌人会回复 +31 生命
+{variant:1}双持爪时攻击格挡率提高 10%
+{variant:2,3}双持爪时攻击格挡率提高 8%
+{variant:1}物理伤害提高 (80-120)%
+{variant:2,3}物理伤害提高 (140-180)%
+{variant:1}附加 1 - 50 基础闪电伤害
+{variant:2,3}附加 1 - 80 基础闪电伤害
+攻击速度提高 (20-30)%
++(30-40) 最大能量护盾
+灵能护体
 ]],[[
-Essentia Sanguis
-Vaal Claw
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 66, 95 Dex, 131 Int
-2% of Physical Attack Damage Leeched as Life
-8% additional Chance to Block while Dual Wielding Claws
-(140-180)% increased Physical Damage
-Adds 1 to 200 Lightning Damage
-(20-30)% increased Attack Speed
-+(30-40) to maximum Energy Shield
-{variant:1}Ghost Reaver
-{variant:2}Life Leech is applied to Energy Shield instead
+精华收割器
+瓦尔战爪
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 66, 95 Dex, 131 Int
+物理攻击伤害的 2% 会转化为生命偷取
+双持爪时攻击格挡率提高 8%
+物理伤害提高 (140-180)%
+附加 1 - 200 基础闪电伤害
+攻击速度提高 (20-30)%
++(30-40) 最大能量护盾
+{variant:1}灵能护体
+{variant:2}生命偷取会套用于能量护盾
 ]],[[
-Hand of Thought and Motion
-Blinder
-League: Breach
-Source: Drops in Esh Breach or from unique{Esh, Forked Thought}
-Upgrade: Upgrades to unique{Hand of Wisdom and Action} using currency{Blessing of Esh}
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 22, 41 Dex, 41 Int
-Implicits: 2
-{variant:1}+10 Life gained for each Enemy hit by Attacks
-{variant:2,3}+12 Life gained for each Enemy hit by Attacks
-{variant:1,2}(20-25)% increased Elemental Damage with Weapons
-{variant:3}(20-25)% increased Elemental Damage with Attack Skills
-Adds 1 to (50-60) Lightning Damage
-(10-15)% increased Attack Speed
-{variant:1,2}Adds 1 to 3 Lightning Damage to Attacks per 10 Intelligence
-{variant:3}Adds 1 to 5 Lightning Damage to Attacks with this Weapon per 10 Intelligence
+思动之手
+袭眼钩
+联盟: 裂隙
+源: 地图【艾许领域】 或 传奇Boss【异念‧艾许】 专属掉落
+升级: 使用 通货【艾许的祝福】 升级为 传奇【智行之手】
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 22, 41 Dex, 41 Int
+固定基底词缀: 2
+{variant:1}攻击击中每个敌人会回复 +10 生命
+{variant:2,3}攻击击中每个敌人会回复 +12 生命
+{variant:1,2}武器攻击的火焰、冰霜、闪电伤害提高 (20-25)%
+{variant:3}攻击技能的火焰、冰霜、闪电伤害提高 (20-25)%
+附加 1 - (50-60) 基础闪电伤害
+攻击速度提高 (10-15)%
+{variant:1,2}每 10 点智慧可以为攻击附加 1 - 3 基础闪电伤害
+{variant:3}使用此武器攻击时，每 10 点智慧附加 1 - 5 基础闪电伤害
 ]],[[
-Hand of Wisdom and Action
-Imperial Claw
-League: Breach
-Source: Upgraded from unique{Hand of Thought and Motion} using currency{Blessing of Esh}
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 68, 131 Dex, 95 Int
-Implicits: 2
-{variant:1}+25 Life gained for each Enemy hit by Attacks
-{variant:2,3}+46 Life gained for each Enemy hit by Attacks
-{variant:1,2}(25-30)% increased Elemental Damage with Weapons
-{variant:3}(25-30)% increased Elemental Damage with Attack Skills
-(8-12)% increased Dexterity
-(8-12)% increased Intelligence
-{variant:1,2}Adds 1 to 6 Lightning Damage to Attacks per 10 Intelligence
-{variant:3}Adds 1 to 10 Lightning Damage to Attacks with this Weapon per 10 Intelligence
-1% increased Attack Speed per 25 Dexterity
+智行之手
+帝国战爪
+联盟: 裂隙
+源: 由 传奇【思动之手】 使用 通货【艾许的祝福】 升级
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 68, 131 Dex, 95 Int
+固定基底词缀: 2
+{variant:1}攻击击中每个敌人会回复 +25 生命
+{variant:2,3}攻击击中每个敌人会回复 +46 生命
+{variant:1,2}武器攻击的火焰、冰霜、闪电伤害提高 (25-30)%
+{variant:3}攻击技能的火焰、冰霜、闪电伤害提高 (25-30)%
+敏捷提高 (8-12)%
+智慧提高 (8-12)%
+{variant:1,2}每 10 点智慧可以为攻击附加 1 - 6 基础闪电伤害
+{variant:3}使用此武器攻击时，每 10 点智慧附加 1 - 10 基础闪电伤害
+每 25 点敏捷可使攻击速度提高 1%
 ]],[[
-Izaro's Dilemma
-Imperial Claw
-Source: Drops in The Lord's Labyrinth
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 68, 131 Dex, 95 Int
-Implicits: 2
-{variant:1}+25 Life gained for each Enemy hit by Attacks
-{variant:2}+46 Life gained for each Enemy hit by Attacks
-(40-60)% increased Physical Damage
-Adds 20 to 50 Physical Damage
-(10-15)% increased Attack Speed
-+(250-350) to Accuracy Rating
-100% increased Physical Damage while Frozen
+伊泽洛之谜
+帝国战爪
+源: 帝王试炼迷宫专属掉落
+版本: 2.6.0以前
+版本: 当前
+等级需求: 68, 131 Dex, 95 Int
+固定基底词缀: 2
+{variant:1}攻击击中每个敌人会回复 +25 生命
+{variant:2}攻击击中每个敌人会回复 +46 生命
+物理伤害提高 (40-60)%
+附加 20 - 50 基础物理伤害
+攻击速度提高 (10-15)%
++(250-350) 命中值
+冰冻时物理伤害增加 100%
 ]],[[
-Last Resort
-Nailed Fist
-+3 Life gained for each Enemy hit by your Attacks
-25% increased Attack Speed when on Low Life
-(80-100)% increased Physical Damage
-Adds 2 to 10 Physical Damage
-100% increased Claw Physical Damage when on Low Life
-100% increased Accuracy Rating when on Low Life
+终息
+拳钉
+等级需求: 3, 11 Dex, 11 Int
+攻击击中每个敌人会回复 +3 生命
+附加 2 - 10 基础物理伤害
+该装备的物理伤害提高 (80-100)%
+低血时爪类攻击的物理伤害提高 100%
+低血时命中值提高 100%
+低血时攻击速度提高 25%
 ]],[[
-Mortem Morsu
-Fright Claw
-Variant: Pre 2.2.0
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 34, 61 Dex, 61 Int
-Implicits: 2
-{variant:1,2}2% of Physical Attack Damage Leeched as Life
-{variant:3,4}+20 Life gained for each Enemy hit by Attacks
-(75-100)% increased Physical Damage
-20% increased Attack Speed
-25% increased Critical Strike Chance
-{variant:1}+25% to Global Critical Strike Multiplier
-{variant:2,3,4}+40% to Global Critical Strike Multiplier
-(10-20)% of Physical Damage Converted to Chaos Damage
-{variant:1,2,3}Poisonous Hit
-{variant:4}60% chance to Poison on Hit
-25% reduced Enemy Stun Threshold with this Weapon
+噬魂之牙
+恐惧之爪
+版本: 2.2.0以前
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 34, 61 Dex, 61 Int
+固定基底词缀: 2
+{variant:1,2}物理攻击伤害的 2% 会转化为生命偷取
+{variant:3,4}攻击击中每个敌人会回复 +20 生命
+物理伤害提高 (75-100)%
+攻击速度提高 20%
+该装备的攻击暴击率提高 25%
+{variant:1}+25% 攻击和法术暴击伤害加成
+{variant:2,3,4}+40% 攻击和法术暴击伤害加成
+(10-20)% 的物理伤害转换为混沌伤害
+{variant:1,2,3}攻击击中时使敌人中毒
+{variant:4}击中时有 60% 几率使敌人中毒
+使用该武器时，敌人晕眩门槛降低 25%
 ]],[[
-Ornament of the East
-Gut Ripper
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 46, 80 Dex, 80 Int
-Implicits: 2
-{variant:1}+21 Life gained for each Enemy hit by Attacks
-{variant:2,3}+44 Life gained for each Enemy hit by Attacks
-+1 to Level of Socketed Dexterity Gems
-{variant:3}Socketed Gems are Supported by level 10 Faster Attacks
-{variant:1,2}(100-120)% increased Physical Damage
-{variant:3}(160�180)% increased Physical Damage
-(10-15)% increased Attack Speed
-25% increased Stun Recovery
-Hits can't be Evaded
+东之饰
+裂脏钩
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 46, 80 Dex, 80 Int
+固定基底词缀: 2
+{variant:1}攻击击中每个敌人会回复 +21 生命
+{variant:2,3}攻击击中每个敌人会回复 +44 生命
+此物品上装备的【绿色技能石】等级 +1
+{variant:3}此物品上的技能石受到 10 级的 快速攻击 辅助
+{variant:1,2}物理伤害提高 (100-120)%
+{variant:3}物理伤害提高 (160-180)%
+攻击速度提高 (10-15)%
+晕眩回复和格挡回复提高 25%
+攻击和法术无法被闪避
 ]],[[
-Rive
-Terror Claw
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 70, 113 Dex, 113 Int
-2% of Physical Attack Damage Leeched as Life
-(60-80)% increased Physical Damage
-Adds (25-35) to (50-65) Physical Damage
-{variant:1}Causes Bleeding on Hit
-{variant:2}25% chance to cause Bleeding on Hit
-2% increased Physical Damage over time per 10 Dexterity
-1% increased Bleed Duration per 12 Intelligence
-30% Chance to cause Bleeding Enemies to Flee on hit
+裂隙
+恐惧之牙
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 70, 113 Dex, 113 Int
+物理攻击伤害的 2% 会转化为生命偷取
+物理伤害提高 (60-80)%
+附加 (25-35) - (50-65) 基础物理伤害
+{variant:1}击中时造成流血
+{variant:2}击中时有 25% 几率造成流血
+每 10 点敏捷可使持续性物理伤害提高 2%
+每 12 点智慧可使流血持续时间延长 1%
+击中流血敌人时有 30% 几率使敌人逃跑
 ]],[[
-The Scourge
-Terror Claw
-Source: Drops from unique{Guardian of the Chimera}
-Requires Level 70, 113 Dex, 113 Int
-2% of Physical Attack Damage Leeched as Life
-Adds (35-50) to (100-125) Physical Damage
-(10-15)% increased Attack Speed
-Minions have (10-15)% increased Attack Speed
-10% Chance to Cast level 18 Summon Spectral Wolf on Kill
-Increases and Reductions to Minion Damage also affect you
-70% increased Minion Damage if you have Hit Recently
+灾害
+恐惧之牙
+源: 传奇Boss【奇美拉守卫】 专属掉落
+等级需求: 70, 113 Dex, 113 Int
+物理攻击伤害的 2% 会转化为生命偷取
+附加 (35-50) - (100-125) 基础物理伤害
+攻击速度提高 (10-15)%
+召唤生物的攻击速度提高 (10-15)%
+击败敌人时有 10% 几率触发 18 级的【召唤幽狼】
+召唤生物伤害提高或降低，将同样套用于自身
+近期内你若造成过伤害，则召唤生物伤害提高 70%
 ]],[[
-Touch of Anguish
-Imperial Claw
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 68, 131 Dex, 95 Int
-Implicits: 2
-{variant:1}+25 Life gained for each Enemy hit by Attacks
-{variant:2}+46 Life gained for each Enemy hit by Attacks
-Adds (40-50) to (130-150) Physical Damage
-30% increased Cold Damage
-(30-40)% increased Critical Strike Chance
-20% chance to gain a Frenzy Charge on Killing a Frozen Enemy
-Skills Chain an additional time while at maximum Frenzy Charges
-10% chance to Freeze
-Critical Strikes do not always Freeze
+痛苦之触
+帝国战爪
+版本: 2.6.0以前
+版本: 当前
+等级需求: 68, 131 Dex, 95 Int
+固定基底词缀: 2
+{variant:1}攻击击中每个敌人会回复 +25 生命
+{variant:2}攻击击中每个敌人会回复 +46 生命
+附加 (40-50) - (130-150) 基础物理伤害
+冰霜伤害提高 30%
+该装备的攻击暴击率提高 (30-40)%
+击败被冰冻的敌人时有 20% 几率获得 1 个狂怒球
+当你拥有最大数量的狂怒球时，技能额外连锁弹射 1 次
+冰霜伤害击中时有 10% 的几率冰冻敌人
+暴击不会必定造成冰冻
 ]],[[
-The Wasp Nest
-Throat Stabber
-Requires Level 60, 113 Dex, 113 Int
-+40 Life gained for each Enemy hit by Attacks
-(150-170)% increased Physical Damage
-(20-25)% increased Attack Speed
-(20-25)% increased Critical Strike Chance
-+(180-200) to Accuracy Rating
-20% chance to Poison on Hit
-Attacks with this Weapon deal 80-120 added Chaos Damage against
-Enemies affected by at least 5 Poisons
+蜂巢涌动
+刺喉刃
+等级需求: 60, 113 Dex, 113 Int
+攻击击中每个敌人会回复 +40 生命
+物理伤害提高 (150-170)%
+攻击速度提高 (20-25)%
+该装备的攻击暴击率提高 (20-25)%
++(180-200) 命中值
+击中时有 20% 几率使敌人中毒
+中毒 5 层以上的敌人被该武器攻击击中时，该武器附加 80 - 120 混沌伤害
 ]],[[
-Wildslash
-Awl
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 12, 25 Dex, 25 Int
-Implicits: 2
-{variant:1}+5 Life gained for each Enemy hit by Attacks
-{variant:2}+7 Life gained for each Enemy hit by Attacks
-+(10-15) to Strength
-+(10-15) to Dexterity
-15% reduced Accuracy Rating
-Adds (2-6) to (16-22) Physical Damage
-(10-15)% increased Attack Speed
-20% increased Damage with Movement Skills
-15% increased Attack Speed with Movement Skills
+野性狂爪
+凿钉
+版本: 2.6.0以前
+版本: 当前
+等级需求: 12, 25 Dex, 25 Int
+固定基底词缀: 2
+{variant:1}攻击击中每个敌人会回复 +5 生命
+{variant:2}攻击击中每个敌人会回复 +7 生命
++(10-15) 力量
++(10-15) 敏捷
+命中值降低 15%
+附加 (2-6) - (16-22) 基础物理伤害
+攻击速度提高 (10-15)%
+移动技能的伤害提高 20%
+移动技能的攻击速度提高 15%
 ]],
 }

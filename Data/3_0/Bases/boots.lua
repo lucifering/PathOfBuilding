@@ -3,7 +3,7 @@
 local itemBases = ...
 
 
-itemBases["Iron Greaves"] = {
+itemBases["铁锻胫甲"] = {
 	type = "Boots",
 	subType = "Armour",
 	socketLimit = 4,
@@ -11,7 +11,7 @@ itemBases["Iron Greaves"] = {
 	armour = { ArmourBase = 6, },
 	req = { str = 8, },
 }
-itemBases["Steel Greaves"] = {
+itemBases["冷钢胫甲"] = {
 	type = "Boots",
 	subType = "Armour",
 	socketLimit = 4,
@@ -19,7 +19,7 @@ itemBases["Steel Greaves"] = {
 	armour = { ArmourBase = 32, },
 	req = { level = 9, str = 21, },
 }
-itemBases["Plated Greaves"] = {
+itemBases["坚铁胫甲"] = {
 	type = "Boots",
 	subType = "Armour",
 	socketLimit = 4,
@@ -27,7 +27,7 @@ itemBases["Plated Greaves"] = {
 	armour = { ArmourBase = 77, },
 	req = { level = 23, str = 44, },
 }
-itemBases["Reinforced Greaves"] = {
+itemBases["强化胫甲"] = {
 	type = "Boots",
 	subType = "Armour",
 	socketLimit = 4,
@@ -35,7 +35,7 @@ itemBases["Reinforced Greaves"] = {
 	armour = { ArmourBase = 109, },
 	req = { level = 33, str = 60, },
 }
-itemBases["Antique Greaves"] = {
+itemBases["古钢胫甲"] = {
 	type = "Boots",
 	subType = "Armour",
 	socketLimit = 4,
@@ -43,7 +43,7 @@ itemBases["Antique Greaves"] = {
 	armour = { ArmourBase = 122, },
 	req = { level = 37, str = 67, },
 }
-itemBases["Ancient Greaves"] = {
+itemBases["远古胫甲"] = {
 	type = "Boots",
 	subType = "Armour",
 	socketLimit = 4,
@@ -51,7 +51,7 @@ itemBases["Ancient Greaves"] = {
 	armour = { ArmourBase = 151, },
 	req = { level = 46, str = 82, },
 }
-itemBases["Goliath Greaves"] = {
+itemBases["巨灵胫甲"] = {
 	type = "Boots",
 	subType = "Armour",
 	socketLimit = 4,
@@ -59,7 +59,7 @@ itemBases["Goliath Greaves"] = {
 	armour = { ArmourBase = 177, },
 	req = { level = 54, str = 95, },
 }
-itemBases["Vaal Greaves"] = {
+itemBases["瓦尔胫甲"] = {
 	type = "Boots",
 	subType = "Armour",
 	socketLimit = 4,
@@ -67,7 +67,7 @@ itemBases["Vaal Greaves"] = {
 	armour = { ArmourBase = 220, },
 	req = { level = 62, str = 117, },
 }
-itemBases["Titan Greaves"] = {
+itemBases["巨人胫甲"] = {
 	type = "Boots",
 	subType = "Armour",
 	socketLimit = 4,
@@ -76,7 +76,7 @@ itemBases["Titan Greaves"] = {
 	req = { level = 68, str = 120, },
 }
 
-itemBases["Rawhide Boots"] = {
+itemBases["生皮短靴"] = {
 	type = "Boots",
 	subType = "Evasion",
 	socketLimit = 4,
@@ -84,7 +84,7 @@ itemBases["Rawhide Boots"] = {
 	armour = { EvasionBase = 13, },
 	req = { dex = 11, },
 }
-itemBases["Goathide Boots"] = {
+itemBases["羊皮短靴"] = {
 	type = "Boots",
 	subType = "Evasion",
 	socketLimit = 4,
@@ -92,7 +92,7 @@ itemBases["Goathide Boots"] = {
 	armour = { EvasionBase = 42, },
 	req = { level = 12, dex = 26, },
 }
-itemBases["Deerskin Boots"] = {
+itemBases["鹿皮短靴"] = {
 	type = "Boots",
 	subType = "Evasion",
 	socketLimit = 4,
@@ -100,7 +100,7 @@ itemBases["Deerskin Boots"] = {
 	armour = { EvasionBase = 74, },
 	req = { level = 22, dex = 42, },
 }
-itemBases["Nubuck Boots"] = {
+itemBases["砂影短靴"] = {
 	type = "Boots",
 	subType = "Evasion",
 	socketLimit = 4,
@@ -108,7 +108,7 @@ itemBases["Nubuck Boots"] = {
 	armour = { EvasionBase = 113, },
 	req = { level = 34, dex = 62, },
 }
-itemBases["Eelskin Boots"] = {
+itemBases["鳗皮短靴"] = {
 	type = "Boots",
 	subType = "Evasion",
 	socketLimit = 4,
@@ -116,7 +116,7 @@ itemBases["Eelskin Boots"] = {
 	armour = { EvasionBase = 129, },
 	req = { level = 39, dex = 70, },
 }
-itemBases["Sharkskin Boots"] = {
+itemBases["鲨皮短靴"] = {
 	type = "Boots",
 	subType = "Evasion",
 	socketLimit = 4,
@@ -124,7 +124,7 @@ itemBases["Sharkskin Boots"] = {
 	armour = { EvasionBase = 145, },
 	req = { level = 44, dex = 79, },
 }
-itemBases["Shagreen Boots"] = {
+itemBases["粗革短靴"] = {
 	type = "Boots",
 	subType = "Evasion",
 	socketLimit = 4,
@@ -132,7 +132,7 @@ itemBases["Shagreen Boots"] = {
 	armour = { EvasionBase = 180, },
 	req = { level = 55, dex = 97, },
 }
-itemBases["Stealth Boots"] = {
+itemBases["匿踪短靴"] = {
 	type = "Boots",
 	subType = "Evasion",
 	socketLimit = 4,
@@ -140,7 +140,7 @@ itemBases["Stealth Boots"] = {
 	armour = { EvasionBase = 220, },
 	req = { level = 62, dex = 117, },
 }
-itemBases["Slink Boots"] = {
+itemBases["迷踪短靴"] = {
 	type = "Boots",
 	subType = "Evasion",
 	socketLimit = 4,
@@ -149,7 +149,7 @@ itemBases["Slink Boots"] = {
 	req = { level = 69, dex = 120, },
 }
 
-itemBases["Wool Shoes"] = {
+itemBases["羊毛之鞋"] = {
 	type = "Boots",
 	subType = "Energy Shield",
 	socketLimit = 4,
@@ -157,7 +157,7 @@ itemBases["Wool Shoes"] = {
 	armour = { EnergyShieldBase = 4, },
 	req = { int = 11, },
 }
-itemBases["Velvet Slippers"] = {
+itemBases["丝绒便鞋"] = {
 	type = "Boots",
 	subType = "Energy Shield",
 	socketLimit = 4,
@@ -165,7 +165,7 @@ itemBases["Velvet Slippers"] = {
 	armour = { EnergyShieldBase = 8, },
 	req = { level = 9, int = 21, },
 }
-itemBases["Silk Slippers"] = {
+itemBases["丝绸便鞋"] = {
 	type = "Boots",
 	subType = "Energy Shield",
 	socketLimit = 4,
@@ -173,7 +173,7 @@ itemBases["Silk Slippers"] = {
 	armour = { EnergyShieldBase = 15, },
 	req = { level = 22, int = 42, },
 }
-itemBases["Scholar Boots"] = {
+itemBases["学者长靴"] = {
 	type = "Boots",
 	subType = "Energy Shield",
 	socketLimit = 4,
@@ -181,7 +181,7 @@ itemBases["Scholar Boots"] = {
 	armour = { EnergyShieldBase = 21, },
 	req = { level = 32, int = 59, },
 }
-itemBases["Satin Slippers"] = {
+itemBases["缎布便鞋"] = {
 	type = "Boots",
 	subType = "Energy Shield",
 	socketLimit = 4,
@@ -189,7 +189,7 @@ itemBases["Satin Slippers"] = {
 	armour = { EnergyShieldBase = 25, },
 	req = { level = 38, int = 69, },
 }
-itemBases["Samite Slippers"] = {
+itemBases["绣布便鞋"] = {
 	type = "Boots",
 	subType = "Energy Shield",
 	socketLimit = 4,
@@ -197,7 +197,7 @@ itemBases["Samite Slippers"] = {
 	armour = { EnergyShieldBase = 29, },
 	req = { level = 44, int = 79, },
 }
-itemBases["Conjurer Boots"] = {
+itemBases["咒者长靴"] = {
 	type = "Boots",
 	subType = "Energy Shield",
 	socketLimit = 4,
@@ -205,7 +205,7 @@ itemBases["Conjurer Boots"] = {
 	armour = { EnergyShieldBase = 34, },
 	req = { level = 53, int = 94, },
 }
-itemBases["Arcanist Slippers"] = {
+itemBases["秘术便鞋"] = {
 	type = "Boots",
 	subType = "Energy Shield",
 	socketLimit = 4,
@@ -213,7 +213,7 @@ itemBases["Arcanist Slippers"] = {
 	armour = { EnergyShieldBase = 45, },
 	req = { level = 61, int = 119, },
 }
-itemBases["Sorcerer Boots"] = {
+itemBases["术士长靴"] = {
 	type = "Boots",
 	subType = "Energy Shield",
 	socketLimit = 4,
@@ -222,7 +222,7 @@ itemBases["Sorcerer Boots"] = {
 	req = { level = 67, int = 123, },
 }
 
-itemBases["Leatherscale Boots"] = {
+itemBases["粗鳞皮靴"] = {
 	type = "Boots",
 	subType = "Armour/Evasion",
 	socketLimit = 4,
@@ -230,7 +230,7 @@ itemBases["Leatherscale Boots"] = {
 	armour = { ArmourBase = 12, EvasionBase = 12, },
 	req = { level = 6, str = 9, dex = 9, },
 }
-itemBases["Ironscale Boots"] = {
+itemBases["铁影长靴"] = {
 	type = "Boots",
 	subType = "Armour/Evasion",
 	socketLimit = 4,
@@ -238,7 +238,7 @@ itemBases["Ironscale Boots"] = {
 	armour = { ArmourBase = 34, EvasionBase = 34, },
 	req = { level = 18, str = 19, dex = 19, },
 }
-itemBases["Bronzescale Boots"] = {
+itemBases["铜影长靴"] = {
 	type = "Boots",
 	subType = "Armour/Evasion",
 	socketLimit = 4,
@@ -246,7 +246,7 @@ itemBases["Bronzescale Boots"] = {
 	armour = { ArmourBase = 55, EvasionBase = 55, },
 	req = { level = 30, str = 30, dex = 30, },
 }
-itemBases["Steelscale Boots"] = {
+itemBases["钢影长靴"] = {
 	type = "Boots",
 	subType = "Armour/Evasion",
 	socketLimit = 4,
@@ -254,7 +254,7 @@ itemBases["Steelscale Boots"] = {
 	armour = { ArmourBase = 65, EvasionBase = 65, },
 	req = { level = 36, str = 35, dex = 35, },
 }
-itemBases["Serpentscale Boots"] = {
+itemBases["蛇鳞长靴"] = {
 	type = "Boots",
 	subType = "Armour/Evasion",
 	socketLimit = 4,
@@ -262,7 +262,7 @@ itemBases["Serpentscale Boots"] = {
 	armour = { ArmourBase = 76, EvasionBase = 76, },
 	req = { level = 42, str = 40, dex = 40, },
 }
-itemBases["Wyrmscale Boots"] = {
+itemBases["地蝮鳞长靴"] = {
 	type = "Boots",
 	subType = "Armour/Evasion",
 	socketLimit = 4,
@@ -270,7 +270,7 @@ itemBases["Wyrmscale Boots"] = {
 	armour = { ArmourBase = 92, EvasionBase = 92, },
 	req = { level = 51, str = 48, dex = 48, },
 }
-itemBases["Hydrascale Boots"] = {
+itemBases["火蝮鳞长靴"] = {
 	type = "Boots",
 	subType = "Armour/Evasion",
 	socketLimit = 4,
@@ -278,7 +278,7 @@ itemBases["Hydrascale Boots"] = {
 	armour = { ArmourBase = 106, EvasionBase = 106, },
 	req = { level = 59, str = 56, dex = 56, },
 }
-itemBases["Dragonscale Boots"] = {
+itemBases["龙鳞长靴"] = {
 	type = "Boots",
 	subType = "Armour/Evasion",
 	socketLimit = 4,
@@ -291,12 +291,12 @@ itemBases["Two-Toned Boots (Armour/Evasion)"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, not_for_sale = true, atlas_base_type = true, bootsatlas2 = true, str_dex_armour = true, },
-	implicit = "+(15-20)% to Fire and Cold Resistances",
+	implicit = "+(15-20)% 火焰与冰霜抗性",
 	armour = { ArmourBase = 126, EvasionBase = 126, },
 	req = { level = 70, str = 62, dex = 62, },
 }
 
-itemBases["Chain Boots"] = {
+itemBases["链甲长靴"] = {
 	type = "Boots",
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
@@ -304,7 +304,7 @@ itemBases["Chain Boots"] = {
 	armour = { ArmourBase = 11, EnergyShieldBase = 3, },
 	req = { level = 5, str = 8, int = 8, },
 }
-itemBases["Ringmail Boots"] = {
+itemBases["环甲筒靴"] = {
 	type = "Boots",
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
@@ -312,7 +312,7 @@ itemBases["Ringmail Boots"] = {
 	armour = { ArmourBase = 25, EnergyShieldBase = 5, },
 	req = { level = 13, str = 15, int = 15, },
 }
-itemBases["Mesh Boots"] = {
+itemBases["网眼长靴"] = {
 	type = "Boots",
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
@@ -320,7 +320,7 @@ itemBases["Mesh Boots"] = {
 	armour = { ArmourBase = 51, EnergyShieldBase = 10, },
 	req = { level = 28, str = 28, int = 28, },
 }
-itemBases["Riveted Boots"] = {
+itemBases["仪式短靴"] = {
 	type = "Boots",
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
@@ -328,7 +328,7 @@ itemBases["Riveted Boots"] = {
 	armour = { ArmourBase = 65, EnergyShieldBase = 13, },
 	req = { level = 36, str = 35, int = 35, },
 }
-itemBases["Zealot Boots"] = {
+itemBases["狂热者长靴"] = {
 	type = "Boots",
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
@@ -336,7 +336,7 @@ itemBases["Zealot Boots"] = {
 	armour = { ArmourBase = 73, EnergyShieldBase = 14, },
 	req = { level = 40, str = 38, int = 38, },
 }
-itemBases["Soldier Boots"] = {
+itemBases["战士之靴"] = {
 	type = "Boots",
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
@@ -344,7 +344,7 @@ itemBases["Soldier Boots"] = {
 	armour = { ArmourBase = 88, EnergyShieldBase = 17, },
 	req = { level = 49, str = 47, int = 47, },
 }
-itemBases["Legion Boots"] = {
+itemBases["军团长靴"] = {
 	type = "Boots",
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
@@ -352,7 +352,7 @@ itemBases["Legion Boots"] = {
 	armour = { ArmourBase = 104, EnergyShieldBase = 20, },
 	req = { level = 58, str = 54, int = 54, },
 }
-itemBases["Crusader Boots"] = {
+itemBases["圣战长靴"] = {
 	type = "Boots",
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
@@ -365,12 +365,12 @@ itemBases["Two-Toned Boots (Armour/Energy Shield)"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, not_for_sale = true, atlas_base_type = true, bootsatlas3 = true, str_int_armour = true, },
-	implicit = "+(15-20)% to Fire and Lightning Resistances",
+	implicit = "+(15-20)% 火焰与闪电抗性",
 	armour = { ArmourBase = 126, EnergyShieldBase = 24, },
 	req = { level = 70, str = 62, int = 62, },
 }
 
-itemBases["Wrapped Boots"] = {
+itemBases["裹趾凉鞋"] = {
 	type = "Boots",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
@@ -378,7 +378,7 @@ itemBases["Wrapped Boots"] = {
 	armour = { EvasionBase = 12, EnergyShieldBase = 3, },
 	req = { level = 6, dex = 9, int = 9, },
 }
-itemBases["Strapped Boots"] = {
+itemBases["扣环短靴"] = {
 	type = "Boots",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
@@ -386,7 +386,7 @@ itemBases["Strapped Boots"] = {
 	armour = { EvasionBase = 30, EnergyShieldBase = 6, },
 	req = { level = 16, dex = 18, int = 18, },
 }
-itemBases["Clasped Boots"] = {
+itemBases["环带长靴"] = {
 	type = "Boots",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
@@ -394,7 +394,7 @@ itemBases["Clasped Boots"] = {
 	armour = { EvasionBase = 50, EnergyShieldBase = 10, },
 	req = { level = 27, dex = 27, int = 27, },
 }
-itemBases["Shackled Boots"] = {
+itemBases["缚足长靴"] = {
 	type = "Boots",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
@@ -402,7 +402,7 @@ itemBases["Shackled Boots"] = {
 	armour = { EvasionBase = 62, EnergyShieldBase = 12, },
 	req = { level = 34, dex = 34, int = 34, },
 }
-itemBases["Trapper Boots"] = {
+itemBases["猎人之靴"] = {
 	type = "Boots",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
@@ -410,7 +410,7 @@ itemBases["Trapper Boots"] = {
 	armour = { EvasionBase = 74, EnergyShieldBase = 15, },
 	req = { level = 41, dex = 40, int = 40, },
 }
-itemBases["Ambush Boots"] = {
+itemBases["伏击之靴"] = {
 	type = "Boots",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
@@ -418,7 +418,7 @@ itemBases["Ambush Boots"] = {
 	armour = { EvasionBase = 85, EnergyShieldBase = 17, },
 	req = { level = 47, dex = 45, int = 45, },
 }
-itemBases["Carnal Boots"] = {
+itemBases["禁礼之靴"] = {
 	type = "Boots",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
@@ -426,7 +426,7 @@ itemBases["Carnal Boots"] = {
 	armour = { EvasionBase = 99, EnergyShieldBase = 19, },
 	req = { level = 55, dex = 52, int = 52, },
 }
-itemBases["Assassin's Boots"] = {
+itemBases["暗影之靴"] = {
 	type = "Boots",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
@@ -434,7 +434,7 @@ itemBases["Assassin's Boots"] = {
 	armour = { EvasionBase = 121, EnergyShieldBase = 24, },
 	req = { level = 63, dex = 62, int = 62, },
 }
-itemBases["Murder Boots"] = {
+itemBases["暗影者长靴"] = {
 	type = "Boots",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
@@ -447,17 +447,17 @@ itemBases["Two-Toned Boots (Evasion/Energy Shield)"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, not_for_sale = true, atlas_base_type = true, bootsatlas1 = true, dex_int_armour = true, },
-	implicit = "+(15-20)% to Cold and Lightning Resistances",
+	implicit = "+(15-20)% 冰霜与闪电抗性",
 	armour = { EvasionBase = 126, EnergyShieldBase = 24, },
 	req = { level = 70, dex = 62, int = 62, },
 }
 
-itemBases["Golden Caligae"] = {
+itemBases["黄金缠鞋"] = {
 	type = "Boots",
 	hidden = true,
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, not_for_sale = true, },
-	implicit = "+(8-16)% to all Elemental Resistances",
+	implicit = "获得 +(8-16)% 火焰、冰霜、闪电抗性",
 	armour = { },
 	req = { level = 12, },
 }

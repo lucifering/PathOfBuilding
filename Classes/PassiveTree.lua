@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Class: Passive Tree
 -- Passive skill tree class.
@@ -52,7 +52,7 @@ local PassiveTreeClass = common.NewClass("PassiveTree", function(self, targetVer
 			page = pageFile:read("*a")
 			pageFile:close()
 		else
-			page = getFile("https://www.pathofexile.com/passive-skill-tree/")
+page = getFile("https://poe.game.qq.com/passive-skill-tree/")
 		end
 		treeText = "local tree=" .. jsonToLua(page:match("var passiveSkillTreeData = (%b{})"))
 		treeText = treeText .. "tree.classes=" .. jsonToLua(page:match("ascClasses: (%b{})"))
@@ -182,6 +182,8 @@ local PassiveTreeClass = common.NewClass("PassiveTree", function(self, targetVer
 			class.startNodeId = node.id
 			node.startArt = classArt[node.spc[0]]
 		elseif node.isAscendancyStart then
+		
+		
 			node.type = "AscendClassStart"
 			local ascendClass = self.ascendNameMap[node.ascendancyName].ascendClass
 			ascendClass.startNodeId = node.id
@@ -358,12 +360,25 @@ function PassiveTreeClass:LoadImage(imgName, url, data, ...)
 			imgFile:close()
 			imgName = self.targetVersion.."/"..imgName
 		else
+		
+		 
+
 			ConPrintf("Downloading '%s'...", imgName)
 			local data = getFile(url)
-			if data then
+			
+	
+
+			if data~=nil then
 				imgFile = io.open("TreeData/"..imgName, "wb")
-				imgFile:write(data)
-				imgFile:close()
+				if imgFile ==nil then
+				ConPrintf("imgFile is  nil: %s", "TreeData/"..imgName)
+ 
+				else 
+					imgFile:write(data)
+					imgFile:close()
+				end
+				
+				
 			else
 				ConPrintf("Failed to download: %s", url)
 			end

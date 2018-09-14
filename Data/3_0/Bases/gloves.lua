@@ -3,7 +3,7 @@
 local itemBases = ...
 
 
-itemBases["Iron Gauntlets"] = {
+itemBases["铁锻护手"] = {
 	type = "Gloves",
 	subType = "Armour",
 	socketLimit = 4,
@@ -11,7 +11,7 @@ itemBases["Iron Gauntlets"] = {
 	armour = { ArmourBase = 6, },
 	req = { str = 6, },
 }
-itemBases["Plated Gauntlets"] = {
+itemBases["坚铁护手"] = {
 	type = "Gloves",
 	subType = "Armour",
 	socketLimit = 4,
@@ -19,7 +19,7 @@ itemBases["Plated Gauntlets"] = {
 	armour = { ArmourBase = 39, },
 	req = { level = 11, str = 20, },
 }
-itemBases["Bronze Gauntlets"] = {
+itemBases["青铜护手"] = {
 	type = "Gloves",
 	subType = "Armour",
 	socketLimit = 4,
@@ -27,7 +27,7 @@ itemBases["Bronze Gauntlets"] = {
 	armour = { ArmourBase = 77, },
 	req = { level = 23, str = 36, },
 }
-itemBases["Steel Gauntlets"] = {
+itemBases["冷钢护手"] = {
 	type = "Gloves",
 	subType = "Armour",
 	socketLimit = 4,
@@ -35,7 +35,7 @@ itemBases["Steel Gauntlets"] = {
 	armour = { ArmourBase = 116, },
 	req = { level = 35, str = 52, },
 }
-itemBases["Antique Gauntlets"] = {
+itemBases["古钢护手"] = {
 	type = "Gloves",
 	subType = "Armour",
 	socketLimit = 4,
@@ -43,7 +43,7 @@ itemBases["Antique Gauntlets"] = {
 	armour = { ArmourBase = 129, },
 	req = { level = 39, str = 58, },
 }
-itemBases["Ancient Gauntlets"] = {
+itemBases["远古护手"] = {
 	type = "Gloves",
 	subType = "Armour",
 	socketLimit = 4,
@@ -51,7 +51,7 @@ itemBases["Ancient Gauntlets"] = {
 	armour = { ArmourBase = 154, },
 	req = { level = 47, str = 68, },
 }
-itemBases["Goliath Gauntlets"] = {
+itemBases["巨灵护手"] = {
 	type = "Gloves",
 	subType = "Armour",
 	socketLimit = 4,
@@ -59,7 +59,7 @@ itemBases["Goliath Gauntlets"] = {
 	armour = { ArmourBase = 174, },
 	req = { level = 53, str = 76, },
 }
-itemBases["Vaal Gauntlets"] = {
+itemBases["瓦尔护手"] = {
 	type = "Gloves",
 	subType = "Armour",
 	socketLimit = 4,
@@ -67,7 +67,7 @@ itemBases["Vaal Gauntlets"] = {
 	armour = { ArmourBase = 232, },
 	req = { level = 63, str = 100, },
 }
-itemBases["Titan Gauntlets"] = {
+itemBases["巨人护手"] = {
 	type = "Gloves",
 	subType = "Armour",
 	socketLimit = 4,
@@ -75,17 +75,17 @@ itemBases["Titan Gauntlets"] = {
 	armour = { ArmourBase = 242, },
 	req = { level = 69, str = 98, },
 }
-itemBases["Spiked Gloves"] = {
+itemBases["扣钉手套"] = {
 	type = "Gloves",
 	subType = "Armour",
 	socketLimit = 4,
 	tags = { default = true, armour = true, gloves = true, not_for_sale = true, atlas_base_type = true, glovesatlasstr = true, str_armour = true, },
-	implicit = "(16-20)% increased Melee Damage",
+	implicit = "近战伤害提高 (16-20)%",
 	armour = { ArmourBase = 220, },
 	req = { level = 70, str = 95, },
 }
 
-itemBases["Rawhide Gloves"] = {
+itemBases["生皮手套"] = {
 	type = "Gloves",
 	subType = "Evasion",
 	socketLimit = 4,
@@ -93,7 +93,7 @@ itemBases["Rawhide Gloves"] = {
 	armour = { EvasionBase = 13, },
 	req = { dex = 9, },
 }
-itemBases["Goathide Gloves"] = {
+itemBases["羊皮手套"] = {
 	type = "Gloves",
 	subType = "Evasion",
 	socketLimit = 4,
@@ -101,7 +101,7 @@ itemBases["Goathide Gloves"] = {
 	armour = { EvasionBase = 32, },
 	req = { level = 9, dex = 17, },
 }
-itemBases["Deerskin Gloves"] = {
+itemBases["鹿皮手套"] = {
 	type = "Gloves",
 	subType = "Evasion",
 	socketLimit = 4,
@@ -109,7 +109,7 @@ itemBases["Deerskin Gloves"] = {
 	armour = { EvasionBase = 71, },
 	req = { level = 21, dex = 33, },
 }
-itemBases["Nubuck Gloves"] = {
+itemBases["砂影手套"] = {
 	type = "Gloves",
 	subType = "Evasion",
 	socketLimit = 4,
@@ -117,7 +117,7 @@ itemBases["Nubuck Gloves"] = {
 	armour = { EvasionBase = 109, },
 	req = { level = 33, dex = 50, },
 }
-itemBases["Eelskin Gloves"] = {
+itemBases["鳗皮手套"] = {
 	type = "Gloves",
 	subType = "Evasion",
 	socketLimit = 4,
@@ -125,7 +125,7 @@ itemBases["Eelskin Gloves"] = {
 	armour = { EvasionBase = 125, },
 	req = { level = 38, dex = 56, },
 }
-itemBases["Sharkskin Gloves"] = {
+itemBases["鲨皮手套"] = {
 	type = "Gloves",
 	subType = "Evasion",
 	socketLimit = 4,
@@ -133,7 +133,7 @@ itemBases["Sharkskin Gloves"] = {
 	armour = { EvasionBase = 148, },
 	req = { level = 45, dex = 66, },
 }
-itemBases["Shagreen Gloves"] = {
+itemBases["粗革手套"] = {
 	type = "Gloves",
 	subType = "Evasion",
 	socketLimit = 4,
@@ -141,7 +141,7 @@ itemBases["Shagreen Gloves"] = {
 	armour = { EvasionBase = 177, },
 	req = { level = 54, dex = 78, },
 }
-itemBases["Stealth Gloves"] = {
+itemBases["匿踪手套"] = {
 	type = "Gloves",
 	subType = "Evasion",
 	socketLimit = 4,
@@ -149,7 +149,7 @@ itemBases["Stealth Gloves"] = {
 	armour = { EvasionBase = 231, },
 	req = { level = 62, dex = 97, },
 }
-itemBases["Slink Gloves"] = {
+itemBases["迷踪手套"] = {
 	type = "Gloves",
 	subType = "Evasion",
 	socketLimit = 4,
@@ -157,17 +157,17 @@ itemBases["Slink Gloves"] = {
 	armour = { EvasionBase = 242, },
 	req = { level = 70, dex = 95, },
 }
-itemBases["Gripped Gloves"] = {
+itemBases["擒拿手套"] = {
 	type = "Gloves",
 	subType = "Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, gloves = true, not_for_sale = true, atlas_base_type = true, glovesatlasdex = true, dex_armour = true, },
-	implicit = "(14-18)% increased Projectile Attack Damage",
+	implicit = "投射物的攻击伤害提高 (14-18)%",
 	armour = { EvasionBase = 220, },
 	req = { level = 70, dex = 95, },
 }
 
-itemBases["Wool Gloves"] = {
+itemBases["羊毛手套"] = {
 	type = "Gloves",
 	subType = "Energy Shield",
 	socketLimit = 4,
@@ -175,7 +175,7 @@ itemBases["Wool Gloves"] = {
 	armour = { EnergyShieldBase = 4, },
 	req = { int = 9, },
 }
-itemBases["Velvet Gloves"] = {
+itemBases["丝绒手套"] = {
 	type = "Gloves",
 	subType = "Energy Shield",
 	socketLimit = 4,
@@ -183,7 +183,7 @@ itemBases["Velvet Gloves"] = {
 	armour = { EnergyShieldBase = 9, },
 	req = { level = 12, int = 21, },
 }
-itemBases["Silk Gloves"] = {
+itemBases["丝绸手套"] = {
 	type = "Gloves",
 	subType = "Energy Shield",
 	socketLimit = 4,
@@ -191,7 +191,7 @@ itemBases["Silk Gloves"] = {
 	armour = { EnergyShieldBase = 17, },
 	req = { level = 25, int = 39, },
 }
-itemBases["Embroidered Gloves"] = {
+itemBases["刺绣手套"] = {
 	type = "Gloves",
 	subType = "Energy Shield",
 	socketLimit = 4,
@@ -199,7 +199,7 @@ itemBases["Embroidered Gloves"] = {
 	armour = { EnergyShieldBase = 24, },
 	req = { level = 36, int = 54, },
 }
-itemBases["Satin Gloves"] = {
+itemBases["缎布手套"] = {
 	type = "Gloves",
 	subType = "Energy Shield",
 	socketLimit = 4,
@@ -207,7 +207,7 @@ itemBases["Satin Gloves"] = {
 	armour = { EnergyShieldBase = 27, },
 	req = { level = 41, int = 60, },
 }
-itemBases["Samite Gloves"] = {
+itemBases["绣布手套"] = {
 	type = "Gloves",
 	subType = "Energy Shield",
 	socketLimit = 4,
@@ -215,7 +215,7 @@ itemBases["Samite Gloves"] = {
 	armour = { EnergyShieldBase = 30, },
 	req = { level = 47, int = 68, },
 }
-itemBases["Conjurer Gloves"] = {
+itemBases["咒者手套"] = {
 	type = "Gloves",
 	subType = "Energy Shield",
 	socketLimit = 4,
@@ -223,7 +223,7 @@ itemBases["Conjurer Gloves"] = {
 	armour = { EnergyShieldBase = 35, },
 	req = { level = 55, int = 79, },
 }
-itemBases["Arcanist Gloves"] = {
+itemBases["秘术手套"] = {
 	type = "Gloves",
 	subType = "Energy Shield",
 	socketLimit = 4,
@@ -231,7 +231,7 @@ itemBases["Arcanist Gloves"] = {
 	armour = { EnergyShieldBase = 43, },
 	req = { level = 60, int = 95, },
 }
-itemBases["Sorcerer Gloves"] = {
+itemBases["术士手套"] = {
 	type = "Gloves",
 	subType = "Energy Shield",
 	socketLimit = 4,
@@ -239,17 +239,17 @@ itemBases["Sorcerer Gloves"] = {
 	armour = { EnergyShieldBase = 47, },
 	req = { level = 69, int = 97, },
 }
-itemBases["Fingerless Silk Gloves"] = {
+itemBases["丝绸手套"] = {
 	type = "Gloves",
 	subType = "Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, gloves = true, not_for_sale = true, atlas_base_type = true, glovesatlasint = true, int_armour = true, },
-	implicit = "(12-16)% increased Spell Damage",
+	implicit = "法术伤害提高 (12-16)%",
 	armour = { EnergyShieldBase = 43, },
 	req = { level = 70, int = 95, },
 }
 
-itemBases["Fishscale Gauntlets"] = {
+itemBases["鱼鳞手套"] = {
 	type = "Gloves",
 	subType = "Armour/Evasion",
 	socketLimit = 4,
@@ -257,7 +257,7 @@ itemBases["Fishscale Gauntlets"] = {
 	armour = { ArmourBase = 9, EvasionBase = 9, },
 	req = { str = 5, dex = 5, },
 }
-itemBases["Ironscale Gauntlets"] = {
+itemBases["铁影手套"] = {
 	type = "Gloves",
 	subType = "Armour/Evasion",
 	socketLimit = 4,
@@ -265,7 +265,7 @@ itemBases["Ironscale Gauntlets"] = {
 	armour = { ArmourBase = 28, EvasionBase = 28, },
 	req = { level = 15, str = 14, dex = 14, },
 }
-itemBases["Bronzescale Gauntlets"] = {
+itemBases["铜影手套"] = {
 	type = "Gloves",
 	subType = "Armour/Evasion",
 	socketLimit = 4,
@@ -273,7 +273,7 @@ itemBases["Bronzescale Gauntlets"] = {
 	armour = { ArmourBase = 50, EvasionBase = 50, },
 	req = { level = 27, str = 22, dex = 22, },
 }
-itemBases["Steelscale Gauntlets"] = {
+itemBases["钢影护手"] = {
 	type = "Gloves",
 	subType = "Armour/Evasion",
 	socketLimit = 4,
@@ -281,7 +281,7 @@ itemBases["Steelscale Gauntlets"] = {
 	armour = { ArmourBase = 65, EvasionBase = 65, },
 	req = { level = 36, str = 29, dex = 29, },
 }
-itemBases["Serpentscale Gauntlets"] = {
+itemBases["蛇鳞手套"] = {
 	type = "Gloves",
 	subType = "Armour/Evasion",
 	socketLimit = 4,
@@ -289,7 +289,7 @@ itemBases["Serpentscale Gauntlets"] = {
 	armour = { ArmourBase = 78, EvasionBase = 78, },
 	req = { level = 43, str = 34, dex = 34, },
 }
-itemBases["Wyrmscale Gauntlets"] = {
+itemBases["蝮鳞手套"] = {
 	type = "Gloves",
 	subType = "Armour/Evasion",
 	socketLimit = 4,
@@ -297,7 +297,7 @@ itemBases["Wyrmscale Gauntlets"] = {
 	armour = { ArmourBase = 88, EvasionBase = 88, },
 	req = { level = 49, str = 38, dex = 38, },
 }
-itemBases["Hydrascale Gauntlets"] = {
+itemBases["火蝮鳞手套"] = {
 	type = "Gloves",
 	subType = "Armour/Evasion",
 	socketLimit = 4,
@@ -305,7 +305,7 @@ itemBases["Hydrascale Gauntlets"] = {
 	armour = { ArmourBase = 106, EvasionBase = 106, },
 	req = { level = 59, str = 45, dex = 45, },
 }
-itemBases["Dragonscale Gauntlets"] = {
+itemBases["龙鳞手套"] = {
 	type = "Gloves",
 	subType = "Armour/Evasion",
 	socketLimit = 4,
@@ -314,7 +314,7 @@ itemBases["Dragonscale Gauntlets"] = {
 	req = { level = 67, str = 51, dex = 51, },
 }
 
-itemBases["Chain Gloves"] = {
+itemBases["链甲手套"] = {
 	type = "Gloves",
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
@@ -322,7 +322,7 @@ itemBases["Chain Gloves"] = {
 	armour = { ArmourBase = 14, EnergyShieldBase = 3, },
 	req = { level = 7, str = 8, int = 8, },
 }
-itemBases["Ringmail Gloves"] = {
+itemBases["环甲手套"] = {
 	type = "Gloves",
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
@@ -330,7 +330,7 @@ itemBases["Ringmail Gloves"] = {
 	armour = { ArmourBase = 35, EnergyShieldBase = 7, },
 	req = { level = 19, str = 16, int = 16, },
 }
-itemBases["Mesh Gloves"] = {
+itemBases["网眼手套"] = {
 	type = "Gloves",
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
@@ -338,7 +338,7 @@ itemBases["Mesh Gloves"] = {
 	armour = { ArmourBase = 58, EnergyShieldBase = 12, },
 	req = { level = 32, str = 26, int = 26, },
 }
-itemBases["Riveted Gloves"] = {
+itemBases["仪式手套"] = {
 	type = "Gloves",
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
@@ -346,7 +346,7 @@ itemBases["Riveted Gloves"] = {
 	armour = { ArmourBase = 67, EnergyShieldBase = 13, },
 	req = { level = 37, str = 29, int = 29, },
 }
-itemBases["Zealot Gloves"] = {
+itemBases["狂热者手套"] = {
 	type = "Gloves",
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
@@ -354,7 +354,7 @@ itemBases["Zealot Gloves"] = {
 	armour = { ArmourBase = 78, EnergyShieldBase = 15, },
 	req = { level = 43, str = 34, int = 34, },
 }
-itemBases["Soldier Gloves"] = {
+itemBases["战士手套"] = {
 	type = "Gloves",
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
@@ -362,7 +362,7 @@ itemBases["Soldier Gloves"] = {
 	armour = { ArmourBase = 92, EnergyShieldBase = 18, },
 	req = { level = 51, str = 40, int = 40, },
 }
-itemBases["Legion Gloves"] = {
+itemBases["军团手套"] = {
 	type = "Gloves",
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
@@ -370,7 +370,7 @@ itemBases["Legion Gloves"] = {
 	armour = { ArmourBase = 103, EnergyShieldBase = 20, },
 	req = { level = 57, str = 44, int = 44, },
 }
-itemBases["Crusader Gloves"] = {
+itemBases["圣战手套"] = {
 	type = "Gloves",
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
@@ -379,7 +379,7 @@ itemBases["Crusader Gloves"] = {
 	req = { level = 66, str = 51, int = 51, },
 }
 
-itemBases["Wrapped Mitts"] = {
+itemBases["裹趾护手"] = {
 	type = "Gloves",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
@@ -387,7 +387,7 @@ itemBases["Wrapped Mitts"] = {
 	armour = { EvasionBase = 11, EnergyShieldBase = 3, },
 	req = { level = 5, dex = 6, int = 6, },
 }
-itemBases["Strapped Mitts"] = {
+itemBases["扣环护手"] = {
 	type = "Gloves",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
@@ -395,7 +395,7 @@ itemBases["Strapped Mitts"] = {
 	armour = { EvasionBase = 30, EnergyShieldBase = 6, },
 	req = { level = 16, dex = 14, int = 14, },
 }
-itemBases["Clasped Mitts"] = {
+itemBases["环带护手"] = {
 	type = "Gloves",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
@@ -403,7 +403,7 @@ itemBases["Clasped Mitts"] = {
 	armour = { EvasionBase = 57, EnergyShieldBase = 11, },
 	req = { level = 31, dex = 25, int = 25, },
 }
-itemBases["Trapper Mitts"] = {
+itemBases["猎人护手"] = {
 	type = "Gloves",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
@@ -411,7 +411,7 @@ itemBases["Trapper Mitts"] = {
 	armour = { EvasionBase = 65, EnergyShieldBase = 13, },
 	req = { level = 36, dex = 29, int = 29, },
 }
-itemBases["Ambush Mitts"] = {
+itemBases["伏击护手"] = {
 	type = "Gloves",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
@@ -419,7 +419,7 @@ itemBases["Ambush Mitts"] = {
 	armour = { EvasionBase = 81, EnergyShieldBase = 16, },
 	req = { level = 45, dex = 35, int = 35, },
 }
-itemBases["Carnal Mitts"] = {
+itemBases["禁礼护手"] = {
 	type = "Gloves",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
@@ -427,7 +427,7 @@ itemBases["Carnal Mitts"] = {
 	armour = { EvasionBase = 90, EnergyShieldBase = 18, },
 	req = { level = 50, dex = 39, int = 39, },
 }
-itemBases["Assassin's Mitts"] = {
+itemBases["暗影护手"] = {
 	type = "Gloves",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
@@ -435,7 +435,7 @@ itemBases["Assassin's Mitts"] = {
 	armour = { EvasionBase = 104, EnergyShieldBase = 20, },
 	req = { level = 58, dex = 45, int = 45, },
 }
-itemBases["Murder Mitts"] = {
+itemBases["暗影者护手"] = {
 	type = "Gloves",
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
@@ -444,12 +444,12 @@ itemBases["Murder Mitts"] = {
 	req = { level = 67, dex = 51, int = 51, },
 }
 
-itemBases["Golden Bracers"] = {
+itemBases["黄金臂甲"] = {
 	type = "Gloves",
 	hidden = true,
 	socketLimit = 4,
 	tags = { default = true, armour = true, gloves = true, not_for_sale = true, },
-	implicit = "+(20-30) to maximum Life",
+	implicit = "+(20-30) 最大生命",
 	armour = { },
 	req = { level = 12, },
 }

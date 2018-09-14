@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Module: Calc Offence
 -- Performs offence calculations.
@@ -117,8 +117,8 @@ local function calcAilmentSourceDamage(actor, output, cfg, breakdown, damageType
 	local convMult = actor.conversionTable[damageType].mult
 	if breakdown and convMult ~= 1 then
 		t_insert(breakdown, "Source damage:")
-		t_insert(breakdown, s_format("%d to %d ^8(total damage)", min, max))
-		t_insert(breakdown, s_format("x %g ^8(%g%% converted to other damage types)", convMult, (1-convMult)*100))
+t_insert(breakdown, s_format("%d to %d ^8(所有伤害)", min, max))
+t_insert(breakdown, s_format("x %g ^8(%g%% 转化为其他伤害)", convMult, (1-convMult)*100))
 		t_insert(breakdown, s_format("= %d to %d", min * convMult, max * convMult))
 	end
 	return min * convMult, max * convMult
@@ -404,10 +404,10 @@ function calcs.offence(env, actor)
 		if breakdown then
 			breakdown.TotemLifeMod = breakdown.mod(skillCfg, "TotemLife")
 			breakdown.TotemLife = {
-				"Totem level: "..skillData.totemLevel,
-				env.data.monsterAllyLifeTable[skillData.totemLevel].." ^8(base life for a level "..skillData.totemLevel.." monster)",
-				"x "..env.data.totemLifeMult[mainSkill.skillTotemId].." ^8(life multiplier for this totem type)",
-				"x "..output.TotemLifeMod.." ^8(totem life modifier)",
+"图腾 等级: "..skillData.totemLevel,
+env.data.monsterAllyLifeTable[skillData.totemLevel].." ^8("..skillData.totemLevel.."级的怪物的基础生命)",
+"x "..env.data.totemLifeMult[mainSkill.skillTotemId].." ^8(这种图腾的额外总生命加成)",
+"x "..output.TotemLifeMod.." ^8(图腾生命加成)",
 				"= "..output.TotemLife,
 			}
 		end
@@ -436,10 +436,10 @@ function calcs.offence(env, actor)
 					s_format("%.2fs ^8(base)", durationBase),
 				}
 				if output.DurationMod ~= 1 then
-					t_insert(breakdown.Duration, s_format("x %.2f ^8(duration modifier)", output.DurationMod))
+t_insert(breakdown.Duration, s_format("x %.2f ^8(持续时间加成)", output.DurationMod))
 				end
 				if skillData.debuff and debuffDurationMult ~= 1 then
-					t_insert(breakdown.Duration, s_format("/ %.2f ^8(debuff expires slower/faster)", 1 / debuffDurationMult))
+t_insert(breakdown.Duration, s_format("/ %.2f ^8(debuff更快或更慢消退)", 1 / debuffDurationMult))
 				end
 				t_insert(breakdown.Duration, s_format("= %.2fs", output.Duration))
 			end
@@ -456,10 +456,10 @@ function calcs.offence(env, actor)
 					s_format("%.2fs ^8(base)", durationBase),
 				}
 				if output.DurationMod ~= 1 then
-					t_insert(breakdown.DurationSecondary, s_format("x %.2f ^8(duration modifier)", durationMod))
+t_insert(breakdown.DurationSecondary, s_format("x %.2f ^8(持续时间修饰)", durationMod))
 				end
 				if skillData.debuffSecondary and debuffDurationMult ~= 1 then
-					t_insert(breakdown.DurationSecondary, s_format("/ %.2f ^8(debuff expires slower/faster)", 1 / debuffDurationMult))
+t_insert(breakdown.DurationSecondary, s_format("/ %.2f ^8(debuff更快或更慢消退)", 1 / debuffDurationMult))
 				end
 				t_insert(breakdown.DurationSecondary, s_format("= %.2fs", output.DurationSecondary))
 			end
@@ -542,16 +542,16 @@ function calcs.offence(env, actor)
 		end
 		if breakdown and output.ManaCost ~= (skillData.manaCost or 0) then
 			breakdown.ManaCost = {
-				s_format("%d ^8(base mana cost)", skillData.manaCost or 0)
+s_format("%d ^8(基础魔力消耗)", skillData.manaCost or 0)
 			}
 			if more ~= 1 then
-				t_insert(breakdown.ManaCost, s_format("x %.2f ^8(mana cost multiplier)", more))
+t_insert(breakdown.ManaCost, s_format("x %.2f ^8(魔力消耗额外总加成)", more))
 			end
 			if inc ~= 0 then
-				t_insert(breakdown.ManaCost, s_format("x %.2f ^8(increased/reduced mana cost)", 1 + inc/100))
+t_insert(breakdown.ManaCost, s_format("x %.2f ^8(提高/降低魔力消耗)", 1 + inc/100))
 			end	
 			if base ~= 0 then
-				t_insert(breakdown.ManaCost, s_format("- %d ^8(- mana cost)", -base))
+t_insert(breakdown.ManaCost, s_format("- %d ^8(- 点魔力消耗)", -base))
 			end
 			t_insert(breakdown.ManaCost, s_format("= %d", output.ManaCost))
 		end
@@ -568,7 +568,7 @@ function calcs.offence(env, actor)
 			end
 			mainSkill.weapon1Cfg.skillStats = output.MainHand
 			t_insert(passList, {
-				label = "Main Hand",
+label = "主手",
 				source = actor.weaponData1,
 				cfg = mainSkill.weapon1Cfg,
 				output = output.MainHand,
@@ -592,7 +592,7 @@ function calcs.offence(env, actor)
 				source.AttackRate = 1000 / skillData.setOffHandAttackTime
 			end
 			t_insert(passList, {
-				label = "Off Hand",
+label = "副手",
 				source = source,
 				cfg = mainSkill.weapon2Cfg,
 				output = output.OffHand,
@@ -601,7 +601,7 @@ function calcs.offence(env, actor)
 		end
 	else
 		t_insert(passList, {
-			label = "Skill",
+label = "技能",
 			source = skillData,
 			cfg = skillCfg,
 			output = output,
@@ -628,13 +628,13 @@ function calcs.offence(env, actor)
 					if not breakdown[stat] then
 						breakdown[stat] = { }
 					end
-					t_insert(breakdown[stat], "Contribution from Main Hand:")
+t_insert(breakdown[stat], "主手占:")
 					t_insert(breakdown[stat], s_format("%.1f", output.MainHand[stat]))
-					t_insert(breakdown[stat], s_format("x %.3f ^8(portion of instances created by main hand)", mainPortion))
+t_insert(breakdown[stat], s_format("x %.3f ^8(主手创建的实例部分)", mainPortion))
 					t_insert(breakdown[stat], s_format("= %.1f", output.MainHand[stat] * mainPortion))
-					t_insert(breakdown[stat], "Contribution from Off Hand:")
+t_insert(breakdown[stat], "副手占:")
 					t_insert(breakdown[stat], s_format("%.1f", output.OffHand[stat]))
-					t_insert(breakdown[stat], s_format("x %.3f ^8(portion of instances created by off hand)", offPortion))
+t_insert(breakdown[stat], s_format("x %.3f ^8(副手创建的实例部分)", offPortion))
 					t_insert(breakdown[stat], s_format("= %.1f", output.OffHand[stat] * offPortion))
 					t_insert(breakdown[stat], "Total:")
 					t_insert(breakdown[stat], s_format("%.1f + %.1f", output.MainHand[stat] * mainPortion, output.OffHand[stat] * offPortion))
@@ -668,8 +668,8 @@ function calcs.offence(env, actor)
 			if breakdown then
 				breakdown.HitChance = {
 					"Enemy level: "..env.enemyLevel..(env.configInput.enemyLevel and " ^8(overridden from the Configuration tab" or " ^8(can be overridden in the Configuration tab)"),
-					"Average enemy evasion: "..enemyEvasion,
-					"Approximate hit chance: "..output.HitChance.."%",
+"敌人平均闪避: "..enemyEvasion,
+"预计击中几率: "..output.HitChance.."%",
 				}
 			end
 		end
@@ -706,11 +706,11 @@ function calcs.offence(env, actor)
 			if breakdown then
 				breakdown.Speed = { }
 				breakdown.multiChain(breakdown.Speed, {
-					base = s_format("%.2f ^8(base)", baseSpeed),
-					{ "%.2f ^8(increased/reduced)", 1 + inc/100 },
-					{ "%.2f ^8(more/less)", more },
-					{ "%.2f ^8(action speed modifier)", skillFlags.selfCast and globalOutput.ActionSpeedMod or 1 }, 
-					total = s_format("= %.2f ^8per second", output.Speed)
+base = s_format("%.2f ^8(基础)", baseSpeed),
+{ "%.2f ^8(提高/降低)", 1 + inc/100 },
+{ "%.2f ^8(额外总提高/额外总降低)", more },
+{ "%.2f ^8(行动速度加成)", skillFlags.selfCast and globalOutput.ActionSpeedMod or 1 }, 
+total = s_format("= %.2f ^8每秒", output.Speed)
 				})
 			end
 			if output.Speed == 0 then
@@ -738,7 +738,7 @@ function calcs.offence(env, actor)
 		if skillFlags.bothWeaponAttack then
 			if breakdown then
 				breakdown.Speed = {
-					"Both weapons:",
+"所有武器:",
 					s_format("(%.2f + %.2f) / 2", output.MainHand.Speed, output.OffHand.Speed),
 					s_format("= %.2f", output.Speed),
 				}
@@ -788,34 +788,34 @@ function calcs.offence(env, actor)
 				if breakdown and output.CritChance ~= baseCrit then
 					breakdown.CritChance = { }
 					if base ~= 0 then
-						t_insert(breakdown.CritChance, s_format("(%g + %g) ^8(base)", baseCrit, base))
+t_insert(breakdown.CritChance, s_format("(%g + %g) ^8(基础)", baseCrit, base))
 					else
-						t_insert(breakdown.CritChance, s_format("%g ^8(base)", baseCrit + base))
+t_insert(breakdown.CritChance, s_format("%g ^8(基础)", baseCrit + base))
 					end
 					if inc ~= 0 then
-						t_insert(breakdown.CritChance, s_format("x %.2f", 1 + inc/100).." ^8(increased/reduced)")
+t_insert(breakdown.CritChance, s_format("x %.2f", 1 + inc/100).." ^8(提高/降低)")
 					end
 					if more ~= 1 then
-						t_insert(breakdown.CritChance, s_format("x %.2f", more).." ^8(more/less)")
+t_insert(breakdown.CritChance, s_format("x %.2f", more).." ^8(额外总提高/额外总降低)")
 					end
-					t_insert(breakdown.CritChance, s_format("= %.2f%% ^8(crit chance)", output.PreEffectiveCritChance))
+t_insert(breakdown.CritChance, s_format("= %.2f%% ^8(暴击率)", output.PreEffectiveCritChance))
 					if preCapCritChance > 95 then
 						local overCap = preCapCritChance - 95
 						t_insert(breakdown.CritChance, s_format("Crit is overcapped by %.2f%% (%d%% increased Critical Strike Chance)", overCap, overCap / more / (baseCrit + base) * 100))
 					end
 					if enemyExtra ~= 0 then
-						t_insert(breakdown.CritChance, s_format("+ %g ^8(extra chance for enemy to be crit)", enemyExtra))
-						t_insert(breakdown.CritChance, s_format("= %.2f%% ^8(chance to crit against enemy)", preLuckyCritChance))
+t_insert(breakdown.CritChance, s_format("+ %g ^8(敌人额外几率承受暴击)", enemyExtra))
+t_insert(breakdown.CritChance, s_format("= %.2f%% ^8(对敌人暴击率)", preLuckyCritChance))
 					end
 					if env.mode_effective and modDB:Sum("FLAG", cfg, "CritChanceLucky") then
-						t_insert(breakdown.CritChance, "Crit Chance is Lucky:")
+t_insert(breakdown.CritChance, "幸运的暴击率:")
 						t_insert(breakdown.CritChance, s_format("1 - (1 - %.4f) x (1 - %.4f)", preLuckyCritChance / 100, preLuckyCritChance / 100))
 						t_insert(breakdown.CritChance, s_format("= %.2f%%", preHitCheckCritChance))
 					end
 					if env.mode_effective and output.HitChance < 100 then
-						t_insert(breakdown.CritChance, "Crit confirmation roll:")
+t_insert(breakdown.CritChance, "暴击确认的Roll:")
 						t_insert(breakdown.CritChance, s_format("%.2f%%", preHitCheckCritChance))
-						t_insert(breakdown.CritChance, s_format("x %.2f ^8(chance to hit)", output.HitChance / 100))
+t_insert(breakdown.CritChance, s_format("x %.2f ^8(命中率)", output.HitChance / 100))
 						t_insert(breakdown.CritChance, s_format("= %.2f%%", output.CritChance))
 					end
 				end
@@ -829,9 +829,9 @@ function calcs.offence(env, actor)
 					extraDamage = round(extraDamage * enemyInc, 2)
 					if breakdown and enemyInc ~= 1 then
 						breakdown.CritMultiplier = {
-							s_format("%d%% ^8(additional extra damage)", modDB:Sum("BASE", cfg, "CritMultiplier") / 100),
-							s_format("x %.2f ^8(increased/reduced extra crit damage taken by enemy)", enemyInc),
-							s_format("= %d%% ^8(extra crit damage)", extraDamage * 100),
+s_format("%d%% ^8(额外伤害)", modDB:Sum("BASE", cfg, "CritMultiplier") / 100),
+s_format("x %.2f ^8(提高/降低 敌人承受的暴击伤害)", enemyInc),
+s_format("= %d%% ^8(额外暴击伤害)", extraDamage * 100),
 						}
 					end
 				end
@@ -845,8 +845,8 @@ function calcs.offence(env, actor)
 			output.CritEffect = 1 - output.CritChance / 100 + output.CritChance / 100 * output.CritMultiplier
 			if breakdown and output.CritEffect ~= 1 then
 				breakdown.CritEffect = {
-					s_format("(1 - %.4f) ^8(portion of damage from non-crits)", output.CritChance/100),
-					s_format("+ (%.4f x %g) ^8(portion of damage from crits)", output.CritChance/100, output.CritMultiplier),
+s_format("(1 - %.4f) ^8(非暴击部分的伤害)", output.CritChance/100),
+s_format("+ (%.4f x %g) ^8(暴击部分的伤害)", output.CritChance/100, output.CritMultiplier),
 					s_format("= %.3f", output.CritEffect),
 				}
 			end
@@ -883,17 +883,17 @@ function calcs.offence(env, actor)
 					local plus = ""
 					if (source[damageTypeMin] or 0) ~= 0 or (source[damageTypeMax] or 0) ~= 0 then
 						if baseMultiplier ~= 1 then
-							t_insert(breakdown[damageType], s_format("(%d to %d) x %.2f ^8(base damage from %s multiplied by base damage multiplier)", source[damageTypeMin], source[damageTypeMax], baseMultiplier, source.type and "weapon" or "skill"))
+t_insert(breakdown[damageType], s_format("(%d to %d) x %.2f ^8(来自基础伤害额外总加成 %s 的额外总加成基础伤害)", source[damageTypeMin], source[damageTypeMax], baseMultiplier, source.type and "武器" or "技能"))
 						else
-							t_insert(breakdown[damageType], s_format("%d to %d ^8(base damage from %s)", source[damageTypeMin], source[damageTypeMax], source.type and "weapon" or "skill"))
+t_insert(breakdown[damageType], s_format("%d to %d ^8(基础伤害来自 %s)", source[damageTypeMin], source[damageTypeMax], source.type and "武器" or "技能"))
 						end
 						plus = "+ "
 					end
 					if addedMin ~= 0 or addedMax ~= 0 then
 						if damageEffectiveness ~= 1 then
-							t_insert(breakdown[damageType], s_format("%s(%d to %d) x %.2f ^8(added damage multiplied by damage effectiveness)", plus, addedMin, addedMax, damageEffectiveness))
+t_insert(breakdown[damageType], s_format("%s(%d to %d) x %.2f ^8(技能伤害效用调整附加点伤)", plus, addedMin, addedMax, damageEffectiveness))
 						else
-							t_insert(breakdown[damageType], s_format("%s%d to %d ^8(added damage)", plus, addedMin, addedMax))
+t_insert(breakdown[damageType], s_format("%s%d to %d ^8(附加伤害)", plus, addedMin, addedMax))
 						end
 					end
 					t_insert(breakdown[damageType], s_format("= %.1f to %.1f", baseMin, baseMax))
@@ -922,15 +922,15 @@ function calcs.offence(env, actor)
 					local convMult = actor.conversionTable[damageType].mult
 					if pass == 2 and breakdown then
 						t_insert(breakdown[damageType], "Hit damage:")
-						t_insert(breakdown[damageType], s_format("%d to %d ^8(total damage)", min, max))
+t_insert(breakdown[damageType], s_format("%d to %d ^8(总伤害)", min, max))
 						if convMult ~= 1 then
-							t_insert(breakdown[damageType], s_format("x %g ^8(%g%% converted to other damage types)", convMult, (1-convMult)*100))
+t_insert(breakdown[damageType], s_format("x %g ^8(%g%% 转化为其他伤害)", convMult, (1-convMult)*100))
 						end
 						if output.DoubleDamageEffect ~= 1 then
-							t_insert(breakdown[damageType], s_format("x %.2f ^8(chance to deal double damage)", output.DoubleDamageEffect))
+t_insert(breakdown[damageType], s_format("x %.2f ^8(几率造成双倍伤害)", output.DoubleDamageEffect))
 						end
 						if output.RuthlessBlowEffect ~= 1 then
-							t_insert(breakdown[damageType], s_format("x %.2f ^8(ruthless blow effect modifier)", output.RuthlessBlowEffect))
+t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", output.RuthlessBlowEffect))
 						end
 					end
 					local allMult = convMult * output.DoubleDamageEffect * output.RuthlessBlowEffect
@@ -972,7 +972,7 @@ function calcs.offence(env, actor)
 							output[damageType.."EffMult"] = effMult
 						end
 						if pass == 2 and breakdown and effMult ~= 1 then
-							t_insert(breakdown[damageType], s_format("x %.3f ^8(effective DPS modifier)", effMult))
+t_insert(breakdown[damageType], s_format("x %.3f ^8(有效 DPS 加成)", effMult))
 							breakdown[damageType.."EffMult"] = breakdown.effMult(damageType, resist, pen, taken, effMult)
 						end
 					end
@@ -1063,7 +1063,7 @@ function calcs.offence(env, actor)
 			-- For each damage type, calculate percentage of total damage
 			for _, damageType in ipairs(dmgTypeList) do
 				if output[damageType.."HitAverage"] > 0 then
-					t_insert(breakdown[damageType], s_format("Portion of total damage: %d%%", output[damageType.."HitAverage"] / (totalHitMin + totalHitMax) * 200))
+t_insert(breakdown[damageType], s_format("占总伤害的: %d%%", output[damageType.."HitAverage"] / (totalHitMin + totalHitMax) * 200))
 				end
 			end
 		end
@@ -1104,16 +1104,16 @@ function calcs.offence(env, actor)
 		if breakdown then
 			if output.CritEffect ~= 1 then
 				breakdown.AverageHit = {
-					s_format("%.1f x (1 - %.4f) ^8(damage from non-crits)", (totalHitMin + totalHitMax) / 2, output.CritChance / 100),
-					s_format("+ %.1f x %.4f ^8(damage from crits)", (totalCritMin + totalCritMax) / 2, output.CritChance / 100),
+s_format("%.1f x (1 - %.4f) ^8(来自非暴击的伤害)", (totalHitMin + totalHitMax) / 2, output.CritChance / 100),
+s_format("+ %.1f x %.4f ^8(来自暴击的伤害)", (totalCritMin + totalCritMax) / 2, output.CritChance / 100),
 					s_format("= %.1f", output.AverageHit),
 				}
 			end
 			if isAttack then
 				breakdown.AverageDamage = { }
 				t_insert(breakdown.AverageDamage, s_format("%s:", pass.label))
-				t_insert(breakdown.AverageDamage, s_format("%.1f ^8(average hit)", output.AverageHit))
-				t_insert(breakdown.AverageDamage, s_format("x %.2f ^8(chance to hit)", output.HitChance / 100))
+t_insert(breakdown.AverageDamage, s_format("%.1f ^8(平均击中)", output.AverageHit))
+t_insert(breakdown.AverageDamage, s_format("x %.2f ^8(命中率)", output.HitChance / 100))
 				t_insert(breakdown.AverageDamage, s_format("= %.1f", output.AverageDamage))
 			end
 		end
@@ -1155,7 +1155,7 @@ function calcs.offence(env, actor)
 	end
 	if env.mode == "CALCS" then
 		if skillData.showAverage then
-			output.DisplayDamage = s_format("%.1f average damage", output.AverageDamage)
+output.DisplayDamage = s_format("%.1f 平均伤害", output.AverageDamage)
 		else
 			output.DisplayDamage = s_format("%.1f DPS", output.TotalDPS)
 		end
@@ -1163,17 +1163,17 @@ function calcs.offence(env, actor)
 	if breakdown then
 		if isAttack then
 			breakdown.TotalDPS = {
-				s_format("%.1f ^8(average damage)", output.AverageDamage),
-				output.HitSpeed and s_format("x %.2f ^8(hit rate)", output.HitSpeed) or s_format("x %.2f ^8(attack rate)", output.Speed),
+s_format("%.1f ^8(平均伤害)", output.AverageDamage),
+output.HitSpeed and s_format("x %.2f ^8(命中率)", output.HitSpeed) or s_format("x %.2f ^8(攻击速度)", output.Speed),
 			}
 		else
 			breakdown.TotalDPS = {
-				s_format("%.1f ^8(average hit)", output.AverageDamage),
-				output.HitSpeed and s_format("x %.2f ^8(hit rate)", output.HitSpeed) or s_format("x %.2f ^8(cast rate)", output.Speed),
+s_format("%.1f ^8(平均伤害)", output.AverageDamage),
+output.HitSpeed and s_format("x %.2f ^8(命中率)", output.HitSpeed) or s_format("x %.2f ^8(施法速度)", output.Speed),
 			}
 		end
 		if skillData.dpsMultiplier then
-			t_insert(breakdown.TotalDPS, s_format("x %g ^8(DPS multiplier for this skill)", skillData.dpsMultiplier))
+t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dpsMultiplier))
 		end
 		t_insert(breakdown.TotalDPS, s_format("= %.1f", output.TotalDPS))
 	end

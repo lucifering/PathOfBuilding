@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Module: Data
 -- Contains static data used by other modules.
@@ -79,9 +79,9 @@ data = { }
 data.skillColorMap = { colorCodes.STRENGTH, colorCodes.DEXTERITY, colorCodes.INTELLIGENCE, colorCodes.NORMAL }
 
 data.jewelRadius = {
-	{ rad = 800, col = "^xBB6600", label = "Small" },
-	{ rad = 1200, col = "^x66FFCC", label = "Medium" },
-	{ rad = 1500, col = "^x2222CC", label = "Large" }
+{ rad = 800, col = "^xBB6600", label = "小" },
+{ rad = 1200, col = "^x66FFCC", label = "中" },
+{ rad = 1500, col = "^x2222CC", label = "大" }
 }
 
 data.labyrinths = {

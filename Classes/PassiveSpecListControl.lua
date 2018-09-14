@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Class: Passive Spec List
 -- Passive spec list control.
@@ -12,7 +12,7 @@ local m_max = math.max
 local PassiveSpecListClass = common.NewClass("PassiveSpecList", "ListControl", function(self, anchor, x, y, width, height, treeTab)
 	self.ListControl(anchor, x, y, width, height, 16, true, treeTab.specList)
 	self.treeTab = treeTab
-	self.controls.copy = common.New("ButtonControl", {"BOTTOMLEFT",self,"TOP"}, 2, -4, 60, 18, "Copy", function()
+self.controls.copy = common.New("ButtonControl", {"BOTTOMLEFT",self,"TOP"}, 2, -4, 60, 18, "复制", function()
 		local newSpec = common.New("PassiveSpec", treeTab.build)
 		newSpec.title = self.selValue.title
 		newSpec.jewels = copyTable(self.selValue.jewels)
@@ -22,19 +22,19 @@ local PassiveSpecListClass = common.NewClass("PassiveSpecList", "ListControl", f
 	self.controls.copy.enabled = function()
 		return self.selValue ~= nil
 	end
-	self.controls.delete = common.New("ButtonControl", {"LEFT",self.controls.copy,"RIGHT"}, 4, 0, 60, 18, "Delete", function()
+self.controls.delete = common.New("ButtonControl", {"LEFT",self.controls.copy,"RIGHT"}, 4, 0, 60, 18, "删除", function()
 		self:OnSelDelete(self.selIndex, self.selValue)
 	end)
 	self.controls.delete.enabled = function()
 		return self.selValue ~= nil and #self.list > 1
 	end
-	self.controls.rename = common.New("ButtonControl", {"BOTTOMRIGHT",self,"TOP"}, -2, -4, 60, 18, "Rename", function()
+self.controls.rename = common.New("ButtonControl", {"BOTTOMRIGHT",self,"TOP"}, -2, -4, 60, 18, "重命名", function()
 		self:RenameSpec(self.selValue)
 	end)
 	self.controls.rename.enabled = function()
 		return self.selValue ~= nil
 	end
-	self.controls.new = common.New("ButtonControl", {"RIGHT",self.controls.rename,"LEFT"}, -4, 0, 60, 18, "New", function()
+self.controls.new = common.New("ButtonControl", {"RIGHT",self.controls.rename,"LEFT"}, -4, 0, 60, 18, "新建", function()
 		local newSpec = common.New("PassiveSpec", treeTab.build)
 		newSpec:SelectClass(treeTab.build.spec.curClassId)
 		newSpec:SelectAscendClass(treeTab.build.spec.curAscendClassId)
@@ -44,11 +44,11 @@ end)
 
 function PassiveSpecListClass:RenameSpec(spec, addOnName)
 	local controls = { }
-	controls.label = common.New("LabelControl", nil, 0, 20, 0, 16, "^7Enter name for this passive tree:")
+controls.label = common.New("LabelControl", nil, 0, 20, 0, 16, "^7输入这个天赋树的名称:")
 	controls.edit = common.New("EditControl", nil, 0, 40, 350, 20, spec.title, nil, nil, 100, function(buf)
 		controls.save.enabled = buf:match("%S")
 	end)
-	controls.save = common.New("ButtonControl", nil, -45, 70, 80, 20, "Save", function()
+controls.save = common.New("ButtonControl", nil, -45, 70, 80, 20, "保存", function()
 		spec.title = controls.edit.buf
 		self.treeTab.modFlag = true
 		if addOnName then
@@ -59,7 +59,7 @@ function PassiveSpecListClass:RenameSpec(spec, addOnName)
 		main:ClosePopup()
 	end)
 	controls.save.enabled = false
-	controls.cancel = common.New("ButtonControl", nil, 45, 70, 80, 20, "Cancel", function()
+controls.cancel = common.New("ButtonControl", nil, 45, 70, 80, 20, "取消", function()
 		main:ClosePopup()
 	end)
 	main:OpenPopup(370, 100, spec.title and "Rename" or "Set Name", controls, "save", "edit")
@@ -85,7 +85,7 @@ end
 
 function PassiveSpecListClass:OnSelDelete(index, spec)
 	if #self.list > 1 then
-		main:OpenConfirmPopup("Delete Spec", "Are you sure you want to delete '"..(spec.title or "Default").."'?", "Delete", function()
+main:OpenConfirmPopup("Delete Spec", "你确定要删除 '"..(spec.title or "Default").."'?", "删除", function()
 			t_remove(self.list, index)
 			self.selIndex = nil
 			self.selValue = nil

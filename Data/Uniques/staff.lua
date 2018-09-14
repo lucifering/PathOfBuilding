@@ -1,411 +1,411 @@
--- Item data (c) Grinding Gear Games
-
+﻿-- Item data (c) Grinding Gear Games
 return {
 -- Weapon: Staff
 [[
-Agnerod East
-Imperial Staff
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 66, 158 Str, 113 Int
-Implicits: 2
-{variant:1}12% Chance to Block
-{variant:2}18% Chance to Block
-{variant:1}+1 to Level of Socketed Lightning Gems
-{variant:2}+2 to Level of Socketed Lightning Gems
-+(80-120) to Intelligence
-(30-50)% increased Lightning Damage
-100% increased Shock Duration on Enemies
-40% increased Strength Requirement
-Damage Penetrates 20% Lightning Resistance
+东方雷霆圣杖
+帝国长杖
+版本: 2.6.0以前
+版本: 3.4.0以前
+版本: 当前
+等级需求: 66, 158 Str, 113 Int
+固定基底词缀: 2
+{variant:1}12% 攻击格挡率
+{variant:2}18% 攻击格挡率
+{variant:1}此物品上装备的【闪电技能石】等级 +1
+{variant:2}此物品上装备的【闪电技能石】等级 +2
++(80-120) 智慧
+闪电伤害提高 (30-50)%
+对敌人的感电效果持续时间延长 100%
+力量需求提高 40%
+伤害穿透 20% 闪电抗性
 ]],[[
-Agnerod North
-Imperial Staff
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 66, 158 Str, 113 Int
-Implicits: 2
-{variant:1}12% Chance to Block
-{variant:2}18% Chance to Block
-{variant:1}+1 to Level of Socketed Lightning Gems
-{variant:2}+2 to Level of Socketed Lightning Gems
-+(80-120) to Intelligence
-(30-50)% increased Lightning Damage
-15% chance to Shock
-40% increased Strength Requirement
-Damage Penetrates 20% Lightning Resistance
+北方雷霆圣杖
+帝国长杖
+版本: 2.6.0以前
+版本: 当前
+等级需求: 66, 158 Str, 113 Int
+固定基底词缀: 2
+{variant:1}12% 攻击格挡率
+{variant:2}18% 攻击格挡率
+{variant:1}此物品上装备的【闪电技能石】等级 +1
+{variant:2}此物品上装备的【闪电技能石】等级 +2
++(80-120) 智慧
+闪电伤害提高 (30-50)%
+闪电伤害击中时有 15% 几率使敌人受到感电效果影响
+力量需求提高 40%
+伤害穿透 20% 闪电抗性
 ]],[[
-Agnerod South
-Imperial Staff
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 66, 158 Str, 113 Int
-Implicits: 2
-{variant:1}12% Chance to Block
-{variant:2}18% Chance to Block
-{variant:1}+1 to Level of Socketed Lightning Gems
-{variant:2}+2 to Level of Socketed Lightning Gems
-+(80-120) to Intelligence
-(30-50)% increased Lightning Damage
-+5% to Maximum Lightning Resistance
-40% increased Strength Requirement
-Damage Penetrates 20% Lightning Resistance
+南方雷霆圣杖
+帝国长杖
+版本: 2.6.0以前
+版本: 当前
+等级需求: 66, 158 Str, 113 Int
+固定基底词缀: 2
+{variant:1}12% 攻击格挡率
+{variant:2}18% 攻击格挡率
+{variant:1}此物品上装备的【闪电技能石】等级 +1
+{variant:2}此物品上装备的【闪电技能石】等级 +2
++(80-120) 智慧
+闪电伤害提高 (30-50)%
++5% 闪电抗性上限
+力量需求提高 40%
+伤害穿透 20% 闪电抗性
 ]],[[
-Agnerod West
-Imperial Staff
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 66, 158 Str, 113 Int
-Implicits: 2
-{variant:1}12% Chance to Block
-{variant:2}18% Chance to Block
-{variant:1}+1 to Level of Socketed Lightning Gems
-{variant:2}+2 to Level of Socketed Lightning Gems
-+(80-120) to Intelligence
-(30-50)% increased Lightning Damage
-Adds (5-15) to (100-140) Lightning Damage to Spells
-40% increased Strength Requirement
-Damage Penetrates 20% Lightning Resistance
+西方雷霆圣杖
+帝国长杖
+版本: 2.6.0以前
+版本: 当前
+等级需求: 66, 158 Str, 113 Int
+固定基底词缀: 2
+{variant:1}12% 攻击格挡率
+{variant:2}18% 攻击格挡率
+{variant:1}此物品上装备的【闪电技能石】等级 +1
+{variant:2}此物品上装备的【闪电技能石】等级 +2
++(80-120) 智慧
+闪电伤害提高 (30-50)%
+法术附加 (5-15) - (100-140) 闪电伤害
+力量需求提高 40%
+伤害穿透 20% 闪电抗性
 ]],[[
-The Blood Thorn
-Gnarled Branch
-Variant: Pre 2.6.0
-Variant: Current
-Implicits: 2
-{variant:1}12% Chance to Block
-{variant:2}18% Chance to Block
-12% Chance to Block
-100% increased Physical Damage
-(5-10)% increased Attack Speed
-Reflects (22-44) Physical Damage to Attackers on Block
-Curse Enemies with level 5 Vulnerability on Block
+血棘
+朽木之干
+版本: 2.6.0以前
+版本: 当前
+固定基底词缀: 2
+{variant:1}12% 攻击格挡率
+{variant:2}18% 攻击格挡率
+12% 攻击格挡率
+物理伤害提高 100%
+攻击速度提高 (5-10)%
+格挡攻击时反射 (22-44) 物理伤害
+格挡时，用 5 级的【脆弱】诅咒敌人
 ]],[[
-Cane of Unravelling
-Ezomyte Staff
+阐释之杖
+艾兹麦长杖
 Requires Level: 62
-18% Chance to Block 
-+2 to Level of Socketed Chaos Gems
-(60�80)% increased Chaos Damage
-2% increased Cast Speed per Power Charge
-Gain a Power Charge after spending a total of 200 Mana
-2 Mana Regenerated per Second per Power Charge
+18% 攻击格挡率
+此物品上装备的【混沌技能石】等级 +2
+混沌伤害提高 (60-80)%
+每个暴击球可使施法速度提高 2%
+总计消耗 200 点魔力后可以获得 1 个暴击球
+每个暴击球每秒回复 2 魔力
 ]],[[
-Disintegrator
-Maelstrom Staff
-Source: Drops from unique{The Elder} (Uber)
-Requires Level 64
-20% Chance to Block
-Adds (270�300) to (340�380) Physical Damage
-Adds (376�400) to (568�600) Physical Damage to Spells
-+1 to Maximum Siphoning Charges per Elder or Shaper Item Equipped
-25% chance to gain a Siphoning Charge when you use a Skill
-Adds (12�14) to (15�16) Physical Damage to Attacks and Spells per Siphoning Charge
-Gain 4% of Non-Chaos Damage as extra Chaos Damage per Siphoning Charge
-1% additional Physical Damage Reduction from Hits per Siphoning Charge
-0.2% of Damage Leeched as Life per Siphoning Charge
-Take 150 Physical Damage per Second per Siphoning Charge if you've used a Skill Recently
-Elder Item
+裂世轮回
+风暴长杖
+源: 传奇Boss【裂界者】 专属掉落（永恒·T18）
+等级需求: 64
+20% 攻击格挡率
+附加 (270-300) - (340-380) 基础物理伤害
+法术附加 (376-400) - (568-600) 基础物理伤害
+每装备 1 个【裂界之器】或【塑界之器】，便 +1 最大轮回球
+你使用技能时有 25% 几率获得 1 个轮回球
+每个轮回球可使攻击和法术附加 (12-14) - (15-16) 基础物理伤害
+每有 1 个轮回球，便获得额外混沌伤害，其数值等同于非混沌伤害的 4% 
+每有 1 个轮回球，便获得 1% 击中物理伤害减免
+每个轮回球可使伤害的 0.2% 转化为生命偷取
+近期内你若有使用技能，每有 1 个轮回球，则每秒受到 150 物理伤害
+裂界之器
 ]],[[
-Duskdawn
-Maelstr�m Staff
-Source: Vendor recipe
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 64, 113 Str, 113 Int
-Implicits: 2
-{variant:1}18% Chance to Block
-{variant:2}20% Chance to Block
-4% Chance to Block
-(60-80)% increased Critical Strike Chance for Spells
-Gain (10-20)% of Elemental Damage as Extra Chaos Damage
-+1% to Critical Strike Multiplier per 1% Block Chance
-+60% to Critical Strike Multiplier if you've dealt a Non-Critical Strike Recently
-120% increased Spell Damage if you've dealt a Critical Strike Recently
+宵晓
+风暴长杖
+源: 商店配方
+版本: 2.6.0以前
+版本: 当前
+等级需求: 64, 113 Str, 113 Int
+固定基底词缀: 2
+{variant:1}18% 攻击格挡率
+{variant:2}20% 攻击格挡率
+4% 攻击格挡率
+法术暴击率提高 (60-80)%
+获得额外混沌伤害，其数值等同于火焰、冰霜、闪电伤害的 (10-20)%
+每 1% 攻击格挡率 +1% 基础暴击伤害加成
+近期内你若没有打出过暴击，则 +60% 暴击伤害加成
+近期若打出过暴击，则法术伤害提高 120%
 ]],[[
-Dying Breath
-Coiled Staff
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 23, 43 Str, 43 Int
-Implicits: 2
-{variant:1}18% Chance to Block
-{variant:2}20% Chance to Block
-18% increased Cast Speed
-18% increased maximum Mana
-18% increased Area of Effect of Aura Skills
-18% increased Area of Effect of Curse Skills
-Nearby Enemies have 18% increased Effect of Curses on them
-Nearby allies gain 18% increased Damage
-18% increased effect of Non-Curse Auras you Cast
+幽魂之息
+铁锻长杖
+版本: 2.6.0以前
+版本: 当前
+等级需求: 23, 43 Str, 43 Int
+固定基底词缀: 2
+{variant:1}18% 攻击格挡率
+{variant:2}20% 攻击格挡率
+施法速度提高 18%
+最大魔力提高 18%
+光环技能范围提高 18%
+诅咒范围扩大 18%
+周围敌人被诅咒的效果提高 18%
+周围友军的伤害提高 18%
+非诅咒类光环的效果提高 18%
 ]],[[
-The Enmity Divine
-Imperial Staff
-League: Harbinger
-Requires Level 66, 113 Str, 113 Int
-18% Chance to Block
-Socketed Gems are supported by level 10 Life Leech
-Grants Summon Harbinger of Brutality Skill
-5% Chance to Block
-Adds (160-185) to (200-225) Physical Damage
-(30-40)% increased Critical Strike Chance
+圣恶之喻
+帝国长杖
+联盟: 先驱者
+等级需求: 66, 113 Str, 113 Int
+18% 攻击格挡率
+此物品上的技能石受到 10 级的 生命偷取 辅助
+获得【召唤残暴先驱者】
+5% 攻击格挡率
+附加 (160-185) - (200-225) 基础物理伤害
+该装备的攻击暴击率提高 (30-40)%
 ]],[[
-Femurs of the Saints
-Primordial Staff
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 58, 99 Str, 99 Int
-Implicits: 2
-{variant:1}12% Chance to Block
-{variant:2}18% Chance to Block
-+2 to Level of Socketed Minion Gems
-Minions Regenerate (1.5-2.5)% Life per Second
-2% increased Minion Attack and Cast Speed per Skeleton you own
-2% increased Minion Duration per Zombie you own
-(8-12)% increased Minion Damage per Spectre you own
+圣徒胫骨
+史典长杖
+版本: 2.6.0以前
+版本: 当前
+等级需求: 58, 99 Str, 99 Int
+固定基底词缀: 2
+{variant:1}12% 攻击格挡率
+{variant:2}18% 攻击格挡率
+此物品上装备的【召唤生物技能石】等级 +2
+召唤生物每秒回复 (1.5-2.5)% 生命
+你每控制一个魔侍，召唤生物伤害和施法速度便提高 2%
+你每控制一个魔卫，召唤生物持续时间延长 2%
+你每拥有一个灵体，召唤生物伤害提高 (8-12)%
 ]],[[
-Fencoil
-Gnarled Branch
-Upgrade: Upgrades to unique{Mirebough} via prophecy{Trapped in the Tower}
-Variant: Pre 2.6.0
-Variant: Current
-Implicits: 2
-{variant:1}12% Chance to Block
-{variant:2}18% Chance to Block
-Socketed Gems are Supported by level 8 Trap
-(40-50)% increased Damage
-(10-20)% increased maximum Life
-(10-20)% increased maximum Mana
+绿藤
+朽木之干
+升级: 使用 预言【受困象牙塔】 升级为 传奇【魔藤】
+版本: 2.6.0以前
+版本: 当前
+固定基底词缀: 2
+{variant:1}12% 攻击格挡率
+{variant:2}18% 攻击格挡率
+此物品上的技能石受到 8 级的 技能陷阱化 辅助
+伤害提高 (40-50)%
+最大生命提高 (10-20)%
+最大魔力提高 (10-20)%
 ]],[[
-Mirebough
-Gnarled Branch
-Source: Upgraded from unique{Fencoil} via prophecy{Trapped in the Tower}
-Requires Level 32
-18% Chance to Block
-Socketed Gems are Supported by Level 16 Trap
-Socketed Gems are Supported by Level 16 Cluster Trap
-Socketed Gems are Supported by Level 16 Trap and Mine Damage
-(10�20)% increased maximum Mana
-(10�20)% increased maximum Life
-(40�50)% increased Damage
+魔藤
+朽木之干
+源: 由 传奇【绿藤】 使用 预言【受困象牙塔】 升级
+等级需求: 32
+18% 攻击格挡率
+此物品上的技能石受到 16 级的 技能陷阱化 辅助
+此物品上的技能石受到 16 级的 散弹陷阱 辅助
+此物品上的技能石受到 16 级的 陷阱及地雷伤害 辅助
+最大魔力提高 (10-20)%
+最大生命提高 (10-20)%
+伤害提高 (40-50)%
 ]],[[
-Hegemony's Era
-Judgement Staff
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 68, 113 Str, 113 Int
-Implicits: 2
-{variant:1}12% Chance to Block
-{variant:2}18% Chance to Block
-6% Chance to Block
-Adds (180-190) to (190-220) Physical Damage
-(12-16)% increased Attack Speed
-(20-30)% increased Critical Strike Chance
-+1 to Maximum Power Charges
-10% chance to gain a Power Charge if you Knock an Enemy Back with Melee Damage
+霸权时代
+审判长杖
+版本: 2.6.0以前
+版本: 当前
+等级需求: 68, 113 Str, 113 Int
+固定基底词缀: 2
+{variant:1}12% 攻击格挡率
+{variant:2}18% 攻击格挡率
+6% 攻击格挡率
+附加 (180-190) - (190-220) 基础物理伤害
+攻击速度提高 (12-16)%
+该装备的攻击暴击率提高 (20-30)%
++1 暴击球数量上限
+近战伤害击退敌人时，有 10% 的几率获得 1 个暴击球
 ]],[[
-Martyr of Innocence
-Highborn Staff
-Requires Level 52, 89 Str, 89 Int
-18% Chance to Block
-(12-16)% Chance to Block
-Adds (350-400) to (500-600) Fire Damage
-Adds (130-150) to (200-250) Fire Damage to Spells
-Grants level 15 Vengeance Skill
-100% increased Fire Damage if you have been Hit Recently
-Immune to Freeze and Chill while Ignited
-Damage Penetrates 15% of Fire Resistance if you have Blocked Recently
+纯净之神的祭品
+贵族长杖
+等级需求: 52, 89 Str, 89 Int
+18% 攻击格挡率
+(12-16)% 攻击格挡率
+附加 (350-400) - (500-600) 基础火焰伤害
+法术附加 (130-150) - (200-250) 基础火焰伤害
+获得 15 级的【复仇】
+近期内你若被击中过，则火焰伤害提高 100%
+被点燃时免疫冰冻和冰缓
+近期内你若有过格挡，则伤害穿透 15% 火焰抗性
 ]],[[
-Pillar of the Caged God
-Long Staff
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 13, 27 Str, 27 Int
-Implicits: 2
-{variant:1}12% Chance to Block
-{variant:2}18% Chance to Block
-1% increased Area of Effect of Area Skills per 20 Intelligence
-1% increased Attack Speed per 10 Dexterity
-16% increased Physical Weapon Damage per 10 Strength
+囚神杵
+长杖
+版本: 2.6.0以前
+版本: 当前
+等级需求: 13, 27 Str, 27 Int
+固定基底词缀: 2
+{variant:1}12% 攻击格挡率
+{variant:2}18% 攻击格挡率
+每 20 点智慧会使范围效果扩大 1%
+每 10 点敏捷会使攻击速度提高 1%
+每 10 点力量会使武器物理伤害提高 16%
 ]],[[
-Pledge of Hands
-Judgement Staff
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 68, 113 Str, 113 Int
-Implicits: 2
-{variant:1}12% Chance to Block
-{variant:2}18% Chance to Block
-Socketed Gems are Supported by level 30 Spell Echo
-(120-160)% increased Spell Damage
-100% increased maximum Mana
+誓约
+审判长杖
+版本: 2.6.0以前
+版本: 当前
+等级需求: 68, 113 Str, 113 Int
+固定基底词缀: 2
+{variant:1}12% 攻击格挡率
+{variant:2}18% 攻击格挡率
+此物品上的技能石受到 30 级的 施法回响 辅助
+法术伤害提高 (120-160)%
+最大魔力提高 100%
 ]],[[
-Realmshaper
-Iron Staff
-Upgrade: Upgrades to unique{Realm Ender} via prophecy{The Beginning and the End}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 18, 35 Str, 35 Int
-Implicits: 2
-{variant:1}12% Chance to Block
-{variant:2}18% Chance to Block
-+1 to Level of Socketed Fire Gems
-+1 to Level of Socketed Cold Gems
-Socketed Gems are Supported by level 5 Cold to Fire
-Adds (10-15) to (20-25) Fire Damage
-Adds (10-15) to (20-25) Cold Damage
-(30-50)% increased Elemental Damage
+创域
+铁锻长杖
+升级: 使用 预言【终结的起点】 升级为 传奇【魂界终结】
+版本: 2.6.0以前
+版本: 当前
+等级需求: 18, 35 Str, 35 Int
+固定基底词缀: 2
+{variant:1}12% 攻击格挡率
+{variant:2}18% 攻击格挡率
+此物品上装备的【火焰技能石】等级 +1
+此物品上装备的【冰霜技能石】等级 +1
+此物品上的技能石受到 5 级的 寒冰转烈焰 辅助
+附加 (10-15) - (20-25) 基础火焰伤害
+附加 (10-15) - (20-25) 基础冰霜伤害
+火焰、冰霜、闪电伤害提高 (30-50)%
 ]],[[
-Realm Ender
-Iron Staff
-Source: Upgraded from unique{Realmshaper} using prophecy{The Beginning and the End}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 40, 35 Str, 35 Int
-Implicits: 2
-{variant:1}12% Chance to Block
-{variant:2}18% Chance to Block
-+1 to Level of Socketed Fire Gems
-+1 to Level of Socketed Cold Gems
-+2 to Level of Socketed Elemental Gems
-Socketed Gems are Supported by level 5 Cold to Fire
-Adds (10-15) to (20-25) Fire Damage
-Adds (10-15) to (20-25) Cold Damage
-(30-50)% increased Elemental Damage
+魂界终结
+铁锻长杖
+源: 由 传奇【创域】 使用 【终结的起点】 升级
+版本: 2.6.0以前
+版本: 当前
+等级需求: 40, 35 Str, 35 Int
+固定基底词缀: 2
+{variant:1}12% 攻击格挡率
+{variant:2}18% 攻击格挡率
+此物品上装备的【火焰技能石】等级 +1
+此物品上装备的【冰霜技能石】等级 +1
+此物品上的火焰、冰霜、闪电技能石等级 +2
+此物品上的技能石受到 5 级的 寒冰转烈焰 辅助
+附加 (10-15) - (20-25) 基础火焰伤害
+附加 (10-15) - (20-25) 基础冰霜伤害
+火焰、冰霜、闪电伤害提高 (30-50)%
 ]],[[
-The Searing Touch
-Lathi
-Variant: Pre 2.6.0
-Variant: {2_6}Pre 3.0.0
-Variant: Current
-Requires Level 60, 113 Str, 113 Int
-Implicits: 2
-{variant:1}12% Chance to Block
-{variant:2,3}18% Chance to Block
-+2 to Level of Socketed Fire Gems
-{variant:1,2}(30-50)% increased Spell Damage
-{variant:1,2}(20-40)% increased Fire Damage
-{variant:3}(70�90)% increased Fire Damage
-10% increased Cast Speed
-70% increased Burning Damage
+炽炎之使
+武术长杖
+版本: 2.6.0以前
+版本: {2_6}3.0.0以前
+版本: 当前
+等级需求: 60, 113 Str, 113 Int
+固定基底词缀: 2
+{variant:1}12% 攻击格挡率
+{variant:2,3}18% 攻击格挡率
+此物品上装备的【火焰技能石】等级 +2
+{variant:1,2}法术伤害提高 (30-50)%
+{variant:1,2}火焰伤害提高 (20-40)%
+{variant:3}火焰伤害提高 (70-90)%
+施法速度提高 10%
+燃烧伤害提高 70%
 ]],[[
-The Searing Touch
-Long Staff
-Variant: Pre 2.0.0
-Requires Level 60, 113 Str, 113 Int
-12% Chance to Block
-+2 to Level of Socketed Fire Gems
-(30-50)% increased Spell Damage
-(20-40)% increased Fire Damage
-10% increased Cast Speed
-70% increased Burning Damage
+炽炎之使
+武术长杖
+版本: 2.0.0以前
+等级需求: 60, 113 Str, 113 Int
+12% 攻击格挡率
+此物品上装备的【火焰技能石】等级 +2
+法术伤害提高 (30-50)%
+火焰伤害提高 (20-40)%
+施法速度提高 10%
+燃烧伤害提高 70%
 ]],[[
-Sire of Shards
-Serpentine Staff
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 49, 85 Str, 85 Int
-Implicits: 2
-{variant:1}18% Chance to Block
-{variant:2}20% Chance to Block
-+(15-20) to All Attributes
-+(5-7)% to All Elemental Resistances
-(60-100)% increased Projectile Damage
-20% increased Light Radius
-Socketed Gems fire 4 additional Projectiles
-Socketed Gems fire Projectiles in a Nova
+破碎传承者
+蛇纹长杖
+版本: 2.6.0以前
+版本: 当前
+等级需求: 49, 85 Str, 85 Int
+固定基底词缀: 2
+{variant:1}18% 攻击格挡率
+{variant:2}20% 攻击格挡率
++(15-20) 全属性
+获得 +(5-7)% 火焰、冰霜、闪电抗性
+投射物伤害提高 (60-100)%
+照亮范围扩大 20%
+此物品上的技能石可以发射 4 个额外投射物
+此物品上的技能石投射物会以环状的方式发射
 ]],[[
-The Stormheart
-Royal Staff
-Upgrade: Upgrades to unique{The Stormwall} via prophecy{The Storm Spire}
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 28, 51 Str, 51 Int
-Implicits: 2
-{variant:1}12% Chance to Block
-{variant:2}18% Chance to Block
-(80-100)% increased Physical Damage
-Adds (25-35) to (45-60) Cold Damage
-Adds (1-10) to (70-90) Lightning Damage
-(20-35)% increased Critical Strike Chance
-{variant:1}You Cannot Be Shocked While Frozen
-{variant:2}You Cannot Be Shocked While Chilled
-{variant:2}50% chance to Shock Chilled Enemies
+风暴之眼
+皇家长杖
+升级: 使用 预言【风暴之尖】 升级为 传奇【风暴坚壁】
+版本: 2.6.0以前
+版本: 当前
+等级需求: 28, 51 Str, 51 Int
+固定基底词缀: 2
+{variant:1}12% 攻击格挡率
+{variant:2}18% 攻击格挡率
+物理伤害提高 (80-100)%
+附加 (25-35) - (45-60) 基础冰霜伤害
+附加 (1-10) - (70-90) 基础闪电伤害
+该装备的攻击暴击率提高 (20-35)%
+{variant:1}你被冰冻时不会被感电
+{variant:2}你被冰冻时不会被感电
+{variant:2}有 50% 几率感电已被冰缓的敌人
 ]],[[
-The Stormwall
-Royal Staff
-Source: Upgraded from unique{The Stormheart} via prophecy{The Storm Spire}
-Requires Level 60
-18% Chance to Block
-15% Chance to Block
-Adds (242�260) to (268�285) Physical Damage
-(20�35)% increased Critical Strike Chance
-50% of Physical Damage Converted to Cold Damage
-50% of Physical Damage Converted to Lightning Damage
-Cannot be Shocked while Chilled
-(30�40)% chance to Chill Attackers for 4 seconds on Block
-(30�40)% chance to Shock Attackers for 4 seconds on Block
+风暴坚壁
+皇家长杖
+源: 由 传奇【风暴之眼】 使用 预言【风暴之尖】 升级
+等级需求: 60
+18% 攻击格挡率
+15% 攻击格挡率
+附加 (242-260) - (268-285) 基础物理伤害
+该装备的攻击暴击率提高 (20-35)%
+50% 的物理伤害转换为冰霜伤害
+物理伤害的 50% 转换为闪电伤害
+被冰缓时不会被感电
+格挡时有 (30-40)% 几率使攻击者冰缓 4 秒
+格挡时有 (30-40)% 几率使攻击者感电 4 秒
 ]],[[
-Taryn's Shiver
-Maelstr�m Staff
-Variant: Pre 2.0.0
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 64, 113 Str, 113 Int
-Implicits: 2
-{variant:1,2}18% Chance to Block
-{variant:3}20% Chance to Block
-{variant:1,2}+1 to Level of Socketed Cold Gems
-{variant:3}+2 to Level of Socketed Cold Gems
-{variant:1}(40-50)% increased Spell Damage
-{variant:2,3}(50-60)% increased Spell Damage
-(40-50)% increased Cold Damage
-(10-20)% increased Cast Speed
-8% chance to Freeze
-Enemies Frozen by you take 20% increased Damage
+塔林的颤栗之语
+风暴长杖
+版本: 2.0.0以前
+版本: 2.6.0以前
+版本: 当前
+等级需求: 64, 113 Str, 113 Int
+固定基底词缀: 2
+{variant:1,2}18% 攻击格挡率
+{variant:3}20% 攻击格挡率
+{variant:1,2}此物品上装备的【冰霜技能石】等级 +1
+{variant:3}此物品上装备的【冰霜技能石】等级 +2
+{variant:1}法术伤害提高 (40-50)%
+{variant:2,3}法术伤害提高 (50-60)%
+冰霜伤害提高 (40-50)%
+施法速度提高 (10-20)%
+冰霜伤害击中时有 8% 的几率冰冻敌人
+被你冰冻的敌人额外承受 20% 伤害
 ]],[[
-Tremor Rod
-Military Staff
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 45, 78 Str, 78 Int
-Implicits: 2
-{variant:1}12% Chance to Block
-{variant:2}18% Chance to Block
-Socketed Gems are Supported by level 10 Remote Mine
-35% less Mine Damage
-(40-60)% increased Spell Damage
-(15-20)% reduced Enemy Stun Threshold
-(40-60)% increased Mine Laying Speed
-Mines can be Detonated an additional time
+颤抖之杖
+军用长杖
+版本: 2.6.0以前
+版本: 当前
+等级需求: 45, 78 Str, 78 Int
+固定基底词缀: 2
+{variant:1}12% 攻击格挡率
+{variant:2}18% 攻击格挡率
+此物品上的技能石受到 10 级的 遥控地雷 辅助
+地雷总伤害额外降低 35%
+法术伤害提高 (40-60)%
+敌人晕眩门槛降低 (15-20)%
+地雷放置速度提高 (40-60)%
+地雷可以被额外触发 1 次
 ]],[[
-The Whispering Ice
-Vile Staff
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 33, 59 Str, 59 Int
-Implicits: 2
-{variant:1}12% Chance to Block
-{variant:2}18% Chance to Block
-+1 to Level of Socketed Support Gems
-Grants level 1 Icestorm Skill
-(8-12)% increased Cast Speed
-1% increased Spell Damage per 10 Intelligence
-(14-18)% increased Intelligence
+冰点低语
+毒牙长杖
+版本: 2.6.0以前
+版本: 当前
+等级需求: 33, 59 Str, 59 Int
+固定基底词缀: 2
+{variant:1}12% 攻击格挡率
+{variant:2}18% 攻击格挡率
+此物品上装备的【辅助技能石】等级 +1
+获得 1 级的主动技能【冰风暴】，且可被此道具上的技能石辅助
+施法速度提高 (8-12)%
+每 10 点智慧会使法术伤害提高 1%
+智慧提高 (14-18)%
 ]],[[
-Xirgil's Crank
-Coiled Staff
-Source: Drops in The Lord's Labyrinth
-Variant: Pre 2.6.0
-Variant: Current
-Requires Level 28, 43 Str, 43 Int
-Implicits: 2
-{variant:1}18% Chance to Block
-{variant:2}20% Chance to Block
-+1 to Level of Socketed Gems
-15% Chance to Block
-(60-80)% increased Spell Damage
-+(70-100) to Maximum Energy Shield
-Reflects 1 to 150 Lightning Damage to Melee Attackers
-20% Chance for Energy Shield Recharge to Start when you Block
+舍吉的手柄
+强化长杖
+源: 帝王试炼迷宫专属掉落
+版本: 2.6.0以前
+版本: 当前
+等级需求: 28, 43 Str, 43 Int
+固定基底词缀: 2
+{variant:1}18% 攻击格挡率
+{variant:2}20% 攻击格挡率
+此物品上装备的技能石等级 +1
+15% 攻击格挡率
+法术伤害提高 (60-80)%
++(70-100) 最大能量护盾
+反射 1 - 150 闪电伤害给近战攻击者
+当你格挡时，能量护盾有 20% 几率开始回复
 ]],
 }

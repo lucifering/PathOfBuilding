@@ -3,19 +3,21 @@
 由17173版主牵头，173技术群汉化&开发的国服版POB，支持导入国服角色，支持从游戏中复制装备，支持中文词缀和中文操作。
 
 
-原版POB来自：https://github.com/Openarl/PathOfBuilding
-原作者：Openarl
+* 原版POB来自：https://github.com/Openarl/PathOfBuilding
+* 原作者：Openarl
+
 
 
 感谢17173国服版参与汉化&开发的：
 
-·代价（DLL开发）
-·光影路西法（正则表达式&文本翻译）
-·草樣年華²º¹⁸（国际服汉化版本&文本翻译）
-·阿汤哥（文本翻译）
+* 代价（DLL开发）
+* 光影路西法（正则表达式&文本翻译）
+* 草樣年華²º¹⁸（国际服汉化版本&文本翻译）
+* 阿汤哥（文本翻译）
+* 感谢使用和参与bug回报的广大POE玩家。
 
-感谢使用和参与bug回报的广大POE玩家。
-任何关于POB国服版的问题都可以到17173论坛反馈：http://bbs.17173.com/forum.php?mod=viewthread&tid=10923378
+
+# 任何关于POB国服版的问题都可以到17173论坛反馈：http://bbs.17173.com/forum.php?mod=viewthread&tid=10923378
 
 
 

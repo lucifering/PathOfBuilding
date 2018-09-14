@@ -86,3 +86,5 @@
 <File sha1="876508200ac2043ec9af17cc0d34382b990480e9" name="TreeData/PSSkillFrameHighlighted.png" part="tree"/>
 <File sha1="3f9173651fd88f8c9ed0ddf2c939a15e4767b973" name="TreeData/PSStartNodeBackgroundInactive.png" part="tree"/>
 <File sha1="2a281134a7027029d10f0c27c6bf827c0a4bbeb6" name="TreeData/3_0/groups-3.png" part="tree"/>
+<File sha1="a829ca9a839f271f928dc2316e435ddb6137f128" name="TreeData/3_0/skills-3.jpg" part="tree"/>
+<File sha1="e352630219d020ada4546b8cd3ec6817ea785b71" name="TreeData/3_0/skills-disabled-3.jpg" part="tree"/>

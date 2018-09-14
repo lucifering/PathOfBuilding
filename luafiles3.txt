@@ -86,3 +86,5 @@ TreeData/PSSkillFrameActive.png
 TreeData/PSSkillFrameHighlighted.png
 TreeData/PSStartNodeBackgroundInactive.png
 TreeData/3_0/groups-3.png
+TreeData/3_0/skills-3.jpg
+TreeData/3_0/skills-disabled-3.jpg

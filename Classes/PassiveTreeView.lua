@@ -301,10 +301,7 @@ function PassiveTreeViewClass:Draw(build, viewPort, inputEvents)
 				s=string.gsub(s, "%%", "_")
 				 
 
-local f=io.open("2.txt","a+")
-f:write("Classes"..s.."\r\n")
-f:flush()
-f:close()
+ 
 
 
 				self:DrawAsset(tree.assets["Classes"..s], scrX, scrY, scale)

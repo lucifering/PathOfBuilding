@@ -5,7 +5,7 @@ Update/
 Settings.xml
 *.cfg
 *.json
-TreeData/
+
 Builds/
 Export/Bases/*.lua
 Export/Skills/*.lua

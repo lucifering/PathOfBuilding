@@ -20,6 +20,8 @@ local function downloadFileText(url)
 		local text = ""
 		local easy = curl.easy()
 		easy:setopt_url(url)
+		easy:setopt_httpheader({ "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:33.0) Gecko/20100101 Firefox/33.0"  })
+		
 		easy:setopt(curl.OPT_ACCEPT_ENCODING, "")
 		if proxyURL then
 			easy:setopt(curl.OPT_PROXY, proxyURL)

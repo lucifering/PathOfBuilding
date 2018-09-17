@@ -1775,6 +1775,7 @@ local specialModList = {
 	["近期内你的技能若打出过暴击，则每有 1 个暴击球，就会每秒受到 (%d+) 闪电伤害"]= function(num) return {  mod("LightningDegen", "BASE", num,{ type = "Multiplier", var = "PowerCharge" },{ type = "Condition", var = "CritRecently" }) } end, 
 	["低血时，法术伤害格挡几率额外 %+(%d+)%%"]= function(num) return {  mod("SpellBlockChance", "BASE", num, { type = "Condition", var = "LowLife" }   ) } end, 
 	["【冰川之刺】的 (%d+)%% 物理伤害转换为冰霜伤害"]= function(num)  return {  mod("PhysicalDamageConvertToCold", "BASE", tonumber(num),{ type = "SkillName", skillName ="冰川之刺" })  } end, 
+	["获得 (%d+) 级的主动技能【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

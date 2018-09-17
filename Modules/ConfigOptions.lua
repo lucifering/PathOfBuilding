@@ -42,21 +42,21 @@ return {
 	-- Section: Skill-specific options
 { section = "技能选项", col = 2 },
 { label = "【鸟之势】:", ifSkill = "鸟之势" },
-{ var = "aspectOfTheAvianAviansMight", type = "check", label = "有【鸟之力量】buff?", ifSkill = "鸟之力量", apply = function(val, modList, enemyModList)
+{ var = "aspectOfTheAvianAviansMight", type = "check", label = "有【鸟之力量】buff?", ifSkill = "鸟之势", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:AviansMightActive", "FLAG", true, "Config")
 	end },
-{ var = "aspectOfTheAvianAviansFlight", type = "check", label = "有【鸟之斗魄】buff?", ifSkill = "鸟之斗魄", apply = function(val, modList, enemyModList)
+{ var = "aspectOfTheAvianAviansFlight", type = "check", label = "有【鸟之斗魄】buff?", ifSkill = "鸟之势", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:AviansFlightActive", "FLAG", true, "Config")
 	end },
 { label = "【猫之势】:", ifSkill = "猫之势" },
-{ var = "aspectOfTheCatCatsStealth", type = "check", label = "有【猫之隐匿】buff?", ifSkill = "猫之隐匿", apply = function(val, modList, enemyModList)
+{ var = "aspectOfTheCatCatsStealth", type = "check", label = "有【猫之隐匿】buff?", ifSkill = "猫之势", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:CatsStealthActive", "FLAG", true, "Config")
 	end },
-{ var = "aspectOfTheCatCatsAgility", type = "check", label = "有【猫之敏捷】buff?", ifSkill = "猫之敏捷", apply = function(val, modList, enemyModList)
+{ var = "aspectOfTheCatCatsAgility", type = "check", label = "有【猫之敏捷】buff?", ifSkill = "猫之势", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:CatsAgilityActive", "FLAG", true, "Config")
 	end },
 { label = "【蟹之势】:", ifSkill = "蟹之势" },
-{ var = "overrideCrabBarriers", type = "count", label = "# 【深海屏障】数量(如果不是最大层的话):", ifSkill = "深海屏障", apply = function(val, modList, enemyModList)
+{ var = "overrideCrabBarriers", type = "count", label = "# 【深海屏障】数量(如果不是最大层的话):", ifSkill = "蟹之势", apply = function(val, modList, enemyModList)
 		modList:NewMod("CrabBarriers", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" })
 	end },
 { label = "【蛛之势】:", ifSkill = "蛛之势" },

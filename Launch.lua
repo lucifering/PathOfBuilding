@@ -13,7 +13,7 @@ local launch = { }
 SetMainObject(launch)
 
 function launch:OnInit()
-	self.devMode = false
+	self.devMode = true
 	self.versionNumber = "?"
 	self.versionBranch = "?"
 	self.versionPlatform = "?"

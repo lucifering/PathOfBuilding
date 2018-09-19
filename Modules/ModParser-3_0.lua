@@ -901,6 +901,10 @@ local modTagList = {
 	["近期内你若没被击中后受到伤害，则"] = { tag = { type = "Condition", var = "BeenHitRecently", neg = true } }, 
 	["近期内你若格挡过攻击伤害，则"] = { tag = { type = "Condition", var = "BlockedAttackRecently" } }, --备注：if you[' ]h?a?ve blocked an attack recently
 	["近期内你若格挡过法术，"] = { tag = { type = "Condition", var = "BlockedSpellRecently" } }, --备注：if you[' ]h?a?ve blocked a spell recently
+	["装备的护盾上每有 (%d+) 点护甲，便 "] = function(num) return { tag = { type = "PerStat", stat = "ArmourOnWeapon 2", div = num } } end, 
+	["装备的护盾上每有 (%d+) 点闪避值，便 "] = function(num) return { tag = { type = "PerStat", stat = "EvasionOnWeapon 2", div = num } } end, 
+	["装备的护盾上每有 (%d+) 点最大能量护盾，便 "] = function(num) return { tag = { type = "PerStat", stat = "EnergyShieldOnWeapon 2", div = num } } end, 
+	["近期内你每吞噬过 1 个灵柩，"] = { tag = { type = "Condition", var = "ConsumedCorpseRecently" } }, --备注：if you[' ]h?a?ve 
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -1012,7 +1016,7 @@ local modTagList = {
 	["身上未装备已腐化的物品时，"] = { tag = { type = "MultiplierThreshold", var = "CorruptedItem", threshold = 0, upper = true } }, --备注：if no equipped items are corrupted
 	["if all worn items are corrupted"] = { tag = { type = "MultiplierThreshold", var = "NonCorruptedItem", threshold = 0, upper = true } },
 	["所有身上装备的物品皆为已腐化时，"] = { tag = { type = "MultiplierThreshold", var = "NonCorruptedItem", threshold = 0, upper = true } }, --备注：if all equipped items are corrupted
-	["if equipped shield has at least (%d+)%% chance to block"] = function(num) return { tag = { type = "StatThreshold", stat = "ShieldBlockChance", threshold = num } } end,
+	["装备的护盾格挡几率若不低于 (%d+)%%，则"] = function(num) return { tag = { type = "StatThreshold", stat = "ShieldBlockChance", threshold = num } } end, --备注：if equipped shield has at least (%d+)%% chance to block
 	["if you have (%d+) primordial items socketed or equipped"] = function(num) return { tag = { type = "MultiplierThreshold", var = "PrimordialItem", threshold = num } } end,
 	-- Player status conditions
 	["低血时"] = { tag = { type = "Condition", var = "LowLife" } }, --备注：wh[ie][ln]e? on low life
@@ -1196,6 +1200,7 @@ local specialModList = {
 	["双持时攻击格挡率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num, { type = "Condition", var = "DualWielding" } )  } end,  
 	["双持或持盾牌时攻击格挡率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", varList = { "DualWielding", "UsingShield" } })  } end,  
 	["近期内你若因被击中而受伤，攻击格挡率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "BeenHitRecently" } )  } end,  
+	["(%d+)%% 攻击伤害格挡几率"] = function(num) return {  mod("BlockChance", "BASE", num)  } end, 
 	["近期内你若有被击中，则每秒回复 ([%d%.]+)%% 生命和魔力"] = function(num) return { 
 	mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "BeenHitRecently" } ),
 	mod("ManaRegenPercent", "BASE", num,{ type = "Condition", var = "BeenHitRecently" } ),
@@ -1714,6 +1719,9 @@ local specialModList = {
 	["近期内你若没有被击中，则获得【狂热誓言】"] = { mod("Keystone", "LIST", "狂热誓言", { type = "Condition", var = "BeenHitRecently", neg = true }) }, --备注：you have zealot's oath if you haven't been hit recently
 	["魔像总伤害额外降低 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "MORE", -num) },{ type = "SkillType", skillType = SkillType.Golem })  } end,
 	["魔像总生命额外降低 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "MORE", -num) },{ type = "SkillType", skillType = SkillType.Golem })  } end,
+	["魔像的总伤害额外降低 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "MORE", -num) },{ type = "SkillType", skillType = SkillType.Golem })  } end,
+	["魔像的总生命额外提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "MORE", -num) },{ type = "SkillType", skillType = SkillType.Golem })  } end,
+	["最多可同时召唤额外 (%d) 个魔像"] = function(num) return { mod("ActiveGolemLimit", "BASE", num) } end,
 	["你和周围友军的伤害提高 (%d+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("Damage", "INC", num) }) } end, 
 	["你和周围友军移动速度提高 (%d+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("MovementSpeed", "INC", num) }) } end, 
 	["你和周围友军的移动速度提高 (%d+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("MovementSpeed", "INC", num) }) } end, 
@@ -1776,6 +1784,29 @@ local specialModList = {
 	["低血时，法术伤害格挡几率额外 %+(%d+)%%"]= function(num) return {  mod("SpellBlockChance", "BASE", num, { type = "Condition", var = "LowLife" }   ) } end, 
 	["【冰川之刺】的 (%d+)%% 物理伤害转换为冰霜伤害"]= function(num)  return {  mod("PhysicalDamageConvertToCold", "BASE", tonumber(num),{ type = "SkillName", skillName ="冰川之刺" })  } end, 
 	["获得 (%d+) 级的主动技能【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end, 
+	["【(.+)】不保留魔力"] = function( _,skill) return { mod("SkillData", "LIST", { key = "manaCostForced", value = 0 }, { type = "SkillName", skillName = skill }) } end,
+	["装备的护盾格挡几率若不低于 (%d+)%%，则法术伤害的 ([%d%.]+)%% 转化为生命偷取"] = function(num, _,num2) return {  mod("DamageLifeLeech", "BASE", tonumber(num2),nil, ModFlag.Spell,{ type = "StatThreshold", stat = "ShieldBlockChance", threshold = tonumber(num) }) } end,
+	["插入苍白之凝珠宝时，召唤生物的命中值 %+(%d+)"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Accuracy", "BASE", num) }, { type = "Condition", var = "Have苍白之凝珠宝In{SlotName}" }) } end,
+	["周围敌人的所有抗性提高 (%-%d+)%%"] = function(num) return { 
+	mod("EnemyModifier", "LIST", { mod = mod("ChaosResist", "BASE", num) }),
+	mod("EnemyModifier", "LIST", { mod = mod("ElementalResist", "BASE", num) }),
+	 } end, 
+	["每个红色插槽可为你和周围友军附加 (%d+) %- (%d+) 基础火焰伤害"]= function(_,num1,num2) return { 	
+			mod("FireMin", "BASE", tonumber(num1), { type = "Multiplier", var = "RedSocketIn{SlotName}" }),
+			mod("FireMax", "BASE", tonumber(num2), { type = "Multiplier", var = "RedSocketIn{SlotName}" }) 
+		}end,
+	["每个绿色插槽可为你和周围友军附加 (%d+) %- (%d+) 基础冰霜伤害"]= function(_,num1,num2) return { 	
+			mod("ColdMin", "BASE", tonumber(num1), { type = "Multiplier", var = "GreenSocketIn{SlotName}" }),
+			mod("ColdMax", "BASE", tonumber(num2), { type = "Multiplier", var = "GreenSocketIn{SlotName}" }) 
+		}end,
+	["每个蓝色插槽可为你和周围友军附加 (%d+) %- (%d+) 基础闪电伤害"]= function(_,num1,num2) return { 	
+			mod("LightningMin", "BASE", tonumber(num1), { type = "Multiplier", var = "BlueSocketIn{SlotName}" }),
+			mod("LightningMax", "BASE", tonumber(num2), { type = "Multiplier", var = "BlueSocketIn{SlotName}" }) 
+		}end,
+	["每个白色插槽可为你和周围友军附加 (%d+) %- (%d+) 基础混沌伤害"]= function(_,num1,num2) return { 	
+			mod("ChaosMin", "BASE", tonumber(num1), { type = "Multiplier", var = "WhiteSocketIn{SlotName}" }),
+			mod("ChaosMax", "BASE", tonumber(num2), { type = "Multiplier", var = "WhiteSocketIn{SlotName}" }) 
+		}end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded
@@ -1946,7 +1977,7 @@ minus = -tonumber(minus)
 	["你的攻击和法术有 (%d+)%% 几率获得额外混沌伤害，其数值等同于非混沌伤害的 (%d+)%%"] = function(num, _, perc) return { mod("NonChaosDamageGainAsChaos", "BASE", num / 100 * tonumber(perc)) } end, --备注：your hits have (%d+)%% chance to gain (%d+)%% of non%-chaos damage as extra chaos damage
 	["移动技能不消耗魔力"] = { mod("ManaCost", "MORE", -100, nil, 0, KeywordFlag.Movement) }, --备注：movement skills cost no mana
 	-- Item local modifiers
-	["has no sockets"] = { flag("NoSockets") },
+	["没有插槽"] = { flag("NoSockets") }, --备注：has no sockets
 	["有 (%d+) 个插槽"] = function(num) return { mod("SocketCount", "BASE", num) } end, --备注：has (%d+) sockets?
 	["拥有 (%d+) 个深渊插槽"] = function(num) return { mod("AbyssalSocketCount", "BASE", num) } end, --备注：has (%d+) abyssal sockets?
 	["无法造成物理伤害"] = { mod("WeaponData", "LIST", { key = "PhysicalMin" }), mod("WeaponData", "LIST", { key = "PhysicalMax" }), mod("WeaponData", "LIST", { key = "PhysicalDPS" }) }, --备注：no physical damage
@@ -2100,7 +2131,7 @@ minus = -tonumber(minus)
 	["无法获得友方光环效果"] = { flag("AlliesAurasCannotAffectSelf") }, --备注：allies' aura buffs do not affect you
 	["可以对敌人施放 1 个额外诅咒"] = { mod("EnemyCurseLimit", "BASE", 1) }, --备注：enemies can have 1 additional curse
 	["周围敌人被诅咒的效果提高 (%d+)%%"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("CurseEffectOnSelf", "INC", num) }) } end, --备注：nearby enemies have (%d+)%% increased effect of curses on them
-	["nearby enemies have an additional (%d+)%% chance to receive a critical strike"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("SelfExtraCritChance", "BASE", num) }) } end,
+	["周围敌人有额外 (%d+)%% 几率受到暴击"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("SelfExtraCritChance", "BASE", num) }) } end, --备注：nearby enemies have an additional (%d+)%% chance to receive a critical strike
 	["nearby enemies have (%-%d+)%% to all resistances"] = function(num) return {
 		mod("EnemyModifier", "LIST", { mod = mod("ElementalResist", "BASE", num) }),
 		mod("EnemyModifier", "LIST", { mod = mod("ChaosResist", "BASE", num) }) 
@@ -2118,7 +2149,7 @@ minus = -tonumber(minus)
 	} end,
 	["你受到 (%d+) 级【(%D+)】的诅咒"] = function(num, _, name) return { mod("ExtraCurse", "LIST", { skillId = gemIdLookup[name], level = num, applyToPlayer = true }) } end, --备注：you are cursed with level (%d+) (%D+)
 	["受到【脆弱】诅咒时，非满血时被视作低血状态"] = { flag("Condition:LowLife", { type = "Condition", var = "AffectedByVulnerability" }) }, --备注：you count as on low life while you are cursed with vulnerability
-	["if you consumed a corpse recently, you and nearby allies regenerate (%d+)%% of life per second"] = function (num) return { mod("ExtraAura", "LIST", { mod = mod("LifeRegenPercent", "BASE", num) }, { type = "Condition", var = "ConsumedCorpseRecently" }) } end,
+	["近期内你每吞噬过 1 个灵柩，你和周围队友每秒回复 (%d+)%% 生命"] = function (num) return { mod("ExtraAura", "LIST", { mod = mod("LifeRegenPercent", "BASE", num) }, { type = "Condition", var = "ConsumedCorpseRecently" }) } end, --备注：if you consumed a corpse recently, you and nearby allies regenerate (%d+)%% of life per second
 	-- Traps, Mines and Totems
 	["陷阱和地雷造成 (%d+) %- (%d+) 额外物理伤害"] = function(_, min, max) return { mod("PhysicalMin", "BASE", tonumber(min), nil, 0, bor(KeywordFlag.Trap, KeywordFlag.Mine)), mod("PhysicalMax", "BASE", tonumber(max), nil, 0, bor(KeywordFlag.Trap, KeywordFlag.Mine)) } end, --备注：traps and mines deal (%d+)%-(%d+) additional physical damage
 	["traps and mines deal (%d+) to (%d+) additional physical damage"] = function(_, min, max) return { mod("PhysicalMin", "BASE", tonumber(min), nil, 0, bor(KeywordFlag.Trap, KeywordFlag.Mine)), mod("PhysicalMax", "BASE", tonumber(max), nil, 0, bor(KeywordFlag.Trap, KeywordFlag.Mine)) } end,
@@ -2192,7 +2223,7 @@ minus = -tonumber(minus)
 	["(%d+) life gained for each enemy hit if you have used a vaal skill recently"] = function(num) return { mod("LifeOnHit", "BASE", num, { type = "Condition", var = "UsedVaalSkillRecently"}) } end,
 	-- Defences
 	["无法闪避敌人攻击"] = { flag("CannotEvade") }, --备注：cannot evade enemy attacks
-	["cannot block"] = { flag("CannotBlockAttacks"), flag("CannotBlockSpells") },
+	["无法格档"] = { flag("CannotBlockAttacks"), flag("CannotBlockSpells") }, --备注：cannot block
 	["无法格挡攻击"] = { flag("CannotBlockAttacks") }, --备注：cannot block attacks
 	["无法格挡法术"] = { flag("CannotBlockSpells") }, --备注：cannot block spells
 	["无法回复生命"] = { flag("NoLifeRegen") }, --备注：you have no life regeneration
@@ -2577,7 +2608,7 @@ local jewelOtherFuncs = {
 			out:NewMod("PassiveSkillHasNoEffect", "FLAG", true, data.modSource)
 		end
 	end,
-	["Allocated Small Passive Skills in Radius grant nothing"] = function(node, out, data)
+	["范围内配置的小天赋点技能不会提供任何加成"] = function(node, out, data) --备注：Allocated Small Passive Skills in Radius grant nothing
 		if node and node.type == "Normal" then
 			out:NewMod("PassiveSkillHasNoEffect", "FLAG", true, data.modSource)
 		end
@@ -2623,7 +2654,7 @@ local jewelSelfUnallocFuncs = {
 	["范围内若未配置力量，则每 10 点 +5% 攻击和法术暴击伤害加成"] = getPerStat("CritMultiplier", "BASE", 0, "Str", 5 / 10), --备注：+5% to Critical Strike Multiplier per 10 Strength on Unallocated Passives in Radius
 	["范围内若未配置敏捷，则每 10 点 +15 最大魔力"] = getPerStat("Mana", "BASE", 0, "Dex", 15 / 10), --备注：+15 to maximum Mana per 10 Dexterity on Unallocated Passives in Radius
 	["范围内若未配置智慧，则每 10 点 +100 最大命中值"] = getPerStat("Accuracy", "BASE", 0, "Int", 100 / 10), --备注：+100 to Accuracy Rating per 10 Intelligence on Unallocated Passives in Radius
-	["Grants all bonuses of Unallocated Small Passive Skills in Radius"] = function(node, out, data)
+	["范围内未配置的小天赋点技能会提供任何加成"] = function(node, out, data) --备注：Grants all bonuses of Unallocated Small Passive Skills in Radius
 		if node then
 			if node.type == "Normal" then
 				data.modList = data.modList or common.New("ModList")

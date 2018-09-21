@@ -42,11 +42,12 @@ self.controls.accountNameHeader = common.New("LabelControl", {"TOPLEFT",self.con
 	end
 	self.controls.accountName = common.New("EditControl", {"TOPLEFT",self.controls.accountNameHeader,"BOTTOMLEFT"}, 0, 4, 200, 20, main.lastAccountName or "", nil, "%c")
 	self.controls.accountName.pasteFilter = function(text)
-		return text:gsub("[\128-\255]",function(c)
-			return codePointToUTF8(c:byte(1)):gsub(".",function(c)
-				return string.format("%%%X", c:byte(1))
-			end)
-		end)
+		return text
+		--return text:gsub("[\128-\255]",function(c)
+		--	return codePointToUTF8(c:byte(1)):gsub(".",function(c)
+		--		return string.format("%%%X", c:byte(1))
+		--	end)
+		--end)
 	end
 self.controls.accountNameGo = common.New("ButtonControl", {"LEFT",self.controls.accountName,"RIGHT"}, 8, 0, 60, 20, "开始", function()
 		self.controls.sessionInput.buf = ""

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PoBVersion>
-	<Version number="1.4.108.4" platform="win32" branch="master"/>
+	<Version number="1.4.108.5" platform="win32" branch="master"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/runtime-win32.zip" part="runtime" platform="win32"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/" part="program"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/tree.zip" part="tree"/>
@@ -20,7 +20,7 @@
 <File sha1="877dc5d5f26a302c0367cf05e7e7a4cac4eb72e6" name="Classes/EditControl.lua" part="program"/>
 <File sha1="afa58b85c876e107edcd49e4a01c06a981843ff8" name="Classes/FolderListControl.lua" part="program"/>
 <File sha1="74962a54d07ae739fd1589412dcf5f84ee7598e0" name="Classes/GemSelectControl.lua" part="program"/>
-<File sha1="7daad25913dba987fdbb49c21846ac68c1f9bf1c" name="Classes/ImportTab.lua" part="program"/>
+<File sha1="c2d7eae6e07bb1c475d0d8b0646b2cedbc52512e" name="Classes/ImportTab.lua" part="program"/>
 <File sha1="cf34cbd506f738a1fd91e41be03890e0c4c3dd9c" name="Classes/Item.lua" part="program"/>
 <File sha1="cf1a15cc8d00221090be0cc17400caabae4d77b5" name="Classes/ItemDBControl.lua" part="program"/>
 <File sha1="0a377e4eb325c5a47b7291fb45c401e19c59b302" name="Classes/ItemListControl.lua" part="program"/>
@@ -187,7 +187,7 @@
 <File sha1="3a38a6889fb0e1b4c8cbecf35b3751a5765b4357" name="Modules/ModParser-3_0.lua" part="program"/>
 <File sha1="cb75f9e44070a209e5dcec3ad550f8e31f22162f" name="Modules/ModTools.lua" part="program"/>
 <File sha1="9850e60ca692586a8c662b46e440063e58314349" name="Classes/AboutTab.lua" part="program"/>
-<File sha1="bffe8e9c53901433eacfbdb2bfdbbb56a5610f05" name="changelog.txt" part="program"/>
+<File sha1="cf2a1301202c32bd995e010f0bd0a26a630dd9fe" name="changelog.txt" part="program"/>
 <File sha1="21f4793ed37146332fc5d73d5dadf88d88af5fd1" name="Launch.dl" part="program"/>
 <File sha1="c345cdcf374d271411aa424ab150c0edbb5a362d" name="Assets/game_ui_small.png" part="runtime"/>
 <File sha1="97b020d8213e09c313536a91528ba5d5ebc4ca0a" name="Assets/patreon_logo.png" part="runtime"/>
@@ -285,6 +285,5 @@
 <File sha1="a829ca9a839f271f928dc2316e435ddb6137f128" name="TreeData/3_0/skills-3.jpg" part="tree"/>
 <File sha1="e352630219d020ada4546b8cd3ec6817ea785b71" name="TreeData/3_0/skills-disabled-3.jpg" part="tree"/>
 
-	 
 	 
 </PoBVersion>

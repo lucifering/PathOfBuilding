@@ -2156,7 +2156,7 @@ minus = -tonumber(minus)
 	["最多同时可额外放置 (%d+) 个陷阱"] = function(num) return { mod("ActiveTrapLimit", "BASE", num) } end, --备注：can have up to (%d+) additional traps? placed at a time
 	["最多同时可额外放置 (%d+) 个遥控地雷"] = function(num) return { mod("ActiveMineLimit", "BASE", num) } end, --备注：can have up to (%d+) additional remote mines? placed at a time
 	["最多同时可以额外召唤 (%d+) 个图腾"] = function(num) return { mod("ActiveTotemLimit", "BASE", num) } end, --备注：can have up to (%d+) additional totems? summoned at a time
-	["攻击技能可以额外召唤 1 个图腾"] = function(num) return { mod("ActiveTotemLimit", "BASE", num, nil, 0, KeywordFlag.Attack) } end, --备注：attack skills can have (%d+) additional totems? summoned at a time
+	["攻击技能可以额外召唤 (%d+) 个图腾"] = function(num) return { mod("ActiveTotemLimit", "BASE", num, nil, 0, KeywordFlag.Attack) } end, --备注：attack skills can have (%d+) additional totems? summoned at a time
 	["每有 (%d+) 点敏捷，你的攻城炮台图腾数量上限便提高 1 个"] = function(num) return { mod("ActiveTotemLimit", "BASE", 1, { type = "SkillName", skillName = "攻城炮台" }, { type = "PerStat", stat = "Dex", div = num }) } end, --备注：can [hs][au][vm][em]o?n? 1 additional siege ballista totem per (%d+) dexterity
 	["图腾发射 (%d+) 个额外投射物"] = function(num) return { mod("ProjectileCount", "BASE", num, nil, 0, KeywordFlag.Totem) } end, --备注：totems fire (%d+) additional projectiles
 	["你偷取生命，数值等同于你的图腾造成伤害的 ([%d%.]+)%%"] = function(num) return { mod("DamageLifeLeechToPlayer", "BASE", num, nil, 0, KeywordFlag.Totem) } end, --备注：([%d%.]+)%% of damage dealt by y?o?u?r? ?totems is leeched to you as life

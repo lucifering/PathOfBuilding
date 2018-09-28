@@ -277,7 +277,7 @@ local custom = line:match("{custom}")
 				line = line:gsub("%b{}", "")
 				local rangedLine
 				--lucifer
-if line:match("%(%d+%-%d+ %- %d+%-%d+%)")  or line:match("%(%-?[%d%.]+ %- %-?[%d%.]+%)") or line:match("%(%-?[%d%.]+%-[%d%.]+%)") and line:match(":")==nil and line:match("^Requires")==nil then
+if (line:match("%(%d+%-%d+ %- %d+%-%d+%)") or line:match("%(%-?[%d%.]+ %- %-?[%d%.]+%)") or line:match("%(%-?[%d%.]+%-[%d%.]+%)")) and line:match(":")==nil  and line:match("^Requires")==nil then
 					rangedLine = itemLib.applyRange(line, 1)
 				end
 				local modList, extra = modLib.parseMod[self.targetVersion](rangedLine or line)

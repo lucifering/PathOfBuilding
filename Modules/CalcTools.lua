@@ -59,6 +59,7 @@ end
 
 -- Check if given support skill can support the given skill types
 function calcLib.canGrantedEffectSupportTypes(grantedEffect, skillTypes)
+if grantedEffect.excludeSkillTypes ==nil then return false end --lucifer 不知道是引爆地雷还是时空之门的问题，遙控地雷也是
 	for _, skillType in pairs(grantedEffect.excludeSkillTypes) do
 		if skillTypes[skillType] then
 			return false

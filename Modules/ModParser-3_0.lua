@@ -1400,7 +1400,7 @@ local specialModList = {
 	["插槽内的技能石被 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]   or gemIdLookup[support:gsub("^提高","增加").."(辅)"] or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
 	["此物品上的诅咒技能石受到 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", 
 	{ skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]  or "Unknown", level = num },
-	{ type = "SocketedIn", slotName = "{SlotName}", keyword = "curse" }) } end, 
+	{ type = "SocketedIn", slotName = "{SlotName}" }) } end, 
 	["([%d%.]+)%% 额外物理伤害减伤"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num)  } end, 
 	["受到击中冰霜伤害的 (%d+)%% 转为火焰伤害"] = function(num) return {  mod("ColdDamageTakenAsFire", "BASE", num)  } end,
 	["受到击中冰霜伤害的 (%d+)%% 转为闪电伤害"] = function(num) return {  mod("ColdDamageTakenAsLightning", "BASE", num)  } end,

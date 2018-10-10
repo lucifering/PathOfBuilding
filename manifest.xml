@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PoBVersion>
-	<Version number="1.4.108.8" platform="win32" branch="master"/>
+	<Version number="1.4.108.9" platform="win32" branch="master"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/runtime-win32.zip" part="runtime" platform="win32"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/" part="program"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/tree.zip" part="tree"/>
-	  
 	  
 	  <File sha1="4f17937f2b37784e169a3792b235f2a0a3961e61" name="UpdateApply.lua" part="program"/>
 <File sha1="f2a1bb8936c23ddfa31871f278ac3a5453a39b51" name="UpdateCheck.lua" part="program"/>
@@ -124,7 +123,7 @@
 <File sha1="94b09d3155ab43a400571b36b3bd5ff8d02f35ea" name="Data/3_0/Gems.lua" part="program"/>
 <File sha1="a39a287828b8fe0a04da2ed9e282d2f2eb7ea198" name="Data/3_0/Minions.lua" part="program"/>
 <File sha1="2c1456797cd1defb47df9158ef048e2a81e14f0a" name="Data/3_0/Misc.lua" part="program"/>
-<File sha1="3986c56b659d57b7a29b0510e13a2efad1193b33" name="Data/3_0/ModCache.lua" part="program"/>
+<File sha1="36d3e0aaef06e9291649e9e4db871ce650f1bbb4" name="Data/3_0/ModCache.lua" part="program"/>
 <File sha1="480c2e1d87f01b601688876fa3878b0f0c14e179" name="Data/3_0/ModFlask.lua" part="program"/>
 <File sha1="b72fbb005643d1c13ffd4b1dee5c0beb790a3471" name="Data/3_0/ModItem.lua" part="program"/>
 <File sha1="d3c58fb3e465b434886a280229ddbb5ad22387dd" name="Data/3_0/ModJewel.lua" part="program"/>
@@ -137,7 +136,7 @@
 <File sha1="417de06de965b9402c5435154eedafbf9839faf8" name="Data/3_0/Skills/act_str.lua" part="program"/>
 <File sha1="2e55a350cf880ea006252fd580aa10fd1d7023cc" name="Data/3_0/Skills/glove.lua" part="program"/>
 <File sha1="a09de09f9724289aedd880b65887a841186fcfb7" name="Data/3_0/Skills/minion.lua" part="program"/>
-<File sha1="6fe1b2aff5c8f3a68316c6f2c347c8003b3d4280" name="Data/3_0/Skills/other.lua" part="program"/>
+<File sha1="5bf002e08b34ff09ef6d83c3941c6d785daaf587" name="Data/3_0/Skills/other.lua" part="program"/>
 <File sha1="004e2d541bf688fa7446335bc303971794657a03" name="Data/3_0/Skills/spectre.lua" part="program"/>
 <File sha1="847495e0d7b14155dbea1bd0f69428e2c50bdc94" name="Data/3_0/Skills/sup_dex.lua" part="program"/>
 <File sha1="77547e40a4d90d8febedfc0e9ab22d6169bdef89" name="Data/3_0/Skills/sup_int.lua" part="program"/>
@@ -185,10 +184,10 @@
 <File sha1="2a37229e7966f9b97393f32c5f3b4caa942b7a0e" name="Modules/ItemTools.lua" part="program"/>
 <File sha1="4cf5365b248d1825aa191f6a1dd0655bd60d1256" name="Modules/Main.lua" part="program"/>
 <File sha1="64693eb3e1d7d356b8b50bdc61a622a6e3bb33c2" name="Modules/ModParser-2_6.lua" part="program"/>
-<File sha1="c795727c72cb1365b298ec046d2a1f34e0850510" name="Modules/ModParser-3_0.lua" part="program"/>
+<File sha1="dc301f8d9752b7f934d15db738c8e0a8976377fa" name="Modules/ModParser-3_0.lua" part="program"/>
 <File sha1="cb75f9e44070a209e5dcec3ad550f8e31f22162f" name="Modules/ModTools.lua" part="program"/>
 <File sha1="9850e60ca692586a8c662b46e440063e58314349" name="Classes/AboutTab.lua" part="program"/>
-<File sha1="402db8eb3314597497386fdf233eaf0aa78d61a3" name="changelog.txt" part="program"/>
+<File sha1="5f66b451baa0c82ac24b085f7dc8d0886535981d" name="changelog.txt" part="program"/>
 <File sha1="21f4793ed37146332fc5d73d5dadf88d88af5fd1" name="Launch.dl" part="program"/>
 
 <File sha1="c345cdcf374d271411aa424ab150c0edbb5a362d" name="Assets/game_ui_small.png" part="runtime"/>
@@ -196,7 +195,6 @@
 <File sha1="4ebea5031fd03771a9b637a3fdccf394344e4782" name="Assets/range_guide.png" part="runtime"/>
 <File sha1="e7ee7e5b6388facb7bf568517ecc401590757df7" name="Assets/ring.png" part="runtime"/>
 <File sha1="9a320bfe629b1cf3f14fc77fbbf2508d0a5b2841" name="Assets/small_ring.png" part="runtime"/>
-
 <File sha1="ee02b7e6e521896c498d8b222b1efab04538eaa7" name="TreeData/2_6/tree.lua" part="tree"/>
 <File sha1="27542b65bb84eb7b134ffe3ed06b4931009c8a10" name="TreeData/3_0/tree.lua" part="tree"/>
 <File sha1="8f8a0c2f6792a505dbc7b66570f28d409d8ad4af" name="TreeData/2_6/skill_sprite-active-3-3e73c4c4534433ecfc340c7287093bd5.png" part="tree"/>

@@ -5,7 +5,7 @@
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/" part="program"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/tree.zip" part="tree"/>
 	  
-	  <File sha1="4f17937f2b37784e169a3792b235f2a0a3961e61" name="UpdateApply.lua" part="program"/>
+	<File sha1="4f17937f2b37784e169a3792b235f2a0a3961e61" name="UpdateApply.lua" part="program"/>
 <File sha1="f2a1bb8936c23ddfa31871f278ac3a5453a39b51" name="UpdateCheck.lua" part="program"/>
 <File sha1="dbacb79bd5e809ef7b639c8d36b745da80f7f411" name="Classes/BuildListControl.lua" part="program"/>
 <File sha1="f85e8b60ff9bb41a3cc4ba8044f7a49163fdedd3" name="Classes/ButtonControl.lua" part="program"/>
@@ -123,7 +123,7 @@
 <File sha1="94b09d3155ab43a400571b36b3bd5ff8d02f35ea" name="Data/3_0/Gems.lua" part="program"/>
 <File sha1="a39a287828b8fe0a04da2ed9e282d2f2eb7ea198" name="Data/3_0/Minions.lua" part="program"/>
 <File sha1="2c1456797cd1defb47df9158ef048e2a81e14f0a" name="Data/3_0/Misc.lua" part="program"/>
-<File sha1="3986c56b659d57b7a29b0510e13a2efad1193b33" name="Data/3_0/ModCache.lua" part="program"/>
+<File sha1="66bff245551463ac00f6920dae7e3e56c25b75d7" name="Data/3_0/ModCache.lua" part="program"/>
 <File sha1="480c2e1d87f01b601688876fa3878b0f0c14e179" name="Data/3_0/ModFlask.lua" part="program"/>
 <File sha1="b72fbb005643d1c13ffd4b1dee5c0beb790a3471" name="Data/3_0/ModItem.lua" part="program"/>
 <File sha1="d3c58fb3e465b434886a280229ddbb5ad22387dd" name="Data/3_0/ModJewel.lua" part="program"/>
@@ -189,12 +189,12 @@
 <File sha1="9850e60ca692586a8c662b46e440063e58314349" name="Classes/AboutTab.lua" part="program"/>
 <File sha1="5f66b451baa0c82ac24b085f7dc8d0886535981d" name="changelog.txt" part="program"/>
 <File sha1="21f4793ed37146332fc5d73d5dadf88d88af5fd1" name="Launch.dl" part="program"/>
-
 <File sha1="c345cdcf374d271411aa424ab150c0edbb5a362d" name="Assets/game_ui_small.png" part="runtime"/>
 <File sha1="97b020d8213e09c313536a91528ba5d5ebc4ca0a" name="Assets/patreon_logo.png" part="runtime"/>
 <File sha1="4ebea5031fd03771a9b637a3fdccf394344e4782" name="Assets/range_guide.png" part="runtime"/>
 <File sha1="e7ee7e5b6388facb7bf568517ecc401590757df7" name="Assets/ring.png" part="runtime"/>
 <File sha1="9a320bfe629b1cf3f14fc77fbbf2508d0a5b2841" name="Assets/small_ring.png" part="runtime"/>
+
 <File sha1="ee02b7e6e521896c498d8b222b1efab04538eaa7" name="TreeData/2_6/tree.lua" part="tree"/>
 <File sha1="27542b65bb84eb7b134ffe3ed06b4931009c8a10" name="TreeData/3_0/tree.lua" part="tree"/>
 <File sha1="8f8a0c2f6792a505dbc7b66570f28d409d8ad4af" name="TreeData/2_6/skill_sprite-active-3-3e73c4c4534433ecfc340c7287093bd5.png" part="tree"/>

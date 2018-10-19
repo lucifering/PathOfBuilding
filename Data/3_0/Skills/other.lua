@@ -32,7 +32,7 @@ skills["Melee"] = {
 	},
 }
 skills["GemDetonateMines"] = {
-	name = "遥控地雷",
+	name = "引爆地雷",
 	color = 4,
 	description = "引爆所有你放置的遥控地雷.",
 	skillTypes = { [2] = true, [17] = true, [18] = true, [36] = true, },

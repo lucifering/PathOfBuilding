@@ -32,6 +32,7 @@ local formList = {
 	["攻击和法术附加 (%d+)%-(%d+) 基础([^\\x00-\\xff]*)伤害"] = "DMGBOTH", --备注：adds (%d+) to (%d+) (%a+) damage to attacks and spells
 	["附加 (%d+)%-(%d+) 基础([^\\x00-\\xff]*)伤害"] = "DMG",
 	["额外造成 (%d+) %- (%d+) ([^\\x00-\\xff]*)伤害"] = "DMG",
+	["造成 (%d+) %- (%d+) ([^\\x00-\\xff]*)伤害"] = "DMG",
 	["法术附加 (%d+) %- (%d+) ([^\\x00-\\xff]*)伤害"] = "DMGSPELLS", --备注：adds (%d+)%-(%d+) (%a+) spell damage
 	["增加 (%d+)%%"] = "INC",
 	["附加 (%d+) %- (%d+) ([^\\x00-\\xff]*)伤害"] = "DMG",
@@ -89,6 +90,7 @@ local formList = {
 -- Map of modifier names
 local modNameList = {
 	--【中文化程序额外添加开始】
+	["不被攻击击中"] = "AttackDodgeChance", 
 	["攻击和法术暴击伤害加成"] = {"CritMultiplier"}, --备注：critical strike multiplier -- 这个需要提到前面来
 	["攻击和法术基础暴击伤害加成"] = {"CritMultiplier", ModFlag.Hit}, --备注：critical strike multiplier -- 
 	["攻击和法术暴击伤害"] = {"CritMultiplier", ModFlag.Hit}, --备注：critical strike multiplier -- 
@@ -829,6 +831,7 @@ local modTagList = {
 	["护体状态下，"] = { tag = { type = "Condition", var = "Fortify" } }, --备注：while you have fortify	
 	["近期内你若使用过移动技能，则"] = { tag = { type = "Condition", var = "UsedMovementSkillRecently" } }, --备注：if you[' ]h?a?ve used a movement skill recently
 	["每个暴击球"] = { tag = { type = "Multiplier", var = "PowerCharge" } }, --备注：per power charge
+	["每个暴击球造成"] = { tag = { type = "Multiplier", var = "PowerCharge" } },
 	["流血敌人时"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Bleeding" }, keywordFlags = KeywordFlag.Hit }, --备注：against bleeding enemies
 	["被点燃敌人时"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Ignited" }, keywordFlags = KeywordFlag.Hit }, --备注：to ignited enemies
 	["被点燃的敌人时，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Ignited" }, keywordFlags = KeywordFlag.Hit }, --备注：to ignited enemies
@@ -905,6 +908,18 @@ local modTagList = {
 	["装备的护盾上每有 (%d+) 点闪避值，便 "] = function(num) return { tag = { type = "PerStat", stat = "EvasionOnWeapon 2", div = num } } end, 
 	["装备的护盾上每有 (%d+) 点最大能量护盾，便 "] = function(num) return { tag = { type = "PerStat", stat = "EnergyShieldOnWeapon 2", div = num } } end, 
 	["近期内你每吞噬过 1 个灵柩，"] = { tag = { type = "Condition", var = "ConsumedCorpseRecently" } }, --备注：if you[' ]h?a?ve 
+	["每有一个狂怒球，可使你"] = { tag = { type = "Multiplier", var = "FrenzyCharge" } }, 
+	["每有一个耐力球，可使你"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
+	["每有一个暴击球，可使你"] = { tag = { type = "Multiplier", var = "PowerCharge" } }, 
+	["每有一个狂怒球，"] = { tag = { type = "Multiplier", var = "FrenzyCharge" } }, 
+	["每有一个耐力球，"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
+	["每有一个暴击球，"] = { tag = { type = "Multiplier", var = "PowerCharge" } }, 
+	["每有一个狂怒球，便"] = { tag = { type = "Multiplier", var = "FrenzyCharge" } }, 
+	["每有一个耐力球，便"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
+	["每有一个暴击球，便"] = { tag = { type = "Multiplier", var = "PowerCharge" } }, 
+	["每有一个狂怒求，"] = { tag = { type = "Multiplier", var = "FrenzyCharge" } }, 
+	["每有一个耐力求，"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
+	["每有一个暴击求，"] = { tag = { type = "Multiplier", var = "PowerCharge" } }, 
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -1193,6 +1208,10 @@ local specialModList = {
 	--负数范围特殊处理
 	["提高 ([%+%-]?%d+)%% 药剂充能消耗"]= function(num) return {  mod("FlaskChargesUsed", "INC", num)  } end,  
 	--fu*k TX 格挡率用“提高”字样
+	["药剂持续期间，攻击伤害格挡几率 ([%+%-]?%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,  
+	["药剂持续期间，攻击格挡率提高 ([%+%-]?%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,  
+	["药剂持续期间，法术伤害格挡几率提高 ([%+%-]?%d+)%%"] = function(num) return {  mod("SpellBlockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,  
+	["药剂持续期间，法术格挡率提高 ([%+%-]?%d+)%%"] = function(num) return {  mod("SpellBlockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,  
 	["持长杖时，攻击格挡率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "UsingStaff" })  } end,  
 	["持长杖时法术伤害格挡几率提高 (%d+)%%"] = function(num) return {  mod("SpellBlockChance", "BASE", num,{ type = "Condition", var = "UsingStaff" })  } end,  
 	["持盾时攻击格挡率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num, { type = "Condition", var = "UsingShield" } )  } end,  
@@ -1510,7 +1529,6 @@ local specialModList = {
 	["近距离用弓击中后的总伤害额外提高 (%d+)%%"] = function(num) return {  mod("Damage", "MORE", num,nil,bor(ModFlag.Bow, ModFlag.Hit) , { type = "Condition", var = "AtCloseRange" } )  } end,
 	["每个狂怒球可使攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack, { type = "Multiplier", var = "FrenzyCharge" })  } end, 
 	["移动时每有 1 个狂怒球，则每秒受到 (%d+) 冰霜伤害"]= function(num) return {  mod("ColdDegen", "BASE", num,{ type = "Multiplier", var = "FrenzyCharge" },{ type = "Condition", var = "Moving" })  } end, 
-	["每 (%d+) 点敏捷提高 (%d+)%% 召唤生物造成的伤害"] = function(num) return {  mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) },{ type = "PerStat", stat = "Dex", div = num1 })   } end, 
 	["药剂持续期间，获得 完美苦痛 天赋效果"] = { mod("Keystone", "LIST", "完美苦痛", { type = "Condition", var = "UsingFlask" }) }, --备注：grants perfect agony during flask effect
 	["武器总伤害额外降低 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", -num, nil,ModFlag.Weapon)  } end,
 	["药剂持续期间，获得等同 (%d+)%% 物理伤害的冰霜伤害"]= function(num) return {  mod("PhysicalDamageGainAsCold", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
@@ -1814,6 +1832,21 @@ local specialModList = {
 			mod("ChaosMin", "BASE", tonumber(num1), { type = "Multiplier", var = "WhiteSocketIn{SlotName}" }),
 			mod("ChaosMax", "BASE", tonumber(num2), { type = "Multiplier", var = "WhiteSocketIn{SlotName}" }) 
 		}end,
+	["每有一个耐力球，攻击伤害格挡几率额外 ([%+%-]?%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num , { type = "Multiplier", var = "EnduranceCharge" }) } end, 
+	["每有一个狂怒球，攻击伤害格挡几率额外 ([%+%-]?%d+)%%"]= function(num) return {  mod("BlockChance", "BASE", num , { type = "Multiplier", var = "FrenzyCharge" }) } end, 
+	["每有一个暴击球，攻击伤害格挡几率额外 ([%+%-]?%d+)%%"]= function(num) return {  mod("BlockChance", "BASE", num, { type = "Multiplier", var = "PowerCharge" } ) } end, 
+	["当暴击球达到上限时，你可以对敌人额外施加 1 个诅咒"]= function(num) return {mod("EnemyCurseLimit", "BASE", 1,{ type = "StatThreshold", stat = "PowerCharges", thresholdStat = "PowerChargesMax" }) } end, 
+	["耐力球达到上限时你无法被晕眩"]= function() return {mod("AvoidStun", "BASE", 100,{ type = "StatThreshold", stat = "EnduranceCharges", thresholdStat = "EnduranceChargesMax" }) } end, 
+	["每有一个狂怒球则获得额外混沌伤害， 其数值等同于冰霜伤害的 (%d+)%%"]= function(num) return {  mod("ColdDamageGainAsChaos", "BASE", num, { type = "Multiplier", var = "FrenzyCharge" }) } end, 
+	["每有一个耐力球则获得额外混沌伤害， 其数值等同于火焰伤害的 (%d+)%%"]= function(num) return {  mod("FireDamageGainAsChaos", "BASE", num, { type = "Multiplier", var = "EnduranceCharge" }) } end, 
+	["每有一个暴击球则获得额外混沌伤害， 其数值等同于闪电伤害的 (%d+)%%"]= function(num) return {  mod("LightningDamageGainAsChaos", "BASE", num, { type = "Multiplier", var = "PowerCharge" }) } end, 
+	["每个暴击球可使每秒生命回复提高 ([%d%.]+)%%"]= function(num) return {  mod("LifeRegen", "BASE", num, { type = "Multiplier", var = "PowerCharge" }) } end, 
+	["你在拥有最大数量的狂怒球时，得到【霸体】状态"] = { mod("Keystone", "LIST", "霸体", nil,{ type = "StatThreshold", stat = "FrenzyCharges", thresholdStat = "FrenzyChargesMax" }) },
+	["你在拥有最大数量的暴击能量球时，得到【心胜于物】状态"] = { mod("Keystone", "LIST", "心灵升华", nil,{ type = "StatThreshold", stat = "PowerCharges", thresholdStat = "PowerChargesMax" }) },
+	["你在拥有最大数量的耐力球时，获得【瓦尔冥约】状态"] = { mod("Keystone", "LIST", "瓦尔冥约", nil,{ type = "StatThreshold", stat = "EnduranceCharges", thresholdStat = "EnduranceChargesMax" }) },
+	["每有一个暴击球，可使你获得额外 (%d+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num, { type = "Multiplier", var = "PowerCharge" }) } end, 
+	["每有一个狂怒球，可使你获得额外 (%d+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num, { type = "Multiplier", var = "FrenzyCharge" }) } end, 
+	["每 (%d+) 点敏捷提高 (%d+)%% 召唤生物造成的伤害"] = function(_,num1,num2) return {  mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", tonumber(num2)) },{ type = "PerStat", stat = "Dex", div = tonumber(num1) })   } end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

@@ -666,4 +666,11 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 		enemyModList:NewMod("Condition:HitByLightningDamage", "FLAG", true, "Config")
 	end },
 { var = "EEIgnoreHitDamage", type = "check", label = "忽略技能击中伤害?", ifNode = 39085, tooltip = "这个选项是防止【元素之相】受到你的主要技能的伤害类型的影响." },
+
+
+{ var = "multiplierManaSpentRecently", type = "count", label = "# 近期消耗的总魔力:", ifMult = "ManaSpentRecently", implyCond = "UsedSkillRecently", tooltip = "这个选项只用于【靛蓝之冠 灵主之环】.\n同时也意味着你近期使用过技能.", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:ManaUsedRecently", "BASE", val, "Config", { type = "Condition", var = "Combat" })			
+		modList:NewMod("Multiplier:ManaSpentRecently", "BASE", val, "Config", { type = "Condition", var = "Combat" })
+		modList:NewMod("Condition:UsedSkillRecently", "FLAG", val >= 1, "Config", { type = "Condition", var = "Combat" })
+end },
 }

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PoBVersion>
-	<Version number="1.4.108.11" platform="win32" branch="master"/>
+	<Version number="1.4.108.12" platform="win32" branch="master"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/runtime-win32.zip" part="runtime" platform="win32"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/" part="program"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/tree.zip" part="tree"/>
-	
 	<File sha1="4f17937f2b37784e169a3792b235f2a0a3961e61" name="UpdateApply.lua" part="program"/>
 <File sha1="f2a1bb8936c23ddfa31871f278ac3a5453a39b51" name="UpdateCheck.lua" part="program"/>
 <File sha1="dbacb79bd5e809ef7b639c8d36b745da80f7f411" name="Classes/BuildListControl.lua" part="program"/>
@@ -172,7 +171,7 @@
 <File sha1="0f65a59a8224561043640994a26c5961c8f9563f" name="Modules/CalcDefence-3_0.lua" part="program"/>
 <File sha1="d47657bc351ddd077e93b86d7641e1d0941dede8" name="Modules/CalcOffence-2_6.lua" part="program"/>
 <File sha1="75e8156e80cc13ac35a674e60947be8903715549" name="Modules/CalcOffence-3_0.lua" part="program"/>
-<File sha1="c30e92017f874c5b3632ddba09326f68d744ed7d" name="Modules/CalcPerform.lua" part="program"/>
+<File sha1="323ea1302588b7c443ed6a49c9f8b3fce81c8b12" name="Modules/CalcPerform.lua" part="program"/>
 <File sha1="6e2e1cfd4c4e31aeba66cc6403902c79695cf870" name="Modules/Calcs.lua" part="program"/>
 <File sha1="32da2a949a5fe0ab10d54078a96caff0dccb5f3f" name="Modules/CalcSections-2_6.lua" part="program"/>
 <File sha1="ec13bcebe1ca005453451ff3cb22dd80a98a86bb" name="Modules/CalcSections-3_0.lua" part="program"/>
@@ -187,7 +186,7 @@
 <File sha1="8767862cd5745a678825a1673283c64f998b77a8" name="Modules/ModParser-3_0.lua" part="program"/>
 <File sha1="cb75f9e44070a209e5dcec3ad550f8e31f22162f" name="Modules/ModTools.lua" part="program"/>
 <File sha1="9850e60ca692586a8c662b46e440063e58314349" name="Classes/AboutTab.lua" part="program"/>
-<File sha1="d7d7a3c0a06bf66804a78d2cc6aca656fb296589" name="changelog.txt" part="program"/>
+<File sha1="a484574ea6e192d4a410cdb5814ad6602e73eff7" name="changelog.txt" part="program"/>
 <File sha1="21f4793ed37146332fc5d73d5dadf88d88af5fd1" name="Launch.dl" part="program"/>
 
 <File sha1="c345cdcf374d271411aa424ab150c0edbb5a362d" name="Assets/game_ui_small.png" part="runtime"/>
@@ -196,7 +195,7 @@
 <File sha1="e7ee7e5b6388facb7bf568517ecc401590757df7" name="Assets/ring.png" part="runtime"/>
 <File sha1="9a320bfe629b1cf3f14fc77fbbf2508d0a5b2841" name="Assets/small_ring.png" part="runtime"/>
 <File sha1="ee02b7e6e521896c498d8b222b1efab04538eaa7" name="TreeData/2_6/tree.lua" part="tree"/>
-<File sha1="27542b65bb84eb7b134ffe3ed06b4931009c8a10" name="TreeData/3_0/tree.lua" part="tree"/>
+<File sha1="ca3e50fdf62181306cb96ed94ffc3ff5665df46e" name="TreeData/3_0/tree.lua" part="tree"/>
 <File sha1="8f8a0c2f6792a505dbc7b66570f28d409d8ad4af" name="TreeData/2_6/skill_sprite-active-3-3e73c4c4534433ecfc340c7287093bd5.png" part="tree"/>
 <File sha1="77e4564761c38c755bee821f512e574d62b3a3b7" name="TreeData/Background1.png" part="tree"/>
 <File sha1="11ac1fcb1bd0ffef54dc478e1e6b3e23823bfb18" name="TreeData/BackgroundDex.png" part="tree"/>

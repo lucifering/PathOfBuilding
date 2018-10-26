@@ -180,6 +180,7 @@ local modNameList = {
 	["混沌技能的范围"] = { "AreaOfEffect", keywordFlags = KeywordFlag.Chaos },
 	["格挡法术伤害"] = "SpellBlockChance", --备注：to block spells
 	["攻击及法术伤害格挡几率"] = { "BlockChance", "SpellBlockChance" },
+	["召唤圣物数量上限"] = "ActiveHolyRelicLimit",
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -691,6 +692,7 @@ local preFlagList = {
 		["灵体的"] = { addToMinion = true, addToMinionTag = { type = "SkillName", skillName = "召唤灵体" } },
 	["魔像"] = { addToMinion = true, addToMinionTag = { type = "SkillType", skillType = SkillType.Golem } }, 
 	["可使该武器的"] = { tag = { type = "Condition", var = "{Hand}Attack" } }, 
+	["^召唤圣物有"] = { addToMinion = true, addToMinionTag = { type = "SkillName", skillName = "召唤圣物" } },
 	--【中文化程序额外添加结束】
 	["^hits deal "] = { keywordFlags = KeywordFlag.Hit },
 	["^critical strikes deal "] = { tag = { type = "Condition", var = "CriticalStrike" } },
@@ -1855,6 +1857,10 @@ local specialModList = {
 	["每有 (%d+)%% 攻击格档率，伤害提高 (%d+)%%"] =  function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2),{ type = "PerStat", stat = "BlockChance", div = tonumber(num1) }  ) } end, 
 	["每 (%d+)%% 的攻击伤害格挡几率会使法术伤害提高 (%d+)%%"] =  function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "PerStat", stat = "BlockChance", div = tonumber(num1) }  ) } end, 
 	["每 (%d+)%% 的攻击格挡率会使法术伤害提高 (%d+)%%"]=function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "PerStat", stat = "BlockChance", div = tonumber(num1) }  ) } end, 
+	["召唤生物在低血时会爆炸，对周围敌人造成自身最大生命 33%% 的火焰伤害"] = { mod("ExtraMinionSkill", "LIST", { skillId = "MinionInstability" }) },
+	["召唤的哨兵会使用【圣战猛击】"] = { mod("ExtraMinionSkill", "LIST", { skillId = "SentinelHolySlam", minionList = { "AxisEliteSoldierHeraldOfLight", "AxisEliteSoldierDominatingBlow" } }) },
+	["你的【复苏的魔卫】死亡时产生腐蚀地面，每秒造成等同它们 50%% 最大生命的混沌伤害"]= { mod("ExtraMinionSkill", "LIST", { skillId = "BeaconZombieCausticCloud", minionList = { "RaisedZombie" } }) },
+	["当你吞噬灵柩时触发 (%d+) 级的【召唤幻灵】技能"] = function(num) return { mod("ExtraSkill", "LIST", { skillId = "TriggeredSummonGhostOnKill", level = num }) } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded
@@ -1896,7 +1902,7 @@ minus = -tonumber(minus)
 	end,
 	["投射物攻击近距离目标时造成的总伤害最多额外提高 50%%，但攻击远距离目标时总伤害则会额外降低"] = { flag("PointBlank") }, --备注：projectile attack hits deal up to 50%% more damage to targets at the start of their movement, dealing less damage to targets as the projectile travels farther
 	["不再获得生命偷取，将其偷取效果套用于能量护盾"] = { flag("GhostReaver") }, --备注：life leech is applied to energy shield instead
-	["召唤生物在低血时会爆炸，对周围敌人造成自身最大生命 33%% 的火焰伤害"] = { flag("MinionInstability") }, --备注：minions explode when reduced to low life, dealing 33%% of their maximum life as fire damage to surrounding enemies
+	["召唤生物在低血时会爆炸，对周围敌人造成自身最大生命 33%% 的火焰伤害"] = { mod("ExtraMinionSkill", "LIST", { skillId = "MinionInstability" }) }, --备注：minions explode when reduced to low life, dealing 33%% of their maximum life as fire damage to surrounding enemies
 	["盾牌上的所有属性会套用于你的召唤生物，而非角色本身"] = { }, -- The node itself is detected by the code that handles it --备注：all bonuses from an equipped shield apply to your minions instead of you
 	["技能优先消耗能量护盾，而非魔力"] = { }, --备注：spend energy shield before mana for skill costs
 	["能量护盾从生命护盾变成魔力护盾"] = { flag("EnergyShieldProtectsMana") }, --备注：energy shield protects mana instead of life
@@ -2000,7 +2006,7 @@ minus = -tonumber(minus)
 	-- Necromancer
 	["your offering skills also affect you"] = { mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "buffNotPlayer", value = false }) }, { type = "SkillName", skillNameList = { "Bone Offering", "Flesh Offering", "Spirit Offering" } }) },
 	["your offerings have (%d+)%% reduced effect on you"] = function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("BuffEffectOnPlayer", "INC", -num) }, { type = "SkillName", skillNameList = { "Bone Offering", "Flesh Offering", "Spirit Offering" } }) } end,
-	["你的【复苏的魔卫】死亡时产生腐蚀地面，每秒造成等同它们 50%% 最大生命的混沌伤害"] = { flag("ZombieCausticCloudOnDeath") }, --备注：your raised zombies spread caustic ground on death, dealing 50%% of their maximum life as chaos damage per second
+	["你的【复苏的魔卫】死亡时产生腐蚀地面，每秒造成等同它们 50%% 最大生命的混沌伤害"] = { mod("ExtraMinionSkill", "LIST", { skillId = "BeaconZombieCausticCloud", minionList = { "RaisedZombie" } }) }, --备注：your raised zombies spread caustic ground on death, dealing 50%% of their maximum life as chaos damage per second
 	["you and your minions have (%d+)%% physical damage reduction"] = function(num) return { mod("PhysicalDamageReduction", "BASE", num), mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageReduction", "BASE", num) }) } end,
 	["近期内你若或你的召唤生物击败过敌人，则召唤生物攻击和施法速度提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Speed", "INC", num) }, { type = "Condition", varList = { "KilledRecently", "MinionsKilledRecently" } }) } end, --备注：minions have (%d+)%% increased attack and cast speed if you or your minions have killed recently
 	["summoned skeletons' hits can't be evaded"] = { mod("MinionModifier", "LIST", { mod = flag("CannotBeEvaded") }, { type = "SkillName", skillName = "召唤魔侍" }) },
@@ -2769,7 +2775,7 @@ local jewelThresholdFuncs = {
 	["若范围内有 40 点敏捷，敌人身上的每层中毒会使【毒蛇打击】的击中和中毒伤害提高 2%"] = getThreshold("Dex", "Damage", "INC", 2, 0, bor(KeywordFlag.Hit, KeywordFlag.Poison), { type = "SkillName", skillName = "毒蛇打击" }, { type = "Multiplier", actor = "enemy", var = "PoisonStack" }), --备注：With at least 40 Dexterity in Radius, Viper Strike deals 2% increased Damage with Hits and Poison for each Poison on the Enemy
 	["若范围内含有 40 点智慧，【电球】会发射 2 个额外投射物"] = getThreshold("Int", "ProjectileCount", "BASE", 2, { type = "SkillName", skillName = "电球" }), --备注：With at least 40 Intelligence in Radius, Spark fires 2 additional Projectiles
 	["若范围内含有 40 点智慧，【枯萎】的干扰持续时间延长 50%"] = getThreshold("Int", "SecondaryDuration", "INC", 50, { type = "SkillName", skillName = "枯萎" }), --备注：With at least 40 Intelligence in Radius, Blight has 50% increased Hinder Duration
-	["若范围内含有 40 点智慧，被【枯萎】干扰的敌人受到的混沌伤害提高 25%"] = getThreshold("Int", "ExtraSkillMod", "LIST", { mod = mod("ChaosDamageTaken", "INC", 25, { type = "GlobalEffect", effectType = "Debuff" }) }, { type = "SkillName", skillName = "枯萎" }, { type = "ActorCondition", actor = "enemy", var = "Hindered" }), --备注：With at least 40 Intelligence in Radius, Enemies Hindered by Blight take 25% increased Chaos Damage
+	["若范围内含有 40 点智慧，被【枯萎】干扰的敌人受到的混沌伤害提高 25%"] = getThreshold("Int", "ExtraSkillMod", "LIST", { mod = mod("ChaosDamageTaken", "INC", 25, { type = "GlobalEffect", effectType = "Debuff", effectName = "Hinder"  }) }, { type = "SkillName", skillName = "枯萎" }, { type = "ActorCondition", actor = "enemy", var = "Hindered" }), --备注：With at least 40 Intelligence in Radius, Enemies Hindered by Blight take 25% increased Chaos Damage
 	["若范围内含有 40 点智慧，【冰川之刺】物理伤害的 20%\\n转化为冰霜伤害"] = getThreshold("Int", "SkillPhysicalDamageConvertToCold", "BASE", 20, { type = "SkillName", skillName = "冰川之刺" }), --备注：With 40 Intelligence in Radius, 20% of Glacial Cascade Physical Damage Converted to Cold Damage
 	["若范围内含有 40 点智慧，【冰川之刺】物理伤害的 20% 转化为冰霜伤害"] = getThreshold("Int", "SkillPhysicalDamageConvertToCold", "BASE", 20, { type = "SkillName", skillName = "冰川之刺" }), --备注：With at least 40 Intelligence in Radius, 20% of Glacial Cascade Physical Damage Converted to Cold Damage
 	["范围内含的智慧和敏捷总计 40 点时，【元素打击】的火焰伤害降低 50%"] = getThreshold({"Int","Dex"}, "FireDamage", "MORE", -50, { type = "SkillName", skillName = "元素打击" }), --备注：With 40 total Intelligence and Dexterity in Radius, Elemental Hit deals 50% less Fire Damage

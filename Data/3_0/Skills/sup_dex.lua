@@ -440,6 +440,11 @@ skills["SupportCastOnCrit"] = {
 	requireSkillTypes = { 1, 36, },
 	addSkillTypes = { 42, },
 	excludeSkillTypes = { 37, 41, 30, 15, 61, },
+	statMap = {
+		["support_cast_on_crit_spell_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, ModFlag.Spell),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 40),
 		skill("cooldown", 0.5),
@@ -550,6 +555,14 @@ skills["SupportCastOnDeath"] = {
 	requireSkillTypes = { 36, },
 	addSkillTypes = { 42, },
 	excludeSkillTypes = { 9, 37, 41, 30, 44, 61, },
+	statMap = {
+		["area_of_effect_+%_while_dead"] = {
+			mod("AreaOfEffect", "INC", nil),
+		},
+		["cast_on_death_damage_+%_final_while_dead"] = {
+			mod("Damage", "MORE", nil),
+		},
+	},
 	baseMods = {
 	},
 	levelMods = {
@@ -659,6 +672,11 @@ skills["SupportChain"] = {
 	requireSkillTypes = { 23, 3, 54, 56, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_chain_hit_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, ModFlag.Hit),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 50),
 	},
@@ -980,6 +998,11 @@ skills["SupportClusterTrap"] = {
 	requireSkillTypes = { 37, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_clustertrap_damage_+%_final"] = {
+			mod("Damage", "MORE", nil),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 50),
 	},
@@ -1305,6 +1328,14 @@ skills["SupportDeadlyAilments"] = {
 	requireSkillTypes = { 10, 1, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_better_ailments_hit_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, ModFlag.Hit),
+		},
+		["support_better_ailments_ailment_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, 0, bit.bor(KeywordFlag.Bleed, KeywordFlag.Poison, KeywordFlag.Ignite)),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 30),
 	},
@@ -1413,6 +1444,11 @@ skills["SupportAdditionalQuality"] = {
 	addSkillTypes = { },
 	excludeSkillTypes = { },
 	supportGemsOnly = true,
+	statMap = {
+		["supported_active_skill_gem_quality_%"] = {
+			mod("GemProperty", "LIST", { keyword = "active_skill", key = "quality", value = nil }),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 15),
 	},
@@ -1673,6 +1709,11 @@ skills["SupportFork"] = {
 	requireSkillTypes = { 3, 54, 56, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_fork_projectile_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, ModFlag.Projectile),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 30),
 	},
@@ -1780,6 +1821,11 @@ skills["SupportGreaterMultipleProjectiles"] = {
 	requireSkillTypes = { 3, 54, 56, 73, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_multiple_projectile_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, ModFlag.Projectile),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 65),
 	},
@@ -1889,6 +1935,14 @@ skills["SupportDamageAgainstChilled"] = {
 	requireSkillTypes = { 10, 1, 40, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_hypothermia_damage_+%_vs_chilled_enemies_final"] = {
+			mod("Damage", "MORE", nil, 0, bit.bor(KeywordFlag.Hit, KeywordFlag.Ailment), { type = "ActorCondition", actor = "enemy", var = "Chilled" }),
+		},
+		["support_hypothermia_cold_damage_over_time_+%_final"] = {
+			mod("ColdDamage", "MORE", nil, 0, KeywordFlag.ColdDot),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 20),
 	},
@@ -2111,6 +2165,11 @@ skills["SupportLesserMultipleProjectiles"] = {
 	requireSkillTypes = { 3, 54, 56, 73, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_lesser_multiple_projectile_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, ModFlag.Projectile),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 40),
 	},
@@ -2548,6 +2607,11 @@ skills["SupportMultiTrap"] = {
 	requireSkillTypes = { 37, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {	
+		["support_multithrow_damage_+%_final"] = {
+			mod("Damage", "MORE", nil),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 40),
 	},
@@ -2763,6 +2827,11 @@ skills["SupportPierce"] = {
 	requireSkillTypes = { 3, 54, 56, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_pierce_projectile_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, ModFlag.Projectile),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 10),
 	},
@@ -2870,6 +2939,11 @@ skills["SupportPointBlank"] = {
 	requireSkillTypes = { 48, 56, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["keystone_point_blank"] = {
+			flag("PointBlank"),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 20),
 	},
@@ -2977,6 +3051,11 @@ skills["SupportPoison"] = {
 	requireSkillTypes = { 10, 1, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_poison_poison_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, 0, KeywordFlag.Poison),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 35),
 	},
@@ -3084,6 +3163,11 @@ skills["SupportRapidDecay"] = {
 	requireSkillTypes = { 12, 55, 10, 1, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_rapid_decay_damage_over_time_+%_final"] = {
+			mod("Damage", "MORE", nil, ModFlag.Dot),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 25),
 	},
@@ -3191,6 +3275,14 @@ skills["SupportSlowerProjectiles"] = {
 	requireSkillTypes = { 3, 14, 54, 56, },
 	addSkillTypes = { },
 	excludeSkillTypes = { 51, },
+	statMap = {
+		["support_slower_projectiles_projectile_speed_+%_final"] = {
+			mod("ProjectileSpeed", "MORE", nil),
+		},
+		["support_slower_projectiles_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, ModFlag.Projectile),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 40),
 	},
@@ -3300,6 +3392,17 @@ skills["SupportTrap"] = {
 	excludeSkillTypes = { 61, },
 	addFlags = {
 		trap = true,
+	},
+	statMap = {
+		["base_skill_show_average_damage_instead_of_dps"] = {
+			skill("showAverage", true, { type = "SkillType", skillType = SkillType.SkillCanTrap }),
+		},
+		["support_trap_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, 0, KeywordFlag.Trap),
+		},
+		["support_trap_hit_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, ModFlag.Hit, KeywordFlag.Trap),
+		},
 	},
 	baseMods = {
 		mod("ManaCost", "MORE", 10),
@@ -3520,6 +3623,11 @@ skills["SupportTrapAndMineDamage"] = {
 	requireSkillTypes = { 37, 41, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_trap_and_mine_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, 0, bit.bor(KeywordFlag.Trap, KeywordFlag.Mine)),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 30),
 	},
@@ -3628,6 +3736,20 @@ skills["SupportPhysicalProjectileAttackDamage"] = {
 	requireSkillTypes = { 48, 56, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_projectile_attack_speed_+%_final"] = {
+			mod("Speed", "MORE", nil, bit.bor(ModFlag.Attack, ModFlag.Projectile)),
+		},
+		["support_projectile_attack_physical_damage_+%_final"] = {
+			mod("PhysicalDamage", "MORE", nil, bit.bor(ModFlag.Attack, ModFlag.Projectile)),
+		},
+		["support_phys_chaos_projectile_physical_damage_over_time_+%_final"] = {
+			mod("PhysicalDamage", "MORE", nil, 0, KeywordFlag.PhysicalDot),
+		},
+		["support_phys_chaos_projectile_chaos_damage_over_time_+%_final"] = {
+			mod("ChaosDamage", "MORE", nil, 0, KeywordFlag.ChaosDot),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 20),
 	},
@@ -3737,6 +3859,17 @@ skills["SupportDebilitate"] = {
 	requireSkillTypes = { 10, 1, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_debilitate_poison_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, 0, KeywordFlag.Poison),
+		},
+		["support_debilitate_hit_damage_+%_final_per_poison_stack"] = {
+			mod("Damage", "MORE", nil, ModFlag.Hit, 0, { type = "Multiplier", actor = "enemy", var = "PoisonStack", limitVar = "VileToxinsPoisonLimit" }),
+		},
+		["support_debilitate_hit_damage_max_poison_stacks"] = {
+			mod("Multiplier:VileToxinsPoisonLimit", "BASE", nil),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 20),
 	},
@@ -3845,6 +3978,11 @@ skills["SupportVoidManipulation"] = {
 	requireSkillTypes = { 10, 1, 40, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_void_manipulation_chaos_damage_+%_final"] = {
+			mod("ChaosDamage", "MORE", nil),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 20),
 	},
@@ -3952,6 +4090,11 @@ skills["SupportParallelProjectiles"] = {
 	requireSkillTypes = { 68, },
 	addSkillTypes = { },
 	excludeSkillTypes = { 70, 71, },
+	statMap = {
+		["support_parallel_projectiles_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, ModFlag.Projectile),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 40),
 	},
@@ -4063,7 +4206,7 @@ skills["SupportChaosAttacks"] = {
 	excludeSkillTypes = { },
 	baseMods = {
 		mod("ManaCost", "MORE", 40),
-		mod("ChaosDamageTaken", "INC", 6, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "Wither", effectStackVar = "WitheringTouchWitheredStackCount", effectStackLimit = 15 }),
+		mod("ChaosDamageTaken", "INC", 6, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "Withered", effectStackVar = "WitheringTouchWitheredStackCount", effectStackLimit = 15 }),
 	},
 	levelMods = {
 		[1] = nil,

@@ -7,7 +7,7 @@
 local skills, mod, flag, skill = ...
 
 skills["ChaosElementalCascadeSummoned"] = {
-	name = "Cascade",
+	name = "冰刺",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 1.9800000190735,
@@ -47,7 +47,7 @@ skills["ChaosElementalCascadeSummoned"] = {
 	},
 }
 skills["SandstormChaosElementalSummoned"] = {
-	name = "Chaos Aura",
+	name = "混沌光环",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 11,
@@ -83,7 +83,7 @@ skills["SandstormChaosElementalSummoned"] = {
 	},
 }
 skills["FireElementalFlameRedSummoned"] = {
-	name = "Immolate",
+	name = "献祭",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.3999999761581,
@@ -123,7 +123,7 @@ skills["FireElementalFlameRedSummoned"] = {
 	},
 }
 skills["FireElementalMortarSummoned"] = {
-	name = "Magma Ball",
+	name = "熔岩球",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 4.2666997909546,
@@ -162,7 +162,7 @@ skills["FireElementalMortarSummoned"] = {
 	},
 }
 skills["FireElementalConeSummoned"] = {
-	name = "Flame Wave",
+	name = "烈焰震波",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 2.9867000579834,
@@ -254,7 +254,7 @@ skills["FireElementalConeSummoned"] = {
 	},
 }
 skills["IceElementalIceCyclone"] = {
-	name = "Cyclone",
+	name = "冰旋风斩",
 	hidden = true,
 	color = 2,
 	description = "对周围敌人造成伤害, 接而进行一连串的旋转攻击, 边向目标地点前进边攻击路径上的敌人, 无法被多重打击和无情辅助.",
@@ -306,7 +306,7 @@ skills["IceElementalIceCyclone"] = {
 	},
 }
 skills["IceElementalSpearSummoned"] = {
-	name = "Ice Spear",
+	name = "冰矛",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 2.5455000400543,
@@ -340,7 +340,7 @@ skills["IceElementalSpearSummoned"] = {
 	},
 }
 skills["LightningGolemArcSummoned"] = {
-	name = "Storm Orb",
+	name = "风暴之核",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 1.0937999486923,
@@ -376,7 +376,7 @@ skills["LightningGolemArcSummoned"] = {
 	},
 }
 skills["MonsterProjectileSpellLightningGolemSummoned"] = {
-	name = "Lightning Projectile",
+	name = "闪电投射物",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 2.625,
@@ -412,12 +412,26 @@ skills["MonsterProjectileSpellLightningGolemSummoned"] = {
 	},
 }
 skills["LightningGolemWrath"] = {
-	name = "Wrath",
+	name = "雷霆",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 0.16249999403954,
 	incrementalEffectiveness = 0.019999999552965,
 	skillTypes = { [2] = true, [11] = true, [5] = true, [16] = true, [44] = true, [35] = true, [12] = true, },
+	statMap = {
+		["attack_minimum_added_lightning_damage"] = {
+			mod("LightningMin", "BASE", nil, 0, KeywordFlag.Attack, { type = "GlobalEffect", effectType = "Aura" }),
+		},
+		["attack_maximum_added_lightning_damage"] = {
+			mod("LightningMax", "BASE", nil, 0, KeywordFlag.Attack, { type = "GlobalEffect", effectType = "Aura" }),
+		},
+		["spell_minimum_added_lightning_damage"] = {
+			mod("LightningMin", "BASE", nil, 0, KeywordFlag.Spell, { type = "GlobalEffect", effectType = "Aura" }),
+		},
+		["spell_maximum_added_lightning_damage"] = {
+			mod("LightningMax", "BASE", nil, 0, KeywordFlag.Spell, { type = "GlobalEffect", effectType = "Aura" }),
+		},
+	},
 	baseFlags = {
 		spell = true,
 		aura = true,
@@ -450,7 +464,7 @@ skills["LightningGolemWrath"] = {
 	},
 }
 skills["SpectralSkullShieldCharge"] = {
-	name = "Charge",
+	name = "重盾冲锋",
 	hidden = true,
 	color = 4,
 	description = "向一个目标冲锋, 使用盾牌对其猛击的同时也用近战武器顺手补刀. 此攻击将会击退目标并将其击晕, 在路径上的敌人将会被推向两旁. 伤害与击晕几率将视冲锋距离而定. ",
@@ -568,7 +582,7 @@ skills["RagingSpiritMeleeAttack"] = {
 	},
 }
 skills["SkeletonProjectileCold"] = {
-	name = "Cold Projectile",
+	name = "冰霜投射物",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 0.68180000782013,
@@ -607,7 +621,7 @@ skills["SkeletonProjectileCold"] = {
 	},
 }
 skills["SkeletonProjectileFire"] = {
-	name = "Fire Projectile",
+	name = "火焰投射物",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 0.83329999446869,
@@ -646,7 +660,7 @@ skills["SkeletonProjectileFire"] = {
 	},
 }
 skills["SkeletonProjectileLightning"] = {
-	name = "Lightning Projectile",
+	name = "闪电投射物",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 0.9375,
@@ -685,7 +699,7 @@ skills["SkeletonProjectileLightning"] = {
 	},
 }
 skills["RockGolemSlam"] = {
-	name = "Slam",
+	name = "巨石魔像横扫",
 	hidden = true,
 	color = 1,
 	skillTypes = { [1] = true, [11] = true, [57] = true, [36] = true, },
@@ -721,7 +735,7 @@ skills["RockGolemSlam"] = {
 	},
 }
 skills["RockGolemWhirlingBlades"] = {
-	name = "Roll",
+	name = "回旋",
 	hidden = true,
 	color = 4,
 	description = "迅速穿越敌人并同时造成武器伤害. 限定匕首, 爪以及单手剑. ",
@@ -761,7 +775,7 @@ skills["RockGolemWhirlingBlades"] = {
 	},
 }
 skills["ZombieSlam"] = {
-	name = "Slam",
+	name = "僵尸横扫",
 	hidden = true,
 	color = 4,
 	skillTypes = { [1] = true, [11] = true, [57] = true, [36] = true, },
@@ -796,7 +810,7 @@ skills["ZombieSlam"] = {
 	},
 }
 skills["SpiderMinionLeapSlam"] = {
-	name = "Leap Slam",
+	name = "跃击",
 	hidden = true,
 	color = 4,
 	description = "朝着目标区域跃起, 并在落地时以主手武器重击（并击退一些）范围内的敌人. 被踩到的敌人将会被推出去. 限定一把斧, 锤, 剑或是长杖.",
@@ -843,8 +857,60 @@ skills["SpiderMinionLeapSlam"] = {
 		[1] = { 3, 0, nil, nil, },
 	},
 }
+skills["DancingDervishCyclone"] = {
+	name = "旋风斩",
+	hidden = true,
+	color = 2,
+	description = "对周围敌人造成伤害, 接而进行一连串的旋转攻击, 边向目标地点前进边攻击路径上的敌人, 无法被多重打击和无情辅助.",
+	skillTypes = { [1] = true, [11] = true, [24] = true, [38] = true, [65] = true, },
+	weaponTypes = {
+		["One Handed Sword"] = true,
+		["Two Handed Mace"] = true,
+		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["None"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
+		["Claw"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
+	},
+	baseFlags = {
+		attack = true,
+		area = true,
+		melee = true,
+	},
+	baseMods = {
+		skill("castTime", 1),
+		skill("dpsMultiplier", 2),
+		skill("radiusIsWeaponRange", true),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"physical_damage_+%",
+		"attack_speed_+%",
+		"skill_art_variation",
+		"cyclone_movement_speed_+%_final",
+		"cyclone_extra_distance",
+		"active_skill_damage_+%_final",
+		"is_area_damage",
+	},
+	statInterpolation = { 1, 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 0, 20, 0, 0, 25, 0, nil, },
+	},
+}
 skills["SummonPhantasmFadingProjectile"] = {
-	name = "Physical Projectile",
+	name = "物理投射物",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.0099999904633,
@@ -879,7 +945,7 @@ skills["SummonPhantasmFadingProjectile"] = {
 	},
 }
 skills["HeraldOfAgonyMinionMortar"] = {
-	name = "Mortar",
+	name = "炮击",
 	hidden = true,
 	color = 4,
 	description = "通用的怪物炮击技能. 与怪物投射物相似, 但带有冲击效果.",
@@ -919,7 +985,7 @@ skills["HeraldOfAgonyMinionMortar"] = {
 	},
 }
 skills["HeraldOfAgonyMinionTailSpike"] = {
-	name = "Tail Spike",
+	name = "尾刺",
 	hidden = true,
 	color = 4,
 	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [68] = true, [10] = true, [57] = true, },
@@ -951,7 +1017,7 @@ skills["HeraldOfAgonyMinionTailSpike"] = {
 	},
 }
 skills["HeraldOfAgonyMinionCleave"] = {
-	name = "Cleave",
+	name = "劈砍",
 	hidden = true,
 	color = 1,
 	description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 并同时对多名敌人造成伤害. 限定斧与剑.",
@@ -987,7 +1053,7 @@ skills["HeraldOfAgonyMinionCleave"] = {
 	},
 }
 skills["HeraldOfLightMinionSlam"] = {
-	name = "Slam",
+	name = "横扫",
 	hidden = true,
 	color = 4,
 	skillTypes = { [1] = true, [11] = true, [57] = true, [36] = true, },
@@ -1016,7 +1082,7 @@ skills["HeraldOfLightMinionSlam"] = {
 	},
 }
 skills["SentinelHolySlam"] = {
-	name = "Crusade Slam",
+	name = "圣战猛击",
 	hidden = true,
 	color = 1,
 	skillTypes = { [1] = true, [11] = true, [57] = true, [36] = true, },
@@ -1048,7 +1114,7 @@ skills["SentinelHolySlam"] = {
 	},
 }
 skills["RelicTriggeredNova"] = {
-	name = "Nova",
+	name = "新星",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 0.89999997615814,
@@ -1211,7 +1277,7 @@ skills["DominatingBlowMinionCharge"] = {
 	},
 }
 skills["MinionInstability"] = {
-	name = "Minion Instability",
+	name = "复仇之灵",
 	hidden = true,
 	color = 4,
 	baseFlags = {
@@ -1235,7 +1301,7 @@ skills["MinionInstability"] = {
 	},
 }
 skills["BeaconCausticCloud"] = {
-	name = "Caustic Cloud",
+	name = "毒云",
 	hidden = true,
 	color = 4,
 	baseFlags = {
@@ -1257,7 +1323,7 @@ skills["BeaconCausticCloud"] = {
 	},
 }
 skills["BeaconZombieCausticCloud"] = {
-	name = "Caustic Cloud",
+	name = "僵尸毒云",
 	hidden = true,
 	color = 4,
 	baseFlags = {

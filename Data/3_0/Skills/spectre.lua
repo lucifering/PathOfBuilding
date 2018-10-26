@@ -53,7 +53,7 @@ skills["AxisDoubleStrikeTrigger"] = {
 	},
 }
 skills["BanditExplosiveArrow"] = {
-	name = "Explosive Arrow",
+	name = "爆炸箭矢",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.866700053215,
@@ -104,7 +104,7 @@ skills["BanditExplosiveArrow"] = {
 	},
 }
 skills["BeastCleave"] = {
-	name = "Cleave",
+	name = "劈砍",
 	hidden = true,
 	color = 1,
 	description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 并同时对多名敌人造成伤害. 限定斧与剑.",
@@ -147,7 +147,7 @@ skills["BeastCleave"] = {
 	},
 }
 skills["BirdmanBloodProjectile"] = {
-	name = "Blood Projectile",
+	name = "流血投射物",
 	hidden = true,
 	color = 4,
 	skillTypes = { [1] = true, [48] = true, [3] = true, [68] = true, },
@@ -190,7 +190,7 @@ skills["BirdmanBloodProjectile"] = {
 	},
 }
 skills["BirdmanConsumeCorpse"] = {
-	name = "Consume Corpse",
+	name = "消耗灵柩",
 	hidden = true,
 	color = 4,
 	skillTypes = { [2] = true, },
@@ -258,7 +258,7 @@ skills["BreachCleave"] = {
 	},
 }
 skills["BullCharge"] = {
-	name = "Charge",
+	name = "充能",
 	hidden = true,
 	color = 4,
 	skillTypes = { [1] = true, },
@@ -340,7 +340,7 @@ skills["CageSpiderCycloneTriggerSandstorms"] = {
 	},
 }
 skills["CageSpiderSandSpark"] = {
-	name = "Sandstorm",
+	name = "沙尘暴",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 0.64999997615814,
@@ -377,7 +377,7 @@ skills["CageSpiderSandSpark"] = {
 	},
 }
 skills["ChaosDegenAura"] = {
-	name = "Chaos Aura",
+	name = "混沌光环",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 0.93330001831055,
@@ -409,7 +409,7 @@ skills["ChaosDegenAura"] = {
 	},
 }
 skills["DelayedBlastSpectre"] = {
-	name = "Delayed Blast",
+	name = "延迟爆破",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 0.77999997138977,
@@ -442,7 +442,7 @@ skills["DelayedBlastSpectre"] = {
 	},
 }
 skills["DemonFemaleRangedProjectile"] = {
-	name = "Ranged Attack",
+	name = "远程攻击",
 	hidden = true,
 	color = 4,
 	skillTypes = { [1] = true, [48] = true, [3] = true, },
@@ -473,7 +473,7 @@ skills["DemonFemaleRangedProjectile"] = {
 	},
 }
 skills["DemonModularBladeVortexSpectre"] = {
-	name = "Blade Vortex",
+	name = "飞刃风暴",
 	hidden = true,
 	color = 2,
 	baseEffectiveness = 0.59500002861023,
@@ -514,7 +514,7 @@ skills["DemonModularBladeVortexSpectre"] = {
 	},
 }
 skills["ExperimenterDetonateDead"] = {
-	name = "Detonate Dead",
+	name = "爆灵术",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.5111000537872,
@@ -554,8 +554,80 @@ skills["ExperimenterDetonateDead"] = {
 		[3] = { 4, 0.80000001192093, 1.2000000476837, 1, -70, 0, -25, },
 	},
 }
+skills["FireballIncursionChaos"] = {
+	name = "混沌之珠",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 2,
+	incrementalEffectiveness = 0.025000000372529,
+	description = "释放一颗球型火焰向前飞射, 接触到怪物时会爆炸并对周围敌人造成伤害",
+	skillTypes = { [3] = true, [68] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [33] = true, },
+	baseFlags = {
+		spell = true,
+		projectile = true,
+		area = true,
+	},
+	baseMods = {
+		skill("castTime", 1.2),
+		skill("CritChance", 6),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 0, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_chaos_damage",
+		"spell_maximum_base_chaos_damage",
+		"spell_maximum_action_distance_+%",
+		"base_is_projectile",
+	},
+	statInterpolation = { 3, 3, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, -40, nil, },
+	},
+}
+skills["FireballIncusionFire"] = {
+	name = "火球",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 0.97219997644424,
+	incrementalEffectiveness = 0.050000000745058,
+	description = "释放一颗球型火焰向前飞射, 接触到怪物时会爆炸并对周围敌人造成伤害",
+	skillTypes = { [3] = true, [68] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [33] = true, },
+	baseFlags = {
+		spell = true,
+		projectile = true,
+		area = true,
+	},
+	baseMods = {
+		skill("castTime", 1.2),
+		skill("CritChance", 6),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 0, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"spell_maximum_action_distance_+%",
+		"base_is_projectile",
+	},
+	statInterpolation = { 3, 3, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, -40, nil, },
+	},
+}
 skills["FireballIncusionLightning"] = {
-	name = "Lightning Ball",
+	name = "天雷之珠",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 1.0937999486923,
@@ -591,7 +663,7 @@ skills["FireballIncusionLightning"] = {
 	},
 }
 skills["FireMonsterWhirlingBlades"] = {
-	name = "Fire Roll",
+	name = "火回旋",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.0888999700546,
@@ -641,7 +713,7 @@ skills["FireMonsterWhirlingBlades"] = {
 	},
 }
 skills["FlamebearerFlameBlue"] = {
-	name = "Blue Flame",
+	name = "蓝焰",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 0.48330000042915,
@@ -688,7 +760,7 @@ skills["FlamebearerFlameBlue"] = {
 	},
 }
 skills["GhostPirateBladeVortexSpectre"] = {
-	name = "Blade Vortex",
+	name = "飞刃风暴",
 	hidden = true,
 	color = 2,
 	baseEffectiveness = 0.59500002861023,
@@ -729,7 +801,7 @@ skills["GhostPirateBladeVortexSpectre"] = {
 	},
 }
 skills["GoatmanFireMagmaOrb"] = {
-	name = "Magma Orb",
+	name = "熔岩之核",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 2.7778000831604,
@@ -773,7 +845,7 @@ skills["GoatmanFireMagmaOrb"] = {
 	},
 }
 skills["GoatmanMoltenShell"] = {
-	name = "Molten Shell",
+	name = "熔岩护盾",
 	hidden = true,
 	color = 1,
 	baseEffectiveness = 4.2555999755859,
@@ -880,7 +952,7 @@ skills["GoatmanMoltenShell"] = {
 	},
 }
 skills["GuardianArc"] = {
-	name = "Arc",
+	name = "电弧",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 0.85000002384186,
@@ -921,7 +993,7 @@ skills["GuardianArc"] = {
 	},
 }
 skills["HalfSkeletonPuncture"] = {
-	name = "Puncture",
+	name = "放血",
 	hidden = true,
 	color = 2,
 	description = "对目标进行一个放血攻击, 对其造成一个流血的减益效果. 该减益受到技能持续时间词缀的影响. 流血中的目标在移动时会受到更多的伤害. 限定弓, 匕首, 爪与剑.",
@@ -1003,7 +1075,7 @@ skills["HolyFireElementalFireball"] = {
 	},
 }
 skills["IguanaProjectile"] = {
-	name = "Ranged Attack",
+	name = "远程攻击",
 	hidden = true,
 	color = 4,
 	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [68] = true, [10] = true, [57] = true, },
@@ -1037,7 +1109,7 @@ skills["IguanaProjectile"] = {
 	},
 }
 skills["IncaMinionProjectile"] = {
-	name = "Chaos Projectile",
+	name = "混沌投射物",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.3600000143051,
@@ -1077,8 +1149,45 @@ skills["IncaMinionProjectile"] = {
 		[3] = { 0.67330002784729, 1.0132999420166, 1.0099999904633, 1.5199999809265, 1, -75, },
 	},
 }
+skills["IncursionMeteorUpheaval"] = {
+	name = "混沌之刺",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 2.25,
+	incrementalEffectiveness = 0.02250000089407,
+	skillTypes = { [2] = true, [10] = true, [33] = true, [36] = true, },
+	baseFlags = {
+		spell = true,
+		area = true,
+	},
+	baseMods = {
+		skill("castTime", 2.5),
+		skill("CritChance", 5),
+		skill("cooldown", 8),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_physical_damage",
+		"spell_maximum_base_physical_damage",
+		"upheaval_number_of_spikes",
+		"monster_penalty_against_minions_damage_+%_final_vs_player_minions",
+		"skill_physical_damage_%_to_convert_to_chaos",
+		"is_area_damage",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 8, 0, 30, nil, },
+	},
+}
 skills["InsectSpawnerSpit"] = {
-	name = "Spit",
+	name = "喷射",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 0.93999999761581,
@@ -1113,7 +1222,7 @@ skills["InsectSpawnerSpit"] = {
 	},
 }
 skills["KaomFireBeamTotemSpectre"] = {
-	name = "Scorching Ray Totem",
+	name = "灼热光线图腾",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 2.666699886322,
@@ -1164,7 +1273,7 @@ skills["KaomFireBeamTotemSpectre"] = {
 	},
 }
 skills["KaomWarriorGroundSlam"] = {
-	name = "Ground Slam",
+	name = "跃击",
 	hidden = true,
 	color = 4,
 	skillTypes = { [1] = true, },
@@ -1198,7 +1307,7 @@ skills["KaomWarriorGroundSlam"] = {
 	},
 }
 skills["KaomWarriorMoltenStrike"] = {
-	name = "Molten Strike",
+	name = "熔岩打击",
 	hidden = true,
 	color = 1,
 	description = "对目标造成物理及火焰伤害, 并在挥击的途中从武器弹射出熔岩球. 这些熔岩球在着地时会爆炸, 并对附近的敌人造成伤害.",
@@ -1386,7 +1495,7 @@ skills["KitavaDemonWhirlingBlades"] = {
 	},
 }
 skills["KitavaDemonXMortar"] = {
-	name = "Mortar",
+	name = "炮击",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 3.5,
@@ -1428,7 +1537,7 @@ skills["KitavaDemonXMortar"] = {
 	},
 }
 skills["MassFrenzy"] = {
-	name = "Mass Frenzy",
+	name = "狂暴",
 	hidden = true,
 	color = 4,
 	skillTypes = { [2] = true, [11] = true, },
@@ -1457,7 +1566,7 @@ skills["MassFrenzy"] = {
 	},
 }
 skills["MinerThrowFireSpectre"] = {
-	name = "Throw Fire",
+	name = "掷火",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.2777999639511,
@@ -1517,7 +1626,7 @@ skills["MinerThrowFireSpectre"] = {
 	},
 }
 skills["MonsterArc"] = {
-	name = "Arc",
+	name = "电弧",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 0.89999997615814,
@@ -1565,7 +1674,7 @@ skills["MonsterArc"] = {
 	},
 }
 skills["MonsterCausticArrow"] = {
-	name = "Caustic Arrow",
+	name = "腐蚀箭矢",
 	hidden = true,
 	color = 2,
 	baseEffectiveness = 1.0666999816895,
@@ -1630,7 +1739,7 @@ skills["MonsterCausticArrow"] = {
 	},
 }
 skills["MonsterCausticBomb"] = {
-	name = "Caustic Bomb",
+	name = "腐蚀炸弹",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 2.2667000293732,
@@ -1686,7 +1795,7 @@ skills["MonsterCausticBomb"] = {
 	},
 }
 skills["MonsterDischarge"] = {
-	name = "Discharge",
+	name = "解放",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 2.2111001014709,
@@ -1730,7 +1839,7 @@ skills["MonsterDischarge"] = {
 	},
 }
 skills["MonsterEnduringCry"] = {
-	name = "Enduring Cry",
+	name = "坚决战吼",
 	hidden = true,
 	color = 1,
 	description = "发出怒吼, 嘲讽周围的敌人来攻击自己. 视周围被嘲讽敌人的数量增加耐力球充能数, 若周围有敌人时给与施放者短暂时间的生命恢复. 与其他战吼技能共享技能冷却. 【打我啊. 笨蛋. 】",
@@ -1829,7 +1938,7 @@ skills["MonsterEnduringCry"] = {
 	},
 }
 skills["MonsterEnfeeble"] = {
-	name = "Enfeeble",
+	name = "衰弱",
 	hidden = true,
 	color = 3,
 	description = "对目标区域施放诅咒, 受到诅咒的敌人所造成的攻击或法术将会比较无力.",
@@ -1866,7 +1975,7 @@ skills["MonsterEnfeeble"] = {
 	},
 }
 skills["MonsterFireball"] = {
-	name = "Fireball",
+	name = "火球",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 1.1888999938965,
@@ -1904,7 +2013,7 @@ skills["MonsterFireball"] = {
 	},
 }
 skills["MonsterFireBomb"] = {
-	name = "Fire Bomb",
+	name = "火炸弹",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.8889000415802,
@@ -1950,7 +2059,7 @@ skills["MonsterFireBomb"] = {
 	},
 }
 skills["MonsterFlickerStrike"] = {
-	name = "Flicker Strike",
+	name = "闪现打击",
 	hidden = true,
 	color = 4,
 	description = "传送至目标怪物身边并用近战武器对其造成伤害. 若是未指定目标, 则系统会为其随机指定一只怪物. 释放一颗狂怒球能重置其技能冷却.",
@@ -1999,7 +2108,7 @@ skills["MonsterFlickerStrike"] = {
 	},
 }
 skills["MonsterFlameRedCannibal"] = {
-	name = "Incinerate",
+	name = "烧毁",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 0.44440001249313,
@@ -2080,7 +2189,7 @@ skills["MountainGoatmanIceSpear"] = {
 	},
 }
 skills["MonsterLeapSlam"] = {
-	name = "Leap Slam",
+	name = "跃击",
 	hidden = true,
 	color = 4,
 	description = "朝着目标区域跃起, 并在落地时以主手武器重击（并击退一些）范围内的敌人. 被踩到的敌人将会被推出去. 限定一把斧, 锤, 剑或是长杖.",
@@ -2125,7 +2234,7 @@ skills["MonsterLeapSlam"] = {
 	},
 }
 skills["MonsterLesserMultiFireballSpectre"] = {
-	name = "Lesser Multi Fireball",
+	name = "低阶多重火球",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 0.88889998197556,
@@ -2164,7 +2273,7 @@ skills["MonsterLesserMultiFireballSpectre"] = {
 	},
 }
 skills["MonsterLesserMultiIceSpear"] = {
-	name = "Lesser Multi Ice Spear",
+	name = "低阶多重冰矛",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 1.5908999443054,
@@ -2203,7 +2312,7 @@ skills["MonsterLesserMultiIceSpear"] = {
 	},
 }
 skills["MonsterLightningArrow"] = {
-	name = "Lightning Arrow",
+	name = "闪电箭矢",
 	hidden = true,
 	color = 2,
 	baseEffectiveness = 1.0199999809265,
@@ -2241,7 +2350,7 @@ skills["MonsterLightningArrow"] = {
 	},
 }
 skills["MonsterLightningThorns"] = {
-	name = "Lightning Thorns",
+	name = "闪电刺棘",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.1100000143051,
@@ -2273,7 +2382,7 @@ skills["MonsterLightningThorns"] = {
 	},
 }
 skills["MonsterMultiFireballSpectre"] = {
-	name = "Multi Fireball",
+	name = "多重火球",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 0.77780002355576,
@@ -2312,7 +2421,7 @@ skills["MonsterMultiFireballSpectre"] = {
 	},
 }
 skills["MonsterMultiIceSpear"] = {
-	name = "Multi Ice Spear",
+	name = "多重冰矛",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 1.5908999443054,
@@ -2351,7 +2460,7 @@ skills["MonsterMultiIceSpear"] = {
 	},
 }
 skills["MonsterProjectileWeakness"] = {
-	name = "Projectile Weakness",
+	name = "投射物要害",
 	hidden = true,
 	color = 2,
 	description = "对目标区域施放诅咒, 受到诅咒的敌人将更容易被投射物穿透, 击退以及受到更多投射物造成的伤害.",
@@ -2419,7 +2528,7 @@ skills["MonsterProximityShield"] = {
 	},
 }
 skills["MonsterPuncture"] = {
-	name = "Puncture",
+	name = "放血",
 	hidden = true,
 	color = 2,
 	description = "对目标进行一个放血攻击, 对其造成一个流血的减益效果. 该减益受到技能持续时间词缀的影响. 流血中的目标在移动时会受到更多的伤害. 限定弓, 匕首, 爪与剑.",
@@ -2464,7 +2573,7 @@ skills["MonsterPuncture"] = {
 	},
 }
 skills["MonsterRighteousFireWhileSpectred"] = {
-	name = "Unrighteous Fire",
+	name = "不洁之火",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 1.1110999584198,
@@ -2497,7 +2606,7 @@ skills["MonsterRighteousFireWhileSpectred"] = {
 	},
 }
 skills["MonsterShockNova"] = {
-	name = "Shock Nova",
+	name = "闪电新星",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 1.2374999523163,
@@ -2535,7 +2644,7 @@ skills["MonsterShockNova"] = {
 	},
 }
 skills["MonsterSpark"] = {
-	name = "Spark",
+	name = "电球",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 0.83749997615814,
@@ -2589,7 +2698,7 @@ skills["MonsterSpark"] = {
 	},
 }
 skills["MonsterSplitFireballSpectre"] = {
-	name = "Split Fireball",
+	name = "分裂火球",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 0.95560002326965,
@@ -2628,7 +2737,7 @@ skills["MonsterSplitFireballSpectre"] = {
 	},
 }
 skills["MonsterSplitIceSpear"] = {
-	name = "Split Ice Spear",
+	name = "分裂冰矛",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 1.5908999443054,
@@ -2667,7 +2776,7 @@ skills["MonsterSplitIceSpear"] = {
 	},
 }
 skills["MonsterWarlordsMark"] = {
-	name = "Warlord's Mark",
+	name = "督军印记",
 	hidden = true,
 	color = 1,
 	description = "对目标区域施放诅咒, 受到诅咒的敌人将更容易被晕眩, 更慢恢复. 在击中带有印记的敌人时会获得额外的生命与魔力偷取, 此外在击败带有印记的敌人时会有机会获得耐力球.",
@@ -2705,7 +2814,7 @@ skills["MonsterWarlordsMark"] = {
 	},
 }
 skills["NecromancerConductivity"] = {
-	name = "Conductivity",
+	name = "导电",
 	hidden = true,
 	color = 3,
 	description = "对目标区域施放诅咒, 使受到诅咒敌人的闪电抗性降低, 并在受到闪电伤害时有几率被感电.",
@@ -2748,7 +2857,7 @@ skills["NecromancerConductivity"] = {
 	},
 }
 skills["NecromancerElementalWeakness"] = {
-	name = "Elemental Weakness",
+	name = "元素要害",
 	hidden = true,
 	color = 3,
 	description = "对目标区域施放诅咒, 受到诅咒的敌人对于元素的抗性将会降低.",
@@ -2793,7 +2902,7 @@ skills["NecromancerElementalWeakness"] = {
 	},
 }
 skills["NecromancerEnfeeble"] = {
-	name = "Enfeeble",
+	name = "衰弱",
 	hidden = true,
 	color = 3,
 	description = "对目标区域施放诅咒, 受到诅咒的敌人所造成的攻击或法术将会比较无力.",
@@ -2831,7 +2940,7 @@ skills["NecromancerEnfeeble"] = {
 	},
 }
 skills["NecromancerFlammability"] = {
-	name = "Flammability",
+	name = "易燃",
 	hidden = true,
 	color = 3,
 	description = "对目标区域施放诅咒, 使受到诅咒敌人的火焰抗性降低, 并在受到火焰伤害时有几率被点燃.",
@@ -2874,7 +2983,7 @@ skills["NecromancerFlammability"] = {
 	},
 }
 skills["NecromancerFrostbite"] = {
-	name = "Frostbite",
+	name = "冻伤",
 	hidden = true,
 	color = 3,
 	description = "对目标区域施放诅咒, 使受到诅咒敌人的冰霜抗性降低, 并在受到冰霜伤害时有几率被冰冻.",
@@ -2917,7 +3026,7 @@ skills["NecromancerFrostbite"] = {
 	},
 }
 skills["NecromancerProjectileWeakness"] = {
-	name = "Projectile Weakness",
+	name = "投射物要害",
 	hidden = true,
 	color = 2,
 	description = "对目标区域施放诅咒, 受到诅咒的敌人将更容易被投射物穿透, 击退以及受到更多投射物造成的伤害.",
@@ -2957,7 +3066,7 @@ skills["NecromancerProjectileWeakness"] = {
 	},
 }
 skills["NecromancerRaiseZombie"] = {
-	name = "Raise Zombie",
+	name = "魔卫复苏",
 	hidden = true,
 	color = 4,
 	description = "从一个灵柩中复苏一只魔卫, 它会跟随你并攻击敌人。魔卫会近战攻击，也会使用一种无法闪避的范围重击。",
@@ -2994,7 +3103,7 @@ skills["NecromancerRaiseZombie"] = {
 	},
 }
 skills["NecromancerVulnerability"] = {
-	name = "Vulnerability",
+	name = "脆弱",
 	hidden = true,
 	color = 4,
 	description = "对目标区域施放诅咒, 受到诅咒的敌人将会受到增加的物理伤害及物理持续伤害.  攻击被诅咒的目标有机会造成流血和瘫痪效果。",
@@ -3032,7 +3141,7 @@ skills["NecromancerVulnerability"] = {
 	},
 }
 skills["PyroChaosFireball"] = {
-	name = "Chaos Fireball",
+	name = "混沌火球",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.3555999994278,
@@ -3072,7 +3181,7 @@ skills["PyroChaosFireball"] = {
 	},
 }
 skills["PyroFireball"] = {
-	name = "Fireball",
+	name = "火球",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.1888999938965,
@@ -3111,7 +3220,7 @@ skills["PyroFireball"] = {
 	},
 }
 skills["PyroSuicideExplosion"] = {
-	name = "Suicide Explosion",
+	name = "自爆",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 2.2667000293732,
@@ -3155,7 +3264,7 @@ skills["PyroSuicideExplosion"] = {
 	},
 }
 skills["RevenantSpellProjectileSpectre"] = {
-	name = "Lightning Projectile",
+	name = "闪电投射物",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1,
@@ -3194,7 +3303,7 @@ skills["RevenantSpellProjectileSpectre"] = {
 	},
 }
 skills["SeawitchFrostbolt"] = {
-	name = "Frostbolt",
+	name = "寒冰弹",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 2.0455000400543,
@@ -3232,7 +3341,7 @@ skills["SeawitchFrostbolt"] = {
 	},
 }
 skills["SeaWitchScreech"] = {
-	name = "Screech",
+	name = "惊悚之灵",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 0.27270001173019,
@@ -3270,7 +3379,7 @@ skills["SeaWitchScreech"] = {
 	},
 }
 skills["SeaWitchWave"] = {
-	name = "Wave",
+	name = "震波",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.4636000394821,
@@ -3305,7 +3414,7 @@ skills["SeaWitchWave"] = {
 	},
 }
 skills["SkeletonMassBowProjectile"] = {
-	name = "Puncture",
+	name = "放血",
 	hidden = true,
 	color = 4,
 	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [68] = true, [10] = true, [57] = true, },
@@ -3338,7 +3447,7 @@ skills["SkeletonMassBowProjectile"] = {
 	},
 }
 skills["SkeletonSpark"] = {
-	name = "Spark",
+	name = "电球",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 0.75,
@@ -3391,7 +3500,7 @@ skills["SkeletonSpark"] = {
 	},
 }
 skills["SkeletonTemporalChains"] = {
-	name = "Temporal Chains",
+	name = "时空锁链",
 	hidden = true,
 	color = 4,
 	description = "对目标区域施放诅咒, 受到诅咒的敌人变慢, 并且延长它们所受到的效果之持续时间.",
@@ -3427,7 +3536,7 @@ skills["SkeletonTemporalChains"] = {
 	},
 }
 skills["SkeletonVulnerability"] = {
-	name = "Vulnerability",
+	name = "脆弱",
 	hidden = true,
 	color = 4,
 	description = "对目标区域施放诅咒, 受到诅咒的敌人将会受到增加的物理伤害及物理持续伤害.  攻击被诅咒的目标有机会造成流血和瘫痪效果。",
@@ -3464,7 +3573,7 @@ skills["SkeletonVulnerability"] = {
 	},
 }
 skills["SnakeSpineProjectile"] = {
-	name = "Spine Attack",
+	name = "脊刺攻击",
 	hidden = true,
 	color = 4,
 	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [68] = true, [10] = true, [57] = true, },
@@ -3494,7 +3603,7 @@ skills["SnakeSpineProjectile"] = {
 	},
 }
 skills["SolarisChampionFlameVortex"] = {
-	name = "Flame Vortex",
+	name = "烈焰灵旋",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.6000000238419,
@@ -3532,7 +3641,7 @@ skills["SolarisChampionFlameVortex"] = {
 	},
 }
 skills["SpecialBeamCannon"] = {
-	name = "Beam",
+	name = "光柱",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 4.1556000709534,
@@ -3569,7 +3678,7 @@ skills["SpecialBeamCannon"] = {
 	},
 }
 skills["TarMortarTaster"] = {
-	name = "Tar Projectile",
+	name = "炮击投射物",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.3332999944687,
@@ -3612,7 +3721,7 @@ skills["TarMortarTaster"] = {
 	},
 }
 skills["UndyingWhirlingBlades"] = {
-	name = "Whirling Blades",
+	name = "回旋之刃",
 	hidden = true,
 	color = 4,
 	description = "迅速穿越敌人并同时造成武器伤害. 限定匕首, 爪以及单手剑. ",
@@ -3696,5 +3805,116 @@ skills["WickerManMoltenStrike"] = {
 	statInterpolation = { 1, 1, 1, 1, 1, },
 	statLevels = {
 		[1] = { 60, 4, 20, 10, -40, },
+	},
+}
+skills["VaalincursionMortar"] = {
+	name = "物理炮击",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 2.5,
+	incrementalEffectiveness = 0.029999999329448,
+	description = "通用的怪物炮击技能. 与怪物投射物相似, 但带有冲击效果.",
+	skillTypes = { [3] = true, [68] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, },
+	baseFlags = {
+		spell = true,
+		projectile = true,
+		area = true,
+	},
+	baseMods = {
+		skill("castTime", 1.2),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"projectile_spread_radius",
+		"spell_minimum_base_physical_damage",
+		"spell_maximum_base_physical_damage",
+		"skill_physical_damage_%_to_convert_to_chaos",
+		"spell_maximum_action_distance_+%",
+		"is_area_damage",
+		"base_is_projectile",
+	},
+	statInterpolation = { 1, 3, 3, 1, 1, },
+	statLevels = {
+		[1] = { 10, 0.80000001192093, 1.2000000476837, 0, -40, nil, nil, },
+	},
+}
+skills["VaalIncursionFirestorm"] = {
+	name = "烈焰风暴",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 4.4443998336792,
+	incrementalEffectiveness = 0.03999999910593,
+	description = "低语呢喃, 呼唤无数火焰之球如雨一般洒落在目标区域. 每颗火球落地时将会爆炸, 并对周围的敌人造成伤害.",
+	skillTypes = { [2] = true, [10] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [33] = true, [67] = true, },
+	baseFlags = {
+		spell = true,
+		area = true,
+		duration = true,
+	},
+	baseMods = {
+		skill("castTime", 1.2),
+		skill("cooldown", 6),
+		skill("showAverage", true),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"base_skill_effect_duration",
+		"fire_storm_fireball_delay_ms",
+		"firestorm_base_area_of_effect_+%",
+		"monster_penalty_against_minions_damage_+%_final_vs_player_minions",
+		"is_area_damage",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 600, 200, 100, 0, nil, },
+	},
+}
+skills["VaalIncursionSpecialBeamCannonBlood"] = {
+	name = "物理光柱",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 2,
+	incrementalEffectiveness = 0.035000000149012,
+	skillTypes = { [2] = true, [10] = true, },
+	baseFlags = {
+		spell = true,
+		area = true,
+	},
+	baseMods = {
+		skill("castTime", 1.5),
+		skill("cooldown", 8),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 83, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_physical_damage",
+		"spell_maximum_base_physical_damage",
+		"is_area_damage",
+	},
+	statInterpolation = { 3, 3, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, nil, },
 	},
 }

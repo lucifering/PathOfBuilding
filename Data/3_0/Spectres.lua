@@ -281,6 +281,30 @@ minions["Metadata/Monsters/BloodChieftain/MonkeyChiefBloodEnrage"] = {
 		-- MonsterCastsMassFrenzyText
 	},
 }
+minions["Metadata/Monsters/BloodChieftain/MonkeyChiefBloodParasite"] = {
+	name = "宿主酋长",
+	life = 1.5,
+	fireResist = 75,
+	coldResist = 0,
+	lightningResist = 0,
+	chaosResist = 0,
+	damage = 1.5,
+	damageSpread = 0.2,
+	attackTime = 1.905,
+	attackRange = 5,
+	damageFixup = 0.22,
+	weaponType1 = "One Handed Mace",
+	skillList = {
+		"Melee",
+		"BloodChieftainSummonParasiteMonkeys",
+		"MassPower",
+	},
+	modList = {
+		-- MonsterSpeedAndDamageFixupLarge
+		-- MonsterSummonsMonkeysText
+		-- MonsterUsesMassPowerText
+	},
+}
 -- Bull
 minions["Metadata/Monsters/Bull/Bull"] = {
 	name = "战斗公牛",
@@ -940,6 +964,67 @@ minions["Metadata/Monsters/KaomWarrior/KaomWarrior7"] = {
 	},
 }
 -- Kitava's Cultist
+minions["Metadata/Monsters/KitavaCultist/VaalCultistSpearBloodChampionDelve"] = {
+	name = "复活的瓦尔拥护者",
+	life = 5.4,
+	fireResist = 35,
+	coldResist = 35,
+	lightningResist = 35,
+	chaosResist = 35,
+	damage = 1.5,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 12,
+	weaponType1 = "One Handed Sword",
+	skillList = {
+		"VaalincursionMortar",
+		"VaalIncursionSpecialBeamCannonBlood",
+	},
+	modList = {
+		-- MonsterDelveDropModifiers
+	},
+}
+minions["Metadata/Monsters/KitavaCultist/VaalCultistSpearChaosChampionDelve"] = {
+	name = "复活的瓦尔拥护者",
+	life = 5.4,
+	fireResist = 35,
+	coldResist = 35,
+	lightningResist = 35,
+	chaosResist = 35,
+	damage = 1.5,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 12,
+	weaponType1 = "One Handed Sword",
+	skillList = {
+		"FireballIncursionChaos",
+		"IncursionSummonPhantasms",
+		"IncursionMeteorUpheaval",
+	},
+	modList = {
+		-- MonsterDelveDropModifiers
+	},
+}
+minions["Metadata/Monsters/KitavaCultist/VaalCultistSpearFireChampionDelve_"] = {
+	name = "复活的瓦尔拥护者",
+	life = 5.4,
+	fireResist = 35,
+	coldResist = 35,
+	lightningResist = 35,
+	chaosResist = 35,
+	damage = 1.5,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 12,
+	weaponType1 = "One Handed Sword",
+	skillList = {
+		"FireballIncusionFire",
+		"VaalIncursionFirestorm",
+	},
+	modList = {
+		-- MonsterDelveDropModifiers
+	},
+}
 minions["Metadata/Monsters/KitavaCultist/VaalCultistSpearLightningChampionDelve_"] = {
 	name = "复活的瓦尔拥护者",
 	life = 5.4,

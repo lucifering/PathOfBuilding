@@ -120,6 +120,11 @@ skills["SupportSpiritStrike"] = {
 	requireSkillTypes = { 25, },
 	addSkillTypes = { },
 	excludeSkillTypes = { 47, 43, },
+	statMap = {
+		["support_spirit_strike_damage_+%_final"] = {
+			mod("Damage", "MORE", nil),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 40),
 	},
@@ -333,6 +338,11 @@ skills["SupportBloodlust"] = {
 	requireSkillTypes = { 24, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_bloodlust_melee_physical_damage_+%_final_vs_bleeding_enemies"] = {
+			mod("PhysicalDamage", "MORE", nil, ModFlag.Melee, 0, { type = "ActorCondition", actor = "enemy", var = "Bleeding" }),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 25),
 	},
@@ -440,6 +450,11 @@ skills["SupportBrutality"] = {
 	requireSkillTypes = { 10, 1, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_brutality_physical_damage_+%_final"] = {
+			mod("PhysicalDamage", "MORE", nil),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 30),
 	},
@@ -548,6 +563,11 @@ skills["SupportIncreasedBurningDamage"] = {
 	requireSkillTypes = { 10, 1, 29, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_burning_damage_+%_final"] = {
+			mod("FireDamage", "MORE", nil, 0, KeywordFlag.FireDot),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 20),
 	},
@@ -654,6 +674,11 @@ skills["SupportCastOnMeleeKill"] = {
 	requireSkillTypes = { 24, 36, },
 	addSkillTypes = { 42, },
 	excludeSkillTypes = { 37, 41, 30, 15, 61, },
+	statMap = {
+		["support_cast_on_melee_kill_spell_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, ModFlag.Spell),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 40),
 		skill("cooldown", 0.25),
@@ -763,6 +788,11 @@ skills["SupportCastOnDamageTaken"] = {
 	requireSkillTypes = { 36, },
 	addSkillTypes = { 42, },
 	excludeSkillTypes = { 37, 41, 30, 44, 61, },
+	statMap = {
+		["cast_on_damage_taken_damage_+%_final"] = {
+			mod("Damage", "MORE", nil),
+		},
+	},
 	baseMods = {
 		skill("cooldown", 0.25),
 	},
@@ -876,6 +906,11 @@ skills["SupportChanceToBleed"] = {
 	requireSkillTypes = { 1, },
 	addSkillTypes = { },
 	excludeSkillTypes = { 9, },
+	statMap = {
+		["support_chance_to_bleed_bleeding_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, 0, KeywordFlag.Bleed),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 10),
 	},
@@ -1093,6 +1128,11 @@ skills["SupportMeleeDamageOnFullLife"] = {
 	requireSkillTypes = { 1, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_damage_while_on_full_life_+%_final"] = {
+			mod("Damage", "MORE", nil, 0, 0, { type = "Condition", var = "FullLife" }),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 30),
 	},
@@ -1199,6 +1239,11 @@ skills["SupportWeaponElementalDamage"] = {
 	requireSkillTypes = { 1, 56, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_attack_skills_elemental_damage_+%_final"] = {
+			mod("ElementalDamage", "MORE", nil, 0, KeywordFlag.Attack),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 40),
 	},
@@ -1306,6 +1351,11 @@ skills["SupportAdditionalLevel"] = {
 	addSkillTypes = { },
 	excludeSkillTypes = { },
 	supportGemsOnly = true,
+	statMap = {
+		["supported_active_skill_gem_level_+"] = {
+			mod("GemProperty", "LIST", { keyword = "active_skill", key = "level", value = nil }),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 25),
 	},
@@ -1352,6 +1402,11 @@ skills["EnduranceChargeOnMeleeStun"] = {
 	requireSkillTypes = { 24, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["endurance_charge_on_melee_stun_damage_+%_final_per_endurance_charge"] = {
+			mod("Damage", "MORE", nil, 0, 0, { type = "Multiplier", var = "EnduranceCharge" }),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 10),
 	},
@@ -1674,6 +1729,11 @@ skills["SupportGenerosity"] = {
 	requireSkillTypes = { 44, },
 	addSkillTypes = { },
 	excludeSkillTypes = { 30, 32, 64, },
+	statMap = {
+		["aura_cannot_affect_self"] = {
+			skill("auraCannotAffectSelf", true),
+		},
+	},
 	baseMods = {
 	},
 	levelMods = {
@@ -2309,6 +2369,14 @@ skills["SupportReducedDuration"] = {
 	requireSkillTypes = { 12, 55, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_reduced_duration_skill_effect_duration_+%_final"] = {
+			mod("Duration", "MORE", nil),
+		},
+		["support_reduced_duration_damage_+%_final"] = {
+			mod("Damage", "MORE", nil),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 20),
 	},
@@ -2629,6 +2697,14 @@ skills["SupportMaim"] = {
 	requireSkillTypes = { 1, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_maim_chance_physical_damage_+%_final"] = {
+			mod("PhysicalDamage", "MORE", nil),
+		},
+		["support_maimed_enemies_physical_damage_taken_+%"] = {
+			mod("PhysicalDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "Maim" }, { type = "Condition", var = "Maimed" }),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 15),
 	},
@@ -2737,6 +2813,14 @@ skills["SupportMeleePhysicalDamage"] = {
 	requireSkillTypes = { 24, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
+	statMap = {
+		["support_melee_physical_damage_+%_final"] = {
+			mod("PhysicalDamage", "MORE", nil, ModFlag.Melee),
+		},
+		["support_melee_physical_damage_poison_and_bleeding_damage_+%_final_from_melee_hits"] = {
+			mod("Damage", "MORE", nil, 0, bit.bor(KeywordFlag.Bleed, KeywordFlag.Poison)),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 40),
 	},
@@ -2953,6 +3037,14 @@ skills["SupportMultistrike"] = {
 	requireSkillTypes = { 28, },
 	addSkillTypes = { },
 	excludeSkillTypes = { 43, },
+	statMap = {
+		["support_multiple_attack_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, ModFlag.Attack),
+		},
+		["support_multiple_attacks_melee_attack_speed_+%_final"] = {
+			mod("Speed", "MORE", nil, bit.bor(ModFlag.Attack, ModFlag.Melee)),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 80),
 	},
@@ -3063,6 +3155,14 @@ skills["SupportRangedAttackTotem"] = {
 	excludeSkillTypes = { },
 	addFlags = {
 		totem = true,
+	},
+	statMap = {
+		["support_attack_totem_attack_speed_+%_final"] = {
+			mod("Speed", "MORE", nil, ModFlag.Attack),
+		},
+		["support_totem_damage_+%_final"] = {
+			mod("Damage", "MORE", nil),
+		},
 	},
 	baseMods = {
 		mod("ManaCost", "MORE", 100),
@@ -3282,6 +3382,18 @@ skills["SupportRuthless"] = {
 	requireSkillTypes = { 24, },
 	addSkillTypes = { },
 	excludeSkillTypes = { 58, 65, },
+	statMap = {
+		["support_ruthless_big_hit_stun_base_duration_override_ms"] = {
+			skill("baseStunDuration", nil),
+			div = 1000,
+		},
+		["support_ruthless_big_hit_max_count"] = {
+			mod("RuthlessBlowMaxCount", "BASE", nil),
+		},
+		["support_ruthless_big_hit_damage_+%_final"] = {
+			mod("RuthlessBlowMultiplier", "BASE", nil, ModFlag.Melee),
+		},
+	},
 	baseMods = {
 		mod("ManaCost", "MORE", 10),
 	},
@@ -3393,6 +3505,11 @@ skills["SupportSpellTotem"] = {
 	excludeSkillTypes = { 61, },
 	addFlags = {
 		totem = true,
+	},
+	statMap = {	
+		["support_spell_totem_cast_speed_+%_final"] = {
+			mod("Speed", "MORE", nil, ModFlag.Cast),
+		},
 	},
 	baseMods = {
 		mod("ManaCost", "MORE", 100),

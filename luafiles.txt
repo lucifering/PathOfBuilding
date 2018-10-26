@@ -123,6 +123,7 @@ Data/3_0/ModJewel.lua
 Data/3_0/ModJewelAbyss.lua
 Data/3_0/ModMaster.lua
 Data/3_0/Rares.lua
+Data/3_0/SkillStatMap.lua
 Data/3_0/Spectres.lua
 Data/3_0/Skills/act_dex.lua
 Data/3_0/Skills/act_int.lua

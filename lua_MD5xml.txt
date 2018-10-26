@@ -123,6 +123,7 @@
 <File sha1="351012331dac4ee5bde5e3a65d9996e80dd21eb6" name="Data/3_0/ModJewelAbyss.lua" part="program"/>
 <File sha1="c7cdafbfcb319c8a73105007e6a03624fa2517c8" name="Data/3_0/ModMaster.lua" part="program"/>
 <File sha1="4a90c31eecfd40cf06c05d50db875e209fd33c3f" name="Data/3_0/Rares.lua" part="program"/>
+<File sha1="0bf50f50076c7657d5e018e350b011cad00a9507" name="Data/3_0/SkillStatMap.lua" part="program"/>
 <File sha1="c5e323aff231dddea02d3b4843c68df1097bc406" name="Data/3_0/Spectres.lua" part="program"/>
 <File sha1="2e9cdd8c6a6da370bf3a7feee2c261d8b42fe448" name="Data/3_0/Skills/act_dex.lua" part="program"/>
 <File sha1="1a11daa3d4751dbb4406a5ccc8863649691a3405" name="Data/3_0/Skills/act_int.lua" part="program"/>

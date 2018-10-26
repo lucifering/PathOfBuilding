@@ -6,10 +6,58 @@
 --
 local skills, mod, flag, skill = ...
 
+skills["AxisDoubleStrikeTrigger"] = {
+	name = "双重打击",
+	hidden = true,
+	color = 2,
+	description = "使用你的主手近战武器对着目标进行两次快速的攻击.",
+	skillTypes = { [1] = true, [7] = true, [25] = true, [28] = true, [24] = true, },
+	weaponTypes = {
+		["One Handed Sword"] = true,
+		["Two Handed Mace"] = true,
+		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
+		["Claw"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
+	},
+	baseFlags = {
+		attack = true,
+		melee = true,
+	},
+	baseMods = {
+		skill("castTime", 1),
+		skill("cooldown", 2),
+		skill("dpsMultiplier", 2),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
+	qualityStats = {
+		{ "attack_speed_+%", 0.5 },
+	},
+	stats = {
+		"physical_damage_+%",
+		"base_skill_number_of_additional_hits",
+	},
+	statInterpolation = { 1, 1, },
+	statLevels = {
+		[1] = { 0, 1, },
+	},
+}
 skills["BanditExplosiveArrow"] = {
 	name = "Explosive Arrow",
 	hidden = true,
 	color = 4,
+	baseEffectiveness = 1.866700053215,
+	incrementalEffectiveness = 0.037999998778105,
 	description = "射出一发带着引线充满爆炸能量的箭矢. 当被命中的目标死亡或是引线烧完, 该箭矢将会爆炸并对周围的敌人造成火焰伤害. 再次被爆炸箭矢命中会延长爆炸的时间. 爆炸的范围大小将视目标被击中的箭数所决定.",
 	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [68] = true, [10] = true, [11] = true, [12] = true, [22] = true, [17] = true, [19] = true, [33] = true, },
 	weaponTypes = {
@@ -22,28 +70,37 @@ skills["BanditExplosiveArrow"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		skill("CritChance", 6), 
-		skill("duration", 1), --"base_skill_effect_duration" = 1000
-		skill("radiusExtra", 2, { type = "Multiplier", var = "ExplosiveArrowFuse" }), --"fuse_arrow_explosion_radius_+_per_fuse_arrow_orb" = 2
-		--"active_skill_attack_damage_+%_final" = 0
-		--"skill_can_fire_arrows" = 1
-		--"base_is_projectile" = 1
-		skill("showAverage", true), 
-	},
-	qualityMods = {
+		skill("castTime", 1),
+		skill("CritChance", 6),
+		skill("showAverage", true),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("manaCost", nil), 
-		[3] = skill("FireMin", nil, { type = "Multiplier", var = "ExplosiveArrowFuse" }), --"minimum_fire_damage_per_fuse_arrow_orb"
-		[4] = skill("FireMax", nil, { type = "Multiplier", var = "ExplosiveArrowFuse" }), --"maximum_fire_damage_per_fuse_arrow_orb"
+		[1] = skill("levelRequirement", nil),
+		[2] = skill("manaCost", nil),
 	},
 	levels = {
-		[1] = { 2, 5, 7, 10, },
-		[2] = { 10, 5, 15, 22, },
-		[3] = { 20, 4, 33, 49, },
-		[4] = { 68, 4, 764, 1146, },
+		[1] = { 2, 5, },
+		[2] = { 10, 5, },
+		[3] = { 20, 4, },
+		[4] = { 68, 4, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+		"minimum_fire_damage_per_fuse_arrow_orb",
+		"maximum_fire_damage_per_fuse_arrow_orb",
+		"fuse_arrow_explosion_radius_+_per_fuse_arrow_orb",
+		"active_skill_attack_damage_+%_final",
+		"skill_can_fire_arrows",
+		"base_is_projectile",
+	},
+	statInterpolation = { 1, 3, 3, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 1000, 0.80000001192093, 1.2000000476837, 2, 0, 1, 1, },
+		[2] = { 1000, 0.80000001192093, 1.2000000476837, 2, 0, 1, 1, },
+		[3] = { 1000, 0.80000001192093, 1.2000000476837, 2, 0, 1, 1, },
+		[4] = { 1000, 1.2000000476837, 1.7999999523163, 2, 0, 1, 1, },
 	},
 }
 skills["BeastCleave"] = {
@@ -65,22 +122,28 @@ skills["BeastCleave"] = {
 		area = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		skill("manaCost", 14), 
-		mod("Damage", "MORE", -40, 0, 0, { type = "Condition", var = "DualWielding" }), --"cleave_damage_+%_final_while_dual_wielding" = -40
-		--"is_area_damage" = 1
-		mod("PhysicalDamage", "INC", 31), --"physical_damage_+%" = 31
-		skill("doubleHitsWhenDualWielding", true), --"skill_double_hits_when_dual_wielding" = 1
-		mod("Speed", "INC", -30, ModFlag.Attack, 0, nil), --"attack_speed_+%" = -30
-		--"skill_sound_variation" = 1
-	},
-	qualityMods = {
+		skill("castTime", 1),
+		skill("manaCost", 14),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 4, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"cleave_damage_+%_final_while_dual_wielding",
+		"is_area_damage",
+		"physical_damage_+%",
+		"skill_double_hits_when_dual_wielding",
+		"attack_speed_+%",
+		"skill_sound_variation",
+	},
+	statInterpolation = { 1, 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { -40, 1, 31, 1, -30, 1, },
 	},
 }
 skills["BirdmanBloodProjectile"] = {
@@ -93,18 +156,10 @@ skills["BirdmanBloodProjectile"] = {
 		projectile = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		mod("Speed", "INC", 100, ModFlag.Attack, 0, nil), --"attack_speed_+%" = 100
-		mod("Damage", "MORE", 10), --"active_skill_damage_+%_final" = 10
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-		--"projectile_spread_radius" = 15
-		--"base_is_projectile" = ?
-		--"spell_maximum_action_distance_+%" = -15
-	},
-	qualityMods = {
+		skill("castTime", 1),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 4, },
@@ -113,6 +168,25 @@ skills["BirdmanBloodProjectile"] = {
 		[4] = { 39, },
 		[5] = { 55, },
 		[6] = { 66, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"attack_speed_+%",
+		"active_skill_damage_+%_final",
+		"active_skill_area_of_effect_radius_+%_final",
+		"projectile_spread_radius",
+		"base_is_projectile",
+		"spell_maximum_action_distance_+%",
+	},
+	statInterpolation = { 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 100, 10, 0, 15, nil, -15, },
+		[2] = { 100, 10, 0, 15, nil, -15, },
+		[3] = { 100, 10, 0, 15, nil, -15, },
+		[4] = { 100, 10, 0, 15, nil, -15, },
+		[5] = { 100, 10, 0, 15, nil, -15, },
+		[6] = { 100, 10, 0, 15, nil, nil, },
 	},
 }
 skills["BirdmanConsumeCorpse"] = {
@@ -124,15 +198,63 @@ skills["BirdmanConsumeCorpse"] = {
 		spell = true,
 	},
 	baseMods = {
-		skill("castTime", 2.67), 
-	},
-	qualityMods = {
+		skill("castTime", 2.67),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 0, },
+	},
+	qualityStats = {
+	},
+	stats = {
+	},
+	statInterpolation = { },
+	statLevels = {
+		[1] = { },
+	},
+}
+skills["BreachCleave"] = {
+	name = "劈砍",
+	hidden = true,
+	color = 1,
+	description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 并同时对多名敌人造成伤害. 限定斧与剑.",
+	skillTypes = { [1] = true, [8] = true, [11] = true, [28] = true, [24] = true, [53] = true, },
+	weaponTypes = {
+		["One Handed Sword"] = true,
+		["Two Handed Sword"] = true,
+		["One Handed Axe"] = true,
+		["Two Handed Axe"] = true,
+		["Thrusting One Handed Sword"] = true,
+	},
+	baseFlags = {
+		attack = true,
+		melee = true,
+		area = true,
+	},
+	baseMods = {
+		skill("castTime", 1),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"cleave_damage_+%_final_while_dual_wielding",
+		"physical_damage_+%",
+		"monster_penalty_against_minions_damage_+%_final_vs_player_minions",
+		"skill_physical_damage_%_to_convert_to_fire",
+		"is_area_damage",
+		"skill_double_hits_when_dual_wielding",
+	},
+	statInterpolation = { 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { -40, 29, -20, 50, nil, nil, },
 	},
 }
 skills["BullCharge"] = {
@@ -145,25 +267,121 @@ skills["BullCharge"] = {
 		melee = true,
 	},
 	baseMods = {
-		skill("castTime", 2.75), 
-		skill("cooldown", 4), 
-		--"skill_art_variation" = 1
-		mod("Damage", "MORE", 15), --"active_skill_damage_+%_final" = 15
-	},
-	qualityMods = {
+		skill("castTime", 2.75),
+		skill("cooldown", 4),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 2, },
 		[2] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"skill_art_variation",
+		"active_skill_damage_+%_final",
+	},
+	statInterpolation = { 1, 1, },
+	statLevels = {
+		[1] = { 1, 15, },
+		[2] = { 1, nil, },
+	},
+}
+skills["CageSpiderCycloneTriggerSandstorms"] = {
+	name = "旋风斩",
+	hidden = true,
+	color = 2,
+	description = "对周围敌人造成伤害, 接而进行一连串的旋转攻击, 边向目标地点前进边攻击路径上的敌人, 无法被多重打击和无情辅助.",
+	skillTypes = { [1] = true, [11] = true, [24] = true, [38] = true, [65] = true, },
+	weaponTypes = {
+		["One Handed Sword"] = true,
+		["Two Handed Mace"] = true,
+		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["None"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
+		["Claw"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
+	},
+	baseFlags = {
+		attack = true,
+		melee = true,
+		area = true,
+	},
+	baseMods = {
+		skill("castTime", 1),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 2, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"active_skill_attack_speed_+%_final",
+		"cyclone_movement_speed_+%_final",
+		"active_skill_damage_+%_final",
+		"monster_penalty_against_minions_damage_+%_final_vs_player_minions",
+		"cyclone_extra_distance",
+		"is_area_damage",
+		"cyclone_has_triggered_skill",
+	},
+	statInterpolation = { 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 150, 0, -60, -40, 40, nil, nil, },
+	},
+}
+skills["CageSpiderSandSpark"] = {
+	name = "Sandstorm",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 0.64999997615814,
+	incrementalEffectiveness = 0.031399998813868,
+	description = "施放出多颗变幻莫测的电球, 这些电球将会随机移动直到撞到敌人或是自然消失.",
+	skillTypes = { [2] = true, [3] = true, [68] = true, [10] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [45] = true, [35] = true, },
+	baseFlags = {
+		spell = true,
+		projectile = true,
+		duration = true,
+	},
+	baseMods = {
+		skill("castTime", 0.65),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 61, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_physical_damage",
+		"spell_maximum_base_physical_damage",
+		"base_skill_effect_duration",
+		"base_projectile_speed_+%",
+		"cast_on_cyclone_contact_%",
+		"base_is_projectile",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 2000, -50, 100, nil, },
 	},
 }
 skills["ChaosDegenAura"] = {
 	name = "Chaos Aura",
 	hidden = true,
 	color = 4,
+	baseEffectiveness = 0.93330001831055,
+	incrementalEffectiveness = 0.036499999463558,
 	skillTypes = { [2] = true, [5] = true, [11] = true, [15] = true, [40] = true, [44] = true, [50] = true, },
 	baseFlags = {
 		spell = true,
@@ -172,41 +390,55 @@ skills["ChaosDegenAura"] = {
 		chaos = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		skill("ChaosDot", 1.2833333333333), --"base_chaos_damage_to_deal_per_minute" = 77
-	},
-	qualityMods = {
+		skill("castTime", 1),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 3, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_chaos_damage_to_deal_per_minute",
+	},
+	statInterpolation = { 3, },
+	statLevels = {
+		[1] = { 16.666667039196, },
 	},
 }
 skills["DelayedBlastSpectre"] = {
 	name = "Delayed Blast",
 	hidden = true,
 	color = 4,
+	baseEffectiveness = 0.77999997138977,
+	incrementalEffectiveness = 0.03999999910593,
 	skillTypes = { [2] = true, [10] = true, [11] = true, [36] = true, },
 	baseFlags = {
 		spell = true,
 		area = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		skill("cooldown", 1.3), 
-		skill("PhysicalMin", 3), --"spell_minimum_base_physical_damage" = 3
-		skill("PhysicalMax", 5), --"spell_maximum_base_physical_damage" = 5
-		--"is_area_damage" = ?
-	},
-	qualityMods = {
+		skill("castTime", 1),
+		skill("cooldown", 1.3),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 3, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_physical_damage",
+		"spell_maximum_base_physical_damage",
+		"is_area_damage",
+	},
+	statInterpolation = { 3, 3, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, nil, },
 	},
 }
 skills["DemonFemaleRangedProjectile"] = {
@@ -219,25 +451,33 @@ skills["DemonFemaleRangedProjectile"] = {
 		projectile = true,
 	},
 	baseMods = {
-		skill("castTime", 2), 
-		--"spell_maximum_action_distance_+%" = -60
-		mod("Damage", "MORE", -60), --"active_skill_damage_+%_final" = -60
-		--"monster_reverse_point_blank_damage_-%_at_minimum_range" = 30
-		--"base_is_projectile" = ?
-	},
-	qualityMods = {
+		skill("castTime", 2),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 30, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_maximum_action_distance_+%",
+		"active_skill_damage_+%_final",
+		"monster_reverse_point_blank_damage_-%_at_minimum_range",
+		"base_is_projectile",
+	},
+	statInterpolation = { 1, 1, 1, },
+	statLevels = {
+		[1] = { -60, -60, 30, nil, },
 	},
 }
 skills["DemonModularBladeVortexSpectre"] = {
 	name = "Blade Vortex",
 	hidden = true,
 	color = 2,
+	baseEffectiveness = 0.59500002861023,
+	incrementalEffectiveness = 0.035999998450279,
 	description = "在你的四周召唤出虚空的武器, 以你为中心不断飞舞旋转, 将周围的敌人削成肉泥. ",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [12] = true, [18] = true, [26] = true, [36] = true, [27] = true, },
 	baseFlags = {
@@ -246,62 +486,116 @@ skills["DemonModularBladeVortexSpectre"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("castTime", 0.5), 
-		skill("CritChance", 6), 
-		skill("PhysicalMin", 2), --"spell_minimum_base_physical_damage" = 2
-		skill("PhysicalMax", 4), --"spell_maximum_base_physical_damage" = 4
-		skill("duration", 5), --"base_skill_effect_duration" = 5000
-		--"maximum_number_of_spinning_blades" = 5
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-		--"skill_repeat_count" = 2
-		--"is_area_damage" = ?
-		--"skill_can_add_multiple_charges_per_action" = ?
-		skill("hitTimeOverride", 1), 
-	},
-	qualityMods = {
+		skill("castTime", 0.5),
+		skill("CritChance", 6),
+		skill("hitTimeOverride", 1),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 3, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_physical_damage",
+		"spell_maximum_base_physical_damage",
+		"base_skill_effect_duration",
+		"maximum_number_of_spinning_blades",
+		"active_skill_area_of_effect_radius_+%_final",
+		"skill_repeat_count",
+		"is_area_damage",
+		"skill_can_add_multiple_charges_per_action",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 5000, 5, 0, 2, nil, nil, },
 	},
 }
 skills["ExperimenterDetonateDead"] = {
 	name = "Detonate Dead",
 	hidden = true,
 	color = 4,
+	baseEffectiveness = 1.5111000537872,
+	incrementalEffectiveness = 0.014299999922514,
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [33] = true, },
 	baseFlags = {
 		cast = true,
 		area = true,
 	},
 	baseMods = {
-		skill("castTime", 0.8), 
-		skill("CritChance", 5), 
-		--"is_area_damage" = 1
-		--"spell_maximum_action_distance_+%" = -70
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-		--"monster_penalty_against_minions_damage_+%_final_vs_player_minions" = -25
-	},
-	qualityMods = {
+		skill("castTime", 0.8),
+		skill("CritChance", 5),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("corpseExplosionLifeMultiplier", nil), --"corpse_explosion_monster_life_%"
-		[3] = skill("FireMin", nil), --"secondary_minimum_base_fire_damage"
-		[4] = skill("FireMax", nil), --"secondary_maximum_base_fire_damage"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 3, 0.07, 6, 9, },
-		[2] = { 33, 0.05, 29, 44, },
-		[3] = { 60, 0.04, 70, 105, },
+		[1] = { 3, },
+		[2] = { 33, },
+		[3] = { 60, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"corpse_explosion_monster_life_%",
+		"secondary_minimum_base_fire_damage",
+		"secondary_maximum_base_fire_damage",
+		"is_area_damage",
+		"spell_maximum_action_distance_+%",
+		"active_skill_area_of_effect_radius_+%_final",
+		"monster_penalty_against_minions_damage_+%_final_vs_player_minions",
+	},
+	statInterpolation = { 1, 3, 3, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 7, 0.80000001192093, 1.2000000476837, 1, -70, 0, -25, },
+		[2] = { 5, 0.80000001192093, 1.2000000476837, 1, -70, 0, -25, },
+		[3] = { 4, 0.80000001192093, 1.2000000476837, 1, -70, 0, -25, },
+	},
+}
+skills["FireballIncusionLightning"] = {
+	name = "Lightning Ball",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 1.0937999486923,
+	incrementalEffectiveness = 0.050000000745058,
+	description = "释放一颗球型火焰向前飞射, 接触到怪物时会爆炸并对周围敌人造成伤害",
+	skillTypes = { [3] = true, [68] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [33] = true, },
+	baseFlags = {
+		spell = true,
+		projectile = true,
+		area = true,
+	},
+	baseMods = {
+		skill("castTime", 1.2),
+		skill("CritChance", 6),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 0, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_lightning_damage",
+		"spell_maximum_base_lightning_damage",
+		"spell_maximum_action_distance_+%",
+		"base_is_projectile",
+	},
+	statInterpolation = { 3, 3, 1, },
+	statLevels = {
+		[1] = { 0.5, 1.5, -40, nil, },
 	},
 }
 skills["FireMonsterWhirlingBlades"] = {
 	name = "Fire Roll",
 	hidden = true,
 	color = 4,
+	baseEffectiveness = 1.0888999700546,
+	incrementalEffectiveness = 0.064599998295307,
 	description = "迅速穿越敌人并同时造成武器伤害. 限定匕首, 爪以及单手剑. ",
 	skillTypes = { [1] = true, [24] = true, [38] = true, },
 	weaponTypes = {
@@ -310,6 +604,12 @@ skills["FireMonsterWhirlingBlades"] = {
 		["Claw"] = true,
 		["Dagger"] = true,
 	},
+	statMap = {
+		["whirling_blades_base_ground_fire_damage_to_deal_per_minute"] = {
+			skill("FireDot", nil),
+			div = 60,
+		},
+	},
 	baseFlags = {
 		attack = true,
 		melee = true,
@@ -317,27 +617,35 @@ skills["FireMonsterWhirlingBlades"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("castTime", 2.6), 
-		skill("FireDot", 1.5833333333333), --"whirling_blades_base_ground_fire_damage_to_deal_per_minute" = 95
-		skill("duration", 6), --"base_skill_effect_duration" = 6000
-		mod("Speed", "INC", -50, ModFlag.Attack, 0, nil), --"attack_speed_+%" = -50
-		--"monster_flurry" = 1
-		skill("castTimeOverridesAttackTime", true), --"cast_time_overrides_attack_duration" = ?
-		--"ignores_proximity_shield" = ?
-	},
-	qualityMods = {
+		skill("castTime", 2.6),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 3, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"whirling_blades_base_ground_fire_damage_to_deal_per_minute",
+		"base_skill_effect_duration",
+		"attack_speed_+%",
+		"monster_flurry",
+		"cast_time_overrides_attack_duration",
+		"ignores_proximity_shield",
+	},
+	statInterpolation = { 3, 1, 1, 1, },
+	statLevels = {
+		[1] = { 16.666667039196, 6000, -50, 1, nil, nil, },
 	},
 }
 skills["FlamebearerFlameBlue"] = {
 	name = "Blue Flame",
 	hidden = true,
 	color = 4,
+	baseEffectiveness = 0.48330000042915,
+	incrementalEffectiveness = 0.041000001132488,
 	description = "召唤一个图腾, 它会持续的对附近的敌人喷射火焰.",
 	skillTypes = { [2] = true, [3] = true, [68] = true, [10] = true, [17] = true, [19] = true, [30] = true, [33] = true, },
 	skillTotemId = 8,
@@ -347,34 +655,44 @@ skills["FlamebearerFlameBlue"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("castTime", 0.25), 
-		skill("damageEffectiveness", 0.25), 
-		skill("cooldown", 4), 
-		--"skill_repeat_count" = 25
-		--"skill_art_variation" = 1
-		mod("Speed", "MORE", 25, ModFlag.Cast), --"active_skill_cast_speed_+%_final" = 25
-		--"monster_penalty_against_minions_damage_+%_final_vs_player_minions" = -25
-		--"base_is_projectile" = ?
-		flag("PierceAllTargets"), --"always_pierce" = ?
-	},
-	qualityMods = {
+		skill("castTime", 0.25),
+		skill("damageEffectiveness", 0.25),
+		skill("cooldown", 4),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("FireMin", nil), --"spell_minimum_base_fire_damage"
-		[3] = skill("FireMax", nil), --"spell_maximum_base_fire_damage"
-		--[4] = "spell_maximum_action_distance_+%"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 4, 2, 3, -78, },
-		[2] = { 8, 3, 5, -75, },
-		[3] = { 68, 248, 372, -75, },
+		[1] = { 4, },
+		[2] = { 8, },
+		[3] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"skill_repeat_count",
+		"skill_art_variation",
+		"spell_maximum_action_distance_+%",
+		"active_skill_cast_speed_+%_final",
+		"monster_penalty_against_minions_damage_+%_final_vs_player_minions",
+		"base_is_projectile",
+		"always_pierce",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 25, 1, -78, 25, -25, nil, nil, },
+		[2] = { 0.80000001192093, 1.2000000476837, 25, 1, -75, 25, -25, nil, nil, },
+		[3] = { 1.2400000095367, 1.8600000143051, 25, 1, -75, 25, -25, nil, nil, },
 	},
 }
 skills["GhostPirateBladeVortexSpectre"] = {
 	name = "Blade Vortex",
 	hidden = true,
 	color = 2,
+	baseEffectiveness = 0.59500002861023,
+	incrementalEffectiveness = 0.035999998450279,
 	description = "在你的四周召唤出虚空的武器, 以你为中心不断飞舞旋转, 将周围的敌人削成肉泥. ",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [12] = true, [18] = true, [26] = true, [36] = true, [27] = true, },
 	baseFlags = {
@@ -383,31 +701,39 @@ skills["GhostPirateBladeVortexSpectre"] = {
 		area = true,
 	},
 	baseMods = {
-		skill("castTime", 0.5), 
-		skill("CritChance", 6), 
-		skill("PhysicalMin", 2), --"spell_minimum_base_physical_damage" = 2
-		skill("PhysicalMax", 4), --"spell_maximum_base_physical_damage" = 4
-		skill("duration", 5), --"base_skill_effect_duration" = 5000
-		--"maximum_number_of_spinning_blades" = 5
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-		--"skill_repeat_count" = 2
-		--"is_area_damage" = ?
-		--"skill_can_add_multiple_charges_per_action" = ?
-		skill("hitTimeOverride", 1), 
-	},
-	qualityMods = {
+		skill("castTime", 0.5),
+		skill("CritChance", 6),
+		skill("hitTimeOverride", 1),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 3, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_physical_damage",
+		"spell_maximum_base_physical_damage",
+		"base_skill_effect_duration",
+		"maximum_number_of_spinning_blades",
+		"active_skill_area_of_effect_radius_+%_final",
+		"skill_repeat_count",
+		"is_area_damage",
+		"skill_can_add_multiple_charges_per_action",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 5000, 5, 0, 2, nil, nil, },
 	},
 }
 skills["GoatmanFireMagmaOrb"] = {
 	name = "Magma Orb",
 	hidden = true,
 	color = 3,
+	baseEffectiveness = 2.7778000831604,
+	incrementalEffectiveness = 0.035999998450279,
 	description = "抛投出撞击地面时会爆炸的岩浆球. 技能可以连锁, 当岩浆球爆炸时释放出另一个岩浆球. ",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [19] = true, [18] = true, [36] = true, [33] = true, [3] = true, [68] = true, [26] = true, [23] = true, },
 	baseFlags = {
@@ -416,33 +742,42 @@ skills["GoatmanFireMagmaOrb"] = {
 		projectile = true,
 	},
 	baseMods = {
-		skill("castTime", 0.7), 
-		skill("CritChance", 5), 
-		skill("cooldown", 3), 
-		--"projectile_spread_radius" = 0
-		mod("ProjectileCount", "BASE", 0), --"number_of_additional_projectiles" = 0
-		--"fire_mortar_second_hit_damage_+%_final" = 0
-		mod("Speed", "INC", 30, ModFlag.Cast), --"base_cast_speed_+%" = 30
-		mod("ChainCountMax", "BASE", 2), --"number_of_additional_projectiles_in_chain" = 2
-		--"is_area_damage" = ?
-		--"base_is_projectile" = ?
-	},
-	qualityMods = {
+		skill("castTime", 0.7),
+		skill("CritChance", 5),
+		skill("cooldown", 3),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("FireMin", nil), --"spell_minimum_base_fire_damage"
-		[3] = skill("FireMax", nil), --"spell_maximum_base_fire_damage"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 3, 11, 16, },
-		[2] = { 68, 1149, 1531, },
+		[1] = { 3, },
+		[2] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"projectile_spread_radius",
+		"number_of_additional_projectiles",
+		"fire_mortar_second_hit_damage_+%_final",
+		"base_cast_speed_+%",
+		"number_of_additional_projectiles_in_chain",
+		"is_area_damage",
+		"base_is_projectile",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 0, 0, 0, 30, 2, nil, nil, },
+		[2] = { 1.3799999952316, 1.8400000333786, 0, 0, 0, 30, 2, nil, nil, },
 	},
 }
 skills["GoatmanMoltenShell"] = {
 	name = "Molten Shell",
 	hidden = true,
 	color = 1,
+	baseEffectiveness = 4.2555999755859,
+	incrementalEffectiveness = 0.03999999910593,
 	description = "召唤炽热的火焰之盾, 在一定时间内提供额外的护甲. 当格挡或是护甲所累积受到的物理伤害达到限界值时, 火焰之盾将会爆开, 并对周围的敌人造成伤害.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [12] = true, [18] = true, [31] = true, [36] = true, [33] = true, [75] = true, },
 	baseFlags = {
@@ -451,65 +786,105 @@ skills["GoatmanMoltenShell"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("castTime", 0.5), 
-		skill("damageEffectiveness", 2), 
-		mod("ElementalResist", "BASE", 0, 0, 0, { type = "GlobalEffect", effectType = "Buff" }), --"base_resist_all_elements_%" = 0
-		--"skill_art_variation" = 1
-		skill("duration", 5), --"base_skill_effect_duration" = 5000
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-		--"is_area_damage" = ?
-		skill("CritChance", 5), 
-	},
-	qualityMods = {
+		skill("castTime", 0.5),
+		skill("damageEffectiveness", 2),
+		skill("CritChance", 5),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("manaCost", nil), 
-		[3] = skill("FireMin", nil), --"spell_minimum_base_fire_damage"
-		[4] = skill("FireMax", nil), --"spell_maximum_base_fire_damage"
-		--[5] = "fire_shield_damage_threshold"
-		[6] = mod("Armour", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }), --"base_physical_damage_reduction_rating"
+		[1] = skill("levelRequirement", nil),
+		[2] = skill("manaCost", nil),
 	},
 	levels = {
-		[1] = { 3, 200, 17, 25, 20, 335, },
-		[2] = { 5, 200, 21, 32, 25, 649, },
-		[3] = { 8, 190, 29, 43, 36, 1000, },
-		[4] = { 12, 180, 41, 62, 49, 1633, },
-		[5] = { 15, 180, 53, 79, 64, 2075, },
-		[6] = { 19, 175, 72, 107, 91, 2573, },
-		[7] = { 22, 175, 89, 133, 116, 3094, },
-		[8] = { 26, 166, 117, 175, 160, 3641, },
-		[9] = { 30, 160, 152, 228, 209, 4352, },
-		[10] = { 36, 160, 222, 332, 315, 5313, },
-		[11] = { 39, 160, 266, 398, 374, 5890, },
-		[12] = { 40, 160, 282, 423, 377, 6189, },
-		[13] = { 45, 160, 377, 566, 565, 7030, },
-		[14] = { 50, 160, 501, 752, 752, 7870, },
-		[15] = { 57, 160, 737, 1105, 1194, 9159, },
-		[16] = { 60, 160, 866, 1299, 1403, 9867, },
-		[17] = { 66, 160, 1190, 1784, 2091, 11090, },
-		[18] = { 67, 160, 1254, 1880, 2211, 11524, },
-		[19] = { 68, 160, 1321, 1981, 2334, 11966, },
-		[20] = { 69, 160, 1391, 2087, 2456, 12428, },
-		[21] = { 70, 160, 1465, 2198, 2579, 12894, },
-		[22] = { 71, 160, 1543, 2314, 2746, 13369, },
-		[23] = { 72, 160, 1624, 2437, 2912, 13857, },
-		[24] = { 73, 160, 1710, 2565, 3074, 14358, },
-		[25] = { 74, 160, 1800, 2700, 3237, 14875, },
-		[26] = { 75, 160, 1894, 2841, 3397, 15397, },
-		[27] = { 76, 160, 1993, 2990, 3552, 15931, },
-		[28] = { 77, 160, 2097, 3146, 3703, 16480, },
-		[29] = { 78, 160, 2206, 3309, 3847, 17039, },
-		[30] = { 79, 160, 2321, 3481, 3981, 17613, },
-		[31] = { 80, 160, 2441, 3661, 4110, 18195, },
-		[32] = { 81, 160, 2566, 3850, 4230, 18790, },
-		[33] = { 82, 160, 2698, 4048, 4334, 19399, },
+		[1] = { 3, 200, },
+		[2] = { 5, 200, },
+		[3] = { 8, 190, },
+		[4] = { 12, 180, },
+		[5] = { 15, 180, },
+		[6] = { 19, 175, },
+		[7] = { 22, 175, },
+		[8] = { 26, 166, },
+		[9] = { 30, 160, },
+		[10] = { 36, 160, },
+		[11] = { 39, 160, },
+		[12] = { 40, 160, },
+		[13] = { 45, 160, },
+		[14] = { 50, 160, },
+		[15] = { 57, 160, },
+		[16] = { 60, 160, },
+		[17] = { 66, 160, },
+		[18] = { 67, 160, },
+		[19] = { 68, 160, },
+		[20] = { 69, 160, },
+		[21] = { 70, 160, },
+		[22] = { 71, 160, },
+		[23] = { 72, 160, },
+		[24] = { 73, 160, },
+		[25] = { 74, 160, },
+		[26] = { 75, 160, },
+		[27] = { 76, 160, },
+		[28] = { 77, 160, },
+		[29] = { 78, 160, },
+		[30] = { 79, 160, },
+		[31] = { 80, 160, },
+		[32] = { 81, 160, },
+		[33] = { 82, 160, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"fire_shield_damage_threshold",
+		"base_physical_damage_reduction_rating",
+		"base_resist_all_elements_%",
+		"skill_art_variation",
+		"base_skill_effect_duration",
+		"active_skill_area_of_effect_radius_+%_final",
+		"is_area_damage",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 20, 335, 0, 1, 5000, 0, nil, },
+		[2] = { 0.80000001192093, 1.2000000476837, 25, 649, 0, 1, 5000, 0, nil, },
+		[3] = { 0.80000001192093, 1.2000000476837, 36, 1000, 0, 1, 5000, 0, nil, },
+		[4] = { 0.80000001192093, 1.2000000476837, 49, 1633, 0, 1, 5000, 0, nil, },
+		[5] = { 0.80000001192093, 1.2000000476837, 64, 2075, 0, 1, 5000, 0, nil, },
+		[6] = { 0.80000001192093, 1.2000000476837, 91, 2573, 0, 1, 5000, 0, nil, },
+		[7] = { 0.80000001192093, 1.2000000476837, 116, 3094, 0, 1, 5000, 0, nil, },
+		[8] = { 0.80000001192093, 1.2000000476837, 160, 3641, 0, 1, 5000, 0, nil, },
+		[9] = { 0.80000001192093, 1.2000000476837, 209, 4352, 0, 1, 5000, 0, nil, },
+		[10] = { 0.80000001192093, 1.2000000476837, 315, 5313, 0, 1, 5000, 0, nil, },
+		[11] = { 0.80000001192093, 1.2000000476837, 374, 5890, 0, 1, 5000, 0, nil, },
+		[12] = { 0.80000001192093, 1.2000000476837, 377, 6189, 0, 1, 5000, 0, nil, },
+		[13] = { 0.80000001192093, 1.2000000476837, 565, 7030, 0, 1, 5000, 0, nil, },
+		[14] = { 0.80000001192093, 1.2000000476837, 752, 7870, 0, 1, 5000, 0, nil, },
+		[15] = { 0.80000001192093, 1.2000000476837, 1194, 9159, 0, 1, 5000, 0, nil, },
+		[16] = { 0.80000001192093, 1.2000000476837, 1403, 9867, 0, 1, 5000, 0, nil, },
+		[17] = { 0.80000001192093, 1.2000000476837, 2091, 11090, 0, 1, 5000, 0, nil, },
+		[18] = { 0.80000001192093, 1.2000000476837, 2211, 11524, 0, 1, 5000, 0, nil, },
+		[19] = { 0.80000001192093, 1.2000000476837, 2334, 11966, 0, 1, 5000, 0, nil, },
+		[20] = { 0.80000001192093, 1.2000000476837, 2456, 12428, 0, 1, 5000, 0, nil, },
+		[21] = { 0.80000001192093, 1.2000000476837, 2579, 12894, 0, 1, 5000, 0, nil, },
+		[22] = { 0.80000001192093, 1.2000000476837, 2746, 13369, 0, 1, 5000, 0, nil, },
+		[23] = { 0.80000001192093, 1.2000000476837, 2912, 13857, 0, 1, 5000, 0, nil, },
+		[24] = { 0.80000001192093, 1.2000000476837, 3074, 14358, 0, 1, 5000, 0, nil, },
+		[25] = { 0.80000001192093, 1.2000000476837, 3237, 14875, 0, 1, 5000, 0, nil, },
+		[26] = { 0.80000001192093, 1.2000000476837, 3397, 15397, 0, 1, 5000, 0, nil, },
+		[27] = { 0.80000001192093, 1.2000000476837, 3552, 15931, 0, 1, 5000, 0, nil, },
+		[28] = { 0.80000001192093, 1.2000000476837, 3703, 16480, 0, 1, 5000, 0, nil, },
+		[29] = { 0.80000001192093, 1.2000000476837, 3847, 17039, 0, 1, 5000, 0, nil, },
+		[30] = { 0.80000001192093, 1.2000000476837, 3981, 17613, 0, 1, 5000, 0, nil, },
+		[31] = { 0.80000001192093, 1.2000000476837, 4110, 18195, 0, 1, 5000, 0, nil, },
+		[32] = { 0.80000001192093, 1.2000000476837, 4230, 18790, 0, 1, 5000, 0, nil, },
+		[33] = { 0.80000001192093, 1.2000000476837, 4334, 19399, 0, 1, 5000, 0, nil, },
 	},
 }
 skills["GuardianArc"] = {
 	name = "Arc",
 	hidden = true,
 	color = 3,
+	baseEffectiveness = 0.85000002384186,
+	incrementalEffectiveness = 0.029999999329448,
 	description = "一道电弧从施放者射向目标, 并会弹跳至周围其他敌人。每次主电弧弹射时，也会向第二个敌人进行二次弹射，但二次弹射仅生效一次。",
 	skillTypes = { [2] = true, [10] = true, [17] = true, [18] = true, [19] = true, [23] = true, [26] = true, [36] = true, [45] = true, [35] = true, },
 	baseFlags = {
@@ -517,25 +892,32 @@ skills["GuardianArc"] = {
 		lightning = true,
 	},
 	baseMods = {
-		skill("castTime", 0.8), 
-		skill("damageEffectiveness", 0.7), 
-		skill("CritChance", 5), 
-		mod("EnemyShockChance", "BASE", 5), --"base_chance_to_shock_%" = 5
-		mod("ChainCountMax", "BASE", 0), --"number_of_additional_projectiles_in_chain" = 0
-		mod("Speed", "MORE", -80, ModFlag.Cast), --"active_skill_cast_speed_+%_final" = -80
-		--"spell_maximum_action_distance_+%" = -50
-		--"skill_art_variation" = 1
-	},
-	qualityMods = {
+		skill("castTime", 0.8),
+		skill("damageEffectiveness", 0.7),
+		skill("CritChance", 5),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("LightningMin", nil), --"spell_minimum_base_lightning_damage"
-		[3] = skill("LightningMax", nil), --"spell_maximum_base_lightning_damage"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 2, 2, 6, },
-		[2] = { 70, 113, 338, },
+		[1] = { 2, },
+		[2] = { 70, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_lightning_damage",
+		"spell_maximum_base_lightning_damage",
+		"base_chance_to_shock_%",
+		"number_of_additional_projectiles_in_chain",
+		"active_skill_cast_speed_+%_final",
+		"spell_maximum_action_distance_+%",
+		"skill_art_variation",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 0.5, 1.5, 5, 0, -80, -50, 1, },
+		[2] = { 0.60000002384186, 1.7999999523163, 5, 0, -80, -50, 1, },
 	},
 }
 skills["HalfSkeletonPuncture"] = {
@@ -558,21 +940,66 @@ skills["HalfSkeletonPuncture"] = {
 		projectile = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		skill("cooldown", 7.5), 
-		--"active_skill_bleeding_damage_+%_final" = 46
-		{ mod("MeleeWeaponRange", "BASE", 20), mod("UnarmedRange", "BASE", 20) }, --"melee_range_+" = 20
-		mod("BleedChance", "BASE", 100), --"global_bleed_on_hit" = ?
-		mod("BleedChance", "BASE", 100), 
-	},
-	qualityMods = {
+		skill("castTime", 1),
+		skill("cooldown", 7.5),
+		mod("BleedChance", "BASE", 100),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 2, },
 		[2] = { 14, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"active_skill_bleeding_damage_+%_final",
+		"melee_range_+",
+		"global_bleed_on_hit",
+	},
+	statInterpolation = { 1, 1, },
+	statLevels = {
+		[1] = { 46, 20, nil, },
+		[2] = { 46, 20, nil, },
+	},
+}
+skills["HolyFireElementalFireball"] = {
+	name = "火球",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 1.1888999938965,
+	incrementalEffectiveness = 0.03940000012517,
+	description = "释放一颗球型火焰向前飞射, 接触到怪物时会爆炸并对周围敌人造成伤害",
+	skillTypes = { [3] = true, [68] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [33] = true, },
+	baseFlags = {
+		spell = true,
+		projectile = true,
+		area = true,
+	},
+	baseMods = {
+		skill("castTime", 0.85),
+		skill("CritChance", 6),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 3, },
+		[2] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"base_is_projectile",
+		"spell_maximum_action_distance_+%",
+	},
+	statInterpolation = { 3, 3, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 1, -50, },
+		[2] = { 1.75, 2.710000038147, 1, -50, },
 	},
 }
 skills["IguanaProjectile"] = {
@@ -585,80 +1012,155 @@ skills["IguanaProjectile"] = {
 		projectile = true,
 	},
 	baseMods = {
-		skill("castTime", 1.5), 
-		skill("cooldown", 3.5), 
-		--"monster_projectile_variation" = 4
-		--"skill_repeat_count" = 0
-		--"spell_maximum_action_distance_+%" = -60
-		mod("Damage", "MORE", -60), --"active_skill_damage_+%_final" = -60
-		--"monster_reverse_point_blank_damage_-%_at_minimum_range" = 30
-		--"base_is_projectile" = ?
-	},
-	qualityMods = {
+		skill("castTime", 1.5),
+		skill("cooldown", 3.5),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 1, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"monster_projectile_variation",
+		"skill_repeat_count",
+		"spell_maximum_action_distance_+%",
+		"active_skill_damage_+%_final",
+		"monster_reverse_point_blank_damage_-%_at_minimum_range",
+		"base_is_projectile",
+	},
+	statInterpolation = { 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 4, 0, -60, -60, 30, nil, },
 	},
 }
 skills["IncaMinionProjectile"] = {
 	name = "Chaos Projectile",
 	hidden = true,
 	color = 4,
+	baseEffectiveness = 1.3600000143051,
+	incrementalEffectiveness = 0.018999999389052,
 	skillTypes = { [2] = true, [10] = true, },
 	baseFlags = {
 		spell = true,
 		projectile = true,
 	},
 	baseMods = {
-		skill("castTime", 1.65), 
-		skill("CritChance", 5), 
-		--"base_is_projectile" = 1
-		--"skill_range_+%" = -75
-	},
-	qualityMods = {
+		skill("castTime", 1.65),
+		skill("CritChance", 5),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("manaCost", nil), 
-		[3] = skill("ChaosMin", nil), --"spell_minimum_base_chaos_damage"
-		[4] = skill("ChaosMax", nil), --"spell_maximum_base_chaos_damage"
-		[5] = skill("PhysicalMin", nil), --"spell_minimum_base_physical_damage"
-		[6] = skill("PhysicalMax", nil), --"spell_maximum_base_physical_damage"
+		[1] = skill("levelRequirement", nil),
+		[2] = skill("manaCost", nil),
 	},
 	levels = {
-		[1] = { 4, 5, 2, 3, 3, 4, },
-		[2] = { 21, 4, 6, 9, 9, 13, },
-		[3] = { 68, 4, 91, 136, 136, 204, },
+		[1] = { 4, 5, },
+		[2] = { 21, 4, },
+		[3] = { 68, 4, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_chaos_damage",
+		"spell_maximum_base_chaos_damage",
+		"spell_minimum_base_physical_damage",
+		"spell_maximum_base_physical_damage",
+		"base_is_projectile",
+		"skill_range_+%",
+	},
+	statInterpolation = { 3, 3, 3, 3, 1, 1, },
+	statLevels = {
+		[1] = { 0.26669999957085, 0.40000000596046, 0.40000000596046, 0.60000002384186, 1, -75, },
+		[2] = { 0.26669999957085, 0.40000000596046, 0.40000000596046, 0.60000002384186, 1, -75, },
+		[3] = { 0.67330002784729, 1.0132999420166, 1.0099999904633, 1.5199999809265, 1, -75, },
 	},
 }
 skills["InsectSpawnerSpit"] = {
 	name = "Spit",
 	hidden = true,
 	color = 4,
+	baseEffectiveness = 0.93999999761581,
+	incrementalEffectiveness = 0.029999999329448,
 	skillTypes = { [3] = true, },
 	baseFlags = {
 		attack = true,
 		projectile = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		--"base_is_projectile" = 1
-		mod("FireMin", "BASE", 1, 0, KeywordFlag.Attack, nil), --"attack_minimum_added_fire_damage" = 1
-		mod("FireMax", "BASE", 1, 0, KeywordFlag.Attack, nil), --"attack_maximum_added_fire_damage" = 1
-		mod("PhysicalMin", "BASE", 2, 0, KeywordFlag.Attack, nil), --"attack_minimum_added_physical_damage" = 2
-		mod("PhysicalMax", "BASE", 3, 0, KeywordFlag.Attack, nil), --"attack_maximum_added_physical_damage" = 3
-		--"monster_reverse_point_blank_damage_-%_at_minimum_range" = 30
-	},
-	qualityMods = {
+		skill("castTime", 1),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 2, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_is_projectile",
+		"attack_minimum_added_fire_damage",
+		"attack_maximum_added_fire_damage",
+		"attack_minimum_added_physical_damage",
+		"attack_maximum_added_physical_damage",
+		"monster_reverse_point_blank_damage_-%_at_minimum_range",
+	},
+	statInterpolation = { 1, 3, 3, 3, 3, 1, },
+	statLevels = {
+		[1] = { 1, 0.18000000715256, 0.27000001072884, 0.60000002384186, 0.75, 30, },
+	},
+}
+skills["KaomFireBeamTotemSpectre"] = {
+	name = "Scorching Ray Totem",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 2.666699886322,
+	incrementalEffectiveness = 0.047400001436472,
+	description = "发出一束灼热光线, 被击中的敌人会受到不断叠加的燃烧效果并降低火焰抗性. 每叠加一层效果都会附加一定比例的光线基础伤害. 脱离光线范围后的一段时间内依然会受到燃烧伤害. 增加施法速度和光线的转角速度.",
+	skillTypes = { [2] = true, [18] = true, [40] = true, [33] = true, [29] = true, [12] = true, [58] = true, [59] = true, [52] = true, },
+	statMap = {
+		["fire_beam_enemy_fire_resistance_%_per_stack"] = {
+			mod("FireResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectStackVar = "KaomFireBeamTotemStage", effectStackLimit = 24 }),
+		},
+	},
+	baseFlags = {
+		spell = true,
+		totem = true,
+		duration = true,
+	},
+	baseMods = {
+		skill("castTime", 0.5),
+		skill("cooldown", 3),
+		mod("Damage", "MORE", 60, 0, 0, { type = "Multiplier", actor = "parent", var = "KaomFireBeamTotemStage", base = -60, limit = 8 }),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+		[2] = { 83, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_fire_damage_to_deal_per_minute",
+		"base_skill_effect_duration",
+		"fire_beam_additional_stack_damage_+%_final",
+		"fire_beam_enemy_fire_resistance_%_per_stack",
+		"fire_beam_enemy_fire_resistance_%_maximum",
+		"base_totem_duration",
+		"totem_art_variation",
+		"base_active_skill_totem_level",
+		"is_totem",
+		"base_skill_is_totemified",
+		"totem_ignores_cooldown",
+	},
+	statInterpolation = { 3, 1, 1, 1, 1, 1, 1, 2, },
+	statLevels = {
+		[1] = { 16.666667039196, 1500, -40, -1, -24, 5000, 1, 1, nil, nil, nil, },
+		[2] = { 16.666667039196, 1500, -40, -1, -24, 5000, 1, 83, nil, nil, nil, },
 	},
 }
 skills["KaomWarriorGroundSlam"] = {
@@ -672,21 +1174,27 @@ skills["KaomWarriorGroundSlam"] = {
 		area = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		skill("cooldown", 5), 
-		mod("EnemyStunThreshold", "INC", -10), --"base_stun_threshold_reduction_+%" = 10
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-		mod("Damage", "MORE", 20), --"active_skill_damage_+%_final" = 20
-		--"skill_art_variation" = 1
-		--"is_area_damage" = ?
-	},
-	qualityMods = {
+		skill("castTime", 1),
+		skill("cooldown", 5),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 2, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_stun_threshold_reduction_+%",
+		"active_skill_area_of_effect_radius_+%_final",
+		"active_skill_damage_+%_final",
+		"skill_art_variation",
+		"is_area_damage",
+	},
+	statInterpolation = { 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 10, 0, 20, 1, nil, },
 	},
 }
 skills["KaomWarriorMoltenStrike"] = {
@@ -713,22 +1221,210 @@ skills["KaomWarriorMoltenStrike"] = {
 		melee = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		skill("cooldown", 3), 
-		mod("SkillPhysicalDamageConvertToFire", "BASE", 60), --"skill_physical_damage_%_to_convert_to_fire" = 60
-		mod("ProjectileCount", "BASE", 5), --"number_of_additional_projectiles" = 5
-		mod("Damage", "MORE", -20), --"active_skill_damage_+%_final" = -20
-		mod("PhysicalDamage", "INC", 0), --"physical_damage_+%" = 0
-		mod("Damage", "MORE", -20, ModFlag.Projectile), --"active_skill_projectile_damage_+%_final" = -20
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-	},
-	qualityMods = {
+		skill("castTime", 1),
+		skill("cooldown", 3),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 2, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"skill_physical_damage_%_to_convert_to_fire",
+		"number_of_additional_projectiles",
+		"active_skill_damage_+%_final",
+		"physical_damage_+%",
+		"active_skill_projectile_damage_+%_final",
+		"active_skill_area_of_effect_radius_+%_final",
+	},
+	statInterpolation = { 1, 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 60, 5, -20, 0, -20, 0, },
+	},
+}
+skills["KitavaDemonLeapSlam"] = {
+	name = "跃击",
+	hidden = true,
+	color = 4,
+	description = "朝着目标区域跃起, 并在落地时以主手武器重击（并击退一些）范围内的敌人. 被踩到的敌人将会被推出去. 限定一把斧, 锤, 剑或是长杖.",
+	skillTypes = { [1] = true, [7] = true, [11] = true, [24] = true, [38] = true, },
+	weaponTypes = {
+		["Two Handed Axe"] = true,
+		["Two Handed Mace"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["Staff"] = true,
+		["Two Handed Sword"] = true,
+		["One Handed Sword"] = true,
+		["Sceptre"] = true,
+		["One Handed Axe"] = true,
+		["One Handed Mace"] = true,
+	},
+	baseFlags = {
+		attack = true,
+		melee = true,
+		area = true,
+	},
+	baseMods = {
+		skill("castTime", 2),
+		skill("damageEffectiveness", 1.2),
+		skill("baseMultiplier", 1.2),
+		skill("cooldown", 5),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"physical_damage_%_to_add_as_fire",
+		"is_area_damage",
+		"cast_time_overrides_attack_duration",
+	},
+	statInterpolation = { 1, },
+	statLevels = {
+		[1] = { 50, nil, nil, },
+	},
+}
+skills["KitavaDemonCleave"] = {
+	name = "劈砍",
+	hidden = true,
+	color = 1,
+	description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 并同时对多名敌人造成伤害. 限定斧与剑.",
+	skillTypes = { [1] = true, [8] = true, [11] = true, [28] = true, [24] = true, [53] = true, },
+	weaponTypes = {
+		["One Handed Sword"] = true,
+		["Two Handed Sword"] = true,
+		["One Handed Axe"] = true,
+		["Two Handed Axe"] = true,
+		["Thrusting One Handed Sword"] = true,
+	},
+	baseFlags = {
+		attack = true,
+		melee = true,
+		area = true,
+	},
+	baseMods = {
+		skill("castTime", 1),
+		skill("damageEffectiveness", 1.9),
+		skill("baseMultiplier", 1.9),
+		skill("cooldown", 6),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"bleed_on_hit_with_attacks_%",
+		"active_skill_bleeding_damage_+%_final",
+		"active_skill_attack_speed_+%_final",
+		"is_area_damage",
+		"skill_double_hits_when_dual_wielding",
+	},
+	statInterpolation = { 1, 1, 1, },
+	statLevels = {
+		[1] = { 100, -44, -25, nil, nil, },
+	},
+}
+skills["KitavaDemonWhirlingBlades"] = {
+	name = "回旋之刃",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 2.666699886322,
+	incrementalEffectiveness = 0.0625,
+	description = "迅速穿越敌人并同时造成武器伤害. 限定匕首, 爪以及单手剑. ",
+	skillTypes = { [1] = true, [24] = true, [38] = true, },
+	weaponTypes = {
+		["One Handed Sword"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["Claw"] = true,
+		["Dagger"] = true,
+	},
+	baseFlags = {
+		attack = true,
+		melee = true,
+	},
+	baseMods = {
+		skill("castTime", 3.38),
+		skill("damageEffectiveness", 0.6),
+		skill("baseMultiplier", 0.6),
+		skill("cooldown", 6),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+		[2] = { 45, },
+		[3] = { 68, },
+		[4] = { 84, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"whirling_blades_base_ground_fire_damage_to_deal_per_minute",
+		"base_skill_effect_duration",
+		"monster_flurry",
+		"cast_time_overrides_attack_duration",
+		"ignores_proximity_shield",
+	},
+	statInterpolation = { 3, 1, 1, },
+	statLevels = {
+		[1] = { 16.666667039196, 6000, 1, nil, nil, },
+		[2] = { 16.666667039196, 6000, 1, nil, nil, },
+		[3] = { 16.666667039196, 6000, 1, nil, nil, },
+		[4] = { 16.666667039196, 6000, 1, nil, nil, },
+	},
+}
+skills["KitavaDemonXMortar"] = {
+	name = "Mortar",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 3.5,
+	incrementalEffectiveness = 0.035000000149012,
+	skillTypes = { [3] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, },
+	baseFlags = {
+		spell = true,
+		projectile = true,
+		area = true,
+	},
+	baseMods = {
+		skill("castTime", 1.5),
+		skill("cooldown", 3),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+		[2] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"monster_projectile_variation",
+		"spell_maximum_action_distance_+%",
+		"spell_minimum_base_physical_damage",
+		"spell_maximum_base_physical_damage",
+		"projectile_minimum_range",
+		"projectile_spread_radius",
+		"projectile_spread_radius_per_additional_projectile",
+		"base_is_projectile",
+		"is_area_damage",
+	},
+	statInterpolation = { 1, 1, 3, 3, 1, 1, 1, },
+	statLevels = {
+		[1] = { 2, 500, 0.80000001192093, 1.2000000476837, 10, 0, 125, nil, nil, },
+		[2] = { 2, 500, 0.54000002145767, 0.80000001192093, 10, 0, 125, nil, nil, },
 	},
 }
 skills["MassFrenzy"] = {
@@ -741,23 +1437,31 @@ skills["MassFrenzy"] = {
 		area = true,
 	},
 	baseMods = {
-		skill("castTime", 2), 
-		skill("manaCost", 100), 
-		skill("cooldown", 6), 
-	},
-	qualityMods = {
+		skill("castTime", 2),
+		skill("manaCost", 100),
+		skill("cooldown", 6),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 0, },
+	},
+	qualityStats = {
+	},
+	stats = {
+	},
+	statInterpolation = { },
+	statLevels = {
+		[1] = { },
 	},
 }
 skills["MinerThrowFireSpectre"] = {
 	name = "Throw Fire",
 	hidden = true,
 	color = 4,
+	baseEffectiveness = 1.2777999639511,
+	incrementalEffectiveness = 0.03999999910593,
 	skillTypes = { [3] = true, [68] = true, },
 	baseFlags = {
 		spell = true,
@@ -766,39 +1470,58 @@ skills["MinerThrowFireSpectre"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		skill("cooldown", 1.5), 
-		--"base_is_projectile" = ?
-		--"is_area_damage" = ?
-	},
-	qualityMods = {
+		skill("castTime", 1),
+		skill("cooldown", 1.5),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("FireDot", nil), --"base_fire_damage_to_deal_per_minute"
-		[3] = skill("duration", nil), --"base_skill_effect_duration"
-		[4] = skill("FireMin", nil), --"spell_minimum_base_fire_damage"
-		[5] = skill("FireMax", nil), --"spell_maximum_base_fire_damage"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 3, 2.8333333333333, 2, 1, 2, },
-		[2] = { 5, 3.5333333333333, 2.1, 2, 2, },
-		[3] = { 8, 4.7833333333333, 2.2, 2, 3, },
-		[4] = { 11, 6.3, 2.3, 3, 4, },
-		[5] = { 15, 8.7833333333333, 2.4, 4, 6, },
-		[6] = { 19, 11.933333333333, 2.5, 5, 8, },
-		[7] = { 23, 15.9, 2.6, 7, 11, },
-		[8] = { 27, 20.866666666667, 2.7, 9, 14, },
-		[9] = { 28, 22.283333333333, 2.8, 10, 15, },
-		[10] = { 32, 28.833333333333, 2.9, 13, 19, },
-		[11] = { 40, 47.016666666667, 3, 21, 32, },
-		[12] = { 79, 387.1, 4, 174, 261, },
+		[1] = { 3, },
+		[2] = { 5, },
+		[3] = { 8, },
+		[4] = { 11, },
+		[5] = { 15, },
+		[6] = { 19, },
+		[7] = { 23, },
+		[8] = { 27, },
+		[9] = { 28, },
+		[10] = { 32, },
+		[11] = { 40, },
+		[12] = { 79, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_fire_damage_to_deal_per_minute",
+		"base_skill_effect_duration",
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"base_is_projectile",
+		"is_area_damage",
+	},
+	statInterpolation = { 3, 1, 3, 3, },
+	statLevels = {
+		[1] = { 26.666667660077, 2000, 0.20000000298023, 0.30000001192093, nil, nil, },
+		[2] = { 26.666667660077, 2100, 0.20000000298023, 0.30000001192093, nil, nil, },
+		[3] = { 26.666667660077, 2200, 0.20000000298023, 0.30000001192093, nil, nil, },
+		[4] = { 26.666667660077, 2300, 0.20000000298023, 0.30000001192093, nil, nil, },
+		[5] = { 26.666667660077, 2400, 0.20000000298023, 0.30000001192093, nil, nil, },
+		[6] = { 26.666667660077, 2500, 0.20000000298023, 0.30000001192093, nil, nil, },
+		[7] = { 26.666667660077, 2600, 0.20000000298023, 0.30000001192093, nil, nil, },
+		[8] = { 26.666667660077, 2700, 0.20000000298023, 0.30000001192093, nil, nil, },
+		[9] = { 26.666667660077, 2800, 0.20000000298023, 0.30000001192093, nil, nil, },
+		[10] = { 26.666667660077, 2900, 0.20000000298023, 0.30000001192093, nil, nil, },
+		[11] = { 26.666667660077, 3000, 0.20000000298023, 0.30000001192093, nil, nil, },
+		[12] = { 26.666667660077, 4000, 0.20000000298023, 0.30000001192093, nil, nil, },
 	},
 }
 skills["MonsterArc"] = {
 	name = "Arc",
 	hidden = true,
 	color = 3,
+	baseEffectiveness = 0.89999997615814,
+	incrementalEffectiveness = 0.046000000089407,
 	description = "一道电弧从施放者射向目标, 并会弹跳至周围其他敌人。每次主电弧弹射时，也会向第二个敌人进行二次弹射，但二次弹射仅生效一次。",
 	skillTypes = { [2] = true, [10] = true, [17] = true, [18] = true, [19] = true, [23] = true, [26] = true, [36] = true, [45] = true, [35] = true, },
 	baseFlags = {
@@ -806,35 +1529,48 @@ skills["MonsterArc"] = {
 		lightning = true,
 	},
 	baseMods = {
-		skill("castTime", 0.8), 
-		skill("damageEffectiveness", 0.7), 
-		skill("CritChance", 5), 
-		mod("EnemyShockChance", "BASE", 10), --"base_chance_to_shock_%" = 10
-		mod("ChainCountMax", "BASE", 1), --"number_of_additional_projectiles_in_chain" = 1
-		--"skill_range_+%" = -50
-	},
-	qualityMods = {
+		skill("castTime", 0.8),
+		skill("damageEffectiveness", 0.7),
+		skill("CritChance", 5),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("manaCost", nil), 
-		[3] = skill("LightningMin", nil), --"spell_minimum_base_lightning_damage"
-		[4] = skill("LightningMax", nil), --"spell_maximum_base_lightning_damage"
+		[1] = skill("levelRequirement", nil),
+		[2] = skill("manaCost", nil),
 	},
 	levels = {
-		[1] = { 3, 20, 2, 7, },
-		[2] = { 8, 19, 4, 12, },
-		[3] = { 12, 18, 6, 17, },
-		[4] = { 25, 17, 17, 50, },
-		[5] = { 32, 16, 27, 82, },
-		[6] = { 70, 16, 288, 864, },
+		[1] = { 3, 20, },
+		[2] = { 8, 19, },
+		[3] = { 12, 18, },
+		[4] = { 25, 17, },
+		[5] = { 32, 16, },
+		[6] = { 70, 16, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_lightning_damage",
+		"spell_maximum_base_lightning_damage",
+		"base_chance_to_shock_%",
+		"number_of_additional_projectiles_in_chain",
+		"skill_range_+%",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, },
+	statLevels = {
+		[1] = { 0.5, 1.5, 10, 1, -50, },
+		[2] = { 0.5, 1.5, 10, 1, -50, },
+		[3] = { 0.5, 1.5, 10, 1, -50, },
+		[4] = { 0.5, 1.5, 10, 1, -50, },
+		[5] = { 0.5, 1.5, 10, 1, -50, },
+		[6] = { 0.5, 1.5, 10, 1, -50, },
 	},
 }
 skills["MonsterCausticArrow"] = {
 	name = "Caustic Arrow",
 	hidden = true,
 	color = 2,
-	description = "射出一发带有腐蚀效果的箭矢, 对击中的敌人造成额外混沌伤害, 并且产生腐蚀云雾. 在云雾中的敌人将会持续的受到混沌伤害.",
+	baseEffectiveness = 1.0666999816895,
+	incrementalEffectiveness = 0.03999999910593,
+	description = "射出一发带有腐蚀效果的箭矢, 对击中的敌人造成额外混沌伤害, 并且产生腐蚀地面。站在地面上的敌人将会持续的受到混沌伤害.",
 	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [68] = true, [11] = true, [12] = true, [17] = true, [19] = true, [22] = true, [40] = true, [50] = true, },
 	weaponTypes = {
 		["Bow"] = true,
@@ -847,40 +1583,58 @@ skills["MonsterCausticArrow"] = {
 		chaos = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		mod("PhysicalDamageGainAsChaos", "BASE", 34, 0, 0, nil), --"physical_damage_%_to_add_as_chaos" = 34
-		--"skill_can_fire_arrows" = 1
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-		--"monster_penalty_against_minions_damage_+%_final_vs_player_minions" = -25
-		--"ground_caustic_art_variation" = 2
-		skill("dotIsProjectile", true), --"projectile_damage_modifiers_apply_to_skill_dot" = ?
-	},
-	qualityMods = {
+		skill("castTime", 1),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("manaCost", nil), 
-		[3] = skill("duration", nil), --"base_skill_effect_duration"
-		[4] = skill("ChaosDot", nil), --"base_chaos_damage_to_deal_per_minute"
+		[1] = skill("levelRequirement", nil),
+		[2] = skill("manaCost", nil),
 	},
 	levels = {
-		[1] = { 3, 10, 1.2, 1.4833333333333, },
-		[2] = { 12, 9, 1.2, 3.5833333333333, },
-		[3] = { 26, 8, 1.2, 10.183333333333, },
-		[4] = { 67, 8, 1.2, 109.1, },
-		[5] = { 68, 8, 2.4, 160.91666666667, },
-		[6] = { 69, 8, 2.5, 169.5, },
-		[7] = { 70, 8, 2.6, 178.51666666667, },
-		[8] = { 71, 8, 2.7, 187.98333333333, },
-		[9] = { 72, 8, 2.8, 197.93333333333, },
-		[10] = { 73, 8, 2.9, 208.36666666667, },
-		[11] = { 74, 8, 3, 219.31666666667, },
+		[1] = { 3, 10, },
+		[2] = { 12, 9, },
+		[3] = { 26, 8, },
+		[4] = { 67, 8, },
+		[5] = { 68, 8, },
+		[6] = { 69, 8, },
+		[7] = { 70, 8, },
+		[8] = { 71, 8, },
+		[9] = { 72, 8, },
+		[10] = { 73, 8, },
+		[11] = { 74, 8, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+		"base_chaos_damage_to_deal_per_minute",
+		"physical_damage_%_to_add_as_chaos",
+		"skill_can_fire_arrows",
+		"active_skill_area_of_effect_radius_+%_final",
+		"monster_penalty_against_minions_damage_+%_final_vs_player_minions",
+		"ground_caustic_art_variation",
+		"projectile_damage_modifiers_apply_to_skill_dot",
+	},
+	statInterpolation = { 1, 3, 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 1200, 16.666667039196, 34, 1, 0, -25, 2, nil, },
+		[2] = { 1200, 16.666667039196, 34, 1, 0, -25, 2, nil, },
+		[3] = { 1200, 16.666667039196, 34, 1, 0, -25, 2, nil, },
+		[4] = { 1200, 16.666667039196, 34, 1, 0, -25, 2, nil, },
+		[5] = { 2400, 23.33333345751, 34, 1, 0, -25, 2, nil, },
+		[6] = { 2500, 23.33333345751, 34, 1, 0, -25, 2, nil, },
+		[7] = { 2600, 23.33333345751, 34, 1, 0, -25, 2, nil, },
+		[8] = { 2700, 23.33333345751, 34, 1, 0, -25, 2, nil, },
+		[9] = { 2800, 23.33333345751, 34, 1, 0, -25, 2, nil, },
+		[10] = { 2900, 23.33333345751, 34, 1, 0, -25, 2, nil, },
+		[11] = { 3000, 23.33333345751, 34, 1, 0, -25, 2, nil, },
 	},
 }
 skills["MonsterCausticBomb"] = {
 	name = "Caustic Bomb",
 	hidden = true,
 	color = 4,
+	baseEffectiveness = 2.2667000293732,
+	incrementalEffectiveness = 0.038499999791384,
 	skillTypes = { [2] = true, [12] = true, [10] = true, [19] = true, [11] = true, [37] = true, [40] = true, [50] = true, },
 	baseFlags = {
 		spell = true,
@@ -890,40 +1644,53 @@ skills["MonsterCausticBomb"] = {
 		chaos = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		skill("CritChance", 5), 
-		skill("cooldown", 4), 
-		--"base_trap_duration" = 2500
-		skill("duration", 4), --"base_skill_effect_duration" = 4000
-		--"trap_variation" = 2
-		--"monster_penalty_against_minions_damage_+%_final_vs_player_minions" = -25
-		--"ground_caustic_art_variation" = 2
-		--"is_trap" = ?
-		--"is_area_damage" = ?
-		--"base_skill_is_trapped" = ?
-		--"ignores_trap_and_mine_cooldown_limit" = ?
-	},
-	qualityMods = {
+		skill("castTime", 1),
+		skill("CritChance", 5),
+		skill("cooldown", 4),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("ChaosMin", nil), --"spell_minimum_base_chaos_damage"
-		[3] = skill("ChaosMax", nil), --"spell_maximum_base_chaos_damage"
-		[4] = skill("ChaosDot", nil), --"base_chaos_damage_to_deal_per_minute"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 4, 4, 5, 3.5, },
-		[2] = { 7, 5, 7, 4.7833333333333, },
-		[3] = { 12, 8, 11, 7.4833333333333, },
-		[4] = { 16, 11, 15, 10.3, },
-		[5] = { 20, 15, 20, 13.85, },
-		[6] = { 76, 357, 476, 330.81666666667, },
+		[1] = { 4, },
+		[2] = { 7, },
+		[3] = { 12, },
+		[4] = { 16, },
+		[5] = { 20, },
+		[6] = { 76, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_trap_duration",
+		"base_skill_effect_duration",
+		"spell_minimum_base_chaos_damage",
+		"spell_maximum_base_chaos_damage",
+		"base_chaos_damage_to_deal_per_minute",
+		"trap_variation",
+		"monster_penalty_against_minions_damage_+%_final_vs_player_minions",
+		"ground_caustic_art_variation",
+		"is_trap",
+		"is_area_damage",
+		"base_skill_is_trapped",
+		"ignores_trap_and_mine_cooldown_limit",
+	},
+	statInterpolation = { 1, 1, 3, 3, 3, 1, 1, 1, },
+	statLevels = {
+		[1] = { 2500, 4000, 0.30000001192093, 0.40000000596046, 16.666667039196, 2, -25, 2, nil, nil, nil, nil, },
+		[2] = { 2500, 4000, 0.30000001192093, 0.40000000596046, 16.666667039196, 2, -25, 2, nil, nil, nil, nil, },
+		[3] = { 2500, 4000, 0.30000001192093, 0.40000000596046, 16.666667039196, 2, -25, 2, nil, nil, nil, nil, },
+		[4] = { 2500, 4000, 0.30000001192093, 0.40000000596046, 16.666667039196, 2, -25, 2, nil, nil, nil, nil, },
+		[5] = { 2500, 4000, 0.30000001192093, 0.40000000596046, 16.666667039196, 2, -25, 2, nil, nil, nil, nil, },
+		[6] = { 2500, 4000, 0.30000001192093, 0.40000000596046, 16.666667039196, 2, -25, 2, nil, nil, nil, nil, },
 	},
 }
 skills["MonsterDischarge"] = {
 	name = "Discharge",
 	hidden = true,
 	color = 3,
+	baseEffectiveness = 2.2111001014709,
+	incrementalEffectiveness = 0.028500000014901,
 	description = "释放角色身上所有的能量球并对周围所有敌人造成元素伤害.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [18] = true, [26] = true, [36] = true, [45] = true, [33] = true, [34] = true, [35] = true, [60] = true, },
 	baseFlags = {
@@ -932,27 +1699,34 @@ skills["MonsterDischarge"] = {
 		lightning = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		skill("damageEffectiveness", 1.5), 
-		skill("CritChance", 4), 
-		--"spell_maximum_action_distance_+%" = -75
-		--"skill_art_variation" = 1
-		--"is_area_damage" = ?
-	},
-	qualityMods = {
+		skill("castTime", 1),
+		skill("damageEffectiveness", 1.5),
+		skill("CritChance", 4),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("LightningMin", nil, { type = "Multiplier", var = "PowerCharge" }), --"spell_minimum_base_lightning_damage_per_power_charge"
-		[3] = skill("LightningMax", nil, { type = "Multiplier", var = "PowerCharge" }), --"spell_maximum_base_lightning_damage_per_power_charge"
-		[4] = skill("FireMin", nil, { type = "Multiplier", var = "EnduranceCharge" }), --"spell_minimum_base_fire_damage_per_endurance_charge"
-		[5] = skill("FireMax", nil, { type = "Multiplier", var = "EnduranceCharge" }), --"spell_maximum_base_fire_damage_per_endurance_charge"
-		[6] = skill("ColdMin", nil, { type = "Multiplier", var = "FrenzyCharge" }), --"spell_minimum_base_cold_damage_per_frenzy_charge"
-		[7] = skill("ColdMax", nil, { type = "Multiplier", var = "FrenzyCharge" }), --"spell_maximum_base_cold_damage_per_frenzy_charge"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 4, 7, 20, 10, 14, 8, 12, },
-		[2] = { 68, 252, 753, 358, 537, 293, 440, },
+		[1] = { 4, },
+		[2] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_lightning_damage_per_power_charge",
+		"spell_maximum_base_lightning_damage_per_power_charge",
+		"spell_minimum_base_fire_damage_per_endurance_charge",
+		"spell_maximum_base_fire_damage_per_endurance_charge",
+		"spell_minimum_base_cold_damage_per_frenzy_charge",
+		"spell_maximum_base_cold_damage_per_frenzy_charge",
+		"spell_maximum_action_distance_+%",
+		"skill_art_variation",
+		"is_area_damage",
+	},
+	statInterpolation = { 3, 3, 3, 3, 3, 3, 1, 1, },
+	statLevels = {
+		[1] = { 0.5625, 1.6875, 0.80000001192093, 1.2000000476837, 0.65450000762939, 0.98180001974106, -75, 1, nil, },
+		[2] = { 0.61879998445511, 1.8500000238419, 0.87999999523163, 1.3200000524521, 0.72000002861023, 1.0800000429153, -75, 1, nil, },
 	},
 }
 skills["MonsterEnduringCry"] = {
@@ -967,52 +1741,91 @@ skills["MonsterEnduringCry"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("castTime", 0.25), 
-		skill("cooldown", 4), 
-		--"endurance_charges_granted_per_one_hundred_nearby_enemies_during_endurance_warcry" = 300
-		skill("duration", 0.75), --"base_skill_effect_duration" = 750
-	},
-	qualityMods = {
+		skill("castTime", 0.25),
+		skill("cooldown", 4),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = mod("LifeRegen", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }), --"base_life_regeneration_rate_per_minute"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 4, 5, },
-		[2] = { 7, 7.6, },
-		[3] = { 10, 11, },
-		[4] = { 14, 17, },
-		[5] = { 18, 25.2, },
-		[6] = { 22, 36.4, },
-		[7] = { 24, 43.4, },
-		[8] = { 28, 60.8, },
-		[9] = { 32, 84.4, },
-		[10] = { 36, 115.4, },
-		[11] = { 40, 156.6, },
-		[12] = { 44, 211, },
-		[13] = { 48, 282.2, },
-		[14] = { 52, 375.6, },
-		[15] = { 56, 497.2, },
-		[16] = { 60, 655.8, },
-		[17] = { 63, 805, },
-		[18] = { 66, 986.4, },
-		[19] = { 67, 1055.2, },
-		[20] = { 68, 1128.4, },
-		[21] = { 69, 1206.6, },
-		[22] = { 70, 1289.8, },
-		[23] = { 71, 1378.8, },
-		[24] = { 72, 1473.4, },
-		[25] = { 73, 1574.4, },
-		[26] = { 74, 1682, },
-		[27] = { 75, 1796.8, },
-		[28] = { 76, 1919, },
-		[29] = { 77, 2049.2, },
-		[30] = { 78, 2188, },
-		[31] = { 79, 2335.8, },
-		[32] = { 80, 2493.2, },
-		[33] = { 81, 2660.8, },
-		[34] = { 82, 2839.6, },
+		[1] = { 4, },
+		[2] = { 7, },
+		[3] = { 10, },
+		[4] = { 14, },
+		[5] = { 18, },
+		[6] = { 22, },
+		[7] = { 24, },
+		[8] = { 28, },
+		[9] = { 32, },
+		[10] = { 36, },
+		[11] = { 40, },
+		[12] = { 44, },
+		[13] = { 48, },
+		[14] = { 52, },
+		[15] = { 56, },
+		[16] = { 60, },
+		[17] = { 63, },
+		[18] = { 66, },
+		[19] = { 67, },
+		[20] = { 68, },
+		[21] = { 69, },
+		[22] = { 70, },
+		[23] = { 71, },
+		[24] = { 72, },
+		[25] = { 73, },
+		[26] = { 74, },
+		[27] = { 75, },
+		[28] = { 76, },
+		[29] = { 77, },
+		[30] = { 78, },
+		[31] = { 79, },
+		[32] = { 80, },
+		[33] = { 81, },
+		[34] = { 82, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"endurance_charges_granted_per_one_hundred_nearby_enemies_during_endurance_warcry",
+		"base_skill_effect_duration",
+		"base_life_regeneration_rate_per_minute",
+	},
+	statInterpolation = { 1, 1, 1, },
+	statLevels = {
+		[1] = { 300, 750, 300, },
+		[2] = { 300, 750, 456, },
+		[3] = { 300, 750, 660, },
+		[4] = { 300, 750, 1020, },
+		[5] = { 300, 750, 1512, },
+		[6] = { 300, 750, 2184, },
+		[7] = { 300, 750, 2604, },
+		[8] = { 300, 750, 3648, },
+		[9] = { 300, 750, 5064, },
+		[10] = { 300, 750, 6924, },
+		[11] = { 300, 750, 9396, },
+		[12] = { 300, 750, 12660, },
+		[13] = { 300, 750, 16932, },
+		[14] = { 300, 750, 22536, },
+		[15] = { 300, 750, 29832, },
+		[16] = { 300, 750, 39348, },
+		[17] = { 300, 750, 48300, },
+		[18] = { 300, 750, 59184, },
+		[19] = { 300, 750, 63312, },
+		[20] = { 300, 750, 67704, },
+		[21] = { 300, 750, 72396, },
+		[22] = { 300, 750, 77388, },
+		[23] = { 300, 750, 82728, },
+		[24] = { 300, 750, 88404, },
+		[25] = { 300, 750, 94464, },
+		[26] = { 300, 750, 100920, },
+		[27] = { 300, 750, 107808, },
+		[28] = { 300, 750, 115140, },
+		[29] = { 300, 750, 122952, },
+		[30] = { 300, 750, 131280, },
+		[31] = { 300, 750, 140148, },
+		[32] = { 300, 750, 149592, },
+		[33] = { 300, 750, 159648, },
+		[34] = { 300, 750, 170376, },
 	},
 }
 skills["MonsterEnfeeble"] = {
@@ -1028,28 +1841,36 @@ skills["MonsterEnfeeble"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("castTime", 0.5), 
-		skill("manaCost", 35), 
-		skill("duration", 5), --"base_skill_effect_duration" = 5000
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-		mod("Accuracy", "INC", -40, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"accuracy_rating_+%" = -40
-		mod("CritChance", "INC", -40, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"critical_strike_chance_+%" = -40
-		mod("Damage", "MORE", -40, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"enfeeble_damage_+%_final" = -40
-		mod("CritMultiplier", "BASE", -60, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"base_critical_strike_multiplier_+" = -60
-	},
-	qualityMods = {
+		skill("castTime", 0.5),
+		skill("manaCost", 35),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 4, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+		"active_skill_area_of_effect_radius_+%_final",
+		"accuracy_rating_+%",
+		"critical_strike_chance_+%",
+		"enfeeble_damage_+%_final",
+		"base_critical_strike_multiplier_+",
+	},
+	statInterpolation = { 1, 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 5000, 0, -40, -40, -40, -60, },
 	},
 }
 skills["MonsterFireball"] = {
 	name = "Fireball",
 	hidden = true,
 	color = 3,
+	baseEffectiveness = 1.1888999938965,
+	incrementalEffectiveness = 0.03940000012517,
 	description = "释放一颗球型火焰向前飞射, 接触到怪物时会爆炸并对周围敌人造成伤害",
 	skillTypes = { [3] = true, [68] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [33] = true, },
 	baseFlags = {
@@ -1058,27 +1879,36 @@ skills["MonsterFireball"] = {
 		area = true,
 	},
 	baseMods = {
-		skill("castTime", 0.85), 
-		skill("CritChance", 6), 
-		--"base_is_projectile" = 1
-		--"spell_maximum_action_distance_+%" = -50
-	},
-	qualityMods = {
+		skill("castTime", 0.85),
+		skill("CritChance", 6),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("FireMin", nil), --"spell_minimum_base_fire_damage"
-		[3] = skill("FireMax", nil), --"spell_maximum_base_fire_damage"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 3, 5, 7, },
-		[2] = { 68, 861, 1336, },
+		[1] = { 3, },
+		[2] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"base_is_projectile",
+		"spell_maximum_action_distance_+%",
+	},
+	statInterpolation = { 3, 3, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 1, -50, },
+		[2] = { 1.9400000572205, 3.0099999904633, 1, -50, },
 	},
 }
 skills["MonsterFireBomb"] = {
 	name = "Fire Bomb",
 	hidden = true,
 	color = 4,
+	baseEffectiveness = 1.8889000415802,
+	incrementalEffectiveness = 0.052000001072884,
 	description = "投掷一个陷阱, 该陷阱被触发时会爆炸并对周围的敌人造成火焰伤害, 且该区域的地面会持续燃烧, 踩在上面的敌人会持续受到伤害.",
 	skillTypes = { [2] = true, [12] = true, [10] = true, [19] = true, [11] = true, [29] = true, [37] = true, [40] = true, [33] = true, },
 	baseFlags = {
@@ -1088,28 +1918,35 @@ skills["MonsterFireBomb"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		skill("CritChance", 5), 
-		--"base_trap_duration" = 2500
-		skill("duration", 4.5), --"base_skill_effect_duration" = 4500
-		--"trap_variation" = 1
-		--"monster_penalty_against_minions_damage_+%_final_vs_player_minions" = -25
-		--"is_trap" = ?
-		--"is_area_damage" = ?
-		--"base_skill_is_trapped" = ?
-		--"ignores_trap_and_mine_cooldown_limit" = ?
-	},
-	qualityMods = {
+		skill("castTime", 1),
+		skill("CritChance", 5),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("FireMin", nil), --"spell_minimum_base_fire_damage"
-		[3] = skill("FireMax", nil), --"spell_maximum_base_fire_damage"
-		[4] = skill("FireDot", nil), --"base_fire_damage_to_deal_per_minute"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 4, 4, 7, 3.0333333333333, },
-		[2] = { 68, 885, 1328, 614.58333333333, },
+		[1] = { 4, },
+		[2] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_trap_duration",
+		"base_skill_effect_duration",
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"base_fire_damage_to_deal_per_minute",
+		"trap_variation",
+		"monster_penalty_against_minions_damage_+%_final_vs_player_minions",
+		"is_trap",
+		"is_area_damage",
+		"base_skill_is_trapped",
+		"ignores_trap_and_mine_cooldown_limit",
+	},
+	statInterpolation = { 1, 1, 3, 3, 3, 1, 1, },
+	statLevels = {
+		[1] = { 2500, 4500, 0.40000000596046, 0.60000002384186, 16.666667039196, 1, -25, nil, nil, nil, nil, },
+		[2] = { 2500, 4500, 0.56000000238419, 0.83999997377396, 23.33333345751, 1, -25, nil, nil, nil, nil, },
 	},
 }
 skills["MonsterFlickerStrike"] = {
@@ -1137,28 +1974,36 @@ skills["MonsterFlickerStrike"] = {
 		movement = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		skill("manaCost", 18), 
-		skill("cooldown", 2), 
-		mod("Speed", "INC", 30, ModFlag.Attack, 0, nil), --"attack_speed_+%" = 30
-		mod("Speed", "INC", 10, ModFlag.Attack, 0, { type = "Multiplier", var = "FrenzyCharge" }), --"base_attack_speed_+%_per_frenzy_charge" = 10
-		mod("PhysicalDamage", "INC", 0), --"physical_damage_+%" = 0
-		mod("Damage", "MORE", 10), --"active_skill_damage_+%_final" = 10
-		--"ignores_proximity_shield" = ?
-	},
-	qualityMods = {
+		skill("castTime", 1),
+		skill("manaCost", 18),
+		skill("cooldown", 2),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 13, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"attack_speed_+%",
+		"base_attack_speed_+%_per_frenzy_charge",
+		"physical_damage_+%",
+		"active_skill_damage_+%_final",
+		"ignores_proximity_shield",
+	},
+	statInterpolation = { 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 30, 10, 0, 10, nil, },
 	},
 }
 skills["MonsterFlameRedCannibal"] = {
 	name = "Incinerate",
 	hidden = true,
 	color = 4,
+	baseEffectiveness = 0.44440001249313,
+	incrementalEffectiveness = 0.050000000745058,
 	description = "召唤一个图腾, 它会持续的对附近的敌人喷射火焰.",
 	skillTypes = { [2] = true, [3] = true, [68] = true, [10] = true, [17] = true, [19] = true, [30] = true, [33] = true, },
 	skillTotemId = 8,
@@ -1167,27 +2012,71 @@ skills["MonsterFlameRedCannibal"] = {
 		projectile = true,
 	},
 	baseMods = {
-		skill("castTime", 0.25), 
-		skill("damageEffectiveness", 0.25), 
-		skill("FireMin", 2), --"spell_minimum_base_fire_damage" = 2
-		skill("FireMax", 3), --"spell_maximum_base_fire_damage" = 3
-		--"skill_repeat_count" = 8
-		--"skill_art_variation" = 2
-		--"spell_maximum_action_distance_+%" = -75
-		mod("Speed", "MORE", 25, ModFlag.Cast), --"active_skill_cast_speed_+%_final" = 25
-		--"monster_penalty_against_minions_damage_+%_final_vs_player_minions" = -25
-		mod("ProjectileCount", "BASE", 3), --"number_of_additional_projectiles" = 3
-		--"base_is_projectile" = ?
-		--"projectile_uses_contact_position" = ?
-		flag("PierceAllTargets"), --"always_pierce" = ?
-	},
-	qualityMods = {
+		skill("castTime", 0.25),
+		skill("damageEffectiveness", 0.25),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 3, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"skill_repeat_count",
+		"skill_art_variation",
+		"spell_maximum_action_distance_+%",
+		"active_skill_cast_speed_+%_final",
+		"monster_penalty_against_minions_damage_+%_final_vs_player_minions",
+		"number_of_additional_projectiles",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+		"always_pierce",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 8, 2, -75, 25, -25, 3, nil, nil, nil, },
+	},
+}
+skills["MountainGoatmanIceSpear"] = {
+	name = "冰矛",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 2.1817998886108,
+	incrementalEffectiveness = 0.037999998778105,
+	description = "凝聚冰之碎片为矛并向前射出, 此冰矛将会穿透附近的敌人, 并对一定距离以外的敌人具有较高的暴击率.",
+	skillTypes = { [2] = true, [3] = true, [68] = true, [10] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [34] = true, [60] = true, },
+	baseFlags = {
+		spell = true,
+		projectile = true,
+	},
+	baseMods = {
+		skill("castTime", 0.85),
+		skill("CritChance", 7),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 40, },
+		[2] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_cold_damage",
+		"spell_maximum_base_cold_damage",
+		"chill_duration_+%",
+		"ice_spear_second_form_damage_+%",
+		"base_is_projectile",
+	},
+	statInterpolation = { 3, 3, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 20, 50, nil, },
+		[2] = { 0.80000001192093, 1.2000000476837, 20, 25, nil, },
 	},
 }
 skills["MonsterLeapSlam"] = {
@@ -1213,26 +2102,34 @@ skills["MonsterLeapSlam"] = {
 		area = true,
 	},
 	baseMods = {
-		skill("castTime", 1.4), 
-		skill("damageEffectiveness", 1.5), 
-		skill("baseMultiplier", 1.5), 
-		--"skill_art_variation" = 1
-		--"is_area_damage" = ?
-		skill("castTimeOverridesAttackTime", true), --"cast_time_overrides_attack_duration" = ?
-	},
-	qualityMods = {
+		skill("castTime", 1.4),
+		skill("damageEffectiveness", 1.5),
+		skill("baseMultiplier", 1.5),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 2, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"skill_art_variation",
+		"is_area_damage",
+		"cast_time_overrides_attack_duration",
+	},
+	statInterpolation = { 1, },
+	statLevels = {
+		[1] = { 1, nil, nil, },
 	},
 }
 skills["MonsterLesserMultiFireballSpectre"] = {
 	name = "Lesser Multi Fireball",
 	hidden = true,
 	color = 3,
+	baseEffectiveness = 0.88889998197556,
+	incrementalEffectiveness = 0.03940000012517,
 	description = "释放一颗球型火焰向前飞射, 接触到怪物时会爆炸并对周围敌人造成伤害",
 	skillTypes = { [3] = true, [68] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [33] = true, },
 	baseFlags = {
@@ -1241,28 +2138,76 @@ skills["MonsterLesserMultiFireballSpectre"] = {
 		area = true,
 	},
 	baseMods = {
-		skill("castTime", 0.85), 
-		skill("CritChance", 6), 
-		--"base_is_projectile" = 1
-		--"spell_maximum_action_distance_+%" = -50
-		mod("ProjectileCount", "BASE", 1), --"number_of_additional_projectiles" = 1
-	},
-	qualityMods = {
+		skill("castTime", 0.85),
+		skill("CritChance", 6),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("FireMin", nil), --"spell_minimum_base_fire_damage"
-		[3] = skill("FireMax", nil), --"spell_maximum_base_fire_damage"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 3, 4, 5, },
-		[2] = { 68, 584, 876, },
+		[1] = { 3, },
+		[2] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"base_is_projectile",
+		"spell_maximum_action_distance_+%",
+		"number_of_additional_projectiles",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 1, -50, 1, },
+		[2] = { 1.7599999904633, 2.6400001049042, 1, -50, 1, },
+	},
+}
+skills["MonsterLesserMultiIceSpear"] = {
+	name = "Lesser Multi Ice Spear",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 1.5908999443054,
+	incrementalEffectiveness = 0.03999999910593,
+	description = "凝聚冰之碎片为矛并向前射出, 此冰矛将会穿透附近的敌人, 并对一定距离以外的敌人具有较高的暴击率.",
+	skillTypes = { [2] = true, [3] = true, [68] = true, [10] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [34] = true, [60] = true, },
+	baseFlags = {
+		spell = true,
+		projectile = true,
+	},
+	baseMods = {
+		skill("castTime", 0.85),
+		skill("damageEffectiveness", 0.8),
+		skill("CritChance", 7),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 3, },
+		[2] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_cold_damage",
+		"spell_maximum_base_cold_damage",
+		"ice_spear_second_form_damage_+%",
+		"number_of_additional_projectiles",
+		"base_is_projectile",
+	},
+	statInterpolation = { 3, 3, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 50, 1, nil, },
+		[2] = { 0.80000001192093, 1.2000000476837, 50, 1, nil, },
 	},
 }
 skills["MonsterLightningArrow"] = {
 	name = "Lightning Arrow",
 	hidden = true,
 	color = 2,
+	baseEffectiveness = 1.0199999809265,
+	incrementalEffectiveness = 0.019999999552965,
 	description = "射出一发充满闪电能量的箭矢, 对敌人造成伤害的同时也对附近额外 3 名敌人造成同等的伤害.",
 	skillTypes = { [1] = true, [48] = true, [69] = true, [11] = true, [3] = true, [68] = true, [22] = true, [17] = true, [19] = true, [35] = true, },
 	weaponTypes = {
@@ -1274,25 +2219,33 @@ skills["MonsterLightningArrow"] = {
 		lightning = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		mod("SkillPhysicalDamageConvertToLightning", "BASE", 50), --"skill_physical_damage_%_to_convert_to_lightning" = 50
-		--"lightning_arrow_maximum_number_of_extra_targets" = 4
-		mod("EnemyShockChance", "BASE", 25), --"base_chance_to_shock_%" = 25
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-	},
-	qualityMods = {
+		skill("castTime", 1),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 9, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"skill_physical_damage_%_to_convert_to_lightning",
+		"lightning_arrow_maximum_number_of_extra_targets",
+		"base_chance_to_shock_%",
+		"active_skill_area_of_effect_radius_+%_final",
+	},
+	statInterpolation = { 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 50, 4, 25, 0, },
 	},
 }
 skills["MonsterLightningThorns"] = {
 	name = "Lightning Thorns",
 	hidden = true,
 	color = 4,
+	baseEffectiveness = 1.1100000143051,
+	incrementalEffectiveness = 0.034000001847744,
 	skillTypes = { [2] = true, [5] = true, [12] = true, [35] = true, },
 	baseFlags = {
 		spell = true,
@@ -1300,23 +2253,31 @@ skills["MonsterLightningThorns"] = {
 		lightning = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		skill("cooldown", 3.5), 
-		skill("duration", 3.5), --"base_skill_effect_duration" = 3500
-	},
-	qualityMods = {
+		skill("castTime", 1),
+		skill("cooldown", 3.5),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 3, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+	},
+	statInterpolation = { 1, },
+	statLevels = {
+		[1] = { 3500, },
 	},
 }
 skills["MonsterMultiFireballSpectre"] = {
 	name = "Multi Fireball",
 	hidden = true,
 	color = 3,
+	baseEffectiveness = 0.77780002355576,
+	incrementalEffectiveness = 0.03940000012517,
 	description = "释放一颗球型火焰向前飞射, 接触到怪物时会爆炸并对周围敌人造成伤害",
 	skillTypes = { [3] = true, [68] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [33] = true, },
 	baseFlags = {
@@ -1325,22 +2286,68 @@ skills["MonsterMultiFireballSpectre"] = {
 		area = true,
 	},
 	baseMods = {
-		skill("castTime", 0.85), 
-		skill("CritChance", 6), 
-		--"base_is_projectile" = 1
-		--"spell_maximum_action_distance_+%" = -50
-		mod("ProjectileCount", "BASE", 2), --"number_of_additional_projectiles" = 2
-	},
-	qualityMods = {
+		skill("castTime", 0.85),
+		skill("CritChance", 6),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("FireMin", nil), --"spell_minimum_base_fire_damage"
-		[3] = skill("FireMax", nil), --"spell_maximum_base_fire_damage"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 3, 3, 5, },
-		[2] = { 68, 511, 766, },
+		[1] = { 3, },
+		[2] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"base_is_projectile",
+		"spell_maximum_action_distance_+%",
+		"number_of_additional_projectiles",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 1, -50, 2, },
+		[2] = { 1.7599999904633, 2.6400001049042, 1, -50, 2, },
+	},
+}
+skills["MonsterMultiIceSpear"] = {
+	name = "Multi Ice Spear",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 1.5908999443054,
+	incrementalEffectiveness = 0.03999999910593,
+	description = "凝聚冰之碎片为矛并向前射出, 此冰矛将会穿透附近的敌人, 并对一定距离以外的敌人具有较高的暴击率.",
+	skillTypes = { [2] = true, [3] = true, [68] = true, [10] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [34] = true, [60] = true, },
+	baseFlags = {
+		spell = true,
+		projectile = true,
+	},
+	baseMods = {
+		skill("castTime", 0.85),
+		skill("damageEffectiveness", 0.8),
+		skill("CritChance", 7),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 3, },
+		[2] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_cold_damage",
+		"spell_maximum_base_cold_damage",
+		"ice_spear_second_form_damage_+%",
+		"number_of_additional_projectiles",
+		"base_is_projectile",
+	},
+	statInterpolation = { 3, 3, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 50, 2, nil, },
+		[2] = { 0.80000001192093, 1.2000000476837, 50, 2, nil, },
 	},
 }
 skills["MonsterProjectileWeakness"] = {
@@ -1356,22 +2363,30 @@ skills["MonsterProjectileWeakness"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("castTime", 0.5), 
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-	},
-	qualityMods = {
+		skill("castTime", 0.5),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("duration", nil), --"base_skill_effect_duration"
-		[3] = flag("AlwaysPierceSelf", { type = "GlobalEffect", effectType = "Curse" }), --"projectiles_always_pierce_you"
-		[4] = mod("SelfKnockbackChance", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"chance_to_be_knocked_back_%"
-		[5] = mod("ProjectileDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"projectile_damage_taken_+%"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 25, 10.4, 54, 22, 32, },
-		[2] = { 55, 10.9, 70, 24, 34, },
-		[3] = { 60, 10.9, 95, 24, 34, },
+		[1] = { 25, },
+		[2] = { 55, },
+		[3] = { 60, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+		"active_skill_area_of_effect_radius_+%_final",
+		"projectiles_always_pierce_you",
+		"chance_to_be_knocked_back_%",
+		"projectile_damage_taken_+%",
+	},
+	statInterpolation = { 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 10400, 0, 54, 22, 32, },
+		[2] = { 10900, 0, 70, 24, 34, },
+		[3] = { 10900, 0, 95, 24, 34, },
 	},
 }
 skills["MonsterProximityShield"] = {
@@ -1384,17 +2399,23 @@ skills["MonsterProximityShield"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		skill("cooldown", 18), 
-		skill("duration", 8), --"base_skill_effect_duration" = 8000
-	},
-	qualityMods = {
+		skill("castTime", 1),
+		skill("cooldown", 18),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 0, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+	},
+	statInterpolation = { 1, },
+	statLevels = {
+		[1] = { 8000, },
 	},
 }
 skills["MonsterPuncture"] = {
@@ -1417,27 +2438,37 @@ skills["MonsterPuncture"] = {
 		projectile = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		--"skill_can_fire_arrows" = ?
-		mod("BleedChance", "BASE", 100), --"global_bleed_on_hit" = ?
-		mod("BleedChance", "BASE", 100), 
-	},
-	qualityMods = {
+		skill("castTime", 1),
+		mod("BleedChance", "BASE", 100),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		--[2] = "active_skill_bleeding_damage_+%_final"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 9, 45, },
-		[2] = { 30, 107, },
-		[3] = { 60, 158, },
+		[1] = { 9, },
+		[2] = { 30, },
+		[3] = { 60, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"active_skill_bleeding_damage_+%_final",
+		"skill_can_fire_arrows",
+		"global_bleed_on_hit",
+	},
+	statInterpolation = { 1, },
+	statLevels = {
+		[1] = { 45, nil, nil, },
+		[2] = { 107, nil, nil, },
+		[3] = { 158, nil, nil, },
 	},
 }
 skills["MonsterRighteousFireWhileSpectred"] = {
 	name = "Unrighteous Fire",
 	hidden = true,
 	color = 3,
+	baseEffectiveness = 1.1110999584198,
+	incrementalEffectiveness = 0.056000001728535,
 	description = "以魔法之火快速的燃烧自己及周围的敌人. 在此效果下, 你的法术伤害大幅增加. 当你的生命只剩下 1 时将会自动停止此法术.",
 	skillTypes = { [2] = true, [5] = true, [11] = true, [29] = true, [40] = true, [33] = true, [18] = true, [36] = true, [75] = true, },
 	baseFlags = {
@@ -1445,24 +2476,32 @@ skills["MonsterRighteousFireWhileSpectred"] = {
 		area = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		skill("FireDot", 1.5833333333333), --"base_fire_damage_to_deal_per_minute" = 95
-		--"skill_art_variation" = 1
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-	},
-	qualityMods = {
+		skill("castTime", 1),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 3, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_fire_damage_to_deal_per_minute",
+		"skill_art_variation",
+		"active_skill_area_of_effect_radius_+%_final",
+	},
+	statInterpolation = { 3, 1, 1, },
+	statLevels = {
+		[1] = { 16.666667039196, 1, 0, },
 	},
 }
 skills["MonsterShockNova"] = {
 	name = "Shock Nova",
 	hidden = true,
 	color = 3,
+	baseEffectiveness = 1.2374999523163,
+	incrementalEffectiveness = 0.0304000005126,
 	description = "从施法者散发出一圈闪电之环, 被击中的敌人会受到闪电伤害. 位于环中心的敌人将不会受到任何伤害.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [45] = true, [35] = true, },
 	baseFlags = {
@@ -1471,27 +2510,36 @@ skills["MonsterShockNova"] = {
 		lightning = true,
 	},
 	baseMods = {
-		skill("castTime", 0.75), 
-		skill("CritChance", 3), 
-		--"is_area_damage" = 1
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-	},
-	qualityMods = {
+		skill("castTime", 0.75),
+		skill("CritChance", 3),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("LightningMin", nil), --"spell_minimum_base_lightning_damage"
-		[3] = skill("LightningMax", nil), --"spell_maximum_base_lightning_damage"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 4, 3, 10, },
-		[2] = { 68, 377, 1132, },
+		[1] = { 4, },
+		[2] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_lightning_damage",
+		"spell_maximum_base_lightning_damage",
+		"is_area_damage",
+		"active_skill_area_of_effect_radius_+%_final",
+	},
+	statInterpolation = { 3, 3, 1, 1, },
+	statLevels = {
+		[1] = { 0.5, 1.5, 1, 0, },
+		[2] = { 1.460000038147, 4.3899998664856, 1, 0, },
 	},
 }
 skills["MonsterSpark"] = {
 	name = "Spark",
 	hidden = true,
 	color = 3,
+	baseEffectiveness = 0.83749997615814,
+	incrementalEffectiveness = 0.026100000366569,
 	description = "施放出多颗变幻莫测的电球, 这些电球将会随机移动直到撞到敌人或是自然消失.",
 	skillTypes = { [2] = true, [3] = true, [68] = true, [10] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [45] = true, [35] = true, },
 	baseFlags = {
@@ -1501,36 +2549,51 @@ skills["MonsterSpark"] = {
 		lightning = true,
 	},
 	baseMods = {
-		skill("castTime", 0.65), 
-		skill("damageEffectiveness", 0.7), 
-		skill("CritChance", 5), 
-		skill("duration", 3.5), --"base_skill_effect_duration" = 3500
-		--"base_is_projectile" = 1
-	},
-	qualityMods = {
+		skill("castTime", 0.65),
+		skill("damageEffectiveness", 0.7),
+		skill("CritChance", 5),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("manaCost", nil), 
-		[3] = skill("LightningMin", nil), --"spell_minimum_base_lightning_damage"
-		[4] = skill("LightningMax", nil), --"spell_maximum_base_lightning_damage"
-		[5] = mod("ProjectileCount", "BASE", nil), --"number_of_additional_projectiles"
+		[1] = skill("levelRequirement", nil),
+		[2] = skill("manaCost", nil),
 	},
 	levels = {
-		[1] = { 4, 20, 2, 7, 0, },
-		[2] = { 8, 19, 3, 10, 0, },
-		[3] = { 11, 18, 4, 12, 1, },
-		[4] = { 25, 17, 10, 29, 1, },
-		[5] = { 29, 16, 12, 36, 1, },
-		[6] = { 31, 16, 13, 40, 2, },
-		[7] = { 66, nil, 61, 183, 2, },
-		[8] = { 68, nil, 145, 435, 2, },
+		[1] = { 4, 20, },
+		[2] = { 8, 19, },
+		[3] = { 11, 18, },
+		[4] = { 25, 17, },
+		[5] = { 29, 16, },
+		[6] = { 31, 16, },
+		[7] = { 66, nil, },
+		[8] = { 68, nil, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_lightning_damage",
+		"spell_maximum_base_lightning_damage",
+		"base_skill_effect_duration",
+		"base_is_projectile",
+		"number_of_additional_projectiles",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, },
+	statLevels = {
+		[1] = { 0.5, 1.5, 3500, 1, 0, },
+		[2] = { 0.5, 1.5, 3500, 1, 0, },
+		[3] = { 0.5, 1.5, 3500, 1, 1, },
+		[4] = { 0.5, 1.5, 3500, 1, 1, },
+		[5] = { 0.5, 1.5, 3500, 1, 1, },
+		[6] = { 0.5, 1.5, 3500, 1, 2, },
+		[7] = { 0.5, 1.5, 3500, 1, 2, },
+		[8] = { 1.1000000238419, 3.2999999523163, 3500, 1, 2, },
 	},
 }
 skills["MonsterSplitFireballSpectre"] = {
 	name = "Split Fireball",
 	hidden = true,
 	color = 3,
+	baseEffectiveness = 0.95560002326965,
+	incrementalEffectiveness = 0.03940000012517,
 	description = "释放一颗球型火焰向前飞射, 接触到怪物时会爆炸并对周围敌人造成伤害",
 	skillTypes = { [3] = true, [68] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [33] = true, },
 	baseFlags = {
@@ -1539,22 +2602,68 @@ skills["MonsterSplitFireballSpectre"] = {
 		area = true,
 	},
 	baseMods = {
-		skill("castTime", 0.85), 
-		skill("CritChance", 6), 
-		--"base_is_projectile" = 1
-		--"spell_maximum_action_distance_+%" = -50
-		--"projectiles_fork" = ?
-	},
-	qualityMods = {
+		skill("castTime", 0.85),
+		skill("CritChance", 6),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("FireMin", nil), --"spell_minimum_base_fire_damage"
-		[3] = skill("FireMax", nil), --"spell_maximum_base_fire_damage"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 3, 4, 6, },
-		[2] = { 68, 628, 941, },
+		[1] = { 3, },
+		[2] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"base_is_projectile",
+		"spell_maximum_action_distance_+%",
+		"projectiles_fork",
+	},
+	statInterpolation = { 3, 3, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 1, -50, nil, },
+		[2] = { 1.7599999904633, 2.6400001049042, 1, -50, nil, },
+	},
+}
+skills["MonsterSplitIceSpear"] = {
+	name = "Split Ice Spear",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 1.5908999443054,
+	incrementalEffectiveness = 0.03999999910593,
+	description = "凝聚冰之碎片为矛并向前射出, 此冰矛将会穿透附近的敌人, 并对一定距离以外的敌人具有较高的暴击率.",
+	skillTypes = { [2] = true, [3] = true, [68] = true, [10] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [34] = true, [60] = true, },
+	baseFlags = {
+		spell = true,
+		projectile = true,
+	},
+	baseMods = {
+		skill("castTime", 0.85),
+		skill("damageEffectiveness", 0.8),
+		skill("CritChance", 7),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 3, },
+		[2] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_cold_damage",
+		"spell_maximum_base_cold_damage",
+		"ice_spear_second_form_damage_+%",
+		"base_is_projectile",
+		"projectiles_fork",
+	},
+	statInterpolation = { 3, 3, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 50, nil, nil, },
+		[2] = { 0.80000001192093, 1.2000000476837, 50, nil, nil, },
 	},
 }
 skills["MonsterWarlordsMark"] = {
@@ -1570,23 +2679,29 @@ skills["MonsterWarlordsMark"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("castTime", 0.5), 
-		skill("manaCost", 50), 
-		skill("duration", 8.8), --"base_skill_effect_duration" = 8800
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-		mod("StunRecovery", "INC", -27, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"base_stun_recovery_+%" = -27
-		--"chance_to_be_stunned_%" = 10
-		mod("SelfDamageLifeLeech", "BASE", 128, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"life_leech_on_any_damage_when_hit_permyriad" = 128
-		mod("SelfDamageManaLeech", "BASE", 108, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"mana_leech_on_any_damage_when_hit_permyriad" = 108
-		--"chance_to_grant_endurance_charge_on_death_%" = 37
-	},
-	qualityMods = {
+		skill("castTime", 0.5),
+		skill("manaCost", 50),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 5, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+		"active_skill_area_of_effect_radius_+%_final",
+		"base_stun_recovery_+%",
+		"chance_to_be_stunned_%",
+		"life_leech_on_any_damage_when_hit_permyriad",
+		"mana_leech_on_any_damage_when_hit_permyriad",
+		"chance_to_grant_endurance_charge_on_death_%",
+	},
+	statInterpolation = { 1, 1, 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 8800, 0, -27, 10, 128, 108, 37, },
 	},
 }
 skills["NecromancerConductivity"] = {
@@ -1603,24 +2718,33 @@ skills["NecromancerConductivity"] = {
 		lightning = true,
 	},
 	baseMods = {
-		skill("castTime", 0.5), 
-		skill("cooldown", 10), 
-		skill("duration", 6), --"base_skill_effect_duration" = 6000
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-		--"skill_art_variation" = 1
-	},
-	qualityMods = {
+		skill("castTime", 0.5),
+		skill("cooldown", 10),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = mod("LightningResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"base_lightning_damage_resistance_%"
-		[3] = mod("SelfShockChance", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"chance_to_be_shocked_%"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 10, -20, 14, },
-		[2] = { 41, -25, 16, },
-		[3] = { 58, -30, 18, },
-		[4] = { 71, -40, 20, },
+		[1] = { 10, },
+		[2] = { 41, },
+		[3] = { 58, },
+		[4] = { 71, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+		"active_skill_area_of_effect_radius_+%_final",
+		"base_lightning_damage_resistance_%",
+		"chance_to_be_shocked_%",
+		"skill_art_variation",
+	},
+	statInterpolation = { 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 6000, 0, -20, 14, 1, },
+		[2] = { 6000, 0, -25, 16, 1, },
+		[3] = { 6000, 0, -30, 18, 1, },
+		[4] = { 6000, 0, -40, 20, 1, },
 	},
 }
 skills["NecromancerElementalWeakness"] = {
@@ -1636,27 +2760,36 @@ skills["NecromancerElementalWeakness"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("castTime", 0.5), 
-		skill("manaCost", 35), 
-		skill("cooldown", 10), 
-		skill("duration", 6), --"base_skill_effect_duration" = 6000
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-		mod("SelfShockChance", "BASE", 0, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"chance_to_be_shocked_%" = 0
-		mod("SelfFreezeChance", "BASE", 0, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"chance_to_be_frozen_%" = 0
-		mod("SelfIgniteChance", "BASE", 0, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"chance_to_be_ignited_%" = 0
-		--"skill_art_variation" = 1
-	},
-	qualityMods = {
+		skill("castTime", 0.5),
+		skill("manaCost", 35),
+		skill("cooldown", 10),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = mod("ElementalResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"base_resist_all_elements_%"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 10, -20, },
-		[2] = { 40, -25, },
-		[3] = { 56, -30, },
-		[4] = { 71, -40, },
+		[1] = { 10, },
+		[2] = { 40, },
+		[3] = { 56, },
+		[4] = { 71, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+		"active_skill_area_of_effect_radius_+%_final",
+		"base_resist_all_elements_%",
+		"chance_to_be_shocked_%",
+		"chance_to_be_frozen_%",
+		"chance_to_be_ignited_%",
+		"skill_art_variation",
+	},
+	statInterpolation = { 1, 1, 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 6000, 0, -20, 0, 0, 0, 1, },
+		[2] = { 6000, 0, -25, 0, 0, 0, 1, },
+		[3] = { 6000, 0, -30, 0, 0, 0, 1, },
+		[4] = { 6000, 0, -40, 0, 0, 0, 1, },
 	},
 }
 skills["NecromancerEnfeeble"] = {
@@ -1672,23 +2805,29 @@ skills["NecromancerEnfeeble"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("castTime", 0.5), 
-		skill("manaCost", 35), 
-		skill("duration", 5), --"base_skill_effect_duration" = 5000
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-		mod("Accuracy", "INC", -40, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"accuracy_rating_+%" = -40
-		mod("CritChance", "INC", -40, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"critical_strike_chance_+%" = -40
-		mod("Damage", "MORE", -40, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"enfeeble_damage_+%_final" = -40
-		mod("CritMultiplier", "BASE", -60, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"base_critical_strike_multiplier_+" = -60
-		--"skill_art_variation" = 1
-	},
-	qualityMods = {
+		skill("castTime", 0.5),
+		skill("manaCost", 35),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 4, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+		"active_skill_area_of_effect_radius_+%_final",
+		"accuracy_rating_+%",
+		"critical_strike_chance_+%",
+		"enfeeble_damage_+%_final",
+		"base_critical_strike_multiplier_+",
+		"skill_art_variation",
+	},
+	statInterpolation = { 1, 1, 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 5000, 0, -40, -40, -40, -60, 1, },
 	},
 }
 skills["NecromancerFlammability"] = {
@@ -1704,25 +2843,34 @@ skills["NecromancerFlammability"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("castTime", 0.5), 
-		skill("manaCost", 50), 
-		skill("cooldown", 10), 
-		skill("duration", 6), --"base_skill_effect_duration" = 6000
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-		--"skill_art_variation" = 1
-	},
-	qualityMods = {
+		skill("castTime", 0.5),
+		skill("manaCost", 50),
+		skill("cooldown", 10),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = mod("FireResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"base_fire_damage_resistance_%"
-		[3] = mod("SelfIgniteChance", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"chance_to_be_ignited_%"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 10, -20, 14, },
-		[2] = { 41, -25, 16, },
-		[3] = { 58, -30, 18, },
-		[4] = { 71, -40, 20, },
+		[1] = { 10, },
+		[2] = { 41, },
+		[3] = { 58, },
+		[4] = { 71, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+		"active_skill_area_of_effect_radius_+%_final",
+		"base_fire_damage_resistance_%",
+		"chance_to_be_ignited_%",
+		"skill_art_variation",
+	},
+	statInterpolation = { 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 6000, 0, -20, 14, 1, },
+		[2] = { 6000, 0, -25, 16, 1, },
+		[3] = { 6000, 0, -30, 18, 1, },
+		[4] = { 6000, 0, -40, 20, 1, },
 	},
 }
 skills["NecromancerFrostbite"] = {
@@ -1738,25 +2886,34 @@ skills["NecromancerFrostbite"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("castTime", 0.5), 
-		skill("manaCost", 50), 
-		skill("cooldown", 10), 
-		skill("duration", 6), --"base_skill_effect_duration" = 6000
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-		--"skill_art_variation" = 1
-	},
-	qualityMods = {
+		skill("castTime", 0.5),
+		skill("manaCost", 50),
+		skill("cooldown", 10),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = mod("ColdResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"base_cold_damage_resistance_%"
-		[3] = mod("SelfFreezeChance", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"chance_to_be_frozen_%"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 10, -20, 14, },
-		[2] = { 41, -25, 16, },
-		[3] = { 58, -30, 18, },
-		[4] = { 71, -40, 20, },
+		[1] = { 10, },
+		[2] = { 41, },
+		[3] = { 58, },
+		[4] = { 71, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+		"active_skill_area_of_effect_radius_+%_final",
+		"base_cold_damage_resistance_%",
+		"chance_to_be_frozen_%",
+		"skill_art_variation",
+	},
+	statInterpolation = { 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 6000, 0, -20, 14, 1, },
+		[2] = { 6000, 0, -25, 16, 1, },
+		[3] = { 6000, 0, -30, 18, 1, },
+		[4] = { 6000, 0, -40, 20, 1, },
 	},
 }
 skills["NecromancerProjectileWeakness"] = {
@@ -1772,23 +2929,31 @@ skills["NecromancerProjectileWeakness"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("castTime", 0.5), 
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-		--"skill_art_variation" = 1
-	},
-	qualityMods = {
+		skill("castTime", 0.5),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("duration", nil), --"base_skill_effect_duration"
-		[3] = flag("AlwaysPierceSelf", { type = "GlobalEffect", effectType = "Curse" }), --"projectiles_always_pierce_you"
-		[4] = mod("SelfKnockbackChance", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"chance_to_be_knocked_back_%"
-		[5] = mod("ProjectileDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"projectile_damage_taken_+%"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 25, 10.4, 54, 22, 32, },
-		[2] = { 55, 10.9, 70, 24, 34, },
-		[3] = { 60, 10.9, 95, 24, 34, },
+		[1] = { 25, },
+		[2] = { 55, },
+		[3] = { 60, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+		"active_skill_area_of_effect_radius_+%_final",
+		"projectiles_always_pierce_you",
+		"chance_to_be_knocked_back_%",
+		"projectile_damage_taken_+%",
+		"skill_art_variation",
+	},
+	statInterpolation = { 1, 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 10400, 0, 54, 22, 32, 1, },
+		[2] = { 10900, 0, 70, 24, 34, 1, },
+		[3] = { 10900, 0, 95, 24, 34, 1, },
 	},
 }
 skills["NecromancerRaiseZombie"] = {
@@ -1803,20 +2968,29 @@ skills["NecromancerRaiseZombie"] = {
 		minion = true,
 	},
 	baseMods = {
-		skill("castTime", 0.85), 
-		--"alternate_minion" = 1
-	},
-	qualityMods = {
+		skill("castTime", 0.85),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = mod("ActiveZombieLimit", "BASE", nil), --"base_number_of_zombies_allowed"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 2, 3, },
-		[2] = { 26, 4, },
-		[3] = { 40, 5, },
-		[4] = { 51, 6, },
+		[1] = { 2, },
+		[2] = { 26, },
+		[3] = { 40, },
+		[4] = { 51, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_number_of_zombies_allowed",
+		"alternate_minion",
+	},
+	statInterpolation = { 1, 1, },
+	statLevels = {
+		[1] = { 3, 1, },
+		[2] = { 4, 1, },
+		[3] = { 5, 1, },
+		[4] = { 6, 1, },
 	},
 }
 skills["NecromancerVulnerability"] = {
@@ -1832,29 +3006,37 @@ skills["NecromancerVulnerability"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("castTime", 0.5), 
-		skill("manaCost", 110), 
-		skill("duration", 10.9), --"base_skill_effect_duration" = 10900
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-		mod("PhysicalDamageTaken", "INC", 50, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"physical_damage_taken_+%" = 50
-		mod("PhysicalDamageTakenOverTime", "INC", 50, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"base_physical_damage_over_time_taken_+%" = 50
-		--"skill_art_variation" = 1
-		mod("SelfBleedChance", "BASE", 20, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"receive_bleeding_chance_%_when_hit_by_attack" = 20
-		--"chance_to_be_maimed_when_hit_%" = 20
-	},
-	qualityMods = {
+		skill("castTime", 0.5),
+		skill("manaCost", 110),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 1, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+		"active_skill_area_of_effect_radius_+%_final",
+		"physical_damage_taken_+%",
+		"base_physical_damage_over_time_taken_+%",
+		"skill_art_variation",
+		"receive_bleeding_chance_%_when_hit_by_attack",
+		"chance_to_be_maimed_when_hit_%",
+	},
+	statInterpolation = { 1, 1, 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 10900, 0, 50, 50, 1, 20, 20, },
 	},
 }
 skills["PyroChaosFireball"] = {
 	name = "Chaos Fireball",
 	hidden = true,
 	color = 4,
+	baseEffectiveness = 1.3555999994278,
+	incrementalEffectiveness = 0.028500000014901,
 	description = "释放一颗球型火焰向前飞射, 接触到怪物时会爆炸并对周围敌人造成伤害",
 	skillTypes = { [3] = true, [68] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [33] = true, },
 	baseFlags = {
@@ -1863,30 +3045,38 @@ skills["PyroChaosFireball"] = {
 		area = true,
 	},
 	baseMods = {
-		skill("castTime", 0.85), 
-		skill("CritChance", 6), 
-		skill("cooldown", 3), 
-		skill("FireMin", 3), --"spell_minimum_base_fire_damage" = 3
-		skill("FireMax", 4), --"spell_maximum_base_fire_damage" = 4
-		skill("ChaosMin", 2), --"spell_minimum_base_chaos_damage" = 2
-		skill("ChaosMax", 2), --"spell_maximum_base_chaos_damage" = 2
-		--"spell_maximum_action_distance_+%" = -50
-		--"skill_art_variation" = 4
-		--"base_is_projectile" = ?
-	},
-	qualityMods = {
+		skill("castTime", 0.85),
+		skill("CritChance", 6),
+		skill("cooldown", 3),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 3, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"spell_minimum_base_chaos_damage",
+		"spell_maximum_base_chaos_damage",
+		"spell_maximum_action_distance_+%",
+		"skill_art_variation",
+		"base_is_projectile",
+	},
+	statInterpolation = { 3, 3, 3, 3, 1, 1, },
+	statLevels = {
+		[1] = { 0.40000000596046, 0.60000002384186, 0.27000001072884, 0.33000001311302, -50, 4, nil, },
 	},
 }
 skills["PyroFireball"] = {
 	name = "Fireball",
 	hidden = true,
 	color = 4,
+	baseEffectiveness = 1.1888999938965,
+	incrementalEffectiveness = 0.03940000012517,
 	description = "释放一颗球型火焰向前飞射, 接触到怪物时会爆炸并对周围敌人造成伤害",
 	skillTypes = { [3] = true, [68] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [33] = true, },
 	baseFlags = {
@@ -1895,90 +3085,120 @@ skills["PyroFireball"] = {
 		area = true,
 	},
 	baseMods = {
-		skill("castTime", 0.85), 
-		skill("CritChance", 6), 
-		--"base_is_projectile" = 1
-		--"spell_maximum_action_distance_+%" = -50
-		--"skill_art_variation" = 3
-	},
-	qualityMods = {
+		skill("castTime", 0.85),
+		skill("CritChance", 6),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("FireMin", nil), --"spell_minimum_base_fire_damage"
-		[3] = skill("FireMax", nil), --"spell_maximum_base_fire_damage"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 3, 5, 7, },
-		[2] = { 68, 497, 745, },
+		[1] = { 3, },
+		[2] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"base_is_projectile",
+		"spell_maximum_action_distance_+%",
+		"skill_art_variation",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 1, -50, 3, },
+		[2] = { 1.1200000047684, 1.6799999475479, 1, -50, 3, },
 	},
 }
 skills["PyroSuicideExplosion"] = {
 	name = "Suicide Explosion",
 	hidden = true,
 	color = 4,
+	baseEffectiveness = 2.2667000293732,
+	incrementalEffectiveness = 0.050000000745058,
 	skillTypes = { [2] = true, [11] = true, [10] = true, },
 	baseFlags = {
 		spell = true,
 		area = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		--"is_area_damage" = 1
-		--"skill_art_variation" = 1
-	},
-	qualityMods = {
+		skill("castTime", 1),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("FireMin", nil), --"secondary_minimum_base_fire_damage"
-		[3] = skill("FireMax", nil), --"secondary_maximum_base_fire_damage"
-		--[4] = "grant_kill_to_target_when_exploding_self"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 3, 9, 14, nil, },
-		[2] = { 9, 18, 27, nil, },
-		[3] = { 13, 27, 40, nil, },
-		[4] = { 18, 42, 62, nil, },
-		[5] = { 23, 63, 94, nil, },
-		[6] = { 27, 85, 128, nil, },
+		[1] = { 3, },
+		[2] = { 9, },
+		[3] = { 13, },
+		[4] = { 18, },
+		[5] = { 23, },
+		[6] = { 27, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"secondary_minimum_base_fire_damage",
+		"secondary_maximum_base_fire_damage",
+		"is_area_damage",
+		"skill_art_variation",
+		"grant_kill_to_target_when_exploding_self",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 1, 1, 1, },
+		[2] = { 0.80000001192093, 1.2000000476837, 1, 1, 1, },
+		[3] = { 0.80000001192093, 1.2000000476837, 1, 1, 1, },
+		[4] = { 0.80000001192093, 1.2000000476837, 1, 1, 1, },
+		[5] = { 0.80000001192093, 1.2000000476837, 1, 1, 1, },
+		[6] = { 0.80000001192093, 1.2000000476837, 1, 1, 1, },
 	},
 }
 skills["RevenantSpellProjectileSpectre"] = {
 	name = "Lightning Projectile",
 	hidden = true,
 	color = 4,
+	baseEffectiveness = 1,
+	incrementalEffectiveness = 0.052999999374151,
 	skillTypes = { [2] = true, [3] = true, [68] = true, [36] = true, },
 	baseFlags = {
 		spell = true,
 		projectile = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		skill("cooldown", 3), 
-		skill("LightningMin", 3), --"spell_minimum_base_lightning_damage" = 3
-		skill("LightningMax", 7), --"spell_maximum_base_lightning_damage" = 7
-		--"monster_projectile_variation" = 7
-		--"base_number_of_projectiles_in_spiral_nova" = 3
-		--"projectile_spiral_nova_time_ms" = 150
-		--"projectile_spiral_nova_angle" = 20
-		--"projectile_spiral_nova_starting_angle_offset" = -10
-		--"monster_reverse_point_blank_damage_-%_at_minimum_range" = 60
-		--"base_is_projectile" = ?
-	},
-	qualityMods = {
+		skill("castTime", 1),
+		skill("cooldown", 3),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 3, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_lightning_damage",
+		"spell_maximum_base_lightning_damage",
+		"monster_projectile_variation",
+		"base_number_of_projectiles_in_spiral_nova",
+		"projectile_spiral_nova_time_ms",
+		"projectile_spiral_nova_angle",
+		"projectile_spiral_nova_starting_angle_offset",
+		"monster_reverse_point_blank_damage_-%_at_minimum_range",
+		"base_is_projectile",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 0.60000002384186, 1.3999999761581, 7, 3, 150, 20, -10, 60, nil, },
 	},
 }
 skills["SeawitchFrostbolt"] = {
 	name = "Frostbolt",
 	hidden = true,
 	color = 3,
+	baseEffectiveness = 2.0455000400543,
+	incrementalEffectiveness = 0.041000001132488,
 	description = "发射出一个缓慢移动并可以穿透敌人的投射物, 造成冰霜伤害. ",
 	skillTypes = { [2] = true, [3] = true, [68] = true, [10] = true, [17] = true, [18] = true, [19] = true, [26] = true, [34] = true, [36] = true, [60] = true, },
 	baseFlags = {
@@ -1986,28 +3206,37 @@ skills["SeawitchFrostbolt"] = {
 		projectile = true,
 	},
 	baseMods = {
-		skill("castTime", 0.75), 
-		skill("CritChance", 5), 
-		skill("cooldown", 3), 
-		--"base_is_projectile" = ?
-		flag("PierceAllTargets"), --"always_pierce" = ?
-	},
-	qualityMods = {
+		skill("castTime", 0.75),
+		skill("CritChance", 5),
+		skill("cooldown", 3),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("ColdMin", nil), --"spell_minimum_base_cold_damage"
-		[3] = skill("ColdMax", nil), --"spell_maximum_base_cold_damage"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 3, 8, 12, },
-		[2] = { 68, 889, 1337, },
+		[1] = { 3, },
+		[2] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_cold_damage",
+		"spell_maximum_base_cold_damage",
+		"base_is_projectile",
+		"always_pierce",
+	},
+	statInterpolation = { 3, 3, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, nil, nil, },
+		[2] = { 1.0499999523163, 1.5800000429153, nil, nil, },
 	},
 }
 skills["SeaWitchScreech"] = {
 	name = "Screech",
 	hidden = true,
 	color = 4,
+	baseEffectiveness = 0.27270001173019,
+	incrementalEffectiveness = 0.041999999433756,
 	skillTypes = { [2] = true, },
 	baseFlags = {
 		spell = true,
@@ -2015,48 +3244,64 @@ skills["SeaWitchScreech"] = {
 		area = true,
 	},
 	baseMods = {
-		skill("castTime", 2.73), 
-		skill("cooldown", 6.5), 
-		mod("MovementSpeed", "INC", -20, 0, 0, { type = "GlobalEffect", effectType = "Debuff" }), --"base_movement_velocity_+%" = -20
-		skill("duration", 1.9), --"base_skill_effect_duration" = 1900
-		--"is_area_damage" = ?
-	},
-	qualityMods = {
+		skill("castTime", 2.73),
+		skill("cooldown", 6.5),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("ColdMin", nil), --"spell_minimum_base_cold_damage"
-		[3] = skill("ColdMax", nil), --"spell_maximum_base_cold_damage"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 3, 1, 2, },
-		[2] = { 68, 223, 347, },
+		[1] = { 3, },
+		[2] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_cold_damage",
+		"spell_maximum_base_cold_damage",
+		"base_movement_velocity_+%",
+		"base_skill_effect_duration",
+		"is_area_damage",
+	},
+	statInterpolation = { 3, 3, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, -20, 1900, nil, },
+		[2] = { 1.8500000238419, 2.8800001144409, -20, 1900, nil, },
 	},
 }
 skills["SeaWitchWave"] = {
 	name = "Wave",
 	hidden = true,
 	color = 4,
+	baseEffectiveness = 1.4636000394821,
+	incrementalEffectiveness = 0.034200001507998,
 	skillTypes = { [2] = true, [10] = true, [26] = true, },
 	baseFlags = {
 		spell = true,
 	},
 	baseMods = {
-		skill("castTime", 1.5), 
-		skill("manaCost", 6), 
-		skill("CritChance", 5), 
-		--"base_is_projectile" = 1
-	},
-	qualityMods = {
+		skill("castTime", 1.5),
+		skill("manaCost", 6),
+		skill("CritChance", 5),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("ColdMin", nil), --"spell_minimum_base_cold_damage"
-		[3] = skill("ColdMax", nil), --"spell_maximum_base_cold_damage"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 4, 6, 10, },
-		[2] = { 68, 874, 1311, },
+		[1] = { 4, },
+		[2] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_cold_damage",
+		"spell_maximum_base_cold_damage",
+		"base_is_projectile",
+	},
+	statInterpolation = { 3, 3, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 1, },
+		[2] = { 2.2400000095367, 3.3599998950958, 1, },
 	},
 }
 skills["SkeletonMassBowProjectile"] = {
@@ -2069,27 +3314,35 @@ skills["SkeletonMassBowProjectile"] = {
 		projectile = true,
 	},
 	baseMods = {
-		skill("castTime", 1.5), 
-		--"monster_projectile_variation" = 12
-		--"spell_maximum_action_distance_+%" = -50
-		mod("ProjectileSpeed", "INC", 200), --"base_projectile_speed_+%" = 200
-		--"base_is_projectile" = ?
-		mod("BleedChance", "BASE", 100), --"global_bleed_on_hit" = ?
-		mod("BleedChance", "BASE", 100), 
-	},
-	qualityMods = {
+		skill("castTime", 1.5),
+		mod("BleedChance", "BASE", 100),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 2, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"monster_projectile_variation",
+		"spell_maximum_action_distance_+%",
+		"base_projectile_speed_+%",
+		"base_is_projectile",
+		"global_bleed_on_hit",
+	},
+	statInterpolation = { 1, 1, 1, },
+	statLevels = {
+		[1] = { 12, -50, 200, nil, nil, },
 	},
 }
 skills["SkeletonSpark"] = {
 	name = "Spark",
 	hidden = true,
 	color = 3,
+	baseEffectiveness = 0.75,
+	incrementalEffectiveness = 0.0304000005126,
 	description = "施放出多颗变幻莫测的电球, 这些电球将会随机移动直到撞到敌人或是自然消失.",
 	skillTypes = { [2] = true, [3] = true, [68] = true, [10] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [45] = true, [35] = true, },
 	baseFlags = {
@@ -2099,30 +3352,42 @@ skills["SkeletonSpark"] = {
 		lightning = true,
 	},
 	baseMods = {
-		skill("castTime", 0.65), 
-		skill("damageEffectiveness", 0.7), 
-		skill("CritChance", 5), 
-		skill("duration", 3.5), --"base_skill_effect_duration" = 3500
-		--"base_is_projectile" = 1
-		mod("ProjectileCount", "BASE", 2), --"number_of_additional_projectiles" = 2
-		--"skill_art_variation" = 1
-	},
-	qualityMods = {
+		skill("castTime", 0.65),
+		skill("damageEffectiveness", 0.7),
+		skill("CritChance", 5),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("manaCost", nil), 
-		[3] = skill("LightningMin", nil), --"spell_minimum_base_lightning_damage"
-		[4] = skill("LightningMax", nil), --"spell_maximum_base_lightning_damage"
+		[1] = skill("levelRequirement", nil),
+		[2] = skill("manaCost", nil),
 	},
 	levels = {
-		[1] = { 4, 50, 2, 6, },
-		[2] = { 8, 48, 3, 9, },
-		[3] = { 11, 45, 4, 11, },
-		[4] = { 20, 44, 7, 21, },
-		[5] = { 28, 41, 11, 34, },
-		[6] = { 29, 40, 12, 36, },
-		[7] = { 68, 40, 351, 1052, },
+		[1] = { 4, 50, },
+		[2] = { 8, 48, },
+		[3] = { 11, 45, },
+		[4] = { 20, 44, },
+		[5] = { 28, 41, },
+		[6] = { 29, 40, },
+		[7] = { 68, 40, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_lightning_damage",
+		"spell_maximum_base_lightning_damage",
+		"base_skill_effect_duration",
+		"base_is_projectile",
+		"number_of_additional_projectiles",
+		"skill_art_variation",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 0.5, 1.5, 3500, 1, 2, 1, },
+		[2] = { 0.5, 1.5, 3500, 1, 2, 1, },
+		[3] = { 0.5, 1.5, 3500, 1, 2, 1, },
+		[4] = { 0.5, 1.5, 3500, 1, 2, 1, },
+		[5] = { 0.5, 1.5, 3500, 1, 2, 1, },
+		[6] = { 0.5, 1.5, 3500, 1, 2, 1, },
+		[7] = { 2.2439999580383, 6.731999874115, 3500, 1, 2, 1, },
 	},
 }
 skills["SkeletonTemporalChains"] = {
@@ -2138,21 +3403,27 @@ skills["SkeletonTemporalChains"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("castTime", 0.5), 
-		skill("manaCost", 20), 
-		skill("duration", 4), --"base_skill_effect_duration" = 4000
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-		mod("TemporalChainsActionSpeed", "INC", -20, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"temporal_chains_action_speed_+%_final" = -20
-		mod("BuffExpireFaster", "MORE", -40, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"buff_time_passed_-%" = 40
-		--"skill_art_variation" = 0
-	},
-	qualityMods = {
+		skill("castTime", 0.5),
+		skill("manaCost", 20),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 0, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+		"active_skill_area_of_effect_radius_+%_final",
+		"temporal_chains_action_speed_+%_final",
+		"buff_time_passed_-%",
+		"skill_art_variation",
+	},
+	statInterpolation = { 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 4000, 0, -20, 40, 0, },
 	},
 }
 skills["SkeletonVulnerability"] = {
@@ -2168,22 +3439,28 @@ skills["SkeletonVulnerability"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("castTime", 0.5), 
-		skill("manaCost", 110), 
-		skill("duration", 10.9), --"base_skill_effect_duration" = 10900
-		--"active_skill_area_of_effect_radius_+%_final" = 0
-		mod("PhysicalDamageTaken", "INC", 50, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"physical_damage_taken_+%" = 50
-		mod("PhysicalDamageTakenOverTime", "INC", 50, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"base_physical_damage_over_time_taken_+%" = 50
-		mod("SelfBleedChance", "BASE", 20, 0, 0, { type = "GlobalEffect", effectType = "Curse" }), --"receive_bleeding_chance_%_when_hit_by_attack" = 20
-		--"chance_to_be_maimed_when_hit_%" = 20
-	},
-	qualityMods = {
+		skill("castTime", 0.5),
+		skill("manaCost", 110),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 1, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+		"active_skill_area_of_effect_radius_+%_final",
+		"physical_damage_taken_+%",
+		"base_physical_damage_over_time_taken_+%",
+		"receive_bleeding_chance_%_when_hit_by_attack",
+		"chance_to_be_maimed_when_hit_%",
+	},
+	statInterpolation = { 1, 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 10900, 0, 50, 50, 20, 20, },
 	},
 }
 skills["SnakeSpineProjectile"] = {
@@ -2196,24 +3473,107 @@ skills["SnakeSpineProjectile"] = {
 		projectile = true,
 	},
 	baseMods = {
-		skill("castTime", 1.5), 
-		--"monster_projectile_variation" = 2
-		--"base_is_projectile" = 1
-		--"spell_maximum_action_distance_+%" = -60
-	},
-	qualityMods = {
+		skill("castTime", 1.5),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 1, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"monster_projectile_variation",
+		"base_is_projectile",
+		"spell_maximum_action_distance_+%",
+	},
+	statInterpolation = { 1, 1, 1, },
+	statLevels = {
+		[1] = { 2, 1, -60, },
+	},
+}
+skills["SolarisChampionFlameVortex"] = {
+	name = "Flame Vortex",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 1.6000000238419,
+	incrementalEffectiveness = 0.029999999329448,
+	description = "施放出多颗变幻莫测的电球, 这些电球将会随机移动直到撞到敌人或是自然消失.",
+	skillTypes = { [2] = true, [3] = true, [68] = true, [10] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [45] = true, [35] = true, },
+	baseFlags = {
+		spell = true,
+		projectile = true,
+		duration = true,
+	},
+	baseMods = {
+		skill("castTime", 0.65),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"base_skill_effect_duration",
+		"monster_projectile_variation",
+		"base_projectile_speed_+%",
+		"base_is_projectile",
+		"projectiles_not_offset",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 3000, 2, -57, nil, nil, },
+	},
+}
+skills["SpecialBeamCannon"] = {
+	name = "Beam",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 4.1556000709534,
+	incrementalEffectiveness = 0.037000000476837,
+	skillTypes = { [2] = true, [10] = true, },
+	baseFlags = {
+		spell = true,
+		area = true,
+	},
+	baseMods = {
+		skill("castTime", 2.5),
+		skill("cooldown", 8),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+		[2] = { 68, },
+		[3] = { 82, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"is_area_damage",
+	},
+	statInterpolation = { 3, 3, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, nil, },
+		[2] = { 0.80000001192093, 1.2000000476837, nil, },
+		[3] = { 0.80000001192093, 1.2000000476837, nil, },
 	},
 }
 skills["TarMortarTaster"] = {
 	name = "Tar Projectile",
 	hidden = true,
 	color = 4,
+	baseEffectiveness = 1.3332999944687,
+	incrementalEffectiveness = 0.032000001519918,
 	description = "如同怪物迫击炮技能, 但是在地上留下冲击效果. ",
 	skillTypes = { [3] = true, [68] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, },
 	baseFlags = {
@@ -2222,26 +3582,33 @@ skills["TarMortarTaster"] = {
 		area = true,
 	},
 	baseMods = {
-		skill("castTime", 1), 
-		skill("cooldown", 4), 
-		--"monster_projectile_variation" = 2
-		--"projectile_spread_radius" = 10
-		--"spell_maximum_action_distance_+%" = -50
-		skill("duration", 2), --"base_skill_effect_duration" = 2000
-		--"is_area_damage" = ?
-		--"base_is_projectile" = ?
-		mod("ProjectileSpeed", "INC", 33), --"base_projectile_speed_+%" = 33
-	},
-	qualityMods = {
+		skill("castTime", 1),
+		skill("cooldown", 4),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
-		[2] = skill("PhysicalMin", nil), --"spell_minimum_base_physical_damage"
-		[3] = skill("PhysicalMax", nil), --"spell_maximum_base_physical_damage"
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
-		[1] = { 3, 5, 8, },
-		[2] = { 68, 271, 407, },
+		[1] = { 3, },
+		[2] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"monster_projectile_variation",
+		"projectile_spread_radius",
+		"spell_minimum_base_physical_damage",
+		"spell_maximum_base_physical_damage",
+		"spell_maximum_action_distance_+%",
+		"base_skill_effect_duration",
+		"is_area_damage",
+		"base_is_projectile",
+		"base_projectile_speed_+%",
+	},
+	statInterpolation = { 1, 1, 3, 3, 1, 1, 1, },
+	statLevels = {
+		[1] = { 2, 10, 0.80000001192093, 1.2000000476837, -50, 2000, nil, nil, 33, },
+		[2] = { 2, 10, 0.87999999523163, 1.3200000524521, -50, 2000, nil, nil, nil, },
 	},
 }
 skills["UndyingWhirlingBlades"] = {
@@ -2262,20 +3629,72 @@ skills["UndyingWhirlingBlades"] = {
 		movement = true,
 	},
 	baseMods = {
-		skill("castTime", 2.6), 
-		skill("manaCost", 50), 
-		--"skill_art_variation" = 1
-		mod("Damage", "MORE", -40), --"active_skill_damage_+%_final" = -40
-		--"monster_flurry" = 1
-		skill("castTimeOverridesAttackTime", true), --"cast_time_overrides_attack_duration" = ?
-		--"ignores_proximity_shield" = ?
-	},
-	qualityMods = {
+		skill("castTime", 2.6),
+		skill("manaCost", 50),
 	},
 	levelMods = {
-		[1] = skill("levelRequirement", nil), 
+		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 0, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"skill_art_variation",
+		"active_skill_damage_+%_final",
+		"monster_flurry",
+		"cast_time_overrides_attack_duration",
+		"ignores_proximity_shield",
+	},
+	statInterpolation = { 1, 1, 1, },
+	statLevels = {
+		[1] = { 1, -40, 1, nil, nil, },
+	},
+}
+skills["WickerManMoltenStrike"] = {
+	name = "熔岩之击",
+	hidden = true,
+	color = 1,
+	description = "对目标造成物理及火焰伤害, 并在挥击的途中从武器弹射出熔岩球. 这些熔岩球在着地时会爆炸, 并对附近的敌人造成伤害.",
+	skillTypes = { [1] = true, [3] = true, [11] = true, [24] = true, [25] = true, [28] = true, [33] = true, [48] = true, },
+	weaponTypes = {
+		["One Handed Sword"] = true,
+		["Two Handed Mace"] = true,
+		["One Handed Axe"] = true,
+		["Staff"] = true,
+		["Sceptre"] = true,
+		["Two Handed Axe"] = true,
+		["Dagger"] = true,
+		["Two Handed Sword"] = true,
+		["Claw"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Mace"] = true,
+	},
+	baseFlags = {
+		attack = true,
+		melee = true,
+	},
+	baseMods = {
+		skill("castTime", 1),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 10, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"skill_physical_damage_%_to_convert_to_fire",
+		"number_of_additional_projectiles",
+		"active_skill_damage_+%_final",
+		"physical_damage_+%",
+		"active_skill_projectile_damage_+%_final",
+	},
+	statInterpolation = { 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 60, 4, 20, 10, -40, },
 	},
 }

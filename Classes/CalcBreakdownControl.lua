@@ -221,6 +221,7 @@ function CalcBreakdownClass:AddModSection(sectionData, modList)
 
 	-- Build list of modifiers to display
 	local cfg = (sectionData.cfg and actor.mainSkill[sectionData.cfg.."Cfg"] and copyTable(actor.mainSkill[sectionData.cfg.."Cfg"], true)) or { }
+	
 	cfg.source = sectionData.modSource
 	local rowList
 	local modDB = sectionData.enemy and actor.enemy.modDB or actor.modDB

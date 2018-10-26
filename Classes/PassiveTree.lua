@@ -64,6 +64,8 @@ page = getFile("https://poe.game.qq.com/passive-skill-tree/")
 	for k, v in pairs(assert(loadstring(treeText))()) do
 		self[k] = v
 	end
+	
+local cdnRoot = targetVersion == "2_6" and "" or "https://web.poecdn.com"
 
 	self.size = m_min(self.max_x - self.min_x, self.max_y - self.min_y) * 1.1
 
@@ -85,7 +87,8 @@ page = getFile("https://poe.game.qq.com/passive-skill-tree/")
 
 	ConPrintf("Loading passive tree assets...")
 	for name, data in pairs(self.assets) do
-		self:LoadImage(name..".png", data[0.3835] or data[1], data, not name:match("[OL][ri][bn][ie][tC]") and "ASYNC" or nil)--, not name:match("[OL][ri][bn][ie][tC]") and "MIPMAP" or nil)
+	self:LoadImage(name..".png", cdnRoot..(data[0.3835] or data[1]), data, not name:match("[OL][ri][bn][ie][tC]") and "ASYNC" or nil)--, not name:match("[OL][ri][bn][ie][tC]") and "MIPMAP" or nil)
+		--self:LoadImage(name..".png", data[0.3835] or data[1], data, not name:match("[OL][ri][bn][ie][tC]") and "ASYNC" or nil)--, not name:match("[OL][ri][bn][ie][tC]") and "MIPMAP" or nil)
 	end
 
 	-- Load sprite sheets and build sprite map
@@ -96,7 +99,7 @@ page = getFile("https://poe.game.qq.com/passive-skill-tree/")
 		local sheet = spriteSheets[maxZoom.filename]
 		if not sheet then
 			sheet = { }
-			self:LoadImage(maxZoom.filename:gsub("%?%x+$",""), self.imageRoot.."build-gen/passive-skill-sprite/"..maxZoom.filename, sheet, "CLAMP")--, "MIPMAP")
+			self:LoadImage(maxZoom.filename:gsub("%?%x+$",""), cdnRoot..self.imageRoot.."build-gen/passive-skill-sprite/"..maxZoom.filename, sheet, "CLAMP")--, "MIPMAP")
 			spriteSheets[maxZoom.filename] = sheet
 		end
 		for name, coords in pairs(maxZoom.coords) do

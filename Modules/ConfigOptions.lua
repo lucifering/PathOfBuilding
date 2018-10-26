@@ -67,6 +67,10 @@ modList:NewMod("ExtraSkillMod", "LIST", { mod = modLib.createMod("Multiplier:Spi
 { var = "darkPactSkeletonLife", type = "count", label = "魔侍 生命:", ifSkill = "暗夜血契", tooltip = "设置使用【暗夜血契】时，魔侍的最大生命.", apply = function(val, modList, enemyModList)
 modList:NewMod("SkillData", "LIST", { key = "skeletonLife", value = val }, "Config", { type = "SkillName", skillName = "暗夜血契" })
 	end },
+{ label = "苦痛之捷:", ifSkill = "苦痛之捷" },
+{ var = "heraldOfAgonyVirulenceStack", type = "count", label = "# 【毒力】层数:", ifSkill = "苦痛之捷", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:VirulenceStack", "BASE", m_min(val, 40), "Config")
+	end },
 { label = "冰霜新星:", ifSkill = "冰霜新星" },
 { var = "iceNovaCastOnFrostbolt", type = "check", label = "是否由【寒冰弹】触发?", ifSkill = "冰霜新星", apply = function(val, modList, enemyModList)
 modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "SkillName", skillName = "冰霜新星" })
@@ -91,6 +95,15 @@ modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", 
 		modList:NewMod("SkillData", "LIST", { key = "dpsMultiplier", value = val }, "Config", { type = "SkillId", skillId = "DemonModularBladeVortexSpectre" })
 		modList:NewMod("SkillData", "LIST", { key = "dpsMultiplier", value = val }, "Config", { type = "SkillId", skillId = "GhostPirateBladeVortexSpectre" })
 	end },
+{ var = "raiseSpectreKaomFireBeamTotemStage", type = "count", label = "灼热射线图腾数量:", ifSkill = "KaomFireBeamTotemSpectre", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:KaomFireBeamTotemStage", "BASE", val, "Config")
+	end },
+	
+{ label = "召唤圣物:", ifSkill = "召唤圣物" },
+{ var = "summonHolyRelicEnableHolyRelicBoon", type = "check", label = "启用圣物的加成光环:", ifSkill = "召唤圣物", apply = function(val, modList, enemyModList)
+		modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", { type = "SkillId", skillId = "RelicTriggeredNova" })
+	end },
+	
 { label = "召唤闪电魔像:", ifSkill = "召唤闪电魔像" },
 { var = "summonLightningGolemEnableWrath", type = "check", label = "启用魔像【雷霆】光环:", ifSkill = "召唤闪电魔像", apply = function(val, modList, enemyModList)
 		modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", { type = "SkillId", skillId = "LightningGolemWrath" })
@@ -674,3 +687,5 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 		modList:NewMod("Condition:UsedSkillRecently", "FLAG", val >= 1, "Config", { type = "Condition", var = "Combat" })
 end },
 }
+
+

@@ -57,6 +57,29 @@ minions["Metadata/Monsters/Axis/AxisCasterArc"] = {
 		-- MonsterCastsLightningThornsText
 	},
 }
+minions["Metadata/Monsters/Axis/AxisEliteSoldier3Champion"] = {
+	name = "日耀斗士",
+	life = 1.5,
+	fireResist = 20,
+	coldResist = 20,
+	lightningResist = 20,
+	chaosResist = 0,
+	damage = 1.12,
+	damageSpread = 0.2,
+	attackTime = 1.245,
+	attackRange = 9,
+	weaponType1 = "Two Handed Sword",
+	skillList = {
+		"Melee",
+		"BreachCleave",
+		"AxisDoubleStrikeTrigger",
+		"SummonFlamingAnimatedWeapons",
+		"SolarisChampionFlameVortex",
+	},
+	modList = {
+		mod("PhysicalDamageGainAsFire", "BASE", 100), -- MonsterPhysicalAddedAsFireSkeletonMaps
+	},
+}
 minions["Metadata/Monsters/Axis/AxisExperimenter"] = {
 	name = "生灵实验者",
 	life = 0.96,
@@ -278,6 +301,26 @@ minions["Metadata/Monsters/Bull/Bull"] = {
 	modList = {
 	},
 }
+-- Cage Spider
+minions["Metadata/Monster/CageSpider/CageSpider2"] = {
+	name = "恶魔奴隶",
+	life = 4.4,
+	fireResist = 0,
+	coldResist = 0,
+	lightningResist = 40,
+	chaosResist = 0,
+	damage = 1.28,
+	damageSpread = 0.2,
+	attackTime = 1.755,
+	attackRange = 10,
+	skillList = {
+		"Melee",
+		"CageSpiderCycloneTriggerSandstorms",
+		"CageSpiderSandSpark",
+	},
+	modList = {
+	},
+}
 -- Cannibals
 minions["Metadata/Monsters/Cannibal/CannibalMaleChampion"] = {
 	name = "食人族拥护者",
@@ -416,6 +459,29 @@ minions["Metadata/Monsters/Goatman/GoatmanShamanLightning"] = {
 		mod("Speed", "INC", -50, ModFlag.Cast), -- MonsterGoatmanShamanCastSpeed
 		-- MonsterCastsShockNovaText
 		-- MonsterCastsSparkText
+	},
+}
+minions["Metadata/Monsters/Goatman/MountainGoatmanShamanIceSpear"] = {
+	name = "羊人萨满",
+	life = 1,
+	energyShield = 0.2,
+	fireResist = 0,
+	coldResist = 75,
+	lightningResist = 0,
+	chaosResist = 0,
+	damage = 1,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 6,
+	damageFixup = 0.11,
+	weaponType1 = "Staff",
+	skillList = {
+		"MountainGoatmanIceSpear",
+	},
+	modList = {
+		-- MonsterSpeedAndDamageFixupSmall
+		mod("Speed", "INC", -50, ModFlag.Cast), -- MonsterGoatmanShamanCastSpeed
+		-- MonsterCastsIceSpearText
 	},
 }
 -- Miscreation
@@ -694,6 +760,26 @@ minions["Metadata/Monsters/Guardians/GuardianFire"] = {
 		-- MonsterCastsAugmentedFireballsText
 	},
 }
+minions["Metadata/Monsters/Guardians/GuardianFire_BlueMaps"] = {
+	name = "寒霜哨带",
+	life = 1.8,
+	energyShield = 0.4,
+	fireResist = 0,
+	coldResist = 75,
+	lightningResist = 0,
+	chaosResist = 0,
+	damage = 1.2,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 6,
+	skillList = {
+		"MonsterMultiIceSpear",
+		"MonsterSplitIceSpear",
+		"MonsterLesserMultiIceSpear",
+	},
+	modList = {
+	},
+}
 minions["Metadata/Monsters/Guardians/GuardianLightning"] = {
 	name = "雷电之带",
 	life = 1.8,
@@ -732,6 +818,27 @@ minions["Metadata/Monsters/HalfSkeleton/HalfSkeleton"] = {
 	},
 	modList = {
 		-- MonsterCastsPunctureText
+	},
+}
+-- Solar Guard
+minions["Metadata/Monsters/HolyFireElemental/HolyFireElementalSolarisBeam"] = {
+	name = "太阳军卫",
+	life = 1.98,
+	energyShield = 0.1,
+	fireResist = 75,
+	coldResist = 0,
+	lightningResist = 0,
+	chaosResist = 0,
+	damage = 1.12,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 7,
+	skillList = {
+		"SpecialBeamCannon",
+		"HolyFireElementalFireball",
+	},
+	modList = {
+		mod("PhysicalDamageGainAsFire", "BASE", 60), -- MonsterPhysicalAddedAsFireHolyFireElemental
 	},
 }
 -- Construct
@@ -808,6 +915,76 @@ minions["Metadata/Monsters/KaomWarrior/KaomWarrior3"] = {
 		"KaomWarriorGroundSlam",
 	},
 	modList = {
+	},
+}
+minions["Metadata/Monsters/KaomWarrior/KaomWarrior7"] = {
+	name = "拉维安加的侍祭（图腾）",
+	life = 1.43,
+	fireResist = 40,
+	coldResist = 0,
+	lightningResist = 0,
+	chaosResist = 0,
+	damage = 1.16,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 6,
+	skillList = {
+		"Melee",
+		"KaomFireBeamTotem",
+		"KaomFireBeamTotemSpectre",
+	},
+	modList = {
+		-- KaomWarriorSlowFireBeam
+		mod("TotemLife", "INC", 250), -- KaomWarriorSlowFireBeam2
+		-- MonsterKillTrapsMinesTotemsOnDeath
+	},
+}
+-- Kitava's Cultist
+minions["Metadata/Monsters/KitavaCultist/VaalCultistSpearLightningChampionDelve_"] = {
+	name = "复活的瓦尔拥护者",
+	life = 5.4,
+	fireResist = 35,
+	coldResist = 35,
+	lightningResist = 35,
+	chaosResist = 35,
+	damage = 1.5,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 12,
+	weaponType1 = "One Handed Sword",
+	skillList = {
+		"FireballIncusionLightning",
+		"DelayedLightningSpark",
+		"SummonedSparkDaemonLightning",
+	},
+	modList = {
+		-- MonsterDelveDropModifiers
+	},
+}
+-- Kitava's Herald
+minions["Metadata/Monster/KitavaDemon/KitavaDemon"] = {
+	name = "奇塔弗的信使",
+	life = 3.6,
+	fireResist = 37,
+	coldResist = 37,
+	lightningResist = 37,
+	chaosResist = 0,
+	damage = 1.4,
+	damageSpread = 0.2,
+	attackTime = 1.455,
+	attackRange = 8,
+	damageFixup = 0.33,
+	weaponType1 = "One Handed Sword",
+	skillList = {
+		"KitavaDemonLeapSlam",
+		"KitavaDemonCleave",
+		"KitavaDemonWhirlingBlades",
+		"KitavaDemonXMortar",
+		"Melee",
+	},
+	modList = {
+		-- MonsterInflictsBleedingText
+		-- MonsterSpeedAndDamageFixupComplete
 	},
 }
 -- Birdman
@@ -1708,6 +1885,28 @@ minions["Metadata/Monsters/Undying/UndyingOutcastWhirlingBlades"] = {
 	skillList = {
 		"Melee",
 		"UndyingWhirlingBlades",
+	},
+	modList = {
+	},
+}
+-- Wicker Man
+minions["Metadata/Monsters/WickerMan/WickerMan"] = {
+	name = "诡异行者",
+	life = 2.25,
+	fireResist = 20,
+	coldResist = 20,
+	lightningResist = 20,
+	chaosResist = 0,
+	damage = 1.5,
+	damageSpread = 0.2,
+	attackTime = 1.755,
+	attackRange = 8,
+	weaponType1 = "One Handed Mace",
+	skillList = {
+		"Melee",
+		"WickerManRighteousFire",
+		"WickerManMoltenStrike",
+		"MonsterRighteousFireWhileSpectred",
 	},
 	modList = {
 	},

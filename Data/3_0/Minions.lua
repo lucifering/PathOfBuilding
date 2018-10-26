@@ -6,7 +6,7 @@
 local minions, mod = ...
 
 minions["RaisedZombie"] = {
-	name = "Raised Zombie",
+	name = "魔卫",
 	life = 2.55,
 	fireResist = 40,
 	coldResist = 40,
@@ -27,7 +27,7 @@ minions["RaisedZombie"] = {
 	},
 }
 minions["SummonedChaosGolem"] = {
-	name = "Chaos Golem",
+	name = "混沌魔像",
 	life = 4.8,
 	energyShield = 0.2,
 	fireResist = 40,
@@ -48,7 +48,7 @@ minions["SummonedChaosGolem"] = {
 	},
 }
 minions["SummonedFlameGolem"] = {
-	name = "Flame Golem",
+	name = "烈焰魔像",
 	life = 3.75,
 	energyShield = 0.4,
 	fireResist = 70,
@@ -70,7 +70,7 @@ minions["SummonedFlameGolem"] = {
 	},
 }
 minions["SummonedIceGolem"] = {
-	name = "Ice Golem",
+	name = "寒冰魔像",
 	life = 4.05,
 	energyShield = 0.4,
 	fireResist = 40,
@@ -91,7 +91,7 @@ minions["SummonedIceGolem"] = {
 	},
 }
 minions["SummonedLightningGolem"] = {
-	name = "Lightning Golem",
+	name = "闪电魔像",
 	life = 3.75,
 	energyShield = 0.2,
 	fireResist = 40,
@@ -113,7 +113,7 @@ minions["SummonedLightningGolem"] = {
 	},
 }
 minions["SummonedStoneGolem"] = {
-	name = "Stone Golem",
+	name = "巨石魔像",
 	life = 5.25,
 	fireResist = 40,
 	coldResist = 40,
@@ -134,7 +134,7 @@ minions["SummonedStoneGolem"] = {
 	},
 }
 minions["SummonedRagingSpirit"] = {
-	name = "Raging Spirit",
+	name = "愤怒的狂灵",
 	life = 1.8,
 	fireResist = 40,
 	coldResist = 40,
@@ -156,7 +156,7 @@ minions["SummonedRagingSpirit"] = {
 	},
 }
 minions["SummonedEssenceSpirit"] = {
-	name = "Essence Spirit",
+	name = "精华之灵",
 	life = 1.8,
 	fireResist = 40,
 	coldResist = 40,
@@ -176,7 +176,7 @@ minions["SummonedEssenceSpirit"] = {
 	},
 }
 minions["SummonedSpectralWolf"] = {
-	name = "Spectral Wolf Companion",
+	name = "幽狼",
 	life = 4.5,
 	fireResist = 40,
 	coldResist = 40,
@@ -195,7 +195,7 @@ minions["SummonedSpectralWolf"] = {
 	},
 }
 minions["RaisedSkeleton"] = {
-	name = "Summoned Skeleton",
+	name = "异灵魔侍",
 	life = 1.05,
 	fireResist = 40,
 	coldResist = 40,
@@ -216,7 +216,7 @@ minions["RaisedSkeleton"] = {
 	},
 }
 minions["RaisedSkeletonCaster"] = {
-	name = "Summoned Skeleton Caster",
+	name = "异灵魔侍术者",
 	life = 1.05,
 	fireResist = 40,
 	coldResist = 40,
@@ -237,7 +237,7 @@ minions["RaisedSkeletonCaster"] = {
 	},
 }
 minions["RaisedSkeletonArcher"] = {
-	name = "Summoned Skeleton Archer",
+	name = "异灵魔侍弓箭手",
 	life = 1.05,
 	fireResist = 40,
 	coldResist = 40,
@@ -256,7 +256,7 @@ minions["RaisedSkeletonArcher"] = {
 	},
 }
 minions["Clone"] = {
-	name = "Clone",
+	name = "克隆体",
 	life = 1,
 	fireResist = 40,
 	coldResist = 40,
@@ -274,7 +274,7 @@ minions["Clone"] = {
 	},
 }
 minions["SpiderMinion"] = {
-	name = "Spider Minion",
+	name = "蜘蛛爪牙",
 	life = 1.8,
 	fireResist = 40,
 	coldResist = 40,
@@ -294,7 +294,7 @@ minions["SpiderMinion"] = {
 	},
 }
 minions["AnimatedWeapon"] = {
-	name = "Animated Weapon",
+	name = "幻灵武器",
 	life = 4,
 	fireResist = 40,
 	coldResist = 40,
@@ -311,7 +311,7 @@ minions["AnimatedWeapon"] = {
 	},
 }
 minions["AnimatedArmour"] = {
-	name = "Animated Guardian",
+	name = "幻灵守卫",
 	life = 4.5,
 	fireResist = 40,
 	coldResist = 40,
@@ -331,7 +331,7 @@ minions["AnimatedArmour"] = {
 	},
 }
 minions["IcyRagingSpirit"] = {
-	name = "Grave Spirit",
+	name = "悲墓之灵",
 	life = 3,
 	fireResist = 40,
 	coldResist = 40,
@@ -350,7 +350,7 @@ minions["IcyRagingSpirit"] = {
 	},
 }
 minions["UniqueAnimatedWeapon"] = {
-	name = "Dancing Dervish",
+	name = "狂舞德尔维希",
 	life = 4,
 	fireResist = 40,
 	coldResist = 40,
@@ -368,7 +368,7 @@ minions["UniqueAnimatedWeapon"] = {
 	},
 }
 minions["SummonedPhantasm"] = {
-	name = "Summoned Phantasm",
+	name = "异界凶灵",
 	life = 1.58,
 	energyShield = 0.2,
 	fireResist = 40,
@@ -379,9 +379,98 @@ minions["SummonedPhantasm"] = {
 	damageSpread = 0.2,
 	attackTime = 1.17,
 	attackRange = 4,
+	limit = "ActivePhantasmLimit",
 	skillList = {
 		"Melee",
 	},
 	modList = {
+	},
+}
+minions["HeraldOfAgonySpiderPlated"] = {
+	name = "苦痛爬行者",
+	life = 1.5,
+	fireResist = 0,
+	coldResist = 0,
+	lightningResist = 0,
+	chaosResist = 0,
+	damage = 1.5,
+	damageSpread = 0.2,
+	attackTime = 1.3,
+	attackRange = 10,
+	accuracy = 3,
+	weaponType1 = "One Handed Sword",
+	skillList = {
+		"HeraldOfAgonyMinionMortar",
+		"HeraldOfAgonyMinionTailSpike",
+		"HeraldOfAgonyMinionCleave",
+	},
+	modList = {
+		mod("PhysicalDamageConvertToChaos", "BASE", 40),
+		mod("Condition:FullLife", "FLAG", true),
+	},
+}
+minions["AxisEliteSoldierHeraldOfLight"] = {
+	name = "纯净哨兵",
+	life = 5.6,
+	armour = 0.5,
+	fireResist = 40,
+	coldResist = 40,
+	lightningResist = 40,
+	chaosResist = 20,
+	damage = 2.66,
+	damageSpread = 0.2,
+	attackTime = 0.83,
+	attackRange = 10,
+	accuracy = 2.2,
+	weaponType1 = "Staff",
+	limit = "ActiveSentinelOfPurityLimit",
+	skillList = {
+		"Melee",
+		"HeraldOfLightMinionSlam",
+	},
+	modList = {
+	},
+}
+minions["HolyLivingRelic"] = {
+	name = "圣物",
+	life = 6.0,
+	energyShield = 0.6,
+	fireResist = 40,
+	coldResist = 40,
+	lightningResist = 40,
+	chaosResist = 20,
+	damage = 1,
+	damageSpread = 0,
+	attackTime = 1,
+	attackRange = 4,
+	accuracy = 1,
+	limit = "ActiveHolyRelicLimit",
+	skillList = {
+		"RelicTriggeredNova",
+	},
+	modList = {
+	},
+}
+minions["AxisEliteSoldierDominatingBlow"] = {
+	name = "统御哨兵",
+	life = 4,
+	armour = 0.5,
+	fireResist = 40,
+	coldResist = 40,
+	lightningResist = 40,
+	chaosResist = 20,
+	damage = 2.8,
+	damageSpread = 0.2,
+	attackTime = 0.83,
+	attackRange = 9,
+	accuracy = 2.2,
+	weaponType1 = "One Handed Mace",
+	weaponType2 = "Shield",
+	skillList = {
+		"Melee",
+		"DominatingBlowMinionCharge",
+	},
+	modList = {
+		mod("BlockChance", "BASE", 30),
 	},
 }

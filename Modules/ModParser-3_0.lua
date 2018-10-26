@@ -539,6 +539,7 @@ local modNameList = {
 -- List of modifier flags
 local modFlagList = {
 	--【中文化程序额外添加开始】
+	["身体护甲提供的"] = { tag = { type = "SlotName", slotName = "Body Armour" } },
 	["混沌技能的"] = { keywordFlags = KeywordFlag.Chaos },
 	["单手武器攻击的"] = { flags = ModFlag.Weapon1H }, --备注：with one handed weapons
 	["斧类攻击"] = { flags = ModFlag.Axe }, 
@@ -920,6 +921,8 @@ local modTagList = {
 	["每有一个狂怒求，"] = { tag = { type = "Multiplier", var = "FrenzyCharge" } }, 
 	["每有一个耐力求，"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
 	["每有一个暴击求，"] = { tag = { type = "Multiplier", var = "PowerCharge" } }, 
+	["拥有【秘术增强】时"] = { tag = { type = "Condition", var = "AffectedByArcaneSurge" } },
+	["拥有【秘术增强】效果时，"] = { tag = { type = "Condition", var = "AffectedByArcaneSurge" } },
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -1646,7 +1649,6 @@ local specialModList = {
 	["此物品上的技能石额外造成 (%d+) %- (%d+) 火焰伤害"] = function(_,num1,num2) return { 
 	 mod("FireMin", "BASE", tonumber(num1),{ type = "SocketedIn", slotName = "{SlotName}" } ), 
 	 mod("FireMax", "BASE", tonumber(num2),{ type = "SocketedIn", slotName = "{SlotName}" } ) } end,
-	["每 (%d+)%% 的攻击格挡率会使法术伤害提高 (%d+)%%"]=function(_,num1,num2) return {  mod("SpellDamage", "INC", tonumber(num2), { type = "PerStat", stat = "BlockChance", div = tonumber(num1) })  } end,
 	["生命偷取会套用于能量护盾"] = { flag("GhostReaver") },
 	["中毒 (%d+) 层以上的敌人被该武器攻击击中时，该武器附加 (%d+) %- (%d+) 混沌伤害"] = function(num1,num2,num3,num4) return {
 		 mod("ChaosMin", "BASE", tonumber(num3),{ type = "Condition", var = "{Hand}Attack" } , { type = "MultiplierThreshold", actor = "enemy", var = "PoisonStack", threshold = tonumber(num1) } ), 
@@ -1849,6 +1851,10 @@ local specialModList = {
 	["每有一个狂怒球，可使你获得额外 (%d+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num, { type = "Multiplier", var = "FrenzyCharge" }) } end, 
 	["每 (%d+) 点敏捷提高 (%d+)%% 召唤生物造成的伤害"] = function(_,num1,num2) return {  mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", tonumber(num2)) },{ type = "PerStat", stat = "Dex", div = tonumber(num1) })   } end, 
 	["近期你每消耗 (%d+) 魔力，法术伤害便提高 (%d+)%%"] = function(_,num1,num2)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "Multiplier", var = "ManaSpentRecently", div = tonumber(num1) }) } end, 
+	["身体护甲提供的能量护盾提高 (%d+)%%"] =  function(num) return {  mod("EnergyShield", "INC", num, { type = "SlotName", slotName = "Body Armour" }) } end, 
+	["每有 (%d+)%% 攻击格档率，伤害提高 (%d+)%%"] =  function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2),{ type = "PerStat", stat = "BlockChance", div = tonumber(num1) }  ) } end, 
+	["每 (%d+)%% 的攻击伤害格挡几率会使法术伤害提高 (%d+)%%"] =  function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "PerStat", stat = "BlockChance", div = tonumber(num1) }  ) } end, 
+	["每 (%d+)%% 的攻击格挡率会使法术伤害提高 (%d+)%%"]=function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "PerStat", stat = "BlockChance", div = tonumber(num1) }  ) } end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

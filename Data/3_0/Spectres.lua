@@ -1240,6 +1240,26 @@ minions["Metadata/Monsters/MossMonster/FireMonster"] = {
 		-- ImmuneToLavaDamage
 	},
 }
+-- Mother of Flames
+minions["Metadata/Monsters/MotherOfFlames/MotherOfFlamesZombie"] = {
+	name = "不死火焰",
+	life = 0.9,
+	energyShield = 0.28,
+	fireResist = 40,
+	coldResist = 0,
+	lightningResist = 0,
+	chaosResist = 0,
+	damage = 1.25,
+	damageSpread = 0.2,
+	attackTime = 1.8,
+	attackRange = 6,
+	skillList = {
+		"MotherOfFlamesMagmaOrb3",
+		"Melee",
+	},
+	modList = {
+	},
+}
 -- Necromancer
 minions["Metadata/Monsters/Necromancer/NecromancerConductivity"] = {
 	name = "恶咒之主",
@@ -1811,6 +1831,27 @@ minions["Metadata/Monsters/Skeletons/SkeletonBowProjectileWeaknessCurse"] = {
 	modList = {
 		-- MonsterNecromancerRaisable
 		-- MonsterCastsProjectileWeaknessCurseText
+	},
+}
+minions["Metadata/Monsters/Skeletons/SkeletonMeleeKnightElementalSwordIncursionChampionDelve"] = {
+	name = "强大的瓦尔堕灵",
+	life = 6,
+	fireResist = 35,
+	coldResist = 35,
+	lightningResist = 35,
+	chaosResist = 35,
+	damage = 1.5,
+	damageSpread = 0.3,
+	attackTime = 1.605,
+	attackRange = 7,
+	weaponType1 = "Two Handed Sword",
+	skillList = {
+		"Melee",
+		"ElementalHitSkeletonKnightIncursion",
+		"IncursionLeapSlamChampion",
+	},
+	modList = {
+		-- MonsterCastsElementalHitText
 	},
 }
 -- Snake

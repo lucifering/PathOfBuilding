@@ -90,6 +90,7 @@ local formList = {
 -- Map of modifier names
 local modNameList = {
 	--【中文化程序额外添加开始】
+	["攻击和移动速度"] = { "Speed", "MovementSpeed" },
 	["不被攻击击中"] = "AttackDodgeChance", 
 	["攻击和法术暴击伤害加成"] = {"CritMultiplier"}, --备注：critical strike multiplier -- 这个需要提到前面来
 	["攻击和法术基础暴击伤害加成"] = {"CritMultiplier", ModFlag.Hit}, --备注：critical strike multiplier -- 
@@ -569,6 +570,7 @@ local modFlagList = {
 	["击中和异常状态的"] = { keywordFlags = bor(KeywordFlag.Hit, KeywordFlag.Ailment) }, --备注：with hits and ailments
 	["持弓"] = { flags = ModFlag.Bow },
 	["攻击技能可以"] = { keywordFlags = KeywordFlag.Attack }, --备注：with attack skills
+	["攻击时"] = { keywordFlags = KeywordFlag.Attack }, 
 	["魔卫"] = { addToMinion = true, addToMinionTag = { type = "SkillName", skillName = "魔卫复苏" } }, --备注：zombie
 	["魔侍的"] = { addToMinion = true, addToMinionTag = { type = "SkillName", skillName = "召唤魔侍" } }, --备注：skeleton
 	["移动技能的"] = { keywordFlags = KeywordFlag.Movement }, --备注：with movement skills
@@ -682,6 +684,7 @@ local preFlagList = {
 	["^攻击击中有"] = { flags = ModFlag.Attack },
 	["^图腾有"] = { keywordFlags = KeywordFlag.Totem },
 	["^【魔侍】造成的"] = { addToMinion = true, addToMinionTag = { type = "SkillName", skillName = "召唤魔侍" } },
+	["当你拥有兽化的召唤生物时，"] = { tag = { type = "Condition", var = "HaveBestialMinion" } },
 	["召唤生物的"] = { addToMinion = true },
 	["召唤生物"] = { addToMinion = true },
 	["周围友军的"] = { newAura = true, newAuraOnlyAllies = true },
@@ -768,6 +771,7 @@ local preFlagList = {
 local modTagList = {
 	--【中文化程序额外添加开始】
 	["每 (%d+)%% 的攻击格挡率会使"] = function(num) return { tag = { type = "PerStat", stat = "BlockChance", div = num } } end,
+	["当你拥有兽化的召唤生物时，"] = { tag = { type = "Condition", var = "HaveBestialMinion" } },
 	["持盾牌时，"] = { tag = { type = "Condition", var = "UsingShield" } }, --备注：while holding a shield
 		["你的副手未装备武器时，"] = { tag = { type = "Condition", var = "OffHandIsEmpty" } }, --备注：while your off hand is empty
 		["双持时，"] = { tag = { type = "Condition", var = "DualWielding" } }, --备注：while dual wielding
@@ -1505,7 +1509,9 @@ local specialModList = {
 	["召唤生物身上的光环效果提高 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("AuraEffectOnSelf", "INC", num) })  } end,
 	["对受诅咒敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num, nil, ModFlag.Hit,{ type = "ActorCondition", actor = "enemy", var = "Cursed" })  } end, 
 	["攻击击中被诅咒敌人时有 (%d+)%% 几率造成流血"]= function(num) return {  mod("BleedChance", "BASE", num, nil, ModFlag.Attack,{ type = "ActorCondition", actor = "enemy", var = "Cursed" })  } end, 
-	["击中时有 (%d+)%% 几率造成流血"] = { mod("BleedChance", "BASE", 100, { type = "Condition", var = "{Hand}Attack" }) }, --备注：causes bleeding on hit
+	["当你拥有兽化的召唤生物时，投射物攻击击中时有 (%d+)%% 几率造成流血"] =  function(num) return 	{mod("BleedChance", "BASE", num,  { type = "SkillType", skillType = SkillType.Attack }, { type = "SkillType", skillType = SkillType.Projectile },{ type = "Condition", var = "HaveBestialMinion" }   ) }end,
+	["当你拥有兽化的召唤生物时，投射物攻击击中时有 (%d+)%% 几率造成中毒"] =  function(num) return 	{mod("PoisonChance", "BASE", num,  { type = "SkillType", skillType = SkillType.Attack }, { type = "SkillType", skillType = SkillType.Projectile },{ type = "Condition", var = "HaveBestialMinion" }   ) }end,
+	["击中时有 (%d+)%% 几率造成流血"] =  function(num) return 	{mod("BleedChance", "BASE", num, { type = "Condition", var = "{Hand}Attack" }) }end,
 	["近战击中有 %d+%% 几率触发 (%d+) 级的【熔岩爆破】"] =  function( _, num) return 	{mod("ExtraSkill", "LIST", { skillId = "TriggeredMoltenStrike", level = num}) }end,
 	["暴击时偷取等同 ([%d%.]+)%% 伤害的生命"]= function(num) return {  mod("DamageLifeLeech", "BASE", num, { type = "Condition", var = "CriticalStrike" })  } end, 
 	["每 (%d+) 点力量会使武器物理伤害提高 (%d+)%%"] = function(_,num1,num2) return {  mod("PhysicalDamage", "INC", num2,nil, ModFlag.Weapon,{ type = "PerStat", stat = "Str", div = num1 })  } end,
@@ -1783,7 +1789,7 @@ local specialModList = {
 	["受到【纪律】影响时，能量护盾回复速度提高 (%d+)%%"]= function(num) return {  mod("EnergyShieldRecoveryRate", "INC", num,{ type = "Condition", var = "AffectedBy纪律" })  } end, 
 	["受到【活力】影响时，药剂的生命回复提高 (%d+)%%"]= function(num) return {  mod("FlaskLifeRecovery", "INC", num,{ type = "Condition", var = "AffectedBy活力" })  } end, 
 	["受到【元素净化】影响时，%+(%d+)%% 混沌抗性"]= function(num) return {  mod("ChaosResist", "INC", num,{ type = "Condition", var = "AffectedBy元素净化" })  } end, 
-	["受到【迅捷】影响时，移动技能的冷却速度提高 (%d+)%%"]= function(num) return {  mod("CooldownRecovery", "INC", num,KeywordFlag.Movement ,{ type = "Condition", var = "AffectedBy迅捷" })  } end, 
+	["受到【迅捷】影响时，移动技能的冷却速度提高 (%d+)%%"]= function(num) return {  mod("CooldownRecovery", "INC", num,nil, 0, KeywordFlag.Movement,{ type = "Condition", var = "AffectedBy迅捷" } )  } end, 
 	["魔卫的物理总伤害额外提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamage", "MORE", tonumber(num))},{ type = "SkillName", skillName = "魔卫复苏" } )  } end, 
 	["【复苏的魔卫】的重击攻击效果范围扩大 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("AreaOfEffect", "INC", num,{ type = "SkillId", skillId = "ZombieSlam" })})  } end, 
 	["药剂效果套用于你的魔卫和灵体身上"] = { flag("FlasksApplyToMinion", { type = "SkillName", skillNameList = { "魔卫复苏", "召唤灵体" } }) }, --备注：flasks apply to your zombies and spectres
@@ -2664,7 +2670,7 @@ local jewelOtherFuncs = {
 	end,
 	["范围内配置的小天赋点技能不会提供任何加成"] = function(node, out, data) --备注：Allocated Small Passive Skills in Radius grant nothing
 		if node and node.type == "Normal" then
-			out:NewMod("PassiveSkillHasNoEffect", "FLAG", true, data.modSource)
+			out:NewMod("AllocatedPassiveSkillHasNoEffect", "FLAG", true, data.modSource)
 		end
 	end,
 }
@@ -2712,7 +2718,7 @@ local jewelSelfUnallocFuncs = {
 		if node then
 			if node.type == "Normal" then
 				data.modList = data.modList or common.New("ModList")
-				data.modList:AddList(node.modList)
+				data.modList:AddList(out)
 			end
 		elseif data.modList then
 			out:AddList(data.modList)

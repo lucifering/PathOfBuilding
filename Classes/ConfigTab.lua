@@ -17,7 +17,51 @@ local gameVersionDropList = {
 
 local varList = LoadModule("Modules/ConfigOptions")
 
+function ToStringEx(value)
+    if type(value)=='table' then
+       return TableToStr(value)
+    elseif type(value)=='string' then
+        return "\'"..value.."\'"
+    else
+       return tostring(value)
+    end
+end
+function TableToStr(t)
+    if t == nil then return "" end
+    local retstr= "{"
+
+    local i = 1
+    for key,value in pairs(t) do
+        local signal = ","
+        if i==1 then
+          signal = ""
+        end
+
+        if key == i then
+            retstr = retstr..signal..ToStringEx(value)
+        else
+            if type(key)=='number' or type(key) == 'string' then
+                retstr = retstr..signal..'['..ToStringEx(key).."]="..ToStringEx(value)
+            else
+                if type(key)=='userdata' then
+                    retstr = retstr..signal.."*s"..TableToStr(getmetatable(key)).."*e".."="..ToStringEx(value)
+                else
+                    retstr = retstr..signal..key.."="..ToStringEx(value)
+                end
+            end
+        end
+
+        i = i+1
+    end
+
+     retstr = retstr.."}"
+     return retstr
+end
 local ConfigTabClass = common.NewClass("ConfigTab", "UndoHandler", "ControlHost", "Control", function(self, build)
+
+ 
+
+		
 	self.UndoHandler()
 	self.ControlHost()
 	self.Control()
@@ -169,6 +213,18 @@ local ConfigTabClass = common.NewClass("ConfigTab", "UndoHandler", "ControlHost"
 							end
 						end
 					else
+					--[[
+					local fileW = io.open("1.txt", "a+b")
+ fileW:write("查询ifskill="..varData.ifSkill.."\r\n")
+fileW:write(TableToStr(self.build.calcsTab.mainEnv.skillsUsed))
+fileW:write("\r\n")
+if self.build.calcsTab.mainEnv.skillsUsed[varData.ifSkill]~=nil then 
+fileW:write("找到了\r\n")
+end 
+			fileW:flush()
+ 
+fileW:close() ]]--
+					
 						return self.build.calcsTab.mainEnv.skillsUsed[varData.ifSkill]
 					end
 				end
@@ -209,6 +265,8 @@ local ConfigTabClass = common.NewClass("ConfigTab", "UndoHandler", "ControlHost"
 end)
 
 function ConfigTabClass:Load(xml, fileName)
+
+
 	for _, node in ipairs(xml) do
 		if node.elem == "Input" then
 			if not node.attrib.name then
@@ -230,6 +288,8 @@ function ConfigTabClass:Load(xml, fileName)
 	self:BuildModList()
 	self:UpdateControls()
 	self:ResetUndo()
+	
+	
 end
 
 function ConfigTabClass:Save(xml)

@@ -4686,7 +4686,7 @@ skills["Haste"] = {
 	description = "施放一个光环, 使你与受光环影响友军获得额外的移动速度, 攻击速度以及施法速度.",
 	skillTypes = { [2] = true, [11] = true, [5] = true, [15] = true, [27] = true, [16] = true, [18] = true, [44] = true, [75] = true, },
 	statMap = {
-		["cast_speed_+%_from_haste_aura"] = {
+		["cast_speed_+%_granted_from_skill"] = {
 			mod("Speed", "INC", nil, ModFlag.Cast, 0, { type = "GlobalEffect", effectType = "Aura" }),
 		},
 		["attack_speed_+%"] = {

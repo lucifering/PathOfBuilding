@@ -255,18 +255,33 @@ for _, targetVersion in ipairs(targetVersionList) do
 		spectre.limit = "ActiveSpectreLimit"
 		verData.minions[name] = spectre
 	end
+
+	
+		
 	local missing = { }
 	for _, minion in pairs(verData.minions) do
 		for _, skillId in ipairs(minion.skillList) do
 			if launch.devMode and not verData.skills[skillId] and not missing[skillId] then
 				ConPrintf("'%s' missing skill '%s'", minion.name, skillId)
+				
+			local fileW = io.open("missingSkill.txt", "a+")
+ 
+			fileW:write(minion.name.."》丢失技能："..skillId.."\r\n")
+			
+			fileW:flush()
+			fileW:close()
 				missing[skillId] = true
 			end
+			
+			 
 		end
+		
+
 		for _, mod in ipairs(minion.modList) do
 			mod.source = "Minion:"..minion.name
 		end
 	end
+ 
 
 	-- Item bases
 	verData.itemBases = { }

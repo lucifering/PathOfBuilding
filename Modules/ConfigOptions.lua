@@ -686,6 +686,9 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 		modList:NewMod("Multiplier:ManaSpentRecently", "BASE", val, "Config", { type = "Condition", var = "Combat" })
 		modList:NewMod("Condition:UsedSkillRecently", "FLAG", val >= 1, "Config", { type = "Condition", var = "Combat" })
 end },
-}
+{ var = "raiseSpectreEnableSummonedUrsaRallyingCry", type = "check", label = "启用【召唤之爪】的激励战吼:", ifSkill = "DropBearSummonedRallyingCry", apply = function(val, modList, enemyModList)
+		modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", { type = "SkillId", skillId = "DropBearSummonedRallyingCry" })
+	end },
 
+}
 

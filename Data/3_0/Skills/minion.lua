@@ -282,6 +282,7 @@ skills["IceElementalIceCyclone"] = {
 	baseMods = {
 		skill("castTime", 1),
 		skill("cooldown", 6),
+		skill("dpsMultiplier", 2),
 	},
 	levelMods = {
 		[1] = skill("levelRequirement", nil),
@@ -1030,6 +1031,7 @@ skills["HeraldOfAgonyMinionCleave"] = {
 		["Thrusting One Handed Sword"] = true,
 	},
 	baseFlags = {
+		melee = true,
 		attack = true,
 		area = true,
 	},
@@ -1058,6 +1060,7 @@ skills["HeraldOfLightMinionSlam"] = {
 	color = 4,
 	skillTypes = { [1] = true, [11] = true, [57] = true, [36] = true, },
 	baseFlags = {
+		melee = true,
 		attack = true,
 		area = true,
 	},
@@ -1087,6 +1090,7 @@ skills["SentinelHolySlam"] = {
 	color = 1,
 	skillTypes = { [1] = true, [11] = true, [57] = true, [36] = true, },
 	baseFlags = {
+		melee = true,
 		attack = true,
 		area = true,
 	},
@@ -1251,6 +1255,7 @@ skills["DominatingBlowMinionCharge"] = {
 	},
 	baseFlags = {
 		attack = true,
+		melee = true,
 	},
 	baseMods = {
 		skill("castTime", 1),
@@ -1342,5 +1347,161 @@ skills["BeaconZombieCausticCloud"] = {
 	},
 	levels = {
 		[1] = { },
+	},
+}
+
+skills["SummonedRhoaShieldCharge"] = {
+	name = "重盾冲锋",
+	hidden = true,
+	color = 4,
+	description = "向目标区域或敌人冲锋，在路径上的敌人将会被推向两旁，并反复对你前方小范围区域内造成伤害。 抵达目标处时造成大范围伤害。伤害与击晕几率将视冲锋距离而定。无法被多重打击辅助。",
+	skillTypes = { [1] = true, [7] = true, [13] = true, [24] = true, [11] = true, [38] = true, },
+	weaponTypes = {
+		["One Handed Sword"] = true,
+		["Sceptre"] = true,
+		["None"] = true,
+		["Dagger"] = true,
+		["Claw"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Axe"] = true,
+		["One Handed Mace"] = true,
+	},
+	baseFlags = {
+		attack = true,
+		melee = true,
+		area = true,
+	},
+	baseMods = {
+		skill("castTime", 1),
+		skill("cooldown", 3),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"shield_charge_scaling_stun_threshold_reduction_+%_at_maximum_range",
+		"base_movement_velocity_+%",
+		"shield_charge_damage_+%_maximum",
+		"attack_speed_+%",
+		"physical_damage_%_to_add_as_lightning",
+		"shield_charge_extra_distance",
+		"ignores_proximity_shield",
+	},
+	statInterpolation = { 1, 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 50, 100, 10, 20, 15, 0, nil, },
+	},
+}
+
+skills["SummonedSnakeProjectile"] = {
+	name = "Chaos Projectile",
+	hidden = true,
+	color = 4,
+	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [68] = true, [10] = true, [57] = true, },
+	baseFlags = {
+		attack = true,
+		projectile = true,
+	},
+	baseMods = {
+		skill("castTime", 0.8),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"monster_projectile_variation",
+		"base_is_projectile",
+	},
+	statInterpolation = { 1, },
+	statLevels = {
+		[1] = { 1, nil, },
+	},
+}
+
+skills["DropBearSummonedGroundSlam"] = {
+	name = "裂地之击",
+	hidden = true,
+	color = 4,
+	description = "以主手武器重击地面并制造出一道向前释放的冲击波, 被此冲击波击中的敌人将会受到伤害并有较高几率被击晕. 限定长杖与锤.",
+	skillTypes = { [1] = true, [7] = true, [11] = true, [28] = true, [24] = true, },
+	weaponTypes = {
+		["Two Handed Mace"] = true,
+		["Sceptre"] = true,
+		["Staff"] = true,
+		["One Handed Mace"] = true,
+	},
+	baseFlags = {
+		attack = true,
+		melee = true,
+		area = true,
+	},
+	baseMods = {
+		skill("castTime", 1),
+		skill("cooldown", 3),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_stun_threshold_reduction_+%",
+		"is_area_damage",
+	},
+	statInterpolation = { 1, },
+	statLevels = {
+		[1] = { 0, nil, },
+	},
+}
+skills["DropBearSummonedRallyingCry"] = {
+	name = "激励战吼",
+	hidden = true,
+	color = 1,
+	description = "施展战吼, 使自身和盟友伤害和魔力恢复增加. 伤害增加量随着周围敌人数量提升. 嘲讽周围所有敌人, 使他们攻击施放者. 与其他战吼技能共享技能冷却.",
+	skillTypes = { [5] = true, [11] = true, [12] = true, [74] = true, },
+	statMap = {
+		["damage_+%"] = {
+			mod("Damage", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
+		},
+	},
+	baseFlags = {
+		warcry = true,
+		area = true,
+		duration = true,
+	},
+	baseMods = {
+		skill("castTime", 0.25),
+		skill("cooldown", 5),
+		skill("buffAllies", true),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"damage_+%",
+		"base_skill_effect_duration",
+		"base_deal_no_damage",
+	},
+	statInterpolation = { 1, 1, },
+	statLevels = {
+		[1] = { 25, 4000, nil, },
 	},
 }

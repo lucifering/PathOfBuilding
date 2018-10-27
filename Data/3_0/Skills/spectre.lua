@@ -1149,8 +1149,9 @@ skills["IncaMinionProjectile"] = {
 		[3] = { 0.67330002784729, 1.0132999420166, 1.0099999904633, 1.5199999809265, 1, -75, },
 	},
 }
+
 skills["IncursionMeteorUpheaval"] = {
-	name = "混沌之刺",
+	name = "混沌尾刺",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 2.25,
@@ -1937,12 +1938,27 @@ skills["MonsterEnduringCry"] = {
 		[34] = { 300, 750, 170376, },
 	},
 }
+
 skills["MonsterEnfeeble"] = {
 	name = "衰弱",
 	hidden = true,
 	color = 3,
 	description = "对目标区域施放诅咒, 受到诅咒的敌人所造成的攻击或法术将会比较无力.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [67] = true, },
+	statMap = {
+		["enfeeble_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+		["critical_strike_chance_+%"] = {
+			mod("CritChance", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+		["accuracy_rating_+%"] = {
+			mod("Accuracy", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+		["base_critical_strike_multiplier_+"] = {
+			mod("CritMultiplier", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+	},
 	baseFlags = {
 		spell = true,
 		curse = true,
@@ -2459,12 +2475,24 @@ skills["MonsterMultiIceSpear"] = {
 		[2] = { 0.80000001192093, 1.2000000476837, 50, 2, nil, },
 	},
 }
+
 skills["MonsterProjectileWeakness"] = {
 	name = "投射物要害",
 	hidden = true,
 	color = 2,
 	description = "对目标区域施放诅咒, 受到诅咒的敌人将更容易被投射物穿透, 击退以及受到更多投射物造成的伤害.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [67] = true, },
+	statMap = {
+		["projectiles_always_pierce_you"] = {
+			flag("AlwaysPierceSelf", { type = "GlobalEffect", effectType = "Curse" }),
+		},
+		["chance_to_be_knocked_back_%"] = {
+			mod("SelfKnockbackChance", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+		["projectile_damage_taken_+%"] = {
+			mod("ProjectileDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+	},
 	baseFlags = {
 		spell = true,
 		curse = true,
@@ -2775,12 +2803,24 @@ skills["MonsterSplitIceSpear"] = {
 		[2] = { 0.80000001192093, 1.2000000476837, 50, nil, nil, },
 	},
 }
+
 skills["MonsterWarlordsMark"] = {
 	name = "督军印记",
 	hidden = true,
 	color = 1,
 	description = "对目标区域施放诅咒, 受到诅咒的敌人将更容易被晕眩, 更慢恢复. 在击中带有印记的敌人时会获得额外的生命与魔力偷取, 此外在击败带有印记的敌人时会有机会获得耐力球.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [67] = true, },
+	statMap = {
+		["life_leech_on_any_damage_when_hit_permyriad"] = {
+			mod("SelfDamageLifeLeech", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+		["mana_leech_on_any_damage_when_hit_permyriad"] = {
+			mod("SelfDamageManaLeech", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+		["base_stun_recovery_+%"] = {
+			mod("StunRecovery", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+	},
 	baseFlags = {
 		spell = true,
 		curse = true,
@@ -2813,12 +2853,21 @@ skills["MonsterWarlordsMark"] = {
 		[1] = { 8800, 0, -27, 10, 128, 108, 37, },
 	},
 }
+
 skills["NecromancerConductivity"] = {
 	name = "导电",
 	hidden = true,
 	color = 3,
 	description = "对目标区域施放诅咒, 使受到诅咒敌人的闪电抗性降低, 并在受到闪电伤害时有几率被感电.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [45] = true, [35] = true, [67] = true, },
+	statMap = {
+		["base_lightning_damage_resistance_%"] = {
+			mod("LightningResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+		["chance_to_be_shocked_%"] = {
+			mod("SelfShockChance", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+	},
 	baseFlags = {
 		spell = true,
 		curse = true,
@@ -2856,12 +2905,18 @@ skills["NecromancerConductivity"] = {
 		[4] = { 6000, 0, -40, 20, 1, },
 	},
 }
+
 skills["NecromancerElementalWeakness"] = {
 	name = "元素要害",
 	hidden = true,
 	color = 3,
 	description = "对目标区域施放诅咒, 受到诅咒的敌人对于元素的抗性将会降低.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [67] = true, },
+	statMap = {
+		["base_resist_all_elements_%"] = {
+			mod("ElementalResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+	},
 	baseFlags = {
 		spell = true,
 		curse = true,
@@ -2901,12 +2956,27 @@ skills["NecromancerElementalWeakness"] = {
 		[4] = { 6000, 0, -40, 0, 0, 0, 1, },
 	},
 }
+
 skills["NecromancerEnfeeble"] = {
 	name = "衰弱",
 	hidden = true,
 	color = 3,
 	description = "对目标区域施放诅咒, 受到诅咒的敌人所造成的攻击或法术将会比较无力.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [67] = true, },
+	statMap = {
+		["enfeeble_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+		["critical_strike_chance_+%"] = {
+			mod("CritChance", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+		["accuracy_rating_+%"] = {
+			mod("Accuracy", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+		["base_critical_strike_multiplier_+"] = {
+			mod("CritMultiplier", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+	},
 	baseFlags = {
 		spell = true,
 		curse = true,
@@ -2945,6 +3015,14 @@ skills["NecromancerFlammability"] = {
 	color = 3,
 	description = "对目标区域施放诅咒, 使受到诅咒敌人的火焰抗性降低, 并在受到火焰伤害时有几率被点燃.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [33] = true, [67] = true, },
+	statMap = {
+		["base_fire_damage_resistance_%"] = {
+			mod("FireResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+		["chance_to_be_ignited_%"] = {
+			mod("SelfIgniteChance", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+	},
 	baseFlags = {
 		spell = true,
 		curse = true,
@@ -2988,6 +3066,14 @@ skills["NecromancerFrostbite"] = {
 	color = 3,
 	description = "对目标区域施放诅咒, 使受到诅咒敌人的冰霜抗性降低, 并在受到冰霜伤害时有几率被冰冻.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [34] = true, [60] = true, [67] = true, },
+	statMap = {
+		["base_cold_damage_resistance_%"] = {
+			mod("ColdResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+		["chance_to_be_frozen_%"] = {
+			mod("SelfFreezeChance", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+	},
 	baseFlags = {
 		spell = true,
 		curse = true,
@@ -3031,6 +3117,17 @@ skills["NecromancerProjectileWeakness"] = {
 	color = 2,
 	description = "对目标区域施放诅咒, 受到诅咒的敌人将更容易被投射物穿透, 击退以及受到更多投射物造成的伤害.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [67] = true, },
+	statMap = {
+		["projectiles_always_pierce_you"] = {
+			flag("AlwaysPierceSelf", { type = "GlobalEffect", effectType = "Curse" }),
+		},
+		["chance_to_be_knocked_back_%"] = {
+			mod("SelfKnockbackChance", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+		["projectile_damage_taken_+%"] = {
+			mod("ProjectileDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+	},
 	baseFlags = {
 		spell = true,
 		curse = true,
@@ -3102,12 +3199,24 @@ skills["NecromancerRaiseZombie"] = {
 		[4] = { 6, 1, },
 	},
 }
+
 skills["NecromancerVulnerability"] = {
 	name = "脆弱",
 	hidden = true,
 	color = 4,
 	description = "对目标区域施放诅咒, 受到诅咒的敌人将会受到增加的物理伤害及物理持续伤害.  攻击被诅咒的目标有机会造成流血和瘫痪效果。",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [67] = true, },
+	statMap = {
+		["receive_bleeding_chance_%_when_hit_by_attack"] = {
+			mod("SelfBleedChance", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+		["base_physical_damage_over_time_taken_+%"] = {
+			mod("PhysicalDamageTakenOverTime", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+		["physical_damage_taken_+%"] = {
+			mod("PhysicalDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+	},
 	baseFlags = {
 		spell = true,
 		curse = true,
@@ -3505,6 +3614,14 @@ skills["SkeletonTemporalChains"] = {
 	color = 4,
 	description = "对目标区域施放诅咒, 受到诅咒的敌人变慢, 并且延长它们所受到的效果之持续时间.",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [67] = true, },
+	statMap = {
+		["temporal_chains_action_speed_+%_final"] = {
+			mod("TemporalChainsActionSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+		["buff_time_passed_-%"] = {
+			mod("BuffExpireFaster", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+	},
 	baseFlags = {
 		spell = true,
 		curse = true,
@@ -3541,6 +3658,17 @@ skills["SkeletonVulnerability"] = {
 	color = 4,
 	description = "对目标区域施放诅咒, 受到诅咒的敌人将会受到增加的物理伤害及物理持续伤害.  攻击被诅咒的目标有机会造成流血和瘫痪效果。",
 	skillTypes = { [2] = true, [11] = true, [12] = true, [17] = true, [18] = true, [19] = true, [26] = true, [32] = true, [36] = true, [67] = true, },
+	statMap = {
+		["receive_bleeding_chance_%_when_hit_by_attack"] = {
+			mod("SelfBleedChance", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+		["base_physical_damage_over_time_taken_+%"] = {
+			mod("PhysicalDamageTakenOverTime", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+		["physical_damage_taken_+%"] = {
+			mod("PhysicalDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		},
+	},
 	baseFlags = {
 		spell = true,
 		curse = true,
@@ -3916,5 +4044,135 @@ skills["VaalIncursionSpecialBeamCannonBlood"] = {
 	statInterpolation = { 3, 3, },
 	statLevels = {
 		[1] = { 0.80000001192093, 1.2000000476837, nil, },
+	},
+
+}
+
+skills["ElementalHitSkeletonKnightIncursion"] = {
+	name = "元素打击",
+	hidden = true,
+	color = 2,
+	description = "该技能的每次攻击都会随机选择一种元素，并只能造成该元素的伤害。若击中敌人，还会在他们周围造成伤害，若该敌人正承受所选元素的异常状态，则伤害范围扩大。不能连续选择同一种元素。",
+	skillTypes = { [1] = true, [3] = true, [68] = true, [22] = true, [17] = true, [19] = true, [25] = true, [28] = true, [24] = true, [33] = true, [34] = true, [35] = true, [48] = true, [69] = true, [11] = true, },
+	baseFlags = {
+		attack = true,
+		melee = true,
+		area = true,
+	},
+	baseMods = {
+		skill("castTime", 1),
+		skill("baseMultiplier", 1.5),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+		[2] = { 20, },
+		[3] = { 21, },
+		[4] = { 84, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"active_skill_damage_+%_final",
+		"chance_to_freeze_shock_ignite_%",
+		"is_area_damage",
+	},
+	statInterpolation = { 2, 1, },
+	statLevels = {
+		[1] = { 0, 25, nil, },
+		[2] = { 0, 25, nil, },
+		[3] = { 1, 25, nil, },
+		[4] = { 200, 25, nil, },
+	},
+}
+
+skills["IncursionLeapSlamChampion"] = {
+	name = "跃击",
+	hidden = true,
+	color = 4,
+	description = "朝着目标区域跃起, 并在落地时以主手武器重击（并击退一些）范围内的敌人. 被踩到的敌人将会被推出去. 限定一把斧, 锤, 剑或是长杖.",
+	skillTypes = { [1] = true, [7] = true, [11] = true, [24] = true, [38] = true, },
+	weaponTypes = {
+		["Two Handed Axe"] = true,
+		["Two Handed Mace"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["Staff"] = true,
+		["Two Handed Sword"] = true,
+		["One Handed Sword"] = true,
+		["Sceptre"] = true,
+		["One Handed Axe"] = true,
+		["One Handed Mace"] = true,
+	},
+	baseFlags = {
+		attack = true,
+		melee = true,
+		area = true,
+	},
+	baseMods = {
+		skill("castTime", 2),
+		skill("baseMultiplier", 1.5),
+		skill("cooldown", 6),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"is_area_damage",
+	},
+	statInterpolation = { },
+	statLevels = {
+		[1] = { nil, },
+	},
+}
+
+skills["MotherOfFlamesMagmaOrb3"] = {
+	name = "熔岩之核",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 2.7778000831604,
+	incrementalEffectiveness = 0.035500001162291,
+	description = "抛投出撞击地面时会爆炸的岩浆球. 技能可以连锁, 当岩浆球爆炸时释放出另一个岩浆球. ",
+	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [19] = true, [18] = true, [36] = true, [33] = true, [3] = true, [68] = true, [26] = true, [23] = true, },
+	baseFlags = {
+		spell = true,
+		projectile = true,
+		area = true,
+	},
+	baseMods = {
+		skill("castTime", 0.7),
+		skill("CritChance", 5),
+		skill("cooldown", 3),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+		[2] = { 68, },
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"projectile_spread_radius",
+		"number_of_additional_projectiles",
+		"fire_mortar_second_hit_damage_+%_final",
+		"base_cast_speed_+%",
+		"number_of_additional_projectiles_in_chain",
+		"is_area_damage",
+		"base_is_projectile",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 0, 0, 0, -66, 2, nil, nil, },
+		[2] = { 0.80000001192093, 1.2000000476837, 0, 0, 0, -66, 2, nil, nil, },
 	},
 }

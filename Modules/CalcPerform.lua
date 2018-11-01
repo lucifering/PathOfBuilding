@@ -366,7 +366,7 @@ function calcs.perform(env)
 		env.minion.modDB.actor = env.minion
 		env.minion.modDB.multipliers["Level"] = env.minion.level
 		calcs.initModDB(env, env.minion.modDB)
-		env.minion.modDB:NewMod("Life", "BASE", m_floor(env.data.monsterAllyLifeTable[env.minion.level] * env.minion.minionData.life), "Base")
+		env.minion.modDB:NewMod("Life", "BASE", m_floor(env.minion.lifeTable[env.minion.level] * env.minion.minionData.life), "Base")
 		if env.minion.minionData.energyShield then
 			env.minion.modDB:NewMod("EnergyShield", "BASE", m_floor(env.data.monsterAllyLifeTable[env.minion.level] * env.minion.minionData.life * env.minion.minionData.energyShield), "Base")
 		end
@@ -745,6 +745,7 @@ function calcs.perform(env)
 			end
 		end
 		if activeSkill.minion then
+		local castingMinion = activeSkill.minion
 			for _, activeSkill in ipairs(activeSkill.minion.activeSkillList) do
 				local skillModList = activeSkill.skillModList
 				local skillCfg = activeSkill.skillCfg
@@ -764,7 +765,7 @@ function calcs.perform(env)
 								srcList:ScaleAddList(buff.modList, (1 + inc / 100) * more)
 								mergeBuff(srcList, buffs, buff.name)
 							end
-							if env.minion == activeSkill.minion or buff.applyAllies then
+							if env.minion and (env.minion == castingMinion or buff.applyAllies) then
 							
 
 				 				env.minion.modDB.conditions["AffectedBy"..buff.name:gsub(" ","")] = true

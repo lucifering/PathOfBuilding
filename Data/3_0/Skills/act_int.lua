@@ -136,6 +136,11 @@ skills["VaalArcChain"] = {
 	incrementalEffectiveness = 0.032999999821186,
 	description = "一道电弧从施放者射向目标, 并会弹跳至周围其他敌人。每次主电弧弹射时，也会向第二个敌人进行二次弹射，但敌人只能被弹射一次。当该电弧对敌人造成伤害时，短时间内还会赋予你一个“特别幸运”的增益效果。",
 	skillTypes = { [2] = true, [10] = true, [17] = true, [18] = true, [19] = true, [23] = true, [43] = true, [35] = true, [12] = true, },
+	statMap = {
+		["arc_damage_+%_final_for_each_remaining_chain"] = {
+			mod("Damage", "MORE", nil, 0, 0, { type = "PerStat", stat = "ChainRemaining" }),
+		},
+	},
 	baseFlags = {
 		spell = true,
 		chaining = true,

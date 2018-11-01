@@ -1046,6 +1046,86 @@ minions["Metadata/Monsters/KitavaCultist/VaalCultistSpearLightningChampionDelve_
 		-- MonsterDelveDropModifiers
 	},
 }
+-- Kitava's Cultist
+minions["Metadata/Monsters/KitavaCultist/VaalCultistSpearBloodDelve"] = {
+	name = "复活的瓦尔虔信者",
+	life = 2.88,
+	fireResist = 20,
+	coldResist = 20,
+	lightningResist = 20,
+	chaosResist = 0,
+	damage = 1.2,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 12,
+	weaponType1 = "One Handed Sword",
+	skillList = {
+		"VaalincursionMortar",
+	},
+	modList = {
+		-- MonsterDelveDropModifiers
+	},
+}
+
+minions["Metadata/Monsters/KitavaCultist/VaalCultistSpearChaosDelve"] = {
+	name = "复活的瓦尔虔信者",
+	life = 2.88,
+	fireResist = 20,
+	coldResist = 20,
+	lightningResist = 20,
+	chaosResist = 0,
+	damage = 1.2,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 12,
+	weaponType1 = "One Handed Sword",
+	skillList = {
+		"FireballIncursionChaos",
+	},
+	modList = {
+		-- MonsterDelveDropModifiers
+	},
+}
+
+minions["Metadata/Monsters/KitavaCultist/VaalCultistSpearFireDelve"] = {
+	name = "复活的瓦尔虔信者",
+	life = 2.88,
+	fireResist = 20,
+	coldResist = 20,
+	lightningResist = 20,
+	chaosResist = 0,
+	damage = 1.2,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 12,
+	weaponType1 = "One Handed Sword",
+	skillList = {
+		"FireballIncusionFire",
+	},
+	modList = {
+		-- MonsterDelveDropModifiers
+	},
+}
+
+minions["Metadata/Monsters/KitavaCultist/VaalCultistSpearLightningDelve"] = {
+	name = "复活的瓦尔虔信者",
+	life = 2.88,
+	fireResist = 20,
+	coldResist = 20,
+	lightningResist = 20,
+	chaosResist = 0,
+	damage = 1.2,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 12,
+	weaponType1 = "One Handed Sword",
+	skillList = {
+		"FireballIncusionLightning",
+	},
+	modList = {
+		-- MonsterDelveDropModifiers
+	},
+}
 -- Kitava's Herald
 minions["Metadata/Monster/KitavaDemon/KitavaDemon"] = {
 	name = "奇塔弗的信使",
@@ -2035,5 +2115,91 @@ minions["Metadata/Monsters/WickerMan/WickerMan"] = {
 		"MonsterRighteousFireWhileSpectred",
 	},
 	modList = {
+	},
+}
+-- Bone Stalker
+minions["Metadata/Monsters/BoneStalker/BoneStalker"] = {
+	name = "骨之史杜克",
+	life = 2.1,
+	fireResist = 0,
+	coldResist = 0,
+	lightningResist = 75,
+	chaosResist = 0,
+	damage = 1.12,
+	damageSpread = 0.2,
+	attackTime = 1.8,
+	attackRange = 10,
+	weaponType1 = "One Handed Axe",
+	skillList = {
+		"Melee",
+		"BoneStalkerEarthquake",
+		"WalkingDoubleSlash",
+	},
+	modList = {
+	},
+}
+
+minions["Metadata/Monsters/Goatman/MountainGoatmanChampion"] = {
+	name = "巨大羊魔",
+	life = 2.1,
+	fireResist = 0,
+	coldResist = 75,
+	lightningResist = 0,
+	chaosResist = 0,
+	damage = 1.28,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 10,
+	damageFixup = 0.11,
+	weaponType1 = "Two Handed Mace",
+	skillList = {
+		"Melee",
+		"GoatmanEarthquake",
+		"GoatmanMonsterSlam",
+	},
+	modList = {
+		-- MonsterSpeedAndDamageFixupSmall
+	},
+}
+-- Delve League
+minions["Metadata/Monsters/LeagueDelve/ProtoVaalWarriorElite"] = {
+	name = "石肤剥皮者",
+	life = 8,
+	fireResist = 35,
+	coldResist = 35,
+	lightningResist = 35,
+	chaosResist = 35,
+	damage = 1.34,
+	damageSpread = 0.2,
+	attackTime = 1.305,
+	attackRange = 10,
+	weaponType1 = "One Handed Sword",
+	weaponType2 = "One Handed Sword",
+	skillList = {
+		"Melee",
+		"DelveProtovaalWhirlingCharge",
+	},
+	modList = {
+		-- MonsterDelveDropModifiers
+	},
+}
+minions["Metadata/Monsters/SkeletonCannon/SkeletonCannon1"] = {
+	name = "骨壳",
+	life = 2.07,
+	fireResist = 0,
+	coldResist = 0,
+	lightningResist = 75,
+	chaosResist = 0,
+	damage = 0.9,
+	damageSpread = 0.2,
+	attackTime = 1.8,
+	attackRange = 4,
+	skillList = {
+		"SkeletonCannonMortar",
+		"SkeletonCannonBoneMortar",
+		"SkeletonCannonBoneNova",
+	},
+	modList = {
+		-- MonsterNecromancerRaisable
 	},
 }

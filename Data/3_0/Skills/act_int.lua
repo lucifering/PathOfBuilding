@@ -4262,7 +4262,7 @@ skills["FleshOffering"] = {
 	name = "血肉奉献",
 	color = 3,
 	description = "献祭一具灵柩, 短暂的强化与加速你的召唤生物. 这个技能会持续献祭附近的灵柩, 每具献祭的灵柩将会延长强化召唤生物的时间.",
-	skillTypes = { [2] = true, [5] = true, [12] = true, [36] = true, [9] = true, [49] = true, [17] = true, [19] = true, [18] = true, [67] = true, },
+	 skillTypes = { [2] = true, [5] = true, [12] = true, [36] = true, [9] = true, [49] = true, [17] = true, [19] = true, [18] = true, [67] = true, },
 	statMap = {
 		["attack_speed_+%"] = {
 			mod("Speed", "INC", nil, ModFlag.Attack, 0, { type = "GlobalEffect", effectType = "Buff" }),
@@ -4334,7 +4334,7 @@ skills["FleshOffering"] = {
 	},
 	stats = {
 		"base_skill_effect_duration",
-		"attack_speed_+%_granted_from_skill",
+		"attack_speed_+%",
 		"base_movement_velocity_+%",
 		"cast_speed_+%_granted_from_skill",
 		"offering_skill_effect_duration_per_corpse",

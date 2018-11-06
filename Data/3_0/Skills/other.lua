@@ -178,7 +178,7 @@ skills["VaalBreach"] = {
 	},
 }
 skills["SupportUniqueMjolnerLightningSpellsCastOnHit"] = {
-	name = "Mjolner",
+	name = "沉默之雷",
 	hidden = true,
 	color = 4,
 	support = true,
@@ -213,7 +213,7 @@ skills["SupportUniqueMjolnerLightningSpellsCastOnHit"] = {
 	},
 }
 skills["SupportUniqueCosprisMaliceColdSpellsCastOnMeleeCriticalStrike"] = {
-	name = "Cospri's Malice",
+	name = "卡斯普里怨恨",
 	hidden = true,
 	color = 4,
 	support = true,
@@ -577,7 +577,7 @@ skills["ColdAegis"] = {
 	},
 }
 skills["TriggeredConsecrate"] = {
-	name = "Consecrate",
+	name = "奉献地面",
 	hidden = true,
 	color = 4,
 	description = "创造一片奉献地面, 恢复其中的友军（包括你自己）生命. ",
@@ -867,7 +867,7 @@ skills["ElementalAegis"] = {
 	},
 }
 skills["SupportElementalPenetration"] = {
-	name = "Elemental Penetration",
+	name = "元素穿透",
 	hidden = true,
 	color = 3,
 	support = true,
@@ -2254,7 +2254,7 @@ skills["SummonRigwaldsPack"] = {
 	},
 }
 skills["SummonVoidSphere"] = {
-	name = "Summon Volatile Anomaly",
+	name = "召唤异动奇点",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 3.4818000793457,

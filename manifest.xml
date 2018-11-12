@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PoBVersion>
-	<Version number="1.4.116.2" platform="win32" branch="master"/>
+	<Version number="1.4.116.3" platform="win32" branch="master"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/runtime-win32.zip" part="runtime" platform="win32"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/" part="program"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/tree.zip" part="tree"/>
-
-	
-	<File sha1="4f17937f2b37784e169a3792b235f2a0a3961e61" name="UpdateApply.lua" part="program"/>
+<File sha1="4f17937f2b37784e169a3792b235f2a0a3961e61" name="UpdateApply.lua" part="program"/>
 <File sha1="f2a1bb8936c23ddfa31871f278ac3a5453a39b51" name="UpdateCheck.lua" part="program"/>
 <File sha1="dbacb79bd5e809ef7b639c8d36b745da80f7f411" name="Classes/BuildListControl.lua" part="program"/>
 <File sha1="f85e8b60ff9bb41a3cc4ba8044f7a49163fdedd3" name="Classes/ButtonControl.lua" part="program"/>
@@ -21,7 +19,7 @@
 <File sha1="877dc5d5f26a302c0367cf05e7e7a4cac4eb72e6" name="Classes/EditControl.lua" part="program"/>
 <File sha1="afa58b85c876e107edcd49e4a01c06a981843ff8" name="Classes/FolderListControl.lua" part="program"/>
 <File sha1="74962a54d07ae739fd1589412dcf5f84ee7598e0" name="Classes/GemSelectControl.lua" part="program"/>
-<File sha1="c2d7eae6e07bb1c475d0d8b0646b2cedbc52512e" name="Classes/ImportTab.lua" part="program"/>
+<File sha1="8211aab290a00b5831d55e297d045bf8bcda707b" name="Classes/ImportTab.lua" part="program"/>
 <File sha1="55e4da9b74ed5befe19d682cc3cda105a2aeaeb9" name="Classes/Item.lua" part="program"/>
 <File sha1="cf1a15cc8d00221090be0cc17400caabae4d77b5" name="Classes/ItemDBControl.lua" part="program"/>
 <File sha1="0a377e4eb325c5a47b7291fb45c401e19c59b302" name="Classes/ItemListControl.lua" part="program"/>
@@ -143,7 +141,7 @@
 <File sha1="f82df593fc43155a7c290b489346f9fb3c432d11" name="Data/3_0/Skills/sup_dex.lua" part="program"/>
 <File sha1="895c8c540d16eaa8462b43acd770be23ef9a0c37" name="Data/3_0/Skills/sup_int.lua" part="program"/>
 <File sha1="c05d5fa7d9e55d6882a0d52b5dbaf3441aee8dbe" name="Data/3_0/Skills/sup_str.lua" part="program"/>
-<File sha1="fdb7952ca81f826166f1cfa811ea9eae5f83373f" name="Data/Uniques/amulet.lua" part="program"/>
+<File sha1="d0e327d7b6138429843e5bdc81e4079fda39124f" name="Data/Uniques/amulet.lua" part="program"/>
 <File sha1="3cacaf2263e16f561bc9823d6d7133ee0f938b67" name="Data/Uniques/axe.lua" part="program"/>
 <File sha1="8901c1e65913427ae4d70ef472cb443da9ef95de" name="Data/Uniques/belt.lua" part="program"/>
 <File sha1="3e0dd992532bdd5985087c262782ddca2191b54b" name="Data/Uniques/body.lua" part="program"/>
@@ -186,10 +184,10 @@
 <File sha1="2a37229e7966f9b97393f32c5f3b4caa942b7a0e" name="Modules/ItemTools.lua" part="program"/>
 <File sha1="4cf5365b248d1825aa191f6a1dd0655bd60d1256" name="Modules/Main.lua" part="program"/>
 <File sha1="64693eb3e1d7d356b8b50bdc61a622a6e3bb33c2" name="Modules/ModParser-2_6.lua" part="program"/>
-<File sha1="b7f376bb5647a8229dd0f0649a7d888c22703149" name="Modules/ModParser-3_0.lua" part="program"/>
+<File sha1="d993a07597f79df99cac887513056e12561694a4" name="Modules/ModParser-3_0.lua" part="program"/>
 <File sha1="cb75f9e44070a209e5dcec3ad550f8e31f22162f" name="Modules/ModTools.lua" part="program"/>
 <File sha1="9850e60ca692586a8c662b46e440063e58314349" name="Classes/AboutTab.lua" part="program"/>
-<File sha1="ae30a47bbf809231c2980e20601bf0d163fc7986" name="changelog.txt" part="program"/>
+<File sha1="8dddbdf784d188ecbf2f7e713529d63189e87244" name="changelog.txt" part="program"/>
 <File sha1="21f4793ed37146332fc5d73d5dadf88d88af5fd1" name="Launch.dl" part="program"/>
 
 <File sha1="c345cdcf374d271411aa424ab150c0edbb5a362d" name="Assets/game_ui_small.png" part="runtime"/>
@@ -197,7 +195,6 @@
 <File sha1="4ebea5031fd03771a9b637a3fdccf394344e4782" name="Assets/range_guide.png" part="runtime"/>
 <File sha1="e7ee7e5b6388facb7bf568517ecc401590757df7" name="Assets/ring.png" part="runtime"/>
 <File sha1="9a320bfe629b1cf3f14fc77fbbf2508d0a5b2841" name="Assets/small_ring.png" part="runtime"/>
-
 <File sha1="ee02b7e6e521896c498d8b222b1efab04538eaa7" name="TreeData/2_6/tree.lua" part="tree"/>
 <File sha1="ca3e50fdf62181306cb96ed94ffc3ff5665df46e" name="TreeData/3_0/tree.lua" part="tree"/>
 <File sha1="8f8a0c2f6792a505dbc7b66570f28d409d8ad4af" name="TreeData/2_6/skill_sprite-active-3-3e73c4c4534433ecfc340c7287093bd5.png" part="tree"/>

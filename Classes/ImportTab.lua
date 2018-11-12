@@ -675,7 +675,11 @@ elseif property.name == "仅限" then
 	end
 	if itemData.explicitMods then
 		for _, line in ipairs(itemData.explicitMods) do
+				if line ~= nil then --lucifer 修复换行珠宝的问题					
+					line=string.gsub(line,"\n","")
+				end
 			for line in line:gmatch("[^\n]+") do
+				
 				local modList, extra = modLib.parseMod[self.build.targetVersion](line)
 				t_insert(item.modLines, { line = line, extra = extra, mods = modList or { } })
 			end

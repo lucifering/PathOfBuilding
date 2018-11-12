@@ -2787,6 +2787,13 @@ local jewelThresholdFuncs = {
 	["若范围内含有 40 点智慧，【枯萎】的干扰持续时间延长 50%"] = getThreshold("Int", "SecondaryDuration", "INC", 50, { type = "SkillName", skillName = "枯萎" }), --备注：With at least 40 Intelligence in Radius, Blight has 50% increased Hinder Duration
 	["若范围内含有 40 点智慧，被【枯萎】干扰的敌人受到的混沌伤害提高 25%"] = getThreshold("Int", "ExtraSkillMod", "LIST", { mod = mod("ChaosDamageTaken", "INC", 25, { type = "GlobalEffect", effectType = "Debuff", effectName = "Hinder"  }) }, { type = "SkillName", skillName = "枯萎" }, { type = "ActorCondition", actor = "enemy", var = "Hindered" }), --备注：With at least 40 Intelligence in Radius, Enemies Hindered by Blight take 25% increased Chaos Damage
 	["若范围内含有 40 点智慧，【冰川之刺】物理伤害的 20%\\n转化为冰霜伤害"] = getThreshold("Int", "SkillPhysicalDamageConvertToCold", "BASE", 20, { type = "SkillName", skillName = "冰川之刺" }), --备注：With 40 Intelligence in Radius, 20% of Glacial Cascade Physical Damage Converted to Cold Damage
+	["若范围内含有 40 点智慧，【冰川之刺】物理伤害的 20% 转化为冰霜伤害"] = getThreshold("Int", "SkillPhysicalDamageConvertToCold", "BASE", 20, { type = "SkillName", skillName = "冰川之刺" }), 
+	["若范围内含有 40 点智慧，【冰川之刺】物理伤害的 20%转化为冰霜伤害"] = getThreshold("Int", "SkillPhysicalDamageConvertToCold", "BASE", 20, { type = "SkillName", skillName = "冰川之刺" }),
+	["若范围内含有 40 点智慧，【冰川之刺】物理伤害的  20%转化为冰霜伤害"] = getThreshold("Int", "SkillPhysicalDamageConvertToCold", "BASE", 20, { type = "SkillName", skillName = "冰川之刺" }),--注意 这个 20% 前面有2个空格 fuck 国服翻译
+	
+	
+	["若范围内含有 40 点敏捷，【冰霜之刃】的投射物速度提高 25%"] = getThreshold("Dex", "ProjectileSpeed", "INC", 25, { type = "SkillName", skillName = "冰霜之刃" }), 
+	 
 	["若范围内含有 40 点智慧，【冰川之刺】物理伤害的 20% 转化为冰霜伤害"] = getThreshold("Int", "SkillPhysicalDamageConvertToCold", "BASE", 20, { type = "SkillName", skillName = "冰川之刺" }), --备注：With at least 40 Intelligence in Radius, 20% of Glacial Cascade Physical Damage Converted to Cold Damage
 	["范围内含的智慧和敏捷总计 40 点时，【元素打击】的火焰伤害降低 50%"] = getThreshold({"Int","Dex"}, "FireDamage", "MORE", -50, { type = "SkillName", skillName = "元素打击" }), --备注：With 40 total Intelligence and Dexterity in Radius, Elemental Hit deals 50% less Fire Damage
 	["范围内含的力量和智慧总计 40 点时，【元素打击】的冰冷伤害降低 50%"] = getThreshold({"Str","Int"}, "ColdDamage", "MORE", -50, { type = "SkillName", skillName = "元素打击" }), --备注：With 40 total Strength and Intelligence in Radius, Elemental Hit deals 50% less Cold Damage

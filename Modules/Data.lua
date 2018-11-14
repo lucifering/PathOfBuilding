@@ -263,13 +263,14 @@ for _, targetVersion in ipairs(targetVersionList) do
 		for _, skillId in ipairs(minion.skillList) do
 			if launch.devMode and not verData.skills[skillId] and not missing[skillId] then
 				ConPrintf("'%s' missing skill '%s'", minion.name, skillId)
-				
+				--[[
 			local fileW = io.open("missingSkill.txt", "a+")
  
 			fileW:write(minion.name.."》丢失技能："..skillId.."\r\n")
 			
 			fileW:flush()
 			fileW:close()
+			--]]
 				missing[skillId] = true
 			end
 			

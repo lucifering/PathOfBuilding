@@ -1873,7 +1873,16 @@ local specialModList = {
 	["周围敌人获得 (%-%d+)%% 冰霜抗性"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("ColdResist", "BASE", num) }) } end,
 	["周围敌人获得 (%-%d+)%% 闪电抗性"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("LightningResist", "BASE", num) }) } end,
 	["每装备 1 个未腐化的物品，每秒回复 (%d+) 生命"]= function(num) return {  mod("LifeRegen", "BASE", tonumber(num),{ type = "Multiplier", var = "NonCorruptedItem" })  } end,
-	["你每拥有一个灵体，法术暴击率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", tonumber(num),nil,ModFlag.Spell,{ type = "Multiplier", var = "Spectre" }  )  } end,
+	["获得等同武器物理伤害 (%d+)%% 的随机一种额外火焰，冰霜，或者闪电伤害"]= function(num) return { 
+	 mod("PhysicalDamageGainAsFire", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementFire" }),
+	  mod("PhysicalDamageGainAsCold", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementCold" }),
+	  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementLightning" }),
+	 } end,
+	["获得等同 (%d+)%% 物理伤害的 1 个随机火焰、冰霜、闪电伤害"]= function(num) return { 
+	 mod("PhysicalDamageGainAsFire", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementFire" }),
+	  mod("PhysicalDamageGainAsCold", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementCold" }),
+	  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementLightning" }),
+	 } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded
@@ -2121,12 +2130,12 @@ minus = -tonumber(minus)
 	["对爪类武器的攻击暴击率加成同时套用于空手攻击暴击率上"] = { flag("ClawCritChanceAppliesToUnarmed") }, --备注：modifiers to claw critical strike chance also apply to unarmed attack critical strike chance
 	["照亮范围的扩大和缩小也同样作用于命中值"] = { flag("LightRadiusAppliesToAccuracy") }, --备注：increases and reductions to light radius also apply to accuracy
 	["施法速度的提高和降低也同样作用于陷阱投掷速度"] = { flag("CastSpeedAppliesToTrapThrowingSpeed") }, --备注：increases and reductions to cast speed also apply to trap throwing speed
-	["获得等同武器物理伤害 (%d+)%% 的全部三种额外火焰，冰霜和闪电伤害"] = function(num) return {  --备注：gain (%d+)%% of bow physical damage as extra damage of each element
+	["gain (%d+)%% of bow physical damage as extra damage of each element"] = function(num) return { 
 		mod("PhysicalDamageGainAsLightning", "BASE", num, nil, ModFlag.Bow), 
 		mod("PhysicalDamageGainAsCold", "BASE", num, nil, ModFlag.Bow), 
 		mod("PhysicalDamageGainAsFire", "BASE", num, nil, ModFlag.Bow) 
 	} end,
-	["gain (%d+)%% of weapon physical damage as extra damage of each element"] = function(num) return { 
+	["获得等同武器物理伤害 (%d+)%% 的全部三种额外火焰，冰霜和闪电伤害"] = function(num) return {  --备注：gain (%d+)%% of weapon physical damage as extra damage of each element
 		mod("PhysicalDamageGainAsLightning", "BASE", num, nil, ModFlag.Weapon), 
 		mod("PhysicalDamageGainAsCold", "BASE", num, nil, ModFlag.Weapon), 
 		mod("PhysicalDamageGainAsFire", "BASE", num, nil, ModFlag.Weapon) 

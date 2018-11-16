@@ -363,7 +363,7 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 { var = "conditionHitRecently", type = "check", label = "你近期有击中过?", ifCond = "HitRecently", tooltip = "如果你的主要技能是自主施放，那么自动认为你近期有击中过\n若有必要，你可以强制修改它.", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:HitRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
-	{ var = "conditionCritRecently", type = "check", label = "Have you Crit Recently?", ifCond = "CritRecently", implyCond = "SkillCritRecently", tooltip = "This also implies that your Skills have Crit Recently.", apply = function(val, modList, enemyModList)
+{ var = "conditionCritRecently", type = "check", label = "你近期有造成暴击?", ifCond = "CritRecently", implyCond = "SkillCritRecently", tooltip = "这也意味着你的技能近期有造成暴击.", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:CritRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 		modList:NewMod("Condition:SkillCritRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
@@ -689,6 +689,22 @@ end },
 { var = "raiseSpectreEnableSummonedUrsaRallyingCry", type = "check", label = "启用【召唤之爪】的激励战吼:", ifSkill = "DropBearSummonedRallyingCry", apply = function(val, modList, enemyModList)
 		modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", { type = "SkillId", skillId = "DropBearSummonedRallyingCry" })
 	end },
+	
+	{ var = "physicsRandomElement", type = "list", ifVer = "3_0", label = "随机元素想要随机哪一个？", tooltip = "【注意】随机元素在游戏内是随机计算的，\n这里允许你选择其一种或不生效，\n所以模拟这个伤害和真实情况是会有差距的，\n新手请勿选择.", list = {{val="NONE",label="不生效"},{val="Fire",label="随机到火焰"},{val="Cold",label="随机到冰霜"},{val="Lightning",label="随机到闪电"}}, apply = function(val, modList, enemyModList)
+		if val == "Fire" then
+			modList:NewMod("Condition:PhysicsRandomElementFire", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+			 
+		elseif val == "Cold" then
+			 	modList:NewMod("Condition:PhysicsRandomElementCold", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+			
+		 
+		elseif val == "Lightning" then
+			 	modList:NewMod("Condition:PhysicsRandomElementLightning", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+			
+		end
+	end }
 
 }
+
+
 

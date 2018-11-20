@@ -1398,10 +1398,10 @@ skills["BloodRage"] = {
 		[40] = { 100, 24, },
 	},
 	qualityStats = {
-		{ "attack_speed_+%_granted_from_skill", 0.25 },
+		{ "attack_speed_+%", 0.25 },
 	},
 	stats = {
-		"attack_speed_+%_granted_from_skill",
+		"attack_speed_+%",
 		"life_leech_from_physical_attack_damage_permyriad",
 		"base_physical_damage_%_of_maximum_life_to_deal_per_minute",
 		"base_physical_damage_%_of_maximum_energy_shield_to_deal_per_minute",
@@ -4757,7 +4757,7 @@ skills["Haste"] = {
 		{ "base_skill_area_of_effect_+%", 1 },
 	},
 	stats = {
-		"attack_speed_+%_granted_from_skill",
+		"attack_speed_+%",
 		"cast_speed_+%_granted_from_skill",
 		"base_movement_velocity_+%",
 		"active_skill_base_radius_+",
@@ -4883,7 +4883,7 @@ skills["VaalHaste"] = {
 		{ "base_skill_area_of_effect_+%", 1 },
 	},
 	stats = {
-		"attack_speed_+%_granted_from_skill",
+		"attack_speed_+%",
 		"cast_speed_+%_granted_from_skill",
 		"base_movement_velocity_+%",
 		"active_skill_base_radius_+",

@@ -667,7 +667,7 @@ t_insert(breakdown[stat], s_format("x %.3f ^8(副手创建的实例部分)", off
 			output.HitChance = calcLib.hitChance(enemyEvasion, output.Accuracy)
 			if breakdown then
 				breakdown.HitChance = {
-					"Enemy level: "..env.enemyLevel..(env.configInput.enemyLevel and " ^8(overridden from the Configuration tab" or " ^8(can be overridden in the Configuration tab)"),
+"敌人等级: "..env.enemyLevel..(env.configInput.enemyLevel and " ^8(从配置界面的获取值" or " ^8(可以从配置界面修改)"),
 "敌人平均闪避: "..enemyEvasion,
 "预计击中几率: "..output.HitChance.."%",
 				}
@@ -801,7 +801,7 @@ t_insert(breakdown.CritChance, s_format("x %.2f", more).." ^8(额外总提高/�
 t_insert(breakdown.CritChance, s_format("= %.2f%% ^8(暴击率)", output.PreEffectiveCritChance))
 					if preCapCritChance > 95 then
 						local overCap = preCapCritChance - 95
-						t_insert(breakdown.CritChance, s_format("Crit is overcapped by %.2f%% (%d%% increased Critical Strike Chance)", overCap, overCap / more / (baseCrit + base) * 100))
+	t_insert(breakdown.CritChance, s_format("暴击几率超过上限 %.2f%% (%d%% 提高暴击几率)", overCap, overCap / more / (baseCrit + base) * 100))
 					end
 					if enemyExtra ~= 0 then
 t_insert(breakdown.CritChance, s_format("+ %g ^8(敌人额外几率承受暴击)", enemyExtra))
@@ -1145,9 +1145,9 @@ t_insert(breakdown.AverageDamage, s_format("x %.2f ^8(命中率)", output.HitCha
 				breakdown.AverageDamage = { }
 				t_insert(breakdown.AverageDamage, "Both weapons:")
 				if skillData.doubleHitsWhenDualWielding then
-					t_insert(breakdown.AverageDamage, s_format("%.1f + %.1f ^8(skill hits with both weapons at once)", output.MainHand.AverageDamage, output.OffHand.AverageDamage))
+t_insert(breakdown.AverageDamage, s_format("%.1f + %.1f ^8(技能使用2把武器同时击中)", output.MainHand.AverageDamage, output.OffHand.AverageDamage))
 				else
-					t_insert(breakdown.AverageDamage, s_format("(%.1f + %.1f) / 2 ^8(skill alternates weapons)", output.MainHand.AverageDamage, output.OffHand.AverageDamage))
+t_insert(breakdown.AverageDamage, s_format("(%.1f + %.1f) / 2 ^8(技能交替使用2把武器)", output.MainHand.AverageDamage, output.OffHand.AverageDamage))
 				end
 				t_insert(breakdown.AverageDamage, s_format("= %.1f", output.AverageDamage))
 			end
@@ -1395,12 +1395,12 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 				if isAttack then
 					t_insert(breakdownChance, pass.label..":")
 				end
-				t_insert(breakdownChance, s_format("Chance on Non-crit: %d%%", chanceOnHit))
-				t_insert(breakdownChance, s_format("Chance on Crit: %d%%", chanceOnCrit))
+t_insert(breakdownChance, s_format("非暴击时的几率: %d%%", chanceOnHit))
+t_insert(breakdownChance, s_format("暴击时的几率: %d%%", chanceOnCrit))
 				if chanceOnHit ~= chanceOnCrit then
-					t_insert(breakdownChance, "Combined chance:")
-					t_insert(breakdownChance, s_format("%d x (1 - %.4f) ^8(chance from non-crits)", chanceOnHit, output.CritChance/100))
-					t_insert(breakdownChance, s_format("+ %d x %.4f ^8(chance from crits)", chanceOnCrit, output.CritChance/100))
+t_insert(breakdownChance, "预期几率:")
+t_insert(breakdownChance, s_format("%d x (1 - %.4f) ^8(非暴击时的几率)", chanceOnHit, output.CritChance/100))
+t_insert(breakdownChance, s_format("+ %d x %.4f ^8(暴击时的几率)", chanceOnCrit, output.CritChance/100))
 					t_insert(breakdownChance, s_format("= %.2f", chance))
 				end
 			end
@@ -1414,23 +1414,23 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 					t_insert(breakdownDPS, pass.label..":")
 				end
 				if sourceHitDmg == sourceCritDmg then
-					t_insert(breakdownDPS, "Total damage:")
-					t_insert(breakdownDPS, s_format("%.1f ^8(source damage)",sourceHitDmg))
+t_insert(breakdownDPS, "总伤害:")
+t_insert(breakdownDPS, s_format("%.1f ^8(来源伤害)",sourceHitDmg))
 				else
 					if baseFromHit > 0 then
-						t_insert(breakdownDPS, "Damage from Non-crits:")
-						t_insert(breakdownDPS, s_format("%.1f ^8(source damage from non-crits)", sourceHitDmg))
-						t_insert(breakdownDPS, s_format("x %.3f ^8(portion of instances created by non-crits)", chanceFromHit / (chanceFromHit + chanceFromCrit)))
+t_insert(breakdownDPS, "非暴击时的伤害:")
+t_insert(breakdownDPS, s_format("%.1f ^8(非暴击时的来源伤害)", sourceHitDmg))
+t_insert(breakdownDPS, s_format("x %.3f ^8(不暴击的几率·非暴击的实例)", chanceFromHit / (chanceFromHit + chanceFromCrit)))
 						t_insert(breakdownDPS, s_format("= %.1f", baseFromHit))
 					end
 					if baseFromCrit > 0 then
-						t_insert(breakdownDPS, "Damage from Crits:")
-						t_insert(breakdownDPS, s_format("%.1f ^8(source damage from crits)", sourceCritDmg))
-						t_insert(breakdownDPS, s_format("x %.3f ^8(portion of instances created by crits)", chanceFromCrit / (chanceFromHit + chanceFromCrit)))
+t_insert(breakdownDPS, "暴击的伤害:")
+	t_insert(breakdownDPS, s_format("%.1f ^8(暴击时的来源伤害)", sourceCritDmg))
+t_insert(breakdownDPS, s_format("x %.3f ^8(暴击率·暴击时的实例)", chanceFromCrit / (chanceFromHit + chanceFromCrit)))
 						t_insert(breakdownDPS, s_format("= %.1f", baseFromCrit))
 					end
 					if baseFromHit > 0 and baseFromCrit > 0 then
-						t_insert(breakdownDPS, "Total damage:")
+t_insert(breakdownDPS, "总伤害:")
 						t_insert(breakdownDPS, s_format("%.1f + %.1f", baseFromHit, baseFromCrit))
 						t_insert(breakdownDPS, s_format("= %.1f", baseVal))
 					end
@@ -1494,30 +1494,30 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 				local durationMod = calcLib.mod(modDB, dotCfg, "EnemyBleedDuration", "SkillAndDamagingAilmentDuration", skillData.bleedIsSkillEffect and "Duration" or nil) * calcLib.mod(enemyDB, nil, "SelfBleedDuration")
 				globalOutput.BleedDuration = durationBase * durationMod * debuffDurationMult
 				if breakdown then
-					t_insert(breakdown.BleedDPS, s_format("x %.2f ^8(bleed deals %d%% per second)", basePercent/100, basePercent))
+t_insert(breakdown.BleedDPS, s_format("x %.2f ^8(流血每秒造成 %d%% 伤害)", basePercent/100, basePercent))
 					if effectMod ~= 1 then
-						t_insert(breakdown.BleedDPS, s_format("x %.2f ^8(ailment effect modifier)", effectMod))
+t_insert(breakdown.BleedDPS, s_format("x %.2f ^8(异常效果加成)", effectMod))
 					end
 					if output.RuthlessBlowEffect ~= 0 then
-						t_insert(breakdown.BleedDPS, s_format("x %.2f ^8(ruthless blow effect modifier)", output.RuthlessBlowEffect))
+t_insert(breakdown.BleedDPS, s_format("x %.2f ^8(【无情一击】效果加成)", output.RuthlessBlowEffect))
 					end
 					t_insert(breakdown.BleedDPS, s_format("= %.1f", baseVal))
 					breakdown.multiChain(breakdown.BleedDPS, {
 						label = "Bleed DPS:",
-						base = s_format("%.1f ^8(total damage per second)", baseVal), 
-						{ "%.2f ^8(ailment effect modifier)", effectMod },
-						{ "%.3f ^8(effective DPS modifier)", effMult },
-						total = s_format("= %.1f ^8per second", output.BleedDPS),
+base = s_format("%.1f ^8(每秒总伤害)", baseVal), 
+{ "%.2f ^8(异常效果加成)", effectMod },
+{ "%.3f ^8(有效 DPS 加成)", effMult },
+total = s_format("= %.1f ^8每秒", output.BleedDPS),
 					})
 					if globalOutput.BleedDuration ~= durationBase then
 						globalBreakdown.BleedDuration = {
-							s_format("%.2fs ^8(base duration)", durationBase)
+s_format("%.2fs ^8(基础持续时间)", durationBase)
 						}
 						if durationMod ~= 1 then
-							t_insert(globalBreakdown.BleedDuration, s_format("x %.2f ^8(duration modifier)", durationMod))
+t_insert(globalBreakdown.BleedDuration, s_format("x %.2f ^8(持续时间加成)", durationMod))
 						end
 						if debuffDurationMult ~= 1 then
-							t_insert(globalBreakdown.BleedDuration, s_format("/ %.2f ^8(debuff expires slower/faster)", 1 / debuffDurationMult))
+t_insert(globalBreakdown.BleedDuration, s_format("/ %.2f ^8(更快或较慢 debuff消退)", 1 / debuffDurationMult))
 						end
 						t_insert(globalBreakdown.BleedDuration, s_format("= %.2fs", globalOutput.BleedDuration))
 					end
@@ -1631,24 +1631,24 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 					output.TotalPoisonDPS = output.PoisonDPS * output.TotalPoisonStacks
 				end
 				if breakdown then
-					t_insert(breakdown.PoisonDPS, "x 0.20 ^8(poison deals 20% per second)")
+t_insert(breakdown.PoisonDPS, "x 0.20 ^8(中毒每秒造成基础伤害的 20%)")
 					t_insert(breakdown.PoisonDPS, s_format("= %.1f", baseVal, 1))
 					breakdown.multiChain(breakdown.PoisonDPS, {
-						label = "Poison DPS:",
-						base = s_format("%.1f ^8(total damage per second)", baseVal), 
-						{ "%.2f ^8(ailment effect modifier)", effectMod },
-						{ "%.3f ^8(effective DPS modifier)", effMult },
-						total = s_format("= %.1f ^8per second", output.PoisonDPS),
+label = "中毒 DPS:",
+base = s_format("%.1f ^8(每秒总伤害)", baseVal), 
+{ "%.2f ^8(异常效果加成)", effectMod },
+{ "%.3f ^8(有效 DPS 加成)", effMult },
+total = s_format("= %.1f ^8每秒", output.PoisonDPS),
 					})
 					if globalOutput.PoisonDuration ~= 2 then
 						globalBreakdown.PoisonDuration = {
-							s_format("%.2fs ^8(base duration)", durationBase)
+s_format("%.2fs ^8(基础持续时间)", durationBase)
 						}
 						if durationMod ~= 1 then
-							t_insert(globalBreakdown.PoisonDuration, s_format("x %.2f ^8(duration modifier)", durationMod))
+t_insert(globalBreakdown.PoisonDuration, s_format("x %.2f ^8(持续时间加成)", durationMod))
 						end
 						if debuffDurationMult ~= 1 then
-							t_insert(globalBreakdown.PoisonDuration, s_format("/ %.2f ^8(debuff expires slower/faster)", 1 / debuffDurationMult))
+t_insert(globalBreakdown.PoisonDuration, s_format("/ %.2f ^8(更快或较慢 debuff消退)", 1 / debuffDurationMult))
 						end
 						t_insert(globalBreakdown.PoisonDuration, s_format("= %.2fs", globalOutput.PoisonDuration))
 					end
@@ -1656,20 +1656,20 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 					if isAttack then
 						t_insert(breakdown.PoisonDamage, pass.label..":")
 					end
-					t_insert(breakdown.PoisonDamage, s_format("%.1f ^8(damage per second)", output.PoisonDPS))
-					t_insert(breakdown.PoisonDamage, s_format("x %.2fs ^8(poison duration)", globalOutput.PoisonDuration))
-					t_insert(breakdown.PoisonDamage, s_format("= %.1f ^8damage per poison stack", output.PoisonDamage))
+t_insert(breakdown.PoisonDamage, s_format("%.1f ^8(每秒伤害)", output.PoisonDPS))
+t_insert(breakdown.PoisonDamage, s_format("x %.2fs ^8(中毒持续时间)", globalOutput.PoisonDuration))
+t_insert(breakdown.PoisonDamage, s_format("= %.1f ^8每层中毒伤害", output.PoisonDamage))
 					if not skillData.showAverage then
 						breakdown.TotalPoisonStacks = { }
 						if isAttack then
 							t_insert(breakdown.TotalPoisonStacks, pass.label..":")
 						end
 						breakdown.multiChain(breakdown.TotalPoisonStacks, {
-							base = s_format("%.2fs ^8(poison duration)", globalOutput.PoisonDuration),
-							{ "%.2f ^8(poison chance)", output.PoisonChance / 100 },
-							{ "%.2f ^8(hit chance)", output.HitChance / 100 },
-							{ "%.2f ^8(hits per second)", globalOutput.HitSpeed or globalOutput.Speed },
-							{ "%g ^8(dps multiplier for this skill)", skillData.dpsMultiplier or 1 },
+base = s_format("%.2fs ^8(中毒持续时间)", globalOutput.PoisonDuration),
+{ "%.2f ^8(中毒几率)", output.PoisonChance / 100 },
+{ "%.2f ^8(命中几率)", output.HitChance / 100 },
+{ "%.2f ^8(每秒击中)", globalOutput.HitSpeed or globalOutput.Speed },
+{ "%g ^8(本技能DPS加成)", skillData.dpsMultiplier or 1 },
 							total = s_format("= %.1f", output.TotalPoisonStacks),
 						})
 					end
@@ -1749,7 +1749,7 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 			end
 			if globalBreakdown then
 				globalBreakdown.IgniteDPS = {
-					s_format("Ignite mode: %s ^8(can be changed in the Configuration tab)", igniteMode == "CRIT" and "Crit Damage" or "Average Damage")
+s_format("点燃计算模式: %s ^8(可以在配置面板修改)", igniteMode == "CRIT" and "暴击伤害" or "平均伤害")
 				}
 			end
 			local baseVal = calcAilmentDamage("Ignite", sourceHitDmg, sourceCritDmg) * 0.5
@@ -1781,24 +1781,24 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 					end
 				end
 				if breakdown then
-					t_insert(breakdown.IgniteDPS, "x 0.5 ^8(ignite deals 50% per second)")
+t_insert(breakdown.IgniteDPS, "x 0.5 ^8(点燃每秒造成 50% 伤害)")
 					t_insert(breakdown.IgniteDPS, s_format("= %.1f", baseVal, 1))
 					breakdown.multiChain(breakdown.IgniteDPS, {
 						label = "Ignite DPS:",
-						base = s_format("%.1f ^8(total damage per second)", baseVal), 
-						{ "%.2f ^8(ailment effect modifier)", effectMod },
-						{ "%.2f ^8(burn rate modifier)", burnRateMod },
-						{ "%.3f ^8(effective DPS modifier)", effMult },
-						total = s_format("= %.1f ^8per second", output.IgniteDPS),
+base = s_format("%.1f ^8(每秒总伤害)", baseVal), 
+{ "%.2f ^8(异常效果加成)", effectMod },
+{ "%.2f ^8(燃烧速率加成)", burnRateMod },
+{ "%.3f ^8(有效 DPS 加成)", effMult },
+total = s_format("= %.1f ^8每秒", output.IgniteDPS),
 					})
 					if skillFlags.igniteCanStack then
 						breakdown.IgniteDamage = { }
 						if isAttack then
 							t_insert(breakdown.IgniteDamage, pass.label..":")
 						end
-						t_insert(breakdown.IgniteDamage, s_format("%.1f ^8(damage per second)", output.IgniteDPS))
-						t_insert(breakdown.IgniteDamage, s_format("x %.2fs ^8(ignite duration)", globalOutput.IgniteDuration))
-						t_insert(breakdown.IgniteDamage, s_format("= %.1f ^8damage per ignite stack", output.IgniteDamage))
+t_insert(breakdown.IgniteDamage, s_format("%.1f ^8(每秒伤害)", output.IgniteDPS))
+t_insert(breakdown.IgniteDamage, s_format("x %.2fs ^8(点燃持续时间)", globalOutput.IgniteDuration))
+t_insert(breakdown.IgniteDamage, s_format("= %.1f ^8每层点燃伤害", output.IgniteDamage))
 						if not skillData.showAverage then
 							breakdown.TotalIgniteStacks = { }
 							if isAttack then
@@ -1806,10 +1806,10 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 							end
 							breakdown.multiChain(breakdown.TotalIgniteStacks, {
 								base = s_format("%.2fs ^8(ignite duration)", globalOutput.IgniteDuration),
-								{ "%.2f ^8(ignite chance)", output.IgniteChance / 100 },
-								{ "%.2f ^8(hit chance)", output.HitChance / 100 },
-								{ "%.2f ^8(hits per second)", globalOutput.HitSpeed or globalOutput.Speed },
-								{ "%g ^8(dps multiplier for this skill)", skillData.dpsMultiplier or 1 },
+{ "%.2f ^8(点燃几率)", output.IgniteChance / 100 },
+{ "%.2f ^8(命中几率)", output.HitChance / 100 },
+{ "%.2f ^8(每秒击中)", globalOutput.HitSpeed or globalOutput.Speed },
+{ "%g ^8(本技能DPS加成)", skillData.dpsMultiplier or 1 },
 								total = s_format("= %.1f", output.TotalIgniteStacks),
 							})
 						end
@@ -1819,16 +1819,16 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 							s_format("4.00s ^8(base duration)", durationBase)
 						}
 						if incDur ~= 0 then
-							t_insert(globalBreakdown.IgniteDuration, s_format("x %.2f ^8(increased/reduced duration)", 1 + incDur/100))
+t_insert(globalBreakdown.IgniteDuration, s_format("x %.2f ^8(延长/缩短 持续时间)", 1 + incDur/100))
 						end
 						if moreDur ~= 1 then
-							t_insert(globalBreakdown.IgniteDuration, s_format("x %.2f ^8(more/less duration)", moreDur))
+t_insert(globalBreakdown.IgniteDuration, s_format("x %.2f ^8(额外延长/缩短 总持续时间)", moreDur))
 						end
 						if burnRateMod ~= 1 then
-							t_insert(globalBreakdown.IgniteDuration, s_format("/ %.2f ^8(burn rate modifier)", burnRateMod))
+t_insert(globalBreakdown.IgniteDuration, s_format("/ %.2f ^8(燃烧速率加成)", burnRateMod))
 						end
 						if debuffDurationMult ~= 1 then
-							t_insert(globalBreakdown.IgniteDuration, s_format("/ %.2f ^8(debuff expires slower/faster)", 1 / debuffDurationMult))
+t_insert(globalBreakdown.IgniteDuration, s_format("/ %.2f ^8(更快或较慢 debuff消退)", 1 / debuffDurationMult))
 						end
 						t_insert(globalBreakdown.IgniteDuration, s_format("= %.2fs", globalOutput.IgniteDuration))
 					end
@@ -1866,7 +1866,7 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 				skillFlags.shock = true
 				output.ShockDurationMod = 1 + modDB:Sum("INC", cfg, "EnemyShockDuration") / 100 + enemyDB:Sum("INC", nil, "SelfShockDuration") / 100
 				if breakdown then
-					t_insert(breakdown.ShockDPS, s_format("For shock to apply, target must have no more than %d life.", baseVal * 20 * output.ShockDurationMod))
+t_insert(breakdown.ShockDPS, s_format("要敌人感电, 怪物的生命需要小于或等于 %d .", baseVal * 20 * output.ShockDurationMod))
 				end
  			end
 		end
@@ -1886,7 +1886,7 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 				skillFlags.freeze = true
 				output.FreezeDurationMod = 1 + modDB:Sum("INC", cfg, "EnemyFreezeDuration") / 100 + enemyDB:Sum("INC", nil, "SelfFreezeDuration") / 100
 				if breakdown then
-					t_insert(breakdown.FreezeDPS, s_format("For freeze to apply, target must have no more than %d life.", baseVal * 20 * output.FreezeDurationMod))
+t_insert(breakdown.FreezeDPS, s_format("要敌人冰冻, 怪物的生命需要小于或等于 %d .", baseVal * 20 * output.FreezeDurationMod))
 				end
 			end
 		end
@@ -1919,10 +1919,10 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 					s_format("%.2fs ^8(base duration)", base),
 				}
 				if incDur ~= 0 then
-					t_insert(breakdown.EnemyStunDuration, s_format("x %.2f ^8(increased/reduced stun duration)", 1 + incDur/100))
+t_insert(breakdown.EnemyStunDuration, s_format("x %.2f ^8(延长/缩短 晕眩持续时间)", 1 + incDur/100))
 				end
 				if incRecov ~= 0 then
-					t_insert(breakdown.EnemyStunDuration, s_format("/ %.2f ^8(increased/reduced enemy stun recovery)", 1 + incRecov/100))
+t_insert(breakdown.EnemyStunDuration, s_format("/ %.2f ^8(延长/缩短 敌人晕眩回复)", 1 + incRecov/100))
 				end
 				t_insert(breakdown.EnemyStunDuration, s_format("= %.2fs", output.EnemyStunDuration))
 			end
@@ -1988,17 +1988,17 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 		output.DecayDuration = 10 * durationMod * debuffDurationMult
 		if breakdown then
 			breakdown.DecayDPS = { }
-			t_insert(breakdown.DecayDPS, "Decay DPS:")
+t_insert(breakdown.DecayDPS, "腐蚀 DPS:")
 			breakdown.dot(breakdown.DecayDPS, skillData.decay, inc, more, nil, effMult, output.DecayDPS)
 			if output.DecayDuration ~= 2 then
 				breakdown.DecayDuration = {
-					s_format("%.2fs ^8(base duration)", 10)
+s_format("%.2fs ^8(基础持续时间)", 10)
 				}
 				if durationMod ~= 1 then
-					t_insert(breakdown.DecayDuration, s_format("x %.2f ^8(duration modifier)", durationMod))
+t_insert(breakdown.DecayDuration, s_format("x %.2f ^8(持续时间加成)", durationMod))
 				end
 				if debuffDurationMult ~= 1 then
-					t_insert(breakdown.DecayDuration, s_format("/ %.2f ^8(debuff expires slower/faster)", 1 / debuffDurationMult))
+t_insert(breakdown.DecayDuration, s_format("/ %.2f ^8(更快或较慢 debuff消退)", 1 / debuffDurationMult))
 				end
 				t_insert(breakdown.DecayDuration, s_format("= %.2fs", output.DecayDuration))
 			end

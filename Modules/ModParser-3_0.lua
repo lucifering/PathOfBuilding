@@ -182,6 +182,9 @@ local modNameList = {
 	["格挡法术伤害"] = "SpellBlockChance", --备注：to block spells
 	["攻击及法术伤害格挡几率"] = { "BlockChance", "SpellBlockChance" },
 	["召唤圣物数量上限"] = "ActiveHolyRelicLimit",
+	["持续冰霜伤害效果"] = { "ColdDamage", flags = ModFlag.Dot },
+	["非异常状态混沌持续伤害加成"] = "ChaosDotMultiplier",--non-ailment chaos damage over time multiplier
+	["额外总冰霜持续伤害效果"] = "ColdDotMultiplier",--cold damage over time multiplier
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -1326,6 +1329,7 @@ local specialModList = {
 	["你的攻击击中每个敌人会回复 ([%+%-]?%d+) 魔力"] = function(num) return {  mod("ManaOnHit", "BASE", num,nil, ModFlag.Attack)  } end, 
 	["攻击击中每个敌人会回复 ([%+%-]?%d+) 魔力"] = function(num) return {  mod("ManaOnHit", "BASE", num,nil, ModFlag.Attack)  } end, 
 	["物理攻击伤害的 ([%d%.]+)%% 会转化为生命偷取"]= function(num) return {  mod("PhysicalDamageLifeLeech", "BASE", num,nil, ModFlag.Attack)  } end, 
+	["攻击伤害的 ([%d%.]+)%% 会转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack)  } end, 
 	["药剂持续期间，物理攻击伤害的 ([%d%.]+)%% 作为生命偷取"]= function(num) return {  mod("PhysicalDamageLifeLeech", "BASE", num,nil, ModFlag.Attack,{ type = "Condition", var = "UsingFlask" })  } end, 
 	["药剂持续期间，物理攻击伤害的 ([%d%.]+)%% 作为魔力偷取"]= function(num) return {  mod("PhysicalDamageManaLeech", "BASE", num,nil, ModFlag.Attack,{ type = "Condition", var = "UsingFlask" })  } end, 
 	["药剂持续期间，附加 (%d+)%% 火焰、冰霜、闪电抗性"]= function(num) return {  mod("ElementalResist", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end, 
@@ -1545,6 +1549,7 @@ local specialModList = {
 	["移动时每有 1 个狂怒球，则每秒受到 (%d+) 冰霜伤害"]= function(num) return {  mod("ColdDegen", "BASE", num,{ type = "Multiplier", var = "FrenzyCharge" },{ type = "Condition", var = "Moving" })  } end, 
 	["药剂持续期间，获得 完美苦痛 天赋效果"] = { mod("Keystone", "LIST", "完美苦痛", { type = "Condition", var = "UsingFlask" }) }, --备注：grants perfect agony during flask effect
 	["武器总伤害额外降低 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", -num, nil,ModFlag.Weapon)  } end,
+	["总伤害额外降低 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", -num)  } end,
 	["药剂持续期间，获得等同 (%d+)%% 物理伤害的冰霜伤害"]= function(num) return {  mod("PhysicalDamageGainAsCold", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
 	["生效期间，瓦尔技能的伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", num,nil,KeywordFlag.Vaal,{ type = "Condition", var = "UsingFlask" })  } end,
 	["生效期间，瓦尔技能的总伤害额外提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num,nil,KeywordFlag.Vaal,{ type = "Condition", var = "UsingFlask" })  } end,
@@ -1861,6 +1866,7 @@ local specialModList = {
 	["每有一个狂怒球，可使你获得额外 (%d+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num, { type = "Multiplier", var = "FrenzyCharge" }) } end, 
 	["每 (%d+) 点敏捷提高 (%d+)%% 召唤生物造成的伤害"] = function(_,num1,num2) return {  mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", tonumber(num2)) },{ type = "PerStat", stat = "Dex", div = tonumber(num1) })   } end, 
 	["近期你每消耗 (%d+) 魔力，法术伤害便提高 (%d+)%%"] = function(_,num1,num2)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "Multiplier", var = "ManaSpentRecently", div = tonumber(num1) }) } end, 
+	["近期你每消耗 (%d+) 魔力，法术伤害便提高 (%d+)%%,最多可提高 (%d+)%%"] = function(_,num1,num2,num3)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "Multiplier", var = "ManaSpentRecently", div = tonumber(num1) , limit = tonumber(num3), limitTotal = true}) } end, 
 	["身体护甲提供的能量护盾提高 (%d+)%%"] =  function(num) return {  mod("EnergyShield", "INC", num, { type = "SlotName", slotName = "Body Armour" }) } end, 
 	["每有 (%d+)%% 攻击格档率，伤害提高 (%d+)%%"] =  function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2),{ type = "PerStat", stat = "BlockChance", div = tonumber(num1) }  ) } end, 
 	["每 (%d+)%% 的攻击伤害格挡几率会使法术伤害提高 (%d+)%%"] =  function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "PerStat", stat = "BlockChance", div = tonumber(num1) }  ) } end, 
@@ -1883,7 +1889,14 @@ local specialModList = {
 	  mod("PhysicalDamageGainAsCold", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementCold" }),
 	  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementLightning" }),
 	 } end,
-		["药剂持续期间，被点燃的敌人承受的火焰伤害提高 (%d+)%%"]=   function(num) return { mod("EnemyModifier", "LIST", { mod = mod("FireDamageTaken", "INC", num) },{ type = "ActorCondition", actor = "enemy", var = "Ignited" },{ type = "Condition", var = "UsingFlask" }) } end,
+	["药剂持续期间，被点燃的敌人承受的火焰伤害提高 (%d+)%%"]=   function(num) return { mod("EnemyModifier", "LIST", { mod = mod("FireDamageTaken", "INC", num) },{ type = "ActorCondition", actor = "enemy", var = "Ignited" },{ type = "Condition", var = "UsingFlask" }) } end,
+	 ["此武器的攻击对敌人造成双倍伤害"] = { mod("Damage", "MORE", 100, nil, ModFlag.Hit, { type = "Condition", var = "{Hand}Attack" }) }, 
+	 ["投射物的伤害随着飞行距离提升，击中目标时最多提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num, nil, bor(ModFlag.Attack, ModFlag.Projectile), { type = "DistanceRamp", ramp = {{35,0},{70,1}} }) } end,
+	 ["远射"] = { flag("FarShot") },
+	 ["狙击"] = { flag("FarShot") }, 
+	 ["%-(%d+) 最大图腾数量"] = function(num) return { mod("ActiveTotemLimit", "BASE", -num) } end, 
+	 ["每个图腾额外提高 (%d+)%% 总伤害"] = function(num) return { mod("Damage", "MORE", num, { type = "PerStat", stat = "ActiveTotemLimit" }) } end, 
+	 ["([%+%-]?%d+)%% 额外总冰霜持续伤害效果"] = function(num) return { mod("ColdDotMultiplier", "BASE", num) } end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

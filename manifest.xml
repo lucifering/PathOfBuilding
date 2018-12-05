@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PoBVersion>
-	<Version number="1.4.116.7" platform="win32" branch="master"/>
+	<Version number="1.4.117.1" platform="win32" branch="master"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/runtime-win32.zip" part="runtime" platform="win32"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/" part="program"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/tree.zip" part="tree"/>
-
-	<File sha1="4f17937f2b37784e169a3792b235f2a0a3961e61" name="UpdateApply.lua" part="program"/>
+ <File sha1="4f17937f2b37784e169a3792b235f2a0a3961e61" name="UpdateApply.lua" part="program"/>
 <File sha1="f2a1bb8936c23ddfa31871f278ac3a5453a39b51" name="UpdateCheck.lua" part="program"/>
 <File sha1="dbacb79bd5e809ef7b639c8d36b745da80f7f411" name="Classes/BuildListControl.lua" part="program"/>
 <File sha1="f85e8b60ff9bb41a3cc4ba8044f7a49163fdedd3" name="Classes/ButtonControl.lua" part="program"/>
@@ -96,7 +95,7 @@
 <File sha1="933020a1fafe4225fc2fcca4d9f8aac6973908d2" name="Data/2_6/Skills/sup_int.lua" part="program"/>
 <File sha1="82408f721cfc0ce84b4153f491a4eb7ab37e87bf" name="Data/2_6/Skills/sup_str.lua" part="program"/>
 <File sha1="d20fe6565525d3584bdaa70b73052190cb912334" name="Data/Global.lua" part="program"/>
-<File sha1="c6a2b898608b583de77968d5cc2a2d5b24510b4c" name="Data/New.lua" part="program"/>
+<File sha1="930d6cecdf406f577e49630267b822e995a97db5" name="Data/New.lua" part="program"/>
 <File sha1="4b4071a3fa3220ce18cf1960cbc3b4431f294e23" name="Data/3_0/Bases/amulet.lua" part="program"/>
 <File sha1="85f9d40495e122bdde9d57675941a87d47322374" name="Data/3_0/Bases/axe.lua" part="program"/>
 <File sha1="2f7ae68ca81bebf08d2b907de994e5e40a0c1db2" name="Data/3_0/Bases/belt.lua" part="program"/>
@@ -142,25 +141,25 @@
 <File sha1="f82df593fc43155a7c290b489346f9fb3c432d11" name="Data/3_0/Skills/sup_dex.lua" part="program"/>
 <File sha1="895c8c540d16eaa8462b43acd770be23ef9a0c37" name="Data/3_0/Skills/sup_int.lua" part="program"/>
 <File sha1="c05d5fa7d9e55d6882a0d52b5dbaf3441aee8dbe" name="Data/3_0/Skills/sup_str.lua" part="program"/>
-<File sha1="d0e327d7b6138429843e5bdc81e4079fda39124f" name="Data/Uniques/amulet.lua" part="program"/>
-<File sha1="3cacaf2263e16f561bc9823d6d7133ee0f938b67" name="Data/Uniques/axe.lua" part="program"/>
-<File sha1="8901c1e65913427ae4d70ef472cb443da9ef95de" name="Data/Uniques/belt.lua" part="program"/>
-<File sha1="3e0dd992532bdd5985087c262782ddca2191b54b" name="Data/Uniques/body.lua" part="program"/>
-<File sha1="488b889fffd8d73abd8e6600497c40fd2f568858" name="Data/Uniques/boots.lua" part="program"/>
-<File sha1="a2fed378b29b060389052a7922512b379c562750" name="Data/Uniques/bow.lua" part="program"/>
+<File sha1="a51304c8ef098e10a9bfb5a3f10fce95aff929d0" name="Data/Uniques/amulet.lua" part="program"/>
+<File sha1="52f41dc1927d8338ca83c4401b12fc0a0faeb6a8" name="Data/Uniques/axe.lua" part="program"/>
+<File sha1="e57f4194724c7b5c4af411a5a3409d0b17994fe7" name="Data/Uniques/belt.lua" part="program"/>
+<File sha1="6f6d6d7fa4028f7a93fc1ad752bbcdf8bcd1a30d" name="Data/Uniques/body.lua" part="program"/>
+<File sha1="5c4dfca4480b7c96ef6d84c827187b4a2ea2dd19" name="Data/Uniques/boots.lua" part="program"/>
+<File sha1="7109d71998f67a42421fa8d2f05a3e65687afbbf" name="Data/Uniques/bow.lua" part="program"/>
 <File sha1="ca72501cf20dc52a566ef0646d973b6147af53f1" name="Data/Uniques/claw.lua" part="program"/>
-<File sha1="96dec2e51d6274f1e25787f7b660eb4b6b1f061c" name="Data/Uniques/dagger.lua" part="program"/>
-<File sha1="436b63227ced94d3f8dbf0c6d622054fba21255b" name="Data/Uniques/flask.lua" part="program"/>
-<File sha1="df2689b79790db66cddef70f93bca8eaf37c81ad" name="Data/Uniques/gloves.lua" part="program"/>
-<File sha1="54804308234a499488f6f851256cebff130a1b47" name="Data/Uniques/helmet.lua" part="program"/>
-<File sha1="30b30180b1b29de855266875af6d24d3ab6a6f3b" name="Data/Uniques/jewel.lua" part="program"/>
-<File sha1="013f319340c63b6b2a3ca1d9e42d20e5f12e27f7" name="Data/Uniques/mace.lua" part="program"/>
-<File sha1="da094f02a4a3fef935cd55a466ddc213d8a63ffa" name="Data/Uniques/quiver.lua" part="program"/>
-<File sha1="72b772bbdf05b991587e60a1b72aeafb0e86afc8" name="Data/Uniques/ring.lua" part="program"/>
-<File sha1="e71c5568adc3dfa5318c021f03190f558f0c19a7" name="Data/Uniques/shield.lua" part="program"/>
-<File sha1="51f9d02cf262b6d80975251182fd58391b2bd90b" name="Data/Uniques/staff.lua" part="program"/>
-<File sha1="84e612d2a2d4a07e7c28a75392c32d50082d90be" name="Data/Uniques/sword.lua" part="program"/>
-<File sha1="6cec51ac7168c6d5d931f99fe929b4f2795256c2" name="Data/Uniques/wand.lua" part="program"/>
+<File sha1="eda8f38295674615f9e123ae71e5224357996397" name="Data/Uniques/dagger.lua" part="program"/>
+<File sha1="f326c572e4c1761520a3e115eea3dfd10fdddfc5" name="Data/Uniques/flask.lua" part="program"/>
+<File sha1="882d642c8a867e47686ed903a2bba2d6c6cc771e" name="Data/Uniques/gloves.lua" part="program"/>
+<File sha1="4da2730a735008c4fa49a1eb9259b9805736312c" name="Data/Uniques/helmet.lua" part="program"/>
+<File sha1="2b6c9c20b5660cedbf9b963ac56b0765e5c1e44e" name="Data/Uniques/jewel.lua" part="program"/>
+<File sha1="d49e6c5de425f9de6c76d3fdac36da0b1d474c7e" name="Data/Uniques/mace.lua" part="program"/>
+<File sha1="9ba45f4b658c802595b94ed71345960f2eda4903" name="Data/Uniques/quiver.lua" part="program"/>
+<File sha1="0afb974e931dfc848dc92f5e689465c672ff3400" name="Data/Uniques/ring.lua" part="program"/>
+<File sha1="ec630ee3e4666af058e8e9e843c561a1d68ab968" name="Data/Uniques/shield.lua" part="program"/>
+<File sha1="6ff7d349c46e308dff987abd109f91210c1c2c05" name="Data/Uniques/staff.lua" part="program"/>
+<File sha1="f78016a941c830e45fc08fe30204b8577593e265" name="Data/Uniques/sword.lua" part="program"/>
+<File sha1="8e22325bb6d4b4d3d1f1afc2d6c598d3a12d7ee8" name="Data/Uniques/wand.lua" part="program"/>
 <File sha1="18629865eb351e483178b6524fb3935cbc9b8297" name="lua/base64.lua" part="program"/>
 <File sha1="16cbc26080996d9da827df42cb0844a25518eeb3" name="lua/dkjson.lua" part="program"/>
 <File sha1="31e325cd40a9c0234c6265689cf70b97ef676f20" name="lua/sha1.lua" part="program"/>
@@ -168,11 +167,11 @@
 <File sha1="c433e411555dc0fac247068b0b7475a7bc8ca70f" name="Modules/Build.lua" part="program"/>
 <File sha1="2d326afb01aa530ac1b0b62df321812ea171f285" name="Modules/BuildList.lua" part="program"/>
 <File sha1="a837b991418caccee7c0217b5dfd367df0ac8579" name="Modules/CalcActiveSkill.lua" part="program"/>
-<File sha1="b31dca8bf6238a35b75429ab19dae7cc1fdf2207" name="Modules/CalcBreakdown.lua" part="program"/>
+<File sha1="746aa71dd4070c97e6a9b60e0c5f422ce83ce8e7" name="Modules/CalcBreakdown.lua" part="program"/>
 <File sha1="38e81ff8ca19729eb180470173afd3bda0b4cf59" name="Modules/CalcDefence-2_6.lua" part="program"/>
 <File sha1="0f65a59a8224561043640994a26c5961c8f9563f" name="Modules/CalcDefence-3_0.lua" part="program"/>
-<File sha1="d47657bc351ddd077e93b86d7641e1d0941dede8" name="Modules/CalcOffence-2_6.lua" part="program"/>
-<File sha1="93ee6688b4cdaae4c7a726d8cc6ae6b491a42ed5" name="Modules/CalcOffence-3_0.lua" part="program"/>
+<File sha1="e85e0ec08888434527fb8a730615f83eee60790f" name="Modules/CalcOffence-2_6.lua" part="program"/>
+<File sha1="459dc3b084667d8b83c64513677ffade730df20c" name="Modules/CalcOffence-3_0.lua" part="program"/>
 <File sha1="680176847cb3ecc31499ce21368d020134a3719e" name="Modules/CalcPerform.lua" part="program"/>
 <File sha1="6e2e1cfd4c4e31aeba66cc6403902c79695cf870" name="Modules/Calcs.lua" part="program"/>
 <File sha1="32da2a949a5fe0ab10d54078a96caff0dccb5f3f" name="Modules/CalcSections-2_6.lua" part="program"/>
@@ -185,10 +184,10 @@
 <File sha1="2a37229e7966f9b97393f32c5f3b4caa942b7a0e" name="Modules/ItemTools.lua" part="program"/>
 <File sha1="4cf5365b248d1825aa191f6a1dd0655bd60d1256" name="Modules/Main.lua" part="program"/>
 <File sha1="64693eb3e1d7d356b8b50bdc61a622a6e3bb33c2" name="Modules/ModParser-2_6.lua" part="program"/>
-<File sha1="9a9378f2da8260b3f6ec36d20aca9b313c1be4e9" name="Modules/ModParser-3_0.lua" part="program"/>
+<File sha1="af9af6acf3027691e3494b707967cc0732750a26" name="Modules/ModParser-3_0.lua" part="program"/>
 <File sha1="cb75f9e44070a209e5dcec3ad550f8e31f22162f" name="Modules/ModTools.lua" part="program"/>
 <File sha1="9850e60ca692586a8c662b46e440063e58314349" name="Classes/AboutTab.lua" part="program"/>
-<File sha1="6986b7b7f7dcbf6bc9d0e2d64602ed9ab847e588" name="changelog.txt" part="program"/>
+<File sha1="1a40e1f1d0a0fb67cad039a8ad5dc2a55f9dfd37" name="changelog.txt" part="program"/>
 <File sha1="21f4793ed37146332fc5d73d5dadf88d88af5fd1" name="Launch.dl" part="program"/>
 <File sha1="c345cdcf374d271411aa424ab150c0edbb5a362d" name="Assets/game_ui_small.png" part="runtime"/>
 <File sha1="97b020d8213e09c313536a91528ba5d5ebc4ca0a" name="Assets/patreon_logo.png" part="runtime"/>
@@ -196,7 +195,7 @@
 <File sha1="e7ee7e5b6388facb7bf568517ecc401590757df7" name="Assets/ring.png" part="runtime"/>
 <File sha1="9a320bfe629b1cf3f14fc77fbbf2508d0a5b2841" name="Assets/small_ring.png" part="runtime"/>
 <File sha1="ee02b7e6e521896c498d8b222b1efab04538eaa7" name="TreeData/2_6/tree.lua" part="tree"/>
-<File sha1="ca3e50fdf62181306cb96ed94ffc3ff5665df46e" name="TreeData/3_0/tree.lua" part="tree"/>
+<File sha1="8f4ce0e8a467e70f143a32f4423544fc6da0001d" name="TreeData/3_0/tree.lua" part="tree"/>
 <File sha1="8f8a0c2f6792a505dbc7b66570f28d409d8ad4af" name="TreeData/2_6/skill_sprite-active-3-3e73c4c4534433ecfc340c7287093bd5.png" part="tree"/>
 <File sha1="77e4564761c38c755bee821f512e574d62b3a3b7" name="TreeData/Background1.png" part="tree"/>
 <File sha1="11ac1fcb1bd0ffef54dc478e1e6b3e23823bfb18" name="TreeData/BackgroundDex.png" part="tree"/>
@@ -282,9 +281,10 @@
 <File sha1="e820f2fd0187c7fb5e255b89a53115fd25847831" name="TreeData/PSSkillFrameActive.png" part="tree"/>
 <File sha1="876508200ac2043ec9af17cc0d34382b990480e9" name="TreeData/PSSkillFrameHighlighted.png" part="tree"/>
 <File sha1="3f9173651fd88f8c9ed0ddf2c939a15e4767b973" name="TreeData/PSStartNodeBackgroundInactive.png" part="tree"/>
-<File sha1="2a281134a7027029d10f0c27c6bf827c0a4bbeb6" name="TreeData/3_0/groups-3.png" part="tree"/>
-<File sha1="a829ca9a839f271f928dc2316e435ddb6137f128" name="TreeData/3_0/skills-3.jpg" part="tree"/>
-<File sha1="e352630219d020ada4546b8cd3ec6817ea785b71" name="TreeData/3_0/skills-disabled-3.jpg" part="tree"/>
+<File sha1="91eb0dd50cfac9e6bfaeea56f46afcff6c8a1cf7" name="TreeData/3_0/groups-3.png" part="tree"/>
+<File sha1="71456ef12101e0f61440a8067d70f00397edbf26" name="TreeData/3_0/skills-3.jpg" part="tree"/>
+<File sha1="8bed6673cef30676c6034683db001ac806c22f40" name="TreeData/3_0/skills-disabled-3.jpg" part="tree"/>
+
 
 
 </PoBVersion>

@@ -3,7 +3,49 @@
 --
 data.uniques.new = {
 --3.5
-
+[[
+Flamesight
+日耀之冠
+联盟: 毁灭不朽
+该装备的能量护盾提高 270%
++36% 火焰抗性
+火焰、冰霜、闪电伤害提高 31%
+25% chance to Scorch Enemies
+不能造成点燃
+10% increased Elemental Damage per Sextant affecting the area
+]],
+[[
+The Devouring Diadem
+操灵者之冠
+联盟: 毁灭不朽
+此物品上装备的技能石等级 +1
+此物品上的技能石降低 20% 魔力保留
+每隔 5 秒，触发等级 15 的【Feast Of Flesh】
+该装备的能量护盾提高 203%
+当你使用技能时，能量护盾有 10% 几率开始回复
+异能魔力
+【未鉴定词缀】
+]],
+[[
+Worldcarver
+龙鳞手套
+联盟: 毁灭不朽
+总计消耗 200 点魔力后可以触发等级 20 的【Arcane Wake】
++281 命中值
+该装备的护甲与闪避提高 150%
++77 最大生命
+3% increased Attack Speed for each Map Item Modifier affecting the Area
+6% increased Attack Damage for each Map Item Modifier affecting the Area
+]],
+[[
+Paradoxica
+瓦尔细剑
+联盟: 毁灭不朽
++25% 攻击和法术暴击伤害加成
+此武器的攻击对敌人造成双倍伤害
+【未鉴定词缀】
+【未鉴定词缀】
+]],
 [[
 The Crimson Storm
 钢木之弓

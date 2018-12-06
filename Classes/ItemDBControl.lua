@@ -55,29 +55,30 @@ t_insert(self.leagueList, 2, "非联盟专属")
 	t_insert(self.typeList, 4, "One Handed Melee")
 	t_insert(self.typeList, 5, "Two Handed Melee")
 	self.slotList = { "Any slot", "Weapon 1", "Weapon 2", "Helmet", "Body Armour", "Gloves", "Boots", "Amulet", "Ring", "Belt", "Jewel" }
+	
 	local baseY = dbType == "RARE" and -22 or -42
 	self.controls.slot = common.New("DropDownControl", {"BOTTOMLEFT",self,"TOPLEFT"}, 0, baseY, 179, 18, self.slotList, function(index, value)
 		self.listBuildFlag = true
-	end)
+	end,"slotListCN")
 	self.controls.type = common.New("DropDownControl", {"LEFT",self.controls.slot,"RIGHT"}, 2, 0, 179, 18, self.typeList, function(index, value)
 		self.listBuildFlag = true
-	end)
+	end,"typeListCN")
 	if dbType == "UNIQUE" then
 		self.controls.sort = common.New("DropDownControl", {"BOTTOMLEFT",self,"TOPLEFT"}, 0, baseY + 20, 179, 18, sortDropList, function(index, value)
 			self.sortMode = value.sortMode
 			self:BuildSortOrder()
 			self.listBuildFlag = true
-		end)
+		end,"sortDropListCN")
 		self.controls.league = common.New("DropDownControl", {"LEFT",self.controls.sort,"RIGHT"}, 2, 0, 179, 18, self.leagueList, function(index, value)
 			self.listBuildFlag = true
 		end)
 	end
-	self.controls.search = common.New("EditControl", {"BOTTOMLEFT",self,"TOPLEFT"}, 0, -2, 258, 18, "", "Search", "%c", 100, function()
+self.controls.search = common.New("EditControl", {"BOTTOMLEFT",self,"TOPLEFT"}, 0, -2, 258, 18, "", "搜索", "%c", 100, function()
 		self.listBuildFlag = true
 	end)
 	self.controls.searchMode = common.New("DropDownControl", {"LEFT",self.controls.search,"RIGHT"}, 2, 0, 100, 18, { "Anywhere", "Names", "Modifiers" }, function(index, value)
 		self.listBuildFlag = true
-	end)
+	end,"searchModeCN")
 	self:BuildSortOrder()
 	self.listBuildFlag = true
 end)

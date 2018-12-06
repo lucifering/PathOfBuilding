@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Class: Item Slot
 -- Item Slot control, extends the basic dropdown control.
@@ -9,6 +9,58 @@ local pairs = pairs
 local t_insert = table.insert
 local m_min = math.min
 
+local typeLabel = {
+
+{ label = "主手", slotName = "Weapon 1" },
+{ label = "副手", slotName = "Weapon 2" },
+{ label = "第二武器栏主手", slotName = "Weapon 1 Swap" },
+{ label = "第二武器栏副手", slotName = "Weapon 2 Swap" },
+{ label = "头盔", slotName = "Helmet" },
+{ label = "胸甲", slotName = "Body Armour" },
+{ label = "手套", slotName = "Gloves" },
+{ label = "鞋子", slotName = "Boots" }, 
+{ label = "项链", slotName = "Amulet" },
+{ label = "戒指 1", slotName = "Ring 1" },
+{ label = "戒指 2", slotName = "Ring 2" },
+{ label = "腰带", slotName = "Belt" },
+{ label = "药剂 1", slotName = "Flask 1" },
+{ label = "药剂 2", slotName = "Flask 2" },
+{ label = "药剂 3", slotName = "Flask 3" },
+{ label = "药剂 4", slotName = "Flask 4" },
+{ label = "药剂 5", slotName = "Flask 5" },
+{ label = "珠宝 1", slotName = "Socket #1" },
+{ label = "珠宝 2", slotName = "Socket #2" },
+{ label = "珠宝 3", slotName = "Socket #3" },
+{ label = "珠宝 4", slotName = "Socket #4" },
+{ label = "珠宝 5", slotName = "Socket #5" },
+{ label = "珠宝 6", slotName = "Socket #6" },
+{ label = "珠宝 7", slotName = "Socket #7" },
+{ label = "珠宝 8", slotName = "Socket #8" },
+{ label = "珠宝 9", slotName = "Socket #9" },
+{ label = "珠宝 10", slotName = "Socket #10" },
+{ label = "珠宝 11", slotName = "Socket #11" },
+{ label = "珠宝 12", slotName = "Socket #12" },
+{ label = "珠宝 13", slotName = "Socket #13" },
+{ label = "珠宝 14", slotName = "Socket #14" },
+{ label = "珠宝 15", slotName = "Socket #15" },
+{ label = "深渊珠宝#1", slotName = "Abyssal #1" },
+{ label = "深渊珠宝#2", slotName = "Abyssal #2" },
+{ label = "深渊珠宝#3", slotName = "Abyssal #3" },
+{ label = "深渊珠宝#4", slotName = "Abyssal #4" },
+{ label = "深渊珠宝#5", slotName = "Abyssal #5" },
+{ label = "深渊珠宝#6", slotName = "Abyssal #6" },
+{ label = "深渊珠宝#7", slotName = "Abyssal #7" },
+{ label = "深渊珠宝#8", slotName = "Abyssal #8" },
+{ label = "深渊珠宝#9", slotName = "Abyssal #9" },
+{ label = "深渊珠宝#10", slotName = "Abyssal #10" },
+{ label = "深渊珠宝#11", slotName = "Abyssal #11" },
+{ label = "深渊珠宝#12", slotName = "Abyssal #12" },
+{ label = "深渊珠宝#13", slotName = "Abyssal #13" },
+{ label = "深渊珠宝#14", slotName = "Abyssal #14" },
+{ label = "深渊珠宝#15", slotName = "Abyssal #15" },
+
+
+}
 local ItemSlotClass = common.NewClass("ItemSlot", "DropDownControl", function(self, anchor, x, y, itemsTab, slotName, slotLabel, nodeId)
 	self.DropDownControl(anchor, x, y, 310, 20, { }, function(index, value)
 		if self.items[index] ~= self.selItemId then
@@ -39,7 +91,7 @@ local ItemSlotClass = common.NewClass("ItemSlot", "DropDownControl", function(se
 		self.controls.activate.enabled = function()
 			return self.selItemId ~= 0
 		end
-		self.controls.activate.tooltipText = "Activate this flask."
+self.controls.activate.tooltipText = "启用这瓶药剂."
 		self.labelOffset = -24
 	else
 		self.labelOffset = -2
@@ -54,6 +106,15 @@ local ItemSlotClass = common.NewClass("ItemSlot", "DropDownControl", function(se
 		end
 	end
 	self.label = slotLabel or slotName
+	
+	
+		for index in pairs(typeLabel) do
+				if self.label==typeLabel[index].slotName then
+					self.label=typeLabel[index].label
+				end
+			end
+			
+			
 	self.nodeId = nodeId
 	 
 end)

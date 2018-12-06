@@ -7,6 +7,65 @@ local launch = ...
 
 LoadModule("Data/Global")
 
+local typeLabel = {
+	{en="Amulet",cn="护身符"},
+	{en="Flask: Life",cn="药剂: 生命"},
+{en="Jewel",cn="珠宝"},
+{en="Body Armour: Armour/Evasion/Energy Shield",cn="胸甲: 护甲/闪避/能量护盾"},
+{en="Quiver",cn="箭袋"},
+{en="Flask: Hybrid",cn="药剂: 复合"},
+{en="Boots: Armour/Energy Shield",cn="鞋子: 护甲/能量护盾"},
+{en="Helmet: Evasion/Energy Shield",cn="头盔: 闪避/能量护盾"},
+{en="Shield: Armour/Energy Shield",cn="盾牌: 护甲/能量护盾"},
+{en="Gloves: Armour/Energy Shield",cn="手套: 护甲/能量护盾"},
+{en="Amulet: Talisman",cn="护身符: 魔符"},
+{en="Belt",cn="腰带"},
+{en="Shield: Energy Shield",cn="盾牌: 能量护盾"},
+{en="Shield: Armour",cn="盾牌: 护甲"},
+{en="Wand",cn="法杖"},
+{en="Boots: Armour",cn="鞋子: 护甲"},
+{en="Gloves: Evasion",cn="手套: 闪避"},
+{en="Shield: Evasion",cn="盾牌: 闪避"},
+{en="Gloves: Armour",cn="盾牌: 护甲"},
+{en="Two Handed Axe",cn="双手斧"},
+{en="Claw",cn="爪"},
+{en="Flask: Utility",cn="药剂: 功能"},
+{en="Boots: Evasion/Energy Shield",cn="鞋子: 闪避/能量护盾"},
+{en="Gloves: Armour/Evasion",cn="手套: 护甲/闪避"},
+{en="Helmet: Armour/Evasion",cn="头盔: 护甲/闪避"},
+{en="Gloves: Evasion/Energy Shield",cn="手套: 闪避/能量护盾"},
+{en="One Handed Axe",cn="单手斧"},
+{en="Flask: Mana",cn="药剂: 魔力"},
+{en="Boots: Evasion",cn="鞋子: 闪避"},
+{en="Ring",cn="戒指"},
+{en="Helmet: Armour/Energy Shield",cn="头盔: 护甲/能量护盾"},
+{en="Helmet: Evasion",cn="头盔: 闪避"},
+{en="Body Armour: Armour/Evasion",cn="胸甲: 护甲/闪避"},
+{en="Body Armour: Energy Shield",cn="胸甲: 能量护盾"},
+{en="One Handed Mace",cn="单手锤"},
+{en="Shield: Armour/Evasion",cn="盾牌: 护甲/闪避"},
+{en="Two Handed Mace",cn="双手锤"},
+{en="Shield: Evasion/Energy Shield",cn="盾牌: 闪避/能量护盾"},
+{en="Helmet: Energy Shield",cn="头盔: 能量护盾"},
+{en="Body Armour: Armour",cn="胸甲: 护甲"},
+{en="Bow",cn="弓"},
+{en="Two Handed Sword",cn="双手剑"},
+{en="Boots: Energy Shield",cn="鞋子: 能量护盾"},
+{en="Body Armour: Armour/Energy Shield",cn="胸甲: 护甲/能量护盾"},
+{en="Staff",cn="长杖"},
+{en="Jewel: Abyss",cn="珠宝: 深渊"},
+{en="Dagger",cn="匕首"},
+{en="Sceptre",cn="短杖"},
+{en="Helmet: Armour",cn="头盔: 护甲"},
+{en="Body Armour: Evasion/Energy Shield",cn="胸甲: 闪避/能量护盾"},
+{en="Thrusting One Handed Sword",cn="细剑"},
+{en="Body Armour: Evasion",cn="胸甲: 闪避"},
+{en="One Handed Sword",cn="单手剑"},
+{en="Boots: Armour/Evasion",cn="鞋子: 护甲/闪避"},
+{en="Gloves: Energy Shield",cn="手套: 能量护盾"},
+	
+}
+
 local skillTypes = {
 	"act_str",
 	"act_dex",
@@ -292,16 +351,26 @@ for _, targetVersion in ipairs(targetVersionList) do
 
 	-- Build lists of item bases, separated by type
 	verData.itemBaseLists = { }
+	  
 	for name, base in pairs(verData.itemBases) do
 		if not base.hidden then
 			local type = base.type
 			if base.subType then
 				type = type .. ": " .. base.subType
 			end
+			
+			--lucifer 
+			for index in pairs(typeLabel) do
+				if type==typeLabel[index].en then
+					type=typeLabel[index].cn
+				end
+			end
+			 
 			verData.itemBaseLists[type] = verData.itemBaseLists[type] or { }
 			table.insert(verData.itemBaseLists[type], { label = name:gsub(" %(.+%)",""), name = name, base = base })
 		end
 	end
+	 
 	verData.itemBaseTypeList = { }
 	for type, list in pairs(verData.itemBaseLists) do
 		table.insert(verData.itemBaseTypeList, type)

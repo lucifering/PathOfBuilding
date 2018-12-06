@@ -10,10 +10,74 @@ local m_min = math.min
 local m_max = math.max
 local m_floor = math.floor
 
+local slotListCN = {
+{ label = "所有", slotName = "Any slot" },
+{ label = "主手", slotName = "Weapon 1" },
+{ label = "副手", slotName = "Weapon 2" },
+{ label = "头盔", slotName = "Helmet" },
+{ label = "胸甲", slotName = "Body Armour" },
+{ label = "手套", slotName = "Gloves" },
+{ label = "鞋子", slotName = "Boots" }, 
+{ label = "项链", slotName = "Amulet" },
+{ label = "戒指", slotName = "Ring" },
+{ label = "腰带", slotName = "Belt" },
+{ label = "药剂", slotName = "Flask" },
+{ label = "珠宝", slotName = "Jewel" },
+ 
+
+}
+
+
+
+local typeListCN = {
+{ label = "所有", slotName = "Any type" },
+{ slotName = "Armour", label = "护具" },
+{ slotName = "Jewellery", label = "饰品" },
+ { slotName = "One Handed Melee", label = "单手近战武器" },
+  { slotName = "Two Handed Melee", label = "双手近战武器" },
+  { slotName = "Amulet", label = "护身符" },
+ { slotName = "Flask", label = "药剂" },
+  { slotName = "Jewel", label = "珠宝" },
+ { slotName = "Body Armour", label = "胸甲" },
+ { slotName = "Quiver", label = "箭袋" },
+{ slotName = "Boots", label = "鞋子" },
+{ slotName = "Helmet", label = "头盔" },
+{ slotName = "Shield", label = "盾牌" },
+{ slotName = "Gloves", label = "手套" },
+{ slotName = "Belt", label = "腰带" },
+{ slotName = "Claw", label = "爪" },
+{ slotName = "One Handed Mace", label = "单手锤" },
+{ slotName = "Two Handed Mace", label = "双手锤" },
+{ slotName = "One Handed Axe", label = "单手斧" },
+{ slotName = "Two Handed Axe", label = "双手斧" },
+{ slotName = "Bow", label = "弓" },
+{ slotName = "Two Handed Sword", label = "双手剑" },
+{ slotName = "One Handed Sword", label = "单手剑" },
+{ slotName = "Staff", label = "长杖" },
+{ slotName = "Dagger", label = "匕首" },
+{ slotName = "Sceptre", label = "短杖" },
+{ slotName = "Thrusting One Handed Sword", label = "细剑" },
+ { slotName = "Wand", label = "法杖" },
+
+}
+
+local sortDropListCN = { 
+	{ label = "名称排序", slotName = "Sort by name" },
+	{ label = "DPS排序", slotName = "Sort by DPS" },
+}
+
+local searchModeCN = { 
+	{ label = "所有", slotName = "Anywhere" },
+	{ label = "名称", slotName = "Names" },
+	{ label = "词缀", slotName = "Modifiers" },
+}
+
+
 local DropDownClass = common.NewClass("DropDownControl", "Control", "ControlHost", "TooltipHost", function(self, anchor, x, y, width, height, list, selFunc, tooltipText)
 	self.Control(anchor, x, y, width, height)
 	self.ControlHost()
-	self.TooltipHost(tooltipText)
+	self.TooltipHost(nil)
+	self.cnKey=tooltipText
 	self.controls.scrollBar = common.New("ScrollBarControl", {"TOPRIGHT",self,"TOPRIGHT"}, -1, 0, 18, 0, (height - 4) * 4)
 	self.controls.scrollBar.height = function()
 		return self.dropHeight + 2
@@ -180,6 +244,37 @@ function DropDownClass:Draw(viewPort)
 		selLabel = selLabel.label
 	end
 	SetViewport(x + 2, y + 2, width - height, lineHeight)
+	--lucifer
+	
+	if  self.cnKey=="slotListCN" then
+			
+			for index in pairs(slotListCN) do
+				if selLabel==slotListCN[index].slotName then
+					selLabel=slotListCN[index].label
+				end
+			end
+	elseif self.cnKey=="typeListCN" then 
+			for index in pairs(typeListCN) do
+				if selLabel==typeListCN[index].slotName then
+					selLabel=typeListCN[index].label
+				end
+			end
+	elseif self.cnKey=="sortDropListCN" then 
+			for index in pairs(sortDropListCN) do
+				if selLabel==sortDropListCN[index].slotName then
+					selLabel=sortDropListCN[index].label
+				end
+			end	
+	elseif self.cnKey=="searchModeCN" then 
+			for index in pairs(searchModeCN) do
+				if selLabel==searchModeCN[index].slotName then
+					selLabel=searchModeCN[index].label
+				end
+			end
+			
+			end
+			
+			
 	DrawString(0, 0, "LEFT", lineHeight, "VAR", selLabel or "")
 	SetViewport()
 	if self.dropped then
@@ -212,6 +307,40 @@ function DropDownClass:Draw(viewPort)
 				SetDrawColor(0.66, 0.66, 0.66)
 			end
 			local label = type(listVal) == "table" and listVal.label or listVal
+			--lucifer
+			if  self.cnKey=="slotListCN" then
+			
+				for index in pairs(slotListCN) do
+					if label==slotListCN[index].slotName then
+						label=slotListCN[index].label
+					end
+				end
+			elseif self.cnKey=="typeListCN" then 
+			
+				for index in pairs(typeListCN) do
+					if label==typeListCN[index].slotName then
+						label=typeListCN[index].label
+					end
+				end
+				
+			elseif self.cnKey=="sortDropListCN" then 
+			
+				for index in pairs(sortDropListCN) do
+					if label==sortDropListCN[index].slotName then
+						label=sortDropListCN[index].label
+					end
+				end
+			elseif self.cnKey=="searchModeCN" then 
+			
+				for index in pairs(searchModeCN) do
+					if label==searchModeCN[index].slotName then
+						label=searchModeCN[index].label
+					end
+				end
+				
+			end
+			
+			
 			DrawString(0, y, "LEFT", lineHeight, "VAR", StripEscapes(label))
 		end
 		SetViewport()

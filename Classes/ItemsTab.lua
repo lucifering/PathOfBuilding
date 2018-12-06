@@ -1287,7 +1287,7 @@ function ItemsTabClass:CraftItem()
 controls.rarityLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 50, 20, 0, 16, "稀有度:")
 	controls.rarity = common.New("DropDownControl", nil, -80, 20, 100, 18, rarityDropList)
 	controls.rarity.selIndex = self.lastCraftRaritySel or 3
-	controls.title = common.New("EditControl", nil, 70, 20, 190, 18, "", "Name")
+controls.title = common.New("EditControl", nil, 70, 20, 190, 18, "", "名称")
 	controls.title.shown = function()
 		return controls.rarity.selIndex >= 3
 	end

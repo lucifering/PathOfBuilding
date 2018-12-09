@@ -89,6 +89,7 @@
 <File sha1="1bf99af825c8d8c24d4ec465527d130e4782a7ab" name="Data/2_6/Skills/sup_dex.lua" part="program"/>
 <File sha1="933020a1fafe4225fc2fcca4d9f8aac6973908d2" name="Data/2_6/Skills/sup_int.lua" part="program"/>
 <File sha1="82408f721cfc0ce84b4153f491a4eb7ab37e87bf" name="Data/2_6/Skills/sup_str.lua" part="program"/>
+<File sha1="6fcf8c77af929ca2e8c46ec343837b2a2f956a46" name="Data/2_6/SkillStatMap.lua" part="program"/>
 <File sha1="2ee26fc395519c6085dd44cdcc650a9187688f17" name="Data/Global.lua" part="program"/>
 <File sha1="4e1040dc0719f03b390bff0a0cba7ee9ee2024d5" name="Data/New.lua" part="program"/>
 <File sha1="4b4071a3fa3220ce18cf1960cbc3b4431f294e23" name="Data/3_0/Bases/amulet.lua" part="program"/>

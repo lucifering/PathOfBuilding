@@ -89,6 +89,7 @@ Data/2_6/Skills/spectre.lua
 Data/2_6/Skills/sup_dex.lua
 Data/2_6/Skills/sup_int.lua
 Data/2_6/Skills/sup_str.lua
+Data/2_6/SkillStatMap.lua
 Data/Global.lua
 Data/New.lua
 Data/3_0/Bases/amulet.lua

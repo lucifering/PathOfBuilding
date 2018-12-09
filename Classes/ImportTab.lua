@@ -3,12 +3,12 @@
 -- Module: Import Tab
 -- Import/Export tab for the current build.
 --
-local launch, main = ...
+--local launch, main = ...
 
 local ipairs = ipairs
 local t_insert = table.insert
 
-local ImportTabClass = common.NewClass("ImportTab", "ControlHost", "Control", function(self, build)
+local ImportTabClass = newClass("ImportTab", "ControlHost", "Control", function(self, build)
 	self.ControlHost()
 	self.Control()
 
@@ -16,8 +16,8 @@ local ImportTabClass = common.NewClass("ImportTab", "ControlHost", "Control", fu
 
 	self.charImportMode = build.targetVersion == liveTargetVersion and "GETACCOUNTNAME" or "VERSIONWARNING"
 	self.charImportStatus = "Idle"
-self.controls.sectionCharImport = common.New("SectionControl", {"TOPLEFT",self,"TOPLEFT"}, 10, 18, 600, 250, "【导入国服角色】")
-	self.controls.charImportVersionWarning = common.New("LabelControl", {"TOPLEFT",self.controls.sectionCharImport,"TOPLEFT"}, 6, 20, 0, 16, colorCodes.WARNING..[[
+self.controls.sectionCharImport = new("SectionControl", {"TOPLEFT",self,"TOPLEFT"}, 10, 18, 600, 250, "【导入国服角色】")
+	self.controls.charImportVersionWarning = new("LabelControl", {"TOPLEFT",self.controls.sectionCharImport,"TOPLEFT"}, 6, 20, 0, 16, colorCodes.WARNING..[[
 角色导入可能会出现问题，
 比如游戏版本和pob支持的版本不同。
 一些天赋点可能出现错位，一些新技能可能导入失败。
@@ -25,10 +25,10 @@ self.controls.sectionCharImport = common.New("SectionControl", {"TOPLEFT",self,"
 	self.controls.charImportVersionWarning.shown = function()
 		return self.charImportMode == "VERSIONWARNING"
 	end
-self.controls.charImportVersionWarningGo = common.New("ButtonControl", {"TOPLEFT",self.controls.charImportVersionWarning,"TOPLEFT"}, 0, 70, 80, 20, "继续", function()
+self.controls.charImportVersionWarningGo = new("ButtonControl", {"TOPLEFT",self.controls.charImportVersionWarning,"TOPLEFT"}, 0, 70, 80, 20, "继续", function()
 		self.charImportMode = "GETACCOUNTNAME"
 	end)
-	self.controls.charImportStatusLabel = common.New("LabelControl", {"TOPLEFT",self.controls.sectionCharImport,"TOPLEFT"}, 6, 14, 200, 16, function()
+	self.controls.charImportStatusLabel = new("LabelControl", {"TOPLEFT",self.controls.sectionCharImport,"TOPLEFT"}, 6, 14, 200, 16, function()
 return "^7角色导入状态: "..self.charImportStatus
 	end)
 	self.controls.charImportStatusLabel.shown = function()
@@ -36,11 +36,11 @@ return "^7角色导入状态: "..self.charImportStatus
 	end
 
 	-- Stage: input account name
-self.controls.accountNameHeader = common.New("LabelControl", {"TOPLEFT",self.controls.sectionCharImport,"TOPLEFT"}, 6, 40, 200, 16, "^7请输入你的论坛名（登录官网论坛头像下的那个）:")
+self.controls.accountNameHeader = new("LabelControl", {"TOPLEFT",self.controls.sectionCharImport,"TOPLEFT"}, 6, 40, 200, 16, "^7请输入你的论坛名（登录官网论坛头像下的那个）:")
 	self.controls.accountNameHeader.shown = function()
 		return self.charImportMode == "GETACCOUNTNAME"
 	end
-	self.controls.accountName = common.New("EditControl", {"TOPLEFT",self.controls.accountNameHeader,"BOTTOMLEFT"}, 0, 4, 200, 20, main.lastAccountName or "", nil, "%c")
+	self.controls.accountName = new("EditControl", {"TOPLEFT",self.controls.accountNameHeader,"BOTTOMLEFT"}, 0, 4, 200, 20, main.lastAccountName or "", nil, "%c")
 	self.controls.accountName.pasteFilter = function(text)
 		return text
 		--return text:gsub("[\128-\255]",function(c)
@@ -49,20 +49,20 @@ self.controls.accountNameHeader = common.New("LabelControl", {"TOPLEFT",self.con
 		--	end)
 		--end)
 	end
-self.controls.accountNameGo = common.New("ButtonControl", {"LEFT",self.controls.accountName,"RIGHT"}, 8, 0, 60, 20, "开始", function()
+self.controls.accountNameGo = new("ButtonControl", {"LEFT",self.controls.accountName,"RIGHT"}, 8, 0, 60, 20, "开始", function()
 		self.controls.sessionInput.buf = ""
 		self:DownloadCharacterList()
 	end)
 	self.controls.accountNameGo.enabled = function()
 		return self.controls.accountName.buf:match("%S")
 	end
-self.controls.accountNameUnicode = common.New("LabelControl", {"TOPLEFT",self.controls.accountName,"BOTTOMLEFT"}, 0, 16, 0, 14, "^7注意！你需要先去官网公开你的角色.")
-self.controls.accountNameURLEncoder = common.New("ButtonControl", {"TOPLEFT",self.controls.accountNameUnicode,"BOTTOMLEFT"}, 0, 4, 270, 18, "^x4040FFhttps://poe.game.qq.com/login/tencent", function()
+self.controls.accountNameUnicode = new("LabelControl", {"TOPLEFT",self.controls.accountName,"BOTTOMLEFT"}, 0, 16, 0, 14, "^7注意！你需要先去官网公开你的角色.")
+self.controls.accountNameURLEncoder = new("ButtonControl", {"TOPLEFT",self.controls.accountNameUnicode,"BOTTOMLEFT"}, 0, 4, 170, 18, "^x4040FFhttps://poe.game.qq.com/login/tencent", function()
 OpenURL("https://poe.game.qq.com/login/tencent")
 	end)
 
 	-- Stage: input POESESSID
-	self.controls.sessionHeader = common.New("LabelControl", {"TOPLEFT",self.controls.sectionCharImport,"TOPLEFT"}, 6, 40, 200, 14)
+	self.controls.sessionHeader = new("LabelControl", {"TOPLEFT",self.controls.sectionCharImport,"TOPLEFT"}, 6, 40, 200, 14)
 	self.controls.sessionHeader.label = function()
 		return [[
 ^7无法获取账户']]..self.controls.accountName.buf..[['的角色列表，可能的原因有 :
@@ -77,16 +77,16 @@ OpenURL("https://poe.game.qq.com/login/tencent")
 	self.controls.sessionHeader.shown = function()
 		return self.charImportMode == "GETSESSIONID"
 	end
-self.controls.sessionRetry = common.New("ButtonControl", {"TOPLEFT",self.controls.sessionHeader,"TOPLEFT"}, 0, 108, 60, 20, "重试", function()
+self.controls.sessionRetry = new("ButtonControl", {"TOPLEFT",self.controls.sessionHeader,"TOPLEFT"}, 0, 108, 60, 20, "重试", function()
 		self.controls.sessionInput.buf = ""
 		self:DownloadCharacterList()
 	end)
-self.controls.sessionCancel = common.New("ButtonControl", {"LEFT",self.controls.sessionRetry,"RIGHT"}, 8, 0, 60, 20, "取消", function()
+self.controls.sessionCancel = new("ButtonControl", {"LEFT",self.controls.sessionRetry,"RIGHT"}, 8, 0, 60, 20, "取消", function()
 		self.charImportMode = "GETACCOUNTNAME"
 		self.charImportStatus = "Idle"
 	end)
-	self.controls.sessionInput = common.New("EditControl", {"TOPLEFT",self.controls.sessionRetry,"BOTTOMLEFT"}, 0, 8, 350, 20, "", "POESESSID", "%X", 32)
-	self.controls.sessionGo = common.New("ButtonControl", {"LEFT",self.controls.sessionInput,"RIGHT"}, 8, 0, 60, 20, "Go", function()
+	self.controls.sessionInput = new("EditControl", {"TOPLEFT",self.controls.sessionRetry,"BOTTOMLEFT"}, 0, 8, 350, 20, "", "POESESSID", "%X", 32)
+	self.controls.sessionGo = new("ButtonControl", {"LEFT",self.controls.sessionInput,"RIGHT"}, 8, 0, 60, 20, "Go", function()
 		self:DownloadCharacterList()
 	end)
 	self.controls.sessionGo.enabled = function()
@@ -94,20 +94,20 @@ self.controls.sessionCancel = common.New("ButtonControl", {"LEFT",self.controls.
 	end
 
 	-- Stage: select character and import data
-self.controls.charSelectHeader = common.New("LabelControl", {"TOPLEFT",self.controls.sectionCharImport,"TOPLEFT"}, 6, 40, 200, 16, "^7选择要导入的角色:")
+self.controls.charSelectHeader = new("LabelControl", {"TOPLEFT",self.controls.sectionCharImport,"TOPLEFT"}, 6, 40, 200, 16, "^7选择要导入的角色:")
 	self.controls.charSelectHeader.shown = function()
 		return self.charImportMode == "SELECTCHAR" or self.charImportMode == "IMPORTING"
 	end
-self.controls.charSelectLeagueLabel = common.New("LabelControl", {"TOPLEFT",self.controls.charSelectHeader,"BOTTOMLEFT"}, 0, 6, 0, 14, "^7联盟:")
-	self.controls.charSelectLeague = common.New("DropDownControl", {"LEFT",self.controls.charSelectLeagueLabel,"RIGHT"}, 4, 0, 150, 18, nil, function(index, value)
+self.controls.charSelectLeagueLabel = new("LabelControl", {"TOPLEFT",self.controls.charSelectHeader,"BOTTOMLEFT"}, 0, 6, 0, 14, "^7联盟:")
+	self.controls.charSelectLeague = new("DropDownControl", {"LEFT",self.controls.charSelectLeagueLabel,"RIGHT"}, 4, 0, 150, 18, nil, function(index, value)
 		self:BuildCharacterList(value.league)
 	end)
-	self.controls.charSelect = common.New("DropDownControl", {"TOPLEFT",self.controls.charSelectHeader,"BOTTOMLEFT"}, 0, 24, 400, 18)
+	self.controls.charSelect = new("DropDownControl", {"TOPLEFT",self.controls.charSelectHeader,"BOTTOMLEFT"}, 0, 24, 400, 18)
 	self.controls.charSelect.enabled = function()
 		return self.charImportMode == "SELECTCHAR"
 	end
-self.controls.charImportHeader = common.New("LabelControl", {"TOPLEFT",self.controls.charSelect,"BOTTOMLEFT"}, 0, 16, 200, 16, "导入:")
-self.controls.charImportTree = common.New("ButtonControl", {"LEFT",self.controls.charImportHeader, "RIGHT"}, 8, 0, 170, 20, "天赋树和珠宝", function()
+self.controls.charImportHeader = new("LabelControl", {"TOPLEFT",self.controls.charSelect,"BOTTOMLEFT"}, 0, 16, 200, 16, "导入:")
+self.controls.charImportTree = new("ButtonControl", {"LEFT",self.controls.charImportHeader, "RIGHT"}, 8, 0, 170, 20, "天赋树和珠宝", function()
 		if self.build.spec:CountAllocNodes() > 0 then
 main:OpenConfirmPopup("角色导入", "导入天赋树会覆盖你当前的天赋树.", "导入", function()
 				self:DownloadPassiveTree()
@@ -119,42 +119,42 @@ main:OpenConfirmPopup("角色导入", "导入天赋树会覆盖你当前的天�
 	self.controls.charImportTree.enabled = function()
 		return self.charImportMode == "SELECTCHAR"
 	end
-self.controls.charImportTreeClearJewels = common.New("CheckBoxControl", {"LEFT",self.controls.charImportTree,"RIGHT"}, 90, 0, 18, "删除珠宝:")
+self.controls.charImportTreeClearJewels = new("CheckBoxControl", {"LEFT",self.controls.charImportTree,"RIGHT"}, 90, 0, 18, "删除珠宝:")
 self.controls.charImportTreeClearJewels.tooltipText = "导入时删除原有珠宝信息."
-self.controls.charImportItems = common.New("ButtonControl", {"LEFT",self.controls.charImportTree, "LEFT"}, 0, 36, 110, 20, "装备和技能", function()
+self.controls.charImportItems = new("ButtonControl", {"LEFT",self.controls.charImportTree, "LEFT"}, 0, 36, 110, 20, "装备和技能", function()
 		self:DownloadItems()
 	end)
 	self.controls.charImportItems.enabled = function()
 		return self.charImportMode == "SELECTCHAR"
 	end
-self.controls.charImportItemsClearSkills = common.New("CheckBoxControl", {"LEFT",self.controls.charImportItems,"RIGHT"}, 85, 0, 18, "删除技能:")
+self.controls.charImportItemsClearSkills = new("CheckBoxControl", {"LEFT",self.controls.charImportItems,"RIGHT"}, 85, 0, 18, "删除技能:")
 self.controls.charImportItemsClearSkills.tooltipText = "导入时删除原有技能信息."
-self.controls.charImportItemsClearItems = common.New("CheckBoxControl", {"LEFT",self.controls.charImportItems,"RIGHT"}, 220, 0, 18, "删除装备:")
+self.controls.charImportItemsClearItems = new("CheckBoxControl", {"LEFT",self.controls.charImportItems,"RIGHT"}, 220, 0, 18, "删除装备:")
 self.controls.charImportItemsClearItems.tooltipText = "导入时删除原有所有装备"
-self.controls.charBanditNote = common.New("LabelControl", {"TOPLEFT",self.controls.charImportHeader,"BOTTOMLEFT"}, 0, 50, 200, 14, "^7提示: 导入完成后要手动配置好盗贼任务,\n因为盗贼任务是不能导入的.")
-self.controls.charDone = common.New("ButtonControl", {"TOPLEFT",self.controls.charImportHeader,"BOTTOMLEFT"}, 0, 90, 60, 20, "完成", function()
+self.controls.charBanditNote = new("LabelControl", {"TOPLEFT",self.controls.charImportHeader,"BOTTOMLEFT"}, 0, 50, 200, 14, "^7提示: 导入完成后要手动配置好盗贼任务,\n因为盗贼任务是不能导入的.")
+self.controls.charDone = new("ButtonControl", {"TOPLEFT",self.controls.charImportHeader,"BOTTOMLEFT"}, 0, 90, 60, 20, "关闭", function()
 		self.charImportMode = "GETACCOUNTNAME"
 		self.charImportStatus = "Idle"
 	end)
 
 	-- Build import/export
-self.controls.sectionBuild = common.New("SectionControl", {"TOPLEFT",self.controls.sectionCharImport,"BOTTOMLEFT"}, 0, 18, 600, 200, "Build分享")
-self.controls.generateCodeLabel = common.New("LabelControl", {"TOPLEFT",self.controls.sectionBuild,"TOPLEFT"}, 6, 14, 0, 16, "^7生成代码给其他POB用户（仅限17173汉化版）:")
-self.controls.generateCode = common.New("ButtonControl", {"LEFT",self.controls.generateCodeLabel,"RIGHT"}, 4, 0, 80, 20, "生成", function()
+self.controls.sectionBuild = new("SectionControl", {"TOPLEFT",self.controls.sectionCharImport,"BOTTOMLEFT"}, 0, 18, 600, 200, "Build分享")
+self.controls.generateCodeLabel = new("LabelControl", {"TOPLEFT",self.controls.sectionBuild,"TOPLEFT"}, 6, 14, 0, 16, "^7生成代码给其他POB用户（仅限17173国服版）:")
+self.controls.generateCode = new("ButtonControl", {"LEFT",self.controls.generateCodeLabel,"RIGHT"}, 4, 0, 80, 20, "生成", function()
 		self.controls.generateCodeOut:SetText(common.base64.encode(Deflate(self.build:SaveDB("code"))):gsub("+","-"):gsub("/","_"))
 	end)
-self.controls.generateCodeOut = common.New("EditControl", {"TOPLEFT",self.controls.generateCodeLabel,"BOTTOMLEFT"}, 0, 8, 250, 20, "", "代码", "%Z")
+self.controls.generateCodeOut = new("EditControl", {"TOPLEFT",self.controls.generateCodeLabel,"BOTTOMLEFT"}, 0, 8, 250, 20, "", "代码", "%Z")
 	self.controls.generateCodeOut.enabled = function()
 		return #self.controls.generateCodeOut.buf > 0
 	end
-self.controls.generateCodeCopy = common.New("ButtonControl", {"LEFT",self.controls.generateCodeOut,"RIGHT"}, 8, 0, 60, 20, "复制", function()
+self.controls.generateCodeCopy = new("ButtonControl", {"LEFT",self.controls.generateCodeOut,"RIGHT"}, 8, 0, 60, 20, "复制", function()
 		Copy(self.controls.generateCodeOut.buf)
 		self.controls.generateCodeOut:SetText("")
 	end)
 	self.controls.generateCodeCopy.enabled = function()
 		return #self.controls.generateCodeOut.buf > 0
 	end
-self.controls.generateCodePastebin = common.New("ButtonControl", {"LEFT",self.controls.generateCodeCopy,"RIGHT"}, 8, 0, 140, 20, "生成Pastebin地址", function()
+self.controls.generateCodePastebin = new("ButtonControl", {"LEFT",self.controls.generateCodeCopy,"RIGHT"}, 8, 0, 140, 20, "生成Pastebin链接", function()
 		local id = LaunchSubScript([[
 			local code, proxyURL = ...
 			local curl = require("lcurl.safe")
@@ -195,9 +195,9 @@ self.controls.generateCodePastebin.label = "生成Pastebin地址"
 	self.controls.generateCodePastebin.enabled = function()
 		return #self.controls.generateCodeOut.buf > 0 and not self.controls.generateCodeOut.buf:match("pastebin%.com")
 	end
-self.controls.generateCodeNote = common.New("LabelControl", {"TOPLEFT",self.controls.generateCodeOut,"BOTTOMLEFT"}, 0, 4, 0, 14, "^7注意: 这个代码很长，你可以用【生成Pastebin地址】来简化.")
-self.controls.importCodeHeader = common.New("LabelControl", {"TOPLEFT",self.controls.generateCodeNote,"BOTTOMLEFT"}, 0, 26, 0, 16, "^7从代码中导入（仅限17173国服版代码）:")
-	self.controls.importCodeIn = common.New("EditControl", {"TOPLEFT",self.controls.importCodeHeader,"BOTTOMLEFT"}, 0, 4, 250, 20, "", nil, "^%w_%-=", nil, function(buf)
+self.controls.generateCodeNote = new("LabelControl", {"TOPLEFT",self.controls.generateCodeOut,"BOTTOMLEFT"}, 0, 4, 0, 14, "^7注意: 这个代码很长，你可以用【生成Pastebin链接】来简化.")
+self.controls.importCodeHeader = new("LabelControl", {"TOPLEFT",self.controls.generateCodeNote,"BOTTOMLEFT"}, 0, 26, 0, 16, "^7从代码中导入（仅限17173国服版代码）:")
+self.controls.importCodeIn = new("EditControl", {"TOPLEFT",self.controls.importCodeHeader,"BOTTOMLEFT"}, 0, 4, 250, 20, "", nil, "^%w_%-=", nil, function(buf)
 		if #buf == 0 then
 			self.importCodeState = nil
 			return
@@ -216,18 +216,18 @@ self.controls.importCodeHeader = common.New("LabelControl", {"TOPLEFT",self.cont
 			self.controls.importCodeMode.selIndex = 2
 		end
 	end)
-	self.controls.importCodeState = common.New("LabelControl", {"LEFT",self.controls.importCodeIn,"RIGHT"}, 4, 0, 0, 16)
+	self.controls.importCodeState = new("LabelControl", {"LEFT",self.controls.importCodeIn,"RIGHT"}, 4, 0, 0, 16)
 	self.controls.importCodeState.label = function()
 return (self.importCodeState == "VALID" and colorCodes.POSITIVE.."代码错误") or (self.importCodeState == "INVALID" and colorCodes.NEGATIVE.."代码错误") or ""
 	end
-self.controls.importCodePastebin = common.New("ButtonControl", {"LEFT",self.controls.importCodeIn,"RIGHT"}, 90, 0, 160, 20, "从Pastebin导入...", function()
+self.controls.importCodePastebin = new("ButtonControl", {"LEFT",self.controls.importCodeIn,"RIGHT"}, 90, 0, 160, 20, "从Pastebin导入...", function()
 		self:OpenPastebinImportPopup()
 	end)
-self.controls.importCodeMode = common.New("DropDownControl", {"TOPLEFT",self.controls.importCodeIn,"BOTTOMLEFT"}, 0, 4, 160, 20, { "导入到当前build", "导入到新build" })
+self.controls.importCodeMode = new("DropDownControl", {"TOPLEFT",self.controls.importCodeIn,"BOTTOMLEFT"}, 0, 4, 160, 20, {"导入到当前build", "导入到新build"  })
 	self.controls.importCodeMode.enabled = function()
 		return self.importCodeState == "VALID" and self.build.dbFileName
 	end
-self.controls.importCodeGo = common.New("ButtonControl", {"TOPLEFT",self.controls.importCodeMode,"BOTTOMLEFT"}, 0, 8, 60, 20, "导入", function()
+self.controls.importCodeGo = new("ButtonControl", {"TOPLEFT",self.controls.importCodeMode,"BOTTOMLEFT"}, 0, 8, 60, 20, "导入", function()
 		if self.controls.importCodeMode.selIndex == 1 then
 main:OpenConfirmPopup("Build Import", colorCodes.WARNING.."警告:^7 导入到当前build会删除原有build信息", "导入", function()
 				self.build:Shutdown()
@@ -550,8 +550,7 @@ function ImportTabClass:ImportItem(itemData, sockets, slotName)
 		return
 	end
 
-	local item = common.New("Item", self.build.targetVersion)
-
+	local item = new("Item", self.build.targetVersion)
 	-- Determine rarity, display name and base type of the item
 	item.rarity = rarityMap[itemData.frameType]
 	if #itemData.name > 0 then
@@ -786,12 +785,12 @@ end
 
 function ImportTabClass:OpenPastebinImportPopup()
 	local controls = { }
-controls.editLabel = common.New("LabelControl", nil, 0, 20, 0, 16, "输入Pastebin.com连接（由17173国服版分享的）:")
-	controls.edit = common.New("EditControl", nil, 0, 40, 250, 18, "", nil, "^%w%p%s", nil, function(buf)
+controls.editLabel = new("LabelControl", nil, 0, 20, 0, 16, "输入Pastebin链接（由17173国服版分享的）:")
+	controls.edit = new("EditControl", nil, 0, 40, 250, 18, "", nil, "^%w%p%s", nil, function(buf)
 		controls.msg.label = ""
 	end)
-	controls.msg = common.New("LabelControl", nil, 0, 58, 0, 16, "")
-controls.import = common.New("ButtonControl", nil, -45, 80, 80, 20, "导入", function()
+	controls.msg = new("LabelControl", nil, 0, 58, 0, 16, "")
+controls.import = new("ButtonControl", nil, -45, 80, 80, 20, "导入", function()
 		controls.import.enabled = false
 controls.msg.label = "获取中..."
 		controls.edit.buf = controls.edit.buf:gsub("^%s+", ""):gsub("%s+$", "") -- Quick Trim
@@ -808,7 +807,7 @@ controls.msg.label = "获取中..."
 	controls.import.enabled = function()
 		return #controls.edit.buf > 0 and controls.edit.buf:match("pastebin%.com/%w+")
 	end
-controls.cancel = common.New("ButtonControl", nil, 45, 80, 80, 20, "取消", function()
+controls.cancel = new("ButtonControl", nil, 45, 80, 80, 20, "取消", function()
 		main:ClosePopup()
 	end)
 main:OpenPopup(380, 110, "从Pastebin导入", controls, "导入", "编辑")

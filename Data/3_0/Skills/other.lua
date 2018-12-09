@@ -191,8 +191,19 @@ skills["SupportUniqueMjolnerLightningSpellsCastOnHit"] = {
 			mod("Damage", "INC", nil, ModFlag.Spell, 0, { type = "Condition", var = "SkillIsTriggered" }),
 		},
 	},
+	qualityStats = {
+	},
+	stats = {
+		"triggered_spell_spell_damage_+%",
+		"unique_mjolner_lightning_spells_triggered",
+		"socketed_triggered_skills_use_weapon_attack_time_for_pvp_scaling",
+	},
+	statInterpolation = { 1, },
+	statLevels = {
+		[1] = { 100, nil, nil, },
+	},
 	baseMods = {
-		skill("cooldown", 0.25),
+		skill("cooldown", 0.15),
 		skill("showAverage", true),
 	},
 	levelMods = {
@@ -200,16 +211,6 @@ skills["SupportUniqueMjolnerLightningSpellsCastOnHit"] = {
 	},
 	levels = {
 		[1] = { 0, },
-	},
-	qualityStats = {
-	},
-	stats = {
-		"triggered_spell_spell_damage_+%",
-		"unique_mjolner_lightning_spells_triggered",
-	},
-	statInterpolation = { 1, },
-	statLevels = {
-		[1] = { 100, nil, },
 	},
 }
 skills["SupportUniqueCosprisMaliceColdSpellsCastOnMeleeCriticalStrike"] = {
@@ -221,23 +222,24 @@ skills["SupportUniqueCosprisMaliceColdSpellsCastOnMeleeCriticalStrike"] = {
 	addSkillTypes = { },
 	excludeSkillTypes = { 37, 41, 30, 44, 61, },
 	fromItem = true,
+	qualityStats = {
+	},
+	stats = {
+		"unique_cospris_malice_cold_spells_triggered",
+		"socketed_triggered_skills_use_weapon_attack_time_for_pvp_scaling",
+	},
+	statInterpolation = { },
+	statLevels = {
+		[1] = { nil, nil, },
+	},
 	baseMods = {
-		skill("cooldown", 0.25),
+		skill("cooldown", 0.15),
 	},
 	levelMods = {
 		[1] = nil,
 	},
 	levels = {
 		[1] = { 1, },
-	},
-	qualityStats = {
-	},
-	stats = {
-		"unique_cospris_malice_cold_spells_triggered",
-	},
-	statInterpolation = { },
-	statLevels = {
-		[1] = { nil, },
 	},
 }
 skills["RepeatingShockwave"] = {
@@ -334,7 +336,7 @@ skills["CatAspect"] = {
 	skillTypes = { [5] = true, [16] = true, [2] = true, [15] = true, [12] = true, [75] = true, },
 	fromItem = true,
 	statMap = {
-		["critical_strike_chance_+%"] = {
+		["attack_speed_+%_granted_from_skill"] = {
 			mod("CritChance", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Cat's Stealth", effectCond = "CatsStealthActive" }),
 		},
 		["attack_speed_+%"] = {
@@ -688,6 +690,7 @@ skills["DeathWalk"] = {
 		cast = true,
 		area = true,
 		chaos = true,
+
 	},
 	baseMods = {
 		skill("castTime", 1),
@@ -1149,8 +1152,21 @@ skills["VaalAuraElementalDamageHealing"] = {
 		area = true,
 		duration = true,
 	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+		"base_elemental_damage_heals",
+		"cannot_gain_souls",
+		"modifiers_to_buff_effect_duration_also_affect_soul_prevention_duration",
+	},
+	statInterpolation = { 1, },
+	statLevels = {
+		[20] = { 5000, nil, nil, nil, },
+	},
 	baseMods = {
-		skill("castTime", 0.5),
+		skill("castTime", 0),
+		skill("cooldown", 0.5),
 		skill("radius", 36),
 	},
 	levelMods = {
@@ -1158,17 +1174,6 @@ skills["VaalAuraElementalDamageHealing"] = {
 	},
 	levels = {
 		[20] = { 1, },
-	},
-	qualityStats = {
-	},
-	stats = {
-		"base_skill_effect_duration",
-		"base_elemental_damage_heals",
-		"modifiers_to_buff_effect_duration_also_affect_soul_prevention_duration",
-	},
-	statInterpolation = { 1, },
-	statLevels = {
-		[20] = { 5000, nil, nil, },
 	},
 }
 skills["IcestormUniqueStaff12"] = {
@@ -1600,18 +1605,6 @@ skills["SpiritBurst"] = {
 		spell = true,
 		projectile = true,
 	},
-	baseMods = {
-		skill("castTime", 1),
-		skill("damageEffectiveness", 1.2),
-		skill("CritChance", 6),
-		skill("showAverage", true),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[20] = { 70, },
-	},
 	qualityStats = {
 	},
 	stats = {
@@ -1626,6 +1619,18 @@ skills["SpiritBurst"] = {
 	statInterpolation = { 1, 3, 3, 1, },
 	statLevels = {
 		[20] = { 100, 0.80000001192093, 1.2000000476837, 6, nil, nil, nil, },
+	},
+	baseMods = {
+		skill("castTime", 1),
+		skill("damageEffectiveness", 1.2),
+		skill("CritChance", 6),
+		skill("showAverage", true),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[20] = { 70, },
 	},
 }
 skills["StormCascadeTriggered"] = {

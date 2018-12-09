@@ -3,7 +3,7 @@
 -- Class: Control
 -- UI control base class
 --
-local launch, main = ...
+--local launch, main = ...
 
 local t_insert = table.insert
 local m_floor = math.floor
@@ -20,7 +20,7 @@ local anchorPos = {
 	     ["CENTER"] = { 0.5, 0.5 },
 }
 
-local ControlClass = common.NewClass("Control", function(self, anchor, x, y, width, height)
+local ControlClass = newClass("Control", function(self, anchor, x, y, width, height)
 	self.x = x or 0
 	self.y = y or 0
 	self.width = width or 0

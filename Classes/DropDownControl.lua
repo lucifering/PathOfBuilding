@@ -3,7 +3,7 @@
 -- Class: DropDown Control
 -- Basic drop down control.
 --
-local launch, main = ...
+--local launch, main = ...
 
 local ipairs = ipairs
 local m_min = math.min
@@ -73,12 +73,12 @@ local searchModeCN = {
 }
 
 
-local DropDownClass = common.NewClass("DropDownControl", "Control", "ControlHost", "TooltipHost", function(self, anchor, x, y, width, height, list, selFunc, tooltipText)
+local DropDownClass = newClass("DropDownControl", "Control", "ControlHost", "TooltipHost", function(self, anchor, x, y, width, height, list, selFunc, tooltipText)
 	self.Control(anchor, x, y, width, height)
 	self.ControlHost()
 	self.TooltipHost(nil)
 	self.cnKey=tooltipText
-	self.controls.scrollBar = common.New("ScrollBarControl", {"TOPRIGHT",self,"TOPRIGHT"}, -1, 0, 18, 0, (height - 4) * 4)
+	self.controls.scrollBar = new("ScrollBarControl", {"TOPRIGHT",self,"TOPRIGHT"}, -1, 0, 18, 0, (height - 4) * 4)
 	self.controls.scrollBar.height = function()
 		return self.dropHeight + 2
 	end
@@ -99,7 +99,7 @@ function DropDownClass:SelByValue(value, key)
 				return
 			end
 		else
-			if listVal == val then
+			if listVal == value then
 				self.selIndex = index
 				return
 			end

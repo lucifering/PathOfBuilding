@@ -185,6 +185,13 @@ local modNameList = {
 	["持续冰霜伤害效果"] = { "ColdDamage", flags = ModFlag.Dot },
 	["非异常状态混沌持续伤害加成"] = "ChaosDotMultiplier",--non-ailment chaos damage over time multiplier
 	["额外总冰霜持续伤害效果"] = "ColdDotMultiplier",--cold damage over time multiplier
+	["暴击球数量下限"] = "PowerChargesMin",
+	["狂怒球数量下限"] = "FrenzyChargesMin",
+	["耐力球数量下限"] = "EnduranceChargesMin",
+	["【统御哨兵】持续时间"] = { "Duration", tag = { type = "SkillName", skillName = "霸气之击" } },
+	["烙印技能的激活频率"] = "BrandActivationFrequency",
+	["烙印的激活频率"] = "BrandActivationFrequency",
+	["烙印激活频率"] = "BrandActivationFrequency",
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -590,6 +597,9 @@ local modFlagList = {
 	["近战单手武器攻击"] = { flags = bor(ModFlag.Weapon1H, ModFlag.WeaponMelee) }, 
 	["双手近战武器的攻击"] = { flags = bor(ModFlag.Weapon2H, ModFlag.WeaponMelee) },
 	["火焰、冰霜、闪电技能的"] = { keywordFlags = bor(KeywordFlag.Lightning, KeywordFlag.Cold, KeywordFlag.Fire) },
+	["烙印技能的"] ={ tag = { type = "SkillType", skillType = SkillType.Brand } },
+	["烙印的"] ={ tag = { type = "SkillType", skillType = SkillType.Brand } },
+	["烙印技能"] = { tag = { type = "SkillType", skillType = SkillType.Brand } },
 	--【中文化程序额外添加结束】
 	-- Weapon types
 	["斧类攻击的"] = { flags = ModFlag.Axe }, --备注：with axes
@@ -922,6 +932,7 @@ local modTagList = {
 	["每有一个狂怒球，可使你"] = { tag = { type = "Multiplier", var = "FrenzyCharge" } }, 
 	["每有一个耐力球，可使你"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
 	["每有一个暴击球，可使你"] = { tag = { type = "Multiplier", var = "PowerCharge" } }, 
+	["每个暴击球可使"] = { tag = { type = "Multiplier", var = "PowerCharge" } }, 
 	["每有一个狂怒球，"] = { tag = { type = "Multiplier", var = "FrenzyCharge" } }, 
 	["每有一个耐力球，"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
 	["每有一个暴击球，"] = { tag = { type = "Multiplier", var = "PowerCharge" } }, 
@@ -933,6 +944,8 @@ local modTagList = {
 	["每有一个暴击求，"] = { tag = { type = "Multiplier", var = "PowerCharge" } }, 
 	["拥有【秘术增强】时"] = { tag = { type = "Condition", var = "AffectedByArcaneSurge" } },
 	["拥有【秘术增强】效果时，"] = { tag = { type = "Condition", var = "AffectedByArcaneSurge" } },
+	["带有烙印敌人"] = { tag = { type = "Condition", var = "BrandAttachedToEnemy" } },
+	["被附着烙印的敌人受到"] = { tag = { type = "Condition", var = "BrandAttachedToEnemy" } },
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -1896,7 +1909,11 @@ local specialModList = {
 	 ["狙击"] = { flag("FarShot") }, 
 	 ["%-(%d+) 最大图腾数量"] = function(num) return { mod("ActiveTotemLimit", "BASE", -num) } end, 
 	 ["每个图腾额外提高 (%d+)%% 总伤害"] = function(num) return { mod("Damage", "MORE", num, { type = "PerStat", stat = "ActiveTotemLimit" }) } end, 
-	 ["([%+%-]?%d+)%% 额外总冰霜持续伤害效果"] = function(num) return { mod("ColdDotMultiplier", "BASE", num) } end, 
+	 ["([%+%-]?%d+)%% 额外总冰霜持续伤害效果"] = function(num) return { mod("ColdDotMultiplier", "BASE", num) } end,
+	 ["%+(%d+) 【寒冬宝珠】最大阶"] = function(num) return { mod("Multiplier:WinterOrbMaxStage", "BASE", num) } end,
+		["【寒冬宝珠】每一阶范围效果扩大 (%d+)%%"] = function(num) return { mod("AreaOfEffect", "INC", num, { type = "SkillName", skillName = "寒冬宝珠"}, { type = "Multiplier", var = "WinterOrbStage" }) } end,
+	 ["【旗帜技能】不保留魔力"] = { mod("SkillData", "LIST", { key = "manaCostForced", value = 0 }, { type = "SkillName", skillNameList = { "恐怖之旗", "战旗" } }) },
+	 ["【(.+)】会发射 (%d+) 个额外投射物"]=  function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ProjectileCount", "BASE", tonumber(num)) }, { type = "SkillName", skillName =skill_name } ) } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

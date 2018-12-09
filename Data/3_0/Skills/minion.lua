@@ -1297,12 +1297,15 @@ skills["MinionInstability"] = {
 		skill("showAverage", true),
 		skill("radius", 22),
 	},
-	qualityMods = {
+	qualityStats = {
 	},
 	levelMods = {
 	},
 	levels = {
 		[1] = { },
+	},stats = {
+	},
+	statLevels = {
 	},
 }
 skills["BeaconCausticCloud"] = {
@@ -1319,12 +1322,15 @@ skills["BeaconCausticCloud"] = {
 		skill("ChaosDot", 1, { type = "PerStat", stat = "Life", div = 10 }),
 		skill("dotIsArea", true),
 	},
-	qualityMods = {
+	qualityStats = {
 	},
 	levelMods = {
 	},
 	levels = {
 		[1] = { },
+	},stats = {
+	},
+	statLevels = {
 	},
 }
 skills["BeaconZombieCausticCloud"] = {
@@ -1341,12 +1347,15 @@ skills["BeaconZombieCausticCloud"] = {
 		skill("ChaosDot", 1, { type = "PerStat", stat = "Life", div = 2 }),
 		skill("dotIsArea", true),
 	},
-	qualityMods = {
+	qualityStats  = {
 	},
 	levelMods = {
 	},
 	levels = {
 		[1] = { },
+	},stats = {
+	},
+	statLevels = {
 	},
 }
 

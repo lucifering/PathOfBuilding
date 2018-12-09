@@ -3,7 +3,7 @@
 -- Class: Item
 -- Equippable item class
 --
-local launch, main = ...
+--local launch, main = ...
 
 local t_insert = table.insert
 local t_remove = table.remove
@@ -13,7 +13,7 @@ local m_floor = math.floor
 
 local dmgTypeList = {"Physical", "Lightning", "Cold", "Fire", "Chaos"}--这个不要处理
 
-local ItemClass = common.NewClass("Item", function(self, targetVersion, raw)
+local ItemClass = newClass("Item", function(self, targetVersion, raw)
 	self.targetVersion = targetVersion
 	if raw and raw~=nil then
 		self:ParseRaw(itemLib.sanitiseItemText(raw))--self:ParseRaw(itemLib.sanitiseItemText(raw))
@@ -627,7 +627,7 @@ function ItemClass:BuildModListForSlotNum(baseList, slotNum)
 	if slotNum == 2 then
 		slotName = slotName:gsub("1", "2")
 	end
-	local modList = common.New("ModList")
+	local modList = new("ModList")
 	for _, baseMod in ipairs(baseList) do
 		local mod = copyTable(baseMod)
 		local add = true
@@ -690,7 +690,7 @@ function ItemClass:BuildModListForSlotNum(baseList, slotNum)
 			end
 		end
 		weaponData.CritChance = round(self.base.weapon.CritChanceBase * (1 + sumLocal(modList, "CritChance", "INC", 0) / 100), 2)
-		for _, value in ipairs(modList:Sum("LIST", nil, "WeaponData")) do
+		for _, value in ipairs(modList:List(nil, "WeaponData")) do
 			weaponData[value.key] = value.value
 		end
 		if self.targetVersion == "2_6" then
@@ -742,7 +742,7 @@ function ItemClass:BuildModListForSlotNum(baseList, slotNum)
 		if self.base.armour.MovementPenalty then
 			modList:NewMod("MovementSpeed", "INC", -self.base.armour.MovementPenalty, self.modSource, { type = "Condition", var = "IgnoreMovementPenalties", neg = true })
 		end
-		for _, value in ipairs(modList:Sum("LIST", nil, "ArmourData")) do
+		for _, value in ipairs(modList:List(nil, "ArmourData")) do
 			armourData[value.key] = value.value
 		end
 	elseif self.base.flask then
@@ -774,16 +774,16 @@ function ItemClass:BuildModListForSlotNum(baseList, slotNum)
 		flaskData.chargesUsed = m_floor(self.base.flask.chargesUsed * (1 + sumLocal(modList, "FlaskChargesUsed", "INC", 0) / 100))
 		flaskData.gainMod = 1 + sumLocal(modList, "FlaskChargeRecovery", "INC", 0) / 100
 		flaskData.effectInc = sumLocal(modList, "FlaskEffect", "INC", 0)
-		for _, value in ipairs(modList:Sum("LIST", nil, "FlaskData")) do
+		for _, value in ipairs(modList:List(nil, "FlaskData")) do
 			flaskData[value.key] = value.value
 		end
 	elseif self.type == "Jewel" then
 		local jewelData = self.jewelData
-		for _, func in ipairs(modList:Sum("LIST", nil, "JewelFunc")) do
+		for _, func in ipairs(modList:List(nil, "JewelFunc")) do
 			jewelData.funcList = jewelData.funcList or { }
 			t_insert(jewelData.funcList, func)
 		end
-		for _, value in ipairs(modList:Sum("LIST", nil, "JewelData")) do
+		for _, value in ipairs(modList:List(nil, "JewelData")) do
 			jewelData[value.key] = value.value
 		end
 	end	
@@ -795,7 +795,7 @@ function ItemClass:BuildModList()
 	if not self.base then
 		return
 	end
-	local baseList = common.New("ModList")
+	local baseList = new("ModList")
 	if self.base.weapon then
 		self.weaponData = { }
 	elseif self.base.armour then
@@ -842,7 +842,7 @@ function ItemClass:BuildModList()
 		self.requirements.intMod = m_floor((self.requirements.int + sumLocal(baseList, "IntRequirement", "BASE", 0)) * (1 + sumLocal(baseList, "IntRequirement", "INC", 0) / 100))
 	end
 	self.grantedSkills = { }
-	for _, skill in ipairs(baseList:Sum("LIST", nil, "ExtraSkill")) do
+	for _, skill in ipairs(baseList:List(nil, "ExtraSkill")) do
 		if skill.name ~= "Unknown" then
 			t_insert(self.grantedSkills, {
 				skillId = skill.skillId,

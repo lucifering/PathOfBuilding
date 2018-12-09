@@ -63,6 +63,19 @@ return {
 { var = "aspectOfTheSpiderWebStacks", type = "count", label = "# 蜘蛛网层数:", ifSkill = "蛛之势", apply = function(val, modList, enemyModList)
 modList:NewMod("ExtraSkillMod", "LIST", { mod = modLib.createMod("Multiplier:SpiderWebApplyStack", "BASE", val) }, "Config", { type = "SkillName", skillName = "蛛之势" })
 	end },
+
+{ label = "旗帜技能:", ifSkillList = { "恐怖之旗", "战旗" } },
+{ var = "bannerPlanted", type = "check", label = "旗帜放置?", ifSkillList = { "恐怖之旗", "战旗"}, apply = function(val, modList, enemyModList)
+modList:NewMod("Condition:BannerPlanted", "FLAG", true, "Config", { type = "SkillName", skillNameList = { "恐怖之旗", "战旗" } })
+	end },
+{ var = "bannerStages", type = "count", label = "旗帜阶层:", ifSkillList = { "恐怖之旗", "战旗" }, apply = function(val, modList, enemyModList)
+modList:NewMod("Multiplier:BannerStage", "BASE", m_min(val, 50), "Config", { type = "SkillName", skillNameList = { "恐怖之旗", "战旗" } })
+	end },
+{ label = "烙印技能:", ifSkillList = { "末日烙印", "风暴烙印" } }, -- I barely resisted the temptation to label this "Generic Brand:"
+{ var = "brandAttachedToEnemy", type = "check", label = "附着到敌人身上?", ifSkillList = { "末日烙印", "风暴烙印" }, apply = function(val, modList, enemyModList)
+modList:NewMod("Condition:BrandAttachedToEnemy", "FLAG", true, "Config", { type = "SkillType", skillType = SkillType.Brand })
+	end },
+	
 { label = "暗夜血契:", ifSkill = "暗夜血契" },
 { var = "darkPactSkeletonLife", type = "count", label = "魔侍 生命:", ifSkill = "暗夜血契", tooltip = "设置使用【暗夜血契】时，魔侍的最大生命.", apply = function(val, modList, enemyModList)
 modList:NewMod("SkillData", "LIST", { key = "skeletonLife", value = val }, "Config", { type = "SkillName", skillName = "暗夜血契" })
@@ -112,8 +125,14 @@ modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", 
 { var = "vortexCastOnFrostbolt", type = "check", label = "由【寒冰弹】触发?", ifSkill = "漩涡", apply = function(val, modList, enemyModList)
 modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "SkillName", skillName = "漩涡" })
 	end },
-	{ label = "Withering Touch:", ifSkill = "Withering Touch" },
-	{ var = "witheringTouchWitheredStackCount", type = "count", label = "# of Withered Stacks:", ifSkill = "Withering Touch", apply = function(val, modList, enemyModList)
+	
+{ label = "寒冬宝珠:", ifSkill = "寒冬宝珠" },
+{ var = "winterOrbStages", type = "count", label = "阶层:", ifSkill = "寒冬宝珠", apply = function(val, modList, enemyModList)
+modList:NewMod("Multiplier:WinterOrbStage", "BASE", val, "Config", { type = "SkillName", skillName = "寒冬宝珠" })
+	end },
+	
+	{ label = "凋零之触:", ifSkill = "凋零之触" },
+{ var = "witheringTouchWitheredStackCount", type = "count", label = "# 【死亡凋零】层数:", ifSkill = "凋零之触", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:WitheringTouchWitheredStackCount", "BASE", val, "Config")
 	end },
 
@@ -270,7 +289,7 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 { var = "overrideEnduranceCharges", type = "count", label = "耐力球数量(如果没达到最大值):", ifOption = "useEnduranceCharges", apply = function(val, modList, enemyModList)
 		modList:NewMod("EnduranceCharges", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" })
 	end },
-{ var = "useSiphoningCharges", type = "check", label = "你是否由轮回球?", ifMult = "SiphoningCharge", apply = function(val, modList, enemyModList)
+{ var = "useSiphoningCharges", type = "check", label = "你是否有轮回球?", ifMult = "SiphoningCharge", apply = function(val, modList, enemyModList)
 		modList:NewMod("UseSiphoningCharges", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
 { var = "overrideSiphoningCharges", type = "count", label = "轮回球数量(如果没达到最大值):", ifOption = "useSiphoningCharges", apply = function(val, modList, enemyModList)

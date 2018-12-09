@@ -3,8 +3,6 @@
 -- Module: Main
 -- Main module of program.
 --
-local launch = ...
-
 local ipairs = ipairs
 local t_insert = table.insert
 local t_remove = table.remove
@@ -21,69 +19,10 @@ liveTargetVersion = "3_0"
 targetVersionList = { "2_6", "3_0" }
 
 LoadModule("Modules/Common")
-LoadModule("Modules/Data", launch)
-LoadModule("Modules/ModTools", launch)
-LoadModule("Modules/ItemTools", launch)
-LoadModule("Modules/CalcTools", launch)
-
-LoadModule("Classes/ControlHost")
-
-local main = common.New("ControlHost")
-
-local classList = {
-	"UndoHandler",
-	"Tooltip",
-	"TooltipHost",
-	-- Basic controls
-	"Control",
-	"LabelControl",
-	"SectionControl",
-	"ButtonControl",
-	"CheckBoxControl",
-	"EditControl",
-	"DropDownControl",
-	"ScrollBarControl",
-	"SliderControl",
-	"TextListControl",
-	"ListControl",
-	"PathControl",
-	-- Misc
-	"PopupDialog",
-	"Item",
-	-- Mode: Build list
-	"BuildListControl",
-	"FolderListControl",
-	-- Mode: Build
-	"ModStore",
-	"ModList",
-	"ModDB",
-	"MinionListControl",
-	"ImportTab",
-	"NotesTab",
-	"ConfigTab",
-	"TreeTab",
-	"PassiveTree",
-	"PassiveSpec",
-	"PassiveTreeView",
-	"PassiveSpecListControl",
-	"SkillsTab",
-	"SkillListControl",
-	"GemSelectControl",
-	"ItemsTab",
-	"ItemSetListControl",
-	"SharedItemSetListControl",
-	"ItemSlotControl",
-	"ItemListControl",
-	"ItemDBControl",
-	"SharedItemListControl",
-	"CalcsTab",
-	"CalcSectionControl",
-	"CalcBreakdownControl",
-	"AboutTab",
-}
-for _, className in ipairs(classList) do
-	LoadModule("Classes/"..className, launch, main)
-end
+LoadModule("Modules/Data")
+LoadModule("Modules/ModTools")
+LoadModule("Modules/ItemTools")
+LoadModule("Modules/CalcTools")
 
 --[[if launch.devMode then
 	for skillName, skill in pairs(data["3_0"].enchantments.Helmet) do
@@ -99,10 +38,12 @@ end]]
 local tempTable1 = { }
 local tempTable2 = { }
 
+main = new("ControlHost")
+
 function main:Init()
 	self.modes = { }
-	self.modes["LIST"] = LoadModule("Modules/BuildList", launch, self)
-	self.modes["BUILD"] = LoadModule("Modules/Build", launch, self)
+	self.modes["LIST"] = LoadModule("Modules/BuildList")
+	self.modes["BUILD"] = LoadModule("Modules/Build")
 
 	if launch.devMode or GetScriptPath() == GetRuntimePath() then
 		-- If running in dev mode or standalone mode, put user data in the script path
@@ -126,7 +67,7 @@ function main:Init()
 	
 	self.tree = { }
 	for _, targetVersion in ipairs(targetVersionList) do
-		self.tree[targetVersion] = common.New("PassiveTree", targetVersion)
+		self.tree[targetVersion] = new("PassiveTree", targetVersion)
 	end
 
 	ConPrintf("Loading item databases...")
@@ -136,7 +77,7 @@ function main:Init()
 		self.uniqueDB[targetVersion] = { list = { } }
 		for type, typeList in pairs(data.uniques) do
 			for _, raw in pairs(typeList) do
-local newItem = common.New("Item", targetVersion, "稀 有 度: 传奇\n"..raw)
+local newItem = new("Item", targetVersion, "稀 有 度: 传奇\n"..raw)
 				if newItem.base then
 					newItem:NormaliseQuality()
 					self.uniqueDB[targetVersion].list[newItem.name] = newItem
@@ -147,7 +88,7 @@ local newItem = common.New("Item", targetVersion, "稀 有 度: 传奇\n"..raw)
 		end
 		self.rareDB[targetVersion] = { list = { } }
 		for _, raw in pairs(data[targetVersion].rares) do
-local newItem = common.New("Item", targetVersion, "稀 有 度: 稀有\n"..raw)
+local newItem = new("Item", targetVersion, "稀 有 度: 稀有\n"..raw)
 			if newItem.base then
 				newItem:NormaliseQuality()
 				if newItem.crafted then
@@ -194,28 +135,28 @@ local newItem = common.New("Item", targetVersion, "稀 有 度: 稀有\n"..raw)
 	self.sharedItemList = { }
 	self.sharedItemSetList = { }
 
-	self.anchorMain = common.New("Control", nil, 4, 0, 0, 0)
+	self.anchorMain = new("Control", nil, 4, 0, 0, 0)
 	self.anchorMain.y = function()
 		return self.screenH - 4
 	end
-self.controls.options = common.New("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 0, 0, 70, 20, "选项", function()
+	self.controls.options = new("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 0, 0, 70, 20, "Options", function()
 		self:OpenOptionsPopup()
 	end)
-	self.controls.patreon = common.New("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 112, 0, 74, 20, "", function()
+	self.controls.patreon = new("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 112, 0, 74, 20, "", function()
 		OpenURL("https://www.patreon.com/openarl")
 	end)
 	self.controls.patreon:SetImage("Assets/patreon_logo.png")
 self.controls.patreon.tooltipText = "给国际服的原作者捐款赞助！"
-	self.controls.about = common.New("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 228, 0, 70, 20, "About", function()
+self.controls.about = new("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 228, 0, 70, 20, "关于", function()
 		self:OpenAboutPopup()
 	end)
-self.controls.applyUpdate = common.New("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 0, -24, 140, 20, "^x50E050准备更新", function()
+self.controls.applyUpdate = new("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 0, -24, 140, 20, "^x50E050准备更新", function()
 		self:OpenUpdatePopup()
 	end)
 	self.controls.applyUpdate.shown = function()
 		return launch.updateAvailable and launch.updateAvailable ~= "none"
 	end
-	self.controls.checkUpdate = common.New("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 0, -24, 140, 20, "", function()
+	self.controls.checkUpdate = new("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 0, -24, 140, 20, "", function()
 		launch:CheckForUpdate()
 	end)
 	self.controls.checkUpdate.shown = function()
@@ -227,15 +168,15 @@ return launch.updateCheckRunning and launch.updateProgress or "检查更新"
 	self.controls.checkUpdate.enabled = function()
 		return not launch.updateCheckRunning
 	end
-	self.controls.versionLabel = common.New("LabelControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 144, -27, 0, 14, "")
+	self.controls.versionLabel = new("LabelControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 144, -27, 0, 14, "")
 	self.controls.versionLabel.label = function()
 		return "^8Version: "..launch.versionNumber..(launch.versionBranch == "dev" and " (Dev)" or "")
 	end
-self.controls.devMode = common.New("LabelControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 0, -26, 0, 20, "^1开发模式")
+	self.controls.devMode = new("LabelControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 0, -26, 0, 20, "^1Dev Mode")
 	self.controls.devMode.shown = function()
 		return launch.devMode
 	end
-self.controls.dismissToast = common.New("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 0, function() return -self.mainBarHeight + self.toastHeight end, 80, 20, "取消", function()
+	self.controls.dismissToast = new("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 0, function() return -self.mainBarHeight + self.toastHeight end, 80, 20, "Dismiss", function()
 		self.toastMode = "HIDING"
 		self.toastStart = GetTime()
 	end)
@@ -484,7 +425,7 @@ launch:ShowErrMsg("^1文件解析失败 'Settings.xml':  'Mode' 节点错误")
 							end
 						end
 						for _, targetVersion in ipairs(targetVersionList) do			
-							verItem[targetVersion] = common.New("Item", targetVersion, verItem.raw)
+							verItem[targetVersion] = new("Item", targetVersion, verItem.raw)
 						end
 						t_insert(self.sharedItemList, verItem)
 					elseif child.elem == "ItemSet" then
@@ -498,7 +439,7 @@ launch:ShowErrMsg("^1文件解析失败 'Settings.xml':  'Mode' 节点错误")
 									end
 								end
 								for _, targetVersion in ipairs(targetVersionList) do			
-									verItem[targetVersion] = common.New("Item", targetVersion, verItem.raw)
+									verItem[targetVersion] = new("Item", targetVersion, verItem.raw)
 								end
 								sharedItemSet.slots[grandChild.attrib.slotName] = verItem
 							end
@@ -573,46 +514,46 @@ end
 
 function main:OpenOptionsPopup()
 	local controls = { }
-	controls.proxyType = common.New("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 150, 20, 80, 18, {
+	controls.proxyType = new("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 150, 20, 80, 18, {
 		{ label = "HTTP", scheme = "http" },
 		{ label = "SOCKS", scheme = "socks5" },
 	})
-	controls.proxyLabel = common.New("LabelControl", {"RIGHT",controls.proxyType,"LEFT"}, -4, 0, 0, 16, "^7Proxy server:")
-	controls.proxyURL = common.New("EditControl", {"LEFT",controls.proxyType,"RIGHT"}, 4, 0, 206, 18)
+controls.proxyLabel = new("LabelControl", {"RIGHT",controls.proxyType,"LEFT"}, -4, 0, 0, 16, "^7代理服务器:")
+	controls.proxyURL = new("EditControl", {"LEFT",controls.proxyType,"RIGHT"}, 4, 0, 206, 18)
 	if launch.proxyURL then
 		local scheme, url = launch.proxyURL:match("(%w+)://(.+)")
 		controls.proxyType:SelByValue(scheme, "scheme")
 		controls.proxyURL:SetText(url)
 	end
-	controls.buildPath = common.New("EditControl", {"TOPLEFT",nil,"TOPLEFT"}, 150, 44, 290, 18)
-	controls.buildPathLabel = common.New("LabelControl", {"RIGHT",controls.buildPath,"LEFT"}, -4, 0, 0, 16, "^7Build save path:")
+	controls.buildPath = new("EditControl", {"TOPLEFT",nil,"TOPLEFT"}, 150, 44, 290, 18)
+controls.buildPathLabel = new("LabelControl", {"RIGHT",controls.buildPath,"LEFT"}, -4, 0, 0, 16, "^7Build 保存路径:")
 	if self.buildPath ~= self.defaultBuildPath then
 		controls.buildPath:SetText(self.buildPath)
 	end
-	controls.buildPath.tooltipText = "Overrides the default save location for builds.\nThe default location is: '"..self.defaultBuildPath.."'"
-	controls.nodePowerTheme = common.New("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 150, 68, 100, 18, {
+controls.buildPath.tooltipText = "覆盖默认的build保存路径.\n默认路径为: '"..self.defaultBuildPath.."'"
+	controls.nodePowerTheme = new("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 150, 68, 100, 18, {
 		{ label = "Red & Blue", theme = "RED/BLUE" },
 		{ label = "Red & Green", theme = "RED/GREEN" },
 		{ label = "Green & Blue", theme = "GREEN/BLUE" },
 	}, function(index, value)
 		self.nodePowerTheme = value.theme
 	end)
-	controls.nodePowerThemeLabel = common.New("LabelControl", {"RIGHT",controls.nodePowerTheme,"LEFT"}, -4, 0, 0, 16, "^7Node Power colours:")
-	controls.nodePowerTheme.tooltipText = "Changes the colour scheme used for the node power display on the passive tree."
+controls.nodePowerThemeLabel = new("LabelControl", {"RIGHT",controls.nodePowerTheme,"LEFT"}, -4, 0, 0, 16, "^7天赋树节点高亮颜色:")
+controls.nodePowerTheme.tooltipText = "修改天赋树中节点的高亮颜色."
 	controls.nodePowerTheme:SelByValue(self.nodePowerTheme, "theme")
-	controls.thousandsLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 200, 94, 0, 16, "^7Show thousands separators in:")
-	controls.thousandsSidebar = common.New("CheckBoxControl", {"TOPLEFT",nil,"TOPLEFT"}, 270, 92, 20, "Sidebar:", function(state)
+controls.thousandsLabel = new("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 200, 94, 0, 16, "^7显示千分比:")
+	controls.thousandsSidebar = new("CheckBoxControl", {"TOPLEFT",nil,"TOPLEFT"}, 270, 92, 20, "Sidebar:", function(state)
 		self.showThousandsSidebar = state
 	end)
 	controls.thousandsSidebar.state = self.showThousandsSidebar
-	controls.thousandsCalcs = common.New("CheckBoxControl", {"TOPLEFT",nil,"TOPLEFT"}, 370, 92, 20, "Calcs tab:", function(state)
+controls.thousandsCalcs = new("CheckBoxControl", {"TOPLEFT",nil,"TOPLEFT"}, 370, 92, 20, "计算面板:", function(state)
 		self.showThousandsCalcs = state
 	end)
 	controls.thousandsCalcs.state = self.showThousandsCalcs
 	local initialNodePowerTheme = self.nodePowerTheme
 	local initialThousandsSidebar = self.showThousandsSidebar
 	local initialThousandsCalcs = self.showThousandsCalcs
-	controls.save = common.New("ButtonControl", nil, -45, 120, 80, 20, "Save", function()
+controls.save = new("ButtonControl", nil, -45, 120, 80, 20, "保存", function()
 		if controls.proxyURL.buf:match("%w") then
 			launch.proxyURL = controls.proxyType.list[controls.proxyType.selIndex].scheme .. "://" .. controls.proxyURL.buf
 		else
@@ -631,7 +572,7 @@ function main:OpenOptionsPopup()
 		end
 		main:ClosePopup()
 	end)
-	controls.cancel = common.New("ButtonControl", nil, 45, 120, 80, 20, "Cancel", function()
+controls.cancel = new("ButtonControl", nil, 45, 120, 80, 20, "取消", function()
 		self.nodePowerTheme = initialNodePowerTheme
 		self.showThousandsSidebar = initialThousandsSidebar
 		self.showThousandsCalcs = initialThousandsCalcs
@@ -657,18 +598,18 @@ t_insert(changeList, { height = 20, "^7版本 "..ver.." ("..date..")" })
 		end
 	end
 	local controls = { }
-	controls.changeLog = common.New("TextListControl", nil, 0, 20, 780, 192, nil, changeList)
-controls.update = common.New("ButtonControl", nil, -45, 220, 80, 20, "更新", function()
+	controls.changeLog = new("TextListControl", nil, 0, 20, 780, 192, nil, changeList)
+controls.update = new("ButtonControl", nil, -45, 220, 80, 20, "更新", function()
 		self:ClosePopup()
 		local ret = self:CallMode("CanExit", "UPDATE")
 		if ret == nil or ret == true then
 			launch:ApplyUpdate(launch.updateAvailable)
 		end
 	end)
-controls.cancel = common.New("ButtonControl", nil, 45, 220, 80, 20, "取消", function()
+controls.cancel = new("ButtonControl", nil, 45, 220, 80, 20, "取消", function()
 		self:ClosePopup()
 	end)
-	controls.patreon = common.New("ButtonControl", {"BOTTOMLEFT",nil,"BOTTOMLEFT"}, 10, -10, 82, 22, "", function()
+	controls.patreon = new("ButtonControl", {"BOTTOMLEFT",nil,"BOTTOMLEFT"}, 10, -10, 82, 22, "", function()
 		OpenURL("https://www.patreon.com/openarl")
 	end)
 	controls.patreon:SetImage("Assets/patreon_logo.png")
@@ -690,23 +631,23 @@ function main:OpenAboutPopup()
 		end
 	end
 	local controls = { }
-controls.close = common.New("ButtonControl", {"TOPRIGHT",nil,"TOPRIGHT"}, -10, 10, 50, 20, "关闭", function()
+controls.close = new("ButtonControl", {"TOPRIGHT",nil,"TOPRIGHT"}, -10, 10, 50, 20, "关闭", function()
 		self:ClosePopup()
 	end)
-controls.version = common.New("LabelControl", nil, 0, 18, 0, 18, "Path of Building v"..launch.versionNumber.." 作者：Openarl 汉化：光影路西法")
-controls.forum = common.New("ButtonControl", nil, 0, 42, 420, 18, "国服版反馈: ^x4040FFhttp://bbs.17173.com/forum-9987-1.html", function(control)
+controls.version = new("LabelControl", nil, 0, 18, 0, 18, "Path of Building v"..launch.versionNumber.." 作者：Openarl 汉化：光影路西法")
+controls.forum = new("ButtonControl", nil, 0, 42, 420, 18, "国服版反馈: ^x4040FFhttp://bbs.17173.com/forum-9987-1.html", function(control)
 OpenURL("http://bbs.17173.com/forum-9987-1.html")
 	end)
-controls.github = common.New("ButtonControl", nil, 0, 64, 340, 18, "gitee page: ^x4040FFhttps://github.com/lucifering/PathOfBuilding", function(control)
-OpenURL("https://github.com/lucifering/PathOfBuilding")
+controls.github = new("ButtonControl", nil, 0, 64, 340, 18, "GitHub page: ^x4040FFhttps://dev.tencent.com/u/lucifering/p/PathOfBuilding?from=coding", function(control)
+OpenURL("https://dev.tencent.com/u/lucifering/p/PathOfBuilding?from=coding")
 	end)
-	controls.patreon = common.New("ButtonControl", {"TOPLEFT",nil,"TOPLEFT"}, 10, 10, 82, 22, "", function()
+	controls.patreon = new("ButtonControl", {"TOPLEFT",nil,"TOPLEFT"}, 10, 10, 82, 22, "", function()
 		OpenURL("https://www.patreon.com/openarl")
 	end)
 	controls.patreon:SetImage("Assets/patreon_logo.png")
 controls.patreon.tooltipText = "给pob原作者：Openarl 捐款赞助!"
-controls.verLabel = common.New("LabelControl", {"TOPLEFT",nil,"TOPLEFT"}, 10, 82, 0, 18, "^7版本信息:")
-	controls.changelog = common.New("TextListControl", nil, 0, 100, 630, 290, nil, changeList)
+controls.verLabel = new("LabelControl", {"TOPLEFT",nil,"TOPLEFT"}, 10, 82, 0, 18, "^7历史版本:")
+	controls.changelog = new("TextListControl", nil, 0, 100, 630, 290, nil, changeList)
 self:OpenPopup(650, 400, "【  17173·国服版  】", controls)
 end
 
@@ -881,7 +822,7 @@ function main:CopyFolder(srcName, dstName)
 end
 
 function main:OpenPopup(width, height, title, controls, enterControl, defaultControl, escapeControl)
-	local popup = common.New("PopupDialog", width, height, title, controls, enterControl, defaultControl, escapeControl)
+	local popup = new("PopupDialog", width, height, title, controls, enterControl, defaultControl, escapeControl)
 	t_insert(self.popups, 1, popup)
 	return popup
 end
@@ -894,10 +835,10 @@ function main:OpenMessagePopup(title, msg)
 	local controls = { }
 	local numMsgLines = 0
 	for line in string.gmatch(msg .. "\n", "([^\n]*)\n") do
-		t_insert(controls, common.New("LabelControl", nil, 0, 20 + numMsgLines * 16, 0, 16, line))
+		t_insert(controls, new("LabelControl", nil, 0, 20 + numMsgLines * 16, 0, 16, line))
 		numMsgLines = numMsgLines + 1
 	end
-	controls.close = common.New("ButtonControl", nil, 0, 40 + numMsgLines * 16, 80, 20, "Ok", function()
+	controls.close = new("ButtonControl", nil, 0, 40 + numMsgLines * 16, 80, 20, "Ok", function()
 		main:ClosePopup()
 	end)
 	return self:OpenPopup(m_max(DrawStringWidth(16, "VAR", msg) + 30, 190), 70 + numMsgLines * 16, title, controls, "close")
@@ -907,15 +848,15 @@ function main:OpenConfirmPopup(title, msg, confirmLabel, onConfirm)
 	local controls = { }
 	local numMsgLines = 0
 	for line in string.gmatch(msg .. "\n", "([^\n]*)\n") do
-		t_insert(controls, common.New("LabelControl", nil, 0, 20 + numMsgLines * 16, 0, 16, line))
+		t_insert(controls, new("LabelControl", nil, 0, 20 + numMsgLines * 16, 0, 16, line))
 		numMsgLines = numMsgLines + 1
 	end
 	local confirmWidth = m_max(80, DrawStringWidth(16, "VAR", confirmLabel) + 10)
-	controls.confirm = common.New("ButtonControl", nil, -5 - m_ceil(confirmWidth/2), 40 + numMsgLines * 16, confirmWidth, 20, confirmLabel, function()
+	controls.confirm = new("ButtonControl", nil, -5 - m_ceil(confirmWidth/2), 40 + numMsgLines * 16, confirmWidth, 20, confirmLabel, function()
 		main:ClosePopup()
 		onConfirm()
 	end)
-	t_insert(controls, common.New("ButtonControl", nil, 5 + m_ceil(confirmWidth/2), 40 + numMsgLines * 16, confirmWidth, 20, "Cancel", function()
+	t_insert(controls, new("ButtonControl", nil, 5 + m_ceil(confirmWidth/2), 40 + numMsgLines * 16, confirmWidth, 20, "Cancel", function()
 		main:ClosePopup()
 	end))
 	return self:OpenPopup(m_max(DrawStringWidth(16, "VAR", msg) + 30, 190), 70 + numMsgLines * 16, title, controls, "confirm")
@@ -923,11 +864,11 @@ end
 
 function main:OpenNewFolderPopup(path, onClose)
 	local controls = { }
-	controls.label = common.New("LabelControl", nil, 0, 20, 0, 16, "^7Enter folder name:")
-	controls.edit = common.New("EditControl", nil, 0, 40, 350, 20, nil, nil, "\\/:%*%?\"<>|%c", 100, function(buf)
+	controls.label = new("LabelControl", nil, 0, 20, 0, 16, "^7Enter folder name:")
+	controls.edit = new("EditControl", nil, 0, 40, 350, 20, nil, nil, "\\/:%*%?\"<>|%c", 100, function(buf)
 		controls.create.enabled = buf:match("%S")
 	end)
-	controls.create = common.New("ButtonControl", nil, -45, 70, 80, 20, "Create", function()
+	controls.create = new("ButtonControl", nil, -45, 70, 80, 20, "Create", function()
 		local newFolderName = controls.edit.buf
 		local res, msg = MakeDir(path..newFolderName)
 		if not res then
@@ -940,13 +881,13 @@ function main:OpenNewFolderPopup(path, onClose)
 		main:ClosePopup()
 	end)
 	controls.create.enabled = false
-	controls.cancel = common.New("ButtonControl", nil, 45, 70, 80, 20, "Cancel", function()
+	controls.cancel = new("ButtonControl", nil, 45, 70, 80, 20, "Cancel", function()
 		if onClose then
 			onClose()
 		end
 		main:ClosePopup()
 	end)
-	main:OpenPopup(370, 100, "New Folder", controls, "create", "edit", "cancel")	
+main:OpenPopup(370, 100, "新文件夹", controls, "create", "edit", "cancel")	
 end
 
 do
@@ -961,15 +902,12 @@ do
 				s = #str + 1
 				e = #str + 1
 			end
-			if lineStart == nil then break end
 			if DrawStringWidth(height, "VAR", str:sub(lineStart, s - 1)) > width then
 				t_insert(wrapTable, str:sub(lineStart, lastBreak))
 				lineStart = lastSpace
 			end
 			if s > #str then
---if str~=nil then  t_insert(wrapTable, str:sub(lineStart, -1)) end
-if str~=nil and lineStart~=nil then  t_insert(wrapTable, str:sub(lineStart, -1)) end --lucifer
-
+if str~=nil then  t_insert(wrapTable, str:sub(lineStart, -1)) end
 				break
 			end
 			lastBreak = s - 1

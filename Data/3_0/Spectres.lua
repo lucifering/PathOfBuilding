@@ -274,6 +274,8 @@ minions["Metadata/Monsters/BloodChieftain/MonkeyChiefBloodEnrage"] = {
 		"Melee",
 		"BloodChieftainSummonMonkeys",
 		"MassFrenzy",
+		"EmptyActionMonkeyThrow",
+		"TriggeredMonkeyBomb",
 	},
 	modList = {
 		-- MonsterSpeedAndDamageFixupLarge

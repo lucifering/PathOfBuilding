@@ -3,25 +3,25 @@
 -- Module: Tree Tab
 -- Passive skill tree tab for the current build.
 --
-local launch, main = ...
+--local launch, main = ...
 
 local ipairs = ipairs
 local t_insert = table.insert
 local m_min = math.min
 
-local TreeTabClass = common.NewClass("TreeTab", "ControlHost", function(self, build)
+local TreeTabClass = newClass("TreeTab", "ControlHost", function(self, build)
 	self.ControlHost()
 
 	self.build = build
 
-	self.viewer = common.New("PassiveTreeView")
+	self.viewer = new("PassiveTreeView")
 
 	self.specList = { }
-	self.specList[1] = common.New("PassiveSpec", build)
+	self.specList[1] = new("PassiveSpec", build)
 	self:SetActiveSpec(1)
 
-	self.anchorControls = common.New("Control", nil, 0, 0, 0, 20)
-	self.controls.specSelect = common.New("DropDownControl", {"LEFT",self.anchorControls,"RIGHT"}, 0, 0, 150, 20, nil, function(index, value)
+	self.anchorControls = new("Control", nil, 0, 0, 0, 20)
+	self.controls.specSelect = new("DropDownControl", {"LEFT",self.anchorControls,"RIGHT"}, 0, 0, 150, 20, nil, function(index, value)
 		if self.specList[index] then
 			self.build.modFlag = true
 			self:SetActiveSpec(index)
@@ -66,23 +66,23 @@ tooltip:AddLine(16, "^7切换到这个天赋树需要 "..respec.." 后悔点.")
 			end
 		end
 	end
-self.controls.reset = common.New("ButtonControl", {"LEFT",self.controls.specSelect,"RIGHT"}, 8, 0, 60, 20, "重置", function()
+self.controls.reset = new("ButtonControl", {"LEFT",self.controls.specSelect,"RIGHT"}, 8, 0, 60, 20, "重置", function()
 main:OpenConfirmPopup("Reset Tree", "确定要重置天赋树吗?", "重置", function()
 			self.build.spec:ResetNodes()
 			self.build.spec:AddUndoState()
 			self.build.buildFlag = true
 		end)
 	end)
-self.controls.import = common.New("ButtonControl", {"LEFT",self.controls.reset,"RIGHT"}, 8, 0, 90, 20, "导入天赋树", function()
+self.controls.import = new("ButtonControl", {"LEFT",self.controls.reset,"RIGHT"}, 8, 0, 90, 20, "导入天赋树", function()
 		self:OpenImportPopup()
 	end)
-self.controls.export = common.New("ButtonControl", {"LEFT",self.controls.import,"RIGHT"}, 8, 0, 90, 20, "导出天赋树", function()
+self.controls.export = new("ButtonControl", {"LEFT",self.controls.import,"RIGHT"}, 8, 0, 90, 20, "导出天赋树", function()
 		self:OpenExportPopup()
 	end)
-self.controls.treeSearch = common.New("EditControl", {"LEFT",self.controls.export,"RIGHT"}, 8, 0, 300, 20, "", "搜索", "%c%(%)", 100, function(buf)
+self.controls.treeSearch = new("EditControl", {"LEFT",self.controls.export,"RIGHT"}, 8, 0, 300, 20, "", "搜索", "%c%(%)", 100, function(buf)
 		self.viewer.searchStr = buf
 	end)
-self.controls.treeHeatMap = common.New("CheckBoxControl", {"LEFT",self.controls.treeSearch,"RIGHT"}, 130, 0, 20, "高亮天赋节点:", function(state)
+self.controls.treeHeatMap = new("CheckBoxControl", {"LEFT",self.controls.treeSearch,"RIGHT"}, 130, 0, 20, "高亮天赋树节点:", function(state)	
 		self.viewer.showHeatMap = state
 	end)
 	self.controls.treeHeatMap.tooltipText = function()
@@ -140,7 +140,7 @@ function TreeTabClass:Load(xml, dbFileName)
 	self.specList = { }
 	if xml.elem == "Spec" then
 		-- Import single spec from old build
-		self.specList[1] = common.New("PassiveSpec", self.build)
+		self.specList[1] = new("PassiveSpec", self.build)
 		self.specList[1]:Load(xml, dbFileName)
 		self.activeSpec = 1
 		self.build.spec = self.specList[1]
@@ -149,14 +149,14 @@ function TreeTabClass:Load(xml, dbFileName)
 	for _, node in pairs(xml) do
 		if type(node) == "table" then
 			if node.elem == "Spec" then
-				local newSpec = common.New("PassiveSpec", self.build)
+				local newSpec = new("PassiveSpec", self.build)
 				newSpec:Load(node, dbFileName)
 				t_insert(self.specList, newSpec)
 			end
 		end
 	end
 	if not self.specList[1] then
-		self.specList[1] = common.New("PassiveSpec", self.build)
+		selfself.specList[1] = new("PassiveSpec", self.build)
 	end
 	self:SetActiveSpec(tonumber(xml.attrib.activeSpec) or 1)
 end
@@ -214,9 +214,9 @@ function TreeTabClass:SetActiveSpec(specId)
 end
 
 function TreeTabClass:OpenSpecManagePopup()
-	main:OpenPopup(370, 290, "Manage Passive Trees", {
-		common.New("PassiveSpecList", nil, 0, 50, 350, 200, self),
-		common.New("ButtonControl", nil, 0, 260, 90, 20, "Done", function()
+main:OpenPopup(370, 290, "天赋树管理", {
+		new("PassiveSpecListControl", nil, 0, 50, 350, 200, self),
+		new("ButtonControl", nil, 0, 260, 90, 20, "Done", function()
 			main:ClosePopup()
 		end),
 	})
@@ -234,12 +234,12 @@ function TreeTabClass:OpenImportPopup()
 			main:ClosePopup()
 		end
 	end
-controls.editLabel = common.New("LabelControl", nil, 0, 20, 0, 16, "天赋天赋树链接:")
-	controls.edit = common.New("EditControl", nil, 0, 40, 350, 18, "", nil, nil, nil, function(buf)
+controls.editLabel = new("LabelControl", nil, 0, 20, 0, 16, "天赋树链接:")
+	controls.edit = new("EditControl", nil, 0, 40, 350, 18, "", nil, nil, nil, function(buf)
 		controls.msg.label = ""
 	end)
-	controls.msg = common.New("LabelControl", nil, 0, 58, 0, 16, "")
-	controls.import = common.New("ButtonControl", nil, -45, 80, 80, 20, "Import", function()
+	controls.msg = new("LabelControl", nil, 0, 58, 0, 16, "")
+controls.import = new("ButtonControl", nil, -45, 80, 80, 20, "导入", function()
 		local treeLink = controls.edit.buf
 		if #treeLink == 0 then
 			return
@@ -277,7 +277,7 @@ controls.msg.label = "解析PoEURL链接..."
 			decodeTreeLink(treeLink)
 		end
 	end)
-controls.cancel = common.New("ButtonControl", nil, 45, 80, 80, 20, "取消", function()
+controls.cancel = new("ButtonControl", nil, 45, 80, 80, 20, "取消", function()
 		main:ClosePopup()
 	end)
 main:OpenPopup(380, 110, "导入天赋树", controls, "import", "edit")
@@ -287,9 +287,9 @@ function TreeTabClass:OpenExportPopup()
 	local treeLink = self.build.spec:EncodeURL("https://www.pathofexile.com/passive-skill-tree/"..(self.build.targetVersion == "2_6" and "2.6.2/" or "3.4.0/"))
 	local popup
 	local controls = { }
-controls.label = common.New("LabelControl", nil, 0, 20, 0, 16, "天赋树链接:")
-	controls.edit = common.New("EditControl", nil, 0, 40, 350, 18, treeLink, nil, "%Z")
-	controls.shrink = common.New("ButtonControl", nil, -90, 70, 140, 20, "Shrink with PoEURL", function()
+ontrols.label = new("LabelControl", nil, 0, 20, 0, 16, "天赋树链接:")
+	controls.edit = new("EditControl", nil, 0, 40, 350, 18, treeLink, nil, "%Z")
+	controls.shrink = new("ButtonControl", nil, -90, 70, 140, 20, "Shrink with PoEURL", function()
 		controls.shrink.enabled = false
 		controls.shrink.label = "Shrinking..."
 		launch:DownloadPage("http://poeurl.com/shrink.php?url="..treeLink, function(page, errMsg)
@@ -303,10 +303,10 @@ main:OpenMessagePopup("PoEURL Shortener", "分享PoEURL链接失败（可能被�
 			end
 		end)
 	end)
-controls.copy = common.New("ButtonControl", nil, 30, 70, 80, 20, "复制", function()
+controls.copy = new("ButtonControl", nil, 30, 70, 80, 20, "复制", function()
 		Copy(treeLink)
 	end)
-controls.done = common.New("ButtonControl", nil, 120, 70, 80, 20, "关闭", function()
+controls.done = new("ButtonControl", nil, 120, 70, 80, 20, "关闭", function()
 		main:ClosePopup()
 	end)
 popup = main:OpenPopup(380, 100, "导出天赋树链接", controls, "done", "edit")

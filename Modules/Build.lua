@@ -3,7 +3,7 @@
 -- Module: Build
 -- Loads and manages the current build.
 --
-local launch, main = ...
+--local launch, main = ...
 
 local pairs = pairs
 local ipairs = ipairs
@@ -39,7 +39,7 @@ local fooBanditDropList = {
 { label = "阿莉亚 (魔力回复，暴击伤害，抗性)", banditId = "Alira" },
 }
 
-local buildMode = common.New("ControlHost")
+local buildMode = new("ControlHost")
 
 function buildMode:Init(dbFileName, buildName, buildXML, targetVersion)
 	self.dbFileName = dbFileName
@@ -64,18 +64,18 @@ function buildMode:Init(dbFileName, buildName, buildXML, targetVersion)
 
 	wipeTable(self.controls)
 
-	local miscTooltip = common.New("Tooltip")
+	local miscTooltip = new("Tooltip")
 
 	-- Controls: top bar, left side
-	self.anchorTopBarLeft = common.New("Control", nil, 4, 4, 0, 20)
-self.controls.back = common.New("ButtonControl", {"LEFT",self.anchorTopBarLeft,"RIGHT"}, 0, 0, 60, 20, "<<返回", function()
+	self.anchorTopBarLeft = new("Control", nil, 4, 4, 0, 20)
+self.controls.back = new("ButtonControl", {"LEFT",self.anchorTopBarLeft,"RIGHT"}, 0, 0, 60, 20, "<< 返回", function()
 		if self.unsaved then
 			self:OpenSavePopup("LIST")
 		else
 			self:CloseBuild()
 		end
 	end)
-	self.controls.buildName = common.New("Control", {"LEFT",self.controls.back,"RIGHT"}, 8, 0, 0, 20)
+	self.controls.buildName = new("Control", {"LEFT",self.controls.back,"RIGHT"}, 8, 0, 0, 20)
 	self.controls.buildName.width = function(control)
 		local limit = self.anchorTopBarRight:GetPos() - 98 - 40 - self.controls.back:GetSize() - self.controls.save:GetSize() - self.controls.saveAs:GetSize()
 		local bnw = DrawStringWidth(16, "VAR", self.buildName)
@@ -106,13 +106,13 @@ DrawString(0, 0, "LEFT", 16, "VAR", "当前的 build :  "..self.buildName)
 			SetDrawLayer(nil, 0)
 		end
 	end
-self.controls.save = common.New("ButtonControl", {"LEFT",self.controls.buildName,"RIGHT"}, 8, 0, 50, 20, "保存", function()
+self.controls.save = new("ButtonControl", {"LEFT",self.controls.buildName,"RIGHT"}, 8, 0, 50, 20, "保存", function()
 		self:SaveDBFile()
 	end)
 	self.controls.save.enabled = function()
 		return not self.dbFileName or self.unsaved
 	end
-self.controls.saveAs = common.New("ButtonControl", {"LEFT",self.controls.save,"RIGHT"}, 8, 0, 70, 20, "另存为", function()
+self.controls.saveAs = new("ButtonControl", {"LEFT",self.controls.save,"RIGHT"}, 8, 0, 70, 20, "另存为", function()
 		self:OpenSaveAsPopup()
 	end)
 	self.controls.saveAs.enabled = function()
@@ -120,8 +120,8 @@ self.controls.saveAs = common.New("ButtonControl", {"LEFT",self.controls.save,"R
 	end
 
 	-- Controls: top bar, right side
-	self.anchorTopBarRight = common.New("Control", nil, function() return main.screenW / 2 + 6 end, 4, 0, 20)
-	self.controls.pointDisplay = common.New("Control", {"LEFT",self.anchorTopBarRight,"RIGHT"}, -12, 0, 0, 20)
+	self.anchorTopBarRight = new("Control", nil, function() return main.screenW / 2 + 6 end, 4, 0, 20)
+	self.controls.pointDisplay = new("Control", {"LEFT",self.anchorTopBarRight,"RIGHT"}, -12, 0, 0, 20)
 	self.controls.pointDisplay.x = function(control)
 		local width, height = control:GetSize()
 		if self.controls.saveAs:GetPos() + self.controls.saveAs:GetSize() < self.anchorTopBarRight:GetPos() - width - 16 then
@@ -155,7 +155,7 @@ self.controls.saveAs = common.New("ButtonControl", {"LEFT",self.controls.save,"R
 			SetDrawLayer(nil, 0)
 		end
 	end
-	self.controls.characterLevel = common.New("EditControl", {"LEFT",self.controls.pointDisplay,"RIGHT"}, 12, 0, 106, 20, "", "Level", "%D", 3, function(buf)
+self.controls.characterLevel = new("EditControl", {"LEFT",self.controls.pointDisplay,"RIGHT"}, 12, 0, 106, 20, "", "等级", "%D", 3, function(buf)
 		self.characterLevel = m_min(tonumber(buf) or 1, 100)
 		self.modFlag = true
 		self.buildFlag = true
@@ -187,7 +187,7 @@ self.controls.saveAs = common.New("ButtonControl", {"LEFT",self.controls.save,"R
 			end
 		end
 	end
-	self.controls.classDrop = common.New("DropDownControl", {"LEFT",self.controls.characterLevel,"RIGHT"}, 8, 0, 100, 20, nil, function(index, value)
+	self.controls.classDrop = new("DropDownControl", {"LEFT",self.controls.characterLevel,"RIGHT"}, 8, 0, 100, 20, nil, function(index, value)
 		if value.classId ~= self.spec.curClassId then
 			if self.spec:CountAllocNodes() == 0 or self.spec:IsClassConnected(value.classId) then
 				self.spec:SelectClass(value.classId)
@@ -202,7 +202,7 @@ main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会�
 			end
 		end
 	end)
-	self.controls.ascendDrop = common.New("DropDownControl", {"LEFT",self.controls.classDrop,"RIGHT"}, 8, 0, 120, 20, nil, function(index, value)
+	self.controls.ascendDrop = new("DropDownControl", {"LEFT",self.controls.classDrop,"RIGHT"}, 8, 0, 120, 20, nil, function(index, value)
 		self.spec:SelectAscendClass(value.ascendClassId)
 		self.spec:AddUndoState()
 		self.buildFlag = true
@@ -217,7 +217,7 @@ main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会�
 { stat = "AverageDamage", label = "平均伤害", fmt = ".1f", compPercent = true, flag = "attack" },
 { stat = "Speed", label = "攻击速度", fmt = ".2f", compPercent = true, flag = "attack" },
 { stat = "Speed", label = "施法速度", fmt = ".2f", compPercent = true, flag = "spell" },
-{ stat = "HitSpeed", label = "击中速率", fmt = ".2f" },
+{ stat = "HitSpeed", label = "击中速率", fmt = ".2f", compPercent = true },
 { stat = "TrapThrowingTime", label = "陷阱投掷时间", fmt = ".2fs", compPercent = true, lowerIsBetter = true, },
 { stat = "TrapCooldown", label = "陷阱CD", fmt = ".2fs", lowerIsBetter = true },
 { stat = "MineLayingTime", label = "地雷放置时间", fmt = ".2fs", compPercent = true, lowerIsBetter = true, },
@@ -364,75 +364,76 @@ main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会�
 	end
 
 	-- Controls: Side bar
-	self.anchorSideBar = common.New("Control", nil, 4, 36, 0, 0)
-self.controls.modeImport = common.New("ButtonControl", {"TOPLEFT",self.anchorSideBar,"TOPLEFT"}, 0, 0, 72, 20, "导入/导出", function()
+	self.anchorSideBar = new("Control", nil, 4, 36, 0, 0)
+self.controls.modeImport = new("ButtonControl", {"TOPLEFT",self.anchorSideBar,"TOPLEFT"}, 0, 0, 72, 20,"导入/导出", function()
 		self.viewMode = "IMPORT"
 	end)
 	self.controls.modeImport.locked = function() return self.viewMode == "IMPORT" end
 --self.controls.modeNotes = common.New("ButtonControl", {"LEFT",self.controls.modeImport,"RIGHT"}, 4, 0, 58, 20, "BD备注", function()
-self.controls.modeNotes = common.New("ButtonControl", {"LEFT",self.controls.modeImport,"RIGHT"}, 4, 0, 72, 20, "BD备注", function()
+self.controls.modeNotes =new("ButtonControl", {"LEFT",self.controls.modeImport,"RIGHT"},  4, 0, 72, 20, "BD备注", function()
 	
 		self.viewMode = "NOTES"
 	end)
 	self.controls.modeNotes.locked = function() return self.viewMode == "NOTES" end
 --self.controls.modeConfig = common.New("ButtonControl", {"TOPRIGHT",self.anchorSideBar,"TOPLEFT"}, 300, 0, 100, 20, "配置", function()
-self.controls.modeConfig = common.New("ButtonControl",  {"TOPRIGHT",self.anchorSideBar,"TOPLEFT"}, 225, 0, 72, 20, "配置", function()
+self.controls.modeConfig = new("ButtonControl", {"TOPRIGHT",self.anchorSideBar,"TOPLEFT"}, 225, 0, 72, 20, "配置", function()
+
 
 		self.viewMode = "CONFIG"
 	end)
 	
 	-- lucifer
-self.controls.aboutTab = common.New("ButtonControl",  {"TOPRIGHT",self.anchorSideBar,"TOPLEFT"}, 300, 0, 72, 20, "国服版", function()
+self.controls.aboutTab = new("ButtonControl",  {"TOPRIGHT",self.anchorSideBar,"TOPLEFT"}, 300, 0, 72, 20, "国服版", function()
 		self.viewMode = "ABOUT"
 	end)
 	self.controls.aboutTab.locked = function() return self.viewMode == "ABOUT" end
 	--
 	self.controls.modeConfig.locked = function() return self.viewMode == "CONFIG" end
-self.controls.modeTree = common.New("ButtonControl", {"TOPLEFT",self.anchorSideBar,"TOPLEFT"}, 0, 26, 72, 20, "天赋树", function()
+self.controls.modeTree = new("ButtonControl",{"TOPLEFT",self.anchorSideBar,"TOPLEFT"}, 0, 26, 72, 20, "天赋树", function()
 		self.viewMode = "TREE"
 	end)
 	self.controls.modeTree.locked = function() return self.viewMode == "TREE" end
-self.controls.modeSkills = common.New("ButtonControl", {"LEFT",self.controls.modeTree,"RIGHT"}, 4, 0, 72, 20, "技能组", function()
+self.controls.modeSkills = new("ButtonControl",{"LEFT",self.controls.modeTree,"RIGHT"}, 4, 0, 72, 20, "技能组", function()
 		self.viewMode = "SKILLS"
 	end)
 	self.controls.modeSkills.locked = function() return self.viewMode == "SKILLS" end
-self.controls.modeItems = common.New("ButtonControl", {"LEFT",self.controls.modeSkills,"RIGHT"}, 4, 0, 72, 20, "装备物品", function()
+self.controls.modeItems =new("ButtonControl", {"LEFT",self.controls.modeSkills,"RIGHT"}, 4, 0, 72, 20, "装备物品", function()
 		self.viewMode = "ITEMS"
 	end)
 	self.controls.modeItems.locked = function() return self.viewMode == "ITEMS" end
-self.controls.modeCalcs = common.New("ButtonControl", {"LEFT",self.controls.modeItems,"RIGHT"}, 4, 0, 72, 20, "计算", function()
+self.controls.modeCalcs = new("ButtonControl", {"LEFT",self.controls.modeItems,"RIGHT"}, 4, 0, 72, 20, "计算", function()
 		self.viewMode = "CALCS"
 	end)
 	self.controls.modeCalcs.locked = function() return self.viewMode == "CALCS" end
 	if self.targetVersion == "2_6" then
-		self.controls.banditNormal = common.New("DropDownControl", {"TOPLEFT",self.anchorSideBar,"TOPLEFT"}, 0, 70, 100, 16, normalBanditDropList, function(index, value)
+		self.controls.banditNormal = new("DropDownControl", {"TOPLEFT",self.anchorSideBar,"TOPLEFT"}, 0, 70, 100, 16, normalBanditDropList, function(index, value)
 			self.banditNormal = value.banditId
 			self.modFlag = true
 			self.buildFlag = true
 		end)
-		self.controls.banditNormalLabel = common.New("LabelControl", {"BOTTOMLEFT",self.controls.banditNormal,"TOPLEFT"}, 0, 0, 0, 14, "^7Normal Bandit:")
-		self.controls.banditCruel = common.New("DropDownControl", {"LEFT",self.controls.banditNormal,"RIGHT"}, 0, 0, 100, 16, mercilessBanditDropList, function(index, value)
+		self.controls.banditNormalLabel = new("LabelControl", {"BOTTOMLEFT",self.controls.banditNormal,"TOPLEFT"}, 0, 0, 0, 14, "^7Normal Bandit:")
+		self.controls.banditCruel = new("DropDownControl", {"LEFT",self.controls.banditNormal,"RIGHT"}, 0, 0, 100, 16, mercilessBanditDropList, function(index, value)
 			self.banditCruel = value.banditId
 			self.modFlag = true
 			self.buildFlag = true
 		end)
-		self.controls.banditCruelLabel = common.New("LabelControl", {"BOTTOMLEFT",self.controls.banditCruel,"TOPLEFT"}, 0, 0, 0, 14, "^7Cruel Bandit:")
-		self.controls.banditMerciless = common.New("DropDownControl", {"LEFT",self.controls.banditCruel,"RIGHT"}, 0, 0, 100, 16, cruelBanditDropList, function(index, value)
+		self.controls.banditCruelLabel = new("LabelControl", {"BOTTOMLEFT",self.controls.banditCruel,"TOPLEFT"}, 0, 0, 0, 14, "^7Cruel Bandit:")
+		self.controls.banditMerciless = new("DropDownControl", {"LEFT",self.controls.banditCruel,"RIGHT"}, 0, 0, 100, 16, cruelBanditDropList, function(index, value)
 			self.banditMerciless = value.banditId
 			self.modFlag = true
 			self.buildFlag = true
 		end)
-		self.controls.banditMercilessLabel = common.New("LabelControl", {"BOTTOMLEFT",self.controls.banditMerciless,"TOPLEFT"}, 0, 0, 0, 14, "^7Merciless Bandit:")
+		self.controls.banditMercilessLabel = new("LabelControl", {"BOTTOMLEFT",self.controls.banditMerciless,"TOPLEFT"}, 0, 0, 0, 14, "^7Merciless Bandit:")
 	else
-		self.controls.bandit = common.New("DropDownControl", {"TOPLEFT",self.anchorSideBar,"TOPLEFT"}, 0, 70, 300, 16, fooBanditDropList, function(index, value)
+		self.controls.bandit = new("DropDownControl", {"TOPLEFT",self.anchorSideBar,"TOPLEFT"}, 0, 70, 300, 16, fooBanditDropList, function(index, value)
 			self.bandit = value.banditId
 			self.modFlag = true
 			self.buildFlag = true
 		end)
-self.controls.banditLabel = common.New("LabelControl", {"BOTTOMLEFT",self.controls.bandit,"TOPLEFT"}, 0, 0, 0, 14, "^7盗贼:")
+self.controls.banditLabel = new("LabelControl", {"BOTTOMLEFT",self.controls.bandit,"TOPLEFT"}, 0, 0, 0, 14, "^7盗贼:")
 	end	
-self.controls.mainSkillLabel = common.New("LabelControl", {"TOPLEFT",self.anchorSideBar,"TOPLEFT"}, 0, 95, 300, 16, "^7主要技能:")
-	self.controls.mainSocketGroup = common.New("DropDownControl", {"TOPLEFT",self.controls.mainSkillLabel,"BOTTOMLEFT"}, 0, 2, 300, 16, nil, function(index, value)
+self.controls.mainSkillLabel = new("LabelControl", {"TOPLEFT",self.anchorSideBar,"TOPLEFT"}, 0, 95, 300, 16, "^7主要技能：")
+	self.controls.mainSocketGroup = new("DropDownControl", {"TOPLEFT",self.controls.mainSkillLabel,"BOTTOMLEFT"}, 0, 2, 300, 16, nil, function(index, value)
 		self.mainSocketGroup = index
 		self.modFlag = true
 		self.buildFlag = true
@@ -443,20 +444,20 @@ self.controls.mainSkillLabel = common.New("LabelControl", {"TOPLEFT",self.anchor
 			self.skillsTab:AddSocketGroupTooltip(tooltip, socketGroup)
 		end
 	end
-	self.controls.mainSkill = common.New("DropDownControl", {"TOPLEFT",self.controls.mainSocketGroup,"BOTTOMLEFT"}, 0, 2, 300, 16, nil, function(index, value)
+	self.controls.mainSkill = new("DropDownControl", {"TOPLEFT",self.controls.mainSocketGroup,"BOTTOMLEFT"}, 0, 2, 300, 16, nil, function(index, value)
 		local mainSocketGroup = self.skillsTab.socketGroupList[self.mainSocketGroup]
 		mainSocketGroup.mainActiveSkill = index
 		self.modFlag = true
 		self.buildFlag = true
 	end)
-	self.controls.mainSkillPart = common.New("DropDownControl", {"TOPLEFT",self.controls.mainSkill,"BOTTOMLEFT",true}, 0, 2, 150, 18, nil, function(index, value)
+	self.controls.mainSkillPart = new("DropDownControl", {"TOPLEFT",self.controls.mainSkill,"BOTTOMLEFT",true}, 0, 2, 200, 18, nil, function(index, value)
 		local mainSocketGroup = self.skillsTab.socketGroupList[self.mainSocketGroup]
 		local srcInstance = mainSocketGroup.displaySkillList[mainSocketGroup.mainActiveSkill].activeEffect.srcInstance
 		srcInstance.skillPart = index
 		self.modFlag = true
 		self.buildFlag = true
 	end)
-	self.controls.mainSkillMinion = common.New("DropDownControl", {"TOPLEFT",self.controls.mainSkillPart,"BOTTOMLEFT",true}, 0, 2, 178, 18, nil, function(index, value)
+	self.controls.mainSkillMinion = new("DropDownControl", {"TOPLEFT",self.controls.mainSkillPart,"BOTTOMLEFT",true}, 0, 2, 178, 18, nil, function(index, value)
 		local mainSocketGroup = self.skillsTab.socketGroupList[self.mainSocketGroup]
 		local srcInstance = mainSocketGroup.displaySkillList[mainSocketGroup.mainActiveSkill].activeEffect.srcInstance
 		if value.itemSetId then
@@ -485,18 +486,18 @@ self.controls.mainSkillLabel = common.New("LabelControl", {"TOPLEFT",self.anchor
 			tooltip:AddLine(14, colorCodes.TIP.."Tip: You can drag items from the Items tab onto this dropdown to equip them onto the minion.")
 		end
 	end
-	self.controls.mainSkillMinionLibrary = common.New("ButtonControl", {"LEFT",self.controls.mainSkillMinion,"RIGHT"}, 2, 0, 120, 18, "Manage Spectres...", function()
+	self.controls.mainSkillMinionLibrary = new("ButtonControl", {"LEFT",self.controls.mainSkillMinion,"RIGHT"}, 2, 0, 120, 18, "Manage Spectres...", function()
 		self:OpenSpectreLibrary()
 	end)
-	self.controls.mainSkillMinionSkill = common.New("DropDownControl", {"TOPLEFT",self.controls.mainSkillMinion,"BOTTOMLEFT",true}, 0, 2, 200, 16, nil, function(index, value)
+	self.controls.mainSkillMinionSkill = new("DropDownControl", {"TOPLEFT",self.controls.mainSkillMinion,"BOTTOMLEFT",true}, 0, 2, 200, 16, nil, function(index, value)
 		local mainSocketGroup = self.skillsTab.socketGroupList[self.mainSocketGroup]
 		local srcInstance = mainSocketGroup.displaySkillList[mainSocketGroup.mainActiveSkill].activeEffect.srcInstance
 		srcInstance.skillMinionSkill = index
 		self.modFlag = true
 		self.buildFlag = true
 	end)
-	self.controls.statBoxAnchor = common.New("Control", {"TOPLEFT",self.controls.mainSkillMinionSkill,"BOTTOMLEFT",true}, 0, 2, 0, 0)
-	self.controls.statBox = common.New("TextListControl", {"TOPLEFT",self.controls.statBoxAnchor,"BOTTOMLEFT"}, 0, 2, 300, 0, {{x=170,align="RIGHT_X"},{x=174,align="LEFT"}})
+	self.controls.statBoxAnchor = new("Control", {"TOPLEFT",self.controls.mainSkillMinionSkill,"BOTTOMLEFT",true}, 0, 2, 0, 0)
+	self.controls.statBox = new("TextListControl", {"TOPLEFT",self.controls.statBoxAnchor,"BOTTOMLEFT"}, 0, 2, 300, 0, {{x=170,align="RIGHT_X"},{x=174,align="LEFT"}})
 	self.controls.statBox.height = function(control)
 		local x, y = control:GetPos()
 		return main.screenH - main.mainBarHeight - 4 - y
@@ -505,14 +506,14 @@ self.controls.mainSkillLabel = common.New("LabelControl", {"TOPLEFT",self.anchor
 	-- Initialise build components
 	self.data = data[self.targetVersion]
 	self.tree = main.tree[self.targetVersion]
-	self.importTab = common.New("ImportTab", self)
-	self.notesTab = common.New("NotesTab", self)
-	self.configTab = common.New("ConfigTab", self)
-	self.itemsTab = common.New("ItemsTab", self)
-	self.treeTab = common.New("TreeTab", self)
-	self.skillsTab = common.New("SkillsTab", self)
-	self.calcsTab = common.New("CalcsTab", self)
-self.aboutTab = common.New("AboutTab", self)--lucifer
+	self.importTab = new("ImportTab", self)
+	self.notesTab = new("NotesTab", self)
+	self.configTab = new("ConfigTab", self)
+	self.itemsTab = new("ItemsTab", self)
+	self.treeTab = new("TreeTab", self)
+	self.skillsTab = new("SkillsTab", self)
+	self.calcsTab = new("CalcsTab", self)
+self.aboutTab = new("AboutTab", self)--lucifer
 	-- Load sections from the build file
 	self.savers = {
 		["Config"] = self.configTab,
@@ -565,7 +566,7 @@ self.aboutTab = common.New("AboutTab", self)--lucifer
 	self.buildFlag = false
 
 	--[[
-	local testTooltip = common.New("Tooltip")
+	local testTooltip = new("Tooltip")
 	for _, item in pairs(main.uniqueDB.list) do
 		ConPrintf("%s", item.name)
 		self.itemsTab:AddItemTooltip(testTooltip, item)
@@ -824,15 +825,15 @@ function buildMode:OpenTargetVersionPopup(initial)
 			self:Init(false, self.buildName, nil, version)
 		end
 	end
-	controls.label = common.New("LabelControl", nil, 0, 20, 0, 16, "^7Which game version will this build use?")
-	controls.version2_6 = common.New("ButtonControl", nil, -90, 50, 170, 20, "2.6 (Atlas of Worlds)", function()
+	controls.label = new("LabelControl", nil, 0, 20, 0, 16, "^7Which game version will this build use?")
+	controls.version2_6 = new("ButtonControl", nil, -90, 50, 170, 20, "2.6 (Atlas of Worlds)", function()
 		setVersion("2_6")
 	end)
-	controls.version3_0 = common.New("ButtonControl", nil, 90, 50, 170, 20, "3.0 (Fall of Oriath)", function()
+	controls.version3_0 = new("ButtonControl", nil, 90, 50, 170, 20, "3.0 (Fall of Oriath)", function()
 		setVersion("3_0")
 	end)
-	controls.note = common.New("LabelControl", nil, 0, 80, 0, 14, "^7Tip: Existing builds can be converted between versions\nusing the 'Game Version' option in the Configuration tab.")
-	controls.cancel = common.New("ButtonControl", nil, 0, 120, 80, 20, "Cancel", function()
+	controls.note = new("LabelControl", nil, 0, 80, 0, 14, "^7Tip: Existing builds can be converted between versions\nusing the 'Game Version' option in the Configuration tab.")
+	controls.cancel = new("ButtonControl", nil, 0, 120, 80, 20, "Cancel", function()
 		main:ClosePopup()
 		if initial then
 			self:CloseBuild()
@@ -849,14 +850,14 @@ function buildMode:OpenSavePopup(mode, newVersion)
 		["VERSION"] = "before converting?",
 	}
 	local controls = { }
-controls.label = common.New("LabelControl", nil, 0, 20, 0, 16, "^7这个Build有修改的地方还没有保存.\n你想要保存它们吗? ")
-	controls.save = common.New("ButtonControl", nil, -90, 70, 80, 20, "Save", function()
+controls.label = new("LabelControl", nil, 0, 20, 0, 16, "^7这个Build有修改的地方还没有保存.\n你想要保存它们吗? "..modeDesc[mode])
+	controls.save = new("ButtonControl", nil, -90, 70, 80, 20, "Save", function()
 		main:ClosePopup()
 		self.actionOnSave = mode
 		self.versionOnSave = newVersion
 		self:SaveDBFile()
 	end)
-controls.noSave = common.New("ButtonControl", nil, 0, 70, 80, 20, "不保存", function()
+controls.noSave = new("ButtonControl", nil, 0, 70, 80, 20, "不保存", function()
 		main:ClosePopup()
 		if mode == "LIST" then
 			self:CloseBuild()
@@ -869,7 +870,7 @@ controls.noSave = common.New("ButtonControl", nil, 0, 70, 80, 20, "不保存", f
 			self:Init(self.dbFileName, self.buildName, nil, newVersion)
 		end
 	end)
-controls.close = common.New("ButtonControl", nil, 90, 70, 80, 20, "取消", function()
+controls.close = new("ButtonControl", nil, 90, 70, 80, 20, "取消", function()
 		main:ClosePopup()
 	end)
 main:OpenPopup(300, 100, "保存修改", controls)
@@ -892,22 +893,22 @@ function buildMode:OpenSaveAsPopup()
 			end
 		end
 	end
-controls.label = common.New("LabelControl", nil, 0, 20, 0, 16, "^7输入新的Build名称（不建议中文，报错的话左上角【另存为】重试）:")
-	controls.edit = common.New("EditControl", nil, 0, 40, 450, 20, self.dbFileName and self.buildName, nil, "\\/:%*%?\"<>|%c", 100, function(buf)
+controls.label = new("LabelControl", nil, 0, 20, 0, 16, "^7Enter new build name:")
+	controls.edit = new("EditControl", nil, 0, 40, 450, 20, self.dbFileName and self.buildName, nil, "\\/:%*%?\"<>|%c", 100, function(buf)
 		updateBuildName()
 	end)
-controls.folderLabel = common.New("LabelControl", {"TOPLEFT",nil,"TOPLEFT"}, 10, 70, 0, 16, "^7文件夹:")
-controls.newFolder = common.New("ButtonControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 67, 94, 20, "新建文件夹...", function()
+controls.folderLabel = new("LabelControl", {"TOPLEFT",nil,"TOPLEFT"}, 10, 70, 0, 16, "^7文件夹:")
+controls.newFolder = new("ButtonControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 67, 94, 20, "新建文件夹...", function()
 		main:OpenNewFolderPopup(main.buildPath..controls.folder.subPath, function(newFolderName)
 			if newFolderName then
 				controls.folder:OpenFolder(newFolderName)
 			end
 		end)
 	end)
-	controls.folder = common.New("FolderList", nil, 0, 115, 450, 100, self.dbFileSubPath, function(subPath)
+	controls.folder = new("FolderListControl", nil, 0, 115, 450, 100, self.dbFileSubPath, function(subPath)
 		updateBuildName()
 	end)
-controls.save = common.New("ButtonControl", nil, -45, 225, 80, 20, "保存", function()
+controls.save = new("ButtonControl", nil, -45, 225, 80, 20, "保存", function()
 		main:ClosePopup()
 		self.dbFileName = newFileName
 		self.buildName = newBuildName
@@ -915,7 +916,7 @@ controls.save = common.New("ButtonControl", nil, -45, 225, 80, 20, "保存", fun
 		self:SaveDBFile()
 	end)
 	controls.save.enabled = false
-controls.close = common.New("ButtonControl", nil, 45, 225, 80, 20, "取消", function()
+controls.close = new("ButtonControl", nil, 45, 225, 80, 20, "取消", function()
 		main:ClosePopup()
 		self.actionOnSave = nil
 		self.versionOnSave = nil
@@ -938,15 +939,15 @@ function buildMode:OpenSpectreLibrary()
 		end
 	end)
 	local controls = { }
-	controls.list = common.New("MinionList", nil, -100, 40, 190, 250, self.data, destList)
-	controls.source = common.New("MinionList", nil, 100, 40, 190, 250, self.data, sourceList, controls.list)
-	controls.save = common.New("ButtonControl", nil, -45, 300, 80, 20, "Save", function()
+	controls.list = new("MinionListControl", nil, -100, 40, 190, 250, self.data, destList)
+	controls.source = new("MinionListControl", nil, 100, 40, 190, 250, self.data, sourceList, controls.list)
+	controls.save = new("ButtonControl", nil, -45, 300, 80, 20, "Save", function()
 		self.spectreList = destList
 		self.modFlag = true
 		self.buildFlag = true
 		main:ClosePopup()
 	end)
-	controls.cancel = common.New("ButtonControl", nil, 45, 300, 80, 20, "Cancel", function()
+controls.cancel = new("ButtonControl", nil, 45, 300, 80, 20, "取消", function()
 		main:ClosePopup()
 	end)
 	main:OpenPopup(410, 330, "Spectre Library", controls)

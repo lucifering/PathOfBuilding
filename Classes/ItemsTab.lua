@@ -3,7 +3,7 @@
 -- Module: Items Tab
 -- Items tab for the current build.
 --
-local launch, main = ...
+--local launch, main = ...
 
 local pairs = pairs
 local ipairs = ipairs
@@ -33,20 +33,20 @@ local socketDropList = {
 
 local baseSlots = { "Weapon 1", "Weapon 2", "Helmet", "Body Armour", "Gloves", "Boots", "Amulet", "Ring 1", "Ring 2", "Belt", "Flask 1", "Flask 2", "Flask 3", "Flask 4", "Flask 5" }
 
-local ItemsTabClass = common.NewClass("ItemsTab", "UndoHandler", "ControlHost", "Control", function(self, build)
+local ItemsTabClass = newClass("ItemsTab", "UndoHandler", "ControlHost", "Control", function(self, build)
 	self.UndoHandler()
 	self.ControlHost()
 	self.Control()
 
 	self.build = build
 	
-	self.socketViewer = common.New("PassiveTreeView")
+	self.socketViewer = new("PassiveTreeView")
 
 	self.items = { }
 	self.itemOrderList = { }
 
 	-- Set selector
-	self.controls.setSelect = common.New("DropDownControl", {"TOPLEFT",self,"TOPLEFT"}, 96, 8, 200, 20, nil, function(index, value)
+	self.controls.setSelect = new("DropDownControl", {"TOPLEFT",self,"TOPLEFT"}, 96, 8, 200, 20, nil, function(index, value)
 		self:SetActiveItemSet(self.itemSetOrderList[index])
 		self:AddUndoState()
 	end)
@@ -59,8 +59,8 @@ local ItemsTabClass = common.NewClass("ItemsTab", "UndoHandler", "ControlHost", 
 			self:AddItemSetTooltip(tooltip, self.itemSets[self.itemSetOrderList[index]])
 		end
 	end
-self.controls.setLabel = common.New("LabelControl", {"RIGHT",self.controls.setSelect,"LEFT"}, -2, 0, 0, 16, "^7套装:")
-self.controls.setManage = common.New("ButtonControl", {"LEFT",self.controls.setSelect,"RIGHT"}, 4, 0, 90, 20, "管理...", function()
+self.controls.setLabel = new("LabelControl", {"RIGHT",self.controls.setSelect,"LEFT"}, -2, 0, 0, 16, "^7套装:")
+self.controls.setManage = new("ButtonControl", {"LEFT",self.controls.setSelect,"RIGHT"}, 4, 0, 90, 20, "管理...", function()
 		self:OpenItemSetManagePopup()
 	end)
 
@@ -68,7 +68,7 @@ self.controls.setManage = common.New("ButtonControl", {"LEFT",self.controls.setS
 	self.slots = { }
 	self.orderedSlots = { }
 	self.slotOrder = { }
-	self.slotAnchor = common.New("Control", {"TOPLEFT",self,"TOPLEFT"}, 96, 54, 310, 0)
+	self.slotAnchor = new("Control", {"TOPLEFT",self,"TOPLEFT"}, 96, 54, 310, 0)
 	local prevSlot = self.slotAnchor
 	local function addSlot(slot)
 		prevSlot = slot
@@ -78,7 +78,7 @@ self.controls.setManage = common.New("ButtonControl", {"LEFT",self.controls.setS
 		t_insert(self.controls, slot)
 	end
 	for index, slotName in ipairs(baseSlots) do
-		local slot = common.New("ItemSlot", {"TOPLEFT",prevSlot,"BOTTOMLEFT"}, 0, 0, self, slotName)
+		local slot = new("ItemSlotControl", {"TOPLEFT",prevSlot,"BOTTOMLEFT"}, 0, 0, self, slotName)
 		addSlot(slot)
 		if slotName:match("Weapon") then
 			-- Add alternate weapon slot
@@ -86,14 +86,14 @@ self.controls.setManage = common.New("ButtonControl", {"LEFT",self.controls.setS
 			slot.shown = function()
 				return not self.activeItemSet.useSecondWeaponSet
 			end
-			local swapSlot = common.New("ItemSlot", {"TOPLEFT",prevSlot,"BOTTOMLEFT"}, 0, 0, self, slotName.." Swap", slotName)
+			local swapSlot = new("ItemSlotControl", {"TOPLEFT",prevSlot,"BOTTOMLEFT"}, 0, 0, self, slotName.." Swap", slotName)
 			addSlot(swapSlot)			
 			swapSlot.weaponSet = 2
 			swapSlot.shown = function()
 				return self.activeItemSet.useSecondWeaponSet
 			end
 		for i = 1, 2 do
-				local abyssal = common.New("ItemSlot", {"TOPLEFT",prevSlot,"BOTTOMLEFT"}, 0, 0, self, slotName.."Swap Abyssal Socket "..i, "Abyssal #"..i)			
+				local abyssal = new("ItemSlotControl", {"TOPLEFT",prevSlot,"BOTTOMLEFT"}, 0, 0, self, slotName.."Swap Abyssal Socket "..i, "Abyssal #"..i)				
 				addSlot(abyssal)
 				abyssal.parentSlot = swapSlot
 				abyssal.weaponSet = 2
@@ -106,7 +106,7 @@ self.controls.setManage = common.New("ButtonControl", {"LEFT",self.controls.setS
 		if slotName == "Weapon 1" or slotName == "Weapon 2" or slotName == "Helmet" or slotName == "Gloves" or slotName == "Body Armour" or slotName == "Boots" or slotName == "Belt" then
 			-- Add Abyssal Socket slots
 			for i = 1, 2 do
-				local abyssal = common.New("ItemSlot", {"TOPLEFT",prevSlot,"BOTTOMLEFT"}, 0, 0, self, slotName.." Abyssal Socket "..i, "Abyssal #"..i)			
+				local abyssal = new("ItemSlotControl", {"TOPLEFT",prevSlot,"BOTTOMLEFT"}, 0, 0, self, slotName.." Abyssal Socket "..i, "Abyssal #"..i)					
 				addSlot(abyssal)
 				abyssal.parentSlot = slot
 				if slotName:match("Weapon") then
@@ -132,13 +132,13 @@ self.controls.setManage = common.New("ButtonControl", {"LEFT",self.controls.setS
 		return a.id < b.id
 	end)
 	for _, node in ipairs(socketOrder) do
-		local socketControl = common.New("ItemSlot", {"TOPLEFT",prevSlot,"BOTTOMLEFT"}, 0, 0, self, "Jewel "..node.id, "Socket", node.id)
+		local socketControl = new("ItemSlotControl", {"TOPLEFT",prevSlot,"BOTTOMLEFT"}, 0, 0, self, "Jewel "..node.id, "Socket", node.id)
 		 
 		self.sockets[node.id] = socketControl
 		addSlot(socketControl)
 	end
-self.controls.slotHeader = common.New("LabelControl", {"BOTTOMLEFT",self.slotAnchor,"TOPLEFT"}, 0, -4, 0, 16, "^7已装备:")
-	self.controls.weaponSwap1 = common.New("ButtonControl", {"BOTTOMRIGHT",self.slotAnchor,"TOPRIGHT"}, -20, -2, 18, 18, "I", function()
+self.controls.slotHeader = new("LabelControl", {"BOTTOMLEFT",self.slotAnchor,"TOPLEFT"}, 0, -4, 0, 16, "^7已装备:")
+	self.controls.weaponSwap1 = new("ButtonControl", {"BOTTOMRIGHT",self.slotAnchor,"TOPRIGHT"}, -20, -2, 18, 18, "I", function()
 		if self.activeItemSet.useSecondWeaponSet then
 			self.activeItemSet.useSecondWeaponSet = false
 			self:AddUndoState()
@@ -158,7 +158,7 @@ self.controls.slotHeader = common.New("LabelControl", {"BOTTOMLEFT",self.slotAnc
 	self.controls.weaponSwap1.locked = function()
 		return not self.activeItemSet.useSecondWeaponSet
 	end
-	self.controls.weaponSwap2 = common.New("ButtonControl", {"BOTTOMRIGHT",self.slotAnchor,"TOPRIGHT"}, 0, -2, 18, 18, "II", function()
+	self.controls.weaponSwap2 = new("ButtonControl", {"BOTTOMRIGHT",self.slotAnchor,"TOPRIGHT"}, 0, -2, 18, 18, "II", function()
 		if not self.activeItemSet.useSecondWeaponSet then
 			self.activeItemSet.useSecondWeaponSet = true
 			self:AddUndoState()
@@ -178,20 +178,19 @@ self.controls.slotHeader = common.New("LabelControl", {"BOTTOMLEFT",self.slotAnc
 	self.controls.weaponSwap2.locked = function()
 		return self.activeItemSet.useSecondWeaponSet
 	end
-self.controls.weaponSwapLabel = common.New("LabelControl", {"RIGHT",self.controls.weaponSwap1,"LEFT"}, -4, 0, 0, 14, "^7武器列表:")
-
+self.controls.weaponSwapLabel = new("LabelControl", {"RIGHT",self.controls.weaponSwap1,"LEFT"}, -4, 0, 0, 14, "^7武器列表:")
 	-- All items list
-	self.controls.itemList = common.New("ItemList", {"TOPLEFT",self.slotAnchor,"TOPRIGHT"}, 20, -20, 360, 308, self)
+	self.controls.itemList = new("ItemListControl", {"TOPLEFT",self.slotAnchor,"TOPRIGHT"}, 20, -20, 360, 308, self)
 
 	-- Database selector
-self.controls.selectDBLabel = common.New("LabelControl", {"TOPLEFT",self.controls.itemList,"BOTTOMLEFT"}, 0, 14, 0, 16, "^7导入目标:")
+self.controls.selectDBLabel = new("LabelControl", {"TOPLEFT",self.controls.itemList,"BOTTOMLEFT"}, 0, 14, 0, 16, "^7导入目标:")
 	self.controls.selectDBLabel.shown = function()
 		return self.height < 980
 	end
-self.controls.selectDB = common.New("DropDownControl", {"LEFT",self.controls.selectDBLabel,"RIGHT"}, 4, 0, 150, 18, { "内置传奇", "金装模板" })
+self.controls.selectDB = new("DropDownControl", {"LEFT",self.controls.selectDBLabel,"RIGHT"}, 4, 0, 150, 18, { "内置传奇", "金装模板"  })
 
 	-- Unique database
-	self.controls.uniqueDB = common.New("ItemDB", {"TOPLEFT",self.controls.itemList,"BOTTOMLEFT"}, 0, 76, 360, function(c) return m_min(244, self.maxY - select(2, c:GetPos())) end, self, main.uniqueDB[build.targetVersion], "UNIQUE")
+	self.controls.uniqueDB = new("ItemDBControl", {"TOPLEFT",self.controls.itemList,"BOTTOMLEFT"}, 0, 76, 360, function(c) return m_min(244, self.maxY - select(2, c:GetPos())) end, self, main.uniqueDB[build.targetVersion], "UNIQUE")
 	self.controls.uniqueDB.y = function()
 		return self.controls.selectDBLabel:IsShown() and 98 or 76
 	end
@@ -200,7 +199,7 @@ self.controls.selectDB = common.New("DropDownControl", {"LEFT",self.controls.sel
 	end
 
 	-- Rare template database
-	self.controls.rareDB = common.New("ItemDB", {"TOPLEFT",self.controls.itemList,"BOTTOMLEFT"}, 0, 76, 360, function(c) return m_min(260, self.maxY - select(2, c:GetPos())) end, self, main.rareDB[build.targetVersion], "RARE")
+	self.controls.rareDB = new("ItemDBControl", {"TOPLEFT",self.controls.itemList,"BOTTOMLEFT"}, 0, 76, 360, function(c) return m_min(260, self.maxY - select(2, c:GetPos())) end, self, main.rareDB[build.targetVersion], "RARE")
 	self.controls.rareDB.y = function()
 		return self.controls.selectDBLabel:IsShown() and 78 or 376
 	end
@@ -209,49 +208,49 @@ self.controls.selectDB = common.New("DropDownControl", {"LEFT",self.controls.sel
 	end
 
 	-- Create/import item
-self.controls.craftDisplayItem = common.New("ButtonControl", {"TOPLEFT",self.controls.itemList,"TOPRIGHT"}, 20, 0, 120, 20, "创建装备...", function()
+self.controls.craftDisplayItem = new("ButtonControl", {"TOPLEFT",self.controls.itemList,"TOPRIGHT"}, 20, 0, 120, 20, "创建装备...", function()
 		self:CraftItem()
 	end)
 	self.controls.craftDisplayItem.shown = function()
 		return self.displayItem == nil 
 	end
-self.controls.newDisplayItem = common.New("ButtonControl", {"TOPLEFT",self.controls.craftDisplayItem,"TOPRIGHT"}, 8, 0, 120, 20, "自定义装备...", function()
+self.controls.newDisplayItem = new("ButtonControl", {"TOPLEFT",self.controls.craftDisplayItem,"TOPRIGHT"}, 8, 0, 120, 20, "自定义装备...", function()
 		self:EditDisplayItemText()
 	end)
-	self.controls.displayItemTip = common.New("LabelControl", {"TOPLEFT",self.controls.craftDisplayItem,"BOTTOMLEFT"}, 0, 8, 100, 16, 
+	self.controls.displayItemTip = new("LabelControl", {"TOPLEFT",self.controls.craftDisplayItem,"BOTTOMLEFT"}, 0, 8, 100, 16, 
 [[^7双击右边的装备列表中的装备，
 或者复制粘贴一个物品（鼠标移到物品上查看信息，然后按下Ctrl+C），
 来查看或编辑一个装备，最后加入你的build中。
 你可以按下Ctrl+鼠标点击来装备到身上，或者拖放到目标位置上，
 一样可以加入你的build中（如果是内置传奇或金装模板中的装备的话）。
 如果有2个位置都可以装备那件物品，那么想快捷装备到第二个位置，那么多按一个Shift键。]])
-	self.controls.sharedItemList = common.New("SharedItemList", {"TOPLEFT",self.controls.craftDisplayItem, "BOTTOMLEFT"}, 0, 142, 360, 308, self)
+	self.controls.sharedItemList = new("SharedItemListControl", {"TOPLEFT",self.controls.craftDisplayItem, "BOTTOMLEFT"}, 0, 142, 360, 308, self)
 
 	-- Display item
-	self.displayItemTooltip = common.New("Tooltip")
+	self.displayItemTooltip = new("Tooltip")
 	self.displayItemTooltip.maxWidth = 458
-	self.anchorDisplayItem = common.New("Control", {"TOPLEFT",self.controls.itemList,"TOPRIGHT"}, 20, 0, 0, 0)
+	self.anchorDisplayItem = new("Control", {"TOPLEFT",self.controls.itemList,"TOPRIGHT"}, 20, 0, 0, 0)
 	self.anchorDisplayItem.shown = function()
 		return self.displayItem ~= nil
 	end
-	self.controls.addDisplayItem = common.New("ButtonControl", {"TOPLEFT",self.anchorDisplayItem,"TOPLEFT"}, 0, 0, 100, 20, "", function()
+	self.controls.addDisplayItem = new("ButtonControl", {"TOPLEFT",self.anchorDisplayItem,"TOPLEFT"}, 0, 0, 100, 20, "", function()
 		self:AddDisplayItem()
 	end)
 	self.controls.addDisplayItem.label = function()
 return self.items[self.displayItem.id] and "保存" or "加入 build"
 	end
-self.controls.editDisplayItem = common.New("ButtonControl", {"LEFT",self.controls.addDisplayItem,"RIGHT"}, 8, 0, 60, 20, "编辑...", function()
+self.controls.editDisplayItem = new("ButtonControl", {"LEFT",self.controls.addDisplayItem,"RIGHT"}, 8, 0, 60, 20, "编辑...", function()
 		self:EditDisplayItemText()
 	end)
-self.controls.removeDisplayItem = common.New("ButtonControl", {"LEFT",self.controls.editDisplayItem,"RIGHT"}, 8, 0, 60, 20, "取消", function()
+self.controls.removeDisplayItem = new("ButtonControl", {"LEFT",self.controls.editDisplayItem,"RIGHT"}, 8, 0, 60, 20, "取消", function()
 		self:SetDisplayItem()
 	end)
 
 	-- Section: Variant(s)
-	self.controls.displayItemSectionVariant = common.New("Control", {"TOPLEFT",self.controls.addDisplayItem,"BOTTOMLEFT"}, 0, 8, 0, function()
+	self.controls.displayItemSectionVariant = new("Control", {"TOPLEFT",self.controls.addDisplayItem,"BOTTOMLEFT"}, 0, 8, 0, function()
 		return (self.displayItem.variantList and #self.displayItem.variantList > 1) and 28 or 0
 	end)
-	self.controls.displayItemVariant = common.New("DropDownControl", {"TOPLEFT", self.controls.displayItemSectionVariant,"TOPLEFT"}, 0, 0, 224, 20, nil, function(index, value)
+	self.controls.displayItemVariant = new("DropDownControl", {"TOPLEFT", self.controls.displayItemSectionVariant,"TOPLEFT"}, 0, 0, 224, 20, nil, function(index, value)
 		self.displayItem.variant = index
 		self.displayItem:BuildAndParseRaw()
 		self:UpdateDisplayItemTooltip()
@@ -260,7 +259,7 @@ self.controls.removeDisplayItem = common.New("ButtonControl", {"LEFT",self.contr
 	self.controls.displayItemVariant.shown = function()
 		return self.displayItem.variantList and #self.displayItem.variantList > 1
 	end
-	self.controls.displayItemAltVariant = common.New("DropDownControl", {"LEFT",self.controls.displayItemVariant,"RIGHT"}, 8, 0, 224, 20, nil, function(index, value)
+	self.controls.displayItemAltVariant = new("DropDownControl", {"LEFT",self.controls.displayItemVariant,"RIGHT"}, 8, 0, 224, 20, nil, function(index, value)
 		self.displayItem.variantAlt = index
 		self.displayItem:BuildAndParseRaw()
 		self:UpdateDisplayItemTooltip()
@@ -271,13 +270,13 @@ self.controls.removeDisplayItem = common.New("ButtonControl", {"LEFT",self.contr
 	end
 
 	-- Section: Sockets and Links
-	self.controls.displayItemSectionSockets = common.New("Control", {"TOPLEFT",self.controls.displayItemSectionVariant,"BOTTOMLEFT"}, 0, 0, 0, function()
+	self.controls.displayItemSectionSockets = new("Control", {"TOPLEFT",self.controls.displayItemSectionVariant,"BOTTOMLEFT"}, 0, 0, 0, function()
 	--lucifer
 		if  self.displayItem.selectableSocketCount == nil then self.displayItem.selectableSocketCount=0 end
 		return self.displayItem.selectableSocketCount > 0 and 28 or 0
 	end)
 	for i = 1, 6 do
-		local drop = common.New("DropDownControl", {"TOPLEFT",self.controls.displayItemSectionSockets,"TOPLEFT"}, (i-1) * 64, 0, 36, 20, socketDropList, function(index, value)
+		local drop = new("DropDownControl", {"TOPLEFT",self.controls.displayItemSectionSockets,"TOPLEFT"}, (i-1) * 64, 0, 36, 20, socketDropList, function(index, value)
 			self.displayItem.sockets[i].color = value.color
 			self.displayItem:BuildAndParseRaw()
 			self:UpdateDisplayItemTooltip()
@@ -287,7 +286,7 @@ self.controls.removeDisplayItem = common.New("ButtonControl", {"LEFT",self.contr
 		end
 		self.controls["displayItemSocket"..i] = drop
 		if i < 6 then
-			local link = common.New("CheckBoxControl", {"LEFT",drop,"RIGHT"}, 4, 0, 20, nil, function(state)
+			local link = new("CheckBoxControl", {"LEFT",drop,"RIGHT"}, 4, 0, 20, nil, function(state)
 				if state and self.displayItem.sockets[i].group ~= self.displayItem.sockets[i+1].group then
 					for s = i + 1, #self.displayItem.sockets do
 						self.displayItem.sockets[s].group = self.displayItem.sockets[s].group - 1
@@ -306,7 +305,7 @@ self.controls.removeDisplayItem = common.New("ButtonControl", {"LEFT",self.contr
 			self.controls["displayItemLink"..i] = link
 		end
 	end
-	self.controls.displayItemAddSocket = common.New("ButtonControl", {"TOPLEFT",self.controls.displayItemSectionSockets,"TOPLEFT"}, function() return (#self.displayItem.sockets - self.displayItem.abyssalSocketCount) * 64 - 12 end, 0, 20, 20, "+", function()
+	self.controls.displayItemAddSocket = new("ButtonControl", {"TOPLEFT",self.controls.displayItemSectionSockets,"TOPLEFT"}, function() return (#self.displayItem.sockets - self.displayItem.abyssalSocketCount) * 64 - 12 end, 0, 20, 20, "+", function()
 		local insertIndex = #self.displayItem.sockets - self.displayItem.abyssalSocketCount + 1
 		t_insert(self.displayItem.sockets, insertIndex, {
 			color = self.displayItem.defaultSocketColor,
@@ -324,10 +323,10 @@ self.controls.removeDisplayItem = common.New("ButtonControl", {"LEFT",self.contr
 	end
 	
 	-- Section: Apply Implicit
-	self.controls.displayItemSectionImplicit = common.New("Control", {"TOPLEFT",self.controls.displayItemSectionSockets,"BOTTOMLEFT"}, 0, 0, 0, function()
+	self.controls.displayItemSectionImplicit = new("Control", {"TOPLEFT",self.controls.displayItemSectionSockets,"BOTTOMLEFT"}, 0, 0, 0, function()
 		return (self.controls.displayItemShaperElder:IsShown() or self.controls.displayItemEnchant:IsShown() or self.controls.displayItemCorrupt:IsShown()) and 28 or 0
 	end)
-self.controls.displayItemShaperElder = common.New("DropDownControl", {"TOPLEFT",self.controls.displayItemSectionImplicit,"TOPLEFT"}, 0, 0, 100, 20, {"通常","塑界者","裂界者"}, function(index, value)
+self.controls.displayItemShaperElder = new("DropDownControl", {"TOPLEFT",self.controls.displayItemSectionImplicit,"TOPLEFT"}, 0, 0, 100, 20, {"通常","塑界者","裂界者"}, function(index, value)
 		self.displayItem.shaper = (index == 2)
 		self.displayItem.elder = (index == 3)
 		if self.displayItem.crafted then
@@ -343,13 +342,13 @@ self.controls.displayItemShaperElder = common.New("DropDownControl", {"TOPLEFT",
 	self.controls.displayItemShaperElder.shown = function()
 		return self.displayItem and self.displayItem.canBeShaperElder
 	end
-self.controls.displayItemEnchant = common.New("ButtonControl", {"TOPLEFT",self.controls.displayItemShaperElder,"TOPRIGHT",true}, 8, 0, 160, 20, "增加附魔...", function()
+self.controls.displayItemEnchant = new("ButtonControl", {"TOPLEFT",self.controls.displayItemShaperElder,"TOPRIGHT",true}, 8, 0, 160, 20, "增加附魔...", function()
 		self:EnchantDisplayItem()
 	end)
 	self.controls.displayItemEnchant.shown = function()
 		return self.displayItem and self.displayItem.enchantments
 	end
-self.controls.displayItemCorrupt = common.New("ButtonControl", {"TOPLEFT",self.controls.displayItemEnchant,"TOPRIGHT",true}, 8, 0, 100, 20, "腐化装备...", function()
+self.controls.displayItemCorrupt = new("ButtonControl", {"TOPLEFT",self.controls.displayItemEnchant,"TOPRIGHT",true}, 8, 0, 100, 20, "腐化装备...", function()
 		self:CorruptDisplayItem()
 	end)
 	self.controls.displayItemCorrupt.shown = function()
@@ -357,7 +356,7 @@ self.controls.displayItemCorrupt = common.New("ButtonControl", {"TOPLEFT",self.c
 	end
 
 	-- Section: Affix Selection
-	self.controls.displayItemSectionAffix = common.New("Control", {"TOPLEFT",self.controls.displayItemSectionImplicit,"BOTTOMLEFT"}, 0, 0, 0, function()
+	self.controls.displayItemSectionAffix = new("Control", {"TOPLEFT",self.controls.displayItemSectionImplicit,"BOTTOMLEFT"}, 0, 0, 0, function()
 		if not self.displayItem.crafted then
 			return 0
 		end
@@ -375,7 +374,7 @@ self.controls.displayItemCorrupt = common.New("ButtonControl", {"TOPLEFT",self.c
 	for i = 1, 6 do
 		local prev = self.controls["displayItemAffix"..(i-1)] or self.controls.displayItemSectionAffix
 		local drop, slider
-		drop = common.New("DropDownControl", {"TOPLEFT",prev,"TOPLEFT"}, i==1 and 40 or 0, 0, 418, 20, nil, function(index, value)
+		drop = new("DropDownControl", {"TOPLEFT",prev,"TOPLEFT"}, i==1 and 40 or 0, 0, 418, 20, nil, function(index, value)
 			local affix = { modId = "None" }
 			if value.modId then
 				affix.modId = value.modId
@@ -433,7 +432,7 @@ self.controls.displayItemCorrupt = common.New("ButtonControl", {"TOPLEFT",self.c
 		drop.shown = function()
 			return self.displayItem.crafted and i <= self.displayItem.affixLimit
 		end
-		slider = common.New("SliderControl", {"TOPLEFT",drop,"BOTTOMLEFT"}, 0, 2, 300, 16, function(val)
+		slider = new("SliderControl", {"TOPLEFT",drop,"BOTTOMLEFT"}, 0, 2, 300, 16, function(val)
 			local affix = self.displayItem[drop.outputTable][drop.outputIndex]
 			local index, range = slider:GetDivVal()
 			affix.modId = drop.list[drop.selIndex].modList[index]
@@ -471,20 +470,20 @@ self.controls.displayItemCorrupt = common.New("ButtonControl", {"TOPLEFT",self.c
 		end
 		drop.slider = slider
 		self.controls["displayItemAffix"..i] = drop
-		self.controls["displayItemAffixLabel"..i] = common.New("LabelControl", {"RIGHT",drop,"LEFT"}, -4, 0, 0, 14, function()
+		self.controls["displayItemAffixLabel"..i] = new("LabelControl", {"RIGHT",drop,"LEFT"}, -4, 0, 0, 14, function()
 return drop.outputTable == "prefixes" and "^7前缀:" or "^7后缀:"
 		end)
 		self.controls["displayItemAffixRange"..i] = slider
-		self.controls["displayItemAffixRangeLabel"..i] = common.New("LabelControl", {"RIGHT",slider,"LEFT"}, -4, 0, 0, 14, function()
+		self.controls["displayItemAffixRangeLabel"..i] = new("LabelControl", {"RIGHT",slider,"LEFT"}, -4, 0, 0, 14, function()
 			return drop.selIndex > 1 and "^7Roll:" or "^x7F7F7FRoll:"
 		end)
 	end
 
 	-- Section: Custom modifiers
-	self.controls.displayItemSectionCustom = common.New("Control", {"TOPLEFT",self.controls.displayItemSectionAffix,"BOTTOMLEFT"}, 0, 0, 0, function()
+	self.controls.displayItemSectionCustom = new("Control", {"TOPLEFT",self.controls.displayItemSectionAffix,"BOTTOMLEFT"}, 0, 0, 0, function()
 		return self.controls.displayItemAddCustom:IsShown() and 28 + self.displayItem.customCount * 22 or 0
 	end)
-self.controls.displayItemAddCustom = common.New("ButtonControl", {"TOPLEFT",self.controls.displayItemSectionCustom,"TOPLEFT"}, 0, 0, 120, 20, "增加词缀...", function()
+self.controls.displayItemAddCustom = new("ButtonControl", {"TOPLEFT",self.controls.displayItemSectionCustom,"TOPLEFT"}, 0, 0, 120, 20, "增加词缀...", function()
 		self:AddCustomModifierToDisplayItem()
 	end)
 	self.controls.displayItemAddCustom.shown = function()
@@ -492,12 +491,12 @@ return self.displayItem.rarity == "魔法" or self.displayItem.rarity == "稀有
 	end
 
 	-- Section: Modifier Range
-	self.controls.displayItemSectionRange = common.New("Control", {"TOPLEFT",self.controls.displayItemSectionCustom,"BOTTOMLEFT"}, 0, 0, 0, function()
+	self.controls.displayItemSectionRange = new("Control", {"TOPLEFT",self.controls.displayItemSectionCustom,"BOTTOMLEFT"}, 0, 0, 0, function()
 	--lucifer
 	if self.displayItem.rangeLineList==nil then return 0 end
 		return self.displayItem.rangeLineList[1] and 28 or 0
 	end)
-	self.controls.displayItemRangeLine = common.New("DropDownControl", {"TOPLEFT",self.controls.displayItemSectionRange,"TOPLEFT"}, 0, 0, 350, 18, nil, function(index, value)
+	self.controls.displayItemRangeLine = new("DropDownControl", {"TOPLEFT",self.controls.displayItemSectionRange,"TOPLEFT"}, 0, 0, 350, 18, nil, function(index, value)
 		self.controls.displayItemRangeSlider.val = self.displayItem.rangeLineList[index].range
 	end)
 	self.controls.displayItemRangeLine.shown = function()
@@ -505,7 +504,7 @@ return self.displayItem.rarity == "魔法" or self.displayItem.rarity == "稀有
 		if self.displayItem.rangeLineList==nil then return true end
 		return self.displayItem.rangeLineList[1] ~= nil
 	end
-	self.controls.displayItemRangeSlider = common.New("SliderControl", {"LEFT",self.controls.displayItemRangeLine,"RIGHT"}, 8, 0, 100, 18, function(val)
+	self.controls.displayItemRangeSlider = new("SliderControl", {"LEFT",self.controls.displayItemRangeLine,"RIGHT"}, 8, 0, 100, 18, function(val)
 		self.displayItem.rangeLineList[self.controls.displayItemRangeLine.selIndex].range = val
 		self.displayItem:BuildAndParseRaw()
 		self:UpdateDisplayItemTooltip()
@@ -513,11 +512,11 @@ return self.displayItem.rarity == "魔法" or self.displayItem.rarity == "稀有
 	end)
 
 	-- Tooltip anchor
-	self.controls.displayItemTooltipAnchor = common.New("Control", {"TOPLEFT",self.controls.displayItemSectionRange,"BOTTOMLEFT"})
+	self.controls.displayItemTooltipAnchor = new("Control", {"TOPLEFT",self.controls.displayItemSectionRange,"BOTTOMLEFT"})
 
 	-- Scroll bars
-	self.controls.scrollBarH = common.New("ScrollBarControl", nil, 0, 0, 0, 18, 100, "HORIZONTAL", true)
-	self.controls.scrollBarV = common.New("ScrollBarControl", nil, 0, 0, 18, 0, 100, "VERTICAL", true)
+	self.controls.scrollBarH = new("ScrollBarControl", nil, 0, 0, 0, 18, 100, "HORIZONTAL", true)
+	self.controls.scrollBarV = new("ScrollBarControl", nil, 0, 0, 18, 0, 100, "VERTICAL", true)
 
 	-- Initialise drag target lists
 	t_insert(self.controls.itemList.dragTargetList, self.controls.sharedItemList)
@@ -553,7 +552,7 @@ function ItemsTabClass:Load(xml, dbFileName)
 	self.itemSetOrderList = { }
 	for _, node in ipairs(xml) do
 		if node.elem == "Item" then
-			local item = common.New("Item", self.build.targetVersion, "")
+			local item = new("Item", self.build.targetVersion, "")
 			item.id = tonumber(node.attrib.id)
 			item.variant = tonumber(node.attrib.variant)
 			if node.attrib.variantAlt then
@@ -810,7 +809,7 @@ function ItemsTabClass:EquipItemInSet(item, itemSetId)
 		slotName = slotName .. " Swap"
 	end
 	if not item.id or not self.items[item.id] then
-		item = common.New("Item", self.build.targetVersion, item.raw)
+		item = new("Item", self.build.targetVersion, item.raw)
 		self:AddItem(item, true)
 	end
 	local altSlot = slotName:gsub("1","2")
@@ -983,7 +982,7 @@ end
 
 -- Attempt to create a new item from the given item raw text and sets it as the new display item
 function ItemsTabClass:CreateDisplayItemFromRaw(itemRaw, normalise)
-	local newItem = common.New("Item", self.build.targetVersion, itemRaw)
+	local newItem = new("Item", self.build.targetVersion, itemRaw)
 	if newItem.base then
 		if normalise then
 			newItem:NormaliseQuality()
@@ -1155,9 +1154,9 @@ function ItemsTabClass:UpdateCustomControls()
 				local line = itemLib.formatModLine(modLine)
 				if line then
 					if not self.controls["displayItemCustomModifier"..i] then
-						self.controls["displayItemCustomModifier"..i] = common.New("LabelControl", {"TOPLEFT",self.controls.displayItemSectionCustom,"TOPLEFT"}, 55, i * 22 + 4, 0, 16)
-						self.controls["displayItemCustomModifierLabel"..i] = common.New("LabelControl", {"RIGHT",self.controls["displayItemCustomModifier"..i],"LEFT"}, -2, 0, 0, 16)
-self.controls["displayItemCustomModifierRemove"..i] = common.New("ButtonControl", {"LEFT",self.controls["displayItemCustomModifier"..i],"RIGHT"}, 4, 0, 70, 20, "^7移除")
+						self.controls["displayItemCustomModifier"..i] = new("LabelControl", {"TOPLEFT",self.controls.displayItemSectionCustom,"TOPLEFT"}, 55, i * 22 + 4, 0, 16)
+						self.controls["displayItemCustomModifierLabel"..i] = new("LabelControl", {"RIGHT",self.controls["displayItemCustomModifier"..i],"LEFT"}, -2, 0, 0, 16)
+self.controls["displayItemCustomModifierRemove"..i] = new("ButtonControl", {"LEFT",self.controls["displayItemCustomModifier"..i],"RIGHT"}, 4, 0, 70, 20, "^7移除e")
 					end
 					self.controls["displayItemCustomModifier"..i].shown = true
 					local label = itemLib.formatModLine(modLine)
@@ -1239,11 +1238,11 @@ end
 -- Opens the item set manager
 function ItemsTabClass:OpenItemSetManagePopup()
 	local controls = { }
-	controls.setList = common.New("ItemSetList", nil, -155, 50, 300, 200, self)
-	controls.sharedList = common.New("SharedItemSetList", nil, 155, 50, 300, 200, self)
+	controls.setList = new("ItemSetListControl", nil, -155, 50, 300, 200, self)
+	controls.sharedList = new("SharedItemSetListControl", nil, 155, 50, 300, 200, self)
 	controls.setList.dragTargetList = { controls.sharedList }
 	controls.sharedList.dragTargetList = { controls.setList }
-	controls.close = common.New("ButtonControl", nil, 0, 260, 90, 20, "Done", function()
+	controls.close = new("ButtonControl", nil, 0, 260, 90, 20, "Done", function()
 		main:ClosePopup()
 	end)
 main:OpenPopup(630, 290, "套装 管理", controls)
@@ -1253,7 +1252,7 @@ end
 function ItemsTabClass:CraftItem()
 	local controls = { }
 	local function makeItem(base)
-		local item = common.New("Item", self.build.targetVersion)
+		local item = new("Item", self.build.targetVersion)
 		item.name = base.name
 		item.base = base.base
 		item.baseName = base.name
@@ -1284,21 +1283,21 @@ function ItemsTabClass:CraftItem()
 		item:BuildAndParseRaw()
 		return item
 	end
-controls.rarityLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 50, 20, 0, 16, "稀有度:")
-	controls.rarity = common.New("DropDownControl", nil, -80, 20, 100, 18, rarityDropList)
+controls.rarityLabel = new("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 50, 20, 0, 16, "稀有度:")
+	controls.rarity = new("DropDownControl", nil, -80, 20, 100, 18, rarityDropList)
 	controls.rarity.selIndex = self.lastCraftRaritySel or 3
-controls.title = common.New("EditControl", nil, 70, 20, 190, 18, "", "名称")
+controls.title = new("EditControl", nil, 70, 20, 190, 18, "", "名称")
 	controls.title.shown = function()
 		return controls.rarity.selIndex >= 3
 	end
-controls.typeLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 50, 45, 0, 16, "类型:")
-	controls.type = common.New("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 55, 45, 295, 18, self.build.data.itemBaseTypeList, function(index, value)
+controls.typeLabel = new("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 50, 45, 0, 16, "类型:")
+	controls.type = new("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 55, 45, 295, 18, self.build.data.itemBaseTypeList, function(index, value)
 		controls.base.list = self.build.data.itemBaseLists[self.build.data.itemBaseTypeList[index]]
 		controls.base.selIndex = 1
 	end)
 	controls.type.selIndex = self.lastCraftTypeSel or 1
-controls.baseLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 50, 70, 0, 16, "基底:")
-	controls.base = common.New("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 55, 70, 200, 18, self.build.data.itemBaseLists[self.build.data.itemBaseTypeList[controls.type.selIndex]])
+controls.baseLabel = new("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 50, 70, 0, 16, "基底:")
+	controls.base = new("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 55, 70, 200, 18, self.build.data.itemBaseLists[self.build.data.itemBaseTypeList[controls.type.selIndex]])
 	controls.base.selIndex = self.lastCraftBaseSel or 1
 	controls.base.tooltipFunc = function(tooltip, mode, index, value)
 		tooltip:Clear()
@@ -1306,7 +1305,7 @@ controls.baseLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 50, 
 			self:AddItemTooltip(tooltip, makeItem(value), nil, true)
 		end
 	end
-controls.save = common.New("ButtonControl", nil, -45, 100, 80, 20, "创建", function()
+controls.save = new("ButtonControl", nil, -45, 100, 80, 20, "创建", function()
 		main:ClosePopup()
 		local item = makeItem(controls.base.list[controls.base.selIndex])
 		self:SetDisplayItem(item)
@@ -1317,7 +1316,7 @@ if not item.crafted and item.rarity ~= "普通" then
 		self.lastCraftTypeSel = controls.type.selIndex
 		self.lastCraftBaseSel = controls.base.selIndex
 	end)
-controls.cancel = common.New("ButtonControl", nil, 45, 100, 80, 20, "取消", function()
+controls.cancel = new("ButtonControl", nil, 45, 100, 80, 20, "取消", function()
 		main:ClosePopup()
 	end)
 	main:OpenPopup(370, 130, "装备制作", controls)
@@ -1334,8 +1333,8 @@ if editBuf:match("^稀 有 度: ") then
 			return "稀 有 度: "..controls.rarity.list[controls.rarity.selIndex].rarity.."\n"..controls.edit.buf
 		end
 	end
-	controls.rarity = common.New("DropDownControl", nil, -190, 10, 100, 18, rarityDropList)
-	controls.edit = common.New("EditControl", nil, 0, 40, 480, 420, "", nil, "^%C\t\n", nil, nil, 14)
+	controls.rarity = new("DropDownControl", nil, -190, 10, 100, 18, rarityDropList)
+	controls.edit = new("EditControl", nil, 0, 40, 480, 420, "", nil, "^%C\t\n", nil, nil, 14)
 	if self.displayItem then
 controls.edit:SetText(self.displayItem:BuildRaw():gsub("稀 有 度: %w+\n",""))
 		controls.rarity:SelByValue(self.displayItem.rarity, "rarity")
@@ -1346,19 +1345,19 @@ controls.edit:SetText(self.displayItem:BuildRaw():gsub("稀 有 度: %w+\n",""))
 	controls.edit.pasteFilter = function(text)
 		return text:gsub("\246","o")
 	end
-	controls.save = common.New("ButtonControl", nil, -45, 470, 80, 20, self.displayItem and "Save" or "Create", function()
+controls.save = new("ButtonControl", nil, -45, 470, 80, 20, self.displayItem and "保存" or "创建", function()
 		local id = self.displayItem and self.displayItem.id
 		self:CreateDisplayItemFromRaw(buildRaw(), not self.displayItem)
 		self.displayItem.id = id
 		main:ClosePopup()
 	end)
 	controls.save.enabled = function()
-		local item = common.New("Item", self.build.targetVersion, buildRaw())
+		local item = new("Item", self.build.targetVersion, buildRaw())
 		return item.base ~= nil
 	end
 	controls.save.tooltipFunc = function(tooltip)
 		tooltip:Clear()
-		local item = common.New("Item", self.build.targetVersion, buildRaw())
+		local item = new("Item", self.build.targetVersion, buildRaw())
 		if item.base then
 			self:AddItemTooltip(tooltip, item, nil, true)
 		else
@@ -1371,7 +1370,7 @@ tooltip:AddLine(14, "对于普通或魔法物品，物品基底的名称必须�
 tooltip:AddLine(14, "神秘学者的喜悦之白金波刃")
 		end
 	end	
-	controls.cancel = common.New("ButtonControl", nil, 45, 470, 80, 20, "Cancel", function()
+controls.cancel = new("ButtonControl", nil, 45, 470, 80, 20, "取消", function()
 		main:ClosePopup()
 	end)
 main:OpenPopup(500, 500, self.displayItem and "编辑装备文本" or "从文本中创建自定义物品", controls, nil, "edit")
@@ -1426,7 +1425,7 @@ function ItemsTabClass:EnchantDisplayItem()
 	buildLabyrinthList()
 	buildEnchantmentList()
 	local function enchantItem()
-		local item = common.New("Item", self.build.targetVersion, self.displayItem:BuildRaw())
+		local item = new("Item", self.build.targetVersion, self.displayItem:BuildRaw())
 		item.id = self.displayItem.id
 		for i = 1, item.implicitLines do 
 			t_remove(item.modLines, 1)
@@ -1438,8 +1437,8 @@ function ItemsTabClass:EnchantDisplayItem()
 		return item
 	end
 	if haveSkills then
-controls.skillLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 20, 0, 16, "^7技能:")
-		controls.skill = common.New("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 20, 180, 18, skillList, function(index, value)
+controls.skillLabel = new("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 20, 0, 16, "^7技能:")
+		controls.skill = new("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 20, 180, 18, skillList, function(index, value)
 			buildLabyrinthList()
 			buildEnchantmentList()
 			controls.enchantment:SetSel(1)
@@ -1456,14 +1455,14 @@ controls.allSkills.tooltipText = "显示所有技能，不仅是本build包含�
 			controls.allSkills.enabled = false
 		end
 	end
-controls.labyrinthLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 45, 0, 16, "^7迷宫:")
-	controls.labyrinth = common.New("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 45, 100, 18, labyrinthList, function(index, value)
+controls.labyrinthLabel = new("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 45, 0, 16, "^7迷宫:")
+	controls.labyrinth = new("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 45, 100, 18, labyrinthList, function(index, value)
 		buildEnchantmentList()
 		controls.enchantment:SetSel(m_min(controls.enchantment.selIndex, #enchantmentList))
 	end)
-controls.enchantmentLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 70, 0, 16, "^7附魔:")
-	controls.enchantment = common.New("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 70, 440, 18, enchantmentList)
-controls.save = common.New("ButtonControl", nil, -45, 100, 80, 20, "附魔", function()
+controls.enchantmentLabel = new("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 70, 0, 16, "^7附魔:")
+	controls.enchantment = new("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 70, 440, 18, enchantmentList)
+controls.save = new("ButtonControl", nil, -45, 100, 80, 20, "附魔", function()
 		self:SetDisplayItem(enchantItem())
 		main:ClosePopup()
 	end)
@@ -1471,7 +1470,7 @@ controls.save = common.New("ButtonControl", nil, -45, 100, 80, 20, "附魔", fun
 		tooltip:Clear()
 		self:AddItemTooltip(tooltip, enchantItem(), nil, true)
 	end	
-controls.close = common.New("ButtonControl", nil, 45, 100, 80, 20, "取消", function()
+controls.close = new("ButtonControl", nil, 45, 100, 80, 20, "取消", function()
 		main:ClosePopup()
 	end)
 main:OpenPopup(550, 130, "装备附魔", controls)
@@ -1508,7 +1507,7 @@ function ItemsTabClass:CorruptDisplayItem()
 		control:SelByValue(selfMod, "mod")
 	end
 	local function corruptItem()
-		local item = common.New("Item", self.build.targetVersion, self.displayItem:BuildRaw())
+		local item = new("Item", self.build.targetVersion, self.displayItem:BuildRaw())
 		item.id = self.displayItem.id
 		item.corrupted = true
 		local newImplicit = { }
@@ -1532,17 +1531,17 @@ function ItemsTabClass:CorruptDisplayItem()
 		item:BuildAndParseRaw()
 		return item
 	end
-controls.implicitLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 75, 20, 0, 16, "^7基底词缀#1:")
-	controls.implicit = common.New("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 80, 20, 440, 18, nil, function()
+controls.implicitLabel = new("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 75, 20, 0, 16, "^7基底词缀#1:")
+	controls.implicit = new("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 80, 20, 440, 18, nil, function()
 		buildList(controls.implicit2, controls.implicit)
 	end)
-controls.implicit2Label = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 75, 40, 0, 16, "^7基底词缀#2:")
-	controls.implicit2 = common.New("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 80, 40, 440, 18, nil, function()
+controls.implicit2Label = new("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 75, 40, 0, 16, "^7基底词缀 #2:")
+	controls.implicit2 = new("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 80, 40, 440, 18, nil, function()
 		buildList(controls.implicit, controls.implicit2)
 	end)
 	buildList(controls.implicit, controls.implicit2)
 	buildList(controls.implicit2, controls.implicit)
-controls.save = common.New("ButtonControl", nil, -45, 70, 80, 20, "腐化", function()
+controls.save = new("ButtonControl", nil, -45, 70, 80, 20, "腐化", function()
 		self:SetDisplayItem(corruptItem())
 		main:ClosePopup()
 	end)
@@ -1550,7 +1549,7 @@ controls.save = common.New("ButtonControl", nil, -45, 70, 80, 20, "腐化", func
 		tooltip:Clear()
 		self:AddItemTooltip(tooltip, corruptItem(), nil, true)
 	end	
-controls.close = common.New("ButtonControl", nil, 45, 70, 80, 20, "取消", function()
+controls.close = new("ButtonControl", nil, 45, 70, 80, 20, "取消", function()
 		main:ClosePopup()
 	end)
 main:OpenPopup(540, 100, "腐化装备", controls)
@@ -1628,7 +1627,7 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 	t_insert(sourceList, { label = "Custom", sourceId = "CUSTOM" })
 	buildMods(sourceList[1].sourceId)
 	local function addModifier()
-		local item = common.New("Item", self.build.targetVersion, self.displayItem:BuildRaw())
+		local item = new("Item", self.build.targetVersion, self.displayItem:BuildRaw())
 		item.id = self.displayItem.id
 		local sourceId = sourceList[controls.source.selIndex].sourceId
 		if sourceId == "CUSTOM" then
@@ -1644,14 +1643,14 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 		item:BuildAndParseRaw()
 		return item
 	end
-controls.sourceLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 20, 0, 16, "^7来自：")
-	controls.source = common.New("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 20, 100, 18, sourceList, function(index, value)
+controls.sourceLabel = new("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 20, 0, 16, "^7来自:")
+	controls.source = new("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 20, 100, 18, sourceList, function(index, value)
 		buildMods(value.sourceId)
 		controls.modSelect:SetSel(1)
 	end)
 	controls.source.enabled = #sourceList > 1
-controls.modSelectLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 45, 0, 16, "^7加成:")
-	controls.modSelect = common.New("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 45, 600, 18, modList)
+controls.modSelectLabel = new("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 45, 0, 16, "^7加成:")
+	controls.modSelect = new("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 45, 600, 18, modList)
 	controls.modSelect.shown = function()
 		return sourceList[controls.source.selIndex].sourceId ~= "CUSTOM"
 	end
@@ -1663,11 +1662,11 @@ controls.modSelectLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"},
 			end
 		end
 	end
-	controls.custom = common.New("EditControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 45, 440, 18)
+	controls.custom = new("EditControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 45, 440, 18)
 	controls.custom.shown = function()
 		return sourceList[controls.source.selIndex].sourceId == "CUSTOM"
 	end
-	controls.save = common.New("ButtonControl", nil, -45, 75, 80, 20, "Add", function()
+controls.save = new("ButtonControl", nil, -45, 75, 80, 20, "增加", function()
 		self:SetDisplayItem(addModifier())
 		main:ClosePopup()
 	end)
@@ -1675,7 +1674,7 @@ controls.modSelectLabel = common.New("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"},
 		tooltip:Clear()
 		self:AddItemTooltip(tooltip, addModifier())
 	end	
-controls.close = common.New("ButtonControl", nil, 45, 75, 80, 20, "取消", function()
+controls.close = new("ButtonControl", nil, 45, 75, 80, 20, "取消", function()
 		main:ClosePopup()
 	end)
 	main:OpenPopup(710, 105, "Add Modifier to Item", controls, "save", sourceList[controls.source.selIndex].sourceId == "CUSTOM" and "custom")	

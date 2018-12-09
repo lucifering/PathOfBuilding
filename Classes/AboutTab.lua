@@ -3,11 +3,11 @@
 -- Module: Notes Tab
 -- Notes tab for the current build.
 --
-local launch, main = ...
+--local launch, main = ...
 
 local t_insert = table.insert
 
-local AboutTabClass = common.NewClass("AboutTab", "ControlHost", "Control", function(self, build)
+local AboutTabClass = newClass("AboutTab", "ControlHost", "Control", function(self, build)
 	self.ControlHost()
 	self.Control()
 
@@ -15,7 +15,7 @@ local AboutTabClass = common.NewClass("AboutTab", "ControlHost", "Control", func
 
 	self.lastContent = ""
 
-	self.controls.edit = common.New("EditControl", {"TOPLEFT",self,"TOPLEFT"}, 8, 48, 0, 60, "", nil, "^%C\t\n", nil, nil, 16)
+	self.controls.edit = new("EditControl", {"TOPLEFT",self,"TOPLEFT"}, 8, 48, 0, 60, "", nil, "^%C\t\n", nil, nil, 16)
 	self.controls.edit.width = function()
 		return self.width - 16
 	end
@@ -23,7 +23,7 @@ local AboutTabClass = common.NewClass("AboutTab", "ControlHost", "Control", func
 		return self.height - 16
 	end
 	
-	self.controls.about = common.New("ButtonControl", {"TOPLEFT",self,"TOPLEFT"}, 8, 8, 250, 24, "去17173论坛反馈 》》", function()
+	self.controls.about = new("ButtonControl", {"TOPLEFT",self,"TOPLEFT"}, 8, 8, 250, 24, "去17173论坛反馈 》》", function()
 		 OpenURL("http://bbs.17173.com/forum.php?mod=viewthread&tid=10923378")
 	end)
 	

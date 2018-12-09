@@ -3,16 +3,18 @@
 -- Class: Build List
 -- Build list control.
 --
-local launch, main = ...
-
 local ipairs = ipairs
 local s_format = string.format
 
-local BuildListClass = common.NewClass("BuildList", "ListControl", function(self, anchor, x, y, width, height, listMode)
-	self.ListControl(anchor, x, y, width, height, 20, false, listMode.list)
+local BuildListClass = newClass("BuildListControl", "ListControl", function(self, anchor, x, y, width, height, listMode)
+	self.ListControl(anchor, x, y, width, height, 20, false, false, listMode.list)
 	self.listMode = listMode
+	self.colList = { 
+		{ width = function() return self:GetProperty("width") - 172 end }, 
+		{ },
+	}
 	self.showRowSeparators = true
-	self.controls.path = common.New("PathControl", {"BOTTOM",self,"TOP"}, 0, -2, width, 24, main.buildPath, listMode.subPath, function(subPath)
+	self.controls.path = new("PathControl", {"BOTTOM",self,"TOP"}, 0, -2, width, 24, main.buildPath, listMode.subPath, function(subPath)
 		listMode.subPath = subPath
 		listMode:BuildList()
 		self.selIndex = nil
@@ -69,8 +71,8 @@ end
 
 function BuildListClass:RenameBuild(build, copyOnName)
 	local controls = { }
-controls.label = common.New("LabelControl", nil, 0, 20, 0, 16, "^7输入新的Build名 "..(build.folderName and "folder:" or "build:"))
-	controls.edit = common.New("EditControl", nil, 0, 40, 350, 20, build.folderName or build.buildName, nil, "\\/:%*%?\"<>|%c", 100, function(buf)
+controls.label = new("LabelControl", nil, 0, 20, 0, 16, "^7输入新的 "..(build.folderName and "文件夹名:" or "Build名:"))
+	controls.edit = new("EditControl", nil, 0, 40, 350, 20, build.folderName or build.buildName, nil, "\\/:%*%?\"<>|%c", 100, function(buf)
 		controls.save.enabled = false
 		if build.folderName then
 			if buf:match("%S") then
@@ -92,7 +94,7 @@ controls.label = common.New("LabelControl", nil, 0, 20, 0, 16, "^7输入新的Bu
 			end
 		end
 	end)
-	controls.save = common.New("ButtonControl", nil, -45, 70, 80, 20, "Save", function()
+controls.save = new("ButtonControl", nil, -45, 70, 80, 20, "保存", function()
 		local newBuildName = controls.edit.buf
 		if build.folderName then
 			if copyOnName then
@@ -127,11 +129,11 @@ main:OpenMessagePopup("Error", "无法重命名 '"..build.fullFileName.."' 为 '
 		self.listMode:SelectControl(self)
 	end)
 	controls.save.enabled = false
-	controls.cancel = common.New("ButtonControl", nil, 45, 70, 80, 20, "Cancel", function()
+controls.cancel = new("ButtonControl", nil, 45, 70, 80, 20, "取消", function()
 		main:ClosePopup()
 		self.listMode:SelectControl(self)
 	end)
-	main:OpenPopup(370, 100, (copyOnName and "Copy " or "Rename ")..(build.folderName and "Folder" or "Build"), controls, "save", "edit")	
+main:OpenPopup(370, 100, (copyOnName and "复制 " or "重命名 ")..(build.folderName and "文件夹" or "Build"), controls, "save", "edit")	
 end
 
 function BuildListClass:DeleteBuild(build)
@@ -155,14 +157,6 @@ main:OpenConfirmPopup("删除前确认", "你确定要删除这个Build:\n"..bui
 			self.selIndex = nil
 			self.selValue = nil
 		end)
-	end
-end
-
-function BuildListClass:GetColumnOffset(column)
-	if column == 1 then
-		return 0
-	elseif column == 2 then
-		return self:GetProperty("width") - 172
 	end
 end
 

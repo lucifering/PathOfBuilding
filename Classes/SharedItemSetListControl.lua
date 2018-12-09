@@ -3,24 +3,24 @@
 -- Class: Shared Item Set List
 -- Shared item set list control.
 --
-local launch, main = ...
+--local launch, main = ...
 
 local t_insert = table.insert
 local t_remove = table.remove
 local m_max = math.max
 local s_format = string.format
 
-local SharedItemSetListClass = common.NewClass("SharedItemSetList", "ListControl", function(self, anchor, x, y, width, height, itemsTab)
-	self.ListControl(anchor, x, y, width, height, 16, true, main.sharedItemSetList)
+local SharedItemSetListClass = newClass("SharedItemSetListControl", "ListControl", function(self, anchor, x, y, width, height, itemsTab)
+	self.ListControl(anchor, x, y, width, height, 16, false, true, main.sharedItemSetList)
 	self.itemsTab = itemsTab
 self.defaultText = "^x7F7F7F这里是你的不同Build之间共享的套装装备\n 你可以从左边的Build套装中拖拽套装\n到这个共享列表."
-	self.controls.delete = common.New("ButtonControl", {"BOTTOMLEFT",self,"TOP"}, 2, -4, 60, 18, "Delete", function()
+self.controls.delete = new("ButtonControl", {"BOTTOMLEFT",self,"TOP"}, 2, -4, 60, 18, "删除", function()
 		self:OnSelDelete(self.selIndex, self.selValue)
 	end)
 	self.controls.delete.enabled = function()
 		return self.selValue ~= nil
 	end
-	self.controls.rename = common.New("ButtonControl", {"BOTTOMRIGHT",self,"TOP"}, -2, -4, 60, 18, "Rename", function()
+self.controls.rename = new("ButtonControl", {"BOTTOMRIGHT",self,"TOP"}, -2, -4, 60, 18, "重命名", function()
 		self:RenameSet(self.selValue)
 	end)
 	self.controls.rename.enabled = function()
@@ -30,17 +30,17 @@ end)
 
 function SharedItemSetListClass:RenameSet(sharedItemSet)
 	local controls = { }
-controls.label = common.New("LabelControl", nil, 0, 20, 0, 16, "^7输入这个套装的名字:")
-	controls.edit = common.New("EditControl", nil, 0, 40, 350, 20, sharedItemSet.title, nil, nil, 100, function(buf)
+controls.label = new("LabelControl", nil, 0, 20, 0, 16, "^7输入这个套装的名字:")
+	controls.edit = new("EditControl", nil, 0, 40, 350, 20, sharedItemSet.title, nil, nil, 100, function(buf)
 		controls.save.enabled = buf:match("%S")
 	end)
-controls.save = common.New("ButtonControl", nil, -45, 70, 80, 20, "保存", function()
+controls.save = new("ButtonControl", nil, -45, 70, 80, 20, "保存", function()
 		sharedItemSet.title = controls.edit.buf
 		self.itemsTab.modFlag = true
 		main:ClosePopup()
 	end)
 	controls.save.enabled = false
-controls.cancel = common.New("ButtonControl", nil, 45, 70, 80, 20, "取消", function()
+controls.cancel = new("ButtonControl", nil, 45, 70, 80, 20, "取消", function()
 		main:ClosePopup()
 	end)
 main:OpenPopup(370, 100, sharedItemSet.title and "重命名" or "套装名称", controls, "save", "edit")
@@ -85,7 +85,7 @@ function SharedItemSetListClass:ReceiveDrag(type, value, source)
 					local item = self.itemsTab.items[slot.selItemId]
 					local verItem = { raw = item:BuildRaw() }
 					for _, targetVersion in ipairs(targetVersionList) do
-						local newItem = common.New("Item", targetVersion, verItem.raw)
+						local newItem = new("Item", targetVersion, verItem.raw)
 						if not value.id then
 							newItem:NormaliseQuality()
 						end

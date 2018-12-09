@@ -13,7 +13,7 @@ calcLib = { }
 
 -- Calculate and combine INC/MORE modifiers for the given modifier names
 function calcLib.mod(modDB, cfg, ...)
-	return (1 + (modDB:Sum("INC", cfg, ...)) / 100) * modDB:Sum("MORE", cfg, ...)
+	return (1 + (modDB:Sum("INC", cfg, ...)) / 100) * modDB:More(cfg, ...)
 end
 
 -- Calculate value

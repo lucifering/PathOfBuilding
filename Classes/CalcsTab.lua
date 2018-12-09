@@ -3,7 +3,7 @@
 -- Module: Calcs Tab
 -- Calculations breakdown tab for the current build.
 --
-local launch, main = ...
+--local launch, main = ...
 
 local pairs = pairs
 local ipairs = ipairs
@@ -28,7 +28,7 @@ local buffModeDropList = {
 { label = "有效 DPS", buffMode = "EFFECTIVE" } 
 }
 
-local CalcsTabClass = common.NewClass("CalcsTab", "UndoHandler", "ControlHost", "Control", function(self, build)
+local CalcsTabClass = newClass("CalcsTab", "UndoHandler", "ControlHost", "Control", function(self, build)
 	self.UndoHandler()
 	self.ControlHost()
 	self.Control()
@@ -47,21 +47,21 @@ local CalcsTabClass = common.NewClass("CalcsTab", "UndoHandler", "ControlHost", 
 	-- Special section for skill/mode selection
 self:NewSection(3, "SkillSelect", 1, "查看技能详情", colorCodes.NORMAL, {
 { label = "技能组", { controlName = "mainSocketGroup", 
-			control = common.New("DropDownControl", nil, 0, 0, 300, 16, nil, function(index, value) 
+			control = new("DropDownControl", nil, 0, 0, 300, 16, nil, function(index, value) 
 				self.input.skill_number = index 
 				self:AddUndoState()
 				self.build.buildFlag = true
 			end)
 		}, },
 { label = "主动技能", { controlName = "mainSkill", 
-			control = common.New("DropDownControl", nil, 0, 0, 300, 16, nil, function(index, value)
+			control = new("DropDownControl", nil, 0, 0, 300, 16, nil, function(index, value)
 				local mainSocketGroup = self.build.skillsTab.socketGroupList[self.input.skill_number]
 				mainSocketGroup.mainActiveSkillCalcs = index
 				self.build.buildFlag = true
 			end)
 		}, },
 { label = "Skill Part", playerFlag = "multiPart", { controlName = "mainSkillPart", 
-			control = common.New("DropDownControl", nil, 0, 0, 130, 16, nil, function(index, value)
+			control = new("DropDownControl", nil, 0, 0, 150, 16, nil, function(index, value)
 				local mainSocketGroup = self.build.skillsTab.socketGroupList[self.input.skill_number]
 				local srcInstance = mainSocketGroup.displaySkillListCalcs[mainSocketGroup.mainActiveSkillCalcs].activeEffect.srcInstance
 				srcInstance.skillPartCalcs = index
@@ -70,13 +70,13 @@ self:NewSection(3, "SkillSelect", 1, "查看技能详情", colorCodes.NORMAL, {
 			end)
 		}, },
 { label = "显示召唤生物状态", flag = "haveMinion", { controlName = "showMinion", 
-			control = common.New("CheckBoxControl", nil, 0, 0, 18, nil, function(state)
+			control = new("CheckBoxControl", nil, 0, 0, 18, nil, function(state)
 				self.input.showMinion = state
 				self:AddUndoState()
 			end, "Show stats for the minion instead of the player.")
 		}, },
 { label = "召唤生物", flag = "minion", { controlName = "mainSkillMinion",
-			control = common.New("DropDownControl", nil, 0, 0, 160, 16, nil, function(index, value)
+			control = new("DropDownControl", nil, 0, 0, 160, 16, nil, function(index, value)
 				local mainSocketGroup = self.build.skillsTab.socketGroupList[self.input.skill_number]
 				local srcInstance = mainSocketGroup.displaySkillListCalcs[mainSocketGroup.mainActiveSkillCalcs].activeEffect.srcInstance
 				if value.itemSetId then
@@ -89,12 +89,12 @@ self:NewSection(3, "SkillSelect", 1, "查看技能详情", colorCodes.NORMAL, {
 			end)
 		} },
 { label = "内置幽魂数据", flag = "spectre", { controlName = "mainSkillMinionLibrary",
-			control = common.New("ButtonControl", nil, 0, 0, 100, 16, "Manage Spectres...", function()
+control = new("ButtonControl", nil, 0, 0, 100, 16, "灵体管理...", function()
 				self.build:OpenSpectreLibrary()
 			end)
 		} },
 { label = "召唤生物技能", flag = "haveMinion", { controlName = "mainSkillMinionSkill",
-			control = common.New("DropDownControl", nil, 0, 0, 200, 16, nil, function(index, value)
+			control = new("DropDownControl", nil, 0, 0, 200, 16, nil, function(index, value)
 				local mainSocketGroup = self.build.skillsTab.socketGroupList[self.input.skill_number]
 				local srcInstance = mainSocketGroup.displaySkillListCalcs[mainSocketGroup.mainActiveSkillCalcs].activeEffect.srcInstance
 				srcInstance.skillMinionSkillCalcs = index
@@ -104,7 +104,7 @@ self:NewSection(3, "SkillSelect", 1, "查看技能详情", colorCodes.NORMAL, {
 		} },
 { label = "计算模式", { 
 			controlName = "mode", 
-			control = common.New("DropDownControl", nil, 0, 0, 100, 16, buffModeDropList, function(index, value) 
+			control = new("DropDownControl", nil, 0, 0, 100, 16, buffModeDropList, function(index, value)  
 				self.input.misc_buffMode = value.buffMode 
 				self:AddUndoState()
 				self.build.buildFlag = true
@@ -137,9 +137,9 @@ Buff：光环和buff会生效，相当于你在藏身处的数值。
 		self:NewSection(unpack(section))
 	end
 
-	self.controls.breakdown = common.New("CalcBreakdown", self)
+	self.controls.breakdown = new("CalcBreakdownControl", self)
 
-	self.controls.scrollBar = common.New("ScrollBarControl", {"TOPRIGHT",self,"TOPRIGHT"}, 0, 0, 18, 0, 50, "VERTICAL", true)
+	self.controls.scrollBar = new("ScrollBarControl", {"TOPRIGHT",self,"TOPRIGHT"}, 0, 0, 18, 0, 50, "VERTICAL", true)
 end)
 
 function CalcsTabClass:Load(xml, dbFileName)
@@ -320,7 +320,7 @@ function CalcsTabClass:Draw(viewPort, inputEvents)
 end
 
 function CalcsTabClass:NewSection(width, ...)
-	local section = common.New("CalcSection", self, width * self.colWidth + 8 * (width - 1), ...)
+	local section = new("CalcSectionControl", self, width * self.colWidth + 8 * (width - 1), ...)
 	section.widthCols = width
 	t_insert(self.controls, section)
 	t_insert(self.sectionList, section)

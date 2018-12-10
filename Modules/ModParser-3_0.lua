@@ -3,7 +3,7 @@
 -- Module: Mod Parser for 3.0
 -- Parser function for modifier names
 --
-local launch=...
+--local launch=...
 local pairs = pairs
 local ipairs = ipairs
 local t_insert = table.insert
@@ -2764,7 +2764,7 @@ local jewelSelfUnallocFuncs = {
 	["范围内未配置的小天赋点技能会提供任何加成"] = function(node, out, data) --备注：Grants all bonuses of Unallocated Small Passive Skills in Radius
 		if node then
 			if node.type == "Normal" then
-				data.modList = data.modList or common.New("ModList")
+				data.modList = data.modList or new("ModList")
 				data.modList:AddList(out)
 			end
 		elseif data.modList then

@@ -218,7 +218,7 @@ self.controls.importCodeIn = new("EditControl", {"TOPLEFT",self.controls.importC
 	end)
 	self.controls.importCodeState = new("LabelControl", {"LEFT",self.controls.importCodeIn,"RIGHT"}, 4, 0, 0, 16)
 	self.controls.importCodeState.label = function()
-return (self.importCodeState == "VALID" and colorCodes.POSITIVE.."代码错误") or (self.importCodeState == "INVALID" and colorCodes.NEGATIVE.."代码错误") or ""
+return (self.importCodeState == "VALID" and colorCodes.POSITIVE.."代码正确") or (self.importCodeState == "INVALID" and colorCodes.NEGATIVE.."代码错误") or ""
 	end
 self.controls.importCodePastebin = new("ButtonControl", {"LEFT",self.controls.importCodeIn,"RIGHT"}, 90, 0, 160, 20, "从Pastebin导入...", function()
 		self:OpenPastebinImportPopup()

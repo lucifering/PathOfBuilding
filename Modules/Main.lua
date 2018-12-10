@@ -635,8 +635,8 @@ controls.close = new("ButtonControl", {"TOPRIGHT",nil,"TOPRIGHT"}, -10, 10, 50, 
 		self:ClosePopup()
 	end)
 controls.version = new("LabelControl", nil, 0, 18, 0, 18, "Path of Building v"..launch.versionNumber.." 作者：Openarl 汉化：光影路西法")
-controls.forum = new("ButtonControl", nil, 0, 42, 420, 18, "国服版反馈: ^x4040FFhttp://bbs.17173.com/forum-9987-1.html", function(control)
-OpenURL("http://bbs.17173.com/forum-9987-1.html")
+controls.forum = new("ButtonControl", nil, 0, 42, 420, 18, "国服版反馈: ^x4040FFhttp://bbs.17173.com/forum.php?mod=viewthread&tid=10923378", function(control)
+OpenURL("http://bbs.17173.com/forum.php?mod=viewthread&tid=10923378")
 	end)
 controls.github = new("ButtonControl", nil, 0, 64, 340, 18, "GitHub page: ^x4040FFhttps://dev.tencent.com/u/lucifering/p/PathOfBuilding?from=coding", function(control)
 OpenURL("https://dev.tencent.com/u/lucifering/p/PathOfBuilding?from=coding")
@@ -902,12 +902,13 @@ do
 				s = #str + 1
 				e = #str + 1
 			end
+			if lineStart == nil then break end
 			if DrawStringWidth(height, "VAR", str:sub(lineStart, s - 1)) > width then
 				t_insert(wrapTable, str:sub(lineStart, lastBreak))
 				lineStart = lastSpace
 			end
 			if s > #str then
-if str~=nil then  t_insert(wrapTable, str:sub(lineStart, -1)) end
+if str~=nil and lineStart~=nil  then  t_insert(wrapTable, str:sub(lineStart, -1)) end
 				break
 			end
 			lastBreak = s - 1

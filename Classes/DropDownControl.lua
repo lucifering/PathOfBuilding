@@ -58,6 +58,7 @@ local typeListCN = {
 { slotName = "Sceptre", label = "短杖" },
 { slotName = "Thrusting One Handed Sword", label = "细剑" },
  { slotName = "Wand", label = "法杖" },
+  { slotName = "Ring", label = "戒指" },
 
 }
 

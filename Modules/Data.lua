@@ -26,7 +26,7 @@ local typeLabel = {
 {en="Boots: Armour",cn="鞋子: 护甲"},
 {en="Gloves: Evasion",cn="手套: 闪避"},
 {en="Shield: Evasion",cn="盾牌: 闪避"},
-{en="Gloves: Armour",cn="盾牌: 护甲"},
+{en="Gloves: Armour",cn="手套: 护甲"},
 {en="Two Handed Axe",cn="双手斧"},
 {en="Claw",cn="爪"},
 {en="Flask: Utility",cn="药剂: 功能"},

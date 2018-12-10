@@ -13,7 +13,7 @@ local PassiveSpecListClass = newClass("PassiveSpecListControl", "ListControl", f
 	self.ListControl(anchor, x, y, width, height, 16, false, true, treeTab.specList)
 	self.treeTab = treeTab
 self.controls.copy = new("ButtonControl", {"BOTTOMLEFT",self,"TOP"}, 2, -4, 60, 18, "复制", function()
-		local newSpec = common.New("PassiveSpec", treeTab.build)
+		local newSpec = new("PassiveSpec", treeTab.build)
 		newSpec.title = self.selValue.title
 		newSpec.jewels = copyTable(self.selValue.jewels)
 		newSpec:DecodeURL(self.selValue:EncodeURL())
@@ -35,7 +35,7 @@ self.controls.rename = new("ButtonControl", {"BOTTOMRIGHT",self,"TOP"}, -2, -4, 
 		return self.selValue ~= nil
 	end
 self.controls.new = new("ButtonControl", {"RIGHT",self.controls.rename,"LEFT"}, -4, 0, 60, 18, "新建", function()
-		local newSpec = common.New("PassiveSpec", treeTab.build)
+		local newSpec = new("PassiveSpec", treeTab.build)
 		newSpec:SelectClass(treeTab.build.spec.curClassId)
 		newSpec:SelectAscendClass(treeTab.build.spec.curAscendClassId)
 		self:RenameSpec(newSpec, true)

@@ -369,13 +369,13 @@ self.controls.modeImport = new("ButtonControl", {"TOPLEFT",self.anchorSideBar,"T
 		self.viewMode = "IMPORT"
 	end)
 	self.controls.modeImport.locked = function() return self.viewMode == "IMPORT" end
---self.controls.modeNotes = common.New("ButtonControl", {"LEFT",self.controls.modeImport,"RIGHT"}, 4, 0, 58, 20, "BD备注", function()
+--self.controls.modeNotes = new("ButtonControl", {"LEFT",self.controls.modeImport,"RIGHT"}, 4, 0, 58, 20, "BD备注", function()
 self.controls.modeNotes =new("ButtonControl", {"LEFT",self.controls.modeImport,"RIGHT"},  4, 0, 72, 20, "BD备注", function()
 	
 		self.viewMode = "NOTES"
 	end)
 	self.controls.modeNotes.locked = function() return self.viewMode == "NOTES" end
---self.controls.modeConfig = common.New("ButtonControl", {"TOPRIGHT",self.anchorSideBar,"TOPLEFT"}, 300, 0, 100, 20, "配置", function()
+--self.controls.modeConfig = new("ButtonControl", {"TOPRIGHT",self.anchorSideBar,"TOPLEFT"}, 300, 0, 100, 20, "配置", function()
 self.controls.modeConfig = new("ButtonControl", {"TOPRIGHT",self.anchorSideBar,"TOPLEFT"}, 225, 0, 72, 20, "配置", function()
 
 

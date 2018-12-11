@@ -10114,7 +10114,7 @@ skills["LancingSteel"] = {
 skills["ShatteringSteel"] = {
 	name = "破碎铁刃",
 	color = 2,
-	description = "Swing an Axe or Sword, releasing projectiles in sequence. The projectiles shatter when colliding with an enemy or travelling a short distance. The shattered pieces deal damage in an area in front of the impact location.",
+	description ="挥舞斧或剑发射连续的投射物。当投射物撞及敌人或飞行一小段距离后会粉碎。粉碎的碎片会在爆炸位置向前方范围造成伤害。",
 	skillTypes = { [1] = true, [3] = true, [10] = true, [14] = true, [48] = true, [22] = true, [11] = true, },
 	weaponTypes = {
 		["Two Handed Axe"] = true,
@@ -10122,6 +10122,16 @@ skills["ShatteringSteel"] = {
 		["Two Handed Sword"] = true,
 		["One Handed Axe"] = true,
 		["One Handed Sword"] = true,
+	},
+	parts = {
+		{
+			name = "投射物",
+			area = false,
+		},
+		{
+			name = "碎片",
+			area = true,
+		},
 	},
 	baseFlags = {
 		attack = true,

@@ -192,6 +192,11 @@ local modNameList = {
 	["烙印技能的激活频率"] = "BrandActivationFrequency",
 	["烙印的激活频率"] = "BrandActivationFrequency",
 	["烙印激活频率"] = "BrandActivationFrequency",
+	["火焰与混沌抗性"] = { "FireResist", "ChaosResist" }, 
+	["闪电与混沌抗性"] = { "LightningResist", "ChaosResist" }, 
+	["冰霜与混沌抗性"] = { "ColdResist", "ChaosResist" }, 
+	["非异常状态混沌伤害持续时间加成"] = "ChaosDotMultiplier",
+		["冰霜伤害持续时间加成"] = "ColdDotMultiplier",
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -866,6 +871,7 @@ local modTagList = {
 	["每 1 个耐力球可使"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
 	["每个耐力球会使"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 	
 	["近期内你若有打出过暴击，则"] = { tag = { type = "Condition", var = "CritRecently" } }, --备注：if you[' ]h?a?ve dealt a critical strike recently
+	["近期内你若打出暴击，则"] = { tag = { type = "Condition", var = "CritRecently" } },
 	["当不拥有耐力球时，"] = { tag = { type = "StatThreshold", stat = "EnduranceCharges", threshold = 0, upper = true } },
 	["中毒时 "] = { tag = { type = "Condition", var = "Poisoned" } }, 
 	["近期内你若有使用战吼，则"] = { tag = { type = "Condition", var = "UsedWarcryRecently" } }, --备注：if you[' ]h?a?ve used a warcry recently
@@ -1439,7 +1445,9 @@ local specialModList = {
 	["此物品上的技能石受到 (%d+) 级的 技能陷阱化 辅助"] = function(num) return { mod("ExtraSupport", "LIST", { skillId = "SupportTrap", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
 	["此物品上的技能石受到 (%d+) 级的 额外击中 辅助"] = function(num) return { mod("ExtraSupport", "LIST", { skillId = "SupportAdditionalAccuracy", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
 	["此物品上的技能石受到 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { 
-	mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]   or gemIdLookup[support:gsub("^提高","增加").."(辅)"]  or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
+	mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]   or gemIdLookup[support:gsub("^提高","增加").."(辅)"]  
+	or gemIdLookup[support:gsub("先祖呼唤","先祖召唤").."(辅)"] 
+	or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
 	["插槽内的的技能石被 (%d+) 级的(.+)辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]  or gemIdLookup[support:gsub("^提高","增加").."(辅)"] or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
 	["此物品上的技能石受到 (%d+) 级的(.+)辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]   or gemIdLookup[support:gsub("^提高","增加").."(辅)"] or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
 	["此物品上的技能石由 (%d+) 级的(.+)辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]  or gemIdLookup[support:gsub("^提高","增加").."(辅)"] or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)

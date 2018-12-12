@@ -6715,7 +6715,7 @@ skills["WarlordsMark"] = {
 skills["PuresteelBanner"] = {
 	name = "恐怖之旗",
 	color = 1,
-	description = "Casting once reserves mana to carry a banner which makes nearby allies inflict impale with attacks, and lessens the accuracy of nearby enemies. Gain stages by impaling enemies while carrying the banner. Casting the skill again places the banner, ending the mana reservation. Once placed, it becomes more powerful for each stage gained. You cannot have multiple banners at the same time.",
+	description = "施放后会保存魔力并背著一个战旗，使附近友方攻击时可以造成穿刺，并且降低附近敌人的命中率。当背著战旗穿刺敌人时会获得叠层。再次施放技能会放置战旗，并且结束魔力保留。一但放下战旗，效果会根据每个叠层加强能力。你无法同时拥有多的战旗。",
 	skillTypes = { [5] = true, [11] = true, [2] = true, [12] = true, [15] = true, [44] = true, [16] = true, [75] = true, },
 	statMap = {
 		["puresteel_banner_accuracy_rating_+%_final"] = {
@@ -6787,6 +6787,7 @@ skills["PuresteelBanner"] = {
 		skill("manaCost", 10),
 		skill("cooldown", 1),
 		skill("manaCost", 0, { type = "Condition", var = "BannerPlanted" }),
+		skill("radius", 40),
 	},
 	levelMods = {
 		[1] = skill("levelRequirement", nil),
@@ -6837,7 +6838,7 @@ skills["PuresteelBanner"] = {
 skills["BloodstainedBanner"] = {
 	name = "战旗",
 	color = 1,
-	description = "Casting once reserves mana to carry a banner which increases the accuracy of nearby allies, and physical damage taken by nearby enemies. Gain stages by killing enemies while carrying the banner. Casting the skill again places the banner, ending the mana reservation. Once placed, it becomes more powerful for each stage gained. You cannot have multiple banners at the same time.",
+	description = "施放后会保存魔力并背著一个战旗，旗帜会增加附近友方的命中率和增加附近敌人承受物理伤害。当背著战旗击杀敌人时会获得叠层。再次施放技能会放置战旗，并且结束魔力保留。一但放下战旗，效果会根据每个叠层加强能力。你无法同时拥有多的战旗。",
 	skillTypes = { [5] = true, [11] = true, [2] = true, [12] = true, [15] = true, [44] = true, [16] = true, [75] = true, },
 	statMap = {
 		["accuracy_rating_+%"] = {
@@ -6910,6 +6911,7 @@ skills["BloodstainedBanner"] = {
 		skill("manaCost", 10),
 		skill("cooldown", 1),
 		skill("manaCost", 0, { type = "Condition", var = "BannerPlanted" }),
+		skill("radius", 40),
 	},
 	levelMods = {
 		[1] = skill("levelRequirement", nil),

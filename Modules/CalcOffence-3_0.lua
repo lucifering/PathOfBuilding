@@ -243,9 +243,14 @@ function calcs.offence(env, actor, activeSkill)
 		end
 	end
 	if skillFlags.chaining then
-		output.ChainMax = skillModList:Sum("BASE", skillCfg, "ChainCountMax")
-		output.Chain = m_min(output.ChainMax, skillModList:Sum("BASE", skillCfg, "ChainCount"))
-		output.ChainRemaining = m_max(0, output.ChainMax - output.Chain)
+		if skillModList:Flag(skillCfg, "CannotChain") then
+output.ChainMaxString = "无法连锁"
+		else
+			output.ChainMax = skillModList:Sum("BASE", skillCfg, "ChainCountMax")
+			output.ChainMaxString = output.ChainMax
+			output.Chain = m_min(output.ChainMax, skillModList:Sum("BASE", skillCfg, "ChainCount"))
+			output.ChainRemaining = m_max(0, output.ChainMax - output.Chain)
+		end
 	end
 	if skillFlags.projectile then
 		if skillModList:Flag(nil, "PointBlank") then
@@ -255,13 +260,17 @@ function calcs.offence(env, actor, activeSkill)
 			skillModList:NewMod("Damage", "MORE", 30, "Far Shot", bor(ModFlag.Attack, ModFlag.Projectile), { type = "DistanceRamp", ramp = {{35,0},{70,1}} })
 		end
 		output.ProjectileCount = skillModList:Sum("BASE", skillCfg, "ProjectileCount")
+		if skillModList:Flag(skillCfg, "CannotPierce") then
+output.PierceCountString = "无法穿透"	
+		else
 		if skillModList:Flag(skillCfg, "PierceAllTargets") or enemyDB:Flag(nil, "AlwaysPierceSelf") then
 			output.PierceCount = 100
-			output.PierceCountString = "All targets"
-		else
-			output.PierceCount = skillModList:Sum("BASE", skillCfg, "PierceCount")
-			output.PierceCountString = output.PierceCount
+output.PierceCountString = "所有目标"
+			else
+				output.PierceCount = skillModList:Sum("BASE", skillCfg, "PierceCount")
+				output.PierceCountString = output.PierceCount
 		end
+	end
 		output.ProjectileSpeedMod = calcLib.mod(skillModList, skillCfg, "ProjectileSpeed")
 		if breakdown then
 			breakdown.ProjectileSpeedMod = breakdown.mod(skillCfg, "ProjectileSpeed")

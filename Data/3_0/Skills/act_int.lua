@@ -256,8 +256,8 @@ skills["VaalArcChain"] = {
 skills["ArcticBreath"] = {
 	name = "极地吐息",
 	color = 3,
-	baseEffectiveness = 1.6000000238419,
-	incrementalEffectiveness = 0.041499998420477,
+	baseEffectiveness = 0.69999998807907,
+	incrementalEffectiveness = 0.041999999433756,
 	description = "射出一个寒冰魔侍投射物, 它所经过的路径都会结冰. 在接触到敌人时会爆炸, 使附近地面结冰且对该范围敌人造成伤害.",
 	skillTypes = { [2] = true, [3] = true, [68] = true, [10] = true, [17] = true, [18] = true, [19] = true, [12] = true, [11] = true, [26] = true, [36] = true, [34] = true, [60] = true, [79] = true, },
 	baseFlags = {
@@ -5263,7 +5263,7 @@ skills["HeraldOfThunder"] = {
 skills["IceNova"] = {
 	name = "冰霜新星",
 	color = 3,
-	baseEffectiveness = 1.4358999729156,
+	baseEffectiveness = 1.8666000366211,
 	incrementalEffectiveness = 0.038839999586344,
 	description = "从施法者散发出一圈寒冰之环.",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [34] = true, [60] = true, },
@@ -5498,8 +5498,8 @@ skills["VaalIceNova"] = {
 skills["IceSpear"] = {
 	name = "冰矛",
 	color = 3,
-	baseEffectiveness = 1.5908999443054,
-	incrementalEffectiveness = 0.03999999910593,
+	baseEffectiveness = 1.5750000476837,
+	incrementalEffectiveness = 0.034200001507998,
 	description = "凝聚冰之碎片为矛并向前射出, 此冰矛将会穿透附近的敌人, 并对一定距离以外的敌人具有较高的暴击率.",
 	skillTypes = { [2] = true, [3] = true, [68] = true, [10] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [34] = true, [60] = true, },
 	parts = {
@@ -10026,8 +10026,8 @@ skills["TempestShield"] = {
 skills["FrostBoltNova"] = {
 	name = "漩涡",
 	color = 3,
-	baseEffectiveness = 1.7841000556946,
-	incrementalEffectiveness = 0.035599999129772,
+	baseEffectiveness = 2.4000000953674,
+	incrementalEffectiveness = 0.043999999761581,
 	description = "一个会在施法者周围爆炸的冰爆, 对敌人造成冰霜伤害, 并留下一个漩涡, 对于在其中的敌人继续造成持续冰霜伤害和冰缓. 若施法目标区域附近存在着寒冰弹, 冰爆则会出现在寒冰弹的位置. ",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [34] = true, [36] = true, [12] = true, [60] = true, [79] = true, },
 	baseFlags = {
@@ -10099,6 +10099,7 @@ skills["FrostBoltNova"] = {
 		skill("CritChance", 6.5),
 		skill("cooldown", 1.8),
 		skill("dotIsArea", true),
+		skill("radius", 20),
 	},
 	levelMods = {
 		[1] = skill("levelRequirement", nil),
@@ -10509,6 +10510,8 @@ skills["CataclysmSigil"] = {
 		skill("castTime", 0.4),
 		skill("damageEffectiveness", 0.9),
 		skill("CritChance", 6),
+		skill("radius", 18),
+		skill("radiusSecondary", 8),
 	},
 	levelMods = {
 		[1] = skill("levelRequirement", nil),
@@ -10870,6 +10873,7 @@ skills["FrostFury"] = {
 		skill("castTime", 0.25),
 		skill("damageEffectiveness", 0.6),
 		skill("CritChance", 6),
+		skill("radius", 16),
 	},
 	levelMods = {
 		[1] = skill("levelRequirement", nil),

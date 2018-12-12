@@ -1927,6 +1927,12 @@ local specialModList = {
 	["被击中时，受到的闪电总伤害额外降低 (%d+)%%"] = function(num) return { mod("LightningDamageTaken", "MORE", -num) } end,
 	 ["被击中时，受到的冰霜总伤害额外降低 (%d+)%%"] = function(num) return { mod("ColdDamageTaken", "MORE", -num) } end,
 	 ["被击中时，受到的火焰总伤害额外降低 (%d+)%%"] = function(num) return { mod("FireDamageTaken", "MORE", -num) } end,
+	 ["左戒指栏位：法术的投射物无法弹射"] = { flag("CannotChain", nil, bor(ModFlag.Spell, ModFlag.Projectile), { type = "SlotNumber", num = 1 }) },
+	["右戒指栏位：法术的投射物会额外弹射 1 次"] = { mod("ChainCount", "BASE", 1, nil, bor(ModFlag.Spell, ModFlag.Projectile), { type = "SlotNumber", num = 2 }) },
+		["法术的投射物无法穿透"] = { flag("CannotPierce", nil, ModFlag.Spell) },
+		["法术的投射物无法穿刺"] = { flag("CannotPierce", nil, ModFlag.Spell) },
+	 ["击败敌人时触发 1 级的【召唤毒蛛】"]= function() return {  mod("ExtraSkill", "LIST", { skillId ="TriggeredSummonSpider", level = 1})   } end,
+	  ["击败敌人时有 (%d+)%% 几率触发 1 级的【召唤毒蛛】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="TriggeredSummonSpider", level = 1})   } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

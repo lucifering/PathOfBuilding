@@ -1514,3 +1514,44 @@ skills["DropBearSummonedRallyingCry"] = {
 		[1] = { 25, 4000, nil, },
 	},
 }
+skills["SummonedSpiderViperStrike"] = {
+	name = "毒蛇打击",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 0.64999997615814,
+	incrementalEffectiveness = 0.025499999523163,
+	description = "对敌人进行攻击, 额外造成等同于物理伤害一定比例的混沌伤害, 并使敌人中毒. 限定爪, 匕首与剑.",
+	skillTypes = { [1] = true, [12] = true, [28] = true, [24] = true, [25] = true, [40] = true, [50] = true, },
+	weaponTypes = {
+		["Claw"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["Two Handed Sword"] = true,
+		["Dagger"] = true,
+		["One Handed Sword"] = true,
+	},
+	baseFlags = {
+		attack = true,
+		melee = true,
+	},
+	qualityStats = {
+	},
+	stats = {
+		"physical_damage_%_to_add_as_chaos",
+		"base_chance_to_poison_on_hit_%",
+		"base_skill_effect_duration",
+		"poison_duration_is_skill_duration",
+	},
+	statInterpolation = { 1, 1, 1, },
+	statLevels = {
+		[1] = { 25, 100, 8000, nil, },
+	},
+	baseMods = {
+		skill("castTime", 1),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
+}

@@ -1616,10 +1616,14 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 			end)
 		end
 	end
-	if self.displayItem.type ~= "Jewel" and self.displayItem.type ~= "Flask" then
+	if self.displayItem.type ~= "Jewel"  then
 		t_insert(sourceList, { label = "Master", sourceId = "MASTER" })
+		if  self.displayItem.type ~= "Flask" then 
 		t_insert(sourceList, { label = "Essence", sourceId = "ESSENCE" })
+		end
 	end
+	
+	
 	if not self.displayItem.crafted then
 		t_insert(sourceList, { label = "Prefix", sourceId = "PREFIX" })
 		t_insert(sourceList, { label = "Suffix", sourceId = "SUFFIX" })
@@ -1636,8 +1640,10 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 			end
 		else
 			local listMod = modList[controls.modSelect.selIndex]
-			for _, line in ipairs(listMod.mod) do
-				t_insert(item.modLines, { line = line, [listMod.type] = true })
+			if listMod ~=nil and listMod.mod~=nil then 
+				for _, line in ipairs(listMod.mod) do
+					t_insert(item.modLines, { line = line, [listMod.type] = true })
+				end
 			end
 		end
 		item:BuildAndParseRaw()
@@ -1655,10 +1661,12 @@ controls.modSelectLabel = new("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 45
 		return sourceList[controls.source.selIndex].sourceId ~= "CUSTOM"
 	end
 	controls.modSelect.tooltipFunc = function(tooltip, mode, index, value)
-		tooltip:Clear()
-		if mode ~= "OUT" then
-			for _, line in ipairs(value.mod) do
-				tooltip:AddLine(16, "^7"..line)
+		if value ~=nil and value.mod ~=nil  then
+			tooltip:Clear()
+			if mode ~= "OUT" then
+				for _, line in ipairs(value.mod) do
+					tooltip:AddLine(16, "^7"..line)
+				end
 			end
 		end
 	end

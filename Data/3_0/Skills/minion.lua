@@ -7,7 +7,7 @@
 local skills, mod, flag, skill = ...
 
 skills["ChaosElementalCascadeSummoned"] = {
-	name = "冰刺",
+	name = "Cascade",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 1.9800000190735,
@@ -17,17 +17,6 @@ skills["ChaosElementalCascadeSummoned"] = {
 	baseFlags = {
 		spell = true,
 		area = true,
-	},
-	baseMods = {
-		skill("castTime", 0.8),
-		skill("damageEffectiveness", 0.6),
-		skill("cooldown", 3.5),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 4, },
 	},
 	qualityStats = {
 	},
@@ -45,9 +34,20 @@ skills["ChaosElementalCascadeSummoned"] = {
 	statLevels = {
 		[1] = { 0.80000001192093, 1.2000000476837, 6, 0, 3, 50, -25, nil, },
 	},
+	baseMods = {
+		skill("castTime", 0.8),
+		skill("damageEffectiveness", 0.6),
+		skill("cooldown", 3.5),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 4, },
+	},
 }
 skills["SandstormChaosElementalSummoned"] = {
-	name = "混沌光环",
+	name = "Chaos Aura",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 11,
@@ -57,16 +57,6 @@ skills["SandstormChaosElementalSummoned"] = {
 		spell = true,
 		duration = true,
 		area = true,
-	},
-	baseMods = {
-		skill("castTime", 1),
-		skill("cooldown", 8),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 3, },
 	},
 	qualityStats = {
 	},
@@ -81,9 +71,19 @@ skills["SandstormChaosElementalSummoned"] = {
 	statLevels = {
 		[1] = { 16.666667039196, 5000, 0, 2, nil, },
 	},
+	baseMods = {
+		skill("castTime", 1),
+		skill("cooldown", 8),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 3, },
+	},
 }
 skills["FireElementalFlameRedSummoned"] = {
-	name = "献祭",
+	name = "Immolate",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.3999999761581,
@@ -94,16 +94,6 @@ skills["FireElementalFlameRedSummoned"] = {
 	baseFlags = {
 		spell = true,
 		projectile = true,
-	},
-	baseMods = {
-		skill("castTime", 0.25),
-		skill("damageEffectiveness", 0.2),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 3, },
 	},
 	qualityStats = {
 	},
@@ -121,9 +111,19 @@ skills["FireElementalFlameRedSummoned"] = {
 	statLevels = {
 		[1] = { 0.80000001192093, 1.2000000476837, 4, -89, -77, -25, nil, nil, },
 	},
+	baseMods = {
+		skill("castTime", 0.25),
+		skill("damageEffectiveness", 0.2),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 3, },
+	},
 }
 skills["FireElementalMortarSummoned"] = {
-	name = "熔岩球",
+	name = "Magma Ball",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 4.2666997909546,
@@ -134,17 +134,6 @@ skills["FireElementalMortarSummoned"] = {
 		spell = true,
 		projectile = true,
 		area = true,
-	},
-	baseMods = {
-		skill("castTime", 1),
-		skill("CritChance", 5),
-		skill("cooldown", 6),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 34, },
 	},
 	qualityStats = {
 	},
@@ -160,9 +149,20 @@ skills["FireElementalMortarSummoned"] = {
 	statLevels = {
 		[1] = { 15, 0.80000001192093, 1.2000000476837, -33, nil, nil, },
 	},
+	baseMods = {
+		skill("castTime", 1),
+		skill("CritChance", 5),
+		skill("cooldown", 6),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 34, },
+	},
 }
 skills["FireElementalConeSummoned"] = {
-	name = "烈焰震波",
+	name = "Flame Wave",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 2.9867000579834,
@@ -171,46 +171,6 @@ skills["FireElementalConeSummoned"] = {
 	baseFlags = {
 		spell = true,
 		area = true,
-	},
-	baseMods = {
-		skill("castTime", 0.935),
-		skill("CritChance", 10),
-		skill("cooldown", 2),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 34, },
-		[2] = { 36, },
-		[3] = { 38, },
-		[4] = { 40, },
-		[5] = { 42, },
-		[6] = { 44, },
-		[7] = { 46, },
-		[8] = { 48, },
-		[9] = { 50, },
-		[10] = { 52, },
-		[11] = { 54, },
-		[12] = { 56, },
-		[13] = { 58, },
-		[14] = { 60, },
-		[15] = { 62, },
-		[16] = { 64, },
-		[17] = { 66, },
-		[18] = { 68, },
-		[19] = { 69, },
-		[20] = { 70, },
-		[21] = { 72, },
-		[22] = { 74, },
-		[23] = { 76, },
-		[24] = { 78, },
-		[25] = { 80, },
-		[26] = { 82, },
-		[27] = { 84, },
-		[28] = { 86, },
-		[29] = { 88, },
-		[30] = { 90, },
 	},
 	qualityStats = {
 	},
@@ -252,9 +212,49 @@ skills["FireElementalConeSummoned"] = {
 		[29] = { 0.80000001192093, 1.25, nil, },
 		[30] = { 0.80000001192093, 1.25, nil, },
 	},
+	baseMods = {
+		skill("castTime", 0.935),
+		skill("CritChance", 10),
+		skill("cooldown", 2),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 34, },
+		[2] = { 36, },
+		[3] = { 38, },
+		[4] = { 40, },
+		[5] = { 42, },
+		[6] = { 44, },
+		[7] = { 46, },
+		[8] = { 48, },
+		[9] = { 50, },
+		[10] = { 52, },
+		[11] = { 54, },
+		[12] = { 56, },
+		[13] = { 58, },
+		[14] = { 60, },
+		[15] = { 62, },
+		[16] = { 64, },
+		[17] = { 66, },
+		[18] = { 68, },
+		[19] = { 69, },
+		[20] = { 70, },
+		[21] = { 72, },
+		[22] = { 74, },
+		[23] = { 76, },
+		[24] = { 78, },
+		[25] = { 80, },
+		[26] = { 82, },
+		[27] = { 84, },
+		[28] = { 86, },
+		[29] = { 88, },
+		[30] = { 90, },
+	},
 }
 skills["IceElementalIceCyclone"] = {
-	name = "冰旋风斩",
+	name = "Cyclone",
 	hidden = true,
 	color = 2,
 	description = "对周围敌人造成伤害, 接而进行一连串的旋转攻击, 边向目标地点前进边攻击路径上的敌人, 无法被多重打击和无情辅助.",
@@ -279,17 +279,6 @@ skills["IceElementalIceCyclone"] = {
 		melee = true,
 		movement = true,
 	},
-	baseMods = {
-		skill("castTime", 1),
-		skill("cooldown", 6),
-		skill("dpsMultiplier", 2),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 1, },
-	},
 	qualityStats = {
 	},
 	stats = {
@@ -305,9 +294,20 @@ skills["IceElementalIceCyclone"] = {
 	statLevels = {
 		[1] = { 4, 75, 40, -20, 4000, nil, nil, },
 	},
+	baseMods = {
+		skill("castTime", 1),
+		skill("cooldown", 6),
+		skill("dpsMultiplier", 2),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
 }
 skills["IceElementalSpearSummoned"] = {
-	name = "冰矛",
+	name = "Ice Spear",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 2.5455000400543,
@@ -316,16 +316,6 @@ skills["IceElementalSpearSummoned"] = {
 	baseFlags = {
 		spell = true,
 		projectile = true,
-	},
-	baseMods = {
-		skill("castTime", 1),
-		skill("cooldown", 4),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 3, },
 	},
 	qualityStats = {
 	},
@@ -339,9 +329,19 @@ skills["IceElementalSpearSummoned"] = {
 	statLevels = {
 		[1] = { 0.80000001192093, 1.2000000476837, 25, nil, },
 	},
+	baseMods = {
+		skill("castTime", 1),
+		skill("cooldown", 4),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 3, },
+	},
 }
 skills["LightningGolemArcSummoned"] = {
-	name = "风暴之核",
+	name = "Storm Orb",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 1.0937999486923,
@@ -351,6 +351,17 @@ skills["LightningGolemArcSummoned"] = {
 		spell = true,
 		projectile = true,
 		duration = true,
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_lightning_damage",
+		"spell_maximum_base_lightning_damage",
+		"base_skill_effect_duration",
+	},
+	statInterpolation = { 3, 3, 1, },
+	statLevels = {
+		[1] = { 0.20000000298023, 1.7999999523163, 8000, },
 	},
 	baseMods = {
 		skill("castTime", 0.8),
@@ -364,20 +375,9 @@ skills["LightningGolemArcSummoned"] = {
 	levels = {
 		[1] = { 1, },
 	},
-	qualityStats = {
-	},
-	stats = {
-		"spell_minimum_base_lightning_damage",
-		"spell_maximum_base_lightning_damage",
-		"base_skill_effect_duration",
-	},
-	statInterpolation = { 3, 3, 1, },
-	statLevels = {
-		[1] = { 0.20000000298023, 1.7999999523163, 8000, },
-	},
 }
 skills["MonsterProjectileSpellLightningGolemSummoned"] = {
-	name = "闪电投射物",
+	name = "Lightning Projectile",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 2.625,
@@ -386,16 +386,6 @@ skills["MonsterProjectileSpellLightningGolemSummoned"] = {
 	baseFlags = {
 		spell = true,
 		projectile = true,
-	},
-	baseMods = {
-		skill("castTime", 1),
-		skill("CritChance", 5),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 1, },
 	},
 	qualityStats = {
 	},
@@ -411,9 +401,19 @@ skills["MonsterProjectileSpellLightningGolemSummoned"] = {
 	statLevels = {
 		[1] = { 0.20000000298023, 1.7999999523163, 11, -15, -40, nil, },
 	},
+	baseMods = {
+		skill("castTime", 1),
+		skill("CritChance", 5),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
 }
 skills["LightningGolemWrath"] = {
-	name = "雷霆",
+	name = "Wrath",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 0.16249999403954,
@@ -439,16 +439,6 @@ skills["LightningGolemWrath"] = {
 		area = true,
 		duration = true,
 	},
-	baseMods = {
-		skill("castTime", 0.8),
-		skill("cooldown", 12),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 1, },
-	},
 	qualityStats = {
 	},
 	stats = {
@@ -463,13 +453,23 @@ skills["LightningGolemWrath"] = {
 	statLevels = {
 		[1] = { 0.20000000298023, 1.7999999523163, 4000, 0.11999999731779, 1.0800000429153, nil, },
 	},
+	baseMods = {
+		skill("castTime", 0.8),
+		skill("cooldown", 12),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
 }
 skills["SpectralSkullShieldCharge"] = {
-	name = "重盾冲锋",
+	name = "Charge",
 	hidden = true,
 	color = 4,
 	description = "向一个目标冲锋, 使用盾牌对其猛击的同时也用近战武器顺手补刀. 此攻击将会击退目标并将其击晕, 在路径上的敌人将会被推向两旁. 伤害与击晕几率将视冲锋距离而定. ",
-	skillTypes = { [1] = true, [7] = true, [13] = true, [24] = true, [25] = true, [38] = true, },
+	skillTypes = { [1] = true, [13] = true, [24] = true, [25] = true, [38] = true, },
 	weaponTypes = {
 		["One Handed Sword"] = true,
 		["Sceptre"] = true,
@@ -485,16 +485,6 @@ skills["SpectralSkullShieldCharge"] = {
 		melee = true,
 		movement = true,
 	},
-	baseMods = {
-		skill("castTime", 1),
-		skill("cooldown", 5),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 1, },
-	},
 	qualityStats = {
 	},
 	stats = {
@@ -508,6 +498,16 @@ skills["SpectralSkullShieldCharge"] = {
 	statLevels = {
 		[1] = { 200, 500, 300, -50, nil, },
 	},
+	baseMods = {
+		skill("castTime", 1),
+		skill("cooldown", 5),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
 }
 skills["RagingSpiritMeleeAttack"] = {
 	name = "普通攻击",
@@ -518,37 +518,6 @@ skills["RagingSpiritMeleeAttack"] = {
 	baseFlags = {
 		attack = true,
 		melee = true,
-	},
-	baseMods = {
-		skill("castTime", 1),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 4, },
-		[2] = { 6, },
-		[3] = { 9, },
-		[4] = { 12, },
-		[5] = { 15, },
-		[6] = { 19, },
-		[7] = { 23, },
-		[8] = { 28, },
-		[9] = { 33, },
-		[10] = { 39, },
-		[11] = { 43, },
-		[12] = { 46, },
-		[13] = { 49, },
-		[14] = { 52, },
-		[15] = { 55, },
-		[16] = { 58, },
-		[17] = { 61, },
-		[18] = { 64, },
-		[19] = { 66, },
-		[20] = { 68, },
-		[21] = { 70, },
-		[22] = { 72, },
-		[23] = { 74, },
 	},
 	qualityStats = {
 	},
@@ -581,9 +550,40 @@ skills["RagingSpiritMeleeAttack"] = {
 		[22] = { -7, },
 		[23] = { -10, },
 	},
+	baseMods = {
+		skill("castTime", 1),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 4, },
+		[2] = { 6, },
+		[3] = { 9, },
+		[4] = { 12, },
+		[5] = { 15, },
+		[6] = { 19, },
+		[7] = { 23, },
+		[8] = { 28, },
+		[9] = { 33, },
+		[10] = { 39, },
+		[11] = { 43, },
+		[12] = { 46, },
+		[13] = { 49, },
+		[14] = { 52, },
+		[15] = { 55, },
+		[16] = { 58, },
+		[17] = { 61, },
+		[18] = { 64, },
+		[19] = { 66, },
+		[20] = { 68, },
+		[21] = { 70, },
+		[22] = { 72, },
+		[23] = { 74, },
+	},
 }
 skills["SkeletonProjectileCold"] = {
-	name = "冰霜投射物",
+	name = "Cold Projectile",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 0.68180000782013,
@@ -592,19 +592,6 @@ skills["SkeletonProjectileCold"] = {
 	baseFlags = {
 		spell = true,
 		projectile = true,
-	},
-	baseMods = {
-		skill("castTime", 1.95),
-		skill("CritChance", 5),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-		[2] = skill("manaCost", nil),
-	},
-	levels = {
-		[1] = { 4, 5, },
-		[2] = { 19, 4, },
-		[3] = { 68, 4, },
 	},
 	qualityStats = {
 	},
@@ -620,18 +607,6 @@ skills["SkeletonProjectileCold"] = {
 		[2] = { 0.80000001192093, 1.2000000476837, 1, -60, },
 		[3] = { 2.7000000476837, 4.210000038147, 1, -60, },
 	},
-}
-skills["SkeletonProjectileFire"] = {
-	name = "火焰投射物",
-	hidden = true,
-	color = 4,
-	baseEffectiveness = 0.83329999446869,
-	incrementalEffectiveness = 0.03940000012517,
-	skillTypes = { [2] = true, [10] = true, [26] = true, [3] = true, [68] = true, },
-	baseFlags = {
-		spell = true,
-		projectile = true,
-	},
 	baseMods = {
 		skill("castTime", 1.95),
 		skill("CritChance", 5),
@@ -644,6 +619,18 @@ skills["SkeletonProjectileFire"] = {
 		[1] = { 4, 5, },
 		[2] = { 19, 4, },
 		[3] = { 68, 4, },
+	},
+}
+skills["SkeletonProjectileFire"] = {
+	name = "Fire Projectile",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 0.83329999446869,
+	incrementalEffectiveness = 0.03940000012517,
+	skillTypes = { [2] = true, [10] = true, [26] = true, [3] = true, [68] = true, },
+	baseFlags = {
+		spell = true,
+		projectile = true,
 	},
 	qualityStats = {
 	},
@@ -659,18 +646,6 @@ skills["SkeletonProjectileFire"] = {
 		[2] = { 0.80000001192093, 1.2000000476837, 1, -60, },
 		[3] = { 2.7000000476837, 4.210000038147, 1, -60, },
 	},
-}
-skills["SkeletonProjectileLightning"] = {
-	name = "闪电投射物",
-	hidden = true,
-	color = 4,
-	baseEffectiveness = 0.9375,
-	incrementalEffectiveness = 0.03940000012517,
-	skillTypes = { [2] = true, [10] = true, [26] = true, [3] = true, [68] = true, },
-	baseFlags = {
-		spell = true,
-		projectile = true,
-	},
 	baseMods = {
 		skill("castTime", 1.95),
 		skill("CritChance", 5),
@@ -683,6 +658,18 @@ skills["SkeletonProjectileLightning"] = {
 		[1] = { 4, 5, },
 		[2] = { 19, 4, },
 		[3] = { 68, 4, },
+	},
+}
+skills["SkeletonProjectileLightning"] = {
+	name = "Lightning Projectile",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 0.9375,
+	incrementalEffectiveness = 0.03940000012517,
+	skillTypes = { [2] = true, [10] = true, [26] = true, [3] = true, [68] = true, },
+	baseFlags = {
+		spell = true,
+		projectile = true,
 	},
 	qualityStats = {
 	},
@@ -698,9 +685,22 @@ skills["SkeletonProjectileLightning"] = {
 		[2] = { 0.5, 1.5, 1, -60, },
 		[3] = { 1.1699999570847, 3.4900000095367, 1, -60, },
 	},
+	baseMods = {
+		skill("castTime", 1.95),
+		skill("CritChance", 5),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+		[2] = skill("manaCost", nil),
+	},
+	levels = {
+		[1] = { 4, 5, },
+		[2] = { 19, 4, },
+		[3] = { 68, 4, },
+	},
 }
 skills["RockGolemSlam"] = {
-	name = "巨石魔像横扫",
+	name = "Slam",
 	hidden = true,
 	color = 1,
 	skillTypes = { [1] = true, [11] = true, [57] = true, [36] = true, },
@@ -708,18 +708,6 @@ skills["RockGolemSlam"] = {
 		attack = true,
 		melee = true,
 		area = true,
-	},
-	baseMods = {
-		skill("castTime", 1),
-		skill("damageEffectiveness", 1.75),
-		skill("baseMultiplier", 1.75),
-		skill("cooldown", 6),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 1, },
 	},
 	qualityStats = {
 	},
@@ -734,9 +722,21 @@ skills["RockGolemSlam"] = {
 	statLevels = {
 		[1] = { -20, 33, 1, 0, nil, },
 	},
+	baseMods = {
+		skill("castTime", 1),
+		skill("damageEffectiveness", 1.75),
+		skill("baseMultiplier", 1.75),
+		skill("cooldown", 6),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
 }
 skills["RockGolemWhirlingBlades"] = {
-	name = "回旋",
+	name = "Roll",
 	hidden = true,
 	color = 4,
 	description = "迅速穿越敌人并同时造成武器伤害. 限定匕首, 爪以及单手剑. ",
@@ -752,15 +752,6 @@ skills["RockGolemWhirlingBlades"] = {
 		melee = true,
 		movement = true,
 	},
-	baseMods = {
-		skill("castTime", 2.6),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 1, },
-	},
 	qualityStats = {
 	},
 	stats = {
@@ -774,9 +765,18 @@ skills["RockGolemWhirlingBlades"] = {
 	statLevels = {
 		[1] = { 1, -50, 1, nil, nil, },
 	},
+	baseMods = {
+		skill("castTime", 1.43),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
 }
 skills["ZombieSlam"] = {
-	name = "僵尸横扫",
+	name = "Slam",
 	hidden = true,
 	color = 4,
 	skillTypes = { [1] = true, [11] = true, [57] = true, [36] = true, },
@@ -784,17 +784,6 @@ skills["ZombieSlam"] = {
 		attack = true,
 		melee = true,
 		area = true,
-	},
-	baseMods = {
-		skill("castTime", 1),
-		skill("cooldown", 5),
-		skill("radius", 18),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 1, },
 	},
 	qualityStats = {
 	},
@@ -809,35 +798,10 @@ skills["ZombieSlam"] = {
 	statLevels = {
 		[1] = { -22, 45, 280, nil, nil, },
 	},
-}
-skills["SpiderMinionLeapSlam"] = {
-	name = "跃击",
-	hidden = true,
-	color = 4,
-	description = "朝着目标区域跃起, 并在落地时以主手武器重击（并击退一些）范围内的敌人. 被踩到的敌人将会被推出去. 限定一把斧, 锤, 剑或是长杖.",
-	skillTypes = { [1] = true, [7] = true, [11] = true, [24] = true, [38] = true, },
-	weaponTypes = {
-		["Two Handed Axe"] = true,
-		["Two Handed Mace"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Staff"] = true,
-		["Two Handed Sword"] = true,
-		["One Handed Sword"] = true,
-		["Sceptre"] = true,
-		["One Handed Axe"] = true,
-		["One Handed Mace"] = true,
-	},
-	baseFlags = {
-		attack = true,
-		melee = true,
-		area = true,
-		movement = true,
-	},
 	baseMods = {
-		skill("castTime", 1.4),
-		skill("damageEffectiveness", 1.5),
-		skill("baseMultiplier", 1.5),
-		skill("cooldown", 2),
+		skill("castTime", 1),
+		skill("cooldown", 5),
+		skill("radius", 18),
 	},
 	levelMods = {
 		[1] = skill("levelRequirement", nil),
@@ -845,17 +809,46 @@ skills["SpiderMinionLeapSlam"] = {
 	levels = {
 		[1] = { 1, },
 	},
+}
+skills["SummonedSpiderViperStrike"] = {
+	name = "毒蛇打击",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 0.64999997615814,
+	incrementalEffectiveness = 0.025499999523163,
+	description = "对敌人进行攻击, 额外造成等同于物理伤害一定比例的混沌伤害, 并使敌人中毒. 限定爪, 匕首与剑.",
+	skillTypes = { [1] = true, [12] = true, [28] = true, [24] = true, [25] = true, [40] = true, [50] = true, },
+	weaponTypes = {
+		["One Handed Sword"] = true,
+		["Two Handed Sword"] = true,
+		["Dagger"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["Claw"] = true,
+	},
+	baseFlags = {
+		attack = true,
+		melee = true,
+	},
 	qualityStats = {
 	},
 	stats = {
-		"skill_art_variation",
-		"active_skill_area_of_effect_radius_+%_final",
-		"is_area_damage",
-		"cast_time_overrides_attack_duration",
+		"physical_damage_%_to_add_as_chaos",
+		"base_chance_to_poison_on_hit_%",
+		"base_skill_effect_duration",
+		"poison_duration_is_skill_duration",
 	},
-	statInterpolation = { 1, 1, },
+	statInterpolation = { 1, 1, 1, },
 	statLevels = {
-		[1] = { 3, 0, nil, nil, },
+		[1] = { 25, 100, 8000, nil, },
+	},
+	baseMods = {
+		skill("castTime", 1),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
 	},
 }
 skills["DancingDervishCyclone"] = {
@@ -883,17 +876,6 @@ skills["DancingDervishCyclone"] = {
 		area = true,
 		melee = true,
 	},
-	baseMods = {
-		skill("castTime", 1),
-		skill("dpsMultiplier", 2),
-		skill("radiusIsWeaponRange", true),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 1, },
-	},
 	qualityStats = {
 	},
 	stats = {
@@ -909,9 +891,20 @@ skills["DancingDervishCyclone"] = {
 	statLevels = {
 		[1] = { 0, 20, 0, 0, 25, 0, nil, },
 	},
+	baseMods = {
+		skill("castTime", 1),
+		skill("dpsMultiplier", 2),
+		skill("radiusIsWeaponRange", true),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
 }
 skills["SummonPhantasmFadingProjectile"] = {
-	name = "物理投射物",
+	name = "Physical Projectile",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.0099999904633,
@@ -920,17 +913,6 @@ skills["SummonPhantasmFadingProjectile"] = {
 	baseFlags = {
 		spell = true,
 		projectile = true,
-	},
-	baseMods = {
-		skill("castTime", 1.17),
-		skill("damageEffectiveness", 1.5),
-		skill("CritChance", 5),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 1, },
 	},
 	qualityStats = {
 	},
@@ -944,9 +926,20 @@ skills["SummonPhantasmFadingProjectile"] = {
 	statLevels = {
 		[1] = { 0.80000001192093, 1.2000000476837, nil, nil, },
 	},
+	baseMods = {
+		skill("castTime", 1.17),
+		skill("damageEffectiveness", 1.5),
+		skill("CritChance", 5),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
 }
 skills["HeraldOfAgonyMinionMortar"] = {
-	name = "炮击",
+	name = "Mortar",
 	hidden = true,
 	color = 4,
 	description = "通用的怪物炮击技能. 与怪物投射物相似, 但带有冲击效果.",
@@ -955,18 +948,6 @@ skills["HeraldOfAgonyMinionMortar"] = {
 		attack = true,
 		projectile = true,
 		area = true,
-	},
-	baseMods = {
-		skill("castTime", 2),
-		skill("damageEffectiveness", 0.4),
-		skill("baseMultiplier", 0.4),
-		skill("cooldown", 7.5),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 1, },
 	},
 	qualityStats = {
 	},
@@ -984,24 +965,27 @@ skills["HeraldOfAgonyMinionMortar"] = {
 	statLevels = {
 		[1] = { 20, 10, 5, -35, 50, nil, nil, nil, },
 	},
-}
-skills["HeraldOfAgonyMinionTailSpike"] = {
-	name = "尾刺",
-	hidden = true,
-	color = 4,
-	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [68] = true, [10] = true, [57] = true, },
-	baseFlags = {
-		attack = true,
-		projectile = true,
-	},
 	baseMods = {
-		skill("castTime", 1.3),
+		skill("castTime", 2),
+		skill("damageEffectiveness", 0.4),
+		skill("baseMultiplier", 0.4),
+		skill("cooldown", 7.5),
 	},
 	levelMods = {
 		[1] = skill("levelRequirement", nil),
 	},
 	levels = {
 		[1] = { 1, },
+	},
+}
+skills["HeraldOfAgonyMinionTailSpike"] = {
+	name = "Tail Spike",
+	hidden = true,
+	color = 4,
+	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [68] = true, [10] = true, [57] = true, },
+	baseFlags = {
+		attack = true,
+		projectile = true,
 	},
 	qualityStats = {
 	},
@@ -1016,13 +1000,22 @@ skills["HeraldOfAgonyMinionTailSpike"] = {
 	statLevels = {
 		[1] = { 39, 0, 0, 4, nil, },
 	},
+	baseMods = {
+		skill("castTime", 1.3),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
 }
 skills["HeraldOfAgonyMinionCleave"] = {
-	name = "劈砍",
+	name = "Cleave",
 	hidden = true,
 	color = 1,
 	description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 并同时对多名敌人造成伤害. 限定斧与剑.",
-	skillTypes = { [1] = true, [8] = true, [11] = true, [28] = true, [24] = true, [53] = true, },
+	skillTypes = { [1] = true, [11] = true, [28] = true, [24] = true, [53] = true, },
 	weaponTypes = {
 		["One Handed Sword"] = true,
 		["Two Handed Sword"] = true,
@@ -1031,18 +1024,9 @@ skills["HeraldOfAgonyMinionCleave"] = {
 		["Thrusting One Handed Sword"] = true,
 	},
 	baseFlags = {
-		melee = true,
 		attack = true,
+		melee = true,
 		area = true,
-	},
-	baseMods = {
-		skill("castTime", 1),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 1, },
 	},
 	qualityStats = {
 	},
@@ -1053,17 +1037,6 @@ skills["HeraldOfAgonyMinionCleave"] = {
 	statLevels = {
 		[1] = { nil, },
 	},
-}
-skills["HeraldOfLightMinionSlam"] = {
-	name = "横扫",
-	hidden = true,
-	color = 4,
-	skillTypes = { [1] = true, [11] = true, [57] = true, [36] = true, },
-	baseFlags = {
-		melee = true,
-		attack = true,
-		area = true,
-	},
 	baseMods = {
 		skill("castTime", 1),
 	},
@@ -1072,6 +1045,17 @@ skills["HeraldOfLightMinionSlam"] = {
 	},
 	levels = {
 		[1] = { 1, },
+	},
+}
+skills["HeraldOfLightMinionSlam"] = {
+	name = "Slam",
+	hidden = true,
+	color = 4,
+	skillTypes = { [1] = true, [11] = true, [57] = true, [36] = true, },
+	baseFlags = {
+		attack = true,
+		melee = true,
+		area = true,
 	},
 	qualityStats = {
 	},
@@ -1083,16 +1067,35 @@ skills["HeraldOfLightMinionSlam"] = {
 	statLevels = {
 		[1] = { -33, nil, },
 	},
+	baseMods = {
+		skill("castTime", 1),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
 }
 skills["SentinelHolySlam"] = {
-	name = "圣战猛击",
+	name = "Crusade Slam",
 	hidden = true,
 	color = 1,
 	skillTypes = { [1] = true, [11] = true, [57] = true, [36] = true, },
 	baseFlags = {
-		melee = true,
 		attack = true,
+		melee = true,
 		area = true,
+	},
+	qualityStats = {
+	},
+	stats = {
+		"active_skill_attack_speed_+%_final",
+		"is_area_damage",
+	},
+	statInterpolation = { 1, },
+	statLevels = {
+		[1] = { -33, nil, },
 	},
 	baseMods = {
 		skill("castTime", 1),
@@ -1106,19 +1109,9 @@ skills["SentinelHolySlam"] = {
 	levels = {
 		[1] = { 0, },
 	},
-	qualityStats = {
-	},
-	stats = {
-		"active_skill_attack_speed_+%_final",
-		"is_area_damage",
-	},
-	statInterpolation = { 1, },
-	statLevels = {
-		[1] = { -33, nil, },
-	},
 }
 skills["RelicTriggeredNova"] = {
-	name = "新星",
+	name = "Nova",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 0.89999997615814,
@@ -1132,56 +1125,6 @@ skills["RelicTriggeredNova"] = {
 	},
 	baseFlags = {
 		spell = true,
-	},
-	baseMods = {
-		skill("castTime", 1),
-		skill("cooldown", 0.5),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-		[2] = skill("damageEffectiveness", nil),
-	},
-	levels = {
-		[1] = { 4, 0.7, },
-		[2] = { 6, 0.74, },
-		[3] = { 9, 0.78, },
-		[4] = { 12, 0.82, },
-		[5] = { 16, 0.86, },
-		[6] = { 20, 0.9, },
-		[7] = { 24, 0.94, },
-		[8] = { 28, 0.98, },
-		[9] = { 32, 1.02, },
-		[10] = { 36, 1.06, },
-		[11] = { 40, 1.1, },
-		[12] = { 44, 1.14, },
-		[13] = { 48, 1.18, },
-		[14] = { 52, 1.22, },
-		[15] = { 55, 1.26, },
-		[16] = { 58, 1.3, },
-		[17] = { 61, 1.34, },
-		[18] = { 64, 1.38, },
-		[19] = { 67, 1.42, },
-		[20] = { 70, 1.46, },
-		[21] = { 72, 1.5, },
-		[22] = { 74, 1.5, },
-		[23] = { 76, 1.5, },
-		[24] = { 78, 1.5, },
-		[25] = { 80, 1.5, },
-		[26] = { 82, 1.5, },
-		[27] = { 84, 1.5, },
-		[28] = { 86, 1.5, },
-		[29] = { 88, 1.5, },
-		[30] = { 90, 1.5, },
-		[31] = { 91, 1.5, },
-		[32] = { 92, 1.5, },
-		[33] = { 93, 1.5, },
-		[34] = { 94, 1.5, },
-		[35] = { 95, 1.5, },
-		[36] = { 96, 1.5, },
-		[37] = { 97, 1.5, },
-		[38] = { 98, 1.5, },
-		[39] = { 99, 1.5, },
-		[40] = { 100, 1.5, },
 	},
 	qualityStats = {
 	},
@@ -1236,13 +1179,63 @@ skills["RelicTriggeredNova"] = {
 		[39] = { 100, 10754, 4000, 0.80000001192093, 1.2000000476837, 538, },
 		[40] = { 100, 10862, 4000, 0.80000001192093, 1.2000000476837, 543, },
 	},
+	baseMods = {
+		skill("castTime", 1),
+		skill("cooldown", 0.5),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+		[2] = skill("damageEffectiveness", nil),
+	},
+	levels = {
+		[1] = { 4, 0.7, },
+		[2] = { 6, 0.74, },
+		[3] = { 9, 0.78, },
+		[4] = { 12, 0.82, },
+		[5] = { 16, 0.86, },
+		[6] = { 20, 0.9, },
+		[7] = { 24, 0.94, },
+		[8] = { 28, 0.98, },
+		[9] = { 32, 1.02, },
+		[10] = { 36, 1.06, },
+		[11] = { 40, 1.1, },
+		[12] = { 44, 1.14, },
+		[13] = { 48, 1.18, },
+		[14] = { 52, 1.22, },
+		[15] = { 55, 1.26, },
+		[16] = { 58, 1.3, },
+		[17] = { 61, 1.34, },
+		[18] = { 64, 1.38, },
+		[19] = { 67, 1.42, },
+		[20] = { 70, 1.46, },
+		[21] = { 72, 1.5, },
+		[22] = { 74, 1.5, },
+		[23] = { 76, 1.5, },
+		[24] = { 78, 1.5, },
+		[25] = { 80, 1.5, },
+		[26] = { 82, 1.5, },
+		[27] = { 84, 1.5, },
+		[28] = { 86, 1.5, },
+		[29] = { 88, 1.5, },
+		[30] = { 90, 1.5, },
+		[31] = { 91, 1.5, },
+		[32] = { 92, 1.5, },
+		[33] = { 93, 1.5, },
+		[34] = { 94, 1.5, },
+		[35] = { 95, 1.5, },
+		[36] = { 96, 1.5, },
+		[37] = { 97, 1.5, },
+		[38] = { 98, 1.5, },
+		[39] = { 99, 1.5, },
+		[40] = { 100, 1.5, },
+	},
 }
 skills["DominatingBlowMinionCharge"] = {
 	name = "重盾冲锋",
 	hidden = true,
 	color = 4,
 	description = "向目标区域或敌人冲锋，在路径上的敌人将会被推向两旁，并反复对你前方小范围区域内造成伤害。 抵达目标处时造成大范围伤害。伤害与击晕几率将视冲锋距离而定。无法被多重打击辅助。",
-	skillTypes = { [1] = true, [7] = true, [13] = true, [24] = true, [11] = true, [38] = true, },
+	skillTypes = { [1] = true, [13] = true, [24] = true, [11] = true, [38] = true, },
 	weaponTypes = {
 		["One Handed Sword"] = true,
 		["Sceptre"] = true,
@@ -1257,16 +1250,6 @@ skills["DominatingBlowMinionCharge"] = {
 		attack = true,
 		melee = true,
 	},
-	baseMods = {
-		skill("castTime", 1),
-		skill("cooldown", 4),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 1, },
-	},
 	qualityStats = {
 	},
 	stats = {
@@ -1280,9 +1263,172 @@ skills["DominatingBlowMinionCharge"] = {
 	statLevels = {
 		[1] = { 25, 400, 30, nil, nil, },
 	},
+	baseMods = {
+		skill("castTime", 1),
+		skill("cooldown", 4),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
+}
+skills["SummonedRhoaShieldCharge"] = {
+	name = "重盾冲锋",
+	hidden = true,
+	color = 4,
+	description = "向目标区域或敌人冲锋，在路径上的敌人将会被推向两旁，并反复对你前方小范围区域内造成伤害。 抵达目标处时造成大范围伤害。伤害与击晕几率将视冲锋距离而定。无法被多重打击辅助。",
+	skillTypes = { [1] = true, [13] = true, [24] = true, [11] = true, [38] = true, },
+	weaponTypes = {
+		["One Handed Sword"] = true,
+		["Sceptre"] = true,
+		["None"] = true,
+		["Dagger"] = true,
+		["Claw"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Axe"] = true,
+		["One Handed Mace"] = true,
+	},
+	baseFlags = {
+		attack = true,
+		melee = true,
+		area = true,
+	},
+	qualityStats = {
+	},
+	stats = {
+		"shield_charge_scaling_stun_threshold_reduction_+%_at_maximum_range",
+		"base_movement_velocity_+%",
+		"shield_charge_damage_+%_maximum",
+		"attack_speed_+%",
+		"physical_damage_%_to_add_as_lightning",
+		"shield_charge_extra_distance",
+		"ignores_proximity_shield",
+	},
+	statInterpolation = { 1, 1, 1, 1, 1, 1, },
+	statLevels = {
+		[1] = { 50, 100, 10, 20, 15, 0, nil, },
+	},
+	baseMods = {
+		skill("castTime", 1),
+		skill("cooldown", 3),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
+}
+skills["SummonedSnakeProjectile"] = {
+	name = "Chaos Projectile",
+	hidden = true,
+	color = 4,
+	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [68] = true, [10] = true, [57] = true, },
+	baseFlags = {
+		attack = true,
+		projectile = true,
+	},
+	qualityStats = {
+	},
+	stats = {
+		"monster_projectile_variation",
+		"base_is_projectile",
+	},
+	statInterpolation = { 1, },
+	statLevels = {
+		[1] = { 1, nil, },
+	},
+	baseMods = {
+		skill("castTime", 0.8),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
+}
+skills["DropBearSummonedGroundSlam"] = {
+	name = "裂地之击",
+	hidden = true,
+	color = 4,
+	description = "以长杖或双手锤重击地面并制造出一道向前释放的冲击波, 被此冲击波击中的敌人将会受到伤害并有较高几率被击晕. 限定长杖与锤.",
+	skillTypes = { [1] = true, [11] = true, [28] = true, [24] = true, },
+	weaponTypes = {
+		["Two Handed Mace"] = true,
+		["Sceptre"] = true,
+		["Staff"] = true,
+		["One Handed Mace"] = true,
+	},
+	baseFlags = {
+		attack = true,
+		melee = true,
+		area = true,
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_stun_threshold_reduction_+%",
+		"is_area_damage",
+	},
+	statInterpolation = { 1, },
+	statLevels = {
+		[1] = { 0, nil, },
+	},
+	baseMods = {
+		skill("castTime", 1),
+		skill("cooldown", 3),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
+}
+skills["DropBearSummonedRallyingCry"] = {
+	name = "激励战吼",
+	hidden = true,
+	color = 1,
+	description = "施展战吼, 使自身和盟友伤害和魔力恢复增加. 伤害增加量随着周围敌人数量提升. 嘲讽周围所有敌人, 使他们攻击施放者. 与其他战吼技能共享技能冷却.",
+	skillTypes = { [5] = true, [11] = true, [12] = true, [74] = true, },
+	statMap = {
+		["damage_+%"] = {
+			mod("Damage", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
+		},
+	},
+	baseFlags = {
+		warcry = true,
+		area = true,
+		duration = true,
+	},
+	qualityStats = {
+	},
+	stats = {
+		"damage_+%",
+		"base_skill_effect_duration",
+		"base_deal_no_damage",
+	},
+	statInterpolation = { 1, 1, },
+	statLevels = {
+		[1] = { 25, 4000, nil, },
+	},
+	baseMods = {
+		skill("castTime", 0.25),
+		skill("cooldown", 5),
+		skill("buffAllies", true),
+	},
+	levelMods = {
+		[1] = skill("levelRequirement", nil),
+	},
+	levels = {
+		[1] = { 1, },
+	},
 }
 skills["MinionInstability"] = {
-	name = "复仇之灵",
+	name = "Minion Instability",
 	hidden = true,
 	color = 4,
 	baseFlags = {
@@ -1303,13 +1449,14 @@ skills["MinionInstability"] = {
 	},
 	levels = {
 		[1] = { },
-	},stats = {
+	},
+	stats = {
 	},
 	statLevels = {
 	},
 }
 skills["BeaconCausticCloud"] = {
-	name = "毒云",
+	name = "Caustic Cloud",
 	hidden = true,
 	color = 4,
 	baseFlags = {
@@ -1328,13 +1475,14 @@ skills["BeaconCausticCloud"] = {
 	},
 	levels = {
 		[1] = { },
-	},stats = {
+	},
+	stats = {
 	},
 	statLevels = {
 	},
 }
 skills["BeaconZombieCausticCloud"] = {
-	name = "僵尸毒云",
+	name = "Caustic Cloud",
 	hidden = true,
 	color = 4,
 	baseFlags = {
@@ -1347,211 +1495,15 @@ skills["BeaconZombieCausticCloud"] = {
 		skill("ChaosDot", 1, { type = "PerStat", stat = "Life", div = 2 }),
 		skill("dotIsArea", true),
 	},
-	qualityStats  = {
+	qualityStats = {
 	},
 	levelMods = {
 	},
 	levels = {
 		[1] = { },
-	},stats = {
-	},
-	statLevels = {
-	},
-}
-
-skills["SummonedRhoaShieldCharge"] = {
-	name = "重盾冲锋",
-	hidden = true,
-	color = 4,
-	description = "向目标区域或敌人冲锋，在路径上的敌人将会被推向两旁，并反复对你前方小范围区域内造成伤害。 抵达目标处时造成大范围伤害。伤害与击晕几率将视冲锋距离而定。无法被多重打击辅助。",
-	skillTypes = { [1] = true, [7] = true, [13] = true, [24] = true, [11] = true, [38] = true, },
-	weaponTypes = {
-		["One Handed Sword"] = true,
-		["Sceptre"] = true,
-		["None"] = true,
-		["Dagger"] = true,
-		["Claw"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["One Handed Axe"] = true,
-		["One Handed Mace"] = true,
-	},
-	baseFlags = {
-		attack = true,
-		melee = true,
-		area = true,
-	},
-	baseMods = {
-		skill("castTime", 1),
-		skill("cooldown", 3),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 1, },
-	},
-	qualityStats = {
 	},
 	stats = {
-		"shield_charge_scaling_stun_threshold_reduction_+%_at_maximum_range",
-		"base_movement_velocity_+%",
-		"shield_charge_damage_+%_maximum",
-		"attack_speed_+%",
-		"physical_damage_%_to_add_as_lightning",
-		"shield_charge_extra_distance",
-		"ignores_proximity_shield",
 	},
-	statInterpolation = { 1, 1, 1, 1, 1, 1, },
 	statLevels = {
-		[1] = { 50, 100, 10, 20, 15, 0, nil, },
-	},
-}
-
-skills["SummonedSnakeProjectile"] = {
-	name = "Chaos Projectile",
-	hidden = true,
-	color = 4,
-	skillTypes = { [1] = true, [48] = true, [69] = true, [3] = true, [68] = true, [10] = true, [57] = true, },
-	baseFlags = {
-		attack = true,
-		projectile = true,
-	},
-	baseMods = {
-		skill("castTime", 0.8),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 1, },
-	},
-	qualityStats = {
-	},
-	stats = {
-		"monster_projectile_variation",
-		"base_is_projectile",
-	},
-	statInterpolation = { 1, },
-	statLevels = {
-		[1] = { 1, nil, },
-	},
-}
-
-skills["DropBearSummonedGroundSlam"] = {
-	name = "裂地之击",
-	hidden = true,
-	color = 4,
-	description = "以主手武器重击地面并制造出一道向前释放的冲击波, 被此冲击波击中的敌人将会受到伤害并有较高几率被击晕. 限定长杖与锤.",
-	skillTypes = { [1] = true, [7] = true, [11] = true, [28] = true, [24] = true, },
-	weaponTypes = {
-		["Two Handed Mace"] = true,
-		["Sceptre"] = true,
-		["Staff"] = true,
-		["One Handed Mace"] = true,
-	},
-	baseFlags = {
-		attack = true,
-		melee = true,
-		area = true,
-	},
-	baseMods = {
-		skill("castTime", 1),
-		skill("cooldown", 3),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 1, },
-	},
-	qualityStats = {
-	},
-	stats = {
-		"base_stun_threshold_reduction_+%",
-		"is_area_damage",
-	},
-	statInterpolation = { 1, },
-	statLevels = {
-		[1] = { 0, nil, },
-	},
-}
-skills["DropBearSummonedRallyingCry"] = {
-	name = "激励战吼",
-	hidden = true,
-	color = 1,
-	description = "施展战吼, 使自身和盟友伤害和魔力恢复增加. 伤害增加量随着周围敌人数量提升. 嘲讽周围所有敌人, 使他们攻击施放者. 与其他战吼技能共享技能冷却.",
-	skillTypes = { [5] = true, [11] = true, [12] = true, [74] = true, },
-	statMap = {
-		["damage_+%"] = {
-			mod("Damage", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
-		},
-	},
-	baseFlags = {
-		warcry = true,
-		area = true,
-		duration = true,
-	},
-	baseMods = {
-		skill("castTime", 0.25),
-		skill("cooldown", 5),
-		skill("buffAllies", true),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 1, },
-	},
-	qualityStats = {
-	},
-	stats = {
-		"damage_+%",
-		"base_skill_effect_duration",
-		"base_deal_no_damage",
-	},
-	statInterpolation = { 1, 1, },
-	statLevels = {
-		[1] = { 25, 4000, nil, },
-	},
-}
-skills["SummonedSpiderViperStrike"] = {
-	name = "毒蛇打击",
-	hidden = true,
-	color = 4,
-	baseEffectiveness = 0.64999997615814,
-	incrementalEffectiveness = 0.025499999523163,
-	description = "对敌人进行攻击, 额外造成等同于物理伤害一定比例的混沌伤害, 并使敌人中毒. 限定爪, 匕首与剑.",
-	skillTypes = { [1] = true, [12] = true, [28] = true, [24] = true, [25] = true, [40] = true, [50] = true, },
-	weaponTypes = {
-		["Claw"] = true,
-		["Thrusting One Handed Sword"] = true,
-		["Two Handed Sword"] = true,
-		["Dagger"] = true,
-		["One Handed Sword"] = true,
-	},
-	baseFlags = {
-		attack = true,
-		melee = true,
-	},
-	qualityStats = {
-	},
-	stats = {
-		"physical_damage_%_to_add_as_chaos",
-		"base_chance_to_poison_on_hit_%",
-		"base_skill_effect_duration",
-		"poison_duration_is_skill_duration",
-	},
-	statInterpolation = { 1, 1, 1, },
-	statLevels = {
-		[1] = { 25, 100, 8000, nil, },
-	},
-	baseMods = {
-		skill("castTime", 1),
-	},
-	levelMods = {
-		[1] = skill("levelRequirement", nil),
-	},
-	levels = {
-		[1] = { 1, },
 	},
 }

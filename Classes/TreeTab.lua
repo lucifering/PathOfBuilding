@@ -287,7 +287,7 @@ function TreeTabClass:OpenExportPopup()
 	local treeLink = self.build.spec:EncodeURL("https://www.pathofexile.com/passive-skill-tree/"..(self.build.targetVersion == "2_6" and "2.6.2/" or "3.4.0/"))
 	local popup
 	local controls = { }
-ontrols.label = new("LabelControl", nil, 0, 20, 0, 16, "天赋树链接:")
+controls.label = new("LabelControl", nil, 0, 20, 0, 16, "天赋树链接:")
 	controls.edit = new("EditControl", nil, 0, 40, 350, 18, treeLink, nil, "%Z")
 	controls.shrink = new("ButtonControl", nil, -90, 70, 140, 20, "Shrink with PoEURL", function()
 		controls.shrink.enabled = false

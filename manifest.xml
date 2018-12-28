@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PoBVersion>
-	<Version number="1.4.121.3" platform="win32" branch="master"/>
+	<Version number="1.4.121.4" platform="win32" branch="master"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/runtime-win32.zip" part="runtime" platform="win32"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/" part="program"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/tree.zip" part="tree"/>
@@ -23,7 +23,7 @@
 <File sha1="1e95219dd7d804aa97958ba32cca9b94a283f696" name="Classes/FolderListControl.lua" part="program"/>
 <File sha1="5cf58cfe5c3fd9e5feb0d18083151a5b4682dca1" name="Classes/GemSelectControl.lua" part="program"/>
 <File sha1="2e8989044d095a0b199a896d874ec071ea233c67" name="Classes/ImportTab.lua" part="program"/>
-<File sha1="b92df5244d185e26b86d36c4a8871dfab8310364" name="Classes/Item.lua" part="program"/>
+<File sha1="c874444ae55fc4061c6bcf555c6b1b69c4c1ea93" name="Classes/Item.lua" part="program"/>
 <File sha1="e2da7a8e3bd7aa9caefb9ce6a6b8fc7ca184991d" name="Classes/ItemDBControl.lua" part="program"/>
 <File sha1="67dc03be8c2670c545eebeb4158035a46ebd9c96" name="Classes/ItemListControl.lua" part="program"/>
 <File sha1="9248cb45eab6d5ea9573100b8ffa6aae8241face" name="Classes/ItemSetListControl.lua" part="program"/>
@@ -121,14 +121,14 @@
 <File sha1="03d288bfb78889a0b16a9dee48e533c815d94f00" name="Data/3_0/Bases/wand.lua" part="program"/>
 <File sha1="169aabd7941f94947737dca2ac3db75fd5309b5d" name="Data/3_0/EnchantmentBoots.lua" part="program"/>
 <File sha1="233e2b095963bbfbbc52b4ee38a3c589163eaee2" name="Data/3_0/EnchantmentGloves.lua" part="program"/>
-<File sha1="35524c5153c74f15e8018520e81020160efa7604" name="Data/3_0/EnchantmentHelmet.lua" part="program"/>
+<File sha1="9302d4664b0b7f1d40cd4c7fc0b75a88cf4494b2" name="Data/3_0/EnchantmentHelmet.lua" part="program"/>
 <File sha1="a92e2724c6c7ec462f47f75390fb831984412207" name="Data/3_0/Essence.lua" part="program"/>
 <File sha1="e469bd220214ecc49754f90879ba82ee3b2698c3" name="Data/3_0/Gems.lua" part="program"/>
 <File sha1="a976fe45cca4e2ab12e130dee73afa38759b507c" name="Data/3_0/Minions.lua" part="program"/>
 <File sha1="2c1456797cd1defb47df9158ef048e2a81e14f0a" name="Data/3_0/Misc.lua" part="program"/>
 <File sha1="66bff245551463ac00f6920dae7e3e56c25b75d7" name="Data/3_0/ModCache.lua" part="program"/>
 <File sha1="cb06b101fa4ef8f10c647ea8d7fe1de6246bde4a" name="Data/3_0/ModFlask.lua" part="program"/>
-<File sha1="bf085a9316621d7baa0b6b4940b04e8ca3704aa2" name="Data/3_0/ModItem.lua" part="program"/>
+<File sha1="d0bfc5bb87a31a50eaaf4fd24f156f8964535e76" name="Data/3_0/ModItem.lua" part="program"/>
 <File sha1="9343e6c9ebf53060da4af9a643c352d64fd5e89f" name="Data/3_0/ModJewel.lua" part="program"/>
 <File sha1="b9217d302bb00297e3c22a0369aa8d24fab3c381" name="Data/3_0/ModJewelAbyss.lua" part="program"/>
 <File sha1="ce322aff7fdbcfd41ce719014074baf1f1cf889b" name="Data/3_0/ModMaster.lua" part="program"/>
@@ -188,10 +188,10 @@
 <File sha1="0586b222e986d1fa8e5ef604eddcca6e5fc36cbe" name="Modules/ItemTools.lua" part="program"/>
 <File sha1="c0f18c4b30e1fb4ad26ecf2ef2379980508aec01" name="Modules/Main.lua" part="program"/>
 <File sha1="64693eb3e1d7d356b8b50bdc61a622a6e3bb33c2" name="Modules/ModParser-2_6.lua" part="program"/>
-<File sha1="c8cef71d781de404de18520f0ca07db613a56c32" name="Modules/ModParser-3_0.lua" part="program"/>
+<File sha1="6e2f25986fdd9b8b70decea072899f827b20c8eb" name="Modules/ModParser-3_0.lua" part="program"/>
 <File sha1="7a6343d802a4ceae71ee591fc282c64cf683f85e" name="Modules/ModTools.lua" part="program"/>
 <File sha1="5669ecec84ac3a9153bbe004bd36e5930d2f1789" name="Classes/AboutTab.lua" part="program"/>
-<File sha1="587610c906adbe15a551ba83f480977f23c8044f" name="changelog.txt" part="program"/>
+<File sha1="3902dacce6bfb65085add820da3c08abd47233d4" name="changelog.txt" part="program"/>
 <File sha1="21f4793ed37146332fc5d73d5dadf88d88af5fd1" name="Launch.dl" part="program"/>
 <File sha1="c345cdcf374d271411aa424ab150c0edbb5a362d" name="Assets/game_ui_small.png" part="runtime"/>
 <File sha1="97b020d8213e09c313536a91528ba5d5ebc4ca0a" name="Assets/patreon_logo.png" part="runtime"/>

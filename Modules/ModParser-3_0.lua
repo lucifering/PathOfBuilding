@@ -14,6 +14,7 @@ local bnot = bit.bnot
 -- List of modifier forms
 local formList = {
 	--【中文化程序额外添加开始】
+	["穿透 (%d+)%% 敌人"] = "PEN",
 	["延长 (%d+)%%"] = "INC", --备注：^(%d+)%% increased
 	["扩大 (%d+)%%"] = "INC", --备注：^(%d+)%% increased
 	["提高 %+([%d%.]+)%%"] = "BASE", 	
@@ -790,6 +791,7 @@ local modTagList = {
 	--【中文化程序额外添加开始】
 	["每 (%d+)%% 的攻击格挡率会使"] = function(num) return { tag = { type = "PerStat", stat = "BlockChance", div = num } } end,
 	["当你拥有兽化的召唤生物时，"] = { tag = { type = "Condition", var = "HaveBestialMinion" } },
+	["近期内你若没有击败敌人，则伤害会"] = { tag = { type = "Condition", var = "KilledRecently", neg = true } }, 
 	["持盾牌时，"] = { tag = { type = "Condition", var = "UsingShield" } }, --备注：while holding a shield
 		["你的副手未装备武器时，"] = { tag = { type = "Condition", var = "OffHandIsEmpty" } }, --备注：while your off hand is empty
 		["双持时，"] = { tag = { type = "Condition", var = "DualWielding" } }, --备注：while dual wielding
@@ -924,7 +926,7 @@ local modTagList = {
 	["持盾牌时的"] = { tag = { type = "Condition", var = "UsingShield" } }, --备注：with shields
 	["近期内你若受到伤害，则"] = { tag = { type = "Condition", var = "BeenHitRecently"} },
 	["近期内你若被击中，则"] = { tag = { type = "Condition", var = "BeenHitRecently" } },
-	["近期内你若没有击败过敌人，则"] = { tag = { type = "Condition", var = "KilledRecently" } }, 
+	["近期内你若没有击败过敌人，则"] = { tag = { type = "Condition", var = "KilledRecently" , neg = true} }, 
 	["盾牌装备上每有 (%d+) 点护甲值，便 "] = function(num) return { tag = { type = "PerStat", stat = "ArmourOnWeapon 2", div = num } } end, 
 	["盾牌装备上每有 (%d+) 点闪避值，便 "] = function(num) return { tag = { type = "PerStat", stat = "EvasionOnWeapon 2", div = num } } end, 
 	["盾牌装备上每有 (%d+) 点能量护盾，便 "] = function(num) return { tag = { type = "PerStat", stat = "EnergyShieldOnWeapon 2", div = num } } end, 
@@ -1816,7 +1818,7 @@ local specialModList = {
 	["受到【清晰】影响时，魔力回复速度提高 (%d+)%%"]= function(num) return {  mod("ManaRecoveryRate", "INC", num,{ type = "Condition", var = "AffectedBy清晰" })  } end, 
 	["受到【纪律】影响时，能量护盾回复速度提高 (%d+)%%"]= function(num) return {  mod("EnergyShieldRecoveryRate", "INC", num,{ type = "Condition", var = "AffectedBy纪律" })  } end, 
 	["受到【活力】影响时，药剂的生命回复提高 (%d+)%%"]= function(num) return {  mod("FlaskLifeRecovery", "INC", num,{ type = "Condition", var = "AffectedBy活力" })  } end, 
-	["受到【元素净化】影响时，%+(%d+)%% 混沌抗性"]= function(num) return {  mod("ChaosResist", "INC", num,{ type = "Condition", var = "AffectedBy元素净化" })  } end, 
+	["受到【元素净化】影响时，%+(%d+)%% 混沌抗性"]= function(num) return {  mod("ChaosResist", "BASE", num,{ type = "Condition", var = "AffectedBy元素净化" })  } end, 
 	["受到【迅捷】影响时，移动技能的冷却速度提高 (%d+)%%"]= function(num) return {  mod("CooldownRecovery", "INC", num,nil, 0, KeywordFlag.Movement,{ type = "Condition", var = "AffectedBy迅捷" } )  } end, 
 	["魔卫的物理总伤害额外提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamage", "MORE", tonumber(num))},{ type = "SkillName", skillName = "魔卫复苏" } )  } end, 
 	["【复苏的魔卫】的重击攻击效果范围扩大 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("AreaOfEffect", "INC", num,{ type = "SkillId", skillId = "ZombieSlam" })})  } end, 

@@ -900,7 +900,7 @@ function ItemClass:BuildModList()
 		self.sockets = newSockets
 	end
 	self.socketedJewelEffectModifier = 1 + sumLocal(baseList, "SocketedJewelEffect", "INC", 0) / 100
-	if self.name == "Tabula Rasa, Simple Robe" or self.name == "Skin of the Loyal, Simple Robe" or self.name == "Skin of the Lords, Simple Robe" then
+if self.name == "无尽之衣, 简易之袍" or self.name == "忠诚之肤, 简易之袍" or self.name == "君主之肤, 简易之袍" then
 		-- Hack to remove the energy shield
 		baseList:NewMod("ArmourData", "LIST", { key = "EnergyShield", value = 0 })
 	end

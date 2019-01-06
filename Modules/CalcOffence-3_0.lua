@@ -482,7 +482,7 @@ t_insert(breakdown.DurationSecondary, s_format("/ %.2f ^8(debuff更快或更慢�
 	do
 		local setupFunc = activeSkill.activeEffect.grantedEffect.setupFunc
 		if setupFunc then
-			setupFunc(actor, output)
+			setupFunc(activeSkill, output)
 		end
 	end
 
@@ -548,13 +548,14 @@ t_insert(breakdown.DurationSecondary, s_format("/ %.2f ^8(debuff更快或更慢�
 		local more = m_floor(skillModList:More(skillCfg, "ManaCost") * 100 + 0.0001) / 100
 		local inc = skillModList:Sum("INC", skillCfg, "ManaCost")
 		local base = skillModList:Sum("BASE", skillCfg, "ManaCost")
-		output.ManaCost = m_floor(m_max(0, (skillData.manaCost or 0) * more * (1 + inc / 100) + base))
+		local manaCost = activeSkill.activeEffect.grantedEffectLevel.manaCost or 0
+		output.ManaCost = m_floor(m_max(0, manaCost * more * (1 + inc / 100) + base))
 		if activeSkill.skillTypes[SkillType.ManaCostPercent] and skillFlags.totem then
 			output.ManaCost = m_floor(output.Mana * output.ManaCost / 100)
 		end
-		if breakdown and output.ManaCost ~= (skillData.manaCost or 0) then
+		if breakdown and output.ManaCost ~= manaCost then
 			breakdown.ManaCost = {
-s_format("%d ^8(基础魔力消耗)", skillData.manaCost or 0)
+s_format("%d ^8(基础魔力消耗)", manaCost)
 			}
 			if more ~= 1 then
 t_insert(breakdown.ManaCost, s_format("x %.2f ^8(魔力消耗额外总加成)", more))
@@ -698,12 +699,12 @@ t_insert(breakdown[stat], s_format("x %.3f ^8(副手创建的实例部分)", off
 			if isAttack then
 				if skillData.castTimeOverridesAttackTime then
 					-- Skill is overriding weapon attack speed
-					baseTime = skillData.castTime / (1 + (source.AttackSpeedInc or 0) / 100)
+					baseTime = activeSkill.activeEffect.grantedEffect.castTime / (1 + (source.AttackSpeedInc or 0) / 100)
 				else
 					baseTime = 1 / ( source.AttackRate or 1 ) + skillModList:Sum("BASE", cfg, "Speed")
 				end
 			else
-				baseTime = skillData.castTime or 1
+				baseTime = activeSkill.activeEffect.grantedEffect.castTime or 1
 			end
 			local inc = skillModList:Sum("INC", cfg, "Speed")
 			local more = skillModList:More(cfg, "Speed")
@@ -880,8 +881,8 @@ s_format("+ (%.4f x %g) ^8(暴击部分的伤害)", output.CritChance/100, outpu
 		for _, damageType in ipairs(dmgTypeList) do
 			local damageTypeMin = damageType.."Min"
 			local damageTypeMax = damageType.."Max"
-			local baseMultiplier = skillData.baseMultiplier or 1
-			local damageEffectiveness = skillData.damageEffectiveness or 1
+			local baseMultiplier = activeSkill.activeEffect.grantedEffectLevel.baseMultiplier or 1
+			local damageEffectiveness = activeSkill.activeEffect.grantedEffectLevel.damageEffectiveness or skillData.damageEffectiveness or 1
 			local addedMin = skillModList:Sum("BASE", cfg, damageTypeMin)
 			local addedMax = skillModList:Sum("BASE", cfg, damageTypeMax)
 			local baseMin = ((source[damageTypeMin] or 0) + (source[damageType.."BonusMin"] or 0)) * baseMultiplier + addedMin * damageEffectiveness

@@ -693,6 +693,9 @@ elseif item.rarity == "魔法" then
 									end
 								end
 							end
+							if env.mode == "MAIN" then
+								gemInstance.displayEffect = activeEffect
+							end
 							local activeSkill = calcs.createActiveSkill(activeEffect, supportList)
 							if gemInstance.gemData then
 								activeSkill.slotName = groupCfg.slotName

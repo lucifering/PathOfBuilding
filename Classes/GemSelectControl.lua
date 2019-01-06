@@ -1,10 +1,8 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Class: Gem Select
 -- Gem selection combobox
 --
-
---local launch, main = ...
 
 local t_insert = table.insert
 local t_sort = table.sort
@@ -57,7 +55,6 @@ function GemSelectClass:BuildList(buf)
 		for i, pattern in ipairs(patternList) do
 			local matchList = { }
 			for gemId, gemData in pairs(self.gems) do
-				pattern=pattern:gsub("%(",""):gsub("%)","") --lucifer 处理辅助技能石头的括号问题 
 				if not added[gemId] and (" "..gemData.name:lower()):match(pattern) then
 					t_insert(matchList, gemId)
 					added[gemId] = true
@@ -333,34 +330,124 @@ function GemSelectClass:Draw(viewPort)
 			local thisGem = self.skillsTab.displayGroup.gemList[self.index]
 			local hoverGem = self.skillsTab.displayGroup.gemList[hoverControl.index]
 			if thisGem and hoverGem and thisGem.enabled and hoverGem.enabled and thisGem.gemData and hoverGem.gemData and
-			  ((hoverGem.gemData.grantedEffect.support and not thisGem.gemData.grantedEffect.support and hoverGem.displayEffect and hoverGem.displayEffect.isSupporting[thisGem]) or
-			   (thisGem.gemData.grantedEffect.support and not hoverGem.gemData.grantedEffect.support and thisGem.displayEffect and thisGem.displayEffect.isSupporting[hoverGem])) then
+			    (self:CheckSupporting(thisGem, hoverGem) or self:CheckSupporting(hoverGem, thisGem)) then
 			   SetDrawColor(0.33, 1, 0.33, 0.25)
 			   DrawImage(nil, x, y, width, height)
 			end
 		end
-		if mOver and (self.dropped or not self.skillsTab.selControl) then
+		if mOver and (not self.skillsTab.selControl or self.skillsTab.selControl._className ~= "GemSelectControl" or not self.skillsTab.selControl.dropped) then
 			local gemInstance = self.skillsTab.displayGroup.gemList[self.index]
 			if gemInstance and gemInstance.gemData then
-				local grantedEffect = gemInstance.gemData.grantedEffect
 				SetDrawLayer(nil, 10)
 				self.tooltip:Clear()
-				self.tooltip.center = true
-				self.tooltip.color = colorCodes.GEM
-				self.tooltip:AddLine(20, colorCodes.GEM..grantedEffect.name)
-				self.tooltip:AddSeparator(10)
-				self.tooltip:AddLine(16, "^x7F7F7F"..gemInstance.gemData.tagString)
-				self.tooltip:AddSeparator(10)
-				self.skillsTab.build:AddRequirementsToTooltip(self.tooltip, gemInstance.reqLevel, gemInstance.reqStr, gemInstance.reqDex, gemInstance.reqInt)
-				if grantedEffect.description then
-					local wrap = main:WrapString(grantedEffect.description, 16, m_max(DrawStringWidth(16, "VAR", gemInstance.gemData.tagString), 400))
-					for _, line in ipairs(wrap) do
-						self.tooltip:AddLine(16, colorCodes.GEM..line)
-					end
-				end
+				self:AddGemTooltip(gemInstance)
 				self.tooltip:Draw(x, y, width, height, viewPort)
 				SetDrawLayer(nil, 0)
 			end
+		end
+	end
+end
+
+function GemSelectClass:CheckSupporting(gemA, gemB)
+	return gemA.gemData.grantedEffect.support and not gemB.gemData.grantedEffect.support and gemA.displayEffect and gemA.displayEffect.isSupporting and gemA.displayEffect.isSupporting[gemB]
+end
+
+function GemSelectClass:AddGemTooltip(gemInstance)
+	self.tooltip.center = true
+	self.tooltip.color = colorCodes.GEM
+	if gemInstance.gemData.secondaryGrantedEffect then
+		local grantedEffect = gemInstance.gemData.secondaryGrantedEffect
+		local grantedEffectVaal = gemInstance.gemData.grantedEffect
+		self.tooltip:AddLine(20, colorCodes.GEM..grantedEffect.name)
+		self.tooltip:AddSeparator(10)
+		self.tooltip:AddLine(16, "^x7F7F7F"..gemInstance.gemData.tagString)
+		self:AddCommonGemInfo(gemInstance, grantedEffect, true)
+		self.tooltip:AddSeparator(10)
+		self.tooltip:AddLine(20, colorCodes.GEM..grantedEffectVaal.name)
+		self.tooltip:AddSeparator(10)
+		self:AddCommonGemInfo(gemInstance, grantedEffectVaal)
+	else
+		local grantedEffect = gemInstance.gemData.grantedEffect
+		self.tooltip:AddLine(20, colorCodes.GEM..grantedEffect.name)
+		self.tooltip:AddSeparator(10)
+		self.tooltip:AddLine(16, "^x7F7F7F"..gemInstance.gemData.tagString)
+		self:AddCommonGemInfo(gemInstance, grantedEffect, true)
+	end
+end
+
+function GemSelectClass:AddCommonGemInfo(gemInstance, grantedEffect, addReq)
+	local displayInstance = gemInstance.displayEffect or gemInstance
+	local grantedEffectLevel = grantedEffect.levels[displayInstance.level]
+	if addReq then
+self.tooltip:AddLine(16, string.format("^x7F7F7F等级: ^7%d%s",
+			gemInstance.level, 
+			(displayInstance.level > gemInstance.level) and " ("..colorCodes.MAGIC.."+"..(displayInstance.level - gemInstance.level).."^7)" or ""
+		))
+	end
+	if grantedEffect.support then
+		if grantedEffectLevel.manaMultiplier then
+self.tooltip:AddLine(16, string.format("^x7F7F7F魔力消耗倍率: ^7%d%%", grantedEffectLevel.manaMultiplier + 100))
+		end
+		if grantedEffectLevel.manaCostOverride then
+self.tooltip:AddLine(16, string.format("^x7F7F7F魔力保留修正: ^7%d%%", grantedEffectLevel.manaCostOverride))
+		end
+		if grantedEffectLevel.cooldown then
+self.tooltip:AddLine(16, string.format("^x7F7F7F冷却时间: ^7%.2f 秒", grantedEffectLevel.cooldown))
+		end
+	else
+		if grantedEffectLevel.manaCost then
+			if grantedEffect.skillTypes[SkillType.ManaCostReserved] then
+				if grantedEffect.skillTypes[SkillType.ManaCostPercent] then
+self.tooltip:AddLine(16, string.format("^x7F7F7F魔力保留: ^7%d%%", grantedEffectLevel.manaCost))
+				else
+self.tooltip:AddLine(16, string.format("^x7F7F7F魔力保留: ^7%d", grantedEffectLevel.manaCost))
+				end
+			else
+self.tooltip:AddLine(16, string.format("^x7F7F7F魔力消耗: ^7%d", grantedEffectLevel.manaCost))
+			end
+		end
+		if grantedEffectLevel.cooldown then
+self.tooltip:AddLine(16, string.format("^x7F7F7F冷却时间: ^7%.2f 秒", grantedEffectLevel.cooldown))
+		end
+		if not gemInstance.gemData.tags.attack then
+			if grantedEffect.castTime > 0 then
+self.tooltip:AddLine(16, string.format("^x7F7F7F施放时间: ^7%.2f 秒", grantedEffect.castTime))
+			else
+self.tooltip:AddLine(16, "^x7F7F7F施放时间: ^7瞬发")
+			end
+			if grantedEffectLevel.critChance then
+self.tooltip:AddLine(16, string.format("^x7F7F7F暴击几率: ^7%.2f%%", grantedEffectLevel.critChance))
+			end
+		end
+		if grantedEffectLevel.damageEffectiveness then
+self.tooltip:AddLine(16, string.format("^x7F7F7F伤害效用: ^7%d%%", grantedEffectLevel.damageEffectiveness * 100))
+		end
+	end
+	if addReq and displayInstance.quality > 0 then
+self.tooltip:AddLine(16, string.format("^x7F7F7F品质: "..colorCodes.MAGIC.."+%d%%^7%s",
+			gemInstance.quality,
+			(displayInstance.quality > gemInstance.quality) and " ("..colorCodes.MAGIC.."+"..(displayInstance.quality - gemInstance.quality).."^7)" or ""
+		))
+	end
+	self.tooltip:AddSeparator(10)
+	if addReq then
+		self.skillsTab.build:AddRequirementsToTooltip(self.tooltip, gemInstance.reqLevel, gemInstance.reqStr, gemInstance.reqDex, gemInstance.reqInt)
+	end
+	if grantedEffect.description then
+		local wrap = main:WrapString(grantedEffect.description, 16, m_max(DrawStringWidth(16, "VAR", gemInstance.gemData.tagString), 400))
+		for _, line in ipairs(wrap) do
+			self.tooltip:AddLine(16, colorCodes.GEM..line)
+		end
+	end
+	if self.skillsTab.build.data.describeStats then
+		self.tooltip:AddSeparator(10)
+		local stats = calcLib.buildSkillInstanceStats(displayInstance, grantedEffect)
+		if grantedEffectLevel.baseMultiplier then
+			stats["active_skill_attack_damage_final_permyriad"] = (grantedEffectLevel.baseMultiplier - 1) * 10000
+		end
+		local descriptions = self.skillsTab.build.data.describeStats(stats, grantedEffect.statDescriptionScope)
+		for _, line in ipairs(descriptions) do
+			self.tooltip:AddLine(16, colorCodes.MAGIC..line)
 		end
 	end
 end

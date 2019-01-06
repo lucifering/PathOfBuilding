@@ -304,6 +304,9 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 { var = "minionsUseEnduranceCharges", type = "check", label = "你的召唤生物有耐力球?", ifFlag = "haveMinion", apply = function(val, modList, enemyModList)
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("UseEnduranceCharges", "FLAG", true, "Config", { type = "Condition", var = "Combat" }) }, "Config")
 	end },
+{ var = "conditionFocused", type = "check", label = "你处于专注期间?", ifCOnd = "Focused", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:Focused", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
 { var = "buffOnslaught", type = "check", label = "你是否处于【猛攻】状态?", tooltip = "当你处于【猛攻】状态时干啥干啥的词缀生效,\n同时也会启用【猛攻】buff本身:提高 20% 移动、攻击和施法速度", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:Onslaught", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
@@ -319,8 +322,8 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 { var = "buffTailwind", type = "check", label = "你是否有【提速尾流】?", tooltip = "当你处于【提速尾流】状态时干啥干啥的词缀生效,\n同时也会启用【提速尾流】buff本身. (加速 10%)", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:Tailwind", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
-{ var = "buffAdrenaline", type = "check", label = "你是否处于【肾上腺素】状态?", ifNode = 27604, tooltip = "这个会启用【肾上腺素】buff:\n提高 100% 伤害\n提高 25% 攻击、施法和移动速度\n10%额外物理伤害减伤", apply = function(val, modList, enemyModList)
-		modList:NewMod("Condition:Adrenaline", "FLAG", true, "Config", { type = "Condition", var = "Combat" }, { type = "Condition", var = "CanGainAdrenaline" })
+{ var = "buffAdrenaline", type = "check", label = "你是否处于【肾上腺素】状态?", tooltip = "这个会启用【肾上腺素】buff:\n提高 100% 伤害\n提高 25% 攻击、施法和移动速度\n10%额外物理伤害减伤", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:Adrenaline", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
 { var = "multiplierRage", type = "count", label = "怒火层数:", ifCond = "CanGainRage", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:Rage", "BASE", val, "Config", { type = "IgnoreCond" }, { type = "Condition", var = "Combat" }, { type = "Condition", var = "CanGainRage" })

@@ -954,6 +954,8 @@ local modTagList = {
 	["拥有【秘术增强】效果时，"] = { tag = { type = "Condition", var = "AffectedByArcaneSurge" } },
 	["带有烙印敌人"] = { tag = { type = "Condition", var = "BrandAttachedToEnemy" } },
 	["被附着烙印的敌人受到"] = { tag = { type = "Condition", var = "BrandAttachedToEnemy" } },
+	["专注时，"] = { tag = { type = "Condition", var = "Focused" } },
+	["专注时"] = { tag = { type = "Condition", var = "Focused" } },
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -1242,6 +1244,9 @@ local specialModList = {
 	--负数范围特殊处理
 	["提高 ([%+%-]?%d+)%% 药剂充能消耗"]= function(num) return {  mod("FlaskChargesUsed", "INC", num)  } end,  
 	["(%d+)%% 法术伤害格挡几率"] = function(num) return {  mod("SpellBlockChance", "BASE", num) } end,  
+	["每 10 点智慧可以为攻击附加 0 %- 3 基础闪电伤害"]= function() return { 	
+		mod("LightningMax", "BASE", 3,  { type = "PerStat", stat = "Int", div = 10 }) 
+	}end,
 	--fu*k TX 格挡率用“提高”字样
 	["药剂持续期间，攻击伤害格挡几率 ([%+%-]?%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,  
 	["药剂持续期间，攻击格挡率提高 ([%+%-]?%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,  
@@ -1500,7 +1505,7 @@ local specialModList = {
 	["药剂持续期间，有 (%d+)%% 几率点燃"]= function(num) return {mod("EnemyIgniteChance", "BASE", num,{ type ="Condition", var = "UsingFlask" })  } end, 
 	["每个暴击球会提供攻击伤害 ([%d%.]+)%% 的魔力偷取"]= function(num) return {  mod("DamageManaLeech", "BASE", num,nil, ModFlag.Attack,{ type = "Multiplier", var = "PowerCharge" })  } end, 
 	["对被冰缓敌人所造成的攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack,{ type = "ActorCondition", actor = "enemy", var = "Chilled" })  } end, 
-	["获得等同 ([%d%.]+)%% 最大生命的额外能量护盾"]= function(num) return {  mod("LGainAsEnergyShield", "BASE", num)  } end, 
+	["获得等同 ([%d%.]+)%% 最大生命的额外能量护盾"]= function(num) return {  mod("LifeGainAsEnergyShield", "BASE", num)  } end, 
 	["获得【(.+)】"] = function(_,skill) return extraSkill(skill) end, 
 	["暴走时触发 (%d+) 级的【(.+)】"]= function(num, _, skill) return extraSkill(skill, num) end,
 	["暴击时触发 (%d+) 级的【(.+)】"]= function(num, _, skill) return extraSkill(skill, num) end,

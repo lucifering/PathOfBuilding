@@ -227,6 +227,9 @@ for _, targetVersion in ipairs(targetVersionList) do
 	-- Misc data tables
 	dataModule("Misc", verData)
 
+	if targetVersion ~= "2_6" then
+		verData.describeStats = LoadModule("Modules/StatDescriber", targetVersion)
+	end
 	-- Load item modifiers
 	verData.itemMods = {
 		Item = dataModule("ModItem"),
@@ -298,7 +301,7 @@ for _, targetVersion in ipairs(targetVersionList) do
 			gem.grantedEffect,
 			gem.secondaryGrantedEffect
 		}
-		gem.defaultLevel = (gem.grantedEffect.levels[20] and 20) or (gem.grantedEffect.levels[3][2] and 3) or 1
+		gem.defaultLevel = (gem.grantedEffect.levels[20] and 20) or (gem.grantedEffect.levels[3][1] and 3) or 1
 	end
 
 	-- Load minions

@@ -55,6 +55,7 @@ function GemSelectClass:BuildList(buf)
 		for i, pattern in ipairs(patternList) do
 			local matchList = { }
 			for gemId, gemData in pairs(self.gems) do
+				pattern=pattern:gsub("%(",""):gsub("%)","") -- lucifer
 				if not added[gemId] and (" "..gemData.name:lower()):match(pattern) then
 					t_insert(matchList, gemId)
 					added[gemId] = true

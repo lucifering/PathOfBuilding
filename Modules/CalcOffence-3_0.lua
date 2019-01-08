@@ -116,7 +116,7 @@ local function calcAilmentSourceDamage(activeSkill, output, cfg, breakdown, dama
 	local min, max = calcDamage(activeSkill, output, cfg, breakdown, damageType, typeFlags)
 	local convMult = activeSkill.conversionTable[damageType].mult
 	if breakdown and convMult ~= 1 then
-		t_insert(breakdown, "Source damage:")
+t_insert(breakdown, "源伤害:")
 t_insert(breakdown, s_format("%d to %d ^8(所有伤害)", min, max))
 t_insert(breakdown, s_format("x %g ^8(%g%% 转化为其他伤害)", convMult, (1-convMult)*100))
 		t_insert(breakdown, s_format("= %d to %d", min * convMult, max * convMult))
@@ -338,12 +338,12 @@ output.PierceCountString = "所有目标"
 		if breakdown then
 			breakdown.TrapThrowingTime = { }
 			breakdown.multiChain(breakdown.TrapThrowingTime, {
-				label = "Throwing speed:",
-				base = s_format("%.2f ^8(base throwing speed)", baseSpeed),
-				{ "%.2f ^8(increased/reduced throwing speed)", 1 + skillModList:Sum("INC", skillCfg, "TrapThrowingSpeed") / 100 },
-				{ "%.2f ^8(more/less throwing speed)", skillModList:More(skillCfg, "TrapThrowingSpeed") },
-				{ "%.2f ^8(action speed modifier)",  output.ActionSpeedMod },
-				total = s_format("= %.2f ^8per second", output.TrapThrowingSpeed),
+label = "投掷速度:",
+base = s_format("%.2f ^8(基础投掷速度)", baseSpeed),
+{ "%.2f ^8(提高/降低 投掷速度)", 1 + skillModList:Sum("INC", skillCfg, "TrapThrowingSpeed") / 100 },
+{ "%.2f ^8(额外提高/降低 总投掷速度)", skillModList:More(skillCfg, "TrapThrowingSpeed") },
+{ "%.2f ^8(动作速度加成)",  output.ActionSpeedMod },
+total = s_format("= %.2f ^8每秒", output.TrapThrowingSpeed),
 			})
 		end
 		output.ActiveTrapLimit = skillModList:Sum("BASE", skillCfg, "ActiveTrapLimit")
@@ -352,8 +352,8 @@ output.PierceCountString = "所有目标"
 			output.TrapCooldown = baseCooldown / calcLib.mod(skillModList, skillCfg, "CooldownRecovery")
 			if breakdown then
 				breakdown.TrapCooldown = {
-					s_format("%.2fs ^8(base)", skillData.trapCooldown or skillData.cooldown or 4),
-					s_format("/ %.2f ^8(increased/reduced cooldown recovery)", 1 + skillModList:Sum("INC", skillCfg, "CooldownRecovery") / 100),
+s_format("%.2fs ^8(基础)", skillData.trapCooldown or skillData.cooldown or 4),
+s_format("/ %.2f ^8(提高/降低 冷却回复速度)", 1 + skillModList:Sum("INC", skillCfg, "CooldownRecovery") / 100),
 					s_format("= %.2fs", output.TrapCooldown)
 				}
 			end
@@ -367,8 +367,8 @@ output.PierceCountString = "所有目标"
 		output.Cooldown = skillData.cooldown / calcLib.mod(skillModList, skillCfg, "CooldownRecovery")
 		if breakdown then
 			breakdown.Cooldown = {
-				s_format("%.2fs ^8(base)", skillData.cooldown),
-				s_format("/ %.2f ^8(increased/reduced cooldown recovery)", 1 + skillModList:Sum("INC", skillCfg, "CooldownRecovery") / 100),
+s_format("%.2fs ^8(基础)", skillData.cooldown),
+s_format("/ %.2f ^8(提高/降低 冷却回复速度)", 1 + skillModList:Sum("INC", skillCfg, "CooldownRecovery") / 100),
 				s_format("= %.2fs", output.Cooldown)
 			}
 		end
@@ -380,12 +380,12 @@ output.PierceCountString = "所有目标"
 		if breakdown then
 			breakdown.MineLayingTime = { }
 			breakdown.multiChain(breakdown.MineLayingTime, {
-				label = "Laying speed:",
-				base = s_format("%.2f ^8(base laying speed)", baseSpeed),
-				{ "%.2f ^8(increased/reduced laying speed)", 1 + skillModList:Sum("INC", skillCfg, "MineLayingSpeed") / 100 },
-				{ "%.2f ^8(more/less laying speed)", skillModList:More(skillCfg, "MineLayingSpeed") },
-				{ "%.2f ^8(action speed modifier)",  output.ActionSpeedMod },
-				total = s_format("= %.2f ^8per second", output.MineLayingSpeed),
+label = "放置速度:",
+base = s_format("%.2f ^8(基础放置速度)", baseSpeed),
+{ "%.2f ^8(提高/降低 放置速度)", 1 + skillModList:Sum("INC", skillCfg, "MineLayingSpeed") / 100 },
+{ "%.2f ^8(额外提高/降低 总放置速度)", skillModList:More(skillCfg, "MineLayingSpeed") },
+{ "%.2f ^8(动作速度加成)",  output.ActionSpeedMod },
+total = s_format("= %.2f ^8每秒", output.MineLayingSpeed),
 			})
 		end
 		output.ActiveMineLimit = skillModList:Sum("BASE", skillCfg, "ActiveMineLimit")
@@ -402,12 +402,12 @@ output.PierceCountString = "所有目标"
 		if breakdown then
 			breakdown.TotemPlacementTime = { }
 			breakdown.multiChain(breakdown.TotemPlacementTime, {
-				label = "Placement speed:",
-				base = s_format("%.2f ^8(base placement speed)", baseSpeed),
-				{ "%.2f ^8(increased/reduced placement speed)", 1 + skillModList:Sum("INC", skillCfg, "TotemPlacementSpeed") / 100 },
-				{ "%.2f ^8(more/less placement speed)", skillModList:More(skillCfg, "TotemPlacementSpeed") },
-				{ "%.2f ^8(action speed modifier)",  output.ActionSpeedMod },
-				total = s_format("= %.2f ^8per second", output.TotemPlacementSpeed),
+label = "放置速度:",
+base = s_format("%.2f ^8(基础放置速度)", baseSpeed),
+{ "%.2f ^8(提高/降低 放置速度)", 1 + skillModList:Sum("INC", skillCfg, "TotemPlacementSpeed") / 100 },
+{ "%.2f ^8(额外提高/降低 总放置速度)", skillModList:More(skillCfg, "TotemPlacementSpeed") },
+{ "%.2f ^8(动作速度加成)",  output.ActionSpeedMod },
+total = s_format("= %.2f ^8每秒", output.TotemPlacementSpeed),
 			})
 		end
 		output.ActiveTotemLimit = skillModList:Sum("BASE", skillCfg, "ActiveTotemLimit")
@@ -418,7 +418,7 @@ output.PierceCountString = "所有目标"
 			breakdown.TotemLife = {
 "图腾 等级: "..skillData.totemLevel,
 env.data.monsterAllyLifeTable[skillData.totemLevel].." ^8("..skillData.totemLevel.."级的怪物的基础生命)",
-				"x "..env.data.totemLifeMult[activeSkill.skillTotemId].." ^8(life multiplier for this totem type)",
+"x "..env.data.totemLifeMult[activeSkill.skillTotemId].." ^8(这种图腾的生命加成)",
 "x "..output.TotemLifeMod.." ^8(图腾生命加成)",
 				"= "..output.TotemLife,
 			}
@@ -892,7 +892,7 @@ s_format("+ (%.4f x %g) ^8(暴击部分的伤害)", output.CritChance/100, outpu
 			if breakdown then
 				breakdown[damageType] = { damageTypes = { } }
 				if baseMin ~= 0 and baseMax ~= 0 then
-					t_insert(breakdown[damageType], "Base damage:")
+t_insert(breakdown[damageType], "基础伤害:")
 					local plus = ""
 					if (source[damageTypeMin] or 0) ~= 0 or (source[damageTypeMax] or 0) ~= 0 then
 						if baseMultiplier ~= 1 then
@@ -934,7 +934,7 @@ t_insert(breakdown[damageType], s_format("%s%d to %d ^8(附加伤害)", plus, ad
 					min, max = calcDamage(activeSkill, output, cfg, pass == 2 and breakdown and breakdown[damageType], damageType, 0)
 					local convMult = activeSkill.conversionTable[damageType].mult
 					if pass == 2 and breakdown then
-						t_insert(breakdown[damageType], "Hit damage:")
+t_insert(breakdown[damageType], "击中伤害:")
 t_insert(breakdown[damageType], s_format("%d to %d ^8(总伤害)", min, max))
 						if convMult ~= 1 then
 t_insert(breakdown[damageType], s_format("x %g ^8(%g%% 转化为其他伤害)", convMult, (1-convMult)*100))

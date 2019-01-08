@@ -1940,6 +1940,10 @@ local specialModList = {
 		["法术的投射物无法穿刺"] = { flag("CannotPierce", nil, ModFlag.Spell) },
 	 ["击败敌人时触发 1 级的【召唤毒蛛】"]= function() return {  mod("ExtraSkill", "LIST", { skillId ="TriggeredSummonSpider", level = 1})   } end,
 	  ["击败敌人时有 (%d+)%% 几率触发 1 级的【召唤毒蛛】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="TriggeredSummonSpider", level = 1})   } end,
+	["专注时，你的暴击率会特别幸运"] ={ flag("CritChanceLucky",  { type = "Condition", var = "Focused" }) }, 
+	["专注时获得额外 (%d+)%% 物理伤害减免"] = function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "Focused" } )  } end, 
+	["你在专注时获得【瓦尔冥约】状态"] = { mod("Keystone", "LIST", "瓦尔冥约", { type = "Condition", var = "Focused" }) }, 
+	["专注时，伤害的 (%d+)%% 转化为生命偷取"] = function(num) return {  mod("DamageLifeLeech", "BASE", num,{ type = "Condition", var = "Focused" })  } end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Module: Calc Defence
 -- Performs defence calculations.
@@ -187,9 +187,9 @@ function calcs.defence(env, actor)
 			output.EvadeChance = 100 - (calcLib.hitChance(output.Evasion, enemyAccuracy) - modDB:Sum("BASE", nil, "EvadeChance")) * calcLib.mod(enemyDB, nil, "HitChance")
 			if breakdown then
 				breakdown.EvadeChance = {
-					s_format("Enemy level: %d ^8(%s the Configuration tab)", env.enemyLevel, env.configInput.enemyLevel and "overridden from" or "can be overridden in"),
-					s_format("Average enemy accuracy: %d", enemyAccuracy),
-					s_format("Approximate evade chance: %d%%", output.EvadeChance),
+s_format("敌人等级: %d ^8(%s 配置界面配置)", env.enemyLevel, env.configInput.enemyLevel and "覆盖了" or "可以从"),
+s_format("平均敌人命中: %d", enemyAccuracy),
+s_format("近似闪避几率: %d%%", output.EvadeChance),
 				}
 			end
 			output.MeleeEvadeChance = m_max(5, m_min(95, output.EvadeChance * calcLib.mod(modDB, nil, "EvadeChance", "MeleeEvadeChance")))
@@ -210,8 +210,8 @@ function calcs.defence(env, actor)
 		output.MaxEnergyShieldLeechRate = output.EnergyShield * calcLib.val(modDB, "MaxLifeLeechRate") / 100
 		if breakdown then
 			breakdown.MaxEnergyShieldLeechRate = {
-				s_format("%d ^8(maximum energy shield)", output.EnergyShield),
-				s_format("x %d%% ^8(percentage of life to maximum leech rate)", modDB:Sum("BASE", nil, "MaxLifeLeechRate")),
+s_format("%d ^8(最大能量护盾)", output.EnergyShield),
+s_format("x %d%% ^8(最大生命偷取速率)", modDB:Sum("BASE", nil, "MaxLifeLeechRate")),
 				s_format("= %.1f", output.MaxEnergyShieldLeechRate)
 			}
 		end
@@ -219,8 +219,8 @@ function calcs.defence(env, actor)
 		output.MaxLifeLeechRate = output.Life * calcLib.val(modDB, "MaxLifeLeechRate") / 100
 		if breakdown then
 			breakdown.MaxLifeLeechRate = {
-				s_format("%d ^8(maximum life)", output.Life),
-				s_format("x %d%% ^8(percenage of life to maximum leech rate)", modDB:Sum("BASE", nil, "MaxLifeLeechRate")),
+s_format("%d ^8(最大生命)", output.Life),
+s_format("x %d%% ^8(最大生命偷取速率)", modDB:Sum("BASE", nil, "MaxLifeLeechRate")),
 				s_format("= %.1f", output.MaxLifeLeechRate)
 			}
 		end
@@ -228,8 +228,8 @@ function calcs.defence(env, actor)
 	output.MaxManaLeechRate = output.Mana * calcLib.val(modDB, "MaxManaLeechRate") / 100
 	if breakdown then
 		breakdown.MaxManaLeechRate = {
-			s_format("%d ^8(maximum mana)", output.Mana),
-			s_format("x %d%% ^8(percenage of mana to maximum leech rate)", modDB:Sum("BASE", nil, "MaxManaLeechRate")),
+s_format("%d ^8(最大魔力)", output.Mana),
+s_format("x %d%% ^8(最大魔力偷取速率)", modDB:Sum("BASE", nil, "MaxManaLeechRate")),
 			s_format("= %.1f", output.MaxManaLeechRate)
 		}
 	end
@@ -246,17 +246,17 @@ function calcs.defence(env, actor)
 		if breakdown then
 			breakdown.ManaRegen = { }
 			breakdown.multiChain(breakdown.ManaRegen, {
-				label = "Mana Regeneration:",
-				base = s_format("%.1f ^8(base)", base),
-				{ "%.2f ^8(increased/reduced)", 1 + inc/100 },
-				{ "%.2f ^8(more/less)", more },
-				total = s_format("= %.1f ^8per second", regen),
+label = "每秒魔力回复:",
+base = s_format("%.1f ^8(基础)", base),
+{ "%.2f ^8(提高/降低)", 1 + inc/100 },
+{ "%.2f ^8(额外提高/降低)", more },
+total = s_format("= %.1f ^8每秒", regen),
 			})
 			breakdown.multiChain(breakdown.ManaRegen, {
-				label = "Effective Mana Regeneration:",
+label = "有效每秒魔力回复:",
 				base = s_format("%.1f", regen),
-				{ "%.2f ^8(recovery rate modifier)", output.ManaRecoveryRateMod },
-				total = s_format("= %.1f ^8per second", output.ManaRegen),
+{ "%.2f ^8(回复速率加成)", output.ManaRecoveryRateMod },
+total = s_format("= %.1f ^8每秒", output.ManaRegen),
 			})				
 		end
 	end
@@ -266,11 +266,11 @@ function calcs.defence(env, actor)
 		output.LifeRegen = 0
 		local lifeBase = modDB:Sum("BASE", nil, "LifeRegen")
 		if lifeBase > 0 then
-			modDB:NewMod("EnergyShieldRegen", "BASE", lifeBase, "Zealot's Oath")
+modDB:NewMod("EnergyShieldRegen", "BASE", lifeBase, "狂热誓言")
 		end
 		local lifePercent = modDB:Sum("BASE", nil, "LifeRegenPercent")
 		if lifePercent > 0 then
-			modDB:NewMod("EnergyShieldRegenPercent", "BASE", lifePercent, "Zealot's Oath")
+modDB:NewMod("EnergyShieldRegenPercent", "BASE", lifePercent, "狂热誓言")
 		end
 	else
 		local lifeBase = modDB:Sum("BASE", nil, "LifeRegen")
@@ -314,22 +314,22 @@ function calcs.defence(env, actor)
 		if breakdown then
 			breakdown.EnergyShieldRecharge = { }
 			breakdown.multiChain(breakdown.EnergyShieldRecharge, {
-				label = "Recharge rate:",
-				base = s_format("%.1f ^8(20%% per second)", output.EnergyShield * 0.2),
-				{ "%.2f ^8(increased/reduced)", 1 + inc/100 },
-				{ "%.2f ^8(more/less)", more },
-				total = s_format("= %.1f ^8per second", recharge),
+label = "能量护盾充能速率:",
+base = s_format("%.1f ^8(20%% 每秒)", output.EnergyShield * 0.2),
+{ "%.2f ^8(提高/降低)", 1 + inc/100 },
+{ "%.2f ^8(额外提高/降低)", more },
+total = s_format("= %.1f ^8每秒", recharge),
 			})
 			breakdown.multiChain(breakdown.EnergyShieldRecharge, {
-				label = "Effective Recharge rate:",
+label = "有效能量护盾充能速率:",
 				base = s_format("%.1f", recharge),
-				{ "%.2f ^8(recovery rate modifier)", output.EnergyShieldRecoveryRateMod },
-				total = s_format("= %.1f ^8per second", output.EnergyShieldRecharge),
+{ "%.2f ^8(回复速率加成)", output.EnergyShieldRecoveryRateMod },
+total = s_format("= %.1f ^8每秒", output.EnergyShieldRecharge),
 			})				
 			if output.EnergyShieldRechargeDelay ~= 2 then
 				breakdown.EnergyShieldRechargeDelay = {
-					"2.00s ^8(base)",
-					s_format("/ %.2f ^8(faster start)", 1 + modDB:Sum("INC", nil, "EnergyShieldRechargeFaster") / 100),
+"2.00s ^8(基础)",
+s_format("/ %.2f ^8(更快开始)", 1 + modDB:Sum("INC", nil, "EnergyShieldRechargeFaster") / 100),
 					s_format("= %.2fs", output.EnergyShieldRechargeDelay)
 				}
 			end
@@ -346,12 +346,12 @@ function calcs.defence(env, actor)
 		local lifeProtected = sourcePool / (output.MindOverMatter / 100) * (1 - output.MindOverMatter / 100)
 		local effectiveLife = m_max(output.Life - lifeProtected, 0) + m_min(output.Life, lifeProtected) / (1 - output.MindOverMatter / 100)
 		breakdown.MindOverMatter = {
-			s_format("Total life protected:"),
-			s_format("%d ^8(unreserved mana%s)", sourcePool, modDB:Flag(nil, "EnergyShieldProtectsMana") and " + total energy shield" or ""),
-			s_format("/ %.2f ^8(portion taken from mana)", output.MindOverMatter / 100),
-			s_format("x %.2f ^8(portion taken from life)", 1 - output.MindOverMatter / 100),
+s_format("所有生命防护:"),
+s_format("%d ^8(未保留魔力%s)", sourcePool, modDB:Flag(nil, "EnergyShieldProtectsMana") and " + 总能量护盾" or ""),
+s_format("/ %.2f ^8(魔力承受部分)", output.MindOverMatter / 100),
+s_format("x %.2f ^8(生命承受部分)", 1 - output.MindOverMatter / 100),
 			s_format("= %d", lifeProtected),
-			s_format("Effective life: %d", effectiveLife)
+s_format("有效生命: %d", effectiveLife)
 		}
 	end
 
@@ -386,10 +386,10 @@ function calcs.defence(env, actor)
 			if breakdown then
 				breakdown[damageType.."TakenDotMult"] = { }
 				breakdown.multiChain(breakdown[damageType.."TakenDotMult"], {
-					label = "DoT Multiplier:",
-					{ "%.2f ^8(%s)", (1 - output[damageType.."Resist"] / 100), damageType == "Physical" and "physical damage reduction" or "resistance" },
-					{ "%.2f ^8(increased/reduced damage taken)", (1 + takenInc / 100) },
-					{ "%.2f ^8(more/less damage taken)", takenMore },
+label = "持续伤害加成:",
+{ "%.2f ^8(%s)", (1 - output[damageType.."Resist"] / 100), damageType == "Physical" and "物理伤害减免" or "抗性" },
+{ "%.2f ^8(提高/降低 伤害承受)", (1 + takenInc / 100) },
+{ "%.2f ^8(额外提高/降低 伤害承受)", takenMore },
 					total = s_format("= %.2f", output[damageType.."TakenDotMult"]),
 				})
 			end
@@ -427,13 +427,13 @@ function calcs.defence(env, actor)
 			output.NetManaRegen = output.ManaRegen - manaDegen
 			if breakdown then
 				breakdown.NetLifeRegen = {
-					s_format("%.1f ^8(total life regen)", output.LifeRegen),
-					s_format("- %.1f ^8(total life degen)", lifeDegen),
+s_format("%.1f ^8(总生命回复)", output.LifeRegen),
+s_format("- %.1f ^8(总生命回复)", lifeDegen),
 					s_format("= %.1f", output.NetLifeRegen),
 				}
 				breakdown.NetManaRegen = {
-					s_format("%.1f ^8(total mana regen)", output.ManaRegen),
-					s_format("- %.1f ^8(total mana degen)", manaDegen),
+s_format("%.1f ^8(总魔力回复)", output.ManaRegen),
+s_format("- %.1f ^8(总魔力回复)", manaDegen),
 					s_format("= %.1f", output.NetManaRegen),
 				}
 			end
@@ -442,8 +442,8 @@ function calcs.defence(env, actor)
 			output.NetLifeRegen = totalRegen - output.TotalDegen
 			if breakdown then
 				breakdown.NetLifeRegen = {
-					s_format("%.1f ^8(total life%s regen)", totalRegen, modDB:Flag(nil, "EnergyShieldProtectsMana") and "" or " + energy shield"),	
-					s_format("- %.1f ^8(total degen)", output.TotalDegen),
+s_format("%.1f ^8(总生命%s 回复)", totalRegen, modDB:Flag(nil, "EnergyShieldProtectsMana") and "" or " + 能量护盾"),
+s_format("- %.1f ^8(总降低回复)", output.TotalDegen),
 					s_format("= %.1f", output.NetLifeRegen),
 				}
 			end
@@ -476,7 +476,7 @@ function calcs.defence(env, actor)
 		local mult = 0
 		if breakdown then
 			breakdown[damageType.."TakenHitMult"] = { 
-				label = "Hit Damage taken as",
+label = "击中伤害承受为",
 				rowList = { },
 				colList = {
 					{ label = "Type", key = "type" },
@@ -498,12 +498,12 @@ function calcs.defence(env, actor)
 					output.PhysicalDamageReduction = resist
 					if breakdown then
 						breakdown.PhysicalDamageReduction = {
-							s_format("Enemy Physical Hit Damage: %d ^8(%s the Configuration tab)", damage, env.configInput.enemyPhysicalHit and "overridden from" or "can be overridden in"),
+s_format("敌人物理击中伤害: %d ^8(%s 配置界面)", damage, env.configInput.enemyPhysicalHit and "覆盖了" or "可以从"),
 						}
 						if portion < 100 then
-							t_insert(breakdown.PhysicalDamageReduction, s_format("Portion taken as Physical: %d%%", portion))
+t_insert(breakdown.PhysicalDamageReduction, s_format("承受为物理部分: %d%%", portion))
 						end
-						t_insert(breakdown.PhysicalDamageReduction, s_format("Reduction from Armour: %d%%", armourReduct))
+t_insert(breakdown.PhysicalDamageReduction, s_format("护甲减免: %d%%", armourReduct))
 					end
 				end
 				local takenMult = output[destType.."TakenHit"]
@@ -532,9 +532,9 @@ function calcs.defence(env, actor)
 		if breakdown then
 			breakdown.EffectiveMovementSpeedMod = { }
 			breakdown.multiChain(breakdown.EffectiveMovementSpeedMod, {
-				{ "%.2f ^8(movement speed modifier)", output.MovementSpeedMod },
-				{ "%.2f ^8(action speed modifier)", output.ActionSpeedMod },
-				total = s_format("= %.2f ^8(effective movement speed modifier)", output.EffectiveMovementSpeedMod)
+{ "%.2f ^8(移动速度加成)", output.MovementSpeedMod },
+{ "%.2f ^8(动作速度加成)", output.ActionSpeedMod },
+total = s_format("= %.2f ^8(有效移动速度加成)", output.EffectiveMovementSpeedMod)
 			})
 		end
 		output.BlockChanceMax = modDB:Sum("BASE", nil, "BlockChanceMax")
@@ -579,23 +579,23 @@ function calcs.defence(env, actor)
 		if breakdown then
 			breakdown.MeleeAvoidChance = { }
 			breakdown.multiChain(breakdown.MeleeAvoidChance, {
-				{ "%.2f ^8(chance for evasion to fail)", 1 - output.MeleeEvadeChance / 100 },
-				{ "%.2f ^8(chance for dodge to fail)", 1 - output.AttackDodgeChance / 100 },
-				{ "%.2f ^8(chance for block to fail)", 1 - output.BlockChance / 100 },
-				total = s_format("= %d%% ^8(chance to be hit by a melee attack)", 100 - output.MeleeAvoidChance),
+{ "%.2f ^8(闪避失败的几率)", 1 - output.MeleeEvadeChance / 100 },
+{ "%.2f ^8(躲避失败的几率)", 1 - output.AttackDodgeChance / 100 },
+{ "%.2f ^8(格挡失败的几率)", 1 - output.BlockChance / 100 },
+total = s_format("= %d%% ^8(被近战攻击命中的几率)", 100 - output.MeleeAvoidChance),
 			})
 			breakdown.ProjectileAvoidChance = { }
 			breakdown.multiChain(breakdown.ProjectileAvoidChance, {
-				{ "%.2f ^8(chance for evasion to fail)", 1 - output.ProjectileEvadeChance / 100 },
-				{ "%.2f ^8(chance for dodge to fail)", 1 - output.AttackDodgeChance / 100 },
-				{ "%.2f ^8(chance for block to fail)", 1 - output.BlockChance / 100 },
-				total = s_format("= %d%% ^8(chance to be hit by a projectile attack)", 100 - output.ProjectileAvoidChance),
+{ "%.2f ^8(闪避失败的几率)", 1 - output.ProjectileEvadeChance / 100 },
+{ "%.2f ^8(躲避失败的几率)", 1 - output.AttackDodgeChance / 100 },
+{ "%.2f ^8(格挡失败的几率)", 1 - output.BlockChance / 100 },
+total = s_format("= %d%% ^8(被投射物攻击命中的几率)", 100 - output.ProjectileAvoidChance),
 			})
 			breakdown.SpellAvoidChance = { }
 			breakdown.multiChain(breakdown.SpellAvoidChance, {
-				{ "%.2f ^8(chance for dodge to fail)", 1 - output.SpellDodgeChance / 100 },
-				{ "%.2f ^8(chance for block to fail)", 1 - output.SpellBlockChance / 100 },
-				total = s_format("= %d%% ^8(chance to be hit by a spell)", 100 - output.SpellAvoidChance),
+{ "%.2f ^8(躲避失败的几率)", 1 - output.SpellDodgeChance / 100 },
+{ "%.2f ^8(格挡失败的几率)", 1 - output.SpellBlockChance / 100 },
+total = s_format("= %d%% ^8(被法术伤害击中的几率)", 100 - output.SpellAvoidChance),
 			})
 		end
 		local stunChance = 100 - m_min(modDB:Sum("BASE", nil, "AvoidStun"), 100)
@@ -611,13 +611,13 @@ function calcs.defence(env, actor)
 			output.BlockDuration = 0.35 / (1 + modDB:Sum("INC", nil, "StunRecovery", "BlockRecovery") / 100)
 			if breakdown then
 				breakdown.StunDuration = {
-					"0.35s ^8(base)",
-					s_format("/ %.2f ^8(increased/reduced recovery)", 1 + modDB:Sum("INC", nil, "StunRecovery") / 100),
+"0.35s ^8(基础)",
+s_format("/ %.2f ^8(提高/降低回复)", 1 + modDB:Sum("INC", nil, "StunRecovery") / 100),
 					s_format("= %.2fs", output.StunDuration)
 				}
 				breakdown.BlockDuration = {
-					"0.35s ^8(base)",
-					s_format("/ %.2f ^8(increased/reduced recovery)", 1 + modDB:Sum("INC", nil, "StunRecovery", "BlockRecovery") / 100),
+"0.35s ^8(基础)",
+s_format("/ %.2f ^8(提高/降低回复)", 1 + modDB:Sum("INC", nil, "StunRecovery", "BlockRecovery") / 100),
 					s_format("= %.2fs", output.BlockDuration)
 				}
 			end

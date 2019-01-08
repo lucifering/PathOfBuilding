@@ -57,7 +57,7 @@ self.controls.accountNameGo = new("ButtonControl", {"LEFT",self.controls.account
 		return self.controls.accountName.buf:match("%S")
 	end
 self.controls.accountNameUnicode = new("LabelControl", {"TOPLEFT",self.controls.accountName,"BOTTOMLEFT"}, 0, 16, 0, 14, "^7注意！你需要先去官网公开你的角色.")
-self.controls.accountNameURLEncoder = new("ButtonControl", {"TOPLEFT",self.controls.accountNameUnicode,"BOTTOMLEFT"}, 0, 4, 170, 18, "^x4040FFhttps://poe.game.qq.com/login/tencent", function()
+self.controls.accountNameURLEncoder = new("ButtonControl", {"TOPLEFT",self.controls.accountNameUnicode,"BOTTOMLEFT"}, 0, 4, 170, 18, "不能快速安全登录的都是假官网", function()
 OpenURL("https://poe.game.qq.com/login/tencent")
 	end)
 
@@ -187,6 +187,7 @@ self.controls.generateCodePastebin.label = "生成Pastebin地址"
 				if errMsg then
 					main:OpenMessagePopup("Pastebin.com", "Error creating paste:\n"..errMsg)
 				else
+					pasteLink=pasteLink.."?pob=cn"
 					self.controls.generateCodeOut:SetText(pasteLink)
 				end
 			end)
@@ -793,7 +794,7 @@ controls.editLabel = new("LabelControl", nil, 0, 20, 0, 16, "输入Pastebin链�
 controls.import = new("ButtonControl", nil, -45, 80, 80, 20, "导入", function()
 		controls.import.enabled = false
 controls.msg.label = "获取中..."
-		controls.edit.buf = controls.edit.buf:gsub("^%s+", ""):gsub("%s+$", "") -- Quick Trim
+		controls.edit.buf = controls.edit.buf:gsub("^%s+", ""):gsub("%s+$", ""):gsub("?pob=cn", "") -- Quick Trim
 		launch:DownloadPage(controls.edit.buf:gsub("pastebin%.com/(%w+)%s*$","pastebin.com/raw/%1"), function(page, errMsg)
 			if errMsg then
 				controls.msg.label = "^1"..errMsg

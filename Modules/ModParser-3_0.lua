@@ -1580,7 +1580,7 @@ local specialModList = {
 	["总伤害额外降低 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", -num)  } end,
 	["药剂持续期间，获得等同 (%d+)%% 物理伤害的冰霜伤害"]= function(num) return {  mod("PhysicalDamageGainAsCold", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
 	["生效期间，瓦尔技能的伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", num,nil,KeywordFlag.Vaal,{ type = "Condition", var = "UsingFlask" })  } end,
-	["生效期间，瓦尔技能的总伤害额外提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num,nil,KeywordFlag.Vaal,{ type = "Condition", var = "UsingFlask" })  } end,
+	["生效期间，瓦尔技能的总伤害额外提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num,nil,nil,KeywordFlag.Vaal,{ type = "Condition", var = "UsingFlask" })  } end,
 	["药剂持续期间，近战物理总伤害额外提高 (%d+)%%"]= function(num) return {  mod("PhysicalDamage", "MORE", num,nil, ModFlag.Melee,{ type = "Condition", var = "UsingFlask" })  } end,
 	["药剂持续期间，物理伤害的 (%d+)%% 转换为闪电伤害"]= function(num) return {  mod("PhysicalDamageGainAsLightning", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
 	["药剂持续期间，闪电伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("LightningDamageLifeLeech", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end, 
@@ -1944,6 +1944,11 @@ local specialModList = {
 	["专注时获得额外 (%d+)%% 物理伤害减免"] = function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "Focused" } )  } end, 
 	["你在专注时获得【瓦尔冥约】状态"] = { mod("Keystone", "LIST", "瓦尔冥约", { type = "Condition", var = "Focused" }) }, 
 	["专注时，伤害的 (%d+)%% 转化为生命偷取"] = function(num) return {  mod("DamageLifeLeech", "BASE", num,{ type = "Condition", var = "Focused" })  } end, 
+	["装备时可以施放 (%d+) 级的【幽鬼之灵】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="SummonEssenceSpirits", level = num})   } end,
+	["插槽内的技能造成的法术总伤害额外提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Damage", "MORE", tonumber(num),nil, ModFlag.Spell) }, { type = "SocketedIn", slotName = "{SlotName}" })}end,	
+	["插槽内的技能造成的攻击总伤害额外提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Damage", "MORE", tonumber(num),nil, ModFlag.Attack) }, { type = "SocketedIn", slotName = "{SlotName}" })}end,
+	["插槽内的技能施法速度提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil, ModFlag.Cast) }, { type = "SocketedIn", slotName = "{SlotName}" })}end,	
+	["插槽内的技能攻击速度提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil, ModFlag.Attack) }, { type = "SocketedIn", slotName = "{SlotName}" })}end,	
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

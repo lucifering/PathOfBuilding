@@ -1494,7 +1494,7 @@ local specialModList = {
 	["获得 (%d+) 级【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end,
 	["造成的异常状态持续时间缩短 (%d+)%%"] = function(num) return { mod("EnemyShockDuration", "INC", -num),mod("EnemyFreezeDuration", "INC", -num),mod("EnemyChillDuration", "INC", -num),mod("EnemyIgniteDuration", "INC", -num),mod("EnemyBleedDuration", "INC", -num),mod("EnemyPoisonDuration", "INC", -num)} end,
 	["造成的异常状态持续时间延长 (%d+)%%"] = function(num) return { mod("EnemyShockDuration", "INC", num),mod("EnemyFreezeDuration", "INC", -num),mod("EnemyChillDuration", "INC", -num),mod("EnemyIgniteDuration", "INC", -num),mod("EnemyBleedDuration", "INC", -num),mod("EnemyPoisonDuration", "INC", -num)} end,
-	["([%d%.]+) 每秒生命回复"] = function(num) return {  mod("LifeRegent", "BASE", num)  } end,
+	["([%d%.]+) 每秒生命回复"] = function(num) return {  mod("LifeRegen", "BASE", num)  } end,
 	["([%d%.]+) 每秒魔力回复"] = function(num) return {  mod("ManaRegen", "BASE", num)  } end,
 	["每秒 ([%d%.]+) 基础魔力回复"] = function(num) return {  mod("ManaRegen", "BASE", num)  } end,
 	["每秒 ([%d%.]+)%% 魔力回复"]= function(num) return {  mod("ManaRegenPercent", "BASE", num )  } end,
@@ -1949,6 +1949,7 @@ local specialModList = {
 	["插槽内的技能造成的攻击总伤害额外提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Damage", "MORE", tonumber(num),nil, ModFlag.Attack) }, { type = "SocketedIn", slotName = "{SlotName}" })}end,
 	["插槽内的技能施法速度提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil, ModFlag.Cast) }, { type = "SocketedIn", slotName = "{SlotName}" })}end,	
 	["插槽内的技能攻击速度提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil, ModFlag.Attack) }, { type = "SocketedIn", slotName = "{SlotName}" })}end,	
+	["【风暴烙印】的伤害会穿透带有烙印敌人闪电抗性的 (%d+)%%"]= function(num) return {  mod("LightningPenetration", "BASE", num,{ type = "Condition", var = "BrandAttachedToEnemy" },{ type = "SkillName", skillName = "风暴烙印" })  } end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

@@ -403,10 +403,10 @@ label = "持续伤害加成:",
 					breakdown.TotalDegen = breakdown.TotalDegen or { 
 						rowList = { },
 						colList = {
-							{ label = "Type", key = "type" },
-							{ label = "Base", key = "base" },
-							{ label = "Multiplier", key = "mult" },
-							{ label = "Total", key = "total" },
+{ label = "【类型】", key = "type" },
+{ label = "【基础】", key = "base" },
+{ label = "【加成】", key = "mult" },
+{ label = "【总】", key = "total" },
 						}
 					}
 					t_insert(breakdown.TotalDegen.rowList, {
@@ -479,10 +479,10 @@ s_format("- %.1f ^8(总降低回复)", output.TotalDegen),
 label = "击中伤害承受为",
 				rowList = { },
 				colList = {
-					{ label = "Type", key = "type" },
-					{ label = "Mitigation", key = "resist" },
-					{ label = "Taken", key = "taken" },
-					{ label = "Final", key = "final" },
+{ label = "【类型】", key = "type" },
+{ label = "【减免】", key = "resist" },
+{ label = "【承受】", key = "taken" },
+{ label = "【最终】", key = "final" },
 				},
 			}
 		end

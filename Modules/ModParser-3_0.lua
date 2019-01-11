@@ -346,7 +346,7 @@ local modNameList = {
 	["召唤生物身上的光环效果"] = { "AuraEffectOnSelf", addToMinion = true }, --备注：effect of auras on your minions
 	["curse effect"] = "CurseEffect",
 	["诅咒持续时间"] = { "Duration", keywordFlags = KeywordFlag.Curse }, --备注：curse duration
-	["radius of auras"] = { "AreaOfEffect", keywordFlags = KeywordFlag.Aura },
+	["光环技能范围"] = { "AreaOfEffect", keywordFlags = KeywordFlag.Aura }, --备注：radius of auras
 	["诅咒范围"] = { "AreaOfEffect", keywordFlags = KeywordFlag.Curse }, --备注：radius of curses
 	["buff effect"] = "BuffEffect",
 	["你身上的增益效果"] = "BuffEffectOnSelf", --备注：effect of buffs on you
@@ -427,7 +427,7 @@ local modNameList = {
 	["area of effect radius"] = "AreaOfEffect",
 	["范围效果"] = "AreaOfEffect", --备注：area of effect
 	["area of effect of skills"] = "AreaOfEffect",
-	["光环技能范围"] = "AreaOfEffect", --备注：area of effect of area skills
+	["area of effect of area skills"] = "AreaOfEffect",
 	["【蛛之势】的范围效果"] = { "AreaOfEffect", tag = { type = "SkillName", skillName = "蛛之势" } }, --备注：aspect of the spider area of effect
 	["firestorm explosion area of effect"] = { "AreaOfEffectSecondary", tag = { type = "SkillName", skillName = "烈炎风暴" } },
 	["持续时间"] = "Duration", --备注：duration
@@ -1579,7 +1579,7 @@ local specialModList = {
 	["武器总伤害额外降低 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", -num, nil,ModFlag.Weapon)  } end,
 	["总伤害额外降低 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", -num)  } end,
 	["药剂持续期间，获得等同 (%d+)%% 物理伤害的冰霜伤害"]= function(num) return {  mod("PhysicalDamageGainAsCold", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
-	["生效期间，瓦尔技能的伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", num,nil,KeywordFlag.Vaal,{ type = "Condition", var = "UsingFlask" })  } end,
+	["生效期间，瓦尔技能的伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", num,nil,nil,KeywordFlag.Vaal,{ type = "Condition", var = "UsingFlask" })  } end,
 	["生效期间，瓦尔技能的总伤害额外提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num,nil,nil,KeywordFlag.Vaal,{ type = "Condition", var = "UsingFlask" })  } end,
 	["药剂持续期间，近战物理总伤害额外提高 (%d+)%%"]= function(num) return {  mod("PhysicalDamage", "MORE", num,nil, ModFlag.Melee,{ type = "Condition", var = "UsingFlask" })  } end,
 	["药剂持续期间，物理伤害的 (%d+)%% 转换为闪电伤害"]= function(num) return {  mod("PhysicalDamageGainAsLightning", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,

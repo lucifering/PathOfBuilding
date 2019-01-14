@@ -304,7 +304,7 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 { var = "minionsUseEnduranceCharges", type = "check", label = "你的召唤生物有耐力球?", ifFlag = "haveMinion", apply = function(val, modList, enemyModList)
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("UseEnduranceCharges", "FLAG", true, "Config", { type = "Condition", var = "Combat" }) }, "Config")
 	end },
-{ var = "conditionFocused", type = "check", label = "你处于专注期间?", ifCOnd = "Focused", apply = function(val, modList, enemyModList)
+{ var = "conditionFocused", type = "check", label = "你处于专注期间?", ifCond = "Focused", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:Focused", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
 { var = "buffOnslaught", type = "check", label = "你是否处于【猛攻】状态?", tooltip = "当你处于【猛攻】状态时干啥干啥的词缀生效,\n同时也会启用【猛攻】buff本身:提高 20% 移动、攻击和施法速度", apply = function(val, modList, enemyModList)

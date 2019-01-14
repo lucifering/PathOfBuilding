@@ -383,7 +383,7 @@ function CalcBreakdownClass:AddModSection(sectionData, modList)
 					desc = base.."per "..(tag.div and (tag.div.." ") or "")..self:FormatVarNameOrList(tag.var, tag.varList)
 					baseVal = ""
 				elseif tag.type == "PerStat" then
-					local base = tag.base and (self:FormatModBase(row.mod, tag.base).."+ "..math.abs(row.mod.value).." ") or baseVal
+					local base = tag.base and (self:FormatModBase(row.mod, tag.base).."+ "..math.abs(row.mod.value).." ") or baseVal or ""
 					desc = base.."per "..(tag.div or 1).." "..self:FormatVarNameOrList(tag.stat, tag.statList)
 					baseVal = ""
 				elseif tag.type == "MultiplierThreshold" or tag.type == "StatThreshold" then

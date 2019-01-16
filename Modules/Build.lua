@@ -961,7 +961,7 @@ function buildMode:RefreshSkillSelectControls(controls, mainGroup, suffix)
 		controls.mainSocketGroup.list[i] = { val = i, label = socketGroup.displayLabel }
 	end
 	if #controls.mainSocketGroup.list == 0 then
-		controls.mainSocketGroup.list[1] = { val = 1, label = "<No skills added yet>" }
+controls.mainSocketGroup.list[1] = { val = 1, label = "<未添加技能>" }
 		controls.mainSkill.shown = false
 		controls.mainSkillPart.shown = false
 		controls.mainSkillMinion.shown = false

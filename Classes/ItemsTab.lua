@@ -1624,18 +1624,18 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 		end
 	end
 	if self.build.targetVersion ~= "2_6" or (self.displayItem.type ~= "Jewel" and self.displayItem.type ~= "Flask") then
-		t_insert(sourceList, { label = "Crafting Bench", sourceId = "MASTER" })
+t_insert(sourceList, { label = "工艺工作台", sourceId = "MASTER" })
 	end
 	if self.displayItem.type ~= "Jewel" and self.displayItem.type ~= "Flask" then
-		t_insert(sourceList, { label = "Essence", sourceId = "ESSENCE" })
+t_insert(sourceList, { label = "精华", sourceId = "ESSENCE" })
 	end
 	
 	
 	if not self.displayItem.crafted then
-		t_insert(sourceList, { label = "Prefix", sourceId = "PREFIX" })
-		t_insert(sourceList, { label = "Suffix", sourceId = "SUFFIX" })
+t_insert(sourceList, { label = "【前缀】", sourceId = "PREFIX" })
+t_insert(sourceList, { label = "【后缀】", sourceId = "SUFFIX" })
 	end
-	t_insert(sourceList, { label = "Custom", sourceId = "CUSTOM" })
+t_insert(sourceList, { label = "自定义", sourceId = "CUSTOM" })
 	buildMods(sourceList[1].sourceId)
 	local function addModifier()
 		local item = new("Item", self.build.targetVersion, self.displayItem:BuildRaw())
@@ -1692,7 +1692,7 @@ controls.save = new("ButtonControl", nil, -45, 75, 80, 20, "增加", function()
 controls.close = new("ButtonControl", nil, 45, 75, 80, 20, "取消", function()
 		main:ClosePopup()
 	end)
-	main:OpenPopup(710, 105, "Add Modifier to Item", controls, "save", sourceList[controls.source.selIndex].sourceId == "CUSTOM" and "custom")	
+main:OpenPopup(710, 105, "装备新增词缀", controls, "save", sourceList[controls.source.selIndex].sourceId == "CUSTOM" and "custom")	
 end
 
 function ItemsTabClass:AddItemSetTooltip(tooltip, itemSet)

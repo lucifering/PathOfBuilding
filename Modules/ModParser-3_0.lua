@@ -1862,22 +1862,18 @@ local specialModList = {
 	mod("EnemyModifier", "LIST", { mod = mod("ChaosResist", "BASE", num) }),
 	mod("EnemyModifier", "LIST", { mod = mod("ElementalResist", "BASE", num) }),
 	 } end, 
-	["每个红色插槽可为你和周围友军附加 (%d+) %- (%d+) 基础火焰伤害"]= function(_,num1,num2) return { 	
-			mod("FireMin", "BASE", tonumber(num1), { type = "Multiplier", var = "RedSocketIn{SlotName}" }),
-			mod("FireMax", "BASE", tonumber(num2), { type = "Multiplier", var = "RedSocketIn{SlotName}" }) 
-		}end,
-	["每个绿色插槽可为你和周围友军附加 (%d+) %- (%d+) 基础冰霜伤害"]= function(_,num1,num2) return { 	
-			mod("ColdMin", "BASE", tonumber(num1), { type = "Multiplier", var = "GreenSocketIn{SlotName}" }),
-			mod("ColdMax", "BASE", tonumber(num2), { type = "Multiplier", var = "GreenSocketIn{SlotName}" }) 
-		}end,
-	["每个蓝色插槽可为你和周围友军附加 (%d+) %- (%d+) 基础闪电伤害"]= function(_,num1,num2) return { 	
-			mod("LightningMin", "BASE", tonumber(num1), { type = "Multiplier", var = "BlueSocketIn{SlotName}" }),
-			mod("LightningMax", "BASE", tonumber(num2), { type = "Multiplier", var = "BlueSocketIn{SlotName}" }) 
-		}end,
-	["每个白色插槽可为你和周围友军附加 (%d+) %- (%d+) 基础混沌伤害"]= function(_,num1,num2) return { 	
-			mod("ChaosMin", "BASE", tonumber(num1), { type = "Multiplier", var = "WhiteSocketIn{SlotName}" }),
-			mod("ChaosMax", "BASE", tonumber(num2), { type = "Multiplier", var = "WhiteSocketIn{SlotName}" }) 
-		}end,
+	["每个红色插槽可为你和周围友军附加 (%d+) %- (%d+) 基础火焰伤害"] = function(_,num1,num2) return { mod("ExtraAura", "LIST", { mod = mod("FireMin", "BASE", tonumber(num1) )},{ type = "Multiplier", var = "RedSocketIn{SlotName}" }),
+	mod("ExtraAura", "LIST", { mod = mod("FireMax", "BASE", tonumber(num2)) },{ type = "Multiplier", var = "RedSocketIn{SlotName}" })
+	 } end, 
+	["每个绿色插槽可为你和周围友军附加 (%d+) %- (%d+) 基础冰霜伤害"]= function(_,num1,num2) return { mod("ExtraAura", "LIST", { mod = mod("ColdMin", "BASE", tonumber(num1) )},{ type = "Multiplier", var = "GreenSocketIn{SlotName}" }),
+	mod("ExtraAura", "LIST", { mod = mod("ColdMax", "BASE", tonumber(num2)) },{ type = "Multiplier", var = "GreenSocketIn{SlotName}" })
+	 } end, 
+	["每个蓝色插槽可为你和周围友军附加 (%d+) %- (%d+) 基础闪电伤害"]= function(_,num1,num2) return { mod("ExtraAura", "LIST", { mod = mod("LightningMin", "BASE", tonumber(num1) )},{ type = "Multiplier", var = "BlueSocketIn{SlotName}" }),
+	mod("ExtraAura", "LIST", { mod = mod("LightningMax", "BASE", tonumber(num2)) },{ type = "Multiplier", var = "BlueSocketIn{SlotName}" })
+	 } end,  
+	["每个白色插槽可为你和周围友军附加 (%d+) %- (%d+) 基础混沌伤害"]= function(_,num1,num2) return { mod("ExtraAura", "LIST", { mod = mod("ChaosMin", "BASE", tonumber(num1) )},{ type = "Multiplier", var = "WhiteSocketIn{SlotName}" }),
+	mod("ExtraAura", "LIST", { mod = mod("ChaosMax", "BASE", tonumber(num2)) },{ type = "Multiplier", var = "WhiteSocketIn{SlotName}" })
+	 } end,    
 	["每有一个耐力球，攻击伤害格挡几率额外 ([%+%-]?%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num , { type = "Multiplier", var = "EnduranceCharge" }) } end, 
 	["每有一个狂怒球，攻击伤害格挡几率额外 ([%+%-]?%d+)%%"]= function(num) return {  mod("BlockChance", "BASE", num , { type = "Multiplier", var = "FrenzyCharge" }) } end, 
 	["每有一个暴击球，攻击伤害格挡几率额外 ([%+%-]?%d+)%%"]= function(num) return {  mod("BlockChance", "BASE", num, { type = "Multiplier", var = "PowerCharge" } ) } end, 

@@ -568,7 +568,7 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 		modList:NewMod("Condition:BlockedHitFromUniqueEnemyRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 		modList:NewMod("Condition:BlockedRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
-{ var = "conditionBlockedHitFromUniqueEnemyInPast10Sec", type = "check", ifVer = "3_0", label = "Blocked hit from a Unique in the past 10s?", ifNode = 63490, apply = function(val, modList, enemyModList)
+{ var = "conditionBlockedHitFromUniqueEnemyInPast10Sec", type = "check", ifVer = "3_0", label = "过去10秒内有成功格挡过传奇敌人的击中?", ifNode = 63490, apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:BlockedHitFromUniqueEnemyInPast10Sec", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
 

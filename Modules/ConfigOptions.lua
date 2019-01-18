@@ -337,6 +337,11 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 { var = "conditionHaveTotem", type = "check", label = "你是否有图腾?", ifCond = "HaveTotem", tooltip = "如果你的主动技能是图腾，那么这个自动会生效,\n否则你需要手动勾选这个.", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:HaveTotem", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
+{ var = "conditionSummonedTotemRecently", type = "check", label = "近期有召唤图腾?", ifCond = "SummonedTotemRecently", tooltip = "如果选择的技能是图腾技能，那么这个自动会生效,\n否则你需要手动勾选这个.", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:SummonedTotemRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+		
+	end },
+	
 	{ var = "multiplierNearbyAlly", type = "count", label = "# of Nearby Allies", ifMult = "NearbyAlly", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:NearbyAlly", "BASE", val, "Config", { type = "Condition", var = "Combat" })
 	end },

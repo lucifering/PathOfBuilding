@@ -1560,7 +1560,7 @@ local specialModList = {
 	 = function(num) return {  mod("PhysicalDegen", "BASE", num, { type = "Multiplier", var = "SiphoningCharge" },{ type = "Condition", var = "UsedSkillRecently" })  } end,
 	["近期内你若有使用战吼，你和周围友军的攻击，施法和移动速度提高 (%d+)%%"]= function(num) return { 
 	 mod("Speed", "INC", num,{ type = "Condition", var = "UsedWarcryRecently" }) , mod("MovementSpeed", "INC", num,{ type = "Condition", var = "UsedWarcryRecently" })  } end,
-	["([%+%-]?%d+) 灵体最大生命"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "BASE", num,{ type = "SkillName", skillName = "召唤灵体" }) })  } end,
+	["([%+%-]?%d+) 灵体最大生命"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "BASE", num) },{ type = "SkillName", skillName = "召唤灵体" })  } end,
 	["被击中时承受额外 ([%+%-]?%d+) 火焰伤害"] = function(num) return {  mod("FireDamageTakenWhenHit", "BASE", num,nil,nil,KeywordFlag.Fire)  } end,
 	["每拥有 1 个暴击球，有 (%d+)%% 几率造成中毒"]= function(num) return { mod("PoisonChance", "BASE", num,{ type = "Multiplier", var = "PowerCharge" } ) } end,
 	["当暴击球达到上限时，获得等同 (%d+)%% 物理伤害的混沌伤害"] = function(num) return {  mod("PhysicalDamageGainAsChaos", "BASE", num,{ type = "StatThreshold", stat = "PowerCharges", thresholdStat = "PowerChargesMax" } )  } end,
@@ -2693,6 +2693,8 @@ end
 local jewelOtherFuncs = {
 	--【中文化程序额外添加开始】
 	["范围内提高闪电抗性或所有元素抗性的天赋也会以 35% 的比例提高法术伤害格挡几率"] = getSimpleConv({"LightningResist","ElementalResist"}, "SpellBlockChance", "BASE", false, 0.35),
+	["范围内提高火焰抗性或所有元素的天赋也会以 35% 的比例提高攻击伤害格挡几率"] = getSimpleConv({"FireResist","ElementalResist"}, "BlockChance", "BASE", false, 0.35),
+	["范围内提高冰霜抗性或所有元素的天赋也会以 35% 的比例提高躲避攻击击中几率"] = getSimpleConv({"ColdResist","ElementalResist"}, "AttackDodgeChance", "BASE", false, 0.35), 
 	--【中文化程序额外添加结束】
 	["将范围内天赋所给予的力量转换成敏捷"] = getSimpleConv({"Str"}, "Dex", "BASE", true), --备注：Strength from Passives in Radius is Transformed to Dexterity
 	["将范围内天赋所给予的敏捷转换成力量"] = getSimpleConv({"Dex"}, "Str", "BASE", true), --备注：Dexterity from Passives in Radius is Transformed to Strength

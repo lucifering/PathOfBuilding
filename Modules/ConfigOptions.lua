@@ -481,14 +481,14 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 { var = "buffPendulum", type = "check", ifVer = "2_6", label = "【毁灭光炮塔】升华天赋激活?", ifNode = 57197, apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:PendulumOfDestruction", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
-{ var = "buffPendulum", type = "list", ifVer = "3_0", label = "【毁灭光炮塔】升华天赋激活?", ifNode = 57197, list = {{val=0,label="None"},{val="AREA",label="Area of Effect"},{val="DAMAGE",label="Elemental Damage"}}, apply = function(val, modList, enemyModList)
+{ var = "buffPendulum", type = "list", ifVer = "3_0", label = "【毁灭光炮塔】升华天赋激活?", ifNode = 57197, list = {{val=0,label="不起作用"},{val="AREA",label="范围效果"},{val="DAMAGE",label="元素伤害"}}, apply = function(val, modList, enemyModList)
 		if val == "AREA" then
 			modList:NewMod("Condition:PendulumOfDestructionAreaOfEffect", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 		elseif val == "DAMAGE" then
 			modList:NewMod("Condition:PendulumOfDestructionElementalDamage", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 		end
 	end },
-{ var = "buffConflux", type = "list", label = "汇流:", ifNode = 51391, list = {{val=0,label="None"},{val="CHILLING",label="冰缓"},{val="SHOCKING",label="感电"},{val="IGNITING",label="点燃"},{val="ALL",label="冰缓，感电和点燃"}}, apply = function(val, modList, enemyModList)
+{ var = "buffConflux", type = "list", label = "汇流:", ifNode = 51391, list = {{val=0,label="不起作用"},{val="CHILLING",label="冰缓"},{val="SHOCKING",label="感电"},{val="IGNITING",label="点燃"},{val="ALL",label="冰缓，感电和点燃"}}, apply = function(val, modList, enemyModList)
 		if val == "CHILLING" or val == "ALL" then
 			modList:NewMod("Condition:ChillingConflux", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 		end

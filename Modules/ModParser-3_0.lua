@@ -198,6 +198,8 @@ local modNameList = {
 	["冰霜与混沌抗性"] = { "ColdResist", "ChaosResist" }, 
 	["非异常状态混沌伤害持续时间加成"] = "ChaosDotMultiplier",
 		["冰霜伤害持续时间加成"] = "ColdDotMultiplier",
+	["持续冰霜伤害加成"] = "ColdDotMultiplier",
+	["几率造成双倍伤害"] = "DoubleDamageChance",
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -606,6 +608,7 @@ local modFlagList = {
 	["烙印技能的"] ={ tag = { type = "SkillType", skillType = SkillType.Brand } },
 	["烙印的"] ={ tag = { type = "SkillType", skillType = SkillType.Brand } },
 	["烙印技能"] = { tag = { type = "SkillType", skillType = SkillType.Brand } },
+	["异常状态"] = { flags = ModFlag.Ailment },
 	--【中文化程序额外添加结束】
 	-- Weapon types
 	["斧类攻击的"] = { flags = ModFlag.Axe }, --备注：with axes
@@ -1605,7 +1608,7 @@ local specialModList = {
 	["近期内你若使用过移动技能，技能可以额外发射 (%d+) 个投射物"]= function(num) return {  mod("ProjectileCount", "BASE", num, { type = "Condition", var = "UsedMovementSkillRecently" })  } end,
 	["近期内你若被击中，技能可以额外发射 (%d+) 个投射物"]= function(num) return {  mod("ProjectileCount", "BASE", num, { type = "Condition", var = "BeenHitRecently" })  } end,
 	["武器上的每个红色插槽使物理伤害提高 (%d+)%%"]= function(num) return {  mod("PhysicalDamage", "INC", num,nil, ModFlag.Weapon, { type = "Multiplier", var = "RedSocketIn{SlotName}" })  } end,
-	["每个绿色插槽会使全局攻击速度提高 (%d+)%%"]= function(num) return {  mod("Speed", "INC", num,nil, ModFlag.Weapon, { type = "Global" }, { type = "Multiplier", var = "GreenSocketIn{SlotName}" })  } end,
+	["每个绿色插槽会使全局攻击速度提高 (%d+)%%"]= function(num) return {  mod("Speed", "INC", num,nil, ModFlag.Attack, { type = "Global" }, { type = "Multiplier", var = "GreenSocketIn{SlotName}" })  } end,
 	["每个蓝色插槽会使你物理攻击伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("PhysicalDamageManaLeech", "BASE", num,nil, ModFlag.Attack, { type = "Multiplier", var = "BlueSocketIn{SlotName}" })  } end, 
 	["每个白色插槽可以扩大 %+(%d+) 近战武器范围"]= function(num) return {  mod("MeleeWeaponRange", "BASE", num, { type = "Multiplier", var = "WhiteSocketIn{SlotName}" })  } end, 
 	["静止时获得【霸体】"] = { mod("Keystone", "LIST", "霸体", { type = "Condition", var = "Stationary" }) },
@@ -1923,7 +1926,9 @@ local specialModList = {
 	 ["%-(%d+) 最大图腾数量"] = function(num) return { mod("ActiveTotemLimit", "BASE", -num) } end, 
 	 ["每个图腾额外提高 (%d+)%% 总伤害"] = function(num) return { mod("Damage", "MORE", num, { type = "PerStat", stat = "ActiveTotemLimit" }) } end, 
 	 ["([%+%-]?%d+)%% 额外总冰霜持续伤害效果"] = function(num) return { mod("ColdDotMultiplier", "BASE", num) } end,
+	 ["寒冬宝珠的最大等阶 %+(%d+)"] = function(num) return { mod("Multiplier:WinterOrbMaxStage", "BASE", num) } end,
 	 ["%+(%d+) 【寒冬宝珠】最大阶"] = function(num) return { mod("Multiplier:WinterOrbMaxStage", "BASE", num) } end,
+	["寒冬宝珠每阶可使范围效果扩大 (%d+)%%"] = function(num) return { mod("AreaOfEffect", "INC", num, { type = "SkillName", skillName = "寒冬宝珠"}, { type = "Multiplier", var = "WinterOrbStage" }) } end, 
 		["【寒冬宝珠】每一阶范围效果扩大 (%d+)%%"] = function(num) return { mod("AreaOfEffect", "INC", num, { type = "SkillName", skillName = "寒冬宝珠"}, { type = "Multiplier", var = "WinterOrbStage" }) } end,
 	 ["【旗帜技能】不保留魔力"] = { mod("SkillData", "LIST", { key = "manaCostForced", value = 0 }, { type = "SkillName", skillNameList = { "恐怖之旗", "战旗" } }) },
 	 ["【(.+)】会发射 (%d+) 个额外投射物"]=  function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ProjectileCount", "BASE", tonumber(num)) }, { type = "SkillName", skillName =skill_name } ) } end,
@@ -1947,6 +1952,13 @@ local specialModList = {
 	["插槽内的技能攻击速度提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil, ModFlag.Attack) }, { type = "SocketedIn", slotName = "{SlotName}" })}end,	
 	["【风暴烙印】的伤害会穿透带有烙印敌人闪电抗性的 (%d+)%%"]= function(num) return {  mod("LightningPenetration", "BASE", num,{ type = "Condition", var = "BrandAttachedToEnemy" },{ type = "SkillName", skillName = "风暴烙印" })  } end, 
 	["此物品上的技能石获得 ([%d%.]+)%% 物理伤害，并转化为额外闪电伤害"]= function(num) return{ mod("ExtraSkillMod", "LIST", { mod = mod("PhysicalDamageGainAsLightning", "BASE", num) },{ type = "SocketedIn", slotName = "{SlotName}" })}end, 
+	["此物品上装备的【技能石】品质 %+(%d+)%%"] = function(num) return { mod("GemProperty", "LIST",  { keyword = "all", key = "quality", value = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
+	["此物品上装备的【辅助技能石】品质 %+(%d+)%%"] = function(num) return { mod("GemProperty", "LIST",  { keyword = "support", key = "quality", value = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
+	["有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("DoubleDamageChance", "BASE", num) } end,
+	["专注时有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("DoubleDamageChance", "BASE", num,{ type = "Condition", var = "Focused" }) } end,
+	["若周围有稀有或传奇敌人，则 %+(%d+)%% 基础暴击伤害加成"] = function(num) return { mod("CritMultiplier", "BASE", num,{ type = "Condition", var = "EnemyRareOrUnique" }) } end,
+	["周围有稀有或传奇敌人时，攻击速度提高 (%d+)%%"] = function(num) return { mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack,{ type = "Condition", var = "EnemyRareOrUnique" }) } end,
+	["周围有稀有或传奇敌人时，每秒回复 (%d+) 能量护盾"] = function(num) return { mod("EnergyShieldRegen", "BASE", num,{ type = "Condition", var = "EnemyRareOrUnique" }) } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

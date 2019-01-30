@@ -73,7 +73,7 @@ self:NewSection(3, "SkillSelect", 1, "查看技能详情", colorCodes.NORMAL, {
 			control = new("CheckBoxControl", nil, 0, 0, 18, nil, function(state)
 				self.input.showMinion = state
 				self:AddUndoState()
-			end, "Show stats for the minion instead of the player.")
+end, "显示召唤物计算面板而非玩家的.")
 		}, },
 { label = "召唤生物", flag = "minion", { controlName = "mainSkillMinion",
 			control = new("DropDownControl", nil, 0, 0, 160, 16, nil, function(index, value)

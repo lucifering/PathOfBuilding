@@ -483,10 +483,10 @@ self.controls.mainSkillLabel = new("LabelControl", {"TOPLEFT",self.anchorSideBar
 		if value.itemSetId then
 			self.itemsTab:AddItemSetTooltip(tooltip, self.itemsTab.itemSets[value.itemSetId])
 			tooltip:AddSeparator(14)
-			tooltip:AddLine(14, colorCodes.TIP.."Tip: You can drag items from the Items tab onto this dropdown to equip them onto the minion.")
+tooltip:AddLine(14, colorCodes.TIP.."提示: 你可以拖放装备到这里来装备到召唤物身上.")
 		end
 	end
-	self.controls.mainSkillMinionLibrary = new("ButtonControl", {"LEFT",self.controls.mainSkillMinion,"RIGHT"}, 2, 0, 120, 18, "Manage Spectres...", function()
+self.controls.mainSkillMinionLibrary = new("ButtonControl", {"LEFT",self.controls.mainSkillMinion,"RIGHT"}, 2, 0, 120, 18, "灵体管理...", function()
 		self:OpenSpectreLibrary()
 	end)
 	self.controls.mainSkillMinionSkill = new("DropDownControl", {"TOPLEFT",self.controls.mainSkillMinion,"BOTTOMLEFT",true}, 0, 2, 200, 16, nil, function(index, value)
@@ -950,7 +950,7 @@ function buildMode:OpenSpectreLibrary()
 controls.cancel = new("ButtonControl", nil, 45, 300, 80, 20, "取消", function()
 		main:ClosePopup()
 	end)
-	main:OpenPopup(410, 330, "Spectre Library", controls)
+main:OpenPopup(410, 330, "【灵体列表】", controls)
 end
 
 -- Refresh the set of controls used to select main group/skill/minion
@@ -1025,7 +1025,7 @@ controls.mainSocketGroup.list[1] = { val = 1, label = "<未添加技能>" }
 						controls.mainSkillMinionSkill.shown = true
 						controls.mainSkillMinionSkill.enabled = #controls.mainSkillMinionSkill.list > 1
 					else
-						t_insert(controls.mainSkillMinion.list, "<No spectres in build>")
+t_insert(controls.mainSkillMinion.list, "<未选择灵体类型>")
 					end
 				end
 			end

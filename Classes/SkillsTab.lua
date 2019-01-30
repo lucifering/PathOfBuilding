@@ -682,7 +682,7 @@ tooltip:AddLine(16, "^7不起作用的技能:")
 				if displayEffect.superseded then
 					reason = "(Superseded)"
 				elseif (not displayEffect.isSupporting or not next(displayEffect.isSupporting)) and #socketGroup.displaySkillList > 0 then
-					reason = "(Cannot apply to any of the active skills)"
+reason = "(无法作用于这个技能)"
 				end
 			end
 			tooltip:AddLine(20, string.format("%s%s ^7%d%s/%d%s %s", 

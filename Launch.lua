@@ -235,6 +235,8 @@ function launch:DownloadPage(url, callback, cookies)
 		local easy = curl.easy()
 		easy:setopt_url(url)
 		easy:setopt(curl.OPT_ACCEPT_ENCODING, "")
+		-- 不校验 https证书
+		easy:setopt(curl.OPT_SSL_VERIFYPEER, false)
 		if cookies then
 			easy:setopt(curl.OPT_COOKIE, cookies)
 		end

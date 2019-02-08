@@ -131,8 +131,8 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 modList:NewMod("Multiplier:WinterOrbStage", "BASE", val, "Config", { type = "SkillName", skillName = "寒冬宝珠" })
 	end },
 	
-	{ label = "凋零之触:", ifSkill = "凋零之触" },
-{ var = "witheringTouchWitheredStackCount", type = "count", label = "# 【死亡凋零】层数:", ifSkill = "凋零之触", apply = function(val, modList, enemyModList)
+	{ label = "凋零之触:", ifSkill = "凋零之触（辅）" },
+{ var = "witheringTouchWitheredStackCount", type = "count", label = "# 【死亡凋零】层数:", ifSkill = "凋零之触（辅）", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:WitheringTouchWitheredStackCount", "BASE", val, "Config")
 	end },
 

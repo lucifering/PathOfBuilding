@@ -592,6 +592,10 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 { var = "conditionEnemyMoving", type = "check", label = "敌人在移动中?", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Condition:Moving", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
+
+{ var = "conditionEnemyOnConsecratedGround", type = "check", label = "敌人在奉献地面上?", apply = function(val, modList, enemyModList)
+		enemyModList:NewMod("Condition:EnemyOnConsecratedGround", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+	end },
 { var = "conditionEnemyFullLife", type = "check", label = "敌人满血状态?", ifEnemyCond = "FullLife", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Condition:FullLife", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },

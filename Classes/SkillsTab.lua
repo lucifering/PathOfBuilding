@@ -637,9 +637,9 @@ tooltip:AddLine(16, "^7主动技能 #"..index..":")
 				data.skillColorMap[skillEffect.grantedEffect.color], 
 				skillEffect.grantedEffect.name,
 				skillEffect.level, 
-				(skillEffect.srcInstance and skillEffect.level > skillEffect.srcInstance.level) and colorCodes.MAGIC.."+"..(skillEffect.level - skillEffect.srcInstance.level).."^7" or "",
+				(skillEffect.srcInstance and skillEffect.level > skillEffect.srcInstance.level) and colorCodes.MAGIC.."(+"..(skillEffect.level - skillEffect.srcInstance.level).."^7)" or "",
 				skillEffect.quality,
-				(skillEffect.srcInstance and skillEffect.quality > skillEffect.srcInstance.quality) and colorCodes.MAGIC.."+"..(skillEffect.quality - skillEffect.srcInstance.quality).."^7" or ""
+				(skillEffect.srcInstance and skillEffect.quality > skillEffect.srcInstance.quality) and colorCodes.MAGIC.."(+"..(skillEffect.quality - skillEffect.srcInstance.quality).."^7)" or ""
 			))
 			if skillEffect.srcInstance then
 				gemShown[skillEffect.srcInstance] = true

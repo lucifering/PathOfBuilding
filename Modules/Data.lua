@@ -244,6 +244,7 @@ for _, targetVersion in ipairs(targetVersionList) do
 		Gloves = dataModule("EnchantmentGloves"),
 	}
 	verData.essences = dataModule("Essence")
+	verData.delve = dataModule("ModDelve")
 
 	-- Load skills
 	verData.skills = { }

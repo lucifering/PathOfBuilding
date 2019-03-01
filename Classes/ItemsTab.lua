@@ -1579,6 +1579,21 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 					})
 				end
 			end
+		elseif sourceId == "DELVE" then
+			for _, craft in ipairs(self.build.data.delve) do
+				if craft.types[self.displayItem.type] then
+					if craft.fossil then
+						label = table.concat(craft.fossil, "/")..craft.type:sub(1,3).."^8[" .. table.concat(craft, "/") .. "]"
+					else
+						label = table.concat(craft, "/")
+					end
+					t_insert(modList, {
+						label = label,
+						mod = craft,
+						type = "custom",
+					})
+				end
+			end		
 		elseif sourceId == "ESSENCE" then
 			for _, essence in pairs(self.build.data.essences) do
 				local modId = essence.mods[self.displayItem.type]
@@ -1628,6 +1643,7 @@ t_insert(sourceList, { label = "工艺工作台", sourceId = "MASTER" })
 	end
 	if self.displayItem.type ~= "Jewel" and self.displayItem.type ~= "Flask" then
 t_insert(sourceList, { label = "精华", sourceId = "ESSENCE" })
+t_insert(sourceList, { label = "地心", sourceId = "DELVE" })
 	end
 	
 	

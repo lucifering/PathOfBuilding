@@ -959,6 +959,7 @@ local modTagList = {
 	["被附着烙印的敌人受到"] = { tag = { type = "Condition", var = "BrandAttachedToEnemy" } },
 	["专注时，"] = { tag = { type = "Condition", var = "Focused" } },
 	["专注时"] = { tag = { type = "Condition", var = "Focused" } },
+	["近期内你若击中敌人，则"] = { tag = { type = "Condition", var = "HitRecently"} },
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -1845,6 +1846,7 @@ local specialModList = {
 			mod("SpellBlockChance", "MORE", -30) 
 		},
 	-- 3.4
+		["你技能的光环可使你和周围友方的伤害提高 ([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("Damage", "INC", num) }) } end, 
 		["你技能的光环可使你和周围友方的攻击和施法速度提高 ([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("Speed", "INC", num) }) } end, 
 		["你技能的光环可使你和周围友方的物理伤害减免提高 %+([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("PhysicalDamageReduction", "BASE", num) }) } end, 
 		["受到你嘲讽的敌人所承受的伤害提高 (%d+)%% "] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("DamageTaken", "INC", num, { type = "Condition", var = "Taunted" }) }) } end, 
@@ -1965,6 +1967,15 @@ local specialModList = {
 	["每 100 点力量可为周围友军的全局防御提高 (%d+)%%"] = function(num) return { mod("ExtraAura", "LIST",{ mod =mod("Defences", "INC", num), onlyAllies = true},{ type = "PerStat", stat = "Str", div = 100 } )} end,
 	["每 100 点敏捷可为周围友军 %+(%d+)%% 攻击和法术暴击伤害加成"] = function(num) return { mod("ExtraAura", "LIST",{ mod =mod("CritMultiplier", "BASE", num, { type = "Global" }), onlyAllies = true},{ type = "PerStat", stat = "Dex", div = 100 } )} end,
 	["每 100 点智慧可为周围友军的施法速度提高 (%d+)%%"] = function(num) return { mod("ExtraAura", "LIST",{ mod =mod("Speed", "INC", num,nil,ModFlag.Cast), onlyAllies = true},{ type = "PerStat", stat = "Int", div = 100 } )} end,
+	["周围敌人受到的物理伤害提高 (%d+)%%"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("PhysicalDamageTaken", "INC", num) }) } end, 
+	["移动时无法被感电或点燃"] = function() return {  mod("AvoidShock", "BASE", 100,{ type = "Condition", var = "Moving" } ),
+	mod("AvoidIgnite", "BASE", 100,{ type = "Condition", var = "Moving" } ) 
+	  } end,
+	["移动时无法被冰缓或冻结"] = function() return {  mod("AvoidChill", "BASE", 100,{ type = "Condition", var = "Moving" } ),
+	mod("AvoidFreeze", "BASE", 100,{ type = "Condition", var = "Moving" } ) 
+	  } end,
+	["近期内你若击中敌人，则每秒回复 ([%d%.]+) 能量护盾"]  = function(num) return { mod("EnergyShieldRegen", "BASE", num,{ type = "Condition", var = "HitRecently" }) } end,
+	["近期内你若击中敌人，则每秒回复 ([%d%.]+) 魔力"]  = function(num) return { mod("ManaRegen", "BASE", num,{ type = "Condition", var = "HitRecently" }) } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded
@@ -2413,9 +2424,9 @@ minus = -tonumber(minus)
 	["免疫冰冻"] = { mod("AvoidFreeze", "BASE", 100) }, --备注：cannot be frozen
 	["immune to freeze"] = { mod("AvoidFreeze", "BASE", 100) },
 	["免疫冰缓"] = { mod("AvoidChill", "BASE", 100) }, --备注：cannot be chilled
-	["免疫点燃"] = { mod("AvoidChill", "BASE", 100) }, --备注：immune to chill
+	["免疫冰缓"] = { mod("AvoidChill", "BASE", 100) }, --备注：immune to chill
 	["cannot be ignited"] = { mod("AvoidIgnite", "BASE", 100) },
-	["immune to ignite"] = { mod("AvoidIgnite", "BASE", 100) },
+	["免疫点燃"] = { mod("AvoidIgnite", "BASE", 100) }, --备注：immune to ignite
 	["你在耐力球达到上限时无法被感电"] = { mod("AvoidShock", "BASE", 100, { type = "StatThreshold", stat = "EnduranceCharges", thresholdStat = "EnduranceChargesMax" }) }, --备注：you cannot be shocked while at maximum endurance charges
 	["若智慧高于力量，则无法被感电"] = { mod("AvoidShock", "BASE", 100, { type = "Condition", var = "IntHigherThanStr" }) }, --备注：cannot be shocked if intelligence is higher than strength
 	["若敏捷高于智慧，则无法被冰冻"] = { mod("AvoidFreeze", "BASE", 100, { type = "Condition", var = "DexHigherThanInt" }) }, --备注：cannot be frozen if dexterity is higher than intelligence

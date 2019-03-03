@@ -1950,3 +1950,37 @@ skills["VoidGaze"] = {
 		[10] = { -20, 10000, 100, levelRequirement = 40, cooldown = 2, },
 	},
 }
+
+skills["ArcaneWake"] = {
+	name = "秘术苏醒",
+	hidden = true,
+	color = 4,
+	description = "在你脚下创造迅捷之域。",
+	skillTypes = { [2] = true, [11] = true, [10] = true, [36] = true, [12] = true, [61] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	fromItem = true,
+	statMap = {
+		["created_slipstream_action_speed_+%"] = {
+			mod("Speed", "INC", 10, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
+			mod("MovementSpeed", "INC", 10, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
+		},
+	},
+	baseFlags = {
+		cast = true,
+		duration = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"trigger_after_spending_200_mana_%_chance",
+		"created_slipstream_action_speed_+%",
+		"spell_uncastable_if_triggerable",
+	},
+	statInterpolation = { 1, 1, },
+	levels = {
+		[20] = { 100, 10, levelRequirement = 70, cooldown = 4, },
+	},
+}

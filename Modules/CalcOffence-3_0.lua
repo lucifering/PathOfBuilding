@@ -25,7 +25,7 @@ local tempTable2 = { }
 local tempTable3 = { }
 
 local isElemental = { Fire = true, Cold = true, Lightning = true }
-
+local isChaos = { Chaos = true }
 -- List of all damage types, ordered according to the conversion sequence
 local dmgTypeList = {"Physical", "Lightning", "Cold", "Fire", "Chaos"}
 local dmgTypeFlags = {
@@ -966,6 +966,8 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 								resist = resist + enemyDB:Sum("BASE", nil, "ElementalResist")
 								pen = skillModList:Sum("BASE", cfg, damageType.."Penetration", "ElementalPenetration")
 								taken = taken + enemyDB:Sum("INC", nil, "ElementalDamageTaken")
+							elseif damageType == "Chaos" then
+								pen = skillModList:Sum("BASE", cfg, "ChaosPenetration")
 							end
 							resist = m_min(resist, 75)
 						end
@@ -975,9 +977,17 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 						if skillFlags.trap or skillFlags.mine then
 							taken = taken + enemyDB:Sum("INC", nil, "TrapMineDamageTaken")
 						end
-						local effMult = (1 + taken / 100)
-						if not isElemental[damageType] or not (skillModList:Flag(cfg, "IgnoreElementalResistances", "Ignore"..damageType.."Resistance") or enemyDB:Flag(nil, "SelfIgnore"..damageType.."Resistance")) then
+						local effMult = (1 + taken / 100)	
+						local effMultChaos = (1 + taken / 100)	
+						--[[如果不是元素  或者 不是 无视元素抗性 那么计算抗性收益
+						
+						]]--
+						
+						if not isElemental[damageType] or not (skillModList:Flag(cfg, "IgnoreElementalResistances", "Ignore"..damageType.."Resistance") or enemyDB:Flag(nil, "SelfIgnore"..damageType.."Resistance"))   then
 							effMult = effMult * (1 - (resist - pen) / 100)
+						end
+						if  isChaos[damageType] and (skillModList:Flag(cfg, "IgnoreChaosResistances") or enemyDB:Flag(nil, "SelfIgnoreChaosResistance"))   then
+							effMult = effMultChaos
 						end
 						min = min * effMult
 						max = max * effMult

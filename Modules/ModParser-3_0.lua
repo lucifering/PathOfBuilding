@@ -37,6 +37,7 @@ local formList = {
 	["法术附加 (%d+) %- (%d+) ([^\\x00-\\xff]*)伤害"] = "DMGSPELLS", --备注：adds (%d+)%-(%d+) (%a+) spell damage
 	["增加 (%d+)%%"] = "INC",
 	["附加 (%d+) %- (%d+) ([^\\x00-\\xff]*)伤害"] = "DMG",
+	["便提高 (%d+)%%"] = "INC", --备注：^(%d+)%% increased
 	--【中文化程序额外添加结束】
 	["提高 (%d+)%%"] = "INC", --备注：^(%d+)%% increased
 	["比平常快 (%d+)%%"] = "INC", --备注：^(%d+)%% faster
@@ -200,6 +201,7 @@ local modNameList = {
 		["冰霜伤害持续时间加成"] = "ColdDotMultiplier",
 	["持续冰霜伤害加成"] = "ColdDotMultiplier",
 	["几率造成双倍伤害"] = "DoubleDamageChance",
+	["异常状态持续时间"] = { "EnemyShockDuration", "EnemyFreezeDuration", "EnemyChillDuration", "EnemyIgniteDuration", "EnemyPoisonDuration", "EnemyBleedDuration" },
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -960,6 +962,10 @@ local modTagList = {
 	["专注时，"] = { tag = { type = "Condition", var = "Focused" } },
 	["专注时"] = { tag = { type = "Condition", var = "Focused" } },
 	["近期内你若击中敌人，则"] = { tag = { type = "Condition", var = "HitRecently"} },
+	["每有 1 个六分仪影响该地区，"] = { tag = { type = "Multiplier", var = "Sextant" } },
+	["拥有阻灵术时，"] = { tag = { type = "Condition", var = "SoulGainPrevention" } },
+	["【阻灵术】生效期间，"] = { tag = { type = "Condition", var = "SoulGainPrevention" } },
+	["专注时造成的"] = { tag = { type = "Condition", var = "Focused" } },
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -1976,6 +1982,15 @@ local specialModList = {
 	  } end,
 	["近期内你若击中敌人，则每秒回复 ([%d%.]+) 能量护盾"]  = function(num) return { mod("EnergyShieldRegen", "BASE", num,{ type = "Condition", var = "HitRecently" }) } end,
 	["近期内你若击中敌人，则每秒回复 ([%d%.]+) 魔力"]  = function(num) return { mod("ManaRegen", "BASE", num,{ type = "Condition", var = "HitRecently" }) } end,
+	["消耗总计 (%d+) 魔力后触发 (%d+) 级的【(.+)】"] = function( _,_2,num, skill) return extraSkill(skill, num) end,
+	["当你拥有阻灵术时获得【猛攻】状态"]= { flag("Condition:Onslaught", { type = "Condition", var = "SoulGainPrevention" }) },
+	["所有身上装备的物品皆为【塑界之器】时，击中无视目标的混沌抗性"] = { flag("IgnoreChaosResistances", { type = "MultiplierThreshold", var = "NonShaperItem", threshold = 0, upper = true }) }, 
+	["无法造成点燃"] = { flag("CannotIgnite") },
+	["不能点燃"] = { flag("CannotIgnite") },
+	["无法造成冻结或冰缓"] = { flag("CannotFreeze"), flag("CannotChill") },
+	["无法造成感电"] = { flag("CannotShock") },
+	["近期内你若击中敌人，你和周围友军每秒回复 ([%d%.]+)%% 生命"]= function(num) return { 
+	 mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "HitRecently" })   } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded
@@ -2643,6 +2658,7 @@ local penTypes = {
 	["火焰抗性"] = "FirePenetration", --备注：fire resistance
 	["火焰、冰霜、闪电抗性"] = "ElementalPenetration", --备注：elemental resistance
 	["获得 ([%+%-]?%d+)%% 火焰、冰霜、闪电抗性"] = "ElementalPenetration", --备注：elemental resistances
+	["混沌抗性"] = "ChaosPenetration", --备注：chaos resistance
 }
 local regenTypes = {
 	["生命"] = "LifeRegen", --备注：life

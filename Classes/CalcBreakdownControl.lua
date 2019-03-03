@@ -213,6 +213,7 @@ function CalcBreakdownClass:AddBreakdownSection(sectionData)
 		self:AddModSection(sectionData, breakdown.modList)
 	end
 end
+ 
 
 -- Add a table section showing a list of modifiers
 function CalcBreakdownClass:AddModSection(sectionData, modList)
@@ -237,7 +238,7 @@ function CalcBreakdownClass:AddModSection(sectionData, modList)
 	if #rowList == 0 then
 		return
 	end
-
+	 
 	-- Create section data
 	local section = {
 		type = "TABLE",
@@ -312,7 +313,10 @@ function CalcBreakdownClass:AddModSection(sectionData, modList)
 	end
 
 	-- Process modifier data
+	local tmprow
 	for _, row in ipairs(rowList) do
+	
+		
 		if not sectionData.modType then
 			-- No modifier type specified, so format the value to convey type
 			row.displayValue = self:FormatModValue(row.value, row.mod.type)
@@ -354,8 +358,9 @@ function CalcBreakdownClass:AddModSection(sectionData, modList)
 				row.sourceNameNode = node
 			end
 		elseif sourceType == "Skill" then
-			-- Extract skill name
-			row.sourceName = build.data.skills[row.mod.source:match("Skill:(.+)")].name
+			-- Extract skill name  别删
+			local test=row.mod.source:match("Skill:(.+)")
+			row.sourceName = build.data.skills[row.mod.source:match("Skill:(.+)")].name..""
 		end
 		if row.mod.flags ~= 0 or row.mod.keywordFlags ~= 0 then
 			-- Combine, sort and format modifier flags

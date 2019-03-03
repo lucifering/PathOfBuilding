@@ -285,7 +285,7 @@ skills["SupportBonechill"] = {
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
 		["support_chills_also_grant_cold_damage_taken_per_minute_+%"] = {
-			mod("ColdDamageTakenOverTime", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "Bonechill", effectEnemyCond = "Chilled" }),
+			mod("ColdDamageTakenOverTime", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "彻骨", effectEnemyCond = "Chilled" })			 
 		},
 	},
 	baseMods = {

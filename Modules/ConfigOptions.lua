@@ -228,6 +228,9 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 			enemyModList:NewMod("SelfCritMultiplier", "INC", -val, "Config")
 		end
 	end },
+{ var = "multiplierSextant", type = "count", label = "# 个六分仪影响该地区", ifMult = "Sextant", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:Sextant", "BASE", m_min(val, 5), "Config")
+	end },
 { label = "玩家被诅咒:" },
 { var = "playerCursedWithAssassinsMark", type = "count", label = "暗影印记:", tooltip = "设置玩家身上的【暗影印记】诅咒等级.", apply = function(val, modList, enemyModList)
 		modList:NewMod("ExtraCurse", "LIST", { skillId = "AssassinsMark", level = val, applyToPlayer = true })
@@ -540,6 +543,9 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 		modList:NewMod("Condition:UsedVaalSkillRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 		modList:NewMod("Condition:UsedSkillRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
+{ var = "conditionSoulGainPrevention", type = "check", label = "【阻灵术】生效期间?", ifCond = "SoulGainPrevention", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:SoulGainPrevention", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
 { var = "conditionUsedWarcryRecently", type = "check", label = "近期内你有使用过战吼?", ifCond = "UsedWarcryRecently", implyCond = "UsedSkillRecently", tooltip = "这也意味着你近期有使用过技能.", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:UsedWarcryRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 		modList:NewMod("Condition:UsedSkillRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
@@ -576,12 +582,19 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 { var = "conditionBlockedHitFromUniqueEnemyInPast10Sec", type = "check", ifVer = "3_0", label = "过去10秒内有成功格挡过传奇敌人的击中?", ifNode = 63490, apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:BlockedHitFromUniqueEnemyInPast10Sec", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
+{ var = "conditionCriticalStrike", type = "check", label = "解析【暴击时】词缀?", ifCond = "CriticalStrike", tooltip = "用于判官升华：无视元素抗性。",apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:CriticalStrike", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
+		
 
 	-- Section: Effective DPS options
 { section = "为了计算有效 DPS", col = 1 },
 { var = "critChanceLucky", type = "check", label = "你的暴击率是幸运的?", apply = function(val, modList, enemyModList)
 		modList:NewMod("CritChanceLucky", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
+	
+
+	
 { var = "skillChainCount", type = "count", label = "连锁过的次数:", ifFlag = "chaining", apply = function(val, modList, enemyModList)
 		modList:NewMod("ChainCount", "BASE", val, "Config", { type = "Condition", var = "Effective" })
 	end },
@@ -720,11 +733,11 @@ end },
 { var = "raiseSpectreEnableSummonedUrsaRallyingCry", type = "check", label = "启用【召唤之爪】的激励战吼:", ifSkill = "DropBearSummonedRallyingCry", apply = function(val, modList, enemyModList)
 		modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", { type = "SkillId", skillId = "DropBearSummonedRallyingCry" })
 	end },
-{ label = "召唤毒蛛:", ifSkill = "Raise Spiders" },
+{ label = "召唤毒蛛:", ifSkill = "召唤毒蛛" },
 { var = "raiseSpidersSpiderCount", type = "count", label = "蜘蛛数量:", ifSkill = "召唤毒蛛", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:RaisedSpider", "BASE", m_min(val, 20), "Config")
 	end },
-	{ var = "physicsRandomElement", type = "list", ifVer = "3_0", label = "随机元素想要随机哪一个？", tooltip = "【注意】随机元素在游戏内是随机计算的，\n这里允许你选择其一种或不生效，\n所以模拟这个伤害和真实情况是会有差距的，\n新手请勿选择.", list = {{val="NONE",label="不生效"},{val="Fire",label="随机到火焰"},{val="Cold",label="随机到冰霜"},{val="Lightning",label="随机到闪电"}}, apply = function(val, modList, enemyModList)
+{ var = "physicsRandomElement", type = "list", ifVer = "3_0", label = "随机元素想要随机哪一个？", tooltip = "【注意】随机元素在游戏内是随机计算的，\n这里允许你选择其一种或不生效，\n所以模拟这个伤害和真实情况是会有差距的，\n新手请勿选择.", list = {{val="NONE",label="不生效"},{val="Fire",label="随机到火焰"},{val="Cold",label="随机到冰霜"},{val="Lightning",label="随机到闪电"}}, apply = function(val, modList, enemyModList)
 		if val == "Fire" then
 			modList:NewMod("Condition:PhysicsRandomElementFire", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 			 
@@ -736,9 +749,11 @@ end },
 			 	modList:NewMod("Condition:PhysicsRandomElementLightning", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 			
 		end
-	end }
+	end },
+	 
 
 }
+
 
 
 

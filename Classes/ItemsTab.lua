@@ -1638,7 +1638,7 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 			end)
 		end
 	end
-	if self.build.targetVersion ~= "2_6" or (self.displayItem.type ~= "Jewel" and self.displayItem.type ~= "Flask") then
+	if (self.build.targetVersion ~= "2_6" and self.displayItem.base.subType ~= "Abyss") or (self.displayItem.type ~= "Jewel" and self.displayItem.type ~= "Flask") then
 t_insert(sourceList, { label = "工艺工作台", sourceId = "MASTER" })
 	end
 	if self.displayItem.type ~= "Jewel" and self.displayItem.type ~= "Flask" then
@@ -1686,7 +1686,7 @@ controls.modSelectLabel = new("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 45
 	controls.modSelect.tooltipFunc = function(tooltip, mode, index, value)
 		if value ~=nil and value.mod ~=nil  then
 			tooltip:Clear()
-			if mode ~= "OUT" then
+			if mode ~= "OUT" and value then
 				for _, line in ipairs(value.mod) do
 					tooltip:AddLine(16, "^7"..line)
 				end

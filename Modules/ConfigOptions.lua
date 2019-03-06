@@ -310,6 +310,9 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 { var = "conditionFocused", type = "check", label = "你处于专注期间?", ifCond = "Focused", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:Focused", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
+{ var = "conditionOnChannelling", type = "check", label = "你是否处于持续吟唱状态?", ifCond = "OnChannelling", tooltip = "当你处于持续吟唱状态时的词缀生效", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:OnChannelling", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },	
 { var = "buffOnslaught", type = "check", label = "你是否处于【猛攻】状态?", tooltip = "当你处于【猛攻】状态时干啥干啥的词缀生效,\n同时也会启用【猛攻】buff本身:提高 20% 移动、攻击和施法速度", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:Onslaught", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
@@ -333,6 +336,10 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 	end },
 { var = "conditionLeeching", type = "check", label = "你正在偷取?", ifCond = "Leeching", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:Leeching", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
+	
+{ var = "conditionLeechingEnergyShield", type = "check", label = "你正在偷取能量护盾?", ifCond = "LeechingEnergyShield", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:LeechingEnergyShield", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
 { var = "conditionUsingFlask", type = "check", label = "你至少有1瓶药剂在生效?", ifCond = "UsingFlask", tooltip = "如果你勾选了药剂装备，那么这个自动生效,\n你也可以在这里勾选来启用.", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:UsingFlask", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
@@ -607,7 +614,7 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 	end },
 
 { var = "conditionEnemyOnConsecratedGround", type = "check", label = "敌人在奉献地面上?", apply = function(val, modList, enemyModList)
-		enemyModList:NewMod("Condition:EnemyOnConsecratedGround", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+		enemyModList:NewMod("Condition:OnConsecratedGround", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
 { var = "conditionEnemyFullLife", type = "check", label = "敌人满血状态?", ifEnemyCond = "FullLife", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Condition:FullLife", "FLAG", true, "Config", { type = "Condition", var = "Effective" })

@@ -27,6 +27,12 @@ function calcs.initModDB(env, modDB)
 	modDB:NewMod("EnduranceChargesMax", "BASE", 3, "Base")
 	modDB:NewMod("MaxLifeLeechRate", "BASE", 20, "Base")
 	modDB:NewMod("MaxManaLeechRate", "BASE", 20, "Base")
+	if env.build.targerVersion ~= "2_6" then
+		modDB:NewMod("MaxEnergyShieldLeechRate", "BASE", 10, "Base")
+		modDB:NewMod("MaxLifeLeechInstance", "BASE", 10, "Base")
+		modDB:NewMod("MaxManaLeechInstance", "BASE", 10, "Base")
+		modDB:NewMod("MaxEnergyShieldLeechInstance", "BASE", 10, "Base")
+	end
 	modDB:NewMod("MineLayingTime", "BASE", 0.5, "Base")
 	if env.build.targetVersion == "2_6" then
 		modDB:NewMod("TrapThrowingTime", "BASE", 0.5, "Base")
@@ -333,6 +339,8 @@ function calcs.initEnv(build, mode, override)
 		local item
 		if slotName == override.repSlotName then
 			item = override.repItem
+		elseif override.repItem and override.repSlotName:match("^Weapon 1") and slotName:match("^Weapon 2") then
+			item = nil
 		elseif slot.nodeId and override.spec then
 			item = build.itemsTab.items[env.spec.jewels[slot.nodeId]]
 		else

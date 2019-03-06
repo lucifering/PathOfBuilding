@@ -202,6 +202,7 @@ local modNameList = {
 	["持续冰霜伤害加成"] = "ColdDotMultiplier",
 	["几率造成双倍伤害"] = "DoubleDamageChance",
 	["异常状态持续时间"] = { "EnemyShockDuration", "EnemyFreezeDuration", "EnemyChillDuration", "EnemyIgniteDuration", "EnemyPoisonDuration", "EnemyBleedDuration" },
+	["非异常状态的持续混沌伤害加成"] = "ChaosDotMultiplier",
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -1932,7 +1933,10 @@ local specialModList = {
 	 ["远射"] = { flag("FarShot") },
 	 ["狙击"] = { flag("FarShot") }, 
 	 ["%-(%d+) 最大图腾数量"] = function(num) return { mod("ActiveTotemLimit", "BASE", -num) } end, 
+	 ["([%+%-]?%d+) 召唤图腾数量上限"] = function(num) return { mod("ActiveTotemLimit", "BASE", -num) } end, 
+	 ["召唤图腾数量上限([%+%-]?%d+)"] = function(num) return { mod("ActiveTotemLimit", "BASE", -num) } end, 
 	 ["每个图腾额外提高 (%d+)%% 总伤害"] = function(num) return { mod("Damage", "MORE", num, { type = "PerStat", stat = "ActiveTotemLimit" }) } end, 
+	 ["每存在 1 个图腾，总伤害额外提高 (%d+)%%"] = function(num) return { mod("Damage", "MORE", num, { type = "PerStat", stat = "ActiveTotemLimit" }) } end, 
 	 ["([%+%-]?%d+)%% 额外总冰霜持续伤害效果"] = function(num) return { mod("ColdDotMultiplier", "BASE", num) } end,
 	 ["寒冬宝珠的最大等阶 %+(%d+)"] = function(num) return { mod("Multiplier:WinterOrbMaxStage", "BASE", num) } end,
 	 ["%+(%d+) 【寒冬宝珠】最大阶"] = function(num) return { mod("Multiplier:WinterOrbMaxStage", "BASE", num) } end,
@@ -1991,6 +1995,8 @@ local specialModList = {
 	["无法造成感电"] = { flag("CannotShock") },
 	["近期内你若击中敌人，你和周围友军每秒回复 ([%d%.]+)%% 生命"]= function(num) return { 
 	 mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "HitRecently" })   } end,
+	["每秒对周围敌人造成【死亡凋零】，持续 15 秒"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="Wither", level = 1})   } end,
+	["你的行动速度无法被减速至基础以下"] = { flag("ActionSpeedCannotBeBelowBase") }, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

@@ -676,15 +676,15 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 { var = "conditionEnemyRareOrUnique", type = "check", label = "敌人是传奇或稀有怪物?", ifCond = "EnemyRareOrUnique", tooltip = "如果boss类型选项选择的是boss，那么这里会默认为传奇或稀有怪物.", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:EnemyRareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
-{ var = "enemyIsBoss", type = "list", ifVer = "2_6", label = "敌人是boss?", tooltip = "普通boss有以下词缀：\n额外降低 60% 诅咒效果\n+30% 火焰、冰霜、闪电抗性\n+15% 混沌抗性\n\n塑界者/塑界守卫有以下词缀：\n额外降低 80% 诅咒效果\n+40% 火焰、冰霜、闪电抗性\n+25% 混沌抗性\n额外降低 50% 流血、中毒、点燃持续时间。", list = {{val="NONE",label="不是"},{val=true,label="普通boss"},{val="SHAPER",label="塑界者/塑界守卫"}}, apply = function(val, modList, enemyModList)
+{ var = "enemyIsBoss", type = "list", ifVer = "2_6", label = "敌人是boss?", tooltip = "普通boss有以下词缀：\n额外降低 33% 诅咒效果\n+30% 火焰、冰霜、闪电抗性\n+15% 混沌抗性\n\n塑界者/塑界守卫有以下词缀：\n额外降低 66% 诅咒效果\n+40% 火焰、冰霜、闪电抗性\n+25% 混沌抗性\n额外降低 50% 流血、中毒、点燃持续时间。", list = {{val="NONE",label="不是"},{val=true,label="普通boss"},{val="SHAPER",label="塑界者/塑界守卫"}}, apply = function(val, modList, enemyModList)
 		if val == true then
 			modList:NewMod("Condition:EnemyRareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
-			enemyModList:NewMod("CurseEffectOnSelf", "MORE", -60, "Boss")
+			enemyModList:NewMod("CurseEffectOnSelf", "MORE", -33, "Boss")
 			enemyModList:NewMod("ElementalResist", "BASE", 30, "Boss")
 			enemyModList:NewMod("ChaosResist", "BASE", 15, "Boss")
 		elseif val == "SHAPER" then
 			modList:NewMod("Condition:EnemyRareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
-			enemyModList:NewMod("CurseEffectOnSelf", "MORE", -80, "Boss")
+			enemyModList:NewMod("CurseEffectOnSelf", "MORE", -66, "Boss")
 			enemyModList:NewMod("ElementalResist", "BASE", 40, "Boss")
 			enemyModList:NewMod("ChaosResist", "BASE", 25, "Boss")
 			enemyModList:NewMod("SelfBleedDuration", "MORE", -50, "Boss")

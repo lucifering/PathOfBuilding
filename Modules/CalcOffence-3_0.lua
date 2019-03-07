@@ -782,9 +782,9 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 				local enemyExtra = env.mode_effective and enemyDB:Sum("BASE", nil, "SelfExtraCritChance") or 0
 				output.CritChance = (baseCrit + base) * (1 + inc / 100) * more
 				local preCapCritChance = output.CritChance
-				output.CritChance = m_min(output.CritChance, 95)
+				output.CritChance = m_min(output.CritChance, 100)
 				if (baseCrit + base) > 0 then
-					output.CritChance = m_max(output.CritChance, 5)
+					output.CritChance = m_max(output.CritChance, 0)
 				end
 				output.PreEffectiveCritChance = output.CritChance
 				if enemyExtra ~= 0 then
@@ -812,8 +812,8 @@ t_insert(breakdown.CritChance, s_format("x %.2f", 1 + inc/100).." ^8(提高/降�
 t_insert(breakdown.CritChance, s_format("x %.2f", more).." ^8(额外总提高/额外总降低)")
 					end
 t_insert(breakdown.CritChance, s_format("= %.2f%% ^8(暴击率)", output.PreEffectiveCritChance))
-					if preCapCritChance > 95 then
-						local overCap = preCapCritChance - 95
+					if preCapCritChance > 100 then
+						local overCap = preCapCritChance - 100
 	t_insert(breakdown.CritChance, s_format("暴击几率超过上限 %.2f%% (%d%% 提高暴击几率)", overCap, overCap / more / (baseCrit + base) * 100))
 					end
 					if enemyExtra ~= 0 then

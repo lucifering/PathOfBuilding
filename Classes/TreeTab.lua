@@ -284,7 +284,7 @@ main:OpenPopup(380, 110, "导入天赋树", controls, "import", "edit")
 end
 
 function TreeTabClass:OpenExportPopup()
-	local treeLink = self.build.spec:EncodeURL("https://www.pathofexile.com/passive-skill-tree/"..(self.build.targetVersion == "2_6" and "2.6.2/" or "3.4.0/"))
+	local treeLink = self.build.spec:EncodeURL("https://www.pathofexile.com/passive-skill-tree/"..(self.build.targetVersion == "2_6" and "2.6.2/" or "3.6.0/"))
 	local popup
 	local controls = { }
 controls.label = new("LabelControl", nil, 0, 20, 0, 16, "天赋树链接:")

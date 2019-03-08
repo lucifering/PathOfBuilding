@@ -209,6 +209,7 @@ local modNameList = {
 	["生命偷取总回复上限"] = "MaxLifeLeechRate",
 	["魔力偷取总回复上限"] = "MaxManaLeechRate",
 	["能量护盾偷取总回复上限提高"] = "MaxEnergyShieldLeechRate",
+	["力量和智慧需求"]={ "StrRequirement","IntRequirement" }, 
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -1402,6 +1403,7 @@ local specialModList = {
 	mod("DamageManaLeech", "BASE", num,{ type = "Condition", var = "KilledRecently" })   } end, 
 	["对感电敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end, 
 	["对感电敌人的暴击几率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end, 
+	["对感电目标的暴击率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end, 
 	["近期有感电过敌人，伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", num,{ type = "Condition", var = "ShockedEnemyRecently"  })  } end, 
 	["对被冰冻敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Frozen" })  } end, 
 	["对被感电敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end, 
@@ -1690,6 +1692,7 @@ local specialModList = {
 	["魔像的增益效果提高 (%d+)%%"] = function(num) return {  mod("BuffEffect", "INC", num, { type = "SkillType", skillType = SkillType.Golem })  } end,
 	["【召唤魔像】的冷却速度提高 (%d+)%%"]  = function(num) return { mod("MinionModifier", "LIST", { mod = mod("CooldownRecovery", "INC",num) },{ type = "SkillType", skillType = SkillType.Golem })  } end,
 	["魔像每秒回复 ([%d%.]+)%% 最大生命"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("LifeRegenPercent", "BASE", num) },{ type = "SkillType", skillType = SkillType.Golem })  } end,
+	["若你有 3 个起源天赋珠宝，召唤魔像的数量 %+(%d)"] = function(num) return { mod("ActiveGolemLimit", "BASE", num, { type = "MultiplierThreshold", var = "PrimordialItem", threshold = 3 }) } end,
 	["你身上的每层中毒状态使你获得 %+(%d+)%% 混沌抗性"]= function(num) return {  mod("ChaosResist", "BASE", num, { type = "Multiplier", var = "PoisonStack" } )  } end,
 	["受到【愤怒】影响时，(%d+)%% 的物理伤害转化为火焰伤害"]= function(num) return {  mod("PhysicalDamageConvertToFire", "BASE", num,{ type = "Condition", var = "AffectedBy愤怒" })  } end, 
 	["受到【愤怒】影响时，火焰伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("FireDamageLifeLeech", "BASE", num,{ type = "Condition", var = "AffectedBy愤怒" })  } end, 
@@ -1857,6 +1860,10 @@ local specialModList = {
 	["受到【活力】影响时，每击中一个敌人便会获得 %+(%d+) 生命"]= function(num) return {  mod("LifeOnHit", "BASE", num,{ type = "Condition", var = "AffectedBy活力" })  } end, 
 	["技能效果持续时间延长 ([%+%-]?%d+)%%"]= function(num) return {  mod("Duration", "INC", num)  } end, 
 	["技能效果持续时间缩短 ([%+%-]?%d+)%%"]= function(num) return {  mod("Duration", "INC", -num)  } end, 
+	["对燃烧的敌人附加 (%d+) %- (%d+) 火焰伤害"]= function(_,num1,num2) return { 	
+		mod("FireMin", "BASE", tonumber(num1),nil, ModFlag.Hit, { type = "ActorCondition", actor = "enemy", var = "Burning" }),
+		mod("FireMax", "BASE", tonumber(num2), nil, ModFlag.Hit,{ type = "ActorCondition", actor = "enemy", var = "Burning" }) 
+	}end,
 	["每个红色插槽会使你和周围友军附加 (%d+) %- (%d+) 基础火焰伤害"]= function(_,num1,num2) return { 	
 		mod("FireMin", "BASE", tonumber(num1), { type = "Multiplier", var = "RedSocketIn{SlotName}" }),
 		mod("FireMax", "BASE", tonumber(num2), { type = "Multiplier", var = "RedSocketIn{SlotName}" }) 
@@ -2019,9 +2026,10 @@ local specialModList = {
 	["每装备 1 个【塑界之器】，便获得额外混沌伤害，其数值等同于火焰、冰霜、闪电伤害的 (%d+)%%"]= function(num) return {  mod("ElementalDamageGainAsChaos", "BASE", num,{ type = "Multiplier", varList = { "ShaperItem" } } )  } end,
 	["药剂持续时间内对在奉献地面上的敌人的基础暴击提高 ([%d%.]+)%%"]= function(num) return {  mod("CritChance", "BASE", num,{ type = "Condition", var = "UsingFlask" },{ type = "ActorCondition", actor = "enemy", var = "OnConsecratedGround" })  } end,
 	["药剂持续时间内奉献地面上的敌人所受伤害提高 (%d+)%%"]= function(num) return { mod("EnemyModifier", "LIST", { mod =  mod("DamageTaken", "INC", num)},{ type = "Condition", var = "UsingFlask" },{ type = "ActorCondition", actor = "enemy", var = "OnConsecratedGround" }) } end, 
+	["周围友军的行动速度无法被减速至基础以下"] = function() return { mod("ExtraAura", "LIST",{ mod = flag("ActionSpeedCannotBeBelowBase") , onlyAllies = true} )} end,
 	["每 100 点力量可为周围友军的全局防御提高 (%d+)%%"] = function(num) return { mod("ExtraAura", "LIST",{ mod =mod("Defences", "INC", num), onlyAllies = true},{ type = "PerStat", stat = "Str", div = 100 } )} end,
-	["每 100 点敏捷可为周围友军 %+(%d+)%% 攻击和法术暴击伤害加成"]  = function(num, _, div) return { mod("ExtraAura", "LIST", { onlyAllies = true, mod = mod("CritMultiplier", "BASE", num) }, { type = "PerStat", stat = "Dex", div = tonumber(div) }) } end,
-	["每 100 点智慧可为周围友军的施法速度提高 (%d+)%%"]  = function(num, _, div) return { mod("ExtraAura", "LIST", { onlyAllies = true, mod = mod("Speed", "INC", num, nil, ModFlag.Cast ) }, { type = "PerStat", stat = "Int", div = tonumber(div) }) } end,
+	["每 100 点敏捷可为周围友军 %+(%d+)%% 攻击和法术暴击伤害加成"]  = function(num) return { mod("ExtraAura", "LIST", { onlyAllies = true, mod = mod("CritMultiplier", "BASE", num) }, { type = "PerStat", stat = "Dex", div = 100 }) } end,
+	["每 100 点智慧可为周围友军的施法速度提高 (%d+)%%"]  = function(num) return { mod("ExtraAura", "LIST", { onlyAllies = true, mod = mod("Speed", "INC", num, nil, ModFlag.Cast ) }, { type = "PerStat", stat = "Int", div = 100 }) } end,
 	["周围敌人受到的物理伤害提高 (%d+)%%"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("PhysicalDamageTaken", "INC", num) }) } end, 
 	["移动时无法被感电或点燃"] = function() return {  mod("AvoidShock", "BASE", 100,{ type = "Condition", var = "Moving" } ),
 	mod("AvoidIgnite", "BASE", 100,{ type = "Condition", var = "Moving" } ) 

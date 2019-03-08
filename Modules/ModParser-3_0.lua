@@ -865,14 +865,10 @@ local modTagList = {
 	["受到你光环影响时，"] = { affectedByAura = true }, --备注：while affected by auras you cast	
 	["你和友军"] = { }, --备注：to you and allies
 	["你和周围友军的"] = { }, --备注：to you and allies
-	["每个耐力球附加"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
-	["每个狂怒球可使"] = { tag = { type = "Multiplier", var = "FrenzyCharge" } }, --备注：per frenzy charge
-	["每个耐力球可使"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
 	["每个狂怒球附加"] = { tag = { type = "Multiplier", var = "FrenzyCharge" } }, --备注：per frenzy charge
 	["每拥有 1 个狂怒球，"] = { tag = { type = "Multiplier", var = "FrenzyCharge" } }, --备注：per frenzy charge
 	["每个狂怒球会使"] = { tag = { type = "Multiplier", var = "FrenzyCharge" } }, --备注：per frenzy charge
 	["若过去 8 秒内你打出过暴击，则"] = { tag = { type = "Condition", var = "CritInPast8Sec" } },
-	["每有 1 个耐力球，便获得"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 	
 	["耐力球达到上限时，"] = { tag = { type = "StatThreshold", stat = "EnduranceCharges", thresholdStat = "EnduranceChargesMax" } }, --备注：while at maximum endurance charges
 	["护体时"] = { tag = { type = "Condition", var = "Fortify" } }, --备注：while you have fortify	
 	["护体状态下，"] = { tag = { type = "Condition", var = "Fortify" } }, --备注：while you have fortify	
@@ -890,8 +886,6 @@ local modTagList = {
 	["每一级在"] = { tag = { type = "Multiplier", var = "Level" } },
 	["每 (%d+) 点敏捷可使"] = function(num) return { tag = { type = "PerStat", stat = "Dex", div = num } } end, 
 	["拥有最大数量的狂怒球时，"] = { tag = { type = "StatThreshold", stat = "FrenzyCharges", thresholdStat = "FrenzyChargesMax" } }, --备注：while at maximum frenzy charges
-	["每 1 个耐力球可使"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
-	["每个耐力球会使"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 	
 	["近期内你若有打出过暴击，则"] = { tag = { type = "Condition", var = "CritRecently" } }, --备注：if you[' ]h?a?ve dealt a critical strike recently
 	["近期内你若打出暴击，则"] = { tag = { type = "Condition", var = "CritRecently" } },
 	["当不拥有耐力球时，"] = { tag = { type = "StatThreshold", stat = "EnduranceCharges", threshold = 0, upper = true } },
@@ -922,8 +916,6 @@ local modTagList = {
 	["近期内你若被击中，"] = { tag = { type = "Condition", var = "BeenHitRecently" } },	
 	["对冰缓敌人造成的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" }, keywordFlags = KeywordFlag.Hit },
 	["在主手时，"] = { tag = { type = "SlotNumber", num = 1 } }, --备注：when in main hand
-	["每个耐力球增加"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
-	["每有 1 个耐力球，就会"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
 	["击中冰缓敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" }, keywordFlags = KeywordFlag.Hit }, --备注：against chilled  
 	["对被点燃敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Ignited" }, keywordFlags = KeywordFlag.Hit }, 
 	["每 (%d+) 点力量可使"] = function(num) return { tag = { type = "PerStat", stat = "Str", div = num } } end, --备注：per (%d+) strength
@@ -961,6 +953,10 @@ local modTagList = {
 	["每有一个耐力球，可使你"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
 	["每有一个暴击球，可使你"] = { tag = { type = "Multiplier", var = "PowerCharge" } }, 
 	["每个暴击球可使"] = { tag = { type = "Multiplier", var = "PowerCharge" } }, 
+	["每个耐力球会使"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
+	["每 1 个耐力球可使"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } },
+	["每有 1 个耐力球，就会"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
+	["每有 1 个耐力球，便获得"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 	
 	["每有一个狂怒球，"] = { tag = { type = "Multiplier", var = "FrenzyCharge" } }, 
 	["每有一个耐力球，"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
 	["每有一个暴击球，"] = { tag = { type = "Multiplier", var = "PowerCharge" } }, 
@@ -970,6 +966,10 @@ local modTagList = {
 	["每有一个狂怒求，"] = { tag = { type = "Multiplier", var = "FrenzyCharge" } }, 
 	["每有一个耐力求，"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
 	["每有一个暴击求，"] = { tag = { type = "Multiplier", var = "PowerCharge" } }, 
+	["每个耐力球附加"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
+	["每个狂怒球可使"] = { tag = { type = "Multiplier", var = "FrenzyCharge" } }, --备注：per frenzy charge
+	["每个耐力球可使"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
+	["每个耐力球增加"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
 	["拥有【秘术增强】时"] = { tag = { type = "Condition", var = "AffectedByArcaneSurge" } },
 	["拥有【秘术增强】效果时，"] = { tag = { type = "Condition", var = "AffectedByArcaneSurge" } },
 	["带有烙印敌人"] = { tag = { type = "Condition", var = "BrandAttachedToEnemy" } },
@@ -1343,7 +1343,9 @@ local specialModList = {
 			mod("CooldownRecovery", "INC", num, { type = "SkillName", skillName = "魅影射击" }),
 		} end,
 	["【异灵魔侍】的击中无法闪避"] = { mod("MinionModifier", "LIST", { mod = flag("CannotBeEvaded") }, { type = "SkillName", skillName = "召唤魔侍" }) }, --备注：summoned skeletons' hits can't be evaded
-	["每有 (%d+) 点敏捷，你的攻城炮台图腾数量上限便提高 1 个"] = function(num) return { mod("ActiveTotemLimit", "BASE", 1, { type = "SkillName", skillName = "攻城炮台" }, { type = "PerStat", stat = "Dex", div = num }) } end, ["【愤怒狂灵】击中后必定造成点燃"] = { mod("MinionModifier", "LIST", { mod = mod("EnemyIgniteChance", "BASE", 100) }, { type = "SkillName", skillName = "召唤愤怒狂灵" }) }, --备注：raging spirits' hits always 
+	["每有 (%d+) 点敏捷，你的攻城炮台图腾数量上限便提高 1 个"] = function(num) return { mod("ActiveTotemLimit", "BASE", 1, { type = "SkillName", skillName = "攻城炮台" }, { type = "PerStat", stat = "Dex", div = num }) } end, 
+	["每有 (%d+) 敏捷，攻城炮台 %+1 召唤图腾数量上限"] = function(num) return { mod("ActiveTotemLimit", "BASE", 1, { type = "SkillName", skillName = "攻城炮台" }, { type = "PerStat", stat = "Dex", div = num }) } end, 
+	["【愤怒狂灵】击中后必定造成点燃"] = { mod("MinionModifier", "LIST", { mod = mod("EnemyIgniteChance", "BASE", 100) }, { type = "SkillName", skillName = "召唤愤怒狂灵" }) }, --备注：raging spirits' hits always 
 	["所有身上穿戴的物品皆为已腐化时，每秒回复 (%d+) 魔力"] = function(num) return {  mod("ManaRegen", "BASE", num,{ type = "MultiplierThreshold", var = "NonCorruptedItem", threshold = 0, upper = true })  } end,
 	["身上未装备已腐化的物品时，每秒回复 (%d+) 生命"] = function(num) return {  mod("LifeRegen", "BASE", num,{ type = "MultiplierThreshold", var = "CorruptedItem", threshold = 0, upper = true })  } end,
 	["被点燃时，获得 (%d+) 每秒生命回复"] = function(num) return {  mod("LifeRegen", "BASE", num,{ type = "Condition", var = "Ignited" })  } end,
@@ -1985,8 +1987,8 @@ local specialModList = {
 	 ["远射"] = { flag("FarShot") },
 	 ["狙击"] = { flag("FarShot") }, 
 	 ["%-(%d+) 最大图腾数量"] = function(num) return { mod("ActiveTotemLimit", "BASE", -num) } end, 
-	 ["([%+%-]?%d+) 召唤图腾数量上限"] = function(num) return { mod("ActiveTotemLimit", "BASE", -num) } end, 
-	 ["召唤图腾数量上限([%+%-]?%d+)"] = function(num) return { mod("ActiveTotemLimit", "BASE", -num) } end, 
+	 ["([%+%-]?%d+) 召唤图腾数量上限"] = function(num) return { mod("ActiveTotemLimit", "BASE", num) } end, 
+	 ["召唤图腾数量上限([%+%-]?%d+)"] = function(num) return { mod("ActiveTotemLimit", "BASE", num) } end, 
 	 ["每个图腾额外提高 (%d+)%% 总伤害"] = function(num) return { mod("Damage", "MORE", num, { type = "PerStat", stat = "ActiveTotemLimit" }) } end, 
 	 ["每存在 1 个图腾，总伤害额外提高 (%d+)%%"] = function(num) return { mod("Damage", "MORE", num, { type = "PerStat", stat = "ActiveTotemLimit" }) } end, 
 	 ["([%+%-]?%d+)%% 额外总冰霜持续伤害效果"] = function(num) return { mod("ColdDotMultiplier", "BASE", num) } end,

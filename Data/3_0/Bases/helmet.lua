@@ -428,7 +428,7 @@ itemBases["唤骨头盔"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, not_for_sale = true, atlas_base_type = true, helmetatlas1 = true, str_int_armour = true, },
-	implicit = "召唤生物的伤害提高 (30-40)%",
+	implicit = "召唤生物的伤害提高 (15-20)%",
 	armour = { ArmourBase = 197, EnergyShieldBase = 38, },
 	req = { level = 73, str = 76, int = 76, },
 }

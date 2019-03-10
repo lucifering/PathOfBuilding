@@ -43,6 +43,8 @@ local function infoDump(env)
 	ConPrintf("=== Main Skill Mods ===")
 	mainSkill.skillModList.parent:Print()
 	mainSkill.skillModList:Print()
+	ConPrintf("=== Main Skill Data ===")
+	prettyPrintTable(mainSkill.skillData)
 	ConPrintf("== Aux Skills ==")
 	for i, aux in ipairs(env.auxSkillList) do
 		ConPrintf("Skill #%d:", i)
@@ -140,7 +142,7 @@ function calcs.buildOutput(build, mode)
 		output["Spec:EnergyShieldInc"] = env.modDB:Sum("INC", specCfg, "EnergyShield")
 
 		env.skillsUsed = { }
-		for _, activeSkill in ipairs(env.activeSkillList) do
+		for _, activeSkill in ipairs(env.player.activeSkillList) do
 			for _, skillEffect in ipairs(activeSkill.effectList) do
 				env.skillsUsed[skillEffect.grantedEffect.name] = true
 			end
@@ -216,13 +218,13 @@ function calcs.buildOutput(build, mode)
 				end		
 			end
 		end
-		for _, activeSkill in pairs(env.activeSkillList) do
-			for _, mod in ipairs(activeSkill.skillModList) do
+		for _, activeSkill in pairs(env.player.activeSkillList) do
+			for _, mod in ipairs(activeSkill.baseSkillModList) do
 				addModTags(env.player, mod)
 			end
 			if activeSkill.minion then
 				for _, activeSkill in pairs(activeSkill.minion.activeSkillList) do
-					for _, mod in ipairs(activeSkill.skillModList) do
+					for _, mod in ipairs(activeSkill.baseSkillModList) do
 						addModTags(env.minion, mod)
 					end
 				end

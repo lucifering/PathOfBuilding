@@ -92,6 +92,15 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 { var = "innervateInnervation", type = "check", label = "处于【闪电支配】状态?", ifSkill = "闪电支配(辅)", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:InnervationActive", "FLAG", true, "Config")
 	end },
+	
+{ label = "Infusion:", ifSkill = "Infused Channelling" },
+	{ var = "infusedChannellingInfusion", type = "check", label = "Is Infusion active?", ifSkill = "Infused Channelling", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:InfusionActive", "FLAG", true, "Config")
+	end },
+{ label = "Intensify:", ifSkill = "Intensify" },
+	{ var = "intensifyIntensity", type = "count", label = "# of Intensity:", ifSkill = "Intensify", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:Intensity", "BASE", m_min(val, 4), "Config")
+	end },
 { label = "召唤灵体:", ifSkill = "召唤灵体" },
 { var = "raiseSpectreSpectreLevel", type = "count", label = "灵体等级:", ifSkill = "召唤灵体", tooltip = "设置灵体等级.\n默认等级是【召唤灵体】技能石的需求等级.", apply = function(val, modList, enemyModList)
 modList:NewMod("SkillData", "LIST", { key = "minionLevel", value = val }, "Config", { type = "SkillName", skillName = "召唤灵体" })
@@ -125,7 +134,16 @@ modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", 
 { var = "vortexCastOnFrostbolt", type = "check", label = "由【寒冰弹】触发?", ifSkill = "漩涡", apply = function(val, modList, enemyModList)
 modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "SkillName", skillName = "漩涡" })
 	end },
-	
+{ label = "Wave of Conviction:", ifSkill = "Wave of Conviction" },
+	{ var = "waveOfConvictionExposureType", type = "list", label = "Exposure Type:", ifSkill = "Wave of Conviction", list = {{val=0,label="None"},{val="Fire",label="Fire"},{val="Cold",label="Cold"},{val="Lightning",label="Lightning"}}, apply = function(val, modList, enemyModList)
+		if val == "Fire" then
+			modList:NewMod("Condition:WaveOfConvictionFireExposureActive", "FLAG", true, "Config")
+		elseif val == "Cold" then
+			modList:NewMod("Condition:WaveOfConvictionColdExposureActive", "FLAG", true, "Config")
+		elseif val == "Lightning" then
+			modList:NewMod("Condition:WaveOfConvictionLightningExposureActive", "FLAG", true, "Config")
+		end
+	end },
 { label = "寒冬宝珠:", ifSkill = "寒冬宝珠" },
 { var = "winterOrbStages", type = "count", label = "阶层:", ifSkill = "寒冬宝珠", apply = function(val, modList, enemyModList)
 modList:NewMod("Multiplier:WinterOrbStage", "BASE", val, "Config", { type = "SkillName", skillName = "寒冬宝珠" })
@@ -331,6 +349,10 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 { var = "buffAdrenaline", type = "check", label = "你是否处于【肾上腺素】状态?", tooltip = "这个会启用【肾上腺素】buff:\n提高 100% 伤害\n提高 25% 攻击、施法和移动速度\n10%额外物理伤害减伤", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:Adrenaline", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
+{ var = "buffDivinity", type = "check", label = "你处于神性状态?", tooltip = "获得【神性】Buff:\n火焰、冰霜、闪电总伤害额外提高 100%\n承受的火焰、冰霜、闪电总伤害额外降低 20% ", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:Divinity", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
+	
 { var = "multiplierRage", type = "count", label = "怒火层数:", ifCond = "CanGainRage", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:Rage", "BASE", val, "Config", { type = "IgnoreCond" }, { type = "Condition", var = "Combat" }, { type = "Condition", var = "CanGainRage" })
 	end },
@@ -338,9 +360,20 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 		modList:NewMod("Condition:Leeching", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
 	
-{ var = "conditionLeechingEnergyShield", type = "check", label = "你正在偷取能量护盾?", ifCond = "LeechingEnergyShield", apply = function(val, modList, enemyModList)
-		modList:NewMod("Condition:LeechingEnergyShield", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+ 
+{ var = "conditionLeechingLife", type = "check", label = "你正在偷取生命?", ifCond = "LeechingLife", implyCond = "Leeching", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:LeechingLife", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+		modList:NewMod("Condition:Leeching", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
+{ var = "conditionLeechingEnergyShield", type = "check", label = "你正在偷取能量护盾?", ifCond = "LeechingEnergyShield", implyCond = "Leeching", apply = function(val, modList, enemyModList)
+modList:NewMod("Condition:LeechingEnergyShield", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+modList:NewMod("Condition:Leeching", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
+{ var = "conditionLeechingMana", type = "check", label = "你正在偷取魔力?", ifCond = "LeechingMana", implyCond = "Leeching", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:LeechingMana", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+		modList:NewMod("Condition:Leeching", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+end },
+	
 { var = "conditionUsingFlask", type = "check", label = "你至少有1瓶药剂在生效?", ifCond = "UsingFlask", tooltip = "如果你勾选了药剂装备，那么这个自动生效,\n你也可以在这里勾选来启用.", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:UsingFlask", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
@@ -673,33 +706,18 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 { var = "conditionEnemyCoveredInAsh", type = "check", label = "敌人【灰烬缠身】?", tooltip = "这个会附加词缀:\n额外降低敌人 20% 移动速度\n提高 20% 敌人承受的火焰伤害", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("FireDamageTaken", "INC", 20, "Ash")
 	end },
-{ var = "conditionEnemyRareOrUnique", type = "check", label = "敌人是传奇或稀有怪物?", ifCond = "EnemyRareOrUnique", tooltip = "如果boss类型选项选择的是boss，那么这里会默认为传奇或稀有怪物.", apply = function(val, modList, enemyModList)
-		modList:NewMod("Condition:EnemyRareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+{ var = "conditionEnemyRareOrUnique", type = "check", label = "敌人是传奇或稀有怪物?", ifEnemyCond  = "EnemyRareOrUnique", tooltip = "如果boss类型选项选择的是boss，那么这里会默认为传奇或稀有怪物.", apply = function(val, modList, enemyModList)
+		enemyModList:NewMod("Condition:RareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
-{ var = "enemyIsBoss", type = "list", ifVer = "2_6", label = "敌人是boss?", tooltip = "普通boss有以下词缀：\n额外降低 33% 诅咒效果\n+30% 火焰、冰霜、闪电抗性\n+15% 混沌抗性\n\n塑界者/塑界守卫有以下词缀：\n额外降低 66% 诅咒效果\n+40% 火焰、冰霜、闪电抗性\n+25% 混沌抗性\n额外降低 50% 流血、中毒、点燃持续时间。", list = {{val="NONE",label="不是"},{val=true,label="普通boss"},{val="SHAPER",label="塑界者/塑界守卫"}}, apply = function(val, modList, enemyModList)
-		if val == true then
-			modList:NewMod("Condition:EnemyRareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
-			enemyModList:NewMod("CurseEffectOnSelf", "MORE", -33, "Boss")
-			enemyModList:NewMod("ElementalResist", "BASE", 30, "Boss")
-			enemyModList:NewMod("ChaosResist", "BASE", 15, "Boss")
-		elseif val == "SHAPER" then
-			modList:NewMod("Condition:EnemyRareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
-			enemyModList:NewMod("CurseEffectOnSelf", "MORE", -66, "Boss")
-			enemyModList:NewMod("ElementalResist", "BASE", 40, "Boss")
-			enemyModList:NewMod("ChaosResist", "BASE", 25, "Boss")
-			enemyModList:NewMod("SelfBleedDuration", "MORE", -50, "Boss")
-			enemyModList:NewMod("SelfPoisonDuration", "MORE", -50, "Boss")
-			enemyModList:NewMod("SelfIgniteDuration", "MORE", -50, "Boss")
-		end
-	end },
+ 
 { var = "enemyIsBoss", type = "list", ifVer = "3_0", label = "敌人是boss?", tooltip = "普通boss有以下词缀：\n额外降低 33% 诅咒效果\n+30% 火焰、冰霜、闪电抗性\n+15% 混沌抗性\n\n塑界者/塑界守卫有以下词缀：\n额外降低 66% 诅咒效果\n+40% 火焰、冰霜、闪电抗性\n+25% 混沌抗性", list = {{val="NONE",label="不是"},{val=true,label="普通boss"},{val="SHAPER",label="塑界者/塑界守卫"}}, apply = function(val, modList, enemyModList)
 		if val == true then
-			modList:NewMod("Condition:EnemyRareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+			enemyModList:NewMod("Condition:RareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 			enemyModList:NewMod("CurseEffectOnSelf", "MORE", -33, "Boss")
 			enemyModList:NewMod("ElementalResist", "BASE", 30, "Boss")
 			enemyModList:NewMod("ChaosResist", "BASE", 15, "Boss")
 		elseif val == "SHAPER" then
-			modList:NewMod("Condition:EnemyRareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+			enemyModList:NewMod("Condition:RareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 			enemyModList:NewMod("CurseEffectOnSelf", "MORE", -66, "Boss")
 			enemyModList:NewMod("ElementalResist", "BASE", 40, "Boss")
 			enemyModList:NewMod("ChaosResist", "BASE", 25, "Boss")

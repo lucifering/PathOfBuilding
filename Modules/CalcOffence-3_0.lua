@@ -425,6 +425,13 @@ env.data.monsterAllyLifeTable[skillData.totemLevel].." ^8("..skillData.totemLeve
 		end
 	end
 
+	-- Run skill setup function
+	do
+		local setupFunc = activeSkill.activeEffect.grantedEffect.setupFunc
+		if setupFunc then
+			setupFunc(activeSkill, output)
+		end
+	end
 	-- Skill duration
 	local debuffDurationMult
 	if env.mode_effective then
@@ -476,16 +483,33 @@ t_insert(breakdown.DurationSecondary, s_format("/ %.2f ^8(debuff更快或更慢�
 				t_insert(breakdown.DurationSecondary, s_format("= %.2fs", output.DurationSecondary))
 			end
 		end
-	end
-
-	-- Run skill setup function
-	do
-		local setupFunc = activeSkill.activeEffect.grantedEffect.setupFunc
-		if setupFunc then
-			setupFunc(activeSkill, output)
+		durationBase = (skillData.auraDuration or 0)
+		if durationBase > 0 then
+			local durationMod = calcLib.mod(skillModList, skillCfg, "Duration", "SkillAndDamagingAilmentDuration")
+			output.AuraDuration = durationBase * durationMod
+			if breakdown and output.AuraDuration ~= durationBase then
+				breakdown.AuraDuration = {
+					s_format("%.2fs ^8(base)", durationBase),
+					s_format("x %.2f ^8(duration modifier)", durationMod),
+					s_format("= %.2fs", output.AuraDuration),
+				}
+			end
 		end
+		durationBase = (skillData.reserveDuration or 0)
+		if durationBase > 0 then
+			local durationMod = calcLib.mod(skillModList, skillCfg, "Duration", "SkillAndDamagingAilmentDuration")
+			output.ReserveDuration = durationBase * durationMod
+			if breakdown and output.ReserveDuration ~= durationBase then
+				breakdown.ReserveDuration = {
+					s_format("%.2fs ^8(base)", durationBase),
+					s_format("x %.2f ^8(duration modifier)", durationMod),
+					s_format("= %.2fs", output.ReserveDuration),
+				}
+			end
+		end	
 	end
 
+	
 	-- Handle corpse explosions
 	if skillData.explodeCorpse and skillData.corpseLife then
 		local damageType = skillData.corpseExplosionDamageType or "Fire"
@@ -688,7 +712,7 @@ t_insert(breakdown[stat], s_format("x %.3f ^8(副手创建的实例部分)", off
 		end
 
 		-- Calculate attack/cast speed
-		if activeSkill.skillTypes[SkillType.Instant] or skillFlags.forceInstant then
+		if activeSkill.activeEffect.grantedEffect.castTime == 0 and not skillData.castTimeOverride then
 			output.Time = 0
 			output.Speed = 0
 		elseif skillData.timeOverride then
@@ -704,7 +728,7 @@ t_insert(breakdown[stat], s_format("x %.3f ^8(副手创建的实例部分)", off
 					baseTime = 1 / ( source.AttackRate or 1 ) + skillModList:Sum("BASE", cfg, "Speed")
 				end
 			else
-				baseTime = activeSkill.activeEffect.grantedEffect.castTime or 1
+				baseTime = skillData.castTimeOverride or activeSkill.activeEffect.grantedEffect.castTime or 1
 			end
 			local inc = skillModList:Sum("INC", cfg, "Speed")
 			local more = skillModList:More(cfg, "Speed")
@@ -777,7 +801,7 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 				output.CritChance = 100
 			else
 				local base = skillModList:Sum("BASE", cfg, "CritChance")
-				local inc = skillModList:Sum("INC", cfg, "CritChance")
+				local inc = skillModList:Sum("INC", cfg, "CritChance") + (env.mode_effective and enemyDB:Sum("INC", nil, "SelfCritChance") or 0)
 				local more = skillModList:More(cfg, "CritChance")
 				local enemyExtra = env.mode_effective and enemyDB:Sum("BASE", nil, "SelfExtraCritChance") or 0
 				output.CritChance = (baseCrit + base) * (1 + inc / 100) * more
@@ -787,9 +811,7 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 					output.CritChance = m_max(output.CritChance, 0)
 				end
 				output.PreEffectiveCritChance = output.CritChance
-				if enemyExtra ~= 0 then
-					output.CritChance = m_min(output.CritChance + enemyExtra, 100)
-				end
+				 
 				local preLuckyCritChance = output.CritChance
 				if env.mode_effective and skillModList:Flag(cfg, "CritChanceLucky") then
 					output.CritChance = (1 - (1 - output.CritChance / 100) ^ 2) * 100
@@ -816,10 +838,7 @@ t_insert(breakdown.CritChance, s_format("= %.2f%% ^8(暴击率)", output.PreEffe
 						local overCap = preCapCritChance - 100
 	t_insert(breakdown.CritChance, s_format("暴击几率超过上限 %.2f%% (%d%% 提高暴击几率)", overCap, overCap / more / (baseCrit + base) * 100))
 					end
-					if enemyExtra ~= 0 then
-t_insert(breakdown.CritChance, s_format("+ %g ^8(敌人额外几率承受暴击)", enemyExtra))
-t_insert(breakdown.CritChance, s_format("= %.2f%% ^8(对敌人暴击率)", preLuckyCritChance))
-					end
+					 
 					if env.mode_effective and skillModList:Flag(cfg, "CritChanceLucky") then
 t_insert(breakdown.CritChance, "幸运的暴击率:")
 						t_insert(breakdown.CritChance, s_format("1 - (1 - %.4f) x (1 - %.4f)", preLuckyCritChance / 100, preLuckyCritChance / 100))
@@ -988,7 +1007,7 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 						
 						]]--
 						
-						if not isElemental[damageType] or not (skillModList:Flag(cfg, "IgnoreElementalResistances", "Ignore"..damageType.."Resistance") or enemyDB:Flag(nil, "SelfIgnore"..damageType.."Resistance"))   then
+						if not skillModList:Flag(cfg, "Ignore"..damageType.."Resistance", isElemental[damageType] and "IgnoreElementalResistances" or nil) and not enemyDB:Flag(nil, "SelfIgnore"..damageType.."Resistance") then
 							effMult = effMult * (1 - (resist - pen) / 100)
 						end
 						if  isChaos[damageType] and (skillModList:Flag(cfg, "IgnoreChaosResistances") or enemyDB:Flag(nil, "SelfIgnoreChaosResistance"))   then

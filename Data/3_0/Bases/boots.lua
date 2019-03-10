@@ -434,7 +434,7 @@ itemBases["异色鞋(冰闪)"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, not_for_sale = true, atlas_base_type = true, bootsatlas1 = true, dex_int_armour = true, },
-	implicit = "+(15-20)% 冰霜与闪电抗性",
+	implicit = "+(8-12)% 冰霜与闪电抗性",
 	armour = { EvasionBase = 126, EnergyShieldBase = 24, },
 	req = { level = 70, dex = 62, int = 62, },
 }
@@ -443,7 +443,7 @@ itemBases["异色鞋 (冰闪)"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, not_for_sale = true, atlas_base_type = true, bootsatlas1 = true, dex_int_armour = true, },
-	implicit = "+(15-20)% 冰霜与闪电抗性",
+	implicit = "+(8-12)% 冰霜与闪电抗性",
 	armour = { EvasionBase = 126, EnergyShieldBase = 24, },
 	req = { level = 70, dex = 62, int = 62, },
 }
@@ -463,7 +463,7 @@ itemBases["异色鞋(火冰)"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, not_for_sale = true, atlas_base_type = true, bootsatlas2 = true, str_dex_armour = true, },
-	implicit = "+(15-20)% 火焰与冰霜抗性",
+	implicit = "+(8-12)% 火焰与冰霜抗性",
 	armour = { ArmourBase = 126, EvasionBase = 126, },
 	req = { level = 70, str = 62, dex = 62, },
 }
@@ -472,7 +472,7 @@ itemBases["异色鞋 (火冰)"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, not_for_sale = true, atlas_base_type = true, bootsatlas2 = true, str_dex_armour = true, },
-	implicit = "+(15-20)% 火焰与冰霜抗性",
+	implicit = "+(8-12)% 火焰与冰霜抗性",
 	armour = { ArmourBase = 126, EvasionBase = 126, },
 	req = { level = 70, str = 62, dex = 62, },
 }
@@ -481,7 +481,7 @@ itemBases["异色鞋(火闪)"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, not_for_sale = true, atlas_base_type = true, bootsatlas3 = true, str_int_armour = true, },
-	implicit = "+(15-20)% 火焰与闪电抗性",
+	implicit = "+(8-12)% 火焰与闪电抗性",
 	armour = { ArmourBase = 126, EnergyShieldBase = 24, },
 	req = { level = 70, str = 62, int = 62, },
 }
@@ -491,7 +491,7 @@ itemBases["异色鞋 (火闪)"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, not_for_sale = true, atlas_base_type = true, bootsatlas3 = true, str_int_armour = true, },
-	implicit = "+(15-20)% 火焰与闪电抗性",
+	implicit = "+(8-12)% 火焰与闪电抗性",
 	armour = { ArmourBase = 126, EnergyShieldBase = 24, },
 	req = { level = 70, str = 62, int = 62, },
 }

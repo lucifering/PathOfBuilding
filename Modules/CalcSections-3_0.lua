@@ -426,6 +426,10 @@ return {
 	}, },
 { label = "技能持续时间", flag = "duration", haveOutput = "Duration", { format = "{2:output:Duration}s", { breakdown = "Duration" }, }, },
 { label = "次要持续时间", flag = "duration", haveOutput = "DurationSecondary", { format = "{2:output:DurationSecondary}s", { breakdown = "DurationSecondary" }, }, },
+
+{ label = "光环持续时间", haveOutput = "AuraDuration", { format = "{2:output:AuraDuration}s", { breakdown = "AuraDuration" }, }, },
+{ label = "魔力保留持续时间", haveOutput = "ReserveDuration", { format = "{2:output:ReserveDuration}s", { breakdown = "ReserveDuration" }, }, },
+
 { label = "最大连锁数", flag = "chaining", { format = "{output:ChainMaxString}", { modName = { "CannotChain", "ChainCountMax" }, cfg = "skill" }, }, }, 
 { label = "投射物数量", flag = "projectile", { format = "{0:output:ProjectileCount}", { modName = "ProjectileCount", cfg = "skill" }, }, },
 { label = "穿透数量", flag = "projectile", { format = "{output:PierceCountString}", { modName = { "CannotPierce", "PierceCount", "PierceAllTargets" }, cfg = "skill" }, }, },

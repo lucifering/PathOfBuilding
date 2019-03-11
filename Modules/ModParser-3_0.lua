@@ -1709,6 +1709,7 @@ local specialModList = {
 	["受到【清晰】影响时，获得等同最大魔力 (%d+)%% 的额外最大能量护盾"]= function(num) return {  mod("ManaGainAsEnergyShield", "BASE", num,{ type = "Condition", var = "AffectedBy清晰" })  } end, 
 	["受到【坚定】影响时，有 (%d+)%% 几率格挡"]= function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "AffectedBy坚定" })  } end, 
 	["受到【坚定】影响时，获得额外 (%d+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "AffectedBy坚定" })  } end, 
+	["受到【纯净之捷】影响时，获得额外 (%d+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "AffectedBy纯净之捷" })  } end, 
 	["受到【纪律】影响时，最大能量护盾每秒回复 ([%d%.]+)%%"]= function(num) return {  mod("EnergyShieldRegenPercent", "BASE", num,{ type = "Condition", var = "AffectedBy纪律" })  } end, 
 	["受到【纪律】影响时，能量护盾提早 (%d+)%% 开始恢复"]= function(num) return {  mod("EnergyShieldRechargeFaster", "INC", num,{ type = "Condition", var = "AffectedBy纪律" })  } end, 
 	["受到【优雅】影响时，有 %+(%d+)%% 几率闪避攻击"]= function(num) return {  mod("EvadeChance", "BASE", num,{ type = "Condition", var = "AffectedBy优雅" })  } end, 
@@ -2070,6 +2071,7 @@ local specialModList = {
 			mod("ElementalDamage", "MORE", 50, { type = "Condition", var = "Divinity" }),
 			mod("ElementalDamageTaken", "MORE", -20, { type = "Condition", var = "Divinity" }),
 		},
+	["追忆词缀"] = { mod("Multiplier:SynthesisedItem", "BASE", 1) }, 
 	--[[
 	["每 (%d+) 总和属性减少 (%d+)%% 魔力保留"] = function(_,num1,num2) return {  mod("ManaReserved", "INC", -tonumber(num2),{ type = "PerStat", statList = { "Str", "Dex", "Int" }, div = tonumber(num1) } )  } end,  
 	]]--

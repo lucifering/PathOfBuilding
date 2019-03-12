@@ -154,6 +154,10 @@ elseif line == "塑界之器" then
 			self.shaper = true
 elseif line == "裂界之器" then
 			self.elder = true
+elseif line == "Fractured Item" then
+			self.fractured = true
+elseif line == "Synthesised Item" then
+			self.synthesised = true
 		else
 				local specName, specVal = line:match("^(.+): (%x+)$") --lucifer
 			if not specName then
@@ -272,10 +276,11 @@ local varSpec = line:match("{variant:([%d,]+)}")
 						variantList[tonumber(varId)] = true
 					end
 				end
+local fractured = line:match("{fractured}") or line:match(" %(fractured%)")
 local rangeSpec = line:match("{range:([%d.]+)}")
 local crafted = line:match("{crafted}")
 local custom = line:match("{custom}")
-				line = line:gsub("%b{}", "")
+				line = line:gsub("%b{}", ""):gsub(" %(fractured%)","")
 				local rangedLine
 				--lucifer
 if (line:match("%(%d+%-%d+ %- %d+%-%d+%)") or line:match("%(%-?[%d%.]+ %- %-?[%d%.]+%)") or line:match("%(%-?[%d%.]+%-[%d%.]+%)")) and line:match(":")==nil  and line:match("^Requires")==nil then
@@ -297,7 +302,7 @@ if combLine:match("%(%d+%-%d+ %- %d+%-%d+%)") or combLine:match("%(%-?[%d%.]+ %-
 					end
 				end
 				if modList and  string.find(line,":")==nil then --lucifer
-					t_insert(self.modLines, { line = line, extra = extra, modList = modList, variantList = variantList, crafted = crafted, custom = custom, range = rangedLine and (tonumber(rangeSpec) or 0.5) })
+					t_insert(self.modLines, { line = line, extra = extra, modList = modList, variantList = variantList, crafted = crafted, custom = custom, fractured = fractured, range = rangedLine and (tonumber(rangeSpec) or 0.5) })
 					if mode == "GAME" then
 						if gameModeStage == "FINDIMPLICIT" then
 							gameModeStage = "IMPLICIT"
@@ -312,12 +317,12 @@ if combLine:match("%(%d+%-%d+ %- %d+%-%d+%)") or combLine:match("%(%-?[%d%.]+ %-
 					end
 				elseif mode == "GAME" then
 					if gameModeStage == "IMPLICIT" or gameModeStage == "EXPLICIT" then
-						t_insert(self.modLines, { line = line, extra = line, modList = { }, variantList = variantList, crafted = crafted, custom = custom })
+						t_insert(self.modLines, { line = line, extra = line, modList = { }, variantList = variantList, crafted = crafted, custom = custom, fractured = fractured })
 					elseif gameModeStage == "FINDEXPLICIT" then
 						gameModeStage = "DONE"
 					end
 				elseif foundExplicit then
-					t_insert(self.modLines, { line = line, extra = line, modList = { }, variantList = variantList, crafted = crafted, custom = custom })
+					t_insert(self.modLines, { line = line, extra = line, modList = { }, variantList = variantList, crafted = crafted, custom = custom, fractured = fractured })
 				end
 			end
 		end
@@ -493,6 +498,9 @@ t_insert(rawLines, "固定基底词缀: "..self.implicitLines)
 			end
 			if modLine.custom then
 				line = "{custom}" .. line
+			end
+			if modLine.fractured then
+				line = "{fractured}" .. line
 			end
 			if modLine.variantList then
 				local varSpec

@@ -1494,6 +1494,7 @@ local specialModList = {
 	["陷阱所使用的技能范围扩大 (%d+)%%"] = function(num) return {  mod("AreaOfEffect", "INC", num,nil,nil, KeywordFlag.Trap)  } end,
 	["能量护盾全满时，总闪避率额外提高 (%d+)%%"]= function(num) return {  mod("EvadeChance", "MORE", num,{ type = "Condition", var = "FullEnergyShield" })  } end,
 	["持续性总伤害额外提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num,nil, ModFlag.Dot)  } end,
+	["持续伤害额外提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num,nil, ModFlag.Dot)  } end,
 	["对满血敌人的攻击和法术总暴击率额外提高 (%d+)%%"]= function(num) return {  mod("CritChance", "MORE", num,{ type = "ActorCondition", actor = "enemy", var = "FullLife" })  } end,
 	["对低血敌人的攻击和法术总暴击率额外提高 (%d+)%%"]= function(num) return {  mod("CritChance", "MORE", num,{ type = "ActorCondition", actor = "enemy", var = "LowLife" })  } end,
 	["每对敌人造成一层中毒效果，便附加 %+([%d%.]+)%% 攻击和法术基础暴击率，最多 %+2%.0%%"]= function(num) return {  mod("CritChance", "BASE", num,{ type = "Multiplier", actor = "enemy", var = "PoisonStack", limit = 2, limitTotal = true })  } end,

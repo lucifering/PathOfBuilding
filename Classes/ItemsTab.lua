@@ -1741,10 +1741,16 @@ function ItemsTabClass:AddItemTooltip(tooltip, item, slot, dbMode)
 		tooltip:AddLine(20, rarityCode..item.namePrefix..item.baseName:gsub(" %(.+%)","")..item.nameSuffix)
 	end
 	if item.shaper then
-		tooltip:AddLine(16, colorCodes.SHAPER.."Shaper Item")
+		tooltip:AddLine(16, colorCodes.SHAPER.."塑界之器")
 	end
 	if item.elder then
-		tooltip:AddLine(16, colorCodes.ELDER.."Elder Item")
+		tooltip:AddLine(16, colorCodes.ELDER.."裂界之器")
+	end
+	if item.fractured then
+		tooltip:AddLine(16, colorCodes.FRACTURED.."Fractured Item")
+	end
+	if item.synthesised then
+		tooltip:AddLine(16, colorCodes.CRAFTED.."Synthesised Item")
 	end
 	tooltip:AddSeparator(10)
 

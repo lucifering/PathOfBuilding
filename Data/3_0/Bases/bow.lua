@@ -48,7 +48,7 @@ itemBases["皇家猎弓"] = {
 	type = "Bow",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, bow = true, ranged = true, two_hand_weapon = true, },
-	implicit = "攻击技能的火焰、冰霜、闪电伤害提高 (20-24)%",
+	implicit = "攻击技能的元素伤害提高 (20-24)%",
 	weapon = { PhysicalMin = 10, PhysicalMax = 41, CritChanceBase = 5, AttackRateBase = 1.45, },
 	req = { level = 28, dex = 95, },
 }
@@ -107,7 +107,7 @@ itemBases["贵族之弓"] = {
 	type = "Bow",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, bow = true, ranged = true, two_hand_weapon = true, },
-	implicit = "攻击技能的火焰、冰霜、闪电伤害提高 (20-24)%",
+	implicit = "攻击技能的元素伤害提高 (20-24)%",
 	weapon = { PhysicalMin = 17, PhysicalMax = 66, CritChanceBase = 5, AttackRateBase = 1.45, },
 	req = { level = 50, dex = 161, },
 }
@@ -166,7 +166,7 @@ itemBases["帝国之弓"] = {
 	type = "Bow",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, bow = true, ranged = true, two_hand_weapon = true, },
-	implicit = "攻击技能的火焰、冰霜、闪电伤害提高 (20-24)%",
+	implicit = "攻击技能的元素伤害提高 (20-24)%",
 	weapon = { PhysicalMin = 19, PhysicalMax = 78, CritChanceBase = 5, AttackRateBase = 1.45, },
 	req = { level = 66, dex = 212, },
 }

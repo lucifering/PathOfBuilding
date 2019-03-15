@@ -89,7 +89,7 @@ if self.rarity == "普通" or self.rarity == "魔法" then
 		if self.rawLines[l] == "Two-Toned Boots" then
 			self.rawLines[l] = "Two-Toned Boots (Armour/Energy Shield)"
 		end
-		local baseName = self.rawLines[l]:gsub("Synthesised ","")
+		local baseName = self.rawLines[l]:gsub("忆境 ","")
 		if verData.itemBases[baseName] then
 			self.baseName = baseName			
 			self.title = self.name
@@ -154,9 +154,9 @@ elseif line == "塑界之器" then
 			self.shaper = true
 elseif line == "裂界之器" then
 			self.elder = true
-elseif line == "Fractured Item" then
+elseif line == "分裂之物" then
 			self.fractured = true
-elseif line == "Synthesised Item" then
+elseif line == "忆境物品" then
 			self.synthesised = true
 		else
 				local specName, specVal = line:match("^(.+): (%x+)$") --lucifer
@@ -278,9 +278,9 @@ local varSpec = line:match("{variant:([%d,]+)}")
 				end
 local fractured = line:match("{fractured}") or line:match(" %(fractured%)")
 local rangeSpec = line:match("{range:([%d.]+)}")
-local crafted = line:match("{crafted}")
+local crafted = line:match("{crafted}") or line:match(" %(crafted%)")
 local custom = line:match("{custom}")
-				line = line:gsub("%b{}", ""):gsub(" %(fractured%)","")
+				line = line:gsub("%b{}", ""):gsub(" %(fractured%)",""):gsub(" %(crafted%)","")
 				local rangedLine
 				--lucifer
 if (line:match("%(%d+%-%d+ %- %d+%-%d+%)") or line:match("%(%-?[%d%.]+ %- %-?[%d%.]+%)") or line:match("%(%-?[%d%.]+%-[%d%.]+%)")) and line:match(":")==nil  and line:match("^Requires")==nil then

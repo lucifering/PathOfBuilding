@@ -85,3 +85,9 @@ itemBases["刺锋箭袋"] = {
 	implicit = "攻击和法术暴击率提高 (20-30)%",
 	req = { level = 45, },
 }
+itemBases["华美箭袋"] = {
+	type = "Quiver",
+	tags = { default = true, quiver = true, not_for_sale = true, },
+	implicit = "有 1 个插槽",
+	req = { level = 45, },
+}

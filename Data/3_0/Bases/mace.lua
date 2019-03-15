@@ -207,7 +207,7 @@ itemBases["朽木短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 10%",
+	implicit = "元素伤害提高 10%",
 	weapon = { PhysicalMin = 6, PhysicalMax = 9, CritChanceBase = 6, AttackRateBase = 1.4, },
 	req = { str = 8, int = 8, },
 }
@@ -215,7 +215,7 @@ itemBases["乌木短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 12%",
+	implicit = "元素伤害提高 12%",
 	weapon = { PhysicalMin = 8, PhysicalMax = 12, CritChanceBase = 6, AttackRateBase = 1.5, },
 	req = { level = 5, str = 14, int = 14, },
 }
@@ -223,7 +223,7 @@ itemBases["铜锻短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 12%",
+	implicit = "元素伤害提高 12%",
 	weapon = { PhysicalMin = 12, PhysicalMax = 23, CritChanceBase = 6, AttackRateBase = 1.25, },
 	req = { level = 10, str = 22, int = 22, },
 }
@@ -231,7 +231,7 @@ itemBases["石英短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 20%",
+	implicit = "元素伤害提高 20%",
 	weapon = { PhysicalMin = 17, PhysicalMax = 26, CritChanceBase = 6.5, AttackRateBase = 1.25, },
 	req = { level = 15, str = 25, int = 35, },
 }
@@ -239,7 +239,7 @@ itemBases["冷铁短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 14%",
+	implicit = "元素伤害提高 14%",
 	weapon = { PhysicalMin = 21, PhysicalMax = 32, CritChanceBase = 6, AttackRateBase = 1.25, },
 	req = { level = 20, str = 38, int = 38, },
 }
@@ -247,7 +247,7 @@ itemBases["赤色短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 16%",
+	implicit = "元素伤害提高 16%",
 	weapon = { PhysicalMin = 17, PhysicalMax = 32, CritChanceBase = 6, AttackRateBase = 1.4, },
 	req = { level = 24, str = 44, int = 44, },
 }
@@ -255,7 +255,7 @@ itemBases["祭仪短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 16%",
+	implicit = "元素伤害提高 16%",
 	weapon = { PhysicalMin = 21, PhysicalMax = 50, CritChanceBase = 6, AttackRateBase = 1.2, },
 	req = { level = 28, str = 51, int = 51, },
 }
@@ -263,7 +263,7 @@ itemBases["影语短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 22%",
+	implicit = "元素伤害提高 22%",
 	weapon = { PhysicalMin = 29, PhysicalMax = 44, CritChanceBase = 6.2, AttackRateBase = 1.25, },
 	req = { level = 32, str = 52, int = 62, },
 }
@@ -271,7 +271,7 @@ itemBases["犄角短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, not_for_sale = true, maraketh = true, },
-	implicit = "伤害穿透 4% 火焰、冰霜、闪电抗性",
+	implicit = "伤害穿透 4% 元素抗性",
 	weapon = { PhysicalMin = 27, PhysicalMax = 50, CritChanceBase = 6, AttackRateBase = 1.3, },
 	req = { level = 36, str = 66, int = 66, },
 }
@@ -279,7 +279,7 @@ itemBases["远古之祭"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 18%",
+	implicit = "元素伤害提高 18%",
 	weapon = { PhysicalMin = 24, PhysicalMax = 36, CritChanceBase = 6, AttackRateBase = 1.5, },
 	req = { level = 35, str = 62, int = 62, },
 }
@@ -287,7 +287,7 @@ itemBases["威能短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 18%",
+	implicit = "元素伤害提高 18%",
 	weapon = { PhysicalMin = 30, PhysicalMax = 55, CritChanceBase = 6, AttackRateBase = 1.25, },
 	req = { level = 38, str = 67, int = 67, },
 }
@@ -295,7 +295,7 @@ itemBases["水晶短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 30%",
+	implicit = "元素伤害提高 30%",
 	weapon = { PhysicalMin = 35, PhysicalMax = 52, CritChanceBase = 6.5, AttackRateBase = 1.25, },
 	req = { level = 41, str = 59, int = 85, },
 }
@@ -303,7 +303,7 @@ itemBases["铅铸短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 22%",
+	implicit = "元素伤害提高 22%",
 	weapon = { PhysicalMin = 38, PhysicalMax = 57, CritChanceBase = 6, AttackRateBase = 1.25, },
 	req = { level = 44, str = 77, int = 77, },
 }
@@ -311,7 +311,7 @@ itemBases["血色短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 24%",
+	implicit = "元素伤害提高 24%",
 	weapon = { PhysicalMin = 30, PhysicalMax = 55, CritChanceBase = 6, AttackRateBase = 1.4, },
 	req = { level = 47, str = 81, int = 81, },
 }
@@ -319,7 +319,7 @@ itemBases["皇家短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 24%",
+	implicit = "元素伤害提高 24%",
 	weapon = { PhysicalMin = 34, PhysicalMax = 80, CritChanceBase = 6, AttackRateBase = 1.2, },
 	req = { level = 50, str = 86, int = 86, },
 }
@@ -327,7 +327,7 @@ itemBases["深渊短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 30%",
+	implicit = "元素伤害提高 30%",
 	weapon = { PhysicalMin = 45, PhysicalMax = 67, CritChanceBase = 6.2, AttackRateBase = 1.25, },
 	req = { level = 53, str = 83, int = 99, },
 }
@@ -335,7 +335,7 @@ itemBases["灵鹿短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, not_for_sale = true, maraketh = true, },
-	implicit = "伤害穿透 4% 火焰、冰霜、闪电抗性",
+	implicit = "伤害穿透 4% 元素抗性",
 	weapon = { PhysicalMin = 39, PhysicalMax = 72, CritChanceBase = 6, AttackRateBase = 1.3, },
 	req = { level = 55, str = 98, int = 98, },
 }
@@ -343,7 +343,7 @@ itemBases["卡鲁短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 26%",
+	implicit = "元素伤害提高 26%",
 	weapon = { PhysicalMin = 37, PhysicalMax = 55, CritChanceBase = 6, AttackRateBase = 1.5, },
 	req = { level = 56, str = 96, int = 96, },
 }
@@ -351,7 +351,7 @@ itemBases["暴君之统"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 26%",
+	implicit = "元素伤害提高 26%",
 	weapon = { PhysicalMin = 43, PhysicalMax = 80, CritChanceBase = 6, AttackRateBase = 1.25, },
 	req = { level = 58, str = 99, int = 99, },
 }
@@ -359,7 +359,7 @@ itemBases["灵石短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 40%",
+	implicit = "元素伤害提高 40%",
 	weapon = { PhysicalMin = 49, PhysicalMax = 73, CritChanceBase = 6.5, AttackRateBase = 1.25, },
 	req = { level = 60, str = 95, int = 131, },
 }
@@ -367,7 +367,7 @@ itemBases["白金短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 30%",
+	implicit = "元素伤害提高 30%",
 	weapon = { PhysicalMin = 51, PhysicalMax = 76, CritChanceBase = 6, AttackRateBase = 1.25, },
 	req = { level = 62, str = 113, int = 113, },
 }
@@ -375,7 +375,7 @@ itemBases["瓦尔短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 32%",
+	implicit = "元素伤害提高 32%",
 	weapon = { PhysicalMin = 37, PhysicalMax = 70, CritChanceBase = 6, AttackRateBase = 1.4, },
 	req = { level = 64, str = 113, int = 113, },
 }
@@ -383,7 +383,7 @@ itemBases["禁礼短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 32%",
+	implicit = "元素伤害提高 32%",
 	weapon = { PhysicalMin = 41, PhysicalMax = 95, CritChanceBase = 6, AttackRateBase = 1.2, },
 	req = { level = 66, str = 113, int = 113, },
 }
@@ -391,7 +391,7 @@ itemBases["虚影短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 40%",
+	implicit = "元素伤害提高 40%",
 	weapon = { PhysicalMin = 50, PhysicalMax = 76, CritChanceBase = 6.2, AttackRateBase = 1.25, },
 	req = { level = 68, str = 104, int = 122, },
 }
@@ -399,7 +399,7 @@ itemBases["恶魔短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, sceptre = true, not_for_sale = true, maraketh = true, },
-	implicit = "伤害穿透 6% 火焰、冰霜、闪电抗性",
+	implicit = "伤害穿透 6% 元素抗性",
 	weapon = { PhysicalMin = 42, PhysicalMax = 78, CritChanceBase = 6, AttackRateBase = 1.3, },
 	req = { level = 70, str = 121, int = 113, },
 }

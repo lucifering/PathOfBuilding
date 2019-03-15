@@ -87,7 +87,7 @@ itemBases["杰特护身符"] = {
 	type = "Amulet",
 	hidden = true,
 	tags = { default = true, amulet = true, not_for_sale = true, },
-	implicit = "获得 +(8-12)% 火焰、冰霜、闪电抗性",
+	implicit = "获得 +(8-12)% 元素抗性",
 	req = { level = 12, },
 }
 
@@ -326,7 +326,7 @@ itemBases["三手魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "获得等同 (6-12)% 物理伤害的 1 个随机火焰、冰霜、闪电伤害",
+	implicit = "获得等同 (6-12)% 物理伤害的 1 个随机元素伤害",
 	req = { },
 }
 itemBases["狼王魔符"] = {

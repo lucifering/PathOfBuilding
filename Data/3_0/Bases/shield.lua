@@ -563,7 +563,7 @@ itemBases["朽木鸢盾"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 3,
 	tags = { default = true, armour = true, shield = true, str_int_armour = true, str_int_shield = true, },
-	implicit = "获得 +4% 火焰、冰霜、闪电抗性",
+	implicit = "获得 +4% 元素抗性",
 	armour = { BlockChance = 22, ArmourBase = 18, EnergyShieldBase = 4, MovementPenalty = 3, },
 	req = { level = 7, str = 13, int = 13, },
 }
@@ -572,7 +572,7 @@ itemBases["椴木鸢盾"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 3,
 	tags = { default = true, armour = true, shield = true, str_int_armour = true, str_int_shield = true, },
-	implicit = "获得 +4% 火焰、冰霜、闪电抗性",
+	implicit = "获得 +4% 元素抗性",
 	armour = { BlockChance = 24, ArmourBase = 43, EnergyShieldBase = 10, MovementPenalty = 3, },
 	req = { level = 13, str = 20, int = 20, },
 }
@@ -589,7 +589,7 @@ itemBases["层板鸢盾"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 3,
 	tags = { default = true, armour = true, shield = true, str_int_armour = true, str_int_shield = true, },
-	implicit = "获得 +8% 火焰、冰霜、闪电抗性",
+	implicit = "获得 +8% 元素抗性",
 	armour = { BlockChance = 24, ArmourBase = 62, EnergyShieldBase = 13, MovementPenalty = 3, },
 	req = { level = 27, str = 37, int = 37, },
 }
@@ -598,7 +598,7 @@ itemBases["祭仪鸢盾"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 3,
 	tags = { default = true, armour = true, shield = true, str_int_armour = true, str_int_shield = true, },
-	implicit = "获得 +12% 火焰、冰霜、闪电抗性",
+	implicit = "获得 +12% 元素抗性",
 	armour = { BlockChance = 22, ArmourBase = 77, EnergyShieldBase = 16, MovementPenalty = 3, },
 	req = { level = 34, str = 46, int = 46, },
 }
@@ -607,7 +607,7 @@ itemBases["刻文鸢盾"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 3,
 	tags = { default = true, armour = true, shield = true, str_int_armour = true, str_int_shield = true, },
-	implicit = "获得 +4% 火焰、冰霜、闪电抗性",
+	implicit = "获得 +4% 元素抗性",
 	armour = { BlockChance = 24, ArmourBase = 127, EnergyShieldBase = 25, MovementPenalty = 3, },
 	req = { level = 40, str = 52, int = 52, },
 }
@@ -624,7 +624,7 @@ itemBases["合板鸢盾"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 3,
 	tags = { default = true, armour = true, shield = true, str_int_armour = true, str_int_shield = true, },
-	implicit = "获得 +8% 火焰、冰霜、闪电抗性",
+	implicit = "获得 +8% 元素抗性",
 	armour = { BlockChance = 24, ArmourBase = 113, EnergyShieldBase = 22, MovementPenalty = 3, },
 	req = { level = 50, str = 64, int = 64, },
 }
@@ -633,7 +633,7 @@ itemBases["天使鸢盾"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 3,
 	tags = { default = true, armour = true, shield = true, str_int_armour = true, str_int_shield = true, },
-	implicit = "获得 +12% 火焰、冰霜、闪电抗性",
+	implicit = "获得 +12% 元素抗性",
 	armour = { BlockChance = 22, ArmourBase = 124, EnergyShieldBase = 24, MovementPenalty = 3, },
 	req = { level = 55, str = 70, int = 70, },
 }
@@ -642,7 +642,7 @@ itemBases["圣记鸢盾"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 3,
 	tags = { default = true, armour = true, shield = true, str_int_armour = true, str_int_shield = true, },
-	implicit = "获得 +4% 火焰、冰霜、闪电抗性",
+	implicit = "获得 +4% 元素抗性",
 	armour = { BlockChance = 24, ArmourBase = 186, EnergyShieldBase = 36, MovementPenalty = 3, },
 	req = { level = 59, str = 76, int = 76, },
 }
@@ -659,7 +659,7 @@ itemBases["厚装鸢盾"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 3,
 	tags = { default = true, armour = true, shield = true, str_int_armour = true, str_int_shield = true, },
-	implicit = "获得 +8% 火焰、冰霜、闪电抗性",
+	implicit = "获得 +8% 元素抗性",
 	armour = { BlockChance = 24, ArmourBase = 147, EnergyShieldBase = 28, MovementPenalty = 3, },
 	req = { level = 65, str = 85, int = 85, },
 }
@@ -668,7 +668,7 @@ itemBases["威能鸢盾"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 3,
 	tags = { default = true, armour = true, shield = true, str_int_armour = true, str_int_shield = true, },
-	implicit = "获得 +12% 火焰、冰霜、闪电抗性",
+	implicit = "获得 +12% 元素抗性",
 	armour = { BlockChance = 22, ArmourBase = 156, EnergyShieldBase = 30, MovementPenalty = 3, },
 	req = { level = 68, str = 85, int = 85, },
 }

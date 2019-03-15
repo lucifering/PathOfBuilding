@@ -4,7 +4,19 @@
 data.uniques.new = {
 
 [[
-Circle of Guilt(追忆)
+Maloney's Mechanism
+华美箭袋
+联盟: 虚空忆境
+等级需求: 45
+有 1 个插槽
+有 2 个插槽
+当你使用弓箭攻击时触发一个插槽内的弓类法术
+攻击速度提高 (7-12)%
++(50-70) 最大生命
+攻击击中有 5% 几率致盲敌人
+]],
+[[
+Circle of Guilt(忆境)
 锻铁戒指
 联盟: 虚空忆境
 Has Alt Variant: true
@@ -23,9 +35,9 @@ Has Alt Variant: true
 {variant:3}受到【纯净之捷】影响时，获得额外 4% 物理伤害减免
 {variant:4}受到【纯净之捷】影响时，物理伤害提高 (40-60)%
 {variant:5}召唤的纯净哨兵伤害提高 (70-100)%
-追忆
+忆境物品
 ]],[[
-Circle of Guilt(破碎)
+Circle of Guilt(分裂)
 锻铁戒指
 联盟: 虚空忆境
 版本: 增益效果
@@ -44,10 +56,10 @@ Circle of Guilt(破碎)
 {variant:4}受到【纯净之捷】影响时，物理伤害提高 (40-60)%
 {variant:5}召唤的纯净哨兵伤害提高 (70-100)%
 在合成器进行合成时，合成后的新物品有额外一条【捷光环】词缀
-破碎
+分裂之物
 ]],
 [[
-Circle of Fear(追忆)
+Circle of Fear(忆境)
 蓝玉戒指
 联盟: 虚空忆境
 Has Alt Variant: true
@@ -66,10 +78,10 @@ Has Alt Variant: true
 {variant:3}受到【寒冰之捷】影响时，+(50-60)% 冰霜抗性
 {variant:4}受到【寒冰之捷】影响时，+1% 冰霜抗性上限
 {variant:5}受到【寒冰之捷】影响时，冰霜伤害提高 (40-60)%
-追忆
+忆境物品
 ]],
 [[
-Circle of Fear(破碎)
+Circle of Fear(分裂)
 蓝玉戒指
 联盟: 虚空忆境
 版本: 增益效果
@@ -88,10 +100,10 @@ Circle of Fear(破碎)
 {variant:4}受到【寒冰之捷】影响时，+1% 冰霜抗性上限
 {variant:5}受到【寒冰之捷】影响时，冰霜伤害提高 (40-60)%
 在合成器进行合成时，合成后的新物品有额外一条【捷光环】词缀
-破碎
+分裂之物
 ]],
 [[
-Circle of Anguish(追忆)
+Circle of Anguish(忆境)
 红玉戒指
 联盟: 虚空忆境
 Has Alt Variant: true
@@ -110,10 +122,10 @@ Has Alt Variant: true
 {variant:3}受到【灰烬之捷】影响时，+(50-60)% 火焰抗性
 {variant:4}受到【灰烬之捷】影响时，+1% 火焰抗性上限
 {variant:5}受到【灰烬之捷】影响时，火焰伤害提高 (40-60)%
-追忆
+忆境物品
 ]],
 [[
-Circle of Anguish(破碎)
+Circle of Anguish(分裂)
 红玉戒指
 联盟: 虚空忆境
 版本: 增益效果
@@ -132,10 +144,10 @@ Circle of Anguish(破碎)
 {variant:4}受到【灰烬之捷】影响时，+1% 火焰抗性上限
 {variant:5}受到【灰烬之捷】影响时，火焰伤害提高 (40-60)%
 在合成器进行合成时，合成后的新物品有额外一条【捷光环】词缀
-破碎
+分裂之物
 ]],
 [[
-Circle of Nostalgia(追忆)
+Circle of Nostalgia(忆境)
 紫晶戒指
 联盟: 虚空忆境
 Has Alt Variant: true
@@ -154,9 +166,9 @@ Has Alt Variant: true
 {variant:3}受到【苦痛之捷】影响时，+(31-43)% 混沌抗性
 {variant:4}受到【苦痛之捷】影响时，混沌伤害提高 (40-60)%
 {variant:5}召唤的苦痛爬行者伤害提高 (70-100)%
-追忆
+忆境物品
 ]],[[
-Circle of Nostalgia(破碎)
+Circle of Nostalgia(分裂)
 紫晶戒指
 联盟: 虚空忆境
 版本: 增益效果
@@ -175,9 +187,9 @@ Circle of Nostalgia(破碎)
 {variant:4}受到【苦痛之捷】影响时，混沌伤害提高 (40-60)%
 {variant:5}召唤的苦痛爬行者伤害提高 (70-100)%
 在合成器进行合成时，合成后的新物品有额外一条【捷光环】词缀
-破碎
+分裂之物
 ]],[[
-Circle of Regret(追忆)
+Circle of Regret(忆境)
 黄玉戒指
 联盟: 虚空忆境
 Has Alt Variant: true
@@ -196,9 +208,9 @@ Has Alt Variant: true
 {variant:3}受到【闪电之捷】影响时，+(50-60)% 闪电抗性
 {variant:4}受到【闪电之捷】影响时，+1% 闪电抗性上限
 {variant:5}受到【闪电之捷】影响时，闪电伤害提高 (40-60)%
-追忆
+忆境物品
 ]],[[
-Circle of Regret(破碎)
+Circle of Regret(分裂)
 黄玉戒指
 版本: 增益效果
 版本: 魔力保留
@@ -217,7 +229,7 @@ Circle of Regret(破碎)
 {variant:4}受到【闪电之捷】影响时，+1% 闪电抗性上限
 {variant:5}受到【闪电之捷】影响时，闪电伤害提高 (40-60)%
 在合成器进行合成时，合成后的新物品有额外一条【捷光环】词缀
-破碎
+分裂之物
 ]],
 [[
 Garb of the Ephemeral
@@ -231,6 +243,7 @@ Garb of the Ephemeral
 获得【神圣】状态时失去所有神圣球
 周围友军的行动速度无法被减速至基础以下
 周围敌人无法造成暴击
+联盟: 「虚空幻境」联盟限定
 ]],
 [[
 Offering of the Serpent
@@ -255,6 +268,7 @@ Perepiteia
 该装备的闪避与能量护盾提高 (300-400)%
 +(1-75) 最大魔力 
 移动速度提高 (1-20)%
+分裂之物
 ]],
 [[
 March of the Legion
@@ -267,10 +281,10 @@ March of the Legion
 移动速度提高 (20-30)%
 ]],
 [[
-Vixen's Entrapment
+刁妇的圈套
 刺绣手套
 等级需求: 36
-+(50–90) 最大能量护盾 
++(50-90) 最大能量护盾 
 可以对敌人施放 1 个额外诅咒
 诅咒技能施法速度提高 (10-20)%
 敌人身上每有 1 个诅咒，法术伤害的 0.2% 会转化为能量护盾偷取
@@ -333,6 +347,7 @@ Nebulis
 [[
 Bottled Faith
 硫磺药剂
+联盟: 「虚空幻境」联盟限定
 等级需求: 35
 持续时间延长 (30-50)%
 此药剂制造的奉献地面的半径提高 3 倍 

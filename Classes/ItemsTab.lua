@@ -1747,10 +1747,10 @@ function ItemsTabClass:AddItemTooltip(tooltip, item, slot, dbMode)
 		tooltip:AddLine(16, colorCodes.ELDER.."裂界之器")
 	end
 	if item.fractured then
-		tooltip:AddLine(16, colorCodes.FRACTURED.."Fractured Item")
+		tooltip:AddLine(16, colorCodes.FRACTURED.."分裂之物")
 	end
 	if item.synthesised then
-		tooltip:AddLine(16, colorCodes.CRAFTED.."Synthesised Item")
+		tooltip:AddLine(16, colorCodes.CRAFTED.."忆境物品")
 	end
 	tooltip:AddSeparator(10)
 

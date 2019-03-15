@@ -7,12 +7,12 @@
 local skills, mod, flag, skill = ...
 
 skills["EnchantmentOfBladesOnHit"] = {
-name = "刀锋之誓",
+	name = "刀锋之誓",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.7000000476837,
 	incrementalEffectiveness = 0.037000000476837,
-description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. ",
+	description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [3] = true, [36] = true, [42] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -42,12 +42,12 @@ description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. "
 	},
 }
 skills["EnchantmentOfBladesOnHit2"] = {
-name = "刀锋之律",
+	name = "刀锋之律",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.7000000476837,
 	incrementalEffectiveness = 0.037000000476837,
-description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. ",
+	description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [3] = true, [36] = true, [42] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -77,12 +77,12 @@ description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. "
 	},
 }
 skills["EnchantmentOfBladesOnHit3"] = {
-name = "刀锋之令",
+	name = "刀锋之令",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.7000000476837,
 	incrementalEffectiveness = 0.037000000476837,
-description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. ",
+	description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [3] = true, [36] = true, [42] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -112,12 +112,12 @@ description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. "
 	},
 }
 skills["EnchantmentOfBladesOnHit4"] = {
-name = "刀锋之诫",
+	name = "刀锋之诫",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.7000000476837,
 	incrementalEffectiveness = 0.037000000476837,
-description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. ",
+	description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [3] = true, [36] = true, [42] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -147,12 +147,12 @@ description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. "
 	},
 }
 skills["EnchantmentOfFlamesOnHit"] = {
-name = "烈火之誓",
+	name = "烈火之誓",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.7777999639511,
 	incrementalEffectiveness = 0.035000000149012,
-description = "释放一个火焰的新星, 有短暂冷却时间. ",
+	description = "释放一个火焰的新星, 有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [10] = true, [33] = true, [36] = true, [83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -179,12 +179,12 @@ description = "释放一个火焰的新星, 有短暂冷却时间. ",
 	},
 }
 skills["EnchantmentOfFlamesOnHit2"] = {
-name = "烈火之律",
+	name = "烈火之律",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.7777999639511,
 	incrementalEffectiveness = 0.035000000149012,
-description = "释放一个火焰的新星, 有短暂冷却时间. ",
+	description = "释放一个火焰的新星, 有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [10] = true, [33] = true, [36] = true, [83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -211,12 +211,12 @@ description = "释放一个火焰的新星, 有短暂冷却时间. ",
 	},
 }
 skills["EnchantmentOfFlamesOnHit3"] = {
-name = "烈火之令",
+	name = "烈火之令",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.7777999639511,
 	incrementalEffectiveness = 0.035000000149012,
-description = "释放一个火焰的新星, 有短暂冷却时间. ",
+	description = "释放一个火焰的新星, 有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [10] = true, [33] = true, [36] = true, [83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -243,12 +243,12 @@ description = "释放一个火焰的新星, 有短暂冷却时间. ",
 	},
 }
 skills["EnchantmentOfFlamesOnHit4"] = {
-name = "烈火之诫",
+	name = "烈火之诫",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.7777999639511,
 	incrementalEffectiveness = 0.035000000149012,
-description = "释放一个火焰的新星, 有短暂冷却时间. ",
+	description = "释放一个火焰的新星, 有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [10] = true, [33] = true, [36] = true, [83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -275,10 +275,10 @@ description = "释放一个火焰的新星, 有短暂冷却时间. ",
 	},
 }
 skills["EnchantmentOfForceOnHit"] = {
-name = "原力之誓",
+	name = "原力之誓",
 	hidden = true,
 	color = 4,
-description = "对你面前的敌人们造成普通攻击的伤害. 此技能有短暂冷却时间. ",
+	description = "对你面前的敌人们造成普通攻击的伤害. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [11] = true, [10] = true, [47] = true, [57] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -302,10 +302,10 @@ description = "对你面前的敌人们造成普通攻击的伤害. 此技能有
 	},
 }
 skills["EnchantmentOfForceOnHit2"] = {
-name = "原力之律",
+	name = "原力之律",
 	hidden = true,
 	color = 4,
-description = "对你面前的敌人们造成普通攻击的伤害. 此技能有短暂冷却时间. ",
+	description = "对你面前的敌人们造成普通攻击的伤害. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [11] = true, [10] = true, [47] = true, [57] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -329,10 +329,10 @@ description = "对你面前的敌人们造成普通攻击的伤害. 此技能有
 	},
 }
 skills["EnchantmentOfForceOnHit3"] = {
-name = "原力之令",
+	name = "原力之令",
 	hidden = true,
 	color = 4,
-description = "对你面前的敌人们造成普通攻击的伤害. 此技能有短暂冷却时间. ",
+	description = "对你面前的敌人们造成普通攻击的伤害. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [11] = true, [10] = true, [47] = true, [57] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -356,10 +356,10 @@ description = "对你面前的敌人们造成普通攻击的伤害. 此技能有
 	},
 }
 skills["EnchantmentOfForceOnHit4"] = {
-name = "原力之诫",
+	name = "原力之诫",
 	hidden = true,
 	color = 4,
-description = "对你面前的敌人们造成普通攻击的伤害. 此技能有短暂冷却时间. ",
+	description = "对你面前的敌人们造成普通攻击的伤害. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [11] = true, [10] = true, [47] = true, [57] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -383,12 +383,12 @@ description = "对你面前的敌人们造成普通攻击的伤害. 此技能有
 	},
 }
 skills["EnchantmentOfFrostOnKill"] = {
-name = "寒冰之誓",
+	name = "寒冰之誓",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.6363999843597,
 	incrementalEffectiveness = 0.035000000149012,
-description = "制造一个寒冰投射物的新星. 此技能有短暂冷却时间. ",
+	description = "制造一个寒冰投射物的新星. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [3] = true, [36] = true, [42] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -418,12 +418,12 @@ description = "制造一个寒冰投射物的新星. 此技能有短暂冷却时
 	},
 }
 skills["EnchantmentOfFrostOnKill2"] = {
-name = "寒冰之律",
+	name = "寒冰之律",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.6363999843597,
 	incrementalEffectiveness = 0.035000000149012,
-description = "制造一个寒冰投射物的新星. 此技能有短暂冷却时间. ",
+	description = "制造一个寒冰投射物的新星. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [3] = true, [36] = true, [42] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -453,12 +453,12 @@ description = "制造一个寒冰投射物的新星. 此技能有短暂冷却时
 	},
 }
 skills["EnchantmentOfFrostOnKill3"] = {
-name = "寒冰之令",
+	name = "寒冰之令",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.6363999843597,
 	incrementalEffectiveness = 0.035000000149012,
-description = "制造一个寒冰投射物的新星. 此技能有短暂冷却时间. ",
+	description = "制造一个寒冰投射物的新星. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [3] = true, [36] = true, [42] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -488,12 +488,12 @@ description = "制造一个寒冰投射物的新星. 此技能有短暂冷却时
 	},
 }
 skills["EnchantmentOfFrostOnKill4"] = {
-name = "寒冰之诫",
+	name = "寒冰之诫",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.6363999843597,
 	incrementalEffectiveness = 0.035000000149012,
-description = "制造一个寒冰投射物的新星. 此技能有短暂冷却时间. ",
+	description = "制造一个寒冰投射物的新星. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [3] = true, [36] = true, [42] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -523,12 +523,12 @@ description = "制造一个寒冰投射物的新星. 此技能有短暂冷却时
 	},
 }
 skills["EnchantmentOfFuryOnHit"] = {
-name = "狂怒之誓",
+	name = "狂怒之誓",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.035000000149012,
-description = "发射一个定必穿透敌人的你的武器的复制品或是投射物的投射物. 此技能有短暂冷却时间. ",
+	description = "发射一个定必穿透敌人的你的武器的复制品或是投射物的投射物. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [47] = true, [57] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -576,12 +576,12 @@ description = "发射一个定必穿透敌人的你的武器的复制品或是�
 	},
 }
 skills["EnchantmentOfFuryOnHit2"] = {
-name = "狂怒之律",
+	name = "狂怒之律",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.035000000149012,
-description = "发射一个定必穿透敌人的你的武器的复制品或是投射物的投射物. 此技能有短暂冷却时间. ",
+	description = "发射一个定必穿透敌人的你的武器的复制品或是投射物的投射物. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [47] = true, [57] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -629,12 +629,12 @@ description = "发射一个定必穿透敌人的你的武器的复制品或是�
 	},
 }
 skills["EnchantmentOfFuryOnHit3"] = {
-name = "狂怒之令",
+	name = "狂怒之令",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.035000000149012,
-description = "发射一个定必穿透敌人的你的武器的复制品或是投射物的投射物. 此技能有短暂冷却时间. ",
+	description = "发射一个定必穿透敌人的你的武器的复制品或是投射物的投射物. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [47] = true, [57] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -682,12 +682,12 @@ description = "发射一个定必穿透敌人的你的武器的复制品或是�
 	},
 }
 skills["EnchantmentOfFuryOnHit4"] = {
-name = "狂怒之诫",
+	name = "狂怒之诫",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.035000000149012,
-description = "发射一个定必穿透敌人的你的武器的复制品或是投射物的投射物. 此技能有短暂冷却时间. ",
+	description = "发射一个定必穿透敌人的你的武器的复制品或是投射物的投射物. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [47] = true, [57] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -735,12 +735,12 @@ description = "发射一个定必穿透敌人的你的武器的复制品或是�
 	},
 }
 skills["EnchantmentOfInfernoOnKill"] = {
-name = "炼狱之誓",
+	name = "炼狱之誓",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 3.5555999279022,
 	incrementalEffectiveness = 0.035000000149012,
-description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
+	description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [33] = true, [36] = true, [42] = true, [83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -771,12 +771,12 @@ description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
 	},
 }
 skills["EnchantmentOfInfernoOnKill2"] = {
-name = "炼狱之律",
+	name = "炼狱之律",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 3.5555999279022,
 	incrementalEffectiveness = 0.035000000149012,
-description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
+	description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [33] = true, [36] = true, [42] = true, [83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -807,12 +807,12 @@ description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
 	},
 }
 skills["EnchantmentOfInfernoOnKill3"] = {
-name = "炼狱之令",
+	name = "炼狱之令",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 3.5555999279022,
 	incrementalEffectiveness = 0.035000000149012,
-description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
+	description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [33] = true, [36] = true, [42] = true, [83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -843,12 +843,12 @@ description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
 	},
 }
 skills["EnchantmentOfInfernoOnKill4"] = {
-name = "炼狱之诫",
+	name = "炼狱之诫",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 3.5555999279022,
 	incrementalEffectiveness = 0.035000000149012,
-description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
+	description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [33] = true, [36] = true, [42] = true, [83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -879,12 +879,12 @@ description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
 	},
 }
 skills["EnchantmentOfIreWhenHit"] = {
-name = "雷霆之誓",
+	name = "雷霆之誓",
 	hidden = true,
 	color = 2,
 	baseEffectiveness = 1.2000000476837,
 	incrementalEffectiveness = 0.019999999552965,
-description = "复制并释放出一个你所使用的武器或其投射物, 并带有闪电在一个定点旋转, 对区域中的敌人造成伤害. 有 10 秒冷却时间. ",
+	description = "复制并释放出一个你所使用的武器或其投射物, 并带有闪电在一个定点旋转, 对区域中的敌人造成伤害. 有 10 秒冷却时间. ",
 	skillTypes = { [1] = true, [10] = true, [11] = true, [12] = true, [18] = true, [47] = true, [57] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -929,12 +929,12 @@ description = "复制并释放出一个你所使用的武器或其投射物, 并
 	},
 }
 skills["EnchantmentOfIreWhenHit2"] = {
-name = "雷霆之律",
+	name = "雷霆之律",
 	hidden = true,
 	color = 2,
 	baseEffectiveness = 1.2000000476837,
 	incrementalEffectiveness = 0.019999999552965,
-description = "复制并释放出一个你所使用的武器或其投射物, 并带有闪电在一个定点旋转, 对区域中的敌人造成伤害. 有 10 秒冷却时间. ",
+	description = "复制并释放出一个你所使用的武器或其投射物, 并带有闪电在一个定点旋转, 对区域中的敌人造成伤害. 有 10 秒冷却时间. ",
 	skillTypes = { [1] = true, [10] = true, [11] = true, [12] = true, [18] = true, [47] = true, [57] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -979,12 +979,12 @@ description = "复制并释放出一个你所使用的武器或其投射物, 并
 	},
 }
 skills["EnchantmentOfIreWhenHit3"] = {
-name = "雷霆之令",
+	name = "雷霆之令",
 	hidden = true,
 	color = 2,
 	baseEffectiveness = 1.2000000476837,
 	incrementalEffectiveness = 0.019999999552965,
-description = "复制并释放出一个你所使用的武器或其投射物, 并带有闪电在一个定点旋转, 对区域中的敌人造成伤害. 有 10 秒冷却时间. ",
+	description = "复制并释放出一个你所使用的武器或其投射物, 并带有闪电在一个定点旋转, 对区域中的敌人造成伤害. 有 10 秒冷却时间. ",
 	skillTypes = { [1] = true, [10] = true, [11] = true, [12] = true, [18] = true, [47] = true, [57] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -1029,12 +1029,12 @@ description = "复制并释放出一个你所使用的武器或其投射物, 并
 	},
 }
 skills["EnchantmentOfIreWhenHit4"] = {
-name = "雷霆之诫",
+	name = "雷霆之诫",
 	hidden = true,
 	color = 2,
 	baseEffectiveness = 1.2000000476837,
 	incrementalEffectiveness = 0.019999999552965,
-description = "复制并释放出一个你所使用的武器或其投射物, 并带有闪电在一个定点旋转, 对区域中的敌人造成伤害. 有 10 秒冷却时间. ",
+	description = "复制并释放出一个你所使用的武器或其投射物, 并带有闪电在一个定点旋转, 对区域中的敌人造成伤害. 有 10 秒冷却时间. ",
 	skillTypes = { [1] = true, [10] = true, [11] = true, [12] = true, [18] = true, [47] = true, [57] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -1079,10 +1079,10 @@ description = "复制并释放出一个你所使用的武器或其投射物, 并
 	},
 }
 skills["EnchantmentOfLightWhenCrit"] = {
-name = "光之誓",
+	name = "光之誓",
 	hidden = true,
 	color = 4,
-description = "在你的四周制造奉献地面, 并造成一定比例的主手武器伤害. 奉献地面增加你和你的队友额外生命回复. 此技能有短暂冷却时间. ",
+	description = "在你的四周制造奉献地面, 并造成一定比例的主手武器伤害. 奉献地面增加你和你的队友额外生命回复. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [11] = true, [12] = true, [47] = true, [57] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -1109,10 +1109,10 @@ description = "在你的四周制造奉献地面, 并造成一定比例的主手
 	},
 }
 skills["EnchantmentOfLightWhenCrit2"] = {
-name = "光之律",
+	name = "光之律",
 	hidden = true,
 	color = 4,
-description = "在你的四周制造奉献地面, 并造成一定比例的主手武器伤害. 奉献地面增加你和你的队友额外生命回复. 此技能有短暂冷却时间. ",
+	description = "在你的四周制造奉献地面, 并造成一定比例的主手武器伤害. 奉献地面增加你和你的队友额外生命回复. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [11] = true, [12] = true, [47] = true, [57] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -1139,10 +1139,10 @@ description = "在你的四周制造奉献地面, 并造成一定比例的主手
 	},
 }
 skills["EnchantmentOfLightWhenCrit3"] = {
-name = "光之令",
+	name = "光之令",
 	hidden = true,
 	color = 4,
-description = "在你的四周制造奉献地面, 并造成一定比例的主手武器伤害. 奉献地面增加你和你的队友额外生命回复. 此技能有短暂冷却时间. ",
+	description = "在你的四周制造奉献地面, 并造成一定比例的主手武器伤害. 奉献地面增加你和你的队友额外生命回复. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [11] = true, [12] = true, [47] = true, [57] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -1169,10 +1169,10 @@ description = "在你的四周制造奉献地面, 并造成一定比例的主手
 	},
 }
 skills["EnchantmentOfLightWhenCrit4"] = {
-name = "光之诫",
+	name = "光之诫",
 	hidden = true,
 	color = 4,
-description = "在你的四周制造奉献地面, 并造成一定比例的主手武器伤害. 奉献地面增加你和你的队友额外生命回复. 此技能有短暂冷却时间. ",
+	description = "在你的四周制造奉献地面, 并造成一定比例的主手武器伤害. 奉献地面增加你和你的队友额外生命回复. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [11] = true, [12] = true, [47] = true, [57] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -1199,10 +1199,10 @@ description = "在你的四周制造奉献地面, 并造成一定比例的主手
 	},
 }
 skills["EnchantmentOfReflectionWhenHit"] = {
-name = "倒影之誓",
+	name = "倒影之誓",
 	hidden = true,
 	color = 4,
-description = "制造一个与你使用同样武器的复制体. 此技能有短暂冷却时间. ",
+	description = "制造一个与你使用同样武器的复制体. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [9] = true, [21] = true, [42] = true, [12] = true, [36] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [3] = true, [68] = true, [28] = true, },
 	statDescriptionScope = "minion_skill_stat_descriptions",
@@ -1239,10 +1239,10 @@ description = "制造一个与你使用同样武器的复制体. 此技能有短
 	},
 }
 skills["EnchantmentOfReflectionWhenHit2"] = {
-name = "倒影之律",
+	name = "倒影之律",
 	hidden = true,
 	color = 4,
-description = "制造一个与你使用同样武器的复制体. 此技能有短暂冷却时间. ",
+	description = "制造一个与你使用同样武器的复制体. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [9] = true, [21] = true, [42] = true, [12] = true, [36] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [3] = true, [68] = true, [28] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
@@ -1279,10 +1279,10 @@ description = "制造一个与你使用同样武器的复制体. 此技能有短
 	},
 }
 skills["EnchantmentOfReflectionWhenHit3"] = {
-name = "倒影之令",
+	name = "倒影之令",
 	hidden = true,
 	color = 4,
-description = "制造一个与你使用同样武器的复制体. 此技能有短暂冷却时间. ",
+	description = "制造一个与你使用同样武器的复制体. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [9] = true, [21] = true, [42] = true, [12] = true, [36] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [3] = true, [68] = true, [28] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
@@ -1319,10 +1319,10 @@ description = "制造一个与你使用同样武器的复制体. 此技能有短
 	},
 }
 skills["EnchantmentOfReflectionWhenHit4"] = {
-name = "倒影之诫",
+	name = "倒影之诫",
 	hidden = true,
 	color = 4,
-description = "制造一个与你使用同样武器的复制体. 此技能有短暂冷却时间. ",
+	description = "制造一个与你使用同样武器的复制体. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [9] = true, [21] = true, [42] = true, [12] = true, [36] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [3] = true, [68] = true, [28] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
@@ -1359,12 +1359,12 @@ description = "制造一个与你使用同样武器的复制体. 此技能有短
 	},
 }
 skills["EnchantmentOfSpiteWhenHit"] = {
-name = "怨恨之誓",
+	name = "怨恨之誓",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.035000000149012,
-description = "制造一个你的武器的复制品或是投射物的新星, 并在其路径上留下冰缓地面. 此技能有短暂冷却时间. ",
+	description = "制造一个你的武器的复制品或是投射物的新星, 并在其路径上留下冰缓地面. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [47] = true, [57] = true, [79] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -1412,12 +1412,12 @@ description = "制造一个你的武器的复制品或是投射物的新星, 并
 	},
 }
 skills["EnchantmentOfSpiteWhenHit2"] = {
-name = "怨恨之律",
+	name = "怨恨之律",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.035000000149012,
-description = "制造一个你的武器的复制品或是投射物的新星, 并在其路径上留下冰缓地面. 此技能有短暂冷却时间. ",
+	description = "制造一个你的武器的复制品或是投射物的新星, 并在其路径上留下冰缓地面. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [47] = true, [57] = true, [79] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -1465,12 +1465,12 @@ description = "制造一个你的武器的复制品或是投射物的新星, 并
 	},
 }
 skills["EnchantmentOfSpiteWhenHit3"] = {
-name = "怨恨之令",
+	name = "怨恨之令",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.035000000149012,
-description = "制造一个你的武器的复制品或是投射物的新星, 并在其路径上留下冰缓地面. 此技能有短暂冷却时间. ",
+	description = "制造一个你的武器的复制品或是投射物的新星, 并在其路径上留下冰缓地面. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [47] = true, [57] = true, [79] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -1518,12 +1518,12 @@ description = "制造一个你的武器的复制品或是投射物的新星, 并
 	},
 }
 skills["EnchantmentOfSpiteWhenHit4"] = {
-name = "怨恨之诫",
+	name = "怨恨之诫",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.035000000149012,
-description = "制造一个你的武器的复制品或是投射物的新星, 并在其路径上留下冰缓地面. 此技能有短暂冷却时间. ",
+	description = "制造一个你的武器的复制品或是投射物的新星, 并在其路径上留下冰缓地面. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [48] = true, [3] = true, [47] = true, [57] = true, [79] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -1571,12 +1571,12 @@ description = "制造一个你的武器的复制品或是投射物的新星, 并
 	},
 }
 skills["EnchantmentOfTempestOnHit"] = {
-name = "风暴之誓",
+	name = "风暴之誓",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 4,
 	incrementalEffectiveness = 0.035000000149012,
-description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. 有短暂的冷却时间. ",
+	description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. 有短暂的冷却时间. ",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [36] = true, [83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 4,
@@ -1606,12 +1606,12 @@ description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. �
 	},
 }
 skills["EnchantmentOfTempestOnHit2"] = {
-name = "风暴之律",
+	name = "风暴之律",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 4,
 	incrementalEffectiveness = 0.035000000149012,
-description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. 有短暂的冷却时间. ",
+	description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. 有短暂的冷却时间. ",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [36] = true, [83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 4,
@@ -1641,12 +1641,12 @@ description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. �
 	},
 }
 skills["EnchantmentOfTempestOnHit3"] = {
-name = "风暴之令",
+	name = "风暴之令",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 4,
 	incrementalEffectiveness = 0.035000000149012,
-description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. 有短暂的冷却时间. ",
+	description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. 有短暂的冷却时间. ",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [36] = true, [83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 4,
@@ -1676,12 +1676,12 @@ description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. �
 	},
 }
 skills["EnchantmentOfTempestOnHit4"] = {
-name = "风暴之诫",
+	name = "风暴之诫",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 4,
 	incrementalEffectiveness = 0.035000000149012,
-description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. 有短暂的冷却时间. ",
+	description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. 有短暂的冷却时间. ",
 	skillTypes = { [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [36] = true, [83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 4,
@@ -1711,10 +1711,10 @@ description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. �
 	},
 }
 skills["EnchantmentOfTheGraveOnKill"] = {
-name = "冰墓之誓",
+	name = "冰墓之誓",
 	hidden = true,
 	color = 4,
-description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此技能有短暂冷却时间. ",
+	description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [9] = true, [21] = true, [34] = true, [36] = true, [42] = true, [12] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [28] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
@@ -1747,10 +1747,10 @@ description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此�
 	},
 }
 skills["EnchantmentOfTheGraveOnKill2"] = {
-name = "冰墓之律",
+	name = "冰墓之律",
 	hidden = true,
 	color = 4,
-description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此技能有短暂冷却时间. ",
+	description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [9] = true, [21] = true, [34] = true, [36] = true, [42] = true, [12] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [28] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
@@ -1783,10 +1783,10 @@ description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此�
 	},
 }
 skills["EnchantmentOfTheGraveOnKill3"] = {
-name = "冰墓之令",
+	name = "冰墓之令",
 	hidden = true,
 	color = 4,
-description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此技能有短暂冷却时间. ",
+	description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [9] = true, [21] = true, [34] = true, [36] = true, [42] = true, [12] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [28] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
@@ -1819,10 +1819,10 @@ description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此�
 	},
 }
 skills["EnchantmentOfTheGraveOnKill4"] = {
-name = "冰墓之诫",
+	name = "冰墓之诫",
 	hidden = true,
 	color = 4,
-description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此技能有短暂冷却时间. ",
+	description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [9] = true, [21] = true, [34] = true, [36] = true, [42] = true, [12] = true, },
 	minionSkillTypes = { [1] = true, [24] = true, [25] = true, [28] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
@@ -1855,12 +1855,12 @@ description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此�
 	},
 }
 skills["EnchantmentOfThunderOnKill"] = {
-name = "雷电之誓",
+	name = "雷电之誓",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.625,
 	incrementalEffectiveness = 0.035000000149012,
-description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷却时间. ",
+	description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [31] = true, [35] = true, [42] = true, [36] = true, [83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -1887,12 +1887,12 @@ description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷
 	},
 }
 skills["EnchantmentOfThunderOnKill2"] = {
-name = "雷电之律",
+	name = "雷电之律",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.625,
 	incrementalEffectiveness = 0.035000000149012,
-description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷却时间. ",
+	description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [31] = true, [35] = true, [42] = true, [36] = true, [83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -1919,12 +1919,12 @@ description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷
 	},
 }
 skills["EnchantmentOfThunderOnKill3"] = {
-name = "雷电之令",
+	name = "雷电之令",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.625,
 	incrementalEffectiveness = 0.035000000149012,
-description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷却时间. ",
+	description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [31] = true, [35] = true, [42] = true, [36] = true, [83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -1951,12 +1951,12 @@ description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷
 	},
 }
 skills["EnchantmentOfThunderOnKill4"] = {
-name = "雷电之诫",
+	name = "雷电之诫",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.625,
 	incrementalEffectiveness = 0.035000000149012,
-description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷却时间. ",
+	description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷却时间. ",
 	skillTypes = { [2] = true, [11] = true, [31] = true, [35] = true, [42] = true, [36] = true, [83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -1983,10 +1983,10 @@ description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷
 	},
 }
 skills["EnchantmentOfWarOnKill"] = {
-name = "战争之誓",
+	name = "战争之誓",
 	hidden = true,
 	color = 4,
-description = "召唤一个你所使用的武器的复制体来攻击敌人. 此技能有短暂冷却时间. ",
+	description = "召唤一个你所使用的武器的复制体来攻击敌人. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [25] = true, [28] = true, [24] = true, [12] = true, [47] = true, [57] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -2026,10 +2026,10 @@ description = "召唤一个你所使用的武器的复制体来攻击敌人. 此
 	},
 }
 skills["EnchantmentOfWarOnKill2"] = {
-name = "战争之律",
+	name = "战争之律",
 	hidden = true,
 	color = 4,
-description = "召唤一个你所使用的武器的复制体来攻击敌人. 此技能有短暂冷却时间. ",
+	description = "召唤一个你所使用的武器的复制体来攻击敌人. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [25] = true, [28] = true, [24] = true, [12] = true, [47] = true, [57] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -2069,10 +2069,10 @@ description = "召唤一个你所使用的武器的复制体来攻击敌人. 此
 	},
 }
 skills["EnchantmentOfWarOnKill3"] = {
-name = "战争之令",
+	name = "战争之令",
 	hidden = true,
 	color = 4,
-description = "召唤一个你所使用的武器的复制体来攻击敌人. 此技能有短暂冷却时间. ",
+	description = "召唤一个你所使用的武器的复制体来攻击敌人. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [25] = true, [28] = true, [24] = true, [12] = true, [47] = true, [57] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -2112,10 +2112,10 @@ description = "召唤一个你所使用的武器的复制体来攻击敌人. 此
 	},
 }
 skills["EnchantmentOfWarOnKill4"] = {
-name = "战争之诫",
+	name = "战争之诫",
 	hidden = true,
 	color = 4,
-description = "召唤一个你所使用的武器的复制体来攻击敌人. 此技能有短暂冷却时间. ",
+	description = "召唤一个你所使用的武器的复制体来攻击敌人. 此技能有短暂冷却时间. ",
 	skillTypes = { [1] = true, [25] = true, [28] = true, [24] = true, [12] = true, [47] = true, [57] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -2155,12 +2155,12 @@ description = "召唤一个你所使用的武器的复制体来攻击敌人. 此
 	},
 }
 skills["EnchantmentOfWinterWhenHit"] = {
-name = "冬之誓",
+	name = "冬之誓",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.0908999443054,
 	incrementalEffectiveness = 0.035000000149012,
-description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却时间.",
+	description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却时间.",
 	skillTypes = { [3] = true, [68] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [42] = true, [83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1.4,
@@ -2189,12 +2189,12 @@ description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却
 	},
 }
 skills["EnchantmentOfWinterWhenHit2"] = {
-name = "冬之律",
+	name = "冬之律",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.0908999443054,
 	incrementalEffectiveness = 0.035000000149012,
-description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却时间.",
+	description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却时间.",
 	skillTypes = { [3] = true, [68] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [42] = true, [83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1.4,
@@ -2223,12 +2223,12 @@ description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却
 	},
 }
 skills["EnchantmentOfWinterWhenHit3"] = {
-name = "冬之令",
+	name = "冬之令",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.0908999443054,
 	incrementalEffectiveness = 0.035000000149012,
-description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却时间.",
+	description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却时间.",
 	skillTypes = { [3] = true, [68] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [42] = true, [83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1.4,
@@ -2257,12 +2257,12 @@ description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却
 	},
 }
 skills["EnchantmentOfWinterWhenHit4"] = {
-name = "冬之诫",
+	name = "冬之诫",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.0908999443054,
 	incrementalEffectiveness = 0.035000000149012,
-description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却时间.",
+	description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却时间.",
 	skillTypes = { [3] = true, [68] = true, [2] = true, [10] = true, [11] = true, [17] = true, [18] = true, [19] = true, [26] = true, [36] = true, [42] = true, [83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1.4,

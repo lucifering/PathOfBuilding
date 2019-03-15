@@ -226,21 +226,21 @@ itemBases["红玉药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, },
-	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "被击中时，受到的火焰总伤害额外降低 20%", "+50% 火焰抗性" }, },
+	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "+50% 火焰抗性", "受到的火焰总伤害额外降低 20%" }, },
 	req = { level = 18, },
 }
 itemBases["蓝玉药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, },
-	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "被击中时，受到的冰霜总伤害额外降低 20%", "+50% 冰霜抗性" }, },
+	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "承受的冰霜总伤害降低 20%", "+50% 冰霜抗性" }, },
 	req = { level = 18, },
 }
 itemBases["黄玉药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, },
-	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "被击中时，受到的闪电总伤害额外降低 20%", "+50% 闪电抗性" }, },
+	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "+50% 闪电抗性", "受到的闪电总伤害额外降低 20%" }, },
 	req = { level = 18, },
 }
 itemBases["坚岩药剂"] = {
@@ -268,7 +268,7 @@ itemBases["石英药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, },
-	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "10% 几率躲避攻击击中", "10% 几率躲避法术击中", "【迷踪】状态" }, },
+	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "【迷踪】状态", "10% 几率躲避攻击击中", "10% 几率躲避法术击中" }, },
 	req = { level = 27, },
 }
 itemBases["翠玉药剂"] = {
@@ -320,7 +320,7 @@ itemBases["灰岩药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, },
-	flask = { duration = 5, chargesUsed = 20, chargesMax = 50, buff = { "获得 +35% 火焰、冰霜、闪电抗性" }, },
+	flask = { duration = 5, chargesUsed = 20, chargesMax = 50, buff = { "获得 +35% 元素抗性" }, },
 	req = { level = 8, },
 }
 itemBases["宝钻药剂"] = {

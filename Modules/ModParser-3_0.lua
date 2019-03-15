@@ -622,6 +622,7 @@ local modFlagList = {
 	["闪电技能的"] = { keywordFlags = KeywordFlag.Lightning }, --备注：with lightning skills
 	["冰霜技能的"] = { keywordFlags = KeywordFlag.Cold }, --备注：with cold skills
 	["火焰技能的"] = { keywordFlags = KeywordFlag.Fire }, --备注：with fire skills
+	["诅咒技能的"] = { keywordFlags = KeywordFlag.Curse }, 
 	--【中文化程序额外添加结束】
 	-- Weapon types
 	["斧类攻击的"] = { flags = ModFlag.Axe }, --备注：with axes
@@ -1398,6 +1399,7 @@ local specialModList = {
 	["闪电伤害的 ([%d%.]+)%% 会转化为能量护盾偷取"]= function(num) return {  mod("LightningDamageEnergyShieldLeech", "BASE", num)  } end, 
 	["法术伤害的 ([%d%.]+)%% 会转化为能量护盾偷取"]= function(num) return {  mod("DamageEnergyShieldLeech", "BASE", num,nil, ModFlag.Spell)  } end, 
 	["敌人身上每有 1 个诅咒，法术伤害的 ([%d%.]+)%% 会转化为能量护盾偷取"] = function(num) return {  mod("DamageEnergyShieldLeech", "BASE", num,nil, ModFlag.Spell,{ type = "Multiplier", var = "CurseOnEnemy" })  } end, 
+	["敌人身上每有 1 个诅咒，法术伤害的 ([%d%.]+)%% 便转化为能量护盾偷取"] = function(num) return {  mod("DamageEnergyShieldLeech", "BASE", num,nil, ModFlag.Spell,{ type = "Multiplier", var = "CurseOnEnemy" })  } end, 
 	["拥有【秘术增强】效果时，法术伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Spell,{ type = "Condition", var = "AffectedByArcaneSurge" })  } end, 
 	["攻击伤害的 ([%d%.]+)%% 会转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack)  } end, 
 	["药剂持续期间，物理攻击伤害的 ([%d%.]+)%% 作为生命偷取"]= function(num) return {  mod("PhysicalDamageLifeLeech", "BASE", num,nil, ModFlag.Attack,{ type = "Condition", var = "UsingFlask" })  } end, 

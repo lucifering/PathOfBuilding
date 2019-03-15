@@ -189,6 +189,7 @@ return {
 	skill("castTimeOverride", nil),
 	div = 1000,
 },
+
 --
 -- Defensive modifiers
 --
@@ -285,7 +286,7 @@ return {
 	div = 100,
 },
 ["base_energy_shield_leech_from_spell_damage_permyriad"] = {
- mod("DamageEnergyShieldLeech", "BASE", nil, ModFlag.Spell),
+	mod("DamageEnergyShieldLeech", "BASE", nil, ModFlag.Spell),
 	div = 100,
 },
 ["damage_+%_while_life_leeching"] = {
@@ -1036,6 +1037,5 @@ return {
 ["banner_area_of_effect_+%_per_stage"] = {
 	mod("AreaOfEffect", "INC", nil, 0, 0, { type = "Multiplier", var = "BannerStage" }, { type = "Condition", var = "BannerPlanted" }),
 },
-
 
 }

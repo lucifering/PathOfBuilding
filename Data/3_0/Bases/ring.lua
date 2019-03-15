@@ -48,7 +48,7 @@ itemBases["红玉戒指"] = {
 itemBases["三相戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
-	implicit = "获得 +(8-10)% 火焰、冰霜、闪电抗性",
+	implicit = "获得 +(8-10)% 元素抗性",
 	req = { level = 30, },
 }
 itemBases["月光石戒指"] = {
@@ -122,7 +122,7 @@ itemBases["合金戒指"] = {
 itemBases["蛋白石戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, not_for_sale = true, atlas_base_type = true, ringatlas2 = true, },
-	implicit = "火焰、冰霜、闪电伤害提高 (15-25)%",
+	implicit = "元素伤害提高 (15-25)%",
 	req = { level = 80, },
 }
 

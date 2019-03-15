@@ -93,12 +93,12 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 		modList:NewMod("Condition:InnervationActive", "FLAG", true, "Config")
 	end },
 	
-{ label = "Infusion:", ifSkill = "Infused Channelling" },
-	{ var = "infusedChannellingInfusion", type = "check", label = "Is Infusion active?", ifSkill = "Infused Channelling", apply = function(val, modList, enemyModList)
+{ label = "【灌注】:", ifSkill = "灌能吟唱(辅)" },
+	{ var = "infusedChannellingInfusion", type = "check", label = "激活【灌注】?", ifSkill = "灌能吟唱(辅)", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:InfusionActive", "FLAG", true, "Config")
 	end },
-{ label = "Intensify:", ifSkill = "Intensify" },
-	{ var = "intensifyIntensity", type = "count", label = "# of Intensity:", ifSkill = "Intensify", apply = function(val, modList, enemyModList)
+{ label = "【法术凝聚】:", ifSkill = "法术凝聚（辅）" },
+	{ var = "intensifyIntensity", type = "count", label = "# 层【法术凝聚】:", ifSkill = "法术凝聚（辅）", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:Intensity", "BASE", m_min(val, 4), "Config")
 	end },
 { label = "召唤灵体:", ifSkill = "召唤灵体" },
@@ -134,8 +134,8 @@ modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", 
 { var = "vortexCastOnFrostbolt", type = "check", label = "由【寒冰弹】触发?", ifSkill = "漩涡", apply = function(val, modList, enemyModList)
 modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "SkillName", skillName = "漩涡" })
 	end },
-{ label = "Wave of Conviction:", ifSkill = "Wave of Conviction" },
-	{ var = "waveOfConvictionExposureType", type = "list", label = "Exposure Type:", ifSkill = "Wave of Conviction", list = {{val=0,label="None"},{val="Fire",label="Fire"},{val="Cold",label="Cold"},{val="Lightning",label="Lightning"}}, apply = function(val, modList, enemyModList)
+{ label = "定罪波:", ifSkill = "定罪波" },
+	{ var = "waveOfConvictionExposureType", type = "list", label = "易伤负面效果类型:", ifSkill = "定罪波", list = {{val=0,label="无"},{val="Fire",label="火焰"},{val="Cold",label="冰霜"},{val="Lightning",label="闪电"}}, apply = function(val, modList, enemyModList)
 		if val == "Fire" then
 			modList:NewMod("Condition:WaveOfConvictionFireExposureActive", "FLAG", true, "Config")
 		elseif val == "Cold" then

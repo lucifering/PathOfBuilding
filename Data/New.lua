@@ -4,7 +4,7 @@
 data.uniques.new = {
 
 [[
-Maloney's Mechanism
+马洛尼的技巧
 华美箭袋
 联盟: 虚空忆境
 等级需求: 45
@@ -16,7 +16,7 @@ Maloney's Mechanism
 攻击击中有 5% 几率致盲敌人
 ]],
 [[
-Circle of Guilt(忆境)
+罪恶之环(忆境)
 锻铁戒指
 联盟: 虚空忆境
 Has Alt Variant: true
@@ -37,7 +37,7 @@ Has Alt Variant: true
 {variant:5}召唤的纯净哨兵伤害提高 (70-100)%
 忆境物品
 ]],[[
-Circle of Guilt(分裂)
+罪恶之环(分裂)
 锻铁戒指
 联盟: 虚空忆境
 版本: 增益效果
@@ -59,7 +59,7 @@ Circle of Guilt(分裂)
 分裂之物
 ]],
 [[
-Circle of Fear(忆境)
+恐惧之环(忆境)
 蓝玉戒指
 联盟: 虚空忆境
 Has Alt Variant: true
@@ -81,7 +81,7 @@ Has Alt Variant: true
 忆境物品
 ]],
 [[
-Circle of Fear(分裂)
+恐惧之环(分裂)
 蓝玉戒指
 联盟: 虚空忆境
 版本: 增益效果
@@ -103,7 +103,7 @@ Circle of Fear(分裂)
 分裂之物
 ]],
 [[
-Circle of Anguish(忆境)
+苦痛之环(忆境)
 红玉戒指
 联盟: 虚空忆境
 Has Alt Variant: true
@@ -125,7 +125,7 @@ Has Alt Variant: true
 忆境物品
 ]],
 [[
-Circle of Anguish(分裂)
+苦痛之环(分裂)
 红玉戒指
 联盟: 虚空忆境
 版本: 增益效果
@@ -147,7 +147,7 @@ Circle of Anguish(分裂)
 分裂之物
 ]],
 [[
-Circle of Nostalgia(忆境)
+乡愁之环(忆境)
 紫晶戒指
 联盟: 虚空忆境
 Has Alt Variant: true
@@ -168,7 +168,7 @@ Has Alt Variant: true
 {variant:5}召唤的苦痛爬行者伤害提高 (70-100)%
 忆境物品
 ]],[[
-Circle of Nostalgia(分裂)
+乡愁之环(分裂)
 紫晶戒指
 联盟: 虚空忆境
 版本: 增益效果
@@ -189,7 +189,7 @@ Circle of Nostalgia(分裂)
 在合成器进行合成时，合成后的新物品有额外一条【捷光环】词缀
 分裂之物
 ]],[[
-Circle of Regret(忆境)
+悔恨之环(忆境)
 黄玉戒指
 联盟: 虚空忆境
 Has Alt Variant: true
@@ -210,7 +210,7 @@ Has Alt Variant: true
 {variant:5}受到【闪电之捷】影响时，闪电伤害提高 (40-60)%
 忆境物品
 ]],[[
-Circle of Regret(分裂)
+悔恨之环(分裂)
 黄玉戒指
 版本: 增益效果
 版本: 魔力保留
@@ -232,7 +232,7 @@ Circle of Regret(分裂)
 分裂之物
 ]],
 [[
-Garb of the Ephemeral
+无常法袍
 智者之袍
 等级需求: 56
 该装备的能量护盾提高 (180-230)%
@@ -246,7 +246,7 @@ Garb of the Ephemeral
 联盟: 「虚空幻境」联盟限定
 ]],
 [[
-Offering of the Serpent
+暴君之握
 军团手套
 等级需求: 57
 +(15-25) 全属性
@@ -257,7 +257,7 @@ Offering of the Serpent
 生命回满时不会取消生命偷取效果
 ]],
 [[
-Perepiteia
+峰回路转
 艾兹麦刺盾
 等级需求: 62
 2% 几率躲避法术击中
@@ -271,7 +271,7 @@ Perepiteia
 分裂之物
 ]],
 [[
-March of the Legion
+军团的进击
 军团长靴
 等级需求: 58
 此物品上装备的【光环技能石】等级 +2
@@ -291,7 +291,7 @@ March of the Legion
 施放诅咒触发插槽内的诅咒法术
 ]],
 [[
-Mask of the Tribunal
+裁决面罩
 行政者战冠
 等级需求: 58
 +(25-30) 全属性 
@@ -302,7 +302,7 @@ Mask of the Tribunal
 每 250 总和属性减少 1% 魔力保留
 ]],
 [[
-Hyrri's Truth
+西里的真相
 翠玉护身符
 等级需求: 7
 +(20-30) 敏捷
@@ -314,7 +314,7 @@ Hyrri's Truth
 物理攻击伤害的 (0.8-1)% 会转化为生命偷取
 ]],
 [[
-The Eternity Shroud
+永恒幽影
 血色之衣
 等级需求: 65
 塑界之器
@@ -326,7 +326,7 @@ The Eternity Shroud
 所有身上装备的物品皆为【塑界之器】时，击中无视目标的混沌抗性
 ]],
 [[
-Storm's Gift
+风暴赐福
 暗影护手
 等级需求: 58
 持续伤害效果提高 (20-30)%
@@ -336,7 +336,7 @@ Storm's Gift
 你制造的感电会扩散到半径 15 内的其他敌人上
 ]],
 [[
-Nebulis
+内布利斯
 虚影短杖
 等级需求: 68
 火焰、冰霜、闪电伤害提高 40%
@@ -345,7 +345,7 @@ Nebulis
 闪电抗性 75% 以上时, 每高 1% 闪电伤害提高 (15-20)%
 ]],
 [[
-Bottled Faith
+瓶中信仰
 硫磺药剂
 联盟: 「虚空幻境」联盟限定
 等级需求: 35

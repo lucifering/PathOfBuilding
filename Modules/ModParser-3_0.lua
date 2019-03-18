@@ -210,6 +210,8 @@ local modNameList = {
 	["魔力偷取总回复上限"] = "MaxManaLeechRate",
 	["能量护盾偷取总回复上限提高"] = "MaxEnergyShieldLeechRate",
 	["力量和智慧需求"]={ "StrRequirement","IntRequirement" }, 
+	["元素伤害"] = "ElementalDamage", --备注：elemental damage
+	["元素抗性"] = "ElementalResist", 
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -1728,6 +1730,17 @@ local specialModList = {
 	["受到【雷霆】影响时，闪电伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("LightningDamageManaLeech", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy雷霆" })  } end, 
 	["受到【雷霆】影响时，获得物理伤害 (%d+)%% 的额外闪电伤害"]= function(num) return {  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy雷霆" })  } end, 
 	["受到【雷霆】影响时，(%d+)%% 的物理伤害转化为闪电伤害"]= function(num) return {  mod("PhysicalDamageConvertToLightning", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy雷霆" })  } end, 
+	["受到【奋锐光环】影响时，位于奉献地面之上的敌人受到的暴击几率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy奋锐光环" },{ type = "ActorCondition", actor = "enemy", var = "OnConsecratedGround" })  } end, 
+	["受到【奋锐光环】影响时，从能量护盾偷取中获得的每秒最大总恢复量提高 (%d+)%%"]= function(num) return {  mod("MaxEnergyShieldLeechRate", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy奋锐光环" })  } end, 
+	["当你受到奋锐光环影响时，创造的【奉献地面】可以使敌人承受的伤害提高 (%d+)%%"]= function(num) return {  mod("EnemyModifier", "LIST", { mod = mod("DamageTaken", "INC", num) }, { type = "ActorCondition", actor = "enemy", var = "OnConsecratedGround" },{ type = "Condition", var = "AffectedBy奋锐光环" })  } end, 
+	["受【怨毒光环】影响时，([%+%-]?%d+)%% 非异常状态的持续混沌伤害加成"]= function(num) return {  mod("ChaosDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
+	["受【怨毒光环】影响时，([%+%-]?%d+)%% 非异常状态混沌伤害持续时间加成"]= function(num) return {  mod("ChaosDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
+	["受【怨毒光环】影响时，([%+%-]?%d+)%% 持续冰霜伤害加成"]= function(num) return {  mod("ColdDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
+	["受【怨毒光环】影响时，([%+%-]?%d+)%% 冰霜伤害持续时间加成"]= function(num) return {  mod("ColdDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
+	["受到【怨毒光环】影响时，生命和能量护盾回复率提高 (%d+)%%"]= function(num) return {  
+	mod("EnergyShieldRecoveryRate", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" }),
+	mod("LifeRecoveryRate", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })
+	  } end, 
 	["装备时施放 (%d+) 级的【艾贝拉斯之怒】"]= function(num) return{mod("ExtraSkill", "LIST", { skillId = "RepeatingShockwave", level = tonumber(num)}) }end, 
 	["每 (%d+) 点敏捷提高 %+(%d+) 最大生命"] =function(_,num1,num2) return {  mod("Life", "BASE", tonumber(num2),{ type = "PerStat", stat = "Dex", div = tonumber(num1) })  } end, 
 	["最大魔力每有 (%d+) 点，则有 (%d+)%% 几率不被攻击和法术击中，最多 (%d+)%%"]=function(_,num1,num2,num3) return {  
@@ -2075,6 +2088,11 @@ local specialModList = {
 			mod("ElementalDamageTaken", "MORE", -20, { type = "Condition", var = "Divinity" }),
 		},
 	["追忆词缀"] = { mod("Multiplier:SynthesisedItem", "BASE", 1) }, 
+	["【定罪波】的特效会使元素抗性 ([%+%-]?%d+)%%"]	= function(num) return {  
+	mod("EnemyModifier", "LIST", { mod = mod("FireResist", "BASE", num,{ type = "GlobalEffect", effectType = "Debuff", effectName = "Fire Exposure", effectCond = "WaveOfConvictionFireExposureActive" }) }, { type = "Condition", var = "WaveOfConvictionFireExposureActive" }),
+	mod("EnemyModifier", "LIST", { mod = mod("ColdResist", "BASE", num,{ type = "GlobalEffect", effectType = "Debuff", effectName = "Cold Exposure", effectCond = "WaveOfConvictionColdExposureActive" }) }, { type = "Condition", var = "WaveOfConvictionColdExposureActive" }),
+	mod("EnemyModifier", "LIST", { mod = mod("LightningResist", "BASE", num,{ type = "GlobalEffect", effectType = "Debuff", effectName = "Lightning Exposure", effectCond = "WaveOfConvictionLightningExposureActive" }) }, { type = "Condition", var = "WaveOfConvictionLightningExposureActive" }),
+	} end,  
 	--[[
 	["每 (%d+) 总和属性减少 (%d+)%% 魔力保留"] = function(_,num1,num2) return {  mod("ManaReserved", "INC", -tonumber(num2),{ type = "PerStat", statList = { "Str", "Dex", "Int" }, div = tonumber(num1) } )  } end,  
 	]]--
@@ -2748,6 +2766,7 @@ local penTypes = {
 	["火焰、冰霜、闪电抗性"] = "ElementalPenetration", --备注：elemental resistance
 	["获得 ([%+%-]?%d+)%% 火焰、冰霜、闪电抗性"] = "ElementalPenetration", --备注：elemental resistances
 	["混沌抗性"] = "ChaosPenetration", --备注：chaos resistance
+	["元素抗性"] = "ElementalPenetration",
 }
 local regenTypes = {
 	["生命"] = "LifeRegen", --备注：life

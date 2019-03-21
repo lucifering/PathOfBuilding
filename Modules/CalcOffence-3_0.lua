@@ -800,7 +800,7 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 				output.PreEffectiveCritChance = 100
 				output.CritChance = 100
 			else
-				local base = skillModList:Sum("BASE", cfg, "CritChance") and (env.mode_effective and enemyDB:Sum("BASE", nil, "SelfCritChance") or 0)
+				local base = skillModList:Sum("BASE", cfg, "CritChance") + (env.mode_effective and enemyDB:Sum("BASE", nil, "SelfCritChance") or 0)
 				local inc = skillModList:Sum("INC", cfg, "CritChance") + (env.mode_effective and enemyDB:Sum("INC", nil, "SelfCritChance") or 0)
 				local more = skillModList:More(cfg, "CritChance")
 				local enemyExtra = env.mode_effective and enemyDB:Sum("BASE", nil, "SelfExtraCritChance") or 0

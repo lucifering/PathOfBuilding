@@ -1735,6 +1735,8 @@ local specialModList = {
 	["魔像每秒回复 ([%d%.]+)%% 最大生命"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("LifeRegenPercent", "BASE", num) },{ type = "SkillType", skillType = SkillType.Golem })  } end,
 	["若你有 3 个起源天赋珠宝，召唤魔像的数量 %+(%d)"] = function(num) return { mod("ActiveGolemLimit", "BASE", num, { type = "MultiplierThreshold", var = "PrimordialItem", threshold = 3 }) } end,
 	["你身上的每层中毒状态使你获得 %+(%d+)%% 混沌抗性"]= function(num) return {  mod("ChaosResist", "BASE", num, { type = "Multiplier", var = "PoisonStack" } )  } end,
+	["召唤的苦痛爬行者伤害提高 (%d+)%%"]= function(num) return {  mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) }, { type = "SkillId", skillId = "HeraldOfAgony" })   } end,
+	["召唤的苦痛爬行者额外发射 (%d+) 的投射物"]= function(num) return {  mod("MinionModifier", "LIST", { mod = mod("ProjectileCount", "BASE", num) }, { type = "SkillId", skillId = "HeraldOfAgony" })   } end,
 	["受到【愤怒】影响时，(%d+)%% 的物理伤害转化为火焰伤害"]= function(num) return {  mod("PhysicalDamageConvertToFire", "BASE", num,{ type = "Condition", var = "AffectedBy愤怒" })  } end, 
 	["受到【愤怒】影响时，火焰伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("FireDamageLifeLeech", "BASE", num,{ type = "Condition", var = "AffectedBy愤怒" })  } end, 
 	["受到【愤怒】影响时，获得物理伤害 (%d+)%% 的额外火焰伤害"]= function(num) return {  mod("PhysicalDamageGainAsFire", "BASE", num,{ type = "Condition", var = "AffectedBy愤怒" })  } end, 

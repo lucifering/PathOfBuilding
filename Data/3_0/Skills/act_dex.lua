@@ -191,10 +191,10 @@ skills["Barrage"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "1 Projectile",
+name = "1 个投射物",
 		},
 		{
-			name = "All Projectiles",
+name = "所有投射物",
 		},
 	},
 	setupFunc = function(activeSkill, output)
@@ -358,13 +358,13 @@ skills["ChargedAttack"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "1 Stage",
+name = "1 阶",
 		},
 		{
-			name = "6 Stages",
+name = "6 阶",
 		},
 		{
-			name = "Release at 6 Stages",
+name = "6 阶时释放",
 		},
 	},
 	statMap = {
@@ -446,13 +446,13 @@ skills["BladeVortex"] = {
 	castTime = 0.5,
 	parts = {
 		{
-			name = "0 Blades",
+name = "0 飞刃",
 		},
 		{
-			name = "5 Blades",
+name = "5 飞刃",
 		},
 		{
-			name = "10 Blades",
+name = "10 飞刃",
 		},
 	},
 	statMap = {
@@ -702,10 +702,10 @@ skills["BlastRain"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "1 explosion",
+name = "1 爆炸",
 		},
 		{
-			name = "4 explosions",
+name = "4 爆炸",
 		},
 	},
 	baseFlags = {
@@ -1273,12 +1273,12 @@ skills["CorpseEruption"] = {
 	castTime = 0.6,
 	parts = {
 		{
-			name = "Spell",
+name = "法术",
 			spell = true,
 			cast = false,
 		},
 		{
-			name = "Corpse Explosion",
+name = "灵柩爆炸",
 			spell = false,
 			cast =  true,
 		},
@@ -1612,12 +1612,12 @@ skills["DetonateDead"] = {
 	castTime = 0.6,
 	parts = {
 		{
-			name = "Spell",
+name = "法术",
 			spell = true,
 			cast = false,
 		},
 		{
-			name = "Corpse Explosion",
+name = "灵柩爆炸",
 			spell = false,
 			cast =  true,
 		},
@@ -1695,12 +1695,12 @@ skills["VaalDetonateDead"] = {
 	castTime = 0.6,
 	parts = {
 		{
-			name = "Spell",
+name = "法术",
 			spell = true,
 			cast = false,
 		},
 		{
-			name = "Corpse Explosion",
+name = "灵柩爆炸",
 			spell = false,
 			cast =  true,
 		},
@@ -2020,13 +2020,13 @@ skills["ElementalHit"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "Fire",
+name = "火焰",
 		},
 		{
-			name = "Cold",
+name = "冰霜",
 		},
 		{
-			name = "Lightning",
+name = "闪电",
 		},
 	},
 	baseFlags = {
@@ -2198,19 +2198,19 @@ skills["ExplosiveArrow"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "Explosion (1 fuse)",
+name = "爆炸 (1 箭)",
 			attack = false,
 			area = true,
 			cast = true,
 		},
 		{
-			name = "Explosion (5 fuses)",
+name = "爆炸 (5 箭)",
 			attack = false,
 			area = true,
 			cast = true,
 		},
 		{
-			name = "Arrow",
+name = "箭矢",
 			attack = true,
 			area = false,
 			cast = false,
@@ -2785,12 +2785,12 @@ skills["FrostBlades"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "Melee hit",
+name = "近战击中",
 			melee = true,
 			projectile = false,
 		},
 		{
-			name = "Icy blades",
+name = "冰霜之刃",
 			melee = false,
 			projectile = true,
 		},
@@ -3452,11 +3452,11 @@ skills["IceShot"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "Arrow",
+name = "箭矢",
 			area = false,
 		},
 		{
-			name = "Cone",
+name = "扇形区域",
 			area = true,
 		},
 	},
@@ -3610,10 +3610,10 @@ skills["DoubleSlash"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "One slash",
+name = "一次冲击波",
 		},
 		{
-			name = "Both slashes",
+name = "所有冲击波",
 		},
 	},
 	statMap = {
@@ -3849,7 +3849,7 @@ skills["LightningStrike"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "Melee hit",
+name = "近战击中",
 			melee = true,
 			projectile = false,
 		},
@@ -3948,10 +3948,10 @@ skills["VaalLightningStrike"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "Strike",
+name = "打击",
 		},
 		{
-			name = "Beams",
+name = "光束",
 		},
 	},
 	statMap = {
@@ -4750,13 +4750,13 @@ skills["Reave"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "No stages",
+name = "0 阶",
 		},
 		{
-			name = "4 stages",
+name = "4 阶",
 		},
 		{ 
-			name = "8 stages",
+name = "8 阶",
 		},
 	},
 	statMap = {
@@ -5017,13 +5017,13 @@ skills["ScourgeArrow"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "No stages",
+name = "0 阶",
 		},
 		{
-			name = "Release at 5 Stages",
+name = "5 阶释放",
 		},
 		{ 
-			name = "Thorn Arrows"
+name = "荆棘箭",
 		},
 	},
 	statMap = {
@@ -5115,11 +5115,11 @@ skills["ShatteringSteel"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "Projectile",
+name = "投射物",
 			area = false,
 		},
 		{
-			name = "Cone",
+name = "扇形区域",
 			area = true,
 		},
 	},
@@ -5274,11 +5274,11 @@ skills["ShrapnelShot"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "Arrow",
+name = "箭矢",
 			area = false,
 		},
 		{
-			name = "Cone",
+name = "扇形区域",
 			area = true,
 		},
 	},
@@ -5506,10 +5506,10 @@ skills["ThrownShield"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "Shield",
+name = "盾牌",
 		},
 		{
-			name = "Shards",
+name = "碎片",
 		},
 	},
 	statMap = {
@@ -6312,12 +6312,12 @@ skills["VolatileDead"] = {
 	castTime = 0.8,
 	parts = {
 		{
-			name = "Spell",
+name = "法术",
 			spell = true,
 			cast = false,
 		},
 		{
-			name = "Corpse Explosion",
+name = "灵柩爆炸",
 			spell = false,
 			cast =  true,
 		},
@@ -6477,42 +6477,42 @@ skills["WildStrike"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "Fire hit",
+name = "火焰击中",
 			melee = true,
 			projectile = false,
 			chaining = false,
 			area = false,
 		},
 		{
-			name = "Fire explosion",
+name = "火焰爆炸",
 			melee = false,
 			projectile = false,
 			chaining = false,
 			area = true,
 		},
 		{
-			name = "Lightning hit",
+name = "闪电击中",
 			melee = true,
 			projectile = false,
 			chaining = false,
 			area = false,
 		},
 		{
-			name = "Lightning bolt",
+name = "闪电弧",
 			melee = false,
 			projectile = false,
 			chaining = true,
 			area = false,
 		},
 		{
-			name = "Cold hit",
+name = "冰霜击中",
 			melee = true,
 			projectile = false,
 			chaining = false,
 			area = false,
 		},
 		{
-			name = "Icy wave",
+name = "冰霜波",
 			melee = false,
 			projectile = true,
 			chaining = false,

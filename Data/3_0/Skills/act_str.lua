@@ -1135,10 +1135,10 @@ skills["Earthquake"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "Initial impact",
+name = "初始冲击",
 		},
 		{
-			name = "Aftershock",
+name = "余震",
 		},
 	},
 	statMap = {
@@ -1226,10 +1226,10 @@ skills["VaalEarthquake"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "Initial impact",
+name = "初始冲击",
 		},
 		{
-			name = "Aftershock",
+name = "余震",
 		},
 	},
 	statMap = {
@@ -2034,13 +2034,13 @@ skills["IceCrash"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "First Hit",
+name = "初段击中",
 		},
 		{
-			name = "Second Hit",
+name = "次段击中",
 		},
 		{
-			name = "Third Hit",
+name = "三段击中",
 		},
 	},
 	statMap = {
@@ -2591,13 +2591,13 @@ skills["MoltenStrike"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "Melee Hit",
+name = "近战击中",
 			melee = true,
 			projectile = false,
 			area = false,
 		},
 		{
-			name = "Magma Balls",
+name = "熔岩球",
 			melee = false,
 			projectile = true,
 			area = true,
@@ -3491,13 +3491,13 @@ skills["StaticStrike"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "Melee hit",
+name = "近战击中",
 		},
 		{
-			name = "Beams - 1 Stack",
+name = "光束 - 1 层",
 		},
 		{
-			name = "Beams - 3 Stacks",
+name = "光束 - 3 层",
 		},
 	},
 	statMap = {
@@ -3754,10 +3754,10 @@ skills["Sunder"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "Primary wave",
+name = "初始冲击波",
 		},
 		{
-			name = "Shockwaves",
+name = "冲击波",
 		},
 	},
 	statMap = {

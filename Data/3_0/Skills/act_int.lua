@@ -338,7 +338,8 @@ skills["AssassinsMark"] = {
 			mult = -1,
 		},
 		["enemy_additional_critical_strike_chance_against_self"] = {
-			mod("SelfCritChance", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+			mod("SelfCritChance", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+			div=100
 		},
 		["life_granted_when_killed"] = {
 			mod("SelfLifeOnKill", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
@@ -811,12 +812,12 @@ skills["CorpseWarp"] = {
 	castTime = 0.6,
 	parts = {
 		{
-			name = "Self Explosion",
+name = "自身附近爆炸",
 			spell = true,
 			cast = false,
 		},
 		{
-			name = "Corpse Explosion",
+name = "灵柩爆炸",
 			spell = false,
 			cast =  true,
 		},
@@ -1643,10 +1644,10 @@ skills["DarkPact"] = {
 	castTime = 0.5,
 	parts = {
 		{
-			name = "Cast on Player",
+name = "玩家上施放",
 		},
 		{
-			name = "Cast on Skeleton",
+name = "灵侍上施放",
 		},
 	},
 	setupFunc = function(activeSkill, output)
@@ -2064,15 +2065,15 @@ skills["DivineTempest"] = {
 	castTime = 0.22,
 	parts = {
 		{
-			name = "Channelling",
+name = "持续吟唱期间",
 			area = false,
 		},
 		{
-			name = "Release at 10 Stages",
+name = "10 阶释放",
 			area = true,
 		},
 		{
-			name = "Release at 20 Stages",
+name = "20 阶释放",
 			area = true,
 		},
 	},
@@ -2485,11 +2486,11 @@ skills["Fireball"] = {
 	castTime = 0.75,
 	parts = {
 		{
-			name = "Projectile",
+name = "投射物",
 			area = false,
 		},
 		{
-			name = "Explosion",
+name = "爆炸",
 			area = true,
 		},
 	},
@@ -2566,11 +2567,11 @@ skills["VaalFireballSpiralNova"] = {
 	castTime = 0.75,
 	parts = {
 		{
-			name = "Projectile",
+name = "投射物",
 			area = false,
 		},
 		{
-			name = "Explosion",
+name = "爆炸",
 			area = true,
 		},
 	},
@@ -2871,10 +2872,10 @@ skills["Flameblast"] = {
 	castTime = 0.2,
 	parts = {
 		{
-			name = "1 Stage",
+name = "1 阶",
 		},
 		{
-			name = "10 Stages",
+name = "10 阶",
 		},
 	},
 	statMap = {
@@ -3891,16 +3892,16 @@ skills["IceSpear"] = {
 	castTime = 0.7,
 	parts = {
 		{
-			name = "First Form, 1 Projectile",
+name = "第一状态, 1 个投射物",
 		},
 		{
-			name = "Second Form, 1 Projectile",
+name = "第二状态, 1个投射物",
 		},
 		{
-			name = "First Form, All Projectiles",
+name = "第一状态, 所有投射物",
 		},
 		{
-			name = "Second Form, All Projectiles",
+name = "第二状态, 所有投射物",
 		},
 	},
 	statMap = {
@@ -3991,16 +3992,16 @@ skills["ExpandingFireCone"] = {
 	castTime = 0.2,
 	parts = {
 		{
-			name = "No stages",
+name = "0 阶",
 		},
 		{
-			name = "Half stages",
+name = "一半阶数",
 		},
 		{
-			name = "Maximum stages",
+name = "最大阶数",
 		},
 		{
-			name = "Release"
+name = "释放"
 		},
 	},
 	statMap = {
@@ -4102,11 +4103,11 @@ skills["ClusterBurst"] = {
 	castTime = 1,
 	parts = {
 		{
-			name = "Projectile",
+name = "投射物",
 			area = false,
 		},
 		{
-			name = "Explosions",
+name = "爆炸",
 			area = true,
 		},
 	},
@@ -5001,10 +5002,10 @@ skills["Sanctify"] = {
 	castTime = 0.7,
 	parts = {
 		{
-			name = "Initial hit",
+name = "初始击中",
 		},
 		{
-			name = "Shockwave",
+name = "冲击波",
 		},
 	},
 	statMap = {
@@ -5655,7 +5656,7 @@ skills["FireBeam"] = {
 	castTime = 0.5,
 	parts = {
 		{
-			name = "1 Stage",
+name = "1 阶",
 		},
 		{
 			name = "4 Stages",
@@ -5744,10 +5745,10 @@ skills["ShockNova"] = {
 	castTime = 0.7,
 	parts = {
 		{
-			name = "Ring",
+name = "环形部分",
 		},
 		{
-			name = "Nova",
+name = "新星",
 		},
 	},
 	statMap = {
@@ -7342,16 +7343,16 @@ skills["Wither"] = {
 	castTime = 0.28,
 	parts = {
 		{
-			name = "1 Stack",
+name = "1 层",
 		},
 		{
-			name = "5 Stacks",
+name = "5 层",
 		},
 		{
-			name = "10 Stacks",
+name = "10 层",
 		},
 		{
-			name = "15 Stacks",
+name = "15 层",
 		},
 	},
 	statMap = {

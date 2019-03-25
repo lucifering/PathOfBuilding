@@ -412,7 +412,7 @@ total = s_format("= %.2f ^8每秒", output.TotemPlacementSpeed),
 		end
 		output.ActiveTotemLimit = skillModList:Sum("BASE", skillCfg, "ActiveTotemLimit")
 		output.TotemLifeMod = calcLib.mod(skillModList, skillCfg, "TotemLife")
-		output.TotemLife = round(m_floor(env.data.monsterAllyLifeTable[skillData.totemLevel] * env.data.totemLifeMult[activeSkill.skillTotemId]) * output.TotemLifeMod)
+			output.TotemLife = round(m_floor(env.data.monsterAllyLifeTable[skillData.totemLevel] * env.data.totemLifeMult[activeSkill.skillTotemId]) * output.TotemLifeMod)
 		if breakdown then
 			breakdown.TotemLifeMod = breakdown.mod(skillCfg, "TotemLife")
 			breakdown.TotemLife = {
@@ -2101,3 +2101,4 @@ t_insert(breakdown.DecayDuration, s_format("/ %.2f ^8(更快或较慢 debuff消�
 		output.CombinedDPS = output.CombinedDPS + output.DecayDPS
 	end
 end
+

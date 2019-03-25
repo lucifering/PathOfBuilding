@@ -5918,7 +5918,7 @@ skills["Soulrend"] = {
 	baseEffectiveness = 4.2604999542236,
 	incrementalEffectiveness = 0.046399999409914,
 	description = "发射会在敌人面前转向他们的投射物，击中时造成伤害并穿透敌人，所造成的伤害会有一部分转化为能量护盾偷取。在飞行过程中，投射物会持续对周围一定范围内的敌人施加负面效果，造成短暂但强大的持续混沌伤害。",
-	skillTypes = { [2] = true, [11] = true, [12] = true, [3] = true, [40] = true, [10] = true, [50] = true, [26] = true, [36] = true, [17] = true, [19] = true, [18] = true, [81] = true, [83] = true, },
+	skillTypes = { [2] = true, [11] = true, [12] = true, [3] = true, [40] = true, [10] = true, [50] = true, [26] = true, [36] = true, [17] = true, [19] = true, [18] = true, [81] = true, [83] = true, [68] = true, },
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 0.8,
 	baseFlags = {

@@ -1386,8 +1386,15 @@ function ItemsTabClass:EnchantDisplayItem()
 	if haveSkills then
 		for _, socketGroup in ipairs(self.build.skillsTab.socketGroupList) do
 			for _, gemInstance in ipairs(socketGroup.gemList) do
+			
+			 
 				if gemInstance.gemData and not gemInstance.gemData.grantedEffect.support and enchantments[gemInstance.nameSpec] then
 					skillsUsed[gemInstance.nameSpec] = true
+					--处理瓦尔技能
+				elseif gemInstance.gemData and not gemInstance.gemData.grantedEffect.support 
+				and gemInstance.nameSpec:find("瓦尔.")
+				and enchantments[gemInstance.nameSpec:gsub("瓦尔.","")] then
+					skillsUsed[gemInstance.nameSpec:gsub("瓦尔.","")] = true
 				end
 			end
 		end
@@ -1396,6 +1403,7 @@ function ItemsTabClass:EnchantDisplayItem()
 		wipeTable(skillList)
 		for skillName in pairs(enchantments) do
 			if not onlyUsedSkills or not next(skillsUsed) or skillsUsed[skillName] then
+				
 				t_insert(skillList, skillName)
 			end
 		end
@@ -1428,11 +1436,15 @@ function ItemsTabClass:EnchantDisplayItem()
 		local item = new("Item", self.build.targetVersion, self.displayItem:BuildRaw())
 		item.id = self.displayItem.id
 		for i = 1, item.implicitLines do 
-			t_remove(item.modLines, 1)
+			if item.modLines~=nil and item.modLines[i]~=nil and  item.modLines[i].crafted then
+					
+					t_remove(item.modLines, i)
+					item.implicitLines =item.implicitLines -1
+			end
 		end
 		local list = haveSkills and enchantments[controls.skill.list[controls.skill.selIndex]] or enchantments
 		t_insert(item.modLines, 1, { crafted = true, line = list[controls.labyrinth.list[controls.labyrinth.selIndex].name][controls.enchantment.selIndex] })
-		item.implicitLines = 1
+		item.implicitLines = item.implicitLines+1
 		item:BuildAndParseRaw()
 		return item
 	end
@@ -1569,7 +1581,8 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 					if craft.master then
 						label = craft.master .. " " .. craft.masterLevel .. "   "..craft.type:sub(1,3).."^8[" .. table.concat(craft, "/") .. "]"
 					else
-						label = table.concat(craft, "/")
+						label =craft.type:sub(1,3).."^8[" .. table.concat(craft, "/") .. "]"
+												
 					end
 					
 					t_insert(modList, {

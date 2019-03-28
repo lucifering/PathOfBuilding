@@ -223,6 +223,7 @@ local modNameList = {
 	["从魔力偷取中获得的每秒最大总恢复量"] = "MaxManaLeechRate",
 	["攻击伤害格挡几率上限"] = "BlockChanceMax", 
 	["你身上的药剂效果"] = "FlaskEffect",
+	["冷却恢复速度"] = "CooldownRecovery", 
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength

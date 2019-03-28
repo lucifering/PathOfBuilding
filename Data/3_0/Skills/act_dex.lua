@@ -5516,9 +5516,9 @@ name = "碎片",
 		["thrown_shield_secondary_projectile_damage_+%_final"] = {
 			mod("Damage", "MORE", nil, 0, 0, { type = "SkillPart", skillPart = 2 }),
 		},
-		["override_off_hand_base_critical_strike_chance_to_5%"] = {
-			skill("setOffHandBaseCritChance", 5),
-		},
+		
+		 
+		
 		["off_hand_local_minimum_added_physical_damage"] = {
 			skill("setOffHandPhysicalMin", nil),
 		},
@@ -5545,6 +5545,7 @@ name = "碎片",
 		shieldAttack = true,
 	},
 	baseMods = {
+	skill("setOffHandBaseCritChance",5),
 	},
 	qualityStats = {
 		{ "projectile_damage_+%", 1 },

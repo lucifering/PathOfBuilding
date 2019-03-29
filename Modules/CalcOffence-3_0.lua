@@ -943,6 +943,8 @@ t_insert(breakdown[damageType], s_format("%s%d to %d ^8(附加伤害)", plus, ad
 		output.EnergyShieldLeechInstant = 0
 		output.ManaLeech = 0
 		output.ManaLeechInstant = 0
+		
+		
 		for pass = 1, 2 do
 			-- Pass 1 is critical strike damage, pass 2 is non-critical strike
 			cfg.skillCond["CriticalStrike"] = (pass == 1)
@@ -1006,7 +1008,7 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 						--[[如果不是元素  或者 不是 无视元素抗性 那么计算抗性收益
 						
 						]]--
-						
+						 
 						if not skillModList:Flag(cfg, "Ignore"..damageType.."Resistance", isElemental[damageType] and "IgnoreElementalResistances" or nil) and not enemyDB:Flag(nil, "SelfIgnore"..damageType.."Resistance") then
 							effMult = effMult * (1 - (resist - pen) / 100)
 						end
@@ -1018,6 +1020,7 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 						if env.mode == "CALCS" then
 							output[damageType.."EffMult"] = effMult
 						end
+						
 						if pass == 2 and breakdown and effMult ~= 1 then
 t_insert(breakdown[damageType], s_format("x %.3f ^8(有效 DPS 加成)", effMult))
 							breakdown[damageType.."EffMult"] = breakdown.effMult(damageType, resist, pen, taken, effMult)
@@ -1066,10 +1069,11 @@ t_insert(breakdown[damageType], s_format("x %.3f ^8(有效 DPS 加成)", effMult
 					min, max = 0, 0
 					if breakdown then
 						breakdown[damageType] = {
-							"You can't deal "..damageType.." damage"
+"你无法造成 "..damageType.." 伤害"
 						}
 					end
 				end
+				
 				if pass == 1 then
 					output[damageType.."CritAverage"] = (min + max) / 2
 					totalCritMin = totalCritMin + min
@@ -1107,14 +1111,21 @@ t_insert(breakdown[damageType], s_format("x %.3f ^8(有效 DPS 加成)", effMult
 				output.ManaLeech = output.ManaLeech + manaLeechTotal * portion
 			end
 		end
+		
 		output.TotalMin = totalHitMin
 		output.TotalMax = totalHitMax
 
-		if skillModList:Flag(skillCfg, "ElementalEquilibrium") and not env.configInput.EEIgnoreHitDamage and (output.FireHitAverage + output.ColdHitAverage + output.LightningHitAverage > 0) then
-			-- Update enemy hit-by-damage-type conditions
-			enemyDB.conditions.HitByFireDamage = output.FireHitAverage > 0
-			enemyDB.conditions.HitByColdDamage = output.ColdHitAverage > 0
-			enemyDB.conditions.HitByLightningDamage = output.LightningHitAverage > 0
+		if skillModList:Flag(skillCfg, "ElementalEquilibrium") and not env.configInput.EEIgnoreHitDamage 
+		and (output.FireHitAverage + output.ColdHitAverage + output.LightningHitAverage > 0) 
+		and not skillFlags.minion
+		then
+		 
+			-- Update enemy hit-by-damage-type conditions		
+			--enemyDB.conditions.HitByFireDamage = output.FireHitAverage > 0
+			--enemyDB.conditions.HitByColdDamage = output.ColdHitAverage > 0
+			--enemyDB.conditions.HitByLightningDamage = output.LightningHitAverage > 0
+			
+			 
 		end
 
 		if breakdown then

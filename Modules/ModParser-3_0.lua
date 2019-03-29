@@ -2163,8 +2163,9 @@ local specialModList = {
 	mod("EnemyModifier", "LIST", { mod = mod("ColdResist", "BASE", num,{ type = "GlobalEffect", effectType = "Debuff", effectName = "Cold Exposure", effectCond = "WaveOfConvictionColdExposureActive" }) }, { type = "Condition", var = "WaveOfConvictionColdExposureActive" }),
 	mod("EnemyModifier", "LIST", { mod = mod("LightningResist", "BASE", num,{ type = "GlobalEffect", effectType = "Debuff", effectName = "Lightning Exposure", effectCond = "WaveOfConvictionLightningExposureActive" }) }, { type = "Condition", var = "WaveOfConvictionLightningExposureActive" }),
 	} end,  
+	["被你嘲讽的敌人无法闪避攻击"] = { mod("EnemyModifier", "LIST", { mod = flag("CannotEvade", { type = "Condition", var = "Taunted" }) }) },
 	--[[
-	["每 (%d+) 总和属性减少 (%d+)%% 魔力保留"] = function(_,num1,num2) return {  mod("ManaReserved", "INC", -tonumber(num2),{ type = "PerStat", statList = { "Str", "Dex", "Int" }, div = tonumber(num1) } )  } end,  
+	["总属性每有 (%d+) 点，魔力保留降低 (%d+)%%"] = function(_,num1,num2) return {  mod("ManaReserved", "INC", -tonumber(num2),{ type = "PerStat", statList = { 'Str', 'Dex', 'Int' }, div = tonumber(num1),stat= "Dex" } )  } end,  
 	]]--
 	--【中文化程序额外添加结束】
 	-- Keystones

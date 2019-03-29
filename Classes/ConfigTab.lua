@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Module: Config Tab
 -- Configuration tab for the current build.
@@ -129,7 +129,7 @@ local ConfigTabClass = newClass("ConfigTab", "UndoHandler", "ControlHost", "Cont
 					end
 				end
 				control.tooltipText = function()
-					return "This option is specific to '"..self.build.spec.nodes[varData.ifNode].dn.."'."..(varData.tooltip and "\n"..varData.tooltip or "")
+return "这个是 '"..self.build.spec.nodes[varData.ifNode].dn.."'."..(varData.tooltip and "\n"..varData.tooltip or "".." 的专门配置选项")
 				end
 			elseif varData.ifOption then
 				control.shown = function()

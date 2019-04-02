@@ -1867,6 +1867,9 @@ local specialModList = {
 	["【燃火烧尽】最多 %+(%d+) 阶"]= function(num) return {
 			mod("Multiplier:IncinerateStage", "BASE", tonumber(num)/2, 0, 0, { type = "SkillPart", skillPart = 2 }),
 			mod("Multiplier:IncinerateStage", "BASE", tonumber(num), 0, 0, { type = "SkillPart", skillPart = 3 })	} end,	
+	["【烧毁】最多 %+(%d+) 阶"]= function(num) return {
+			mod("Multiplier:IncinerateStage", "BASE", tonumber(num)/2, 0, 0, { type = "SkillPart", skillPart = 2 }),
+			mod("Multiplier:IncinerateStage", "BASE", tonumber(num), 0, 0, { type = "SkillPart", skillPart = 3 })	} end,	
 	["回春图腾的光环效果提高 (%d+)%%"]= function(num) return {  mod("AuraEffect", "INC", tonumber(num),{ type = "SkillName", skillName ="回春图腾" })  } end, 
 	["火球有 %+(%d+)%% 几率点燃"]= function(num) return {  mod("EnemyIgniteChance", "BASE", tonumber(num),{ type = "SkillName", skillName ="火球" })  } end, 
 	["【([^\\x00-\\xff]*)】有 %+(%d+)%% 的几率点燃"]=  function(_,skill_name,num)  return {  mod("EnemyIgniteChance", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 

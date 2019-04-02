@@ -243,6 +243,10 @@ for _, targetVersion in ipairs(targetVersionList) do
 		Boots = dataModule("EnchantmentBoots"),
 		Gloves = dataModule("EnchantmentGloves"),
 	}
+	verData.synthesisedMods = {
+		Item = dataModule("ModSynthesised"),
+		
+	}
 	verData.essences = dataModule("Essence")
 	verData.delve = dataModule("ModDelve")
 

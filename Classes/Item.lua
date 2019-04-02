@@ -108,6 +108,7 @@ if self.rarity == "普通" or self.rarity == "魔法" then
 			or verData.itemMods[self.base.type] 
 			or verData.itemMods.Item
 		self.enchantments = verData.enchantments[self.base.type]
+		self.synthesisedMods = verData.synthesisedMods["Item"]
 		self.corruptable = self.base.type ~= "Flask"
 		self.shaperElderTags = data.specialBaseTags[self.type]
 		self.canBeShaperElder = self.shaperElderTags
@@ -441,6 +442,9 @@ t_insert(rawLines, "塑界之器")
 	end
 	if self.elder then
 t_insert(rawLines, "裂界之器")
+	end
+	if self.synthesised then
+t_insert(rawLines, "忆境物品")
 	end
 	if self.crafted then
 t_insert(rawLines, "工艺: true")

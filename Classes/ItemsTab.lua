@@ -326,9 +326,32 @@ self.controls.removeDisplayItem = new("ButtonControl", {"LEFT",self.controls.edi
 	self.controls.displayItemSectionImplicit = new("Control", {"TOPLEFT",self.controls.displayItemSectionSockets,"BOTTOMLEFT"}, 0, 0, 0, function()
 		return (self.controls.displayItemShaperElder:IsShown() or self.controls.displayItemEnchant:IsShown() or self.controls.displayItemCorrupt:IsShown()) and 28 or 0
 	end)
-self.controls.displayItemShaperElder = new("DropDownControl", {"TOPLEFT",self.controls.displayItemSectionImplicit,"TOPLEFT"}, 0, 0, 100, 20, {"通常","塑界者","裂界者"}, function(index, value)
-		self.displayItem.shaper = (index == 2)
-		self.displayItem.elder = (index == 3)
+	
+
+self.controls.displayItemShaperElder = new("DropDownControl", {"TOPLEFT",self.controls.displayItemSectionImplicit,"TOPLEFT"}, 0, 0, 100, 20, {"通常","塑界者","裂界者","忆境物品"}, function(index, value)
+		
+		
+		
+		if self.displayItem.rarity~='传奇' and self.displayItem.rarity~='遗产' then
+			if self.displayItem.type ~= "Jewel" then 
+				self.displayItem.shaper = (index == 2)
+				self.displayItem.elder = (index == 3)
+			end 
+			
+			self.displayItem.synthesised = (index == 4)
+			
+		else 			
+			--print(self.displayItem.synthesised )
+			if self.displayItem.synthesised  then 
+				
+			else
+				if self.displayItem.type ~= "Jewel" then 
+					self.displayItem.shaper = (index == 2)
+					self.displayItem.elder = (index == 3)
+				end 
+			end 
+		end 
+		
 		if self.displayItem.crafted then
 			for i = 1, self.displayItem.affixLimit do
 				-- Force affix selectors to update
@@ -340,9 +363,12 @@ self.controls.displayItemShaperElder = new("DropDownControl", {"TOPLEFT",self.co
 		self:UpdateDisplayItemTooltip()
 	end)
 	self.controls.displayItemShaperElder.shown = function()
-		return self.displayItem and self.displayItem.canBeShaperElder
+		--print(">>self.type="..self.displayItem.type)
+		return self.displayItem and (self.displayItem.canBeShaperElder or  
+		self.displayItem.type == "Jewel"
+		)
 	end
-self.controls.displayItemEnchant = new("ButtonControl", {"TOPLEFT",self.controls.displayItemShaperElder,"TOPRIGHT",true}, 8, 0, 160, 20, "增加附魔...", function()
+self.controls.displayItemEnchant = new("ButtonControl", {"TOPLEFT",self.controls.displayItemShaperElder,"TOPRIGHT",true}, 8, 0, 100, 20, "增加附魔...", function()
 		self:EnchantDisplayItem()
 	end)
 	self.controls.displayItemEnchant.shown = function()
@@ -354,7 +380,14 @@ self.controls.displayItemCorrupt = new("ButtonControl", {"TOPLEFT",self.controls
 	self.controls.displayItemCorrupt.shown = function()
 		return self.displayItem and self.displayItem.corruptable
 	end
-
+--追忆物品
+self.controls.displayItemSynthesis = new("ButtonControl", {"TOPLEFT",self.controls.displayItemCorrupt,"TOPRIGHT",true}, 8, 0, 100, 20, "追忆词缀", function()
+		self:SynthesisedDisplayItem()
+	end)
+	self.controls.displayItemSynthesis.shown = function()
+		return self.displayItem and self.displayItem.synthesised 
+	end
+	
 	-- Section: Affix Selection
 	self.controls.displayItemSectionAffix = new("Control", {"TOPLEFT",self.controls.displayItemSectionImplicit,"BOTTOMLEFT"}, 0, 0, 0, function()
 		if not self.displayItem.crafted then
@@ -1009,7 +1042,7 @@ function ItemsTabClass:SetDisplayItem(item)
 		if item.crafted then
 			self:UpdateAffixControls()
 		end
-		self.controls.displayItemShaperElder:SetSel((item.shaper and 2) or (item.elder and 3) or 1)
+		self.controls.displayItemShaperElder:SetSel((item.shaper and 2) or (item.elder and 3) or (item.synthesised and 4) or 1)
 		self:UpdateCustomControls()
 		self:UpdateDisplayItemRangeLines()
 	else
@@ -1487,6 +1520,132 @@ controls.close = new("ButtonControl", nil, 45, 100, 80, 20, "取消", function()
 	end)
 main:OpenPopup(550, 130, "装备附魔", controls)
 end
+
+
+-- 【【】】
+function ItemsTabClass:SynthesisedDisplayItem()
+local controls = { } 
+	local implicitList = { }
+	 
+	for modId, mod in pairs(self.displayItem.synthesisedMods) do
+		  
+		  local distag=self.displayItem.type
+		 
+		  if self.displayItem.type=="Jewel"  
+		  and self.displayItem.base and self.displayItem.base.subType and
+			self.displayItem.base.subType =="Abyss" then
+			 --print(self.displayItem.base.subType)
+			distag="AbyssJewel"
+		  end
+		if mod.types[distag] then			
+			t_insert(implicitList, mod)
+		end
+	end
+	
+	table.sort(implicitList, function(a, b)
+		local an = a[1]:lower():gsub("%(.-%)","$"):gsub("[%+%-%%]",""):gsub("%d+","$")
+		local bn = b[1]:lower():gsub("%(.-%)","$"):gsub("[%+%-%%]",""):gsub("%d+","$")
+		if an ~= bn then
+			return an < bn
+		else
+			return a.level < b.level
+		end
+	end)
+	
+	local function buildListSynthesised(control, other,other2)
+		local selfMod = control.selIndex and control.selIndex > 1 and control.list[control.selIndex].mod
+		local otherMod = other.selIndex and other.selIndex > 1 and other.list[other.selIndex].mod
+		local otherMod2 = other2.selIndex and other2.selIndex > 1 and other2.list[other2.selIndex].mod
+		wipeTable(control.list)
+		t_insert(control.list, { label = "None" })
+		
+		for _, mod in ipairs(implicitList) do
+			
+			 
+			if (other.list[other.selIndex]~=nil and other.list[other.selIndex].mod~=nil)
+			 and (other2.list[other2.selIndex]~=nil and other2.list[other2.selIndex].mod~=nil ) then
+				
+				if mod.group ~= other.list[other.selIndex].mod.group and mod.group ~= other2.list[other2.selIndex].mod.group then
+					t_insert(control.list, { label = table.concat(mod, "/"), mod = mod })	
+				end
+			
+			elseif (other.list[other.selIndex]~=nil and other.list[other.selIndex].mod~=nil and
+			mod.group ~= other.list[other.selIndex].mod.group) then			
+				t_insert(control.list, { label = table.concat(mod, "/"), mod = mod })	
+								
+			elseif (other2.list[other2.selIndex]~=nil and other2.list[other2.selIndex].mod~=nil and	mod.group ~= other2.list[other2.selIndex].mod.group) then
+				t_insert(control.list, { label = table.concat(mod, "/"), mod = mod })
+				
+			elseif (not otherMod and not otherMod2) then			
+				t_insert(control.list, { label = table.concat(mod, "/"), mod = mod })	
+			
+			end
+		 
+			
+		end
+		control:SelByValue(selfMod, "mod")
+	end
+	local function synthesisedItem()
+		local item = new("Item", self.build.targetVersion, self.displayItem:BuildRaw())
+		item.id = self.displayItem.id		
+		local newImplicit = { }
+		for _, control in ipairs{controls.implicit, controls.implicit2, controls.implicit3} do
+			if control.selIndex > 1 then
+				local mod = control.list[control.selIndex].mod
+				for _, modLine in ipairs(mod) do
+					t_insert(newImplicit, { line = modLine })
+				end
+			end
+		end
+		if #newImplicit > 0 then
+			for i = 1, item.implicitLines do 
+				t_remove(item.modLines, 1)
+			end
+			for i, implicit in ipairs(newImplicit) do
+				t_insert(item.modLines, i, implicit)
+			end
+			item.implicitLines = #newImplicit
+		end
+		item:BuildAndParseRaw()
+		return item
+	end
+controls.implicitLabel = new("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 85, 20, 0, 16, "^7基底词缀#1:")
+	controls.implicit = new("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 90, 20, 440, 18, nil, function()
+		buildListSynthesised(controls.implicit2, controls.implicit,controls.implicit3)
+		buildListSynthesised(controls.implicit3, controls.implicit,controls.implicit2)
+		 
+	end)
+controls.implicit2Label = new("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 85, 40, 0, 16, "^7基底词缀#2:")
+	controls.implicit2 = new("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 90, 40, 440, 18, nil, function()
+		buildListSynthesised(controls.implicit, controls.implicit2,controls.implicit3)
+		buildListSynthesised(controls.implicit3, controls.implicit2,controls.implicit)
+		 
+	end)
+controls.implicit3Label = new("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 85, 60, 0, 16, "^7基底词缀#3:")
+	controls.implicit3 = new("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 90, 60, 440, 18, nil, function()
+		buildListSynthesised(controls.implicit, controls.implicit3,controls.implicit2)
+		buildListSynthesised(controls.implicit2, controls.implicit3,controls.implicit)
+		 
+	end)
+	
+	buildListSynthesised(controls.implicit, controls.implicit2,controls.implicit3)
+	buildListSynthesised(controls.implicit2, controls.implicit,controls.implicit3)
+	buildListSynthesised(controls.implicit3, controls.implicit,controls.implicit2) 
+	 
+controls.save = new("ButtonControl", nil, -45, 90, 80, 20, "添加", function()
+		self:SetDisplayItem(synthesisedItem())
+		main:ClosePopup()
+	end)
+	controls.save.tooltipFunc = function(tooltip)
+		tooltip:Clear()
+		self:AddItemTooltip(tooltip, synthesisedItem(), nil, true)
+	end	
+controls.close = new("ButtonControl", nil, 45, 90, 80, 20, "取消", function()
+		main:ClosePopup()
+	end)
+main:OpenPopup(568, 128, "追忆物品词缀", controls)
+end
+-- 【【】】
 
 -- Opens the item corrupting popup
 function ItemsTabClass:CorruptDisplayItem()

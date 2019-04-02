@@ -204,3 +204,5 @@ Data/3_0/StatDescriptions/stat_descriptions.lua
 Data/3_0/StatDescriptions/variable_duration_skill_stat_descriptions.lua
 Data/3_0/ModDelve.lua
 Data/2_6/ModDelve.lua
+Data/3_0/ModSynthesised.lua
+Data/2_6/ModSynthesised.lua

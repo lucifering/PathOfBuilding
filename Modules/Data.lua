@@ -249,6 +249,7 @@ for _, targetVersion in ipairs(targetVersionList) do
 	}
 	verData.essences = dataModule("Essence")
 	verData.delve = dataModule("ModDelve")
+	verData.incursion = dataModule("ModIncursion")
 
 	-- Load skills
 	verData.skills = { }

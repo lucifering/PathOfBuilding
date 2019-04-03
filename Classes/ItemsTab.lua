@@ -1751,11 +1751,26 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 					})
 				end
 			end
+		elseif sourceId == "INCURSION" then		
+			for _, craft in ipairs(self.build.data.incursion) do
+				if craft.types[self.displayItem.type] then
+					if craft.room then
+						label = ""..craft.affix.."("..craft.room..") "..craft.type:sub(1,3).."^8[" .. table.concat(craft, "/") .. "]"
+					else
+						label = table.concat(craft, "/")
+					end
+					t_insert(modList, {
+						label = label,
+						mod = craft,
+						type = "custom",
+					})
+				end
+			end	
 		elseif sourceId == "DELVE" then
 			for _, craft in ipairs(self.build.data.delve) do
 				if craft.types[self.displayItem.type] then
 					if craft.fossil then
-						label = table.concat(craft.fossil, "/")..craft.type:sub(1,3).."^8[" .. table.concat(craft, "/") .. "]"
+						label = table.concat(craft.fossil, "/").." "..craft.type:sub(1,3).."^8[" .. table.concat(craft, "/") .. "]"
 					else
 						label = table.concat(craft, "/")
 					end
@@ -1812,10 +1827,12 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 	end
 	if (self.build.targetVersion ~= "2_6" and self.displayItem.base.subType ~= "Abyss") or (self.displayItem.type ~= "Jewel" and self.displayItem.type ~= "Flask") then
 t_insert(sourceList, { label = "工艺工作台", sourceId = "MASTER" })
+
 	end
 	if self.displayItem.type ~= "Jewel" and self.displayItem.type ~= "Flask" then
 t_insert(sourceList, { label = "精华", sourceId = "ESSENCE" })
 t_insert(sourceList, { label = "地心", sourceId = "DELVE" })
+t_insert(sourceList, { label = "穿越", sourceId = "INCURSION" })
 	end
 	
 	

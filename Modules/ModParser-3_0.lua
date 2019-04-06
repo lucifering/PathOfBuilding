@@ -370,7 +370,7 @@ local modNameList = {
 	["你所施放诅咒的效果"] = "CurseEffect", --备注：effect of your curses
 	["你身上的光环效果"] = "AuraEffectOnSelf", --备注：effect of auras on you
 	["召唤生物身上的光环效果"] = { "AuraEffectOnSelf", addToMinion = true }, --备注：effect of auras on your minions
-	["curse effect"] = "CurseEffect",
+	["诅咒效果"] = "CurseEffect", --备注：curse effect
 	["诅咒持续时间"] = { "Duration", keywordFlags = KeywordFlag.Curse }, --备注：curse duration
 	["光环技能范围"] = { "AreaOfEffect", keywordFlags = KeywordFlag.Aura }, --备注：radius of auras
 	["诅咒范围"] = { "AreaOfEffect", keywordFlags = KeywordFlag.Curse }, --备注：radius of curses
@@ -557,7 +557,7 @@ local modNameList = {
 	["属性需求"] = { "StrRequirement", "DexRequirement", "IntRequirement" }, --备注：attribute requirements
 	["插槽内的珠宝效果"] = "SocketedJewelEffect", --备注：effect of socketed jewels
 	-- Flask modifiers
-	["效果"] = "FlaskEffect", --备注：effect
+	-- ["效果"] = "FlaskEffect", --备注：effect
 	["effect of flasks"] = "FlaskEffect",
 	["药剂效果"] = "FlaskEffect", --备注：effect of flasks on you
 	["回复量"] = "FlaskRecovery", --备注：amount recovered

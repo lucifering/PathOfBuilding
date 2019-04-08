@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PoBVersion>
-	<Version number="1.4.135.15" platform="win32" branch="master"/>
+	<Version number="1.4.136.1" platform="win32" branch="master"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/runtime-win32.zip" part="runtime" platform="win32"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/" part="program"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/tree.zip" part="tree"/>

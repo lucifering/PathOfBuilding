@@ -181,6 +181,6 @@ end
 
 function ModListClass:Print()
 	for _, mod in ipairs(self) do
-		ConPrintf("%s|%s", modLib.formatMod(mod), mod.source or "?")
+		--ConPrintf("%s|%s", modLib.formatMod(mod), mod.source or "?")
 	end
 end

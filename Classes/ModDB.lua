@@ -207,7 +207,7 @@ function ModDBClass:Print()
 	for _, modName in ipairs(modNames) do
 		ConPrintf("'%s':", modName)
 		for _, mod in ipairs(self.mods[modName]) do
-			ConPrintf("\t%s = %s|%s|%s|%s|%s", modLib.formatValue(mod.value), mod.type, modLib.formatFlags(mod.flags, ModFlag), modLib.formatFlags(mod.keywordFlags, KeywordFlag), modLib.formatTags(mod), mod.source or "?")
+		--	ConPrintf("\t%s = %s|%s|%s|%s|%s", modLib.formatValue(mod.value), mod.type, modLib.formatFlags(mod.flags, ModFlag), modLib.formatFlags(mod.keywordFlags, KeywordFlag), modLib.formatTags(mod), mod.source or "?")
 		end
 	end
 	ConPrintf("=== Conditions ===")
@@ -219,7 +219,7 @@ function ModDBClass:Print()
 	end
 	table.sort(nameList)
 	for i, name in ipairs(nameList) do
-		ConPrintf(name)
+	--	ConPrintf(name)
 	end
 	ConPrintf("=== Multipliers ===")
 	wipeTable(nameList)
@@ -230,6 +230,6 @@ function ModDBClass:Print()
 	end
 	table.sort(nameList)
 	for i, name in ipairs(nameList) do
-		ConPrintf("%s = %d", name, self.multipliers[name])
+		--ConPrintf("%s = %d", name, self.multipliers[name])
 	end
 end

@@ -7,6 +7,14 @@
 
 local ipairs = ipairs
 local t_insert = table.insert
+local realmList = {
+	{ label = "PC", id = "PC", realmCode = "pc", profileURL = "https://poe.game.qq.com/account/view-profile/" },
+	{ label = "Xbox(未开放)", id = "XBOX", realmCode = "xbox", profileURL = "https://poe.game.qq.com/account/xbox/view-profile/" },
+	{ label = "PS4(未开放)", id = "SONY", realmCode = "sony", profileURL = "https://poe.game.qq.com/account/sony/view-profile/" },
+}
+local rarityMap = { [0] = "普通", "魔法", "稀有", "传奇", [9] = "遗产" }
+local slotMap = { ["Weapon"] = "Weapon 1", ["Offhand"] = "Weapon 2", ["Weapon2"] = "Weapon 1 Swap", ["Offhand2"] = "Weapon 2 Swap", ["Helm"] = "Helmet", ["BodyArmour"] = "Body Armour", ["Gloves"] = "Gloves", ["Boots"] = "Boots", ["Amulet"] = "Amulet", ["Ring"] = "Ring 1", ["Ring2"] = "Ring 2", ["Belt"] = "Belt" }
+
 
 local ImportTabClass = newClass("ImportTab", "ControlHost", "Control", function(self, build)
 	self.ControlHost()
@@ -40,7 +48,11 @@ self.controls.accountNameHeader = new("LabelControl", {"TOPLEFT",self.controls.s
 	self.controls.accountNameHeader.shown = function()
 		return self.charImportMode == "GETACCOUNTNAME"
 	end
-	self.controls.accountName = new("EditControl", {"TOPLEFT",self.controls.accountNameHeader,"BOTTOMLEFT"}, 0, 4, 200, 20, main.lastAccountName or "", nil, "%c")
+	self.controls.accountRealm = new("DropDownControl", {"TOPLEFT",self.controls.accountNameHeader,"BOTTOMLEFT"}, 0, 4, 100, 20, realmList )
+	self.controls.accountRealm:SelByValue( main.lastRealm or "PC", "id" )
+	self.controls.accountName = new("EditControl", {"LEFT",self.controls.accountRealm,"RIGHT"}, 8, 0, 200, 20, main.lastAccountName or "", nil, "%c")
+	
+ 
 	self.controls.accountName.pasteFilter = function(text)
 		return text
 		--return text:gsub("[\128-\255]",function(c)
@@ -56,7 +68,7 @@ self.controls.accountNameGo = new("ButtonControl", {"LEFT",self.controls.account
 	self.controls.accountNameGo.enabled = function()
 		return self.controls.accountName.buf:match("%S")
 	end
-self.controls.accountNameUnicode = new("LabelControl", {"TOPLEFT",self.controls.accountName,"BOTTOMLEFT"}, 0, 16, 0, 14, "^7注意！你需要先去官网公开你的角色.")
+self.controls.accountNameUnicode = new("LabelControl", {"TOPLEFT",self.controls.accountRealm,"BOTTOMLEFT"}, 0, 16, 0, 14, "^7注意！你需要先去官网公开你的角色.")
 self.controls.accountNameURLEncoder = new("ButtonControl", {"TOPLEFT",self.controls.accountNameUnicode,"BOTTOMLEFT"}, 0, 4, 170, 18, "不能快速安全登录的都是假官网", function()
 OpenURL("https://poe.game.qq.com/login/tencent")
 	end)
@@ -247,6 +259,9 @@ main:OpenConfirmPopup("Build Import", colorCodes.WARNING.."警告:^7 导入到�
 end)
 
 function ImportTabClass:Load(xml, fileName)
+	self.lastRealm = xml.attrib.lastRealm
+	self.controls.accountRealm:SelByValue( self.lastRealm or main.lastRealm or "PC", "id" )
+	
 	self.lastAccountHash = xml.attrib.lastAccountHash
 	if self.lastAccountHash then
 		for accountName in pairs(main.gameAccounts) do
@@ -260,6 +275,7 @@ end
 
 function ImportTabClass:Save(xml)
 	xml.attrib = {
+		lastRealm = self.lastRealm,
 		lastAccountHash = self.lastAccountHash,
 		lastCharacterHash = self.lastCharacterHash,
 	}
@@ -282,8 +298,9 @@ function ImportTabClass:DownloadCharacterList()
 	self.charImportMode = "DOWNLOADCHARLIST"
 self.charImportStatus = "正在获取角色列表..."
 	local accountName = self.controls.accountName.buf
+	local realm = realmList[self.controls.accountRealm.selIndex]
 	local sessionID = #self.controls.sessionInput.buf == 32 and self.controls.sessionInput.buf or (main.gameAccounts[accountName] and main.gameAccounts[accountName].sessionID)
-launch:DownloadPage("https://poe.game.qq.com/character-window/get-characters?accountName="..accountName, function(page, errMsg)
+launch:DownloadPage("https://poe.game.qq.com/character-window/get-characters?accountName="..accountName.."&realm="..realm.realmCode, function(page, errMsg)
 		if errMsg == "Response code: 403" then
 self.charImportStatus = colorCodes.NEGATIVE.."角色没有公开."
 			self.charImportMode = "GETSESSIONID"
@@ -311,13 +328,13 @@ self.charImportStatus = colorCodes.NEGATIVE.."这个账户没有角色."
 		end
 		-- GGG's character API has an issue where for /get-characters the account name is not case-sensitive, but for /get-passive-skills and /get-items it is.
 		-- This workaround grabs the profile page and extracts the correct account name from one of the URLs.
-launch:DownloadPage("https://poe.game.qq.com/account/view-profile/"..accountName, function(page, errMsg)
+launch:DownloadPage(realm.profileURL..accountName, function(page, errMsg)
 			if errMsg then
 self.charImportStatus = colorCodes.NEGATIVE.."获取角色列表失败，请重试 ("..errMsg:gsub("\n"," ")..")"
 				self.charImportMode = "GETACCOUNTNAME"
 				return
 			end
-			local realAccountName = page:match("/account/view%-profile/([^/]+)/characters"):gsub(".", function(c) if c:byte(1) > 127 then return string.format("%%%2X",c:byte(1)) else return c end end)
+			local realAccountName = page:match("/view%-profile/([^/]+)/characters"):gsub(".", function(c) if c:byte(1) > 127 then return string.format("%%%2X",c:byte(1)) else return c end end)
 			if not realAccountName then
 self.charImportStatus = colorCodes.NEGATIVE.."接收角色列表失败."
 				self.charImportMode = "GETSESSIONID"
@@ -327,6 +344,8 @@ self.charImportStatus = colorCodes.NEGATIVE.."接收角色列表失败."
 			accountName = realAccountName
 self.charImportStatus = "接收角色列表成功."
 			self.charImportMode = "SELECTCHAR"
+			self.lastRealm = realm.id
+			main.lastRealm = realm.id
 			self.lastAccountHash = common.sha1(accountName)
 			main.lastAccountName = accountName
 			main.gameAccounts[accountName] = main.gameAccounts[accountName] or { }
@@ -380,12 +399,13 @@ end
 
 function ImportTabClass:DownloadPassiveTree()
 	self.charImportMode = "IMPORTING"
-	self.charImportStatus = "Retrieving character passive tree..."
+	self.charImportStatus = "获取角色天赋树信息中..."
+	local realm = realmList[self.controls.accountRealm.selIndex]
 	local accountName = self.controls.accountName.buf
 	local sessionID = #self.controls.sessionInput.buf == 32 and self.controls.sessionInput.buf or (main.gameAccounts[accountName] and main.gameAccounts[accountName].sessionID)
 	local charSelect = self.controls.charSelect
 	local charData = charSelect.list[charSelect.selIndex].char
-launch:DownloadPage("https://poe.game.qq.com/character-window/get-passive-skills?accountName="..accountName.."&character="..charData.name, function(page, errMsg)
+launch:DownloadPage("https://poe.game.qq.com/character-window/get-passive-skills?accountName="..accountName.."&character="..charData.name.."&realm="..realm.realmCode, function(page, errMsg)
 		self.charImportMode = "SELECTCHAR"
 		if errMsg then
 self.charImportStatus = colorCodes.NEGATIVE.."导入角色装备失败，请重试 ("..errMsg:gsub("\n"," ")..")"
@@ -402,11 +422,12 @@ end
 function ImportTabClass:DownloadItems()
 	self.charImportMode = "IMPORTING"
 self.charImportStatus = "获取角色装备中..."
+local realm = realmList[self.controls.accountRealm.selIndex]
 	local accountName = self.controls.accountName.buf
 	local sessionID = #self.controls.sessionInput.buf == 32 and self.controls.sessionInput.buf or (main.gameAccounts[accountName] and main.gameAccounts[accountName].sessionID)
 	local charSelect = self.controls.charSelect
 	local charData = charSelect.list[charSelect.selIndex].char
-launch:DownloadPage("https://poe.game.qq.com/character-window/get-items?accountName="..accountName.."&character="..charData.name, function(page, errMsg)
+launch:DownloadPage("https://poe.game.qq.com/character-window/get-items?accountName="..accountName.."&character="..charData.name.."&realm="..realm.realmCode, function(page, errMsg)
 		self.charImportMode = "SELECTCHAR"
 		if errMsg then
 self.charImportStatus = colorCodes.NEGATIVE.."导入角色装备失败，请重试 ("..errMsg:gsub("\n"," ")..")"
@@ -431,19 +452,16 @@ self.charImportStatus = colorCodes.NEGATIVE.."处理角色物品和技能错误�
 	end
 self.charImportStatus = colorCodes.POSITIVE.."天赋树和珠宝导入成功."
 	--ConPrintTable(charPassiveData)
-	if self.controls.charImportTreeClearJewels.state then
-		for _, slot in pairs(self.build.itemsTab.slots) do
-			if slot.selItemId ~= 0 and slot.nodeId then
-				self.build.itemsTab:DeleteItem(self.build.itemsTab.items[slot.selItemId])
-			end
-		end
-	end
+	--如果删除珠宝
+	
 	local sockets = { }
 	for i, slot in pairs(charPassiveData.jewel_slots) do
 		sockets[i] = tonumber(type(slot) == "number" and slot or slot.passiveSkill.hash)
 	end
-	for _, itemData in pairs(charPassiveData.items) do
-		self:ImportItem(itemData, sockets)
+	if  not self.controls.charImportTreeClearJewels.state then
+		for _, itemData in pairs(charPassiveData.items) do
+				self:ImportItem(itemData, sockets)
+		end
 	end
 	self.build.itemsTab:PopulateSlots()
 	self.build.itemsTab:AddUndoState()
@@ -463,31 +481,39 @@ function ImportTabClass:ImportItemsAndSkills(json)
 self.charImportStatus = colorCodes.NEGATIVE.."处理角色物品和技能错误，请重试."
 		return
 	end
-	if self.controls.charImportItemsClearItems.state then
-		for _, slot in pairs(self.build.itemsTab.slots) do
-			if slot.selItemId ~= 0 and not slot.nodeId then
-				self.build.itemsTab:DeleteItem(self.build.itemsTab.items[slot.selItemId])
-			end
-		end
-	end
+	 
 	local skillOrder
-	if self.controls.charImportItemsClearSkills.state then
-		skillOrder = { }
-		for _, socketGroup in ipairs(self.build.skillsTab.socketGroupList) do
-			for _, gem in ipairs(socketGroup.gemList) do
-				if gem.grantedEffect and not gem.grantedEffect.support then
-					t_insert(skillOrder, gem.grantedEffect.name)
-				end
-			end
-		end
-		wipeTable(self.build.skillsTab.socketGroupList)
-	end
+	 
 self.charImportStatus = colorCodes.POSITIVE.."物品和技能导入成功."
 	--ConPrintTable(charItemData)
-	for _, itemData in pairs(charItemData.items) do
-		self:ImportItem(itemData)
+	if not self.controls.charImportItemsClearItems.state then
+		for _, itemData in pairs(charItemData.items) do	
+		
+				self:ImportItem(itemData)
+		end
+	else 
+--删除物品的话
+
+			for _, itemData in pairs(charItemData.items) do			
+				if itemData.socketedItems then
+				local slotName
+				if itemData.inventoryId == "PassiveJewels" and sockets then
+						slotName = "Jewel "..sockets[itemData.x + 1]
+					elseif itemData.inventoryId == "Flask" then
+						slotName = "Flask "..(itemData.x + 1)
+					else
+					print(">>[itemData.inventoryId]"..itemData.inventoryId)
+						slotName = slotMap[itemData.inventoryId]
+					end
+				if  slotName then
+					self:ImportSocketedItems(itemData, itemData.socketedItems, slotName)
+				end	
+				
+				end
+			 end
+			 
 	end
-	if skillOrder then
+	if skillOrder   then
 		local groupOrder = { }
 		for index, socketGroup in ipairs(self.build.skillsTab.socketGroupList) do
 			groupOrder[socketGroup] = index
@@ -533,8 +559,6 @@ self.charImportStatus = colorCodes.POSITIVE.."物品和技能导入成功."
 	return charItemData.character -- For the wrapper
 end
 
-local rarityMap = { [0] = "普通", "魔法", "稀有", "传奇", [9] = "遗产" }
-local slotMap = { ["Weapon"] = "Weapon 1", ["Offhand"] = "Weapon 2", ["Weapon2"] = "Weapon 1 Swap", ["Offhand2"] = "Weapon 2 Swap", ["Helm"] = "Helmet", ["BodyArmour"] = "Body Armour", ["Gloves"] = "Gloves", ["Boots"] = "Boots", ["Amulet"] = "Amulet", ["Ring"] = "Ring 1", ["Ring2"] = "Ring 2", ["Belt"] = "Belt" }
 
 function ImportTabClass:ImportItem(itemData, sockets, slotName)
 	if not slotName then
@@ -543,6 +567,7 @@ function ImportTabClass:ImportItem(itemData, sockets, slotName)
 		elseif itemData.inventoryId == "Flask" then
 			slotName = "Flask "..(itemData.x + 1)
 		else
+			
 			slotName = slotMap[itemData.inventoryId]
 		end
 	end
@@ -735,8 +760,9 @@ function ImportTabClass:ImportSocketedItems(item, socketedItems, slotName)
 		if socketedItem.abyssJewel then
 			self:ImportItem(socketedItem, nil, slotName .. " Abyssal Socket "..abyssalSocketId)
 			abyssalSocketId = abyssalSocketId + 1
-		else
-			local gemInstance = { level = 20, quality = 0, enabled = true, enableGlobal1 = true }
+		elseif not self.controls.charImportItemsClearSkills.state then 
+		
+		local gemInstance = { level = 20, quality = 0, enabled = true, enableGlobal1 = true }
 			gemInstance.nameSpec = socketedItem.typeLine:gsub(" Support","")
 			gemInstance.support = socketedItem.support
 			for _, property in pairs(socketedItem.properties) do
@@ -757,6 +783,7 @@ elseif property.name == "品质" then
 			else
 				t_insert(socketGroup.gemList, gemInstance)
 			end
+			
 		end
 	end
 

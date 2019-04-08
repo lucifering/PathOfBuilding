@@ -826,7 +826,10 @@ local preFlagList = {
 local modTagList = {
 	--【中文化程序额外添加开始】
 	["每 (%d+)%% 的攻击格挡率会使"] = function(num) return { tag = { type = "PerStat", stat = "BlockChance", div = num } } end,
+	["每 (%d+)%% 攻击伤害格挡几率"] = function(num) return { tag = { type = "PerStat", stat = "BlockChance", div = num } } end,
+	["每 (%d+)%% 攻击伤害格挡几率会使"] = function(num) return { tag = { type = "PerStat", stat = "BlockChance", div = num } } end,
 	["当你拥有兽化的召唤生物时，"] = { tag = { type = "Condition", var = "HaveBestialMinion" } },
+	["近期内你若造成非暴击伤害，则"] = { tag = { type = "Condition", var = "NonCritRecently" } }, --备注：if you[' ]h?a?ve dealt a non%-critical strike recently
 	["近期内你若没有击败敌人，则伤害会"] = { tag = { type = "Condition", var = "KilledRecently", neg = true } }, 
 	["持盾牌时，"] = { tag = { type = "Condition", var = "UsingShield" } }, --备注：while holding a shield
 		["你的副手未装备武器时，"] = { tag = { type = "Condition", var = "OffHandIsEmpty" } }, --备注：while your off hand is empty
@@ -1610,7 +1613,15 @@ local specialModList = {
 	mod("EnemyShockEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }) ,
 	mod("EnemyChillEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }) ,
 	mod("EnemyFreezeEffech", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" })  } end,
+	["【(.+)魔像】的伤害提高 (%d+)%%"] = function(_, skill_name, num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) },{ type = "SkillName", skillName = "召唤"..skill_name:gsub("雷电","闪电").."魔像" or "Unknown" })  } end,
+	["【幻化(.+)】的伤害提高 (%d+)%%"] = function(_, skill_name, num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) },{ type = "SkillName", skillName = "幻化"..skill_name or "Unknown" })  } end,
+	["【魔侍造成】的伤害提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) },{ type = "SkillName", skillName = "召唤魔侍" })  } end,
+	["【召唤(.+)】的伤害提高 (%d+)%%"] = function(_, skill_name,num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) },{ type = "SkillName", skillName = "召唤"..skill_name })  } end,
+	["【召唤圣物】的范围效果扩大 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("AreaOfEffect", "INC", num) },{ type = "SkillName", skillName = "召唤圣物" })  } end,
+	["召唤的圣物的增益效果提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("BuffEffect", "INC", num) },{ type = "SkillName", skillName = "召唤圣物" })  } end,
+	["【幻化([^\\x00-\\xff]*)】造成的伤害提高 (%d+)%%"] = function(_,skill_name,num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) },{ type = "SkillName", skillName = "幻化"..skill_name })  } end,
 	["【(.+)】的伤害提高 (%d+)%%"] = function(_, skill_name, num) return { mod("Damage", "INC",num, { type = "SkillName", skillName = skill_name or "Unknown"}) } end, 
+	["【([^\\x00-\\xff]*)】造成的伤害提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("Damage", "INC", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
 	["敌人身上每有 1 层蜘蛛网，则附加 (%d+) %- (%d+) 混沌伤害"] = function(_,num1,num2) return { 
 	 mod("ChaosMin", "BASE", num1,{ type = "Multiplier", actor = "enemy", var = "Spider's WebStack" } ), 
 	 mod("ChaosMax", "BASE", num2,{ type = "Multiplier", actor = "enemy", var = "Spider's WebStack" } ) } end,
@@ -1721,7 +1732,7 @@ local specialModList = {
 	["近期内你若被击中过，则每有 1 个耐力球，就会每秒受到 (%d+) 火焰伤害"]
 	= function(num) return {  mod("FireDegen", "BASE", num, { type = "Multiplier", var = "EnduranceCharge" }, { type = "Condition", var = "BeenHitRecently" })  } end, 
 	["对流血敌人造成的攻击伤害的 (%d+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack,{ type = "ActorCondition", actor = "enemy", var = "Bleeding" })  } end, 
-	["游侠：移动速度提高 (%d+)%%"]= function(num) return {  mod("MovementSpeed", "BASE", num,{ type = "Condition", var = "ConnectedTo游侠Start" })  } end,
+	["游侠：移动速度提高 (%d+)%%"]= function(num) return {  mod("MovementSpeed", "INC", num,{ type = "Condition", var = "ConnectedTo游侠Start" })  } end,
 	["圣堂武僧：伤害穿透 (%d+)%% 火焰、冰霜、闪电抗性"]= function(num) return {  mod("ElementalPenetration", "BASE", num,{ type = "Condition", var = "ConnectedTo圣堂武僧Start" })  } end,
 	["圣堂武僧：伤害穿透 (%d+)%% 元素抗性"]= function(num) return {  mod("ElementalPenetration", "BASE", num,{ type = "Condition", var = "ConnectedTo圣堂武僧Start" })  } end,
 	["暗影：%+([%d%.]+)%% 暴击率"]= function(num) return {  mod("CritChance", "BASE", num,{ type = "Condition", var = "ConnectedTo暗影刺客Start" })  } end,
@@ -1734,6 +1745,7 @@ local specialModList = {
 	["召唤生物有额外 (%d+)%% 躲避击中几率"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("AttackDodgeChance", "BASE", num) })  } end,
 	["灵体有 (%d+) 秒的持续时间"] = function(num) return { mod("SkillData", "LIST", { key = "duration", value = 6 }, { type = "SkillName", skillName = "召唤灵体" }) } end,	
 	["【(.+)】的魔力消耗降低 (%d+)%%"] = function( _,skill_name, num) return { mod("ManaCost", "INC",-num, { type = "SkillName", skillName = skill_name }) } end, 	
+	["插槽内的移动技能不消耗魔力"] = function() return { mod("ExtraSkillMod", "LIST", { mod = mod("ManaCost", "MORE", -100, nil, 0,  KeywordFlag.Movement) }, { type = "SocketedIn", slotName = "{SlotName}" })}end,	
 	["野蛮人： 近战技能范围扩大 (%d+)%%"]= function(num) return {  mod("AreaOfEffect", "INC", num,nil, ModFlag.Melee,{ type = "Condition", var = "ConnectedTo野蛮人Start" })  } end,
 	["决斗者：攻击伤害的 ([%d%.]+)%% 会转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack,{ type = "Condition", var = "ConnectedTo决斗者Start" })  } end,
 	["女巫：每秒回复 ([%d%.]+)%% 最大魔力"]= function(num) return {  mod("ManaRegenPercent", "BASE", num, { type = "Condition", var = "ConnectedTo女巫Start" })  } end,
@@ -1854,7 +1866,6 @@ local specialModList = {
 	["%+(%d+)%% ([^\\x00-\\xff]*)魔像的元素抗性"] = function(_,num,skill_name) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num)) },{ type = "SkillName", skillName ="召唤"..skill_name:gsub("雷电","闪电").."魔像" })  } end,
 	["【([^\\x00-\\xff]*)】的范围扩大 (%d+)%%"]= function(_,skill_name,num) return {  mod("AreaOfEffect", "INC", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
 	["攻城炮台的放置速度提高 (%d+)%%"]= function(num) return {  mod("TotemPlacementSpeed", "INC", tonumber(num),{ type = "SkillName", skillName ="攻城炮台" })  } end, 
-	["【([^\\x00-\\xff]*)】造成的伤害提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("Damage", "INC", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
 	["%+(%d+)%% 幻化守卫的火焰、冰霜、闪电抗性"] = function(_,num,skill_name) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num)) },{ type = "SkillName", skillName ="幻化守卫" })  } end,
 	["%+(%d+)%% 幻化守卫的元素抗性"] = function(_,num,skill_name) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num)) },{ type = "SkillName", skillName ="幻化守卫" })  } end,
 	["【([^\\x00-\\xff]*)】爆炸范围扩大 (%d+)%%"]= function(_,skill_name,num) return {  mod("AreaOfEffectSecondary", "INC", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
@@ -2167,6 +2178,17 @@ local specialModList = {
 	mod("EnemyModifier", "LIST", { mod = mod("LightningResist", "BASE", num,{ type = "GlobalEffect", effectType = "Debuff", effectName = "Lightning Exposure", effectCond = "WaveOfConvictionLightningExposureActive" }) }, { type = "Condition", var = "WaveOfConvictionLightningExposureActive" }),
 	} end,  
 	["被你嘲讽的敌人无法闪避攻击"] = { mod("EnemyModifier", "LIST", { mod = flag("CannotEvade", { type = "Condition", var = "Taunted" }) }) },
+	["当你在你在天赋树上连接到一个职业的出发位置时，你获得：野蛮人： 近战技能范围扩大 (%d+)%%决斗者：攻击伤害的 ([%d%.]+)%% 会转化为生命偷取游侠：移动速度提高 (%d+)%%暗影：%+([%d%.]+)%% 暴击率女巫：每秒回复 ([%d%.]+)%% 最大魔力圣堂武僧：伤害穿透 5%% 元素抗性贵族：%+25 所有属性"]= function(_,num_ymr,num_jdz,num_yx,num_ay,num_nw) return {   
+	mod("AreaOfEffect", "INC", tonumber(num_ymr),nil, ModFlag.Melee,{ type = "Condition", var = "ConnectedTo野蛮人Start" }) ,
+	mod("DamageLifeLeech", "BASE", tonumber(num_jdz),nil, ModFlag.Attack,{ type = "Condition", var = "ConnectedTo决斗者Start" }),
+	mod("MovementSpeed", "INC", tonumber(num_yx),{ type = "Condition", var = "ConnectedTo游侠Start" }) ,
+	mod("CritChance", "BASE", tonumber(num_ay),{ type = "Condition", var = "ConnectedTo暗影刺客Start" }),
+	mod("ManaRegenPercent", "BASE", tonumber(num_nw), { type = "Condition", var = "ConnectedTo女巫Start" }),
+	mod("ElementalPenetration", "BASE", 5,{ type = "Condition", var = "ConnectedTo圣堂武僧Start" }),
+		 mod("Str", "BASE", 25,{ type = "Condition", var = "ConnectedTo贵族Start" }) ,
+		 mod("Dex", "BASE", 25,{ type = "Condition", var = "ConnectedTo贵族Start" }) ,
+		 mod("Int", "BASE", 25,{ type = "Condition", var = "ConnectedTo贵族Start" }) 
+	} end,
 	--[[
 	["总属性每有 (%d+) 点，魔力保留降低 (%d+)%%"] = function(_,num1,num2) return {  mod("ManaReserved", "INC", -tonumber(num2),{ type = "PerStat", statList = { 'Str', 'Dex', 'Int' }, div = tonumber(num1),stat= "Dex" } )  } end,  
 	]]--

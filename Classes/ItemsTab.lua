@@ -981,6 +981,7 @@ end
 
 -- Deletes an item
 function ItemsTabClass:DeleteItem(item)
+	
 	for slotName, slot in pairs(self.slots) do
 		if slot.selItemId == item.id then
 			slot:SetSelItemId(0)

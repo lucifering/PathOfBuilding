@@ -35,7 +35,7 @@ local function infoDump(env)
 	local mainSkill = env.minion and env.minion.mainSkill or env.player.mainSkill
 	ConPrintf("=== Main Skill ===")
 	for _, skillEffect in ipairs(mainSkill.effectList) do
-		ConPrintf("%s %d/%d", skillEffect.grantedEffect.name, skillEffect.level, skillEffect.quality)
+		--ConPrintf("%s %d/%d", skillEffect.grantedEffect.name, skillEffect.level, skillEffect.quality)
 	end
 	ConPrintf("=== Main Skill Flags ===")
 	ConPrintf("Mod: %s", modLib.formatFlags(mainSkill.skillCfg.flags, ModFlag))
@@ -47,9 +47,9 @@ local function infoDump(env)
 	prettyPrintTable(mainSkill.skillData)
 	ConPrintf("== Aux Skills ==")
 	for i, aux in ipairs(env.auxSkillList) do
-		ConPrintf("Skill #%d:", i)
+		--ConPrintf("Skill #%d:", i)
 		for _, skillEffect in ipairs(aux.effectList) do
-			ConPrintf("  %s %d/%d", skillEffect.grantedEffect.name, skillEffect.level, skillEffect.quality)
+			--ConPrintf("  %s %d/%d", skillEffect.grantedEffect.name, skillEffect.level, skillEffect.quality)
 		end
 	end
 	ConPrintf("== Output Table ==")

@@ -1009,6 +1009,8 @@ local modTagList = {
 	["敌人身上每有 1 个诅咒，"] = { tag = { type = "Multiplier", var = "CurseOnEnemy" } },
 	["冰霜抗性高于 75%% 时，每高 (%d+)%%，"] = function(num) return { tag  = { type = "PerStat", stat = "ColdResistOver75", div = num } } end,
 	["闪电抗性高于 75%% 时，每高 (%d+)%%，"] = function(num) return { tag  = { type = "PerStat", stat = "LightningResistOver75", div = num } } end,
+	["每 (%d+) 点魔力会使"] = function(num) return { tag = { type = "PerStat", stat = "Mana", div = num } } end,
+	["每 (%d+) 点最大魔力会使"] = function(num) return { tag = { type = "PerStat", stat = "Mana", div = num } } end,
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -1178,9 +1180,9 @@ local modTagList = {
 	["近期内你若打出过暴击，则"] = { tag = { type = "Condition", var = "CritRecently" } }, --备注：if you[' ]h?a?ve dealt a critical strike recently
 	["暴击后的 8 秒内，"] = { tag = { type = "Condition", var = "CritInPast8Sec" } }, --备注：if you[' ]h?a?ve crit in the past 8 seconds
 	["若你在过去 8 秒内打出过暴击，则"] = { tag = { type = "Condition", var = "CritInPast8Sec" } }, --备注：if you[' ]h?a?ve dealt a critical strike in the past 8 seconds
-	["if you haven't crit recently"] = { tag = { type = "Condition", var = "CritRecently", neg = true } },
+	["近期内你若没有打出过暴击，则"] = { tag = { type = "Condition", var = "CritRecently", neg = true } }, --备注：if you haven't crit recently
 	["近期内你若没有打出暴击，则"] = { tag = { type = "Condition", var = "CritRecently", neg = true } }, --备注：if you haven't dealt a critical strike recently
-	["近期内你若没有打出过暴击，则"] = { tag = { type = "Condition", var = "NonCritRecently" } }, --备注：if you[' ]h?a?ve dealt a non%-critical strike recently
+	["近期内你若造成非暴击伤害，则"] = { tag = { type = "Condition", var = "NonCritRecently" } }, --备注：if you[' ]h?a?ve dealt a non%-critical strike recently
 	["if your skills have dealt a critical strike recently"] = { tag = { type = "Condition", var = "SkillCritRecently" } },
 	["近期内你若有击败敌人，则"] = { tag = { type = "Condition", var = "KilledRecently" } }, --备注：if you[' ]h?a?ve killed recently
 	["近期内你若没有击败敌人，则"] = { tag = { type = "Condition", var = "KilledRecently", neg = true } }, --备注：if you haven't killed recently
@@ -1357,6 +1359,34 @@ local specialModList = {
 	:gsub("持续吟唱技能","channelling")
 	:gsub("范围效果技能","aoe")
 	, key = "level", value = tonumber(num) }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,  
+	["此物品上装备的【([^\\x00-\\xff]*)石】品质 %+(%d+)%%"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", { 
+		keyword = type_Cn:gsub("光环技能","aura")
+		:gsub("绿色技能","dexterity")
+		:gsub("蓝色技能","intelligence")
+		:gsub("红色技能","strength")
+		:gsub("闪电技能","lightning")
+		:gsub("辅助技能","support")
+		:gsub("火焰技能","fire")
+		:gsub("冰霜技能","cold")
+		:gsub("混沌技能","chaos")
+		:gsub("物理技能","physical")
+		:gsub("魔像技能","golem")
+		:gsub("召唤生物技能","minion")
+		:gsub("近战技能","melee")
+		:gsub("战吼技能","warcry")
+		:gsub("瓦尔技能","vaal")
+		:gsub("移动技能","movement")
+		:gsub("弓技能","bow")
+		:gsub("诅咒技能","curse")
+		:gsub("捷技能","herald")
+		:gsub("法术技能","spell")
+		:gsub("主动技能","active_skill")
+		:gsub("持续时间技能","duration")
+		:gsub("陷阱技能石】或【地雷技能","trap or mine")
+		:gsub("投射物技能","projectile")
+		:gsub("持续吟唱技能","channelling")
+		:gsub("范围效果技能","aoe")
+		, key = "quality", value = tonumber(num) }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	-- 一些涉及到技能名称的
 	["你的奉献技能会同时影响你"] = { mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "buffNotPlayer", value = false }) },
 		{ type = "SkillName", skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" } }) },	
@@ -1557,7 +1587,9 @@ local specialModList = {
 	["插槽内的技能石受到 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]  or gemIdLookup[support:gsub("^提高","增加").."(辅)"] or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
 	["插槽内的技能石被 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]   or gemIdLookup[support:gsub("^提高","增加").."(辅)"] or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
 	["此物品上的诅咒技能石受到 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", 
-	{ skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]  or "Unknown", level = num },
+	{ skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"] 
+	or gemIdLookup[support:gsub("渎神","诅咒光环").."(辅)"] 
+	 or "Unknown", level = num },
 	{ type = "SocketedIn", slotName = "{SlotName}" }) } end, 
 	["([%d%.]+)%% 额外物理伤害减伤"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num)  } end, 
 	["受到击中冰霜伤害的 (%d+)%% 转为火焰伤害"] = function(num) return {  mod("ColdDamageTakenAsFire", "BASE", num)  } end,

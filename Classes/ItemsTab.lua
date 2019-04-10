@@ -1561,7 +1561,7 @@ local controls = { }
 		t_insert(control.list, { label = "None" })
 		
 		for _, mod in ipairs(implicitList) do
-			
+			 
 			 
 			if (other.list[other.selIndex]~=nil and other.list[other.selIndex].mod~=nil)
 			 and (other2.list[other2.selIndex]~=nil and other2.list[other2.selIndex].mod~=nil ) then

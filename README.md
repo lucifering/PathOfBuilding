@@ -23,4 +23,8 @@
 
 # 更新
 
+* 最近更新：
  [点击查看更新进度](changelog.txt).
+
+* 历史更新 
+ [点击查看更新进度](changelog-history.txt).

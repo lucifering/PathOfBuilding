@@ -131,18 +131,18 @@ main:OpenConfirmPopup("角色导入", "导入天赋树会覆盖你当前的天�
 	self.controls.charImportTree.enabled = function()
 		return self.charImportMode == "SELECTCHAR"
 	end
-self.controls.charImportTreeClearJewels = new("CheckBoxControl", {"LEFT",self.controls.charImportTree,"RIGHT"}, 90, 0, 18, "删除珠宝:")
-self.controls.charImportTreeClearJewels.tooltipText = "导入时删除原有珠宝信息."
+self.controls.charImportTreeClearJewels = new("CheckBoxControl", {"LEFT",self.controls.charImportTree,"RIGHT"}, 90, 0, 18, "不导入珠宝:")
+self.controls.charImportTreeClearJewels.tooltipText = "导入时不导入珠宝信息."
 self.controls.charImportItems = new("ButtonControl", {"LEFT",self.controls.charImportTree, "LEFT"}, 0, 36, 110, 20, "装备和技能", function()
 		self:DownloadItems()
 	end)
 	self.controls.charImportItems.enabled = function()
 		return self.charImportMode == "SELECTCHAR"
 	end
-self.controls.charImportItemsClearSkills = new("CheckBoxControl", {"LEFT",self.controls.charImportItems,"RIGHT"}, 85, 0, 18, "删除技能:")
-self.controls.charImportItemsClearSkills.tooltipText = "导入时删除原有技能信息."
-self.controls.charImportItemsClearItems = new("CheckBoxControl", {"LEFT",self.controls.charImportItems,"RIGHT"}, 220, 0, 18, "删除装备:")
-self.controls.charImportItemsClearItems.tooltipText = "导入时删除原有所有装备"
+self.controls.charImportItemsClearSkills = new("CheckBoxControl", {"LEFT",self.controls.charImportItems,"RIGHT"}, 85, 0, 18, "不导入技能:")
+self.controls.charImportItemsClearSkills.tooltipText = "导入时不导入技能信息."
+self.controls.charImportItemsClearItems = new("CheckBoxControl", {"LEFT",self.controls.charImportItems,"RIGHT"}, 220, 0, 18, "不导入装备:")
+self.controls.charImportItemsClearItems.tooltipText = "导入时不导入装备"
 self.controls.charBanditNote = new("LabelControl", {"TOPLEFT",self.controls.charImportHeader,"BOTTOMLEFT"}, 0, 50, 200, 14, "^7提示: 导入完成后要手动配置好盗贼任务,\n因为盗贼任务是不能导入的.")
 self.controls.charDone = new("ButtonControl", {"TOPLEFT",self.controls.charImportHeader,"BOTTOMLEFT"}, 0, 90, 60, 20, "关闭", function()
 		self.charImportMode = "GETACCOUNTNAME"

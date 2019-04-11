@@ -2344,3 +2344,34 @@ minions["Metadata/Monsters/WickerMan/WickerMan"] = {
 	modList = {
 	},
 }
+
+
+
+minions["Metadata/Monsters/Goatman/GoatmanShamanLightningChampion"] = {
+	name = "羊人唤空者",
+	life = 1.4,
+	energyShield = 0.2,
+	fireResist = 0,
+	coldResist = 0,
+	lightningResist = 75,
+	chaosResist = 0,
+	damage = 1,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 6,
+	accuracy = 1,
+	damageFixup = 0.11,
+	weaponType1 = "Staff",
+	skillList = {
+		"Melee",
+		"MonsterShockNova",
+		"MonsterSpark",
+		"OrbOfStormsGoatmanShamanChampion",
+	},
+	modList = {
+		-- MonsterSpeedAndDamageFixupSmall
+		mod("Speed", "INC", -50, ModFlag.Cast), -- MonsterGoatmanShamanCastSpeed
+		-- MonsterCastsShockNovaText
+		-- MonsterCastsSparkText
+	},
+}

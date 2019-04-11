@@ -3676,3 +3676,38 @@ name = "物理光柱",
 		[1] = { 0.80000001192093, 1.2000000476837, cooldown = 8, levelRequirement = 83, },
 	},
 }
+
+
+skills["OrbOfStormsGoatmanShamanChampion"] = {
+	name = "风暴漩涡",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 1.5,
+	incrementalEffectiveness = 0.034000001847744,
+	description = "创造出一个带电的球, 不断地释放出一道道的闪电攻击敌人. 施法速度也会影响释放闪电的频率。当在云的范围里使用其他的闪电技能, 会触发风暴漩涡释放闪电. 再次使用技能会取代旧的漩涡. 此技能只能由你主动施放. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.LightningSkill] = true, [SkillType.Duration] = true, [SkillType.Area] = true, [SkillType.Chaining] = true, [SkillType.Triggerable] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, [SkillType.AreaSpell] = true, },
+	statDescriptionScope = "beam_skill_stat_descriptions",
+	castTime = 0.5,
+	baseFlags = {
+		spell = true,
+		chaining = true,
+		duration = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_lightning_damage",
+		"spell_maximum_base_lightning_damage",
+		"base_skill_effect_duration",
+		"orb_of_storms_base_bolt_frequency_ms",
+		"projectile_number_to_split",
+		"storm_cloud_charged_damage_+%_final",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, 1, },
+	levels = {
+		[1] = { 0.5, 1.5, 5000, 1000, 5, 0, cooldown = 8, levelRequirement = 4, },
+		[2] = { 1, 3, 5000, 1000, 5, 0, cooldown = 8, levelRequirement = 68, },
+	},
+}

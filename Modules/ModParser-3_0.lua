@@ -38,6 +38,7 @@ local formList = {
 	["增加 (%d+)%%"] = "INC",
 	["附加 (%d+) %- (%d+) ([^\\x00-\\xff]*)伤害"] = "DMG",
 	["便提高 (%d+)%%"] = "INC", --备注：^(%d+)%% increased
+	["比平常慢 (%d+)%%"] = "RED",
 	--【中文化程序额外添加结束】
 	["提高 (%d+)%%"] = "INC", --备注：^(%d+)%% increased
 	["比平常快 (%d+)%%"] = "INC", --备注：^(%d+)%% faster
@@ -1016,6 +1017,7 @@ local modTagList = {
 	["闪电抗性高于 75%% 时，每高 (%d+)%%，"] = function(num) return { tag  = { type = "PerStat", stat = "LightningResistOver75", div = num } } end,
 	["每 (%d+) 点魔力会使"] = function(num) return { tag = { type = "PerStat", stat = "Mana", div = num } } end,
 	["每 (%d+) 点最大魔力会使"] = function(num) return { tag = { type = "PerStat", stat = "Mana", div = num } } end,
+	["【猛攻】效果持续时，"] = { tag = { type = "Condition", var = "Onslaught" } },
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -1137,7 +1139,7 @@ local modTagList = {
 	["无生命保留时"] = { tag = { type = "StatThreshold", stat = "LifeReserved", threshold = 0, upper = true } }, --备注：wh[ie][ln]e? no life is reserved
 	["无魔力保留时，"] = { tag = { type = "StatThreshold", stat = "ManaReserved", threshold = 0, upper = true } }, --备注：wh[ie][ln]e? no mana is reserved
 	["能量护盾全满时，"] = { tag = { type = "Condition", var = "FullEnergyShield" } }, --备注：wh[ie][ln]e? on full energy shield
-	["能量护盾全满时，"] = { tag = { type = "Condition", var = "FullEnergyShield", neg = true } }, --备注：wh[ie][ln]e? not on full energy shield
+	["wh[ie][ln]e? not on full energy shield"] = { tag = { type = "Condition", var = "FullEnergyShield", neg = true } },
 	["拥有能量护盾时"] = { tag = { type = "Condition", var = "HaveEnergyShield" } }, --备注：wh[ie][ln]e? you have energy shield
 	["静止时"] = { tag = { type = "Condition", var = "Stationary" } }, --备注：while stationary
 	["移动时"] = { tag = { type = "Condition", var = "Moving" } }, --备注：while moving
@@ -1637,6 +1639,7 @@ local specialModList = {
 	["药剂持续期间，有 (%d+)%% 几率冰冻"]= function(num) return {mod("EnemyFreezeChance", "BASE", num,{ type = "Condition", var = "UsingFlask" }) } end, 
 	["药剂持续期间，有 (%d+)%% 几率感电"]= function(num) return {mod("EnemyShockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" }) } end, 
 	["药剂持续期间，有 (%d+)%% 几率点燃"]= function(num) return {mod("EnemyIgniteChance", "BASE", num,{ type ="Condition", var = "UsingFlask" })  } end, 
+	["每个暴击球所获得物理攻击伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("PhysicalDamageManaLeech", "BASE", num,nil, ModFlag.Attack,{ type = "Multiplier", var = "PowerCharge" })  } end, 
 	["每个暴击球会提供攻击伤害 ([%d%.]+)%% 的魔力偷取"]= function(num) return {  mod("DamageManaLeech", "BASE", num,nil, ModFlag.Attack,{ type = "Multiplier", var = "PowerCharge" })  } end, 
 	["对被冰缓敌人所造成的攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack,{ type = "ActorCondition", actor = "enemy", var = "Chilled" })  } end, 
 	["获得等同 ([%d%.]+)%% 最大生命的额外能量护盾"]= function(num) return {  mod("LifeGainAsEnergyShield", "BASE", num)  } end, 
@@ -1716,6 +1719,11 @@ local specialModList = {
 	["被击中时承受额外 ([%+%-]?%d+) 闪电伤害"] = function(num) return {  mod("LightningDamageTakenWhenHit", "BASE", num)  } end,
 	["被击中时承受额外 ([%+%-]?%d+) 冰霜伤害"] = function(num) return {  mod("ColdDamageTakenWhenHit", "BASE", num)  } end,
 	["被击中时承受额外 ([%+%-]?%d+) 物理伤害"] = function(num) return {  mod("PhysicalDamageTakenWhenHit", "BASE", num)  } end,
+	["([%+%-]?%d+) 承受的混沌伤害"] = function(num) return {  mod("ChaosDamageTaken", "BASE", num)  } end,
+	["([%+%-]?%d+) 承受的火焰伤害"] = function(num) return {  mod("FireDamageTaken", "BASE", num)  } end,
+	["([%+%-]?%d+) 承受的闪电伤害"] = function(num) return {  mod("LightningDamage", "BASE", num)  } end,
+	["([%+%-]?%d+) 承受的冰霜伤害"] = function(num) return {  mod("ColdDamageTaken", "BASE", num)  } end,
+	["([%+%-]?%d+) 承受的物理伤害"] = function(num) return {  mod("PhysicalDamageTaken", "BASE", num)  } end,
 	["每拥有 1 个暴击球，有 (%d+)%% 几率造成中毒"]= function(num) return { mod("PoisonChance", "BASE", num,{ type = "Multiplier", var = "PowerCharge" } ) } end,
 	["当暴击球达到上限时，获得等同 (%d+)%% 物理伤害的混沌伤害"] = function(num) return {  mod("PhysicalDamageGainAsChaos", "BASE", num,{ type = "StatThreshold", stat = "PowerCharges", thresholdStat = "PowerChargesMax" } )  } end,
 	["你拥有至少 (%d+) 个【深海屏障】时，格挡几率额外提高 (%d+)%%"] = function(num1,_,num2) return {  mod("BlockChance", "BASE", num2,{ type = "StatThreshold", stat = "CrabBarriers", threshold = num1} )  } end,
@@ -2043,6 +2051,8 @@ local specialModList = {
 	["【冰川之刺】的 (%d+)%% 物理伤害转换为冰霜伤害"]= function(num)  return {  mod("PhysicalDamageConvertToCold", "BASE", tonumber(num),{ type = "SkillName", skillName ="冰川之刺" })  } end, 
 	["获得 (%d+) 级的主动技能【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end, 
 	["【(.+)】不保留魔力"] = function( _,skill) return { mod("SkillData", "LIST", { key = "manaCostForced", value = 0 }, { type = "SkillName", skillName = skill }) } end,
+	["获得 (%d+) 级的的主动技能【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end, 
+	["【(.+)】不保留魔力"] = function( _,skill) return { mod("SkillData", "LIST", { key = "manaCostForced", value = 0 }, { type = "SkillName", skillName = skill }) } end,
 	["装备的护盾格挡几率若不低于 (%d+)%%，则法术伤害的 ([%d%.]+)%% 转化为生命偷取"] = function(num, _,num2) return {  mod("DamageLifeLeech", "BASE", tonumber(num2),nil, ModFlag.Spell,{ type = "StatThreshold", stat = "ShieldBlockChance", threshold = tonumber(num) }) } end,
 	["插入苍白之凝珠宝时，召唤生物的命中值 %+(%d+)"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Accuracy", "BASE", num) }, { type = "Condition", var = "Have苍白之凝珠宝In{SlotName}" }) } end,
 	["周围敌人的所有抗性提高 (%-%d+)%%"] = function(num) return { 
@@ -2091,10 +2101,15 @@ local specialModList = {
 	["周围敌人获得 (%-%d+)%% 冰霜抗性"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("ColdResist", "BASE", num) }) } end,
 	["周围敌人获得 (%-%d+)%% 闪电抗性"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("LightningResist", "BASE", num) }) } end,
 	["每装备 1 个未腐化的物品，每秒回复 (%d+) 生命"]= function(num) return {  mod("LifeRegen", "BASE", tonumber(num),{ type = "Multiplier", var = "NonCorruptedItem" })  } end,
+	["该武器击中后造成的 (%d+)%% 物理伤害转换为一种随机元素伤害"]= function(num) return { 
+	 mod("PhysicalDamageGainAsFire", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementFire" }),
+	  mod("PhysicalDamageGainAsCold", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementCold" }),
+	  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementLightning" }), 
+	 } end, 
 	["获得等同武器物理伤害 (%d+)%% 的随机一种额外火焰，冰霜，或者闪电伤害"]= function(num) return { 
 	 mod("PhysicalDamageGainAsFire", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementFire" }),
 	  mod("PhysicalDamageGainAsCold", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementCold" }),
-	  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementLightning" }),
+	  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementLightning" }), 
 	 } end,
 	["获得等同 (%d+)%% 物理伤害的 1 个随机火焰、冰霜、闪电伤害"]= function(num) return { 
 	 mod("PhysicalDamageGainAsFire", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementFire" }),

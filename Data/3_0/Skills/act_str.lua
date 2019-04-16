@@ -200,7 +200,7 @@ skills["AncestorTotemSlam"] = {
 	castTime = 1,
 	statMap = {
 		["slam_ancestor_totem_grant_owner_melee_damage_+%_final"] = {
-			mod("Damage", "MORE", nil, ModFlag.Melee, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Ancestral Warchief" }),
+mod("Damage", "MORE", nil, ModFlag.Melee, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "先祖战士长" }),
 		},
 	},
 	baseFlags = {
@@ -298,7 +298,7 @@ skills["VaalAncestralWarchief"] = {
 	castTime = 1,
 	statMap = {
 		["slam_ancestor_totem_grant_owner_melee_damage_+%_final"] = {
-			mod("Damage", "MORE", nil, ModFlag.Melee, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Ancestral Warchief" }),
+mod("Damage", "MORE", nil, ModFlag.Melee, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "先祖战士长" }),
 		},
 	},
 	baseFlags = {

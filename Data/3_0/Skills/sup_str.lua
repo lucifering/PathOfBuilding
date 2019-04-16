@@ -1614,7 +1614,7 @@ skills["SupportMaim"] = {
 			mod("PhysicalDamage", "MORE", nil),
 		},
 		["support_maimed_enemies_physical_damage_taken_+%"] = {
-			mod("PhysicalDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "Maim" }, { type = "Condition", var = "Maimed" }),
+mod("PhysicalDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "瘫痪" }, { type = "Condition", var = "Maimed" }),
 		},
 	},
 	baseMods = {

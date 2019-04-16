@@ -225,6 +225,7 @@ local modNameList = {
 	["攻击伤害格挡几率上限"] = "BlockChanceMax", 
 	["你身上的药剂效果"] = "FlaskEffect",
 	["冷却恢复速度"] = "CooldownRecovery", 
+	["法术暴击几率"] = { "CritChance", flags = ModFlag.Spell },
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -1832,6 +1833,7 @@ local specialModList = {
 	["受到【奋锐光环】影响时，位于奉献地面之上的敌人受到的暴击几率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy奋锐光环" },{ type = "ActorCondition", actor = "enemy", var = "OnConsecratedGround" })  } end, 
 	["受到【奋锐光环】影响时，从能量护盾偷取中获得的每秒最大总恢复量提高 (%d+)%%"]= function(num) return {  mod("MaxEnergyShieldLeechRate", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy奋锐光环" })  } end, 
 	["当你受到奋锐光环影响时，创造的【奉献地面】可以使敌人承受的伤害提高 (%d+)%%"]= function(num) return {  mod("EnemyModifier", "LIST", { mod = mod("DamageTaken", "INC", num) }, { type = "ActorCondition", actor = "enemy", var = "OnConsecratedGround" },{ type = "Condition", var = "AffectedBy奋锐光环" })  } end, 
+	["受【奋锐光环】影响时，暴击穿透敌人 (%d+)%% 的元素抗性"]= function(num) return {  mod("ElementalPenetration", "BASE", tonumber(num), { type = "Condition", var = "CriticalStrike" },{ type = "Condition", var = "AffectedBy奋锐光环" })  } end, 
 	["受【怨毒光环】影响时，([%+%-]?%d+)%% 非异常状态的持续混沌伤害加成"]= function(num) return {  mod("ChaosDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
 	["受【怨毒光环】影响时，([%+%-]?%d+)%% 非异常状态混沌伤害持续时间加成"]= function(num) return {  mod("ChaosDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
 	["受【怨毒光环】影响时，([%+%-]?%d+)%% 持续冰霜伤害加成"]= function(num) return {  mod("ColdDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
@@ -2088,6 +2090,7 @@ local specialModList = {
 	["每 (%d+) 点敏捷提高 (%d+)%% 召唤生物造成的伤害"] = function(_,num1,num2) return {  mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", tonumber(num2)) },{ type = "PerStat", stat = "Dex", div = tonumber(num1) })   } end, 
 	["近期你每消耗 (%d+) 魔力，法术伤害便提高 (%d+)%%"] = function(_,num1,num2)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "Multiplier", var = "ManaSpentRecently", div = tonumber(num1) }) } end,  
 	["近期你每消耗 (%d+) 魔力，法术伤害便提高 (%d+)%%,最多可提高 (%d+)%%"] = function(_,num1,num2,num3)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "Multiplier", var = "ManaSpentRecently", div = tonumber(num1) , limit = tonumber(num3), limitTotal = true}) } end,   
+	["近期你每消耗 (%d+) 魔力，法术伤害便提高 (%d+)%%，最多 (%d+)%%"] = function(_,num1,num2,num3)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "Multiplier", var = "ManaSpentRecently", div = tonumber(num1) , limit = tonumber(num3), limitTotal = true}) } end,  
 	["身体护甲提供的能量护盾提高 (%d+)%%"] =  function(num) return {  mod("EnergyShield", "INC", num, { type = "SlotName", slotName = "Body Armour" }) } end, 
 	["盾牌提供的能量护盾提高 (%d+)%%"] =  function(num) return {  mod("EnergyShield", "INC", num, { type = "SlotName", slotName = "Weapon 2" }) } end, 
 	["每有 (%d+)%% 攻击格档率，伤害提高 (%d+)%%"] =  function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2),{ type = "PerStat", stat = "BlockChance", div = tonumber(num1) }  ) } end, 

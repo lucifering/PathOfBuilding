@@ -732,7 +732,7 @@ skills["VaalBlight"] = {
 	castTime = 0.6,
 	statMap = {
 		["hinder_enemy_chaos_damage_taken_+%"] = {
-			mod("ChaosDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "Hinder" }),
+mod("ChaosDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "缓速" }),
 		},
 	},
 	baseFlags = {
@@ -3282,7 +3282,7 @@ skills["FrostBomb"] = {
 	castTime = 0.5,
 	statMap = {
 		["base_cold_damage_resistance_%"] = {
-			mod("ColdResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff" }),
+mod("ColdResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff" , effectName = "冰霜曝露"}),
 		},
 		["energy_shield_recharge_rate_+%"] = {
 			mod("EnergyShieldRecharge", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff" }),
@@ -5669,7 +5669,7 @@ name = "1 阶",
 	},
 	statMap = {
 		["base_fire_damage_resistance_%"] = {
-			mod("FireResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "Fire Exposure", effectCond = "ScorchingRayMaxStages" }),
+mod("FireResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "火焰曝露", effectCond = "ScorchingRayMaxStages" }),
 		},
 	},
 	baseFlags = {
@@ -7167,9 +7167,9 @@ skills["Purge"] = {
 	castTime = 0.7,
 	statMap = {
 		["purge_expose_resist_%_matching_highest_element_damage"] = {
-			mod("FireResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "Fire Exposure", effectCond = "WaveOfConvictionFireExposureActive" }),
-			mod("ColdResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "Cold Exposure", effectCond = "WaveOfConvictionColdExposureActive" }),
-			mod("LightningResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "Lightning Exposure", effectCond = "WaveOfConvictionLightningExposureActive" }),
+mod("FireResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "火焰曝露", effectCond = "WaveOfConvictionFireExposureActive" }),
+mod("ColdResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "冰霜曝露", effectCond = "WaveOfConvictionColdExposureActive" }),
+mod("LightningResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "闪电曝露", effectCond = "WaveOfConvictionLightningExposureActive" }),
 		},
 	},
 	baseFlags = {
@@ -7367,10 +7367,10 @@ name = "15 层",
 			div = 1000,
 		},
 		["chaos_damage_taken_+%"] = {
-			mod("ChaosDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "Withered" }),
+mod("ChaosDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "死亡凋零" }),
 		},
 		["base_movement_velocity_+%"] = {
-			mod("MovementSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "Withered" }),
+mod("MovementSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "死亡凋零" }),
 		},
 	},
 	baseFlags = {

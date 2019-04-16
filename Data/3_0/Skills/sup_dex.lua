@@ -2536,7 +2536,7 @@ skills["SupportChaosAttacks"] = {
 	excludeSkillTypes = { },
 	statDescriptionScope = "gem_stat_descriptions",
 	baseMods = {
-		mod("ChaosDamageTaken", "INC", 6, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "Withered", effectStackVar = "WitheringTouchWitheredStackCount", effectStackLimit = 15 }),
+mod("ChaosDamageTaken", "INC", 6, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "死亡凋零", effectStackVar = "WitheringTouchWitheredStackCount", effectStackLimit = 15 }),
 	},
 	qualityStats = {
 		{ "chaos_damage_+%", 0.5 },

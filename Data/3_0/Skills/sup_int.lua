@@ -145,14 +145,14 @@ skills["SupportArcaneSurge"] = {
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
 		["support_arcane_surge_cast_speed_+%"] = {
-			mod("Speed", "INC", nil, ModFlag.Cast, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Arcane Surge" }),
+mod("Speed", "INC", nil, ModFlag.Cast, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "秘术增强" }),
 		},
 		["support_arcane_surge_mana_regeneration_rate_per_minute_%"] = {
-			mod("ManaRegenPercent", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Arcane Surge" }),
+mod("ManaRegenPercent", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "秘术增强" }),
 			div = 60,
 		},
 		["support_arcane_surge_spell_damage_+%_final"] = {
-			mod("Damage", "MORE", nil, ModFlag.Spell, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Arcane Surge" }),
+mod("Damage", "MORE", nil, ModFlag.Spell, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "秘术增强" }),
 		},
 		["support_arcane_surge_spell_damage_+%_final_while_you_have_arcane_surge"] = {
 			mod("Damage", "MORE", nil, ModFlag.Spell, 0, { type = "Condition", var = "AffectedByArcaneSurge" }),
@@ -290,7 +290,7 @@ skills["SupportBonechill"] = {
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
 		["support_chills_also_grant_cold_damage_taken_per_minute_+%"] = {
-			mod("ColdDamageTakenOverTime", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "Bonechill", effectEnemyCond = "Chilled" }),
+mod("ColdDamageTakenOverTime", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "彻骨", effectEnemyCond = "Chilled" }),
 		},
 	},
 	baseMods = {
@@ -498,7 +498,7 @@ skills["SupportChanceToIgnite"] = {
 			mod("FireDamage", "MORE", nil),
 		},
 		["ignites_apply_fire_resistance_+"] = {
-			mod("FireResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "Combustion" }, { type = "Condition", var = "Ignited" }),
+mod("FireResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "几率点燃" }, { type = "Condition", var = "Ignited" }),
 		},
 	},
 	baseMods = {
@@ -1516,22 +1516,22 @@ skills["SupportStormBarrier"] = {
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
 		["support_storm_barrier_physical_damage_taken_when_hit_+%_final"] = {
-			mod("PhysicalDamageTakenWhenHit", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Infused Channelling" }),
+mod("PhysicalDamageTakenWhenHit", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌能吟唱" }),
 		},
 		["support_storm_barrier_skill_type_damage_taken_when_hit_+%_final"] = {
-			mod("FireDamageTakenWhenHit", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Infused Channelling", modCond = "FireInfusion" }),
-			mod("ColdDamageTakenWhenHit", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Infused Channelling", modCond = "ColdInfusion" }),
-			mod("LightningDamageTakenWhenHit", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Infused Channelling", modCond = "LightningInfusion" }),
-			mod("ChaosDamageTakenWhenHit", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Infused Channelling", modCond = "ChaosInfusion" }),
+mod("FireDamageTakenWhenHit", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌能吟唱", modCond = "FireInfusion" }),
+mod("ColdDamageTakenWhenHit", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌能吟唱", modCond = "ColdInfusion" }),
+mod("LightningDamageTakenWhenHit", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌能吟唱", modCond = "LightningInfusion" }),
+mod("ChaosDamageTakenWhenHit", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌能吟唱", modCond = "ChaosInfusion" }),
 		},
 		["support_storm_barrier_damage_+%_final"] = {
 			mod("Damage", "MORE", nil),
 		},
 		["support_storm_barrier_skill_type_damage_+%_final"] = {
-			mod("FireDamage", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Infusion", effectCond = "InfusionActive", modCond = "FireInfusion" }),
-			mod("ColdDamage", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Infusion", effectCond = "InfusionActive", modCond = "ColdInfusion" }),
-			mod("LightningDamage", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Infusion", effectCond = "InfusionActive", modCond = "LightningInfusion" }),
-			mod("ChaosDamage", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Infusion", effectCond = "InfusionActive", modCond = "ChaosInfusion" }),
+mod("FireDamage", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌注", effectCond = "InfusionActive", modCond = "FireInfusion" }),
+mod("ColdDamage", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌注", effectCond = "InfusionActive", modCond = "ColdInfusion" }),
+mod("LightningDamage", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌注", effectCond = "InfusionActive", modCond = "LightningInfusion" }),
+mod("ChaosDamage", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌注", effectCond = "InfusionActive", modCond = "ChaosInfusion" }),
 		},
 	},
 	baseMods = {
@@ -1609,10 +1609,10 @@ skills["SupportOnslaughtOnSlayingShockedEnemy"] = {
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
 		["support_innervate_minimum_added_lightning_damage"] = {
-			mod("LightningMin", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Innervation", effectCond = "InnervationActive" }),
+mod("LightningMin", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "闪电支配", effectCond = "InnervationActive" }),
 		},
 		["support_innervate_maximum_added_lightning_damage"] = {
-			mod("LightningMax", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Innervation", effectCond = "InnervationActive" }),
+mod("LightningMax", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "闪电支配", effectCond = "InnervationActive" }),
 		},
 	},
 	baseMods = {

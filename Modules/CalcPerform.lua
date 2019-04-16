@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Module: Calc Perform
 -- Manages the offence/defence calculations.
@@ -159,7 +159,7 @@ local function doActorAttribsPoolsConditions(env, actor)
 
 	-- Add attribute bonuses
 	if not modDB:Flag(nil, "NoStrBonusToLife") then
-		modDB:NewMod("Life", "BASE", m_floor(output.Str / 2), "Strength")
+modDB:NewMod("Life", "BASE", m_floor(output.Str / 2), "力量")
 	end
 	local strDmgBonusRatioOverride = modDB:Sum("BASE", nil, "StrDmgBonusRatioOverride")
 	if strDmgBonusRatioOverride > 0 then
@@ -167,15 +167,15 @@ local function doActorAttribsPoolsConditions(env, actor)
 	else
 		actor.strDmgBonus = round((output.Str + modDB:Sum("BASE", nil, "DexIntToMeleeBonus")) / 5)
 	end
-	modDB:NewMod("PhysicalDamage", "INC", actor.strDmgBonus, "Strength", ModFlag.Melee)
-	modDB:NewMod("Accuracy", "BASE", output.Dex * 2, "Dexterity")
+modDB:NewMod("PhysicalDamage", "INC", actor.strDmgBonus, "力量", ModFlag.Melee)
+modDB:NewMod("Accuracy", "BASE", output.Dex * 2, "敏捷")
 	if not modDB:Flag(nil, "IronReflexes") then
-		modDB:NewMod("Evasion", "INC", round(output.Dex / 5), "Dexterity")
+modDB:NewMod("Evasion", "INC", round(output.Dex / 5), "敏捷")
 	end
 	if not modDB:Flag(nil, "NoIntBonusToMana") then
-		modDB:NewMod("Mana", "BASE", round(output.Int / 2), "Intelligence")
+modDB:NewMod("Mana", "BASE", round(output.Int / 2), "智慧")
 	end
-	modDB:NewMod("EnergyShield", "INC", round(output.Int / 5), "Intelligence")
+modDB:NewMod("EnergyShield", "INC", round(output.Int / 5), "智慧")
 
 	-- Life/mana pools
 	if modDB:Flag(nil, "ChaosInoculation") then
@@ -294,46 +294,46 @@ local function doActorMisc(env, actor)
 	if env.mode_combat then
 		if modDB:Flag(nil, "Fortify") then
 			local effect = m_floor(20 * (1 + modDB:Sum("INC", nil, "FortifyEffectOnSelf", "BuffEffectOnSelf") / 100))
-			modDB:NewMod("DamageTakenWhenHit", "INC", -effect, "Fortify")
+modDB:NewMod("DamageTakenWhenHit", "INC", -effect, "护体")
 			modDB.multipliers["BuffOnSelf"] = (modDB.multipliers["BuffOnSelf"] or 0) + 1
 		end
 		if modDB:Flag(nil, "Onslaught") then
 			local effect = m_floor(20 * (1 + modDB:Sum("INC", nil, "OnslaughtEffect", "BuffEffectOnSelf") / 100))
-			modDB:NewMod("Speed", "INC", effect, "Onslaught")
-			modDB:NewMod("MovementSpeed", "INC", effect, "Onslaught")
+modDB:NewMod("Speed", "INC", effect, "猛攻")
+modDB:NewMod("MovementSpeed", "INC", effect, "猛攻")
 		end
 		if modDB:Flag(nil, "UnholyMight") then
 			local effect = m_floor(30 * (1 + modDB:Sum("INC", nil, "BuffEffectOnSelf") / 100))
-			modDB:NewMod("PhysicalDamageGainAsChaos", "BASE", effect, "Unholy Might")
+modDB:NewMod("PhysicalDamageGainAsChaos", "BASE", effect, "不洁之力")
 		end
 		if modDB:Flag(nil, "Tailwind") then
 			local effect = m_floor(10 * (1 + modDB:Sum("INC", nil, "TailwindEffectOnSelf", "BuffEffectOnSelf") / 100))
-			modDB:NewMod("ActionSpeed", "INC", effect, "Tailwind")
+modDB:NewMod("ActionSpeed", "INC", effect, "提速尾流")
 		end
 		if modDB:Flag(nil, "Adrenaline") then
 			local effectMod = 1 + modDB:Sum("INC", nil, "BuffEffectOnSelf") / 100
-			modDB:NewMod("Damage", "INC", m_floor(100 * effectMod), "Adrenaline")
-			modDB:NewMod("Speed", "INC", m_floor(25 * effectMod), "Adrenaline")
-			modDB:NewMod("MovementSpeed", "INC", m_floor(25 * effectMod), "Adrenaline")
-			modDB:NewMod("PhysicalDamageReduction", "BASE", m_floor(10 * effectMod), "Adrenaline")
+modDB:NewMod("Damage", "INC", m_floor(100 * effectMod), "肾上腺素")
+modDB:NewMod("Speed", "INC", m_floor(25 * effectMod), "肾上腺素")
+modDB:NewMod("MovementSpeed", "INC", m_floor(25 * effectMod), "肾上腺素")
+modDB:NewMod("PhysicalDamageReduction", "BASE", m_floor(10 * effectMod), "肾上腺素")
 		end
 		if modDB:Flag(nil, "HerEmbrace") then
 			condList["HerEmbrace"] = true
-			modDB:NewMod("AvoidStun", "BASE", 100, "Her Embrace")
-			modDB:NewMod("PhysicalDamageGainAsFire", "BASE", 123, "Her Embrace", ModFlag.Sword)
-			modDB:NewMod("AvoidFreeze", "BASE", 100, "Her Embrace")
-			modDB:NewMod("AvoidChill", "BASE", 100, "Her Embrace")
-			modDB:NewMod("AvoidIgnite", "BASE", 100, "Her Embrace")
-			modDB:NewMod("Speed", "INC", 20, "Her Embrace")
-			modDB:NewMod("MovementSpeed", "INC", 20, "Her Embrace")
+modDB:NewMod("AvoidStun", "BASE", 100, "女神之拥")
+	modDB:NewMod("PhysicalDamageGainAsFire", "BASE", 123, "女神之拥", ModFlag.Sword)
+modDB:NewMod("AvoidFreeze", "BASE", 100, "女神之拥")
+modDB:NewMod("AvoidChill", "BASE", 100, "女神之拥")
+modDB:NewMod("AvoidIgnite", "BASE", 100, "女神之拥")
+modDB:NewMod("Speed", "INC", 20, "女神之拥")
+modDB:NewMod("MovementSpeed", "INC", 20, "女神之拥")
 		end
 		if modDB:Flag(nil, "Chill") then
 			local effect = m_max(m_floor(30 * calcLib.mod(modDB, nil, "SelfChillEffect")), 0)
-			modDB:NewMod("ActionSpeed", "INC", effect * (modDB:Flag(nil, "SelfChillEffectIsReversed") and 1 or -1), "Chill")
+modDB:NewMod("ActionSpeed", "INC", effect * (modDB:Flag(nil, "SelfChillEffectIsReversed") and 1 or -1), "冰缓")
 		end
 		if modDB:Flag(nil, "Freeze") then
 			local effect = m_max(m_floor(70 * calcLib.mod(modDB, nil, "SelfChillEffect")), 0)
-			modDB:NewMod("ActionSpeed", "INC", -effect, "Freeze")
+modDB:NewMod("ActionSpeed", "INC", -effect, "冰冻")
 		end
 	end	
 end

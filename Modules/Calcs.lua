@@ -1,4 +1,4 @@
--- Path of Building
+﻿-- Path of Building
 --
 -- Module: Calcs
 -- Manages the calculation system.
@@ -261,37 +261,37 @@ function calcs.buildOutput(build, mode)
 		local combatList = { }
 		local curseList = { }
 		if output.PowerCharges > 0 then
-			t_insert(combatList, s_format("%d Power Charges", output.PowerCharges))
+t_insert(combatList, s_format("%d 暴击球", output.PowerCharges))
 		end
 		if output.FrenzyCharges > 0 then
-			t_insert(combatList, s_format("%d Frenzy Charges", output.FrenzyCharges))
+t_insert(combatList, s_format("%d 狂怒球", output.FrenzyCharges))
 		end
 		if output.EnduranceCharges > 0 then
-			t_insert(combatList, s_format("%d Endurance Charges", output.EnduranceCharges))
+t_insert(combatList, s_format("%d 耐力球", output.EnduranceCharges))
 		end
 		if output.SiphoningCharges > 0 then
-			t_insert(combatList, s_format("%d Siphoning Charges", output.SiphoningCharges))
+t_insert(combatList, s_format("%d 轮回球", output.SiphoningCharges))
 		end
 		if output.CrabBarriers > 0 then
-			t_insert(combatList, s_format("%d Crab Barriers", output.CrabBarriers))
+t_insert(combatList, s_format("%d 深海屏障", output.CrabBarriers))
 		end
 		if env.modDB:Flag(nil, "Fortify") then
-			t_insert(combatList, "Fortify")
+t_insert(combatList, "护体")
 		end
 		if env.modDB:Flag(nil, "Onslaught") then
-			t_insert(combatList, "Onslaught")
+t_insert(combatList, "猛攻")
 		end
 		if env.modDB:Flag(nil, "UnholyMight") then
-			t_insert(combatList, "Unholy Might")
+t_insert(combatList, "不洁之力")
 		end
 		if env.modDB:Flag(nil, "Tailwind") then
-			t_insert(combatList, "Tailwind")
+t_insert(combatList, "提速尾流")
 		end
 		if env.modDB:Flag(nil, "Adrenaline") then
-			t_insert(combatList, "Adrenaline")
+t_insert(combatList, "肾上腺素")
 		end
 		if env.modDB:Flag(nil, "HerEmbrace") then
-			t_insert(combatList, "Her Embrace")
+t_insert(combatList, "女神之拥")
 		end
 		for name in pairs(env.buffs) do
 			t_insert(buffList, name)
@@ -350,25 +350,25 @@ function calcs.buildOutput(build, mode)
 			local buffList = { }
 			local combatList = { }
 			if output.Minion.PowerCharges > 0 then
-				t_insert(combatList, s_format("%d Power Charges", output.Minion.PowerCharges))
+t_insert(combatList, s_format("%d 暴击球", output.Minion.PowerCharges))
 			end
 			if output.Minion.FrenzyCharges > 0 then
-				t_insert(combatList, s_format("%d Frenzy Charges", output.Minion.FrenzyCharges))
+t_insert(combatList, s_format("%d 狂怒球", output.Minion.FrenzyCharges))
 			end
 			if output.Minion.EnduranceCharges > 0 then
-				t_insert(combatList, s_format("%d Endurance Charges", output.Minion.EnduranceCharges))
+t_insert(combatList, s_format("%d 耐力球", output.Minion.EnduranceCharges))
 			end
 			if env.minion.modDB:Flag(nil, "Fortify") then
-				t_insert(combatList, "Fortify")
+t_insert(combatList, "护体")
 			end
 			if env.minion.modDB:Flag(nil, "Onslaught") then
-				t_insert(combatList, "Onslaught")
+t_insert(combatList, "猛攻")
 			end
 			if env.minion.modDB:Flag(nil, "UnholyMight") then
-				t_insert(combatList, "Unholy Might")
+t_insert(combatList, "不洁之力")
 			end
 			if env.minion.modDB:Flag(nil, "Tailwind") then
-				t_insert(combatList, "Tailwind")
+t_insert(combatList, "提速尾流")
 			end
 			for name in pairs(env.minionBuffs) do
 				t_insert(buffList, name)

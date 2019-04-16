@@ -290,10 +290,10 @@ skills["BirdAspect"] = {
 	fromItem = true,
 	statMap = {
 		["chance_to_deal_double_damage_%"] = {
-			mod("DoubleDamageChance", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Avian's Might", effectCond = "AviansMightActive" }),
+mod("DoubleDamageChance", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "鸟之力量", effectCond = "AviansMightActive" }),
 		},
 		["base_movement_velocity_+%"] = {
-			mod("MovementSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Avian's Flight", effectCond = "AviansFlightActive" }),
+mod("MovementSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "鸟之斗魄", effectCond = "AviansFlightActive" }),
 		},
 		["minion_movement_speed_+%"] = {
 		},
@@ -331,13 +331,13 @@ skills["CatAspect"] = {
 	fromItem = true,
 	statMap = {
 		["critical_strike_chance_+%"] = {
-			mod("CritChance", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Cat's Stealth", effectCond = "CatsStealthActive" }),
+mod("CritChance", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "猫之隐匿", effectCond = "CatsStealthActive" }),
 		},
 		["attack_speed_+%_granted_from_skill"] = {
-			mod("Speed", "INC", nil, ModFlag.Attack, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Cat's Agility", effectCond = "CatsAgilityActive" }),
+mod("Speed", "INC", nil, ModFlag.Attack, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "猫之敏捷", effectCond = "CatsAgilityActive" }),
 		},
 		["cast_speed_+%_granted_from_skill"] = {
-			mod("Speed", "INC", nil, ModFlag.Cast, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Cat's Agility", effectCond = "CatsAgilityActive" }),
+mod("Speed", "INC", nil, ModFlag.Cast, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "猫之敏捷", effectCond = "CatsAgilityActive" }),
 		},
 	},
 	baseFlags = {
@@ -408,7 +408,7 @@ skills["SpiderAspect"] = {
 		["base_movement_velocity_+%"] = {
 		},
 		["base_damage_taken_+%"] = {
-			mod("DamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "Spider's Web" })
+mod("DamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "蜘蛛网" })
 		},
 		["spider_aspect_max_web_count"] = {
 			mod("Multiplier:SpiderWebApplyStackMax", "BASE", nil),
@@ -788,13 +788,13 @@ skills["OnHitWhileCursedTriggeredCurseNova"] = {
 	fromItem = true,
 	parts = {
 		{
-			name = "Convert to fire",
+name = "转化为火焰",
 		},
 		{
-			name = "Convert to cold",
+name = "转化为冰霜",
 		},
 		{
-			name = "Convert to lightning",
+name = "转化为闪电",
 		},
 	},
 	baseFlags = {
@@ -1311,10 +1311,10 @@ skills["TriggeredSummonSpider"] = {
 	},
 	statMap = {
 		["summoned_spider_grants_attack_speed_+%"] = {
-			mod("Speed", "INC", nil, ModFlag.Attack, 0, { type = "Multiplier", var = "RaisedSpider" }, { type = "GlobalEffect", effectType = "Buff", effectName = "Raised Spider" }),
+mod("Speed", "INC", nil, ModFlag.Attack, 0, { type = "Multiplier", var = "RaisedSpider" }, { type = "GlobalEffect", effectType = "Buff", effectName = "豢养蜘蛛" }),
 		},
 		["summoned_spider_grants_poison_damage_+%"] = {
-			mod("Damage", "INC", nil, 0, KeywordFlag.Poison, { type = "Multiplier", var = "RaisedSpider" }, { type = "GlobalEffect", effectType = "Buff", effectName = "Raised Spider" }),
+mod("Damage", "INC", nil, 0, KeywordFlag.Poison, { type = "Multiplier", var = "RaisedSpider" }, { type = "GlobalEffect", effectType = "Buff", effectName = "豢养蜘蛛" }),
 		},
 	},
 	baseFlags = {
@@ -1927,7 +1927,7 @@ skills["SummonRigwaldsPack"] = {
 	},
 }
 skills["SummonVoidSphere"] = {
-	name = "Summon Volatile Anomaly",
+name = "召唤异动奇点",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 3.4818000793457,

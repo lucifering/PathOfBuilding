@@ -900,7 +900,7 @@ name = "新星",
 	castTime = 1,
 	statMap = {
 		["base_life_regeneration_rate_per_minute"] = {
-			mod("LifeRegen", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura", effectName = "Holy Relic's Boon"}),
+mod("LifeRegen", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura", effectName = "圣物的祝福"}),
 			div = 60,
 		},
 	},

@@ -502,7 +502,7 @@ self.charImportStatus = colorCodes.POSITIVE.."物品和技能导入成功."
 					elseif itemData.inventoryId == "Flask" then
 						slotName = "Flask "..(itemData.x + 1)
 					else
-					print(">>[itemData.inventoryId]"..itemData.inventoryId)
+					--print(">>[itemData.inventoryId]"..itemData.inventoryId)
 						slotName = slotMap[itemData.inventoryId]
 					end
 				if  slotName then

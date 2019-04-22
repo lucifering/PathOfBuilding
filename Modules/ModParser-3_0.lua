@@ -148,6 +148,7 @@ local modNameList = {
 	["的攻击格挡率套用于法术格挡"] = "BlockChanceConv",
 	["格挡法术"] = "SpellBlockChance", --备注：to block spells
 	["法术伤害格挡几率"] = "SpellBlockChance", --备注：to block spells
+	["法术格挡几率"] = "SpellBlockChance", 
 	["格挡法术伤害"] = "SpellBlockChance",
 	["格挡攻击"] = "BlockChance", --备注：block chance
 	["攻击伤害格挡几率"] = "BlockChance", --备注：block chance
@@ -1310,6 +1311,7 @@ local specialModList = {
 	--负数范围特殊处理
 	["提高 ([%+%-]?%d+)%% 药剂充能消耗"]= function(num) return {  mod("FlaskChargesUsed", "INC", num)  } end,  
 	["(%d+)%% 法术伤害格挡几率"] = function(num) return {  mod("SpellBlockChance", "BASE", num) } end,  
+	["(%d+)%% 法术格挡几率"] = function(num) return {  mod("SpellBlockChance", "BASE", num) } end,  
 	["每 10 点智慧可以为攻击附加 0 %- 3 基础闪电伤害"]= function() return { 	
 		mod("LightningMax", "BASE", 3,  { type = "PerStat", stat = "Int", div = 10 }) 
 	}end,

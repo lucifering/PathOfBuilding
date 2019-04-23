@@ -870,9 +870,13 @@ local modTagList = {
 		["当你拥有护体时，"] = { tag = { type = "Condition", var = "Fortify" } }, --备注：while you have fortify	
 		["【迷踪】状态时，"] = { tag = { type = "Condition", var = "Phasing" } }, --备注：while phasing
 		["拥有【提速尾流】时，"] = { tag = { type = "Condition", var = "Tailwind" } }, --备注：while you have tailwind
-		["拥有【猫之隐匿】时，"] = { tag = { type = "Condition", var = "AffectedByCat'sStealth" } }, --备注：while you have cat's stealth
-		["拥有【鸟之力量】时，"] = { tag = { type = "Condition", var = "AffectedByAvian'sMight" } }, --备注：while you have avian's might
-		["拥有【鸟之斗魄】时，"] = { tag = { type = "Condition", var = "AffectedByAvian'sFlight" } }, --备注：while you have avian's flight	
+		["拥有【猫之隐匿】时，"] = { tag = { type = "Condition", var = "AffectedBy猫之隐匿" } }, --备注：while you have cat's stealth
+		["拥有【鸟之力量】时，"] = { tag = { type = "Condition", var = "AffectedBy鸟之力量" } }, --备注：while you have avian's might
+		["拥有【鸟之斗魄】时，"] = { tag = { type = "Condition", var = "AffectedBy鸟之斗魄" } }, --备注：while you have avian's flight	
+		["拥有【猫之隐匿】时"] = { tag = { type = "Condition", var = "AffectedBy猫之隐匿" } }, --备注：while you have cat's stealth
+		["拥有【鸟之力量】时"] = { tag = { type = "Condition", var = "AffectedBy鸟之力量" } }, --备注：while you have avian's might
+		["拥有【鸟之斗魄】时"] = { tag = { type = "Condition", var = "AffectedBy鸟之斗魄" } }, --备注：while you have avian's flight
+		["受到【猫之势】影响时，"] = { tag = { type = "Condition", varList = { "AffectedBy猫之隐匿", "AffectedBy猫之敏捷" } } }, --备注：while affected by aspect of the cat
 		["偷取时，"] = { tag = { type = "Condition", var = "Leeching" } }, --备注：while leeching
 		["使用药剂时，"] = { tag = { type = "Condition", var = "UsingFlask" } }, --备注：while using a flask	
 		["在奉献地面上时，"] = { tag = { type = "Condition", var = "OnConsecratedGround" } }, --备注：while on consecrated ground
@@ -943,7 +947,7 @@ local modTagList = {
 	["击中冰缓敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" }, keywordFlags = KeywordFlag.Hit }, --备注：against chilled  
 	["对被点燃敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Ignited" }, keywordFlags = KeywordFlag.Hit }, 
 	["每 (%d+) 点力量可使"] = function(num) return { tag = { type = "PerStat", stat = "Str", div = num } } end, --备注：per (%d+) strength
-	["你获得【猫之隐匿】时"] = { tag = { type = "Condition", var = "AffectedByCat'sStealth" } }, --备注：while you have cat's stealth
+	["你获得【猫之隐匿】时"] = { tag = { type = "Condition", var = "AffectedBy猫之隐匿" } }, --备注：while you have cat's stealth
 	["每 (%d+) 点力量使"] = function(num) return { tag = { type = "PerStat", stat = "Str", div = num } } end, --备注：per (%d+) strength		
 	["若你有至少 (%d+) 点敏捷，则"] = function(num) return { tag = { type = "StatThreshold", stat = "Dex", threshold = num } } end, --备注：w?h?i[lf]e? you have at least (%d+) strength
 	["若你有至少 (%d+) 点智慧，则"] = function(num) return { tag = { type = "StatThreshold", stat = "Int", threshold = num } } end, --备注：w?h?i[lf]e? you have at least (%d+) dexterity
@@ -994,8 +998,8 @@ local modTagList = {
 	["每个狂怒球可使"] = { tag = { type = "Multiplier", var = "FrenzyCharge" } }, --备注：per frenzy charge
 	["每个耐力球可使"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
 	["每个耐力球增加"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
-	["拥有【秘术增强】时"] = { tag = { type = "Condition", var = "AffectedByArcaneSurge" } },
-	["拥有【秘术增强】效果时，"] = { tag = { type = "Condition", var = "AffectedByArcaneSurge" } },
+	["拥有【秘术增强】时"] = { tag = { type = "Condition", var = "AffectedBy秘术增强" } },
+	["拥有【秘术增强】效果时，"] = { tag = { type = "Condition", var = "AffectedBy秘术增强" } },
 	["带有烙印敌人"] = { tag = { type = "Condition", var = "BrandAttachedToEnemy" } },
 	["被附着烙印的敌人受到"] = { tag = { type = "Condition", var = "BrandAttachedToEnemy" } },
 	["专注时，"] = { tag = { type = "Condition", var = "Focused" } },
@@ -1163,10 +1167,10 @@ local modTagList = {
 	["获得【猛攻】时"] = { tag = { type = "Condition", var = "Onslaught" } }, --备注：while you have onslaught
 	["【迷踪】状态时"] = { tag = { type = "Condition", var = "Phasing" } }, --备注：while phasing
 	["拥有【提速尾流】时"] = { tag = { type = "Condition", var = "Tailwind" } }, --备注：while you have tailwind
-	["拥有【猫之隐匿】时"] = { tag = { type = "Condition", var = "AffectedByCat'sStealth" } }, --备注：while you have cat's stealth
-	["拥有【鸟之力量】时"] = { tag = { type = "Condition", var = "AffectedByAvian'sMight" } }, --备注：while you have avian's might
-	["拥有【鸟之斗魄】时"] = { tag = { type = "Condition", var = "AffectedByAvian'sFlight" } }, --备注：while you have avian's flight
-	["受到【猫之势】影响时，"] = { tag = { type = "Condition", varList = { "AffectedByCat'sStealth", "AffectedByCat'sAgility" } } }, --备注：while affected by aspect of the cat
+	["while you have cat's stealth"] = { tag = { type = "Condition", var = "AffectedByCat'sStealth" } },
+	["while you have avian's might"] = { tag = { type = "Condition", var = "AffectedByAvian'sMight" } },
+	["while you have avian's flight"] = { tag = { type = "Condition", var = "AffectedByAvian'sFlight" } },
+	["while affected by aspect of the cat"] = { tag = { type = "Condition", varList = { "AffectedByCat'sStealth", "AffectedByCat'sAgility" } } },
 	["偷取时"] = { tag = { type = "Condition", var = "Leeching" } }, --备注：while leeching
 	["使用药剂时"] = { tag = { type = "Condition", var = "UsingFlask" } }, --备注：while using a flask
 	["during effect"] = { tag = { type = "Condition", var = "UsingFlask" } },
@@ -1467,7 +1471,7 @@ local specialModList = {
 	["敌人身上每有 1 个诅咒，法术伤害的 ([%d%.]+)%% 会转化为能量护盾偷取"] = function(num) return {  mod("DamageEnergyShieldLeech", "BASE", num,nil, ModFlag.Spell,{ type = "Multiplier", var = "CurseOnEnemy" })  } end, 
 	["敌人身上每有 1 个诅咒，法术伤害的 ([%d%.]+)%% 便转化为能量护盾偷取"] = function(num) return {  mod("DamageEnergyShieldLeech", "BASE", num,nil, ModFlag.Spell,{ type = "Multiplier", var = "CurseOnEnemy" })  } end, 
 	["每个生命偷取实例降低 (%d+)%% 最大回复"] = function(num) return {  mod("MaxLifeLeechInstance", "INC", -num)  } end, 
-	["拥有【秘术增强】效果时，法术伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Spell,{ type = "Condition", var = "AffectedByArcaneSurge" })  } end, 
+	["拥有【秘术增强】效果时，法术伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Spell,{ type = "Condition", var = "AffectedBy秘术增强" })  } end, 
 	["攻击伤害的 ([%d%.]+)%% 会转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack)  } end, 
 	["药剂持续期间，物理攻击伤害的 ([%d%.]+)%% 作为生命偷取"]= function(num) return {  mod("PhysicalDamageLifeLeech", "BASE", num,nil, ModFlag.Attack,{ type = "Condition", var = "UsingFlask" })  } end, 
 	["药剂持续期间，物理攻击伤害的 ([%d%.]+)%% 作为魔力偷取"]= function(num) return {  mod("PhysicalDamageManaLeech", "BASE", num,nil, ModFlag.Attack,{ type = "Condition", var = "UsingFlask" })  } end, 
@@ -1853,8 +1857,8 @@ local specialModList = {
 	["最大魔力每有 (%d+) 点，则有 (%d+)%% 几率不被攻击和法术击中，最多 (%d+)%%"]=function(_,num1,num2,num3) return {  
 	mod("AttackDodgeChance", "BASE", num2,{ type = "PerStat", stat = "Mana", div = num1, limit = tonumber(num3), limitTotal = true }),
 	mod("SpellDodgeChance", "BASE", num2,{ type = "PerStat", stat = "Mana", div = num1, limit = tonumber(num3), limitTotal = true }) } end, 
-	["拥有【鸟之斗魄】时每秒回复 (%d+) 生命"]= function(num) return {  mod("LifeRegen", "BASE", tonumber(num),{ type = "Condition", var = "AffectedByAvian'sFlight" } )  } end,
-	["拥有【鸟之斗魄】时每秒回复 (%d+) 魔力"]= function(num) return {  mod("ManaRegen", "BASE", tonumber(num),{ type = "Condition", var = "AffectedByAvian'sFlight" } )  } end,
+	["拥有【鸟之斗魄】时每秒回复 (%d+) 生命"]= function(num) return {  mod("LifeRegen", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy鸟之斗魄" } )  } end,
+	["拥有【鸟之斗魄】时每秒回复 (%d+) 魔力"]= function(num) return {  mod("ManaRegen", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy鸟之斗魄" } )  } end,
 	["每 (%d+) 点力量使最大能量护盾提高 %+(%d+)"]= function(_,num1,num2) return {  mod("EnergyShield", "BASE", num2,{ type = "PerStat", stat = "Str", div = num1 } )  } end,
 	["此物品上的【(.+)技能石】由 (%d+) 级的 (.+) 辅助"] = function( _,_2,num, support) return { mod("ExtraSupport", "LIST", 
 		{ skillId = gemIdLookup[support] or gemIdLookup[support.."(辅)"] or support, level = tonumber(num) }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
@@ -1981,7 +1985,10 @@ local specialModList = {
 	["【灼热连接】放置速度提高 (%d+)%%"]= function(num)  return {  mod("TotemPlacementSpeed", "INC", tonumber(num),{ type = "SkillName", skillName ="灼热连接" })  } end, 
 	["【冰矛】第二阶段的暴击率提高 (%d+)%%"]= function(num)  return {  mod("CritChance", "INC", tonumber(num),{ type = "SkillName", skillName ="冰矛" },{ type = "SkillPart", skillPart = 2 })  } end, 
 	["受到【雷霆之捷】影响时，伤害穿透 (%d+)%% 闪电抗性"]= function(num) return {  mod("LightningPenetration", "BASE", num,{ type = "Condition", var = "AffectedBy闪电之捷" })  } end, 
-	["拥有【猫之隐匿】时获得【玫红之舞】"] = { mod("Keystone", "LIST", "玫红之舞", { type = "Condition", var = "AffectedByCat'sStealth" }) }, --备注：you have crimson dance while you have cat's stealth
+	["拥有【猫之隐匿】时获得【迷踪】状态"] = { flag("Condition:Phasing", { type = "Condition", var = "AffectedBy猫之隐匿" }) }, --备注：you have phasing while you have cat's stealth
+	["拥有【猫之隐匿】时，你的攻击必定造成流血"] = { mod("BleedChance", "BASE", 100, nil, ModFlag.Attack, { type = "Condition", var = "AffectedBy猫之隐匿" }) }, --备注：attacks always inflict bleeding while you have cat's stealth
+	["受到【脆弱】诅咒时，非满血时被视作低血状态"] = { flag("Condition:LowLife", { type = "Condition", var = "AffectedBy脆弱" }) }, --备注：you count as on low life while you are cursed with vulnerability
+	["拥有【猫之隐匿】时获得【玫红之舞】"] = { mod("Keystone", "LIST", "玫红之舞", { type = "Condition", var = "AffectedBy猫之隐匿" }) }, --备注：you have crimson dance while you have cat's stealth
 		["近期内你若打出过暴击，则获得【玫红之舞】"] = { mod("Keystone", "LIST", "玫红之舞", { type = "Condition", var = "CritRecently" }) }, --备注：you have crimson dance if 
 	["近期内你若打出过暴击，则获得【瓦尔冥约】"] = { mod("Keystone", "LIST", "瓦尔冥约", { type = "Condition", var = "CritRecently" }) }, --备注：you have vaal pact if you've dealt a critical strike recently
 	["近期内你若没有被击中，则获得【狂热誓言】"] = { mod("Keystone", "LIST", "狂热誓言", { type = "Condition", var = "BeenHitRecently", neg = true }) }, --备注：you have zealot's oath if you haven't been hit recently
@@ -2554,7 +2561,7 @@ minus = -tonumber(minus)
 	["melee critical strikes cause bleeding"] = { mod("BleedChance", "BASE", 100, nil, ModFlag.Melee, { type = "Condition", var = "CriticalStrike" }) },
 	["causes bleeding on melee critical strike"] = { mod("BleedChance", "BASE", 100, nil, ModFlag.Melee, { type = "Condition", var = "CriticalStrike" }) },
 	["melee critical strikes have (%d+)%% chance to cause bleeding"] = function(num) return { mod("BleedChance", "BASE", num, nil, ModFlag.Melee, { type = "Condition", var = "CriticalStrike" }) } end,
-	["拥有【猫之隐匿】时，你的攻击必定造成流血"] = { mod("BleedChance", "BASE", 100, nil, ModFlag.Attack, { type = "Condition", var = "AffectedByCat'sStealth" }) }, --备注：attacks always inflict bleeding while you have cat's stealth
+	["attacks always inflict bleeding while you have cat's stealth"] = { mod("BleedChance", "BASE", 100, nil, ModFlag.Attack, { type = "Condition", var = "AffectedByCat'sStealth" }) },
 	["you have crimson dance while you have cat's stealth"] = { mod("Keystone", "LIST", "Crimson Dance", { type = "Condition", var = "AffectedByCat'sStealth" }) },
 	["you have crimson dance if you have dealt a critical strike recently"] = { mod("Keystone", "LIST", "Crimson Dance", { type = "Condition", var = "CritRecently" }) },
 	-- Poison
@@ -2574,7 +2581,7 @@ minus = -tonumber(minus)
 	["猛攻"] = { flag("Condition:Onslaught") }, --备注：onslaught
 	["近期内你若有击败敌人，则进入【迷踪】状态"] = { flag("Condition:Phasing", { type = "Condition", var = "KilledRecently" }) }, --备注：you have phasing if you've killed recently
 	["you have phasing while affected by haste"] = { flag("Condition:Phasing", { type = "Condition", var = "AffectedByHaste" }) },
-	["拥有【猫之隐匿】时获得【迷踪】状态"] = { flag("Condition:Phasing", { type = "Condition", var = "AffectedByCat'sStealth" }) }, --备注：you have phasing while you have cat's stealth
+	["you have phasing while you have cat's stealth"] = { flag("Condition:Phasing", { type = "Condition", var = "AffectedByCat'sStealth" }) },
 	["低血时获得【猛攻】"] = { flag("Condition:Onslaught", { type = "Condition", var = "LowLife" }) }, --备注：you have onslaught while on low life
 	["非低魔时获得【猛攻】"] = { flag("Condition:Onslaught", { type = "Condition", var = "LowMana", neg = true }) }, --备注：you have onslaught while not on low mana
 	["光环效果对友方没有作用"] = { flag("SelfAurasCannotAffectAllies") }, --备注：your aura buffs do not affect allies
@@ -2598,7 +2605,7 @@ minus = -tonumber(minus)
 		mod("EnemyModifier", "LIST", { mod = mod("ChaosResist", "BASE", num, { type = "MultiplierThreshold", var = "Spider's WebStack", threshold = 1 }) }),
 	} end,
 	["你受到 (%d+) 级【(%D+)】的诅咒"] = function(num, _, name) return { mod("ExtraCurse", "LIST", { skillId = gemIdLookup[name], level = num, applyToPlayer = true }) } end, --备注：you are cursed with level (%d+) (%D+)
-	["受到【脆弱】诅咒时，非满血时被视作低血状态"] = { flag("Condition:LowLife", { type = "Condition", var = "AffectedByVulnerability" }) }, --备注：you count as on low life while you are cursed with vulnerability
+	["you count as on low life while you are cursed with vulnerability"] = { flag("Condition:LowLife", { type = "Condition", var = "AffectedByVulnerability" }) },
 	["近期内你每吞噬过 1 个灵柩，你和周围队友每秒回复 (%d+)%% 生命"] = function (num) return { mod("ExtraAura", "LIST", { mod = mod("LifeRegenPercent", "BASE", num) }, { type = "Condition", var = "ConsumedCorpseRecently" }) } end, --备注：if you consumed a corpse recently, you and nearby allies regenerate (%d+)%% of life per second
 	-- Traps, Mines and Totems
 	["陷阱和地雷造成 (%d+) %- (%d+) 额外物理伤害"] = function(_, min, max) return { mod("PhysicalMin", "BASE", tonumber(min), nil, 0, bor(KeywordFlag.Trap, KeywordFlag.Mine)), mod("PhysicalMax", "BASE", tonumber(max), nil, 0, bor(KeywordFlag.Trap, KeywordFlag.Mine)) } end, --备注：traps and mines deal (%d+)%-(%d+) additional physical damage

@@ -155,7 +155,7 @@ mod("ManaRegenPercent", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType =
 mod("Damage", "MORE", nil, ModFlag.Spell, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "秘术增强" }),
 		},
 		["support_arcane_surge_spell_damage_+%_final_while_you_have_arcane_surge"] = {
-			mod("Damage", "MORE", nil, ModFlag.Spell, 0, { type = "Condition", var = "AffectedByArcaneSurge" }),
+mod("Damage", "MORE", nil, ModFlag.Spell, 0, { type = "Condition", var = "AffectedBy秘术增强" }),
 		},
 	},
 	baseMods = {

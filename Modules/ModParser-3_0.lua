@@ -633,6 +633,7 @@ local modFlagList = {
 	["近战单手武器攻击"] = { flags = bor(ModFlag.Weapon1H, ModFlag.WeaponMelee) }, 
 	["双手近战武器的攻击"] = { flags = bor(ModFlag.Weapon2H, ModFlag.WeaponMelee) },
 	["火焰、冰霜、闪电技能的"] = { keywordFlags = bor(KeywordFlag.Lightning, KeywordFlag.Cold, KeywordFlag.Fire) },
+	["元素技能的"] = { keywordFlags = bor(KeywordFlag.Lightning, KeywordFlag.Cold, KeywordFlag.Fire) },
 	["烙印技能的"] ={ tag = { type = "SkillType", skillType = SkillType.Brand } },
 	["烙印的"] ={ tag = { type = "SkillType", skillType = SkillType.Brand } },
 	["烙印技能"] = { tag = { type = "SkillType", skillType = SkillType.Brand } },
@@ -641,6 +642,7 @@ local modFlagList = {
 	["冰霜技能的"] = { keywordFlags = KeywordFlag.Cold }, --备注：with cold skills
 	["火焰技能的"] = { keywordFlags = KeywordFlag.Fire }, --备注：with fire skills
 	["诅咒技能的"] = { keywordFlags = KeywordFlag.Curse }, 
+	["元素技能"] = { keywordFlags = bor(KeywordFlag.Lightning, KeywordFlag.Cold, KeywordFlag.Fire) }, 
 	--【中文化程序额外添加结束】
 	-- Weapon types
 	["斧类攻击的"] = { flags = ModFlag.Axe }, --备注：with axes
@@ -2243,6 +2245,7 @@ local specialModList = {
 			mod("ElementalDamage", "MORE", 50, { type = "Condition", var = "Divinity" }),
 			mod("ElementalDamageTaken", "MORE", -20, { type = "Condition", var = "Divinity" }),
 		},	
+	["当你发射箭矢时，会消耗 1 个虚空之矢来触发 (%d+) 级的【虚空射击】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="VoidShot", level = num})   } end,
 	["追忆词缀"] = { mod("Multiplier:SynthesisedItem", "BASE", 1) }, 
 	["【定罪波】的特效会使元素抗性 ([%+%-]?%d+)%%"]	= function(num) return {  
 	mod("EnemyModifier", "LIST", { mod = mod("FireResist", "BASE", num,{ type = "GlobalEffect", effectType = "Debuff", effectName = "Fire Exposure", effectCond = "WaveOfConvictionFireExposureActive" }) }, { type = "Condition", var = "WaveOfConvictionFireExposureActive" }),

@@ -2061,3 +2061,52 @@ skills["VoidGaze"] = {
 		[10] = { -20, 10000, 100, cooldown = 2, levelRequirement = 40, },
 	},
 }
+
+skills["VoidShot"] = {
+	name = "虚空射击",
+	hidden = true,
+	color = 4,
+	description = "射出一根箭矢并减速飞向目标。箭矢会在飞出后变得不稳定最后爆炸并在范围内造成武器伤害，将一般的物理伤害转化为冰霜伤害。",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, },
+	weaponTypes = {
+		["Bow"] = true,
+	},
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	parts = {
+		{
+			name = "箭矢",
+			area = false,
+		},
+		{
+			name = "爆炸",
+			area = true,
+		},
+	},
+	fromItem = true,
+	baseFlags = {
+		attack = true,
+		projectile = true,
+		area = true,		
+	},
+	baseMods = {
+	skill("showAverage", true),
+	 
+	
+	},
+	qualityStats = {
+	},
+	stats = {
+		"trigger_on_skill_use_%_if_you_have_a_void_arrow",
+		"skill_physical_damage_%_to_convert_to_cold",
+		"active_skill_area_damage_+%_final",
+		"base_is_projectile",
+		"skill_can_fire_arrows",
+		"base_skill_show_average_damage_instead_of_dps",
+		"attack_unusable_if_triggerable",
+	},
+	statInterpolation = { 1, 1, 1, },
+	levels = {
+		[20] = { 100, 50, 100, damageEffectiveness = 1.2, baseMultiplier = 1.2, levelRequirement = 70, },
+	},
+}

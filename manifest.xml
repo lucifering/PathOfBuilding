@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PoBVersion>
-	<Version number="1.4.137.8" platform="win32" branch="master"/>
+	<Version number="1.4.137.9" platform="win32" branch="master"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/runtime-win32.zip" part="runtime" platform="win32"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/" part="program"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/tree.zip" part="tree"/>
- <File sha1="304286bc46f14c1040df384c681dd3c789307d44" name="Launch.lua" part="program"/>
+ 
+  <File sha1="304286bc46f14c1040df384c681dd3c789307d44" name="Launch.lua" part="program"/>
 <File sha1="4f17937f2b37784e169a3792b235f2a0a3961e61" name="UpdateApply.lua" part="program"/>
 <File sha1="f2a1bb8936c23ddfa31871f278ac3a5453a39b51" name="UpdateCheck.lua" part="program"/>
 <File sha1="38aa5a75245873bdc5d153a398d949ba295c85ee" name="Classes/BuildListControl.lua" part="program"/>
@@ -138,7 +139,7 @@
 <File sha1="ae43e02fb9f75b1dde9e0d9747d4b1edab4c9467" name="Data/3_0/Skills/act_str.lua" part="program"/>
 <File sha1="7ea867c3163d275ba5c23c3ce45dd5bff3ac0e56" name="Data/3_0/Skills/glove.lua" part="program"/>
 <File sha1="b03428150cd607f00f18f0060a4cb3d1a8b96f89" name="Data/3_0/Skills/minion.lua" part="program"/>
-<File sha1="9ddffc05d703d3af02ea69220d52428d2f3406ab" name="Data/3_0/Skills/other.lua" part="program"/>
+<File sha1="8f6e6154c57a2685ebcb31cabaca4d8bdaf22fb3" name="Data/3_0/Skills/other.lua" part="program"/>
 <File sha1="03d8aefb6c559302d91a0a21eb6f49ff904db483" name="Data/3_0/Skills/spectre.lua" part="program"/>
 <File sha1="caf0c2ea1d04fa4f58f82d25e816d2bdc0034ee8" name="Data/3_0/Skills/sup_dex.lua" part="program"/>
 <File sha1="063f897fd4ecc442beba62dd40f3cac760ce6035" name="Data/3_0/Skills/sup_int.lua" part="program"/>
@@ -159,7 +160,7 @@
 <File sha1="9ba45f4b658c802595b94ed71345960f2eda4903" name="Data/Uniques/quiver.lua" part="program"/>
 <File sha1="bb0e6310f2912d784d13a29e9f0fb9faa534b7a8" name="Data/Uniques/ring.lua" part="program"/>
 <File sha1="dc5b0574b8aad0017ae837a9da12f0f237441020" name="Data/Uniques/shield.lua" part="program"/>
-<File sha1="e42107c927983fbb62c273cdd60fc06c2bd89a49" name="Data/Uniques/staff.lua" part="program"/>
+<File sha1="347e2e84b05ed9feb13d09ffa3e30502fc2b7860" name="Data/Uniques/staff.lua" part="program"/>
 <File sha1="ec2aae2215870a76a07c6f1f74cdd820687eded0" name="Data/Uniques/sword.lua" part="program"/>
 <File sha1="711f26c2f2b3194f9f63a8f0d9abd66557301043" name="Data/Uniques/wand.lua" part="program"/>
 <File sha1="18629865eb351e483178b6524fb3935cbc9b8297" name="lua/base64.lua" part="program"/>
@@ -186,11 +187,11 @@
 <File sha1="180e95385b42746bc5c66d9d77c57a41faeb2320" name="Modules/ItemTools.lua" part="program"/>
 <File sha1="76f8ff1cf6b9db7b3631a96b102d64d7eb779a97" name="Modules/Main.lua" part="program"/>
 <File sha1="64693eb3e1d7d356b8b50bdc61a622a6e3bb33c2" name="Modules/ModParser-2_6.lua" part="program"/>
-<File sha1="9e9ecf06b1ccb5c498695809e0e9a5566493674b" name="Modules/ModParser-3_0.lua" part="program"/>
+<File sha1="d328181f8e03c4b0c9d1e957d78c2b02f6591360" name="Modules/ModParser-3_0.lua" part="program"/>
 <File sha1="7a6343d802a4ceae71ee591fc282c64cf683f85e" name="Modules/ModTools.lua" part="program"/>
 <File sha1="603aacf938da1010013c5236634e643ecbb005b0" name="Modules/StatDescriber.lua" part="program"/>
 <File sha1="5669ecec84ac3a9153bbe004bd36e5930d2f1789" name="Classes/AboutTab.lua" part="program"/>
-<File sha1="3ff80648446c52b78a8cb37842e488053a910bac" name="changelog.txt" part="program"/>
+<File sha1="05fae71e1c518a86dc0f8ebea49184efa1ee1597" name="changelog.txt" part="program"/>
 <File sha1="bd4ac0634d3673afbfb9bba0d7673db40ba3b5b3" name="Launch.dl" part="program"/>
 <File sha1="b2836c2dd4889dd82c498cf24f30f43bacb0b478" name="Data/3_0/StatDescriptions/active_skill_gem_stat_descriptions.lua" part="program"/>
 <File sha1="fd43c37f9b7635524db3def5f41473a03e21d926" name="Data/3_0/StatDescriptions/aura_skill_stat_descriptions.lua" part="program"/>

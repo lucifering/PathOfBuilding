@@ -5,7 +5,7 @@
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/" part="program"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/tree.zip" part="tree"/>
  
-  <File sha1="4e184aacafb7f16026a98ae0522b3a2e4e3a8305" name="Launch.lua" part="program"/>
+ <File sha1="304286bc46f14c1040df384c681dd3c789307d44" name="Launch.lua" part="program"/>
 <File sha1="4f17937f2b37784e169a3792b235f2a0a3961e61" name="UpdateApply.lua" part="program"/>
 <File sha1="f2a1bb8936c23ddfa31871f278ac3a5453a39b51" name="UpdateCheck.lua" part="program"/>
 <File sha1="38aa5a75245873bdc5d153a398d949ba295c85ee" name="Classes/BuildListControl.lua" part="program"/>

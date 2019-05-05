@@ -13,7 +13,7 @@ ConExecute("set vid_resizable 3")
 SetMainObject(launch)
 
 function launch:OnInit()
-	self.devMode = true
+	self.devMode = false
 	self.versionNumber = "?"
 	self.versionBranch = "?"
 	self.versionPlatform = "?"

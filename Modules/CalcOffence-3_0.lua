@@ -56,6 +56,7 @@ local function calcDamage(activeSkill, output, cfg, breakdown, damageType, typeF
 	typeFlags = bor(typeFlags, dmgTypeFlags[damageType])
 
 	-- Calculate conversions
+	-- 其他伤害转化来的点伤
 	local addMin, addMax = 0, 0
 	local conversionTable = activeSkill.conversionTable
 	for _, otherType in ipairs(dmgTypeList) do
@@ -95,21 +96,52 @@ local function calcDamage(activeSkill, output, cfg, breakdown, damageType, typeF
 	local modNames = damageStatsForTypes[typeFlags]
 	local inc = 1 + skillModList:Sum("INC", cfg, unpack(modNames)) / 100
 	local more = m_floor(skillModList:More(cfg, unpack(modNames)) * 100 + 0.50000001) / 100
+	
+	local moreMin = m_floor(skillModList:More(cfg, damageType.."Min") * 100 + 0.50000001) / 100
+	local moreMax = m_floor(skillModList:More(cfg, damageType.."Max") * 100 + 0.50000001) / 100
+	--print("moreMin>>="..moreMin)
+	--print("moreMax>>="..moreMax)
 
 	if breakdown then
+		if damageType == 'Physical' then  
 		t_insert(breakdown.damageTypes, {
 			source = damageType,
 			base = baseMin .. " to " .. baseMax,
 			inc = (inc ~= 1 and "x "..inc),
 			more = (more ~= 1 and "x "..more),
+			moreMin = (moreMin ~= 1 and "x "..moreMin),
+			moreMax = (moreMax ~= 1 and "x "..moreMax),
+			convSrc = (addMin ~= 0 or addMax ~= 0) and (addMin .. " to " .. addMax),
+			total = (round(baseMin * inc * more) + addMin)*moreMin .. " to " .. (round(baseMax * inc * more) + addMax)*moreMax,
+			convDst = convDst and conversionTable[damageType][convDst] > 0 and s_format("%d%% to %s", conversionTable[damageType][convDst] * 100, convDst),
+		})
+		else
+		t_insert(breakdown.damageTypes, {
+			source = damageType,
+			base = baseMin .. " to " .. baseMax,
+			inc = (inc ~= 1 and "x "..inc),
+			more = (more ~= 1 and "x "..more),			
 			convSrc = (addMin ~= 0 or addMax ~= 0) and (addMin .. " to " .. addMax),
 			total = (round(baseMin * inc * more) + addMin) .. " to " .. (round(baseMax * inc * more) + addMax),
 			convDst = convDst and conversionTable[damageType][convDst] > 0 and s_format("%d%% to %s", conversionTable[damageType][convDst] * 100, convDst),
 		})
+		end 
+		
 	end
-
-	return (round(baseMin * inc * more) + addMin),
+	--print(damageType.."MinBase="..baseMin)
+	--print(damageType..">inc="..inc)
+	--print(damageType..">more="..more)
+	--print(damageType..">addMin="..addMin)
+	--物理伤害的 其他伤害转化来的 addMin和addMax为0 所以才可以直接这样
+	--如果其他伤害也要修饰 moreMin和moreMax  那么需要考虑转化来的点伤
+	if damageType == 'Physical' then  
+		return (round(baseMin* moreMin * inc * more) + addMin ) ,
+		   (round(baseMax * moreMax * inc * more) + addMax )
+	else
+		return (round(baseMin * inc * more) + addMin),
 		   (round(baseMax * inc * more) + addMax)
+	end 
+	 
 end
 
 local function calcAilmentSourceDamage(activeSkill, output, cfg, breakdown, damageType, typeFlags)
@@ -928,7 +960,33 @@ t_insert(breakdown[damageType], s_format("%s(%d to %d) x %.2f ^8(技能伤害效
 t_insert(breakdown[damageType], s_format("%s%d to %d ^8(附加伤害)", plus, addedMin, addedMax))
 						end
 					end
-					t_insert(breakdown[damageType], s_format("= %.1f to %.1f", baseMin, baseMax))
+					
+					local moreMin = m_floor(skillModList:More(cfg, damageType.."Min") * 100 + 0.50000001) / 100
+					local moreMax = m_floor(skillModList:More(cfg, damageType.."Max") * 100 + 0.50000001) / 100
+--	print("moreMin>>="..moreMin)
+--	print("moreMax>>="..moreMax)
+					if damageType == 'Physical'   then
+						if moreMin~=nil and moreMin~=1 and moreMax~=nil and moreMax~=1 then
+							t_insert(breakdown[damageType], s_format("= %.1f to %.1f", baseMin, baseMax))								
+							t_insert(breakdown[damageType], s_format("最小总物理伤害 x %.1f", moreMin))
+							t_insert(breakdown[damageType], s_format("最大总物理伤害 x %.1f", moreMax))				
+							t_insert(breakdown[damageType], s_format("= %.1f to %.1f", baseMin*moreMin, baseMax*moreMax))	
+							
+						elseif moreMin~=nil and moreMin~=1 then 
+							t_insert(breakdown[damageType], s_format("= %.1f to %.1f", baseMin, baseMax))								
+							t_insert(breakdown[damageType], s_format("最小总物理伤害 x %.1f", moreMin))									
+							t_insert(breakdown[damageType], s_format("= %.1f to %.1f", baseMin*moreMin, baseMax))
+						elseif moreMax~=nil and moreMax~=1  then
+							t_insert(breakdown[damageType], s_format("= %.1f to %.1f", baseMin, baseMax))								
+							t_insert(breakdown[damageType], s_format("最大总物理伤害 x %.1f", moreMax))									
+							t_insert(breakdown[damageType], s_format("= %.1f to %.1f", baseMin, baseMax*moreMax))
+						else						
+							t_insert(breakdown[damageType], s_format("= %.1f to %.1f", baseMin, baseMax))						
+						end 
+					else
+						t_insert(breakdown[damageType], s_format("= %.1f to %.1f", baseMin, baseMax))
+					end 
+					
 				end
 			end
 		end

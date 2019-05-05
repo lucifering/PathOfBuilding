@@ -380,7 +380,7 @@ minions["SummonedPhantasm"] = {
 	attackRange = 4,
 	limit = "ActivePhantasmLimit",
 	skillList = {
-		"Melee",
+		"SummonPhantasmFadingProjectile",
 	},
 	modList = {
 	},

@@ -2267,6 +2267,8 @@ local specialModList = {
 	--[[
 	["总属性每有 (%d+) 点，魔力保留降低 (%d+)%%"] = function(_,num1,num2) return {  mod("ManaReserved", "INC", -tonumber(num2),{ type = "PerStat", statList = { 'Str', 'Dex', 'Int' }, div = tonumber(num1),stat= "Dex" } )  } end,  
 	]]--
+	["最大物理攻击总伤害额外提高 (%d+)%%"]= function(num) return {  mod("PhysicalMax", "MORE", num,nil,ModFlag.Attack)   } end,
+	["最小物理攻击总伤害额外降低 (%d+)%%"]= function(num) return {  mod("PhysicalMin", "MORE", -num,nil,ModFlag.Attack)   } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

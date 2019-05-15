@@ -1703,7 +1703,7 @@ local specialModList = {
 	["近期内你若有击败敌人，则范围效果扩大 (%d+)%%，最多 (%d+)%%"] = function(_,num1,num2) return { mod("AreaOfEffect", "INC", num1, { type = "Multiplier", var = "EnemyKilledRecently", limit = tonumber(num2), limitTotal = true } ) } end,
 	["格挡时，用 (%d+) 级的【(.+)】诅咒敌人"] = function(num, _, skill) return extraSkill(skill, num, true) end, 
 	["攻击被嘲讽的敌人时，攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack,{ type = "ActorCondition", actor = "enemy", var = "Taunted" })  } end, 
-	["你身上的每层中毒状态使你每秒回复 (%d+) 能量护盾，最多可有 (%d+) 秒"]= function(_,num1,num2) return {  mod("EnergyShieldRegen", "BASE", num1,{ type = "Multiplier", var = "PoisonStack", limit = tonumber(num2), limitTotal = true })  } end,
+	["你身上的每层中毒状态使你每秒回复 (%d+) 能量护盾，最多可有 (%d+) 秒"]= function(_,num1,num2) return {  mod("EnergyShieldRegen", "BASE", tonumber(num1),{ type = "Multiplier", var = "PoisonStack", limit = tonumber(num2), limitTotal = true })  } end,
 	["获得 (%d+) 级的【(.+)】"] = function(_,num,skill_name) return {  mod("ExtraSkill", "LIST", { skillId =gemIdLookup[skill_name] or "Unknown", level = num})   } end,
 	["召唤生物身上的光环效果提高 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("AuraEffectOnSelf", "INC", num) })  } end,
 	["对受诅咒敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num, nil, ModFlag.Hit,{ type = "ActorCondition", actor = "enemy", var = "Cursed" })  } end, 
@@ -1711,6 +1711,7 @@ local specialModList = {
 	["当你拥有兽化的召唤生物时，投射物攻击击中时有 (%d+)%% 几率造成流血"] =  function(num) return 	{mod("BleedChance", "BASE", num,  { type = "SkillType", skillType = SkillType.Attack }, { type = "SkillType", skillType = SkillType.Projectile },{ type = "Condition", var = "HaveBestialMinion" }   ) }end,
 	["当你拥有兽化的召唤生物时，投射物攻击击中时有 (%d+)%% 几率造成中毒"] =  function(num) return 	{mod("PoisonChance", "BASE", num,  { type = "SkillType", skillType = SkillType.Attack }, { type = "SkillType", skillType = SkillType.Projectile },{ type = "Condition", var = "HaveBestialMinion" }   ) }end,
 	["击中时有 (%d+)%% 几率造成流血"] =  function(num) return 	{mod("BleedChance", "BASE", num, { type = "Condition", var = "{Hand}Attack" }) }end,
+	["击中时 (%d+)%% 几率造成流血"] =  function(num) return 	{mod("BleedChance", "BASE", num, { type = "Condition", var = "{Hand}Attack" }) }end,
 	["近战击中有 %d+%% 几率触发 (%d+) 级的【熔岩爆破】"] =  function( _, num) return 	{mod("ExtraSkill", "LIST", { skillId = "TriggeredMoltenStrike", level = num}) }end,
 	["暴击时偷取等同 ([%d%.]+)%% 伤害的生命"]= function(num) return {  mod("DamageLifeLeech", "BASE", num, { type = "Condition", var = "CriticalStrike" })  } end, 
 	["每 (%d+) 点力量会使武器物理伤害提高 (%d+)%%"] = function(_,num1,num2) return {  mod("PhysicalDamage", "INC", num2,nil, ModFlag.Weapon,{ type = "PerStat", stat = "Str", div = num1 })  } end,
@@ -1808,6 +1809,8 @@ local specialModList = {
 	["灵体有 (%d+) 秒的持续时间"] = function(num) return { mod("SkillData", "LIST", { key = "duration", value = 6 }, { type = "SkillName", skillName = "召唤灵体" }) } end,	
 	["【(.+)】的魔力消耗降低 (%d+)%%"] = function( _,skill_name, num) return { mod("ManaCost", "INC",-num, { type = "SkillName", skillName = skill_name }) } end, 	
 	["插槽内的移动技能不消耗魔力"] = function() return { mod("ExtraSkillMod", "LIST", { mod = mod("ManaCost", "MORE", -100, nil, 0,  KeywordFlag.Movement) }, { type = "SocketedIn", slotName = "{SlotName}" })}end,	
+	["插槽内攻击技能的总魔力消耗 ([%+%-]?%d+)"]= function(num) return { mod("ManaCost", "BASE",num, { type = "SocketedIn", slotName = "{SlotName}", keyword = "attack" }  ) } end, 	
+	["插槽内的法术魔力消耗降低 (%d+)%%"]= function(num) return { mod("ManaCost", "INC",-num, { type = "SocketedIn", slotName = "{SlotName}", keyword = "spell" }  ) } end, 	
 	["野蛮人： 近战技能范围扩大 (%d+)%%"]= function(num) return {  mod("AreaOfEffect", "INC", num,nil, ModFlag.Melee,{ type = "Condition", var = "ConnectedTo野蛮人Start" })  } end,
 	["决斗者：攻击伤害的 ([%d%.]+)%% 会转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack,{ type = "Condition", var = "ConnectedTo决斗者Start" })  } end,
 	["女巫：每秒回复 ([%d%.]+)%% 最大魔力"]= function(num) return {  mod("ManaRegenPercent", "BASE", num, { type = "Condition", var = "ConnectedTo女巫Start" })  } end,
@@ -2113,6 +2116,10 @@ local specialModList = {
 	["每 (%d+)%% 的攻击格挡率会使法术伤害提高 (%d+)%%"]=function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "PerStat", stat = "BlockChance", div = tonumber(num1) }  ) } end, 
 	["召唤生物在低血时会爆炸，对周围敌人造成自身最大生命 33%% 的火焰伤害"] = { mod("ExtraMinionSkill", "LIST", { skillId = "MinionInstability" }) },
 	["召唤的哨兵会使用【圣战猛击】"] = { mod("ExtraMinionSkill", "LIST", { skillId = "SentinelHolySlam", minionList = { "AxisEliteSoldierHeraldOfLight", "AxisEliteSoldierDominatingBlow" } }) },
+	["([%+%-]?%d+) 纯净哨兵数量上限"]= function(num) return {  mod("ActiveSentinelOfPurityLimit", "BASE", num)  } end,
+	["【纯净哨兵】的伤害提高 (%d+)%%"] = function(num) return {  mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) }, { type = "SkillId", skillId = "HeraldOfPurity" })   } end,
+	["召唤的纯净哨兵伤害提高 (%d+)%%"] = function(num) return {  mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) }, { type = "SkillId", skillId = "HeraldOfPurity" })   } end,
+	["【召唤纯净哨兵】的范围效果扩大 (%d+)%%"] = function(num) return {  mod("MinionModifier", "LIST", { mod = mod("AreaOfEffect", "INC", num) }, { type = "SkillId", skillId = "HeraldOfPurity" })   } end,
 	["你的【复苏的魔卫】死亡时产生腐蚀地面，每秒造成等同它们 50%% 最大生命的混沌伤害"]= { mod("ExtraMinionSkill", "LIST", { skillId = "BeaconZombieCausticCloud", minionList = { "RaisedZombie" } }) },
 	["当你吞噬灵柩时触发 (%d+) 级的【召唤幻灵】技能"] = function(num) return { mod("ExtraSkill", "LIST", { skillId = "TriggeredSummonGhostOnKill", level = num }) } end,
 	["周围敌人获得 (%-%d+)%% 火焰抗性"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("FireResist", "BASE", num) }) } end,
@@ -2448,7 +2455,7 @@ minus = -tonumber(minus)
 	["可视为所有类型的单手近战武器"] = { mod("WeaponData", "LIST", { key = "countsAsAll1H", value = true }) }, --备注：counts as all one handed melee weapon types
 	["没有格档率"] = { mod("ArmourData", "LIST", { key = "BlockChance", value = 0 }) }, --备注：no block chance
 	["攻击和法术无法被闪避"] = { flag("CannotBeEvaded", { type = "Condition", var = "{Hand}Attack" }) }, --备注：hits can't be evaded
-	["击中时 (%d+)%% 几率造成流血"] = { mod("BleedChance", "BASE", 100, { type = "Condition", var = "{Hand}Attack" }) }, --备注：causes bleeding on hit
+	["击中时造成流血"] = { mod("BleedChance", "BASE", 100, { type = "Condition", var = "{Hand}Attack" }) }, --备注：causes bleeding on hit
 	["poisonous hit"] = { mod("PoisonChance", "BASE", 100, { type = "Condition", var = "{Hand}Attack" }) },
 	["此武器的攻击对冰缓的敌人造成双倍伤害"] = { mod("Damage", "MORE", 100, nil, ModFlag.Hit, { type = "Condition", var = "{Hand}Attack" }, { type = "ActorCondition", actor = "enemy", var = "Chilled" }) }, --备注：attacks with this weapon deal double damage to chilled enemies
 	["life leech from hits with this weapon applies instantly"] = { flag("InstantLifeLeech", { type = "Condition", var = "{Hand}Attack" }) },

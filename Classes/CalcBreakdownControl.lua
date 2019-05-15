@@ -378,12 +378,18 @@ tooltip:AddLine(16, "来自 "..sourceType..":")
 		row.tags = nil
 		if row.mod[1] then
 			-- Format modifier tags
-			local baseVal = type(row.mod.value) == "number" and (self:FormatModBase(row.mod, row.mod.value) .. "")
+			local baseVal =""
+			if type(row.mod.value) == "number" then 
+				baseVal=(self:FormatModBase(row.mod, row.mod.value) .. "")
+			end 			
+			--(type(row.mod.value) == "number" and (self:FormatModBase(row.mod, row.mod.value) .. ""))
+			-- print('-->>baseVal='..type(row.mod.value))
 			for _, tag in ipairs(row.mod) do
 				local desc
 				if tag.type == "Condition" or tag.type == "ActorCondition" then
 					desc = (tag.actor and (tag.actor:sub(1,1):upper()..tag.actor:sub(2).." ") or "").."Condition: "..(tag.neg and "Not " or "")..self:FormatVarNameOrList(tag.var, tag.varList)
 				elseif tag.type == "Multiplier" then
+				--	print('-->>baseVal='..baseVal)
 					local base = tag.base and (self:FormatModBase(row.mod, tag.base).."+ "..math.abs(row.mod.value).." ") or baseVal
 					desc = base.."per "..(tag.div and (tag.div.." ") or "")..self:FormatVarNameOrList(tag.var, tag.varList)
 					baseVal = ""

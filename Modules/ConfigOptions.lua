@@ -385,7 +385,7 @@ end },
 		
 	end },
 	
-	{ var = "multiplierNearbyAlly", type = "count", label = "# of Nearby Allies", ifMult = "NearbyAlly", apply = function(val, modList, enemyModList)
+{ var = "multiplierNearbyAlly", type = "count", label = "附近友军数量：", ifMult = "NearbyAlly", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:NearbyAlly", "BASE", val, "Config", { type = "Condition", var = "Combat" })
 	end },
 { var = "conditionOnConsecratedGround", type = "check", label = "你正在【奉献地面】上?", tooltip = "当你处于【奉献地面】状态时干啥干啥的词缀生效,\n同时也会启用【奉献地面】buff本身:6%每秒生命回复.", apply = function(val, modList, enemyModList)

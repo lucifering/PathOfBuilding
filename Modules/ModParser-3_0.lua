@@ -2276,6 +2276,12 @@ local specialModList = {
 	]]--
 	["最大物理攻击总伤害额外提高 (%d+)%%"]= function(num) return {  mod("PhysicalMax", "MORE", num,nil,ModFlag.Attack)   } end,
 	["最小物理攻击总伤害额外降低 (%d+)%%"]= function(num) return {  mod("PhysicalMin", "MORE", -num,nil,ModFlag.Attack)   } end,
+	["每个幽灵护罩可使承受的伤害降低 (%d+)%%"]= function(num) return {  mod("DamageTaken", "INC", -num,{ type = "Multiplier", var = "GhostShroud" } )   } end,
+	["每层【鬼影缠身】会使承受的伤害降低 (%d+)%%"]= function(num) return {  mod("DamageTaken", "INC", -num,{ type = "Multiplier", var = "GhostShroud" })   } end,
+	["每层鬼影缠身可使攻击和施法速度提高 (%d+)%%"]= function(num) return {  mod("Speed", "INC", num,{ type = "Multiplier", var = "GhostShroud" })   } end,
+	["每个幽灵护罩可使攻击和施法速度提高 (%d+)%%"]= function(num) return {  mod("Speed", "INC", num,{ type = "Multiplier", var = "GhostShroud" })   } end,
+	["拥有幽灵护罩时免疫眩晕"]= function(num) return {  mod("AvoidStun", "BASE", 100,{ type = "MultiplierThreshold", var = "GhostShroud", threshold = 1 } )   } end,
+	["拥有鬼影缠身时免疫晕眩"]= function(num) return {  mod("AvoidStun", "BASE", 100,{ type = "MultiplierThreshold", var = "GhostShroud", threshold = 1 } )   } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

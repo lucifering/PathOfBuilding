@@ -1539,9 +1539,19 @@ local specialModList = {
 	["受到击中火焰、冰霜、闪电伤害的 (%d+)%% 转换为混沌伤害"] = function(num) return {  mod("ElementalDamageTakenAsChaos", "BASE", num)  } end,
 	["受到击中元素伤害的 (%d+)%% 转换为混沌伤害"] = function(num) return {  mod("ElementalDamageTakenAsChaos", "BASE", num)  } end,
 	["受到击中火焰伤害的 (%d+)%% 转化为物理伤害"] = function(num) return {  mod("FireDamageTakenAsPhysical", "BASE", num)  } end,
+	-- fuck 国服翻译
 	["受到的闪电总伤害额外降低 (%d+)%%"] = function(num) return { mod("LightningDamageTaken", "MORE", -num) } end,
 	["受到的冰霜总伤害额外降低 (%d+)%%"] = function(num) return { mod("ColdDamageTaken", "MORE", -num) } end,
 	["受到的火焰总伤害额外降低 (%d+)%%"] = function(num) return { mod("FireDamageTaken", "MORE", -num) } end,
+	["受到的闪电总伤害降低 (%d+)%%"] = function(num) return { mod("LightningDamageTaken", "MORE", -num) } end,
+	["受到的冰霜总伤害降低 (%d+)%%"] = function(num) return { mod("ColdDamageTaken", "MORE", -num) } end,
+	["受到的火焰总伤害降低 (%d+)%%"] = function(num) return { mod("FireDamageTaken", "MORE", -num) } end,
+	["承受的闪电总伤害降低 (%d+)%%"] = function(num) return { mod("LightningDamageTaken", "MORE", -num) } end,
+	["承受的冰霜总伤害降低 (%d+)%%"] = function(num) return { mod("ColdDamageTaken", "MORE", -num) } end,
+	["承受的火焰总伤害降低 (%d+)%%"] = function(num) return { mod("FireDamageTaken", "MORE", -num) } end,
+	["承受的闪电总伤害额外降低 (%d+)%%"] = function(num) return { mod("LightningDamageTaken", "MORE", -num) } end,
+	["承受的冰霜总伤害额外降低 (%d+)%%"] = function(num) return { mod("ColdDamageTaken", "MORE", -num) } end,
+	["承受的火焰总伤害额外降低 (%d+)%%"] = function(num) return { mod("FireDamageTaken", "MORE", -num) } end,
 	["近期内，你若被击中并受到火焰伤害，则每秒回复 ([%d%.]+)%% 生命"] = function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "HitByFireDamageRecently" })  } end,
 	["火焰伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("FireDamageLifeLeech", "BASE", num)  } end, 
 	["冰霜伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("ColdDamageLifeLeech", "BASE", num)  } end, 
@@ -1670,7 +1680,8 @@ local specialModList = {
 	["【召唤圣物】的范围效果扩大 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("AreaOfEffect", "INC", num) },{ type = "SkillName", skillName = "召唤圣物" })  } end,
 	["召唤的圣物的增益效果提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("BuffEffect", "INC", num) },{ type = "SkillName", skillName = "召唤圣物" })  } end,
 	["【幻化([^\\x00-\\xff]*)】造成的伤害提高 (%d+)%%"] = function(_,skill_name,num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) },{ type = "SkillName", skillName = "幻化"..skill_name })  } end,
-	["【(.+)】的伤害提高 (%d+)%%"] = function(_, skill_name, num) return { mod("Damage", "INC",num, { type = "SkillName", skillName = skill_name or "Unknown"}) } end, 
+	["【(.+)】的伤害提高 (%d+)%%"] = function(_, skill_name, num) return { mod("Damage", "INC",num, { type = "SkillName", skillName = skill_name:gsub("火舌图腾","圣焰图腾") or "Unknown"}) } end, 
+	["【(.+)】投射物速度提高 (%d+)%%"] = function(_, skill_name, num) return { mod("ProjectileSpeed", "INC",num, { type = "SkillName", skillName = skill_name:gsub("火舌图腾","圣焰图腾") or "Unknown"}) } end, 
 	["【([^\\x00-\\xff]*)】造成的伤害提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("Damage", "INC", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
 	["【([^\\x00-\\xff]*)】获得等同其 (%d+)%% 物理伤害的额外冰霜伤害"]= function(_,skill_name,num) return {  mod("PhysicalDamageGainAsCold", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
 	["【([^\\x00-\\xff]*)】获得等同其 (%d+)%% 物理伤害的额外闪电伤害"]= function(_,skill_name,num) return {  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
@@ -1924,7 +1935,7 @@ local specialModList = {
 	["先祖卫士的元素抗性 %+(%d+)%%"] = function(num) return {  mod("ElementalResist", "INC", tonumber(num),nil,nil, KeywordFlag.Totem,{ type = "SkillName", skillName = "先祖卫士" })  } end,
 	["【([^\\x00-\\xff]*)】范围扩大 (%d+)%%"] = function(_,skill_name,num) return {  mod("AreaOfEffect", "INC", tonumber(num),nil,nil,{ type = "SkillName", skillName =skill_name })  } end,
 	["在【寒冰弹】上施放时，【漩涡】的范围效果扩大 (%d+)%%"]= function(num) return {  mod("AreaOfEffect", "INC", tonumber(num),{ type = "Condition", var = "CastOnFrostbolt" },{ type = "SkillName", skillName ="漩涡" })  } end,
-	["【([^\\x00-\\xff]*)】可以额外发射 (%d+) 个投射物"]= function(_,skill_name,num) return {  mod("ProjectileCount", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
+	["【([^\\x00-\\xff]*)】可以额外发射 (%d+) 个投射物"]= function(_,skill_name,num) return {  mod("ProjectileCount", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name:gsub("火舌图腾","圣焰图腾") })  } end,
 	["【([^\\x00-\\xff]*)】有 (%d+)%% 几率造成双倍伤害"]= function(_,skill_name,num) return {  mod("DoubleDamageChance", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
 	["【([^\\x00-\\xff]*)】的总移动速度额外提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("MovementSpeed", "MORE", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
 	["([^\\x00-\\xff]*)魔像给予你的增益效果提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("BuffEffect", "INC", tonumber(num),{ type = "SkillName", skillName ="召唤"..skill_name:gsub("雷电","闪电").."魔像" })  } end, 
@@ -2282,6 +2293,12 @@ local specialModList = {
 	["每个幽灵护罩可使攻击和施法速度提高 (%d+)%%"]= function(num) return {  mod("Speed", "INC", num,{ type = "Multiplier", var = "GhostShroud" })   } end,
 	["拥有幽灵护罩时免疫眩晕"]= function(num) return {  mod("AvoidStun", "BASE", 100,{ type = "MultiplierThreshold", var = "GhostShroud", threshold = 1 } )   } end,
 	["拥有鬼影缠身时免疫晕眩"]= function(num) return {  mod("AvoidStun", "BASE", 100,{ type = "MultiplierThreshold", var = "GhostShroud", threshold = 1 } )   } end,
+	["每 100 最大生命提高 (%d+)%% 法术暴击几率"]= function(num) return { 	
+	mod("CritChance", "INC", num,nil, ModFlag.Spell,  { type = "PerStat", stat = "Life", div = 100 }) 
+	}end,
+	["每 100 最大生命提高 (%d+)%% 法术伤害"]= function(num) return { 	
+	mod("Damage", "INC", num,nil, ModFlag.Spell,  { type = "PerStat", stat = "Life", div = 100 }) 
+	}end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

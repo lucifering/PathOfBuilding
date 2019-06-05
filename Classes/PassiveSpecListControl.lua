@@ -13,7 +13,7 @@ local PassiveSpecListClass = newClass("PassiveSpecListControl", "ListControl", f
 	self.ListControl(anchor, x, y, width, height, 16, false, true, treeTab.specList)
 	self.treeTab = treeTab
 self.controls.copy = new("ButtonControl", {"BOTTOMLEFT",self,"TOP"}, 2, -4, 60, 18, "复制", function()
-		local newSpec = new("PassiveSpec", treeTab.build)
+		local newSpec = new("PassiveSpec", treeTab.build, self.selValue.treeVersion)
 		newSpec.title = self.selValue.title
 		newSpec.jewels = copyTable(self.selValue.jewels)
 		newSpec:DecodeURL(self.selValue:EncodeURL())
@@ -35,7 +35,7 @@ self.controls.rename = new("ButtonControl", {"BOTTOMRIGHT",self,"TOP"}, -2, -4, 
 		return self.selValue ~= nil
 	end
 self.controls.new = new("ButtonControl", {"RIGHT",self.controls.rename,"LEFT"}, -4, 0, 60, 18, "新建", function()
-		local newSpec = new("PassiveSpec", treeTab.build)
+		local newSpec = new("PassiveSpec", treeTab.build, treeTab.build.targetVersionData.latestTreeVersion)
 		newSpec:SelectClass(treeTab.build.spec.curClassId)
 		newSpec:SelectAscendClass(treeTab.build.spec.curAscendClassId)
 		self:RenameSpec(newSpec, true)
@@ -68,7 +68,10 @@ end
 function PassiveSpecListClass:GetRowValue(column, index, spec)
 	if column == 1 then
 		local used = spec:CountAllocNodes()
-		return (spec.title or "Default") .. " (" .. (spec.curAscendClassName ~= "None" and spec.curAscendClassName or spec.curClassName) .. ", " .. used .. " points)" .. (index == self.treeTab.activeSpec and "  ^9(Current)" or "")
+		return (spec.treeVersion ~= self.treeTab.build.targetVersionData.latestTreeVersion and ("["..treeVersions[spec.treeVersion].short.."] ") or "") 
+			.. (spec.title or "Default") 
+			.. " (" .. (spec.curAscendClassName ~= "None" and spec.curAscendClassName or spec.curClassName) .. ", " .. used .. " points)" 
+			.. (index == self.treeTab.activeSpec and "  ^9(Current)" or "")
 	end
 end
 

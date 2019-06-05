@@ -14,9 +14,7 @@ local m_sin = math.sin
 local m_cos = math.cos
 local m_pi = math.pi
 
-defaultTargetVersion = "2_6"
-liveTargetVersion = "3_0"
-targetVersionList = { "2_6", "3_0" }
+LoadModule("GameVersions")
 
 LoadModule("Modules/Common")
 LoadModule("Modules/Data")
@@ -66,8 +64,10 @@ function main:Init()
 	end
 	
 	self.tree = { }
-	for _, targetVersion in ipairs(targetVersionList) do
-		self.tree[targetVersion] = new("PassiveTree", targetVersion)
+	for _, versionData in pairs(targetVersions) do
+		for _, treeVersion in ipairs(versionData.treeVersionList) do
+			self.tree[treeVersion] = new("PassiveTree", treeVersion)
+		end
 	end
 
 	ConPrintf("Loading item databases...")
@@ -655,7 +655,8 @@ end
 function main:DrawBackground(viewPort)
 	SetDrawLayer(nil, -100)
 	SetDrawColor(0.5, 0.5, 0.5)
-	DrawImage(self.tree[defaultTargetVersion].assets.Background1.handle, viewPort.x, viewPort.y, viewPort.width, viewPort.height, 0, 0, viewPort.width / 100, viewPort.height / 100)
+	DrawImage(self.tree["3_7"].assets.Background1.handle, viewPort.x, viewPort.y, viewPort.width, viewPort.height, 0, 0, viewPort.width / 100, viewPort.height / 100)
+	
 	SetDrawLayer(nil, 0)
 end
 
@@ -842,7 +843,7 @@ function main:OpenMessagePopup(title, msg)
 	controls.close = new("ButtonControl", nil, 0, 40 + numMsgLines * 16, 80, 20, "Ok", function()
 		main:ClosePopup()
 	end)
-	return self:OpenPopup(m_max(DrawStringWidth(16, "VAR", msg) + 30, 190), 70 + numMsgLines * 16, title, controls, "close")
+	return self:OpenPopup(m_max(DrawStringWidth(16, "VAR", msg) + 30, 290), 70 + numMsgLines * 16, title, controls, "close")
 end
 
 function main:OpenConfirmPopup(title, msg, confirmLabel, onConfirm)

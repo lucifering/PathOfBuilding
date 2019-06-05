@@ -631,14 +631,19 @@ t_insert(breakdown.ManaCost, s_format("- %d ^8(- 点魔力消耗)", -base))
 	if isAttack then
 		output.MainHand = { }
 		output.OffHand = { }
+		local critOverride = skillModList:Override(cfg, "WeaponBaseCritChance")
 		if skillFlags.weapon1Attack then
 			if breakdown then
 				breakdown.MainHand = LoadModule(calcs.breakdownModule, skillModList, output.MainHand)
 			end
 			activeSkill.weapon1Cfg.skillStats = output.MainHand
+			local source = copyTable(actor.weaponData1)
+			if critOverride and source.type and source.type ~= "None" then
+				source.CritChance = critOverride
+			end
 			t_insert(passList, {
 label = "主手",
-				source = actor.weaponData1,
+				source = source,
 				cfg = activeSkill.weapon1Cfg,
 				output = output.MainHand,
 				breakdown = breakdown and breakdown.MainHand,
@@ -650,6 +655,9 @@ label = "主手",
 			end
 			activeSkill.weapon2Cfg.skillStats = output.OffHand
 			local source = copyTable(actor.weaponData2)
+			if critOverride and source.type and source.type ~= "None" then
+				source.CritChance = critOverride
+			end
 			if skillData.setOffHandBaseCritChance then
 				source.CritChance = skillData.setOffHandBaseCritChance
 			end
@@ -1618,7 +1626,8 @@ t_insert(breakdownDPS, "总伤害:")
 					end
 				end
 				local effectMod = calcLib.mod(skillModList, dotCfg, "AilmentEffect")
-				output.BleedDPS = baseVal * effectMod * effMult
+				local rateMod = calcLib.mod(skillModList, cfg, "BleedFaster")
+				output.BleedDPS = baseVal * effectMod * rateMod * effMult
 				local durationBase
 				if skillData.bleedDurationIsSkillDuration then
 					durationBase = skillData.duration
@@ -1626,7 +1635,7 @@ t_insert(breakdownDPS, "总伤害:")
 					durationBase = 5
 				end
 				local durationMod = calcLib.mod(skillModList, dotCfg, "EnemyBleedDuration", "SkillAndDamagingAilmentDuration", skillData.bleedIsSkillEffect and "Duration" or nil) * calcLib.mod(enemyDB, nil, "SelfBleedDuration")
-				globalOutput.BleedDuration = durationBase * durationMod * debuffDurationMult
+				globalOutput.BleedDuration = durationBase * durationMod / rateMod * debuffDurationMult
 				if breakdown then
 t_insert(breakdown.BleedDPS, s_format("x %.2f ^8(流血每秒造成 %d%% 伤害)", basePercent/100, basePercent))
 					if effectMod ~= 1 then
@@ -1637,9 +1646,10 @@ t_insert(breakdown.BleedDPS, s_format("x %.2f ^8(【无情一击】效果加成)
 					end
 					t_insert(breakdown.BleedDPS, s_format("= %.1f", baseVal))
 					breakdown.multiChain(breakdown.BleedDPS, {
-						label = "Bleed DPS:",
+label = "流血 DPS:",
 base = s_format("%.1f ^8(每秒总伤害)", baseVal), 
 { "%.2f ^8(异常效果加成)", effectMod },
+{ "%.2f ^8(伤害生效速率加成)", rateMod },
 { "%.3f ^8(有效 DPS 加成)", effMult },
 total = s_format("= %.1f ^8每秒", output.BleedDPS),
 					})
@@ -1649,6 +1659,9 @@ s_format("%.2fs ^8(基础持续时间)", durationBase)
 						}
 						if durationMod ~= 1 then
 t_insert(globalBreakdown.BleedDuration, s_format("x %.2f ^8(持续时间加成)", durationMod))
+						end
+						if rateMod ~= 1 then
+t_insert(globalBreakdown.BleedDuration, s_format("/ %.2f ^8(伤害生效速率加成)", rateMod))
 						end
 						if debuffDurationMult ~= 1 then
 t_insert(globalBreakdown.BleedDuration, s_format("/ %.2f ^8(更快或较慢 debuff消退)", 1 / debuffDurationMult))
@@ -1748,7 +1761,8 @@ t_insert(globalBreakdown.BleedDuration, s_format("/ %.2f ^8(更快或较慢 debu
 					end
 				end
 				local effectMod = calcLib.mod(skillModList, dotCfg, "AilmentEffect")
-				output.PoisonDPS = baseVal * effectMod * effMult
+				local rateMod = calcLib.mod(skillModList, cfg, "PoisonFaster")
+				output.PoisonDPS = baseVal * effectMod * rateMod * effMult
 				local durationBase
 				if skillData.poisonDurationIsSkillDuration then
 					durationBase = skillData.duration
@@ -1756,7 +1770,7 @@ t_insert(globalBreakdown.BleedDuration, s_format("/ %.2f ^8(更快或较慢 debu
 					durationBase = 2
 				end
 				local durationMod = calcLib.mod(skillModList, dotCfg, "EnemyPoisonDuration", "SkillAndDamagingAilmentDuration", skillData.poisonIsSkillEffect and "Duration" or nil) * calcLib.mod(enemyDB, nil, "SelfPoisonDuration")
-				globalOutput.PoisonDuration = durationBase * durationMod * debuffDurationMult
+				globalOutput.PoisonDuration = durationBase * durationMod / rateMod * debuffDurationMult
 				output.PoisonDamage = output.PoisonDPS * globalOutput.PoisonDuration
 				if skillData.showAverage then
 					output.TotalPoisonAverageDamage = output.HitChance / 100 * output.PoisonChance / 100 * output.PoisonDamage
@@ -1771,6 +1785,7 @@ t_insert(breakdown.PoisonDPS, "x 0.20 ^8(中毒每秒造成基础伤害的 20%)"
 label = "中毒 DPS:",
 base = s_format("%.1f ^8(每秒总伤害)", baseVal), 
 { "%.2f ^8(异常效果加成)", effectMod },
+{ "%.2f ^8(伤害生效速率加成)", rateMod },
 { "%.3f ^8(有效 DPS 加成)", effMult },
 total = s_format("= %.1f ^8每秒", output.PoisonDPS),
 					})
@@ -1780,6 +1795,9 @@ s_format("%.2fs ^8(基础持续时间)", durationBase)
 						}
 						if durationMod ~= 1 then
 t_insert(globalBreakdown.PoisonDuration, s_format("x %.2f ^8(持续时间加成)", durationMod))
+						end
+						if rateMod ~= 1 then
+t_insert(globalBreakdown.PoisonDuration, s_format("/ %.2f ^8(伤害生效速率加成)", rateMod))
 						end
 						if debuffDurationMult ~= 1 then
 t_insert(globalBreakdown.PoisonDuration, s_format("/ %.2f ^8(更快或较慢 debuff消退)", 1 / debuffDurationMult))
@@ -1900,11 +1918,11 @@ s_format("点燃计算模式: %s ^8(可以在配置面板修改)", igniteMode ==
 					end
 				end
 				local effectMod = calcLib.mod(skillModList, dotCfg, "AilmentEffect")
-				local burnRateMod = calcLib.mod(skillModList, cfg, "IgniteBurnFaster") / calcLib.mod(skillModList, cfg, "IgniteBurnSlower")
-				output.IgniteDPS = baseVal * effectMod * burnRateMod * effMult
+				local rateMod = calcLib.mod(skillModList, cfg, "IgniteBurnFaster") / calcLib.mod(skillModList, cfg, "IgniteBurnSlower")
+				output.IgniteDPS = baseVal * effectMod * rateMod * effMult				
 				local incDur = skillModList:Sum("INC", dotCfg, "EnemyIgniteDuration", "SkillAndDamagingAilmentDuration") + enemyDB:Sum("INC", nil, "SelfIgniteDuration")
 				local moreDur = enemyDB:More(nil, "SelfIgniteDuration")
-				globalOutput.IgniteDuration = 4 * (1 + incDur / 100) * moreDur / burnRateMod * debuffDurationMult
+				globalOutput.IgniteDuration = 4 * (1 + incDur / 100) * moreDur / rateMod * debuffDurationMult
 				if skillFlags.igniteCanStack then
 					output.IgniteDamage = output.IgniteDPS * globalOutput.IgniteDuration
 					if skillData.showAverage then
@@ -1921,7 +1939,7 @@ t_insert(breakdown.IgniteDPS, "x 0.5 ^8(点燃每秒造成 50% 伤害)")
 						label = "Ignite DPS:",
 base = s_format("%.1f ^8(每秒总伤害)", baseVal), 
 { "%.2f ^8(异常效果加成)", effectMod },
-{ "%.2f ^8(燃烧速率加成)", burnRateMod },
+{ "%.2f ^8(燃烧速率加成)", rateMod  },
 { "%.3f ^8(有效 DPS 加成)", effMult },
 total = s_format("= %.1f ^8每秒", output.IgniteDPS),
 					})
@@ -1958,8 +1976,8 @@ t_insert(globalBreakdown.IgniteDuration, s_format("x %.2f ^8(延长/缩短 持�
 						if moreDur ~= 1 then
 t_insert(globalBreakdown.IgniteDuration, s_format("x %.2f ^8(额外延长/缩短 总持续时间)", moreDur))
 						end
-						if burnRateMod ~= 1 then
-t_insert(globalBreakdown.IgniteDuration, s_format("/ %.2f ^8(燃烧速率加成)", burnRateMod))
+						if rateMod  ~= 1 then
+t_insert(globalBreakdown.IgniteDuration, s_format("/ %.2f ^8(燃烧速率加成)", rateMod))
 						end
 						if debuffDurationMult ~= 1 then
 t_insert(globalBreakdown.IgniteDuration, s_format("/ %.2f ^8(更快或较慢 debuff消退)", 1 / debuffDurationMult))

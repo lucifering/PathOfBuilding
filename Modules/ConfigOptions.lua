@@ -321,6 +321,18 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 { var = "overrideSiphoningCharges", type = "count", label = "轮回球数量(如果没达到最大值):", ifOption = "useSiphoningCharges", apply = function(val, modList, enemyModList)
 		modList:NewMod("SiphoningCharges", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" })
 	end },
+{ var = "useChallengerCharges", type = "check", label = "你是否有挑战球?", ifMult = "ChallengerCharge", apply = function(val, modList, enemyModList)
+		modList:NewMod("UseChallengerCharges", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
+{ var = "overrideChallengerCharges", type = "count", label = "# 挑战球数量 (如果没达到最大值):", ifOption = "useChallengerCharges", apply = function(val, modList, enemyModList)
+		modList:NewMod("ChallengerCharges", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" })
+	end },
+{ var = "useBlitzCharges", type = "check", label = "你是否有疾电球?", ifMult = "BlitzCharge", apply = function(val, modList, enemyModList)
+		modList:NewMod("UseBlitzCharges", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
+{ var = "overrideBlitzCharges", type = "count", label = "# 疾电球数量 (如果没达到最大值):", ifOption = "useBlitzCharges", apply = function(val, modList, enemyModList)
+		modList:NewMod("BlitzCharges", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" })
+	end },
 { var = "minionsUsePowerCharges", type = "check", label = "你的召唤生物有暴击球?", ifFlag = "haveMinion", apply = function(val, modList, enemyModList)
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("UsePowerCharges", "FLAG", true, "Config", { type = "Condition", var = "Combat" }) }, "Config")
 	end },

@@ -228,6 +228,9 @@ local modNameList = {
 	["冷却恢复速度"] = "CooldownRecovery", 
 	["法术暴击几率"] = { "CritChance", flags = ModFlag.Spell },
 	["最大火焰抗性"] = "FireResistMax", 
+	["能量护盾每秒回复"] = "EnergyShieldRegen",
+	["最大挑战球数量上限"] = "ChallengerChargesMax",
+	["最大疾电球数量上限"] = "BlitzChargesMax",
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -2301,6 +2304,15 @@ local specialModList = {
 	["每 100 最大生命提高 (%d+)%% 法术伤害"]= function(num) return { 	
 	mod("Damage", "INC", num,nil, ModFlag.Spell,  { type = "PerStat", stat = "Life", div = 100 }) 
 	}end,
+	["总能量护盾每秒回复额外降低 (%d+)%%"]= function(num) return { 	
+	mod("EnergyShieldRegen", "LESS", num) 
+	}end,
+	["武器攻击的基础暴击几率为 (%d+)%%"]= function(num) return { mod("WeaponBaseCritChance", "OVERRIDE", num) } end,
+	["每次击中获得 %d+ 层怒火，最多每 [%d%.]+ 秒获得一次"] = {
+			flag("Condition:CanGainRage"),
+			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }) -- Make the Configuration option appear
+	},
+	["当你没有损失怒火时，每点怒火使你每秒失去 ([%d%.]+)%% 的最大生命"] = function(num) return { mod("LifeDegen", "BASE", num / 100, nil, { type = "PerStat", stat = "Life" }, { type = "Multiplier", var = "Rage", limit = 50 }) } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

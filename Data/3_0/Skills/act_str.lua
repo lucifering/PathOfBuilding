@@ -1045,7 +1045,7 @@ skills["PuresteelBanner"] = {
 	name = "恐怖之旗",
 	color = 1,
 	description = "施放一次，保留魔力，扛起一面旗帜，周围友军的攻击会造成穿刺，并使周围敌人的命中值降低。扛有旗帜时若击败敌人，则获得等阶。再次施放此技能可以放置旗帜，结束魔力保留。放置旗帜后，每等阶都会使其更加强大。你同时只能有一面旗帜。",
-	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Spell] = true, [SkillType.Duration] = true, [SkillType.ManaCostReserved] = true, [SkillType.Aura] = true, [SkillType.ManaCostPercent] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, },
+	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Spell] = true, [SkillType.Duration] = true, [SkillType.ManaCostReserved] = true, [SkillType.Aura] = true, [SkillType.ManaCostPercent] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.AuraDuration] = true, },	
 	statDescriptionScope = "banner_aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -4389,7 +4389,7 @@ skills["BloodstainedBanner"] = {
 	name = "战旗",
 	color = 1,
 	description = "施放一次，保留魔力，扛起一面旗帜，提高周围友军的命中值，并使周围敌人受到的物理伤害提高。扛有旗帜时若击败敌人，则获得等阶。再次施放此技能可以放置旗帜，结束魔力保留。放置旗帜后，每等阶都会使其更加强大。你同时只能有一面旗帜。",
-	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Spell] = true, [SkillType.Duration] = true, [SkillType.ManaCostReserved] = true, [SkillType.Aura] = true, [SkillType.ManaCostPercent] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, },
+	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Spell] = true, [SkillType.Duration] = true, [SkillType.ManaCostReserved] = true, [SkillType.Aura] = true, [SkillType.ManaCostPercent] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.AuraDuration] = true, },	
 	statDescriptionScope = "banner_aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {

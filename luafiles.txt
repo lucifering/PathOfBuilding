@@ -1,4 +1,5 @@
 Launch.lua
+GameVersions.lua
 UpdateApply.lua
 UpdateCheck.lua
 Classes/BuildListControl.lua

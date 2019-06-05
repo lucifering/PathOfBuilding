@@ -21,11 +21,12 @@ local nodeMigrate32_33 = {
 	[29619] = 1600,
 }
 
-local PassiveSpecClass = newClass("PassiveSpec", "UndoHandler", function(self, build)
+local PassiveSpecClass = newClass("PassiveSpec", "UndoHandler", function(self, build, treeVersion)
 	self.UndoHandler()
 
 	self.build = build
-	self.tree = build.tree
+	self.treeVersion = treeVersion
+	self.tree = main.tree[treeVersion]
 
 	-- Make a local copy of the passive tree that we can modify
 	self.nodes = { }
@@ -89,6 +90,7 @@ end
 function PassiveSpecClass:Save(xml)
 	xml.attrib = { 
 		title = self.title,
+		treeVersion = self.treeVersion,
 	}
 	t_insert(xml, {
 		elem = "URL", 

@@ -777,8 +777,7 @@ skills["BlinkArrow"] = {
 	name = "闪现射击",
 	color = 2,
 	description = "对目标地点射出一支箭, 当箭到达时将你传送至目标地, 并在原地留下一个你的复制体. 这个复制体使用跟你一样的弓与箭袋.",
-	skillTypes = { [SkillType.ProjectileDamage] = true, [SkillType.Attack] = true, [SkillType.Minion] = true, [SkillType.ProjectileAttack] = true, [SkillType.CreateMinion] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.MovementSkill] = true, [SkillType.Triggerable] = true, },
-	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.ProjectileAttack] = true, },
+	skillTypes = { [SkillType.ProjectileDamage] = true, [SkillType.Attack] = true, [SkillType.Minion] = true, [SkillType.ProjectileAttack] = true, [SkillType.CreateMinion] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.MovementSkill] = true, [SkillType.Triggerable] = true, [SkillType.SkillCanVolley] = true, },
 	weaponTypes = {
 		["Bow"] = true,
 	},
@@ -4027,8 +4026,7 @@ skills["MirrorArrow"] = {
 	name = "魅影射击",
 	color = 2,
 	description = "对目标地点射出一支箭, 当箭到达时在目标地创造一个你的复制体. 这个复制体使用跟你一样的弓与箭袋.",
-	skillTypes = { [SkillType.ProjectileDamage] = true, [SkillType.Attack] = true, [SkillType.Minion] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.CreateMinion] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, },
-	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.ProjectileAttack] = true, },
+	skillTypes = { [SkillType.ProjectileDamage] = true, [SkillType.Attack] = true, [SkillType.Minion] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.CreateMinion] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, [SkillType.SkillCanVolley] = true, },	
 	weaponTypes = {
 		["Bow"] = true,
 	},
@@ -5517,6 +5515,8 @@ name = "碎片",
 			mod("Damage", "MORE", nil, 0, 0, { type = "SkillPart", skillPart = 2 }),
 		},
 		["override_off_hand_base_critical_strike_chance_to_5%"] = {
+			skill("setOffHandBaseCritChance", nil),
+			value = 5,
 			
 		},
 		["off_hand_local_minimum_added_physical_damage"] = {
@@ -5545,7 +5545,7 @@ name = "碎片",
 		shieldAttack = true,
 	},
 	baseMods = {
-	skill("setOffHandBaseCritChance", 5),
+	 
 	},
 	qualityStats = {
 		{ "projectile_damage_+%", 1 },

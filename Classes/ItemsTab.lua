@@ -123,7 +123,7 @@ self.controls.setManage = new("ButtonControl", {"LEFT",self.controls.setSelect,"
 	end
 	self.sockets = { }
 	local socketOrder = { }
-	for _, node in pairs(build.tree.nodes) do
+	for _, node in pairs(build.latestTree.nodes) do
 		if node.type == "Socket" then
 			t_insert(socketOrder, node)
 		end

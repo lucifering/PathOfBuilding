@@ -353,6 +353,7 @@ main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会�
 	if targetVersion then
 		self.targetVersion = targetVersion
 	end
+	self.targetVersionData = targetVersions[self.targetVersion]
 
 	if buildName == "~~temp~~" then
 		-- Remove temporary build file
@@ -505,7 +506,7 @@ self.controls.mainSkillMinionLibrary = new("ButtonControl", {"LEFT",self.control
 
 	-- Initialise build components
 	self.data = data[self.targetVersion]
-	self.tree = main.tree[self.targetVersion]
+	self.latestTree = main.tree[self.targetVersionData.latestTreeVersion]
 	self.importTab = new("ImportTab", self)
 	self.notesTab = new("NotesTab", self)
 	self.configTab = new("ConfigTab", self)
@@ -551,7 +552,7 @@ self.aboutTab = new("AboutTab", self)--lucifer
 	end
 
 	-- Initialise class dropdown
-	for classId, class in pairs(self.tree.classes) do
+	for classId, class in pairs(self.latestTree.classes) do
 		t_insert(self.controls.classDrop.list, {
 			label = class.name,
 			classId = classId,

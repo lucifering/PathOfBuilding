@@ -298,7 +298,7 @@ modDB:NewMod("EnergyShieldRegenPercent", "BASE", lifePercent, "狂热誓言")
 			esBase = esBase + output.EnergyShield * esPercent / 100
 		end
 		if esBase > 0 then
-			output.EnergyShieldRegen = esBase * output.EnergyShieldRecoveryRateMod
+			output.EnergyShieldRegen = esBase * output.EnergyShieldRecoveryRateMod * calcLib.mod(modDB, nil, "EnergyShieldRegen")
 			output.EnergyShieldRegenPercent = round(output.EnergyShieldRegen / output.EnergyShield * 100, 1)
 		else
 			output.EnergyShieldRegen = 0

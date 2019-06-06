@@ -450,11 +450,15 @@ end },
 { var = "conditionHitRecently", type = "check", label = "你近期有击中过敌人?", ifCond = "HitRecently", tooltip = "如果你的主要技能是自主施放，那么自动认为你近期有击中过\n若有必要，你可以强制修改它.", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:HitRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
+{ var = "conditionStunnedEnemyRecently", type = "check", label = "你近期有晕眩过敌人?", ifCond = "StunnedEnemyRecently", implyCond = "HitRecently", tooltip = "这也意味着你近期有击中过敌人.", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:StunnedEnemyRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+		modList:NewMod("Condition:HitRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
 { var = "conditionCritRecently", type = "check", label = "你近期有造成暴击?", ifCond = "CritRecently", implyCond = "SkillCritRecently", tooltip = "这也意味着你的技能近期有造成暴击.", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:CritRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 		modList:NewMod("Condition:SkillCritRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
-	{ var = "conditionSkillCritRecently", type = "check", label = "Have your Skills Crit Recently?", ifCond = "SkillCritRecently", apply = function(val, modList, enemyModList)
+	{ var = "conditionSkillCritRecently", type = "check", label = "你的技能近期有造成暴击?", ifCond = "SkillCritRecently", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:SkillCritRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
 { var = "conditionNonCritRecently", type = "check", label = "你近期有造成非暴击?", ifCond = "NonCritRecently", apply = function(val, modList, enemyModList)

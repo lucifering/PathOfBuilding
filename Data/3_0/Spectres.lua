@@ -2375,3 +2375,52 @@ minions["Metadata/Monsters/Goatman/GoatmanShamanLightningChampion"] = {
 		-- MonsterCastsSparkText
 	},
 }
+
+
+minions["Metadata/Monsters/LeagueDelve/GhostEncounter/Wraith"] = {
+	name = "远古恶灵",
+	life = 1.68,
+	energyShield = 0.2,
+	fireResist = 0,
+	coldResist = 0,
+	lightningResist = 40,
+	chaosResist = 0,
+	damage = 1.2,
+	damageSpread = 0.2,
+	attackTime = 1.755,
+	attackRange = 4,
+	accuracy = 1,
+	skillList = {
+		"WraithEtherealKnives",
+		"Melee",
+	},
+	modList = {
+		-- MonsterDelveDropModifiers
+		-- DelveMonsterEnfeebleOnHit
+		-- AdditionalCurseOnEnemies_
+	},
+}
+--Ancient Suffering
+minions["Metadata/Monsters/LeagueDelve/GhostEncounter/WraithPurple"] = {
+	name = "远古冤魂",
+	life = 1.68,
+	energyShield = 0.2,
+	fireResist = 0,
+	coldResist = 0,
+	lightningResist = 40,
+	chaosResist = 0,
+	damage = 1.2,
+	damageSpread = 0.2,
+	attackTime = 1.755,
+	attackRange = 4,
+	accuracy = 1,
+	skillList = {
+		"DelveWraithScreechChaos"
+		 
+	},
+	modList = {
+		-- MonsterDelveLargeDropModifiers_
+		-- MonsterChanceToTemporalChainsOnHit1
+		-- AdditionalCurseOnEnemies_
+	},
+}

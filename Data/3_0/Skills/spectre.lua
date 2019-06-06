@@ -3711,3 +3711,70 @@ skills["OrbOfStormsGoatmanShamanChampion"] = {
 		[2] = { 1, 3, 5000, 1000, 5, 0, cooldown = 8, levelRequirement = 68, },
 	},
 }
+
+
+
+skills["WraithEtherealKnives"] = {
+	name = "虚空匕首",
+	hidden = true,
+	color = 2,
+	baseEffectiveness = 1.7000000476837,
+	incrementalEffectiveness = 0.037999998778105,
+	description = "向前依弧形射出数支匕首, 对敌人造成物理伤害.",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.CanRapidFire] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 0.6,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_physical_damage",
+		"spell_maximum_base_physical_damage",
+		"number_of_additional_projectiles",
+		"base_cast_speed_+%",
+		"monster_penalty_against_minions_damage_+%_final_vs_player_minions",
+		"active_skill_damage_+%_final",
+		"base_is_projectile",
+	},
+	statInterpolation = { 3, 3, 1, 1, 1, 1, },
+	levels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 9, -25, 0, -15, critChance = 5, levelRequirement = 51, },
+		[2] = { 0.80000001192093, 1.2000000476837, 9, -25, -25, -60, critChance = 5, levelRequirement = 68, },
+		[3] = { 0.80000001192093, 1.2000000476837, 9, -25, -25, -75, critChance = 5, levelRequirement = 82, },
+	},
+}
+skills["DelveWraithScreechChaos"] = {
+	name = "混沌尖叫",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 1.7999999523163,
+	incrementalEffectiveness = 0.029999999329448,
+	skillTypes = { [SkillType.Spell] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.Hit] = true,},
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.5,
+	baseFlags = {
+		spell = true,
+		area=true,
+		duration=true
+		 
+	},
+	baseMods = {
+	
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_chaos_damage",
+		"spell_maximum_base_chaos_damage",
+		"is_area_damage",
+	},
+	statInterpolation = { 3, 3, },
+	levels = {
+		[1] = { 0.80000001192093, 1.2000000476837, levelRequirement = 1, },
+	},
+}

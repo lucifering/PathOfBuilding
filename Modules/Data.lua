@@ -301,7 +301,7 @@ for _, targetVersion in ipairs(targetVersionList) do
 	for gemId, gem in pairs(verData.gems) do
 		gem.id = gemId
 		gem.grantedEffect = verData.skills[gem.grantedEffectId]
-		print(gemId)
+		 
 		verData.gemForSkill[gem.grantedEffect] = gemId
 		gem.secondaryGrantedEffect = gem.secondaryGrantedEffectId and verData.skills[gem.secondaryGrantedEffectId]
 		gem.grantedEffectList = {

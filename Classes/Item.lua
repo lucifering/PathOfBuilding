@@ -685,7 +685,7 @@ function ItemClass:BuildModListForSlotNum(baseList, slotNum)
 		weaponData.AttackSpeedInc = sumLocal(modList, "Speed", "INC", ModFlag.Attack)
 		weaponData.AttackRate = round(self.base.weapon.AttackRateBase * (1 + weaponData.AttackSpeedInc / 100), 2)
 		
-		print(">>123>>:"..weaponData.name)
+		 
 		weaponData.range = self.base.weapon.Range + sumLocal(modList, "WeaponRange", "BASE", 0)
 		for _, dmgType in pairs(dmgTypeList) do
 			local min = (self.base.weapon[dmgType.."Min"] or 0) + sumLocal(modList, dmgType.."Min", "BASE", 0)

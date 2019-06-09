@@ -101,6 +101,7 @@ self.controls.specConvert = new("ButtonControl", {"LEFT",self.controls.specConve
 		newSpec:DecodeURL(self.build.spec:EncodeURL())
 		t_insert(self.specList, self.activeSpec + 1, newSpec)
 		self:SetActiveSpec(self.activeSpec + 1)
+		self.modFlag = true
 main:OpenMessagePopup("天赋树转换完成", "天赋树转化为 "..treeVersions[self.build.targetVersionData.latestTreeVersion].short..".\n注意，游戏天赋树的版本变动可能回导致一些天赋点在转化后会被取消.\n\n你可以使用左下方的天赋树切换来切换到旧版本的.")
 	end)
 end)

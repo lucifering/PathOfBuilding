@@ -71,6 +71,22 @@ modList:NewMod("Condition:BannerPlanted", "FLAG", true, "Config", { type = "Skil
 { var = "bannerStages", type = "count", label = "旗帜阶层:", ifSkillList = { "恐怖之旗", "战旗" }, apply = function(val, modList, enemyModList)
 modList:NewMod("Multiplier:BannerStage", "BASE", m_min(val, 50), "Config", { type = "SkillName", skillNameList = { "恐怖之旗", "战旗" } })
 	end },
+
+	-- 3.7 技能
+{ label = "剑刃风暴:", ifSkill = "剑刃风暴" },
+	{ var = "bladestormInBloodstorm", type = "check", label = "你处于血姿态?", ifSkill = "剑刃风暴", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:BladestormInBloodstorm", "FLAG", true, "Config", { type = "SkillName", skillName = "剑刃风暴" })
+	end },
+{ var = "bladestormInSandstorm", type = "check", label = "你处于沙姿态?", ifSkill = "剑刃风暴", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:BladestormInSandstorm", "FLAG", true, "Config", { type = "SkillName", skillName = "剑刃风暴" })
+	end },
+{ label = "姿态技能:", ifSkillList = { "血与沙", "血肉与岩石", "破空斩", "剑刃风暴", "凿击" } },
+	{ var = "bloodSandStance", type = "list", label = "姿态:", ifSkillList = { "血与沙", "血肉与岩石", "破空斩", "剑刃风暴", "凿击" }, list = {{val="BLOOD",label="血姿态"},{val="SAND",label="沙姿态"}}, apply = function(val, modList, enemyModList)
+		if val == "SAND" then
+			modList:NewMod("Condition:SandStance", "FLAG", true, "Config")
+		end
+	end },
+	
 { label = "烙印技能:", ifSkillList = { "末日烙印", "风暴烙印" } }, -- I barely resisted the temptation to label this "Generic Brand:"
 { var = "brandAttachedToEnemy", type = "check", label = "附着到敌人身上?", ifSkillList = { "末日烙印", "风暴烙印" }, apply = function(val, modList, enemyModList)
 modList:NewMod("Condition:BrandAttachedToEnemy", "FLAG", true, "Config", { type = "SkillType", skillType = SkillType.Brand })

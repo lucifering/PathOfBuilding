@@ -357,13 +357,15 @@ end
 function GemSelectClass:AddGemTooltip(gemInstance)
 	self.tooltip.center = true
 	self.tooltip.color = colorCodes.GEM
-	if gemInstance.gemData.secondaryGrantedEffect and not gemInstance.gemData.secondaryGrantedEffect.support then
-		local grantedEffect = gemInstance.gemData.secondaryGrantedEffect
-		local grantedEffectVaal = gemInstance.gemData.grantedEffect
+	local primary = gemInstance.gemData.grantedEffect
+	local secondary = gemInstance.gemData.secondaryGrantedEffect
+	if secondary and not secondary.support then
+		local grantedEffect = primary.support and primary or secondary
+		local grantedEffectVaal = primary.support and secondary or primary
 		self.tooltip:AddLine(20, colorCodes.GEM..grantedEffect.name)
 		self.tooltip:AddSeparator(10)
 		self.tooltip:AddLine(16, "^x7F7F7F"..gemInstance.gemData.tagString)
-		self:AddCommonGemInfo(gemInstance, grantedEffect, true)
+		self:AddCommonGemInfo(gemInstance, grantedEffect, true, secondary and secondary.support and secondary)
 		self.tooltip:AddSeparator(10)
 		self.tooltip:AddLine(20, colorCodes.GEM..grantedEffectVaal.name)
 		self.tooltip:AddSeparator(10)
@@ -377,13 +379,14 @@ function GemSelectClass:AddGemTooltip(gemInstance)
 	end
 end
 
-function GemSelectClass:AddCommonGemInfo(gemInstance, grantedEffect, addReq)
+function GemSelectClass:AddCommonGemInfo(gemInstance, grantedEffect, addReq, mergeStatsFrom)
 	local displayInstance = gemInstance.displayEffect or gemInstance
 	local grantedEffectLevel = grantedEffect.levels[displayInstance.level]
 	if addReq then
-self.tooltip:AddLine(16, string.format("^x7F7F7F等级: ^7%d%s",
+self.tooltip:AddLine(16, string.format("^x7F7F7F等级: ^7%d%s%s",
 			gemInstance.level, 
-			(displayInstance.level > gemInstance.level) and " ("..colorCodes.MAGIC.."+"..(displayInstance.level - gemInstance.level).."^7)" or ""
+			(displayInstance.level > gemInstance.level) and " ("..colorCodes.MAGIC.."+"..(displayInstance.level - gemInstance.level).."^7)" or "",
+			(gemInstance.level >= gemInstance.gemData.defaultLevel) and " (Max)" or ""
 		))
 	end
 	if grantedEffect.support then
@@ -411,7 +414,11 @@ self.tooltip:AddLine(16, string.format("^x7F7F7F魔力消耗: ^7%d", grantedEffe
 		if grantedEffectLevel.cooldown then
 self.tooltip:AddLine(16, string.format("^x7F7F7F冷却时间: ^7%.2f 秒", grantedEffectLevel.cooldown))
 		end
-		if not gemInstance.gemData.tags.attack then
+		if gemInstance.gemData.tags.attack then
+			if grantedEffectLevel.attackSpeedMultiplier then
+self.tooltip:AddLine(16, string.format("^x7F7F7F攻击速度加成: ^7%d%% 基础", grantedEffectLevel.attackSpeedMultiplier + 100))
+			end
+		else
 			if grantedEffect.castTime > 0 then
 self.tooltip:AddLine(16, string.format("^x7F7F7F施放时间: ^7%.2f 秒", grantedEffect.castTime))
 			else
@@ -446,6 +453,11 @@ self.tooltip:AddLine(16, string.format("^x7F7F7F品质: "..colorCodes.MAGIC.."+%
 		local stats = calcLib.buildSkillInstanceStats(displayInstance, grantedEffect)
 		if grantedEffectLevel.baseMultiplier then
 			stats["active_skill_attack_damage_final_permyriad"] = (grantedEffectLevel.baseMultiplier - 1) * 10000
+		end
+		if mergeStatsFrom then
+			for stat, val in pairs(calcLib.buildSkillInstanceStats(displayInstance, mergeStatsFrom)) do
+				stats[stat] = (stats[stat] or 0) + val
+			end
 		end
 		local descriptions = self.skillsTab.build.data.describeStats(stats, grantedEffect.statDescriptionScope)
 		for _, line in ipairs(descriptions) do

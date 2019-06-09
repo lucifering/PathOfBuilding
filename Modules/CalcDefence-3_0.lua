@@ -23,6 +23,17 @@ local dmgTypeList = {"Physical", "Lightning", "Cold", "Fire", "Chaos"}
 
 local resistTypeList = { "Fire", "Cold", "Lightning", "Chaos" }
 
+-- Calculate hit chance
+function calcs.hitChance(evasion, accuracy)
+	local rawChance = accuracy / (accuracy + (evasion / 4) ^ 0.8) * 115
+	return m_max(m_min(round(rawChance), 100), 5)	
+end
+
+-- Calculate physical damage reduction from armour
+function calcs.armourReduction(armour, raw)
+	return round(armour / (armour + raw * 10) * 100)
+end
+
 -- Performs all defensive calculations
 function calcs.defence(env, actor)
 	local modDB = actor.modDB
@@ -186,7 +197,7 @@ function calcs.defence(env, actor)
 			output.ProjectileEvadeChance = 0
 		else
 			local enemyAccuracy = round(calcLib.val(enemyDB, "Accuracy"))
-			output.EvadeChance = 100 - (calcLib.hitChance(output.Evasion, enemyAccuracy) - modDB:Sum("BASE", nil, "EvadeChance")) * calcLib.mod(enemyDB, nil, "HitChance")
+			output.EvadeChance = 100 - (calcs.hitChance(output.Evasion, enemyAccuracy) - modDB:Sum("BASE", nil, "EvadeChance")) * calcLib.mod(enemyDB, nil, "HitChance")
 			if breakdown then
 				breakdown.EvadeChance = {
 s_format("敌人等级: %d ^8(%s 配置界面配置)", env.enemyLevel, env.configInput.enemyLevel and "覆盖了" or "可以从"),
@@ -496,7 +507,7 @@ label = "击中伤害承受为",
 				if damageType == "Physical" and destType == "Physical" then
 					-- Factor in armour for Physical taken as Physical
 					local damage = env.configInput.enemyPhysicalHit or env.data.monsterDamageTable[env.enemyLevel] * 1.5
-					local armourReduct = calcLib.armourReduction(output.Armour, damage * portion / 100)
+					local armourReduct = calcs.armourReduction(output.Armour, damage * portion / 100)
 					resist = m_min(90, resist + armourReduct)
 					output.PhysicalDamageReduction = resist
 					if breakdown then

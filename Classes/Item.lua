@@ -684,6 +684,9 @@ function ItemClass:BuildModListForSlotNum(baseList, slotNum)
 		weaponData.name = self.name
 		weaponData.AttackSpeedInc = sumLocal(modList, "Speed", "INC", ModFlag.Attack)
 		weaponData.AttackRate = round(self.base.weapon.AttackRateBase * (1 + weaponData.AttackSpeedInc / 100), 2)
+		
+		print(">>123>>:"..weaponData.name)
+		weaponData.range = self.base.weapon.Range + sumLocal(modList, "WeaponRange", "BASE", 0)
 		for _, dmgType in pairs(dmgTypeList) do
 			local min = (self.base.weapon[dmgType.."Min"] or 0) + sumLocal(modList, dmgType.."Min", "BASE", 0)
 			local max = (self.base.weapon[dmgType.."Max"] or 0) + sumLocal(modList, dmgType.."Max", "BASE", 0)
@@ -712,9 +715,7 @@ function ItemClass:BuildModListForSlotNum(baseList, slotNum)
 				modList:NewMod("Accuracy", "MORE", accuracyInc, self.modSource, { type = "Condition", var = (slotNum == 1) and "MainHandAttack" or "OffHandAttack" })
 			end
 		end
-		if data[self.targetVersion].weaponTypeInfo[self.base.type].range then
-			weaponData.range = data[self.targetVersion].weaponTypeInfo[self.base.type].range + sumLocal(modList, "WeaponRange", "BASE", 0)
-		end
+		 
 		for _, mod in ipairs(modList) do
 			-- Convert accuracy, L/MGoH and PAD Leech modifiers to local
 			if (

@@ -119,6 +119,9 @@ return {
 ["cast_time_overrides_attack_duration"] = {
 	skill("castTimeOverridesAttackTime", true),
 },
+["spell_cast_time_cannot_be_modified"] = {
+	skill("fixedCastTime", true),
+},
 ["global_always_hit"] = {
 	skill("cannotBeEvaded", true),
 },
@@ -354,6 +357,9 @@ return {
 ["buff_effect_duration_+%_per_removable_endurance_charge"] = {
 	mod("Duration", "INC", nil, 0, 0, { type = "Multiplier", var = "RemovableEnduranceCharge" }),
 },
+["buff_effect_duration_+%_per_removable_endurance_charge_limited_to_5"] = {
+	mod("Duration", "INC", nil, 0, 0, { type = "Multiplier", var = "RemovableEnduranceCharge", limit = 5 }),
+},
 ["skill_effect_duration_+%_per_removable_frenzy_charge"] = {
 	mod("Duration", "INC", nil, 0, 0, { type = "Multiplier", var = "RemovableFrenzyCharge" }),
 },
@@ -528,6 +534,9 @@ return {
 },
 ["bleed_on_melee_attack_chance_%"] = {
 	mod("BleedChance", "BASE", nil, ModFlag.Melee),
+},
+["faster_bleed_%"] = {
+	mod("BleedFaster", "INC", nil),
 },
 ["base_chance_to_poison_on_hit_%"] = {
 	mod("PoisonChance", "BASE", nil),
@@ -851,6 +860,29 @@ return {
 	mod("MeleeWeaponRange", "BASE", nil),
 	mod("UnarmedRange", "BASE", nil),
 },
+["override_off_hand_base_critical_strike_chance_to_5%"] = {
+	skill("setOffHandBaseCritChance", nil),
+	value = 5,
+},
+["off_hand_local_minimum_added_physical_damage"] = {
+	skill("setOffHandPhysicalMin", nil),
+},
+["off_hand_local_maximum_added_physical_damage"] = {
+	skill("setOffHandPhysicalMax", nil),
+},
+["off_hand_base_weapon_attack_duration_ms"] = {
+	skill("setOffHandAttackTime", nil),
+},
+["off_hand_minimum_added_physical_damage_per_15_shield_armour_and_evasion_rating"] = {
+	mod("PhysicalMin", "BASE", nil, 0, 0, { type = "Condition", var = "OffHandAttack" }, { type = "PerStat", statList = { "ArmourOnWeapon 2", "EvasionOnWeapon 2" }, 	div = 15, }),
+},
+["off_hand_maximum_added_physical_damage_per_15_shield_armour_and_evasion_rating"] = {
+	mod("PhysicalMax", "BASE", nil, 0, 0, { type = "Condition", var = "OffHandAttack" }, { type = "PerStat", statList = { "ArmourOnWeapon 2", "EvasionOnWeapon 2" }, 	div = 15, }),
+},
+["additional_critical_strike_chance_per_10_shield_maximum_energy_shield_permyriad"] = {
+	mod("CritChance", "BASE", nil, 0, 0, { type = "PerStat", stat = "EnergyShieldOnWeapon 2", 	div = 10, }),
+	div = 100,
+},
 
 --
 -- Spell modifiers
@@ -1041,5 +1073,13 @@ return {
 ["banner_area_of_effect_+%_per_stage"] = {
 	mod("AreaOfEffect", "INC", nil, 0, 0, { type = "Multiplier", var = "BannerStage" }, { type = "Condition", var = "BannerPlanted" }),
 },
+-- Other
+["triggered_skill_damage_+%"] = {
+	mod("Damage", "INC", nil, 0, 0, { type = "SkillType", skillType = SkillType.Triggered }),
+},
+["channelled_skill_damage_+%"] = {
+	mod("Damage", "INC", nil, 0, 0, { type = "SkillType", skillType = SkillType.Channelled }),
+},
+
 
 }

@@ -610,7 +610,7 @@ local modFlagList = {
 	["匕首的"] = { flags = ModFlag.Dagger },
 	["锤类的"] = { flags = ModFlag.Mace },
 	["长杖的"] = { flags = ModFlag.Staff },
-	["斧类的"] = { flags = ModFlag.Sword },
+	["斧类的"] = { flags = ModFlag.Axe },
 	["剑类的"] = { flags = ModFlag.Sword },
 	["法杖的"] = { flags = ModFlag.Wand }, 
 	["攻击类技能"] = { keywordFlags = KeywordFlag.Attack },
@@ -1965,7 +1965,7 @@ local specialModList = {
 	["【([^\\x00-\\xff]*)】范围扩大 (%d+)%%"] = function(_,skill_name,num) return {  mod("AreaOfEffect", "INC", tonumber(num),nil,nil,{ type = "SkillName", skillName =skill_name })  } end,
 	["在【寒冰弹】上施放时，【漩涡】的范围效果扩大 (%d+)%%"]= function(num) return {  mod("AreaOfEffect", "INC", tonumber(num),{ type = "Condition", var = "CastOnFrostbolt" },{ type = "SkillName", skillName ="漩涡" })  } end,
 	["【([^\\x00-\\xff]*)】可以额外发射 (%d+) 个投射物"]= function(_,skill_name,num) return {  mod("ProjectileCount", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name:gsub("火舌图腾","圣焰图腾") })  } end,
-	["【([^\\x00-\\xff]*)可以额外发射 (%d+) 个箭矢"]= function(_,skill_name,num) return {  mod("ProjectileCount", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end,
+	["【([^\\x00-\\xff]*)】可以额外发射 (%d+) 个箭矢"]= function(_,skill_name,num) return {  mod("ProjectileCount", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end,
 	["【([^\\x00-\\xff]*)】有 (%d+)%% 几率造成双倍伤害"]= function(_,skill_name,num) return {  mod("DoubleDamageChance", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
 	["【([^\\x00-\\xff]*)】的总移动速度额外提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("MovementSpeed", "MORE", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
 	["([^\\x00-\\xff]*)魔像给予你的增益效果提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("BuffEffect", "INC", tonumber(num),{ type = "SkillName", skillName ="召唤"..skill_name:gsub("雷电","闪电").."魔像" })  } end, 
@@ -2217,7 +2217,7 @@ local specialModList = {
 	 ["被击中时，受到的火焰总伤害额外降低 (%d+)%%"] = function(num) return { mod("FireDamageTaken", "MORE", -num) } end,
 	 ["静止时受到的元素伤害降低 (%d+)%%"] = function(num) return { mod("ElementalDamageTaken", "INC", -num, { type = "Condition", var = "Stationary" }) } end,
 	 ["左戒指栏位：法术的投射物无法弹射"] = { flag("CannotChain", nil, bor(ModFlag.Spell, ModFlag.Projectile), { type = "SlotNumber", num = 1 }) },
-	["右戒指栏位：法术的投射物会额外弹射 1 次"] = { mod("ChainCount", "BASE", 1, nil, bor(ModFlag.Spell, ModFlag.Projectile), { type = "SlotNumber", num = 2 }) },
+	["右戒指栏位：法术的投射物会额外弹射 1 次"] = { mod("ChainCountMax", "BASE", 1, nil, bor(ModFlag.Spell, ModFlag.Projectile), { type = "SlotNumber", num = 2 }) },
 		["法术的投射物无法穿透"] = { flag("CannotPierce", nil, ModFlag.Spell) },
 		["法术的投射物无法穿刺"] = { flag("CannotPierce", nil, ModFlag.Spell) },
 	 ["击败敌人时触发 1 级的【召唤毒蛛】"]= function() return {  mod("ExtraSkill", "LIST", { skillId ="TriggeredSummonSpider", level = 1})   } end,
@@ -2292,6 +2292,7 @@ local specialModList = {
 	["持续吟唱时，获得 (%d+)%% 额外物理伤害减伤"] = function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end,  
 	["持续吟唱时，有额外 (%d+)%% 几率躲避攻击击中"] = function(num) return {  mod("AttackDodgeChance", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end, 
 	["持续吟唱时，有 (%d+)%% 几率免疫晕眩"] = function(num) return {  mod("AvoidStun", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end, 
+	["拥有能量护盾时法术躲避几率 %+(%d+)%%"] = function(num) return {  mod("SpellDodgeChance", "BASE", num,{ type = "Condition", var = "HaveEnergyShield" })  } end, 
 	["持续吟唱时获得 (%d+)%% 额外物理伤害减伤"] = function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end, 
 	["神圣球达到上限时获得【神圣】状态"] = { 
 			mod("ElementalDamage", "MORE", 50, { type = "Condition", var = "Divinity" }),
@@ -2331,6 +2332,7 @@ local specialModList = {
 	["每个幽灵护罩可使攻击和施法速度提高 (%d+)%%"]= function(num) return {  mod("Speed", "INC", num,{ type = "Multiplier", var = "GhostShroud" })   } end,
 	["拥有幽灵护罩时免疫眩晕"]= function(num) return {  mod("AvoidStun", "BASE", 100,{ type = "MultiplierThreshold", var = "GhostShroud", threshold = 1 } )   } end,
 	["拥有鬼影缠身时免疫晕眩"]= function(num) return {  mod("AvoidStun", "BASE", 100,{ type = "MultiplierThreshold", var = "GhostShroud", threshold = 1 } )   } end,
+	["拥有鬼影缠身时免疫眩晕"]= function(num) return {  mod("AvoidStun", "BASE", 100,{ type = "MultiplierThreshold", var = "GhostShroud", threshold = 1 } )   } end,
 	["每 100 最大生命提高 (%d+)%% 法术暴击几率"]= function(num) return { 	
 	mod("CritChance", "INC", num,nil, ModFlag.Spell,  { type = "PerStat", stat = "Life", div = 100 }) 
 	}end,

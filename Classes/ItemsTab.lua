@@ -2006,8 +2006,8 @@ tooltip:AddLine(16, s_format("^x7F7F7F总 DPS: "..colorCodes.MAGIC.."%.1f", weap
 		end
 tooltip:AddLine(16, s_format("^x7F7F7F攻击暴击率: %s%.2f%%", main:StatColor(weaponData.CritChance, base.weapon.CritChanceBase), weaponData.CritChance))
 tooltip:AddLine(16, s_format("^x7F7F7F每秒攻击次数: %s%.2f", main:StatColor(weaponData.AttackRate, base.weapon.AttackRateBase), weaponData.AttackRate))
-		if weaponData.range then
-tooltip:AddLine(16, s_format("^x7F7F7F武器范围: %s%d", main:StatColor(weaponData.range, self.build.data.weaponTypeInfo[base.type].range), weaponData.range))
+		if weaponData.range < 120 then
+tooltip:AddLine(16, s_format("^x7F7F7F武器范围: %s%d", main:StatColor(weaponData.range, base.weapon.Range), weaponData.range))
 		end
 	elseif base.armour then
 		-- Armour-specific info

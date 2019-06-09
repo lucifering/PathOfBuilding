@@ -2344,7 +2344,7 @@ tagString = "法术, 持续时间, 冰霜",
 		reqInt = 40,
 	},
 	["Metadata/Items/Gems/SkillGemFlameTotem"] = {
-		name = "Holy Flame Totem",
+name = "圣焰图腾",
 		grantedEffectId = "FlameTotem",
 		tags = {
 			totem = true,
@@ -4659,7 +4659,7 @@ tagString = "火焰, 攻击, 范围效果, 近战",
 		reqInt = 0,
 	},
 	["Metadata/Items/Gems/SupportGemStormBarrier"] = {
-		name = "Infused Channelling",
+name = "灌能吟唱(辅)",
 		grantedEffectId = "SupportStormBarrier",
 		tags = {
 			intelligence = true,
@@ -4715,7 +4715,7 @@ name = "先祖召唤(辅)",
 		reqInt = 0,
 	},
 	["Metadata/Items/Gems/SupportGemSummonGhostOnKill"] = {
-		name = "Summon Phantasm",
+name = "击败召唤幻影(辅)",
 		grantedEffectId = "SupportSummonGhostOnKill",
 		tags = {
 			intelligence = true,
@@ -5173,7 +5173,7 @@ tagString = "烙印, 法术",
 		reqInt = 60,
 	},
 	["Metadata/Items/Gems/SkillGemSanctify"] = {
-		name = "Purifying Flame",
+name = "净化烈焰",
 		grantedEffectId = "Sanctify",
 		tags = {
 			fire = true,
@@ -5190,7 +5190,7 @@ tagString = "烙印, 法术",
 		reqInt = 60,
 	},
 	["Metadata/Items/Gems/SkillGemSoulrend"] = {
-		name = "Soulrend",
+name = "裂魂术",
 		grantedEffectId = "Soulrend",
 		tags = {
 			chaos = true,
@@ -5207,7 +5207,7 @@ tagString = "烙印, 法术",
 		reqInt = 100,
 	},
 	["Metadata/Items/Gems/SkillGemDarkRitual"] = {
-		name = "Bane",
+name = "混沌之毒",
 		grantedEffectId = "DarkRitual",
 		secondaryGrantedEffectId = "SupportDarkRitual",
 		tags = {
@@ -5226,7 +5226,7 @@ tagString = "烙印, 法术",
 		reqInt = 100,
 	},
 	["Metadata/Items/Gems/SupportGemEnergyShieldLeech"] = {
-		name = "Energy Leech",
+name = "能量偷取（辅）",
 		grantedEffectId = "SupportEnergyShieldLeech",
 		tags = {
 			intelligence = true,
@@ -5238,7 +5238,7 @@ tagString = "辅助",
 		reqInt = 100,
 	},
 	["Metadata/Items/Gems/SkillGemPurge"] = {
-		name = "Wave of Conviction",
+name = "定罪波",
 		grantedEffectId = "Purge",
 		tags = {
 			fire = true,
@@ -5256,7 +5256,7 @@ tagString = "辅助",
 		reqInt = 60,
 	},
 	["Metadata/Items/Gems/SkillGemSpellDamageAura"] = {
-		name = "Zealotry",
+name = "奋锐光环",
 		grantedEffectId = "SpellDamageAura",
 		tags = {
 			aura = true,
@@ -5271,7 +5271,7 @@ tagString = "光环, 法术, 范围效果",
 		reqInt = 100,
 	},
 	["Metadata/Items/Gems/SkillGemDivineTempest"] = {
-		name = "Divine Ire",
+name = "圣怨",
 		grantedEffectId = "DivineTempest",
 		tags = {
 			lightning = true,
@@ -5288,7 +5288,7 @@ tagString = "光环, 法术, 范围效果",
 		reqInt = 60,
 	},
 	["Metadata/Items/Gems/SkillGemDamageOverTimeAura"] = {
-		name = "Malevolence",
+name = "怨毒光环",
 		grantedEffectId = "DamageOverTimeAura",
 		tags = {
 			aura = true,
@@ -5303,7 +5303,7 @@ tagString = "光环, 法术, 范围效果",
 		reqInt = 60,
 	},
 	["Metadata/Items/Gems/SupportGemHandcastSpellBoost"] = {
-		name = "Intensify",
+name = "法术凝聚（辅）",
 		grantedEffectId = "SupportHandcastSpellBoost",
 		tags = {
 			area = true,
@@ -5317,7 +5317,7 @@ tagString = "范围效果, 法术, 辅助",
 		reqInt = 100,
 	},
 	["Metadata/Items/Gems/SupportGemHandcastAnticipation"] = {
-		name = "Unleash",
+name = "释出（辅）",
 		grantedEffectId = "SupportHandcastAnticipation",
 		tags = {
 			spell = true,

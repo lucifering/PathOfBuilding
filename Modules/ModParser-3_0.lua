@@ -1628,16 +1628,31 @@ local specialModList = {
 	["此物品上的技能石受到 (%d+) 级的 【祝福】 辅助"] = function(num) return { mod("ExtraSupport", "LIST", { skillId = "SupportAuraDuration", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
 	["此物品上的技能石受到 (%d+) 级的 技能陷阱化 辅助"] = function(num) return { mod("ExtraSupport", "LIST", { skillId = "SupportTrap", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
 	["此物品上的技能石受到 (%d+) 级的 额外击中 辅助"] = function(num) return { mod("ExtraSupport", "LIST", { skillId = "SupportAdditionalAccuracy", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
+	["此物品上的技能石受到 (%d+) 级的 【(.+)】 辅助"] = function(num, _, support) return { 
+	mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]   or gemIdLookup[support:gsub("^提高","增加").."(辅)"]  
+	or gemIdLookup[support:gsub("先祖呼唤","先祖召唤").."(辅)"] 
+	or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
 	["此物品上的技能石受到 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { 
 	mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]   or gemIdLookup[support:gsub("^提高","增加").."(辅)"]  
 	or gemIdLookup[support:gsub("先祖呼唤","先祖召唤").."(辅)"] 
-	or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
+	or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
+	["插槽内的的技能石被 (%d+) 级的【(.+)】辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]  or gemIdLookup[support:gsub("^提高","增加").."(辅)"] or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
 	["插槽内的的技能石被 (%d+) 级的(.+)辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]  or gemIdLookup[support:gsub("^提高","增加").."(辅)"] or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
+	["此物品上的技能石受到 (%d+) 级的【(.+)】辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]   or gemIdLookup[support:gsub("^提高","增加").."(辅)"] or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	["此物品上的技能石受到 (%d+) 级的(.+)辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]   or gemIdLookup[support:gsub("^提高","增加").."(辅)"] or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
+	["此物品上的技能石由 (%d+) 级的【(.+)】辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]  or gemIdLookup[support:gsub("^提高","增加").."(辅)"] or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	["此物品上的技能石由 (%d+) 级的(.+)辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]  or gemIdLookup[support:gsub("^提高","增加").."(辅)"] or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
+	["插槽内的的技能石被 (%d+) 级的 【(.+)】 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]   or gemIdLookup[support:gsub("^提高","增加").."(辅)"] or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
 	["插槽内的的技能石被 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]   or gemIdLookup[support:gsub("^提高","增加").."(辅)"] or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
+	["插槽内的技能石受到 (%d+) 级的 【(.+)】 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]  or gemIdLookup[support:gsub("^提高","增加").."(辅)"] or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
 	["插槽内的技能石受到 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]  or gemIdLookup[support:gsub("^提高","增加").."(辅)"] or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
+	["插槽内的技能石被 (%d+) 级的 【(.+)】 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]   or gemIdLookup[support:gsub("^提高","增加").."(辅)"] or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	["插槽内的技能石被 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"]   or gemIdLookup[support:gsub("^提高","增加").."(辅)"] or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
+	["此物品上的诅咒技能石受到 (%d+) 级的 【(.+)】 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", 
+	{ skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"] 
+	or gemIdLookup[support:gsub("渎神","诅咒光环").."(辅)"] 
+	 or "Unknown", level = num },
+	{ type = "SocketedIn", slotName = "{SlotName}" }) } end, 
 	["此物品上的诅咒技能石受到 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", 
 	{ skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^提高","")] or gemIdLookup[support.."(辅)"] 
 	or gemIdLookup[support:gsub("渎神","诅咒光环").."(辅)"] 
@@ -1662,6 +1677,7 @@ local specialModList = {
 	["每有一个暴击球，你受到伤害的 ([%d%.]+)%% 由魔力先承担"]= function(num) return {  mod("DamageTakenFromManaBeforeLife", "BASE", num, { type = "Multiplier", var = "PowerCharge" } )  } end,
 	["装备时触发等级 20 闪电圣盾"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="LightningAegis", level = 20})   } end,
 	["获得等级 22 的 精准 技能"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="AccuracyAndCritsAura", level = 22})   } end,
+	["你的暴击加成为 (%d+)%%"]= function(num) return {  mod("CritMultiplier", "OVERRIDE", num, { type = "Global" } )  } end,
 	["获得 (%d+) 级的主动技能【元素之愈】"] = function(num) return {  mod("ExtraSkill", "LIST", { skillId ="VaalAuraElementalDamageHealing", level = num})   } end,
 	["获得 (%d+) 级的【幻象传送】"] = function(num) return {  mod("ExtraSkill", "LIST", { skillId ="MerveilWarp", level = num})   } end,
 	["(%d+)%% 的最大生命转化为能量护盾"]= function(num) return {  mod("LifeConvertToEnergyShield", "BASE", num)  } end,
@@ -2087,6 +2103,7 @@ local specialModList = {
 	["%+(%d+)%% 魔卫的火焰、冰霜、闪电抗性"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num))},{ type = "SkillName", skillName = "魔卫复苏" } )  } end, 
 	["%+(%d+)%% 魔卫的元素抗性"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num))},{ type = "SkillName", skillName = "魔卫复苏" } )  } end, 
 	["【魔卫造成】的伤害提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", tonumber(num),nil,ModFlag.Attack )},{ type = "SkillName", skillName = "魔卫复苏" })  } end, 
+	["魔卫的最大生命提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "INC", tonumber(num) )},{ type = "SkillName", skillName = "魔卫复苏" })  } end, 
 	["药剂持续期间，(%d+)%% 承受的击中物理伤害转化为冰霜伤害"] = function(num) return {  mod("PhysicalDamageTakenAsCold", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
 	["([%+%-]?%d+)%% 闪避几率"]= function(num) return {  mod("EvadeChance", "BASE", num)  } end, 
 	["对投射物攻击的总闪避率额外提高 (%d+)%% "]= function(num) return {  mod("ProjectileEvadeChance", "MORE", num)  } end, 

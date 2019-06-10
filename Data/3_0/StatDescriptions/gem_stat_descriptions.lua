@@ -29,4 +29,13 @@ return {[1]={stats={[1]="support_melee_physical_damage_+%_final"},lang={["Simpli
 [1214]={lang={["Simplified Chinese"]={[1]={limit={[1]={[1]="#",[2]="#"}},text="被輔助的技能总物理伤害额外提高 %1%%%"}}},stats={[1]="impale_support_physical_damage_+%_final"}},
 
 
+["multistrike_damage_+%_final_on_first_repeat"]=1233,["multistrike_damage_+%_final_on_second_repeat"]=1234,
+[1233]={lang={["Simplified Chinese"]={[1]={limit={[1]={[1]=1,[2]="#"}},text="被辅助的技能第一次重复造成的总伤害额外提高 %1%%%"},[2]={[1]={k="negate",v=1},limit={[1]={[1]="#",[2]=-1}},text="被辅助的技能第一次重复造成的总伤害额外降低 %1%%%"}}},stats={[1]="multistrike_damage_+%_final_on_first_repeat"}},[1234]={lang={["Simplified Chinese"]={[1]={limit={[1]={[1]=1,[2]="#"}},text="被辅助的技能第二次重复造成的总伤害额外提高 %1%%% "},[2]={[1]={k="negate",v=1},limit={[1]={[1]="#",[2]=-1}},text="被辅助的技能第二次重复造成的总伤害额外降低 %1%%%"}}},stats={[1]="multistrike_damage_+%_final_on_second_repeat"}},
+
+
+
+["support_fortify_melee_damage_+%_final"]=1269,["support_fortify_poison_and_bleeding_damage_+%_final_from_melee_hits"]=1270,
+[1269]={lang={["Simplified Chinese"]={[1]={limit={[1]={[1]=1,[2]="#"}},text="被辅助的技能造成的总近战伤害额外提高 %1%%%"},[2]={[1]={k="negate",v=1},limit={[1]={[1]="#",[2]=-1}},text="被辅助的技能造成的总近战伤害额外降低 %1%%%"}}},stats={[1]="support_fortify_melee_damage_+%_final"}},[1270]={lang={["Simplified Chinese"]={[1]={limit={[1]={[1]=1,[2]="#"}},text="被辅助技能在近战击中时造成的流血和中毒总伤害额外提高 %1%%%"},[2]={[1]={k="negate",v=1},limit={[1]={[1]="#",[2]=-1}},text="被辅助技能在近战击中时造成的流血和中毒总伤害额外降低 %1%%%"}}},stats={[1]="support_fortify_poison_and_bleeding_damage_+%_final_from_melee_hits"}},
+
+
 }

@@ -276,6 +276,40 @@ name = "高阶齐射",
 		[20] = { 4, 80, 4, -26, manaMultiplier = 40, levelRequirement = 70, },
 	},
 }
+
+skills["SupportGreaterSpellEcho"] = {
+	name = "高等施法回响",
+	hidden = true,
+	color = 3,
+	support = true,
+	fromItem = true,
+	requireSkillTypes = { SkillType.SpellCanRepeat, },
+	addSkillTypes = { },
+	excludeSkillTypes = { SkillType.Totem, SkillType.Trap, SkillType.Mine, SkillType.Triggered, SkillType.ManaCostReserved, SkillType.Vaal, SkillType.Instant, },
+	statDescriptionScope = "gem_stat_descriptions",
+	 statMap = {
+		["support_greater_spell_echo_spell_damage_+%_final_per_repeat"] = {
+			mod("Damage", "MORE", nil, ModFlag.Spell, 0, { type = "Multiplier", var = "spellEchoCount" }),
+		},
+		["support_greater_spell_echo_area_of_effect_+%_per_repeat"] = {
+			mod("AreaOfEffect", "MORE", nil, 0, 0, { type = "Multiplier", var = "spellEchoCount" }),
+		},
+	},
+	baseMods = {
+	},
+	qualityStats = {
+		{ "base_cast_speed_+%", 0.5 },
+	},
+	stats = {
+		"base_spell_repeat_count",
+		"support_greater_spell_echo_spell_damage_+%_final_per_repeat",
+		"support_greater_spell_echo_area_of_effect_+%_per_repeat",
+	},
+	statInterpolation = { 1, 1, 1, },
+	levels = {
+		[30] = { 2, 35, 50, levelRequirement = 90, duration = 0.001, manaMultiplier = 50, },
+	},
+}
 skills["RepeatingShockwave"] = {
 	name = "重复冲击波",
 	hidden = true,
@@ -2103,3 +2137,6 @@ skills["VoidShot"] = {
 		[20] = { 100, 50, 100, damageEffectiveness = 1.2, baseMultiplier = 1.2, levelRequirement = 70, },
 	},
 }
+
+ 
+

@@ -47,4 +47,11 @@ return {[1]={stats={[1]="base_actor_scale_+%"}},[2]={stats={[1]="skeletal_chains
 
 [1447]={lang={["Simplified Chinese"]={[1]={[1]={k="milliseconds_to_seconds",v=1},limit={[1]={[1]="#",[2]="#"}},text="当没有引导施放时，每 %1% 秒失去 1 层"}}},name="cyclone_stage_decay_time",stats={[1]="cyclone_stage_decay_time_ms"}},
 ["cyclone_stage_decay_time_ms"]=1447,
+
+
+["glacial_hammer_third_hit_freeze_as_though_dealt_damage_+%"]=1191,
+[1191]={lang={["Simplified Chinese"]={[1]={limit={[1]={[1]="#",[2]="#"}},text="每个第三次成功的打击有如造成 %1%%% 更多伤害来冰冻敌人"}}},name="glacial_hammer_freeze_damage_incr",stats={[1]="glacial_hammer_third_hit_freeze_as_though_dealt_damage_+%"}},
+
+
+
 }

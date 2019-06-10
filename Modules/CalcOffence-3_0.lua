@@ -898,24 +898,37 @@ t_insert(breakdown.CritChance, s_format("x %.2f ^8(命中率)", output.HitChance
 			if skillModList:Flag(cfg, "NoCritMultiplier") then
 				output.CritMultiplier = 1
 			else
-				local extraDamage = skillModList:Sum("BASE", cfg, "CritMultiplier") / 100
-				if env.mode_effective then
-					local enemyInc = 1 + enemyDB:Sum("INC", nil, "SelfCritMultiplier") / 100
-					extraDamage = round(extraDamage * enemyInc, 2)
-					if breakdown and enemyInc ~= 1 then
-						breakdown.CritMultiplier = {
-							s_format("%d%% ^8(additional extra damage)", skillModList:Sum("BASE", cfg, "CritMultiplier") / 100),
-s_format("x %.2f ^8(提高/降低 敌人承受的暴击伤害)", enemyInc),
-s_format("= %d%% ^8(额外暴击伤害)", extraDamage * 100),
-						}
+					local critMultiplierOverride = skillModList:Override(cfg, "CritMultiplier")	
+					if critMultiplierOverride  then
+							output.CritMultiplier = critMultiplierOverride/100
+					else
+						local extraDamage = skillModList:Sum("BASE", cfg, "CritMultiplier") / 100
+						if env.mode_effective then
+							local enemyInc = 1 + enemyDB:Sum("INC", nil, "SelfCritMultiplier") / 100
+							extraDamage = round(extraDamage * enemyInc, 2)
+							if breakdown and enemyInc ~= 1 then
+								breakdown.CritMultiplier = {
+									s_format("%d%% ^8(additional extra damage)", skillModList:Sum("BASE", cfg, "CritMultiplier") / 100),
+		s_format("x %.2f ^8(提高/降低 敌人承受的暴击伤害)", enemyInc),
+		s_format("= %d%% ^8(额外暴击伤害)", extraDamage * 100),
+								}
+							end
+						end
+						output.CritMultiplier = 1 + m_max(0, extraDamage)
+						
 					end
-				end
-				output.CritMultiplier = 1 + m_max(0, extraDamage)
+			
+				
 			end
 			if skillModList:Flag(cfg, "NoCritDegenMultiplier") then
 				output.CritDegenMultiplier = 1
 			else
-				output.CritDegenMultiplier = 1 + skillModList:Sum("BASE", cfg, "CritDegenMultiplier") / 100 + (skillModList:Sum("BASE", cfg, "CritMultiplier") - 50) * skillModList:Sum("BASE", cfg, "CritMultiplierAppliesToDegen") / 10000
+					local critMultiplierOverride = skillModList:Override(cfg, "CritMultiplier")	
+					if critMultiplierOverride  then
+						output.CritDegenMultiplier =  1 + skillModList:Sum("BASE", cfg, "CritDegenMultiplier") / 100 + ((critMultiplierOverride-50)) * skillModList:Sum("BASE", cfg, "CritMultiplierAppliesToDegen") / 10000
+					else
+						output.CritDegenMultiplier = 1 + skillModList:Sum("BASE", cfg, "CritDegenMultiplier") / 100 + (skillModList:Sum("BASE", cfg, "CritMultiplier") - 50) * skillModList:Sum("BASE", cfg, "CritMultiplierAppliesToDegen") / 10000
+					end
 			end
 			output.CritEffect = 1 - output.CritChance / 100 + output.CritChance / 100 * output.CritMultiplier
 			if breakdown and output.CritEffect ~= 1 then

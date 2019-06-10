@@ -41,6 +41,15 @@ return {
 
 	-- Section: Skill-specific options
 { section = "技能选项", col = 2 },
+
+{ label = "高等施法回响:", ifSkill =  "高等施法回响"  },
+	{ var = "spellEchoCount", type = "list", label = "回响次数:", ifSkill =  "高等施法回响" , list = {{val="0",label="无回响"},{val="1",label="回响1次"},{val="2",label="回响2次"}}, apply = function(val, modList, enemyModList)
+		 
+			
+			modList:NewMod("Multiplier:spellEchoCount", "BASE", m_min(tonumber(val), 2), "Config")
+		 
+	end },
+
 { label = "【鸟之势】:", ifSkill = "鸟之势" },
 { var = "aspectOfTheAvianAviansMight", type = "check", label = "有【鸟之力量】buff?", ifSkill = "鸟之势", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:AviansMightActive", "FLAG", true, "Config")

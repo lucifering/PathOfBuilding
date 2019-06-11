@@ -110,6 +110,7 @@ local modNameList = {
 	["攻击造成的物理伤害"] = { "PhysicalDamage", flags = ModFlag.Attack }, --备注：physical attack damage
 	["物理伤害减伤"] = "PhysicalDamageReduction", --备注：physical damage reduction
 	["造成流血"] = "BleedChance",
+	["元素抗性上限"] = { "FireResistMax", "ColdResistMax", "LightningResistMax"},
 	["元素抗性"] = "ElementalResist", --备注：all elemental resistances
 	["范围效果的"] = "AreaOfEffect", --备注：area of effect
 	["火焰、冰霜、闪电伤害的"] = "ElementalDamage", --备注：elemental damage

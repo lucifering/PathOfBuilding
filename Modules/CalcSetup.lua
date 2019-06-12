@@ -443,6 +443,7 @@ function calcs.initEnv(build, mode, override)
 				end
 				env.modDB.multipliers["AbyssJewel"] = (env.modDB.multipliers["AbyssJewel"] or 0) + 1
 			end
+			-- 灵能神盾
 			if item.type == "Shield" and nodes[45175] then
 				-- Special handling for Necromantic Aegis
 				env.aegisModList = new("ModList")
@@ -453,7 +454,7 @@ function calcs.initEnv(build, mode, override)
 						if tag.type == "SocketedIn" then
 							add = false
 							break
-						end
+						end						
 					end
 					if add then
 						env.aegisModList:ScaleAddMod(mod, scale)

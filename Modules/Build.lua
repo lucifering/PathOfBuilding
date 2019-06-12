@@ -225,7 +225,7 @@ main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会�
 { stat = "PreEffectiveCritChance", label = "暴击几率", fmt = ".2f%%" },
 { stat = "CritChance", label = "有效暴击几率", fmt = ".2f%%", condFunc = function(v,o) return v ~= o.PreEffectiveCritChance end },
 { stat = "CritMultiplier", label = "暴击伤害加成", fmt = "d%%", pc = true, condFunc = function(v,o) return (o.CritChance or 0) > 0 end },
-{ stat = "HitChance", label = "命中率", fmt = ".0f%%", flag = "attack" },
+{ stat = "HitChance", label = "击中几率", fmt = ".0f%%", flag = "attack" },
 { stat = "TotalDPS", label = "总 DPS", fmt = ".1f", compPercent = true, flag = "notAverage" },
 { stat = "TotalDot", label = "持续伤害 DPS", fmt = ".1f", compPercent = true },
 { stat = "BleedDPS", label = "流血 DPS", fmt = ".1f", compPercent = true },

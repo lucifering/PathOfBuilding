@@ -1341,7 +1341,7 @@ local specialModList = {
 	["(%d+)%% 法术伤害格挡几率"] = function(num) return {  mod("SpellBlockChance", "BASE", num) } end,  
 	["(%d+)%% 法术格挡几率"] = function(num) return {  mod("SpellBlockChance", "BASE", num) } end,  
 	["每 10 点智慧可以为攻击附加 0 %- 3 基础闪电伤害"]= function() return { 	
-		mod("LightningMax", "BASE", 3,  { type = "PerStat", stat = "Int", div = 10 }) 
+		mod("LightningMax", "BASE", 3,nil, ModFlag.Attack,  { type = "PerStat", stat = "Int", div = 10 }) 
 	}end,
 	--fu*k TX 格挡率用“提高”字样
 	["药剂持续期间，攻击伤害格挡几率 ([%+%-]?%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,  
@@ -2357,6 +2357,12 @@ local specialModList = {
 	["每 100 最大生命提高 (%d+)%% 法术伤害"]= function(num) return { 	
 	mod("Damage", "INC", num,nil, ModFlag.Spell,  { type = "PerStat", stat = "Life", div = 100 }) 
 	}end,
+	["每 100 玩家最大生命提高 (%d+)%% 法术伤害"]= function(num) return { 	
+		mod("Damage", "INC", num,nil, ModFlag.Spell,  { type = "PerStat", stat = "PlayerLife", div = 100 }) 
+		}end,
+	["每 100 玩家最大生命提高 (%d+)%% 法术暴击几率"]= function(num) return { 	
+		mod("CritChance", "INC", num,nil, ModFlag.Spell,  { type = "PerStat", stat = "PlayerLife", div = 100 }) 
+		}end,
 	["总能量护盾每秒回复额外降低 (%d+)%%"]= function(num) return { 	
 	mod("EnergyShieldRegen", "LESS", num) 
 	}end,

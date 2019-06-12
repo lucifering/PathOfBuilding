@@ -890,7 +890,7 @@ t_insert(breakdown.CritChance, "幸运的暴击率:")
 					if env.mode_effective and output.HitChance < 100 then
 t_insert(breakdown.CritChance, "暴击确认的Roll:")
 						t_insert(breakdown.CritChance, s_format("%.2f%%", preHitCheckCritChance))
-t_insert(breakdown.CritChance, s_format("x %.2f ^8(命中率)", output.HitChance / 100))
+t_insert(breakdown.CritChance, s_format("x %.2f ^8(击中几率)", output.HitChance / 100))
 						t_insert(breakdown.CritChance, s_format("= %.2f%%", output.CritChance))
 					end
 				end
@@ -1278,7 +1278,7 @@ s_format("+ %.1f x %.4f ^8(来自暴击的伤害)", (totalCritMin + totalCritMax
 				breakdown.AverageDamage = { }
 				t_insert(breakdown.AverageDamage, s_format("%s:", pass.label))
 t_insert(breakdown.AverageDamage, s_format("%.1f ^8(平均击中)", output.AverageHit))
-t_insert(breakdown.AverageDamage, s_format("x %.2f ^8(命中率)", output.HitChance / 100))
+t_insert(breakdown.AverageDamage, s_format("x %.2f ^8(击中几率)", output.HitChance / 100))
 				t_insert(breakdown.AverageDamage, s_format("= %.1f", output.AverageDamage))
 			end
 		end
@@ -1333,12 +1333,12 @@ output.DisplayDamage = s_format("%.1f 平均伤害", output.AverageDamage)
 		if isAttack then
 			breakdown.TotalDPS = {
 s_format("%.1f ^8(平均伤害)", output.AverageDamage),
-output.HitSpeed and s_format("x %.2f ^8(命中率)", output.HitSpeed) or s_format("x %.2f ^8(攻击速度)", output.Speed),
+output.HitSpeed and s_format("x %.2f ^8(击中速率)", output.HitSpeed) or s_format("x %.2f ^8(攻击速度)", output.Speed),
 			}
 		else
 			breakdown.TotalDPS = {
 s_format("%.1f ^8(平均伤害)", output.AverageDamage),
-output.HitSpeed and s_format("x %.2f ^8(命中率)", output.HitSpeed) or s_format("x %.2f ^8(施法速度)", output.Speed),
+output.HitSpeed and s_format("x %.2f ^8(击中速率)", output.HitSpeed) or s_format("x %.2f ^8(施法速度)", output.Speed),
 			}
 		end
 		if skillData.dpsMultiplier then

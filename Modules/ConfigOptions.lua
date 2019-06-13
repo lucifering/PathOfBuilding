@@ -671,7 +671,12 @@ end },
 { var = "conditionCriticalStrike", type = "check", label = "解析【暴击时】词缀?", ifCond = "CriticalStrike", tooltip = "用于判官升华：无视元素抗性。",apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:CriticalStrike", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
-		
+{ var = "conditionImpaledRecently", type = "check", ifVer="3_0", label = "近期有穿刺过敌人?", apply = function(val, modList, enemyModLIst)
+		modList:NewMod("Condition:ImpaledRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
+{ var = "multiplierImaplesOnEnemy", type = "count", label = "# 敌人身上的穿刺数量(如果不是最大数量):", apply = function(val, modList, enemyModList)
+		enemyModList:NewMod("Multiplier:ImpaleStack", "BASE", val, "Config")
+	end },
 
 	-- Section: Effective DPS options
 { section = "为了计算有效 DPS", col = 1 },

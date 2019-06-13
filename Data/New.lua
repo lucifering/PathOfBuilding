@@ -2,7 +2,17 @@
 -- Upcoming uniques will live here until their mods/rolls are finalised
 --
 data.uniques.new = {
-
+[[
+分化瓦解
+翠绿珠宝
+范围: 中
+仅限: 1
+等级需求: 20
+持盾牌时造成的攻击伤害提高 (10-15)% 
+范围内配置的敏捷和力量总计 40 点时，【灵盾投掷】连锁弹射次数 +4
+范围内配置的敏捷和力量总计 40 点时，【灵盾投掷】连锁时发射碎片投射物
+范围内配置的敏捷和力量总计 40 点时，【灵盾投掷】的碎片投射物数量额外降低 75%
+]],
 [[
 Wreath of Phrecia
 铁锻之冠

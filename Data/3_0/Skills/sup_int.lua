@@ -1579,7 +1579,7 @@ description = "辅助任何吟唱技能，在你持续吟唱时保护你。无�
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
 		["support_storm_barrier_skill_type_damage_taken_when_hit_+%_final"] = {
-			mod("PhysicalDamageTakenWhenHit", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Infused Channelling", modCond = "PhysicalInfusion" }),
+mod("PhysicalDamageTakenWhenHit", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌能吟唱", modCond = "PhysicalInfusion" }),
 mod("FireDamageTakenWhenHit", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌能吟唱", modCond = "FireInfusion" }),
 mod("ColdDamageTakenWhenHit", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌能吟唱", modCond = "ColdInfusion" }),
 mod("LightningDamageTakenWhenHit", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌能吟唱", modCond = "LightningInfusion" }),
@@ -1589,7 +1589,7 @@ mod("ChaosDamageTakenWhenHit", "MORE", nil, 0, 0, { type = "GlobalEffect", effec
 			mod("Damage", "MORE", nil),
 		},
 		["support_storm_barrier_skill_type_damage_+%_final"] = {
-			mod("PhysicalDamage", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Infusion", effectCond = "InfusionActive", modCond = "PhysicalInfusion" }),
+mod("PhysicalDamage", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌注", effectCond = "InfusionActive", modCond = "PhysicalInfusion" }),
 mod("FireDamage", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌注", effectCond = "InfusionActive", modCond = "FireInfusion" }),
 mod("ColdDamage", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌注", effectCond = "InfusionActive", modCond = "ColdInfusion" }),
 mod("LightningDamage", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌注", effectCond = "InfusionActive", modCond = "LightningInfusion" }),

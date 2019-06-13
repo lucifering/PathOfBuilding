@@ -340,7 +340,8 @@ description = "对目标区域施放诅咒, 受到诅咒的敌人更容易, 受�
 			mult = -1,
 		},
 		["enemy_additional_critical_strike_chance_against_self"] = {
-			mod("SelfCritChance", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+			mod("SelfCritChance", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+			div=100
 		},
 		["life_granted_when_killed"] = {
 			mod("SelfLifeOnKill", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
@@ -3288,7 +3289,7 @@ description = "创造出一个冰晶, 不断地释放冰霜的能量, 降低其�
 	castTime = 0.5,
 	statMap = {
 		["base_cold_damage_resistance_%"] = {
-			mod("ColdResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff" }),
+			mod("ColdResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff" , effectName = "冰霜曝露"}),
 		},
 		["energy_shield_recharge_rate_+%"] = {
 			mod("EnergyShieldRecharge", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff" }),

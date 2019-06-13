@@ -671,10 +671,10 @@ name = "剑刃风暴",
 			mod("Damage", "MORE", nil, 0, 0, { type = "SkillPart", skillPart = 2 }),
 		},
 		["bladestorm_attack_speed_+%_final_while_in_bloodstorm"] = {
-			mod("Speed", "MORE", nil, ModFlag.Attack, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Bloodstorm", effectCond = "BladestormInBloodstorm" }),
+mod("Speed", "MORE", nil, ModFlag.Attack, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "血·剑刃风暴", effectCond = "BladestormInBloodstorm" }),
 		},
 		["bladestorm_movement_speed_+%_while_in_sandstorm"] = {
-			mod("MovementSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Sandstorm", effectCond = "BladestormInSandstorm" }),
+mod("MovementSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "沙·剑刃风暴", effectCond = "BladestormInSandstorm" }),
 		},
 	},
 	baseFlags = {
@@ -750,16 +750,16 @@ skills["BloodSandStance"] = {
 	castTime = 0,
 	statMap = {
 		["blood_sand_stance_melee_skills_area_of_effect_+%_final_in_blood_stance"] = {
-			mod("AreaOfEffect", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Blood", effectCond = "BloodStance"}, { type = "SkillType", skillType = SkillType.Melee })
+mod("AreaOfEffect", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "血姿态", effectCond = "BloodStance"}, { type = "SkillType", skillType = SkillType.Melee })
 		},
 		["blood_sand_stance_melee_skills_area_damage_+%_final_in_blood_stance"] = {
-			mod("Damage", "MORE", nil, ModFlag.Area, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Blood", effectCond = "BloodStance"}, { type = "SkillType", skillType = SkillType.Melee })
+mod("Damage", "MORE", nil, ModFlag.Area, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "血姿态", effectCond = "BloodStance"}, { type = "SkillType", skillType = SkillType.Melee })
 		},
 		["blood_sand_stance_melee_skills_area_of_effect_+%_final_in_sand_stance"] = {
-			mod("AreaOfEffect", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Sand", effectCond = "SandStance"}, { type = "SkillType", skillType = SkillType.Melee })
+mod("AreaOfEffect", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "沙姿态", effectCond = "SandStance"}, { type = "SkillType", skillType = SkillType.Melee })
 		},
 		["blood_sand_stance_melee_skills_area_damage_+%_final_in_sand_stance"] = {
-			mod("Damage", "MORE", nil, ModFlag.Area, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Sand", effectCond = "SandStance"}, { type = "SkillType", skillType = SkillType.Melee })
+mod("Damage", "MORE", nil, ModFlag.Area, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "沙姿态", effectCond = "SandStance"}, { type = "SkillType", skillType = SkillType.Melee })
 		},
 	},
 	baseFlags = {
@@ -1738,7 +1738,7 @@ skills["BloodSandArmour"] = {
 	castTime = 0,
 	statMap = {
 		["support_maimed_enemies_physical_damage_taken_+%"] = {
-			mod("PhysicalDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "Maim", effectCond = "BloodStance" }, { type = "Condition", var = "Maimed" }),
+mod("PhysicalDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "瘫痪", effectCond = "BloodStance" }, { type = "Condition", var = "Maimed" }),
 		},
 	},
 	baseFlags = {
@@ -1747,8 +1747,8 @@ skills["BloodSandArmour"] = {
 		aura = true,
 	},
 	baseMods = {
-		mod("Condition:Maimed", "FLAG", true, 0, 0, { type = "GlobalEffect", effectType = "AuraDebuff", effectName = "Flesh", effectCond = "BloodStance" }),
-		mod("Condition:Blinded", "FLAG", true, 0, 0, { type = "GlobalEffect", effectType = "AuraDebuff", effectName = "Stone", effectCond = "SandStance" }),
+mod("Condition:Maimed", "FLAG", true, 0, 0, { type = "GlobalEffect", effectType = "AuraDebuff", effectName = "血肉", effectCond = "BloodStance" }),
+mod("Condition:Blinded", "FLAG", true, 0, 0, { type = "GlobalEffect", effectType = "AuraDebuff", effectName = "岩石", effectCond = "SandStance" }),
 	},
 	qualityStats = {
 		{ "base_cooldown_speed_+%", 0.5 },

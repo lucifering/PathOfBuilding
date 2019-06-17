@@ -7,8 +7,8 @@
 local skills, mod, flag, skill = ...
 
 skills["SupportAddedChaosDamage"] = {
-name = "附加混沌伤害(辅)",
-description = "辅助任意击中敌人的技能",
+	name = "附加混沌伤害(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	baseEffectiveness = 0.43329998850822,
 	incrementalEffectiveness = 0.041999999433756,
@@ -71,8 +71,8 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["SupportAddedLightningDamage"] = {
-name = "附加闪电伤害(辅)",
-description = "辅助任意击中敌人的技能",
+	name = "附加闪电伤害(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	baseEffectiveness = 0.52499997615814,
 	incrementalEffectiveness = 0.039000000804663,
@@ -135,8 +135,8 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["SupportArcaneSurge"] = {
-name = "秘术增强(辅)",
-description = "所有被辅助的法术技能会记录你消耗的魔力, 当消耗的总魔力达到指定值时获得一个增益. 无法辅助图腾, 陷阱或地雷所施放的技能。",
+	name = "秘术增强(辅)",
+	description = "所有被辅助的法术技能会记录你消耗的魔力, 当消耗的总魔力达到指定值时获得一个增益. 无法辅助图腾, 陷阱或地雷所施放的技能。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Spell, },
@@ -216,8 +216,8 @@ mod("Damage", "MORE", nil, ModFlag.Spell, 0, { type = "Condition", var = "Affect
 	},
 }
 skills["SupportBlasphemy"] = {
-name = "诅咒光环(辅)",
-description = "辅助诅咒技能, 使诅咒以光环形式施放并影响周围的敌人",
+	name = "诅咒光环(辅)",
+	description = "辅助诅咒技能, 使诅咒以光环形式施放并影响周围的敌人",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.AppliesCurse, },
@@ -280,8 +280,8 @@ description = "辅助诅咒技能, 使诅咒以光环形式施放并影响周围
 	},
 }
 skills["SupportBonechill"] = {
-name = "彻骨（辅）",
-description = "可使敌人冰缓或造成冰缓区域",
+	name = "彻骨（辅）",
+	description = "可使敌人冰缓或造成冰缓区域",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, SkillType.Hit, SkillType.NonHitChill, SkillType.ChillingArea, },
@@ -350,8 +350,8 @@ mod("ColdDamageTakenOverTime", "INC", nil, 0, 0, { type = "GlobalEffect", effect
 	},
 }
 skills["SupportCastOnStunned"] = {
-name = "晕眩时施放(辅)",
-description = "所有被辅助的法术技能有几率在你被晕眩时施放. 无法辅助图腾, 陷阱或地雷所施放的技能. 瓦尔技能、持续吟唱类技能或魔力保留类技能无法被触发施放",
+	name = "晕眩时施放(辅)",
+	description = "所有被辅助的法术技能有几率在你被晕眩时施放. 无法辅助图腾, 陷阱或地雷所施放的技能. 瓦尔技能、持续吟唱类技能或魔力保留类技能无法被触发施放",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Spell, SkillType.Triggerable, SkillType.AND, },
@@ -412,9 +412,10 @@ description = "所有被辅助的法术技能有几率在你被晕眩时施放. 
 		[40] = { 84, cooldown = 0.25, levelRequirement = 100, },
 	},
 }
+
 skills["SupportCastWhileChannelling"] = {
-name = "吟唱时施放(辅)",
-description = "必须同时连接一个持续吟唱技能和一个非吟唱法术技能才能生效. 吟唱技能在吟唱过程中每隔一段时间会触发法术技能. 无法辅助图腾, 陷阱或地雷所施放的技能.瓦尔技能和魔力保留类技能无法被触发施放。",
+	name = "吟唱时施放(辅)",
+	description = "必须同时连接一个持续吟唱技能和一个非吟唱法术技能才能生效. 吟唱技能在吟唱过程中每隔一段时间会触发法术技能. 无法辅助图腾, 陷阱或地雷所施放的技能.瓦尔技能和魔力保留类技能无法被触发施放。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Channelled, },
@@ -480,8 +481,8 @@ description = "必须同时连接一个持续吟唱技能和一个非吟唱法�
 	},
 }
 skills["SupportCastWhileChannellingTriggered"] = {
-name = "吟唱时施放(辅)",
-description = "必须同时连接一个持续吟唱技能和一个非吟唱法术技能才能生效. 吟唱技能在吟唱过程中每隔一段时间会触发法术技能. 无法辅助图腾, 陷阱或地雷所施放的技能.瓦尔技能和魔力保留类技能无法被触发施放。",
+	name = "吟唱时施放(辅)",
+	description = "必须同时连接一个持续吟唱技能和一个非吟唱法术技能才能生效. 吟唱技能在吟唱过程中每隔一段时间会触发法术技能. 无法辅助图腾, 陷阱或地雷所施放的技能.瓦尔技能和魔力保留类技能无法被触发施放。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Spell, SkillType.Triggerable, SkillType.AND, },
@@ -548,8 +549,8 @@ description = "必须同时连接一个持续吟唱技能和一个非吟唱法�
 	},
 }
 skills["SupportChanceToIgnite"] = {
-name = "几率点燃(辅)",
-description = "辅助任意击中敌人的技能",
+	name = "几率点燃(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -619,8 +620,8 @@ mod("FireResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debu
 	},
 }
 skills["SupportConcentratedEffect"] = {
-name = "集中效应(辅)",
-description = "辅助任意有范围效果的技能, 不论该技能是否造成伤害",
+	name = "集中效应(辅)",
+	description = "辅助任意有范围效果的技能, 不论该技能是否造成伤害",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Area, SkillType.CreateMinion, SkillType.Type53, },
@@ -689,8 +690,8 @@ description = "辅助任意有范围效果的技能, 不论该技能是否造成
 	},
 }
 skills["SupportControlledDestruction"] = {
-name = "精准破坏(辅)",
-description = "辅助能造成伤害的攻击或法术技能",
+	name = "精准破坏(辅)",
+	description = "辅助能造成伤害的攻击或法术技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.Type59, },
@@ -756,8 +757,8 @@ description = "辅助能造成伤害的攻击或法术技能",
 	},
 }
 skills["SupportCurseOnHit"] = {
-name = "击中附加诅咒(辅)",
-description = "必须同时连接一个能击中敌人的技能和一个诅咒技能才能生效. 诅咒技能会在另一个技能击中敌人时施放. 无法辅助图腾, 陷阱或地雷. 召唤生物无法用该方式施放诅咒",
+	name = "击中附加诅咒(辅)",
+	description = "必须同时连接一个能击中敌人的技能和一个诅咒技能才能生效. 诅咒技能会在另一个技能击中敌人时施放. 无法辅助图腾, 陷阱或地雷. 召唤生物无法用该方式施放诅咒",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, SkillType.Hit, SkillType.AppliesCurse, },
@@ -820,8 +821,8 @@ description = "必须同时连接一个能击中敌人的技能和一个诅咒�
 	},
 }
 skills["SupportDecay"] = {
-name = "腐蚀(辅)",
-description = "辅助任意击中敌人的技能",
+	name = "腐蚀(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	baseEffectiveness = 1.335000038147,
 	incrementalEffectiveness = 0.045800000429153,
@@ -883,8 +884,8 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["SupportEfficacy"] = {
-name = "效能(辅)",
-description = "辅助任意能造成伤害或有持续时间的技能",
+	name = "效能(辅)",
+	description = "辅助任意能造成伤害或有持续时间的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.Type59, SkillType.Duration, SkillType.Type55, SkillType.DamageOverTime, },
@@ -954,8 +955,8 @@ description = "辅助任意能造成伤害或有持续时间的技能",
 	},
 }
 skills["SupportElementalFocus"] = {
-name = "元素集中(辅)",
-description = "辅助任意能击中或点燃敌人的技能",
+	name = "元素集中(辅)",
+	description = "辅助任意能击中或点燃敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.CausesBurning, },
@@ -1021,8 +1022,8 @@ description = "辅助任意能击中或点燃敌人的技能",
 	},
 }
 skills["SupportElementalProliferation"] = {
-name = "元素扩散(辅)",
-description = "辅助任意能击中敌人或对敌人造成元素异常状态的技能",
+	name = "元素扩散(辅)",
+	description = "辅助任意能击中敌人或对敌人造成元素异常状态的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.CauseElementalStatus, },
@@ -1090,8 +1091,8 @@ description = "辅助任意能击中敌人或对敌人造成元素异常状态�
 	},
 }
 skills["SupportEnergyShieldLeech"] = {
-name = "能量偷取（辅）",
-description = "辅助任何会击中敌人的技能，使击中后可以偷取能量护盾，数值根据伤害值所定。",
+	name = "能量偷取（辅）",
+	description = "辅助任何会击中敌人的技能，使击中后可以偷取能量护盾，数值根据伤害值所定。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -1161,8 +1162,8 @@ description = "辅助任何会击中敌人的技能，使击中后可以偷取�
 	},
 }
 skills["SupportAdditionalXP"] = {
-name = "启蒙(辅)",
-description = "辅助任意技能. 当该宝石达到 2 级或以上时, 降低被辅助技能的法力消耗. 无法辅助非技能宝石带来的技能",
+	name = "启蒙(辅)",
+	description = "辅助任意技能. 当该宝石达到 2 级或以上时, 降低被辅助技能的法力消耗. 无法辅助非技能宝石带来的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { },
@@ -1192,8 +1193,8 @@ description = "辅助任意技能. 当该宝石达到 2 级或以上时, 降低�
 	},
 }
 skills["SupportFasterCast"] = {
-name = "快速施法(辅)",
-description = "辅助法术技能",
+	name = "快速施法(辅)",
+	description = "辅助法术技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Spell, },
@@ -1253,8 +1254,8 @@ description = "辅助法术技能",
 	},
 }
 skills["SupportIgniteProliferation"] = {
-name = "点燃扩散(辅)",
-description = "辅助任意击中敌人的技能",
+	name = "点燃扩散(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -1320,8 +1321,8 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["SupportImmolation"] = {
-name = "献祭(辅)",
-description = "辅助任意击中敌人的技能",
+	name = "献祭(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	baseEffectiveness = 0.88889998197556,
 	incrementalEffectiveness = 0.034000001847744,
@@ -1384,8 +1385,8 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["SupportIncreasedAreaOfEffect"] = {
-name = "增大范围(辅)",
-description = "辅助任意有范围效果的技能",
+	name = "增大范围(辅)",
+	description = "辅助任意有范围效果的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Area, SkillType.CreateMinion, SkillType.Type53, },
@@ -1445,8 +1446,8 @@ description = "辅助任意有范围效果的技能",
 	},
 }
 skills["SupportIncreasedCriticalDamage"] = {
-name = "提高暴击伤害(辅)",
-description = "辅助任意击中敌人的技能",
+	name = "提高暴击伤害(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -1506,8 +1507,8 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["SupportIncreasedCriticalStrikes"] = {
-name = "提高暴击几率(辅)",
-description = "辅助任意击中敌人的技能",
+	name = "提高暴击几率(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -1568,8 +1569,8 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["SupportStormBarrier"] = {
-name = "灌能吟唱(辅)",
-description = "辅助任何吟唱技能，在你持续吟唱时保护你。无法辅助召唤生物类技能。",
+	name = "灌能吟唱(辅)",
+	description = "辅助任何吟唱技能，在你持续吟唱时保护你。无法辅助召唤生物类技能。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Channelled, },
@@ -1578,6 +1579,7 @@ description = "辅助任何吟唱技能，在你持续吟唱时保护你。无�
 	ignoreMinionTypes = true,
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
+		 
 		["support_storm_barrier_skill_type_damage_taken_when_hit_+%_final"] = {
 mod("PhysicalDamageTakenWhenHit", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌能吟唱", modCond = "PhysicalInfusion" }),
 mod("FireDamageTakenWhenHit", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌能吟唱", modCond = "FireInfusion" }),
@@ -1660,8 +1662,8 @@ mod("ChaosDamage", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buf
 	},
 }
 skills["SupportOnslaughtOnSlayingShockedEnemy"] = {
-name = "闪电支配(辅)",
-description = "辅助任意你用来击中敌人的技能. 无法辅助图腾, 陷阱和地雷所施放的技能.",
+	name = "闪电支配(辅)",
+	description = "辅助任意你用来击中敌人的技能. 无法辅助图腾, 陷阱和地雷所施放的技能.",
 	color = 3,
 	baseEffectiveness = 0.23749999701977,
 	incrementalEffectiveness = 0.039000000804663,
@@ -1737,8 +1739,8 @@ mod("LightningMax", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Bu
 	},
 }
 skills["SupportHandcastSpellBoost"] = {
-name = "法术凝聚（辅）",
-description = "辅助对自己施放的法术。无法辅助触发类技能、瓦尔技能、瞬发技能、持续吟唱技能，保留魔力技能，或图腾、陷阱和地雷使用的技能。无法影响召唤生物的技能。",
+	name = "法术凝聚（辅）",
+	description = "辅助对自己施放的法术。无法辅助触发类技能、瓦尔技能、瞬发技能、持续吟唱技能，保留魔力技能，或图腾、陷阱和地雷使用的技能。无法影响召唤生物的技能。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.AreaSpell, },
@@ -1809,8 +1811,8 @@ description = "辅助对自己施放的法术。无法辅助触发类技能、�
 	},
 }
 skills["SupportItemRarity"] = {
-name = "物品稀有度增幅(辅)",
-description = "辅助任意能击败敌人的技能",
+	name = "物品稀有度增幅(辅)",
+	description = "辅助任意能击败敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.DamageOverTime, },
@@ -1870,8 +1872,8 @@ description = "辅助任意能击败敌人的技能",
 	},
 }
 skills["SupportLightningPenetration"] = {
-name = "闪电穿透(辅)",
-description = "辅助任意击中敌人的技能, 使击中能穿透敌人的闪电抗性",
+	name = "闪电穿透(辅)",
+	description = "辅助任意击中敌人的技能, 使击中能穿透敌人的闪电抗性",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -1931,8 +1933,8 @@ description = "辅助任意击中敌人的技能, 使击中能穿透敌人的闪
 	},
 }
 skills["SupportMinefield"] = {
-name = "地雷网(辅)",
-description = "辅助地雷技能",
+	name = "地雷网(辅)",
+	description = "辅助地雷技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Mine, },
@@ -1999,8 +2001,8 @@ description = "辅助地雷技能",
 	},
 }
 skills["SupportMinionDamage"] = {
-name = "召唤生物伤害(辅)",
-description = "辅助召唤生物技能",
+	name = "召唤生物伤害(辅)",
+	description = "辅助召唤生物技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.CreatesMinion, },
@@ -2065,8 +2067,8 @@ description = "辅助召唤生物技能",
 	},
 }
 skills["SupportMinionLife"] = {
-name = "召唤生物生命(辅)",
-description = "辅助召唤生物技能",
+	name = "召唤生物生命(辅)",
+	description = "辅助召唤生物技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.CreatesMinion, },
@@ -2131,8 +2133,8 @@ description = "辅助召唤生物技能",
 	},
 }
 skills["SupportMinionSpeed"] = {
-name = "召唤生物速度(辅)",
-description = "辅助召唤生物技能",
+	name = "召唤生物速度(辅)",
+	description = "辅助召唤生物技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.CreatesMinion, },
@@ -2194,8 +2196,8 @@ description = "辅助召唤生物技能",
 	},
 }
 skills["SupportSummonElementalResistances"] = {
-name = "召唤生物与图腾元素抗性(辅)",
-description = "辅助召唤生物或图腾类技能",
+	name = "召唤生物与图腾元素抗性(辅)",
+	description = "辅助召唤生物或图腾类技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.CreatesMinion, SkillType.Totem, },
@@ -2266,8 +2268,8 @@ description = "辅助召唤生物或图腾类技能",
 	},
 }
 skills["SupportPhysicalToLightning"] = {
-name = "物理转闪电(辅)",
-description = "辅助任意击中敌人的技能",
+	name = "物理转闪电(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -2329,8 +2331,8 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["SupportPowerChargeOnCrit"] = {
-name = "暴击获得暴击球(辅)",
-description = "辅助任意击中敌人的技能",
+	name = "暴击获得暴击球(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -2396,8 +2398,8 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["SupportRemoteMine"] = {
-name = "遥控地雷(辅)",
-description = "辅助法术技能, 或使用弓箭和法杖的攻击技能. 你将不再直接施放被辅助的技能, 技能会以地雷的形式施放，地雷会在敌人靠近后出发。地雷不能触发持续吟唱类技能。",
+	name = "遥控地雷(辅)",
+	description = "辅助法术技能, 或使用弓箭和法杖的攻击技能. 你将不再直接施放被辅助的技能, 技能会以地雷的形式施放，地雷会在敌人靠近后出发。地雷不能触发持续吟唱类技能。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.SkillCanMine, },
@@ -2474,8 +2476,8 @@ description = "辅助法术技能, 或使用弓箭和法杖的攻击技能. 你�
 	},
 }
 skills["SupportSpellCascade"] = {
-name = "多重范围施法(辅)",
-description = "能够辅助对目标造成范围伤害的法术技能。无法辅助瓦尔技能，召唤生物技能或图腾，陷阱和地雷使用的技能。",
+	name = "多重范围施法(辅)",
+	description = "能够辅助对目标造成范围伤害的法术技能。无法辅助瓦尔技能，召唤生物技能或图腾，陷阱和地雷使用的技能。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.SpellCanCascade, },
@@ -2546,8 +2548,8 @@ description = "能够辅助对目标造成范围伤害的法术技能。无法�
 	},
 }
 skills["SupportMulticast"] = {
-name = "施法回响(辅)",
-description = "辅助法术技能, 使该技能在使用时被自动重复 1 次. 无法辅助瓦尔技能, 图腾技能, 持续吟唱技能, 触发类技能, 瞬发类技能或魔力保留类技能",
+	name = "施法回响(辅)",
+	description = "辅助法术技能, 使该技能在使用时被自动重复 1 次. 无法辅助瓦尔技能, 图腾技能, 持续吟唱技能, 触发类技能, 瞬发类技能或魔力保留类技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.SpellCanRepeat, },
@@ -2618,8 +2620,8 @@ description = "辅助法术技能, 使该技能在使用时被自动重复 1 次
 	},
 }
 skills["SupportSummonGhostOnKill"] = {
-name = "击败召唤幻影(辅)",
-description = "能够辅助可以击中敌人或召唤生物的技能。当该技能或召唤生物击败敌人，有一定几率召唤一个幽灵生物，该生物可以使用投射物穿刺法术造成物理伤害。",
+	name = "召唤幻影辅助",
+	description = "能够辅助可以击中敌人或召唤生物的技能。当该技能或召唤生物击败敌人，或击中稀有或传奇敌人时，有一定几率召唤一个幻灵，该生物可以使用投射物穿刺法术造成物理伤害。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, SkillType.Hit, SkillType.CreatesMinion, },
@@ -2694,8 +2696,8 @@ description = "能够辅助可以击中敌人或召唤生物的技能。当该�
 	},
 }
 skills["SupportAilments"] = {
-name = "异常爆发(辅)",
-description = "辅助任意击中敌人的技能",
+	name = "异常爆发(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.CauseElementalStatus, },
@@ -2762,8 +2764,8 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["SupportHandcastAnticipation"] = {
-name = "释出（辅）",
-description = "辅助法术类技能，使其在施放时效果可以重复。无法辅助冷却和触发类技能、烙印技能、瓦尔技能、瞬发技能、持续吟唱技能，保留魔力技能，或图腾、陷阱和地雷使用的技能。无法影响召唤生物的技能。",
+	name = "释出（辅）",
+	description = "辅助法术类技能，使其在施放时效果可以重复。无法辅助冷却和触发类技能、烙印技能、瓦尔技能、瞬发技能、持续吟唱技能，保留魔力技能，或图腾、陷阱和地雷使用的技能。无法影响召唤生物的技能。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.CanRapidFire, },

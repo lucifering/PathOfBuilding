@@ -144,7 +144,7 @@ itemBases["不朽魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
-	implicit = "+1 魔卫数量上限",
+	implicit = "+1 【魔卫复苏】数量上限",
 	req = { },
 }
 itemBases["腐首魔符"] = {

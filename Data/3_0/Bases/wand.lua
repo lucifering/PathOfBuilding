@@ -15,7 +15,7 @@ itemBases["羊角法杖"] = {
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, wand = true, ranged = true, one_hand_weapon = true, },
 	implicit = "法术伤害提高 (10-14)%",
-	weapon = { PhysicalMin = 7, PhysicalMax = 13, CritChanceBase = 7, AttackRateBase = 1.2,Range = 120, },
+	weapon = { PhysicalMin = 7, PhysicalMax = 13, CritChanceBase = 7, AttackRateBase = 1.2, Range = 120, },
 	req = { level = 6, int = 29, },
 }
 itemBases["粗纹法杖"] = {
@@ -23,7 +23,7 @@ itemBases["粗纹法杖"] = {
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, wand = true, ranged = true, one_hand_weapon = true, },
 	implicit = "法术伤害提高 (11-15)%",
-	weapon = { PhysicalMin = 8, PhysicalMax = 14, CritChanceBase = 7, AttackRateBase = 1.5,Range = 120,  },
+	weapon = { PhysicalMin = 8, PhysicalMax = 14, CritChanceBase = 7, AttackRateBase = 1.5, Range = 120, },
 	req = { level = 12, int = 47, },
 }
 itemBases["石英法杖"] = {
@@ -31,7 +31,7 @@ itemBases["石英法杖"] = {
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, wand = true, ranged = true, one_hand_weapon = true, },
 	implicit = "法术伤害提高 (18-22)%",
-	weapon = { PhysicalMin = 12, PhysicalMax = 22, CritChanceBase = 7, AttackRateBase = 1.3,Range = 120,  },
+	weapon = { PhysicalMin = 12, PhysicalMax = 22, CritChanceBase = 7, AttackRateBase = 1.3, Range = 120, },
 	req = { level = 18, int = 65, },
 }
 itemBases["螺纹法杖"] = {
@@ -63,7 +63,7 @@ itemBases["兽角法杖"] = {
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, wand = true, ranged = true, one_hand_weapon = true, },
 	implicit = "法术伤害提高 (20-24)%",
-	weapon = { PhysicalMin = 22, PhysicalMax = 40, CritChanceBase = 7, AttackRateBase = 1.2,Range = 120,  },
+	weapon = { PhysicalMin = 22, PhysicalMax = 40, CritChanceBase = 7, AttackRateBase = 1.2, Range = 120, },
 	req = { level = 35, int = 116, },
 }
 itemBases["符文法杖"] = {
@@ -71,7 +71,7 @@ itemBases["符文法杖"] = {
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, wand = true, ranged = true, one_hand_weapon = true, },
 	implicit = "法术伤害提高 (22-26)%",
-	weapon = { PhysicalMin = 17, PhysicalMax = 32, CritChanceBase = 7, AttackRateBase = 1.5,Range = 120,  },
+	weapon = { PhysicalMin = 17, PhysicalMax = 32, CritChanceBase = 7, AttackRateBase = 1.5, Range = 120, },
 	req = { level = 40, int = 131, },
 }
 itemBases["水晶法杖"] = {
@@ -103,7 +103,7 @@ itemBases["异徒法杖"] = {
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, wand = true, ranged = true, one_hand_weapon = true, not_for_sale = true, maraketh = true, },
 	implicit = "施法速度提高 10%",
-	weapon = { PhysicalMin = 26, PhysicalMax = 48, CritChanceBase = 7, AttackRateBase = 1.35,Range = 120,  },
+	weapon = { PhysicalMin = 26, PhysicalMax = 48, CritChanceBase = 7, AttackRateBase = 1.35, Range = 120, },
 	req = { level = 55, int = 184, },
 }
 itemBases["魔角法杖"] = {
@@ -135,7 +135,7 @@ itemBases["狂风法杖"] = {
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, wand = true, ranged = true, one_hand_weapon = true, },
 	implicit = "法术伤害提高 (35-39)%",
-	weapon = { PhysicalMin = 21, PhysicalMax = 62, CritChanceBase = 7, AttackRateBase = 1.3,Range = 120,  },
+	weapon = { PhysicalMin = 21, PhysicalMax = 62, CritChanceBase = 7, AttackRateBase = 1.3, Range = 120, },
 	req = { level = 65, int = 212, },
 }
 itemBases["箴言法杖"] = {
@@ -151,6 +151,6 @@ itemBases["亵渎法杖"] = {
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, wand = true, ranged = true, one_hand_weapon = true, not_for_sale = true, maraketh = true, },
 	implicit = "施法速度提高 14%",
-	weapon = { PhysicalMin = 27, PhysicalMax = 51, CritChanceBase = 7, AttackRateBase = 1.35,Range = 120,  },
+	weapon = { PhysicalMin = 27, PhysicalMax = 51, CritChanceBase = 7, AttackRateBase = 1.35, Range = 120, },
 	req = { level = 70, int = 237, },
 }

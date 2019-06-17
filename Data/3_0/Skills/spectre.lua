@@ -10,7 +10,7 @@ skills["AxisDoubleStrikeTrigger"] = {
 	name = "双重打击",
 	hidden = true,
 	color = 2,
-	description = "使用你的近战武器对目标进行两次快速的攻击.",
+	description = "使用近战武器发动两次快速打击。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -91,7 +91,7 @@ skills["BeastCleave"] = {
 name = "横扫",
 	hidden = true,
 	color = 1,
-	description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 并同时对多名敌人造成伤害. 限定斧与剑.",
+	description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 对前方区域的怪物造成伤害。限定斧类与剑类。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Type53] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["Two Handed Axe"] = true,
@@ -218,7 +218,7 @@ skills["BreachCleave"] = {
 	name = "劈砍",
 	hidden = true,
 	color = 1,
-	description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 并同时对多名敌人造成伤害. 限定斧与剑.",
+	description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 对前方区域的怪物造成伤害。限定斧类与剑类。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Type53] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["Two Handed Axe"] = true,
@@ -808,7 +808,7 @@ name = "熔岩之核",
 	color = 3,
 	baseEffectiveness = 2.7778000831604,
 	incrementalEffectiveness = 0.035999998450279,
-	description = "抛投出撞击地面时会爆炸的岩浆球. 技能可以连锁, 当岩浆球爆炸时释放出另一个岩浆球. ",
+	description = "抛投出岩浆球，击中地面会爆炸。技能可以连锁弹射。当岩浆球爆炸时释放出另一个岩浆球.。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Chaining] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.7,
@@ -967,7 +967,7 @@ skills["HalfSkeletonPuncture"] = {
 name = "放血",
 	hidden = true,
 	color = 2,
-	description = "对目标进行一个放血攻击, 对其造成一个流血的减益效果. 该减益受到技能持续时间词缀的影响. 流血中的目标在移动时会受到更多的伤害. 限定弓, 匕首, 爪与剑.",
+	description = "对敌人放血，施加一个流血减益效果。该效果受技能持续时间属性影响。流血的敌人在移动时会受到更多的伤害。限定弓类，匕首，爪类与剑类。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.DamageOverTime] = true, [SkillType.Triggerable] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["Bow"] = true,
@@ -1264,7 +1264,7 @@ skills["KaomWarriorMoltenStrike"] = {
 name = "熔岩之击",
 	hidden = true,
 	color = 1,
-	description = "对目标造成物理及火焰伤害, 并在挥击的途中从武器弹射出熔岩球. 这些熔岩球在着地时会爆炸, 并对附近的敌人造成伤害.",
+	description = "对敌人造成物理及火焰伤害，并从击中的敌人身上发射出熔岩球，射向该攻击击中的所有敌人。这些熔岩球会爆炸，着地时对敌人造成范围伤害。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.FireSkill] = true, [SkillType.ProjectileAttack] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -1344,7 +1344,7 @@ skills["KitavaDemonCleave"] = {
 	name = "劈砍",
 	hidden = true,
 	color = 1,
-	description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 并同时对多名敌人造成伤害. 限定斧与剑.",
+	description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 对前方区域的怪物造成伤害。限定斧类与剑类。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Type53] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["Two Handed Axe"] = true,
@@ -1881,7 +1881,7 @@ skills["MonsterFlickerStrike"] = {
 name = "闪现打击",
 	hidden = true,
 	color = 4,
-	description = "传送至目标怪物身边并用近战武器对其造成伤害. 若是未指定目标, 则系统会为其随机指定一只怪物. 释放一颗狂怒球能重置其技能冷却.",
+	description = "传送至目标怪物身边并用近战武器对其造成伤害。若是未选定目标，则系统会为其随机指定一只怪物。获得一个增益效果，使移动速度提高一段时间。消耗一个狂怒球能重置其技能冷却。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.MovementSkill] = true, [SkillType.Duration] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -2280,7 +2280,7 @@ skills["MonsterPuncture"] = {
 name = "放血",
 	hidden = true,
 	color = 2,
-	description = "对目标进行一个放血攻击, 对其造成一个流血的减益效果. 该减益受到技能持续时间词缀的影响. 流血中的目标在移动时会受到更多的伤害. 限定弓, 匕首, 爪与剑.",
+	description = "对敌人放血，施加一个流血减益效果。该效果受技能持续时间属性影响。流血的敌人在移动时会受到更多的伤害。限定弓类，匕首，爪类与剑类。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.DamageOverTime] = true, [SkillType.Triggerable] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["Bow"] = true,
@@ -2484,11 +2484,11 @@ name = "督军印记",
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
 	statMap = {
-		["life_leech_on_any_damage_when_hit_by_attack_permyriad"] = {
-			mod("SelfDamageLifeLeech", "BASE", nil, ModFlag.Attack, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		["life_leech_on_any_damage_when_hit_permyriad"] = {
+			mod("SelfDamageLifeLeech", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
 		},
-		["mana_leech_on_any_damage_when_hit_by_attack_permyriad"] = {
-			mod("SelfDamageManaLeech", "BASE", nil, ModFlag.Attack, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		["mana_leech_on_any_damage_when_hit_permyriad"] = {
+			mod("SelfDamageManaLeech", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
 		},
 		["base_stun_recovery_+%"] = {
 			mod("StunRecovery", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
@@ -2524,7 +2524,7 @@ skills["MotherOfFlamesMagmaOrb3"] = {
 	color = 3,
 	baseEffectiveness = 2.7778000831604,
 	incrementalEffectiveness = 0.035500001162291,
-	description = "抛投出撞击地面时会爆炸的岩浆球. 技能可以连锁, 当岩浆球爆炸时释放出另一个岩浆球. ",
+	description = "抛投出岩浆球，击中地面会爆炸。技能可以连锁弹射。当岩浆球爆炸时释放出另一个岩浆球.。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Chaining] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.7,
@@ -3545,7 +3545,7 @@ skills["WickerManMoltenStrike"] = {
 	name = "熔岩之击",
 	hidden = true,
 	color = 1,
-	description = "对目标造成物理及火焰伤害, 并在挥击的途中从武器弹射出熔岩球. 这些熔岩球在着地时会爆炸, 并对附近的敌人造成伤害.",
+	description = "对敌人造成物理及火焰伤害，并从击中的敌人身上发射出熔岩球，射向该攻击击中的所有敌人。这些熔岩球会爆炸，着地时对敌人造成范围伤害。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.FireSkill] = true, [SkillType.ProjectileAttack] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -3586,7 +3586,7 @@ skills["VaalincursionMortar"] = {
 name = "物理炮击",
 	hidden = true,
 	color = 4,
-	baseEffectiveness =  1.9550000429153,
+	baseEffectiveness = 1.9550000429153,
 	incrementalEffectiveness = 0.035000000149012,
 	description = "通用的怪物炮击技能. 与怪物投射物相似, 但带有冲击效果.",
 	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, },
@@ -3616,7 +3616,6 @@ name = "物理炮击",
 	statInterpolation = { 1, 3, 3, 1, 1, 1, 1, },
 	levels = {
 		[1] = { 10, 0.80000001192093, 1.2000000476837, 0, -40, 5, 10, levelRequirement = 1, },
-		
 	},
 }
 skills["VaalIncursionFirestorm"] = {
@@ -3680,8 +3679,6 @@ name = "物理光柱",
 		[1] = { 0.80000001192093, 1.2000000476837, cooldown = 8, levelRequirement = 83, },
 	},
 }
-
-
 skills["OrbOfStormsGoatmanShamanChampion"] = {
 	name = "风暴漩涡",
 	hidden = true,
@@ -3717,68 +3714,67 @@ skills["OrbOfStormsGoatmanShamanChampion"] = {
 }
 
 
-
 skills["WraithEtherealKnives"] = {
-	name = "虚空匕首",
-	hidden = true,
-	color = 2,
-	baseEffectiveness = 1.7000000476837,
-	incrementalEffectiveness = 0.037999998778105,
-	description = "向前依弧形射出数支匕首, 对敌人造成物理伤害.",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.CanRapidFire] = true, },
-	statDescriptionScope = "skill_stat_descriptions",
-	castTime = 0.6,
-	baseFlags = {
-		spell = true,
-		projectile = true,
-	},
-	baseMods = {
-	},
-	qualityStats = {
-	},
-	stats = {
-		"spell_minimum_base_physical_damage",
-		"spell_maximum_base_physical_damage",
-		"number_of_additional_projectiles",
-		"base_cast_speed_+%",
-		"monster_penalty_against_minions_damage_+%_final_vs_player_minions",
-		"active_skill_damage_+%_final",
-		"base_is_projectile",
-	},
-	statInterpolation = { 3, 3, 1, 1, 1, 1, },
-	levels = {
-		[1] = { 0.80000001192093, 1.2000000476837, 9, -25, 0, -15, critChance = 5, levelRequirement = 51, },
-		[2] = { 0.80000001192093, 1.2000000476837, 9, -25, -25, -60, critChance = 5, levelRequirement = 68, },
-		[3] = { 0.80000001192093, 1.2000000476837, 9, -25, -25, -75, critChance = 5, levelRequirement = 82, },
-	},
+    name = "虚空匕首",
+    hidden = true,
+    color = 2,
+    baseEffectiveness = 1.7000000476837,
+    incrementalEffectiveness = 0.037999998778105,
+    description = "向前依弧形射出数支匕首, 对敌人造成物理伤害.",
+    skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.CanRapidFire] = true, },
+    statDescriptionScope = "skill_stat_descriptions",
+    castTime = 0.6,
+    baseFlags = {
+        spell = true,
+        projectile = true,
+    },
+    baseMods = {
+    },
+    qualityStats = {
+    },
+    stats = {
+        "spell_minimum_base_physical_damage",
+        "spell_maximum_base_physical_damage",
+        "number_of_additional_projectiles",
+        "base_cast_speed_+%",
+        "monster_penalty_against_minions_damage_+%_final_vs_player_minions",
+        "active_skill_damage_+%_final",
+        "base_is_projectile",
+    },
+    statInterpolation = { 3, 3, 1, 1, 1, 1, },
+    levels = {
+        [1] = { 0.80000001192093, 1.2000000476837, 9, -25, 0, -15, critChance = 5, levelRequirement = 51, },
+        [2] = { 0.80000001192093, 1.2000000476837, 9, -25, -25, -60, critChance = 5, levelRequirement = 68, },
+        [3] = { 0.80000001192093, 1.2000000476837, 9, -25, -25, -75, critChance = 5, levelRequirement = 82, },
+    },
 }
 skills["DelveWraithScreechChaos"] = {
-	name = "混沌尖叫",
-	hidden = true,
-	color = 4,
-	baseEffectiveness = 1.7999999523163,
-	incrementalEffectiveness = 0.029999999329448,
-	skillTypes = { [SkillType.Spell] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.Hit] = true,},
-	statDescriptionScope = "skill_stat_descriptions",
-	castTime = 1.5,
-	baseFlags = {
-		spell = true,
-		area=true,
-		duration=true
-		 
-	},
-	baseMods = {
-	
-	},
-	qualityStats = {
-	},
-	stats = {
-		"spell_minimum_base_chaos_damage",
-		"spell_maximum_base_chaos_damage",
-		"is_area_damage",
-	},
-	statInterpolation = { 3, 3, },
-	levels = {
-		[1] = { 0.80000001192093, 1.2000000476837, levelRequirement = 1, },
-	},
+    name = "混沌尖叫",
+    hidden = true,
+    color = 4,
+    baseEffectiveness = 1.7999999523163,
+    incrementalEffectiveness = 0.029999999329448,
+    skillTypes = { [SkillType.Spell] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.Hit] = true,},
+    statDescriptionScope = "skill_stat_descriptions",
+    castTime = 1.5,
+    baseFlags = {
+        spell = true,
+        area=true,
+        duration=true
+         
+    },
+    baseMods = {
+    
+    },
+    qualityStats = {
+    },
+    stats = {
+        "spell_minimum_base_chaos_damage",
+        "spell_maximum_base_chaos_damage",
+        "is_area_damage",
+    },
+    statInterpolation = { 3, 3, },
+    levels = {
+        [1] = { 0.80000001192093, 1.2000000476837, levelRequirement = 1, },
+    },
 }

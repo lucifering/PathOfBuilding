@@ -146,7 +146,7 @@ local function doActorAttribsPoolsConditions(env, actor)
 			condList["DetonatedMinesRecently"] = true
 		end
 	end
-
+--计算 属性
 	-- Calculate attributes
 	for _, stat in pairs({"Str","Dex","Int"}) do
 		output[stat] = m_max(round(calcLib.val(modDB, stat)), 0)
@@ -154,12 +154,21 @@ local function doActorAttribsPoolsConditions(env, actor)
 			breakdown[stat] = breakdown.simple(nil, nil, output[stat], stat)
 		end
 	end
-
+--计算大于小于
 	output.LowestAttribute = m_min(output.Str, output.Dex, output.Int)
 	condList["DexHigherThanInt"] = output.Dex > output.Int
-	condList["StrHigherThanDex"] = output.Str > output.Dex
+	condList["DexHigherThanStr"] = output.Dex > output.Str	
 	condList["IntHigherThanStr"] = output.Int > output.Str
-
+	condList["IntHigherThanDex"] = output.Int > output.Dex	
+	condList["StrHigherThanDex"] = output.Str > output.Dex
+	condList["StrHigherThanInt"] = output.Str > output.Int
+--大于小于之后重新计算属性（如：力量高于智慧时，敏捷提高 15%）
+	for _, stat in pairs({"Str","Dex","Int"}) do
+		output[stat] = m_max(round(calcLib.val(modDB, stat)), 0)
+		if breakdown then
+			breakdown[stat] = breakdown.simple(nil, nil, output[stat], stat)
+		end
+	end
 	-- Add attribute bonuses
 	if not modDB:Flag(nil, "NoStrBonusToLife") then
 modDB:NewMod("Life", "BASE", m_floor(output.Str / 2), "力量")

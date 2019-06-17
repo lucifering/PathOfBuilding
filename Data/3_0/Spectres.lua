@@ -31,6 +31,7 @@ minions["Metadata/Monsters/Axis/AxisCaster"] = {
 	modList = {
 		-- MonsterCastsSparkText
 		-- MonsterCastsLightningThornsText
+		-- MonsterSpellBlock25Bypass30___
 	},
 }
 minions["Metadata/Monsters/Axis/AxisCasterArc"] = {
@@ -57,6 +58,7 @@ minions["Metadata/Monsters/Axis/AxisCasterArc"] = {
 	modList = {
 		-- MonsterCastsArcText
 		-- MonsterCastsLightningThornsText
+		-- MonsterSpellBlock25Bypass30___
 	},
 }
 minions["Metadata/Monsters/Axis/AxisEliteSoldier3Champion"] = {
@@ -483,6 +485,7 @@ minions["Metadata/Monsters/Goatman/GoatmanShamanFireball"] = {
 	skillList = {
 		"MonsterFireball",
 		"GoatmanMoltenShell",
+		"Melee",
 	},
 	modList = {
 		-- MonsterSpeedAndDamageFixupSmall
@@ -667,12 +670,13 @@ minions["Metadata/Monsters/DemonModular/DemonModularFire"] = {
 	damage = 1,
 	damageSpread = 0.2,
 	attackTime = 1.5,
-	attackRange = 6,
+	attackRange = 9,
 	accuracy = 1,
 	skillList = {
 		"Melee",
 		"MonsterRighteousFire",
 		"MonsterRighteousFireWhileSpectred",
+		"ModularDemonFireSuicideExplosion",
 	},
 	modList = {
 		-- MonsterCastsUnholyFireText
@@ -788,6 +792,7 @@ minions["Metadata/Monsters/GhostPirates/GhostPirateBlackFlickerStrikeMaps"] = {
 	modList = {
 		mod("PhysicalDamageGainAsLightning", "BASE", 100), -- MonsterPhysicalAddedAsLightningSkeletonMaps
 		-- MonsterUsesFlickerStrikeText
+		-- MonsterAttackSpellBlock20Bypass40
 	},
 }
 minions["Metadata/Monsters/GhostPirates/GhostPirateGreenBladeVortex"] = {
@@ -812,6 +817,7 @@ minions["Metadata/Monsters/GhostPirates/GhostPirateGreenBladeVortex"] = {
 	},
 	modList = {
 		mod("PhysicalDamageConvertToLightning", "BASE", 50), -- MonsterElementalSkeletonLightning
+		-- MonsterAttackSpellBlock20Bypass40
 	},
 }
 -- Undying grappler
@@ -2356,7 +2362,6 @@ minions["Metadata/Monsters/WickerMan/WickerMan"] = {
 }
 
 
-
 minions["Metadata/Monsters/Goatman/GoatmanShamanLightningChampion"] = {
 	name = "羊人唤空者",
 	life = 1.4,
@@ -2368,7 +2373,7 @@ minions["Metadata/Monsters/Goatman/GoatmanShamanLightningChampion"] = {
 	damage = 1,
 	damageSpread = 0.2,
 	attackTime = 1.5,
-	attackRange = 6,
+	attackRange = 8,
 	accuracy = 1,
 	damageFixup = 0.11,
 	weaponType1 = "Staff",
@@ -2385,8 +2390,7 @@ minions["Metadata/Monsters/Goatman/GoatmanShamanLightningChampion"] = {
 		-- MonsterCastsSparkText
 	},
 }
-
-
+--Ancient Wraith
 minions["Metadata/Monsters/LeagueDelve/GhostEncounter/Wraith"] = {
 	name = "远古恶灵",
 	life = 1.68,
@@ -2398,7 +2402,7 @@ minions["Metadata/Monsters/LeagueDelve/GhostEncounter/Wraith"] = {
 	damage = 1.2,
 	damageSpread = 0.2,
 	attackTime = 1.755,
-	attackRange = 4,
+	attackRange = 6,
 	accuracy = 1,
 	skillList = {
 		"WraithEtherealKnives",
@@ -2422,15 +2426,67 @@ minions["Metadata/Monsters/LeagueDelve/GhostEncounter/WraithPurple"] = {
 	damage = 1.2,
 	damageSpread = 0.2,
 	attackTime = 1.755,
-	attackRange = 4,
+	attackRange = 6,
 	accuracy = 1,
 	skillList = {
-		"DelveWraithScreechChaos"
-		 
+		"DelveWraithScreechChaos",
 	},
 	modList = {
 		-- MonsterDelveLargeDropModifiers_
 		-- MonsterChanceToTemporalChainsOnHit1
 		-- AdditionalCurseOnEnemies_
+	},
+}
+
+
+
+--Crazed Driver
+minions["Metadata/Monsters/TemplarSlaveDriver/TemplarSlaveDriverKitava"] = {
+	name = "疯狂驱刑者",
+	life = 1,
+	armour = 0.25,
+	fireResist = 0,
+	coldResist = 40,
+	lightningResist = 0,
+	chaosResist = 0,
+	damage = 1,
+	damageSpread = 0.2,
+	attackTime = 1.845,
+	attackRange = 8,
+	accuracy = 1,
+	weaponType1 = "One Handed Mace",
+	weaponType2 = "One Handed Mace",
+	skillList = {
+		"SlaverTaunt",
+		"Melee",
+		"KitavaSlavedriverFlameWhip",
+	},
+	modList = {
+		-- MonsterImplicitFastRun4
+	},
+}
+--Slave Driver
+minions["Metadata/Monsters/TemplarSlaveDriver/TemplarSlaveDriver"] = {
+	name = "驱刑者",
+	life = 1,
+	armour = 0.25,
+	fireResist = 0,
+	coldResist = 40,
+	lightningResist = 0,
+	chaosResist = 0,
+	damage = 1,
+	damageSpread = 0.2,
+	attackTime = 1.845,
+	attackRange = 8,
+	accuracy = 1,
+	weaponType1 = "One Handed Mace",
+	weaponType2 = "One Handed Mace",
+	skillList = {
+		"SlaverTaunt",
+		"Melee",
+		"SlavedriverFlameWhip",
+	},
+	modList = {
+		-- MonsterImplicitFastRun4
 	},
 }

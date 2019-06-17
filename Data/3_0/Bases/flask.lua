@@ -233,7 +233,7 @@ itemBases["蓝玉药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, },
-	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "承受的冰霜总伤害降低 20%", "+50% 冰霜抗性" }, },
+	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "+50% 冰霜抗性", "承受的冰霜总伤害降低 20%" }, },
 	req = { level = 18, },
 }
 itemBases["黄玉药剂"] = {
@@ -268,7 +268,7 @@ itemBases["石英药剂"] = {
 	type = "Flask",
 	subType = "Utility",
 	tags = { default = true, flask = true, utility_flask = true, not_for_sale = true, },
-	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "【迷踪】状态", "10% 几率躲避攻击击中", "10% 几率躲避法术击中" }, },
+	flask = { duration = 4, chargesUsed = 30, chargesMax = 60, buff = { "10% 几率躲避攻击击中", "10% 几率躲避法术击中", "【迷踪】状态" }, },
 	req = { level = 27, },
 }
 itemBases["翠玉药剂"] = {

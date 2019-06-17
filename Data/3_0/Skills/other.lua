@@ -33,7 +33,7 @@ name = "默认攻击",
 	},
 }
 skills["MeleeUseContactPoint"] = {
-	name = "默认攻击",
+name = "默认攻击",
 	hidden = true,
 	color = 4,
 	description = "对你的敌人无情痛击.",
@@ -274,40 +274,6 @@ name = "高阶齐射",
 	statInterpolation = { 1, 1, 1, 1, },
 	levels = {
 		[20] = { 4, 80, 4, -26, manaMultiplier = 40, levelRequirement = 70, },
-	},
-}
-
-skills["SupportGreaterSpellEcho"] = {
-	name = "高等施法回响",
-	hidden = true,
-	color = 3,
-	support = true,
-	fromItem = true,
-	requireSkillTypes = { SkillType.SpellCanRepeat, },
-	addSkillTypes = { },
-	excludeSkillTypes = { SkillType.Totem, SkillType.Trap, SkillType.Mine, SkillType.Triggered, SkillType.ManaCostReserved, SkillType.Vaal, SkillType.Instant, },
-	statDescriptionScope = "gem_stat_descriptions",
-	 statMap = {
-		["support_greater_spell_echo_spell_damage_+%_final_per_repeat"] = {
-			mod("Damage", "MORE", nil, ModFlag.Spell, 0, { type = "Multiplier", var = "spellEchoCount" }),
-		},
-		["support_greater_spell_echo_area_of_effect_+%_per_repeat"] = {
-			mod("AreaOfEffect", "MORE", nil, 0, 0, { type = "Multiplier", var = "spellEchoCount" }),
-		},
-	},
-	baseMods = {
-	},
-	qualityStats = {
-		{ "base_cast_speed_+%", 0.5 },
-	},
-	stats = {
-		"base_spell_repeat_count",
-		"support_greater_spell_echo_spell_damage_+%_final_per_repeat",
-		"support_greater_spell_echo_area_of_effect_+%_per_repeat",
-	},
-	statInterpolation = { 1, 1, 1, },
-	levels = {
-		[30] = { 2, 35, 50, levelRequirement = 90, duration = 0.001, manaMultiplier = 50, },
 	},
 }
 skills["RepeatingShockwave"] = {
@@ -817,7 +783,7 @@ skills["ElementalAegis"] = {
 	},
 }
 skills["SupportElementalPenetration"] = {
-	name = "元素穿透",
+name = "元素穿透",
 	hidden = true,
 	color = 3,
 	support = true,
@@ -1320,7 +1286,8 @@ skills["TriggeredMoltenStrike"] = {
 	levels = {
 		[16] = { 2, 20, cooldown = 0.15, levelRequirement = 1, },
 	},
-} 
+}
+
 skills["TriggeredSummonSpider"] = {
 	name = "召唤毒蛛",
 	hidden = true,
@@ -1883,9 +1850,8 @@ skills["TriggeredSummonGhostOnKill"] = {
 	hidden = true,
 	color = 3,
 	description = "召唤一个幻灵，它会使用穿刺投射物法术，造成物理伤害。",
-		skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.Duration] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.CreatesMinion] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.Duration] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.CreatesMinion] = true, },
 	minionSkillTypes = { [SkillType.Duration] = true, [SkillType.Projectile] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.PhysicalSkill] = true, },
-
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
 	castTime = 1,
 	fromItem = true,
@@ -2066,7 +2032,7 @@ skills["VoidGaze"] = {
 	fromItem = true,
 	statMap = {
 		["base_chaos_damage_resistance_%"] = {
-			mod("ChaosResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff" }),
+			mod("ChaosResist", "BASE", -10, 0, 0, { type = "GlobalEffect", effectType = "Debuff" }),
 		},
 	},
 	baseFlags = {
@@ -2094,32 +2060,32 @@ skills["VoidShot"] = {
 	hidden = true,
 	color = 4,
 	description = "射出一根箭矢并减速飞向目标。箭矢会在飞出后变得不稳定最后爆炸并在范围内造成武器伤害，将一般的物理伤害转化为冰霜伤害。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, },
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.ColdSkill] = true, },
 	weaponTypes = {
 		["Bow"] = true,
 	},
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	parts = {
-		{
-			name = "箭矢",
-			area = false,
-		},
-		{
-			name = "爆炸",
-			area = true,
-		},
+        {
+            name = "箭矢",
+            area = false,
+        },
+        {
+            name = "爆炸",
+            area = true,
+        },
 	},
 	fromItem = true,
 	baseFlags = {
 		attack = true,
 		projectile = true,
-		area = true,		
+		area = true,
+		duration = true,
 	},
 	baseMods = {
-	skill("showAverage", true),
-	 
-	
+	    skill("showAverage", true),
+
 	},
 	qualityStats = {
 	},
@@ -2138,5 +2104,36 @@ skills["VoidShot"] = {
 	},
 }
 
- 
-
+skills["SupportGreaterSpellEcho"] = {
+    name = "高等施法回响",
+    hidden = true,
+    color = 3,
+    support = true,
+    fromItem = true,
+    requireSkillTypes = { SkillType.SpellCanRepeat, },
+    addSkillTypes = { },
+    excludeSkillTypes = { SkillType.Totem, SkillType.Trap, SkillType.Mine, SkillType.Triggered, SkillType.ManaCostReserved, SkillType.Vaal, SkillType.Instant, },
+    statDescriptionScope = "gem_stat_descriptions",
+     statMap = {
+        ["support_greater_spell_echo_spell_damage_+%_final_per_repeat"] = {
+            mod("Damage", "MORE", nil, ModFlag.Spell, 0, { type = "Multiplier", var = "spellEchoCount" }),
+        },
+        ["support_greater_spell_echo_area_of_effect_+%_per_repeat"] = {
+            mod("AreaOfEffect", "MORE", nil, 0, 0, { type = "Multiplier", var = "spellEchoCount" }),
+        },
+    },
+    baseMods = {
+    },
+    qualityStats = {
+        { "base_cast_speed_+%", 0.5 },
+    },
+    stats = {
+        "base_spell_repeat_count",
+        "support_greater_spell_echo_spell_damage_+%_final_per_repeat",
+        "support_greater_spell_echo_area_of_effect_+%_per_repeat",
+    },
+    statInterpolation = { 1, 1, 1, },
+    levels = {
+        [30] = { 2, 35, 50, levelRequirement = 90, duration = 0.001, manaMultiplier = 50, },
+    },
+}

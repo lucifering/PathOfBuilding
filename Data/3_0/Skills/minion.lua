@@ -6,6 +6,8 @@
 --
 local skills, mod, flag, skill = ...
 
+
+
 skills["ChaosElementalCascadeSummoned"] = {
 name = "冰川之刺",
 	hidden = true,
@@ -643,7 +645,7 @@ skills["SummonedSpiderViperStrike"] = {
 	color = 4,
 	baseEffectiveness = 0.64999997615814,
 	incrementalEffectiveness = 0.025499999523163,
-	description = "对敌人进行攻击, 额外造成等同于物理伤害一定比例的混沌伤害, 并使敌人中毒. 限定爪, 匕首与剑.",
+	description = "击中敌人，额外造成等同于部分物理伤害的混沌伤害，并使敌人中毒。该技能受技能持续时间属性影响。限定爪类、匕首与剑类。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Duration] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.DamageOverTime] = true, [SkillType.ChaosSkill] = true, },
 	weaponTypes = {
 		["Claw"] = true,
@@ -811,7 +813,7 @@ skills["HeraldOfAgonyMinionCleave"] = {
 name = "横扫",
 	hidden = true,
 	color = 1,
-	description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 并同时对多名敌人造成伤害. 限定斧与剑.",
+	description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 对前方区域的怪物造成伤害。限定斧类与剑类。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Type53] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["Two Handed Axe"] = true,
@@ -1214,4 +1216,63 @@ name = "腐蚀毒云",
 
 
 
- 
+skills["SlavedriverFlameWhip"] = {
+	name = "闪电鞭笞",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 2.5,
+	incrementalEffectiveness = 0.045000001788139,
+	description = "释放怒焰之力对敌人进行攻击. 燃烧中的敌人将会受到更多伤害.",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.Area] = true, [SkillType.FireSkill] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 0.5,
+	baseFlags = {
+		spell = true,
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_lightning_damage",
+		"spell_maximum_base_lightning_damage",
+		"active_skill_area_of_effect_radius_+%_final",
+		"base_cast_speed_+%",
+		"is_area_damage",
+	},
+	statInterpolation = { 3, 3, 1, 1, },
+	levels = {
+		[1] = { 0.5, 1.5, 50, -65, critChance = 6, levelRequirement = 1, },
+	},
+}
+skills["KitavaSlavedriverFlameWhip"] = {
+	name = "物理鞭笞",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 2.2000000476837,
+	incrementalEffectiveness = 0.027499999850988,
+	description = "释放怒焰之力对敌人进行攻击. 燃烧中的敌人将会受到更多伤害.",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.Area] = true, [SkillType.FireSkill] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 0.5,
+	baseFlags = {
+		spell = true,
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_physical_damage",
+		"spell_maximum_base_physical_damage",
+		"active_skill_area_of_effect_radius_+%_final",
+		"base_cast_speed_+%",
+		"is_area_damage",
+	},
+	statInterpolation = { 3, 3, 1, 1, },
+	levels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 50, -65, critChance = 6, levelRequirement = 1, },
+	},
+}

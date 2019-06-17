@@ -7,8 +7,8 @@
 local skills, mod, flag, skill = ...
 
 skills["SupportAddedColdDamage"] = {
-name = "附加冰霜伤害(辅)",
-description = "辅助任意击中敌人的技能",
+	name = "附加冰霜伤害(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 2,
 	baseEffectiveness = 0.57270002365112,
 	incrementalEffectiveness = 0.03770000115037,
@@ -71,8 +71,8 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["SupportAdditionalAccuracy"] = {
-name = "额外命中(辅)",
-description = "辅助攻击技能",
+	name = "额外命中(辅)",
+	description = "辅助攻击技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, SkillType.Type56, },
@@ -132,8 +132,8 @@ description = "辅助攻击技能",
 	},
 }
 skills["SupportBlind"] = {
-name = "致盲(辅)",
-description = "辅助任意击中敌人的技能",
+	name = "致盲(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -194,8 +194,8 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["SupportBlockReduction"] = {
-name = "减少格挡几率(辅)",
-description = "辅助任意击中敌人的技能",
+	name = "减少格挡几率(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -258,8 +258,8 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["SupportCastOnCrit"] = {
-name = "暴击时施放(辅)",
-description = "必须同时连接一个攻击技能和一个法术技能才能生效. 法术技能会在攻击技能暴击敌人时施放. 无法辅助图腾, 陷阱或地雷. 瓦尔技能、持续吟唱类技能和魔力保留类技能无法被触发施放",
+	name = "暴击时施放(辅)",
+	description = "必须同时连接一个攻击技能和一个法术技能才能生效. 法术技能会在攻击技能暴击敌人时施放. 无法辅助图腾, 陷阱或地雷. 瓦尔技能、持续吟唱类技能和魔力保留类技能无法被触发施放",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, },
@@ -320,8 +320,8 @@ description = "必须同时连接一个攻击技能和一个法术技能才能�
 	},
 }
 skills["SupportCastOnCritTriggered"] = {
-name = "暴击时施放(辅)",
-description = "必须同时连接一个攻击技能和一个法术技能才能生效. 法术技能会在攻击技能暴击敌人时施放. 无法辅助图腾, 陷阱或地雷. 瓦尔技能、持续吟唱类技能和魔力保留类技能无法被触发施放",
+	name = "暴击时施放(辅)",
+	description = "必须同时连接一个攻击技能和一个法术技能才能生效. 法术技能会在攻击技能暴击敌人时施放. 无法辅助图腾, 陷阱或地雷. 瓦尔技能、持续吟唱类技能和魔力保留类技能无法被触发施放",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Spell, SkillType.Triggerable, SkillType.AND, },
@@ -391,8 +391,8 @@ description = "必须同时连接一个攻击技能和一个法术技能才能�
 	},
 }
 skills["SupportCastOnDeath"] = {
-name = "死亡时施放(辅)",
-description = "所有被辅助的法术技能会在你被击败时施放. 无法辅助图腾, 陷阱或地雷所施放的技能. 瓦尔技能、持续吟唱类技能或魔力保留类技能无法被触发施放",
+	name = "死亡时施放(辅)",
+	description = "所有被辅助的法术技能会在你被击败时施放. 无法辅助图腾, 陷阱或地雷所施放的技能. 瓦尔技能、持续吟唱类技能或魔力保留类技能无法被触发施放",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Spell, SkillType.Triggerable, SkillType.AND, },
@@ -464,8 +464,8 @@ description = "所有被辅助的法术技能会在你被击败时施放. 无法
 	},
 }
 skills["SupportChain"] = {
-name = "连锁(辅)",
-description = "辅助投射物和其他任意能连锁的技能",
+	name = "连锁(辅)",
+	description = "辅助投射物和其他任意能连锁的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Chaining, SkillType.Projectile, SkillType.Type54, SkillType.Type56, },
@@ -531,8 +531,8 @@ description = "辅助投射物和其他任意能连锁的技能",
 	},
 }
 skills["SupportChanceToFlee"] = {
-name = "几率逃跑(辅)",
-description = "辅助任意击中敌人的技能",
+	name = "几率逃跑(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, SkillType.Hit, },
@@ -592,8 +592,8 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["SupportGemFrenzyPowerOnTrapTrigger"] = {
-name = "充能陷阱辅助宝石",
-description = "辅助陷阱技能",
+	name = "充能陷阱辅助宝石",
+	description = "可投掷陷阱的技能。",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Trap, },
@@ -656,8 +656,8 @@ description = "辅助陷阱技能",
 	},
 }
 skills["SupportSlashingWeapon"] = {
-	name = "贴身战斗",
-	description = "辅助近战攻击技能。不能辅助创造召唤物的技能。",
+	name = "近战辅助",
+	description = "辅助近战攻击技能。无法辅助召唤生物的技能。",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Melee, },
@@ -722,8 +722,8 @@ skills["SupportSlashingWeapon"] = {
 	},
 }
 skills["SupportClusterTrap"] = {
-name = "散弹陷阱(辅)",
-description = "辅助陷阱技能, 使该技能在目标周围随机扔出额外陷阱",
+	name = "散弹陷阱(辅)",
+	description = "辅助陷阱技能, 使该技能在目标周围随机扔出额外陷阱",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Trap, },
@@ -791,8 +791,8 @@ description = "辅助陷阱技能, 使该技能在目标周围随机扔出额外
 	},
 }
 skills["SupportColdPenetration"] = {
-name = "冰霜穿透(辅)",
-description = "辅助任意击中敌人的技能, 使击中能穿透敌人的冰霜抗性",
+	name = "冰霜穿透(辅)",
+	description = "辅助任意击中敌人的技能, 使击中能穿透敌人的冰霜抗性",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -852,8 +852,8 @@ description = "辅助任意击中敌人的技能, 使击中能穿透敌人的冰
 	},
 }
 skills["SupportCullingStrike"] = {
-name = "终结(辅)",
-description = "辅助任意击中敌人的技能, 如果敌人在被击中后小于 10% 最大生命值则会被立即击败",
+	name = "终结(辅)",
+	description = "辅助任意击中敌人的技能, 如果敌人在被击中后小于 10% 最大生命值则会被立即击败",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -917,8 +917,8 @@ description = "辅助任意击中敌人的技能, 如果敌人在被击中后小
 	},
 }
 skills["SupportDeadlyAilments"] = {
-name = "致命异常状态(辅)",
-description = "辅助任意击中敌人的技能",
+	name = "致命异常状态(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -987,8 +987,8 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["SupportAdditionalQuality"] = {
-name = "增幅(辅)",
-description = "辅助任意技能. 当该宝石达到 2 级或以上时, 提升被辅助技能的品质. 无法辅助非技能宝石带来的技能",
+	name = "增幅(辅)",
+	description = "辅助任意技能. 当该宝石达到 2 级或以上时, 提升被辅助技能的品质. 无法辅助非技能宝石带来的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { },
@@ -1024,8 +1024,8 @@ description = "辅助任意技能. 当该宝石达到 2 级或以上时, 提升�
 	},
 }
 skills["SupportFasterAttack"] = {
-name = "快速攻击(辅)",
-description = "辅助攻击技能",
+	name = "快速攻击(辅)",
+	description = "辅助攻击技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, SkillType.Type56, },
@@ -1085,8 +1085,8 @@ description = "辅助攻击技能",
 	},
 }
 skills["SupportFasterProjectiles"] = {
-name = "快速投射(辅)",
-description = "辅助投射物技能",
+	name = "快速投射(辅)",
+	description = "辅助投射物技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Projectile, SkillType.ProjectileDamage, SkillType.Type54, SkillType.Type56, },
@@ -1148,8 +1148,8 @@ description = "辅助投射物技能",
 	},
 }
 skills["SupportFork"] = {
-name = "分裂(辅)",
-description = "辅助投射物技能, 使该技能的投射物在首次击中敌人时不再穿透并分裂成 2 个",
+	name = "分裂(辅)",
+	description = "辅助投射物技能, 使该技能的投射物在首次击中敌人时不再穿透并分裂成 2 个",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Projectile, SkillType.Type54, SkillType.Type56, },
@@ -1215,8 +1215,8 @@ description = "辅助投射物技能, 使该技能的投射物在首次击中敌
 	},
 }
 skills["SupportGreaterMultipleProjectiles"] = {
-name = "高阶多重投射(辅)",
-description = "辅助投射物技能",
+	name = "高阶多重投射(辅)",
+	description = "辅助投射物技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Projectile, SkillType.Type54, SkillType.Type56, SkillType.Type73, },
@@ -1284,8 +1284,8 @@ description = "辅助投射物技能",
 	},
 }
 skills["SupportDamageAgainstChilled"] = {
-name = "急冻(辅)",
-description = "辅助任意造成伤害的技能",
+	name = "急冻(辅)",
+	description = "辅助任意造成伤害的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.DamageOverTime, },
@@ -1356,8 +1356,8 @@ description = "辅助任意造成伤害的技能",
 	},
 }
 skills["SupportImpale"] = {
-	name = "穿刺",
-description = "辅助攻击技能",
+	name = "尖刺战杖",
+	description = "辅助攻击技能。",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, },
@@ -1423,9 +1423,10 @@ description = "辅助攻击技能",
 		[40] = { 40, 80, 26, manaMultiplier = 30, levelRequirement = 100, },
 	},
 }
+
 skills["SupportFrenzyChargeOnSlayingFrozenEnemy"] = {
-name = "霜咬(辅)",
-description = "辅助任意你用来击中敌人的技能. 无法辅助图腾, 陷阱和地雷所施放的技能.",
+	name = "霜咬(辅)",
+	description = "辅助任意你用来击中敌人的技能. 无法辅助图腾, 陷阱和地雷所施放的技能.",
 	color = 2,
 	baseEffectiveness = 0.51819998025894,
 	incrementalEffectiveness = 0.03770000115037,
@@ -1492,8 +1493,8 @@ description = "辅助任意你用来击中敌人的技能. 无法辅助图腾, �
 	},
 }
 skills["SupportLesserMultipleProjectiles"] = {
-name = "低阶多重投射(辅)",
-description = "辅助投射物技能",
+	name = "低阶多重投射(辅)",
+	description = "辅助投射物技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Projectile, SkillType.Type54, SkillType.Type56, SkillType.Type73, },
@@ -1561,8 +1562,8 @@ description = "辅助投射物技能",
 	},
 }
 skills["SupportLesserPoison"] = {
-name = "低阶毒化(辅)",
-description = "辅助任意击中敌人的技能",
+	name = "低阶毒化(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 2,
 	baseEffectiveness = 0.2732999920845,
 	incrementalEffectiveness = 0.03999999910593,
@@ -1626,8 +1627,8 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["SupportManaLeech"] = {
-name = "魔力偷取(辅)",
-description = "辅助任意击中敌人的技能, 击中造成的伤害偷取魔力",
+	name = "魔力偷取(辅)",
+	description = "辅助任意击中敌人的技能, 击中造成的伤害偷取魔力",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -1687,8 +1688,8 @@ description = "辅助任意击中敌人的技能, 击中造成的伤害偷取魔
 	},
 }
 skills["SupportGemMirageArcher"] = {
-name = "幻影射手(辅)",
-description = "能够辅助使用弓的攻击技能。被辅助的技能只能用弓才能生效。无法辅助瓦尔技能，召唤生物技能，移动类技能或图腾，陷阱和地雷使用的技能。",
+	name = "幻影射手(辅)",
+	description = "能够辅助使用弓的攻击技能。被辅助的技能只能用弓才能生效。无法辅助瓦尔技能，召唤生物技能，移动类技能或图腾，陷阱和地雷使用的技能。",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.SkillCanMirageArcher, },
@@ -1755,8 +1756,8 @@ description = "能够辅助使用弓的攻击技能。被辅助的技能只能�
 	},
 }
 skills["SupportMultiTrap"] = {
-name = "多重陷阱(辅)",
-description = "辅助陷阱技能, 使该技能在一条线上扔出额外陷阱",
+	name = "多重陷阱(辅)",
+	description = "辅助陷阱技能, 使该技能在一条线上扔出额外陷阱",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Trap, },
@@ -1823,8 +1824,8 @@ description = "辅助陷阱技能, 使该技能在一条线上扔出额外陷阱
 	},
 }
 skills["SupportOnslaught"] = {
-name = "猛攻(辅)",
-description = "辅助任意击中敌人的技能",
+	name = "猛攻(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -1886,8 +1887,8 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["SupportPierce"] = {
-name = "穿透(辅)",
-description = "辅助投射物技能",
+	name = "穿透(辅)",
+	description = "辅助投射物技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Projectile, SkillType.Type54, SkillType.Type56, },
@@ -1953,8 +1954,8 @@ description = "辅助投射物技能",
 	},
 }
 skills["SupportPointBlank"] = {
-name = "零点射击(辅)",
-description = "辅助投射物技能",
+	name = "零点射击(辅)",
+	description = "辅助投射物技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.ProjectileAttack, SkillType.Type56, },
@@ -2020,8 +2021,8 @@ description = "辅助投射物技能",
 	},
 }
 skills["SupportPoison"] = {
-name = "毒化(辅)",
-description = "辅助任意击中敌人的技能",
+	name = "毒化(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -2087,8 +2088,8 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["SupportRapidDecay"] = {
-name = "极速腐化(辅)",
-description = "辅助任意有持续时间或能通过击中造成异常状态的技能",
+	name = "极速腐化(辅)",
+	description = "辅助任意有持续时间或能通过击中造成异常状态的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Duration, SkillType.Type55, SkillType.Hit, SkillType.Attack, },
@@ -2154,8 +2155,8 @@ description = "辅助任意有持续时间或能通过击中造成异常状态�
 	},
 }
 skills["SupportSlowerProjectiles"] = {
-name = "投射物减速(辅)",
-description = "辅助投射物技能",
+	name = "投射物减速(辅)",
+	description = "辅助投射物技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Projectile, SkillType.ProjectileDamage, SkillType.Type54, SkillType.Type56, },
@@ -2224,8 +2225,8 @@ description = "辅助投射物技能",
 	},
 }
 skills["SupportTrap"] = {
-name = "陷阱(辅)",
-description = "辅助法术技能, 或使用弓箭和法杖的攻击技能. 你将不再直接施放被辅助的技能, 技能会以陷阱的形式被投出，在敌人靠近时触发。陷阱不能触发持续吟唱类技能。",
+	name = "陷阱(辅)",
+	description = "辅助法术技能, 或使用弓箭和法杖的攻击技能. 你将不再直接施放被辅助的技能, 技能会以陷阱的形式被投出，在敌人靠近时触发。陷阱不能触发持续吟唱类技能。",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.SkillCanTrap, },
@@ -2304,8 +2305,8 @@ description = "辅助法术技能, 或使用弓箭和法杖的攻击技能. 你�
 	},
 }
 skills["SupportTrapCooldown"] = {
-name = "陷阱冷却(辅)",
-description = "辅助陷阱技能",
+	name = "陷阱冷却(辅)",
+	description = "辅助陷阱技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Trap, },
@@ -2367,8 +2368,8 @@ description = "辅助陷阱技能",
 	},
 }
 skills["SupportTrapAndMineDamage"] = {
-name = "陷阱及地雷伤害(辅)",
-description = "辅助陷阱或地雷技能",
+	name = "陷阱及地雷伤害(辅)",
+	description = "辅助陷阱或地雷技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Trap, SkillType.Mine, },
@@ -2435,8 +2436,8 @@ description = "辅助陷阱或地雷技能",
 	},
 }
 skills["SupportPhysicalProjectileAttackDamage"] = {
-name = "邪恶投掷(辅)",
-description = "辅助发射投射物的攻击技能",
+	name = "邪恶投掷(辅)",
+	description = "辅助发射投射物的攻击技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.ProjectileAttack, SkillType.Type56, },
@@ -2513,8 +2514,8 @@ description = "辅助发射投射物的攻击技能",
 	},
 }
 skills["SupportDebilitate"] = {
-name = "猛毒(辅)",
-description = "辅助任意击中敌人的技能",
+	name = "猛毒(辅)",
+	description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -2587,8 +2588,8 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["SupportVoidManipulation"] = {
-name = "虚空操纵(辅)",
-description = "辅助任意造成伤害的技能",
+	name = "虚空操纵(辅)",
+	description = "辅助任意造成伤害的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.DamageOverTime, },
@@ -2654,8 +2655,8 @@ description = "辅助任意造成伤害的技能",
 	},
 }
 skills["SupportParallelProjectiles"] = {
-name = "齐射(辅)",
-description = "只能辅助玩家自生产生的投射物。不会影响其他来源或二次产生的投射物。",
+	name = "齐射(辅)",
+	description = "只能辅助玩家自生产生的投射物。不会影响其他来源或二次产生的投射物。",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.SkillCanVolley, },
@@ -2723,8 +2724,8 @@ description = "只能辅助玩家自生产生的投射物。不会影响其他�
 	},
 }
 skills["SupportChaosAttacks"] = {
-name = "凋零之触（辅）",
-description = "辅助攻击技能",
+	name = "凋零之触（辅）",
+	description = "辅助攻击技能。",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, },

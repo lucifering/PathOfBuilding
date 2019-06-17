@@ -165,7 +165,7 @@ itemBases["鹿皮外套"] = {
 	armour = { EvasionBase = 176, MovementPenalty = 3, },
 	req = { level = 17, dex = 53, },
 }
-itemBases["野性皮甲"] = {
+itemBases["狂野部族皮甲"] = {
 	type = "Body Armour",
 	subType = "Evasion",
 	socketLimit = 6,

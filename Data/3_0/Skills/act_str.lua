@@ -7,9 +7,9 @@
 local skills, mod, flag, skill = ...
 
 skills["AbyssalCry"] = {
-name = "深渊战吼",
+	name = "深渊战吼",
 	color = 1,
-description = "施展战吼, 使周围敌人缓速, 并在被击败时爆裂. 缓速效果随着周围敌人数量提升. 嘲讽周围所有敌人, 使他们攻击施放者. 与其他战吼技能共享技能冷却.",
+	description = "施展战吼, 使周围敌人缓速, 并在被击败时爆裂. 缓速效果随着周围敌人数量提升. 嘲讽周围所有敌人, 使他们攻击施放者. 与其他战吼技能共享技能冷却.",
 	skillTypes = { [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.ChaosSkill] = true, [SkillType.Hit] = true, [SkillType.Warcry] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.25,
@@ -82,9 +82,9 @@ description = "施展战吼, 使周围敌人缓速, 并在被击败时爆裂. �
 	},
 }
 skills["TotemMelee"] = {
-name = "先祖卫士",
+	name = "先祖卫士",
 	color = 1,
-description = "召唤一个先祖图腾, 当你在附近时这个图腾将使用武器攻击周围的敌人. 接近图腾时增加你的攻击速度. ",
+	description = "召唤一个先祖图腾, 当你在附近时这个图腾将使用武器攻击周围的敌人. 接近图腾时增加你的攻击速度. ",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Totem] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.Melee] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -177,9 +177,9 @@ description = "召唤一个先祖图腾, 当你在附近时这个图腾将使用
 	},
 }
 skills["AncestorTotemSlam"] = {
-name = "先祖战士长",
+	name = "先祖战士长",
 	color = 1,
-description = "召唤一个当你在附近时会强力攻击的先祖图腾. 靠近时给予你更多近战伤害.",
+	description = "召唤一个当你在附近时会强力攻击的先祖图腾. 靠近时给予你更多近战伤害.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Totem] = true, [SkillType.Melee] = true, [SkillType.Area] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -274,9 +274,9 @@ mod("Damage", "MORE", nil, ModFlag.Melee, 0, { type = "GlobalEffect", effectType
 	},
 }
 skills["VaalAncestralWarchief"] = {
-name = "瓦尔.先祖战士长",
+	name = "瓦尔.先祖战士长",
 	color = 1,
-description = "召唤一个当你在附近时会使用强力连环攻击的先祖图腾。若敌人远离你，该攻击则会跳跃过去，拉近距离。靠近它可以使你的近战总伤害提高。",
+	description = "召唤一个当你在附近时会使用强力连环攻击的先祖图腾。若敌人远离你，该攻击则会跳跃过去，拉近距离。靠近它可以使你的近战总伤害提高。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Totem] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.Vaal] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -374,11 +374,11 @@ mod("Damage", "MORE", nil, ModFlag.Melee, 0, { type = "GlobalEffect", effectType
 	},
 }
 skills["Anger"] = {
-name = "愤怒",
+	name = "愤怒",
 	color = 1,
 	baseEffectiveness = 2.25,
 	incrementalEffectiveness = 0.023000000044703,
-description = "施放一个光环, 使你与受光环影响友军在攻击和施放法术时额外附带火焰伤害.",
+	description = "施放一个光环, 使你与受光环影响友军在攻击和施放法术时额外附带火焰伤害.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -460,9 +460,9 @@ description = "施放一个光环, 使你与受光环影响友军在攻击和施
 	},
 }
 skills["AnimateArmour"] = {
-name = "幻化守卫",
+	name = "幻化守卫",
 	color = 1,
-description = "操控一件武器或防具, 使其依附在一个隐形的守卫身上并为你而战. 你可以武器或更多的防具依附在该守卫身上, 但是无法依附未鉴定的物品.",
+	description = "操控一件武器或防具, 使其依附在一个隐形的守卫身上并为你而战. 你可以武器或更多的防具依附在该守卫身上, 但是无法依附未鉴定的物品.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggerable] = true, [SkillType.CreatesMinion] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
@@ -559,10 +559,11 @@ description = "操控一件武器或防具, 使其依附在一个隐形的守卫
 		[40] = { 100, 100, 136, 136, 100, 3, 79, 121, manaCost = 26, levelRequirement = 100, },
 	},
 }
+
 skills["Berserk"] = {
-	name = "狂战",
+	name = "狂怒",
 	color = 1,
-	description = "高速的消耗你的怒火。\n启动时获得更多伤害、攻击速度、移动速度并使你承受更少伤害。",
+	description = "以极快速度消耗怒火，产生一个强力增益效果，提高总攻击伤害、总攻击速度和总移动速度，使受到的总伤害降低。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.Instant] = true, },
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 0,
@@ -647,7 +648,7 @@ skills["Berserk"] = {
 skills["Bladestorm"] = {
 	name = "剑刃风暴",
 	color = 1,
-	description = "进行旋转攻击，制造一个范围效果，根据你的武器伤害和攻击速度持续对其中的敌人造成攻击伤害。\n此范围效果在血姿态是静止的，沙姿态则会向前移动。\n限定剑和斧。预设血姿态。",
+	description = "发动一次旋转攻击，对你周围的敌人反复造成伤害，并基于你的姿态创造剑刃风暴。剑刃风暴对敌人造成的伤害基于你的武器伤害和攻击速度，并持续一段时间。血姿态下的剑刃风暴静止不动，沙姿态下的剑刃风暴会缓慢向前移动。需要剑类和斧类。默认为血姿态。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.Duration] = true, },
 	weaponTypes = {
 		["Two Handed Axe"] = true,
@@ -744,7 +745,7 @@ mod("MovementSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Bu
 skills["BloodSandStance"] = {
 	name = "血与沙",
 	color = 1,
-	description = "允许你在血姿态和沙姿态间切换。\n血姿态会提供更多近战伤害但减少范围；\n沙姿态提供更大范围但获得更少近战伤害。\n该技能保留一小部分魔力。",
+	description = "施放一个增益效果，基于不同的姿态给近战技能施加不同的加成。再次使用该技能会在血姿态和沙姿态之间切换。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Instant] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
@@ -812,7 +813,7 @@ mod("Damage", "MORE", nil, ModFlag.Area, 0, { type = "GlobalEffect", effectType 
 skills["ChainStrike"] = {
 	name = "钩链攻击",
 	color = 1,
-	description = "使用震波伤害攻击附近敌人。\n若远距离使用，释放锁炼击中敌人时将你拉至敌人身边。\n当你击中敌人时获得1层盛怒。\n限定单手剑、锤和斧。",
+	description = "远程使用时，会投掷一条锁链，将你拉近被击中的敌人，并产生一道震波对一片区域内造成伤害。如果贴近敌人使用，则只会直接产生震波。限定单手锤、单手剑或单手斧。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.MovementSkill] = true, [SkillType.Melee] = true, [SkillType.AttackCanRepeat] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -886,12 +887,13 @@ skills["ChainStrike"] = {
 		[40] = { 5, 1, baseMultiplier = 1.508, manaCost = 8, damageEffectiveness = 1.51, attackSpeedMultiplier = 20, levelRequirement = 100, },
 	},
 }
+
 skills["Cleave"] = {
-name = "劈砍",
+	name = "劈砍",
 	color = 1,
 	baseEffectiveness = 0.6700000166893,
 	incrementalEffectiveness = 0.023299999535084,
-description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 并同时对多名敌人造成伤害. 限定斧与剑.",
+	description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 对前方区域的怪物造成伤害。限定斧类与剑类。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Type53] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["Two Handed Axe"] = true,
@@ -972,9 +974,9 @@ description = "在身体前方以弧状挥动武器（双持时则挥动两把�
 	},
 }
 skills["ConsecratedPath"] = {
-name = "奉献之路",
+	name = "奉献之路",
 	color = 1,
-description = "猛砸目标区域的地面。若有敌人靠近该目标区域，你可以在猛砸地面之前短距离传送至该区域，并额外造成奉献地面。无法被多重打击辅助。需要装备剑、斧、锤、长杖或徒手。",
+	description = "猛砸目标区域的地面。若有敌人靠近该目标区域，你可以在猛砸地面之前短距离传送至该区域，并额外造成奉献地面。无法被多重打击辅助。需要装备剑、斧、锤、长杖或徒手。",
 	skillTypes = { [SkillType.Melee] = true, [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.MovementSkill] = true, [SkillType.Triggerable] = true, [SkillType.Hit] = true, [SkillType.Duration] = true, [SkillType.FireSkill] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -1054,9 +1056,9 @@ description = "猛砸目标区域的地面。若有敌人靠近该目标区域�
 	},
 }
 skills["DecoyTotem"] = {
-name = "诱饵图腾",
+	name = "诱饵图腾",
 	color = 1,
-description = "召唤一个图腾, 它会持续的嘲讽周围的敌人对其进行攻击.",
+	description = "召唤一个图腾, 它会持续的嘲讽周围的敌人对其进行攻击.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Area] = true, [SkillType.Totem] = true, [SkillType.SpellCanRepeat] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	skillTotemId = 6,
@@ -1129,9 +1131,9 @@ description = "召唤一个图腾, 它会持续的嘲讽周围的敌人对其进
 	},
 }
 skills["Determination"] = {
-name = "坚定",
+	name = "坚定",
 	color = 1,
-description = "施放一个光环, 使你与受光环影响友军获得额外的护甲.",
+	description = "施放一个光环, 使你与受光环影响友军获得额外的护甲.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -1201,11 +1203,11 @@ description = "施放一个光环, 使你与受光环影响友军获得额外的
 	},
 }
 skills["DevouringTotem"] = {
-name = "吞噬图腾",
+	name = "吞噬图腾",
 	color = 1,
 	baseEffectiveness = 0.69999998807907,
 	incrementalEffectiveness = 0.029999999329448,
-description = "召唤一个图腾, 它会吞噬附近的灵柩并为你回复生命.",
+	description = "召唤一个图腾, 它会吞噬附近的灵柩并为你回复生命.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Totem] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	skillTotemId = 7,
@@ -1283,9 +1285,9 @@ description = "召唤一个图腾, 它会吞噬附近的灵柩并为你回复生
 	},
 }
 skills["DominatingBlow"] = {
-name = "霸气之击",
+	name = "霸气之击",
 	color = 1,
-description = "凝聚霸气, 对目标造成猛力的一击. 受到霸气灌体, 非传奇的敌人在短时间内死亡时会复活为玩家的仆从以供驱使, 直到霸气散去.",
+	description = "近战攻击敌人，在短期内施加一个减益效果。如果非传奇敌人被该效果击败，则会消耗它的灵枢创造一个统御哨兵，具有相同稀有度、前缀和后缀，并持续一段更长的时间。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Minion] = true, [SkillType.Duration] = true, [SkillType.CreateMinion] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.CreatesMinion] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Area] = true, },
 	weaponTypes = {
@@ -1373,9 +1375,9 @@ description = "凝聚霸气, 对目标造成猛力的一击. 受到霸气灌体,
 	},
 }
 skills["PuresteelBanner"] = {
-name = "恐怖之旗",
+	name = "恐怖之旗",
 	color = 1,
-description = "施放一次，保留魔力，扛起一面旗帜，周围友军的攻击会造成穿刺，并使周围敌人的命中值降低。扛有旗帜时若击败敌人，则获得等阶。再次施放此技能可以放置旗帜，结束魔力保留。放置旗帜后，每等阶都会使其更加强大。你同时只能有一面旗帜。",
+	description = "施放一次，保留魔力，扛起一面旗帜，周围友军的攻击会造成穿刺，并使周围敌人的命中值降低。扛有旗帜时若击败敌人，则获得等阶。再次施放此技能可以放置旗帜，结束魔力保留。放置旗帜后，每等阶都会使其更加强大。你同时只能有一面旗帜。",
 	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Spell] = true, [SkillType.Duration] = true, [SkillType.ManaCostReserved] = true, [SkillType.Aura] = true, [SkillType.ManaCostPercent] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.AuraDuration] = true, [SkillType.PhysicalSkill] = true, },
 	statDescriptionScope = "banner_aura_skill_stat_descriptions",
 	castTime = 0,
@@ -1389,8 +1391,6 @@ description = "施放一次，保留魔力，扛起一面旗帜，周围友军�
 		["impale_debuff_effect_+%"] = {
 			mod("ImpaleEffect", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" })
 		},
-		
-		
 	},
 	baseFlags = {
 		spell = true,
@@ -1458,11 +1458,11 @@ description = "施放一次，保留魔力，扛起一面旗帜，周围友军�
 	},
 }
 skills["Earthquake"] = {
-name = "震地",
+	name = "震地",
 	color = 1,
 	baseEffectiveness = 1.5,
 	incrementalEffectiveness = 0.023299999535084,
-description = "使用斧, 锤, 或长杖重击地面, 对周围造成大量伤害, 并在地面上留下裂隙. 一段时间过后, 地面的裂隙将会释放冲击波造成更多的伤害. 在冲击波还未释放前再次使用技能不会刷新地面的裂隙. ",
+	description = "使用斧, 锤, 或长杖重击地面, 对周围造成大量伤害, 并在地面上留下裂隙. 一段时间过后, 地面的裂隙将会释放冲击波造成更多的伤害. 在冲击波还未释放前再次使用技能不会刷新地面的裂隙. ",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Duration] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -1560,11 +1560,11 @@ name = "余震",
 	},
 }
 skills["VaalEarthquake"] = {
-name = "瓦尔.震地",
+	name = "瓦尔.震地",
 	color = 1,
 	baseEffectiveness = 1.5,
 	incrementalEffectiveness = 0.023299999535084,
-description = "使用斧、锤或长杖重击地面，对周围造成大量伤害, 并在地面上留下多处裂隙。短时间后，裂隙会喷发出三股强大的震波。使用此技能后，你的脚步会对你周围的区域造成伤害，若之前的裂隙已经喷发，则会再次造成裂隙。该效果会在第二次持续结束后消退，或是在震波喷发至最大数量后消退。",
+	description = "使用斧、锤或长杖重击地面，对周围造成大量伤害, 并在地面上留下多处裂隙。短时间后，裂隙会喷发出三股强大的震波。使用此技能后，你的脚步会对你周围的区域造成伤害，若之前的裂隙已经喷发，则会再次造成裂隙。该效果会在第二次持续结束后消退，或是在震波喷发至最大数量后消退。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.Duration] = true, [SkillType.Vaal] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -1656,9 +1656,9 @@ name = "余震",
 	},
 }
 skills["EnduringCry"] = {
-name = "坚决战吼",
+	name = "坚决战吼",
 	color = 1,
-description = "发出怒吼, 嘲讽周围的敌人来攻击自己. 视周围被嘲讽敌人的数量增加耐力球充能数, 若周围有敌人时给与施放者短暂时间的生命恢复. 与其他战吼技能共享技能冷却. 【打我啊. 笨蛋. 】",
+	description = "发出怒吼, 嘲讽周围的敌人来攻击自己. 视周围被嘲讽敌人的数量增加耐力球充能数, 若周围有敌人时给与施放者短暂时间的生命恢复. 与其他战吼技能共享技能冷却. 【打我啊. 笨蛋. 】",
 	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Warcry] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.25,
@@ -1732,7 +1732,7 @@ description = "发出怒吼, 嘲讽周围的敌人来攻击自己. 视周围被�
 skills["BloodSandArmour"] = {
 	name = "血肉与岩石",
 	color = 1,
-	description = "施放一个光环根据你不同的姿态来影响你和附近的敌人。\n再次使用技能可以切换血姿态和沙姿态。",
+	description = "施放一个光环，影响你和周围的敌人，它的效果取决于你的姿态。再次使用该技能会在血姿态和沙姿态之间切换。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Aura] = true, [SkillType.AuraDebuff] = true, [SkillType.Instant] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.Maims] = true, [SkillType.Area] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -1804,11 +1804,11 @@ mod("Condition:Blinded", "FLAG", true, 0, 0, { type = "GlobalEffect", effectType
 	},
 }
 skills["GlacialHammer"] = {
-name = "冰霜之锤",
+	name = "冰霜之锤",
 	color = 1,
 	baseEffectiveness = 0.6700000166893,
 	incrementalEffectiveness = 0.023299999535084,
-description = "凝聚冰霜之力, 转换一部分的物理伤害为冰霜伤害以重击目标. 若受到攻击的敌人被冰冻且生命少于 1 / 3 , 则被冰霜之锤命中时会碎成冰屑. 限定锤或长杖.",
+	description = "凝聚冰霜之力，转换一部分的物理伤害为冰霜伤害以重击敌人。若受到攻击的敌人被冰冻且生命少于 1 / 3，则被冰霜之锤命中时会碎成冰屑。如果三次攻击都为同一列，则第三次冻缓敌人的概率更高。限定锤或长杖。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.ColdSkill] = true, [SkillType.Type53] = true, },
 	weaponTypes = {
 		["Two Handed Mace"] = true,
@@ -1883,11 +1883,11 @@ description = "凝聚冰霜之力, 转换一部分的物理伤害为冰霜伤害
 	},
 }
 skills["VaalGlacialHammer"] = {
-name = "瓦尔.冰霜之锤",
+	name = "瓦尔.冰霜之锤",
 	color = 1,
 	baseEffectiveness = 0.6700000166893,
 	incrementalEffectiveness = 0.023299999535084,
-description = "凝聚冰霜之力, 转换一部分的物理伤害为冰霜伤害以重击目标, 同时在目标周围造成一个不可侵犯, 让敌人无处可逃的冰墙. 限定锤与长杖.",
+	description = "凝聚冰霜之力，转换一部分的物理伤害为冰霜伤害以重击敌人，同时在敌人周围造成一个让敌人无法逃脱的冰墙。限定锤与长杖。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.Melee] = true, [SkillType.Duration] = true, [SkillType.Area] = true, [SkillType.Vaal] = true, [SkillType.ColdSkill] = true, },
 	weaponTypes = {
 		["Two Handed Mace"] = true,
@@ -1968,11 +1968,11 @@ description = "凝聚冰霜之力, 转换一部分的物理伤害为冰霜伤害
 	},
 }
 skills["GroundSlam"] = {
-name = "裂地之击",
+	name = "裂地之击",
 	color = 1,
 	baseEffectiveness = 0.6700000166893,
 	incrementalEffectiveness = 0.023299999535084,
-description = "角色使用长杖、斧头或双手锤猛击前方地面，制造一股向前袭来的冲击波，对敌人造成伤害，将其晕眩的几率也随之提高。敌人距离越近则冲击波伤害越高。",
+	description = "角色使用长杖、斧头或双手锤猛击前方地面，制造一股向前袭来的冲击波，对敌人造成伤害，将其晕眩的几率也随之提高。敌人距离越近则冲击波伤害越高。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -2050,11 +2050,11 @@ description = "角色使用长杖、斧头或双手锤猛击前方地面，制�
 	},
 }
 skills["VaalGroundSlam"] = {
-name = "瓦尔.裂地之击",
+	name = "瓦尔.裂地之击",
 	color = 1,
 	baseEffectiveness = 0.6700000166893,
 	incrementalEffectiveness = 0.023299999535084,
-description = "角色使用长杖、斧头或双手锤猛击前方地面，制造一股向四面八方袭来的冲击波，对敌人造成伤害并使其晕眩。敌人距离越近则冲击波伤害越高。",
+	description = "角色使用长杖、斧头或双手锤猛击前方地面，制造一股向四面八方袭来的冲击波，对敌人造成伤害并使其晕眩。敌人距离越近则冲击波伤害越高。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.Vaal] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -2133,9 +2133,9 @@ description = "角色使用长杖、斧头或双手锤猛击前方地面，制�
 	},
 }
 skills["HeavyStrike"] = {
-name = "重击",
+	name = "重击",
 	color = 1,
-description = "对目标进行一次强力攻击并击退目标. 限定斧, 锤, 剑或双手武器.",
+	description = "对敌人进行一次强力攻击并将它们击退。限定斧类，锤类，剑类或双手武器。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -2211,11 +2211,11 @@ description = "对目标进行一次强力攻击并击退目标. 限定斧, 锤,
 	},
 }
 skills["HeraldOfAsh"] = {
-name = "灰烬之捷",
+	name = "灰烬之捷",
 	color = 1,
 	baseEffectiveness = 0.5,
 	incrementalEffectiveness = 0.032699998468161,
-description = "于手中凝聚火焰之力, 为物理伤害额外增加火焰伤害. 若是你击败了一个敌人, 溢出的伤害将会以点燃的形式扩散至附近的敌人.该技能引起的燃烧只会受到持续伤害词缀的影响(燃烧属于持续伤害)",
+	description = "于手中凝聚火焰之力, 为物理伤害额外增加火焰伤害. 若是你击败了一个敌人, 溢出的伤害将会以点燃的形式扩散至附近的敌人.该技能引起的燃烧只会受到持续伤害词缀的影响(燃烧属于持续伤害)",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.CausesBurning] = true, [SkillType.Area] = true, [SkillType.DamageOverTime] = true, [SkillType.FireSkill] = true, [SkillType.Type27] = true, [SkillType.Herald] = true, [SkillType.Duration] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 0,
@@ -2293,11 +2293,11 @@ description = "于手中凝聚火焰之力, 为物理伤害额外增加火焰伤
 	},
 }
 skills["HeraldOfPurity"] = {
-name = "纯净之捷",
+	name = "纯净之捷",
 	color = 1,
 	baseEffectiveness = 0.31700000166893,
 	incrementalEffectiveness = 0.01799999922514,
-description = "给予一个可以为你的法术和攻击附加物理伤害的增益。若你击败敌人时带有此增益，该技能会召唤一个纯净哨兵，若你召唤的纯净哨兵已达上限，则会刷新现有的某个纯净哨兵的持续时间和生命。纯净哨兵可以进行单体攻击和区域性近战攻击。",
+	description = "给予一个可以为你的法术和攻击附加物理伤害的增益。若你击败敌人时带有此增益，该技能会召唤一个纯净哨兵，若你召唤的纯净哨兵已达上限，则会刷新现有的某个纯净哨兵的持续时间和生命。纯净哨兵可以进行单体攻击和区域性近战攻击。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.Herald] = true, [SkillType.Minion] = true, [SkillType.Instant] = true, [SkillType.Duration] = true, [SkillType.PhysicalSkill] = true, [SkillType.CreatesMinion] = true, },
 	minionSkillTypes = { [SkillType.Hit] = true, [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Area] = true, },
 	statDescriptionScope = "minion_skill_stat_descriptions",
@@ -2387,11 +2387,11 @@ description = "给予一个可以为你的法术和攻击附加物理伤害的�
 	},
 }
 skills["FlameTotem"] = {
-name = "圣焰图腾",
+	name = "圣焰图腾",
 	color = 1,
 	baseEffectiveness = 0.81900000572205,
 	incrementalEffectiveness = 0.028899999335408,
-description = "召唤一个图腾, 它会持续的对附近的敌人喷射火焰.",
+	description = "召唤一个图腾, 它会持续的对附近的敌人喷射火焰，并在图腾周围创造一片奉献地面。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Hit] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Totem] = true, [SkillType.FireSkill] = true, [SkillType.Channelled] = true, [SkillType.PhysicalSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	skillTotemId = 17,
@@ -2469,11 +2469,11 @@ description = "召唤一个图腾, 它会持续的对附近的敌人喷射火焰
 	},
 }
 skills["IceCrash"] = {
-name = "寒冰冲击",
+	name = "寒冰冲击",
 	color = 1,
 	baseEffectiveness = 1.5,
 	incrementalEffectiveness = 0.023299999535084,
-description = "敲击地面, 对于范围内的敌人造成三段冲击伤害. 敌人所受到的第二段和第三段伤害的伤害较低. 限定剑, 锤, 斧, 长杖和空手.",
+	description = "敲击地面, 对于范围内的敌人造成三段冲击伤害. 敌人所受到的第二段和第三段伤害的伤害较低. 限定剑, 锤, 斧, 长杖和空手.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.ColdSkill] = true, [SkillType.AttackCanRepeat] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -2573,13 +2573,13 @@ name = "三段击中",
 	},
 }
 skills["ImmortalCall"] = {
-name = "不朽怒嚎",
+	name = "不朽怒嚎",
 	color = 1,
-	description = "一小段时间内承受的总物理和元素伤害额外降低. 最多消耗 5 个耐力球，在增益效果持续时间内，每消耗一个耐力球使你承受的总物理伤害额外降低. 和其它防卫技能共用冷却时间",
+	description = "短期内受到的物理伤害和元素伤害降低。最多消耗 5 个耐力球使增益效果持续更久，并进一步降低受到的物理伤害。和防卫技能共用冷却时间。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggerable] = true, [SkillType.Instant] = true, [SkillType.GuardSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
-	statMap = {
+statMap = {
 		["mortal_call_elemental_damage_taken_+%_final"] = {
 			mod("ElementalDamageTaken", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
 		},
@@ -2653,9 +2653,9 @@ name = "不朽怒嚎",
 	},
 }
 skills["VaalImmortalCall"] = {
-name = "瓦尔.不朽怒嚎",
+	name = "瓦尔.不朽怒嚎",
 	color = 1,
-description = "仰天怒吼, 释放耐力球, 并使你的角色无敌一小段时间. 无敌时间长短视释放的耐力球数量而定. 【万. 佛. 朝. 宗! 】",
+	description = "仰天怒吼, 释放耐力球, 并使你的角色无敌一小段时间. 无敌时间长短视释放的耐力球数量而定. 【万. 佛. 朝. 宗! 】",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Vaal] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
@@ -2720,11 +2720,11 @@ description = "仰天怒吼, 释放耐力球, 并使你的角色无敌一小段�
 	},
 }
 skills["InfernalBlow"] = {
-name = "炼狱之击",
+	name = "炼狱之击",
 	color = 1,
 	baseEffectiveness = 0.6700000166893,
 	incrementalEffectiveness = 0.023299999535084,
-description = "炼狱之击的目标敌人会带上一种有层数的减益效果，在短时间内也会对其他敌人附加不带有层数的减益效果。若敌人死亡时带有任何此类减益效果，则会爆炸, 并对周围的敌人造成火焰伤害. 爆炸的伤害无法被反射. 若带层数的减益效果结束或是叠满 6 层，将会对目标敌人及其周围大面积内的其他敌人造成伤害，数值等同于你攻击伤害的一部分。限定剑, 斧, 锤, 长杖或是空手.",
+	description = "用武器攻击敌人，施加一个有层数的主减益效果，并用打击对其它击中的敌人附加一个不带层数的次要减益效果。主减益效果叠满 6 层或带有该效果的敌人死亡时会爆炸，对周围其它敌人造成伤害。其它带有次要减益效果的敌人死亡时也会爆炸，对周围敌人造成伤害。爆炸造成的伤害无法被反射。限定剑类、斧类、锤类、长杖或是空手。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.FireSkill] = true, [SkillType.Duration] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -2804,9 +2804,9 @@ description = "炼狱之击的目标敌人会带上一种有层数的减益效�
 	},
 }
 skills["LeapSlam"] = {
-name = "跃击",
+	name = "跃击",
 	color = 1,
-description = "朝着目标区域跃起, 并在落地时以武器重击（并击退一些）范围内的敌人. 被踩到的敌人将会被推出去. 限定一把斧, 锤, 剑或是长杖. 不能被多重打击辅助。",
+	description = "朝着目标区域跃起, 并在落地时以武器重击（并击退一些）范围内的敌人. 被踩到的敌人将会被推出去. 限定一把斧, 锤, 剑或是长杖. 不能被多重打击辅助。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.MovementSkill] = true, [SkillType.TravelSkill] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -2884,15 +2884,16 @@ description = "朝着目标区域跃起, 并在落地时以武器重击（并击
 	},
 }
 skills["MoltenShell"] = {
-name = "熔岩护盾",
+	name = "熔岩护盾",
 	color = 1,
 	baseEffectiveness = 9.6499996185303,
 	incrementalEffectiveness = 0.016499999910593,
-	description = "现在会产生一个增益效果承受伤害，减免数值基于你护甲值的一部分。\n现在当该增益效果时间结束或枯竭时，将受到的伤害以火焰伤害的形式反射回去. 和其它防卫技能共用冷却时间。",
+	description = "施加一个增益效果，增加护甲值，并在耗尽前替你承担部分伤害。当该增益效果时间结束或耗尽时，该技能将基于该增益效果承受的总伤害，把伤害反射给周围的敌人。与其它防卫技能共用冷却时间。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Type31] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.Triggerable] = true, [SkillType.GuardSkill] = true, },
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
+		 
 		["base_physical_damage_reduction_rating"] = {
 			mod("Armour", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
 		},
@@ -2964,15 +2965,16 @@ name = "熔岩护盾",
 	},
 }
 skills["VaalMoltenShell"] = {
-name = "瓦尔.熔岩护盾",
+	name = "瓦尔.熔岩护盾",
 	color = 1,
 	baseEffectiveness = 14.47500038147,
 	incrementalEffectiveness = 0.016499999910593,
-	description = "现在会产生一个增益效果承受伤害，减免数值基于你护甲值的一部分。\n现在每秒都将受到的部分伤害以火焰伤害的形式反射回去，直到该增益效果结束或耗尽。\n现在当该增益效果时间结束或枯竭时，将受到的伤害以火焰伤害的形式反射回去. 和其它防卫技能共用冷却时间。",
+	description = "施加一个增益效果，增加护甲值，并在耗尽前替你承担部分伤害。当该增益效果时间结束或耗尽时，该技能将基于该增益效果在每秒承受的伤害，每秒把当前受到的伤害反射给周围的敌人。当该增益效果时间结束或耗尽时，该技能会基于该增益效果承受的总伤害，把伤害反射给周围的敌人。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Type31] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.Vaal] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
+		 
 		["base_physical_damage_reduction_rating"] = {
 			mod("Armour", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
 		},
@@ -3044,11 +3046,11 @@ name = "瓦尔.熔岩护盾",
 	},
 }
 skills["MoltenStrike"] = {
-name = "熔岩之击",
+	name = "熔岩之击",
 	color = 1,
 	baseEffectiveness = 0.6700000166893,
 	incrementalEffectiveness = 0.023299999535084,
-description = "对目标造成物理及火焰伤害, 并在挥击的途中从武器弹射出熔岩球. 这些熔岩球在着地时会爆炸, 并对附近的敌人造成伤害.",
+	description = "对敌人造成物理及火焰伤害，并从击中的敌人身上发射出熔岩球，射向该攻击击中的所有敌人。这些熔岩球会爆炸，着地时对敌人造成范围伤害。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.FireSkill] = true, [SkillType.ProjectileAttack] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -3152,7 +3154,7 @@ name = "熔岩球",
 skills["BloodSpears"] = {
 	name = "凿击",
 	color = 1,
-	description = "使用你的武器打击地面，使矛从地面刺出。\n在血姿态时，这些矛会在你指定的位置贯穿多次，\n在沙姿态时，从指定位置向四方进行贯穿。\n限定剑和斧。预设血姿态。",
+	description = "重击地面，产生前进的多重尖刺伤害敌人。在血姿态下，多重尖刺会依次爆发，多次击中敌人。在沙姿态下，尖刺会朝外推进。限定剑类或斧类。默认为血姿态。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.Melee] = true, [SkillType.AttackCanRepeat] = true, },
 	weaponTypes = {
 		["Two Handed Axe"] = true,
@@ -3228,7 +3230,7 @@ skills["BloodSpears"] = {
 skills["PhysicalDamageAura"] = {
 	name = "尊严",
 	color = 1,
-	description = "施放一个光环增加附近敌人承受物理伤害。",
+	description = "施放一个光环，使你周围的敌人受到的物理伤害提高。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.AuraDebuff] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -3311,9 +3313,9 @@ name = "最大效果",
 	},
 }
 skills["Punishment"] = {
-name = "惩戒",
+	name = "惩戒",
 	color = 1,
-description = "对目标区域施放诅咒, 受到诅咒的敌人在近战攻击命中时给与击中的目标一个增益. 此增益给与更多近战伤害和攻击速度. ",
+	description = "对目标区域施放诅咒, 受到诅咒的敌人在近战攻击命中时给与击中的目标一个增益. 此增益给与更多近战伤害和攻击速度. ",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Curse] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -3390,9 +3392,9 @@ description = "对目标区域施放诅咒, 受到诅咒的敌人在近战攻击
 	},
 }
 skills["FireResistAura"] = {
-name = "火焰净化",
+	name = "火焰净化",
 	color = 1,
-description = "施放一个光环, 使你与受光环影响的友军获得额外的火焰抗性.",
+	description = "施放一个光环, 使你与受光环影响的友军获得额外的火焰抗性.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -3466,9 +3468,9 @@ description = "施放一个光环, 使你与受光环影响的友军获得额外
 	},
 }
 skills["FireImpurity"] = {
-name = "瓦尔.不净之火",
+	name = "瓦尔.不净之火",
 	color = 1,
-description = "施放一个光环，使你和周围友军受到的火焰伤害降低，并免疫点燃效果，并在击中周围敌人时无视他们的火焰抗性。 ",
+	description = "施放一个光环，使你和周围友军受到的火焰伤害降低，并免疫点燃效果，并在击中周围敌人时无视他们的火焰抗性。 ",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.SkillCanTotem] = true, [SkillType.Type27] = true, [SkillType.Duration] = true, [SkillType.Vaal] = true, [SkillType.Aura] = true, [SkillType.AreaSpell] = true, [SkillType.FireSkill] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -3546,9 +3548,9 @@ description = "施放一个光环，使你和周围友军受到的火焰伤害�
 	},
 }
 skills["RallyingCry"] = {
-name = "激励战吼",
+	name = "激励战吼",
 	color = 1,
-description = "施展战吼, 使自身和盟友伤害和魔力恢复增加. 伤害增加量随着周围敌人数量提升. 嘲讽周围所有敌人, 使他们攻击施放者. 与其他战吼技能共享技能冷却.",
+	description = "施展战吼, 使自身和盟友伤害和魔力恢复增加. 伤害增加量随着周围敌人数量提升. 嘲讽周围所有敌人, 使他们攻击施放者. 与其他战吼技能共享技能冷却.",
 	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Warcry] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.25,
@@ -3624,11 +3626,11 @@ description = "施展战吼, 使自身和盟友伤害和魔力恢复增加. 伤�
 	},
 }
 skills["Reckoning"] = {
-name = "清算",
+	name = "清算",
 	color = 1,
 	baseEffectiveness = 1.5,
 	incrementalEffectiveness = 0.023299999535084,
-description = "当盾牌格档时对敌人进行一次迅速的反击. 此反击会对锥状区域造成伤害.",
+	description = "当盾牌格档时对敌人进行一次迅速的反击. 此反击会对锥状区域造成伤害.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Shield] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -3706,9 +3708,9 @@ description = "当盾牌格档时对敌人进行一次迅速的反击. 此反击
 	},
 }
 skills["RejuvenationTotem"] = {
-name = "回春图腾",
+	name = "回春图腾",
 	color = 1,
-description = "召唤一个图腾, 它会施放一个光环并使你与受光环影响友军获得额外的生命回复.",
+	description = "召唤一个图腾, 它会施放一个光环并使你与受光环影响友军获得额外的生命回复.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Totem] = true, [SkillType.Aura] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	skillTotemId = 4,
@@ -3786,11 +3788,11 @@ description = "召唤一个图腾, 它会施放一个光环并使你与受光环
 	},
 }
 skills["SearingBond"] = {
-name = "灼热连接",
+	name = "灼热连接",
 	color = 1,
 	baseEffectiveness = 6.1111001968384,
 	incrementalEffectiveness = 0.053300000727177,
-description = "召唤一个图腾, 它会与你和你所操控的所有图腾之间产生火焰连接, 经过火焰连接或是靠近火焰连接尾端的敌人将会受到燃烧伤害.",
+	description = "召唤一个图腾, 它会与你和你所操控的所有图腾之间产生火焰连接, 经过火焰连接或是靠近火焰连接尾端的敌人将会受到燃烧伤害.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.DamageOverTime] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Type27] = true, [SkillType.CausesBurning] = true, [SkillType.Totem] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	skillTotemId = 9,
@@ -3859,11 +3861,11 @@ description = "召唤一个图腾, 它会与你和你所操控的所有图腾之
 	},
 }
 skills["NewShieldCharge"] = {
-name = "重盾冲锋",
+	name = "重盾冲锋",
 	color = 1,
 	baseEffectiveness = 2.210000038147,
 	incrementalEffectiveness = 0.017799999564886,
-description = "向目标区域或敌人冲锋，在路径上的敌人将会被推向两旁，并反复对你前方小范围区域内造成伤害。 抵达目标处时造成大范围伤害。伤害与击晕几率将视冲锋距离而定。无法被多重打击辅助。",
+	description = "向一个目标冲锋, 使用盾牌对其猛击的同时也用近战武器顺手补刀. 此攻击将会击退目标并将其击晕, 在路径上的敌人将会被推向两旁. 伤害与击晕几率将视冲锋距离而定. 限定装备近战单手武器及盾牌. 无法被多重打击辅助.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Shield] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.MovementSkill] = true, [SkillType.TravelSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -3938,11 +3940,11 @@ description = "向目标区域或敌人冲锋，在路径上的敌人将会被�
 	},
 }
 skills["ShockwaveTotem"] = {
-name = "震波图腾",
+	name = "震波图腾",
 	color = 1,
 	baseEffectiveness = 1.1783000230789,
 	incrementalEffectiveness = 0.040300000458956,
-description = "召唤一个图腾, 它会持续的震动附近的地面, 击退附近的敌人并造成伤害.",
+	description = "召唤一个图腾, 它会持续的震动附近的地面, 击退附近的敌人并造成伤害.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Totem] = true, [SkillType.SpellCanRepeat] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	skillTotemId = 5,
@@ -4015,11 +4017,11 @@ description = "召唤一个图腾, 它会持续的震动附近的地面, 击退�
 	},
 }
 skills["Smite"] = {
-name = "惩击",
+	name = "惩击",
 	color = 1,
 	baseEffectiveness = 0.60000002384186,
 	incrementalEffectiveness = 0.028000000864267,
-description = "发动一次近战攻击，用闪电攻击目标区域或周围的敌人，造成范围伤害。若该近战攻击击中目标，则该目标不会受到该技能的范围伤害。若该技能击中敌人，你获得一个光环增益，为你和友军附加额外闪电伤害并有一定几率造成感电。需要装备剑、斧、锤、长杖或徒手。",
+	description = "发动一次近战攻击，用闪电攻击目标区域或周围的敌人，造成范围伤害。若该近战攻击击中目标，则该目标不会受到该技能的范围伤害。若该技能击中敌人，你获得一个光环增益，为你和友军附加额外闪电伤害并持续一段时间。需要装备剑、斧、锤、长杖或徒手。",
 	skillTypes = { [SkillType.Melee] = true, [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Hit] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.Aura] = true, [SkillType.Buff] = true, [SkillType.LightningSkill] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -4114,9 +4116,9 @@ description = "发动一次近战攻击，用闪电攻击目标区域或周围�
 	},
 }
 skills["StaticStrike"] = {
-name = "充能打击",
+	name = "充能打击",
 	color = 1,
-description = "使用近战武器攻击，如果击中目标则获得一个增益。获得后，你将会频繁使用光束击中周围一定数量的敌人，造成攻击伤害，移动时该伤害会提高。该增益最多可以叠加三层，每层都会加快光束攻击的频率。",
+	description = "使用近战武器攻击，如果击中敌人则获得一个增益效果。获得后，你将会频繁使用光束击中周围一定数量的敌人，造成攻击伤害，移动时该伤害会提高。该增益最多可以叠加三层，每层都会加快光束攻击的频率。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.LightningSkill] = true, [SkillType.Chaining] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -4220,11 +4222,11 @@ name = "光束 - 3 层",
 	},
 }
 skills["QuickGuard"] = {
-	name = "铁肤术",
+	name = "钢铁之肤",
 	color = 1,
 	baseEffectiveness = 10,
 	incrementalEffectiveness = 0.029999999329448,
-	description = "套用一个增益效果，在它被消耗完毕前可以替你承受部分击中伤害。\n与其它防卫技能共享冷却时间。",
+	description = "施加一个增益效果，在其耗尽之前替你承受部分伤害。和其它防卫技能共用冷却时间。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Instant] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.GuardSkill] = true, },
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 0,
@@ -4287,10 +4289,11 @@ skills["QuickGuard"] = {
 		[40] = { 70, 1, levelRequirement = 100, cooldown = 3, duration = 1.5, manaCost = 22, },
 	},
 }
+
 skills["SummonFireGolem"] = {
-name = "召唤烈焰魔像",
+	name = "召唤烈焰魔像",
 	color = 1,
-description = "召唤烈焰魔像, 启动时会使你增加伤害. 烈焰魔像会使用火焰放射, 持续造成火焰伤害, 及射出会爆炸的弧状移动投射物. ",
+	description = "召唤烈焰魔像, 启动时会使你增加伤害. 烈焰魔像会使用火焰放射, 持续造成火焰伤害, 及射出会爆炸的弧状移动投射物. ",
 	skillTypes = { [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.SkillCanMine] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Spell] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.Golem] = true, [SkillType.CreatesMinion] = true, },
 	minionSkillTypes = { [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
@@ -4369,9 +4372,9 @@ description = "召唤烈焰魔像, 启动时会使你增加伤害. 烈焰魔像�
 	},
 }
 skills["SummonRockGolem"] = {
-name = "召唤巨石魔像",
+	name = "召唤巨石魔像",
 	color = 1,
-description = "召唤一个为你提供额外生命回复的巨石魔像. 除了一般的近战攻击外, 巨石魔像会使用滚动冲撞, 还有沉重的冲击波来嘲讽附近的敌人. ",
+	description = "召唤一个为你提供额外生命回复的巨石魔像. 除了一般的近战攻击外, 巨石魔像会使用滚动冲撞, 还有沉重的冲击波来嘲讽附近的敌人. ",
 	skillTypes = { [SkillType.Triggerable] = true, [SkillType.SkillCanMine] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Spell] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.Golem] = true, [SkillType.PhysicalSkill] = true, [SkillType.CreatesMinion] = true, [SkillType.CreatesMinion] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.MovementSkill] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
@@ -4451,9 +4454,9 @@ description = "召唤一个为你提供额外生命回复的巨石魔像. 除了
 	},
 }
 skills["Sunder"] = {
-name = "大地震击",
+	name = "大地震击",
 	color = 1,
-description = "使用你的锤, 斧或长杖重击地面, 破坏前方的地面, 用冲击波对敌人造成伤害. 击中目标后冲击波会再次伤害目标周围的敌人. ",
+	description = "使用你的锤, 斧或长杖重击地面, 破坏前方的地面, 用冲击波对敌人造成伤害. 击中目标后冲击波会再次伤害目标周围的敌人. ",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -4539,11 +4542,11 @@ name = "冲击波",
 	},
 }
 skills["Sweep"] = {
-name = "横扫",
+	name = "横扫",
 	color = 1,
 	baseEffectiveness = 0.6700000166893,
 	incrementalEffectiveness = 0.023299999535084,
-description = "使用双手近战武器在身体周围横扫, 并将部分怪物击退.",
+	description = "使用双手近战武器在身体周围横扫, 并将部分怪物击退.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["Two Handed Mace"] = true,
@@ -4617,9 +4620,9 @@ description = "使用双手近战武器在身体周围横扫, 并将部分怪物
 	},
 }
 skills["EnduranceChargeSlam"] = {
-name = "破釜一击",
+	name = "破釜一击",
 	color = 1,
-description = "使用武器砸向大地，破坏地面造成炙热的裂缝。当你拥有耐力球时，耐力球会被消耗，造成额外的炙热裂缝。需要使用锤，剑，斧，长杖或空手时使用。",
+	description = "使用武器砸向大地，破坏地面造成炙热的裂缝。当你拥有耐力球时，耐力球会被消耗，造成额外的炙热裂缝。需要使用锤，剑，斧，长杖或空手时使用。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.FireSkill] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -4703,11 +4706,11 @@ description = "使用武器砸向大地，破坏地面造成炙热的裂缝。�
 	},
 }
 skills["Vengeance"] = {
-name = "复仇",
+	name = "复仇",
 	color = 1,
 	baseEffectiveness = 1.5,
 	incrementalEffectiveness = 0.023299999535084,
-description = "你被击中时有机会对周围的敌人进行一次快速的反击. 攻击区域范围会受到武器攻击范围的影响. ",
+	description = "你被击中时有机会对周围的敌人进行一次快速的反击. 攻击区域范围会受到武器攻击范围的影响. ",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -4787,9 +4790,9 @@ description = "你被击中时有机会对周围的敌人进行一次快速的�
 	},
 }
 skills["VigilantStrike"] = {
-name = "戒备打击",
+	name = "戒备打击",
 	color = 1,
-description = "对敌人进行奋力一击. 你获得护体增益, 带有减伤效果. 持续时间可以透过消耗耐力球来延长. 需要近战武器. ",
+	description = "对敌人进行奋力一击。你获得护体增益，带有减伤效果。持续时间可以透过消耗耐力球来延长。需要近战武器。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Buff] = true, [SkillType.Melee] = true, [SkillType.AttackCanRepeat] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.Type53] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -4866,9 +4869,9 @@ description = "对敌人进行奋力一击. 你获得护体增益, 带有减伤�
 	},
 }
 skills["Vitality"] = {
-name = "活力",
+	name = "活力",
 	color = 1,
-description = "施放一个光环, 使你与受光环影响友军获得额外的生命回复.",
+	description = "施放一个光环, 使你与受光环影响友军获得额外的生命回复.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -4939,9 +4942,9 @@ description = "施放一个光环, 使你与受光环影响友军获得额外的
 	},
 }
 skills["Vulnerability"] = {
-name = "脆弱",
+	name = "脆弱",
 	color = 1,
-description = "对目标区域施放诅咒, 受到诅咒的敌人将会受到增加的物理伤害及物理持续伤害.  攻击被诅咒的目标有机会造成流血和瘫痪效果。",
+	description = "对目标区域施放诅咒, 受到诅咒的敌人将会受到增加的物理伤害及物理持续伤害.  攻击被诅咒的目标有机会造成流血和瘫痪效果。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Curse] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -5023,9 +5026,9 @@ description = "对目标区域施放诅咒, 受到诅咒的敌人将会受到增
 	},
 }
 skills["WarlordsMark"] = {
-name = "督军印记",
+	name = "督军印记",
 	color = 1,
-description = "对目标区域施放诅咒, 受到诅咒的敌人将更容易被晕眩, 更慢恢复. 在击中带有印记的敌人时会获得额外的生命与魔力偷取, 此外在击败带有印记的敌人时会有机会获得耐力球.",
+	description = "对目标区域施放诅咒, 受到诅咒的敌人将更容易被晕眩, 更慢恢复. 在击中带有印记的敌人时会获得额外的生命与魔力偷取, 此外在击败带有印记的敌人时会有机会获得耐力球.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Curse] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -5108,9 +5111,9 @@ description = "对目标区域施放诅咒, 受到诅咒的敌人将更容易被
 	},
 }
 skills["BloodstainedBanner"] = {
-name = "战旗",
+	name = "战旗",
 	color = 1,
-description = "施放一次，保留魔力，扛起一面旗帜，提高周围友军的命中值，并使周围敌人受到的物理伤害提高。扛有旗帜时若击败敌人，则获得等阶。再次施放此技能可以放置旗帜，结束魔力保留。放置旗帜后，每等阶都会使其更加强大。你同时只能有一面旗帜。",
+	description = "施放一次，保留魔力，扛起一面旗帜，提高周围友军的命中值，并使周围敌人受到的物理伤害提高。扛有旗帜时若击败敌人，则获得等阶。再次施放此技能可以放置旗帜，结束魔力保留。放置旗帜后，每等阶都会使其更加强大。你同时只能有一面旗帜。",
 	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Spell] = true, [SkillType.Duration] = true, [SkillType.ManaCostReserved] = true, [SkillType.Aura] = true, [SkillType.ManaCostPercent] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.AuraDuration] = true, [SkillType.PhysicalSkill] = true, },
 	statDescriptionScope = "banner_aura_skill_stat_descriptions",
 	castTime = 0,

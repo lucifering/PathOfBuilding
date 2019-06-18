@@ -49,7 +49,18 @@ return {
 			modList:NewMod("Multiplier:spellEchoCount", "BASE", m_min(tonumber(val), 2), "Config")
 		 
 	end },
-
+{ label = "多重打击:", ifSkill =  "多重打击(辅)"  },
+	{ var = "multistrikeIndex", type = "list", label = "多重次数:", ifSkill =  "多重打击(辅)" , list = {{val="0",label="无重复"},{val="1",label="重复1次"},{val="2",label="重复2次"}}, apply = function(val, modList, enemyModList)
+		 
+		   if val =="1" then 
+				modList:NewMod("Condition:MultistrikeFirstRepeat", "FLAG", true, "Config")
+		   elseif val=="2" then 
+				modList:NewMod("Condition:MultistrikeSecondRepeat", "FLAG", true, "Config")
+		   end 		   
+			 
+		 
+	end },
+	
 { label = "【鸟之势】:", ifSkill = "鸟之势" },
 { var = "aspectOfTheAvianAviansMight", type = "check", label = "有【鸟之力量】buff?", ifSkill = "鸟之势", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:AviansMightActive", "FLAG", true, "Config")
@@ -402,6 +413,10 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 		modList:NewMod("Condition:Leeching", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
 	
+	
+ 
+
+	
  
 { var = "conditionLeechingLife", type = "check", label = "你正在偷取生命?", ifCond = "LeechingLife", implyCond = "Leeching", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:LeechingLife", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
@@ -674,7 +689,8 @@ end },
 { var = "conditionImpaledRecently", type = "check", ifVer="3_0", label = "近期有穿刺过敌人?", apply = function(val, modList, enemyModLIst)
 		modList:NewMod("Condition:ImpaledRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
-{ var = "multiplierImaplesOnEnemy", type = "count", label = "# 敌人身上的穿刺数量(如果不是最大数量):", apply = function(val, modList, enemyModList)
+{ var = "meleeDistanceWithEnemy", type = "count", label = "# 近战和敌人距离（15下拿满40+不起效）:" , ifCond = "CanMeleeDistanceRamp" },
+{ var = "multiplierImaplesOnEnemy", type = "count", label = "# 敌人身上的穿刺数量:", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Multiplier:ImpaleStack", "BASE", val, "Config")
 	end },
 

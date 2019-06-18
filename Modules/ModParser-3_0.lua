@@ -1339,8 +1339,20 @@ or gemIdLookup[support_skillname:gsub("先祖呼唤","先祖召唤").."（辅）
 
 or gemIdLookup[support_skillname:gsub("渎神","诅咒光环").."(辅)"] 
 or gemIdLookup[support_skillname:gsub("渎神","诅咒光环").."（辅）"] 
-or support_skillname
+or "未知："..support_skillname
 
+end
+
+local function  FuckSkillActivityCnName(activity_skillname)
+
+if activity_skillname == nil then 
+
+	return "未知"
+else
+
+	return activity_skillname:gsub("野性打击","狂野部族打击") :gsub("火舌图腾","圣焰图腾"):gsub("霜害","寒霜爆")
+
+end
 end
 
 
@@ -1554,7 +1566,7 @@ local specialModList = {
 	["所承受伤害的前 (%d+)%% 会扣除魔力，而非生命"]= function(num) return {  mod("DamageTakenFromManaBeforeLife", "BASE", num)  } end, 
 	["总魔力保留额外降低 (%d+)%%"]= function(num) return {  mod("ManaReserved", "MORE", -num)  } end, 
 	["技能的总魔力保留额外降低 (%d+)%%"]= function(num) return {  mod("ManaReserved", "MORE", -num)  } end, 
-	["【(.+)】的总魔力保留额外降低 (%d+)%%"]= function(_, skill_name, num) return {  mod("ManaReserved", "MORE", -num,{ type = "SkillName", skillName =  skill_name or "Unknown"})  } end, 
+	["【(.+)】的总魔力保留额外降低 (%d+)%%"]= function(_, skill_name, num) return {  mod("ManaReserved", "MORE", -num,{ type = "SkillName", skillName =  FuckSkillActivityCnName(skill_name)})  } end, 
 	["总流血伤害额外降低 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", -num,nil,nil, KeywordFlag.Bleed)  } end, 
 	["对投射物攻击的总闪避率额外提高 (%d+)%%"]= function(num) return {  mod("ProjectileEvadeChance", "MORE", num)  } end, 
 	["对近战攻击的总闪避率额外降低 (%d+)%%"]= function(num) return {  mod("MeleeEvadeChance", "MORE", -num)  } end, 
@@ -1717,7 +1729,7 @@ local specialModList = {
 	["每秒 ([%d%.]+) 基础魔力回复"] = function(num) return {  mod("ManaRegen", "BASE", num)  } end,
 	["每秒 ([%d%.]+)%% 魔力回复"]= function(num) return {  mod("ManaRegenPercent", "BASE", num )  } end,
 	["物理攻击伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("PhysicalDamageManaLeech", "BASE", num,nil, ModFlag.Attack)  } end, 
-	["【(.+)】的魔力保留降低 ([%d%.]+)%%"] = function(_, skill_name, num) return { mod("ManaReserved", "INC",-num, { type = "SkillName", skillName =  skill_name or "Unknown"}) } end,
+	["【(.+)】的魔力保留降低 ([%d%.]+)%%"] = function(_, skill_name, num) return { mod("ManaReserved", "INC",-num, { type = "SkillName", skillName =  FuckSkillActivityCnName(skill_name)}) } end,
 	["药剂持续期间，有 (%d+)%% 几率冰冻"]= function(num) return {mod("EnemyFreezeChance", "BASE", num,{ type = "Condition", var = "UsingFlask" }) } end, 
 	["药剂持续期间，有 (%d+)%% 几率感电"]= function(num) return {mod("EnemyShockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" }) } end, 
 	["药剂持续期间，有 (%d+)%% 几率点燃"]= function(num) return {mod("EnemyIgniteChance", "BASE", num,{ type ="Condition", var = "UsingFlask" })  } end, 
@@ -1742,12 +1754,12 @@ local specialModList = {
 	["【召唤圣物】的范围效果扩大 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("AreaOfEffect", "INC", num) },{ type = "SkillName", skillName = "召唤圣物" })  } end,
 	["召唤的圣物的增益效果提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("BuffEffect", "INC", num) },{ type = "SkillName", skillName = "召唤圣物" })  } end,
 	["【幻化([^\\x00-\\xff]*)】造成的伤害提高 (%d+)%%"] = function(_,skill_name,num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) },{ type = "SkillName", skillName = "幻化"..skill_name })  } end,
-	["【(.+)】的伤害提高 (%d+)%%"] = function(_, skill_name, num) return { mod("Damage", "INC",num, { type = "SkillName", skillName = skill_name:gsub("火舌图腾","圣焰图腾") or "Unknown"}) } end, 
-	["【(.+)】投射物速度提高 (%d+)%%"] = function(_, skill_name, num) return { mod("ProjectileSpeed", "INC",num, { type = "SkillName", skillName = skill_name:gsub("火舌图腾","圣焰图腾") or "Unknown"}) } end, 
-	["【([^\\x00-\\xff]*)】造成的伤害提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("Damage", "INC", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
-	["【([^\\x00-\\xff]*)】获得等同其 (%d+)%% 物理伤害的额外冰霜伤害"]= function(_,skill_name,num) return {  mod("PhysicalDamageGainAsCold", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
-	["【([^\\x00-\\xff]*)】获得等同其 (%d+)%% 物理伤害的额外闪电伤害"]= function(_,skill_name,num) return {  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
-	["【([^\\x00-\\xff]*)】获得等同其 (%d+)%% 物理伤害的额外火焰伤害"]= function(_,skill_name,num) return {  mod("PhysicalDamageGainAsFire", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
+	["【(.+)】的伤害提高 (%d+)%%"] = function(_, skill_name, num) return { mod("Damage", "INC",num, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name)}) } end, 
+	["【(.+)】投射物速度提高 (%d+)%%"] = function(_, skill_name, num) return { mod("ProjectileSpeed", "INC",num, { type = "SkillName", skillName = FuckSkillActivityCnName(skill_name)}) } end, 
+	["【([^\\x00-\\xff]*)】造成的伤害提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("Damage", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
+	["【([^\\x00-\\xff]*)】获得等同其 (%d+)%% 物理伤害的额外冰霜伤害"]= function(_,skill_name,num) return {  mod("PhysicalDamageGainAsCold", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
+	["【([^\\x00-\\xff]*)】获得等同其 (%d+)%% 物理伤害的额外闪电伤害"]= function(_,skill_name,num) return {  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
+	["【([^\\x00-\\xff]*)】获得等同其 (%d+)%% 物理伤害的额外火焰伤害"]= function(_,skill_name,num) return {  mod("PhysicalDamageGainAsFire", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
 	["敌人身上每有 1 层蜘蛛网，则附加 (%d+) %- (%d+) 混沌伤害"] = function(_,num1,num2) return { 
 	 mod("ChaosMin", "BASE", num1,{ type = "Multiplier", actor = "enemy", var = "Spider's WebStack" } ), 
 	 mod("ChaosMax", "BASE", num2,{ type = "Multiplier", actor = "enemy", var = "Spider's WebStack" } ) } end,
@@ -1760,8 +1772,8 @@ local specialModList = {
 	["此物品上的元素技能石等级 %+(%d+)"] = function(num) return { mod("GemProperty", "LIST",  { keyword = "elemental", key = "level", value = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	["拥有最大数量的狂怒球时，攻击有 (%d+)%% 几率使敌人中毒"] = function(num) return{ mod("PoisonChance", "BASE", num, nil, ModFlag.Attack, { type = "StatThreshold", stat = "FrenzyCharges", thresholdStat = "FrenzyChargesMax" }) }end,
 	["召唤生物获得等同 (%d+)%% 物理伤害的额外冰霜伤害"]=function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageGainAsCold", "BASE", num) })  } end,
-	["(%d+)%% 较少(.+)时间"]= function(_, num,skill_name)  return {  mod("Duration", "MORE", -num,{ type = "SkillName", skillName = skill_name or "Unknown"})  } end,
-	["击败敌人时有 (%d+)%% 几率触发 (%d+) 级的【(.+)】"]= function(_, num,levelname,skill_name)return {   mod("ExtraSkill", "LIST", { skillId =gemIdLookup[skill_name] or "Unknown", level = levelname})   } end,
+	["(%d+)%% 较少(.+)时间"]= function(_, num,skill_name)  return {  mod("Duration", "MORE", -num,{ type = "SkillName", skillName = FuckSkillActivityCnName(skill_name)})  } end,
+	["击败敌人时有 (%d+)%% 几率触发 (%d+) 级的【(.+)】"]= function(_, num,levelname,skill_name)return {   mod("ExtraSkill", "LIST", { skillId =FuckSkillActivityCnName(skill_name), level = levelname})   } end,
 	["物理伤害的 (%d+)%% 转换为闪电伤害"] = function(num) return { mod("PhysicalDamageConvertToLightning", "BASE", num) } end,
 	["闪电法术的 (%d+)%% 物理伤害转换为闪电伤害"] = function(num) return { mod("PhysicalDamageConvertToLightning", "BASE", num, nil, ModFlag.Spell, KeywordFlag.Lightning) } end,
 	["火焰法术的 (%d+)%% 物理伤害转换为火焰伤害"] = function(num) return { mod("PhysicalDamageConvertToFire", "BASE", num, nil, ModFlag.Spell, KeywordFlag.Fire) } end,
@@ -1777,7 +1789,7 @@ local specialModList = {
 	["格挡时，用 (%d+) 级的【(.+)】诅咒敌人"] = function(num, _, skill) return extraSkill(skill, num, true) end, 
 	["攻击被嘲讽的敌人时，攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack,{ type = "ActorCondition", actor = "enemy", var = "Taunted" })  } end, 
 	["你身上的每层中毒状态使你每秒回复 (%d+) 能量护盾，最多可有 (%d+) 秒"]= function(_,num1,num2) return {  mod("EnergyShieldRegen", "BASE", tonumber(num1),{ type = "Multiplier", var = "PoisonStack", limit = tonumber(num2), limitTotal = true })  } end,
-	["获得 (%d+) 级的【(.+)】"] = function(_,num,skill_name) return {  mod("ExtraSkill", "LIST", { skillId =gemIdLookup[skill_name] or "Unknown", level = num})   } end,
+	["获得 (%d+) 级的【(.+)】"] = function(_,num,skill_name) return {  mod("ExtraSkill", "LIST", { skillId =FuckSkillActivityCnName(skill_name), level = num})   } end,
 	["召唤生物身上的光环效果提高 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("AuraEffectOnSelf", "INC", num) })  } end,
 	["对受诅咒敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num, nil, ModFlag.Hit,{ type = "ActorCondition", actor = "enemy", var = "Cursed" })  } end, 
 	["攻击击中被诅咒敌人时有 (%d+)%% 几率造成流血"]= function(num) return {  mod("BleedChance", "BASE", num, nil, ModFlag.Attack,{ type = "ActorCondition", actor = "enemy", var = "Cursed" })  } end, 
@@ -1884,10 +1896,10 @@ local specialModList = {
 	 mod("Dex", "BASE", num,{ type = "Condition", var = "ConnectedTo贵族Start" }) ,
 	 mod("Int", "BASE", num,{ type = "Condition", var = "ConnectedTo贵族Start" }) 
 	 } end,
-	["【(.+)】的持续时间缩短 (%d+)%%"]  = function( _,skill_name, num) return { mod("Duration", "INC",-num, { type = "SkillName", skillName = skill_name }) } end, 	
+	["【(.+)】的持续时间缩短 (%d+)%%"]  = function( _,skill_name, num) return { mod("Duration", "INC",-num, { type = "SkillName", skillName = FuckSkillActivityCnName(skill_name) }) } end, 	
 	["召唤生物有额外 (%d+)%% 躲避击中几率"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("AttackDodgeChance", "BASE", num) })  } end,
 	["灵体有 (%d+) 秒的持续时间"] = function(num) return { mod("SkillData", "LIST", { key = "duration", value = 6 }, { type = "SkillName", skillName = "召唤灵体" }) } end,	
-	["【(.+)】的魔力消耗降低 (%d+)%%"] = function( _,skill_name, num) return { mod("ManaCost", "INC",-num, { type = "SkillName", skillName = skill_name }) } end, 	
+	["【(.+)】的魔力消耗降低 (%d+)%%"] = function( _,skill_name, num) return { mod("ManaCost", "INC",-num, { type = "SkillName", skillName = FuckSkillActivityCnName(skill_name) }) } end, 	
 	["插槽内的移动技能不消耗魔力"] = function() return { mod("ExtraSkillMod", "LIST", { mod = mod("ManaCost", "MORE", -100, nil, 0,  KeywordFlag.Movement) }, { type = "SocketedIn", slotName = "{SlotName}" })}end,	
 	["插槽内攻击技能的总魔力消耗 ([%+%-]?%d+)"]= function(num) return { mod("ManaCost", "BASE",num, { type = "SocketedIn", slotName = "{SlotName}", keyword = "attack" }  ) } end, 	
 	["插槽内的法术魔力消耗降低 (%d+)%%"]= function(num) return { mod("ManaCost", "INC",-num, { type = "SocketedIn", slotName = "{SlotName}", keyword = "spell" }  ) } end, 	
@@ -1954,7 +1966,7 @@ local specialModList = {
 	 = function(_,num,levelnum) return{mod("ExtraSkill", "LIST", { skillId = "ShadeForm", level = levelnum}) }end, 
 	["近期内你若未被击中，则受到的总伤害额外降低 (%d+)%%"]= function(num) return {  mod("DamageTaken", "MORE", -tonumber(num), { type = "Condition", var = "BeenHitRecently", neg = true } )  } end, 
 	["不再通过力量获得伤害加成，每 (%d+) 点力量会使近战伤害提高 (%d+)%%"] = function( _,perStr, num) return { mod("StrDmgBonusRatioOverride", "BASE", tonumber(num) / tonumber(perStr)) } end,
-	["【(.+)】的增益效果提高 (%d+)%%"] = function(_, skill_name,num) return { mod("BuffEffect", "INC", tonumber(num),{ type = "SkillName", skillName = skill_name } ) } end,	
+	["【(.+)】的增益效果提高 (%d+)%%"] = function(_, skill_name,num) return { mod("BuffEffect", "INC", tonumber(num),{ type = "SkillName", skillName = FuckSkillActivityCnName(skill_name) } ) } end,	
 	["插槽内魔像技能攻击和施法速度提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Speed", "INC", tonumber(num)) },
 	{ type = "SkillType", skillType = SkillType.Golem },  { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
 	["插槽内魔像技能的增益效果提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("BuffEffect", "INC", tonumber(num)) },
@@ -1977,9 +1989,9 @@ local specialModList = {
 		 mod("ChaosMax", "BASE", tonumber(num4), { type = "Condition", var = "{Hand}Attack" } ,{ type = "MultiplierThreshold", actor = "enemy", var = "PoisonStack", threshold = tonumber(num1) } ) 
 		  } end,  
 	["([^\\x00-\\xff]*)光环的效果提高 (%d+)%%"]= function(_, skill_name,num) return { 
-	skill_name=="非诅咒类" and   mod("AuraEffect", "INC", tonumber(num))   or  mod("AuraEffect", "INC", tonumber(num),  { type = "SkillName", skillName = skill_name })
+	skill_name=="非诅咒类" and   mod("AuraEffect", "INC", tonumber(num))   or  mod("AuraEffect", "INC", tonumber(num),  { type = "SkillName", skillName = FuckSkillActivityCnName(skill_name) })
 	 } end,
-	["【(.+)】的光环效果提高 (%d+)%%"]= function(_, skill_name,num) return {  mod("AuraEffect", "INC", tonumber(num),  { type = "SkillName", skillName = skill_name })  } end,
+	["【(.+)】的光环效果提高 (%d+)%%"]= function(_, skill_name,num) return {  mod("AuraEffect", "INC", tonumber(num),  { type = "SkillName", skillName = FuckSkillActivityCnName(skill_name) })  } end,
 	["此物品上的技能石总攻击和施法速度额外提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Speed", "MORE", tonumber(num)) },  { type = "SocketedIn", slotName ="{SlotName}"} ) } end,
 	["此物品上的技能石火焰、冰霜、闪电总伤害额外提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ElementalDamage", "MORE", tonumber(num)) }, { type = "SocketedIn", slotName ="{SlotName}"} ) } end,
 	["此物品上的技能石元素总伤害额外提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ElementalDamage", "MORE", tonumber(num)) }, { type = "SocketedIn", slotName ="{SlotName}"} ) } end,
@@ -2003,23 +2015,23 @@ local specialModList = {
 	["先祖卫士放置速度提高 (%d+)%%"] = function(num) return {  mod("TotemPlacementSpeed", "INC", tonumber(num),nil,nil, KeywordFlag.Totem,{ type = "SkillName", skillName = "先祖卫士" })  } end,
 	["先祖卫士的火焰、冰霜、闪电抗性 %+(%d+)%%"] = function(num) return {  mod("ElementalResist", "INC", tonumber(num),nil,nil, KeywordFlag.Totem,{ type = "SkillName", skillName = "先祖卫士" })  } end,
 	["先祖卫士的元素抗性 %+(%d+)%%"] = function(num) return {  mod("ElementalResist", "INC", tonumber(num),nil,nil, KeywordFlag.Totem,{ type = "SkillName", skillName = "先祖卫士" })  } end,
-	["【([^\\x00-\\xff]*)】范围扩大 (%d+)%%"] = function(_,skill_name,num) return {  mod("AreaOfEffect", "INC", tonumber(num),nil,nil,{ type = "SkillName", skillName =skill_name })  } end,
+	["【([^\\x00-\\xff]*)】范围扩大 (%d+)%%"] = function(_,skill_name,num) return {  mod("AreaOfEffect", "INC", tonumber(num),nil,nil,{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
 	["在【寒冰弹】上施放时，【漩涡】的范围效果扩大 (%d+)%%"]= function(num) return {  mod("AreaOfEffect", "INC", tonumber(num),{ type = "Condition", var = "CastOnFrostbolt" },{ type = "SkillName", skillName ="漩涡" })  } end,
-	["【([^\\x00-\\xff]*)】可以额外发射 (%d+) 个投射物"]= function(_,skill_name,num) return {  mod("ProjectileCount", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name:gsub("火舌图腾","圣焰图腾") })  } end,
-	["【([^\\x00-\\xff]*)】可以额外发射 (%d+) 个箭矢"]= function(_,skill_name,num) return {  mod("ProjectileCount", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end,
-	["【([^\\x00-\\xff]*)】有 (%d+)%% 几率造成双倍伤害"]= function(_,skill_name,num) return {  mod("DoubleDamageChance", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
-	["【([^\\x00-\\xff]*)】的总移动速度额外提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("MovementSpeed", "MORE", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
+	["【([^\\x00-\\xff]*)】可以额外发射 (%d+) 个投射物"]= function(_,skill_name,num) return {  mod("ProjectileCount", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
+	["【([^\\x00-\\xff]*)】可以额外发射 (%d+) 个箭矢"]= function(_,skill_name,num) return {  mod("ProjectileCount", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
+	["【([^\\x00-\\xff]*)】有 (%d+)%% 几率造成双倍伤害"]= function(_,skill_name,num) return {  mod("DoubleDamageChance", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
+	["【([^\\x00-\\xff]*)】的总移动速度额外提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("MovementSpeed", "MORE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
 	["([^\\x00-\\xff]*)魔像给予你的增益效果提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("BuffEffect", "INC", tonumber(num),{ type = "SkillName", skillName ="召唤"..skill_name:gsub("雷电","闪电").."魔像" })  } end, 
 	["%+(%d+)%% ([^\\x00-\\xff]*)魔像的火焰、冰霜、闪电抗性"] = function(_,num,skill_name) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num)) },{ type = "SkillName", skillName ="召唤"..skill_name:gsub("雷电","闪电").."魔像" })  } end,
 	["%+(%d+)%% ([^\\x00-\\xff]*)魔像的元素抗性"] = function(_,num,skill_name) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num)) },{ type = "SkillName", skillName ="召唤"..skill_name:gsub("雷电","闪电").."魔像" })  } end,
-	["【([^\\x00-\\xff]*)】的范围扩大 (%d+)%%"]= function(_,skill_name,num) return {  mod("AreaOfEffect", "INC", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
+	["【([^\\x00-\\xff]*)】的范围扩大 (%d+)%%"]= function(_,skill_name,num) return {  mod("AreaOfEffect", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
 	["攻城炮台的放置速度提高 (%d+)%%"]= function(num) return {  mod("TotemPlacementSpeed", "INC", tonumber(num),{ type = "SkillName", skillName ="攻城炮台" })  } end, 
 	["%+(%d+)%% 幻化守卫的火焰、冰霜、闪电抗性"] = function(_,num,skill_name) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num)) },{ type = "SkillName", skillName ="幻化守卫" })  } end,
 	["%+(%d+)%% 幻化守卫的元素抗性"] = function(_,num,skill_name) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num)) },{ type = "SkillName", skillName ="幻化守卫" })  } end,
-	["【([^\\x00-\\xff]*)】爆炸范围扩大 (%d+)%%"]= function(_,skill_name,num) return {  mod("AreaOfEffectSecondary", "INC", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
+	["【([^\\x00-\\xff]*)】爆炸范围扩大 (%d+)%%"]= function(_,skill_name,num) return {  mod("AreaOfEffectSecondary", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
 	["【([^\\x00-\\xff]*)】对流血敌人附加 (%d+) %- (%d+) 基础物理伤害"]= function(_,skill_name,num1,num2) return { 
-		 mod("PhysicalMin", "BASE", num1,nil, KeywordFlag.Hit, { type = "ActorCondition", actor = "enemy", var = "Bleeding" },{ type = "SkillName", skillName =skill_name }) ,
-		 mod("PhysicalMax", "BASE", num2, nil,KeywordFlag.Hit, { type = "ActorCondition", actor = "enemy", var = "Bleeding" },{ type = "SkillName", skillName =skill_name }) } end, 
+		 mod("PhysicalMin", "BASE", num1,nil, KeywordFlag.Hit, { type = "ActorCondition", actor = "enemy", var = "Bleeding" },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) }) ,
+		 mod("PhysicalMax", "BASE", num2, nil,KeywordFlag.Hit, { type = "ActorCondition", actor = "enemy", var = "Bleeding" },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) }) } end, 
 	["冰霜新星有 %+(%d+)%% 冰冻几率"]= function(num) return {  mod("EnemyFreezeChance", "BASE", tonumber(num),{ type = "SkillName", skillName ="冰霜新星" })  } end, 
 	["冰霜之锤有 %+(%d+)%% 几率冰冻"]= function(num) return {  mod("EnemyFreezeChance", "BASE", tonumber(num),{ type = "SkillName", skillName ="冰霜之锤" })  } end, 
 	["【燃火烧尽】范围效果扩大 (%d+)%%"]= function(num) return {  mod("AreaOfEffect", "INC", tonumber(num),{ type = "SkillName", skillName ="烧毁" })  } end, 
@@ -2031,31 +2043,31 @@ local specialModList = {
 			mod("Multiplier:IncinerateStage", "BASE", tonumber(num), 0, 0, { type = "SkillPart", skillPart = 3 })	} end,	
 	["回春图腾的光环效果提高 (%d+)%%"]= function(num) return {  mod("AuraEffect", "INC", tonumber(num),{ type = "SkillName", skillName ="回春图腾" })  } end, 
 	["火球有 %+(%d+)%% 几率点燃"]= function(num) return {  mod("EnemyIgniteChance", "BASE", tonumber(num),{ type = "SkillName", skillName ="火球" })  } end, 
-	["【([^\\x00-\\xff]*)】有 %+(%d+)%% 的几率点燃"]=  function(_,skill_name,num)  return {  mod("EnemyIgniteChance", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
-	["【([^\\x00-\\xff]*)】有 %+(%d+)%% 的几率感电"]=  function(_,skill_name,num)  return {  mod("EnemyShockChance", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
-	["【([^\\x00-\\xff]*)】和其召唤生物的伤害提高 (%d+)%%"] = function(_,skill_name,num)  return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", tonumber(num)) },{ type = "SkillName", skillName =skill_name })  } end,
-	["【([^\\x00-\\xff]*)】和该技能的召唤生物攻击速度提高 (%d+)%%"] = function(_,skill_name,num)  return { mod("MinionModifier", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack) },{ type = "SkillName", skillName =skill_name })  } end,
+	["【([^\\x00-\\xff]*)】有 %+(%d+)%% 的几率点燃"]=  function(_,skill_name,num)  return {  mod("EnemyIgniteChance", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
+	["【([^\\x00-\\xff]*)】有 %+(%d+)%% 的几率感电"]=  function(_,skill_name,num)  return {  mod("EnemyShockChance", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
+	["【([^\\x00-\\xff]*)】和其召唤生物的伤害提高 (%d+)%%"] = function(_,skill_name,num)  return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", tonumber(num)) },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
+	["【([^\\x00-\\xff]*)】和该技能的召唤生物攻击速度提高 (%d+)%%"] = function(_,skill_name,num)  return { mod("MinionModifier", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack) },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
 	["【火焰新星】的地雷伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", tonumber(num),{ type = "SkillName", skillName ="火焰新星地雷" })  } end, 
-	["【([^\\x00-\\xff]*)】会使攻击速度额外提高 (%d+)%%"]=  function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack,{ type = "GlobalEffect", effectType = "Buff" }) }, { type = "SkillName", skillName =skill_name } ) } end,
-	["【([^\\x00-\\xff]*)】的护体持续时间延长 (%d+)%%"]= function(_,skill_name,num) return {  mod("FortifyDuration", "INC", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
-	["【([^\\x00-\\xff]*)】提供的攻击格挡率提高 %+(%d+)%%"]= function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("BlockChance", "BASE", tonumber(num),{ type = "GlobalEffect", effectType = "Buff" }) }, { type = "SkillName", skillName =skill_name } ) } end,
+	["【([^\\x00-\\xff]*)】会使攻击速度额外提高 (%d+)%%"]=  function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack,{ type = "GlobalEffect", effectType = "Buff" }) }, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) } ) } end,
+	["【([^\\x00-\\xff]*)】的护体持续时间延长 (%d+)%%"]= function(_,skill_name,num) return {  mod("FortifyDuration", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
+	["【([^\\x00-\\xff]*)】提供的攻击格挡率提高 %+(%d+)%%"]= function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("BlockChance", "BASE", tonumber(num),{ type = "GlobalEffect", effectType = "Buff" }) }, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) } ) } end,
 	["【飞刃风暴】的每片刀刃 %+(%d+)%% 攻击和法术暴击伤害加成"] = function(num) return { mod("CritMultiplier", "BASE", tonumber(num), { type = "Multiplier", var = "BladeVortexBlade" }, { type = "SkillName", skillName = "飞刃风暴" }) } end, 
 	["提高 (%d+)%% 幻化武器时间"]= function(num) return {  mod("Duration", "INC", tonumber(num),{ type = "SkillName", skillName ="幻化武器" })  } end, 
 	["【([^\\x00-\\xff]*)】造成冰冻，感电，点燃的几率提高 %+(%d+)%%"]= function(_,skill_name,num) return { 
-	 mod("EnemyFreezeChance", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name })  ,
-	  mod("EnemyShockChance", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name })  ,
+	 mod("EnemyFreezeChance", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  ,
+	  mod("EnemyShockChance", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  ,
 	   mod("EnemyIgniteChance", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name })   } end, 
-	["【([^\\x00-\\xff]*)】额外连锁弹射 (%d+) 次"]=  function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ChainCountMax", "BASE", tonumber(num)) }, { type = "SkillName", skillName =skill_name } ) } end,
-	["【([^\\x00-\\xff]*)】会额外连锁 (%d+) 次"]=  function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ChainCountMax", "BASE", tonumber(num)) }, { type = "SkillName", skillName =skill_name } ) } end,
+	["【([^\\x00-\\xff]*)】额外连锁弹射 (%d+) 次"]=  function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ChainCountMax", "BASE", tonumber(num)) }, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) } ) } end,
+	["【([^\\x00-\\xff]*)】会额外连锁 (%d+) 次"]=  function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ChainCountMax", "BASE", tonumber(num)) }, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) } ) } end,
 	["【灵魂奉献】给予等同 %+(%d+)%% 物理伤害的额外混沌伤害"]=  function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("PhysicalDamageGainAsChaos", "BASE", tonumber(num)) }, { type = "SkillName", skillName ="灵魂奉献" } ) } end,
 	["闪电陷阱的伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", tonumber(num),{ type = "SkillName", skillName ="闪电陷阱" })  } end, 
-	["【([^\\x00-\\xff]*)】有 (%d+)%% 几率对流血敌人造成双倍伤害"]= function(_,skill_name,num) return {  mod("DoubleDamageChance", "BASE", tonumber(num),{ type = "ActorCondition", actor = "enemy", var = "Bleeding" },{ type = "SkillName", skillName =skill_name })  } end, 
+	["【([^\\x00-\\xff]*)】有 (%d+)%% 几率对流血敌人造成双倍伤害"]= function(_,skill_name,num) return {  mod("DoubleDamageChance", "BASE", tonumber(num),{ type = "ActorCondition", actor = "enemy", var = "Bleeding" },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
 	["踩中【捕熊陷阱】的敌人受到陷阱或地雷的击中伤害提高 (%d+)%%"] = function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("TrapMineDamageTaken", "INC", tonumber(num), { type = "GlobalEffect", effectType = "Debuff" }) }, { type = "SkillName", skillName = "捕熊陷阱" }) } end,
-	["【([^\\x00-\\xff]*)】对燃烧中敌人的伤害提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("Damage", "INC", tonumber(num),{ type = "ActorCondition", actor = "enemy", var = "Burning" },{ type = "SkillName", skillName =skill_name })  } end, 
-	["【([^\\x00-\\xff]*)】的投掷伤害提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("Damage", "INC", tonumber(num),{ type = "SkillName", skillName =skill_name})  } end, 
-	["【([^\\x00-\\xff]*)】的投掷物速度提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("ProjectileSpeed", "INC", tonumber(num),{ type = "SkillName", skillName =skill_name})  } end, 
-	["【([^\\x00-\\xff]*)】技能会使减益效果的持续时间延长 (%d+)%%"]= function(_,skill_name,num) return {  mod("SecondaryDuration", "INC", tonumber(num),{ type = "SkillName", skillName =skill_name:gsub("霜害","寒霜爆")})  } end,   
-	["【([^\\x00-\\xff]*)】提供的召唤生物攻击速度提高 (%d+)%%"]= function(_,skill_name,num) return { mod("MinionModifier", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack,{ type = "GlobalEffect", effectType = "Buff" }) },{ type = "SkillName", skillName =skill_name })  } end,
+	["【([^\\x00-\\xff]*)】对燃烧中敌人的伤害提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("Damage", "INC", tonumber(num),{ type = "ActorCondition", actor = "enemy", var = "Burning" },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
+	["【([^\\x00-\\xff]*)】的投掷伤害提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("Damage", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name)})  } end, 
+	["【([^\\x00-\\xff]*)】的投掷物速度提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("ProjectileSpeed", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name)})  } end, 
+	["【([^\\x00-\\xff]*)】技能会使减益效果的持续时间延长 (%d+)%%"]= function(_,skill_name,num) return {  mod("SecondaryDuration", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name)})  } end,   
+	["【([^\\x00-\\xff]*)】提供的召唤生物攻击速度提高 (%d+)%%"]= function(_,skill_name,num) return { mod("MinionModifier", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack,{ type = "GlobalEffect", effectType = "Buff" }) },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
 	["先祖战士长图腾生效时，你的近战伤害提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Damage", "INC", tonumber(num),nil, ModFlag.Melee,{ type = "GlobalEffect", effectType = "Buff" }) }, { type = "SkillName", skillName ="先祖战士长" } ) } end,
 	["当先祖卫士图腾存在时，攻击速度提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil, ModFlag.Attack,{ type = "GlobalEffect", effectType = "Buff" }) }, { type = "SkillName", skillName ="先祖卫士" } ) } end,
 	["【灵体】的攻击和施法速度提高 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("Speed", "INC", tonumber(num)) },{ type = "SkillName", skillName ="召唤灵体" })  } end,
@@ -2066,12 +2078,12 @@ local specialModList = {
 	["愤怒狂灵的最大生命提高 (%d+)%%"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("Life", "INC", num) }, { type = "SkillName", skillName = "召唤愤怒狂灵" })  } end, 
 	 ["召唤愤怒狂灵的伤害提高 (%d+)%%"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) }, { type = "SkillName", skillName = "召唤愤怒狂灵" })  } end, 
 	["劈砍攻击速度提高 (%d+)%%"]= function(num) return {  mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack,{ type = "SkillName", skillName ="劈砍" })  } end, 
-	["每个狂怒球可使【([^\\x00-\\xff]*)】的伤害提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("Damage", "INC", tonumber(num),{ type = "Multiplier", var = "FrenzyCharge" },{ type = "SkillName", skillName =skill_name })  } end, 
+	["每个狂怒球可使【([^\\x00-\\xff]*)】的伤害提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("Damage", "INC", tonumber(num),{ type = "Multiplier", var = "FrenzyCharge" },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
 	["每个狂怒球可使狂怒伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", tonumber(num),{ type = "Multiplier", var = "FrenzyCharge" },{ type = "SkillName", skillName ="狂怒" })  } end, 
-	["【([^\\x00-\\xff]*)】可使移动速度额外提高 (%d+)%%"]= function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("MovementSpeed", "INC", tonumber(num),{ type = "GlobalEffect", effectType = "Buff" }) }, { type = "SkillName", skillName =skill_name } ) } end,
-	["【([^\\x00-\\xff]*)】的施放速度提高 (%d+)%%"]= function(_,skill_name,num)  return {  mod("Speed", "INC", tonumber(num),nil,ModFlag.Cast,{ type = "SkillName", skillName =skill_name })  } end, 
+	["【([^\\x00-\\xff]*)】可使移动速度额外提高 (%d+)%%"]= function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("MovementSpeed", "INC", tonumber(num),{ type = "GlobalEffect", effectType = "Buff" }) }, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) } ) } end,
+	["【([^\\x00-\\xff]*)】的施放速度提高 (%d+)%%"]= function(_,skill_name,num)  return {  mod("Speed", "INC", tonumber(num),nil,ModFlag.Cast,{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
 	["诱饵图腾的生命提高 (%d+)%%"]= function(num) return {  mod("TotemLife", "INC", tonumber(num),{ type = "SkillName", skillName ="诱饵图腾" })  } end, 
-	["【([^\\x00-\\xff]*)】造成的燃烧地面持续时间延长 (%d+)%%"]= function(_,skill_name,num)  return {  mod("Duration", "INC", tonumber(num),{ type = "SkillName", skillName =skill_name })  } end, 
+	["【([^\\x00-\\xff]*)】造成的燃烧地面持续时间延长 (%d+)%%"]= function(_,skill_name,num)  return {  mod("Duration", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
 	["【灼热连接】放置速度提高 (%d+)%%"]= function(num)  return {  mod("TotemPlacementSpeed", "INC", tonumber(num),{ type = "SkillName", skillName ="灼热连接" })  } end, 
 	["【冰矛】第二阶段的暴击率提高 (%d+)%%"]= function(num)  return {  mod("CritChance", "INC", tonumber(num),{ type = "SkillName", skillName ="冰矛" },{ type = "SkillPart", skillPart = 2 })  } end, 
 	["受到【雷霆之捷】影响时，伤害穿透 (%d+)%% 闪电抗性"]= function(num) return {  mod("LightningPenetration", "BASE", num,{ type = "Condition", var = "AffectedBy闪电之捷" })  } end, 
@@ -2271,7 +2283,7 @@ local specialModList = {
 	["寒冬宝珠每阶可使范围效果扩大 (%d+)%%"] = function(num) return { mod("AreaOfEffect", "INC", num, { type = "SkillName", skillName = "寒冬宝珠"}, { type = "Multiplier", var = "WinterOrbStage" }) } end, 
 		["【寒冬宝珠】每一阶范围效果扩大 (%d+)%%"] = function(num) return { mod("AreaOfEffect", "INC", num, { type = "SkillName", skillName = "寒冬宝珠"}, { type = "Multiplier", var = "WinterOrbStage" }) } end,
 	 ["【旗帜技能】不保留魔力"] = { mod("SkillData", "LIST", { key = "manaCostForced", value = 0 }, { type = "SkillName", skillNameList = { "恐怖之旗", "战旗" } }) },
-	 ["【(.+)】会发射 (%d+) 个额外投射物"]=  function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ProjectileCount", "BASE", tonumber(num)) }, { type = "SkillName", skillName =skill_name } ) } end,
+	 ["【(.+)】会发射 (%d+) 个额外投射物"]=  function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ProjectileCount", "BASE", tonumber(num)) }, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) } ) } end,
 	["被击中时，受到的闪电总伤害额外降低 (%d+)%%"] = function(num) return { mod("LightningDamageTaken", "MORE", -num) } end,
 	 ["被击中时，受到的冰霜总伤害额外降低 (%d+)%%"] = function(num) return { mod("ColdDamageTaken", "MORE", -num) } end,
 	 ["被击中时，受到的火焰总伤害额外降低 (%d+)%%"] = function(num) return { mod("FireDamageTaken", "MORE", -num) } end,
@@ -2463,6 +2475,9 @@ local specialModList = {
 	mod("ExtraAura", "LIST", 
 	{ mod = mod("PhysicalMax", "BASE", tonumber(num1)) },  { type = "Multiplier", var = "ImpaleStack", actor = "enemy" }),
 	} end,
+	["根据和目标的距离来提升总近战伤害，最高额外提高 (%d+)%%"]= function(num) return { 	
+	mod("Damage", "MORE", num, ModFlag.Melee, 0, { type = "DistanceRamp",  ramp = {{15,1},{40,0}}},{ type = "Condition", var = "CanMeleeDistanceRamp" }),
+	}end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

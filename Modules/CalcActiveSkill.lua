@@ -343,9 +343,11 @@ skillName = activeGrantedEffect.name:gsub("^瓦尔.",""):gsub("召唤魔侍","�
 		skillPart = activeSkill.skillPart,
 		skillTypes = activeSkill.skillTypes,
 		skillCond = { },
-		skillDist = env.mode_effective and env.configInput.projectileDistance,
+		skillDist = env.mode_effective and (env.configInput.projectileDistance or env.configInput.meleeDistanceWithEnemy),
+		
 		slotName = activeSkill.slotName,
 	}
+
 	if skillFlags.weapon1Attack then
 		activeSkill.weapon1Cfg = copyTable(activeSkill.skillCfg, true)
 		activeSkill.weapon1Cfg.skillCond = setmetatable({ ["MainHandAttack"] = true }, { __index = activeSkill.skillCfg.skillCond })

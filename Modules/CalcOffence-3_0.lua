@@ -190,6 +190,8 @@ function calcs.offence(env, actor, activeSkill)
 	skillCfg.skillCond["SkillIsTriggered"] = skillData.triggered
 
 	-- Add addition stat bonuses
+	
+	
 	if skillModList:Flag(nil, "IronGrip") then
 		skillModList:NewMod("PhysicalDamage", "INC", actor.strDmgBonus, "Strength", bor(ModFlag.Attack, ModFlag.Projectile))
 	end
@@ -1067,6 +1069,8 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 						local resist = 0
 						local pen = 0
 						local taken = enemyDB:Sum("INC", cfg, "DamageTaken", damageType.."DamageTaken")
+						local takenMore = enemyDB:Sum("MORE", cfg, "DamageTaken", damageType.."DamageTaken")
+						
 						if damageType == "Physical" then
 							resist = enemyDB:Sum("BASE", nil, "PhysicalDamageReduction")
 						else
@@ -1086,8 +1090,8 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 						if skillFlags.trap or skillFlags.mine then
 							taken = taken + enemyDB:Sum("INC", nil, "TrapMineDamageTaken")
 						end
-						local effMult = (1 + taken / 100)	
-						local effMultChaos = (1 + taken / 100)	
+						local effMult = (1 + taken / 100)	*(1+takenMore/100)
+						local effMultChaos = (1 + taken / 100)	*(1+takenMore/100)
 						--[[如果不是元素  或者 不是 无视元素抗性 那么计算抗性收益
 						
 						]]--
@@ -1106,7 +1110,7 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 						
 						if pass == 2 and breakdown and effMult ~= 1 then
 t_insert(breakdown[damageType], s_format("x %.3f ^8(有效 DPS 加成)", effMult))
-							breakdown[damageType.."EffMult"] = breakdown.effMult(damageType, resist, pen, taken, effMult)
+							breakdown[damageType.."EffMult"] = breakdown.effMult(damageType, resist, pen, taken,takenMore, effMult)
 						end
 					end
 					if pass == 2 and breakdown then
@@ -1409,6 +1413,7 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 			if env.mode_effective then
 				local resist = 0
 				local taken = enemyDB:Sum("INC", nil, "DamageTaken", "DamageTakenOverTime", damageType.."DamageTaken", damageType.."DamageTakenOverTime")
+				local takenMore = enemyDB:Sum("MORE", nil, "DamageTaken", "DamageTakenOverTime", damageType.."DamageTaken", damageType.."DamageTakenOverTime")
 				if damageType == "Physical" then
 					resist = enemyDB:Sum("BASE", nil, "PhysicalDamageReduction")
 				else
@@ -1419,10 +1424,10 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 					end
 					resist = m_min(resist, 75)
 				end
-				effMult = (1 - resist / 100) * (1 + taken / 100)
+				effMult = (1 - resist / 100) * (1 + taken / 100)* (1 + takenMore / 100)
 				output[damageType.."DotEffMult"] = effMult
 				if breakdown and effMult ~= 1 then
-					breakdown[damageType.."DotEffMult"] = breakdown.effMult(damageType, resist, 0, taken, effMult)
+					breakdown[damageType.."DotEffMult"] = breakdown.effMult(damageType, resist, 0, taken,takenMore, effMult)
 				end
 			end
 			local inc = skillModList:Sum("INC", dotTypeCfg, "Damage", damageType.."Damage", isElemental[damageType] and "ElementalDamage" or nil)
@@ -1645,10 +1650,12 @@ t_insert(breakdownDPS, "总伤害:")
 				if env.mode_effective then
 					local resist = enemyDB:Sum("BASE", nil, "PhysicalDamageReduction")
 					local taken = enemyDB:Sum("INC", dotCfg, "DamageTaken", "DamageTakenOverTime", "PhysicalDamageTaken", "PhysicalDamageTakenOverTime")
-					effMult = (1 - resist / 100) * (1 + taken / 100)
+					local takenMore = enemyDB:Sum("MORE", dotCfg, "DamageTaken", "DamageTakenOverTime", "PhysicalDamageTaken", "PhysicalDamageTakenOverTime")
+					
+					effMult = (1 - resist / 100) * (1 + taken / 100)* (1 + takenMore / 100)
 					globalOutput["BleedEffMult"] = effMult
 					if breakdown and effMult ~= 1 then
-						globalBreakdown.BleedEffMult = breakdown.effMult("Physical", resist, 0, taken, effMult)
+						globalBreakdown.BleedEffMult = breakdown.effMult("Physical", resist, 0, taken,takenMore, effMult)
 					end
 				end
 				local effectMod = calcLib.mod(skillModList, dotCfg, "AilmentEffect")
@@ -1780,10 +1787,11 @@ t_insert(globalBreakdown.BleedDuration, s_format("/ %.2f ^8(更快或较慢 debu
 				if env.mode_effective then
 					local resist = m_min(enemyDB:Sum("BASE", nil, "ChaosResist"), 75)
 					local taken = enemyDB:Sum("INC", nil, "DamageTaken", "DamageTakenOverTime", "ChaosDamageTaken", "ChaosDamageTakenOverTime")
-					effMult = (1 - resist / 100) * (1 + taken / 100)
+					local takenMore = enemyDB:Sum("MORE", nil, "DamageTaken", "DamageTakenOverTime", "ChaosDamageTaken", "ChaosDamageTakenOverTime")
+					effMult = (1 - resist / 100) * (1 + taken / 100)* (1 + takenMore / 100)
 					globalOutput["PoisonEffMult"] = effMult
 					if breakdown and effMult ~= 1 then
-						globalBreakdown.PoisonEffMult = breakdown.effMult("Chaos", resist, 0, taken, effMult)
+						globalBreakdown.PoisonEffMult = breakdown.effMult("Chaos", resist, 0, taken,takenMore, effMult)
 					end
 				end
 				local effectMod = calcLib.mod(skillModList, dotCfg, "AilmentEffect")
@@ -1937,10 +1945,12 @@ s_format("点燃计算模式: %s ^8(可以在配置面板修改)", igniteMode ==
 				if env.mode_effective then
 					local resist = m_min(enemyDB:Sum("BASE", nil, "FireResist", "ElementalResist"), 75)
 					local taken = enemyDB:Sum("INC", dotCfg, "DamageTaken", "DamageTakenOverTime", "FireDamageTaken", "FireDamageTakenOverTime", "ElementalDamageTaken")
-					effMult = (1 - resist / 100) * (1 + taken / 100)
+					local takenMore = enemyDB:Sum("MORE", dotCfg, "DamageTaken", "DamageTakenOverTime", "FireDamageTaken", "FireDamageTakenOverTime", "ElementalDamageTaken")
+					
+					effMult = (1 - resist / 100) * (1 + taken / 100)* (1 + takenMore / 100)
 					globalOutput["IgniteEffMult"] = effMult
 					if breakdown and effMult ~= 1 then
-						globalBreakdown.IgniteEffMult = breakdown.effMult("Fire", resist, 0, taken, effMult)
+						globalBreakdown.IgniteEffMult = breakdown.effMult("Fire", resist, 0, taken, takenMore,effMult)
 					end
 				end
 				local effectMod = calcLib.mod(skillModList, dotCfg, "AilmentEffect")
@@ -2193,10 +2203,12 @@ t_insert(breakdown.ImpaleModifier, s_format("x %.2f ^8(穿刺几率)", impaleCha
 		if env.mode_effective then
 			local resist = m_min(enemyDB:Sum("BASE", nil, "ChaosResist"), 75)
 			local taken = enemyDB:Sum("INC", nil, "DamageTaken", "DamageTakenOverTime", "ChaosDamageTaken", "ChaosDamageTakenOverTime")
-			effMult = (1 - resist / 100) * (1 + taken / 100)
+			local takenMore = enemyDB:Sum("MORE", nil, "DamageTaken", "DamageTakenOverTime", "ChaosDamageTaken", "ChaosDamageTakenOverTime")
+			
+			effMult = (1 - resist / 100) * (1 + taken / 100)* (1 + takenMore / 100)
 			output["DecayEffMult"] = effMult
 			if breakdown and effMult ~= 1 then
-				breakdown.DecayEffMult = breakdown.effMult("Chaos", resist, 0, taken, effMult)
+				breakdown.DecayEffMult = breakdown.effMult("Chaos", resist, 0, taken,takenMore, effMult)
 			end
 		end
 		local inc = skillModList:Sum("INC", dotCfg, "Damage", "ChaosDamage")

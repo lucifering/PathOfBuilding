@@ -293,7 +293,7 @@ function ModStoreClass:EvalMod(mod, cfg)
 		elseif tag.type == "DistanceRamp" then
 			if not cfg or not cfg.skillDist then
 				return
-			end
+			end			
 			if cfg.skillDist <= tag.ramp[1][1] then
 				value = value * tag.ramp[1][2]
 			elseif cfg.skillDist >= tag.ramp[#tag.ramp][1] then

@@ -3244,10 +3244,10 @@ name = "最大效果",
 	},
 	statMap = {
 		["physical_damage_aura_nearby_enemies_physical_damage_taken_+%"] = {
-			mod("PhysicalDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "AuraDebuff", modCond = "MinEffect" }),
+			mod("PhysicalDamageTaken", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "AuraDebuff", modCond = "MinEffect" }),
 		},
 		["physical_damage_aura_nearby_enemies_physical_damage_taken_+%_max"] = {
-			mod("PhysicalDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "AuraDebuff", modCond = "MaxEffect" }),
+			mod("PhysicalDamageTaken", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "AuraDebuff", modCond = "MaxEffect" }),
 		},
 	},
 	baseFlags = {

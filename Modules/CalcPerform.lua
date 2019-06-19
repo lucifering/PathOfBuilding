@@ -40,13 +40,19 @@ local function mergeBuff(src, destTable, destKey)
 	end
 end
 
+local function fuckCnKeystones(name)
+
+return name:gsub("致死定罪","凡人的信念")
+
+end
 -- Merge keystone modifiers
 local function mergeKeystones(env)
 	local modDB = env.modDB
 
 	for _, name in ipairs(modDB:List(nil, "Keystone")) do
+		name =fuckCnKeystones(name)
 		if not env.keystonesAdded[name] then
-			env.keystonesAdded[name] = true
+			env.keystonesAdded[name] = true			
 			modDB:AddList(env.spec.tree.keystoneMap[name].modList)
 		end
 	end

@@ -1810,8 +1810,10 @@ local specialModList = {
 	 = function(num) return {  mod("DamageLifeLeech", "BASE", num, { type = "Multiplier", var = "SiphoningCharge" })  } end,
 	["近期内你若有使用技能，每有 1 个轮回球，则每秒受到 (%d+) 物理伤害"]
 	 = function(num) return {  mod("PhysicalDegen", "BASE", num, { type = "Multiplier", var = "SiphoningCharge" },{ type = "Condition", var = "UsedSkillRecently" })  } end,
-	["近期内你若有使用战吼，你和周围友军的攻击，施法和移动速度提高 (%d+)%%"]= function(num) return { 
-	 mod("Speed", "INC", num,{ type = "Condition", var = "UsedWarcryRecently" }) , mod("MovementSpeed", "INC", num,{ type = "Condition", var = "UsedWarcryRecently" })  } end,
+	["近期内你若有使用战吼，你和周围友军的攻击，施法和移动速度提高 (%d+)%%"] = function(num) return {  
+	 mod("ExtraAura", "LIST", { mod =  mod("Speed", "INC", num) },{ type = "Condition", var = "UsedWarcryRecently" }) ,
+	 mod("ExtraAura", "LIST", { mod =  mod("MovementSpeed", "INC", num) },{ type = "Condition", var = "UsedWarcryRecently" })
+	 } end, 
 	["([%+%-]?%d+) 灵体最大生命"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "BASE", num) },{ type = "SkillName", skillName = "召唤灵体" })  } end,
 	["被击中时承受额外 ([%+%-]?%d+) 火焰伤害"] = function(num) return {  mod("FireDamageTakenWhenHit", "BASE", num)  } end,
 	["被击中时承受额外 ([%+%-]?%d+) 混沌伤害"] = function(num) return {  mod("ChaosDamageTakenWhenHit", "BASE", num)  } end,
@@ -2448,6 +2450,11 @@ local specialModList = {
 	["你造成的中毒伤害生效速度提高 (%d+)%%"]= function(num) return { 	
 	mod("PoisonFaster", "INC", num) 
 	}end,
+	["你造成的烈毒的伤害生效速度加快 (%d+)%%"]= function(num) return { 	
+	mod("PoisonFaster", "INC", num) 
+	}end,
+	["你攻击造成的点燃的伤害生效速度加快 (%d+)%%"] = function(num) return { mod("IgniteBurnFaster", "INC", num, nil, ModFlag.Attack) } end,
+	["你造成的点燃的伤害生效速度加快 (%d+)%%"] = function(num) return { mod("IgniteBurnFaster", "INC", num) } end,
 	["你造成的流血伤害生效速度提高 (%d+)%%"]= function(num) return { 	
 	mod("BleedFaster", "INC", num) 
 	}end,
@@ -2478,6 +2485,9 @@ local specialModList = {
 	["根据和目标的距离来提升总近战伤害，最高额外提高 (%d+)%%"]= function(num) return { 	
 	mod("Damage", "MORE", num, ModFlag.Melee, 0, { type = "DistanceRamp",  ramp = {{15,1},{40,0}}},{ type = "Condition", var = "CanMeleeDistanceRamp" }),
 	}end,
+	["照亮范围的扩大和缩小也同样作用于范围效果，等于其数值的 50%%"] = { flag("HalfOfLightRadiusAppliesToAreaOfEffect") },
+	["照亮范围的扩大和缩小也同样作用于伤害"] = { flag("LightRadiusAppliesToDamage") },
+	["当你使用弓箭攻击时触发 (%d+) 级的【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

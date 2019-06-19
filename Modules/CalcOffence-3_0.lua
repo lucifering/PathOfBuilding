@@ -258,6 +258,23 @@ function calcs.offence(env, actor, activeSkill)
 			skillModList:NewMod("Accuracy", "INC", mod.value, mod.source, mod.flags, mod.keywordFlags, unpack(mod))
 		end
 	end
+	if skillModList:Flag(nil, "HalfOfLightRadiusAppliesToAreaOfEffect") then
+		-- Light Radius conversion from 费西亚的花环
+		--照亮范围的扩大和缩小也同样作用于范围效果，等于其数值的 50%
+		for i, value in ipairs(skillModList:Tabulate("INC",  { }, "LightRadius")) do
+			local mod = value.mod
+			skillModList:NewMod("AreaOfEffect", "INC", mod.value/2, mod.source, mod.flags, mod.keywordFlags, unpack(mod))
+		end
+	end
+	if skillModList:Flag(nil, "LightRadiusAppliesToDamage") then
+		-- Light Radius conversion from 费西亚的花环
+		--照亮范围的扩大和缩小也同样作用于伤害
+		for i, value in ipairs(skillModList:Tabulate("INC",  { }, "LightRadius")) do
+			local mod = value.mod
+			skillModList:NewMod("Damage", "INC", mod.value, mod.source, mod.flags, mod.keywordFlags, unpack(mod))
+		end
+	end
+	
 	if skillModList:Flag(nil, "CastSpeedAppliesToTrapThrowingSpeed") then
 		-- Cast Speed conversion from Slavedriver's Hand
 		for i, value in ipairs(skillModList:Tabulate("INC", { flags = ModFlag.Cast }, "Speed")) do

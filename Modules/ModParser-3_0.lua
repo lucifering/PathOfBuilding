@@ -1711,6 +1711,7 @@ local specialModList = {
 	["装备时触发等级 20 闪电圣盾"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="LightningAegis", level = 20})   } end,
 	["获得等级 22 的 精准 技能"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="AccuracyAndCritsAura", level = 22})   } end,
 	["你的暴击加成为 (%d+)%%"]= function(num) return {  mod("CritMultiplier", "OVERRIDE", num, { type = "Global" } )  } end,
+	["你的暴击伤害加成为 (%d+)%%"]= function(num) return {  mod("CritMultiplier", "OVERRIDE", num, { type = "Global" } )  } end,
 	["获得 (%d+) 级的主动技能【元素之愈】"] = function(num) return {  mod("ExtraSkill", "LIST", { skillId ="VaalAuraElementalDamageHealing", level = num})   } end,
 	["获得 (%d+) 级的【幻象传送】"] = function(num) return {  mod("ExtraSkill", "LIST", { skillId ="MerveilWarp", level = num})   } end,
 	["(%d+)%% 的最大生命转化为能量护盾"]= function(num) return {  mod("LifeConvertToEnergyShield", "BASE", num)  } end,

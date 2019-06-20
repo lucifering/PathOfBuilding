@@ -3521,7 +3521,7 @@ skills["IceDash"] = {
 	baseEffectiveness = 2.0339000225067,
 	incrementalEffectiveness = 0.042599998414516,
 	description = "传送到指定地点，对敌人造成伤害，并在曾经所在区域留下冻缓地面。和其它闪现技能共用冷却时间。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.MovementSkill] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.ColdSkill] = true, [SkillType.ChillingArea] = true, [SkillType.TravelSkill] = true, [SkillType.BlinkSkill] = true, [SkillType.Area] = true, [SkillType.Triggerable] = true, },
+	skillTypes = { [SkillType.Spell] = true,[SkillType.Hit] = true, [SkillType.MovementSkill] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.ColdSkill] = true, [SkillType.ChillingArea] = true, [SkillType.TravelSkill] = true, [SkillType.BlinkSkill] = true, [SkillType.Area] = true, [SkillType.Triggerable] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true,},
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
 	baseFlags = {

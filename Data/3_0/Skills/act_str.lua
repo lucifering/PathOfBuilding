@@ -649,7 +649,9 @@ skills["Bladestorm"] = {
 	name = "剑刃风暴",
 	color = 1,
 	description = "发动一次旋转攻击，对你周围的敌人反复造成伤害，并基于你的姿态创造剑刃风暴。剑刃风暴对敌人造成的伤害基于你的武器伤害和攻击速度，并持续一段时间。血姿态下的剑刃风暴静止不动，沙姿态下的剑刃风暴会缓慢向前移动。需要剑类和斧类。默认为血姿态。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.Duration] = true, },
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.Duration] = true,
+	[SkillType.AttackCanRepeat] = true,
+	},
 	weaponTypes = {
 		["Two Handed Axe"] = true,
 		["Thrusting One Handed Sword"] = true,

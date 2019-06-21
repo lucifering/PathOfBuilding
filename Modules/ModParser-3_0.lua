@@ -1815,6 +1815,12 @@ local specialModList = {
 	 mod("ExtraAura", "LIST", { mod =  mod("Speed", "INC", num) },{ type = "Condition", var = "UsedWarcryRecently" }) ,
 	 mod("ExtraAura", "LIST", { mod =  mod("MovementSpeed", "INC", num) },{ type = "Condition", var = "UsedWarcryRecently" })
 	 } end, 
+	 ["近期内你若有使用战吼，你和周围友军的攻击速度提高 (%d+)%%"] = function(num) return {  
+	 mod("ExtraAura", "LIST", { mod =  mod("Speed", "INC", num,nil, ModFlag.Attack) },{ type = "Condition", var = "UsedWarcryRecently" }) ,
+	 } end, 
+	 ["近期内你若有使用战吼，你和周围友军的伤害提高 (%d+)%%"] = function(num) return {  
+	 mod("ExtraAura", "LIST", { mod =  mod("Damage", "INC", num) },{ type = "Condition", var = "UsedWarcryRecently" }) ,
+	 } end, 
 	["([%+%-]?%d+) 灵体最大生命"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "BASE", num) },{ type = "SkillName", skillName = "召唤灵体" })  } end,
 	["被击中时承受额外 ([%+%-]?%d+) 火焰伤害"] = function(num) return {  mod("FireDamageTakenWhenHit", "BASE", num)  } end,
 	["被击中时承受额外 ([%+%-]?%d+) 混沌伤害"] = function(num) return {  mod("ChaosDamageTakenWhenHit", "BASE", num)  } end,

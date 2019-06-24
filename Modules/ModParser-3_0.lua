@@ -238,6 +238,7 @@ local modNameList = {
 	["你造成的穿刺效果会额外持续"] = "ImpaleStacksMax",
 	["穿刺的效果"] = "ImpaleEffect",
 	["几率穿刺敌人"] = "ImpaleChance",
+	["技能的魔力消耗"] = "ManaCost",
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -941,6 +942,8 @@ local modTagList = {
 	["每一级在"] = { tag = { type = "Multiplier", var = "Level" } },
 	["每 (%d+) 点敏捷可使"] = function(num) return { tag = { type = "PerStat", stat = "Dex", div = num } } end, 
 	["拥有最大数量的狂怒球时，"] = { tag = { type = "StatThreshold", stat = "FrenzyCharges", thresholdStat = "FrenzyChargesMax" } }, --备注：while at maximum frenzy charges
+	["近期内你若打出过暴击，则"] = { tag = { type = "Condition", var = "CritRecently" } },
+	["近期内你若有打出过暴击，则"] = { tag = { type = "Condition", var = "CritRecently" } },
 	["近期内你若有打出过暴击，则"] = { tag = { type = "Condition", var = "CritRecently" } }, --备注：if you[' ]h?a?ve dealt a critical strike recently
 	["近期内你若打出暴击，则"] = { tag = { type = "Condition", var = "CritRecently" } },
 	["当不拥有耐力球时，"] = { tag = { type = "StatThreshold", stat = "EnduranceCharges", threshold = 0, upper = true } },
@@ -953,6 +956,7 @@ local modTagList = {
 	["每 (%d+) 点力量会使"] = function(num) return { tag = { type = "PerStat", stat = "Str", div = num } } end, --备注：per (%d+) strength
 	["近期若打出过暴击，则"] = { tag = { type = "Condition", var = "CritRecently" } },
 	["近期内你若被击中过，则"] = { tag = { type = "Condition", var = "BeenHitRecently" } },
+	["近期内你若有格挡，则"] = { tag = { type = "Condition", var = "BlockedRecently" } }, 
 	["近期内你若有过格挡，则"] = { tag = { type = "Condition", var = "BlockedRecently" } }, 
 	["近期内你若有过格挡，"] = { tag = { type = "Condition", var = "BlockedRecently" } }, 
 	["每个轮回球可使"] = { tag = { type = "Multiplier", var = "SiphoningCharge" } }, 
@@ -986,6 +990,7 @@ local modTagList = {
 	["在副手时，"] = { tag = { type = "SlotNumber", num = 2 } }, --备注：when in off hand
 	["每 (%d+) 力量 "] = function(num) return { tag = { type = "PerStat", stat = "Str", div = num } } end, --备注：per (%d+) strength
 	["使用此武器攻击时，"] = { tag = { type = "Condition", var = "{Hand}Attack" } }, 
+	["近期内你若击败过敌人，则"] = { tag = { type = "Condition", var = "KilledRecently" } }, 
 	["近期内你若击败过敌人，"] = { tag = { type = "Condition", var = "KilledRecently" } }, 
 	["药剂持续期间，获得"] = { tag = { type = "Condition", var = "UsingFlask" } },
 	["双持时的"] = { tag = { type = "Condition", var = "DualWielding" } }, 
@@ -993,6 +998,7 @@ local modTagList = {
 	["持盾时的"] = { tag = { type = "Condition", var = "UsingShield" } }, --备注：with shields
 	["持盾牌时的"] = { tag = { type = "Condition", var = "UsingShield" } }, --备注：with shields
 	["近期内你若受到伤害，则"] = { tag = { type = "Condition", var = "BeenHitRecently"} },
+	["近期内你若有被击中，则"] = { tag = { type = "Condition", var = "BeenHitRecently" } },
 	["近期内你若被击中，则"] = { tag = { type = "Condition", var = "BeenHitRecently" } },
 	["近期内你若没有击败过敌人，则"] = { tag = { type = "Condition", var = "KilledRecently" , neg = true} }, 
 	["盾牌装备上每有 (%d+) 点护甲值，便 "] = function(num) return { tag = { type = "PerStat", stat = "ArmourOnWeapon 2", div = num } } end, 
@@ -1053,6 +1059,7 @@ local modTagList = {
 	["每 (%d+) 点魔力会使"] = function(num) return { tag = { type = "PerStat", stat = "Mana", div = num } } end,
 	["每 (%d+) 点最大魔力会使"] = function(num) return { tag = { type = "PerStat", stat = "Mana", div = num } } end,
 	["【猛攻】效果持续时，"] = { tag = { type = "Condition", var = "Onslaught" } },
+	["近期内你若晕眩过敌人，则"] = { tag = { type = "Condition", var = "StunnedEnemyRecently" } },	
 	["近期内你若有晕眩敌人，则"] = { tag = { type = "Condition", var = "StunnedEnemyRecently" } },	
 	["近期内你若有击中敌人，"] = { tag = { type = "Condition", var = "HitRecently" } },	
 	["敌人身上每层穿刺效果可以为"] = { tag = { type = "Multiplier", var = "ImpaleStack", actor = "enemy" }},
@@ -2490,6 +2497,7 @@ local specialModList = {
 	{ mod = mod("PhysicalMax", "BASE", tonumber(num1)) },  { type = "Multiplier", var = "ImpaleStack", actor = "enemy" }),
 	} end,
 	["根据和目标的距离来提升总近战伤害，最高额外提高 (%d+)%%"]= function(num) return { 	
+	flag("Condition:CanMeleeDistanceRamp"),
 	mod("Damage", "MORE", num, ModFlag.Melee, 0, { type = "DistanceRamp",  ramp = {{15,1},{40,0}}},{ type = "Condition", var = "CanMeleeDistanceRamp" }),
 	}end,
 	["照亮范围的扩大和缩小也同样作用于范围效果，等于其数值的 50%%"] = { flag("HalfOfLightRadiusAppliesToAreaOfEffect") },

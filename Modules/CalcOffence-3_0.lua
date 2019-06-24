@@ -2136,7 +2136,7 @@ t_insert(breakdown.EnemyStunDuration, s_format("/ %.2f ^8(延长/缩短 敌人�
 		-- Calculate impale chance and modifiers
 		if canDeal.Physical and output.ImpaleChance > 0 then
             skillFlags.impale = true
-            local impaleChance = output.ImpaleChance/100
+            local impaleChance = m_min(output.ImpaleChance/100, 1)
             local maxStacks = 5 + skillModList:Sum("BASE", cfg, "ImpaleStacksMax") -- magic number: base stacks duration
             local configStacks = enemyDB:Sum("BASE", nil, "Multiplier:ImpaleStack")
             local impaleStacks = configStacks > 0 and m_min(configStacks, maxStacks) or  maxStacks

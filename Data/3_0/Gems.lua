@@ -5504,6 +5504,7 @@ return {
 		name = "血肉与岩石",
 		grantedEffectId = "BloodSandArmour",
 		tags = {
+			low_max_level = true,
 			strength = true,
 			active_skill = true,
 			spell = true,

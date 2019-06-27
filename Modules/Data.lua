@@ -66,6 +66,15 @@ local typeLabel = {
 	
 }
 
+-- 一些特殊技能有特殊等级
+local skillNameAndLevel = {
+
+	{name="血肉与岩石",grantedEffectId="BloodSandArmour",level=6},	
+	{name="血与沙",grantedEffectId="BloodSandStance",level=6},
+	{name="启蒙",grantedEffectId="SupportAdditionalXP",level=3},
+	{name="烙印召回",grantedEffectId="SigilRecall",level=6},
+}
+
 local skillTypes = {
 	"act_str",
 	"act_dex",
@@ -308,7 +317,18 @@ for _, targetVersion in ipairs(targetVersionList) do
 			gem.grantedEffect,
 			gem.secondaryGrantedEffect
 		}
+		
 		gem.defaultLevel = (#gem.grantedEffect.levels > 20 and #gem.grantedEffect.levels - 20) or (gem.grantedEffect.levels[3][1] and 3) or 1
+		
+		for index in pairs(skillNameAndLevel) do
+			
+				if gem.grantedEffectId == skillNameAndLevel[index].grantedEffectId then				 
+					gem.defaultLevel =skillNameAndLevel[index].level
+					 
+				end
+		end
+		
+		
 
 	end
 

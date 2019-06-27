@@ -2484,6 +2484,7 @@ skills["SupportBluntWeaponShockwave"] = {
 		area = true,
 	},
 	baseMods = {
+	skill("showAverage", true),
 	},
 	qualityStats = {
 		{ "melee_damage_+%", 0.5 },

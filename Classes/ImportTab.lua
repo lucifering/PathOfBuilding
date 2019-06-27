@@ -763,7 +763,7 @@ function ImportTabClass:ImportSocketedItems(item, socketedItems, slotName)
 		elseif not self.controls.charImportItemsClearSkills.state then 
 		
 		local gemInstance = { level = 20, quality = 0, enabled = true, enableGlobal1 = true }
-			gemInstance.nameSpec = socketedItem.typeLine:gsub(" Support","")
+			gemInstance.nameSpec = self:SupportHybridSkillName(socketedItem.typeLine:gsub(" Support",""))
 			gemInstance.support = socketedItem.support
 			for _, property in pairs(socketedItem.properties) do
 if property.name == "等级" then
@@ -820,6 +820,19 @@ elseif property.name == "品质" then
 	end	
 end
 
+
+function ImportTabClass:SupportHybridSkillName(typeLine)
+	if typeLine == "震波" then 
+	
+	return "震波辅助"
+	
+	else 
+	
+	return typeLine
+	
+	end
+	
+end
 function ImportTabClass:OpenPastebinImportPopup()
 	local controls = { }
 controls.editLabel = new("LabelControl", nil, 0, 20, 0, 16, "输入Pastebin链接（由17173国服版分享的）:")

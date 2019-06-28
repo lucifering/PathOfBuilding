@@ -95,6 +95,7 @@ local formList = {
 local modNameList = {
 	--【中文化程序额外添加开始】
 	["攻击和移动速度"] = { "Speed", "MovementSpeed" },
+	["攻击速度，施法速度和移动速度"] = { "Speed", "MovementSpeed" },
 	["不被攻击击中"] = "AttackDodgeChance", 
 	["攻击和法术暴击伤害加成"] = {"CritMultiplier"}, --备注：critical strike multiplier -- 这个需要提到前面来
 	["攻击和法术基础暴击伤害加成"] = {"CritMultiplier", ModFlag.Hit}, --备注：critical strike multiplier -- 
@@ -161,6 +162,8 @@ local modNameList = {
 	["攻击造成的投射物伤害"] = { "Damage", flags = bor(ModFlag.Projectile, ModFlag.Attack) },
 	["最大闪避值"] = "Evasion",
 	["击中伤害和异常状态伤害"] = { "Damage",  keywordFlags = bor(KeywordFlag.Hit, KeywordFlag.Ailment)}, --备注：attack damage
+	["击中火焰伤害和异常状态伤害"] = { "FireDamage",  keywordFlags = bor(KeywordFlag.Hit, KeywordFlag.Ailment)}, 
+	["击中物理伤害和异常状态伤害"] = { "PhysicalDamage",  keywordFlags = bor(KeywordFlag.Hit, KeywordFlag.Ailment)}, 
 	["【闪电之捷】的增益效果"] = { "BuffEffect", tag = { type = "SkillName", skillName = "闪电之捷" } },
 	["你造成的中毒持续时间"] = { "EnemyPoisonDuration" }, --备注：duration of poisons you inflict
 	["物品数量"] = "LootQuantity",
@@ -954,6 +957,7 @@ local modTagList = {
 	["每 (%d+) 点敏捷会使"] = function(num) return { tag = { type = "PerStat", stat = "Dex", div = num } } end, 
 	["每 (%d+) 点力量会使 "] = function(num) return { tag = { type = "PerStat", stat = "Str", div = num } } end, --备注：per (%d+) strength
 	["每 (%d+) 点力量会使"] = function(num) return { tag = { type = "PerStat", stat = "Str", div = num } } end, --备注：per (%d+) strength
+	["每有 (%d+) 点力量，"] = function(num) return { tag = { type = "PerStat", stat = "Str", div = num } } end, 
 	["近期若打出过暴击，则"] = { tag = { type = "Condition", var = "CritRecently" } },
 	["近期内你若被击中过，则"] = { tag = { type = "Condition", var = "BeenHitRecently" } },
 	["近期内你若有格挡，则"] = { tag = { type = "Condition", var = "BlockedRecently" } }, 
@@ -984,6 +988,7 @@ local modTagList = {
 	["若你有至少 (%d+) 点敏捷，则"] = function(num) return { tag = { type = "StatThreshold", stat = "Dex", threshold = num } } end, --备注：w?h?i[lf]e? you have at least (%d+) strength
 	["若你有至少 (%d+) 点智慧，则"] = function(num) return { tag = { type = "StatThreshold", stat = "Int", threshold = num } } end, --备注：w?h?i[lf]e? you have at least (%d+) dexterity
 	["若你有至少 (%d+) 点力量，则"] = function(num) return { tag = { type = "StatThreshold", stat = "Str", threshold = num } } end, --备注：w?h?i[lf]e? you have at least (%d+) intelligence
+	["当力量超过 (%d+) 点时，"] = function(num) return { tag = { type = "StatThreshold", stat = "Str", threshold = num } } end,
 	["近期内你若被击中，则"] = { tag = { type = "Condition", var = "BeenHitRecently" } },
 	["击中点燃敌人时"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Ignited" }, keywordFlags = KeywordFlag.Hit }, 
 	["在主手时，"] = { tag = { type = "SlotNumber", num = 1 } }, --备注：when in main hand
@@ -1068,6 +1073,10 @@ local modTagList = {
 	["使用尊严时"] = { tag = { type = "Condition", var = "AffectedBy尊严" } }, 
 	["如果敏捷高于智慧，则"] = { tag = { type = "Condition", var = "DexHigherThanInt" } }, 
 	["力量高于智慧时，"] = { tag = { type = "Condition", var = "StrHigherThanInt" } }, 
+	["当你获得【火之化身】时，"] = { tag = { type = "Condition", var = "Have火之化身Keystone" } }, 
+	["当你没有获得【火之化身】时，"] = { tag = { type = "Condition", var = "Have火之化身Keystone" ,neg = true} },
+	["当你没有获得【霸体】时，"] = { tag = { type = "Condition", var = "Have霸体Keystone" ,neg = true} },
+	["当你获得【霸体】时，"] = { tag = { type = "Condition", var = "Have霸体Keystone"} },
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -1394,6 +1403,7 @@ local specialModList = {
 	["药剂持续期间，攻击格挡率提高 ([%+%-]?%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,  
 	["药剂持续期间，法术伤害格挡几率提高 ([%+%-]?%d+)%%"] = function(num) return {  mod("SpellBlockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,  
 	["药剂持续期间，法术格挡率提高 ([%+%-]?%d+)%%"] = function(num) return {  mod("SpellBlockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,  
+	["每有 (%d+) 点力量，攻击伤害格挡几率额外 ([%+%-]?%d+)%%"] = function(_,num1,num2) return {  mod("BlockChance", "INC", tonumber(num2),{ type = "PerStat", stat = "Str", div = tonumber(num1) })  } end,
 	["持长杖时，攻击格挡率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "UsingStaff" })  } end,  
 	["持长杖时法术伤害格挡几率提高 (%d+)%%"] = function(num) return {  mod("SpellBlockChance", "BASE", num,{ type = "Condition", var = "UsingStaff" })  } end,  
 	["持盾时攻击格挡率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num, { type = "Condition", var = "UsingShield" } )  } end,  
@@ -1489,6 +1499,7 @@ local specialModList = {
 	["身上未装备已腐化的物品时，每秒回复 (%d+) 生命"] = function(num) return {  mod("LifeRegen", "BASE", num,{ type = "MultiplierThreshold", var = "CorruptedItem", threshold = 0, upper = true })  } end,
 	["被点燃时，获得 (%d+) 每秒生命回复"] = function(num) return {  mod("LifeRegen", "BASE", num,{ type = "Condition", var = "Ignited" })  } end,
 	["在冰缓地面上每秒回复 (%d+)%% 生命"] = function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "OnChilledGround" } )  } end,
+	["当力量超过 (%d+) 点时，每秒回复 ([%d%.]+)%% 生命"] = function(num1,_,num2) return {  mod("LifeRegenPercent", "BASE", tonumber(num2),{ type = "StatThreshold", stat = "Str", threshold = tonumber(num1) } )  } end,
 	["移动时每秒回复 ([%d%.]+)%% 生命"] = function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "Moving" } )  } end,
 	["每秒回复 ([%d%.]+) 生命"] = function(num) return {  mod("LifeRegen", "BASE", num)  } end,
 	["每个耐力球提高 ([%d%.]+)%% 每秒生命回复"] = function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Multiplier", var = "EnduranceCharge" })  } end,
@@ -2283,6 +2294,11 @@ local specialModList = {
 	 ["此武器的攻击对敌人造成双倍伤害"] = { mod("Damage", "MORE", 100, nil, ModFlag.Hit, { type = "Condition", var = "{Hand}Attack" }) }, 
 	  ["此武器的攻击造成双倍伤害"] = { mod("Damage", "MORE", 100, nil, ModFlag.Hit, { type = "Condition", var = "{Hand}Attack" }) }, 
 	 ["投射物的伤害随着飞行距离提升，击中目标时最多提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num, nil, bor(ModFlag.Attack, ModFlag.Projectile), { type = "DistanceRamp", ramp = {{35,0},{70,1}} }) } end,
+	 ["当你没有获得【霸体】时，获得【远射】"] = { flag("FarShot", { type = "Condition", var = "Have霸体Keystone" ,neg = true}) },
+	 ["当你获得【霸体】时，近距离用弓击中后的总伤害额外提高 (%d+)%%"] = function(num) return { 	 
+	 mod("Damage", "MORE", num,nil,ModFlag.Hit, { type = "Condition", var = "AtCloseRange" }, { type = "Condition", var = "Have霸体Keystone"}) 	 
+	 } end, 
+	 ["获得【远射】"] = { flag("FarShot") },
 	 ["远射"] = { flag("FarShot") },
 	 ["狙击"] = { flag("FarShot") }, 
 	 ["%-(%d+) 最大图腾数量"] = function(num) return { mod("ActiveTotemLimit", "BASE", -num) } end, 
@@ -3330,6 +3346,7 @@ local function getPerStat(dst, modType, flags, stat, factor)
 	end
 end
 local jewelSelfFuncs = {
+	["范围内每配置 10 点智慧，混沌伤害提高 5%"] = getPerStat("ChaosDamage", "INC", 0, "Int", 5 / 10),
 	["Adds 1 to maximum Life per 3 Intelligence in Radius"] = getPerStat("Life", "BASE", 0, "Int", 1 / 3),
 	["范围内每配置 3 点智慧，最大生命提高 1 点"] = getPerStat("Life", "BASE", 0, "Int", 1 / 3), --备注：Adds 1 to Maximum Life per 3 Intelligence Allocated in Radius
 	["范围内每配置 3 点敏捷，闪避值提高 1%"] = getPerStat("Evasion", "INC", 0, "Dex", 1 / 3), --备注：1% increased Evasion Rating per 3 Dexterity Allocated in Radius

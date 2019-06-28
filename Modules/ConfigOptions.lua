@@ -47,6 +47,7 @@ return {
 		 
 			
 			modList:NewMod("Multiplier:spellEchoCount", "BASE", m_min(tonumber(val), 2), "Config")
+			modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Multiplier:spellEchoCount", "BASE", m_min(tonumber(val), 2), "Config") }, "Config")
 		 
 	end },
 { label = "多重打击:", ifSkill =  "多重打击(辅)"  },
@@ -54,8 +55,10 @@ return {
 		 
 		   if val =="1" then 
 				modList:NewMod("Condition:MultistrikeFirstRepeat", "FLAG", true, "Config")
+				modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Condition:MultistrikeFirstRepeat", "FLAG", true, "Config") }, "Config")
 		   elseif val=="2" then 
 				modList:NewMod("Condition:MultistrikeSecondRepeat", "FLAG", true, "Config")
+				modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Condition:MultistrikeSecondRepeat", "FLAG", true, "Config") }, "Config")
 		   end 		   
 			 
 		 

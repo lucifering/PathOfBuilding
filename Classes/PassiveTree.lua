@@ -307,6 +307,7 @@ local cdnRoot = treeVersion == "2_6" and "" or ""--https://web.poecdn.com"
 		end
 		if node.type == "Keystone" then
 			node.keystoneMod = modLib.createMod("Keystone", "LIST", node.dn, "Tree"..node.id)
+			node.modList:NewMod("Condition:Have"..node.dn.."Keystone", "FLAG", true, "Tree:"..node.id)
 		end
 	end
 

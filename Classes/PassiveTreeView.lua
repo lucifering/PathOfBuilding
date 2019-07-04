@@ -64,6 +64,20 @@ function PassiveTreeViewClass:Save(xml)
 	}
 end
 
+
+function table.shallow_copy(t)
+
+	if t==nil then
+		return nil;
+	end 
+  local t2 = {}
+  for k,v in pairs(t) do
+    t2[k] = v
+  end
+  return t2
+end
+
+
 function PassiveTreeViewClass:Draw(build, viewPort, inputEvents)
 	 
 	local spec = build.spec
@@ -392,15 +406,17 @@ function PassiveTreeViewClass:Draw(build, viewPort, inputEvents)
 				base = tree.assets[node.overlay[state]]
 				local socket, jewel = build.itemsTab:GetSocketAndJewelForNodeID(nodeId)
 				if node.alloc and jewel then
-					if jewel.baseName == "Crimson Jewel" then
+if jewel.baseName == "赤红珠宝" then
 						overlay = "JewelSocketActiveRed"
-					elseif jewel.baseName == "Viridian Jewel" then
+elseif jewel.baseName == "翠绿珠宝" then
 						overlay = "JewelSocketActiveGreen"
-					elseif jewel.baseName == "Cobalt Jewel" then
+elseif jewel.baseName == "钴蓝珠宝" then
 						overlay = "JewelSocketActiveBlue"
-					elseif jewel.baseName == "Prismatic Jewel" then
+elseif jewel.baseName == "三相珠宝" then
 						overlay = "JewelSocketActivePrismatic"
-					elseif jewel.baseName:match("Eye Jewel$") then
+elseif jewel.baseName == "永恒珠宝" then
+						overlay = "JewelSocketActiveTimeless"
+elseif jewel.baseName:match("之凝珠宝$") then
 						overlay = "JewelSocketActiveAbyss"
 					end
 				end
@@ -484,6 +500,7 @@ function PassiveTreeViewClass:Draw(build, viewPort, inputEvents)
 			local size = 175 * scale / self.zoom ^ 0.4
 			DrawImage(self.highlightRing, scrX - size, scrY - size, size * 2, size * 2)
 		end
+		-- 这里考虑刷新
 		if node == hoverNode and (node.type ~= "Socket" or not IsKeyDown("SHIFT")) and not main.popups[1] then
 			-- Draw tooltip
 			SetDrawLayer(nil, 100)
@@ -494,7 +511,7 @@ function PassiveTreeViewClass:Draw(build, viewPort, inputEvents)
 			self.tooltip:Draw(m_floor(scrX - size), m_floor(scrY - size), size * 2, size * 2, viewPort)
 		end
 	end
-
+	--珠宝 圈圈
 	-- Draw ring overlays for jewel sockets
 	SetDrawLayer(nil, 25)
 	for nodeId, slot in pairs(build.itemsTab.sockets) do
@@ -515,10 +532,43 @@ function PassiveTreeViewClass:Draw(build, viewPort, inputEvents)
 				local radData = build.data.jewelRadius[jewel.jewelRadiusIndex]
 				local size = radData.rad * scale
 				SetDrawColor(radData.col)
-				DrawImage(self.ring, scrX - size, scrY - size, size * 2, size * 2)				
+				
+				if jewel.name and string.find(jewel.name, '好战的信仰') == 1 then		
+					 
+					SetDrawColor(1, 1, 1)	 
+					DrawImage(tree.assets.PassiveSkillScreenTemplarJewelCircle1.handle, scrX - size, scrY - size, (size) * 2, (size) * 2)					
+					DrawImage(tree.assets.PassiveSkillScreenTemplarJewelCircle2.handle, scrX - size, scrY - size, (size) * 2, (size) * 2) 
+					
+				elseif jewel.name and string.find(jewel.name, '致命的骄傲') == 1 then
+				
+					SetDrawColor(1, 1, 1)	 
+					DrawImage(tree.assets.PassiveSkillScreenKaruiJewelCircle1.handle, scrX - size, scrY - size, (size) * 2, (size) * 2)					
+					DrawImage(tree.assets.PassiveSkillScreenKaruiJewelCircle2.handle, scrX - size, scrY - size, (size) * 2, (size) * 2) 				
+				
+				elseif jewel.name and string.find(jewel.name, '光彩夺目') == 1 then
+					SetDrawColor(1, 1, 1)	 
+					DrawImage(tree.assets.PassiveSkillScreenVaalJewelCircle1.handle, scrX - size, scrY - size, (size) * 2, (size) * 2)					
+					DrawImage(tree.assets.PassiveSkillScreenVaalJewelCircle2.handle, scrX - size, scrY - size, (size) * 2, (size) * 2) 
+				elseif jewel.name and string.find(jewel.name, '优雅的狂妄') == 1 then
+				
+					SetDrawColor(1, 1, 1)	 
+					DrawImage(tree.assets.PassiveSkillScreenEternalEmpireJewelCircle1.handle, scrX - size, scrY - size, (size) * 2, (size) * 2)					
+					DrawImage(tree.assets.PassiveSkillScreenEternalEmpireJewelCircle2.handle, scrX - size, scrY - size, (size) * 2, (size) * 2) 
+				
+				
+				elseif jewel.name and string.find(jewel.name, '残酷的约束') == 1 then
+					SetDrawColor(1, 1, 1)	 
+					DrawImage(tree.assets.PassiveSkillScreenMarakethJewelCircle1.handle, scrX - size, scrY - size, (size) * 2, (size) * 2)					
+					DrawImage(tree.assets.PassiveSkillScreenMarakethJewelCircle2.handle, scrX - size, scrY - size, (size) * 2, (size) * 2)				
+				
+				else
+				
+					DrawImage(self.ring, scrX - size, scrY - size, size * 2, size * 2)
+				end		
 			end
 		end
 	end
+	
 end
 
 -- Draws the given asset at the given position

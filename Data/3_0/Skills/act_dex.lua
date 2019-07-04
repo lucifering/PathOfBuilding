@@ -6696,7 +6696,7 @@ skills["WhirlingBlades"] = {
 	},
 }
 skills["WildStrike"] = {
-	name = "狂野部族打击",
+	name = "野性打击",
 	color = 2,
 	description = "使用近战武器打击敌人，将物理伤害转换为随机的元素伤害。根据转换成的元素释放出猛烈的爆炸、弧动的闪电箭或冰霜波。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.LightningSkill] = true, [SkillType.ColdSkill] = true, [SkillType.FireSkill] = true, [SkillType.Projectile] = true, [SkillType.Area] = true, [SkillType.Chaining] = true, [SkillType.ProjectileAttack] = true, },

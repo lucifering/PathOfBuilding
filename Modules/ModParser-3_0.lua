@@ -210,6 +210,7 @@ local modNameList = {
 	["几率造成双倍伤害"] = "DoubleDamageChance",
 	["异常状态持续时间"] = { "EnemyShockDuration", "EnemyFreezeDuration", "EnemyChillDuration", "EnemyIgniteDuration", "EnemyPoisonDuration", "EnemyBleedDuration" },
 	["非异常状态的持续混沌伤害加成"] = "ChaosDotMultiplier",
+	["非异常状态的持续混沌伤害额外加成"] = "ChaosDotMultiplier",
 	["从偷取获取的每秒生命回复"] = "LifeLeechRate",
 	["从偷取获取的每秒魔力回复"] = "ManaLeechRate",
 	["从偷取获取的每秒能量护盾回复"] = "EnergyShieldLeechRate",
@@ -1366,7 +1367,7 @@ if activity_skillname == nil then
 	return "未知"
 else
 
-	return activity_skillname:gsub("野性打击","狂野部族打击") :gsub("火舌图腾","圣焰图腾"):gsub("霜害","寒霜爆")
+	return activity_skillname:gsub("狂野部族打击","野性打击") :gsub("火舌图腾","圣焰图腾"):gsub("霜害","寒霜爆")
 
 end
 end
@@ -1655,7 +1656,7 @@ local specialModList = {
 	["近期每击败一个敌人，范围效果提高 (%d+)%%，最大 (%d+)%%"]= function(_,num1,num2) return {  mod("AreaOfEffect", "INC", tonumber(num1),{ type = "Multiplier", var = "EnemyKilledRecently", limit = tonumber(num2), limitTotal = true } )  } end,
 	["最大耐力球数量等同于最大狂怒球数量"] = { flag("MaximumEnduranceChargesIsMaximumFrenzyCharges") },
 	["狂怒球达到上限时，物理总伤害额外提高 (%d+)%%"]= function(num) return {  mod("PhysicalDamage", "MORE", num, { type = "StatThreshold", stat = "FrenzyCharges", thresholdStat = "FrenzyChargesMax" })  } end,
-	["击中和异常状态对流血敌人的伤害提高 (%d+)%%"]= function(num) return {  	mod("Damage", "INC", num,nil,ModFlag.Ailment, KeywordFlag.Hit, { type = "ActorCondition", actor = "enemy", var = "Bleeding" })  } end,
+	["击中和异常状态对流血敌人的伤害提高 (%d+)%%"]= function(num) return {  	mod("Damage", "INC", num,nil,0,bor(KeywordFlag.Hit, KeywordFlag.Ailment) , { type = "ActorCondition", actor = "enemy", var = "Bleeding" })  } end,
 	["近期内你若有成功嘲讽敌人，则每秒回复 ([%d%.]+)%% 生命"]= function(num) return {  mod("LifeRegenPercent", "BASE", num, { type = "Condition", var = "TauntedEnemyRecently" } )  } end,
 	["近期内你若有击败敌人，则总伤害额外提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num, { type = "Condition", var = "KilledRecently" })  } end,
 	["【猛攻】状态下闪避近战攻击的几率额外提高 (%d+)%%"] = function(num) return {  mod("MeleeEvadeChance", "MORE", num, { type = "Condition", var = "Onslaught" } )  } end,
@@ -2057,8 +2058,8 @@ local specialModList = {
 	["%+(%d+)%% 幻化守卫的元素抗性"] = function(_,num,skill_name) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num)) },{ type = "SkillName", skillName ="幻化守卫" })  } end,
 	["【([^\\x00-\\xff]*)】爆炸范围扩大 (%d+)%%"]= function(_,skill_name,num) return {  mod("AreaOfEffectSecondary", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
 	["【([^\\x00-\\xff]*)】对流血敌人附加 (%d+) %- (%d+) 基础物理伤害"]= function(_,skill_name,num1,num2) return { 
-		 mod("PhysicalMin", "BASE", num1,nil, KeywordFlag.Hit, { type = "ActorCondition", actor = "enemy", var = "Bleeding" },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) }) ,
-		 mod("PhysicalMax", "BASE", num2, nil,KeywordFlag.Hit, { type = "ActorCondition", actor = "enemy", var = "Bleeding" },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) }) } end, 
+		 mod("PhysicalMin", "BASE", num1,nil,0, KeywordFlag.Hit, { type = "ActorCondition", actor = "enemy", var = "Bleeding" },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) }) ,
+		 mod("PhysicalMax", "BASE", num2, nil,0,KeywordFlag.Hit, { type = "ActorCondition", actor = "enemy", var = "Bleeding" },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) }) } end, 
 	["冰霜新星有 %+(%d+)%% 冰冻几率"]= function(num) return {  mod("EnemyFreezeChance", "BASE", tonumber(num),{ type = "SkillName", skillName ="冰霜新星" })  } end, 
 	["冰霜之锤有 %+(%d+)%% 几率冰冻"]= function(num) return {  mod("EnemyFreezeChance", "BASE", tonumber(num),{ type = "SkillName", skillName ="冰霜之锤" })  } end, 
 	["【燃火烧尽】范围效果扩大 (%d+)%%"]= function(num) return {  mod("AreaOfEffect", "INC", tonumber(num),{ type = "SkillName", skillName ="烧毁" })  } end, 
@@ -2296,8 +2297,8 @@ local specialModList = {
 	 ["投射物的伤害随着飞行距离提升，击中目标时最多提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num, nil, bor(ModFlag.Attack, ModFlag.Projectile), { type = "DistanceRamp", ramp = {{35,0},{70,1}} }) } end,
 	 ["当你没有获得【霸体】时，获得【远射】"] = { flag("FarShot", { type = "Condition", var = "Have霸体Keystone" ,neg = true}) },
 	 ["当你获得【霸体】时，近距离用弓击中后的总伤害额外提高 (%d+)%%"] = function(num) return { 	 
-	 mod("Damage", "MORE", num,nil,ModFlag.Hit, { type = "Condition", var = "AtCloseRange" }, { type = "Condition", var = "Have霸体Keystone"}) 	 
-	 } end, 
+		 mod("Damage", "MORE", num,nil,ModFlag.Hit, { type = "Condition", var = "AtCloseRange" }, { type = "Condition", var = "Have霸体Keystone"}) 	 
+	} end,  
 	 ["获得【远射】"] = { flag("FarShot") },
 	 ["远射"] = { flag("FarShot") },
 	 ["狙击"] = { flag("FarShot") }, 
@@ -3333,6 +3334,9 @@ local jewelOtherFuncs = {
 			out:NewMod("AllocatedPassiveSkillHasNoEffect", "FLAG", true, data.modSource)
 		end
 	end,
+	 
+	
+	
 }
 
 -- Radius jewels that modify the jewel itself based on nearby allocated nodes

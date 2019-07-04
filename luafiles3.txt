@@ -1,3 +1,4 @@
+TreeData/JewelSocketActiveTimeless.png
 TreeData/Background1.png
 TreeData/BackgroundDex.png
 TreeData/BackgroundDexInt.png

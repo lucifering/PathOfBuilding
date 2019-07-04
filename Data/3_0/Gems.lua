@@ -3929,7 +3929,7 @@ return {
 		reqInt = 40,
 	},
 	["Metadata/Items/Gems/SkillGemWildStrike"] = {
-		name = "狂野部族打击",
+		name = "野性打击",
 		grantedEffectId = "WildStrike",
 		tags = {
 			dexterity = true,

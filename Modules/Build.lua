@@ -187,14 +187,14 @@ self.controls.characterLevel = new("EditControl", {"LEFT",self.controls.pointDis
 			end
 		end
 	end
-	self.controls.classDrop = new("DropDownControl", {"LEFT",self.controls.characterLevel,"RIGHT"}, 8, 0, 100, 20, nil, function(index, value)
+	self.controls.classDrop = new("DropDownControl", {"LEFT",self.controls.characterLevel,"RIGHT"}, 8, 0, 200, 20, nil, function(index, value)
 		if value.classId ~= self.spec.curClassId then
 			if self.spec:CountAllocNodes() == 0 or self.spec:IsClassConnected(value.classId) then
 				self.spec:SelectClass(value.classId)
 				self.spec:AddUndoState()
 				self.buildFlag = true
 			else
-main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会重置你目前的天赋树.\n你可以考虑连接当前的天赋点到 "..value.label.." 出门点就不会被重置了。", "Continue", function()
+main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会重置你目前的天赋树.\n你可以考虑连接当前的天赋点到 "..value.label.." 出门点就不会被重置了。", "继续", function()
 					self.spec:SelectClass(value.classId)
 					self.spec:AddUndoState()
 					self.buildFlag = true					

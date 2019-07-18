@@ -154,7 +154,7 @@ local function doActorAttribsPoolsConditions(env, actor)
 	end
 --计算 属性
 	-- Calculate attributes
-	for _, stat in pairs({"Str","Dex","Int"}) do
+	for _, stat in pairs({"Str","Dex","Int","Devotion"}) do
 		output[stat] = m_max(round(calcLib.val(modDB, stat)), 0)
 		if breakdown then
 			breakdown[stat] = breakdown.simple(nil, nil, output[stat], stat)
@@ -208,23 +208,45 @@ modDB:NewMod("EnergyShield", "INC", round(output.Int / 5), "智慧")
 		if breakdown then
 			if inc ~= 0 or more ~= 1 or conv ~= 0 then
 				breakdown.Life = { }
-				breakdown.Life[1] = s_format("%g ^8(base)", base)
+				breakdown.Life[1] = s_format("%g ^8(基础)", base)
 				if inc ~= 0 then
-					t_insert(breakdown.Life, s_format("x %.2f ^8(increased/reduced)", 1 + inc/100))
+					t_insert(breakdown.Life, s_format("x %.2f ^8(提高/降低)", 1 + inc/100))
 				end
 				if more ~= 1 then
-					t_insert(breakdown.Life, s_format("x %.2f ^8(more/less)", more))
+					t_insert(breakdown.Life, s_format("x %.2f ^8(额外提高/降低)", more))
 				end
 				if conv ~= 0 then
-					t_insert(breakdown.Life, s_format("x %.2f ^8(converted to Energy Shield)", 1 - conv/100))
+					t_insert(breakdown.Life, s_format("x %.2f ^8(转化为能量护盾)", 1 - conv/100))
 				end
 				t_insert(breakdown.Life, s_format("= %g", output.Life))
 			end
 		end
 	end
-	output.Mana = round(calcLib.val(modDB, "Mana"))
+	local convMana = modDB:Sum("BASE", nil, "ManaConvertToDoubleArmour")
+	
+	
+	local baseMana = modDB:Sum("BASE", nil, "Mana")
+	local incMana = modDB:Sum("INC", nil, "Mana")
+	local moreMana = modDB:More(nil, "Mana")
+	
+	output.Mana = round(calcLib.val(modDB, "Mana")* (1 - convMana/100))
 	if breakdown then
 		breakdown.Mana = breakdown.simple(nil, nil, output.Mana, "Mana")
+		if incMana ~= 0 or moreMana ~= 1 or convMana ~= 0 then
+				breakdown.Mana = { }
+				breakdown.Mana[1] = s_format("%g ^8(基础)", baseMana)
+				if incMana ~= 0 then
+					t_insert(breakdown.Mana, s_format("x %.2f ^8(提高/降低)", 1 + incMana/100))
+				end
+				if moreMana ~= 1 then
+					t_insert(breakdown.Mana, s_format("x %.2f ^8(额外提高/降低)", moreMana))
+				end
+				if convMana ~= 0 then
+					t_insert(breakdown.Mana, s_format("x %.2f ^8(转化为护甲)", 1 - convMana/100))
+				end
+				t_insert(breakdown.Mana, s_format("= %g", output.Mana))
+		end
+		
 	end
 
 	-- Life/mana reservation
@@ -333,7 +355,7 @@ modDB:NewMod("DamageTakenWhenHit", "INC", -effect, "护体")
 			local effect = m_floor(20 * (1 + modDB:Sum("INC", nil, "OnslaughtEffect", "BuffEffectOnSelf") / 100))
 modDB:NewMod("Speed", "INC", effect, "猛攻")
 modDB:NewMod("MovementSpeed", "INC", effect, "猛攻")
-		end
+		end		 
 		if modDB:Flag(nil, "UnholyMight") then
 			local effect = m_floor(30 * (1 + modDB:Sum("INC", nil, "BuffEffectOnSelf") / 100))
 modDB:NewMod("PhysicalDamageGainAsChaos", "BASE", effect, "不洁之力")

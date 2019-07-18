@@ -280,7 +280,7 @@ t_insert(combatList, "护体")
 		end
 		if env.modDB:Flag(nil, "Onslaught") then
 t_insert(combatList, "猛攻")
-		end
+		end		 
 		if env.modDB:Flag(nil, "UnholyMight") then
 t_insert(combatList, "不洁之力")
 		end

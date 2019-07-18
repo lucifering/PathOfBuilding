@@ -59,7 +59,7 @@ function calcs.defence(env, actor)
 			total = 100
 		else
 			max = modDB:Override(nil, elem.."ResistMax") or m_min(100, modDB:Sum("BASE", nil, elem.."ResistMax"))
-			total = modDB:Override(nil, elem.."Resist") or modDB:Sum("BASE", nil, elem.."Resist", isElemental[elem] and "ElementalResist")
+			total = modDB:Override(nil, elem.."Resist") or modDB:Sum("BASE", nil, elem.."Resist", isElemental[elem] and "ElementalResist")*(1+modDB:Sum("MORE", nil, elem.."Resist", isElemental[elem] and "ElementalResist")/100)
 		end
 		local final = m_min(total, max)
 		output[elem.."Resist"] = final
@@ -148,12 +148,23 @@ function calcs.defence(env, actor)
 				breakdown.slot("Global", nil, nil, armourBase, nil, "Armour", "ArmourAndEvasion", "Defences")
 			end
 		end
+		local convManaToDoubleArmour = modDB:Sum("BASE", nil, "ManaConvertToDoubleArmour")
+		if convManaToDoubleArmour > 0 then
+			--双倍护甲 
+			armourBase = modDB:Sum("BASE", nil, "Mana") * convManaToDoubleArmour / 100 * 2
+			 
+			armour = armour + armourBase * calcLib.mod(modDB, nil, "Mana", "Armour", "Defences") 
+			if breakdown then
+				breakdown.slot("Conversion", "魔力 转 双倍护甲", nil, armourBase, nil, "Armour", "Defences", "Mana")
+			end
+		end
+		
 		evasionBase = modDB:Sum("BASE", nil, "Evasion", "ArmourAndEvasion")
 		if evasionBase > 0 then
 			if ironReflexes then
 				armour = armour + evasionBase * calcLib.mod(modDB, nil, "Armour", "Evasion", "ArmourAndEvasion", "Defences")
 				if breakdown then
-					breakdown.slot("Conversion", "Evasion to Armour", nil, evasionBase, nil, "Armour", "Evasion", "ArmourAndEvasion", "Defences")
+					breakdown.slot("Conversion", "闪避 转 护甲", nil, evasionBase, nil, "Armour", "Evasion", "ArmourAndEvasion", "Defences")
 				end
 			else
 				evasion = evasion + evasionBase * calcLib.mod(modDB, nil, "Evasion", "ArmourAndEvasion", "Defences")
@@ -167,7 +178,7 @@ function calcs.defence(env, actor)
 			energyShieldBase = modDB:Sum("BASE", nil, "Mana") * convManaToES / 100
 			energyShield = energyShield + energyShieldBase * calcLib.mod(modDB, nil, "Mana", "EnergyShield", "Defences") 
 			if breakdown then
-				breakdown.slot("Conversion", "Mana to Energy Shield", nil, energyShieldBase, nil, "EnergyShield", "Defences", "Mana")
+				breakdown.slot("Conversion", "魔力 转 能量护盾", nil, energyShieldBase, nil, "EnergyShield", "Defences", "Mana")
 			end
 		end
 		local convLifeToES = modDB:Sum("BASE", nil, "LifeConvertToEnergyShield", "LifeGainAsEnergyShield")
@@ -181,10 +192,17 @@ function calcs.defence(env, actor)
 			end
 			energyShield = energyShield + total
 			if breakdown then
-				breakdown.slot("Conversion", "Life to Energy Shield", nil, energyShieldBase, total, "EnergyShield", "Defences", "Life")
+				breakdown.slot("Conversion", "生命 转 能量护盾", nil, energyShieldBase, total, "EnergyShield", "Defences", "Life")
 			end
 		end
-		output.EnergyShield = m_max(round(energyShield), 0)
+		
+		local energyShieldOverride = modDB:Override(nil, "EnergyShield")	
+		if energyShieldOverride  then
+			output.EnergyShield = energyShieldOverride
+		else
+			output.EnergyShield = m_max(round(energyShield), 0)
+		end		
+		
 		output.Armour = m_max(round(armour), 0)
 		output.Evasion = m_max(round(evasion), 0)
 		output.LowestOfArmourAndEvasion = m_min(output.Armour, output.Evasion)

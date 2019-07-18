@@ -867,9 +867,14 @@ end
 
 -- Update the item lists for all the slot controls
 function ItemsTabClass:PopulateSlots()
+	 
+	
 	for _, slot in pairs(self.slots) do
 		slot:Populate()
 	end
+	if self.build and self.build.spec then 
+	self.build.spec:resetAllocTimeJew()
+	end 
 end
 
 -- Updates the status and position of the socket controls
@@ -892,6 +897,8 @@ function ItemsTabClass:UpdateSockets()
 		self.sockets[nodeId].label = "Socket #"..index
 		self.lastSlot = self.sockets[nodeId]
 	end
+	
+	
 end
 
 -- Returns the slot control and equipped jewel for the given node ID

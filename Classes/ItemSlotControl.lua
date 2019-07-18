@@ -120,11 +120,16 @@ self.controls.activate.tooltipText = "启用这瓶药剂."
 end)
 
 function ItemSlotClass:SetSelItemId(selItemId)
+
+
 	self.selItemId = selItemId
+	
 	if self.nodeId then
-		if self.itemsTab.build.spec then
+		
+		if self.itemsTab.build.spec then	
+			
 			self.itemsTab.build.spec.jewels[self.nodeId] = selItemId
-			self.itemsTab.build.spec:BuildAllDependsAndPaths()
+			self.itemsTab.build.spec:BuildAllDependsAndPaths()			
 		end
 	else
 		self.itemsTab.activeItemSet[self.slotName].selItemId = selItemId
@@ -159,6 +164,7 @@ function ItemSlotClass:Populate()
 	for i, abyssalSocket in ipairs(self.abyssalSocketList) do
 		abyssalSocket.inactive = i > abyssalSocketCount
 	end
+	
 end
 
 function ItemSlotClass:CanReceiveDrag(type, value)

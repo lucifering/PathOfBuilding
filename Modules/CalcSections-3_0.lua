@@ -824,6 +824,7 @@ return {
 { label = "力量", { format = "{0:output:Str}", { breakdown = "Str" }, { modName = "Str" }, }, },
 { label = "敏捷", { format = "{0:output:Dex}", { breakdown = "Dex" }, { modName = "Dex" }, }, },
 { label = "智慧", { format = "{0:output:Int}", { breakdown = "Int" }, { modName = "Int" }, }, },
+{ label = "奉献", { format = "{0:output:Devotion}", { breakdown = "Devotion" }, { modName = "Devotion" }, }, },
 { notFlag = "minionSkill", label = "力量需求", { format = "{output:ReqStrString}", { breakdown = "ReqStr" }, }, },
 { notFlag = "minionSkill", label = "敏捷需求", { format = "{output:ReqDexString}", { breakdown = "ReqDex" }, }, },
 { notFlag = "minionSkill", label = "智慧需求", { format = "{output:ReqIntString}", { breakdown = "ReqInt" }, }, },

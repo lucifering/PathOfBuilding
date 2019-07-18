@@ -162,5 +162,6 @@ function modLib.formatModParams(mod)
 end
 
 function modLib.formatMod(mod)
+	 
 	return modLib.formatValue(mod.value) .. " = " .. modLib.formatModParams(mod)
 end

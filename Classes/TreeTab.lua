@@ -68,8 +68,10 @@ tooltip:AddLine(16, "^7切换到这个天赋树需要 "..respec.." 后悔点.")
 		end
 	end
 self.controls.reset = new("ButtonControl", {"LEFT",self.controls.specSelect,"RIGHT"}, 8, 0, 60, 20, "重置", function()
-main:OpenConfirmPopup("Reset Tree", "确定要重置天赋树吗?", "重置", function()
+main:OpenConfirmPopup("Reset Tree", "确定要重置天赋树吗?", "重置", function()			
+			
 			self.build.spec:ResetNodes()
+			self.build.spec:resetAllocTimeJew(); 
 			self.build.spec:AddUndoState()
 			self.build.buildFlag = true
 		end)
@@ -232,6 +234,9 @@ function TreeTabClass:SetActiveSpec(specId)
 		-- Update item slots if items have been loaded already
 		self.build.itemsTab:PopulateSlots()
 	end
+	self.build.spec:resetAllocTimeJew(); 
+			--	self.build.spec:allocTimeJew(); 
+				
 end
 
 function TreeTabClass:OpenSpecManagePopup()
@@ -251,6 +256,8 @@ function TreeTabClass:OpenImportPopup()
 			controls.msg.label = "^1"..errMsg
 		else
 			self.build.spec:AddUndoState()
+			self.build.spec:resetAllocTimeJew(); 
+		--	self.build.spec:allocTimeJew(); 
 			self.build.buildFlag = true
 			main:ClosePopup()
 		end

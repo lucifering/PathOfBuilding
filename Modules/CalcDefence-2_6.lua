@@ -97,6 +97,19 @@ function calcs.defence(env, actor)
 				breakdown.slot("Global", nil, nil, armourBase, nil, "Armour", "ArmourAndEvasion", "Defences")
 			end
 		end
+		
+		local convManaToDoubleArmour = modDB:Sum("BASE", nil, "ManaConvertToDoubleArmour")
+		if convManaToDoubleArmour > 0 then
+			--双倍护甲
+			armourBase = modDB:Sum("BASE", nil, "Mana") * convManaToDoubleArmour / 100 * 2
+			 
+			armour = armour + armourBase * calcLib.mod(modDB, nil, "Mana", "Armour", "Defences") 
+			if breakdown then
+				breakdown.slot("Conversion", "魔力 转 双倍护甲", nil, armourBase, nil, "Armour", "Defences", "Mana")
+			end
+		end
+		
+		
 		local evasionBase = modDB:Sum("BASE", nil, "Evasion", "ArmourAndEvasion")
 		if evasionBase > 0 then
 			if ironReflexes then
@@ -175,9 +188,13 @@ function calcs.defence(env, actor)
 			end
 			energyShield = energyShield + total
 			if breakdown then
-				breakdown.slot("Conversion", "Life to Energy Shield", nil, energyShieldBase, total, "EnergyShield", "Defences", "Life")
+				breakdown.slot("Conversion", "生命 转 能量护盾", nil, energyShieldBase, total, "EnergyShield", "Defences", "Life")
 			end
 		end
+		
+		
+		
+		
 		output.EnergyShield = round(energyShield)
 		output.Armour = round(armour)
 		output.Evasion = round(evasion)

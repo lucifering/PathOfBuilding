@@ -753,6 +753,8 @@ t_insert(breakdown[stat], s_format("x %.3f ^8(副手创建的实例部分)", off
 		local source, output, cfg, breakdown = pass.source, pass.output, pass.cfg, pass.breakdown
 		
 		-- Calculate hit chance
+		 
+		
 		output.Accuracy = calcLib.val(skillModList, "Accuracy", cfg)
 		if breakdown then
 			breakdown.Accuracy = breakdown.simple(nil, cfg, output.Accuracy, "Accuracy")
@@ -762,13 +764,30 @@ t_insert(breakdown[stat], s_format("x %.3f ^8(副手创建的实例部分)", off
 		else
 			local enemyEvasion = round(calcLib.val(enemyDB, "Evasion"))
 			output.HitChance = calcs.hitChance(enemyEvasion, output.Accuracy)
-			if breakdown then
+		 
+			local avoidblidval=skillModList:Sum("BASE", nil, "AvoidBlind") or 0
+			
+			if skillModList:Flag(cfg, "Condition:Blinded") and avoidblidval <=0    then 
+				output.HitChance=output.HitChance* 0.5
+				if breakdown then
+					 breakdown.HitChance = {
+					 "你被致盲，击中几率减半。",
+					"敌人等级: "..env.enemyLevel..(env.configInput.enemyLevel and " ^8(从配置界面的获取值" or " ^8(可以从配置界面修改)"),
+					"敌人平均闪避: "..enemyEvasion,
+					"预计击中几率: "..output.HitChance.."%",
+									}
+				end
+			else 
+				if breakdown then
 				breakdown.HitChance = {
 "敌人等级: "..env.enemyLevel..(env.configInput.enemyLevel and " ^8(从配置界面的获取值" or " ^8(可以从配置界面修改)"),
 "敌人平均闪避: "..enemyEvasion,
 "预计击中几率: "..output.HitChance.."%",
 				}
-			end
+				end
+			end 
+			
+			
 		end
 
 		-- Calculate attack/cast speed

@@ -55,7 +55,8 @@ function main:Init()
 	MakeDir(self.buildPath)
 
 	if launch.devMode and IsKeyDown("CTRL") then
-		self.rebuildModCache = true
+		--不生成缓存词缀
+		--self.rebuildModCache = true
 	else
 		-- Load mod caches
 		for _, targetVersion in ipairs(targetVersionList) do
@@ -211,6 +212,8 @@ the "Releases" section of the GitHub page.]])
 	self:SetMode("BUILD", false, "Unnamed build")
 
 	self:LoadSettings()
+	
+	
 end
 
 function main:CanExit()

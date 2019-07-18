@@ -40,6 +40,7 @@ local PassiveTreeClass = newClass("PassiveTree", function(self, treeVersion)
 	MakeDir("TreeData")
 
 	ConPrintf("Loading passive tree data...")
+	
 	local treeText
 	local treeFile = io.open("TreeData/"..treeVersion.."/tree.lua", "r")
 	if treeFile then
@@ -57,7 +58,7 @@ page = getFile("https://poe.game.qq.com/passive-skill-tree/")
 		end
 		treeText = "local tree=" .. jsonToLua(page:match("var passiveSkillTreeData = (%b{})"))
 		treeText = treeText .. "tree.classes=" .. jsonToLua(page:match("ascClasses: (%b{})"))
-		treeText = treeText .. "return tree"
+		treeText = treeText .. "return tree"		
 		treeFile = io.open("TreeData/"..treeVersion.."/tree.lua", "w")
 		treeFile:write(treeText)
 		treeFile:close()
@@ -65,6 +66,17 @@ page = getFile("https://poe.game.qq.com/passive-skill-tree/")
 	for k, v in pairs(assert(loadstring(treeText))()) do
 		self[k] = v
 	end
+	--print_r(self.nodes[34098]);
+	--永恒珠宝重点核心
+	print("永恒珠宝重点核心:"..self.targetVersion)
+	for _, jewkey in ipairs(data[self.targetVersion].timelessJewelKeystone ) do
+	
+		 --print_r(self.nodes[#self.nodes-1]);
+		local test={[jewkey.id]=jewkey}
+		 self.nodes[jewkey.id]=jewkey
+	--	 print_r(jewkey);
+	end
+	
 	
 local cdnRoot = treeVersion == "2_6" and "" or ""--https://web.poecdn.com"
 
@@ -176,6 +188,7 @@ local cdnRoot = treeVersion == "2_6" and "" or ""--https://web.poecdn.com"
 	local orbitDist = { [0] = 0, 82, 162, 335, 493 }
 	for _, node in pairs(self.nodes) do
 		node.meta = { __index = node }
+		--print("node.id="..node.id)
 		nodeMap[node.id] = node
 		node.linkedId = { }
 
@@ -217,17 +230,21 @@ local cdnRoot = treeVersion == "2_6" and "" or ""--https://web.poecdn.com"
 			node.size = node.overlay.size
 		end
 
-		-- Find node group and derive the true position of the node
-		local group = self.groups[node.g]
-		group.ascendancyName = node.ascendancyName
-		if node.isAscendancyStart then
-			group.isAscendancyStart = true
-		end
-		node.group = group
-		node.angle = node.oidx * orbitMult[node.o]
-		local dist = orbitDist[node.o]
-		node.x = group.x + m_sin(node.angle) * dist
-		node.y = group.y - m_cos(node.angle) * dist
+		if  not node.hide then 
+			-- Find node group and derive the true position of the node
+			local group = self.groups[node.g]
+			group.ascendancyName = node.ascendancyName
+			if node.isAscendancyStart then
+				group.isAscendancyStart = true
+			end
+			node.group = group
+			node.angle = node.oidx * orbitMult[node.o]
+			local dist = orbitDist[node.o]
+			node.x = group.x + m_sin(node.angle) * dist
+			node.y = group.y - m_cos(node.angle) * dist
+		 
+		end 
+		
 
 		if passives then
 			-- Passive data is available, override the descriptions
@@ -311,6 +328,9 @@ local cdnRoot = treeVersion == "2_6" and "" or ""--https://web.poecdn.com"
 		end
 	end
 
+	
+ 
+	
 	-- Precalculate the lists of nodes that are within each radius of each socket
 	for nodeId, socket in pairs(sockets) do
 		socket.nodesInRadius = { }
@@ -320,7 +340,7 @@ local cdnRoot = treeVersion == "2_6" and "" or ""--https://web.poecdn.com"
 			socket.attributesInRadius[radiusIndex] = { }
 			local rSq = radiusInfo.rad * radiusInfo.rad
 			for _, node in pairs(self.nodes) do
-				if node ~= socket then
+				if node ~= socket and  not node.hide  then
 					local vX, vY = node.x - socket.x, node.y - socket.y
 					if vX * vX + vY * vY <= rSq then 
 						socket.nodesInRadius[radiusIndex][node.id] = node
@@ -329,16 +349,18 @@ local cdnRoot = treeVersion == "2_6" and "" or ""--https://web.poecdn.com"
 			end
 		end
 	end
-
+	
 	-- Pregenerate the polygons for the node connector lines
 	self.connectors = { }
 	for _, node in pairs(self.nodes) do
-		for _, otherId in pairs(node.out) do
-			local other = nodeMap[otherId]
-			t_insert(node.linkedId, otherId)
-			t_insert(other.linkedId, node.id)
-			if node.type ~= "ClassStart" and other.type ~= "ClassStart" and node.type ~= "Mastery" and other.type ~= "Mastery" and node.ascendancyName == other.ascendancyName then
-				t_insert(self.connectors, self:BuildConnector(node, other))
+		if  not node.hide then
+			for _, otherId in pairs(node.out) do
+				local other = nodeMap[otherId]
+				t_insert(node.linkedId, otherId)
+				t_insert(other.linkedId, node.id)
+				if node.type ~= "ClassStart" and other.type ~= "ClassStart" and node.type ~= "Mastery" and other.type ~= "Mastery" and node.ascendancyName == other.ascendancyName then
+					t_insert(self.connectors, self:BuildConnector(node, other))
+				end
 			end
 		end
 	end

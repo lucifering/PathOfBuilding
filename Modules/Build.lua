@@ -72,7 +72,10 @@ self.controls.back = new("ButtonControl", {"LEFT",self.anchorTopBarLeft,"RIGHT"}
 		if self.unsaved then
 			self:OpenSavePopup("LIST")
 		else
+			 
+		
 			self:CloseBuild()
+			self.spec:resetAll(); 
 		end
 	end)
 	self.controls.buildName = new("Control", {"LEFT",self.controls.back,"RIGHT"}, 8, 0, 0, 20)
@@ -192,11 +195,16 @@ self.controls.characterLevel = new("EditControl", {"LEFT",self.controls.pointDis
 			if self.spec:CountAllocNodes() == 0 or self.spec:IsClassConnected(value.classId) then
 				self.spec:SelectClass(value.classId)
 				self.spec:AddUndoState()
+				self.build.spec:resetAllocTimeJew(); 
+				--self.build.spec:allocTimeJew(); 				
 				self.buildFlag = true
 			else
 main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会重置你目前的天赋树.\n你可以考虑连接当前的天赋点到 "..value.label.." 出门点就不会被重置了。", "继续", function()
 					self.spec:SelectClass(value.classId)
 					self.spec:AddUndoState()
+					self.build.spec:resetAllocTimeJew(); 
+					--self.build.spec:allocTimeJew(); 
+				
 					self.buildFlag = true					
 				end)
 			end
@@ -248,6 +256,7 @@ main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会�
 { stat = "ReqDex", label = "需求敏捷", fmt = "d", lowerIsBetter = true, condFunc = function(v,o) return v > o.Dex end },
 { stat = "Int", label = "智慧", fmt = "d" },
 { stat = "ReqInt", label = "需求智慧", fmt = "d", lowerIsBetter = true, condFunc = function(v,o) return v > o.Int end },
+{ stat = "Devotion", label = "奉献", fmt = "d" },
 		{ },
 { stat = "Life", label = "总生命", fmt = "d", compPercent = true },
 { stat = "Spec:LifeInc", label = "天赋树的生命加成", fmt = "d%%", condFunc = function(v,o) return v > 0 and o.Life > 1 end },
@@ -845,18 +854,19 @@ end
 
 function buildMode:OpenSavePopup(mode, newVersion)
 	local modeDesc = {
-		["LIST"] = "now?",
-		["EXIT"] = "before exiting?",
-		["UPDATE"] = "before updating?",
-		["VERSION"] = "before converting?",
+		["LIST"] = "现在，",
+		["EXIT"] = "退出前,",
+		["UPDATE"] = "更新前,",
+		["VERSION"] = ">转换前,",
 	}
 	local controls = { }
-controls.label = new("LabelControl", nil, 0, 20, 0, 16, "^7这个Build有修改的地方还没有保存.\n你想要保存它们吗? "..modeDesc[mode])
+controls.label = new("LabelControl", nil, 0, 20, 0, 16, modeDesc[mode].."^7这个Build有修改的地方还没有保存.\n你想要保存它们吗? ")
 	controls.save = new("ButtonControl", nil, -90, 70, 80, 20, "Save", function()
 		main:ClosePopup()
 		self.actionOnSave = mode
 		self.versionOnSave = newVersion
 		self:SaveDBFile()
+		self.spec.isFirstLoad=0;
 	end)
 controls.noSave = new("ButtonControl", nil, 0, 70, 80, 20, "不保存", function()
 		main:ClosePopup()
@@ -1257,5 +1267,7 @@ main:OpenMessagePopup("错误", "不能保存当前bd文件:\n"..self.dbFileName
 		self:Init(self.dbFileName, self.buildName)
 	end
 end
+
+
 
 return buildMode

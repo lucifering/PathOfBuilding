@@ -260,6 +260,10 @@ for _, targetVersion in ipairs(targetVersionList) do
 	verData.delve = dataModule("ModDelve")
 	verData.incursion = dataModule("ModIncursion")
 
+	--永恒珠宝
+	if targetVersion ~= "2_6" then
+		verData.timelessJewelKeystone = dataModule("TimelessJewel/TimelessJewelKeystone",targetVersion)
+	end
 	-- Load skills
 	verData.skills = { }
 	verData.skillStatMap = dataModule("SkillStatMap", makeSkillMod, makeFlagMod, makeSkillDataMod)

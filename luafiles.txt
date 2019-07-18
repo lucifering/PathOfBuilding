@@ -210,3 +210,4 @@ Data/3_0/ModSynthesised.lua
 Data/2_6/ModSynthesised.lua
 Data/3_0/ModIncursion.lua
 Data/2_6/ModIncursion.lua
+Data/3_0/TimelessJewel/TimelessJewelKeystone.lua

@@ -467,6 +467,7 @@ self.charImportStatus = colorCodes.POSITIVE.."天赋树和珠宝导入成功."
 	self.build.itemsTab:AddUndoState()
 	self.build.spec:ImportFromNodeList(charData.classId, charData.ascendancyClass, charPassiveData.hashes)
 	self.build.spec:AddUndoState()
+	self.build.spec:resetAllocTimeJew(); 
 	self.build.characterLevel = charData.level
 	self.build.controls.characterLevel:SetText(charData.level)
 	self.build.buildFlag = true

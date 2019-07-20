@@ -2524,7 +2524,7 @@ local specialModList = {
 	mod("ExtraAura", "LIST", 
 	{ mod = mod("PhysicalMin", "BASE", tonumber(num1)) },  { type = "Multiplier", var = "ImpaleStack", actor = "enemy" }),
 	mod("ExtraAura", "LIST", 
-	{ mod = mod("PhysicalMax", "BASE", tonumber(num1)) },  { type = "Multiplier", var = "ImpaleStack", actor = "enemy" }),
+	{ mod = mod("PhysicalMax", "BASE", tonumber(num2)) },  { type = "Multiplier", var = "ImpaleStack", actor = "enemy" }),
 	} end,
 	["根据和目标的距离来提升总近战伤害，最高额外提高 (%d+)%%"]= function(num) return { 	
 	flag("Condition:CanMeleeDistanceRamp"),

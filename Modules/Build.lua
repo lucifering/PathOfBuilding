@@ -199,7 +199,7 @@ self.controls.characterLevel = new("EditControl", {"LEFT",self.controls.pointDis
 				--self.build.spec:allocTimeJew(); 				
 				self.buildFlag = true
 			else
-main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会重置你目前的天赋树.\n你可以考虑连接当前的天赋点到 "..value.label.." 出门点就不会被重置了。", "继续", function()
+main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会重置你目前的天赋树.\n你可以考虑连接当前的天赋点到 "..value.label.."\n这样出门点就不会被重置了。", "继续", function()
 					self.spec:SelectClass(value.classId)
 					self.spec:AddUndoState()
 					self.spec:resetAllocTimeJew(); 

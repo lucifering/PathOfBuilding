@@ -1993,7 +1993,7 @@ skills["VaalDoubleStrike"] = {
 		"modifiers_to_skill_effect_duration_also_affect_soul_prevention_duration",
 		"cannot_cancel_skill_before_contact_point",
 	},
-	statInterpolation = { 1, 1, 1, 1, 3, 3, 3, 1, },
+	statInterpolation = { 1, 1, 1, 1, 3, 3, 1, 1, },
 	levels = {
 		[1] = { 1, 6000, 1, 0, 0.80000001192093, 1.2000000476837, 0, 25, damageEffectiveness = 0.28, baseMultiplier = 0.28, levelRequirement = 1, },
 		[2] = { 1, 6000, 1, 3, 0.80000001192093, 1.2000000476837, 0, 25, damageEffectiveness = 0.28, baseMultiplier = 0.283, levelRequirement = 2, },

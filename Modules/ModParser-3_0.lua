@@ -113,6 +113,7 @@ local modNameList = {
 	["物理伤害减伤"] = "PhysicalDamageReduction", --备注：physical damage reduction
 	["造成流血"] = "BleedChance",
 	["元素抗性上限"] = { "FireResistMax", "ColdResistMax", "LightningResistMax"},
+	["所有元素抗性"] = "ElementalResist",
 	["元素抗性"] = "ElementalResist", --备注：all elemental resistances
 	["范围效果的"] = "AreaOfEffect", --备注：area of effect
 	["火焰、冰霜、闪电伤害的"] = "ElementalDamage", --备注：elemental damage
@@ -245,6 +246,9 @@ local modNameList = {
 	["几率穿刺敌人"] = "ImpaleChance",
 	["技能的魔力消耗"] = "ManaCost",
 	["从药剂获得的生命回复"] = "FlaskLifeRecovery",
+	["对敌人施加的非伤害异常状态效果"] = { "EnemyShockEffect", "EnemyChillEffect", "EnemyFreezeEffech" }, 
+	["非诅咒类光环效果"] = "AuraEffect", --备注：aura effect
+	["所有最大抗性"] = { "FireResistMax", "ColdResistMax", "LightningResistMax", "ChaosResistMax" }, 
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -638,6 +642,7 @@ local modFlagList = {
 	["弓类攻击造成的"] = { flags = ModFlag.Bow },
 	["攻击技能造成的"] = { keywordFlags = KeywordFlag.Attack },
 	["持续吟唱技能"] = { tag = { type = "SkillType", skillType = SkillType.Channelled } },
+	["持续吟唱技能的"] = { tag = { type = "SkillType", skillType = SkillType.Channelled } },
 	["该装备 "] = { },
 	["低血时，"] = { tag = { type = "Condition", var = "LowLife" } }, --备注：wh[ie][ln]e? on low life
 	["击中和异常状态的"] = { keywordFlags = bor(KeywordFlag.Hit, KeywordFlag.Ailment) }, --备注：with hits and ailments
@@ -674,6 +679,8 @@ local modFlagList = {
 	["攻击造成的"] = { flags = ModFlag.Attack }, 
 	["武器的"] = { flags = ModFlag.Weapon }, 
 	["双手近战武器攻击"] = { flags = bor(ModFlag.Weapon2H, ModFlag.WeaponMelee) }, 
+	["从盾牌获取的"] = { tag = { type = "SlotName", slotName = "Weapon 2" } }, 
+	["盾牌获取的"] = { tag = { type = "SlotName", slotName = "Weapon 2" } }, 
 	--【中文化程序额外添加结束】
 	-- Weapon types
 	["斧类攻击的"] = { flags = ModFlag.Axe }, --备注：with axes
@@ -1082,6 +1089,13 @@ local modTagList = {
 	["当你没有获得【火之化身】时，"] = { tag = { type = "Condition", var = "Have火之化身Keystone" ,neg = true} },
 	["当你没有获得【霸体】时，"] = { tag = { type = "Condition", var = "Have霸体Keystone" ,neg = true} },
 	["当你获得【霸体】时，"] = { tag = { type = "Condition", var = "Have霸体Keystone"} },
+	["每 (%d+) 点奉献使"] = function(num) return { tag = { type = "PerStat", stat = "Devotion", div = num } } end,
+	["每 (%d+) 点奉献 使"] = function(num) return { tag = { type = "PerStat", stat = "Devotion", div = num } } end,
+	["每 (%d+) 点奉献可使"] = function(num) return { tag = { type = "PerStat", stat = "Devotion", div = num } } end,
+	["每 (%d+) 点奉献"] = function(num) return { tag = { type = "PerStat", stat = "Devotion", div = num } } end,
+	["至少有 (%d+) 点奉献时，"] = function(num) return { tag = { type = "StatThreshold", stat = "Devotion", threshold = num } } end,
+	["至少 (%d+) 奉献时，"] = function(num) return { tag = { type = "StatThreshold", stat = "Devotion", threshold = num } } end,
+	["至少 (%d+) 点奉献时，"] = function(num) return { tag = { type = "StatThreshold", stat = "Devotion", threshold = num } } end,
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -1751,6 +1765,8 @@ local specialModList = {
 	["造成的异常状态持续时间延长 (%d+)%%"] = function(num) return { mod("EnemyShockDuration", "INC", num),mod("EnemyFreezeDuration", "INC", -num),mod("EnemyChillDuration", "INC", -num),mod("EnemyIgniteDuration", "INC", -num),mod("EnemyBleedDuration", "INC", -num),mod("EnemyPoisonDuration", "INC", -num)} end,
 	["([%d%.]+) 每秒生命回复"] = function(num) return {  mod("LifeRegen", "BASE", num)  } end,
 	["([%d%.]+) 每秒魔力回复"] = function(num) return {  mod("ManaRegen", "BASE", num)  } end,
+	["魔力回复 ([%d%.]+)"] = function(num) return {  mod("ManaRegen", "BASE", num)  } end,
+	["每 (%d+) 点奉献 使魔力回复 ([%d%.]+)"] = function(_,num1,num2) return {  mod("ManaRegen", "BASE", tonumber(num2),{ type = "PerStat", stat = "Devotion", div = tonumber(num1) })  } end,
 	["每秒 ([%d%.]+) 基础魔力回复"] = function(num) return {  mod("ManaRegen", "BASE", num)  } end,
 	["每秒 ([%d%.]+)%% 魔力回复"]= function(num) return {  mod("ManaRegenPercent", "BASE", num )  } end,
 	["物理攻击伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("PhysicalDamageManaLeech", "BASE", num,nil, ModFlag.Attack)  } end, 
@@ -2547,18 +2563,33 @@ local specialModList = {
 	flag("致命的骄傲"),
 	flag("TimelessJewelNPC"..npcName)} end, 
 	["以(.+)的名义用 (%d+) 名祭品之血浸染"]= function(_, npcName, num) return {  flag("TimelessJewelNPC"..npcName)} end, 
+	["以(.+)的名义用  (%d+) 名祭品之血浸染范围内的天赋被瓦尔抑制"]= function(_, npcName, num) return {  
+	flag("光彩夺目"),
+	flag("TimelessJewelNPC"..npcName)} end, 
 	["以(.+)的名义用 (%d+) 名祭品之血浸染  范围内的天赋被瓦尔抑制"]= function(_, npcName, num) return {  
 	flag("光彩夺目"),
 	flag("TimelessJewelNPC"..npcName)} end, 
+	["以(.+)的名义用  (%d+) 名祭品之血浸染 范围内的天赋被瓦尔抑制"]= function(_, npcName, num) return {  
+	flag("光彩夺目"),
+	flag("TimelessJewelNPC"..npcName)} end, 
 	["赞美 (%d+) 名被高阶圣堂武僧(.+)转化的新信徒"]= function(_, num, npcName) return {  flag("TimelessJewelNPC"..npcName)} end, 
+	["赞美 (%d+) 名被高阶圣堂武僧(.+)转化的新信徒范围内的天赋被圣堂抑制"]= function(_, num, npcName) return { 
+	 flag("好战的信仰"),
+	 flag("TimelessJewelNPC"..npcName)} end, 
 	["赞美 (%d+) 名被高阶圣堂武僧(.+)转化的新信徒  范围内的天赋被圣堂抑制"]= function(_, num, npcName) return { 
 	 flag("好战的信仰"),
 	 flag("TimelessJewelNPC"..npcName)} end, 
 	["在(.+)的阿卡拉中指派 (%d+) 名德卡拉的服务"]= function(_, npcName, num) return {  flag("TimelessJewelNPC"..npcName)} end, 
+	["在(.+)的阿卡拉中指派 (%d+) 名德卡拉的服务范围中的天赋被马拉克斯抑制"]= function(_, npcName, num) return {  
+	 flag("残酷的约束"),
+	flag("TimelessJewelNPC"..npcName)} end, 
 	["在(.+)的阿卡拉中指派 (%d+) 名德卡拉的服务  范围中的天赋被马拉克斯抑制"]= function(_, npcName, num) return {  
 	 flag("残酷的约束"),
 	flag("TimelessJewelNPC"..npcName)} end, 
 	["用 (%d+) 枚金币纪念(.+)"]= function(_, num, npcName) return {  flag("TimelessJewelNPC"..npcName)} end, 
+	["用 (%d+) 枚金币纪念(.+)范围内的天赋被永恒帝国抑制"]= function(_, num, npcName) return {  
+	flag("优雅的狂妄") ,
+	flag("TimelessJewelNPC"..npcName)} end, 
 	["用 (%d+) 枚金币纪念(.+)  范围内的天赋被永恒帝国抑制"]= function(_, num, npcName) return {  
 	flag("优雅的狂妄") ,
 	flag("TimelessJewelNPC"..npcName)} end, 
@@ -2607,6 +2638,14 @@ local specialModList = {
 	 mod("FlaskLifeRecovery", "MORE", -num)
 	 } end,  
 	["获得等同 ([%d%.]+)%% 最大生命的额外最大能量护盾"]= function(num) return {  mod("LifeGainAsEnergyShield", "BASE", num)  } end, 
+	["至少有 (%d+) 点奉献时，获得等同 (%d+)%% 最大魔力的额外最大能量护盾"]= function(_,num1,num2) return {  mod("ManaGainAsEnergyShield", "BASE", tonumber(num2),{ type = "StatThreshold", stat = "Devotion", threshold = tonumber(num1) })  } end, 
+	["至少 (%d+) 点奉献时，位于奉献地面之上免疫元素异常状态"]= function(num) return { 
+	 mod("AvoidShock", "BASE", 100,{ type = "Condition", var = "OnConsecratedGround" },{ type = "StatThreshold", stat = "Devotion", threshold = tonumber(num) })  ,
+	 mod("AvoidChilled", "BASE", 100,{ type = "Condition", var = "OnConsecratedGround" },{ type = "StatThreshold", stat = "Devotion", threshold = tonumber(num) })  ,
+	 mod("AvoidFrozen", "BASE", 100,{ type = "Condition", var = "OnConsecratedGround" },{ type = "StatThreshold", stat = "Devotion", threshold = tonumber(num) })  ,
+	 mod("AvoidIgnite", "BASE", 100,{ type = "Condition", var = "OnConsecratedGround" },{ type = "StatThreshold", stat = "Devotion", threshold = tonumber(num) })  ,
+	} end, 
+	["至少 (%d+) 点奉献时，额外获得 (%d+)%% 物理伤害减免"] = function(_,num1,num2) return {  mod("PhysicalDamageReduction", "BASE", tonumber(num2),{ type = "StatThreshold", stat = "Devotion", threshold = tonumber(num1) } )  } end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

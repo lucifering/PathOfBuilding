@@ -28,3 +28,7 @@
 
 * 历史更新 
  [点击查看更新进度](changelog-history.txt).
+ 
+ 
+ ![image](https://github.com/lucifering/PathOfBuilding/blob/master/screenshot/screenshot.jpg)
+

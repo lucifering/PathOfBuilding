@@ -1123,9 +1123,11 @@ function PassiveSpecClass:allocTimeJew()
 												list2={}
 												newmodList1={}
 												newmodList2={}										 
-												t_insert( list1,newmod1)										 
-												newmodList1["list"] =  nil
-												newmodList2["list"] =  nil
+												t_insert( list1,modLib.createMod("LifeLeechRate", "MORE", -100, "Tree"..specNode.id));
+												
+												t_insert( list2,modLib.createMod("DamageTaken", "MORE", -1, "Tree"..specNode.id,{ type = "PerStat", stat = "MaxLifeLeechRatePercentage", div = 2 },{ type = "Condition", var = "LeechingLife" } ));									 
+												newmodList1["list"] =  list1
+												newmodList2["list"] =  list2
 												specNode.mods={newmodList1,newmodList2}
 											end 	
 									elseif npcName =='拉其塔' or npcName =='拉凯尔塔' then 

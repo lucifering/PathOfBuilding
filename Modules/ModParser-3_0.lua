@@ -2545,7 +2545,7 @@ local specialModList = {
 	} end,
 	["根据和目标的距离来提升总近战伤害，最高额外提高 (%d+)%%"]= function(num) return { 	
 	flag("Condition:CanMeleeDistanceRamp"),
-	mod("Damage", "MORE", num, ModFlag.Melee, 0, { type = "DistanceRamp",  ramp = {{15,1},{40,0}}},{ type = "Condition", var = "CanMeleeDistanceRamp" }),
+	mod("Damage", "MORE", num,nil, ModFlag.Melee, 0, { type = "DistanceRamp",  ramp = {{15,1},{40,0}}},{ type = "Condition", var = "CanMeleeDistanceRamp" }),
 	}end,
 	["照亮范围的扩大和缩小也同样作用于范围效果，等于其数值的 50%%"] = { flag("HalfOfLightRadiusAppliesToAreaOfEffect") },
 	["照亮范围的扩大和缩小也同样作用于伤害"] = { flag("LightRadiusAppliesToDamage") },
@@ -2646,6 +2646,12 @@ local specialModList = {
 	 mod("AvoidIgnite", "BASE", 100,{ type = "Condition", var = "OnConsecratedGround" },{ type = "StatThreshold", stat = "Devotion", threshold = tonumber(num) })  ,
 	} end, 
 	["至少 (%d+) 点奉献时，额外获得 (%d+)%% 物理伤害减免"] = function(_,num1,num2) return {  mod("PhysicalDamageReduction", "BASE", tonumber(num2),{ type = "StatThreshold", stat = "Devotion", threshold = tonumber(num1) } )  } end, 
+	["无法使用生命偷取的恢复效果"]= function(num) return { 
+	 mod("LifeLeechRate", "MORE", -100)
+	 } end,  
+	["生命偷取的每秒恢复效果每 (%d+)%% 使受到的总伤害额外降低 (%d+)%%"] = function(_,num1,num2) return {  
+	mod("DamageTaken", "MORE", -tonumber(num2),{ type = "PerStat", stat = "MaxLifeLeechRatePercentage", div = tonumber(num1) },{ type = "Condition", var = "LeechingLife" } )  
+	} end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

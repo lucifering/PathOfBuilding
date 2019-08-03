@@ -243,16 +243,17 @@ s_format("近似闪避几率: %d%%", output.EvadeChance),
 	if breakdown then
 		breakdown.MaxLifeLeechRate = {
 s_format("%d ^8(最大生命)", output.Life),
-s_format("x %d%% ^8(percentage of life to maximum leech rate)", calcLib.val(modDB, "MaxLifeLeechRate")),
+s_format("x %d%% ^8(生命偷取总回复上限占总生命百分比)", calcLib.val(modDB, "MaxLifeLeechRate")),
 			s_format("= %.1f", output.MaxLifeLeechRate)
 		}
 	end
+	output.MaxLifeLeechRatePercentage =calcLib.val(modDB, "MaxLifeLeechRate")
 	output.MaxEnergyShieldLeechInstance = output.EnergyShield * calcLib.val(modDB, "MaxEnergyShieldLeechInstance") / 100
 	output.MaxEnergyShieldLeechRate = output.EnergyShield * calcLib.val(modDB, "MaxEnergyShieldLeechRate") / 100
 	if breakdown then
 		breakdown.MaxEnergyShieldLeechRate = {
 s_format("%d ^8(最大能量护盾)", output.EnergyShield),
-			s_format("x %d%% ^8(percentage of energy shield to maximum leech rate)", calcLib.val(modDB, "MaxEnergyShieldLeechRate")),
+			s_format("x %d%% ^8(能量护盾偷取总回复上限占总能量护盾百分比)", calcLib.val(modDB, "MaxEnergyShieldLeechRate")),
 			s_format("= %.1f", output.MaxEnergyShieldLeechRate)
 		}
 	end
@@ -262,7 +263,7 @@ s_format("%d ^8(最大能量护盾)", output.EnergyShield),
 	if breakdown then
 		breakdown.MaxManaLeechRate = {
 s_format("%d ^8(最大魔力)", output.Mana),
-s_format("x %d%% ^8(percentage of mana to maximum leech rate)", modDB:Sum("BASE", nil, "MaxManaLeechRate")),
+s_format("x %d%% ^8(魔力偷取总回复上限占总魔力百分比)", modDB:Sum("BASE", nil, "MaxManaLeechRate")),
 			s_format("= %.1f", output.MaxManaLeechRate)
 		}
 	end

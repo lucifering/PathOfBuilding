@@ -1414,6 +1414,15 @@ local specialModList = {
 	["提高 ([%+%-]?%d+)%% 药剂充能消耗"]= function(num) return {  mod("FlaskChargesUsed", "INC", num)  } end,  
 	["(%d+)%% 法术伤害格挡几率"] = function(num) return {  mod("SpellBlockChance", "BASE", num) } end,  
 	["(%d+)%% 法术格挡几率"] = function(num) return {  mod("SpellBlockChance", "BASE", num) } end,  
+	--处理【狂怒】和【狂怒】2个不同技能的附魔， 国服特别优秀的翻译  
+	["【狂怒】的伤害提高 (%d+)%%"]= function(num) return {  
+				mod("Damage", "INC", num, { type = "SkillId", skillId = "Frenzy" })			 
+			} end,		
+	["每个狂怒球可使狂怒伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", tonumber(num),{ type = "Multiplier", var = "FrenzyCharge" },{ type = "SkillId", skillId = "Frenzy" })  } end, 
+	--Berserk
+	["【狂怒】的增益效果提高 25%"]= function(num) return {
+	mod("BuffEffect", "INC", num,{ type = "SkillId", skillId = "Berserk" })  
+	} end,
 	["每 10 点智慧可以为攻击附加 0 %- 3 基础闪电伤害"]= function() return { 	
 		mod("LightningMax", "BASE", 3,nil, ModFlag.Attack,  { type = "PerStat", stat = "Int", div = 10 }) 
 	}end,
@@ -2136,7 +2145,6 @@ local specialModList = {
 	 ["召唤愤怒狂灵的伤害提高 (%d+)%%"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) }, { type = "SkillName", skillName = "召唤愤怒狂灵" })  } end, 
 	["劈砍攻击速度提高 (%d+)%%"]= function(num) return {  mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack,{ type = "SkillName", skillName ="劈砍" })  } end, 
 	["每个狂怒球可使【([^\\x00-\\xff]*)】的伤害提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("Damage", "INC", tonumber(num),{ type = "Multiplier", var = "FrenzyCharge" },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
-	["每个狂怒球可使狂怒伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", tonumber(num),{ type = "Multiplier", var = "FrenzyCharge" },{ type = "SkillName", skillName ="狂怒" })  } end, 
 	["【([^\\x00-\\xff]*)】可使移动速度额外提高 (%d+)%%"]= function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("MovementSpeed", "INC", tonumber(num),{ type = "GlobalEffect", effectType = "Buff" }) }, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) } ) } end,
 	["【([^\\x00-\\xff]*)】的施放速度提高 (%d+)%%"]= function(_,skill_name,num)  return {  mod("Speed", "INC", tonumber(num),nil,ModFlag.Cast,{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
 	["诱饵图腾的生命提高 (%d+)%%"]= function(num) return {  mod("TotemLife", "INC", tonumber(num),{ type = "SkillName", skillName ="诱饵图腾" })  } end, 
@@ -2652,6 +2660,9 @@ local specialModList = {
 	["生命偷取的每秒恢复效果每 (%d+)%% 使受到的总伤害额外降低 (%d+)%%"] = function(_,num1,num2) return {  
 	mod("DamageTaken", "MORE", -tonumber(num2),{ type = "PerStat", stat = "MaxLifeLeechRatePercentage", div = tonumber(num1) },{ type = "Condition", var = "LeechingLife" } )  
 	} end, 
+	["冰霜闪现的冷却回复速度提高 (%d+)%%"] = function(num) return {  
+				mod("CooldownRecovery", "INC", num, { type = "SkillName", skillName = "冰霜闪现" })			 
+			} end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

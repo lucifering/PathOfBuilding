@@ -118,7 +118,8 @@ local function doActorAttribsPoolsConditions(env, actor)
 			condList["DualWieldingClaws"] = true
 		end
 	end
-	if env.mode_combat then		
+	if env.mode_combat then	
+		
 		if not modDB:Flag(nil, "NeverCrit") then
 			condList["CritInPast8Sec"] = true
 		end

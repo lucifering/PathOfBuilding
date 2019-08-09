@@ -895,14 +895,25 @@ function PassiveSpecClass:allocTimeJew()
 										 
 										specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
 																		 
-									end								
+									end	
+
+									local addNum=5;
+									
+									if specNode.dn=='智慧' or specNode.dn=='敏捷' or specNode.dn=='力量' then		 
+									 
+										addNum=10;
+									else									 
+										 
+										addNum=5;
+									end	
+									
 									
 									specNode.dn="奉献";
-									specNode.sd={"+10 奉献"};
+									specNode.sd={"+"..addNum.." 奉献"};
 									specNode.reminderText={"(范围内的天赋被圣堂抑制)"};
 									specNode.isTimeless=1;
 									specNode.modList = new("ModList")
-									newmod = modLib.createMod("Devotion", "BASE", 10,"Tree:"..specNode.id);
+									newmod = modLib.createMod("Devotion", "BASE", addNum,"Tree:"..specNode.id);
 									newmod.isDIY=1;
 									specNode.modList[#specNode.modList+1]=newmod;								
 									
@@ -934,7 +945,7 @@ function PassiveSpecClass:allocTimeJew()
 										end
 										 
 										specNode.sd={};
-										specNode.reminderText={"范围内的天赋被圣堂抑制","(该天赋会被替换成一条随机词缀，未支持)"};
+										specNode.reminderText={"范围内的天赋被圣堂抑制","(总奉献值达到150的时候，该天赋有可能会被替换成一条随机词缀或新增一条 +5 奉献，未支持)","(总奉献值小于150的时候，该天赋新增一条 +5 奉献，未支持)"};
 										specNode.isTimeless=1;
 										specNode.modList = new("ModList")
 										newmod = modLib.createMod("好战的信仰", "BASE", 0);

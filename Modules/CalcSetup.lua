@@ -628,6 +628,37 @@ elseif item.rarity == "魔法" then
 				-- Add extra supports from the item this group is socketed in
 				for _, value in ipairs(env.modDB:List(groupCfg, "ExtraSupport")) do
 					local grantedEffect = env.data.skills[value.skillId]
+					
+					 
+					if value.skillId=='SupportCastWhileChannelling' then 
+					
+						local grantedEffectTriggered = env.data.skills['SupportCastWhileChannellingTriggered']
+						t_insert(supportList, { 
+							grantedEffect = grantedEffectTriggered,
+							level = value.level,
+							quality = 0,
+							enabled = true,
+						})
+					elseif value.skillId=='SupportCastOnCrit' then
+					 
+						local grantedEffectTriggered = env.data.skills['SupportCastOnCritTriggered']
+						t_insert(supportList, { 
+							grantedEffect = grantedEffectTriggered,
+							level = value.level,
+							quality = 0,
+							enabled = true,
+						})
+					elseif value.skillId == 'SupportCastOnMeleeKill' then
+					 		 
+					local grantedEffectTriggered = env.data.skills['SupportCastOnMeleeKillTriggered']
+						t_insert(supportList, { 
+							grantedEffect = grantedEffectTriggered,
+							level = value.level,
+							quality = 0,
+							enabled = true,
+						})
+					end 
+					
 					if grantedEffect then
 						t_insert(supportList, { 
 							grantedEffect = grantedEffect,

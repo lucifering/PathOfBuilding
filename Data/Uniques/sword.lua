@@ -1,6 +1,17 @@
 ﻿-- Item data (c) Grinding Gear Games
 return {
 -- Weapon: One Handed Sword
+
+[[
+悖论
+瓦尔细剑
+联盟: 毁灭不朽
++25% 攻击和法术暴击伤害加成
+此武器的攻击造成双倍伤害
+【未鉴定词缀】
+【未鉴定词缀】
+]],
+
 [[
 汉恩的力量
 夜语长剑

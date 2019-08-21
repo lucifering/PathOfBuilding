@@ -13,6 +13,37 @@ local s_format = string.format
 
 local breakdown = { }
 
+
+function breakdown.multiShow(out, chain)
+	local base = chain.base
+	local lines = 0
+	for _, mult in ipairs(chain) do
+		if mult[2] and mult[2] ~= 1 then
+			if lines == 0 then
+				if base then
+					if chain.label then
+						t_insert(out, chain.label)
+					end
+					t_insert(out, base)
+					t_insert(out, s_format(unpack(mult)))
+					lines = 2
+				else
+					base = s_format(unpack(mult))
+				end
+			else
+				t_insert(out, s_format(unpack(mult)))
+				lines = lines + 1
+			end
+		end
+	end
+	if lines > 0 then
+		t_insert(out, chain.total)
+	end
+	return lines
+end
+
+
+
 function breakdown.multiChain(out, chain)
 	local base = chain.base
 	local lines = 0

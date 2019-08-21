@@ -285,9 +285,13 @@ local function doActorMisc(env, actor)
 	output.PowerChargesMin = modDB:Sum("BASE", nil, "PowerChargesMin")
 	output.PowerChargesMax = modDB:Sum("BASE", nil, "PowerChargesMax")
 	output.FrenzyChargesMin = modDB:Sum("BASE", nil, "FrenzyChargesMin")
-	output.FrenzyChargesMax = modDB:Sum("BASE", nil, "FrenzyChargesMax")
+	output.FrenzyChargesMax = modDB:Flag(nil, "MaximumFrenzyChargesIsMaximumPowerCharges") and output.PowerChargesMax or modDB:Sum("BASE", nil, "FrenzyChargesMax")	
+	
+	
 	output.EnduranceChargesMin = modDB:Sum("BASE", nil, "EnduranceChargesMin")
 	output.EnduranceChargesMax = modDB:Flag(nil, "MaximumEnduranceChargesIsMaximumFrenzyCharges") and output.FrenzyChargesMax or modDB:Sum("BASE", nil, "EnduranceChargesMax")	
+	
+	
 	output.SiphoningChargesMax = modDB:Sum("BASE", nil, "SiphoningChargesMax")
 	output.ChallengerChargesMax = modDB:Sum("BASE", nil, "ChallengerChargesMax")
 	output.BlitzChargesMax = modDB:Sum("BASE", nil, "BlitzChargesMax")

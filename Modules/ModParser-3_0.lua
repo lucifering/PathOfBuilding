@@ -1683,6 +1683,7 @@ local specialModList = {
 	["近期每有 1 个你的陷阱被触发，则每秒回复 (%d+)%% 生命，最多 20%%"]= function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Multiplier", var = "TrapTriggeredRecently", limit = 20, limitTotal = true } )  } end,
 	["近期每击败一个敌人，范围效果提高 (%d+)%%，最大 (%d+)%%"]= function(_,num1,num2) return {  mod("AreaOfEffect", "INC", tonumber(num1),{ type = "Multiplier", var = "EnemyKilledRecently", limit = tonumber(num2), limitTotal = true } )  } end,
 	["最大耐力球数量等同于最大狂怒球数量"] = { flag("MaximumEnduranceChargesIsMaximumFrenzyCharges") },
+	["最大狂怒球数量等同于最大暴击球数量"] = { flag("MaximumFrenzyChargesIsMaximumPowerCharges") },
 	["狂怒球达到上限时，物理总伤害额外提高 (%d+)%%"]= function(num) return {  mod("PhysicalDamage", "MORE", num, { type = "StatThreshold", stat = "FrenzyCharges", thresholdStat = "FrenzyChargesMax" })  } end,
 	["击中和异常状态对流血敌人的伤害提高 (%d+)%%"]= function(num) return {  	mod("Damage", "INC", num,nil,0,bor(KeywordFlag.Hit, KeywordFlag.Ailment) , { type = "ActorCondition", actor = "enemy", var = "Bleeding" })  } end,
 	["近期内你若有成功嘲讽敌人，则每秒回复 ([%d%.]+)%% 生命"]= function(num) return {  mod("LifeRegenPercent", "BASE", num, { type = "Condition", var = "TauntedEnemyRecently" } )  } end,
@@ -2663,6 +2664,20 @@ local specialModList = {
 	["冰霜闪现的冷却回复速度提高 (%d+)%%"] = function(num) return {  
 				mod("CooldownRecovery", "INC", num, { type = "SkillName", skillName = "冰霜闪现" })			 
 			} end,
+	["所有物理法术技能石等级 %+(%d+)"] = function(num) return { mod("GemProperty", "LIST",  { keyword = "physical_spell", key = "level", value = num }) } end,
+	["每个红色插槽使召唤生物 (%d+)%% 的物理伤害转化为火焰伤害"]	
+	= function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageConvertToFire", "BASE", num) },{ type = "Multiplier", var = "RedSocketIn{SlotName}" }) } end,
+	["每个绿色插槽使召唤生物 (%d+)%% 的物理伤害转化为冰霜伤害"]	
+	= function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageConvertToCold", "BASE", num) },{ type = "Multiplier", var = "GreenSocketIn{SlotName}" }) } end,
+	["每个蓝色插槽使召唤生物 (%d+)%% 的物理伤害转化为闪电伤害"]	
+	= function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageConvertToLightning", "BASE", num) },{ type = "Multiplier", var = "BlueSocketIn{SlotName}" }) } end,
+	["每个白色插槽使召唤生物 (%d+)%% 的物理伤害转化为混沌伤害"]	
+	= function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageConvertToChaos", "BASE", num) },{ type = "Multiplier", var = "WhiteSocketIn{SlotName}" }) } end,
+	["旅行技能冷却回复速度提高 (%d+)%%"]= function(num) return {  mod("CooldownRecovery", "INC", num,{ type = "SkillType", skillType = SkillType.TravelSkill })  } end, 
+	["每个狂怒球可使旅行技能冷却回复速度提高 (%d+)%%"]= function(num) return {  mod("CooldownRecovery", "INC", tonumber(num),{ type = "SkillType", skillType = SkillType.TravelSkill },{ type = "Multiplier", var = "FrenzyCharge" })  } end, 
+	["你的移动速度为基础移动速度的 (%d+)%%"] = function(num) return {  
+	mod("MovementSpeed", "OVERRIDE", tonumber(num)/100 )			 
+	} end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

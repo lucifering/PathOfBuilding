@@ -558,19 +558,41 @@ t_insert(breakdown.PhysicalDamageReduction, s_format("护甲减免: %d%%", armou
 
 	-- Other defences: block, dodge, stun recovery/avoidance
 	do
+	
+		
 		output.MovementSpeedMod = calcLib.mod(modDB, nil, "MovementSpeed")
 		if modDB:Flag(nil, "MovementSpeedCannotBeBelowBase") then
 			output.MovementSpeedMod = m_max(output.MovementSpeedMod, 1)
-		end
-		output.EffectiveMovementSpeedMod = output.MovementSpeedMod * output.ActionSpeedMod
-		if breakdown then
+		end	
+		
+		local movementSpeedOverride = modDB:Override(nil, "MovementSpeed")	
+		if movementSpeedOverride  then			
+			output.EffectiveMovementSpeedMod=movementSpeedOverride* output.ActionSpeedMod
+		else			
+			output.EffectiveMovementSpeedMod = output.MovementSpeedMod * output.ActionSpeedMod
+		end	
+		
+		if movementSpeedOverride then 
+			if breakdown then
+			breakdown.EffectiveMovementSpeedMod = { }
+			breakdown.multiShow(breakdown.EffectiveMovementSpeedMod, {
+			{ "x %.2f ^8(移动速度加成)", output.MovementSpeedMod },			
+			{ "=> ^8(移动速度为基础移动速度的 %d%%)", movementSpeedOverride*100 },
+			{ "x %.2f ^8(动作速度加成)", output.ActionSpeedMod },	
+			total = s_format("= %.2f ^8(有效移动速度加成)", output.EffectiveMovementSpeedMod)
+						})	
+			end
+		else
+			if breakdown then
 			breakdown.EffectiveMovementSpeedMod = { }
 			breakdown.multiChain(breakdown.EffectiveMovementSpeedMod, {
-{ "%.2f ^8(移动速度加成)", output.MovementSpeedMod },
-{ "%.2f ^8(动作速度加成)", output.ActionSpeedMod },
-total = s_format("= %.2f ^8(有效移动速度加成)", output.EffectiveMovementSpeedMod)
-			})
-		end
+			{ "%.2f ^8(移动速度加成)", output.MovementSpeedMod },
+			{ "%.2f ^8(动作速度加成)", output.ActionSpeedMod },
+			total = s_format("= %.2f ^8(有效移动速度加成)", output.EffectiveMovementSpeedMod)
+						})
+			end
+		end 
+		
 		output.BlockChanceMax = modDB:Sum("BASE", nil, "BlockChanceMax")
 		local baseBlockChance = 0
 		if actor.itemList["Weapon 2"] and actor.itemList["Weapon 2"].armourData then

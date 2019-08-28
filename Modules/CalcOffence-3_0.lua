@@ -1469,7 +1469,10 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 			local inc = skillModList:Sum("INC", dotTypeCfg, "Damage", damageType.."Damage", isElemental[damageType] and "ElementalDamage" or nil)
 			local more = round(skillModList:More(dotTypeCfg, "Damage", damageType.."Damage", isElemental[damageType] and "ElementalDamage" or nil), 2)
 			local mult = skillModList:Sum("BASE", dotTypeCfg, damageType.."DotMultiplier")
-			local total = baseVal * (1 + inc/100) * more * (1 + mult/100) * effMult
+			local multNonAilment = skillModList:Sum("BASE", dotTypeCfg, "NonAilment"..damageType.."DotMultiplier")
+			
+			
+			local total = baseVal * (1 + inc/100) * more * (1 + mult/100+multNonAilment/100) * effMult
 			if skillFlags.aura then
 				total = total * calcLib.mod(skillModList, dotTypeCfg, "AuraEffect")
 			end
@@ -1477,7 +1480,7 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 			output.TotalDot = output.TotalDot + total
 			if breakdown then
 				breakdown[damageType.."Dot"] = { }
-				breakdown.dot(breakdown[damageType.."Dot"], baseVal, inc, more, mult, nil, effMult, total)
+				breakdown.dot(breakdown[damageType.."Dot"], baseVal, inc, more, (mult+multNonAilment), nil, effMult, total)
 			end
 		end
 	end
@@ -1820,6 +1823,7 @@ t_insert(globalBreakdown.BleedDuration, s_format("/ %.2f ^8(更快或较慢 debu
 				skillFlags.poison = true
 				skillFlags.duration = true
 				local effMult = 1
+				--抗性计算
 				if env.mode_effective then
 					local resist = m_min(enemyDB:Sum("BASE", nil, "ChaosResist"), 75)
 					local taken = enemyDB:Sum("INC", nil, "DamageTaken", "DamageTakenOverTime", "ChaosDamageTaken", "ChaosDamageTakenOverTime")
@@ -1830,9 +1834,27 @@ t_insert(globalBreakdown.BleedDuration, s_format("/ %.2f ^8(更快或较慢 debu
 						globalBreakdown.PoisonEffMult = breakdown.effMult("Chaos", resist, 0, taken,takenMore, effMult)
 					end
 				end
+				--额外加成
+				local multChaosDot = skillModList:Sum("BASE", dotTypeCfg, "ChaosDotMultiplier") or  0
+				local multPoison = skillModList:Sum("BASE", dotTypeCfg, "PoisonMultiplier")	 or 0	
+				local multAll=(1+multChaosDot/100+multPoison/100)
+				
+				if breakdown and  multAll~=1 then 
+				
+				breakdown.PoisonMultAllMod = { }
+				output.PoisonMultAllMod=multAll
+				 breakdown.multiShow(breakdown.PoisonMultAllMod , {
+				{ "x(1+ %.2f ^8(持续混沌伤害额外加成)", multChaosDot/100 },			
+				{ " + %.2f ^8(中毒伤害额外加成) )", multPoison/100},			 
+				total = s_format("= %.2f ^8(额外加成)", multAll)
+							})
+				end 
+				
+				--异常伤害效果
 				local effectMod = calcLib.mod(skillModList, dotCfg, "AilmentEffect")
+				--中毒消化速度
 				local rateMod = calcLib.mod(skillModList, cfg, "PoisonFaster")
-				output.PoisonDPS = baseVal * effectMod * rateMod * effMult
+				output.PoisonDPS = baseVal * effectMod * rateMod * effMult * multAll
 				local durationBase
 				if skillData.poisonDurationIsSkillDuration then
 					durationBase = skillData.duration
@@ -1857,6 +1879,7 @@ base = s_format("%.1f ^8(每秒总伤害)", baseVal),
 { "%.2f ^8(异常效果加成)", effectMod },
 { "%.2f ^8(伤害生效速率加成)", rateMod },
 { "%.3f ^8(有效 DPS 加成)", effMult },
+{ "%.3f ^8(额外加成)", multAll },
 total = s_format("= %.1f ^8每秒", output.PoisonDPS),
 					})
 					if globalOutput.PoisonDuration ~= 2 then
@@ -2249,7 +2272,10 @@ t_insert(breakdown.ImpaleModifier, s_format("x %.2f ^8(穿刺几率)", impaleCha
 		end
 		local inc = skillModList:Sum("INC", dotCfg, "Damage", "ChaosDamage")
 		local more = round(skillModList:More(dotCfg, "Damage", "ChaosDamage"), 2)
-		local mult = skillModList:Sum("BASE", dotTypeCfg, "ChaosDotMultiplier")
+		local multChaosDot = skillModList:Sum("BASE", dotTypeCfg, "ChaosDotMultiplier")
+		local multNonAilment = skillModList:Sum("BASE", dotTypeCfg, "NonAilmentChaosDotMultiplier")		
+		local mult =multChaosDot+multNonAilment
+		
 		output.DecayDPS = skillData.decay * (1 + inc/100) * more * (1 + mult/100) * effMult
 		local durationMod = calcLib.mod(skillModList, dotCfg, "Duration", "SkillAndDamagingAilmentDuration")
 		output.DecayDuration = 10 * durationMod * debuffDurationMult

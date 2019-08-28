@@ -45,6 +45,15 @@ local function fuckCnKeystones(name)
 return name:gsub("致死定罪","凡人的信念")
 
 end
+
+
+local function fuckCnNotable(name)
+--中点命名问题处理
+return name 
+
+end
+
+
 -- Merge keystone modifiers
 local function mergeKeystones(env)
 	local modDB = env.modDB
@@ -57,6 +66,19 @@ local function mergeKeystones(env)
 		end
 	end
 end
+
+local function mergeNotable(env)
+	local modDB = env.modDB
+
+	for _, name in ipairs(modDB:List(nil, "Notable")) do
+		name =fuckCnNotable(name)
+		if not env.notableAdded[name] then
+			env.notableAdded[name] = true			
+			modDB:AddList(env.spec.tree.notableMap[name].modList)
+		end
+	end
+end
+
 
 -- Calculate attributes and life/mana pools, and set conditions
 local function doActorAttribsPoolsConditions(env, actor)
@@ -413,7 +435,9 @@ function calcs.perform(env)
 
 	-- Merge keystone modifiers
 	env.keystonesAdded = { }
+	env.notableAdded = { }
 	mergeKeystones(env)
+	mergeNotable(env)
 
 	-- Build minion skills
 	for _, activeSkill in ipairs(env.player.activeSkillList) do
@@ -567,7 +591,7 @@ function calcs.perform(env)
 
 	-- Merge keystones again to catch any that were added by flasks
 	mergeKeystones(env)
-
+	mergeNotable(env)
 	-- Calculate skill life and mana reservations
 	env.player.reserved_LifeBase = 0
 	env.player.reserved_LifePercent = modDB:Sum("BASE", nil, "ExtraLifeReserved") 
@@ -1043,7 +1067,7 @@ function calcs.perform(env)
 
 	-- Merge keystones again to catch any that were added by buffs
 	mergeKeystones(env)
-
+	mergeNotable(env)
 	-- Special handling for Dancing Dervish
 	if modDB:Flag(nil, "DisableWeapons") then
 		env.player.weaponData1 = copyTable(env.data.unarmedWeaponData[env.classId])

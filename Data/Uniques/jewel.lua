@@ -145,7 +145,9 @@ Has Alt Variant: true
 永恒珠宝
 联盟: 战乱之殇
 源: 「卡鲁」限定掉落
-Has Alt Variant: true
+版本: 冈姆
+版本: 拉凯尔塔
+版本: 克洛瓦
 范围: 大
 仅限: 1
 等级需求: 20

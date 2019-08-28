@@ -182,6 +182,7 @@ local cdnRoot = treeVersion == "2_6" and "" or ""--https://web.poecdn.com"
 
 	ConPrintf("Processing tree...")
 	self.keystoneMap = { }
+	self.notableMap = { }
 	local nodeMap = { }
 	local sockets = { }
 	local orbitMult = { [0] = 0, m_pi / 3, m_pi / 6, m_pi / 6, m_pi / 20 }
@@ -214,6 +215,7 @@ local cdnRoot = treeVersion == "2_6" and "" or ""--https://web.poecdn.com"
 			self.keystoneMap[node.dn] = node
 		elseif node["not"] then
 			node.type = "Notable"
+			self.notableMap[node.dn] = node
 		else
 			node.type = "Normal"
 		end
@@ -325,6 +327,10 @@ local cdnRoot = treeVersion == "2_6" and "" or ""--https://web.poecdn.com"
 		if node.type == "Keystone" then
 			node.keystoneMod = modLib.createMod("Keystone", "LIST", node.dn, "Tree"..node.id)
 			node.modList:NewMod("Condition:Have"..node.dn.."Keystone", "FLAG", true, "Tree:"..node.id)
+		end
+		if node.type == "Notable" then
+			node.NotableMod = modLib.createMod("Notable", "LIST", node.dn, "Tree"..node.id)
+			 
 		end
 	end
 

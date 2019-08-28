@@ -194,7 +194,7 @@ local modNameList = {
 	["攻击及法术伤害格挡几率"] = { "BlockChance", "SpellBlockChance" },
 	["召唤圣物数量上限"] = "ActiveHolyRelicLimit",
 	["持续冰霜伤害效果"] = { "ColdDamage", flags = ModFlag.Dot },
-	["非异常状态混沌持续伤害加成"] = "ChaosDotMultiplier",--non-ailment chaos damage over time multiplier
+	["非异常状态混沌持续伤害加成"] = "NonAilmentChaosDotMultiplier",--non-ailment chaos damage over time multiplier
 	["额外总冰霜持续伤害效果"] = "ColdDotMultiplier",--cold damage over time multiplier
 	["暴击球数量下限"] = "PowerChargesMin",
 	["狂怒球数量下限"] = "FrenzyChargesMin",
@@ -206,13 +206,16 @@ local modNameList = {
 	["火焰与混沌抗性"] = { "FireResist", "ChaosResist" }, 
 	["闪电与混沌抗性"] = { "LightningResist", "ChaosResist" }, 
 	["冰霜与混沌抗性"] = { "ColdResist", "ChaosResist" }, 
-	["非异常状态混沌伤害持续时间加成"] = "ChaosDotMultiplier",
+	["非异常状态混沌伤害持续时间加成"] = "NonAilmentChaosDotMultiplier",
 		["冰霜伤害持续时间加成"] = "ColdDotMultiplier",
 	["持续冰霜伤害加成"] = "ColdDotMultiplier",
 	["几率造成双倍伤害"] = "DoubleDamageChance",
 	["异常状态持续时间"] = { "EnemyShockDuration", "EnemyFreezeDuration", "EnemyChillDuration", "EnemyIgniteDuration", "EnemyPoisonDuration", "EnemyBleedDuration" },
-	["非异常状态的持续混沌伤害加成"] = "ChaosDotMultiplier",
-	["非异常状态的持续混沌伤害额外加成"] = "ChaosDotMultiplier",
+	["非异常状态的持续混沌伤害加成"] = "NonAilmentChaosDotMultiplier",
+	["非异常状态的持续混沌伤害额外加成"] = "NonAilmentChaosDotMultiplier",
+	["持续混沌伤害额外加成"] = "ChaosDotMultiplier",
+	["持续混沌伤害加成"] = "ChaosDotMultiplier",
+	["混沌伤害持续时间加成"] = "ChaosDotMultiplier",
 	["从偷取获取的每秒生命回复"] = "LifeLeechRate",
 	["从偷取获取的每秒魔力回复"] = "ManaLeechRate",
 	["从偷取获取的每秒能量护盾回复"] = "EnergyShieldLeechRate",
@@ -989,6 +992,7 @@ local modTagList = {
 	["狂怒球达到上限时，"] = { tag = { type = "StatThreshold", stat = "FrenzyCharges", thresholdStat = "FrenzyChargesMax" } }, --备注：while at maximum frenzy charges
 	["近期内你若被击中，"] = { tag = { type = "Condition", var = "BeenHitRecently" } },	
 	["对冰缓敌人造成的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" }, keywordFlags = KeywordFlag.Hit },
+	["对冰缓敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" }, keywordFlags = KeywordFlag.Hit }, 
 	["在主手时，"] = { tag = { type = "SlotNumber", num = 1 } }, --备注：when in main hand
 	["击中冰缓敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" }, keywordFlags = KeywordFlag.Hit }, --备注：against chilled  
 	["对被点燃敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Ignited" }, keywordFlags = KeywordFlag.Hit }, 
@@ -1455,7 +1459,10 @@ local specialModList = {
 	["你技能的非诅咒类光环效果提高 (%d+)%%"]= function(num) return {  mod("AuraEffect", "INC", tonumber(num))  } end,
 	["所有身上装备的物品皆为已腐化时，每秒回复 (%d+) 能量护盾"] = function(num) return {  mod("EnergyShieldRegen", "BASE", num,{ type = "MultiplierThreshold", var = "NonCorruptedItem", threshold = 0, upper = true })  } end,
 	["此物品上装备的【([^\\x00-\\xff]*)石】等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", { 
-	keyword = type_Cn:gsub("光环技能","aura")
+	keyword = type_Cn
+	:gsub("物理法术技能","physical_spell")
+	:gsub("混沌法术技能","chaos_spell")
+	:gsub("光环技能","aura")
 	:gsub("绿色技能","dexterity")
 	:gsub("蓝色技能","intelligence")
 	:gsub("红色技能","strength")
@@ -1482,6 +1489,37 @@ local specialModList = {
 	:gsub("持续吟唱技能","channelling")
 	:gsub("范围效果技能","aoe")
 	, key = "level", value = tonumber(num) }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,  
+	["所有物品上装备的【([^\\x00-\\xff]*)石】等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", { 
+	keyword = type_Cn
+	:gsub("物理法术技能","physical_spell")
+	:gsub("混沌法术技能","chaos_spell")
+	:gsub("光环技能","aura")
+	:gsub("绿色技能","dexterity")
+	:gsub("蓝色技能","intelligence")
+	:gsub("红色技能","strength")
+	:gsub("闪电技能","lightning")
+	:gsub("辅助技能","support")
+	:gsub("火焰技能","fire")
+	:gsub("冰霜技能","cold")
+	:gsub("混沌技能","chaos")
+	:gsub("物理技能","physical")
+	:gsub("魔像技能","golem")
+	:gsub("召唤生物技能","minion")
+	:gsub("近战技能","melee")
+	:gsub("战吼技能","warcry")
+	:gsub("瓦尔技能","vaal")
+	:gsub("移动技能","movement")
+	:gsub("弓技能","bow")
+	:gsub("诅咒技能","curse")
+	:gsub("捷技能","herald")
+	:gsub("法术技能","spell")
+	:gsub("主动技能","active_skill")
+	:gsub("持续时间技能","duration")
+	:gsub("陷阱技能石】或【地雷技能","trap or mine")
+	:gsub("投射物技能","projectile")
+	:gsub("持续吟唱技能","channelling")
+	:gsub("范围效果技能","aoe")
+	, key = "level", value = tonumber(num) }) } end,  
 	["此物品上装备的【([^\\x00-\\xff]*)石】品质 %+(%d+)%%"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", { 
 		keyword = type_Cn:gsub("光环技能","aura")
 		:gsub("绿色技能","dexterity")
@@ -2001,15 +2039,15 @@ local specialModList = {
 	["受到【奋锐光环】影响时，从能量护盾偷取中获得的每秒最大总恢复量提高 (%d+)%%"]= function(num) return {  mod("MaxEnergyShieldLeechRate", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy奋锐光环" })  } end, 
 	["当你受到奋锐光环影响时，创造的【奉献地面】可以使敌人承受的伤害提高 (%d+)%%"]= function(num) return {  mod("EnemyModifier", "LIST", { mod = mod("DamageTaken", "INC", num) }, { type = "ActorCondition", actor = "enemy", var = "OnConsecratedGround" },{ type = "Condition", var = "AffectedBy奋锐光环" })  } end, 
 	["受【奋锐光环】影响时，暴击穿透敌人 (%d+)%% 的元素抗性"]= function(num) return {  mod("ElementalPenetration", "BASE", tonumber(num), { type = "Condition", var = "CriticalStrike" },{ type = "Condition", var = "AffectedBy奋锐光环" })  } end, 
-	["受【怨毒光环】影响时，([%+%-]?%d+)%% 非异常状态的持续混沌伤害加成"]= function(num) return {  mod("ChaosDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
-	["受【怨毒光环】影响时，([%+%-]?%d+)%% 非异常状态持续混沌伤害额外加成"]= function(num) return {  mod("ChaosDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
+	["受【怨毒光环】影响时，([%+%-]?%d+)%% 非异常状态的持续混沌伤害加成"]= function(num) return {  mod("NonAilmentChaosDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
+	["受【怨毒光环】影响时，([%+%-]?%d+)%% 非异常状态持续混沌伤害额外加成"]= function(num) return {  mod("NonAilmentChaosDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
 	["受到【怨毒光环】影响时，技能持续时间提高 (%d+)%%"]= function(num) return {  mod("Duration", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
 	["受【怨毒光环】影响时，你造成的伤害类异常状态的伤害生效速度提高 (%d+)%%"]= function(num) return { 
 	mod("PoisonFaster", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" }) ,
 	mod("IgniteBurnFaster", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" }) ,
 	mod("BleedFaster", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" }) ,
 	 } end, 
-	["受【怨毒光环】影响时，([%+%-]?%d+)%% 非异常状态混沌伤害持续时间加成"]= function(num) return {  mod("ChaosDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
+	["受【怨毒光环】影响时，([%+%-]?%d+)%% 非异常状态混沌伤害持续时间加成"]= function(num) return {  mod("NonAilmentChaosDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
 	["受【怨毒光环】影响时，([%+%-]?%d+)%% 持续冰霜伤害加成"]= function(num) return {  mod("ColdDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
 	["受【怨毒光环】影响时，([%+%-]?%d+)%% 冰霜伤害持续时间加成"]= function(num) return {  mod("ColdDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
 	["受到【怨毒光环】影响时，生命和能量护盾回复率提高 (%d+)%%"]= function(num) return {  

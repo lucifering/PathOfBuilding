@@ -65,7 +65,9 @@ function calcs.buildModListForNode(env, node)
 	local modList = new("ModList")
 	if node.type == "Keystone" then
 		modList:AddMod(node.keystoneMod)
-	else
+	elseif node.type == "Notable" then
+		modList:AddMod(node.NotableMod)
+	else 
 		modList:AddList(node.modList)
 	end
 

@@ -556,8 +556,14 @@ return {
 { label = "副手源混沌伤害", bgCol = colorCodes.OFFHANDBG, textSize = 12, flag = "weapon2Attack", haveOutput = "OffHand.PoisonChaosMax", { format = "{0:output:OffHand.PoisonChaosMin} to {0:output:OffHand.PoisonChaosMax}", { breakdown = "OffHand.PoisonChaos" }, }, },
 { label = "有效 DPS 加成", flag = "effective", { format = "x {3:output:PoisonEffMult}", 
 		{ breakdown = "PoisonEffMult" }, 
+
+		
 { label = "敌人加成", modName = { "ChaosResist", "DamageTaken", "DamageTakenOverTime", "ChaosDamageTaken", "ChaosDamageTakenOverTime" }, enemy = true },
 	}, },
+		
+{ label = "额外加成", { format = "x {3:output:PoisonMultAllMod}", 
+		{ breakdown = "PoisonMultAllMod" }, }, },
+	
 { label = "中毒 DPS", { format = "{1:output:PoisonDPS}", 
 		{ breakdown = "PoisonDPS" }, 
 		{ breakdown = "MainHand.PoisonDPS" },

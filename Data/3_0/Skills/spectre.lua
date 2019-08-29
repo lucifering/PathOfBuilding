@@ -6,6 +6,178 @@
 --
 local skills, mod, flag, skill = ...
 
+
+skills["DemonFemaleRangedGeometryProjectileLeft"] = {
+	name = "女恶魔的几何投射·左",
+	hidden = true,
+	color = 4,
+	skillTypes = { 
+	[SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, 
+	 [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true,
+	[SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		attack = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"active_skill_damage_+%_final",
+		"monster_reverse_point_blank_damage_-%_at_minimum_range",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+	},
+	statInterpolation = { 1, 1, },
+	levels = {
+		[1] = { -60, 30, levelRequirement = 0, },
+	},
+}
+
+skills["DemonFemaleRangedGeometryProjectileRight"] = {
+	name = "女恶魔的几何投射·右",
+	hidden = true,
+	color = 4,
+	skillTypes = { 
+	[SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, 
+	 [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true,
+	[SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		attack = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"active_skill_damage_+%_final",
+		"monster_reverse_point_blank_damage_-%_at_minimum_range",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+	},
+	statInterpolation = { 1, 1, },
+	levels = {
+		[1] = { -60, 30, levelRequirement = 0, },
+	},
+}
+
+skills["EmptyActionFemaleDemonProjectiles"] = {
+	name = "女恶魔的无动作投射",
+	hidden = true,
+	color = 4,
+	skillTypes =  { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true,   [SkillType.ProjectileAttack] = true, [SkillType.PhysicalSkill] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 3,
+	baseFlags = {
+		attack = true,
+		melee = true,
+		 
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"melee_range_+",
+	},
+	statInterpolation = { 1, },
+	levels = {
+		[1] = { 40, levelRequirement = 0, },
+	},
+}
+
+skills["DemonFemaleRangedGeometryProjectileLeftAhead"] = {
+	name = "女恶魔的几何投射·左前方",
+	hidden = true,
+	color = 4,
+	skillTypes = { 
+	[SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, 
+	 [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true,
+	[SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		attack = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"active_skill_damage_+%_final",
+		"monster_reverse_point_blank_damage_-%_at_minimum_range",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+	},
+	statInterpolation = { 1, 1, },
+	levels = {
+		[1] = { -60, 30, levelRequirement = 0, },
+	},
+}
+
+skills["DemonFemaleRangedGeometryProjectileRightAhead"] = {
+	name = "女恶魔的几何投射·右前方",
+	hidden = true,
+	color = 4,
+	skillTypes = { 
+	[SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, 
+	 [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true,
+	[SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		attack = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"active_skill_damage_+%_final",
+		"monster_reverse_point_blank_damage_-%_at_minimum_range",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+	},
+	statInterpolation = { 1, 1, },
+	levels = {
+		[1] = { -60, 30, levelRequirement = 0, },
+	},
+}
+
+skills["EmptyActionFemaleDemonProjectilesAhead"] = {
+	name = "女恶魔的无动作投射·前",
+	hidden = true,
+	color = 4,	
+	skillTypes =  { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true,   [SkillType.ProjectileAttack] = true, [SkillType.PhysicalSkill] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 3,
+	baseFlags = {
+		attack = true,
+		melee = true,
+		 
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"melee_range_+",
+	},
+	statInterpolation = { 1, },
+	levels = {
+		[1] = { 40, levelRequirement = 0, },
+	},
+}
+
+
 skills["AxisDoubleStrikeTrigger"] = {
 	name = "双重打击",
 	hidden = true,

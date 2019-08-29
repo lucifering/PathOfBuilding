@@ -252,6 +252,7 @@ local modNameList = {
 	["对敌人施加的非伤害异常状态效果"] = { "EnemyShockEffect", "EnemyChillEffect", "EnemyFreezeEffech" }, 
 	["非诅咒类光环效果"] = "AuraEffect", --备注：aura effect
 	["所有最大抗性"] = { "FireResistMax", "ColdResistMax", "LightningResistMax", "ChaosResistMax" }, 
+	["生命和能量护盾回复速度"] = { "LifeRecoveryRate", "EnergyShieldRecoveryRate" },
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -2716,6 +2717,7 @@ local specialModList = {
 	["你的移动速度为基础移动速度的 (%d+)%%"] = function(num) return {  
 	mod("MovementSpeed", "OVERRIDE", tonumber(num)/100 )			 
 	} end,
+	["你偷取生命，数值等同于你的地雷造成伤害的 ([%d%.]+)%%"] = function(num) return { mod("DamageLifeLeechToPlayer", "BASE", num, nil, 0, KeywordFlag.Mine) } end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

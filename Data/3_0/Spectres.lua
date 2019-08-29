@@ -629,10 +629,10 @@ minions["Metadata/Monsters/DemonModular/DemonFemaleRanged"] = {
 	accuracy = 1,
 	skillList = {
 		"DemonFemaleRangedGeometryProjectileLeft",
-		"DemonFemaleRangedGeometryProjectileRight",
-		"EmptyActionFemaleDemonProjectiles",
+		"DemonFemaleRangedGeometryProjectileRight",		
 		"DemonFemaleRangedGeometryProjectileLeftAhead",
 		"DemonFemaleRangedGeometryProjectileRightAhead",
+		"EmptyActionFemaleDemonProjectiles",
 		"EmptyActionFemaleDemonProjectilesAhead",
 	},
 	modList = {

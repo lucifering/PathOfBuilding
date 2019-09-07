@@ -448,6 +448,9 @@ end },
 { var = "multiplierNearbyAlly", type = "count", label = "附近友军数量：", ifMult = "NearbyAlly", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:NearbyAlly", "BASE", val, "Config", { type = "Condition", var = "Combat" })
 	end },
+{ var = "multiplierNearbyCorpse", type = "count", label = "# 附近灵枢数量", ifMult = "NearbyCorpse", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:NearbyCorpse", "BASE", val, "Config", { type = "Condition", var = "Combat" })
+	end },
 { var = "conditionOnConsecratedGround", type = "check", label = "你正在【奉献地面】上?", tooltip = "当你处于【奉献地面】状态时干啥干啥的词缀生效,\n同时也会启用【奉献地面】buff本身:6%每秒生命回复.", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:OnConsecratedGround", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
@@ -773,6 +776,10 @@ end },
 { var = "conditionEnemyIntimidated", type = "check", ifVer = "3_0", label = "敌人被恐吓?", tooltip = "这个会附加词缀:\n提高 10% 敌人承受的攻击伤害", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("DamageTaken", "INC", 10, "Intimidate", ModFlag.Attack)
 	end },
+{ var = "conditionEnemyUnnerved", type = "check", ifVer = "3_0", label = "敌人被威吓?", tooltip = "这个会附加词缀:\n提高 10% 敌人承受的法术伤害", apply = function(val, modList, enemyModList)
+		enemyModList:NewMod("DamageTaken", "INC", 10, "Unnerve", ModFlag.Spell)
+	end },
+	
 { var = "conditionEnemyCoveredInAsh", type = "check", label = "敌人【灰烬缠身】?", tooltip = "这个会附加词缀:\n额外降低敌人 20% 移动速度\n提高 20% 敌人承受的火焰伤害", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("FireDamageTaken", "INC", 20, "Ash")
 	end },

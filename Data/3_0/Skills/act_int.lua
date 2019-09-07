@@ -1039,7 +1039,7 @@ skills["Clarity"] = {
 	name = "清晰",
 	color = 3,
 	description = "施放一个光环, 使你与受光环影响友军获得额外的魔力回复.",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -1910,7 +1910,7 @@ skills["Discipline"] = {
 	name = "纪律",
 	color = 3,
 	description = "施放一个光环, 使你与受光环影响友军获得额外的能量护盾.",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -3521,12 +3521,13 @@ skills["IceDash"] = {
 	baseEffectiveness = 2.0339000225067,
 	incrementalEffectiveness = 0.042599998414516,
 	description = "传送到指定地点，对敌人造成伤害，并在曾经所在区域留下冻缓地面。和其它闪现技能共用冷却时间。",
-	skillTypes = { [SkillType.Spell] = true,[SkillType.Hit] = true, [SkillType.MovementSkill] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.ColdSkill] = true, [SkillType.ChillingArea] = true, [SkillType.TravelSkill] = true, [SkillType.BlinkSkill] = true, [SkillType.Area] = true, [SkillType.Triggerable] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true,},
+	skillTypes = { [SkillType.Spell] = true, [SkillType.MovementSkill] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.ColdSkill] = true, [SkillType.ChillingArea] = true, [SkillType.TravelSkill] = true, [SkillType.BlinkSkill] = true, [SkillType.Area] = true, [SkillType.Triggerable] = true, [SkillType.Hit] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
 	baseFlags = {
 		spell = true,
 		area = true,
+		hit = true,
 	},
 	baseMods = {
 		skill("showAverage", true),
@@ -4784,7 +4785,7 @@ skills["DamageOverTimeAura"] = {
 	baseEffectiveness = 1.5,
 	incrementalEffectiveness = 0.025000000372529,
 	description = "施放一个光环, 使你与受光环影响友军造成的持续伤害叠加，技能效果延长。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -5167,7 +5168,7 @@ skills["Purity"] = {
 	name = "元素净化",
 	color = 3,
 	description = "施放一个光环, 使你与受光环影响友军获得额外的元素抗性.",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -5251,7 +5252,7 @@ skills["LightningResistAura"] = {
 	name = "闪电净化",
 	color = 3,
 	description = "施放一个光环, 使你与受光环影响的友军获得额外的闪电抗性.",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.LightningSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.LightningSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -7550,7 +7551,7 @@ skills["Wrath"] = {
 	baseEffectiveness = 2.25,
 	incrementalEffectiveness = 0.023000000044703,
 	description = "施放一个光环, 使你与受光环影响友军在攻击时额外附带闪电伤害, 并且造成更多法术闪电伤害.",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.LightningSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.LightningSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -7632,7 +7633,7 @@ skills["SpellDamageAura"] = {
 	baseEffectiveness = 1.5,
 	incrementalEffectiveness = 0.025000000372529,
 	description = "施放一个光环, 使你与受光环影响的友军获得伤害和法术暴击几率加成，并在面对强大敌人时有几率创造奉献地面。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {

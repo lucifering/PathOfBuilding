@@ -228,7 +228,7 @@ main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会�
 { stat = "HitSpeed", label = "击中速率", fmt = ".2f", compPercent = true },
 { stat = "TrapThrowingTime", label = "陷阱投掷时间", fmt = ".2fs", compPercent = true, lowerIsBetter = true, },
 { stat = "TrapCooldown", label = "陷阱CD", fmt = ".2fs", lowerIsBetter = true },
-{ stat = "MineLayingTime", label = "地雷放置时间", fmt = ".2fs", compPercent = true, lowerIsBetter = true, },
+{ stat = "MineLayingTime", label = "地雷投掷时间", fmt = ".2fs", compPercent = true, lowerIsBetter = true, },
 { stat = "TotemPlacementTime", label = "图腾放置时间", fmt = ".2fs", compPercent = true, lowerIsBetter = true, },
 { stat = "PreEffectiveCritChance", label = "暴击几率", fmt = ".2f%%" },
 { stat = "CritChance", label = "有效暴击几率", fmt = ".2f%%", condFunc = function(v,o) return v ~= o.PreEffectiveCritChance end },

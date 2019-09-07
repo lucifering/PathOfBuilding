@@ -363,7 +363,6 @@ return {
 { label = "玩家加成", modName = "CritMultiplier", cfg = "skill" }, 
 { label = "敌人加成", modName = "SelfCritMultiplier", enemy = true },
 	}, },
-{ label = "暴击异常伤害", notFlag = "attack", { format = "x {2:output:CritDegenMultiplier}", }, },
 { label = "暴击效果 Mod", notFlag = "attack", { format = "x {3:output:CritEffect}", { breakdown = "CritEffect" }, }, },
 	-- Main Hand
 { label = "主手暴击几率提高", bgCol = colorCodes.MAINHANDBG, flag = "weapon1Attack", { format = "{0:mod:1}%", { modName = "CritChance", modType = "INC", cfg = "weapon1" }, }, },
@@ -377,7 +376,7 @@ return {
 { label = "玩家加成", modName = "CritMultiplier", cfg = "weapon1" }, 
 { label = "敌人加成", modName = "SelfCritMultiplier", enemy = true },
 	}, },
-{ label = "主手暴击异常伤害", bgCol = colorCodes.MAINHANDBG, flag = "weapon1Attack", { format = "x {2:output:MainHand.CritDegenMultiplier}", }, },
+
 { label = "主手暴击效果 Mod", bgCol = colorCodes.MAINHANDBG, flag = "weapon1Attack", { format = "x {3:output:MainHand.CritEffect}", { breakdown = "MainHand.CritEffect" }, }, },
 	-- Off Hand
 { label = "副手暴击几率提高", bgCol = colorCodes.OFFHANDBG, flag = "weapon2Attack", { format = "{0:mod:1}%", { modName = "CritChance", modType = "INC", cfg = "weapon2" }, }, },
@@ -391,7 +390,7 @@ return {
 { label = "玩家加成", modName = "CritMultiplier", cfg = "weapon2" }, 
 { label = "敌人加成", modName = "SelfCritMultiplier", enemy = true },
 	}, },
-{ label = "副手暴击异常伤害", bgCol = colorCodes.OFFHANDBG, flag = "weapon2Attack", { format = "x {2:output:OffHand.CritDegenMultiplier}", }, },
+
 { label = "副手暴击效果 Mod", bgCol = colorCodes.OFFHANDBG, flag = "weapon2Attack", { format = "x {3:output:OffHand.CritEffect}", { breakdown = "OffHand.CritEffect" }, }, },
 } },
 { 1, "HitChance", 1, "命中", colorCodes.OFFENCE, {

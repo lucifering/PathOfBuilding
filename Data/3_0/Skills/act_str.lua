@@ -379,7 +379,7 @@ skills["Anger"] = {
 	baseEffectiveness = 2.25,
 	incrementalEffectiveness = 0.023000000044703,
 	description = "施放一个光环, 使你与受光环影响友军在攻击和施放法术时额外附带火焰伤害.",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -649,9 +649,7 @@ skills["Bladestorm"] = {
 	name = "剑刃风暴",
 	color = 1,
 	description = "发动一次旋转攻击，对你周围的敌人反复造成伤害，并基于你的姿态创造剑刃风暴。剑刃风暴对敌人造成的伤害基于你的武器伤害和攻击速度，并持续一段时间。血姿态下的剑刃风暴静止不动，沙姿态下的剑刃风暴会缓慢向前移动。需要剑类和斧类。默认为血姿态。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.Duration] = true,
-	[SkillType.AttackCanRepeat] = true,
-	},
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.AttackCanRepeat] = true, },
 	weaponTypes = {
 		["Two Handed Axe"] = true,
 		["Thrusting One Handed Sword"] = true,
@@ -699,6 +697,7 @@ mod("MovementSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Bu
 		"blind_art_variation",
 		"is_area_damage",
 		"console_skill_dont_chase",
+		"skill_can_add_multiple_charges_per_action",
 	},
 	statInterpolation = { 1, 1, 1, 1, 1, },
 	levels = {
@@ -844,6 +843,7 @@ skills["ChainStrike"] = {
 	stats = {
 		"chain_strike_cone_radius_+_per_x_rage",
 		"chain_strike_gain_x_rage_if_attack_hits",
+		"is_area_damage",
 	},
 	statInterpolation = { 1, 1, },
 	levels = {
@@ -1136,7 +1136,7 @@ skills["Determination"] = {
 	name = "坚定",
 	color = 1,
 	description = "施放一个光环, 使你与受光环影响友军获得额外的护甲.",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -1740,7 +1740,7 @@ skills["BloodSandArmour"] = {
 	castTime = 0,
 	statMap = {
 		["support_maimed_enemies_physical_damage_taken_+%"] = {
-mod("PhysicalDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "瘫痪", effectCond = "BloodStance" }, { type = "Condition", var = "Maimed" }),
+mod("PhysicalDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "AuraDebuff", effectName = "瘫痪", effectCond = "BloodStance" }, { type = "Condition", var = "Maimed" }),
 		},
 	},
 	baseFlags = {
@@ -3184,6 +3184,7 @@ skills["BloodSpears"] = {
 	stats = {
 		"blood_spears_base_number_of_spears",
 		"blood_spears_damage_+%_final_in_blood_stance",
+		"is_area_damage",
 	},
 	statInterpolation = { 1, 1, },
 	levels = {
@@ -3233,7 +3234,7 @@ skills["PhysicalDamageAura"] = {
 	name = "尊严",
 	color = 1,
 	description = "施放一个光环，使你周围的敌人受到的物理伤害提高。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.AuraDebuff] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.AuraDebuff] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
 	parts = {
@@ -3397,7 +3398,7 @@ skills["FireResistAura"] = {
 	name = "火焰净化",
 	color = 1,
 	description = "施放一个光环, 使你与受光环影响的友军获得额外的火焰抗性.",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -3896,6 +3897,7 @@ skills["NewShieldCharge"] = {
 		"is_area_damage",
 		"override_off_hand_base_critical_strike_chance_to_5%",
 		"shield_charge_attack_time_+30%_if_no_charge",
+		"attack_is_melee_override",
 	},
 	statInterpolation = { 1, 1, 1, 3, 3, 1, 1, 1, 1, },
 	levels = {
@@ -4874,7 +4876,7 @@ skills["Vitality"] = {
 	name = "活力",
 	color = 1,
 	description = "施放一个光环, 使你与受光环影响友军获得额外的生命回复.",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {

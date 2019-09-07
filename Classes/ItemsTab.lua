@@ -2168,7 +2168,7 @@ tooltip:AddLine(16, "^x7F7F7F插槽: "..line)
 				local lifeDur = flaskData.duration * (1 + durInc / 100) / (1 + rateInc / 100) / (1 + lifeRateInc / 100)
 				if inst > 0 and grad > 0 then
 					t_insert(stats, s_format("^8Life recovered: ^7%d ^8(^7%d^8 instantly, plus ^7%d ^8over^7 %.2fs^8)", inst + grad, inst, grad, lifeDur))
-				elseif inst + grad ~= flaskData.lifeTotal then
+				elseif inst + grad ~= flaskData.lifeTotal or (inst == 0 and lifeDur ~= flaskData.duration) then
 					if inst > 0 then
 						t_insert(stats, s_format("^8Life recovered: ^7%d ^8instantly", inst))
 					elseif grad > 0 then
@@ -2184,7 +2184,7 @@ tooltip:AddLine(16, "^x7F7F7F插槽: "..line)
 				local manaDur = flaskData.duration * (1 + durInc / 100) / (1 + rateInc / 100) / (1 + manaRateInc / 100)
 				if inst > 0 and grad > 0 then
 					t_insert(stats, s_format("^8Mana recovered: ^7%d ^8(^7%d^8 instantly, plus ^7%d ^8over^7 %.2fs^8)", inst + grad, inst, grad, manaDur))
-				elseif inst + grad ~= flaskData.manaTotal then
+				elseif inst + grad ~= flaskData.manaTotal or (inst == 0 and manaDur ~= flaskData.duration) then
 					if inst > 0 then
 						t_insert(stats, s_format("^8Mana recovered: ^7%d ^8instantly", inst))
 					elseif grad > 0 then

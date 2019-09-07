@@ -189,13 +189,14 @@ name = "沉默之雷",
 	},
 }
 skills["SupportAuraDuration"] = {
-	name = "Blessing",
+	name = "祝福",
 	hidden = true,
 	color = 1,
 	support = true,
-	requireSkillTypes = { SkillType.Aura, },
+	requireSkillTypes = { SkillType.CanHaveBlessing, },
 	addSkillTypes = { SkillType.Duration, },
-	excludeSkillTypes = { SkillType.Totem, SkillType.AuraDuration, SkillType.AuraDebuff, SkillType.AppliesCurse, SkillType.NOT, SkillType.AND, },
+	excludeSkillTypes = { SkillType.Totem, },
+
 	statDescriptionScope = "gem_stat_descriptions",
 	fromItem = true,
 	statMap = {

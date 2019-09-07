@@ -33,11 +33,13 @@ function calcs.initModDB(env, modDB)
 		modDB:NewMod("MaxManaLeechInstance", "BASE", 10, "Base")
 		modDB:NewMod("MaxEnergyShieldLeechInstance", "BASE", 10, "Base")
 	end
-	modDB:NewMod("MineLayingTime", "BASE", 0.5, "Base")
+	
 	if env.build.targetVersion == "2_6" then
 		modDB:NewMod("TrapThrowingTime", "BASE", 0.5, "Base")
+		modDB:NewMod("MineLayingTime", "BASE", 0.5, "Base")
 	else
 		modDB:NewMod("TrapThrowingTime", "BASE", 0.6, "Base")
+		modDB:NewMod("MineLayingTime", "BASE", 0.25, "Base")
 	end
 	modDB:NewMod("TotemPlacementTime", "BASE", 0.6, "Base")
 	modDB:NewMod("ActiveTotemLimit", "BASE", 1, "Base")
@@ -201,7 +203,7 @@ function calcs.initEnv(build, mode, override)
 	modDB:NewMod("Evasion", "BASE", 3, "Base", { type = "Multiplier", var = "Level", base = 53 })
 	modDB:NewMod("Accuracy", "BASE", 2, "Base", { type = "Multiplier", var = "Level", base = -2 })
 	modDB:NewMod("CritMultiplier", "BASE", 50, "Base")
-	modDB:NewMod("CritDegenMultiplier", "BASE", 50, "Base")
+	modDB:NewMod("DotMultiplier", "BASE", 50, "Base", { type = "Condition", var = "CriticalStrike" })
 	modDB:NewMod("FireResist", "BASE", env.configInput.resistancePenalty or -60, "Base")
 	modDB:NewMod("ColdResist", "BASE", env.configInput.resistancePenalty or -60, "Base")
 	modDB:NewMod("LightningResist", "BASE", env.configInput.resistancePenalty or -60, "Base")
@@ -746,9 +748,23 @@ elseif item.rarity == "魔法" then
 							}
 							if gemInstance.gemData then
 								for _, value in ipairs(propertyModList) do
+								
+								
+								if value.type and value.type=='SkillName' then 
+									--print(">>>>>>value.skillName ="..value.skillName )
+									if value.skillName and value.skillName == activeEffect.gemData.name then 
+										activeEffect[value.key] = (activeEffect[value.key] or 0) + value.value
+									end 
+									
+								
+								else 
 									if calcLib.gemIsType(activeEffect.gemData, value.keyword) then
 										activeEffect[value.key] = (activeEffect[value.key] or 0) + value.value
 									end
+									
+								end  
+								
+									
 								end
 							end
 							if env.mode == "MAIN" then

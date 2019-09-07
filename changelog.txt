@@ -1,6 +1,6 @@
 ﻿VERSION[1.4.149.2][2019/9/7]
 ·修复了召唤师升华天赋+2召唤等级的解析，感谢：烎焁苂
-·增加传奇【Sporeguard】
+·增加传奇【Sporeguard】、【Breathstealer】和【Cowl of the 系列的头盔】
 
 
 ——【光影路西法】

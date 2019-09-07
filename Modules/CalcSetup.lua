@@ -67,8 +67,9 @@ function calcs.buildModListForNode(env, node)
 	local modList = new("ModList")
 	if node.type == "Keystone" then
 		modList:AddMod(node.keystoneMod)
-	elseif node.type == "Notable" then
-		modList:AddMod(node.NotableMod)
+		--会导致部分中点无效
+	--elseif node.type == "Notable" then
+		--modList:AddMod(node.NotableMod)
 	else 
 		modList:AddList(node.modList)
 	end

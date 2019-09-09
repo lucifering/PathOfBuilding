@@ -69,7 +69,7 @@ local typeLabel = {
 -- 一些特殊技能有特殊等级
 local skillNameAndLevel = {
 
-	{name="血肉与岩石",grantedEffectId="BloodSandArmour",level=6},	
+	--{name="血肉与岩石",grantedEffectId="BloodSandArmour",level=6},	
 	{name="血与沙",grantedEffectId="BloodSandStance",level=6},
 	{name="启蒙",grantedEffectId="SupportAdditionalXP",level=3},
 	{name="烙印召回",grantedEffectId="SigilRecall",level=6},

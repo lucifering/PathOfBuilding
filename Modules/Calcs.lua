@@ -272,6 +272,15 @@ t_insert(combatList, s_format("%d 耐力球", output.EnduranceCharges))
 		if output.SiphoningCharges > 0 then
 t_insert(combatList, s_format("%d 轮回球", output.SiphoningCharges))
 		end
+		if output.ChallengerCharges > 0 then
+			t_insert(combatList, s_format("%d 挑战球", output.ChallengerCharges))
+		end
+		if output.BlitzCharges > 0 then
+			t_insert(combatList, s_format("%d 疾电球", output.BlitzCharges))
+		end
+		if output.InspirationCharges > 0 then
+			t_insert(combatList, s_format("%d 激励球", output.InspirationCharges))
+		end
 		if output.CrabBarriers > 0 then
 t_insert(combatList, s_format("%d 深海屏障", output.CrabBarriers))
 		end
@@ -392,7 +401,7 @@ t_insert(combatList, "提速尾流")
 			output.Minion.CurseList = output.CurseList
 		end
 
-		infoDump(env)
+		--infoDump(env)
 	end
 
 	return env

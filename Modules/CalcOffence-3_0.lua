@@ -178,6 +178,14 @@ function calcs.offence(env, actor, activeSkill)
 		return
 	end
 
+local function runSkillFunc(name)
+		local func = activeSkill.activeEffect.grantedEffect[name]
+		if func then
+			func(activeSkill, output)
+		end
+	end
+
+ 	runSkillFunc("initialFunc")
 	-- Update skill data
 	for _, value in ipairs(skillModList:List(skillCfg, "SkillData")) do
 		if value.merge == "MAX" then
@@ -286,7 +294,7 @@ function calcs.offence(env, actor, activeSkill)
 	end
 
 	local isAttack = skillFlags.attack
-
+	runSkillFunc("preSkillTypeFunc")
 	-- Calculate skill type stats
 	if skillFlags.minion then
 		if activeSkill.minion and activeSkill.minion.minionData.limit then
@@ -330,10 +338,10 @@ output.PierceCountString = "所有目标"
 	end
 	if skillFlags.melee then
 		if skillFlags.weapon1Attack then
-			actor.weaponRange1 = (actor.weaponData1.range and actor.weaponData1.range + skillModList:Sum("BASE", skillCfg, "MeleeWeaponRange")) or (6 + skillModList:Sum("BASE", skillCfg, "UnarmedRange"))		
+			actor.weaponRange1 = (actor.weaponData1.range and actor.weaponData1.range + skillModList:Sum("BASE", activeSkill.weapon1Cfg, "MeleeWeaponRange")) or (6 + skillModList:Sum("BASE", skillCfg, "UnarmedRange"))	
 		end
 		if skillFlags.weapon2Attack then
-			actor.weaponRange2 = (actor.weaponData2.range and actor.weaponData2.range + skillModList:Sum("BASE", skillCfg, "MeleeWeaponRange")) or (6 + skillModList:Sum("BASE", skillCfg, "UnarmedRange"))		
+			actor.weaponRange2 = (actor.weaponData2.range and actor.weaponData2.range + skillModList:Sum("BASE", activeSkill.weapon2Cfg, "MeleeWeaponRange")) or (6 + skillModList:Sum("BASE", skillCfg, "UnarmedRange"))	
 		end
 		if activeSkill.skillTypes[SkillType.MeleeSingleTarget] then
 			local range = 100
@@ -351,7 +359,7 @@ output.PierceCountString = "所有目标"
 			end
 		end
 	end
-	if skillFlags.area or skillData.radius then
+	if skillFlags.area or skillData.radius or (skillFlags.mine and activeSkill.skillTypes[SkillType.Aura]) then
 		output.AreaOfEffectMod = calcLib.mod(skillModList, skillCfg, "AreaOfEffect")
 		if skillData.radiusIsWeaponRange then
 			local range = 0
@@ -368,14 +376,22 @@ output.PierceCountString = "所有目标"
 			local baseRadius = skillData.radius + (skillData.radiusExtra or 0) + skillModList:Sum("BASE", skillCfg, "AreaOfEffect")
 			output.AreaOfEffectRadius = m_floor(baseRadius * m_sqrt(output.AreaOfEffectMod))
 			if breakdown then
-				breakdown.AreaOfEffectRadius = breakdown.area(baseRadius, output.AreaOfEffectMod, output.AreaOfEffectRadius)
+				breakdown.AreaOfEffectRadius = breakdown.area(baseRadius, output.AreaOfEffectMod, output.AreaOfEffectRadius, skillData.radiusLabel)
 			end
 			if skillData.radiusSecondary then
 				output.AreaOfEffectModSecondary = calcLib.mod(skillModList, skillCfg, "AreaOfEffect", "AreaOfEffectSecondary")
 				baseRadius = skillData.radiusSecondary + (skillData.radiusExtra or 0)
 				output.AreaOfEffectRadiusSecondary = m_floor(baseRadius * m_sqrt(output.AreaOfEffectModSecondary))
 				if breakdown then
-					breakdown.AreaOfEffectRadiusSecondary = breakdown.area(baseRadius, output.AreaOfEffectModSecondary, output.AreaOfEffectRadiusSecondary)
+					breakdown.AreaOfEffectRadiusSecondary = breakdown.area(baseRadius, output.AreaOfEffectModSecondary, output.AreaOfEffectRadiusSecondary, skillData.radiusSecondaryLabel)
+				end
+			end
+			if skillData.radiusTertiary then
+				output.AreaOfEffectModTertiary = calcLib.mod(skillModList, skillCfg, "AreaOfEffect", "AreaOfEffectTertiary")
+				baseRadius = skillData.radiusTertiary + (skillData.radiusExtra or 0)
+				output.AreaOfEffectRadiusTertiary = m_floor(baseRadius * m_sqrt(output.AreaOfEffectModTertiary))
+				if breakdown then
+					breakdown.AreaOfEffectRadiusTertiary = breakdown.area(baseRadius, output.AreaOfEffectModTertiary, output.AreaOfEffectRadiusTertiary, skillData.radiusTertiaryLabel)
 				end
 			end
 		end
@@ -446,6 +462,12 @@ total = s_format("= %.2f ^8每秒", output.MineLayingSpeed),
 		if breakdown then
 			breakdown.MineDetonationRadius = breakdown.area(60, areaMod, output.MineDetonationRadius)
 		end
+		if activeSkill.skillTypes[SkillType.Aura] then
+			output.MineAuraRadius = 35 * m_sqrt(output.AreaOfEffectMod)
+			if breakdown then
+				breakdown.MineAuraRadius = breakdown.area(35, output.AreaOfEffectMod, output.MineAuraRadius)
+			end
+		end
 	end
 	if skillFlags.totem then
 		local baseSpeed = 1 / skillModList:Sum("BASE", skillCfg, "TotemPlacementTime")
@@ -477,13 +499,7 @@ env.data.monsterAllyLifeTable[skillData.totemLevel].." ^8("..skillData.totemLeve
 		end
 	end
 
-	-- Run skill setup function
-	do
-		local setupFunc = activeSkill.activeEffect.grantedEffect.setupFunc
-		if setupFunc then
-			setupFunc(activeSkill, output)
-		end
-	end
+	 
 	-- Skill duration
 	local debuffDurationMult
 	if env.mode_effective then
@@ -492,9 +508,9 @@ env.data.monsterAllyLifeTable[skillData.totemLevel].." ^8("..skillData.totemLeve
 		debuffDurationMult = 1
 	end
 	do
-		output.DurationMod = calcLib.mod(skillModList, skillCfg, "Duration", "PrimaryDuration", "SkillAndDamagingAilmentDuration")
+		output.DurationMod = calcLib.mod(skillModList, skillCfg, "Duration", "PrimaryDuration", "SkillAndDamagingAilmentDuration", skillData.mineDurationAppliesToSkill and "MineDuration" or nil)
 		if breakdown then
-			breakdown.DurationMod = breakdown.mod(skillCfg, "Duration", "PrimaryDuration", "SkillAndDamagingAilmentDuration")
+			breakdown.DurationMod = breakdown.mod(skillCfg, "Duration", "PrimaryDuration", "SkillAndDamagingAilmentDuration", skillData.mineDurationAppliesToSkill and "MineDuration" or nil)
 		end
 		local durationBase = (skillData.duration or 0) + skillModList:Sum("BASE", skillCfg, "Duration", "PrimaryDuration")
 		if durationBase > 0 then
@@ -517,7 +533,7 @@ t_insert(breakdown.Duration, s_format("/ %.2f ^8(debuff更快或更慢消退)", 
 		end
 		durationBase = (skillData.durationSecondary or 0) + skillModList:Sum("BASE", skillCfg, "Duration", "SecondaryDuration")
 		if durationBase > 0 then
-			local durationMod = calcLib.mod(skillModList, skillCfg, "Duration", "SecondaryDuration", "SkillAndDamagingAilmentDuration")
+			local durationMod = calcLib.mod(skillModList, skillCfg, "Duration", "SecondaryDuration", "SkillAndDamagingAilmentDuration", skillData.mineDurationAppliesToSkill and "MineDuration" or nil)
 			output.DurationSecondary = durationBase * durationMod
 			if skillData.debuffSecondary then
 				output.DurationSecondary = output.DurationSecondary * debuffDurationMult
@@ -561,7 +577,39 @@ t_insert(breakdown.DurationSecondary, s_format("/ %.2f ^8(debuff更快或更慢�
 		end	
 	end
 
-	
+	-- Calculate mana cost (may be slightly off due to rounding differences)
+	do
+		local mult = m_floor(skillModList:More(skillCfg, "SupportManaMultiplier") * 100 + 0.0001) / 100
+		local more = m_floor(skillModList:More(skillCfg, "ManaCost") * 100 + 0.0001) / 100
+		local inc = skillModList:Sum("INC", skillCfg, "ManaCost")
+		local base = skillModList:Sum("BASE", skillCfg, "ManaCost")
+		local manaCost = activeSkill.activeEffect.grantedEffectLevel.manaCost or 0
+		output.ManaCost = m_floor(m_max(0, manaCost * mult * more * (1 + inc / 100) + base))
+		if activeSkill.skillTypes[SkillType.ManaCostPercent] and skillFlags.totem then
+			output.ManaCost = m_floor(output.Mana * output.ManaCost / 100)
+		end
+		if breakdown and output.ManaCost ~= manaCost then
+			breakdown.ManaCost = {
+				s_format("%d ^8(基础魔力消耗)", manaCost)
+			}
+			if mult ~= 1 then
+				t_insert(breakdown.ManaCost, s_format("x %.2f ^8(魔力消耗加成)", mult))
+			end
+			if inc ~= 0 then
+				t_insert(breakdown.ManaCost, s_format("x %.2f ^8(提高/降低 魔力消耗)", 1 + inc/100))
+			end	
+			if more ~= 0 then
+				t_insert(breakdown.ManaCost, s_format("x %.2f ^8(额外提高/降低总魔力消耗)", more))
+			end	
+			if base ~= 0 then
+				t_insert(breakdown.ManaCost, s_format("- %d ^8(- 魔力消耗)", -base))
+			end
+			t_insert(breakdown.ManaCost, s_format("= %d", output.ManaCost))
+		end
+	end
+
+ 	runSkillFunc("preDamageFunc")
+
 	-- Handle corpse explosions
 	if skillData.explodeCorpse and skillData.corpseLife then
 		local damageType = skillData.corpseExplosionDamageType or "Fire"
@@ -619,33 +667,7 @@ t_insert(breakdown.DurationSecondary, s_format("/ %.2f ^8(debuff更快或更慢�
 	end
 	activeSkill.conversionTable["Chaos"] = { mult = 1 }
 
-	-- Calculate mana cost (may be slightly off due to rounding differences)
-	do
-		local more = m_floor(skillModList:More(skillCfg, "ManaCost") * 100 + 0.0001) / 100
-		local inc = skillModList:Sum("INC", skillCfg, "ManaCost")
-		local base = skillModList:Sum("BASE", skillCfg, "ManaCost")
-		local manaCost = activeSkill.activeEffect.grantedEffectLevel.manaCost or 0
-		output.ManaCost = m_floor(m_max(0, manaCost * more * (1 + inc / 100) + base))
-		if activeSkill.skillTypes[SkillType.ManaCostPercent] and skillFlags.totem then
-			output.ManaCost = m_floor(output.Mana * output.ManaCost / 100)
-		end
-		if breakdown and output.ManaCost ~= manaCost then
-			breakdown.ManaCost = {
-s_format("%d ^8(基础魔力消耗)", manaCost)
-			}
-			if more ~= 1 then
-t_insert(breakdown.ManaCost, s_format("x %.2f ^8(魔力消耗额外总加成)", more))
-			end
-			if inc ~= 0 then
-t_insert(breakdown.ManaCost, s_format("x %.2f ^8(提高/降低魔力消耗)", 1 + inc/100))
-			end	
-			if base ~= 0 then
-t_insert(breakdown.ManaCost, s_format("- %d ^8(- 点魔力消耗)", -base))
-			end
-			t_insert(breakdown.ManaCost, s_format("= %d", output.ManaCost))
-		end
-	end
-
+	
 	-- Configure damage passes
 	local passList = { }
 	if isAttack then
@@ -973,7 +995,7 @@ s_format("+ (%.4f x %g) ^8(暴击部分的伤害)", output.CritChance/100, outpu
 		end
 
 		-- Calculate Double Damage + Ruthless Blow chance/multipliers
-		output.DoubleDamageChance = m_min(skillModList:Sum("BASE", cfg, "DoubleDamageChance"), 100)
+		output.DoubleDamageChance = m_min(skillModList:Sum("BASE", cfg, "DoubleDamageChance") + (env.mode_effective and enemyDB:Sum("BASE", cfg, "SelfDoubleDamageChance") or 0), 100)
 		output.DoubleDamageEffect = 1 + output.DoubleDamageChance / 100
 		output.RuthlessBlowMaxCount = skillModList:Sum("BASE", cfg, "RuthlessBlowMaxCount")
 		if output.RuthlessBlowMaxCount > 0 then
@@ -990,8 +1012,8 @@ s_format("+ (%.4f x %g) ^8(暴击部分的伤害)", output.CritChance/100, outpu
 			local damageTypeMax = damageType.."Max"
 			local baseMultiplier = activeSkill.activeEffect.grantedEffectLevel.baseMultiplier or 1
 			local damageEffectiveness = activeSkill.activeEffect.grantedEffectLevel.damageEffectiveness or skillData.damageEffectiveness or 1
-			local addedMin = skillModList:Sum("BASE", cfg, damageTypeMin)
-			local addedMax = skillModList:Sum("BASE", cfg, damageTypeMax)
+			local addedMin = skillModList:Sum("BASE", cfg, damageTypeMin) + enemyDB:Sum("BASE", cfg, "Self"..damageTypeMin)
+			local addedMax = skillModList:Sum("BASE", cfg, damageTypeMax) + enemyDB:Sum("BASE", cfg, "Self"..damageTypeMax)
 			local baseMin = ((source[damageTypeMin] or 0) + (source[damageType.."BonusMin"] or 0)) * baseMultiplier + addedMin * damageEffectiveness
 			local baseMax = ((source[damageTypeMax] or 0) + (source[damageType.."BonusMax"] or 0)) * baseMultiplier + addedMax * damageEffectiveness
 			output[damageTypeMin.."Base"] = baseMin
@@ -1466,7 +1488,7 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 			
 			
 			local total = baseVal * (1 + inc/100) * more * (1 + mult/100+multNonAilment/100) * effMult
-			if skillFlags.aura then
+			if activeSkill.skillTypes[SkillType.Aura] then
 				total = total * calcLib.mod(skillModList, dotTypeCfg, "AuraEffect")
 			end
 			output[damageType.."Dot"] = total

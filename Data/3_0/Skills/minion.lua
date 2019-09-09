@@ -6,15 +6,13 @@
 --
 local skills, mod, flag, skill = ...
 
-
-
 skills["ChaosElementalCascadeSummoned"] = {
 name = "冰川之刺",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 1.9800000190735,
 	incrementalEffectiveness = 0.037999998778105,
-	description = "从地面上不断的冒出冰结之刺, 宛如川流一般向前攻击并对敌人造成伤害.",
+	description = "Icicles emerge from the ground in a series of small bursts, each damaging enemies caught in the area.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.ColdSkill] = true, [SkillType.PhysicalSkill] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.8,
@@ -36,9 +34,8 @@ name = "冰川之刺",
 		"monster_penalty_against_minions_damage_+%_final_vs_player_minions",
 		"is_area_damage",
 	},
-	statInterpolation = { 3, 3, 1, 1, 1, 1, 1, },
 	levels = {
-		[1] = { 0.80000001192093, 1.2000000476837, 6, 0, 3, 50, -25, damageEffectiveness = 0.6, cooldown = 3.5, levelRequirement = 4, },
+		[1] = { 0.80000001192093, 1.2000000476837, 6, 0, 3, 100, -25, damageEffectiveness = 0.6, cooldown = 3.5, levelRequirement = 4, statInterpolation = { 3, 3, 1, 1, 1, 1, 1, }, },
 	},
 }
 skills["SandstormChaosElementalSummoned"] = {
@@ -46,7 +43,7 @@ name = "混沌光环",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 11,
-	incrementalEffectiveness = 0.016499999910593,
+	incrementalEffectiveness = 0.043000001460314,
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -65,10 +62,10 @@ name = "混沌光环",
 		"active_skill_area_of_effect_radius_+%_final",
 		"skill_art_variation",
 		"is_area_damage",
+		"spell_damage_modifiers_apply_to_skill_dot",
 	},
-	statInterpolation = { 3, 1, 1, 1, },
 	levels = {
-		[1] = { 16.666667039196, 5000, 0, 2, cooldown = 8, levelRequirement = 3, },
+		[1] = { 16.666667039196, 5000, 0, 2, cooldown = 8, levelRequirement = 3, statInterpolation = { 3, 1, 1, 1, }, },
 	},
 }
 skills["FireElementalFlameRedSummoned"] = {
@@ -77,7 +74,7 @@ name = "献祭",
 	color = 4,
 	baseEffectiveness = 1.3999999761581,
 	incrementalEffectiveness = 0.041999999433756,
-	description = "召唤一个图腾, 它会持续的对附近的敌人喷射火焰.",
+	description = "Summons a totem that fires a stream of flame at nearby enemies.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Hit] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Totem] = true, [SkillType.FireSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	skillTotemId = 8,
@@ -100,9 +97,8 @@ name = "献祭",
 		"base_is_projectile",
 		"always_pierce",
 	},
-	statInterpolation = { 3, 3, 1, 1, 1, 1, },
 	levels = {
-		[1] = { 0.80000001192093, 1.2000000476837, 4, -89, -77, -25, damageEffectiveness = 0.2, levelRequirement = 3, },
+		[1] = { 0.80000001192093, 1.2000000476837, 4, -89, -77, -25, damageEffectiveness = 0.2, levelRequirement = 3, statInterpolation = { 3, 3, 1, 1, 1, 1, }, },
 	},
 }
 skills["FireElementalMortarSummoned"] = {
@@ -111,7 +107,7 @@ name = "岩浆球",
 	color = 4,
 	baseEffectiveness = 4.2666997909546,
 	incrementalEffectiveness = 0.032000001519918,
-	description = "通用的怪物炮击技能. 与怪物投射物相似, 但带有冲击效果.",
+	description = "Generic monster mortar skill. Like Monster Projectile but has an impact effect.",
 	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -132,9 +128,8 @@ name = "岩浆球",
 		"is_area_damage",
 		"base_is_projectile",
 	},
-	statInterpolation = { 1, 3, 3, 1, },
 	levels = {
-		[1] = { 15, 0.80000001192093, 1.2000000476837, -33, critChance = 5, cooldown = 6, levelRequirement = 34, },
+		[1] = { 15, 0.80000001192093, 1.2000000476837, -33, critChance = 5, cooldown = 6, levelRequirement = 34, statInterpolation = { 1, 3, 3, 1, }, },
 	},
 }
 skills["FireElementalConeSummoned"] = {
@@ -159,45 +154,44 @@ name = "火焰震波",
 		"spell_maximum_base_fire_damage",
 		"is_area_damage",
 	},
-	statInterpolation = { 3, 3, },
 	levels = {
-		[1] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 34, },
-		[2] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 36, },
-		[3] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 38, },
-		[4] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 40, },
-		[5] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 42, },
-		[6] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 44, },
-		[7] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 46, },
-		[8] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 48, },
-		[9] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 50, },
-		[10] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 52, },
-		[11] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 54, },
-		[12] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 56, },
-		[13] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 58, },
-		[14] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 60, },
-		[15] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 62, },
-		[16] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 64, },
-		[17] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 66, },
-		[18] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 68, },
-		[19] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 69, },
-		[20] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 70, },
-		[21] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 72, },
-		[22] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 74, },
-		[23] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 76, },
-		[24] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 78, },
-		[25] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 80, },
-		[26] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 82, },
-		[27] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 84, },
-		[28] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 86, },
-		[29] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 88, },
-		[30] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 90, },
+		[1] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 34, statInterpolation = { 3, 3, }, },
+		[2] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 36, statInterpolation = { 3, 3, }, },
+		[3] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 38, statInterpolation = { 3, 3, }, },
+		[4] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 40, statInterpolation = { 3, 3, }, },
+		[5] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 42, statInterpolation = { 3, 3, }, },
+		[6] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 44, statInterpolation = { 3, 3, }, },
+		[7] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 46, statInterpolation = { 3, 3, }, },
+		[8] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 48, statInterpolation = { 3, 3, }, },
+		[9] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 50, statInterpolation = { 3, 3, }, },
+		[10] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 52, statInterpolation = { 3, 3, }, },
+		[11] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 54, statInterpolation = { 3, 3, }, },
+		[12] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 56, statInterpolation = { 3, 3, }, },
+		[13] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 58, statInterpolation = { 3, 3, }, },
+		[14] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 60, statInterpolation = { 3, 3, }, },
+		[15] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 62, statInterpolation = { 3, 3, }, },
+		[16] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 64, statInterpolation = { 3, 3, }, },
+		[17] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 66, statInterpolation = { 3, 3, }, },
+		[18] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 68, statInterpolation = { 3, 3, }, },
+		[19] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 69, statInterpolation = { 3, 3, }, },
+		[20] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 70, statInterpolation = { 3, 3, }, },
+		[21] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 72, statInterpolation = { 3, 3, }, },
+		[22] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 74, statInterpolation = { 3, 3, }, },
+		[23] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 76, statInterpolation = { 3, 3, }, },
+		[24] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 78, statInterpolation = { 3, 3, }, },
+		[25] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 80, statInterpolation = { 3, 3, }, },
+		[26] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 82, statInterpolation = { 3, 3, }, },
+		[27] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 84, statInterpolation = { 3, 3, }, },
+		[28] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 86, statInterpolation = { 3, 3, }, },
+		[29] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 88, statInterpolation = { 3, 3, }, },
+		[30] = { 0.80000001192093, 1.25, critChance = 10, cooldown = 2, levelRequirement = 90, statInterpolation = { 3, 3, }, },
 	},
 }
 skills["IceElementalIceCyclone"] = {
 name = "旋风斩",
 	hidden = true,
 	color = 2,
-	description = "对周围敌人造成伤害, 接而进行一连串的旋转攻击, 边向目标地点前进边攻击路径上的敌人, 无法被多重打击和无情辅助.",
+	description = "Damage enemies around you, then perform a spinning series of attacks as you travel to a target location. Cannot be supported by Ruthless or Multistrike.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.MovementSkill] = true, [SkillType.Type65] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -235,9 +229,8 @@ name = "旋风斩",
 		"is_area_damage",
 		"cyclone_places_ground_ice",
 	},
-	statInterpolation = { 1, 1, 1, 1, 1, },
 	levels = {
-		[1] = { 4, 75, 40, -20, 4000, cooldown = 6, levelRequirement = 1, },
+		[1] = { 4, 75, 40, -20, 4000, cooldown = 6, levelRequirement = 1, statInterpolation = { 1, 1, 1, 1, 1, }, },
 	},
 }
 skills["IceElementalSpearSummoned"] = {
@@ -263,16 +256,15 @@ name = "冰矛",
 		"monster_reverse_point_blank_damage_-%_at_minimum_range",
 		"base_is_projectile",
 	},
-	statInterpolation = { 3, 3, 1, },
 	levels = {
-		[1] = { 0.80000001192093, 1.2000000476837, 25, cooldown = 4, levelRequirement = 3, },
+		[1] = { 0.80000001192093, 1.2000000476837, 25, cooldown = 4, levelRequirement = 3, statInterpolation = { 3, 3, 1, }, },
 	},
 }
 skills["LightningGolemArcSummoned"] = {
 name = "风暴之珠",
 	hidden = true,
 	color = 3,
-	baseEffectiveness = 1.0937999486923,
+	baseEffectiveness = 0.875,
 	incrementalEffectiveness = 0.026000000536442,
 	skillTypes = { [SkillType.Duration] = true, [SkillType.LightningSkill] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.ProjectileDamage] = true, [SkillType.Spell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
@@ -291,16 +283,15 @@ name = "风暴之珠",
 		"spell_maximum_base_lightning_damage",
 		"base_skill_effect_duration",
 	},
-	statInterpolation = { 3, 3, 1, },
 	levels = {
-		[1] = { 0.20000000298023, 1.7999999523163, 8000, damageEffectiveness = 0.6, cooldown = 8, critChance = 5, levelRequirement = 1, },
+		[1] = { 0.20000000298023, 1.7999999523163, 8000, damageEffectiveness = 0.6, cooldown = 8, critChance = 5, levelRequirement = 1, statInterpolation = { 3, 3, 1, }, },
 	},
 }
 skills["MonsterProjectileSpellLightningGolemSummoned"] = {
 name = "闪电投射物",
 	hidden = true,
 	color = 4,
-	baseEffectiveness = 2.625,
+	baseEffectiveness = 3.6749999523163,
 	incrementalEffectiveness = 0.033500000834465,
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Triggerable] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
@@ -321,9 +312,8 @@ name = "闪电投射物",
 		"spell_maximum_action_distance_+%",
 		"base_is_projectile",
 	},
-	statInterpolation = { 3, 3, 1, 1, 1, },
 	levels = {
-		[1] = { 0.20000000298023, 1.7999999523163, 11, -15, -40, critChance = 5, levelRequirement = 1, },
+		[1] = { 0.20000000298023, 1.7999999523163, 11, -15, -40, critChance = 5, levelRequirement = 1, statInterpolation = { 3, 3, 1, 1, 1, }, },
 	},
 }
 skills["LightningGolemWrath"] = {
@@ -367,16 +357,15 @@ name = "雷霆",
 		"spell_maximum_added_lightning_damage",
 		"base_deal_no_damage",
 	},
-	statInterpolation = { 3, 3, 1, 3, 3, },
 	levels = {
-		[1] = { 0.20000000298023, 1.7999999523163, 4000, 0.11999999731779, 1.0800000429153, cooldown = 12, levelRequirement = 1, },
+		[1] = { 0.20000000298023, 1.7999999523163, 4000, 0.11999999731779, 1.0800000429153, cooldown = 12, levelRequirement = 1, statInterpolation = { 3, 3, 1, 3, 3, }, },
 	},
 }
 skills["SpectralSkullShieldCharge"] = {
 name = "重盾冲锋",
 	hidden = true,
 	color = 4,
-	description = "向一个目标冲锋, 使用盾牌对其猛击的同时也用近战武器顺手补刀. 此攻击将会击退目标并将其击晕, 在路径上的敌人将会被推向两旁. 伤害与击晕几率将视冲锋距离而定. ",
+	description = "Charges at an enemy, bashing it with the character's shield and striking it. This knocks it back and stuns it. Enemies in the way are pushed to the side. Damage and stun are proportional to distance travelled. Cannot be supported by Multistrike.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.MovementSkill] = true, [SkillType.TravelSkill] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -406,16 +395,15 @@ name = "重盾冲锋",
 		"active_skill_damage_+%_final",
 		"ignores_proximity_shield",
 	},
-	statInterpolation = { 1, 1, 1, 1, },
 	levels = {
-		[1] = { 200, 500, 300, -50, cooldown = 5, levelRequirement = 1, },
+		[1] = { 200, 500, 300, -50, cooldown = 5, levelRequirement = 1, statInterpolation = { 1, 1, 1, 1, }, },
 	},
 }
 skills["RagingSpiritMeleeAttack"] = {
-	name = "普通攻击",
+name = "默认攻击",
 	hidden = true,
 	color = 4,
-	description = "对你的敌人无情痛击.",
+	description = "Strike your foes down with a powerful blow.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -430,42 +418,41 @@ skills["RagingSpiritMeleeAttack"] = {
 	stats = {
 		"active_skill_damage_+%_final",
 	},
-	statInterpolation = { 1, },
 	levels = {
-		[1] = { 76, levelRequirement = 4, },
-		[2] = { 71, levelRequirement = 6, },
-		[3] = { 66, levelRequirement = 9, },
-		[4] = { 61, levelRequirement = 12, },
-		[5] = { 56, levelRequirement = 15, },
-		[6] = { 52, levelRequirement = 19, },
-		[7] = { 47, levelRequirement = 23, },
-		[8] = { 42, levelRequirement = 28, },
-		[9] = { 37, levelRequirement = 33, },
-		[10] = { 32, levelRequirement = 39, },
-		[11] = { 28, levelRequirement = 43, },
-		[12] = { 23, levelRequirement = 46, },
-		[13] = { 18, levelRequirement = 49, },
-		[14] = { 12, levelRequirement = 52, },
-		[15] = { 10, levelRequirement = 55, },
-		[16] = { 7, levelRequirement = 58, },
-		[17] = { 5, levelRequirement = 61, },
-		[18] = { 2, levelRequirement = 64, },
-		[19] = { 0, levelRequirement = 66, },
-		[20] = { -2, levelRequirement = 68, },
-		[21] = { -4, levelRequirement = 70, },
-		[22] = { -7, levelRequirement = 72, },
-		[23] = { -10, levelRequirement = 74, },
+		[1] = { 76, levelRequirement = 4, statInterpolation = { 1, }, },
+		[2] = { 71, levelRequirement = 6, statInterpolation = { 1, }, },
+		[3] = { 66, levelRequirement = 9, statInterpolation = { 1, }, },
+		[4] = { 61, levelRequirement = 12, statInterpolation = { 1, }, },
+		[5] = { 56, levelRequirement = 15, statInterpolation = { 1, }, },
+		[6] = { 52, levelRequirement = 19, statInterpolation = { 1, }, },
+		[7] = { 47, levelRequirement = 23, statInterpolation = { 1, }, },
+		[8] = { 42, levelRequirement = 28, statInterpolation = { 1, }, },
+		[9] = { 37, levelRequirement = 33, statInterpolation = { 1, }, },
+		[10] = { 32, levelRequirement = 39, statInterpolation = { 1, }, },
+		[11] = { 28, levelRequirement = 43, statInterpolation = { 1, }, },
+		[12] = { 23, levelRequirement = 46, statInterpolation = { 1, }, },
+		[13] = { 18, levelRequirement = 49, statInterpolation = { 1, }, },
+		[14] = { 12, levelRequirement = 52, statInterpolation = { 1, }, },
+		[15] = { 10, levelRequirement = 55, statInterpolation = { 1, }, },
+		[16] = { 7, levelRequirement = 58, statInterpolation = { 1, }, },
+		[17] = { 5, levelRequirement = 61, statInterpolation = { 1, }, },
+		[18] = { 2, levelRequirement = 64, statInterpolation = { 1, }, },
+		[19] = { 0, levelRequirement = 66, statInterpolation = { 1, }, },
+		[20] = { -2, levelRequirement = 68, statInterpolation = { 1, }, },
+		[21] = { -4, levelRequirement = 70, statInterpolation = { 1, }, },
+		[22] = { -7, levelRequirement = 72, statInterpolation = { 1, }, },
+		[23] = { -10, levelRequirement = 74, statInterpolation = { 1, }, },
 	},
 }
-skills["SkeletonProjectileCold"] = {
+skills["SkeletonMinionProjectileCold"] = {
 name = "冰霜投射物",
 	hidden = true,
 	color = 4,
-	baseEffectiveness = 0.68180000782013,
-	incrementalEffectiveness = 0.03940000012517,
+	baseEffectiveness = 1.4817999601364,
+	incrementalEffectiveness = 0.045400001108646,
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
-	castTime = 1.95,
+	castTime = 1.2,
 	baseFlags = {
 		spell = true,
 		projectile = true,
@@ -478,24 +465,20 @@ name = "冰霜投射物",
 		"spell_minimum_base_cold_damage",
 		"spell_maximum_base_cold_damage",
 		"base_is_projectile",
-		"spell_maximum_action_distance_+%",
 	},
-	statInterpolation = { 3, 3, 1, 1, },
 	levels = {
-		[1] = { 0.80000001192093, 1.2000000476837, 1, -60, critChance = 5, levelRequirement = 4, manaCost = 5, },
-		[2] = { 0.80000001192093, 1.2000000476837, 1, -60, critChance = 5, levelRequirement = 19, manaCost = 4, },
-		[3] = { 2.7000000476837, 4.210000038147, 1, -60, critChance = 5, levelRequirement = 68, manaCost = 4, },
+		[1] = { 0.80000001192093, 1.2000000476837, levelRequirement = 1, statInterpolation = { 3, 3, }, },
 	},
 }
-skills["SkeletonProjectileFire"] = {
+skills["SkeletonMinionProjectileFire"] = {
 name = "火焰投射物",
 	hidden = true,
 	color = 4,
-	baseEffectiveness = 0.83329999446869,
-	incrementalEffectiveness = 0.03940000012517,
+	baseEffectiveness = 1.8111000061035,
+	incrementalEffectiveness = 0.045400001108646,
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
-	castTime = 1.95,
+	castTime = 1.2,
 	baseFlags = {
 		spell = true,
 		projectile = true,
@@ -508,24 +491,20 @@ name = "火焰投射物",
 		"spell_minimum_base_fire_damage",
 		"spell_maximum_base_fire_damage",
 		"base_is_projectile",
-		"spell_maximum_action_distance_+%",
 	},
-	statInterpolation = { 3, 3, 1, 1, },
 	levels = {
-		[1] = { 0.80000001192093, 1.2000000476837, 1, -60, critChance = 5, levelRequirement = 4, manaCost = 5, },
-		[2] = { 0.80000001192093, 1.2000000476837, 1, -60, critChance = 5, levelRequirement = 19, manaCost = 4, },
-		[3] = { 2.7000000476837, 4.210000038147, 1, -60, critChance = 5, levelRequirement = 68, manaCost = 4, },
+		[1] = { 0.80000001192093, 1.2000000476837, critChance = 5, levelRequirement = 1, statInterpolation = { 3, 3, }, },
 	},
 }
-skills["SkeletonProjectileLightning"] = {
+skills["SkeletonMinionProjectileLightning"] = {
 name = "闪电投射物",
 	hidden = true,
 	color = 4,
-	baseEffectiveness = 0.9375,
-	incrementalEffectiveness = 0.03940000012517,
+	baseEffectiveness = 2.0374999046326,
+	incrementalEffectiveness = 0.045400001108646,
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
-	castTime = 1.95,
+	castTime = 1.2,
 	baseFlags = {
 		spell = true,
 		projectile = true,
@@ -538,13 +517,9 @@ name = "闪电投射物",
 		"spell_minimum_base_lightning_damage",
 		"spell_maximum_base_lightning_damage",
 		"base_is_projectile",
-		"spell_maximum_action_distance_+%",
 	},
-	statInterpolation = { 3, 3, 1, 1, },
 	levels = {
-		[1] = { 0.5, 1.5, 1, -60, critChance = 5, levelRequirement = 4, manaCost = 5, },
-		[2] = { 0.5, 1.5, 1, -60, critChance = 5, levelRequirement = 19, manaCost = 4, },
-		[3] = { 1.1699999570847, 3.4900000095367, 1, -60, critChance = 5, levelRequirement = 68, manaCost = 4, },
+		[1] = { 0.5, 1.5, levelRequirement = 1, statInterpolation = { 3, 3, }, },
 	},
 }
 skills["RockGolemSlam"] = {
@@ -570,16 +545,15 @@ name = "重击",
 		"active_skill_area_of_effect_radius_+%_final",
 		"is_area_damage",
 	},
-	statInterpolation = { 1, 1, 1, 1, },
 	levels = {
-		[1] = { -20, 33, 1, 0, damageEffectiveness = 1.75, cooldown = 6, baseMultiplier = 1.75, levelRequirement = 1, },
+		[1] = { -20, 33, 1, 0, damageEffectiveness = 2, cooldown = 4, baseMultiplier = 2, levelRequirement = 1, statInterpolation = { 1, 1, 1, 1, }, },
 	},
 }
 skills["RockGolemWhirlingBlades"] = {
 name = "回旋之刃",
 	hidden = true,
 	color = 4,
-	description = "迅速穿越敌人并同时造成武器伤害. 限定匕首, 爪以及单手剑. ",
+	description = "Dive through enemies, dealing weapon damage. Only works with daggers, claws and one handed swords. Cannot be supported by Multistrike.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MovementSkill] = true, [SkillType.TravelSkill] = true, },
 	weaponTypes = {
 		["Thrusting One Handed Sword"] = true,
@@ -605,9 +579,8 @@ name = "回旋之刃",
 		"cast_time_overrides_attack_duration",
 		"ignores_proximity_shield",
 	},
-	statInterpolation = { 1, 1, 1, },
 	levels = {
-		[1] = { 1, -50, 1, levelRequirement = 1, },
+		[1] = { 1, -50, 1, levelRequirement = 1, statInterpolation = { 1, 1, 1, }, },
 	},
 }
 skills["ZombieSlam"] = {
@@ -634,18 +607,17 @@ name = "重击",
 		"is_area_damage",
 		"global_always_hit",
 	},
-	statInterpolation = { 1, 1, 1, },
 	levels = {
-		[1] = { -22, 45, 280, cooldown = 5, levelRequirement = 1, },
+		[1] = { -22, 45, 0, cooldown = 4, levelRequirement = 1, statInterpolation = { 1, 1, 1, }, },
 	},
 }
 skills["SummonedSpiderViperStrike"] = {
-	name = "毒蛇打击",
+name = "毒蛇打击",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 0.64999997615814,
 	incrementalEffectiveness = 0.025499999523163,
-	description = "击中敌人，额外造成等同于部分物理伤害的混沌伤害，并使敌人中毒。该技能受技能持续时间属性影响。限定爪类、匕首与剑类。",
+	description = "Hits enemies, adding some of your physical damage as chaos damage and inflicting poison which will be affected by modifiers to skill duration. If dual wielding, will strike with both weapons. Requires a claw, dagger or sword.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Duration] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.DamageOverTime] = true, [SkillType.ChaosSkill] = true, },
 	weaponTypes = {
 		["Claw"] = true,
@@ -670,16 +642,15 @@ skills["SummonedSpiderViperStrike"] = {
 		"base_skill_effect_duration",
 		"poison_duration_is_skill_duration",
 	},
-	statInterpolation = { 1, 1, 1, },
 	levels = {
-		[1] = { 25, 100, 8000, levelRequirement = 1, },
+		[1] = { 25, 100, 8000, levelRequirement = 1, statInterpolation = { 1, 1, 1, }, },
 	},
 }
 skills["DancingDervishCyclone"] = {
-	name = "旋风斩",
+name = "旋风斩",
 	hidden = true,
 	color = 2,
-	description = "对周围敌人造成伤害, 接而进行一连串的旋转攻击, 边向目标地点前进边攻击路径上的敌人, 无法被多重打击和无情辅助.",
+	description = "Damage enemies around you, then perform a spinning series of attacks as you travel to a target location. Cannot be supported by Ruthless or Multistrike.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.MovementSkill] = true, [SkillType.Type65] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -717,9 +688,8 @@ skills["DancingDervishCyclone"] = {
 		"active_skill_damage_+%_final",
 		"is_area_damage",
 	},
-	statInterpolation = { 1, 1, 1, 1, 1, 1, },
 	levels = {
-		[1] = { 0, 20, 0, 0, 25, 0, levelRequirement = 1, },
+		[1] = { 0, 20, 0, 0, 25, 0, levelRequirement = 1, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
 	},
 }
 skills["SummonPhantasmFadingProjectile"] = {
@@ -745,16 +715,15 @@ name = "物理投射物",
 		"base_is_projectile",
 		"always_pierce",
 	},
-	statInterpolation = { 3, 3, },
 	levels = {
-		[1] = { 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, critChance = 5, levelRequirement = 1, },
+		[1] = { 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, critChance = 5, levelRequirement = 1, statInterpolation = { 3, 3, }, },
 	},
 }
 skills["HeraldOfAgonyMinionMortar"] = {
 name = "炮击",
 	hidden = true,
 	color = 4,
-	description = "通用的怪物炮击技能. 与怪物投射物相似, 但带有冲击效果.",
+	description = "Generic monster mortar skill. Like Monster Projectile but has an impact effect.",
 	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Attack] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 2,
@@ -777,9 +746,8 @@ name = "炮击",
 		"base_is_projectile",
 		"distribute_additional_projectiles_over_contact_points",
 	},
-	statInterpolation = { 1, 1, 1, 1, 1, },
 	levels = {
-		[1] = { 20, 10, 5, -35, 50, damageEffectiveness = 0.4, cooldown = 7.5, baseMultiplier = 0.4, levelRequirement = 1, },
+		[1] = { 20, 10, 5, -35, 50, damageEffectiveness = 0.4, cooldown = 7.5, baseMultiplier = 0.4, levelRequirement = 1, statInterpolation = { 1, 1, 1, 1, 1, }, },
 	},
 }
 skills["HeraldOfAgonyMinionTailSpike"] = {
@@ -804,16 +772,15 @@ name = "尾刺",
 		"number_of_additional_projectiles",
 		"base_is_projectile",
 	},
-	statInterpolation = { 1, 1, 1, 1, },
 	levels = {
-		[1] = { 39, 0, 0, 4, levelRequirement = 1, },
+		[1] = { 39, 0, 0, 4, levelRequirement = 1, statInterpolation = { 1, 1, 1, 1, }, },
 	},
 }
 skills["HeraldOfAgonyMinionCleave"] = {
 name = "横扫",
 	hidden = true,
 	color = 1,
-	description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 对前方区域的怪物造成伤害。限定斧类与剑类。",
+	description = "The character swings their weapon (or both weapons if dual wielding) in an arc, damaging monsters in an area in front of them. Only works with Axes and Swords.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Type53] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["Two Handed Axe"] = true,
@@ -836,9 +803,8 @@ name = "横扫",
 	stats = {
 		"is_area_damage",
 	},
-	statInterpolation = { },
 	levels = {
-		[1] = { levelRequirement = 1, },
+		[1] = { levelRequirement = 1, statInterpolation = { }, },
 	},
 }
 skills["HeraldOfLightMinionSlam"] = {
@@ -861,9 +827,8 @@ name = "重击",
 		"active_skill_attack_speed_+%_final",
 		"is_area_damage",
 	},
-	statInterpolation = { 1, },
 	levels = {
-		[1] = { -33, levelRequirement = 1, },
+		[1] = { -33, levelRequirement = 1, statInterpolation = { 1, }, },
 	},
 }
 skills["SentinelHolySlam"] = {
@@ -886,9 +851,8 @@ name = "十字军猛击",
 		"active_skill_attack_speed_+%_final",
 		"is_area_damage",
 	},
-	statInterpolation = { 1, },
 	levels = {
-		[1] = { -33, damageEffectiveness = 2, cooldown = 6, baseMultiplier = 2, levelRequirement = 0, },
+		[1] = { -33, damageEffectiveness = 2, cooldown = 6, baseMultiplier = 2, levelRequirement = 0, statInterpolation = { 1, }, },
 	},
 }
 skills["RelicTriggeredNova"] = {
@@ -915,61 +879,58 @@ mod("LifeRegen", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura"
 	},
 	stats = {
 		"holy_relic_trigger_on_parent_attack_%",
-		"base_life_regeneration_rate_per_minute",
 		"base_skill_effect_duration",
 		"spell_minimum_base_physical_damage",
 		"spell_maximum_base_physical_damage",
-		"minion_life_regeneration_rate_per_second",
 	},
-	statInterpolation = { 1, 1, 1, 3, 3, 1, },
 	levels = {
-		[1] = { 100, 209, 4000, 0.80000001192093, 1.2000000476837, 6, damageEffectiveness = 0.7, cooldown = 0.5, levelRequirement = 4, },
-		[2] = { 100, 249, 4000, 0.80000001192093, 1.2000000476837, 8, damageEffectiveness = 0.74, cooldown = 0.5, levelRequirement = 6, },
-		[3] = { 100, 317, 4000, 0.80000001192093, 1.2000000476837, 11, damageEffectiveness = 0.78, cooldown = 0.5, levelRequirement = 9, },
-		[4] = { 100, 401, 4000, 0.80000001192093, 1.2000000476837, 14, damageEffectiveness = 0.82, cooldown = 0.5, levelRequirement = 12, },
-		[5] = { 100, 534, 4000, 0.80000001192093, 1.2000000476837, 18, damageEffectiveness = 0.86, cooldown = 0.5, levelRequirement = 16, },
-		[6] = { 100, 697, 4000, 0.80000001192093, 1.2000000476837, 25, damageEffectiveness = 0.9, cooldown = 0.5, levelRequirement = 20, },
-		[7] = { 100, 891, 4000, 0.80000001192093, 1.2000000476837, 33, damageEffectiveness = 0.94, cooldown = 0.5, levelRequirement = 24, },
-		[8] = { 100, 1119, 4000, 0.80000001192093, 1.2000000476837, 43, damageEffectiveness = 0.98, cooldown = 0.5, levelRequirement = 28, },
-		[9] = { 100, 1381, 4000, 0.80000001192093, 1.2000000476837, 54, damageEffectiveness = 1.02, cooldown = 0.5, levelRequirement = 32, },
-		[10] = { 100, 1681, 4000, 0.80000001192093, 1.2000000476837, 67, damageEffectiveness = 1.06, cooldown = 0.5, levelRequirement = 36, },
-		[11] = { 100, 2019, 4000, 0.80000001192093, 1.2000000476837, 83, damageEffectiveness = 1.1, cooldown = 0.5, levelRequirement = 40, },
-		[12] = { 100, 2399, 4000, 0.80000001192093, 1.2000000476837, 100, damageEffectiveness = 1.14, cooldown = 0.5, levelRequirement = 44, },
-		[13] = { 100, 2821, 4000, 0.80000001192093, 1.2000000476837, 121, damageEffectiveness = 1.18, cooldown = 0.5, levelRequirement = 48, },
-		[14] = { 100, 3288, 4000, 0.80000001192093, 1.2000000476837, 144, damageEffectiveness = 1.22, cooldown = 0.5, levelRequirement = 52, },
-		[15] = { 100, 3690, 4000, 0.80000001192093, 1.2000000476837, 167, damageEffectiveness = 1.26, cooldown = 0.5, levelRequirement = 55, },
-		[16] = { 100, 4122, 4000, 0.80000001192093, 1.2000000476837, 190, damageEffectiveness = 1.3, cooldown = 0.5, levelRequirement = 58, },
-		[17] = { 100, 4587, 4000, 0.80000001192093, 1.2000000476837, 215, damageEffectiveness = 1.34, cooldown = 0.5, levelRequirement = 61, },
-		[18] = { 100, 5085, 4000, 0.80000001192093, 1.2000000476837, 244, damageEffectiveness = 1.38, cooldown = 0.5, levelRequirement = 64, },
-		[19] = { 100, 5616, 4000, 0.80000001192093, 1.2000000476837, 275, damageEffectiveness = 1.42, cooldown = 0.5, levelRequirement = 67, },
-		[20] = { 100, 6183, 4000, 0.80000001192093, 1.2000000476837, 309, damageEffectiveness = 1.46, cooldown = 0.5, levelRequirement = 70, },
-		[21] = { 100, 6625, 4000, 0.80000001192093, 1.2000000476837, 331, damageEffectiveness = 1.5, cooldown = 0.5, levelRequirement = 72, },
-		[22] = { 100, 6949, 4000, 0.80000001192093, 1.2000000476837, 347, damageEffectiveness = 1.5, cooldown = 0.5, levelRequirement = 74, },
-		[23] = { 100, 7281, 4000, 0.80000001192093, 1.2000000476837, 364, damageEffectiveness = 1.5, cooldown = 0.5, levelRequirement = 76, },
-		[24] = { 100, 7621, 4000, 0.80000001192093, 1.2000000476837, 381, damageEffectiveness = 1.5, cooldown = 0.5, levelRequirement = 78, },
-		[25] = { 100, 7969, 4000, 0.80000001192093, 1.2000000476837, 398, damageEffectiveness = 1.5, cooldown = 0.5, levelRequirement = 80, },
-		[26] = { 100, 8325, 4000, 0.80000001192093, 1.2000000476837, 416, damageEffectiveness = 1.5, cooldown = 0.5, levelRequirement = 82, },
-		[27] = { 100, 8689, 4000, 0.80000001192093, 1.2000000476837, 434, damageEffectiveness = 1.5, cooldown = 0.5, levelRequirement = 84, },
-		[28] = { 100, 9060, 4000, 0.80000001192093, 1.2000000476837, 453, damageEffectiveness = 1.5, cooldown = 0.5, levelRequirement = 86, },
-		[29] = { 100, 9440, 4000, 0.80000001192093, 1.2000000476837, 472, damageEffectiveness = 1.5, cooldown = 0.5, levelRequirement = 88, },
-		[30] = { 100, 9828, 4000, 0.80000001192093, 1.2000000476837, 491, damageEffectiveness = 1.5, cooldown = 0.5, levelRequirement = 90, },
-		[31] = { 100, 9926, 4000, 0.80000001192093, 1.2000000476837, 496, damageEffectiveness = 1.5, cooldown = 0.5, levelRequirement = 91, },
-		[32] = { 100, 10026, 4000, 0.80000001192093, 1.2000000476837, 501, damageEffectiveness = 1.5, cooldown = 0.5, levelRequirement = 92, },
-		[33] = { 100, 10127, 4000, 0.80000001192093, 1.2000000476837, 506, damageEffectiveness = 1.5, cooldown = 0.5, levelRequirement = 93, },
-		[34] = { 100, 10229, 4000, 0.80000001192093, 1.2000000476837, 511, damageEffectiveness = 1.5, cooldown = 0.5, levelRequirement = 94, },
-		[35] = { 100, 10331, 4000, 0.80000001192093, 1.2000000476837, 516, damageEffectiveness = 1.5, cooldown = 0.5, levelRequirement = 95, },
-		[36] = { 100, 10436, 4000, 0.80000001192093, 1.2000000476837, 521, damageEffectiveness = 1.5, cooldown = 0.5, levelRequirement = 96, },
-		[37] = { 100, 10541, 4000, 0.80000001192093, 1.2000000476837, 527, damageEffectiveness = 1.5, cooldown = 0.5, levelRequirement = 97, },
-		[38] = { 100, 10646, 4000, 0.80000001192093, 1.2000000476837, 532, damageEffectiveness = 1.5, cooldown = 0.5, levelRequirement = 98, },
-		[39] = { 100, 10754, 4000, 0.80000001192093, 1.2000000476837, 538, damageEffectiveness = 1.5, cooldown = 0.5, levelRequirement = 99, },
-		[40] = { 100, 10862, 4000, 0.80000001192093, 1.2000000476837, 543, damageEffectiveness = 1.5, cooldown = 0.5, levelRequirement = 100, },
+		[1] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 0.7, cooldown = 0.25, levelRequirement = 4, statInterpolation = { 1, 1, 3, 3, }, },
+		[2] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 0.74, cooldown = 0.25, levelRequirement = 6, statInterpolation = { 1, 1, 3, 3, }, },
+		[3] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 0.78, cooldown = 0.25, levelRequirement = 9, statInterpolation = { 1, 1, 3, 3, }, },
+		[4] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 0.82, cooldown = 0.25, levelRequirement = 12, statInterpolation = { 1, 1, 3, 3, }, },
+		[5] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 0.86, cooldown = 0.25, levelRequirement = 16, statInterpolation = { 1, 1, 3, 3, }, },
+		[6] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 0.9, cooldown = 0.25, levelRequirement = 20, statInterpolation = { 1, 1, 3, 3, }, },
+		[7] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 0.94, cooldown = 0.25, levelRequirement = 24, statInterpolation = { 1, 1, 3, 3, }, },
+		[8] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 0.98, cooldown = 0.25, levelRequirement = 28, statInterpolation = { 1, 1, 3, 3, }, },
+		[9] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.02, cooldown = 0.25, levelRequirement = 32, statInterpolation = { 1, 1, 3, 3, }, },
+		[10] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.06, cooldown = 0.25, levelRequirement = 36, statInterpolation = { 1, 1, 3, 3, }, },
+		[11] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.1, cooldown = 0.25, levelRequirement = 40, statInterpolation = { 1, 1, 3, 3, }, },
+		[12] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.14, cooldown = 0.25, levelRequirement = 44, statInterpolation = { 1, 1, 3, 3, }, },
+		[13] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.18, cooldown = 0.25, levelRequirement = 48, statInterpolation = { 1, 1, 3, 3, }, },
+		[14] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.22, cooldown = 0.25, levelRequirement = 52, statInterpolation = { 1, 1, 3, 3, }, },
+		[15] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.26, cooldown = 0.25, levelRequirement = 55, statInterpolation = { 1, 1, 3, 3, }, },
+		[16] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.3, cooldown = 0.25, levelRequirement = 58, statInterpolation = { 1, 1, 3, 3, }, },
+		[17] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.34, cooldown = 0.25, levelRequirement = 61, statInterpolation = { 1, 1, 3, 3, }, },
+		[18] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.38, cooldown = 0.25, levelRequirement = 64, statInterpolation = { 1, 1, 3, 3, }, },
+		[19] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.42, cooldown = 0.25, levelRequirement = 67, statInterpolation = { 1, 1, 3, 3, }, },
+		[20] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.46, cooldown = 0.25, levelRequirement = 70, statInterpolation = { 1, 1, 3, 3, }, },
+		[21] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, cooldown = 0.25, levelRequirement = 72, statInterpolation = { 1, 1, 3, 3, }, },
+		[22] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, cooldown = 0.25, levelRequirement = 74, statInterpolation = { 1, 1, 3, 3, }, },
+		[23] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, cooldown = 0.25, levelRequirement = 76, statInterpolation = { 1, 1, 3, 3, }, },
+		[24] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, cooldown = 0.25, levelRequirement = 78, statInterpolation = { 1, 1, 3, 3, }, },
+		[25] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, cooldown = 0.25, levelRequirement = 80, statInterpolation = { 1, 1, 3, 3, }, },
+		[26] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, cooldown = 0.25, levelRequirement = 82, statInterpolation = { 1, 1, 3, 3, }, },
+		[27] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, cooldown = 0.25, levelRequirement = 84, statInterpolation = { 1, 1, 3, 3, }, },
+		[28] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, cooldown = 0.25, levelRequirement = 86, statInterpolation = { 1, 1, 3, 3, }, },
+		[29] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, cooldown = 0.25, levelRequirement = 88, statInterpolation = { 1, 1, 3, 3, }, },
+		[30] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, cooldown = 0.25, levelRequirement = 90, statInterpolation = { 1, 1, 3, 3, }, },
+		[31] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, cooldown = 0.25, levelRequirement = 91, statInterpolation = { 1, 1, 3, 3, }, },
+		[32] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, cooldown = 0.25, levelRequirement = 92, statInterpolation = { 1, 1, 3, 3, }, },
+		[33] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, cooldown = 0.25, levelRequirement = 93, statInterpolation = { 1, 1, 3, 3, }, },
+		[34] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, cooldown = 0.25, levelRequirement = 94, statInterpolation = { 1, 1, 3, 3, }, },
+		[35] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, cooldown = 0.25, levelRequirement = 95, statInterpolation = { 1, 1, 3, 3, }, },
+		[36] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, cooldown = 0.25, levelRequirement = 96, statInterpolation = { 1, 1, 3, 3, }, },
+		[37] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, cooldown = 0.25, levelRequirement = 97, statInterpolation = { 1, 1, 3, 3, }, },
+		[38] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, cooldown = 0.25, levelRequirement = 98, statInterpolation = { 1, 1, 3, 3, }, },
+		[39] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, cooldown = 0.25, levelRequirement = 99, statInterpolation = { 1, 1, 3, 3, }, },
+		[40] = { 100, 4000, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, cooldown = 0.25, levelRequirement = 100, statInterpolation = { 1, 1, 3, 3, }, },
 	},
 }
 skills["DominatingBlowMinionCharge"] = {
-	name = "重盾冲锋",
+name = "重盾冲锋",
 	hidden = true,
 	color = 4,
-	description = "向目标区域或敌人冲锋，在路径上的敌人将会被推向两旁，并反复对你前方小范围区域内造成伤害。 抵达目标处时造成大范围伤害。伤害与击晕几率将视冲锋距离而定。无法被多重打击辅助。",
+	description = "Charges at a targeted location or enemy, pushing away enemies in your path and repeatedly dealing damage in a small area in front of you. You deal damage in a larger area when you reach the target. The further you travel, the more damage you deal, and the greater your chance of stunning enemies. Cannot be supported by Multistrike.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Shield] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.MovementSkill] = true, [SkillType.TravelSkill] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -998,16 +959,15 @@ skills["DominatingBlowMinionCharge"] = {
 		"ignores_proximity_shield",
 		"global_cannot_crit",
 	},
-	statInterpolation = { 1, 1, 1, },
 	levels = {
-		[1] = { 25, 400, 30, cooldown = 4, levelRequirement = 1, },
+		[1] = { 25, 400, 30, cooldown = 4, levelRequirement = 1, statInterpolation = { 1, 1, 1, }, },
 	},
 }
 skills["SummonedRhoaShieldCharge"] = {
-	name = "重盾冲锋",
+name = "重盾冲锋",
 	hidden = true,
 	color = 4,
-	description = "向目标区域或敌人冲锋，在路径上的敌人将会被推向两旁，并反复对你前方小范围区域内造成伤害。 抵达目标处时造成大范围伤害。伤害与击晕几率将视冲锋距离而定。无法被多重打击辅助。",
+	description = "Charges at a targeted location or enemy, pushing away enemies in your path and repeatedly dealing damage in a small area in front of you. You deal damage in a larger area when you reach the target. The further you travel, the more damage you deal, and the greater your chance of stunning enemies. Cannot be supported by Multistrike.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Shield] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.MovementSkill] = true, [SkillType.TravelSkill] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -1039,9 +999,8 @@ skills["SummonedRhoaShieldCharge"] = {
 		"shield_charge_extra_distance",
 		"ignores_proximity_shield",
 	},
-	statInterpolation = { 1, 1, 1, 1, 1, 1, },
 	levels = {
-		[1] = { 50, 100, 10, 20, 15, 0, cooldown = 3, levelRequirement = 1, },
+		[1] = { 50, 100, 10, 20, 15, 0, cooldown = 3, levelRequirement = 1, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
 	},
 }
 skills["SummonedSnakeProjectile"] = {
@@ -1063,16 +1022,15 @@ name = "混沌投射物",
 		"monster_projectile_variation",
 		"base_is_projectile",
 	},
-	statInterpolation = { 1, },
 	levels = {
-		[1] = { 1, levelRequirement = 1, },
+		[1] = { 1, levelRequirement = 1, statInterpolation = { 1, }, },
 	},
 }
 skills["DropBearSummonedGroundSlam"] = {
-	name = "裂地之击",
+name = "裂地之击",
 	hidden = true,
 	color = 4,
-	description = "以长杖或双手锤重击地面并制造出一道向前释放的冲击波, 被此冲击波击中的敌人将会受到伤害并有较高几率被击晕. 限定长杖与锤.",
+	description = "The character slams the ground in front of them with a Staff, Mace or Sceptre, creating a wave that travels forward and damages enemies with an increased chance to stun.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, },
 	weaponTypes = {
 		["Two Handed Mace"] = true,
@@ -1095,16 +1053,15 @@ skills["DropBearSummonedGroundSlam"] = {
 		"base_stun_threshold_reduction_+%",
 		"is_area_damage",
 	},
-	statInterpolation = { 1, },
 	levels = {
-		[1] = { 0, cooldown = 3, levelRequirement = 1, },
+		[1] = { 0, cooldown = 3, levelRequirement = 1, statInterpolation = { 1, }, },
 	},
 }
 skills["DropBearSummonedRallyingCry"] = {
-	name = "激励战吼",
+name = "激励战吼",
 	hidden = true,
 	color = 1,
-	description = "施展战吼, 使自身和盟友伤害和魔力恢复增加. 伤害增加量随着周围敌人数量提升. 嘲讽周围所有敌人, 使他们攻击施放者. 与其他战吼技能共享技能冷却.",
+	description = "Performs a warcry, granting increased damage and mana regeneration to the user and nearby allies if there are nearby enemies. The damage increase is proportional to the number of surrounding enemies. Taunts all nearby enemies to attack the user. Shares a cooldown with other Warcry skills.",
 	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Warcry] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.25,
@@ -1128,9 +1085,92 @@ skills["DropBearSummonedRallyingCry"] = {
 		"base_skill_effect_duration",
 		"base_deal_no_damage",
 	},
-	statInterpolation = { 1, 1, },
 	levels = {
-		[1] = { 25, 4000, cooldown = 5, levelRequirement = 1, },
+		[1] = { 25, 4000, cooldown = 5, levelRequirement = 1, statInterpolation = { 1, 1, }, },
+	},
+}
+skills["BoneGolemMultiAttack"] = {
+name = "连击",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Attack] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		attack = true,
+		melee = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"bone_golem_attack_speed_+%_final_after_third_combo_index",
+		"bone_golem_damage_+%_final_after_third_combo_index",
+	},
+	levels = {
+		[1] = { 200, 20, damageEffectiveness = 1.35, baseMultiplier = 1.35, levelRequirement = 1, statInterpolation = { 1, 1, }, },
+	},
+}
+skills["BoneGolemCascade"] = {
+name = "冰川之刺",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		attack = true,
+		melee = true,
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"upheaval_number_of_spikes",
+		"active_skill_base_radius_+",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 5, 3, attackSpeedMultiplier = -10, cooldown = 4, damageEffectiveness = 0.65, baseMultiplier = 0.65, levelRequirement = 1, statInterpolation = { 1, 1, }, },
+	},
+}
+skills["BoneGolemLeapSlam"] = {
+name = "跃击",
+	hidden = true,
+	color = 4,
+	description = "Jump into the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff. Cannot be supported by Multistrike.",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.MovementSkill] = true, [SkillType.TravelSkill] = true, },
+	weaponTypes = {
+		["One Handed Mace"] = true,
+		["Sceptre"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["Two Handed Sword"] = true,
+		["Staff"] = true,
+		["Two Handed Axe"] = true,
+		["Two Handed Mace"] = true,
+		["One Handed Axe"] = true,
+		["One Handed Sword"] = true,
+	},
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		attack = true,
+		melee = true,
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"is_area_damage",
+		"disable_attack_repeats",
+	},
+	levels = {
+		[1] = { attackSpeedMultiplier = -44, cooldown = 4, damageEffectiveness = 1.8, baseMultiplier = 1.8, levelRequirement = 1, statInterpolation = { }, },
 	},
 }
 skills["MinionInstability"] = {
@@ -1156,10 +1196,6 @@ name = "召唤物聚能",
 	levels = {
 		[1] = { },
 	},
-	stats = {
-	},
-	statLevels = {
-	},
 }
 skills["BeaconCausticCloud"] = {
 name = "腐蚀毒云",
@@ -1177,14 +1213,10 @@ name = "腐蚀毒云",
 	},
 	qualityStats = {
 	},
-	levelMods = {
+	stats = {
 	},
 	levels = {
 		[1] = { },
-	},
-	stats = {
-	},
-	statLevels = {
 	},
 }
 skills["BeaconZombieCausticCloud"] = {
@@ -1203,18 +1235,36 @@ name = "腐蚀毒云",
 	},
 	qualityStats = {
 	},
-	levelMods = {
+	stats = {
 	},
 	levels = {
 		[1] = { },
 	},
+}
+skills["InfernalLegion"] = {
+name = "炼狱军团",
+	hidden = true,
+	color = 4,
+	baseFlags = {
+		spell = true,
+		area = true,
+	},
+	skillTypes = { },
+	baseMods = {
+		skill("FireDot", 1, { type = "Multiplier", var = "InfernalLegionBaseDamage" }),
+		skill("dotIsArea", true),
+	},
+	qualityStats = {
+	},
 	stats = {
 	},
-	statLevels = {
+	levels = {
+		[1] = { },
 	},
 }
 
 
+-- adding
 
 skills["SlavedriverFlameWhip"] = {
 	name = "闪电鞭笞",
@@ -1241,9 +1291,9 @@ skills["SlavedriverFlameWhip"] = {
 		"base_cast_speed_+%",
 		"is_area_damage",
 	},
-	statInterpolation = { 3, 3, 1, 1, },
+	
 	levels = {
-		[1] = { 0.5, 1.5, 50, -65, critChance = 6, levelRequirement = 1, },
+		[1] = { 0.5, 1.5, 50, -65, critChance = 6, levelRequirement = 1,statInterpolation = { 3, 3, 1, 1, }, },
 	},
 }
 skills["KitavaSlavedriverFlameWhip"] = {
@@ -1271,8 +1321,9 @@ skills["KitavaSlavedriverFlameWhip"] = {
 		"base_cast_speed_+%",
 		"is_area_damage",
 	},
-	statInterpolation = { 3, 3, 1, 1, },
+	
 	levels = {
-		[1] = { 0.80000001192093, 1.2000000476837, 50, -65, critChance = 6, levelRequirement = 1, },
+		[1] = { 0.80000001192093, 1.2000000476837, 50, -65, critChance = 6, levelRequirement = 1,statInterpolation = { 3, 3, 1, 1, }, },
 	},
 }
+

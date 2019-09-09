@@ -380,7 +380,7 @@ tooltip:AddLine(16, "来自 "..sourceType..":")
 			-- Format modifier tags
 			local baseVal =""
 			if type(row.mod.value) == "number" then 
-				baseVal=(self:FormatModBase(row.mod, row.mod.value) .. "")
+				baseVal=(self:FormatModBase(row.mod, row.mod.value) .. " ")
 			end 			
 			--(type(row.mod.value) == "number" and (self:FormatModBase(row.mod, row.mod.value) .. ""))
 			-- print('-->>baseVal='..type(row.mod.value))
@@ -417,6 +417,8 @@ tooltip:AddLine(16, "来自 "..sourceType..":")
 					desc = "When in slot #"..tag.num
 				elseif tag.type == "GlobalEffect" then
 					desc = self:FormatModName(tag.effectType)
+				elseif tag.type == "Limit" then
+					desc = "仅限 "..(tag.limitVar and self:FormatModName(tag.limitVar) or self:FormatModBase(row.mod, tag.limit))
 				else
 					desc = self:FormatModName(tag.type)
 				end
@@ -437,7 +439,7 @@ function CalcBreakdownClass:FormatVarNameOrList(var, varList)
 end
 
 function CalcBreakdownClass:FormatModBase(mod, base)
-	return mod.type == "BASE" and string.format("%+g ", math.abs(base)) or math.abs(base).."% "
+	return mod.type == "BASE" and string.format("%+g", math.abs(base)) or math.abs(base).."%"
 end
 
 function CalcBreakdownClass:FormatModValue(value, modType)
@@ -459,6 +461,12 @@ function CalcBreakdownClass:FormatModValue(value, modType)
 		return "Override: "..value
 	elseif modType == "FLAG" then
 		return value and "True" or "False"
+	elseif modType == "LIST" then
+		if value.mod then
+			return "Modifier: "..self:FormatModName(value.mod.name)
+		else
+			return "?"
+		end
 	else
 		return value		
 	end

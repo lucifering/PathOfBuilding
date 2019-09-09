@@ -119,6 +119,14 @@ modList:NewMod("Condition:BrandAttachedToEnemy", "FLAG", true, "Config", { type 
 { var = "darkPactSkeletonLife", type = "count", label = "魔侍 生命:", ifSkill = "暗夜血契", tooltip = "设置使用【暗夜血契】时，魔侍的最大生命.", apply = function(val, modList, enemyModList)
 modList:NewMod("SkillData", "LIST", { key = "skeletonLife", value = val }, "Config", { type = "SkillName", skillName = "暗夜血契" })
 	end },
+{ label = "亡印辅助:", ifSkill = "亡印辅助" },
+	{ var = "deathmarkDeathmarkActive", type = "check", label = "敌人被标记?", ifSkill = "亡印辅助", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:EnemyHasDeathmark", "FLAG", true, "Config")
+	end },
+	{ label = "狂噬辅助:", ifSkill = "狂噬辅助" },
+	{ var = "feedingFrenzyFeedingFrenzyActive", type = "check", label = "启用狂噬增益效果?", ifSkill = "狂噬辅助", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:FeedingFrenzyActive", "FLAG", true, "Config")
+	end },
 { label = "苦痛之捷:", ifSkill = "苦痛之捷" },
 { var = "heraldOfAgonyVirulenceStack", type = "count", label = "# 【毒力】层数:", ifSkill = "苦痛之捷", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:VirulenceStack", "BASE", m_min(val, 40), "Config")
@@ -140,8 +148,12 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 	{ var = "intensifyIntensity", type = "count", label = "# 层【法术凝聚】:", ifSkill = "法术凝聚（辅）", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:Intensity", "BASE", m_min(val, 4), "Config")
 	end },
+{ label = "肉盾辅助:", ifSkill = "肉盾辅助" },
+	{ var = "meatShieldEnemyNearYou", type = "check", label = "敌人在你附近?", ifSkill = "肉盾辅助", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:MeatShieldEnemyNearYou", "FLAG", true, "Config")
+	end },
 { label = "召唤灵体:", ifSkill = "召唤灵体" },
-{ var = "raiseSpectreSpectreLevel", type = "count", label = "灵体等级:", ifSkill = "召唤灵体", tooltip = "设置灵体等级.\n默认等级是【召唤灵体】技能石的需求等级.", apply = function(val, modList, enemyModList)
+{ var = "raiseSpectreSpectreLevel", type = "count", label = "灵体等级:", ifSkill = "召唤灵体", ifVer = "2_6", tooltip = "设置灵体等级.\n默认等级是【召唤灵体】技能石的需求等级.", apply = function(val, modList, enemyModList)
 modList:NewMod("SkillData", "LIST", { key = "minionLevel", value = val }, "Config", { type = "SkillName", skillName = "召唤灵体" })
 	end },
 { label = "虹吸陷阱:", ifSkill = "虹吸陷阱" },
@@ -371,6 +383,12 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 	end },
 { var = "overrideBlitzCharges", type = "count", label = "# 疾电球数量 (如果没达到最大值):", ifOption = "useBlitzCharges", apply = function(val, modList, enemyModList)
 		modList:NewMod("BlitzCharges", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" })
+	end },
+{ var = "useInspirationCharges", type = "check", label = "你是否有激励球?", ifMult = "InspirationCharge", apply = function(val, modList, enemyModList)
+		modList:NewMod("UseInspirationCharges", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
+	{ var = "overrideInspirationCharges", type = "count", label = "# 激励球数量 (如果没达到最大值):", ifOption = "useInspirationCharges", apply = function(val, modList, enemyModList)
+		modList:NewMod("InspirationCharges", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" })
 	end },
 { var = "minionsUsePowerCharges", type = "check", label = "你的召唤生物有暴击球?", ifFlag = "haveMinion", apply = function(val, modList, enemyModList)
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("UsePowerCharges", "FLAG", true, "Config", { type = "Condition", var = "Combat" }) }, "Config")

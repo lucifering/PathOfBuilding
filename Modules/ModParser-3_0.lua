@@ -1400,6 +1400,8 @@ local gemIdLookup = {
 
 local function  FuckSkillSupportCnName(support_skillname)
 
+support_skillname=support_skillname:gsub("魔力减免","启迪辅助"):gsub("遥控地雷","链爆地雷辅助")
+
 return gemIdLookup[support_skillname] or gemIdLookup[support_skillname:gsub("^提高","")] or gemIdLookup[support_skillname.."(辅)"] or gemIdLookup[support_skillname.."（辅）"]   or gemIdLookup[support_skillname:gsub("^提高","增加").."(辅)"]  
  or gemIdLookup[support_skillname:gsub("^提高","增加").."（辅）"]  
 or gemIdLookup[support_skillname:gsub("先祖呼唤","先祖召唤").."(辅)"] 
@@ -1407,6 +1409,8 @@ or gemIdLookup[support_skillname:gsub("先祖呼唤","先祖召唤").."（辅）
 
 or gemIdLookup[support_skillname:gsub("渎神","诅咒光环").."(辅)"] 
 or gemIdLookup[support_skillname:gsub("渎神","诅咒光环").."（辅）"] 
+
+
 or "未知："..support_skillname
 
 end
@@ -3509,9 +3513,13 @@ skillNameList["受到【"..skillName:lower().."】影响时，"] = { tag = { typ
 			
 			 skillNameList["while using "..skillName:lower()] = { tag = { type = "Condition", var = "AffectedBy"..skillName:gsub(" ","") } }
 		end
+		if gemData.tags.mine then
+			specialModList["^"..skillName:lower().." has (%d+)%% increased throwing speed"] = function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("MineLayingSpeed", "INC", num) }, { type = "SkillName", skillName = skillName }) } end
+		end
 		if gemData.tags.chaining then
 			specialModList["^"..skillName:lower().." chains an additional time"] = { mod("ExtraSkillMod", "LIST", { mod = mod("ChainCountMax", "BASE", 1) }, { type = "SkillName", skillName = skillName }) }
 			specialModList["^"..skillName:lower().." chains an additional (%d+) times"] = function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ChainCountMax", "BASE", num) }, { type = "SkillName", skillName = skillName }) } end
+			specialModList["^"..skillName:lower().." chains (%d+) additional times"] = function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ChainCountMax", "BASE", num) }, { type = "SkillName", skillName = skillName }) } end
 		end
 		if gemData.tags.bow then
 			specialModList["^"..skillName:lower().." fires (%d+) additional arrows?"] = function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ProjectileCount", "BASE", num) }, { type = "SkillName", skillName = skillName }) } end

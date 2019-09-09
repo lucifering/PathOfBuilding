@@ -51,7 +51,14 @@ self:NewSection(3, "SkillSelect", 1, "查看技能详情", colorCodes.NORMAL, {
 				self.input.skill_number = index 
 				self:AddUndoState()
 				self.build.buildFlag = true
-			end)
+			end) {
+				tooltipFunc = function(tooltip, mode, index, value)
+					local socketGroup = self.build.skillsTab.socketGroupList[index]
+					if socketGroup and tooltip:CheckForUpdate(socketGroup, self.build.outputRevision) then
+						self.build.skillsTab:AddSocketGroupTooltip(tooltip, socketGroup)
+					end
+				end
+			}
 		}, },
 { label = "主动技能", { controlName = "mainSkill", 
 			control = new("DropDownControl", nil, 0, 0, 300, 16, nil, function(index, value)
@@ -65,6 +72,15 @@ self:NewSection(3, "SkillSelect", 1, "查看技能详情", colorCodes.NORMAL, {
 				local mainSocketGroup = self.build.skillsTab.socketGroupList[self.input.skill_number]
 				local srcInstance = mainSocketGroup.displaySkillListCalcs[mainSocketGroup.mainActiveSkillCalcs].activeEffect.srcInstance
 				srcInstance.skillPartCalcs = index
+				self:AddUndoState()
+				self.build.buildFlag = true
+			end)
+		}, },
+{ label = "启用的地雷", playerFlag = "mine", { controlName = "mainSkillMineCount",
+			control = new("EditControl", nil, 0, 0, 52, 16, nil, nil, "%D", nil, function(buf)
+				local mainSocketGroup = self.build.skillsTab.socketGroupList[self.input.skill_number]
+				local srcInstance = mainSocketGroup.displaySkillListCalcs[mainSocketGroup.mainActiveSkillCalcs].activeEffect.srcInstance
+				srcInstance.skillMineCountCalcs = tonumber(buf)
 				self:AddUndoState()
 				self.build.buildFlag = true
 			end)
@@ -125,12 +141,7 @@ Buff：光环和buff会生效，相当于你在藏身处的数值。
 		section.controls.showMinion.state = self.input.showMinion
 		section.controls.mode:SelByValue(self.input.misc_buffMode, "buffMode")
 	end)
-	self.sectionList[1].controls.mainSocketGroup.tooltipFunc = function(tooltip, mode, index, value)
-		local socketGroup = self.build.skillsTab.socketGroupList[index]
-		if socketGroup and tooltip:CheckForUpdate(socketGroup, self.build.outputRevision) then
-			self.build.skillsTab:AddSocketGroupTooltip(tooltip, socketGroup)
-		end
-	end
+	 
 
 	-- Add sections from the CalcSections module
 	for _, section in ipairs(sectionData[build.targetVersion]) do

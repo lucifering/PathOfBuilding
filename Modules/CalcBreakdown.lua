@@ -123,16 +123,18 @@ function breakdown.slot(source, sourceName, cfg, base, total, ...)
 	})
 end
 
-function breakdown.area(base, areaMod, total)
+function breakdown.area(base, areaMod, total, label)
 	if base ~= total then
 		return {
 s_format("%d ^8(基础半径)", base),
 s_format("x %.2f ^8(面积加成开平方根)", m_sqrt(areaMod)),
 			s_format("= %d", total),
+			label,
 			radius = total
 		}
 	else
 		return {
+			label,
 			radius = total
 		}
 	end

@@ -1191,7 +1191,7 @@ name = "召唤物聚能",
 	},
 	qualityStats = {
 	},
-	levelMods = {
+	stats = {
 	},
 	levels = {
 		[1] = { },

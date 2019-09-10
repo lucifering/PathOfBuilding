@@ -1402,6 +1402,7 @@ local function  FuckSkillSupportCnName(support_skillname)
 
 support_skillname=support_skillname:gsub("魔力减免","启迪辅助"):gsub("遥控地雷","链爆地雷辅助")
 
+
 return gemIdLookup[support_skillname] or gemIdLookup[support_skillname:gsub("^提高","")] or gemIdLookup[support_skillname.."(辅)"] or gemIdLookup[support_skillname.."（辅）"]   or gemIdLookup[support_skillname:gsub("^提高","增加").."(辅)"]  
  or gemIdLookup[support_skillname:gsub("^提高","增加").."（辅）"]  
 or gemIdLookup[support_skillname:gsub("先祖呼唤","先祖召唤").."(辅)"] 
@@ -1410,6 +1411,7 @@ or gemIdLookup[support_skillname:gsub("先祖呼唤","先祖召唤").."（辅）
 or gemIdLookup[support_skillname:gsub("渎神","诅咒光环").."(辅)"] 
 or gemIdLookup[support_skillname:gsub("渎神","诅咒光环").."（辅）"] 
 
+or gemIdLookup[support_skillname.."辅助"]
 
 or "未知："..support_skillname
 
@@ -1843,6 +1845,8 @@ local specialModList = {
 	["每有一个暴击球，你受到伤害的 ([%d%.]+)%% 由魔力先承担"]= function(num) return {  mod("DamageTakenFromManaBeforeLife", "BASE", num, { type = "Multiplier", var = "PowerCharge" } )  } end,
 	["装备时触发等级 20 闪电圣盾"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="LightningAegis", level = 20})   } end,
 	["获得等级 22 的 精准 技能"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="AccuracyAndCritsAura", level = 22})   } end,
+	--["获得等级 20 的【骨制战甲】技能"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="BoneArmour", level = 20})   } end,
+	["当你击杀敌人时触发等级 10 的污毒之域"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="CreateFungalGroundOnKill", level = 10})   } end,
 	["你的暴击加成为 (%d+)%%"]= function(num) return {  mod("CritMultiplier", "OVERRIDE", num, { type = "Global" } )  } end,
 	["你的暴击伤害加成为 (%d+)%%"]= function(num) return {  mod("CritMultiplier", "OVERRIDE", num, { type = "Global" } )  } end,
 	["获得 (%d+) 级的主动技能【元素之愈】"] = function(num) return {  mod("ExtraSkill", "LIST", { skillId ="VaalAuraElementalDamageHealing", level = num})   } end,
@@ -2772,8 +2776,8 @@ local specialModList = {
 	} end,
 	["你偷取生命，数值等同于你的地雷造成伤害的 ([%d%.]+)%%"] = function(num) return { mod("DamageLifeLeechToPlayer", "BASE", num, nil, 0, KeywordFlag.Mine) } end, 
 	["暴击伤害加成也会套用于异常状态的持续伤害加成，数值为 (%d+)%%"] = function(num) return { mod("CritMultiplierAppliesToDegen", "BASE", num) } end,
-	["周围至少有 1 名友军时，你和周围友军总伤害额外提高 (%d+)%%"] = function(num) return { mod("ExtraAura", "LIST", { mod = mod("Damage", "MORE", num) }, { type = "MultiplierThreshold", var = "NearbyAlly", threshold = 1 }) } end,
-	["周围至少有 5 个敌人，你和周围友军获得【猛攻】状态"] = { mod("ExtraAura", "LIST", { mod = flag("Onslaught") }, { type = "MultiplierThreshold", var = "NearbyAlly", threshold = 5 }) },
+	["周围至少有 1 个友军时，你和周围友军总伤害额外提高 (%d+)%%"] = function(num) return { mod("ExtraAura", "LIST", { mod = mod("Damage", "MORE", num) }, { type = "MultiplierThreshold", var = "NearbyAlly", threshold = 1 }) } end,
+	["周围至少有 5 个友军时，你和周围友军获得【猛攻】状态"] = { mod("ExtraAura", "LIST", { mod = flag("Onslaught") }, { type = "MultiplierThreshold", var = "NearbyAlly", threshold = 5 }) },
 	["近期内你若有消耗灵柩，则你和召唤生物范围效果扩大 (%d+)%%"] = function(num) return { mod("AreaOfEffect", "INC", num, { type = "Condition", var = "ConsumedCorpseRecently" }), mod("MinionModifier", "LIST", { mod = mod("AreaOfEffect", "INC", num) }, { type = "Condition", var = "ConsumedCorpseRecently" }) } end,
 	["附近至少有一个灵柩时，你和周围友军的总伤害额外提高 (%d+)%%"] = function(num) return { mod("ExtraAura", "LIST", { mod = mod("Damage", "MORE", num) }, { type = "MultiplierThreshold", var = "NearbyCorpse", threshold = 1 }) } end,
 	["周围每有 1 个灵柩，你和周围友军每秒回复 ([%d%.]+)%% 能量护盾，最多 ([%d%.]+)%%"] = function(num, _, limit) return { mod("ExtraAura", "LIST", { mod = mod("EnergyShieldRegenPercent", "BASE", num) }, { type = "Multiplier", var = "NearbyCorpse", limit = tonumber(limit), limitTotal = true }) } end,
@@ -2783,6 +2787,9 @@ local specialModList = {
 	["你的火焰抗性为 (%d+)%%"] = function(num) return { mod("FireResist", "OVERRIDE", num) } end,
 		["你的冰霜抗性为 (%d+)%%"] = function(num) return { mod("ColdResist", "OVERRIDE", num) } end,
 		["你的闪电抗性为 (%d+)%%"] = function(num) return { mod("LightningResist", "OVERRIDE", num) } end,
+	["火焰抗性 (%d+)%%"] = function(num) return { mod("FireResist", "OVERRIDE", num) } end,
+	["冰霜抗性 (%d+)%%"] = function(num) return { mod("ColdResist", "OVERRIDE", num) } end,
+	["闪电抗性 (%d+)%%"] = function(num) return { mod("LightningResist", "OVERRIDE", num) } end,
 		["混沌抗性翻倍"] = { mod("ChaosResist", "MORE", 100) },
 	["你身上的药剂效果提高 (%d+)%%"] = function(num) return { mod("FlaskEffect", "INC", num) } end,
 	--["([%+%-]?%d+)%% 持续中毒伤害加成"] = function(num) return { mod("DotMultiplier", "INC", num,nil,nil,  KeywordFlag.Poison) } end,

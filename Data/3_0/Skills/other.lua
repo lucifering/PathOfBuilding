@@ -2081,3 +2081,62 @@ skills["SupportGreaterSpellEcho"] = {
         [30] = { 2, 35, 50, levelRequirement = 90, duration = 0.001, manaMultiplier = 50, statInterpolation = { 1, 1, 1, },},
     },
 }
+
+
+
+skills["BoneArmour"] = {
+	name = "骨制战甲",
+	color = 3,	 
+	baseEffectiveness = 10,
+	incrementalEffectiveness = 0.029999999329448,
+	description = "为你和你的所有召唤物施加一个增益效果，在其耗尽之前替你承受部分伤害。\n这个增益效果同时提供免疫流血。 \n和其它防卫技能共用冷却时间。.",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Instant] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.GuardSkill] = true, [SkillType.Minion] = true, },
+	statDescriptionScope = "buff_skill_stat_descriptions",
+	castTime = 0,
+
+	baseFlags = {
+		spell = true,
+		duration = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"quick_guard_damage_absorbed_%",
+		"quick_guard_damage_absorb_limit",
+		"base_deal_no_damage",
+		"display_this_skill_cooldown_does_not_recover_during_buff",
+	},
+	
+	levels = {
+		[20] = { 70, 1, levelRequirement = 70, duration = 3, cooldown = 3, statInterpolation = { 1, 3, },},
+	},
+}
+skills["CreateFungalGroundOnKill"] = {
+	name = "污毒之域",
+	hidden = true,
+	color = 4,
+	description = "在触发位置创建毒菌地面",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.TriggeredGrantedSkill] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	fromItem = true,
+	baseFlags = {
+		spell = true,
+		duration = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"chance_to_cast_on_kill_%",
+		"base_deal_no_damage",
+		"spell_uncastable_if_triggerable",
+	},
+	
+	levels = {
+		[10] = { 100, levelRequirement = 1, duration = 5, cooldown = 1,statInterpolation = { 1, }, },
+	},
+}

@@ -5105,5 +5105,32 @@ skills["BoneStalkerEarthquake"] = {
 }
 
 
+skills["BatScreech"] = {
+	name = "蝙蝠尖叫",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 1.625,
+	incrementalEffectiveness = 0.033300001174212,
+	skillTypes = { [SkillType.Spell] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		spell = true,
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_lightning_damage",
+		"spell_maximum_base_lightning_damage",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 0.80000001192093, 1.2000000476837, critChance = 5, cooldown = 4, levelRequirement = 3, statInterpolation = { 3, 3, }, },
+		[2] = { 2.2000000476837, 3.2999999523163, critChance = 5, cooldown = 4, levelRequirement = 68, statInterpolation = { 3, 3, }, },
+	},
+}
 
 

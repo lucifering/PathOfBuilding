@@ -7,7 +7,7 @@
 local minions, mod = ...
 
 minions["RaisedZombie"] = {
-name = "魔卫",
+	name = "再生腐尸",
 	life = 3.75,
 	armour = 0.7,
 	fireResist = 40,
@@ -31,7 +31,7 @@ name = "魔卫",
 }
 
 minions["SummonedChaosGolem"] = {
-name = "混沌魔像",
+	name = "混沌魔像",
 	life = 4.8,
 	energyShield = 0.2,
 	fireResist = 40,
@@ -55,7 +55,7 @@ name = "混沌魔像",
 }
 
 minions["SummonedFlameGolem"] = {
-name = "烈焰魔像",
+	name = "烈焰魔像",
 	life = 3.75,
 	energyShield = 0.4,
 	fireResist = 70,
@@ -81,7 +81,7 @@ name = "烈焰魔像",
 }
 
 minions["SummonedIceGolem"] = {
-name = "寒冰魔像",
+	name = "寒冰魔像",
 	life = 4.05,
 	energyShield = 0.4,
 	fireResist = 40,
@@ -105,7 +105,7 @@ name = "寒冰魔像",
 }
 
 minions["SummonedLightningGolem"] = {
-name = "闪电魔像",
+	name = "闪电魔像",
 	life = 3.75,
 	energyShield = 0.2,
 	fireResist = 40,
@@ -131,7 +131,7 @@ name = "闪电魔像",
 }
 
 minions["SummonedStoneGolem"] = {
-name = "巨石魔像",
+	name = "年迈巨石",
 	life = 5.25,
 	armour = 0.6,
 	fireResist = 40,
@@ -155,7 +155,7 @@ name = "巨石魔像",
 }
 
 minions["SummonedRagingSpirit"] = {
-name = "愤怒的狂灵",
+	name = "怒炎之灵",
 	life = 1.8,
 	fireResist = 40,
 	coldResist = 40,
@@ -180,7 +180,7 @@ name = "愤怒的狂灵",
 }
 
 minions["SummonedEssenceSpirit"] = {
-name = "精华之灵",
+	name = "精华之灵",
 	life = 1.8,
 	fireResist = 40,
 	coldResist = 40,
@@ -203,7 +203,7 @@ name = "精华之灵",
 }
 
 minions["SummonedSpectralWolf"] = {
-name = "幽狼",
+	name = "幽狼",
 	life = 4.5,
 	fireResist = 40,
 	coldResist = 40,
@@ -224,7 +224,7 @@ name = "幽狼",
 }
 
 minions["RaisedSkeleton"] = {
-name = "异灵魔侍",
+	name = "异灵魔侍",
 	life = 1.05,
 	fireResist = 40,
 	coldResist = 40,
@@ -248,7 +248,7 @@ name = "异灵魔侍",
 }
 
 minions["RaisedSkeletonCaster"] = {
-name = "异灵魔侍术者",
+	name = "异灵魔侍术者",
 	life = 1.05,
 	energyShield = 0.4,
 	fireResist = 40,
@@ -271,7 +271,7 @@ name = "异灵魔侍术者",
 }
 
 minions["RaisedSkeletonArcher"] = {
-name = "异灵魔侍弓箭手",
+	name = "异灵魔侍弓箭手",
 	life = 1.05,
 	fireResist = 40,
 	coldResist = 40,
@@ -292,7 +292,7 @@ name = "异灵魔侍弓箭手",
 }
 
 minions["Clone"] = {
-name = "克隆体",
+	name = "复制之体",
 	life = 1,
 	fireResist = 40,
 	coldResist = 40,
@@ -312,7 +312,7 @@ name = "克隆体",
 }
 
 minions["SpiderMinion"] = {
-name = "蜘蛛爪牙",
+	name = "蜘蛛爪牙",
 	life = 1.8,
 	fireResist = 40,
 	coldResist = 40,
@@ -334,7 +334,7 @@ name = "蜘蛛爪牙",
 }
 
 minions["AnimatedWeapon"] = {
-name = "幻灵武器",
+	name = "幻灵武器",
 	life = 4,
 	fireResist = 40,
 	coldResist = 40,
@@ -354,7 +354,7 @@ name = "幻灵武器",
 }
 
 minions["AnimatedArmour"] = {
-name = "幻灵守卫",
+	name = "幻灵守卫",
 	life = 4.5,
 	armour = 0.5,
 	fireResist = 40,
@@ -378,7 +378,7 @@ name = "幻灵守卫",
 }
 
 minions["IcyRagingSpirit"] = {
-name = "悲墓之灵",
+	name = "悲墓之灵",
 	life = 3,
 	fireResist = 40,
 	coldResist = 40,
@@ -401,7 +401,7 @@ name = "悲墓之灵",
 }
 
 minions["UniqueAnimatedWeapon"] = {
-name = "狂舞德尔维希",
+	name = "狂舞德尔维希",
 	life = 4,
 	fireResist = 40,
 	coldResist = 40,
@@ -422,7 +422,7 @@ name = "狂舞德尔维希",
 }
 
 minions["SummonedPhantasm"] = {
-name = "异界凶灵",
+	name = "异界凶灵",
 	life = 1.58,
 	energyShield = 0.2,
 	fireResist = 40,
@@ -445,7 +445,7 @@ name = "异界凶灵",
 }
 
 minions["HeraldOfAgonySpiderPlated"] = {
-name = "苦痛爬行者",
+	name = "苦痛爬行者",
 	life = 1.5,
 	fireResist = 0,
 	coldResist = 0,
@@ -464,14 +464,14 @@ name = "苦痛爬行者",
 		"Melee",
 	},
 	modList = {
-		mod("PhysicalDamageConvertToChaos", "BASE", 40), -- MonsterConvertToChaosHeraldOfAgony1 [base_physical_damage_%_to_convert_to_chaos = 40]
+		mod("PhysicalDamageConvertToChaos", "BASE", 40) , -- MonsterConvertToChaosHeraldOfAgony1 [base_physical_damage_%_to_convert_to_chaos = 40]
 		-- MonsterCannotBeDamaged [cannot_be_damaged = 1]
 		mod("Condition:FullLife", "FLAG", true),
 	},
 }
 
 minions["AxisEliteSoldierHeraldOfLight"] = {
-name = "纯净哨兵",
+	name = "纯净哨兵",
 	life = 5.6,
 	armour = 0.5,
 	fireResist = 40,
@@ -495,7 +495,7 @@ name = "纯净哨兵",
 }
 
 minions["HolyLivingRelic"] = {
-name = "圣物",
+	name = "圣物",
 	life = 6,
 	energyShield = 0.6,
 	fireResist = 40,
@@ -518,7 +518,7 @@ name = "圣物",
 }
 
 minions["AxisEliteSoldierDominatingBlow"] = {
-name = "统御哨兵",
+	name = "统御哨兵",
 	life = 4,
 	armour = 0.5,
 	fireResist = 40,
@@ -544,7 +544,7 @@ name = "统御哨兵",
 }
 
 minions["RhoaUniqueSummoned"] = {
-name = "召唤兽化恐喙鸟",
+	name = "被召唤的恐喙鸟",
 	life = 7.5,
 	armour = 0.2,
 	fireResist = 40,
@@ -568,7 +568,7 @@ name = "召唤兽化恐喙鸟",
 }
 
 minions["SnakeSpitUniqueSummoned"] = {
-name = "召唤兽化巨蛇",
+	name = "被召唤的眼镜蛇",
 	life = 7.5,
 	armour = 0.15,
 	fireResist = 40,
@@ -591,7 +591,7 @@ name = "召唤兽化巨蛇",
 }
 
 minions["DropBearUniqueSummoned"] = {
-name = "召唤兽化之爪",
+	name = "召唤之爪",
 	life = 7.5,
 	armour = 0.5,
 	fireResist = 40,
@@ -616,7 +616,7 @@ name = "召唤兽化之爪",
 }
 
 minions["SummonedCarrionGolem"] = {
-name = "腐化魔像",
+	name = "腐化魔像",
 	life = 3.75,
 	energyShield = 0.4,
 	fireResist = 40,

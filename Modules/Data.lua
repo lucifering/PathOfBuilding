@@ -312,6 +312,7 @@ for _, targetVersion in ipairs(targetVersionList) do
 	verData.gems = dataModule("Gems")
 	verData.gemForSkill = { }
 	for gemId, gem in pairs(verData.gems) do
+		--print(gem.name)
 		gem.id = gemId
 		gem.grantedEffect = verData.skills[gem.grantedEffectId]
 		 

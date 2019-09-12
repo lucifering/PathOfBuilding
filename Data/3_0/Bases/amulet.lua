@@ -87,7 +87,7 @@ itemBases["杰特护身符"] = {
 	type = "Amulet",
 	hidden = true,
 	tags = { default = true, amulet = true, not_for_sale = true, },
-	implicit = "获得 +(8-12)% 元素抗性",
+	implicit = "+(8-12)% 所有元素抗性",
 	req = { level = 12, },
 }
 

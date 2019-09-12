@@ -120,7 +120,7 @@ itemBases["星芒战铠"] = {
 	subType = "Armour",
 	socketLimit = 6,
 	tags = { default = true, armour = true, body_armour = true, str_armour = true, },
-	implicit = "获得 +(8-12)% 元素抗性",
+	implicit = "+(8-12)% 所有元素抗性",
 	armour = { ArmourBase = 711, MovementPenalty = 5, },
 	req = { level = 62, str = 180, },
 }
@@ -843,7 +843,7 @@ itemBases["黄金战甲"] = {
 	hidden = true,
 	socketLimit = 6,
 	tags = { default = true, armour = true, body_armour = true, str_dex_int_armour = true, not_for_sale = true, },
-	implicit = "获得 +(15-25)% 元素抗性",
+	implicit = "+(15-25)% 所有元素抗性",
 	armour = { ArmourBase = 75, EvasionBase = 75, EnergyShieldBase = 16, },
 	req = { level = 20, str = 8, dex = 8, int = 8, },
 }

@@ -286,6 +286,15 @@ itemBases["龙鳞长靴"] = {
 	armour = { ArmourBase = 121, EvasionBase = 121, },
 	req = { level = 65, str = 62, dex = 62, },
 }
+itemBases["Two-Toned Boots (Armour/Evasion)"] = {
+	type = "Boots",
+	subType = "Armour/Evasion",
+	socketLimit = 4,
+	tags = { default = true, armour = true, boots = true, not_for_sale = true, atlas_base_type = true, bootsatlas2 = true, str_dex_armour = true, },
+	implicit = "+(8-12)% 火焰与冰霜抗性",
+	armour = { ArmourBase = 126, EvasionBase = 126, },
+	req = { level = 70, str = 62, dex = 62, },
+}
 
 itemBases["链甲长靴"] = {
 	type = "Boots",
@@ -351,7 +360,15 @@ itemBases["圣战长靴"] = {
 	armour = { ArmourBase = 121, EnergyShieldBase = 24, },
 	req = { level = 64, str = 62, int = 62, },
 }
-
+itemBases["Two-Toned Boots (Armour/Energy Shield)"] = {
+	type = "Boots",
+	subType = "Armour/Energy Shield",
+	socketLimit = 4,
+	tags = { default = true, armour = true, boots = true, not_for_sale = true, atlas_base_type = true, bootsatlas3 = true, str_int_armour = true, },
+	implicit = "+(8-12)% 火焰与闪电抗性",
+	armour = { ArmourBase = 126, EnergyShieldBase = 24, },
+	req = { level = 70, str = 62, int = 62, },
+}
 
 itemBases["裹趾凉鞋"] = {
 	type = "Boots",
@@ -425,18 +442,6 @@ itemBases["暗影者长靴"] = {
 	armour = { EvasionBase = 185, EnergyShieldBase = 17, },
 	req = { level = 69, dex = 82, int = 42, },
 }
-
-
-itemBases["黄金缠鞋"] = {
-	type = "Boots",
-	hidden = true,
-	socketLimit = 4,
-	tags = { default = true, armour = true, boots = true, not_for_sale = true, },
-	implicit = "获得 +(8-16)% 元素抗性",
-	armour = { },
-	req = { level = 12, },
-}
-
 itemBases["Two-Toned Boots (Evasion/Energy Shield)"] = {
 	type = "Boots",
 	subType = "Evasion/Energy Shield",
@@ -446,23 +451,15 @@ itemBases["Two-Toned Boots (Evasion/Energy Shield)"] = {
 	armour = { EvasionBase = 126, EnergyShieldBase = 24, },
 	req = { level = 70, dex = 62, int = 62, },
 }
-itemBases["Two-Toned Boots (Armour/Energy Shield)"] = {
+
+itemBases["黄金缠鞋"] = {
 	type = "Boots",
-	subType = "Armour/Energy Shield",
+	hidden = true,
 	socketLimit = 4,
-	tags = { default = true, armour = true, boots = true, not_for_sale = true, atlas_base_type = true, bootsatlas3 = true, str_int_armour = true, },
-	implicit = "+(8-12)% 火焰与闪电抗性",
-	armour = { ArmourBase = 126, EnergyShieldBase = 24, },
-	req = { level = 70, str = 62, int = 62, },
-}
-itemBases["Two-Toned Boots (Armour/Evasion)"] = {
-	type = "Boots",
-	subType = "Armour/Evasion",
-	socketLimit = 4,
-	tags = { default = true, armour = true, boots = true, not_for_sale = true, atlas_base_type = true, bootsatlas2 = true, str_dex_armour = true, },
-	implicit = "+(8-12)% 火焰与冰霜抗性",
-	armour = { ArmourBase = 126, EvasionBase = 126, },
-	req = { level = 70, str = 62, dex = 62, },
+	tags = { default = true, armour = true, boots = true, not_for_sale = true, },
+	implicit = "+(8-16)% 所有元素抗性",
+	armour = { },
+	req = { level = 12, },
 }
 
 

@@ -22,10 +22,13 @@ itemBases["三相珠宝"] = {
 	tags = { default = true, jewel = true, intjewel = true, dexjewel = true, strjewel = true, not_for_sale = true, },
 	req = { },
 }
-
+itemBases["三相珠宝"] = {
+	type = "Jewel",
+	tags = { default = true, jewel = true, intjewel = true, dexjewel = true, strjewel = true, not_for_sale = true, },
+	req = { },
+}
 itemBases["永恒珠宝"] = {
 	type = "Jewel",
-	
 	tags = { default = true, jewel = true, intjewel = true, dexjewel = true, strjewel = true, not_for_sale = true, },
 	req = { },
 }

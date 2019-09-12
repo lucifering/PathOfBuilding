@@ -738,11 +738,14 @@ elseif item.rarity == "魔法" then
 			end
 
 			-- Create active skills
-			for _, gemInstance in ipairs(socketGroup.gemList) do	
+			for _, gemInstance in ipairs(socketGroup.gemList) do				
+			
 				if gemInstance.enabled and (gemInstance.gemData or gemInstance.grantedEffect) then
 					local grantedEffectList = gemInstance.gemData and gemInstance.gemData.grantedEffectList or { gemInstance.grantedEffect }
 					for index, grantedEffect in ipairs(grantedEffectList) do
 						if not grantedEffect.support and not grantedEffect.unsupported and (not grantedEffect.hasGlobalEffect or gemInstance["enableGlobal"..index]) then
+						--	print(">>>>>>>>>>>>>gemInstance="..gemInstance.gemData.name)
+							
 							local activeEffect = {
 								grantedEffect = grantedEffect,
 								level = gemInstance.level,
@@ -766,10 +769,15 @@ elseif item.rarity == "魔法" then
 									if value.keywordList then
 										match = true
 										for _, keyword in ipairs(value.keywordList) do
+											
+											if keyword~=""  and keyword ~=0 and  keyword~="0" then 
+											--print(">>>>>>>>>>>>>keyword="..keyword)
 											if not calcLib.gemIsType(activeEffect.gemData, keyword) then
 												match = false
+												--print("match = false");
 												break
 											end
+											end 
 										end
 									else
 										match = calcLib.gemIsType(activeEffect.gemData, value.keyword)

@@ -70,7 +70,7 @@ itemBases["尖耙短匕"] = {
 	type = "Dagger",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, dagger = true, one_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "4% 攻击伤害格挡几率",
+	implicit = "4% 攻击伤害格挡率",
 	weapon = { PhysicalMin = 14, PhysicalMax = 54, CritChanceBase = 6.2, AttackRateBase = 1.35, Range = 10, },
 	req = { level = 36, dex = 55, int = 77, },
 }
@@ -134,7 +134,7 @@ itemBases["三叉短匕"] = {
 	type = "Dagger",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, dagger = true, one_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "4% 攻击伤害格挡几率",
+	implicit = "4% 攻击伤害格挡率",
 	weapon = { PhysicalMin = 19, PhysicalMax = 74, CritChanceBase = 6.5, AttackRateBase = 1.35, Range = 10, },
 	req = { level = 51, dex = 83, int = 99, },
 }
@@ -198,7 +198,7 @@ itemBases["战叉"] = {
 	type = "Dagger",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, dagger = true, one_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "6% 攻击伤害格挡几率",
+	implicit = "6% 攻击伤害格挡率",
 	weapon = { PhysicalMin = 22, PhysicalMax = 88, CritChanceBase = 6.2, AttackRateBase = 1.35, Range = 10, },
 	req = { level = 70, dex = 121, int = 121, },
 }

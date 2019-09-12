@@ -2114,10 +2114,10 @@ skills["BoneArmour"] = {
 	},
 }
 skills["CreateFungalGroundOnKill"] = {
-	name = "污毒之域",
+	name = "玷污",
 	hidden = true,
 	color = 4,
-	description = "在触发位置创建毒菌地面",
+	description = "在目标地点创造一小片真菌地表。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.TriggeredGrantedSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,

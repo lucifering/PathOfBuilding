@@ -520,7 +520,15 @@ self.controls.displayItemAddCustom = new("ButtonControl", {"TOPLEFT",self.contro
 		self:AddCustomModifierToDisplayItem()
 	end)
 	self.controls.displayItemAddCustom.shown = function()
+	print(self.displayItem.name)
 return self.displayItem.rarity == "魔法" or self.displayItem.rarity == "稀有"
+or self.displayItem.name=='扼息者, 火蝮鳞手套' 	
+	 or self.displayItem.name=='孢囊守卫, 圣者链甲'   or self.displayItem.name=='奔逃之, 暗影之靴'  
+	 or self.displayItem.name=='嗜寒之冠, 绸缎之兜' 
+	 or self.displayItem.name=='嗜雷之冠, 日耀之冠' 
+	 or self.displayItem.name=='嗜火之冠, 艾兹麦坚盔' 
+	 
+	 or self.displayItem.type == "Amulet" 
 	end
 
 	-- Section: Modifier Range
@@ -1788,7 +1796,26 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 						type = "custom",
 					})
 				end
-			end		
+			end	
+		elseif sourceId == "BLIGHT" then
+		
+			for _, passives in ipairs(self.build.data.blightPassives) do
+				--print(">>>>>>>>>>>>>>>>>>")
+				spTip={}
+				t_insert(spTip,passives.oils)
+				 
+				t_insert(spTip,table.concat(passives, "\n"))
+				
+					--print_r(passives)
+					t_insert(modList, {
+						label = passives.name,
+						mod = {passives.name},
+						type = "crafted",
+						isEnchant=true,
+						spTip=spTip
+					})
+			end
+			
 		elseif sourceId == "ESSENCE" then
 			for _, essence in pairs(self.build.data.essences) do
 				local modId = essence.mods[self.displayItem.type]
@@ -1833,18 +1860,33 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 			end)
 		end
 	end
-	if (self.build.targetVersion ~= "2_6" and self.displayItem.base.subType ~= "Abyss") or (self.displayItem.type ~= "Jewel" and self.displayItem.type ~= "Flask") then
+	if ((self.build.targetVersion ~= "2_6" 	
+	and 	self.displayItem.base.subType ~= "Abyss") or (self.displayItem.type ~= "Jewel" and self.displayItem.type ~= "Flask") ) and  (self.displayItem.rarity == "魔法" or self.displayItem.rarity == "稀有")	
+	
+	then
 t_insert(sourceList, { label = "工艺工作台", sourceId = "MASTER" })
 
 	end
-	if self.displayItem.type ~= "Jewel" and self.displayItem.type ~= "Flask" then
+	if self.displayItem.type ~= "Jewel" and self.displayItem.type ~= "Flask" 
+	
+	and (self.displayItem.rarity == "魔法" or self.displayItem.rarity == "稀有")
+	then
 t_insert(sourceList, { label = "精华", sourceId = "ESSENCE" })
 t_insert(sourceList, { label = "地心", sourceId = "DELVE" })
 t_insert(sourceList, { label = "穿越", sourceId = "INCURSION" })
 	end
+	if self.displayItem.type == "Amulet" or self.displayItem.name=='扼息者, 火蝮鳞手套' 	
+	 or self.displayItem.name=='孢囊守卫, 圣者链甲'   or self.displayItem.name=='奔逃之, 暗影之靴'  
+	 or self.displayItem.name=='嗜寒之冠, 绸缎之兜' 
+	 or self.displayItem.name=='嗜雷之冠, 日耀之冠' 
+	 or self.displayItem.name=='嗜火之冠, 艾兹麦坚盔'  
+	then
 	
+	t_insert(sourceList, { label = "涂膏", sourceId = "BLIGHT" })
 	
-	if not self.displayItem.crafted then
+	end
+	
+	if not self.displayItem.crafted and (self.displayItem.rarity == "魔法" or self.displayItem.rarity == "稀有") then
 t_insert(sourceList, { label = "【前缀】", sourceId = "PREFIX" })
 t_insert(sourceList, { label = "【后缀】", sourceId = "SUFFIX" })
 	end
@@ -1858,7 +1900,26 @@ t_insert(sourceList, { label = "自定义", sourceId = "CUSTOM" })
 			if controls.custom.buf:match("%S") then
 				t_insert(item.modLines, { line = controls.custom.buf, custom = true })
 			end
+		elseif sourceId == "BLIGHT" then
+				
+			local listMod = modList[controls.modSelect.selIndex]
+			if listMod ~=nil and listMod.mod~=nil then 
+				 for i = 1, item.implicitLines do 
+					if item.modLines~=nil and item.modLines[i]~=nil and  item.modLines[i].crafted then
+							
+							t_remove(item.modLines, i)
+							item.implicitLines =item.implicitLines -1
+					end
+				end
+				for _, line in ipairs(listMod.mod) do
+					t_insert(item.modLines, 1, { crafted = true, line = line })
+					item.implicitLines = item.implicitLines+1
+				end				
+			end
+		
 		else
+			 
+			
 			local listMod = modList[controls.modSelect.selIndex]
 			if listMod ~=nil and listMod.mod~=nil then 
 				for _, line in ipairs(listMod.mod) do
@@ -1881,14 +1942,27 @@ controls.modSelectLabel = new("LabelControl", {"TOPRIGHT",nil,"TOPLEFT"}, 95, 45
 		return sourceList[controls.source.selIndex].sourceId ~= "CUSTOM"
 	end
 	controls.modSelect.tooltipFunc = function(tooltip, mode, index, value)
-		if value ~=nil and value.mod ~=nil  then
-			tooltip:Clear()
-			if mode ~= "OUT" and value then
-				for _, line in ipairs(value.mod) do
-					tooltip:AddLine(16, "^7"..line)
+	
+		if value ~=nil   then 
+		
+			if value.spTip ~=nil then 
+				tooltip:Clear()
+				if  value then
+					for _, line in ipairs(value.spTip) do
+						tooltip:AddLine(16, "^7"..line)
+					end
 				end
-			end
-		end
+			elseif value.mod ~=nil then 
+				tooltip:Clear()
+				if mode ~= "OUT" and value then
+					for _, line in ipairs(value.mod) do
+						tooltip:AddLine(16, "^7"..line)
+					end
+				end
+			end 
+		
+		end 
+		 
 	end
 	controls.custom = new("EditControl", {"TOPLEFT",nil,"TOPLEFT"}, 100, 45, 440, 18)
 	controls.custom.shown = function()

@@ -2910,6 +2910,7 @@ local specialModList = {
 	["近期内每引爆一个地雷，暴击几率提高 (%d+)%%，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("CritChance", "INC", tonumber(num1), { type = "Multiplier", var = "MineDetonatedRecently", limit = tonumber(limit), limitTotal = true })   } end, 
 	["近期内每引爆一个地雷，([%+%-]?%d+)%% 暴击伤害加成，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("CritMultiplier", "BASE", tonumber(num1), { type = "Multiplier", var = "MineDetonatedRecently", limit = tonumber(limit), limitTotal = true })   } end, 
 	["召唤飞掠者的魔力保留降低 (%d+)%%"] = function(num) return {  mod("ManaReserved", "INC", -num,{ type = "SkillId", skillId = "Skitterbots" })  } end, 
+	["分配(.+)"] =  function(_,passive_name) return {  mod("Notable", "LIST",passive_name)  } end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

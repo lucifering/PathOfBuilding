@@ -75,8 +75,14 @@ local function mergeNotable(env)
 	for _, name in ipairs(modDB:List(nil, "Notable")) do
 		name =fuckCnNotable(name)
 		if not env.notableAdded[name] then
-			env.notableAdded[name] = true			
-			modDB:AddList(env.spec.tree.notableMap[name].modList)
+			env.notableAdded[name] = true	
+			if env.spec.allocNodes[env.spec.tree.notableMap[name].id]~=nil   then 
+				--print("已经点了")
+			else 			
+				--print("没点："..name)
+				--print_r(env.spec.tree.notableMap[name])
+				modDB:AddList(env.spec.tree.notableMap[name].modList)
+			end
 		end
 	end
 end

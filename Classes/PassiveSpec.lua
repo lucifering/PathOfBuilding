@@ -418,7 +418,8 @@ function PassiveSpecClass:BuildPathFromNode(root)
 		o = o + 1
 		local curDist = node.pathDist + 1
 		-- Iterate through all nodes that are connected to this one
-		for _, other in ipairs(node.linked) do
+		if node.linked ~=nil then 
+			for _, other in ipairs(node.linked) do
 			-- Paths must obey two rules:
 			-- 1. They must not pass through class or ascendancy class start nodes (but they can start from such nodes)
 			-- 2. They cannot pass between different ascendancy classes or between an ascendancy class and the main tree
@@ -437,6 +438,8 @@ function PassiveSpecClass:BuildPathFromNode(root)
 				i = i + 1
 			end
 		end
+		end 
+		
 	end
 	
 end
@@ -473,7 +476,8 @@ function PassiveSpecClass:BuildAllDependsAndPaths()
 		node.visited = true
 
 		local anyStartFound = (node.type == "ClassStart" or node.type == "AscendClassStart")
-		for _, other in ipairs(node.linked) do
+		if node.linked ~= nil then 
+				for _, other in ipairs(node.linked) do
 			if other.alloc and not isValueInArray(node.depends, other) then
 				-- The other node is allocated and isn't already dependant on this node, so try and find a path to a start node through it
 				if other.type == "ClassStart" or other.type == "AscendClassStart" then
@@ -498,11 +502,14 @@ function PassiveSpecClass:BuildAllDependsAndPaths()
 				end
 			end
 		end
+		end 
+	
 		node.visited = false
 		if not anyStartFound then
 			-- No start nodes were found through ANY nodes
 			-- Therefore this node and all nodes depending on it are orphans and should be pruned
-			for _, depNode in ipairs(node.depends) do
+			if node.depends ~= nil then 
+				for _, depNode in ipairs(node.depends) do
 				local prune = true
 				for nodeId, itemId in pairs(self.jewels) do
 					if self.allocNodes[nodeId] and self.nodes[nodeId].nodesInRadius[1][depNode.id] then
@@ -519,6 +526,8 @@ function PassiveSpecClass:BuildAllDependsAndPaths()
 					self.allocNodes[depNode.id] = nil
 				end
 			end
+			end 
+			
 		end
 	end
 

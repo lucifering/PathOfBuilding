@@ -259,10 +259,15 @@ for _, targetVersion in ipairs(targetVersionList) do
 	verData.essences = dataModule("Essence")
 	verData.delve = dataModule("ModDelve")
 	verData.incursion = dataModule("ModIncursion")
+	
+	
+	
 
 	--永恒珠宝
 	if targetVersion ~= "2_6" then
 		verData.timelessJewelKeystone = dataModule("TimelessJewel/TimelessJewelKeystone",targetVersion)
+		
+		verData.blightPassives= dataModule("BlightPassives",targetVersion)
 	end
 	-- Load skills
 	verData.skills = { }

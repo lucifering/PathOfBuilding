@@ -6762,10 +6762,10 @@ skills["SummonBoneGolem"] = {
 	},
 	statMap = {
 		["bone_golem_grants_minion_minimum_added_physical_damage"] = {
-			mod("MinionModifier", "LIST", { mod = mod("PhysicalMin", "BASE", nil) }, 0, 0, { type = "SkillType", skillType = SkillType.Golem, neg = true }, { type = "GlobalEffect", effectType = "Buff" }),
+			mod("MinionModifier", "LIST", { mod = mod("PhysicalMin", "BASE", nil) }, 0, 0, { type = "SkillType", skillType = SkillType.Golem, neg = true }, { type = "GlobalEffect", effectType = "Buff",effectName='召唤腐化魔像' }),
 		},
 		["bone_golem_grants_minion_maximum_added_physical_damage"] = {
-			mod("MinionModifier", "LIST", { mod = mod("PhysicalMax", "BASE", nil) }, 0, 0, { type = "SkillType", skillType = SkillType.Golem, neg = true }, { type = "GlobalEffect", effectType = "Buff" }),
+			mod("MinionModifier", "LIST", { mod = mod("PhysicalMax", "BASE", nil) }, 0, 0, { type = "SkillType", skillType = SkillType.Golem, neg = true }, { type = "GlobalEffect", effectType = "Buff" ,effectName='召唤腐化魔像'}),
 		},
 	},
 	baseFlags = {

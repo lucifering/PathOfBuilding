@@ -2608,8 +2608,18 @@ skills["SupportSummonElementalResistances"] = {
 		["support_minion_totem_resistance_elemental_damage_+%_final"] = {
 			mod("MinionModifier", "LIST", { mod = mod("ElementalDamage", "MORE", nil) }),
 		},
+		
+		
+		
 	},
 	baseMods = {
+	
+		 
+mod("FireResist", "BASE", -10, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "火焰曝露", effectCond = "ElementalArmyFireExposureType" }),
+mod("ColdResist", "BASE", -10, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "冰霜曝露", effectCond = "ElementalArmyColdExposureType" }),
+mod("LightningResist", "BASE", -10, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "闪电曝露", effectCond = "ElementalArmyLightningExposureType" }),
+
+		 
 	},
 	qualityStats = {
 		{ "minion_maximum_all_elemental_resistances_%", 0.1 },

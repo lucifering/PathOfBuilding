@@ -268,6 +268,11 @@ for _, targetVersion in ipairs(targetVersionList) do
 		verData.timelessJewelKeystone = dataModule("TimelessJewel/TimelessJewelKeystone",targetVersion)
 		
 		verData.blightPassives= dataModule("BlightPassives",targetVersion)
+		
+		table.sort(verData.blightPassives, function(a, b) 
+			return a.name < b.name
+		end)
+		
 	end
 	-- Load skills
 	verData.skills = { }

@@ -1120,6 +1120,8 @@ local modTagList = {
 	["近期内你若有击中敌人，"] = { tag = { type = "Condition", var = "HitRecently" } },	
 	["敌人身上每层穿刺效果可以为"] = { tag = { type = "Multiplier", var = "ImpaleStack", actor = "enemy" }},
 	["近期内你若穿刺过敌人，"] = { tag = { type = "Condition", var = "ImpaledRecently" } },
+	["使用【尊严】时，"] = { tag = { type = "Condition", var = "AffectedBy尊严" } },
+	["使用【尊严】时"] = { tag = { type = "Condition", var = "AffectedBy尊严" } },
 	["使用尊严时，"] = { tag = { type = "Condition", var = "AffectedBy尊严" } }, 
 	["使用尊严时"] = { tag = { type = "Condition", var = "AffectedBy尊严" } }, 
 	["如果敏捷高于智慧，则"] = { tag = { type = "Condition", var = "DexHigherThanInt" } }, 
@@ -1543,7 +1545,7 @@ local specialModList = {
 	:gsub("范围效果技能","aoe")
 	, key = "level", value = tonumber(num) }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,  
 	["所有物品上装备的【([^\\x00-\\xff]*)石】等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", { 
-	keyword = type_Cn
+	keywordList =  {"active_skill", type_Cn
 	:gsub("物理法术技能","physical_spell")
 	:gsub("混沌法术技能","chaos_spell")
 	:gsub("光环技能","aura")
@@ -1572,7 +1574,7 @@ local specialModList = {
 	:gsub("投射物技能","projectile")
 	:gsub("持续吟唱技能","channelling")
 	:gsub("范围效果技能","aoe")
-	, key = "level", value = tonumber(num) }) } end,  
+	}, key = "level", value = tonumber(num) }) } end,  
 	["所有法术技能石等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", { 
 	keywordList =  {"active_skill", "spell"}, key = "level", value = tonumber(num) }) } end,  
 	["所有([^\\x00-\\xff]*)法术技能石等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", { 
@@ -1604,8 +1606,10 @@ local specialModList = {
 	:gsub("持续吟唱","channelling")
 	:gsub("范围效果","aoe")
 	}, key = "level", value = tonumber(num) }) } end,  
+	 ["所有魔卫复苏技能石等级 %+(%d+)"] = function(num)  return { mod("GemProperty", "LIST",  { type = "SkillName", skillName =FuckSkillActivityCnName('魔卫复苏'), key = "level", value = num }) } end,
+	["所有召唤灵体技能石等级 %+(%d+)"] = function(num)  return { mod("GemProperty", "LIST",  { type = "SkillName", skillName =FuckSkillActivityCnName('召唤灵体'), key = "level", value = num }) } end,
 	["所有([^\\x00-\\xff]*)石等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", { 
-	keyword = type_Cn
+	keywordList =  {"active_skill",  type_Cn
 	:gsub("物理法术技能","physical_spell")
 	:gsub("混沌法术技能","chaos_spell")
 	:gsub("光环技能","aura")
@@ -1634,7 +1638,7 @@ local specialModList = {
 	:gsub("投射物技能","projectile")
 	:gsub("持续吟唱技能","channelling")
 	:gsub("范围效果技能","aoe")
-	, key = "level", value = tonumber(num) }) } end,  
+	}, key = "level", value = tonumber(num) }) } end,  
 	["此物品上装备的【([^\\x00-\\xff]*)石】品质 %+(%d+)%%"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", { 
 		keyword = type_Cn:gsub("光环技能","aura")
 		:gsub("绿色技能","dexterity")
@@ -2366,6 +2370,9 @@ local specialModList = {
 	["使用尊严时有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("DoubleDamageChance", "BASE", num,{ type = "Condition", var = "AffectedBy尊严" }) } end,
 	["使用尊严时，攻击击中时有 (%d+)%% 几率穿刺敌人"]= function(num) return { mod("ImpaleChance", "BASE", num,{ type = "Condition", var = "AffectedBy尊严" }) } end,
 	["使用尊严时，你造成的穿刺效果会额外持续 (%d+) 次击中"]= function(num) return { mod("ImpaleStacksMax", "BASE", num,{ type = "Condition", var = "AffectedBy尊严" }) } end,
+	["使用【尊严】时有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("DoubleDamageChance", "BASE", num,{ type = "Condition", var = "AffectedBy尊严" }) } end,
+	["使用【尊严】时，攻击击中有 (%d+)%% 几率穿刺敌人"]= function(num) return { mod("ImpaleChance", "BASE", num,{ type = "Condition", var = "AffectedBy尊严" }) } end,
+	["使用【尊严】时，你造成的穿刺效果会造成 (%d+) 次额外击中"]= function(num) return { mod("ImpaleStacksMax", "BASE", num,{ type = "Condition", var = "AffectedBy尊严" }) } end,
 	["技能效果持续时间延长 ([%+%-]?%d+)%%"]= function(num) return {  mod("Duration", "INC", num)  } end, 
 	["技能效果持续时间缩短 ([%+%-]?%d+)%%"]= function(num) return {  mod("Duration", "INC", -num)  } end, 
 	["对燃烧的敌人附加 (%d+) %- (%d+) 火焰伤害"]= function(_,num1,num2) return { 	
@@ -2910,7 +2917,10 @@ local specialModList = {
 	["近期内每引爆一个地雷，暴击几率提高 (%d+)%%，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("CritChance", "INC", tonumber(num1), { type = "Multiplier", var = "MineDetonatedRecently", limit = tonumber(limit), limitTotal = true })   } end, 
 	["近期内每引爆一个地雷，([%+%-]?%d+)%% 暴击伤害加成，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("CritMultiplier", "BASE", tonumber(num1), { type = "Multiplier", var = "MineDetonatedRecently", limit = tonumber(limit), limitTotal = true })   } end, 
 	["召唤飞掠者的魔力保留降低 (%d+)%%"] = function(num) return {  mod("ManaReserved", "INC", -num,{ type = "SkillId", skillId = "Skitterbots" })  } end, 
-	["分配(.+)"] =  function(_,passive_name) return {  mod("Notable", "LIST",passive_name)  } end, 
+	["分配(.+)"] =  function(_, passive) return { mod("GrantedPassive", "LIST", passive) } end,
+	["躯体幻化"] = { flag("TransfigurationOfBody") },
+		["心灵幻化"] = { flag("TransfigurationOfMind") },
+		["灵魂幻化"] = { flag("TransfigurationOfSoul") },
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

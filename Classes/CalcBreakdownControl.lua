@@ -387,7 +387,7 @@ tooltip:AddLine(16, "来自 "..sourceType..":")
 			for _, tag in ipairs(row.mod) do
 				local desc
 				if tag.type == "Condition" or tag.type == "ActorCondition" then
-					desc = (tag.actor and (tag.actor:sub(1,1):upper()..tag.actor:sub(2).." ") or "").."Condition: "..(tag.neg and "Not " or "")..self:FormatVarNameOrList(tag.var, tag.varList)
+					desc = (tag.actor and (tag.actor:sub(1,1):upper()..tag.actor:sub(2).." ") or "").."状态处于: "..(tag.neg and "Not " or "")..self:FormatVarNameOrList(tag.var, tag.varList)
 				elseif tag.type == "Multiplier" then
 				--	print('-->>baseVal='..baseVal)
 					local base = tag.base and (self:FormatModBase(row.mod, tag.base).."+ "..math.abs(row.mod.value).." ") or baseVal
@@ -398,23 +398,23 @@ tooltip:AddLine(16, "来自 "..sourceType..":")
 					desc = base.."per "..(tag.div or 1).." "..self:FormatVarNameOrList(tag.stat, tag.statList)
 					baseVal = ""
 				elseif tag.type == "MultiplierThreshold" or tag.type == "StatThreshold" then
-					desc = "If "..self:FormatVarNameOrList(tag.var or tag.stat, tag.varList or tag.statList)..(tag.upper and " <= " or " >= ")..(tag.threshold or self:FormatModName(tag.thresholdVar or tag.thresholdStat))
+					desc = "如果 "..self:FormatVarNameOrList(tag.var or tag.stat, tag.varList or tag.statList)..(tag.upper and " <= " or " >= ")..(tag.threshold or self:FormatModName(tag.thresholdVar or tag.thresholdStat))
 				elseif tag.type == "SkillName" then
-					desc = "Skill: "..tag.skillName
+					desc = "技能: "..(tag.skillNameList and table.concat(tag.skillNameList, "/") or tag.skillName)
 				elseif tag.type == "SkillId" then
-					desc = "Skill: "..build.data.skills[tag.skillId].name
+					desc = "技能: "..build.data.skills[tag.skillId].name
 				elseif tag.type == "SkillType" then
 					for name, type in pairs(SkillType) do
 						if type == tag.skillType then
-							desc = "Skill type: "..(tag.neg and "Not " or "")..self:FormatModName(name)
+							desc = "技能类型: "..(tag.neg and "Not " or "")..self:FormatModName(name)
 							break
 						end
 					end
 					if not desc then
-						desc = "Skill type: "..(tag.neg and "Not " or "").."?"
+						desc = "技能类型: "..(tag.neg and "Not " or "").."?"
 					end
 				elseif tag.type == "SlotNumber" then
-					desc = "When in slot #"..tag.num
+					desc = "插槽部位 #"..tag.num
 				elseif tag.type == "GlobalEffect" then
 					desc = self:FormatModName(tag.effectType)
 				elseif tag.type == "Limit" then

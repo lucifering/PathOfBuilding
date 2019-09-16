@@ -553,9 +553,12 @@ activeEffect.grantedEffectLevel = activeGrantedEffect.levels[activeEffect.level]
 		if effectTag and effectTag.modCond and not skillModList:GetCondition(effectTag.modCond, activeSkill.skillCfg) then
 			t_remove(skillModList, i)
 		elseif effectType then
+		
+			
 			local buff
 			for _, skillBuff in ipairs(activeSkill.buffList) do
 				if skillBuff.type == effectType and skillBuff.name == effectName then
+					
 					buff = skillBuff
 					break
 				end
@@ -585,15 +588,19 @@ activeEffect.grantedEffectLevel = activeGrantedEffect.levels[activeEffect.level]
 			local match = false
 			for d = 1, #buff.modList do
 				local destMod = buff.modList[d]
-				if modLib.compareModParams(skillModList[i], destMod) and (destMod.type == "BASE" or destMod.type == "INC") then
+				 				
+				
+				if modLib.compareModParams(skillModList[i], destMod) and (destMod.type == "BASE" or destMod.type == "INC" ) then
 					destMod = copyTable(destMod)
 					destMod.value = destMod.value + skillModList[i].value
 					buff.modList[d] = destMod
 					match = true
+					
 					break
 				end
 			end
-			if not match then
+			if not match then			
+		 
 				t_insert(buff.modList, skillModList[i])
 			end
 			t_remove(skillModList, i)

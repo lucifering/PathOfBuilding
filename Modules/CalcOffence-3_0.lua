@@ -292,7 +292,16 @@ local function runSkillFunc(name)
 			end
 		end
 	end
-
+	if skillModList:Flag(nil, "TransfigurationOfBody") then
+		skillModList:NewMod("Damage", "INC", m_floor(skillModList:Sum("INC", nil, "Life") * 0.3), "躯体幻化", ModFlag.Attack)
+	end
+	if skillModList:Flag(nil, "TransfigurationOfMind") then
+		skillModList:NewMod("Damage", "INC", m_floor(skillModList:Sum("INC", nil, "Mana") * 0.3), "心灵幻化")
+	end
+	if skillModList:Flag(nil, "TransfigurationOfSoul") then
+		skillModList:NewMod("Damage", "INC", m_floor(skillModList:Sum("INC", nil, "EnergyShield") * 0.3), "灵魂幻化", ModFlag.Spell)
+	end
+	
 	local isAttack = skillFlags.attack
 	runSkillFunc("preSkillTypeFunc")
 	-- Calculate skill type stats

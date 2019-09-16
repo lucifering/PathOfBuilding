@@ -331,7 +331,7 @@ function calcs.initEnv(build, mode, override)
 			end
 		end
 	else
-		nodes = env.spec.allocNodes
+		nodes = copyTable(env.spec.allocNodes, true)
 	end
 	env.allocNodes = nodes
 
@@ -606,7 +606,16 @@ elseif item.rarity == "魔法" then
 	else
 		env.player.weaponData2 = env.player.itemList["Weapon 2"] and env.player.itemList["Weapon 2"].weaponData and env.player.itemList["Weapon 2"].weaponData[2] or { }
 	end
-
+	-- Add granted passives
+	env.grantedPassives = { }
+	for _, passive in pairs(env.modDB:List(nil, "GrantedPassive")) do
+		local node = env.spec.tree.notableMap[passive]
+		if node then
+			nodes[node.id] = node
+			env.grantedPassives[node.id] = true
+		end
+	end
+	
 	-- Merge modifiers for allocated passives
 	env.modDB:AddList(calcs.buildModListForNodeList(env, nodes, true))
 

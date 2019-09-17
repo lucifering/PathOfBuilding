@@ -5326,3 +5326,75 @@ name = "怒焰奔腾",
 	},
 }
 
+
+
+skills["BreachLightningOrbsRefinery"] = {
+	name = "裂痕炼油厂闪电球",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 0.75,
+	incrementalEffectiveness = 0.043999999761581,
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 0.75,
+	baseFlags = {
+		spell = true,
+		duration = true,
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_lightning_damage",
+		"spell_maximum_base_lightning_damage",
+		"base_skill_effect_duration",
+		"spell_maximum_action_distance_+%",
+		"monster_penalty_against_minions_damage_+%_final_vs_player_minions",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 0.76999998092651, 1.4299999475479, 5000, 0, 0, critChance = 5, cooldown = 4, levelRequirement = 63, statInterpolation = { 3, 3, 1, 1, 1, }, },
+	},
+}
+skills["CityStalkerStaticStrike"] = {
+	name = "充能打击",
+	hidden = true,
+	color = 1,
+	description = "Strike your enemies with a melee weapon, building up static energy on you. This energy damages enemies around you when it expires, dealing damage that cannot be evaded or dodged. ",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.LightningSkill] = true, },
+	weaponTypes = {
+		["One Handed Mace"] = true,
+		["Sceptre"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["Two Handed Sword"] = true,
+		["Dagger"] = true,
+		["Staff"] = true,
+		["Two Handed Axe"] = true,
+		["Two Handed Mace"] = true,
+		["One Handed Axe"] = true,
+		["Claw"] = true,
+		["One Handed Sword"] = true,
+	},
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	
+	baseFlags = {
+		attack = true,
+		melee = true,
+		duration = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"skill_physical_damage_%_to_convert_to_lightning",
+		"base_skill_effect_duration",
+		"static_strike_explosion_damage_+%_final",
+	},
+	levels = {
+		[1] = { 60, 1000, 0, baseMultiplier = 1.25, cooldown = 3.5, levelRequirement = 1, statInterpolation = { 1, 1, 1, }, },
+	},
+}

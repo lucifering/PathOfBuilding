@@ -1267,7 +1267,7 @@ name = "炼狱军团",
 -- adding
 
 skills["SlavedriverFlameWhip"] = {
-	name = "闪电鞭笞",
+	name = "怒焰奔腾",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 2.5,

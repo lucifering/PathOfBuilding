@@ -1799,6 +1799,8 @@ local specialModList = {
 	["火焰、冰霜、闪电伤害的 ([%d%.]+)%% 转化为生命偷取"] = function(num) return {  mod("ElementalDamageLifeLeech", "BASE", num )  } end, 
 	["元素伤害的 ([%d%.]+)%% 转化为生命偷取"] = function(num) return {  mod("ElementalDamageLifeLeech", "BASE", num )  } end, 
 	["近期内你若使用了召唤生物技能，则召唤生物伤害提高 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num, { type = "Condition", var = "UsedMinionSkillRecently" } )})  } end, 
+	["近期内你若使用了召唤生物技能，则召唤生物的伤害提高 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num, { type = "Condition", var = "UsedMinionSkillRecently" } )})  } end, 
+	["近期内你若使用了召唤生物技能，则召唤生物的范围效果扩大 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("AreaOfEffect", "INC", num, { type = "Condition", var = "UsedMinionSkillRecently" } )})  } end, 
 	["你施放的光环每秒回复你和周围友军 ([%d%.]+)%% 最大生命"]= function(num) return {  mod("ExtraAura", "LIST", { mod =  mod("LifeRegenPercent", "BASE", num) }) } end, 
 	["(%d+)%% 的伤害优先从魔力扣除"]= function(num) return {  mod("DamageTakenFromManaBeforeLife", "BASE", num)  } end,
 	["获得等同 (%d+)%% 魔力的额外能量护盾"]= function(num) return {  mod("ManaGainAsEnergyShield", "BASE", num)  } end, 

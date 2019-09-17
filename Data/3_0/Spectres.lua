@@ -2604,4 +2604,30 @@ name = "漆黑吟唱者",
 
 
  
+
+--Undying Operator
+ 
+
+minions["Metadata/Monsters/Undying/CityStalkerMaleWorkerLightning2_"] = {
+	name = "不朽操作者",
+	life = 1,
+	armour = 0.3,
+	fireResist = 20,
+	coldResist = 20,
+	lightningResist = 20,
+	chaosResist = 0,
+	damage = 0.75,
+	damageSpread = 0.2,
+	attackTime = 1.245,
+	attackRange = 7,
+	accuracy = 1,
+	weaponType1 = "One Handed Sword",
+	skillList = {
+		"Melee",
+		"BreachLightningOrbsRefinery",
+		"CityStalkerStaticStrike",
+	},
+	modList = {
+	},
+}
  

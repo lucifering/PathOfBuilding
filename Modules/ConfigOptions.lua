@@ -433,6 +433,15 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 { var = "buffFortify", type = "check", label = "你是否处于【护体】状态?", ifCond = "Fortify", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:Fortify", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
+	
+{ var = "buffElusive", type = "check", label = "你是否处于【灵巧】状态?", tooltip="这个会启用【灵巧】buff (\n·20% 几率躲避攻击伤害 \n·20% 几率躲避法术伤害\n·移动速度提高 40%)\n灵巧效果会随着时间不短削弱，每秒降低 20%\n在已经获得【灵巧】的情况下，无法再次获得【灵巧】)",ifCond = "Elusive", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:Elusive", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
+{ var = "multiplierBuffElusiveHasLasted", type = "count", label = "【灵巧】持续几秒了:",ifCond = "Elusive", tooltip="灵巧效果会随着时间不短削弱，每秒降低 20%\n在已经获得【灵巧】的情况下，无法再次获得【灵巧】",apply = function(val, modList, enemyModList)
+		modList:NewMod("ElusiveEffectOnSelf", "INC", val*(-20), "Config")
+	end },
+	
+	
 { var = "buffTailwind", type = "check", label = "你是否有【提速尾流】?", tooltip = "当你处于【提速尾流】状态时干啥干啥的词缀生效,\n同时也会启用【提速尾流】buff本身. (加速 10%)", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:Tailwind", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },

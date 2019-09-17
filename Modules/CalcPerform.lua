@@ -393,6 +393,18 @@ local function doActorMisc(env, actor)
 modDB:NewMod("DamageTakenWhenHit", "INC", -effect, "护体")
 			modDB.multipliers["BuffOnSelf"] = (modDB.multipliers["BuffOnSelf"] or 0) + 1
 		end
+		if modDB:Flag(nil, "Elusive") then
+			local moveEffect = m_floor(40 * (1 + modDB:Sum("INC", nil, "ElusiveEffectOnSelf", "BuffEffectOnSelf") / 100))
+			local spellDodgeChanceEffect = m_floor(20 * (1 + modDB:Sum("INC", nil, "ElusiveEffectOnSelf", "BuffEffectOnSelf") / 100))
+			local dodgeChanceEffect = m_floor(20 * (1 + modDB:Sum("INC", nil, "ElusiveEffectOnSelf", "BuffEffectOnSelf") / 100))
+			
+modDB:NewMod("MovementSpeed", "INC", moveEffect, "灵巧")
+modDB:NewMod("SpellDodgeChance", "BASE", spellDodgeChanceEffect, "灵巧")
+modDB:NewMod("AttackDodgeChance", "BASE", dodgeChanceEffect, "灵巧")
+
+
+			modDB.multipliers["BuffOnSelf"] = (modDB.multipliers["BuffOnSelf"] or 0) + 1
+		end
 		if modDB:Flag(nil, "Onslaught") then
 			local effect = m_floor(20 * (1 + modDB:Sum("INC", nil, "OnslaughtEffect", "BuffEffectOnSelf") / 100))
 modDB:NewMod("Speed", "INC", effect, "猛攻")

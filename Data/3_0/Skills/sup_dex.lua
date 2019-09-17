@@ -1812,6 +1812,25 @@ skills["SupportPuncturingWeapon"] = {
 	excludeSkillTypes = { SkillType.CreatesMinion, },
 	ignoreMinionTypes = true,
 	statDescriptionScope = "gem_stat_descriptions",
+	statMap = {	
+		["gain_elusive_on_crit_%_chance"] = {
+			 flag("Elusive"),
+			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "Elusive" }) 
+		},
+		
+		["additional_critical_strike_chance_permyriad_while_affected_by_elusive"] = {
+			  mod("CritChance", "BASE", nil, 0, 0,{ type = "Condition", var = "Elusive" }),
+				div = 100,
+		},
+		
+		["nightblade_elusive_grants_critical_strike_multiplier_+_to_supported_skills"] = {
+			  mod("CritMultiplier", "BASE", nil, 0, 0,{ type = "Condition", var = "Elusive" }),
+				
+		},
+		
+		
+		
+	},
 	baseMods = {
 	},
 	qualityStats = {

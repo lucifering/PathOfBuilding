@@ -271,6 +271,7 @@ local modNameList = {
 	["持续点燃伤害加成"] = { "DotMultiplier", keywordFlags = KeywordFlag.Ignite }, 
 	["光环技能范围效果"] = { "AreaOfEffect", keywordFlags = KeywordFlag.Aura }, 
 	["暴击加成"] = {"CritMultiplier", ModFlag.Hit}, 
+	["【灵巧】效果"] = "ElusiveEffectOnSelf",
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -1007,6 +1008,7 @@ local modTagList = {
 	["每有 (%d+) 点力量，"] = function(num) return { tag = { type = "PerStat", stat = "Str", div = num } } end, 
 	["近期若打出过暴击，则"] = { tag = { type = "Condition", var = "CritRecently" } },
 	["近期内你若被击中过，则"] = { tag = { type = "Condition", var = "BeenHitRecently" } },
+	["近期内你若被击中并受到伤害，则"] = { tag = { type = "Condition", var = "BeenHitRecently" } },
 	["近期内你若有格挡，则"] = { tag = { type = "Condition", var = "BlockedRecently" } }, 
 	["近期内你若有过格挡，则"] = { tag = { type = "Condition", var = "BlockedRecently" } }, 
 	["近期内你若有过格挡，"] = { tag = { type = "Condition", var = "BlockedRecently" } }, 
@@ -1078,6 +1080,7 @@ local modTagList = {
 	["每有一个耐力球，"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
 	["每有一个暴击球，"] = { tag = { type = "Multiplier", var = "PowerCharge" } }, 
 	["每有 1 个暴击球，"] = { tag = { type = "Multiplier", var = "PowerCharge" } }, 
+	["每个暴击球使你的"] = { tag = { type = "Multiplier", var = "PowerCharge" } }, 
 	["每有一个狂怒球，便"] = { tag = { type = "Multiplier", var = "FrenzyCharge" } }, 
 	["每有一个耐力球，便"] = { tag = { type = "Multiplier", var = "EnduranceCharge" } }, 
 	["每有一个暴击球，便"] = { tag = { type = "Multiplier", var = "PowerCharge" } }, 
@@ -1142,6 +1145,7 @@ local modTagList = {
 	["过去 8 秒你若有造成暴击，"] = { tag = { type = "Condition", var = "CritInPast8Sec" } },
 	["若近期有引爆过地雷，则"] = { tag = { type = "Condition", var = "DetonatedMinesRecently" } },
 	["对燃烧的敌人，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Burning" }, keywordFlags = KeywordFlag.Hit },
+	 ["处于【灵巧】状态时，"] = { tag = { type = "Condition", var = "Elusive" } }, 
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -2919,10 +2923,15 @@ local specialModList = {
 	["近期内每引爆一个地雷，暴击几率提高 (%d+)%%，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("CritChance", "INC", tonumber(num1), { type = "Multiplier", var = "MineDetonatedRecently", limit = tonumber(limit), limitTotal = true })   } end, 
 	["近期内每引爆一个地雷，([%+%-]?%d+)%% 暴击伤害加成，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("CritMultiplier", "BASE", tonumber(num1), { type = "Multiplier", var = "MineDetonatedRecently", limit = tonumber(limit), limitTotal = true })   } end, 
 	["召唤飞掠者的魔力保留降低 (%d+)%%"] = function(num) return {  mod("ManaReserved", "INC", -num,{ type = "SkillId", skillId = "Skitterbots" })  } end, 
+	["配置 (.+)"] =  function(_, passive) return { mod("GrantedPassive", "LIST", passive) } end,
 	["分配(.+)"] =  function(_, passive) return { mod("GrantedPassive", "LIST", passive) } end,
 	["躯体幻化"] = { flag("TransfigurationOfBody") },
 		["心灵幻化"] = { flag("TransfigurationOfMind") },
 		["灵魂幻化"] = { flag("TransfigurationOfSoul") },
+	["暴击时，有 (%d+)%% 几率获得【灵巧】状态"]= function(num) return { 
+			flag("Elusive"),
+			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "Elusive" }) 
+	    } end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

@@ -1115,5 +1115,10 @@ return {
 	mod("Damage", "INC", nil, 0, 0, { type = "SkillType", skillType = SkillType.Channelled }),
 },
 
+["elusive_effect_+%"] = {
+	mod("ElusiveEffectOnSelf", "INC", nil),
+},
+
+
 
 }

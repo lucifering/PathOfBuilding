@@ -2608,16 +2608,21 @@ skills["SupportSummonElementalResistances"] = {
 		["support_minion_totem_resistance_elemental_damage_+%_final"] = {
 			mod("MinionModifier", "LIST", { mod = mod("ElementalDamage", "MORE", nil) }),
 		},
-		
-		
+		[ "purge_expose_resist_%_matching_highest_element_damage"] = {
+			 
+mod("FireResist", "BASE", -10, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "火焰曝露", modCond = "ElementalArmyFireExposureTypemodCond" }),
+
+mod("ColdResist", "BASE", -10, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "冰霜曝露", modCond = "ElementalArmyColdExposureTypemodCond" }),
+
+mod("LightningResist", "BASE", -10, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "闪电曝露", modCond = "ElementalArmyLightningExposureTypemodCond" })
+		},
 		
 	},
 	baseMods = {
 	
-		 
-mod("FireResist", "BASE", -10, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "火焰曝露", effectCond = "ElementalArmyFireExposureType" }),
-mod("ColdResist", "BASE", -10, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "冰霜曝露", effectCond = "ElementalArmyColdExposureType" }),
-mod("LightningResist", "BASE", -10, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "闪电曝露", effectCond = "ElementalArmyLightningExposureType" }),
+			flag("Condition:ElementalArmyFireExposureTypemodCond", { type = "Condition", var = "ElementalArmyFireExposureType" }),
+			flag("Condition:ElementalArmyColdExposureTypemodCond", { type = "Condition", var = "ElementalArmyColdExposureType" }),
+			flag("Condition:ElementalArmyLightningExposureTypemodCond", { type = "Condition", var = "ElementalArmyLightningExposureType" }),
 
 		 
 	},
@@ -2629,6 +2634,7 @@ mod("LightningResist", "BASE", -10, 0, 0, { type = "GlobalEffect", effectType = 
 		"minion_maximum_all_elemental_resistances_%",
 		"support_minion_totem_resistance_elemental_damage_+%_final",
 		"minions_inflict_exposure_on_hit_%_chance",
+		"purge_expose_resist_%_matching_highest_element_damage",
 	},
 	levels = {
 		[1] = { 19, 0, 20, 100, manaMultiplier = 30, levelRequirement = 31, statInterpolation = { 1, 1, 1, 1, }, },

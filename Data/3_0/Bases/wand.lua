@@ -157,7 +157,9 @@ itemBases["亵渎法杖"] = {
 itemBases["召集法杖"] = {
 	type = "Wand",
 	socketLimit = 3,
-	tags = { default = true, weapon = true, onehand = true, wand = true, ranged = true, one_hand_weapon = true, not_for_sale = true, atlas_base_type = true, wandatlas1 = true, },
+	tags = { default = true, weapon = true, onehand = true, wand = true, ranged = true, one_hand_weapon = true, not_for_sale = true, atlas_base_type = true, wandatlas1 = true, 	
+	weapon_can_roll_minion_modifiers = true,
+	},
 	implicit = "可以附着召唤生物属性",
 	weapon = { PhysicalMin = 25, PhysicalMax = 46, CritChanceBase = 7, AttackRateBase = 1.4, Range = 120, },
 	req = { level = 72, int = 242, },

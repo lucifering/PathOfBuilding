@@ -201,7 +201,7 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 	end },
 	
 { label = "元素大军辅助:", ifSkill = "元素大军辅助" },
-	{ var = "ElementalArmyExposureType", type = "list", label = "曝露效果类型:", ifSkill = "元素大军辅助", list = {{val=0,label="无"},{val="Fire",label="火焰"},{val="Cold",label="冰霜"},{val="Lightning",label="闪电"}}, apply = function(val, modList, enemyModList)
+	{ var = "ElementalArmyExposureTypeTest1", type = "list", label = "曝露效果类型:", ifSkill = "元素大军辅助", list = {{val=0,label="无"},{val="Fire",label="火焰"},{val="Cold",label="冰霜"},{val="Lightning",label="闪电"}}, apply = function(val, modList, enemyModList)
 		if val == "Fire" then
 			modList:NewMod("Condition:ElementalArmyFireExposureType", "FLAG", true, "Config")
 		elseif val == "Cold" then

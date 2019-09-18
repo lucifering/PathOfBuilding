@@ -237,3 +237,59 @@ and type(grantedEffect.statMap[stat][1].value) ~= "table" and type(grantedEffect
 	end
 	return stats
 end 
+
+
+function calcLib.buildSkillInstanceStatsOnly(curLevel,actorLevel,grantedEffect)
+
+	
+	local stats = { }
+	 local level = grantedEffect.levels[curLevel]
+	 
+	local availableEffectiveness
+	 
+	
+	for index, stat in ipairs(grantedEffect.stats) do
+		local statValue 
+		if level.statInterpolation[index] == 3 then
+			-- Effectiveness interpolation
+			if not availableEffectiveness then
+				availableEffectiveness = 
+					(3.885209 + 0.360246 * (actorLevel - 1)) * grantedEffect.baseEffectiveness
+					* (1 + grantedEffect.incrementalEffectiveness) ^ (actorLevel - 1)
+			end
+			statValue = round(availableEffectiveness * level[index])
+		elseif level.statInterpolation[index] == 2 then
+			-- Linear interpolation; I'm actually just guessing how this works
+			local nextLevel = m_min(curLevel + 1, #grantedEffect.levels)
+			local nextReq = grantedEffect.levels[nextLevel].levelRequirement
+			local prevReq = grantedEffect.levels[nextLevel - 1].levelRequirement
+			local nextStat = grantedEffect.levels[nextLevel][index]
+			local prevStat = grantedEffect.levels[nextLevel - 1][index]
+			statValue = round(prevStat + (nextStat - prevStat) * (actorLevel - prevReq) / (nextReq - prevReq))
+		else
+			-- Static value
+			--print('【】》》'..stat)
+			
+			defaultValue=1
+			if grantedEffect.statMap and grantedEffect.statMap[stat] and grantedEffect.statMap[stat][1] 
+ and grantedEffect.statMap[stat][1].value~=nil   and 
+ type(grantedEffect.statMap[stat][1].value) == "table" and
+ grantedEffect.statMap[stat][1].value.mod~=nil and  grantedEffect.statMap[stat][1].value.mod.value
+			then 
+				defaultValue=grantedEffect.statMap[stat][1].value.mod.value				
+			end 
+			if defaultValue==1 and grantedEffect.statMap and grantedEffect.statMap[stat] and grantedEffect.statMap[stat][1] 
+and grantedEffect.statMap[stat][1].value~=nil  
+and type(grantedEffect.statMap[stat][1].value) ~= "table" and type(grantedEffect.statMap[stat][1].value) ~= "boolean" 
+			then 
+				 defaultValue=grantedEffect.statMap[stat][1].value
+				 --print("Found>:"..grantedEffect.statMap[stat][1].value)		
+			end 
+			
+			
+			statValue = level[index] or defaultValue
+		end
+		stats[stat] = (stats[stat] or 0) + statValue
+	end
+	return stats
+end 

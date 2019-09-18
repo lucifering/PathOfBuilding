@@ -104,7 +104,7 @@ end, "显示召唤物计算面板而非玩家的.")
 				self.build.buildFlag = true
 			end)
 		} },
-{ label = "内置幽魂数据", flag = "spectre", { controlName = "mainSkillMinionLibrary",
+{ label = "内置灵体数据", flag = "spectre", { controlName = "mainSkillMinionLibrary",
 control = new("ButtonControl", nil, 0, 0, 100, 16, "灵体管理...", function()
 				self.build:OpenSpectreLibrary()
 			end)
@@ -112,11 +112,129 @@ control = new("ButtonControl", nil, 0, 0, 100, 16, "灵体管理...", function()
 { label = "召唤生物技能", flag = "haveMinion", { controlName = "mainSkillMinionSkill",
 			control = new("DropDownControl", nil, 0, 0, 200, 16, nil, function(index, value)
 				local mainSocketGroup = self.build.skillsTab.socketGroupList[self.input.skill_number]
-				local srcInstance = mainSocketGroup.displaySkillListCalcs[mainSocketGroup.mainActiveSkillCalcs].activeEffect.srcInstance
+				local srcInstance = mainSocketGroup.displaySkillListCalcs[mainSocketGroup.mainActiveSkillCalcs].activeEffect.srcInstance				
 				srcInstance.skillMinionSkillCalcs = index
 				self:AddUndoState()
 				self.build.buildFlag = true
-			end)
+			end){
+				tooltipFunc = function(tooltip, mode, index, value)
+				 
+				local mainSkill=self.calcsEnv.minion.mainSkill
+					--print_r(mainSkill.skillCfg)
+					 
+				
+				if mainSkill and mainSkill.skillCfg and  mainSkill.skillCfg.skillGrantedEffect then  
+				
+					local grantedEffect= mainSkill.skillCfg.skillGrantedEffect
+					  
+						if tooltip:CheckForUpdate(grantedEffect.id, self.build.outputRevision)  then 
+						 tooltip.center = true
+						 tooltip.color = colorCodes.GEM
+						
+						 tooltip:AddLine(20, colorCodes.GEM..grantedEffect.name)
+						 tooltip:AddSeparator(10)
+						 tooltip:AddLine(16, "^x7F7F7F".."技能ID: "..grantedEffect.id)
+						 
+						 local  curSkillLevel=0;
+						 local curlevelRequirement=0;
+							local curManaCost=0;
+							local curCooldown=0;
+							local actorLevel=self.calcsEnv.minion.level;
+							local curCritChance=0.0;
+							local curDamageEffectiveness=0.0;
+							local curBaseMultiplier=0.0;
+						 tooltip:AddLine(16, "^x7F7F7F".."召唤生物等级: "..actorLevel)
+						 
+						 if grantedEffect.levels then 
+							
+							
+							 
+							for levelitem=1, #grantedEffect.levels do
+								 
+								if  grantedEffect.levels[levelitem].levelRequirement						 
+								then 
+									if grantedEffect.levels[levelitem].levelRequirement  > self.calcsEnv.minion.level then
+										break;
+									else
+										curSkillLevel=levelitem
+										curlevelRequirement=grantedEffect.levels[levelitem].levelRequirement
+										curManaCost=grantedEffect.levels[levelitem].manaCost
+										curCooldown=grantedEffect.levels[levelitem].cooldown
+										curCritChance=grantedEffect.levels[levelitem].critChance
+										curDamageEffectiveness=grantedEffect.levels[levelitem].damageEffectiveness
+										curBaseMultiplier=grantedEffect.levels[levelitem].baseMultiplier
+										
+									end 
+								
+								end 
+							end
+							tooltip:AddLine(16, "^x7F7F7F".."技能等级: "..curSkillLevel)
+							--tooltip:AddLine(16, "^x7F7F7F".."需求等级: "..curlevelRequirement)
+							if curManaCost and  curManaCost >0 then 
+								tooltip:AddLine(16, "^x7F7F7F".."魔力消耗: "..curManaCost)
+							end 
+							if curCooldown and curCooldown >0 then 
+								tooltip:AddLine(16, "^x7F7F7F".."冷却时间: "..curCooldown.." 秒")
+							end 
+							
+						 
+						 end 
+						 if grantedEffect.castTime and grantedEffect.castTime > 0 then
+							tooltip:AddLine(16, string.format("^x7F7F7F施放时间: ^7%.2f 秒", grantedEffect.castTime))
+						 else
+							tooltip:AddLine(16, "^x7F7F7F施放时间: ^7瞬发")
+						 end
+						 if curCritChance and  curCritChance>0 then 
+							tooltip:AddLine(16, "^x7F7F7F".."暴击几率: "..curCritChance.."%")
+						 end 
+						 if curDamageEffectiveness and curDamageEffectiveness>0 then 
+							tooltip:AddLine(16, "^x7F7F7F".."伤害效用: "..curDamageEffectiveness*100 .."%")
+						 end 
+						 if curBaseMultiplier and curBaseMultiplier>0 then 
+							tooltip:AddLine(16, "^x7F7F7F".."基础加成: "..curBaseMultiplier*100 .."%")
+						 end 
+						 
+						 
+						 tooltip:AddLine(16, "^x7F7F7F需求 Level "..curlevelRequirement)
+						 tooltip:AddSeparator(10)
+						 if grantedEffect.description then
+							local wrap = main:WrapString(grantedEffect.description, 16, m_max(DrawStringWidth(16, "VAR", grantedEffect.id), 400))
+							for _, line in ipairs(wrap) do
+								tooltip:AddLine(16, colorCodes.GEM..line)
+							end
+						end
+						if self.build.data.describeStats then
+							tooltip:AddSeparator(10)
+							local stats =calcLib.buildSkillInstanceStatsOnly(curSkillLevel,actorLevel, grantedEffect) 
+							if grantedEffect.levels[curSkillLevel] and grantedEffect.levels[curSkillLevel].baseMultiplier then
+								stats["active_skill_attack_damage_final_permyriad"] = (grantedEffect.levels[curSkillLevel].baseMultiplier - 1) * 10000
+							end
+							local mergeStatsFrom=false
+							if mergeStatsFrom then
+								for stat, val in pairs(calcLib.buildSkillInstanceStatsOnly(curSkillLevel,actorLevel, mergeStatsFrom)) do
+									stats[stat] = (stats[stat] or 0) + val
+								end
+								
+							end
+							local descriptions = self.build.data.describeStats(stats, grantedEffect.statDescriptionScope )
+							
+							 
+							
+							for _, line in ipairs(descriptions) do
+								tooltip:AddLine(16, colorCodes.MAGIC..line)
+							end
+						end
+						
+			
+						 
+					end 
+				end 
+				
+				
+				
+					
+				end
+			}
 		} },
 { label = "计算模式", { 
 			controlName = "mode", 

@@ -75,7 +75,7 @@ end
 
 function SharedItemListClass:OnSelDelete(index, verItem)
 	local item = verItem[self.itemsTab.build.targetVersion]	
-	main:OpenConfirmPopup("Delete Item", "Are you sure you want to remove '"..item.name.."' from the shared item list?", "Delete", function()
+	main:OpenConfirmPopup("删除物品", "确定要从共享物品栏删除 '"..item.name.."' 吗?", "删除", function()
 		t_remove(self.list, index)
 		self.selIndex = nil
 		self.selValue = nil

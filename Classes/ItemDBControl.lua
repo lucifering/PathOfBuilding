@@ -239,7 +239,8 @@ function ItemDBClass:Draw(viewPort)
 end
 
 function ItemDBClass:GetRowValue(column, index, item)
-	if column == 1 then
+	
+	if column == 1 and item then
 		return colorCodes[item.rarity] .. item.name
 	end
 end

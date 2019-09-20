@@ -2165,6 +2165,7 @@ local specialModList = {
 	["魔像的增益效果提高 (%d+)%%"] = function(num) return {  mod("BuffEffect", "INC", num, { type = "SkillType", skillType = SkillType.Golem })  } end,
 	["【召唤魔像】的冷却速度提高 (%d+)%%"]  = function(num) return { mod("MinionModifier", "LIST", { mod = mod("CooldownRecovery", "INC",num) },{ type = "SkillType", skillType = SkillType.Golem })  } end,
 	["魔像每秒回复 ([%d%.]+)%% 最大生命"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("LifeRegenPercent", "BASE", num) },{ type = "SkillType", skillType = SkillType.Golem })  } end,
+	["召唤的魔像每秒回复 ([%d%.]+)%% 生命"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("LifeRegenPercent", "BASE", num) },{ type = "SkillType", skillType = SkillType.Golem })  } end,
 	["若你有 3 个起源天赋珠宝，召唤魔像的数量 %+(%d)"] = function(num) return { mod("ActiveGolemLimit", "BASE", num, { type = "MultiplierThreshold", var = "PrimordialItem", threshold = 3 }) } end,
 	["你身上的每层中毒状态使你获得 %+(%d+)%% 混沌抗性"]= function(num) return {  mod("ChaosResist", "BASE", num, { type = "Multiplier", var = "PoisonStack" } )  } end,
 	["【苦痛爬行者】的伤害提高 (%d+)%%"]= function(num) return {  mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) }, { type = "SkillId", skillId = "HeraldOfAgony" })   } end,
@@ -3301,6 +3302,7 @@ minus = -tonumber(minus)
 		mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num, { type = "ActorCondition", actor = "parent", var = "HaveColdGolem" }) }, { type = "SkillType", skillType = SkillType.Golem }),
 		mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num, { type = "ActorCondition", actor = "parent", var = "HaveFireGolem" }) }, { type = "SkillType", skillType = SkillType.Golem }),
 		mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num, { type = "ActorCondition", actor = "parent", var = "HaveChaosGolem" }) }, { type = "SkillType", skillType = SkillType.Golem }),
+		mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num, { type = "ActorCondition", actor = "parent", var = "HaveCarrionGolem" }) }, { type = "SkillType", skillType = SkillType.Golem }),
 	} end,
 	["最多可同时拥有额外 (%d) 个魔像"] = function(num) return { mod("ActiveGolemLimit", "BASE", num) } end, --备注：can summon up to (%d) additional golems? at a time
 	["若你有 3 个起源天赋珠宝，可以额外召唤 (%d) 个魔像"] = function(num) return { mod("ActiveGolemLimit", "BASE", num, { type = "MultiplierThreshold", var = "PrimordialItem", threshold = 3 }) } end, --备注：if you have 3 primordial jewels, can summon up to (%d) additional golems? at a time
@@ -3882,6 +3884,13 @@ local jewelThresholdFuncs = {
 	["范围内含的智慧和敏捷总计 40 点时，【元素打击】的火焰伤害降低 50%"] = getThreshold({"Int","Dex"}, "FireDamage", "MORE", -50, { type = "SkillName", skillName = "元素打击" }), --备注：With 40 total Intelligence and Dexterity in Radius, Elemental Hit deals 50% less Fire Damage
 	["范围内含的力量和智慧总计 40 点时，【元素打击】的冰冷伤害降低 50%"] = getThreshold({"Str","Int"}, "ColdDamage", "MORE", -50, { type = "SkillName", skillName = "元素打击" }), --备注：With 40 total Strength and Intelligence in Radius, Elemental Hit deals 50% less Cold Damage
 	["范围内含的敏捷和力量总计 40 点时，【元素打击】的闪电伤害降低 50%"] = getThreshold({"Dex","Str"}, "LightningDamage", "MORE", -50, { type = "SkillName", skillName = "元素打击" }), --备注：With 40 total Dexterity and Strength in Radius, Elemental Hit deals 50% less Lightning Damage
+	
+	
+	["范围内智慧和敏捷总计 40 点时，【元素打击】和【狂野打击】的总闪电伤害额外降低 50%"] =getThreshold({"Dex","Str"}, "LightningDamage", "MORE", -50, { type = "SkillName", skillNameList = { "元素打击", "野性打击" }}),
+	["范围内智慧和敏捷总计 40 点时，【元素打击】和【狂野打击】的总火焰伤害额外降低 50%"] =getThreshold({"Dex","Str"}, "FireDamage", "MORE", -50, { type = "SkillName", skillNameList = { "元素打击", "野性打击" }}),
+	["范围内智慧和敏捷总计 40 点时，【元素打击】和【狂野打击】的总冰霜伤害额外降低 50%"] =getThreshold({"Dex","Str"}, "ColdDamage", "MORE", -50, { type = "SkillName", skillNameList = { "元素打击", "野性打击" }}),
+	
+	
 }
 
 -- Unified list of jewel functions

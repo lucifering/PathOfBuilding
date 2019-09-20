@@ -241,14 +241,14 @@ end
 
 function calcLib.buildSkillInstanceStatsOnly(curLevel,actorLevel,grantedEffect)
 
-	
+	 
 	local stats = { }
 	 local level = grantedEffect.levels[curLevel]
 	 
 	local availableEffectiveness
 	 
-	
-	for index, stat in ipairs(grantedEffect.stats) do
+	if level then 
+		for index, stat in ipairs(grantedEffect.stats) do
 		local statValue 
 		if level.statInterpolation[index] == 3 then
 			-- Effectiveness interpolation
@@ -291,5 +291,158 @@ and type(grantedEffect.statMap[stat][1].value) ~= "table" and type(grantedEffect
 		end
 		stats[stat] = (stats[stat] or 0) + statValue
 	end
+	
+	end 
+	
 	return stats
 end 
+
+
+--[[
+function minionModList2CN(modList)
+local cnList={}
+
+for k, v in pairs(modList) do
+		print_r(v)
+	if v and v.name then 
+		local pre=""
+		local last=""
+		local typestr=""
+		local from=""
+		local value=""
+		local valindex=0
+		local valendStr=""
+		local valStartStr=""
+		
+		if v.name == 'Speed' then 
+			pre='攻击和施法速度'
+			last=''
+			valindex=3
+			valendStr=""
+			if v.flags==ModFlag.Cast then 
+				pre='施法速度'
+				last=''
+			elseif   v.flags==ModFlag.Attack then
+				pre='攻击速度'
+				last=''
+			end 
+			valendStr="%"
+		elseif v.name == 'PhysicalMin' then 
+			valendStr=""
+			valindex=0
+			valStartStr="附加 "
+			if v.flags==ModFlag.Cast then 
+				pre='最小法术物理伤害'
+				last=''
+			elseif   v.flags==ModFlag.Attack then
+				pre='最小攻击物理伤害'
+				last=''
+			end 
+		elseif v.name == 'PhysicalMax' then 
+			valendStr=""
+			valindex=0
+			valStartStr="附加 "
+			if v.flags==ModFlag.Cast then 
+				pre='最大法术物理伤害'
+				last=''
+			elseif   v.flags==ModFlag.Attack then
+				pre='最大攻击物理伤害'
+				last=''
+			end 
+		elseif v.name == 'PhysicalDamageConvertToCold' then 
+			pre='物理伤害转化为冰霜'
+			valindex=0
+			valendStr="%"
+		elseif v.name == 'PhysicalDamageConvertToFire' then 
+			pre='物理伤害转化为火焰'
+			valindex=0
+			valendStr="%"
+		elseif v.name == 'PhysicalDamageConvertToLightning' then 
+			pre='物理伤害转化为闪电'
+			valindex=0
+			valendStr="%"
+		elseif v.name == 'PhysicalDamageConvertToChaos' then 
+			pre='物理伤害转化为混沌'
+			valindex=0	
+			valendStr="%"	
+		elseif v.name == 'BlockChance' then 
+			pre='攻击格挡几率'
+			valindex=0	
+			valendStr="%"	
+			
+		elseif v.name == 'PhysicalDamageGainAsCold' then 
+			last='获得额外冰霜伤害， 其数值等同于物理伤害的'
+			valindex=3	
+			valendStr="%"
+		elseif v.name == 'PhysicalDamageGainAsFire' then 
+			last='获得额外火焰伤害， 其数值等同于物理伤害的'
+			valindex=3
+			valendStr="%"
+		elseif v.name == 'PhysicalDamageGainAsLightning' then 
+			last='获得额外闪电伤害， 其数值等同于物理伤害的'
+			valindex=3
+			valendStr="%"
+		elseif v.name == 'PhysicalDamageGainAsChaos' then 
+			last='获得额外混沌伤害， 其数值等同于物理伤害的'
+			valindex=3
+			valendStr="%"
+		elseif v.name == 'ProjectileCount' then 
+			pre='投射物数量 +'
+			valindex=3
+			valendStr=""
+		elseif v.name == 'Armour' then 
+			pre='护甲'
+			valindex=3
+			valendStr="%"
+		elseif v.name == 'EnergyShield' then 
+			pre='能量护盾'
+			valindex=0
+			valendStr=""	
+			valStartStr="+"
+		elseif	v.name =="Condition:FullLife" then
+			pre='满血'
+			valindex=0
+			valendStr=""
+		else
+			pre=v.name
+			valindex=3
+			valendStr="%"
+		end 
+		
+		
+		if v.type =='INC' then 
+			if v.value <=0 then 
+				typestr="降低"
+				value=-v.value
+			else 
+				typestr="提高"
+				value=v.value
+			end 
+		elseif v.type=='MORE' then 
+			if v.value <=0 then 
+				typestr="额外降低"
+				value=-v.value
+				pre='总'..pre
+			else 
+				typestr="额外提高"
+				value=v.value
+				pre='总'..pre
+			end 
+		else 
+			value=v.value .. ""			
+		end 
+		if v.keywordFlags == KeywordFlag.Curse then 
+			from="诅咒的"
+		end 
+		if valindex==0 then
+			t_insert(cnList,valStartStr..value..valendStr.." "..from..pre..last..typestr)
+		elseif valindex==3 then 
+			t_insert(cnList,from..pre..last..typestr.." "..valStartStr..value..valendStr)
+		end 
+		
+	end 
+end
+print_r(cnList)
+return cnList
+end
+]]--

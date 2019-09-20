@@ -12,7 +12,7 @@ name = "冰川之刺",
 	color = 3,
 	baseEffectiveness = 1.9800000190735,
 	incrementalEffectiveness = 0.037999998778105,
-	description = "Icicles emerge from the ground in a series of small bursts, each damaging enemies caught in the area.",
+	description = "从地面上不断的冒出冰结之刺, 宛如川流一般向前攻击并对敌人造成伤害.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.ColdSkill] = true, [SkillType.PhysicalSkill] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.8,
@@ -74,7 +74,7 @@ name = "献祭",
 	color = 4,
 	baseEffectiveness = 1.3999999761581,
 	incrementalEffectiveness = 0.041999999433756,
-	description = "Summons a totem that fires a stream of flame at nearby enemies.",
+	description = "召唤一个图腾, 它会持续的对附近的敌人喷射火焰.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Hit] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Totem] = true, [SkillType.FireSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	skillTotemId = 8,
@@ -107,7 +107,7 @@ name = "岩浆球",
 	color = 4,
 	baseEffectiveness = 4.2666997909546,
 	incrementalEffectiveness = 0.032000001519918,
-	description = "Generic monster mortar skill. Like Monster Projectile but has an impact effect.",
+	description = "通用的怪物炮击技能. 与怪物投射物相似, 但带有冲击效果.",
 	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -191,7 +191,7 @@ skills["IceElementalIceCyclone"] = {
 name = "旋风斩",
 	hidden = true,
 	color = 2,
-	description = "Damage enemies around you, then perform a spinning series of attacks as you travel to a target location. Cannot be supported by Ruthless or Multistrike.",
+	description = "对周围敌人造成伤害, 接而进行一连串的旋转攻击, 边向目标地点前进边攻击路径上的敌人, 无法被多重打击和无情辅助.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.MovementSkill] = true, [SkillType.Type65] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -365,7 +365,7 @@ skills["SpectralSkullShieldCharge"] = {
 name = "重盾冲锋",
 	hidden = true,
 	color = 4,
-	description = "Charges at an enemy, bashing it with the character's shield and striking it. This knocks it back and stuns it. Enemies in the way are pushed to the side. Damage and stun are proportional to distance travelled. Cannot be supported by Multistrike.",
+	description = "向一个目标冲锋, 使用盾牌对其猛击的同时也用近战武器顺手补刀. 此攻击将会击退目标并将其击晕, 在路径上的敌人将会被推向两旁. 伤害与击晕几率将视冲锋距离而定. ",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.MovementSkill] = true, [SkillType.TravelSkill] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -400,10 +400,10 @@ name = "重盾冲锋",
 	},
 }
 skills["RagingSpiritMeleeAttack"] = {
-name = "默认攻击",
+	name = "普通攻击",
 	hidden = true,
 	color = 4,
-	description = "Strike your foes down with a powerful blow.",
+	description = "对你的敌人无情痛击.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -553,7 +553,7 @@ skills["RockGolemWhirlingBlades"] = {
 name = "回旋之刃",
 	hidden = true,
 	color = 4,
-	description = "Dive through enemies, dealing weapon damage. Only works with daggers, claws and one handed swords. Cannot be supported by Multistrike.",
+	description = "迅速穿越敌人并同时造成武器伤害. 限定匕首, 爪以及单手剑. ",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MovementSkill] = true, [SkillType.TravelSkill] = true, },
 	weaponTypes = {
 		["Thrusting One Handed Sword"] = true,
@@ -612,12 +612,12 @@ name = "重击",
 	},
 }
 skills["SummonedSpiderViperStrike"] = {
-name = "毒蛇打击",
+	name = "毒蛇打击",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 0.64999997615814,
 	incrementalEffectiveness = 0.025499999523163,
-	description = "Hits enemies, adding some of your physical damage as chaos damage and inflicting poison which will be affected by modifiers to skill duration. If dual wielding, will strike with both weapons. Requires a claw, dagger or sword.",
+	description = "击中敌人，额外造成等同于部分物理伤害的混沌伤害，并使敌人中毒。该技能受技能持续时间词缀影响。双持武器时会用两把武器同时攻击。限定爪类、匕首与剑类。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Duration] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.DamageOverTime] = true, [SkillType.ChaosSkill] = true, },
 	weaponTypes = {
 		["Claw"] = true,
@@ -647,10 +647,10 @@ name = "毒蛇打击",
 	},
 }
 skills["DancingDervishCyclone"] = {
-name = "旋风斩",
+	name = "旋风斩",
 	hidden = true,
 	color = 2,
-	description = "Damage enemies around you, then perform a spinning series of attacks as you travel to a target location. Cannot be supported by Ruthless or Multistrike.",
+	description = "对周围敌人造成伤害, 接而进行一连串的旋转攻击, 边向目标地点前进边攻击路径上的敌人, 无法被多重打击和无情辅助.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.MovementSkill] = true, [SkillType.Type65] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -723,7 +723,7 @@ skills["HeraldOfAgonyMinionMortar"] = {
 name = "炮击",
 	hidden = true,
 	color = 4,
-	description = "Generic monster mortar skill. Like Monster Projectile but has an impact effect.",
+	description = "通用的怪物炮击技能. 与怪物投射物相似, 但带有冲击效果.",
 	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Attack] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 2,
@@ -780,7 +780,7 @@ skills["HeraldOfAgonyMinionCleave"] = {
 name = "横扫",
 	hidden = true,
 	color = 1,
-	description = "The character swings their weapon (or both weapons if dual wielding) in an arc, damaging monsters in an area in front of them. Only works with Axes and Swords.",
+	description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 对前方区域的怪物造成伤害。限定斧类与剑类。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Type53] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["Two Handed Axe"] = true,
@@ -927,10 +927,10 @@ mod("LifeRegen", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura"
 	},
 }
 skills["DominatingBlowMinionCharge"] = {
-name = "重盾冲锋",
+	name = "重盾冲锋",
 	hidden = true,
 	color = 4,
-	description = "Charges at a targeted location or enemy, pushing away enemies in your path and repeatedly dealing damage in a small area in front of you. You deal damage in a larger area when you reach the target. The further you travel, the more damage you deal, and the greater your chance of stunning enemies. Cannot be supported by Multistrike.",
+	description = "向目标区域或敌人冲锋，在路径上的敌人将会被推向两旁，并反复对你前方小范围区域内造成伤害。 抵达目标处时造成大范围伤害。伤害与击晕几率将视冲锋距离而定。无法被多重打击辅助。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Shield] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.MovementSkill] = true, [SkillType.TravelSkill] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -964,10 +964,10 @@ name = "重盾冲锋",
 	},
 }
 skills["SummonedRhoaShieldCharge"] = {
-name = "重盾冲锋",
+	name = "重盾冲锋",
 	hidden = true,
 	color = 4,
-	description = "Charges at a targeted location or enemy, pushing away enemies in your path and repeatedly dealing damage in a small area in front of you. You deal damage in a larger area when you reach the target. The further you travel, the more damage you deal, and the greater your chance of stunning enemies. Cannot be supported by Multistrike.",
+	description = "向目标区域或敌人冲锋，在路径上的敌人将会被推向两旁，并反复对你前方小范围区域内造成伤害。 抵达目标处时造成大范围伤害。伤害与击晕几率将视冲锋距离而定。无法被多重打击辅助。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Shield] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.MovementSkill] = true, [SkillType.TravelSkill] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -1027,10 +1027,10 @@ name = "混沌投射物",
 	},
 }
 skills["DropBearSummonedGroundSlam"] = {
-name = "裂地之击",
+	name = "裂地之击",
 	hidden = true,
 	color = 4,
-	description = "The character slams the ground in front of them with a Staff, Mace or Sceptre, creating a wave that travels forward and damages enemies with an increased chance to stun.",
+	description = "以长杖、锤类、短杖重击地面，制造出一道向前释放的冲击波，被此冲击波击中的敌人将会受到伤害并有较高几率被击晕。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, },
 	weaponTypes = {
 		["Two Handed Mace"] = true,
@@ -1058,10 +1058,10 @@ name = "裂地之击",
 	},
 }
 skills["DropBearSummonedRallyingCry"] = {
-name = "激励战吼",
+	name = "激励战吼",
 	hidden = true,
 	color = 1,
-	description = "Performs a warcry, granting increased damage and mana regeneration to the user and nearby allies if there are nearby enemies. The damage increase is proportional to the number of surrounding enemies. Taunts all nearby enemies to attack the user. Shares a cooldown with other Warcry skills.",
+	description = "施展战吼, 使自身和盟友伤害和魔力恢复增加. 伤害增加量随着周围敌人数量提升. 嘲讽周围所有敌人, 使他们攻击施放者. 与其他战吼技能共享技能冷却.",
 	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Warcry] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.25,
@@ -1138,10 +1138,10 @@ name = "冰川之刺",
 	},
 }
 skills["BoneGolemLeapSlam"] = {
-name = "跃击",
+	name = "跃击",
 	hidden = true,
 	color = 4,
-	description = "Jump into the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff. Cannot be supported by Multistrike.",
+	description = "一跃而起，落地时用武器对敌人造成伤害，并击退敌人。被踩到的敌人会被推出去。限定斧头、锤类、短杖、剑类或长杖。无法被被多重打击辅助。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.MovementSkill] = true, [SkillType.TravelSkill] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -1264,7 +1264,9 @@ name = "炼狱军团",
 }
 
 
--- adding
+
+--lucifer
+
 
 skills["SlavedriverFlameWhip"] = {
 	name = "怒焰奔腾",
@@ -1291,13 +1293,11 @@ skills["SlavedriverFlameWhip"] = {
 		"base_cast_speed_+%",
 		"is_area_damage",
 	},
-	
 	levels = {
-		[1] = { 0.5, 1.5, 50, -65, critChance = 6, levelRequirement = 1,statInterpolation = { 3, 3, 1, 1, }, },
+		[1] = { 0.5, 1.5, 50, -65, critChance = 6, levelRequirement = 1, statInterpolation = { 3, 3, 1, 1, }, },
 	},
-}
-skills["KitavaSlavedriverFlameWhip"] = {
-	name = "物理鞭笞",
+}skills["KitavaSlavedriverFlameWhip"] = {
+	name = "怒焰奔腾",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 2.2000000476837,
@@ -1321,13 +1321,10 @@ skills["KitavaSlavedriverFlameWhip"] = {
 		"base_cast_speed_+%",
 		"is_area_damage",
 	},
-	
 	levels = {
-		[1] = { 0.80000001192093, 1.2000000476837, 50, -65, critChance = 6, levelRequirement = 1,statInterpolation = { 3, 3, 1, 1, }, },
+		[1] = { 0.80000001192093, 1.2000000476837, 50, -65, critChance = 6, levelRequirement = 1, statInterpolation = { 3, 3, 1, 1, }, },
 	},
 }
-
-
 skills["GemFrogLeapSlam"] = {
 name = "青蛙跃击",
 	hidden = true,
@@ -1363,4 +1360,3 @@ name = "青蛙跃击",
 		[1] = { 1, -25, damageEffectiveness = 1.5, baseMultiplier = 1.5, levelRequirement = 2, statInterpolation = { 1, 1, }, },
 	},
 }
-

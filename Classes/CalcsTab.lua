@@ -102,7 +102,84 @@ end, "显示召唤物计算面板而非玩家的.")
 				end
 				self:AddUndoState()
 				self.build.buildFlag = true
-			end)
+			end){
+				tooltipFunc = function(tooltip, mode, index, value)
+					local mainMinionData=self.calcsEnv.minion.minionData
+					
+					if mainMinionData then 
+						if tooltip:CheckForUpdate(mainMinionData.name, self.build.outputRevision)  then 
+							 tooltip.center = false
+							 tooltip.color = colorCodes.UNIQUE
+							
+							 tooltip:AddLine(20, colorCodes.UNIQUE.. mainMinionData.name.."                        ")
+							--[[   
+							local cnList= minionModList2CN(mainMinionData.modList)
+							
+							 
+							for _, modcn in ipairs(cnList) do
+								if modcn then
+								tooltip:AddLine(16, colorCodes.RARE..modcn)
+								end
+							end
+							]]--
+							tooltip:AddSeparator(10)	
+							 
+							for _, skillId in ipairs(mainMinionData.skillList) do
+								if self.calcsEnv.data.skills[skillId] then
+								tooltip:AddLine(16, colorCodes.GEM..self.calcsEnv.data.skills[skillId].name)
+								end
+							end
+							 
+							 
+							 tooltip:AddSeparator(10)
+							 if mainMinionData.damage   then 
+								tooltip:AddLine(16, "^x7F7F7F".."伤害："..(mainMinionData.damage*100) .."%")
+							 end
+							 if mainMinionData.damageSpread    then 
+								tooltip:AddLine(16, "^x7F7F7F".."大小伤区间："..mainMinionData.damageSpread*100 .."%")
+							 end
+							  if mainMinionData.attackTime    then 
+								tooltip:AddLine(16, "^x7F7F7F".."基础攻速："..mainMinionData.attackTime)
+							 end
+							  if mainMinionData.attackRange    then 
+								tooltip:AddLine(16, "^x7F7F7F".."基础攻击范围："..mainMinionData.attackRange)
+							 end
+							  if mainMinionData.accuracy     then 
+								tooltip:AddLine(16, "^x7F7F7F".."命中："..mainMinionData.accuracy *100 .."%" )
+							 end
+							  tooltip:AddSeparator(10)
+							 if mainMinionData.life and mainMinionData.life>0 then 
+								tooltip:AddLine(16, "^x7F7F7F".."生命："..mainMinionData.life*100 .."%")
+							 end
+							 if mainMinionData.energyShield and mainMinionData.energyShield>0 then 
+								tooltip:AddLine(16, "^x7F7F7F".."能量护盾："..mainMinionData.energyShield*100 .."%")
+							 end
+							 if mainMinionData.armour and mainMinionData.armour>0 then 
+								tooltip:AddLine(16, "^x7F7F7F".."护甲："..mainMinionData.armour*100 .."%")
+							 end
+							  tooltip:AddSeparator(10)
+							 
+							 if mainMinionData.fireResist  then 
+								tooltip:AddLine(16, "^x7F7F7F".."火焰抗性："..mainMinionData.fireResist .."%")
+							 end
+							 if mainMinionData.coldResist  then 
+								tooltip:AddLine(16, "^x7F7F7F".."冰霜抗性："..mainMinionData.coldResist .."%")
+							 end
+							 if mainMinionData.lightningResist  then 
+								tooltip:AddLine(16, "^x7F7F7F".."闪电抗性："..mainMinionData.lightningResist .."%")
+							 end
+							 if mainMinionData.chaosResist  then 
+								tooltip:AddLine(16, "^x7F7F7F".."混沌抗性："..mainMinionData.chaosResist .."%")
+							 end
+							
+							 
+							 
+						end
+					
+					end 
+					
+				end
+			}
 		} },
 { label = "内置灵体数据", flag = "spectre", { controlName = "mainSkillMinionLibrary",
 control = new("ButtonControl", nil, 0, 0, 100, 16, "灵体管理...", function()
@@ -194,7 +271,7 @@ control = new("ButtonControl", nil, 0, 0, 100, 16, "灵体管理...", function()
 							tooltip:AddLine(16, "^x7F7F7F".."基础加成: "..curBaseMultiplier*100 .."%")
 						 end 
 						 
-						 
+						 tooltip:AddSeparator(10)
 						 tooltip:AddLine(16, "^x7F7F7F需求 Level "..curlevelRequirement)
 						 tooltip:AddSeparator(10)
 						 if grantedEffect.description then
@@ -626,3 +703,5 @@ function CalcsTabClass:RestoreUndoState(state)
 		self.input[k] = v
 	end
 end
+
+

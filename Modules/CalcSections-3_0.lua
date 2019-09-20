@@ -460,7 +460,13 @@ return {
 	}, },
 } },
 { 1, "SkillTypeStats", 1, "技能类型-特殊状态", colorCodes.OFFENCE, {
-{ label = "召唤物最大数量", haveOutput = "ActiveMinionLimit", { format = "{0:output:ActiveMinionLimit}" } },
+{ label = "召唤生物最大数量", haveOutput = "ActiveMinionLimit", { format = "{0:output:ActiveMinionLimit}",
+{ breakdown = "ActiveMinionLimit" }, 
+
+{ modName = { "ActiveSpectreLimit"}, flag="spectre",cfg = "skill" }, 
+{ modName = { "ActiveGolemLimit"}, flag="golem",cfg = "skill" }, 
+
+}, },
 { label = "技能CD", haveOutput = "Cooldown", { format = "{2:output:Cooldown}s", 
 		{ breakdown = "Cooldown" }, 
 		{ modName = "CooldownRecovery", cfg = "skill" },

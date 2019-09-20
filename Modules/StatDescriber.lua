@@ -139,7 +139,7 @@ return function(stats, scopeName)
 			for depth, scope in ipairs(rootScope.scopeList) do
 				if scope[s] then
 					local descriptor = scope[scope[s]]
-					if descriptor.lang then
+					if descriptor and  descriptor.lang then
 						describeStats[descriptor.stats[1]] = { depth = depth, order = scope[s], description = scope[scope[s]] }
 					end
 					break

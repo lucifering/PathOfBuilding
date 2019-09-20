@@ -1500,7 +1500,7 @@ name = "炮击",
 	},
 }
 skills["MassFrenzy"] = {
-name = "质量狂乱",
+name = "群体狂乱",
 	hidden = true,
 	color = 4,
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.AreaSpell] = true, },
@@ -1521,7 +1521,7 @@ name = "质量狂乱",
 	},
 }
 skills["MassPower"] = {
-name = "质量之力",
+name = "群体之力",
 	hidden = true,
 	color = 4,
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.AreaSpell] = true, },

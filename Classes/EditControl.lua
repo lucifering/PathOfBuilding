@@ -220,14 +220,13 @@ function EditClass:Draw(viewPort)
 		end
 		textX = textX + DrawStringWidth(textHeight, self.font, self.prompt) + textHeight/2
 	end
-	if not enabled then
-		return
-	end
+	
 	if mOver then
 		SetDrawLayer(nil, 100)
 		self:DrawTooltip(x, y, width, height, viewPort)
 		SetDrawLayer(nil, 0)
 	end
+	
 	self:UpdateScrollBars()
 	local marginL = textX - x - 2
 	local marginR = self.controls.scrollBarV:IsShown() and 14 or 0
@@ -238,6 +237,10 @@ function EditClass:Draw(viewPort)
 		DrawString(-self.controls.scrollBarH.offset, -self.controls.scrollBarV.offset, "LEFT", textHeight, self.font, self.buf)
 		SetViewport()
 		self:DrawControls(viewPort)
+		return
+	end
+	if not enabled then
+		
 		return
 	end
 	if not IsKeyDown("LEFTBUTTON") then

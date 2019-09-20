@@ -239,6 +239,16 @@ function DropDownClass:Draw(viewPort)
 		SetDrawColor(1, 1, 1)
 	else
 		SetDrawColor(0.66, 0.66, 0.66)
+		if (mOver or self.dropped) and mOverComp ~= "DROP" then
+			SetDrawLayer(nil, 100)
+			self:DrawTooltip(
+				x, y - (self.dropped and self.dropUp and dropExtra or 0), 
+				width, height + (self.dropped and dropExtra or 0), 
+				viewPort,
+				mOver and "BODY" or "OUT", self.selIndex, self.list[self.selIndex])
+			SetDrawLayer(nil, 0)
+		end
+		
 	end
 	local selLabel = self.list[self.selIndex]
 	if type(selLabel) == "table" then

@@ -138,7 +138,7 @@ self.controls.saveAs = new("ButtonControl", {"LEFT",self.controls.save,"RIGHT"},
 		local usedMax = 99 + (self.targetVersion == "2_6" and 21 or 22) + (self.calcsTab.mainOutput.ExtraPoints or 0)
 		local ascMax = 8	
 		control.str = string.format("%s%3d / %3d   %s%d / %d", used > usedMax and "^1" or "^7", used, usedMax, ascUsed > ascMax and "^1" or "^7", ascUsed, ascMax)
-		control.req = "Required level: "..m_max(1, (100 + used - usedMax))
+		control.req = "需求等级: "..m_max(1, (100 + used - usedMax))
 		return DrawStringWidth(16, "FIXED", control.str) + 8
 	end
 	self.controls.pointDisplay.Draw = function(control)
@@ -165,7 +165,7 @@ self.controls.characterLevel = new("EditControl", {"LEFT",self.controls.pointDis
 	end)
 	self.controls.characterLevel.tooltipFunc = function(tooltip)
 		if tooltip:CheckForUpdate(self.characterLevel) then
-			tooltip:AddLine(16, "Experience multiplier:")
+			tooltip:AddLine(16, "经验加成:")
 			local playerLevel = self.characterLevel
 			local safeZone = 3 + m_floor(playerLevel / 16)
 			for level, expLevel in ipairs(self.data.monsterExperienceLevelMap) do

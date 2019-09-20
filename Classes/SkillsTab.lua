@@ -97,7 +97,110 @@ self.controls.groupEnabled = new("CheckBoxControl", {"LEFT",self.controls.groupS
 		self:AddUndoState()
 		self.build.buildFlag = true
 	end)
-	self.controls.sourceNote = new("LabelControl", {"TOPLEFT",self.controls.groupSlotLabel,"TOPLEFT"}, 0, 30, 0, 16)
+	
+	self.controls.sourceNoteSkillName = new("EditControl", {"TOPLEFT",self.controls.groupSlotLabel,"TOPLEFT"}, 0, 30, 380, 20, "123", "", "%c", 50, function(buf)
+		 
+	end)
+	
+	self.controls.sourceNoteSkillName.enabled=false;
+	self.controls.sourceNoteSkillName.tooltipFunc = function(tooltip, mode, index, value)
+	
+	if self.displayGroup and self.displayGroup.gemList[1] then 
+			local gemInstance = self.displayGroup.gemList[1]
+			-- print_r(gemInstance)
+				if gemInstance  and  gemInstance.grantedEffect then
+						local grantedEffect=gemInstance.grantedEffect;
+						 if tooltip:CheckForUpdate(grantedEffect.id, self.displayGroup)  then 
+							 tooltip.center = true
+							 tooltip.color = colorCodes.GEM
+							
+							 tooltip:AddLine(20, colorCodes.GEM..grantedEffect.name)
+							 tooltip:AddSeparator(10)
+							  local  curSkillLevel=gemInstance.level;
+						 local curlevelRequirement=0;
+							local curManaCost=0;
+							local curCooldown=0;
+							local actorLevel=self.build.characterLevel;
+							local curCritChance=0.0;
+							local curDamageEffectiveness=0.0;
+							local curBaseMultiplier=0.0;							
+							 
+							 if grantedEffect.levels and grantedEffect.levels[curSkillLevel] then 							 
+							 curlevelRequirement=grantedEffect.levels[curSkillLevel].levelRequirement
+							 curManaCost=grantedEffect.levels[curSkillLevel].manaCost
+							 curCooldown=grantedEffect.levels[curSkillLevel].cooldown
+							 curCritChance=grantedEffect.levels[curSkillLevel].critChance
+							 curDamageEffectiveness=grantedEffect.levels[curSkillLevel].damageEffectiveness
+							 curBaseMultiplier=grantedEffect.levels[curSkillLevel].baseMultiplier
+							 
+							tooltip:AddLine(16, "^x7F7F7F".."技能等级: "..curSkillLevel)
+							 
+							if curManaCost and  curManaCost >0 then 
+								tooltip:AddLine(16, "^x7F7F7F".."魔力消耗: "..curManaCost)
+							end 
+							if curCooldown and curCooldown >0 then 
+								tooltip:AddLine(16, "^x7F7F7F".."冷却时间: "..curCooldown.." 秒")
+							end 
+							
+						 
+						 end 
+						 if grantedEffect.castTime and grantedEffect.castTime > 0 then
+							tooltip:AddLine(16, string.format("^x7F7F7F施放时间: ^7%.2f 秒", grantedEffect.castTime))
+						 else
+							tooltip:AddLine(16, "^x7F7F7F施放时间: ^7瞬发")
+						 end
+						 if curCritChance and  curCritChance>0 then 
+							tooltip:AddLine(16, "^x7F7F7F".."暴击几率: "..curCritChance.."%")
+						 end 
+						 if curDamageEffectiveness and curDamageEffectiveness>0 then 
+							tooltip:AddLine(16, "^x7F7F7F".."伤害效用: "..curDamageEffectiveness*100 .."%")
+						 end 
+						 if curBaseMultiplier and curBaseMultiplier>0 then 
+							tooltip:AddLine(16, "^x7F7F7F".."基础加成: "..curBaseMultiplier*100 .."%")
+						 end 
+						 
+						 tooltip:AddSeparator(10)
+						 tooltip:AddLine(16, "^x7F7F7F需求 Level "..curlevelRequirement)
+						 tooltip:AddSeparator(10)
+						 if grantedEffect.description then
+							local wrap = main:WrapString(grantedEffect.description, 16, m_max(DrawStringWidth(16, "VAR", grantedEffect.id), 400))
+							for _, line in ipairs(wrap) do
+								tooltip:AddLine(16, colorCodes.GEM..line)
+							end
+						end
+						if self.build.data.describeStats then
+							tooltip:AddSeparator(10)
+							local stats =calcLib.buildSkillInstanceStatsOnly(curSkillLevel,actorLevel, grantedEffect) 
+							if grantedEffect.levels[curSkillLevel] and grantedEffect.levels[curSkillLevel].baseMultiplier then
+								stats["active_skill_attack_damage_final_permyriad"] = (grantedEffect.levels[curSkillLevel].baseMultiplier - 1) * 10000
+							end
+							local mergeStatsFrom=false
+							if mergeStatsFrom then
+								for stat, val in pairs(calcLib.buildSkillInstanceStatsOnly(curSkillLevel,actorLevel, mergeStatsFrom)) do
+									stats[stat] = (stats[stat] or 0) + val
+								end
+								
+							end
+							local descriptions = self.build.data.describeStats(stats, grantedEffect.statDescriptionScope )
+							
+							 
+							
+							for _, line in ipairs(descriptions) do
+								tooltip:AddLine(16, colorCodes.MAGIC..line)
+							end
+						end
+							 
+						 end
+				end
+			end 
+				end
+	
+	self.controls.sourceNoteSkillName.shown = function()
+		return self.displayGroup.source ~= nil
+	end
+ 
+	
+	self.controls.sourceNote = new("LabelControl", {"TOPLEFT",self.controls.sourceNoteSkillName,"TOPLEFT"}, 0, 50, 0, 16)
 	self.controls.sourceNote.shown = function()
 		return self.displayGroup.source ~= nil
 	end
@@ -105,6 +208,8 @@ self.controls.groupEnabled = new("CheckBoxControl", {"LEFT",self.controls.groupS
 		local item = self.displayGroup.sourceItem or { rarity = "NORMAL", name = "?" }
 		local itemName = colorCodes[item.rarity]..item.name.."^7"
 		local activeGem = self.displayGroup.gemList[1]
+		
+		self.controls.sourceNoteSkillName:SetText(activeGem.color..(activeGem.grantedEffect and activeGem.grantedEffect.name or activeGem.nameSpec))
 local label = [[^7这个特殊的技能组: ']]..activeGem.color..(activeGem.grantedEffect and activeGem.grantedEffect.name or activeGem.nameSpec)..[[^7'
  是由物品【']]..itemName..[['】自带的。
 你不能手动删除它.但是你可以取消该装备，它就会自动消失]]
@@ -334,7 +439,7 @@ function SkillsTabClass:CreateGemSlot(index)
 	slot.delete.enabled = function()
 		return index <= #self.displayGroup.gemList
 	end
-	slot.delete.tooltipText = "Remove this gem."
+	slot.delete.tooltipText = "移除这颗技能石."
 	self.controls["gemSlot"..index.."Delete"] = slot.delete
 
 	-- Gem name specification
@@ -627,7 +732,8 @@ function SkillsTabClass:AddSocketGroupTooltip(tooltip, socketGroup)
 tooltip:AddLine(16, "^7注意: 这组技能已禁用，因为插在了不启用的武器上.")
 	end
 	if socketGroup.sourceItem then
-		tooltip:AddLine(18, "^7Source: "..colorCodes[socketGroup.sourceItem.rarity]..socketGroup.sourceItem.name)
+		tooltip:AddLine(18, "^7来自: ")
+		tooltip:AddLine(18, colorCodes[socketGroup.sourceItem.rarity]..socketGroup.sourceItem.name)
 		tooltip:AddSeparator(10)
 	end
 	local gemShown = { }

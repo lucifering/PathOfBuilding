@@ -611,7 +611,9 @@ elseif item.rarity == "魔法" then
 	env.grantedPassives = { }
 	for _, passive in pairs(env.modDB:List(nil, "GrantedPassive")) do
 		local node = env.spec.tree.notableMap[passive]
-		if node then
+		
+		if node and  node.ascendancyName == nil  then
+			 
 			nodes[node.id] = node
 			env.grantedPassives[node.id] = true
 		end

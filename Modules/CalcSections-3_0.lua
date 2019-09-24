@@ -940,7 +940,10 @@ return {
 	}, },
 { label = "回复", { format = "{1:output:EnergyShieldRegen} ({1:output:EnergyShieldRegenPercent}%)", 
 { label = "源", modName = { "EnergyShieldRegen", "EnergyShieldRegenPercent" }, modType = "BASE" }, 
+{ label = "提高", modName = { "EnergyShieldRegen", "EnergyShieldRegenPercent" }, modType = "INC" }, 
+{ label = "额外总提高", modName = { "EnergyShieldRegen", "EnergyShieldRegenPercent" }, modType = "MORE" }, 
 { label = "回复加成", modName = "EnergyShieldRecovery" },
+
 	}, },
 } },
 { 1, "Armour", 3, "护甲", colorCodes.DEFENCE, {

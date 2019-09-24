@@ -1464,6 +1464,7 @@ end
 -- List of special modifiers
 local specialModList = {
 	--【中文化程序额外添加开始】
+	--这里不要less？
 	--local sumLocal
 	["该装备的攻击暴击率提高 (%d+)%%"] = function(num) return {  mod("CritChance", "INC", num)  } end,  
 	--负数范围特殊处理
@@ -2086,6 +2087,7 @@ local specialModList = {
 	["([%+%-]?%d+) 【复苏的魔卫】数量上限"]= function(num) return {  mod("ActiveZombieLimit", "BASE", num)  } end,
 	["([%+%-]?%d+) 【魔卫复苏】数量上限"]= function(num) return {  mod("ActiveZombieLimit", "BASE", num)  } end,
 	["【复苏的魔卫】最大数量降低 (%d+)%%"]= function(num) return {  mod("ActiveZombieLimit", "INC", -num)  } end,
+	["【魔卫复苏】最大数量降低 (%d+)%%"]= function(num) return {  mod("ActiveZombieLimit", "INC", -num)  } end,
 	["召唤愤怒狂灵的最大数量减少 (%d+)%%"]= function(num) return {  mod("ActiveRagingSpiritLimit", "INC", -num)  } end,
 	["每有 (%d+) 层能量护盾可每秒回复 ([%d%.]+)%% 生命"]= function(_,num1,num2) return {  mod("LifeRegenPercent", "BASE", num2,{ type = "PerStat", stat = "EnergyShield", div = num1 })  } end,
 	["移动时获得额外 (%d+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "Moving" } )  } end, 
@@ -2418,6 +2420,7 @@ local specialModList = {
 	["受到【元素净化】影响时，%+(%d+)%% 混沌抗性"]= function(num) return {  mod("ChaosResist", "BASE", num,{ type = "Condition", var = "AffectedBy元素净化" })  } end, 
 	["受到【迅捷】影响时，移动技能的冷却速度提高 (%d+)%%"]= function(num) return {  mod("CooldownRecovery", "INC", num,nil, 0, KeywordFlag.Movement,{ type = "Condition", var = "AffectedBy迅捷" } )  } end, 
 	["魔卫的物理总伤害额外提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamage", "MORE", tonumber(num))},{ type = "SkillName", skillName = "魔卫复苏" } )  } end, 
+	["魔卫复苏物理总伤害额外提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamage", "MORE", tonumber(num))},{ type = "SkillName", skillName = "魔卫复苏" } )  } end, 
 	["复苏的魔卫物理总伤害额外提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamage", "MORE", tonumber(num))},{ type = "SkillName", skillName = "魔卫复苏" } )  } end, 
 	["【复苏的魔卫】的重击攻击效果范围扩大 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("AreaOfEffect", "INC", num,{ type = "SkillId", skillId = "ZombieSlam" })})  } end, 
 	["药剂效果套用于你的魔卫和灵体身上"] = { flag("FlasksApplyToMinion", { type = "SkillName", skillNameList = { "魔卫复苏", "召唤灵体" } }) }, --备注：flasks apply to your zombies and spectres
@@ -2704,7 +2707,7 @@ local specialModList = {
 		mod("CritChance", "INC", num,nil, ModFlag.Spell,  { type = "PerStat", stat = "PlayerLife", div = 100 }) 
 		}end,
 	["总能量护盾每秒回复额外降低 (%d+)%%"]= function(num) return { 	
-	mod("EnergyShieldRegen", "LESS", num) 
+	mod("EnergyShieldRegen", "MORE", -num) 
 	}end,
 	["武器攻击的基础暴击几率为 ([%d%.]+)%%"]= function(num) return { mod("WeaponBaseCritChance", "OVERRIDE", num) } end,
 	["每次击中获得 %d+ 层怒火，最多每 [%d%.]+ 秒获得一次"] = {
@@ -2916,7 +2919,7 @@ local specialModList = {
 	["召唤生物有 (%d+)%% 法术伤害格挡几率"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("SpellBlockChance", "BASE", num) })   } end, 
 	["召唤生物获得 %+(%d+)%% 格挡法术伤害率"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("SpellBlockChance", "BASE", num) })   } end, 
 	["魔像提供的增益效果提高 (%d+)%%"]  = function(num) return { mod("BuffEffect", "INC", num, { type = "SkillType", skillType = SkillType.Golem })   } end,
-	["每 (%d+) 魔力提高 (%d+)%% 法术伤害，最多 (%d+)%%"] = function(_,num1,num2,num3)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "Multiplier", var = "Mana", div = tonumber(num1), limit = tonumber(num3), limitTotal = true  }) } end,  
+	["每 (%d+) 魔力提高 (%d+)%% 法术伤害，最多 (%d+)%%"] = function(_,num1,num2,num3)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "PerStat", stat = "Mana", div = tonumber(num1), limit = tonumber(num3), limitTotal = true  }) } end,  
 	["每有 (%d+) 未保留的魔力，范围效果扩大 (%d+)%%，最多 (%d+)%%"] = function( _, num1,num2,limit)  return { mod("AreaOfEffect", "INC", tonumber(num2), { type = "PerStat", stat = "ManaUnreserved", div = tonumber(num1), limit = tonumber(limit), limitTotal = true })   } end,
 	["近期你或你的召唤生物每击败 1 个敌人回复 (%d+)%% 能量护盾，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("EnergyShieldRegenPercent", "BASE", tonumber(num1), { type = "Multiplier", varList = {"EnemyKilledRecently","EnemyKilledByMinionsRecently"}, limit = tonumber(limit), limitTotal = true })   } end, 
 	["近期每有 1 个你的地雷被引爆，则每秒回复 (%d+)%% 生命，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("LifeRegenPercent", "BASE", tonumber(num1), { type = "Multiplier", var = "MineDetonatedRecently", limit = tonumber(limit), limitTotal = true })   } end, 

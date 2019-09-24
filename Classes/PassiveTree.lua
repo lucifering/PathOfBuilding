@@ -68,7 +68,7 @@ page = getFile("https://poe.game.qq.com/passive-skill-tree/")
 	end
 	--print_r(self.nodes[34098]);
 	--永恒珠宝重点核心
-	print("永恒珠宝重点核心:"..self.targetVersion)
+	--print("永恒珠宝重点核心:"..self.targetVersion)
 	for _, jewkey in ipairs(data[self.targetVersion].timelessJewelKeystone ) do
 	
 		 --print_r(self.nodes[#self.nodes-1]);
@@ -183,6 +183,7 @@ local cdnRoot = treeVersion == "2_6" and "" or ""--https://web.poecdn.com"
 	ConPrintf("Processing tree...")
 	self.keystoneMap = { }
 	self.notableMap  = { }
+	self.notableAscendancyNameMap  = { }
 	local nodeMap = { }
 	local sockets = { }
 	local orbitMult = { [0] = 0, m_pi / 3, m_pi / 6, m_pi / 6, m_pi / 20 }
@@ -213,9 +214,15 @@ local cdnRoot = treeVersion == "2_6" and "" or ""--https://web.poecdn.com"
 		elseif node.ks then
 			node.type = "Keystone"
 			self.keystoneMap[node.dn] = node
-		elseif node["not"] then
-			node.type = "Notable"
-			self.notableMap[node.dn:lower()] = node
+		elseif node["not"]  then
+			if  node["ascendancyName"] == nil then
+				node.type = "Notable"
+				self.notableMap[node.dn:lower()] = node
+			else 
+				node.type = "Notable"
+				self.notableAscendancyNameMap[node.dn:lower()] = node
+			
+			end 
 		else
 			node.type = "Normal"
 		end

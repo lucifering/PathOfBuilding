@@ -520,7 +520,7 @@ self.controls.displayItemAddCustom = new("ButtonControl", {"TOPLEFT",self.contro
 		self:AddCustomModifierToDisplayItem()
 	end)
 	self.controls.displayItemAddCustom.shown = function()
-	print(self.displayItem.name)
+	--print(self.displayItem.name)
 return self.displayItem.rarity == "魔法" or self.displayItem.rarity == "稀有"
 or self.displayItem.name=='扼息者, 火蝮鳞手套' 	
 	 or self.displayItem.name=='孢囊守卫, 圣者链甲'   or self.displayItem.name=='奔逃之, 暗影之靴'  

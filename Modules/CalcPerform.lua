@@ -68,7 +68,7 @@ local function mergeKeystones(env)
 		end
 	end
 end
-
+--[[
 local function mergeNotable(env)
 	local modDB = env.modDB
 
@@ -86,6 +86,7 @@ local function mergeNotable(env)
 		end
 	end
 end
+]]--
 
 
 -- Calculate attributes and life/mana pools, and set conditions
@@ -464,7 +465,7 @@ function calcs.perform(env)
 	env.keystonesAdded = { }
 	env.notableAdded = { }
 	mergeKeystones(env)
-	mergeNotable(env)
+	--mergeNotable(env)
 
 	-- Build minion skills
 	for _, activeSkill in ipairs(env.player.activeSkillList) do
@@ -618,7 +619,7 @@ function calcs.perform(env)
 
 	-- Merge keystones again to catch any that were added by flasks
 	mergeKeystones(env)
-	mergeNotable(env)
+	--mergeNotable(env)
 	-- Calculate skill life and mana reservations
 	env.player.reserved_LifeBase = 0
 	env.player.reserved_LifePercent = modDB:Sum("BASE", nil, "ExtraLifeReserved") 
@@ -1101,7 +1102,7 @@ function calcs.perform(env)
 
 	-- Merge keystones again to catch any that were added by buffs
 	mergeKeystones(env)
-	mergeNotable(env)
+	--mergeNotable(env)
 	-- Special handling for Dancing Dervish
 	if modDB:Flag(nil, "DisableWeapons") then
 		env.player.weaponData1 = copyTable(env.data.unarmedWeaponData[env.classId])

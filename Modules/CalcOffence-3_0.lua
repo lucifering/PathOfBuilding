@@ -1864,27 +1864,13 @@ t_insert(globalBreakdown.BleedDuration, s_format("/ %.2f ^8(更快或较慢 debu
 						globalBreakdown.PoisonEffMult = breakdown.effMult("Chaos", resist, 0, takenInc, effMult, takenMore)
 					end
 				end
-				--额外加成
-				local multChaosDot = skillModList:Sum("BASE", dotTypeCfg, "ChaosDotMultiplier") or  0
-				local multPoison = skillModList:Sum("BASE", dotTypeCfg, "PoisonMultiplier")	 or 0	
-				local multAll=(1+multChaosDot/100+multPoison/100)
-				
-				if breakdown and  multAll~=1 then 
-				
-				breakdown.PoisonMultAllMod = { }
-				output.PoisonMultAllMod=multAll
-				 breakdown.multiShow(breakdown.PoisonMultAllMod , {
-				{ "x(1+ %.2f ^8(持续混沌伤害额外加成)", multChaosDot/100 },			
-				{ " + %.2f ^8(中毒伤害额外加成) )", multPoison/100},			 
-				total = s_format("= %.2f ^8(额外加成)", multAll)
-							})
-				end 
+			 
 				
 				--异常伤害效果
 				local effectMod = calcLib.mod(skillModList, dotCfg, "AilmentEffect")
 				--中毒消化速度
 				local rateMod = calcLib.mod(skillModList, cfg, "PoisonFaster")
-				output.PoisonDPS = baseVal * effectMod * rateMod * effMult * multAll
+				output.PoisonDPS = baseVal * effectMod * rateMod * effMult 
 				local durationBase
 				if skillData.poisonDurationIsSkillDuration then
 					durationBase = skillData.duration

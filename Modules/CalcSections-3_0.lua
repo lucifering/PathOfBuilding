@@ -615,9 +615,7 @@ return {
 		
 { label = "敌人加成", modName = { "ChaosResist", "DamageTaken", "DamageTakenOverTime", "ChaosDamageTaken", "ChaosDamageTakenOverTime" }, enemy = true },
 	}, },
-		
-{ label = "额外加成", { format = "x {3:output:PoisonMultAllMod}", 
-		{ breakdown = "PoisonMultAllMod" }, }, },
+ 
 	
 { label = "中毒 DPS", { format = "{1:output:PoisonDPS}", 
 		{ breakdown = "PoisonDPS" }, 

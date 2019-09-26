@@ -112,6 +112,7 @@ end, "显示召唤物计算面板而非玩家的.")
 							 tooltip.color = colorCodes.UNIQUE
 							
 							 tooltip:AddLine(20, colorCodes.UNIQUE.. mainMinionData.name.."                        ")
+							 tooltip:AddLine(5, colorCodes.UNIQUE.."")
 							--[[   
 							local cnList= minionModList2CN(mainMinionData.modList)
 							
@@ -122,8 +123,16 @@ end, "显示召唤物计算面板而非玩家的.")
 								end
 							end
 							]]--
-							tooltip:AddSeparator(10)	
-							 
+								
+							 if mainMinionData.modListSP then 
+								 for _, modtext in ipairs(mainMinionData.modListSP) do
+									if modtext then
+									tooltip:AddLine(16, colorCodes.RARE..modtext)
+									end
+								end
+							end
+							
+							tooltip:AddSeparator(10)
 							for _, skillId in ipairs(mainMinionData.skillList) do
 								if self.calcsEnv.data.skills[skillId] then
 								tooltip:AddLine(16, colorCodes.GEM..self.calcsEnv.data.skills[skillId].name)

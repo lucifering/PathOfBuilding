@@ -553,7 +553,12 @@ skills["ElementalHitSkeletonKnightIncursion"] = {
 		melee = true,
 		area = true,
 	},
+	 
 	baseMods = {
+		 
+		mod("PhysicalDamageConvertToFire", "BASE",100,0,0,{ type = "Condition", var = "PhysicsRandomElementFire" } ),
+		mod("PhysicalDamageConvertToCold", "BASE",  100,0,0,{ type = "Condition", var = "PhysicsRandomElementCold" }),
+		mod("PhysicalDamageConvertToLightning", "BASE",  100,0,0,{ type = "Condition", var = "PhysicsRandomElementLightning" }),
 	},
 	qualityStats = {
 	},
@@ -4127,5 +4132,95 @@ skills["CityStalkerStaticStrike"] = {
 	},
 	levels = {
 		[1] = { 60, 1000, 0, baseMultiplier = 1.25, cooldown = 3.5, levelRequirement = 1, statInterpolation = { 1, 1, 1, }, },
+	},
+}
+
+
+skills["SlaveCatcherNetThrow"] = {
+name = "炮击",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 1.6000000238419,
+	incrementalEffectiveness = 0.032000001519918,
+description = "类似怪物的一般炮击技能, 但是在击中的时候留下特殊地面效果。",
+	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+
+	baseFlags = {
+		spell = true,
+		duration = true,
+		area = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"monster_projectile_variation",
+		"projectile_spread_radius",
+		"spell_maximum_action_distance_+%",
+		"base_skill_effect_duration",
+		"ground_tar_art_variation",
+		"base_movement_velocity_+%",
+		"number_of_additional_projectiles",
+		"is_area_damage",
+		"base_is_projectile",
+		"base_deal_no_damage",
+	},
+	levels = {
+		[1] = { 5, 20, -50, 2000, 2, -80, 2, cooldown = 7, levelRequirement = 3, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+	},
+}
+skills["DeceleratingProjectile"] = {
+name = "减速弹",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_is_projectile",
+	},
+	levels = {
+		[1] = { baseMultiplier = 0.5, cooldown = 4, levelRequirement = 1, statInterpolation = { }, },
+	},
+}
+skills["SpellNovaKitava"] = {
+name = "奇塔弗法术新星",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 1.5,
+	incrementalEffectiveness = 0.035000000149012,
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		spell = true,
+		duration = true,
+		area = true,
+		
+	},
+	baseMods = {
+	skill("showAverage", true),
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_physical_damage",
+		"spell_maximum_base_physical_damage",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 0.80000001192093, 1.2000000476837, levelRequirement = 1, statInterpolation = { 3, 3, }, },
 	},
 }

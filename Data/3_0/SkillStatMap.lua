@@ -658,6 +658,16 @@ return {
 ["base_deal_no_chaos_damage"] = {
 	flag("DealNoChaos"),
 },
+["base_deal_no_damage"] = {
+	flag("DealNoPhysical"), 
+	flag("DealNoFire"), 
+	flag("DealNoCold"), 
+	flag("DealNoLightning"),
+	flag("DealNoChaos"),
+},
+
+
+
 -- Other effects
 ["base_stun_threshold_reduction_+%"] = {
 	mod("EnemyStunThreshold", "INC", nil),

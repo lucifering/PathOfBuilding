@@ -890,14 +890,17 @@ end },
 	end },
 { var = "physicsRandomElement", type = "list", ifVer = "3_0", label = "随机元素想要随机哪一个？", tooltip = "【注意】随机元素在游戏内是随机计算的，\n这里允许你选择其一种或不生效，\n所以模拟这个伤害和真实情况是会有差距的，\n新手请勿选择.", list = {{val="NONE",label="不生效"},{val="Fire",label="随机到火焰"},{val="Cold",label="随机到冰霜"},{val="Lightning",label="随机到闪电"}}, apply = function(val, modList, enemyModList)
 		if val == "Fire" then
-			modList:NewMod("Condition:PhysicsRandomElementFire", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+				modList:NewMod("Condition:PhysicsRandomElementFire", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+				modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Condition:PhysicsRandomElementFire", "FLAG", true, "Config") }, "Config", { type = "Condition", var = "Effective" })
 			 
 		elseif val == "Cold" then
 			 	modList:NewMod("Condition:PhysicsRandomElementCold", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+				modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Condition:PhysicsRandomElementCold", "FLAG", true, "Config") }, "Config", { type = "Condition", var = "Effective" })
 			
 		 
 		elseif val == "Lightning" then
 			 	modList:NewMod("Condition:PhysicsRandomElementLightning", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+				modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Condition:PhysicsRandomElementLightning", "FLAG", true, "Config") }, "Config", { type = "Condition", var = "Effective" })
 			
 		end
 	end },

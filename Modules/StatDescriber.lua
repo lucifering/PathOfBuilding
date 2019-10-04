@@ -13,6 +13,9 @@ local s_format = string.format
 local scopes = { }
 
 local function getScope(scopeName)
+	if scopeName == nil then 
+		return nil
+	end 
 	if not scopes[scopeName] then
 		local scope = LoadModule("Data/"..targetVersion.."/StatDescriptions/"..scopeName)
 		scope.name = scopeName
@@ -95,6 +98,11 @@ local function applySpecial(val, spec)
 		val[spec.v].min = val[spec.v].min / 1000
 		val[spec.v].max = val[spec.v].max / 1000
 		val[spec.v].fmt = "g"
+	elseif spec.k == "milliseconds_to_seconds_1dp" then
+		
+		val[spec.v].min = val[spec.v].min / 1000
+		val[spec.v].max = val[spec.v].max / 1000
+		val[spec.v].fmt = "g"
 	elseif spec.k == "milliseconds_to_seconds_0dp" then
 		val[spec.v].min = val[spec.v].min / 1000
 		val[spec.v].max = val[spec.v].max / 1000
@@ -131,83 +139,87 @@ end
 
 return function(stats, scopeName)
 	local rootScope = getScope(scopeName)
-
-	-- Figure out which descriptions we need, and identify them by the first stat that they describe
-	local describeStats = { }
-	for s, v in pairs(stats) do
-		if (type(v) == "number" and v ~= 0) or (type(v) == "table" and (v.min ~= 0 or v.max ~= 0)) then	
-			for depth, scope in ipairs(rootScope.scopeList) do
-				if scope[s] then
-					local descriptor = scope[scope[s]]
-					if descriptor and  descriptor.lang then
-						describeStats[descriptor.stats[1]] = { depth = depth, order = scope[s], description = scope[scope[s]] }
+		if rootScope then  
+		-- Figure out which descriptions we need, and identify them by the first stat that they describe
+		local describeStats = { }
+		for s, v in pairs(stats) do
+			if (type(v) == "number" and v ~= 0) or (type(v) == "table" and (v.min ~= 0 or v.max ~= 0)) then	
+				for depth, scope in ipairs(rootScope.scopeList) do
+					if scope[s] then
+						local descriptor = scope[scope[s]]
+						if descriptor and  descriptor.lang then
+							describeStats[descriptor.stats[1]] = { depth = depth, order = scope[s], description = scope[scope[s]] }
+						end
+						break
 					end
-					break
 				end
 			end
 		end
-	end
 
-	-- Sort them by depth/order
-	local descOrdered = { }
-	for s, descriptor in pairs(describeStats) do
-		t_insert(descOrdered, descriptor)
-	end
-	table.sort(descOrdered, function(a, b) if a.depth ~= b.depth then return a.depth > b.depth else return a.order < b.order end end)
-
-	-- Describe the stats
-	local out = { }
-	for _, descriptor in ipairs(descOrdered) do
-		local val = { }
-		for i, s in ipairs(descriptor.description.stats) do
-			if stats[s] then
-				if type(stats[s]) == "number" then
-					val[i] = { min = stats[s], max = stats[s] }
-				else
-					val[i] = stats[s]
-				end
-			else
-				val[i] = { min = 0, max = 0 }
-			end
-			val[i].fmt = "d"
+		-- Sort them by depth/order
+		local descOrdered = { }
+		for s, descriptor in pairs(describeStats) do
+			t_insert(descOrdered, descriptor)
 		end
-local desc = matchLimit(descriptor.description.lang["Simplified Chinese"], val)
-		if desc then
-			for _, spec in ipairs(desc) do
-				applySpecial(val, spec)
-			end
-			local statDesc = desc.text:gsub("%%(%d)%%", function(n) 
-				local v = val[tonumber(n)]
-				if v.min == v.max then
-					return s_format("%"..v.fmt, v.min)
-				else
-					return s_format("(%"..v.fmt.."-%"..v.fmt..")", v.min, v.max)
-				end
-			end):gsub("%%d", function() 
-				local v = val[1]
-				if v.min == v.max then
-					return s_format("%"..v.fmt, v.min)
-				else
-					return s_format("(%"..v.fmt.."-%"..v.fmt..")", v.min, v.max)
-				end
-			end):gsub("%%(%d)$(%+?)d", function(n, fmt)
-				local v = val[tonumber(n)]
-				if v.min == v.max then
-					return s_format("%"..fmt..v.fmt, v.min)
-				elseif fmt == "+" then
-					if v.max < 0 then
-						return s_format("-(%d-%d)", -v.min, -v.max)
+		table.sort(descOrdered, function(a, b) if a.depth ~= b.depth then return a.depth > b.depth else return a.order < b.order end end)
+
+		-- Describe the stats
+		local out = { }
+		for _, descriptor in ipairs(descOrdered) do
+			local val = { }
+			for i, s in ipairs(descriptor.description.stats) do
+				if stats[s] then
+					if type(stats[s]) == "number" then
+						val[i] = { min = stats[s], max = stats[s] }
 					else
-						return s_format("+(%d-%d)", v.min, v.max)
+						val[i] = stats[s]
 					end
 				else
-					return s_format("(%"..fmt..v.fmt.."-%"..fmt..v.fmt..")", v.min, v.max)
+					val[i] = { min = 0, max = 0 }
 				end
-			end):gsub("%%%%","%%")
-			for line in (statDesc.."\\n"):gmatch("([^\\]+)\\n") do
-				t_insert(out, line)
+				val[i].fmt = "d"
+			end
+	local desc = matchLimit(descriptor.description.lang["Simplified Chinese"], val)
+			if desc then
+				for _, spec in ipairs(desc) do
+					applySpecial(val, spec)
+				end
+				local statDesc = desc.text:gsub("%%(%d)%%", function(n) 
+					local v = val[tonumber(n)]
+					if v.min == v.max then
+						return s_format("%"..v.fmt, v.min)
+					else
+						return s_format("(%"..v.fmt.."-%"..v.fmt..")", v.min, v.max)
+					end
+				end):gsub("%%d", function() 
+					local v = val[1]
+					if v.min == v.max then
+						return s_format("%"..v.fmt, v.min)
+					else
+						return s_format("(%"..v.fmt.."-%"..v.fmt..")", v.min, v.max)
+					end
+				end):gsub("%%(%d)$(%+?)d", function(n, fmt)
+					local v = val[tonumber(n)]
+					if v.min == v.max then
+						return s_format("%"..fmt..v.fmt, v.min)
+					elseif fmt == "+" then
+						if v.max < 0 then
+							return s_format("-(%d-%d)", -v.min, -v.max)
+						else
+							return s_format("+(%d-%d)", v.min, v.max)
+						end
+					else
+						return s_format("(%"..fmt..v.fmt.."-%"..fmt..v.fmt..")", v.min, v.max)
+					end
+				end):gsub("%%%%","%%")
+				for line in (statDesc.."\\n"):gmatch("([^\\]+)\\n") do
+					t_insert(out, line)
+				end
 			end
 		end
-	end
-	return out
+		return out
+	end 
+	
+	return {}
+	
 end

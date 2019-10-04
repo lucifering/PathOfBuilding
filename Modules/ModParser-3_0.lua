@@ -2424,6 +2424,7 @@ local specialModList = {
 	["复苏的魔卫物理总伤害额外提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamage", "MORE", tonumber(num))},{ type = "SkillName", skillName = "魔卫复苏" } )  } end, 
 	["【复苏的魔卫】的重击攻击效果范围扩大 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("AreaOfEffect", "INC", num,{ type = "SkillId", skillId = "ZombieSlam" })})  } end, 
 	["药剂效果套用于你的魔卫和灵体身上"] = { flag("FlasksApplyToMinion", { type = "SkillName", skillNameList = { "魔卫复苏", "召唤灵体" } }) }, --备注：flasks apply to your zombies and spectres
+	["药剂效果套用于魔卫复苏和灵体"] = { flag("FlasksApplyToMinion", { type = "SkillName", skillNameList = { "魔卫复苏", "召唤灵体" } }) },
 	["【魔卫】攻击速度提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack )},{ type = "SkillName", skillName = "魔卫复苏" })  } end, 
 	["魔卫复苏攻击速度提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack )},{ type = "SkillName", skillName = "魔卫复苏" })  } end, 
 	["魔卫抗性提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num))},{ type = "SkillName", skillName = "魔卫复苏" } )  } end, 

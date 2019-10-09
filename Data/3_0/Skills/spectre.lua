@@ -4224,3 +4224,83 @@ name = "奇塔弗法术新星",
 		[1] = { 0.80000001192093, 1.2000000476837, levelRequirement = 1, statInterpolation = { 3, 3, }, },
 	},
 }
+
+
+skills["ReligiousTemplarCultistWeaponThrow"] = {
+	name = "灵体投掷",
+	hidden = true,
+	color = 2,
+	description = "复制手中的近战武器，并将此灵体投掷出去。此灵体将会向外飞出并如同回力镖一般回到你的身边，对所有碰触到的敌人造成伤害。",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, },
+	weaponTypes = {
+		["One Handed Mace"] = true,
+		["Sceptre"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["Two Handed Sword"] = true,
+		["Dagger"] = true,
+		["Staff"] = true,
+		["Two Handed Axe"] = true,
+		["Two Handed Mace"] = true,
+		["One Handed Axe"] = true,
+		["Claw"] = true,
+		["One Handed Sword"] = true,
+	},
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		attack = true,
+		projectile = true,
+	},
+	baseMods = {
+		mod("PierceChance", "BASE", 100),
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_projectile_speed_+%",
+		"active_skill_damage_+%_final",
+		"base_is_projectile",
+	},
+	levels = {
+		[1] = { 30, -43, cooldown = 3, levelRequirement = 1, statInterpolation = { 1, 1, }, },
+	},
+}
+skills["ReligiousTemplarWeaponThrow"] = {
+	name = "灵体投掷",
+	hidden = true,
+	color = 2,
+	description = "复制手中的近战武器，并将此灵体投掷出去。此灵体将会向外飞出并如同回力镖一般回到你的身边，对所有碰触到的敌人造成伤害。",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, },
+	weaponTypes = {
+		["One Handed Mace"] = true,
+		["Sceptre"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["Two Handed Sword"] = true,
+		["Dagger"] = true,
+		["Staff"] = true,
+		["Two Handed Axe"] = true,
+		["Two Handed Mace"] = true,
+		["One Handed Axe"] = true,
+		["Claw"] = true,
+		["One Handed Sword"] = true,
+	},
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		attack = true,
+		projectile = true,
+	},
+	baseMods = {
+		mod("PierceChance", "BASE", 100),
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_projectile_speed_+%",
+		"active_skill_damage_+%_final",
+		"base_is_projectile",
+	},
+	levels = {
+		[1] = { 20, -43, cooldown = 3, levelRequirement = 1, statInterpolation = { 1, 1, }, },
+	},
+}

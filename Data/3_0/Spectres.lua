@@ -2986,3 +2986,61 @@ minions["Metadata/Monsters/SlaveCatcher/SlaveCatcherKitava"] = {
 	modListSP = {
 	},
 }
+
+
+
+
+-- Heretical Guardian
+minions["Metadata/Monsters/ReligiousTemplar/ReligiousTemplarTwoHandedKitava"] = {
+	name = "异教卫士",
+	life = 1.88,
+	energyShield = 0.16,
+	armour = 0.4,
+	fireResist = 20,
+	coldResist = 20,
+	lightningResist = 20,
+	chaosResist = 0,
+	damage = 1.25,
+	damageSpread = 0.2,
+	attackTime = 1.95,
+	attackRange = 11,
+	accuracy = 1,
+	weaponType1 = "Two Handed Sword",
+	skillList = {
+		"Melee",
+		"ReligiousTemplarCultistWeaponThrow",
+		"MonsterProximityShield",
+	},
+	modList = {
+	},
+	modListSP = {
+	},
+}
+
+-- Temple Guardian
+
+minions["Metadata/Monsters/ReligiousTemplar/ReligiousTemplarTwoHandedPure"] = {
+	name = "神寺卫士",
+	life = 1.88,
+	energyShield = 0.16,
+	armour = 0.4,
+	fireResist = 20,
+	coldResist = 20,
+	lightningResist = 20,
+	chaosResist = 0,
+	damage = 1.25,
+	damageSpread = 0.2,
+	attackTime = 1.95,
+	attackRange = 11,
+	accuracy = 1,
+	weaponType1 = "Two Handed Sword",
+	skillList = {
+		"Melee",
+		"ReligiousTemplarWeaponThrow",
+		"MonsterProximityShield",
+	},
+	modList = {
+	},
+	modListSP = {
+	},
+}

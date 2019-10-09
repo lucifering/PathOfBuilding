@@ -1864,10 +1864,10 @@ skills["SupportMultistrike"] = {
 			mod("Speed", "MORE", nil, bit.bor(ModFlag.Attack, ModFlag.Melee)),
 		},
 		["multistrike_damage_+%_final_on_first_repeat"] = {
-			mod("Damage", "MORE", nil, 0,0, { type = "Condition", var = "MultistrikeFirstRepeat" }),
+			mod("Damage", "MORE", nil, ModFlag.Melee,0, { type = "Condition", var = "MultistrikeFirstRepeat" }),
 		},
 		["multistrike_damage_+%_final_on_second_repeat"] = {
-			mod("Damage", "MORE", nil, 0,0, { type = "Condition", var = "MultistrikeSecondRepeat" }),
+			mod("Damage", "MORE", nil, ModFlag.Melee,0, { type = "Condition", var = "MultistrikeSecondRepeat" }),
 		},
 	},
 	baseMods = {

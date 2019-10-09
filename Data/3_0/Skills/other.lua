@@ -2054,7 +2054,7 @@ fromItem = true,
             mod("Damage", "MORE", nil, ModFlag.Spell, 0, { type = "Multiplier", var = "spellEchoCount" }),
         },
         ["support_greater_spell_echo_area_of_effect_+%_per_repeat"] = {
-            mod("AreaOfEffect", "MORE", nil, 0, 0, { type = "Multiplier", var = "spellEchoCount" }),
+            mod("AreaOfEffect", "MORE", nil, ModFlag.Spell, 0, { type = "Multiplier", var = "spellEchoCount" }),
         },
     }, 
 	baseMods = {

@@ -4467,6 +4467,11 @@ skills["VaalLightningTrap"] = {
 	qualityStats = {
 		{ "shocked_ground_base_magnitude_override", 0.25 },
 	},
+	statMap = {
+		["shocked_ground_base_magnitude_override"] = {
+		mod("SelfShockEffect", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "【瓦尔.闪电陷阱】感电地面" }),			 
+		},
+	},
 	stats = {
 		"spell_minimum_base_lightning_damage",
 		"spell_maximum_base_lightning_damage",
@@ -5376,10 +5381,10 @@ skills["MortarBarrageMine"] = {
 			mod("SelfFireMax", "BASE", nil, 0, 0, { type = "Limit", limitVar = "PyroclastSelfFireMaxLimit" }, { type = "GlobalEffect", effectType = "AuraDebuff", effectStackVar = "ActiveMineCount" }),
 		},
 		["mortar_barrage_mine_minimum_added_fire_damage_taken_limit"] = {
-			mod("Multiplier:PyroclastSelfFireMinLimit", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "AuraDebuff", effectName = "Pyroclast Mine Limit" }),
+mod("Multiplier:PyroclastSelfFireMinLimit", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "AuraDebuff", effectName = "火屑地雷数量" }),
 		},
 		["mortar_barrage_mine_maximum_added_fire_damage_taken_limit"] = {
-			mod("Multiplier:PyroclastSelfFireMaxLimit", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "AuraDebuff", effectName = "Pyroclast Mine Limit" }),
+mod("Multiplier:PyroclastSelfFireMaxLimit", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "AuraDebuff", effectName = "火屑地雷数量" }),
 		},
 	},
 	baseFlags = {
@@ -7311,7 +7316,7 @@ skills["Skitterbots"] = {
 	statMap = {
 		["skitterbots_trap_mine_damage_+%_final"] = {
 			mod("Damage", "MORE", nil, 0, bit.bor(KeywordFlag.Mine, KeywordFlag.Trap), { type = "GlobalEffect", effectType = "Buff" }),
-		},
+		}, 
 	},
 	baseFlags = {
 		spell = true,

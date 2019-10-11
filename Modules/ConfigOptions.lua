@@ -810,6 +810,10 @@ end },
 { var = "conditionEnemyShocked", type = "check", label = "敌人被感电?", tooltip = "启用“对感电敌人什么什么”的词缀,\n这也会让敌人感电承受额外伤害.", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Condition:Shocked", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
+{ var = "baseShockEffect", type = "integer", label = "强制固定感电的伤害加成", tooltip = "强制固定感电的伤害加成，其他不会感电加成不起作用，最高是 承受的总伤害额外提高 50%", ifOption = "conditionEnemyShocked",
+		apply = function(val, modList, enemyModList) 
+			modList:NewMod("EnemyShockEffect", "OVERRIDE", m_min(tonumber(val), 50), "Config") 
+	end },
 { var = "multiplierFreezeShockIgniteOnEnemy", type = "count", label = "敌人身上的点燃感电冰缓数量:", ifMult = "FreezeShockIgniteOnEnemy", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:FreezeShockIgniteOnEnemy", "BASE", val, "Config", { type = "Condition", var = "Effective" })
 	end },

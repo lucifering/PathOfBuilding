@@ -301,6 +301,47 @@ local function runSkillFunc(name)
 	if skillModList:Flag(nil, "TransfigurationOfSoul") then
 		skillModList:NewMod("Damage", "INC", m_floor(skillModList:Sum("INC", nil, "EnergyShield") * 0.3), "灵魂幻化", ModFlag.Spell)
 	end
+	--处理感电
+	if enemyDB:Flag(nil, "Shock") then
+		local overrideEffect = skillModList:Override(nil, "EnemyShockEffect") 
+		local baseEffect = 0.1
+		for i, mod in ipairs(skillModList:Tabulate("BASE", {}, "EnemyShockEffect")) do
+			 
+			baseEffect = m_max(baseEffect, mod.mod.value)
+		end
+		
+		local increase = calcLib.mod(skillModList, nil, "EnemyShockEffect")
+		local hitEffect = increase * baseEffect
+print("感电基础效果0："..hitEffect)
+		local enemyBaseEffect = 0
+		for i, mod in ipairs(enemyDB:Tabulate("BASE", {}, "SelfShockEffect")) do
+			enemyBaseEffect = m_max(enemyBaseEffect, mod.mod.value)
+		end
+		hitEffect = m_max(enemyBaseEffect, hitEffect)
+
+print("感电基础效果1："..hitEffect)
+if overrideEffect then 
+print("感电基础效强制1："..overrideEffect)
+end
+
+		local cappedEffect = overrideEffect or m_min(50, hitEffect)
+		output.ShockEffect = cappedEffect
+		enemyDB:NewMod("DamageTaken", "INC", cappedEffect, "Shock")
+
+		if breakdown then
+			print("breakdown>>"..cappedEffect)
+			breakdown.ShockEffect = { 
+				"敌人承受的伤害提高:",
+			}
+			if overrideEffect ~= nil or hitEffect < 50 then
+				t_insert(breakdown.ShockEffect, s_format("%d%%", cappedEffect))
+			else
+				t_insert(breakdown.ShockEffect, s_format("50%% (%d%%)", hitEffect))
+				
+			end
+		end
+	end
+	
 	
 	local isAttack = skillFlags.attack
 	runSkillFunc("preSkillTypeFunc")

@@ -823,7 +823,7 @@ end },
 { var = "conditionEnemyIntimidated", type = "check", ifVer = "3_0", label = "敌人被恐吓?", tooltip = "这个会附加词缀:\n提高 10% 敌人承受的攻击伤害", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("DamageTaken", "INC", 10, "Intimidate", ModFlag.Attack)
 	end },
-{ var = "conditionEnemyUnnerved", type = "check", ifVer = "3_0", label = "敌人被威吓?", tooltip = "这个会附加词缀:\n提高 10% 敌人承受的法术伤害", apply = function(val, modList, enemyModList)
+{ var = "conditionEnemyUnnerved", type = "check", ifVer = "3_0", label = "敌人被恐惧?", tooltip = "这个会附加词缀:\n提高 10% 敌人承受的法术伤害", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("DamageTaken", "INC", 10, "Unnerve", ModFlag.Spell)
 	end },
 	

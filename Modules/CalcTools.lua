@@ -77,6 +77,7 @@ end
 
 -- Check if given support skill can support the given active skill
 function calcLib.canGrantedEffectSupportActiveSkill(grantedEffect, activeSkill)
+	 
 	if grantedEffect.unsupported or activeSkill.activeEffect.grantedEffect.cannotBeSupported then
 		return false
 	end
@@ -86,9 +87,12 @@ function calcLib.canGrantedEffectSupportActiveSkill(grantedEffect, activeSkill)
 	if activeSkill.summonSkill then
 		return calcLib.canGrantedEffectSupportActiveSkill(grantedEffect, activeSkill.summonSkill)
 	end
-	if grantedEffect.excludeSkillTypes[1] and calcLib.doesTypeExpressionMatch(grantedEffect.excludeSkillTypes, activeSkill.skillTypes) then
+	if grantedEffect.excludeSkillTypes and grantedEffect.excludeSkillTypes[1] and calcLib.doesTypeExpressionMatch(grantedEffect.excludeSkillTypes, activeSkill.skillTypes) then
 		return false
 	end
+	if grantedEffect.requireSkillTypes == nil then 
+		return false
+	end 
 	return not grantedEffect.requireSkillTypes[1] or calcLib.doesTypeExpressionMatch(grantedEffect.requireSkillTypes, activeSkill.skillTypes, not grantedEffect.ignoreMinionTypes and activeSkill.minionSkillTypes)
 end
 

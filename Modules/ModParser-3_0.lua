@@ -195,8 +195,6 @@ local modNameList = {
 	["格挡法术伤害"] = "SpellBlockChance", --备注：to block spells
 	["攻击及法术伤害格挡几率"] = { "BlockChance", "SpellBlockChance" },
 	["召唤圣物数量上限"] = "ActiveHolyRelicLimit",
-	["持续冰霜伤害效果"] = { "ColdDamage", flags = ModFlag.Dot },
-	["冰霜持续伤害加成"] = { "ColdDamage", flags = ModFlag.Dot },
 	["非异常状态混沌持续伤害加成"] = "NonAilmentChaosDotMultiplier",--non-ailment chaos damage over time multiplier
 	["额外总冰霜持续伤害效果"] = "ColdDotMultiplier",--cold damage over time multiplier
 	["暴击球数量下限"] = "PowerChargesMin",
@@ -212,6 +210,8 @@ local modNameList = {
 	["非异常状态混沌伤害持续时间加成"] = "NonAilmentChaosDotMultiplier",
 		["冰霜伤害持续时间加成"] = "ColdDotMultiplier",
 	["持续冰霜伤害加成"] = "ColdDotMultiplier",
+	["持续冰霜伤害效果"] = "ColdDotMultiplier",
+	["冰霜持续伤害加成"] =  "ColdDotMultiplier",
 	["持续物理伤害加成"] = "PhysicalDotMultiplier",
 	["持续火焰伤害加成"] = "FireDotMultiplier",
 	["持续混沌伤害加成"] = "ChaosDotMultiplier",
@@ -1418,7 +1418,9 @@ local gemIdLookup = {
 local function  FuckSkillSupportCnName(support_skillname)
 
 support_skillname=support_skillname:gsub("魔力减免","启迪辅助"):gsub("遥控地雷","链爆地雷辅助")
-
+:gsub("【召唤幻灵】","召唤幻影辅助")
+:gsub("召唤幻灵辅助","召唤幻影辅助")
+:gsub("召唤幻灵","召唤幻影辅助")
 
 return gemIdLookup[support_skillname] or gemIdLookup[support_skillname:gsub("^提高","")] or gemIdLookup[support_skillname.."(辅)"] or gemIdLookup[support_skillname.."（辅）"]   or gemIdLookup[support_skillname:gsub("^提高","增加").."(辅)"]  
  or gemIdLookup[support_skillname:gsub("^提高","增加").."（辅）"]  
@@ -2212,6 +2214,7 @@ local specialModList = {
 	mod("IgniteBurnFaster", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" }) ,
 	mod("BleedFaster", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" }) ,
 	 } end, 
+	["被【怨毒光环】影响时，([%+%-]?%d+)%% 伤害持续时间加成"]= function(num) return {  mod("DotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
 	["受【怨毒光环】影响时，([%+%-]?%d+)%% 非异常状态混沌伤害持续时间加成"]= function(num) return {  mod("NonAilmentChaosDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
 	["受【怨毒光环】影响时，([%+%-]?%d+)%% 持续冰霜伤害加成"]= function(num) return {  mod("ColdDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
 	["受【怨毒光环】影响时，([%+%-]?%d+)%% 冰霜伤害持续时间加成"]= function(num) return {  mod("ColdDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
@@ -3893,9 +3896,9 @@ local jewelThresholdFuncs = {
 	["范围内含的敏捷和力量总计 40 点时，【元素打击】的闪电伤害降低 50%"] = getThreshold({"Dex","Str"}, "LightningDamage", "MORE", -50, { type = "SkillName", skillName = "元素打击" }), --备注：With 40 total Dexterity and Strength in Radius, Elemental Hit deals 50% less Lightning Damage
 	
 	
-	["范围内智慧和敏捷总计 40 点时，【元素打击】和【狂野打击】的总闪电伤害额外降低 50%"] =getThreshold({"Dex","Str"}, "LightningDamage", "MORE", -50, { type = "SkillName", skillNameList = { "元素打击", "野性打击" }}),
+	["范围内敏捷和力量总计 40 点时，【元素打击】和【狂野打击】的总闪电伤害额外降低 50%"] =getThreshold({"Dex","Str"}, "LightningDamage", "MORE", -50, { type = "SkillName", skillNameList = { "元素打击", "野性打击" }}),
 	["范围内智慧和敏捷总计 40 点时，【元素打击】和【狂野打击】的总火焰伤害额外降低 50%"] =getThreshold({"Dex","Str"}, "FireDamage", "MORE", -50, { type = "SkillName", skillNameList = { "元素打击", "野性打击" }}),
-	["范围内智慧和敏捷总计 40 点时，【元素打击】和【狂野打击】的总冰霜伤害额外降低 50%"] =getThreshold({"Dex","Str"}, "ColdDamage", "MORE", -50, { type = "SkillName", skillNameList = { "元素打击", "野性打击" }}),
+	["范围内力量和智慧总计 40 点时，【元素打击】和【狂野打击】的总冰霜伤害额外降低 50%"] =getThreshold({"Dex","Str"}, "ColdDamage", "MORE", -50, { type = "SkillName", skillNameList = { "元素打击", "野性打击" }}),
 	
 	
 }

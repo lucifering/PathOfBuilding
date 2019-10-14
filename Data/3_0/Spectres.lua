@@ -3044,3 +3044,28 @@ minions["Metadata/Monsters/ReligiousTemplar/ReligiousTemplarTwoHandedPure"] = {
 	modListSP = {
 	},
 }
+
+
+
+minions["Metadata/Monsters/HalfSkeleton/HalfSkeletonRanged"] = {
+	name = "裂脏锋刃",
+	life = 1.21,
+	fireResist = 20,
+	coldResist = 20,
+	lightningResist = 20,
+	chaosResist = 0,
+	damage = 1.16,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 10,
+	accuracy = 1,
+	weaponType1 = "One Handed Mace",
+	skillList = {
+		"Melee",
+		"HalfSkeletonProjectile",
+	},
+	modList = {
+	},
+	modListSP = {
+	},
+} 

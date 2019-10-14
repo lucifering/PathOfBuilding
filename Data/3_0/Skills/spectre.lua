@@ -4304,3 +4304,32 @@ skills["ReligiousTemplarWeaponThrow"] = {
 		[1] = { 20, -43, cooldown = 3, levelRequirement = 1, statInterpolation = { 1, 1, }, },
 	},
 }
+
+
+skills["HalfSkeletonProjectile"] = {
+	name = "半魔侍投射",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Hit] = true, [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.5,
+	baseFlags = {
+		attack = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"monster_projectile_variation",
+		"spell_maximum_action_distance_+%",
+		"skill_art_variation",
+		"active_skill_attack_speed_+%_final",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+	},
+	levels = {
+		[1] = { 11, -60, 8, -25, damageEffectiveness = 0.5, baseMultiplier = 0.5, levelRequirement = 2, statInterpolation = { 1, 1, 1, 1, }, },
+	},
+}

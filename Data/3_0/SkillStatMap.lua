@@ -558,6 +558,11 @@ return {
 ["base_chance_to_ignite_%"] = {
 	mod("EnemyIgniteChance", "BASE", nil),
 },
+["always_ignite"] = {
+	mod("EnemyIgniteChance", "BASE", 100),
+		 
+},
+
 ["base_chance_to_shock_%"] = {
 	mod("EnemyShockChance", "BASE", nil),
 },

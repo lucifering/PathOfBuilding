@@ -493,8 +493,10 @@ self.controls.mainSkillLabel = new("LabelControl", {"TOPLEFT",self.anchorSideBar
 	function self.controls.mainSkillMinion.CanReceiveDrag(control, type, value)
 		if type == "Item" and control.list[control.selIndex] and control.list[control.selIndex].itemSetId then
 			local mainSocketGroup = self.skillsTab.socketGroupList[self.mainSocketGroup]
-			local minionUses = mainSocketGroup.displaySkillList[mainSocketGroup.mainActiveSkill].activeEffect.grantedEffect.minionUses
-			return minionUses and minionUses[value:GetPrimarySlot()] -- O_O
+			if mainSocketGroup then 
+				local minionUses = mainSocketGroup.displaySkillList[mainSocketGroup.mainActiveSkill].activeEffect.grantedEffect.minionUses
+				return minionUses and minionUses[value:GetPrimarySlot()] -- O_O
+			end 
 		end
 	end
 	function self.controls.mainSkillMinion.ReceiveDrag(control, type, value, source)

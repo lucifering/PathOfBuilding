@@ -1474,6 +1474,7 @@ local specialModList = {
 	["(%d+)%% 法术伤害格挡几率"] = function(num) return {  mod("SpellBlockChance", "BASE", num) } end,  
 	["(%d+)%% 法术格挡几率"] = function(num) return {  mod("SpellBlockChance", "BASE", num) } end,  
 	["(%d+)%% 攻击伤害格挡率"] = function(num) return {  mod("BlockChance", "BASE", num) } end,  
+	["被诅咒时法术伤害格挡几率提高 (%d+)%%"]= function(num) return {  mod("SpellBlockChance", "BASE", num,{ type = "Condition", var = "Cursed" })  } end,
 	--处理【狂怒】和【狂怒】2个不同技能的附魔， 国服特别优秀的翻译  
 	["【狂怒】的伤害提高 (%d+)%%"]= function(num) return {  
 				mod("Damage", "INC", num, { type = "SkillId", skillId = "Frenzy" })			 
@@ -2600,6 +2601,7 @@ local specialModList = {
 	["对传奇敌人时，总伤害额外提高 (%d+)%%"] = function(num) return { mod("Damage", "MORE", num,{ type = "ActorCondition", actor = "enemy", var = "RareOrUnique" }) } end,
 	["周围有稀有或传奇敌人时，攻击速度提高 (%d+)%%"] = function(num) return { mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack,{ type = "ActorCondition", actor = "enemy", var = "RareOrUnique" }) } end,
 	["周围有稀有或传奇敌人时，每秒回复 (%d+) 能量护盾"] = function(num) return { mod("EnergyShieldRegen", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "RareOrUnique" }) } end,
+	["每装备一个【塑界者物品】，获得额外混沌伤害，等同于元素伤害的 (%d+)%%"]= function(num) return {  mod("ElementalDamageGainAsChaos", "BASE", num,{ type = "Multiplier", varList = { "ShaperItem" } } )  } end,
 	["每装备一个塑界者物品，获得额外混沌伤害，其数值等同于元素伤害的 (%d+)%%"]= function(num) return {  mod("ElementalDamageGainAsChaos", "BASE", num,{ type = "Multiplier", varList = { "ShaperItem" } } )  } end,
 	["每装备 1 个【塑界之器】，便获得额外混沌伤害，其数值等同于火焰、冰霜、闪电伤害的 (%d+)%%"]= function(num) return {  mod("ElementalDamageGainAsChaos", "BASE", num,{ type = "Multiplier", varList = { "ShaperItem" } } )  } end,
 	["每装备 1 个【塑界之器】，便获得额外混沌伤害，其数值等同于元素伤害的 (%d+)%%"]= function(num) return {  mod("ElementalDamageGainAsChaos", "BASE", num,{ type = "Multiplier", varList = { "ShaperItem" } } )  } end,

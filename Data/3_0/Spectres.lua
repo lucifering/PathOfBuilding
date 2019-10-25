@@ -3069,3 +3069,32 @@ minions["Metadata/Monsters/HalfSkeleton/HalfSkeletonRanged"] = {
 	modListSP = {
 	},
 } 
+
+
+			
+--Sun Bleached Vanguard
+minions["Metadata/Monsters/SkeletonSoldier/SkeletonSoldierRangedTornadoShotBleached"] = {
+	name = "阳洁先锋",
+	life = 1.1,
+	fireResist = 0,
+	coldResist = 0,
+	lightningResist = 40,
+	chaosResist = 0,
+	damage = 1.1,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 40,
+	accuracy = 1,
+	weaponType1 = "Bow",
+	skillList = {
+		"Melee",
+		"SkeletonSoldierTornadoShot",
+	},
+	modList = {
+		-- MonsterNecromancerRaisable [undead_description = 1]
+	},
+	modListSP = {
+		"亡灵生物", 
+	},
+}
+

@@ -4333,3 +4333,38 @@ skills["HalfSkeletonProjectile"] = {
 		[1] = { 11, -60, 8, -25, damageEffectiveness = 0.5, baseMultiplier = 0.5, levelRequirement = 2, statInterpolation = { 1, 1, 1, 1, }, },
 	},
 }
+
+
+
+skills["SkeletonSoldierTornadoShot"] = {
+	name = "龙卷射击",
+	hidden = true,
+	color = 2,
+	description = "射出一只穿透之箭直到它抵达目标地. 当它抵达目标地后, 会在该地产生一道龙卷, 向全方位射出飞箭.",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Triggerable] = true, },
+	weaponTypes = {
+		["Bow"] = true,
+	},
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		attack = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"active_skill_damage_+%_final",
+		"number_of_additional_projectiles",
+		"tornado_shot_num_of_secondary_projectiles",
+		"base_is_projectile",
+		"skill_can_fire_arrows",
+	},
+	levels = {
+		[1] = { -30, 0, 3, levelRequirement = 2, statInterpolation = { 1, 1, 1, }, },
+		[2] = { -35, 0, 3, levelRequirement = 38, statInterpolation = { 1, 1, 1, }, },
+		[3] = { -40, 0, 3, levelRequirement = 54, statInterpolation = { 1, 1, 1, }, },
+	},
+}

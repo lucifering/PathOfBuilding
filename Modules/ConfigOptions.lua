@@ -85,6 +85,9 @@ return {
 { label = "【蛛之势】:", ifSkill = "蛛之势" },
 { var = "aspectOfTheSpiderWebStacks", type = "count", label = "# 蜘蛛网层数:", ifSkill = "蛛之势", apply = function(val, modList, enemyModList)
 modList:NewMod("ExtraSkillMod", "LIST", { mod = modLib.createMod("Multiplier:SpiderWebApplyStack", "BASE", val) }, "Config", { type = "SkillName", skillName = "蛛之势" })
+enemyModList:NewMod("Multiplier:Spider's WebStack", "BASE", val, "Config")
+ 
+
 	end },
 
 { label = "旗帜技能:", ifSkillList = { "恐怖之旗", "战旗" } },

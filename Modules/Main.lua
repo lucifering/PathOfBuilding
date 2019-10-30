@@ -125,7 +125,7 @@ local newItem = new("Item", targetVersion, "稀 有 度: 稀有\n"..raw)
 					if dat[2] then
 						out:write(',"', dat[2]:gsub("\n","\\n"), '"}')
 					else
-						out:write(',nil}')
+						out:write(',nil}\n')
 					end
 				end
 			end

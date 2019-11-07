@@ -269,3 +269,5 @@ ModelManifest.xml
 /Export/skillpopup_stat_filters.txt
 missingSkill.txt
 Data/新建文本文档.txt
+*.dll
+*.exe

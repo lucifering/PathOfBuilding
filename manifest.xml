@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PoBVersion>
-	<Version number="1.4.152.20" platform="win32" branch="master"/>
+	<Version number="1.4.152.21" platform="win32" branch="master"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/runtime-win32.zip" part="runtime" platform="win32"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/" part="program"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/tree-2_6.zip" part="tree-2_6"/>
@@ -8,7 +8,6 @@
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/tree-3_7.zip" part="tree-3_7"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/tree-3_8.zip" part="tree-3_8"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/tree.zip" part="tree"/>
-	
 	<File sha1="304286bc46f14c1040df384c681dd3c789307d44" name="Launch.lua" part="program"/>
 <File sha1="790585e992afce3c61b7da60b6bd37865bc8e35c" name="GameVersions.lua" part="program"/>
 <File sha1="4f17937f2b37784e169a3792b235f2a0a3961e61" name="UpdateApply.lua" part="program"/>
@@ -103,7 +102,7 @@
 <File sha1="82408f721cfc0ce84b4153f491a4eb7ab37e87bf" name="Data/2_6/Skills/sup_str.lua" part="program"/>
 <File sha1="cbb2bfd5645da90015caf060d3bf8c00cfe60d47" name="Data/2_6/SkillStatMap.lua" part="program"/>
 <File sha1="f0c24a3fde988ebe26481c51685ab96f375b5811" name="Data/Global.lua" part="program"/>
-<File sha1="956a73d4e5af03d8e357f431050f975c83febb86" name="Data/New.lua" part="program"/>
+<File sha1="12f630c61a9562075cec7191194d541ba6394820" name="Data/New.lua" part="program"/>
 <File sha1="2b05dbbf9cafdc37b1f7b1daf856299ac093f61c" name="Data/3_0/Bases/amulet.lua" part="program"/>
 <File sha1="6b76afb682d02505b99e9ee098db06f68b634a79" name="Data/3_0/Bases/axe.lua" part="program"/>
 <File sha1="2f7ae68ca81bebf08d2b907de994e5e40a0c1db2" name="Data/3_0/Bases/belt.lua" part="program"/>
@@ -130,7 +129,7 @@
 <File sha1="259bf48c1d6c7b029edd940e88e8252f8ea89b9a" name="Data/3_0/Gems.lua" part="program"/>
 <File sha1="2cf729b24044b8d014d68ff0385348935fe67597" name="Data/3_0/Minions.lua" part="program"/>
 <File sha1="ae310ea401f6ad8a10e048d57cbc10178d1f4da3" name="Data/3_0/Misc.lua" part="program"/>
-<File sha1="373dee746411543206d66dee66b12df681f5ea0e" name="Data/3_0/ModCache.lua" part="program"/>
+<File sha1="8ac921a9745d40a3fdb2b67ac94f7737b4fed385" name="Data/3_0/ModCache.lua" part="program"/>
 <File sha1="5b831edeb8f800fe6a417f88b11d5316968f6a10" name="Data/3_0/ModFlask.lua" part="program"/>
 <File sha1="f4d70ff0d280215f387fef697b84d4f0dae1ba23" name="Data/3_0/ModItem.lua" part="program"/>
 <File sha1="8ff7940c3027ccebe1da437d54c62f6b4fbcc471" name="Data/3_0/ModJewel.lua" part="program"/>
@@ -192,11 +191,11 @@
 <File sha1="180e95385b42746bc5c66d9d77c57a41faeb2320" name="Modules/ItemTools.lua" part="program"/>
 <File sha1="4061417646abd683f40379c458e3cc6268c1fef8" name="Modules/Main.lua" part="program"/>
 <File sha1="64693eb3e1d7d356b8b50bdc61a622a6e3bb33c2" name="Modules/ModParser-2_6.lua" part="program"/>
-<File sha1="ba195537650c44a6b5d98e265ea567f1034e5721" name="Modules/ModParser-3_0.lua" part="program"/>
+<File sha1="651d88fc1493760c1f8421a0c0f1661147c059e3" name="Modules/ModParser-3_0.lua" part="program"/>
 <File sha1="3d2e7a7be246006cb4344467b695c1999cf7ac44" name="Modules/ModTools.lua" part="program"/>
 <File sha1="33ff73df81c2a698de84bcee06c4da8e535a96ab" name="Modules/StatDescriber.lua" part="program"/>
 <File sha1="5669ecec84ac3a9153bbe004bd36e5930d2f1789" name="Classes/AboutTab.lua" part="program"/>
-<File sha1="766be2376ea123de01dd4c2419b6d2ae02bff846" name="changelog.txt" part="program"/>
+<File sha1="b207c53aa2841a79ca9429628cfefa712eff216c" name="changelog.txt" part="program"/>
 <File sha1="bd4ac0634d3673afbfb9bba0d7673db40ba3b5b3" name="Launch.dl" part="program"/>
 <File sha1="00d6b3e51b712e14e077b7d8e1efa73dd68d89ae" name="Data/3_0/StatDescriptions/active_skill_gem_stat_descriptions.lua" part="program"/>
 <File sha1="66e334c3ea9fba6d3a7ed34e9e5b94f6f8655cef" name="Data/3_0/StatDescriptions/aura_skill_stat_descriptions.lua" part="program"/>

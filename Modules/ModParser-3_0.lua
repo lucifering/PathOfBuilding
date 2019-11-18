@@ -1676,10 +1676,14 @@ local specialModList = {
 		:gsub("范围效果技能","aoe")
 		, key = "quality", value = tonumber(num) }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	-- 一些涉及到技能名称的
+	["奉献技能的持续时间降低 (%d+)%%"] =  function(num) return {  mod("Duration", "INC", -num,
+	{ type = "SkillName", skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" ,"血脉奉献"} } )  } end,
+	["奉献技能的效果降低 (%d+)%%"] = function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("BuffEffect", "INC", -num) }, { type = "SkillName",
+	 skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" ,"血脉奉献"} }) } end,   
 	["你的奉献技能会同时影响你"] = { mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "buffNotPlayer", value = false }) },
-		{ type = "SkillName", skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" } }) },	
+		{ type = "SkillName", skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" ,"血脉奉献"} }) },	
 	["你的奉献技能对自身的效果降低 (%d+)%%"] = function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("BuffEffectOnPlayer", "INC", -num) }, { type = "SkillName",
-	 skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" } }) } end, 
+	 skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" ,"血脉奉献"} }) } end, 
 	["【闪现射击】和【魅影射击】冷却回复速度提高 (%d+)%%"] = function(num) return { --备注：(%d+)%% increased blink arrow and mirror arrow cooldown recovery speed
 			mod("CooldownRecovery", "INC", num, { type = "SkillName", skillName = "闪现射击" }),
 			mod("CooldownRecovery", "INC", num, { type = "SkillName", skillName = "魅影射击" }),
@@ -2133,6 +2137,7 @@ local specialModList = {
 	["该武器对被感电敌人的击中伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", num,nil,ModFlag.Hit,{ type = "Condition", var = "{Hand}Attack" } ,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end,
 	["近期内你若使用过移动技能，技能可以额外发射 (%d+) 个投射物"]= function(num) return {  mod("ProjectileCount", "BASE", num, { type = "Condition", var = "UsedMovementSkillRecently" })  } end,
 	["近期内你若使用过移动技能，则每秒回复 (%d+) 魔力"]= function(num) return {  mod("ManaRegen", "BASE", num, { type = "Condition", var = "UsedMovementSkillRecently" })  } end,
+	["技能可以额外发射 (%d+) 个投射物"]= function(num) return {  mod("ProjectileCount", "BASE", num)  } end,
 	["近期内你若被击中，技能可以额外发射 (%d+) 个投射物"]= function(num) return {  mod("ProjectileCount", "BASE", num, { type = "Condition", var = "BeenHitRecently" })  } end,
 	["武器上的每个红色插槽使物理伤害提高 (%d+)%%"]= function(num) return {  mod("PhysicalDamage", "INC", num,nil, ModFlag.Weapon, { type = "Multiplier", var = "RedSocketIn{SlotName}" })  } end,
 	["每个绿色插槽会使全局攻击速度提高 (%d+)%%"]= function(num) return {  mod("Speed", "INC", num,nil, ModFlag.Attack, { type = "Global" }, { type = "Multiplier", var = "GreenSocketIn{SlotName}" })  } end,
@@ -2946,6 +2951,9 @@ local specialModList = {
 			flag("Elusive"),
 			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "Elusive" }) 
 	    } end, 
+	["当你施放法术, 牺牲所有魔力，附加等同於牺牲魔力 (%d+)%% 的最大闪电伤害，持续 4 秒"] =
+	 function(num)  return { mod("LightningMax", "BASE", 1, 
+	 { type = "PerStat", stat = "ManaUnreserved", div = (100/tonumber(num))})   } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

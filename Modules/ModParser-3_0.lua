@@ -3720,9 +3720,125 @@ local jewelOtherFuncs = {
 	["将范围内天赋所给予的智慧转换成力量"] = getSimpleConv({"Int"}, "Str", "BASE", true), --备注：Intelligence from Passives in Radius is Transformed to Strength
 	["将范围内天赋所给予的敏捷转换成智慧"] = getSimpleConv({"Dex"}, "Int", "BASE", true), --备注：Dexterity from Passives in Radius is Transformed to Intelligence
 	["将范围内天赋所给予的智慧转换成敏捷"] = getSimpleConv({"Int"}, "Dex", "BASE", true), --备注：Intelligence from Passives in Radius is Transformed to Dexterity
-	["范围内生命的增减转换成能量护盾"] = getSimpleConv({"Life"}, "EnergyShield", "INC", true), --备注：Increases and Reductions to Life in Radius are Transformed to apply to Energy Shield
+	["范围内生命的增减转换成能量护盾"] = function(node, out, data)  --备注：Increases and Reductions to Life in Radius are Transformed to apply to Energy Shield
+	 srcList={"Life"}
+	 dst="EnergyShield" 
+	 thetype="INC"	  
+		if node then
+			for _, src in pairs(srcList) do
+				for _, mod in ipairs(node.modList) do
+				
+				if mod.name=='MinionModifier' and mod.type =='LIST' then 
+					
+					if mod.value and mod.value.mod then 
+					
+						local moditem=mod.value.mod;
+						if moditem.name == src and moditem.type == thetype then
+							
+							local dm={mod={
+							source=moditem.source,
+							value= -moditem.value,
+							type=moditem.type,
+							keywordFlags=moditem.keywordFlags,
+							name=moditem.name,
+							flags=moditem.flags
+							}}	
+							local nm={mod={
+							source=moditem.source,
+							value= moditem.value,
+							type=moditem.type,
+							keywordFlags=moditem.keywordFlags,
+							name=dst,
+							flags=moditem.flags
+							}}							
+							out:MergeNewMod(mod.name, mod.type, dm , mod.source, mod.flags, mod.keywordFlags, unpack(mod))							
+							out:MergeNewMod(mod.name, mod.type, nm, mod.source, mod.flags, mod.keywordFlags, unpack(mod))	
+
+ 							
+						end
+						
+					end 
+					print_r(mod.value.mod)
+				elseif mod.name =='TotemLife' and mod.type == thetype then
+					out:MergeNewMod('TotemLife', mod.type, -mod.value, mod.source, mod.flags, mod.keywordFlags, unpack(mod))
+					out:MergeNewMod('TotemEnergyShield', mod.type, mod.value, mod.source, mod.flags, mod.keywordFlags, unpack(mod))
+										
+				else 
+					if mod.name == src and mod.type == thetype then
+						 
+						out:MergeNewMod(src, mod.type, -mod.value, mod.source, mod.flags, mod.keywordFlags, unpack(mod))
+						out:MergeNewMod(dst, mod.type, mod.value, mod.source, mod.flags, mod.keywordFlags, unpack(mod))
+					end
+				
+				end
+				
+					
+				end	
+			end
+		end
+	end,
+--	= getSimpleConv({"Life"}, "EnergyShield", "INC", true),
 	["范围内能量护盾的增减转换成 200% 的护甲"] = getSimpleConv({"EnergyShield"}, "Armour", "INC", true, 2), --备注：Increases and Reductions to Energy Shield in Radius are Transformed to apply to Armour at 200% of their value
-	["范围内增减的生命转换成 200% 魔力"] = getSimpleConv({"Life"}, "Mana", "INC", true, 2), --备注：Increases and Reductions to Life in Radius are Transformed to apply to Mana at 200% of their value
+	["范围内增减的生命转换成 200% 魔力"] = function(node, out, data)  --备注：Increases and Reductions to Life in Radius are Transformed to apply to Mana at 200% of their value
+	 srcList={"Life"}
+	 dst="Mana" 
+	 thetype="INC"	
+	factor=2	 
+		if node then
+			for _, src in pairs(srcList) do
+				for _, mod in ipairs(node.modList) do
+				
+				if mod.name=='MinionModifier' and mod.type =='LIST' then 
+					
+					if mod.value and mod.value.mod then 
+					
+						local moditem=mod.value.mod;
+						if moditem.name == src and moditem.type == thetype then
+							
+							local dm={mod={
+							source=moditem.source,
+							value= -moditem.value,
+							type=moditem.type,
+							keywordFlags=moditem.keywordFlags,
+							name=moditem.name,
+							flags=moditem.flags
+							}}	
+							local nm={mod={
+							source=moditem.source,
+							value= math.floor(moditem.value * factor) ,
+							type=moditem.type,
+							keywordFlags=moditem.keywordFlags,
+							name=dst,
+							flags=moditem.flags
+							}}							
+							out:MergeNewMod(mod.name, mod.type, dm , mod.source, mod.flags, mod.keywordFlags, unpack(mod))							
+							out:MergeNewMod(mod.name, mod.type, nm, mod.source, mod.flags, mod.keywordFlags, unpack(mod))	
+
+ 							
+						end
+						
+					end 
+					print_r(mod.value.mod)
+				elseif mod.name =='TotemLife' and mod.type == thetype then
+					out:MergeNewMod('TotemLife', mod.type, -mod.value, mod.source, mod.flags, mod.keywordFlags, unpack(mod))
+				--	out:MergeNewMod('TotemMana', mod.type, math.floor(mod.value * factor), mod.source, mod.flags, mod.keywordFlags, unpack(mod))
+										
+				else 
+					if mod.name == src and mod.type == thetype then
+						 
+						out:MergeNewMod(src, mod.type, -mod.value, mod.source, mod.flags, mod.keywordFlags, unpack(mod))
+						out:MergeNewMod(dst, type, math.floor(mod.value * factor), mod.source, mod.flags, mod.keywordFlags, unpack(mod))
+				
+					end
+				
+				end
+				
+					
+				end	
+			end
+		end
+	end,
+	--	= getSimpleConv({"Life"}, "Mana", "INC", true, 2),
 	["范围内物理伤害的增减转换成冰霜伤害"] = getSimpleConv({"PhysicalDamage"}, "ColdDamage", "INC", true), --备注：Increases and Reductions to Physical Damage in Radius are Transformed to apply to Cold Damage
 	["范围内冰霜伤害的增减转换成物理伤害"] = getSimpleConv({"ColdDamage"}, "PhysicalDamage", "INC", true), --备注：Increases and Reductions to Cold Damage in Radius are Transformed to apply to Physical Damage
 	["范围内其他伤害类型的增减转换成火焰伤害"] = getSimpleConv({"PhysicalDamage","ColdDamage","LightningDamage","ChaosDamage"}, "FireDamage", "INC", true), --备注：Increases and Reductions to other Damage Types in Radius are Transformed to apply to Fire Damage

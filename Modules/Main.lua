@@ -56,7 +56,7 @@ function main:Init()
 
 	if launch.devMode and IsKeyDown("CTRL") then
 		--不生成缓存词缀
-		--self.rebuildModCache = true
+		self.rebuildModCache = true
 	else
 		-- Load mod caches
 		for _, targetVersion in ipairs(targetVersionList) do

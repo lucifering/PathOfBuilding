@@ -910,6 +910,7 @@ local modTagList = {
 	["每 (%d+)%% 的攻击格挡率会使"] = function(num) return { tag = { type = "PerStat", stat = "BlockChance", div = num } } end,
 	["每 (%d+)%% 攻击伤害格挡几率"] = function(num) return { tag = { type = "PerStat", stat = "BlockChance", div = num } } end,
 	["每 (%d+)%% 攻击伤害格挡几率会使"] = function(num) return { tag = { type = "PerStat", stat = "BlockChance", div = num } } end,
+	["空手时攻击"] = { tag = { type = "Condition", var = "Unarmed" } }, 
 	["当你拥有兽化的召唤生物时，"] = { tag = { type = "Condition", var = "HaveBestialMinion" } },
 	["近期内你若造成非暴击伤害，则"] = { tag = { type = "Condition", var = "NonCritRecently" } }, --备注：if you[' ]h?a?ve dealt a non%-critical strike recently
 	["近期内你若没有击败敌人，则伤害会"] = { tag = { type = "Condition", var = "KilledRecently", neg = true } }, 
@@ -1417,7 +1418,7 @@ local gemIdLookup = {
 
 local function  FuckSkillSupportCnName(support_skillname)
 
-support_skillname=support_skillname:gsub("魔力减免","启迪辅助"):gsub("遥控地雷","链爆地雷辅助")
+support_skillname=support_skillname:gsub("灵魂滋养","启迪辅助"):gsub("魔力减免","启迪辅助"):gsub("遥控地雷","链爆地雷辅助")
 :gsub("【召唤幻灵】","召唤幻影辅助")
 :gsub("召唤幻灵辅助","召唤幻影辅助")
 :gsub("召唤幻灵","召唤幻影辅助")
@@ -2018,6 +2019,9 @@ local specialModList = {
 	 mod("ChaosMin", "BASE", num1,{ type = "Multiplier", actor = "enemy", var = "Spider's WebStack" } ), 
 	 mod("ChaosMax", "BASE", num2,{ type = "Multiplier", actor = "enemy", var = "Spider's WebStack" } ) } end,
 	["空手攻击时的物理总伤害额外提高 (%d+)%%"]= function(num) return { mod("PhysicalDamage", "MORE", num,nil, ModFlag.Unarmed ) } end,
+	["空手时攻击附加 (%d+) %- (%d+) 基础闪电伤害"] = function(_,num1,num2) return { 
+		 mod("LightningMin", "BASE", num1,nil,ModFlag.Unarmed ), 
+		 mod("LightningMax", "BASE", num2,nil,ModFlag.Unarmed  ) } end,
 	["中毒持续总时间额外降低 (%d+)%%"] = function(num) return {  mod("EnemyPoisonDuration", "MORE", -num)  } end,
 	["火焰技能有 (%d+)%% 几率使敌人中毒"] = function(num) return {  mod("PoisonChance", "BASE", num,nil,nil,KeywordFlag.Fire)  } end,
 	["冰霜技能有 (%d+)%% 几率使敌人中毒"] = function(num) return {  mod("PoisonChance", "BASE", num,nil,nil,KeywordFlag.Cold)  } end,
@@ -2944,6 +2948,7 @@ local specialModList = {
 	["召唤飞掠者的魔力保留降低 (%d+)%%"] = function(num) return {  mod("ManaReserved", "INC", -num,{ type = "SkillId", skillId = "Skitterbots" })  } end, 
 	["配置 (.+)"] =  function(_, passive) return { mod("GrantedPassive", "LIST", passive) } end,
 	["分配(.+)"] =  function(_, passive) return { mod("GrantedPassive", "LIST", passive) } end,
+	["身体幻化"] = { flag("TransfigurationOfBody") },
 	["躯体幻化"] = { flag("TransfigurationOfBody") },
 		["心灵幻化"] = { flag("TransfigurationOfMind") },
 		["灵魂幻化"] = { flag("TransfigurationOfSoul") },
@@ -2954,6 +2959,12 @@ local specialModList = {
 	["当你施放法术, 牺牲所有魔力，附加等同於牺牲魔力 (%d+)%% 的最大闪电伤害，持续 4 秒"] =
 	 function(num)  return { mod("LightningMax", "BASE", 1, 
 	 { type = "PerStat", stat = "ManaUnreserved", div = (100/tonumber(num))})   } end,
+	["最大生命, 魔力与全域能量护盾提高 (%d+)%%"] =
+	 function(num)  return { 
+	 mod("Life", "INC", num),
+	mod("Mana", "INC", num),
+	mod("EnergyShield", "INC", num,{ type = "Global" } )
+	 } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

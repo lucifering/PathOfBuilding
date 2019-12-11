@@ -839,6 +839,7 @@ local preFlagList = {
 	["^持续吟唱技能"] = { tag = { type = "SkillType", skillType = SkillType.Channelled } },
 	["地雷所使用的技能"] = { keywordFlags = KeywordFlag.Mine },
 	["^你和友军受你的光环技能影响时，"] = { affectedByAura = true },
+	["^防卫技能的"] = { tag = { type = "SkillType", skillType = SkillType.Guard } },
 	--【中文化程序额外添加结束】
 	["^hits deal "] = { keywordFlags = KeywordFlag.Hit },
 	["^critical strikes deal "] = { tag = { type = "Condition", var = "CriticalStrike" } },
@@ -1158,6 +1159,8 @@ local modTagList = {
 	["对燃烧敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Burning" }, keywordFlags = KeywordFlag.Hit },
 	 ["处于【灵巧】状态时，"] = { tag = { type = "Condition", var = "Elusive" } }, 
 	 ["【灵巧】效果下，"] = { tag = { type = "Condition", var = "Elusive" } }, 
+	 ["每个图腾使你"] = { tag = { type = "PerStat", stat = "ActiveTotemLimit" } },
+	 ["近期内你若击中被诅咒的敌人，则"] = { tagList = { { type = "Condition", var = "HitRecently" }, { type = "ActorCondition", actor = "enemy", var = "Cursed" } } },
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -2256,6 +2259,7 @@ local specialModList = {
 	mod("IgniteBurnFaster", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" }) ,
 	mod("BleedFaster", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" }) ,
 	 } end, 
+	 ["受【怨毒光环】影响时，([%+%-]?%d+)%% 持续伤害加成"]= function(num) return {  mod("DotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end,
 	["被【怨毒光环】影响时，([%+%-]?%d+)%% 伤害持续时间加成"]= function(num) return {  mod("DotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
 	["受【怨毒光环】影响时，([%+%-]?%d+)%% 非异常状态混沌伤害持续时间加成"]= function(num) return {  mod("NonAilmentChaosDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
 	["受【怨毒光环】影响时，([%+%-]?%d+)%% 持续冰霜伤害加成"]= function(num) return {  mod("ColdDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
@@ -2579,6 +2583,7 @@ local specialModList = {
 	["周围敌人获得 (%-%d+)%% 火焰抗性"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("FireResist", "BASE", num) }) } end,
 	["周围敌人获得 (%-%d+)%% 冰霜抗性"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("ColdResist", "BASE", num) }) } end,
 	["周围敌人获得 (%-%d+)%% 闪电抗性"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("LightningResist", "BASE", num) }) } end,
+	["每一个周围的敌人 %+(%d+)%% 攻击暴击伤害加成，最大%+(%d+)%%"] = function(_,num1,num2) return {  mod("CritMultiplier", "BASE", tonumber(num1),{ type = "Multiplier", var = "NearbyEnemy", limit = tonumber(num2), limitTotal = true }) } end,
 	["每装备 1 个未腐化的物品，每秒回复 (%d+) 生命"]= function(num) return {  mod("LifeRegen", "BASE", tonumber(num),{ type = "Multiplier", var = "NonCorruptedItem" })  } end,
 	["该武器击中后造成的 (%d+)%% 物理伤害转换为一种随机元素伤害"]= function(num) return { 
 	 mod("PhysicalDamageConvertToFire", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementFire" }),
@@ -2609,6 +2614,7 @@ local specialModList = {
 	 ["当你获得【霸体】时，近距离用弓击中后的总伤害额外提高 (%d+)%%"] = function(num) return { 	 
 		 mod("Damage", "MORE", num,nil,ModFlag.Hit, { type = "Condition", var = "AtCloseRange" }, { type = "Condition", var = "Have霸体Keystone"}) 	 
 	} end,  
+	["在【猛攻】状态期间，得到【迷踪】状态"] = { flag("Condition:Phasing", { type = "Condition", var = "Onslaught" }) },
 	 ["获得【远射】"] = { flag("FarShot") },
 	 ["远射"] = { flag("FarShot") },
 	 ["狙击"] = { flag("FarShot") }, 
@@ -3060,6 +3066,7 @@ local specialModList = {
 	["近期内你若有吞噬 1 个灵柩，你和你的召唤生物的范围效果提高 (%d+)%%"] = function(num) return { mod("AreaOfEffect", "INC", num, { type = "Condition", var = "ConsumedCorpseRecently" }), mod("MinionModifier", "LIST", { mod = mod("AreaOfEffect", "INC", num) }, { type = "Condition", var = "ConsumedCorpseRecently" }) } end,
 	["当周围有至少 1 个灵柩，你与周围友军的总伤害额外提高 (%d+)%%"] = function(num) return { mod("ExtraAura", "LIST", { mod = mod("Damage", "MORE", num) }, { type = "MultiplierThreshold", var = "NearbyCorpse", threshold = 1 }) } end,
 	["近期内，你或你的召唤生物每击败一个敌人则每秒回复你 (%d+)%% 能量护盾，每秒最多 (%d+)%%"] = function( _, num1,limit)  return { mod("EnergyShieldRegenPercent", "BASE", tonumber(num1), { type = "Multiplier", varList = {"EnemyKilledRecently","EnemyKilledByMinionsRecently"}, limit = tonumber(limit), limitTotal = true })   } end, 
+	["激活的先祖图腾使增益效果提高 (%d+)%%"] = function(num) return {  mod("BuffEffect", "INC", num,{ type = "SkillName", skillNameList = {  "先祖卫士", "先祖战士长","瓦尔.先祖战士长"  } })  } end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

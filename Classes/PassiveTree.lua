@@ -399,7 +399,7 @@ local cdnRoot = treeVersion == "2_6" and "" or ""--https://web.poecdn.com"
 			socket.attributesInRadius[radiusIndex] = { }
 			local rSq = radiusInfo.rad * radiusInfo.rad
 			for _, node in pairs(self.nodes) do
-				if node ~= socket and  not node.hide  then
+				if node ~= socket and  not node.hide and not node.isBlighted  then
 					local vX, vY = node.x - socket.x, node.y - socket.y
 					if vX * vX + vY * vY <= rSq then 
 						socket.nodesInRadius[radiusIndex][node.id] = node

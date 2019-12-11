@@ -106,6 +106,7 @@ function calcLib.gemIsType(gem, type)
 			
 			
 			or (type == "trap or mine" and (gem.tags.trap or gem.tags.mine)) 
+			or (type == gem.name:lower()) 
 			or gem.tags[type])
 end
 

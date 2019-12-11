@@ -494,6 +494,9 @@ end },
 { var = "multiplierNearbyAlly", type = "count", label = "附近友军数量：", ifMult = "NearbyAlly", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:NearbyAlly", "BASE", val, "Config", { type = "Condition", var = "Combat" })
 	end },
+{ var = "multiplierNearbyEnemy", type = "count", label = "# 周围敌人数量", ifMult = "NearbyEnemy", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:NearbyEnemy", "BASE", val, "Config", { type = "Condition", var = "Combat" })
+  end },
 { var = "multiplierNearbyCorpse", type = "count", label = "# 附近灵枢数量", ifMult = "NearbyCorpse", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:NearbyCorpse", "BASE", val, "Config", { type = "Condition", var = "Combat" })
 	end },
@@ -837,17 +840,17 @@ end },
 		enemyModList:NewMod("Condition:RareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
  
-{ var = "enemyIsBoss", type = "list", ifVer = "3_0", label = "敌人是boss?", tooltip = "普通boss有以下词缀：\n额外降低 33% 诅咒效果\n+30% 火焰、冰霜、闪电抗性\n+15% 混沌抗性\n\n塑界者/塑界守卫有以下词缀：\n额外降低 66% 诅咒效果\n+40% 火焰、冰霜、闪电抗性\n+25% 混沌抗性", list = {{val="NONE",label="不是"},{val=true,label="普通boss"},{val="SHAPER",label="塑界者/塑界守卫"}}, apply = function(val, modList, enemyModList)
+{ var = "enemyIsBoss", type = "list", ifVer = "3_0", label = "敌人是boss?", tooltip = "普通boss有以下词缀：\n额外降低 33% 诅咒效果\n+40% 火焰、冰霜、闪电抗性\n+25% 混沌抗性\n\n塑界者/塑界守卫有以下词缀：\n额外降低 66% 诅咒效果\n+50% 火焰、冰霜、闪电抗性\n+30% 混沌抗性", list = {{val="NONE",label="不是"},{val=true,label="普通boss"},{val="SHAPER",label="塑界者/塑界守卫"}}, apply = function(val, modList, enemyModList)
 		if val == true then
 			enemyModList:NewMod("Condition:RareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 			enemyModList:NewMod("CurseEffectOnSelf", "MORE", -33, "Boss")
-			enemyModList:NewMod("ElementalResist", "BASE", 30, "Boss")
-			enemyModList:NewMod("ChaosResist", "BASE", 15, "Boss")
+			enemyModList:NewMod("ElementalResist", "BASE", 40, "Boss")
+			enemyModList:NewMod("ChaosResist", "BASE", 25, "Boss")
 		elseif val == "SHAPER" then
 			enemyModList:NewMod("Condition:RareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 			enemyModList:NewMod("CurseEffectOnSelf", "MORE", -66, "Boss")
-			enemyModList:NewMod("ElementalResist", "BASE", 40, "Boss")
-			enemyModList:NewMod("ChaosResist", "BASE", 25, "Boss")
+			enemyModList:NewMod("ElementalResist", "BASE", 50, "Boss")
+			enemyModList:NewMod("ChaosResist", "BASE", 30, "Boss")
 		end
 	end },
 { var = "enemyPhysicalReduction", type = "integer", label = "敌人物理伤害减伤:", apply = function(val, modList, enemyModList)

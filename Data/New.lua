@@ -3,6 +3,16 @@
 --
 data.uniques.new = {
 [[
+The Ivory Tower
+圣者链甲
+等级需求: 67
++41 智慧
+每 100 生命保留 +30 最大能量护盾
++92 最大魔力
+每秒回复 2% 能量护盾
+生命值所受的混沌伤害由魔力扣除
+]],
+[[
 Crown of the Inward Eye
 箴言战冠
 等级需求: 63, 85 Str, 62 Int

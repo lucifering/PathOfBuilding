@@ -2279,7 +2279,7 @@ tagString = "图腾, 光环, 法术, 范围效果",
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SkillGemFreezeMine"] = {
-		name = "Icicle Mine",
+name = "冰锥地雷",
 		grantedEffectId = "ColdProjectileMine",
 		tags = {
 			mine = true,
@@ -2528,7 +2528,7 @@ name = "圣焰图腾",
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SupportGemRangedAttackTotem"] = {
-		name = "Ballista Totem",
+name = "炮塔图腾辅助",
 		grantedEffectId = "SupportRangedAttackTotem",
 		tags = {
 			bow = true,
@@ -2835,7 +2835,7 @@ tagString = "火焰, 辅助",
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SupportGemSummonElementalResistance"] = {
-		name = "Elemental Army",
+name = "元素大军辅助",
 		grantedEffectId = "SupportSummonElementalResistances",
 		tags = {
 			intelligence = true,
@@ -3610,7 +3610,7 @@ tagString = "召唤生物, 法术, 持续时间",
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SkillGemFireNovaMine"] = {
-		name = "Pyroclast Mine",
+name = "火屑地雷",
 		grantedEffectId = "MortarBarrageMine",
 		tags = {
 			mine = true,
@@ -5236,7 +5236,7 @@ tagString = "辅助, 陷阱",
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SupportGemChargedMines"] = {
-		name = "Charged Mines",
+name = "充能地雷辅助",
 		grantedEffectId = "SupportChargedMines",
 		tags = {
 			intelligence = true,
@@ -5807,7 +5807,7 @@ tagString = "攻击, 范围效果, 近战",
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SkillGemChainHook"] = {
-		name = "Chain Hook",
+name = "钩链攻击",
 		grantedEffectId = "ChainStrike",
 		tags = {
 			strength = true,
@@ -5973,7 +5973,7 @@ tagString = "辅助, 近战, 攻击",
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SkillGemCobraLash"] = {
-		name = "Cobra Lash",
+name = "毒蛇鞭击",
 		grantedEffectId = "CobraLash",
 		tags = {
 			dexterity = true,
@@ -5989,7 +5989,7 @@ tagString = "攻击, 投射物, 混沌",
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SkillGemSummonCarrionGolem"] = {
-		name = "Summon Carrion Golem",
+name = "召唤腐化魔像",
 		grantedEffectId = "SummonBoneGolem",
 		tags = {
 			intelligence = true,
@@ -6006,7 +6006,7 @@ tagString = "物理, 召唤生物, 法术, 魔像",
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SkillGemWitheringStep"] = {
-		name = "Withering Step",
+name = "凋零步",
 		grantedEffectId = "Slither",
 		tags = {
 			dexterity = true,
@@ -6026,7 +6026,7 @@ tagString = "旅行, 范围效果, 混沌, 位移, 闪现, 法术, 持续时间"
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SkillGemPlagueBearer"] = {
-		name = "Plague Bearer",
+name = "瘟疫使徒",
 		grantedEffectId = "CorrosiveShroud",
 		tags = {
 			dexterity = true,
@@ -6042,7 +6042,7 @@ tagString = "法术, 混沌, 范围效果",
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SupportGemFeedingFrenzy"] = {
-		name = "Feeding Frenzy",
+name = "狂噬辅助",
 		grantedEffectId = "SupportMinionOffensiveStance",
 		tags = {
 			intelligence = true,
@@ -6057,7 +6057,7 @@ tagString = "辅助, 召唤生物, 持续时间",
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SupportGemDeathmark"] = {
-		name = "Deathmark",
+name = "亡印辅助",
 		grantedEffectId = "SupportMinionFocusFire",
 		secondaryGrantedEffectId = "MinionFocusFire",
 		tags = {
@@ -6075,7 +6075,7 @@ tagString = "辅助, 召唤生物, 法术, 持续时间",
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SupportGemNightblade"] = {
-		name = "Nightblade",
+name = "夜刃辅助",
 		grantedEffectId = "SupportPuncturingWeapon",
 		tags = {
 			attack = true,
@@ -6089,7 +6089,7 @@ tagString = "攻击, 辅助",
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SupportGemMeatShield"] = {
-		name = "Meat Shield",
+name = "肉盾辅助",
 		grantedEffectId = "SupportMinionDefensiveStance",
 		tags = {
 			intelligence = true,
@@ -6103,7 +6103,7 @@ tagString = "辅助, 召唤生物",
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SkillGemStormblastMine"] = {
-		name = "Stormblast Mine",
+name = "雷暴地雷",
 		grantedEffectId = "LightningExplosionMine",
 		tags = {
 			mine = true,
@@ -6122,7 +6122,7 @@ tagString = "辅助, 召唤生物",
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SkillGemSummonSkitterbots"] = {
-		name = "Summon Skitterbots",
+name = "召唤飞掠者",
 		grantedEffectId = "Skitterbots",
 		tags = {
 			trap = true,
@@ -6143,7 +6143,7 @@ tagString = "陷阱, 地雷, 法术, 召唤生物, 冰霜, 闪电, 范围效果,
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SupportGemHighImpactMineSupport"] = {
-		name = "High-Impact Mine",
+name = "高爆地雷辅助",
 		grantedEffectId = "SupportRemoteMine2",
 		tags = {
 			mine = true,
@@ -6159,7 +6159,7 @@ tagString = "地雷, 辅助, 范围效果, 光环",
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SupportGemInfernalLegion"] = {
-		name = "Infernal Legion",
+name = "炎军辅助",
 		grantedEffectId = "SupportBurningMinions",
 		tags = {
 			fire = true,
@@ -6175,7 +6175,7 @@ tagString = "火焰, 范围效果, 辅助, 召唤生物",
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SkillGemPestilentStrike"] = {
-		name = "Pestilent Strike",
+name = "致疫打击",
 		grantedEffectId = "MambaStrike",
 		tags = {
 			dexterity = true,
@@ -6194,7 +6194,7 @@ tagString = "攻击, 近战, 打击, 范围效果, 持续时间, 混沌",
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SkillGemVenomGyre"] = {
-		name = "Venom Gyre",
+name = "剧毒旋风",
 		grantedEffectId = "SnappingAdder",
 		tags = {
 			dexterity = true,
@@ -6210,7 +6210,7 @@ tagString = "攻击, 投射物, 混沌",
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SupportGemSwiftAssembly"] = {
-		name = "Swift Assembly",
+name = "迅整辅助",
 		grantedEffectId = "SupportAdditionalTrapMine",
 		tags = {
 			dexterity = true,
@@ -6311,7 +6311,7 @@ name = "弹幕",
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SupportGemGreaterVolley"] = {
-		name = "Greater Volley",
+name = "高阶齐射辅助",
 		grantedEffectId = "SupportGreaterVolley",
 		tags = {
 			dexterity = true,

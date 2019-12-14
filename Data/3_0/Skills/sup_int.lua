@@ -846,7 +846,7 @@ mod("FireResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debu
 	},
 }
 skills["SupportChargedMines"] = {
-	name = "Charged Mines",
+name = "充能地雷辅助",
 description = "辅助投掷地雷技能.",
 	color = 3,
 	support = true,
@@ -1209,7 +1209,7 @@ description = "必须同时连接一个能击中敌人的技能和一个诅咒�
 	},
 }
 skills["SupportMinionFocusFire"] = {
-	name = "Deathmark",
+name = "亡印辅助",
 description = "辅助创造召唤物技能.",
 	color = 3,
 	support = true,
@@ -1752,7 +1752,7 @@ description = "辅助法术技能",
 	},
 }
 skills["SupportMinionOffensiveStance"] = {
-	name = "Feeding Frenzy",
+name = "狂噬辅助",
 description = "辅助创造召唤物技能.",
 	color = 3,
 	support = true,
@@ -1820,7 +1820,7 @@ description = "辅助创造召唤物技能.",
 	},
 }
 skills["SupportRemoteMine2"] = {
-	name = "High-Impact Mine",
+name = "高爆地雷辅助",
 description = "只能辅助法术或弓类和法杖攻击。\n将辅助的技能替换为投掷地雷，并使用该技能来引爆。\n地雷无法使用持续吟唱技能。\n被辅助技能有机率在击中敌人时造成双倍伤害，该伤害基於该敌人周围的地雷数量。",
 	color = 3,
 	support = true,
@@ -2256,7 +2256,7 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["SupportBurningMinions"] = {
-	name = "Infernal Legion",
+name = "炎军辅助",
 description = "辅助创造召唤物技能.",
 	color = 3,
 	baseEffectiveness = 6.2776999473572,
@@ -2730,7 +2730,7 @@ description = "辅助任意击中敌人的技能, 使击中能穿透敌人的闪
 	},
 }
 skills["SupportMinionDefensiveStance"] = {
-	name = "Meat Shield",
+name = "肉盾辅助",
 description = "辅助创造召唤物技能.",
 	color = 3,
 	support = true,
@@ -3107,7 +3107,7 @@ description = "辅助创造召唤物技能.",
 	},
 }
 skills["SupportSummonElementalResistances"] = {
-	name = "Elemental Army",
+name = "元素大军辅助",
 description = "辅助创造召唤物技能.",
 	color = 3,
 	support = true,

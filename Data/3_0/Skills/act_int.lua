@@ -3950,7 +3950,7 @@ name = "第二状态, 所有投射物",
 	},
 }
 skills["ColdProjectileMine"] = {
-	name = "Icicle Mine",
+name = "冰锥地雷",
 	color = 3,
 	baseEffectiveness = 1.6928999423981,
 	incrementalEffectiveness = 0.038100000470877,
@@ -5366,7 +5366,7 @@ description = "施放一个光环，使你和周围友军受到的闪电伤害�
 	},
 }
 skills["MortarBarrageMine"] = {
-	name = "Pyroclast Mine",
+name = "火屑地雷",
 	color = 3,
 	baseEffectiveness = 0.90490001440048,
 	incrementalEffectiveness = 0.036100000143051,
@@ -6447,7 +6447,7 @@ description = "创造一个可以附着于周围某个敌人的魔法烙印。�
 	},
 }
 skills["LightningExplosionMine"] = {
-	name = "Stormblast Mine",
+name = "雷暴地雷",
 	color = 3,
 	baseEffectiveness = 1.1905000209808,
 	incrementalEffectiveness = 0.043999999761581,
@@ -6757,7 +6757,7 @@ description = "在目标区域设置一个标记. 当标记存在时, 闪电将�
 	},
 }
 skills["SummonBoneGolem"] = {
-	name = "Summon Carrion Golem",
+name = "召唤腐化魔像",
 	color = 3,
 	baseEffectiveness = 0.28000000119209,
 	incrementalEffectiveness = 0.020999999716878,
@@ -7311,7 +7311,7 @@ description = "召唤一支由强大的魔侍将军所统率, 由魔侍战士, �
 	},
 }
 skills["Skitterbots"] = {
-	name = "Summon Skitterbots",
+name = "召唤飞掠者",
 	color = 3,
 description = "召唤两名构造体，它们会引爆地雷，触发陷阱，并给陷阱和地雷提供加成。\n它们都有光环，其中一个可以感电敌人，另一个则冻缓敌人。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Instant] = true, [SkillType.Minion] = true, [SkillType.CreatesMinion] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.ColdSkill] = true, [SkillType.LightningSkill] = true, [SkillType.NonHitChill] = true, [SkillType.Area] = true, [SkillType.Aura] = true, [SkillType.AuraDebuff] = true, },

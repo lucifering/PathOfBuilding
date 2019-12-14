@@ -2637,7 +2637,7 @@ description = "辅助近战攻击技能。召唤生物无法获得怒火。",
 	},
 }
 skills["SupportRangedAttackTotem"] = {
-	name = "Ballista Totem",
+name = "炮塔图腾辅助",
 	description = "Supports any bow or wand attack skill, causing it to summon a ballista totem that uses the skill for you.",
 	color = 1,
 	support = true,

@@ -1848,7 +1848,7 @@ description = "辅助投射物技能",
 	},
 }
 skills["SupportGreaterVolley"] = {
-	name = "Greater Volley",
+name = "高阶齐射辅助",
 description = "只能辅助玩家自生产生的投射物。不会影响其他来源或二次产生的投射物。",
 	color = 2,
 	support = true,
@@ -2450,7 +2450,7 @@ description = "辅助陷阱技能, 使该技能在一条线上扔出额外陷阱
 	},
 }
 skills["SupportPuncturingWeapon"] = {
-	name = "Nightblade",
+name = "夜刃辅助",
 description = "辅助攻击技能. 无法辅助创造召唤物技能.",
 	color = 2,
 	support = true,
@@ -2958,7 +2958,7 @@ description = "辅助任意有持续时间或能通过击中造成异常状态�
 	},
 }
 skills["SupportAdditionalTrapMine"] = {
-	name = "Swift Assembly",
+name = "迅整辅助",
 description = "辅助投掷陷阱或地雷技能.",
 	color = 2,
 	support = true,

@@ -1338,7 +1338,7 @@ description = "向你朝向的方向吟唱并发射一个幻象。幻象移动�
 	},
 }
 skills["CobraLash"] = {
-	name = "Cobra Lash",
+name = "毒蛇鞭击",
 	color = 2,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.023299999535084,
@@ -4498,7 +4498,7 @@ description = "对目标地点射出一支箭, 当箭到达时在目标地创造
 	},
 }
 skills["MambaStrike"] = {
-	name = "Pestilent Strike",
+name = "致疫打击",
 	color = 2,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.023299999535084,
@@ -4654,7 +4654,7 @@ name = "暗影迷踪",
 	},
 }
 skills["CorrosiveShroud"] = {
-	name = "Plague Bearer",
+name = "瘟疫使徒",
 	color = 2,
 	baseEffectiveness = 31.920000076294,
 	incrementalEffectiveness = 0.10670000314713,
@@ -6829,7 +6829,7 @@ description = "发射一个能够穿透敌人的投射物，在目标地点着�
 	},
 }
 skills["SnappingAdder"] = {
-	name = "Venom Gyre",
+name = "剧毒旋风",
 	color = 2,
 	baseEffectiveness = 1.25,
 	incrementalEffectiveness = 0.023299999535084,
@@ -7294,7 +7294,7 @@ name = "冰霜波",
 	},
 }
 skills["Slither"] = {
-	name = "Withering Step",
+name = "凋零步",
 	color = 2,
 description = "获得迷和灵巧，后者是一种随时间衰减的增益效果，提高移动速度(替换其它任何灵巧效果)，\n并同时给你范围内的敌人施加枯萎效果。\n施放任何技能都会移除迷和灵巧。\n和其它闪现技能共用冷却时间。.",
 	skillTypes = { [SkillType.TravelSkill] = true, [SkillType.Buff] = true, [SkillType.Instant] = true, [SkillType.Area] = true, [SkillType.ChaosSkill] = true, [SkillType.MovementSkill] = true, [SkillType.BlinkSkill] = true, [SkillType.Spell] = true, [SkillType.Triggerable] = true, [SkillType.Duration] = true, },

@@ -292,6 +292,13 @@ local function runSkillFunc(name)
 			end
 		end
 	end
+	if skillData.arrowSpeedAppliesToAreaOfEffect then
+		-- Arrow Speed conversion for Galvanic Arrow
+		for i, value in ipairs(skillModList:Tabulate("INC", { flags = ModFlag.Bow }, "ProjectileSpeed")) do
+			local mod = value.mod
+			skillModList:NewMod("AreaOfEffect", "INC", mod.value, mod.source, mod.flags, mod.keywordFlags, unpack(mod))
+		end
+	end
 	if skillModList:Flag(nil, "TransfigurationOfBody") then
 		skillModList:NewMod("Damage", "INC", m_floor(skillModList:Sum("INC", nil, "Life") * 0.3), "躯体幻化", ModFlag.Attack)
 	end
@@ -355,7 +362,7 @@ end
 		if skillModList:Flag(skillCfg, "CannotChain") then
 output.ChainMaxString = "无法连锁"
 		else
-			output.ChainMax = skillModList:Sum("BASE", skillCfg, "ChainCountMax")
+			output.ChainMax = skillModList:Sum("BASE", skillCfg, "ChainCountMax", not skillFlags.projectile and "BeamChainCountMax" or nil)
 			output.ChainMaxString = output.ChainMax
 			output.Chain = m_min(output.ChainMax, skillModList:Sum("BASE", skillCfg, "ChainCount"))
 			output.ChainRemaining = m_max(0, output.ChainMax - output.Chain)
@@ -536,7 +543,7 @@ total = s_format("= %.2f ^8每秒", output.TotemPlacementSpeed),
 		end
 		output.ActiveTotemLimit = skillModList:Sum("BASE", skillCfg, "ActiveTotemLimit")
 		output.TotemLifeMod = calcLib.mod(skillModList, skillCfg, "TotemLife")
-			output.TotemLife = round(m_floor(env.data.monsterAllyLifeTable[skillData.totemLevel] * env.data.totemLifeMult[activeSkill.skillTotemId]) * output.TotemLifeMod)
+			output.TotemLife = round(m_floor(env.data.monsterAllyLifeTable[skillData.totemLevel or 1] * env.data.totemLifeMult[activeSkill.skillTotemId or 1]) * output.TotemLifeMod)
 		if breakdown then
 			breakdown.TotemLifeMod = breakdown.mod(skillCfg, "TotemLife")
 			breakdown.TotemLife = {
@@ -1173,7 +1180,7 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 						local takenMore = enemyDB:More(cfg, "DamageTaken", damageType.."DamageTaken")
 						
 						if damageType == "Physical" then
-							resist = enemyDB:Sum("BASE", nil, "PhysicalDamageReduction")
+							resist = m_max(0, enemyDB:Sum("BASE", nil, "PhysicalDamageReduction") + skillModList:Sum("BASE", cfg, "EnemyPhysicalDamageReduction"))
 						else
 							resist = enemyDB:Sum("BASE", nil, damageType.."Resist")
 							if isElemental[damageType] then

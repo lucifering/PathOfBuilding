@@ -7,9 +7,9 @@
 local skills, mod, flag, skill = ...
 
 skills["AbyssalCry"] = {
-	name = "深渊战吼",
+name = "深渊战吼",
 	color = 1,
-	description = "施展战吼, 使周围敌人缓速, 并在被击败时爆裂. 缓速效果随着周围敌人数量提升. 嘲讽周围所有敌人, 使他们攻击施放者. 与其他战吼技能共享技能冷却.",
+description = "施展战吼, 使周围敌人缓速, 并在被击败时爆裂. 缓速效果随着周围敌人数量提升. 嘲讽周围所有敌人, 使他们攻击施放者. 与其他战吼技能共享技能冷却.",
 	skillTypes = { [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.ChaosSkill] = true, [SkillType.Hit] = true, [SkillType.Warcry] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.25,
@@ -81,9 +81,9 @@ skills["AbyssalCry"] = {
 	},
 }
 skills["TotemMelee"] = {
-	name = "先祖卫士",
+name = "先祖卫士",
 	color = 1,
-	description = "召唤一个先祖图腾, 当你在附近时这个图腾将使用武器攻击周围的敌人. 接近图腾时增加你的攻击速度. ",
+description = "召唤一个先祖图腾, 当你在附近时这个图腾将使用武器攻击周围的敌人. 接近图腾时增加你的攻击速度. ",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Totem] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.Melee] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -175,9 +175,9 @@ skills["TotemMelee"] = {
 	},
 }
 skills["AncestorTotemSlam"] = {
-	name = "先祖战士长",
+name = "先祖战士长",
 	color = 1,
-	description = "召唤一个当你在附近时会强力攻击的先祖图腾. 靠近时给予你更多近战伤害.",
+description = "召唤一个当你在附近时会强力攻击的先祖图腾. 靠近时给予你更多近战伤害.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Totem] = true, [SkillType.Melee] = true, [SkillType.Area] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -271,9 +271,9 @@ mod("Damage", "MORE", nil, ModFlag.Melee, 0, { type = "GlobalEffect", effectType
 	},
 }
 skills["VaalAncestralWarchief"] = {
-	name = "瓦尔.先祖战士长",
+name = "瓦尔.先祖战士长",
 	color = 1,
-	description = "召唤一个当你在附近时会使用强力连环攻击的先祖图腾。若敌人远离你，该攻击则会跳跃过去，拉近距离。靠近它可以使你的近战总伤害提高。",
+description = "召唤一个当你在附近时会使用强力连环攻击的先祖图腾。若敌人远离你，该攻击则会跳跃过去，拉近距离。靠近它可以使你的近战总伤害提高。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Totem] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.Vaal] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -370,11 +370,11 @@ mod("Damage", "MORE", nil, ModFlag.Melee, 0, { type = "GlobalEffect", effectType
 	},
 }
 skills["Anger"] = {
-	name = "愤怒",
+name = "愤怒",
 	color = 1,
 	baseEffectiveness = 2.25,
 	incrementalEffectiveness = 0.023000000044703,
-	description = "施放一个光环, 使你与受光环影响友军在攻击和施放法术时额外附带火焰伤害.",
+description = "施放一个光环, 使你与受光环影响友军在攻击和施放法术时额外附带火焰伤害.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -455,9 +455,9 @@ skills["Anger"] = {
 	},
 }
 skills["AnimateArmour"] = {
-	name = "幻化守卫",
+name = "幻化守卫",
 	color = 1,
-	description = "操控一件武器或防具, 使其依附在一个隐形的守卫身上并为你而战. 你可以武器或更多的防具依附在该守卫身上, 但是无法依附未鉴定的物品.",
+description = "操控一件武器或防具, 使其依附在一个隐形的守卫身上并为你而战. 你可以武器或更多的防具依附在该守卫身上, 但是无法依附未鉴定的物品.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggerable] = true, [SkillType.CreatesMinion] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
@@ -554,9 +554,9 @@ skills["AnimateArmour"] = {
 	},
 }
 skills["Berserk"] = {
-	name = "狂怒",
+name = "狂怒",
 	color = 1,
-	description = "以极快速度消耗怒火，产生一个强力增益效果，提高总攻击伤害、总攻击速度和总移动速度，使受到的总伤害降低。",
+description = "以极快速度消耗怒火，产生一个强力增益效果，提高总攻击伤害、总攻击速度和总移动速度，使受到的总伤害降低。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Triggerable] = true, [SkillType.Instant] = true, },
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 0,
@@ -639,9 +639,9 @@ skills["Berserk"] = {
 	},
 }
 skills["Bladestorm"] = {
-	name = "剑刃风暴",
+name = "剑刃风暴",
 	color = 1,
-	description = "发动一次旋转攻击，对你周围的敌人反复造成伤害，并基于你的姿态创造剑刃风暴。剑刃风暴对敌人造成的伤害基于你的武器伤害和攻击速度，并持续一段时间。血姿态下的剑刃风暴静止不动，沙姿态下的剑刃风暴会缓慢向前移动。需要剑类和斧类。默认为血姿态。",
+description = "发动一次旋转攻击，对你周围的敌人反复造成伤害，并基于你的姿态创造剑刃风暴。\n剑刃风暴对敌人造成的伤害基于你的武器伤害和攻击速度，并持续一段时间。\n血姿态下的剑刃风暴静止不动，沙姿态下的剑刃风暴会缓慢向前移动。\n需要剑类和斧类。默认为血姿态。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.AttackCanRepeat] = true, },
 	weaponTypes = {
 		["Two Handed Axe"] = true,
@@ -740,9 +740,9 @@ mod("MovementSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Bu
 	},
 }
 skills["BloodSandStance"] = {
-	name = "血与沙",
+name = "血与沙",
 	color = 1,
-	description = "施放一个增益效果，基于不同的姿态给近战技能施加不同的加成。再次使用该技能会在血姿态和沙姿态之间切换。",
+description = "施放一个增益效果，基于不同的姿态给近战技能施加不同的加成。\n再次使用该技能会在血姿态和沙姿态之间切换。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Instant] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
@@ -808,9 +808,9 @@ mod("Damage", "MORE", nil, ModFlag.Area, 0, { type = "GlobalEffect", effectType 
 	},
 }
 skills["ChainStrike"] = {
-	name = "钩链攻击",
+name = "钩链攻击",
 	color = 1,
-	description = "远程使用时，会投掷一条锁链，将你拉近被击中的敌人，并对它们身后一片区域内造成伤害。如果贴近敌人使用，则只会直接造成范围伤害。限定单手锤、短杖、剑类或斧类。",
+description = "远程使用时，会投掷一条锁链，将你拉近被击中的敌人，并产生一道震波对一片区域内造成伤害。\n如果贴近敌人使用，则只会直接产生震波。\n限定单手锤、短杖、单手剑或单手斧。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.MovementSkill] = true, [SkillType.Melee] = true, [SkillType.AttackCanRepeat] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -885,11 +885,11 @@ skills["ChainStrike"] = {
 	},
 }
 skills["Cleave"] = {
-	name = "劈砍",
+name = "劈砍",
 	color = 1,
 	baseEffectiveness = 0.6700000166893,
 	incrementalEffectiveness = 0.023299999535084,
-	description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 对前方区域的怪物造成伤害。限定斧类与剑类。",
+description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 并同时对多名敌人造成伤害. 限定斧与剑.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Type53] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["Two Handed Axe"] = true,
@@ -969,9 +969,9 @@ skills["Cleave"] = {
 	},
 }
 skills["ConsecratedPath"] = {
-	name = "奉献之路",
+name = "奉献之路",
 	color = 1,
-	description = "重击目标地点。若目标周围有敌人，你可以短距离传送到它旁边，用一道猛击创造一片奉献地面。无法被多重打击辅助。限定剑类、斧类、锤类、短杖、长杖或空手。",
+	description = "Slams the ground at a targeted location. If an enemy is near where you target, you'll teleport to it from a short distance away, slam, and create an area of consecrated ground. Can't be supported by Multistrike, and requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
 	skillTypes = { [SkillType.Melee] = true, [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.MovementSkill] = true, [SkillType.Triggerable] = true, [SkillType.Hit] = true, [SkillType.Duration] = true, [SkillType.FireSkill] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -1050,9 +1050,9 @@ skills["ConsecratedPath"] = {
 	},
 }
 skills["DecoyTotem"] = {
-	name = "诱饵图腾",
+name = "诱饵图腾",
 	color = 1,
-	description = "召唤一个图腾, 它会持续的嘲讽周围的敌人对其进行攻击.",
+description = "召唤一个图腾, 它会持续的嘲讽周围的敌人对其进行攻击.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Area] = true, [SkillType.Totem] = true, [SkillType.SpellCanRepeat] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	skillTotemId = 6,
@@ -1124,9 +1124,9 @@ skills["DecoyTotem"] = {
 	},
 }
 skills["Determination"] = {
-	name = "坚定",
+name = "坚定",
 	color = 1,
-	description = "施放一个光环, 使你与受光环影响友军获得额外的护甲.",
+description = "施放一个光环, 使你与受光环影响友军获得额外的护甲.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -1195,11 +1195,11 @@ skills["Determination"] = {
 	},
 }
 skills["DevouringTotem"] = {
-	name = "吞噬图腾",
+name = "吞噬图腾",
 	color = 1,
 	baseEffectiveness = 0.69999998807907,
 	incrementalEffectiveness = 0.029999999329448,
-	description = "召唤一个图腾, 它会吞噬附近的灵柩并为你回复生命.",
+description = "召唤一个图腾, 它会吞噬附近的灵柩并为你回复生命.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Totem] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	skillTotemId = 7,
@@ -1276,9 +1276,9 @@ skills["DevouringTotem"] = {
 	},
 }
 skills["DominatingBlow"] = {
-	name = "霸气之击",
+name = "霸气之击",
 	color = 1,
-	description = "近战攻击敌人，在短期内施加一个减益效果。如果非传奇敌人被该效果击败，则会消耗它的灵枢创造一个统御哨兵，具有相同稀有度、前缀和后缀，并持续一段更长的时间。",
+description = "凝聚霸气, 对目标造成猛力的一击. 受到霸气灌体, 非传奇的敌人在短时间内死亡时会复活为玩家的仆从以供驱使, 直到霸气散去.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Minion] = true, [SkillType.Duration] = true, [SkillType.CreateMinion] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.CreatesMinion] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Area] = true, },
 	weaponTypes = {
@@ -1365,9 +1365,9 @@ skills["DominatingBlow"] = {
 	},
 }
 skills["PuresteelBanner"] = {
-	name = "恐怖之旗",
+name = "恐怖之旗",
 	color = 1,
-	description = "施放一次，保留魔力，扛起一面旗帜，周围友军的攻击会造成穿刺，并使周围敌人的命中值降低。扛有旗帜时若击败敌人，则获得等阶。再次施放此技能可以放置旗帜，结束魔力保留。放置旗帜后，每等阶都会使其更加强大。你同时只能有一面旗帜。",
+description = "施放一次，保留魔力，扛起一面旗帜，周围友军的攻击会造成穿刺，并使周围敌人的命中值降低。扛有旗帜时若击败敌人，则获得等阶。再次施放此技能可以放置旗帜，结束魔力保留。放置旗帜后，每等阶都会使其更加强大。你同时只能有一面旗帜。",
 	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Spell] = true, [SkillType.Duration] = true, [SkillType.ManaCostReserved] = true, [SkillType.Aura] = true, [SkillType.ManaCostPercent] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.AuraDuration] = true, [SkillType.PhysicalSkill] = true, },
 	statDescriptionScope = "banner_aura_skill_stat_descriptions",
 	castTime = 0,
@@ -1375,6 +1375,7 @@ skills["PuresteelBanner"] = {
 		["puresteel_banner_accuracy_rating_+%_final"] = {
 			mod("Accuracy", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "AuraDebuff" }),
 		},
+		 
 		["attacks_impale_on_hit_%_chance"] = {
 		mod("ImpaleChance", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" })
 		},
@@ -1447,11 +1448,11 @@ skills["PuresteelBanner"] = {
 	},
 }
 skills["Earthquake"] = {
-	name = "震地",
+name = "震地",
 	color = 1,
 	baseEffectiveness = 1.5,
 	incrementalEffectiveness = 0.023299999535084,
-	description = "用斧类、锤类、短杖或长杖重击地面，对周围造成大量伤害，并在地面上留下裂隙。一段时间过后，地面的裂隙将会释放冲击波造成更多的伤害。在冲击波还未释放前再次使用技能不会刷新地面的裂隙。",
+	description = "Smashes the ground with an Axe, Mace, Sceptre or Staff, dealing damage in an area and cracking the earth. The crack will erupt in a powerful aftershock after a short duration. Earthquakes created before the first one has erupted will not generate their own aftershocks.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Duration] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -1548,11 +1549,11 @@ name = "余震",
 	},
 }
 skills["VaalEarthquake"] = {
-	name = "瓦尔.震地",
+name = "瓦尔.震地",
 	color = 1,
 	baseEffectiveness = 1.5,
 	incrementalEffectiveness = 0.023299999535084,
-	description = "用斧类、锤类、短杖或长杖重击地面，对周围造成大量伤害，并在地面上留下多处裂隙。短时间后，裂隙会喷发出三股强大的震波。使用此技能后，你的脚步会对你周围的区域造成伤害，若之前的裂隙已经喷发，则会再次造成裂隙。该效果会在第二次持续结束后消退，或是在震波喷发至最大数量后消退。",
+	description = "Smashes the ground with an Axe, Mace, Sceptre or Staff, dealing damage in an area and cracking the earth. The crack will erupt in a powerful aftershock after a short duration. After using this skill, your steps will deal damage around you, cracking the earth if the previous cracks have erupted. This effect ends after a secondary duration, or after a maximum number of aftershocks.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.Duration] = true, [SkillType.Vaal] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -1646,9 +1647,9 @@ name = "余震",
 	},
 }
 skills["EnduringCry"] = {
-	name = "坚决战吼",
+name = "坚决战吼",
 	color = 1,
-	description = "发出怒吼, 嘲讽周围的敌人来攻击自己. 视周围被嘲讽敌人的数量增加耐力球充能数, 若周围有敌人时给与施放者短暂时间的生命恢复. 与其他战吼技能共享技能冷却. \n\n【打我啊. 笨蛋. 】",
+description = "发出怒吼, 嘲讽周围的敌人来攻击自己. 视周围被嘲讽敌人的数量增加耐力球充能数, 若周围有敌人时给与施放者短暂时间的生命恢复. 与其他战吼技能共享技能冷却. 【打我啊. 笨蛋. 】",
 	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Warcry] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.25,
@@ -1719,9 +1720,9 @@ skills["EnduringCry"] = {
 	},
 }
 skills["BloodSandArmour"] = {
-	name = "血肉与岩石",
+name = "血肉与岩石",
 	color = 1,
-	description = "施放一个光环，影响你和周围的敌人，它的效果取决于你的姿态。再次使用该技能会在血姿态和沙姿态之间切换。",
+description = "施放一个光环，影响你和周围的敌人，它的效果取决于你的姿态。\n再次使用该技能会在血姿态和沙姿态之间切换。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Aura] = true, [SkillType.AuraDebuff] = true, [SkillType.Instant] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.Maims] = true, [SkillType.Area] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -1794,11 +1795,11 @@ mod("Condition:Blinded", "FLAG", true, 0, 0, { type = "GlobalEffect", effectType
 	},
 }
 skills["GlacialHammer"] = {
-	name = "冰霜之锤",
+name = "冰霜之锤",
 	color = 1,
 	baseEffectiveness = 0.6700000166893,
 	incrementalEffectiveness = 0.023299999535084,
-	description = "凝聚冰霜之力，转换一部分的物理伤害为冰霜伤害以重击敌人。若受到攻击的敌人被冰冻且生命少于 1 / 3，则被冰霜之锤命中时会碎成冰屑。如果三次攻击都为同一列，则第三次冻缓敌人的概率更高。限定锤类、短杖或长杖。",
+	description = "Hits enemies, converting some of your physical damage to cold damage. If an enemy is frozen and is on less than one third life, they will shatter when hit by Glacial Hammer. If striking three times in a row, the third strike will freeze enemies more easily. Requires a Mace, Sceptre or Staff.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.ColdSkill] = true, [SkillType.Type53] = true, },
 	weaponTypes = {
 		["Two Handed Mace"] = true,
@@ -1873,11 +1874,11 @@ skills["GlacialHammer"] = {
 	},
 }
 skills["VaalGlacialHammer"] = {
-	name = "瓦尔.冰霜之锤",
+name = "瓦尔.冰霜之锤",
 	color = 1,
 	baseEffectiveness = 0.6700000166893,
 	incrementalEffectiveness = 0.023299999535084,
-	description = "凝聚冰霜之力，转换一部分的物理伤害为冰霜伤害以重击敌人，同时在敌人周围造成一个让敌人无法逃脱的冰墙。限定锤类、短杖或长杖。",
+	description = "Hits enemies, converting some of your physical damage to cold damage. It traps enemies with you in a circle of ice so that they can't escape. Requires a Mace, Sceptre or Staff.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.Melee] = true, [SkillType.Duration] = true, [SkillType.Area] = true, [SkillType.Vaal] = true, [SkillType.ColdSkill] = true, },
 	weaponTypes = {
 		["Two Handed Mace"] = true,
@@ -1957,11 +1958,11 @@ skills["VaalGlacialHammer"] = {
 	},
 }
 skills["GroundSlam"] = {
-	name = "裂地之击",
+name = "裂地之击",
 	color = 1,
 	baseEffectiveness = 0.6700000166893,
 	incrementalEffectiveness = 0.023299999535084,
-	description = "以长杖、斧头或锤类重击地面，制造一道向前的冲击波，对敌人造成伤害，并有较高的几率击晕敌人。敌人距离越近则冲击波伤害越高。",
+	description = "The character slams the ground in front of them with a Staff, Axe, Mace or Sceptre, creating a wave that travels forward and damages enemies with an increased chance to stun. The wave deals more damage to closer enemies.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -2038,11 +2039,11 @@ skills["GroundSlam"] = {
 	},
 }
 skills["VaalGroundSlam"] = {
-	name = "瓦尔.裂地之击",
+name = "瓦尔.裂地之击",
 	color = 1,
 	baseEffectiveness = 0.6700000166893,
 	incrementalEffectiveness = 0.023299999535084,
-	description = "角色使用长杖、斧头或锤类重击地面，制造出一道向四面八方扩散的冲击波，对敌人造成伤害并使其晕眩。敌人距离越近则冲击波伤害越高。",
+	description = "The character slams the ground in front of them with a Staff, Axe, Mace or Sceptre, creating a wave that travels in all directions that damages and stuns enemies. The wave deals more damage to closer enemies.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.Vaal] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -2120,9 +2121,9 @@ skills["VaalGroundSlam"] = {
 	},
 }
 skills["HeavyStrike"] = {
-	name = "重击",
+name = "重击",
 	color = 1,
-	description = "对敌人进行一次强力攻击并将它们击退。限定锤类、短杖、斧类，剑类或双手武器。",
+	description = "Attacks enemies with a forceful blow, knocking them back. Requires a Mace, Sceptre, Axe, Sword or Two-Handed Weapon.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -2197,11 +2198,11 @@ skills["HeavyStrike"] = {
 	},
 }
 skills["HeraldOfAsh"] = {
-	name = "灰烬之捷",
+name = "灰烬之捷",
 	color = 1,
 	baseEffectiveness = 0.5,
 	incrementalEffectiveness = 0.032699998468161,
-	description = "于手中凝聚火焰之力, 为物理伤害额外增加火焰伤害. 若是你击败了一个敌人, 溢出的伤害将会以点燃的形式扩散至附近的敌人.该技能引起的燃烧只会受到持续伤害词缀的影响(燃烧属于持续伤害)",
+description = "于手中凝聚火焰之力, 为物理伤害额外增加火焰伤害. 若是你击败了一个敌人, 溢出的伤害将会以点燃的形式扩散至附近的敌人.该技能引起的燃烧只会受到持续伤害词缀的影响(燃烧属于持续伤害)",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.CausesBurning] = true, [SkillType.Area] = true, [SkillType.DamageOverTime] = true, [SkillType.FireSkill] = true, [SkillType.Type27] = true, [SkillType.Herald] = true, [SkillType.Duration] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 0,
@@ -2278,11 +2279,11 @@ skills["HeraldOfAsh"] = {
 	},
 }
 skills["HeraldOfPurity"] = {
-	name = "纯净之捷",
+name = "纯净之捷",
 	color = 1,
 	baseEffectiveness = 0.31700000166893,
 	incrementalEffectiveness = 0.01799999922514,
-	description = "给予一个可以为你的法术和攻击附加物理伤害的增益。若你击败敌人时带有此增益，该技能会召唤一个纯净哨兵，若你召唤的纯净哨兵已达上限，则会刷新现有的某个纯净哨兵的持续时间和生命。纯净哨兵可以进行单体攻击和区域性近战攻击。",
+description = "给予一个可以为你的法术和攻击附加物理伤害的增益。若你击败敌人时带有此增益，该技能会召唤一个纯净哨兵，若你召唤的纯净哨兵已达上限，则会刷新现有的某个纯净哨兵的持续时间和生命。纯净哨兵可以进行单体攻击和区域性近战攻击。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.Herald] = true, [SkillType.Minion] = true, [SkillType.Instant] = true, [SkillType.Duration] = true, [SkillType.PhysicalSkill] = true, [SkillType.CreatesMinion] = true, },
 	minionSkillTypes = { [SkillType.Hit] = true, [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Area] = true, },
 	statDescriptionScope = "minion_skill_stat_descriptions",
@@ -2371,11 +2372,11 @@ skills["HeraldOfPurity"] = {
 	},
 }
 skills["FlameTotem"] = {
-	name = "圣焰图腾",
+name = "圣焰图腾",
 	color = 1,
 	baseEffectiveness = 0.81900000572205,
 	incrementalEffectiveness = 0.028899999335408,
-	description = "召唤一个图腾, 它会持续的对附近的敌人喷射火焰，并在图腾周围创造一片奉献地面。",
+description = "召唤一个图腾, 它会持续的对附近的敌人喷射火焰.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Hit] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Totem] = true, [SkillType.FireSkill] = true, [SkillType.Channelled] = true, [SkillType.PhysicalSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	skillTotemId = 17,
@@ -2452,11 +2453,11 @@ skills["FlameTotem"] = {
 	},
 }
 skills["IceCrash"] = {
-	name = "寒冰冲击",
+name = "寒冰冲击",
 	color = 1,
 	baseEffectiveness = 1.5,
 	incrementalEffectiveness = 0.023299999535084,
-	description = "重击地面，对于范围内的敌人造成三段冲击伤害。敌人受到的第二段和第三段伤害的伤害较低。限定剑类、锤类、短杖、斧类、长杖和空手。",
+	description = "Slam the ground, damaging enemies in an area around the impact in three stages. Enemies take slightly less damage on the second and third stage. Works with Swords, Maces, Sceptres, Axes, Staves and Unarmed.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.ColdSkill] = true, [SkillType.AttackCanRepeat] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -2555,9 +2556,9 @@ name = "三段击中",
 	},
 }
 skills["ImmortalCall"] = {
-	name = "不朽怒嚎",
+name = "不朽怒嚎",
 	color = 1,
-	description = "短期内受到的物理伤害和元素伤害降低。最多消耗 5 个耐力球使增益效果持续更久，并进一步降低受到的物理伤害。和防卫技能共用冷却时间。",
+	description = "Take less Physical and Elemental Damage for a short time. Consumes up to 5 Endurance Charges to lengthen the buff and further lessen Physical Damage taken. Shares a cooldown with other Guard skills.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggerable] = true, [SkillType.Instant] = true, [SkillType.GuardSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
@@ -2635,9 +2636,9 @@ skills["ImmortalCall"] = {
 	},
 }
 skills["VaalImmortalCall"] = {
-	name = "瓦尔.不朽怒嚎",
+name = "瓦尔.不朽怒嚎",
 	color = 1,
-	description = "仰天怒吼，释放耐力球，使角色在短时间内无敌，也无法获得瓦尔之灵。无敌时间长短视释放的耐力球数量而定。\n\n【万. 佛. 朝. 宗! 】",
+	description = "Discharges Endurance Charges, making the character unable to die or gain Vaal souls for a short time, proportional to how many endurance charges were expended.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Vaal] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
@@ -2703,11 +2704,11 @@ skills["VaalImmortalCall"] = {
 	},
 }
 skills["InfernalBlow"] = {
-	name = "炼狱之击",
+name = "炼狱之击",
 	color = 1,
 	baseEffectiveness = 0.6700000166893,
 	incrementalEffectiveness = 0.023299999535084,
-	description = "用武器攻击敌人，施加一个有层数的主减益效果，并用打击对其它击中的敌人附加一个不带层数的次要减益效果。主减益效果叠满 6 层或带有该效果的敌人死亡时会爆炸，对周围其它敌人造成伤害。其它带有次要减益效果的敌人死亡时也会爆炸，对周围敌人造成伤害。爆炸造成的伤害无法被反射。限定剑类、斧类、锤类、短杖、长杖或是空手。",
+	description = "Attacks with your weapon, applying a charged debuff to enemies hit by your strike, and an uncharged debuff to any other enemies hit. Upon reaching 6 charges, expiring, or the enemy's death, the charged debuff is removed, and it deals damage to that and other nearby enemies. Enemies with either debuff explode when they die, damaging other nearby enemies. Damage from this explosion cannot be reflected. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.FireSkill] = true, [SkillType.Duration] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -2786,9 +2787,9 @@ skills["InfernalBlow"] = {
 	},
 }
 skills["LeapSlam"] = {
-	name = "跃击",
+name = "跃击",
 	color = 1,
-	description = "一跃而起，落地时用武器对敌人造成伤害，并击退敌人。被踩到的敌人会被推出去。限定斧头、锤类、短杖、剑类或长杖。无法被被多重打击辅助。",
+	description = "Jump into the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff. Cannot be supported by Multistrike.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.MovementSkill] = true, [SkillType.TravelSkill] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -2865,11 +2866,11 @@ skills["LeapSlam"] = {
 	},
 }
 skills["MoltenShell"] = {
-	name = "熔岩护盾",
+name = "熔岩护盾",
 	color = 1,
 	baseEffectiveness = 9.6499996185303,
 	incrementalEffectiveness = 0.016499999910593,
-	description = "施加一个增益效果，增加护甲值，并在耗尽前替你承担部分伤害。当该增益效果时间结束或耗尽时，该技能将基于该增益效果承受的总伤害，把伤害反射给周围的敌人。与其它防卫技能共用冷却时间。",
+	description = "Applies a buff that adds to your armour, and can take some of the damage from hits for you before being depleted. When the buff expires or is depleted, the skill deals reflected damage to enemies around you based on the total damage that was taken from the buff. Shares a cooldown with other Guard skills.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Type31] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.Triggerable] = true, [SkillType.GuardSkill] = true, },
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 0,
@@ -2945,11 +2946,11 @@ skills["MoltenShell"] = {
 	},
 }
 skills["VaalMoltenShell"] = {
-	name = "瓦尔.熔岩护盾",
+name = "瓦尔.熔岩护盾",
 	color = 1,
 	baseEffectiveness = 14.47500038147,
 	incrementalEffectiveness = 0.016499999910593,
-	description = "施加一个增益效果，增加护甲值，并在耗尽前替你承担部分伤害。当该增益效果时间结束或耗尽时，该技能将基于该增益效果在每秒承受的伤害，每秒把当前受到的伤害反射给周围的敌人。当该增益效果时间结束或耗尽时，该技能会基于该增益效果承受的总伤害，把伤害反射给周围的敌人。",
+	description = "Applies a buff that adds to your armour, and can take some of the damage from hits for you before being depleted. Each second, the skill deals reflected damage to surrounding enemies based on the damage taken from the buff in that second. When the buff expires or is depleted, the skill deals reflected damage to enemies around you based on the total damage that was taken from the buff.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Type31] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.Vaal] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
@@ -3025,12 +3026,12 @@ skills["VaalMoltenShell"] = {
 	},
 }
 skills["MoltenStrike"] = {
-	name = "熔岩之击",
+name = "熔岩之击",
 	color = 1,
 	baseEffectiveness = 0.6700000166893,
 	incrementalEffectiveness = 0.023299999535084,
-	description = "对敌人造成物理及火焰伤害，并从击中的敌人身上发射出熔岩球，射向该攻击击中的所有敌人。这些熔岩球会爆炸，着地时对敌人造成范围伤害。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.FireSkill] = true, [SkillType.ProjectileAttack] = true, },
+description = "对目标造成物理及火焰伤害, 并在挥击的途中从武器弹射出熔岩球. 这些熔岩球在着地时会爆炸, 并对附近的敌人造成伤害.",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.FireSkill] = true, [SkillType.ProjectileAttack] = true, [SkillType.Type83] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
@@ -3087,52 +3088,52 @@ name = "熔岩球",
 		"show_number_of_projectiles",
 	},
 	levels = {
-		[1] = { 60, 2, -50, -50, 2, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.2, baseMultiplier = 1.2, levelRequirement = 1, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[2] = { 60, 2, -50, -50, 2, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.21, baseMultiplier = 1.205, levelRequirement = 2, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[3] = { 60, 2, -50, -50, 2, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.21, baseMultiplier = 1.211, levelRequirement = 4, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[4] = { 60, 2, -50, -50, 3, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.22, baseMultiplier = 1.216, levelRequirement = 7, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[5] = { 60, 2, -50, -50, 3, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.22, baseMultiplier = 1.221, levelRequirement = 11, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[6] = { 60, 2, -50, -50, 3, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.23, baseMultiplier = 1.226, levelRequirement = 16, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[7] = { 60, 2, -50, -50, 3, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.23, baseMultiplier = 1.232, levelRequirement = 20, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[8] = { 60, 2, -50, -50, 4, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.24, baseMultiplier = 1.237, levelRequirement = 24, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[9] = { 60, 2, -50, -50, 4, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.24, baseMultiplier = 1.242, levelRequirement = 28, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[10] = { 60, 2, -50, -50, 4, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.25, baseMultiplier = 1.247, levelRequirement = 32, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[11] = { 60, 2, -50, -50, 4, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.25, baseMultiplier = 1.253, levelRequirement = 36, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[12] = { 60, 2, -50, -50, 5, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.26, baseMultiplier = 1.258, levelRequirement = 40, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[13] = { 60, 2, -50, -50, 5, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.26, baseMultiplier = 1.263, levelRequirement = 44, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[14] = { 60, 2, -50, -50, 5, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.27, baseMultiplier = 1.268, levelRequirement = 48, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[15] = { 60, 2, -50, -50, 5, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.27, baseMultiplier = 1.274, levelRequirement = 52, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[16] = { 60, 2, -50, -50, 5, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.28, baseMultiplier = 1.279, levelRequirement = 56, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[17] = { 60, 2, -50, -50, 6, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.28, baseMultiplier = 1.284, levelRequirement = 60, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[18] = { 60, 2, -50, -50, 6, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.29, baseMultiplier = 1.289, levelRequirement = 64, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[19] = { 60, 2, -50, -50, 6, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.29, baseMultiplier = 1.295, levelRequirement = 67, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[20] = { 60, 2, -50, -50, 6, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.3, baseMultiplier = 1.3, levelRequirement = 70, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[21] = { 60, 2, -50, -50, 7, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.31, baseMultiplier = 1.305, levelRequirement = 72, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[22] = { 60, 2, -50, -50, 7, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.31, baseMultiplier = 1.311, levelRequirement = 74, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[23] = { 60, 2, -50, -50, 7, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.32, baseMultiplier = 1.316, levelRequirement = 76, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[24] = { 60, 2, -50, -50, 7, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.32, baseMultiplier = 1.321, levelRequirement = 78, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[25] = { 60, 2, -50, -50, 8, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.33, baseMultiplier = 1.326, levelRequirement = 80, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[26] = { 60, 2, -50, -50, 8, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.33, baseMultiplier = 1.332, levelRequirement = 82, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[27] = { 60, 2, -50, -50, 8, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.34, baseMultiplier = 1.337, levelRequirement = 84, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[28] = { 60, 2, -50, -50, 8, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.34, baseMultiplier = 1.342, levelRequirement = 86, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[29] = { 60, 2, -50, -50, 9, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.35, baseMultiplier = 1.347, levelRequirement = 88, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[30] = { 60, 2, -50, -50, 9, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.35, baseMultiplier = 1.353, levelRequirement = 90, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[31] = { 60, 2, -50, -50, 9, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.36, baseMultiplier = 1.355, levelRequirement = 91, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[32] = { 60, 2, -50, -50, 9, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.36, baseMultiplier = 1.358, levelRequirement = 92, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[33] = { 60, 2, -50, -50, 9, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.36, baseMultiplier = 1.361, levelRequirement = 93, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[34] = { 60, 2, -50, -50, 10, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.36, baseMultiplier = 1.363, levelRequirement = 94, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[35] = { 60, 2, -50, -50, 10, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.37, baseMultiplier = 1.366, levelRequirement = 95, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[36] = { 60, 2, -50, -50, 10, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.37, baseMultiplier = 1.368, levelRequirement = 96, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[37] = { 60, 2, -50, -50, 10, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.37, baseMultiplier = 1.371, levelRequirement = 97, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[38] = { 60, 2, -50, -50, 11, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.37, baseMultiplier = 1.374, levelRequirement = 98, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[39] = { 60, 2, -50, -50, 11, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.38, baseMultiplier = 1.376, levelRequirement = 99, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
-		[40] = { 60, 2, -50, -50, 11, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.38, baseMultiplier = 1.379, levelRequirement = 100, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[1] = { 60, 3, -50, -50, 2, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.2, baseMultiplier = 1.2, levelRequirement = 1, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[2] = { 60, 3, -50, -50, 2, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.21, baseMultiplier = 1.21, levelRequirement = 2, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[3] = { 60, 3, -50, -50, 2, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.22, baseMultiplier = 1.22, levelRequirement = 4, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[4] = { 60, 3, -50, -50, 3, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.23, baseMultiplier = 1.23, levelRequirement = 7, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[5] = { 60, 3, -50, -50, 3, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.24, baseMultiplier = 1.24, levelRequirement = 11, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[6] = { 60, 3, -50, -50, 3, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.25, baseMultiplier = 1.25, levelRequirement = 16, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[7] = { 60, 3, -50, -50, 3, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.26, baseMultiplier = 1.26, levelRequirement = 20, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[8] = { 60, 3, -50, -50, 4, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.27, baseMultiplier = 1.27, levelRequirement = 24, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[9] = { 60, 3, -50, -50, 4, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.28, baseMultiplier = 1.28, levelRequirement = 28, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[10] = { 60, 3, -50, -50, 4, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.29, baseMultiplier = 1.29, levelRequirement = 32, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[11] = { 60, 3, -50, -50, 4, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.3, baseMultiplier = 1.3, levelRequirement = 36, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[12] = { 60, 3, -50, -50, 5, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.31, baseMultiplier = 1.31, levelRequirement = 40, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[13] = { 60, 3, -50, -50, 5, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.32, baseMultiplier = 1.32, levelRequirement = 44, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[14] = { 60, 3, -50, -50, 5, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.33, baseMultiplier = 1.33, levelRequirement = 48, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[15] = { 60, 3, -50, -50, 5, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.34, baseMultiplier = 1.34, levelRequirement = 52, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[16] = { 60, 3, -50, -50, 5, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.35, baseMultiplier = 1.35, levelRequirement = 56, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[17] = { 60, 3, -50, -50, 6, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.36, baseMultiplier = 1.36, levelRequirement = 60, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[18] = { 60, 3, -50, -50, 6, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.37, baseMultiplier = 1.37, levelRequirement = 64, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[19] = { 60, 3, -50, -50, 6, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.38, baseMultiplier = 1.38, levelRequirement = 67, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[20] = { 60, 3, -50, -50, 6, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.39, baseMultiplier = 1.39, levelRequirement = 70, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[21] = { 60, 3, -50, -50, 7, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.4, baseMultiplier = 1.4, levelRequirement = 72, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[22] = { 60, 3, -50, -50, 7, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.41, baseMultiplier = 1.41, levelRequirement = 74, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[23] = { 60, 3, -50, -50, 7, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.42, baseMultiplier = 1.42, levelRequirement = 76, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[24] = { 60, 3, -50, -50, 7, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.43, baseMultiplier = 1.43, levelRequirement = 78, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[25] = { 60, 3, -50, -50, 8, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.44, baseMultiplier = 1.44, levelRequirement = 80, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[26] = { 60, 3, -50, -50, 8, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.45, baseMultiplier = 1.45, levelRequirement = 82, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[27] = { 60, 3, -50, -50, 8, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.46, baseMultiplier = 1.46, levelRequirement = 84, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[28] = { 60, 3, -50, -50, 8, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.47, baseMultiplier = 1.47, levelRequirement = 86, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[29] = { 60, 3, -50, -50, 9, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.48, baseMultiplier = 1.48, levelRequirement = 88, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[30] = { 60, 3, -50, -50, 9, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.49, baseMultiplier = 1.49, levelRequirement = 90, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[31] = { 60, 3, -50, -50, 9, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, baseMultiplier = 1.495, levelRequirement = 91, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[32] = { 60, 3, -50, -50, 9, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.5, baseMultiplier = 1.5, levelRequirement = 92, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[33] = { 60, 3, -50, -50, 9, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.51, baseMultiplier = 1.505, levelRequirement = 93, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[34] = { 60, 3, -50, -50, 10, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.51, baseMultiplier = 1.51, levelRequirement = 94, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[35] = { 60, 3, -50, -50, 10, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.52, baseMultiplier = 1.515, levelRequirement = 95, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[36] = { 60, 3, -50, -50, 10, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.52, baseMultiplier = 1.52, levelRequirement = 96, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[37] = { 60, 3, -50, -50, 10, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.53, baseMultiplier = 1.525, levelRequirement = 97, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[38] = { 60, 3, -50, -50, 11, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.53, baseMultiplier = 1.53, levelRequirement = 98, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[39] = { 60, 3, -50, -50, 11, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.54, baseMultiplier = 1.535, levelRequirement = 99, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
+		[40] = { 60, 3, -50, -50, 11, 0.80000001192093, 1.2000000476837, damageEffectiveness = 1.54, baseMultiplier = 1.54, levelRequirement = 100, manaCost = 6, statInterpolation = { 1, 1, 1, 1, 1, 3, 3, }, },
 	},
 }
 skills["BloodSpears"] = {
-	name = "凿击",
+name = "凿击",
 	color = 1,
-	description = "重击地面，产生前进的多重尖刺伤害敌人。在血姿态下，多重尖刺会依次爆发，多次击中敌人。在沙姿态下，尖刺会朝外推进。限定剑类或斧类。默认为血姿态。",
+description = "重击地面，产生前进的多重尖刺伤害敌人。\n在血姿态下，多重尖刺会依次爆发，多次击中敌人。\n在沙姿态下，尖刺会朝外推进。限定剑类或斧类。\n默认为血姿态。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.Melee] = true, [SkillType.AttackCanRepeat] = true, },
 	weaponTypes = {
 		["Two Handed Axe"] = true,
@@ -3206,9 +3207,9 @@ skills["BloodSpears"] = {
 	},
 }
 skills["PhysicalDamageAura"] = {
-	name = "尊严",
+name = "尊严",
 	color = 1,
-	description = "施放一个光环，使你周围的敌人受到的物理伤害提高。",
+description = "施放一个光环，使你周围的敌人受到的物理伤害提高。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.AuraDebuff] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -3290,9 +3291,9 @@ name = "最大效果",
 	},
 }
 skills["Punishment"] = {
-	name = "惩戒",
+name = "惩戒",
 	color = 1,
-	description = "对目标区域施放诅咒, 受到诅咒的敌人在近战攻击命中时给与击中的目标一个增益. 此增益给与更多近战伤害和攻击速度. ",
+description = "对目标区域施放诅咒, 受到诅咒的敌人在近战攻击命中时给与击中的目标一个增益. 此增益给与更多近战伤害和攻击速度. ",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Curse] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -3323,54 +3324,55 @@ skills["Punishment"] = {
 		"newpunishment_attack_speed_+%",
 		"newpunishment_applied_buff_duration_ms",
 		"active_skill_base_radius_+",
+		"base_additional_physical_damage_reduction_%",
 	},
 	levels = {
-		[1] = { 9000, 25, 10, 4000, 0, manaCost = 16, levelRequirement = 24, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[2] = { 9100, 26, 10, 4000, 1, manaCost = 17, levelRequirement = 27, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[3] = { 9200, 26, 11, 4000, 1, manaCost = 18, levelRequirement = 30, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[4] = { 9300, 27, 11, 4000, 2, manaCost = 19, levelRequirement = 33, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[5] = { 9400, 27, 12, 4000, 2, manaCost = 21, levelRequirement = 36, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[6] = { 9500, 28, 12, 4000, 3, manaCost = 22, levelRequirement = 39, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[7] = { 9600, 28, 13, 4000, 3, manaCost = 23, levelRequirement = 42, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[8] = { 9700, 29, 13, 4000, 4, manaCost = 24, levelRequirement = 45, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[9] = { 9800, 29, 14, 4000, 4, manaCost = 25, levelRequirement = 48, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[10] = { 9900, 30, 14, 4000, 5, manaCost = 26, levelRequirement = 50, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[11] = { 10000, 30, 15, 4000, 5, manaCost = 26, levelRequirement = 52, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[12] = { 10100, 31, 15, 4000, 6, manaCost = 27, levelRequirement = 54, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[13] = { 10200, 31, 16, 4000, 6, manaCost = 28, levelRequirement = 56, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[14] = { 10300, 32, 16, 4000, 7, manaCost = 29, levelRequirement = 58, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[15] = { 10400, 32, 17, 4000, 7, manaCost = 29, levelRequirement = 60, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[16] = { 10500, 33, 17, 4000, 8, manaCost = 30, levelRequirement = 62, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[17] = { 10600, 33, 18, 4000, 8, manaCost = 31, levelRequirement = 64, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[18] = { 10700, 34, 18, 4000, 9, manaCost = 31, levelRequirement = 66, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[19] = { 10800, 34, 19, 4000, 9, manaCost = 32, levelRequirement = 68, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[20] = { 10900, 35, 19, 4000, 10, manaCost = 33, levelRequirement = 70, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[21] = { 11000, 35, 20, 4000, 10, manaCost = 34, levelRequirement = 72, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[22] = { 11100, 36, 20, 4000, 11, manaCost = 34, levelRequirement = 74, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[23] = { 11200, 36, 21, 4000, 11, manaCost = 35, levelRequirement = 76, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[24] = { 11300, 37, 21, 4000, 12, manaCost = 36, levelRequirement = 78, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[25] = { 11400, 37, 22, 4000, 12, manaCost = 36, levelRequirement = 80, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[26] = { 11500, 38, 22, 4000, 13, manaCost = 37, levelRequirement = 82, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[27] = { 11600, 38, 23, 4000, 13, manaCost = 38, levelRequirement = 84, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[28] = { 11700, 39, 23, 4000, 14, manaCost = 39, levelRequirement = 86, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[29] = { 11800, 39, 24, 4000, 14, manaCost = 39, levelRequirement = 88, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[30] = { 11900, 40, 24, 4000, 15, manaCost = 40, levelRequirement = 90, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[31] = { 11950, 40, 24, 4000, 15, manaCost = 40, levelRequirement = 91, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[32] = { 12000, 40, 25, 4000, 15, manaCost = 41, levelRequirement = 92, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[33] = { 12050, 40, 25, 4000, 15, manaCost = 41, levelRequirement = 93, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[34] = { 12100, 41, 25, 4000, 16, manaCost = 42, levelRequirement = 94, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[35] = { 12150, 41, 25, 4000, 16, manaCost = 42, levelRequirement = 95, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[36] = { 12200, 41, 26, 4000, 16, manaCost = 42, levelRequirement = 96, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[37] = { 12250, 41, 26, 4000, 16, manaCost = 43, levelRequirement = 97, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[38] = { 12300, 42, 26, 4000, 17, manaCost = 43, levelRequirement = 98, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[39] = { 12350, 42, 26, 4000, 17, manaCost = 43, levelRequirement = 99, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[40] = { 12400, 42, 27, 4000, 17, manaCost = 44, levelRequirement = 100, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[1] = { 9000, 25, 10, 9000, 0, -20, manaCost = 16, levelRequirement = 24, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[2] = { 9100, 26, 10, 9100, 1, -20, manaCost = 17, levelRequirement = 27, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[3] = { 9200, 26, 11, 9200, 1, -20, manaCost = 18, levelRequirement = 30, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[4] = { 9300, 27, 11, 9300, 2, -20, manaCost = 19, levelRequirement = 33, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[5] = { 9400, 27, 12, 9400, 2, -20, manaCost = 21, levelRequirement = 36, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[6] = { 9500, 28, 12, 9500, 3, -20, manaCost = 22, levelRequirement = 39, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[7] = { 9600, 28, 13, 9600, 3, -20, manaCost = 23, levelRequirement = 42, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[8] = { 9700, 29, 13, 9700, 4, -20, manaCost = 24, levelRequirement = 45, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[9] = { 9800, 29, 14, 9800, 4, -20, manaCost = 25, levelRequirement = 48, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[10] = { 9900, 30, 14, 9900, 5, -20, manaCost = 26, levelRequirement = 50, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[11] = { 10000, 30, 15, 10000, 5, -20, manaCost = 26, levelRequirement = 52, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[12] = { 10100, 31, 15, 10100, 6, -20, manaCost = 27, levelRequirement = 54, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[13] = { 10200, 31, 16, 10200, 6, -20, manaCost = 28, levelRequirement = 56, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[14] = { 10300, 32, 16, 10300, 7, -20, manaCost = 29, levelRequirement = 58, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[15] = { 10400, 32, 17, 10400, 7, -20, manaCost = 29, levelRequirement = 60, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[16] = { 10500, 33, 17, 10500, 8, -20, manaCost = 30, levelRequirement = 62, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[17] = { 10600, 33, 18, 10600, 8, -20, manaCost = 31, levelRequirement = 64, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[18] = { 10700, 34, 18, 10700, 9, -20, manaCost = 31, levelRequirement = 66, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[19] = { 10800, 34, 19, 10800, 9, -20, manaCost = 32, levelRequirement = 68, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[20] = { 10900, 35, 19, 10900, 10, -20, manaCost = 33, levelRequirement = 70, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[21] = { 11000, 35, 20, 11000, 10, -20, manaCost = 34, levelRequirement = 72, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[22] = { 11100, 36, 20, 11100, 11, -20, manaCost = 34, levelRequirement = 74, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[23] = { 11200, 36, 21, 11200, 11, -20, manaCost = 35, levelRequirement = 76, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[24] = { 11300, 37, 21, 11300, 12, -20, manaCost = 36, levelRequirement = 78, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[25] = { 11400, 37, 22, 11400, 12, -20, manaCost = 36, levelRequirement = 80, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[26] = { 11500, 38, 22, 11500, 13, -20, manaCost = 37, levelRequirement = 82, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[27] = { 11600, 38, 23, 11600, 13, -20, manaCost = 38, levelRequirement = 84, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[28] = { 11700, 39, 23, 11700, 14, -20, manaCost = 39, levelRequirement = 86, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[29] = { 11800, 39, 24, 11800, 14, -20, manaCost = 39, levelRequirement = 88, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[30] = { 11900, 40, 24, 11900, 15, -20, manaCost = 40, levelRequirement = 90, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[31] = { 11950, 40, 24, 11950, 15, -20, manaCost = 40, levelRequirement = 91, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[32] = { 12000, 40, 25, 12000, 15, -20, manaCost = 41, levelRequirement = 92, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[33] = { 12050, 40, 25, 12050, 15, -20, manaCost = 41, levelRequirement = 93, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[34] = { 12100, 41, 25, 12100, 16, -20, manaCost = 42, levelRequirement = 94, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[35] = { 12150, 41, 25, 12150, 16, -20, manaCost = 42, levelRequirement = 95, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[36] = { 12200, 41, 26, 12200, 16, -20, manaCost = 42, levelRequirement = 96, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[37] = { 12250, 41, 26, 12250, 16, -20, manaCost = 43, levelRequirement = 97, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[38] = { 12300, 42, 26, 12300, 17, -20, manaCost = 43, levelRequirement = 98, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[39] = { 12350, 42, 26, 12350, 17, -20, manaCost = 43, levelRequirement = 99, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[40] = { 12400, 42, 27, 12400, 17, -20, manaCost = 44, levelRequirement = 100, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
 	},
 }
 skills["FireResistAura"] = {
-	name = "火焰净化",
+name = "火焰净化",
 	color = 1,
-	description = "施放一个光环, 使你与受光环影响的友军获得额外的火焰抗性.",
+description = "施放一个光环, 使你与受光环影响的友军获得额外的火焰抗性.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -3443,9 +3445,9 @@ skills["FireResistAura"] = {
 	},
 }
 skills["FireImpurity"] = {
-	name = "瓦尔.不净之火",
+name = "瓦尔.不净之火",
 	color = 1,
-	description = "施放一个光环，使你和周围友军受到的火焰伤害降低，并免疫点燃效果，并在击中周围敌人时无视他们的火焰抗性。 ",
+description = "施放一个光环，使你和周围友军受到的火焰伤害降低，并免疫点燃效果，并在击中周围敌人时无视他们的火焰抗性。 ",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.SkillCanTotem] = true, [SkillType.Type27] = true, [SkillType.Duration] = true, [SkillType.Vaal] = true, [SkillType.Aura] = true, [SkillType.AreaSpell] = true, [SkillType.FireSkill] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -3522,9 +3524,9 @@ skills["FireImpurity"] = {
 	},
 }
 skills["RallyingCry"] = {
-	name = "激励战吼",
+name = "激励战吼",
 	color = 1,
-	description = "施展战吼, 使自身和盟友伤害和魔力恢复增加. 伤害增加量随着周围敌人数量提升. 嘲讽周围所有敌人, 使他们攻击施放者. 与其他战吼技能共享技能冷却.",
+description = "施展战吼, 使自身和盟友伤害和魔力恢复增加. 伤害增加量随着周围敌人数量提升. 嘲讽周围所有敌人, 使他们攻击施放者. 与其他战吼技能共享技能冷却.",
 	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Warcry] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.25,
@@ -3599,11 +3601,11 @@ skills["RallyingCry"] = {
 	},
 }
 skills["Reckoning"] = {
-	name = "清算",
+name = "清算",
 	color = 1,
 	baseEffectiveness = 0.5,
 	incrementalEffectiveness = 0.023299999535084,
-	description = "当盾牌格档时对敌人进行一次迅速的反击. 此反击会对锥状区域造成伤害.",
+description = "当盾牌格档时对敌人进行一次迅速的反击. 此反击会对锥状区域造成伤害.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Shield] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -3680,9 +3682,9 @@ skills["Reckoning"] = {
 	},
 }
 skills["RejuvenationTotem"] = {
-	name = "回春图腾",
+name = "回春图腾",
 	color = 1,
-	description = "召唤一个图腾, 它会施放一个光环并使你与受光环影响友军获得额外的生命回复.",
+description = "召唤一个图腾, 它会施放一个光环并使你与受光环影响友军获得额外的生命回复.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Totem] = true, [SkillType.Aura] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	skillTotemId = 4,
@@ -3759,11 +3761,11 @@ skills["RejuvenationTotem"] = {
 	},
 }
 skills["SearingBond"] = {
-	name = "灼热连接",
+name = "灼热连接",
 	color = 1,
 	baseEffectiveness = 6.1111001968384,
 	incrementalEffectiveness = 0.053300000727177,
-	description = "召唤一个图腾, 它会与你和你所操控的所有图腾之间产生火焰连接, 经过火焰连接或是靠近火焰连接尾端的敌人将会受到燃烧伤害.",
+description = "召唤一个图腾, 它会与你和你所操控的所有图腾之间产生火焰连接, 经过火焰连接或是靠近火焰连接尾端的敌人将会受到燃烧伤害.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.DamageOverTime] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Type27] = true, [SkillType.CausesBurning] = true, [SkillType.Totem] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.Type59] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	skillTotemId = 9,
@@ -3832,11 +3834,11 @@ skills["SearingBond"] = {
 	},
 }
 skills["NewShieldCharge"] = {
-	name = "重盾冲锋",
+name = "重盾冲锋",
 	color = 1,
 	baseEffectiveness = 2.210000038147,
 	incrementalEffectiveness = 0.017799999564886,
-	description = "向一个目标冲锋, 使用盾牌对其猛击的同时也用近战武器顺手补刀. 此攻击将会击退目标并将其击晕, 在路径上的敌人将会被推向两旁. 伤害与击晕几率将视冲锋距离而定. 限定装备近战单手武器及盾牌. 无法被多重打击辅助.",
+	description = "Charges at a targeted location or enemy, pushing away enemies in your path and repeatedly dealing off-hand damage in a small area in front of you. You deal damage in a larger area when you reach the target. The further you travel, the more damage you deal, and the greater your chance of stunning enemies. Cannot be supported by Multistrike.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Shield] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.MovementSkill] = true, [SkillType.TravelSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -3911,12 +3913,12 @@ skills["NewShieldCharge"] = {
 	},
 }
 skills["ShockwaveTotem"] = {
-	name = "震波图腾",
+name = "震波图腾",
 	color = 1,
 	baseEffectiveness = 1.1783000230789,
 	incrementalEffectiveness = 0.040300000458956,
-	description = "召唤一个图腾, 它会持续的震动附近的地面, 击退附近的敌人并造成伤害.",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Totem] = true, [SkillType.SpellCanRepeat] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, },
+description = "召唤一个图腾, 它会持续的震动附近的地面, 击退附近的敌人并造成伤害.",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Totem] = true, [SkillType.SpellCanRepeat] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.NovaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	skillTotemId = 5,
 	castTime = 0.6,
@@ -3987,11 +3989,11 @@ skills["ShockwaveTotem"] = {
 	},
 }
 skills["Smite"] = {
-	name = "惩击",
+name = "惩击",
 	color = 1,
 	baseEffectiveness = 0.60000002384186,
 	incrementalEffectiveness = 0.028000000864267,
-	description = "发动一次近战攻击，用闪电攻击目标区域或周围的敌人，造成范围伤害。若该近战攻击击中目标，则该目标不会受到该技能的范围伤害。若该技能击中敌人，你获得一个光环增益，为你和友军附加额外闪电伤害并持续一段时间。限定剑类、斧类、锤类、短杖、长杖或空手。",
+description = "发动一次近战攻击，用闪电攻击目标区域或周围的敌人，造成范围伤害。\n若该近战攻击击中目标，则该目标不会受到该技能的范围伤害。\n若该技能击中敌人，你获得一个光环增益，为你和友军附加额外闪电伤害并持续一段时间。\n需要装备剑、斧、锤、长杖、短杖或空手。",
 	skillTypes = { [SkillType.Melee] = true, [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Hit] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.Aura] = true, [SkillType.Buff] = true, [SkillType.LightningSkill] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -4085,9 +4087,9 @@ skills["Smite"] = {
 	},
 }
 skills["StaticStrike"] = {
-	name = "充能打击",
+name = "充能打击",
 	color = 1,
-	description = "使用近战武器攻击，如果击中敌人则获得一个增益效果。获得后，你将会频繁使用光束击中周围一定数量的敌人，造成攻击伤害，移动时该伤害会提高。该增益最多可以叠加三层，每层都会加快光束攻击的频率。",
+description = "使用近战武器攻击，如果击中目标则获得一个增益。获得后，你将会频繁使用光束击中周围一定数量的敌人，造成攻击伤害，移动时该伤害会提高。该增益最多可以叠加三层，每层都会加快光束攻击的频率。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.LightningSkill] = true, [SkillType.Chaining] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -4190,11 +4192,11 @@ name = "光束 - 3 层",
 	},
 }
 skills["QuickGuard"] = {
-	name = "钢铁之肤",
+name = "钢铁之肤",
 	color = 1,
 	baseEffectiveness = 10,
 	incrementalEffectiveness = 0.029999999329448,
-	description = "施加一个增益效果，在其耗尽之前替你承受部分伤害。和其它防卫技能共用冷却时间。",
+description = "施加一个增益效果，在其耗尽之前替你承受部分伤害。\n和其它防卫技能共用冷却时间。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Instant] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.GuardSkill] = true, },
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 0,
@@ -4258,9 +4260,9 @@ skills["QuickGuard"] = {
 	},
 }
 skills["SummonFireGolem"] = {
-	name = "召唤烈焰魔像",
+name = "召唤烈焰魔像",
 	color = 1,
-	description = "召唤烈焰魔像, 启动时会使你增加伤害. 烈焰魔像会使用火焰放射, 持续造成火焰伤害, 及射出会爆炸的弧状移动投射物. ",
+description = "召唤烈焰魔像, 启动时会使你增加伤害. 烈焰魔像会使用火焰放射, 持续造成火焰伤害, 及射出会爆炸的弧状移动投射物. ",
 	skillTypes = { [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.SkillCanMine] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Spell] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.Golem] = true, [SkillType.CreatesMinion] = true, },
 	minionSkillTypes = { [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
@@ -4338,9 +4340,9 @@ skills["SummonFireGolem"] = {
 	},
 }
 skills["SummonRockGolem"] = {
-	name = "召唤巨石魔像",
+name = "召唤巨石魔像",
 	color = 1,
-	description = "召唤一个为你提供额外生命回复的巨石魔像. 除了一般的近战攻击外, 巨石魔像会使用滚动冲撞, 还有沉重的冲击波来嘲讽附近的敌人. ",
+description = "召唤一个为你提供额外生命回复的巨石魔像. 除了一般的近战攻击外, 巨石魔像会使用滚动冲撞, 还有沉重的冲击波来嘲讽附近的敌人. ",
 	skillTypes = { [SkillType.Triggerable] = true, [SkillType.SkillCanMine] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Spell] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.Golem] = true, [SkillType.PhysicalSkill] = true, [SkillType.CreatesMinion] = true, [SkillType.CreatesMinion] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.MovementSkill] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
@@ -4419,9 +4421,9 @@ skills["SummonRockGolem"] = {
 	},
 }
 skills["Sunder"] = {
-	name = "大地震击",
+name = "大地震击",
 	color = 1,
-	description = "用锤类、短杖、斧类或长杖重击地面，创造一道冲击波，对前方一片区域内的敌人造成伤害。被冲击波击中的敌人会释放出一道圆形震波，对其周围的敌人造成伤害。",
+	description = "Slams the ground with a Mace, Sceptre, Axe or Staff, creating a wave of broken ground that damages enemies in an area in front of you. Enemies hit by the wave will release a circular shockwave, dealing damage to other enemies around them.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -4506,11 +4508,11 @@ name = "冲击波",
 	},
 }
 skills["Sweep"] = {
-	name = "横扫",
+name = "横扫",
 	color = 1,
 	baseEffectiveness = 0.6700000166893,
 	incrementalEffectiveness = 0.023299999535084,
-	description = "使用双手近战武器在身体周围横扫, 并将部分怪物击退.",
+	description = "Swings a two handed melee weapon in a circle, knocking back monsters around the character.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["Two Handed Mace"] = true,
@@ -4583,9 +4585,9 @@ skills["Sweep"] = {
 	},
 }
 skills["EnduranceChargeSlam"] = {
-	name = "破釜一击",
+name = "破釜一击",
 	color = 1,
-	description = "重击地面，在前方制造一道灼热的裂隙，造成范围伤害，并随机分出一些更小的裂隙。可以消耗耐力球施放充能一击，使其范围更大，分出的裂隙更多。限定锤类、短杖、剑类、斧类、长杖或空手。",
+	description = "Slam the ground, unleashing a fiery fissure in front of you, dealing area damage and releasing a random number of smaller fissures branching off from it. Can consume an Endurance Charge to perform a Charged Slam, covering a greater area with more branching fissures. Requires a Mace, Sceptre, Sword, Axe, Staff, or Unarmed.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.FireSkill] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -4668,11 +4670,11 @@ skills["EnduranceChargeSlam"] = {
 	},
 }
 skills["Vengeance"] = {
-	name = "复仇",
+name = "复仇",
 	color = 1,
 	baseEffectiveness = 0.5,
 	incrementalEffectiveness = 0.023299999535084,
-	description = "你被击中时有机会对周围的敌人进行一次快速的反击. 攻击区域范围会受到武器攻击范围的影响. ",
+description = "你被击中时有机会对周围的敌人进行一次快速的反击. 攻击区域范围会受到武器攻击范围的影响. ",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -4751,9 +4753,9 @@ skills["Vengeance"] = {
 	},
 }
 skills["VigilantStrike"] = {
-	name = "戒备打击",
+name = "戒备打击",
 	color = 1,
-	description = "对敌人进行奋力一击。你获得护体增益，带有减伤效果。持续时间可以透过消耗耐力球来延长。需要近战武器。",
+description = "对敌人进行奋力一击. 你获得护体增益, 带有减伤效果. 持续时间可以透过消耗耐力球来延长. 需要近战武器. ",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Buff] = true, [SkillType.Melee] = true, [SkillType.AttackCanRepeat] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.Type53] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
@@ -4829,9 +4831,9 @@ skills["VigilantStrike"] = {
 	},
 }
 skills["Vitality"] = {
-	name = "活力",
+name = "活力",
 	color = 1,
-	description = "施放一个光环, 使你与受光环影响友军获得额外的生命回复.",
+description = "施放一个光环, 使你与受光环影响友军获得额外的生命回复.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -4901,9 +4903,9 @@ skills["Vitality"] = {
 	},
 }
 skills["Vulnerability"] = {
-	name = "脆弱",
+name = "脆弱",
 	color = 1,
-	description = "对目标区域施放诅咒, 受到诅咒的敌人将会受到增加的物理伤害及物理持续伤害.  攻击被诅咒的目标有机会造成流血和瘫痪效果。",
+description = "对目标区域施放诅咒, 受到诅咒的敌人将会受到增加的物理伤害及物理持续伤害.  攻击被诅咒的目标有机会造成流血和瘫痪效果。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Curse] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -4984,9 +4986,9 @@ skills["Vulnerability"] = {
 	},
 }
 skills["WarlordsMark"] = {
-	name = "督军印记",
+name = "督军印记",
 	color = 1,
-	description = "对目标区域施放诅咒, 受到诅咒的敌人将更容易被晕眩, 更慢恢复. 在击中带有印记的敌人时会获得额外的生命与魔力偷取, 此外在击败带有印记的敌人时会有机会获得耐力球.",
+description = "对目标区域施放诅咒, 受到诅咒的敌人将更容易被晕眩, 更慢恢复. 在击中带有印记的敌人时会获得额外的生命与魔力偷取, 此外在击败带有印记的敌人时会有机会获得耐力球.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Curse] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -5068,9 +5070,9 @@ skills["WarlordsMark"] = {
 	},
 }
 skills["BloodstainedBanner"] = {
-	name = "战旗",
+name = "战旗",
 	color = 1,
-	description = "施放一次，保留魔力，扛起一面旗帜，提高周围友军的命中值，并使周围敌人受到的物理伤害提高。扛有旗帜时若击败敌人，则获得等阶。再次施放此技能可以放置旗帜，结束魔力保留。放置旗帜后，每等阶都会使其更加强大。你同时只能有一面旗帜。",
+description = "施放一次，保留魔力，扛起一面旗帜，提高周围友军的命中值，并使周围敌人受到的物理伤害提高。扛有旗帜时若击败敌人，则获得等阶。再次施放此技能可以放置旗帜，结束魔力保留。放置旗帜后，每等阶都会使其更加强大。你同时只能有一面旗帜。",
 	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Spell] = true, [SkillType.Duration] = true, [SkillType.ManaCostReserved] = true, [SkillType.Aura] = true, [SkillType.ManaCostPercent] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.AuraDuration] = true, [SkillType.PhysicalSkill] = true, },
 	statDescriptionScope = "banner_aura_skill_stat_descriptions",
 	castTime = 0,

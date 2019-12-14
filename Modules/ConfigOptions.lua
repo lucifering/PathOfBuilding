@@ -63,6 +63,26 @@ return {
 			 
 		 
 	end },
+{ label = "多重打击辅助+:", ifSkill =  "多重打击辅助+"  },
+	{ var = "multistrikeIndex", type = "list", label = "多重次数:", ifSkill =  "多重打击辅助+" , 
+	list = {{val="0",label="无重复"},
+	{val="1",label="重复1次"},{val="2",label="重复2次"}
+	,{val="3",label="重复3次"}
+	}, apply = function(val, modList, enemyModList)
+		 
+		   if val =="1" then 
+				modList:NewMod("Condition:MultistrikeFirstRepeat", "FLAG", true, "Config")
+				modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Condition:MultistrikeFirstRepeat", "FLAG", true, "Config") }, "Config")
+		   elseif val=="2" then 
+				modList:NewMod("Condition:MultistrikeSecondRepeat", "FLAG", true, "Config")
+				modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Condition:MultistrikeSecondRepeat", "FLAG", true, "Config") }, "Config")
+		   elseif val=="3" then 
+				modList:NewMod("Condition:MultistrikeThirdRepeat", "FLAG", true, "Config")
+				modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Condition:MultistrikeThirdRepeat", "FLAG", true, "Config") }, "Config")
+		   end 		   
+			 
+		 
+	end },
 	
 { label = "【鸟之势】:", ifSkill = "鸟之势" },
 { var = "aspectOfTheAvianAviansMight", type = "check", label = "有【鸟之力量】buff?", ifSkill = "鸟之势", apply = function(val, modList, enemyModList)
@@ -128,11 +148,11 @@ modList:NewMod("SkillData", "LIST", { key = "skeletonLife", value = val }, "Conf
 	end },
 	{ label = "狂噬辅助:", ifSkill = "狂噬辅助" }, 
 	
-	{ var = "feedingFrenzyFeedingFrenzyActive", type = "check", label = "启用狂噬增益效果?", ifSkill = "狂噬辅助", tooltip = "狂噬增益效果:\n召唤生物总伤害额外提高 10%\n召唤生物移动速度提高 15%\n召唤生物攻击和施法速度提高 15%", apply = function(val, modList, enemyModList)
+	{ var = "feedingFrenzyFeedingFrenzyActive", type = "check", label = "启用狂噬增益效果?", ifSkill = "狂噬辅助", tooltip = "狂噬增益效果:\n召唤生物总伤害额外提高 10%\n召唤生物移动速度提高 10%\n召唤生物攻击和施法速度提高 10%", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:FeedingFrenzyActive", "FLAG", true, "Config")
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Damage", "MORE", 10, "狂噬辅助") }, "Config")
-		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("MovementSpeed", "INC", 15, "狂噬辅助") }, "Config")
-		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Speed", "INC", 15, "狂噬辅助") }, "Config")
+		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("MovementSpeed", "INC", 10, "狂噬辅助") }, "Config")
+		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Speed", "INC", 10, "狂噬辅助") }, "Config")
 	end },
 { label = "苦痛之捷:", ifSkill = "苦痛之捷" },
 { var = "heraldOfAgonyVirulenceStack", type = "count", label = "# 【毒力】层数:", ifSkill = "苦痛之捷", apply = function(val, modList, enemyModList)
@@ -702,9 +722,13 @@ end },
 { var = "conditionSoulGainPrevention", type = "check", label = "【阻灵术】生效期间?", ifCond = "SoulGainPrevention", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:SoulGainPrevention", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
-{ var = "conditionUsedWarcryRecently", type = "check", label = "近期内你有使用过战吼?", ifCond = "UsedWarcryRecently", implyCond = "UsedSkillRecently", tooltip = "这也意味着你近期有使用过技能.", apply = function(val, modList, enemyModList)
+{ var = "conditionUsedWarcryRecently", type = "check", label = "近期内你有使用过战吼?", implyCondList = {"UsedWarcryInPast8Seconds", "UsedSkillRecently"}, implyCond = "UsedSkillRecently", tooltip = "这也意味着你近期有使用过技能.", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:UsedWarcryInPast8Seconds", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 		modList:NewMod("Condition:UsedWarcryRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 		modList:NewMod("Condition:UsedSkillRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
+{ var = "conditionUsedWarcryInPast8Seconds", type = "check", label = "过去 8 秒你有使用过战吼?", ifCond = "UsedWarcryInPast8Seconds", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:UsedWarcryInPast8Seconds", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
 { var = "multiplierMineDetonatedRecently", type = "count", label = "近期引爆的地雷数量:", ifMult = "MineDetonatedRecently", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:MineDetonatedRecently", "BASE", val, "Config", { type = "Condition", var = "Combat" })

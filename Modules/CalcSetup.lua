@@ -735,6 +735,15 @@ elseif item.rarity == "魔法" then
 									supportEffect.superseded = true
 								end
 								break
+							elseif grantedEffect.plusVersionOf == otherSupport.grantedEffect.id then
+								add = false
+								if env.mode == "MAIN" then
+									otherSupport.superseded = true
+								end
+								supportList[index] = supportEffect
+							elseif otherSupport.grantedEffect.plusVersionOf == grantedEffect.id then
+								add = false
+								supportEffect.superseded = true
 							end
 						end
 						if add then

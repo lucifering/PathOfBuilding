@@ -434,6 +434,11 @@ activeEffect.grantedEffectLevel = activeGrantedEffect.levels[activeEffect.level]
 		end
 	end
 	
+	-- Find totem level
+	if skillFlags.totem then
+		activeSkill.skillData.totemLevel = activeEffect.grantedEffectLevel.levelRequirement
+	end
+	
 	-- Extract skill data
 	for _, value in ipairs(skillModList:List(activeSkill.skillCfg, "SkillData")) do
 		activeSkill.skillData[value.key] = value.value

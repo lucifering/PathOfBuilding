@@ -135,17 +135,24 @@ if self.rarity == "普通" or self.rarity == "魔法" then
 		end
 	end
 	local gameModeStage = "FINDIMPLICIT"
-	local gameModeSection = 1
-	local foundExplicit
+	local foundExplicit, implicitNumberSpecified, foundImplicit
+	 
 	while self.rawLines[l] do
 		local line = self.rawLines[l]
 		if flaskBuffLines[line] then
 			flaskBuffLines[line] = nil
 		elseif line == "--------" then
-			gameModeSection = gameModeSection + 1
+			--gameModeSection = gameModeSection + 1
 			if gameModeStage == "IMPLICIT" then
-				self.implicitLines = #self.modLines - self.buffLines
-				gameModeStage = "FINDEXPLICIT"
+				 if foundImplicit then
+				 -- There were definitely implicits, so any following modifiers must be explicits
+				 gameModeStage = "EXPLICIT"
+					foundExplicit = true
+				else
+					-- There were modifiers that could be enchantments or explicits; assume enchantment for now
+					self.implicitLines = #self.modLines - self.buffLines
+					gameModeStage = "FINDEXPLICIT"
+				end
 			elseif gameModeStage == "EXPLICIT" then
 				gameModeStage = "DONE"
 			end
@@ -159,6 +166,14 @@ elseif line == "分裂之物" then
 			self.fractured = true
 elseif line == "忆境物品" then
 			self.synthesised = true
+elseif line == "圣战者物品" then
+			self.crusader = true
+elseif line == "救赎者物品" then
+			self.redeemer = true
+elseif line == "狩猎者物品" then
+			self.hunter = true
+elseif line == "督军物品" then
+			self.warlord = true
 		else
 				local specName, specVal = line:match("^(.+): (%x+)$") --lucifer
 			if not specName then
@@ -242,6 +257,7 @@ elseif specName == "后缀" then
 					})
 elseif specName == "固定基底词缀" then
 					self.implicitLines = tonumber(specVal) or 0
+					implicitNumberSpecified = true
 					gameModeStage = "EXPLICIT"
 elseif specName == "未公开" then
 					self.unreleased = (specVal == "true")
@@ -281,7 +297,14 @@ local fractured = line:match("{fractured}") or line:match(" %(fractured%)")
 local rangeSpec = line:match("{range:([%d.]+)}")
 local crafted = line:match("{crafted}") or line:match(" %(crafted%)")
 local custom = line:match("{custom}")
-				line = line:gsub("%b{}", ""):gsub(" %(fractured%)",""):gsub(" %(crafted%)","")
+				local implicit = line:match(" %(implicit%)")
+				--line = line:gsub("%b{}", ""):gsub(" %(fractured%)",""):gsub(" %(crafted%)","")
+				if implicit then
+					foundImplicit = true
+					gameModeStage = "IMPLICIT"
+				end
+				line = line:gsub("%b{}", ""):gsub(" %(fractured%)",""):gsub(" %(crafted%)",""):gsub(" %(implicit%)","")
+				
 				local rangedLine
 				--lucifer
 if (line:match("%(%d+%-%d+ %- %d+%-%d+%)") or line:match("%(%-?[%d%.]+ %- %-?[%d%.]+%)") or line:match("%(%-?[%d%.]+%-[%d%.]+%)")) and line:match(":")==nil  and line:match("^Requires")==nil then
@@ -303,7 +326,8 @@ if combLine:match("%(%d+%-%d+ %- %d+%-%d+%)") or combLine:match("%(%-?[%d%.]+ %-
 					end
 				end
 				if modList and  string.find(line,":")==nil then --lucifer
-					t_insert(self.modLines, { line = line, extra = extra, modList = modList, variantList = variantList, crafted = crafted, custom = custom, fractured = fractured, range = rangedLine and (tonumber(rangeSpec) or 0.5) })
+					--t_insert(self.modLines, { line = line, extra = extra, modList = modList, variantList = variantList, crafted = crafted, custom = custom, fractured = fractured, range = rangedLine and (tonumber(rangeSpec) or 0.5) })
+					t_insert(self.modLines, { line = line, extra = extra, modList = modList, variantList = variantList, crafted = crafted, custom = custom, fractured = fractured, implicit = implicit, range = rangedLine and (tonumber(rangeSpec) or 0.5) })
 					if mode == "GAME" then
 						if gameModeStage == "FINDIMPLICIT" then
 							gameModeStage = "IMPLICIT"
@@ -318,12 +342,17 @@ if combLine:match("%(%d+%-%d+ %- %d+%-%d+%)") or combLine:match("%(%-?[%d%.]+ %-
 					end
 				elseif mode == "GAME" then
 					if gameModeStage == "IMPLICIT" or gameModeStage == "EXPLICIT" then
-						t_insert(self.modLines, { line = line, extra = line, modList = { }, variantList = variantList, crafted = crafted, custom = custom, fractured = fractured })
+						--t_insert(self.modLines, { line = line, extra = line, modList = { }, variantList = variantList, crafted = crafted, custom = custom, fractured = fractured })
+						t_insert(self.modLines, { line = line, extra = line, modList = { }, variantList = variantList, crafted = crafted, custom = custom, fractured = fractured, implicit = implicit })
 					elseif gameModeStage == "FINDEXPLICIT" then
 						gameModeStage = "DONE"
 					end
 				elseif foundExplicit then
-					t_insert(self.modLines, { line = line, extra = line, modList = { }, variantList = variantList, crafted = crafted, custom = custom, fractured = fractured })
+					t_insert(self.modLines, { line = line, extra = line, modList = { }, variantList = variantList, crafted = crafted, custom = custom, fractured = fractured, implicit = implicit })
+				end
+				if implicit then
+					self.implicitLines = #self.modLines
+					--t_insert(self.modLines, { line = line, extra = line, modList = { }, variantList = variantList, crafted = crafted, custom = custom, fractured = fractured })
 				end
 			end
 		end
@@ -337,12 +366,28 @@ if combLine:match("%(%d+%-%d+ %- %d+%-%d+%)") or combLine:match("%(%-?[%d%.]+ %-
 			self.requirements.level = self.base.req.level
 		end
 	end
-	if self.base and self.base.implicit then
-		if self.implicitLines == 0 then
-			self.implicitLines = 1 + #self.base.implicit:gsub("[^\n]","")
+	if gameModeStage == "IMPLICIT" and not foundImplicit and not implicitNumberSpecified then
+	-- We only found modifiers that could be enchantments or explicits; assume enchantments for now
+	self.implicitLines = #self.modLines - self.buffLines
+	end
+	if self.implicitLines > 0 and not implicitNumberSpecified then
+		if not foundExplicit and self.rarity ~= "NORMAL" then
+			-- No explicits were found, but the item should have some, so the implicits (presumed enchantments) must be explicits
+			self.implicitLines = 0
+		else
+			-- Any "implicits" that weren't explicitly marked as such will be enchantments
+			for index, modLine in ipairs(self.modLines) do
+				if index > self.implicitLines then
+					break
+				end
+				if not modLine.implicit then
+					modLine.crafted = true
+				end
+			end
+			
+	 
 		end
-	elseif mode == "GAME" and not foundExplicit then
-		self.implicitLines = 0
+ 
 	end
 	self.affixLimit = 0
 	if self.crafted then
@@ -411,7 +456,14 @@ end
 function ItemClass:GetModSpawnWeight(mod, extraTags)
 	if self.base then
 		for i, key in ipairs(mod.weightKey) do
-			if self.base.tags[key] or (extraTags and extraTags[key]) or (self.shaperElderTags and (self.shaper and self.shaperElderTags.shaper == key) or (self.elder and self.shaperElderTags.elder == key)) then
+			if self.base.tags[key] or (extraTags and extraTags[key]) or (self.shaperElderTags and (self.shaper and self.shaperElderTags.shaper == key) or (self.elder and self.shaperElderTags.elder == key)
+			
+			or (self.crusader  and self.shaperElderTags.crusader  == key)
+			or (self.redeemer  and self.shaperElderTags.redeemer  == key)
+			or (self.hunter  and self.shaperElderTags.hunter  == key)
+			or (self.warlord and self.shaperElderTags.warlord == key)
+			
+			) then
 				return mod.weightVal[i]
 			end
 		end
@@ -440,6 +492,21 @@ t_insert(rawLines, "稀 有 度: "..self.rarity)
 	if self.shaper then
 t_insert(rawLines, "塑界之器")
 	end
+	
+	if self.crusader  then
+t_insert(rawLines, "圣战者物品")
+	end
+	if self.redeemer  then
+t_insert(rawLines, "救赎者物品")
+	end
+	if self.hunter  then
+t_insert(rawLines, "狩猎者物品")
+	end
+	if self.warlord  then
+t_insert(rawLines, "督军物品")
+	end
+	
+	
 	if self.elder then
 t_insert(rawLines, "裂界之器")
 	end

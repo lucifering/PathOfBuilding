@@ -328,7 +328,9 @@ self.controls.removeDisplayItem = new("ButtonControl", {"LEFT",self.controls.edi
 	end)
 	
 
-self.controls.displayItemShaperElder = new("DropDownControl", {"TOPLEFT",self.controls.displayItemSectionImplicit,"TOPLEFT"}, 0, 0, 100, 20, {"通常","塑界者","裂界者","忆境物品"}, function(index, value)
+self.controls.displayItemShaperElder = new("DropDownControl", {"TOPLEFT",self.controls.displayItemSectionImplicit,"TOPLEFT"}, 0, 0, 100, 20, {"通常","塑界者",
+"裂界者","忆境物品","圣战者","救赎者","狩猎者","督军"
+}, function(index, value)
 		
 		
 		
@@ -336,6 +338,12 @@ self.controls.displayItemShaperElder = new("DropDownControl", {"TOPLEFT",self.co
 			if self.displayItem.type ~= "Jewel" then 
 				self.displayItem.shaper = (index == 2)
 				self.displayItem.elder = (index == 3)
+				self.displayItem.crusader  = (index == 5)
+				self.displayItem.redeemer   = (index == 6)
+				self.displayItem.hunter   = (index == 7)
+				self.displayItem.warlord  = (index == 8)
+				
+				
 			end 
 			
 			self.displayItem.synthesised = (index == 4)
@@ -348,6 +356,11 @@ self.controls.displayItemShaperElder = new("DropDownControl", {"TOPLEFT",self.co
 				if self.displayItem.type ~= "Jewel" then 
 					self.displayItem.shaper = (index == 2)
 					self.displayItem.elder = (index == 3)
+					self.displayItem.crusader  = (index == 5)
+					self.displayItem.redeemer   = (index == 6)
+					self.displayItem.hunter   = (index == 7)
+					self.displayItem.warlord  = (index == 8)
+					
 				end 
 			end 
 		end 
@@ -1485,15 +1498,21 @@ function ItemsTabClass:EnchantDisplayItem()
 		local item = new("Item", self.build.targetVersion, self.displayItem:BuildRaw())
 		item.id = self.displayItem.id
 		for i = 1, item.implicitLines do 
+			if item.implicitLines > 0 and item.modLines[1].crafted then		 
 			if item.modLines~=nil and item.modLines[i]~=nil and  item.modLines[i].crafted then
 					
 					t_remove(item.modLines, i)
-					item.implicitLines =item.implicitLines -1
+					item.implicitLines = item.implicitLines - 1
+					 
+			end
 			end
 		end
+		 
+		
+		
 		local list = haveSkills and enchantments[controls.skill.list[controls.skill.selIndex]] or enchantments
 		t_insert(item.modLines, 1, { crafted = true, line = list[controls.labyrinth.list[controls.labyrinth.selIndex].name][controls.enchantment.selIndex] })
-		item.implicitLines = item.implicitLines+1
+		item.implicitLines = item.implicitLines + 1
 		item:BuildAndParseRaw()
 		return item
 	end
@@ -2013,10 +2032,25 @@ function ItemsTabClass:AddItemTooltip(tooltip, item, slot, dbMode)
 	end
 	if item.shaper then
 		tooltip:AddLine(16, colorCodes.SHAPER.."塑界之器")
-	end
+	end 
 	if item.elder then
 		tooltip:AddLine(16, colorCodes.ELDER.."裂界之器")
 	end
+	
+	if item.crusader then
+		tooltip:AddLine(16, colorCodes.CRUSADER.."圣战者物品")
+	end
+	if item.redeemer then
+		tooltip:AddLine(16, colorCodes.REDEEMER.."救赎者物品")
+	end
+	if item.hunter then
+		tooltip:AddLine(16, colorCodes.HUNTER.."狩猎者物品")
+	end
+	if item.warlord then
+		tooltip:AddLine(16, colorCodes.WARLORD.."督军物品")
+	end
+	
+	
 	if item.fractured then
 		tooltip:AddLine(16, colorCodes.FRACTURED.."分裂之物")
 	end
@@ -2198,11 +2232,11 @@ tooltip:AddLine(16, "^x7F7F7F插槽: "..line)
 
 	-- Implicit/explicit modifiers
 	if item.modLines[1] then
-		for index, modLine in pairs(item.modLines) do
+		for index, modLine in ipairs(item.modLines) do
 			if not modLine.buff and item:CheckModLineVariant(modLine) then
 				tooltip:AddLine(16, itemLib.formatModLine(modLine, dbMode))
 			end
-			if index == item.implicitLines + item.buffLines and item.modLines[index + 1] then
+			if (index == item.implicitLines + item.buffLines and item.modLines[index + 1]) or (index < item.implicitLines + item.buffLines and modLine.crafted and not item.modLines[index + 1].crafted) then
 				-- Add separator between implicit and explicit modifiers
 				tooltip:AddSeparator(10)
 			end

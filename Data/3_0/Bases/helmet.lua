@@ -531,3 +531,13 @@ itemBases["金黄花环"] = {
 	armour = { },
 	req = { level = 12, },
 }
+
+itemBases["金色面具"] = {
+	type = "Helmet",
+	hidden = true,
+	socketLimit = 4,
+	tags = { default = true, armour = true, helmet = true, not_for_sale = true, },
+	implicit = "+(8-16)% 所有元素抗性",
+	armour = { },
+	req = { level = 12, },
+}

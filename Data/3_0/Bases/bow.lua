@@ -34,14 +34,15 @@ itemBases["反曲弓"] = {
 	type = "Bow",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, bow = true, ranged = true, two_hand_weapon = true, },
-	weapon = { PhysicalMin = 11, PhysicalMax = 34, CritChanceBase = 6.5, AttackRateBase = 1.25, Range = 120, },
+	implicit = "+(15-25)% 攻击和法术暴击伤害加成",
+	weapon = { PhysicalMin = 11, PhysicalMax = 34, CritChanceBase = 6.7, AttackRateBase = 1.25, Range = 120, },
 	req = { level = 18, dex = 65, },
 }
 itemBases["骨制弓"] = {
 	type = "Bow",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, bow = true, ranged = true, two_hand_weapon = true, },
-	weapon = { PhysicalMin = 12, PhysicalMax = 36, CritChanceBase = 6, AttackRateBase = 1.35, Range = 120, },
+	weapon = { PhysicalMin = 11, PhysicalMax = 34, CritChanceBase = 6.5, AttackRateBase = 1.4, Range = 120, },
 	req = { level = 23, dex = 80, },
 }
 itemBases["皇家猎弓"] = {
@@ -64,7 +65,7 @@ itemBases["反射弓"] = {
 	type = "Bow",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, bow = true, ranged = true, two_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "移动速度提高 4%",
+	implicit = "移动速度提高 6%",
 	weapon = { PhysicalMin = 27, PhysicalMax = 40, CritChanceBase = 5.5, AttackRateBase = 1.4, Range = 120, },
 	req = { level = 36, dex = 124, },
 }
@@ -93,14 +94,15 @@ itemBases["狙击弓"] = {
 	type = "Bow",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, bow = true, ranged = true, two_hand_weapon = true, },
-	weapon = { PhysicalMin = 23, PhysicalMax = 68, CritChanceBase = 6.5, AttackRateBase = 1.25, Range = 120, },
+	implicit = "+(15-25)% 攻击和法术暴击伤害加成",
+	weapon = { PhysicalMin = 23, PhysicalMax = 68, CritChanceBase = 6.7, AttackRateBase = 1.25, Range = 120, },
 	req = { level = 44, dex = 143, },
 }
 itemBases["象牙弓"] = {
 	type = "Bow",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, bow = true, ranged = true, two_hand_weapon = true, },
-	weapon = { PhysicalMin = 21, PhysicalMax = 64, CritChanceBase = 6, AttackRateBase = 1.35, Range = 120, },
+	weapon = { PhysicalMin = 20, PhysicalMax = 61, CritChanceBase = 6.5, AttackRateBase = 1.4, Range = 120, },
 	req = { level = 47, dex = 152, },
 }
 itemBases["贵族之弓"] = {
@@ -123,7 +125,7 @@ itemBases["钢木之弓"] = {
 	type = "Bow",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, bow = true, ranged = true, two_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "移动速度提高 4%",
+	implicit = "移动速度提高 6%",
 	weapon = { PhysicalMin = 40, PhysicalMax = 60, CritChanceBase = 5.5, AttackRateBase = 1.4, Range = 120, },
 	req = { level = 57, dex = 190, },
 }
@@ -141,25 +143,26 @@ itemBases["城塞战弓"] = {
 	weapon = { PhysicalMin = 25, PhysicalMax = 101, CritChanceBase = 6, AttackRateBase = 1.25, Range = 120, },
 	req = { level = 58, dex = 185, },
 }
-itemBases["漫游之弓"] = {
+itemBases["游侠弓"] = {
 	type = "Bow",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, bow = true, ranged = true, two_hand_weapon = true, },
-	weapon = { PhysicalMin = 37, PhysicalMax = 76, CritChanceBase = 6, AttackRateBase = 1.3, Range = 120, },
+	weapon = { PhysicalMin = 39, PhysicalMax = 80, CritChanceBase = 6, AttackRateBase = 1.3, Range = 120, },
 	req = { level = 60, dex = 212, },
 }
 itemBases["暗影弓"] = {
 	type = "Bow",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, bow = true, ranged = true, two_hand_weapon = true, },
-	weapon = { PhysicalMin = 30, PhysicalMax = 89, CritChanceBase = 6.5, AttackRateBase = 1.25, Range = 120, },
+	implicit = "+(15-25)% 攻击和法术暴击伤害加成",
+	weapon = { PhysicalMin = 30, PhysicalMax = 89, CritChanceBase = 6.7, AttackRateBase = 1.25, Range = 120, },
 	req = { level = 62, dex = 212, },
 }
 itemBases["脊弓"] = {
 	type = "Bow",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, bow = true, ranged = true, two_hand_weapon = true, },
-	weapon = { PhysicalMin = 27, PhysicalMax = 80, CritChanceBase = 6, AttackRateBase = 1.35, Range = 120, },
+	weapon = { PhysicalMin = 26, PhysicalMax = 78, CritChanceBase = 6.5, AttackRateBase = 1.4, Range = 120, },
 	req = { level = 64, dex = 212, },
 }
 itemBases["帝国之弓"] = {
@@ -182,7 +185,7 @@ itemBases["马拉克斯弓"] = {
 	type = "Bow",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, bow = true, ranged = true, two_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "移动速度提高 6%",
+	implicit = "移动速度提高 10%",
 	weapon = { PhysicalMin = 44, PhysicalMax = 65, CritChanceBase = 5.5, AttackRateBase = 1.4, Range = 120, },
 	req = { level = 71, dex = 222, },
 }

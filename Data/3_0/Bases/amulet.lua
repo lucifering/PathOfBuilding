@@ -65,7 +65,6 @@ itemBases["黄晶护身符"] = {
 }
 itemBases["血色护身符"] = {
 	type = "Amulet",
-	hidden = true,
 	tags = { default = true, amulet = true, not_for_sale = true, },
 	implicit = "+(20-30)% 火焰抗性",
 	req = { },

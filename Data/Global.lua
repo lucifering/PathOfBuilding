@@ -46,6 +46,11 @@ colorCodes = {
 	SHAPER = "^x55BBFF",
 	ELDER = "^xAA77CC",
 	FRACTURED = "^xA29160",
+	CRUSADER = "^xE22F1F",
+REDEEMER = "^x09B0FD",
+HUNTER = "^xB4FB7E",
+WARLORD = "^xF4E46A",
+	
 }
 colorCodes.STRENGTH = colorCodes.MARAUDER
 colorCodes.DEXTERITY = colorCodes.RANGER

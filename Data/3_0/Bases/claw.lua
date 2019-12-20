@@ -70,7 +70,7 @@ itemBases["双刃爪"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "攻击击中每个敌人会回复 +15 生命\n攻击击中每个敌人会回复 +6 魔力",
+	implicit = "攻击击中每个敌人会回复 +6 魔力\n攻击击中每个敌人会回复 +15 生命",
 	weapon = { PhysicalMin = 15, PhysicalMax = 44, CritChanceBase = 6.3, AttackRateBase = 1.5, Range = 11, },
 	req = { level = 36, dex = 67, int = 67, },
 }
@@ -134,7 +134,7 @@ itemBases["重刃爪"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "攻击击中每个敌人会回复 +28 生命\n攻击击中每个敌人会回复 +10 魔力",
+	implicit = "攻击击中每个敌人会回复 +10 魔力\n攻击击中每个敌人会回复 +28 生命",
 	weapon = { PhysicalMin = 21, PhysicalMax = 64, CritChanceBase = 6.3, AttackRateBase = 1.5, Range = 11, },
 	req = { level = 57, dex = 103, int = 103, },
 }
@@ -198,7 +198,7 @@ itemBases["双子战爪"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "攻击击中每个敌人会回复 +38 生命\n攻击击中每个敌人会回复 +14 魔力",
+	implicit = "攻击击中每个敌人会回复 +14 魔力\n攻击击中每个敌人会回复 +38 生命",
 	weapon = { PhysicalMin = 23, PhysicalMax = 68, CritChanceBase = 6.3, AttackRateBase = 1.5, Range = 11, },
 	req = { level = 72, dex = 121, int = 121, },
 }

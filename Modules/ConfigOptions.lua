@@ -63,8 +63,8 @@ return {
 			 
 		 
 	end },
-{ label = "多重打击辅助+:", ifSkill =  "多重打击辅助+"  },
-	{ var = "multistrikeIndex", type = "list", label = "多重次数:", ifSkill =  "多重打击辅助+" , 
+{ label = "多重打击（强辅）:", ifSkill =  "多重打击（强辅）"  },
+	{ var = "multistrikeIndex", type = "list", label = "多重次数:", ifSkill =  "多重打击（强辅）" , 
 	list = {{val="0",label="无重复"},
 	{val="1",label="重复1次"},{val="2",label="重复2次"}
 	,{val="3",label="重复3次"}

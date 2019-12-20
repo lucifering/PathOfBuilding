@@ -627,6 +627,20 @@ function ImportTabClass:ImportItem(itemData, sockets, slotName)
 	item.uniqueID = itemData.id
 	item.shaper = itemData.shaper
 	item.elder = itemData.elder
+	if itemData.influences and itemData.influences.crusader then 
+		item.crusader= itemData.influences.crusader
+	end
+	if itemData.influences and itemData.influences.redeemer then 
+		item.redeemer= itemData.influences.redeemer
+	end
+	if itemData.influences and itemData.influences.hunter then 
+		item.hunter= itemData.influences.hunter
+	end
+	if itemData.influences and itemData.influences.warlord then 
+		item.warlord= itemData.influences.warlord
+	end
+	 
+	
 	if itemData.ilvl > 0 then
 		item.itemLevel = itemData.ilvl
 	end

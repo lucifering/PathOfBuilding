@@ -11,7 +11,7 @@ name = "默认攻击",
 	hidden = true,
 	color = 4,
 	description = "对你的敌人无情痛击.",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, },
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.SkillCanVolley] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	baseFlags = {
@@ -36,7 +36,7 @@ name = "默认攻击",
 	hidden = true,
 	color = 4,
 	description = "对你的敌人无情痛击.",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, },
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.SkillCanVolley] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	baseFlags = {
@@ -237,35 +237,6 @@ name = "卡普里的意志",
 	},
 	levels = {
 		[1] = { cooldown = 0.15, levelRequirement = 1, statInterpolation = { }, },
-	},
-}
-skills["UniqueSupportGreaterVolley"] = {
-name = "高阶齐射",
-	hidden = true,
-	color = 2,
-	support = true,
-	requireSkillTypes = { SkillType.SkillCanVolley, },
-	addSkillTypes = { },
-	excludeSkillTypes = { SkillType.Type70, SkillType.Type71, },
-	statDescriptionScope = "gem_stat_descriptions",
-	fromItem = true,
-	statMap = {
-		["support_greater_volley_projectile_damage_+%_final"] = {
-			mod("Damage", "MORE", nil, ModFlag.Projectile),
-		},
-	},
-	baseMods = {
-	},
-	qualityStats = {
-	},
-	stats = {
-		"support_parallel_projectile_number_of_points_per_side",
-		"greater_volley_additional_projectiles_fire_parallel_x_dist",
-		"number_of_additional_projectiles",
-		"support_greater_volley_projectile_damage_+%_final",
-	},
-	levels = {
-		[20] = { 4, 80, 4, -26, manaMultiplier = 40, levelRequirement = 70, statInterpolation = { 1, 1, 1, 1, }, },
 	},
 }
 skills["RepeatingShockwave"] = {
@@ -494,7 +465,7 @@ skills["TriggeredBoneNova"] = {
 	name = "裂骨新星",
 	hidden = true,
 	color = 4,
-	description = "从施法者散发出一圈刺骨之环, 造成物理伤害.",
+	description = "向你周围爆发骨刺，造成物理伤害。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Hit] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -787,7 +758,7 @@ skills["OnHitWhileCursedTriggeredCurseNova"] = {
 	color = 4,
 	baseEffectiveness = 3,
 	incrementalEffectiveness = 0.050000000745058,
-	description = "向四周发射一圈投射物，将这些投射物所有物理伤害转化成随机元素伤害，并在一段时间内使你免疫诅咒。",
+	description = "向所有方向发射投射物，将它们的所有物理伤害转化成随机元素伤害，并一段时间内使你免疫诅咒。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.FireSkill] = true, [SkillType.ColdSkill] = true, [SkillType.LightningSkill] = true, [SkillType.Duration] = true, [SkillType.Buff] = true, [SkillType.PhysicalSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -1036,7 +1007,7 @@ skills["TriggeredIcicleNova"] = {
 	name = "爆环冰刺",
 	hidden = true,
 	color = 4,
-	description = "该攻击会将冰刺在你周围环状发射，该攻击的所有物理伤害将会被转化为冰霜伤害。",
+	description = "从被击败的敌人周围发射一圈寒冰投射物，并将造成的所有物理伤害转化为冰霜伤害。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Hit] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.ColdSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -1227,7 +1198,7 @@ skills["TriggeredMoltenStrike"] = {
 	hidden = true,
 	color = 1,
 	description = "对目标造成物理及火焰伤害, 并在挥击的途中从武器弹射出熔岩球. 这些熔岩球在着地时会爆炸, 并对附近的敌人造成伤害. ",
-	skillTypes = { [SkillType.Projectile] = true, [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.FireSkill] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.ProjectileAttack] = true, },
+	skillTypes = { [SkillType.Projectile] = true, [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.FireSkill] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.ProjectileAttack] = true, [SkillType.Type83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	fromItem = true,
@@ -1249,7 +1220,7 @@ skills["TriggeredMoltenStrike"] = {
 		"base_skill_show_average_damage_instead_of_dps",
 	},
 	levels = {
-		[16] = { 2, 20, cooldown = 0.15, levelRequirement = 1, statInterpolation = { 1, 1, }, },
+		[16] = { 2, 20, damageEffectiveness = 1.15, cooldown = 0.15, baseMultiplier = 1.15, levelRequirement = 1, statInterpolation = { 1, 1, }, },
 	},
 }
 skills["TriggeredSummonSpider"] = {
@@ -1330,7 +1301,7 @@ skills["TriggeredShockedGround"] = {
 	hidden = true,
 	color = 4,
 	description = "在你周围创造一片电击地面. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Triggerable] = true, [SkillType.Duration] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.LightningSkill] = true, [SkillType.AreaSpell] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Triggerable] = true, [SkillType.Duration] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.LightningSkill] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	fromItem = true,
@@ -1825,11 +1796,13 @@ skills["TriggeredSummonGhostOnKill"] = {
 		"trigger_on_corpse_consume_%_chance",
 		"base_skill_effect_duration",
 		"base_number_of_support_ghosts_allowed",
+		"phantasm_minimum_added_physical_damage_to_grant",
+		"phantasm_maximum_added_physical_damage_to_grant",
 		"skill_can_own_support_ghosts",
 		"skill_has_trigger_from_unique_item",
 	},
 	levels = {
-		[20] = { 100, 15000, 10, manaMultiplier = 20, levelRequirement = 70, statInterpolation = { 1, 1, 1, }, },
+		[20] = { 100, 15000, 10, 28, 43, manaMultiplier = 20, levelRequirement = 70, statInterpolation = { 1, 1, 1, 1, 1, }, },
 	},
 }
 skills["SummonRigwaldsPack"] = {
@@ -1979,6 +1952,7 @@ skills["VoidGaze"] = {
 			mod("ChaosResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff" }),
 		},
 	},
+
 	baseFlags = {
 		spell = true,
 		duration = true,
@@ -1999,6 +1973,7 @@ skills["VoidGaze"] = {
 }
 
 
+
 --lucifer
 
 
@@ -2007,7 +1982,7 @@ skills["VoidShot"] = {
 	hidden = true,
 	color = 4,
 	description = "射出一根箭矢并减速飞向目标。箭矢会在飞出后变得不稳定最后爆炸并在范围内造成武器伤害，将一般的物理伤害转化为冰霜伤害。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.ColdSkill] = true, },
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.ColdSkill] = true, [SkillType.SkillCanVolley] = true, },
 	weaponTypes = {
 		["Bow"] = true,
 	},
@@ -2021,7 +1996,7 @@ skills["VoidShot"] = {
 		duration = true,
 	},
 	baseMods = {
-	skill("showAverage", true),
+		skill("showAverage", true),
 	},
 	qualityStats = {
 	},
@@ -2040,7 +2015,7 @@ skills["VoidShot"] = {
 }
 
 skills["SupportGreaterSpellEcho"] = {
-	name = "高等施法回响",
+name = "高等施法回响",
 	hidden = true,
 	color = 3,
 	support = true,
@@ -2054,7 +2029,7 @@ fromItem = true,
             mod("Damage", "MORE", nil, ModFlag.Spell, 0, { type = "Multiplier", var = "spellEchoCount" }),
         },
         ["support_greater_spell_echo_area_of_effect_+%_per_repeat"] = {
-            mod("AreaOfEffect", "MORE", nil, ModFlag.Spell, 0, { type = "Multiplier", var = "spellEchoCount" }),
+            mod("AreaOfEffect", "MORE", nil, 0, 0, { type = "Multiplier", var = "spellEchoCount" }),
         },
     }, 
 	baseMods = {

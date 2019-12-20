@@ -95,27 +95,6 @@ itemBases["潜能之戒"] = {
 	implicit = "有 1 个插槽",
 	req = { level = 5, },
 }
-
-itemBases["双玉戒指"] = {
-	type = "Ring",
-	tags = { default = true, ring = true, twostonering = true, },
-	implicit = "+(12-16)% 火焰与闪电抗性",
-	req = { level = 20, },
-}
-itemBases["双玉戒指"] = {
-	type = "Ring",
-	hidden = true,
-	tags = { default = true, ring = true, twostonering = true, },
-	implicit = "+(12-16)% 冰霜与闪电抗性",
-	req = { level = 20, },
-}
-itemBases["双玉戒指"] = {
-	type = "Ring",
-	hidden = true,
-	tags = { default = true, ring = true, twostonering = true, },
-	implicit = "+(12-16)% 火焰与冰霜抗性",
-	req = { level = 20, },
-}
 itemBases["Two-Stone Ring (Fire/Lightning)"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, twostonering = true, },
@@ -178,4 +157,26 @@ itemBases["杰特戒指"] = {
 	tags = { default = true, ring = true, not_for_sale = true, },
 	implicit = "全局防御提高 (5-10)%",
 	req = { },
+}
+
+
+itemBases["双玉戒指"] = {
+	type = "Ring",
+	tags = { default = true, ring = true, twostonering = true, },
+	implicit = "+(12-16)% 火焰与闪电抗性",
+	req = { level = 20, },
+}
+itemBases["双玉戒指"] = {
+	type = "Ring",
+	hidden = true,
+	tags = { default = true, ring = true, twostonering = true, },
+	implicit = "+(12-16)% 冰霜与闪电抗性",
+	req = { level = 20, },
+}
+itemBases["双玉戒指"] = {
+	type = "Ring",
+	hidden = true,
+	tags = { default = true, ring = true, twostonering = true, },
+	implicit = "+(12-16)% 火焰与冰霜抗性",
+	req = { level = 20, },
 }

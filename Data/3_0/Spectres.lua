@@ -1286,7 +1286,7 @@ minions["Metadata/Monsters/KitavaCultist/VaalCultistSpearBloodChampionDelve"] = 
 	fireResist = 35,
 	coldResist = 35,
 	lightningResist = 35,
-	chaosResist = 35,
+	chaosResist = 20,
 	damage = 1.5,
 	damageSpread = 0.2,
 	attackTime = 1.5,
@@ -1335,7 +1335,7 @@ minions["Metadata/Monsters/KitavaCultist/VaalCultistSpearChaosChampionDelve"] = 
 	fireResist = 35,
 	coldResist = 35,
 	lightningResist = 35,
-	chaosResist = 35,
+	chaosResist = 20,
 	damage = 1.5,
 	damageSpread = 0.2,
 	attackTime = 1.5,
@@ -1385,7 +1385,7 @@ minions["Metadata/Monsters/KitavaCultist/VaalCultistSpearFireChampionDelve_"] = 
 	fireResist = 35,
 	coldResist = 35,
 	lightningResist = 35,
-	chaosResist = 35,
+	chaosResist = 20,
 	damage = 1.5,
 	damageSpread = 0.2,
 	attackTime = 1.5,
@@ -1434,7 +1434,7 @@ minions["Metadata/Monsters/KitavaCultist/VaalCultistSpearLightningChampionDelve_
 	fireResist = 35,
 	coldResist = 35,
 	lightningResist = 35,
-	chaosResist = 35,
+	chaosResist = 20,
 	damage = 1.5,
 	damageSpread = 0.2,
 	attackTime = 1.5,
@@ -1550,7 +1550,7 @@ minions["Metadata/Monsters/LeagueDelve/ProtoVaalWarriorElite"] = {
 	fireResist = 35,
 	coldResist = 35,
 	lightningResist = 35,
-	chaosResist = 35,
+	chaosResist = 20,
 	damage = 1.34,
 	damageSpread = 0.2,
 	attackTime = 1.305,
@@ -2044,6 +2044,7 @@ minions["Metadata/Monsters/Seawitch/SeaWitchFrostBolt"] = {
 		"SeaWitchWave",
 		"Melee",
 		"SeawitchFrostbolt",
+		"SeawitchWaveGeometrySpell",
 	},
 	modList = {
 		-- MonsterSpeedAndDamageFixupSmall [monster_base_type_attack_cast_speed_+%_and_damage_-%_final = 11]
@@ -2070,6 +2071,7 @@ minions["Metadata/Monsters/Seawitch/SeaWitchScreech"] = {
 		"SeaWitchWave",
 		"Melee",
 		"SeaWitchScreech",
+		"SeawitchWaveGeometrySpell",
 	},
 	modList = {
 		-- MonsterSpeedAndDamageFixupSmall [monster_base_type_attack_cast_speed_+%_and_damage_-%_final = 11]
@@ -2097,6 +2099,7 @@ minions["Metadata/Monsters/Seawitch/SeaWitchSpawnExploding"] = {
 		"Melee",
 		"SummonExplodingSpawn",
 		"SeaWitchScreech",
+		"SeawitchWaveGeometrySpell",
 	},
 	modList = {
 		-- MonsterSpeedAndDamageFixupSmall [monster_base_type_attack_cast_speed_+%_and_damage_-%_final = 11]
@@ -2126,6 +2129,7 @@ minions["Metadata/Monsters/Seawitch/SeaWitchSpawnTemporalChains"] = {
 		"Melee",
 		"SkeletonTemporalChains",
 		"SummonSpawn",
+		"SeawitchWaveGeometrySpell",
 	},
 	modList = {
 		-- MonsterSpeedAndDamageFixupSmall [monster_base_type_attack_cast_speed_+%_and_damage_-%_final = 11]
@@ -2156,6 +2160,7 @@ minions["Metadata/Monsters/Seawitch/SeaWitchVulnerabilityCurse"] = {
 		"SeaWitchWave",
 		"Melee",
 		"SkeletonVulnerability",
+		"SeawitchWaveGeometrySpell",
 	},
 	modList = {
 		-- MonsterSpeedAndDamageFixupSmall [monster_base_type_attack_cast_speed_+%_and_damage_-%_final = 11]
@@ -2189,7 +2194,7 @@ minions["Metadata/Monsters/Skeletons/SkeletonBowPuncture"] = {
 		-- MonsterCastsPunctureText [monster_casts_puncture_text = 1]
 	},
 	modListSP = {
-		"MonsterNecromancerRaisable", 
+		"亡灵生物", 
 		"施放放血", 
 	},
 }
@@ -2215,7 +2220,7 @@ minions["Metadata/Monsters/Skeletons/SkeletonBowLightning"] = {
 		-- MonsterFiresLightningArrowsText [monster_fires_lightning_arrows_text = 1]
 	},
 	modListSP = {
-		"MonsterNecromancerRaisable", 
+		"亡灵生物", 
 		"闪电箭矢", 
 	},
 }
@@ -2240,7 +2245,7 @@ minions["Metadata/Monsters/Skeletons/SkeletonMeleeLarge"] = {
 		-- MonsterNecromancerRaisable [undead_description = 1]
 	},
 	modListSP = {
-		"MonsterNecromancerRaisable", 
+		"亡灵生物", 
 	},
 }
 minions["Metadata/Monsters/Skeletons/SkeletonBowLightning3"] = {
@@ -2265,7 +2270,7 @@ minions["Metadata/Monsters/Skeletons/SkeletonBowLightning3"] = {
 		-- MonsterFiresLightningArrowsText [monster_fires_lightning_arrows_text = 1]
 	},
 	modListSP = {
-		"MonsterNecromancerRaisable", 
+		"亡灵生物", 
 		"闪电箭矢", 
 	},
 }
@@ -2291,7 +2296,7 @@ minions["Metadata/Monsters/Skeletons/SkeletonCasterColdMultipleProjectiles"] = {
 	},
 	modListSP = {
 		"发射额外投射物", 
-		"MonsterNecromancerRaisable", 
+		"亡灵生物", 
 	},
 }
 minions["Metadata/Monsters/Skeletons/SkeletonCasterFireMultipleProjectiles2"] = {
@@ -2317,7 +2322,7 @@ minions["Metadata/Monsters/Skeletons/SkeletonCasterFireMultipleProjectiles2"] = 
 		-- ImmuneToLavaDamage [immune_to_lava_damage = 1]
 	},
 	modListSP = {
-		"MonsterNecromancerRaisable", 
+		"亡灵生物", 
 		"发射额外投射物", 
 		"免疫熔岩伤害", 
 	},
@@ -2344,7 +2349,7 @@ minions["Metadata/Monsters/Skeletons/SkeletonBowPoison"] = {
 		-- MonsterFiresCausticArrowsText [monster_fires_caustic_arrows_text = 1]
 	},
 	modListSP = {
-		"MonsterNecromancerRaisable", 
+		"亡灵生物", 
 		"使用腐蚀箭矢", 
 	},
 }
@@ -2370,7 +2375,7 @@ minions["Metadata/Monsters/Skeletons/SkeletonBowLightning2"] = {
 		-- MonsterFiresLightningArrowsText [monster_fires_lightning_arrows_text = 1]
 	},
 	modListSP = {
-		"MonsterNecromancerRaisable", 
+		"亡灵生物", 
 		"闪电箭矢", 
 	},
 }
@@ -2396,7 +2401,7 @@ minions["Metadata/Monsters/Skeletons/SkeletonBowLightning4"] = {
 		-- MonsterFiresLightningArrowsText [monster_fires_lightning_arrows_text = 1]
 	},
 	modListSP = {
-		"MonsterNecromancerRaisable", 
+		"亡灵生物", 
 		"闪电箭矢", 
 	},
 }
@@ -2422,7 +2427,7 @@ minions["Metadata/Monsters/Skeletons/SkeletonCasterLightningSpark"] = {
 		-- MonsterCastsSparkText [monster_casts_spark_text = 1]
 	},
 	modListSP = {
-		"MonsterNecromancerRaisable", 
+		"亡灵生物", 
 		"施放电球", 
 	},
 }
@@ -2448,7 +2453,7 @@ minions["Metadata/Monsters/Skeletons/SkeletonBowProjectileWeaknessCurse"] = {
 		-- MonsterCastsProjectileWeaknessCurseText [monster_casts_projectile_vulnerability_curse_text = 1]
 	},
 	modListSP = {
-		"MonsterNecromancerRaisable", 
+		"亡灵生物", 
 		"施放投射物要害", 
 	},
 }
@@ -2459,7 +2464,7 @@ minions["Metadata/Monsters/Skeletons/SkeletonMeleeKnightElementalSwordIncursionC
 	fireResist = 35,
 	coldResist = 35,
 	lightningResist = 35,
-	chaosResist = 35,
+	chaosResist = 20,
 	damage = 1.5,
 	damageSpread = 0.3,
 	attackTime = 1.605,
@@ -2500,7 +2505,7 @@ minions["Metadata/Monsters/SkeletonCannon/SkeletonCannon1"] = {
 		-- MonsterNecromancerRaisable [undead_description = 1]
 	},
 	modListSP = {
-		"MonsterNecromancerRaisable", 
+		"亡灵生物", 
 	},
 }
 -- Snake
@@ -2704,7 +2709,7 @@ minions["Metadata/Monsters/Undying/UndyingOutcastWhirlingBlades"] = {
 minions["Metadata/Monsters/WickerMan/WickerMan"] = {
 	name = "诡异行者",
 	life = 2.25,
-	armour = 1.5,
+	armour = 1,
 	fireResist = 20,
 	coldResist = 20,
 	lightningResist = 20,
@@ -2960,6 +2965,7 @@ minions["Metadata/Monsters/Undying/CityStalkerMaleWorkerLightning2_"] = {
 	},
 }
 
+
 -- Deranged Slaver
 
 
@@ -2986,8 +2992,6 @@ minions["Metadata/Monsters/SlaveCatcher/SlaveCatcherKitava"] = {
 	modListSP = {
 	},
 }
-
-
 
 
 -- Heretical Guardian
@@ -3045,8 +3049,7 @@ minions["Metadata/Monsters/ReligiousTemplar/ReligiousTemplarTwoHandedPure"] = {
 	},
 }
 
-
-
+-- Gut Spiker
 minions["Metadata/Monsters/HalfSkeleton/HalfSkeletonRanged"] = {
 	name = "裂脏锋刃",
 	life = 1.21,
@@ -3068,10 +3071,73 @@ minions["Metadata/Monsters/HalfSkeleton/HalfSkeletonRanged"] = {
 	},
 	modListSP = {
 	},
-} 
+}
 
+ 
+-- Gorgol Alpha
 
-			
+minions["Metadata/Monsters/LeagueDelve/QiongqiChampionSpikedSpawned"] = {
+	name = "穷奇首领",
+	life = 4.88,
+	armour = 1,
+	fireResist = 20,
+	coldResist = 20,
+	lightningResist = 20,
+	chaosResist = 0,
+	damage = 1.31,
+	damageSpread = 0.2,
+	attackTime = 1.305,
+	attackRange = 12,
+	accuracy = 1,
+	skillList = {
+		"DelveMeleeFire",
+		"DelveFlamethrowerLeftToRight",
+		"DelveFlamethrowerRightToLeft",
+		"DelveQiongqiSlash",
+		"DelveQiongqiSlam",
+		"EmptyActionQiongqiSpiked",
+		"DelveQiongqiTornado",
+	},
+	modList = {
+		-- MonsterDelveLargeDropModifiers_ [monster_slain_experience_+% = 0] [monster_dropped_item_quantity_+% = 200] [monster_dropped_item_rarity_+% = 1000] [monster_no_map_drops = 0]
+		-- CannotBeUsedAsMinion [cannot_be_used_as_minion = 1]
+	},
+	modListSP = {
+		"MonsterDelveLargeDropModifiers_", 
+		"CannotBeUsedAsMinion", 
+	},
+}
+minions["Metadata/Monsters/LeagueDelve/QiongqiChampionSpiked"] = {
+	name = "穷奇首领",
+	life = 4.88,
+	armour = 1,
+	fireResist = 20,
+	coldResist = 20,
+	lightningResist = 20,
+	chaosResist = 0,
+	damage = 1.31,
+	damageSpread = 0.2,
+	attackTime = 1.305,
+	attackRange = 12,
+	accuracy = 1,
+	skillList = {
+		"DelveMeleeFire",
+		"DelveFlamethrowerLeftToRight",
+		"DelveFlamethrowerRightToLeft",
+		"DelveQiongqiSlash",
+		"DelveQiongqiSlam",
+		"EmptyActionQiongqiSpiked",
+		"DelveQiongqiTornado",
+	},
+	modList = {
+		-- MonsterDelveLargeDropModifiers_ [monster_slain_experience_+% = 0] [monster_dropped_item_quantity_+% = 200] [monster_dropped_item_rarity_+% = 1000] [monster_no_map_drops = 0]
+	},
+	modListSP = {
+		"MonsterDelveLargeDropModifiers_", 
+	},
+}
+ 
+ 
 --Sun Bleached Vanguard
 minions["Metadata/Monsters/SkeletonSoldier/SkeletonSoldierRangedTornadoShotBleached"] = {
 	name = "阳洁先锋",
@@ -3097,4 +3163,3 @@ minions["Metadata/Monsters/SkeletonSoldier/SkeletonSoldierRangedTornadoShotBleac
 		"亡灵生物", 
 	},
 }
-

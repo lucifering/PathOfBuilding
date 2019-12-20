@@ -7,11 +7,11 @@
 local skills, mod, flag, skill = ...
 
 skills["Arc"] = {
-name = "电弧",
+	name = "电弧",
 	color = 3,
 	baseEffectiveness = 1.722000002861,
 	incrementalEffectiveness = 0.032299999147654,
-description = "一道电弧从施放者射向目标, 并会弹跳至周围其他敌人。每次主电弧弹射时，也会向第二个敌人进行二次弹射，但二次弹射仅生效一次。",
+	description = "一道电弧从施放者射向目标, 并会弹跳至周围其他敌人。每次主电弧弹射时，也会向第二个敌人进行二次弹射，但二次弹射仅生效一次。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Chaining] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.LightningSkill] = true, [SkillType.CanRapidFire] = true, },
 	statDescriptionScope = "beam_skill_stat_descriptions",
 	castTime = 0.7,
@@ -83,11 +83,11 @@ description = "一道电弧从施放者射向目标, 并会弹跳至周围其他
 	},
 }
 skills["VaalArcChain"] = {
-name = "瓦尔.电弧",
+	name = "瓦尔.电弧",
 	color = 3,
 	baseEffectiveness = 4.5599999427795,
 	incrementalEffectiveness = 0.032999999821186,
-description = "一道电弧从施放者射向目标, 并会弹跳至周围其他敌人。每次主电弧弹射时，也会向第二个敌人进行二次弹射，但敌人只能被弹射一次。当该电弧对敌人造成伤害时，短时间内还会赋予你一个“特别幸运”的增益效果。",
+	description = "一道电弧从施放者射向目标, 并会弹跳至周围其他敌人。每次主电弧弹射时，也会向第二个敌人进行二次弹射，但敌人只能被弹射一次。当该电弧对敌人造成伤害时，短时间内还会赋予你一个“特别幸运”的增益效果。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Chaining] = true, [SkillType.Vaal] = true, [SkillType.LightningSkill] = true, [SkillType.Duration] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.8,
@@ -161,11 +161,11 @@ description = "一道电弧从施放者射向目标, 并会弹跳至周围其他
 	},
 }
 skills["ArcticBreath"] = {
-name = "极地吐息",
+	name = "极地吐息",
 	color = 3,
 	baseEffectiveness = 1.360200047493,
 	incrementalEffectiveness = 0.035599999129772,
-description = "射出一个寒冰投射物, 在接触到敌人时会爆炸, 对该范围敌人造成伤害，使附近地面结冰并持续造成伤害.该区域会向周围的敌人蔓延，直到持续时间结束。",
+	description = "射出一个寒冰投射物, 在接触到敌人时会爆炸, 对该范围敌人造成伤害，使附近地面结冰并持续造成伤害.该区域会向周围的敌人蔓延，直到持续时间结束。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Hit] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Duration] = true, [SkillType.Area] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.ColdSkill] = true, [SkillType.ChillingArea] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.7,
@@ -235,11 +235,11 @@ description = "射出一个寒冰投射物, 在接触到敌人时会爆炸, 对�
 	},
 }
 skills["CataclysmSigil"] = {
-name = "末日烙印",
+	name = "末日烙印",
 	color = 3,
 	baseEffectiveness = 0.87849998474121,
 	incrementalEffectiveness = 0.041400000452995,
-description = "创造一个可以附着于周围某个敌人的魔法烙印。该烙印附着后会阶段性激活，召唤从天而降的流星。敌人被击败后烙印消失。",
+	description = "创造一个可以附着于周围某个敌人的魔法烙印。该烙印附着后会阶段性激活，召唤从天而降的流星。敌人被击败后烙印消失。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.FireSkill] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Brand] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "brand_skill_stat_descriptions",
 	castTime = 0.4,
@@ -324,9 +324,9 @@ description = "创造一个可以附着于周围某个敌人的魔法烙印。�
 	},
 }
 skills["AssassinsMark"] = {
-name = "暗影印记",
+	name = "暗影印记",
 	color = 3,
-description = "对目标区域施放诅咒, 受到诅咒的敌人更容易, 受到更多暴击伤害. 此外, 在击败带有印记的敌人时会获得生命与魔力, 并有机会获得暴击球.",
+	description = "对目标区域施放诅咒, 受到诅咒的敌人更容易, 受到更多暴击伤害. 此外, 在击败带有印记的敌人时会获得生命与魔力, 并有机会获得暴击球.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Curse] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -413,11 +413,11 @@ description = "对目标区域施放诅咒, 受到诅咒的敌人更容易, 受�
 	},
 }
 skills["BallLightning"] = {
-name = "天雷之珠",
+	name = "天雷之珠",
 	color = 3,
 	baseEffectiveness = 0.74070000648499,
 	incrementalEffectiveness = 0.034699998795986,
-description = "射出一个移动缓慢的天雷之珠, 将会周期性的对周围的敌人施放闪电并造成伤害.",
+	description = "射出一个移动缓慢的天雷之珠, 将会周期性的对周围的敌人施放闪电并造成伤害.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Area] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.LightningSkill] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.75,
@@ -481,11 +481,11 @@ description = "射出一个移动缓慢的天雷之珠, 将会周期性的对周
 	},
 }
 skills["DarkRitual"] = {
-name = "混沌之毒",
+	name = "混沌之毒",
 	color = 3,
 	baseEffectiveness = 4.6849999427795,
 	incrementalEffectiveness = 0.047100000083447,
-description = "施加一个负面效果，对一片区域内的敌人持续造成混沌伤害，并对他们施加连接的诅咒。该负面效果的持续伤害和持续时间会随着施加的诅咒数量提升。该技能无法被图腾、陷阱或地雷所使用。",
+	description = "施加一个负面效果，对一片区域内的敌人持续造成混沌伤害，并对他们施加连接的诅咒。该负面效果的持续伤害和持续时间会随着施加的诅咒数量提升。该技能无法被图腾、陷阱或地雷所使用。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.DamageOverTime] = true, [SkillType.ChaosSkill] = true, [SkillType.SpellCanRepeat] = true, [SkillType.SpellCanCascade] = true, [SkillType.Triggerable] = true, [SkillType.Curse] = true, [SkillType.Type59] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 0.6,
@@ -573,7 +573,7 @@ description = "施加一个负面效果，对一片区域内的敌人持续造�
 	},
 }
 skills["SupportDarkRitual"] = {
-name = "混沌之毒",
+	name = "混沌之毒",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.AppliesCurse, },
@@ -639,11 +639,11 @@ name = "混沌之毒",
 	},
 }
 skills["Blight"] = {
-name = "枯萎",
+	name = "枯萎",
 	color = 3,
 	baseEffectiveness = 2.9040999412537,
 	incrementalEffectiveness = 0.035500001162291,
-description = "持续吟唱该技能会对前方锥形范围内的敌人造成一个可叠加的减益效果和持续混沌伤害. 当敌人刚被法术命中时会被短暂的减速. 每层可叠加的减益和伤害都有独自的持续时间.",
+	description = "持续吟唱该技能会对前方锥形范围内的敌人造成一个可叠加的减益效果和持续混沌伤害. 当敌人刚被法术命中时会被短暂的减速. 每层可叠加的减益和伤害都有独自的持续时间.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.ChaosSkill] = true, [SkillType.Area] = true, [SkillType.SkillCanTotem] = true, [SkillType.Channelled] = true, [SkillType.Duration] = true, [SkillType.DamageOverTime] = true, [SkillType.Type59] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 0.3,
@@ -714,11 +714,11 @@ description = "持续吟唱该技能会对前方锥形范围内的敌人造成�
 	},
 }
 skills["VaalBlight"] = {
-name = "瓦尔.枯萎",
+	name = "瓦尔.枯萎",
 	color = 3,
 	baseEffectiveness = 4,
 	incrementalEffectiveness = 0.041400000452995,
-description = "对你周围的敌人施加一个强力的减益效果，持续对其造成混沌伤害。随后在一片较大的区域内施加额外两层，每一次施加都会大幅扩大面积。被主要作用区域影响的敌人还会遭受短时间的减速效果。",
+	description = "对你周围的敌人施加一个强力的减益效果，持续对其造成混沌伤害。随后在一片较大的区域内施加额外两层，每一次施加都会大幅扩大面积。被主要作用区域影响的敌人还会遭受短时间的减速效果。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.ChaosSkill] = true, [SkillType.Area] = true, [SkillType.SkillCanTotem] = true, [SkillType.Duration] = true, [SkillType.DamageOverTime] = true, [SkillType.Type59] = true, [SkillType.Vaal] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, },
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 0.6,
@@ -794,11 +794,11 @@ mod("ChaosDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = 
 	},
 }
 skills["CorpseWarp"] = {
-name = "灵体转换",
+	name = "灵体转换",
 	color = 3,
 	baseEffectiveness = 0.42449998855591,
 	incrementalEffectiveness = 0.040800001472235,
-description = "快速摧毁你的身躯并且在目标敌人或者灵枢的位置上重建，对前后两个地方造成法术范围伤害。\n如果没有特定选择目标，那么会自动优先挑选灵枢作为目标。\n如果目标是灵枢，被选择的灵枢会引爆，对周围造成伤害，该伤害不受法术伤害加成，并且无法被反射。\n这个法术无法被回响。.",
+	description = "摧毁自己的身体，在选取的敌人或灵枢的位置重生，对一片区域内造成法术伤害。如果没有选取目标，它会优先以灵枢为目标。如果以灵枢为目标，该灵枢会爆炸，对周围造成伤害，该伤害不受法术伤害的词缀影响，也不会被反射。该法术无法重复。",
 	skillTypes = { [SkillType.MovementSkill] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTrap] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.AreaSpell] = true, [SkillType.TravelSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.7,
@@ -896,9 +896,9 @@ name = "灵柩爆炸",
 	},
 }
 skills["BoneOffering"] = {
-name = "骸骨奉献",
+	name = "骸骨奉献",
 	color = 3,
-description = "献祭一具灵柩, 使你的召唤生物获得格挡攻击与法术的能力. 这个技能会持续献祭附近的灵柩, 每具献祭的灵柩将会延长强化召唤生物的时间.",
+	description = "献祭一具灵柩, 使你的召唤生物获得格挡攻击与法术的能力. 这个技能会持续献祭附近的灵柩, 每具献祭的灵柩将会延长强化召唤生物的时间.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.Minion] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, [SkillType.SpellCanCascade] = true, },
 	statDescriptionScope = "offering_skill_stat_descriptions",
 	castTime = 1,
@@ -973,9 +973,9 @@ description = "献祭一具灵柩, 使你的召唤生物获得格挡攻击与法
 	},
 }
 skills["SigilRecall"] = {
-name = "烙印召回",
+	name = "烙印召回",
 	color = 3,
-description = "将烙印从敌人身上解除，并召回你身边，随后将烙印激活。再次附加在敌人身上时，附加范围会扩大。",
+	description = "将烙印从敌人身上解除，并召回你身边，随后将烙印激活。再次附加在敌人身上时，附加范围会扩大。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Triggerable] = true, [SkillType.Instant] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
@@ -1025,9 +1025,9 @@ description = "将烙印从敌人身上解除，并召回你身边，随后将�
 	},
 }
 skills["Clarity"] = {
-name = "清晰",
+	name = "清晰",
 	color = 3,
-description = "施放一个光环, 使你与受光环影响友军获得额外的魔力回复.",
+	description = "施放一个光环, 使你与受光环影响友军获得额外的魔力回复.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -1097,9 +1097,9 @@ description = "施放一个光环, 使你与受光环影响友军获得额外的
 	},
 }
 skills["VaalClarity"] = {
-name = "瓦尔.清晰",
+	name = "瓦尔.清晰",
 	color = 3,
-description = "施放一个短暂的光环, 使你与受光环影响友军施放技能时无须消耗魔力.",
+	description = "施放一个短暂的光环, 使你与受光环影响友军施放技能时无须消耗魔力.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.SkillCanTotem] = true, [SkillType.Type27] = true, [SkillType.Duration] = true, [SkillType.Vaal] = true, [SkillType.Aura] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -1172,11 +1172,11 @@ description = "施放一个短暂的光环, 使你与受光环影响友军施放
 	},
 }
 skills["ColdSnap"] = {
-name = "霜暴",
+	name = "霜暴",
 	color = 3,
 	baseEffectiveness = 2.4902000427246,
 	incrementalEffectiveness = 0.036200001835823,
-description = "在目标区域创造一股急促的寒流，并对敌人造成伤害。此攻击还会创造一片开散的冰缓地面效果，并持续对敌人造成冰霜伤害。在此区域内被击败的敌人会生成狂怒球。消耗狂怒球可以加速冷却。",
+	description = "在目标区域创造一股急促的寒流，并对敌人造成伤害。此攻击还会创造一片开散的冰缓地面效果，并持续对敌人造成冰霜伤害。在此区域内被击败的敌人会生成狂怒球。消耗狂怒球可以加速冷却。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.ColdSkill] = true, [SkillType.SpellCanCascade] = true, [SkillType.Duration] = true, [SkillType.ChillingArea] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.85,
@@ -1247,11 +1247,11 @@ description = "在目标区域创造一股急促的寒流，并对敌人造成�
 	},
 }
 skills["VaalColdSnap"] = {
-name = "瓦尔.霜暴",
+	name = "瓦尔.霜暴",
 	color = 3,
 	baseEffectiveness = 2.5650000572205,
 	incrementalEffectiveness = 0.041900001466274,
-description = "在你身边创造一股急促的寒流，并对敌人造成伤害。此攻击还会在你身边创造一片开散的冰缓地面效果，并持续对周围的敌人造成冰霜伤害。在此区域内被击败的敌人会生成狂怒球。若你在此区域内，则可以自动获得这些狂怒球。",
+	description = "在你身边创造一股急促的寒流，并对敌人造成伤害。此攻击还会在你身边创造一片开散的冰缓地面效果，并持续对周围的敌人造成冰霜伤害。在此区域内被击败的敌人会生成狂怒球。若你在此区域内，则可以自动获得这些狂怒球。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Duration] = true, [SkillType.Vaal] = true, [SkillType.ColdSkill] = true, [SkillType.ChillingArea] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.85,
@@ -1325,9 +1325,9 @@ description = "在你身边创造一股急促的寒流，并对敌人造成伤�
 	},
 }
 skills["Conductivity"] = {
-name = "导电",
+	name = "导电",
 	color = 3,
-description = "对目标区域施放诅咒, 使受到诅咒敌人的闪电抗性降低, 并在受到闪电伤害时有几率被感电.",
+	description = "对目标区域施放诅咒, 使受到诅咒敌人的闪电抗性降低, 并在受到闪电伤害时有几率被感电.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Curse] = true, [SkillType.Triggerable] = true, [SkillType.LightningSkill] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -1407,11 +1407,11 @@ description = "对目标区域施放诅咒, 使受到诅咒敌人的闪电抗性
 	},
 }
 skills["Contagion"] = {
-name = "瘟疫",
+	name = "瘟疫",
 	color = 3,
 	baseEffectiveness = 2.2532999515533,
 	incrementalEffectiveness = 0.037999998778105,
-description = "对你的敌人造成持续的混沌伤害, 并且当敌人因此而死亡时, 瘟疫的效果将会传染到周边敌人的身上. ",
+	description = "对你的敌人造成持续的混沌伤害, 并且当敌人因此而死亡时, 瘟疫的效果将会传染到周边敌人的身上. ",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.DamageOverTime] = true, [SkillType.ChaosSkill] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.SkillCanMine] = true, [SkillType.Type59] = true, [SkillType.SpellCanCascade] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 0.6,
@@ -1479,9 +1479,9 @@ description = "对你的敌人造成持续的混沌伤害, 并且当敌人因此
 	},
 }
 skills["ConversionTrap"] = {
-name = "迷魅陷阱",
+	name = "迷魅陷阱",
 	color = 3,
-description = "投掷一个陷阱, 触发该陷阱的敌人将会短暂的转化为你的手下为你而战.",
+	description = "投掷一个陷阱, 触发该陷阱的敌人将会短暂的转化为你的手下为你而战.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Duration] = true, [SkillType.SkillCanMine] = true, [SkillType.Trap] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -1547,9 +1547,9 @@ description = "投掷一个陷阱, 触发该陷阱的敌人将会短暂的转化
 	},
 }
 skills["Convocation"] = {
-name = "号召",
+	name = "号召",
 	color = 3,
-description = "将所有由你控制的召唤生物召回你的所在之处, 并短暂的使它们获得生命恢复效果.",
+	description = "将所有由你控制的召唤生物召回你的所在之处, 并短暂的使它们获得生命恢复效果.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.Minion] = true, [SkillType.Instant] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
@@ -1621,11 +1621,11 @@ description = "将所有由你控制的召唤生物召回你的所在之处, 并
 	},
 }
 skills["DarkPact"] = {
-name = "暗夜血契",
+	name = "暗夜血契",
 	color = 3,
 	baseEffectiveness = 0.80000001192093,
 	incrementalEffectiveness = 0.037999998778105,
-description = "该法术会消耗一个你或光标附近魔侍的部分生命值来对其周围造成混沌伤害. 该效果会连锁到你在附近的其他魔侍. 如果你或光标附近已没有魔侍, 则会牺牲你自己的部分生命来造成混沌伤害.",
+	description = "该法术会消耗一个你或光标附近魔侍的部分生命值来对其周围造成混沌伤害. 该效果会连锁到你在附近的其他魔侍. 如果你或光标附近已没有魔侍, 则会牺牲你自己的部分生命来造成混沌伤害.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Chaining] = true, [SkillType.ChaosSkill] = true, [SkillType.Minion] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.5,
@@ -1726,11 +1726,11 @@ name = "灵侍上施放",
 	},
 }
 skills["Despair"] = {
-name = "绝望",
+	name = "绝望",
 	color = 3,
 	baseEffectiveness = 0.66670000553131,
 	incrementalEffectiveness = 0.016000000759959,
-description = "对目标区域施放诅咒，使他们的混沌抗性降低并受到更多的持续伤害。被诅咒的敌人被击中时也会受到额外的混沌伤害。",
+	description = "对目标区域施放诅咒，使他们的混沌抗性降低并受到更多的持续伤害。被诅咒的敌人被击中时也会受到额外的混沌伤害。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Curse] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.ChaosSkill] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -1814,11 +1814,11 @@ description = "对目标区域施放诅咒，使他们的混沌抗性降低并�
 	},
 }
 skills["Discharge"] = {
-name = "解放",
+	name = "解放",
 	color = 3,
 	baseEffectiveness = 1.4837000370026,
 	incrementalEffectiveness = 0.028899999335408,
-description = "释放角色身上所有的能量球并对周围所有敌人造成元素伤害.",
+	description = "释放角色身上所有的能量球并对周围所有敌人造成元素伤害.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.ColdSkill] = true, [SkillType.LightningSkill] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.75,
@@ -1893,9 +1893,9 @@ description = "释放角色身上所有的能量球并对周围所有敌人造�
 	},
 }
 skills["Discipline"] = {
-name = "纪律",
+	name = "纪律",
 	color = 3,
-description = "施放一个光环, 使你与受光环影响友军获得额外的能量护盾.",
+	description = "施放一个光环, 使你与受光环影响友军获得额外的能量护盾.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -1968,9 +1968,9 @@ description = "施放一个光环, 使你与受光环影响友军获得额外的
 	},
 }
 skills["VaalDiscipline"] = {
-name = "瓦尔.纪律",
+	name = "瓦尔.纪律",
 	color = 3,
-description = "施放一个短暂的光环, 使你与受光环影响友军获得额外的能量护盾, 并且不会因为受到攻击而延迟护盾的回复.",
+	description = "施放一个短暂的光环, 使你与受光环影响友军获得额外的能量护盾, 并且不会因为受到攻击而延迟护盾的回复.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.SkillCanTotem] = true, [SkillType.Type27] = true, [SkillType.Duration] = true, [SkillType.Vaal] = true, [SkillType.Aura] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -2043,11 +2043,11 @@ description = "施放一个短暂的光环, 使你与受光环影响友军获得
 	},
 }
 skills["DivineTempest"] = {
-name = "圣怨",
+	name = "圣怨",
 	color = 3,
 	baseEffectiveness = 0.63160002231598,
 	incrementalEffectiveness = 0.033399999141693,
-description = "持续吟唱时会在你的周围汇聚能量，不断堆叠，对周围的一群敌人造成伤害。释放此技能会在你面前射出一道强大的能量冲击。",
+	description = "持续吟唱时会在你的周围汇聚能量，不断堆叠，对周围的一群敌人造成伤害。释放此技能会在你面前射出一道强大的能量冲击。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.Channelled] = true, [SkillType.LightningSkill] = true, [SkillType.SkillCanTotem] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.22,
@@ -2147,9 +2147,9 @@ name = "20 阶释放",
 	},
 }
 skills["ElementalWeakness"] = {
-name = "元素要害",
+	name = "元素要害",
 	color = 3,
-description = "对目标区域施放诅咒, 受到诅咒的敌人对于元素的抗性将会降低.",
+	description = "对目标区域施放诅咒, 受到诅咒的敌人对于元素的抗性将会降低.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Curse] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -2221,9 +2221,9 @@ description = "对目标区域施放诅咒, 受到诅咒的敌人对于元素的
 	},
 }
 skills["Enfeeble"] = {
-name = "衰弱",
+	name = "衰弱",
 	color = 3,
-description = "对目标区域施放诅咒, 受到诅咒的敌人所造成的攻击或法术将会比较无力.",
+	description = "对目标区域施放诅咒, 受到诅咒的敌人所造成的攻击或法术将会比较无力.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Curse] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -2312,11 +2312,11 @@ description = "对目标区域施放诅咒, 受到诅咒的敌人所造成的攻
 	},
 }
 skills["EssenceDrain"] = {
-name = "灵魂吸取",
+	name = "灵魂吸取",
 	color = 3,
 	baseEffectiveness = 4.398099899292,
 	incrementalEffectiveness = 0.045400001108646,
-description = "投射出一个击中后造成持续混沌伤害的投射物。所造成的伤害将治疗你。这个减益效果可由【瘟疫】一起传染. 该主动技能无法被陷阱或地雷所使用。",
+	description = "射出一个投射物，击中后产生一个减益效果，造成持续伤害。其中一部分伤害会治疗你。该减益效果可由【瘟疫】传染。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.SpellCanRepeat] = true, [SkillType.DamageOverTime] = true, [SkillType.ChaosSkill] = true, [SkillType.Hit] = true, [SkillType.Triggerable] = true, [SkillType.CanRapidFire] = true, [SkillType.Area] = true, [SkillType.AreaSpell] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, },
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 0.7,
@@ -2386,11 +2386,11 @@ description = "投射出一个击中后造成持续混沌伤害的投射物。�
 	},
 }
 skills["Fireball"] = {
-name = "火球",
+	name = "火球",
 	color = 3,
 	baseEffectiveness = 2.9384000301361,
 	incrementalEffectiveness = 0.041200000792742,
-description = "释放一颗球型火焰向前飞射, 接触到怪物时会爆炸并对周围敌人造成伤害",
+	description = "释放一颗球型火焰向前飞射, 接触到怪物时会爆炸并对周围敌人造成伤害",
 	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.75,
@@ -2466,11 +2466,11 @@ name = "爆炸",
 	},
 }
 skills["VaalFireballSpiralNova"] = {
-name = "瓦尔.火球",
+	name = "瓦尔.火球",
 	color = 3,
 	baseEffectiveness = 2.9384000301361,
 	incrementalEffectiveness = 0.041200000792742,
-	description = "Launches a series of fireballs in a spiral around the caster.",
+	description = "以施法者为中心，螺旋发射一连串火球。",
 	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Type70] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Vaal] = true, [SkillType.FireSkill] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.75,
@@ -2549,11 +2549,11 @@ name = "爆炸",
 	},
 }
 skills["Firestorm"] = {
-name = "烈炎风暴",
+	name = "烈炎风暴",
 	color = 3,
 	baseEffectiveness = 0.31940001249313,
 	incrementalEffectiveness = 0.035199999809265,
-description = "低语呢喃, 呼唤无数火焰之球如雨一般洒落在目标区域. 每颗火球落地时将会爆炸, 并对周围的敌人造成伤害.",
+	description = "低语呢喃, 呼唤无数火焰之球如雨一般洒落在目标区域. 每颗火球落地时将会爆炸, 并对周围的敌人造成伤害.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.SpellCanCascade] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.75,
@@ -2624,11 +2624,11 @@ description = "低语呢喃, 呼唤无数火焰之球如雨一般洒落在目标
 	},
 }
 skills["FlameDash"] = {
-name = "烈焰冲刺",
+	name = "烈焰冲刺",
 	color = 3,
 	baseEffectiveness = 0.82669997215271,
 	incrementalEffectiveness = 0.047860000282526,
-description = "传送到指定地点，对敌人造成伤害并在路线上造成燃烧。\n和其它闪现技能共用冷却时间。",
+	description = "传送到指定地点，对敌人造成伤害并在路线上造成燃烧。和其它闪现技能共用冷却时间。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.MovementSkill] = true, [SkillType.Hit] = true, [SkillType.DamageOverTime] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.TravelSkill] = true, [SkillType.BlinkSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.7,
@@ -2695,11 +2695,11 @@ description = "传送到指定地点，对敌人造成伤害并在路线上造�
 	},
 }
 skills["FlameWhip"] = {
-name = "怒焰奔腾",
+	name = "怒焰奔腾",
 	color = 3,
 	baseEffectiveness = 3.0369000434875,
 	incrementalEffectiveness = 0.03070000000298,
-description = "释放怒焰之力对敌人进行攻击. 燃烧中的敌人将会受到更多伤害.",
+	description = "释放怒焰之力对敌人进行攻击. 燃烧中的敌人将会受到更多伤害.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.Area] = true, [SkillType.FireSkill] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.5,
@@ -2770,11 +2770,11 @@ description = "释放怒焰之力对敌人进行攻击. 燃烧中的敌人将会
 	},
 }
 skills["Flameblast"] = {
-name = "烈焰爆破",
+	name = "烈焰爆破",
 	color = 3,
 	baseEffectiveness = 1.1175999641418,
 	incrementalEffectiveness = 0.035199999809265,
-description = "可蓄力（持续施放）来施放大型的爆炸. 蓄力的时间越长, 爆炸的范围与造成的伤害越大. 当停止蓄力后一段时间或使用其他技能时便会触发爆炸.",
+	description = "可蓄力（持续施放）来施放大型的爆炸. 蓄力的时间越长, 爆炸的范围与造成的伤害越大. 当停止蓄力后一段时间或使用其他技能时便会触发爆炸.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTotem] = true, [SkillType.FireSkill] = true, [SkillType.Channelled] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.2,
@@ -2863,11 +2863,11 @@ name = "10 阶",
 	},
 }
 skills["VaalFlameblast"] = {
-name = "瓦尔.烈焰爆破",
+	name = "瓦尔.烈焰爆破",
 	color = 3,
 	baseEffectiveness = 1.1175999641418,
 	incrementalEffectiveness = 0.035199999809265,
-description = "指定一片区域，在其中根据施法速度来叠加效果。每五层爆炸一次，直至叠满 15 层。叠加层数时区域会逐渐变小，但伤害随之提高。",
+	description = "指定一片区域，在其中根据施法速度来叠加效果。每五层爆炸一次，直至叠满 15 层。叠加层数时区域会逐渐变小，但伤害随之提高。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTotem] = true, [SkillType.Vaal] = true, [SkillType.FireSkill] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.5,
@@ -2941,9 +2941,9 @@ description = "指定一片区域，在其中根据施法速度来叠加效果�
 	},
 }
 skills["Flammability"] = {
-name = "易燃",
+	name = "易燃",
 	color = 3,
-description = "对目标区域施放诅咒, 使受到诅咒敌人的火焰抗性降低, 并在受到火焰伤害时有几率被点燃.",
+	description = "对目标区域施放诅咒, 使受到诅咒敌人的火焰抗性降低, 并在受到火焰伤害时有几率被点燃.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Curse] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -3023,9 +3023,9 @@ description = "对目标区域施放诅咒, 使受到诅咒敌人的火焰抗性
 	},
 }
 skills["FleshOffering"] = {
-name = "血肉奉献",
+	name = "血肉奉献",
 	color = 3,
-description = "献祭一具灵柩, 短暂的强化与加速你的召唤生物. 这个技能会持续献祭附近的灵柩, 每具献祭的灵柩将会延长强化召唤生物的时间.",
+	description = "献祭一具灵柩, 短暂的强化与加速你的召唤生物. 这个技能会持续献祭附近的灵柩, 每具献祭的灵柩将会延长强化召唤生物的时间.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.Minion] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, [SkillType.SpellCanCascade] = true, },
 	statDescriptionScope = "offering_skill_stat_descriptions",
 	castTime = 1,
@@ -3103,11 +3103,11 @@ description = "献祭一具灵柩, 短暂的强化与加速你的召唤生物. �
 	},
 }
 skills["FreezingPulse"] = {
-name = "冰霜脉冲",
+	name = "冰霜脉冲",
 	color = 3,
 	baseEffectiveness = 2.8691000938416,
 	incrementalEffectiveness = 0.038400001823902,
-description = "发出一个半月形的寒冰投射物, 被击中的敌人将有几率被冰冻. 这个投射物很快就会消散, 而其伤害与冻结几率将会随着飞行时间递减.",
+	description = "发出一个半月形的寒冰投射物, 被击中的敌人将有几率被冰冻. 这个投射物很快就会消散, 而其伤害与冻结几率将会随着飞行时间递减.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Hit] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.ColdSkill] = true, [SkillType.CanRapidFire] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.65,
@@ -3175,17 +3175,17 @@ description = "发出一个半月形的寒冰投射物, 被击中的敌人将有
 	},
 }
 skills["FrostBomb"] = {
-name = "寒霜爆",
+	name = "寒霜爆",
 	color = 3,
 	baseEffectiveness = 3.1817998886108,
 	incrementalEffectiveness = 0.037999998778105,
-description = "创造出一个冰晶, 不断地释放冰霜的能量, 降低其周围的敌人的冰霜抗性和生命回复. 当持续时间结束, 冰晶将会爆裂, 并对敌人造成大量冰霜伤害. ",
+	description = "创造出一个冰晶, 不断地释放冰霜的能量，每一次释放都会给周围的敌人施加一个有额外持续时间的负面效果，降低其生命恢复率和能量护盾恢复率，也会降低能量护盾充能回复率，最后造成负面效果“畏寒”。当持续时间结束，冰晶将会爆裂, 并对周围的敌人造成大量冰霜伤害。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.ColdSkill] = true, [SkillType.Hit] = true, [SkillType.SpellCanRepeat] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 0.5,
 	statMap = {
 		["base_cold_damage_resistance_%"] = {
-			mod("ColdResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff" , effectName = "冰霜曝露" }),
+			mod("ColdResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "冰霜曝露"  }),
 		},
 		["energy_shield_recharge_rate_+%"] = {
 			mod("EnergyShieldRecharge", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff" }),
@@ -3258,11 +3258,11 @@ description = "创造出一个冰晶, 不断地释放冰霜的能量, 降低其�
 	},
 }
 skills["FrostWall"] = {
-name = "冰墙",
+	name = "冰墙",
 	color = 3,
 	baseEffectiveness = 2,
 	incrementalEffectiveness = 0.034000001847744,
-description = "聚集空气中的水分, 制造一堵能阻挡敌人行动的冰墙. 在冰墙成形位置的敌人将会受到伤害并且被击退.",
+	description = "聚集空气中的水分, 制造一堵能阻挡敌人行动的冰墙. 在冰墙成形位置的敌人将会受到伤害并且被击退.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.ColdSkill] = true, [SkillType.SpellCanCascade] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.5,
@@ -3327,9 +3327,9 @@ description = "聚集空气中的水分, 制造一堵能阻挡敌人行动的冰
 	},
 }
 skills["Frostbite"] = {
-name = "冻伤",
+	name = "冻伤",
 	color = 3,
-description = "对目标区域施放诅咒, 使受到诅咒敌人的冰霜抗性降低, 并在受到冰霜伤害时有几率被冰冻.",
+	description = "对目标区域施放诅咒, 使受到诅咒敌人的冰霜抗性降低, 并在受到冰霜伤害时有几率被冰冻.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Curse] = true, [SkillType.Triggerable] = true, [SkillType.ColdSkill] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -3409,11 +3409,11 @@ description = "对目标区域施放诅咒, 使受到诅咒敌人的冰霜抗性
 	},
 }
 skills["IceDash"] = {
-name = "冰霜闪现",
+	name = "冰霜闪现",
 	color = 3,
 	baseEffectiveness = 2.0339000225067,
 	incrementalEffectiveness = 0.042599998414516,
-description = "传送到指定地点，对敌人造成伤害，并在曾经所在区域留下冻缓地面。和其它闪现技能共用冷却时间。",
+	description = "传送到指定地点，对敌人造成伤害，并在曾经所在区域留下冻缓地面。和其它闪现技能共用冷却时间。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.MovementSkill] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.ColdSkill] = true, [SkillType.ChillingArea] = true, [SkillType.TravelSkill] = true, [SkillType.BlinkSkill] = true, [SkillType.Area] = true, [SkillType.Triggerable] = true, [SkillType.Hit] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
@@ -3480,11 +3480,11 @@ description = "传送到指定地点，对敌人造成伤害，并在曾经所�
 	},
 }
 skills["FrostBolt"] = {
-name = "寒冰弹",
+	name = "寒冰弹",
 	color = 3,
 	baseEffectiveness = 2.8794000148773,
 	incrementalEffectiveness = 0.039700001478195,
-description = "发射出一个缓慢移动并可以穿透敌人的投射物, 造成冰霜伤害. ",
+	description = "发射出一个缓慢移动并可以穿透敌人的投射物, 造成冰霜伤害. ",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Hit] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.ColdSkill] = true, [SkillType.Triggerable] = true, [SkillType.CanRapidFire] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.75,
@@ -3547,11 +3547,11 @@ description = "发射出一个缓慢移动并可以穿透敌人的投射物, 造
 	},
 }
 skills["GlacialCascade"] = {
-name = "冰川之刺",
+	name = "冰川之刺",
 	color = 3,
 	baseEffectiveness = 1.2977999448776,
 	incrementalEffectiveness = 0.036499999463558,
-description = "从地面上不断的冒出冰结之刺, 宛如川流一般向前攻击并对敌人造成伤害.",
+	description = "从地面上不断的冒出冰结之刺, 宛如川流一般向前攻击并对敌人造成伤害.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.ColdSkill] = true, [SkillType.PhysicalSkill] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.7,
@@ -3617,11 +3617,11 @@ description = "从地面上不断的冒出冰结之刺, 宛如川流一般向前
 	},
 }
 skills["HeraldOfThunder"] = {
-name = "闪电之捷",
+	name = "闪电之捷",
 	color = 3,
 	baseEffectiveness = 1.375,
 	incrementalEffectiveness = 0.023000000044703,
-description = "于手中凝聚闪电之力, 为法术与攻击额外增加闪电伤害. 若是你击败了一个受到感电状态的敌人, 闪电将会在一小段时间内持续攻击你附近的敌人.",
+	description = "于手中凝聚闪电之力, 为法术与攻击额外增加闪电伤害. 若是你击败了一个受到感电状态的敌人, 闪电将会在一小段时间内持续攻击你附近的敌人.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.LightningSkill] = true, [SkillType.Type27] = true, [SkillType.Herald] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 0,
@@ -3710,11 +3710,11 @@ description = "于手中凝聚闪电之力, 为法术与攻击额外增加闪电
 	},
 }
 skills["IceNova"] = {
-name = "冰霜新星",
+	name = "冰霜新星",
 	color = 3,
 	baseEffectiveness = 1.7986999750137,
 	incrementalEffectiveness = 0.036400001496077,
-description = "从施法者散发出一圈寒冰之环.",
+	description = "从施法者散发出一圈寒冰之环.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.ColdSkill] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.7,
@@ -3782,11 +3782,11 @@ description = "从施法者散发出一圈寒冰之环.",
 	},
 }
 skills["VaalIceNova"] = {
-name = "瓦尔.冰霜新星",
+	name = "瓦尔.冰霜新星",
 	color = 3,
 	baseEffectiveness = 1.2273000478745,
 	incrementalEffectiveness = 0.033500000834465,
-description = "从施法者散发出一圈寒冰之环, 并在每位被击中的敌人身上再次散发.",
+	description = "从施法者散发出一圈寒冰之环, 并在每位被击中的敌人身上再次散发.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Vaal] = true, [SkillType.ColdSkill] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.8,
@@ -3851,11 +3851,11 @@ description = "从施法者散发出一圈寒冰之环, 并在每位被击中的
 	},
 }
 skills["IceSpear"] = {
-name = "冰矛",
+	name = "冰矛",
 	color = 3,
 	baseEffectiveness = 2.6526999473572,
 	incrementalEffectiveness = 0.027000000700355,
-description = "凝聚冰之碎片为矛并向前射出, 此冰矛将会穿透附近的敌人, 并对一定距离以外的敌人具有较高的暴击率.",
+	description = "凝聚冰之碎片为矛并向前射出, 此冰矛将会穿透附近的敌人, 并对一定距离以外的敌人具有较高的暴击率.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Hit] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.ColdSkill] = true, [SkillType.CanRapidFire] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.7,
@@ -3950,11 +3950,11 @@ name = "第二状态, 所有投射物",
 	},
 }
 skills["ColdProjectileMine"] = {
-name = "冰锥地雷",
+	name = "冰锥地雷",
 	color = 3,
 	baseEffectiveness = 1.6928999423981,
 	incrementalEffectiveness = 0.038100000470877,
-	description = "Throws a mine that fires projectiles around it when detonated. These projectiles quickly dissipate as they travel, before disappearing",
+	description = "投掷一个地雷，引爆时向周围发射投射物，在飞行途中快速挥发，并很快消失。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Projectile] = true, [SkillType.Mine] = true, [SkillType.ColdSkill] = true, [SkillType.ManaCostReserved] = true, [SkillType.SkillCanVolley] = true, [SkillType.Aura] = true, [SkillType.Area] = true, [SkillType.AuraDebuff] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.75,
@@ -4033,11 +4033,11 @@ name = "冰锥地雷",
 	},
 }
 skills["ExpandingFireCone"] = {
-name = "烧毁",
+	name = "烧毁",
 	color = 3,
 	baseEffectiveness = 0.3100999891758,
 	incrementalEffectiveness = 0.044100001454353,
-description = "持续从手中发出烈焰洪流，反复对敌人造成伤害。你吟唱此法术时间越长，烈焰在你近身的面积就越广，在你前方的波及范围就越长。当你停止吟唱，则对已波及的面积和范围内造成一股火焰伤害，并附加强大的点燃效果。",
+	description = "持续从手中发出烈焰洪流，反复对敌人造成伤害。你吟唱此法术时间越长，烈焰在你近身的面积就越广，在你前方的波及范围就越长。当你停止吟唱，则对已波及的面积和范围内造成一股火焰伤害，并附加强大的点燃效果。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.SkillCanTotem] = true, [SkillType.FireSkill] = true, [SkillType.Channelled] = true, [SkillType.Area] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.2,
@@ -4143,9 +4143,9 @@ name = "释放"
 	},
 }
 skills["ClusterBurst"] = {
-name = "力量爆破",
+	name = "力量爆破",
 	color = 3,
-description = "从法杖中射出一个投射物, 在接触到物体或敌人时对周围连续爆破造成伤害.",
+	description = "从法杖中射出一个投射物, 在接触到物体或敌人时对周围连续爆破造成伤害.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, },
 	weaponTypes = {
 		["Wand"] = true,
@@ -4224,11 +4224,11 @@ name = "爆炸",
 	},
 }
 skills["LightningTowerTrap"] = {
-name = "电塔陷阱",
+	name = "电塔陷阱",
 	color = 3,
 	baseEffectiveness = 0.53899997472763,
 	incrementalEffectiveness = 0.045400001108646,
-description = "投掷陷阱，触发会在一定时间内连续电击多个区域，并造成闪电伤害。施法速度会影响其电击的频率。有很大几率对感电敌人造成暴击。",
+	description = "投掷陷阱，触发会在一定时间内连续电击多个区域，并造成闪电伤害。施法速度会影响其电击的频率。有很大几率对感电敌人造成暴击。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Duration] = true, [SkillType.Hit] = true, [SkillType.SkillCanMine] = true, [SkillType.Area] = true, [SkillType.Trap] = true, [SkillType.LightningSkill] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -4300,11 +4300,11 @@ description = "投掷陷阱，触发会在一定时间内连续电击多个区�
 	},
 }
 skills["LightningTendrilsChannelled"] = {
-name = "电能释放",
+	name = "电能释放",
 	color = 3,
 	baseEffectiveness = 0.62199997901917,
 	incrementalEffectiveness = 0.044900000095367,
-description = "汇聚雷霆之力并从手中快速的释放多次闪电, 对你面前弧状区域内的所有敌人造成伤害.",
+	description = "汇聚雷霆之力并从手中快速的释放多次闪电, 对你面前弧状区域内的所有敌人造成伤害.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTotem] = true, [SkillType.LightningSkill] = true, [SkillType.Channelled] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.23,
@@ -4371,11 +4371,11 @@ description = "汇聚雷霆之力并从手中快速的释放多次闪电, 对你
 	},
 }
 skills["LightningTrap"] = {
-name = "闪电陷阱",
+	name = "闪电陷阱",
 	color = 3,
 	baseEffectiveness = 3.146399974823,
 	incrementalEffectiveness = 0.034400001168251,
-description = "投掷一个陷阱, 该陷阱被触发时将会向全方位散射出闪电投射物, 投射物将会对触发及接触到的敌人造成闪电伤害.",
+	description = "投掷一个陷阱, 该陷阱被触发时将会向全方位散射出闪电投射物, 投射物将会对触发及接触到的敌人造成闪电伤害.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Trap] = true, [SkillType.SkillCanMine] = true, [SkillType.LightningSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -4448,11 +4448,11 @@ description = "投掷一个陷阱, 该陷阱被触发时将会向全方位散射
 	},
 }
 skills["VaalLightningTrap"] = {
-name = "瓦尔.闪电陷阱",
+	name = "瓦尔.闪电陷阱",
 	color = 3,
 	baseEffectiveness = 3.146399974823,
 	incrementalEffectiveness = 0.034400001168251,
-description = "投掷一个陷阱, 该陷阱被触发时将会向全方位散射出闪电投射物, 投射物将会对触发及接触到的敌人造成闪电伤害, 且同时在地面留下感电效果.",
+	description = "投掷一个陷阱, 该陷阱被触发时将会向全方位散射出闪电投射物, 投射物将会对触发及接触到的敌人造成闪电伤害, 且同时在地面留下感电效果.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Trap] = true, [SkillType.SkillCanMine] = true, [SkillType.Duration] = true, [SkillType.Vaal] = true, [SkillType.LightningSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -4535,11 +4535,11 @@ description = "投掷一个陷阱, 该陷阱被触发时将会向全方位散射
 	},
 }
 skills["LightningWarp"] = {
-name = "闪电传送",
+	name = "闪电传送",
 	color = 3,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.037799999117851,
-	description = "Waits for a duration before teleporting to a targeted destination, with the duration based on the distance and your movement speed. When the teleport occurs, lightning damage is dealt to the area around both where the player was and where they teleported to. Casting again will queue up multiple teleportations to occur in sequence.",
+	description = "指定一个传送目的地，等待一段时间，该时间由距离和你的移动速度决定。传送发生时，对玩家原本所在位置和传送目的地周围同时施加闪电伤害。重复释放会按照顺序反复进行传送。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, [SkillType.MovementSkill] = true, [SkillType.LightningSkill] = true, [SkillType.AreaSpell] = true, [SkillType.TravelSkill] = true, [SkillType.SpellCanRepeat] = true, [SkillType.CanRapidFire] = true, },
 	statDescriptionScope = "variable_duration_skill_stat_descriptions",
 	castTime = 0.8,
@@ -4607,11 +4607,11 @@ name = "闪电传送",
 	},
 }
 skills["VaalLightningWarpInstant"] = {
-name = "瓦尔.闪电传送",
+	name = "瓦尔.闪电传送",
 	color = 3,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.035000000149012,
-description = "在指定位置施放一个法阵, 在数秒之后将周围的敌人传送过去. 当传送时, 在原本位置与传送法阵位置的敌人都会受到闪电伤害.",
+	description = "在指定位置施放一个法阵, 在数秒之后将周围的敌人传送过去. 当传送时, 在原本位置与传送法阵位置的敌人都会受到闪电伤害.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Vaal] = true, [SkillType.LightningSkill] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "variable_duration_skill_stat_descriptions",
 	castTime = 1,
@@ -4678,11 +4678,11 @@ description = "在指定位置施放一个法阵, 在数秒之后将周围的敌
 	},
 }
 skills["MagmaOrb"] = {
-name = "熔岩之核",
+	name = "熔岩之核",
 	color = 3,
 	baseEffectiveness = 2.605299949646,
 	incrementalEffectiveness = 0.03660000115633,
-description = "抛投出撞击地面时会爆炸的岩浆球. 技能可以连锁, 当岩浆球爆炸时释放出另一个岩浆球.",
+	description = "抛投出岩浆球，击中地面会爆炸。技能可以连锁弹射。当岩浆球爆炸时释放出另一个岩浆球.。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Chaining] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.7,
@@ -4749,11 +4749,11 @@ description = "抛投出撞击地面时会爆炸的岩浆球. 技能可以连锁
 	},
 }
 skills["DamageOverTimeAura"] = {
-name = "怨毒光环",
+	name = "怨毒光环",
 	color = 3,
 	baseEffectiveness = 1.5,
 	incrementalEffectiveness = 0.025000000372529,
-description = "施放一个光环, 使你与受光环影响友军造成的持续伤害叠加，技能效果延长。",
+	description = "施放一个光环, 使你与受光环影响友军造成的持续伤害叠加，技能效果延长。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -4826,11 +4826,11 @@ description = "施放一个光环, 使你与受光环影响友军造成的持续
 	},
 }
 skills["OrbOfStorms"] = {
-name = "风暴漩涡",
+	name = "风暴漩涡",
 	color = 3,
 	baseEffectiveness = 0.82090002298355,
 	incrementalEffectiveness = 0.040699999779463,
-description = "创造出一个带电的球, 不断地释放出一道道的闪电攻击敌人. 施法速度也会影响释放闪电的频率。当在云的范围里使用其他的闪电技能, 会触发风暴漩涡释放闪电. 再次使用技能会取代旧的漩涡. 此技能只能由你主动施放. ",
+	description = "创造出一个带电的球, 不断地释放出一道道的闪电攻击敌人. 施法速度也会影响释放闪电的频率。当在云的范围里使用其他的闪电技能, 会触发风暴漩涡释放闪电. 再次使用技能会取代旧的漩涡. 此技能只能由你主动施放. ",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.LightningSkill] = true, [SkillType.Duration] = true, [SkillType.Area] = true, [SkillType.Chaining] = true, [SkillType.Triggerable] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "beam_skill_stat_descriptions",
 	castTime = 0.5,
@@ -4898,9 +4898,9 @@ description = "创造出一个带电的球, 不断地释放出一道道的闪电
 	},
 }
 skills["PowerSiphon"] = {
-name = "力量抽取",
+	name = "力量抽取",
 	color = 3,
-description = "挥动你的法杖，向你前方或身侧的敌人发射投射物，伤害得以提高，若敌人因此被击败，则产生一颗暴击球.",
+	description = "挥动你的法杖，向你前方或身侧的敌人发射投射物，伤害得以提高，若敌人因此被击败，则产生一颗暴击球.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, },
 	weaponTypes = {
 		["Wand"] = true,
@@ -4968,9 +4968,9 @@ description = "挥动你的法杖，向你前方或身侧的敌人发射投射�
 	},
 }
 skills["VaalPowerSiphon"] = {
-name = "瓦尔.力量抽取",
+	name = "瓦尔.力量抽取",
 	color = 3,
-description = "挥动你的法杖同时攻击附近的所有敌人. 濒死的敌人将会被终结, 并产生同等数量的暴击球. 无法被齐射辅助。",
+	description = "挥动你的法杖同时攻击附近的所有敌人. 濒死的敌人将会被终结, 并产生同等数量的暴击球. 无法被齐射辅助。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Vaal] = true, [SkillType.Type83] = true, },
 	weaponTypes = {
 		["Wand"] = true,
@@ -5041,11 +5041,11 @@ description = "挥动你的法杖同时攻击附近的所有敌人. 濒死的敌
 	},
 }
 skills["Sanctify"] = {
-name = "净化烈焰",
+	name = "净化烈焰",
 	color = 3,
 	baseEffectiveness = 2.2427999973297,
 	incrementalEffectiveness = 0.040600001811981,
-description = "一股神圣的波涌对一条线上的敌人造成伤害，随后创造奉献地面，并对目标位置周围的区域造成伤害。然后向外发射一股更大的冲击波，对置身于奉献地面中，但没有被击中的敌人造成伤害。",
+	description = "一股神圣的波涌对一条线上的敌人造成伤害，随后创造奉献地面，并对目标位置周围的区域造成伤害。然后向外发射一股更大的冲击波，对置身于奉献地面中，但没有被击中的敌人造成伤害。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanRepeat] = true, [SkillType.FireSkill] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.7,
@@ -5129,9 +5129,9 @@ name = "冲击波",
 	},
 }
 skills["Purity"] = {
-name = "元素净化",
+	name = "元素净化",
 	color = 3,
-description = "施放一个光环, 使你与受光环影响友军获得额外的元素抗性.",
+	description = "施放一个光环, 使你与受光环影响友军获得额外的元素抗性.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -5212,9 +5212,9 @@ description = "施放一个光环, 使你与受光环影响友军获得额外的
 	},
 }
 skills["LightningResistAura"] = {
-name = "闪电净化",
+	name = "闪电净化",
 	color = 3,
-description = "施放一个光环, 使你与受光环影响的友军获得额外的闪电抗性.",
+	description = "施放一个光环, 使你与受光环影响的友军获得额外的闪电抗性.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.LightningSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -5287,9 +5287,9 @@ description = "施放一个光环, 使你与受光环影响的友军获得额外
 	},
 }
 skills["LightningImpurity"] = {
-name = "瓦尔.不净之雷",
+	name = "瓦尔.不净之雷",
 	color = 3,
-description = "施放一个光环，使你和周围友军受到的闪电伤害降低，并免疫感电效果，并在击中周围敌人时无视他们的闪电抗性。 ",
+	description = "施放一个光环，使你和周围友军受到的闪电伤害降低，并免疫感电效果，并在击中周围敌人时无视他们的闪电抗性。 ",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.SkillCanTotem] = true, [SkillType.Type27] = true, [SkillType.Duration] = true, [SkillType.Vaal] = true, [SkillType.Aura] = true, [SkillType.AreaSpell] = true, [SkillType.LightningSkill] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -5366,11 +5366,11 @@ description = "施放一个光环，使你和周围友军受到的闪电伤害�
 	},
 }
 skills["MortarBarrageMine"] = {
-name = "火屑地雷",
+	name = "火屑地雷",
 	color = 3,
 	baseEffectiveness = 0.90490001440048,
 	incrementalEffectiveness = 0.036100000143051,
-description = "抛掷一个地雷引爆时造成范围伤害, 然后围绕中心喷发炽热的投射物，对小范围区域造成伤害",
+	description = "投掷一个地雷，引爆时对一片区域造成伤害，然后发射一束燃烧的投射物，在其周围降下火雨，每一个都对一小片区域造成伤害。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Projectile] = true, [SkillType.FireSkill] = true, [SkillType.Mine] = true, [SkillType.Area] = true, [SkillType.ManaCostReserved] = true, [SkillType.Aura] = true, [SkillType.AuraDebuff] = true, [SkillType.Type83] = true, [SkillType.NovaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.25,
@@ -5466,9 +5466,9 @@ mod("Multiplier:PyroclastSelfFireMaxLimit", "BASE", nil, 0, 0, { type = "GlobalE
 	},
 }
 skills["RaiseSpectre"] = {
-name = "召唤灵体",
+	name = "召唤灵体",
 	color = 3,
-description = "唱名唤魂, 从目标灵柩唤醒其灵体并使它为你而战.",
+	description = "唱名唤魂, 从目标灵柩唤醒其灵体并使它为你而战.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.CanRapidFire] = true, [SkillType.CreatesMinion] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Projectile] = true, [SkillType.Chaining] = true, [SkillType.Duration] = true, [SkillType.Totem] = true, [SkillType.Trap] = true, [SkillType.Mine] = true, [SkillType.DamageOverTime] = true, [SkillType.Channelled] = true, [SkillType.Curse] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanVolley] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
@@ -5546,9 +5546,9 @@ description = "唱名唤魂, 从目标灵柩唤醒其灵体并使它为你而战
 	},
 }
 skills["RaiseZombie"] = {
-name = "魔卫复苏",
+	name = "魔卫复苏",
 	color = 3,
-description = "从一个灵柩中复苏一只魔卫, 它会跟随你并攻击敌人。魔卫会近战攻击，也会使用一种无法闪避的范围重击。",
+	description = "从一个灵柩中复苏一只魔卫, 它会跟随你并攻击敌人。魔卫会近战攻击，也会使用一种无法闪避的范围重击。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.CanRapidFire] = true, [SkillType.CreatesMinion] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Area] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
@@ -5626,11 +5626,11 @@ description = "从一个灵柩中复苏一只魔卫, 它会跟随你并攻击敌
 	},
 }
 skills["RighteousFire"] = {
-name = "正义之火",
+	name = "正义之火",
 	color = 3,
 	baseEffectiveness = 1.6660000085831,
 	incrementalEffectiveness = 0.050000000745058,
-description = "以魔法之火快速的燃烧自己及周围的敌人. 在此效果下, 你的法术伤害大幅增加. 当你的生命只剩下 1 时将会自动停止此法术.",
+	description = "以魔法之火快速的燃烧自己及周围的敌人. 在此效果下, 你的法术伤害大幅增加. 当你的生命只剩下 1 时将会自动停止此法术.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.CausesBurning] = true, [SkillType.DamageOverTime] = true, [SkillType.FireSkill] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggerable] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
@@ -5722,9 +5722,9 @@ description = "以魔法之火快速的燃烧自己及周围的敌人. 在此效
 	},
 }
 skills["VaalRighteousFire"] = {
-name = "瓦尔.正义之火",
+	name = "瓦尔.正义之火",
 	color = 3,
-description = "献祭自己一部分生命和能量护盾，以魔法之火快速的燃烧自己及周围的敌人，并持续一段时间。在此效果下, 你的法术伤害大幅增加。",
+	description = "献祭自己一部分生命和能量护盾，以魔法之火快速的燃烧自己及周围的敌人，并持续一段时间。在此效果下, 你的法术伤害大幅增加。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.CausesBurning] = true, [SkillType.DamageOverTime] = true, [SkillType.FireSkill] = true, [SkillType.SkillCanTotem] = true, [SkillType.Vaal] = true, [SkillType.Duration] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
@@ -5800,11 +5800,11 @@ description = "献祭自己一部分生命和能量护盾，以魔法之火快�
 	},
 }
 skills["FireBeam"] = {
-name = "灼热光线",
+	name = "灼热光线",
 	color = 3,
 	baseEffectiveness = 3.4395000934601,
 	incrementalEffectiveness = 0.041000001132488,
-description = "发出一束灼热光线, 被击中的敌人会受到不断叠加的燃烧效果并降低火焰抗性. 每叠加一层效果都会附加一定比例的光线基础伤害. 脱离光线范围后的一段时间内依然会受到燃烧伤害. 增加施法速度和光线的转角速度.",
+	description = "发出一束灼热光线, 被击中的敌人会受到不断叠加的燃烧效果.每叠加一层效果都会附加一定比例的光线基础伤害。叠满之后会造成负面效果“畏火”。脱离光线范围后的一段时间内依然会受到燃烧伤害. 增加施法速度和光线的转角速度.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.SkillCanTotem] = true, [SkillType.DamageOverTime] = true, [SkillType.FireSkill] = true, [SkillType.CausesBurning] = true, [SkillType.Duration] = true, [SkillType.Channelled] = true, [SkillType.Type59] = true, },
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 0.5,
@@ -5888,11 +5888,11 @@ mod("FireResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debu
 	},
 }
 skills["ShockNova"] = {
-name = "闪电新星",
+	name = "闪电新星",
 	color = 3,
 	baseEffectiveness = 1.7374999523163,
 	incrementalEffectiveness = 0.039900001138449,
-description = "从施法者散发出一圈闪电之环, 接着散发出更大范围的一圈闪电之环. 每次被击中的敌人会受到闪电伤害. ",
+	description = "从施法者散发出一圈闪电之环, 接着散发出更大范围的一圈闪电之环. 每次被击中的敌人会受到闪电伤害. ",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.LightningSkill] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.7,
@@ -5971,11 +5971,11 @@ name = "新星",
 	},
 }
 skills["IceSiphonTrap"] = {
-name = "虹吸陷阱",
+	name = "虹吸陷阱",
 	color = 3,
 	baseEffectiveness = 5.8765997886658,
 	incrementalEffectiveness = 0.032499998807907,
-description = "投掷陷阱，在一定时间内对周围一定数量的敌人发射带有减益效果的光线。光线会冰缓敌人，并造成持续性冰霜伤害。光线也会基于被其射中的敌人数量，来使你获得一定额度的生命和魔力回复。",
+	description = "投掷陷阱，在一定时间内对周围一定数量的敌人发射带有减益效果的光线。光线会冰缓敌人，并造成持续性冰霜伤害。光线也会基于被其射中的敌人数量，来使你获得一定额度的生命和魔力回复。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Duration] = true, [SkillType.SkillCanMine] = true, [SkillType.Area] = true, [SkillType.Trap] = true, [SkillType.ColdSkill] = true, [SkillType.DamageOverTime] = true, [SkillType.Type59] = true, [SkillType.NonHitChill] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 1,
@@ -6064,11 +6064,11 @@ description = "投掷陷阱，在一定时间内对周围一定数量的敌人�
 	},
 }
 skills["Soulrend"] = {
-name = "裂魂术",
+	name = "裂魂术",
 	color = 3,
 	baseEffectiveness = 4.2604999542236,
 	incrementalEffectiveness = 0.046399999409914,
-description = "发射会在敌人面前转向他们的投射物，击中时造成伤害并穿透敌人，所造成的伤害会有一部分转化为能量护盾偷取。在飞行过程中，投射物会持续对周围一定范围内的敌人施加负面效果，造成短暂但强大的持续混沌伤害。",
+	description = "发射会在敌人面前转向他们的投射物，击中时造成伤害并穿透敌人，所造成的伤害会有一部分转化为能量护盾偷取。在飞行过程中，投射物会持续对周围一定范围内的敌人施加负面效果，造成短暂但强大的持续混沌伤害。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Projectile] = true, [SkillType.DamageOverTime] = true, [SkillType.Hit] = true, [SkillType.ChaosSkill] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.SkillCanVolley] = true, },
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 0.8,
@@ -6139,11 +6139,11 @@ description = "发射会在敌人面前转向他们的投射物，击中时造�
 	},
 }
 skills["Spark"] = {
-name = "电球",
+	name = "电球",
 	color = 3,
 	baseEffectiveness = 2.7592000961304,
 	incrementalEffectiveness = 0.030500000342727,
-description = "施放出多颗变幻莫测的电球, 这些电球将会随机移动直到撞到敌人或是自然消失.",
+	description = "施放出多颗变幻莫测的电球, 这些电球将会随机移动直到撞到敌人或是自然消失.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Hit] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.LightningSkill] = true, [SkillType.CanRapidFire] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.65,
@@ -6209,11 +6209,11 @@ description = "施放出多颗变幻莫测的电球, 这些电球将会随机移
 	},
 }
 skills["VaalSparkSpiralNova"] = {
-name = "瓦尔.电球",
+	name = "瓦尔.电球",
 	color = 3,
 	baseEffectiveness = 1.4524999856949,
 	incrementalEffectiveness = 0.02559999935329,
-description = "持续的施放出大量变幻莫测的电球, 这些电球将会随机移动直到撞到敌人或是自然消失.",
+	description = "持续的施放出大量变幻莫测的电球, 这些电球将会随机移动直到撞到敌人或是自然消失.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Type70] = true, [SkillType.Hit] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Vaal] = true, [SkillType.LightningSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.65,
@@ -6283,9 +6283,9 @@ description = "持续的施放出大量变幻莫测的电球, 这些电球将会
 	},
 }
 skills["SpiritOffering"] = {
-name = "灵魂奉献",
+	name = "灵魂奉献",
 	color = 3,
-description = "消耗一具灵柩, 给予你的召唤物能量护盾, 额外混沌伤害和火焰, 冰霜和闪电抗性. 获得能量护盾的同时也回复魔力护盾. 此技能会消耗其他在附近的灵柩, 每具消耗的灵柩会增加获得的能量护盾及持续时间.",
+	description = "消耗一具灵柩, 给予你的召唤物能量护盾, 额外混沌伤害和火焰, 冰霜和闪电抗性. 获得能量护盾的同时也回复魔力护盾. 此技能会消耗其他在附近的灵柩, 每具消耗的灵柩会增加获得的能量护盾及持续时间.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.Minion] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, [SkillType.SpellCanCascade] = true, [SkillType.ChaosSkill] = true, },
 	statDescriptionScope = "offering_skill_stat_descriptions",
 	castTime = 1,
@@ -6360,11 +6360,11 @@ description = "消耗一具灵柩, 给予你的召唤物能量护盾, 额外混�
 	},
 }
 skills["ConduitSigil"] = {
-name = "风暴烙印",
+	name = "风暴烙印",
 	color = 3,
 	baseEffectiveness = 0.41819998621941,
 	incrementalEffectiveness = 0.040399998426437,
-description = "创造一个可以附着于周围某个敌人的魔法烙印。该烙印附着后会阶段性激活，发射光束，对周围和围绕他们的敌人造成伤害。敌人被击败后烙印消失。",
+	description = "创造一个可以附着于周围某个敌人的魔法烙印。该烙印附着后会阶段性激活，发射光束，对周围和围绕他们的敌人造成伤害。敌人被击败后烙印消失。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.LightningSkill] = true, [SkillType.Chaining] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Brand] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "brand_skill_stat_descriptions",
 	castTime = 0.75,
@@ -6447,11 +6447,11 @@ description = "创造一个可以附着于周围某个敌人的魔法烙印。�
 	},
 }
 skills["LightningExplosionMine"] = {
-name = "雷暴地雷",
+	name = "雷暴地雷",
 	color = 3,
 	baseEffectiveness = 1.1905000209808,
 	incrementalEffectiveness = 0.043999999761581,
-description = "投掷地雷并在引爆时造成范围伤害",
+	description = "投掷一个地雷，引爆时对一片区域造成伤害。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Mine] = true, [SkillType.LightningSkill] = true, [SkillType.AreaSpell] = true, [SkillType.ManaCostReserved] = true, [SkillType.Aura] = true, [SkillType.AuraDebuff] = true, [SkillType.NovaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.75,
@@ -6530,11 +6530,11 @@ description = "投掷地雷并在引爆时造成范围伤害",
 	},
 }
 skills["StormBurstNew"] = {
-name = "裂风雷球",
+	name = "裂风雷球",
 	color = 3,
 	baseEffectiveness = 0.63929998874664,
 	incrementalEffectiveness = 0.030099999159575,
-description = "在你持续吟唱时，创造能量球，并不断跳向目标区域，直到持续时间消失，每一跳都会对小范围内造成伤害。当你停止吟唱，能量球会爆炸，对更大范围造成更高伤害。",
+	description = "在你持续吟唱时，创造能量球，并不断跳向目标区域，直到持续时间消失，每一跳都会对小范围内造成伤害。当你停止吟唱，能量球会爆炸，对更大范围造成更高伤害。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.SkillCanTotem] = true, [SkillType.LightningSkill] = true, [SkillType.Channelled] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.25,
@@ -6606,11 +6606,11 @@ description = "在你持续吟唱时，创造能量球，并不断跳向目标�
 	},
 }
 skills["StormCall"] = {
-name = "风暴呼唤",
+	name = "风暴呼唤",
 	color = 3,
 	baseEffectiveness = 2.0878000259399,
 	incrementalEffectiveness = 0.033500000834465,
-description = "在目标区域设置一个标记. 经过一小段时间后, 闪电会攻击那个标记, 并对该标记周围的敌人造成伤害, 同时其他的标记也会陆续受到闪电攻击.",
+	description = "在目标区域设置一个标记. 经过一小段时间后, 闪电会攻击那个标记, 并对该标记周围的敌人造成伤害, 同时其他的标记也会陆续受到闪电攻击.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanRepeat] = true, [SkillType.LightningSkill] = true, [SkillType.SpellCanCascade] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.5,
@@ -6683,11 +6683,11 @@ description = "在目标区域设置一个标记. 经过一小段时间后, 闪�
 	},
 }
 skills["VaalStormCall"] = {
-name = "瓦尔.风暴呼唤",
+	name = "瓦尔.风暴呼唤",
 	color = 3,
 	baseEffectiveness = 1.7699999809265,
 	incrementalEffectiveness = 0.034499999135733,
-description = "在目标区域设置一个标记. 当标记存在时, 闪电将会随机攻击标记附近的敌人, 对其造成伤害. 该技能的持续时间也会影响闪电发射的间隔。经过一小段时间后, 强力的闪电会攻击那个标记, 并对该标记周围的敌人造成伤害, 同时其他的标记也会陆续受到闪电攻击.",
+	description = "在目标区域设置一个标记. 当标记存在时, 闪电将会随机攻击标记附近的敌人, 对其造成伤害. 该技能的持续时间也会影响闪电发射的间隔。经过一小段时间后, 强力的闪电会攻击那个标记, 并对该标记周围的敌人造成伤害, 同时其他的标记也会陆续受到闪电攻击.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Vaal] = true, [SkillType.LightningSkill] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.5,
@@ -6757,11 +6757,11 @@ description = "在目标区域设置一个标记. 当标记存在时, 闪电将�
 	},
 }
 skills["SummonBoneGolem"] = {
-name = "召唤腐化魔像",
+	name = "召唤腐化魔像",
 	color = 3,
 	baseEffectiveness = 0.28000000119209,
 	incrementalEffectiveness = 0.020999999716878,
-description = "召唤一个食腐魔像，给非魔像召唤生物附加物理伤害。\n这种魔像可以挥出伤害递增的破空斩，还可以发出骸骨突刺。\n它附近每个非魔像召唤生物都可以使它造成更多伤害。",
+	description = "召唤一个腐化魔像，给非魔像召唤生物附加物理伤害。这种魔像可以挥出伤害递增，速度越来越快的破空斩，还可以发出骸骨突刺。它附近每个非魔像召唤生物都可以使它造成更多伤害。",
 	skillTypes = { [SkillType.Triggerable] = true, [SkillType.PhysicalSkill] = true, [SkillType.SkillCanMine] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Spell] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.Golem] = true, [SkillType.CreatesMinion] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.MovementSkill] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
@@ -6845,9 +6845,9 @@ description = "召唤一个食腐魔像，给非魔像召唤生物附加物理�
 	},
 }
 skills["SummonChaosGolem"] = {
-name = "召唤混沌魔像",
+	name = "召唤混沌魔像",
 	color = 3,
-description = "召唤混沌魔像, 启动时会使你获得物理伤害减伤. 混沌魔像会施放一个造成持续伤害的混沌灵气并在近战攻击附加额外的混沌之刺. ",
+	description = "召唤混沌魔像, 启动时会使你获得物理伤害减伤. 混沌魔像会施放一个造成持续伤害的混沌灵气并在近战攻击附加额外的混沌之刺. ",
 	skillTypes = { [SkillType.Triggerable] = true, [SkillType.ChaosSkill] = true, [SkillType.SkillCanMine] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Spell] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.Golem] = true, [SkillType.CreatesMinion] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.Duration] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
@@ -6926,9 +6926,9 @@ description = "召唤混沌魔像, 启动时会使你获得物理伤害减伤. �
 	},
 }
 skills["SummonRelic"] = {
-name = "召唤圣物",
+	name = "召唤圣物",
 	color = 3,
-description = "召唤一个停留在你身旁的圣物。当你使用攻击击中敌人，圣物会触发一个新星法术，对敌人造成物理伤害并为友方回复生命。圣物的新星法术冷却时间非常短。",
+	description = "召唤一个停留在你身旁的圣物。当你使用攻击击中敌人，圣物会触发一个新星法术，对敌人造成物理伤害并为友方回复生命。圣物的新星法术冷却时间非常短。",
 	skillTypes = { [SkillType.Triggerable] = true, [SkillType.SkillCanMine] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Spell] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.CreatesMinion] = true, },
 	minionSkillTypes = { [SkillType.Hit] = true, [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Triggered] = true, [SkillType.Duration] = true, [SkillType.PhysicalSkill] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
@@ -7001,9 +7001,9 @@ description = "召唤一个停留在你身旁的圣物。当你使用攻击击�
 	},
 }
 skills["SummonLightningGolem"] = {
-name = "召唤闪电魔像",
+	name = "召唤闪电魔像",
 	color = 3,
-description = "召唤一个闪电魔像, 给予你额外的攻击和施法速度. 魔像会对敌人进行雷击, 召唤会对电击敌人的能量球, 偶尔施放一个攻击魔像附近的敌人时附加额外闪电伤害的光环. ",
+	description = "召唤一个闪电魔像, 给予你额外的攻击和施法速度. 魔像会对敌人进行雷击, 召唤会对电击敌人的能量球, 偶尔施放一个攻击魔像附近的敌人时附加额外闪电伤害的光环. ",
 	skillTypes = { [SkillType.Triggerable] = true, [SkillType.LightningSkill] = true, [SkillType.SkillCanMine] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Spell] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.Golem] = true, [SkillType.CreatesMinion] = true, },
 	minionSkillTypes = { [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Aura] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Duration] = true, [SkillType.Spell] = true, [SkillType.Buff] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
@@ -7081,9 +7081,9 @@ description = "召唤一个闪电魔像, 给予你额外的攻击和施法速度
 	},
 }
 skills["SummonRagingSpirit"] = {
-name = "召唤愤怒狂灵",
+	name = "召唤愤怒狂灵",
 	color = 3,
-description = "召唤只能存在极短时间的愤怒狂灵, 这些火焰魔侍将会冲至敌人身边并快速的进行攻击. 敌方生物将不会主动攻击这些狂灵, 并可以穿越它们.",
+	description = "召唤只能存在极短时间的愤怒狂灵, 这些火焰魔侍将会冲至敌人身边并快速的进行攻击. 敌方生物将不会主动攻击这些狂灵, 并可以穿越它们.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.Duration] = true, [SkillType.CreateMinion] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.CanRapidFire] = true, [SkillType.CreatesMinion] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
@@ -7151,9 +7151,9 @@ description = "召唤只能存在极短时间的愤怒狂灵, 这些火焰魔侍
 	},
 }
 skills["SummonSkeletons"] = {
-	name = "Summon Skeletons",
+	name = "召唤魔侍",
 	color = 3,
-	description = "Summon Skeleton Warrior minions at the targeted location. They use a melee attack and die after a duration. If made aggressive, Skeleton Warriors will also dash towards nearby enemies.",
+	description = "在目标地点召唤魔侍武士。它们使用近战攻击，并在持续时间结束后消失。在侵略状态下，魔侍武士会冲撞周围的敌人。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.Duration] = true, [SkillType.CreateMinion] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.CanRapidFire] = true, [SkillType.CreatesMinion] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.Type54] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Type66] = true, [SkillType.SkillCanVolley] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
@@ -7229,9 +7229,9 @@ skills["SummonSkeletons"] = {
 	},
 }
 skills["VaalSummonSkeletons"] = {
-name = "瓦尔.召唤魔侍",
+	name = "瓦尔.召唤魔侍",
 	color = 3,
-description = "召唤一支由强大的魔侍将军所统率, 由魔侍战士, 魔侍弓箭手与魔侍法师所组成的魔侍大军.",
+	description = "召唤一支由强大的魔侍将军所统率, 由魔侍战士, 魔侍弓箭手与魔侍法师所组成的魔侍大军.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.Duration] = true, [SkillType.CreateMinion] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Vaal] = true, [SkillType.CreatesMinion] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.Projectile] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanVolley] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Type66] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
@@ -7311,9 +7311,9 @@ description = "召唤一支由强大的魔侍将军所统率, 由魔侍战士, �
 	},
 }
 skills["Skitterbots"] = {
-name = "召唤飞掠者",
+	name = "召唤飞掠者",
 	color = 3,
-description = "召唤两名构造体，它们会引爆地雷，触发陷阱，并给陷阱和地雷提供加成。\n它们都有光环，其中一个可以感电敌人，另一个则冻缓敌人。",
+	description = "召唤一个冰缓飞掠者和感电飞掠者。它们会触发陷阱，引爆地雷。被飞掠者引爆的地雷会重新部署，接着可以再次引爆。飞掠者会使你的陷阱和地雷造成更多伤害，并且不会被瞄准和受伤。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Instant] = true, [SkillType.Minion] = true, [SkillType.CreatesMinion] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.ColdSkill] = true, [SkillType.LightningSkill] = true, [SkillType.NonHitChill] = true, [SkillType.Area] = true, [SkillType.Aura] = true, [SkillType.AuraDebuff] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
 	castTime = 0,
@@ -7383,11 +7383,11 @@ description = "召唤两名构造体，它们会引爆地雷，触发陷阱，�
 	},
 }
 skills["TempestShield"] = {
-name = "暴风之盾",
+	name = "暴风之盾",
 	color = 3,
 	baseEffectiveness = 2.25,
 	incrementalEffectiveness = 0.025000000372529,
-description = "以暴风之力强化你的盾牌, 当你格挡攻击时将会对攻击者造成闪电伤害.",
+	description = "以暴风之力强化你的盾牌, 当你格挡攻击时将会对攻击者造成闪电伤害.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Shield] = true, [SkillType.Type27] = true, [SkillType.LightningSkill] = true, [SkillType.Chaining] = true, [SkillType.Triggerable] = true, [SkillType.Duration] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.25,
@@ -7464,11 +7464,11 @@ description = "以暴风之力强化你的盾牌, 当你格挡攻击时将会对
 	},
 }
 skills["FrostBoltNova"] = {
-name = "漩涡",
+	name = "漩涡",
 	color = 3,
 	baseEffectiveness = 2.117399930954,
 	incrementalEffectiveness = 0.045499999076128,
-description = "一个会在施法者周围爆炸的冰爆, 对敌人造成冰霜伤害, 并留下一个漩涡, 对于在其中的敌人继续造成持续冰霜伤害和冰缓. 若施法目标区域附近存在着寒冰弹, 冰爆则会出现在寒冰弹的位置. ",
+	description = "一个会在施法者周围爆炸的冰爆, 对敌人造成冰霜伤害, 并留下一个漩涡, 对于在其中的敌人继续造成持续冰霜伤害和冰缓. 若施法目标区域附近存在着寒冰弹, 冰爆则会出现在寒冰弹的位置. ",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.ColdSkill] = true, [SkillType.Triggerable] = true, [SkillType.Duration] = true, [SkillType.ChillingArea] = true, [SkillType.AreaSpell] = true, [SkillType.Instant] = true, [SkillType.NovaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
@@ -7542,11 +7542,11 @@ description = "一个会在施法者周围爆炸的冰爆, 对敌人造成冰霜
 	},
 }
 skills["Purge"] = {
-name = "定罪波",
+	name = "定罪波",
 	color = 3,
 	baseEffectiveness = 2.2999999523163,
 	incrementalEffectiveness = 0.043099999427795,
-description = "一股逐渐拓展的能量波向前涌动，在一段时间内对锥形范围内的敌人造成伤害。被击中的每个敌人会根据受到的最高伤害的类型，遭受一个该元素的易伤负面效果。一次只能激活一个定罪波。",
+	description = "一股逐渐拓展的能量波向前涌动，在一段时间内对锥形范围内的敌人造成伤害。被击中的每个敌人会根据受到的最高伤害的类型，遭受一个该元素的易伤负面效果。一次只能激活一个定罪波。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.LightningSkill] = true, [SkillType.CanRapidFire] = true, [SkillType.SpellCanRepeat] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, },
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 0.7,
@@ -7624,11 +7624,11 @@ mod("LightningResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = 
 	},
 }
 skills["FrostFury"] = {
-name = "寒冬宝珠",
+	name = "寒冬宝珠",
 	color = 3,
 	baseEffectiveness = 1.1656999588013,
 	incrementalEffectiveness = 0.031800001859665,
-description = "吟唱后在你上方生成一个光球，向周围敌人发射投射物，接触地面后会爆炸。吟唱时间越长，技能等阶越高。停止吟唱后，等阶会持续消退。",
+	description = "吟唱后在你上方生成一个光球，向周围敌人发射投射物，接触地面后会爆炸。吟唱时间越长，技能等阶越高。停止吟唱后，等阶会持续消退。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Channelled] = true, [SkillType.ColdSkill] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Projectile] = true, [SkillType.SkillCanTotem] = true, [SkillType.AreaSpell] = true, [SkillType.Type83] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.25,
@@ -7738,9 +7738,9 @@ name = "空闲",
 	},
 }
 skills["Wither"] = {
-name = "死亡凋零",
+	name = "死亡凋零",
 	color = 3,
-description = "施放一个对敌人造成虚弱的范围效果, 造成缓速并且叠加一个使他们增加受到的混沌伤害之减益效果. 此减益效果可叠加 15 层. ",
+	description = "施放一个对敌人造成虚弱的范围效果, 造成缓速并且叠加一个使他们增加受到的混沌伤害之减益效果. 此减益效果可叠加 15 层. ",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.ChaosSkill] = true, [SkillType.Channelled] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 0.28,
@@ -7840,11 +7840,11 @@ mod("MovementSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "De
 	},
 }
 skills["Wrath"] = {
-name = "雷霆",
+	name = "雷霆",
 	color = 3,
 	baseEffectiveness = 2.25,
 	incrementalEffectiveness = 0.023000000044703,
-description = "施放一个光环, 使你与受光环影响友军在攻击时额外附带闪电伤害, 并且造成更多法术闪电伤害.",
+	description = "施放一个光环, 使你与受光环影响友军在攻击时额外附带闪电伤害, 并且造成更多法术闪电伤害.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.LightningSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
@@ -7921,11 +7921,11 @@ description = "施放一个光环, 使你与受光环影响友军在攻击时额
 	},
 }
 skills["SpellDamageAura"] = {
-name = "奋锐光环",
+	name = "奋锐光环",
 	color = 3,
 	baseEffectiveness = 1.5,
 	incrementalEffectiveness = 0.025000000372529,
-description = "施放一个光环, 使你与受光环影响的友军获得伤害和法术暴击几率加成，并在面对强大敌人时有几率创造奉献地面。",
+	description = "施放一个光环, 使你与受光环影响的友军获得伤害和法术暴击几率加成，并在面对强大敌人时有几率创造奉献地面。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,

@@ -390,12 +390,23 @@ local function doActorMisc(env, actor)
 	-- Add misc buffs/debuffs
 	if env.mode_combat then
 		if modDB:Flag(nil, "Fortify") then
-			local effect = m_floor(20 * (1 + modDB:Sum("INC", nil, "FortifyEffectOnSelf", "BuffEffectOnSelf") / 100))
-			if env.build.targetVersion == "2_6" then
-				modDB:NewMod("DamageTakenWhenHit", "INC", -effect, "护体")
-			else
-				modDB:NewMod("DamageTakenWhenHit", "MORE", -effect, "护体")
+		
+			if modDB:Flag(nil, "FortifyBuffInsteadGrantEvasionRating") then
+					local effect = m_floor(30 * (1 + modDB:Sum("INC", nil, "FortifyEffectOnSelf", "BuffEffectOnSelf") / 100))
+					modDB:NewMod("Evasion", "MORE", effect, "护体")
+			else 
+					local effect = m_floor(20 * (1 + modDB:Sum("INC", nil, "FortifyEffectOnSelf", "BuffEffectOnSelf") / 100))
+					if env.build.targetVersion == "2_6" then
+						modDB:NewMod("DamageTakenWhenHit", "INC", -effect, "护体")
+					else
+						modDB:NewMod("DamageTakenWhenHit", "MORE", -effect, "护体")						
+					end
+					
 			end
+				
+				
+			
+			
 			modDB.multipliers["BuffOnSelf"] = (modDB.multipliers["BuffOnSelf"] or 0) + 1
 		end
 		if modDB:Flag(nil, "Elusive") then
@@ -746,8 +757,9 @@ function calcs.perform(env)
 		t_insert(extraAuraModList, value.mod)
 	end
 
-	-- Combine buffs/debuffs 
+	-- Combine buffs/debuffs  
 	output.EnemyCurseLimit = modDB:Sum("BASE", nil, "EnemyCurseLimit")
+
 	local buffs = { }
 	env.buffs = buffs
 	local minionBuffs = { }
@@ -1024,7 +1036,7 @@ function calcs.perform(env)
 			end
 		end
 	end
-
+	
 	-- Assign curses to slots
 	local curseSlots = { }
 	env.curseSlots = curseSlots
@@ -1147,4 +1159,5 @@ function calcs.perform(env)
 		calcs.defence(env, env.minion)
 		calcs.offence(env, env.minion, env.minion.mainSkill)
 	end
+	
 end

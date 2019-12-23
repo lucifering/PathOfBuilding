@@ -963,6 +963,7 @@ local modTagList = {
 		["当你有图腾存在时，"] = { tag = { type = "Condition", var = "HaveTotem" } }, --备注：while you have a totem
 		["有图腾存在时"] = { tag = { type = "Condition", var = "HaveTotem" } }, 
 		["当你拥有护体时，"] = { tag = { type = "Condition", var = "Fortify" } }, --备注：while you have fortify	
+		["【护体】状态下，"] = { tag = { type = "Condition", var = "Fortify" } },
 		["【迷踪】状态时，"] = { tag = { type = "Condition", var = "Phasing" } }, --备注：while phasing
 		["拥有【提速尾流】时，"] = { tag = { type = "Condition", var = "Tailwind" } }, --备注：while you have tailwind
 		["拥有【猫之隐匿】时，"] = { tag = { type = "Condition", var = "AffectedBy猫之隐匿" } }, --备注：while you have cat's stealth
@@ -2178,8 +2179,8 @@ local specialModList = {
 	["药剂持续期间，获得额外混沌伤害，其数值等同于 (%d+)%% 元素伤害"]= function(num) return {  mod("ElementalDamageGainAsChaos", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
 	["近期内你若打出过暴击，则每有 1 个暴击球，就会每秒受到 (%d+) 闪电伤害"]= function(num) return {  mod("LightningDegen", "BASE", num,{ type = "Multiplier", var = "PowerCharge" },{ type = "Condition", var = "CritRecently" }) } end, 
 	["该武器击中致盲敌人时，附加 (%d+) %- (%d+) 基础火焰伤害"]= function(_,num1,num2) return { 
-		 mod("FireMin", "BASE", num1,nil,bor(ModFlag.Hit,ModFlag.Spell,ModFlag.Attack), { type = "Condition", var = "{Hand}Attack" } ,{ type = "ActorCondition", actor = "enemy", var = "Blinded" }),
-		 mod("FireMax", "BASE", num2,nil,bor(ModFlag.Hit,ModFlag.Spell,ModFlag.Attack), { type = "Condition", var = "{Hand}Attack" } ,{ type = "ActorCondition", actor = "enemy", var = "Blinded" })  } end, 
+		 mod("FireMin", "BASE", num1, { type = "Condition", var = "{Hand}Attack" } ,{ type = "ActorCondition", actor = "enemy", var = "Blinded" }),
+		 mod("FireMax", "BASE", num2, { type = "Condition", var = "{Hand}Attack" } ,{ type = "ActorCondition", actor = "enemy", var = "Blinded" })  } end, 
 	["人物等级每到达 (%d+) 级，该插槽内的【主动技能石】等级 %+(%d+)"] = function(div, _,num )return { mod("GemProperty", "LIST", { keyword = "active_skill", key = "level", value = num }, { type = "SocketedIn", slotName = "{SlotName}" }, { type = "Multiplier", var = "Level", div = tonumber(div) }) } end,
 	["玩家等级每提高 (%d+) 级，该武器攻击时便附加 (%d+) %- (%d+) 物理伤害"]= function(_,level,num1,num2) return {
 	mod("PhysicalMin", "BASE", num1,nil,ModFlag.Attack,{ type = "Condition", var = "{Hand}Attack" },{ type = "Multiplier", var = "Level", div = level } ) ,
@@ -3142,6 +3143,7 @@ local specialModList = {
 	["投射物攻击近距离目标时造成的总伤害最多额外提高 30%%，但攻击远距离目标时总伤害则会额外降低"] = { flag("PointBlank") }, 
 	["敌人对你的击中有 %-(%d+)%% 总物理伤害减伤"] = function(num) return {  mod("EnemyPhysicalDamageReduction", "BASE", -num)  }
 	 end, 
+	["你创造的【护体】改为使总闪避值额外提高 30%%"] =  { flag("FortifyBuffInsteadGrantEvasionRating") },
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

@@ -142,8 +142,8 @@ modList:NewMod("Condition:BrandAttachedToEnemy", "FLAG", true, "Config", { type 
 { var = "darkPactSkeletonLife", type = "count", label = "魔侍 生命:", ifSkill = "暗夜血契", tooltip = "设置使用【暗夜血契】时，魔侍的最大生命.", apply = function(val, modList, enemyModList)
 modList:NewMod("SkillData", "LIST", { key = "skeletonLife", value = val }, "Config", { type = "SkillName", skillName = "暗夜血契" })
 	end },
-{ label = "亡印辅助:", ifSkill = "亡印辅助" },
-	{ var = "deathmarkDeathmarkActive", type = "check", label = "敌人被标记?", ifSkill = "亡印辅助", apply = function(val, modList, enemyModList)
+{ label = "亡印（辅）:", ifSkill = "亡印（辅）" },
+	{ var = "deathmarkDeathmarkActive", type = "check", label = "敌人被标记?", ifSkill = "亡印（辅）", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:EnemyHasDeathmark", "FLAG", true, "Config")
 	end },
 	{ label = "狂噬（辅）:", ifSkill = "狂噬（辅）" }, 
@@ -175,8 +175,8 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 	{ var = "intensifyIntensity", type = "count", label = "# 层【法术凝聚】:", ifSkill = "法术凝聚（辅）", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:Intensity", "BASE", m_min(val, 4), "Config")
 	end },
-{ label = "肉盾辅助:", ifSkill = "肉盾辅助" },
-	{ var = "meatShieldEnemyNearYou", type = "check", label = "敌人在你附近?", ifSkill = "肉盾辅助", apply = function(val, modList, enemyModList)
+{ label = "肉盾（辅）:", ifSkill = "肉盾（辅）" },
+	{ var = "meatShieldEnemyNearYou", type = "check", label = "敌人在你附近?", ifSkill = "肉盾（辅）", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:MeatShieldEnemyNearYou", "FLAG", true, "Config")
 	end },
 { label = "召唤灵体:", ifSkill = "召唤灵体" },

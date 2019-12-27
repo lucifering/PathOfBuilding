@@ -839,7 +839,7 @@ end
 function ImportTabClass:SupportHybridSkillName(typeLine)
 	if typeLine == "震波" then 
 	
-	return "震波辅助"
+	return "震波（辅）"
 	
 	else 
 	

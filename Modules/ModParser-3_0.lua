@@ -1445,10 +1445,15 @@ local gemIdLookup = {
 
 local function  FuckSkillSupportCnName(support_skillname)
 
-support_skillname=support_skillname:gsub("灵魂滋养","启迪辅助"):gsub("魔力减免","启迪辅助"):gsub("遥控地雷","链爆地雷辅助")
-:gsub("【召唤幻灵】","召唤幻影辅助")
-:gsub("召唤幻灵辅助","召唤幻影辅助")
-:gsub("召唤幻灵","召唤幻影辅助")
+support_skillname=support_skillname:gsub("灵魂滋养","启迪（辅）"):gsub("魔力减免","启迪（辅）"):gsub("遥控地雷","链爆地雷（辅）")
+:gsub("连环地雷","链爆地雷（辅）")
+:gsub("【召唤幻灵】","召唤幻影（辅）")
+:gsub("召唤幻灵辅助","召唤幻影（辅）")
+:gsub("召唤幻灵","召唤幻影（辅）")
+:gsub("召唤幻影辅助","召唤幻影（辅）")
+:gsub("启迪辅助","启迪（辅）")
+:gsub("链爆地雷辅助","链爆地雷（辅）")
+
 
 return gemIdLookup[support_skillname] or gemIdLookup[support_skillname:gsub("^提高","")] or gemIdLookup[support_skillname.."(辅)"] or gemIdLookup[support_skillname.."（辅）"]   or gemIdLookup[support_skillname:gsub("^提高","增加").."(辅)"]  
  or gemIdLookup[support_skillname:gsub("^提高","增加").."（辅）"]  
@@ -2212,6 +2217,10 @@ local specialModList = {
 	["每个绿色插槽 %+(%d+)%% 攻击和法术暴击伤害加成"]= function(num) return {  mod("CritMultiplier", "BASE", num,{ type = "Global" }, { type = "Multiplier", var = "GreenSocketIn{SlotName}" })  } end, 
 	["每个白色插槽会使防御提高 (%d+)%%"]= function(num) return {  mod("Defences", "INC", num,{ type = "Global" }, { type = "Multiplier", var = "WhiteSocketIn{SlotName}" })  } end, 
 	["装备于副手时有 (%d+)%% 额外格挡几率"]= function(num) return {  mod("BlockChance", "BASE", num, { type = "SlotNumber", num = 2 })  } end, 
+	["副手攻击和法术附加 (%d+) %- (%d+) 基础混沌伤害"]= function(_,num1,num2) return {  
+	mod("ChaosMin", "BASE", tonumber(num1), { type = "InSlot", num = 2 }),
+	mod("ChaosMax", "BASE", tonumber(num2), { type = "InSlot", num = 2 }),
+	} end, 
 	["点燃敌人时获得 %d+ 秒【她的拥抱】效果"] = { flag("Condition:CanGainHerEmbrace") }, 
 	["召唤生物的攻击额外造成 (%d+) %- (%d+) 物理伤害"]= function(_,num1,num2) return {mod("MinionModifier", "LIST", {mod=mod("PhysicalMin","BASE",num1,nil,ModFlag.Attack )  }),mod("MinionModifier", "LIST", { mod = mod("PhysicalMax", "BASE", num2,nil,ModFlag.Attack )})} end,
 	["近期内你若被击中过，则每有 1 个耐力球，就会每秒受到 (%d+) 火焰伤害"]
@@ -2859,6 +2868,7 @@ local specialModList = {
 	["你造成的中毒伤害生效速度提高 (%d+)%%"]= function(num) return { 	
 	mod("PoisonFaster", "INC", num) 
 	}end,
+	["中毒伤害额外提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num,nil,nil,KeywordFlag.Poison )  } end, 
 	["你造成的烈毒的伤害生效速度加快 (%d+)%%"]= function(num) return { 	
 	mod("PoisonFaster", "INC", num) 
 	}end,
@@ -3086,6 +3096,7 @@ local specialModList = {
 	["每 (%d+) 点最大魔力会使法术伤害提高 (%d+)%%，最多 (%d+)%%"] = function(_,num1,num2,num3)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "PerStat", stat = "Mana", div = tonumber(num1), limit = tonumber(num3), limitTotal = true  }) } end,  
 	["每 (%d+) 魔力提高 (%d+)%% 法术伤害，最多 (%d+)%%"] = function(_,num1,num2,num3)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "PerStat", stat = "Mana", div = tonumber(num1), limit = tonumber(num3), limitTotal = true  }) } end,  
 	["每 (%d+) 生命保留 %+(%d+) 最大能量护盾"] = function( _, num1,num2,limit)  return { mod("EnergyShield", "BASE", tonumber(num2), { type = "PerStat", stat = "LifeReserved", div = tonumber(num1), limit = tonumber(limit), limitTotal = true })   } end,
+	["每 (%d+) 点生命保留 %+(%d+) 最大能量护盾"] = function( _, num1,num2,limit)  return { mod("EnergyShield", "BASE", tonumber(num2), { type = "PerStat", stat = "LifeReserved", div = tonumber(num1), limit = tonumber(limit), limitTotal = true })   } end,
 	["每 (%d+) 点未保留的最大魔力使范围效果扩大 (%d+)%%，最大 (%d+)%%"] = function( _, num1,num2,limit)  return { mod("AreaOfEffect", "INC", tonumber(num2), { type = "PerStat", stat = "ManaUnreserved", div = tonumber(num1), limit = tonumber(limit), limitTotal = true })   } end,
 	["每有 (%d+) 未保留的魔力，范围效果扩大 (%d+)%%，最多 (%d+)%%"] = function( _, num1,num2,limit)  return { mod("AreaOfEffect", "INC", tonumber(num2), { type = "PerStat", stat = "ManaUnreserved", div = tonumber(num1), limit = tonumber(limit), limitTotal = true })   } end,
 	["近期你或你的召唤生物每击败 1 个敌人回复 (%d+)%% 能量护盾，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("EnergyShieldRegenPercent", "BASE", tonumber(num1), { type = "Multiplier", varList = {"EnemyKilledRecently","EnemyKilledByMinionsRecently"}, limit = tonumber(limit), limitTotal = true })   } end, 

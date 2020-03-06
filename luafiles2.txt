@@ -3,3 +3,7 @@ Assets/patreon_logo.png
 Assets/range_guide.png
 Assets/ring.png
 Assets/small_ring.png
+Assets/ShadedInnerRing.png
+Assets/ShadedInnerRingFlipped.png
+Assets/ShadedOuterRing.png
+Assets/ShadedOuterRingFlipped.png

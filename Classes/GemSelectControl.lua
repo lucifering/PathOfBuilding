@@ -146,11 +146,11 @@ function GemSelectClass:UpdateSortCache()
 			if gemList[self.index] then
 				oldGem = copyTable(gemList[self.index], true)
 			else
-				gemList[self.index] = { level = self.skillsTab.defaultGemLevel or gemData.defaultLevel or 20, quality = self.skillsTab.defaultGemQuality or 0, enabled = true, enableGlobal1 = true }
+				gemList[self.index] = { level = self.skillsTab.defaultGemLevel or gemData.defaultLevel, quality = self.skillsTab.defaultGemQuality or 0, enabled = true, enableGlobal1 = true }
 			end
 			local gemInstance = gemList[self.index]
 			if gemInstance.gemData and gemInstance.gemData.defaultLevel ~= gemData.defaultLevel then
-				gemInstance.level = self.skillsTab.defaultGemLevel or gemData.defaultLevel  or 20
+				gemData.level = self.skillsTab.defaultGemLevel or gemData.defaultLevel
 			end
 			gemInstance.gemData = gemData
 			if not gemData.grantedEffect.levels[gemInstance.level] then

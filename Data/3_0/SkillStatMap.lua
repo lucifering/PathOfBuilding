@@ -366,6 +366,14 @@ return {
 ["critical_strike_multiplier_+_per_power_charge"] = {
 	mod("CritMultiplier", "BASE", nil, 0, 0, { type = "Multiplier", var = "PowerCharge" }),
 },
+["additional_critical_strike_chance_permyriad_while_affected_by_elusive"] = {
+mod("CritChance", "BASE", nil, 0, 0, { type = "Condition", var = "Elusive" }, { type = "Condition", varList = { "UsingClaw", "UsingDagger"} }, { type = "Condition", varList = { "UsingSword", "UsingAxe", "UsingMace" }, neg = true} ),
+div = 100,
+},
+["nightblade_elusive_grants_critical_strike_multiplier_+_to_supported_skills"] = {
+mod("CritMultiplier", "BASE", nil, 0, 0, { type = "Condition", var = "Elusive" }, { type = "Condition", varList = { "UsingClaw", "UsingDagger" } }, { type = "Condition", varList = { "UsingSword", "UsingAxe", "UsingMace" }, neg = true} ),
+},
+
 -- Duration
 ["buff_effect_duration_+%_per_removable_endurance_charge"] = {
 	mod("Duration", "INC", nil, 0, 0, { type = "Multiplier", var = "RemovableEnduranceCharge" }),
@@ -415,6 +423,9 @@ return {
 },
 ["active_skill_damage_+%_final"] = {
 	mod("Damage", "MORE", nil),
+},
+["melee_damage_+%"] = {
+	mod("Damage", "INC", nil, ModFlag.Melee),
 },
 ["melee_physical_damage_+%"] = {
 	mod("PhysicalDamage", "INC", nil, ModFlag.Melee),
@@ -750,6 +761,13 @@ return {
 },
 ["returning_projectiles_always_pierce"] = {
 	flag("PierceAllTargets", { type = "Condition", var = "ReturningProjectile" }),
+},
+["support_barrage_attack_time_+%_per_projectile_fired"] = {
+	mod("SkillAttackTime", "MORE", nil, 0, 0, { type = "Condition", varList = { "UsingBow", "UsingWand" }}, { type = "PerStat", stat = "ProjectileCount" }),
+},
+["support_barrage_trap_and_mine_throwing_time_+%_final_per_projectile_fired"] = {
+	mod("SkillMineThrowingTime", "MORE", nil, 0, 0, { type = "PerStat", stat = "ProjectileCount" }),
+	mod("SkillTrapThrowingTime", "MORE", nil, 0, 0, { type = "PerStat", stat = "ProjectileCount" }),
 },
 -- Self modifiers
 ["chance_to_be_pierced_%"] = {

@@ -237,6 +237,7 @@ main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会�
 { stat = "TotalDPS", label = "总 DPS", fmt = ".1f", compPercent = true, flag = "notAverage" },
 { stat = "TotalDot", label = "持续伤害 DPS", fmt = ".1f", compPercent = true },
 { stat = "BleedDPS", label = "流血 DPS", fmt = ".1f", compPercent = true },
+{ stat = "BleedCount", label = "流血 次数", fmt = "d" },
 { stat = "IgniteDPS", label = "点燃 DPS", fmt = ".1f", compPercent = true },
 { stat = "IgniteDamage", label = "每个点燃总伤害", fmt = ".1f", compPercent = true },
 { stat = "WithIgniteDPS", label = "点燃伤害给总 DPS 增加", fmt = ".1f", compPercent = true },
@@ -246,6 +247,7 @@ main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会�
 { stat = "WithPoisonDPS", label = "总DPS（包含中毒伤害）", fmt = ".1f", compPercent = true, flag = "poison", condFunc = function(v,o) return v ~= o.TotalDPS end },
 { stat = "WithPoisonAverageDamage", label = "平均伤害（包含中毒伤害）", fmt = ".1f", compPercent = true, flag = "poison", condFunc = function(v,o) return v ~= o.AverageDamage end },
 { stat = "DecayDPS", label = "腐化 DPS", fmt = ".1f", compPercent = true },
+{ stat = "CombinedDPS", label = "合计 DPS", fmt = ".1f", compPercent = true },
 { stat = "Cooldown", label = "技能CD", fmt = ".2fs", lowerIsBetter = true },
 { stat = "AreaOfEffectRadius", label = "范围半径", fmt = "d" },
 { stat = "ManaCost", label = "魔力消耗", fmt = "d", compPercent = true, lowerIsBetter = true, condFunc = function() return true end },
@@ -321,6 +323,9 @@ main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会�
 { stat = "Life", label = "总生命", fmt = ".1f", compPercent = true },
 { stat = "LifeRegen", label = "生命回复", fmt = ".1f" },
 { stat = "LifeLeechGainRate", label = "生命偷取/击中回复速率", fmt = ".1f", compPercent = true },
+{ stat = "EnergyShield", label = "能量护盾", fmt = "d", compPercent = true },
+{ stat = "EnergyShieldRegen", label = "能量护盾回复", fmt = ".1f" },
+{ stat = "EnergyShieldLeechGainRate", label = "能量护盾偷取/击中回复速率", fmt = ".1f", compPercent = true },
 	}
 	self.extraSaveStats = {
 		"PowerCharges",

@@ -134,6 +134,7 @@ if self.rarity == "普通" or self.rarity == "魔法" then
 			t_insert(self.modLines, { line = line, extra = extra, modList = modList or { }, buff = true })
 		end
 	end
+	local deferJewelRadiusIndexAssignment
 	local gameModeStage = "FINDIMPLICIT"
 	local foundExplicit, implicitNumberSpecified, foundImplicit
 	 
@@ -205,10 +206,17 @@ elseif specName == "插槽" then
 						end
 					end
 elseif specName == "范围" and self.type == "Jewel" then
-					for index, data in pairs(verData.jewelRadius) do
-if specVal:match("^.+") == data.label then
-							self.jewelRadiusIndex = index
-							break
+					self.jewelRadiusLabel = specVal:match("^.+")
+					
+					if specVal:match("^.+") == "Variable" then
+					 -- Jewel radius is variable and must be read from it's mods instead after they are parsed
+					   deferJewelRadiusIndexAssignment = true
+					else
+                        for index, data in pairs(verData.jewelRadius) do
+                            if specVal:match("^.+") == data.label then
+                                self.jewelRadiusIndex = index
+                                break
+                            end 
 						end
 					end
 elseif specName == "仅限" and self.type == "Jewel" then
@@ -441,13 +449,16 @@ elseif self.rarity == "稀有" then
 		self:NormaliseQuality()
 	end
 	self:BuildModList()
+	if deferJewelRadiusIndexAssignment then
+		self.jewelRadiusIndex = self.jewelData.radiusIndex
+	end
 end
 
 function ItemClass:NormaliseQuality()
 	if self.base and (self.base.armour or self.base.weapon or self.base.flask) then
 		if not self.quality then
 			self.quality = self.corrupted and 0 or 20 
-		elseif not self.uniqueID and not self.corrupted then
+		elseif not self.uniqueID and not self.corrupted and self.quality < 20 then
 			self.quality = 20
 		end
 	end	
@@ -551,8 +562,8 @@ local line = "插槽: "
 	if self.requirements and self.requirements.level then
 t_insert(rawLines, "等级需求: "..self.requirements.level)
 	end
-	if self.jewelRadiusIndex then
-t_insert(rawLines, "范围: "..data.jewelRadius[self.jewelRadiusIndex].label)
+	if self.jewelRadiusLabel then
+t_insert(rawLines, "范围: "..self.jewelRadiusLabel)
 	end
 	if self.limit then
 t_insert(rawLines, "仅限: "..self.limit)

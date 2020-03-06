@@ -927,6 +927,18 @@ function ItemsTabClass:GetSocketAndJewelForNodeID(nodeId)
 	return self.sockets[nodeId], self.items[self.sockets[nodeId].selItemId]
 end
 
+
+function ItemsTabClass:GetNodeForNodeID(nodeId)
+	if self.build then 
+		for _, node in pairs(self.build.latestTree.nodes) do
+			if node.id == nodeId then
+				return node
+			end
+		end
+	end 
+	return nil
+end
+
 -- Adds the given item to the build's item list
 function ItemsTabClass:AddItem(item, noAutoEquip, index)
 	if not item.id then
@@ -1037,8 +1049,9 @@ function ItemsTabClass:DeleteItem(item)
 			end
 		end
 	end
+	 
 	self.items[item.id] = nil
-	self:PopulateSlots()
+	self:PopulateSlots()	 
 	self:AddUndoState()
 end
 
@@ -1071,7 +1084,16 @@ function ItemsTabClass:SetDisplayItem(item)
 		if item.crafted then
 			self:UpdateAffixControls()
 		end
-		self.controls.displayItemShaperElder:SetSel((item.shaper and 2) or (item.elder and 3) or (item.synthesised and 4) or 1)
+		self.controls.displayItemShaperElder:SetSel(
+		(item.shaper and 2) or 
+		(item.elder and 3) or 
+		(item.synthesised and 4)or
+
+		(item.crusader and 5)or
+		(item.redeemer and 6)or
+		(item.hunter and 7)or
+		(item.warlord and 8)or
+		1)
 		self:UpdateCustomControls()
 		self:UpdateDisplayItemRangeLines()
 	else
@@ -1210,23 +1232,25 @@ end
 function ItemsTabClass:UpdateCustomControls()
 	local item = self.displayItem
 	local i = 1
-	if item.rarity == "MAGIC" or item.rarity == "RARE" then
+	if item.rarity == "MAGIC" or item.rarity == "RARE" or item.rarity == "魔法" or item.rarity == "稀有" then
 		for index, modLine in ipairs(item.modLines) do
+		
 			if index > item.implicitLines and (modLine.custom or modLine.crafted) then
+				
 				local line = itemLib.formatModLine(modLine)
+				
 				if line then
+					
 					if not self.controls["displayItemCustomModifier"..i] then
 						self.controls["displayItemCustomModifier"..i] = new("LabelControl", {"TOPLEFT",self.controls.displayItemSectionCustom,"TOPLEFT"}, 55, i * 22 + 4, 0, 16)
 						self.controls["displayItemCustomModifierLabel"..i] = new("LabelControl", {"RIGHT",self.controls["displayItemCustomModifier"..i],"LEFT"}, -2, 0, 0, 16)
-self.controls["displayItemCustomModifierRemove"..i] = new("ButtonControl", {"LEFT",self.controls["displayItemCustomModifier"..i],"RIGHT"}, 4, 0, 70, 20, "^7移除e")
+						self.controls["displayItemCustomModifierRemove"..i] = new("ButtonControl", {"LEFT",self.controls["displayItemCustomModifier"..i],"RIGHT"}, 4, 0, 70, 20, "^7移除")
 					end
 					self.controls["displayItemCustomModifier"..i].shown = true
 					local label = itemLib.formatModLine(modLine)
-					if DrawStringCursorIndex(16, "VAR", label, 330, 10) < #label then
-						label = label:sub(1, DrawStringCursorIndex(16, "VAR", label, 310, 10)) .. "..."
-					end
+					
 					self.controls["displayItemCustomModifier"..i].label = label
-self.controls["displayItemCustomModifierLabel"..i].label = modLine.crafted and "^7创建:" or "^7自定义:"
+					self.controls["displayItemCustomModifierLabel"..i].label = modLine.crafted and "^7工艺:" or "^7自定义:"
 					self.controls["displayItemCustomModifierRemove"..i].onClick = function()
 						t_remove(item.modLines, index)
 						local id = item.id
@@ -1244,6 +1268,7 @@ self.controls["displayItemCustomModifierLabel"..i].label = modLine.crafted and "
 		i = i + 1
 	end
 end
+
 
 -- Updates the range line dropdown and range slider for the current display item
 function ItemsTabClass:UpdateDisplayItemRangeLines()
@@ -2177,8 +2202,8 @@ tooltip:AddLine(16, s_format("^x7F7F7F每次使用消耗 %s%d ^x7F7F7F充能，�
 		if item.limit then
 tooltip:AddLine(16, "^x7F7F7F仅限: ^7"..item.limit)
 		end
-		if item.jewelRadiusIndex then
-tooltip:AddLine(16, "^x7F7F7F范围: ^7"..data.jewelRadius[item.jewelRadiusIndex].label)
+		if item.jewelRadiusLabel  then
+tooltip:AddLine(16, "^x7F7F7F范围: ^7"..item.jewelRadiusLabel)
 		end
 		if item.jewelRadiusData and slot and item.jewelRadiusData[slot.nodeId] then
 			local radiusData = item.jewelRadiusData[slot.nodeId]
@@ -2192,7 +2217,11 @@ tooltip:AddLine(16, "^x7F7F7F范围: ^7"..data.jewelRadius[item.jewelRadiusIndex
 			if line then
 tooltip:AddLine(16, "^x7F7F7F范围内属性: "..line)
 			end
+			 
+			
 		end
+		
+		
 	end
 	if #item.sockets > 0 then
 		-- Sockets/links

@@ -34,7 +34,7 @@ return {
 { var = "conditionHaveEnergyShield", type = "check", label = "你经常保持有能量护盾?", ifCond = "HaveEnergyShield", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:HaveEnergyShield", "FLAG", true, "Config")
 	end },
-{ var = "minionsConditionFullLife", type = "check", label = "你的召唤生物处于满血状态?", ifMinionCond = "FullLife", apply = function(val, modList, enemyModList)
+{ var = "conditionMinionsFullLife", type = "check", label = "你的召唤生物处于满血状态?", ifMinionCond = "FullLife", apply = function(val, modList, enemyModList)
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Condition:FullLife", "FLAG", true, "Config") }, "Config")
 	end },
 { var = "igniteMode", type = "list", label = "点燃计算模式:", tooltip = "目前以火焰基础点伤来计算点燃伤害:\n平均伤害：点燃是基于平均伤害计算.\n暴击伤害：点燃基于暴击伤害计算.", list = {{val="AVERAGE",label="平均伤害"},{val="CRIT",label="暴击伤害"}} },
@@ -85,21 +85,21 @@ return {
 	end },
 	
 { label = "【鸟之势】:", ifSkill = "鸟之势" },
-{ var = "aspectOfTheAvianAviansMight", type = "check", label = "有【鸟之力量】buff?", ifSkill = "鸟之势", apply = function(val, modList, enemyModList)
+{ var = "conditionAviansMightActive", type = "check", label = "有【鸟之力量】buff?", ifSkill = "鸟之势", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:AviansMightActive", "FLAG", true, "Config")
 	end },
-{ var = "aspectOfTheAvianAviansFlight", type = "check", label = "有【鸟之斗魄】buff?", ifSkill = "鸟之势", apply = function(val, modList, enemyModList)
+{ var = "conditionAviansFlightActive", type = "check", label = "有【鸟之斗魄】buff?", ifSkill = "鸟之势", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:AviansFlightActive", "FLAG", true, "Config")
 	end },
 { label = "【猫之势】:", ifSkill = "猫之势" },
-{ var = "aspectOfTheCatCatsStealth", type = "check", label = "有【猫之隐匿】buff?", ifSkill = "猫之势", apply = function(val, modList, enemyModList)
+{ var = "conditionCatsStealthActive", type = "check", label = "有【猫之隐匿】buff?", ifSkill = "猫之势", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:CatsStealthActive", "FLAG", true, "Config")
 	end },
-{ var = "aspectOfTheCatCatsAgility", type = "check", label = "有【猫之敏捷】buff?", ifSkill = "猫之势", apply = function(val, modList, enemyModList)
+{ var = "conditionCatsAgilityActive", type = "check", label = "有【猫之敏捷】buff?", ifSkill = "猫之势", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:CatsAgilityActive", "FLAG", true, "Config")
 	end },
 { label = "【蟹之势】:", ifSkill = "蟹之势" },
-{ var = "overrideCrabBarriers", type = "count", label = "# 【深海屏障】数量(如果不是最大层的话):", ifSkill = "蟹之势", apply = function(val, modList, enemyModList)
+{ var = "conditionCrabBarriers", type = "count", label = "# 【深海屏障】数量(如果不是最大层的话):", ifSkill = "蟹之势", apply = function(val, modList, enemyModList)
 		modList:NewMod("CrabBarriers", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" })
 	end },
 { label = "【蛛之势】:", ifSkill = "蛛之势" },
@@ -111,7 +111,7 @@ enemyModList:NewMod("Multiplier:Spider's WebStack", "BASE", val, "Config")
 	end },
 
 { label = "旗帜技能:", ifSkillList = { "恐怖之旗", "战旗" } },
-{ var = "bannerPlanted", type = "check", label = "旗帜放置?", ifSkillList = { "恐怖之旗", "战旗"}, apply = function(val, modList, enemyModList)
+{ var = "conditionBannerPlanted", type = "check", label = "旗帜放置?", ifSkillList = { "恐怖之旗", "战旗"}, apply = function(val, modList, enemyModList)
 modList:NewMod("Condition:BannerPlanted", "FLAG", true, "Config", { type = "SkillName", skillNameList = { "恐怖之旗", "战旗" } })
 	end },
 { var = "bannerStages", type = "count", label = "旗帜阶层:", ifSkillList = { "恐怖之旗", "战旗" }, apply = function(val, modList, enemyModList)
@@ -120,21 +120,21 @@ modList:NewMod("Multiplier:BannerStage", "BASE", m_min(val, 50), "Config", { typ
 
 	-- 3.7 技能
 { label = "剑刃风暴:", ifSkill = "剑刃风暴" },
-	{ var = "bladestormInBloodstorm", type = "check", label = "你处于血姿态?", ifSkill = "剑刃风暴", apply = function(val, modList, enemyModList)
+	{ var = "conditionBladestormInBloodstorm", type = "check", label = "你处于血姿态?", ifSkill = "剑刃风暴", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:BladestormInBloodstorm", "FLAG", true, "Config", { type = "SkillName", skillName = "剑刃风暴" })
 	end },
-{ var = "bladestormInSandstorm", type = "check", label = "你处于沙姿态?", ifSkill = "剑刃风暴", apply = function(val, modList, enemyModList)
+{ var = "conditionBladestormInSandstorm", type = "check", label = "你处于沙姿态?", ifSkill = "剑刃风暴", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:BladestormInSandstorm", "FLAG", true, "Config", { type = "SkillName", skillName = "剑刃风暴" })
 	end },
 { label = "姿态技能:", ifSkillList = { "血与沙", "血肉与岩石", "破空斩", "剑刃风暴", "凿击" } },
-	{ var = "bloodSandStance", type = "list", label = "姿态:", ifSkillList = { "血与沙", "血肉与岩石", "破空斩", "剑刃风暴", "凿击" }, list = {{val="BLOOD",label="血姿态"},{val="SAND",label="沙姿态"}}, apply = function(val, modList, enemyModList)
+	{ var = "conditionSandStance", type = "list", label = "姿态:", ifSkillList = { "血与沙", "血肉与岩石", "破空斩", "剑刃风暴", "凿击" }, list = {{val="BLOOD",label="血姿态"},{val="SAND",label="沙姿态"}}, apply = function(val, modList, enemyModList)
 		if val == "SAND" then
 			modList:NewMod("Condition:SandStance", "FLAG", true, "Config")
 		end
 	end },
 	
 { label = "烙印技能:", ifSkillList = { "末日烙印", "风暴烙印" } }, -- I barely resisted the temptation to label this "Generic Brand:"
-{ var = "brandAttachedToEnemy", type = "check", label = "附着到敌人身上?", ifSkillList = { "末日烙印", "风暴烙印" }, apply = function(val, modList, enemyModList)
+{ var = "conditionBrandAttachedToEnemy", type = "check", label = "附着到敌人身上?", ifSkillList = { "末日烙印", "风暴烙印" }, apply = function(val, modList, enemyModList)
 modList:NewMod("Condition:BrandAttachedToEnemy", "FLAG", true, "Config", { type = "SkillType", skillType = SkillType.Brand })
 	end },
 	
@@ -143,12 +143,12 @@ modList:NewMod("Condition:BrandAttachedToEnemy", "FLAG", true, "Config", { type 
 modList:NewMod("SkillData", "LIST", { key = "skeletonLife", value = val }, "Config", { type = "SkillName", skillName = "暗夜血契" })
 	end },
 { label = "亡印（辅）:", ifSkill = "亡印（辅）" },
-	{ var = "deathmarkDeathmarkActive", type = "check", label = "敌人被标记?", ifSkill = "亡印（辅）", apply = function(val, modList, enemyModList)
+	{ var = "conditionEnemyHasDeathmark", type = "check", label = "敌人被标记?", ifSkill = "亡印（辅）", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:EnemyHasDeathmark", "FLAG", true, "Config")
 	end },
 	{ label = "狂噬（辅）:", ifSkill = "狂噬（辅）" }, 
 	
-	{ var = "feedingFrenzyFeedingFrenzyActive", type = "check", label = "启用狂噬增益效果?", ifSkill = "狂噬（辅）", tooltip = "狂噬增益效果:\n召唤生物总伤害额外提高 10%\n召唤生物移动速度提高 10%\n召唤生物攻击和施法速度提高 10%", apply = function(val, modList, enemyModList)
+{ var = "conditionFeedingFrenzyActive", type = "check", label = "启用狂噬增益效果?", ifSkill = "狂噬（辅）", tooltip = "狂噬增益效果:\n召唤生物总伤害额外提高 10%\n召唤生物移动速度提高 10%\n召唤生物攻击和施法速度提高 10%", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:FeedingFrenzyActive", "FLAG", true, "Config")
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Damage", "MORE", 10, "狂噬（辅）") }, "Config")
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("MovementSpeed", "INC", 10, "狂噬（辅）") }, "Config")
@@ -159,16 +159,16 @@ modList:NewMod("SkillData", "LIST", { key = "skeletonLife", value = val }, "Conf
 		modList:NewMod("Multiplier:VirulenceStack", "BASE", m_min(val, 40), "Config")
 	end },
 { label = "冰霜新星:", ifSkill = "冰霜新星" },
-{ var = "iceNovaCastOnFrostbolt", type = "check", label = "是否由【寒冰弹】触发?", ifSkill = "冰霜新星", apply = function(val, modList, enemyModList)
+{ var = "conditionCastOnFrostbolt", type = "check", label = "是否由【寒冰弹】触发?", ifSkill = "冰霜新星", apply = function(val, modList, enemyModList)
 modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "SkillName", skillName = "冰霜新星" })
 	end },
 { label = "【闪电支配】", ifSkill = "闪电支配(辅)" },
-{ var = "innervateInnervation", type = "check", label = "处于【闪电支配】状态?", ifSkill = "闪电支配(辅)", apply = function(val, modList, enemyModList)
+{ var = "conditionInnervationActive", type = "check", label = "处于【闪电支配】状态?", ifSkill = "闪电支配(辅)", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:InnervationActive", "FLAG", true, "Config")
 	end },
 	
 { label = "【灌注】:", ifSkill = "灌能吟唱(辅)" },
-	{ var = "infusedChannellingInfusion", type = "check", label = "激活【灌注】?", ifSkill = "灌能吟唱(辅)", apply = function(val, modList, enemyModList)
+	{ var = "conditionInfusionActive", type = "check", label = "激活【灌注】?", ifSkill = "灌能吟唱(辅)", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:InfusionActive", "FLAG", true, "Config")
 	end },
 { label = "【法术凝聚】:", ifSkill = "法术凝聚（辅）" },
@@ -176,7 +176,7 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 		modList:NewMod("Multiplier:Intensity", "BASE", m_min(val, 4), "Config")
 	end },
 { label = "肉盾（辅）:", ifSkill = "肉盾（辅）" },
-	{ var = "meatShieldEnemyNearYou", type = "check", label = "敌人在你附近?", ifSkill = "肉盾（辅）", apply = function(val, modList, enemyModList)
+	{ var = "conditionMeatShieldEnemyNearYou", type = "check", label = "敌人在你附近?", ifSkill = "肉盾（辅）", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:MeatShieldEnemyNearYou", "FLAG", true, "Config")
 	end },
 { label = "召唤灵体:", ifSkill = "召唤灵体" },
@@ -209,7 +209,7 @@ modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", 
 		modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", { type = "SkillId", skillId = "LightningGolemWrath" })
 	end },
 { label = "漩涡 :", ifSkill = "漩涡 " },
-{ var = "vortexCastOnFrostbolt", type = "check", label = "由【寒冰弹】触发?", ifSkill = "漩涡", apply = function(val, modList, enemyModList)
+{ var = "conditionCastOnFrostbolt", type = "check", label = "由【寒冰弹】触发?", ifSkill = "漩涡", apply = function(val, modList, enemyModList)
 modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "SkillName", skillName = "漩涡" })
 	end },
 { label = "定罪波:", ifSkill = "定罪波" },
@@ -239,9 +239,10 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 modList:NewMod("Multiplier:WinterOrbStage", "BASE", val, "Config", { type = "SkillName", skillName = "寒冬宝珠" })
 	end },
 	
-	{ label = "凋零之触:", ifSkill = "凋零之触（辅）" },
-{ var = "witheringTouchWitheredStackCount", type = "count", label = "# 【死亡凋零】层数:", ifSkill = "凋零之触（辅）", apply = function(val, modList, enemyModList)
-		modList:NewMod("Multiplier:WitheringTouchWitheredStackCount", "BASE", val, "Config")
+	{ label = "死亡凋零:", ifCond = "CanWither"},
+{ var = "witheringTouchWitheredStackCount", type = "count", label = "# 【死亡凋零】层数:", 
+ifCond = "CanWither", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:WitheredStackCount", "BASE", val, "Config", { type = "Condition", var = "Effective" })
 	end },
 	
 { label = "欺诈师升华天赋:",    ifNode = 28884},
@@ -457,10 +458,11 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 		modList:NewMod("Condition:Fortify", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
 	
-{ var = "buffElusive", type = "check", label = "你是否处于【灵巧】状态?", tooltip="这个会启用【灵巧】buff (\n·20% 几率躲避攻击伤害 \n·20% 几率躲避法术伤害\n·移动速度提高 40%)\n灵巧效果会随着时间不短削弱，每秒降低 20%\n在已经获得【灵巧】的情况下，无法再次获得【灵巧】)",ifCond = "Elusive", apply = function(val, modList, enemyModList)
+{ var = "buffElusive", type = "check", label = "你是否处于【灵巧】状态?", tooltip="这个会启用【灵巧】buff (\n·20% 几率躲避攻击伤害 \n·20% 几率躲避法术伤害\n·移动速度提高 40%)\n灵巧效果会随着时间不断削弱，每秒降低 20%\n在已经获得【灵巧】的情况下，无法再次获得【灵巧】)",ifCond = "Elusive", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:Elusive", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+		modList:NewMod("Elusive", "FLAG", true, "Config", { type = "Condition", varList = { "Combat", "Elusive" } })
 	end },
-{ var = "multiplierBuffElusiveHasLasted", type = "count", label = "【灵巧】持续几秒了:",ifCond = "Elusive", tooltip="灵巧效果会随着时间不短削弱，每秒降低 20%\n在已经获得【灵巧】的情况下，无法再次获得【灵巧】",apply = function(val, modList, enemyModList)
+{ var = "multiplierBuffElusiveHasLasted", type = "count", label = "【灵巧】持续几秒了:",ifCond = "Elusive", tooltip="灵巧效果会随着时间不断削弱，每秒降低 20%\n在已经获得【灵巧】的情况下，无法再次获得【灵巧】",apply = function(val, modList, enemyModList)
 		modList:NewMod("ElusiveEffectOnSelf", "INC", val*(-20), "Config")
 	end },
 	
@@ -519,6 +521,12 @@ end },
   end },
 { var = "multiplierNearbyCorpse", type = "count", label = "# 附近灵枢数量", ifMult = "NearbyCorpse", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:NearbyCorpse", "BASE", val, "Config", { type = "Condition", var = "Combat" })
+	end },
+{ var = "conditionAlliesOnFungalGround", type = "check", label = "友军和敌人正在【真菌地表】上?", tooltip = "当你处于【真菌地表】状态时干啥干啥的词缀生效,\n同时也会启用【真菌地表】buff本身:\n在你真菌地表上的友军将获得 10% 的非混沌伤害的额外混沌伤害。\n在你真菌地表上的敌人造成的伤害降低 10%。",
+ifCond = "OnFungalGround",
+ apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:OnFungalGround", "FLAG", true, "Config", { type = "Condition", var = "Combat" })		
+	
 	end },
 { var = "conditionOnConsecratedGround", type = "check", label = "你正在【奉献地面】上?", tooltip = "当你处于【奉献地面】状态时干啥干啥的词缀生效,\n同时也会启用【奉献地面】buff本身:6%每秒生命回复.", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:OnConsecratedGround", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
@@ -772,7 +780,9 @@ end },
 { var = "multiplierImaplesOnEnemy", type = "count", label = "# 敌人身上的穿刺数量:", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Multiplier:ImpaleStack", "BASE", val, "Config")
 	end },
-
+{ var = "multiplierBleedsOnEnemy", type = "count", label = "# 敌人身上的流血数量(如果没达到最大值):", ifFlag = "bleed", tooltip = "设置【玫红之舞】天赋的流血次数", apply = function(val, modList, enemyModList)
+		enemyModList:NewMod("Multiplier:BleedStacks", "BASE", val, "Config", { type = "Condition", var = "Combat" })
+	end },
 	-- Section: Effective DPS options
 { section = "为了计算有效 DPS", col = 1 },
 { var = "critChanceLucky", type = "check", label = "你的暴击率是幸运的?", apply = function(val, modList, enemyModList)
@@ -812,6 +822,10 @@ end },
 	end },
 { var = "multiplierPoisonOnEnemy", type = "count", label = "敌人身上的中毒层数:", implyCond = "Poisoned", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Multiplier:PoisonStack", "BASE", val, "Config", { type = "Condition", var = "Effective" })
+	end },
+{ var = "multiplierEnsnaredStackCount", type = "count", label = "# 圈套数量:", ifCond = "CanEnsnare", tooltip = "被捕获的敌人从攻击击中承受的投射物伤害提高, 每个敌人最多 3 个圈套.\n被诱捕的敌人始终视为在移动，并以更缓慢的速度试图突破圈套。\n一旦被捕猎的敌人离开范围效果，该圈套就被破坏。", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:EnsnareStackCount", "BASE", val, "Config", { type = "Condition", var = "Effective" })
+		enemyModList:NewMod("Condition:Moving", "FLAG", true, "Config", { type = "MultiplierThreshold", actor = "enemy", var = "EnsnareStackCount", threshold = 1 })
 	end },
 { var = "conditionEnemyMaimed", type = "check", label = "敌人被瘫痪?", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Condition:Maimed", "FLAG", true, "Config", { type = "Condition", var = "Effective" })

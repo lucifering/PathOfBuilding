@@ -117,7 +117,7 @@ function TooltipClass:Draw(x, y, w, h, viewPort)
 		if data.text then
 		 
 			if currentBlock ~= data.block and self.blocks[data.block].height + y > ttY + math.min(ttH, viewPort.height) then
-				print("YES!")
+				
 				y = ttY + 6
 				x = ttX + ttW * columns
 				columns = columns + 1

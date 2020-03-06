@@ -440,6 +440,9 @@ activeEffect.grantedEffectLevel = activeGrantedEffect.levels[activeEffect.level]
 	end
 	
 	-- Extract skill data
+	for _, value in ipairs(env.modDB:List(activeSkill.skillCfg, "SkillData")) do
+		activeSkill.skillData[value.key] = value.value
+	end
 	for _, value in ipairs(skillModList:List(activeSkill.skillCfg, "SkillData")) do
 		activeSkill.skillData[value.key] = value.value
 	end
@@ -546,6 +549,7 @@ activeEffect.grantedEffectLevel = activeGrantedEffect.levels[activeEffect.level]
 	-- Separate global effect modifiers (mods that can affect defensive stats or other skills)
 	local i = 1
 	while skillModList[i] do
+		
 		local effectType, effectName, effectTag
 		for _, tag in ipairs(skillModList[i]) do
 			if tag.type == "GlobalEffect" then
@@ -618,6 +622,7 @@ activeEffect.grantedEffectLevel = activeGrantedEffect.levels[activeEffect.level]
 		-- Add to auxillary skill list
 		t_insert(env.auxSkillList, activeSkill)
 	end
+	
 end
 
 

@@ -252,9 +252,10 @@ skills["SupportArrowNovaPlus"] = {
 	description = "辅助将箭矢像投射物一般向前发射的弓箭技能。被辅助技能改为朝空中射出一支负载箭矢，落到目标地点。然后向外射出一圈箭矢。不能辅助原本就朝空中射击的技能、吟唱技能或创造召唤生物的技能。",
 	color = 2,
 	support = true,
-	requireSkillTypes = { SkillType.Projectile, SkillType.Type54, SkillType.Type56, SkillType.Type73, },
+	requireSkillTypes = { SkillType.Projectile, SkillType.Type54, SkillType.OR, SkillType.ProjectileAttack, SkillType.Type56, SkillType.OR, SkillType.AND, SkillType.SkillCanVolley, SkillType.AND, },
 	addSkillTypes = { },
-	excludeSkillTypes = { SkillType.Channelled, },
+	excludeSkillTypes = { SkillType.Channelled, SkillType.CreatesMinion, SkillType.Type83, },
+	ignoreMinionTypes = true,
 	plusVersionOf = "SupportArrowNova",
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
@@ -307,9 +308,16 @@ skills["SupportBarrage"] = {
 	excludeSkillTypes = { SkillType.Channelled, SkillType.CreatesMinion, SkillType.Triggered, SkillType.TriggeredGrantedSkill, },
 	ignoreMinionTypes = true,
 	statDescriptionScope = "gem_stat_descriptions",
+	weaponTypes = {
+		["Bow"] = true,
+		["Wand"] = true,
+	},
 	statMap = {
 		["support_barrage_damage_+%_final"] = {
-			mod("Damage", "MORE", nil),
+			mod("Damage", "MORE", nil, 0, 0, { type = "Condition", varList = { "UsingBow", "UsingWand" }}),
+		},
+		["projectiles_barrage"] = {
+			flag("SequentialProjectiles", { type = "Condition", varList = { "UsingBow", "UsingWand" }}),
 		},
 	},
 	baseMods = {
@@ -1041,7 +1049,9 @@ skills["SupportSlashingWeapon"] = {
 	statMap = {
 		 ["support_slashing_damage_+%_final_from_distance"] = {
 			flag("Condition:CanMeleeDistanceRamp"),
-				mod("Damage", "MORE", nil, ModFlag.Melee, 0, { type = "DistanceRamp",  ramp = {{15,1},{40,0}}},{ type = "Condition", var = "CanMeleeDistanceRamp" }),
+				mod("Damage", "MORE", nil, ModFlag.Melee, 0, { type = "DistanceRamp",  ramp = {{15,1},{40,0}}},{ type = "Condition", var = "CanMeleeDistanceRamp" }
+				, { type = "Condition", varList = { "UsingSword", "UsingAxe" }}, { type = "Condition", varList = { "UsingClaw", "UsingDagger", "UsingMace"  }, neg=true} 
+				),
  
 		},
 		 
@@ -2459,7 +2469,14 @@ skills["SupportPuncturingWeapon"] = {
 	excludeSkillTypes = { SkillType.CreatesMinion, },
 	ignoreMinionTypes = true,
 	statDescriptionScope = "gem_stat_descriptions",
+	statMap = {
+		["elusive_effect_+%"] = {
+			mod("ElusiveEffectOnSelf", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "夜刃" }, { type = "Condition", varList = { "UsingClaw", "UsingDagger" } }, { type = "Condition", varList = { "UsingSword", "UsingAxe", "UsingMace" }, neg = true} ),
+		},
+	},	
 	baseMods = {
+		flag("Condition:CanBeElusive", { type = "Condition", varList = { "UsingClaw", "UsingDagger" } }, { type = "Condition", varList = { "UsingSword", "UsingAxe", "UsingMace" }, neg = true}),
+		mod("Dummy", "DUMMY", 1, 0, 0, { type = "Condition", var = "CanBeElusive" }, { type = "Condition", varList = { "UsingClaw", "UsingDagger" } }, { type = "Condition", varList = { "UsingSword", "UsingAxe", "UsingMace" }, neg = true}),
 	},
 	qualityStats = {
 		{ "critical_strike_chance_+%", 1 },
@@ -2917,7 +2934,7 @@ skills["SupportSwiftAfflictionPlus"] = {
 	requireSkillTypes = { SkillType.Duration, SkillType.Type55, SkillType.Hit, SkillType.Attack, },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
-	plusVersionOf = "SupportSwiftAfflictionPlus",
+	plusVersionOf = "SupportRapidDecay",
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
 		["support_rapid_decay_damage_over_time_+%_final"] = {
@@ -3622,8 +3639,14 @@ skills["SupportChaosAttacks"] = {
 	addSkillTypes = { SkillType.Duration, },
 	excludeSkillTypes = { },
 	statDescriptionScope = "gem_stat_descriptions",
+	statMap = {
+		["withered_on_hit_chance_%"] = {
+			flag("Condition:CanWither"),
+			mod("Dummy", "DUMMY", 1, 0, 0, { type = "Condition", var = "CanWither" }),
+		},
+	},
 	baseMods = {
-mod("ChaosDamageTaken", "INC", 6, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "死亡凋零", effectStackVar = "WitheringTouchWitheredStackCount", effectStackLimit = 15 }),
+		mod("ChaosDamageTaken", "INC", 6, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "死亡凋零", effectStackVar = "WitheredStackCount", effectStackLimit = 15 }),
 	},
 	qualityStats = {
 		{ "chaos_damage_+%", 0.5 },

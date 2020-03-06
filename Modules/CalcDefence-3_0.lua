@@ -58,7 +58,7 @@ function calcs.defence(env, actor)
 			max = 100
 			total = 100
 		else
-			max = modDB:Override(nil, elem.."ResistMax") or m_min(100, modDB:Sum("BASE", nil, elem.."ResistMax", isElemental[elem] and "ElementalResistMax"))
+			max = modDB:Override(nil, elem.."ResistMax") or m_min(90, modDB:Sum("BASE", nil, elem.."ResistMax", isElemental[elem] and "ElementalResistMax"))
 			--total = modDB:Override(nil, elem.."Resist") or modDB:Sum("BASE", nil, elem.."Resist", isElemental[elem] and "ElementalResist")*(1+modDB:Sum("MORE", nil, elem.."Resist", isElemental[elem] and "ElementalResist")/100)
 			total = modDB:Override(nil, elem.."Resist")
 			if not total then

@@ -198,7 +198,6 @@ function ItemSlotClass:Draw(viewPort)
 		local viewerX =x 
 		--m_min(y, viewPort.y + viewPort.height - 304)
 		local viewerY = m_min(y - 300 - 5, viewPort.y + viewPort.height - 304)
-		print("viewerY========"..viewerY)
 		 
 		SetDrawColor(1, 1, 1)
 		DrawImage(nil, viewerX, viewerY, 304, 304)

@@ -1366,3 +1366,25 @@ name = "青蛙跃击",
 		[1] = { 1, -25, damageEffectiveness = 1.5, baseMultiplier = 1.5, levelRequirement = 2, statInterpolation = { 1, 1, }, },
 	},
 }
+
+skills["SkitterbotWait"] = {
+	name = "飞掠者待机",
+	hidden = true,
+	color = 4,
+	skillTypes = { },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		duration = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+	},
+	levels = {
+		[1] = { 200, levelRequirement = 0, statInterpolation = { 1, }, },
+	},
+}

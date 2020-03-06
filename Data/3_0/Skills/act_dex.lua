@@ -180,7 +180,8 @@ skills["ArtilleryBallista"] = {
 	name = "火力弩炮",
 	color = 2,
 	description = "召唤一个弩炮图腾，朝空中猛烈发射一连串箭矢。这些箭矢以一条直线击中地面，每一支都对周围的敌人造成范围伤害。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Totem] = true, [SkillType.Area] = true, [SkillType.FireSkill] = true, [SkillType.Type73] = true, [SkillType.ProjectileDamage] = true, [SkillType.Type84] = true, },
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Totem] = true, [SkillType.Area] = true, [SkillType.FireSkill] = true, [SkillType.Type73] = true, [SkillType.ProjectileDamage] = true, [SkillType.Ballista] = true,  },
+	
 	weaponTypes = {
 		["Bow"] = true,
 	},
@@ -194,6 +195,7 @@ skills["ArtilleryBallista"] = {
 		totem = true,
 	},
 	baseMods = {
+		flag("OneShotProj"),
 	},
 	qualityStats = {
 		{ "fire_damage_+%", 1 },
@@ -260,6 +262,7 @@ skills["Barrage"] = {
 	color = 2,
 	description = "在短暂的准备之后, 你使用远程武器进行重复的攻击. 这个攻击会稍微随机散射. 限定弓与法杖.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, },
+	
 	weaponTypes = {
 		["Wand"] = true,
 		["Bow"] = true,
@@ -770,7 +773,8 @@ skills["BlastRain"] = {
 	name = "爆裂箭雨",
 	color = 2,
 	description = "向天空射出箭矢，在一个区域降下箭雨。每一支箭矢落地时都造成范围伤害，并可以在目标地点叠加。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.FireSkill] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Area] = true, [SkillType.ProjectileDamage] = true, [SkillType.Type73] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, },
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.FireSkill] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Area] = true, [SkillType.ProjectileDamage] = true, [SkillType.Type73] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true,  },
+	
 	weaponTypes = {
 		["Bow"] = true,
 	},
@@ -796,6 +800,7 @@ name = "所有投射物",
 	},
 	baseMods = {
 		skill("radius", 24),
+		flag("OneShotProj"),
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 0.5 },
@@ -1027,6 +1032,7 @@ skills["BurningArrow"] = {
 	incrementalEffectiveness = 0.050000000745058,
 	description = "发射一支燃烧箭矢，造成火焰伤害。如果点燃一名敌人，则附加一个持续一段时间的减益效果，基于点燃比率造成燃烧伤害。该伤害不受调整伤害的词缀影响。该减益效果对同一个敌人可以最多套用五次。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.FireSkill] = true, [SkillType.Type53] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, },
+
 	weaponTypes = {
 		["Bow"] = true,
 	},
@@ -1099,6 +1105,7 @@ skills["VaalBurningArrow"] = {
 	incrementalEffectiveness = 0.050000000745058,
 	description = "射出一发带有火焰能量的箭矢, 接触到敌人时会爆炸, 并对其与周围的敌人造成额外火焰伤害, 同时有较高的几率造成点燃.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Area] = true, [SkillType.Vaal] = true, [SkillType.FireSkill] = true, [SkillType.Type55] = true, },
+	
 	weaponTypes = {
 		["Bow"] = true,
 	},
@@ -1176,6 +1183,7 @@ skills["PoisonArrow"] = {
 	incrementalEffectiveness = 0.050299998372793,
 	description = "射出一发带有腐蚀效果的箭矢, 对击中的敌人造成额外混沌伤害, 并且产生腐蚀地面。站在地面上的敌人将会持续的受到混沌伤害.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, [SkillType.DamageOverTime] = true, [SkillType.ChaosSkill] = true, [SkillType.Triggerable] = true, },
+	
 	weaponTypes = {
 		["Bow"] = true,
 	},
@@ -2293,6 +2301,7 @@ skills["ElementalHit"] = {
 	incrementalEffectiveness = 0.031399998813868,
 	description = "该技能的每次攻击都会随机选择一种元素，并只能造成该元素的伤害。若击中敌人，还会在他们周围造成伤害，若该敌人正承受所选元素的异常状态，则伤害范围扩大。不能连续选择同一种元素。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.FireSkill] = true, [SkillType.ColdSkill] = true, [SkillType.LightningSkill] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Area] = true, [SkillType.Triggerable] = true, },
+	
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	parts = {
@@ -2398,16 +2407,26 @@ skills["EnsnaringArrow"] = {
 	incrementalEffectiveness = 0.052000001072884,
 	description = "射出一支箭矢，在击中最后的目标后留在地面，将其拘束在其中。被诱捕的敌人始终视为在移动，并以更缓慢的速度试图突破圈套。一旦被捕猎的敌人离开范围效果，该圈套就被破坏。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggerable] = true, [SkillType.Area] = true, },
+	
 	weaponTypes = {
 		["Bow"] = true,
 	},
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 1,
+	statMap = {
+		["tethered_enemies_take_attack_projectile_damage_taken_+%"] = {
+			mod("ProjectileAttackDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "圈套", effectStackVar = "EnsnareStackCount", effectStackLimit = 1}),
+		},
+	},
 	baseFlags = {
 		attack = true,
 		projectile = true,
+		area = true,
 	},
 	baseMods = {
+		flag("Condition:CanEnsnare"),
+		mod("Dummy", "DUMMY", 1, 0, 0, { type = "Condition", var = "CanEnsnare" }),
+
 	},
 	qualityStats = {
 		{ "attack_speed_+%", 0.5 },
@@ -2538,6 +2557,7 @@ skills["ExplosiveArrow"] = {
 	incrementalEffectiveness = 0.040300000458956,
 	description = "发射一支箭矢，射在一名敌人身上或墙上，持续一段时间后爆炸，对周围造成范围伤害。如果一个敌人身上有多个爆炸箭矢，则第一个箭矢爆炸时会引爆剩余箭矢，它们的伤害会计入爆炸总伤害。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.FireSkill] = true, [SkillType.Triggerable] = true, },
+	
 	weaponTypes = {
 		["Bow"] = true,
 	},
@@ -2553,16 +2573,20 @@ name = "爆炸 (5 箭)",
 			area = true,
 		},
 		{
+			name = "爆炸 (15 箭)",
+			area = true,
+		},
+		{
 name = "箭矢",
 			area = false,
 		},
 	},
 	statMap = {
 		["explosive_arrow_explosion_minimum_added_fire_damage"] = {
-			mod("FireMin", "BASE", nil, 0, 0, { type = "SkillPart", skillPartList = { 1, 2 } }),
+			mod("FireMin", "BASE", nil, 0, 0, { type = "SkillPart", skillPartList = { 1, 2, 3} }),
 		},
 		["explosive_arrow_explosion_maximum_added_fire_damage"] = {
-			mod("FireMax", "BASE", nil, 0, 0, { type = "SkillPart", skillPartList = { 1, 2 } }),
+			mod("FireMax", "BASE", nil, 0, 0, { type = "SkillPart", skillPartList = { 1, 2, 3 } }),
 		},
 		["fuse_arrow_explosion_radius_+_per_fuse_arrow_orb"] = {
 			skill("radiusExtra", nil, { type = "Multiplier", var = "ExplosiveArrowFuse" }),
@@ -2579,10 +2603,11 @@ name = "箭矢",
 	},
 	baseMods = {
 		skill("radius", 15),
-		skill("showAverage", true, { type = "SkillPart", skillPartList = { 1, 2 } }),
-		mod("Damage", "MORE", 100, 0, 0, { type = "SkillPart", skillPartList = { 1, 2 } }, { type = "Multiplier", var = "ExplosiveArrowFuse", base = -100 }),
+		skill("showAverage", true, { type = "SkillPart", skillPartList = { 1, 2, 3 } }),
+		mod("Damage", "MORE", 100, 0, 0, { type = "SkillPart", skillPartList = { 1, 2, 3 } }, { type = "Multiplier", var = "ExplosiveArrowFuse", base = -100 }),
 		mod("Multiplier:ExplosiveArrowFuse", "BASE", 1, 0, 0, { type = "SkillPart", skillPart = 1 }),
 		mod("Multiplier:ExplosiveArrowFuse", "BASE", 5, 0, 0, { type = "SkillPart", skillPart = 2 }),
+		mod("Multiplier:ExplosiveArrowFuse", "BASE", 15, 0, 0, { type = "SkillPart", skillPart = 3 }),
 	},
 	qualityStats = {
 		{ "base_chance_to_ignite_%", 1 },
@@ -2977,6 +3002,7 @@ skills["Frenzy"] = {
 	color = 2,
 	description = "进行一次攻击, 若是命中敌人则累积一颗狂怒球. 带着狂怒球的状态下将会增加你的攻击速度.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Triggerable] = true, },
+	
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	statMap = {
@@ -3152,6 +3178,7 @@ skills["ShrapnelShot"] = {
 	incrementalEffectiveness = 0.023299999535084,
 	description = "释放闪烁电光的箭矢，对锥形区域内所有敌人造成伤害。电光消散后，这些箭矢会在飞行途中消退，最终消失。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Area] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.LightningSkill] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Triggerable] = true, },
+	
 	weaponTypes = {
 		["Bow"] = true,
 	},
@@ -3815,6 +3842,7 @@ skills["IceShot"] = {
 	incrementalEffectiveness = 0.023299999535084,
 	description = "射出一支箭矢，在击中目标时将部分物理伤害转化为冰霜伤害，并在目标背后形成锥形范围攻击其它敌人，此时所有物理伤害转化为冰霜伤害。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Area] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.ColdSkill] = true, [SkillType.Triggerable] = true, },
+	
 	weaponTypes = {
 		["Bow"] = true,
 	},
@@ -4146,7 +4174,8 @@ skills["LightningArrow"] = {
 	baseEffectiveness = 0.6700000166893,
 	incrementalEffectiveness = 0.023299999535084,
 	description = "射出一发充满闪电能量的箭矢, 对敌人造成伤害的同时也对附近额外 3 名敌人造成同等的伤害.",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Area] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.LightningSkill] = true, [SkillType.Triggerable] = true, },
+		skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Area] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.LightningSkill] = true, [SkillType.Triggerable] = true, },
+
 	weaponTypes = {
 		["Bow"] = true,
 	},
@@ -4972,6 +5001,7 @@ skills["Puncture"] = {
 	incrementalEffectiveness = 0.023299999535084,
 	description = "对敌人放血，施加一个流血减益效果。该效果受技能持续时间属性影响。流血的敌人在移动时会受到更多的伤害。限定弓类，匕首，爪类与剑类。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.DamageOverTime] = true, [SkillType.Triggerable] = true, [SkillType.PhysicalSkill] = true, },
+
 	weaponTypes = {
 		["Bow"] = true,
 		["Claw"] = true,
@@ -5211,7 +5241,8 @@ skills["RainOfArrows"] = {
 	name = "箭雨",
 	color = 2,
 	description = "向空中射出多支箭矢，飞行一段时间后陆续抵达，先发射至一个指定位置，抵达后向四面八方展开。每支箭矢会对其周围区域造成伤害。若范围内有目标，则一半数量的箭矢会直接飞向目标。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Area] = true, [SkillType.ProjectileDamage] = true, [SkillType.Type73] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, },
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Area] = true, [SkillType.ProjectileDamage] = true, [SkillType.Type73] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true,  },
+	
 	weaponTypes = {
 		["Bow"] = true,
 	},
@@ -5224,6 +5255,7 @@ skills["RainOfArrows"] = {
 	},
 	baseMods = {
 		skill("radius", 24),
+		flag("OneShotProj"),
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 0.5 },
@@ -5283,7 +5315,8 @@ skills["VaalRainOfArrows"] = {
 	name = "瓦尔.箭雨",
 	color = 2,
 	description = "向空中射出多支箭矢，飞行一段时间后陆续抵达，先发射至一个指定位置，抵达后向四面八方展开。每支箭矢会对其周围区域造成伤害。若范围内有目标，则一半数量的箭矢会直接飞向目标。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Area] = true, [SkillType.ProjectileDamage] = true, [SkillType.Type73] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Vaal] = true, },
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Area] = true, [SkillType.ProjectileDamage] = true, [SkillType.Type73] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Vaal] = true,  },
+	
 	weaponTypes = {
 		["Bow"] = true,
 	},
@@ -5297,6 +5330,7 @@ skills["VaalRainOfArrows"] = {
 		vaal = true,
 	},
 	baseMods = {
+	flag("OneShotProj"),
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 0.5 },
@@ -5744,7 +5778,11 @@ skills["ShatteringSteel"] = {
 	castTime = 1,
 	parts = {
 		{
-name = "投射物",
+name = "单个投射物",
+			area = false,
+		},
+		{
+name = "所有投射物",
 			area = false,
 		},
 		{
@@ -5752,6 +5790,11 @@ name = "扇形区域",
 			area = true,
 		},
 	},
+	preDamageFunc = function(activeSkill, output)
+		if activeSkill.skillPart == 2 then
+			activeSkill.skillData.dpsMultiplier = output.ProjectileCount
+		end
+	end,
 	baseFlags = {
 		attack = true,
 		projectile = true,
@@ -5897,7 +5940,8 @@ skills["ShrapnelBallista"] = {
 	baseEffectiveness = 0.5,
 	incrementalEffectiveness = 0.023299999535084,
 	description = "召唤一个弩炮图腾，发射多重箭矢，在巨力作用下分裂成散弹。敌人可以被同一次攻击的多重箭矢击中。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Totem] = true, [SkillType.Type84] = true, [SkillType.PhysicalSkill] = true, },
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Totem] = true, [SkillType.Ballista] = true, [SkillType.PhysicalSkill] = true, },
+
 	weaponTypes = {
 		["Bow"] = true,
 	},
@@ -5975,7 +6019,8 @@ skills["SiegeBallista"] = {
 	name = "攻城炮台",
 	color = 2,
 	description = "召唤一个发射穿透箭矢的弩炮图腾。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Totem] = true, [SkillType.Type84] = true, },
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Totem] = true, [SkillType.Ballista] = true, },
+	
 	weaponTypes = {
 		["Bow"] = true,
 	},
@@ -5988,6 +6033,7 @@ skills["SiegeBallista"] = {
 		totem = true,
 	},
 	baseMods = {
+	flag("ProjectileRain")
 	},
 	qualityStats = {
 		{ "projectile_damage_+%", 1 },
@@ -6378,7 +6424,8 @@ skills["RainOfSpores"] = {
 	baseEffectiveness = 1.9615000486374,
 	incrementalEffectiveness = 0.040199998766184,
 	description = "向天空射出一串箭矢，并洒向目标区域，对击中的敌人造成伤害，并在落地后创造孢囊。每个孢囊会对周围的敌人持续造成混沌伤害，并减低他们的移动速度。短时间后，孢囊会爆炸，造成范围伤害。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Area] = true, [SkillType.ProjectileDamage] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Hit] = true, [SkillType.ChaosSkill] = true, [SkillType.Duration] = true, [SkillType.DamageOverTime] = true, [SkillType.Type73] = true, [SkillType.ChaosSkill] = true, [SkillType.Triggerable] = true, },
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Area] = true, [SkillType.ProjectileDamage] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Hit] = true, [SkillType.ChaosSkill] = true, [SkillType.Duration] = true, [SkillType.DamageOverTime] = true, [SkillType.Type73] = true, [SkillType.ChaosSkill] = true, [SkillType.Triggerable] = true,  },
+	
 	weaponTypes = {
 		["Bow"] = true,
 	},
@@ -6458,6 +6505,7 @@ skills["SplitArrow"] = {
 	incrementalEffectiveness = 0.023299999535084,
 	description = "对不同的目标射出多重箭矢.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, [SkillType.PhysicalSkill] = true, },
+	
 	weaponTypes = {
 		["Bow"] = true,
 	},
@@ -6697,6 +6745,7 @@ skills["TornadoShot"] = {
 	color = 2,
 	description = "射出一支箭矢，在抵达目标地点前一直穿透敌人。然后从抵达地点向所有方向发射投射物，飞行很短时间后消失。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Triggerable] = true, },
+	
 	weaponTypes = {
 		["Bow"] = true,
 	},
@@ -7301,6 +7350,12 @@ skills["Slither"] = {
 	skillTypes = { [SkillType.TravelSkill] = true, [SkillType.Buff] = true, [SkillType.Instant] = true, [SkillType.Area] = true, [SkillType.ChaosSkill] = true, [SkillType.MovementSkill] = true, [SkillType.BlinkSkill] = true, [SkillType.Spell] = true, [SkillType.Triggerable] = true, [SkillType.Duration] = true, },
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 0,
+	statMap = {
+		["slither_wither_stacks"] = {
+			flag("Condition:CanWither"),
+			mod("Dummy", "DUMMY", 1, 0, 0, { type = "Condition", var = "CanWither" }),
+		},
+	},
 	baseFlags = {
 		spell = true,
 		duration = true,

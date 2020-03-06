@@ -147,9 +147,15 @@ data = { }
 data.skillColorMap = { colorCodes.STRENGTH, colorCodes.DEXTERITY, colorCodes.INTELLIGENCE, colorCodes.NORMAL }
 
 data.jewelRadius = {
-{ rad = 800, col = "^xBB6600", label = "小" },
-{ rad = 1200, col = "^x66FFCC", label = "中" },
-{ rad = 1500, col = "^x2222CC", label = "大" }
+
+{ inner = 0, outer = 800, col = "^xBB6600", label = "小" },
+{ inner = 0, outer = 1200, col = "^x66FFCC", label = "中" },
+{ inner = 0, outer = 1500, col = "^x2222CC", label = "大" },
+{ inner = 850, outer = 1100, col = "^xD35400", label = "Variable" },
+{ inner = 1150, outer = 1400, col = "^x66FFCC", label = "Variable" },
+{ inner = 1450, outer = 1700, col = "^x2222CC", label = "Variable" },
+{ inner = 1750, outer = 2000, col = "^xC100FF", label = "Variable" },
+	
 }
 
 data.labyrinths = {
@@ -208,7 +214,7 @@ data.specialBaseTags = {
 	["Quiver"] = { shaper = "quiver_shaper", elder = "quiver_elder",  crusader="quiver_crusader", redeemer = "quiver_eyrie",hunter ="quiver_basilisk",warlord="quiver_adjudicator" },
 	["Belt"] = { shaper = "belt_shaper", elder = "belt_elder", crusader="belt_crusader", redeemer = "belt_eyrie",hunter ="belt_basilisk",warlord="belt_adjudicator"  },
 	["Gloves"] = { shaper = "gloves_shaper", elder = "gloves_elder",  crusader="gloves_crusader", redeemer = "gloves_eyrie",hunter ="gloves_basilisk",warlord="gloves_adjudicator" },
-	["Boots"] = { shaper = "boots_shaper", elder = "boots_elder",  crusader="gloves_crusader", redeemer = "gloves_eyrie",hunter ="gloves_basilisk",warlord="gloves_adjudicator" },
+	["Boots"] = { shaper = "boots_shaper", elder = "boots_elder",  crusader="boots_crusader", redeemer = "boots_eyrie",hunter ="boots_basilisk",warlord="boots_adjudicator" },
 	["Body Armour"] = { shaper = "body_armour_shaper", elder = "body_armour_elder",  crusader="body_armour_crusader", redeemer = "body_armour_eyrie",hunter ="body_armour_basilisk",warlord="body_armour_adjudicator" },
 	["Helmet"] = { shaper = "helmet_shaper", elder = "helmet_elder", crusader="helmet_crusader", redeemer = "helmet_eyrie",hunter ="helmet_basilisk",warlord="helmet_adjudicator"  },
 	["Shield"] = { shaper = "shield_shaper", elder = "shield_elder", crusader="shield_crusader", redeemer = "shield_eyrie",hunter ="shield_basilisk",warlord="shield_adjudicator"  },
@@ -281,7 +287,8 @@ for _, targetVersion in ipairs(targetVersionList) do
 		__index = function(t, key)
 			local map = verData.skillStatMap[key]
 			if map then
-				t[key] = copyTable(map, true)
+				map = copyTable(map)
+				t[key] = map
 				for _, mod in ipairs(map) do
 					processMod(t._grantedEffect, mod)
 				end

@@ -430,6 +430,10 @@ function SkillsTabClass:CreateGemSlot(index)
 
 	-- Delete gem
 	slot.delete = new("ButtonControl", nil, 0, 0, 20, 20, "x", function()
+	 
+	
+		--local skillitem=self.displayGroup.gemList[index]
+	
 		t_remove(self.displayGroup.gemList, index)
 		for index2 = index, #self.displayGroup.gemList do
 			-- Update the other gem slot controls
@@ -439,6 +443,45 @@ function SkillsTabClass:CreateGemSlot(index)
 			self.gemSlots[index2].quality:SetText(gemInstance.quality)
 			self.gemSlots[index2].enabled.state = gemInstance.enabled
 		end
+	--[[
+		if skillitem and skillitem.supportEffect
+		and skillitem.supportEffect.gemData
+		and skillitem.supportEffect.gemData.grantedEffect
+		and skillitem.supportEffect.gemData.grantedEffect.statMap then 
+			for index3, stat in ipairs(skillitem.supportEffect.gemData.grantedEffect.stats) do
+				if skillitem.supportEffect.gemData.grantedEffect.statMap[stat] then 
+					local sMapItem=skillitem.supportEffect.gemData.grantedEffect.statMap[stat]
+					if sMapItem then
+						
+						for _, mod in ipairs(sMapItem) do
+						
+							for mindex =1,#mod do
+								 
+								if mod[mindex] and mod[mindex].type == 'Condition' then 
+									if mod[mindex].var then 
+										local currCond = "condition"..mod[mindex].var
+										print(currCond)
+										self.build.configTab:DeleteCondition(currCond)
+									elseif mod[mindex].varList then 
+										for lindex =1,#mod[mindex].varList do
+											local currCondItem = "condition"..mod[mindex].varList[lindex]
+											print(currCondItem)
+											self.build.configTab:DeleteCondition(currCondItem)
+										end
+									end 
+									
+								end 
+								
+							end 
+						 
+							
+						end
+					end
+				end 
+			end
+			 
+		end 
+		]]--
 		self:AddUndoState()
 		self.build.buildFlag = true
 	end)

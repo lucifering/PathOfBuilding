@@ -106,6 +106,7 @@ local ConfigTabClass = newClass("ConfigTab", "UndoHandler", "ControlHost", "Cont
 					self:BuildModList()
 					self.build.buildFlag = true
 				end) 
+				
 			elseif varData.type == "count" or varData.type == "integer" then
 				control = new("EditControl", {"TOPLEFT",lastSection,"TOPLEFT"}, 234, 0, 90, 18, "", nil, varData.type == "integer" and "^%-%d" or "%D", 6, function(buf)
 					self.input[varData.var] = tonumber(buf)
@@ -432,7 +433,7 @@ function ConfigTabClass:BuildModList()
 	for _, varData in ipairs(varList) do
 		if varData.apply and (not varData.ifVer or varData.ifVer == self.build.targetVersion) then
 			if varData.type == "check" then
-				if input[varData.var] then
+				if input[varData.var]  then
 					varData.apply(true, modList, enemyModList, self.build)
 				end
 			elseif varData.type == "count" or varData.type == "integer" then
@@ -447,6 +448,7 @@ function ConfigTabClass:BuildModList()
 		end
 	end
 end
+ 
 
 function ConfigTabClass:ImportCalcSettings()
 	local input = self.input

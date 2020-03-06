@@ -212,3 +212,4 @@ Data/3_0/ModIncursion.lua
 Data/2_6/ModIncursion.lua
 Data/3_0/TimelessJewel/TimelessJewelKeystone.lua
 Data/3_0/BlightPassives.lua
+Classes/SearchHost.lua

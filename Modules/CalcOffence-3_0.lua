@@ -299,6 +299,10 @@ local function runSkillFunc(name)
 			skillModList:NewMod("AreaOfEffect", "INC", mod.value, mod.source, mod.flags, mod.keywordFlags, unpack(mod))
 		end
 	end
+	if skillModList:Flag(nil, "SequentialProjectiles") and not skillModList:Flag(nil, "OneShotProj") and not skillModList:Flag(nil,"NoAdditionalProjectiles") then
+		-- Applies DPS multiplier based on projectile count
+		skillData.dpsMultiplier = skillModList:Sum("BASE", skillCfg, "ProjectileCount")
+	end
 	if skillModList:Flag(nil, "TransfigurationOfBody") then
 		skillModList:NewMod("Damage", "INC", m_floor(skillModList:Sum("INC", nil, "Life") * 0.3), "躯体幻化", ModFlag.Attack)
 	end
@@ -456,19 +460,44 @@ output.PierceCountString = "所有目标"
 			breakdown.AreaOfEffectMod = breakdown.mod(skillCfg, "AreaOfEffect")
 		end
 	end
+	if activeSkill.skillTypes[SkillType.Aura] then
+		output.AuraEffectMod = calcLib.mod(skillModList, skillCfg, "AuraEffect")
+		if breakdown then
+			breakdown.AuraEffectMod = breakdown.mod(skillCfg, "AuraEffect")
+		end
+	end
+	if activeSkill.skillTypes[SkillType.Curse] then
+		output.CurseEffectMod = calcLib.mod(skillModList, skillCfg, "CurseEffect")
+		if breakdown then
+			breakdown.CurseEffectMod = breakdown.mod(skillCfg, "CurseEffect")
+		end
+	end
 	if skillFlags.trap then
 		local baseSpeed = 1 / skillModList:Sum("BASE", skillCfg, "TrapThrowingTime")
+		local timeMod = calcLib.mod(skillModList, skillCfg, "SkillTrapThrowingTime")
+		if timeMod > 0 then
+			baseSpeed = baseSpeed * (1 / timeMod)
+		end
 		output.TrapThrowingSpeed = baseSpeed * calcLib.mod(skillModList, skillCfg, "TrapThrowingSpeed") * output.ActionSpeedMod
 		output.TrapThrowingTime = 1 / output.TrapThrowingSpeed
 		if breakdown then
-			breakdown.TrapThrowingTime = { }
-			breakdown.multiChain(breakdown.TrapThrowingTime, {
-label = "投掷速度:",
-base = s_format("%.2f ^8(基础投掷速度)", baseSpeed),
+			breakdown.TrapThrowingSpeed = { }
+			breakdown.multiChain(breakdown.TrapThrowingSpeed, {
+				label = "投掷速率:",
+				base = s_format("%.2f ^8(基础投掷速率)", baseSpeed),
 { "%.2f ^8(提高/降低 投掷速度)", 1 + skillModList:Sum("INC", skillCfg, "TrapThrowingSpeed") / 100 },
 { "%.2f ^8(额外提高/降低 总投掷速度)", skillModList:More(skillCfg, "TrapThrowingSpeed") },
 { "%.2f ^8(动作速度加成)",  output.ActionSpeedMod },
 total = s_format("= %.2f ^8每秒", output.TrapThrowingSpeed),
+			})
+		end
+		if breakdown and timeMod > 0 then
+			breakdown.TrapThrowingTime = { }
+			breakdown.multiChain(breakdown.TrapThrowingTime, {
+				label = "投掷时间:",
+				base = s_format("%.2f ^8(基础投掷时间)", 1 / (output.TrapThrowingSpeed * timeMod)),
+				{ "%.2f ^8(所有加成)", timeMod },
+				total = s_format("= %.2f ^8秒(每次投掷)", output.TrapThrowingTime),
 			})
 		end
 		output.ActiveTrapLimit = skillModList:Sum("BASE", skillCfg, "ActiveTrapLimit")
@@ -500,17 +529,30 @@ s_format("/ %.2f ^8(提高/降低 冷却回复速度)", 1 + skillModList:Sum("IN
 	end
 	if skillFlags.mine then
 		local baseSpeed = 1 / skillModList:Sum("BASE", skillCfg, "MineLayingTime")
+		local timeMod = calcLib.mod(skillModList, skillCfg, "MineThrowingTimeMod")
+		if timeMod > 0 then
+			baseSpeed = baseSpeed * (1 / timeMod)
+		end
 		output.MineLayingSpeed = baseSpeed * calcLib.mod(skillModList, skillCfg, "MineLayingSpeed") * output.ActionSpeedMod
 		output.MineLayingTime = 1 / output.MineLayingSpeed
 		if breakdown then
 			breakdown.MineLayingTime = { }
 			breakdown.multiChain(breakdown.MineLayingTime, {
-label = "投掷速度:",
-base = s_format("%.2f ^8(基础投掷速度)", baseSpeed),
+label = "放置速率:",
+				base = s_format("%.2f ^8(基础放置速率)", baseSpeed),
 { "%.2f ^8(提高/降低 放置速度)", 1 + skillModList:Sum("INC", skillCfg, "MineLayingSpeed") / 100 },
 { "%.2f ^8(额外提高/降低 总投掷速度)", skillModList:More(skillCfg, "MineLayingSpeed") },
 { "%.2f ^8(动作速度加成)",  output.ActionSpeedMod },
 total = s_format("= %.2f ^8每秒", output.MineLayingSpeed),
+			})
+		end
+		if breakdown and calcLib.mod(skillModList, skillCfg, "MineThrowingTimeMod") > 0 then
+			breakdown.MineThrowingTime = { }
+			breakdown.multiChain(breakdown.MineThrowingTime, {
+			label = "放置时间:",
+				base = s_format("%.2f ^8(基础放置时间)", 1 / (output.MineLayingSpeed * timeMod)),
+				{ "%.2f ^8(所有加成)", timeMod },
+				total = s_format("= %.2f ^8秒(每次放置)", output.MineLayingTime),
 			})
 		end
 		output.ActiveMineLimit = skillModList:Sum("BASE", skillCfg, "ActiveMineLimit")
@@ -886,6 +928,8 @@ t_insert(breakdown[stat], s_format("x %.3f ^8(副手创建的实例部分)", off
 				if skillData.castTimeOverridesAttackTime then
 					-- Skill is overriding weapon attack speed
 					baseTime = activeSkill.activeEffect.grantedEffect.castTime / (1 + (source.AttackSpeedInc or 0) / 100)
+				elseif calcLib.mod(skillModList, skillCfg, "SkillAttackTime") > 0 then
+					baseTime = (1 / ( source.AttackRate or 1 ) + skillModList:Sum("BASE", cfg, "Speed")) * calcLib.mod(skillModList, skillCfg, "SkillAttackTime")		
 				else
 					baseTime = 1 / ( source.AttackRate or 1 ) + skillModList:Sum("BASE", cfg, "Speed")
 				end
@@ -902,23 +946,32 @@ t_insert(breakdown[stat], s_format("x %.3f ^8(副手创建的实例部分)", off
 				-- Self-cast skill; apply action speed
 				output.Speed = output.Speed * globalOutput.ActionSpeedMod
 			end
+			if output.Speed == 0 then 
+				output.Time = 0
+			else 
+				output.Time = 1 / output.Speed
+			end
 			if breakdown then
 				breakdown.Speed = { }
 				breakdown.multiChain(breakdown.Speed, {
 					base = s_format("%.2f ^8(base)", 1 / baseTime),
 { "%.2f ^8(提高/降低)", 1 + inc/100 },
 { "%.2f ^8(额外总提高/额外总降低)", more },
-{ "%.2f ^8(行动速度加成)", skillFlags.selfCast and globalOutput.ActionSpeedMod or 1 }, 
+{ "%.2f ^8(行动速度加成)", skillFlags.selfCast and globalOutput.ActionSpeedMod or 1 },
 total = s_format("= %.2f ^8每秒", output.Speed)
 				})
 			end
-			if output.Speed == 0 then
-				output.Time = 0
-			else
-				output.Time = 1 / output.Speed
-			end
+			if breakdown and calcLib.mod(skillModList, skillCfg, "SkillAttackTime") > 0 then
+				breakdown.Time = { }
+				breakdown.multiChain(breakdown.Time, {
+					base = s_format("%.2f ^8(基础)", 1 / (output.Speed * calcLib.mod(skillModList, skillCfg, "SkillAttackTime") )),
+					{ "%.2f ^8(所有加成)", calcLib.mod(skillModList, skillCfg, "SkillAttackTime")  },
+					total = s_format("= %.2f ^8秒(每次攻击)", output.Time)
+				})
+			end 
 		end
 		if skillData.hitTimeOverride then
+		print("skillData.hitTimeOverride="..skillData.hitTimeOverride)
 			output.HitTime = skillData.hitTimeOverride
 			output.HitSpeed = 1 / output.HitTime
 		end
@@ -1195,6 +1248,9 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 						end
 						if skillFlags.projectile then
 							takenInc = takenInc + enemyDB:Sum("INC", nil, "ProjectileDamageTaken")
+						end
+						if skillFlags.projectile and skillFlags.attack then
+							takenInc = takenInc + enemyDB:Sum("INC", nil, "ProjectileAttackDamageTaken")
 						end
 						if skillFlags.trap or skillFlags.mine then
 							takenInc = takenInc + enemyDB:Sum("INC", nil, "TrapMineDamageTaken")
@@ -1776,7 +1832,12 @@ t_insert(breakdownDPS, "总伤害:")
 				local mult = skillModList:Sum("BASE", dotCfg, "PhysicalDotMultiplier", "BleedMultiplier")
 				local effectMod = calcLib.mod(skillModList, dotCfg, "AilmentEffect")
 				local rateMod = calcLib.mod(skillModList, cfg, "BleedFaster")
-				output.BleedDPS = baseVal * effectMod * rateMod * effMult
+				
+				local maxStacks = skillModList:Override(cfg, "BleedStacksMax") or skillModList:Sum("BASE", cfg, "BleedStacksMax")
+				local configStacks = enemyDB:Sum("BASE", nil, "Multiplier:BleedStacks")
+				local bleedStacks = configStacks > 0 and m_min(configStacks, maxStacks) or maxStacks
+				output.BleedDPS = (baseVal * effectMod * rateMod * effMult) * bleedStacks
+					
 				local durationBase
 				if skillData.bleedDurationIsSkillDuration then
 					durationBase = skillData.duration
@@ -1785,6 +1846,8 @@ t_insert(breakdownDPS, "总伤害:")
 				end
 				local durationMod = calcLib.mod(skillModList, dotCfg, "EnemyBleedDuration", "SkillAndDamagingAilmentDuration", skillData.bleedIsSkillEffect and "Duration" or nil) * calcLib.mod(enemyDB, nil, "SelfBleedDuration")
 				globalOutput.BleedDuration = durationBase * durationMod / rateMod * debuffDurationMult
+				globalOutput.BleedStacksMax = maxStacks
+				globalOutput.BleedStacks = bleedStacks
 				if breakdown then
 t_insert(breakdown.BleedDPS, s_format("x %.2f ^8(流血每秒造成 %d%% 伤害)", basePercent/100, basePercent))
 					if effectMod ~= 1 then
@@ -1800,6 +1863,7 @@ base = s_format("%.1f ^8(每秒总伤害)", baseVal),
 { "%.2f ^8(异常效果加成)", effectMod },
 { "%.2f ^8(伤害生效速率加成)", rateMod },
 { "%.3f ^8(有效 DPS 加成)", effMult },
+{ "%.0f ^8(流血次数)", bleedStacks },
 total = s_format("= %.1f ^8每秒", output.BleedDPS),
 					})
 					if globalOutput.BleedDuration ~= durationBase then

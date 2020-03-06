@@ -579,6 +579,17 @@ function calcs.perform(env)
 		env.player.itemList["Weapon 2"] = nil
 	end
 
+	for _, activeSkill in ipairs(env.player.activeSkillList) do
+		if activeSkill.skillFlags.golem then
+			local limit = activeSkill.skillModList:Sum("BASE", nil, "ActiveGolemLimit")
+			output.ActiveGolemLimit = m_max(limit, output.ActiveGolemLimit or 0)
+		end
+		if activeSkill.skillFlags.totem then
+			local limit = env.player.mainSkill.skillModList:Sum("BASE", env.player.mainSkill.skillCfg, "ActiveTotemLimit")
+			output.ActiveTotemLimit = m_max(limit, output.ActiveTotemLimit or 0)
+		end
+	end
+	
 	local breakdown
 	if env.mode == "CALCS" then
 		-- Initialise breakdown module

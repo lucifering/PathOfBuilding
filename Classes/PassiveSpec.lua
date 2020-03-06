@@ -319,7 +319,7 @@ function PassiveSpecClass:AllocNode(node, altPath)
 	end
 
 	-- Allocate all nodes along the path
-	if node.dependsOnIntuitiveLeap then
+	if node.dependsOnIntuitiveLeapLike  then
 		node.alloc = true
 		self.allocNodes[node.id] = node
 	else
@@ -452,18 +452,23 @@ function PassiveSpecClass:BuildAllDependsAndPaths()
 	-- Check all nodes for other nodes which depend on them (i.e are only connected to the tree through that node)
 	for id, node in pairs(self.nodes) do
 		node.depends = wipeTable(node.depends)
-		node.dependsOnIntuitiveLeap = false
-		if node.type ~= "ClassStart" then
+		node.dependsOnIntuitiveLeapLike  = false
+		if node.type ~= "ClassStart" and node.type ~= "Socket" then
 			for nodeId, itemId in pairs(self.jewels) do
-				if self.allocNodes[nodeId] and self.nodes[nodeId].nodesInRadius[1][node.id] then
-					if itemId ~= 0 and self.build.itemsTab.items[itemId] and self.build.itemsTab.items[itemId].jewelData and self.build.itemsTab.items[itemId].jewelData.intuitiveLeap then
-						-- This node depends on Intuitive Leap
-						-- This flag:
-						-- 1. Prevents generation of paths from this node
-						-- 2. Prevents this node from being deallocted via dependancy
-						-- 3. Prevents allocation of path nodes when this node is being allocated
-						node.dependsOnIntuitiveLeap = true
-						break
+				if self.build.itemsTab.items[itemId] and self.build.itemsTab.items[itemId].jewelRadiusIndex then
+					local radiusIndex = self.build.itemsTab.items[itemId].jewelRadiusIndex
+					if self.allocNodes[nodeId] and self.nodes[nodeId].nodesInRadius[radiusIndex][node.id] then
+						if itemId ~= 0
+							and self.build.itemsTab.items[itemId].jewelData
+							and self.build.itemsTab.items[itemId].jewelData.intuitiveLeapLike then
+							-- This node depends on Intuitive Leap-like behaviour
+							-- This flag:
+							-- 1. Prevents generation of paths from this node
+							-- 2. Prevents this node from being deallocted via dependancy
+							-- 3. Prevents allocation of path nodes when this node is being allocated
+							node.dependsOnIntuitiveLeapLike = true
+							break
+						end
 					end
 				end
 			end
@@ -493,7 +498,7 @@ function PassiveSpecClass:BuildAllDependsAndPaths()
 				else
 					-- No path was found, so all the nodes visited while trying to find the path must be dependant on this node
 					for i, n in ipairs(visited) do
-						if not n.dependsOnIntuitiveLeap then
+						if not n.dependsOnIntuitiveLeapLike  then
 							t_insert(node.depends, n)
 						end
 						n.visited = false
@@ -512,9 +517,18 @@ function PassiveSpecClass:BuildAllDependsAndPaths()
 				for _, depNode in ipairs(node.depends) do
 				local prune = true
 				for nodeId, itemId in pairs(self.jewels) do
-					if self.allocNodes[nodeId] and self.nodes[nodeId].nodesInRadius[1][depNode.id] then
-						if itemId ~= 0 and (not self.build.itemsTab.items[itemId] or (self.build.itemsTab.items[itemId].jewelData and self.build.itemsTab.items[itemId].jewelData.intuitiveLeap)) then
-							-- Hold off on the pruning; this node is within the radius of a jewel that is or could be Intuitive Leap
+					if self.allocNodes[nodeId] then
+						if itemId ~= 0 and (
+							not self.build.itemsTab.items[itemId] or (
+								self.build.itemsTab.items[itemId].jewelData
+									and self.build.itemsTab.items[itemId].jewelData.intuitiveLeapLike
+									and self.build.itemsTab.items[itemId].jewelRadiusIndex
+									and self.nodes[nodeId].nodesInRadius[
+										self.build.itemsTab.items[itemId].jewelRadiusIndex
+								][depNode.id]
+							)
+						) then
+							-- Hold off on the pruning; this node is Intuitive Leap-like or items are not loaded yet
 							prune = false
 							t_insert(self.nodes[nodeId].depends, depNode)
 							break
@@ -533,11 +547,11 @@ function PassiveSpecClass:BuildAllDependsAndPaths()
 
 	-- Reset and rebuild all node paths
 	for id, node in pairs(self.nodes) do
-		node.pathDist = (node.alloc and not node.dependsOnIntuitiveLeap) and 0 or 1000
+		node.pathDist = (node.alloc and not node.dependsOnIntuitiveLeapLike) and 0 or 1000
 		node.path = nil
 	end
 	for id, node in pairs(self.allocNodes) do
-		if not node.dependsOnIntuitiveLeap then
+		if not node.dependsOnIntuitiveLeapLike  then
 			self:BuildPathFromNode(node)
 		end
 	end
@@ -696,12 +710,18 @@ end
 	
 	self:allocTimeJew();
 end
+
+local PathJewelList={"Split Personality"}
+
+
 local TimelessJewelList={"残酷的约束",
 "优雅的狂妄",
 "光彩夺目",
 "致命的骄傲",
 "好战的信仰"}
 
+--展示效果
+--实际生效在 TimelessJewelKeystone.lua 
 function PassiveSpecClass:allocTimeJew()
 	 local build=_build
 	if not build or  not build.spec or  not build.spec.nodes then 
@@ -712,10 +732,9 @@ function PassiveSpecClass:allocTimeJew()
 		if  node.type == "Socket"  then 
 			local socket, jewel = build.itemsTab:GetSocketAndJewelForNodeID(nodeId)
 			if  jewel and  jewel.name and jewel.baseModList then
-					 
-				
-					if node.nodesInRadius and node.nodesInRadius[3] then 
 					
+					 
+					if node.nodesInRadius and node.nodesInRadius[3] then 					
 					local jewName="";
 					local npcName="";
 					for i = 1, #jewel.baseModList do
@@ -782,7 +801,8 @@ function PassiveSpecClass:allocTimeJew()
 										end								
 										
 										specNode.dn="风舞者";
-										specNode.sd={"近期内如果没有被击中，则承受的伤害降低 20%","近期内如果没有被击中，则闪避值降低 40%","如果近期内被击中，则闪避值提高 20%"};
+										specNode.sd={"近期内如果没有被击中，则承受的总伤害额外降低 20%","近期内如果没有被击中，则总闪避值额外降低 40%","如果近期内被击中，则总闪避值额外提高 20%"};
+										
 										specNode.reminderText={"( 近期内意指 4 秒内 )"};
 										specNode.isTimeless=1;									 
 										newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
@@ -796,13 +816,14 @@ function PassiveSpecClass:allocTimeJew()
 										newmodList1={}
 										newmodList2={}	
 										newmodList3={}												
-										t_insert( list1,modLib.createMod("DamageTaken", "INC", -20,"Tree"..specNode.id, { type = "Condition", var = "BeenHitRecently" , neg = true}))
-										t_insert( list2,modLib.createMod("Evasion", "INC", -40,"Tree"..specNode.id, { type = "Condition", var = "BeenHitRecently" , neg = true}))
-										t_insert( list3,modLib.createMod("Evasion", "INC", 20,"Tree"..specNode.id, { type = "Condition", var = "BeenHitRecently" }))
+										t_insert( list1,modLib.createMod("DamageTaken", "MORE", -20,"Tree"..specNode.id, { type = "Condition", var = "BeenHitRecently" , neg = true}))
+										t_insert( list2,modLib.createMod("Evasion", "MORE", -40,"Tree"..specNode.id, { type = "Condition", var = "BeenHitRecently" , neg = true}))
+										 
+										t_insert( list3,modLib.createMod("Evasion", "MORE", 20,"Tree"..specNode.id, { type = "Condition", var = "BeenHitRecently" }))
 										newmodList1["list"] =  list1
 										newmodList2["list"] =  list2
 										newmodList3["list"] =  list3
-										specNode.mods={newmodList1,newmodList2,newmodList3}
+										specNode.mods={newmodList1,newmodList2,newmodList3,newmodList4}
 									end 
 								elseif npcName =='安赛娜丝' then 
 									if not self:hasDiyModItem(specNode.keystoneMod) then 
@@ -871,7 +892,10 @@ function PassiveSpecClass:allocTimeJew()
 										newmodList3={}									 								
 										t_insert(list1,modLib.createMod("Condition:Blinded", "FLAG", true,"Tree"..specNode.id))
 										t_insert( list2, nil)
-										t_insert( list3,modLib.createMod("CritChance", "MORE", 25,"Tree"..specNode.id, ModFlag.Melee,{ type = "Condition", var = "Blinded" }))
+									 	t_insert( list3,modLib.createMod("CritChance", "MORE", 25,"Tree"..specNode.id, ModFlag.Melee,{ type = "Condition", var = "Blinded" }))
+										
+										
+										
 										newmodList1["list"] =  list1
 										newmodList2["list"] =  list2
 										newmodList3["list"] =  list3

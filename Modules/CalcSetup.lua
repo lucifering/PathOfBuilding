@@ -28,6 +28,7 @@ function calcs.initModDB(env, modDB)
 	modDB:NewMod("InspirationChargesMax", "BASE", 5, "Base")
 	modDB:NewMod("MaxLifeLeechRate", "BASE", 20, "Base")
 	modDB:NewMod("MaxManaLeechRate", "BASE", 20, "Base")
+	modDB:NewMod("BleedStacksMax", "BASE", 1, "Base")
 	if env.build.targetVersion ~= "2_6" then
 		modDB:NewMod("MaxEnergyShieldLeechRate", "BASE", 10, "Base")
 		modDB:NewMod("MaxLifeLeechInstance", "BASE", 10, "Base")
@@ -46,6 +47,7 @@ function calcs.initModDB(env, modDB)
 	modDB:NewMod("ActiveTotemLimit", "BASE", 1, "Base")
 	modDB:NewMod("LifeRegenPercent", "BASE", 6, "Base", { type = "Condition", var = "OnConsecratedGround" })
 	modDB:NewMod("CritChance", "INC", 100, "Base", 0, { type = "ActorCondition", actor = "enemy", var = "OnConsecratedGround" })
+	 
 	--modDB:NewMod("DamageTaken", "INC", 50, "Base", { type = "Condition", var = "Shocked" })
 	modDB:NewMod("HitChance", "MORE", -50, "Base", { type = "Condition", var = "Blinded" })
 	modDB:NewMod("MovementSpeed", "INC", -30, "Base", { type = "Condition", var = "Maimed" })
@@ -83,7 +85,7 @@ function calcs.buildModListForNode(env, node)
 			rad.func(node, modList, rad.data)
 		end
 	end
-
+ 
 	if modList:Flag(nil, "PassiveSkillHasNoEffect") or (env.allocNodes[node.id] and modList:Flag(nil, "AllocatedPassiveSkillHasNoEffect")) then
 		wipeTable(modList)
 	end
@@ -113,6 +115,8 @@ function calcs.buildModListForNodeList(env, nodeList, finishJewels)
 		wipeTable(rad.data)
 		rad.data.modSource = "Tree:"..rad.nodeId
 	end
+	
+	 
 
 	-- Add node modifers
 	local modList = new("ModList")
@@ -143,6 +147,10 @@ function calcs.buildModListForNodeList(env, nodeList, finishJewels)
 				rad.item.jewelRadiusData[rad.nodeId] = rad.data
 			end
 		end
+		 
+		
+		
+		
 	end
 
 	return modList
@@ -246,7 +254,7 @@ function calcs.initEnv(build, mode, override)
 		modDB:NewMod("Damage", "MORE", 200, "Base", 0, KeywordFlag.Bleed, { type = "ActorCondition", actor = "enemy", var = "Moving" }, { type = "Condition", var = "NoExtraBleedDamageToMovingEnemy", neg = true })
 	end
 	modDB:NewMod("Condition:BloodStance", "FLAG", true, "Base", { type = "Condition", var = "SandStance", neg = true })
-
+	
 	-- Add bandit mods
 	if build.targetVersion == "2_6" then
 		if build.banditNormal == "Alira" then
@@ -341,7 +349,7 @@ function calcs.initEnv(build, mode, override)
 	env.requirementsTable = { }
 
 	-- Build and merge item modifiers, and create list of radius jewels
-	env.radiusJewelList = wipeTable(env.radiusJewelList)
+	env.radiusJewelList = wipeTable(env.radiusJewelList)	
 	env.extraRadiusNodeList = wipeTable(env.extraRadiusNodeList)
 	env.player.itemList = { }
 	env.itemGrantedSkills = { }
@@ -391,24 +399,28 @@ function calcs.initEnv(build, mode, override)
 				end } }
 				for _, func in ipairs(funcList) do
 					local node = env.spec.nodes[slot.nodeId]
-					t_insert(env.radiusJewelList, {
-						nodes = node.nodesInRadius[item.jewelRadiusIndex],
-						func = func.func,
-						type = func.type,
-						item = item,
-						nodeId = slot.nodeId,
-						attributes = node.attributesInRadius[item.jewelRadiusIndex],
-						data = { }
-					})
-					if func.type ~= "Self" then
-						-- Add nearby unallocated nodes to the extra node list
-						for nodeId, node in pairs(node.nodesInRadius[item.jewelRadiusIndex]) do
-							if not nodes[nodeId] then
-								env.extraRadiusNodeList[nodeId] = env.spec.nodes[nodeId]
+						t_insert(env.radiusJewelList, {
+							nodes = node.nodesInRadius[item.jewelRadiusIndex],
+							func = func.func,
+							type = func.type,
+							item = item,
+							nodeId = slot.nodeId,
+							attributes = node.attributesInRadius[item.jewelRadiusIndex],
+							data = { }
+						})
+						if func.type ~= "Self" then
+							-- Add nearby unallocated nodes to the extra node list
+							for nodeId, node in pairs(node.nodesInRadius[item.jewelRadiusIndex]) do
+								if not nodes[nodeId] then
+									env.extraRadiusNodeList[nodeId] = env.spec.nodes[nodeId]
+								end
 							end
 						end
-					end
+					
 				end
+			
+			
+				
 			end
 		end
 		if item and item.type == "Flask" then

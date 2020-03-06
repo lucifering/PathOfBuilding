@@ -722,3 +722,49 @@ minions["SummonedCarrionGolem"] = {
 	},
 }
 
+
+minions["SkitterbotCold"] = {
+	name = "冰冷的飞掠者",
+	life = 1,
+	fireResist = 0,
+	coldResist = 0,
+	lightningResist = 0,
+	chaosResist = 0,
+	damage = 1,
+	damageSpread = 0,
+	attackTime = 1,
+	attackRange = 6,
+	accuracy = 1,
+	skillList = {
+		"SkitterbotDetonateMines",
+		"SkitterbotWait",
+	},
+	modList = {
+		-- MonsterNoDropsOrExperience [monster_no_drops_or_experience = 1]
+	},modListSP = {
+		"怪物无物品掉落或经验获取", 
+	},
+}
+
+minions["SkitterbotLightning"] = {
+	name = "电震的飞掠者",
+	life = 1,
+	fireResist = 0,
+	coldResist = 0,
+	lightningResist = 0,
+	chaosResist = 0,
+	damage = 1,
+	damageSpread = 0,
+	attackTime = 1,
+	attackRange = 6,
+	accuracy = 1,
+	skillList = {
+		"SkitterbotDetonateMines",
+		"SkitterbotWait",
+	},
+	modList = {
+		-- MonsterNoDropsOrExperience [monster_no_drops_or_experience = 1]
+	},modListSP = {
+		"怪物无物品掉落或经验获取", 
+	},
+}

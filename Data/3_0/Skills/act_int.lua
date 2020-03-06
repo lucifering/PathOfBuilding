@@ -177,6 +177,7 @@ skills["ArcticBreath"] = {
 	},
 	baseMods = {
 		skill("radius", 12),
+		skill("dotIsArea", true),
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 0.5 },
@@ -4146,7 +4147,8 @@ skills["ClusterBurst"] = {
 	name = "力量爆破",
 	color = 3,
 	description = "从法杖中射出一个投射物, 在接触到物体或敌人时对周围连续爆破造成伤害.",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, },
+		skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, },
+
 	weaponTypes = {
 		["Wand"] = true,
 	},
@@ -4901,7 +4903,8 @@ skills["PowerSiphon"] = {
 	name = "力量抽取",
 	color = 3,
 	description = "挥动你的法杖，向你前方或身侧的敌人发射投射物，伤害得以提高，若敌人因此被击败，则产生一颗暴击球.",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, },
+		skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, },
+
 	weaponTypes = {
 		["Wand"] = true,
 	},
@@ -4971,7 +4974,8 @@ skills["VaalPowerSiphon"] = {
 	name = "瓦尔.力量抽取",
 	color = 3,
 	description = "挥动你的法杖同时攻击附近的所有敌人. 濒死的敌人将会被终结, 并产生同等数量的暴击球. 无法被齐射辅助。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Vaal] = true, [SkillType.Type83] = true, },
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Vaal] = true, [SkillType.Type83] = true,  },
+	
 	weaponTypes = {
 		["Wand"] = true,
 	},
@@ -4982,6 +4986,7 @@ skills["VaalPowerSiphon"] = {
 		projectile = true,
 	},
 	baseMods = {
+	flag("OneShotProj"),
 	},
 	qualityStats = {
 		{ "damage_+%", 1 },
@@ -7317,6 +7322,10 @@ skills["Skitterbots"] = {
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Instant] = true, [SkillType.Minion] = true, [SkillType.CreatesMinion] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.ColdSkill] = true, [SkillType.LightningSkill] = true, [SkillType.NonHitChill] = true, [SkillType.Area] = true, [SkillType.Aura] = true, [SkillType.AuraDebuff] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
 	castTime = 0,
+	minionList = {
+		"SkitterbotCold",
+		"SkitterbotLightning",
+	},
 	statMap = {
 		["skitterbots_trap_mine_damage_+%_final"] = {
 			mod("Damage", "MORE", nil, 0, bit.bor(KeywordFlag.Mine, KeywordFlag.Trap), { type = "GlobalEffect", effectType = "Buff" }),
@@ -7324,6 +7333,7 @@ skills["Skitterbots"] = {
 	},
 	baseFlags = {
 		spell = true,
+		minion = true,
 	},
 	baseMods = {
 	},
@@ -7644,6 +7654,7 @@ name = "空闲",
 		local rateMod = (1 + activeSkill.skillModList:Sum("INC", activeSkill.skillCfg, "HitRate", "Speed") / 100)
 		local mult = activeSkill.skillModList:More(activeSkill.skillCfg, "HitRate")
 		activeSkill.skillData.hitTimeOverride = activeSkill.skillData.repeatFrequency / rateMod / mult
+		
 	end,
 	statMap = {
 		["base_skill_show_average_damage_instead_of_dps"] = {
@@ -7766,10 +7777,12 @@ name = "15 层",
 			div = 1000,
 		},
 		["chaos_damage_taken_+%"] = {
-mod("ChaosDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "死亡凋零" }),
+			flag("Condition:CanWither"),
+			mod("Dummy", "DUMMY", 1, 0, 0, { type = "Condition", var = "CanWither" }),
+			mod("ChaosDamageTaken", "INC", 6, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "死亡凋零", effectStackVar = "WitheredStackCount", effectStackLimit = 15 }),
 		},
 		["base_movement_velocity_+%"] = {
-mod("MovementSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "死亡凋零" }),
+			mod("MovementSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "死亡凋零" }),
 		},
 	},
 	baseFlags = {

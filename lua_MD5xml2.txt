@@ -3,3 +3,7 @@
 <File sha1="4ebea5031fd03771a9b637a3fdccf394344e4782" name="Assets/range_guide.png" part="runtime"/>
 <File sha1="e7ee7e5b6388facb7bf568517ecc401590757df7" name="Assets/ring.png" part="runtime"/>
 <File sha1="9a320bfe629b1cf3f14fc77fbbf2508d0a5b2841" name="Assets/small_ring.png" part="runtime"/>
+<File sha1="6ad9088ebaed6646dbd3d231d563dc9611ba4bc6" name="Assets/ShadedInnerRing.png" part="runtime"/>
+<File sha1="c13f41ef7cbfc14017a10776d21b121f0e558667" name="Assets/ShadedInnerRingFlipped.png" part="runtime"/>
+<File sha1="988dee6e0cf9906d78015bc1762b1d95983e89cb" name="Assets/ShadedOuterRing.png" part="runtime"/>
+<File sha1="ffffef32179d39d48db697e9c9e07fdf022457f7" name="Assets/ShadedOuterRingFlipped.png" part="runtime"/>

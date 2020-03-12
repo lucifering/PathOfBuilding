@@ -63,7 +63,9 @@ function main:Init()
 			LoadModule("Data/"..targetVersion.."/ModCache", modLib.parseModCache[targetVersion])
 		end
 	end
-	
+	if launch.devMode and IsKeyDown("CTRL") and IsKeyDown("SHIFT") then
+		self.allowTreeDownload = true
+	end
 	self.tree = { }
 	for _, versionData in pairs(targetVersions) do
 		for _, treeVersion in ipairs(versionData.treeVersionList) do

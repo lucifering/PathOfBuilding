@@ -425,6 +425,37 @@ function DropDownClass:Draw(viewPort)
 				end
 				-- draw actual item label with search match highlight if available
 				local label = StripEscapes(type(listVal) == "table" and listVal.label or listVal)
+				
+				
+				
+				if  self.cnKey=="slotListCN" then
+				
+				for index in pairs(slotListCN) do
+					if label==slotListCN[index].slotName then
+						label=slotListCN[index].label
+					end
+				end
+			elseif self.cnKey=="typeListCN" then 
+					for index in pairs(typeListCN) do
+						if label==typeListCN[index].slotName then
+							label=typeListCN[index].label
+						end
+					end
+			elseif self.cnKey=="sortDropListCN" then 
+					for index in pairs(sortDropListCN) do
+						if label==sortDropListCN[index].slotName then
+							label=sortDropListCN[index].label
+						end
+					end	
+			elseif self.cnKey=="searchModeCN" then 
+					for index in pairs(searchModeCN) do
+						if label==searchModeCN[index].slotName then
+							label=searchModeCN[index].label
+						end
+					end
+					
+			end
+				
 				DrawString(0, y, "LEFT", lineHeight, "VAR", label)
 				self:DrawSearchHighlights(label, searchInfo, 0, y, width - 4, lineHeight)
 			end

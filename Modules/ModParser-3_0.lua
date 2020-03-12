@@ -106,7 +106,7 @@ local modNameList = {
 	["总魔力保留"] = "ManaReserved",
 	["药剂持续期间间"] = "FlaskDuration",-- 官网的sx翻译
 	["闪电伤害击中时有 ([%+%-]?%d+)%% 几率使敌人受到感电效果影响"] = "EnemyShockChance", --备注：to shock
-	["法杖攻击伤害"] = {"Damage",  flags = ModFlag.Wand }, 
+	["法杖攻击伤害"] = { "Damage", flags = bor(ModFlag.Wand, ModFlag.Hit) },
 	["诅咒范围扩大"] = function(num) return {  mod("AreaOfEffect", "INC", num,nil, KeywordFlag.Curse)  } end,
 	["冰冻"] = "EnemyFreezeChance", --备注：to freeze
 	["攻击与施法速度"] = "Speed", --备注：attack and cast speed
@@ -165,7 +165,8 @@ local modNameList = {
 	["武器物理伤害"] = { "PhysicalDamage", flags = ModFlag.Weapon }, --备注：physical weapon damage
 	["攻击造成的投射物伤害"] = { "Damage", flags = bor(ModFlag.Projectile, ModFlag.Attack) },
 	["最大闪避值"] = "Evasion",
-	["击中伤害和异常状态伤害"] = { "Damage",  keywordFlags = bor(KeywordFlag.Hit, KeywordFlag.Ailment)}, --备注：attack damage
+	["击中伤害和异常状态伤害"] = { "Damage",  keywordFlags = bor(KeywordFlag.Hit, KeywordFlag.Ailment)}, 
+	--备注：attack damage
 	["击中火焰伤害和异常状态伤害"] = { "FireDamage",  keywordFlags = bor(KeywordFlag.Hit, KeywordFlag.Ailment)}, 
 	["击中物理伤害和异常状态伤害"] = { "PhysicalDamage",  keywordFlags = bor(KeywordFlag.Hit, KeywordFlag.Ailment)}, 
 	["【闪电之捷】的增益效果"] = { "BuffEffect", tag = { type = "SkillName", skillName = "闪电之捷" } },
@@ -278,6 +279,12 @@ local modNameList = {
 	["【灵巧】效果"] = "ElusiveEffectOnSelf",
 	["灵巧效果"] = "ElusiveEffectOnSelf",
 	["投掷地雷类技能的"] = { keywordFlags = KeywordFlag.Mine },
+	["几率躲避攻击"] = "EvadeChance",
+	["躲避攻击"] = "EvadeChance",
+	["近战打击距离"] = { "MeleeWeaponRange", "UnarmedRange" },
+	["法杖攻击物理伤害"] = { "PhysicalDamage", flags = bor(ModFlag.Wand, ModFlag.Hit) },
+	["爪攻击物理伤害"] = { "PhysicalDamage", flags = bor(ModFlag.Claw, ModFlag.Hit) },
+	["剑攻击物理伤害"] = { "PhysicalDamage", flags = bor(ModFlag.Sword, ModFlag.Hit) },
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -637,37 +644,37 @@ local modNameList = {
 -- List of modifier flags
 local modFlagList = {
 	--【中文化程序额外添加开始】
-	["锤类和短杖攻击的"] = { flags = ModFlag.Mace },
-	["锤类和短杖类攻击的"] = { flags = ModFlag.Mace },
-	["锤类和短杖类的"] = { flags = ModFlag.Mace },
-	["锤类和短杖类攻击"] = { flags = ModFlag.Mace },
-	["锤类和短杖类"] = { flags = ModFlag.Mace },
-	["锤类和短杖攻击"] = { flags = ModFlag.Mace },
-	["锤类和短杖的"] = { flags = ModFlag.Mace },
-	["锤类和短杖"] = { flags = ModFlag.Mace },
-	["持锤或短杖时，"] = { flags = ModFlag.Mace },
+	["锤类和短杖攻击的"] = { flags = bor(ModFlag.Mace, ModFlag.Hit) },
+	["锤类和短杖类攻击的"] = { flags = bor(ModFlag.Mace, ModFlag.Hit)  },
+	["锤类和短杖类的"] = { flags = bor(ModFlag.Mace, ModFlag.Hit)  },
+	["锤类和短杖类攻击"] = { flags = bor(ModFlag.Mace, ModFlag.Hit)  },
+	["锤类和短杖类"] = {flags = bor(ModFlag.Mace, ModFlag.Hit) },
+	["锤类和短杖攻击"] = { flags = bor(ModFlag.Mace, ModFlag.Hit)  },
+	["锤类和短杖的"] = { flags = bor(ModFlag.Mace, ModFlag.Hit)  },
+	["锤类和短杖"] = { flags = bor(ModFlag.Mace, ModFlag.Hit)  },
+	["持锤或短杖时，"] = { flags = bor(ModFlag.Mace, ModFlag.Hit) },
 	["身体护甲提供的"] = { tag = { type = "SlotName", slotName = "Body Armour" } },
 	["混沌技能的"] = { keywordFlags = KeywordFlag.Chaos },
-	["单手武器攻击的"] = { flags = ModFlag.Weapon1H }, --备注：with one handed weapons
-	["斧类攻击"] = { flags = ModFlag.Axe }, 
-	["弓类攻击"] = { flags = ModFlag.Bow },
+	["单手武器攻击的"] = { flags = bor(ModFlag.Weapon1H, ModFlag.Hit)}, --备注：with one handed weapons
+	["斧类攻击"] =  { flags = bor(ModFlag.Axe, ModFlag.Hit) },
+	["弓类攻击"] =  { flags = bor(ModFlag.Bow, ModFlag.Hit) },
 	["弓类技能的"] = { keywordFlags = KeywordFlag.Bow },
-	["爪类攻击"] = { flags = ModFlag.Claw },
-	["匕首攻击"] = { flags = ModFlag.Dagger },
-	["锤类攻击"] = { flags = ModFlag.Mace },
-	["长杖攻击时，"] = { flags = ModFlag.Staff },
-	["长杖攻击"] = { flags = ModFlag.Staff },
-	["剑类攻击"] = { flags = ModFlag.Sword },
-	["法杖攻击"] = { flags = ModFlag.Wand }, 
-	["弓类的"] = { flags = ModFlag.Bow },
-	["爪类的"] = { flags = ModFlag.Claw },
-	["爪类"] = { flags = ModFlag.Claw },
-	["匕首的"] = { flags = ModFlag.Dagger },
-	["锤类的"] = { flags = ModFlag.Mace },
-	["长杖的"] = { flags = ModFlag.Staff },
-	["斧类的"] = { flags = ModFlag.Axe },
-	["剑类的"] = { flags = ModFlag.Sword },
-	["法杖的"] = { flags = ModFlag.Wand }, 
+	["爪类攻击"] = { flags = bor(ModFlag.Claw, ModFlag.Hit) },
+	["匕首攻击"] =  { flags = bor(ModFlag.Dagger, ModFlag.Hit) },
+	["锤类攻击"] = { flags = bor(ModFlag.Mace, ModFlag.Hit)  },
+	["长杖攻击时，"] =  { flags = bor(ModFlag.Staff, ModFlag.Hit) },
+	["长杖攻击"] =  { flags = bor(ModFlag.Staff, ModFlag.Hit) },
+	["剑类攻击"] = { flags = bor(ModFlag.Sword, ModFlag.Hit) },
+	["法杖攻击"] = { flags = bor(ModFlag.Wand, ModFlag.Hit) },
+	["弓类的"] =  { flags = bor(ModFlag.Bow, ModFlag.Hit) },
+	["爪类的"] = { flags = bor(ModFlag.Claw, ModFlag.Hit) },
+	["爪类"] = { flags = bor(ModFlag.Claw, ModFlag.Hit) },
+	["匕首的"] =  { flags = bor(ModFlag.Dagger, ModFlag.Hit) },
+	["锤类的"] = { flags = bor(ModFlag.Mace, ModFlag.Hit) },
+	["长杖的"] =  { flags = bor(ModFlag.Staff, ModFlag.Hit) },
+	["斧类的"] =  { flags = bor(ModFlag.Axe, ModFlag.Hit) },
+	["剑类的"] ={ flags = bor(ModFlag.Sword, ModFlag.Hit) },
+	["法杖的"] =  { flags = bor(ModFlag.Wand, ModFlag.Hit) },
 	["攻击类技能"] = { keywordFlags = KeywordFlag.Attack },
 	["攻击类技能造成的异常状态"] = { flags = ModFlag.Ailment, keywordFlags = KeywordFlag.Attack }, --备注：with ailments from attack skills
 	["双手近战武器攻击造成的"] = { flags = bor(ModFlag.Weapon2H, ModFlag.WeaponMelee) }, --备注：with two handed melee weapons
@@ -677,8 +684,8 @@ local modFlagList = {
 	["图腾施放的技能"] = { keywordFlags = KeywordFlag.Totem }, --备注：with totem skills
 	["近战攻击"] = { flags = ModFlag.Melee }, --备注：melee
 	["近战技能的"] = { flags = ModFlag.Melee },
-	["近战单手武器的"] = { flags = bor(ModFlag.Weapon1H, ModFlag.WeaponMelee) }, --备注：with one handed melee weapons
-	["弓类攻击造成的"] = { flags = ModFlag.Bow },
+	["近战单手武器的"] = { flags = bor(ModFlag.Weapon1H, ModFlag.WeaponMelee, ModFlag.Hit) }, --备注：with one handed melee weapons
+	["弓类攻击造成的"] =  { flags = bor(ModFlag.Bow, ModFlag.Hit) },
 	["攻击技能造成的"] = { keywordFlags = KeywordFlag.Attack },
 	["持续吟唱技能造成的"] = { tag = { type = "SkillType", skillType = SkillType.Channelled } },
 	["持续吟唱技能"] = { tag = { type = "SkillType", skillType = SkillType.Channelled } },
@@ -686,24 +693,23 @@ local modFlagList = {
 	["该装备 "] = { },
 	["低血时，"] = { tag = { type = "Condition", var = "LowLife" } }, --备注：wh[ie][ln]e? on low life
 	["击中和异常状态的"] = { keywordFlags = bor(KeywordFlag.Hit, KeywordFlag.Ailment) }, --备注：with hits and ailments
-	["持弓"] = { flags = ModFlag.Bow },
 	["攻击技能可以"] = { keywordFlags = KeywordFlag.Attack }, --备注：with attack skills
 	["攻击时"] = { keywordFlags = KeywordFlag.Attack }, 
 	["复苏的魔卫"] = { addToMinion = true, addToMinionTag = { type = "SkillName", skillName = "魔卫复苏" } },
 	["魔卫"] = { addToMinion = true, addToMinionTag = { type = "SkillName", skillName = "魔卫复苏" } }, --备注：zombie
 	["魔侍的"] = { addToMinion = true, addToMinionTag = { type = "SkillName", skillName = "召唤魔侍" } }, --备注：skeleton
 	["移动技能的"] = { keywordFlags = KeywordFlag.Movement }, --备注：with movement skills
-	["弓"] = { flags = ModFlag.Bow }, --备注：to bow attacks
+	["弓"] =  { flags = bor(ModFlag.Bow, ModFlag.Hit) }, --备注：to bow attacks
 	["攻击"] = { flags = ModFlag.Attack }, 
-	["剑"] = { flags = ModFlag.Sword }, 
-	["匕首"] = { flags = ModFlag.Dagger },
-	["长杖"] = { flags = ModFlag.Staff },
-	["法杖"] = { flags = ModFlag.Wand }, 
-	["锤"] = { flags = ModFlag.Mace },
-	["爪"] = { flags = ModFlag.Claw },
-	["斧"] = { flags = ModFlag.Axe }, 
+	["剑"] = { flags = bor(ModFlag.Sword, ModFlag.Hit) },
+	["匕首"] = { flags = bor(ModFlag.Dagger, ModFlag.Hit) },
+	["长杖"] =  { flags = bor(ModFlag.Staff, ModFlag.Hit) },
+	["法杖"] =  { flags = bor(ModFlag.Wand, ModFlag.Hit) },
+	["锤"] = { flags = bor(ModFlag.Mace, ModFlag.Hit) },
+	["爪"] = { flags = bor(ModFlag.Claw, ModFlag.Hit) },
+	["斧"] =  { flags = bor(ModFlag.Axe, ModFlag.Hit) },
 	["捷技能的"] = { tag = { type = "SkillType", skillType = SkillType.Herald } }, 
-	["近战单手武器攻击"] = { flags = bor(ModFlag.Weapon1H, ModFlag.WeaponMelee) }, 
+	["近战单手武器攻击"] = { flags = bor(ModFlag.Weapon1H, ModFlag.WeaponMelee, ModFlag.Hit) }, 
 	["双手近战武器的攻击"] = { flags = bor(ModFlag.Weapon2H, ModFlag.WeaponMelee) },
 	["火焰、冰霜、闪电技能的"] = { keywordFlags = bor(KeywordFlag.Lightning, KeywordFlag.Cold, KeywordFlag.Fire) },
 	["元素技能的"] = { keywordFlags = bor(KeywordFlag.Lightning, KeywordFlag.Cold, KeywordFlag.Fire) },
@@ -726,34 +732,40 @@ local modFlagList = {
 	["地雷类技能的"] = { keywordFlags = KeywordFlag.Mine },
 	["投掷地雷的"] = { keywordFlags = KeywordFlag.Mine },
 	["投掷陷阱的"] = { keywordFlags = KeywordFlag.Trap },
-	["爪的"] = { flags = ModFlag.Claw },
+	["爪的"] ={ flags = bor(ModFlag.Claw, ModFlag.Hit) },
 	--【中文化程序额外添加结束】
-	-- Weapon types
-	["斧类攻击的"] = { flags = ModFlag.Axe }, --备注：with axes
-	["to axe attacks"] = { flags = ModFlag.Axe },
-	["弓类攻击的"] = { flags = ModFlag.Bow }, --备注：with bows
-	["弓攻击"] = { flags = ModFlag.Bow }, --备注：to bow attacks
-	["爪类攻击的"] = { flags = ModFlag.Claw }, --备注：with claws
-	["to claw attacks"] = { flags = ModFlag.Claw },
-	["dealt with claws"] = { flags = ModFlag.Claw },
-	["匕首攻击的"] = { flags = ModFlag.Dagger }, --备注：with daggers
-	["to dagger attacks"] = { flags = ModFlag.Dagger },
-	["锤类攻击的"] = { flags = ModFlag.Mace }, --备注：with maces
-	["to mace attacks"] = { flags = ModFlag.Mace },
-	["长杖攻击的"] = { flags = ModFlag.Staff }, --备注：with staves
-	["to staff attacks"] = { flags = ModFlag.Staff },
-	["剑类攻击的"] = { flags = ModFlag.Sword }, --备注：with swords
-	["to sword attacks"] = { flags = ModFlag.Sword },
-	["法杖攻击的"] = { flags = ModFlag.Wand }, --备注：with wands
-	["to wand attacks"] = { flags = ModFlag.Wand },
-	["空手攻击时"] = { flags = ModFlag.Unarmed }, --备注：unarmed
-	["空手攻击时的"] = { flags = ModFlag.Unarmed }, --备注：with unarmed attacks
-	["to unarmed attacks"] = { flags = ModFlag.Unarmed },
-	["单手武器的"] = { flags = ModFlag.Weapon1H }, --备注：with one handed weapons
-	["近战单手武器攻击的"] = { flags = bor(ModFlag.Weapon1H, ModFlag.WeaponMelee) }, --备注：with one handed melee weapons
-	["双手武器的"] = { flags = ModFlag.Weapon2H }, --备注：with two handed weapons
-	["双手近战武器攻击的"] = { flags = bor(ModFlag.Weapon2H, ModFlag.WeaponMelee) }, --备注：with two handed melee weapons
-	["远程武器攻击的"] = { flags = ModFlag.WeaponRanged }, --备注：with ranged weapons
+	["斧类攻击的"] = { flags = bor(ModFlag.Axe, ModFlag.Hit) }, --备注：with axes
+	["to axe attacks"] = { flags = bor(ModFlag.Axe, ModFlag.Hit) },
+	["with axes or swords"] = { flags = ModFlag.Hit, tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Axe, ModFlag.Sword) } },
+	["弓类攻击的"] = { flags = bor(ModFlag.Bow, ModFlag.Hit) }, --备注：with bows
+	["弓攻击"] = { flags = bor(ModFlag.Bow, ModFlag.Hit) }, --备注：to bow attacks
+	["爪类攻击的"] = { flags = bor(ModFlag.Claw, ModFlag.Hit) }, --备注：with claws
+	["with claws or daggers"] = { flags = ModFlag.Hit, tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Claw, ModFlag.Dagger) } },
+	["to claw attacks"] = { flags = bor(ModFlag.Claw, ModFlag.Hit) },
+	["dealt with claws"] = { flags = bor(ModFlag.Claw, ModFlag.Hit) },
+	["匕首攻击的"] = { flags = bor(ModFlag.Dagger, ModFlag.Hit) }, --备注：with daggers
+	["to dagger attacks"] = { flags = bor(ModFlag.Dagger, ModFlag.Hit) },
+	["锤类攻击的"] = { flags = bor(ModFlag.Mace, ModFlag.Hit) }, --备注：with maces
+	["to mace attacks"] = { flags = bor(ModFlag.Mace, ModFlag.Hit) },
+	["with maces and sceptres"] = { flags = bor(ModFlag.Mace, ModFlag.Hit) },
+	["with maces or sceptres"] = { flags = bor(ModFlag.Mace, ModFlag.Hit) },
+	["with maces, sceptres or staves"] = { flags = ModFlag.Hit, tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Mace, ModFlag.Staff) } },
+	["to mace and sceptre attacks"] = { flags = bor(ModFlag.Mace, ModFlag.Hit) },
+	["to mace or sceptre attacks"] = { flags = bor(ModFlag.Mace, ModFlag.Hit) },
+	["长杖攻击的"] = { flags = bor(ModFlag.Staff, ModFlag.Hit) }, --备注：with staves
+	["to staff attacks"] = { flags = bor(ModFlag.Staff, ModFlag.Hit) },
+	["剑类攻击的"] = { flags = bor(ModFlag.Sword, ModFlag.Hit) }, --备注：with swords
+	["to sword attacks"] = { flags = bor(ModFlag.Sword, ModFlag.Hit) },
+	["法杖攻击的"] = { flags = bor(ModFlag.Wand, ModFlag.Hit) }, --备注：with wands
+	["to wand attacks"] = { flags = bor(ModFlag.Wand, ModFlag.Hit) },
+	["空手攻击时"] = { flags = bor(ModFlag.Unarmed, ModFlag.Hit) }, --备注：unarmed
+	["空手攻击时的"] = { flags = bor(ModFlag.Unarmed, ModFlag.Hit) }, --备注：with unarmed attacks
+	["to unarmed attacks"] = { flags = bor(ModFlag.Unarmed, ModFlag.Hit) },
+	["单手武器的"] = { flags = bor(ModFlag.Weapon1H, ModFlag.Hit) }, --备注：with one handed weapons
+	["近战单手武器攻击的"] = { flags = bor(ModFlag.Weapon1H, ModFlag.WeaponMelee, ModFlag.Hit) }, --备注：with one handed melee weapons
+	["双手武器的"] = { flags = bor(ModFlag.Weapon2H, ModFlag.Hit) }, --备注：with two handed weapons
+	["双手近战武器攻击的"] = { flags = bor(ModFlag.Weapon2H, ModFlag.WeaponMelee, ModFlag.Hit) }, --备注：with two handed melee weapons
+	["远程武器攻击的"] = { flags = bor(ModFlag.WeaponRanged, ModFlag.Hit) }, --备注：with ranged weapons
 	-- Skill types
 	["法术"] = { flags = ModFlag.Spell }, --备注：spell
 	["with spells"] = { flags = ModFlag.Spell },
@@ -847,7 +859,47 @@ local preFlagList = {
 	["地雷所使用的技能"] = { keywordFlags = KeywordFlag.Mine },
 	["^你和友军受你的光环技能影响时，"] = { affectedByAura = true },
 	["^防卫技能的"] = { tag = { type = "SkillType", skillType = SkillType.Guard } },
+	-- Weapon types
+		["^斧攻击造成的"] = { flags = ModFlag.Axe },
+		["^斧或剑攻击造成的"] = { tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Axe, ModFlag.Sword) } },
+		["^弓攻击造成的"] = { flags = ModFlag.Bow },
+		["^爪攻击造成的"] = { flags = ModFlag.Claw },
+		["^爪或匕首攻击造成的"] = { tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Claw, ModFlag.Dagger) } },
+		["^匕首攻击造成的"] = { flags = ModFlag.Dagger },
+		["^锤或短杖攻击造成的"] = { flags = ModFlag.Mace },
+		["^锤, 短杖或长杖攻击造成的"] = { tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Mace, ModFlag.Staff) } },
+		["^长杖攻击造成的"] = { flags = ModFlag.Staff },
+		["^剑攻击造成的"] = { flags = ModFlag.Sword },
+		["^法杖攻击造成的"] = { flags = ModFlag.Wand },
+		["^空手攻击造成的"] = { flags = ModFlag.Unarmed },
+		["^单手武器攻击造成的"] = { flags = ModFlag.Weapon1H },
+		["^双手武器攻击造成的"] = { flags = ModFlag.Weapon2H },
+		["^近战武器攻击造成的"] = { flags = ModFlag.WeaponMelee },
+		["^单手近战武器攻击造成的"] = { flags = bor(ModFlag.Weapon1H, ModFlag.WeaponMelee) },
+		["^双手近战武器攻击造成的"] = { flags = bor(ModFlag.Weapon2H, ModFlag.WeaponMelee) },
+		["^远程武器攻击造成的"] = { flags = ModFlag.WeaponRanged },
+		-- Damage types
 	--【中文化程序额外添加结束】
+	-- Weapon types
+	["^axe attacks [hd][ae][va][el] "] = { flags = ModFlag.Axe },
+	["^axe or sword attacks [hd][ae][va][el] "] = { tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Axe, ModFlag.Sword) } },
+	["^bow attacks [hd][ae][va][el] "] = { flags = ModFlag.Bow },
+	["^claw attacks [hd][ae][va][el] "] = { flags = ModFlag.Claw },
+	["^claw or dagger attacks [hd][ae][va][el] "] = { tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Claw, ModFlag.Dagger) } },
+	["^dagger attacks [hd][ae][va][el] "] = { flags = ModFlag.Dagger },
+	["^mace or sceptre attacks [hd][ae][va][el] "] = { flags = ModFlag.Mace },
+	["^mace, sceptre or staff attacks [hd][ae][va][el] "] = { tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Mace, ModFlag.Staff) } },
+	["^staff attacks [hd][ae][va][el] "] = { flags = ModFlag.Staff },
+	["^sword attacks [hd][ae][va][el] "] = { flags = ModFlag.Sword },
+	["^wand attacks [hd][ae][va][el] "] = { flags = ModFlag.Wand },
+	["^unarmed attacks [hd][ae][va][el] "] = { flags = ModFlag.Unarmed },
+	["^attacks with one handed weapons [hd][ae][va][el] "] = { flags = ModFlag.Weapon1H },
+	["^attacks with two handed weapons [hd][ae][va][el] "] = { flags = ModFlag.Weapon1H },
+	["^attacks with melee weapons [hd][ae][va][el] "] = { flags = ModFlag.WeaponMelee },
+	["^attacks with one handed melee weapons [hd][ae][va][el] "] = { flags = bor(ModFlag.Weapon1H, ModFlag.WeaponMelee) },
+	["^attacks with two handed melee weapons [hd][ae][va][el] "] = { flags = bor(ModFlag.Weapon2H, ModFlag.WeaponMelee) },
+	["^attacks with ranged weapons [hd][ae][va][el] "] = { flags = ModFlag.WeaponRanged },
+	-- Damage types
 	["^hits deal "] = { keywordFlags = KeywordFlag.Hit },
 	["^critical strikes deal "] = { tag = { type = "Condition", var = "CriticalStrike" } },
 	["^minions "] = { addToMinion = true },
@@ -921,6 +973,8 @@ local preFlagList = {
 -- List of modifier tags
 local modTagList = {
 	--【中文化程序额外添加开始】
+	["持锤, 短杖或长杖时，"] = { tag = { type = "Condition", varList = { "UsingMace", "UsingStaff" } } },
+	["持锤, 短杖或长杖时"] = { tag = { type = "Condition", varList = { "UsingMace", "UsingStaff" } } },
 	["每 (%d+)%% 的攻击格挡率会使"] = function(num) return { tag = { type = "PerStat", stat = "BlockChance", div = num } } end,
 	["每 (%d+)%% 攻击伤害格挡几率"] = function(num) return { tag = { type = "PerStat", stat = "BlockChance", div = num } } end,
 	["每 (%d+)%% 攻击伤害格挡几率会使"] = function(num) return { tag = { type = "PerStat", stat = "BlockChance", div = num } } end,
@@ -3427,7 +3481,15 @@ minus = -tonumber(minus)
 	["此物品上的【(.+)技能石】由 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^increased ","")] or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
 	-- Conversion
 	["召唤生物伤害提高或降低，将同样套用于自身"] = { flag("MinionDamageAppliesToPlayer") }, --备注：increases and reductions to minion damage also affects? you
-	["召唤生物攻击速度的加成同时套用于你身上"] = { flag("MinionAttackSpeedAppliesToPlayer") }, --备注：increases and reductions to minion attack speed also affects? you
+	["召唤生物攻击速度的加成同时套用于你身上"] = { flag("MinionAttackSpeedAppliesToPlayer") }, 
+	
+	
+	
+	
+	["持法杖时，对法术伤害的增幅与减益也会套用于攻击上"] = function() return { mod("SpellDamageAppliesToAttacks", "FLAG",true, { type = "Condition", var = "UsingWand" } ) } end,
+	
+	 
+	--备注：increases and reductions to minion attack speed also affects? you
 	["对法术伤害的增幅与减益也会套用于攻击上"] = { flag("SpellDamageAppliesToAttacks") }, --备注：increases and reductions to spell damage also apply to attacks
 	["modifiers to claw damage also apply to unarmed"] = { flag("ClawDamageAppliesToUnarmed") },
 	["对爪类武器的伤害加成同时套用于空手攻击伤害上"] = { flag("ClawDamageAppliesToUnarmed") }, --备注：modifiers to claw damage also apply to unarmed attack damage

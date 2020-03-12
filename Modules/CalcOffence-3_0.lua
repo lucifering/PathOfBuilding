@@ -1788,8 +1788,8 @@ t_insert(breakdownDPS, "总伤害:")
 					skillPart = skillCfg.skillPart,
 					skillTypes = skillCfg.skillTypes,
 					slotName = skillCfg.slotName,
-					flags = bor(ModFlag.Dot, ModFlag.Ailment, band(skillCfg.flags, ModFlag.Melee) ~= 0 and ModFlag.MeleeHit or 0),
-					keywordFlags = bor(band(skillCfg.keywordFlags, bnot(KeywordFlag.Hit)), KeywordFlag.Bleed, KeywordFlag.Ailment, KeywordFlag.PhysicalDot),
+					flags = bor(ModFlag.Dot, ModFlag.Ailment, band(cfg.flags, ModFlag.WeaponMask), band(cfg.flags, ModFlag.Melee) ~= 0 and ModFlag.MeleeHit or 0),
+					keywordFlags = bor(band(cfg.keywordFlags, bnot(KeywordFlag.Hit)), KeywordFlag.Bleed, KeywordFlag.Ailment, KeywordFlag.PhysicalDot),
 					skillCond = { },
 				}
 			end
@@ -1893,8 +1893,8 @@ t_insert(globalBreakdown.BleedDuration, s_format("/ %.2f ^8(更快或较慢 debu
 					skillPart = skillCfg.skillPart,
 					skillTypes = skillCfg.skillTypes,
 					slotName = skillCfg.slotName,
-					flags = bor(ModFlag.Dot, ModFlag.Ailment, band(skillCfg.flags, ModFlag.Melee) ~= 0 and ModFlag.MeleeHit or 0),
-					keywordFlags = bor(band(skillCfg.keywordFlags, bnot(KeywordFlag.Hit)), KeywordFlag.Poison, KeywordFlag.Ailment, KeywordFlag.ChaosDot),
+					flags = bor(ModFlag.Dot, ModFlag.Ailment, band(cfg.flags, ModFlag.WeaponMask), band(cfg.flags, ModFlag.Melee) ~= 0 and ModFlag.MeleeHit or 0),
+					keywordFlags = bor(band(cfg.keywordFlags, bnot(KeywordFlag.Hit)), KeywordFlag.Poison, KeywordFlag.Ailment, KeywordFlag.ChaosDot),
 					skillCond = { },
 				}
 			end
@@ -2059,8 +2059,8 @@ base = s_format("%.2fs ^8(中毒持续时间)", globalOutput.PoisonDuration),
 					skillPart = skillCfg.skillPart,
 					skillTypes = skillCfg.skillTypes,
 					slotName = skillCfg.slotName,
-					flags = bor(ModFlag.Dot, ModFlag.Ailment, band(skillCfg.flags, ModFlag.Melee) ~= 0 and ModFlag.MeleeHit or 0),
-					keywordFlags = bor(band(skillCfg.keywordFlags, bnot(KeywordFlag.Hit)), KeywordFlag.Ignite, KeywordFlag.Ailment, KeywordFlag.FireDot),
+					flags = bor(ModFlag.Dot, ModFlag.Ailment, band(cfg.flags, ModFlag.WeaponMask), band(cfg.flags, ModFlag.Melee) ~= 0 and ModFlag.MeleeHit or 0),
+					keywordFlags = bor(band(cfg.keywordFlags, bnot(KeywordFlag.Hit)), KeywordFlag.Ignite, KeywordFlag.Ailment, KeywordFlag.FireDot),
 					skillCond = { },
 				}
 			end

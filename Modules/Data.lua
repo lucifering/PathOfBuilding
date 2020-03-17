@@ -54,6 +54,7 @@ local typeLabel = {
 {en="Body Armour: Armour/Energy Shield",cn="胸甲: 护甲/能量护盾"},
 {en="Staff",cn="长杖"},
 {en="Jewel: Abyss",cn="珠宝: 深渊"},
+{en="Jewel: Cluster",cn="珠宝: 星团"},
 {en="Dagger",cn="匕首"},
 {en="Sceptre",cn="短杖"},
 {en="Helmet: Armour",cn="头盔: 护甲"},
@@ -251,6 +252,7 @@ for _, targetVersion in ipairs(targetVersionList) do
 		Flask = dataModule("ModFlask"),
 		Jewel = dataModule("ModJewel"),
 		JewelAbyss = targetVersion ~= "2_6" and dataModule("ModJewelAbyss") or { },
+		JewelCluster = targetVersion ~= "2_6" and dataModule("ModJewelCluster") or { },
 	}
 	verData.masterMods = dataModule("ModMaster")
 	verData.enchantments = {
@@ -263,6 +265,10 @@ for _, targetVersion in ipairs(targetVersionList) do
 		
 	}
 	verData.essences = dataModule("Essence")
+	-- Cluster jewel data
+	if targetVersion ~= "2_6" then	
+		verData.clusterJewels = dataModule("ClusterJewels")
+	end
 	verData.delve = dataModule("ModDelve")
 	verData.incursion = dataModule("ModIncursion")
 	

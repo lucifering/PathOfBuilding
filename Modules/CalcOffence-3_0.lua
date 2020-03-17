@@ -223,18 +223,20 @@ local function runSkillFunc(name)
 			end
 		end
 	end
-	if skillModList:Flag(nil, "SpellDamageAppliesToAttacks") then
+	local baseSpellDamageAppliesToAttacks = skillModList:Sum("BASE", cfg, "SpellDamageAppliesToAttacks") 
+	
+	if baseSpellDamageAppliesToAttacks and baseSpellDamageAppliesToAttacks > 0 then
 		-- Spell Damage conversion from Crown of Eyes
 		for i, value in ipairs(skillModList:Tabulate("INC", { flags = ModFlag.Spell }, "Damage")) do
 			local mod = value.mod
 			if band(mod.flags, ModFlag.Spell) ~= 0 then
-				skillModList:NewMod("Damage", "INC", mod.value, mod.source, bor(band(mod.flags, bnot(ModFlag.Spell)), ModFlag.Attack), mod.keywordFlags, unpack(mod))
+				skillModList:NewMod("Damage", "INC", mod.value * (baseSpellDamageAppliesToAttacks / 100), mod.source, bor(band(mod.flags, bnot(ModFlag.Spell)), ModFlag.Attack), mod.keywordFlags, unpack(mod))
 			end
 		end
 	end
 	if skillModList:Flag(nil, "ClawDamageAppliesToUnarmed") then
 		-- Claw Damage conversion from Rigwald's Curse		
-		for i, value in ipairs(skillModList:Tabulate("INC", { flags = ModFlag.Claw }, "Damage")) do
+		for i, value in ipairs(skillModList:Tabulate("INC", { flags = ModFlag.Claw, keywordFlags = KeywordFlag.Hit }, "Damage")) do
 			local mod = value.mod
 			if band(mod.flags, ModFlag.Claw) ~= 0 then
 					skillModList:NewMod("Damage", mod.type, mod.value, mod.source, bor(band(mod.flags, bnot(ModFlag.Claw)), ModFlag.Unarmed), mod.keywordFlags, unpack(mod))
@@ -243,7 +245,7 @@ local function runSkillFunc(name)
 	end
 	if skillModList:Flag(nil, "ClawAttackSpeedAppliesToUnarmed") then
 		-- Claw Attack Speed conversion from Rigwald's Curse
-		for i, value in ipairs(skillModList:Tabulate("INC", { flags = bor(ModFlag.Claw, ModFlag.Attack) }, "Speed")) do
+		for i, value in ipairs(skillModList:Tabulate("INC", { flags = bor(ModFlag.Claw, ModFlag.Attack, ModFlag.Hit) }, "Speed")) do
 			local mod = value.mod
 			if band(mod.flags, ModFlag.Claw) ~= 0 and band(mod.flags, ModFlag.Attack) ~= 0 then
 				skillModList:NewMod("Speed", mod.type, mod.value, mod.source, bor(band(mod.flags, bnot(ModFlag.Claw)), ModFlag.Unarmed), mod.keywordFlags, unpack(mod))
@@ -252,7 +254,7 @@ local function runSkillFunc(name)
 	end
 	if skillModList:Flag(nil, "ClawCritChanceAppliesToUnarmed") then
 		-- Claw Crit Chance conversion from Rigwald's Curse
-		for i, value in ipairs(skillModList:Tabulate("INC", { flags = ModFlag.Claw }, "CritChance")) do
+		for i, value in ipairs(skillModList:Tabulate("INC", { flags = bor(ModFlag.Claw, ModFlag.Hit) }, "CritChance")) do
 			local mod = value.mod
 			if band(mod.flags, ModFlag.Claw) ~= 0 then
 				skillModList:NewMod("CritChance", mod.type, mod.value, mod.source, bor(band(mod.flags, bnot(ModFlag.Claw)), ModFlag.Unarmed), mod.keywordFlags, unpack(mod))
@@ -323,17 +325,14 @@ local function runSkillFunc(name)
 		
 		local increase = calcLib.mod(skillModList, nil, "EnemyShockEffect")
 		local hitEffect = increase * baseEffect
-print("感电基础效果0："..hitEffect)
+
 		local enemyBaseEffect = 0
 		for i, mod in ipairs(enemyDB:Tabulate("BASE", {}, "SelfShockEffect")) do
 			enemyBaseEffect = m_max(enemyBaseEffect, mod.mod.value)
 		end
 		hitEffect = m_max(enemyBaseEffect, hitEffect)
 
-print("感电基础效果1："..hitEffect)
-if overrideEffect then 
-print("感电基础效强制1："..overrideEffect)
-end
+
 
 		local cappedEffect = overrideEffect or m_min(50, hitEffect)
 		output.ShockEffect = cappedEffect

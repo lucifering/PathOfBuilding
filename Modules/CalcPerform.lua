@@ -410,9 +410,9 @@ local function doActorMisc(env, actor)
 			modDB.multipliers["BuffOnSelf"] = (modDB.multipliers["BuffOnSelf"] or 0) + 1
 		end
 		if modDB:Flag(nil, "Elusive") then
-			local moveEffect = m_floor(40 * (1 + modDB:Sum("INC", nil, "ElusiveEffectOnSelf", "BuffEffectOnSelf") / 100))
-			local spellDodgeChanceEffect = m_floor(20 * (1 + modDB:Sum("INC", nil, "ElusiveEffectOnSelf", "BuffEffectOnSelf") / 100))
-			local dodgeChanceEffect = m_floor(20 * (1 + modDB:Sum("INC", nil, "ElusiveEffectOnSelf", "BuffEffectOnSelf") / 100))
+			local moveEffect = m_floor(30 * (1 + modDB:Sum("INC", nil, "ElusiveEffectOnSelf", "BuffEffectOnSelf") / 100))
+			local spellDodgeChanceEffect = m_floor(15 * (1 + modDB:Sum("INC", nil, "ElusiveEffectOnSelf", "BuffEffectOnSelf") / 100))
+			local dodgeChanceEffect = m_floor(15 * (1 + modDB:Sum("INC", nil, "ElusiveEffectOnSelf", "BuffEffectOnSelf") / 100))
 			
 modDB:NewMod("MovementSpeed", "INC", moveEffect, "灵巧")
 modDB:NewMod("SpellDodgeChance", "BASE", spellDodgeChanceEffect, "灵巧")

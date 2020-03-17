@@ -344,6 +344,7 @@ local modNameList = {
 	["火焰和冰霜抗性"] = { "FireResist", "ColdResist" }, --备注：fire and cold resistances
 	["火焰和闪电抗性"] = { "FireResist", "LightningResist" }, --备注：fire and lightning resistances
 	["冰霜和闪电抗性"] = { "ColdResist", "LightningResist" }, --备注：cold and lightning resistances
+	["火焰、冰霜、闪电抗性"] = "ElementalResist", --备注：elemental resistance
 	["获得 ([%+%-]?%d+)%% 火焰、冰霜、闪电抗性"] = "ElementalResist", --备注：elemental resistances
 	["火焰、冰霜、闪电抗性"] = "ElementalResist", --备注：all elemental resistances
 	["所有抗性"] = { "ElementalResist", "ChaosResist" }, --备注：all resistances
@@ -701,12 +702,15 @@ local modFlagList = {
 	["移动技能的"] = { keywordFlags = KeywordFlag.Movement }, --备注：with movement skills
 	["弓"] =  { flags = bor(ModFlag.Bow, ModFlag.Hit) }, --备注：to bow attacks
 	["攻击"] = { flags = ModFlag.Attack }, 
+	["剑类"] = { flags = bor(ModFlag.Sword, ModFlag.Hit) },
 	["剑"] = { flags = bor(ModFlag.Sword, ModFlag.Hit) },
 	["匕首"] = { flags = bor(ModFlag.Dagger, ModFlag.Hit) },
 	["长杖"] =  { flags = bor(ModFlag.Staff, ModFlag.Hit) },
 	["法杖"] =  { flags = bor(ModFlag.Wand, ModFlag.Hit) },
 	["锤"] = { flags = bor(ModFlag.Mace, ModFlag.Hit) },
+	["爪类"] = { flags = bor(ModFlag.Claw, ModFlag.Hit) },
 	["爪"] = { flags = bor(ModFlag.Claw, ModFlag.Hit) },
+	["斧类"] =  { flags = bor(ModFlag.Axe, ModFlag.Hit) },
 	["斧"] =  { flags = bor(ModFlag.Axe, ModFlag.Hit) },
 	["捷技能的"] = { tag = { type = "SkillType", skillType = SkillType.Herald } }, 
 	["近战单手武器攻击"] = { flags = bor(ModFlag.Weapon1H, ModFlag.WeaponMelee, ModFlag.Hit) }, 
@@ -733,6 +737,7 @@ local modFlagList = {
 	["投掷地雷的"] = { keywordFlags = KeywordFlag.Mine },
 	["投掷陷阱的"] = { keywordFlags = KeywordFlag.Trap },
 	["爪的"] ={ flags = bor(ModFlag.Claw, ModFlag.Hit) },
+	["锤, 短杖或长杖攻击时，"] = { flags = ModFlag.Hit, tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Mace, ModFlag.Staff) } },
 	--【中文化程序额外添加结束】
 	["斧类攻击的"] = { flags = bor(ModFlag.Axe, ModFlag.Hit) }, --备注：with axes
 	["to axe attacks"] = { flags = bor(ModFlag.Axe, ModFlag.Hit) },
@@ -975,6 +980,7 @@ local modTagList = {
 	--【中文化程序额外添加开始】
 	["持锤, 短杖或长杖时，"] = { tag = { type = "Condition", varList = { "UsingMace", "UsingStaff" } } },
 	["持锤, 短杖或长杖时"] = { tag = { type = "Condition", varList = { "UsingMace", "UsingStaff" } } },
+	["盾牌上每有 (%d+) 能量护盾可获得  "] = function(num) return { tag = { type = "PerStat", stat = "EnergyShieldOnWeapon 2", div = num } } end,
 	["每 (%d+)%% 的攻击格挡率会使"] = function(num) return { tag = { type = "PerStat", stat = "BlockChance", div = num } } end,
 	["每 (%d+)%% 攻击伤害格挡几率"] = function(num) return { tag = { type = "PerStat", stat = "BlockChance", div = num } } end,
 	["每 (%d+)%% 攻击伤害格挡几率会使"] = function(num) return { tag = { type = "PerStat", stat = "BlockChance", div = num } } end,
@@ -988,6 +994,7 @@ local modTagList = {
 		["双持时，"] = { tag = { type = "Condition", var = "DualWielding" } }, --备注：while dual wielding
 		["双持攻击时"] = { tag = { type = "Condition", var = "DualWielding" } }, --备注：while dual wielding
 		["双持攻击的"] = { tag = { type = "Condition", var = "DualWielding" } }, --备注：while dual wielding
+		["双持攻击"] = { tag = { type = "Condition", var = "DualWielding" } },
 		["双持爪时，"] = { tag = { type = "Condition", var = "DualWieldingClaws" } }, --备注：while dual wielding claws
 		["持斧时，"] = { tag = { type = "Condition", var = "UsingAxe" } }, --备注：while wielding an axe
 		["持弓时，"] = { tag = { type = "Condition", var = "UsingBow" } }, --备注：while wielding a bow
@@ -1228,7 +1235,10 @@ local modTagList = {
 	 ["【灵巧】效果下，"] = { tag = { type = "Condition", var = "Elusive" } }, 
 	 ["每个图腾使你"] = { tag = { type = "PerStat", stat = "ActiveTotemLimit" } },
 	 ["近期内你若击中被诅咒的敌人，则"] = { tagList = { { type = "Condition", var = "HitRecently" }, { type = "ActorCondition", actor = "enemy", var = "Cursed" } } },
-	 ["能量护盾全满时"] = { tag = { type = "Condition", var = "FullEnergyShield" } },
+	 ["能量护盾全满时"] = { tag = { type = "Condition", var = "FullEnergyShield" } },	 
+	 ["持续吟唱时，"] = { tag = { type = "Condition", var = "OnChannelling" } },	 
+	 ["若你已经持续吟唱至少 1 秒,则 "] = { tag = { type = "Condition", var = "OnChannelling" } },	 
+	 ["若近期有击败敌人，则"] = { tag = { type = "Condition", var = "KilledRecently" } }, 
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -2011,6 +2021,8 @@ local specialModList = {
 	["对满血敌人的暴击几率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "FullLife" })  } end,
 	["对低血敌人的攻击和法术总暴击率额外提高 (%d+)%%"]= function(num) return {  mod("CritChance", "MORE", num,{ type = "ActorCondition", actor = "enemy", var = "LowLife" })  } end,
 	["每对敌人造成一层中毒效果，便附加 %+([%d%.]+)%% 攻击和法术基础暴击率，最多 %+2%.0%%"]= function(num) return {  mod("CritChance", "BASE", num,{ type = "Multiplier", actor = "enemy", var = "PoisonStack", limit = 2, limitTotal = true })  } end,
+	["攻击附加 %+([%d%.]+)%% 攻击基础暴击率"]= function(num) return {  mod("CritChance", "BASE",nil, num,ModFlag.Attack)  } end,
+	["法术获得 %+([%d%.]+)%% 基础暴击率"]= function(num) return {  mod("CritChance", "BASE", num,nil,ModFlag.Spell)  } end,
 	["近期你每造成一层中毒效果，中毒持续时间便延长 (%d+)%%"]= function(num) return {  mod("EnemyPoisonDuration", "INC", num, { type = "Multiplier", var = "PoisonAppliedRecently" })  } end,
 	["对中毒敌人时，获得额外混沌伤害，其数值等同于物理伤害的 (%d+)%%"]= function(num) return {  mod("PhysicalDamageGainAsChaos", "BASE", num,nil, ModFlag.Hit,{ type = "ActorCondition", actor = "enemy", var = "Poisoned"})  } end,
 	["暴击时攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack, { type = "Condition", var = "CriticalStrike" })  } end, 
@@ -2089,7 +2101,12 @@ local specialModList = {
 	["获得 (%d+) 级的主动技能【(.+)】，且可被此道具上的技能石辅助"] = function(num, _, skill) return extraSkill(skill, num) end, --备注：grants level (%d+) (.+)
 	["获得 (%d+) 级【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end,
 	["造成的异常状态持续时间缩短 (%d+)%%"] = function(num) return { mod("EnemyShockDuration", "INC", -num),mod("EnemyFreezeDuration", "INC", -num),mod("EnemyChillDuration", "INC", -num),mod("EnemyIgniteDuration", "INC", -num),mod("EnemyBleedDuration", "INC", -num),mod("EnemyPoisonDuration", "INC", -num)} end,
-	["造成的异常状态持续时间延长 (%d+)%%"] = function(num) return { mod("EnemyShockDuration", "INC", num),mod("EnemyFreezeDuration", "INC", -num),mod("EnemyChillDuration", "INC", -num),mod("EnemyIgniteDuration", "INC", -num),mod("EnemyBleedDuration", "INC", -num),mod("EnemyPoisonDuration", "INC", -num)} end,
+	["造成的异常状态持续时间延长 (%d+)%%"] = function(num) return { 
+	mod("EnemyShockDuration", "INC", num),
+	mod("EnemyFreezeDuration", "INC", num),
+	mod("EnemyChillDuration", "INC", num),
+	mod("EnemyIgniteDuration", "INC", num),
+	mod("EnemyBleedDuration", "INC", num),mod("EnemyPoisonDuration", "INC", num)} end,
 	["([%d%.]+) 每秒生命回复"] = function(num) return {  mod("LifeRegen", "BASE", num)  } end,
 	["([%d%.]+) 每秒魔力回复"] = function(num) return {  mod("ManaRegen", "BASE", num)  } end,
 	["魔力回复 ([%d%.]+)"] = function(num) return {  mod("ManaRegen", "BASE", num)  } end,
@@ -2242,6 +2259,7 @@ local specialModList = {
 	["总伤害额外降低 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", -num)  } end,
 	["药剂持续期间，获得等同 (%d+)%% 物理伤害的冰霜伤害"]= function(num) return {  mod("PhysicalDamageGainAsCold", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
 	["生效期间，瓦尔技能的伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", num,nil,nil,KeywordFlag.Vaal,{ type = "Condition", var = "UsingFlask" })  } end,
+	["生效期间，瓦尔技能的暴击几率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", num,nil,nil,KeywordFlag.Vaal,{ type = "Condition", var = "UsingFlask" })  } end,
 	["生效期间，瓦尔技能的总伤害额外提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num,nil,nil,KeywordFlag.Vaal,{ type = "Condition", var = "UsingFlask" })  } end,
 	["药剂持续期间，近战物理总伤害额外提高 (%d+)%%"]= function(num) return {  mod("PhysicalDamage", "MORE", num,nil, ModFlag.Melee,{ type = "Condition", var = "UsingFlask" })  } end,
 	["药剂持续期间，物理伤害的 (%d+)%% 转换为闪电伤害"]= function(num) return {  mod("PhysicalDamageGainAsLightning", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
@@ -2784,6 +2802,8 @@ local specialModList = {
 	["有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("DoubleDamageChance", "BASE", num) } end,
 	["专注时有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("DoubleDamageChance", "BASE", num,{ type = "Condition", var = "Focused" }) } end,
 	["若周围有稀有或传奇敌人，则 %+(%d+)%% 基础暴击伤害加成"] = function(num) return { mod("CritMultiplier", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "RareOrUnique" }) } end,
+	["对传奇的敌人的击中和异常状态伤害提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num,nil,0,bor(KeywordFlag.Hit, KeywordFlag.Ailment) ,{ type = "ActorCondition", actor = "enemy", var = "RareOrUnique" }) } end,
+	["对被诅咒的敌人的击中和异常状态伤害提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num,nil,0,bor(KeywordFlag.Hit, KeywordFlag.Ailment) ,{ type = "ActorCondition", actor = "enemy", var = "Cursed" }) } end,
 	["对传奇的敌人的总伤害额外提高 (%d+)%%"] = function(num) return { mod("Damage", "MORE", num,{ type = "ActorCondition", actor = "enemy", var = "RareOrUnique" }) } end,
 	["对传奇敌人时，总伤害额外提高 (%d+)%%"] = function(num) return { mod("Damage", "MORE", num,{ type = "ActorCondition", actor = "enemy", var = "RareOrUnique" }) } end,
 	["周围有稀有或传奇敌人时，攻击速度提高 (%d+)%%"] = function(num) return { mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack,{ type = "ActorCondition", actor = "enemy", var = "RareOrUnique" }) } end,
@@ -3244,6 +3264,32 @@ local specialModList = {
 	["近期内如果没有被击中，则承受的总伤害额外降低 (%d+)%%"] = function(num) return {  mod("DamageTaken", "MORE", -num,{ type = "Condition", var = "BeenHitRecently", neg = true })  }
 	 end,   
 	["近期内如果没有被击中，则总闪避值额外降低 (%d+)%%"] = function(num) return {  mod("Evasion", "MORE", -num,{ type = "Condition", var = "BeenHitRecently", neg = true })  } end,   
+	["持法杖时，对法术伤害的增幅与减益也会套用于攻击上"] = function() return { mod("SpellDamageAppliesToAttacks", "BASE",100, { type = "Condition", var = "UsingWand" } ) } end,
+	["盾牌上每有 (%d+) 护甲或闪避值可使攻击伤害提高 (%d+)%%"]= function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2),{ type = "PerStat", stat = "EvasionOnWeapon 2", div = tonumber(num1) } ),
+	mod("Damage", "INC", tonumber(num2),{ type = "PerStat", stat = "ArmourOnWeapon 2", div = tonumber(num1) } )
+	  }end,
+	["盾牌上每有 (%d+) 能量护盾可获得 %+(%d+)%% 暴击伤害"]= function(_,num1,num2) return {  mod("CritMultiplier", "BASE", tonumber(num2),{ type = "PerStat", stat = "EnergyShieldOnWeapon 2", div = tonumber(num1) } )  }end,
+	["若你已经持续吟唱至少 1 秒,则 %+(%d+)%% 暴击伤害"]= function(_,num1,num2) return {  mod("CritMultiplier", "BASE", tonumber(num2),{ type = "Condition", var = "OnChannelling" } )  }end,
+	["持锤, 短杖或长杖时有 (%d+)%% 几率造成双倍伤害"] = function(num) return {  mod("DoubleDamageChance", "BASE", tonumber(num),{ type = "Condition", varList = { "UsingMace", "UsingStaff" } } )  }end,
+	["法杖攻击有 (%d+)%% 的物理伤害转换为闪电伤害"] = function(num) return {  mod("PhysicalDamageConvertToLightning", "BASE", num,nil, ModFlag.Wand)  } end,
+	["无法造成点燃，冰缓，冰冻或感电"]  = { flag("CannotFreeze"), flag("CannotChill"),flag("CannotIgnite"),flag("CannotShock") },
+	["攻击投射物必定造成流血和瘫痪，和击退敌人"] =function() return { 
+	 mod("BleedChance", "BASE", 100, nil,  bor(ModFlag.Projectile, ModFlag.Attack)),
+	mod("EnemyKnockbackChance", "BASE", 100, nil,  bor(ModFlag.Projectile, ModFlag.Attack)),
+	mod("EnemyModifier", "LIST", { mod = mod("Condition:Maimed", "FLAG", true) }, nil,  bor(ModFlag.Projectile, ModFlag.Attack)),
+	} end,
+	["投射物无法穿透, 分裂或连锁"]  = { flag("CannotPierce", nil, ModFlag.Projectile), flag("CannotFork", nil, ModFlag.Projectile),flag("CannotChain", nil, ModFlag.Projectile) },
+	["若近期有击败敌人，则每秒回复 (%d+)%% 能量护盾"] = function(num) return {  mod("EnergyShieldRegen", "BASE", num,{ type = "Condition", var = "KilledRecently" })  } end,
+	["附加 (%d+) 天赋点"] = function(num) return { mod("JewelData", "LIST", { key = "clusterJewelNodeCount", value = num }) } end,
+	["每 1 个聚光之石可使暴击几率提高 (%d+)%%"] = function(num) return {  
+			mod("CritChance", "INC", num, { type = "Multiplier", var = "GrandSpectrum" }), 
+			mod("Multiplier:GrandSpectrum", "BASE", 1) 
+	} end,
+	["每 1 个聚光之石获得 %+(%d+)%% 元素抗性"] = function(num) return {  
+			mod("ElementalResist", "BASE", num, { type = "Multiplier", var = "GrandSpectrum" }), 
+			mod("Multiplier:GrandSpectrum", "BASE", 1) 
+	} end,
+	["对法术伤害的增幅与减益也会套用于攻击上，相当于其效果的 150%%"]= function() return { mod("SpellDamageAppliesToAttacks", "BASE",150 ) } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded
@@ -3481,16 +3527,8 @@ minus = -tonumber(minus)
 	["此物品上的【(.+)技能石】由 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^increased ","")] or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
 	-- Conversion
 	["召唤生物伤害提高或降低，将同样套用于自身"] = { flag("MinionDamageAppliesToPlayer") }, --备注：increases and reductions to minion damage also affects? you
-	["召唤生物攻击速度的加成同时套用于你身上"] = { flag("MinionAttackSpeedAppliesToPlayer") }, 
-	
-	
-	
-	
-	["持法杖时，对法术伤害的增幅与减益也会套用于攻击上"] = function() return { mod("SpellDamageAppliesToAttacks", "FLAG",true, { type = "Condition", var = "UsingWand" } ) } end,
-	
-	 
-	--备注：increases and reductions to minion attack speed also affects? you
-	["对法术伤害的增幅与减益也会套用于攻击上"] = { flag("SpellDamageAppliesToAttacks") }, --备注：increases and reductions to spell damage also apply to attacks
+	["召唤生物攻击速度的加成同时套用于你身上"] = { flag("MinionAttackSpeedAppliesToPlayer") }, --备注：increases and reductions to minion attack speed also affects? you
+	["对法术伤害的增幅与减益也会套用于攻击上"] =  function() return { mod("SpellDamageAppliesToAttacks", "BASE",100 ) } end, --备注：increases and reductions to spell damage also apply to attacks
 	["modifiers to claw damage also apply to unarmed"] = { flag("ClawDamageAppliesToUnarmed") },
 	["对爪类武器的伤害加成同时套用于空手攻击伤害上"] = { flag("ClawDamageAppliesToUnarmed") }, --备注：modifiers to claw damage also apply to unarmed attack damage
 	["modifiers to claw attack speed also apply to unarmed"] = { flag("ClawAttackSpeedAppliesToUnarmed") },
@@ -3772,6 +3810,16 @@ minus = -tonumber(minus)
 	} end,
 	["起源珠宝"] = { mod("Multiplier:PrimordialItem", "BASE", 1) }, --备注：primordial
 	["spectres have a base duration of (%d+) seconds"] = function(num) return { mod("SkillData", "LIST", { key = "duration", value = 6 }, { type = "SkillName", skillName = "召唤灵体" }) } end,
+	["flasks applied to you have (%d+)%% increased effect"] = function(num) return { mod("FlaskEffect", "INC", num) } end,
+	["adds (%d+) passive skills"] = function(num) return { mod("JewelData", "LIST", { key = "clusterJewelNodeCount", value = num }) } end,
+	
+	["2 added passive skills are jewel sockets"] = { mod("JewelData", "LIST", { key = "clusterJewelSocketCount", value = 2 }) },
+	["1 added passive skill is (.+)"] = function(_, name) return { 
+		name == "a jewel socket" 
+		and mod("JewelData", "LIST", { key = "clusterJewelSocketCount", value = 1 }) 
+		or mod("ClusterJewelNotable", "LIST", name)
+	} end,
+	["added small passive skills have (%d+)%% increased effect"] = function(num) return { mod("JewelData", "LIST", { key = "clusterJewelIncEffect", value = num }) } end,
 	-- Misc
 	["iron will"] = { flag("IronWill") },
 	["iron reflexes while stationary"] = { mod("Keystone", "LIST", "Iron Reflexes", { type = "Condition", var = "Stationary" }) },
@@ -4352,6 +4400,13 @@ end
 for k, v in pairs(jewelThresholdFuncs) do
 	jewelFuncList[k:lower()] = { func = v, type = "Threshold" }
 end
+-- Generate list of cluster jewel skills
+local clusterJewelSkills = {}
+for baseName, jewel in pairs(data["3_0"].clusterJewels.jewels) do
+	for skillId, skill in pairs(jewel.skills) do
+		clusterJewelSkills[table.concat(skill.enchant, " "):lower()] = { mod("JewelData", "LIST", { key = "clusterJewelSkill", value = skillId }) }
+	end
+end
 
 -- Scan a line for the earliest and longest match from the pattern list
 -- If a match is found, returns the corresponding value from the pattern list, plus the remainder of the line and a table of captures
@@ -4386,6 +4441,10 @@ local function parseMod(line, order)
 	if jewelFunc then
 		return { mod("JewelFunc", "LIST", jewelFunc) }
 	end
+	local clusterJewelSkill = clusterJewelSkills[lineLower]
+	if clusterJewelSkill then
+		return clusterJewelSkill
+	end
 	if unsupportedModList[lineLower] then
 		return { }, line
 	end
@@ -4397,7 +4456,12 @@ local function parseMod(line, order)
 			return copyTable(specialMod)
 		end
 	end
-
+	-- Check for add-to-cluster-jewel special
+	--注意 星团珠宝
+	local addToCluster = line:match("^Added Small Passive Skills also grant： (.+)$")
+	if addToCluster then
+		return { mod("AddToClusterJewelNode", "LIST", addToCluster) }
+	end
 	line = line .. " "
 
 	-- Check for a flag/tag specification at the start of the line

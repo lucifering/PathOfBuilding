@@ -136,7 +136,8 @@ function calcs.defence(env, actor)
 							breakdown.slot(slot, nil, slotCfg, evasionBase, nil, "Evasion", "ArmourAndEvasion", "Defences")
 						end
 					end
-				end
+				end	
+				
 			end
 		end
 		energyShieldBase = modDB:Sum("BASE", nil, "EnergyShield")

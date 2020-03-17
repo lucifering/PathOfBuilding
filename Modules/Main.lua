@@ -95,11 +95,10 @@ local newItem = new("Item", targetVersion, "稀 有 度: 稀有\n"..raw)
 			if newItem.base then
 				newItem:NormaliseQuality()
 				if newItem.crafted then
-					if newItem.base.implicit and (#newItem.modLines == 0 or newItem.modLines[1].custom) then
-						newItem.implicitLines = 0
+					if newItem.base.implicit and #newItem.implicitModLines == 0 then
+						-- Automatically add implicit
 						for line in newItem.base.implicit:gmatch("[^\n]+") do
-							newItem.implicitLines = newItem.implicitLines + 1
-							t_insert(newItem.modLines, newItem.implicitLines, { line = line })
+							t_insert(newItem.implicitModLines, { line = line })
 						end
 					end
 					newItem:Craft()
@@ -145,11 +144,13 @@ local newItem = new("Item", targetVersion, "稀 有 度: 稀有\n"..raw)
 	self.controls.options = new("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 0, 0, 70, 20, "Options", function()
 		self:OpenOptionsPopup()
 	end)
+	--[[
 	self.controls.patreon = new("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 112, 0, 74, 20, "", function()
 		OpenURL("https://www.patreon.com/openarl")
-	end)
-	self.controls.patreon:SetImage("Assets/patreon_logo.png")
-self.controls.patreon.tooltipText = "给国际服的原作者捐款赞助！"
+	end)]]--
+	--self.controls.patreon:SetImage("Assets/patreon_logo.png")
+	--self.controls.patreon.tooltipText = "给国际服的原作者捐款赞助！"
+
 self.controls.about = new("ButtonControl", {"BOTTOMLEFT",self.anchorMain,"BOTTOMLEFT"}, 228, 0, 70, 20, "关于", function()
 		self:OpenAboutPopup()
 	end)
@@ -615,11 +616,14 @@ controls.update = new("ButtonControl", nil, -45, 220, 80, 20, "更新", function
 controls.cancel = new("ButtonControl", nil, 45, 220, 80, 20, "取消", function()
 		self:ClosePopup()
 	end)
+	--[[
 	controls.patreon = new("ButtonControl", {"BOTTOMLEFT",nil,"BOTTOMLEFT"}, 10, -10, 82, 22, "", function()
 		OpenURL("https://www.patreon.com/openarl")
 	end)
 	controls.patreon:SetImage("Assets/patreon_logo.png")
 controls.patreon.tooltipText = "给pob原作者：Openarl 捐款赞助!"
+]]--
+
 self:OpenPopup(800, 250, "【可用更新】", controls)
 end
 

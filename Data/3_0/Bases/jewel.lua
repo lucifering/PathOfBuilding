@@ -57,3 +57,21 @@ itemBases["锐利之凝珠宝"] = {
 	tags = { default = true, not_for_sale = true, abyss_jewel_ranged = true, abyss_jewel = true, },
 	req = { },
 }
+itemBases["巨型星团珠宝"] = {
+	type = "Jewel",
+	subType = "Cluster",
+	tags = { default = true, jewel = true, not_for_sale = true, expansion_jewel_large = true, },
+	req = { },
+}
+itemBases["中型星团珠宝"] = {
+	type = "Jewel",
+	subType = "Cluster",
+	tags = { default = true, jewel = true, not_for_sale = true, expansion_jewel_medium = true, },
+	req = { },
+}
+itemBases["小型星团珠宝"] = {
+	type = "Jewel",
+	subType = "Cluster",
+	tags = { default = true, jewel = true, not_for_sale = true, expansion_jewel_small = true, },
+	req = { },
+}

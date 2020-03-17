@@ -10,7 +10,7 @@ skills["AbyssalCry"] = {
 	name = "深渊战吼",
 	color = 1,
 	description = "施展战吼, 使周围敌人缓速, 并在被击败时爆裂. 缓速效果随着周围敌人数量提升. 嘲讽周围所有敌人, 使他们攻击施放者. 与其他战吼技能共享技能冷却.",
-	skillTypes = { [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.ChaosSkill] = true, [SkillType.Hit] = true, [SkillType.Warcry] = true, },
+	skillTypes = { [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.ChaosSkill] = true, [SkillType.Hit] = true, [SkillType.Warcry] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.25,
 	statMap = {
@@ -375,7 +375,7 @@ skills["Anger"] = {
 	baseEffectiveness = 2.25,
 	incrementalEffectiveness = 0.023000000044703,
 	description = "施放一个光环, 使你与受光环影响友军在攻击和施放法术时额外附带火焰伤害.",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, [SkillType.Type85] = true, [SkillType.Type86] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -458,7 +458,7 @@ skills["AnimateArmour"] = {
 	name = "幻化守卫",
 	color = 1,
 	description = "操控一件武器或防具, 使其依附在一个隐形的守卫身上并为你而战. 你可以武器或更多的防具依附在该守卫身上, 但是无法依附未鉴定的物品.",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggerable] = true, [SkillType.CreatesMinion] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggerable] = true, [SkillType.CreatesMinion] = true, [SkillType.PhysicalSkill] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
 	castTime = 0.6,
@@ -557,7 +557,7 @@ skills["Berserk"] = {
 	name = "狂怒",
 	color = 1,
 	description = "以极快速度消耗怒火，产生一个强力增益效果，提高总攻击伤害、总攻击速度和总移动速度，使受到的总伤害降低。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Triggerable] = true, [SkillType.Instant] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Triggerable] = true, [SkillType.Instant] = true, [SkillType.Type86] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -593,7 +593,7 @@ skills["Berserk"] = {
 		"berserk_rage_loss_+%_per_second",
 		"display_this_skill_cooldown_does_not_recover_during_buff",
 		"base_deal_no_damage",
-		"instant_skill_is_added_to_held_skills_list",
+		
 	},
 	levels = {
 		[1] = { 5, 15, 15, 25, -15, 25, 5, 20, cooldown = 5, levelRequirement = 34, manaCost = 10, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
@@ -743,7 +743,7 @@ skills["BloodSandStance"] = {
 	name = "血与沙",
 	color = 1,
 	description = "施放一个增益效果，基于不同的姿态给近战技能施加不同的加成。再次使用该技能会在血姿态和沙姿态之间切换。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Instant] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Instant] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.Instant] = true, [SkillType.Type85] = true, [SkillType.Type86] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -776,7 +776,7 @@ mod("Damage", "MORE", nil, ModFlag.Area, 0, { type = "GlobalEffect", effectType 
 		"blood_sand_stance_melee_skills_area_damage_+%_final_in_sand_stance",
 		"base_deal_no_damage",
 		"console_skill_dont_chase",
-		"instant_skill_is_added_to_held_skills_list",
+		 
 	},
 	levels = {
 		[1] = { 0, -5, 10, 10, -5, cooldown = 2, levelRequirement = 4, manaCost = 10, statInterpolation = { 1, 1, 1, 1, 1, }, },
@@ -1053,7 +1053,7 @@ skills["DecoyTotem"] = {
 	name = "诱饵图腾",
 	color = 1,
 	description = "召唤一个图腾, 它会持续的嘲讽周围的敌人对其进行攻击.",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Area] = true, [SkillType.Totem] = true, [SkillType.SpellCanRepeat] = true, [SkillType.AreaSpell] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Area] = true, [SkillType.Totem] = true, [SkillType.SpellCanRepeat] = true, [SkillType.AreaSpell] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	skillTotemId = 6,
 	castTime = 1,
@@ -1127,7 +1127,7 @@ skills["Determination"] = {
 	name = "坚定",
 	color = 1,
 	description = "施放一个光环, 使你与受光环影响友军获得额外的护甲.",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.CanHaveBlessing] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.CanHaveBlessing] = true, [SkillType.Type85] = true, [SkillType.Type86] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -1368,7 +1368,7 @@ skills["PuresteelBanner"] = {
 	name = "恐怖之旗",
 	color = 1,
 	description = "施放一次，保留魔力，扛起一面旗帜，周围友军的攻击会造成穿刺，并使周围敌人的命中值降低。扛有旗帜时若击败敌人，则获得等阶。再次施放此技能可以放置旗帜，结束魔力保留。放置旗帜后，每等阶都会使其更加强大。你同时只能有一面旗帜。",
-	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Spell] = true, [SkillType.Duration] = true, [SkillType.ManaCostReserved] = true, [SkillType.Aura] = true, [SkillType.ManaCostPercent] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.AuraDuration] = true, [SkillType.PhysicalSkill] = true, },
+	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Spell] = true, [SkillType.Duration] = true, [SkillType.ManaCostReserved] = true, [SkillType.Aura] = true, [SkillType.ManaCostPercent] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.AuraDuration] = true, [SkillType.PhysicalSkill] = true, [SkillType.Type88] = true, [SkillType.Type85] = true, [SkillType.Type86] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "banner_aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -1649,7 +1649,7 @@ skills["EnduringCry"] = {
 	name = "坚决战吼",
 	color = 1,
 	description = "发出怒吼, 嘲讽周围的敌人来攻击自己. 视周围被嘲讽敌人的数量增加耐力球充能数, 若周围有敌人时给与施放者短暂时间的生命恢复. 与其他战吼技能共享技能冷却. 【打我啊. 笨蛋. 】",
-	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Warcry] = true, },
+	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Warcry] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.25,
 	statMap = {
@@ -1722,7 +1722,7 @@ skills["BloodSandArmour"] = {
 	name = "血肉与岩石",
 	color = 1,
 	description = "施放一个光环，影响你和周围的敌人，它的效果取决于你的姿态。再次使用该技能会在血姿态和沙姿态之间切换。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Aura] = true, [SkillType.AuraDebuff] = true, [SkillType.Instant] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.Maims] = true, [SkillType.Area] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Aura] = true, [SkillType.AuraDebuff] = true, [SkillType.Instant] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.Maims] = true, [SkillType.Area] = true, [SkillType.Type85] = true, [SkillType.Type86] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -1748,7 +1748,7 @@ mod("Condition:Blinded", "FLAG", true, 0, 0, { type = "GlobalEffect", effectType
 		"attack_damage_taken_+%_final_from_enemies_unaffected_by_sand_armour",
 		"support_maimed_enemies_physical_damage_taken_+%",
 		"base_deal_no_damage",
-		"instant_skill_is_added_to_held_skills_list",
+		
 	},
 	levels = {
 		[1] = { 0, -9, 13, cooldown = 2, levelRequirement = 16, manaCost = 25, statInterpolation = { 1, 1, 1, }, },
@@ -2202,7 +2202,7 @@ skills["HeraldOfAsh"] = {
 	baseEffectiveness = 0.5,
 	incrementalEffectiveness = 0.032699998468161,
 	description = "于手中凝聚火焰之力, 为物理伤害额外增加火焰伤害. 若是你击败了一个敌人, 溢出的伤害将会以点燃的形式扩散至附近的敌人.该技能引起的燃烧只会受到持续伤害词缀的影响(燃烧属于持续伤害)",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.CausesBurning] = true, [SkillType.Area] = true, [SkillType.DamageOverTime] = true, [SkillType.FireSkill] = true, [SkillType.Type27] = true, [SkillType.Herald] = true, [SkillType.Duration] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.CausesBurning] = true, [SkillType.Area] = true, [SkillType.DamageOverTime] = true, [SkillType.FireSkill] = true, [SkillType.Type27] = true, [SkillType.Herald] = true, [SkillType.Duration] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.Type85] = true, [SkillType.Type86] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -2283,7 +2283,7 @@ skills["HeraldOfPurity"] = {
 	baseEffectiveness = 0.31700000166893,
 	incrementalEffectiveness = 0.01799999922514,
 	description = "给予一个可以为你的法术和攻击附加物理伤害的增益。若你击败敌人时带有此增益，该技能会召唤一个纯净哨兵，若你召唤的纯净哨兵已达上限，则会刷新现有的某个纯净哨兵的持续时间和生命。纯净哨兵可以进行单体攻击和区域性近战攻击。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.Herald] = true, [SkillType.Minion] = true, [SkillType.Instant] = true, [SkillType.Duration] = true, [SkillType.PhysicalSkill] = true, [SkillType.CreatesMinion] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.Herald] = true, [SkillType.Minion] = true, [SkillType.Instant] = true, [SkillType.Duration] = true, [SkillType.PhysicalSkill] = true, [SkillType.CreatesMinion] = true, [SkillType.Type85] = true, [SkillType.Type86] = true, [SkillType.Type90] = true, },
 	minionSkillTypes = { [SkillType.Hit] = true, [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Area] = true, },
 	statDescriptionScope = "minion_skill_stat_descriptions",
 	castTime = 0,
@@ -2558,7 +2558,7 @@ skills["ImmortalCall"] = {
 	name = "不朽怒嚎",
 	color = 1,
 	description = "短期内受到的物理伤害和元素伤害降低。最多消耗 5 个耐力球使增益效果持续更久，并进一步降低受到的物理伤害。和防卫技能共用冷却时间。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggerable] = true, [SkillType.Instant] = true, [SkillType.GuardSkill] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggerable] = true, [SkillType.Instant] = true, [SkillType.GuardSkill] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -2589,7 +2589,7 @@ skills["ImmortalCall"] = {
 		"buff_effect_duration_+%_per_removable_endurance_charge_limited_to_5",
 		"base_deal_no_damage",
 		"display_this_skill_cooldown_does_not_recover_during_buff",
-		"instant_skill_is_added_to_held_skills_list",
+		
 	},
 	levels = {
 		[1] = { -25, -25, -1500, 20, levelRequirement = 34, cooldown = 3, duration = 1, manaCost = 21, statInterpolation = { 1, 1, 1, 1, }, },
@@ -2638,7 +2638,7 @@ skills["VaalImmortalCall"] = {
 	name = "瓦尔.不朽怒嚎",
 	color = 1,
 	description = "仰天怒吼，释放耐力球，使角色在短时间内无敌，也无法获得瓦尔之灵。无敌时间长短视释放的耐力球数量而定。【万. 佛. 朝. 宗! 】",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Vaal] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Vaal] = true, [SkillType.Type86] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
 	baseFlags = {
@@ -2656,7 +2656,7 @@ skills["VaalImmortalCall"] = {
 		"immortal_call_prevent_all_damage",
 		"base_deal_no_damage",
 		"modifiers_to_skill_effect_duration_also_affect_soul_prevention_duration",
-		"instant_skill_is_added_to_held_skills_list",
+		
 		"display_skill_fixed_duration_buff",
 	},
 	levels = {
@@ -2870,7 +2870,7 @@ skills["MoltenShell"] = {
 	baseEffectiveness = 9.6499996185303,
 	incrementalEffectiveness = 0.016499999910593,
 	description = "施加一个增益效果，增加护甲值，并在耗尽前替你承担部分伤害。当该增益效果时间结束或耗尽时，该技能将基于该增益效果承受的总伤害，把伤害反射给周围的敌人。与其它防卫技能共用冷却时间。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Type31] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.Triggerable] = true, [SkillType.GuardSkill] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Type31] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.Triggerable] = true, [SkillType.GuardSkill] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -2899,7 +2899,7 @@ skills["MoltenShell"] = {
 		"base_skill_show_average_damage_instead_of_dps",
 		"is_area_damage",
 		"display_this_skill_cooldown_does_not_recover_during_buff",
-		"instant_skill_is_added_to_held_skills_list",
+		
 	},
 	levels = {
 		[1] = { 1, 200, 75, 20, 100, 10000, levelRequirement = 4, cooldown = 4, duration = 3, manaCost = 8, statInterpolation = { 3, 1, 1, 1, 1, 1, }, },
@@ -2950,7 +2950,7 @@ skills["VaalMoltenShell"] = {
 	baseEffectiveness = 14.47500038147,
 	incrementalEffectiveness = 0.016499999910593,
 	description = "施加一个增益效果，增加护甲值，并在耗尽前替你承担部分伤害。当该增益效果时间结束或耗尽时，该技能将基于该增益效果在每秒承受的伤害，每秒把当前受到的伤害反射给周围的敌人。当该增益效果时间结束或耗尽时，该技能会基于该增益效果承受的总伤害，把伤害反射给周围的敌人。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Type31] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.Vaal] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Type31] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.Vaal] = true, [SkillType.Type86] = true, [SkillType.Type85] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -2979,7 +2979,7 @@ skills["VaalMoltenShell"] = {
 		"molten_shell_explode_each_hit",
 		"modifiers_to_skill_effect_duration_also_affect_soul_prevention_duration",
 		"display_vaal_molten_shell_alternate_description",
-		"instant_skill_is_added_to_held_skills_list",
+		
 	},
 	levels = {
 		[1] = { 0.80000001192093, 1400, 80, 60, 100, 30000, levelRequirement = 4, duration = 9, cooldown = 0.5, statInterpolation = { 3, 1, 1, 1, 1, 1, }, },
@@ -3209,7 +3209,7 @@ skills["PhysicalDamageAura"] = {
 	name = "尊严",
 	color = 1,
 	description = "施放一个光环，使你周围的敌人受到的物理伤害提高。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.AuraDebuff] = true, [SkillType.CanHaveBlessing] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.AuraDebuff] = true, [SkillType.CanHaveBlessing] = true, [SkillType.Type85] = true, [SkillType.Type86] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
 	parts = {
@@ -3293,7 +3293,7 @@ skills["Punishment"] = {
 	name = "惩戒",
 	color = 1,
 	description = "对目标区域施放诅咒, 受到诅咒的敌人在近战攻击命中时给与击中的目标一个增益. 此增益给与更多近战伤害和攻击速度. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Curse] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Curse] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.Type85] = true, [SkillType.Type86] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
 	statMap = {
@@ -3372,7 +3372,7 @@ skills["FireResistAura"] = {
 	name = "火焰净化",
 	color = 1,
 	description = "施放一个光环, 使你与受光环影响的友军获得额外的火焰抗性.",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, [SkillType.Type85] = true, [SkillType.Type86] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -3447,7 +3447,7 @@ skills["FireImpurity"] = {
 	name = "瓦尔.不净之火",
 	color = 1,
 	description = "施放一个光环，使你和周围友军受到的火焰伤害降低，并免疫点燃效果，并在击中周围敌人时无视他们的火焰抗性。 ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.SkillCanTotem] = true, [SkillType.Type27] = true, [SkillType.Duration] = true, [SkillType.Vaal] = true, [SkillType.Aura] = true, [SkillType.AreaSpell] = true, [SkillType.FireSkill] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.SkillCanTotem] = true, [SkillType.Type27] = true, [SkillType.Duration] = true, [SkillType.Vaal] = true, [SkillType.Aura] = true, [SkillType.AreaSpell] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.Type85] = true, [SkillType.Type86] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -3526,7 +3526,7 @@ skills["RallyingCry"] = {
 	name = "激励战吼",
 	color = 1,
 	description = "施展战吼, 使自身和盟友伤害和魔力恢复增加. 伤害增加量随着周围敌人数量提升. 嘲讽周围所有敌人, 使他们攻击施放者. 与其他战吼技能共享技能冷却.",
-	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Warcry] = true, },
+	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Warcry] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.25,
 	statMap = {
@@ -3605,7 +3605,7 @@ skills["Reckoning"] = {
 	baseEffectiveness = 0.5,
 	incrementalEffectiveness = 0.023299999535084,
 	description = "当盾牌格档时对敌人进行一次迅速的反击. 此反击会对锥状区域造成伤害.",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Shield] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.PhysicalSkill] = true, },
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Shield] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.PhysicalSkill] = true, [SkillType.Type90] = true, },
 	weaponTypes = {
 		["None"] = true,
 		["Claw"] = true,
@@ -4196,7 +4196,7 @@ skills["QuickGuard"] = {
 	baseEffectiveness = 10,
 	incrementalEffectiveness = 0.029999999329448,
 	description = "施加一个增益效果，在其耗尽之前替你承受部分伤害。和其它防卫技能共用冷却时间。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Instant] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.GuardSkill] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Instant] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.GuardSkill] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 0,
 	baseFlags = {
@@ -4213,7 +4213,7 @@ skills["QuickGuard"] = {
 		"quick_guard_damage_absorb_limit",
 		"base_deal_no_damage",
 		"display_this_skill_cooldown_does_not_recover_during_buff",
-		"instant_skill_is_added_to_held_skills_list",
+		
 	},
 	levels = {
 		[1] = { 70, 1, levelRequirement = 4, cooldown = 3, duration = 1.5, manaCost = 4, statInterpolation = { 1, 3, }, },
@@ -4262,7 +4262,7 @@ skills["SummonFireGolem"] = {
 	name = "召唤烈焰魔像",
 	color = 1,
 	description = "召唤烈焰魔像, 启动时会使你增加伤害. 烈焰魔像会使用火焰放射, 持续造成火焰伤害, 及射出会爆炸的弧状移动投射物. ",
-	skillTypes = { [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.SkillCanMine] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Spell] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.Golem] = true, [SkillType.CreatesMinion] = true, },
+	skillTypes = { [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.SkillCanMine] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Spell] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.Golem] = true, [SkillType.CreatesMinion] = true, [SkillType.Type90] = true, },
 	minionSkillTypes = { [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
 	castTime = 1,
@@ -4342,7 +4342,7 @@ skills["SummonRockGolem"] = {
 	name = "召唤巨石魔像",
 	color = 1,
 	description = "召唤一个为你提供额外生命回复的巨石魔像. 除了一般的近战攻击外, 巨石魔像会使用滚动冲撞, 还有沉重的冲击波来嘲讽附近的敌人. ",
-	skillTypes = { [SkillType.Triggerable] = true, [SkillType.SkillCanMine] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Spell] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.Golem] = true, [SkillType.PhysicalSkill] = true, [SkillType.CreatesMinion] = true, [SkillType.CreatesMinion] = true, },
+	skillTypes = { [SkillType.Triggerable] = true, [SkillType.SkillCanMine] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Spell] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.Golem] = true, [SkillType.PhysicalSkill] = true, [SkillType.CreatesMinion] = true, [SkillType.CreatesMinion] = true, [SkillType.Type90] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.MovementSkill] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
 	castTime = 1,
@@ -4674,7 +4674,7 @@ skills["Vengeance"] = {
 	baseEffectiveness = 0.5,
 	incrementalEffectiveness = 0.023299999535084,
 	description = "你被击中时有机会对周围的敌人进行一次快速的反击. 攻击区域范围会受到武器攻击范围的影响. ",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.PhysicalSkill] = true, },
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.PhysicalSkill] = true, [SkillType.Type90] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
@@ -4755,7 +4755,7 @@ skills["VigilantStrike"] = {
 	name = "戒备打击",
 	color = 1,
 	description = "对敌人进行奋力一击。你获得护体增益，带有减伤效果。持续时间可以透过消耗耐力球来延长。需要近战武器。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Buff] = true, [SkillType.Melee] = true, [SkillType.AttackCanRepeat] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.Type53] = true, },
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Buff] = true, [SkillType.Melee] = true, [SkillType.AttackCanRepeat] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.Type53] = true, [SkillType.Type90] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
@@ -4833,7 +4833,7 @@ skills["Vitality"] = {
 	name = "活力",
 	color = 1,
 	description = "施放一个光环, 使你与受光环影响友军获得额外的生命回复.",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, [SkillType.Type85] = true, [SkillType.Type86] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -4905,7 +4905,7 @@ skills["Vulnerability"] = {
 	name = "脆弱",
 	color = 1,
 	description = "对目标区域施放诅咒, 受到诅咒的敌人将会受到增加的物理伤害及物理持续伤害.  攻击被诅咒的目标有机会造成流血和瘫痪效果。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Curse] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Curse] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.Type85] = true, [SkillType.Type86] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
 	statMap = {
@@ -4988,7 +4988,7 @@ skills["WarlordsMark"] = {
 	name = "督军印记",
 	color = 1,
 	description = "对目标区域施放诅咒, 受到诅咒的敌人将更容易被晕眩, 更慢恢复. 在击中带有印记的敌人时会获得额外的生命与魔力偷取, 此外在击败带有印记的敌人时会有机会获得耐力球.",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Curse] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Curse] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.Type85] = true, [SkillType.Type86] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
 	statMap = {
@@ -5072,7 +5072,7 @@ skills["BloodstainedBanner"] = {
 	name = "战旗",
 	color = 1,
 	description = "施放一次，保留魔力，扛起一面旗帜，提高周围友军的命中值，并使周围敌人受到的物理伤害提高。扛有旗帜时若击败敌人，则获得等阶。再次施放此技能可以放置旗帜，结束魔力保留。放置旗帜后，每等阶都会使其更加强大。你同时只能有一面旗帜。",
-	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Spell] = true, [SkillType.Duration] = true, [SkillType.ManaCostReserved] = true, [SkillType.Aura] = true, [SkillType.ManaCostPercent] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.AuraDuration] = true, [SkillType.PhysicalSkill] = true, },
+	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Spell] = true, [SkillType.Duration] = true, [SkillType.ManaCostReserved] = true, [SkillType.Aura] = true, [SkillType.ManaCostPercent] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.AuraDuration] = true, [SkillType.PhysicalSkill] = true, [SkillType.Type88] = true, [SkillType.Type85] = true, [SkillType.Type86] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "banner_aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {

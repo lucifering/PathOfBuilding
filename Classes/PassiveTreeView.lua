@@ -80,10 +80,7 @@ end
 
 
 function PassiveTreeViewClass:Draw(build, viewPort, inputEvents)
-	 
-	 	
-
-	 
+	  
 	local spec = build.spec
 	local tree = spec.tree
 	if self.isFirstLoad ==0 then 		
@@ -316,39 +313,36 @@ function PassiveTreeViewClass:Draw(build, viewPort, inputEvents)
 		self:DrawAsset(tree.assets.BackgroundDexInt, scrX, scrY, scale)
 	end
 
+	local function renderGroup(group, isExpansion)
+		local scrX, scrY = treeToScreen(group.x, group.y)
+		if group.ascendancyName then
+			if group.isAscendancyStart then
+				if group.ascendancyName ~= spec.curAscendClassName then
+					SetDrawColor(1, 1, 1, 0.25)
+				end
+				self:DrawAsset(tree.assets["Classes"..group.ascendancyName], scrX, scrY, scale)
+				SetDrawColor(1, 1, 1)
+			end
+		elseif group.oo[3] then
+			self:DrawAsset(tree.assets[isExpansion and "GroupBackgroundLargeHalfAlt" or "PSGroupBackground3"], scrX, scrY, scale, true)
+		elseif group.oo[2] then
+			self:DrawAsset(tree.assets[isExpansion and "GroupBackgroundMediumAlt" or "PSGroupBackground2"], scrX, scrY, scale)
+		elseif group.oo[1] then
+			self:DrawAsset(tree.assets[isExpansion and "GroupBackgroundSmallAlt" or "PSGroupBackground1"], scrX, scrY, scale)
+		end
+	end
+	
 	-- Draw the group backgrounds
 	-- Draw the group backgrounds
 	for _, group in pairs(tree.groups) do
 		if not group.isProxy then
-			local scrX, scrY = treeToScreen(group.x, group.y)
-			if group.ascendancyName then
-				if group.isAscendancyStart then
-					if group.ascendancyName ~= spec.curAscendClassName then
-						SetDrawColor(1, 1, 1, 0.25)
-					end
-					 local s = string.gsub(group.ascendancyName, "([^%w%.%- ])", function(c) return string.format("%%%02x", string.byte(c)) end)
-						s=string.gsub(s, " ", "_")
-						s=string.gsub(s, "%%", "_")
-						 
-
-					self:DrawAsset(tree.assets["Classes"..s], scrX, scrY, scale)
-						
-					
-					SetDrawColor(1, 1, 1)
-				end
-			elseif group.oo[3] then
-				self:DrawAsset(tree.assets.PSGroupBackground3, scrX, scrY, scale, true)
-			elseif group.oo[2] then
-				self:DrawAsset(tree.assets.PSGroupBackground2, scrX, scrY, scale)
-			elseif group.oo[1] then
-				self:DrawAsset(tree.assets.PSGroupBackground1, scrX, scrY, scale)
-			end
+			renderGroup(group)
 		end
 	end
-	 
-	-- Draw the connecting lines between nodes
-	SetDrawLayer(nil, 20)
-	for _, connector in pairs(tree.connectors) do
+	for _, subGraph in pairs(spec.subGraphs) do
+		renderGroup(subGraph.group, true)
+	end
+	local function renderConnector(connector)
 		local node1, node2 = spec.nodes[connector.nodeId1], spec.nodes[connector.nodeId2]
 
 		-- Determine the connector state
@@ -377,6 +371,16 @@ function PassiveTreeViewClass:Draw(build, viewPort, inputEvents)
 		end
 		DrawImageQuad(tree.assets[connector.type..state].handle, unpack(connector.c))
 		SetDrawColor(1, 1, 1)
+	end
+	-- Draw the connecting lines between nodes
+	SetDrawLayer(nil, 20)
+	for _, connector in pairs(tree.connectors) do
+		renderConnector(connector)
+	end
+	for _, subGraph in pairs(spec.subGraphs) do
+		for _, connector in pairs(subGraph.connectors) do
+			renderConnector(connector)
+		end
 	end
 
 	if self.showHeatMap then
@@ -419,22 +423,33 @@ function PassiveTreeViewClass:Draw(build, viewPort, inputEvents)
 				end
 				if node.type == "Socket" then
 					-- Node is a jewel socket, retrieve the socketed jewel (if present) so we can display the correct art
-					base = tree.assets[node.overlay[state]]
+					base = tree.assets[node.overlay[state .. (node.expansionJewel and "Alt" or "")]]
+					
 					local socket, jewel = build.itemsTab:GetSocketAndJewelForNodeID(nodeId)
 					if isAlloc and jewel then
 	if jewel.baseName == "赤红珠宝" then
-							overlay = "JewelSocketActiveRed"
+							overlay = node.expansionJewel and "JewelSocketActiveRedAlt" or "JewelSocketActiveRed"
 	elseif jewel.baseName == "翠绿珠宝" then
-							overlay = "JewelSocketActiveGreen"
+							overlay = node.expansionJewel and "JewelSocketActiveGreenAlt" or "JewelSocketActiveGreen"
 	elseif jewel.baseName == "钴蓝珠宝" then
-							overlay = "JewelSocketActiveBlue"
+							overlay = node.expansionJewel and "JewelSocketActiveBlueAlt" or "JewelSocketActiveBlue"
 	elseif jewel.baseName == "三相珠宝" then
-							overlay = "JewelSocketActivePrismatic"
+							overlay = node.expansionJewel and "JewelSocketActivePrismaticAlt" or "JewelSocketActivePrismatic"
+	elseif jewel.base.subType == "Abyss" or jewel.baseName:match("之凝珠宝$") then
+							overlay = node.expansionJewel and "JewelSocketActiveAbyssAlt" or "JewelSocketActiveAbyss"
 	elseif jewel.baseName == "永恒珠宝" then
-							overlay = "JewelSocketActiveTimeless"
-	elseif jewel.baseName:match("之凝珠宝$") then
-							overlay = "JewelSocketActiveAbyss"
+							overlay = node.expansionJewel and "JewelSocketActiveTimelessAlt" or "JewelSocketActiveTimeless"							
+	elseif jewel.baseName == "Large Cluster Jewel"  or jewel.baseName == "巨型星团珠宝" then
+						-- Temp; waiting for art :/
+						overlay = "JewelSocketActiveGreenAlt"
+	elseif jewel.baseName == "Medium Cluster Jewel" or jewel.baseName == "中型星团珠宝"  then
+						-- Temp; waiting for art :/
+						overlay = "JewelSocketActiveBlueAlt"
+	elseif jewel.baseName == "Small Cluster Jewel"  or jewel.baseName == "小型星团珠宝" then
+						-- Temp; waiting for art :/
+						overlay = "JewelSocketActiveRedAlt"
 						end
+						
 					end
 				else
 					-- Normal node (includes keystones and notables)
@@ -496,7 +511,7 @@ function PassiveTreeViewClass:Draw(build, viewPort, inputEvents)
 						if hoverDep and hoverDep[node] then
 							-- This node depends on the hover node, turn it red
 							SetDrawColor(1, 0, 0)
-						elseif hoverNode.type == "Socket" then
+						elseif hoverNode.type == "Socket" and hoverNode.nodesInRadius then
 							-- Hover node is a socket, check if this node falls within its radius and color it accordingly
 						local socket, jewel = build.itemsTab:GetSocketAndJewelForNodeID(hoverNode.id)
 						local isThreadOfHope = jewel and jewel.jewelRadiusLabel == "Variable"
@@ -552,155 +567,154 @@ function PassiveTreeViewClass:Draw(build, viewPort, inputEvents)
 	end
 	-- Draw the nodes
 	for nodeId, node in pairs(spec.nodes) do
-		if node.group and not node.isProxy and not node.group.isProxy then
-			renderNode(nodeId, node)
-		end
+		renderNode(nodeId, node)
 	end
 	--珠宝 圈圈
 	-- Draw ring overlays for jewel sockets
 	SetDrawLayer(nil, 25)
 	for nodeId in pairs(tree.sockets) do
 		local node = spec.nodes[nodeId]
+		 
+		
+		
 		
 		if node then
-			local scrX, scrY = treeToScreen(node.x, node.y)
-			local socket, jewel = build.itemsTab:GetSocketAndJewelForNodeID(nodeId)
-			if node == hoverNode then
-				-- Mouse is over this socket, show all radius rings
-				local isThreadOfHope = jewel and jewel.jewelRadiusLabel == "Variable"
-				if isThreadOfHope then
+			
+			if node and (not node.expansionJewel or node.expansionJewel.size == 2) then
+				local scrX, scrY = treeToScreen(node.x, node.y)
+			 
+				if node == hoverNode then
+					-- Mouse is over this socket, show all radius rings
 					for _, radData in ipairs(build.data.jewelRadius) do
-						local outerSize = radData.outer * scale
-						local innerSize = radData.inner * scale
-						-- Jewel in socket is Thread of Hope or similar, draw it's annulus
-						if innerSize ~= 0 then
-							SetDrawColor(radData.col)
-							DrawImage(self.ring, scrX - outerSize, scrY - outerSize, outerSize * 2, outerSize * 2)
-							DrawImage(self.ring, scrX - innerSize, scrY - innerSize, innerSize * 2, innerSize * 2)
-						end
+						
+						local size = radData.outer * scale
+						SetDrawColor(radData.col)
+						DrawImage(self.ring, scrX - size, scrY - size, size * 2, size * 2)
 					end
-				else
-					for _, radData in ipairs(build.data.jewelRadius) do
-						local outerSize = radData.outer * scale
-						local innerSize = radData.inner * scale
-						-- Jewel in socket is not Thread of Hope or similar, draw normal jewel radius
-						if innerSize == 0 then
-							SetDrawColor(radData.col)
-							DrawImage(self.ring, scrX - outerSize, scrY - outerSize, outerSize * 2, outerSize * 2)
-						end
-					end
-				end
-			elseif node.alloc then
-				local socket, jewel = build.itemsTab:GetSocketAndJewelForNodeID(nodeId)
-				if jewel and jewel.jewelRadiusIndex then
-					-- Socket is allocated and there's a jewel socketed into it which has a radius, so show it
+				
+				elseif node.alloc then
 					local scrX, scrY = treeToScreen(node.x, node.y)
-					local radData = build.data.jewelRadius[jewel.jewelRadiusIndex]
-					local size = radData.outer  * scale
-					SetDrawColor(radData.col)
-					local outerSize = radData.outer * scale
-					local innerSize = radData.inner * scale
-					
-					if jewel.name and string.find(jewel.name, '好战的信仰') == 1 then		
-						 
-						SetDrawColor(1, 1, 1)	
+			 
+				
+					local socket, jewel = build.itemsTab:GetSocketAndJewelForNodeID(nodeId)
+					if jewel and jewel.jewelRadiusIndex then
+						-- Socket is allocated and there's a jewel socketed into it which has a radius, so show it
+						local scrX, scrY = treeToScreen(node.x, node.y)
+						local radData = build.data.jewelRadius[jewel.jewelRadiusIndex]
+						local size = radData.outer  * scale
+						SetDrawColor(radData.col)
+						local outerSize = radData.outer * scale
+						local innerSize = radData.inner * scale
+						
+						if jewel.name and string.find(jewel.name, '好战的信仰') == 1 then		
+							 
+							SetDrawColor(1, 1, 1)	
 
-						
-						DrawImage(
-						treeVersions[tree.treeVersion].num >= 3.10 and 
-						tree.assets.TemplarJewelCircle1.handle or tree.assets.PassiveSkillScreenTemplarJewelCircle1.handle						
-						, scrX - size, scrY - size, (size) * 2, (size) * 2)		
+							
+							DrawImage(
+							treeVersions[tree.treeVersion].num >= 3.10 and 
+							tree.assets.TemplarJewelCircle1.handle or tree.assets.PassiveSkillScreenTemplarJewelCircle1.handle						
+							, scrX - size, scrY - size, (size) * 2, (size) * 2)		
 
-						
-						DrawImage(
-						treeVersions[tree.treeVersion].num >= 3.10 and 
-						tree.assets.TemplarJewelCircle2.handle or tree.assets.PassiveSkillScreenTemplarJewelCircle2.handle						
-					, scrX - size, scrY - size, (size) * 2, (size) * 2) 
-						
-					elseif jewel.name and string.find(jewel.name, '致命的骄傲') == 1 then
-					
-						SetDrawColor(1, 1, 1)	 
-						DrawImage(
-						
-						treeVersions[tree.treeVersion].num >= 3.10 and 
-						tree.assets.KaruiJewelCircle1.handle or tree.assets.PassiveSkillScreenKaruiJewelCircle1.handle
-												
-						
-						
-						, scrX - size, scrY - size, (size) * 2, (size) * 2)					
-						DrawImage(
-						treeVersions[tree.treeVersion].num >= 3.10 and 
-						tree.assets.KaruiJewelCircle2.handle or tree.assets.PassiveSkillScreenKaruiJewelCircle2.handle
-												
-						
-						, scrX - size, scrY - size, (size) * 2, (size) * 2) 				
-					
-					elseif jewel.name and string.find(jewel.name, '光彩夺目') == 1 then
-						SetDrawColor(1, 1, 1)	 
-						DrawImage(
-						
-						treeVersions[tree.treeVersion].num >= 3.10 and 
-						tree.assets.VaalJewelCircle1.handle or tree.assets.PassiveSkillScreenVaalJewelCircle1.handle
-						
-						 
-						, scrX - size, scrY - size, (size) * 2, (size) * 2)					
-						DrawImage(
-						
-						
-						treeVersions[tree.treeVersion].num >= 3.10 and 
-						tree.assets.VaalJewelCircle2.handle or tree.assets.PassiveSkillScreenVaalJewelCircle2.handle
-						
-						
+							
+							DrawImage(
+							treeVersions[tree.treeVersion].num >= 3.10 and 
+							tree.assets.TemplarJewelCircle2.handle or tree.assets.PassiveSkillScreenTemplarJewelCircle2.handle						
 						, scrX - size, scrY - size, (size) * 2, (size) * 2) 
-					elseif jewel.name and string.find(jewel.name, '优雅的狂妄') == 1 then
-					
-						SetDrawColor(1, 1, 1)	 
-						DrawImage(
+							
+						elseif jewel.name and string.find(jewel.name, '致命的骄傲') == 1 then
 						
-						treeVersions[tree.treeVersion].num >= 3.10 and 
-						tree.assets.EternalEmpireJewelCircle1.handle or tree.assets.PassiveSkillScreenEternalEmpireJewelCircle1.handle
+							SetDrawColor(1, 1, 1)	 
+							DrawImage(
+							
+							treeVersions[tree.treeVersion].num >= 3.10 and 
+							tree.assets.KaruiJewelCircle1.handle or tree.assets.PassiveSkillScreenKaruiJewelCircle1.handle
+													
+							
+							
+							, scrX - size, scrY - size, (size) * 2, (size) * 2)					
+							DrawImage(
+							treeVersions[tree.treeVersion].num >= 3.10 and 
+							tree.assets.KaruiJewelCircle2.handle or tree.assets.PassiveSkillScreenKaruiJewelCircle2.handle
+													
+							
+							, scrX - size, scrY - size, (size) * 2, (size) * 2) 				
+						
+						elseif jewel.name and string.find(jewel.name, '光彩夺目') == 1 then
+							SetDrawColor(1, 1, 1)	 
+							DrawImage(
+							
+							treeVersions[tree.treeVersion].num >= 3.10 and 
+							tree.assets.VaalJewelCircle1.handle or tree.assets.PassiveSkillScreenVaalJewelCircle1.handle
+							
+							 
+							, scrX - size, scrY - size, (size) * 2, (size) * 2)					
+							DrawImage(
+							
+							
+							treeVersions[tree.treeVersion].num >= 3.10 and 
+							tree.assets.VaalJewelCircle2.handle or tree.assets.PassiveSkillScreenVaalJewelCircle2.handle
+							
+							
+							, scrX - size, scrY - size, (size) * 2, (size) * 2) 
+						elseif jewel.name and string.find(jewel.name, '优雅的狂妄') == 1 then
+						
+							SetDrawColor(1, 1, 1)	 
+							DrawImage(
+							
+							treeVersions[tree.treeVersion].num >= 3.10 and 
+							tree.assets.EternalEmpireJewelCircle1.handle or tree.assets.PassiveSkillScreenEternalEmpireJewelCircle1.handle
+							
+							
+							, scrX - size, scrY - size, (size) * 2, (size) * 2)					
+							DrawImage(
+							treeVersions[tree.treeVersion].num >= 3.10 and 
+							tree.assets.EternalEmpireJewelCircle2.handle or tree.assets.PassiveSkillScreenEternalEmpireJewelCircle2.handle
+							 
+							, scrX - size, scrY - size, (size) * 2, (size) * 2) 
 						
 						
-						, scrX - size, scrY - size, (size) * 2, (size) * 2)					
-						DrawImage(
-						treeVersions[tree.treeVersion].num >= 3.10 and 
-						tree.assets.EternalEmpireJewelCircle2.handle or tree.assets.PassiveSkillScreenEternalEmpireJewelCircle2.handle
-						 
-						, scrX - size, scrY - size, (size) * 2, (size) * 2) 
-					
-					
-					elseif jewel.name and string.find(jewel.name, '残酷的约束') == 1 then
-						SetDrawColor(1, 1, 1)	 
-						DrawImage(
-						treeVersions[tree.treeVersion].num >= 3.10 and 
-						tree.assets.MarakethJewelCircle1.handle or tree.assets.PassiveSkillScreenMarakethJewelCircle1.handle
-						  
+						elseif jewel.name and string.find(jewel.name, '残酷的约束') == 1 then
+							SetDrawColor(1, 1, 1)	 
+							DrawImage(
+							treeVersions[tree.treeVersion].num >= 3.10 and 
+							tree.assets.MarakethJewelCircle1.handle or tree.assets.PassiveSkillScreenMarakethJewelCircle1.handle
+							  
+							
+							, scrX - size, scrY - size, (size) * 2, (size) * 2)					
+							DrawImage(
+							treeVersions[tree.treeVersion].num >= 3.10 and 
+							tree.assets.MarakethJewelCircle2.handle or tree.assets.PassiveSkillScreenMarakethJewelCircle2.handle
+							   
+							, scrX - size, scrY - size, (size) * 2, (size) * 2)				
 						
-						, scrX - size, scrY - size, (size) * 2, (size) * 2)					
-						DrawImage(
-						treeVersions[tree.treeVersion].num >= 3.10 and 
-						tree.assets.MarakethJewelCircle2.handle or tree.assets.PassiveSkillScreenMarakethJewelCircle2.handle
-						   
-						, scrX - size, scrY - size, (size) * 2, (size) * 2)				
-					
-					else
-						SetDrawColor(0.9,0.9,1,0.7)
-						DrawImage(self.jewelShadedOuterRing, scrX - outerSize, scrY - outerSize, outerSize * 2, outerSize * 2)
-						DrawImage(self.jewelShadedOuterRingFlipped, scrX - outerSize, scrY - outerSize, outerSize * 2, outerSize * 2)
-						DrawImage(self.jewelShadedInnerRing, scrX - innerSize, scrY - innerSize, innerSize * 2, innerSize * 2)
-						DrawImage(self.jewelShadedInnerRingFlipped, scrX - innerSize, scrY - innerSize, innerSize * 2, innerSize * 2)
-					end		
-				end
-			end
+						else
+							SetDrawColor(0.9,0.9,1,0.7)
+							DrawImage(self.jewelShadedOuterRing, scrX - outerSize, scrY - outerSize, outerSize * 2, outerSize * 2)
+							DrawImage(self.jewelShadedOuterRingFlipped, scrX - outerSize, scrY - outerSize, outerSize * 2, outerSize * 2)
+							DrawImage(self.jewelShadedInnerRing, scrX - innerSize, scrY - innerSize, innerSize * 2, innerSize * 2)
+							DrawImage(self.jewelShadedInnerRingFlipped, scrX - innerSize, scrY - innerSize, innerSize * 2, innerSize * 2)
+							
+							-- Socket is allocated and there's a jewel socketed into it which has a radius, so show it
+							--[[local scrX, scrY = treeToScreen(node.x, node.y)
+							local radData = build.data.jewelRadius[jewel.jewelRadiusIndex]
+							local size = radData.outer * scale
+							SetDrawColor(radData.col)
+							DrawImage(self.ring, scrX - size, scrY - size, size * 2, size * 2)	
+							]]--
+							
+						end		--end of if jew name
+					end --end of if jew
+			end --end of if node == hoverNode then
 		
 		
-		end
+		end --end if node and 
 		
 		
 		
-	end
+	end --end of if node 
 
-		
+	end --end of for
 	
 end
 
@@ -779,7 +793,7 @@ end
 
 function PassiveTreeViewClass:AddNodeName(tooltip, node, build)
 	tooltip:AddLine(24, "^7"..node.dn..(launch.devModeAlt and " ["..node.id.."]" or ""))
-	if node.type == "Socket" then
+	if node.type == "Socket" and node.nodesInRadius then
 		local attribTotals = { }
 		for nodeId in pairs(node.nodesInRadius[2]) do
 			local specNode = build.spec.nodes[nodeId]

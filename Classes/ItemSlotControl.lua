@@ -119,21 +119,21 @@ self.controls.activate.tooltipText = "启用这瓶药剂."
 	 
 end)
 
+
 function ItemSlotClass:SetSelItemId(selItemId)
-
-
-	self.selItemId = selItemId
 	
 	if self.nodeId then
-		
-		if self.itemsTab.build.spec then	
-			
+		if self.itemsTab.build.spec then
 			self.itemsTab.build.spec.jewels[self.nodeId] = selItemId
-			self.itemsTab.build.spec:BuildAllDependsAndPaths()			
+			if selItemId ~= self.selItemId then
+				self.itemsTab.build.spec:BuildClusterJewelGraphs()
+				self.itemsTab.build.spec:BuildAllDependsAndPaths()
+			end
 		end
 	else
 		self.itemsTab.activeItemSet[self.slotName].selItemId = selItemId
 	end
+	self.selItemId = selItemId
 end
 
 function ItemSlotClass:Populate()

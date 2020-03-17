@@ -7,13 +7,13 @@
 local skills, mod, flag, skill = ...
 
 skills["EnchantmentOfBladesOnHit"] = {
-	name = "刀锋之誓",
+name = "刀锋之誓",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.7000000476837,
 	incrementalEffectiveness = 0.037000000476837,
-	description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.SkillCanVolley] = true, },
+description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.SkillCanVolley] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -42,13 +42,13 @@ skills["EnchantmentOfBladesOnHit"] = {
 	},
 }
 skills["EnchantmentOfBladesOnHit2"] = {
-	name = "刀锋之律",
+name = "刀锋之律",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.7000000476837,
 	incrementalEffectiveness = 0.037000000476837,
-	description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.SkillCanVolley] = true, },
+description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.SkillCanVolley] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -77,13 +77,13 @@ skills["EnchantmentOfBladesOnHit2"] = {
 	},
 }
 skills["EnchantmentOfBladesOnHit3"] = {
-	name = "刀锋之令",
+name = "刀锋之令",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.7000000476837,
 	incrementalEffectiveness = 0.037000000476837,
-	description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.SkillCanVolley] = true, },
+description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.SkillCanVolley] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -112,13 +112,13 @@ skills["EnchantmentOfBladesOnHit3"] = {
 	},
 }
 skills["EnchantmentOfBladesOnHit4"] = {
-	name = "刀锋之诫",
+name = "刀锋之诫",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.7000000476837,
 	incrementalEffectiveness = 0.037000000476837,
-	description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.SkillCanVolley] = true, },
+description = "发射一连串的虚空飞刀. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.SkillCanVolley] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -147,13 +147,13 @@ skills["EnchantmentOfBladesOnHit4"] = {
 	},
 }
 skills["EnchantmentOfFlamesOnHit"] = {
-	name = "烈火之誓",
+name = "烈火之誓",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.7777999639511,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "释放一个火焰的新星, 有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.FireSkill] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, },
+description = "释放一个火焰的新星, 有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.FireSkill] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, [SkillType.Type90] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -179,13 +179,13 @@ skills["EnchantmentOfFlamesOnHit"] = {
 	},
 }
 skills["EnchantmentOfFlamesOnHit2"] = {
-	name = "烈火之律",
+name = "烈火之律",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.7777999639511,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "释放一个火焰的新星, 有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.FireSkill] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, },
+description = "释放一个火焰的新星, 有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.FireSkill] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, [SkillType.Type90] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -211,13 +211,13 @@ skills["EnchantmentOfFlamesOnHit2"] = {
 	},
 }
 skills["EnchantmentOfFlamesOnHit3"] = {
-	name = "烈火之令",
+name = "烈火之令",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.7777999639511,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "释放一个火焰的新星, 有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.FireSkill] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, },
+description = "释放一个火焰的新星, 有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.FireSkill] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, [SkillType.Type90] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -243,13 +243,13 @@ skills["EnchantmentOfFlamesOnHit3"] = {
 	},
 }
 skills["EnchantmentOfFlamesOnHit4"] = {
-	name = "烈火之诫",
+name = "烈火之诫",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.7777999639511,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "释放一个火焰的新星, 有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.FireSkill] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, },
+description = "释放一个火焰的新星, 有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.FireSkill] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, [SkillType.Type90] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -275,11 +275,11 @@ skills["EnchantmentOfFlamesOnHit4"] = {
 	},
 }
 skills["EnchantmentOfForceOnHit"] = {
-	name = "原力之誓",
+name = "原力之誓",
 	hidden = true,
 	color = 4,
-	description = "对你面前的敌人们造成普通攻击的伤害. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, },
+description = "对你面前的敌人们造成普通攻击的伤害. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -302,11 +302,11 @@ skills["EnchantmentOfForceOnHit"] = {
 	},
 }
 skills["EnchantmentOfForceOnHit2"] = {
-	name = "原力之律",
+name = "原力之律",
 	hidden = true,
 	color = 4,
-	description = "对你面前的敌人们造成普通攻击的伤害. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, },
+description = "对你面前的敌人们造成普通攻击的伤害. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -329,11 +329,11 @@ skills["EnchantmentOfForceOnHit2"] = {
 	},
 }
 skills["EnchantmentOfForceOnHit3"] = {
-	name = "原力之令",
+name = "原力之令",
 	hidden = true,
 	color = 4,
-	description = "对你面前的敌人们造成普通攻击的伤害. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, },
+description = "对你面前的敌人们造成普通攻击的伤害. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -356,11 +356,11 @@ skills["EnchantmentOfForceOnHit3"] = {
 	},
 }
 skills["EnchantmentOfForceOnHit4"] = {
-	name = "原力之诫",
+name = "原力之诫",
 	hidden = true,
 	color = 4,
-	description = "对你面前的敌人们造成普通攻击的伤害. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, },
+description = "对你面前的敌人们造成普通攻击的伤害. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -383,13 +383,13 @@ skills["EnchantmentOfForceOnHit4"] = {
 	},
 }
 skills["EnchantmentOfFrostOnKill"] = {
-	name = "寒冰之誓",
+name = "寒冰之誓",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.6363999843597,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "向你周围所有方向发射寒冰投射物。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.SkillCanVolley] = true, },
+	description = "Fire icy projectiles around you in all directions.",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.SkillCanVolley] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -418,13 +418,13 @@ skills["EnchantmentOfFrostOnKill"] = {
 	},
 }
 skills["EnchantmentOfFrostOnKill2"] = {
-	name = "寒冰之律",
+name = "寒冰之律",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.6363999843597,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "向你周围所有方向发射寒冰投射物。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.SkillCanVolley] = true, },
+	description = "Fire icy projectiles around you in all directions.",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.SkillCanVolley] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -453,13 +453,13 @@ skills["EnchantmentOfFrostOnKill2"] = {
 	},
 }
 skills["EnchantmentOfFrostOnKill3"] = {
-	name = "寒冰之令",
+name = "寒冰之令",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.6363999843597,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "向你周围所有方向发射寒冰投射物。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.SkillCanVolley] = true, },
+	description = "Fire icy projectiles around you in all directions.",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.SkillCanVolley] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -488,13 +488,13 @@ skills["EnchantmentOfFrostOnKill3"] = {
 	},
 }
 skills["EnchantmentOfFrostOnKill4"] = {
-	name = "寒冰之诫",
+name = "寒冰之诫",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.6363999843597,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "向你周围所有方向发射寒冰投射物。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.SkillCanVolley] = true, },
+	description = "Fire icy projectiles around you in all directions.",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.SkillCanVolley] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -523,13 +523,13 @@ skills["EnchantmentOfFrostOnKill4"] = {
 	},
 }
 skills["EnchantmentOfFuryOnHit"] = {
-	name = "狂怒之誓",
+name = "狂怒之誓",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "发射一个定必穿透敌人的你的武器的复制品或是投射物的投射物. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.Type83] = true, },
+description = "发射一个定必穿透敌人的你的武器的复制品或是投射物的投射物. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.Type83] = true, [SkillType.Type90] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
@@ -576,13 +576,13 @@ skills["EnchantmentOfFuryOnHit"] = {
 	},
 }
 skills["EnchantmentOfFuryOnHit2"] = {
-	name = "狂怒之律",
+name = "狂怒之律",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "发射一个定必穿透敌人的你的武器的复制品或是投射物的投射物. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.Type83] = true, },
+description = "发射一个定必穿透敌人的你的武器的复制品或是投射物的投射物. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.Type83] = true, [SkillType.Type90] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
@@ -629,13 +629,13 @@ skills["EnchantmentOfFuryOnHit2"] = {
 	},
 }
 skills["EnchantmentOfFuryOnHit3"] = {
-	name = "狂怒之令",
+name = "狂怒之令",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "发射一个定必穿透敌人的你的武器的复制品或是投射物的投射物. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.Type83] = true, },
+description = "发射一个定必穿透敌人的你的武器的复制品或是投射物的投射物. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.Type83] = true, [SkillType.Type90] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
@@ -682,13 +682,13 @@ skills["EnchantmentOfFuryOnHit3"] = {
 	},
 }
 skills["EnchantmentOfFuryOnHit4"] = {
-	name = "狂怒之诫",
+name = "狂怒之诫",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "发射一个定必穿透敌人的你的武器的复制品或是投射物的投射物. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.Type83] = true, },
+description = "发射一个定必穿透敌人的你的武器的复制品或是投射物的投射物. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.Type83] = true, [SkillType.Type90] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
@@ -735,13 +735,13 @@ skills["EnchantmentOfFuryOnHit4"] = {
 	},
 }
 skills["EnchantmentOfInfernoOnKill"] = {
-	name = "炼狱之誓",
+name = "炼狱之誓",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 3.5555999279022,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.FireSkill] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.AreaSpell] = true, },
+description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.FireSkill] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.AreaSpell] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -771,13 +771,13 @@ skills["EnchantmentOfInfernoOnKill"] = {
 	},
 }
 skills["EnchantmentOfInfernoOnKill2"] = {
-	name = "炼狱之律",
+name = "炼狱之律",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 3.5555999279022,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.FireSkill] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.AreaSpell] = true, },
+description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.FireSkill] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.AreaSpell] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -807,13 +807,13 @@ skills["EnchantmentOfInfernoOnKill2"] = {
 	},
 }
 skills["EnchantmentOfInfernoOnKill3"] = {
-	name = "炼狱之令",
+name = "炼狱之令",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 3.5555999279022,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.FireSkill] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.AreaSpell] = true, },
+description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.FireSkill] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.AreaSpell] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -843,13 +843,13 @@ skills["EnchantmentOfInfernoOnKill3"] = {
 	},
 }
 skills["EnchantmentOfInfernoOnKill4"] = {
-	name = "炼狱之诫",
+name = "炼狱之诫",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 3.5555999279022,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.FireSkill] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.AreaSpell] = true, },
+description = "从天上降下一颗陨石. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.FireSkill] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.AreaSpell] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -879,13 +879,13 @@ skills["EnchantmentOfInfernoOnKill4"] = {
 	},
 }
 skills["EnchantmentOfIreWhenHit"] = {
-	name = "雷霆之誓",
+name = "雷霆之誓",
 	hidden = true,
 	color = 2,
 	baseEffectiveness = 1.2000000476837,
 	incrementalEffectiveness = 0.019999999552965,
-	description = "复制并释放出一个你所使用的武器或其投射物, 并带有闪电在一个定点旋转, 对区域中的敌人造成伤害. 有 10 秒冷却时间. ",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.LightningSkill] = true, },
+description = "复制并释放出一个你所使用的武器或其投射物, 并带有闪电在一个定点旋转, 对区域中的敌人造成伤害. 有 10 秒冷却时间. ",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.LightningSkill] = true, [SkillType.Type90] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
@@ -929,13 +929,13 @@ skills["EnchantmentOfIreWhenHit"] = {
 	},
 }
 skills["EnchantmentOfIreWhenHit2"] = {
-	name = "雷霆之律",
+name = "雷霆之律",
 	hidden = true,
 	color = 2,
 	baseEffectiveness = 1.2000000476837,
 	incrementalEffectiveness = 0.019999999552965,
-	description = "复制并释放出一个你所使用的武器或其投射物, 并带有闪电在一个定点旋转, 对区域中的敌人造成伤害. 有 10 秒冷却时间. ",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.LightningSkill] = true, },
+description = "复制并释放出一个你所使用的武器或其投射物, 并带有闪电在一个定点旋转, 对区域中的敌人造成伤害. 有 10 秒冷却时间. ",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.LightningSkill] = true, [SkillType.Type90] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
@@ -979,13 +979,13 @@ skills["EnchantmentOfIreWhenHit2"] = {
 	},
 }
 skills["EnchantmentOfIreWhenHit3"] = {
-	name = "雷霆之令",
+name = "雷霆之令",
 	hidden = true,
 	color = 2,
 	baseEffectiveness = 1.2000000476837,
 	incrementalEffectiveness = 0.019999999552965,
-	description = "复制并释放出一个你所使用的武器或其投射物, 并带有闪电在一个定点旋转, 对区域中的敌人造成伤害. 有 10 秒冷却时间. ",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.LightningSkill] = true, },
+description = "复制并释放出一个你所使用的武器或其投射物, 并带有闪电在一个定点旋转, 对区域中的敌人造成伤害. 有 10 秒冷却时间. ",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.LightningSkill] = true, [SkillType.Type90] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
@@ -1029,13 +1029,13 @@ skills["EnchantmentOfIreWhenHit3"] = {
 	},
 }
 skills["EnchantmentOfIreWhenHit4"] = {
-	name = "雷霆之诫",
+name = "雷霆之诫",
 	hidden = true,
 	color = 2,
 	baseEffectiveness = 1.2000000476837,
 	incrementalEffectiveness = 0.019999999552965,
-	description = "复制并释放出一个你所使用的武器或其投射物, 并带有闪电在一个定点旋转, 对区域中的敌人造成伤害. 有 10 秒冷却时间. ",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.LightningSkill] = true, },
+description = "复制并释放出一个你所使用的武器或其投射物, 并带有闪电在一个定点旋转, 对区域中的敌人造成伤害. 有 10 秒冷却时间. ",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.LightningSkill] = true, [SkillType.Type90] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
@@ -1079,11 +1079,11 @@ skills["EnchantmentOfIreWhenHit4"] = {
 	},
 }
 skills["EnchantmentOfLightWhenCrit"] = {
-	name = "光之誓",
+name = "光之誓",
 	hidden = true,
 	color = 4,
-	description = "在你的四周制造奉献地面, 并造成一定比例的主手武器伤害. 奉献地面增加你和你的队友额外生命回复. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, },
+description = "在你的四周制造奉献地面, 并造成一定比例的主手武器伤害. 奉献地面增加你和你的队友额外生命回复. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -1109,11 +1109,11 @@ skills["EnchantmentOfLightWhenCrit"] = {
 	},
 }
 skills["EnchantmentOfLightWhenCrit2"] = {
-	name = "光之律",
+name = "光之律",
 	hidden = true,
 	color = 4,
-	description = "在你的四周制造奉献地面, 并造成一定比例的主手武器伤害. 奉献地面增加你和你的队友额外生命回复. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, },
+description = "在你的四周制造奉献地面, 并造成一定比例的主手武器伤害. 奉献地面增加你和你的队友额外生命回复. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -1139,11 +1139,11 @@ skills["EnchantmentOfLightWhenCrit2"] = {
 	},
 }
 skills["EnchantmentOfLightWhenCrit3"] = {
-	name = "光之令",
+name = "光之令",
 	hidden = true,
 	color = 4,
-	description = "在你的四周制造奉献地面, 并造成一定比例的主手武器伤害. 奉献地面增加你和你的队友额外生命回复. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, },
+description = "在你的四周制造奉献地面, 并造成一定比例的主手武器伤害. 奉献地面增加你和你的队友额外生命回复. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -1169,11 +1169,11 @@ skills["EnchantmentOfLightWhenCrit3"] = {
 	},
 }
 skills["EnchantmentOfLightWhenCrit4"] = {
-	name = "光之诫",
+name = "光之诫",
 	hidden = true,
 	color = 4,
-	description = "在你的四周制造奉献地面, 并造成一定比例的主手武器伤害. 奉献地面增加你和你的队友额外生命回复. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, },
+description = "在你的四周制造奉献地面, 并造成一定比例的主手武器伤害. 奉献地面增加你和你的队友额外生命回复. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -1199,11 +1199,11 @@ skills["EnchantmentOfLightWhenCrit4"] = {
 	},
 }
 skills["EnchantmentOfReflectionWhenHit"] = {
-	name = "倒影之誓",
+name = "倒影之誓",
 	hidden = true,
 	color = 4,
-	description = "制造一个与你使用同样武器的复制体. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.Triggered] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.CreatesMinion] = true, },
+description = "制造一个与你使用同样武器的复制体. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.Triggered] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.CreatesMinion] = true, [SkillType.Type90] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.AttackCanRepeat] = true, },
 	statDescriptionScope = "minion_skill_stat_descriptions",
 	castTime = 1,
@@ -1239,11 +1239,11 @@ skills["EnchantmentOfReflectionWhenHit"] = {
 	},
 }
 skills["EnchantmentOfReflectionWhenHit2"] = {
-	name = "倒影之律",
+name = "倒影之律",
 	hidden = true,
 	color = 4,
-	description = "制造一个与你使用同样武器的复制体. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.Triggered] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.CreatesMinion] = true, },
+description = "制造一个与你使用同样武器的复制体. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.Triggered] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.CreatesMinion] = true, [SkillType.Type90] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.AttackCanRepeat] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -1279,11 +1279,11 @@ skills["EnchantmentOfReflectionWhenHit2"] = {
 	},
 }
 skills["EnchantmentOfReflectionWhenHit3"] = {
-	name = "倒影之令",
+name = "倒影之令",
 	hidden = true,
 	color = 4,
-	description = "制造一个与你使用同样武器的复制体. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.Triggered] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.CreatesMinion] = true, },
+description = "制造一个与你使用同样武器的复制体. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.Triggered] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.CreatesMinion] = true, [SkillType.Type90] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.AttackCanRepeat] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -1319,11 +1319,11 @@ skills["EnchantmentOfReflectionWhenHit3"] = {
 	},
 }
 skills["EnchantmentOfReflectionWhenHit4"] = {
-	name = "倒影之诫",
+name = "倒影之诫",
 	hidden = true,
 	color = 4,
-	description = "制造一个与你使用同样武器的复制体. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.Triggered] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.CreatesMinion] = true, },
+description = "制造一个与你使用同样武器的复制体. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.Triggered] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.CreatesMinion] = true, [SkillType.Type90] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.AttackCanRepeat] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -1359,13 +1359,13 @@ skills["EnchantmentOfReflectionWhenHit4"] = {
 	},
 }
 skills["EnchantmentOfSpiteWhenHit"] = {
-	name = "怨恨之誓",
+name = "怨恨之誓",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "基于你的武器，发射一圈投射物，在它们的路径上留下冰缓地面。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.ChillingArea] = true, [SkillType.ColdSkill] = true, [SkillType.Type83] = true, },
+	description = "Releases a circle of projectiles based on your weapon, leaving chilling ground in their wake.",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.ChillingArea] = true, [SkillType.ColdSkill] = true, [SkillType.Type83] = true, [SkillType.Type90] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
@@ -1412,13 +1412,13 @@ skills["EnchantmentOfSpiteWhenHit"] = {
 	},
 }
 skills["EnchantmentOfSpiteWhenHit2"] = {
-	name = "怨恨之律",
+name = "怨恨之律",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "基于你的武器，发射一圈投射物，在它们的路径上留下冰缓地面。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.ChillingArea] = true, [SkillType.ColdSkill] = true, [SkillType.Type83] = true, },
+	description = "Releases a circle of projectiles based on your weapon, leaving chilling ground in their wake.",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.ChillingArea] = true, [SkillType.ColdSkill] = true, [SkillType.Type83] = true, [SkillType.Type90] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
@@ -1465,13 +1465,13 @@ skills["EnchantmentOfSpiteWhenHit2"] = {
 	},
 }
 skills["EnchantmentOfSpiteWhenHit3"] = {
-	name = "怨恨之令",
+name = "怨恨之令",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "基于你的武器，发射一圈投射物，在它们的路径上留下冰缓地面。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.ChillingArea] = true, [SkillType.ColdSkill] = true, [SkillType.Type83] = true, },
+	description = "Releases a circle of projectiles based on your weapon, leaving chilling ground in their wake.",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.ChillingArea] = true, [SkillType.ColdSkill] = true, [SkillType.Type83] = true, [SkillType.Type90] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
@@ -1518,13 +1518,13 @@ skills["EnchantmentOfSpiteWhenHit3"] = {
 	},
 }
 skills["EnchantmentOfSpiteWhenHit4"] = {
-	name = "怨恨之诫",
+name = "怨恨之诫",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "基于你的武器，发射一圈投射物，在它们的路径上留下冰缓地面。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.ChillingArea] = true, [SkillType.ColdSkill] = true, [SkillType.Type83] = true, },
+	description = "Releases a circle of projectiles based on your weapon, leaving chilling ground in their wake.",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.Projectile] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.ChillingArea] = true, [SkillType.ColdSkill] = true, [SkillType.Type83] = true, [SkillType.Type90] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
@@ -1571,13 +1571,13 @@ skills["EnchantmentOfSpiteWhenHit4"] = {
 	},
 }
 skills["EnchantmentOfTempestOnHit"] = {
-	name = "风暴之誓",
+name = "风暴之誓",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 4,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. 有短暂的冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, },
+description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. 有短暂的冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 4,
 	cannotBeSupported = true,
@@ -1606,13 +1606,13 @@ skills["EnchantmentOfTempestOnHit"] = {
 	},
 }
 skills["EnchantmentOfTempestOnHit2"] = {
-	name = "风暴之律",
+name = "风暴之律",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 4,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. 有短暂的冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, },
+description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. 有短暂的冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 4,
 	cannotBeSupported = true,
@@ -1641,13 +1641,13 @@ skills["EnchantmentOfTempestOnHit2"] = {
 	},
 }
 skills["EnchantmentOfTempestOnHit3"] = {
-	name = "风暴之令",
+name = "风暴之令",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 4,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. 有短暂的冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, },
+description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. 有短暂的冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 4,
 	cannotBeSupported = true,
@@ -1676,13 +1676,13 @@ skills["EnchantmentOfTempestOnHit3"] = {
 	},
 }
 skills["EnchantmentOfTempestOnHit4"] = {
-	name = "风暴之诫",
+name = "风暴之诫",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 4,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. 有短暂的冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, },
+description = "在短暂聚能之后释放, 对你周围的敌人造成伤害. 有短暂的冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 4,
 	cannotBeSupported = true,
@@ -1711,11 +1711,11 @@ skills["EnchantmentOfTempestOnHit4"] = {
 	},
 }
 skills["EnchantmentOfTheGraveOnKill"] = {
-	name = "冰墓之誓",
+name = "冰墓之誓",
 	hidden = true,
 	color = 4,
-	description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.ColdSkill] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.Duration] = true, [SkillType.CreatesMinion] = true, },
+description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.ColdSkill] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.Duration] = true, [SkillType.CreatesMinion] = true, [SkillType.Type90] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, },
 	statDescriptionScope = "minion_spell_skill_stat_descriptions",
 	castTime = 1,
@@ -1747,11 +1747,11 @@ skills["EnchantmentOfTheGraveOnKill"] = {
 	},
 }
 skills["EnchantmentOfTheGraveOnKill2"] = {
-	name = "冰墓之律",
+name = "冰墓之律",
 	hidden = true,
 	color = 4,
-	description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.ColdSkill] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.Duration] = true, [SkillType.CreatesMinion] = true, },
+description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.ColdSkill] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.Duration] = true, [SkillType.CreatesMinion] = true, [SkillType.Type90] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -1783,11 +1783,11 @@ skills["EnchantmentOfTheGraveOnKill2"] = {
 	},
 }
 skills["EnchantmentOfTheGraveOnKill3"] = {
-	name = "冰墓之令",
+name = "冰墓之令",
 	hidden = true,
 	color = 4,
-	description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.ColdSkill] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.Duration] = true, [SkillType.CreatesMinion] = true, },
+description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.ColdSkill] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.Duration] = true, [SkillType.CreatesMinion] = true, [SkillType.Type90] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -1819,11 +1819,11 @@ skills["EnchantmentOfTheGraveOnKill3"] = {
 	},
 }
 skills["EnchantmentOfTheGraveOnKill4"] = {
-	name = "冰墓之诫",
+name = "冰墓之诫",
 	hidden = true,
 	color = 4,
-	description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.ColdSkill] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.Duration] = true, [SkillType.CreatesMinion] = true, },
+description = "召唤一个寒冰的颅骨, 在持续时间结束时爆炸. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.ColdSkill] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.Duration] = true, [SkillType.CreatesMinion] = true, [SkillType.Type90] = true, },
 	minionSkillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -1855,13 +1855,13 @@ skills["EnchantmentOfTheGraveOnKill4"] = {
 	},
 }
 skills["EnchantmentOfThunderOnKill"] = {
-	name = "雷电之誓",
+name = "雷电之誓",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.625,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Type31] = true, [SkillType.LightningSkill] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, },
+description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Type31] = true, [SkillType.LightningSkill] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -1887,13 +1887,13 @@ skills["EnchantmentOfThunderOnKill"] = {
 	},
 }
 skills["EnchantmentOfThunderOnKill2"] = {
-	name = "雷电之律",
+name = "雷电之律",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.625,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Type31] = true, [SkillType.LightningSkill] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, },
+description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Type31] = true, [SkillType.LightningSkill] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -1919,13 +1919,13 @@ skills["EnchantmentOfThunderOnKill2"] = {
 	},
 }
 skills["EnchantmentOfThunderOnKill3"] = {
-	name = "雷电之令",
+name = "雷电之令",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.625,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Type31] = true, [SkillType.LightningSkill] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, },
+description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Type31] = true, [SkillType.LightningSkill] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -1951,13 +1951,13 @@ skills["EnchantmentOfThunderOnKill3"] = {
 	},
 }
 skills["EnchantmentOfThunderOnKill4"] = {
-	name = "雷电之诫",
+name = "雷电之诫",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.625,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Type31] = true, [SkillType.LightningSkill] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, },
+description = "在你的四周造成锥形的闪电伤害. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Type31] = true, [SkillType.LightningSkill] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -1983,11 +1983,11 @@ skills["EnchantmentOfThunderOnKill4"] = {
 	},
 }
 skills["EnchantmentOfWarOnKill"] = {
-	name = "战争之誓",
+name = "战争之誓",
 	hidden = true,
 	color = 4,
-	description = "召唤一个你所使用的武器的复制体来攻击敌人. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Duration] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, },
+description = "召唤一个你所使用的武器的复制体来攻击敌人. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Duration] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.Type90] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
@@ -2026,11 +2026,11 @@ skills["EnchantmentOfWarOnKill"] = {
 	},
 }
 skills["EnchantmentOfWarOnKill2"] = {
-	name = "战争之律",
+name = "战争之律",
 	hidden = true,
 	color = 4,
-	description = "召唤一个你所使用的武器的复制体来攻击敌人. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Duration] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, },
+description = "召唤一个你所使用的武器的复制体来攻击敌人. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Duration] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.Type90] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
@@ -2069,11 +2069,11 @@ skills["EnchantmentOfWarOnKill2"] = {
 	},
 }
 skills["EnchantmentOfWarOnKill3"] = {
-	name = "战争之令",
+name = "战争之令",
 	hidden = true,
 	color = 4,
-	description = "召唤一个你所使用的武器的复制体来攻击敌人. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Duration] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, },
+description = "召唤一个你所使用的武器的复制体来攻击敌人. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Duration] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.Type90] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
@@ -2112,11 +2112,11 @@ skills["EnchantmentOfWarOnKill3"] = {
 	},
 }
 skills["EnchantmentOfWarOnKill4"] = {
-	name = "战争之诫",
+name = "战争之诫",
 	hidden = true,
 	color = 4,
-	description = "召唤一个你所使用的武器的复制体来攻击敌人. 此技能有短暂冷却时间. ",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Duration] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, },
+description = "召唤一个你所使用的武器的复制体来攻击敌人. 此技能有短暂冷却时间. ",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Duration] = true, [SkillType.Triggered] = true, [SkillType.Triggerable] = true, [SkillType.Type90] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
@@ -2155,13 +2155,13 @@ skills["EnchantmentOfWarOnKill4"] = {
 	},
 }
 skills["EnchantmentOfWinterWhenHit"] = {
-	name = "冬之誓",
+name = "冬之誓",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.0908999443054,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却时间.",
-	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.AreaSpell] = true, },
+description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却时间.",
+	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.AreaSpell] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1.4,
 	cannotBeSupported = true,
@@ -2189,13 +2189,13 @@ skills["EnchantmentOfWinterWhenHit"] = {
 	},
 }
 skills["EnchantmentOfWinterWhenHit2"] = {
-	name = "冬之律",
+name = "冬之律",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.0908999443054,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却时间.",
-	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.AreaSpell] = true, },
+description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却时间.",
+	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.AreaSpell] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1.4,
 	cannotBeSupported = true,
@@ -2223,13 +2223,13 @@ skills["EnchantmentOfWinterWhenHit2"] = {
 	},
 }
 skills["EnchantmentOfWinterWhenHit3"] = {
-	name = "冬之令",
+name = "冬之令",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.0908999443054,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却时间.",
-	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.AreaSpell] = true, },
+description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却时间.",
+	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.AreaSpell] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1.4,
 	cannotBeSupported = true,
@@ -2257,13 +2257,13 @@ skills["EnchantmentOfWinterWhenHit3"] = {
 	},
 }
 skills["EnchantmentOfWinterWhenHit4"] = {
-	name = "冬之诫",
+name = "冬之诫",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.0908999443054,
 	incrementalEffectiveness = 0.035000000149012,
-	description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却时间.",
-	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.AreaSpell] = true, },
+description = "释放出带有冰霜脉冲的冰冻投射物. 有短暂的冷却时间.",
+	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.AreaSpell] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1.4,
 	cannotBeSupported = true,

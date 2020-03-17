@@ -452,15 +452,10 @@ self.charImportStatus = colorCodes.NEGATIVE.."处理角色物品和技能错误�
 	end
 self.charImportStatus = colorCodes.POSITIVE.."天赋树和珠宝导入成功."
 	--ConPrintTable(charPassiveData)
-	--如果删除珠宝
 	
-	local sockets = { }
-	for i, slot in pairs(charPassiveData.jewel_slots) do
-		sockets[i] = tonumber(type(slot) == "number" and slot or slot.passiveSkill.hash)
-	end
 	if  not self.controls.charImportTreeClearJewels.state then
 		for _, itemData in pairs(charPassiveData.items) do
-				self:ImportItem(itemData, sockets)
+				self:ImportItem(itemData)
 		end
 	end
 	self.build.itemsTab:PopulateSlots()
@@ -561,10 +556,10 @@ self.charImportStatus = colorCodes.POSITIVE.."物品和技能导入成功."
 end
 
 
-function ImportTabClass:ImportItem(itemData, sockets, slotName)
+function ImportTabClass:ImportItem(itemData, slotName)
 	if not slotName then
-		if itemData.inventoryId == "PassiveJewels" and sockets then
-			slotName = "Jewel "..sockets[itemData.x + 1]
+		if itemData.inventoryId == "PassiveJewels" then
+			slotName = "Jewel "..self.build.latestTree.jewelSlots[itemData.x + 1]
 		elseif itemData.inventoryId == "Flask" then
 			slotName = "Flask "..(itemData.x + 1)
 		else
@@ -691,29 +686,30 @@ elseif property.name == "仅限" then
 			end
 		end
 	end
-	item.modLines = { }
-	item.implicitLines = 0
+	item.enchantModLines = { }
+	item.implicitModLines = { }
+	item.explicitModLines = { }
 	if itemData.enchantMods then
-		item.implicitLines = item.implicitLines + #itemData.enchantMods
+		
 		for _, line in ipairs(itemData.enchantMods) do
 			line = line:gsub("\n"," ")
 			local modList, extra = modLib.parseMod[self.build.targetVersion](line)
-			t_insert(item.modLines, { line = line, extra = extra, mods = modList or { }, crafted = true })
+			t_insert(item.enchantModLines, { line = line, extra = extra, mods = modList or { }, crafted = true })
 		end
 	end
 	if itemData.implicitMods then
-		item.implicitLines = item.implicitLines + #itemData.implicitMods
+		
 		for _, line in ipairs(itemData.implicitMods) do
 			line = line:gsub("\n"," ")
 			local modList, extra = modLib.parseMod[self.build.targetVersion](line)
-			t_insert(item.modLines, { line = line, extra = extra, mods = modList or { } })
+			t_insert(item.implicitModLines, { line = line, extra = extra, mods = modList or { } })
 		end
 	end
 	if itemData.fracturedMods then
 		for _, line in ipairs(itemData.fracturedMods) do
 			for line in line:gmatch("[^\n]+") do
 				local modList, extra = modLib.parseMod[self.build.targetVersion](line)
-				t_insert(item.modLines, { line = line, extra = extra, mods = modList or { }, fractured = true })
+				t_insert(item.explicitModLines, { line = line, extra = extra, mods = modList or { }, fractured = true })
 			end
 		end
 	end
@@ -725,7 +721,7 @@ elseif property.name == "仅限" then
 			for line in line:gmatch("[^\n]+") do
 				
 				local modList, extra = modLib.parseMod[self.build.targetVersion](line)
-				t_insert(item.modLines, { line = line, extra = extra, mods = modList or { } })
+				t_insert(item.explicitModLines, { line = line, extra = extra, mods = modList or { } })
 			end
 		end
 	end
@@ -733,7 +729,7 @@ elseif property.name == "仅限" then
 		for _, line in ipairs(itemData.craftedMods) do
 			for line in line:gmatch("[^\n]+") do
 				local modList, extra = modLib.parseMod[self.build.targetVersion](line)
-				t_insert(item.modLines, { line = line, extra = extra, mods = modList or { }, crafted = true })
+				t_insert(item.explicitModLines, { line = line, extra = extra, mods = modList or { }, crafted = true })
 			end
 		end
 	end
@@ -768,7 +764,7 @@ function ImportTabClass:ImportSocketedItems(item, socketedItems, slotName)
 	local abyssalSocketId = 1
 	for _, socketedItem in ipairs(socketedItems) do
 		if socketedItem.abyssJewel then
-			self:ImportItem(socketedItem, nil, slotName .. " Abyssal Socket "..abyssalSocketId)
+			self:ImportItem(socketedItem, slotName .. " Abyssal Socket "..abyssalSocketId)
 			abyssalSocketId = abyssalSocketId + 1
 		elseif not self.controls.charImportItemsClearSkills.state then 
 		

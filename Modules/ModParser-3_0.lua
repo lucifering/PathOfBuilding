@@ -990,6 +990,7 @@ local modTagList = {
 	["近期内你若没有击败敌人，则伤害会"] = { tag = { type = "Condition", var = "KilledRecently", neg = true } }, 
 	["持盾牌时造成的"] = { tag = { type = "Condition", var = "UsingShield" } },
 	["持盾牌时，"] = { tag = { type = "Condition", var = "UsingShield" } }, --备注：while holding a shield
+	["持盾时，"] = { tag = { type = "Condition", var = "UsingShield" } },
 		["你的副手未装备武器时，"] = { tag = { type = "Condition", var = "OffHandIsEmpty" } }, --备注：while your off hand is empty
 		["双持时，"] = { tag = { type = "Condition", var = "DualWielding" } }, --备注：while dual wielding
 		["双持攻击时"] = { tag = { type = "Condition", var = "DualWielding" } }, --备注：while dual wielding
@@ -1789,6 +1790,8 @@ local specialModList = {
 	 skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" ,"血脉奉献"} }) } end,   
 	["奉献效果降低 (%d+)%%"] = function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("BuffEffect", "INC", -num) }, { type = "SkillName",
 	 skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" ,"血脉奉献"} }) } end,   
+	["奉献效果提高 (%d+)%%"] = function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("BuffEffect", "INC", num) }, { type = "SkillName",
+	 skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" ,"血脉奉献"} }) } end,   
 	["你的奉献技能会同时影响你"] = { mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "buffNotPlayer", value = false }) },
 		{ type = "SkillName", skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" ,"血脉奉献"} }) },	
 	["你的奉献技能对自身的效果降低 (%d+)%%"] = function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("BuffEffectOnPlayer", "INC", -num) }, { type = "SkillName",
@@ -2021,7 +2024,7 @@ local specialModList = {
 	["对满血敌人的暴击几率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "FullLife" })  } end,
 	["对低血敌人的攻击和法术总暴击率额外提高 (%d+)%%"]= function(num) return {  mod("CritChance", "MORE", num,{ type = "ActorCondition", actor = "enemy", var = "LowLife" })  } end,
 	["每对敌人造成一层中毒效果，便附加 %+([%d%.]+)%% 攻击和法术基础暴击率，最多 %+2%.0%%"]= function(num) return {  mod("CritChance", "BASE", num,{ type = "Multiplier", actor = "enemy", var = "PoisonStack", limit = 2, limitTotal = true })  } end,
-	["攻击附加 %+([%d%.]+)%% 攻击基础暴击率"]= function(num) return {  mod("CritChance", "BASE",nil, num,ModFlag.Attack)  } end,
+	["攻击附加 %+([%d%.]+)%% 攻击基础暴击率"]= function(num) return {  mod("CritChance", "BASE",num,nil, ModFlag.Attack)  } end,
 	["法术获得 %+([%d%.]+)%% 基础暴击率"]= function(num) return {  mod("CritChance", "BASE", num,nil,ModFlag.Spell)  } end,
 	["近期你每造成一层中毒效果，中毒持续时间便延长 (%d+)%%"]= function(num) return {  mod("EnemyPoisonDuration", "INC", num, { type = "Multiplier", var = "PoisonAppliedRecently" })  } end,
 	["对中毒敌人时，获得额外混沌伤害，其数值等同于物理伤害的 (%d+)%%"]= function(num) return {  mod("PhysicalDamageGainAsChaos", "BASE", num,nil, ModFlag.Hit,{ type = "ActorCondition", actor = "enemy", var = "Poisoned"})  } end,

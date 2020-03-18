@@ -1643,13 +1643,12 @@ function ItemsTabClass:EnchantDisplayItem()
 	local function enchantItem()
 		local item = new("Item", self.build.targetVersion, self.displayItem:BuildRaw())
 		item.id = self.displayItem.id
-		for i = 1, item.implicitLines do 
-			wipeTable(item.enchantModLines)
-		end
+		
+		wipeTable(item.enchantModLines)
 		  
 		local list = haveSkills and enchantments[controls.skill.list[controls.skill.selIndex]] or enchantments
 		t_insert(item.enchantModLines, 1, { crafted = true, line = list[controls.labyrinth.list[controls.labyrinth.selIndex].name][controls.enchantment.selIndex] })
-		item.implicitLines = item.implicitLines + 1
+
 		item:BuildAndParseRaw()
 		return item
 	end
@@ -1861,13 +1860,11 @@ function ItemsTabClass:CorruptDisplayItem()
 			end
 		end
 		if #newImplicit > 0 then
-			for i = 1, item.implicitLines do 
-				t_remove(item.modLines, 1)
-			end
+			wipeTable(item.implicitModLines)
 			for i, implicit in ipairs(newImplicit) do
-				t_insert(item.modLines, i, implicit)
+				t_insert(item.implicitModLines, i, implicit)
 			end
-			item.implicitLines = #newImplicit
+			
 		end
 		item:BuildAndParseRaw()
 		return item
@@ -2058,16 +2055,11 @@ t_insert(sourceList, { label = "自定义", sourceId = "CUSTOM" })
 				
 			local listMod = modList[controls.modSelect.selIndex]
 			if listMod ~=nil and listMod.mod~=nil then 
-				 for i = 1, item.implicitLines do 
-					if item.modLines~=nil and item.modLines[i]~=nil and  item.modLines[i].crafted then
-							
-							t_remove(item.modLines, i)
-							item.implicitLines =item.implicitLines -1
-					end
-				end
+				  
+				  wipeTable(item.enchantModLines)
 				for _, line in ipairs(listMod.mod) do
-					t_insert(item.explicitModLines, { line = line, [listMod.type] = true })
-					item.implicitLines = item.implicitLines+1
+					t_insert(item.enchantModLines, { line = line, [listMod.type] = true })
+					 
 				end				
 			end
 		
@@ -2077,7 +2069,7 @@ t_insert(sourceList, { label = "自定义", sourceId = "CUSTOM" })
 			local listMod = modList[controls.modSelect.selIndex]
 			if listMod ~=nil and listMod.mod~=nil then 
 				for _, line in ipairs(listMod.mod) do
-					t_insert(item.modLines, { line = line, [listMod.type] = true })
+					t_insert(item.explicitModLines, { line = line, [listMod.type] = true })
 				end
 			end
 		end

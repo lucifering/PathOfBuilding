@@ -9607,7 +9607,7 @@ return {
 			["name"]= "崩雷",
 			["icon"]= "Art/2DArt/SkillIcons/passives/wreckingball.png",
 			["stats"]= {
-				"Attacks with Two Handed Melee Weapons deal 20% increased Damage with Hits and Ailments",
+				"双手近战武器攻击造成的击中和异常状态伤害提高 20%",
 				"双手近战武器攻击的攻击速度提高 10%",
 				"双手近战武器攻击造成的晕眩时间延长 20%"
 			},
@@ -18939,7 +18939,7 @@ return {
 			["name"]= "复仇之灵",
 			["icon"]= "Art/2DArt/SkillIcons/passives/KeystoneMinionInstability.png",
 			["stats"]= {
-				"Minions Explode when reduced to Low Life, dealing 33% of their Life as Fire Damage to surrounding Enemies"
+				"召唤生物在低血时会爆炸，对周围敌人造成自身最大生命 33% 的火焰伤害"
 			},
 			["flavourText"]= {
 				"Even in death, they have their uses. They just need a little encouragement."
@@ -51701,7 +51701,7 @@ return {
 			["name"]= "Nature's Patience",
 			["icon"]= "Art/2DArt/SkillIcons/passives/NaturesPatience.png",
 			["stats"]= {
-				"Gain 2 Grasping Vines each second while stationary\n2% chance to deal Double Damage per Grasping Vine\n1% less Damage taken per Grasping Vine\n"
+				"当静止时每秒获得 2 层缓速藤蔓\n每层缓速藤蔓有 2% 几率造成双倍伤害\n每层缓速藤蔓可使承受的总伤害额外降低 1%\n"
 			},
 			["reminderText"]= {
 				"(Up to 10 Vines can grasp you, inflicting 8% less Movement Speed per Vine. Broken by moving)"
@@ -52718,7 +52718,7 @@ return {
 			["name"]= "Explosive Force",
 			["icon"]= "Art/2DArt/SkillIcons/passives/WandDamage.png",
 			["stats"]= {
-				"Enemies Killed with Wand Hits have a 10% chance to Explode, dealing a quarter of their Life as Chaos Damage",
+				"被法杖攻击击败的敌人有 10% 几率爆炸，造成等同该敌人最大生命四分之一的混沌伤害",
 				"获得额外混沌伤害，其数值等同于法杖物理伤害的 10%"
 			},
 			["isNotable"]= true
@@ -52806,7 +52806,7 @@ return {
 			["name"]= "Brutal Infamy",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TwoHandedMeleeDamage.png",
 			["stats"]= {
-				"Attacks with Two Handed Melee Weapons deal 20% increased Damage with Hits and Ailments",
+				"双手近战武器攻击造成的击中和异常状态伤害提高 20%",
 				"对传奇的敌人的击中和异常状态伤害提高 40%"
 			},
 			["reminderText"]= {
@@ -52819,7 +52819,7 @@ return {
 			["name"]= "Fearsome Warrior",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TwoHandedMeleeDamage.png",
 			["stats"]= {
-				"Attacks with Two Handed Melee Weapons deal 25% increased Damage with Hits and Ailments",
+				"双手近战武器攻击造成的击中和异常状态伤害提高 25%",
 				"范围效果扩大 8%",
 				"近战击败敌人时，有 25% 几率威吓周围敌人，持续 4 秒"
 			},
@@ -52980,7 +52980,7 @@ return {
 			["stats"]= {
 				"攻击伤害提高 20%",
 				"攻击技能的异常状态伤害提高 20%",
-				"Enemies Killed with Attack Hits have a 15% chance to Explode, dealing a tenth of their Life as Physical Damage"
+				"被攻击击败的敌人有 15% 几率爆炸，造成等同该敌人最大生命十分之一的物理伤害"
 			},
 			["reminderText"]= {
 				"（伤害型异常包括：流血、点燃和中毒）"
@@ -53440,7 +53440,7 @@ return {
 			["name"]= "Vicious Bite",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedMinionDamageNotable.png",
 			["stats"]= {
-				"Minions have 50% increased Critical Strike Chance",
+				"召唤生物的暴击几率提高 50%",
 				"+50% 召唤灵体, 魔卫复苏, 召唤魔侍的暴击伤害"
 			},
 			["isNotable"]= true
@@ -54363,7 +54363,7 @@ return {
 			["stats"]= {
 				"最大生命提高 8%",
 				"静止时受到的物理伤害降低 2%",
-				"Regenerate 2% of Life per second while stationary"
+				"静止时每秒回复 2% 最大生命"
 			},
 			["isNotable"]= true
 		},
@@ -55843,11 +55843,11 @@ return {
 			[0.2972]= "http://web.poecdn.com/gen/image/WzIyLCI0ODNkY2JkYzQyOTAzMzY5MGE0MjJiYTU5MDFhZjI2YSIseyJ0IjoyMCwic3AiOjAuMjk3Mn1d/e3940e9c25/JewelSocketActiveRed.png",
 			[0.3835]= "http://web.poecdn.com/gen/image/WzIyLCI0ODNkY2JkYzQyOTAzMzY5MGE0MjJiYTU5MDFhZjI2YSIseyJ0IjoyMCwic3AiOjAuMzgzNX1d/282ce55408/JewelSocketActiveRed.png"
 		},
-		["JewelSocketActiveTimeless"]={
-		[0.1246]="http://web.poecdn.com/gen/image/WzIyLCIyODAyNzk5YTkwYzZjYTU0ODA1MDIzNDQ5ZTAyNzk3NSIseyJ0Ijo1MSwic3AiOjAuMTI0Nn1d/cd042e73a3/JewelSocketActiveTimeless.png",
-		[0.2109]="http://web.poecdn.com/gen/image/WzIyLCIyODAyNzk5YTkwYzZjYTU0ODA1MDIzNDQ5ZTAyNzk3NSIseyJ0Ijo1MSwic3AiOjAuMjEwOX1d/b7808f8b4c/JewelSocketActiveTimeless.png",
-		[0.2972]="http://web.poecdn.com/gen/image/WzIyLCIyODAyNzk5YTkwYzZjYTU0ODA1MDIzNDQ5ZTAyNzk3NSIseyJ0Ijo1MSwic3AiOjAuMjk3Mn1d/9f66426097/JewelSocketActiveTimeless.png",
-		[0.3835]="http://web.poecdn.com/gen/image/WzIyLCIyODAyNzk5YTkwYzZjYTU0ODA1MDIzNDQ5ZTAyNzk3NSIseyJ0Ijo1MSwic3AiOjAuMzgzNX1d/34efc26b2a/JewelSocketActiveTimeless.png"
+		["JewelSocketActiveRed"]= {
+			[0.1246]= "http://web.poecdn.com/gen/image/WzIyLCI0ODNkY2JkYzQyOTAzMzY5MGE0MjJiYTU5MDFhZjI2YSIseyJ0IjoyMCwic3AiOjAuMTI0Nn1d/0edaedc682/JewelSocketActiveRed.png",
+			[0.2109]= "http://web.poecdn.com/gen/image/WzIyLCI0ODNkY2JkYzQyOTAzMzY5MGE0MjJiYTU5MDFhZjI2YSIseyJ0IjoyMCwic3AiOjAuMjEwOX1d/a0b9104fa9/JewelSocketActiveRed.png",
+			[0.2972]= "http://web.poecdn.com/gen/image/WzIyLCI0ODNkY2JkYzQyOTAzMzY5MGE0MjJiYTU5MDFhZjI2YSIseyJ0IjoyMCwic3AiOjAuMjk3Mn1d/e3940e9c25/JewelSocketActiveRed.png",
+			[0.3835]= "http://web.poecdn.com/gen/image/WzIyLCI0ODNkY2JkYzQyOTAzMzY5MGE0MjJiYTU5MDFhZjI2YSIseyJ0IjoyMCwic3AiOjAuMzgzNX1d/282ce55408/JewelSocketActiveRed.png"
 		},
 		["JewelSocketActivePrismatic"]= {
 			[0.1246]= "http://web.poecdn.com/gen/image/WzIyLCJlOTFhNTJkMGZiN2VjNGJlOGI3NjkwYjg4ODg5NjdjNiIseyJ0Ijo1MSwic3AiOjAuMTI0Nn1d/9cbde9ce3f/JewelSocketActivePrismatic.png",

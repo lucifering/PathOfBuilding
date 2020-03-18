@@ -642,7 +642,7 @@ function PassiveSpecClass:BuildClusterJewelGraphs()
 			end
 		end
 		local index = isValueInArray(subGraph.parentSocket.linked, subGraph.entranceNode)
-		assert(index, "Entrance for subGraph not linked to parent socket???")
+		assert(index, "子天赋点星团未连接至总天赋树")
 		t_remove(subGraph.parentSocket.linked, index)
 	end
 	wipeTable(self.subGraphs)
@@ -679,7 +679,7 @@ function PassiveSpecClass:BuildSubgraph(jewel, parentSocket, id, upSize)
 	local jewelData = jewel.jewelData
 	local skill = clusterJewel.skills[jewelData.clusterJewelSkill]
 	
-	assert(skill, "Invalid cluster jewel skill")
+	assert(skill, "错误的星团珠宝")
 
 	local subGraph = {
 		nodes = { },
@@ -704,7 +704,7 @@ function PassiveSpecClass:BuildSubgraph(jewel, parentSocket, id, upSize)
 
 	-- Locate the proxy group
 	local proxyNode = self.tree.nodes[tonumber(expansionJewel.proxy)]
-	assert(proxyNode, "Proxy node not found")
+	assert(proxyNode, "代理节点未找到")
 	local proxyGroup = proxyNode.group
 
 	if upSize and upSize > 0 then
@@ -834,7 +834,7 @@ function PassiveSpecClass:BuildSubgraph(jewel, parentSocket, id, upSize)
 					break
 				end
 			end
-			assert(nodeIndex, "No free index to place notable")
+			assert(nodeIndex, "没有足够的位置构建天赋点")
 		end
 
 		if clusterJewel.size == "Medium" and socketCount == 0 and notableCount == 2 then
@@ -869,7 +869,7 @@ function PassiveSpecClass:BuildSubgraph(jewel, parentSocket, id, upSize)
 				break
 			end
 		end
-		assert(nodeIndex, "No free index to place small node")
+		assert(nodeIndex, "没有可放置小天赋点的空余索引")
 		if clusterJewel.size == "Medium" then
 			-- Special rules for small nodes in Medium clusters
 			if nodeCount == 5 and nodeIndex == 4 then
@@ -897,7 +897,7 @@ function PassiveSpecClass:BuildSubgraph(jewel, parentSocket, id, upSize)
 		indicies[nodeIndex] = node
 	end
 
-	assert(indicies[0], "No entrance to subgraph")
+	assert(indicies[0], "当前组合无法构建天赋树，按下 ESC 关闭")
 	subGraph.entranceNode = indicies[0]
 	subGraph.parentSocket = parentSocket
 
@@ -917,9 +917,11 @@ function PassiveSpecClass:BuildSubgraph(jewel, parentSocket, id, upSize)
 	end
 
 	local function linkNodes(node1, node2)
+		if node1 then
 		t_insert(node1.linked, node2)
 		t_insert(node2.linked, node1)
 		t_insert(subGraph.connectors, self.tree:BuildConnector(node1, node2))
+		end
 	end
 
 	-- Generate connectors

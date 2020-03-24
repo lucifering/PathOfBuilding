@@ -148,15 +148,15 @@ modList:NewMod("SkillData", "LIST", { key = "skeletonLife", value = val }, "Conf
 	end },
 	{ label = "狂噬（辅）:", ifSkill = "狂噬（辅）" }, 
 	
-{ var = "conditionFeedingFrenzyActive", type = "check", label = "启用狂噬增益效果?", ifSkill = "狂噬（辅）", tooltip = "狂噬增益效果:\n召唤生物总伤害额外提高 10%\n召唤生物移动速度提高 10%\n召唤生物攻击和施法速度提高 10%", apply = function(val, modList, enemyModList)
+{ var = "conditionFeedingFrenzyActive", type = "check", label = "启用狂噬增益效果?", ifSkill = "狂噬（辅）", tooltip = "狂噬增益效果:所有的召唤生物获得\n召唤生物移动速度提高 15%\n召唤生物攻击和施法速度提高 15%", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:FeedingFrenzyActive", "FLAG", true, "Config")
-		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Damage", "MORE", 10, "狂噬（辅）") }, "Config")
-		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("MovementSpeed", "INC", 10, "狂噬（辅）") }, "Config")
-		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Speed", "INC", 10, "狂噬（辅）") }, "Config")
+	
+		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("MovementSpeed", "INC", 15, "狂噬（辅）") }, "Config")
+		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Speed", "INC", 15, "狂噬（辅）") }, "Config")
 	end },
 { label = "苦痛之捷:", ifSkill = "苦痛之捷" },
 { var = "heraldOfAgonyVirulenceStack", type = "count", label = "# 【毒力】层数:", ifSkill = "苦痛之捷", apply = function(val, modList, enemyModList)
-		modList:NewMod("Multiplier:VirulenceStack", "BASE", m_min(val, 40), "Config")
+		modList:NewMod("Multiplier:VirulenceStack", "BASE", val, "Config")
 	end },
 { label = "冰霜新星:", ifSkill = "冰霜新星" },
 { var = "conditionCastOnFrostbolt", type = "check", label = "是否由【寒冰弹】触发?", ifSkill = "冰霜新星", apply = function(val, modList, enemyModList)

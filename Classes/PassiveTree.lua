@@ -184,7 +184,7 @@ local cdnRoot = versionNum >= 3.08 and versionNum <= 3.09 and "https://web.poecd
 		local sheet = spriteSheets[maxZoom.filename]
 		if not sheet then
 			sheet = { }
-			self:LoadImage(maxZoom.filename:gsub("%?%x+$",""), cdnRoot..(self.imageRoot or "/image/")..(versionNum >= 3.08 and "passive-skill/" or "build-gen/passive-skill-sprite/")..maxZoom.filename, sheet, "CLAMP")--, "MIPMAP")
+			self:LoadImage(maxZoom.filename:gsub("%?%x+$",""), "https://web.poecdn.com"..(self.imageRoot or "/image/")..(versionNum >= 3.08 and "passive-skill/" or "build-gen/passive-skill-sprite/")..maxZoom.filename, sheet, "CLAMP")--, "MIPMAP")
 			spriteSheets[maxZoom.filename] = sheet
 		end
 		for name, coords in pairs(maxZoom.coords) do
@@ -389,9 +389,7 @@ local cdnRoot = versionNum >= 3.08 and versionNum <= 3.09 and "https://web.poecd
 				group.isAscendancyStart = true
 			end
 		elseif node.type == "Notable" or node.type == "Keystone" then
-			self.clusterNodeMap[node.dn:lower()] = node
-			
-		
+			self.clusterNodeMap[node.dn] = node
 		end
 		self:ProcessNode(node)
 	end

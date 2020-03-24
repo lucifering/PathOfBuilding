@@ -40,6 +40,7 @@ local formList = {
 	["便提高 (%d+)%%"] = "INC", --备注：^(%d+)%% increased
 	["比平常慢 (%d+)%%"] = "RED",
 	["(%d+) 次击中"] = "BASE",
+	["加快 (%d+)%%"] = "INC",
 	--【中文化程序额外添加结束】
 	["提高 (%d+)%%"] = "INC", --备注：^(%d+)%% increased
 	["比平常快 (%d+)%%"] = "INC", --备注：^(%d+)%% faster
@@ -738,6 +739,7 @@ local modFlagList = {
 	["投掷陷阱的"] = { keywordFlags = KeywordFlag.Trap },
 	["爪的"] ={ flags = bor(ModFlag.Claw, ModFlag.Hit) },
 	["锤, 短杖或长杖攻击时，"] = { flags = ModFlag.Hit, tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Mace, ModFlag.Staff) } },
+	["爪或匕首攻击时，"] = { flags = ModFlag.Hit, tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Claw, ModFlag.Dagger) } },
 	--【中文化程序额外添加结束】
 	["斧类攻击的"] = { flags = bor(ModFlag.Axe, ModFlag.Hit) }, --备注：with axes
 	["to axe attacks"] = { flags = bor(ModFlag.Axe, ModFlag.Hit) },
@@ -868,6 +870,7 @@ local preFlagList = {
 		["^斧攻击造成的"] = { flags = ModFlag.Axe },
 		["^斧或剑攻击造成的"] = { tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Axe, ModFlag.Sword) } },
 		["^弓攻击造成的"] = { flags = ModFlag.Bow },
+		["^爪类攻击造成的"] = { flags = ModFlag.Dagger },
 		["^爪攻击造成的"] = { flags = ModFlag.Claw },
 		["^爪或匕首攻击造成的"] = { tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Claw, ModFlag.Dagger) } },
 		["^匕首攻击造成的"] = { flags = ModFlag.Dagger },
@@ -978,6 +981,7 @@ local preFlagList = {
 -- List of modifier tags
 local modTagList = {
 	--【中文化程序额外添加开始】
+	["持爪或匕首时，"] = { tag = { type = "Condition", varList ={ "UsingClaw", "UsingDagger" } } },
 	["持锤, 短杖或长杖时，"] = { tag = { type = "Condition", varList = { "UsingMace", "UsingStaff" } } },
 	["持锤, 短杖或长杖时"] = { tag = { type = "Condition", varList = { "UsingMace", "UsingStaff" } } },
 	["盾牌上每有 (%d+) 能量护盾可获得  "] = function(num) return { tag = { type = "PerStat", stat = "EnergyShieldOnWeapon 2", div = num } } end,
@@ -1565,6 +1569,15 @@ end
 -- List of special modifiers
 local specialModList = {
 	--【中文化程序额外添加开始】
+	-- 星团珠宝 
+	["附加 (%d+) 天赋点"] = function(num) return { mod("JewelData", "LIST", { key = "clusterJewelNodeCount", value = num }) } end,
+	["增加 (%d+) 个天赋技能"] = function(num) return { mod("JewelData", "LIST", { key = "clusterJewelNodeCount", value = num }) } end,
+	["其中 1 个增加的天赋为【珠宝槽】"] = { mod("JewelData", "LIST", { key = "clusterJewelSocketCount", value = 1 }) },
+	["其中 (%d+) 个增加的天赋为【珠宝槽】"] = function(num) return { mod("JewelData", "LIST", { key = "clusterJewelSocketCount", value = num }) } end,
+	["增加 (%d+) 个珠宝插槽天赋"] = function(num) return { mod("JewelData", "LIST", { key = "clusterJewelSocketCountOverride", value = num }) } end,
+	["增加 (%d+) 个无特殊效果的小天赋"] = function(num) return { mod("JewelData", "LIST", { key = "clusterJewelNothingnessCount", value = num }) } end,
+	["增加的小天赋无效果"] = { mod("JewelData", "LIST", { key = "clusterJewelSmallsAreNothingness", value = true }) },
+	["增加的小天赋效果提高 (%d+)%%"] = function(num) return { mod("JewelData", "LIST", { key = "clusterJewelIncEffect", value = num }) } end,
 	--这里不要less？
 	--local sumLocal
 	["该装备的攻击暴击率提高 (%d+)%%"] = function(num) return {  mod("CritChance", "INC", num)  } end,  
@@ -2035,6 +2048,11 @@ local specialModList = {
 	["对低血敌人的击中和异常状态总伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num,nil,0,bor(KeywordFlag.Hit, KeywordFlag.Ailment) ,{ type = "ActorCondition", actor = "enemy", var = "LowLife" })  } end,
 	["对低血的敌人时，击中和异常状态总伤害额外提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num,nil,0,bor(KeywordFlag.Hit, KeywordFlag.Ailment) ,{ type = "ActorCondition", actor = "enemy", var = "LowLife" })  } end,
 	["敌人身上的非伤害异常状态效果提高 (%d+)%%"] = function(num) return { 
+	mod("EnemyShockEffect", "INC", num,nil,ModFlag.Ailment) ,
+		mod("EnemyChillEffect", "INC", num,nil,ModFlag.Ailment) ,
+		mod("EnemyFreezeEffech", "INC", num,nil,ModFlag.Ailment) 
+	} end,
+	["非伤害型异常状态效果提高 (%d+)%%"] = function(num) return { 
 	mod("EnemyShockEffect", "INC", num,nil,ModFlag.Ailment) ,
 		mod("EnemyChillEffect", "INC", num,nil,ModFlag.Ailment) ,
 		mod("EnemyFreezeEffech", "INC", num,nil,ModFlag.Ailment) 
@@ -2716,6 +2734,7 @@ local specialModList = {
 	["每 (%d+)%% 的攻击伤害格挡几率会使法术伤害提高 (%d+)%%"] =  function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "PerStat", stat = "BlockChance", div = tonumber(num1) }  ) } end, 
 	["每 (%d+)%% 的法术伤害格挡几率会使魔力回复速度提高 (%d+)%%"] =  function(_,num1,num2) return {  mod("ManaRegen", "INC", tonumber(num2),{ type = "PerStat", stat = "SpellBlockChance", div = tonumber(num1) }  ) } end, 
 	["每有 (%d+)%% 的法术伤害格挡几率，则魔力回复速度提高 (%d+)%%"] =  function(_,num1,num2) return {  mod("ManaRegen", "INC", tonumber(num2),{ type = "PerStat", stat = "SpellBlockChance", div = tonumber(num1) }  ) } end, 
+	["魔力回复速度加快 (%d+)%%"] =  function(num) return {  mod("ManaRegen", "INC", tonumber(num) ) } end, 
 	["每 (%d+)%% 的攻击格挡率会使法术伤害提高 (%d+)%%"]=function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "PerStat", stat = "BlockChance", div = tonumber(num1) }  ) } end, 
 	["召唤生物在低血时会爆炸，对周围敌人造成自身最大生命 33%% 的火焰伤害"] = { mod("ExtraMinionSkill", "LIST", { skillId = "MinionInstability" }) },
 	["召唤的哨兵会使用【圣战猛击】"] = { mod("ExtraMinionSkill", "LIST", { skillId = "SentinelHolySlam", minionList = { "AxisEliteSoldierHeraldOfLight", "AxisEliteSoldierDominatingBlow" } }) },
@@ -2876,6 +2895,7 @@ local specialModList = {
 	["nearby allies have (%d+)%% increased defences per (%d+) strength you have"] = function(num, _, div) return { mod("ExtraAura", "LIST", { onlyAllies = true, mod = mod("Defences", "INC", num) }, { type = "PerStat", stat = "Str", div = tonumber(div) }) } end, 
 	["持续吟唱时，获得 (%d+)%% 额外物理伤害减伤"] = function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end,  
 	["持续吟唱时，有额外 (%d+)%% 几率躲避攻击击中"] = function(num) return {  mod("AttackDodgeChance", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end, 
+	["持续吟唱时有 (%d+)%% 几率不被攻击击中"] = function(num) return {  mod("AttackDodgeChance", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end, 
 	["持续吟唱时，有 (%d+)%% 几率免疫晕眩"] = function(num) return {  mod("AvoidStun", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end, 
 	["拥有能量护盾时法术躲避几率 %+(%d+)%%"] = function(num) return {  mod("SpellDodgeChance", "BASE", num,{ type = "Condition", var = "HaveEnergyShield" })  } end, 
 	["持续吟唱时获得 (%d+)%% 额外物理伤害减伤"] = function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end, 
@@ -3283,7 +3303,6 @@ local specialModList = {
 	} end,
 	["投射物无法穿透, 分裂或连锁"]  = { flag("CannotPierce", nil, ModFlag.Projectile), flag("CannotFork", nil, ModFlag.Projectile),flag("CannotChain", nil, ModFlag.Projectile) },
 	["若近期有击败敌人，则每秒回复 (%d+)%% 能量护盾"] = function(num) return {  mod("EnergyShieldRegen", "BASE", num,{ type = "Condition", var = "KilledRecently" })  } end,
-	["附加 (%d+) 天赋点"] = function(num) return { mod("JewelData", "LIST", { key = "clusterJewelNodeCount", value = num }) } end,
 	["每 1 个聚光之石可使暴击几率提高 (%d+)%%"] = function(num) return {  
 			mod("CritChance", "INC", num, { type = "Multiplier", var = "GrandSpectrum" }), 
 			mod("Multiplier:GrandSpectrum", "BASE", 1) 
@@ -3293,6 +3312,22 @@ local specialModList = {
 			mod("Multiplier:GrandSpectrum", "BASE", 1) 
 	} end,
 	["对法术伤害的增幅与减益也会套用于攻击上，相当于其效果的 150%%"]= function() return { mod("SpellDamageAppliesToAttacks", "BASE",150 ) } end,
+	["你的光环技能被禁用"] = { flag("DisableSkill", { type = "SkillType", skillType = SkillType.Aura}) }, 
+	["你身上的捷技能增益的总效果额外提高 (%d+)%%"] = function(num) return {  
+			mod("BuffEffect", "MORE", num, { type = "SkillType", skillType = SkillType.Herald }),		 
+	} end,
+	["捷技能的总击中伤害额外提高 (%d+)%%"] = function(num) return {  
+			mod("Damage", "MORE", num,nil, ModFlag.Hit, { type = "SkillType", skillType = SkillType.Herald }),		 
+	} end,
+	["捷技能的总持续伤害额外提高 (%d+)%%"] = function(num) return {  
+			mod("Damage", "MORE", num,nil, ModFlag.Dot, { type = "SkillType", skillType = SkillType.Herald }),		 
+	} end,
+	["捷技能的召唤生物总伤害额外提高 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "MORE", num )}, { type = "SkillType", skillType = SkillType.Herald })  } end, 
+	["每 (%d+) 智慧使冰霜伤害提高 (%d+)%%"] =function(_,num1,num2) return {  mod("ColdDamage", "INC", tonumber(num2),{ type = "PerStat", stat = "Int", div = tonumber(num1) })  } end, 
+	["每 (%d+) 力量使冰霜伤害提高 (%d+)%%"] =function(_,num1,num2) return {  mod("ColdDamage", "INC", tonumber(num2),{ type = "PerStat", stat = "Str", div = tonumber(num1) })  } end, 
+	["每 (%d+) 敏捷使冰霜伤害提高 (%d+)%%"] =function(_,num1,num2) return {  mod("ColdDamage", "INC", tonumber(num2),{ type = "PerStat", stat = "Dex", div = tonumber(num1) })  } end, 
+	["持爪或匕首时，攻击技能发射一个额外的投射物"]=  function() return { mod("ExtraSkillMod", "LIST", { mod = mod("ProjectileCount", "BASE", 1,{ type = "SkillType", skillType = SkillType.Attack }) },   { type = "Condition", varList ={ "UsingClaw", "UsingDagger" } } ) } end,
+	["爪或匕首攻击时，([%+%-]?%d+)%% 暴击伤害"] = function(num) return {  mod("CritMultiplier", "BASE", num,nil, ModFlag.Hit,{ type = "ModFlagOr", modFlags = bor(ModFlag.Claw, ModFlag.Dagger) } )  } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded
@@ -3816,12 +3851,13 @@ minus = -tonumber(minus)
 	["flasks applied to you have (%d+)%% increased effect"] = function(num) return { mod("FlaskEffect", "INC", num) } end,
 	["adds (%d+) passive skills"] = function(num) return { mod("JewelData", "LIST", { key = "clusterJewelNodeCount", value = num }) } end,
 	
-	["2 added passive skills are jewel sockets"] = { mod("JewelData", "LIST", { key = "clusterJewelSocketCount", value = 2 }) },
-	["1 added passive skill is (.+)"] = function(_, name) return { 
-		name == "a jewel socket" 
-		and mod("JewelData", "LIST", { key = "clusterJewelSocketCount", value = 1 }) 
-		or mod("ClusterJewelNotable", "LIST", name)
-	} end,
+	["1 added passive skill is a jewel socket"] = { mod("JewelData", "LIST", { key = "clusterJewelSocketCount", value = 1 }) },
+	["(%d+) added passive skills are jewel sockets"] = function(num) return { mod("JewelData", "LIST", { key = "clusterJewelSocketCount", value = num }) } end,
+	["adds (%d+) jewel socket passive skills"] = function(num) return { mod("JewelData", "LIST", { key = "clusterJewelSocketCountOverride", value = num }) } end,
+	["adds (%d+) small passive skills? which grants? nothing"] = function(num) return { mod("JewelData", "LIST", { key = "clusterJewelNothingnessCount", value = num }) } end,
+	["added small passive skills grant nothing"] = { mod("JewelData", "LIST", { key = "clusterJewelSmallsAreNothingness", value = true }) },
+	
+	
 	["added small passive skills have (%d+)%% increased effect"] = function(num) return { mod("JewelData", "LIST", { key = "clusterJewelIncEffect", value = num }) } end,
 	-- Misc
 	["iron will"] = { flag("IronWill") },
@@ -4410,7 +4446,18 @@ for baseName, jewel in pairs(data["3_0"].clusterJewels.jewels) do
 		clusterJewelSkills[table.concat(skill.enchant, " "):lower()] = { mod("JewelData", "LIST", { key = "clusterJewelSkill", value = skillId }) }
 	end
 end
-
+for notable in pairs(data["3_0"].clusterJewels.notableSortOrder) do
+	clusterJewelSkills["1 added passive skill is "..notable:lower()] = { mod("ClusterJewelNotable", "LIST", notable) }
+end
+for notable in pairs(data["3_0"].clusterJewels.notableSortOrder) do
+	clusterJewelSkills["其中 1 个增加的天赋为【"..notable:lower().."】"] = { mod("ClusterJewelNotable", "LIST", notable) }
+end
+for _, keystone in ipairs(data["3_0"].clusterJewels.keystones) do
+	clusterJewelSkills["adds "..keystone:lower()] = { mod("JewelData", "LIST", { key = "clusterJewelKeystone", value = keystone }) }
+end
+for _, keystone in ipairs(data["3_0"].clusterJewels.keystones) do
+	clusterJewelSkills["增加【"..keystone:lower().."】"] = { mod("JewelData", "LIST", { key = "clusterJewelKeystone", value = keystone }) }
+end
 -- Scan a line for the earliest and longest match from the pattern list
 -- If a match is found, returns the corresponding value from the pattern list, plus the remainder of the line and a table of captures
 local function scan(line, patternList, plain)
@@ -4462,6 +4509,10 @@ local function parseMod(line, order)
 	-- Check for add-to-cluster-jewel special
 	--注意 星团珠宝
 	local addToCluster = line:match("^Added Small Passive Skills also grant： (.+)$")
+	if addToCluster then
+		return { mod("AddToClusterJewelNode", "LIST", addToCluster) }
+	end
+	local addToCluster = line:match("^增加的小天赋还获得：(.+)$")
 	if addToCluster then
 		return { mod("AddToClusterJewelNode", "LIST", addToCluster) }
 	end

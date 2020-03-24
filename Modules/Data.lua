@@ -222,12 +222,7 @@ data.specialBaseTags = {
 	["Sceptre"] = { shaper = "sceptre_shaper", elder = "sceptre_elder",  crusader="sceptre_crusader", redeemer = "sceptre_eyrie",hunter ="sceptre_basilisk",warlord="sceptre_adjudicator" },
 }
 
--- Uniques
-data.uniques = { }
-for _, type in pairs(itemTypes) do
-	data.uniques[type] = LoadModule("Data/Uniques/"..type)
-end
-LoadModule("Data/New")
+
 
 ---------------------------
 -- Version-specific Data --
@@ -450,3 +445,9 @@ for _, targetVersion in ipairs(targetVersionList) do
 	-- Rare templates
 	verData.rares = dataModule("Rares")
 end
+-- Uniques (loaded after version-specific data because reasons)
+data.uniques = { }
+for _, type in pairs(itemTypes) do
+	data.uniques[type] = LoadModule("Data/Uniques/"..type)
+end
+LoadModule("Data/New")

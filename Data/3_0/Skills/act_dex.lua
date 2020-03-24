@@ -5097,7 +5097,7 @@ skills["ColdResistAura"] = {
 	name = "冰霜净化",
 	color = 2,
 	description = "施放一个光环, 使你与受光环影响的友军获得额外的冰霜抗性.",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Curse] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.Type85] = true, [SkillType.Type86] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.ColdSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.CanHaveBlessing] = true, [SkillType.Type85] = true, [SkillType.Type86] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
@@ -7431,7 +7431,7 @@ skills["Slither"] = {
 }
 
 skills["BladeBlast"] = {
-	name = "Blade Blast",
+	name = "乱剑穿心",
 	color = 2,
 	baseEffectiveness = 1.0499999523163,
 	incrementalEffectiveness = 0.036100000143051,

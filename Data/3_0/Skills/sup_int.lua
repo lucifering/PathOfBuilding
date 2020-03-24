@@ -3931,7 +3931,7 @@ skills["SupportUnleashPlus"] = {
 	},
 }
 skills["SupportArchmage"] = {
-	name = "Archmage",
+	name = "大法师（辅）",
 	description = "辅助会造成伤害和有魔力消耗的法术技能。不能辅助触发型技能，被图腾、陷阱或地雷使用的技能。无法调整召唤物的技能。",
 	color = 3,
 	baseEffectiveness = 0.17499999701977,
@@ -3942,6 +3942,16 @@ skills["SupportArchmage"] = {
 	excludeSkillTypes = { SkillType.Totem, SkillType.Trap, SkillType.Mine, SkillType.Triggered, SkillType.ManaCostReserved, },
 	ignoreMinionTypes = true,
 	statDescriptionScope = "gem_stat_descriptions",
+	statMap = {
+		["manaweave_cost_equals_%_unreserved_mana"] = {
+			skill("baseManaCostIsAtLeastPercentUnreservedMana", nil),
+		},
+		["manaweave_added_lightning_damage_%_cost_if_payable"] = {
+			mod("LightningMin", "BASE", nil, 0, 0, { type = "PerStat", stat = "ManaCost" }),
+			mod("LightningMax", "BASE", nil, 0, 0, { type = "PerStat", stat = "ManaCost" }),
+			div = 100,
+		},
+	},
 	baseMods = {
 	},
 	qualityStats = {

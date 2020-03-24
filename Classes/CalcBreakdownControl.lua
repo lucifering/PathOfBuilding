@@ -378,10 +378,19 @@ tooltip:AddLine(16, "来自 "..sourceType..":")
 		elseif sourceType == "Tree" then
 			-- Modifier is from a passive node, add node name, and add node ID (used to show node location)
 			local nodeId = row.mod.source:match("Tree:(%d+)")
+			
 			if nodeId then
 				local node = build.spec.nodes[tonumber(nodeId)]
-				row.sourceName = node.dn
-				row.sourceNameNode = node
+				if node then 
+					row.sourceName = node.dn
+					row.sourceNameNode = node
+				else 
+					node = build.spec.nodesSP[tonumber(nodeId)]
+					if node then 
+						row.sourceName = node.dn
+						row.sourceNameNode = node
+					end
+				end
 			end
 		elseif sourceType == "Skill" then
 			-- Extract skill name  别删
@@ -555,7 +564,7 @@ function CalcBreakdownClass:DrawBreakdownTable(viewPort, x, y, section)
 						DrawImage(nil, viewerX, viewerY, 304, 304)
 						local viewer = self.nodeViewer
 						viewer.zoom = 5
-						local scale = 11.85
+						local scale = self.calcsTab.build.spec.tree.size / 1500
 						viewer.zoomX = -ttNode.x / scale
 						viewer.zoomY = -ttNode.y / scale
 						SetViewport(viewerX + 2, viewerY + 2, 300, 300)

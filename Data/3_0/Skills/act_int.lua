@@ -8020,13 +8020,22 @@ skills["SpellDamageAura"] = {
 	},
 }
 skills["ArcaneCloak"] = {
-	name = "Arcane Cloak",
+	name = "奥术斗篷",
 	color = 3,
 	description = "花费你一部分的魔力来获得可帮你承受伤害的增益效果，直到该增益效果耗尽。根据此技能消耗的魔力，增益效果给予附加闪电伤害。与其它守护技能共享冷却时间。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Instant] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.GuardSkill] = true, [SkillType.LightningSkill] = true, [SkillType.Type96] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Instant] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.GuardSkill] = true, [SkillType.LightningSkill] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
+		["arcane_cloak_consume_%_of_mana"] = {
+			mod("Multiplier:ArcaneCloakConsumedMana", "BASE", nil, 0, 0, { type = "PerStat", stat = "ManaUnreserved" }, { type = "GlobalEffect", effectType = "Buff" }),
+			div = 100,
+		},
+		["arcane_cloak_gain_%_of_consumed_mana_as_lightning_damage"] = {
+			mod("LightningMin", "BASE", nil, 0, 0, { type = "Multiplier", var = "ArcaneCloakConsumedMana" }, { type = "GlobalEffect", effectType = "Buff" }),
+			mod("LightningMax", "BASE", nil, 0, 0, { type = "Multiplier", var = "ArcaneCloakConsumedMana" }, { type = "GlobalEffect", effectType = "Buff" }),
+			div = 100,
+		},
 	},
 	baseFlags = {
 		spell = true,
@@ -8088,7 +8097,7 @@ skills["ArcaneCloak"] = {
 	},
 }
 skills["KineticBolt"] = {
-	name = "Kinetic Bolt",
+	name = "念动飞箭",
 	color = 3,
 	description = "从你的法杖发射一个投射物，该投射物以规律或击中敌人时，以 Z 字型改变方向。每次改变方向，二阶段投射物会爆开，并朝另一个方向飞去。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, [SkillType.ProjectileAttack] = true, [SkillType.Triggerable] = true, },
@@ -8161,11 +8170,13 @@ skills["KineticBolt"] = {
 		[40] = { 11, 150, damageEffectiveness = 2.03, baseMultiplier = 2.026, levelRequirement = 100, manaCost = 14, statInterpolation = { 1, 1, }, },
 		},
 }
+
+ 
 skills["Spellslinger"] = {
-	name = "Spellslinger",
+	name = "法术节魔",
 	color = 3,
 	description = "根据被辅助的法数保留魔力，使法术在你使用法杖攻击发射投射物时触发法术。辅助没有魔力保留的法术技能。不能辅助图腾、陷阱和地雷技能。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Instant] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.Type96] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Instant] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
 	baseFlags = {
@@ -8221,8 +8232,78 @@ skills["Spellslinger"] = {
 		[40] = { cooldown = 0.5, levelRequirement = 100, statInterpolation = { }, },
 	},
 }
+skills["SupportSpellslinger"] = {
+	name = "法术节魔（辅）",
+	description = "根据被辅助的法数保留魔力，使法术在你使用法杖攻击发射投射物时触发法术。辅助没有魔力保留的法术技能。不能辅助图腾、陷阱和地雷技能。",
+	color = 3,
+	support = true,
+	requireSkillTypes = { SkillType.Triggerable, SkillType.Spell, SkillType.AND, },
+	addSkillTypes = { SkillType.Triggered, SkillType.ManaCostReserved, SkillType.ManaCostPercent, SkillType.Type90, },
+	excludeSkillTypes = { SkillType.Trap, SkillType.Mine, SkillType.Totem, SkillType.ManaCostReserved, SkillType.Triggered, SkillType.NOT, SkillType.AND, SkillType.TriggeredGrantedSkill, },
+	ignoreMinionTypes = true,
+	statDescriptionScope = "gem_stat_descriptions",
+	statMap = {
+		["gain_%_of_base_wand_damage_as_added_spell_damage"] = {
+			skill("gainPercentBaseWandDamage", nil),
+		},
+	},
+	baseMods = {
+		flag("Condition:SupportedBySpellslinger"),
+		skill("showAverage", true),
+	},
+	qualityStats = {
+		{ "spell_damage_+%", 1 },
+	},
+	stats = {
+		"spellslinger_trigger_on_wand_attack_%",
+		"gain_%_of_base_wand_damage_as_added_spell_damage",
+		"base_cooldown_speed_+%",
+	},
+	levels = {
+		[1] = { 100, 50, 0, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 24, statInterpolation = { 1, 1, 1, }, },
+		[2] = { 100, 53, 1, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 27, statInterpolation = { 1, 1, 1, }, },
+		[3] = { 100, 55, 2, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 30, statInterpolation = { 1, 1, 1, }, },
+		[4] = { 100, 58, 3, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 33, statInterpolation = { 1, 1, 1, }, },
+		[5] = { 100, 61, 4, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 36, statInterpolation = { 1, 1, 1, }, },
+		[6] = { 100, 63, 5, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 39, statInterpolation = { 1, 1, 1, }, },
+		[7] = { 100, 66, 6, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 42, statInterpolation = { 1, 1, 1, }, },
+		[8] = { 100, 68, 7, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 45, statInterpolation = { 1, 1, 1, }, },
+		[9] = { 100, 71, 8, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 48, statInterpolation = { 1, 1, 1, }, },
+		[10] = { 100, 74, 9, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 50, statInterpolation = { 1, 1, 1, }, },
+		[11] = { 100, 76, 10, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 52, statInterpolation = { 1, 1, 1, }, },
+		[12] = { 100, 79, 11, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 54, statInterpolation = { 1, 1, 1, }, },
+		[13] = { 100, 82, 12, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 56, statInterpolation = { 1, 1, 1, }, },
+		[14] = { 100, 84, 13, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 58, statInterpolation = { 1, 1, 1, }, },
+		[15] = { 100, 87, 14, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 60, statInterpolation = { 1, 1, 1, }, },
+		[16] = { 100, 89, 15, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 62, statInterpolation = { 1, 1, 1, }, },
+		[17] = { 100, 92, 16, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 64, statInterpolation = { 1, 1, 1, }, },
+		[18] = { 100, 95, 17, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 66, statInterpolation = { 1, 1, 1, }, },
+		[19] = { 100, 97, 18, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 68, statInterpolation = { 1, 1, 1, }, },
+		[20] = { 100, 100, 19, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 70, statInterpolation = { 1, 1, 1, }, },
+		[21] = { 100, 100, 20, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 72, statInterpolation = { 1, 1, 1, }, },
+		[22] = { 100, 100, 21, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 74, statInterpolation = { 1, 1, 1, }, },
+		[23] = { 100, 100, 22, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 76, statInterpolation = { 1, 1, 1, }, },
+		[24] = { 100, 100, 23, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 78, statInterpolation = { 1, 1, 1, }, },
+		[25] = { 100, 100, 24, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 80, statInterpolation = { 1, 1, 1, }, },
+		[26] = { 100, 100, 25, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 82, statInterpolation = { 1, 1, 1, }, },
+		[27] = { 100, 100, 26, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 84, statInterpolation = { 1, 1, 1, }, },
+		[28] = { 100, 100, 27, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 86, statInterpolation = { 1, 1, 1, }, },
+		[29] = { 100, 100, 28, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 88, statInterpolation = { 1, 1, 1, }, },
+		[30] = { 100, 100, 29, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 90, statInterpolation = { 1, 1, 1, }, },
+		[31] = { 100, 100, 30, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 91, statInterpolation = { 1, 1, 1, }, },
+		[32] = { 100, 100, 30, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 92, statInterpolation = { 1, 1, 1, }, },
+		[33] = { 100, 100, 31, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 93, statInterpolation = { 1, 1, 1, }, },
+		[34] = { 100, 100, 31, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 94, statInterpolation = { 1, 1, 1, }, },
+		[35] = { 100, 100, 32, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 95, statInterpolation = { 1, 1, 1, }, },
+		[36] = { 100, 100, 32, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 96, statInterpolation = { 1, 1, 1, }, },
+		[37] = { 100, 100, 33, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 97, statInterpolation = { 1, 1, 1, }, },
+		[38] = { 100, 100, 33, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 98, statInterpolation = { 1, 1, 1, }, },
+		[39] = { 100, 100, 34, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 99, statInterpolation = { 1, 1, 1, }, },
+		[40] = { 100, 100, 34, manaCostOverride = 20, cooldown = 0.5, levelRequirement = 100, statInterpolation = { 1, 1, 1, }, },
+	},
+}
 skills["Stormbind"] = {
-	name = "Stormbind",
+	name = "缚雷之纹",
 	color = 3,
 	baseEffectiveness = 2.1500000953674,
 	incrementalEffectiveness = 0.0337999984622,
@@ -8235,28 +8316,27 @@ skills["Stormbind"] = {
 		area = true,
 		duration = true,
 	},
+	statMap = {
+		["rune_paint_damage_+%_final_per_rune_level"] = {
+			mod("Damage", "MORE", nil, 0, 0, { type = "Multiplier", var = "RuneLevel" }),
+		},
+		["rune_paint_area_of_effect_+%_final_per_rune_level"] = {
+			mod("AreaOfEffect", "MORE", nil, 0, 0, { type = "Multiplier", var = "RuneLevel" }),
+		},
+	},
 	parts = {
 		{
 			name = "未优化",
-		},
-		{
-			name = "1 次优化",
-		},
-		{
-			name = "2 次优化",
-		},
+		},		 
 		{
 			name = "3 次优化",
 		},
 	},
 	baseMods = {
-		skill("showAverage", true),
-		mod("Damage", "MORE", 100, 0, 0, { type = "SkillPart", skillPart = 2 }),
-		mod("Damage", "MORE", 200, 0, 0, { type = "SkillPart", skillPart = 3 }),
-		mod("Damage", "MORE", 300, 0, 0, { type = "SkillPart", skillPart = 4 }),
-		mod("AreaOfEffect", "MORE", 30, 0, 0, { type = "SkillPart", skillPart = 2 }),
-		mod("AreaOfEffect", "MORE", 60, 0, 0, { type = "SkillPart", skillPart = 3 }),
-		mod("AreaOfEffect", "MORE", 90, 0, 0, { type = "SkillPart", skillPart = 4 }),
+		
+		skill("radius", 16),
+		mod("Multiplier:RuneLevel", "BASE", 3, 0, 0, { type = "SkillPart", skillPart = 2 }),
+		
 	},
 	qualityStats = {
 		{ "base_cast_speed_+%", 0.5 },

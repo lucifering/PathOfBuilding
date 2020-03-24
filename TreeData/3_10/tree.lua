@@ -8746,7 +8746,7 @@ return {
 		},
 		[27301]= {
 			["skill"]= 27301,
-			["name"]= "武术经验",
+			["name"]= "沙场历练",
 			["icon"]= "Art/2DArt/SkillIcons/passives/MartialExperience.png",
 			["stats"]= {
 				"双手近战武器攻击的物理伤害提高 30%",
@@ -10453,7 +10453,7 @@ return {
 		},
 		[48282]= {
 			["skill"]= 48282,
-			["name"]= "长杖暴击几率和品质",
+			["name"]= "长杖暴击率",
 			["icon"]= "Art/2DArt/SkillIcons/passives/staffspeed.png",
 			["stats"]= {
 				"持长杖时，暴击率提高 30%"
@@ -10473,7 +10473,7 @@ return {
 		},
 		[16754]= {
 			["skill"]= 16754,
-			["name"]= "长杖暴击几率和品质",
+			["name"]= "长杖暴击率",
 			["icon"]= "Art/2DArt/SkillIcons/passives/staffspeed.png",
 			["stats"]= {
 				"持长杖时，暴击率提高 30%"
@@ -10577,7 +10577,7 @@ return {
 		},
 		[11431]= {
 			["skill"]= 11431,
-			["name"]= "Totem Life and Physical Damage Reduction",
+			["name"]= "图腾生命和物理伤害减免",
 			["icon"]= "Art/2DArt/SkillIcons/passives/totemlife.png",
 			["stats"]= {
 				"图腾的生命提高 10%",
@@ -10667,7 +10667,7 @@ return {
 		},
 		[7786]= {
 			["skill"]= 7786,
-			["name"]= "Totem Damage and Attack Speed",
+			["name"]= "图腾伤害和攻击速度",
 			["icon"]= "Art/2DArt/SkillIcons/passives/totemattackspeed.png",
 			["stats"]= {
 				"图腾伤害提高 12%",
@@ -10685,7 +10685,7 @@ return {
 		},
 		[55648]= {
 			["skill"]= 55648,
-			["name"]= "Totem Damage and Attack Speed",
+			["name"]= "图腾伤害和攻击速度",
 			["icon"]= "Art/2DArt/SkillIcons/passives/totemattackspeed.png",
 			["stats"]= {
 				"图腾伤害提高 12%",
@@ -10702,7 +10702,7 @@ return {
 		},
 		[46291]= {
 			["skill"]= 46291,
-			["name"]= "Totem Damage and Placement Speed",
+			["name"]= "图腾伤害和放置速度",
 			["icon"]= "Art/2DArt/SkillIcons/passives/totemdamage.png",
 			["stats"]= {
 				"图腾伤害提高 10%",
@@ -10720,7 +10720,7 @@ return {
 		},
 		[544]= {
 			["skill"]= 544,
-			["name"]= "Surveillance",
+			["name"]= "洞若观火",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AttackTotemOffensive.png",
 			["stats"]= {
 				"图腾伤害提高 30%",
@@ -10740,7 +10740,7 @@ return {
 		},
 		[61039]= {
 			["skill"]= 61039,
-			["name"]= "Panopticon",
+			["name"]= "统揽全局",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AttackTotemMultiple.png",
 			["stats"]= {
 				"图腾伤害提高 30%",
@@ -11374,7 +11374,7 @@ return {
 		},
 		[55166]= {
 			["skill"]= 55166,
-			["name"]= "剑类伤害和攻击速度",
+			["name"]= "剑的伤害和攻击速度",
 			["icon"]= "Art/2DArt/SkillIcons/passives/attackspeedsworddex.png",
 			["stats"]= {
 				"剑类攻击的物理伤害提高 10%",
@@ -11396,7 +11396,7 @@ return {
 		},
 		[49415]= {
 			["skill"]= 49415,
-			["name"]= "剑类伤害和攻击速度",
+			["name"]= "剑的伤害和攻击速度",
 			["icon"]= "Art/2DArt/SkillIcons/passives/attackspeedsworddex.png",
 			["stats"]= {
 				"剑类攻击的物理伤害提高 10%",
@@ -13320,7 +13320,7 @@ return {
 		},
 		[4750]= {
 			["skill"]= 4750,
-			["name"]= "Totem Attack and Placement Speed",
+			["name"]= "图腾攻击和放置速度",
 			["icon"]= "Art/2DArt/SkillIcons/passives/RangedTotemAttackSpeed.png",
 			["stats"]= {
 				"图腾放置速度提高 10%",
@@ -13338,7 +13338,7 @@ return {
 		},
 		[58288]= {
 			["skill"]= 58288,
-			["name"]= "Totem Attack and Placement Speed",
+			["name"]= "图腾攻击和放置速度",
 			["icon"]= "Art/2DArt/SkillIcons/passives/RangedTotemAttackSpeed.png",
 			["stats"]= {
 				"图腾放置速度提高 10%",
@@ -13355,7 +13355,7 @@ return {
 		},
 		[63618]= {
 			["skill"]= 63618,
-			["name"]= "Totem Damage and Placement Speed",
+			["name"]= "图腾伤害和放置速度",
 			["icon"]= "Art/2DArt/SkillIcons/passives/RangedTotemDamage.png",
 			["stats"]= {
 				"图腾伤害提高 10%",
@@ -13374,7 +13374,7 @@ return {
 		},
 		[42632]= {
 			["skill"]= 42632,
-			["name"]= "Totem Critical Strike Chance and Multiplier",
+			["name"]= "图腾暴击率和伤害加成",
 			["icon"]= "Art/2DArt/SkillIcons/passives/RangedTotemCriticalStrikes.png",
 			["stats"]= {
 				"图腾施放的技能暴击率提高 20%",
@@ -13392,7 +13392,7 @@ return {
 		},
 		[27444]= {
 			["skill"]= 27444,
-			["name"]= "Totem Critical Strike Chance and Multiplier",
+			["name"]= "图腾暴击率和伤害加成",
 			["icon"]= "Art/2DArt/SkillIcons/passives/RangedTotemCriticalStrikes.png",
 			["stats"]= {
 				"图腾施放的技能暴击率提高 20%",
@@ -13409,7 +13409,7 @@ return {
 		},
 		[15290]= {
 			["skill"]= 15290,
-			["name"]= "Watchtowers",
+			["name"]= "守望之塔",
 			["icon"]= "Art/2DArt/SkillIcons/passives/RangedTotemOffensive.png",
 			["stats"]= {
 				"图腾伤害提高 24%",
@@ -13481,7 +13481,7 @@ return {
 		},
 		[63067]= {
 			["skill"]= 63067,
-			["name"]= "Wand Damage and Attack Speed",
+			["name"]= "法杖伤害和攻击速度",
 			["icon"]= "Art/2DArt/SkillIcons/passives/masterywand.png",
 			["stats"]= {
 				"持法杖时，伤害提高 10%",
@@ -13762,7 +13762,7 @@ return {
 		},
 		[8302]= {
 			["skill"]= 8302,
-			["name"]= "暴击球持续",
+			["name"]= "暴击球持续时间",
 			["icon"]= "Art/2DArt/SkillIcons/passives/chargeint.png",
 			["stats"]= {
 				"暴击球的持续时间延长 18%"
@@ -13985,7 +13985,7 @@ return {
 		},
 		[38508]= {
 			["skill"]= 38508,
-			["name"]= "耐力球持续",
+			["name"]= "耐力球持续时间",
 			["icon"]= "Art/2DArt/SkillIcons/passives/chargestr.png",
 			["stats"]= {
 				"耐力球持续时间延长 18%"
@@ -14024,7 +14024,7 @@ return {
 		},
 		[40766]= {
 			["skill"]= 40766,
-			["name"]= "耐力球持续",
+			["name"]= "耐力球持续时间",
 			["icon"]= "Art/2DArt/SkillIcons/passives/chargestr.png",
 			["stats"]= {
 				"耐力球持续时间延长 18%"
@@ -14100,7 +14100,7 @@ return {
 		},
 		[401]= {
 			["skill"]= 401,
-			["name"]= "耐力球持续",
+			["name"]= "耐力球持续时间",
 			["icon"]= "Art/2DArt/SkillIcons/passives/chargestr.png",
 			["stats"]= {
 				"耐力球持续时间延长 18%"
@@ -14139,7 +14139,7 @@ return {
 		},
 		[40291]= {
 			["skill"]= 40291,
-			["name"]= "Fire Damage and Area of Effect",
+			["name"]= "火焰伤害和范围效果",
 			["icon"]= "Art/2DArt/SkillIcons/passives/firedamage.png",
 			["stats"]= {
 				"火焰伤害提高 8%",
@@ -14272,7 +14272,7 @@ return {
 		},
 		[41706]= {
 			["skill"]= 41706,
-			["name"]= "耐力球持续",
+			["name"]= "耐力球持续时间",
 			["icon"]= "Art/2DArt/SkillIcons/passives/chargestr.png",
 			["stats"]= {
 				"耐力球持续时间延长 18%"
@@ -14348,7 +14348,7 @@ return {
 		},
 		[37584]= {
 			["skill"]= 37584,
-			["name"]= "耐力球持续",
+			["name"]= "耐力球持续时间",
 			["icon"]= "Art/2DArt/SkillIcons/passives/chargestr.png",
 			["stats"]= {
 				"耐力球持续时间延长 18%"
@@ -15398,7 +15398,7 @@ return {
 		},
 		[33983]= {
 			["skill"]= 33983,
-			["name"]= "长杖暴击几率和加成",
+			["name"]= "长杖暴击率和伤害加成",
 			["icon"]= "Art/2DArt/SkillIcons/passives/damagestaff.png",
 			["stats"]= {
 				"长杖攻击的暴击率提高 20%",
@@ -15440,7 +15440,7 @@ return {
 		},
 		[15716]= {
 			["skill"]= 15716,
-			["name"]= "长杖暴击几率和加成",
+			["name"]= "长杖暴击率和伤害加成",
 			["icon"]= "Art/2DArt/SkillIcons/passives/damagestaff.png",
 			["stats"]= {
 				"长杖攻击的暴击率提高 20%",
@@ -16666,7 +16666,7 @@ return {
 				"被击中时有 5% 几率避免闪电伤害"
 			},
 			["reminderText"]= {
-				"(No chance to avoid damage can be higher than 75%)"
+				"避免伤害的几率不能超过 75%"
 			},
 			["group"]= 94,
 			["orbit"]= 0,
@@ -16686,7 +16686,7 @@ return {
 				"被击中时有 5% 几率避免火焰伤害"
 			},
 			["reminderText"]= {
-				"(No chance to avoid damage can be higher than 75%)"
+				"避免伤害的几率不能超过 75%"
 			},
 			["group"]= 94,
 			["orbit"]= 2,
@@ -16708,7 +16708,7 @@ return {
 				"被击中时有 5% 几率避免冰霜伤害"
 			},
 			["reminderText"]= {
-				"(No chance to avoid damage can be higher than 75%)"
+				"避免伤害的几率不能超过 75%"
 			},
 			["group"]= 94,
 			["orbit"]= 2,
@@ -17074,7 +17074,7 @@ return {
 		},
 		[5696]= {
 			["skill"]= 5696,
-			["name"]= "暴击球持续",
+			["name"]= "暴击球持续时间",
 			["icon"]= "Art/2DArt/SkillIcons/passives/chargeint.png",
 			["stats"]= {
 				"暴击球的持续时间延长 18%"
@@ -17153,7 +17153,7 @@ return {
 		},
 		[27575]= {
 			["skill"]= 27575,
-			["name"]= "暴击球持续",
+			["name"]= "暴击球持续时间",
 			["icon"]= "Art/2DArt/SkillIcons/passives/chargeint.png",
 			["stats"]= {
 				"暴击球的持续时间延长 18%"
@@ -20811,7 +20811,7 @@ return {
 		},
 		[62177]= {
 			["skill"]= 62177,
-			["name"]= "暴击球持续",
+			["name"]= "暴击球持续时间",
 			["icon"]= "Art/2DArt/SkillIcons/passives/chargeint.png",
 			["stats"]= {
 				"暴击球的持续时间延长 18%"
@@ -20886,7 +20886,7 @@ return {
 		},
 		[3537]= {
 			["skill"]= 3537,
-			["name"]= "暴击球持续",
+			["name"]= "暴击球持续时间",
 			["icon"]= "Art/2DArt/SkillIcons/passives/chargeint.png",
 			["stats"]= {
 				"暴击球的持续时间延长 18%"
@@ -21436,7 +21436,7 @@ return {
 		},
 		[43193]= {
 			["skill"]= 43193,
-			["name"]= "元素伤害, 攻击速度和施法速度",
+			["name"]= "元素伤害, 攻击和施法速度",
 			["icon"]= "Art/2DArt/SkillIcons/passives/Inquistitor/IncreasedElementalDamageAttackCasteSpeed.png",
 			["stats"]= {
 				"元素伤害提高 10%",
@@ -21792,7 +21792,7 @@ return {
 		},
 		[18703]= {
 			["skill"]= 18703,
-			["name"]= "权贵攻击",
+			["name"]= "矫若惊龙",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AttackDamangeAndEvasionNotableIcon.png",
 			["stats"]= {
 				"攻击伤害提高 20%",
@@ -23668,7 +23668,7 @@ return {
 		},
 		[56509]= {
 			["skill"]= 56509,
-			["name"]= "剑类伤害和攻击速度",
+			["name"]= "剑的伤害和攻击速度",
 			["icon"]= "Art/2DArt/SkillIcons/passives/attackspeedsworddex.png",
 			["stats"]= {
 				"剑攻击造成的击中和异常状态伤害提高 10%",
@@ -23688,7 +23688,7 @@ return {
 		},
 		[52213]= {
 			["skill"]= 52213,
-			["name"]= "剑类伤害和攻击速度",
+			["name"]= "剑的伤害和攻击速度",
 			["icon"]= "Art/2DArt/SkillIcons/passives/attackspeedsworddex.png",
 			["stats"]= {
 				"剑攻击造成的击中和异常状态伤害提高 10%",
@@ -23791,7 +23791,7 @@ return {
 		},
 		[12720]= {
 			["skill"]= 12720,
-			["name"]= "剑类伤害和攻击速度",
+			["name"]= "剑的伤害和攻击速度",
 			["icon"]= "Art/2DArt/SkillIcons/passives/attackspeedsworddex.png",
 			["stats"]= {
 				"剑攻击造成的击中和异常状态伤害提高 10%",
@@ -23824,7 +23824,7 @@ return {
 		},
 		[29856]= {
 			["skill"]= 29856,
-			["name"]= "剑类伤害和暴击率",
+			["name"]= "剑的伤害和暴击率",
 			["icon"]= "Art/2DArt/SkillIcons/passives/accuracysword.png",
 			["stats"]= {
 				"剑攻击造成的击中和异常状态伤害提高 10%",
@@ -26426,7 +26426,7 @@ return {
 		},
 		[46471]= {
 			["skill"]= 46471,
-			["name"]= "Shocking Strikes",
+			["name"]= "雷震打击",
 			["icon"]= "Art/2DArt/SkillIcons/passives/LightingAilment.png",
 			["stats"]= {
 				"闪电伤害击中时有 15% 几率使敌人受到感电效果影响",
@@ -26448,7 +26448,7 @@ return {
 		},
 		[21048]= {
 			["skill"]= 21048,
-			["name"]= "Weapon Lightning Damage and Shock Effect",
+			["name"]= "武器的闪电伤害和感电效果",
 			["icon"]= "Art/2DArt/SkillIcons/passives/lightningint.png",
 			["stats"]= {
 				"攻击技能的闪电伤害提高 10%",
@@ -26466,7 +26466,7 @@ return {
 		},
 		[10555]= {
 			["skill"]= 10555,
-			["name"]= "Weapon Lightning Damage and Shock Chance",
+			["name"]= "武器的闪电伤害和感电几率",
 			["icon"]= "Art/2DArt/SkillIcons/passives/lightningint.png",
 			["stats"]= {
 				"闪电伤害击中时有 10% 几率使敌人受到感电效果影响",
@@ -30409,7 +30409,7 @@ return {
 		},
 		[11364]= {
 			["skill"]= 11364,
-			["name"]= "中毒和流血伤害",
+			["name"]= "烈毒和流血伤害",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DamageOverTime.png",
 			["stats"]= {
 				"流血伤害提高 25%",
@@ -31413,7 +31413,7 @@ return {
 		},
 		[24229]= {
 			["skill"]= 24229,
-			["name"]= "长杖暴击几率和品质",
+			["name"]= "长杖暴击率",
 			["icon"]= "Art/2DArt/SkillIcons/passives/critstrchnc.png",
 			["stats"]= {
 				"持长杖时，暴击率提高 20%"
@@ -31433,7 +31433,7 @@ return {
 		},
 		[4977]= {
 			["skill"]= 4977,
-			["name"]= "长杖暴击几率和加成",
+			["name"]= "长杖暴击率和伤害加成",
 			["icon"]= "Art/2DArt/SkillIcons/passives/critstrchnc.png",
 			["stats"]= {
 				"持长杖时，暴击率提高 20%",
@@ -31453,7 +31453,7 @@ return {
 		},
 		[53957]= {
 			["skill"]= 53957,
-			["name"]= "长杖暴击几率和加成",
+			["name"]= "长杖暴击率和伤害加成",
 			["icon"]= "Art/2DArt/SkillIcons/passives/critstrchnc.png",
 			["stats"]= {
 				"持长杖时，暴击率提高 20%",
@@ -34618,7 +34618,7 @@ return {
 		},
 		[23950]= {
 			["skill"]= 23950,
-			["name"]= "恶毒牢房",
+			["name"]= "恶毒结界",
 			["icon"]= "Art/2DArt/SkillIcons/passives/Occultist/EldrichBarrier.png",
 			["stats"]= {
 				"近期若有能量护盾开始回复，则能量护盾的回复不会被打断\n总能量护盾每秒回复额外降低 50%\n从能量护盾偷取中获得的总最大恢复量额外降低 50%"
@@ -39540,7 +39540,7 @@ return {
 		},
 		[17171]= {
 			["skill"]= 17171,
-			["name"]= "闪现冰冻",
+			["name"]= "急速冻结",
 			["icon"]= "Art/2DArt/SkillIcons/passives/newcolddamage.png",
 			["stats"]= {
 				"冰霜伤害提高 24%",
@@ -39888,7 +39888,7 @@ return {
 		},
 		[46965]= {
 			["skill"]= 46965,
-			["name"]= "怠工者",
+			["name"]= "破坏者",
 			["icon"]= "Art/2DArt/SkillIcons/passives/saboteur.png",
 			["stats"]= {
 				"陷阱伤害提高 30%",
@@ -40153,7 +40153,7 @@ return {
 		},
 		[42623]= {
 			["skill"]= 42623,
-			["name"]= "One Handed Damage",
+			["name"]= "单手武器伤害",
 			["icon"]= "Art/2DArt/SkillIcons/passives/onehandspeed.png",
 			["stats"]= {
 				"单手武器攻击造成的异常状态伤害提高 20%",
@@ -40295,7 +40295,7 @@ return {
 		},
 		[58069]= {
 			["skill"]= 58069,
-			["name"]= "One Handed Damage",
+			["name"]= "单手武器伤害",
 			["icon"]= "Art/2DArt/SkillIcons/passives/onehandspeed.png",
 			["stats"]= {
 				"单手武器攻击造成的异常状态伤害提高 20%",
@@ -40434,7 +40434,7 @@ return {
 		},
 		[35053]= {
 			["skill"]= 35053,
-			["name"]= "剑类伤害和暴击率",
+			["name"]= "剑的伤害和暴击率",
 			["icon"]= "Art/2DArt/SkillIcons/passives/damagesword.png",
 			["stats"]= {
 				"剑类攻击的物理伤害提高 8%",
@@ -41240,7 +41240,7 @@ return {
 		},
 		[37114]= {
 			["skill"]= 37114,
-			["name"]= "元素伤害, 攻击速度和施法速度",
+			["name"]= "元素伤害, 攻击和施法速度",
 			["icon"]= "Art/2DArt/SkillIcons/passives/Elementalist/ElementalDamageAttackCasteSpeed.png",
 			["stats"]= {
 				"元素伤害提高 10%",
@@ -41259,7 +41259,7 @@ return {
 		},
 		[19595]= {
 			["skill"]= 19595,
-			["name"]= "元素伤害, 攻击速度和施法速度",
+			["name"]= "元素伤害, 攻击和施法速度",
 			["icon"]= "Art/2DArt/SkillIcons/passives/Elementalist/ElementalDamageAttackCasteSpeed.png",
 			["stats"]= {
 				"元素伤害提高 10%",
@@ -43709,7 +43709,7 @@ return {
 		},
 		[33287]= {
 			["skill"]= 33287,
-			["name"]= "战神",
+			["name"]= "勇士",
 			["icon"]= "Art/2DArt/SkillIcons/passives/increased armor.png",
 			["stats"]= {
 				"护甲提高 16%",
@@ -46270,7 +46270,7 @@ return {
 		},
 		[61072]= {
 			["skill"]= 61072,
-			["name"]= "战神",
+			["name"]= "勇士",
 			["icon"]= "Art/2DArt/SkillIcons/passives/Ascendants/Juggernaut.png",
 			["stats"]= {
 				"+1000 命中值",
@@ -46319,7 +46319,7 @@ return {
 		},
 		[58827]= {
 			["skill"]= 58827,
-			["name"]= "怠工者",
+			["name"]= "破坏者",
 			["icon"]= "Art/2DArt/SkillIcons/passives/Ascendants/Saboteur.png",
 			["stats"]= {
 				"范围效果扩大 30%",
@@ -48957,7 +48957,7 @@ return {
 		},
 		[22217]= {
 			["skill"]= 22217,
-			["name"]= "剑的伤害和命中",
+			["name"]= "剑类伤害和命中值",
 			["icon"]= "Art/2DArt/SkillIcons/passives/damagesword.png",
 			["stats"]= {
 				"剑攻击造成的击中和异常状态伤害提高 10%",
@@ -48979,7 +48979,7 @@ return {
 		},
 		[6383]= {
 			["skill"]= 6383,
-			["name"]= "剑的伤害和命中",
+			["name"]= "剑类伤害和命中值",
 			["icon"]= "Art/2DArt/SkillIcons/passives/damagesword.png",
 			["stats"]= {
 				"剑攻击造成的击中和异常状态伤害提高 10%",
@@ -50722,7 +50722,7 @@ return {
 		},
 		[36736]= {
 			["skill"]= 36736,
-			["name"]= "Burning Brutality",
+			["name"]= "凶残烈焰",
 			["icon"]= "Art/2DArt/SkillIcons/passives/FireAilment.png",
 			["stats"]= {
 				"+8% 火焰持续伤害加成",
@@ -50744,7 +50744,7 @@ return {
 		},
 		[26365]= {
 			["skill"]= 26365,
-			["name"]= "Weapon Fire Damage and Ignite Chance",
+			["name"]= "武器的火焰伤害和点燃几率",
 			["icon"]= "Art/2DArt/SkillIcons/passives/firedamagestr.png",
 			["stats"]= {
 				"有 10% 几率点燃",
@@ -50766,7 +50766,7 @@ return {
 		},
 		[12415]= {
 			["skill"]= 12415,
-			["name"]= "Weapon Fire Damage, Ignite Duration and Ignite Chance",
+			["name"]= "武器的火焰伤害、点燃持续时间和点燃几率",
 			["icon"]= "Art/2DArt/SkillIcons/passives/firedamagestr.png",
 			["stats"]= {
 				"敌人被点燃的持续时间延长 10%",
@@ -50788,7 +50788,7 @@ return {
 		},
 		[7187]= {
 			["skill"]= 7187,
-			["name"]= "Weapon Fire Damage and Burning Damage Multiplier",
+			["name"]= "武器的火焰伤害和燃烧伤害加成",
 			["icon"]= "Art/2DArt/SkillIcons/passives/firedamagestr.png",
 			["stats"]= {
 				"+4% 火焰持续伤害加成",
@@ -50980,7 +50980,7 @@ return {
 				"被击中时有 20% 几率避免物理伤害"
 			},
 			["reminderText"]= {
-				"(No chance to avoid damage can be higher than 75%)"
+				"避免伤害的几率不能超过 75%"
 			},
 			["group"]= 606,
 			["orbit"]= 0,
@@ -51671,7 +51671,7 @@ return {
 		},
 		[12953]= {
 			["skill"]= 12953,
-			["name"]= "Disciple of Kitava",
+			["name"]= "奇塔弗门徒",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DiscipleOfKitava.png",
 			["stats"]= {
 				"每秒消耗附近一个灵枢，回复 5% 生命和魔力\n若近期没有消耗尸体，承受的总伤害额外提高 10%\n"
@@ -51686,7 +51686,7 @@ return {
 		},
 		[3354]= {
 			["skill"]= 3354,
-			["name"]= "Lone Messenger",
+			["name"]= "独行使者",
 			["icon"]= "Art/2DArt/SkillIcons/passives/LoneMessenger.png",
 			["stats"]= {
 				"你只能同时使用一个捷技能\n你身上的捷技能增益的总效果额外提高 50%\n捷技能的总击中伤害额外提高 100%\n捷技能的总持续伤害额外提高 50%\n捷技能的召唤生物总伤害额外提高 25%\n你的光环技能被禁用\n"
@@ -51698,13 +51698,13 @@ return {
 		},
 		[30847]= {
 			["skill"]= 30847,
-			["name"]= "Nature's Patience",
+			["name"]= "造化自然",
 			["icon"]= "Art/2DArt/SkillIcons/passives/NaturesPatience.png",
 			["stats"]= {
 				"当静止时每秒获得 2 层缓速藤蔓\n每层缓速藤蔓有 2% 几率造成双倍伤害\n每层缓速藤蔓可使承受的总伤害额外降低 1%\n"
 			},
 			["reminderText"]= {
-				"(Up to 10 Vines can grasp you, inflicting 8% less Movement Speed per Vine. Broken by moving)"
+				"（最多有 10 根蔓藤可以抓住你，每根蔓藤都使你移动速度降低 8%。移动可以挣脱）"
 			},
 			["flavourText"]= {
 				"To win, all you must do is outlast."
@@ -51713,7 +51713,7 @@ return {
 		},
 		[57280]= {
 			["skill"]= 57280,
-			["name"]= "Secrets of Suffering",
+			["name"]= "苦难秘辛",
 			["icon"]= "Art/2DArt/SkillIcons/passives/SecretOfAgony.png",
 			["stats"]= {
 				"无法造成点燃，冰缓，冰冻或感电\n暴击造成烧灼、脆弱和精疲力尽\n"
@@ -51730,7 +51730,7 @@ return {
 		},
 		[40561]= {
 			["skill"]= 40561,
-			["name"]= "Kineticism",
+			["name"]= "万物皆动",
 			["icon"]= "Art/2DArt/SkillIcons/passives/Kineticism.png",
 			["stats"]= {
 				"攻击投射物必定造成流血和瘫痪，和击退敌人\n投射物无法穿透, 分裂或连锁\n"
@@ -51746,7 +51746,7 @@ return {
 		},
 		[32118]= {
 			["skill"]= 32118,
-			["name"]= "Veteran's Awareness",
+			["name"]= "百战老兵",
 			["icon"]= "Art/2DArt/SkillIcons/passives/VeteransAwareness.png",
 			["stats"]= {
 				"受到非瓦尔护卫技能影响时，+10% 所有元素抗性和所有元素抗性上限\n受到非瓦尔防卫技能影响时获得 20% 物理伤害减伤\n若近期内有失去非瓦尔防卫技能的增益效果，则承受的总伤害额外提高 20%\n"
@@ -51762,13 +51762,13 @@ return {
 		},
 		[60069]= {
 			["skill"]= 60069,
-			["name"]= "Hollow Palm Technique",
+			["name"]= "空明之掌",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DragonStyle.png",
 			["stats"]= {
-				"没有负重时，视为双持\n没有负重时，总攻击速度额外提高 60%\n没有负重时，每 10 点敏捷附加 14 - 20 攻击物理伤害\n"
+				"【两手空空】状态下视为双持\n【两手空空】状态下总攻击速度额外提高 60%\n【两手空空】状态下每 10 点敏捷附加 14 - 20 攻击物理伤害\n"
 			},
 			["reminderText"]= {
-				"(You are Unencumbered while you have no Gloves, no Main Hand Item, and no Off Hand Item Equipped)"
+				"（没有装备手套、主手和副手物品时视为【两手空空】状态）"
 			},
 			["flavourText"]= {
 				"\"The mastodons of yore were each born with two weapons greater than any sword. So, too, were you.\" - Maraketh Proverb"
@@ -51777,7 +51777,7 @@ return {
 		},
 		[37081]= {
 			["skill"]= 37081,
-			["name"]= "Pitfighter",
+			["name"]= "深渊斗士",
 			["icon"]= "Art/2DArt/SkillIcons/passives/Pitfighter.png",
 			["stats"]= {
 				"钓鱼线强度提高 1%"
@@ -51789,7 +51789,7 @@ return {
 		},
 		[44237]= {
 			["skill"]= 44237,
-			["name"]= "Prodigious Defence",
+			["name"]= "恢宏壁垒",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BlockAttackDmgNotable.png",
 			["stats"]= {
 				"3% 法术伤害格挡几率",
@@ -51800,7 +51800,7 @@ return {
 		},
 		[35790]= {
 			["skill"]= 35790,
-			["name"]= "Advance Guard",
+			["name"]= "先遣卫士",
 			["icon"]= "Art/2DArt/SkillIcons/passives/HoldingShieldDamage.png",
 			["stats"]= {
 				"持盾牌时，攻击技能造成的伤害提高 30%",
@@ -51811,7 +51811,7 @@ return {
 		},
 		[36455]= {
 			["skill"]= 36455,
-			["name"]= "Gladiatorial Combat",
+			["name"]= "角斗战法",
 			["icon"]= "Art/2DArt/SkillIcons/passives/HoldingShieldDamage.png",
 			["stats"]= {
 				"盾牌上每有 75 护甲或闪避值可使攻击伤害提高 2%",
@@ -51821,7 +51821,7 @@ return {
 		},
 		[12806]= {
 			["skill"]= 12806,
-			["name"]= "Strike Leader",
+			["name"]= "领军之将",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BlockAttackDmgNotable.png",
 			["stats"]= {
 				"持盾牌时，攻击技能造成的伤害提高 30%",
@@ -51835,7 +51835,7 @@ return {
 		},
 		[28384]= {
 			["skill"]= 28384,
-			["name"]= "Powerful Ward",
+			["name"]= "威力结界",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BlockSpellDmgNotable.png",
 			["stats"]= {
 				"格挡时 20% 几率获得 1 个暴击球",
@@ -51845,7 +51845,7 @@ return {
 		},
 		[9042]= {
 			["skill"]= 9042,
-			["name"]= "Enduring Ward",
+			["name"]= "持久结界",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BlockAttackDmgNotable.png",
 			["stats"]= {
 				"格挡时 20% 几率获得耐力球",
@@ -51855,7 +51855,7 @@ return {
 		},
 		[36807]= {
 			["skill"]= 36807,
-			["name"]= "Gladiator's Fortitude",
+			["name"]= "勇毅斗士",
 			["icon"]= "Art/2DArt/SkillIcons/passives/HoldingShieldDamage.png",
 			["stats"]= {
 				"持盾牌时，攻击技能造成的伤害提高 25%",
@@ -51865,7 +51865,7 @@ return {
 		},
 		[28398]= {
 			["skill"]= 28398,
-			["name"]= "Precise Retaliation",
+			["name"]= "睚眦必报",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BlockAttackDmgNotable.png",
 			["stats"]= {
 				"若近期没有格挡，则暴击几率提高 80%",
@@ -51878,7 +51878,7 @@ return {
 		},
 		[23989]= {
 			["skill"]= 23989,
-			["name"]= "Veteran Defender",
+			["name"]= "防御老手",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BlockAttackDmgNotable.png",
 			["stats"]= {
 				"+15 全属性",
@@ -51896,7 +51896,7 @@ return {
 		},
 		[28015]= {
 			["skill"]= 28015,
-			["name"]= "Iron Breaker",
+			["name"]= "钢铁斗士",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedPhysicalDamage.png",
 			["stats"]= {
 				"敌人对你的击中有 -10% 总物理伤害减伤",
@@ -51909,7 +51909,7 @@ return {
 		},
 		[56760]= {
 			["skill"]= 56760,
-			["name"]= "Deep Cuts",
+			["name"]= "凌迟",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedAttackDamageNotable.png",
 			["stats"]= {
 				"攻击击中时有 15% 几率穿刺敌人",
@@ -51922,7 +51922,7 @@ return {
 		},
 		[2796]= {
 			["skill"]= 2796,
-			["name"]= "Master the Fundamentals",
+			["name"]= "规律主宰",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedPhysicalDamage.png",
 			["stats"]= {
 				"+10% 所有元素抗性",
@@ -51933,7 +51933,7 @@ return {
 		},
 		[3805]= {
 			["skill"]= 3805,
-			["name"]= "Force Multiplier",
+			["name"]= "力量倍增",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedPhysicalDamage.png",
 			["stats"]= {
 				"有 5% 几率造成双倍伤害",
@@ -51943,7 +51943,7 @@ return {
 		},
 		[981]= {
 			["skill"]= 981,
-			["name"]= "Furious Assault",
+			["name"]= "狂风扫荡",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedPhysicalDamage.png",
 			["stats"]= {
 				"攻击与施法速度提高 8%",
@@ -51953,7 +51953,7 @@ return {
 		},
 		[28635]= {
 			["skill"]= 28635,
-			["name"]= "Vicious Skewering",
+			["name"]= "恶毒穿刺",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedAttackDamageNotable.png",
 			["stats"]= {
 				"攻击击中有 10% 几率使敌人流血",
@@ -51968,7 +51968,7 @@ return {
 		},
 		[23335]= {
 			["skill"]= 23335,
-			["name"]= "Grim Oath",
+			["name"]= "阴冷誓言",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedPhysicalDamage.png",
 			["stats"]= {
 				"获得额外混沌伤害，其数值等同于物理伤害的 10%"
@@ -51977,7 +51977,7 @@ return {
 		},
 		[53318]= {
 			["skill"]= 53318,
-			["name"]= "Battle-Hardened",
+			["name"]= "坚守战场",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedPhysicalDamage.png",
 			["stats"]= {
 				"闪避值与护甲提高 30%",
@@ -51987,7 +51987,7 @@ return {
 		},
 		[62634]= {
 			["skill"]= 62634,
-			["name"]= "Replenishing Presence",
+			["name"]= "重装上阵",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AuraEffectNotable.png",
 			["stats"]= {
 				"你技能的非诅咒类光环效果提高 8%",
@@ -52000,7 +52000,7 @@ return {
 		},
 		[29540]= {
 			["skill"]= 29540,
-			["name"]= "Master of Command",
+			["name"]= "统御之主",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AuraEffectNotable.png",
 			["stats"]= {
 				"旗帜技能的魔力保留降低 50% ",
@@ -52010,7 +52010,7 @@ return {
 		},
 		[47393]= {
 			["skill"]= 47393,
-			["name"]= "First Among Equals",
+			["name"]= "鹤立鸡群",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AuraEffectNotable.png",
 			["stats"]= {
 				"你技能的非诅咒类光环效果提高 10%",
@@ -52020,7 +52020,7 @@ return {
 		},
 		[51870]= {
 			["skill"]= 51870,
-			["name"]= "Purposeful Harbinger",
+			["name"]= "勇毅先驱",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AuraEffectNotable.png",
 			["stats"]= {
 				"每受到一个捷技能影响，你身上的光环效果提高 10%"
@@ -52029,7 +52029,7 @@ return {
 		},
 		[58221]= {
 			["skill"]= 58221,
-			["name"]= "Precise Commander",
+			["name"]= "如臂使指",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AuraEffectNotable.png",
 			["stats"]= {
 				"你和周围友军的暴击几率提高 50%",
@@ -52039,7 +52039,7 @@ return {
 		},
 		[59350]= {
 			["skill"]= 59350,
-			["name"]= "Pure Commander",
+			["name"]= "心无旁骛",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AuraEffectNotable.png",
 			["stats"]= {
 				"【元素净化】的光环效果提高 30%",
@@ -52051,7 +52051,7 @@ return {
 		},
 		[61616]= {
 			["skill"]= 61616,
-			["name"]= "Stalwart Commander",
+			["name"]= "沉着应战",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AuraEffectNotable.png",
 			["stats"]= {
 				"【优雅】的光环效果提高 30%",
@@ -52062,7 +52062,7 @@ return {
 		},
 		[28338]= {
 			["skill"]= 28338,
-			["name"]= "Vengeful Commander",
+			["name"]= "血仇必报",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AuraEffectNotable.png",
 			["stats"]= {
 				"愤怒光环的效果提高 30%",
@@ -52073,7 +52073,7 @@ return {
 		},
 		[63142]= {
 			["skill"]= 63142,
-			["name"]= "Skullbreaker",
+			["name"]= "碎颅斗士",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreaseCritChanceNotable.png",
 			["stats"]= {
 				"敌人晕眩门槛降低 8%",
@@ -52086,7 +52086,7 @@ return {
 		},
 		[38633]= {
 			["skill"]= 38633,
-			["name"]= "Pressure Points",
+			["name"]= "直攻要害",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreaseCritChanceNotable.png",
 			["stats"]= {
 				"你的暴击有 5% 几率造成双倍伤害",
@@ -52096,7 +52096,7 @@ return {
 		},
 		[2977]= {
 			["skill"]= 2977,
-			["name"]= "Overwhelming Malice",
+			["name"]= "罪恶滔天",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreaseCritChanceNotable.png",
 			["stats"]= {
 				"暴击时，有 10% 几率获得 4 秒不洁之力"
@@ -52108,7 +52108,7 @@ return {
 		},
 		[60617]= {
 			["skill"]= 60617,
-			["name"]= "Magnifier",
+			["name"]= "放大器",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AreaDmgNotable.png",
 			["stats"]= {
 				"范围效果扩大 10%",
@@ -52119,7 +52119,7 @@ return {
 		},
 		[25966]= {
 			["skill"]= 25966,
-			["name"]= "Savage Response",
+			["name"]= "凶蛮回荡",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreaseCritChanceNotable.png",
 			["stats"]= {
 				"近期内你若受到【残暴打击】，则 +50% 暴击伤害 ",
@@ -52132,7 +52132,7 @@ return {
 		},
 		[51541]= {
 			["skill"]= 51541,
-			["name"]= "Eye of the Storm",
+			["name"]= "风暴之眼",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreaseCritChanceNotable.png",
 			["stats"]= {
 				"+20% 暴击导致的点燃持续伤害加成",
@@ -52144,7 +52144,7 @@ return {
 		},
 		[44544]= {
 			["skill"]= 44544,
-			["name"]= "Basics of Pain",
+			["name"]= "苦难根基",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreaseCritChanceNotable.png",
 			["stats"]= {
 				"伤害提高 20%",
@@ -52154,7 +52154,7 @@ return {
 		},
 		[23238]= {
 			["skill"]= 23238,
-			["name"]= "Quick Getaway",
+			["name"]= "逃之夭夭",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreaseCritChanceNotable.png",
 			["stats"]= {
 				"攻击与施法速度提高 5%",
@@ -52168,7 +52168,7 @@ return {
 		},
 		[12149]= {
 			["skill"]= 12149,
-			["name"]= "Assert Dominance",
+			["name"]= "独断宣言",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AreaDmgNotable.png",
 			["stats"]= {
 				"范围伤害提高 10%",
@@ -52182,7 +52182,7 @@ return {
 		},
 		[63969]= {
 			["skill"]= 63969,
-			["name"]= "Vast Power",
+			["name"]= "无垠之力",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AreaDmgNotable.png",
 			["stats"]= {
 				"范围伤害提高 20%",
@@ -52192,7 +52192,7 @@ return {
 		},
 		[11661]= {
 			["skill"]= 11661,
-			["name"]= "Powerful Assault",
+			["name"]= "横扫千军",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AreaDmgNotable.png",
 			["stats"]= {
 				"范围伤害提高 20%",
@@ -52205,7 +52205,7 @@ return {
 		},
 		[42145]= {
 			["skill"]= 42145,
-			["name"]= "Intensity",
+			["name"]= "凝聚",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AreaDmgNotable.png",
 			["stats"]= {
 				"范围伤害提高 10%",
@@ -52215,7 +52215,7 @@ return {
 		},
 		[48550]= {
 			["skill"]= 48550,
-			["name"]= "Titanic Swings",
+			["name"]= "翻天横扫",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AreaDmgNotable.png",
 			["stats"]= {
 				"持双手近战武器时，范围伤害提高 20%",
@@ -52225,7 +52225,7 @@ return {
 		},
 		[63607]= {
 			["skill"]= 63607,
-			["name"]= "Towering Threat",
+			["name"]= "胁迫如山",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AreaDmgNotable.png",
 			["stats"]= {
 				"最大生命提高 5%",
@@ -52236,7 +52236,7 @@ return {
 		},
 		[31440]= {
 			["skill"]= 31440,
-			["name"]= "Ancestral Echo",
+			["name"]= "先祖回音",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TotemDmgNotable.png",
 			["stats"]= {
 				"图腾放置速度提高 20%",
@@ -52249,7 +52249,7 @@ return {
 		},
 		[57212]= {
 			["skill"]= 57212,
-			["name"]= "Ancestral Reach",
+			["name"]= "先祖降临",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TotemDmgNotable.png",
 			["stats"]= {
 				"图腾伤害提高 25%",
@@ -52260,7 +52260,7 @@ return {
 		},
 		[60864]= {
 			["skill"]= 60864,
-			["name"]= "Ancestral Might",
+			["name"]= "先祖之力",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TotemDmgNotable.png",
 			["stats"]= {
 				"图腾伤害提高 20%",
@@ -52271,7 +52271,7 @@ return {
 		},
 		[56686]= {
 			["skill"]= 56686,
-			["name"]= "Ancestral Preservation",
+			["name"]= "先祖护佑",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TotemDmgNotable.png",
 			["stats"]= {
 				"图腾的生命提高 30%",
@@ -52282,7 +52282,7 @@ return {
 		},
 		[2004]= {
 			["skill"]= 2004,
-			["name"]= "Snaring Spirits",
+			["name"]= "激荡狂灵",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TotemDmgNotable.png",
 			["stats"]= {
 				"图腾伤害提高 30%",
@@ -52295,7 +52295,7 @@ return {
 		},
 		[57383]= {
 			["skill"]= 57383,
-			["name"]= "Sleepless Sentries",
+			["name"]= "不眠哨卫",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TotemDmgNotable.png",
 			["stats"]= {
 				"图腾伤害提高 20%",
@@ -52306,7 +52306,7 @@ return {
 		},
 		[54209]= {
 			["skill"]= 54209,
-			["name"]= "Ancestral Guidance",
+			["name"]= "先祖指引",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TotemDmgNotable.png",
 			["stats"]= {
 				"激活的先祖图腾使增益效果提高 30%",
@@ -52316,7 +52316,7 @@ return {
 		},
 		[13950]= {
 			["skill"]= 13950,
-			["name"]= "Ancestral Inspiration",
+			["name"]= "先祖教化",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TotemDmgNotable.png",
 			["stats"]= {
 				"当放置图腾时，获得【秘术增强】",
@@ -52329,7 +52329,7 @@ return {
 		},
 		[54382]= {
 			["skill"]= 54382,
-			["name"]= "Vital Focus",
+			["name"]= "活力专注",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DmgWhenChannelSkillsNotable.png",
 			["stats"]= {
 				"持续吟唱技能伤害提高 30%",
@@ -52339,7 +52339,7 @@ return {
 		},
 		[45935]= {
 			["skill"]= 45935,
-			["name"]= "Rapid Infusion",
+			["name"]= "猛烈灌注",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DmgWhenChannelSkillsNotable.png",
 			["stats"]= {
 				"【灌注】效果提高 50%",
@@ -52349,7 +52349,7 @@ return {
 		},
 		[38275]= {
 			["skill"]= 38275,
-			["name"]= "Unwavering Focus",
+			["name"]= "不动专注",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DmgWhenChannelSkillsNotable.png",
 			["stats"]= {
 				"持续吟唱时，有 40% 几率免疫晕眩",
@@ -52360,7 +52360,7 @@ return {
 		},
 		[46264]= {
 			["skill"]= 46264,
-			["name"]= "Enduring Focus",
+			["name"]= "持久专注",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DmgWhenChannelSkillsNotable.png",
 			["stats"]= {
 				"持续吟唱技能伤害提高 25%",
@@ -52370,7 +52370,7 @@ return {
 		},
 		[55714]= {
 			["skill"]= 55714,
-			["name"]= "Precise Focus",
+			["name"]= "精确专注",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DmgWhenChannelSkillsNotable.png",
 			["stats"]= {
 				"持续吟唱时，暴击几率提高 50%",
@@ -52380,7 +52380,7 @@ return {
 		},
 		[35363]= {
 			["skill"]= 35363,
-			["name"]= "Stoic Focus",
+			["name"]= "坚忍专注",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DmgWhenChannelSkillsNotable.png",
 			["stats"]= {
 				"持续吟唱时，+4% 攻击伤害格挡几率",
@@ -52391,7 +52391,7 @@ return {
 		},
 		[65117]= {
 			["skill"]= 65117,
-			["name"]= "Hex Breaker",
+			["name"]= "巫灵斗士",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DmgWhenChannelSkillsNotable.png",
 			["stats"]= {
 				"持续吟唱时，攻击和施法速度提高 8%",
@@ -52401,7 +52401,7 @@ return {
 		},
 		[15990]= {
 			["skill"]= 15990,
-			["name"]= "Arcane Adept",
+			["name"]= "奥术专家",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DmgWhenChannelSkillsNotable.png",
 			["stats"]= {
 				"持续吟唱时，攻击和施法速度提高 5%",
@@ -52415,7 +52415,7 @@ return {
 		},
 		[56886]= {
 			["skill"]= 56886,
-			["name"]= "Distilled Perfection",
+			["name"]= "完美无暇",
 			["icon"]= "Art/2DArt/SkillIcons/passives/LifeManaFlasksrecovery.png",
 			["stats"]= {
 				"药剂回复的生命提高 25%",
@@ -52426,7 +52426,7 @@ return {
 		},
 		[25282]= {
 			["skill"]= 25282,
-			["name"]= "Spiked Concoction",
+			["name"]= "钉刺调和",
 			["icon"]= "Art/2DArt/SkillIcons/passives/FlaskDuration.png",
 			["stats"]= {
 				"你身上的非传奇药剂效果提高 10%",
@@ -52436,7 +52436,7 @@ return {
 		},
 		[5075]= {
 			["skill"]= 5075,
-			["name"]= "Fasting",
+			["name"]= "斋戒",
 			["icon"]= "Art/2DArt/SkillIcons/passives/FlaskDuration.png",
 			["stats"]= {
 				"药剂充能获取提高 20%",
@@ -52446,7 +52446,7 @@ return {
 		},
 		[41509]= {
 			["skill"]= 41509,
-			["name"]= "Mender's Wellspring",
+			["name"]= "弥补之源",
 			["icon"]= "Art/2DArt/SkillIcons/passives/LifeManaFlasksrecovery.png",
 			["stats"]= {
 				"药剂回复的生命提高 25%",
@@ -52457,7 +52457,7 @@ return {
 		},
 		[47584]= {
 			["skill"]= 47584,
-			["name"]= "Special Reserve",
+			["name"]= "特别预备",
 			["icon"]= "Art/2DArt/SkillIcons/passives/LifeManaFlasksrecovery.png",
 			["stats"]= {
 				"药剂持续期间，伤害提高 20%",
@@ -52467,7 +52467,7 @@ return {
 		},
 		[62707]= {
 			["skill"]= 62707,
-			["name"]= "Numbing Elixir",
+			["name"]= "僵化灵药",
 			["icon"]= "Art/2DArt/SkillIcons/passives/LifeManaFlasksrecovery.png",
 			["stats"]= {
 				"药剂回复的生命提高 25%",
@@ -52478,7 +52478,7 @@ return {
 		},
 		[28744]= {
 			["skill"]= 28744,
-			["name"]= "Mob Mentality",
+			["name"]= "暴民思维",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedWarcryNotable.png",
 			["stats"]= {
 				"战吼冷却回复速度提高 20%",
@@ -52494,7 +52494,7 @@ return {
 		},
 		[17816]= {
 			["skill"]= 17816,
-			["name"]= "Cry Wolf",
+			["name"]= "恶狼哭号",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedWarcryNotable.png",
 			["stats"]= {
 				"战吼持续时间延长 30%",
@@ -52505,7 +52505,7 @@ return {
 		},
 		[6696]= {
 			["skill"]= 6696,
-			["name"]= "Haunting Shout",
+			["name"]= "恶灵之嚎",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedWarcryNotable.png",
 			["stats"]= {
 				"战吼冷却回复速度提高 20%",
@@ -52520,7 +52520,7 @@ return {
 		},
 		[36655]= {
 			["skill"]= 36655,
-			["name"]= "Lead By Example",
+			["name"]= "按图索骥",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedWarcryNotable.png",
 			["stats"]= {
 				"最近8秒内你若有使用战吼，则获得 4% 额外物理伤害减伤",
@@ -52530,7 +52530,7 @@ return {
 		},
 		[33182]= {
 			["skill"]= 33182,
-			["name"]= "Provocateur",
+			["name"]= "内奸",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedWarcryNotable.png",
 			["stats"]= {
 				"对被嘲讽敌人的暴击几率提高 40%",
@@ -52541,7 +52541,7 @@ return {
 		},
 		[7107]= {
 			["skill"]= 7107,
-			["name"]= "Warning Call",
+			["name"]= "警戒之号",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedWarcryNotable.png",
 			["stats"]= {
 				"战吼冷却回复速度提高 20%",
@@ -52555,7 +52555,7 @@ return {
 		},
 		[29450]= {
 			["skill"]= 29450,
-			["name"]= "Rattling Bellow",
+			["name"]= "野蛮嚎叫",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedWarcryNotable.png",
 			["stats"]= {
 				"受到你嘲讽的敌人所承受的伤害提高 5% ",
@@ -52565,7 +52565,7 @@ return {
 		},
 		[39006]= {
 			["skill"]= 39006,
-			["name"]= "Bloodscent",
+			["name"]= "鲜血之腥",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AxeandSwordDamage.png",
 			["stats"]= {
 				"来自斧或剑的攻击击中时获得 1 层怒火，每秒最多获得一层"
@@ -52580,7 +52580,7 @@ return {
 		},
 		[58189]= {
 			["skill"]= 58189,
-			["name"]= "Run Through",
+			["name"]= "飘雪穿云",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AxeandSwordDamage.png",
 			["stats"]= {
 				"斧或剑攻击造成的异常状态伤害提高 15%",
@@ -52595,7 +52595,7 @@ return {
 		},
 		[60894]= {
 			["skill"]= 60894,
-			["name"]= "Wound Aggravation",
+			["name"]= "恶化创伤",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AxeandSwordDamage.png",
 			["stats"]= {
 				"斧或剑攻击造成的异常状态伤害提高 20%",
@@ -52609,7 +52609,7 @@ return {
 		},
 		[13054]= {
 			["skill"]= 13054,
-			["name"]= "Overlord",
+			["name"]= "霸主",
 			["icon"]= "Art/2DArt/SkillIcons/passives/MaceandStaffDamage.png",
 			["stats"]= {
 				"锤, 短杖或长杖攻击时，伤害提高 30%",
@@ -52622,7 +52622,7 @@ return {
 		},
 		[48925]= {
 			["skill"]= 48925,
-			["name"]= "Expansive Might",
+			["name"]= "万象之力",
 			["icon"]= "Art/2DArt/SkillIcons/passives/MaceandStaffDamage.png",
 			["stats"]= {
 				"锤, 短杖或长杖攻击造成的击中和异常状态伤害提高 20%",
@@ -52636,7 +52636,7 @@ return {
 		},
 		[4205]= {
 			["skill"]= 4205,
-			["name"]= "Weight Advantage",
+			["name"]= "千斤坠",
 			["icon"]= "Art/2DArt/SkillIcons/passives/MaceandStaffDamage.png",
 			["stats"]= {
 				"锤, 短杖或长杖攻击造成的击中和异常状态伤害提高 30%",
@@ -52652,17 +52652,17 @@ return {
 		},
 		[1067]= {
 			["skill"]= 1067,
-			["name"]= "Wind-up",
+			["name"]= "螺旋之风",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DaggerandClawDamage.png",
 			["stats"]= {
-				"爪或匕首攻击时，+% 暴击伤害",
+				"爪或匕首攻击时，+15% 暴击伤害",
 				"爪或匕首攻击时，非暴击有 10% 几率获得一个暴击球"
 			},
 			["isNotable"]= true
 		},
 		[39738]= {
 			["skill"]= 39738,
-			["name"]= "Fan of Blades",
+			["name"]= "回风之剑",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DaggerandClawDamage.png",
 			["stats"]= {
 				"持爪或匕首时，攻击技能发射一个额外的投射物",
@@ -52672,7 +52672,7 @@ return {
 		},
 		[57141]= {
 			["skill"]= 57141,
-			["name"]= "Disease Vector",
+			["name"]= "疫病弥漫",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DaggerandClawDamage.png",
 			["stats"]= {
 				"被你造成中毒的敌人无法回复生命",
@@ -52682,7 +52682,7 @@ return {
 		},
 		[7343]= {
 			["skill"]= 7343,
-			["name"]= "Arcing Shot",
+			["name"]= "弧光箭",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BowDamage.png",
 			["stats"]= {
 				"箭矢投射物的暴击几率随着飞行距离提升，击中目标时最多提高 100%",
@@ -52692,7 +52692,7 @@ return {
 		},
 		[38563]= {
 			["skill"]= 38563,
-			["name"]= "Tempered Arrowheads",
+			["name"]= "淬火箭头",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BowDamage.png",
 			["stats"]= {
 				"弓技能 +10% 持续伤害加成",
@@ -52706,7 +52706,7 @@ return {
 		},
 		[20834]= {
 			["skill"]= 20834,
-			["name"]= "Broadside",
+			["name"]= "侧舷炮",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BowDamage.png",
 			["stats"]= {
 				"弓技能的范围效果扩大 25%"
@@ -52715,7 +52715,7 @@ return {
 		},
 		[33002]= {
 			["skill"]= 33002,
-			["name"]= "Explosive Force",
+			["name"]= "混元震天",
 			["icon"]= "Art/2DArt/SkillIcons/passives/WandDamage.png",
 			["stats"]= {
 				"被法杖攻击击败的敌人有 10% 几率爆炸，造成等同该敌人最大生命四分之一的混沌伤害",
@@ -52725,7 +52725,7 @@ return {
 		},
 		[41056]= {
 			["skill"]= 41056,
-			["name"]= "Opportunistic Fusilade",
+			["name"]= "趁机发难",
 			["icon"]= "Art/2DArt/SkillIcons/passives/WandDamage.png",
 			["stats"]= {
 				"法杖攻击的暴击率提高 50%",
@@ -52738,7 +52738,7 @@ return {
 		},
 		[30622]= {
 			["skill"]= 30622,
-			["name"]= "Storm's Hand",
+			["name"]= "风暴之手",
 			["icon"]= "Art/2DArt/SkillIcons/passives/WandDamage.png",
 			["stats"]= {
 				"获得额外闪电伤害， 其数值等同于法杖物理伤害的 10%",
@@ -52748,7 +52748,7 @@ return {
 		},
 		[18463]= {
 			["skill"]= 18463,
-			["name"]= "Battlefield Dominator",
+			["name"]= "战场主宰",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TwoHandedMeleeDamage.png",
 			["stats"]= {
 				"双手武器攻击造成的击中和异常状态伤害提高 25%",
@@ -52764,7 +52764,7 @@ return {
 		},
 		[14431]= {
 			["skill"]= 14431,
-			["name"]= "Martial Mastery",
+			["name"]= "武艺专精",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TwoHandedMeleeDamage.png",
 			["stats"]= {
 				"双手近战武器攻击的攻击速度提高 10%",
@@ -52776,7 +52776,7 @@ return {
 		},
 		[61474]= {
 			["skill"]= 61474,
-			["name"]= "Surefooted Striker",
+			["name"]= "好整以暇",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TwoHandedMeleeDamage.png",
 			["stats"]= {
 				"双手近战武器的攻击暴击率提高 40%",
@@ -52789,7 +52789,7 @@ return {
 		},
 		[42687]= {
 			["skill"]= 42687,
-			["name"]= "Graceful Execution",
+			["name"]= "优雅处刑",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TwoHandedMeleeDamage.png",
 			["stats"]= {
 				"双手近战武器攻击的攻击速度提高 5%",
@@ -52803,7 +52803,7 @@ return {
 		},
 		[6553]= {
 			["skill"]= 6553,
-			["name"]= "Brutal Infamy",
+			["name"]= "恶名昭著",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TwoHandedMeleeDamage.png",
 			["stats"]= {
 				"双手近战武器攻击造成的击中和异常状态伤害提高 20%",
@@ -52816,7 +52816,7 @@ return {
 		},
 		[20996]= {
 			["skill"]= 20996,
-			["name"]= "Fearsome Warrior",
+			["name"]= "凶骇武士",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TwoHandedMeleeDamage.png",
 			["stats"]= {
 				"双手近战武器攻击造成的击中和异常状态伤害提高 25%",
@@ -52831,7 +52831,7 @@ return {
 		},
 		[24484]= {
 			["skill"]= 24484,
-			["name"]= "Combat Rhythm",
+			["name"]= "韵律战法",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DualWieldingDamage.png",
 			["stats"]= {
 				"若近期有使用主手武器击中敌人，则攻击速度提高 10%",
@@ -52844,7 +52844,7 @@ return {
 		},
 		[62618]= {
 			["skill"]= 62618,
-			["name"]= "Hit and Run",
+			["name"]= "连打带跑",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DualWieldingDamage.png",
 			["stats"]= {
 				"双持时，攻击技能造成的伤害提高 20%",
@@ -52857,7 +52857,7 @@ return {
 		},
 		[23232]= {
 			["skill"]= 23232,
-			["name"]= "Insatiable Killer",
+			["name"]= "无尽杀戮",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DualWieldingDamage.png",
 			["stats"]= {
 				"双持时，攻击技能造成的伤害提高 20%",
@@ -52868,7 +52868,7 @@ return {
 		},
 		[24889]= {
 			["skill"]= 24889,
-			["name"]= "Mage Bane",
+			["name"]= "破法",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DualWieldingDamage.png",
 			["stats"]= {
 				"双持时法术伤害格挡几率 +5%",
@@ -52879,7 +52879,7 @@ return {
 		},
 		[2655]= {
 			["skill"]= 2655,
-			["name"]= "Martial Momentum",
+			["name"]= "技如长虹",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DualWieldingDamage.png",
 			["stats"]= {
 				"双持攻击的攻击速度提高 8%",
@@ -52893,7 +52893,7 @@ return {
 		},
 		[1478]= {
 			["skill"]= 1478,
-			["name"]= "Deadly Repartee",
+			["name"]= "疾雨摧花",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DualWieldingDamage.png",
 			["stats"]= {
 				"双持时攻击伤害格挡几率 +5%",
@@ -52904,7 +52904,7 @@ return {
 		},
 		[39058]= {
 			["skill"]= 39058,
-			["name"]= "Quick and Deadly",
+			["name"]= "又快又狠",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DualWieldingDamage.png",
 			["stats"]= {
 				"若双持不同类型的武器，则主手攻击伤害提高 60%",
@@ -52914,7 +52914,7 @@ return {
 		},
 		[44670]= {
 			["skill"]= 44670,
-			["name"]= "Smite the Weak",
+			["name"]= "截心击",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedAttackDamageNotable.png",
 			["stats"]= {
 				"对瘫痪敌人的攻击伤害提高 40%",
@@ -52927,7 +52927,7 @@ return {
 		},
 		[38790]= {
 			["skill"]= 38790,
-			["name"]= "Heavy Hitter",
+			["name"]= "金刚拳",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedAttackDamageNotable.png",
 			["stats"]= {
 				"攻击伤害提高 30%",
@@ -52943,7 +52943,7 @@ return {
 		},
 		[37]= {
 			["skill"]= 37,
-			["name"]= "Martial Prowess",
+			["name"]= "武艺精湛",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedAttackDamageNotable.png",
 			["stats"]= {
 				"攻击伤害提高 20%",
@@ -52958,7 +52958,7 @@ return {
 		},
 		[41594]= {
 			["skill"]= 41594,
-			["name"]= "Calamitous",
+			["name"]= "灾殃",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedAttackDamageNotable.png",
 			["stats"]= {
 				"10% 几率使敌人受到冰冻，感电与点燃",
@@ -52975,7 +52975,7 @@ return {
 		},
 		[22581]= {
 			["skill"]= 22581,
-			["name"]= "Devastator",
+			["name"]= "破坏者",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedAttackDamageNotable.png",
 			["stats"]= {
 				"攻击伤害提高 20%",
@@ -52989,7 +52989,7 @@ return {
 		},
 		[14518]= {
 			["skill"]= 14518,
-			["name"]= "Fuel the Fight",
+			["name"]= "充能备战",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedAttackDamageNotable.png",
 			["stats"]= {
 				"攻击速度提高 8%",
@@ -53003,7 +53003,7 @@ return {
 		},
 		[41284]= {
 			["skill"]= 41284,
-			["name"]= "Drive the Destruction",
+			["name"]= "毁灭引擎",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedAttackDamageNotable.png",
 			["stats"]= {
 				"攻击伤害的 0.8% 转化为生命偷取",
@@ -53017,7 +53017,7 @@ return {
 		},
 		[26197]= {
 			["skill"]= 26197,
-			["name"]= "Feed the Fury",
+			["name"]= "怒火盛宴",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedAttackDamageNotable.png",
 			["stats"]= {
 				"攻击伤害的 0.4% 转化为生命偷取",
@@ -53031,7 +53031,7 @@ return {
 		},
 		[1066]= {
 			["skill"]= 1066,
-			["name"]= "Seal Mender",
+			["name"]= "弥补之印",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedSpellDamageNotable.png",
 			["stats"]= {
 				"被【释出】辅助的技能的封印获取频率提高 30%"
@@ -53040,7 +53040,7 @@ return {
 		},
 		[784]= {
 			["skill"]= 784,
-			["name"]= "Conjured Wall",
+			["name"]= "咒法之墙",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedSpellDamageNotable.png",
 			["stats"]= {
 				"法术伤害提高 25%",
@@ -53053,7 +53053,7 @@ return {
 		},
 		[20533]= {
 			["skill"]= 20533,
-			["name"]= "Arcane Heroism",
+			["name"]= "奥术英姿",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedSpellDamageNotable.png",
 			["stats"]= {
 				"你身上的秘术增强效果提高 30%",
@@ -53066,7 +53066,7 @@ return {
 		},
 		[34205]= {
 			["skill"]= 34205,
-			["name"]= "Practiced Caster",
+			["name"]= "施法熟手",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedSpellDamageNotable.png",
 			["stats"]= {
 				"法术伤害提高 20%",
@@ -53077,7 +53077,7 @@ return {
 		},
 		[5190]= {
 			["skill"]= 5190,
-			["name"]= "Burden Projection",
+			["name"]= "掷象功",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedSpellDamageNotable.png",
 			["stats"]= {
 				"法术伤害提高 30%",
@@ -53087,7 +53087,7 @@ return {
 		},
 		[14085]= {
 			["skill"]= 14085,
-			["name"]= "Thaumophage",
+			["name"]= "奥法蠕虫",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedSpellDamageNotable.png",
 			["stats"]= {
 				"法术伤害的 0.6% 转化为能量护盾偷取",
@@ -53102,7 +53102,7 @@ return {
 		},
 		[32415]= {
 			["skill"]= 32415,
-			["name"]= "Essence Rush",
+			["name"]= "精华疾攻",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedSpellDamageNotable.png",
 			["stats"]= {
 				"偷取能量护盾时，伤害提高 40%",
@@ -53116,7 +53116,7 @@ return {
 		},
 		[42648]= {
 			["skill"]= 42648,
-			["name"]= "Sap Psyche",
+			["name"]= "心灵枯竭",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedSpellDamageNotable.png",
 			["stats"]= {
 				"法术伤害提高 20%",
@@ -53130,7 +53130,7 @@ return {
 		},
 		[42117]= {
 			["skill"]= 42117,
-			["name"]= "Sadist",
+			["name"]= "狂虐者",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedElementalDamage.png",
 			["stats"]= {
 				"若近期内有冰缓过敌人，则元素伤害提高 15%",
@@ -53144,7 +53144,7 @@ return {
 		},
 		[2306]= {
 			["skill"]= 2306,
-			["name"]= "Corrosive Elements",
+			["name"]= "腐蚀元素",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedElementalDamage.png",
 			["stats"]= {
 				"元素伤害提高 15%",
@@ -53161,7 +53161,7 @@ return {
 		},
 		[7039]= {
 			["skill"]= 7039,
-			["name"]= "Doryani's Lesson",
+			["name"]= "多利亚尼之训",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedElementalDamage.png",
 			["stats"]= {
 				"元素伤害的 0.2% 转化为生命偷取",
@@ -53174,7 +53174,7 @@ return {
 		},
 		[17255]= {
 			["skill"]= 17255,
-			["name"]= "Disorienting Display",
+			["name"]= "心神错乱",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedElementalDamage.png",
 			["stats"]= {
 				"元素伤害提高 25%",
@@ -53187,7 +53187,7 @@ return {
 		},
 		[17050]= {
 			["skill"]= 17050,
-			["name"]= "Prismatic Heart",
+			["name"]= "棱光之心",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedElementalDamage.png",
 			["stats"]= {
 				"+10% 所有元素抗性",
@@ -53197,7 +53197,7 @@ return {
 		},
 		[36776]= {
 			["skill"]= 36776,
-			["name"]= "Widespread Destruction",
+			["name"]= "毁天灭地",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedElementalDamage.png",
 			["stats"]= {
 				"范围效果扩大 10%",
@@ -53207,7 +53207,7 @@ return {
 		},
 		[33482]= {
 			["skill"]= 33482,
-			["name"]= "Master of Fire",
+			["name"]= "火焰之主",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedFireDamage.png",
 			["stats"]= {
 				"周围敌人有火焰曝露"
@@ -53219,7 +53219,7 @@ return {
 		},
 		[13790]= {
 			["skill"]= 13790,
-			["name"]= "Smoking Remains",
+			["name"]= "燃烬之烟",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedFireDamage.png",
 			["stats"]= {
 				"火焰伤害提高 35%",
@@ -53229,7 +53229,7 @@ return {
 		},
 		[56696]= {
 			["skill"]= 56696,
-			["name"]= "Cremator",
+			["name"]= "焚化炉",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedFireDamage.png",
 			["stats"]= {
 				"火焰伤害提高 30%",
@@ -53239,7 +53239,7 @@ return {
 		},
 		[40870]= {
 			["skill"]= 40870,
-			["name"]= "Snowstorm",
+			["name"]= "暴风雪",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedLightningDamage.png",
 			["stats"]= {
 				"对冰缓敌人获得额外冰霜伤害，其数值等同于闪电伤害的 10%"
@@ -53248,7 +53248,7 @@ return {
 		},
 		[22607]= {
 			["skill"]= 22607,
-			["name"]= "Storm Drinker",
+			["name"]= "风暴痛饮",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedLightningDamage.png",
 			["stats"]= {
 				"伤害穿透 8% 闪电抗性",
@@ -53261,7 +53261,7 @@ return {
 		},
 		[31825]= {
 			["skill"]= 31825,
-			["name"]= "Paralysis",
+			["name"]= "瘫痪",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedLightningDamage.png",
 			["stats"]= {
 				"闪电伤害提高 30%",
@@ -53275,7 +53275,7 @@ return {
 		},
 		[59646]= {
 			["skill"]= 59646,
-			["name"]= "Supercharge",
+			["name"]= "超级聚能",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedLightningDamage.png",
 			["stats"]= {
 				"非暴击造成的闪电伤害是幸运的"
@@ -53284,7 +53284,7 @@ return {
 		},
 		[6258]= {
 			["skill"]= 6258,
-			["name"]= "Blanketed Snow",
+			["name"]= "大雪漫天",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedColdDamage.png",
 			["stats"]= {
 				"对冰缓敌人穿透其 10% 冰霜抗性"
@@ -53293,7 +53293,7 @@ return {
 		},
 		[54436]= {
 			["skill"]= 54436,
-			["name"]= "Cold to the Core",
+			["name"]= "冻彻心扉",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedColdDamage.png",
 			["stats"]= {
 				"每 25 敏捷使冰霜伤害提高 1%",
@@ -53304,7 +53304,7 @@ return {
 		},
 		[23113]= {
 			["skill"]= 23113,
-			["name"]= "Cold-Blooded Killer",
+			["name"]= "冷血杀手",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedColdDamage.png",
 			["stats"]= {
 				"冰霜伤害提高 20%",
@@ -53314,7 +53314,7 @@ return {
 		},
 		[49273]= {
 			["skill"]= 49273,
-			["name"]= "Touch of Cruelty",
+			["name"]= "残酷之触",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedChaosDamage.png",
 			["stats"]= {
 				"混沌技能有 10% 几率阻碍敌人，使其移动速度降低 30%",
@@ -53327,7 +53327,7 @@ return {
 		},
 		[38592]= {
 			["skill"]= 38592,
-			["name"]= "Unwaveringly Evil",
+			["name"]= "不动之恶",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedChaosDamage.png",
 			["stats"]= {
 				"混沌伤害提高 30%",
@@ -53337,7 +53337,7 @@ return {
 		},
 		[1494]= {
 			["skill"]= 1494,
-			["name"]= "Unspeakable Gifts",
+			["name"]= "莫名之赐",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedChaosDamage.png",
 			["stats"]= {
 				"你击败的敌人有 10% 几率爆炸，造成等同该敌人最大生命四分之一的混沌伤害"
@@ -53346,7 +53346,7 @@ return {
 		},
 		[40828]= {
 			["skill"]= 40828,
-			["name"]= "Dark Ideation",
+			["name"]= "黑暗构想",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedChaosDamage.png",
 			["stats"]= {
 				"每有 100 最大魔力，混沌伤害提高 2% ，最多提高 80%"
@@ -53355,7 +53355,7 @@ return {
 		},
 		[2264]= {
 			["skill"]= 2264,
-			["name"]= "Unholy Grace",
+			["name"]= "渎神雅量",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedChaosDamage.png",
 			["stats"]= {
 				"混沌伤害提高 30%",
@@ -53365,7 +53365,7 @@ return {
 		},
 		[34595]= {
 			["skill"]= 34595,
-			["name"]= "Wicked Pall",
+			["name"]= "邪恶烟云",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedChaosDamage.png",
 			["stats"]= {
 				"混沌伤害提高 35%",
@@ -53375,7 +53375,7 @@ return {
 		},
 		[58949]= {
 			["skill"]= 58949,
-			["name"]= "Renewal",
+			["name"]= "复兴",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedMinionDamageNotable.png",
 			["stats"]= {
 				"召唤生物每秒回复 1% 生命",
@@ -53385,7 +53385,7 @@ return {
 		},
 		[6703]= {
 			["skill"]= 6703,
-			["name"]= "Raze and Pillage",
+			["name"]= "寸草不生",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedMinionDamageNotable.png",
 			["stats"]= {
 				"召唤生物有 20% 几率点燃敌人",
@@ -53396,7 +53396,7 @@ return {
 		},
 		[16650]= {
 			["skill"]= 16650,
-			["name"]= "Rotten Claws",
+			["name"]= "腐烂之爪",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedMinionDamageNotable.png",
 			["stats"]= {
 				"召唤生物攻击击中时有 20% 几率穿刺目标"
@@ -53405,7 +53405,7 @@ return {
 		},
 		[55022]= {
 			["skill"]= 55022,
-			["name"]= "Call to the Slaughter",
+			["name"]= "屠夫呼唤",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedMinionDamageNotable.png",
 			["stats"]= {
 				"召唤生物的伤害提高 15%",
@@ -53416,7 +53416,7 @@ return {
 		},
 		[11535]= {
 			["skill"]= 11535,
-			["name"]= "Skeletal Atrophy",
+			["name"]= "魔侍凋零",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedMinionDamageNotable.png",
 			["stats"]= {
 				"【召唤魔侍】击中时有 10% 几率对敌人造成【枯萎】，持续 2 秒",
@@ -53426,7 +53426,7 @@ return {
 		},
 		[68]= {
 			["skill"]= 68,
-			["name"]= "Hulking Corpses",
+			["name"]= "肿胀灵枢",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreaseMinionLifeNotable.png",
 			["stats"]= {
 				"召唤生物的最大生命提高 20%",
@@ -53437,7 +53437,7 @@ return {
 		},
 		[41983]= {
 			["skill"]= 41983,
-			["name"]= "Vicious Bite",
+			["name"]= "恶毒撕咬",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedMinionDamageNotable.png",
 			["stats"]= {
 				"召唤生物的暴击几率提高 50%",
@@ -53447,7 +53447,7 @@ return {
 		},
 		[57892]= {
 			["skill"]= 57892,
-			["name"]= "Primordial Bond",
+			["name"]= "原初之缚",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedMinionDamageNotable.png",
 			["stats"]= {
 				"每个召唤的魔像可使伤害提高 10%",
@@ -53458,7 +53458,7 @@ return {
 		},
 		[29748]= {
 			["skill"]= 29748,
-			["name"]= "Blowback",
+			["name"]= "还击",
 			["icon"]= "Art/2DArt/SkillIcons/passives/FireDamageOverTimeNotable.png",
 			["stats"]= {
 				"你造成的点燃的伤害生效速度加快 15%"
@@ -53470,7 +53470,7 @@ return {
 		},
 		[45128]= {
 			["skill"]= 45128,
-			["name"]= "Fan the Flames",
+			["name"]= "煽风点火",
 			["icon"]= "Art/2DArt/SkillIcons/passives/FireDamageOverTimeNotable.png",
 			["stats"]= {
 				"你造成的点燃，也会点燃周围 15 范围内的敌人"
@@ -53479,7 +53479,7 @@ return {
 		},
 		[408]= {
 			["skill"]= 408,
-			["name"]= "Cooked Alive",
+			["name"]= "汤镬",
 			["icon"]= "Art/2DArt/SkillIcons/passives/FireDamageOverTimeNotable.png",
 			["stats"]= {
 				"有 15% 几率点燃",
@@ -53492,7 +53492,7 @@ return {
 		},
 		[56065]= {
 			["skill"]= 56065,
-			["name"]= "Burning Bright",
+			["name"]= "熊熊燃烧",
 			["icon"]= "Art/2DArt/SkillIcons/passives/FireDamageOverTimeNotable.png",
 			["stats"]= {
 				"+8% 火焰持续伤害加成",
@@ -53503,7 +53503,7 @@ return {
 		},
 		[10952]= {
 			["skill"]= 10952,
-			["name"]= "Wrapped in Flame",
+			["name"]= "火焰缠身",
 			["icon"]= "Art/2DArt/SkillIcons/passives/FireDamageOverTimeNotable.png",
 			["stats"]= {
 				"燃烧伤害提高 20%",
@@ -53514,7 +53514,7 @@ return {
 		},
 		[4942]= {
 			["skill"]= 4942,
-			["name"]= "Vivid Hues",
+			["name"]= "多彩之色",
 			["icon"]= "Art/2DArt/SkillIcons/passives/PhysicalDamageOverTimeNotable.png",
 			["stats"]= {
 				"+12% 流血持续伤害加成",
@@ -53528,7 +53528,7 @@ return {
 		},
 		[8258]= {
 			["skill"]= 8258,
-			["name"]= "Rend",
+			["name"]= "撕裂",
 			["icon"]= "Art/2DArt/SkillIcons/passives/PhysicalDamageOverTimeNotable.png",
 			["stats"]= {
 				"+12% 流血持续伤害加成",
@@ -53538,7 +53538,7 @@ return {
 		},
 		[42338]= {
 			["skill"]= 42338,
-			["name"]= "Disorienting Wounds",
+			["name"]= "累累伤痕",
 			["icon"]= "Art/2DArt/SkillIcons/passives/PhysicalDamageOverTimeNotable.png",
 			["stats"]= {
 				"流血伤害提高 25%",
@@ -53551,7 +53551,7 @@ return {
 		},
 		[37384]= {
 			["skill"]= 37384,
-			["name"]= "Compound Injury",
+			["name"]= "老痕新伤",
 			["icon"]= "Art/2DArt/SkillIcons/passives/PhysicalDamageOverTimeNotable.png",
 			["stats"]= {
 				"对瘫痪的敌人造成的流血伤害提高 50%"
@@ -53560,7 +53560,7 @@ return {
 		},
 		[38399]= {
 			["skill"]= 38399,
-			["name"]= "Septic Spells",
+			["name"]= "降蛊",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ChaosDamageOverTimeNotable.png",
 			["stats"]= {
 				"施法速度提高 8%",
@@ -53574,7 +53574,7 @@ return {
 		},
 		[36370]= {
 			["skill"]= 36370,
-			["name"]= "Low Tolerance",
+			["name"]= "低容忍",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ChaosDamageOverTimeNotable.png",
 			["stats"]= {
 				"+8% 烈毒持续伤害加成",
@@ -53584,7 +53584,7 @@ return {
 		},
 		[47424]= {
 			["skill"]= 47424,
-			["name"]= "Steady Torment",
+			["name"]= "缓慢折磨",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ChaosDamageOverTimeNotable.png",
 			["stats"]= {
 				"中毒持续时间延长 20%",
@@ -53596,7 +53596,7 @@ return {
 		},
 		[11995]= {
 			["skill"]= 11995,
-			["name"]= "Eternal Suffering",
+			["name"]= "永恒苦难",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ChaosDamageOverTimeNotable.png",
 			["stats"]= {
 				"+5% 混沌持续伤害加成",
@@ -53606,7 +53606,7 @@ return {
 		},
 		[61043]= {
 			["skill"]= 61043,
-			["name"]= "Eldritch Inspiration",
+			["name"]= "旧神启迪",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ChaosDamageOverTimeNotable.png",
 			["stats"]= {
 				"+8% 混沌持续伤害加成",
@@ -53617,7 +53617,7 @@ return {
 		},
 		[19686]= {
 			["skill"]= 19686,
-			["name"]= "Wasting Affliction",
+			["name"]= "凌虐酷刑",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DamageOverTimeNotable.png",
 			["stats"]= {
 				"异常状态伤害提高 20%",
@@ -53631,7 +53631,7 @@ return {
 		},
 		[56879]= {
 			["skill"]= 56879,
-			["name"]= "Haemorrhage",
+			["name"]= "大出血",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DamageOverTimeNotable.png",
 			["stats"]= {
 				"暴击造成异常状态时，+18% 持续伤害加成",
@@ -53641,7 +53641,7 @@ return {
 		},
 		[34581]= {
 			["skill"]= 34581,
-			["name"]= "Flow of Life",
+			["name"]= "放血",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DamageOverTimeNotable.png",
 			["stats"]= {
 				"持续伤害效果提高 24%",
@@ -53652,7 +53652,7 @@ return {
 		},
 		[56070]= {
 			["skill"]= 56070,
-			["name"]= "Exposure Therapy",
+			["name"]= "解剖疗法",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DamageOverTimeNotable.png",
 			["stats"]= {
 				"+10% 持续伤害加成",
@@ -53662,7 +53662,7 @@ return {
 		},
 		[28146]= {
 			["skill"]= 28146,
-			["name"]= "Brush with Death",
+			["name"]= "梳洗之刑",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DamageOverTimeNotable.png",
 			["stats"]= {
 				"+10% 持续伤害加成",
@@ -53673,7 +53673,7 @@ return {
 		},
 		[65110]= {
 			["skill"]= 65110,
-			["name"]= "Vile Reinvigoration",
+			["name"]= "邪恶复兴",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DamageOverTimeNotable.png",
 			["stats"]= {
 				"持续伤害效果提高 24%",
@@ -53687,7 +53687,7 @@ return {
 		},
 		[10355]= {
 			["skill"]= 10355,
-			["name"]= "Circling Oblivion",
+			["name"]= "循环湮灭",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DamageOverTimeNotable.png",
 			["stats"]= {
 				"持续伤害效果提高 20%",
@@ -53701,7 +53701,7 @@ return {
 		},
 		[4094]= {
 			["skill"]= 4094,
-			["name"]= "Brewed for Potency",
+			["name"]= "力量萃取",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DamageOverTimeNotable.png",
 			["stats"]= {
 				"持续伤害效果提高 24%",
@@ -53712,7 +53712,7 @@ return {
 		},
 		[51467]= {
 			["skill"]= 51467,
-			["name"]= "Astonishing Affliction",
+			["name"]= "惊怖酷刑",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedNonDamageAilmentNotable.png",
 			["stats"]= {
 				"敌人受到的元素异常状态时间延长 20%",
@@ -53728,7 +53728,7 @@ return {
 		},
 		[25563]= {
 			["skill"]= 25563,
-			["name"]= "Cold Conduction",
+			["name"]= "寒冰导体",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedNonDamageAilmentNotable.png",
 			["stats"]= {
 				"对被你击中所造成冰缓的敌人造成感电",
@@ -53738,7 +53738,7 @@ return {
 		},
 		[20343]= {
 			["skill"]= 20343,
-			["name"]= "Inspired Oppression",
+			["name"]= "绝妙镇压",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedNonDamageAilmentNotable.png",
 			["stats"]= {
 				"元素伤害提高 20%",
@@ -53754,7 +53754,7 @@ return {
 		},
 		[58248]= {
 			["skill"]= 58248,
-			["name"]= "Chilling Presence",
+			["name"]= "惊寒降临",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedNonDamageAilmentNotable.png",
 			["stats"]= {
 				"周围敌人被冰缓"
@@ -53766,7 +53766,7 @@ return {
 		},
 		[18861]= {
 			["skill"]= 18861,
-			["name"]= "Deep Chill",
+			["name"]= "深寒",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedNonDamageAilmentNotable.png",
 			["stats"]= {
 				"+10% 冰霜持续伤害加成",
@@ -53776,7 +53776,7 @@ return {
 		},
 		[39874]= {
 			["skill"]= 39874,
-			["name"]= "Blast-Freeze",
+			["name"]= "千里冰封",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedNonDamageAilmentNotable.png",
 			["stats"]= {
 				"冰霜伤害提高 20%",
@@ -53786,7 +53786,7 @@ return {
 		},
 		[35430]= {
 			["skill"]= 35430,
-			["name"]= "Thunderstruck",
+			["name"]= "天雷轰顶",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedNonDamageAilmentNotable.png",
 			["stats"]= {
 				"闪电伤害提高 20%",
@@ -53797,7 +53797,7 @@ return {
 		},
 		[37478]= {
 			["skill"]= 37478,
-			["name"]= "Stormrider",
+			["name"]= "风暴骑手",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedNonDamageAilmentNotable.png",
 			["stats"]= {
 				"感电被冰缓的敌人时，有 10% 几率获得 1 个暴击球",
@@ -53808,7 +53808,7 @@ return {
 		},
 		[28682]= {
 			["skill"]= 28682,
-			["name"]= "Overshock",
+			["name"]= "霹雳雷震",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedNonDamageAilmentNotable.png",
 			["stats"]= {
 				"闪电伤害提高 30%",
@@ -53819,7 +53819,7 @@ return {
 		},
 		[42305]= {
 			["skill"]= 42305,
-			["name"]= "Evil Eye",
+			["name"]= "邪恶之眼",
 			["icon"]= "Art/2DArt/SkillIcons/passives/CurseEffectNotable.png",
 			["stats"]= {
 				"受到你诅咒的敌人承受的伤害提高 5%",
@@ -53829,7 +53829,7 @@ return {
 		},
 		[57104]= {
 			["skill"]= 57104,
-			["name"]= "Whispers of Death",
+			["name"]= "死亡私语",
 			["icon"]= "Art/2DArt/SkillIcons/passives/CurseEffectNotable.png",
 			["stats"]= {
 				"你所施放诅咒的效果提高 5%",
@@ -53842,7 +53842,7 @@ return {
 		},
 		[61549]= {
 			["skill"]= 61549,
-			["name"]= "Forbidden Words",
+			["name"]= "禁断之言",
 			["icon"]= "Art/2DArt/SkillIcons/passives/CurseEffectNotable.png",
 			["stats"]= {
 				"诅咒范围扩大 25%",
@@ -53853,7 +53853,7 @@ return {
 		},
 		[18624]= {
 			["skill"]= 18624,
-			["name"]= "Dark Discourse",
+			["name"]= "黑暗篇章",
 			["icon"]= "Art/2DArt/SkillIcons/passives/CurseEffectNotable.png",
 			["stats"]= {
 				"你所施放诅咒的效果提高 10%",
@@ -53868,7 +53868,7 @@ return {
 		},
 		[42929]= {
 			["skill"]= 42929,
-			["name"]= "Victim Maker",
+			["name"]= "牺牲制造者",
 			["icon"]= "Art/2DArt/SkillIcons/passives/CurseEffectNotable.png",
 			["stats"]= {
 				"诅咒技能的技能效果持续时间延长 50%",
@@ -53878,7 +53878,7 @@ return {
 		},
 		[14418]= {
 			["skill"]= 14418,
-			["name"]= "Master of Fear",
+			["name"]= "恐惧之主",
 			["icon"]= "Art/2DArt/SkillIcons/passives/CurseEffectNotable.png",
 			["stats"]= {
 				"恐吓被你诅咒的敌人",
@@ -53892,7 +53892,7 @@ return {
 		},
 		[7279]= {
 			["skill"]= 7279,
-			["name"]= "Wish for Death",
+			["name"]= "死亡之愿",
 			["icon"]= "Art/2DArt/SkillIcons/passives/CurseEffectNotable.png",
 			["stats"]= {
 				"对被诅咒的敌人有【终结】效果",
@@ -53905,7 +53905,7 @@ return {
 		},
 		[28551]= {
 			["skill"]= 28551,
-			["name"]= "Heraldry",
+			["name"]= "传令者",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DmgHeraldSkillsNotable.png",
 			["stats"]= {
 				"你身上的捷效果提高 20%",
@@ -53915,7 +53915,7 @@ return {
 		},
 		[24038]= {
 			["skill"]= 24038,
-			["name"]= "Endbringer",
+			["name"]= "末日使者",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DmgHeraldSkillsNotable.png",
 			["stats"]= {
 				"每有一个影响你的捷光环，则伤害提高 25%"
@@ -53924,7 +53924,7 @@ return {
 		},
 		[16952]= {
 			["skill"]= 16952,
-			["name"]= "Cult-Leader",
+			["name"]= "祭仪领袖",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DmgHeraldSkillsNotable.png",
 			["stats"]= {
 				"你受到捷技能影响时，召唤生物的伤害提高 35%"
@@ -53933,7 +53933,7 @@ return {
 		},
 		[17066]= {
 			["skill"]= 17066,
-			["name"]= "Empowered Envoy",
+			["name"]= "赋能使者",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DmgHeraldSkillsNotable.png",
 			["stats"]= {
 				"捷技能的伤害提高 40%",
@@ -53943,7 +53943,7 @@ return {
 		},
 		[8897]= {
 			["skill"]= 8897,
-			["name"]= "Dark Messenger",
+			["name"]= "黑暗使者",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DmgHeraldSkillsNotable.png",
 			["stats"]= {
 				"捷技能的范围效果扩大 25%",
@@ -53953,7 +53953,7 @@ return {
 		},
 		[61998]= {
 			["skill"]= 61998,
-			["name"]= "Agent of Destruction",
+			["name"]= "毁灭使徒",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DmgHeraldSkillsNotable.png",
 			["stats"]= {
 				"受到捷技能影响时，有 10% 几率冰冻，感电和点燃敌人",
@@ -53963,7 +53963,7 @@ return {
 		},
 		[17905]= {
 			["skill"]= 17905,
-			["name"]= "Lasting Impression",
+			["name"]= "持久印象",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DmgHeraldSkillsNotable.png",
 			["stats"]= {
 				"受到捷技能影响时，持续伤害提高 30%",
@@ -53973,7 +53973,7 @@ return {
 		},
 		[65521]= {
 			["skill"]= 65521,
-			["name"]= "Self-Fulfilling Prophecy",
+			["name"]= "自圆其说",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DmgHeraldSkillsNotable.png",
 			["stats"]= {
 				"捷技能的暴击几率 +1%",
@@ -53986,7 +53986,7 @@ return {
 		},
 		[40402]= {
 			["skill"]= 40402,
-			["name"]= "Invigorating Portents",
+			["name"]= "欢欣预兆",
 			["icon"]= "Art/2DArt/SkillIcons/passives/MinionDmgHeraldSkillsNotable.png",
 			["stats"]= {
 				"你受到捷技能影响时，召唤生物的伤害提高 20%",
@@ -53996,7 +53996,7 @@ return {
 		},
 		[5781]= {
 			["skill"]= 5781,
-			["name"]= "Pure Agony",
+			["name"]= "纯粹苦痛",
 			["icon"]= "Art/2DArt/SkillIcons/passives/MinionDmgHeraldSkillsNotable.png",
 			["stats"]= {
 				"+1 纯净哨兵数量上限",
@@ -54007,7 +54007,7 @@ return {
 		},
 		[24357]= {
 			["skill"]= 24357,
-			["name"]= "Disciples",
+			["name"]= "门徒",
 			["icon"]= "Art/2DArt/SkillIcons/passives/MinionDmgHeraldSkillsNotable.png",
 			["stats"]= {
 				"每有1个召唤纯净哨兵，获得 % 额外物理伤害减伤",
@@ -54021,7 +54021,7 @@ return {
 		},
 		[55171]= {
 			["skill"]= 55171,
-			["name"]= "Dread March",
+			["name"]= "致命行军",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreaseMinionLifeNotable.png",
 			["stats"]= {
 				"召唤生物的最大生命提高 10%",
@@ -54033,7 +54033,7 @@ return {
 		},
 		[42126]= {
 			["skill"]= 42126,
-			["name"]= "Blessed Rebirth",
+			["name"]= "受福重生",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreaseMinionLifeNotable.png",
 			["stats"]= {
 				"召唤生物的最大生命提高 20%",
@@ -54046,7 +54046,7 @@ return {
 		},
 		[62318]= {
 			["skill"]= 62318,
-			["name"]= "Life from Death",
+			["name"]= "由死复生",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreaseMinionLifeNotable.png",
 			["stats"]= {
 				"召唤生物的最大生命提高 15%",
@@ -54060,7 +54060,7 @@ return {
 		},
 		[22540]= {
 			["skill"]= 22540,
-			["name"]= "Feasting Fiends",
+			["name"]= "饕餮群魔",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreaseMinionLifeNotable.png",
 			["stats"]= {
 				"召唤生物的最大生命提高 10%",
@@ -54074,7 +54074,7 @@ return {
 		},
 		[11199]= {
 			["skill"]= 11199,
-			["name"]= "Bodyguards",
+			["name"]= "保镖",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreaseMinionLifeNotable.png",
 			["stats"]= {
 				"召唤生物的最大生命提高 10%",
@@ -54084,7 +54084,7 @@ return {
 		},
 		[42068]= {
 			["skill"]= 42068,
-			["name"]= "Follow-Through",
+			["name"]= "追随",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ProjectileDmgNotable.png",
 			["stats"]= {
 				"每保留有 1 次连锁，则投射物伤害提高 15%"
@@ -54093,7 +54093,7 @@ return {
 		},
 		[36645]= {
 			["skill"]= 36645,
-			["name"]= "Streamlined",
+			["name"]= "流线作业",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ProjectileDmgNotable.png",
 			["stats"]= {
 				"投射物速度提高 30%",
@@ -54103,7 +54103,7 @@ return {
 		},
 		[12400]= {
 			["skill"]= 12400,
-			["name"]= "Shrieking Bolts",
+			["name"]= "呼啸飞箭",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ProjectileDmgNotable.png",
 			["stats"]= {
 				"投射物伤害提高 35%",
@@ -54116,7 +54116,7 @@ return {
 		},
 		[54170]= {
 			["skill"]= 54170,
-			["name"]= "Eye to Eye",
+			["name"]= "以眼还眼",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ProjectileDmgNotable.png",
 			["stats"]= {
 				"投射物伤害提高 25%",
@@ -54126,7 +54126,7 @@ return {
 		},
 		[53285]= {
 			["skill"]= 53285,
-			["name"]= "Repeater",
+			["name"]= "连发",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ProjectileDmgNotable.png",
 			["stats"]= {
 				"投射物伤害提高 30%",
@@ -54136,7 +54136,7 @@ return {
 		},
 		[13812]= {
 			["skill"]= 13812,
-			["name"]= "Aerodynamics",
+			["name"]= "空气力学",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ProjectileDmgNotable.png",
 			["stats"]= {
 				"投射物会穿透 1 个额外目标",
@@ -54147,7 +54147,7 @@ return {
 		},
 		[26839]= {
 			["skill"]= 26839,
-			["name"]= "Chip Away",
+			["name"]= "开凿",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BrandDmgNotable.png",
 			["stats"]= {
 				"近期内你若没有使用烙印技能，则烙印的激活频率提高 25%",
@@ -54160,7 +54160,7 @@ return {
 		},
 		[37358]= {
 			["skill"]= 37358,
-			["name"]= "Seeker Runes",
+			["name"]= "探索符文",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BrandDmgNotable.png",
 			["stats"]= {
 				"烙印技能伤害提高 25%",
@@ -54170,7 +54170,7 @@ return {
 		},
 		[59307]= {
 			["skill"]= 59307,
-			["name"]= "Remarkable",
+			["name"]= "非凡瞩目",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BrandDmgNotable.png",
 			["stats"]= {
 				"可以施放 1 个额外烙印",
@@ -54180,7 +54180,7 @@ return {
 		},
 		[36276]= {
 			["skill"]= 36276,
-			["name"]= "Brand Loyalty",
+			["name"]= "忠诚钢印",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BrandDmgNotable.png",
 			["stats"]= {
 				"你每使敌人附着一种烙印，它们受到的伤害便提高 5%",
@@ -54190,7 +54190,7 @@ return {
 		},
 		[42636]= {
 			["skill"]= 42636,
-			["name"]= "Holy Conquest",
+			["name"]= "神圣征服",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BrandDmgNotable.png",
 			["stats"]= {
 				"移动速度提高 5%",
@@ -54201,7 +54201,7 @@ return {
 		},
 		[13392]= {
 			["skill"]= 13392,
-			["name"]= "Grand Design",
+			["name"]= "宏伟计划",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BrandDmgNotable.png",
 			["stats"]= {
 				"可以施放 1 个额外烙印",
@@ -54213,7 +54213,7 @@ return {
 		},
 		[29193]= {
 			["skill"]= 29193,
-			["name"]= "Set and Forget",
+			["name"]= "高枕无忧",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TrapAndMineDmgNotable.png",
 			["stats"]= {
 				"陷阱伤害提高 25%",
@@ -54225,7 +54225,7 @@ return {
 		},
 		[54760]= {
 			["skill"]= 54760,
-			["name"]= "Expert Sabotage",
+			["name"]= "破坏专家",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TrapAndMineDmgNotable.png",
 			["stats"]= {
 				"地雷伤害提高 30%",
@@ -54236,7 +54236,7 @@ return {
 		},
 		[24645]= {
 			["skill"]= 24645,
-			["name"]= "Guerilla Tactics",
+			["name"]= "游击战",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TrapAndMineDmgNotable.png",
 			["stats"]= {
 				"陷阱伤害提高 20%",
@@ -54252,19 +54252,19 @@ return {
 		},
 		[65138]= {
 			["skill"]= 65138,
-			["name"]= "Expendability",
+			["name"]= "扩张",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TrapAndMineDmgNotable.png",
 			["stats"]= {
 				"有 10% 几率放置额外一个陷阱或地雷"
 			},
 			["reminderText"]= {
-				"(Throwing Mines takes 10% more time for each additional Mine thrown)"
+				"（每投掷一个额外地雷都使投掷地雷时间延长 10%）"
 			},
 			["isNotable"]= true
 		},
 		[52058]= {
 			["skill"]= 52058,
-			["name"]= "Arcane Pyrotechnics",
+			["name"]= "奥术烟花",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TrapAndMineDmgNotable.png",
 			["stats"]= {
 				"陷阱伤害提高 20%",
@@ -54279,7 +54279,7 @@ return {
 		},
 		[22434]= {
 			["skill"]= 22434,
-			["name"]= "Surprise Sabotage",
+			["name"]= "惊奇破坏",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TrapAndMineDmgNotable.png",
 			["stats"]= {
 				"+15% 陷阱暴击伤害加成",
@@ -54291,7 +54291,7 @@ return {
 		},
 		[20383]= {
 			["skill"]= 20383,
-			["name"]= "Careful Handling",
+			["name"]= "谨慎操纵",
 			["icon"]= "Art/2DArt/SkillIcons/passives/TrapAndMineDmgNotable.png",
 			["stats"]= {
 				"陷阱伤害提高 15%",
@@ -54303,7 +54303,7 @@ return {
 		},
 		[8949]= {
 			["skill"]= 8949,
-			["name"]= "Peak Vigour",
+			["name"]= "巅峰状态",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedMaximumLifeNotable.png",
 			["stats"]= {
 				"最大生命提高 8%",
@@ -54313,7 +54313,7 @@ return {
 		},
 		[52844]= {
 			["skill"]= 52844,
-			["name"]= "Fettle",
+			["name"]= "整顿",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedMaximumLifeNotable.png",
 			["stats"]= {
 				"+20 最大生命",
@@ -54323,7 +54323,7 @@ return {
 		},
 		[15538]= {
 			["skill"]= 15538,
-			["name"]= "Feast of Flesh",
+			["name"]= "血肉盛宴",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedMaximumLifeNotable.png",
 			["stats"]= {
 				"最大生命提高 8%",
@@ -54337,7 +54337,7 @@ return {
 		},
 		[62706]= {
 			["skill"]= 62706,
-			["name"]= "Sublime Sensation",
+			["name"]= "崇高感",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedMaximumLifeNotable.png",
 			["stats"]= {
 				"最大能量护盾提高 10%",
@@ -54347,7 +54347,7 @@ return {
 		},
 		[19723]= {
 			["skill"]= 19723,
-			["name"]= "Surging Vitality",
+			["name"]= "活力振奋",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedMaximumLifeNotable.png",
 			["stats"]= {
 				"最大生命提高 8%",
@@ -54358,7 +54358,7 @@ return {
 		},
 		[49694]= {
 			["skill"]= 49694,
-			["name"]= "Peace Amidst Chaos",
+			["name"]= "乱中有静",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedMaximumLifeNotable.png",
 			["stats"]= {
 				"最大生命提高 8%",
@@ -54369,7 +54369,7 @@ return {
 		},
 		[40858]= {
 			["skill"]= 40858,
-			["name"]= "Adrenaline",
+			["name"]= "肾上腺素",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedMaximumLifeNotable.png",
 			["stats"]= {
 				"最大生命提高 6%",
@@ -54380,7 +54380,7 @@ return {
 		},
 		[3723]= {
 			["skill"]= 3723,
-			["name"]= "Wall of Muscle",
+			["name"]= "肌肉之墙",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedMaximumLifeNotable.png",
 			["stats"]= {
 				"最大生命提高 6%",
@@ -54390,7 +54390,7 @@ return {
 		},
 		[12867]= {
 			["skill"]= 12867,
-			["name"]= "Mindfulness",
+			["name"]= "正念",
 			["icon"]= "Art/2DArt/SkillIcons/passives/MaxManaNotable.png",
 			["stats"]= {
 				"最大魔力提高 15%",
@@ -54400,7 +54400,7 @@ return {
 		},
 		[4958]= {
 			["skill"]= 4958,
-			["name"]= "Liquid Inspiration",
+			["name"]= "液化启迪",
 			["icon"]= "Art/2DArt/SkillIcons/passives/MaxManaNotable.png",
 			["stats"]= {
 				"最大魔力提高 15%",
@@ -54411,7 +54411,7 @@ return {
 		},
 		[20968]= {
 			["skill"]= 20968,
-			["name"]= "Openness",
+			["name"]= "坦率",
 			["icon"]= "Art/2DArt/SkillIcons/passives/MaxManaNotable.png",
 			["stats"]= {
 				"+30 最大魔力",
@@ -54421,7 +54421,7 @@ return {
 		},
 		[15175]= {
 			["skill"]= 15175,
-			["name"]= "Daring Ideas",
+			["name"]= "激进理念",
 			["icon"]= "Art/2DArt/SkillIcons/passives/MaxManaNotable.png",
 			["stats"]= {
 				"最大魔力提高 18%",
@@ -54434,7 +54434,7 @@ return {
 		},
 		[2220]= {
 			["skill"]= 2220,
-			["name"]= "Clarity of Purpose",
+			["name"]= "心意已决",
 			["icon"]= "Art/2DArt/SkillIcons/passives/MaxManaNotable.png",
 			["stats"]= {
 				"最大魔力提高 15%",
@@ -54444,7 +54444,7 @@ return {
 		},
 		[43834]= {
 			["skill"]= 43834,
-			["name"]= "Scintillating Idea",
+			["name"]= "闪光理念",
 			["icon"]= "Art/2DArt/SkillIcons/passives/MaxManaNotable.png",
 			["stats"]= {
 				"最大魔力提高 20%",
@@ -54454,7 +54454,7 @@ return {
 		},
 		[23884]= {
 			["skill"]= 23884,
-			["name"]= "Holistic Health",
+			["name"]= "天人化生",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedMaximumLifeNotable.png",
 			["stats"]= {
 				"最大生命提高 8%",
@@ -54464,7 +54464,7 @@ return {
 		},
 		[62160]= {
 			["skill"]= 62160,
-			["name"]= "Genius",
+			["name"]= "天才",
 			["icon"]= "Art/2DArt/SkillIcons/passives/MaxManaNotable.png",
 			["stats"]= {
 				"最大魔力提高 8%",
@@ -54474,7 +54474,7 @@ return {
 		},
 		[42024]= {
 			["skill"]= 42024,
-			["name"]= "Improvisor",
+			["name"]= "即兴演出",
 			["icon"]= "Art/2DArt/SkillIcons/passives/MaxManaNotable.png",
 			["stats"]= {
 				"攻击速度提高 6%",
@@ -54485,7 +54485,7 @@ return {
 		},
 		[32031]= {
 			["skill"]= 32031,
-			["name"]= "Stubborn Student",
+			["name"]= "倔强学徒",
 			["icon"]= "Art/2DArt/SkillIcons/passives/MaxManaNotable.png",
 			["stats"]= {
 				"护甲提高 20%",
@@ -54496,7 +54496,7 @@ return {
 		},
 		[52544]= {
 			["skill"]= 52544,
-			["name"]= "Savour the Moment",
+			["name"]= "品味片刻",
 			["icon"]= "Art/2DArt/SkillIcons/passives/EnergyShieldNotable.png",
 			["stats"]= {
 				"最大能量护盾提高 10%",
@@ -54506,7 +54506,7 @@ return {
 		},
 		[20241]= {
 			["skill"]= 20241,
-			["name"]= "Energy From Naught",
+			["name"]= "无中生有",
 			["icon"]= "Art/2DArt/SkillIcons/passives/EnergyShieldNotable.png",
 			["stats"]= {
 				"+100 最大能量护盾"
@@ -54515,7 +54515,7 @@ return {
 		},
 		[33698]= {
 			["skill"]= 33698,
-			["name"]= "Will Shaper",
+			["name"]= "勇毅者",
 			["icon"]= "Art/2DArt/SkillIcons/passives/EnergyShieldNotable.png",
 			["stats"]= {
 				"获得等同 5% 魔力的额外能量护盾"
@@ -54524,7 +54524,7 @@ return {
 		},
 		[64782]= {
 			["skill"]= 64782,
-			["name"]= "Spring Back",
+			["name"]= "折回冲刺",
 			["icon"]= "Art/2DArt/SkillIcons/passives/EnergyShieldNotable.png",
 			["stats"]= {
 				"最大能量护盾提高 6%",
@@ -54535,7 +54535,7 @@ return {
 		},
 		[11513]= {
 			["skill"]= 11513,
-			["name"]= "Conservation of Energy",
+			["name"]= "能量留存",
 			["icon"]= "Art/2DArt/SkillIcons/passives/EnergyShieldNotable.png",
 			["stats"]= {
 				"最大能量护盾提高 8%",
@@ -54549,7 +54549,7 @@ return {
 		},
 		[39331]= {
 			["skill"]= 39331,
-			["name"]= "Heart of Iron",
+			["name"]= "钢铁之心",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ArmourNotable.png",
 			["stats"]= {
 				"获得等同 10% 最大生命的额外护甲"
@@ -54558,7 +54558,7 @@ return {
 		},
 		[54766]= {
 			["skill"]= 54766,
-			["name"]= "Prismatic Carapace",
+			["name"]= "棱光之壳",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ArmourNotable.png",
 			["stats"]= {
 				"护甲提高 30%",
@@ -54571,7 +54571,7 @@ return {
 		},
 		[50820]= {
 			["skill"]= 50820,
-			["name"]= "Militarism",
+			["name"]= "穷兵黩武",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ArmourNotable.png",
 			["stats"]= {
 				"护甲提高 30%",
@@ -54581,7 +54581,7 @@ return {
 		},
 		[60647]= {
 			["skill"]= 60647,
-			["name"]= "Second Skin",
+			["name"]= "天衣无缝",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ArmourNotable.png",
 			["stats"]= {
 				"3% 法术伤害格挡几率",
@@ -54592,7 +54592,7 @@ return {
 		},
 		[14412]= {
 			["skill"]= 14412,
-			["name"]= "Dragon Hunter",
+			["name"]= "屠龙猎手",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ArmourNotable.png",
 			["stats"]= {
 				"护甲提高 30%",
@@ -54603,7 +54603,7 @@ return {
 		},
 		[57572]= {
 			["skill"]= 57572,
-			["name"]= "Enduring Composure",
+			["name"]= "持久冷静",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ArmourNotable.png",
 			["stats"]= {
 				"护甲提高 30%",
@@ -54616,7 +54616,7 @@ return {
 		},
 		[42313]= {
 			["skill"]= 42313,
-			["name"]= "Prismatic Dance",
+			["name"]= "棱光之舞",
 			["icon"]= "Art/2DArt/SkillIcons/passives/EvasionNotable.png",
 			["stats"]= {
 				"闪避值提高 30%",
@@ -54629,7 +54629,7 @@ return {
 		},
 		[64259]= {
 			["skill"]= 64259,
-			["name"]= "Natural Vigour",
+			["name"]= "万物滋生",
 			["icon"]= "Art/2DArt/SkillIcons/passives/EvasionNotable.png",
 			["stats"]= {
 				"闪避值提高 30%",
@@ -54639,7 +54639,7 @@ return {
 		},
 		[22704]= {
 			["skill"]= 22704,
-			["name"]= "Untouchable",
+			["name"]= "不可触及",
 			["icon"]= "Art/2DArt/SkillIcons/passives/EvasionNotable.png",
 			["stats"]= {
 				"闪避值提高 30%",
@@ -54650,7 +54650,7 @@ return {
 		},
 		[46074]= {
 			["skill"]= 46074,
-			["name"]= "Shifting Shadow",
+			["name"]= "变换之影",
 			["icon"]= "Art/2DArt/SkillIcons/passives/EvasionNotable.png",
 			["stats"]= {
 				"闪避值提高 20%",
@@ -54665,7 +54665,7 @@ return {
 		},
 		[9245]= {
 			["skill"]= 9245,
-			["name"]= "Readiness",
+			["name"]= "准备就绪",
 			["icon"]= "Art/2DArt/SkillIcons/passives/EvasionNotable.png",
 			["stats"]= {
 				"近期内你若没有被击中，则 +4% 几率闪避攻击"
@@ -54677,7 +54677,7 @@ return {
 		},
 		[11318]= {
 			["skill"]= 11318,
-			["name"]= "Confident Combatant",
+			["name"]= "自信斗士",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BlockAttackDmgNotable.png",
 			["stats"]= {
 				"每有 1% 攻击格档率，伤害提高 1%"
@@ -54686,7 +54686,7 @@ return {
 		},
 		[4641]= {
 			["skill"]= 4641,
-			["name"]= "Flexible Sentry",
+			["name"]= "灵活哨兵",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BlockSpellDmgNotable.png",
 			["stats"]= {
 				"3% 法术伤害格挡几率",
@@ -54700,7 +54700,7 @@ return {
 		},
 		[58944]= {
 			["skill"]= 58944,
-			["name"]= "Vicious Guard",
+			["name"]= "恶毒守卫",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BlockAttackDmgNotable.png",
 			["stats"]= {
 				"攻击伤害的 0.4% 转化为生命偷取",
@@ -54714,7 +54714,7 @@ return {
 		},
 		[34108]= {
 			["skill"]= 34108,
-			["name"]= "Mystical Ward",
+			["name"]= "秘法结界",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BlockSpellDmgNotable.png",
 			["stats"]= {
 				"4% 法术伤害格挡几率",
@@ -54728,7 +54728,7 @@ return {
 		},
 		[11011]= {
 			["skill"]= 11011,
-			["name"]= "Rote Reinforcement",
+			["name"]= "刻板援军",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BlockAttackDmgNotable.png",
 			["stats"]= {
 				"+20 最大生命",
@@ -54739,7 +54739,7 @@ return {
 		},
 		[25450]= {
 			["skill"]= 25450,
-			["name"]= "Mage Hunter",
+			["name"]= "法师猎人",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BlockSpellDmgNotable.png",
 			["stats"]= {
 				"4% 法术伤害格挡几率",
@@ -54750,7 +54750,7 @@ return {
 		},
 		[64407]= {
 			["skill"]= 64407,
-			["name"]= "Riot Queller",
+			["name"]= "骚乱平息",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BlockAttackDmgNotable.png",
 			["stats"]= {
 				"+4% 攻击伤害格挡几率",
@@ -54760,7 +54760,7 @@ return {
 		},
 		[53067]= {
 			["skill"]= 53067,
-			["name"]= "One with the Shield",
+			["name"]= "顽强壁垒",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BlockAttackDmgNotable.png",
 			["stats"]= {
 				"格挡时回复 50 生命",
@@ -54774,7 +54774,7 @@ return {
 		},
 		[23042]= {
 			["skill"]= 23042,
-			["name"]= "Aerialist",
+			["name"]= "高空钢丝",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DodgeAtksNotable.png",
 			["stats"]= {
 				"3% 几率躲避攻击击中",
@@ -54785,7 +54785,7 @@ return {
 		},
 		[40181]= {
 			["skill"]= 40181,
-			["name"]= "Elegant Form",
+			["name"]= "优雅形体",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DodgeAtksNotable.png",
 			["stats"]= {
 				"30% 几率避免元素异常状态",
@@ -54799,7 +54799,7 @@ return {
 		},
 		[9276]= {
 			["skill"]= 9276,
-			["name"]= "Darting Movements",
+			["name"]= "突进时刻",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DodgeAtksNotable.png",
 			["stats"]= {
 				"移动速度提高 5%",
@@ -54809,7 +54809,7 @@ return {
 		},
 		[18155]= {
 			["skill"]= 18155,
-			["name"]= "No Witnesses",
+			["name"]= "神出鬼没",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DodgeAtksNotable.png",
 			["stats"]= {
 				"击败敌人有 10% 几率获得【灵巧】",
@@ -54822,7 +54822,7 @@ return {
 		},
 		[48803]= {
 			["skill"]= 48803,
-			["name"]= "Molten One's Mark",
+			["name"]= "熔岩者印记",
 			["icon"]= "Art/2DArt/SkillIcons/passives/FireResistNotable.png",
 			["stats"]= {
 				"+2% 火焰抗性上限",
@@ -54835,7 +54835,7 @@ return {
 		},
 		[42530]= {
 			["skill"]= 42530,
-			["name"]= "Fire Attunement",
+			["name"]= "火冥功",
 			["icon"]= "Art/2DArt/SkillIcons/passives/FireResistNotable.png",
 			["stats"]= {
 				"你被点燃的持续时间缩短 40%",
@@ -54845,7 +54845,7 @@ return {
 		},
 		[17769]= {
 			["skill"]= 17769,
-			["name"]= "Pure Might",
+			["name"]= "纯粹之力",
 			["icon"]= "Art/2DArt/SkillIcons/passives/FireResistNotable.png",
 			["stats"]= {
 				"晕眩回复和格挡回复提高 40%",
@@ -54857,7 +54857,7 @@ return {
 		},
 		[13549]= {
 			["skill"]= 13549,
-			["name"]= "Blacksmith",
+			["name"]= "铁匠",
 			["icon"]= "Art/2DArt/SkillIcons/passives/FireResistNotable.png",
 			["stats"]= {
 				"护甲提高 25%",
@@ -54871,7 +54871,7 @@ return {
 		},
 		[1581]= {
 			["skill"]= 1581,
-			["name"]= "Non-Flammable",
+			["name"]= "不可燃烧",
 			["icon"]= "Art/2DArt/SkillIcons/passives/FireResistNotable.png",
 			["stats"]= {
 				"+20% 火焰抗性",
@@ -54879,13 +54879,13 @@ return {
 				"被击中时有 6% 几率避免火焰伤害"
 			},
 			["reminderText"]= {
-				"(No chance to avoid damage can be higher than 75%)"
+				"避免伤害的几率不能超过 75%"
 			},
 			["isNotable"]= true
 		},
 		[38683]= {
 			["skill"]= 38683,
-			["name"]= "Winter Prowler",
+			["name"]= "深冬潜者",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ColdResistNotable.png",
 			["stats"]= {
 				"+2% 冰霜抗性上限",
@@ -54898,7 +54898,7 @@ return {
 		},
 		[19508]= {
 			["skill"]= 19508,
-			["name"]= "Hibernator",
+			["name"]= "冬眠者",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ColdResistNotable.png",
 			["stats"]= {
 				"你被冰冻的持续时间缩短 40%",
@@ -54908,7 +54908,7 @@ return {
 		},
 		[26322]= {
 			["skill"]= 26322,
-			["name"]= "Pure Guile",
+			["name"]= "天生狡诈",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ColdResistNotable.png",
 			["stats"]= {
 				"【冰霜净化】的魔力保留降低 30%",
@@ -54923,7 +54923,7 @@ return {
 		},
 		[58904]= {
 			["skill"]= 58904,
-			["name"]= "Alchemist",
+			["name"]= "炼金师",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ColdResistNotable.png",
 			["stats"]= {
 				"+20% 冰霜抗性",
@@ -54934,7 +54934,7 @@ return {
 		},
 		[33676]= {
 			["skill"]= 33676,
-			["name"]= "Antifreeze",
+			["name"]= "防护冻结",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ColdResistNotable.png",
 			["stats"]= {
 				"+20% 冰霜抗性",
@@ -54942,13 +54942,13 @@ return {
 				"被击中时有 6% 几率避免冰霜伤害"
 			},
 			["reminderText"]= {
-				"(No chance to avoid damage can be higher than 75%)"
+				"避免伤害的几率不能超过 75%"
 			},
 			["isNotable"]= true
 		},
 		[44203]= {
 			["skill"]= 44203,
-			["name"]= "Wizardry",
+			["name"]= "非凡才能",
 			["icon"]= "Art/2DArt/SkillIcons/passives/LightningResistNotable.png",
 			["stats"]= {
 				"最大魔力提高 8%",
@@ -54961,7 +54961,7 @@ return {
 		},
 		[22002]= {
 			["skill"]= 22002,
-			["name"]= "Capacitor",
+			["name"]= "充能器",
 			["icon"]= "Art/2DArt/SkillIcons/passives/LightningResistNotable.png",
 			["stats"]= {
 				"感电时移动速度提高 12%",
@@ -54971,7 +54971,7 @@ return {
 		},
 		[51421]= {
 			["skill"]= 51421,
-			["name"]= "Pure Aptitude",
+			["name"]= "天赋禀异",
 			["icon"]= "Art/2DArt/SkillIcons/passives/LightningResistNotable.png",
 			["stats"]= {
 				"每秒回复 1% 能量护盾",
@@ -54983,7 +54983,7 @@ return {
 		},
 		[10409]= {
 			["skill"]= 10409,
-			["name"]= "Sage",
+			["name"]= "贤者",
 			["icon"]= "Art/2DArt/SkillIcons/passives/LightningResistNotable.png",
 			["stats"]= {
 				"魔力回复速度提高 20%",
@@ -54994,7 +54994,7 @@ return {
 		},
 		[54798]= {
 			["skill"]= 54798,
-			["name"]= "Insulated",
+			["name"]= "绝缘",
 			["icon"]= "Art/2DArt/SkillIcons/passives/LightningResistNotable.png",
 			["stats"]= {
 				"+20% 闪电抗性",
@@ -55002,13 +55002,13 @@ return {
 				"被击中时有 6% 几率避免闪电伤害"
 			},
 			["reminderText"]= {
-				"(No chance to avoid damage can be higher than 75%)"
+				"避免伤害的几率不能超过 75%"
 			},
 			["isNotable"]= true
 		},
 		[51523]= {
 			["skill"]= 51523,
-			["name"]= "Born of Chaos",
+			["name"]= "混沌降生",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ChaosResistNotable.png",
 			["stats"]= {
 				"+3% 混沌抗性上限"
@@ -55020,7 +55020,7 @@ return {
 		},
 		[21688]= {
 			["skill"]= 21688,
-			["name"]= "Antivenom",
+			["name"]= "防护毒素",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ChaosResistNotable.png",
 			["stats"]= {
 				"+17% 混沌抗性",
@@ -55033,7 +55033,7 @@ return {
 		},
 		[29096]= {
 			["skill"]= 29096,
-			["name"]= "Rot-Resistant",
+			["name"]= "腐烂抗力",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ChaosResistNotable.png",
 			["stats"]= {
 				"+13% 混沌抗性",
@@ -55045,7 +55045,7 @@ return {
 		},
 		[64717]= {
 			["skill"]= 64717,
-			["name"]= "Blessed",
+			["name"]= "受福",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ChaosResistNotable.png",
 			["stats"]= {
 				"最大生命提高 6%",
@@ -55056,7 +55056,7 @@ return {
 		},
 		[26179]= {
 			["skill"]= 26179,
-			["name"]= "Student of Decay",
+			["name"]= "腐朽学徒",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ChaosResistNotable.png",
 			["stats"]= {
 				"持续伤害效果提高 25%",
@@ -55372,7 +55372,7 @@ return {
 		},
 		[17271]= {
 			["skill"]= 17271,
-			["name"]= "Chance to Block Attack Damage",
+			["name"]= "格挡攻击伤害几率",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BlockAttackDmgNode.png",
 			["stats"]= {
 				"1% 攻击伤害格挡率"
@@ -55380,7 +55380,7 @@ return {
 		},
 		[45180]= {
 			["skill"]= 45180,
-			["name"]= "Chance to Block Spell Damage",
+			["name"]= "格挡法术伤害几率",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BlockSpellDmgNode.png",
 			["stats"]= {
 				"1% 法术伤害格挡几率"
@@ -55420,7 +55420,7 @@ return {
 		},
 		[45284]= {
 			["skill"]= 45284,
-			["name"]= "Chance to Dodge Attacks",
+			["name"]= "躲避攻击几率",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DodgeAtksNode.png",
 			["stats"]= {
 				"1% 几率躲避攻击击中"
@@ -55842,13 +55842,12 @@ return {
 			[0.2109]= "http://web.poecdn.com/gen/image/WzIyLCI0ODNkY2JkYzQyOTAzMzY5MGE0MjJiYTU5MDFhZjI2YSIseyJ0IjoyMCwic3AiOjAuMjEwOX1d/a0b9104fa9/JewelSocketActiveRed.png",
 			[0.2972]= "http://web.poecdn.com/gen/image/WzIyLCI0ODNkY2JkYzQyOTAzMzY5MGE0MjJiYTU5MDFhZjI2YSIseyJ0IjoyMCwic3AiOjAuMjk3Mn1d/e3940e9c25/JewelSocketActiveRed.png",
 			[0.3835]= "http://web.poecdn.com/gen/image/WzIyLCI0ODNkY2JkYzQyOTAzMzY5MGE0MjJiYTU5MDFhZjI2YSIseyJ0IjoyMCwic3AiOjAuMzgzNX1d/282ce55408/JewelSocketActiveRed.png"
-		},
-		["JewelSocketActiveRed"]= {
-			[0.1246]= "http://web.poecdn.com/gen/image/WzIyLCI0ODNkY2JkYzQyOTAzMzY5MGE0MjJiYTU5MDFhZjI2YSIseyJ0IjoyMCwic3AiOjAuMTI0Nn1d/0edaedc682/JewelSocketActiveRed.png",
-			[0.2109]= "http://web.poecdn.com/gen/image/WzIyLCI0ODNkY2JkYzQyOTAzMzY5MGE0MjJiYTU5MDFhZjI2YSIseyJ0IjoyMCwic3AiOjAuMjEwOX1d/a0b9104fa9/JewelSocketActiveRed.png",
-			[0.2972]= "http://web.poecdn.com/gen/image/WzIyLCI0ODNkY2JkYzQyOTAzMzY5MGE0MjJiYTU5MDFhZjI2YSIseyJ0IjoyMCwic3AiOjAuMjk3Mn1d/e3940e9c25/JewelSocketActiveRed.png",
-			[0.3835]= "http://web.poecdn.com/gen/image/WzIyLCI0ODNkY2JkYzQyOTAzMzY5MGE0MjJiYTU5MDFhZjI2YSIseyJ0IjoyMCwic3AiOjAuMzgzNX1d/282ce55408/JewelSocketActiveRed.png"
-		},
+		},["JewelSocketActiveTimeless"]={
+[0.1246]="http://web.poecdn.com/gen/image/WzIyLCIyODAyNzk5YTkwYzZjYTU0ODA1MDIzNDQ5ZTAyNzk3NSIseyJ0Ijo1MSwic3AiOjAuMTI0Nn1d/cd042e73a3/JewelSocketActiveTimeless.png",
+[0.2109]="http://web.poecdn.com/gen/image/WzIyLCIyODAyNzk5YTkwYzZjYTU0ODA1MDIzNDQ5ZTAyNzk3NSIseyJ0Ijo1MSwic3AiOjAuMjEwOX1d/b7808f8b4c/JewelSocketActiveTimeless.png",
+[0.2972]="http://web.poecdn.com/gen/image/WzIyLCIyODAyNzk5YTkwYzZjYTU0ODA1MDIzNDQ5ZTAyNzk3NSIseyJ0Ijo1MSwic3AiOjAuMjk3Mn1d/9f66426097/JewelSocketActiveTimeless.png",
+[0.3835]="http://web.poecdn.com/gen/image/WzIyLCIyODAyNzk5YTkwYzZjYTU0ODA1MDIzNDQ5ZTAyNzk3NSIseyJ0Ijo1MSwic3AiOjAuMzgzNX1d/34efc26b2a/JewelSocketActiveTimeless.png"
+},
 		["JewelSocketActivePrismatic"]= {
 			[0.1246]= "http://web.poecdn.com/gen/image/WzIyLCJlOTFhNTJkMGZiN2VjNGJlOGI3NjkwYjg4ODg5NjdjNiIseyJ0Ijo1MSwic3AiOjAuMTI0Nn1d/9cbde9ce3f/JewelSocketActivePrismatic.png",
 			[0.2109]= "http://web.poecdn.com/gen/image/WzIyLCJlOTFhNTJkMGZiN2VjNGJlOGI3NjkwYjg4ODg5NjdjNiIseyJ0Ijo1MSwic3AiOjAuMjEwOX1d/0745f7a50c/JewelSocketActivePrismatic.png",

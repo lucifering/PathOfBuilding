@@ -246,10 +246,14 @@ elseif specName == "等级需求" then
 					self.requirements.level = tonumber(specVal)
 elseif specName == "Has Alt Variant" then
 					self.hasAltVariant = true
+elseif specName == "Has Alt Variant Two" then
+					self.hasAltVariant2 = true
 elseif specName == "Selected Variant" then
 					self.variant = tonumber(specVal)
 elseif specName == "Selected Alt Variant" then
 					self.variantAlt = tonumber(specVal)
+elseif specName == "Selected Alt Variant Two" then
+					self.variantAlt2 = tonumber(specVal)
 elseif specName == "联盟" then
 					self.league = specVal
 elseif specName == "工艺" then
@@ -474,7 +478,11 @@ elseif self.rarity == "稀有" then
 		if self.hasAltVariant then
 			self.variantAlt = m_min(#self.variantList, self.variantAlt or self.defaultVariant or #self.variantList)
 		end
+		if self.hasAltVariant2 then
+			self.variantAlt2 = m_min(#self.variantList, self.variantAlt2 or self.defaultVariant or #self.variantList)
+		end
 	end
+	
 	if not self.quality then
 		self:NormaliseQuality()
 	end
@@ -593,6 +601,10 @@ t_insert(rawLines, "版本: "..variantName)
 		if self.hasAltVariant then
 			t_insert(rawLines, "Has Alt Variant: true")
 			t_insert(rawLines, "Selected Alt Variant: "..self.variantAlt)
+		end
+		if self.hasAltVariant2 then
+			t_insert(rawLines, "Has Alt Variant Two: true")
+			t_insert(rawLines, "Selected Alt Variant Two: "..self.variantAlt2)
 		end
 	end
 	if self.quality then
@@ -730,6 +742,7 @@ function ItemClass:CheckModLineVariant(modLine)
 	return not modLine.variantList 
 		or modLine.variantList[self.variant]
 		or (self.hasAltVariant and modLine.variantList[self.variantAlt])
+		or (self.hasAltVariant2 and modLine.variantList[self.variantAlt2])
 end
 
 -- Return the name of the slot this item is equipped in
@@ -949,6 +962,16 @@ function ItemClass:BuildModListForSlotNum(baseList, slotNum)
 			for _, line in ipairs(modList:List(nil, "AddToClusterJewelNode")) do
 				t_insert(jewelData.clusterJewelAddedMods, line)
 			end
+			-- Validation
+			if jewelData.clusterJewelNodeCount then
+				jewelData.clusterJewelNodeCount = m_min(m_max(jewelData.clusterJewelNodeCount, self.clusterJewel.minNodes), self.clusterJewel.maxNodes)
+			end
+			if jewelData.clusterJewelSkill and not self.clusterJewel.skills[jewelData.clusterJewelSkill] then
+				jewelData.clusterJewelSkill = nil
+			end
+			jewelData.clusterJewelValid = jewelData.clusterJewelKeystone 
+				or ((jewelData.clusterJewelSkill or jewelData.clusterJewelSmallsAreNothingness) and jewelData.clusterJewelNodeCount) 
+				or (jewelData.clusterJewelSocketCountOverride and jewelData.clusterJewelNothingnessCount)
 		end
 	end	
 	return { unpack(modList) }

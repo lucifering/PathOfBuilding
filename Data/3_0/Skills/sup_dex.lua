@@ -3706,11 +3706,11 @@ skills["SupportChaosAttacks"] = {
 	},
 }
 skills["SupportAdditionalCooldown"] = {
-	name = "Second Wind",
+	name = "助力之风（辅）",
 	description = "辅助有冷却时间的技能。不能辅助触发型技能。",
 	color = 2,
 	support = true,
-	requireSkillTypes = { SkillType.Type96, },
+	requireSkillTypes = { SkillType.Type90, },
 	addSkillTypes = { },
 	excludeSkillTypes = { SkillType.Triggered, },
 	statDescriptionScope = "gem_stat_descriptions",

@@ -224,7 +224,10 @@ local function runSkillFunc(name)
 		end
 	end
 	local baseSpellDamageAppliesToAttacks = skillModList:Sum("BASE", cfg, "SpellDamageAppliesToAttacks") 
-	
+	 
+	if skillData.spellDamageAppliesToAttackAtPercentValue then
+		baseSpellDamageAppliesToAttacks = m_max(baseSpellDamageAppliesToAttacks, skillData.spellDamageAppliesToAttackAtPercentValue)
+	end
 	if baseSpellDamageAppliesToAttacks and baseSpellDamageAppliesToAttacks > 0 then
 		-- Spell Damage conversion from Crown of Eyes
 		for i, value in ipairs(skillModList:Tabulate("INC", { flags = ModFlag.Spell }, "Damage")) do
@@ -314,6 +317,27 @@ local function runSkillFunc(name)
 	if skillModList:Flag(nil, "TransfigurationOfSoul") then
 		skillModList:NewMod("Damage", "INC", m_floor(skillModList:Sum("INC", nil, "EnergyShield") * 0.3), "灵魂幻化", ModFlag.Spell)
 	end
+	if skillData.gainPercentBaseWandDamage then
+		local mult = skillData.gainPercentBaseWandDamage / 100
+		if actor.weaponData1.type == "Wand" and actor.weaponData2.type == "Wand" then
+			for _, damageType in ipairs(dmgTypeList) do
+				skillModList:NewMod(damageType.."Min", "BASE", ((actor.weaponData1[damageType.."Min"] or 0) + (actor.weaponData2[damageType.."Min"] or 0)) / 2 * mult, "Spellslinger")
+				skillModList:NewMod(damageType.."Max", "BASE", ((actor.weaponData1[damageType.."Max"] or 0) + (actor.weaponData2[damageType.."Max"] or 0)) / 2 * mult, "Spellslinger")
+			end
+		elseif actor.weaponData1.type == "Wand" then
+			for _, damageType in ipairs(dmgTypeList) do
+				skillModList:NewMod(damageType.."Min", "BASE", (actor.weaponData1[damageType.."Min"] or 0) * mult, "Spellslinger")
+				skillModList:NewMod(damageType.."Max", "BASE", (actor.weaponData1[damageType.."Max"] or 0) * mult, "Spellslinger")
+			end
+		elseif actor.weaponData2.type == "Wand" then
+			for _, damageType in ipairs(dmgTypeList) do
+				skillModList:NewMod(damageType.."Min", "BASE", (actor.weaponData2[damageType.."Min"] or 0) * mult, "Spellslinger")
+				skillModList:NewMod(damageType.."Max", "BASE", (actor.weaponData2[damageType.."Max"] or 0) * mult, "Spellslinger")
+			end
+		end
+	end
+
+
 	--处理感电
 	if enemyDB:Flag(nil, "Shock") then
 		local overrideEffect = skillModList:Override(nil, "EnemyShockEffect") 
@@ -683,6 +707,9 @@ t_insert(breakdown.DurationSecondary, s_format("/ %.2f ^8(debuff更快或更慢�
 		local inc = skillModList:Sum("INC", skillCfg, "ManaCost")
 		local base = skillModList:Sum("BASE", skillCfg, "ManaCost")
 		local manaCost = activeSkill.activeEffect.grantedEffectLevel.manaCost or 0
+		if skillData.baseManaCostIsAtLeastPercentUnreservedMana then
+			manaCost = m_max(manaCost, m_floor((output.ManaUnreserved or 0) * skillData.baseManaCostIsAtLeastPercentUnreservedMana / 100))
+		end
 		output.ManaCost = m_floor(m_max(0, manaCost * mult * more * (1 + inc / 100) + base))
 		if activeSkill.skillTypes[SkillType.ManaCostPercent] and skillFlags.totem then
 			output.ManaCost = m_floor(output.Mana * output.ManaCost / 100)

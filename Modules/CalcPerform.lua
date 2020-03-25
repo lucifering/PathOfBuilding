@@ -105,6 +105,11 @@ local function doActorAttribsPoolsConditions(env, actor)
 	end
 	if actor.weaponData1.type == "None" then
 		condList["Unarmed"] = true
+		 
+		if  not actor.itemList["Weapon 2"]  and 
+		not actor.itemList["Gloves"] then
+			condList["Unencumbered"] = true
+		end
 	else
 		local info = env.data.weaponTypeInfo[actor.weaponData1.type]
 		condList["Using"..info.flag] = true

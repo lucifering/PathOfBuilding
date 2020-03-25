@@ -7,8 +7,8 @@
 local skills, mod, flag, skill = ...
 
 skills["SupportAddedColdDamage"] = {
-	name = "附加冰霜伤害(辅)",
-	description = "辅助任意击中敌人的技能",
+name = "附加冰霜伤害(辅)",
+description = "辅助任意击中敌人的技能",
 	color = 2,
 	baseEffectiveness = 0.57270002365112,
 	incrementalEffectiveness = 0.03770000115037,
@@ -70,8 +70,8 @@ skills["SupportAddedColdDamage"] = {
 	},
 }
 skills["SupportAddedColdDamagePlus"] = {
-	name = "附加冰霜伤害（强辅）",
-	description = "辅助任何会击中敌人的技能。",
+name = "附加冰霜伤害（强辅）",
+description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, SkillType.Hit, },
@@ -118,8 +118,8 @@ skills["SupportAddedColdDamagePlus"] = {
 	},
 }
 skills["SupportAdditionalAccuracy"] = {
-	name = "额外命中(辅)",
-	description = "辅助攻击技能",
+name = "额外命中(辅)",
+description = "辅助攻击技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, SkillType.Type56, },
@@ -178,8 +178,8 @@ skills["SupportAdditionalAccuracy"] = {
 	},
 }
 skills["SupportArrowNova"] = {
-	name = "箭之新星（辅）",
-	description = "辅助将箭矢像投射物一般向前发射的弓箭技能。被辅助技能改为朝空中射出一支负载箭矢，落到目标地点。然后向外射出一圈箭矢。不能辅助原本就朝空中射击的技能、吟唱技能或创造召唤生物的技能。",
+name = "箭之新星（辅）",
+description = "辅助将箭矢像投射物一般向前发射的弓箭技能。被辅助技能改为朝空中射出一支负载箭矢，落到目标地点。然后向外射出一圈箭矢。不能辅助原本就朝空中射击的技能、吟唱技能或创造召唤生物的技能。",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Projectile, SkillType.Type54, SkillType.OR, SkillType.ProjectileAttack, SkillType.Type56, SkillType.OR, SkillType.AND, SkillType.SkillCanVolley, SkillType.AND, },
@@ -249,8 +249,8 @@ skills["SupportArrowNova"] = {
 	},
 }
 skills["SupportArrowNovaPlus"] = {
-	name = "箭之新星（强辅）",
-	description = "辅助将箭矢像投射物一般向前发射的弓箭技能。被辅助技能改为朝空中射出一支负载箭矢，落到目标地点。然后向外射出一圈箭矢。不能辅助原本就朝空中射击的技能、吟唱技能或创造召唤生物的技能。",
+name = "箭之新星（强辅）",
+description = "辅助将箭矢像投射物一般向前发射的弓箭技能。被辅助技能改为朝空中射出一支负载箭矢，落到目标地点。然后向外射出一圈箭矢。不能辅助原本就朝空中射击的技能、吟唱技能或创造召唤生物的技能。",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Projectile, SkillType.Type54, SkillType.OR, SkillType.ProjectileAttack, SkillType.Type56, SkillType.OR, SkillType.AND, SkillType.SkillCanVolley, SkillType.AND, },
@@ -301,8 +301,8 @@ skills["SupportArrowNovaPlus"] = {
 	},
 }
 skills["SupportBarrage"] = {
-	name = "弹幕（辅）",
-	description = "辅助使用弓类或法杖的投射物技能。不能辅助触发技能、吟唱技能或创造召唤生物的技能。",
+name = "弹幕（辅）",
+description = "辅助使用弓类或法杖的投射物技能。不能辅助触发技能、吟唱技能或创造召唤生物的技能。",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Projectile, SkillType.Type54, SkillType.OR, SkillType.Type73, SkillType.OR, SkillType.ProjectileAttack, SkillType.Type56, SkillType.OR, SkillType.AND, },
@@ -310,13 +310,9 @@ skills["SupportBarrage"] = {
 	excludeSkillTypes = { SkillType.Channelled, SkillType.CreatesMinion, SkillType.Triggered, SkillType.TriggeredGrantedSkill, },
 	ignoreMinionTypes = true,
 	statDescriptionScope = "gem_stat_descriptions",
-	weaponTypes = {
-		["Bow"] = true,
-		["Wand"] = true,
-	},
 	statMap = {
 		["support_barrage_damage_+%_final"] = {
-			mod("Damage", "MORE", nil, 0, 0, { type = "Condition", varList = { "UsingBow", "UsingWand" }}),
+			mod("Damage", "MORE", nil),
 		},
 		["projectiles_barrage"] = {
 			flag("SequentialProjectiles", { type = "Condition", varList = { "UsingBow", "UsingWand" }}),
@@ -379,8 +375,8 @@ skills["SupportBarrage"] = {
 	},
 }
 skills["SupportBlind"] = {
-	name = "致盲(辅)",
-	description = "辅助任意击中敌人的技能",
+name = "致盲(辅)",
+description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -440,8 +436,8 @@ skills["SupportBlind"] = {
 	},
 }
 skills["SupportBlockReduction"] = {
-	name = "减少格挡几率(辅)",
-	description = "辅助任意击中敌人的技能",
+name = "减少格挡几率(辅)",
+description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -503,8 +499,8 @@ skills["SupportBlockReduction"] = {
 	},
 }
 skills["SupportCastOnCrit"] = {
-	name = "暴击时施放(辅)",
-	description = "必须同时连接一个攻击技能和一个法术技能才能生效. 法术技能会在攻击技能暴击敌人时施放. 无法辅助图腾, 陷阱或地雷. 瓦尔技能、持续吟唱类技能和魔力保留类技能无法被触发施放",
+name = "暴击时施放(辅)",
+description = "必须同时连接一个攻击技能和一个法术技能才能生效. 法术技能会在攻击技能暴击敌人时施放. 无法辅助图腾, 陷阱或地雷. 瓦尔技能、持续吟唱类技能和魔力保留类技能无法被触发施放",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, },
@@ -564,8 +560,8 @@ skills["SupportCastOnCrit"] = {
 	},
 }
 skills["SupportCastOnCritTriggered"] = {
-	name = "暴击时施放(辅)",
-	description = "必须同时连接一个攻击技能和一个法术技能才能生效. 法术技能会在攻击技能暴击敌人时施放. 无法辅助图腾, 陷阱或地雷. 瓦尔技能、持续吟唱类技能和魔力保留类技能无法被触发施放",
+name = "暴击时施放(辅)",
+description = "必须同时连接一个攻击技能和一个法术技能才能生效. 法术技能会在攻击技能暴击敌人时施放. 无法辅助图腾, 陷阱或地雷. 瓦尔技能、持续吟唱类技能和魔力保留类技能无法被触发施放",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Spell, SkillType.Triggerable, SkillType.AND, },
@@ -634,8 +630,8 @@ skills["SupportCastOnCritTriggered"] = {
 	},
 }
 skills["SupportCastOnCritPlus"] = {
-	name = "暴击时施放（强辅）",
-	description = "必须同时连接一个攻击技能和一个法术技能才能生效。法术技能会在攻击技能暴击敌人时施放。无法辅助图腾、陷阱或地雷。瓦尔技能、持续吟唱类技能和魔力保留类技能无法被触发施放。",
+name = "暴击时施放（强辅）",
+description = "必须同时连接一个攻击技能和一个法术技能才能生效. 法术技能会在攻击技能暴击敌人时施放. 无法辅助图腾, 陷阱或地雷. 瓦尔技能、持续吟唱类技能和魔力保留类技能无法被触发施放",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, },
@@ -676,8 +672,8 @@ skills["SupportCastOnCritPlus"] = {
 	},
 }
 skills["SupportCastOnCritTriggeredPlus"] = {
-	name = "暴击时施放（强辅）",
-	description = "必须同时连接一个攻击技能和一个法术技能才能生效。法术技能会在攻击技能暴击敌人时施放。无法辅助图腾、陷阱或地雷。瓦尔技能、持续吟唱类技能和魔力保留类技能无法被触发施放。",
+name = "暴击时施放（强辅）",
+description = "必须同时连接一个攻击技能和一个法术技能才能生效. 法术技能会在攻击技能暴击敌人时施放. 无法辅助图腾, 陷阱或地雷. 瓦尔技能、持续吟唱类技能和魔力保留类技能无法被触发施放",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Spell, SkillType.Triggerable, SkillType.AND, },
@@ -728,8 +724,8 @@ skills["SupportCastOnCritTriggeredPlus"] = {
 	},
 }
 skills["SupportCastOnDeath"] = {
-	name = "死亡时施放(辅)",
-	description = "所有被辅助的法术技能会在你被击败时施放. 无法辅助图腾, 陷阱或地雷所施放的技能. 瓦尔技能、持续吟唱类技能或魔力保留类技能无法被触发施放",
+name = "死亡时施放(辅)",
+description = "所有被辅助的法术技能会在你被击败时施放. 无法辅助图腾, 陷阱或地雷所施放的技能. 瓦尔技能、持续吟唱类技能或魔力保留类技能无法被触发施放",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Spell, SkillType.Triggerable, SkillType.AND, },
@@ -800,8 +796,8 @@ skills["SupportCastOnDeath"] = {
 	},
 }
 skills["SupportChain"] = {
-	name = "连锁(辅)",
-	description = "辅助投射物和其他任意能连锁的技能",
+name = "连锁(辅)",
+description = "辅助投射物和其他任意能连锁的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Chaining, SkillType.Projectile, SkillType.Type54, SkillType.Type56, },
@@ -867,8 +863,8 @@ skills["SupportChain"] = {
 	},
 }
 skills["SupportChainPlus"] = {
-	name = "连锁（强辅）",
-	description = "辅助投射物和其他任意能连锁的技能。",
+name = "连锁（强辅）",
+description = "辅助投射物和其他任意能连锁的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Chaining, SkillType.Projectile, SkillType.Type54, SkillType.Type56, },
@@ -916,8 +912,8 @@ skills["SupportChainPlus"] = {
 	},
 }
 skills["SupportChanceToFlee"] = {
-	name = "几率逃跑(辅)",
-	description = "辅助任意击中敌人的技能",
+name = "几率逃跑(辅)",
+description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, SkillType.Hit, },
@@ -976,8 +972,8 @@ skills["SupportChanceToFlee"] = {
 	},
 }
 skills["SupportGemFrenzyPowerOnTrapTrigger"] = {
-	name = "充能陷阱（辅）",
-	description = "可投掷陷阱的技能。",
+name = "充能陷阱辅助宝石",
+description = "辅助陷阱技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Trap, },
@@ -1039,8 +1035,8 @@ skills["SupportGemFrenzyPowerOnTrapTrigger"] = {
 	},
 }
 skills["SupportSlashingWeapon"] = {
-	name = "近战（辅）",
-	description = "辅助近战攻击技能。无法辅助召唤生物的技能。",
+name = "近战（辅）",
+description = "辅助近战攻击技能。无法辅助召唤生物的技能。",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Melee, },
@@ -1114,8 +1110,8 @@ skills["SupportSlashingWeapon"] = {
 	},
 }
 skills["SupportClusterTrap"] = {
-	name = "散弹陷阱(辅)",
-	description = "辅助陷阱技能, 使该技能在目标周围随机扔出额外陷阱",
+name = "散弹陷阱(辅)",
+description = "辅助陷阱技能, 使该技能在目标周围随机扔出额外陷阱",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Trap, },
@@ -1183,8 +1179,8 @@ skills["SupportClusterTrap"] = {
 	},
 }
 skills["SupportColdPenetration"] = {
-	name = "冰霜穿透(辅)",
-	description = "辅助任意击中敌人的技能, 使击中能穿透敌人的冰霜抗性",
+name = "冰霜穿透(辅)",
+description = "辅助任意击中敌人的技能, 使击中能穿透敌人的冰霜抗性",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -1243,8 +1239,8 @@ skills["SupportColdPenetration"] = {
 	},
 }
 skills["SupportColdPenetrationPlus"] = {
-	name = "冰霜穿透（强辅）",
-	description = "辅助任意击中敌人的技能, 使击中能穿透敌人的冰霜抗性。",
+name = "冰霜穿透（强辅）",
+description = "辅助任意击中敌人的技能, 使击中能穿透敌人的冰霜抗性",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -1284,8 +1280,8 @@ skills["SupportColdPenetrationPlus"] = {
 	},
 }
 skills["SupportCullingStrike"] = {
-	name = "终结(辅)",
-	description = "辅助任意击中敌人的技能, 如果敌人在被击中后小于 10% 最大生命值则会被立即击败",
+name = "终结(辅)",
+description = "辅助任意击中敌人的技能, 如果敌人在被击中后小于 10% 最大生命值则会被立即击败",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -1348,8 +1344,8 @@ skills["SupportCullingStrike"] = {
 	},
 }
 skills["SupportDeadlyAilments"] = {
-	name = "致命异常状态(辅)",
-	description = "辅助任意击中敌人的技能",
+name = "致命异常状态(辅)",
+description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -1417,8 +1413,8 @@ skills["SupportDeadlyAilments"] = {
 	},
 }
 skills["SupportDeadlyAilmentsPlus"] = {
-	name = "致命异常状态（强辅）",
-	description = "辅助任何会击中敌人的技能。",
+name = "致命异常状态（强辅）",
+description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -1468,8 +1464,8 @@ skills["SupportDeadlyAilmentsPlus"] = {
 	},
 }
 skills["SupportAdditionalQuality"] = {
-	name = "增幅(辅)",
-	description = "辅助任意技能. 当该宝石达到 2 级或以上时, 提升被辅助技能的品质. 无法辅助非技能宝石带来的技能",
+name = "增幅(辅)",
+description = "辅助任意技能. 当该宝石达到 2 级或以上时, 提升被辅助技能的品质. 无法辅助非技能宝石带来的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { },
@@ -1504,8 +1500,8 @@ skills["SupportAdditionalQuality"] = {
 	},
 }
 skills["SupportFasterAttack"] = {
-	name = "快速攻击(辅)",
-	description = "辅助攻击技能",
+name = "快速攻击(辅)",
+description = "辅助攻击技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, SkillType.Type56, },
@@ -1564,8 +1560,8 @@ skills["SupportFasterAttack"] = {
 	},
 }
 skills["SupportFasterProjectiles"] = {
-	name = "快速投射(辅)",
-	description = "辅助投射物技能",
+name = "快速投射(辅)",
+description = "辅助投射物技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Projectile, SkillType.ProjectileDamage, SkillType.Type54, SkillType.Type56, },
@@ -1626,8 +1622,8 @@ skills["SupportFasterProjectiles"] = {
 	},
 }
 skills["SupportFork"] = {
-	name = "分裂(辅)",
-	description = "辅助投射物技能, 使该技能的投射物在首次击中敌人时不再穿透并分裂成 2 个",
+name = "分裂(辅)",
+description = "辅助投射物技能, 使该技能的投射物在首次击中敌人时不再穿透并分裂成 2 个",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Projectile, SkillType.Type54, SkillType.Type56, },
@@ -1693,8 +1689,8 @@ skills["SupportFork"] = {
 	},
 }
 skills["SupportForkPlus"] = {
-	name = "分裂（强辅）",
-	description = "辅助投射物技能，使它们的投射物在头两次击中敌人时并不穿透，而是分裂成两个。",
+name = "分裂（强辅）",
+description = "辅助投射物技能，使它们的投射物在头两次击中敌人时并不穿透，而是分裂成两个。",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Projectile, SkillType.Type54, SkillType.Type56, },
@@ -1742,8 +1738,8 @@ skills["SupportForkPlus"] = {
 	},
 }
 skills["SupportGreaterMultipleProjectiles"] = {
-	name = "高阶多重投射(辅)",
-	description = "辅助投射物技能",
+name = "高阶多重投射(辅)",
+description = "辅助投射物技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Projectile, SkillType.Type54, SkillType.Type56, SkillType.Type73, },
@@ -1811,8 +1807,8 @@ skills["SupportGreaterMultipleProjectiles"] = {
 	},
 }
 skills["SupportGreaterMultipleProjectilesPlus"] = {
-	name = "高阶多重投射（强辅）",
-	description = "辅助投射物技能。",
+name = "高阶多重投射（强辅）",
+description = "辅助投射物技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Projectile, SkillType.Type54, SkillType.Type56, SkillType.Type73, },
@@ -1861,8 +1857,8 @@ skills["SupportGreaterMultipleProjectilesPlus"] = {
 	},
 }
 skills["SupportGreaterVolley"] = {
-	name = "高阶齐射（辅）",
-	description = "只能辅助玩家自生产生的投射物。不会影响其他来源或二次产生的投射物。",
+name = "高阶齐射（辅）",
+description = "只能辅助玩家自生产生的投射物。不会影响其他来源或二次产生的投射物。",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.SkillCanVolley, },
@@ -1930,8 +1926,8 @@ skills["SupportGreaterVolley"] = {
 	},
 }
 skills["SupportDamageAgainstChilled"] = {
-	name = "急冻(辅)",
-	description = "辅助任意造成伤害的技能",
+name = "急冻(辅)",
+description = "辅助任意造成伤害的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.DamageOverTime, },
@@ -2001,8 +1997,8 @@ skills["SupportDamageAgainstChilled"] = {
 	},
 }
 skills["SupportImpale"] = {
-	name = "尖刺战杖",
-	description = "辅助攻击技能。",
+name = "尖刺战杖",
+description = "辅助攻击技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, },
@@ -2069,8 +2065,8 @@ skills["SupportImpale"] = {
 	},
 }
 skills["SupportFrenzyChargeOnSlayingFrozenEnemy"] = {
-	name = "霜咬(辅)",
-	description = "辅助任意你用来击中敌人的技能. 无法辅助图腾, 陷阱和地雷所施放的技能.",
+name = "霜咬(辅)",
+description = "辅助任意你用来击中敌人的技能. 无法辅助图腾, 陷阱和地雷所施放的技能.",
 	color = 2,
 	baseEffectiveness = 0.51819998025894,
 	incrementalEffectiveness = 0.03770000115037,
@@ -2136,8 +2132,8 @@ skills["SupportFrenzyChargeOnSlayingFrozenEnemy"] = {
 	},
 }
 skills["SupportLesserMultipleProjectiles"] = {
-	name = "低阶多重投射(辅)",
-	description = "辅助投射物技能",
+name = "低阶多重投射(辅)",
+description = "辅助投射物技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Projectile, SkillType.Type54, SkillType.Type56, SkillType.Type73, },
@@ -2205,8 +2201,8 @@ skills["SupportLesserMultipleProjectiles"] = {
 	},
 }
 skills["SupportLesserPoison"] = {
-	name = "低阶毒化(辅)",
-	description = "辅助任意击中敌人的技能",
+name = "低阶毒化(辅)",
+description = "辅助任意击中敌人的技能",
 	color = 2,
 	baseEffectiveness = 0.2732999920845,
 	incrementalEffectiveness = 0.03999999910593,
@@ -2269,8 +2265,8 @@ skills["SupportLesserPoison"] = {
 	},
 }
 skills["SupportManaLeech"] = {
-	name = "魔力偷取(辅)",
-	description = "辅助击中敌人的攻击技能，基于击中造成的伤害偷取魔力。",
+name = "魔力偷取(辅)",
+description = "辅助击中敌人的攻击技能，基于击中造成的伤害偷取魔力。",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, },
@@ -2329,8 +2325,8 @@ skills["SupportManaLeech"] = {
 	},
 }
 skills["SupportGemMirageArcher"] = {
-	name = "幻影射手(辅)",
-	description = "能够辅助使用弓的攻击技能。被辅助的技能只能用弓才能生效。无法辅助瓦尔技能，召唤生物技能，移动类技能或图腾，陷阱和地雷使用的技能。",
+name = "幻影射手(辅)",
+description = "能够辅助使用弓的攻击技能。被辅助的技能只能用弓才能生效。无法辅助瓦尔技能，召唤生物技能，移动类技能或图腾，陷阱和地雷使用的技能。",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.SkillCanMirageArcher, },
@@ -2396,8 +2392,8 @@ skills["SupportGemMirageArcher"] = {
 	},
 }
 skills["SupportMultiTrap"] = {
-	name = "多重陷阱(辅)",
-	description = "辅助陷阱技能, 使该技能在一条线上扔出额外陷阱",
+name = "多重陷阱(辅)",
+description = "辅助陷阱技能, 使该技能在一条线上扔出额外陷阱",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Trap, },
@@ -2464,8 +2460,8 @@ skills["SupportMultiTrap"] = {
 	},
 }
 skills["SupportPuncturingWeapon"] = {
-	name = "夜刃（辅）",
-	description = "辅助攻击技能。无法辅助召唤生物的技能。",
+name = "夜刃（辅）",
+description = "辅助攻击技能. 无法辅助创造召唤物技能.",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, },
@@ -2473,14 +2469,7 @@ skills["SupportPuncturingWeapon"] = {
 	excludeSkillTypes = { SkillType.CreatesMinion, },
 	ignoreMinionTypes = true,
 	statDescriptionScope = "gem_stat_descriptions",
-	statMap = {
-		["elusive_effect_+%"] = {
-			mod("ElusiveEffectOnSelf", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "夜刃" }, { type = "Condition", varList = { "UsingClaw", "UsingDagger" } }, { type = "Condition", varList = { "UsingSword", "UsingAxe", "UsingMace" }, neg = true} ),
-		},
-	},	
 	baseMods = {
-		flag("Condition:CanBeElusive", { type = "Condition", varList = { "UsingClaw", "UsingDagger" } }, { type = "Condition", varList = { "UsingSword", "UsingAxe", "UsingMace" }, neg = true}),
-		mod("Dummy", "DUMMY", 1, 0, 0, { type = "Condition", var = "CanBeElusive" }, { type = "Condition", varList = { "UsingClaw", "UsingDagger" } }, { type = "Condition", varList = { "UsingSword", "UsingAxe", "UsingMace" }, neg = true}),
 	},
 	qualityStats = {
 		{ "critical_strike_chance_+%", 1 },
@@ -2536,8 +2525,8 @@ skills["SupportPuncturingWeapon"] = {
 	},
 }
 skills["SupportOnslaught"] = {
-	name = "猛攻(辅)",
-	description = "辅助任意击中敌人的技能",
+name = "猛攻(辅)",
+description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -2598,8 +2587,8 @@ skills["SupportOnslaught"] = {
 	},
 }
 skills["SupportPierce"] = {
-	name = "穿透(辅)",
-	description = "辅助投射物技能",
+name = "穿透(辅)",
+description = "辅助投射物技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Projectile, SkillType.Type54, SkillType.Type56, },
@@ -2664,8 +2653,8 @@ skills["SupportPierce"] = {
 	},
 }
 skills["SupportPointBlank"] = {
-	name = "零点射击(辅)",
-	description = "辅助投射物技能",
+name = "零点射击(辅)",
+description = "辅助投射物技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.ProjectileAttack, SkillType.Type56, },
@@ -2730,8 +2719,8 @@ skills["SupportPointBlank"] = {
 	},
 }
 skills["SupportPoison"] = {
-	name = "毒化(辅)",
-	description = "辅助任意击中敌人的技能",
+name = "毒化(辅)",
+description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -2795,9 +2784,70 @@ skills["SupportPoison"] = {
 		[40] = { 60, 59, manaMultiplier = 35, levelRequirement = 100, statInterpolation = { 1, 1, }, },
 	},
 }
+skills["SupportAdditionalCooldown"] = {
+name = "助力之风（辅）",
+description = "辅助有冷却时间的技能。 不能辅助触发技能。",
+	color = 2,
+	support = true,
+	requireSkillTypes = { SkillType.Type90, },
+	addSkillTypes = { },
+	excludeSkillTypes = { SkillType.Triggered, },
+	statDescriptionScope = "gem_stat_descriptions",
+	baseMods = {
+	},
+	qualityStats = {
+		{ "base_cooldown_speed_+%", 0.25 },
+	},
+	stats = {
+		"support_added_cooldown_count_if_not_instant",
+		"base_cooldown_speed_+%",
+	},
+	levels = {
+		[1] = { 1, 5, manaMultiplier = 25, levelRequirement = 31, statInterpolation = { 1, 1, }, },
+		[2] = { 1, 6, manaMultiplier = 25, levelRequirement = 34, statInterpolation = { 1, 1, }, },
+		[3] = { 1, 7, manaMultiplier = 25, levelRequirement = 36, statInterpolation = { 1, 1, }, },
+		[4] = { 1, 8, manaMultiplier = 25, levelRequirement = 38, statInterpolation = { 1, 1, }, },
+		[5] = { 1, 9, manaMultiplier = 25, levelRequirement = 40, statInterpolation = { 1, 1, }, },
+		[6] = { 1, 10, manaMultiplier = 25, levelRequirement = 42, statInterpolation = { 1, 1, }, },
+		[7] = { 1, 11, manaMultiplier = 25, levelRequirement = 44, statInterpolation = { 1, 1, }, },
+		[8] = { 1, 12, manaMultiplier = 25, levelRequirement = 46, statInterpolation = { 1, 1, }, },
+		[9] = { 1, 13, manaMultiplier = 25, levelRequirement = 48, statInterpolation = { 1, 1, }, },
+		[10] = { 1, 14, manaMultiplier = 25, levelRequirement = 50, statInterpolation = { 1, 1, }, },
+		[11] = { 1, 15, manaMultiplier = 25, levelRequirement = 52, statInterpolation = { 1, 1, }, },
+		[12] = { 1, 16, manaMultiplier = 25, levelRequirement = 54, statInterpolation = { 1, 1, }, },
+		[13] = { 1, 17, manaMultiplier = 25, levelRequirement = 56, statInterpolation = { 1, 1, }, },
+		[14] = { 1, 18, manaMultiplier = 25, levelRequirement = 58, statInterpolation = { 1, 1, }, },
+		[15] = { 1, 19, manaMultiplier = 25, levelRequirement = 60, statInterpolation = { 1, 1, }, },
+		[16] = { 1, 20, manaMultiplier = 25, levelRequirement = 62, statInterpolation = { 1, 1, }, },
+		[17] = { 1, 21, manaMultiplier = 25, levelRequirement = 64, statInterpolation = { 1, 1, }, },
+		[18] = { 1, 22, manaMultiplier = 25, levelRequirement = 66, statInterpolation = { 1, 1, }, },
+		[19] = { 1, 23, manaMultiplier = 25, levelRequirement = 68, statInterpolation = { 1, 1, }, },
+		[20] = { 1, 24, manaMultiplier = 25, levelRequirement = 70, statInterpolation = { 1, 1, }, },
+		[21] = { 1, 25, manaMultiplier = 25, levelRequirement = 72, statInterpolation = { 1, 1, }, },
+		[22] = { 1, 26, manaMultiplier = 25, levelRequirement = 74, statInterpolation = { 1, 1, }, },
+		[23] = { 1, 27, manaMultiplier = 25, levelRequirement = 76, statInterpolation = { 1, 1, }, },
+		[24] = { 1, 28, manaMultiplier = 25, levelRequirement = 78, statInterpolation = { 1, 1, }, },
+		[25] = { 1, 29, manaMultiplier = 25, levelRequirement = 80, statInterpolation = { 1, 1, }, },
+		[26] = { 1, 30, manaMultiplier = 25, levelRequirement = 82, statInterpolation = { 1, 1, }, },
+		[27] = { 1, 31, manaMultiplier = 25, levelRequirement = 84, statInterpolation = { 1, 1, }, },
+		[28] = { 1, 32, manaMultiplier = 25, levelRequirement = 86, statInterpolation = { 1, 1, }, },
+		[29] = { 1, 33, manaMultiplier = 25, levelRequirement = 88, statInterpolation = { 1, 1, }, },
+		[30] = { 1, 34, manaMultiplier = 25, levelRequirement = 90, statInterpolation = { 1, 1, }, },
+		[31] = { 1, 35, manaMultiplier = 25, levelRequirement = 91, statInterpolation = { 1, 1, }, },
+		[32] = { 1, 36, manaMultiplier = 25, levelRequirement = 92, statInterpolation = { 1, 1, }, },
+		[33] = { 1, 37, manaMultiplier = 25, levelRequirement = 93, statInterpolation = { 1, 1, }, },
+		[34] = { 1, 38, manaMultiplier = 25, levelRequirement = 94, statInterpolation = { 1, 1, }, },
+		[35] = { 1, 39, manaMultiplier = 25, levelRequirement = 95, statInterpolation = { 1, 1, }, },
+		[36] = { 1, 40, manaMultiplier = 25, levelRequirement = 96, statInterpolation = { 1, 1, }, },
+		[37] = { 1, 41, manaMultiplier = 25, levelRequirement = 97, statInterpolation = { 1, 1, }, },
+		[38] = { 1, 42, manaMultiplier = 25, levelRequirement = 98, statInterpolation = { 1, 1, }, },
+		[39] = { 1, 43, manaMultiplier = 25, levelRequirement = 99, statInterpolation = { 1, 1, }, },
+		[40] = { 1, 44, manaMultiplier = 25, levelRequirement = 100, statInterpolation = { 1, 1, }, },
+	},
+}
 skills["SupportSlowerProjectiles"] = {
-	name = "投射物减速(辅)",
-	description = "辅助投射物技能",
+name = "投射物减速(辅)",
+description = "辅助投射物技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Projectile, SkillType.ProjectileDamage, SkillType.Type54, SkillType.Type56, },
@@ -2865,8 +2915,8 @@ skills["SupportSlowerProjectiles"] = {
 	},
 }
 skills["SupportRapidDecay"] = {
-	name = "极速腐化(辅)",
-	description = "辅助任意有持续时间或能通过击中造成异常状态的技能",
+name = "极速腐化(辅)",
+description = "辅助任意有持续时间或能通过击中造成异常状态的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Duration, SkillType.Type55, SkillType.Hit, SkillType.Attack, },
@@ -2931,8 +2981,8 @@ skills["SupportRapidDecay"] = {
 	},
 }
 skills["SupportSwiftAfflictionPlus"] = {
-	name = "极速腐化（强辅）",
-	description = "辅助任意有持续时间或能通过击中造成异常状态的技能。",
+name = "极速腐化（强辅）",
+description = "辅助任意有持续时间或能通过击中造成异常状态的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Duration, SkillType.Type55, SkillType.Hit, SkillType.Attack, },
@@ -2979,8 +3029,8 @@ skills["SupportSwiftAfflictionPlus"] = {
 	},
 }
 skills["SupportAdditionalTrapMine"] = {
-	name = "迅整（辅）",
-	description = "辅助陷阱或地雷技能。",
+name = "迅整（辅）",
+description = "辅助投掷陷阱或地雷技能.",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Trap, SkillType.Mine, },
@@ -3044,8 +3094,8 @@ skills["SupportAdditionalTrapMine"] = {
 	},
 }
 skills["SupportTrap"] = {
-	name = "陷阱(辅)",
-	description = "辅助法术技能, 或使用弓箭和法杖的攻击技能. 你将不再直接施放被辅助的技能, 技能会以陷阱的形式被投出，在敌人靠近时触发。陷阱不能触发持续吟唱类技能。",
+name = "陷阱(辅)",
+description = "辅助法术技能, 或使用弓箭和法杖的攻击技能. 你将不再直接施放被辅助的技能, 技能会以陷阱的形式被投出，在敌人靠近时触发。陷阱不能触发持续吟唱类技能。",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.SkillCanTrap, },
@@ -3118,8 +3168,8 @@ skills["SupportTrap"] = {
 	},
 }
 skills["SupportTrapCooldown"] = {
-	name = "陷阱冷却(辅)",
-	description = "辅助陷阱技能",
+name = "陷阱冷却(辅)",
+description = "辅助陷阱技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Trap, },
@@ -3181,8 +3231,8 @@ skills["SupportTrapCooldown"] = {
 	},
 }
 skills["SupportTrapAndMineDamage"] = {
-	name = "陷阱及地雷伤害(辅)",
-	description = "辅助陷阱或地雷技能。",
+name = "陷阱及地雷伤害(辅)",
+description = "辅助投掷陷阱或地雷技能.",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Trap, SkillType.Mine, },
@@ -3248,8 +3298,8 @@ skills["SupportTrapAndMineDamage"] = {
 	},
 }
 skills["SupportPhysicalProjectileAttackDamage"] = {
-	name = "邪恶投掷(辅)",
-	description = "辅助发射投射物的攻击技能",
+name = "邪恶投掷(辅)",
+description = "辅助发射投射物的攻击技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.ProjectileAttack, SkillType.Type56, },
@@ -3325,8 +3375,8 @@ skills["SupportPhysicalProjectileAttackDamage"] = {
 	},
 }
 skills["SupportViciousProjectilesPlus"] = {
-	name = "腐蚀箭矢（强辅）",
-	description = "辅助发射投射物的攻击技能。",
+name = "腐蚀箭矢（强辅）",
+description = "辅助发射投射物的攻击技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.ProjectileAttack, SkillType.Type56, },
@@ -3383,8 +3433,8 @@ skills["SupportViciousProjectilesPlus"] = {
 	},
 }
 skills["SupportDebilitate"] = {
-	name = "猛毒(辅)",
-	description = "辅助任意击中敌人的技能",
+name = "猛毒(辅)",
+description = "辅助任意击中敌人的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -3456,8 +3506,8 @@ skills["SupportDebilitate"] = {
 	},
 }
 skills["SupportVoidManipulation"] = {
-	name = "虚空操纵(辅)",
-	description = "辅助任意造成伤害的技能",
+name = "虚空操纵(辅)",
+description = "辅助任意造成伤害的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.DamageOverTime, },
@@ -3522,8 +3572,8 @@ skills["SupportVoidManipulation"] = {
 	},
 }
 skills["SupportVoidManipulationPlus"] = {
-	name = "虚空操纵（强辅）",
-	description = "辅助任意造成伤害的技能。",
+name = "虚空操纵（强辅）",
+description = "辅助任意造成伤害的技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.DamageOverTime, },
@@ -3569,8 +3619,8 @@ skills["SupportVoidManipulationPlus"] = {
 	},
 }
 skills["SupportParallelProjectiles"] = {
-	name = "齐射(辅)",
-	description = "只能辅助玩家自生产生的投射物。不会影响其他来源或二次产生的投射物。",
+name = "齐射(辅)",
+description = "只能辅助玩家自生产生的投射物。不会影响其他来源或二次产生的投射物。",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.SkillCanVolley, },
@@ -3637,8 +3687,8 @@ skills["SupportParallelProjectiles"] = {
 	},
 }
 skills["SupportChaosAttacks"] = {
-	name = "凋零之触（辅）",
-	description = "辅助攻击技能。",
+name = "凋零之触（辅）",
+description = "辅助攻击技能",
 	color = 2,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, },
@@ -3703,66 +3753,5 @@ skills["SupportChaosAttacks"] = {
 		[38] = { 2000, 25, 43, manaMultiplier = 40, levelRequirement = 98, statInterpolation = { 1, 1, 1, }, },
 		[39] = { 2000, 25, 44, manaMultiplier = 40, levelRequirement = 99, statInterpolation = { 1, 1, 1, }, },
 		[40] = { 2000, 25, 44, manaMultiplier = 40, levelRequirement = 100, statInterpolation = { 1, 1, 1, }, },
-	},
-}
-skills["SupportAdditionalCooldown"] = {
-	name = "助力之风（辅）",
-	description = "辅助有冷却时间的技能。不能辅助触发型技能。",
-	color = 2,
-	support = true,
-	requireSkillTypes = { SkillType.Type90, },
-	addSkillTypes = { },
-	excludeSkillTypes = { SkillType.Triggered, },
-	statDescriptionScope = "gem_stat_descriptions",
-	baseMods = {
-	},
-	qualityStats = {
-		{ "base_cooldown_speed_+%", 0.25 },
-	},
-	stats = {
-		"support_added_cooldown_count_if_not_instant",
-		"base_cooldown_speed_+%",
-	},
-	levels = {
-		[1] = { 1, 5, manaMultiplier = 25, levelRequirement = 31, statInterpolation = { 1, 1, }, },
-		[2] = { 1, 6, manaMultiplier = 25, levelRequirement = 34, statInterpolation = { 1, 1, }, },
-		[3] = { 1, 7, manaMultiplier = 25, levelRequirement = 36, statInterpolation = { 1, 1, }, },
-		[4] = { 1, 8, manaMultiplier = 25, levelRequirement = 38, statInterpolation = { 1, 1, }, },
-		[5] = { 1, 9, manaMultiplier = 25, levelRequirement = 40, statInterpolation = { 1, 1, }, },
-		[6] = { 1, 10, manaMultiplier = 25, levelRequirement = 42, statInterpolation = { 1, 1, }, },
-		[7] = { 1, 11, manaMultiplier = 25, levelRequirement = 44, statInterpolation = { 1, 1, }, },
-		[8] = { 1, 12, manaMultiplier = 25, levelRequirement = 46, statInterpolation = { 1, 1, }, },
-		[9] = { 1, 13, manaMultiplier = 25, levelRequirement = 48, statInterpolation = { 1, 1, }, },
-		[10] = { 1, 14, manaMultiplier = 25, levelRequirement = 50, statInterpolation = { 1, 1, }, },
-		[11] = { 1, 15, manaMultiplier = 25, levelRequirement = 52, statInterpolation = { 1, 1, }, },
-		[12] = { 1, 16, manaMultiplier = 25, levelRequirement = 54, statInterpolation = { 1, 1, }, },
-		[13] = { 1, 17, manaMultiplier = 25, levelRequirement = 56, statInterpolation = { 1, 1, }, },
-		[14] = { 1, 18, manaMultiplier = 25, levelRequirement = 58, statInterpolation = { 1, 1, }, },
-		[15] = { 1, 19, manaMultiplier = 25, levelRequirement = 60, statInterpolation = { 1, 1, }, },
-		[16] = { 1, 20, manaMultiplier = 25, levelRequirement = 62, statInterpolation = { 1, 1, }, },
-		[17] = { 1, 21, manaMultiplier = 25, levelRequirement = 64, statInterpolation = { 1, 1, }, },
-		[18] = { 1, 22, manaMultiplier = 25, levelRequirement = 66, statInterpolation = { 1, 1, }, },
-		[19] = { 1, 23, manaMultiplier = 25, levelRequirement = 68, statInterpolation = { 1, 1, }, },
-		[20] = { 1, 24, manaMultiplier = 25, levelRequirement = 70, statInterpolation = { 1, 1, }, },
-		[21] = { 1, 25, manaMultiplier = 25, levelRequirement = 72, statInterpolation = { 1, 1, }, },
-		[22] = { 1, 26, manaMultiplier = 25, levelRequirement = 74, statInterpolation = { 1, 1, }, },
-		[23] = { 1, 27, manaMultiplier = 25, levelRequirement = 76, statInterpolation = { 1, 1, }, },
-		[24] = { 1, 28, manaMultiplier = 25, levelRequirement = 78, statInterpolation = { 1, 1, }, },
-		[25] = { 1, 29, manaMultiplier = 25, levelRequirement = 80, statInterpolation = { 1, 1, }, },
-		[26] = { 1, 30, manaMultiplier = 25, levelRequirement = 82, statInterpolation = { 1, 1, }, },
-		[27] = { 1, 31, manaMultiplier = 25, levelRequirement = 84, statInterpolation = { 1, 1, }, },
-		[28] = { 1, 32, manaMultiplier = 25, levelRequirement = 86, statInterpolation = { 1, 1, }, },
-		[29] = { 1, 33, manaMultiplier = 25, levelRequirement = 88, statInterpolation = { 1, 1, }, },
-		[30] = { 1, 34, manaMultiplier = 25, levelRequirement = 90, statInterpolation = { 1, 1, }, },
-		[31] = { 1, 35, manaMultiplier = 25, levelRequirement = 91, statInterpolation = { 1, 1, }, },
-		[32] = { 1, 36, manaMultiplier = 25, levelRequirement = 92, statInterpolation = { 1, 1, }, },
-		[33] = { 1, 37, manaMultiplier = 25, levelRequirement = 93, statInterpolation = { 1, 1, }, },
-		[34] = { 1, 38, manaMultiplier = 25, levelRequirement = 94, statInterpolation = { 1, 1, }, },
-		[35] = { 1, 39, manaMultiplier = 25, levelRequirement = 95, statInterpolation = { 1, 1, }, },
-		[36] = { 1, 40, manaMultiplier = 25, levelRequirement = 96, statInterpolation = { 1, 1, }, },
-		[37] = { 1, 41, manaMultiplier = 25, levelRequirement = 97, statInterpolation = { 1, 1, }, },
-		[38] = { 1, 42, manaMultiplier = 25, levelRequirement = 98, statInterpolation = { 1, 1, }, },
-		[39] = { 1, 43, manaMultiplier = 25, levelRequirement = 99, statInterpolation = { 1, 1, }, },
-		[40] = { 1, 44, manaMultiplier = 25, levelRequirement = 100, statInterpolation = { 1, 1, }, },
 	},
 }

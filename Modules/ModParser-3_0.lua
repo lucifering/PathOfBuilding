@@ -41,6 +41,7 @@ local formList = {
 	["比平常慢 (%d+)%%"] = "RED",
 	["(%d+) 次击中"] = "BASE",
 	["加快 (%d+)%%"] = "INC",
+	["减慢 (%d+)%%"] = "RED",
 	--【中文化程序额外添加结束】
 	["提高 (%d+)%%"] = "INC", --备注：^(%d+)%% increased
 	["比平常快 (%d+)%%"] = "INC", --备注：^(%d+)%% faster
@@ -286,6 +287,7 @@ local modNameList = {
 	["法杖攻击物理伤害"] = { "PhysicalDamage", flags = bor(ModFlag.Wand, ModFlag.Hit) },
 	["爪攻击物理伤害"] = { "PhysicalDamage", flags = bor(ModFlag.Claw, ModFlag.Hit) },
 	["剑攻击物理伤害"] = { "PhysicalDamage", flags = bor(ModFlag.Sword, ModFlag.Hit) },
+	["暴击几率"] = { "CritChance", tag = { type = "Global" } },
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -740,6 +742,7 @@ local modFlagList = {
 	["爪的"] ={ flags = bor(ModFlag.Claw, ModFlag.Hit) },
 	["锤, 短杖或长杖攻击时，"] = { flags = ModFlag.Hit, tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Mace, ModFlag.Staff) } },
 	["爪或匕首攻击时，"] = { flags = ModFlag.Hit, tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Claw, ModFlag.Dagger) } },
+	["吟唱技能的"] = { tag = { type = "SkillType", skillType = SkillType.Channelled } },
 	--【中文化程序额外添加结束】
 	["斧类攻击的"] = { flags = bor(ModFlag.Axe, ModFlag.Hit) }, --备注：with axes
 	["to axe attacks"] = { flags = bor(ModFlag.Axe, ModFlag.Hit) },
@@ -996,6 +999,7 @@ local modTagList = {
 	["持盾牌时，"] = { tag = { type = "Condition", var = "UsingShield" } }, --备注：while holding a shield
 	["持盾时，"] = { tag = { type = "Condition", var = "UsingShield" } },
 		["你的副手未装备武器时，"] = { tag = { type = "Condition", var = "OffHandIsEmpty" } }, --备注：while your off hand is empty
+		["双持武器时，"] = { tag = { type = "Condition", var = "DualWielding" } },
 		["双持时，"] = { tag = { type = "Condition", var = "DualWielding" } }, --备注：while dual wielding
 		["双持攻击时"] = { tag = { type = "Condition", var = "DualWielding" } }, --备注：while dual wielding
 		["双持攻击的"] = { tag = { type = "Condition", var = "DualWielding" } }, --备注：while dual wielding
@@ -3061,6 +3065,10 @@ local specialModList = {
 	["影响中环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 5 }) },
 	["影响大环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 6 }) },
 	["影响超大环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 7 }) }, 
+	["只影响小环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 4 }) },
+	["只影响中环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 5 }) },
+	["只影响大环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 6 }) },
+	["只影响超大环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 7 }) }, 
 	["获得(.+)麾下 (%d+) 名武士的领导权"]= function(_, npcName, num) return {  flag("TimelessJewelNPC"..npcName)} end, 
 	["获得(.+)麾下 (%d+) 名武士的领导权  范围内的天赋被卡鲁抑制"]= function(_, npcName, num) return {  
 	flag("致命的骄傲"),
@@ -3311,6 +3319,7 @@ local specialModList = {
 			mod("ElementalResist", "BASE", num, { type = "Multiplier", var = "GrandSpectrum" }), 
 			mod("Multiplier:GrandSpectrum", "BASE", 1) 
 	} end,
+	["对法术伤害的增幅与减益也套用于攻击，等于其数值的 150%%"]= function() return { mod("SpellDamageAppliesToAttacks", "BASE",150 ) } end,
 	["对法术伤害的增幅与减益也会套用于攻击上，相当于其效果的 150%%"]= function() return { mod("SpellDamageAppliesToAttacks", "BASE",150 ) } end,
 	["你的光环技能被禁用"] = { flag("DisableSkill", { type = "SkillType", skillType = SkillType.Aura}) }, 
 	["你身上的捷技能增益的总效果额外提高 (%d+)%%"] = function(num) return {  
@@ -3328,6 +3337,10 @@ local specialModList = {
 	["每 (%d+) 敏捷使冰霜伤害提高 (%d+)%%"] =function(_,num1,num2) return {  mod("ColdDamage", "INC", tonumber(num2),{ type = "PerStat", stat = "Dex", div = tonumber(num1) })  } end, 
 	["持爪或匕首时，攻击技能发射一个额外的投射物"]=  function() return { mod("ExtraSkillMod", "LIST", { mod = mod("ProjectileCount", "BASE", 1,{ type = "SkillType", skillType = SkillType.Attack }) },   { type = "Condition", varList ={ "UsingClaw", "UsingDagger" } } ) } end,
 	["爪或匕首攻击时，([%+%-]?%d+)%% 暴击伤害"] = function(num) return {  mod("CritMultiplier", "BASE", num,nil, ModFlag.Hit,{ type = "ModFlagOr", modFlags = bor(ModFlag.Claw, ModFlag.Dagger) } )  } end,
+	["【两手空空】状态下视为双持"] = function() return {  mod("WeaponData", "LIST", { key = "countsAsDualWielding", value = true},{ type = "Condition", var = "Unencumbered" })  } end,
+	["【两手空空】状态下总攻击速度额外提高 (%d+)%%"] =function(num) return {  mod("Speed", "MORE", tonumber(num),nil,ModFlag.Attack,{ type = "Condition", var = "Unencumbered" })  } end, 
+	["【两手空空】状态下每 (%d+) 点敏捷附加 (%d+) %- (%d+) 攻击物理伤害"] =function(_,num1,num2,num3) return {  mod("PhysicalMax", "BASE", tonumber(num3),{ type = "PerStat", stat = "Dex", div = tonumber(num1) },{ type = "Condition", var = "Unencumbered" }),
+		mod("PhysicalMin", "BASE", tonumber(num2),{ type = "PerStat", stat = "Dex", div = tonumber(num1) },{ type = "Condition", var = "Unencumbered" }),  } end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded
@@ -4299,6 +4312,19 @@ local function getPerStat(dst, modType, flags, stat, factor)
 	end
 end
 local jewelSelfFuncs = {
+
+
+
+
+	["范围内每配置 10 点智慧，则魔力回复速度加快 3%"] = getPerStat("ManaRecoveryRate", "INC", 0, "Int", 3 / 10),
+	["范围内每配置 10 点智慧，则魔力回复速度加快 2%"] = getPerStat("ManaRecoveryRate", "INC", 0, "Int", 2 / 10),
+	
+
+	["范围内每配置 10 点敏捷，移动速度提高 3%"] = getPerStat("MovementSpeed", "INC", 0, "Dex", 3 / 10),
+	["范围内每配置 10 点敏捷，移动速度提高 2%"] = getPerStat("MovementSpeed", "INC", 0, "Dex", 2 / 10),
+	
+	["范围内每配置 10 点力量，则生命回复速度加快 3%"] = getPerStat("LifeRecoveryRate", "INC", 0, "Str", 3 / 10),
+	["范围内每配置 10 点力量，则生命回复速度加快 2%"] = getPerStat("LifeRecoveryRate", "INC", 0, "Str", 2 / 10),
 	["范围内每配置 10 点智慧，混沌伤害提高 5%"] = getPerStat("ChaosDamage", "INC", 0, "Int", 5 / 10),
 	["Adds 1 to maximum Life per 3 Intelligence in Radius"] = getPerStat("Life", "BASE", 0, "Int", 1 / 3),
 	["范围内每配置 3 点智慧，最大生命提高 1 点"] = getPerStat("Life", "BASE", 0, "Int", 1 / 3), --备注：Adds 1 to Maximum Life per 3 Intelligence Allocated in Radius
@@ -4325,6 +4351,15 @@ local jewelSelfFuncs = {
 	["范围内每配置 10 点敏捷，移动速度提高 2%"] = getPerStat("MovementSpeed", "INC", 0, "Dex", 2 / 10), --备注：2% increased Movement Speed per 10 Dexterity on Allocated Passives in Radius
 }
 local jewelSelfUnallocFuncs = {
+
+
+["范围内若未配置力量，则每 10 点 +7% 攻击和法术暴击伤害加成"] = getPerStat("CritMultiplier", "BASE", 0, "Str", 7 / 10), 
+["范围内每有 10 点未配置的力量，则生命回复速度减慢 2%"] = getPerStat("LifeRecoveryRate", "RED", 0, "Str", 2 / 10), 
+["范围内每有 10 点未配置的敏捷，便 +125 命中值"] = getPerStat("Accuracy", "BASE", 0, "Dex", 125 / 10), 
+["范围内每有 10 点未配置的敏捷，则移动速度减慢 2%"] = getPerStat("MovementSpeed", "RED", 0, "Dex", 2 / 10), 
+
+["范围内每有 10 点未配置的智慧，则魔力回复速度减慢 2%"] = getPerStat("ManaRecoveryRate", "RED", 0, "Int", 2 / 10), 
+["范围内每有 10 点未配置的智慧，便 +3% 持续伤害加成"] = getPerStat("DotMultiplier", "BASE", 0, "Int", 3 / 10), 
 	["范围内若未配置力量，则每 10 点 +7% 攻击和法术暴击伤害加成"] = getPerStat("CritMultiplier", "BASE", 0, "Str", 7 / 10), 
 	["范围内若未配置智慧，则每 10 点 +125 最大命中值"] = getPerStat("Accuracy", "BASE", 0, "Int", 125 / 10), 
 	["范围内若未配置力量，则每 10 点 +5% 攻击和法术暴击伤害加成"] = getPerStat("CritMultiplier", "BASE", 0, "Str", 5 / 10), --备注：+5% to Critical Strike Multiplier per 10 Strength on Unallocated Passives in Radius

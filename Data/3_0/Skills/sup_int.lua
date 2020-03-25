@@ -7,8 +7,8 @@
 local skills, mod, flag, skill = ...
 
 skills["SupportAddedChaosDamage"] = {
-	name = "附加混沌伤害(辅)",
-	description = "辅助任意击中敌人的技能",
+name = "附加混沌伤害(辅)",
+description = "辅助任意击中敌人的技能",
 	color = 3,
 	baseEffectiveness = 0.43329998850822,
 	incrementalEffectiveness = 0.041999999433756,
@@ -70,8 +70,8 @@ skills["SupportAddedChaosDamage"] = {
 	},
 }
 skills["SupportAddedChaosDamagePlus"] = {
-	name = "附加混沌伤害（强辅）",
-	description = "辅助任何会击中敌人的技能。",
+name = "附加混沌伤害（强辅）",
+description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -118,8 +118,8 @@ skills["SupportAddedChaosDamagePlus"] = {
 	},
 }
 skills["SupportAddedLightningDamage"] = {
-	name = "附加闪电伤害(辅)",
-	description = "辅助任意击中敌人的技能",
+name = "附加闪电伤害(辅)",
+description = "辅助任意击中敌人的技能",
 	color = 3,
 	baseEffectiveness = 0.52499997615814,
 	incrementalEffectiveness = 0.039000000804663,
@@ -181,8 +181,8 @@ skills["SupportAddedLightningDamage"] = {
 	},
 }
 skills["SupportAddedLightningDamagePlus"] = {
-	name = "附加闪电伤害（强辅）",
-	description = "辅助任何会击中敌人的技能。",
+name = "附加闪电伤害（强辅）",
+description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, SkillType.Hit, },
@@ -229,8 +229,8 @@ skills["SupportAddedLightningDamagePlus"] = {
 	},
 }
 skills["SupportArcaneSurge"] = {
-	name = "秘术增强(辅)",
-	description = "所有被辅助的法术技能会记录你消耗的魔力, 当消耗的总魔力达到指定值时获得一个增益. 无法辅助图腾, 陷阱或地雷所施放的技能。",
+name = "秘术增强(辅)",
+description = "所有被辅助的法术技能会记录你消耗的魔力, 当消耗的总魔力达到指定值时获得一个增益. 无法辅助图腾, 陷阱或地雷所施放的技能。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Spell, },
@@ -308,9 +308,85 @@ mod("Damage", "MORE", nil, ModFlag.Spell, 0, { type = "Condition", var = "Affect
 		[40] = { 27, 4000, 27, 90, 2078, 29, manaMultiplier = 30, levelRequirement = 100, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
 	},
 }
+skills["SupportArchmage"] = {
+name = "大法师（辅）",
+description = "辅助击中造成伤害并消耗魔力的技能。不能辅助触发技能，或使用图腾、陷阱、地雷的技能。不能调整召唤生物技能。",
+	color = 3,
+	baseEffectiveness = 0.17499999701977,
+	incrementalEffectiveness = 0.039000000804663,
+	support = true,
+	requireSkillTypes = { SkillType.Hit, SkillType.Spell, SkillType.AND, },
+	addSkillTypes = { },
+	excludeSkillTypes = { SkillType.Totem, SkillType.Trap, SkillType.Mine, SkillType.Triggered, SkillType.ManaCostReserved, },
+	ignoreMinionTypes = true,
+	statDescriptionScope = "gem_stat_descriptions",
+	statMap = {
+		["manaweave_cost_equals_%_unreserved_mana"] = {
+			skill("baseManaCostIsAtLeastPercentUnreservedMana", nil),
+		},
+		["manaweave_added_lightning_damage_%_cost_if_payable"] = {
+			mod("LightningMin", "BASE", nil, 0, 0, { type = "PerStat", stat = "ManaCost" }),
+			mod("LightningMax", "BASE", nil, 0, 0, { type = "PerStat", stat = "ManaCost" }),
+			div = 100,
+		},
+	},
+	baseMods = {
+	},
+	qualityStats = {
+		{ "base_mana_cost_-%", -0.5 },
+	},
+	stats = {
+		"global_minimum_added_lightning_damage",
+		"global_maximum_added_lightning_damage",
+		"manaweave_cost_equals_%_unreserved_mana",
+		"manaweave_added_lightning_damage_%_cost_if_payable",
+	},
+	levels = {
+		[1] = { 0.10000000149012, 1.8999999761581, 6, 70, levelRequirement = 31, statInterpolation = { 3, 3, 1, 1, }, },
+		[2] = { 0.10000000149012, 1.8999999761581, 6, 73, levelRequirement = 34, statInterpolation = { 3, 3, 1, 1, }, },
+		[3] = { 0.10000000149012, 1.8999999761581, 6, 76, levelRequirement = 36, statInterpolation = { 3, 3, 1, 1, }, },
+		[4] = { 0.10000000149012, 1.8999999761581, 6, 79, levelRequirement = 38, statInterpolation = { 3, 3, 1, 1, }, },
+		[5] = { 0.10000000149012, 1.8999999761581, 6, 82, levelRequirement = 40, statInterpolation = { 3, 3, 1, 1, }, },
+		[6] = { 0.10000000149012, 1.8999999761581, 6, 85, levelRequirement = 42, statInterpolation = { 3, 3, 1, 1, }, },
+		[7] = { 0.10000000149012, 1.8999999761581, 6, 88, levelRequirement = 44, statInterpolation = { 3, 3, 1, 1, }, },
+		[8] = { 0.10000000149012, 1.8999999761581, 6, 91, levelRequirement = 46, statInterpolation = { 3, 3, 1, 1, }, },
+		[9] = { 0.10000000149012, 1.8999999761581, 6, 94, levelRequirement = 48, statInterpolation = { 3, 3, 1, 1, }, },
+		[10] = { 0.10000000149012, 1.8999999761581, 6, 97, levelRequirement = 50, statInterpolation = { 3, 3, 1, 1, }, },
+		[11] = { 0.10000000149012, 1.8999999761581, 6, 100, levelRequirement = 52, statInterpolation = { 3, 3, 1, 1, }, },
+		[12] = { 0.10000000149012, 1.8999999761581, 6, 103, levelRequirement = 54, statInterpolation = { 3, 3, 1, 1, }, },
+		[13] = { 0.10000000149012, 1.8999999761581, 6, 106, levelRequirement = 56, statInterpolation = { 3, 3, 1, 1, }, },
+		[14] = { 0.10000000149012, 1.8999999761581, 6, 109, levelRequirement = 58, statInterpolation = { 3, 3, 1, 1, }, },
+		[15] = { 0.10000000149012, 1.8999999761581, 6, 112, levelRequirement = 60, statInterpolation = { 3, 3, 1, 1, }, },
+		[16] = { 0.10000000149012, 1.8999999761581, 6, 115, levelRequirement = 62, statInterpolation = { 3, 3, 1, 1, }, },
+		[17] = { 0.10000000149012, 1.8999999761581, 6, 118, levelRequirement = 64, statInterpolation = { 3, 3, 1, 1, }, },
+		[18] = { 0.10000000149012, 1.8999999761581, 6, 121, levelRequirement = 66, statInterpolation = { 3, 3, 1, 1, }, },
+		[19] = { 0.10000000149012, 1.8999999761581, 6, 124, levelRequirement = 68, statInterpolation = { 3, 3, 1, 1, }, },
+		[20] = { 0.10000000149012, 1.8999999761581, 6, 127, levelRequirement = 70, statInterpolation = { 3, 3, 1, 1, }, },
+		[21] = { 0.10000000149012, 1.8999999761581, 6, 130, levelRequirement = 72, statInterpolation = { 3, 3, 1, 1, }, },
+		[22] = { 0.10000000149012, 1.8999999761581, 6, 132, levelRequirement = 74, statInterpolation = { 3, 3, 1, 1, }, },
+		[23] = { 0.10000000149012, 1.8999999761581, 6, 134, levelRequirement = 76, statInterpolation = { 3, 3, 1, 1, }, },
+		[24] = { 0.10000000149012, 1.8999999761581, 6, 136, levelRequirement = 78, statInterpolation = { 3, 3, 1, 1, }, },
+		[25] = { 0.10000000149012, 1.8999999761581, 6, 138, levelRequirement = 80, statInterpolation = { 3, 3, 1, 1, }, },
+		[26] = { 0.10000000149012, 1.8999999761581, 6, 140, levelRequirement = 82, statInterpolation = { 3, 3, 1, 1, }, },
+		[27] = { 0.10000000149012, 1.8999999761581, 6, 142, levelRequirement = 84, statInterpolation = { 3, 3, 1, 1, }, },
+		[28] = { 0.10000000149012, 1.8999999761581, 6, 144, levelRequirement = 86, statInterpolation = { 3, 3, 1, 1, }, },
+		[29] = { 0.10000000149012, 1.8999999761581, 6, 146, levelRequirement = 88, statInterpolation = { 3, 3, 1, 1, }, },
+		[30] = { 0.10000000149012, 1.8999999761581, 6, 148, levelRequirement = 90, statInterpolation = { 3, 3, 1, 1, }, },
+		[31] = { 0.10000000149012, 1.8999999761581, 6, 149, levelRequirement = 91, statInterpolation = { 3, 3, 1, 1, }, },
+		[32] = { 0.10000000149012, 1.8999999761581, 6, 150, levelRequirement = 92, statInterpolation = { 3, 3, 1, 1, }, },
+		[33] = { 0.10000000149012, 1.8999999761581, 6, 151, levelRequirement = 93, statInterpolation = { 3, 3, 1, 1, }, },
+		[34] = { 0.10000000149012, 1.8999999761581, 6, 152, levelRequirement = 94, statInterpolation = { 3, 3, 1, 1, }, },
+		[35] = { 0.10000000149012, 1.8999999761581, 6, 153, levelRequirement = 95, statInterpolation = { 3, 3, 1, 1, }, },
+		[36] = { 0.10000000149012, 1.8999999761581, 6, 154, levelRequirement = 96, statInterpolation = { 3, 3, 1, 1, }, },
+		[37] = { 0.10000000149012, 1.8999999761581, 6, 155, levelRequirement = 97, statInterpolation = { 3, 3, 1, 1, }, },
+		[38] = { 0.10000000149012, 1.8999999761581, 6, 156, levelRequirement = 98, statInterpolation = { 3, 3, 1, 1, }, },
+		[39] = { 0.10000000149012, 1.8999999761581, 6, 157, levelRequirement = 99, statInterpolation = { 3, 3, 1, 1, }, },
+		[40] = { 0.10000000149012, 1.8999999761581, 6, 158, levelRequirement = 100, statInterpolation = { 3, 3, 1, 1, }, },
+	},
+}
 skills["SupportBlasphemy"] = {
-	name = "诅咒光环(辅)",
-	description = "辅助诅咒技能, 使诅咒以光环形式施放并影响周围的敌人",
+name = "诅咒光环(辅)",
+description = "辅助诅咒技能, 使诅咒以光环形式施放并影响周围的敌人",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.AppliesCurse, },
@@ -372,8 +448,8 @@ skills["SupportBlasphemy"] = {
 	},
 }
 skills["SupportBlasphemyPlus"] = {
-	name = "渎神（强辅）",
-	description = "辅助诅咒技能，使诅咒以光环形式施放并影响周围的敌人。",
+name = "渎神（强辅）",
+description = "辅助诅咒技能, 使诅咒以光环形式施放并影响周围的敌人",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.AppliesCurse, },
@@ -417,8 +493,8 @@ skills["SupportBlasphemyPlus"] = {
 	},
 }
 skills["SupportBonechill"] = {
-	name = "彻骨（辅）",
-	description = "可使敌人冰缓或造成冰缓区域",
+name = "彻骨（辅）",
+description = "可使敌人冰缓或造成冰缓区域",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, SkillType.Hit, SkillType.NonHitChill, SkillType.ChillingArea, },
@@ -486,8 +562,8 @@ mod("ColdDamageTakenOverTime", "INC", nil, 0, 0, { type = "GlobalEffect", effect
 	},
 }
 skills["SupportCastOnStunned"] = {
-	name = "晕眩时施放(辅)",
-	description = "所有被辅助的法术技能有几率在你被晕眩时施放. 无法辅助图腾, 陷阱或地雷所施放的技能. 瓦尔技能、持续吟唱类技能或魔力保留类技能无法被触发施放",
+name = "晕眩时施放(辅)",
+description = "所有被辅助的法术技能有几率在你被晕眩时施放. 无法辅助图腾, 陷阱或地雷所施放的技能. 瓦尔技能、持续吟唱类技能或魔力保留类技能无法被触发施放",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Spell, SkillType.Triggerable, SkillType.AND, },
@@ -548,8 +624,8 @@ skills["SupportCastOnStunned"] = {
 	},
 }
 skills["SupportCastWhileChannelling"] = {
-	name = "吟唱时施放(辅)",
-	description = "必须同时连接一个持续吟唱技能和一个非吟唱法术技能才能生效. 吟唱技能在吟唱过程中每隔一段时间会触发法术技能. 无法辅助图腾, 陷阱或地雷所施放的技能.瓦尔技能和魔力保留类技能无法被触发施放。",
+name = "吟唱时施放(辅)",
+description = "必须同时连接一个持续吟唱技能和一个非吟唱法术技能才能生效. 吟唱技能在吟唱过程中每隔一段时间会触发法术技能. 无法辅助图腾, 陷阱或地雷所施放的技能.瓦尔技能和魔力保留类技能无法被触发施放。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Channelled, SkillType.Spell, SkillType.Triggerable, SkillType.OR, },
@@ -614,8 +690,8 @@ skills["SupportCastWhileChannelling"] = {
 	},
 }
 skills["SupportCastWhileChannellingTriggered"] = {
-	name = "吟唱时施放(辅)(被触发的)",
-	description = "必须同时连接一个持续吟唱技能和一个非吟唱法术技能才能生效. 吟唱技能在吟唱过程中每隔一段时间会触发法术技能. 无法辅助图腾, 陷阱或地雷所施放的技能.瓦尔技能和魔力保留类技能无法被触发施放。",
+name = "吟唱时施放(辅)(被触发的)",
+description = "必须同时连接一个持续吟唱技能和一个非吟唱法术技能才能生效. 吟唱技能在吟唱过程中每隔一段时间会触发法术技能. 无法辅助图腾, 陷阱或地雷所施放的技能.瓦尔技能和魔力保留类技能无法被触发施放。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Spell, SkillType.Triggerable, SkillType.AND, },
@@ -681,8 +757,8 @@ skills["SupportCastWhileChannellingTriggered"] = {
 	},
 }
 skills["SupportCastWhileChannellingPlus"] = {
-	name = "吟唱时施放（强辅）",
-	description = "必须同时连接一个持续吟唱技能和一个非吟唱法术技能才能生效。吟唱技能在吟唱过程中每隔一段时间会触发法术技能。无法辅助图腾、陷阱或地雷所施放的技能。瓦尔技能和魔力保留类技能无法被触发施放。",
+name = "吟唱时施放（强辅）",
+description = "必须同时连接一个持续吟唱技能和一个非吟唱法术技能才能生效. 吟唱技能在吟唱过程中每隔一段时间会触发法术技能. 无法辅助图腾, 陷阱或地雷所施放的技能.瓦尔技能和魔力保留类技能无法被触发施放。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Channelled, },
@@ -728,8 +804,8 @@ skills["SupportCastWhileChannellingPlus"] = {
 	},
 }
 skills["SupportCastWhileChannellingTriggeredPlus"] = {
-	name = "吟唱时施放（强辅）",
-	description = "必须同时连接一个持续吟唱技能和一个非吟唱法术技能才能生效。吟唱技能在吟唱过程中每隔一段时间会触发法术技能。无法辅助图腾、陷阱或地雷所施放的技能。瓦尔技能和魔力保留类技能无法被触发施放。",
+name = "吟唱时施放（强辅）",
+description = "必须同时连接一个持续吟唱技能和一个非吟唱法术技能才能生效. 吟唱技能在吟唱过程中每隔一段时间会触发法术技能. 无法辅助图腾, 陷阱或地雷所施放的技能.瓦尔技能和魔力保留类技能无法被触发施放。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Spell, SkillType.Triggerable, SkillType.AND, },
@@ -776,8 +852,8 @@ skills["SupportCastWhileChannellingTriggeredPlus"] = {
 	},
 }
 skills["SupportChanceToIgnite"] = {
-	name = "几率点燃(辅)",
-	description = "辅助任意击中敌人的技能",
+name = "几率点燃(辅)",
+description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -846,8 +922,8 @@ mod("FireResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debu
 	},
 }
 skills["SupportChargedMines"] = {
-	name = "充能地雷（辅）",
-	description = "辅助地雷技能。",
+name = "充能地雷（辅）",
+description = "辅助投掷地雷技能.",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Mine, },
@@ -917,8 +993,8 @@ skills["SupportChargedMines"] = {
 	},
 }
 skills["SupportConcentratedEffect"] = {
-	name = "集中效应(辅)",
-	description = "辅助任意有范围效果的技能, 不论该技能是否造成伤害",
+name = "集中效应(辅)",
+description = "辅助任意有范围效果的技能, 不论该技能是否造成伤害",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Area, SkillType.CreateMinion, SkillType.Type53, },
@@ -986,8 +1062,8 @@ skills["SupportConcentratedEffect"] = {
 	},
 }
 skills["SupportControlledDestruction"] = {
-	name = "精准破坏(辅)",
-	description = "辅助能造成伤害的攻击或法术技能",
+name = "精准破坏(辅)",
+description = "辅助能造成伤害的攻击或法术技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.Type59, },
@@ -1052,8 +1128,8 @@ skills["SupportControlledDestruction"] = {
 	},
 }
 skills["SupportControlledDestructionPlus"] = {
-	name = "精准破坏（强辅）",
-	description = "辅助能造成伤害的攻击或法术技能。",
+name = "精准破坏（强辅）",
+description = "辅助能造成伤害的攻击或法术技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.Type59, },
@@ -1100,8 +1176,8 @@ skills["SupportControlledDestructionPlus"] = {
 	},
 }
 skills["SupportCurseOnHit"] = {
-	name = "击中附加诅咒(辅)",
-	description = "必须同时连接一个能击中敌人的技能和一个诅咒技能才能生效. 诅咒技能会在另一个技能击中敌人时施放. 无法辅助图腾, 陷阱或地雷. 召唤生物无法用该方式施放诅咒",
+name = "击中附加诅咒(辅)",
+description = "必须同时连接一个能击中敌人的技能和一个诅咒技能才能生效. 诅咒技能会在另一个技能击中敌人时施放. 无法辅助图腾, 陷阱或地雷. 召唤生物无法用该方式施放诅咒",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, SkillType.Hit, SkillType.AppliesCurse, },
@@ -1163,8 +1239,8 @@ skills["SupportCurseOnHit"] = {
 	},
 }
 skills["SupportCurseOnHitPlus"] = {
-	name = "击中附加诅咒（强辅）",
-	description = "必须同时连接一个能击中敌人的技能和一个诅咒技能才能生效。诅咒技能会在另一个技能击中敌人时施放。无法辅助图腾、陷阱或地雷。召唤生物无法用该方式施放诅咒。",
+name = "击中附加诅咒（强辅）",
+description = "必须同时连接一个能击中敌人的技能和一个诅咒技能才能生效. 诅咒技能会在另一个技能击中敌人时施放. 无法辅助图腾, 陷阱或地雷. 召唤生物无法用该方式施放诅咒",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, SkillType.Hit, SkillType.AppliesCurse, },
@@ -1209,8 +1285,8 @@ skills["SupportCurseOnHitPlus"] = {
 	},
 }
 skills["SupportMinionFocusFire"] = {
-	name = "亡印（辅）",
-	description = "辅助召唤生物技能。",
+name = "亡印（辅）",
+description = "辅助创造召唤物技能.",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.CreatesMinion, },
@@ -1279,8 +1355,8 @@ skills["SupportMinionFocusFire"] = {
 	},
 }
 skills["SupportDecay"] = {
-	name = "腐蚀(辅)",
-	description = "辅助任意击中敌人的技能",
+name = "腐蚀(辅)",
+description = "辅助任意击中敌人的技能",
 	color = 3,
 	baseEffectiveness = 1.335000038147,
 	incrementalEffectiveness = 0.045800000429153,
@@ -1341,8 +1417,8 @@ skills["SupportDecay"] = {
 	},
 }
 skills["SupportEfficacy"] = {
-	name = "效能(辅)",
-	description = "辅助任意能造成伤害或有持续时间的技能",
+name = "效能(辅)",
+description = "辅助任意能造成伤害或有持续时间的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.Type59, SkillType.Duration, SkillType.Type55, SkillType.DamageOverTime, },
@@ -1411,8 +1487,8 @@ skills["SupportEfficacy"] = {
 	},
 }
 skills["SupportElementalFocus"] = {
-	name = "元素集中(辅)",
-	description = "辅助任意能击中或点燃敌人的技能",
+name = "元素集中(辅)",
+description = "辅助任意能击中或点燃敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.CausesBurning, },
@@ -1477,8 +1553,8 @@ skills["SupportElementalFocus"] = {
 	},
 }
 skills["SupportElementalFocusPlus"] = {
-	name = "元素集中（强辅）",
-	description = "辅助任意能击中或点燃敌人的技能",
+name = "元素集中（强辅）",
+description = "辅助任意能击中或点燃敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.CausesBurning, },
@@ -1524,8 +1600,8 @@ skills["SupportElementalFocusPlus"] = {
 	},
 }
 skills["SupportElementalProliferation"] = {
-	name = "元素扩散(辅)",
-	description = "辅助任意能击中敌人或对敌人造成元素异常状态的技能",
+name = "元素扩散(辅)",
+description = "辅助任意能击中敌人或对敌人造成元素异常状态的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.CauseElementalStatus, },
@@ -1592,8 +1668,8 @@ skills["SupportElementalProliferation"] = {
 	},
 }
 skills["SupportEnergyShieldLeech"] = {
-	name = "能量偷取（辅）",
-	description = "辅助任何会击中敌人的技能，使击中后可以偷取能量护盾，数值根据伤害值所定。",
+name = "能量偷取（辅）",
+description = "辅助任何会击中敌人的技能，使击中后可以偷取能量护盾，数值根据伤害值所定。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -1662,8 +1738,8 @@ skills["SupportEnergyShieldLeech"] = {
 	},
 }
 skills["SupportAdditionalXP"] = {
-	name = "启蒙(辅)",
-	description = "辅助任意技能. 当该宝石达到 2 级或以上时, 降低被辅助技能的法力消耗. 无法辅助非技能宝石带来的技能",
+name = "启蒙(辅)",
+description = "辅助任意技能. 当该宝石达到 2 级或以上时, 降低被辅助技能的法力消耗. 无法辅助非技能宝石带来的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { },
@@ -1692,8 +1768,8 @@ skills["SupportAdditionalXP"] = {
 	},
 }
 skills["SupportFasterCast"] = {
-	name = "快速施法(辅)",
-	description = "辅助法术技能",
+name = "快速施法(辅)",
+description = "辅助法术技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Spell, },
@@ -1752,8 +1828,8 @@ skills["SupportFasterCast"] = {
 	},
 }
 skills["SupportMinionOffensiveStance"] = {
-	name = "狂噬（辅）",
-	description = "辅助召唤生物技能。",
+name = "狂噬（辅）",
+description = "辅助创造召唤物技能.",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.CreatesMinion, },
@@ -1820,8 +1896,8 @@ skills["SupportMinionOffensiveStance"] = {
 	},
 }
 skills["SupportRemoteMine2"] = {
-	name = "高爆地雷（辅）",
-	description = "辅助法术技能，或使用弓箭和法杖的攻击技能。你将投掷地雷，并使用被辅助技能来引爆。",
+name = "高爆地雷（辅）",
+description = "只能辅助法术或弓类和法杖攻击。\n将辅助的技能替换为投掷地雷，并使用该技能来引爆。\n地雷无法使用持续吟唱技能。\n被辅助技能有机率在击中敌人时造成双倍伤害，该伤害基於该敌人周围的地雷数量。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.SkillCanMine, },
@@ -1899,8 +1975,8 @@ skills["SupportRemoteMine2"] = {
 	},
 }
 skills["SupportIgniteProliferation"] = {
-	name = "点燃扩散(辅)",
-	description = "辅助任意击中敌人的技能",
+name = "点燃扩散(辅)",
+description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -1965,8 +2041,8 @@ skills["SupportIgniteProliferation"] = {
 	},
 }
 skills["SupportImmolation"] = {
-	name = "献祭(辅)",
-	description = "辅助任意击中敌人的技能",
+name = "献祭(辅)",
+description = "辅助任意击中敌人的技能",
 	color = 3,
 	baseEffectiveness = 0.88889998197556,
 	incrementalEffectiveness = 0.034000001847744,
@@ -2028,8 +2104,8 @@ skills["SupportImmolation"] = {
 	},
 }
 skills["SupportIncreasedAreaOfEffect"] = {
-	name = "增大范围(辅)",
-	description = "辅助任意有范围效果的技能",
+name = "增大范围(辅)",
+description = "辅助任意有范围效果的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Area, SkillType.CreateMinion, SkillType.Type53, },
@@ -2088,8 +2164,8 @@ skills["SupportIncreasedAreaOfEffect"] = {
 	},
 }
 skills["SupportIncreasedAreaOfEffectPlus"] = {
-	name = "增大范围（强辅）",
-	description = "辅助任意有范围效果的技能",
+name = "增大范围（强辅）",
+description = "辅助任意有范围效果的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Area, SkillType.CreateMinion, SkillType.Type53, },
@@ -2135,8 +2211,8 @@ skills["SupportIncreasedAreaOfEffectPlus"] = {
 	},
 }
 skills["SupportIncreasedCriticalDamage"] = {
-	name = "提高暴击伤害(辅)",
-	description = "辅助任意击中敌人的技能",
+name = "提高暴击伤害(辅)",
+description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -2195,8 +2271,8 @@ skills["SupportIncreasedCriticalDamage"] = {
 	},
 }
 skills["SupportIncreasedCriticalStrikes"] = {
-	name = "提高暴击几率(辅)",
-	description = "辅助任意击中敌人的技能",
+name = "提高暴击几率(辅)",
+description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -2256,8 +2332,8 @@ skills["SupportIncreasedCriticalStrikes"] = {
 	},
 }
 skills["SupportBurningMinions"] = {
-	name = "炎军（辅）",
-	description = "辅助召唤生物技能。",
+name = "炎军（辅）",
+description = "辅助创造召唤物技能.",
 	color = 3,
 	baseEffectiveness = 6.2776999473572,
 	incrementalEffectiveness = 0.048500001430511,
@@ -2331,8 +2407,8 @@ skills["SupportBurningMinions"] = {
 	},
 }
 skills["SupportStormBarrier"] = {
-	name = "灌能吟唱(辅)",
-	description = "辅助任何吟唱技能，在你持续吟唱时保护你。无法辅助召唤生物类技能。",
+name = "灌能吟唱(辅)",
+description = "辅助任何吟唱技能，在你持续吟唱时保护你。无法辅助召唤生物类技能。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Channelled, },
@@ -2422,8 +2498,8 @@ mod("ChaosDamage", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buf
 	},
 }
 skills["SupportOnslaughtOnSlayingShockedEnemy"] = {
-	name = "闪电支配(辅)",
-	description = "辅助任意你用来击中敌人的技能. 无法辅助图腾, 陷阱和地雷所施放的技能.",
+name = "闪电支配(辅)",
+description = "辅助任意你用来击中敌人的技能. 无法辅助图腾, 陷阱和地雷所施放的技能.",
 	color = 3,
 	baseEffectiveness = 0.23749999701977,
 	incrementalEffectiveness = 0.039000000804663,
@@ -2498,8 +2574,8 @@ mod("LightningMax", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Bu
 	},
 }
 skills["SupportHandcastSpellBoost"] = {
-	name = "法术凝聚（辅）",
-	description = "辅助对自己施放的法术。无法辅助触发类技能、瓦尔技能、瞬发技能、持续吟唱技能，保留魔力技能，或图腾、陷阱和地雷使用的技能。无法影响召唤生物的技能。",
+name = "法术凝聚（辅）",
+description = "辅助对自己施放的法术。无法辅助触发类技能、瓦尔技能、瞬发技能、持续吟唱技能，保留魔力技能，或图腾、陷阱和地雷使用的技能。无法影响召唤生物的技能。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.AreaSpell, },
@@ -2570,8 +2646,8 @@ skills["SupportHandcastSpellBoost"] = {
 	},
 }
 skills["SupportItemRarity"] = {
-	name = "物品稀有度增幅(辅)",
-	description = "辅助任意能击败敌人的技能",
+name = "物品稀有度增幅(辅)",
+description = "辅助任意能击败敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.DamageOverTime, },
@@ -2630,8 +2706,8 @@ skills["SupportItemRarity"] = {
 	},
 }
 skills["SupportLightningPenetration"] = {
-	name = "闪电穿透(辅)",
-	description = "辅助任意击中敌人的技能, 使击中能穿透敌人的闪电抗性",
+name = "闪电穿透(辅)",
+description = "辅助任意击中敌人的技能, 使击中能穿透敌人的闪电抗性",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -2690,8 +2766,8 @@ skills["SupportLightningPenetration"] = {
 	},
 }
 skills["SupportLightningPenetrationPlus"] = {
-	name = "闪电穿透（强辅）",
-	description = "辅助任意击中敌人的技能，使击中能穿透敌人的闪电抗性。",
+name = "闪电穿透（强辅）",
+description = "辅助任意击中敌人的技能, 使击中能穿透敌人的闪电抗性",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -2731,8 +2807,8 @@ skills["SupportLightningPenetrationPlus"] = {
 	},
 }
 skills["SupportMinionDefensiveStance"] = {
-	name = "肉盾（辅）",
-	description = "辅助召唤生物技能。",
+name = "肉盾（辅）",
+description = "辅助创造召唤物技能.",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.CreatesMinion, },
@@ -2803,8 +2879,8 @@ skills["SupportMinionDefensiveStance"] = {
 	},
 }
 skills["SupportMinefield"] = {
-	name = "地雷网(辅)",
-	description = "辅助地雷技能。",
+name = "地雷网(辅)",
+description = "辅助投掷地雷技能.",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Mine, },
@@ -2871,8 +2947,8 @@ skills["SupportMinefield"] = {
 	},
 }
 skills["SupportMinionDamage"] = {
-	name = "召唤生物伤害(辅)",
-	description = "辅助召唤生物技能。",
+name = "召唤生物伤害(辅)",
+description = "辅助创造召唤物技能.",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.CreatesMinion, },
@@ -2936,8 +3012,8 @@ skills["SupportMinionDamage"] = {
 	},
 }
 skills["SupportMinionDamagePlus"] = {
-	name = "召唤生物伤害（强辅）",
-	description = "辅助召唤生物技能。",
+name = "召唤生物伤害（强辅）",
+description = "辅助创造召唤物技能.",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.CreatesMinion, },
@@ -2982,8 +3058,8 @@ skills["SupportMinionDamagePlus"] = {
 	},
 }
 skills["SupportMinionLife"] = {
-	name = "召唤生物生命(辅)",
-	description = "辅助召唤生物技能。",
+name = "召唤生物生命(辅)",
+description = "辅助创造召唤物技能.",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.CreatesMinion, },
@@ -3047,8 +3123,8 @@ skills["SupportMinionLife"] = {
 	},
 }
 skills["SupportMinionSpeed"] = {
-	name = "召唤生物速度(辅)",
-	description = "辅助召唤生物技能。",
+name = "召唤生物速度(辅)",
+description = "辅助创造召唤物技能.",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.CreatesMinion, },
@@ -3109,8 +3185,8 @@ skills["SupportMinionSpeed"] = {
 	},
 }
 skills["SupportSummonElementalResistances"] = {
-	name = "元素大军（辅）",
-	description = "辅助召唤生物技能。",
+name = "元素大军（辅）",
+description = "辅助创造召唤物技能.",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.CreatesMinion, },
@@ -3177,8 +3253,8 @@ skills["SupportSummonElementalResistances"] = {
 	},
 }
 skills["SupportPhysicalToLightning"] = {
-	name = "物理转闪电(辅)",
-	description = "辅助任意击中敌人的技能",
+name = "物理转闪电(辅)",
+description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -3239,8 +3315,8 @@ skills["SupportPhysicalToLightning"] = {
 	},
 }
 skills["SupportPowerChargeOnCrit"] = {
-	name = "暴击获得暴击球(辅)",
-	description = "辅助任意击中敌人的技能",
+name = "暴击获得暴击球(辅)",
+description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
@@ -3305,8 +3381,8 @@ skills["SupportPowerChargeOnCrit"] = {
 	},
 }
 skills["SupportRemoteMine"] = {
-	name = "链爆地雷（辅）",
-	description = "辅助法术技能，或使用弓箭和法杖的攻击技能。你将投掷地雷，并使用被辅助技能来引爆。",
+name = "链爆地雷（辅）",
+description = "只能辅助法术或弓类和法杖攻击。\n将辅助的技能替换为投掷地雷，并使用该技能来引爆。\n地雷无法使用持续吟唱技能。\n被辅助技能有机率在击中敌人时造成双倍伤害，该伤害基於该敌人周围的地雷数量。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.SkillCanMine, },
@@ -3384,8 +3460,8 @@ skills["SupportRemoteMine"] = {
 	},
 }
 skills["SupportSpellCascade"] = {
-	name = "多重范围施法(辅)",
-	description = "能够辅助对目标造成范围伤害的法术技能。无法辅助瓦尔技能，召唤生物技能或图腾，陷阱和地雷使用的技能。",
+name = "多重范围施法(辅)",
+description = "能够辅助对目标造成范围伤害的法术技能。无法辅助瓦尔技能，召唤生物技能或图腾，陷阱和地雷使用的技能。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.SpellCanCascade, },
@@ -3455,8 +3531,8 @@ skills["SupportSpellCascade"] = {
 	},
 }
 skills["SupportSpellCascadePlus"] = {
-	name = "多重范围施法（强辅）",
-	description = "能够辅助对目标造成范围伤害的法术技能。无法辅助瓦尔技能，召唤生物技能或图腾，陷阱和地雷使用的技能。",
+name = "多重范围施法（强辅）",
+description = "能够辅助对目标造成范围伤害的法术技能。无法辅助瓦尔技能，召唤生物技能或图腾，陷阱和地雷使用的技能。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.SpellCanCascade, },
@@ -3509,8 +3585,8 @@ skills["SupportSpellCascadePlus"] = {
 	},
 }
 skills["SupportMulticast"] = {
-	name = "施法回响(辅)",
-	description = "辅助法术技能, 使该技能在使用时被自动重复 1 次. 无法辅助瓦尔技能, 图腾技能, 持续吟唱技能, 触发类技能, 瞬发类技能或魔力保留类技能",
+name = "施法回响(辅)",
+description = "辅助法术技能, 使该技能在使用时被自动重复 1 次. 无法辅助瓦尔技能, 图腾技能, 持续吟唱技能, 触发类技能, 瞬发类技能或魔力保留类技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.SpellCanRepeat, },
@@ -3580,8 +3656,8 @@ skills["SupportMulticast"] = {
 	},
 }
 skills["SupportSpellEchoPlus"] = {
-	name = "施法回响（强辅）",
-	description = "辅助法术技能，使该技能在使用时被自动重复 1 次。无法辅助瓦尔技能、图腾技能、持续吟唱技能、触发类技能、瞬发类技能或魔力保留类技能。",
+name = "施法回响（强辅）",
+description = "辅助法术技能, 使该技能在使用时被自动重复 1 次. 无法辅助瓦尔技能, 图腾技能, 持续吟唱技能, 触发类技能, 瞬发类技能或魔力保留类技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.SpellCanRepeat, },
@@ -3633,8 +3709,8 @@ skills["SupportSpellEchoPlus"] = {
 	},
 }
 skills["SupportSummonGhostOnKill"] = {
-	name = "召唤幻影（辅）",
-	description = "能够辅助可以击中敌人或召唤生物的技能。当该技能或召唤生物击败敌人，或击中稀有或传奇敌人时，有一定几率召唤一个幻灵，该生物可以使用投射物穿刺法术造成物理伤害。",
+name = "击败召唤幻影(辅)",
+description = "能够辅助可以击中敌人或召唤生物的技能。当该技能或召唤生物击败敌人，有一定几率召唤一个幽灵生物，该生物可以使用投射物穿刺法术造成物理伤害。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, SkillType.Hit, SkillType.CreatesMinion, },
@@ -3710,8 +3786,8 @@ skills["SupportSummonGhostOnKill"] = {
 	},
 }
 skills["SupportAilments"] = {
-	name = "异常爆发(辅)",
-	description = "辅助任意击中敌人的技能",
+name = "异常爆发(辅)",
+description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.CauseElementalStatus, },
@@ -3777,8 +3853,8 @@ skills["SupportAilments"] = {
 	},
 }
 skills["SupportUnboundAilmentsPlus"] = {
-	name = "异常爆发（强辅）",
-	description = "辅助任何会击中敌人的技能。",
+name = "异常爆发（强辅）",
+description = "辅助任意击中敌人的技能",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.CauseElementalStatus, },
@@ -3826,8 +3902,8 @@ skills["SupportUnboundAilmentsPlus"] = {
 	},
 }
 skills["SupportHandcastAnticipation"] = {
-	name = "释出（辅）",
-	description = "辅助法术类技能，使其在施放时效果可以重复。无法辅助冷却和触发类技能、烙印技能、瓦尔技能、瞬发技能、持续吟唱技能，保留魔力技能，或图腾、陷阱和地雷使用的技能。无法影响召唤生物的技能。",
+name = "释出（辅）",
+description = "辅助法术类技能，使其在施放时效果可以重复。无法辅助冷却和触发类技能、烙印技能、瓦尔技能、瞬发技能、持续吟唱技能，保留魔力技能，或图腾、陷阱和地雷使用的技能。无法影响召唤生物的技能。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.CanRapidFire, },
@@ -3888,8 +3964,8 @@ skills["SupportHandcastAnticipation"] = {
 	},
 }
 skills["SupportUnleashPlus"] = {
-	name = "释出（强辅）",
-	description = "辅助法术类技能，使其在施放时效果可以重复。无法辅助冷却和触发类技能、烙印技能、瓦尔技能、瞬发技能、持续吟唱技能，保留魔力技能，或图腾、陷阱和地雷使用的技能。无法影响召唤生物的技能。",
+name = "释出（强辅）",
+description = "辅助法术类技能，使其在施放时效果可以重复。无法辅助冷却和触发类技能、烙印技能、瓦尔技能、瞬发技能、持续吟唱技能，保留魔力技能，或图腾、陷阱和地雷使用的技能。无法影响召唤生物的技能。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.CanRapidFire, },
@@ -3928,81 +4004,5 @@ skills["SupportUnleashPlus"] = {
 		[18] = { 3, 590, -2, manaMultiplier = 40, levelRequirement = 98, statInterpolation = { 1, 1, 1, }, },
 		[19] = { 3, 585, -1, manaMultiplier = 40, levelRequirement = 99, statInterpolation = { 1, 1, 1, }, },
 		[20] = { 3, 580, -1, manaMultiplier = 40, levelRequirement = 100, statInterpolation = { 1, 1, 1, }, },
-	},
-}
-skills["SupportArchmage"] = {
-	name = "大法师（辅）",
-	description = "辅助会造成伤害和有魔力消耗的法术技能。不能辅助触发型技能，被图腾、陷阱或地雷使用的技能。无法调整召唤物的技能。",
-	color = 3,
-	baseEffectiveness = 0.17499999701977,
-	incrementalEffectiveness = 0.039000000804663,
-	support = true,
-	requireSkillTypes = { SkillType.Hit, SkillType.Spell, SkillType.AND, },
-	addSkillTypes = { },
-	excludeSkillTypes = { SkillType.Totem, SkillType.Trap, SkillType.Mine, SkillType.Triggered, SkillType.ManaCostReserved, },
-	ignoreMinionTypes = true,
-	statDescriptionScope = "gem_stat_descriptions",
-	statMap = {
-		["manaweave_cost_equals_%_unreserved_mana"] = {
-			skill("baseManaCostIsAtLeastPercentUnreservedMana", nil),
-		},
-		["manaweave_added_lightning_damage_%_cost_if_payable"] = {
-			mod("LightningMin", "BASE", nil, 0, 0, { type = "PerStat", stat = "ManaCost" }),
-			mod("LightningMax", "BASE", nil, 0, 0, { type = "PerStat", stat = "ManaCost" }),
-			div = 100,
-		},
-	},
-	baseMods = {
-	},
-	qualityStats = {
-		{ "base_mana_cost_-%", -0.5 },
-	},
-	stats = {
-		"global_minimum_added_lightning_damage",
-		"global_maximum_added_lightning_damage",
-		"manaweave_cost_equals_%_unreserved_mana",
-		"manaweave_added_lightning_damage_%_cost_if_payable",
-	},
-	levels = {
-		[1] = { 0.10000000149012, 1.8999999761581, 6, 70, levelRequirement = 31, statInterpolation = { 3, 3, 1, 1, }, },
-		[2] = { 0.10000000149012, 1.8999999761581, 6, 73, levelRequirement = 34, statInterpolation = { 3, 3, 1, 1, }, },
-		[3] = { 0.10000000149012, 1.8999999761581, 6, 76, levelRequirement = 36, statInterpolation = { 3, 3, 1, 1, }, },
-		[4] = { 0.10000000149012, 1.8999999761581, 6, 79, levelRequirement = 38, statInterpolation = { 3, 3, 1, 1, }, },
-		[5] = { 0.10000000149012, 1.8999999761581, 6, 82, levelRequirement = 40, statInterpolation = { 3, 3, 1, 1, }, },
-		[6] = { 0.10000000149012, 1.8999999761581, 6, 85, levelRequirement = 42, statInterpolation = { 3, 3, 1, 1, }, },
-		[7] = { 0.10000000149012, 1.8999999761581, 6, 88, levelRequirement = 44, statInterpolation = { 3, 3, 1, 1, }, },
-		[8] = { 0.10000000149012, 1.8999999761581, 6, 91, levelRequirement = 46, statInterpolation = { 3, 3, 1, 1, }, },
-		[9] = { 0.10000000149012, 1.8999999761581, 6, 94, levelRequirement = 48, statInterpolation = { 3, 3, 1, 1, }, },
-		[10] = { 0.10000000149012, 1.8999999761581, 6, 97, levelRequirement = 50, statInterpolation = { 3, 3, 1, 1, }, },
-		[11] = { 0.10000000149012, 1.8999999761581, 6, 100, levelRequirement = 52, statInterpolation = { 3, 3, 1, 1, }, },
-		[12] = { 0.10000000149012, 1.8999999761581, 6, 103, levelRequirement = 54, statInterpolation = { 3, 3, 1, 1, }, },
-		[13] = { 0.10000000149012, 1.8999999761581, 6, 106, levelRequirement = 56, statInterpolation = { 3, 3, 1, 1, }, },
-		[14] = { 0.10000000149012, 1.8999999761581, 6, 109, levelRequirement = 58, statInterpolation = { 3, 3, 1, 1, }, },
-		[15] = { 0.10000000149012, 1.8999999761581, 6, 112, levelRequirement = 60, statInterpolation = { 3, 3, 1, 1, }, },
-		[16] = { 0.10000000149012, 1.8999999761581, 6, 115, levelRequirement = 62, statInterpolation = { 3, 3, 1, 1, }, },
-		[17] = { 0.10000000149012, 1.8999999761581, 6, 118, levelRequirement = 64, statInterpolation = { 3, 3, 1, 1, }, },
-		[18] = { 0.10000000149012, 1.8999999761581, 6, 121, levelRequirement = 66, statInterpolation = { 3, 3, 1, 1, }, },
-		[19] = { 0.10000000149012, 1.8999999761581, 6, 124, levelRequirement = 68, statInterpolation = { 3, 3, 1, 1, }, },
-		[20] = { 0.10000000149012, 1.8999999761581, 6, 127, levelRequirement = 70, statInterpolation = { 3, 3, 1, 1, }, },
-		[21] = { 0.10000000149012, 1.8999999761581, 6, 130, levelRequirement = 72, statInterpolation = { 3, 3, 1, 1, }, },
-		[22] = { 0.10000000149012, 1.8999999761581, 6, 132, levelRequirement = 74, statInterpolation = { 3, 3, 1, 1, }, },
-		[23] = { 0.10000000149012, 1.8999999761581, 6, 134, levelRequirement = 76, statInterpolation = { 3, 3, 1, 1, }, },
-		[24] = { 0.10000000149012, 1.8999999761581, 6, 136, levelRequirement = 78, statInterpolation = { 3, 3, 1, 1, }, },
-		[25] = { 0.10000000149012, 1.8999999761581, 6, 138, levelRequirement = 80, statInterpolation = { 3, 3, 1, 1, }, },
-		[26] = { 0.10000000149012, 1.8999999761581, 6, 140, levelRequirement = 82, statInterpolation = { 3, 3, 1, 1, }, },
-		[27] = { 0.10000000149012, 1.8999999761581, 6, 142, levelRequirement = 84, statInterpolation = { 3, 3, 1, 1, }, },
-		[28] = { 0.10000000149012, 1.8999999761581, 6, 144, levelRequirement = 86, statInterpolation = { 3, 3, 1, 1, }, },
-		[29] = { 0.10000000149012, 1.8999999761581, 6, 146, levelRequirement = 88, statInterpolation = { 3, 3, 1, 1, }, },
-		[30] = { 0.10000000149012, 1.8999999761581, 6, 148, levelRequirement = 90, statInterpolation = { 3, 3, 1, 1, }, },
-		[31] = { 0.10000000149012, 1.8999999761581, 6, 149, levelRequirement = 91, statInterpolation = { 3, 3, 1, 1, }, },
-		[32] = { 0.10000000149012, 1.8999999761581, 6, 150, levelRequirement = 92, statInterpolation = { 3, 3, 1, 1, }, },
-		[33] = { 0.10000000149012, 1.8999999761581, 6, 151, levelRequirement = 93, statInterpolation = { 3, 3, 1, 1, }, },
-		[34] = { 0.10000000149012, 1.8999999761581, 6, 152, levelRequirement = 94, statInterpolation = { 3, 3, 1, 1, }, },
-		[35] = { 0.10000000149012, 1.8999999761581, 6, 153, levelRequirement = 95, statInterpolation = { 3, 3, 1, 1, }, },
-		[36] = { 0.10000000149012, 1.8999999761581, 6, 154, levelRequirement = 96, statInterpolation = { 3, 3, 1, 1, }, },
-		[37] = { 0.10000000149012, 1.8999999761581, 6, 155, levelRequirement = 97, statInterpolation = { 3, 3, 1, 1, }, },
-		[38] = { 0.10000000149012, 1.8999999761581, 6, 156, levelRequirement = 98, statInterpolation = { 3, 3, 1, 1, }, },
-		[39] = { 0.10000000149012, 1.8999999761581, 6, 157, levelRequirement = 99, statInterpolation = { 3, 3, 1, 1, }, },
-		[40] = { 0.10000000149012, 1.8999999761581, 6, 158, levelRequirement = 100, statInterpolation = { 3, 3, 1, 1, }, },
 	},
 }

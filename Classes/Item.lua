@@ -159,7 +159,7 @@ if self.rarity == "普通" or self.rarity == "魔法" then
 			elseif gameModeStage == "EXPLICIT" then
 				gameModeStage = "DONE"
 			end
-elseif line == "已腐化" then
+elseif line == "已腐化" or line == "已腐化的" then
 			self.corrupted = true
 elseif line == "塑界之器" then
 			self.shaper = true

@@ -4549,3 +4549,641 @@ skills["SkeletonSoldierTornadoShot"] = {
 		[3] = { -40, 0, 3, levelRequirement = 54, statInterpolation = { 1, 1, 1, }, },
 	},
 }
+
+
+
+skills["AtlasExilesCrusaderMageguardProjectile"] = {
+	name = "圣教投射物",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 2.25,
+	incrementalEffectiveness = 0.045000001788139,
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.33,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"monster_projectile_variation",
+		"spell_minimum_base_lightning_damage",
+		"spell_maximum_base_lightning_damage",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+		"use_scaled_contact_offset",
+	},
+	levels = {
+		[1] = { 127, 0.5, 1.5, critChance = 5, levelRequirement = 0, statInterpolation = { 1, 3, 3, }, },
+	},
+}
+skills["EmptyActionSpellCrusaderMageguard"] = {
+	name = "施法（部分）",
+	hidden = true,
+	color = 4,
+	skillTypes = { },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 3,
+	baseFlags = {
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"skill_cannot_be_interrupted",
+		"skill_cannot_be_stunned",
+	},
+	levels = {
+		[1] = { cooldown = 12, levelRequirement = 0, statInterpolation = { }, },
+	},
+}
+skills["AtlasCrusaderMageguardSpawnBombSpectre"] = {
+	name = "爆弹产生（部分）",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		spell = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+	},
+	levels = {
+		[1] = { levelRequirement = 0, statInterpolation = { }, },
+	},
+}
+skills["AtlasExileCrusaderMageguardBombExplodeSpectre"] = {
+	name = "爆弹爆炸（部分）",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 2,
+	incrementalEffectiveness = 0.045000001788139,
+	skillTypes = { [SkillType.Triggerable] = true, [SkillType.Hit] = true, [SkillType.Area] = true,   },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		spell = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_lightning_damage",
+		"spell_maximum_base_lightning_damage",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 0.5, 1.5, critChance = 5, levelRequirement = 0, statInterpolation = { 3, 3, }, },
+	},
+}
+skills["AtlasCrusaderMageguardBeam"] = {
+	name = "圣教光束",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 1.5,
+	incrementalEffectiveness = 0.045000001788139,
+	skillTypes = { [SkillType.Triggerable] = true,    [SkillType.Area] = true,  [SkillType.Hit] = true,},
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 2.3,
+	baseFlags = {
+		spell = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_lightning_damage",
+		"spell_maximum_base_lightning_damage",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 0.5, 1.5, critChance = 5, cooldown = 8, levelRequirement = 0, statInterpolation = { 3, 3, }, },
+	},
+}
+skills["WalkEmergeAtlasInfluenceMonster"] = {
+	name = "显现",
+	hidden = true,
+	color = 4,
+	skillTypes = { },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.25,
+	baseFlags = {
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"walk_emerge_distance",
+	},
+	levels = {
+		[1] = { 225, levelRequirement = 0, statInterpolation = { 1, }, },
+	},
+}
+
+
+-- Scinteel Synthete
+skills["SynthesisSoulstealerProjectileLightning"] = {
+	name = "噬魂者闪电投射物",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 2.5,
+	incrementalEffectiveness = 0.037999998778105,
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.33,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"monster_projectile_variation",
+		"spell_minimum_base_lightning_damage",
+		"spell_maximum_base_lightning_damage",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+	},
+	levels = {
+		[1] = { 103, 0.5, 1.5, critChance = 5, levelRequirement = 0, statInterpolation = { 1, 3, 3, }, },
+	},
+}
+skills["EmptyActionSynthesisSoulstealerArc"] = {
+	name = "噬魂者电弧（部分）",
+	hidden = true,
+	color = 4,
+	skillTypes = { },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 2.5,
+	baseFlags = {
+		spell = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"skill_cannot_be_stunned",
+		"skill_cannot_be_knocked_back",
+	},
+	levels = {
+		[1] = { cooldown = 8, levelRequirement = 0, statInterpolation = { }, },
+	},
+}
+skills["SynthesisSoulstealerLaser"] = {
+	name = "噬魂者激光（部分）",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 0.60000002384186,
+	incrementalEffectiveness = 0.050000000745058,
+	skillTypes = { [SkillType.Triggerable] = true, [SkillType.Area] = true,  [SkillType.Hit] = true,},
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		spell = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_lightning_damage",
+		"spell_maximum_base_lightning_damage",
+		"skill_physical_damage_%_to_convert_to_lightning",
+		"skill_physical_damage_%_to_convert_to_chaos",
+		"monster_penalty_against_minions_damage_+%_final_vs_player_minions",
+		"is_area_damage",
+		"cannot_stun",
+	},
+	levels = {
+		[1] = { 0.5, 1.5, 0, 0, 0, critChance = 5, levelRequirement = 0, statInterpolation = { 3, 3, 1, 1, 1, }, },
+	},
+}
+skills["SynthesisSoulstealerBolt"] = {
+	name = "噬魂者螺旋",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 0.60000002384186,
+	incrementalEffectiveness = 0.03999999910593,
+	skillTypes = { [SkillType.Triggerable] = true, [SkillType.Area] = true,  [SkillType.Hit] = true,},
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		spell = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_lightning_damage",
+		"spell_maximum_base_lightning_damage",
+		"monster_penalty_against_minions_damage_+%_final_vs_player_minions",
+		"spell_maximum_action_distance_+%",
+		"base_skill_effect_duration",
+		"skill_range_+%",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 0.69999998807907, 1.2999999523163, 0, -50, 260, -75, critChance = 5, levelRequirement = 1, statInterpolation = { 3, 3, 1, 1, 1, 1, }, },
+	},
+}
+skills["GeometryTriggerSynthesisSoulstealer3"] = {
+	name = "噬魂",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 2.3,
+	baseFlags = {
+		spell = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"skill_cannot_be_stunned",
+		"skill_cannot_be_knocked_back",
+	},
+	levels = {
+		[1] = { cooldown = 12, levelRequirement = 0, statInterpolation = { }, },
+	},
+}
+
+-- Turong
+
+skills["EmptyActionAttackTaowuDash"] = {
+	name = "梼杌冲刺",
+	hidden = true,
+	color = 4,
+	skillTypes = { },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 3.67,
+	baseFlags = {
+		spell = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"skill_cannot_be_interrupted",
+		"skill_cannot_be_stunned",
+		"skill_cannot_be_knocked_back",
+	},
+	levels = {
+		[1] = { cooldown = 10, levelRequirement = 1, statInterpolation = { }, },
+	},
+}
+skills["FireballTaowuDash"] = {
+	name = "梼杌冲刺火球",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 4.5,
+	incrementalEffectiveness = 0.03999999910593,
+	description = "释放一颗球型火焰向前飞射, 接触到怪物时会爆炸并对周围敌人造成伤害",
+	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.2,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"active_skill_ignite_damage_+%_final",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+		"always_ignite",
+	},
+	levels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 100, critChance = 6, levelRequirement = 0, statInterpolation = { 3, 3, 1, }, },
+	},
+}
+skills["FireballTaowuCombo"] = {
+	name = "梼杌组合火球",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 2.3299999237061,
+	incrementalEffectiveness = 0.037999998778105,
+	description = "释放一颗球型火焰向前飞射, 接触到怪物时会爆炸并对周围敌人造成伤害",
+	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.83,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+	},
+	levels = {
+		[1] = { 0.80000001192093, 1.2000000476837, critChance = 6, cooldown = 12, levelRequirement = 0, statInterpolation = { 3, 3, }, },
+	},
+}
+skills["AddBuffToTargetDelveDarkZone"] = {
+	name = "矿区黑暗区域附加Buff",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Buff] = true, [SkillType.Duration] = true, [SkillType.Spell] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.2,
+	baseFlags = {
+		spell = true,
+		duration = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+	},
+	levels = {
+		[1] = { 5000, cooldown = 15, levelRequirement = 1, statInterpolation = { 1, }, },
+	},
+}
+skills["DelveTaowuSlash"] = {
+	name = "梼杌打击",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Triggerable] = true,[SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true,  },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		attack = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"skill_physical_damage_%_to_convert_to_fire",
+		"active_skill_attack_speed_+%_final",
+		"active_skill_damage_+%_final",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 75, -20, 40, baseMultiplier = 1.5, cooldown = 6, levelRequirement = 1, statInterpolation = { 1, 1, 2, }, },
+		[2] = { 75, -20, 40, baseMultiplier = 1.5, cooldown = 6, levelRequirement = 20, statInterpolation = { 1, 1, 2, }, },
+		[3] = { 75, -20, 40, baseMultiplier = 1.5, cooldown = 6, levelRequirement = 21, statInterpolation = { 1, 1, 2, }, },
+		[4] = { 75, -20, 150, baseMultiplier = 1.5, cooldown = 6, levelRequirement = 84, statInterpolation = { 1, 1, 2, }, },
+	},
+}
+skills["EmptyActionAttackTaowuDashSwipe"] = {
+	name = "梼杌冲刺横扫",
+	hidden = true,
+	color = 4,
+	skillTypes = { },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.83,
+	baseFlags = {
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"skill_cannot_be_interrupted",
+		"skill_cannot_be_stunned",
+		"skill_cannot_be_knocked_back",
+	},
+	levels = {
+		[1] = { cooldown = 10, levelRequirement = 1, statInterpolation = { }, },
+	},
+}
+skills["DelveTaowuDashAttack"] = {
+	name = "梼杌冲刺攻击",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Triggerable] = true, [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		attack = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"skill_physical_damage_%_to_convert_to_fire",
+		"active_skill_attack_speed_+%_final",
+		"active_skill_damage_+%_final",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 75, -20, 0, levelRequirement = 1, statInterpolation = { 1, 1, 2, }, },
+		[2] = { 75, -20, 0, levelRequirement = 20, statInterpolation = { 1, 1, 2, }, },
+		[3] = { 75, -20, 0, levelRequirement = 21, statInterpolation = { 1, 1, 2, }, },
+		[4] = { 75, -20, 0, levelRequirement = 84, statInterpolation = { 1, 1, 2, }, },
+	},
+}
+skills["DelveTaowuBackwardsSlash"] = {
+	name = "梼杌向后打击",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Triggerable] = true, [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		attack = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"skill_physical_damage_%_to_convert_to_fire",
+		"active_skill_attack_speed_+%_final",
+		"active_skill_damage_+%_final",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 75, -20, -15, baseMultiplier = 1.5, levelRequirement = 1, statInterpolation = { 1, 1, 2, }, },
+		[2] = { 75, -20, -15, baseMultiplier = 1.5, levelRequirement = 20, statInterpolation = { 1, 1, 2, }, },
+		[3] = { 75, -20, -15, baseMultiplier = 1.5, levelRequirement = 21, statInterpolation = { 1, 1, 2, }, },
+		[4] = { 75, -20, 180, baseMultiplier = 1.5, levelRequirement = 84, statInterpolation = { 1, 1, 2, }, },
+	},
+}
+skills["WalkEmergeDelveWetaUpForward"] = {
+	name = "前行",
+	hidden = true,
+	color = 4,
+	skillTypes = { },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.45,
+	baseFlags = {
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"walk_emerge_distance",
+		"walk_emerge_height_offset",
+		"walk_emerge_extra_distance",
+		"walk_emerge_tilt",
+	},
+	levels = {
+		[1] = { 300, 150, 0, levelRequirement = 1, statInterpolation = { 1, 1, 1, }, },
+	},
+}
+
+
+--Flayed Lookout
+
+skills["BetrayalSkeletonMelee"] = {
+	name = "普通攻击",
+	hidden = true,
+	color = 4,
+	description = "对你的敌人无情痛击.",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.SkillCanVolley] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		attack = true,
+		melee = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"arrow_projectile_variation",
+		"skill_visual_scale_+%",
+		"skill_can_fire_arrows",
+		"skill_can_fire_wand_projectiles",
+	},
+	levels = {
+		[1] = { 5, -30, levelRequirement = 1, statInterpolation = { 1, 1, }, },
+	},
+}
+skills["WalkEmergeBetrayal"] = {
+	name = "显现",
+	hidden = true,
+	color = 4,
+	skillTypes = { },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 0.72,
+	baseFlags = {
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"walk_emerge_distance",
+	},
+	levels = {
+		[1] = { 300, levelRequirement = 1, statInterpolation = { 1, }, },
+	},
+}
+skills["BetrayalSkeletonSnipe"] = {
+	name = "反叛者魔侍狙击",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Hit] = true, [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 2,
+	baseFlags = {
+		attack = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"monster_projectile_variation",
+		"active_skill_damage_+%_final",
+		"active_skill_attack_speed_+%_final",
+		"base_is_projectile",
+		"always_pierce",
+	},
+	levels = {
+		[1] = { 51, 100, -25, critChance = 5, cooldown = 8, levelRequirement = 1, statInterpolation = { 1, 1, 1, }, },
+	},
+}
+
+skills["AtlasExilesCrusaderClericBlast"] = {
+	name = "神圣爆破",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 2.5,
+	incrementalEffectiveness = 0.03999999910593,
+	skillTypes = { [SkillType.Triggerable] = true,  [SkillType.Area] = true,  [SkillType.Hit] = true,},
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 2.03,
+	baseFlags = {
+		spell = true
+	},
+	baseMods = {
+	
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_lightning_damage",
+		"spell_maximum_base_lightning_damage",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 0.5, 1.5, critChance = 5, levelRequirement = 0, statInterpolation = { 3, 3, }, },
+	},
+}
+skills["WalkEmergeAtlasInfluenceMonster"] = {
+	name = "巴兰牧师光环",
+	hidden = true,
+	color = 4,
+	 
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.ManaCostReserved] = true, [SkillType.Aura] = true, [SkillType.AreaSpell] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		spell = true,
+		aura = true,
+		area = true,
+		lightning = true,
+	},
+	baseMods = {
+		 mod("PhysicalDamageGainAsLightning", "BASE", 20, 0, 0, { type = "GlobalEffect", effectType = "Aura",effectName="巴兰牧师光环"  }),
+		mod("EnemyShockChance", "BASE", 10, 0, 0, { type = "GlobalEffect", effectType = "Aura",effectName="巴兰牧师光环" }),
+	},
+	qualityStats = {
+	},
+	stats = {
+		 
+	},
+	levels = {
+		[1] = { 0, levelRequirement = 1, statInterpolation = { }, },
+	},
+}

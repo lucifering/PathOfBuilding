@@ -188,8 +188,9 @@ modList:NewMod("SkillData", "LIST", { key = "minionLevel", value = val }, "Confi
 		modList:NewMod("Multiplier:EnemyAffectedBySiphoningTrap", "BASE", val, "Config")
 		modList:NewMod("Condition:SiphoningTrapSiphoning", "FLAG", true, "Config")
 	end },
-{ var = "raiseSpectreEnableCurses", type = "check", label = "灵体自带诅咒:", ifSkill = "召唤灵体", tooltip = "也计算上你的灵体带的诅咒.", apply = function(val, modList, enemyModList)
+{ var = "raiseSpectreEnableCurses", type = "check", label = "灵体自带诅咒和光环:", ifSkill = "召唤灵体", tooltip = "激活你的灵体带的诅咒和光环.", apply = function(val, modList, enemyModList)
 modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", { type = "SkillType", skillType = SkillType.Curse }, { type = "SkillName", skillName = "召唤灵体", summonSkill = true })
+modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", { type = "SkillType", skillType = SkillType.Aura }, { type = "SkillName", skillName = "召唤灵体", summonSkill = true })
 	end },
 { var = "raiseSpectreBladeVortexBladeCount", type = "count", label = "飞刃风暴层数:", ifSkillList = {"DemonModularBladeVortexSpectre","GhostPirateBladeVortexSpectre"}, tooltip = "设置灵体使用的【飞刃风暴】层数.\n默认是 1; 最大是  5.", apply = function(val, modList, enemyModList)
 		modList:NewMod("SkillData", "LIST", { key = "dpsMultiplier", value = val }, "Config", { type = "SkillId", skillId = "DemonModularBladeVortexSpectre" })
@@ -248,6 +249,12 @@ ifCond = "CanWither", apply = function(val, modList, enemyModList)
 { label = "欺诈师升华天赋:",    ifNode = 28884},
 { var = "ghostShroudCount", type = "count", label = "幽灵护盾层数:", ifNode = 28884, apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:GhostShroud", "BASE", m_min(val, 3), "Config")
+	end },
+	
+{ label = "狙击:", ifCond = "CanSnipeStage"},
+{ var = "snipeStageCount", type = "count", label = "# 【狙击】层数:", tooltip="持续吟唱给弓箭充能，积累层数，最大 6 层。",
+ifCond = "CanSnipeStage", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:SnipeStage", "BASE", m_min(val, 6), "Config", { type = "Condition", var = "Effective" })
 	end },
 	
 	-- Section: Map modifiers/curses

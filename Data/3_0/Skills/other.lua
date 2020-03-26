@@ -2073,3 +2073,92 @@ skills["CreateFungalGroundOnKill"] = {
 		[10] = { 100, levelRequirement = 1, duration = 5, cooldown = 1, statInterpolation = { 1, }, },
 	},
 }
+
+
+skills["ChannelledSnipe"] = {
+	name = "狙击",
+	hidden = true,
+	color = 2,
+	secondaryGrantedEffectId = "ChannelledSnipeSupport",
+	description = "持续吟唱给弓箭充能，积累层数。释放时，每层都会触发一种链接的弓类技能。这种方式不能触发持续吟唱技能。若没有链接任何技能，又至少积累了一层效果，则该技能会发射它原本的箭矢。无法用于图腾。",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Channelled] = true, },
+	weaponTypes = {
+		["Bow"] = true,
+	},
+	 
+	statMap = {
+		["snipe_triggered_skill_ailment_damage_+%_final_per_stage"] = {
+			mod("Damage", "MORE", nil, 0, KeywordFlag.Ailment, { type = "Multiplier", var = "SnipeStage" }),
+		},
+		["snipe_triggered_skill_hit_damage_+%_final_per_stage"] = {
+			mod("Damage", "MORE", nil, 0, KeywordFlag.Hit, { type = "Multiplier", var = "SnipeStage" }),
+		},
+		
+		 
+	},
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		attack = true,
+		projectile = true,
+	},
+	baseMods = {
+		flag("Condition:CanSnipeStage"),
+		mod("Dummy", "DUMMY", 1, 0, 0, { type = "Condition", var = "CanSnipeStage" }),
+	},
+	qualityStats = {
+	},
+	stats = {
+		"snipe_max_stacks",
+		"override_turn_duration_ms",
+		"snipe_triggered_skill_ailment_damage_+%_final_per_stage",
+		"snipe_triggered_skill_hit_damage_+%_final_per_stage",
+		"skill_can_fire_arrows",
+		"is_snipe_default_projectile",
+		"is_snipe_default_projectile_2",
+	},
+	levels = {
+		[20] = { 6, 100, 120, 165, attackSpeedMultiplier = 80, levelRequirement = 70, manaCost = 4, statInterpolation = { 1, 1, 1, 1, }, },
+	},
+}
+
+
+skills["ChannelledSnipeSupport"] = {
+	name = "狙击吟唱（辅）",
+	hidden = true,
+	color = 2,
+	support = true,
+	requireSkillTypes = { SkillType.ProjectileAttack, SkillType.Type56, SkillType.OR, SkillType.Triggerable, SkillType.AND, },
+	addSkillTypes = { SkillType.Triggered, SkillType.Type90, },
+	excludeSkillTypes = { SkillType.Totem, SkillType.Trap, SkillType.Mine, SkillType.ManaCostReserved, SkillType.Vaal, SkillType.Instant, SkillType.Channelled, },
+	statDescriptionScope = "gem_stat_descriptions",
+	statMap = {
+	
+	 
+		 ["skill_triggered_by_snipe"] = {
+			flag("Condition:CanSnipeStage"),
+			mod("Dummy", "DUMMY", 1, 0, 0, { type = "Condition", var = "CanSnipeStage" }),
+		},
+		 ["snipe_triggered_skill_ailment_damage_+%_final_per_stage"] = {
+			mod("Damage", "MORE", nil, 0, KeywordFlag.Ailment, { type = "Multiplier", var = "SnipeStage" }),
+		},
+		["snipe_triggered_skill_hit_damage_+%_final_per_stage"] = {
+			mod("Damage", "MORE", nil, 0, KeywordFlag.Hit, { type = "Multiplier", var = "SnipeStage" }),
+		},
+	},
+	baseMods = {
+		mod("Damage", "MORE", -33),
+		 
+	},
+	qualityStats = {
+	},
+	stats = {
+		"snipe_triggered_skill_damage_+%_final",
+		"snipe_triggered_skill_ailment_damage_+%_final_per_stage",
+		"snipe_triggered_skill_hit_damage_+%_final_per_stage",
+		"skill_triggered_by_snipe",
+	},
+	levels = {
+		[20] = { 0, 120, 165, cooldown = 0.05, levelRequirement = 0, statInterpolation = { 1, 1, 1, }, },
+	},
+}

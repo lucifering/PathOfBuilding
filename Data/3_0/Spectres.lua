@@ -3163,3 +3163,166 @@ minions["Metadata/Monsters/SkeletonSoldier/SkeletonSoldierRangedTornadoShotBleac
 		"亡灵生物", 
 	},
 }
+
+--Baranite Thaumaturge
+minions["Metadata/Monsters/AtlasExiles/CrusaderInfluenceMonsters/CrusaderMageguardCasterSpectre"] = {
+	name = "追随巴兰的奇术师",
+	life = 4.05,
+	energyShield = 0.8,
+	fireResist = 0,
+	coldResist = 0,
+	lightningResist = 75,
+	chaosResist = 0,
+	damage = 1.5,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 14,
+	accuracy = 1,
+	skillList = {
+		"AtlasExilesCrusaderMageguardProjectile",
+		"EmptyActionSpellCrusaderMageguard",
+		"AtlasCrusaderMageguardSpawnBombSpectre",
+		"AtlasExileCrusaderMageguardBombExplodeSpectre",
+		"AtlasCrusaderMageguardBeam",
+		"WalkEmergeAtlasInfluenceMonster",
+	},
+	modList = {
+	},
+	modListSP = {
+		
+	},
+}
+
+
+--Scinteel Synthete
+minions["Metadata/Monsters/LeagueSynthesis/SynthesisSoulstealer3Spectre"] = {
+	name = "菲刃融合体",
+	life = 5,
+	energyShield = 0.8,
+	fireResist = 0,
+	coldResist = 0,
+	lightningResist = 85,
+	chaosResist = 0,
+	damage = 1.5,
+	damageSpread = 0.2,
+	attackTime = 1.305,
+	attackRange = 8,
+	accuracy = 1,
+	skillList = {
+		"SynthesisSoulstealerProjectileLightning",
+		"EmptyActionSynthesisSoulstealerArc",
+		"SynthesisSoulstealerLaser",
+		"SynthesisSoulstealerBolt",
+		"GeometryTriggerSynthesisSoulstealer3",
+	},
+	modList = {
+		-- MonsterTagSynthesised
+		-- MonsterSynthesisLargeDropModifiers_ [monster_slain_experience_+% = 0] [monster_dropped_item_quantity_+% = 700] [monster_dropped_item_rarity_+% = 1500] [monster_no_map_drops = 0]
+	},
+	modListSP = {
+		"忆境怪物",
+		"忆境怪物掉落加成（大）",
+		"怪物掉落物品数量+700%",
+		"怪物掉落物品稀有度+1500%",
+	},
+}
+
+--Turong
+minions["Metadata/Monsters/LeagueDelve/TaowuChampionSpectre"] = {
+	name = "梼杌",
+	life = 5.25,
+	energyShield = 0.2,
+	armour = 0.5,
+	fireResist = 75,
+	coldResist = 0,
+	lightningResist = 0,
+	chaosResist = 0,
+	damage = 1.31,
+	damageSpread = 0.2,
+	attackTime = 1.335,
+	attackRange = 10,
+	accuracy = 1,
+	skillList = {		
+		"FireballTaowuDash",
+		"FireballTaowuCombo",
+		"DelveMeleeFire",
+		"EmptyActionAttackTaowuDash",
+		"AddBuffToTargetDelveDarkZone",
+		"DelveTaowuSlash",
+		"EmptyActionAttackTaowuDashSwipe",
+		"DelveTaowuDashAttack",
+		"DelveTaowuBackwardsSlash",
+		"WalkEmergeDelveWetaUpForward",
+	},
+	modList = {
+		-- MonsterDelveLargeDropModifiers_ [monster_slain_experience_+% = 0] [monster_dropped_item_quantity_+% = 200] [monster_dropped_item_rarity_+% = 1000] [monster_no_map_drops = 0]
+	},
+	modListSP = {
+		"矿坑怪物掉落加成（大）",
+		"怪物掉落物品数量+200%",
+		"怪物掉落物品稀有度+1000%",
+		"怪物不掉落地图"
+		
+	},
+}
+
+--Flayed Lookout
+minions["Metadata/Monsters/LeagueBetrayal/BetrayalSkeletonRangedSpectre"] = {
+	name = "无皮哨探",
+	life = 1.2,
+	armour = 0.15,
+	fireResist = 0,
+	coldResist = 0,
+	lightningResist = 40,
+	chaosResist = 0,
+	damage = 1.2,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 80,
+	accuracy = 1,
+	weaponType1 = "Bow",
+	skillList = {
+		"BetrayalSkeletonMelee",
+		"WalkEmergeBetrayal",
+		"BetrayalSkeletonSnipe",
+	},
+	modList = {
+		-- MonsterNecromancerRaisable [undead_description = 1]
+	},
+	modListSP = {
+		"亡灵生物", 
+	},
+}
+
+
+-- Baranite Cleric
+minions["Metadata/Monsters/AtlasExiles/CrusaderInfluenceMonsters/CrusaderBlackguardClericSpectre"] = {
+	name = "追随巴兰的牧师",
+	life = 1.2,
+	energyShield = 0.4,
+	fireResist = 0,
+	coldResist = 0,
+	lightningResist = 40,
+	chaosResist = 0,
+	damage = 1.2,
+	damageSpread = 0.2,
+	attackTime = 1.995,
+	attackRange = 40,
+	accuracy = 1,
+	skillList = {
+		"AtlasExilesCrusaderClericBlast",
+		"WalkEmergeAtlasInfluenceMonster",
+	},
+	modList = {
+  
+		-- AtlasCrusaderClericAuraSpectre [physical_damage_%_to_add_as_lightning = 20] [base_chance_to_shock_% = 10]
+		--   mod("ExtraAura", "LIST", { mod =  mod("PhysicalDamageGainAsLightning", "BASE", 20) }),
+		-- mod("ExtraAura", "LIST", { mod =  mod("EnemyShockChance", "BASE", 10) }),
+		 
+	},
+	modListSP = {
+		"巴兰牧师光环（10%感电几率、附加 20% 物理伤害的闪电伤害）", 
+	},
+}
+
+

@@ -359,6 +359,7 @@ local function doActorMisc(env, actor)
 	else
 		output.SiphoningCharges = 0
 	end
+	 
 	if modDB:Flag(nil, "UseChallengerCharges") then
 		output.ChallengerCharges = modDB:Override(nil, "ChallengerCharges") or output.ChallengerChargesMax
 	else
@@ -386,6 +387,7 @@ local function doActorMisc(env, actor)
 	modDB.multipliers["BlitzCharge"] = output.BlitzCharges
 	modDB.multipliers["InspirationCharge"] = output.InspirationCharges
 	modDB.multipliers["CrabBarrier"] = output.CrabBarriers
+	
 
 	-- Process enemy modifiers 
 	for _, value in ipairs(modDB:List(nil, "EnemyModifier")) do
@@ -957,28 +959,32 @@ function calcs.perform(env)
 							if not modDB:Flag(nil, "AlliesAurasCannotAffectSelf") then
 								local srcList = new("ModList")
 								local inc = skillModList:Sum("INC", skillCfg, "AuraEffect", "BuffEffect") + modDB:Sum("INC", nil, "BuffEffectOnSelf", "AuraEffectOnSelf")
-								local more = skillModList:More(skillCfg, "AuraEffect", "BuffEffect") + modDB:More(nil, "BuffEffectOnSelf", "AuraEffectOnSelf")
+								local more = skillModList:More(skillCfg, "AuraEffect", "BuffEffect") * modDB:More(nil, "BuffEffectOnSelf", "AuraEffectOnSelf")
 								srcList:ScaleAddList(buff.modList, (1 + inc / 100) * more)
 								mergeBuff(srcList, buffs, buff.name)
 							end
 							if env.minion and (env.minion ~= activeSkill.minion or not activeSkill.skillData.auraCannotAffectSelf) then
 								local srcList = new("ModList")
 								local inc = skillModList:Sum("INC", skillCfg, "AuraEffect", "BuffEffect") + env.minion.modDB:Sum("INC", nil, "BuffEffectOnSelf", "AuraEffectOnSelf")
-								local more = skillModList:More(skillCfg, "AuraEffect", "BuffEffect") + env.minion.modDB:More(nil, "BuffEffectOnSelf", "AuraEffectOnSelf")
+								local more = skillModList:More(skillCfg, "AuraEffect", "BuffEffect") * env.minion.modDB:More(nil, "BuffEffectOnSelf", "AuraEffectOnSelf")
 								srcList:ScaleAddList(buff.modList, (1 + inc / 100) * more)
 								mergeBuff(srcList, minionBuffs, buff.name)
 							end
 						end
 					elseif buff.type == "Curse" then
+					 
 						if env.mode_effective and activeSkill.skillData.enable and not enemyDB:Flag(nil, "Hexproof") then
 							local curse = {
 								name = buff.name,
 								priority = 1,
 							}
 							local inc = skillModList:Sum("INC", skillCfg, "CurseEffect") + enemyDB:Sum("INC", nil, "CurseEffectOnSelf")
-							local more = skillModList:More(skillCfg, "CurseEffect") + enemyDB:More(nil, "CurseEffectOnSelf")
+							 
+							local more = skillModList:More(skillCfg, "CurseEffect") * enemyDB:More(nil, "CurseEffectOnSelf")
 							curse.modList = new("ModList")
+							 
 							curse.modList:ScaleAddList(buff.modList, (1 + inc / 100) * more)
+							 
 							t_insert(minionCurses, curse)
 						end
 					elseif buff.type == "Debuff" then

@@ -464,7 +464,7 @@ return {
 					tag = "affliction_attack_damage_while_holding_a_shield",
 					stats = { "持盾牌时造成的攻击伤害提高 12% " },
 					enchant = {
-						"增加的小天赋获得：持盾牌时造成的攻击伤害提高 12% ",
+						"增加的小天赋获得：持盾牌时造成的攻击伤害提高 12%",
 					},
 				},
 				["affliction_attack_damage_"] = {

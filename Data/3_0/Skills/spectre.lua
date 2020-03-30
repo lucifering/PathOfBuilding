@@ -5160,7 +5160,7 @@ skills["AtlasExilesCrusaderClericBlast"] = {
 		[1] = { 0.5, 1.5, critChance = 5, levelRequirement = 0, statInterpolation = { 3, 3, }, },
 	},
 }
-skills["WalkEmergeAtlasInfluenceMonster"] = {
+skills["WalkEmergeAtlasInfluenceMonster_SP"] = {
 	name = "巴兰牧师光环",
 	hidden = true,
 	color = 4,
@@ -5187,3 +5187,912 @@ skills["WalkEmergeAtlasInfluenceMonster"] = {
 		[1] = { 0, levelRequirement = 1, statInterpolation = { }, },
 	},
 }
+
+
+--Baranite Preacher
+skills["AtlasCrusaderJudgeBallLightning"] = {
+	name = "天雷之珠",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 0.41249999403954,
+	incrementalEffectiveness = 0.045000001788139,
+	description = "射出一个移动缓慢的天雷之珠, 将会周期性的对周围的敌人施放闪电并造成伤害.",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Area] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.LightningSkill] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.6,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_lightning_damage",
+		"spell_maximum_base_lightning_damage",
+		"base_projectile_speed_+%",
+		"base_is_projectile",
+	},
+	levels = {
+		[1] = { 0.5, 1.5, -25, critChance = 32, levelRequirement = 0, statInterpolation = { 3, 3, 1, }, },
+	},
+}
+skills["AtlasCruasderJudgeFadingNova"] = {
+	name = "衰落新星",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 3,
+	incrementalEffectiveness = 0.045000001788139,
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.33,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_lightning_damage",
+		"spell_maximum_base_lightning_damage",
+		"monster_projectile_variation",
+		"number_of_additional_projectiles",
+		"base_is_projectile",
+		"always_pierce",
+		"use_scaled_contact_offset",
+		"projectiles_nova",
+	},
+	levels = {
+		[1] = { 0.5, 1.5, 128, 7, critChance = 5, cooldown = 8, levelRequirement = 0, statInterpolation = { 3, 3, 1, 1, }, },
+	},
+}
+----Snowcaller
+skills["AtlasExileEyrieCasterProjectile"] = {
+	name = "施法者投射",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 2.5,
+	incrementalEffectiveness = 0.03999999910593,
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.33,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"monster_projectile_variation",
+		"spell_minimum_base_cold_damage",
+		"spell_maximum_base_cold_damage",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+		"use_scaled_contact_offset",
+	},
+	levels = {
+		[1] = { 132, 0.80000001192093, 1.2000000476837, critChance = 5, levelRequirement = 0, statInterpolation = { 1, 3, 3, }, },
+	},
+}
+skills["AtlasEyrieIceSpear"] = {
+	name = "冰矛",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 1.5,
+	incrementalEffectiveness = 0.037000000476837,
+	description = "凝聚冰之碎片为矛并向前射出, 此冰矛将会穿透附近的敌人, 并对一定距离以外的敌人具有较高的暴击率.",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Hit] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.ColdSkill] = true, [SkillType.CanRapidFire] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 2.5,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_cold_damage",
+		"spell_maximum_base_cold_damage",
+		"ice_spear_second_form_critical_strike_chance_+%",
+		"ice_spear_second_form_projectile_speed_+%_final",
+		"ice_spear_second_form_critical_strike_multiplier_+",
+		"number_of_additional_projectiles",
+		"projectile_random_angle_based_on_distance_to_target_location_%",
+		"skill_visual_scale_+%",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+		"use_scaled_contact_offset",
+	},
+	levels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 600, 1200, 0, 0, 15, -50, critChance = 7, cooldown = 10, levelRequirement = 0, statInterpolation = { 3, 3, 1, 1, 1, 1, 1, 1, }, },
+	},
+}
+skills["AtlasEyrieArcticCasterBlast"] = {
+	name = "施法者爆破",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 4.5,
+	incrementalEffectiveness = 0.045000001788139,
+	skillTypes = { [SkillType.Triggerable] = true, [SkillType.Hit] = true, [SkillType.Area] = true,},
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 3,
+	baseFlags = {
+		spell = true,
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_cold_damage",
+		"spell_maximum_base_cold_damage",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 0.80000001192093, 1.2000000476837, critChance = 5, cooldown = 8, levelRequirement = 0, statInterpolation = { 3, 3, }, },
+	},
+}
+
+--2020-3-30--
+--Mindweave Sentinel
+skills["SynthesisRibbonProjectile"] = {
+	name = "投射物",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 2.25,
+	incrementalEffectiveness = 0.045000001788139,
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.5,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"monster_projectile_variation",
+		"spell_minimum_base_cold_damage",
+		"spell_maximum_base_cold_damage",
+		"spell_maximum_action_distance_+%",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+		"use_scaled_contact_offset",
+	},
+	levels = {
+		[1] = { 97, 0.80000001192093, 1.2000000476837, -30, critChance = 5, levelRequirement = 0, statInterpolation = { 1, 3, 3, 1, }, },
+	},
+}
+skills["SynthesisRibbonMortar"] = {
+	name = "炮击",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 2.5,
+	incrementalEffectiveness = 0.03999999910593,
+	description = "通用的怪物炮击技能. 与怪物投射物相似, 但带有冲击效果.",
+	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 3.3,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"projectile_spread_radius",
+		"projectile_minimum_range",
+		"number_of_additional_projectiles",
+		"mortar_projectile_distance_override",
+		"spell_minimum_base_cold_damage",
+		"spell_maximum_base_cold_damage",
+		"number_of_projectiles_override",
+		"is_area_damage",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+		"use_scaled_contact_offset",
+	},
+	levels = {
+		[1] = { 5, 15, 0, 0, 0.80000001192093, 1.2000000476837, 0, critChance = 5, cooldown = 10, levelRequirement = 0, statInterpolation = { 1, 1, 1, 1, 3, 3, 1, }, },
+	},
+}
+skills["SynthesisRibbonGeometryTrigger"] = {
+	name = "矩阵",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 1.2000000476837,
+	incrementalEffectiveness = 0.035000000149012,
+	skillTypes = { [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 2.5,
+	baseFlags = {
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+	},
+	levels = {
+		[1] = { cooldown = 10, levelRequirement = 0, statInterpolation = { }, },
+	},
+}
+skills["SynthesisRibbonMassMortar"] = {
+	name = "炮击",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 1.25,
+	incrementalEffectiveness = 0.03999999910593,
+	description = "通用的怪物炮击技能. 与怪物投射物相似, 但带有冲击效果.",
+	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 3.3,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"projectile_spread_radius",
+		"projectile_minimum_range",
+		"number_of_additional_projectiles",
+		"mortar_projectile_distance_override",
+		"spell_minimum_base_cold_damage",
+		"spell_maximum_base_cold_damage",
+		"skill_visual_scale_+%",
+		"is_area_damage",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+		"mortar_projectile_scale_animation_speed_instead_of_projectile_speed",
+		"use_scaled_contact_offset",
+	},
+	levels = {
+		[1] = { 0, 0, 0, 0, 0.80000001192093, 1.2000000476837, 0, critChance = 5, levelRequirement = 0, statInterpolation = { 1, 1, 1, 1, 3, 3, 1, }, },
+	},
+}
+--Frosal Synthete
+skills["SynthesisSoulstealerProjectileCold"] = {
+	name = "冰霜投射物",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 2.5,
+	incrementalEffectiveness = 0.037999998778105,
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.33,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"monster_projectile_variation",
+		"spell_minimum_base_cold_damage",
+		"spell_maximum_base_cold_damage",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+	},
+	levels = {
+		[1] = { 102, 0.80000001192093, 1.2000000476837, critChance = 5, levelRequirement = 0, statInterpolation = { 1, 3, 3, }, },
+	},
+}
+skills["EmptyActionSynthesisColdCascade"] = {
+	name = "冰霜倾泻（部分）",
+	hidden = true,
+	color = 4,
+	skillTypes = { },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 3,
+	baseFlags = {
+		spell = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"skill_cannot_be_stunned",
+		"skill_cannot_be_knocked_back",
+	},
+	levels = {
+		[1] = { cooldown = 12, levelRequirement = 0, statInterpolation = { }, },
+	},
+}
+skills["SynthesisColdCascadeObject"] = {
+	name = "冰霜倾泻物质（部分）",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+	},
+	levels = {
+		[1] = { levelRequirement = 1, statInterpolation = { }, },
+	},
+}
+skills["SynthesisColdCascadeGeometry"] = {
+	name = "冰霜倾泻矩阵（部分）",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 1.1499999761581,
+	incrementalEffectiveness = 0.043999999761581,
+	skillTypes = { [SkillType.Triggerable] = true, [SkillType.Hit] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		spell = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_cold_damage",
+		"spell_maximum_base_cold_damage",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 0.80000001192093, 1.2000000476837, critChance = 5, levelRequirement = 0, statInterpolation = { 3, 3, }, },
+	},
+}
+skills["SynthesisColdRend"] = {
+	name = "冰霜撕裂",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 2.4000000953674,
+	incrementalEffectiveness = 0.045000001788139,
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Projectile] = true, [SkillType.DamageOverTime] = true, [SkillType.ChaosSkill] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, [SkillType.Type59] = true, [SkillType.AreaSpell] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.5,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+		{ "chaos_damage_+%", 1 },
+	},
+	stats = {
+		"base_cold_damage_to_deal_per_minute",
+		"number_of_additional_projectiles",
+		"active_skill_projectile_speed_+%_variation_final",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+	},
+	levels = {
+		[1] = { 41.666667597989, 2, 50, levelRequirement = 1, duration = 1, cooldown = 8, statInterpolation = { 3, 1, 1, }, },
+	},
+}
+skills["SynthesisIceSpear"] = {
+	name = "冰矛",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 1.2000000476837,
+	incrementalEffectiveness = 0.037000000476837,
+	description = "凝聚冰之碎片为矛并向前射出, 此冰矛将会穿透附近的敌人, 并对一定距离以外的敌人具有较高的暴击率.",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Hit] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.ColdSkill] = true, [SkillType.CanRapidFire] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 2.5,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_cold_damage",
+		"spell_maximum_base_cold_damage",
+		"ice_spear_second_form_critical_strike_chance_+%",
+		"ice_spear_second_form_projectile_speed_+%_final",
+		"ice_spear_second_form_critical_strike_multiplier_+",
+		"number_of_additional_projectiles",
+		"projectile_random_angle_based_on_distance_to_target_location_%",
+		"skill_visual_scale_+%",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+		"use_scaled_contact_offset",
+	},
+	levels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 600, 1200, 0, 0, 15, -50, critChance = 7, cooldown = 10, levelRequirement = 0, statInterpolation = { 3, 3, 1, 1, 1, 1, 1, 1, }, },
+	},
+}
+--Flaric Synthete
+skills["SynthesisSoulstealerProjectileFire"] = {
+	name = "火焰投射物",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 2.5,
+	incrementalEffectiveness = 0.037999998778105,
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.33,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"monster_projectile_variation",
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+	},
+	levels = {
+		[1] = { 101, 0.80000001192093, 1.2000000476837, critChance = 5, levelRequirement = 0, statInterpolation = { 1, 3, 3, }, },
+	},
+}
+skills["SynthesisSelfFlameblast"] = {
+	name = "烈焰爆破",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 2.4000000953674,
+	incrementalEffectiveness = 0.043499998748302,
+	description = "可蓄力（持续施放）来施放大型的爆炸. 蓄力的时间越长, 爆炸的范围与造成的伤害越大. 当停止蓄力后一段时间或使用其他技能时便会触发爆炸.",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTotem] = true, [SkillType.FireSkill] = true, [SkillType.AreaSpell] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 3,
+	baseFlags = {
+		spell = true,
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"charged_blast_spell_damage_+%_final_per_stack",
+		"skill_repeat_count",
+		"base_cast_speed_+%",
+		"flameblast_ailment_damage_+%_final_per_stack",
+		"burn_damage_+%",
+		"is_area_damage",
+		"always_ignite",
+	},
+	levels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 10, 0, 0, 0, 250, critChance = 5, cooldown = 10, levelRequirement = 0, statInterpolation = { 3, 3, 1, 1, 1, 1, 1, }, },
+	},
+}
+skills["SynthesisEnergySlice"] = {
+	name = "能量刀",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 2.4000000953674,
+	incrementalEffectiveness = 0.042500000447035,
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Projectile] = true, [SkillType.ProjectileDamage] = true, [SkillType.ProjectileAttack] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 3,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"main_hand_base_maximum_attack_distance",
+		"active_skill_attack_speed_+%_final",
+		"is_area_damage",
+		"always_pierce",
+	},
+	levels = {
+		[1] = { 0.80000001192093, 1.2000000476837, 100, -25, critChance = 5, cooldown = 6, levelRequirement = 1, statInterpolation = { 3, 3, 1, 1, }, },
+	},
+}
+skills["SynthesisSoulstealerFireStab"] = {
+	name = "火刺",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 1.5,
+	incrementalEffectiveness = 0.03999999910593,
+	skillTypes = { [SkillType.Triggerable] = true, [SkillType.Hit] = true, [SkillType.Area] = true,},
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		spell = true,
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 0.80000001192093, 1.2000000476837, critChance = 5, levelRequirement = 0, statInterpolation = { 3, 3, }, },
+	},
+}
+skills["DashToTarget"] = {
+	name = "冲刺",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Spell] = true, [SkillType.MovementSkill] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 2,
+	baseFlags = {
+		spell = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"walk_emerge_extra_distance",
+	},
+	levels = {
+		[1] = { -15, cooldown = 5, levelRequirement = 1, statInterpolation = { 1, }, },
+	},
+}
+--Aurid Synthete
+skills["SynthesisSoulstealerProjectilePhysical"] = {
+	name = "物理投射物",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 1,
+	incrementalEffectiveness = 0.037999998778105,
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.33,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"monster_projectile_variation",
+		"spell_minimum_base_physical_damage",
+		"spell_maximum_base_physical_damage",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+	},
+	levels = {
+		[1] = { 104, 0.80000001192093, 1.2000000476837, critChance = 5, levelRequirement = 0, statInterpolation = { 1, 3, 3, }, },
+	},
+}
+skills["SynthesisSoulstealerQuicksand"] = {
+	name = "流沙",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 2.5,
+	incrementalEffectiveness = 0.045000001788139,
+	skillTypes = { [SkillType.Area] = true, [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.67,
+	baseFlags = {
+		spell = true,
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+		"ground_quicksand_art_variation",
+		"base_physical_damage_to_deal_per_minute",
+	},
+	levels = {
+		[1] = { 6000, 4, 16.666667039196, cooldown = 8, levelRequirement = 0, statInterpolation = { 1, 1, 3, }, },
+	},
+}
+skills["SynthesisSoulstealerDrones"] = {
+	name = "灵魂风暴（部分）",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.67,
+	baseFlags = {
+		spell = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"summoned_monsters_are_minions",
+		"summoned_monsters_no_drops_or_experience",
+	},
+	levels = {
+		[1] = { cooldown = 15, levelRequirement = 0, statInterpolation = { }, },
+	},
+}
+skills["EmptyActionSynthesisEnrageDrones"] = {
+	name = "怒火（部分）",
+	hidden = true,
+	color = 4,
+	skillTypes = { },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.5,
+	baseFlags = {
+		spell = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"skill_cannot_be_stunned",
+		"skill_cannot_be_knocked_back",
+	},
+	levels = {
+		[1] = { cooldown = 8, levelRequirement = 0, statInterpolation = { }, },
+	},
+}
+skills["SynthesisSoulstealerDroneEnrage"] = {
+	name = "灵魂风暴狂怒（部分）",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+	},
+	levels = {
+		[1] = { levelRequirement = 0, statInterpolation = { }, },
+	},
+}
+skills["GeometrySpellSynthesisPhysical"] = {
+	name = "物理法术",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 1.2999999523163,
+	incrementalEffectiveness = 0.035000000149012,
+	skillTypes = { [SkillType.Triggerable] = true, [SkillType.Hit] = true, [SkillType.Area] = true,},
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		spell = true,
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_physical_damage",
+		"spell_maximum_base_physical_damage",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 0.80000001192093, 1.2000000476837, critChance = 5, levelRequirement = 1, statInterpolation = { 3, 3, }, },
+	},
+}
+skills["SynthesisPhysicalTripleMortar"] = {
+	name = "炮击",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 1.2999999523163,
+	incrementalEffectiveness = 0.035000000149012,
+	description = "通用的怪物炮击技能. 与怪物投射物相似, 但带有冲击效果.",
+	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 3.67,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"projectile_spread_radius",
+		"projectile_minimum_range",
+		"number_of_additional_projectiles",
+		"mortar_projectile_distance_override",
+		"spell_minimum_base_physical_damage",
+		"spell_maximum_base_physical_damage",
+		"skill_physical_damage_%_to_convert_to_fire",
+		"number_of_projectiles_override",
+		"is_area_damage",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+		"mortar_projectile_scale_animation_speed_instead_of_projectile_speed",
+	},
+	levels = {
+		[1] = { 25, 20, 0, 0, 0.80000001192093, 1.2000000476837, 0, 2, critChance = 5, cooldown = 12, levelRequirement = 0, statInterpolation = { 1, 1, 1, 1, 3, 3, 1, 1, }, },
+	},
+}
+skills["SynthesisSoulstealerBombDetonate"] = {
+	name = "灵魂风暴爆炸（部分）",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 2.5,
+	baseFlags = {
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+	},
+	levels = {
+		[1] = { levelRequirement = 0, statInterpolation = { }, },
+	},
+}
+skills["SynthesisSoulstealerDronesOnSelf"] = {
+	name = "自身灵魂风暴（部分）",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.67,
+	baseFlags = {
+		spell = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"summoned_monsters_are_minions",
+		"summoned_monsters_no_drops_or_experience",
+	},
+	levels = {
+		[1] = { cooldown = 15, levelRequirement = 0, statInterpolation = { }, },
+	},
+}
+skills["SynthesisPhysicalVolatileSlam"] = {
+	name = "物理不稳定撞击",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		attack = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"active_skill_damage_+%_final",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 0, levelRequirement = 0, statInterpolation = { 1, }, },
+	},
+}
+skills["SynthesisQuicksandStartEffect"] = {
+	name = "流沙",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.4,
+	baseFlags = {
+		spell = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+	},
+	levels = {
+		[1] = { levelRequirement = 1, statInterpolation = { }, },
+	},
+}
+--Winged Synthete
+skills["SynthesisWyvernProjectile"] = {
+	name = "投射物",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 2,
+	incrementalEffectiveness = 0.03999999910593,
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.5,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"monster_projectile_variation",
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+	},
+	levels = {
+		[1] = { 109, 0.80000001192093, 1.2000000476837, critChance = 5, levelRequirement = 0, statInterpolation = { 1, 3, 3, }, },
+	},
+}
+skills["SynthesisWyvernMortar"] = {
+	name = "炮击",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 3,
+	incrementalEffectiveness = 0.045000001788139,
+	description = "通用的怪物炮击技能. 与怪物投射物相似, 但带有冲击效果.",
+	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 2.5,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"projectile_spread_radius",
+		"projectile_minimum_range",
+		"number_of_additional_projectiles",
+		"mortar_projectile_distance_override",
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"is_area_damage",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+		"use_scaled_contact_offset",
+	},
+	levels = {
+		[1] = { 0, 15, 0, 0, 0.80000001192093, 1.2000000476837, critChance = 5, cooldown = 8, levelRequirement = 1, statInterpolation = { 1, 1, 1, 1, 3, 3, }, },
+	},
+}
+

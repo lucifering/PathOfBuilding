@@ -2326,10 +2326,11 @@ tooltip:AddLine(16, s_format("^x7F7F7F每次使用消耗 %s%d ^x7F7F7F充能，�
 			main:StatColor(flaskData.chargesMax, base.flask.chargesMax), flaskData.chargesMax
 		))
 		for _, modLine in pairs(item.buffModLines) do
-			if modLine.buff then
+			--if modLine.buff then
 				tooltip:AddLine(16, (modLine.extra and colorCodes.UNSUPPORTED or colorCodes.MAGIC) .. modLine.line)
-			end
+			--end
 		end
+	 
 	elseif item.type == "Jewel" then
 		-- Jewel-specific info
 		if item.limit then

@@ -325,7 +325,7 @@ function GemSelectClass:Draw(viewPort)
 				else
 					gemList[self.index] = nil
 				end
-				self.skillsTab.build:AddStatComparesToTooltip(self.tooltip, calcBase, output, "^7Selecting this gem will give you:")
+				self.skillsTab.build:AddStatComparesToTooltip(self.tooltip, calcBase, output, "^7选择这个技能能获得:")
 				self.tooltip:Draw(x, y + height + 2 + (self.hoverSel - 1) * (height - 4) - scrollBar.offset, width, height - 4, viewPort)
 			end
 		end
@@ -453,7 +453,7 @@ self.tooltip:AddLine(16, string.format("^x7F7F7F品质: "..colorCodes.MAGIC.."+%
 		self.skillsTab.build:AddRequirementsToTooltip(self.tooltip, gemInstance.reqLevel, gemInstance.reqStr, gemInstance.reqDex, gemInstance.reqInt)
 	end
 	if grantedEffect.description then
-		local wrap = main:WrapString(grantedEffect.description, 16, m_max(DrawStringWidth(16, "VAR", gemInstance.gemData.tagString), 400))
+		local wrap = main:WrapString(grantedEffect.description:gsub("。\n","。"):gsub("。","。\n"), 16, m_max(DrawStringWidth(16, "VAR", gemInstance.gemData.tagString), 400))
 		for _, line in ipairs(wrap) do
 			self.tooltip:AddLine(16, colorCodes.GEM..line)
 		end

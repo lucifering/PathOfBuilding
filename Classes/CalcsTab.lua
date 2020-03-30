@@ -289,7 +289,7 @@ control = new("ButtonControl", nil, 0, 0, 100, 16, "灵体管理...", function()
 						 tooltip:AddLine(16, "^x7F7F7F需求 Level "..curlevelRequirement)
 						 tooltip:AddSeparator(10)
 						 if grantedEffect.description then
-							local wrap = main:WrapString(grantedEffect.description, 16, m_max(DrawStringWidth(16, "VAR", grantedEffect.id), 400))
+							local wrap = main:WrapString(grantedEffect.description:gsub("。\n","。"):gsub("。","。\n"), 16, m_max(DrawStringWidth(16, "VAR", grantedEffect.id), 400))
 							for _, line in ipairs(wrap) do
 								tooltip:AddLine(16, colorCodes.GEM..line)
 							end

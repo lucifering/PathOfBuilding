@@ -3311,7 +3311,7 @@ minions["Metadata/Monsters/AtlasExiles/CrusaderInfluenceMonsters/CrusaderBlackgu
 	accuracy = 1,
 	skillList = {
 		"AtlasExilesCrusaderClericBlast",
-		"WalkEmergeAtlasInfluenceMonster",
+		"WalkEmergeAtlasInfluenceMonster_SP",
 	},
 	modList = {
   
@@ -3322,6 +3322,241 @@ minions["Metadata/Monsters/AtlasExiles/CrusaderInfluenceMonsters/CrusaderBlackgu
 	},
 	modListSP = {
 		"巴兰牧师光环（10%感电几率、附加 20% 物理伤害的闪电伤害）", 
+	},
+}
+
+
+
+
+--Baranite Preacher
+minions["Metadata/Monsters/AtlasExiles/CrusaderInfluenceMonsters/CrusaderTemplarJudgeSpectre"] = {
+	name = "追随巴兰的教士",
+	life = 1.68,
+	energyShield = 0.2,
+	armour = 0.5,
+	fireResist = 0,
+	coldResist = 0,
+	lightningResist = 40,
+	chaosResist = 0,
+	damage = 1.2,
+	damageSpread = 0.2,
+	attackTime = 1.755,
+	attackRange = 9,
+	accuracy = 1,
+	skillList = {
+		"AtlasCrusaderJudgeBallLightning",
+		"AtlasCruasderJudgeFadingNova",
+		"WalkEmergeAtlasInfluenceMonster",
+	},
+	modList = {
+	},
+	modListSP = {
+		 
+	},
+}
+
+--Snowcaller
+minions["Metadata/Monsters/AtlasExiles/EyrieInfluenceMonsters/EyrieArcticCrystalCasterSpectre_"] = {
+	name = "唤雪者",
+	life = 4.05,
+	energyShield = 0.16,
+	fireResist = 0,
+	coldResist = 75,
+	lightningResist = 0,
+	chaosResist = 0,
+	damage = 1.5,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 14,
+	accuracy = 1,
+	skillList = {
+		"WalkEmergeAtlasInfluenceMonster",
+		"AtlasExileEyrieCasterProjectile",
+		"AtlasEyrieIceSpear",
+		"AtlasEyrieArcticCasterBlast",
+	},
+	modList = {
+	},
+	modListSP = {
+		 
+	},
+}
+
+
+
+--Mindweave Sentinel
+minions["Metadata/Monsters/LeagueSynthesis/SynthesisRibbonLargeColdSpectre"] = {
+	name = "织心哨兵",
+	life = 4.5,
+	energyShield = 0.4,
+	fireResist = 0,
+	coldResist = 85,
+	lightningResist = 0,
+	chaosResist = 0,
+	damage = 1.2,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 6,
+	accuracy = 1,
+	skillList = {
+		"SynthesisRibbonProjectile",
+		"SynthesisRibbonMortar",
+		"SynthesisRibbonGeometryTrigger",
+		"SynthesisRibbonMassMortar",
+	},
+	modList = {
+		-- MonsterTagSynthesised
+		-- MonsterSynthesisLargeDropModifiers_ [monster_slain_experience_+% = 0] [monster_dropped_item_quantity_+% = 700] [monster_dropped_item_rarity_+% = 1500] [monster_no_map_drops = 0]
+	},
+	modListSP = {
+		"忆境怪物",
+		"忆境怪物掉落加成（大）",
+		"怪物掉落物品数量+700%",
+		"怪物掉落物品稀有度+1500%",
+		"怪物不掉落地图",
+		 
+	},
+}
+
+--Frosal Synthete
+minions["Metadata/Monsters/LeagueSynthesis/SynthesisSoulstealer2Spectre"] = {
+	name = "冰双融合体",
+	life = 5,
+	energyShield = 0.8,
+	fireResist = 0,
+	coldResist = 85,
+	lightningResist = 0,
+	chaosResist = 0,
+	damage = 1.5,
+	damageSpread = 0.2,
+	attackTime = 1.305,
+	attackRange = 8,
+	accuracy = 1,
+	skillList = {
+		"SynthesisSoulstealerProjectileCold",
+		"EmptyActionSynthesisColdCascade",
+		"SynthesisColdCascadeObject",
+		"SynthesisColdCascadeGeometry",
+		"SynthesisColdRend",
+		"SynthesisIceSpear",
+	},
+	modList = {
+		-- MonsterTagSynthesised
+		-- MonsterSynthesisLargeDropModifiers_ [monster_slain_experience_+% = 0] [monster_dropped_item_quantity_+% = 700] [monster_dropped_item_rarity_+% = 1500] [monster_no_map_drops = 0]
+	},
+	modListSP = {
+		 "忆境怪物",
+		"忆境怪物掉落加成（大）",
+		"怪物掉落物品数量+700%",
+		"怪物掉落物品稀有度+1500%",
+		"怪物不掉落地图",
+	},
+}
+
+
+--Flaric Synthete
+minions["Metadata/Monsters/LeagueSynthesis/SynthesisSoulstealer1Spectre"] = {
+	name = "纤威融合体",
+	life = 5,
+	energyShield = 0.8,
+	fireResist = 85,
+	coldResist = 0,
+	lightningResist = 0,
+	chaosResist = 0,
+	damage = 1.5,
+	damageSpread = 0.2,
+	attackTime = 1.305,
+	attackRange = 8,
+	accuracy = 1,
+	skillList = {
+		"SynthesisSoulstealerProjectileFire",
+		"SynthesisSelfFlameblast",
+		"SynthesisEnergySlice",
+		"SynthesisSoulstealerFireStab",
+		"DashToTarget",
+	},
+	modList = {
+		-- MonsterTagSynthesised
+		-- MonsterSynthesisLargeDropModifiers_ [monster_slain_experience_+% = 0] [monster_dropped_item_quantity_+% = 700] [monster_dropped_item_rarity_+% = 1500] [monster_no_map_drops = 0]
+	},
+	modListSP = {
+		  "忆境怪物",
+		"忆境怪物掉落加成（大）",
+		"怪物掉落物品数量+700%",
+		"怪物掉落物品稀有度+1500%",
+		"怪物不掉落地图",
+	},
+}
+
+--Aurid Synthete
+minions["Metadata/Monsters/LeagueSynthesis/SynthesisSoulstealer4Spectre"] = {
+	name = "酸试融合体",
+	life = 5,
+	energyShield = 0.8,
+	fireResist = 42,
+	coldResist = 42,
+	lightningResist = 42,
+	chaosResist = 0,
+	damage = 1.5,
+	damageSpread = 0.2,
+	attackTime = 1.305,
+	attackRange = 8,
+	accuracy = 1,
+	skillList = {
+		"SynthesisSoulstealerProjectilePhysical",
+		"SynthesisSoulstealerQuicksand",
+		"SynthesisSoulstealerDrones",
+		"EmptyActionSynthesisEnrageDrones",
+		"SynthesisSoulstealerDroneEnrage",
+		"GeometrySpellSynthesisPhysical",
+		"SynthesisPhysicalTripleMortar",
+		"SynthesisSoulstealerBombDetonate",
+		"SynthesisSoulstealerDronesOnSelf",
+		"SynthesisPhysicalVolatileSlam",
+		"SynthesisQuicksandStartEffect",
+	},
+	modList = {
+		-- MonsterTagSynthesised
+		-- MonsterSynthesisLargeDropModifiers_ [monster_slain_experience_+% = 0] [monster_dropped_item_quantity_+% = 700] [monster_dropped_item_rarity_+% = 1500] [monster_no_map_drops = 0]
+	},
+	modListSP = {
+		  "忆境怪物",
+		"忆境怪物掉落加成（大）",
+		"怪物掉落物品数量+700%",
+		"怪物掉落物品稀有度+1500%",
+		"怪物不掉落地图",
+	},
+}
+
+--Winged Synthete
+minions["Metadata/Monsters/LeagueSynthesis/SynthesisWyvernSpectre"] = {
+	name = "展翼的融合体",
+	life = 0.9,
+	energyShield = 0.1,
+	fireResist = 20,
+	coldResist = 20,
+	lightningResist = 20,
+	chaosResist = 0,
+	damage = 1.1,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 12,
+	accuracy = 1,
+	skillList = {
+		"Melee",
+		"SynthesisWyvernProjectile",
+		"SynthesisWyvernMortar",
+	},
+	modList = {
+		-- MonsterTagSynthesised
+		-- MonsterSynthesisLargeDropModifiers_ [monster_slain_experience_+% = 0] [monster_dropped_item_quantity_+% = 700] [monster_dropped_item_rarity_+% = 1500] [monster_no_map_drops = 0]
+	},
+	modListSP = {
+		"忆境怪物",
+		"忆境怪物掉落加成（大）",
+		"怪物掉落物品数量+700%",
+		"怪物掉落物品稀有度+1500%",
+		"怪物不掉落地图",
 	},
 }
 

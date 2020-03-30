@@ -468,7 +468,7 @@ function PassiveSpecClass:BuildAllDependsAndPaths()
 			for nodeId, itemId in pairs(self.jewels) do
 				if self.build.itemsTab.items[itemId] and self.build.itemsTab.items[itemId].jewelRadiusIndex then
 					local radiusIndex = self.build.itemsTab.items[itemId].jewelRadiusIndex
-					if self.allocNodes[nodeId] and self.nodes[nodeId].nodesInRadius[radiusIndex][node.id] then
+					if self.allocNodes[nodeId] and self.nodes[nodeId].nodesInRadius and self.nodes[nodeId].nodesInRadius[radiusIndex][node.id] then
 						if itemId ~= 0
 							and self.build.itemsTab.items[itemId].jewelData
 							and self.build.itemsTab.items[itemId].jewelData.intuitiveLeapLike then
@@ -919,7 +919,8 @@ function PassiveSpecClass:BuildSubgraph(jewel, parentSocket, id, upSize)
 		node.linked = { }
 		node.power = { }
 		self.tree:ProcessNode(node)
-		if node.modList and jewelData.clusterJewelIncEffect then
+		--增加的小天赋效果提高 #% 只对小天赋
+		if node and node.type == "Normal" and  node.modList and jewelData.clusterJewelIncEffect then
 			node.modList:NewMod("PassiveSkillEffect", "INC", jewelData.clusterJewelIncEffect)
 		end
 	end

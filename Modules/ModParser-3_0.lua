@@ -877,6 +877,7 @@ local preFlagList = {
 		["^爪攻击造成的"] = { flags = ModFlag.Claw },
 		["^爪或匕首攻击造成的"] = { tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Claw, ModFlag.Dagger) } },
 		["^匕首攻击造成的"] = { flags = ModFlag.Dagger },
+		["^锤类或短杖的"] = { flags = ModFlag.Mace },
 		["^锤或短杖攻击造成的"] = { flags = ModFlag.Mace },
 		["^锤, 短杖或长杖攻击造成的"] = { tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Mace, ModFlag.Staff) } },
 		["^长杖攻击造成的"] = { flags = ModFlag.Staff },
@@ -1582,6 +1583,13 @@ local specialModList = {
 	["增加 (%d+) 个无特殊效果的小天赋"] = function(num) return { mod("JewelData", "LIST", { key = "clusterJewelNothingnessCount", value = num }) } end,
 	["增加的小天赋无效果"] = { mod("JewelData", "LIST", { key = "clusterJewelSmallsAreNothingness", value = true }) },
 	["增加的小天赋效果提高 (%d+)%%"] = function(num) return { mod("JewelData", "LIST", { key = "clusterJewelIncEffect", value = num }) } end,
+	-- 部分带召唤生物的装备内置技能  { type = "SkillId", skillId = "" }
+	["击败敌人时有 (%d+)%% 几率触发 (%d+) 级的【幻化武器】"]= function(_, num,levelname,skill_name)return {   mod("ExtraSkill", "LIST", {  skillId ="AnimateWeapon", level = tonumber(levelname)})   } end,
+	["击败敌人时有 (%d+)%% 几率触发 (%d+) 级的【召唤异动奇点】"]= function(_, num,levelname,skill_name)return {   mod("ExtraSkill", "LIST", {  skillId ="SummonVoidSphere", level = tonumber(levelname)})   } end,
+	["击败敌人时有 (%d+)%% 几率触发 (%d+) 级的【召唤幽狼】"]= function(_, num,levelname,skill_name)return {   mod("ExtraSkill", "LIST", {  skillId ="SummonRigwaldsPack", level = tonumber(levelname)})   } end,
+	["获得 (%d+) 级的【召唤兽化之爪】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="SummonBeastialUrsa", level = num})   } end,
+	["获得 (%d+) 级的【召唤兽化巨蛇】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="SummonBeastialSnake", level = num})   } end,
+	["获得 (%d+) 级的【召唤兽化恐喙鸟】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="SummonBeastialRhoa", level = num})   } end,
 	--这里不要less？
 	--local sumLocal
 	["该装备的攻击暴击率提高 (%d+)%%"] = function(num) return {  mod("CritChance", "INC", num)  } end,  
@@ -1737,6 +1745,9 @@ local specialModList = {
 	}, key = "level", value = tonumber(num) }) } end,  
 	 ["所有魔卫复苏技能石等级 %+(%d+)"] = function(num)  return { mod("GemProperty", "LIST",  { type = "SkillName", skillName =FuckSkillActivityCnName('魔卫复苏'), key = "level", value = num }) } end,
 	["所有召唤灵体技能石等级 %+(%d+)"] = function(num)  return { mod("GemProperty", "LIST",  { type = "SkillName", skillName =FuckSkillActivityCnName('召唤灵体'), key = "level", value = num }) } end,
+	["([%+%-]?%d+)%% 召唤灵体, 魔卫复苏, 召唤魔侍的暴击伤害"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("CritMultiplier", "BASE", num) },{ type = "SkillName", skillNameList = { "召唤灵体", "魔卫复苏", "召唤魔侍" } })  } end,
+	["【召唤魔侍】 (%d+)%% 的物理伤害会转化为混沌伤害"]
+	= function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageConvertToChaos", "BASE", num) }, { type = "SkillName", skillName = "召唤魔侍" }) } end,
 	["所有([^\\x00-\\xff]*)石等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", { 
 	keywordList =  {"active_skill",  type_Cn
 	:gsub("物理法术技能","physical_spell")
@@ -1857,6 +1868,7 @@ local specialModList = {
 	["获得等同 ([%d%.]+)%% 物理伤害的闪电伤害"] = function(num) return {  mod("PhysicalDamageGainAsLightning", "BASE", num)  } end,
 	["获得等同 ([%d%.]+)%% 物理伤害的火焰伤害"] = function(num) return {  mod("PhysicalDamageGainAsFire", "BASE", num)  } end,
 	["获得等同 ([%d%.]+)%% 物理伤害的冰霜伤害"] = function(num) return {  mod("PhysicalDamageGainAsCold", "BASE", num)  } end,
+	["对冰缓敌人获得额外冰霜伤害，其数值等同于闪电伤害的 ([%d%.]+)%%"] = function(num) return {  mod("LightningDamageGainAsCold", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Chilled" })  } end,
 	["召唤生物每秒回复 ([%d%.]+)%% 生命"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("LifeRegenPercent", "BASE", num) })  } end,
 	["召唤生物有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("DoubleDamageChance", "BASE", num) })  } end,
 	["召唤生物获得等同 ([%d%.]+)%% 最大生命的额外能量护盾"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("LifeGainAsEnergyShield", "BASE", num) })  } end,
@@ -2197,7 +2209,7 @@ local specialModList = {
 	["拥有最大数量的狂怒球时，攻击有 (%d+)%% 几率使敌人中毒"] = function(num) return{ mod("PoisonChance", "BASE", num, nil, ModFlag.Attack, { type = "StatThreshold", stat = "FrenzyCharges", thresholdStat = "FrenzyChargesMax" }) }end,
 	["召唤生物获得等同 (%d+)%% 物理伤害的额外冰霜伤害"]=function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageGainAsCold", "BASE", num) })  } end,
 	["(%d+)%% 较少(.+)时间"]= function(_, num,skill_name)  return {  mod("Duration", "MORE", -num,{ type = "SkillName", skillName = FuckSkillActivityCnName(skill_name)})  } end,
-	["击败敌人时有 (%d+)%% 几率触发 (%d+) 级的【(.+)】"]= function(_, num,levelname,skill_name)return {   mod("ExtraSkill", "LIST", { skillId =FuckSkillActivityCnName(skill_name), level = levelname})   } end,
+	["击败敌人时有 (%d+)%% 几率触发 (%d+) 级的【(.+)】"]= function(_, num,levelname,skill_name)return {   mod("ExtraSkill", "LIST", { type = "SkillName",skillName =FuckSkillActivityCnName(skill_name), level = levelname})   } end,
 	["物理伤害的 (%d+)%% 转换为闪电伤害"] = function(num) return { mod("PhysicalDamageConvertToLightning", "BASE", num) } end,
 	["闪电法术的 (%d+)%% 物理伤害转换为闪电伤害"] = function(num) return { mod("PhysicalDamageConvertToLightning", "BASE", num, nil, ModFlag.Spell, KeywordFlag.Lightning) } end,
 	["火焰法术的 (%d+)%% 物理伤害转换为火焰伤害"] = function(num) return { mod("PhysicalDamageConvertToFire", "BASE", num, nil, ModFlag.Spell, KeywordFlag.Fire) } end,
@@ -3227,6 +3239,7 @@ local specialModList = {
 	["召唤生物获得 %+(%d+)%% 格挡法术伤害率"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("SpellBlockChance", "BASE", num) })   } end, 
 	["魔像提供的增益效果提高 (%d+)%%"]  = function(num) return { mod("BuffEffect", "INC", num, { type = "SkillType", skillType = SkillType.Golem })   } end,
 	["每 (%d+) 点最大魔力会使法术伤害提高 (%d+)%%，最多 (%d+)%%"] = function(_,num1,num2,num3)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "PerStat", stat = "Mana", div = tonumber(num1), limit = tonumber(num3), limitTotal = true  }) } end,  
+	["每有 (%d+) 最大魔力，混沌伤害提高 (%d+)%% ，最多提高 (%d+)%%"] = function(_,num1,num2,num3)return {  mod("ChaosDamage", "INC", tonumber(num2), { type = "PerStat", stat = "Mana", div = tonumber(num1), limit = tonumber(num3), limitTotal = true  }) } end,  
 	["每 (%d+) 魔力提高 (%d+)%% 法术伤害，最多 (%d+)%%"] = function(_,num1,num2,num3)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "PerStat", stat = "Mana", div = tonumber(num1), limit = tonumber(num3), limitTotal = true  }) } end,  
 	["每 (%d+) 生命保留 %+(%d+) 最大能量护盾"] = function( _, num1,num2,limit)  return { mod("EnergyShield", "BASE", tonumber(num2), { type = "PerStat", stat = "LifeReserved", div = tonumber(num1), limit = tonumber(limit), limitTotal = true })   } end,
 	["每 (%d+) 点生命保留 %+(%d+) 最大能量护盾"] = function( _, num1,num2,limit)  return { mod("EnergyShield", "BASE", tonumber(num2), { type = "PerStat", stat = "LifeReserved", div = tonumber(num1), limit = tonumber(limit), limitTotal = true })   } end,
@@ -4480,7 +4493,7 @@ end
 -- Generate list of cluster jewel skills
 local clusterJewelSkills = {}
 for baseName, jewel in pairs(data["3_0"].clusterJewels.jewels) do
-	for skillId, skill in pairs(jewel.skills) do
+	for skillId, skill in pairs(jewel.skills) do		
 		clusterJewelSkills[table.concat(skill.enchant, " "):lower()] = { mod("JewelData", "LIST", { key = "clusterJewelSkill", value = skillId }) }
 	end
 end

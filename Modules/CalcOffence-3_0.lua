@@ -488,6 +488,10 @@ output.PierceCountString = "所有目标"
 		if breakdown then
 			breakdown.AuraEffectMod = breakdown.mod(skillCfg, "AuraEffect")
 		end
+		output.AuraEffectOnSelfMod=  calcLib.mod(skillModList, skillCfg, "AuraEffectOnSelf","AuraEffect")  
+		if breakdown then			
+			breakdown.AuraEffectOnSelfMod = breakdown.mod(skillCfg, "AuraEffectOnSelf","AuraEffect") 
+		end
 	end
 	if activeSkill.skillTypes[SkillType.Curse] then
 		output.CurseEffectMod = calcLib.mod(skillModList, skillCfg, "CurseEffect")

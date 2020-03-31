@@ -257,6 +257,10 @@ ifCond = "CanSnipeStage", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:SnipeStage", "BASE", m_min(val, 6), "Config", { type = "Condition", var = "Effective" })
 	end },
 	
+{ var = "affectedByHeraldCount", type = "count", label = "你受到几个捷光环影响:", ifSkillList = {"灰烬之捷","寒冰之捷","闪电之捷","纯净之捷","苦痛之捷"}, tooltip = "设置受到几个捷光环影响.\n默认是 0; 最大是  5.", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:AffectedByHeraldCount", "BASE", m_min(val, 5), "Config", { type = "Condition", var = "Effective" })
+	end },
+	
 	-- Section: Map modifiers/curses
 { section = "地图词缀和玩家 Debuff", col = 2 },
 { label = "地图词缀-前缀:" },

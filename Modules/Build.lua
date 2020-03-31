@@ -312,6 +312,9 @@ main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会�
 	self.minionDisplayStats = {
 { stat = "AverageDamage", label = "平均伤害", fmt = ".1f", compPercent = true },
 { stat = "Speed", label = "攻击/施法速度", fmt = ".2f", compPercent = true },
+{ stat = "PreEffectiveCritChance", label = "暴击几率", fmt = ".2f%%" },
+{ stat = "CritChance", label = "有效暴击几率", fmt = ".2f%%", condFunc = function(v,o) return v ~= o.PreEffectiveCritChance end },
+{ stat = "CritMultiplier", label = "暴击伤害加成", fmt = "d%%", pc = true, condFunc = function(v,o) return (o.CritChance or 0) > 0 end },
 { stat = "HitSpeed", label = "击中速率", fmt = ".2f" },
 { stat = "TotalDPS", label = "总 DPS", fmt = ".1f", compPercent = true },
 { stat = "TotalDot", label = "持续伤害 DPS", fmt = ".1f", compPercent = true },

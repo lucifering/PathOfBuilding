@@ -800,10 +800,11 @@ function calcs.perform(env)
 			elseif buff.enemyCond and not enemyDB:GetCondition(buff.enemyCond) then
 				-- Also nothing :/
 			elseif buff.type == "Buff" then
+				
 				if env.mode_buffs and (not activeSkill.skillFlags.totem or buff.allowTotemBuff) then
 					local skillCfg = buff.activeSkillBuff and skillCfg
 					local modStore = buff.activeSkillBuff and skillModList or modDB
-				 	if not buff.applyNotPlayer then
+				 	if not buff.applyNotPlayer then						
 						activeSkill.buffSkill = true
 						modDB.conditions["AffectedBy"..buff.name:gsub(" ","")] = true
 						modDB.conditions["UsedBy"..buff.name:gsub(" ","")] = true

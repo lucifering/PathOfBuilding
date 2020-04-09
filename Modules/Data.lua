@@ -329,12 +329,15 @@ for _, targetVersion in ipairs(targetVersionList) do
 	-- Load gems
 	verData.gems = dataModule("Gems")
 	verData.gemForSkill = { }
+	verData.gemForBaseName = { }
 	for gemId, gem in pairs(verData.gems) do
 		--print(gem.name)
 		gem.id = gemId
 		gem.grantedEffect = verData.skills[gem.grantedEffectId]
 		 
+		
 		verData.gemForSkill[gem.grantedEffect] = gemId
+		verData.gemForBaseName[gem.name ] = gemId
 		gem.secondaryGrantedEffect = gem.secondaryGrantedEffectId and verData.skills[gem.secondaryGrantedEffectId]
 		gem.grantedEffectList = {
 			gem.grantedEffect,

@@ -761,7 +761,7 @@ name = "吟唱时施放（强辅）",
 description = "必须同时连接一个持续吟唱技能和一个非吟唱法术技能才能生效. 吟唱技能在吟唱过程中每隔一段时间会触发法术技能. 无法辅助图腾, 陷阱或地雷所施放的技能.瓦尔技能和魔力保留类技能无法被触发施放。",
 	color = 3,
 	support = true,
-	requireSkillTypes = { SkillType.Channelled, },
+	requireSkillTypes = { SkillType.Channelled, SkillType.Spell, SkillType.Triggerable, SkillType.OR, },
 	addSkillTypes = { },
 	excludeSkillTypes = { SkillType.Totem, },
 	plusVersionOf = "SupportCastWhileChannelling",
@@ -804,7 +804,7 @@ description = "必须同时连接一个持续吟唱技能和一个非吟唱法�
 	},
 }
 skills["SupportCastWhileChannellingTriggeredPlus"] = {
-name = "吟唱时施放（强辅）",
+name = "吟唱时施放（强辅）(被触发的)",
 description = "必须同时连接一个持续吟唱技能和一个非吟唱法术技能才能生效. 吟唱技能在吟唱过程中每隔一段时间会触发法术技能. 无法辅助图腾, 陷阱或地雷所施放的技能.瓦尔技能和魔力保留类技能无法被触发施放。",
 	color = 3,
 	support = true,

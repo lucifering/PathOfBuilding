@@ -815,6 +815,12 @@ tooltip:AddLine(16, "^7可以支持"..colorCodes.DEXTERITY.."敏捷需求型的 
 tooltip:AddLine(16, "^7可以支持"..colorCodes.INTELLIGENCE.."智慧需求型的 ^7门槛珠宝")
 		end
 	end
+	if node.type == "Socket" and node.alloc then
+		if node.distanceToClassStart and node.distanceToClassStart > 0 then
+			tooltip:AddSeparator(14)
+			tooltip:AddLine(16, string.format("^7距离起始天赋的距离: %d", node.distanceToClassStart))
+		end
+	end
 end
 
 function PassiveTreeViewClass:AddNodeTooltip(tooltip, node, build)
@@ -823,6 +829,10 @@ function PassiveTreeViewClass:AddNodeTooltip(tooltip, node, build)
 		local socket, jewel = build.itemsTab:GetSocketAndJewelForNodeID(node.id)
 		if jewel then
 			build.itemsTab:AddItemTooltip(tooltip, jewel, { nodeId = node.id })
+			if node.distanceToClassStart and node.distanceToClassStart > 0 then
+				tooltip:AddSeparator(14)
+				tooltip:AddLine(16, string.format("^7距离起始天赋的距离: %d", node.distanceToClassStart))
+			end
 		else
 			self:AddNodeName(tooltip, node, build)
 		end

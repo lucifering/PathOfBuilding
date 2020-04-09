@@ -168,6 +168,7 @@ local modNameList = {
 	["攻击造成的投射物伤害"] = { "Damage", flags = bor(ModFlag.Projectile, ModFlag.Attack) },
 	["最大闪避值"] = "Evasion",
 	["击中伤害和异常状态伤害"] = { "Damage",  keywordFlags = bor(KeywordFlag.Hit, KeywordFlag.Ailment)}, 
+	["击中和异常状态伤害"] = { "Damage",  keywordFlags = bor(KeywordFlag.Hit, KeywordFlag.Ailment)}, 
 	--备注：attack damage
 	["击中火焰伤害和异常状态伤害"] = { "FireDamage",  keywordFlags = bor(KeywordFlag.Hit, KeywordFlag.Ailment)}, 
 	["击中物理伤害和异常状态伤害"] = { "PhysicalDamage",  keywordFlags = bor(KeywordFlag.Hit, KeywordFlag.Ailment)}, 
@@ -670,6 +671,8 @@ local modFlagList = {
 	["长杖攻击时，"] =  { flags = bor(ModFlag.Staff, ModFlag.Hit) },
 	["长杖攻击"] =  { flags = bor(ModFlag.Staff, ModFlag.Hit) },
 	["剑类攻击"] = { flags = bor(ModFlag.Sword, ModFlag.Hit) },
+	["剑攻击造成的"] = { flags = bor(ModFlag.Sword, ModFlag.Hit) },
+	["剑攻击"] = { flags = bor(ModFlag.Sword, ModFlag.Hit) },
 	["法杖攻击"] = { flags = bor(ModFlag.Wand, ModFlag.Hit) },
 	["弓类的"] =  { flags = bor(ModFlag.Bow, ModFlag.Hit) },
 	["爪类的"] = { flags = bor(ModFlag.Claw, ModFlag.Hit) },
@@ -704,6 +707,7 @@ local modFlagList = {
 	["魔卫"] = { addToMinion = true, addToMinionTag = { type = "SkillName", skillName = "魔卫复苏" } }, --备注：zombie
 	["魔侍的"] = { addToMinion = true, addToMinionTag = { type = "SkillName", skillName = "召唤魔侍" } }, --备注：skeleton
 	["移动技能的"] = { keywordFlags = KeywordFlag.Movement }, --备注：with movement skills
+	["持弓"] =  { flags = bor(ModFlag.Bow, ModFlag.Hit) },
 	["弓"] =  { flags = bor(ModFlag.Bow, ModFlag.Hit) }, --备注：to bow attacks
 	["攻击"] = { flags = ModFlag.Attack }, 
 	["剑类"] = { flags = bor(ModFlag.Sword, ModFlag.Hit) },
@@ -1257,6 +1261,9 @@ local modTagList = {
 	, "AffectedBy灰烬之捷"
 	, "AffectedBy闪电之捷"
 	} } }, 
+	["对抗被嘲讽的敌人时，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Taunted" }, keywordFlags = KeywordFlag.Hit },
+	["对被嘲讽敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Taunted" }, keywordFlags = KeywordFlag.Hit },
+	["对被嘲讽敌人"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Taunted" }, keywordFlags = KeywordFlag.Hit },
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -1652,7 +1659,6 @@ local specialModList = {
 	mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "BeenHitRecently" } )
 	  } end,  
 	["非诅咒类光环的效果提高 (%d+)%%"]= function(num) return {  mod("AuraEffect", "INC", tonumber(num))  } end,
-	["你技能的非诅咒类光环效果提高 (%d+)%%"]= function(num) return {  mod("AuraEffect", "INC", tonumber(num))  } end,
 	["所有身上装备的物品皆为已腐化时，每秒回复 (%d+) 能量护盾"] = function(num) return {  mod("EnergyShieldRegen", "BASE", num,{ type = "MultiplierThreshold", var = "NonCorruptedItem", threshold = 0, upper = true })  } end,
 	["此物品上装备的【([^\\x00-\\xff]*)石】等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", { 
 	keyword = type_Cn
@@ -2235,7 +2241,6 @@ local specialModList = {
 	["你身上的每层中毒状态使你每秒回复 (%d+) 能量护盾，最多可有 (%d+) 秒"]= function(_,num1,num2) return {  mod("EnergyShieldRegen", "BASE", tonumber(num1),{ type = "Multiplier", var = "PoisonStack", limit = tonumber(num2), limitTotal = true })  } end,
 	["获得 (%d+) 级的【(.+)】"] = function(_,num,skill_name) return {  mod("ExtraSkill", "LIST", { type = "SkillName",skillName =FuckSkillActivityCnName(skill_name), level = num})   } end,
 	["【(.+)】技能石等级 %+(%d+)"] = function(_,skill_name,num)  return { mod("GemProperty", "LIST",  { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name), key = "level", value = num }) } end,
-	["召唤生物身上的光环效果提高 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("AuraEffectOnSelf", "INC", num) })  } end,
 	["对受诅咒敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num, nil, ModFlag.Hit,{ type = "ActorCondition", actor = "enemy", var = "Cursed" })  } end, 
 	["攻击击中被诅咒敌人时有 (%d+)%% 几率造成流血"]= function(num) return {  mod("BleedChance", "BASE", num, nil, ModFlag.Attack,{ type = "ActorCondition", actor = "enemy", var = "Cursed" })  } end, 
 	["当你拥有兽化的召唤生物时，投射物攻击击中时有 (%d+)%% 几率造成流血"] =  function(num) return 	{mod("BleedChance", "BASE", num,  { type = "SkillType", skillType = SkillType.Attack }, { type = "SkillType", skillType = SkillType.Projectile },{ type = "Condition", var = "HaveBestialMinion" }   ) }end,
@@ -3169,9 +3174,6 @@ local specialModList = {
 	["光环效果对友军没有作用"] = { flag("SelfAurasCannotAffectAllies") },
 	["无法获得友军光环效果"] = { flag("AlliesAurasCannotAffectSelf") },
 	["光环技能不能影响友军"] = { flag("SelfAurasCannotAffectAllies") },
-	["你的光环技能对自身造成的总效果额外提高 (%d+)%%"]= function(num) return { 
-	 mod("AuraEffectOnSelf", "MORE", num)
-	 } end, 
 	["生命回复额外降低 (%d+)%%"]= function(num) return { 
 	 mod("LifeRecoveryRate", "MORE", -num)
 	 } end,  
@@ -3323,7 +3325,7 @@ local specialModList = {
 	["近期内如果没有被击中，则承受的总伤害额外降低 (%d+)%%"] = function(num) return {  mod("DamageTaken", "MORE", -num,{ type = "Condition", var = "BeenHitRecently", neg = true })  }
 	 end,   
 	["近期内如果没有被击中，则总闪避值额外降低 (%d+)%%"] = function(num) return {  mod("Evasion", "MORE", -num,{ type = "Condition", var = "BeenHitRecently", neg = true })  } end,   
-	["持法杖时，对法术伤害的增幅与减益也会套用于攻击上"] = function() return { mod("SpellDamageAppliesToAttacks", "BASE",100, { type = "Condition", var = "UsingWand" } ) } end,
+	["持法杖时，对法术伤害的增幅与减益也会套用于攻击上"] = { flag("SpellDamageAppliesToAttacks") },
 	["盾牌上每有 (%d+) 护甲或闪避值可使攻击伤害提高 (%d+)%%"]= function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2),{ type = "PerStat", stat = "EvasionOnWeapon 2", div = tonumber(num1) } ),
 	mod("Damage", "INC", tonumber(num2),{ type = "PerStat", stat = "ArmourOnWeapon 2", div = tonumber(num1) } )
 	  }end,
@@ -3347,8 +3349,8 @@ local specialModList = {
 			mod("ElementalResist", "BASE", num, { type = "Multiplier", var = "GrandSpectrum" }), 
 			mod("Multiplier:GrandSpectrum", "BASE", 1) 
 	} end,
-	["对法术伤害的增幅与减益也套用于攻击，等于其数值的 150%%"]= function() return { mod("SpellDamageAppliesToAttacks", "BASE",150 ) } end,
-	["对法术伤害的增幅与减益也会套用于攻击上，相当于其效果的 150%%"]= function() return { mod("SpellDamageAppliesToAttacks", "BASE",150 ) } end,
+	["对法术伤害的增幅与减益也套用于攻击，等于其数值的 150%%"] = { flag("SpellDamageAppliesToAttacksAt150Percent") },
+	["对法术伤害的增幅与减益也会套用于攻击上，相当于其效果的 150%%"] = { flag("SpellDamageAppliesToAttacksAt150Percent") },
 	["你的光环技能被禁用"] = { flag("DisableSkill", { type = "SkillType", skillType = SkillType.Aura}) }, 
 	["你身上的捷技能增益的总效果额外提高 (%d+)%%"] = function(num) return {  
 			mod("BuffEffect", "MORE", num, { type = "SkillType", skillType = SkillType.Herald }),		 
@@ -3365,10 +3367,29 @@ local specialModList = {
 	["每 (%d+) 敏捷使冰霜伤害提高 (%d+)%%"] =function(_,num1,num2) return {  mod("ColdDamage", "INC", tonumber(num2),{ type = "PerStat", stat = "Dex", div = tonumber(num1) })  } end, 
 	["持爪或匕首时，攻击技能发射一个额外的投射物"]=  function() return { mod("ExtraSkillMod", "LIST", { mod = mod("ProjectileCount", "BASE", 1,{ type = "SkillType", skillType = SkillType.Attack }) },   { type = "Condition", varList ={ "UsingClaw", "UsingDagger" } } ) } end,
 	["爪或匕首攻击时，([%+%-]?%d+)%% 暴击伤害"] = function(num) return {  mod("CritMultiplier", "BASE", num,nil, ModFlag.Hit,{ type = "ModFlagOr", modFlags = bor(ModFlag.Claw, ModFlag.Dagger) } )  } end,
+	["对被嘲讽敌人, ([%+%-]?%d+)%% 暴击伤害"] = function(num) return { mod("AffectedByCurseMod", "LIST", { mod = mod("CritMultiplier", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Taunted" }) }) } end,
 	["【两手空空】状态下视为双持"] = function() return {  mod("Condition:DualWielding", "FLAG", true)  } end,
 	["【两手空空】状态下总攻击速度额外提高 (%d+)%%"] =function(num) return {  mod("Speed", "MORE", tonumber(num),nil,ModFlag.Attack,{ type = "Condition", var = "Unencumbered" })  } end, 
 	["【两手空空】状态下每 (%d+) 点敏捷附加 (%d+) %- (%d+) 攻击物理伤害"] =function(_,num1,num2,num3) return {  mod("PhysicalMax", "BASE", tonumber(num3),{ type = "PerStat", stat = "Dex", div = tonumber(num1) },{ type = "Condition", var = "Unencumbered" }),
 		mod("PhysicalMin", "BASE", tonumber(num2),{ type = "PerStat", stat = "Dex", div = tonumber(num1) },{ type = "Condition", var = "Unencumbered" }),  } end, 
+	["受到你诅咒的敌人承受的伤害提高 (%d+)%%"] = function(num) return { mod("AffectedByCurseMod", "LIST", { mod = mod("DamageTaken", "INC", num) }) } end,
+	["面对被诅咒的敌人，有 (%d+)%% 几率躲避攻击击中"] = function(num) return { mod("AttackDodgeChance", "BASE",num,  { type = "ActorCondition", actor = "enemy", var = "Cursed" } ) } end,
+	["对被诅咒的敌人有 (%d+)%% 几率躲避攻击"] = function(num) return { mod("AttackDodgeChance", "BASE",num,  { type = "ActorCondition", actor = "enemy", var = "Cursed" } ) } end,
+	["诅咒技能石降低 (%d+)%% 魔力保留"]=function(num) return {  mod("ManaReserved", "INC", -num,nil,nil,KeywordFlag.Curse  )  } end,
+	["诅咒技能的魔力保留降低 (%d+)%%"]=function(num) return {  mod("ManaReserved", "INC", -num,nil,nil,KeywordFlag.Curse  )  } end,
+	["近期内你若有击败受到诅咒的敌人，则伤害提高 (%d+)%%"]= function(num) return { mod("Damage", "INC",num, { type = "Condition", var = "KilledRecently" }, { type = "ActorCondition", actor = "enemy", var = "Cursed" } ) } end,
+	["从你职业的出发位置到该珠宝槽之间\n每一点配置的天赋就使该珠宝插槽的效果提高 (%d+)%%"] = function(num) return { mod("JewelData", "LIST", { key = "jewelIncEffectFromClassStart", value = num }) } end,
+	["每一点配置的天赋就使该珠宝插槽的效果提高 (%d+)%%"] = function(num) return { mod("JewelData", "LIST", { key = "jewelIncEffectFromClassStart", value = num }) } end,
+	["你技能的非诅咒类光环效果提高 (%d+)%%"]= function(num) return {  mod("AuraEffect", "INC", tonumber(num),nil,nil,KeywordFlag.Aura)  } end,
+	["每受到一个捷技能影响，你身上的来自光环技能的增益效果提高 (%d+)%%"] =function(num) return {  mod("AuraEffectOnSelf", "INC", num,nil,nil,KeywordFlag.Aura,{ type = "Multiplier", var = "AffectedByHeraldCount" }  )  } end,
+	["你的光环技能对自身造成的总效果额外提高 (%d+)%%"]= function(num) return { 
+	 mod("AuraEffectOnSelf", "MORE", num,nil,nil,KeywordFlag.Aura)
+	 } end, 
+	["召唤生物身上的光环效果提高 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("AuraEffectOnSelf", "INC", num) })  } end,
+	["召唤生物身上的来自你技能的光环效果提高 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("AuraEffectOnSelf", "INC", num, num,nil,nil,KeywordFlag.Aura) })  } end,
+	["最近8秒内你若有使用战吼，则获得 (%d+)%% 额外物理伤害减伤"]= function(num) return { mod("PhysicalDamageReduction", "BASE", num, { type = "Condition", var = "UsedWarcryInPast8Seconds" } ) } end, 
+	["命中值提高 (%d+)%%"]= function(num) return { mod("Accuracy", "INC", num,{ type = "Global" } ) } end, 
+	["近期内你若有使用战吼，([%+%-]?%d+)%% 近战暴击伤害"]= function(num) return { mod("CritMultiplier", "BASE", num,nil,ModFlag.Melee , { type = "Condition", var = "UsedWarcryRecently" } ) } end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded
@@ -3607,7 +3628,8 @@ minus = -tonumber(minus)
 	-- Conversion
 	["召唤生物伤害提高或降低，将同样套用于自身"] = { flag("MinionDamageAppliesToPlayer") }, --备注：increases and reductions to minion damage also affects? you
 	["召唤生物攻击速度的加成同时套用于你身上"] = { flag("MinionAttackSpeedAppliesToPlayer") }, --备注：increases and reductions to minion attack speed also affects? you
-	["对法术伤害的增幅与减益也会套用于攻击上"] =  function() return { mod("SpellDamageAppliesToAttacks", "BASE",100 ) } end, --备注：increases and reductions to spell damage also apply to attacks
+	["对法术伤害的增幅与减益也会套用于攻击上"] ={ flag("SpellDamageAppliesToAttacks") }, --备注：increases and reductions to spell damage also apply to attacks
+	
 	["modifiers to claw damage also apply to unarmed"] = { flag("ClawDamageAppliesToUnarmed") },
 	["对爪类武器的伤害加成同时套用于空手攻击伤害上"] = { flag("ClawDamageAppliesToUnarmed") }, --备注：modifiers to claw damage also apply to unarmed attack damage
 	["modifiers to claw attack speed also apply to unarmed"] = { flag("ClawAttackSpeedAppliesToUnarmed") },

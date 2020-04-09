@@ -51991,7 +51991,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/AuraEffectNotable.png",
 			["stats"]= {
 				"你技能的非诅咒类光环效果提高 8%",
-				"你技能的光环给你和周围队友每秒回复 0.2% 生命"
+				"你技能的光环给你和周围队友每秒回复 0.1% 生命"
 			},
 			["reminderText"]= {
 				"（光环只对被影响者起作用）"
@@ -52023,7 +52023,7 @@ return {
 			["name"]= "勇毅先驱",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AuraEffectNotable.png",
 			["stats"]= {
-				"每受到一个捷技能影响，你身上的光环效果提高 10%"
+				"每受到一个捷技能影响，你身上的来自光环技能的增益效果提高 10%"
 			},
 			["isNotable"]= true
 		},

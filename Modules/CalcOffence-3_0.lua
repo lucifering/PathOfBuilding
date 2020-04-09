@@ -223,17 +223,22 @@ local function runSkillFunc(name)
 			end
 		end
 	end
-	local baseSpellDamageAppliesToAttacks = skillModList:Sum("BASE", cfg, "SpellDamageAppliesToAttacks") 
-	 
+	local spellConvPercent = 0
 	if skillData.spellDamageAppliesToAttackAtPercentValue then
-		baseSpellDamageAppliesToAttacks = m_max(baseSpellDamageAppliesToAttacks, skillData.spellDamageAppliesToAttackAtPercentValue)
+		spellConvPercent = m_max(spellConvPercent, skillData.spellDamageAppliesToAttackAtPercentValue)
 	end
-	if baseSpellDamageAppliesToAttacks and baseSpellDamageAppliesToAttacks > 0 then
-		-- Spell Damage conversion from Crown of Eyes
+	if skillModList:Flag(nil, "SpellDamageAppliesToAttacksAt150Percent") then
+		spellConvPercent = m_max(spellConvPercent, 150)
+	end
+	if skillModList:Flag(nil, "SpellDamageAppliesToAttacks") then
+		spellConvPercent = m_max(spellConvPercent, 100)
+	end
+	if spellConvPercent > 0 then
+		-- Spell Damage conversion
 		for i, value in ipairs(skillModList:Tabulate("INC", { flags = ModFlag.Spell }, "Damage")) do
 			local mod = value.mod
 			if band(mod.flags, ModFlag.Spell) ~= 0 then
-				skillModList:NewMod("Damage", "INC", mod.value * (baseSpellDamageAppliesToAttacks / 100), mod.source, bor(band(mod.flags, bnot(ModFlag.Spell)), ModFlag.Attack), mod.keywordFlags, unpack(mod))
+				skillModList:NewMod("Damage", "INC", mod.value * spellConvPercent / 100, mod.source, bor(band(mod.flags, bnot(ModFlag.Spell)), ModFlag.Attack), mod.keywordFlags, unpack(mod))
 			end
 		end
 	end

@@ -554,7 +554,7 @@ description = "操控一件武器或防具, 使其依附在一个隐形的守卫
 	},
 }
 skills["Berserk"] = {
-name = "狂怒",
+name = "盛怒",
 	color = 1,
 description = "以极快速度消耗怒火，产生一个强力增益效果，提高总攻击伤害、总攻击速度和总移动速度，使受到的总伤害降低。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Triggerable] = true, [SkillType.Instant] = true, [SkillType.Type86] = true, [SkillType.Type90] = true, },

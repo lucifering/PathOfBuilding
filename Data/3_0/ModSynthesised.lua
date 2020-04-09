@@ -363,7 +363,7 @@ return { ["SynthesisImplicitLife1"] = { affix = "", "+(8-10) 最大生命",  lev
 ["SynthesisImplicitPurityOfFireReservation1_"] = { affix = "", "【火焰净化】的魔力保留降低 10%",  level = 48, group = "ReducedManaReservationsCost", types = { ["Boots"] = true, ["Gloves"] = true, },},
 ["SynthesisImplicitPurityOfIceReservation1_"] = { affix = "", "【冰霜净化】的魔力保留降低 10%",  level = 48, group = "ReducedManaReservationsCost", types = { ["Boots"] = true, ["Gloves"] = true, },},
 ["SynthesisImplicitPurityOfLightningReservation1"] = { affix = "", "【闪电净化】的魔力保留降低 10%",  level = 48, group = "ReducedManaReservationsCost", types = { ["Boots"] = true, ["Gloves"] = true, },},
-["SynthesisImplicitSelfAuraEffect1_"] = { affix = "", "你身上的光环效果提高 (10-15)%",  level = 56, group = "AuraEffect", types = { ["Helmet"] = true, },},
+["SynthesisImplicitSelfAuraEffect1_"] = { affix = "", "你技能的非诅咒类光环效果提高 (10-15)%",  level = 56, group = "AuraEffect", types = { ["Helmet"] = true, },},
 ["SynthesisImplicitSocketedGemReducedReservation1_"] = { affix = "", "此物品上的技能石降低 10% 魔力保留",  level = 60, group = "DisplaySocketedGemsGetReducedReservation", types = { ["Shield"] = true, },},
 ["SynthesisImplicitRarity1"] = { affix = "", "物品稀有度提高 (10-11)%",  level = 1, group = "ItemFoundRarityIncrease", types = { ["Boots"] = true, ["Gloves"] = true, ["Helmet"] = true, ["Amulet"] = true, },},
 ["SynthesisImplicitRarity2"] = { affix = "", "物品稀有度提高 (12-13)%",  level = 15, group = "ItemFoundRarityIncrease", types = { ["Boots"] = true, ["Gloves"] = true, ["Helmet"] = true, ["Amulet"] = true, },},

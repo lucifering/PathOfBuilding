@@ -2355,7 +2355,13 @@ tooltip:AddLine(16, "^x7F7F7F范围内属性: "..line)
 			
 		end
 		
-		
+	elseif item.type == "Ring" or  item.type == "Amulet" or item.type == "Belt" then	
+		if item.qualityTitle and item.qualityTitle~="" and item.quality and  item.quality > 0 then
+			tooltip:AddLine(16, s_format("^x7F7F7F"..item.qualityTitle..": "..colorCodes.MAGIC.."+%d%%", item.quality))
+		elseif item.quality and item.quality > 0 then
+			tooltip:AddLine(16, s_format("^x7F7F7F品质: "..colorCodes.MAGIC.."+%d%%", item.quality))
+		end
+
 	end
 	if #item.sockets > 0 then
 		-- Sockets/links

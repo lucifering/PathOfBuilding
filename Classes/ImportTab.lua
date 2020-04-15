@@ -646,6 +646,10 @@ function ImportTabClass:ImportItem(itemData, slotName)
 		for _, property in pairs(itemData.properties) do
 if property.name == "品质" then
 				item.quality = tonumber(property.values[1][1]:match("%d+"))
+elseif  property.name:find("品质（", 1, true)  then
+				item.qualityTitle = property.name
+				item.quality = tonumber(property.values[1][1]:match("%d+"))
+				--print(item.qualityTitle)
 elseif property.name == "范围" then
 				item.jewelRadiusLabel = property.values[1][1]
 elseif property.name == "仅限" then

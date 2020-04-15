@@ -325,8 +325,7 @@ function DropDownClass:Draw(viewPort)
 	end
 
 	-- draw dropdown bar
-	if enabled then
-		if (mOver or self.dropped) and mOverComp ~= "DROP" then
+	if (mOver or self.dropped) and mOverComp ~= "DROP" then
 			SetDrawLayer(nil, 100)
 			self:DrawTooltip(
 				x, y - (self.dropped and self.dropUp and dropExtra or 0), 
@@ -334,7 +333,9 @@ function DropDownClass:Draw(viewPort)
 				viewPort,
 				mOver and "BODY" or "OUT", self.selIndex, self.list[self.selIndex])
 			SetDrawLayer(nil, 0)
-		end
+	end
+	if enabled then
+		
 		SetDrawColor(1, 1, 1)
 	else
 		SetDrawColor(0.66, 0.66, 0.66)

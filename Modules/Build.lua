@@ -1277,7 +1277,7 @@ function buildMode:SaveDBFile()
 	end
 	local file = io.open(self.dbFileName, "w+")
 	if not file then
-main:OpenMessagePopup("错误", "不能保存当前bd文件:\n"..self.dbFileName.."\n可能是保存目录不存在、不可写或没有权限.")
+main:OpenMessagePopup("错误", "不能保存当前bd文件:\n"..self.dbFileName.."\n可能是保存目录不存在、不可写、没有权限或者路径带有中文字符.")
 		return true
 	end
 	file:write(xmlText)

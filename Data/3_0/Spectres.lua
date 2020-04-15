@@ -3560,4 +3560,34 @@ minions["Metadata/Monsters/LeagueSynthesis/SynthesisWyvernSpectre"] = {
 	},
 }
 
-
+-- Redemption Sentry
+minions["Metadata/Monsters/AtlasExiles/EyrieInfluenceMonsters/EyrieSeraphArcher"] = {
+	name = "救赎哨兵",
+	life = 4.05,
+	fireResist = 0,
+	coldResist = 75,
+	lightningResist = 0,
+	chaosResist = 0,
+	damage = 1.5,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 70,
+	accuracy = 1,
+	weaponType1 = "Bow",
+	skillList = {
+		"WalkEmergeAtlasInfluenceMonster",
+		"MeleeEyrieArrow",
+		"AtlasEyrieArcherMortar",
+		"AtlasEyrieArcherSnipe",
+		"AtlasEyrieArcherSnipeTrickshot",
+		"EmptyActionAttackEyrieArcherTrickshot",
+		"AtlasEyrieArcherGeometryProjectiles",
+		"AtlasExileEyrieArcherSpawnCrystal",
+		"AtlasEyrieArcherCrystalImpact",
+	},
+	modList = {
+	},
+	modListSP = {
+		 
+	},
+}

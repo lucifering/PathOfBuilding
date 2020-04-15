@@ -3423,7 +3423,7 @@ name = "脆弱",
 	},
 }
 skills["SlavedriverFlameWhip"] = {
-	name = "Lightning Surge",
+	name = "闪电奔腾",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 2.5,
@@ -6093,6 +6093,134 @@ skills["SynthesisWyvernMortar"] = {
 	},
 	levels = {
 		[1] = { 0, 15, 0, 0, 0.80000001192093, 1.2000000476837, critChance = 5, cooldown = 8, levelRequirement = 1, statInterpolation = { 1, 1, 1, 1, 3, 3, }, },
+	},
+}
+
+
+skills["MeleeEyrieArrow"] = {
+	name = "默认攻击",
+	hidden = true,
+	color = 4,
+	description = "对你的敌人无情痛击.",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.SkillCanVolley] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		attack = true,
+		melee = true,
+		projectile = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"skill_physical_damage_%_to_convert_to_cold",
+		"active_skill_damage_+%_final",
+		"arrow_projectile_variation",
+		"skill_can_fire_arrows",
+		"skill_can_fire_wand_projectiles",
+		"use_scaled_contact_offset",
+		"projectile_uses_contact_position",
+	},
+	levels = {
+		[1] = { 75, 0, 26, baseMultiplier = 0.75, levelRequirement = 1, statInterpolation = { 1, 2, 1, }, },
+		[2] = { 75, 0, 26, baseMultiplier = 0.75, levelRequirement = 19, statInterpolation = { 1, 2, 1, }, },
+		[3] = { 75, 1, 26, baseMultiplier = 0.75, levelRequirement = 20, statInterpolation = { 1, 2, 1, }, },
+		[4] = { 75, 200, 26, baseMultiplier = 0.75, levelRequirement = 84, statInterpolation = { 1, 2, 1, }, },
+	},
+}
+skills["AtlasEyrieArcherMortar"] = {
+	name = "炮击",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 2.5,
+	incrementalEffectiveness = 0.03999999910593,
+	description = "通用的怪物炮击技能. 与怪物投射物相似, 但带有冲击效果.",
+	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 2.33,
+	baseFlags = {
+		spell = true,
+		hit = true,
+		projectile = true,
+		area = true,
+		triggerable = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"projectile_spread_radius",
+		"spell_minimum_base_cold_damage",
+		"spell_maximum_base_cold_damage",
+		"is_area_damage",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+		"use_scaled_contact_offset",
+	},
+	levels = {
+		[1] = { 0, 0.80000001192093, 1.2000000476837, critChance = 5, cooldown = 10, levelRequirement = 0, statInterpolation = { 1, 3, 3, }, },
+	},
+}
+skills["AtlasEyrieArcherSnipe"] = {
+	name = "狙击",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Hit] = true, [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		attack = true,
+		hit = true,
+		projectile = true,
+		triggerable = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"monster_projectile_variation",
+		"skill_physical_damage_%_to_convert_to_cold",
+		"active_skill_damage_+%_final",
+		"base_is_projectile",
+		"projectile_uses_contact_position",
+		"use_scaled_contact_offset",
+		"always_pierce",
+	},
+	levels = {
+		[1] = { 92, 75, 0, levelRequirement = 1, statInterpolation = { 1, 1, 2, }, },
+		[2] = { 92, 75, 0, levelRequirement = 19, statInterpolation = { 1, 1, 2, }, },
+		[3] = { 92, 75, 1, levelRequirement = 20, statInterpolation = { 1, 1, 2, }, },
+		[4] = { 92, 75, 200, levelRequirement = 84, statInterpolation = { 1, 1, 2, }, },
+	},
+}
+skills["AtlasEyrieArcherCrystalImpact"] = {
+	name = "水晶冲击",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 2.5,
+	incrementalEffectiveness = 0.03999999910593,
+	skillTypes = { [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		hit = true,
+		triggerable = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_cold_damage",
+		"spell_maximum_base_cold_damage",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 0.80000001192093, 1.2000000476837, critChance = 5, levelRequirement = 0, statInterpolation = { 3, 3, }, },
 	},
 }
 

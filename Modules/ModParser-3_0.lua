@@ -31,11 +31,13 @@ local formList = {
 	["缩小 (%d+)%%"] = "RED",
 	["穿透其 (%d+)%%"] = "PEN", --备注：penetrates? (%d+)%%
 	["攻击和法术附加 (%d+)%-(%d+) 基础([^\\x00-\\xff]*)伤害"] = "DMGBOTH", --备注：adds (%d+) to (%d+) (%a+) damage to attacks and spells
+	["附加 (%d+)%-(%d+) 点基础([^\\x00-\\xff]*)伤害"] = "DMG",
 	["附加 (%d+)%-(%d+) 基础([^\\x00-\\xff]*)伤害"] = "DMG",
 	["额外造成 (%d+) %- (%d+) ([^\\x00-\\xff]*)伤害"] = "DMG",
 	["造成 (%d+) %- (%d+) ([^\\x00-\\xff]*)伤害"] = "DMG",
 	["法术附加 (%d+) %- (%d+) ([^\\x00-\\xff]*)伤害"] = "DMGSPELLS", --备注：adds (%d+)%-(%d+) (%a+) spell damage
 	["增加 (%d+)%%"] = "INC",
+	["附加 (%d+) %- (%d+) 点([^\\x00-\\xff]*)伤害"] = "DMG",
 	["附加 (%d+) %- (%d+) ([^\\x00-\\xff]*)伤害"] = "DMG",
 	["便提高 (%d+)%%"] = "INC", --备注：^(%d+)%% increased
 	["比平常慢 (%d+)%%"] = "RED",
@@ -659,6 +661,7 @@ local modFlagList = {
 	["锤类和短杖的"] = { flags = bor(ModFlag.Mace, ModFlag.Hit)  },
 	["锤类和短杖"] = { flags = bor(ModFlag.Mace, ModFlag.Hit)  },
 	["持锤或短杖时，"] = { flags = bor(ModFlag.Mace, ModFlag.Hit) },
+	["锤类或短杖攻击"] = { flags = bor(ModFlag.Mace, ModFlag.Hit) },
 	["身体护甲提供的"] = { tag = { type = "SlotName", slotName = "Body Armour" } },
 	["混沌技能的"] = { keywordFlags = KeywordFlag.Chaos },
 	["单手武器攻击的"] = { flags = bor(ModFlag.Weapon1H, ModFlag.Hit)}, --备注：with one handed weapons
@@ -878,7 +881,7 @@ local preFlagList = {
 		["^斧攻击造成的"] = { flags = ModFlag.Axe },
 		["^斧或剑攻击造成的"] = { tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Axe, ModFlag.Sword) } },
 		["^弓攻击造成的"] = { flags = ModFlag.Bow },
-		["^爪类攻击造成的"] = { flags = ModFlag.Dagger },
+		["^爪类攻击造成的"] = { flags = ModFlag.Claw },
 		["^爪攻击造成的"] = { flags = ModFlag.Claw },
 		["^爪或匕首攻击造成的"] = { tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Claw, ModFlag.Dagger) } },
 		["^匕首攻击造成的"] = { flags = ModFlag.Dagger },
@@ -2165,6 +2168,7 @@ local specialModList = {
 	["([%d%.]+) 每秒魔力回复"] = function(num) return {  mod("ManaRegen", "BASE", num)  } end,
 	["魔力回复 ([%d%.]+)"] = function(num) return {  mod("ManaRegen", "BASE", num)  } end,
 	["每 (%d+) 点奉献 使魔力回复 ([%d%.]+)"] = function(_,num1,num2) return {  mod("ManaRegen", "BASE", tonumber(num2),{ type = "PerStat", stat = "Devotion", div = tonumber(num1) })  } end,
+	["每 (%d+) 点奉献便每秒回复 ([%d%.]+) 魔力"] = function(_,num1,num2) return {  mod("ManaRegen", "BASE", tonumber(num2),{ type = "PerStat", stat = "Devotion", div = tonumber(num1) })  } end,
 	["每秒 ([%d%.]+) 基础魔力回复"] = function(num) return {  mod("ManaRegen", "BASE", num)  } end,
 	["每秒 ([%d%.]+)%% 魔力回复"]= function(num) return {  mod("ManaRegenPercent", "BASE", num )  } end,
 	["物理攻击伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("PhysicalDamageManaLeech", "BASE", num,nil, ModFlag.Attack)  } end, 
@@ -3093,14 +3097,16 @@ local specialModList = {
 	 ["范围内的天赋被永恒帝国抑制"] = { flag("优雅的狂妄") },
 	 ["范围内的天赋被卡鲁抑制"] = { flag("致命的骄傲") },
 	 ["范围内的天赋被瓦尔抑制"] = { flag("光彩夺目") },
+	 ["只影响小环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 4 }) },
+	["只影响中环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 5 }) },
+	["只影响大环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 6 }) },
+	["只影响超大环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 7 }) }, 
+	["只影响巨环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 7 }) }, 
 	["影响小环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 4 }) },
 	["影响中环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 5 }) },
 	["影响大环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 6 }) },
 	["影响超大环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 7 }) }, 
-	["只影响小环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 4 }) },
-	["只影响中环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 5 }) },
-	["只影响大环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 6 }) },
-	["只影响超大环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 7 }) }, 
+	["影响巨环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 7 }) }, 
 	["获得(.+)麾下 (%d+) 名武士的领导权"]= function(_, npcName, num) return {  flag("TimelessJewelNPC"..npcName)} end, 
 	["获得(.+)麾下 (%d+) 名武士的领导权  范围内的天赋被卡鲁抑制"]= function(_, npcName, num) return {  
 	flag("致命的骄傲"),
@@ -3340,7 +3346,8 @@ local specialModList = {
 	mod("EnemyModifier", "LIST", { mod = mod("Condition:Maimed", "FLAG", true) }, nil,  bor(ModFlag.Projectile, ModFlag.Attack)),
 	} end,
 	["投射物无法穿透, 分裂或连锁"]  = { flag("CannotPierce", nil, ModFlag.Projectile), flag("CannotFork", nil, ModFlag.Projectile),flag("CannotChain", nil, ModFlag.Projectile) },
-	["若近期有击败敌人，则每秒回复 (%d+)%% 能量护盾"] = function(num) return {  mod("EnergyShieldRegen", "BASE", num,{ type = "Condition", var = "KilledRecently" })  } end,
+	["若近期有击败敌人，则每秒回复 (%d+)%% 能量护盾"] = function(num) return {  mod("EnergyShieldRegenPercent", "BASE", num,{ type = "Condition", var = "KilledRecently" })  } end,
+	["你若近期内击败过敌人，则每秒回复 (%d+)%% 能量护盾"] = function(num) return {  mod("EnergyShieldRegenPercent", "BASE", num,{ type = "Condition", var = "KilledRecently" })  } end,
 	["每 1 个聚光之石可使暴击几率提高 (%d+)%%"] = function(num) return {  
 			mod("CritChance", "INC", num, { type = "Multiplier", var = "GrandSpectrum" }), 
 			mod("Multiplier:GrandSpectrum", "BASE", 1) 
@@ -3379,6 +3386,7 @@ local specialModList = {
 	["诅咒技能的魔力保留降低 (%d+)%%"]=function(num) return {  mod("ManaReserved", "INC", -num,nil,nil,KeywordFlag.Curse  )  } end,
 	["近期内你若有击败受到诅咒的敌人，则伤害提高 (%d+)%%"]= function(num) return { mod("Damage", "INC",num, { type = "Condition", var = "KilledRecently" }, { type = "ActorCondition", actor = "enemy", var = "Cursed" } ) } end,
 	["从你职业的出发位置到该珠宝槽之间\n每一点配置的天赋就使该珠宝插槽的效果提高 (%d+)%%"] = function(num) return { mod("JewelData", "LIST", { key = "jewelIncEffectFromClassStart", value = num }) } end,
+	["从你职业的出发位置到该珠宝槽之间每一点配置的天赋就使该珠宝插槽的效果提高 (%d+)%%"] = function(num) return { mod("JewelData", "LIST", { key = "jewelIncEffectFromClassStart", value = num }) } end,
 	["每一点配置的天赋就使该珠宝插槽的效果提高 (%d+)%%"] = function(num) return { mod("JewelData", "LIST", { key = "jewelIncEffectFromClassStart", value = num }) } end,
 	["你技能的非诅咒类光环效果提高 (%d+)%%"]= function(num) return {  mod("AuraEffect", "INC", tonumber(num),nil,nil,KeywordFlag.Aura)  } end,
 	["每受到一个捷技能影响，你身上的来自光环技能的增益效果提高 (%d+)%%"] =function(num) return {  mod("AuraEffectOnSelf", "INC", num,nil,nil,KeywordFlag.Aura,{ type = "Multiplier", var = "AffectedByHeraldCount" }  )  } end,
@@ -3390,6 +3398,24 @@ local specialModList = {
 	["最近8秒内你若有使用战吼，则获得 (%d+)%% 额外物理伤害减伤"]= function(num) return { mod("PhysicalDamageReduction", "BASE", num, { type = "Condition", var = "UsedWarcryInPast8Seconds" } ) } end, 
 	["命中值提高 (%d+)%%"]= function(num) return { mod("Accuracy", "INC", num,{ type = "Global" } ) } end, 
 	["近期内你若有使用战吼，([%+%-]?%d+)%% 近战暴击伤害"]= function(num) return { mod("CritMultiplier", "BASE", num,nil,ModFlag.Melee , { type = "Condition", var = "UsedWarcryRecently" } ) } end, 
+	 ["你和周围友军的暴击几率提高 (%d+)%%"] = function(num) return {  
+		 mod("ExtraAura", "LIST", { mod =  mod("CritChance", "INC", num) }) ,
+		 } end, 
+	["你和周围友军 ([%+%-]?%d+)%% 暴击伤害"] = function(num) return {  
+		 mod("ExtraAura", "LIST", { mod =  mod("CritMultiplier", "BASE", num) }) ,
+		 } end, 
+	["旗帜技能的魔力保留降低 (%d+)%% "]=function(num) return {  mod("ManaReserved", "INC", -num,{ type = "SkillName", skillNameList = { "恐怖之旗", "战旗" } } )  } end,
+	["旗帜技能的魔力保留降低 (%d+)%%"]=function(num) return {  mod("ManaReserved", "INC", -num,{ type = "SkillName", skillNameList = { "恐怖之旗", "战旗" } } )  } end,
+	["伤害型异常状态生效速度加快 (%d+)%%"]= function(num) return { 
+		mod("PoisonFaster", "INC", tonumber(num)) ,
+		mod("IgniteBurnFaster", "INC", tonumber(num)) ,
+		mod("BleedFaster", "INC", tonumber(num)) ,
+		 } end, 
+	["异常造成的伤害的消失速度加快 (%d+)%%"]= function(num) return { 
+		mod("PoisonFaster", "INC", tonumber(num)) ,
+		mod("IgniteBurnFaster", "INC", tonumber(num)) ,
+		mod("BleedFaster", "INC", tonumber(num)) ,
+		 } end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

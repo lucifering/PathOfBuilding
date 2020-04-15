@@ -27,6 +27,7 @@ function ItemClass:ParseRaw(raw)
 	self.name = "?"
 self.rarity = "传奇"
 	self.quality = nil
+	self.qualityTitle = ''
 	self.rawLines = { }
 	local alltext="" --lucifer
 	for line in string.gmatch(self.raw .. "\r\n", "([^\r\n]*)\r?\n") do
@@ -178,6 +179,7 @@ elseif line == "狩猎者物品" then
 elseif line == "督军物品" then
 			self.warlord = true
 		else
+		 
 				local specName, specVal = line:match("^(.+): (%x+)$") --lucifer
 			if not specName then
 				specName, specVal = line:match("^(.+): %+?([%d%-%.]+)")--lucifer
@@ -199,6 +201,8 @@ elseif specName == "物品等级" then
 					self.itemLevel = tonumber(specVal)
 elseif specName == "品质" then
 					self.quality = tonumber(specVal)
+elseif specName == "品质说明" then
+					self.qualityTitle = specVal
 elseif specName == "插槽" then
 					local group = 0
 					for c in specVal:gmatch(".") do
@@ -609,6 +613,9 @@ t_insert(rawLines, "版本: "..variantName)
 	end
 	if self.quality then
 t_insert(rawLines, "品质: "..self.quality)
+	end
+	if self.qualityTitle then
+t_insert(rawLines, "品质说明: "..self.qualityTitle)
 	end
 	if self.sockets and #self.sockets > 0 then
 local line = "插槽: "

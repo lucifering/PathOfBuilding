@@ -525,7 +525,7 @@ minions["HeraldOfAgonySpiderPlated"] = {
 		mod("Condition:FullLife", "FLAG", true),
 	},
 	modListSP = {
-		"造成混沌伤害", 
+		"40% 物理伤害转换为混沌伤害", 
 		"不会受到伤害", 
 	},
 }

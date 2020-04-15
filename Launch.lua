@@ -322,7 +322,7 @@ end
 
 function launch:ShowErrMsg(fmt, ...)
 	if not self.promptMsg then
-		self:ShowPrompt(1, 0, 0, "^1Error:\n\n^0" .. string.format(fmt, ...) .. "\n\nPress Enter/Escape to Dismiss, or F5 to restart the application.")
+		self:ShowPrompt(1, 0, 0, "^1国服版："..self.versionNumber.."\n\n错误信息:\n^0" .. string.format(fmt, ...) .. "\n\n按下 Enter/Esc 关闭本消息, 或 F5 重新加载POB.")
 	end
 end
 

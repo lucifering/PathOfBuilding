@@ -771,7 +771,9 @@ function calcs.perform(env)
 
 	-- Check for extra modifiers to apply to aura skills
 	local extraAuraModList = { }
-	for _, value in ipairs(modDB:List(nil, "ExtraAuraEffect")) do
+	
+	for _, value in ipairs(modDB:List(nil, "ExtraAuraEffect")) do 
+		
 		t_insert(extraAuraModList, value.mod)
 	end
 

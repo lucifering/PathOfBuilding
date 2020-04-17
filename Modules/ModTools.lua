@@ -52,16 +52,23 @@ for _, targetVersion in pairs(targetVersionList) do
 end
 
 function modLib.compareModParams(modA, modB)
+
 	if modA.name ~= modB.name or modA.type ~= modB.type or modA.flags ~= modB.flags or modA.keywordFlags ~= modB.keywordFlags or #modA ~= #modB then
 		return false
 	end
 	for i, tag in ipairs(modA) do
+
+		
 		if tag.type ~= modB[i].type then
 			return false
 		end
 		if modLib.formatTag(tag) ~= modLib.formatTag(modB[i]) then
 			return false
 		end
+		if tag.type =="GlobalEffect" and tag.effectType == "ExtraAuraEffect" then 
+			return false
+		end 
+		
 	end
 	return true
 end

@@ -1644,6 +1644,7 @@ local specialModList = {
 	["持盾时攻击格挡率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num, { type = "Condition", var = "UsingShield" } )  } end,  
 	["持盾牌时法术格挡率提高 (%d+)%%"] = function(num) return {  mod("SpellBlockChance", "BASE", num, { type = "Condition", var = "UsingShield" } ) } end,  
 	["双持时攻击格挡率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num, { type = "Condition", var = "DualWielding" } )  } end,  
+	["双持攻击时武器暴击率提高 (%d+)%%"] = function(num) return {  mod("CritChance", "INC", num, { type = "Condition", var = "DualWielding" } )  } end, 
 	["双持或持盾牌时攻击格挡率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", varList = { "DualWielding", "UsingShield" } })  } end,  
 	["近期内你若因被击中而受伤，攻击格挡率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "BeenHitRecently" } )  } end,  
 	["持长杖时，攻击伤害格挡几率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "UsingStaff" })  } end,  
@@ -2078,6 +2079,7 @@ local specialModList = {
 	["击中时有 ([%d%.]+)%% 几率使敌人中毒"]= function(num) return {  mod("PoisonChance", "BASE", num)  } end, 
 	["对中毒敌人造成攻击伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("DamageManaLeech", "BASE", num,nil, ModFlag.Attack, { type = "ActorCondition", actor = "enemy", var = "Poison" })  } end, 
 	["攻击瘫痪的敌人时，攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack, { type = "ActorCondition", actor = "enemy", var = "Maimed" })  } end, 
+	["对瘫痪敌人的攻击伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", num,nil, ModFlag.Attack, { type = "ActorCondition", actor = "enemy", var = "Maimed" })  } end, 
 	["对低血敌人的击中和异常状态总伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num,nil,0,bor(KeywordFlag.Hit, KeywordFlag.Ailment) ,{ type = "ActorCondition", actor = "enemy", var = "LowLife" })  } end,
 	["对低血的敌人时，击中和异常状态总伤害额外提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num,nil,0,bor(KeywordFlag.Hit, KeywordFlag.Ailment) ,{ type = "ActorCondition", actor = "enemy", var = "LowLife" })  } end,
 	["敌人身上的非伤害异常状态效果提高 (%d+)%%"] = function(num) return { 
@@ -2591,9 +2593,9 @@ local specialModList = {
 	["你和友军受你的光环技能影响时，伤害提高 ([%d%.]+)%%"]= function(num) return {  mod("AffectedByAuraMod", "LIST", { mod =  mod("Damage", "INC", num) }) } end, 
 	["你和友军受你的光环影响时，元素抗性 %+([%d%.]+)%%"]= function(num) return {  mod("AffectedByAuraMod", "LIST", { mod =  mod("ElementalResist", "BASE", num) }) } end, 
 	["你和友军受你的光环影响时，伤害提高 ([%d%.]+)%%"]= function(num) return {  mod("AffectedByAuraMod", "LIST", { mod =  mod("Damage", "INC", num) }) } end, 
-	["你技能的光环可使你和周围友军的攻击和施法速度提高 ([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("Speed", "INC", num) }) } end, 
-	["你技能的光环可使你和周围友方的物理伤害减免提高 %+([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("PhysicalDamageReduction", "BASE", num) }) } end, 
-	["你技能的光环给你和周围队友每秒回复 ([%d%.]+)%% 生命"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("LifeRegenPercent", "BASE", num) }) } end, 
+	["你技能的光环可使你和周围友军的攻击和施法速度提高 ([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("Speed", "INC", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end, 
+	["你技能的光环可使你和周围友方的物理伤害减免提高 %+([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("PhysicalDamageReduction", "BASE", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end, 
+	["你技能的光环给你和周围队友每秒回复 ([%d%.]+)%% 生命"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("LifeRegenPercent", "BASE", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end, 
 	["你和周围友军 %+([%d%.]+)%% 元素抗性"]= function(num) return {  mod("ExtraAura", "LIST", { mod =  mod("ElementalResist", "BASE", num) }) } end, 
 	["【召唤愤怒狂灵】的生命提高 (%d+)%%"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("Life", "INC", num) }, { type = "SkillName", skillName = "召唤愤怒狂灵" })  } end, 
 	["愤怒狂灵的最大生命提高 (%d+)%%"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("Life", "INC", num) }, { type = "SkillName", skillName = "召唤愤怒狂灵" })  } end, 
@@ -2698,14 +2700,14 @@ local specialModList = {
 			mod("SpellBlockChance", "MORE", -30) 
 		},
 	-- 3.4
-		["你技能的光环可使你和周围友方的伤害提高 ([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("Damage", "INC", num) }) } end, 
-		["你技能的光环可使你和周围友军的伤害提高 ([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("Damage", "INC", num) }) } end, 
-		["你技能的光环可使你和周围友方的攻击和施法速度提高 ([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("Speed", "INC", num) }) } end, 
-	["你技能的光环可使你和周围友军的物理伤害减免提高 %+([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("PhysicalDamageReduction", "BASE", num) }) } end, 
+		["你技能的光环可使你和周围友方的伤害提高 ([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("Damage", "INC", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end, 
+		["你技能的光环可使你和周围友军的伤害提高 ([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("Damage", "INC", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end, 
+		["你技能的光环可使你和周围友方的攻击和施法速度提高 ([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("Speed", "INC", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end, 
+	["你技能的光环可使你和周围友军的物理伤害减免提高 %+([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("PhysicalDamageReduction", "BASE", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end, 
 		["受到你嘲讽的敌人所承受的伤害提高 (%d+)%% "] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("DamageTaken", "INC", num, { type = "Condition", var = "Taunted" }) }) } end, 
 		["攻击技能可使混沌总伤害额外提高 (%d+)%%"] = function(num) return {  mod("ChaosDamage", "MORE", num,nil,nil,KeywordFlag.Attack) } end, 
 	["在药剂生效期间，你造成的中毒效果有 40%% 几率伤害提高 (%d+)%%"] = function(num) return {  mod("Damage", "INC", num,nil,nil,KeywordFlag.Poison ,{ type = "Condition", var = "UsingFlask" }) } end, 
-	["你技能的光环每秒回复你和周围友军 ([%d%.]+)%% 最大生命"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("LifeRegenPercent", "BASE", num) }) } end, 
+	["你技能的光环每秒回复你和周围友军 ([%d%.]+)%% 最大生命"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("LifeRegenPercent", "BASE", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end, 
 	["周围至少有 1 个友军时，攻击总伤害额外提高 ([%d%.]+)%%"] = function(num) return {  mod("Damage", "MORE", num,{ type = "MultiplierThreshold", var = "NearbyAlly", threshold = 1 } ) } end, 
 	["周围至少有 1 个友军时，总伤害额外提高 ([%d%.]+)%%"] = function(num) return {  mod("Damage", "MORE", num,{ type = "MultiplierThreshold", var = "NearbyAlly", threshold = 1 } ) } end, 
 	["当周围有至少 1 个友军，你与周围友军的总伤害额外提高 (%d+)%%"] = function(num) return { mod("ExtraAura", "LIST", { mod = mod("Damage", "MORE", num) }, { type = "MultiplierThreshold", var = "NearbyAlly", threshold = 1 }) } end,
@@ -2716,6 +2718,8 @@ local specialModList = {
 	["每 %d 秒攻击伤害格挡几率 %+(%d+)%%，持续 %d 秒"] = function(_,num,_2) return { mod("BlockChance", "BASE", num, { type = "Condition", var = "BastionOfHopeActive" }) } end,
 	["近期内你的技能若打出过暴击，则每有 1 个暴击球，就会每秒受到 (%d+) 闪电伤害"]= function(num) return {  mod("LightningDegen", "BASE", num,{ type = "Multiplier", var = "PowerCharge" },{ type = "Condition", var = "CritRecently" }) } end, 
 	["低血时，法术伤害格挡几率额外 %+(%d+)%%"]= function(num) return {  mod("SpellBlockChance", "BASE", num, { type = "Condition", var = "LowLife" }   ) } end, 
+	["法术伤害格挡几率额外 %+(%d+)%%"]= function(num) return {  mod("SpellBlockChance", "BASE", num  ) } end, 
+	["攻击伤害格挡几率额外 %+(%d+)%%"]= function(num) return {  mod("BlockChance", "BASE", num  ) } end, 
 	["【冰川之刺】的 (%d+)%% 物理伤害转换为冰霜伤害"]= function(num)  return {  mod("PhysicalDamageConvertToCold", "BASE", tonumber(num),{ type = "SkillName", skillName ="冰川之刺" })  } end, 
 	["获得 (%d+) 级的主动技能【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end, 
 	["【(.+)】不保留魔力"] = function( _,skill) return { mod("SkillData", "LIST", { key = "manaCostForced", value = 0 }, { type = "SkillName", skillName = skill }) } end,
@@ -3006,6 +3010,10 @@ local specialModList = {
 			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }) -- Make the Configuration option appear
 	},
 	["攻击击中获得 %d+ 点怒火。每 [%d%.]+ 秒只会发生一次"] = {
+			flag("Condition:CanGainRage"),
+			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }) -- Make the Configuration option appear
+	},
+	["使用战吼时获得 %d+ 层怒火"] = {
 			flag("Condition:CanGainRage"),
 			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }) -- Make the Configuration option appear
 	},
@@ -3390,6 +3398,7 @@ local specialModList = {
 	["每一点配置的天赋就使该珠宝插槽的效果提高 (%d+)%%"] = function(num) return { mod("JewelData", "LIST", { key = "jewelIncEffectFromClassStart", value = num }) } end,
 	["你技能的非诅咒类光环效果提高 (%d+)%%"]= function(num) return {  mod("AuraEffect", "INC", tonumber(num),nil,nil,KeywordFlag.Aura)  } end,
 	["每受到一个捷技能影响，你身上的来自光环技能的增益效果提高 (%d+)%%"] =function(num) return {  mod("AuraEffectOnSelf", "INC", num,nil,nil,KeywordFlag.Aura,{ type = "Multiplier", var = "AffectedByHeraldCount" }  )  } end,
+	["每有一个影响你的捷效果都使你身上来自技能的光环增益效果提高 (%d+)%%"] =function(num) return {  mod("AuraEffectOnSelf", "INC", num,nil,nil,KeywordFlag.Aura,{ type = "Multiplier", var = "AffectedByHeraldCount" }  )  } end,
 	["你的光环技能对自身造成的总效果额外提高 (%d+)%%"]= function(num) return { 
 	 mod("AuraEffectOnSelf", "MORE", num,nil,nil,KeywordFlag.Aura)
 	 } end, 
@@ -4790,6 +4799,9 @@ local function parseMod(line, order)
 		if misc.addToAura then
 			-- Modifiers that add effects to your auras
 			for i, effectMod in ipairs(modList) do
+			--,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }
+				effectMod.type= "GlobalEffect";
+				effectMod.effectType="ExtraAuraEffect";			
 				modList[i] = mod("ExtraAuraEffect", "LIST", { mod = effectMod })
 			end
 		elseif misc.newAura then

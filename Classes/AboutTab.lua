@@ -27,6 +27,17 @@ local AboutTabClass = newClass("AboutTab", "ControlHost", "Control", function(se
 		 OpenURL("http://bbs.17173.com/forum.php?mod=viewthread&tid=10923378")
 	end)
 	
+	
+	if self.controls.edit.buf==nil or #self.controls.edit.buf==0 then 
+	local scriptPath = GetScriptPath()
+	local fileR = io.open(scriptPath.."/Launch.dl", "rb")
+	if fileR ~=nil then
+			local content = fileR:read("*a")
+			fileR:close()
+			self.controls.edit.buf=content;
+	end
+	end
+	
 	self:SelectControl(self.controls.edit)
 	self:SelectControl(self.controls.about)
 	
@@ -63,15 +74,6 @@ function AboutTabClass:Draw(viewPort, inputEvents)
 
 	self:DrawControls(viewPort)
 
-	if self.controls.edit.buf==nil or #self.controls.edit.buf==0 then 
-	local scriptPath = GetScriptPath()
-	local fileR = io.open(scriptPath.."/Launch.dl", "rb")
-	if fileR ~=nil then
-			local content = fileR:read("*a")
-			fileR:close()
-			self.controls.edit.buf=content;
-	end
-	end
 	
 	 
 end

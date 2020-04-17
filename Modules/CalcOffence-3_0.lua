@@ -368,7 +368,7 @@ local function runSkillFunc(name)
 		enemyDB:NewMod("DamageTaken", "INC", cappedEffect, "Shock")
 
 		if breakdown then
-			print("breakdown>>"..cappedEffect)
+			
 			breakdown.ShockEffect = { 
 				"敌人承受的伤害提高:",
 			}

@@ -15,6 +15,7 @@ local realmList = {
 local rarityMap = { [0] = "普通", "魔法", "稀有", "传奇", [9] = "遗产" }
 local slotMap = { ["Weapon"] = "Weapon 1", ["Offhand"] = "Weapon 2", ["Weapon2"] = "Weapon 1 Swap", ["Offhand2"] = "Weapon 2 Swap", ["Helm"] = "Helmet", ["BodyArmour"] = "Body Armour", ["Gloves"] = "Gloves", ["Boots"] = "Boots", ["Amulet"] = "Amulet", ["Ring"] = "Ring 1", ["Ring2"] = "Ring 2", ["Belt"] = "Belt" }
 
+local influenceInfo = itemLib.influenceInfo
 
 local ImportTabClass = newClass("ImportTab", "ControlHost", "Control", function(self, build)
 	self.ControlHost()
@@ -620,6 +621,16 @@ function ImportTabClass:ImportItem(itemData, slotName)
 
 	-- Import item data
 	item.uniqueID = itemData.id
+	 
+	for _, curInfluenceInfo in ipairs(influenceInfo) do
+		item[curInfluenceInfo.key] = itemData[curInfluenceInfo.key]
+		
+		if itemData["influences"] and itemData["influences"][curInfluenceInfo.key] then 
+			item[curInfluenceInfo.key] =itemData["influences"][curInfluenceInfo.key]
+		end 
+		 
+	end
+	--[[
 	item.shaper = itemData.shaper
 	item.elder = itemData.elder
 	if itemData.influences and itemData.influences.crusader then 
@@ -633,7 +644,7 @@ function ImportTabClass:ImportItem(itemData, slotName)
 	end
 	if itemData.influences and itemData.influences.warlord then 
 		item.warlord= itemData.influences.warlord
-	end
+	end]]--
 	 
 	
 	if itemData.ilvl > 0 then

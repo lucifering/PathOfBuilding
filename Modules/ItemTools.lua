@@ -13,12 +13,41 @@ local m_floor = math.floor
 
 itemLib = { }
 
+-- Info table for all types of item influence
+itemLib.influenceInfo = {
+	{ key="shaper", display="塑界之器", color=colorCodes.SHAPER },
+	{ key="elder", display="裂界之器", color=colorCodes.ELDER },
+	{ key="warlord", display="督军物品", color=colorCodes.WARLORD },
+	{ key="hunter", display="狩猎者物品", color=colorCodes.HUNTER },
+	{ key="crusader", display="圣战者物品", color=colorCodes.CRUSADER },
+	{ key="redeemer", display="救赎者物品", color=colorCodes.REDEEMER },
+	
+	{ key="synthesised", display="忆境物品", color=colorCodes.REDEEMER },
+	 
+	
+}
+
+-- Apply a value scalar to any numbers present
+function itemLib.applyValueScalar(line, valueScalar)
+	if valueScalar and type(valueScalar) == "number" and valueScalar ~= 1 then
+		return line:gsub("(%d+%.%d*)", function(num)
+			local numVal = (m_floor(tonumber(num) * valueScalar * 10 + 0.001) / 10)
+			return tostring(numVal)
+		end)
+		:gsub("(%d+)([^%.])", function(num, suffix)
+			local numVal = m_floor(num * valueScalar + 0.001)
+			return tostring(numVal)..suffix
+		end)
+	end
+	return line
+end
+
 -- Apply range value (0 to 1) to a modifier that has a range: (x to x) or (x-x to x-x)
-function itemLib.applyRange(line, range)
-return line:gsub("%((%d+)%-(%d+) %- (%d+)%-(%d+)%)", "(%1-%2) %- (%3-%4)")
+function itemLib.applyRange(line, range, valueScalar)
+line = line:gsub("%((%d+)%-(%d+) to (%d+)%-(%d+)%)", "(%1-%2) %- (%3-%4)")
 :gsub("(%+?)%((%-?%d+) %- (%d+)%)", "%1(%2-%3)")
-		:gsub("(%+?)%((%-?%d+)%-(%d+)%)", 
-		function(plus, min, max) 
+:gsub("(%+?)%((%-?%d+)%-(%d+)%)", 
+function(plus, min, max)
 			local numVal = m_floor(tonumber(min) + range * (tonumber(max) - tonumber(min)) + 0.5)
 			if numVal < 0 then
 				if plus == "+" then
@@ -33,6 +62,9 @@ return line:gsub("%((%d+)%-(%d+) %- (%d+)%-(%d+)%)", "(%1-%2) %- (%3-%4)")
 			return tostring(numVal) 
 		end)
 :gsub("提高 %-(%d+%%)", function(num) return "降低 "..num end)
+:gsub("%-(%d+%%) increased", function(num) return num.."%% reduced" end)
+	return itemLib.applyValueScalar(line, valueScalar)
+
 end
 
 -- Clean item text by removing or replacing unsupported or redundant characters or sequences
@@ -46,7 +78,7 @@ function itemLib.sanitiseItemText(text)
 end
 
 function itemLib.formatModLine(modLine, dbMode)
-	local line = (not dbMode and modLine.range and itemLib.applyRange(modLine.line, modLine.range)) or modLine.line
+	local line = (not dbMode and modLine.range and itemLib.applyRange(modLine.line, modLine.range, modLine.valueScalar)) or modLine.line
 	if line:match("^%+?0%%? ") or (line:match(" %+?0%%? ") and not line:match("0 to [1-9]")) or line:match(" 0%-0 ") or line:match(" 0 to 0 ") then -- Hack to hide 0-value modifiers
 		return
 	end

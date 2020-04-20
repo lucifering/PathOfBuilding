@@ -6,54 +6,63 @@ itemBases["素布腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, },
 	implicit = "物理伤害提高 (12-24)%",
+	implicitModTypes = { { "physical" }, },
 	req = { },
 }
 itemBases["扣链腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, },
 	implicit = "+(9-20) 最大能量护盾",
+	implicitModTypes = { { "defences", "jewellery_defense" }, },
 	req = { },
 }
 itemBases["皮革腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, },
 	implicit = "+(25-40) 最大生命",
+	implicitModTypes = { { "life" }, },
 	req = { level = 8, },
 }
 itemBases["重革腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, },
 	implicit = "+(25-35) 力量",
+	implicitModTypes = { { "jewellery_attribute" }, },
 	req = { level = 8, },
 }
 itemBases["饰布腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, },
 	implicit = "晕眩回复和格挡回复提高 (15-25)%",
+	implicitModTypes = { {  }, },
 	req = { level = 16, },
 }
 itemBases["扣钉腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, },
 	implicit = "敌人被晕眩时间延长 (20-30)%",
+	implicitModTypes = { {  }, },
 	req = { level = 16, },
 }
 itemBases["先锋腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, not_for_sale = true, atlas_base_type = true, beltatlas1 = true, },
 	implicit = "+(260-320) 护甲和闪避值",
+	implicitModTypes = { { "defences", "jewellery_defense" }, },
 	req = { level = 78, },
 }
 itemBases["水晶腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, not_for_sale = true, atlas_base_type = true, beltatlas2 = true, },
 	implicit = "+(60-80) 最大能量护盾",
+	implicitModTypes = { { "defences", "jewellery_defense" }, },
 	req = { level = 79, },
 }
 itemBases["深渊腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, not_for_sale = true, },
 	implicit = "拥有 1 个深渊插槽",
+	implicitModTypes = { {  }, },
 	req = { },
 }
 
@@ -62,5 +71,6 @@ itemBases["金羽腰带"] = {
 	hidden = true,
 	tags = { default = true, belt = true, not_for_sale = true, },
 	implicit = "物品稀有度提高 (20-30)%",
+	implicitModTypes = { {  }, },
 	req = { },
 }

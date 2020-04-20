@@ -7,134 +7,156 @@ itemBases["锻铁戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
 	implicit = "攻击附加 1 - 4 基础物理伤害",
+	implicitModTypes = { { "attack", "physical" }, },
 	req = { },
 }
 itemBases["珊瑚戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
 	implicit = "+(20-30) 最大生命",
+	implicitModTypes = { { "life" }, },
 	req = { },
 }
 itemBases["海灵戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
 	implicit = "+(20-30) 最大魔力",
+	implicitModTypes = { { "mana" }, },
 	req = { },
 }
 itemBases["金光戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
 	implicit = "物品稀有度提高 (6-15)%",
+	implicitModTypes = { {  }, },
 	req = { level = 20, },
 }
 itemBases["黄玉戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
 	implicit = "+(20-30)% 闪电抗性",
+	implicitModTypes = { { "lightning", "jewellery_resistance" }, },
 	req = { level = 12, },
 }
 itemBases["蓝玉戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
 	implicit = "+(20-30)% 冰霜抗性",
+	implicitModTypes = { { "cold", "jewellery_resistance" }, },
 	req = { level = 8, },
 }
 itemBases["红玉戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
 	implicit = "+(20-30)% 火焰抗性",
+	implicitModTypes = { { "fire", "jewellery_resistance" }, },
 	req = { level = 16, },
 }
 itemBases["三相戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
 	implicit = "+(8-10)% 所有元素抗性",
+	implicitModTypes = { { "elemental", "jewellery_resistance" }, },
 	req = { level = 30, },
 }
 itemBases["月光石戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
 	implicit = "+(15-25) 最大能量护盾",
+	implicitModTypes = { { "defences", "jewellery_defense" }, },
 	req = { level = 20, },
 }
 itemBases["紫晶戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
 	implicit = "+(9-13)% 混沌抗性",
+	implicitModTypes = { { "chaos", "jewellery_resistance" }, },
 	req = { level = 30, },
 }
 itemBases["宝钻戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, },
 	implicit = "攻击和法术暴击率提高 (20-30)%",
+	implicitModTypes = { {  }, },
 	req = { level = 20, },
 }
 itemBases["双玉戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, twostonering = true, },
 	implicit = "+(12-16)% 火焰与闪电抗性",
+	implicitModTypes = { { "fire", "lightning", "jewellery_resistance" }, },
 	req = { level = 20, },
 }
 itemBases["双玉戒指"] = {
 	type = "Ring",
-	hidden = true,
+	
 	tags = { default = true, ring = true, twostonering = true, },
 	implicit = "+(12-16)% 冰霜与闪电抗性",
+	implicitModTypes = { { "cold", "lightning", "jewellery_resistance" }, },
 	req = { level = 20, },
 }
 itemBases["双玉戒指"] = {
 	type = "Ring",
-	hidden = true,
+	
 	tags = { default = true, ring = true, twostonering = true, },
 	implicit = "+(12-16)% 火焰与冰霜抗性",
+	implicitModTypes = { { "fire", "cold", "jewellery_resistance" }, },
 	req = { level = 20, },
 }
 itemBases["潜能之戒"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, unset_ring = true, },
 	implicit = "有 1 个插槽",
+	implicitModTypes = { {  }, },
 	req = { level = 5, },
 }
 itemBases["Two-Stone Ring (Fire/Lightning)"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, twostonering = true, },
 	implicit = "+(12-16)% 火焰与闪电抗性",
+	implicitModTypes = { { "fire", "lightning", "jewellery_resistance" }, },
 	req = { level = 20, },
 }
 itemBases["Two-Stone Ring (Cold/Lightning)"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, twostonering = true, },
 	implicit = "+(12-16)% 冰霜与闪电抗性",
+	implicitModTypes = { { "cold", "lightning", "jewellery_resistance" }, },
 	req = { level = 20, },
 }
 itemBases["Two-Stone Ring (Fire/Cold)"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, twostonering = true, },
 	implicit = "+(12-16)% 火焰与冰霜抗性",
+	implicitModTypes = { { "fire", "cold", "jewellery_resistance" }, },
 	req = { level = 20, },
 }
 itemBases["合金戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, not_for_sale = true, atlas_base_type = true, ringatlas1 = true, },
 	implicit = "攻击附加 (3-4) - (10-14) 基础物理伤害",
+	implicitModTypes = { { "attack", "physical" }, },
 	req = { level = 80, },
 }
 itemBases["蛋白石戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, not_for_sale = true, atlas_base_type = true, ringatlas2 = true, },
 	implicit = "元素伤害提高 (15-25)%",
+	implicitModTypes = { { "elemental", "jewellery_elemental" }, },
 	req = { level = 80, },
 }
 itemBases["朱砂之戒"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, not_for_sale = true, atlas_base_type = true, ringatlas3 = true, },
 	implicit = "最大生命提高 (5-7)%",
+	implicitModTypes = { { "life" }, },
 	req = { level = 80, },
 }
 itemBases["天蓝之戒"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, not_for_sale = true, atlas_base_type = true, ringatlas4 = true, },
 	implicit = "最大魔力提高 (8-10)%",
+	implicitModTypes = { { "mana" }, },
 	req = { level = 80, },
 }
 
@@ -142,6 +164,7 @@ itemBases["裂隙戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, not_for_sale = true, },
 	implicit = "属性在裂隙内得到加倍",
+	implicitModTypes = { {  }, },
 	req = { },
 }
 itemBases["金环"] = {
@@ -149,6 +172,7 @@ itemBases["金环"] = {
 	hidden = true,
 	tags = { default = true, ring = true, not_for_sale = true, },
 	implicit = "+(8-12) 全属性",
+	implicitModTypes = { { "jewellery_attribute" }, },
 	req = { level = 12, },
 }
 itemBases["杰特戒指"] = {
@@ -156,27 +180,8 @@ itemBases["杰特戒指"] = {
 	hidden = true,
 	tags = { default = true, ring = true, not_for_sale = true, },
 	implicit = "全局防御提高 (5-10)%",
+	implicitModTypes = { { "defences", "jewellery_defense" }, },
 	req = { },
 }
 
 
-itemBases["双玉戒指"] = {
-	type = "Ring",
-	tags = { default = true, ring = true, twostonering = true, },
-	implicit = "+(12-16)% 火焰与闪电抗性",
-	req = { level = 20, },
-}
-itemBases["双玉戒指"] = {
-	type = "Ring",
-	hidden = true,
-	tags = { default = true, ring = true, twostonering = true, },
-	implicit = "+(12-16)% 冰霜与闪电抗性",
-	req = { level = 20, },
-}
-itemBases["双玉戒指"] = {
-	type = "Ring",
-	hidden = true,
-	tags = { default = true, ring = true, twostonering = true, },
-	implicit = "+(12-16)% 火焰与冰霜抗性",
-	req = { level = 20, },
-}

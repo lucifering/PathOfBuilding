@@ -7,78 +7,91 @@ itemBases["海灵护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, },
 	implicit = "魔力回复速度提高 (20-30)%",
+	implicitModTypes = { { "mana" }, },
 	req = { },
 }
 itemBases["珊瑚护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, },
 	implicit = "(2-4) 每秒生命回复",
+	implicitModTypes = { { "flat_life_regen", "life" }, },
 	req = { },
 }
 itemBases["琥珀护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, },
 	implicit = "+(20-30) 力量",
+	implicitModTypes = { { "jewellery_attribute" }, },
 	req = { level = 5, },
 }
 itemBases["翠玉护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, },
 	implicit = "+(20-30) 敏捷",
+	implicitModTypes = { { "jewellery_attribute" }, },
 	req = { level = 5, },
 }
 itemBases["海玉护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, },
 	implicit = "+(20-30) 智慧",
+	implicitModTypes = { { "jewellery_attribute" }, },
 	req = { level = 5, },
 }
 itemBases["帝金护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, },
 	implicit = "物品稀有度提高 (12-20)%",
+	implicitModTypes = { {  }, },
 	req = { level = 8, },
 }
 itemBases["黑曜护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, },
 	implicit = "+(10-16) 全属性",
+	implicitModTypes = { { "jewellery_attribute" }, },
 	req = { level = 20, },
 }
 itemBases["青玉护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, },
 	implicit = "+(16-24) 敏捷与智慧",
+	implicitModTypes = { { "jewellery_attribute" }, },
 	req = { level = 16, },
 }
 itemBases["玛瑙护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, },
 	implicit = "+(16-24) 力量和智慧",
+	implicitModTypes = { { "jewellery_attribute" }, },
 	req = { level = 16, },
 }
 itemBases["黄晶护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, },
 	implicit = "+(16-24) 力量和敏捷",
+	implicitModTypes = { { "jewellery_attribute" }, },
 	req = { level = 16, },
 }
 itemBases["血色护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, not_for_sale = true, },
 	implicit = "+(20-30)% 火焰抗性",
+	implicitModTypes = { { "fire", "jewellery_resistance" }, },
 	req = { },
 }
 itemBases["碧珠护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, not_for_sale = true, atlas_base_type = true, amuletatlas1 = true, },
 	implicit = "魔力回复速度提高 (48-56)%",
+	implicitModTypes = { { "mana" }, },
 	req = { level = 77, },
 }
 itemBases["大理石护身符"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, not_for_sale = true, atlas_base_type = true, amuletatlas2 = true, },
 	implicit = "每秒回复 (1.2-1.6)% 生命",
+	implicitModTypes = { { "life" }, },
 	req = { level = 74, },
 }
 
@@ -87,6 +100,7 @@ itemBases["杰特护身符"] = {
 	hidden = true,
 	tags = { default = true, amulet = true, not_for_sale = true, },
 	implicit = "+(8-12)% 所有元素抗性",
+	implicitModTypes = { { "elemental", "jewellery_resistance" }, },
 	req = { level = 12, },
 }
 
@@ -95,6 +109,7 @@ itemBases["黑牙魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "有 1 个插槽",
+	implicitModTypes = { {  }, },
 	req = { },
 }
 itemBases["脊骨魔符"] = {
@@ -102,6 +117,7 @@ itemBases["脊骨魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "最大魔力提高 (20-30)%",
+	implicitModTypes = { { "mana" }, },
 	req = { },
 }
 itemBases["灰烬魔符"] = {
@@ -109,6 +125,7 @@ itemBases["灰烬魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "火焰伤害提高 (20-30)%",
+	implicitModTypes = { { "fire", "jewellery_elemental" }, },
 	req = { },
 }
 itemBases["孤角魔符"] = {
@@ -116,6 +133,7 @@ itemBases["孤角魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "闪电伤害提高 (20-30)%",
+	implicitModTypes = { { "lightning", "jewellery_elemental" }, },
 	req = { },
 }
 itemBases["深渊魔符"] = {
@@ -123,6 +141,7 @@ itemBases["深渊魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "冰霜伤害提高 (20-30)%",
+	implicitModTypes = { { "cold", "jewellery_elemental" }, },
 	req = { },
 }
 itemBases["碎骨魔符"] = {
@@ -130,6 +149,7 @@ itemBases["碎骨魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "物理伤害提高 (20-30)%",
+	implicitModTypes = { { "physical" }, },
 	req = { },
 }
 itemBases["亡手魔符"] = {
@@ -137,6 +157,7 @@ itemBases["亡手魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "混沌伤害提高 (19-31)%",
+	implicitModTypes = { { "chaos" }, },
 	req = { },
 }
 itemBases["不朽魔符"] = {
@@ -144,6 +165,7 @@ itemBases["不朽魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "+1 【魔卫复苏】数量上限",
+	implicitModTypes = { { "minion" }, },
 	req = { },
 }
 itemBases["腐首魔符"] = {
@@ -151,6 +173,7 @@ itemBases["腐首魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "鱼咬的灵敏度提高 (30-40)%",
+	implicitModTypes = { {  }, },
 	req = { },
 }
 itemBases["巨颚魔符"] = {
@@ -158,6 +181,7 @@ itemBases["巨颚魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "攻击与施法速度提高 (6-10)%",
+	implicitModTypes = { { "speed", "jewellery_attack", "jewellery_caster" }, },
 	req = { },
 }
 itemBases["虫蛹魔符"] = {
@@ -165,6 +189,7 @@ itemBases["虫蛹魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "法术伤害提高 (20-30)%",
+	implicitModTypes = { { "caster" }, },
 	req = { },
 }
 itemBases["狂癫魔符"] = {
@@ -172,6 +197,7 @@ itemBases["狂癫魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "攻击伤害提高 (20-30)%",
+	implicitModTypes = { { "jewellery_attack" }, },
 	req = { },
 }
 itemBases["幻爪魔符"] = {
@@ -179,6 +205,7 @@ itemBases["幻爪魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "攻击和法术暴击率提高 (40-50)%",
+	implicitModTypes = { {  }, },
 	req = { },
 }
 itemBases["皇骨魔符"] = {
@@ -186,6 +213,7 @@ itemBases["皇骨魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "每秒回复 2% 生命",
+	implicitModTypes = { { "life" }, },
 	req = { },
 }
 itemBases["亡爪魔符"] = {
@@ -193,6 +221,7 @@ itemBases["亡爪魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "+(24-36)% 攻击和法术暴击伤害加成",
+	implicitModTypes = { {  }, },
 	req = { },
 }
 itemBases["断螈魔符"] = {
@@ -200,6 +229,7 @@ itemBases["断螈魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "(4-6)% 几率使敌人受到冰冻，感电与点燃",
+	implicitModTypes = { { "jewellery_elemental" }, },
 	req = { },
 }
 itemBases["咒箍魔符"] = {
@@ -207,6 +237,7 @@ itemBases["咒箍魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "全局防御提高 (15-25)%",
+	implicitModTypes = { { "defences", "jewellery_defense" }, },
 	req = { },
 }
 itemBases["双子魔符"] = {
@@ -214,6 +245,7 @@ itemBases["双子魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "受到击中火焰伤害的 50% 转为冰霜伤害",
+	implicitModTypes = { { "fire", "cold" }, },
 	req = { },
 }
 itemBases["双子魔符"] = {
@@ -221,6 +253,7 @@ itemBases["双子魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "受到击中火焰伤害的 50% 转为闪电伤害",
+	implicitModTypes = { { "fire", "lightning" }, },
 	req = { },
 }
 itemBases["双子魔符"] = {
@@ -228,6 +261,7 @@ itemBases["双子魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "受到击中冰霜伤害的 50% 转为火焰伤害",
+	implicitModTypes = { { "fire", "cold" }, },
 	req = { },
 }
 itemBases["双子魔符"] = {
@@ -235,6 +269,7 @@ itemBases["双子魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "受到击中冰霜伤害的 50% 转为闪电伤害",
+	implicitModTypes = { { "cold", "lightning" }, },
 	req = { },
 }
 itemBases["双子魔符"] = {
@@ -242,6 +277,7 @@ itemBases["双子魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "受到击中闪电伤害的 50% 转为冰霜伤害",
+	implicitModTypes = { { "cold", "lightning" }, },
 	req = { },
 }
 itemBases["双子魔符"] = {
@@ -249,6 +285,7 @@ itemBases["双子魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "受到击中闪电伤害的 50% 转为火焰伤害",
+	implicitModTypes = { { "fire", "lightning" }, },
 	req = { },
 }
 itemBases["齿鲨魔符"] = {
@@ -256,6 +293,7 @@ itemBases["齿鲨魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "最大生命提高 (8-12)%",
+	implicitModTypes = { { "life" }, },
 	req = { },
 }
 itemBases["尖角魔符"] = {
@@ -263,6 +301,7 @@ itemBases["尖角魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "投射物会穿透 2 个额外目标",
+	implicitModTypes = { {  }, },
 	req = { },
 }
 itemBases["潜能魔符"] = {
@@ -270,6 +309,7 @@ itemBases["潜能魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "物品掉落数量提高 (6-10)%",
+	implicitModTypes = { {  }, },
 	req = { },
 }
 itemBases["三鼠魔符"] = {
@@ -277,6 +317,7 @@ itemBases["三鼠魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "所有属性提高 (12-16)%",
+	implicitModTypes = { { "jewellery_attribute" }, },
 	req = { },
 }
 itemBases["双猴魔符"] = {
@@ -284,6 +325,7 @@ itemBases["双猴魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "范围效果扩大 (5-8)%",
+	implicitModTypes = { {  }, },
 	req = { },
 }
 itemBases["长牙魔符"] = {
@@ -291,6 +333,7 @@ itemBases["长牙魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "(4-6)% 额外物理伤害减伤",
+	implicitModTypes = { { "physical" }, },
 	req = { },
 }
 itemBases["死羽魔符"] = {
@@ -298,6 +341,7 @@ itemBases["死羽魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "伤害提高 (25-35)%",
+	implicitModTypes = { {  }, },
 	req = { },
 }
 itemBases["猴掌魔符"] = {
@@ -305,6 +349,7 @@ itemBases["猴掌魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "击败敌人有 10% 几率获得暴击球",
+	implicitModTypes = { {  }, },
 	req = { },
 }
 itemBases["猴掌魔符"] = {
@@ -312,6 +357,7 @@ itemBases["猴掌魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "击败敌人有 10% 几率获得狂怒球",
+	implicitModTypes = { {  }, },
 	req = { },
 }
 itemBases["猴掌魔符"] = {
@@ -319,6 +365,7 @@ itemBases["猴掌魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "击败敌人有 10% 几率时获得耐力球",
+	implicitModTypes = { {  }, },
 	req = { },
 }
 itemBases["三手魔符"] = {
@@ -326,11 +373,13 @@ itemBases["三手魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "获得等同 (6-12)% 物理伤害的 1 个随机元素伤害",
+	implicitModTypes = { { "physical", "elemental", "jewellery_elemental" }, },
 	req = { },
 }
 itemBases["狼王魔符"] = {
 	type = "Amulet",
 	subType = "Talisman",
 	tags = { default = true, amulet = true, },
+	implicitModTypes = { },
 	req = { },
 }

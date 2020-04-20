@@ -2866,6 +2866,7 @@ local specialModList = {
 	["若周围有稀有或传奇敌人，则 %+(%d+)%% 基础暴击伤害加成"] = function(num) return { mod("CritMultiplier", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "RareOrUnique" }) } end,
 	["对传奇的敌人的击中和异常状态伤害提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num,nil,0,bor(KeywordFlag.Hit, KeywordFlag.Ailment) ,{ type = "ActorCondition", actor = "enemy", var = "RareOrUnique" }) } end,
 	["对被诅咒的敌人的击中和异常状态伤害提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num,nil,0,bor(KeywordFlag.Hit, KeywordFlag.Ailment) ,{ type = "ActorCondition", actor = "enemy", var = "Cursed" }) } end,
+	["攻击技能的异常状态伤害提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num,nil,ModFlag.Ailment, KeywordFlag.Attack) } end,
 	["对传奇的敌人的总伤害额外提高 (%d+)%%"] = function(num) return { mod("Damage", "MORE", num,{ type = "ActorCondition", actor = "enemy", var = "RareOrUnique" }) } end,
 	["对传奇敌人时，总伤害额外提高 (%d+)%%"] = function(num) return { mod("Damage", "MORE", num,{ type = "ActorCondition", actor = "enemy", var = "RareOrUnique" }) } end,
 	["周围有稀有或传奇敌人时，攻击速度提高 (%d+)%%"] = function(num) return { mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack,{ type = "ActorCondition", actor = "enemy", var = "RareOrUnique" }) } end,
@@ -3425,6 +3426,16 @@ local specialModList = {
 		mod("IgniteBurnFaster", "INC", tonumber(num)) ,
 		mod("BleedFaster", "INC", tonumber(num)) ,
 		 } end, 
+	["箭矢飞得越远，暴击率越高，暴击率最多提高 (%d+)%%"] = function(num) return { mod("CritChance", "INC", num, nil, bor(ModFlag.Attack, ModFlag.Projectile,ModFlag.Bow), { type = "DistanceRamp", ramp = {{35,0},{70,1}} }) } end,
+	["箭矢投射物的暴击几率随着飞行距离提升，击中目标时最多提高 (%d+)%%"] = function(num) return { mod("CritChance", "INC", num, nil, bor(ModFlag.Attack, ModFlag.Projectile,ModFlag.Bow), { type = "DistanceRamp", ramp = {{35,0},{70,1}} }) } end,
+	["箭矢的伤害随着飞行距离提升，击中目标时最多提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num, nil, bor(ModFlag.Attack, ModFlag.Projectile,ModFlag.Bow), { type = "DistanceRamp", ramp = {{35,0},{70,1}} }) } end,
+	["箭矢飞得越远，伤害越高，击中目标最多使伤害提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num, nil, bor(ModFlag.Attack, ModFlag.Projectile,ModFlag.Bow), { type = "DistanceRamp", ramp = {{35,0},{70,1}} }) } end,
+	["持斧或剑时，([%+%-]?%d+)%% 物理持续伤害加成"] = function(num) return { mod("PhysicalDotMultiplier", "BASE", num,{ type = "Condition", varList ={ "UsingAxe", "UsingSword" }}) } end,
+	["斧或剑攻击击中有 (%d+)%% 几率穿刺敌人"] = function(num) return { mod("ImpaleChance", "BASE", num, { type = "ModFlagOr", modFlags = bor(ModFlag.Axe, ModFlag.Sword) }) } end,
+	["斧类攻击造成的击中和异常状态伤害提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num, nil,ModFlag.Axe,bor(KeywordFlag.Hit, KeywordFlag.Ailment)) } end,
+	["剑类攻击造成的击中和异常状态伤害提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num, nil,ModFlag.Sword,bor(KeywordFlag.Hit, KeywordFlag.Ailment)) } end,
+	["锤类或短杖攻击造成的击中和异常状态伤害提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num, nil,ModFlag.Mace,bor(KeywordFlag.Hit, KeywordFlag.Ailment)) } end,
+	["%+(%d+) 武器范围"]= function(num) return {  mod("MeleeWeaponRange", "BASE", num )  } end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

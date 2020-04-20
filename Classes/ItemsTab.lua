@@ -31,7 +31,51 @@ local socketDropList = {
 	{ label = colorCodes.SCION.."W", color = "W" }
 }
 
+local tagsLabel = {
+	{en="attack",cn="攻击"},
+	{en="jewellery_attribute",cn="饰品属性"},
+	{en="life",cn="生命"},
+	{en="mana",cn="魔力"},
+	{en="defences",cn="防御"},
+	{en="jewellery_defense",cn="饰品防御"},
+	{en="physical",cn="物理"},
+	{en="fire",cn="火焰"},
+	{en="jewellery_elemental",cn="饰品元素"},
+	{en="jewellery_caster",cn="饰品施法"},
+	{en="jewellery_attack",cn="饰品攻击"},
+	{en="jewellery_defense",cn="饰品防御"},
+	{en="jewellery_resource",cn="饰品偷取"},
+	{en="jewellery_resistance",cn="饰品抗性"},
+	{en="jewellery_quality_ignore",cn="饰品品质忽略"},
+	{en="bleed",cn="流血"},
+	{en="poison",cn="中毒"},
+	{en="speed",cn="速度"},
+	{en="elemental",cn="元素"},
+	{en="chaos",cn="混沌"},
+	{en="minion",cn="召唤生物"},
+	{en="aura",cn="光环"},
+	{en="gem_level",cn="技能等级"},
+	{en="lightning",cn="闪电"},
+	{en="cold",cn="冰霜"},
+	{en="caster",cn="施法"},
+	
+	
+	
+}
+
 local baseSlots = { "Weapon 1", "Weapon 2", "Helmet", "Body Armour", "Gloves", "Boots", "Amulet", "Ring 1", "Ring 2", "Belt", "Flask 1", "Flask 2", "Flask 3", "Flask 4", "Flask 5" }
+
+local influenceInfo = itemLib.influenceInfo
+
+local catalystQualityFormat = {
+	"^x7F7F7F品质 (攻击词缀): "..colorCodes.MAGIC.."+%d%% (augmented)",
+	"^x7F7F7F品质 (生命和魔力词缀): "..colorCodes.MAGIC.."+%d%% (augmented)",
+	"^x7F7F7F品质 (施法词缀): "..colorCodes.MAGIC.."+%d%% (augmented)",
+	"^x7F7F7F品质 (属性词缀): "..colorCodes.MAGIC.."+%d%% (augmented)",
+	"^x7F7F7F品质 (抗性词缀): "..colorCodes.MAGIC.."+%d%% (augmented)",
+	"^x7F7F7F品质 (防御词缀): "..colorCodes.MAGIC.."+%d%% (augmented)",
+	"^x7F7F7F品质 (元素伤害): "..colorCodes.MAGIC.."+%d%% (augmented)",
+}
 
 local ItemsTabClass = newClass("ItemsTab", "UndoHandler", "ControlHost", "Control", function(self, build)
 	self.UndoHandler()
@@ -334,12 +378,42 @@ self.controls.removeDisplayItem = new("ButtonControl", {"LEFT",self.controls.edi
 		return #self.displayItem.sockets < self.displayItem.selectableSocketCount + self.displayItem.abyssalSocketCount
 	end
 	
-	-- Section: Apply Implicit
+	-- Section: Apply Implici
+	local influenceDisplayList = { "None" }
+	for i, curInfluenceInfo in ipairs(influenceInfo) do
+		influenceDisplayList[i + 1] = curInfluenceInfo.display
+	end
+	local function setDisplayItemInfluence(influenceIndexList)
+		self.displayItem:ResetInfluence()
+		for _, index in ipairs(influenceIndexList) do
+			if index > 0 then
+				self.displayItem[influenceInfo[index].key] = true;
+			end
+		end
+		if self.displayItem.crafted then
+			for i = 1, self.displayItem.affixLimit do
+				-- Force affix selectors to update
+				local drop = self.controls["displayItemAffix"..i]
+				drop.selFunc(drop.selIndex, drop.list[drop.selIndex])
+			end
+		end
+		self.displayItem:BuildAndParseRaw()
+		self:UpdateDisplayItemTooltip()
+	end
+	
+	
+	
 	self.controls.displayItemSectionImplicit = new("Control", {"TOPLEFT",self.controls.displayItemSectionSockets,"BOTTOMLEFT"}, 0, 0, 0, function()
-		return (self.controls.displayItemShaperElder:IsShown() or self.controls.displayItemEnchant:IsShown() or self.controls.displayItemCorrupt:IsShown()) and 28 or 0
+	--	return (self.controls.displayItemShaperElder:IsShown() or self.controls.displayItemEnchant:IsShown() or self.controls.displayItemCorrupt:IsShown()) and 28 or 0
+	
+
+	local firstRow = (self.controls.displayItemInfluence:IsShown() or self.controls.displayItemInfluence2:IsShown() or self.controls.displayItemEnchant:IsShown() or self.controls.displayItemCorrupt:IsShown()) and 28 or 0
+		local secondRow = (self.controls.displayItemCatalyst:IsShown() or self.controls.displayItemCatalystQualitySlider:IsShown()) and 28 or 0
+		return firstRow + secondRow
 	end)
 	
 
+--[[
 self.controls.displayItemShaperElder = new("DropDownControl", {"TOPLEFT",self.controls.displayItemSectionImplicit,"TOPLEFT"}, 0, 0, 100, 20, {"通常","塑界者",
 "裂界者","忆境物品","圣战者","救赎者","狩猎者","督军"
 }, function(index, value)
@@ -393,7 +467,23 @@ self.controls.displayItemShaperElder = new("DropDownControl", {"TOPLEFT",self.co
 		self.displayItem.type == "Jewel"
 		)
 	end
-self.controls.displayItemEnchant = new("ButtonControl", {"TOPLEFT",self.controls.displayItemShaperElder,"TOPRIGHT",true}, 8, 0, 100, 20, "增加附魔...", function()
+	]]--
+	self.controls.displayItemInfluence = new("DropDownControl", {"TOPLEFT",self.controls.displayItemSectionImplicit,"TOPLEFT"}, 0, 0, 100, 20, influenceDisplayList, function(index, value)
+		local otherIndex = self.controls.displayItemInfluence2.selIndex
+		setDisplayItemInfluence({ index - 1, otherIndex - 1 })
+	end)
+	self.controls.displayItemInfluence.shown = function()
+		return self.displayItem and self.displayItem.canBeInfluenced
+	end
+	self.controls.displayItemInfluence2 = new("DropDownControl", {"TOPLEFT",self.controls.displayItemInfluence,"TOPRIGHT",true}, 8, 0, 100, 20, influenceDisplayList, function(index, value)
+		local otherIndex = self.controls.displayItemInfluence.selIndex
+		setDisplayItemInfluence({ index - 1, otherIndex - 1 })
+	end)
+	self.controls.displayItemInfluence2.shown = function()
+		return self.displayItem and self.displayItem.canBeInfluenced
+	end
+	
+self.controls.displayItemEnchant = new("ButtonControl", {"TOPLEFT",self.controls.displayItemInfluence2,"TOPRIGHT",true}, 8, 0, 160,20, "增加附魔...", function()
 		self:EnchantDisplayItem()
 	end)
 	self.controls.displayItemEnchant.shown = function()
@@ -404,6 +494,54 @@ self.controls.displayItemCorrupt = new("ButtonControl", {"TOPLEFT",self.controls
 	end)
 	self.controls.displayItemCorrupt.shown = function()
 		return self.displayItem and self.displayItem.corruptable
+	end
+	
+	self.controls.displayItemCatalyst = new("DropDownControl", {"TOPLEFT",self.controls.displayItemInfluence,"BOTTOMLEFT"}, 0, 8, 180, 20,
+		{"不使用催化剂","研磨 (攻击)","丰沃 (生命和魔力)","灌注 (施法)","内在 (属性)"
+		,"棱光 (抗性)","回火 (防御)", "猛烈 (元素伤害)"},
+		function(index, value)
+			self.displayItem.catalyst = index - 1
+			 
+			if not self.displayItem.catalystQuality then
+				self.displayItem.catalystQuality = 20
+			end
+			if self.displayItem.crafted then
+				
+				for i = 1, self.displayItem.affixLimit do
+					-- Force affix selectors to update
+					local drop = self.controls["displayItemAffix"..i]					
+					drop.selFunc(drop.selIndex, drop.list[drop.selIndex])
+				end
+			end
+			self.displayItem:BuildAndParseRaw()
+			self:UpdateDisplayItemTooltip()
+		end)
+	self.controls.displayItemCatalyst.shown = function()
+		return self.displayItem and (self.displayItem.crafted or self.displayItem.hasModTags) and (self.displayItem.base.type == "Amulet" or self.displayItem.base.type == "Ring" or self.displayItem.base.type == "Belt")
+	end
+	self.controls.displayItemCatalystQualitySlider = new("SliderControl", {"LEFT",self.controls.displayItemCatalyst,"RIGHT"}, 8, 0, 200, 20, function(val)
+		self.displayItem.catalystQuality = round(val * 20)
+		
+		if self.displayItem.crafted then
+		
+			for i = 1, self.displayItem.affixLimit do
+				-- Force affix selectors to update
+				local drop = self.controls["displayItemAffix"..i]
+				 
+				drop.selFunc(drop.selIndex, drop.list[drop.selIndex])
+			end
+		end
+		self.displayItem:BuildAndParseRaw()
+		self:UpdateDisplayItemTooltip()
+	end)
+	self.controls.displayItemCatalystQualitySlider.shown = function()
+		return self.displayItem and (self.displayItem.crafted or self.displayItem.hasModTags) and self.displayItem.catalyst and self.displayItem.catalyst > 0
+	end
+	--self.controls.displayItemCatalystQualitySlider.divCount = 20
+	self.controls.displayItemCatalystQualitySlider.tooltipFunc = function(tooltip, val)
+		local quality = round(val * 20)
+		tooltip:Clear()
+		tooltip:AddLine(16, "^7品质: "..quality.."%")
 	end
 -- Section:星团珠宝  Cluster Jewel
 	self.controls.displayItemSectionClusterJewel = new("Control", {"TOPLEFT",self.controls.displayItemSectionImplicit,"BOTTOMLEFT"}, 0, 0, 0, function()
@@ -452,16 +590,22 @@ self.controls.displayItemSynthesis = new("ButtonControl", {"TOPLEFT",self.contro
 		local prev = self.controls["displayItemAffix"..(i-1)] or self.controls.displayItemSectionAffix
 		local drop, slider
 		drop = new("DropDownControl", {"TOPLEFT",prev,"TOPLEFT"}, i==1 and 40 or 0, 0, 418, 20, nil, function(index, value)
-			local affix = { modId = "None" }
+		
+		local affix = { modId = "None" }
 			if value.modId then
+				
 				affix.modId = value.modId
 				affix.range = slider.val
 			elseif value.modList then
+			 
 				slider.divCount = #value.modList
 				local index, range = slider:GetDivVal()
 				affix.modId = value.modList[index]
 				affix.range = range
 			end
+			
+				 
+			 
 			self.displayItem[drop.outputTable][drop.outputIndex] = affix
 			self.displayItem:Craft()
 			self:UpdateDisplayItemTooltip()
@@ -482,7 +626,26 @@ self.controls.displayItemSynthesis = new("ButtonControl", {"TOPLEFT",self.contro
 						tooltip:AddLine(14, "^7"..line)
 					end
 					if mod.level > 1 then
-						tooltip:AddLine(16, "Level: "..mod.level)
+						tooltip:AddLine(16, "等级: "..mod.level)
+					end
+					if mod.modTags and #mod.modTags > 0 then					
+						
+						--lucifer 
+						local tagsStr = ''
+						for ty in pairs(mod.modTags) do 
+							local found = false
+							for index in pairs(tagsLabel) do								
+								if mod.modTags[ty] == tagsLabel[index].en then
+									tagsStr = tagsStr .. tagsLabel[index].cn ..","								
+									found = true
+								end
+							end
+							if not found and mod.modTags[ty] then 
+								print("类型找不到："..mod.modTags[ty])
+							end 
+						end 
+						
+						tooltip:AddLine(16, "类型: "..tagsStr)
 					end
 				else
 					tooltip:AddLine(16, "^7"..#modList.." Tiers")
@@ -502,7 +665,25 @@ self.controls.displayItemSynthesis = new("ButtonControl", {"TOPLEFT",self.contro
 							end
 						end))
 					end
-					tooltip:AddLine(16, "Level: "..minMod.level.." to "..maxMod.level)
+					tooltip:AddLine(16, "等级: "..minMod.level.." — "..maxMod.level)
+					-- Assuming that all mods have the same tags
+					if maxMod.modTags and #maxMod.modTags > 0 then
+						--lucifer 
+						local tagsStr = ''
+						for ty in pairs(maxMod.modTags) do 
+							local found = false
+							for index in pairs(tagsLabel) do								
+								if maxMod.modTags[ty] == tagsLabel[index].en then
+									tagsStr = tagsStr .. tagsLabel[index].cn ..","								
+									found = true
+								end
+							end
+							if not found and maxMod.modTags[ty] then 
+								print("类型找不到："..maxMod.modTags[ty])
+							end 
+						end 
+						tooltip:AddLine(16, "类型: "..tagsStr)
+					end
 				end
 			end
 		end
@@ -1161,7 +1342,23 @@ function ItemsTabClass:SetDisplayItem(item)
 		if item.crafted then
 			self:UpdateAffixControls()
 		end
-		self.controls.displayItemShaperElder:SetSel(
+		
+		-- Set both influence dropdowns
+		local influence1 = 1
+		local influence2 = 1
+		for i, curInfluenceInfo in ipairs(influenceInfo) do
+			if item[curInfluenceInfo.key] then
+				if influence1 == 1 then
+					influence1 = i + 1
+				elseif influence2 == 1 then
+					influence2 = i + 1
+					break
+				end
+			end
+		end
+		self.controls.displayItemInfluence:SetSel(influence1, true) -- Don't call the selection function for the first influence dropdown as the second dropdown isn't properly set yet.
+		self.controls.displayItemInfluence2:SetSel(influence2) -- The selection function for the second dropdown properly handles everything for both dropdowns
+		--[[self.controls.displayItemShaperElder:SetSel(
 		(item.shaper and 2) or 
 		(item.elder and 3) or 
 		(item.synthesised and 4)or
@@ -1171,6 +1368,14 @@ function ItemsTabClass:SetDisplayItem(item)
 		(item.hunter and 7)or
 		(item.warlord and 8)or
 		1)
+		
+		]]--
+		self.controls.displayItemCatalyst:SetSel((item.catalyst or 0) + 1)
+		if item.catalystQuality then
+			self.controls.displayItemCatalystQualitySlider.val = m_min(item.catalystQuality / 20, 1)
+		else
+			self.controls.displayItemCatalystQualitySlider.val = 1
+		end
 		self:UpdateCustomControls()
 		self:UpdateDisplayItemRangeLines()
 		if item.clusterJewel and item.crafted then
@@ -1513,9 +1718,11 @@ function ItemsTabClass:CraftItem()
 		end
 		
 		if base.base.implicit then
+			local implicitIndex = 1
 			for line in base.base.implicit:gmatch("[^\n]+") do
 				local modList, extra = modLib.parseMod[self.build.targetVersion](line)
-				t_insert(item.implicitModLines, { line = line, extra = extra, modList = modList or { } })
+				t_insert(item.implicitModLines, { line = line, extra = extra, modList = modList or { }, modTags = base.base.implicitModTypes and base.base.implicitModTypes[implicitIndex] or { } })
+				implicitIndex = implicitIndex + 1
 			end
 		end
 		item:NormaliseQuality()
@@ -2100,7 +2307,7 @@ t_insert(sourceList, { label = "自定义", sourceId = "CUSTOM" })
 			local listMod = modList[controls.modSelect.selIndex]
 			if listMod ~=nil and listMod.mod~=nil then 
 				for _, line in ipairs(listMod.mod) do
-					t_insert(item.explicitModLines, { line = line, [listMod.type] = true })
+					t_insert(item.explicitModLines, { line = line, modTags = listMod.mod.modTags, [listMod.type] = true })
 				end
 			end
 		end
@@ -2188,6 +2395,13 @@ function ItemsTabClass:AddItemTooltip(tooltip, item, slot, dbMode)
 	else
 		tooltip:AddLine(20, rarityCode..item.namePrefix..item.baseName:gsub(" %(.+%)","")..item.nameSuffix)
 	end
+	
+	for _, curInfluenceInfo in ipairs(influenceInfo) do
+		if item[curInfluenceInfo.key] then
+			tooltip:AddLine(16, curInfluenceInfo.color..curInfluenceInfo.display)
+		end
+	end
+	--[[
 	if item.shaper then
 		tooltip:AddLine(16, colorCodes.SHAPER.."塑界之器")
 	end 
@@ -2207,14 +2421,14 @@ function ItemsTabClass:AddItemTooltip(tooltip, item, slot, dbMode)
 	if item.warlord then
 		tooltip:AddLine(16, colorCodes.WARLORD.."督军物品")
 	end
-	
-	
-	if item.fractured then
-		tooltip:AddLine(16, colorCodes.FRACTURED.."分裂之物")
-	end
 	if item.synthesised then
 		tooltip:AddLine(16, colorCodes.CRAFTED.."忆境物品")
 	end
+	]]--
+	if item.fractured then
+		tooltip:AddLine(16, colorCodes.FRACTURED.."分裂之物")
+	end
+	
 	tooltip:AddSeparator(10)
 
 	-- Special fields for database items
@@ -2362,6 +2576,10 @@ tooltip:AddLine(16, "^x7F7F7F范围内属性: "..line)
 			tooltip:AddLine(16, s_format("^x7F7F7F品质: "..colorCodes.MAGIC.."+%d%%", item.quality))
 		end
 
+	end
+	if item.catalyst and item.catalyst > 0 and item.catalyst <= #catalystQualityFormat and item.catalystQuality and item.catalystQuality > 0 then
+		tooltip:AddLine(16, s_format(catalystQualityFormat[item.catalyst], item.catalystQuality))
+		tooltip:AddSeparator(10)
 	end
 	if #item.sockets > 0 then
 		-- Sockets/links

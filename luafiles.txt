@@ -1,3 +1,4 @@
+Assets/patreon_logo.png
 Launch.lua
 GameVersions.lua
 UpdateApply.lua

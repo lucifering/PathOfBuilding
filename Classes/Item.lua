@@ -4,7 +4,7 @@
 -- Equippable item class
 --
 --local launch, main = ...
-
+local ipairs = ipairs
 local t_insert = table.insert
 local t_remove = table.remove
 local m_min = math.min
@@ -13,12 +13,55 @@ local m_floor = math.floor
 
 local dmgTypeList = {"Physical", "Lightning", "Cold", "Fire", "Chaos"}--这个不要处理
 
+local influenceInfo = itemLib.influenceInfo
+
+local catalystList = {"研磨催化剂", "丰沃催化剂", "灌注催化剂", "内在催化剂", "棱光催化剂", "回火催化剂", "猛烈催化剂"}
+local catalystTags = {
+	{ "attack" },
+	{ "life", "mana" },
+	{ "caster" },
+	{ "jewellery_attribute" },
+	{ "jewellery_resistance" },
+	{ "jewellery_defense" },
+	{ "jewellery_elemental" },
+}
+
+local function getCatalystScalar(catalystId, tags, quality)
+	if not catalystId or type(catalystId) ~= "number" or not catalystTags[catalystId] or not tags or type(tags) ~= "table" or #tags == 0 then
+		return 1
+	end
+	if not quality then
+		quality = 20
+	end
+
+	-- Create a fast lookup table for all provided tags
+	local tagLookup = {}
+	for _, curTag in ipairs(tags) do
+		tagLookup[curTag] = true;
+	end
+
+	-- Find if any of the catalyst's tags match the provided tags
+	for _, catalystTag in ipairs(catalystTags[catalystId]) do
+		if tagLookup[catalystTag] then
+			return (100 + quality) / 100
+		end
+	end
+	return 1
+end
+
 local ItemClass = newClass("Item", function(self, targetVersion, raw)
 	self.targetVersion = targetVersion
 	if raw and raw~=nil then
 		self:ParseRaw(itemLib.sanitiseItemText(raw))--self:ParseRaw(itemLib.sanitiseItemText(raw))
 	end	
 end)
+
+-- Reset all influence keys to false
+function ItemClass:ResetInfluence()
+	for _, curInfluenceInfo in ipairs(influenceInfo) do
+		self[curInfluenceInfo.key] = false
+	end
+end
 
 -- Parse raw item data and extract item name, base type, quality, and modifiers
 function ItemClass:ParseRaw(raw)
@@ -113,8 +156,8 @@ if self.rarity == "普通" or self.rarity == "魔法" then
 		self.enchantments = verData.enchantments[self.base.type]
 		self.synthesisedMods = verData.synthesisedMods["Item"]
 		self.corruptable = self.base.type ~= "Flask" and self.base.subType ~= "Cluster"
-		self.shaperElderTags = data.specialBaseTags[self.type]
-		self.canBeShaperElder = self.shaperElderTags
+		self.influenceTags = data.specialBaseTags[self.type]
+		self.canBeInfluenced = self.influenceTags
 		self.clusterJewel = verData.clusterJewels and verData.clusterJewels.jewels[self.baseName]
 	end
 	self.variantList = nil
@@ -142,7 +185,17 @@ if self.rarity == "普通" or self.rarity == "魔法" then
 	local gameModeStage = "FINDIMPLICIT"
 	local foundExplicit, foundImplicit
 	 
-	while self.rawLines[l] do
+	local function processInfluenceLine(line)
+		for i, curInfluenceInfo in ipairs(influenceInfo) do
+			if line == curInfluenceInfo.display then
+				self[curInfluenceInfo.key] = true
+				return true
+			end
+		end
+		return false
+	end
+
+	while self.rawLines[l] do	
 		local line = self.rawLines[l]
 		if flaskBuffLines[line] then
 			flaskBuffLines[line] = nil
@@ -162,14 +215,17 @@ if self.rarity == "普通" or self.rarity == "魔法" then
 			end
 elseif line == "已腐化" or line == "已腐化的" then
 			self.corrupted = true
+--[[
 elseif line == "塑界之器" then
 			self.shaper = true
 elseif line == "裂界之器" then
 			self.elder = true
+			]]--
 elseif line == "分裂之物" then
 			self.fractured = true
 elseif line == "忆境物品" then
 			self.synthesised = true
+--[[
 elseif line == "圣战者物品" then
 			self.crusader = true
 elseif line == "救赎者物品" then
@@ -178,6 +234,9 @@ elseif line == "狩猎者物品" then
 			self.hunter = true
 elseif line == "督军物品" then
 			self.warlord = true
+			]]--
+elseif processInfluenceLine(line) then
+	-- self already updated within the helper function
 		else
 		 
 				local specName, specVal = line:match("^(.+): (%x+)$") --lucifer
@@ -203,6 +262,10 @@ elseif specName == "品质" then
 					self.quality = tonumber(specVal)
 elseif specName == "品质说明" then
 					self.qualityTitle = specVal
+elseif  specName:find("品质（", 1, true)  then
+self.quality = tonumber(specVal)
+self.qualityTitle = specName
+		
 elseif specName == "插槽" then
 					local group = 0
 					for c in specVal:gmatch(".") do
@@ -311,8 +374,20 @@ elseif specName == "能量护盾" then
 						local num = tonumber(specVal) or self.clusterJewel.maxNodes
 						self.clusterJewelNodeCount = m_min(m_max(num, self.clusterJewel.minNodes), self.clusterJewel.maxNodes)
 					end
-				end
+				elseif specName == "Catalyst" then
+
+					for i=1, #catalystList do
+						if specVal == catalystList[i] then
+							self.catalyst = i
+						end
+					end
+elseif specName == "CatalystQuality" then
+					self.catalystQuality = tonumber(specVal)
 			end
+			
+					
+end
+
 if line == "前缀:" then
 				foundExplicit = true
 				gameModeStage = "EXPLICIT"
@@ -334,6 +409,15 @@ local crafted = line:match("{crafted}") or line:match(" %(crafted%)") or enchant
 
 
 local custom = line:match("{custom}")
+local modTagsText = line:match("{tags:([^}]*)}") or ''
+
+				local modTags = {}
+			
+				for curMod in modTagsText:gmatch("[^,]+") do
+					curMod = curMod:match('^%s*(.*%S)') or '' -- Trim whitespace
+					
+					table.insert(modTags, curMod)
+				end
 				local implicit = line:match(" %(implicit%)") or enchant
 				--line = line:gsub("%b{}", ""):gsub(" %(fractured%)",""):gsub(" %(crafted%)","")
 				if implicit then
@@ -341,18 +425,23 @@ local custom = line:match("{custom}")
 					gameModeStage = "IMPLICIT"
 				end				
 				line = line:gsub("%b{}", ""):gsub(" %(fractured%)",""):gsub(" %(crafted%)",""):gsub(" %(implicit%)",""):gsub(" %(enchant%)","")
+				local catalystScalar = getCatalystScalar(self.catalyst, modTags, self.catalystQuality)
 				
 				local rangedLine
 				--lucifer
 if (line:match("%(%d+%-%d+ %- %d+%-%d+%)") or line:match("%(%-?[%d%.]+ %- %-?[%d%.]+%)") or line:match("%(%-?[%d%.]+%-[%d%.]+%)")) and line:match(":")==nil  and line:match("^Requires")==nil then
-					rangedLine = itemLib.applyRange(line, 1)
+					rangedLine = itemLib.applyRange(line, 1, catalystScalar)
+				elseif catalystScalar ~= 1 then
+					rangedLine = itemLib.applyValueScalar(line, catalystScalar)
 				end
 				local modList, extra = modLib.parseMod[self.targetVersion](rangedLine or line)
 				if (not modList or extra) and self.rawLines[l+1] then
 					-- Try to combine it with the next line
 					local combLine = line.." "..self.rawLines[l+1]:gsub("%b{}", ""):gsub(" %(fractured%)",""):gsub(" %(crafted%)",""):gsub(" %(implicit%)",""):gsub(" %(enchant%)","")
 if combLine:match("%(%d+%-%d+ %- %d+%-%d+%)") or combLine:match("%(%-?[%d%.]+ %- %-?[%d%.]+%)") or combLine:match("%(%-?[%d%.]+%-[%d%.]+%)") and line:match(":")==nil  and line:match("^Requires")==nil then
-						rangedLine = itemLib.applyRange(combLine, 1)
+						rangedLine = itemLib.applyRange(combLine, 1, catalystScalar)
+					elseif catalystScalar ~= 1 then
+						rangedLine = itemLib.applyValueScalar(combLine, catalystScalar)
 					end
 					modList, extra = modLib.parseMod[self.targetVersion](rangedLine or combLine, true)
 					if modList and not extra then
@@ -373,7 +462,7 @@ if combLine:match("%(%d+%-%d+ %- %d+%-%d+%)") or combLine:match("%(%-?[%d%.]+ %-
 				end
 				if modList and  string.find(line,":")==nil then --lucifer
 									
-					t_insert(modLines, { line = line, extra = extra, modList = modList, variantList = variantList, crafted = crafted, custom = custom, fractured = fractured, implicit = implicit, range = rangedLine and (tonumber(rangeSpec) or 0.5) })
+					t_insert(modLines, { line = line, extra = extra, modList = modList, modTags = modTags, variantList = variantList, crafted = crafted, custom = custom, fractured = fractured, implicit = implicit, range = rangedLine and (tonumber(rangeSpec) or 0.5), valueScalar = catalystScalar })
 					
 					if mode == "GAME" then
 						if gameModeStage == "FINDIMPLICIT" then
@@ -390,12 +479,12 @@ if combLine:match("%(%d+%-%d+ %- %d+%-%d+%)") or combLine:match("%(%-?[%d%.]+ %-
 				elseif mode == "GAME" then
 					if gameModeStage == "IMPLICIT" or gameModeStage == "EXPLICIT" then
 						
-						t_insert(modLines, { line = line, extra = line, modList = { }, variantList = variantList, crafted = crafted, custom = custom, fractured = fractured, implicit = implicit })
+						t_insert(modLines, { line = line, extra = line, modList = { }, modTags = { }, variantList = variantList, crafted = crafted, custom = custom, fractured = fractured, implicit = implicit })
 					elseif gameModeStage == "FINDEXPLICIT" then
 						gameModeStage = "DONE"
 					end
 				elseif foundExplicit then
-					t_insert(modLines, { line = line, extra = line, modList = { }, variantList = variantList, crafted = crafted, custom = custom, fractured = fractured, implicit = implicit })
+					t_insert(modLines, { line = line, extra = line, modList = { }, modTags = { }, variantList = variantList, crafted = crafted, custom = custom, fractured = fractured, implicit = implicit })
 				end
 				
 			end
@@ -509,22 +598,26 @@ end
 function ItemClass:GetModSpawnWeight(mod, extraTags)
 	local weight = 0
 	if self.base then
+		local function HasInfluenceTag(key)
+			if self.influenceTags then
+				for _, curInfluenceInfo in ipairs(influenceInfo) do
+					if self[curInfluenceInfo.key] and self.influenceTags[curInfluenceInfo.key] == key then
+						return true
+					end
+				end
+			end
+			return false
+		end
 		for i, key in ipairs(mod.weightKey) do
-			if self.base.tags[key] or (extraTags and extraTags[key]) or (self.shaperElderTags and (self.shaper and self.shaperElderTags.shaper == key) or (self.elder and self.shaperElderTags.elder == key)
-			
-			or (self.crusader  and self.shaperElderTags.crusader  == key)
-			or (self.redeemer  and self.shaperElderTags.redeemer  == key)
-			or (self.hunter  and self.shaperElderTags.hunter  == key)
-			or (self.warlord and self.shaperElderTags.warlord == key)
-			
-			) then
+			if self.base.tags[key] or (extraTags and extraTags[key]) or HasInfluenceTag(key) then
+			 
 				weight = mod.weightVal[i]
 				break
 			end
 		end
 		if mod.weightMultiplierKey then 
 			for i, key in ipairs(mod.weightMultiplierKey) do
-				if self.base.tags[key] or (extraTags and extraTags[key]) or (self.shaperElderTags and (self.shaper and self.shaperElderTags.shaper == key) or (self.elder and self.shaperElderTags.elder == key)) then
+				if self.base.tags[key] or (extraTags and extraTags[key]) or HasInfluenceTag(key) then
 					weight = weight * mod.weightMultiplierVal[i] / 100
 					break
 				end
@@ -552,7 +645,12 @@ t_insert(rawLines, "稀 有 度: "..self.rarity)
 	if self.unreleased then
 		t_insert(rawLines, "Unreleased: true")
 	end
-	if self.shaper then
+	for i, curInfluenceInfo in ipairs(influenceInfo) do
+		if self[curInfluenceInfo.key] then
+		t_insert(rawLines, curInfluenceInfo.display)
+		end
+	end
+	--[[if self.shaper then
 t_insert(rawLines, "塑界之器")
 	end
 	
@@ -567,8 +665,7 @@ t_insert(rawLines, "狩猎者物品")
 	end
 	if self.warlord  then
 t_insert(rawLines, "督军物品")
-	end
-	
+	end	
 	
 	if self.elder then
 t_insert(rawLines, "裂界之器")
@@ -576,6 +673,9 @@ t_insert(rawLines, "裂界之器")
 	if self.synthesised then
 t_insert(rawLines, "忆境物品")
 	end
+	]]--
+	
+	
 	if self.crafted then
 t_insert(rawLines, "工艺: true")
 		for i, affix in ipairs(self.prefixes or { }) do
@@ -584,6 +684,12 @@ t_insert(rawLines, "前缀: "..(affix.range and ("{range:"..round(affix.range,3)
 		for i, affix in ipairs(self.suffixes or { }) do
 t_insert(rawLines, "后缀: "..(affix.range and ("{range:"..round(affix.range,3).."}") or "")..affix.modId)
 		end
+	end
+	if self.catalyst and self.catalyst > 0 then
+		t_insert(rawLines, "Catalyst: "..catalystList[self.catalyst])
+	end
+	if self.catalystQuality then
+		t_insert(rawLines, "CatalystQuality: "..self.catalystQuality)
 	end
 	--星团珠宝待处理
 	if self.clusterJewel then
@@ -625,6 +731,9 @@ local line = "插槽: "
 				line = line .. (socket.group == self.sockets[i+1].group and "-" or " ")
 			end
 		end
+		if modLine and modLine.modTags and #modLine.modTags > 0 then
+			line = "{tags:"..table.concat(modLine.modTags, ",").."}"..line
+		end
 		t_insert(rawLines, line)
 	end
 	if self.requirements and self.requirements.level then
@@ -659,6 +768,9 @@ local function writeModLine(modLine)
 			end
 			line = "{variant:"..varSpec.."}"..line
 		end
+		if modLine.modTags and #modLine.modTags > 0 then
+			line = "{tags:"..table.concat(modLine.modTags, ",").."}"..line
+		end
 		t_insert(rawLines, line)
 	end
 	for _, modLine in ipairs(self.enchantModLines) do
@@ -684,24 +796,19 @@ end
 
 -- Rebuild explicit modifiers using the item's affixes
 function ItemClass:Craft()
+	-- Save off any crafted or custom mods so they can be re-added at the end
+	local savedMods = {}
+	for _, mod in ipairs(self.explicitModLines) do
+		if mod.crafted or mod.custom then
+			t_insert(savedMods, mod)
+		end
+	end
+
 	wipeTable(self.explicitModLines)
 	self.namePrefix = ""
 	self.nameSuffix = ""
 	self.requirements.level = self.base.req.level
 	local statOrder = { }
-	--[[local custom = { }
-	for l = self.buffLines + self.implicitLines + 1, #self.modLines do
-		local modLine = self.modLines[l]
-		if modLine.custom or modLine.crafted then
-			t_insert(custom, modLine)
-		end
-		self.modLines[l] = nil
-	end
-	self.namePrefix = ""
-	self.nameSuffix = ""
-	self.requirements.level = self.base.req.level
-	local statOrder = { }
-	]]--
 	for _, list in ipairs({self.prefixes,self.suffixes}) do
 		for i = 1, self.affixLimit/2 do
 			local affix = list[i]
@@ -716,8 +823,9 @@ function ItemClass:Craft()
 					self.nameSuffix = " " .. mod.affix
 				end
 				self.requirements.level = m_max(self.requirements.level or 0, m_floor(mod.level * 0.8))
+				local rangeScalar = getCatalystScalar(self.catalyst, mod.modTags, self.catalystQuality)
 				for i, line in ipairs(mod) do
-					line = itemLib.applyRange(line, affix.range or 0.5)
+					line = itemLib.applyRange(line, affix.range or 0.5, rangeScalar)
 					local order = mod.statOrder[i]
 					if statOrder[order] then
 						-- Combine stats
@@ -741,7 +849,12 @@ function ItemClass:Craft()
 			end
 		end
 	end
-	
+
+	-- Restore the crafted and custom mods
+	for _, mod in ipairs(savedMods) do
+		t_insert(self.explicitModLines, mod)
+	end
+
 	self:BuildAndParseRaw()
 end
 
@@ -1014,7 +1127,8 @@ function ItemClass:BuildModList()
 	local function processModLine(modLine)
 		if not modLine.extra and self:CheckModLineVariant(modLine) then
 			if modLine.range then
-				local line = itemLib.applyRange(modLine.line:gsub("\n"," "), modLine.range)
+				local catalystScalar = getCatalystScalar(self.catalyst, modLine.modTags, self.catalystQuality)
+				local line = itemLib.applyRange(modLine.line:gsub("\n"," "), modLine.range, catalystScalar)
 				local list, extra = modLib.parseMod[self.targetVersion](line)
 				if list and not extra then
 					modLine.modList = list
@@ -1027,6 +1141,9 @@ function ItemClass:BuildModList()
 					mod.value.mod.source = mod.source
 				end
 				baseList:AddMod(mod)
+			end
+			if modLine.modTags and #modLine.modTags > 0 then
+				self.hasModTags = true
 			end
 		end
 	end

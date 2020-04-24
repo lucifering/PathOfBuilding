@@ -43,13 +43,33 @@ return {
 皮革腰带
 联盟: 毁灭不朽
 等级需求: 60
+版本: 生命回复
+版本: 火焰和混沌抗性
+版本: 冰霜和混沌抗性
+版本: 闪电和混沌抗性
+版本: 力量和敏捷
+版本: 敏捷和智慧
+版本: 力量和智慧
+版本: 陷阱放置速度
+版本: 能量护盾回复
+版本: 幸运暴击率
 固定基底词缀: 1
 {tags:life}+(25-40) 最大生命
 {tags:jewellery_resistance}+(30-40)% 冰霜抗性
 你在专注时，冰缓周围敌人，使其行动速度降低 30%
 专注的冷却回复速度提高 (15-25)%
 对冰缓敌人的击中和异常状态伤害提高 (50-70)%
-【未鉴定词缀】
+{variant:1}{crafted}{tags:life}药剂持续期间，每秒回复 (1.0-2.0)% 生命
+{variant:2}{crafted}{tags:jewellery_resistance}+(8-15)% 火焰与混沌抗性
+{variant:3}{crafted}{tags:jewellery_resistance}+(8-15)% 冰霜与混沌抗性
+{variant:4}{crafted}{tags:jewellery_resistance}+(8-15)% 闪电与混沌抗性
+{variant:5}{crafted}{tags:jewellery_attribute}+(6-17) 力量和敏捷
+{variant:6}{crafted}{tags:jewellery_attribute}+(6-17) 敏捷与智慧
+{variant:7}{crafted}{tags:jewellery_attribute}+(6-17) 力量和智慧
+{variant:8}{crafted}陷阱投掷速度提高 (7-12)%
+{variant:9}{crafted}{tags:jewellery_defense}周围有稀有或传奇敌人时，每秒回复 (15-120) 能量护盾
+{variant:10}{crafted}专注时，你的暴击率会特别幸运
+
 ]],
 [[
 变节者
@@ -483,7 +503,8 @@ return {
 奴役之索
 重革腰带
 联盟: 穿越
-源: 传奇Boss【瓦尔妖塔】专属
+源: 传奇Boss【瓦尔妖塔】专属（80+几率双词缀）
+Has Alt Variant: true
 版本: 范围效果
 版本: 药剂期间暴击伤害
 版本: 药剂期间攻击速度

@@ -656,7 +656,7 @@ OpenURL("https://dev.tencent.com/u/lucifering/p/PathOfBuilding?from=coding")
 	end)
 	controls.patreon:SetImage("Assets/patreon_logo.png")
 controls.patreon.tooltipText = "点击给 【光影路西法】 捐款赞助!"
-controls.verLabel = new("LabelControl", {"TOPLEFT",nil,"TOPLEFT"}, 10, 82, 0, 18, "")
+controls.verLabel = new("LabelControl", {"TOPLEFT",nil,"TOPLEFT"}, 10, 82, 0, 18, "点击图片打开")
 	controls.changelog = new("TextListControl", nil, 0, 100, 630, 290, nil, changeList)
 self:OpenPopup(650, 400, "【  17173·国服版  】", controls)
 end

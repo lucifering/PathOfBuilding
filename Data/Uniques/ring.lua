@@ -69,6 +69,17 @@ return {
 活解
 潜能之戒
 联盟: 毁灭不朽
+版本: 火焰与混沌抗性
+版本: 冰霜与混沌抗性
+版本: 闪电与混沌抗性
+版本: 力量和敏捷
+版本: 敏捷和智慧
+版本: 力量和敏捷
+版本: 非伤害异常效果
+版本: 专注感电敌人
+版本: 狂怒球下限
+版本: 暴击球下限
+版本: 耐力球下限
 固定基底词缀: 1
 有 1 个插槽
 此物品上装备的【光环技能石】等级 +5
@@ -76,7 +87,17 @@ return {
 {tags:jewellery_attribute}+(15-25) 全属性
 {tags:life}每装备 1 个未腐化的物品，获得 15 每秒生命回复
 {tags:mana}每装备 1 个被腐化的物品时，技能的总魔力消耗 -2 
-【未鉴定词缀】
+{variant:1}{crafted}{tags:jewellery_resistance}+(9-15)% 火焰与混沌抗性
+{variant:2}{crafted}{tags:jewellery_resistance}+(9-15)% 冰霜与混沌抗性
+{variant:3}{crafted}{tags:jewellery_resistance}+(9-15)% 闪电与混沌抗性
+{variant:4}{crafted}{tags:jewellery_attribute}+(11-17) 力量和敏捷
+{variant:5}{crafted}{tags:jewellery_attribute}+(11-17) 敏捷与智慧
+{variant:6}{crafted}{tags:jewellery_attribute}+(11-17) 力量和智慧
+{variant:7}{crafted}非伤害型异常状态效果提高 (16-30)%
+{variant:8}{crafted}专注时，使周围敌人感电 (2-4) 秒
+{variant:9}{crafted}+1 狂怒球数量下限
+{variant:10}{crafted}+1 暴击球数量下限
+{variant:11}{crafted}+1 耐力球数量下限
 ]],
 [[
 罪恶之环(忆境)

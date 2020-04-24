@@ -36,7 +36,7 @@ minions["Metadata/Monsters/Axis/AxisCaster"] = {
 	modListSP = {
 		"施放电球", 
 		"施放闪电反伤盾", 
-		"格挡法术", 
+		"20% 几率格挡法术，被格挡的击中对你造成 10% 伤害", 
 	},
 }
 minions["Metadata/Monsters/Axis/AxisCasterArc"] = {
@@ -68,7 +68,7 @@ minions["Metadata/Monsters/Axis/AxisCasterArc"] = {
 	modListSP = {
 		"施放电弧", 
 		"施放闪电反伤盾", 
-		"格挡法术", 
+		"20% 几率格挡法术，被格挡的击中对你造成 10% 伤害", 
 	},
 }
 minions["Metadata/Monsters/Axis/AxisEliteSoldier3Champion"] = {

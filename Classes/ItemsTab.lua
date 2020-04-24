@@ -290,7 +290,7 @@ self.controls.removeDisplayItem = new("ButtonControl", {"LEFT",self.controls.edi
 		self:SetDisplayItem()
 	end)
 
-	-- Section: Variant(s)
+	-- Section: Variant(s)	
 	self.controls.displayItemSectionVariant = new("Control", {"TOPLEFT",self.controls.addDisplayItem,"BOTTOMLEFT"}, 0, 8, 0, function()
 		if not self.controls.displayItemVariant:IsShown() then
 			return 0
@@ -315,7 +315,6 @@ self.controls.removeDisplayItem = new("ButtonControl", {"LEFT",self.controls.edi
 	self.controls.displayItemAltVariant.shown = function()
 		return self.displayItem.hasAltVariant
 	end
-
 	self.controls.displayItemAltVariant2 = new("DropDownControl", {"TOPLEFT",self.controls.displayItemAltVariant,"BOTTOMLEFT"}, 0, 4, 300, 20, nil, function(index, value)
 		self.displayItem.variantAlt2 = index
 		self.displayItem:BuildAndParseRaw()
@@ -325,6 +324,7 @@ self.controls.removeDisplayItem = new("ButtonControl", {"LEFT",self.controls.edi
 	self.controls.displayItemAltVariant2.shown = function()
 		return self.displayItem.hasAltVariant2
 	end
+
 	-- Section: Sockets and Links
 	self.controls.displayItemSectionSockets = new("Control", {"TOPLEFT",self.controls.displayItemSectionVariant,"BOTTOMLEFT"}, 0, 0, 0, function()
 	--lucifer

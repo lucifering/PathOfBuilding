@@ -1,6 +1,8 @@
 ﻿--
 -- Upcoming uniques will live here until their mods/rolls are finalised
 --
+ 
+-- Automatically generate Megalomaniac because like heck I'm entering all those variants manually lol
 
 
 data.uniques.new = {
@@ -50,15 +52,6 @@ data.uniques.new = {
 联盟: 惊悸迷雾
 固定基底词缀: 0
 增加【空明之掌】
-]],
-[[
-妄想症
-中型星团珠宝
-联盟: 惊悸迷雾
-固定基底词缀: 0
-增加 4 个天赋技能
-增加的小天赋无效果
-已腐化
 ]],
 [[
 自然之喜
@@ -213,3 +206,25 @@ Has Alt Variant: true
 
 
 }
+
+
+local lines = {
+	"妄想症",
+	"中型星团珠宝",
+	"联盟: 惊悸迷雾",
+	"源: 「梦魇拟像」限定掉落",
+	"Has Alt Variant: true",
+	"Has Alt Variant Two: true",
+	"增加 4 个天赋技能",
+	"增加的小天赋无效果",
+}
+local notables = { }
+for name in pairs(data["3_0"].clusterJewels.notableSortOrder) do
+	table.insert(notables, name)
+end
+table.sort(notables)
+for index, name in ipairs(notables) do
+	table.insert(lines, "版本: "..name)
+	table.insert(lines, "{variant:"..index.."}其中 1 个增加的天赋为【"..name.."】")
+end
+table.insert(data.uniques.new, table.concat(lines, '\n'))

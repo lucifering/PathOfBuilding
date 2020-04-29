@@ -3197,8 +3197,18 @@ description = "辅助创造召唤物技能.",
 		["support_minion_totem_resistance_elemental_damage_+%_final"] = {
 			mod("MinionModifier", "LIST", { mod = mod("ElementalDamage", "MORE", nil) }),
 		},
+		 
 	},
 	baseMods = {
+			flag("Condition:ElementalArmyFireExposureTypemodCond", { type = "Condition", var = "ElementalArmyFireExposureType" }),
+			flag("Condition:ElementalArmyColdExposureTypemodCond", { type = "Condition", var = "ElementalArmyColdExposureType" }),
+			flag("Condition:ElementalArmyLightningExposureTypemodCond", { type = "Condition", var = "ElementalArmyLightningExposureType" }),
+			mod("FireResist", "BASE", -10, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "火焰曝露", modCond = "ElementalArmyFireExposureTypemodCond" }),
+mod("ColdResist", "BASE", -10, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "冰霜曝露", modCond = "ElementalArmyColdExposureTypemodCond" }),
+mod("LightningResist", "BASE", -10, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "闪电曝露", modCond = "ElementalArmyLightningExposureTypemodCond" })
+
+
+		 
 	},
 	qualityStats = {
 		{ "minion_maximum_all_elemental_resistances_%", 0.1 },

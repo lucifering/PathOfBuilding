@@ -1024,6 +1024,7 @@ local modTagList = {
 		["持近战武器时，"] = { tag = { type = "Condition", var = "UsingMeleeWeapon" } }, --备注：while wielding a melee weapon
 		["持单手武器时，"] = { tag = { type = "Condition", var = "UsingOneHandedWeapon" } }, --备注：while wielding a one handed weapon
 		["持双手武器时，"] = { tag = { type = "Condition", var = "UsingTwoHandedWeapon" } }, --备注：while wielding a two handed weapon
+		["持双手近战武器时，"] =  { tagList = { { type = "Condition", var = "UsingTwoHandedWeapon" }, { type = "Condition", var = "UsingMeleeWeapon" } } },
 		["双持或持盾牌时，"] = { tag = { type = "Condition", varList = { "DualWielding", "UsingShield" } } }, --备注：while dual wielding or holding a shield
 		["持法杖时，"] = { tag = { type = "Condition", var = "UsingWand" } }, --备注：while wielding a wand
 		["空手时，"] = { tag = { type = "Condition", var = "Unarmed" } }, --备注：while unarmed
@@ -1593,6 +1594,12 @@ end
 -- List of special modifiers
 local specialModList = {
 	--【中文化程序额外添加开始】
+	--能量护盾回复问题
+	--（有带“的”的词缀解析为充能速度，不带“的”的解析为回复速度）
+	["能量护盾的回复速度提高 (%d+)%%"] = function(num) return {  mod("EnergyShieldRecharge", "INC", num)  } end,  
+	["能量护盾的回复速度降低 (%d+)%%"] = function(num) return {  mod("EnergyShieldRecharge", "INC", -num)  } end,  
+	["能量护盾回复速度提高 (%d+)%%"] = function(num) return {  mod("EnergyShieldRecoveryRate", "INC", num)  } end,  
+	["能量护盾回复速度降低 (%d+)%%"] = function(num) return {  mod("EnergyShieldRecoveryRate", "INC", -num)  } end,  
 	-- 星团珠宝 
 	["附加 (%d+) 天赋点"] = function(num) return { mod("JewelData", "LIST", { key = "clusterJewelNodeCount", value = num }) } end,
 	["增加 (%d+) 个天赋技能"] = function(num) return { mod("JewelData", "LIST", { key = "clusterJewelNodeCount", value = num }) } end,
@@ -2533,7 +2540,7 @@ local specialModList = {
 	["先祖卫士放置速度提高 (%d+)%%"] = function(num) return {  mod("TotemPlacementSpeed", "INC", tonumber(num),nil,nil, KeywordFlag.Totem,{ type = "SkillName", skillName = "先祖卫士" })  } end,
 	["先祖卫士的火焰、冰霜、闪电抗性 %+(%d+)%%"] = function(num) return {  mod("ElementalResist", "BASE", tonumber(num),nil,nil, KeywordFlag.Totem,{ type = "SkillName", skillName = "先祖卫士" })  } end,
 	["先祖卫士的元素抗性 %+(%d+)%%"] = function(num) return {  mod("ElementalResist", "BASE", tonumber(num),nil,nil, KeywordFlag.Totem,{ type = "SkillName", skillName = "先祖卫士" })  } end,
-	["【([^\\x00-\\xff]*)】范围扩大 (%d+)%%"] = function(_,skill_name,num) return {  mod("AreaOfEffect", "INC", tonumber(num),nil,nil,{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
+	["【([^\\x00-\\xff]*)】范围扩大 (%d+)%%"] = function(_,skill_name,num) return {  mod("AreaOfEffect", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
 	["在【寒冰弹】上施放时，【漩涡】的范围效果扩大 (%d+)%%"]= function(num) return {  mod("AreaOfEffect", "INC", tonumber(num),{ type = "Condition", var = "CastOnFrostbolt" },{ type = "SkillName", skillName ="漩涡" })  } end,
 	["【([^\\x00-\\xff]*)】可以额外发射 (%d+) 个投射物"]= function(_,skill_name,num) return {  mod("ProjectileCount", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
 	["【([^\\x00-\\xff]*)】可以额外发射 (%d+) 个箭矢"]= function(_,skill_name,num) return {  mod("ProjectileCount", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
@@ -3354,7 +3361,7 @@ local specialModList = {
 	mod("Damage", "INC", tonumber(num2),{ type = "PerStat", stat = "ArmourOnWeapon 2", div = tonumber(num1) } )
 	  }end,
 	["盾牌上每有 (%d+) 能量护盾可获得 %+(%d+)%% 暴击伤害"]= function(_,num1,num2) return {  mod("CritMultiplier", "BASE", tonumber(num2),{ type = "PerStat", stat = "EnergyShieldOnWeapon 2", div = tonumber(num1) } )  }end,
-	["若你已经持续吟唱至少 1 秒,则 %+(%d+)%% 暴击伤害"]= function(_,num1,num2) return {  mod("CritMultiplier", "BASE", tonumber(num2),{ type = "Condition", var = "OnChannelling" } )  }end,
+	["若你已经持续吟唱至少 1 秒,则 %+(%d+)%% 暴击伤害"]= function(num) return {  mod("CritMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "OnChannelling" } )  }end,
 	["持锤, 短杖或长杖时有 (%d+)%% 几率造成双倍伤害"] = function(num) return {  mod("DoubleDamageChance", "BASE", tonumber(num),{ type = "Condition", varList = { "UsingMace", "UsingStaff" } } )  }end,
 	["法杖攻击有 (%d+)%% 的物理伤害转换为闪电伤害"] = function(num) return {  mod("PhysicalDamageConvertToLightning", "BASE", num,nil, ModFlag.Wand)  } end,
 	["无法造成点燃，冰缓，冰冻或感电"]  = { flag("CannotFreeze"), flag("CannotChill"),flag("CannotIgnite"),flag("CannotShock") },

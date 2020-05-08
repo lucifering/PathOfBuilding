@@ -611,7 +611,22 @@ function calcs.perform(env)
 	if env.mode_combat then
 		local effectInc = modDB:Sum("INC", nil, "FlaskEffect")
 		local flaskBuffs = { }
+		local usingFlask = false
+		local usingLifeFlask = false
+		local usingManaFlask = false
 		for item in pairs(env.flasks) do
+			usingFlask = true
+			if item.baseName:match("生命药剂") then
+				usingLifeFlask = true
+			end
+			if item.baseName:match("魔力药剂") then
+				usingManaFlask = true
+			end
+			if item.baseName:match("复合药剂") then
+				usingLifeFlask = true
+				usingManaFlask = true
+			end
+
 			-- Avert thine eyes, lest they be forever scarred
 			-- I have no idea how to determine which buff is applied by a given flask, 
 			-- so utility flasks are grouped by base, unique flasks are grouped by name, and magic flasks by their modifiers
@@ -637,15 +652,21 @@ function calcs.perform(env)
 			end
 		end
 		if not modDB:Flag(nil, "FlasksDoNotApplyToPlayer") then
+			modDB.conditions["UsingFlask"] = usingFlask
+			modDB.conditions["UsingLifeFlask"] = usingLifeFlask
+			modDB.conditions["UsingManaFlask"] = usingManaFlask
 			for _, buffModList in pairs(flaskBuffs) do
 				modDB.conditions["UsingFlask"] = true
 				modDB:AddList(buffModList)
 			end
 		end
 		if env.minion and modDB:Flag(env.player.mainSkill.skillCfg, "FlasksApplyToMinion") then
-			for _, buffModList in pairs(flaskBuffs) do
-				env.minion.modDB.conditions["UsingFlask"] = true
-				env.minion.modDB:AddList(buffModList)
+			local minionModDB = env.minion.modDB
+			minionModDB.conditions["UsingFlask"] = usingFlask
+			minionModDB.conditions["UsingLifeFlask"] = usingLifeFlask
+			minionModDB.conditions["UsingManaFlask"] = usingManaFlask
+			for _, buffModList in pairs(flaskBuffs) do				 
+				minionModDB:AddList(buffModList)
 			end
 		end
 	end
@@ -776,7 +797,16 @@ function calcs.perform(env)
 		
 		t_insert(extraAuraModList, value.mod)
 	end
-
+	local heraldList = { }
+	for _, activeSkill in ipairs(env.player.activeSkillList) do
+		if activeSkill.skillTypes[SkillType.Herald] then
+			heraldList[activeSkill.skillCfg.skillName] = true
+		end
+	end
+	for _, herald in pairs(heraldList) do
+		modDB.multipliers["Herald"] = (modDB.multipliers["Herald"] or 0) + 1
+		modDB.conditions["AffectedByHerald"] = true
+	end
 	-- Combine buffs/debuffs  
 	output.EnemyCurseLimit = modDB:Sum("BASE", nil, "EnemyCurseLimit")
 

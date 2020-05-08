@@ -6224,3 +6224,145 @@ skills["AtlasEyrieArcherCrystalImpact"] = {
 	},
 }
 
+-- They of Tul
+
+skills["BreachBlizzard"] = {
+	name = "裂痕暴风雪",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.AreaSpell] = true, [SkillType.Buff] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	statMap = {
+		["base_damage_taken_+%"] = {
+			mod("DamageTaken", "INC", nil,  0, 0,{ type = "GlobalEffect", effectType = "Buff", effectName="【托沃的它】Buff"  }),
+		},
+		["base_chance_to_dodge_%"] = {
+			mod("AttackDodgeChance", "BASE", nil, 0, 0,  { type = "GlobalEffect", effectType = "Buff", effectName="【托沃的它】Buff"  }),
+		},
+		["base_chance_to_dodge_spells_%"] = {
+			mod("SpellDodgeChance", "BASE", nil, 0, 0,  { type = "GlobalEffect", effectType = "Buff", effectName="【托沃的它】Buff"  }),
+		},
+		 
+	},
+	baseFlags = {
+		spell = true,
+		area = true,
+		duration = true,
+		buff = true,
+	},
+	baseMods = {
+	skill("buffAllies", true),
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_damage_taken_+%",
+		"base_chance_to_dodge_%",
+		"base_chance_to_dodge_spells_%",
+		"base_skill_effect_duration",
+	},
+	levels = {
+		[1] = { -10, 10, 10, 10000, cooldown = 9, levelRequirement = 1, statInterpolation = { 1, 1, 1, 1, }, },
+		[2] = { -10, 15, 15, 10000, cooldown = 9, levelRequirement = 21, statInterpolation = { 1, 1, 1, 1, }, },
+		[3] = { -15, 20, 20, 10000, cooldown = 9, levelRequirement = 49, statInterpolation = { 1, 1, 1, 1, }, },
+		[4] = { -15, 20, 20, 10000, cooldown = 9, levelRequirement = 67, statInterpolation = { 1, 1, 1, 1, }, },
+		[5] = { -15, 20, 20, 10000, cooldown = 9, levelRequirement = 68, statInterpolation = { 1, 1, 1, 1, }, },
+	},
+}
+skills["SummonBreachIceTotem"] = {
+	name = "召唤冰图腾",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Spell] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		spell = true,
+		totem = true,
+		duration = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"number_of_monsters_to_summon",
+		"summoned_monster_rarity",
+		"alternate_minion",
+		"summoned_monsters_are_minions",
+		"minion_dies_when_parent_dies",
+	},
+	levels = {
+		[1] = { 2, 0, 201, cooldown = 10, levelRequirement = 1, statInterpolation = { 1, 1, 1, }, },
+	},
+}
+-- Xoph's Favoured
+skills["EmpoweringHowlSpectre"] = {
+	name = "增强怒嚎",
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Warcry] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	statMap = {
+		["empowering_cry_physical_damage_added_as_fire_damage_%"] = {
+			mod("PhysicalDamageGainAsFire", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" , effectName="【索伏的青睐】的增强怒嚎" }),
+		},
+		 
+	},
+	baseFlags = {
+		warcry = true,
+		area = true,
+		duration = true,
+	},
+	baseMods = {
+	skill("buffAllies", true),
+	},
+	qualityStats = {
+	},
+	stats = {
+		"empowering_cry_physical_damage_added_as_fire_damage_%",
+		"base_skill_effect_duration",
+		"base_deal_no_damage",
+	},
+	levels = {
+		[1] = { 20, 7500, cooldown = 12, levelRequirement = 1, statInterpolation = { 1, 1, }, },
+	},
+}
+skills["BreachCleave"] = {
+	name = "劈砍",
+	hidden = true,
+	color = 1,
+	description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 对前方区域的怪物造成伤害。限定斧类与剑类。",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Type53] = true, [SkillType.PhysicalSkill] = true, },
+	weaponTypes = {
+		["Two Handed Axe"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["One Handed Axe"] = true,
+		["Two Handed Sword"] = true,
+		["One Handed Sword"] = true,
+	},
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		attack = true,
+		melee = true,
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"cleave_damage_+%_final_while_dual_wielding",
+		"physical_damage_+%",
+		"monster_penalty_against_minions_damage_+%_final_vs_player_minions",
+		"skill_physical_damage_%_to_convert_to_fire",
+		"is_area_damage",
+		"skill_double_hits_when_dual_wielding",
+	},
+	levels = {
+		[1] = { -40, 29, -20, 50, levelRequirement = 1, statInterpolation = { 1, 1, 1, 1, }, },
+	},
+}

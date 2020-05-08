@@ -54010,7 +54010,7 @@ return {
 			["name"]= "门徒",
 			["icon"]= "Art/2DArt/SkillIcons/passives/MinionDmgHeraldSkillsNotable.png",
 			["stats"]= {
-				"每有1个召唤纯净哨兵，获得 % 额外物理伤害减伤",
+				"每有1个召唤纯净哨兵，获得 1% 额外物理伤害减伤",
 				"你的【毒力】消退减缓 30%",
 				"你受到捷技能影响时，召唤生物的伤害提高 20%"
 			},

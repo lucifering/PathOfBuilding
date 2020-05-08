@@ -188,9 +188,12 @@ modList:NewMod("SkillData", "LIST", { key = "minionLevel", value = val }, "Confi
 		modList:NewMod("Multiplier:EnemyAffectedBySiphoningTrap", "BASE", val, "Config")
 		modList:NewMod("Condition:SiphoningTrapSiphoning", "FLAG", true, "Config")
 	end },
-{ var = "raiseSpectreEnableCurses", type = "check", label = "灵体自带诅咒和光环:", ifSkill = "召唤灵体", tooltip = "激活你的灵体带的诅咒和光环.", apply = function(val, modList, enemyModList)
+{ var = "raiseSpectreEnableCurses", type = "check", label = "灵体自带诅咒、增益和光环:", ifSkill = "召唤灵体", tooltip = "激活你的灵体带的诅咒、增益和光环.", apply = function(val, modList, enemyModList)
 modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", { type = "SkillType", skillType = SkillType.Curse }, { type = "SkillName", skillName = "召唤灵体", summonSkill = true })
 modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", { type = "SkillType", skillType = SkillType.Aura }, { type = "SkillName", skillName = "召唤灵体", summonSkill = true })
+modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", { type = "SkillType", skillType = SkillType.Buff }, { type = "SkillName", skillName = "召唤灵体", summonSkill = true })
+
+
 	end },
 { var = "raiseSpectreBladeVortexBladeCount", type = "count", label = "飞刃风暴层数:", ifSkillList = {"DemonModularBladeVortexSpectre","GhostPirateBladeVortexSpectre"}, tooltip = "设置灵体使用的【飞刃风暴】层数.\n默认是 1; 最大是  5.", apply = function(val, modList, enemyModList)
 		modList:NewMod("SkillData", "LIST", { key = "dpsMultiplier", value = val }, "Config", { type = "SkillId", skillId = "DemonModularBladeVortexSpectre" })
@@ -469,6 +472,13 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 		modList:NewMod("Condition:Fortify", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
 	
+{ var = "buffVaalArcLuckyHits", type = "check", label = "你是否有【瓦尔.电弧】的【特别幸运】增益效果？", ifCond = "CanBeLucky",  
+tooltip = "电弧的击中伤害会 roll 2 次，取高的那次", apply = function(val, modList, enemyModList)
+
+modList:NewMod("LuckyHits", "FLAG", true, "Config", { type = "Condition", varList = { "Combat", "CanBeLucky" } }, 
+{ type = "SkillName", skillNameList = { "电弧", "瓦尔.电弧" } })
+
+end },
 { var = "buffElusive", type = "check", label = "你是否处于【灵巧】状态?", tooltip="这个会启用【灵巧】buff (\n·15% 几率躲避攻击伤害 \n·15% 几率躲避法术伤害\n·移动速度提高 30%)\n灵巧效果会随着时间不断削弱，每秒降低 20%\n在已经获得【灵巧】的情况下，无法再次获得【灵巧】)",ifCond = "Elusive", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:Elusive", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 		modList:NewMod("Elusive", "FLAG", true, "Config", { type = "Condition", varList = { "Combat", "Elusive" } })
@@ -889,7 +899,7 @@ ifCond = "OnFungalGround",
 		enemyModList:NewMod("Condition:RareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
  
-{ var = "enemyIsBoss", type = "list", ifVer = "3_0", label = "敌人是boss?", tooltip = "普通boss有以下词缀：\n额外降低 33% 诅咒效果\n+40% 火焰、冰霜、闪电抗性\n+25% 混沌抗性\n\n塑界者/塑界守卫有以下词缀：\n额外降低 66% 诅咒效果\n+50% 火焰、冰霜、闪电抗性\n+30% 混沌抗性", list = {{val="NONE",label="不是"},{val=true,label="普通boss"},{val="SHAPER",label="塑界者/塑界守卫"}}, apply = function(val, modList, enemyModList)
+{ var = "enemyIsBoss", type = "list", ifVer = "3_0", label = "敌人是boss?", tooltip = "普通boss有以下词缀：\n额外降低 33% 诅咒效果\n+40% 火焰、冰霜、闪电抗性\n+25% 混沌抗性\n\n塑界者/塑界守卫有以下词缀：\n额外降低 66% 诅咒效果\n+50% 火焰、冰霜、闪电抗性\n+30% 混沌抗性\n总护甲额外提高 33%", list = {{val="NONE",label="不是"},{val=true,label="普通boss"},{val="SHAPER",label="塑界者/塑界守卫"}}, apply = function(val, modList, enemyModList)
 		if val == true then
 			enemyModList:NewMod("Condition:RareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 			enemyModList:NewMod("CurseEffectOnSelf", "MORE", -33, "Boss")
@@ -900,6 +910,7 @@ ifCond = "OnFungalGround",
 			enemyModList:NewMod("CurseEffectOnSelf", "MORE", -66, "Boss")
 			enemyModList:NewMod("ElementalResist", "BASE", 50, "Boss")
 			enemyModList:NewMod("ChaosResist", "BASE", 30, "Boss")
+			enemyModList:NewMod("Armour", "MORE", 33, "Boss")
 		end
 	end },
 { var = "enemyPhysicalReduction", type = "integer", label = "敌人物理伤害减伤:", apply = function(val, modList, enemyModList)

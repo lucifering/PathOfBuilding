@@ -578,6 +578,9 @@ return {
 	extra = "{0:output:ImpaleChance}%",
 { label = "穿刺效果持续次数", { format = "{0:output:ImpaleStacksMax}", }},
 { label = "穿刺层数", { format = "{0:output:ImpaleStacks}" }},
+ 
+
+ 
 { label = "主手穿刺几率", bgCol = colorCodes.MAINHANDBG, flag = "weapon1Attack", haveOutput = "MainHand.ImpaleChance", { format = "{0:output:MainHand.ImpaleChance}%",
 		{ flag = "weapon1Attack", modName = "ImpaleChance", modType = "BASE", cfg = "weapon1" },
 	}, },
@@ -585,8 +588,12 @@ return {
 		{ breakdown = "MainHand.ImpaleStoredDamage" },
 		{ flag = "weapon1Attack", modName = "ImpaleEffect", cfg = "weapon1" },
 	}, },
+{ label = "敌人对抗主手穿刺",   bgCol = colorCodes.MAINHANDBG, flag = "weapon1Attack", haveOutput = "MainHand.EnemyImpaleReductionModifier", { format = "x {2:output:EnemyImpaleReductionModifier}",
+		{ breakdown = "MainHand.EnemyImpaleReductionModifier" },
+		 
+	}, },
 { label = "主手伤害加成.",  bgCol = colorCodes.MAINHANDBG, flag = "weapon1Attack", haveOutput = "MainHand.ImpaleModifier", { format = "{3:output:MainHand.ImpaleModifier}",
-		{ breakdown = "MainHand.ImpaleModifier" },
+		{ breakdown = "MainHand.ImpaleModifier" },		
 	} },
 { label = "副手穿透几率", bgCol = colorCodes.OFFHANDBG, flag = "weapon2Attack", haveOutput = "OffHand.ImpaleChance", { format = "{0:output:OffHand.ImpaleChance}%",
 		{ flag = "weapon2Attack", modName = "ImpaleChance", modType = "BASE", cfg = "weapon2" },
@@ -594,6 +601,10 @@ return {
 { label = "副手存储伤害",  bgCol = colorCodes.OFFHANDBG, flag = "weapon2Attack", haveOutput = "OffHand.ImpaleStoredDamage", { format = "{1:output:OffHand.ImpaleStoredDamage}%",
 		{ breakdown = "OffHand.ImpaleStoredDamage" },
 		{ flag = "weapon2Attack", modName = "ImpaleEffect", cfg = "weapon2" },
+	}, },
+{ label = "敌人对抗副手穿刺",   bgCol = colorCodes.MAINHANDBG, flag = "weapon1Attack", haveOutput = "OffHand.EnemyImpaleReductionModifier", { format = "x {2:output:EnemyImpaleReductionModifier}",
+		{ breakdown = "OffHand.EnemyImpaleReductionModifier" },
+		 
 	}, },
 { label = "副手伤害加成.", bgCol = colorCodes.OFFHANDBG, flag = "weapon2Attack", haveOutput = "OffHand.ImpaleModifier", { format = "{3:output:OffHand.ImpaleModifier}", modType = "MORE",
 		{ breakdown = "OffHand.ImpaleModifier" },

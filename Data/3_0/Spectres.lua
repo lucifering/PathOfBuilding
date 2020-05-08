@@ -3591,3 +3591,69 @@ minions["Metadata/Monsters/AtlasExiles/EyrieInfluenceMonsters/EyrieSeraphArcher"
 		 
 	},
 }
+
+
+-- They of Tul
+minions["Metadata/Monsters/MinerLarge/MinerLargeCommanderBreachSpectre"] = {
+	name = "托沃的它",
+	life = 3,
+	armour = 0.5,
+	fireResist = 30,
+	coldResist = 30,
+	lightningResist = 30,
+	chaosResist = 20,
+	damage = 1.2,
+	damageSpread = 0.2,
+	attackTime = 1.755,
+	attackRange = 9,
+	accuracy = 1,
+	skillList = {
+		"Melee",
+		"BreachBlizzard",
+		"SummonBreachIceTotem",
+	},
+	modList = {
+		-- MonsterBreachQuantityCommander [monster_dropped_item_quantity_+% = 700]
+		-- MonsterBreachRarityCommander [monster_dropped_item_rarity_+% = 1000]
+		-- BreachReducedBeyondPortalChance [monster_beyond_portal_chance_+%_final = -66]
+		-- MonsterKillTrapsMinesTotemsOnDeath [kill_traps_mines_and_totems_on_death = 1]
+	},
+	modListSP = {
+		 "怪物掉落调整数量提高 700%", 
+		  "怪物掉落调整稀有度提高 1000%", 
+		  "怪物召唤超越传送门几率 -66%",
+		  
+	},
+}
+
+-- Xoph's Favoured
+minions["Metadata/Monsters/Hellion/HellionBreachHowlSpectre"] = {
+	name = "索伏的青睐",
+	life = 4.68,
+	armour = 0.1,
+	fireResist = 40,
+	coldResist = 0,
+	lightningResist = 0,
+	chaosResist = 0,
+	damage = 1,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 7,
+	accuracy = 1,
+	weaponType1 = "One Handed Sword",
+	skillList = {
+		"Melee",
+		"EmpoweringHowlSpectre",
+		"BreachCleave",
+	},
+	modList = {
+		-- MonsterBreachQuantity [monster_dropped_item_quantity_+% = 100]
+		-- MonsterBreachRarity [monster_dropped_item_rarity_+% = 300]
+		-- BreachReducedBeyondPortalChance [monster_beyond_portal_chance_+%_final = -66]
+	},
+	modListSP = {
+		  "怪物掉落调整数量提高 100%", 
+		  "怪物掉落调整稀有度提高 300%", 
+		  "怪物召唤超越传送门几率 -66%",
+	},
+}

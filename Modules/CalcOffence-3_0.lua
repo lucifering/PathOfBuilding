@@ -635,7 +635,8 @@ env.data.monsterAllyLifeTable[skillData.totemLevel].." ^8("..skillData.totemLeve
 	-- Skill duration
 	local debuffDurationMult
 	if env.mode_effective then
-		debuffDurationMult = 1 / calcLib.mod(enemyDB, skillCfg, "BuffExpireFaster")
+		--debuffDurationMult = 1 / calcLib.mod(enemyDB, skillCfg, "BuffExpireFaster")
+		debuffDurationMult = 1 / m_max(data.misc.BuffExpirationSlowCap, calcLib.mod(enemyDB, skillCfg, "BuffExpireFaster"))
 	else
 		debuffDurationMult = 1
 	end
@@ -1216,8 +1217,8 @@ t_insert(breakdown[damageType], s_format("%s%d to %d ^8(附加伤害)", plus, ad
 		end
 
 		-- Calculate hit damage for each damage type
-		local totalHitMin, totalHitMax = 0, 0
-		local totalCritMin, totalCritMax = 0, 0
+		local totalHitMin, totalHitMax , totalHitAvg=  0, 0, 0
+		local totalCritMin, totalCritMax , totalCritAvg =  0, 0, 0
 		local ghostReaver = skillModList:Flag(nil, "GhostReaver")
 		output.LifeLeech = 0
 		output.LifeLeechInstant = 0
@@ -1225,6 +1226,7 @@ t_insert(breakdown[damageType], s_format("%s%d to %d ^8(附加伤害)", plus, ad
 		output.EnergyShieldLeechInstant = 0
 		output.ManaLeech = 0
 		output.ManaLeechInstant = 0
+		output.impaleStoredHitAvg = 0
 		
 		
 		for pass = 1, 2 do
@@ -1237,7 +1239,7 @@ t_insert(breakdown[damageType], s_format("%s%d to %d ^8(附加伤害)", plus, ad
 			local noEnergyShieldLeech = skillModList:Flag(cfg, "CannotLeechEnergyShield") or enemyDB:Flag(nil, "CannotLeechEnergyShieldFromSelf")
 			local noManaLeech = skillModList:Flag(cfg, "CannotLeechMana") or enemyDB:Flag(nil, "CannotLeechManaFromSelf")
 			for _, damageType in ipairs(dmgTypeList) do
-				local min, max
+				local min, max,damageTypeHitAvg = 0, 0, 0
 				if skillFlags.hit and canDeal[damageType] then
 					min, max = calcDamage(activeSkill, output, cfg, pass == 2 and breakdown and breakdown[damageType], damageType, 0)
 					local convMult = activeSkill.conversionTable[damageType].mult
@@ -1261,6 +1263,15 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 					end				
 					min = min * allMult
 					max = max * allMult
+					
+					if skillModList:Flag(skillCfg, "LuckyHits") or (pass == 2 and damageType == "Lightning" 
+					and skillModList:Flag(skillCfg, "LightningNoCritLucky")) then
+					-- 幸运的伤害
+						damageTypeHitAvg = (min / 3 + 2 * max / 3)
+					else
+					-- 默认是 （大伤+小伤）/2
+						damageTypeHitAvg = (min / 2 + max / 2)
+					end					
 					if (min ~= 0 or max ~= 0) and env.mode_effective then
 						-- Apply enemy resistances and damage taken modifiers
 						local resist = 0
@@ -1269,7 +1280,19 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 						local takenMore = enemyDB:More(cfg, "DamageTaken", damageType.."DamageTaken")
 						
 						if damageType == "Physical" then
-							resist = m_max(0, enemyDB:Sum("BASE", nil, "PhysicalDamageReduction") + skillModList:Sum("BASE", cfg, "EnemyPhysicalDamageReduction"))
+							--resist = m_max(0, enemyDB:Sum("BASE", nil, "PhysicalDamageReduction") + skillModList:Sum("BASE", cfg, "EnemyPhysicalDamageReduction"))
+							if isAttack then
+								-- store pre-armour physical damage from attacks for impale calculations
+								if pass == 1 then
+									output.impaleStoredHitAvg = output.impaleStoredHitAvg + damageTypeHitAvg * (output.CritChance / 100)
+								else
+									output.impaleStoredHitAvg = output.impaleStoredHitAvg + damageTypeHitAvg * (1 - output.CritChance / 100)
+								end
+							end
+							local enemyArmour = round(calcLib.val(enemyDB, "Armour") * enemyDB:More(nil, "Armour"))
+							local armourReduction = calcs.armourReductionF(enemyArmour, damageTypeHitAvg)
+							resist = m_max(0, enemyDB:Sum("BASE", nil, "PhysicalDamageReduction") + skillModList:Sum("BASE", cfg, "EnemyPhysicalDamageReduction") + armourReduction)
+						--	print("resist="..resist)
 						else
 							resist = enemyDB:Sum("BASE", nil, damageType.."Resist")
 							if isElemental[damageType] then
@@ -1304,6 +1327,7 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 						end
 						min = min * effMult
 						max = max * effMult
+						damageTypeHitAvg = damageTypeHitAvg * effMult
 						if env.mode == "CALCS" then
 							output[damageType.."EffMult"] = effMult
 						end
@@ -1316,11 +1340,12 @@ t_insert(breakdown[damageType], s_format("x %.3f ^8(有效 DPS 加成)", effMult
 					if pass == 2 and breakdown then
 						t_insert(breakdown[damageType], s_format("= %d to %d", min, max))
 					end
+					--Beginning of Leech Calculation for this DamageType
 					if skillFlags.mine or skillFlags.trap or skillFlags.totem then
 						if not noLifeLeech then
 							local lifeLeech = skillModList:Sum("BASE", cfg, "DamageLifeLeechToPlayer")
 							if lifeLeech > 0 then
-								lifeLeechTotal = lifeLeechTotal + (min + max) / 2 * lifeLeech / 100
+								lifeLeechTotal = lifeLeechTotal + damageTypeHitAvg  / 2 * lifeLeech / 100
 							end
 						end
 					else
@@ -1338,7 +1363,7 @@ t_insert(breakdown[damageType], s_format("x %.3f ^8(有效 DPS 加成)", effMult
 					
 							end
 							if lifeLeech > 0 then
-								lifeLeechTotal = lifeLeechTotal + (min + max) / 2 * lifeLeech / 100
+								lifeLeechTotal = lifeLeechTotal + damageTypeHitAvg  / 2 * lifeLeech / 100
 							end
 						end
 						if not noEnergyShieldLeech then
@@ -1351,7 +1376,7 @@ t_insert(breakdown[damageType], s_format("x %.3f ^8(有效 DPS 加成)", effMult
 							local manaLeech = skillModList:Sum("BASE", cfg, "DamageLeech", "DamageManaLeech", damageType.."DamageManaLeech", isElemental[damageType] and "ElementalDamageManaLeech" or nil) + enemyDB:Sum("BASE", cfg, "SelfDamageManaLeech") / 100
 						
 							if manaLeech > 0 then
-								manaLeechTotal = manaLeechTotal + (min + max) / 2 * manaLeech / 100
+								manaLeechTotal = manaLeechTotal + damageTypeHitAvg  / 2 * manaLeech / 100
 							end
 						end
 					end
@@ -1365,7 +1390,8 @@ t_insert(breakdown[damageType], s_format("x %.3f ^8(有效 DPS 加成)", effMult
 				end
 				
 				if pass == 1 then
-					output[damageType.."CritAverage"] = (min + max) / 2
+					output[damageType.."CritAverage"] = damageTypeHitAvg / 2
+					totalCritAvg = totalCritAvg + damageTypeHitAvg
 					totalCritMin = totalCritMin + min
 					totalCritMax = totalCritMax + max
 				else
@@ -1373,6 +1399,8 @@ t_insert(breakdown[damageType], s_format("x %.3f ^8(有效 DPS 加成)", effMult
 						output[damageType.."Min"] = min
 						output[damageType.."Max"] = max
 					end
+					output[damageType.."HitAverage"] = damageTypeHitAvg
+					totalHitAvg = totalHitAvg + damageTypeHitAvg
 					output[damageType.."HitAverage"] = (min + max) / 2
 					totalHitMin = totalHitMin + min
 					totalHitMax = totalHitMax + max
@@ -1422,7 +1450,7 @@ t_insert(breakdown[damageType], s_format("x %.3f ^8(有效 DPS 加成)", effMult
 			-- For each damage type, calculate percentage of total damage
 			for _, damageType in ipairs(dmgTypeList) do
 				if output[damageType.."HitAverage"] > 0 then
-t_insert(breakdown[damageType], s_format("占总伤害的: %d%%", output[damageType.."HitAverage"] / (totalHitMin + totalHitMax) * 200))
+t_insert(breakdown[damageType], s_format("占总伤害的: %d%%", output[damageType.."HitAverage"] /  totalHitAvg * 100))
 				end
 			end
 		end
@@ -1468,16 +1496,22 @@ t_insert(breakdown[damageType], s_format("占总伤害的: %d%%", output[damageT
 		output.ManaOnHitRate = output.ManaOnHit * hitRate
 
 		-- Calculate average damage and final DPS
-		output.AverageHit = (totalHitMin + totalHitMax) / 2 * (1 - output.CritChance / 100) + (totalCritMin + totalCritMax) / 2 * output.CritChance / 100
+		output.AverageHit = totalHitAvg  / 2 * (1 - output.CritChance / 100) + totalCritAvg  / 2 * output.CritChance / 100
 		output.AverageDamage = output.AverageHit * output.HitChance / 100
 		output.TotalDPS = output.AverageDamage * (globalOutput.HitSpeed or globalOutput.Speed) * (skillData.dpsMultiplier or 1)
 		if breakdown then
 			if output.CritEffect ~= 1 then
-				breakdown.AverageHit = {
-s_format("%.1f x (1 - %.4f) ^8(来自非暴击的伤害)", (totalHitMin + totalHitMax) / 2, output.CritChance / 100),
-s_format("+ %.1f x %.4f ^8(来自暴击的伤害)", (totalCritMin + totalCritMax) / 2, output.CritChance / 100),
-					s_format("= %.1f", output.AverageHit),
-				}
+				breakdown.AverageHit = { }
+				
+				if skillModList:Flag(skillCfg, "LuckyHits") then 
+					t_insert(breakdown.AverageHit, s_format("(1/3) x %d + (2/3) x %d = %.1f ^8(幸运击中-来自非暴击的平均伤害)", totalHitMin, totalHitMax, totalHitAvg))
+					t_insert(breakdown.AverageHit, s_format("(1/3) x %d + (2/3) x %d = %.1f ^8(幸运击中-来自暴击的平均伤害)", totalCritMin, totalCritMax, totalCritAvg))
+					t_insert(breakdown.AverageHit, "")
+				end
+				t_insert(breakdown.AverageHit, s_format("%.1f x (1 - %.4f) ^8(来自非暴击的伤害)", totalHitAvg, output.CritChance / 100))
+				t_insert(breakdown.AverageHit, s_format("+ %.1f x %.4f ^8(来自暴击的伤害)", totalCritAvg, output.CritChance / 100))
+				t_insert(breakdown.AverageHit, s_format("= %.1f", output.AverageHit))
+			 
 			end
 			if isAttack then
 				breakdown.AverageDamage = { }
@@ -2349,20 +2383,55 @@ t_insert(breakdown.EnemyStunDuration, s_format("/ %.2f ^8(延长/缩短 敌人�
             local configStacks = enemyDB:Sum("BASE", nil, "Multiplier:ImpaleStack")
             local impaleStacks = configStacks > 0 and m_min(configStacks, maxStacks) or  maxStacks
 
-             local baseStoredDamage = 0.1 -- magic number: base impale stored damage
+             local baseStoredDamage = data.misc.ImpaleStoredDamageBase -- 0.1 magic number: base impale stored damage
             local storedDamageInc = skillModList:Sum("INC", cfg, "ImpaleEffect")/100
             local storedDamageMore = round(skillModList:More(cfg, "ImpaleEffect"), 2)
             local storedDamageModifier = (1 + storedDamageInc) * storedDamageMore
             local impaleStoredDamage = baseStoredDamage * storedDamageModifier
 
- 			local impaleDMGModifier = impaleStoredDamage * impaleStacks * impaleChance
+			local impaleHitDamageMod = impaleStoredDamage * impaleStacks  -- Source: https://www.reddit.com/r/pathofexile/comments/chgqqt/impale_and_armor_interaction/
+			local enemyArmour = round(calcLib.val(enemyDB, "Armour") * enemyDB:More(nil, "Armour"))
+			 
+            local impaleArmourReduction = calcs.armourReductionF(enemyArmour, impaleHitDamageMod * output.impaleStoredHitAvg)
+			
+			
+			
+			local ePhysicalDamageReduction = enemyDB:Sum("BASE", nil, "PhysicalDamageReduction")
+			local eEnemyPhysicalDamageReduction = skillModList:Sum("BASE", cfg, "EnemyPhysicalDamageReduction") 
+			local eEnemyImpalePhysicalDamageReduction = skillModList:Sum("BASE", cfg, "EnemyImpalePhysicalDamageReduction") 
+			
+			
+			
+			local impaleResist = m_max(0, 
+			 ePhysicalDamageReduction+ 
+			 eEnemyPhysicalDamageReduction + 
+			 eEnemyImpalePhysicalDamageReduction
+			 + impaleArmourReduction)
+			  
+ 			local impaleDMGModifier = impaleHitDamageMod * (1 - impaleResist / 100) * impaleChance
 
-             globalOutput.ImpaleStacksMax = maxStacks
+			local enemyImpaleReductionModifier = (1 - impaleResist / 100)
+			output.EnemyImpaleReductionModifier = enemyImpaleReductionModifier
+			globalOutput.EnemyImpaleReductionModifier = enemyImpaleReductionModifier
+			
+            globalOutput.ImpaleStacksMax = maxStacks
 			globalOutput.ImpaleStacks = impaleStacks
 			output.ImpaleStoredDamage = impaleStoredDamage * 100
 			output.ImpaleModifier = 1 + impaleDMGModifier
 
  			if breakdown then
+			
+			breakdown.EnemyImpaleReductionModifier = {}
+			
+			t_insert(breakdown.EnemyImpaleReductionModifier, s_format("+ %.0f%% ^8(敌人护甲物理减伤)", impaleArmourReduction))
+			t_insert(breakdown.EnemyImpaleReductionModifier, s_format("+ %.0f%% ^8(敌人物理减伤)", ePhysicalDamageReduction))
+			t_insert(breakdown.EnemyImpaleReductionModifier, s_format("+ %.0f%% ^8(降低或提高敌人的物理减伤)", eEnemyPhysicalDamageReduction))
+			t_insert(breakdown.EnemyImpaleReductionModifier, s_format("+ %.0f%% ^8(降低或提高敌人的穿刺物理减伤)", eEnemyImpalePhysicalDamageReduction))
+			t_insert(breakdown.EnemyImpaleReductionModifier, s_format("敌人穿刺抗性 = %.0f%% ^8(敌人穿刺抗性，不能小于 0)", impaleResist))
+		 	t_insert(breakdown.EnemyImpaleReductionModifier, s_format("敌人物理减伤加成 = %.2f ^8", enemyImpaleReductionModifier))
+			
+			
+			
 				breakdown.ImpaleStoredDamage = {}
 t_insert(breakdown.ImpaleStoredDamage, "10% ^8(基础值)")
 t_insert(breakdown.ImpaleStoredDamage, s_format("x %.2f ^8(效果提高或降低)", storedDamageModifier))
@@ -2372,6 +2441,11 @@ t_insert(breakdown.ImpaleStoredDamage, s_format("x %.2f ^8(效果提高或降低
 t_insert(breakdown.ImpaleModifier, s_format("%d ^8(叠加层数, 可以在配置界面修改)", impaleStacks))
 t_insert(breakdown.ImpaleModifier, s_format("x %.3f ^8(存储伤害)", impaleStoredDamage))
 t_insert(breakdown.ImpaleModifier, s_format("x %.2f ^8(穿刺几率)", impaleChance))
+				if impaleResist == 0 then 
+					t_insert(breakdown.ImpaleModifier, s_format("x %.2f ^8(敌人的穿刺物理伤害减伤为0)", (1 - impaleResist / 100)))
+				else
+					t_insert(breakdown.ImpaleModifier, s_format("x %.2f ^8(敌人的穿刺物理伤害减伤)", (1 - impaleResist / 100)))
+				end 
 				t_insert(breakdown.ImpaleModifier, s_format("= %.3f", impaleDMGModifier))
 
  			end
@@ -2410,6 +2484,7 @@ t_insert(breakdown.ImpaleModifier, s_format("x %.2f ^8(穿刺几率)", impaleCha
 		combineStat("ImpaleChance", "AVERAGE")
 		combineStat("ImpaleStoredDamage", "AVERAGE")
 		combineStat("ImpaleModifier", "CHANCE", "ImpaleChance")
+		
 	end
 
 	if skillFlags.hit and skillData.decay and canDeal.Chaos then

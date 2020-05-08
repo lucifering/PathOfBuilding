@@ -101,6 +101,8 @@ description = "一道电弧从施放者射向目标, 并会弹跳至周围其他
 		chaining = true,
 	},
 	baseMods = {
+	flag("Condition:CanBeLucky"),
+		mod("Dummy", "DUMMY", 1, 0, 0, { type = "Condition", var = "CanBeLucky" }),
 	},
 	qualityStats = {
 		{ "shock_duration_+%", 1.5 },

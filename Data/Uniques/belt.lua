@@ -326,7 +326,7 @@ return {
 {tags:jewellery_attribute}+(40-50) 力量
 {tags:jewellery_attribute}+(40-50) 敏捷
 {tags:jewellery_resistance}至少有 200 点力量时，+(20-25)% 火焰、冰霜、闪电抗性
-至少有 200 点敏捷时，投射物攻击伤害提高 (40-50)%
+{tags:attack}至少有 200 点敏捷时，投射物攻击伤害提高 (40-50)%
 ]],[[
 谋士之环
 扣钉腰带

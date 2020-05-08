@@ -359,6 +359,12 @@ return {
 ["critical_strike_chance_+%"] = {
 	mod("CritChance", "INC", nil),
 },
+["spell_critical_strike_chance_+%"] = {
+	mod("CritChance", "INC", nil, ModFlag.Spell),
+},
+["attack_critical_strike_chance_+%"] = {
+	mod("CritChance", "INC", nil, ModFlag.Attack),
+},
 ["base_critical_strike_multiplier_+"] = {
 	mod("CritMultiplier", "BASE", nil),
 },
@@ -701,6 +707,14 @@ mod("CritMultiplier", "BASE", nil, 0, 0, { type = "Condition", var = "Elusive" }
 
 
 -- Other effects
+["enemy_phys_reduction_%_penalty_vs_hit"] = {
+	mod("EnemyPhysicalDamageReduction", "BASE", nil),
+	mult = -1,
+},
+["impale_phys_reduction_%_penalty"] = {
+	mod("EnemyImpalePhysicalDamageReduction", "BASE", nil),
+	mult = -1,
+},
 ["base_stun_threshold_reduction_+%"] = {
 	mod("EnemyStunThreshold", "INC", nil),
 	mult = -1,

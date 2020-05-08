@@ -222,7 +222,26 @@ data.specialBaseTags = {
 	["Sceptre"] = { shaper = "sceptre_shaper", elder = "sceptre_elder",  crusader="sceptre_crusader", redeemer = "sceptre_eyrie",hunter ="sceptre_basilisk",warlord="sceptre_adjudicator" },
 }
 
-
+data.misc = { -- magic numbers
+	TemporalChainsEffectCap = 75,
+	PhysicalDamageReductionCap = 90,
+	MaxResistCap = 90,
+	EvadeChanceCap = 95,
+	DodgeChanceCap = 75,
+	AvoidChanceCap = 75,
+	EnergyShieldRechargeBase = 0.2,
+	Transfiguration = 0.3,
+	EnemyMaxResist = 75,
+	LeechRateBase = 0.02,
+	BleedPercentBase = 70,
+	BleedDurationBase = 5,
+	PoisonPercentBase = 0.20,
+	PoisonDurationBase = 2,
+	IgnitePercentBase = 0.50,
+	IgniteDurationBase = 4,
+	ImpaleStoredDamageBase = 0.1,
+	BuffExpirationSlowCap = 0.25,
+}
 
 ---------------------------
 -- Version-specific Data --

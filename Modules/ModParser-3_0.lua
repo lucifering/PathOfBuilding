@@ -1269,6 +1269,9 @@ local modTagList = {
 	["对抗被嘲讽的敌人时，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Taunted" }, keywordFlags = KeywordFlag.Hit },
 	["对被嘲讽敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Taunted" }, keywordFlags = KeywordFlag.Hit },
 	["对被嘲讽敌人"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Taunted" }, keywordFlags = KeywordFlag.Hit },
+	["任何魔力药剂作用时间内，"] = { tag = { type = "Condition", var = "UsingManaFlask" } },
+	["在任何生命药剂作用时间内，"] = { tag = { type = "Condition", var = "UsingLifeFlask" } },
+	["任意生命和魔力药剂持续期间，"] = { tag = { type = "Condition", varList = { "UsingManaFlask", "UsingLifeFlask" } } },
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -2038,6 +2041,7 @@ local specialModList = {
 	["每秒回复 ([%d%.]+)%% 能量护盾"]=function(num) return {  mod("EnergyShieldRegenPercent", "BASE", num)  } end,
 	["每秒回复 ([%d%.]+) 能量护盾"]=function(num) return {  mod("EnergyShieldRegen", "BASE", num)  } end,
 	["每秒回复 ([%d%.]+)%% 生命"]=function(num) return {  mod("LifeRegenPercent", "BASE", num)  } end,
+	["每秒回复 ([%d%.]+)%% 魔力"]=function(num) return {  mod("ManaRegenPercent", "BASE", num)  } end,
 	["近期内你若被击中，则每秒回复 ([%d%.]+)%% 生命"]=function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "BeenHitRecently" })  } end,
 	["(%d+)%% 的攻击格挡率同样套用于法术格挡"]=function(num) return {  mod("BlockChanceConv", "BASE", num)  } end,
 	["流血总伤害额外提高 (%d+)%%"]=function(num) return {  mod("Damage", "MORE", num,nil,nil, KeywordFlag.Bleed)  } end, 
@@ -2983,6 +2987,17 @@ local specialModList = {
 		 mod("Dex", "BASE", 25,{ type = "Condition", var = "ConnectedTo贵族Start" }) ,
 		 mod("Int", "BASE", 25,{ type = "Condition", var = "ConnectedTo贵族Start" }) 
 	} end,
+	["当你在你在天赋树上连接到一个职业的出发位置时，你获得：野蛮人： 近战技能范围扩大 (%d+)%%决斗者：攻击伤害的 ([%d%.]+)%% 会转化为生命偷取游侠：移动速度提高 (%d+)%%暗影：%+([%d%.]+)%% 暴击率女巫：每秒回复 ([%d%.]+)%% 魔力圣堂武僧：伤害穿透 5%% 元素抗性贵族：%+25 所有属性"]= function(_,num_ymr,num_jdz,num_yx,num_ay,num_nw) return {   
+	mod("AreaOfEffect", "INC", tonumber(num_ymr),nil, ModFlag.Melee,{ type = "Condition", var = "ConnectedTo野蛮人Start" }) ,
+	mod("DamageLifeLeech", "BASE", tonumber(num_jdz),nil, ModFlag.Attack,{ type = "Condition", var = "ConnectedTo决斗者Start" }),
+	mod("MovementSpeed", "INC", tonumber(num_yx),{ type = "Condition", var = "ConnectedTo游侠Start" }) ,
+	mod("CritChance", "BASE", tonumber(num_ay),{ type = "Condition", var = "ConnectedTo暗影刺客Start" }),
+	mod("ManaRegenPercent", "BASE", tonumber(num_nw), { type = "Condition", var = "ConnectedTo女巫Start" }),
+	mod("ElementalPenetration", "BASE", 5,{ type = "Condition", var = "ConnectedTo圣堂武僧Start" }),
+		 mod("Str", "BASE", 25,{ type = "Condition", var = "ConnectedTo贵族Start" }) ,
+		 mod("Dex", "BASE", 25,{ type = "Condition", var = "ConnectedTo贵族Start" }) ,
+		 mod("Int", "BASE", 25,{ type = "Condition", var = "ConnectedTo贵族Start" }) 
+	} end,
 	--[[
 	["总属性每有 (%d+) 点，魔力保留降低 (%d+)%%"] = function(_,num1,num2) return {  mod("ManaReserved", "INC", -tonumber(num2),{ type = "PerStat", statList = { 'Str', 'Dex', 'Int' }, div = tonumber(num1),stat= "Dex" } )  } end,  
 	]]--
@@ -3453,6 +3468,23 @@ local specialModList = {
 	["剑类攻击造成的击中和异常状态伤害提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num, nil,ModFlag.Sword,bor(KeywordFlag.Hit, KeywordFlag.Ailment)) } end,
 	["锤类或短杖攻击造成的击中和异常状态伤害提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num, nil,ModFlag.Mace,bor(KeywordFlag.Hit, KeywordFlag.Ailment)) } end,
 	["%+(%d+) 武器范围"]= function(num) return {  mod("MeleeWeaponRange", "BASE", num )  } end, 
+	["被你穿刺的敌人对穿刺伤害有获得 %-(%d+)%% 总物理伤害减伤"] = function(num) return {
+			mod("EnemyImpalePhysicalDamageReduction", "BASE", -num)
+		} end,
+	["在任何生命药剂作用时间内，获得护体效果"] = { flag("Condition:Fortify",{ type = "Condition", var = "UsingLifeFlask" } ) },
+	-- 友军问题 暂时不解析
+	-- ["周围友军击中造成的伤害特别幸运"] = { mod("ExtraAura", "LIST", { onlyAllies = true, mod = mod("LuckyHits", "FLAG", true) }) },
+	["非暴击造成的闪电伤害特别幸运"] = { flag("LightningNoCritLucky") },
+	["非暴击造成的闪电伤害是幸运的"] = { flag("LightningNoCritLucky") },
+	["每受到一个捷技能影响，召唤生物的移动速度提高 (%d+)%%"] 
+		= function(num) return { mod("MinionModifier", "LIST", { 
+		mod = mod("MovementSpeed", "INC", num, { type = "Multiplier", var = "AffectedByHeraldCount", actor = "parent" }) }) } end,
+	["你受捷影响时，召唤生物的伤害提高 (%d+)%%"] = function(num) return {
+		mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num, 
+		{ type = "ActorCondition", actor = "parent", var = "AffectedByHerald" }) }) } end,
+	["你受到捷技能影响时，召唤生物的伤害提高 (%d+)%%"] = function(num) return {
+		mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num, 
+		{ type = "ActorCondition", actor = "parent", var = "AffectedByHerald" }) }) } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

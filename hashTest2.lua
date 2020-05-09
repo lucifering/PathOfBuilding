@@ -82,7 +82,7 @@ for line in io.lines("luafiles-tree-3_10.txt") do
 			print(line)
 			local content = fileR:read("*a")
 			fileR:close()
-			fileW:write("<File sha1=\""..sha1(content).."\" name=\""..line.."\" part=\"tree-3_10\"/>\r\n")
+			fileW:write("<File sha1=\""..sha1(content).."\" name=\""..line.."\" part=\"program\"/>\r\n")
 			fileW:flush()			 
 			
 end	

@@ -178,6 +178,7 @@ downloadFile(localSource.."changelog.txt", scriptPath.."/changelog.txt")
 
 -- Download files that need updating
 local failedFile = false
+local failedFileName=''
 local zipFiles = { }
 for index, data in ipairs(updateFiles) do
 	if UpdateProgress then
@@ -217,6 +218,8 @@ for index, data in ipairs(updateFiles) do
 		if data.sha1 ~= sha1(content) and data.sha1 ~= sha1(content:gsub("\n","\r\n")) then
 			ConPrintf("Hash mismatch on '%s'", data.name)
 			failedFile = true
+			failedFileName = data.name.." hash:"..data.sha1.."=VS="..sha1(content)
+			print("Error:"..failedFileName)
 		else
 			local file = io.open(fileName, "w+b")
 			file:write(content)
@@ -224,6 +227,8 @@ for index, data in ipairs(updateFiles) do
 		end
 	else
 		failedFile = true
+		failedFileName = data.name
+		print("Error:"..failedFileName)
 	end
 end
 for name, zip in pairs(zipFiles) do
@@ -231,7 +236,7 @@ for name, zip in pairs(zipFiles) do
 	os.remove(scriptPath.."/Update/"..name)
 end
 if failedFile then
-	ConPrintf("Update failed: one or more files couldn't be downloaded")
+	ConPrintf("Update failed: one or more files couldn't be downloaded:"..failedFileName)
 	return nil, "One or more files couldn't be downloaded.\nCheck your internet connectivity,\nor try again later."
 end
 

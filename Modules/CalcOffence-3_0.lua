@@ -1345,7 +1345,7 @@ t_insert(breakdown[damageType], s_format("x %.3f ^8(有效 DPS 加成)", effMult
 						if not noLifeLeech then
 							local lifeLeech = skillModList:Sum("BASE", cfg, "DamageLifeLeechToPlayer")
 							if lifeLeech > 0 then
-								lifeLeechTotal = lifeLeechTotal + damageTypeHitAvg  / 2 * lifeLeech / 100
+								lifeLeechTotal = lifeLeechTotal + damageTypeHitAvg * lifeLeech / 100
 							end
 						end
 					else
@@ -1363,20 +1363,20 @@ t_insert(breakdown[damageType], s_format("x %.3f ^8(有效 DPS 加成)", effMult
 					
 							end
 							if lifeLeech > 0 then
-								lifeLeechTotal = lifeLeechTotal + damageTypeHitAvg  / 2 * lifeLeech / 100
+								lifeLeechTotal = lifeLeechTotal + damageTypeHitAvg * lifeLeech / 100
 							end
 						end
 						if not noEnergyShieldLeech then
 							local energyShieldLeech = skillModList:Sum("BASE", cfg, "DamageEnergyShieldLeech", damageType.."DamageEnergyShieldLeech", isElemental[damageType] and "ElementalDamageEnergyShieldLeech" or nil) + enemyDB:Sum("BASE", cfg, "SelfDamageEnergyShieldLeech") / 100							
 							if energyShieldLeech > 0 then
-								energyShieldLeechTotal = energyShieldLeechTotal + (min + max) / 2 * energyShieldLeech / 100
+								energyShieldLeechTotal = energyShieldLeechTotal + damageTypeHitAvg * energyShieldLeech / 100
 							end
 						end
 						if not noManaLeech then
 							local manaLeech = skillModList:Sum("BASE", cfg, "DamageLeech", "DamageManaLeech", damageType.."DamageManaLeech", isElemental[damageType] and "ElementalDamageManaLeech" or nil) + enemyDB:Sum("BASE", cfg, "SelfDamageManaLeech") / 100
 						
 							if manaLeech > 0 then
-								manaLeechTotal = manaLeechTotal + damageTypeHitAvg  / 2 * manaLeech / 100
+								manaLeechTotal = manaLeechTotal + damageTypeHitAvg * manaLeech / 100
 							end
 						end
 					end
@@ -1390,7 +1390,7 @@ t_insert(breakdown[damageType], s_format("x %.3f ^8(有效 DPS 加成)", effMult
 				end
 				
 				if pass == 1 then
-					output[damageType.."CritAverage"] = damageTypeHitAvg / 2
+					output[damageType.."CritAverage"] = damageTypeHitAvg
 					totalCritAvg = totalCritAvg + damageTypeHitAvg
 					totalCritMin = totalCritMin + min
 					totalCritMax = totalCritMax + max
@@ -1400,8 +1400,7 @@ t_insert(breakdown[damageType], s_format("x %.3f ^8(有效 DPS 加成)", effMult
 						output[damageType.."Max"] = max
 					end
 					output[damageType.."HitAverage"] = damageTypeHitAvg
-					totalHitAvg = totalHitAvg + damageTypeHitAvg
-					output[damageType.."HitAverage"] = (min + max) / 2
+					totalHitAvg = totalHitAvg + damageTypeHitAvg					
 					totalHitMin = totalHitMin + min
 					totalHitMax = totalHitMax + max
 				end
@@ -1495,8 +1494,8 @@ t_insert(breakdown[damageType], s_format("占总伤害的: %d%%", output[damageT
 		output.EnergyShieldOnHitRate = output.EnergyShieldOnHit * hitRate
 		output.ManaOnHitRate = output.ManaOnHit * hitRate
 
-		-- Calculate average damage and final DPS
-		output.AverageHit = totalHitAvg  / 2 * (1 - output.CritChance / 100) + totalCritAvg  / 2 * output.CritChance / 100
+		-- Calculate average damage and final DPS		 
+		output.AverageHit = totalHitAvg * (1 - output.CritChance / 100) + totalCritAvg * output.CritChance / 100
 		output.AverageDamage = output.AverageHit * output.HitChance / 100
 		output.TotalDPS = output.AverageDamage * (globalOutput.HitSpeed or globalOutput.Speed) * (skillData.dpsMultiplier or 1)
 		if breakdown then

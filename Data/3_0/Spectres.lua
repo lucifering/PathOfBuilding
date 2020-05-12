@@ -3657,3 +3657,39 @@ minions["Metadata/Monsters/Hellion/HellionBreachHowlSpectre"] = {
 		  "怪物召唤超越传送门几率 -66%",
 	},
 }
+
+
+
+-- Scale of Esh
+minions["Metadata/Monsters/SandLeaper/SandLeaperBreachSpectre_"] = {
+	name = "艾许之鳞",
+	life = 3,
+	fireResist = 30,
+	coldResist = 30,
+	lightningResist = 30,
+	chaosResist = 20,
+	damage = 1.2,
+	damageSpread = 0.2,
+	attackTime = 1.5,
+	attackRange = 8,
+	accuracy = 1,
+	skillList = {
+		"Melee",
+		"SandLeaperDodgeLeft",
+		"SandLeaperDodgeRight",
+		"BreachLightningWhip",
+		"BreachArc",
+		"BreachTeamWarp",
+		"BreachLightningOrbsCommander",
+	},
+	modList = {
+		-- MonsterBreachQuantityCommander [monster_dropped_item_quantity_+% = 700]
+		-- MonsterBreachRarityCommander [monster_dropped_item_rarity_+% = 1000]
+		-- BreachReducedBeyondPortalChance [monster_beyond_portal_chance_+%_final = -66]
+	},
+	modListSP = {
+		  "怪物掉落调整数量提高 700%", 
+		  "怪物掉落调整稀有度提高 1000%", 
+		  "怪物召唤超越传送门几率 -66%",
+	},
+}

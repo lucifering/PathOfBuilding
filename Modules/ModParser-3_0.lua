@@ -2129,6 +2129,8 @@ local specialModList = {
 	["插槽内的技能石受到 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
 	["插槽内的技能石被 (%d+) 级的 【(.+)】 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	["插槽内的技能石被 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
+	["此物品上的【召唤生物技能石】由 (%d+) 级的 生命偷取 辅助"] = function(num) return { mod("ExtraSupport", "LIST", 
+	{ skillId = "SupportLifeLeech", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
 	["此物品上的诅咒技能石受到 (%d+) 级的 【(.+)】 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", 
 	{ skillId = FuckSkillSupportCnName(support), level = num },
 	{ type = "SocketedIn", slotName = "{SlotName}" }) } end, 
@@ -2684,6 +2686,8 @@ local specialModList = {
 	}end,
 	["获得额外混沌伤害，其数值等同于非混沌伤害的 (%d+)%%"] = function(num) return {  mod("NonChaosDamageGainAsChaos", "BASE", num)  } end,
 	["受到【雷霆】影响时，闪电伤害提高 (%d+)%%"]= function(num) return {  mod("LightningDamage", "INC", num,{ type = "Condition", var = "AffectedBy雷霆" })  } end, 
+	-- 国服目前 ManaRecoveryRate和ManaRegen 2个词缀共用“魔力回复速度”
+	["任何魔力药剂作用时间内，魔力回复速度提高 (%d+)%%"]= function(num) return {  mod("ManaRecoveryRate", "INC", num,{ type = "Condition", var = "UsingManaFlask" } )  } end, 
 	["受到【清晰】影响时，魔力回复速度提高 (%d+)%%"]= function(num) return {  mod("ManaRecoveryRate", "INC", num,{ type = "Condition", var = "AffectedBy清晰" })  } end, 
 	["受到【纪律】影响时，能量护盾回复速度提高 (%d+)%%"]= function(num) return {  mod("EnergyShieldRecoveryRate", "INC", num,{ type = "Condition", var = "AffectedBy纪律" })  } end, 
 	["受到【活力】影响时，药剂的生命回复提高 (%d+)%%"]= function(num) return {  mod("FlaskLifeRecovery", "INC", num,{ type = "Condition", var = "AffectedBy活力" })  } end, 

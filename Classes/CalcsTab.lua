@@ -28,6 +28,76 @@ local buffModeDropList = {
 { label = "有效 DPS", buffMode = "EFFECTIVE" } 
 }
 
+local SkillTypeCNMap = { 
+
+[1] = "攻击", 
+[2] = "法术", 
+[3] = "投射物", 
+[4] = "双持",
+[5] = "增益",
+[6] = "可双持",
+[7] = "仅主手",
+[9] = "召唤生物",
+[10] = "击中",
+[11] = "范围效果",
+[12] = "持续时间",
+[13] = "需持盾",
+[14] = "有投射物伤害",
+[15] = "魔力保留",
+[16] = "魔力百分比消耗",
+[17] = "可陷阱化",
+[18] = "可图腾化",
+[19] = "可地雷化",
+[20] = "可元素异常",
+[21] = "可召唤",
+[23] = "连锁",
+[24] = "近战",
+[25] = "单体近战",
+[26] = "法术可回响",
+[28] = "攻击可重复",
+[29] = "造成燃烧",
+[30] = "图腾",
+[32] = "诅咒",
+[33] = "火焰",
+[34] = "冰霜",
+[35] = "闪电",
+[36] = "可触发",
+[37] = "陷阱",
+[38] = "位移", 
+[40] = "持续伤害",
+[41] = "地雷",
+[42] = "被触发",
+[43] = "瓦尔",
+[44] = "光环",
+[48] = "投射物攻击", 
+[50] = "混沌",
+[58] = "持续吟唱",
+[61] = "装备触发",
+[62] = "魔像",
+[63] = "捷光环",
+[64] = "光环减益",
+[67] = "法术可多重范围",
+[68] = "可齐射",
+[69] = "可幻影射手",
+[74] = "战吼",
+[75] = "瞬发",
+[76] = "烙印",
+[77] = "可摧毁灵枢",
+[78] = "非击中冰缓",
+[79] = "冰缓区域",
+[80] = "释放诅咒",
+[82] = "持续时间光环",
+[83] = "范围法术",
+[84] = "物理",
+[85] = "瘫痪",
+[89] = "创建召唤物",
+[90] = "护卫",
+[91] = "旅行",
+[92] = "闪现",
+[93] = "可祝福",
+[94] = "新星法术",
+ }
+ 
 local CalcsTabClass = newClass("CalcsTab", "UndoHandler", "ControlHost", "Control", function(self, build)
 	self.UndoHandler()
 	self.ControlHost()
@@ -218,13 +288,28 @@ control = new("ButtonControl", nil, 0, 0, 100, 16, "灵体管理...", function()
 				
 					local grantedEffect= mainSkill.skillCfg.skillGrantedEffect
 					  
-						if tooltip:CheckForUpdate(grantedEffect.id, self.build.outputRevision)  then 
+						if grantedEffect and  tooltip:CheckForUpdate(grantedEffect.id, self.build.outputRevision)  then 
+						
+						print_r(grantedEffect.skillTypes)
 						 tooltip.center = true
 						 tooltip.color = colorCodes.GEM
 						
 						 tooltip:AddLine(20, colorCodes.GEM..grantedEffect.name)
 						 tooltip:AddSeparator(10)
-						 tooltip:AddLine(16, "^x7F7F7F".."技能ID: "..grantedEffect.id)
+						 tooltip:AddLine(16, "^x7F7F7F"..grantedEffect.id)
+						 
+						 if grantedEffect.skillTypes then 
+							local skillTypeText = ''
+							for stat, val in pairs(grantedEffect.skillTypes) do
+							
+								if val and stat and SkillTypeCNMap[stat] then 									 
+									skillTypeText = skillTypeText ..SkillTypeCNMap[stat] ..","
+								end 
+							end
+							
+							tooltip:AddLine(16, "^x7F7F7F"..skillTypeText)
+							tooltip:AddSeparator(10)
+						 end
 						 
 						 local  curSkillLevel=0;
 						 local curlevelRequirement=0;

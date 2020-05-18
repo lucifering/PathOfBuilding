@@ -6387,6 +6387,7 @@ skills["BreachLightningWhip"] = {
 	},
 	baseMods = {
 		skill("radius", 30) ,
+		skill("showAverage", true),
 	},
 	qualityStats = {
 	},
@@ -6444,8 +6445,10 @@ skills["BreachTeamWarp"] = {
 		area = true,
 	},
 	baseMods = {
+	skill("showAverage", true),
 	},
 	qualityStats = {
+	
 	},
 	stats = {
 		"base_skill_effect_duration",
@@ -6471,6 +6474,7 @@ skills["BreachLightningOrbsCommander"] = {
 		spell = true,
 	},
 	baseMods = {
+	skill("showAverage", true),
 	},
 	qualityStats = {
 	},

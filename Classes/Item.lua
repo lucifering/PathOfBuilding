@@ -133,7 +133,7 @@ if self.rarity == "普通" or self.rarity == "魔法" then
 		if self.rawLines[l] == "Two-Toned Boots" then
 			self.rawLines[l] = "Two-Toned Boots (Armour/Energy Shield)"
 		end
-		local baseName = self.rawLines[l]:gsub("忆境 ","")
+		local baseName = self.rawLines[l]:gsub("忆境 ",""):gsub("漫游之弓","游侠弓")
 		if verData.itemBases[baseName] then
 			self.baseName = baseName			
 			self.title = self.name

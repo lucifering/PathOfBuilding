@@ -579,7 +579,7 @@ function ImportTabClass:ImportItem(itemData, slotName)
 	if #itemData.name > 0 then
 		item.title = itemLib.sanitiseItemText(itemData.name)
 		-- 基底
-		item.baseName = itemLib.sanitiseItemText(itemData.typeLine):gsub("忆境 ","")
+		item.baseName = itemLib.sanitiseItemText(itemData.typeLine):gsub("忆境 ",""):gsub("漫游之弓","游侠弓")
 		item.name = item.title .. ", " .. item.baseName
 		if item.baseName == "Two-Toned Boots" then
 			-- Hack for Two-Toned Boots

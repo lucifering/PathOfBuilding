@@ -140,7 +140,7 @@ return "这个是 '"..self.build.spec.nodes[varData.ifNode].dn.."'."..(varData.t
 			elseif varData.ifOption then
 				control.shown = function()
 					return self.input[varData.ifOption]
-				end
+				end			
 			elseif varData.ifCond or varData.ifMinionCond or varData.ifEnemyCond then
 				control.shown = function()
 					local mainEnv = self.build.calcsTab.mainEnv

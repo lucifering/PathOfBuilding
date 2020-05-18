@@ -44,6 +44,7 @@ function launch:OnInit()
 					self.versionNumber = node.attrib.number
 					self.versionBranch = node.attrib.branch
 					self.versionPlatform = node.attrib.platform
+					SetWindowTitle("Path of Building CN "..self.versionNumber)
 				end
 			end
 		end

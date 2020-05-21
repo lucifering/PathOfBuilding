@@ -908,6 +908,9 @@ mod("CritMultiplier", "BASE", nil, 0, 0, { type = "Condition", var = "Elusive" }
 ["attack_damage_+%"] = {
 	mod("Damage", "INC", nil, ModFlag.Attack),
 },
+["attack_damage_+%_DIY_Buff"] = {
+	mod("Damage", "INC", nil, ModFlag.Attack,0,{ type = "GlobalEffect", effectType = "Buff" }),
+},
 ["elemental_damage_with_attack_skills_+%"] = {
 	mod("ElementalDamage", "INC", nil, 0, KeywordFlag.Attack),
 },

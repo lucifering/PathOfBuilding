@@ -198,6 +198,7 @@ local modNameList = {
 	["敏捷与智慧"] = { "Dex", "Int" }, --备注：dexterity and intelligence
 	["攻击和法术伤害格挡几率上限"] = "BlockChanceMax", 
 	["混沌技能的范围"] = { "AreaOfEffect", keywordFlags = KeywordFlag.Chaos },
+	["战吼技能的范围效果"] = { "AreaOfEffect", keywordFlags = KeywordFlag.Warcry },
 	["格挡法术伤害"] = "SpellBlockChance", --备注：to block spells
 	["攻击及法术伤害格挡几率"] = { "BlockChance", "SpellBlockChance" },
 	["召唤圣物数量上限"] = "ActiveHolyRelicLimit",
@@ -1272,6 +1273,8 @@ local modTagList = {
 	["任何魔力药剂作用时间内，"] = { tag = { type = "Condition", var = "UsingManaFlask" } },
 	["在任何生命药剂作用时间内，"] = { tag = { type = "Condition", var = "UsingLifeFlask" } },
 	["任意生命和魔力药剂持续期间，"] = { tag = { type = "Condition", varList = { "UsingManaFlask", "UsingLifeFlask" } } },
+	["每个召唤的魔像可使"] = { tag = { type = "PerStat", stat = "ActiveGolemLimit" } },
+	["当你有召唤的魔像存在时，"] = { tag = { type = "Condition", varList = { "HavePhysicalGolem", "HaveLightningGolem", "HaveColdGolem", "HaveFireGolem", "HaveChaosGolem", "HaveCarrionGolem" } } },
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -3489,6 +3492,20 @@ local specialModList = {
 	["你受到捷技能影响时，召唤生物的伤害提高 (%d+)%%"] = function(num) return {
 		mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num, 
 		{ type = "ActorCondition", actor = "parent", var = "AffectedByHerald" }) }) } end,
+	["每个召唤的魔像可使它们为你提供的增益效果提高 (%d+)%%"] = function(num) return {
+			mod("BuffEffect", "INC", num,{ type = "SkillType", skillType = SkillType.Golem } , { type = "PerStat", stat = "ActiveGolemLimit" } )
+		} end,
+	["每个召唤的魔像可使它们为你提供的增益效果提高 (%d+)%%"] = function(num) return {
+			mod("BuffEffect", "INC", num,{ type = "SkillType", skillType = SkillType.Golem } , { type = "PerStat", stat = "ActiveGolemLimit" } )
+		} end,	
+	["每个召唤出的魔像可使魔像伤害提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) }, 
+	{ type = "SkillType", skillType = SkillType.Golem }, { type = "PerStat", stat = "ActiveGolemLimit" }) } end,
+	["每个召唤的魔像可使伤害提高 (%d+)%%"] = function(num) return {
+			mod("Damage", "INC", num, { type = "PerStat", stat = "ActiveGolemLimit" } )
+		} end,
+	["当你有召唤的魔像存在时，伤害提高 (%d+)%%"] = function(num) return {
+			mod("Damage", "INC", num,{ type = "Condition", varList = { "HavePhysicalGolem", "HaveLightningGolem", "HaveColdGolem", "HaveFireGolem", "HaveChaosGolem", "HaveCarrionGolem" } }  )
+		} end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

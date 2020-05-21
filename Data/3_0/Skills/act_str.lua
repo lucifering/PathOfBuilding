@@ -581,6 +581,10 @@ description = "以极快速度消耗怒火，产生一个强力增益效果，�
 	},
 	qualityStats = {
 		{ "attack_damage_+%", 1 },
+		{ "attack_damage_+%_DIY_Buff", 1 },
+		
+		
+		 
 	},
 	stats = {
 		"berserk_minimum_rage",

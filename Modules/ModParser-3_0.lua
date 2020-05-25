@@ -752,6 +752,7 @@ local modFlagList = {
 	["锤, 短杖或长杖攻击时，"] = { flags = ModFlag.Hit, tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Mace, ModFlag.Staff) } },
 	["爪或匕首攻击时，"] = { flags = ModFlag.Hit, tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Claw, ModFlag.Dagger) } },
 	["吟唱技能的"] = { tag = { type = "SkillType", skillType = SkillType.Channelled } },
+	["弓技能的"] = { keywordFlags = KeywordFlag.Bow },
 	--【中文化程序额外添加结束】
 	["斧类攻击的"] = { flags = bor(ModFlag.Axe, ModFlag.Hit) }, --备注：with axes
 	["to axe attacks"] = { flags = bor(ModFlag.Axe, ModFlag.Hit) },
@@ -1275,6 +1276,7 @@ local modTagList = {
 	["任意生命和魔力药剂持续期间，"] = { tag = { type = "Condition", varList = { "UsingManaFlask", "UsingLifeFlask" } } },
 	["每个召唤的魔像可使"] = { tag = { type = "PerStat", stat = "ActiveGolemLimit" } },
 	["当你有召唤的魔像存在时，"] = { tag = { type = "Condition", varList = { "HavePhysicalGolem", "HaveLightningGolem", "HaveColdGolem", "HaveFireGolem", "HaveChaosGolem", "HaveCarrionGolem" } } },
+	["总属性每有 (%d+) 点，"] = function(num) return { tag = { type = "PerStat", statList = { "Str", "Dex", "Int" }, div = num } } end,
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -1973,6 +1975,7 @@ local specialModList = {
 	["总魔力保留额外提高 (%d+)%%"]= function(num) return {  mod("ManaReserved", "MORE", num)  } end, 
 	["技能的总魔力保留额外降低 (%d+)%%"]= function(num) return {  mod("ManaReserved", "MORE", -num)  } end, 
 	["【(.+)】的总魔力保留额外降低 (%d+)%%"]= function(_, skill_name, num) return {  mod("ManaReserved", "MORE", -num,{ type = "SkillName", skillName =  FuckSkillActivityCnName(skill_name)})  } end, 
+	["此物品上的技能石魔力消耗倍率为原来的 (%d+)%%"] = function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("SupportManaMultiplier", "MORE", num - 100) }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	["总流血伤害额外降低 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", -num,nil,nil, KeywordFlag.Bleed)  } end, 
 	["对投射物攻击的总闪避率额外提高 (%d+)%%"]= function(num) return {  mod("ProjectileEvadeChance", "MORE", num)  } end, 
 	["对近战攻击的总闪避率额外降低 (%d+)%%"]= function(num) return {  mod("MeleeEvadeChance", "MORE", -num)  } end, 
@@ -2865,6 +2868,7 @@ local specialModList = {
 	 ["被击中时，受到的冰霜总伤害额外降低 (%d+)%%"] = function(num) return { mod("ColdDamageTaken", "MORE", -num) } end,
 	 ["被击中时，受到的火焰总伤害额外降低 (%d+)%%"] = function(num) return { mod("FireDamageTaken", "MORE", -num) } end,
 	 ["静止时受到的元素伤害降低 (%d+)%%"] = function(num) return { mod("ElementalDamageTaken", "INC", -num, { type = "Condition", var = "Stationary" }) } end,
+	["静止时，每秒回复 ([%d%.]+)%% 能量护盾"] = function(num) return { mod("EnergyShieldRegenPercent", "BASE", num, { type = "Condition", var = "Stationary" }) } end,
 	 ["左戒指栏位：法术的投射物无法弹射"] = { flag("CannotChain", nil, bor(ModFlag.Spell, ModFlag.Projectile), { type = "SlotNumber", num = 1 }) },
 	["右戒指栏位：法术的投射物会额外弹射 1 次"] = { mod("ChainCountMax", "BASE", 1, nil, bor(ModFlag.Spell, ModFlag.Projectile), { type = "SlotNumber", num = 2 }) },
 		["法术的投射物无法穿透"] = { flag("CannotPierce", nil, ModFlag.Spell) },

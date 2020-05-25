@@ -155,7 +155,7 @@ function CalcBreakdownClass:AddBreakdownSection(sectionData)
 			colList = { 
 { label = "【技能】", key = "skillName" },
 { label = "【基础】", key = "base" },
-{ label = "【每个】", key = "mult" },
+{ label = "【百分比加成】", key = "mult" },
 { label = "【额外 提高/降低】", key = "more" },
 { label = "【提高/降低】", key = "inc" },
 { label = "【保留】", key = "total" },

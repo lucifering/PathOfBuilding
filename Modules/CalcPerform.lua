@@ -286,6 +286,14 @@ modDB:NewMod("EnergyShield", "INC", round(output.Int / 5), "智慧")
 		
 	end
 
+end
+-- Calculate life/mana reservation
+---@param actor table
+local function doActorLifeManaReservation(actor)
+	local modDB = actor.modDB
+	local output = actor.output
+	local condList = modDB.conditions
+
 	-- Life/mana reservation
 	for _, pool in pairs({"Life", "Mana"}) do
 		local max = output[pool]
@@ -474,11 +482,12 @@ end
 -- 2. Initialises minion skills
 -- 3. Initialises the main skill's minion, if present
 -- 4. Merges flask effects
--- 5. Calculates reservations
--- 6. Sets conditions and calculates attributes and life/mana pools (doActorAttribsPoolsConditions)
--- 7. Processes buffs and debuffs
--- 8. Processes charges and misc buffs (doActorMisc)
--- 9. Calculates defence and offence stats (calcs.defence, calcs.offence)
+-- 5. Sets conditions and calculates attributes and life/mana pools (doActorAttribsPoolsConditions)
+-- 6. Calculates reservations
+-- 7. Sets life/mana reservation (doActorLifeManaReservation)
+-- 8. Processes buffs and debuffs
+-- 9. Processes charges and misc buffs (doActorMisc)
+-- 10. Calculates defence and offence stats (calcs.defence, calcs.offence)
 function calcs.perform(env)
 	local modDB = env.modDB
 	local enemyDB = env.enemyDB
@@ -674,6 +683,19 @@ function calcs.perform(env)
 	-- Merge keystones again to catch any that were added by flasks
 	mergeKeystones(env)
 	--mergeNotable(env)
+	-- Calculate attributes and life/mana pools
+	doActorAttribsPoolsConditions(env, env.player)
+	if env.minion then
+		for _, value in ipairs(env.player.mainSkill.skillModList:List(env.player.mainSkill.skillCfg, "MinionModifier")) do
+			if not value.type or env.minion.type == value.type then
+				env.minion.modDB:AddMod(value.mod)
+			end
+		end
+		for _, name in ipairs(env.minion.modDB:List(nil, "Keystone")) do
+			env.minion.modDB:AddList(env.spec.tree.keystoneMap[name].modList)
+		end
+		doActorAttribsPoolsConditions(env, env.minion)
+	end
 	-- Calculate skill life and mana reservations
 	env.player.reserved_LifeBase = 0
 	env.player.reserved_LifePercent = modDB:Sum("BASE", nil, "ExtraLifeReserved") 
@@ -722,18 +744,10 @@ function calcs.perform(env)
 		end
 	end
 	
-	-- Calculate attributes and life/mana pools
-	doActorAttribsPoolsConditions(env, env.player)
+	-- Set the life/mana reservations
+	doActorLifeManaReservation(env.player)
 	if env.minion then
-		for _, value in ipairs(env.player.mainSkill.skillModList:List(env.player.mainSkill.skillCfg, "MinionModifier")) do
-			if not value.type or env.minion.type == value.type then
-				env.minion.modDB:AddMod(value.mod)
-			end
-		end
-		for _, name in ipairs(env.minion.modDB:List(nil, "Keystone")) do
-			env.minion.modDB:AddList(env.spec.tree.keystoneMap[name].modList)
-		end
-		doActorAttribsPoolsConditions(env, env.minion)
+		doActorLifeManaReservation(env.minion)
 	end
 
 	-- Process attribute requirements

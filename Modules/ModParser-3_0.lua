@@ -1907,6 +1907,8 @@ local specialModList = {
 	["召唤生物有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("DoubleDamageChance", "BASE", num) })  } end,
 	["召唤生物获得等同 ([%d%.]+)%% 最大生命的额外能量护盾"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("LifeGainAsEnergyShield", "BASE", num) })  } end,
 	["召唤生物获得额外混沌伤害，其数值等同于元素伤害的 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("ElementalDamageGainAsChaos", "BASE", num) })  } end,
+	["召唤生物获得物理伤害 (%d+)%% 的额外火焰伤害"] = function(num) return { mod("MinionModifier", "LIST", 
+	{ mod = mod("PhysicalDamageGainAsFire", "BASE", num) })  } end,
 	["召唤生物总生命额外提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "MORE", num) })  } end,
 	["召唤生物每秒回复 ([%d%.]+) 生命"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("LifeRegen", "BASE", num) })  } end,
 	["召唤生物获得 ([%d%.]+)%% 生命偷取"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("DamageLifeLeech", "BASE", num) })  } end,
@@ -2178,6 +2180,7 @@ local specialModList = {
 	["药剂持续期间，能量护盾延后 (%d+)%% 开始回复"]= function(num) return {  mod("EnergyShieldRechargeFaster", "INC", num,  { type = "Condition", var = "UsingFlask" }  )  } end,
 	["装备和技能石的属性需求提高 (%d+)%%"] = function(num) return { mod("GlobalAttributeRequirements", "INC", num) } end,
 	["攻击和法术总暴击率额外降低 (%d+)%%"] = function(num) return { mod("CritChance", "MORE", -num) } end,
+	["用该武器击中时，触发 (%d+) 级的【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end, 
 	["获得 (%d+) 级的主动技能【(.+)】，且可被此道具上的技能石辅助"] = function(num, _, skill) return extraSkill(skill, num) end, --备注：grants level (%d+) (.+)
 	["获得 (%d+) 级【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end,
 	["造成的异常状态持续时间缩短 (%d+)%%"] = function(num) return { mod("EnemyShockDuration", "INC", -num),mod("EnemyFreezeDuration", "INC", -num),mod("EnemyChillDuration", "INC", -num),mod("EnemyIgniteDuration", "INC", -num),mod("EnemyBleedDuration", "INC", -num),mod("EnemyPoisonDuration", "INC", -num)} end,
@@ -3509,7 +3512,26 @@ local specialModList = {
 		} end,
 	["当你有召唤的魔像存在时，伤害提高 (%d+)%%"] = function(num) return {
 			mod("Damage", "INC", num,{ type = "Condition", varList = { "HavePhysicalGolem", "HaveLightningGolem", "HaveColdGolem", "HaveFireGolem", "HaveChaosGolem", "HaveCarrionGolem" } }  )
+		} end,	
+	["击中时有 (%d+)%% 机率造成凋零，持续 (%d+) 秒"] = function(num) return {
+			flag("Condition:CanWither"),
+			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanWither" }) 
 		} end,
+	 ["你对敌人造成的每个凋零使其承受的击中元素伤害提高 (%d+)%%"] = function(num) return {
+	 mod("ExtraSkillMod", "LIST", { 
+	 mod = mod("ElementalDamageTaken", "INC", tonumber(num), 
+	 { type = "GlobalEffect", effectType = "Debuff", effectName = "死亡凋零", effectStackVar = "WitheredStackCount" }) }) } end,
+	["你的击中无法穿透或忽视元素抗性"] = { flag("CannotIgnoreElementalResistances"),flag("CannotElementalPenetration")},
+	["无法造成非闪电伤害"] = {  flag("DealNoCold"), flag("DealNoFire"), flag("DealNoPhysical"), flag("DealNoChaos")},
+	["周围敌人的闪电抗性等同于你的闪电抗性"] = {
+	--
+	flag("LightningResistIsEnemy")
+	--mod("EnemyModifier", "LIST", { mod = mod("LightningResist", "OVERRIDE", num) }),
+	},
+	["用该武器击中时，获得额外冰霜或闪电伤害，其数值等同于物理伤害的 (%d+)%%"]= function(num) return { 
+	  mod("PhysicalDamageGainAsCold", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementCold" }),
+	  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementLightning" }), 
+	 } end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

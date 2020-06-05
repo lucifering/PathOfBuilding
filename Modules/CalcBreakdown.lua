@@ -140,18 +140,27 @@ s_format("x %.2f ^8(面积加成开平方根)", m_sqrt(areaMod)),
 	end
 end
 
-function breakdown.effMult(damageType, resist, pen, taken, mult,takenMore)
+function breakdown.effMult(damageType, resist, pen, taken, mult,takenMore,spString)
 	local out = { }
 local resistForm = (damageType == "物理") and "物理伤害减伤" or "抗性"
-	if resist ~= 0 then
-t_insert(out, s_format("敌人 %s: %d%%", resistForm, resist))
-	end
-	if pen ~= 0 then
-t_insert(out, "有效抗性:")
-t_insert(out, s_format("%d%% ^8(抗性)", resist))
-t_insert(out, s_format("- %d%% ^8(穿透)", pen))
-		t_insert(out, s_format("= %d%%", resist - pen))
+	
+	if spString then 
+		t_insert(out, spString)
 	end 
+	if resist ~= 0 then
+		t_insert(out, s_format("敌人 %s: %d%%", resistForm, resist))
+	end	
+	if pen ~= 0 then
+		t_insert(out, "有效抗性:")
+		t_insert(out, s_format("%d%% ^8(抗性)", resist))
+		t_insert(out, s_format("- %d%% ^8(穿透)", pen))
+		t_insert(out, s_format("= %d%%", resist - pen))
+	else 
+		if damageType ~= "物理" and  isIgnorePen then 
+			t_insert(out, s_format("无视抗性穿透"))
+		end 
+	end 
+	
 	
 	breakdown.multiChain(out, {
 		label = "有效 DPS 加成:",
@@ -160,6 +169,7 @@ t_insert(out, s_format("- %d%% ^8(穿透)", pen))
 		{ "%.2f ^8(额外提高/降低承受的总伤害)", takenMore },
 		total = s_format("= %.3f", mult),
 	})
+	
 	return out
 end
 

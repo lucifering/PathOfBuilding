@@ -25,6 +25,9 @@ local tempTable2 = { }
 local tempTable3 = { }
 
 local isElemental = { Fire = true, Cold = true, Lightning = true }
+local cnElemental = { Fire = "火焰", Cold = "冰霜", Lightning = "闪电" }
+
+
 local isChaos = { Chaos = true }
 -- List of all damage types, ordered according to the conversion sequence
 local dmgTypeList = {"Physical", "Lightning", "Cold", "Fire", "Chaos"}
@@ -1278,6 +1281,9 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 						local pen = 0
 						local takenInc = enemyDB:Sum("INC", cfg, "DamageTaken", damageType.."DamageTaken")
 						local takenMore = enemyDB:More(cfg, "DamageTaken", damageType.."DamageTaken")
+						local isIgnoreResist = false
+						local isIgnorePen = false
+						local isResistIsEnemy = false
 						
 						if damageType == "Physical" then
 							--resist = m_max(0, enemyDB:Sum("BASE", nil, "PhysicalDamageReduction") + skillModList:Sum("BASE", cfg, "EnemyPhysicalDamageReduction"))
@@ -1297,11 +1303,24 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 							resist = enemyDB:Sum("BASE", nil, damageType.."Resist")
 							if isElemental[damageType] then
 								resist = resist + enemyDB:Sum("BASE", nil, "ElementalResist")
-								pen = skillModList:Sum("BASE", cfg, damageType.."Penetration", "ElementalPenetration")
+								
+								if  skillModList:Flag(cfg,"CannotElementalPenetration") or skillModList:Flag(cfg,"Cannot"..damageType.."Penetration")  then
+									pen = 0
+									isIgnorePen = true
+								else
+									pen = skillModList:Sum("BASE", cfg, damageType.."Penetration", "ElementalPenetration")
+								end						
+								
 								takenInc = takenInc + enemyDB:Sum("INC", nil, "ElementalDamageTaken")
+								
+								if skillModList:Flag(cfg,damageType.."ResistIsEnemy") and output[damageType.."ResistTotal"] then 									
+									resist = output[damageType.."ResistTotal"]
+									isResistIsEnemy = true
+								end
 							elseif damageType == "Chaos" then
 								pen = skillModList:Sum("BASE", cfg, "ChaosPenetration")
 							end
+							
 							resist = m_min(resist, 75)
 						end
 						if skillFlags.projectile then
@@ -1319,8 +1338,21 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 						
 						]]--
 						 
-						if not skillModList:Flag(cfg, "Ignore"..damageType.."Resistance", isElemental[damageType] and "IgnoreElementalResistances" or nil) and not enemyDB:Flag(nil, "SelfIgnore"..damageType.."Resistance") then
+						if 
+						 (skillModList:Flag(cfg,
+						 "CannotIgnoreElementalResistances")
+						or  
+						not skillModList:Flag(cfg, 
+						"Ignore"..damageType.."Resistance", 
+						isElemental[damageType] 
+						and "IgnoreElementalResistances" or nil)
+						)
+						and not enemyDB:Flag(nil, "SelfIgnore"..damageType.."Resistance")
+						then
+						--来计算抗性
 							effMult = effMult * (1 - (resist - pen) / 100)
+						else 
+							isIgnoreResist = true
 						end
 						if  isChaos[damageType] and (skillModList:Flag(cfg, "IgnoreChaosResistances") or enemyDB:Flag(nil, "SelfIgnoreChaosResistance"))   then
 							effMult = effMultChaos
@@ -1332,9 +1364,23 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 							output[damageType.."EffMult"] = effMult
 						end
 						
-						if pass == 2 and breakdown and effMult ~= 1 then
+						if pass == 2 and breakdown  then
 t_insert(breakdown[damageType], s_format("x %.3f ^8(有效 DPS 加成)", effMult))
-							breakdown[damageType.."EffMult"] = breakdown.effMult(damageType, resist, pen, takenInc, effMult, takenMore)
+							local spString = nil
+							if isElemental[damageType] then 
+								spString = ""
+								if isIgnoreResist then 
+									spString = spString.."【无视抗性】"
+								end 
+								if isIgnorePen then 
+									spString =spString.."【无视抗性穿透】"
+								end 
+								if isResistIsEnemy then 
+									spString =spString.."【周围敌人的"..cnElemental[damageType].."抗性等同于你的"..cnElemental[damageType].."抗性】"								
+								end 
+							 
+							end 
+							breakdown[damageType.."EffMult"] = breakdown.effMult(damageType, resist, pen, takenInc, effMult, takenMore, spString)
 						end
 					end
 					if pass == 2 and breakdown then

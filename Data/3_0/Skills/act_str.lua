@@ -823,6 +823,16 @@ description = "远程使用时，会投掷一条锁链，将你拉近被击中�
 	},
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
+	parts = {
+		{
+name = "攻击",
+			area = false,
+		},
+		{
+name = "震波",			
+			area = true,
+		},
+	},
 	statMap = {
 		["chain_strike_gain_x_rage_if_attack_hits"] = {
 			flag("Condition:CanGainRage"),
@@ -834,6 +844,7 @@ description = "远程使用时，会投掷一条锁链，将你拉近被击中�
 		melee = true,
 	},
 	baseMods = {
+	skill("radius", 12),
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 0.5 },

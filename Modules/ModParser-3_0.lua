@@ -3532,6 +3532,13 @@ local specialModList = {
 	  mod("PhysicalDamageGainAsCold", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementCold" }),
 	  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementLightning" }), 
 	 } end, 
+	["击中流血敌人时触发 (%d+) 级的【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end, --备注：triggers? level (%d+) (.+) when you kill a bleeding enemy
+		["当召唤生物有能量护盾时，它们的击中无视怪物的元素抗性"] = function() return { 
+		mod("MinionModifier", "LIST", { mod = flag("IgnoreElementalResistances",{ type = "StatThreshold", stat = "EnergyShield", threshold = 1 } ) })  } end,
+		["召唤生物每有 (%d+)%% 混沌抗性，转换 (%d+)%% 最大生命为最大能量护盾"] = function(_,num1,num2) return 
+		{ mod("MinionModifier", "LIST", { mod =  mod("LifeConvertToEnergyShield", "BASE", tonumber(num2)
+		,{ type = "PerStat", stat = "ChaosResist", div = tonumber(num1) }
+		)  })  } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded
@@ -4648,6 +4655,13 @@ local jewelThresholdFuncs = {
 	["范围内智慧和敏捷总计 40 点时，【元素打击】和【狂野打击】的总火焰伤害额外降低 50%"] =getThreshold({"Dex","Str"}, "FireDamage", "MORE", -50, { type = "SkillName", skillNameList = { "元素打击", "野性打击" }}),
 	["范围内力量和智慧总计 40 点时，【元素打击】和【狂野打击】的总冰霜伤害额外降低 50%"] =getThreshold({"Dex","Str"}, "ColdDamage", "MORE", -50, { type = "SkillName", skillNameList = { "元素打击", "野性打击" }}),
 	["若范围内含有 40 点智慧，造成的枯萎效果持续 2 秒"] = getThreshold({"Int"}, "Dummy", "DUMMY", 1, { type = "Condition", var = "CanWither" }, { type = "SkillName", skillName = "枯萎" } , flag("Condition:CanWither")),
+	
+	
+	["若范围内含有 40 点力量，【熔岩之击】的投射物 +1 次连锁"] =
+ getThreshold("Str", "ChainCountMax", "BASE", 1, { type = "SkillName", skillName = "熔岩之击" }),
+["若范围内含有 40 点力量，【熔岩之击】的发射的总投射物额外减少 50%"] =
+ getThreshold("Str", "ProjectileCount", "MORE", -50, { type = "SkillName", skillName = "熔岩之击" }),
+
 	
 	
 }

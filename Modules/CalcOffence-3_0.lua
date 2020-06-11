@@ -1010,7 +1010,7 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 			end 
 		end
 		if skillData.hitTimeOverride then
-		print("skillData.hitTimeOverride="..skillData.hitTimeOverride)
+		
 			output.HitTime = skillData.hitTimeOverride
 			output.HitSpeed = 1 / output.HitTime
 		end

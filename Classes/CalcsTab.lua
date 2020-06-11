@@ -290,7 +290,7 @@ control = new("ButtonControl", nil, 0, 0, 100, 16, "灵体管理...", function()
 					  
 						if grantedEffect and  tooltip:CheckForUpdate(grantedEffect.id, self.build.outputRevision)  then 
 						
-						print_r(grantedEffect.skillTypes)
+						
 						 tooltip.center = true
 						 tooltip.color = colorCodes.GEM
 						

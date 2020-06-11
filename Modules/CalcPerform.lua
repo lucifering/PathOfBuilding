@@ -240,8 +240,16 @@ modDB:NewMod("EnergyShield", "INC", round(output.Int / 5), "智慧")
 		local base = modDB:Sum("BASE", nil, "Life")
 		local inc = modDB:Sum("INC", nil, "Life")
 		local more = modDB:More(nil, "Life")
+	 
 		local conv = modDB:Sum("BASE", nil, "LifeConvertToEnergyShield")
+		if conv > 100 then 
+			conv = 100
+		end 
+		if conv < 0 then 
+			conv = 0
+		end 
 		output.Life = round(base * (1 + inc/100) * more * (1 - conv/100))
+		
 		if breakdown then
 			if inc ~= 0 or more ~= 1 or conv ~= 0 then
 				breakdown.Life = { }
@@ -684,16 +692,20 @@ function calcs.perform(env)
 	mergeKeystones(env)
 	--mergeNotable(env)
 	-- Calculate attributes and life/mana pools
+	
 	doActorAttribsPoolsConditions(env, env.player)
 	if env.minion then
+	
 		for _, value in ipairs(env.player.mainSkill.skillModList:List(env.player.mainSkill.skillCfg, "MinionModifier")) do
 			if not value.type or env.minion.type == value.type then
+			
 				env.minion.modDB:AddMod(value.mod)
 			end
 		end
 		for _, name in ipairs(env.minion.modDB:List(nil, "Keystone")) do
 			env.minion.modDB:AddList(env.spec.tree.keystoneMap[name].modList)
 		end
+		
 		doActorAttribsPoolsConditions(env, env.minion)
 	end
 	-- Calculate skill life and mana reservations
@@ -1227,6 +1239,9 @@ function calcs.perform(env)
 	if env.minion then
 		calcs.defence(env, env.minion)
 		calcs.offence(env, env.minion, env.minion.mainSkill)
+		--重新计算抗性
+		doActorAttribsPoolsConditions(env, env.minion)
 	end
+	
 	
 end

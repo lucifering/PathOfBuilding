@@ -127,10 +127,13 @@ modList:NewMod("Multiplier:BannerStage", "BASE", m_min(val, 50), "Config", { typ
 		modList:NewMod("Condition:BladestormInSandstorm", "FLAG", true, "Config", { type = "SkillName", skillName = "剑刃风暴" })
 	end },
 { label = "姿态技能:", ifSkillList = { "血与沙", "血肉与岩石", "破空斩", "剑刃风暴", "凿击" } },
-	{ var = "conditionSandStance", type = "list", label = "姿态:", ifSkillList = { "血与沙", "血肉与岩石", "破空斩", "剑刃风暴", "凿击" }, list = {{val="BLOOD",label="血姿态"},{val="SAND",label="沙姿态"}}, apply = function(val, modList, enemyModList)
+	{ var = "conditionSandStance", type = "list", label = "姿态:", ifSkillList = { "血与沙", "血肉与岩石", "破空斩", "剑刃风暴", "凿击" }, 
+	list = {{val="BLOOD",label="血姿态"},{val="SAND",label="沙姿态"}}, apply = function(val, modList, enemyModList)
 		if val == "SAND" then
 			modList:NewMod("Condition:SandStance", "FLAG", true, "Config")
-		end
+		elseif  val == "BLOOD" then
+			modList:NewMod("Condition:BloodStance", "FLAG", true, "Config")
+		end	
 	end },
 	
 { label = "烙印技能:", ifSkillList = { "末日烙印", "风暴烙印" } }, -- I barely resisted the temptation to label this "Generic Brand:"

@@ -1277,6 +1277,8 @@ local modTagList = {
 	["每个召唤的魔像可使"] = { tag = { type = "PerStat", stat = "ActiveGolemLimit" } },
 	["当你有召唤的魔像存在时，"] = { tag = { type = "Condition", varList = { "HavePhysicalGolem", "HaveLightningGolem", "HaveColdGolem", "HaveFireGolem", "HaveChaosGolem", "HaveCarrionGolem" } } },
 	["总属性每有 (%d+) 点，"] = function(num) return { tag = { type = "PerStat", statList = { "Str", "Dex", "Int" }, div = num } } end,
+	["处于【血姿态】时，"] = { tag = { type = "Condition", var = "BloodStance" } },	
+	["处于【沙姿态】时，"] = { tag = { type = "Condition", var = "SandStance" } },	
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -3234,6 +3236,9 @@ local specialModList = {
 	["光环效果对友军没有作用"] = { flag("SelfAurasCannotAffectAllies") },
 	["无法获得友军光环效果"] = { flag("AlliesAurasCannotAffectSelf") },
 	["光环技能不能影响友军"] = { flag("SelfAurasCannotAffectAllies") },
+	["总生命回复速度额外降低 (%d+)%%"]= function(num) return { 
+	 mod("LifeRecoveryRate", "MORE", -num)
+	 } end,  
 	["生命回复额外降低 (%d+)%%"]= function(num) return { 
 	 mod("LifeRecoveryRate", "MORE", -num)
 	 } end,  
@@ -3255,6 +3260,8 @@ local specialModList = {
 	["生命偷取的每秒恢复效果每 (%d+)%% 使受到的总伤害额外降低 (%d+)%%"] = function(_,num1,num2) return {  
 	mod("DamageTaken", "MORE", -tonumber(num2),{ type = "PerStat", stat = "MaxLifeLeechRatePercentage", div = tonumber(num1) },{ type = "Condition", var = "LeechingLife" } )  
 	} end, 
+	["从生命偷取中获得的每秒最大总恢复量额外降低 ([%d%.]+)%%"]= function(num) return {  
+	mod("MaxLifeLeechRate", "MORE", -num)  } end, 
 	["冰霜闪现的冷却回复速度提高 (%d+)%%"] = function(num) return {  
 				mod("CooldownRecovery", "INC", num, { type = "SkillName", skillName = "冰霜闪现" })			 
 			} end,
@@ -3541,6 +3548,9 @@ local specialModList = {
 		{ mod("MinionModifier", "LIST", { mod =  mod("LifeConvertToEnergyShield", "BASE", tonumber(num2)
 		,{ type = "PerStat", stat = "ChaosResist", div = tonumber(num1) }
 		)  })  } end,
+	["每受到一个捷技能影响，你身上的光环技能的效果提高 (%d+)%%，最多提高 (%d+)%%"] =function(_,num1,num2) return {  
+	mod("AuraEffectOnSelf", "INC", tonumber(num1),nil,nil,KeywordFlag.Aura,{ type = "Multiplier", var = "AffectedByHeraldCount" ,
+	 limit = tonumber(num2), limitTotal = true}  )  } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

@@ -9025,8 +9025,8 @@ return {
 			["name"]= "战争使者",
 			["icon"]= "Art/2DArt/SkillIcons/passives/Berserker/WarBringer.png",
 			["stats"]= {
-				"Warcries grant 5 Rage per 5 Power if you have less than 25 Rage",
-				"Warcries Sacrifice 25 Rage if you have at least 25 Rage\nExerted Attacks deal 50% more Damage if a Warcry Sacrificed Rage Recently\n"
+				"若你的怒火少于 25 点，则战吼每 5 【威力值】即可获得 5 点怒火",
+				"若你的怒火至少有 25 点，则战吼献祭 25 点怒火\n若近期战吼有献祭怒火，被战吼增助的攻击总伤害额外提高 50%\n"
 			},
 			["reminderText"]= {
 				"(怒火的固定效果为:",
@@ -9318,7 +9318,7 @@ return {
 			["name"]= "森林之力.塔赫亚",
 			["icon"]= "Art/2DArt/SkillIcons/passives/Chieftain/TawhoaForestsStrength.png",
 			["stats"]= {
-				"Trigger Level 20 Tawhoa's Chosen when you Attack with a Slam Skill near an Enemy"
+				"当你使用猛击技能攻击敌人时触发等级 20 的【塔赫亚神选】"
 			},
 			["group"]= 3,
 			["orbit"]= 4,
@@ -9355,7 +9355,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/Chieftain/ValakoStormsEmbrace.png",
 			["stats"]= {
 				"每个耐力球便使每秒回复 0.5% 生命",
-				"15% more Damage if you've lost an Endurance Charge in the past 8 seconds",
+				"若过去 8 秒你有失去过耐力球，则总伤害额外提高 15%",
 				"+1 耐力球数量上限"
 			},
 			["group"]= 3,
@@ -9875,7 +9875,7 @@ return {
 			["stats"]= {
 				"被击中时有 30% 几率获得耐力球",
 				"获得耐力球时有 25% 几率转而以提升你的耐力球上限",
-				"Gain 1 Endurance Charge every second if you've been Hit Recently",
+				"若近期你有被击中，则每秒获得 1 个耐力球",
 				"+1 耐力球数量上限"
 			},
 			["reminderText"]= {
@@ -10139,7 +10139,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/Hierophant/ManaRegen.png",
 			["stats"]= {
 				"魔力回复速度提高 20%",
-				"14% increased Brand Damage"
+				"烙印的伤害提高 14%"
 			},
 			["reminderText"]= {
 				"(Brand Damage is any Damage dealt by Brand Skills or by Skills Triggered by a Brand)"
@@ -10814,7 +10814,7 @@ return {
 				"免疫冰缓",
 				"免疫晕眩",
 				"每个耐力球可使伤害提高 5%",
-				"Gain 1 Endurance Charge every second if you've been Hit Recently"
+				"若近期你有被击中，则每秒获得 1 个耐力球"
 			},
 			["reminderText"]= {
 				"(近期意味着：过去 4 秒)",
@@ -13486,7 +13486,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/totemandbranddamage.png",
 			["stats"]= {
 				"图腾伤害提高 14%",
-				"14% increased Brand Damage"
+				"烙印的伤害提高 14%"
 			},
 			["reminderText"]= {
 				"(Brand Damage is any Damage dealt by Brand Skills or by Skills Triggered by a Brand)"
@@ -14795,7 +14795,7 @@ return {
 			["name"]= "Exerted Attack Damage",
 			["icon"]= "Art/2DArt/SkillIcons/passives/EmpoweredAttackWarcryNode1.png",
 			["stats"]= {
-				"Exerted Attacks deal 20% increased Damage"
+				"战吼增助的攻击伤害提高 20%"
 			},
 			["group"]= 80,
 			["orbit"]= 2,
@@ -14830,7 +14830,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/SpeedWarcryNode1.png",
 			["stats"]= {
 				"战吼施法速度提高 15%",
-				"Exerted Attacks deal 15% increased Damage"
+				"战吼增助的攻击伤害提高 15%"
 			},
 			["group"]= 80,
 			["orbit"]= 2,
@@ -14848,7 +14848,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/SpeedWarcryNode1.png",
 			["stats"]= {
 				"战吼施法速度提高 15%",
-				"Exerted Attacks deal 15% increased Damage"
+				"战吼增助的攻击伤害提高 15%"
 			},
 			["group"]= 80,
 			["orbit"]= 2,
@@ -14867,7 +14867,7 @@ return {
 			["stats"]= {
 				"战吼施法速度提高 15%",
 				"战吼冷却回复速度提高 15%",
-				"20% increased Damage for each time you've Warcried Recently"
+				"近期每次使用战吼可使伤害提高 20%"
 			},
 			["reminderText"]= {
 				"(近期意味着：过去 4 秒)"
@@ -15338,7 +15338,7 @@ return {
 			["name"]= "Impale Effect with Two Handed Weapons",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ImapleNode.png",
 			["stats"]= {
-				"10% increased Effect of Impales you inflict with Two Handed Weapons"
+				"双手武器对敌人的穿刺效果提高 10%"
 			},
 			["reminderText"]= {
 				"(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
@@ -15889,8 +15889,8 @@ return {
 			["name"]= "Natural Authority",
 			["icon"]= "Art/2DArt/SkillIcons/passives/NaturalAuthorityNotable.png",
 			["stats"]= {
-				"Enemies Taunted by your Warcries take 5% increased Damage",
-				"Warcries Debilitate Enemies for 1 second",
+				"被你战吼嘲讽的敌人，承受的伤害提高 5%",
+				"战吼可使敌人虚弱 1 秒",
 				"战吼的增益效果提高 15%"
 			},
 			["reminderText"]= {
@@ -16195,7 +16195,7 @@ return {
 			["name"]= "Call to Arms",
 			["icon"]= "Art/2DArt/SkillIcons/passives/CallToArms.png",
 			["stats"]= {
-				"战吼立即施放\nWarcries share their Cooldown\n"
+				"战吼立即施放\n所有战吼技能共享冷却时间\n"
 			},
 			["flavourText"]= {
 				"Follow me, and I will show you strength!"
@@ -17500,7 +17500,7 @@ return {
 			["name"]= "Glancing Blows",
 			["icon"]= "Art/2DArt/SkillIcons/passives/GlancingBlows.png",
 			["stats"]= {
-				"Chance to Block Attack Damage is doubled\nChance to Block Spell Damage is doubled\nYou take 50% of Damage from Blocked Hits\n"
+				"攻击格挡率翻倍\n法术格挡率翻倍\n被格挡的击中对你造成 50% 伤害\n"
 			},
 			["flavourText"]= {
 				"Utter trust in your defence unleashes ultimate potential."
@@ -17627,7 +17627,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/MeleeSplashNode.png",
 			["stats"]= {
 				"近战伤害提高 10%",
-				"15% increased Melee Splash Area of Effect"
+				"近战溅射范围扩大 15%"
 			},
 			["group"]= 131,
 			["orbit"]= 2,
@@ -17645,7 +17645,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/MeleeSplashNode.png",
 			["stats"]= {
 				"近战伤害提高 10%",
-				"15% increased Melee Splash Area of Effect"
+				"近战溅射范围扩大 15%"
 			},
 			["group"]= 131,
 			["orbit"]= 2,
@@ -18795,7 +18795,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/DeepBreathsNotable.png",
 			["stats"]= {
 				"战吼冷却回复速度提高 30%",
-				"20% increased total Power counted by Warcries",
+				"计算战吼时的【威力值】提高 20%",
 				"战吼技能的范围效果扩大 30%"
 			},
 			["group"]= 149,
@@ -20593,7 +20593,7 @@ return {
 			["name"]= "Imbalanced Guard",
 			["icon"]= "Art/2DArt/SkillIcons/passives/SacredBastionKeystone.png",
 			["stats"]= {
-				"100% 几率以双倍护甲进行防卫\nMaximum Damage Reduction for any Damage Type is 50%\n"
+				"100% 几率以双倍护甲进行防卫\n承受伤害减免的最大上限为 50%\n"
 			},
 			["reminderText"]= {
 				"(Armour is treated as double value, only for calculating damage mitigation)"
@@ -21063,7 +21063,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/BannersNotable.png",
 			["stats"]= {
 				"你应用到敌人身上的非诅咒光环效果提高 15%",
-				"Placed Banners also grant 30% increased Attack Damage to you and Allies"
+				"放置的旗帜可使你和周围友军的攻击伤害提高 30%"
 			},
 			["group"]= 186,
 			["orbit"]= 2,
@@ -23890,8 +23890,8 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/ManaGuardNotable.png",
 			["stats"]= {
 				"最大魔力提高 20%",
-				"Guard Skills have 25% increased Duration",
-				"Recover 20% of Mana over 1 second when you use a Guard Skill"
+				"防卫技能的持续时间延长 25%",
+				"使用防卫技能时=后，可在 1 秒内回复 20% 最大魔力"
 			},
 			["group"]= 236,
 			["orbit"]= 1,
@@ -23915,7 +23915,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/mana.png",
 			["stats"]= {
 				"最大魔力提高 8%",
-				"Guard Skills have 15% increased Duration"
+				"防卫技能的持续时间延长 15%"
 			},
 			["group"]= 236,
 			["orbit"]= 1,
@@ -24857,7 +24857,7 @@ return {
 			["name"]= "The Agnostic",
 			["icon"]= "Art/2DArt/SkillIcons/passives/MiracleMaker.png",
 			["stats"]= {
-				"Maximum Energy Shield is 0\nWhile not on Full Life, Sacrifice 20% of Mana per Second to Recover that much Life\n"
+				"最大能量护盾为 0\n非满血状态时，每秒献祭 20% 魔力来回复同等数值的生命\n"
 			},
 			["flavourText"]= {
 				"Put your faith in intellect rather than mysticism."
@@ -25319,7 +25319,7 @@ return {
 				"图腾伤害提高 10%",
 				"图腾施放的技能暴击率提高 15%",
 				"烙印的暴击几率提高 15%",
-				"10% increased Brand Damage"
+				"烙印的伤害提高 10%"
 			},
 			["reminderText"]= {
 				"(Brand Critical Strikes are any Critical Strikes dealt by Brand Skills or by Skills Triggered by a Brand)",
@@ -25426,7 +25426,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/ChaosDamage.png",
 			["stats"]= {
 				"混沌伤害提高 10%",
-				"Withered you Inflict expires 10% slower"
+				"你施加的【死亡凋零】状态消退速度减缓 10%"
 			},
 			["reminderText"]= {
 				"(Effects cannot be slowed below 25% of their normal expiry rate)"
@@ -25462,7 +25462,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/Corruption.png",
 			["stats"]= {
 				"混沌伤害提高 25%",
-				"20% increased Effect of Withered"
+				"【死亡凋零】的效果提高 20%"
 			},
 			["reminderText"]= {
 				"(【死亡凋零】debuff效果：每层可使承受的混沌伤害提高 6%，最高叠加 15 层)"
@@ -25499,7 +25499,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/ChaosDamage.png",
 			["stats"]= {
 				"混沌伤害提高 10%",
-				"Withered you Inflict expires 10% slower"
+				"你施加的【死亡凋零】状态消退速度减缓 10%"
 			},
 			["reminderText"]= {
 				"(Effects cannot be slowed below 25% of their normal expiry rate)"
@@ -25616,7 +25616,7 @@ return {
 			["stats"]= {
 				"战吼施法速度提高 30%",
 				"战吼冷却回复速度提高 12%",
-				"Remove an Ailment when you Warcry"
+				"使用战吼时，移除异常"
 			},
 			["group"]= 260,
 			["orbit"]= 1,
@@ -25738,8 +25738,8 @@ return {
 			["stats"]= {
 				"近期内你若使用了召唤生物技能，则召唤生物的伤害提高 30%",
 				"召唤生物持续时间延长 20%",
-				"Summoned Phantasms have 5% chance to refresh their Duration when they Hit a Unique Enemy",
-				"Summoned Raging Spirits have 5% chance to refresh their Duration when they Hit a Unique Enemy"
+				"召唤的幻灵击中传奇敌人时有 5% 几率刷新持续时间",
+				"【召唤愤怒狂灵】击中传奇敌人时有 5% 几率刷新持续时间"
 			},
 			["reminderText"]= {
 				"(近期意味着：过去 4 秒)"
@@ -26494,7 +26494,7 @@ return {
 			["name"]= "烙印伤害和范围",
 			["icon"]= "Art/2DArt/SkillIcons/passives/Brand1.png",
 			["stats"]= {
-				"10% increased Brand Damage",
+				"烙印的伤害提高 10%",
 				"烙印的附着范围扩大 10%"
 			},
 			["reminderText"]= {
@@ -26514,7 +26514,7 @@ return {
 			["name"]= "烙印伤害和范围",
 			["icon"]= "Art/2DArt/SkillIcons/passives/Brand1.png",
 			["stats"]= {
-				"10% increased Brand Damage",
+				"烙印的伤害提高 10%",
 				"烙印的附着范围扩大 10%"
 			},
 			["reminderText"]= {
@@ -26536,7 +26536,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/Brand1.png",
 			["stats"]= {
 				"可以施放 1 个额外烙印",
-				"20% increased Brand Damage",
+				"烙印的伤害提高 20%",
 				"烙印的附着范围扩大 20%"
 			},
 			["reminderText"]= {
@@ -26562,7 +26562,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/Rage.png",
 			["stats"]= {
 				"攻击速度提高 3%",
-				"You lose Rage 20% slower"
+				"失去怒火的速度减慢 20%"
 			},
 			["group"]= 272,
 			["orbit"]= 1,
@@ -26579,7 +26579,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/Rage.png",
 			["stats"]= {
 				"攻击速度提高 3%",
-				"You lose Rage 20% slower"
+				"失去怒火的速度减慢 20%"
 			},
 			["group"]= 272,
 			["orbit"]= 1,
@@ -27560,7 +27560,7 @@ return {
 			["name"]= "Exerted Attack Damage",
 			["icon"]= "Art/2DArt/SkillIcons/passives/EmpoweredAttackWarcryNode1.png",
 			["stats"]= {
-				"Exerted Attacks deal 20% increased Damage"
+				"战吼增助的攻击伤害提高 20%"
 			},
 			["group"]= 284,
 			["orbit"]= 2,
@@ -27578,7 +27578,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/EmpoweredAttackWarcryNode1.png",
 			["stats"]= {
 				"战吼冷却回复速度提高 12%",
-				"Exerted Attacks deal 15% increased Damage"
+				"战吼增助的攻击伤害提高 15%"
 			},
 			["group"]= 284,
 			["orbit"]= 2,
@@ -27596,7 +27596,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/EmpoweredAttackWarcryNode1.png",
 			["stats"]= {
 				"战吼施法速度提高 15%",
-				"Exerted Attacks deal 15% increased Damage"
+				"战吼增助的攻击伤害提高 15%"
 			},
 			["group"]= 284,
 			["orbit"]= 2,
@@ -27613,7 +27613,7 @@ return {
 			["name"]= "Measured Fury",
 			["icon"]= "Art/2DArt/SkillIcons/passives/MeasuredFuryNotable.png",
 			["stats"]= {
-				"Warcries Exert 1 additional Attack"
+				"战吼额外增助 1 次攻击"
 			},
 			["group"]= 284,
 			["orbit"]= 2,
@@ -27945,7 +27945,7 @@ return {
 			["name"]= "Eternal Youth",
 			["icon"]= "Art/2DArt/SkillIcons/passives/EternalYouth.png",
 			["stats"]= {
-				"50% less Life Regeneration Rate\n50% less maximum Total Recovery per Second from Life Leech\nEnergy Shield Recharge instead applies to Life\n"
+				"总生命回复速度额外降低 50%\n从生命偷取中获得的每秒最大总恢复量额外降低 50%\n能量护盾充能应用到生命而非能量护盾\n"
 			},
 			["flavourText"]= {
 				"Burn the spirit to vitalise the flesh."
@@ -29870,7 +29870,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/dmgreduction.png",
 			["stats"]= {
 				"防卫技能的冷却回复速度提高 15%",
-				"Guard Skills have 15% increased Duration"
+				"防卫技能的持续时间延长 15%"
 			},
 			["group"]= 316,
 			["orbit"]= 1,
@@ -33307,7 +33307,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/Necromancer/CorpseConsumptionNotable2.png",
 			["stats"]= {
 				"近期内你若有消耗灵柩，则伤害提高 30%",
-				"2% increased Attack and Cast Speed for each corpse Consumed Recently, up to a maximum of 200%",
+				"每消耗 1 具灵柩后的短时间内，攻击和施法速度提高 2%，最多提高 200%",
 				"敌人若位于你近期所生成的灵柩周围，则使其受到冰缓和感电",
 				"生成的灵柩最大生命提高 50%"
 			},
@@ -33968,7 +33968,7 @@ return {
 			["name"]= "Supreme Ego",
 			["icon"]= "Art/2DArt/SkillIcons/passives/SupremeEgo.png",
 			["stats"]= {
-				"You can only have one Permanent Aura on you from your Skills\nAuras from your Skills do not affect Allies\nAuras from your Skills have 50% more Effect on you\n50% more Mana Reserved\n"
+				"你只能从技能中得到一种永久性的光环\n光环技能不能影响友军\n你的光环技能对自身造成的总效果额外提高 50%\n总魔力保留额外提高 50%\n"
 			},
 			["reminderText"]= {
 				"（永久性光环没有持续时间）"
@@ -35101,7 +35101,7 @@ return {
 			["name"]= "Stance Skill Cooldown Recovery",
 			["icon"]= "Art/2DArt/SkillIcons/passives/StancesNode.png",
 			["stats"]= {
-				"30% increased Cooldown Recovery Speed for Stance Skills"
+				"姿态技能的冷却速度提高 30%"
 			},
 			["group"]= 383,
 			["orbit"]= 1,
@@ -35118,8 +35118,8 @@ return {
 			["name"]= "Area of Effect in Sand Stance and Damage in Blood Stance",
 			["icon"]= "Art/2DArt/SkillIcons/passives/StancesNode.png",
 			["stats"]= {
-				"15% increased Damage while in Blood Stance",
-				"10% increased Area of Effect while in Sand Stance"
+				"处于【血姿态】时，伤害提高 15%",
+				"处于【沙姿态】时，范围效果扩大 10%"
 			},
 			["reminderText"]= {
 				"(You are in Blood Stance by default)"
@@ -35139,9 +35139,9 @@ return {
 			["name"]= "Versatile Stance",
 			["icon"]= "Art/2DArt/SkillIcons/passives/StancesNotable.png",
 			["stats"]= {
-				"10% increased Attack Speed if you’ve changed Stance Recently",
-				"30% increased Damage while in Blood Stance",
-				"15% increased Area of Effect while in Sand Stance"
+				"若你近期有切换姿态模式，攻击速度提高 10%",
+				"处于【血姿态】时，伤害提高 30%",
+				"处于【沙姿态】时，范围效果扩大 15%"
 			},
 			["reminderText"]= {
 				"(近期意味着：过去 4 秒)",
@@ -36027,7 +36027,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/damageaxe.png",
 			["stats"]= {
 				"斧类攻击的攻击速度提高 4%",
-				"You lose Rage 20% slower"
+				"失去怒火的速度减慢 20%"
 			},
 			["group"]= 404,
 			["orbit"]= 2,
@@ -36645,8 +36645,8 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/CorpsesNotable.png",
 			["stats"]= {
 				"近期内你若有消耗灵柩，则伤害提高 30%",
-				"Skills which create corpses have +2 to Maximum number of corpses allowed",
-				"Regenerate 2% of Life per second if you've Consumed a corpse Recently"
+				"攻击的技能 +2 召唤图腾数量上限",
+				"近期内你若有吞噬 1 个灵柩，则每秒回复 2% 最大生命"
 			},
 			["reminderText"]= {
 				"(近期意味着：过去 4 秒)"
@@ -40689,7 +40689,7 @@ return {
 			["name"]= "Wind Dancer",
 			["icon"]= "Art/2DArt/SkillIcons/passives/WindDancer.png",
 			["stats"]= {
-				"20% less Damage taken if you haven't been Hit Recently\n40% less Evasion Rating if you haven't been Hit Recently\n20% more Evasion Rating if you've been Hit Recently\n"
+				"近期内你若没有被击中，则总承受的伤害额外降低 20%\n近期内你若没有被击中，则总闪避值额外降低 40%\n近期内你若有被击中，则总闪避值额外提高 20%\n"
 			},
 			["reminderText"]= {
 				"(近期意味着：过去 4 秒)"
@@ -42991,7 +42991,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/Brand1.png",
 			["stats"]= {
 				"烙印技能的施法速度提高 3%",
-				"8% increased Brand Damage"
+				"烙印的伤害提高 8%"
 			},
 			["reminderText"]= {
 				"(Brand Damage is any Damage dealt by Brand Skills or by Skills Triggered by a Brand)"
@@ -43012,7 +43012,7 @@ return {
 			["name"]= "Brand Damage and Duration",
 			["icon"]= "Art/2DArt/SkillIcons/passives/Brand1.png",
 			["stats"]= {
-				"10% increased Brand Damage",
+				"烙印的伤害提高 10%",
 				"烙印技能的持续时间延长 10%"
 			},
 			["reminderText"]= {
@@ -43033,7 +43033,7 @@ return {
 			["name"]= "Brand Damage and Duration",
 			["icon"]= "Art/2DArt/SkillIcons/passives/Brand1.png",
 			["stats"]= {
-				"10% increased Brand Damage",
+				"烙印的伤害提高 10%",
 				"烙印技能的持续时间延长 10%"
 			},
 			["reminderText"]= {
@@ -43412,7 +43412,7 @@ return {
 			["stats"]= {
 				"地雷伤害提高 25%",
 				"投掷地雷类技能的魔力保留降低 15%",
-				"Mines have a 10% chance to be Detonated an Additional Time"
+				"地雷有 10% 几率额外引爆一次"
 			},
 			["group"]= 529,
 			["orbit"]= 1,
@@ -43915,7 +43915,7 @@ return {
 			["name"]= "Serpentine Spellslinger",
 			["icon"]= "Art/2DArt/SkillIcons/passives/PoisonSpellsNotable.png",
 			["stats"]= {
-				"Enemies Poisoned by you have -5% to Chaos Resistance",
+				"被你造成中毒的敌人 -5% 混沌抗性",
 				"法术技能 +8% 中毒持续伤害加成",
 				"法术击中时有 15% 几率使目标中毒"
 			},
@@ -45271,7 +45271,7 @@ return {
 			["stats"]= {
 				"陷阱伤害提高 20%",
 				"陷阱冷却回复速度提高 10%",
-				"Skills which Throw Traps have +1 Cooldown Use"
+				"放置陷阱的技能 +1 冷却时间次数"
 			},
 			["group"]= 555,
 			["orbit"]= 1,
@@ -46316,7 +46316,7 @@ return {
 			["stats"]= {
 				"投射物速度降低 10%",
 				"投射物伤害提高 20%",
-				"Projectiles deal 20% increased Damage with Hits to targets at the start\nof their movement, reducing to 0% as they travel farther\n"
+				"投射物对发射的初始目标伤害提高 20%，随着距离的提高逐渐降低到 0%"
 			},
 			["group"]= 577,
 			["orbit"]= 2,
@@ -51296,7 +51296,7 @@ return {
 			["name"]= "Split Shot",
 			["icon"]= "Art/2DArt/SkillIcons/passives/ForkingProjectilesNotable.png",
 			["stats"]= {
-				"Projectiles have 50% chance for an additional Projectile when Forking"
+				"投射物分裂时有 50% 几率发出额外投射物"
 			},
 			["group"]= 641,
 			["orbit"]= 2,
@@ -51339,7 +51339,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedProjectileSpeedNode.png",
 			["stats"]= {
 				"投射物伤害提高 10%",
-				"50% reduced Projectile Fork angle"
+				"投射物分裂角度降低 50%"
 			},
 			["group"]= 641,
 			["orbit"]= 2,
@@ -51374,8 +51374,8 @@ return {
 			["name"]= "Damage for Chaining Hits and Chain Distance",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedProjectileSpeedNode.png",
 			["stats"]= {
-				"15% increased Chaining range",
-				"Projectiles deal 10% increased Damage with Hits and Ailments to targets they Chain from"
+				"连锁距离提高 15%",
+				"投射物对连锁的目标造成的击中和后续异常状态伤害提高 10%"
 			},
 			["group"]= 641,
 			["orbit"]= 3,
@@ -51413,8 +51413,8 @@ return {
 			["name"]= "Damage for Chaining Hits and Chain Distance",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedProjectileSpeedNode.png",
 			["stats"]= {
-				"15% increased Chaining range",
-				"Projectiles deal 10% increased Damage with Hits and Ailments to targets they Chain from"
+				"连锁距离提高 15%",
+				"投射物对连锁的目标造成的击中和后续异常状态伤害提高 10%"
 			},
 			["group"]= 641,
 			["orbit"]= 3,
@@ -51451,7 +51451,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedProjectileSpeedNode.png",
 			["stats"]= {
 				"投射物伤害提高 10%",
-				"50% increased Projectile Fork angle"
+				"投射物的分裂角度提高 50%"
 			},
 			["group"]= 641,
 			["orbit"]= 2,
@@ -51469,7 +51469,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedProjectileSpeedNode.png",
 			["stats"]= {
 				"投射物伤害提高 10%",
-				"Projectiles have 10% chance for an additional Projectile when Forking"
+				"投射物分裂时有 10% 几率发出额外投射物"
 			},
 			["group"]= 641,
 			["orbit"]= 0,
@@ -54212,7 +54212,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/AuraEffectNotable.png",
 			["stats"]= {
 				"你技能的非诅咒类光环效果提高 8%",
-				"You and nearby Allies Regenerate 1.00% of Life per second"
+				"你和周围友军每秒回复 1.00% 最大生命"
 			},
 			["isNotable"]= true
 		},
@@ -54241,7 +54241,7 @@ return {
 			["name"]= "勇毅先驱",
 			["icon"]= "Art/2DArt/SkillIcons/passives/AuraEffectNotable.png",
 			["stats"]= {
-				"Aura Buffs from Skills have 8% increased Effect on you for each Herald affecting you, up to 40%"
+				"每受到一个捷技能影响，你身上的光环技能的效果提高 8%，最多提高 40%"
 			},
 			["isNotable"]= true
 		},
@@ -54514,7 +54514,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/TotemDmgNotable.png",
 			["stats"]= {
 				"图腾的持续时间延长 20%",
-				"You have Onslaught if you've Summoned a Totem Recently"
+				"近期内你若有召唤图腾，获得【猛攻】状态"
 			},
 			["reminderText"]= {
 				"(近期意味着：过去 4 秒)"
@@ -54612,7 +54612,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/DmgWhenChannelSkillsNotable.png",
 			["stats"]= {
 				"持续吟唱时，攻击和施法速度提高 8%",
-				"Remove a Curse after Channelling for 2 seconds"
+				"持续吟唱 2 秒后，移除一个诅咒"
 			},
 			["isNotable"]= true
 		},
@@ -54647,7 +54647,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/FlaskDuration.png",
 			["stats"]= {
 				"药剂持续期间，攻击和施法速度提高 5%",
-				"Gain Alchemist's Genius when you use a Flask"
+				"使用药剂时获得【炼金术天才】状态"
 			},
 			["reminderText"]= {
 				"(Alchemist's Genius increases Flask Charges gained and effect of Flasks by 20%, for 4 seconds)"
@@ -54690,8 +54690,8 @@ return {
 			["name"]= "僵化灵药",
 			["icon"]= "Art/2DArt/SkillIcons/passives/LifeManaFlasksrecovery.png",
 			["stats"]= {
-				"40% reduced Effect of Curses on you during Effect of any Life or Mana Flask",
-				"40% reduced Effect of non-Damaging Ailments on you during Effect of any Life or Mana Flask"
+				"任意生命或魔力药剂持续期间，你身上诅咒的效果降低 40%",
+				"任何生命或魔力药剂持续期间，你身上的非伤害型异常效果降低 40%"
 			},
 			["isNotable"]= true
 		},
@@ -54700,8 +54700,8 @@ return {
 			["name"]= "暴民思维",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedWarcryNotable.png",
 			["stats"]= {
-				"Exerted Attacks deal 25% increased Damage",
-				"Warcries have 5% Chance to grant an Endurance, Frenzy or Power Charge per Power"
+				"战吼增助的攻击伤害提高 25%",
+				"每点【威力值】可使战吼有 5% 几率获得耐力球，狂怒球或暴击球"
 			},
 			["reminderText"]= {
 				"(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)"
@@ -54713,8 +54713,8 @@ return {
 			["name"]= "恶狼哭号",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedWarcryNotable.png",
 			["stats"]= {
-				"Exerted Attacks deal 25% increased Damage",
-				"Warcries have minimum of 10 Power"
+				"战吼增助的攻击伤害提高 25%",
+				"战吼有，额外造成 10 【威力值】数量下限"
 			},
 			["isNotable"]= true
 		},
@@ -54735,7 +54735,7 @@ return {
 			["name"]= "按图索骥",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedWarcryNotable.png",
 			["stats"]= {
-				"When you Warcry, you and nearby Allies gain Onslaught for 4 seconds",
+				"使用战吼时，你和周围友军获得【猛攻】状态，持续 4 秒",
 				"+10 力量和敏捷"
 			},
 			["reminderText"]= {
@@ -54760,7 +54760,7 @@ return {
 			["name"]= "警戒之号",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedWarcryNotable.png",
 			["stats"]= {
-				"Gain 25% increased Armour per 5 Power for 8 seconds when you Warcry, up to a maximum of 100%"
+				"使用战吼时，每 5 【威力值】可使护甲提高 25%，持续 8 秒，最多提高 100%"
 			},
 			["reminderText"]= {
 				"(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)"
@@ -54772,7 +54772,7 @@ return {
 			["name"]= "野蛮嚎叫",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedWarcryNotable.png",
 			["stats"]= {
-				"Exerted Attacks have 8% chance to deal Double Damage",
+				"被战吼增助的攻击有 8% 几率造成双倍伤害",
 				"+20 力量"
 			},
 			["isNotable"]= true,
@@ -55222,7 +55222,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedAttackDamageNotable.png",
 			["stats"]= {
 				"攻击伤害的 0.8% 转化为生命偷取",
-				"25% increased Attack Damage when on Full Life",
+				"满血时攻击伤害提高 25%",
 				"攻击击中时有 10% 几率造成瘫痪"
 			},
 			["reminderText"]= {
@@ -55524,7 +55524,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedColdDamage.png",
 			["stats"]= {
 				"+8% 冰霜持续伤害加成",
-				"Recover 2% of Life on Killing a Chilled Enemy"
+				"击败冰缓的敌人时，回复 2% 生命"
 			},
 			["isNotable"]= true
 		},
@@ -55656,7 +55656,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedMinionDamageNotable.png",
 			["stats"]= {
 				"召唤生物的暴击几率提高 50%",
-				"Minions have +20% to Critical Strike Multiplier"
+				"召唤生物 +20% 暴击伤害加成"
 			},
 			["isNotable"]= true
 		},
@@ -55723,7 +55723,7 @@ return {
 			["stats"]= {
 				"火焰伤害提高 20%",
 				"被燃烧时免疫冰缓",
-				"5% chance to Cover Enemies in Ash on Hit while you are Burning"
+				"你处于燃烧状态时，击中时有 5% 几率用灰烬覆盖敌人"
 			},
 			["reminderText"]= {
 				"(Being Covered in Ash applies 20% less Movement Speed and 20% increased Fire Damage Taken, and lasts for 4 seconds)"
@@ -55818,7 +55818,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/ChaosDamageOverTimeNotable.png",
 			["stats"]= {
 				"混沌伤害提高 25%",
-				"50% chance to inflict Withered for two seconds on Hit if there are 5 or fewer Withered Debuffs on Enemy"
+				"击中有 5 层或少于 5 层【死亡凋零】减益状态的敌人时，有 50% 几率施加持续 2 秒的【死亡凋零】"
 			},
 			["reminderText"]= {
 				"(【死亡凋零】debuff效果：每层可使承受的混沌伤害提高 6%，最高叠加 15 层)"
@@ -56047,7 +56047,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/CurseEffectNotable.png",
 			["stats"]= {
 				"受到你诅咒的敌人承受的伤害提高 5%",
-				"Non-Cursed Enemies you inflict Non-Aura Curses on are Blinded for 4 seconds"
+				"未被诅咒的敌人被你的非光环诅咒施加诅咒时被致盲，持续 4 秒"
 			},
 			["reminderText"]= {
 				"(致盲使敌人的命中率减半)"
@@ -56073,8 +56073,8 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/CurseEffectNotable.png",
 			["stats"]= {
 				"你所施放诅咒的效果提高 5%",
-				"25% increased Area of Effect of Curse Aura Skills",
-				"4% reduced Mana Reservation of Curse Auras"
+				"诅咒光环的范围效果扩大 25%",
+				"诅咒光环的魔力保留降低 4%"
 			},
 			["isNotable"]= true
 		},
@@ -56099,7 +56099,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/CurseEffectNotable.png",
 			["stats"]= {
 				"诅咒技能的施法速度提高 8%",
-				"Enemies Cursed by you have Malediction if 33% of Curse Duration expired"
+				"若诅咒的持续时间已经过去了 33%，被你诅咒的敌人会遭受【恶语术】影响"
 			},
 			["reminderText"]= {
 				"（被【恶语术】影响的敌人，造成的伤害降低 10%，承受的伤害提高 10%）"
@@ -56136,9 +56136,9 @@ return {
 			["name"]= "传令者",
 			["icon"]= "Art/2DArt/SkillIcons/passives/DmgHeraldSkillsNotable.png",
 			["stats"]= {
-				"Nearby Enemies have Cold Exposure while you are affected by Herald of Ice",
-				"Nearby Enemies have Fire Exposure while you are affected by Herald of Ash",
-				"Nearby Enemies have Lightning Exposure while you are affected by Herald of Thunder"
+				"你受到【寒冰之捷】影响时，附近的敌人获得冰霜曝露",
+				"你受到【灰烬之捷】影响时，附近的敌人获得火焰曝露",
+				"你受到【闪电之捷】影响时，附近的敌人获得闪电曝露"
 			},
 			["reminderText"]= {
 				"（冰霜曝露 -10% 冰霜抗性，持续 4 秒）",
@@ -56245,7 +56245,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/MinionDmgHeraldSkillsNotable.png",
 			["stats"]= {
 				"你受到捷技能影响时，召唤生物的伤害提高 20%",
-				"Summoned Sentinels have 25% increased Cooldown Recovery Speed"
+				"【召唤纯净哨兵】的技能冷却速度提高 25%"
 			},
 			["isNotable"]= true
 		},
@@ -56390,7 +56390,7 @@ return {
 			["name"]= "探索符文",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BrandDmgNotable.png",
 			["stats"]= {
-				"25% increased Brand Damage",
+				"烙印的伤害提高 25%",
 				"未附着的烙印的附着范围扩大 20%，最多扩大 100%"
 			},
 			["reminderText"]= {
@@ -56404,7 +56404,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/BrandDmgNotable.png",
 			["stats"]= {
 				"烙印技能的施法速度提高 8%",
-				"Skills which create Brands have 35% chance to create an additional Brand"
+				"创建烙印的技能有 35% 几率创建额外一个烙印"
 			},
 			["isNotable"]= true
 		},
@@ -56424,7 +56424,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/BrandDmgNotable.png",
 			["stats"]= {
 				"移动速度提高 5%",
-				"Brands Attach to a new Enemy each time they Activate, no more than once every 0.3 seconds",
+				"烙印每次激活时可附着到新的敌人，最多每 0.3 秒附着一次",
 				"烙印技能的施法速度提高 10%"
 			},
 			["isNotable"]= true
@@ -56458,7 +56458,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/TrapAndMineDmgNotable.png",
 			["stats"]= {
 				"地雷引爆速度提高 20%",
-				"Mines have a 10% chance to be Detonated an Additional Time"
+				"地雷有 10% 几率额外引爆一次"
 			},
 			["isNotable"]= true
 		},
@@ -56633,7 +56633,7 @@ return {
 			["stats"]= {
 				"最大魔力提高 15%",
 				"药剂回复的魔力提高 30%",
-				"25% chance to gain a Power Charge when you use a Mana Flask"
+				"使用魔力药剂时有 25% 几率获得一个暴击球"
 			},
 			["isNotable"]= true
 		},
@@ -56718,7 +56718,7 @@ return {
 			["stats"]= {
 				"护甲提高 20%",
 				"最大魔力提高 15%",
-				"+1 Armour per 10 Unreserved Maximum Mana"
+				"每 10 点未保留的最大魔力 +1 护甲"
 			},
 			["isNotable"]= true
 		},
@@ -56838,7 +56838,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/ArmourNotable.png",
 			["stats"]= {
 				"护甲提高 30%",
-				"Gain 1 Endurance Charge every second if you've been Hit Recently"
+				"若近期你有被击中，则每秒获得 1 个耐力球"
 			},
 			["reminderText"]= {
 				"(近期意味着：过去 4 秒)"
@@ -56900,8 +56900,8 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/EvasionNotable.png",
 			["stats"]= {
 				"30% 几率免疫流血",
-				"30% chance to avoid being Impaled",
-				"30% increased Evasion Rating if you haven't been Hit Recently"
+				"30% 几率避免被穿刺",
+				"若近期你没有被击中，闪避值提高 30%"
 			},
 			["isNotable"]= true
 		},
@@ -57848,7 +57848,7 @@ return {
 			["name"]= "Exerted Attack Damage",
 			["icon"]= "Art/2DArt/SkillIcons/passives/IncreasedWarcryNode.png",
 			["stats"]= {
-				"Exerted Attacks deal 20% increased Damage"
+				"战吼增助的攻击伤害提高 20%"
 			}
 		},
 		[10118]= {
@@ -57954,7 +57954,7 @@ return {
 			["name"]= "烙印伤害",
 			["icon"]= "Art/2DArt/SkillIcons/passives/BrandDmgNode.png",
 			["stats"]= {
-				"12% increased Brand Damage"
+				"烙印的伤害提高 12%"
 			},
 			["reminderText"]= {
 				"(Brand Damage is any Damage dealt by Brand Skills or by Skills Triggered by a Brand)"

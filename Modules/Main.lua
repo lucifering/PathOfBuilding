@@ -852,7 +852,7 @@ function main:OpenMessagePopup(title, msg)
 	controls.close = new("ButtonControl", nil, 0, 40 + numMsgLines * 16, 80, 20, "Ok", function()
 		main:ClosePopup()
 	end)
-	return self:OpenPopup(m_max(DrawStringWidth(16, "VAR", msg) + 30, 290), 70 + numMsgLines * 16, title, controls, "close")
+	return self:OpenPopup(m_max(DrawStringWidth(16, "VAR", msg) + 30, 500), 70 + numMsgLines * 16, title, controls, "close")
 end
 
 function main:OpenConfirmPopup(title, msg, confirmLabel, onConfirm)

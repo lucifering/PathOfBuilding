@@ -3377,6 +3377,8 @@ local specialModList = {
 	["敌人对抗该武器击中的总物理伤害减免 %-(%d+)%%"] = function(num) return {  mod("EnemyPhysicalDamageReduction", "BASE", -num, { type = "Condition", var = "{Hand}Attack" })  }
 	 end,   	
 	["你创造的【护体】改为使总闪避值额外提高 30%%"] =  { flag("FortifyBuffInsteadGrantEvasionRating") },
+	["压制敌人 (%d+)%% 总物理伤害减免"] = function(num) return {  mod("EnemyPhysicalDamageReduction", "BASE", num)  }
+	 end,   
 	["站定时，脚下产生真菌地表"] = function() return { 
 		flag("Condition:OnFungalGround"),
 		mod("ExtraAura", "LIST",{ mod =mod("NonChaosDamageGainAsChaos", "BASE", 10), onlyAllies = true} ,{ type = "Condition", var = "OnFungalGround" }),

@@ -3,15 +3,15 @@ liveTargetVersion = "3_0"
 targetVersionList = { "3_0" }
 targetVersions = {	 
 	["3_0"] = {
-		short = "3.10",
-		long = "3.10 (惊悸迷雾)",
-		treeVersionList = { "3_6", "3_7", "3_8" , "3_9", "3_10"},
+		short = "3.11",
+		long = "3.11 (古灵庄园)",
+		treeVersionList = { "3_6", "3_7", "3_8" , "3_9", "3_10", "3_11"},
 		defaultTreeVersion = "3_6",
-		latestTreeVersion = "3_10",
+		latestTreeVersion = "3_11",
 	},
 }
 
-treeVersionList = { "3_6", "3_7", "3_8" , "3_9", "3_10"}
+treeVersionList = { "3_6", "3_7", "3_8" , "3_9", "3_10", "3_11"}
 
 treeVersions = {	 
 	["3_6"] = {
@@ -40,6 +40,11 @@ treeVersions = {
 		short = "3.10",		
 		num = 3.10,
 		export = "https://www.pathofexile.com/passive-skill-tree/3.10.0/",
+		targetVersion = "3_0",
+	},["3_11"] = {
+		short = "3.11",		
+		num = 3.11,
+		export = "https://www.pathofexile.com/passive-skill-tree/3.11.0/",
 		targetVersion = "3_0",
 	},
 }

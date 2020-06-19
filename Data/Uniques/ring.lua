@@ -115,8 +115,8 @@ Has Alt Variant: true
 {tags:jewellery_attribute}+(10-20) 全属性
 {tags:attack}附加 (8-10) - (13-15) 基础物理伤害
 {tags:jewellery_defense}+(350-400) 护甲
-{variant:1}【纯净之捷】的增益效果提高 (70-100)%
-{variant:2}{tags:mana}【纯净之捷】的魔力保留降低 (30-40)%
+{variant:1}【纯净之捷】的增益效果提高 (40-60)%
+{variant:2}{tags:mana}【纯净之捷】的魔力保留降低 (15-20)%
 {variant:3}受到【纯净之捷】影响时，获得额外 4% 物理伤害减免
 {variant:4}受到【纯净之捷】影响时，物理伤害提高 (40-60)%
 {variant:5}召唤的纯净哨兵伤害提高 (70-100)%
@@ -136,8 +136,8 @@ Has Alt Variant: true
 {fractured}{tags:jewellery_attribute}+(10-20) 全属性
 {tags:attack}附加 (8-10) - (13-15) 基础物理伤害
 {tags:jewellery_defense}+(350-400) 护甲
-{variant:1}【纯净之捷】的增益效果提高 (70-100)%
-{variant:2}{tags:mana}【纯净之捷】的魔力保留降低 (30-40)%
+{variant:1}【纯净之捷】的增益效果提高 (40-60)%
+{variant:2}{tags:mana}【纯净之捷】的魔力保留降低 (15-20)%
 {variant:3}受到【纯净之捷】影响时，获得额外 4% 物理伤害减免
 {variant:4}受到【纯净之捷】影响时，物理伤害提高 (40-60)%
 {variant:5}召唤的纯净哨兵伤害提高 (70-100)%
@@ -160,8 +160,8 @@ Has Alt Variant: true
 {tags:jewellery_attribute}+(20-30) 敏捷
 {tags:jewellery_elemental}附加 (20-25) - (26-35) 基础冰霜伤害
 {tags:jewellery_resistance}+(20-30)% 冰霜抗性
-{variant:1}【寒冰之捷】的增益效果提高 (70-100)%
-{variant:2}{tags:mana}【寒冰之捷】的魔力保留降低 (30-40)%
+{variant:1}【寒冰之捷】的增益效果提高 (40-60)%
+{variant:2}{tags:mana}【寒冰之捷】的魔力保留降低 (15-20)%
 {variant:3}{tags:jewellery_resistance}受到【寒冰之捷】影响时，+(50-60)% 冰霜抗性
 {variant:4}{tags:jewellery_resistance}受到【寒冰之捷】影响时，+1% 冰霜抗性上限
 {variant:5}受到【寒冰之捷】影响时，冰霜伤害提高 (40-60)%
@@ -182,8 +182,8 @@ Has Alt Variant: true
 {fractured}{tags:jewellery_attribute}+(20-30) 敏捷
 {tags:jewellery_elemental}附加 (20-25) - (26-35) 基础冰霜伤害
 {tags:jewellery_resistance}+(20-30)% 冰霜抗性
-{variant:1}【寒冰之捷】的增益效果提高 (70-100)%
-{variant:2}{tags:mana}【寒冰之捷】的魔力保留降低 (30-40)%
+{variant:1}【寒冰之捷】的增益效果提高 (40-60)%
+{variant:2}{tags:mana}【寒冰之捷】的魔力保留降低 (15-20)%
 {variant:3}{tags:jewellery_resistance}受到【寒冰之捷】影响时，+(50-60)% 冰霜抗性
 {variant:4}{tags:jewellery_resistance}受到【寒冰之捷】影响时，+1% 冰霜抗性上限
 {variant:5}{tags:jewellery_elemental}受到【寒冰之捷】影响时，冰霜伤害提高 (40-60)%
@@ -206,8 +206,8 @@ Has Alt Variant: true
 {tags:jewellery_attribute}+(20-30) 力量
 {tags:jewellery_elemental}附加 (20-25) - (26-35) 基础火焰伤害
 {tags:jewellery_resistance}+(20-30)% 火焰抗性
-{variant:1}【灰烬之捷】的增益效果提高 (70-100)%
-{variant:2}{tags:mana}【灰烬之捷】的魔力保留降低 (30-40)%
+{variant:1}【灰烬之捷】的增益效果提高 (40-60)%
+{variant:2}{tags:mana}【灰烬之捷】的魔力保留降低 (15-20)%
 {variant:3}{tags:jewellery_resistance}受到【灰烬之捷】影响时，+(50-60)% 火焰抗性
 {variant:4}{tags:jewellery_resistance}受到【灰烬之捷】影响时，+1% 火焰抗性上限
 {variant:5}{tags:jewellery_elemental}受到【灰烬之捷】影响时，火焰伤害提高 (40-60)%
@@ -228,8 +228,8 @@ Has Alt Variant: true
 {fractured}{tags:jewellery_attribute}+(20-30) 力量
 {tags:jewellery_elemental}附加 (20-25) - (26-35) 基础火焰伤害
 {tags:jewellery_resistance}+(20-30)% 火焰抗性
-{variant:1}【灰烬之捷】的增益效果提高 (70-100)%
-{variant:2}{tags:mana}【灰烬之捷】的魔力保留降低 (30-40)%
+{variant:1}【灰烬之捷】的增益效果提高 (40-60)%
+{variant:2}{tags:mana}【灰烬之捷】的魔力保留降低 (15-20)%
 {variant:3}{tags:jewellery_resistance}受到【灰烬之捷】影响时，+(50-60)% 火焰抗性
 {variant:4}{tags:jewellery_resistance}受到【灰烬之捷】影响时，+1% 火焰抗性上限
 {variant:5}{tags:jewellery_elemental}受到【灰烬之捷】影响时，火焰伤害提高 (40-60)%
@@ -252,8 +252,8 @@ Has Alt Variant: true
 {tags:jewellery_attribute}+(10-20) 全属性
 附加 (15-20) - (21-30) 基础混沌伤害
 {tags:jewellery_resistance}+(17-23)% 混沌抗性
-{variant:1}【苦痛之捷】的增益效果提高 (70-100)%
-{variant:2}{tags:mana}【苦痛之捷】的魔力保留降低 (30-40)%
+{variant:1}【苦痛之捷】的增益效果提高 (40-60)%
+{variant:2}{tags:mana}【苦痛之捷】的魔力保留降低 (15-20)%
 {variant:3}{tags:jewellery_resistance}受到【苦痛之捷】影响时，+(31-43)% 混沌抗性
 {variant:4}受到【苦痛之捷】影响时，混沌伤害提高 (40-60)%
 {variant:5}召唤的苦痛爬行者伤害提高 (70-100)%
@@ -273,8 +273,8 @@ Has Alt Variant: true
 {fractured}{tags:jewellery_attribute}+(10-20) 全属性
 附加 (15-20) - (21-30) 基础混沌伤害
 +(17-23)% 混沌抗性
-{variant:1}【苦痛之捷】的增益效果提高 (70-100)%
-{variant:2}{tags:mana}【苦痛之捷】的魔力保留降低 (30-40)%
+{variant:1}【苦痛之捷】的增益效果提高 (40-60)%
+{variant:2}{tags:mana}【苦痛之捷】的魔力保留降低 (15-20)%
 {variant:3}{tags:jewellery_resistance}受到【苦痛之捷】影响时，+(31-43)% 混沌抗性
 {variant:4}受到【苦痛之捷】影响时，混沌伤害提高 (40-60)%
 {variant:5}召唤的苦痛爬行者伤害提高 (70-100)%
@@ -296,8 +296,8 @@ Has Alt Variant: true
 {tags:jewellery_attribute}+(20-30) 智慧 
 {tags:jewellery_elemental}附加 1 - (48-60) 基础闪电伤害 
 {tags:jewellery_resistance}+(20-30)% 闪电抗性 
-{variant:1}【闪电之捷】的增益效果提高 (70-100)%
-{variant:2}{tags:mana}【闪电之捷】的魔力保留降低 (30-40)%
+{variant:1}【闪电之捷】的增益效果提高 (40-60)%
+{variant:2}{tags:mana}【闪电之捷】的魔力保留降低 (15-20)%
 {variant:3}{tags:jewellery_resistance}受到【闪电之捷】影响时，+(50-60)% 闪电抗性
 {variant:4}{tags:jewellery_resistance}受到【闪电之捷】影响时，+1% 闪电抗性上限
 {variant:5}{tags:jewellery_elemental}受到【闪电之捷】影响时，闪电伤害提高 (40-60)%
@@ -317,8 +317,8 @@ Has Alt Variant: true
 {fractured}{tags:jewellery_attribute}+(20-30) 智慧 
 {tags:jewellery_elemental}附加 1 - (48-60) 基础闪电伤害 
 {tags:jewellery_resistance}+(20-30)% 闪电抗性 
-{variant:1}【闪电之捷】的增益效果提高 (70-100)%
-{variant:2}{tags:mana}【闪电之捷】的魔力保留降低 (30-40)%
+{variant:1}【闪电之捷】的增益效果提高 (40-60)%
+{variant:2}{tags:mana}【闪电之捷】的魔力保留降低 (15-20)%
 {variant:3}{tags:jewellery_resistance}受到【闪电之捷】影响时，+(50-60)% 闪电抗性
 {variant:4}{tags:jewellery_resistance}受到【闪电之捷】影响时，+1% 闪电抗性上限
 {variant:5}{tags:jewellery_elemental}受到【闪电之捷】影响时，闪电伤害提高 (40-60)%
@@ -1035,26 +1035,33 @@ Sockets: W
 联盟: 血族
 版本: 2.6.0以前
 版本: {2_6}3.0.0以前
+版本: 3.11.0以前
 版本: 当前
 等级需求: 38
 固定基底词缀: 1
 {tags:jewellery_resistance}+(20-30)% 闪电抗性
 {variant:1}对感电敌人的伤害提高 15%
 {variant:2}对感电敌人的伤害提高 40%
-{variant:3}对感电敌人的击中伤害提高 40%
+{variant:3,4}对感电敌人的击中伤害提高 40%
 {tags:jewellery_elemental}闪电伤害提高 20%
 {tags:mana}+(20-40) 最大魔力
-{tags:life}对感电敌人造成伤害的 0.2% 转化为生命偷取
+{variant:1,2,3}{tags:life}对感电敌人造成伤害的 0.2% 转化为生命偷取
+{variant:4}对感电敌人造成伤害的 1% 转化为生命偷取
 {variant:1}{tags:jewellery_elemental}闪电伤害击中时有 5% 几率使敌人受到感电效果影响
 {variant:2,3}{tags:jewellery_elemental}闪电伤害击中时有 10% 几率使敌人受到感电效果影响
+{variant:4}{tags:jewellery_elemental}闪电伤害击中时有 25% 几率使敌人受到感电效果影响
 ]],[[
 女武神
 月光石戒指
+版本: 3.11.0以前
+版本: 当前
 等级需求: 38
 固定基底词缀: 1
 {tags:jewellery_defense}+(15-25) 最大能量护盾
-{tags:jewellery_defense}+(10-20) 最大能量护盾
-{tags:jewellery_resistance}+(20-30)% 火焰抗性
+{variant:1}{tags:jewellery_defense}+(10-20) 最大能量护盾
+{variant:2}{tags:jewellery_defense}+(30-40) 最大能量护盾
+{variant:1}{tags:jewellery_resistance}+(20-30)% 火焰抗性
+{variant:2}{tags:jewellery_resistance}+(30-40)% 火焰抗性
 {tags:jewellery_resistance}-40% 冰霜抗性
 你的晕眩门槛由能量护盾计算，而不再基于生命
 ]],[[

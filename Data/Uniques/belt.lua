@@ -57,7 +57,7 @@ return {
 {tags:life}+(25-40) 最大生命
 {tags:jewellery_resistance}+(30-40)% 冰霜抗性
 你在专注时，冰缓周围敌人，使其行动速度降低 30%
-专注的冷却回复速度提高 (15-25)%
+专注的冷却回复速度提高 (30-50)%
 对冰缓敌人的击中和异常状态伤害提高 (50-70)%
 {variant:1}{crafted}{tags:life}药剂持续期间，每秒回复 (1.0-2.0)% 生命
 {variant:2}{crafted}{tags:jewellery_resistance}+(8-15)% 火焰与混沌抗性
@@ -171,12 +171,15 @@ return {
 ]],[[
 夜临
 深渊腰带
+版本: 3.11.0以前
+版本: 当前
 联盟: 深渊
 源: 深渊巫妖掉落
 固定基底词缀: 1
 拥有 1 个深渊插槽
 拥有 1 个深渊插槽
-插槽内的珠宝效果提高 50%
+{variant:1}插槽内的珠宝效果提高 50%
+{variant:2}插槽内的珠宝效果提高 75%
 ]],[[
 多里亚尼之约
 重革腰带
@@ -196,14 +199,14 @@ return {
 {variant:1,3,4}{tags:jewellery_resistance}+(30-35)% 火焰抗性
 {variant:1,2,4}{tags:jewellery_resistance}+(30-35)% 冰霜抗性
 {variant:1,2,3}{tags:jewellery_resistance}+(30-35)% 闪电抗性
-{variant:1}{tags:life}物理伤害的 0.2% 转化为生命偷取
-{variant:2}{tags:lifejewellery_elemental}火焰伤害的 0.2% 转化为生命偷取
-{variant:3}{tags:lifejewellery_elemental}冰霜伤害的 0.2% 转化为生命偷取
-{variant:4}{tags:lifejewellery_elemental}闪电伤害的 0.2% 转化为生命偷取
+{variant:1}{tags:life}物理伤害的 0.6% 转化为生命偷取
+{variant:2}{tags:lifejewellery_elemental}火焰伤害的 0.6% 转化为生命偷取
+{variant:3}{tags:lifejewellery_elemental}冰霜伤害的 0.6% 转化为生命偷取
+{variant:4}{tags:lifejewellery_elemental}闪电伤害的 0.6% 转化为生命偷取
 {variant:1}药剂持续期间，敌人晕眩门槛降低 25%
-{variant:2}药剂持续期间，有 10% 几率点燃
-{variant:3}药剂持续期间，有 10% 几率冰冻
-{variant:4}药剂持续期间，有 10% 几率感电
+{variant:2}药剂持续期间，有 (20-30)% 几率点燃
+{variant:3}药剂持续期间，有 (20-30)% 几率冰冻
+{variant:4}药剂持续期间，有 (20-30)% 几率感电
 ]],[[
 戴亚迪安的晨曦
 重革腰带
@@ -382,12 +385,15 @@ return {
 ]],[[
 恒毅意志
 先锋腰带
+版本: 3.11.0以前
+版本: 当前
 等级需求: 78
 固定基底词缀: 1
 {tags:jewellery_defense}+(260-320) 护甲和闪避值
 {tags:life}最大生命提高 (4-8)%
 {tags:jewellery_resistance}+(20-40)% 冰霜抗性
-{tags:attack}取护甲和闪避值之间的较低者，每 300 点可使攻击伤害提高 1%
+{variant:1}{tags:attack}取护甲和闪避值之间的较低者，每 300 点可使攻击伤害提高 1%
+{variant:1}{tags:attack}取护甲和闪避值之间的较低者，每 200 点可使攻击伤害提高 1%
 {tags:attack}你的近战伤害晕眩敌人时有 (14-20)% 几率获得护体
 当你拥有护体时获得【猛攻】状态
 ]],[[

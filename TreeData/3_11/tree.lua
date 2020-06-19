@@ -10142,7 +10142,7 @@ return {
 				"烙印的伤害提高 14%"
 			},
 			["reminderText"]= {
-				"(Brand Damage is any Damage dealt by Brand Skills or by Skills Triggered by a Brand)"
+				"（烙印的伤害为：烙印技能造成的伤害或烙印施放的技能造成的伤害）"
 			},
 			["group"]= 9,
 			["orbit"]= 2,
@@ -11204,7 +11204,7 @@ return {
 				"(【护体】buff效果：承受的总击中伤害额外降低 20%)",
 				"(被你嘲讽的敌人只能把你作为目标，对其他目标造成的总伤害额外降低 10%。嘲讽持续 3 秒)",
 				"(被威吓的敌人承受的攻击伤害提高 10%)",
-				"(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)",
+				"当被穿刺的敌人被击中时，每个穿刺效果对该敌人造成该穿刺效果的击中伤害的 10% 物理伤害的反射伤害。每个穿刺效果持续 5 次击中或 8 秒",
 				"你可以从决斗者升华的3种天赋中选择其中1种"
 			},
 			["group"]= 27,
@@ -13489,7 +13489,7 @@ return {
 				"烙印的伤害提高 14%"
 			},
 			["reminderText"]= {
-				"(Brand Damage is any Damage dealt by Brand Skills or by Skills Triggered by a Brand)"
+				"（烙印的伤害为：烙印技能造成的伤害或烙印施放的技能造成的伤害）"
 			},
 			["group"]= 56,
 			["orbit"]= 2,
@@ -15341,7 +15341,7 @@ return {
 				"双手武器对敌人的穿刺效果提高 10%"
 			},
 			["reminderText"]= {
-				"(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
+				"当被穿刺的敌人被击中时，每个穿刺效果对该敌人造成该穿刺效果的击中伤害的 10% 物理伤害的反射伤害。每个穿刺效果持续 5 次击中或 8 秒"
 			},
 			["group"]= 91,
 			["orbit"]= 1,
@@ -15362,7 +15362,7 @@ return {
 				"穿刺持续时间延长 25%"
 			},
 			["reminderText"]= {
-				"(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
+				"当被穿刺的敌人被击中时，每个穿刺效果对该敌人造成该穿刺效果的击中伤害的 10% 物理伤害的反射伤害。每个穿刺效果持续 5 次击中或 8 秒"
 			},
 			["group"]= 91,
 			["orbit"]= 1,
@@ -15383,7 +15383,7 @@ return {
 				"穿刺持续时间延长 25%"
 			},
 			["reminderText"]= {
-				"(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
+				"当被穿刺的敌人被击中时，每个穿刺效果对该敌人造成该穿刺效果的击中伤害的 10% 物理伤害的反射伤害。每个穿刺效果持续 5 次击中或 8 秒"
 			},
 			["group"]= 91,
 			["orbit"]= 1,
@@ -15895,7 +15895,7 @@ return {
 			},
 			["reminderText"]= {
 				"(被你嘲讽的敌人只能把你作为目标，对其他目标造成的总伤害额外降低 10%。嘲讽持续 3 秒)",
-				"(Enemies that are Debilitated have 20% less Movement Speed and deal 10% less damage)"
+				"（被虚弱的敌人总移动速度额外降低 20%，总伤害额外降低 10%）"
 			},
 			["group"]= 98,
 			["orbit"]= 2,
@@ -18986,7 +18986,7 @@ return {
 			},
 			["reminderText"]= {
 				"（伤害型异常包括：流血、点燃和中毒）",
-				"(Physical Damage Reduction is lower against Overwhelming Hits, but cannot go negative)",
+				"（物理伤害减免对抗压制击中时会被降低，但是不能为负数）",
 				"（影响近战打击，包含默认攻击，不影响范围效果）"
 			},
 			["group"]= 151,
@@ -20204,7 +20204,7 @@ return {
 			},
 			["reminderText"]= {
 				"（伤害型异常包括：流血、点燃和中毒）",
-				"(Physical Damage Reduction is lower against Overwhelming Hits, but cannot go negative)"
+				"（物理伤害减免对抗压制击中时会被降低，但是不能为负数）"
 			},
 			["group"]= 172,
 			["orbit"]= 2,
@@ -20296,7 +20296,7 @@ return {
 			},
 			["reminderText"]= {
 				"（战杖也算长杖）",
-				"(Physical Damage Reduction is lower against Overwhelming Hits, but cannot go negative)"
+				"（物理伤害减免对抗压制击中时会被降低，但是不能为负数）"
 			},
 			["group"]= 173,
 			["orbit"]= 2,
@@ -20417,7 +20417,7 @@ return {
 			},
 			["reminderText"]= {
 				"（伤害型异常包括：流血、点燃和中毒）",
-				"(Physical Damage Reduction is lower against Overwhelming Hits, but cannot go negative)"
+				"（物理伤害减免对抗压制击中时会被降低，但是不能为负数）"
 			},
 			["group"]= 174,
 			["orbit"]= 2,
@@ -20596,7 +20596,7 @@ return {
 				"100% 几率以双倍护甲进行防卫\n承受伤害减免的最大上限为 50%\n"
 			},
 			["reminderText"]= {
-				"(Armour is treated as double value, only for calculating damage mitigation)"
+				"（视为双倍护甲仅在计算伤害减免期间起作用）"
 			},
 			["flavourText"]= {
 				"Layer only your most vital areas, child. We have less steel, but we are willing to bleed, and that is why we will be victorious."
@@ -22124,7 +22124,7 @@ return {
 				"你被冰冻的持续时间缩短 30%"
 			},
 			["reminderText"]= {
-				"(Chill reduces Enemy Action Speed by up to 30%, depending on the amount of Cold Damage in the hit, for 2 seconds)"
+				"（冰缓最多可使敌人行动速度降低 30% ，具体基于该次击中的冰霜伤害数值，持续 2 秒）"
 			},
 			["group"]= 204,
 			["orbit"]= 0,
@@ -24148,7 +24148,7 @@ return {
 			},
 			["reminderText"]= {
 				"（伤害型异常包括：流血、点燃和中毒）",
-				"(Physical Damage Reduction is lower against Overwhelming Hits, but cannot go negative)"
+				"（物理伤害减免对抗压制击中时会被降低，但是不能为负数）"
 			},
 			["group"]= 242,
 			["orbit"]= 2,
@@ -24937,7 +24937,7 @@ return {
 				"攻击击中时有 5% 几率穿刺敌人"
 			},
 			["reminderText"]= {
-				"(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
+				"当被穿刺的敌人被击中时，每个穿刺效果对该敌人造成该穿刺效果的击中伤害的 10% 物理伤害的反射伤害。每个穿刺效果持续 5 次击中或 8 秒"
 			},
 			["group"]= 251,
 			["orbit"]= 2,
@@ -24958,7 +24958,7 @@ return {
 				"攻击击中时有 10% 几率穿刺敌人"
 			},
 			["reminderText"]= {
-				"(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
+				"当被穿刺的敌人被击中时，每个穿刺效果对该敌人造成该穿刺效果的击中伤害的 10% 物理伤害的反射伤害。每个穿刺效果持续 5 次击中或 8 秒"
 			},
 			["group"]= 251,
 			["orbit"]= 2,
@@ -25010,8 +25010,8 @@ return {
 				"攻击击中时有 15% 几率穿刺敌人"
 			},
 			["reminderText"]= {
-				"(Physical Damage Reduction is lower against Overwhelming Hits, but cannot go negative)",
-				"(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
+				"（物理伤害减免对抗压制击中时会被降低，但是不能为负数）",
+				"当被穿刺的敌人被击中时，每个穿刺效果对该敌人造成该穿刺效果的击中伤害的 10% 物理伤害的反射伤害。每个穿刺效果持续 5 次击中或 8 秒"
 			},
 			["group"]= 251,
 			["orbit"]= 2,
@@ -25299,7 +25299,7 @@ return {
 				"烙印的暴击几率提高 25%"
 			},
 			["reminderText"]= {
-				"(Brand Critical Strikes are any Critical Strikes dealt by Brand Skills or by Skills Triggered by a Brand)"
+				"（烙印的暴击为：烙印技能的暴击或烙印施放的技能的暴击）"
 			},
 			["group"]= 257,
 			["orbit"]= 2,
@@ -25322,8 +25322,8 @@ return {
 				"烙印的伤害提高 10%"
 			},
 			["reminderText"]= {
-				"(Brand Critical Strikes are any Critical Strikes dealt by Brand Skills or by Skills Triggered by a Brand)",
-				"(Brand Damage is any Damage dealt by Brand Skills or by Skills Triggered by a Brand)"
+				"（烙印的暴击为：烙印技能的暴击或烙印施放的技能的暴击）",
+				"（烙印的伤害为：烙印技能造成的伤害或烙印施放的技能造成的伤害）"
 			},
 			["group"]= 257,
 			["orbit"]= 2,
@@ -25345,7 +25345,7 @@ return {
 				"+20% 烙印的暴击伤害加成"
 			},
 			["reminderText"]= {
-				"(Brand Critical Strikes are any Critical Strikes dealt by Brand Skills or by Skills Triggered by a Brand)"
+				"（烙印的暴击为：烙印技能的暴击或烙印施放的技能的暴击）"
 			},
 			["group"]= 257,
 			["orbit"]= 2,
@@ -25366,7 +25366,7 @@ return {
 				"+20% 烙印的暴击伤害加成"
 			},
 			["reminderText"]= {
-				"(Brand Critical Strikes are any Critical Strikes dealt by Brand Skills or by Skills Triggered by a Brand)"
+				"（烙印的暴击为：烙印技能的暴击或烙印施放的技能的暴击）"
 			},
 			["group"]= 257,
 			["orbit"]= 2,
@@ -25390,7 +25390,7 @@ return {
 			},
 			["reminderText"]= {
 				"(近期意味着：过去 4 秒)",
-				"(Brand Critical Strikes are any Critical Strikes dealt by Brand Skills or by Skills Triggered by a Brand)"
+				"（烙印的暴击为：烙印技能的暴击或烙印施放的技能的暴击）"
 			},
 			["group"]= 257,
 			["orbit"]= 2,
@@ -25429,7 +25429,7 @@ return {
 				"你施加的【死亡凋零】状态消退速度减缓 10%"
 			},
 			["reminderText"]= {
-				"(Effects cannot be slowed below 25% of their normal expiry rate)"
+				"（消退速度无法降低到原本的 25% 以下）"
 			},
 			["group"]= 258,
 			["orbit"]= 3,
@@ -25502,7 +25502,7 @@ return {
 				"你施加的【死亡凋零】状态消退速度减缓 10%"
 			},
 			["reminderText"]= {
-				"(Effects cannot be slowed below 25% of their normal expiry rate)"
+				"（消退速度无法降低到原本的 25% 以下）"
 			},
 			["group"]= 258,
 			["orbit"]= 3,
@@ -26045,7 +26045,7 @@ return {
 			},
 			["reminderText"]= {
 				"（伤害型异常包括：流血、点燃和中毒）",
-				"(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
+				"当被穿刺的敌人被击中时，每个穿刺效果对该敌人造成该穿刺效果的击中伤害的 10% 物理伤害的反射伤害。每个穿刺效果持续 5 次击中或 8 秒"
 			},
 			["group"]= 267,
 			["orbit"]= 2,
@@ -26068,7 +26068,7 @@ return {
 			},
 			["reminderText"]= {
 				"（伤害型异常包括：流血、点燃和中毒）",
-				"(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
+				"当被穿刺的敌人被击中时，每个穿刺效果对该敌人造成该穿刺效果的击中伤害的 10% 物理伤害的反射伤害。每个穿刺效果持续 5 次击中或 8 秒"
 			},
 			["group"]= 267,
 			["orbit"]= 2,
@@ -26498,7 +26498,7 @@ return {
 				"烙印的附着范围扩大 10%"
 			},
 			["reminderText"]= {
-				"(Brand Damage is any Damage dealt by Brand Skills or by Skills Triggered by a Brand)"
+				"（烙印的伤害为：烙印技能造成的伤害或烙印施放的技能造成的伤害）"
 			},
 			["group"]= 271,
 			["orbit"]= 1,
@@ -26518,7 +26518,7 @@ return {
 				"烙印的附着范围扩大 10%"
 			},
 			["reminderText"]= {
-				"(Brand Damage is any Damage dealt by Brand Skills or by Skills Triggered by a Brand)"
+				"（烙印的伤害为：烙印技能造成的伤害或烙印施放的技能造成的伤害）"
 			},
 			["group"]= 271,
 			["orbit"]= 1,
@@ -26540,7 +26540,7 @@ return {
 				"烙印的附着范围扩大 20%"
 			},
 			["reminderText"]= {
-				"(Brand Damage is any Damage dealt by Brand Skills or by Skills Triggered by a Brand)"
+				"（烙印的伤害为：烙印技能造成的伤害或烙印施放的技能造成的伤害）"
 			},
 			["group"]= 271,
 			["orbit"]= 1,
@@ -26622,7 +26622,7 @@ return {
 				"穿刺的效果提高 5%"
 			},
 			["reminderText"]= {
-				"(Physical Damage Reduction is lower against Overwhelming Hits, but cannot go negative)"
+				"（物理伤害减免对抗压制击中时会被降低，但是不能为负数）"
 			},
 			["group"]= 273,
 			["orbit"]= 1,
@@ -26643,7 +26643,7 @@ return {
 				"攻击击中时有 5% 几率穿刺敌人"
 			},
 			["reminderText"]= {
-				"(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
+				"当被穿刺的敌人被击中时，每个穿刺效果对该敌人造成该穿刺效果的击中伤害的 10% 物理伤害的反射伤害。每个穿刺效果持续 5 次击中或 8 秒"
 			},
 			["group"]= 273,
 			["orbit"]= 1,
@@ -26665,8 +26665,8 @@ return {
 				"+20 力量"
 			},
 			["reminderText"]= {
-				"(Physical Damage Reduction is lower against Overwhelming Hits, but cannot go negative)",
-				"(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
+				"（物理伤害减免对抗压制击中时会被降低，但是不能为负数）",
+				"当被穿刺的敌人被击中时，每个穿刺效果对该敌人造成该穿刺效果的击中伤害的 10% 物理伤害的反射伤害。每个穿刺效果持续 5 次击中或 8 秒"
 			},
 			["group"]= 273,
 			["orbit"]= 1,
@@ -30253,7 +30253,7 @@ return {
 				"敌人身上每有一个穿刺效果，你和周围友军的攻击便额外造成 6 - 12 附加物理伤害"
 			},
 			["reminderText"]= {
-				"(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
+				"当被穿刺的敌人被击中时，每个穿刺效果对该敌人造成该穿刺效果的击中伤害的 10% 物理伤害的反射伤害。每个穿刺效果持续 5 次击中或 8 秒"
 			},
 			["group"]= 321,
 			["orbit"]= 3,
@@ -35122,7 +35122,7 @@ return {
 				"处于【沙姿态】时，范围效果扩大 10%"
 			},
 			["reminderText"]= {
-				"(You are in Blood Stance by default)"
+				"（默认你处于【血姿态】）"
 			},
 			["group"]= 383,
 			["orbit"]= 1,
@@ -35145,7 +35145,7 @@ return {
 			},
 			["reminderText"]= {
 				"(近期意味着：过去 4 秒)",
-				"(You are in Blood Stance by default)"
+				"（默认你处于【血姿态】）"
 			},
 			["group"]= 383,
 			["orbit"]= 1,
@@ -36397,7 +36397,7 @@ return {
 			},
 			["reminderText"]= {
 				"（伤害型异常包括：流血、点燃和中毒）",
-				"(Physical Damage Reduction is lower against Overwhelming Hits, but cannot go negative)",
+				"（物理伤害减免对抗压制击中时会被降低，但是不能为负数）",
 				"（影响近战打击，包含默认攻击，不影响范围效果）"
 			},
 			["group"]= 408,
@@ -36645,7 +36645,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/CorpsesNotable.png",
 			["stats"]= {
 				"近期内你若有消耗灵柩，则伤害提高 30%",
-				"攻击的技能 +2 召唤图腾数量上限",
+				"创建灵枢的技能有 +2 灵枢上限",
 				"近期内你若有吞噬 1 个灵柩，则每秒回复 2% 最大生命"
 			},
 			["reminderText"]= {
@@ -41969,7 +41969,7 @@ return {
 				"弓类技能的持续伤害效果提高 24%"
 			},
 			["reminderText"]= {
-				"(Physical Damage Reduction is lower against Overwhelming Hits, but cannot go negative)"
+				"（物理伤害减免对抗压制击中时会被降低，但是不能为负数）"
 			},
 			["group"]= 504,
 			["orbit"]= 1,
@@ -42994,7 +42994,7 @@ return {
 				"烙印的伤害提高 8%"
 			},
 			["reminderText"]= {
-				"(Brand Damage is any Damage dealt by Brand Skills or by Skills Triggered by a Brand)"
+				"（烙印的伤害为：烙印技能造成的伤害或烙印施放的技能造成的伤害）"
 			},
 			["group"]= 525,
 			["orbit"]= 2,
@@ -43016,7 +43016,7 @@ return {
 				"烙印技能的持续时间延长 10%"
 			},
 			["reminderText"]= {
-				"(Brand Damage is any Damage dealt by Brand Skills or by Skills Triggered by a Brand)"
+				"（烙印的伤害为：烙印技能造成的伤害或烙印施放的技能造成的伤害）"
 			},
 			["group"]= 525,
 			["orbit"]= 2,
@@ -43037,7 +43037,7 @@ return {
 				"烙印技能的持续时间延长 10%"
 			},
 			["reminderText"]= {
-				"(Brand Damage is any Damage dealt by Brand Skills or by Skills Triggered by a Brand)"
+				"（烙印的伤害为：烙印技能造成的伤害或烙印施放的技能造成的伤害）"
 			},
 			["group"]= 525,
 			["orbit"]= 2,
@@ -45398,7 +45398,7 @@ return {
 			},
 			["reminderText"]= {
 				"（伤害型异常包括：流血、点燃和中毒）",
-				"(Physical Damage Reduction is lower against Overwhelming Hits, but cannot go negative)",
+				"（物理伤害减免对抗压制击中时会被降低，但是不能为负数）",
 				"(近期意味着：过去 4 秒)",
 				"（影响近战打击，包含默认攻击，不影响范围效果）"
 			},
@@ -45619,7 +45619,7 @@ return {
 				"物理伤害提高 30%"
 			},
 			["reminderText"]= {
-				"(Physical Damage Reduction is lower against Overwhelming Hits, but cannot go negative)"
+				"（物理伤害减免对抗压制击中时会被降低，但是不能为负数）"
 			},
 			["group"]= 563,
 			["orbit"]= 1,
@@ -54124,7 +54124,7 @@ return {
 				"物理伤害提高 35%"
 			},
 			["reminderText"]= {
-				"(Physical Damage Reduction is lower against Overwhelming Hits, but cannot go negative)"
+				"（物理伤害减免对抗压制击中时会被降低，但是不能为负数）"
 			},
 			["isNotable"]= true
 		},
@@ -54137,7 +54137,7 @@ return {
 				"你造成的穿刺效果会额外持续 1 次击中"
 			},
 			["reminderText"]= {
-				"(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
+				"当被穿刺的敌人被击中时，每个穿刺效果对该敌人造成该穿刺效果的击中伤害的 10% 物理伤害的反射伤害。每个穿刺效果持续 5 次击中或 8 秒"
 			},
 			["isNotable"]= true
 		},
@@ -54183,7 +54183,7 @@ return {
 			},
 			["reminderText"]= {
 				"(流血造成持续物理伤害，基础伤害基于技能的物理伤害，目标移动时额外承受更多流血伤害)",
-				"(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
+				"当被穿刺的敌人被击中时，每个穿刺效果对该敌人造成该穿刺效果的击中伤害的 10% 物理伤害的反射伤害。每个穿刺效果持续 5 次击中或 8 秒"
 			},
 			["isNotable"]= true
 		},
@@ -54650,7 +54650,7 @@ return {
 				"使用药剂时获得【炼金术天才】状态"
 			},
 			["reminderText"]= {
-				"(Alchemist's Genius increases Flask Charges gained and effect of Flasks by 20%, for 4 seconds)"
+				"（【炼金术天才】状态提高 20% 药剂充能获取速度和药剂效果，持续 4 秒）"
 			},
 			["isNotable"]= true
 		},
@@ -54704,7 +54704,7 @@ return {
 				"每点【威力值】可使战吼有 5% 几率获得耐力球，狂怒球或暴击球"
 			},
 			["reminderText"]= {
-				"(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)"
+				"（普通怪物 1 【威力值】，魔法怪物 2，西游怪物 10，传奇怪物 20 ，玩家 5）"
 			},
 			["isNotable"]= true
 		},
@@ -54763,7 +54763,7 @@ return {
 				"使用战吼时，每 5 【威力值】可使护甲提高 25%，持续 8 秒，最多提高 100%"
 			},
 			["reminderText"]= {
-				"(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)"
+				"（普通怪物 1 【威力值】，魔法怪物 2，西游怪物 10，传奇怪物 20 ，玩家 5）"
 			},
 			["isNotable"]= true
 		},
@@ -55726,7 +55726,7 @@ return {
 				"你处于燃烧状态时，击中时有 5% 几率用灰烬覆盖敌人"
 			},
 			["reminderText"]= {
-				"(Being Covered in Ash applies 20% less Movement Speed and 20% increased Fire Damage Taken, and lasts for 4 seconds)"
+				"（处于灰烬缠身状态的敌人总移动速度额外减少20%，受到的火焰伤害提高20%，持续 4 秒）"
 			},
 			["isNotable"]= true
 		},
@@ -56394,7 +56394,7 @@ return {
 				"未附着的烙印的附着范围扩大 20%，最多扩大 100%"
 			},
 			["reminderText"]= {
-				"(Brand Damage is any Damage dealt by Brand Skills or by Skills Triggered by a Brand)"
+				"（烙印的伤害为：烙印技能造成的伤害或烙印施放的技能造成的伤害）"
 			},
 			["isNotable"]= true
 		},
@@ -56828,7 +56828,7 @@ return {
 				"15% 几率以双倍护甲进行防卫"
 			},
 			["reminderText"]= {
-				"(Armour is treated as double value, only for calculating damage mitigation)"
+				"（视为双倍护甲仅在计算伤害减免期间起作用）"
 			},
 			["isNotable"]= true
 		},
@@ -57144,7 +57144,7 @@ return {
 				"不受冰缓地面影响"
 			},
 			["reminderText"]= {
-				"(Chill reduces Enemy Action Speed by up to 30%, depending on the amount of Cold Damage in the hit, for 2 seconds)",
+				"（冰缓最多可使敌人行动速度降低 30% ，具体基于该次击中的冰霜伤害数值，持续 2 秒）",
 				"(近期意味着：过去 4 秒)",
 				"（不受影响：Debuff 依旧可以对你施放，但是不应用对应的 Debuff 效果）"
 			},
@@ -57957,7 +57957,7 @@ return {
 				"烙印的伤害提高 12%"
 			},
 			["reminderText"]= {
-				"(Brand Damage is any Damage dealt by Brand Skills or by Skills Triggered by a Brand)"
+				"（烙印的伤害为：烙印技能造成的伤害或烙印施放的技能造成的伤害）"
 			}
 		},
 		[49424]= {
@@ -58525,6 +58525,12 @@ return {
 			[0.2109]= "https://testingcdn.office.grindinggear.com/gen/image/WzIyLDE0LHsidCI6MjAsInNwIjowLjIxMDl9XQ/e0f2086423/JewelSocketActiveRed.png",
 			[0.2972]= "https://testingcdn.office.grindinggear.com/gen/image/WzIyLDE0LHsidCI6MjAsInNwIjowLjI5NzJ9XQ/7a3913b57d/JewelSocketActiveRed.png",
 			[0.3835]= "https://testingcdn.office.grindinggear.com/gen/image/WzIyLDE0LHsidCI6MjAsInNwIjowLjM4MzV9XQ/833581ea60/JewelSocketActiveRed.png"
+		},
+		["JewelSocketActiveTimeless"]= {
+			[0.1246]= "http://web.poecdn.com/gen/image/WzIyLCIyODAyNzk5YTkwYzZjYTU0ODA1MDIzNDQ5ZTAyNzk3NSIseyJ0Ijo1MSwic3AiOjAuMTI0Nn1d/cd042e73a3/JewelSocketActiveTimeless.png",
+			[0.2109]= "http://web.poecdn.com/gen/image/WzIyLCIyODAyNzk5YTkwYzZjYTU0ODA1MDIzNDQ5ZTAyNzk3NSIseyJ0Ijo1MSwic3AiOjAuMjEwOX1d/b7808f8b4c/JewelSocketActiveTimeless.png",
+			[0.2972]= "http://web.poecdn.com/gen/image/WzIyLCIyODAyNzk5YTkwYzZjYTU0ODA1MDIzNDQ5ZTAyNzk3NSIseyJ0Ijo1MSwic3AiOjAuMjk3Mn1d/9f66426097/JewelSocketActiveTimeless.png",
+			[0.3835]= "http://web.poecdn.com/gen/image/WzIyLCIyODAyNzk5YTkwYzZjYTU0ODA1MDIzNDQ5ZTAyNzk3NSIseyJ0Ijo1MSwic3AiOjAuMzgzNX1d/34efc26b2a/JewelSocketActiveTimeless.png"
 		},
 		["JewelSocketActivePrismatic"]= {
 			[0.1246]= "https://testingcdn.office.grindinggear.com/gen/image/WzIyLDE0LHsidCI6NTEsInNwIjowLjEyNDZ9XQ/4e4e882f35/JewelSocketActivePrismatic.png",

@@ -293,6 +293,7 @@ local modNameList = {
 	["剑攻击物理伤害"] = { "PhysicalDamage", flags = bor(ModFlag.Sword, ModFlag.Hit) },
 	["暴击几率"] = { "CritChance", tag = { type = "Global" } },
 	["异常状态伤害"] = { "Damage",  keywordFlags = KeywordFlag.Ailment}, 
+	["空手攻击范围"] = {  "UnarmedRange" },
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -3384,7 +3385,7 @@ local specialModList = {
 	["敌人对抗该武器击中的总物理伤害减免 %-(%d+)%%"] = function(num) return {  mod("EnemyPhysicalDamageReduction", "BASE", -num, { type = "Condition", var = "{Hand}Attack" })  }
 	 end,   	
 	["你创造的【护体】改为使总闪避值额外提高 30%%"] =  { flag("FortifyBuffInsteadGrantEvasionRating") },
-	["压制敌人 (%d+)%% 总物理伤害减免"] = function(num) return {  mod("EnemyPhysicalDamageReduction", "BASE", num)  }
+	["压制敌人 (%d+)%% 总物理伤害减免"] = function(num) return {  mod("EnemyPhysicalDamageReduction", "BASE", -num)  }
 	 end,   
 	["站定时，脚下产生真菌地表"] = function() return { 
 		flag("Condition:OnFungalGround"),
@@ -3494,6 +3495,13 @@ local specialModList = {
 	["被你穿刺的敌人对穿刺伤害有获得 %-(%d+)%% 总物理伤害减伤"] = function(num) return {
 			mod("EnemyImpalePhysicalDamageReduction", "BASE", -num)
 		} end,
+	["你造成的穿刺伤害压制敌人 (%d+)%% 总物理伤害减免"] = function(num) return {
+			mod("EnemyImpalePhysicalDamageReduction", "BASE", -num)
+		} end,	
+	["双手武器攻击击中时有 (%d+)%% 几率穿刺敌人"] = function(num) return { mod("ImpaleChance", "BASE", num,nil, ModFlag.Weapon2H) } end,
+	["穿刺持续时间延长 (%d+)%%"] = function(num) return { mod("ImpaleDuration", "INC", num) } end,
+	["【召唤纯净哨兵】的技能冷却速度提高 (%d+)%%"] = function(num) return { 
+	 mod("MinionModifier", "LIST", { mod = mod("CooldownRecovery", "INC", num) }, { type = "SkillId", skillId = "HeraldOfPurity" })   } end,
 	["在任何生命药剂作用时间内，获得护体效果"] = { flag("Condition:Fortify",{ type = "Condition", var = "UsingLifeFlask" } ) },
 	-- 友军问题 暂时不解析
 	-- ["周围友军击中造成的伤害特别幸运"] = { mod("ExtraAura", "LIST", { onlyAllies = true, mod = mod("LuckyHits", "FLAG", true) }) },
@@ -3551,6 +3559,35 @@ local specialModList = {
 	["每受到一个捷技能影响，你身上的光环技能的效果提高 (%d+)%%，最多提高 (%d+)%%"] =function(_,num1,num2) return {  
 	mod("AuraEffectOnSelf", "INC", tonumber(num1),nil,nil,KeywordFlag.Aura,{ type = "Multiplier", var = "AffectedByHeraldCount" ,
 	 limit = tonumber(num2), limitTotal = true}  )  } end,
+	["每消耗 1 具灵柩后的短时间内，攻击和施法速度提高 (%d+)%%，最多提高 (%d+)%%"] = function(_,num1,num2) return {
+			mod("Speed", "INC", tonumber(num1),  { type = "Multiplier", var = "CorpseConsumedRecently"  ,
+	 limit = tonumber(num2), limitTotal = true} )
+		} end,	
+	["若近期你没有被击中，闪避值提高 (%d+)%%"] = function(num) return {  
+	mod("Evasion", "INC", num,{ type = "Condition", var = "BeenHitRecently", neg = true })  } end,   
+	["每 (%d+) 点未保留的最大魔力 %+(%d+) 护甲"] = function( _, num1,num2)  return { mod("Armour", "BASE", 
+	tonumber(num2), { type = "PerStat", stat = "ManaUnreserved", div = tonumber(num1) })   } end,
+	["近期内你若有吞噬 1 个灵柩，则每秒回复 ([%d%.]+)%% 最大生命"] = function(num) return { mod("LifeRegenPercent", "BASE", num, { type = "Condition", var = "ConsumedCorpseRecently" }) } end,
+	["近期内你若没有被击中，则总承受的伤害额外降低 (%d+)%%"] = function(num) return {  mod("DamageTaken", "MORE", -num,{ type = "Condition", var = "BeenHitRecently", neg = true })  }
+	 end,   
+	["近期内你若没有被击中，则总闪避值额外降低 (%d+)%%"] = function(num) return {  mod("Evasion", "MORE", -num,{ type = "Condition", var = "BeenHitRecently", neg = true })  } end,   
+	["近期内你若有被击中，则总闪避值额外提高 (%d+)%%"] = function(num) return {  mod("Evasion", "MORE", num,
+	{ type = "Condition", var = "BeenHitRecently"})  } end,   
+	["投射物对发射的初始目标伤害提高 (%d+)%%，随着距离的提高逐渐降低到 0%%"]	
+		= function(num) return { mod("Damage", "INC", num, nil, ModFlag.Projectile, { type = "DistanceRamp", ramp = {{35,1},{70,0}} }) } end,
+	["你和周围友军每秒回复 ([%d%.]+)%% 最大生命"] = function(num) return { mod("ExtraAura", "LIST", { mod = mod("LifeRegenPercent", "BASE", num) }) } end, 
+	["被你造成中毒的敌人 (%-%d+)%% 混沌抗性"] = function(num) return { 
+	mod("EnemyModifier", "LIST", { mod = mod("ChaosResist", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Poisoned"}) }) } end, 
+	["被诅咒时你近战攻击击中一个敌人，触发 (%d+) 级的【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end, --备注：trigger level (%d+) (.+) when you hit an enemy while cursed
+	["【(.+)】每次连锁，总伤害额外提高 (%d+)%%"] = function(   _1,skill_name,num,_0) return { 
+		mod("Damage", "MORE", tonumber(num), { type = "PerStat", stat = "Chain" },{ type = "SkillName", skillName =  FuckSkillActivityCnName(skill_name)}) } end, 
+	["【(.+)】的总伤害额外降低 (%d+)%%"] = function(   _1,skill_name,num,_0) return { 
+		mod("Damage", "MORE", tonumber(-num),{ type = "SkillName", skillName =  FuckSkillActivityCnName(skill_name)}) } end, 
+	["偷取每秒总恢复量提高 (%d+)%%"] = function(num) return {
+	  mod("LifeLeechRate", "INC", num),
+	  mod("ManaLeechRate", "INC", num),
+	  mod("EnergyShieldLeechRate", "INC", num)
+	 } end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

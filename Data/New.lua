@@ -226,6 +226,7 @@ Storm Secret
 [[
 人格分裂
 三相珠宝
+仅限: 2
 联盟: 惊悸迷雾
 Has Alt Variant: true
 版本: 命中值

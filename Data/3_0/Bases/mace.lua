@@ -409,7 +409,7 @@ itemBases["朽木巨锤"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, },
 	implicit = "敌人被晕眩时间延长 30%",
-	weapon = { PhysicalMin = 9, PhysicalMax = 13, CritChanceBase = 5, AttackRateBase = 1.3, Range = 13, },
+	weapon = { PhysicalMin = 10, PhysicalMax = 16, CritChanceBase = 5, AttackRateBase = 1.3, Range = 13, },
 	req = { str = 20, },
 }
 itemBases["祭仪巨锤"] = {
@@ -417,7 +417,7 @@ itemBases["祭仪巨锤"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, },
 	implicit = "敌人被晕眩时间延长 30%",
-	weapon = { PhysicalMin = 14, PhysicalMax = 21, CritChanceBase = 5, AttackRateBase = 1.25, Range = 13, },
+	weapon = { PhysicalMin = 17, PhysicalMax = 25, CritChanceBase = 5, AttackRateBase = 1.25, Range = 13, },
 	req = { level = 8, str = 35, },
 }
 itemBases["千斤锤"] = {
@@ -425,7 +425,7 @@ itemBases["千斤锤"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, },
 	implicit = "敌人被晕眩时间延长 30%",
-	weapon = { PhysicalMin = 14, PhysicalMax = 29, CritChanceBase = 5, AttackRateBase = 1.3, Range = 13, },
+	weapon = { PhysicalMin = 16, PhysicalMax = 33, CritChanceBase = 5, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 12, str = 47, },
 }
 itemBases["冷铁重锤"] = {
@@ -433,7 +433,7 @@ itemBases["冷铁重锤"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, },
 	implicit = "敌人被晕眩时间延长 45%",
-	weapon = { PhysicalMin = 21, PhysicalMax = 32, CritChanceBase = 5, AttackRateBase = 1.3, Range = 13, },
+	weapon = { PhysicalMin = 25, PhysicalMax = 38, CritChanceBase = 5, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 17, str = 62, },
 }
 itemBases["狼牙重锤"] = {
@@ -441,7 +441,7 @@ itemBases["狼牙重锤"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, },
 	implicit = "敌人被晕眩时间延长 30%",
-	weapon = { PhysicalMin = 23, PhysicalMax = 42, CritChanceBase = 5, AttackRateBase = 1.3, Range = 13, },
+	weapon = { PhysicalMin = 27, PhysicalMax = 49, CritChanceBase = 5, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 22, str = 77, },
 }
 itemBases["铜影巨锤"] = {
@@ -449,7 +449,7 @@ itemBases["铜影巨锤"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, },
 	implicit = "敌人被晕眩时间延长 30%",
-	weapon = { PhysicalMin = 34, PhysicalMax = 51, CritChanceBase = 5, AttackRateBase = 1.2, Range = 13, },
+	weapon = { PhysicalMin = 40, PhysicalMax = 60, CritChanceBase = 5, AttackRateBase = 1.2, Range = 13, },
 	req = { level = 27, str = 92, },
 }
 itemBases["恐惧重锤"] = {
@@ -457,15 +457,15 @@ itemBases["恐惧重锤"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, },
 	implicit = "敌人被晕眩时间延长 30%",
-	weapon = { PhysicalMin = 39, PhysicalMax = 53, CritChanceBase = 5, AttackRateBase = 1.25, Range = 13, },
+	weapon = { PhysicalMin = 46, PhysicalMax = 62, CritChanceBase = 5, AttackRateBase = 1.25, Range = 13, },
 	req = { level = 32, str = 107, },
 }
 itemBases["晨星"] = {
 	type = "Two Handed Mace",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "范围效果扩大 4%",
-	weapon = { PhysicalMin = 39, PhysicalMax = 58, CritChanceBase = 5, AttackRateBase = 1.25, Range = 13, },
+	implicit = "范围效果扩大 15%",
+	weapon = { PhysicalMin = 45, PhysicalMax = 68, CritChanceBase = 5, AttackRateBase = 1.25, Range = 13, },
 	req = { level = 34, str = 118, },
 }
 itemBases["图腾巨锤"] = {
@@ -473,7 +473,7 @@ itemBases["图腾巨锤"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, },
 	implicit = "敌人被晕眩时间延长 30%",
-	weapon = { PhysicalMin = 49, PhysicalMax = 73, CritChanceBase = 5, AttackRateBase = 1.1, Range = 13, },
+	weapon = { PhysicalMin = 57, PhysicalMax = 85, CritChanceBase = 5, AttackRateBase = 1.1, Range = 13, },
 	req = { level = 36, str = 119, },
 }
 itemBases["刚猛巨锤"] = {
@@ -481,7 +481,7 @@ itemBases["刚猛巨锤"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, },
 	implicit = "敌人被晕眩时间延长 30%",
-	weapon = { PhysicalMin = 37, PhysicalMax = 76, CritChanceBase = 5, AttackRateBase = 1.25, Range = 13, },
+	weapon = { PhysicalMin = 43, PhysicalMax = 88, CritChanceBase = 5, AttackRateBase = 1.25, Range = 13, },
 	req = { level = 40, str = 131, },
 }
 itemBases["沉钢重锤"] = {
@@ -489,7 +489,7 @@ itemBases["沉钢重锤"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, },
 	implicit = "敌人被晕眩时间延长 45%",
-	weapon = { PhysicalMin = 47, PhysicalMax = 70, CritChanceBase = 5, AttackRateBase = 1.3, Range = 13, },
+	weapon = { PhysicalMin = 54, PhysicalMax = 81, CritChanceBase = 5, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 44, str = 143, },
 }
 itemBases["凶刺巨锤"] = {
@@ -497,7 +497,7 @@ itemBases["凶刺巨锤"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, },
 	implicit = "敌人被晕眩时间延长 30%",
-	weapon = { PhysicalMin = 47, PhysicalMax = 88, CritChanceBase = 5, AttackRateBase = 1.25, Range = 13, },
+	weapon = { PhysicalMin = 55, PhysicalMax = 103, CritChanceBase = 5, AttackRateBase = 1.25, Range = 13, },
 	req = { level = 48, str = 155, },
 }
 itemBases["华丽重锤"] = {
@@ -505,7 +505,7 @@ itemBases["华丽重锤"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, },
 	implicit = "敌人被晕眩时间延长 30%",
-	weapon = { PhysicalMin = 62, PhysicalMax = 92, CritChanceBase = 5, AttackRateBase = 1.2, Range = 13, },
+	weapon = { PhysicalMin = 72, PhysicalMax = 108, CritChanceBase = 5, AttackRateBase = 1.2, Range = 13, },
 	req = { level = 51, str = 164, },
 }
 itemBases["威权巨锤"] = {
@@ -513,70 +513,70 @@ itemBases["威权巨锤"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, },
 	implicit = "敌人被晕眩时间延长 30%",
-	weapon = { PhysicalMin = 66, PhysicalMax = 89, CritChanceBase = 5, AttackRateBase = 1.25, Range = 13, },
+	weapon = { PhysicalMin = 77, PhysicalMax = 104, CritChanceBase = 5, AttackRateBase = 1.25, Range = 13, },
 	req = { level = 54, str = 173, },
 }
 itemBases["日光锤"] = {
 	type = "Two Handed Mace",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "范围效果扩大 4%",
-	weapon = { PhysicalMin = 64, PhysicalMax = 97, CritChanceBase = 5, AttackRateBase = 1.25, Range = 13, },
+	implicit = "范围效果扩大 15%",
+	weapon = { PhysicalMin = 75, PhysicalMax = 113, CritChanceBase = 5, AttackRateBase = 1.25, Range = 13, },
 	req = { level = 56, str = 187, },
 }
 itemBases["卡鲁重锤"] = {
 	type = "Two Handed Mace",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, },
-	implicit = "敌人被晕眩时间延长 30%",
-	weapon = { PhysicalMin = 79, PhysicalMax = 118, CritChanceBase = 5, AttackRateBase = 1.1, Range = 13, },
+	implicit = "敌人被晕眩时间延长 45%",
+	weapon = { PhysicalMin = 112, PhysicalMax = 168, CritChanceBase = 5, AttackRateBase = 1, Range = 13, },
 	req = { level = 57, str = 182, },
 }
 itemBases["巨型重锤"] = {
 	type = "Two Handed Mace",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, },
-	implicit = "敌人被晕眩时间延长 30%",
-	weapon = { PhysicalMin = 57, PhysicalMax = 118, CritChanceBase = 5, AttackRateBase = 1.25, Range = 13, },
+	implicit = "范围伤害提高 30%",
+	weapon = { PhysicalMin = 65, PhysicalMax = 135, CritChanceBase = 5.5, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 59, str = 188, },
 }
 itemBases["扫荡者"] = {
 	type = "Two Handed Mace",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, },
-	implicit = "敌人被晕眩时间延长 45%",
-	weapon = { PhysicalMin = 67, PhysicalMax = 100, CritChanceBase = 5, AttackRateBase = 1.3, Range = 13, },
+	implicit = "敌人晕眩门槛降低 20%",
+	weapon = { PhysicalMin = 77, PhysicalMax = 115, CritChanceBase = 5, AttackRateBase = 1.35, Range = 13, },
 	req = { level = 61, str = 212, },
 }
 itemBases["戮魂重锤"] = {
 	type = "Two Handed Mace",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, },
-	implicit = "敌人被晕眩时间延长 30%",
-	weapon = { PhysicalMin = 63, PhysicalMax = 117, CritChanceBase = 5, AttackRateBase = 1.25, Range = 13, },
+	implicit = "有 5% 几率造成双倍伤害",
+	weapon = { PhysicalMin = 74, PhysicalMax = 138, CritChanceBase = 5, AttackRateBase = 1.25, Range = 13, },
 	req = { level = 63, str = 212, },
 }
 itemBases["帝国重锤"] = {
 	type = "Two Handed Mace",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, },
-	implicit = "敌人被晕眩时间延长 30%",
-	weapon = { PhysicalMin = 74, PhysicalMax = 111, CritChanceBase = 5, AttackRateBase = 1.2, Range = 13, },
+	implicit = "力量提高 10%",
+	weapon = { PhysicalMin = 102, PhysicalMax = 153, CritChanceBase = 5, AttackRateBase = 1.1, Range = 13, },
 	req = { level = 65, str = 212, },
 }
 itemBases["惧灵重锤"] = {
 	type = "Two Handed Mace",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, },
-	implicit = "敌人被晕眩时间延长 30%",
-	weapon = { PhysicalMin = 75, PhysicalMax = 102, CritChanceBase = 5, AttackRateBase = 1.25, Range = 13, },
+	implicit = "有 25% 几率使晕眩时间延长 1 倍",
+	weapon = { PhysicalMin = 101, PhysicalMax = 137, CritChanceBase = 6, AttackRateBase = 1.15, Range = 13, },
 	req = { level = 67, str = 212, },
 }
 itemBases["花冠重锤"] = {
 	type = "Two Handed Mace",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "范围效果扩大 6%",
-	weapon = { PhysicalMin = 74, PhysicalMax = 110, CritChanceBase = 5, AttackRateBase = 1.25, Range = 13, },
+	implicit = "范围效果扩大 25%",
+	weapon = { PhysicalMin = 91, PhysicalMax = 136, CritChanceBase = 5, AttackRateBase = 1.2, Range = 13, },
 	req = { level = 69, str = 220, },
 }

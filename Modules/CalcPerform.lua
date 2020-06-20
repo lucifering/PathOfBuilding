@@ -821,7 +821,19 @@ function calcs.perform(env)
 	
 	for _, value in ipairs(modDB:List(nil, "ExtraAuraEffect")) do 
 		
-		t_insert(extraAuraModList, value.mod)
+		--t_insert(extraAuraModList, value.mod)
+		local add = true
+		for _, mod in ipairs(extraAuraModList) do
+			if modLib.compareModParams(mod, value.mod) then
+				mod.value = mod.value + value.mod.value
+				add = false
+				break
+			end
+		end
+		if add then
+			t_insert(extraAuraModList, copyTable(value.mod, true))
+		end
+		
 	end
 	local heraldList = { }
 	for _, activeSkill in ipairs(env.player.activeSkillList) do

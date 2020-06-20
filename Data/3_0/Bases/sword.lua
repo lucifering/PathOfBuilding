@@ -427,7 +427,7 @@ itemBases["锈斑巨剑"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
 	implicit = "命中值提高 40%",
-	weapon = { PhysicalMin = 7, PhysicalMax = 13, CritChanceBase = 5, AttackRateBase = 1.45, Range = 13, },
+	weapon = { PhysicalMin = 8, PhysicalMax = 16, CritChanceBase = 5, AttackRateBase = 1.45, Range = 13, },
 	req = { str = 11, dex = 11, },
 }
 itemBases["大剑"] = {
@@ -435,15 +435,15 @@ itemBases["大剑"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
 	implicit = "+60 命中值",
-	weapon = { PhysicalMin = 10, PhysicalMax = 23, CritChanceBase = 5, AttackRateBase = 1.4, Range = 13, },
+	weapon = { PhysicalMin = 11, PhysicalMax = 26, CritChanceBase = 5, AttackRateBase = 1.4, Range = 13, },
 	req = { level = 8, str = 20, dex = 17, },
 }
 itemBases["重剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "命中值提高 40%",
-	weapon = { PhysicalMin = 15, PhysicalMax = 25, CritChanceBase = 5, AttackRateBase = 1.45, Range = 13, },
+	implicit = "命中值提高 60%",
+	weapon = { PhysicalMin = 17, PhysicalMax = 29, CritChanceBase = 5, AttackRateBase = 1.45, Range = 13, },
 	req = { level = 12, str = 21, dex = 30, },
 }
 itemBases["双手剑"] = {
@@ -451,15 +451,15 @@ itemBases["双手剑"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
 	implicit = "+120 命中值",
-	weapon = { PhysicalMin = 18, PhysicalMax = 33, CritChanceBase = 5, AttackRateBase = 1.4, Range = 13, },
+	weapon = { PhysicalMin = 20, PhysicalMax = 38, CritChanceBase = 5, AttackRateBase = 1.4, Range = 13, },
 	req = { level = 17, str = 33, dex = 33, },
 }
 itemBases["术雕巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "命中值提高 40%",
-	weapon = { PhysicalMin = 20, PhysicalMax = 41, CritChanceBase = 5, AttackRateBase = 1.4, Range = 13, },
+	implicit = "命中值提高 60%",
+	weapon = { PhysicalMin = 23, PhysicalMax = 48, CritChanceBase = 5, AttackRateBase = 1.4, Range = 13, },
 	req = { level = 22, str = 45, dex = 38, },
 }
 itemBases["名贵巨剑"] = {
@@ -467,15 +467,15 @@ itemBases["名贵巨剑"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
 	implicit = "+185 命中值",
-	weapon = { PhysicalMin = 26, PhysicalMax = 43, CritChanceBase = 5, AttackRateBase = 1.4, Range = 13, },
+	weapon = { PhysicalMin = 30, PhysicalMax = 50, CritChanceBase = 5, AttackRateBase = 1.4, Range = 13, },
 	req = { level = 27, str = 45, dex = 54, },
 }
 itemBases["幽魂巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "命中值提高 30%",
-	weapon = { PhysicalMin = 27, PhysicalMax = 56, CritChanceBase = 5, AttackRateBase = 1.35, Range = 13, },
+	implicit = "命中值提高 45%",
+	weapon = { PhysicalMin = 31, PhysicalMax = 65, CritChanceBase = 5, AttackRateBase = 1.35, Range = 13, },
 	req = { level = 32, str = 57, dex = 57, },
 }
 itemBases["弯刃"] = {
@@ -483,7 +483,7 @@ itemBases["弯刃"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, not_for_sale = true, maraketh = true, },
 	implicit = "+40% 攻击和法术暴击伤害加成",
-	weapon = { PhysicalMin = 35, PhysicalMax = 58, CritChanceBase = 6, AttackRateBase = 1.35, Range = 13, },
+	weapon = { PhysicalMin = 41, PhysicalMax = 68, CritChanceBase = 6, AttackRateBase = 1.35, Range = 13, },
 	req = { level = 35, str = 62, dex = 73, },
 }
 itemBases["冷血巨剑"] = {
@@ -491,15 +491,15 @@ itemBases["冷血巨剑"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
 	implicit = "+250 命中值",
-	weapon = { PhysicalMin = 29, PhysicalMax = 68, CritChanceBase = 5, AttackRateBase = 1.3, Range = 13, },
+	weapon = { PhysicalMin = 34, PhysicalMax = 79, CritChanceBase = 5, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 36, str = 69, dex = 58, },
 }
 itemBases["士兵巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "命中值提高 40%",
-	weapon = { PhysicalMin = 34, PhysicalMax = 56, CritChanceBase = 5, AttackRateBase = 1.45, Range = 13, },
+	implicit = "命中值提高 60%",
+	weapon = { PhysicalMin = 39, PhysicalMax = 65, CritChanceBase = 5, AttackRateBase = 1.45, Range = 13, },
 	req = { level = 40, str = 57, dex = 83, },
 }
 itemBases["高山重刃"] = {
@@ -507,15 +507,15 @@ itemBases["高山重刃"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
 	implicit = "+305 命中值",
-	weapon = { PhysicalMin = 39, PhysicalMax = 72, CritChanceBase = 5, AttackRateBase = 1.35, Range = 13, },
+	weapon = { PhysicalMin = 45, PhysicalMax = 84, CritChanceBase = 5, AttackRateBase = 1.35, Range = 13, },
 	req = { level = 44, str = 77, dex = 77, },
 }
 itemBases["符文巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "命中值提高 40%",
-	weapon = { PhysicalMin = 42, PhysicalMax = 87, CritChanceBase = 5, AttackRateBase = 1.3, Range = 13, },
+	implicit = "命中值提高 60%",
+	weapon = { PhysicalMin = 49, PhysicalMax = 102, CritChanceBase = 5, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 48, str = 91, dex = 76, },
 }
 itemBases["虎牙巨剑"] = {
@@ -523,15 +523,15 @@ itemBases["虎牙巨剑"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
 	implicit = "+360 命中值",
-	weapon = { PhysicalMin = 46, PhysicalMax = 76, CritChanceBase = 5, AttackRateBase = 1.4, Range = 13, },
+	weapon = { PhysicalMin = 54, PhysicalMax = 89, CritChanceBase = 5, AttackRateBase = 1.4, Range = 13, },
 	req = { level = 51, str = 80, dex = 96, },
 }
 itemBases["凶灵巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "命中值提高 30%",
-	weapon = { PhysicalMin = 45, PhysicalMax = 93, CritChanceBase = 5, AttackRateBase = 1.35, Range = 13, },
+	implicit = "命中值提高 45%",
+	weapon = { PhysicalMin = 52, PhysicalMax = 109, CritChanceBase = 5, AttackRateBase = 1.35, Range = 13, },
 	req = { level = 54, str = 93, dex = 93, },
 }
 itemBases["细刃"] = {
@@ -539,7 +539,7 @@ itemBases["细刃"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, not_for_sale = true, maraketh = true, },
 	implicit = "+40% 攻击和法术暴击伤害加成",
-	weapon = { PhysicalMin = 54, PhysicalMax = 89, CritChanceBase = 6, AttackRateBase = 1.35, Range = 13, },
+	weapon = { PhysicalMin = 63, PhysicalMax = 104, CritChanceBase = 6, AttackRateBase = 1.35, Range = 13, },
 	req = { level = 56, str = 96, dex = 113, },
 }
 itemBases["行刑巨剑"] = {
@@ -547,54 +547,54 @@ itemBases["行刑巨剑"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
 	implicit = "+400 命中值",
-	weapon = { PhysicalMin = 47, PhysicalMax = 109, CritChanceBase = 5, AttackRateBase = 1.3, Range = 13, },
+	weapon = { PhysicalMin = 55, PhysicalMax = 128, CritChanceBase = 5, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 57, str = 106, dex = 89, },
 }
 itemBases["残暴巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "命中值提高 40%",
-	weapon = { PhysicalMin = 52, PhysicalMax = 86, CritChanceBase = 5, AttackRateBase = 1.45, Range = 13, },
+	implicit = "命中值提高 60%",
+	weapon = { PhysicalMin = 62, PhysicalMax = 104, CritChanceBase = 5, AttackRateBase = 1.5, Range = 13, },
 	req = { level = 59, str = 82, dex = 119, },
 }
 itemBases["艾兹麦巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "+435 命中值",
-	weapon = { PhysicalMin = 55, PhysicalMax = 102, CritChanceBase = 5, AttackRateBase = 1.35, Range = 13, },
+	implicit = "+25% 攻击和法术暴击伤害加成",
+	weapon = { PhysicalMin = 62, PhysicalMax = 115, CritChanceBase = 6.5, AttackRateBase = 1.4, Range = 13, },
 	req = { level = 61, str = 113, dex = 113, },
 }
 itemBases["瓦尔巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "命中值提高 40%",
-	weapon = { PhysicalMin = 55, PhysicalMax = 113, CritChanceBase = 5, AttackRateBase = 1.3, Range = 13, },
+	implicit = "+470 命中值",
+	weapon = { PhysicalMin = 68, PhysicalMax = 142, CritChanceBase = 5, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 63, str = 122, dex = 104, },
 }
 itemBases["狮爪巨剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "+470 命中值",
-	weapon = { PhysicalMin = 57, PhysicalMax = 94, CritChanceBase = 5, AttackRateBase = 1.4, Range = 13, },
+	implicit = "+50 力量和敏捷",
+	weapon = { PhysicalMin = 69, PhysicalMax = 115, CritChanceBase = 5, AttackRateBase = 1.45, Range = 13, },
 	req = { level = 65, str = 104, dex = 122, },
 }
 itemBases["狱炎重剑"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, },
-	implicit = "命中值提高 30%",
-	weapon = { PhysicalMin = 52, PhysicalMax = 108, CritChanceBase = 5, AttackRateBase = 1.35, Range = 13, },
+	implicit = "攻击技能的元素伤害提高 30%",
+	weapon = { PhysicalMin = 62, PhysicalMax = 129, CritChanceBase = 5, AttackRateBase = 1.35, Range = 13, },
 	req = { level = 67, str = 113, dex = 113, },
 }
 itemBases["精致之刃"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, not_for_sale = true, maraketh = true, },
-	implicit = "+60% 攻击和法术暴击伤害加成",
-	weapon = { PhysicalMin = 56, PhysicalMax = 94, CritChanceBase = 6, AttackRateBase = 1.35, Range = 13, },
+	implicit = "+50% 攻击和法术暴击伤害加成",
+	weapon = { PhysicalMin = 67, PhysicalMax = 112, CritChanceBase = 5.7, AttackRateBase = 1.35, Range = 13, },
 	req = { level = 70, str = 119, dex = 131, },
 }

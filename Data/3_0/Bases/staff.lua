@@ -7,7 +7,7 @@ itemBases["朽木之干"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, staff = true, two_hand_weapon = true, small_staff = true, },
 	implicit = "持长杖时攻击伤害格挡几率 +18%",
-	weapon = { PhysicalMin = 8, PhysicalMax = 17, CritChanceBase = 6, AttackRateBase = 1.3, Range = 13, },
+	weapon = { PhysicalMin = 9, PhysicalMax = 19, CritChanceBase = 6, AttackRateBase = 1.3, Range = 13, },
 	req = { str = 12, int = 12, },
 }
 itemBases["粗制长杖"] = {
@@ -15,7 +15,7 @@ itemBases["粗制长杖"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, staff = true, two_hand_weapon = true, },
 	implicit = "持长杖时攻击伤害格挡几率 +18%",
-	weapon = { PhysicalMin = 9, PhysicalMax = 27, CritChanceBase = 6.2, AttackRateBase = 1.3, Range = 13, },
+	weapon = { PhysicalMin = 10, PhysicalMax = 31, CritChanceBase = 6.2, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 9, str = 20, int = 20, },
 }
 itemBases["长杖"] = {
@@ -23,7 +23,7 @@ itemBases["长杖"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, staff = true, two_hand_weapon = true, },
 	implicit = "持长杖时攻击伤害格挡几率 +18%",
-	weapon = { PhysicalMin = 21, PhysicalMax = 35, CritChanceBase = 6, AttackRateBase = 1.3, Range = 13, },
+	weapon = { PhysicalMin = 24, PhysicalMax = 41, CritChanceBase = 6, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 18, str = 35, int = 35, },
 }
 itemBases["皇家长杖"] = {
@@ -31,7 +31,7 @@ itemBases["皇家长杖"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, staff = true, two_hand_weapon = true, },
 	implicit = "持长杖时攻击伤害格挡几率 +18%",
-	weapon = { PhysicalMin = 23, PhysicalMax = 70, CritChanceBase = 6.5, AttackRateBase = 1.15, Range = 13, },
+	weapon = { PhysicalMin = 27, PhysicalMax = 81, CritChanceBase = 6.5, AttackRateBase = 1.15, Range = 13, },
 	req = { level = 28, str = 51, int = 51, },
 }
 itemBases["新月长杖"] = {
@@ -39,7 +39,7 @@ itemBases["新月长杖"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, staff = true, two_hand_weapon = true, not_for_sale = true, maraketh = true, },
 	implicit = "攻击和法术暴击率提高 80%",
-	weapon = { PhysicalMin = 35, PhysicalMax = 73, CritChanceBase = 6, AttackRateBase = 1.2, Range = 13, },
+	weapon = { PhysicalMin = 41, PhysicalMax = 85, CritChanceBase = 6, AttackRateBase = 1.2, Range = 13, },
 	req = { level = 36, str = 66, int = 66, },
 }
 itemBases["坚木长杖"] = {
@@ -47,7 +47,7 @@ itemBases["坚木长杖"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, staff = true, two_hand_weapon = true, },
 	implicit = "持长杖时攻击伤害格挡几率 +18%",
-	weapon = { PhysicalMin = 29, PhysicalMax = 88, CritChanceBase = 6.2, AttackRateBase = 1.15, Range = 13, },
+	weapon = { PhysicalMin = 34, PhysicalMax = 102, CritChanceBase = 6.2, AttackRateBase = 1.15, Range = 13, },
 	req = { level = 37, str = 65, int = 65, },
 }
 itemBases["细柄长杖"] = {
@@ -55,7 +55,7 @@ itemBases["细柄长杖"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, staff = true, two_hand_weapon = true, },
 	implicit = "持长杖时攻击伤害格挡几率 +18%",
-	weapon = { PhysicalMin = 44, PhysicalMax = 73, CritChanceBase = 6, AttackRateBase = 1.3, Range = 13, },
+	weapon = { PhysicalMin = 51, PhysicalMax = 86, CritChanceBase = 6, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 45, str = 78, int = 78, },
 }
 itemBases["贵族长杖"] = {
@@ -63,7 +63,7 @@ itemBases["贵族长杖"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, staff = true, two_hand_weapon = true, },
 	implicit = "持长杖时攻击伤害格挡几率 +18%",
-	weapon = { PhysicalMin = 42, PhysicalMax = 125, CritChanceBase = 6.5, AttackRateBase = 1.15, Range = 13, },
+	weapon = { PhysicalMin = 48, PhysicalMax = 145, CritChanceBase = 6.5, AttackRateBase = 1.15, Range = 13, },
 	req = { level = 52, str = 89, int = 89, },
 }
 itemBases["月神长杖"] = {
@@ -71,7 +71,7 @@ itemBases["月神长杖"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, staff = true, two_hand_weapon = true, not_for_sale = true, maraketh = true, },
 	implicit = "攻击和法术暴击率提高 80%",
-	weapon = { PhysicalMin = 57, PhysicalMax = 118, CritChanceBase = 6, AttackRateBase = 1.2, Range = 13, },
+	weapon = { PhysicalMin = 66, PhysicalMax = 138, CritChanceBase = 6, AttackRateBase = 1.2, Range = 13, },
 	req = { level = 57, str = 101, int = 101, },
 }
 itemBases["史典长杖"] = {
@@ -79,7 +79,7 @@ itemBases["史典长杖"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, staff = true, two_hand_weapon = true, },
 	implicit = "持长杖时攻击伤害格挡几率 +18%",
-	weapon = { PhysicalMin = 47, PhysicalMax = 141, CritChanceBase = 6.2, AttackRateBase = 1.15, Range = 13, },
+	weapon = { PhysicalMin = 55, PhysicalMax = 165, CritChanceBase = 6.2, AttackRateBase = 1.15, Range = 13, },
 	req = { level = 58, str = 99, int = 99, },
 }
 itemBases["武术长杖"] = {
@@ -87,7 +87,7 @@ itemBases["武术长杖"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, staff = true, two_hand_weapon = true, },
 	implicit = "持长杖时攻击伤害格挡几率 +18%",
-	weapon = { PhysicalMin = 62, PhysicalMax = 103, CritChanceBase = 6, AttackRateBase = 1.3, Range = 13, },
+	weapon = { PhysicalMin = 72, PhysicalMax = 120, CritChanceBase = 6, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 62, str = 113, int = 113, },
 }
 itemBases["帝国长杖"] = {
@@ -95,7 +95,7 @@ itemBases["帝国长杖"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, staff = true, two_hand_weapon = true, },
 	implicit = "持长杖时攻击伤害格挡几率 +18%",
-	weapon = { PhysicalMin = 49, PhysicalMax = 147, CritChanceBase = 7, AttackRateBase = 1.15, Range = 13, },
+	weapon = { PhysicalMin = 57, PhysicalMax = 171, CritChanceBase = 7, AttackRateBase = 1.15, Range = 13, },
 	req = { level = 66, str = 113, int = 113, },
 }
 itemBases["月蚀长杖"] = {
@@ -103,7 +103,7 @@ itemBases["月蚀长杖"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, staff = true, two_hand_weapon = true, not_for_sale = true, maraketh = true, },
 	implicit = "攻击和法术暴击率提高 100%",
-	weapon = { PhysicalMin = 60, PhysicalMax = 125, CritChanceBase = 6, AttackRateBase = 1.2, Range = 13, },
+	weapon = { PhysicalMin = 70, PhysicalMax = 145, CritChanceBase = 6, AttackRateBase = 1.2, Range = 13, },
 	req = { level = 70, str = 117, int = 117, },
 }
 
@@ -112,7 +112,7 @@ itemBases["铁锻长杖"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, attack_staff = true, two_hand_weapon = true, },
 	implicit = "持长杖时攻击伤害格挡几率 +18%",
-	weapon = { PhysicalMin = 12, PhysicalMax = 36, CritChanceBase = 6.4, AttackRateBase = 1.3, Range = 13, },
+	weapon = { PhysicalMin = 14, PhysicalMax = 42, CritChanceBase = 6.4, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 13, str = 27, int = 27, },
 }
 itemBases["强化长杖"] = {
@@ -120,7 +120,7 @@ itemBases["强化长杖"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, attack_staff = true, two_hand_weapon = true, },
 	implicit = "持长杖时攻击伤害格挡几率 +20%",
-	weapon = { PhysicalMin = 24, PhysicalMax = 49, CritChanceBase = 6.2, AttackRateBase = 1.3, Range = 13, },
+	weapon = { PhysicalMin = 27, PhysicalMax = 57, CritChanceBase = 6.2, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 23, str = 43, int = 43, },
 }
 itemBases["毒牙长杖"] = {
@@ -128,7 +128,7 @@ itemBases["毒牙长杖"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, attack_staff = true, two_hand_weapon = true, },
 	implicit = "持长杖时攻击伤害格挡几率 +18%",
-	weapon = { PhysicalMin = 35, PhysicalMax = 65, CritChanceBase = 6.1, AttackRateBase = 1.3, Range = 13, },
+	weapon = { PhysicalMin = 41, PhysicalMax = 76, CritChanceBase = 6.1, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 33, str = 59, int = 59, },
 }
 itemBases["军用长杖"] = {
@@ -136,7 +136,7 @@ itemBases["军用长杖"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, attack_staff = true, two_hand_weapon = true, },
 	implicit = "持长杖时攻击伤害格挡几率 +18%",
-	weapon = { PhysicalMin = 33, PhysicalMax = 98, CritChanceBase = 6.6, AttackRateBase = 1.25, Range = 13, },
+	weapon = { PhysicalMin = 38, PhysicalMax = 114, CritChanceBase = 6.6, AttackRateBase = 1.25, Range = 13, },
 	req = { level = 41, str = 72, int = 72, },
 }
 itemBases["蛇纹长杖"] = {
@@ -144,7 +144,7 @@ itemBases["蛇纹长杖"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, attack_staff = true, two_hand_weapon = true, },
 	implicit = "持长杖时攻击伤害格挡几率 +20%",
-	weapon = { PhysicalMin = 48, PhysicalMax = 100, CritChanceBase = 6.3, AttackRateBase = 1.25, Range = 13, },
+	weapon = { PhysicalMin = 56, PhysicalMax = 117, CritChanceBase = 6.3, AttackRateBase = 1.25, Range = 13, },
 	req = { level = 49, str = 85, int = 85, },
 }
 itemBases["恶灵长杖"] = {
@@ -152,31 +152,31 @@ itemBases["恶灵长杖"] = {
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, attack_staff = true, two_hand_weapon = true, },
 	implicit = "持长杖时攻击伤害格挡几率 +18%",
-	weapon = { PhysicalMin = 56, PhysicalMax = 104, CritChanceBase = 6.1, AttackRateBase = 1.3, Range = 13, },
+	weapon = { PhysicalMin = 65, PhysicalMax = 121, CritChanceBase = 6.1, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 55, str = 94, int = 94, },
 }
 itemBases["艾兹麦长杖"] = {
 	type = "Staff",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, attack_staff = true, two_hand_weapon = true, },
-	implicit = "持长杖时攻击伤害格挡几率 +18%",
-	weapon = { PhysicalMin = 46, PhysicalMax = 137, CritChanceBase = 7, AttackRateBase = 1.25, Range = 13, },
+	implicit = "持长杖时攻击伤害格挡几率 +20%",
+	weapon = { PhysicalMin = 53, PhysicalMax = 160, CritChanceBase = 7.3, AttackRateBase = 1.25, Range = 13, },
 	req = { level = 60, str = 113, int = 113, },
 }
 itemBases["风暴长杖"] = {
 	type = "Staff",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, attack_staff = true, two_hand_weapon = true, },
-	implicit = "持长杖时攻击伤害格挡几率 +20%",
-	weapon = { PhysicalMin = 61, PhysicalMax = 126, CritChanceBase = 6.5, AttackRateBase = 1.25, Range = 13, },
+	implicit = "持长杖时攻击伤害格挡几率 +25%",
+	weapon = { PhysicalMin = 71, PhysicalMax = 147, CritChanceBase = 6.8, AttackRateBase = 1.25, Range = 13, },
 	req = { level = 64, str = 113, int = 113, },
 }
 itemBases["审判长杖"] = {
 	type = "Staff",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, attack_staff = true, two_hand_weapon = true, },
-	implicit = "持长杖时攻击伤害格挡几率 +18%",
-	weapon = { PhysicalMin = 63, PhysicalMax = 117, CritChanceBase = 6.3, AttackRateBase = 1.3, Range = 13, },
+	implicit = "持长杖时法术伤害格挡几率 +20%",
+	weapon = { PhysicalMin = 73, PhysicalMax = 136, CritChanceBase = 6.5, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 68, str = 113, int = 113, },
 }
 

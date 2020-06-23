@@ -267,6 +267,24 @@ ifCond = "CanSnipeStage", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:AffectedByHeraldCount", "BASE", m_min(val, 5), "Config", { type = "Condition", var = "Effective" })
 	end },
 	
+	
+
+{ label = "战吼:", ifCond = "PerformsWarcry",},
+{ var = "performsWarcryPowerCount", type = "count", label = "威力值:", ifCond = "PerformsWarcry", tooltip = "设置战吼的威力值.\n普通敌人提供 1 点威力值，\n魔法敌人提供 2 点，\n稀有敌人提供 10 点，\n传奇敌人提供 20 点\n，玩家则提供 5 点", apply = function(val, modList, enemyModList)
+		
+		modList:NewMod("Multiplier:WarcryPowerCount", "BASE", val, "Config", { type = "Condition", var = "Effective" })
+	end },
+{ var = "isEmpowerAttack", type = "check", label = "攻击被战吼增助？", ifCond = "PerformsWarcry",
+ tooltip = "使用战吼后可以增助接下来的几次攻击", apply = function(val, modList, enemyModList)		
+		modList:NewMod("Condition:EmpowerAttack", "FLAG", true, "Config", { type = "Condition", var = "Combat" })		
+	end },
+	
+{ label = "冬潮烙印:", ifSkill = "冬潮烙印" },
+{ var = "wintertideBrandStages", type = "count", label = "敌人减益层数:",tooltip = "默认最大 20 层 ，迷宫附魔可以 +4 层", ifSkill = "冬潮烙印", apply = function(val, modList, enemyModList)
+	modList:NewMod("Multiplier:WintertideBrandStages", "BASE", m_min(val, 24), "Config", { type = "SkillName", skillName = "冬潮烙印" })
+	end },
+	
+	
 	-- Section: Map modifiers/curses
 { section = "地图词缀和玩家 Debuff", col = 2 },
 { label = "地图词缀-前缀:" },
@@ -504,6 +522,12 @@ end },
 { var = "multiplierRage", type = "count", label = "怒火层数:", ifCond = "CanGainRage", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:Rage", "BASE", val, "Config", { type = "IgnoreCond" }, { type = "Condition", var = "Combat" }, { type = "Condition", var = "CanGainRage" })
 	end },
+{ var = "isSacrificedRage", type = "check", label = "怒火被战吼献祭？", tooltip = "暴徒升华：至少 25 层怒火时，使用战吼会献祭 10 层，\n献祭后增助的攻击获得更多伤害",
+ifCond = "CanGainRage", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:WarcrySacrificedRage", "FLAG", true, "Config",{ type = "Condition", var = "Combat" }, { type = "Condition", var = "CanGainRage" })
+	end },
+	
+	
 { var = "conditionLeeching", type = "check", label = "你正在偷取?", ifCond = "Leeching", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:Leeching", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
@@ -759,6 +783,7 @@ ifCond = "OnFungalGround",
 		modList:NewMod("Condition:UsedWarcryRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 		modList:NewMod("Condition:UsedSkillRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
+	
 { var = "conditionUsedWarcryInPast8Seconds", type = "check", label = "过去 8 秒你有使用过战吼?", ifCond = "UsedWarcryInPast8Seconds", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:UsedWarcryInPast8Seconds", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },

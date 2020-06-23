@@ -227,12 +227,15 @@ SkillType = {
 	Type85 = 95,
 	Type86 = 96,
 	Type87 = 97,
-	Type88 = 98,
+	Banner = 98,
 	Type89 = 99,
 	Type90 = 100,
 	Type91 = 101,
 	
- 
+ 	Unknown92= 102,
+	CantUseFistOfWar= 103,
+	Slam = 104,
+	  StanceSkill = 105,
 	 
 	--SkillCanBarrage = 97, --Skill can be supported by Barrage Support
 --	SkillCanSequentialProj = 98, --Skill can receive the Sequential Projectiles bonus from Barrage Support

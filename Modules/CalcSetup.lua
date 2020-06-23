@@ -43,6 +43,7 @@ function calcs.initModDB(env, modDB)
 		modDB:NewMod("TrapThrowingTime", "BASE", 0.6, "Base")
 		modDB:NewMod("MineLayingTime", "BASE", 0.25, "Base")
 	end
+	modDB:NewMod("WarcryCastTime", "BASE", 0.8, "Base")
 	modDB:NewMod("TotemPlacementTime", "BASE", 0.6, "Base")
 	modDB:NewMod("ActiveTotemLimit", "BASE", 1, "Base")
 	modDB:NewMod("LifeRegenPercent", "BASE", 6, "Base", { type = "Condition", var = "OnConsecratedGround" })

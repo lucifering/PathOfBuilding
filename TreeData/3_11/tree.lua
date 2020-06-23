@@ -57756,7 +57756,7 @@ return {
 			["name"]= "持盾攻击伤害",
 			["icon"]= "Art/2DArt/SkillIcons/passives/NodeHoldingShieldDamage.png",
 			["stats"]= {
-				"持盾牌时造成的攻击伤害提高 12% "
+				"持盾牌时造成的攻击伤害提高 12%"
 			}
 		},
 		[25429]= {

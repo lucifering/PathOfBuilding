@@ -223,6 +223,7 @@ data.specialBaseTags = {
 }
 
 data.misc = { -- magic numbers
+	ServerTickRate = 30,
 	TemporalChainsEffectCap = 75,
 	PhysicalDamageReductionCap = 90,
 	MaxResistCap = 90,
@@ -241,6 +242,10 @@ data.misc = { -- magic numbers
 	IgniteDurationBase = 4,
 	ImpaleStoredDamageBase = 0.1,
 	BuffExpirationSlowCap = 0.25,
+	TrapTriggerRadiusBase = 10,
+	MineDetonationRadiusBase = 60,
+	MineAuraRadiusBase = 35,
+	PurposefulHarbingerMaxBuffPercent = 40,
 }
 
 ---------------------------
@@ -350,10 +355,14 @@ for _, targetVersion in ipairs(targetVersionList) do
 	verData.gemForSkill = { }
 	verData.gemForBaseName = { }
 	for gemId, gem in pairs(verData.gems) do
-		--print(gem.name)
+		
 		gem.id = gemId
+		
 		gem.grantedEffect = verData.skills[gem.grantedEffectId]
-		 
+		if not gem.grantedEffect then 
+		
+			print(gem.grantedEffectId)
+		end 
 		
 		verData.gemForSkill[gem.grantedEffect] = gemId
 		verData.gemForBaseName[gem.name ] = gemId

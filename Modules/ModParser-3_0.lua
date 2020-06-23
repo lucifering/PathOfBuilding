@@ -294,6 +294,7 @@ local modNameList = {
 	["暴击几率"] = { "CritChance", tag = { type = "Global" } },
 	["异常状态伤害"] = { "Damage",  keywordFlags = KeywordFlag.Ailment}, 
 	["空手攻击范围"] = {  "UnarmedRange" },
+	["战吼施法速度"] = { "WarcrySpeed", keywordFlags = KeywordFlag.Warcry },
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -3594,6 +3595,14 @@ local specialModList = {
 	  mod("ManaLeechRate", "INC", num),
 	  mod("EnergyShieldLeechRate", "INC", num)
 	 } end, 
+	["战吼增助的攻击伤害提高 (%d+)%%"]= function(num) return { 
+	 mod("Damage", "INC", num,nil, ModFlag.Attack, { type = "Condition", var = "EmpowerAttack" } )  } end, 
+	["若近期战吼有献祭怒火，被战吼增助的攻击总伤害额外提高 (%d+)%%"]= function(num) return { 
+	 mod("Damage", "MORE", num,nil, ModFlag.Attack, { type = "Condition", var = "EmpowerAttack" }, { type = "Condition", var = "WarcrySacrificedRage" } )  } end, 
+	["战吼技能冷却时间为 (%d+) 秒"]= function(num) return { 
+	--mod("GemProperty", "LIST",  { keyword = "warcry", key = "cooldown", value = num }) 
+	mod("CooldownRecovery", "OVERRIDE", num, nil, 0, KeywordFlag.Warcry)
+	} end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

@@ -225,6 +225,7 @@ main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会�
 { stat = "AverageDamage", label = "平均伤害", fmt = ".1f", compPercent = true, flag = "attack" },
 { stat = "Speed", label = "攻击速度", fmt = ".2f", compPercent = true, flag = "attack" },
 { stat = "Speed", label = "施法速度", fmt = ".2f", compPercent = true, flag = "spell" },
+{ stat = "WarcryCastTime", label = "战吼施放时间", fmt = ".2fs", compPercent = true, lowerIsBetter = true, flag = "warcry" },
 { stat = "HitSpeed", label = "击中速率", fmt = ".2f", compPercent = true },
 { stat = "TrapThrowingTime", label = "陷阱投掷时间", fmt = ".2fs", compPercent = true, lowerIsBetter = true, },
 { stat = "TrapCooldown", label = "陷阱CD", fmt = ".2fs", lowerIsBetter = true },

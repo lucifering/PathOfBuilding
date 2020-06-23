@@ -553,10 +553,13 @@ s_format("/ %.2f ^8(提高/降低 冷却回复速度)", 1 + skillModList:Sum("IN
 			breakdown.TrapTriggerRadius = breakdown.area(10, areaMod, output.TrapTriggerRadius)
 		end
 	elseif skillData.cooldown then
-		output.Cooldown = skillData.cooldown / calcLib.mod(skillModList, skillCfg, "CooldownRecovery")
+		--output.Cooldown = skillData.cooldown / calcLib.mod(skillModList, skillCfg, "CooldownRecovery")
+		local cooldownOverride = skillModList:Override(skillCfg, "CooldownRecovery")
+		output.Cooldown = cooldownOverride or (skillData.cooldown  + skillModList:Sum("BASE", skillCfg, "CooldownRecovery")) / calcLib.mod(skillModList, skillCfg, "CooldownRecovery")
 		if breakdown then
 			breakdown.Cooldown = {
-s_format("%.2fs ^8(基础)", skillData.cooldown),
+--s_format("%.2fs ^8(基础)", skillData.cooldown),
+s_format("%.2fs ^8(基础)", skillData.cooldown + skillModList:Sum("BASE", skillCfg, "CooldownRecovery")),
 s_format("/ %.2f ^8(提高/降低 冷却回复速度)", 1 + skillModList:Sum("INC", skillCfg, "CooldownRecovery") / 100),
 				s_format("= %.2fs", output.Cooldown)
 			}
@@ -632,6 +635,12 @@ env.data.monsterAllyLifeTable[skillData.totemLevel].." ^8("..skillData.totemLeve
 				"= "..output.TotemLife,
 			}
 		end
+	end
+	if skillFlags.warcry then
+		local baseSpeed = 1 / skillModList:Sum("BASE", skillCfg, "WarcryCastTime")
+		output.WarcryCastTime = baseSpeed * calcLib.mod(skillModList, skillCfg, "WarcrySpeed") * output.ActionSpeedMod
+		output.WarcryCastTime = m_min(output.WarcryCastTime, data.misc.ServerTickRate)
+		output.WarcryCastTime = 1 / output.WarcryCastTime
 	end
 
 	 
@@ -1144,7 +1153,7 @@ s_format("+ (%.4f x %g) ^8(暴击部分的伤害)", output.CritChance/100, outpu
 			end
 		end
 
-		-- Calculate Double Damage + Ruthless Blow chance/multipliers
+		-- Calculate Double Damage + Ruthless Blow chance/multipliers + Fist of War multipliers
 		output.DoubleDamageChance = m_min(skillModList:Sum("BASE", cfg, "DoubleDamageChance") + (env.mode_effective and enemyDB:Sum("BASE", cfg, "SelfDoubleDamageChance") or 0), 100)
 		output.DoubleDamageEffect = 1 + output.DoubleDamageChance / 100
 		output.RuthlessBlowMaxCount = skillModList:Sum("BASE", cfg, "RuthlessBlowMaxCount")
@@ -1155,6 +1164,18 @@ s_format("+ (%.4f x %g) ^8(暴击部分的伤害)", output.CritChance/100, outpu
 		end
 		output.RuthlessBlowMultiplier = 1 + skillModList:Sum("BASE", cfg, "RuthlessBlowMultiplier") / 100
 		output.RuthlessBlowEffect = 1 - output.RuthlessBlowChance / 100 + output.RuthlessBlowChance / 100 * output.RuthlessBlowMultiplier
+
+
+		output.FistOfWarCooldown = skillModList:Sum("BASE", cfg, "FistOfWarCooldown")
+		output.FistOfWarHitMultiplier = skillModList:Sum("BASE", cfg, "FistOfWarHitMultiplier") / 100
+		output.FistOfWarAilmentMultiplier = 1 + skillModList:Sum("BASE", cfg, "FistOfWarAilmentMultiplier") / 100
+		if output.FistOfWarCooldown ~= 0 then
+			output.FistOfWarHitEffect = 1 + output.FistOfWarHitMultiplier / (output.FistOfWarCooldown * output.Speed)
+			output.FistOfWarAilmentEffect = 1 + output.FistOfWarAilmentMultiplier / (output.FistOfWarCooldown * output.Speed)
+		else
+			output.FistOfWarHitEffect = 1
+			output.FistOfWarAilmentEffect = 1
+		end
 
 		-- Calculate base hit damage
 		for _, damageType in ipairs(dmgTypeList) do
@@ -1258,8 +1279,11 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(几率造成双倍伤害)", 
 						if output.RuthlessBlowEffect ~= 1 then
 t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", output.RuthlessBlowEffect))
 						end
+						if output.FistOfWarHitEffect ~= 1 then
+						t_insert(breakdown[damageType], s_format("x %.2f ^8(【战争铁拳】加成)", output.FistOfWarHitEffect))
+						end
 					end
-					local allMult = convMult * output.DoubleDamageEffect * output.RuthlessBlowEffect
+					local allMult = convMult * output.DoubleDamageEffect * output.RuthlessBlowEffect * output.FistOfWarHitEffect
 					if pass == 1 then
 						-- Apply crit multiplier
 						allMult = allMult * output.CritMultiplier
@@ -1926,7 +1950,7 @@ t_insert(breakdownDPS, "总伤害:")
 				end
 			end
 			local basePercent = skillData.bleedBasePercent or 70
-			local baseVal = calcAilmentDamage("Bleed", sourceHitDmg, sourceCritDmg) * basePercent / 100 * output.RuthlessBlowEffect
+			local baseVal = calcAilmentDamage("Bleed", sourceHitDmg, sourceCritDmg) * basePercent / 100 * output.RuthlessBlowEffect  * output.FistOfWarAilmentEffect
 			if baseVal > 0 then
 				skillFlags.bleed = true
 				skillFlags.duration = true
@@ -1969,6 +1993,9 @@ t_insert(breakdown.BleedDPS, s_format("x %.2f ^8(异常效果加成)", effectMod
 					end
 					if output.RuthlessBlowEffect ~= 0 then
 t_insert(breakdown.BleedDPS, s_format("x %.2f ^8(【无情一击】效果加成)", output.RuthlessBlowEffect))
+					end
+					if output.FistOfWarAilmentEffect ~= 0 then
+						t_insert(breakdown.BleedDPS, s_format("x %.2f ^8(【战争铁拳】加成)", output.FistOfWarAilmentEffect))
 					end
 					t_insert(breakdown.BleedDPS, s_format("= %.1f", baseVal))
 					breakdown.multiChain(breakdown.BleedDPS, {
@@ -2075,7 +2102,8 @@ t_insert(globalBreakdown.BleedDuration, s_format("/ %.2f ^8(更快或较慢 debu
 					sourceHitDmg = (totalMin + totalMax) / 2 * (1 + skillModList:Sum("BASE", dotCfg, "DotMultiplier", "ChaosDotMultiplier") / 100)
 				end
 			end
-			local baseVal = calcAilmentDamage("Poison", sourceHitDmg, sourceCritDmg) * 0.20
+			--local baseVal = calcAilmentDamage("Poison", sourceHitDmg, sourceCritDmg) * 0.20
+			local baseVal = calcAilmentDamage("Poison", sourceHitDmg, sourceCritDmg) * data.misc.PoisonPercentBase * output.FistOfWarAilmentEffect
 			if baseVal > 0 then
 				skillFlags.poison = true
 				skillFlags.duration = true
@@ -2243,7 +2271,8 @@ base = s_format("%.2fs ^8(中毒持续时间)", globalOutput.PoisonDuration),
 s_format("点燃计算模式: %s ^8(可以在配置面板修改)", igniteMode == "CRIT" and "暴击伤害" or "平均伤害")
 				}
 			end
-			local baseVal = calcAilmentDamage("Ignite", sourceHitDmg, sourceCritDmg) * 0.5
+			--local baseVal = calcAilmentDamage("Ignite", sourceHitDmg, sourceCritDmg) * 0.5
+			local baseVal = calcAilmentDamage("Ignite", sourceHitDmg, sourceCritDmg) * data.misc.IgnitePercentBase * output.FistOfWarAilmentEffect
 			if baseVal > 0 then
 				skillFlags.ignite = true
 				local effMult = 1

@@ -52,6 +52,7 @@ function calcs.initModDB(env, modDB)
 	--modDB:NewMod("DamageTaken", "INC", 50, "Base", { type = "Condition", var = "Shocked" })
 	modDB:NewMod("HitChance", "MORE", -50, "Base", { type = "Condition", var = "Blinded" })
 	modDB:NewMod("MovementSpeed", "INC", -30, "Base", { type = "Condition", var = "Maimed" })
+	
 	modDB:NewMod("Condition:Burning", "FLAG", true, "Base", { type = "IgnoreCond" }, { type = "Condition", var = "Ignited" })
 	modDB:NewMod("Condition:Chilled", "FLAG", true, "Base", { type = "IgnoreCond" }, { type = "Condition", var = "Frozen" })
 	modDB:NewMod("Condition:Poisoned", "FLAG", true, "Base", { type = "IgnoreCond" }, { type = "MultiplierThreshold", var = "PoisonStack", threshold = 1 })
@@ -311,6 +312,7 @@ function calcs.initEnv(build, mode, override)
 	enemyDB:NewMod("Accuracy", "BASE", env.data.monsterAccuracyTable[env.enemyLevel], "Base")
 	enemyDB:NewMod("Evasion", "BASE", env.data.monsterEvasionTable[env.enemyLevel], "Base")
 	enemyDB:NewMod("Armour", "BASE", env.data.monsterArmourTable[env.enemyLevel], "Base")
+	
 	-- Add mods from the config tab
 	modDB:AddList(build.configTab.modList)
 	enemyDB:AddList(build.configTab.enemyModList)

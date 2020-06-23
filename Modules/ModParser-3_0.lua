@@ -1281,6 +1281,8 @@ local modTagList = {
 	["总属性每有 (%d+) 点，"] = function(num) return { tag = { type = "PerStat", statList = { "Str", "Dex", "Int" }, div = num } } end,
 	["处于【血姿态】时，"] = { tag = { type = "Condition", var = "BloodStance" } },	
 	["处于【沙姿态】时，"] = { tag = { type = "Condition", var = "SandStance" } },	
+	["血姿态下，"] = { tag = { type = "Condition", var = "BloodStance" } },	
+	["沙姿态下，"] = { tag = { type = "Condition", var = "SandStance" } },	
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -1584,6 +1586,12 @@ if activity_skillname == nil then
 else
 
 	return activity_skillname:gsub("狂野部族打击","野性打击") :gsub("火舌图腾","圣焰图腾"):gsub("霜害","寒霜爆")
+	:gsub("极地吐息","电光寒霜")
+	:gsub("深渊战吼","炼狱呼嚎")
+	
+	 
+	
+	
 
 end
 end
@@ -2983,6 +2991,10 @@ local specialModList = {
 	["持续吟唱时，有 (%d+)%% 几率免疫晕眩"] = function(num) return {  mod("AvoidStun", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end, 
 	["持续吟唱时，每秒回复 ([%d%.]+)%% 最大生命"] = function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end, 
 	["拥有能量护盾时法术躲避几率 %+(%d+)%%"] = function(num) return {  mod("SpellDodgeChance", "BASE", num,{ type = "Condition", var = "HaveEnergyShield" })  } end, 
+	["你没有能量护盾时无法格挡"] = function() return { 
+	 flag("CannotBlockAttacks",{ type = "Condition", var = "HaveEnergyShield", neg = true }),
+	 flag("CannotBlockSpells",{ type = "Condition", var = "HaveEnergyShield", neg = true })
+	 } end, 
 	["持续吟唱时获得 (%d+)%% 额外物理伤害减伤"] = function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end, 
 	["神圣球达到上限时获得【神圣】状态"] = { 
 			mod("ElementalDamage", "MORE", 50, { type = "Condition", var = "Divinity" }),
@@ -3541,26 +3553,45 @@ local specialModList = {
 			flag("Condition:CanWither"),
 			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanWither" }) 
 		} end,
+	["击中有 (%d+)%% 几率施加【枯萎】，持续 (%d+) 秒"] = function(num) return {
+			flag("Condition:CanWither"),
+			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanWither" }) 
+		} end,	
 	 ["你对敌人造成的每个凋零使其承受的击中元素伤害提高 (%d+)%%"] = function(num) return {
 	 mod("ExtraSkillMod", "LIST", { 
 	 mod = mod("ElementalDamageTaken", "INC", tonumber(num), 
 	 { type = "GlobalEffect", effectType = "Debuff", effectName = "死亡凋零", effectStackVar = "WitheredStackCount" }) }) } end,
+	 ["给敌人施加的每个【枯萎】都使它们从你的击中中受到的元素伤害提高 (%d+)%%"] = function(num) return {
+	 mod("ExtraSkillMod", "LIST", { 
+	 mod = mod("ElementalDamageTaken", "INC", tonumber(num), 
+	 { type = "GlobalEffect", effectType = "Debuff", effectName = "死亡凋零", effectStackVar = "WitheredStackCount" }) }) } end,
 	["你的击中无法穿透或忽视元素抗性"] = { flag("CannotIgnoreElementalResistances"),flag("CannotElementalPenetration")},
+	["你的击中无法穿透或无视元素抗性"] = { flag("CannotIgnoreElementalResistances"),flag("CannotElementalPenetration")},
 	["无法造成非闪电伤害"] = {  flag("DealNoCold"), flag("DealNoFire"), flag("DealNoPhysical"), flag("DealNoChaos")},
-	["周围敌人的闪电抗性等同于你的闪电抗性"] = {
-	--
+	["不造成非闪电伤害"] = {  flag("DealNoCold"), flag("DealNoFire"), flag("DealNoPhysical"), flag("DealNoChaos")},
+	["周围敌人的闪电抗性等同于你"] = {
 	flag("LightningResistIsEnemy")
-	--mod("EnemyModifier", "LIST", { mod = mod("LightningResist", "OVERRIDE", num) }),
+	},
+	["周围敌人的闪电抗性等同于你的闪电抗性"] = {
+	flag("LightningResistIsEnemy")
 	},
 	["用该武器击中时，获得额外冰霜或闪电伤害，其数值等同于物理伤害的 (%d+)%%"]= function(num) return { 
 	  mod("PhysicalDamageGainAsCold", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementCold" }),
 	  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementLightning" }), 
 	 } end, 
 	["击中流血敌人时触发 (%d+) 级的【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end, --备注：triggers? level (%d+) (.+) when you kill a bleeding enemy
-		["当召唤生物有能量护盾时，它们的击中无视怪物的元素抗性"] = function() return { 
+	["当召唤生物有能量护盾时，它们的击中无视怪物的元素抗性"] = function() return { 
 		mod("MinionModifier", "LIST", { mod = flag("IgnoreElementalResistances",{ type = "StatThreshold", stat = "EnergyShield", threshold = 1 } ) })  } end,
-		["召唤生物每有 (%d+)%% 混沌抗性，转换 (%d+)%% 最大生命为最大能量护盾"] = function(_,num1,num2) return 
-		{ mod("MinionModifier", "LIST", { mod =  mod("LifeConvertToEnergyShield", "BASE", tonumber(num2)
+	["召唤生物有能量护盾时，它们的击中无视怪物的元素抗"] = function() return { 
+		mod("MinionModifier", "LIST", { mod = flag("IgnoreElementalResistances",{ type = "StatThreshold", stat = "EnergyShield", threshold = 1 } ) })  } end,
+	["召唤生物的能量护盾提前 (%d+)%% 开始回复"] = function(_,num) return 
+		{ mod("MinionModifier", "LIST", { mod =  mod("EnergyShieldRechargeFaster", "INC", tonumber(num)	)  })  } end,
+	["召唤生物每有 (%d+)%% 混沌抗性，转换 (%d+)%% 最大生命为最大能量护盾"] = function(_,num1,num2) return 
+		{ mod("MinionModifier", "LIST", { mod =  mod("LifeConvertToEnergyShield", "BASE", tonumber(num2)	
+		,{ type = "PerStat", stat = "ChaosResist", div = tonumber(num1) }
+		)  })  } end,
+	["召唤生物每有 (%d+)%% 混沌抗性就将其 (%d+)%% 最大生命转化为最大能量护盾"] = function(_,num1,num2) return 
+		{ mod("MinionModifier", "LIST", { mod =  mod("LifeConvertToEnergyShield", "BASE", tonumber(num2)	
 		,{ type = "PerStat", stat = "ChaosResist", div = tonumber(num1) }
 		)  })  } end,
 	["每受到一个捷技能影响，你身上的光环技能的效果提高 (%d+)%%，最多提高 (%d+)%%"] =function(_,num1,num2) return {  
@@ -3600,9 +3631,21 @@ local specialModList = {
 	["若近期战吼有献祭怒火，被战吼增助的攻击总伤害额外提高 (%d+)%%"]= function(num) return { 
 	 mod("Damage", "MORE", num,nil, ModFlag.Attack, { type = "Condition", var = "EmpowerAttack" }, { type = "Condition", var = "WarcrySacrificedRage" } )  } end, 
 	["战吼技能冷却时间为 (%d+) 秒"]= function(num) return { 
-	--mod("GemProperty", "LIST",  { keyword = "warcry", key = "cooldown", value = num }) 
 	mod("CooldownRecovery", "OVERRIDE", num, nil, 0, KeywordFlag.Warcry)
 	} end, 
+	["你至少有 (%d+) 点怒火时，周围敌人被压垮"]= function(num) return { 	
+			mod("EnemyPhysicalDamageReduction", "BASE", -15, { type = "GlobalEffect", effectType = "Debuff", effectName = "压垮" }, 
+			{ type = "MultiplierThreshold", var = "Rage", threshold = tonumber(num) })} end, 
+	["每 (%d+) 点怒火使物理伤害提高 (%d+)%%"]= function(_,num1,num2) return { 
+	 mod("PhysicalDamage", "INC", tonumber(num2),{ type = "Multiplier", var = "Rage", div = tonumber(num1) } )  } end, 
+	["血姿态下获得 (%d+) 每秒生命回复"]= function(num) return { 
+	 mod("LifeRegen", "BASE", num, { type = "Condition", var = "BloodStance" } )  } end, 
+	["血姿态下，投射物伤害提高 (%d+)%%"]= function(num) return { 
+	 mod("Damage", "INC", num, nil, ModFlag.Projectile, { type = "Condition", var = "BloodStance" } )  } end, 
+	["沙姿态下 %+(%d+) 闪避值"]= function(num) return { 
+	 mod("Evasion", "BASE", num, { type = "Condition", var = "SandStance" } )  } end, 
+	["沙姿态下，范围效果扩大 (%d+)%%"]= function(num) return { 
+	 mod("AreaOfEffect", "INC", num, { type = "Condition", var = "SandStance" } )  } end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

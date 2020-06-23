@@ -732,7 +732,7 @@ local modFlagList = {
 	["火焰、冰霜、闪电技能的"] = { keywordFlags = bor(KeywordFlag.Lightning, KeywordFlag.Cold, KeywordFlag.Fire) },
 	["元素技能的"] = { keywordFlags = bor(KeywordFlag.Lightning, KeywordFlag.Cold, KeywordFlag.Fire) },
 	["烙印技能的"] ={ tag = { type = "SkillType", skillType = SkillType.Brand } },
-	["烙印的"] ={ tag = { type = "SkillType", skillType = SkillType.Brand } },
+	["烙印的"] ={ keywordFlags = KeywordFlag.Brand },
 	["烙印技能"] = { tag = { type = "SkillType", skillType = SkillType.Brand } },
 	["异常状态"] = { flags = ModFlag.Ailment },
 	["闪电技能的"] = { keywordFlags = KeywordFlag.Lightning }, --备注：with lightning skills

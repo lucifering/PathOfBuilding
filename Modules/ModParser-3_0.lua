@@ -1598,9 +1598,9 @@ end
 
 
 for name, grantedEffect in pairs(data["3_0"].skills) do
-	if not grantedEffect.hidden or grantedEffect.fromItem then
+	--if not grantedEffect.hidden or grantedEffect.fromItem then
 		gemIdLookup[grantedEffect.name:lower()] = grantedEffect.id
-	end
+	--end
 end
 local function extraSkill(name, level, noSupports)
 	name = name:gsub(" skill","")
@@ -2135,6 +2135,8 @@ local specialModList = {
 	["此物品上的技能石受到 (%d+) 级的 额外击中 辅助"] = function(num) return { mod("ExtraSupport", "LIST", { skillId = "SupportAdditionalAccuracy", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
 	["此物品上的技能石受到 (%d+) 级的 【(.+)】 辅助"] = function(num, _, support) return { 
 	mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
+	["物品上的技能石受到 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { 
+	mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
 	["此物品上的技能石受到 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { 
 	mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
 	["插槽内的的技能石被 (%d+) 级的【(.+)】辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
@@ -2287,7 +2289,7 @@ local specialModList = {
 	["格挡时，用 (%d+) 级的【(.+)】诅咒敌人"] = function(num, _, skill) return extraSkill(skill, num, true) end, 
 	["攻击被嘲讽的敌人时，攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack,{ type = "ActorCondition", actor = "enemy", var = "Taunted" })  } end, 
 	["你身上的每层中毒状态使你每秒回复 (%d+) 能量护盾，最多可有 (%d+) 秒"]= function(_,num1,num2) return {  mod("EnergyShieldRegen", "BASE", tonumber(num1),{ type = "Multiplier", var = "PoisonStack", limit = tonumber(num2), limitTotal = true })  } end,
-	["获得 (%d+) 级的【(.+)】"] = function(_,num,skill_name) return {  mod("ExtraSkill", "LIST", { type = "SkillName",skillName =FuckSkillActivityCnName(skill_name), level = num})   } end,
+	["获得 (%d+) 级的【(.+)】"] =  function( _,num, skill) return extraSkill(skill, num) end, 
 	["【(.+)】技能石等级 %+(%d+)"] = function(_,skill_name,num)  return { mod("GemProperty", "LIST",  { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name), key = "level", value = num }) } end,
 	["对受诅咒敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num, nil, ModFlag.Hit,{ type = "ActorCondition", actor = "enemy", var = "Cursed" })  } end, 
 	["攻击击中被诅咒敌人时有 (%d+)%% 几率造成流血"]= function(num) return {  mod("BleedChance", "BASE", num, nil, ModFlag.Attack,{ type = "ActorCondition", actor = "enemy", var = "Cursed" })  } end, 
@@ -3646,6 +3648,28 @@ local specialModList = {
 	 mod("Evasion", "BASE", num, { type = "Condition", var = "SandStance" } )  } end, 
 	["沙姿态下，范围效果扩大 (%d+)%%"]= function(num) return { 
 	 mod("AreaOfEffect", "INC", num, { type = "Condition", var = "SandStance" } )  } end, 
+	["获得【召唤高等不屈先驱者】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="SummonHarbingerOfFocusUber"})   } end,
+	["获得【召唤高等射术先驱者】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="SummonHarbingerOfDirectionsUber"})   } end,
+	["获得【召唤高等秘法先驱者】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="SummonHarbingerOfTheArcaneUber"})   } end,
+	["获得【召唤高等冰雷先驱者】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="SummonHarbingerOfStormsUber"})   } end,
+	["获得【召唤高等时空先驱者】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="SummonHarbingerOfTimeUber"})   } end,
+	["获得【召唤高等残暴先驱者】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="SummonHarbingerOfBrutalityUber"})   } end,
+	["你在【护体】状态下 %+(%d+) 护甲"]= function(num) return { 
+	 mod("Armour", "BASE", num, { type = "Condition", var = "Fortify" } )  } end, 
+	["你在【迷踪】状态下 %+(%d+) 闪避值"]= function(num) return { 
+	 mod("Evasion", "BASE", num, { type = "Condition", var = "Phasing" } )  } end, 
+	["你在【灵巧】状态下，有 (%d+)%% 几率避免元素异常状态"]= function(num) return { 
+	mod("AvoidShock", "BASE", num, { type = "Condition", var = "Elusive" } ),
+	mod("AvoidFrozen", "BASE", num, { type = "Condition", var = "Elusive" } ),
+	mod("AvoidChilled", "BASE", num, { type = "Condition", var = "Elusive" } ),
+	mod("AvoidIgnite", "BASE", num, { type = "Condition", var = "Elusive" } ),
+	} end, 
+	["在【奉献地面】上，你身上的诅咒效果降低 (%d+)%%"]= function(num) return { 
+	 mod("CurseEffectOnSelf", "INC", -num, { type = "Condition", var = "OnConsecratedGround" } )  } end, 
+	["你具有【猛攻】的情况下，命中值提高 (%d+)%%"]= function(num) return { 
+	 mod("Accuracy", "INC", num, { type = "Condition", var = "Onslaught" } )  } end, 
+	["被你瘫痪的敌人受到的持续伤害提高 (%d+)%%"]= function(num) return { 
+	 mod("DamageTakenOverTime", "INC", num,  { type = "ActorCondition", actor = "enemy", var = "Maimed" } )  } end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

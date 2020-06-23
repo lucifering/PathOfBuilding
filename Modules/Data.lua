@@ -246,6 +246,7 @@ data.misc = { -- magic numbers
 	MineDetonationRadiusBase = 60,
 	MineAuraRadiusBase = 35,
 	PurposefulHarbingerMaxBuffPercent = 40,
+	ImpaleDurationBase = 8,
 }
 
 ---------------------------
@@ -278,6 +279,7 @@ for _, targetVersion in ipairs(targetVersionList) do
 		Helmet = dataModule("EnchantmentHelmet"),
 		Boots = dataModule("EnchantmentBoots"),
 		Gloves = dataModule("EnchantmentGloves"),
+		Belt = dataModule("EnchantmentBelts"),
 	}
 	verData.synthesisedMods = {
 		Item = dataModule("ModSynthesised"),

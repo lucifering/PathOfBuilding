@@ -578,6 +578,7 @@ return {
     flag = "impale",
 	extra = "{0:output:ImpaleChance}%",
 { label = "穿刺效果持续次数", { format = "{0:output:ImpaleStacksMax}", }},
+{ label = "穿刺效果持续时间", { format = "{0:output:ImpaleDuration} 秒",{ modName = "ImpaleDuration"}, }},
 { label = "穿刺层数", { format = "{0:output:ImpaleStacks}" }},
  
 
@@ -610,6 +611,8 @@ return {
 { label = "副手伤害加成.", bgCol = colorCodes.OFFHANDBG, flag = "weapon2Attack", haveOutput = "OffHand.ImpaleModifier", { format = "{3:output:OffHand.ImpaleModifier}", modType = "MORE",
 		{ breakdown = "OffHand.ImpaleModifier" },
 	}, },
+	
+	
 } },
 
 { 1, "Poison", 1, "中毒", colorCodes.OFFENCE, {

@@ -2454,6 +2454,13 @@ t_insert(breakdown.EnemyStunDuration, s_format("/ %.2f ^8(延长/缩短 敌人�
             skillFlags.impale = true
             local impaleChance = m_min(output.ImpaleChance/100, 1)
             local maxStacks = 5 + skillModList:Sum("BASE", cfg, "ImpaleStacksMax") -- magic number: base stacks duration
+			
+			
+			local impaleDuration = (data.misc.ImpaleDurationBase + skillModList:Sum("BASE", cfg, "ImpaleDuration"))*
+			 calcLib.mod(skillModList, cfg,  "ImpaleDuration")
+			
+			
+			
             local configStacks = enemyDB:Sum("BASE", nil, "Multiplier:ImpaleStack")
             local impaleStacks = configStacks > 0 and m_min(configStacks, maxStacks) or  maxStacks
 
@@ -2490,6 +2497,8 @@ t_insert(breakdown.EnemyStunDuration, s_format("/ %.2f ^8(延长/缩短 敌人�
 			
             globalOutput.ImpaleStacksMax = maxStacks
 			globalOutput.ImpaleStacks = impaleStacks
+			
+			globalOutput.ImpaleDuration = impaleDuration
 			output.ImpaleStoredDamage = impaleStoredDamage * 100
 			output.ImpaleModifier = 1 + impaleDMGModifier
 

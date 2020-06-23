@@ -216,3 +216,5 @@ Data/3_0/BlightPassives.lua
 Classes/SearchHost.lua
 Data/3_0/ModJewelCluster.lua
 Data/3_0/ClusterJewels.lua
+Data/2_6/EnchantmentBelts.lua
+Data/3_0/EnchantmentBelts.lua

@@ -1373,6 +1373,7 @@ skills["StormCascadeTriggered"] = {
 		area = true,
 	},
 	baseMods = {
+		skill("showAverage", true),
 	},
 	qualityStats = {
 	},
@@ -2160,5 +2161,196 @@ skills["ChannelledSnipeSupport"] = {
 	},
 	levels = {
 		[20] = { 0, 120, 165, cooldown = 0.05, levelRequirement = 0, statInterpolation = { 1, 1, 1, }, },
+	},
+}
+
+
+skills["BrandDetonate"] = {
+	name = "烙印喷涌",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 5.5,
+	incrementalEffectiveness = 0.03999999910593,
+	description = "使你在目标区域附近的烙印超载，让它们更快激活，也更快耗尽。被超载的烙印耗尽时对一片区域造成伤害。",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Triggerable] = true, [SkillType.PhysicalSkill] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.AreaSpell] = true, [SkillType.SpellCanRepeat] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, [SkillType.Type90] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 0.6,
+	baseFlags = {
+	},
+	baseMods = {
+	skill("showAverage", true),
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_physical_damage",
+		"spell_maximum_base_physical_damage",
+		"brand_detonate_faster_activation_%_per_second",
+		"brand_detonate_faster_duration_%_per_second",
+		"display_brand_deonate_tag_conversion",
+	},
+	levels = {
+		[20] = { 0.80000001192093, 1.2000000476837, 25, 150, critChance = 5, manaCost = 20, damageEffectiveness = 4.3, cooldown = 1.5,
+		levelRequirement = 70, statInterpolation = { 3, 3, 1, 1, }, },
+	},
+}
+
+
+
+skills["SummonHarbingerOfTheArcaneUber"] = {
+	name = "召唤高等秘法先驱者",
+	hidden = true,
+	color = 4,
+	description = "召唤一个不死的先驱者。它会偶尔对你施放下列增益法术：秘术增强，总法术伤害、总施法速度、总魔力回复速度额外提高，以及一个有几率导致感电并穿透闪电抗性的增益效果。",
+	skillTypes = { [SkillType.Triggerable] = true, [SkillType.SkillCanMine] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Spell] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.CreatesMinion] = true, [SkillType.Type90] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	cannotBeSupported = true,
+	fromItem = true,
+	baseFlags = {
+		spell = true,
+		minion = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"alternate_minion",
+		"display_one_harbinger_allowed",
+	},
+	levels = {
+		[1] = { 6, cooldown = 6, levelRequirement = 1, statInterpolation = { 1, }, },
+	},
+}
+skills["SummonHarbingerOfBrutalityUber"] = {
+	name = "召唤高等残暴先驱者",
+	hidden = true,
+	color = 4,
+	description = "召唤一个不死的先驱者。当你周围有稀有或传奇敌人时，它会偶尔给你提供一个增益效果，大幅提高伤害、攻击速度和移动速度，降低你受到的伤害。并使被你击败的敌人爆炸，造成其最大生命 10% 的物理伤害。",
+	skillTypes = { [SkillType.Triggerable] = true, [SkillType.SkillCanMine] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Spell] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.CreatesMinion] = true, [SkillType.Type90] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	cannotBeSupported = true,
+	fromItem = true,
+	baseFlags = {
+		spell = true,
+		minion = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"alternate_minion",
+		"display_one_harbinger_allowed",
+	},
+	levels = {
+		[1] = { 11, cooldown = 6, levelRequirement = 1, statInterpolation = { 1, }, },
+	},
+}
+skills["SummonHarbingerOfDirectionsUber"] = {
+	name = "召唤高等射术先驱者",
+	hidden = true,
+	color = 4,
+	description = "召唤一个不死的先驱者。它会对你施放随机增益，附加以下任意一个或全部效果：发射 2 个额外投射物，额外连锁 2 次，投射物穿透 2 个额外目标，或者投射物分裂时额外分裂一次。",
+	skillTypes = { [SkillType.Triggerable] = true, [SkillType.SkillCanMine] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Spell] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.CreatesMinion] = true, [SkillType.Type90] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	cannotBeSupported = true,
+	fromItem = true,
+	baseFlags = {
+		spell = true,
+		minion = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"alternate_minion",
+		"display_one_harbinger_allowed",
+	},
+	levels = {
+		[1] = { 9, cooldown = 6, levelRequirement = 1, statInterpolation = { 1, }, },
+	},
+}
+skills["SummonHarbingerOfFocusUber"] = {
+	name = "召唤高等不屈先驱者",
+	hidden = true,
+	color = 4,
+	description = "召唤一个不死的先驱者。它会在你持续吟唱时偶尔会对你施放一个增益效果，减少你受到的伤害，使你避免所有晕眩和异常状态，并免受诅咒影响。",
+	skillTypes = { [SkillType.Triggerable] = true, [SkillType.SkillCanMine] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Spell] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.CreatesMinion] = true, [SkillType.Type90] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	cannotBeSupported = true,
+	fromItem = true,
+	baseFlags = {
+		spell = true,
+		minion = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"alternate_minion",
+		"display_one_harbinger_allowed",
+	},
+	levels = {
+		[1] = { 8, cooldown = 6, levelRequirement = 1, statInterpolation = { 1, }, },
+	},
+}
+skills["SummonHarbingerOfStormsUber"] = {
+	name = "召唤高等冰雷先驱者",
+	hidden = true,
+	color = 4,
+	description = "召唤一个不死的先驱者。它会偶尔对敌人施加提高效果的冰缓或感电效果，并连锁给周围其它敌人。",
+	skillTypes = { [SkillType.Triggerable] = true, [SkillType.SkillCanMine] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Spell] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.CreatesMinion] = true, [SkillType.Type90] = true, },
+	minionSkillTypes = { [SkillType.NonHitChill] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	cannotBeSupported = true,
+	fromItem = true,
+	baseFlags = {
+		spell = true,
+		minion = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"alternate_minion",
+		"display_one_harbinger_allowed",
+	},
+	levels = {
+		[1] = { 10, cooldown = 6, levelRequirement = 1, statInterpolation = { 1, }, },
+	},
+}
+skills["SummonHarbingerOfTimeUber"] = {
+	name = "召唤高等时空先驱者",
+	hidden = true,
+	color = 4,
+	description = "召唤一个不死的先驱者。它会偶尔对你施放光环，增加你和你周围所有队友的行动速度。",
+	skillTypes = { [SkillType.Triggerable] = true, [SkillType.SkillCanMine] = true, [SkillType.Minion] = true, [SkillType.CreateMinion] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Spell] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.CreatesMinion] = true, [SkillType.Type90] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	cannotBeSupported = true,
+	fromItem = true,
+	baseFlags = {
+		spell = true,
+		minion = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"alternate_minion",
+		"display_one_harbinger_allowed",
+	},
+	levels = {
+		[1] = { 7, cooldown = 6, levelRequirement = 1, statInterpolation = { 1, }, },
 	},
 }

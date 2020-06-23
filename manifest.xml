@@ -143,7 +143,7 @@
 <File sha1="ceac314d806dfb0f3ea13b04d091e991130653ab" name="Data/3_0/SkillStatMap.lua" part="program"/>
 <File sha1="0d8768ef94c1684c03cbf92f79f1a69ac27ef1af" name="Data/3_0/Spectres.lua" part="program"/>
 <File sha1="c7984665606badd8e765ad41f5e7753d5b583d00" name="Data/3_0/Skills/act_dex.lua" part="program"/>
-<File sha1="d2caffea8dff10c0a3431ee3797061f9216e87d9" name="Data/3_0/Skills/act_int.lua" part="program"/>
+<File sha1="b5bfa292bbb7fc9c735dedc77085d1c02f492dce" name="Data/3_0/Skills/act_int.lua" part="program"/>
 <File sha1="73983e41cd689660f373c39f02a40fbf2f59a7e7" name="Data/3_0/Skills/act_str.lua" part="program"/>
 <File sha1="d5da875adec887949b540dfb584a6b6babe053c8" name="Data/3_0/Skills/glove.lua" part="program"/>
 <File sha1="7c58833fa677069fa9302ba8e0864d7ce1da5b85" name="Data/3_0/Skills/minion.lua" part="program"/>
@@ -416,7 +416,6 @@
 <File sha1="5e36e838c464f275f6149e670d650e8c8a401079" name="TreeData/3_11/skills-3.jpg" part="program"/>
 <File sha1="9e8fbd483c8d4ca88be18b3a3b5361fe064ac84e" name="TreeData/3_11/skills-disabled-3.jpg" part="program"/>
 <File sha1="6c88a4493b025190a3b701518cafbf8c6ab87310" name="TreeData/3_11/tree.lua" part="program"/>
-
 
 
 </PoBVersion>

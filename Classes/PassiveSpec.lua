@@ -1261,30 +1261,21 @@ function PassiveSpecClass:allocTimeJew()
 											specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
 										end								
 										
-										specNode.dn="风舞者";
-										specNode.sd={"近期内如果没有被击中，则承受的总伤害额外降低 20%","近期内如果没有被击中，则总闪避值额外降低 40%","如果近期内被击中，则总闪避值额外提高 20%"};
+										specNode.dn="叛徒";
+										specNode.sd={"每有一个空药水栏都每 5 秒获得 4 次药剂使用次数"};
 										
-										specNode.reminderText={"( 近期内意指 4 秒内 )"};
+										specNode.reminderText={""};
 										specNode.isTimeless=1;									 
 										newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
 										newmod1.isDIY=1;	
 										specNode.keystoneMod=newmod1;			
 										specNode.hide=nil;						
 										
-										list1={}
-										list2={}
-										list3={}
-										newmodList1={}
-										newmodList2={}	
-										newmodList3={}												
-										t_insert( list1,modLib.createMod("DamageTaken", "MORE", -20,"Tree"..specNode.id, { type = "Condition", var = "BeenHitRecently" , neg = true}))
-										t_insert( list2,modLib.createMod("Evasion", "MORE", -40,"Tree"..specNode.id, { type = "Condition", var = "BeenHitRecently" , neg = true}))
+										list1={}										 
+										newmodList1={}									 	 
+										newmodList1["list"] =  nil
 										 
-										t_insert( list3,modLib.createMod("Evasion", "MORE", 20,"Tree"..specNode.id, { type = "Condition", var = "BeenHitRecently" }))
-										newmodList1["list"] =  list1
-										newmodList2["list"] =  list2
-										newmodList3["list"] =  list3
-										specNode.mods={newmodList1,newmodList2,newmodList3,newmodList4}
+										specNode.mods={newmodList1}
 									end 
 								elseif npcName =='安赛娜丝' then 
 									if not self:hasDiyModItem(specNode.keystoneMod) then 
@@ -1502,8 +1493,8 @@ function PassiveSpecClass:allocTimeJew()
 											specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
 										end								
 										
-										specNode.dn="惘信者";
-										specNode.sd={"最大能量护盾为 0","非满血状态时，每秒献祭 20% 魔力来回复同等数值的生命"};
+										specNode.dn="超然飞升";
+										specNode.sd={"-5% 最大元素抗性","被击中时，护甲值不对物理伤害生效，改为对火焰、冰霜、闪电伤害生效"};
 										specNode.reminderText=nil;
 										specNode.isTimeless=1;									 
 										newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
@@ -1514,8 +1505,11 @@ function PassiveSpecClass:allocTimeJew()
 										list1={}
 										list2={}
 										newmodList1={}
-										newmodList2={}										 
-										t_insert( list1,modLib.createMod("EnergyShield", "OVERRIDE", 0, "Tree"..specNode.id))										 
+										newmodList2={}	
+								
+										t_insert( list1,modLib.createMod("FireResistMax", "BASE", -5, "Tree"..specNode.id))
+										t_insert( list1,modLib.createMod("ColdResistMax", "BASE", -5, "Tree"..specNode.id))		
+										t_insert( list1,modLib.createMod("LightningResistMax", "BASE", -5, "Tree"..specNode.id))												
 										newmodList1["list"] =  list1
 										newmodList2["list"] =  nil
 										specNode.mods={newmodList1,newmodList2}
@@ -1688,8 +1682,8 @@ function PassiveSpecClass:allocTimeJew()
 													specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
 												end								
 												
-												specNode.dn="斗转星移";
-												specNode.sd={"攻击格挡率翻倍","法术格挡率翻倍","被格挡的击中对你造成 50% 伤害"};
+												specNode.dn="破枷除锁";
+												specNode.sd={"每秒回复 3 点怒火","魔力回复速度的加快和减慢效果也作用与怒火回复速度","你击中敌人时失去 5 点怒火，每 0.3 秒只发生一次"};
 												specNode.reminderText=nil;
 												specNode.isTimeless=1;									 
 												newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
@@ -1704,11 +1698,11 @@ function PassiveSpecClass:allocTimeJew()
 												newmodList2={}	
 												newmodList3={}												
 										 
-												t_insert( list1,modLib.createMod("BlockChance", "MORE", 100, "Tree"..specNode.id))					 
-												t_insert( list2,modLib.createMod("SpellBlockChance", "MORE", 100, "Tree"..specNode.id))	
-												--t_insert( list3,modLib.createMod("LightningResist", "MORE", -50, "Tree"..specNode.id))													
+												t_insert( list1,modLib.createMod("Condition:CanGainRage", "FLAG", true,"Tree"..specNode.id))			
+												t_insert( list1,modLib.createMod("Dummy", "DUMMY", 1, "Tree"..specNode.id))					 
+																									
 												newmodList1["list"] =  list1
-												newmodList2["list"] =  list2
+												newmodList2["list"] =  nil
 												newmodList3["list"] =  nil
 												specNode.mods={newmodList1,newmodList2,newmodList3}
 											end 
@@ -1875,32 +1869,25 @@ function PassiveSpecClass:allocTimeJew()
 													specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
 												end								
 												
-												specNode.dn="无上自我";
-												specNode.sd={"你只能从技能中得到一种非旗帜光环。","光环技能不能影响友军","你的光环技能对自身造成的总效果额外提高 50%","总魔力保留额外提高 50%"};
+												specNode.dn="无上宣示";
+												specNode.sd={"无视属性需求","无法获得属性加成"};
 												specNode.reminderText=nil;
 												specNode.isTimeless=1;									 
 												newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
 												newmod1.isDIY=1;	
 												specNode.keystoneMod=newmod1;			
-												specNode.hide=nil;						
+												specNode.hide=nil;			
 												
 												list1={}
-												list2={}
-												list3={}
-												list4={}
+												list2={}												
 												newmodList1={}
-												newmodList2={}	
-												newmodList3={}
-												newmodList4={}		
-t_insert( list2,modLib.createMod("SelfAurasCannotAffectAllies", "FLAG", true, "Tree"..specNode.id))
-t_insert( list3,modLib.createMod("AuraEffectOnSelf", "MORE", 50, "Tree"..specNode.id))
-t_insert( list4,modLib.createMod("ManaReserved", "MORE", 50, "Tree"..specNode.id))													
+												newmodList2={}													
+t_insert( list1,modLib.createMod("GlobalNoAttributeRequirements", "FLAG", true, "Tree"..specNode.id))
+t_insert( list2,modLib.createMod("NoAttributeBonus", "FLAG", true, "Tree"..specNode.id))											
 												--t_insert( list1,newmod1)										 
-												newmodList1["list"] =  nil
-												newmodList2["list"] =  list2
-												newmodList3["list"] =  list3
-												newmodList4["list"] =  list4
-												specNode.mods={newmodList1,newmodList2,newmodList3,newmodList4}
+												newmodList1["list"] =  list1
+												newmodList2["list"] =  list2											
+												specNode.mods={newmodList1,newmodList2}
 											end 
 									
 									end 
@@ -2059,8 +2046,8 @@ t_insert( list2,modLib.createMod("MaxLifeLeechRate", "MORE", -50, "Tree"..specNo
 													specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
 												end								
 												
-												specNode.dn="腐化的灵魂";
-												specNode.sd={"受到的非混沌伤害有 50% 穿透能量护盾","获得等同 20% 最大生命的额外最大能量护盾"};
+												specNode.dn="不朽野望";
+												specNode.sd={"能量护盾初始为 0","无法回复，也无法补充","能量护盾每秒损失 5%","满血时无法移除生命偷取效果","生命偷取在满血时恢复能量护盾"};
 												specNode.reminderText=nil;
 												specNode.isTimeless=1; 
 												newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
@@ -2069,13 +2056,19 @@ t_insert( list2,modLib.createMod("MaxLifeLeechRate", "MORE", -50, "Tree"..specNo
 												specNode.hide=nil;	
 												list1={}
 												list2={}
+												list3={}
+												list4={}
 												newmodList1={}
 												newmodList2={}	
-												t_insert( list2,modLib.createMod("LifeGainAsEnergyShield", "BASE", 20, "Tree"..specNode.id))
+												newmodList3={}	
+												newmodList4={}	
+											--	t_insert( list2,modLib.createMod("LifeGainAsEnergyShield", "BASE", 20, "Tree"..specNode.id))
  									 
 												newmodList1["list"] =  nil
-												newmodList2["list"] =  list2			 
-												specNode.mods={newmodList1,newmodList2}
+												newmodList2["list"] =  nil	
+												newmodList3["list"] =  nil
+												newmodList4["list"] =  nil												
+												specNode.mods={newmodList1,newmodList2,newmodList3,newmodList4}
 											end 
 									
 									end 

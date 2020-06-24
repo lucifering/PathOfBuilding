@@ -732,7 +732,7 @@ local modFlagList = {
 	["火焰、冰霜、闪电技能的"] = { keywordFlags = bor(KeywordFlag.Lightning, KeywordFlag.Cold, KeywordFlag.Fire) },
 	["元素技能的"] = { keywordFlags = bor(KeywordFlag.Lightning, KeywordFlag.Cold, KeywordFlag.Fire) },
 	["烙印技能的"] ={ tag = { type = "SkillType", skillType = SkillType.Brand } },
-	["烙印的"] ={ keywordFlags = KeywordFlag.Brand },
+	["烙印的"] ={ tag = { type = "SkillType", skillType = SkillType.Brand } },
 	["烙印技能"] = { tag = { type = "SkillType", skillType = SkillType.Brand } },
 	["异常状态"] = { flags = ModFlag.Ailment },
 	["闪电技能的"] = { keywordFlags = KeywordFlag.Lightning }, --备注：with lightning skills
@@ -1588,6 +1588,8 @@ else
 	return activity_skillname:gsub("狂野部族打击","野性打击") :gsub("火舌图腾","圣焰图腾"):gsub("霜害","寒霜爆")
 	:gsub("极地吐息","电光寒霜")
 	:gsub("深渊战吼","炼狱呼嚎")
+	:gsub("裂地崩山","尖刺战吼")
+	
 	
 	 
 	
@@ -3075,9 +3077,19 @@ local specialModList = {
 			flag("Condition:CanGainRage"),
 			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }) -- Make the Configuration option appear
 	},
+	["每秒回复 %d+ 点怒火"] = {
+			flag("Condition:CanGainRage"),
+			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }) -- Make the Configuration option appear
+	},
 	["攻击击中获得 %d+ 点怒火。每 [%d%.]+ 秒只会发生一次"] = {
 			flag("Condition:CanGainRage"),
 			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }) -- Make the Configuration option appear
+	},
+	["无视属性需求"] = {
+			flag("GlobalNoAttributeRequirements"),
+	},
+	["无法获得属性加成"] = {
+			flag("NoAttributeBonus"),
 	},
 	["来自斧或剑的攻击击中时获得 %d+ 层怒火，每秒最多获得一层"] = {
 			flag("Condition:CanGainRage"),
@@ -3670,6 +3682,13 @@ local specialModList = {
 	 mod("Accuracy", "INC", num, { type = "Condition", var = "Onslaught" } )  } end, 
 	["被你瘫痪的敌人受到的持续伤害提高 (%d+)%%"]= function(num) return { 
 	 mod("DamageTakenOverTime", "INC", num,  { type = "ActorCondition", actor = "enemy", var = "Maimed" } )  } end, 
+	["%-(%d+)%% 最大元素抗性"]= function(num) return { 
+	 mod("FireResistMax", "BASE", -num),
+	 mod("ColdResistMax", "BASE", -num),
+	 mod("LightningResistMax", "BASE", -num),
+	 } end, 
+	["召集部队"] = { mod("Keystone", "LIST", "召集部队") },
+	["【斗转星移】"] = { mod("Keystone", "LIST", "斗转星移") },
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded
@@ -4792,6 +4811,9 @@ local jewelThresholdFuncs = {
  getThreshold("Str", "ChainCountMax", "BASE", 1, { type = "SkillName", skillName = "熔岩之击" }),
 ["若范围内含有 40 点力量，【熔岩之击】的发射的总投射物额外减少 50%"] =
  getThreshold("Str", "ProjectileCount", "MORE", -50, { type = "SkillName", skillName = "熔岩之击" }),
+ 
+ 
+
 
 	
 	

@@ -2081,6 +2081,7 @@ name = "裂地之击",
 description = "以长杖、斧头或锤类重击地面，制造一道向前的冲击波，对敌人造成伤害，并有较高的几率击晕敌人。敌人距离越近则冲击波伤害越高。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
+		["None"] = true,
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
 		["Two Handed Mace"] = true,
@@ -2160,6 +2161,7 @@ name = "瓦尔.裂地之击",
 description = "角色使用长杖、斧头或锤类重击地面，制造出一道向四面八方扩散的冲击波，对敌人造成伤害并使其晕眩。敌人距离越近则冲击波伤害越高。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.Vaal] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
+		["None"] = true,
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
 		["Two Handed Mace"] = true,
@@ -4550,6 +4552,7 @@ name = "大地震击",
 description = "用锤类、短杖、斧类或长杖重击地面，创造一道冲击波，对前方一片区域内的敌人造成伤害。被冲击波击中的敌人会释放出一道圆形震波，对其周围的敌人造成伤害。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, },
 	weaponTypes = {
+		["None"] = true,
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
 		["Two Handed Mace"] = true,
@@ -5715,7 +5718,7 @@ skills["SeismicCry"] = {
 
 
 skills["SpikeSlam"] = {
-	name = "裂地崩山",
+	name = "尖刺战吼",
 	color = 1,	
 description = "猛击地面，发出矩形裂缝，对敌人造成范围伤害，并在裂缝结束时从地面刺出一根尖刺。你或周围友军使用战吼或其他猛击技能时会让尖刺破碎，对周围敌人造成伤害。限定锤类，短杖，斧类，长杖或者空手。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.Slam] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Duration] = true, },

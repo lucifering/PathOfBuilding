@@ -62,8 +62,10 @@ local function mergeKeystones(env)
 
 	for _, name in ipairs(modDB:List(nil, "Keystone")) do
 		name =fuckCnKeystones(name)
+		
 		if not env.keystonesAdded[name] then
-			env.keystonesAdded[name] = true			
+			env.keystonesAdded[name] = true		
+			
 			modDB:AddList(env.spec.tree.keystoneMap[name].modList)
 		end
 	end
@@ -213,8 +215,8 @@ local function doActorAttribsPoolsConditions(env, actor)
 		end
 	end
 	-- Add attribute bonuses
-	if not modDB:Flag(nil, "NoStrBonusToLife") then
-modDB:NewMod("Life", "BASE", m_floor(output.Str / 2), "力量")
+	if not modDB:Flag(nil, "NoStrBonusToLife") and not modDB:Flag(nil, "NoAttributeBonus") then
+		modDB:NewMod("Life", "BASE", m_floor(output.Str / 2), "力量")
 	end
 	local strDmgBonusRatioOverride = modDB:Sum("BASE", nil, "StrDmgBonusRatioOverride")
 	if strDmgBonusRatioOverride > 0 then
@@ -222,15 +224,22 @@ modDB:NewMod("Life", "BASE", m_floor(output.Str / 2), "力量")
 	else
 		actor.strDmgBonus = round((output.Str + modDB:Sum("BASE", nil, "DexIntToMeleeBonus")) / 5)
 	end
-modDB:NewMod("PhysicalDamage", "INC", actor.strDmgBonus, "力量", ModFlag.Melee)
-modDB:NewMod("Accuracy", "BASE", output.Dex * 2, "敏捷")
-	if not modDB:Flag(nil, "IronReflexes") then
-modDB:NewMod("Evasion", "INC", round(output.Dex / 5), "敏捷")
+	
+	if not   modDB:Flag(nil, "NoAttributeBonus") then
+		modDB:NewMod("PhysicalDamage", "INC", actor.strDmgBonus, "力量", ModFlag.Melee)
+		modDB:NewMod("Accuracy", "BASE", output.Dex * 2, "敏捷")
+		modDB:NewMod("EnergyShield", "INC", round(output.Int / 5), "智慧")
 	end
-	if not modDB:Flag(nil, "NoIntBonusToMana") then
-modDB:NewMod("Mana", "BASE", round(output.Int / 2), "智慧")
+	
+
+	if not modDB:Flag(nil, "IronReflexes")  and  not   modDB:Flag(nil, "NoAttributeBonus") then
+		modDB:NewMod("Evasion", "INC", round(output.Dex / 5), "敏捷")
 	end
-modDB:NewMod("EnergyShield", "INC", round(output.Int / 5), "智慧")
+	if not modDB:Flag(nil, "NoIntBonusToMana") and  not   modDB:Flag(nil, "NoAttributeBonus")  then
+		modDB:NewMod("Mana", "BASE", round(output.Int / 2), "智慧")
+	end
+	
+
 
 	-- Life/mana pools
 	if modDB:Flag(nil, "ChaosInoculation") then
@@ -764,56 +773,77 @@ function calcs.perform(env)
 
 	-- Process attribute requirements
 	do
-		local reqMult = calcLib.mod(modDB, nil, "GlobalAttributeRequirements")
-		for _, attr in ipairs({"Str","Dex","Int"}) do
-			if env.mode == "CALCS" then
-				breakdown["Req"..attr] = {
-					rowList = { },
-					colList = {
-						{ label = attr, key = "req" },
-						{ label = "Source", key = "source" },
-						{ label = "Source Name", key = "sourceName" },
-					}
-				}
-			end
-			local out = 0
-			for _, reqSource in ipairs(env.requirementsTable) do
-				if reqSource[attr] and reqSource[attr] > 0 then
-					local req = m_floor(reqSource[attr] * reqMult)
-					out = m_max(out, req)
-					if env.mode == "CALCS" then
-						local row = {
-							req = req > output[attr] and colorCodes.NEGATIVE..req or req,
-							reqNum = req,
-							source = reqSource.source,
+	
+		if modDB:Flag(nil, "GlobalNoAttributeRequirements") then
+			for _, attr in ipairs({"Str","Dex","Int"}) do
+				if env.mode == "CALCS" then
+					breakdown["Req"..attr] = {
+						rowList = { },
+						colList = {
+							{ label = attr, key = "req" },
+							{ label = "Source", key = "source" },
+							{ label = "Source Name", key = "sourceName" },
 						}
-						if reqSource.source == "Item" then
-							local item = reqSource.sourceItem
-							row.sourceName = colorCodes[item.rarity]..item.name
-							row.sourceNameTooltip = function(tooltip)
-								env.build.itemsTab:AddItemTooltip(tooltip, item, reqSource.sourceSlot)
+					}
+					output["Req"..attr.."String"] = "无视属性需求"
+				end
+				
+				output["Req"..attr] = 0
+				
+			end
+		else 
+			local reqMult = calcLib.mod(modDB, nil, "GlobalAttributeRequirements")
+			for _, attr in ipairs({"Str","Dex","Int"}) do
+				if env.mode == "CALCS" then
+					breakdown["Req"..attr] = {
+						rowList = { },
+						colList = {
+							{ label = attr, key = "req" },
+							{ label = "Source", key = "source" },
+							{ label = "Source Name", key = "sourceName" },
+						}
+					}
+				end
+				local out = 0
+				for _, reqSource in ipairs(env.requirementsTable) do
+					if reqSource[attr] and reqSource[attr] > 0 then
+						local req = m_floor(reqSource[attr] * reqMult)
+						out = m_max(out, req)
+						if env.mode == "CALCS" then
+							local row = {
+								req = req > output[attr] and colorCodes.NEGATIVE..req or req,
+								reqNum = req,
+								source = reqSource.source,
+							}
+							if reqSource.source == "Item" then
+								local item = reqSource.sourceItem
+								row.sourceName = colorCodes[item.rarity]..item.name
+								row.sourceNameTooltip = function(tooltip)
+									env.build.itemsTab:AddItemTooltip(tooltip, item, reqSource.sourceSlot)
+								end
+							elseif reqSource.source == "Gem" then
+								row.sourceName = s_format("%s%s ^7%d/%d", reqSource.sourceGem.color, reqSource.sourceGem.nameSpec, reqSource.sourceGem.level, reqSource.sourceGem.quality)
 							end
-						elseif reqSource.source == "Gem" then
-							row.sourceName = s_format("%s%s ^7%d/%d", reqSource.sourceGem.color, reqSource.sourceGem.nameSpec, reqSource.sourceGem.level, reqSource.sourceGem.quality)
+							t_insert(breakdown["Req"..attr].rowList, row)
 						end
-						t_insert(breakdown["Req"..attr].rowList, row)
 					end
 				end
-			end
-			output["Req"..attr] = out
-			if env.mode == "CALCS" then
-				output["Req"..attr.."String"] = out > output[attr] and colorCodes.NEGATIVE..out or out
-				table.sort(breakdown["Req"..attr].rowList, function(a, b)
-					if a.reqNum ~= b.reqNum then
-						return a.reqNum > b.reqNum
-					elseif a.source ~= b.source then
-						return a.source < b.source 
-					else
-						return a.sourceName < b.sourceName
-					end
-				end)
+				output["Req"..attr] = out
+				if env.mode == "CALCS" then
+					output["Req"..attr.."String"] = out > output[attr] and colorCodes.NEGATIVE..out or out
+					table.sort(breakdown["Req"..attr].rowList, function(a, b)
+						if a.reqNum ~= b.reqNum then
+							return a.reqNum > b.reqNum
+						elseif a.source ~= b.source then
+							return a.source < b.source 
+						else
+							return a.sourceName < b.sourceName
+						end
+					end)
+				end
 			end
 		end
+		
 	end
 
 	-- Check for extra modifiers to apply to aura skills

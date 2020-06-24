@@ -7107,7 +7107,7 @@ return {
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SkillGemEarthshatter"] = {
-		name = "裂地崩山",
+		name = "尖刺战吼",
 		grantedEffectId = "SpikeSlam",
 		tags = {
 			strength = true,

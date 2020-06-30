@@ -123,7 +123,10 @@ self.controls.groupEnabled = new("CheckBoxControl", {"LEFT",self.controls.groupS
 			local gemInstance = self.displayGroup.gemList[1]
 			-- print_r(gemInstance)
 				if gemInstance  and  gemInstance.grantedEffect then
-						local grantedEffect=gemInstance.grantedEffect;
+				local displayInstance = gemInstance.displayEffect or gemInstance
+				local grantedEffect=gemInstance.grantedEffect;
+				local grantedEffectLevel = grantedEffect.levels[displayInstance.level]
+						
 						 if tooltip:CheckForUpdate(grantedEffect.id, self.displayGroup)  then 
 							 tooltip.center = true
 							 tooltip.color = colorCodes.GEM
@@ -183,22 +186,24 @@ self.controls.groupEnabled = new("CheckBoxControl", {"LEFT",self.controls.groupS
 							end
 						end
 						if self.build.data.describeStats then
+						
 							tooltip:AddSeparator(10)
-							local stats =calcLib.buildSkillInstanceStatsOnly(curSkillLevel,actorLevel, grantedEffect) 
-							if grantedEffect.levels[curSkillLevel] and grantedEffect.levels[curSkillLevel].baseMultiplier then
-								stats["active_skill_attack_damage_final_permyriad"] = (grantedEffect.levels[curSkillLevel].baseMultiplier - 1) * 10000
-							end
-							local mergeStatsFrom=false
-							if mergeStatsFrom then
-								for stat, val in pairs(calcLib.buildSkillInstanceStatsOnly(curSkillLevel,actorLevel, mergeStatsFrom)) do
-									stats[stat] = (stats[stat] or 0) + val
-								end
-								
-							end
-							local descriptions = self.build.data.describeStats(stats, grantedEffect.statDescriptionScope )
-							
 							 
 							
+							--local stats =calcLib.buildSkillInstanceStatsOnly(curSkillLevel,actorLevel, grantedEffect) 
+							local stats = calcLib.buildSkillInstanceStats(displayInstance, grantedEffect)
+							if grantedEffectLevel.baseMultiplier then
+								stats["active_skill_attack_damage_final_permyriad"] = (grantedEffectLevel.baseMultiplier - 1) * 10000
+							end
+							
+							if mergeStatsFrom then
+								for stat, val in pairs(calcLib.buildSkillInstanceStats(displayInstance, mergeStatsFrom)) do
+									stats[stat] = (stats[stat] or 0) + val
+								end
+							end
+							
+							
+							local descriptions = self.build.data.describeStats(stats, grantedEffect.statDescriptionScope)
 							for _, line in ipairs(descriptions) do
 								tooltip:AddLine(16, colorCodes.MAGIC..line)
 							end

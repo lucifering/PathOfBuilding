@@ -243,7 +243,7 @@ and type(grantedEffect.statMap[stat][1].value) ~= "table" and type(grantedEffect
 	end
 	return stats
 end 
-
+-- 慎用 会根据角色/召唤生物等级来调整
 
 function calcLib.buildSkillInstanceStatsOnly(curLevel,actorLevel,grantedEffect)
 

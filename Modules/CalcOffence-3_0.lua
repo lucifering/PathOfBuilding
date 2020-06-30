@@ -1337,8 +1337,8 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 								
 								takenInc = takenInc + enemyDB:Sum("INC", nil, "ElementalDamageTaken")
 								
-								if skillModList:Flag(cfg,damageType.."ResistIsEnemy") and output[damageType.."ResistTotal"] then 									
-									resist = output[damageType.."ResistTotal"]
+								if skillModList:Flag(cfg,damageType.."ResistIsEnemy") and globalOutput[damageType.."ResistTotal"] then 									
+									resist = globalOutput[damageType.."ResistTotal"]
 									isResistIsEnemy = true
 								end
 							elseif damageType == "Chaos" then
@@ -1717,6 +1717,8 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 				local resist = 0
 				local takenInc = enemyDB:Sum("INC", dotTypeCfg, "DamageTaken", "DamageTakenOverTime", damageType.."DamageTaken", damageType.."DamageTakenOverTime")
 				local takenMore = enemyDB:More(dotTypeCfg, "DamageTaken", "DamageTakenOverTime", damageType.."DamageTaken", damageType.."DamageTakenOverTime")
+				
+				
 				if damageType == "Physical" then
 					resist = enemyDB:Sum("BASE", nil, "PhysicalDamageReduction")
 				else
@@ -1724,6 +1726,11 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 					if isElemental[damageType] then
 						resist = resist + enemyDB:Sum("BASE", dotTypeCfg, "ElementalResist")
 						takenInc = takenInc + enemyDB:Sum("INC", dotTypeCfg, "ElementalDamageTaken")
+					end
+					
+					if skillModList:Flag(cfg,damageType.."ResistIsEnemy") and output[damageType.."ResistTotal"] then 									
+						resist = output[damageType.."ResistTotal"]
+						
 					end
 					resist = m_min(resist, 75)
 				end
@@ -2280,8 +2287,13 @@ s_format("点燃计算模式: %s ^8(可以在配置面板修改)", igniteMode ==
 					local resist = m_min(enemyDB:Sum("BASE", nil, "FireResist", "ElementalResist"), 75)
 					local takenInc = enemyDB:Sum("INC", dotCfg, "DamageTaken", "DamageTakenOverTime", "FireDamageTaken", "FireDamageTakenOverTime", "ElementalDamageTaken")
 					local takenMore = enemyDB:More(dotCfg, "DamageTaken", "DamageTakenOverTime", "FireDamageTaken", "FireDamageTakenOverTime", "ElementalDamageTaken")
+					if skillModList:Flag(cfg,"FireResistIsEnemy") and globalOutput["FireResistTotal"] then 									
+						resist = globalOutput["FireResistTotal"]						
+					end
+					
 					effMult = (1 - resist / 100) * (1 + takenInc / 100) * takenMore
-					globalOutput["IgniteEffMult"] = effMult
+					globalOutput["IgniteEffMult"] = effMult				
+					
 					if breakdown and effMult ~= 1 then
 						globalBreakdown.IgniteEffMult = breakdown.effMult("Fire", resist, 0, takenInc, effMult, takenMore)
 					end

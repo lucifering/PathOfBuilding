@@ -155,6 +155,9 @@ if self.rarity == "普通" or self.rarity == "魔法" then
 			or verData.itemMods.Item
 		self.enchantments = verData.enchantments[self.base.type]
 		self.synthesisedMods = verData.synthesisedMods["Item"]
+		self.harvestSeedWeaponEnchantments = verData.harvestSeedEnchantments["Weapon"]
+		self.harvestSeedBodyArmourEnchantments = verData.harvestSeedEnchantments["Body Armour"]
+		
 		self.corruptable = self.base.type ~= "Flask" and self.base.subType ~= "Cluster"
 		self.influenceTags = data.specialBaseTags[self.type]
 		self.canBeInfluenced = self.influenceTags
@@ -884,6 +887,8 @@ end
 -- To be considered local, a modifier must be an exact flag match, and cannot have any tags (e.g conditions, multipliers)
 -- Only the InSlot tag is allowed (for Adds x to x X Damage in X Hand modifiers)
 local function sumLocal(modList, name, type, flags)
+ 
+
 	local result
 	if type == "FLAG" then
 		result = false
@@ -892,13 +897,18 @@ local function sumLocal(modList, name, type, flags)
 	end
 	local i = 1
 	while modList[i] do
-		local mod = modList[i]
-		if mod.name == name and mod.type == type and mod.flags == flags and mod.keywordFlags == 0 and (not mod[1] or mod[1].type == "InSlot") then
+		local mod = modList[i]	
+		 
+		if mod.name == name and mod.type == type and mod.flags == flags and mod.keywordFlags == 0 and (not mod[1] or mod[1].type == "InSlot" or
+		(mod[1].stat == "QualityOnWeapon 1" or mod[1].stat == "QualityOnWeapon 2" )
+		) then
+			
 			if type == "FLAG" then
 				result = result or mod.value
 			else	
 				result = result + mod.value
 			end
+			
 			t_remove(modList, i)
 		else
 			i = i + 1
@@ -950,6 +960,7 @@ function ItemClass:BuildModListForSlotNum(baseList, slotNum)
 			end
 		end
 	end
+	
 	if self.base.weapon then
 		local weaponData = { }
 		self.weaponData[slotNum] = weaponData
@@ -957,16 +968,30 @@ function ItemClass:BuildModListForSlotNum(baseList, slotNum)
 		weaponData.name = self.name
 		weaponData.AttackSpeedInc = sumLocal(modList, "Speed", "INC", ModFlag.Attack)
 		weaponData.AttackRate = round(self.base.weapon.AttackRateBase * (1 + weaponData.AttackSpeedInc / 100), 2)
-		
+		weaponData.quality = self.quality
 		 
 		weaponData.range = self.base.weapon.Range + sumLocal(modList, "WeaponRange", "BASE", 0)
+		
+		for _, value in ipairs(modList:List(nil, "WeaponData")) do
+			weaponData[value.key] = value.value
+		end
+		
 		for _, dmgType in pairs(dmgTypeList) do
 			local min = (self.base.weapon[dmgType.."Min"] or 0) + sumLocal(modList, dmgType.."Min", "BASE", 0)
 			local max = (self.base.weapon[dmgType.."Max"] or 0) + sumLocal(modList, dmgType.."Max", "BASE", 0)
 			if dmgType == "Physical" then
 				local physInc = sumLocal(modList, "PhysicalDamage", "INC", 0)
-				min = round(min * (1 + (physInc + self.quality) / 100))
-				max = round(max * (1 + (physInc + self.quality) / 100))
+				
+				--品质加成		
+				
+				if  weaponData.QualityNotBonusPhysicalDamage then				
+					min = round(min * (1 + (physInc ) / 100))
+					max = round(max * (1 + (physInc ) / 100))
+				else				
+					min = round(min * (1 + (physInc + self.quality) / 100))
+					max = round(max * (1 + (physInc + self.quality) / 100))
+				end
+				 
 			end
 			if min > 0 and max > 0 then
 				weaponData[dmgType.."Min"] = min
@@ -1020,9 +1045,18 @@ function ItemClass:BuildModListForSlotNum(baseList, slotNum)
 		local energyShieldInc = sumLocal(modList, "EnergyShield", "INC", 0)
 		local armourEnergyShieldInc = sumLocal(modList, "ArmourAndEnergyShield", "INC", 0)
 		local defencesInc = sumLocal(modList, "Defences", "INC", 0)
-		armourData.Armour = round((armourBase + armourEvasionBase + armourEnergyShieldBase) * (1 + (armourInc + armourEvasionInc + armourEnergyShieldInc + defencesInc + self.quality) / 100))
-		armourData.Evasion = round((evasionBase + armourEvasionBase + evasionEnergyShieldBase) * (1 + (evasionInc + armourEvasionInc + evasionEnergyShieldInc + defencesInc + self.quality) / 100))
-		armourData.EnergyShield = round((energyShieldBase + evasionEnergyShieldBase + armourEnergyShieldBase) * (1 + (energyShieldInc + armourEnergyShieldInc + evasionEnergyShieldInc + defencesInc + self.quality) / 100))
+		for _, value in ipairs(modList:List(nil, "ArmourData")) do
+			armourData[value.key] = value.value
+		end
+		
+		local qualityBonus = self.quality
+		if  armourData.QualityNotBonusDefences then 
+			qualityBonus = 0
+		end
+		
+		armourData.Armour = round((armourBase + armourEvasionBase + armourEnergyShieldBase) * (1 + (armourInc + armourEvasionInc + armourEnergyShieldInc + defencesInc + qualityBonus) / 100))
+		armourData.Evasion = round((evasionBase + armourEvasionBase + evasionEnergyShieldBase) * (1 + (evasionInc + armourEvasionInc + evasionEnergyShieldInc + defencesInc + qualityBonus) / 100))
+		armourData.EnergyShield = round((energyShieldBase + evasionEnergyShieldBase + armourEnergyShieldBase) * (1 + (energyShieldInc + armourEnergyShieldInc + evasionEnergyShieldInc + defencesInc + qualityBonus) / 100))
 		if self.base.armour.BlockChance then
 			armourData.BlockChance = self.base.armour.BlockChance + sumLocal(modList, "BlockChance", "BASE", 0)
 		end

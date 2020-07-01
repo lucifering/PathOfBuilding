@@ -3689,6 +3689,53 @@ local specialModList = {
 	 } end, 
 	["召集部队"] = { mod("Keystone", "LIST", "召集部队") },
 	["【斗转星移】"] = { mod("Keystone", "LIST", "斗转星移") },
+	["品质不提高物理伤害"] =  { mod("WeaponData", "LIST", { key = "QualityNotBonusPhysicalDamage", value = true}) }, 
+	["品质不提高防御属性"] =  { mod("ArmourData", "LIST", { key = "QualityNotBonusDefences", value = true}) }, 
+	["每 (%d+)%% 品质使元素伤害提高 (%d+)%%"] = function(_,num1,num2) return { 
+	 mod("ElementalDamage", "INC", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
+	 } end, 
+	["每 (%d+)%% 品质使范围效果扩大 (%d+)%%"] = function(_,num1,num2) return { 
+	 mod("AreaOfEffect", "INC", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
+	 } end, 
+	["每 (%d+)%% 品质使命中值提高提高 (%d+)%%"] = function(_,num1,num2) return { 
+	 mod("Accuracy", "INC", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
+	 } end, 
+	["每 (%d+)%% 品质使命中值提高 (%d+)%%"] = function(_,num1,num2) return { 
+	 mod("Accuracy", "INC", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
+	 } end, 
+	["每 (%d+)%% 品质使攻击速度加快 (%d+)%%"] = function(_,num1,num2) return { 
+	 mod("Speed", "INC", tonumber(num2),nil, ModFlag.Attack,  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
+	 } end, 
+	["每 (%d+)%% 品质使暴击率提高 (%d+)%%"] = function(_,num1,num2) return { 
+	 mod("CritChance", "INC", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
+	 } end,
+	["每 (%d+)%% 品质 %+(%d+) 武器范围"] = function(_,num1,num2) return { 
+	 mod("MeleeWeaponRange", "BASE", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
+	 } end,
+	["每 (%d+)%% 品质 %+(%d+) 力量"] = function(_,num1,num2) return { 
+	 mod("Str", "BASE", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
+	 } end,
+	["每 (%d+)%% 品质 %+(%d+) 智慧"] = function(_,num1,num2) return { 
+	 mod("Int", "BASE", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
+	 } end,
+	["每 (%d+)%% 品质 %+(%d+) 敏捷"] = function(_,num1,num2) return { 
+	 mod("Dex", "BASE", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
+	 } end,
+	["每 (%d+)%% 品质 %+(%d+) 最大生命"] = function(_,num1,num2) return { 
+	 mod("Life", "BASE", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
+	 } end,
+	["每 (%d+)%% 品质 %+(%d+) 最大魔力"] = function(_,num1,num2) return { 
+	 mod("Mana", "BASE", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
+	 } end,
+	["每 (%d+)%% 品质 %+(%d+)%% 火焰抗性"] = function(_,num1,num2) return { 
+	 mod("FireResist", "BASE", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
+	 } end,
+	["每 (%d+)%% 品质 %+(%d+)%% 冰霜抗性"] = function(_,num1,num2) return { 
+	 mod("ColdResist", "BASE", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
+	 } end,
+	["每 (%d+)%% 品质 %+(%d+)%% 闪电抗性"] = function(_,num1,num2) return { 
+	 mod("LightningResist", "BASE", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
+	 } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

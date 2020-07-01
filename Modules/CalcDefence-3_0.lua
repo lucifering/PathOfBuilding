@@ -102,7 +102,13 @@ function calcs.defence(env, actor)
 		local slotCfg = wipeTable(tempTable1)
 		for _, slot in pairs({"Helmet","Body Armour","Gloves","Boots","Weapon 2","Weapon 3"}) do
 			local armourData = actor.itemList[slot] and actor.itemList[slot].armourData
-			if armourData then
+			
+			if actor.itemList[slot] and actor.itemList[slot].quality then 
+				output["QualityOn"..slot] = actor.itemList[slot].quality
+			end 
+			
+			if armourData then		
+			
 				slotCfg.slotName = slot
 				energyShieldBase = armourData.EnergyShield or 0
 				if energyShieldBase > 0 then

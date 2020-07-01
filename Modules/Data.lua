@@ -289,6 +289,7 @@ for _, targetVersion in ipairs(targetVersionList) do
 	-- Cluster jewel data
 	if targetVersion ~= "2_6" then	
 		verData.clusterJewels = dataModule("ClusterJewels")
+		verData.harvestSeedEnchantments = dataModule("ModHarvestSeed")
 	end
 	verData.delve = dataModule("ModDelve")
 	verData.incursion = dataModule("ModIncursion")

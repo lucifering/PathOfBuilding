@@ -745,7 +745,7 @@ self.controls.displayItemAddCustom = new("ButtonControl", {"TOPLEFT",self.contro
 		self:AddCustomModifierToDisplayItem()
 	end)
 	self.controls.displayItemAddCustom.shown = function()
-	--print(self.displayItem.name)
+	-- print_r(self.displayItem.slot)
 return self.displayItem.rarity == "魔法" or self.displayItem.rarity == "稀有"
 or self.displayItem.name=='扼息者, 火蝮鳞手套' 	
 	 or self.displayItem.name=='孢囊守卫, 圣者链甲'   or self.displayItem.name=='奔逃之, 暗影之靴'  
@@ -754,6 +754,9 @@ or self.displayItem.name=='扼息者, 火蝮鳞手套'
 	 or self.displayItem.name=='嗜火之冠, 艾兹麦坚盔' 
 	 
 	 or self.displayItem.type == "Amulet" 
+	 
+	 or self.displayItem.base.weapon 
+	 or self.displayItem.type == "Body Armour" 
 	end
 
 	-- Section: Modifier Range
@@ -2138,6 +2141,7 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 	local modList = { }
 	local function buildMods(sourceId)
 		wipeTable(modList)
+		print("sourceId="..sourceId)
 		if sourceId == "MASTER" then
 			for _, craft in ipairs(self.build.data.masterMods) do
 				if craft.types[self.displayItem.type] then
@@ -2155,6 +2159,30 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 						type = "crafted",
 					})
 				end
+			end
+		elseif sourceId == "HarvestSeedWeapon" then
+			for _, craft in ipairs(self.build.data.harvestSeedEnchantments["Weapon"]) do
+					 
+					local	label = table.concat(craft, "/")
+					t_insert(modList, {
+						label = label,
+						mod = craft,
+						isEnchant=true,
+						type = "crafted",
+						
+					})
+			end
+		elseif sourceId == "HarvestSeedBodyArmour" then
+			for _, craft in ipairs(self.build.data.harvestSeedEnchantments["Body Armour"]) do
+					 
+					local	label = table.concat(craft, "/")
+					t_insert(modList, {
+						label = label,
+						mod = craft,
+						isEnchant=true,
+						type = "crafted",
+						
+					})
 			end
 		elseif sourceId == "INCURSION" then		
 			for _, craft in ipairs(self.build.data.incursion) do
@@ -2249,6 +2277,17 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 			end)
 		end
 	end
+	if self.build.targetVersion ~= "2_6" and self.displayItem.base.weapon  then 
+	
+		t_insert(sourceList, { label = "收割种子", sourceId = "HarvestSeedWeapon" })
+	
+	end
+	if self.build.targetVersion ~= "2_6" and self.displayItem.type == "Body Armour"  then 
+	
+		t_insert(sourceList, { label = "收割种子", sourceId = "HarvestSeedBodyArmour" })
+	
+	end
+	
 	if ((self.build.targetVersion ~= "2_6" 	
 	and 	self.displayItem.base.subType ~= "Abyss") or (self.displayItem.type ~= "Jewel" and self.displayItem.type ~= "Flask") ) and  (self.displayItem.rarity == "魔法" or self.displayItem.rarity == "稀有")	
 	
@@ -2300,7 +2339,28 @@ t_insert(sourceList, { label = "自定义", sourceId = "CUSTOM" })
 					 
 				end				
 			end
-		
+		elseif sourceId == "HarvestSeedWeapon" then
+				
+			local listMod = modList[controls.modSelect.selIndex]
+			if listMod ~=nil and listMod.mod~=nil then 
+				  
+				  wipeTable(item.enchantModLines)
+				for _, line in ipairs(listMod.mod) do
+					t_insert(item.enchantModLines, { line = line, [listMod.type] = true })
+					 
+				end				
+			end
+		elseif sourceId == "HarvestSeedBodyArmour" then
+				
+			local listMod = modList[controls.modSelect.selIndex]
+			if listMod ~=nil and listMod.mod~=nil then 
+				  
+				  wipeTable(item.enchantModLines)
+				for _, line in ipairs(listMod.mod) do
+					t_insert(item.enchantModLines, { line = line, [listMod.type] = true })
+					 
+				end				
+			end
 		else
 			 
 			

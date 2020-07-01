@@ -98,6 +98,8 @@ local function doActorAttribsPoolsConditions(env, actor)
 	local breakdown = actor.breakdown
 	local condList = modDB.conditions
 
+
+	
 	-- Set conditions
 	if (actor.itemList["Weapon 2"] and actor.itemList["Weapon 2"].type == "Shield") or (actor == env.player and env.aegisModList) then
 		condList["UsingShield"] = true
@@ -113,6 +115,10 @@ local function doActorAttribsPoolsConditions(env, actor)
 			condList["Unencumbered"] = true
 		end
 	else
+		 
+		if actor.weaponData1 and actor.weaponData1.quality then 
+			output["QualityOnWeapon 1"] = actor.weaponData1.quality
+		end		
 		local info = env.data.weaponTypeInfo[actor.weaponData1.type]
 		condList["Using"..info.flag] = true
         if actor.weaponData1.countsAsAll1H then
@@ -132,6 +138,9 @@ local function doActorAttribsPoolsConditions(env, actor)
 		end
 	end
 	if actor.weaponData2.type then
+		if actor.weaponData2 and actor.weaponData2.quality then 
+			output["QualityOnWeapon 2"] = actor.weaponData2.quality
+		end
 		local info = env.data.weaponTypeInfo[actor.weaponData2.type]
 		condList["Using"..info.flag] = true
         if actor.weaponData2.countsAsAll1H then

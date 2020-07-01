@@ -33,8 +33,9 @@ function ModDBClass:AddList(modList)
 	local mods = self.mods
 	for i, mod in ipairs(modList) do
 		local name = mod.name
-		--print("name==")
-		--print_r(mod)
+	
+		-- print_r(mod)
+		--  print("name=="..name)
 		if not mods[name] then
 			mods[name] = { }
 		end

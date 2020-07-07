@@ -23,7 +23,7 @@ return {
 	  
 	  
 	  {["id"]=100013,["dn"]="神圣血肉",["sd"]={"受到的所有伤害穿透护盾","受到的元素伤害有 50% 视为混沌伤害","+10% 混沌抗性上限"},["icon"]="",["ks"]=true,["not"]=false,["m"]=false,["isAscendancyStart"]=false,["isJewelSocket"]=false,["isMultipleChoice"]=false,["isMultipleChoiceOption"]=false,["passivePointsGranted"]=0,["spc"]={},["g"]=0,["o"]=0,["oidx"]=0,["sa"]=0,["da"]=0,["ia"]=0,["out"]={[0]=0},["in"]={},["hide"]=true},
-	  {["id"]=100014,["dn"]="青春永驻",["sd"]={"生命回复额外降低 50%","从生命偷取中获得的每秒最大总恢复量降低 50%","能量护盾回复改为恢复生命"},["icon"]="",["ks"]=true,["not"]=false,["m"]=false,["isAscendancyStart"]=false,["isJewelSocket"]=false,["isMultipleChoice"]=false,["isMultipleChoiceOption"]=false,["passivePointsGranted"]=0,["spc"]={},["g"]=0,["o"]=0,["oidx"]=0,["sa"]=0,["da"]=0,["ia"]=0,["out"]={[0]=0},["in"]={},["hide"]=true},
+	  {["id"]=100014,["dn"]="腐化的灵魂",["sd"]={"受到的非混沌伤害有 50% 穿透能量护盾","获得等同 20% 最大生命的额外最大能量护盾"},["icon"]="",["ks"]=true,["not"]=false,["m"]=false,["isAscendancyStart"]=false,["isJewelSocket"]=false,["isMultipleChoice"]=false,["isMultipleChoiceOption"]=false,["passivePointsGranted"]=0,["spc"]={},["g"]=0,["o"]=0,["oidx"]=0,["sa"]=0,["da"]=0,["ia"]=0,["out"]={[0]=0},["in"]={},["hide"]=true},
 	  {["id"]=100015,["dn"]="不朽野望",["sd"]={"能量护盾初始为 0","无法回复，也无法补充","能量护盾每秒损失 5%","满血时无法移除生命偷取效果","生命偷取在满血时恢复能量护盾"},["icon"]="",["ks"]=true,["not"]=false,["m"]=false,["isAscendancyStart"]=false,["isJewelSocket"]=false,["isMultipleChoice"]=false,["isMultipleChoiceOption"]=false,["passivePointsGranted"]=0,["spc"]={},["g"]=0,["o"]=0,["oidx"]=0,["sa"]=0,["da"]=0,["ia"]=0,["out"]={[0]=0},["in"]={},["hide"]=true},
 	  
 	  

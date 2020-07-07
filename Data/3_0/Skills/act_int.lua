@@ -326,7 +326,7 @@ description = "创造一个可以附着于周围某个敌人的魔法烙印。�
 	statDescriptionScope = "brand_skill_stat_descriptions",
 	castTime = 0.4,
 	preDamageFunc = function(activeSkill, output)
-		--activeSkill.skillData.hitTimeOverride = activeSkill.skillData.repeatFrequency / (1 + activeSkill.skillModList:Sum("INC", activeSkill.skillCfg, "Speed", "BrandActivationFrequency") / 100)
+		activeSkill.skillData.hitTimeOverride = activeSkill.skillData.repeatFrequency / (1 + activeSkill.skillModList:Sum("INC", activeSkill.skillCfg, "Speed", "BrandActivationFrequency") / 100) / activeSkill.skillModList:More(activeSkill.skillCfg, "BrandActivationFrequency")
 	end,
 	statMap = {
 		["base_skill_show_average_damage_instead_of_dps"] = {
@@ -6663,7 +6663,7 @@ description = "创造一个可以附着于周围某个敌人的魔法烙印。�
 	statDescriptionScope = "brand_skill_stat_descriptions",
 	castTime = 0.75,
 	preDamageFunc = function(activeSkill, output)
-		activeSkill.skillData.hitTimeOverride = activeSkill.skillData.repeatFrequency / (1 + activeSkill.skillModList:Sum("INC", activeSkill.skillCfg, "Speed", "BrandActivationFrequency") / 100)
+		activeSkill.skillData.hitTimeOverride = activeSkill.skillData.repeatFrequency / (1 + activeSkill.skillModList:Sum("INC", activeSkill.skillCfg, "Speed", "BrandActivationFrequency") / 100) / activeSkill.skillModList:More(activeSkill.skillCfg, "BrandActivationFrequency")
 	end,
 	statMap = {
 		["base_skill_show_average_damage_instead_of_dps"] = {
@@ -8455,8 +8455,8 @@ skills["MagmaSigil"] = {
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.PhysicalSkill] = true, [SkillType.LightningSkill] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Brand] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "brand_skill_stat_descriptions",
 	castTime = 0.75,
-		preDamageFunc = function(activeSkill, output)
-		activeSkill.skillData.hitTimeOverride = activeSkill.skillData.repeatFrequency / (1 + activeSkill.skillModList:Sum("INC", activeSkill.skillCfg, "Speed", "BrandActivationFrequency") / 100)
+	preDamageFunc = function(activeSkill, output)
+		activeSkill.skillData.hitTimeOverride = activeSkill.skillData.repeatFrequency / (1 + activeSkill.skillModList:Sum("INC", activeSkill.skillCfg, "Speed", "BrandActivationFrequency") / 100) / activeSkill.skillModList:More(activeSkill.skillCfg, "BrandActivationFrequency")
 	end,
 	parts = {
 		{
@@ -8495,6 +8495,10 @@ skills["MagmaSigil"] = {
 		
 	},
 	baseFlags = {
+	spell = true,
+		area = true,
+		duration = true,
+		brand = true,
 	},
 	baseMods = {
 		skill("showAverage", true, { type = "SkillPart", skillPartList = { 1, 2, 3, 4, 5 }}),
@@ -8572,30 +8576,34 @@ skills["ImmolationSigil"] = {
 	baseEffectiveness = 4.5,
 	incrementalEffectiveness = 0.022299999371171,
 	description = "创造一个可以附着于周围某个敌人的魔法烙印，对敌人造成冰霜持续伤害和冰缓。该烙印附着后会阶段性激活，获得阶段性的伤害提升。移除烙印时，会对敌人所有敌人附加一个持续时间较短的减益效果，造成同样的持续伤害和冰缓效果。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.ColdSkill] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Brand] = true, [SkillType.AreaSpell] = true, [SkillType.DamageOverTime] = true, [SkillType.NonHitChill] = true, [SkillType.Type59] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.ColdSkill] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Brand] = true, [SkillType.AreaSpell] = true, [SkillType.DamageOverTime] = true, [SkillType.NonHitChill] = true, [SkillType.Type59] = true, },
 	statDescriptionScope = "brand_skill_stat_descriptions",
 	castTime = 0.7,
 	preDamageFunc = function(activeSkill, output)
-		activeSkill.skillData.hitTimeOverride = activeSkill.skillData.repeatFrequency / (1 + activeSkill.skillModList:Sum("INC", activeSkill.skillCfg, "Speed", "BrandActivationFrequency") / 100)
+		activeSkill.skillData.hitTimeOverride = activeSkill.skillData.repeatFrequency / (1 + activeSkill.skillModList:Sum("INC", activeSkill.skillCfg, "Speed", "BrandActivationFrequency") / 100) / activeSkill.skillModList:More(activeSkill.skillCfg, "BrandActivationFrequency")
 	end,
 	statMap = {
+		
+		
 		["base_skill_show_average_damage_instead_of_dps"] = {
 		},
-		["base_sigil_repeat_frequency_ms"] = {
-			skill("repeatFrequency", nil),
-			div = 1000,
-		},
-		
 		["immolation_brand_burn_damage_+%_final_per_stage"] = {
-			mod("Damage", "MORE", nil, 0, 0, { type = "Multiplier", var = "WintertideBrandStages" }),
-			
-			
+			mod("Damage", "MORE", nil, 0, 0, { type = "Multiplier", var = "wintertideBrandStages", limitVar = "WintertideBrandMaxStage" }),
+		},
+		["winter_brand_max_number_of_stages"] = {
+			mod("Multiplier:WintertideBrandMaxStage", "BASE", nil)
 		},
 		
 	},
 	baseFlags = {
+		spell = true,
+		area = true,
+		duration = true,
+		brand = true,
 	},
 	baseMods = {
+		skill("dotIsArea", true),
+		skill("radius", 12),
 	},
 	qualityStats = {
 		{ "cold_dot_multiplier_+", 0.5 },
@@ -8670,7 +8678,7 @@ skills["BrandSupport"] = {
 	castTime = 0.8,
 	
 	preDamageFunc = function(activeSkill, output)
-		--activeSkill.skillData.hitTimeOverride = activeSkill.skillData.repeatFrequency / (1 + activeSkill.skillModList:Sum("INC", activeSkill.skillCfg, "Speed", "BrandActivationFrequency") / 100) / activeSkill.skillModList:More(activeSkill.skillCfg, "BrandActivationFrequency")
+		activeSkill.skillData.hitTimeOverride = activeSkill.skillData.repeatFrequency / (1 + activeSkill.skillModList:Sum("INC", activeSkill.skillCfg, "Speed", "BrandActivationFrequency") / 100) / activeSkill.skillModList:More(activeSkill.skillCfg, "BrandActivationFrequency")
 	end,
 	baseFlags = {
 		spell = true,

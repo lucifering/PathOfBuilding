@@ -3221,6 +3221,7 @@ local specialModList = {
 	["赞美 (%d+) 名被高阶圣堂武僧(.+)转化的新信徒  范围内的天赋被圣堂抑制"]= function(_, num, npcName) return { 
 	 flag("好战的信仰"),
 	 flag("TimelessJewelNPC"..npcName)} end, 
+	["赞美 (%d+) 名被神主(.+)转化的新信徒"]= function(_, num, npcName) return {  flag("TimelessJewelNPC"..npcName)} end, 
 	["在(.+)的阿卡拉中指派 (%d+) 名德卡拉的服务"]= function(_, npcName, num) return {  flag("TimelessJewelNPC"..npcName)} end, 
 	["在(.+)的阿卡拉中指派 (%d+) 名德卡拉的服务范围中的天赋被马拉克斯抑制"]= function(_, npcName, num) return {  
 	 flag("残酷的约束"),

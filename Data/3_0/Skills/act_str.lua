@@ -4724,7 +4724,7 @@ skills["EnduranceChargeSlam"] = {
 name = "破釜一击",
 	color = 1,
 description = "重击地面，在前方制造一道灼热的裂隙，造成范围伤害，并随机分出一些更小的裂隙。可以消耗耐力球施放充能一击，使其范围更大，分出的裂隙更多。限定锤类、短杖、剑类、斧类、长杖或空手。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.FireSkill] = true, },
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.FireSkill] = true, [SkillType.Slam] = true,},
 	weaponTypes = {
 		["None"] = true,
 		["One Handed Mace"] = true,
@@ -5755,6 +5755,7 @@ name = "尖刺破碎",
 		attack = true,
 		melee = true,
 		area = true,
+		duration = true,
 	},
 	baseMods = {
 	skill("radius", 12),

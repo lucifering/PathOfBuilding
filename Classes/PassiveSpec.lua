@@ -1248,6 +1248,46 @@ function PassiveSpecClass:allocTimeJew()
 								end 
 							elseif specNode and specNode.type == "Keystone" then
 								if npcName =='迪虚瑞特' then 
+								--遗产
+								if not self:hasDiyModItem(specNode.keystoneMod) then 
+										specNode.sd_bak=table.shallow_copy(specNode.sd);
+										specNode.dn_bak=specNode.dn;
+										specNode.reminderText_bak=specNode.reminderText;
+										specNode.modList_bak={};
+										  
+										specNode.mods_bak=table.shallow_copy(specNode.mods);
+										
+										for i = 1, #specNode.mods do
+											 
+											specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
+										end								
+										
+										specNode.dn="风舞者";
+										specNode.sd={"近期内如果没有被击中，则承受的总伤害额外降低 20%","近期内如果没有被击中，则总闪避值额外降低 40%","如果近期内被击中，则总闪避值额外提高 20%"};
+										
+										specNode.reminderText={"( 近期内意指 4 秒内 )"};
+										specNode.isTimeless=1;									 
+										newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
+										newmod1.isDIY=1;	
+										specNode.keystoneMod=newmod1;			
+										specNode.hide=nil;						
+										
+										list1={}
+										list2={}
+										list3={}
+										newmodList1={}
+										newmodList2={}	
+										newmodList3={}												
+										t_insert( list1,modLib.createMod("DamageTaken", "MORE", -20,"Tree"..specNode.id, { type = "Condition", var = "BeenHitRecently" , neg = true}))
+										t_insert( list2,modLib.createMod("Evasion", "MORE", -40,"Tree"..specNode.id, { type = "Condition", var = "BeenHitRecently" , neg = true}))
+										 
+										t_insert( list3,modLib.createMod("Evasion", "MORE", 20,"Tree"..specNode.id, { type = "Condition", var = "BeenHitRecently" }))
+										newmodList1["list"] =  list1
+										newmodList2["list"] =  list2
+										newmodList3["list"] =  list3
+										specNode.mods={newmodList1,newmodList2,newmodList3,newmodList4}
+									end 
+								elseif npcName =='巴巴拉' then 
 									if not self:hasDiyModItem(specNode.keystoneMod) then 
 										specNode.sd_bak=table.shallow_copy(specNode.sd);
 										specNode.dn_bak=specNode.dn;
@@ -1447,7 +1487,7 @@ function PassiveSpecClass:allocTimeJew()
 							elseif specNode and specNode.type == "Keystone" then
 								--重点核心
 								
-								if npcName =='神主' then 
+								if npcName =='神主' or npcName =='多米纳斯' then 
 									if not self:hasDiyModItem(specNode.keystoneMod) then 
 										specNode.sd_bak=table.shallow_copy(specNode.sd);
 										specNode.dn_bak=specNode.dn;
@@ -1479,7 +1519,41 @@ function PassiveSpecClass:allocTimeJew()
 										newmodList2["list"] =  nil
 										specNode.mods={newmodList1,newmodList2}
 									end 
-								elseif npcName =='威纳留斯' or npcName =='维纳留斯'  then 
+								elseif npcName =='威纳留斯' or npcName =='维纳留斯' then
+								--旧版
+									if not self:hasDiyModItem(specNode.keystoneMod) then 
+											specNode.sd_bak=table.shallow_copy(specNode.sd);
+											specNode.dn_bak=specNode.dn;
+											specNode.reminderText_bak=specNode.reminderText;
+											specNode.modList_bak={};
+											  
+											specNode.mods_bak=table.shallow_copy(specNode.mods);
+											
+											for i = 1, #specNode.mods do
+												 
+												specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
+											end								
+											
+											specNode.dn="惘信者";
+											specNode.sd={"最大能量护盾为 0","非满血状态时，每秒献祭 20% 魔力来回复同等数值的生命"};
+											specNode.reminderText=nil;
+											specNode.isTimeless=1;									 
+											newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
+											newmod1.isDIY=1;	
+											specNode.keystoneMod=newmod1;			
+											specNode.hide=nil;						
+											
+											list1={}
+											list2={}
+											newmodList1={}
+											newmodList2={}										 
+											t_insert( list1,modLib.createMod("EnergyShield", "OVERRIDE", 0, "Tree"..specNode.id))										 
+											newmodList1["list"] =  list1
+											newmodList2["list"] =  nil
+											specNode.mods={newmodList1,newmodList2}
+										end 
+									
+								elseif npcName =='玛萨留斯'  then 
 									if not self:hasDiyModItem(specNode.keystoneMod) then 
 										specNode.sd_bak=table.shallow_copy(specNode.sd);
 										specNode.dn_bak=specNode.dn;
@@ -1629,6 +1703,7 @@ function PassiveSpecClass:allocTimeJew()
 												newmodList2["list"] =  list2
 												specNode.mods={newmodList1,newmodList2}
 											end 	
+											
 									elseif npcName =='拉其塔' or npcName =='拉凯尔塔' then 
 										 if not self:hasDiyModItem(specNode.keystoneMod) then 
 												specNode.sd_bak=table.shallow_copy(specNode.sd);
@@ -1668,7 +1743,47 @@ function PassiveSpecClass:allocTimeJew()
 												specNode.mods={newmodList1,newmodList2,newmodList3}
 											end 	
 										
-									elseif npcName =='基洛瓦'  or  npcName =='克洛瓦' then 
+									elseif npcName =='基洛瓦'  or  npcName =='克洛瓦' then
+									--遗产
+										if not self:hasDiyModItem(specNode.keystoneMod) then 
+												specNode.sd_bak=table.shallow_copy(specNode.sd);
+												specNode.dn_bak=specNode.dn;
+												specNode.reminderText_bak=specNode.reminderText;
+												specNode.modList_bak={};
+												  
+												specNode.mods_bak=table.shallow_copy(specNode.mods);
+												
+												for i = 1, #specNode.mods do
+													 
+													specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
+												end								
+												
+												specNode.dn="斗转星移";
+												specNode.sd={"攻击格挡率翻倍","法术格挡率翻倍","被格挡的击中对你造成 50% 伤害"};
+												specNode.reminderText=nil;
+												specNode.isTimeless=1;									 
+												newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
+												newmod1.isDIY=1;	
+												specNode.keystoneMod=newmod1;			
+												specNode.hide=nil;						
+												
+												list1={}
+												list2={}
+												list3={}
+												newmodList1={}
+												newmodList2={}	
+												newmodList3={}												
+										 
+												t_insert( list1,modLib.createMod("BlockChance", "MORE", 100, "Tree"..specNode.id))					 
+												t_insert( list2,modLib.createMod("SpellBlockChance", "MORE", 100, "Tree"..specNode.id))	
+												--t_insert( list3,modLib.createMod("LightningResist", "MORE", -50, "Tree"..specNode.id))													
+												newmodList1["list"] =  list1
+												newmodList2["list"] =  list2
+												newmodList3["list"] =  nil
+												specNode.mods={newmodList1,newmodList2,newmodList3}
+											end 	
+									
+									elseif  npcName =='阿克雅'  then 
 										if not self:hasDiyModItem(specNode.keystoneMod) then 
 												specNode.sd_bak=table.shallow_copy(specNode.sd);
 												specNode.dn_bak=specNode.dn;
@@ -1855,6 +1970,48 @@ function PassiveSpecClass:allocTimeJew()
 												specNode.mods={newmodList1,newmodList2}
 											end 
 									elseif npcName =='切特斯'   then 
+										 --遗产
+										 if not self:hasDiyModItem(specNode.keystoneMod) then 
+												specNode.sd_bak=table.shallow_copy(specNode.sd);
+												specNode.dn_bak=specNode.dn;
+												specNode.reminderText_bak=specNode.reminderText;
+												specNode.modList_bak={};
+												  
+												specNode.mods_bak=table.shallow_copy(specNode.mods);
+												
+												for i = 1, #specNode.mods do
+													 
+													specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
+												end								
+												
+												specNode.dn="无上自我";
+												specNode.sd={"你只能从技能中得到一种非旗帜光环。","光环技能不能影响友军","你的光环技能对自身造成的总效果额外提高 50%","总魔力保留额外提高 50%"};
+												specNode.reminderText=nil;
+												specNode.isTimeless=1;									 
+												newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
+												newmod1.isDIY=1;	
+												specNode.keystoneMod=newmod1;			
+												specNode.hide=nil;						
+												
+												list1={}
+												list2={}
+												list3={}
+												list4={}
+												newmodList1={}
+												newmodList2={}	
+												newmodList3={}
+												newmodList4={}		
+t_insert( list2,modLib.createMod("SelfAurasCannotAffectAllies", "FLAG", true, "Tree"..specNode.id))
+t_insert( list3,modLib.createMod("AuraEffectOnSelf", "MORE", 50, "Tree"..specNode.id))
+t_insert( list4,modLib.createMod("ManaReserved", "MORE", 50, "Tree"..specNode.id))													
+												--t_insert( list1,newmod1)										 
+												newmodList1["list"] =  nil
+												newmodList2["list"] =  list2
+												newmodList3["list"] =  list3
+												newmodList4["list"] =  list4
+												specNode.mods={newmodList1,newmodList2,newmodList3,newmodList4}
+											end 
+									elseif npcName =='卡斯皮罗'   then  
 										 
 										  if not self:hasDiyModItem(specNode.keystoneMod) then 
 												specNode.sd_bak=table.shallow_copy(specNode.sd);
@@ -1993,7 +2150,8 @@ t_insert( list3,modLib.createMod("ChaosResistMax", "BASE", 10, "Tree"..specNode.
 												specNode.mods={newmodList1,newmodList2,newmodList3}
 											end 	
 									elseif npcName =='泽佛伊'  then 
-										 if not self:hasDiyModItem(specNode.keystoneMod) then 
+									--遗产
+										if not self:hasDiyModItem(specNode.keystoneMod) then 
 												specNode.sd_bak=table.shallow_copy(specNode.sd);
 												specNode.dn_bak=specNode.dn;
 												specNode.reminderText_bak=specNode.reminderText;
@@ -2006,7 +2164,7 @@ t_insert( list3,modLib.createMod("ChaosResistMax", "BASE", 10, "Tree"..specNode.
 													specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
 												end								
 												
-												specNode.dn="靑春永驻";
+												specNode.dn="青春永驻";
 												specNode.sd={"生命回复额外降低 50%","从生命偷取中获得的每秒最大总恢复量降低 50%","能量护盾回复改为恢复生命"};
 												specNode.reminderText=nil;
 												specNode.isTimeless=1;									 
@@ -2031,9 +2189,9 @@ t_insert( list2,modLib.createMod("MaxLifeLeechRate", "MORE", -50, "Tree"..specNo
 												newmodList3["list"] =  nil
 												specNode.mods={newmodList1,newmodList2,newmodList3}
 											end 
-									elseif npcName =='多里亚尼'   then 
-										 
-										  if not self:hasDiyModItem(specNode.keystoneMod) then 
+									elseif npcName =='阿华纳'  then 
+									
+										 if not self:hasDiyModItem(specNode.keystoneMod) then 
 												specNode.sd_bak=table.shallow_copy(specNode.sd);
 												specNode.dn_bak=specNode.dn;
 												specNode.reminderText_bak=specNode.reminderText;
@@ -2070,6 +2228,39 @@ t_insert( list2,modLib.createMod("MaxLifeLeechRate", "MORE", -50, "Tree"..specNo
 												newmodList4["list"] =  nil												
 												specNode.mods={newmodList1,newmodList2,newmodList3,newmodList4}
 											end 
+									elseif npcName =='多里亚尼'   then 
+										  if not self:hasDiyModItem(specNode.keystoneMod) then 
+												specNode.sd_bak=table.shallow_copy(specNode.sd);
+												specNode.dn_bak=specNode.dn;
+												specNode.reminderText_bak=specNode.reminderText;
+												specNode.modList_bak={};
+												  
+												specNode.mods_bak=table.shallow_copy(specNode.mods);
+												
+												for i = 1, #specNode.mods do
+													 
+													specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
+												end								
+												
+												specNode.dn="腐化的灵魂";
+												specNode.sd={"受到的非混沌伤害有 50% 穿透能量护盾","获得等同 20% 最大生命的额外最大能量护盾"};
+												specNode.reminderText=nil;
+												specNode.isTimeless=1; 
+												newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
+												newmod1.isDIY=1;	
+												specNode.keystoneMod=newmod1;			
+												specNode.hide=nil;	
+												list1={}
+												list2={}
+												newmodList1={}
+												newmodList2={}	
+												t_insert( list2,modLib.createMod("LifeGainAsEnergyShield", "BASE", 20, "Tree"..specNode.id))
+ 									 
+												newmodList1["list"] =  nil
+												newmodList2["list"] =  list2			 
+												specNode.mods={newmodList1,newmodList2}
+											end 
+										 
 									
 									end 
 								 

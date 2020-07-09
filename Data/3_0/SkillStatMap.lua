@@ -1176,7 +1176,7 @@ mod("CritMultiplier", "BASE", nil, 0, 0, { type = "Condition", var = "Elusive" }
 },
 -- Sigil
 ["sigil_attached_target_damage_+%_final"] = {
-	mod("Damage", "MORE", nil, 0, 0, { type = "Condition", var = "BrandAttachedToEnemy" }),
+	mod("Damage", "MORE", nil, 0, 0,  { type = "MultiplierThreshold", var = "BrandsAttachedToEnemy", threshold = 1 }),
 },
 -- Brand
 ["base_number_of_sigils_allowed_per_target"] = {

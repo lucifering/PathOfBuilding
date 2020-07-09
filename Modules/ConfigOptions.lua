@@ -136,10 +136,12 @@ modList:NewMod("Multiplier:BannerStage", "BASE", m_min(val, 50), "Config", { typ
 		end	
 	end },
 	
-{ label = "烙印技能:", ifSkillList = { "末日烙印", "风暴烙印" } }, -- I barely resisted the temptation to label this "Generic Brand:"
-{ var = "conditionBrandAttachedToEnemy", type = "check", label = "附着到敌人身上?", ifSkillList = { "末日烙印", "风暴烙印" }, apply = function(val, modList, enemyModList)
-modList:NewMod("Condition:BrandAttachedToEnemy", "FLAG", true, "Config", { type = "SkillType", skillType = SkillType.Brand })
+{ label = "烙印技能:", ifSkillList = { "末日烙印", "风暴烙印","奥法烙印" ,"忏悔烙印","冬潮烙印"} }, -- I barely resisted the temptation to label this "Generic Brand:"
+{ var = "BrandsAttachedToEnemy", type = "count", label = "附着到敌人身上的烙印：", ifSkillList = {  "末日烙印", "风暴烙印","奥法烙印" ,"忏悔烙印","冬潮烙印"}, apply = function(val, modList, enemyModList)
+	modList:NewMod("Multiplier:BrandsAttachedLimit", "OVERRIDE", val, "Config")
 	end },
+
+ 	
 	
 { label = "暗夜血契:", ifSkill = "暗夜血契" },
 { var = "darkPactSkeletonLife", type = "count", label = "魔侍 生命:", ifSkill = "暗夜血契", tooltip = "设置使用【暗夜血契】时，魔侍的最大生命.", apply = function(val, modList, enemyModList)

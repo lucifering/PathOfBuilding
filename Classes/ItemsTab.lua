@@ -1421,7 +1421,14 @@ function ItemsTabClass:CraftClusterJewel()
 	wipeTable(item.enchantModLines)
 	t_insert(item.enchantModLines, { line = "附加 "..(item.clusterJewelNodeCount or item.clusterJewel.maxNodes).." 天赋点", crafted = true })
 	local skill = item.clusterJewel.skills[item.clusterJewelSkill]
-	t_insert(item.enchantModLines, { line = table.concat(skill.enchant, "\n"), crafted = true })
+	
+	if skill.enchant then 
+		for i = 1,  #skill.enchant do
+			t_insert(item.enchantModLines, { line = skill.enchant[i], crafted = true })
+		end
+	end 
+	
+	
 	item:BuildAndParseRaw()
 
 	-- Update affixes manually to force out affixes that may now be invalid

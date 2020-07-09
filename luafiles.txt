@@ -219,3 +219,5 @@ Data/3_0/ClusterJewels.lua
 Data/2_6/EnchantmentBelts.lua
 Data/3_0/EnchantmentBelts.lua
 Data/3_0/ModHarvestSeed.lua
+TreeData/JewelSocketActiveLegionAlt.png
+TreeData/JewelSocketActiveLegion.png

@@ -606,6 +606,25 @@ total = s_format("= %.2f ^8每秒", output.MineLayingSpeed),
 			end
 		end
 	end
+	--烙印
+	if skillFlags.brand then
+	
+	
+		local brandsAttachedToEnemy =  skillModList:Sum("BASE", cfg, "Multiplier:BrandsAttachedToEnemy")
+		
+		local attachLimitOver = skillModList:Override(cfg, "Multiplier:BrandsAttachedLimit") 
+		if attachLimitOver then 
+			brandsAttachedToEnemy = attachLimitOver
+		end			
+		local activeBrandLimit =  skillModList:Sum("BASE", cfg, "ActiveBrandLimit")
+		local brandAttachmentRange =   calcLib.mod(skillModList, skillCfg, "BrandAttachmentRange")
+	
+		output.BrandsAttachedToEnemy = brandsAttachedToEnemy
+		output.ActiveBrandLimit = activeBrandLimit
+		output.BrandAttachmentRange = brandAttachmentRange
+	
+	end
+		
 	if skillFlags.totem then
 		local baseSpeed = 1 / skillModList:Sum("BASE", skillCfg, "TotemPlacementTime")
 		output.TotemPlacementSpeed = baseSpeed * calcLib.mod(skillModList, skillCfg, "TotemPlacementSpeed") * output.ActionSpeedMod
@@ -1187,6 +1206,14 @@ s_format("+ (%.4f x %g) ^8(暴击部分的伤害)", output.CritChance/100, outpu
 			local addedMax = skillModList:Sum("BASE", cfg, damageTypeMax) + enemyDB:Sum("BASE", cfg, "Self"..damageTypeMax)
 			local baseMin = ((source[damageTypeMin] or 0) + (source[damageType.."BonusMin"] or 0)) * baseMultiplier + addedMin * damageEffectiveness
 			local baseMax = ((source[damageTypeMax] or 0) + (source[damageType.."BonusMax"] or 0)) * baseMultiplier + addedMax * damageEffectiveness
+			
+			if activeSkill.skillData.noShowHit then 
+				
+					baseMin = 0
+					baseMax = 0
+			 
+			end		
+			
 			output[damageTypeMin.."Base"] = baseMin
 			output[damageTypeMax.."Base"] = baseMax
 			if breakdown then
@@ -1239,7 +1266,7 @@ t_insert(breakdown[damageType], s_format("%s%d to %d ^8(附加伤害)", plus, ad
 				end
 			end
 		end
-
+		
 		-- Calculate hit damage for each damage type
 		local totalHitMin, totalHitMax , totalHitAvg=  0, 0, 0
 		local totalCritMin, totalCritMax , totalCritAvg =  0, 0, 0
@@ -1298,7 +1325,9 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 					else
 					-- 默认是 （大伤+小伤）/2
 						damageTypeHitAvg = (min / 2 + max / 2)
-					end					
+					end		
+
+								
 					if (min ~= 0 or max ~= 0) and env.mode_effective then
 						-- Apply enemy resistances and damage taken modifiers
 						local resist = 0
@@ -1497,6 +1526,7 @@ t_insert(breakdown[damageType], s_format("x %.3f ^8(有效 DPS 加成)", effMult
 			else
 				output.ManaLeech = output.ManaLeech + manaLeechTotal * portion
 			end
+			
 		end
 		
 		output.TotalMin = totalHitMin
@@ -1766,6 +1796,7 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 	skillFlags.shock = false
 	skillFlags.freeze = false
 	skillFlags.impale = false
+	skillFlags.rage = false
 	for _, pass in ipairs(passList) do
 		local globalOutput, globalBreakdown = output, breakdown
 		local source, output, cfg, breakdown = pass.source, pass.output, pass.cfg, pass.breakdown
@@ -1962,19 +1993,24 @@ t_insert(breakdownDPS, "总伤害:")
 				skillFlags.bleed = true
 				skillFlags.duration = true
 				local effMult = 1
+				
+				--持续伤害加成在上面点伤时候处理了
+				--local mult = skillModList:Sum("BASE", dotCfg, "DotMultiplier", "PhysicalDotMultiplier")
+				--globalOutput["BleedMultiplier"] =mult
 				if env.mode_effective then
 					local resist = enemyDB:Sum("BASE", nil, "PhysicalDamageReduction")
 					local takenInc = enemyDB:Sum("INC", dotCfg, "DamageTaken", "DamageTakenOverTime", "PhysicalDamageTaken", "PhysicalDamageTakenOverTime")
 					local takenMore = enemyDB:More(dotCfg, "DamageTaken", "DamageTakenOverTime", "PhysicalDamageTaken", "PhysicalDamageTakenOverTime")
 					
 					effMult = (1 - resist / 100) * (1 + takenInc / 100) * takenMore
+					
 					globalOutput["BleedEffMult"] = effMult
 					if breakdown and effMult ~= 1 then
 						globalBreakdown.BleedEffMult = breakdown.effMult("Physical", resist, 0, takenInc, effMult, takenMore)
 					end
 				end
 				
-				local mult = skillModList:Sum("BASE", dotCfg, "PhysicalDotMultiplier", "BleedMultiplier")
+				
 				local effectMod = calcLib.mod(skillModList, dotCfg, "AilmentEffect")
 				local rateMod = calcLib.mod(skillModList, cfg, "BleedFaster")
 				
@@ -2461,11 +2497,26 @@ t_insert(breakdown.EnemyStunDuration, s_format("/ %.2f ^8(延长/缩短 敌人�
 			end
 		end
 		
+		--怒火
+		if skillModList:Flag(cfg, "Condition:CanGainRage")  then
+			skillFlags.rage = true
+			local rageStacks =  skillModList:Sum("BASE", cfg, "Multiplier:Rage") +skillModList:Sum("BASE", cfg, "Rage")			
+			local maxRageStacks = data.misc.RageMax + skillModList:Sum("BASE", cfg, "RageMax")
+			local rageDuration = (data.misc.RageDurationBase + skillModList:Sum("BASE", cfg, "RageDuration"))*
+			calcLib.mod(skillModList, cfg,  "RageDuration")
+			globalOutput.RageStacks = rageStacks
+			globalOutput.MaxRageStacks = maxRageStacks
+			globalOutput.RageDuration = rageDuration
+			
+			
+		end
+		
+		
 		-- Calculate impale chance and modifiers
 		if canDeal.Physical and output.ImpaleChance > 0 then
             skillFlags.impale = true
             local impaleChance = m_min(output.ImpaleChance/100, 1)
-            local maxStacks = 5 + skillModList:Sum("BASE", cfg, "ImpaleStacksMax") -- magic number: base stacks duration
+            local maxStacks = data.misc.ImpaleStacksMax + skillModList:Sum("BASE", cfg, "ImpaleStacksMax") -- magic number: base stacks duration
 			
 			
 			local impaleDuration = (data.misc.ImpaleDurationBase + skillModList:Sum("BASE", cfg, "ImpaleDuration"))*
@@ -2576,9 +2627,12 @@ t_insert(breakdown.ImpaleModifier, s_format("x %.2f ^8(穿刺几率)", impaleCha
 		combineStat("ShockDurationMod", "AVERAGE")
 		combineStat("FreezeChance", "AVERAGE")
 		combineStat("FreezeDurationMod", "AVERAGE")
-		combineStat("ImpaleChance", "AVERAGE")
+		combineStat("ImpaleChance", "AVERAGE")		
 		combineStat("ImpaleStoredDamage", "AVERAGE")
 		combineStat("ImpaleModifier", "CHANCE", "ImpaleChance")
+		
+	 
+	
 		
 	end
 

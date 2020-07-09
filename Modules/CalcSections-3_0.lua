@@ -40,9 +40,10 @@ local fireConvert = {
 	"FireDamageConvertToChaos", "ElementalDamageConvertToChaos", "NonChaosDamageConvertToChaos", 
 	"FireDamageGainAsChaos", "ElementalDamageGainAsChaos", "NonChaosDamageGainAsChaos"
 }
-
+-- format {width, id, group, color, subection:{default hidden, label, data:{}}}
 return {
-{ 3, "HitDamage", 1, "技能击中伤害", colorCodes.OFFENCE, {
+{ 3, "HitDamage", 1,  colorCodes.OFFENCE, {
+{ defaultCollapsed = false, label = "技能击中伤害", data = {
 	extra = "{output:DisplayDamage}",
 	flag = "hit",
 	colWidth = 95,
@@ -309,7 +310,9 @@ return {
 { label = "技能 DPS", flag = "notAverage", { format = "{1:output:TotalDPS}", { breakdown = "TotalDPS" }, }, },
 { label = "魔力消耗", { format = "{0:output:ManaCost}", { breakdown = "ManaCost" }, { modName = "ManaCost", cfg = "skill" }, }, },
 } },
-{ 3, "Dot", 1, "技能持续伤害", colorCodes.OFFENCE, {
+} },
+{ 3, "Dot", 1, colorCodes.OFFENCE, {
+{ defaultCollapsed = false, label = "技能持续伤害", data = {
 	extra = "{1:output:TotalDot} total DoT",
 	flag = "dot",
 	colWidth = 95,
@@ -363,7 +366,9 @@ return {
 	},
 { label = "魔力消耗", { format = "{0:output:ManaCost}", { breakdown = "ManaCost" }, { modName = "ManaCost", cfg = "skill" }, }, },
 } },
-{ 1, "Speed", 1, "攻击/施法速度", colorCodes.OFFENCE, {
+} },
+{ 1, "Speed", 1,  colorCodes.OFFENCE, {
+{ defaultCollapsed = false, label = "攻击/施法速度", data = {
 	extra = "{2:output:Speed}/s",
 { label = "主手总【提高】攻速", bgCol = colorCodes.MAINHANDBG, flag = "weapon1Attack", { format = "{0:mod:1}%", { modName = "Speed", modType = "INC", cfg = "weapon1", }, }, },
 { label = "主手总【额外提高】攻速", bgCol = colorCodes.MAINHANDBG, flag = "weapon1Attack", { format = "{0:mod:1}%", { modName = "Speed", modType = "MORE", cfg = "weapon1", }, }, },
@@ -378,7 +383,9 @@ return {
 { label = "每秒施法", flag = "spell", { format = "{2:output:Speed}", { breakdown = "Speed" }, }, },
 { label = "施法时间", flag = "spell", { format = "{2:output:Time}s", }, },
 } },
-{ 1, "Crit", 1, "暴击", colorCodes.OFFENCE, {
+} },
+{ 1, "Crit", 1,  colorCodes.OFFENCE, {
+{ defaultCollapsed = false, label = "暴击", data = {
 	extra = "{2:output:CritChance}% x{2:output:CritMultiplier}",
 	flag = "hit",
 	-- Skill
@@ -439,7 +446,9 @@ return {
 
 { label = "副手暴击效果 Mod", bgCol = colorCodes.OFFHANDBG, flag = "weapon2Attack", { format = "x {3:output:OffHand.CritEffect}", { breakdown = "OffHand.CritEffect" }, }, },
 } },
-{ 1, "HitChance", 1, "命中", colorCodes.OFFENCE, {
+} },
+{ 1, "HitChance", 1,  colorCodes.OFFENCE, {
+{ defaultCollapsed = false, label = "命中", data = {
 	extra = "{0:output:HitChance}%",
 	flag = "attack",
 { label = "主手命中", bgCol = colorCodes.MAINHANDBG, flag = "weapon1Attack", { format = "{0:output:MainHand.Accuracy}", 
@@ -459,7 +468,17 @@ return {
 { label = "敌人闪避加成", modName = "Evasion", enemy = true },
 	}, },
 } },
-{ 1, "SkillTypeStats", 1, "技能类型-特殊状态", colorCodes.OFFENCE, {
+} },
+{ 1, "SkillTypeStats", 1,  colorCodes.OFFENCE, {
+{ defaultCollapsed = false, label = "技能类型-特殊状态", data = {
+
+{ label = "配置的附身数量", flag = "brand",{ format = "{0:output:BrandsAttachedToEnemy}", }},
+{ label = "可施放数量",flag = "brand", { format = "{0:output:ActiveBrandLimit}",{ modName = "ActiveBrandLimit"} }},
+{ label = "附着范围加成", flag = "brand", { format = "x {2:output:BrandAttachmentRange}",
+		{ breakdown = "BrandAttachmentRange" },
+		{ modName = "BrandAttachmentRange", cfg = "skill"},
+	}, },
+
 { label = "召唤生物最大数量", haveOutput = "ActiveMinionLimit", { format = "{0:output:ActiveMinionLimit}",
 { breakdown = "ActiveMinionLimit" }, 
 
@@ -550,7 +569,9 @@ return {
 	}, },
 { label = "图腾生命", flag = "totem", { format = "{0:output:TotemLife}", { breakdown = "TotemLife" }, }, },
 } },
-{ 1, "Bleed", 1, "流血", colorCodes.OFFENCE, {
+} },
+{ 1, "Bleed", 1, colorCodes.OFFENCE, {
+{ defaultCollapsed = false, label = "流血", data = {
 	extra = "{0:output:BleedChance}% {1:output:BleedDPS} {2:output:BleedDuration}s",
 	flag = "bleed",
 { label = "最大流血层数", { format = "{0:output:BleedStacksMax}", { modName = "BleedStacksMax" } }, },
@@ -574,14 +595,14 @@ return {
 { label = "敌人加成", modName = "SelfBleedDuration", enemy = true },
 	}, },
 } },
-{ 1, "Impale", 1, "穿刺", colorCodes.OFFENCE, {
+} },
+{ 1, "Impale", 1, colorCodes.OFFENCE, {
+{ defaultCollapsed = false, label = "穿刺", data = {
     flag = "impale",
 	extra = "{0:output:ImpaleChance}%",
 { label = "穿刺效果持续次数", { format = "{0:output:ImpaleStacksMax}", }},
 { label = "穿刺效果持续时间", { format = "{0:output:ImpaleDuration} 秒",{ modName = "ImpaleDuration"}, }},
 { label = "穿刺层数", { format = "{0:output:ImpaleStacks}" }},
- 
-
  
 { label = "主手穿刺几率", bgCol = colorCodes.MAINHANDBG, flag = "weapon1Attack", haveOutput = "MainHand.ImpaleChance", { format = "{0:output:MainHand.ImpaleChance}%",
 		{ flag = "weapon1Attack", modName = "ImpaleChance", modType = "BASE", cfg = "weapon1" },
@@ -614,8 +635,26 @@ return {
 	
 	
 } },
+} },
+ 
+{ 1, "RageStacks", 1, colorCodes.OFFENCE, {  
+{ defaultCollapsed = false, label = "怒火", data = {
+extra = "{0:output:RageStacks}",
+flag = "rage", 
 
-{ 1, "Poison", 1, "中毒", colorCodes.OFFENCE, {
+{ label = "配置怒火层数", { format = "{0:output:RageStacks}", }},
+{ label = "最大怒火层数", { format = "{0:output:MaxRageStacks}",{ modName = "RageMax"} }},
+{ label = "每秒怒火回复", haveOutput = "RageRegen", { format = "{2:output:RageRegen}",
+		{ breakdown = "RageRegen" },
+		{ modName = "RageRegen" },
+	}, },
+{ label = "丢失", { format = "每 {2:output:RageDuration} 秒失去1层",{ modName = "RageDuration"}, }},
+} },
+ 
+
+} },
+{ 1, "Poison", 1, colorCodes.OFFENCE, {
+{ defaultCollapsed = false, label = "中毒", data = {
 	extra = "{0:output:PoisonChance}% {1:output:PoisonDPS} {2:output:PoisonDuration}s",
 	flag = "poison",
 { label = "中毒几率", { format = "{0:output:PoisonChance}%", 
@@ -672,7 +711,9 @@ return {
 		{ breakdown = "TotalPoisonStacks" }, 
 	}, },
 } },
-{ 1, "Ignite", 1, "点燃", colorCodes.OFFENCE, {	
+} },
+{ 1, "Ignite", 1,  colorCodes.OFFENCE, {	
+{ defaultCollapsed = false, label = "点燃", data = {	
 	extra = "{0:output:IgniteChance}% {1:output:IgniteDPS} {2:output:IgniteDuration}s",
 	flag = "ignite",
 { label = "点燃几率", { format = "{0:output:IgniteChance}%", 
@@ -725,7 +766,9 @@ return {
 		{ breakdown = "TotalIgniteStacks" }, 
 	}, },
 } },
-{ 1, "Decay", 1, "腐化", colorCodes.OFFENCE, {
+} },
+{ 1, "Decay", 1,  colorCodes.OFFENCE, {
+{ defaultCollapsed = false, label = "腐化", data = {
 	extra = "{1:output:DecayDPS} {2:output:DecayDuration}s",
 	flag = "decay",
 { label = "总【提高】", { format = "{0:mod:1}%", { modName = { "Damage", "ChaosDamage" }, modType = "INC", cfg = "decay" }, }, },
@@ -742,7 +785,9 @@ return {
 		{ modName = { "Duration", "SkillAndDamagingAilmentDuration" }, cfg = "decay" },
 	}, },
 } },
-{ 1, "LeechGain", 1, "偷取 & 击中回复", colorCodes.OFFENCE, {
+} },
+{ 1, "LeechGain", 1,  colorCodes.OFFENCE, {
+{ defaultCollapsed = false, label = "偷取 & 击中回复", data = {
 { label = "最大生命偷取", flag = "leechLife", { format = "{1:output:MaxLifeLeechRate}", 
 		{ breakdown = "MaxLifeLeechRate" },
 		{ modName = "MaxLifeLeechRate" },
@@ -838,7 +883,9 @@ return {
 { label = "敌人加成", modName = { "SelfManaOnHit" }, modType = "BASE", cfg = "skill", enemy = true },
 	}, },
 } },
-{ 1, "MiscEffects", 1, "其他效果", colorCodes.OFFENCE, {
+} },
+{ 1, "MiscEffects", 1,  colorCodes.OFFENCE, {
+{ defaultCollapsed = false, label = "其他效果", data = {
 { label = "感电几率", flag = "shock", { format = "{0:output:ShockChance}%", 
 		{ breakdown = "MainHand.ShockChance" },
 		{ breakdown = "OffHand.ShockChance" },
@@ -917,7 +964,9 @@ return {
 { label = "物品数量", { format = "{0:mod:1}%", { modName = "LootQuantity", modType = "INC", cfg = "skill" }, }, },
 { label = "物品稀有度", { format = "{0:mod:1}%", { modName = "LootRarity", modType = "INC", cfg = "skill" }, }, },
 } },
-{ 1, "Attributes", 2, "属性", colorCodes.NORMAL, {
+} },
+{ 1, "Attributes", 2,colorCodes.NORMAL, {
+{ defaultCollapsed = false, label = "属性", data = {
 	extra = colorCodes.STRENGTH.."{0:output:Str}^7, "..colorCodes.DEXTERITY.."{0:output:Dex}^7, "..colorCodes.INTELLIGENCE.."{0:output:Int}",
 { label = "力量", { format = "{0:output:Str}", { breakdown = "Str" }, { modName = "Str" }, }, },
 { label = "敏捷", { format = "{0:output:Dex}", { breakdown = "Dex" }, { modName = "Dex" }, }, },
@@ -927,7 +976,9 @@ return {
 { notFlag = "minionSkill", label = "敏捷需求", { format = "{output:ReqDexString}", { breakdown = "ReqDex" }, }, },
 { notFlag = "minionSkill", label = "智慧需求", { format = "{output:ReqIntString}", { breakdown = "ReqInt" }, }, },
 } },
-{ 1, "Life", 2, "生命", colorCodes.DEFENCE, {
+} },
+{ 1, "Life", 2,  colorCodes.DEFENCE, {
+{ defaultCollapsed = false, label = "生命", data = {
 	extra = "{0:output:LifeUnreserved}/{0:output:Life}",
 { label = "从装备获得", { format = "{0:mod:1}", { modName = "Life", modType = "BASE", modSource = "Item" }, }, },
 { label = "天赋树的总【提高】", { format = "{0:mod:1}%", { modName = "Life", modType = "INC", modSource = "Tree" }, }, },
@@ -944,7 +995,9 @@ return {
 { label = "回复加成", modName = "LifeRecovery" },
 	}, },
 } },
-{ 1, "Mana", 2, "魔力", colorCodes.DEFENCE, {
+} },
+{ 1, "Mana", 2,  colorCodes.DEFENCE, {
+{ defaultCollapsed = false, label = "魔力", data = {
 	extra = "{0:output:ManaUnreserved}/{0:output:Mana}",
 	notFlag = "minionSkill",
 { label = "从装备获得", { format = "{0:mod:1}", { modName = "Mana", modType = "BASE", modSource = "Item" }, }, },
@@ -963,7 +1016,9 @@ return {
 { label = "回复加成", modName = "ManaRecovery" },
 	}, },
 } },
-{ 1, "EnergyShield", 2, "能量护盾", colorCodes.DEFENCE, {
+} },
+{ 1, "EnergyShield", 2, colorCodes.DEFENCE, {
+{ defaultCollapsed = false, label = "能量护盾", data = {
 	extra = "{0:output:EnergyShield}",
 { label = "从护具获得", { format = "{0:output:Gear:EnergyShield}", { breakdown = "EnergyShield", gearOnly = true }, }, },
 { label = "全域基础", { format = "{0:mod:1}", { modName = "EnergyShield", modType = "BASE" }, }, },
@@ -987,7 +1042,9 @@ return {
 
 	}, },
 } },
-{ 1, "Armour", 3, "护甲", colorCodes.DEFENCE, {
+} },
+{ 1, "Armour", 3,  colorCodes.DEFENCE, {
+{ defaultCollapsed = false, label = "护甲", data = {
 	extra = "{0:output:Armour}",
 { label = "从护具获得", { format = "{0:output:Gear:Armour}", { breakdown = "Armour", gearOnly = true }, }, },
 { label = "全域基础", { format = "{0:mod:1}", { modName = "Armour", modType = "BASE" }, }, },
@@ -1000,7 +1057,9 @@ return {
 		{ modName = { "PhysicalDamageReduction", "PhysicalDamageReductionWhenHit" } }, 
 	}, },
 } },
-{ 1, "Evasion", 3, "闪避", colorCodes.DEFENCE, {
+} },
+{ 1, "Evasion", 3,  colorCodes.DEFENCE, {
+{ defaultCollapsed = false, label = "闪避", data = {
 	extra = "{0:output:Evasion}",
 { label = "从护具获得", { format = "{0:output:Gear:Evasion}", { breakdown = "Evasion", gearOnly = true }, }, },
 { label = "全域基础", { format = "{0:mod:1}", { modName = "Evasion", modType = "BASE" }, }, },
@@ -1014,7 +1073,9 @@ return {
 { label = "敌人加成", modName = { "Accuracy", "HitChance" }, enemy = true },
 	}, },
 } },
-{ 1, "Resist", 3, "抗性", colorCodes.DEFENCE, {
+} },
+{ 1, "Resist", 3,  colorCodes.DEFENCE, {
+{ defaultCollapsed = false, label = "抗性", data = {
 	extra = colorCodes.FIRE.."{0:output:FireResist}+{0:output:FireResistOverCap}^7/"..colorCodes.COLD.."{0:output:ColdResist}+{0:output:ColdResistOverCap}^7/"..colorCodes.LIGHTNING.."{0:output:LightningResist}+{0:output:LightningResistOverCap}",
 { label = "火焰抗性", { format = "{0:output:FireResist}% (+{0:output:FireResistOverCap}%)",
 		{ breakdown = "FireResist" }, 
@@ -1033,59 +1094,12 @@ return {
 		{ modName = { "ChaosResistMax", "ChaosResist" }, }, 
 	}, },
 } },
-{ 1, "DamageTaken", 3, "伤害承受", colorCodes.DEFENCE, {
-{ label = "物理 击中/持续伤害", { format = "x {2:output:PhysicalTakenHitMult} / x {2:output:PhysicalTakenDotMult}", 
-		{ breakdown = "PhysicalTakenHitMult" }, 
-		{ breakdown = "PhysicalTakenDotMult" },
-		{ modName = { "DamageTaken", "DamageTakenWhenHit", "DamageTakenOverTime", "PhysicalDamageTaken", "PhysicalDamageTakenWhenHit", "PhysicalDamageTakenOverTime", "PhysicalDamageTakenAsFire", "PhysicalDamageTakenAsCold", "PhysicalDamageTakenAsLightning", "PhysicalDamageTakenAsChaos" } },
-	}, },
-{ label = "火焰 击中/持续伤害", { format = "x {2:output:FireTakenHitMult} / x {2:output:FireTakenDotMult}",
-		{ breakdown = "FireTakenHitMult" },
-		{ breakdown = "FireTakenDotMult" },
-		{ modName = { "DamageTaken", "DamageTakenWhenHit", "DamageTakenOverTime", "FireDamageTaken", "FireDamageTakenWhenHit", "FireDamageTakenOverTime", "ElementalDamageTaken", "ElementalDamageTakenWhenHit", "ElementalDamageTakenOverTime", "FireDamageTakenAsPhysical", "FireDamageDamageTakenAsCold", "FireDamageTakenAsLightning", "FireDamageTakenAsChaos", "ElementalDamageTakenAsPhysical", "ElementalDamageTakenAsChaos" } },
-	}, },
-{ label = "冰霜 击中/持续伤害", { format = "x {2:output:ColdTakenHitMult} / x {2:output:ColdTakenDotMult}",
-		{ breakdown = "ColdTakenHitMult" },
-		{ breakdown = "ColdTakenDotMult" },
-		{ modName = { "DamageTaken", "DamageTakenWhenHit", "DamageTakenOverTime", "ColdDamageTaken", "ColdDamageTakenWhenHit", "ColdDamageTakenOverTime", "ElementalDamageTaken", "ElementalDamageTakenWhenHit", "ElementalDamageTakenOverTime", "ColdDamageTakenAsPhysical", "ColdDamageTakenAsFire", "ColdDamageTakenAsLightning", "ColdDamageTakenAsChaos", "ElementalDamageTakenAsPhysical", "ElementalDamageTakenAsChaos" } },
-	}, },
-{ label = "闪电 击中/持续伤害", { format = "x {2:output:LightningTakenHitMult} / x {2:output:LightningTakenDotMult}",
-		{ breakdown = "LightningTakenHitMult" },
-		{ breakdown = "LightningTakenDotMult" },
-		{ modName = { "DamageTaken", "DamageTakenWhenHit", "DamageTakenOverTime", "LightningDamageTaken", "LightningDamageTakenWhenHit", "LightningDamageTakenOverTime", "ElementalDamageTaken", "ElementalDamageTakenWhenHit", "ElementalDamageTakenOverTime", "LightningDamageTakenAsPhysical", "LightningDamageTakenAsFire", "LightningDamageTakenAsCold", "LightningDamageTakenAsChaos", "ElementalDamageTakenAsPhysical", "ElementalDamageTakenAsChaos" } },
-	}, },
-{ label = "混沌 击中/持续伤害", { format = "x {2:output:ChaosTakenHitMult} / x {2:output:ChaosTakenDotMult}",
-		{ breakdown = "ChaosTakenHitMult" },
-		{ breakdown = "ChaosTakenDotMult" },
-		{ modName = { "DamageTaken", "DamageTakenWhenHit", "DamageTakenOverTime", "ChaosDamageTaken", "ChaosDamageTakenWhenHit", "ChaosDamageTakenOverTime", "ChaosDamageTakenAsPhysical", "ChaosDamageTakenAsFire", "ChaosDamageTakenAsCold", "ChaosDamageTakenAsLightning" } },
-	}, },
-{ label = "心灵升华", haveOutput = "MindOverMatter", { format = "{0:output:MindOverMatter}%", 
-		{ breakdown = "MindOverMatter" }, 
-		{ modName = "DamageTakenFromManaBeforeLife" }, 
-	}, },
-{ label = "总降低回复", haveOutput = "TotalDegen", { format = "{1:output:TotalDegen}", 
-		{ breakdown = "TotalDegen" },
-{ label = "源", modName = { "PhysicalDegen", "FireDegen", "ColdDegen", "LightningDegen", "ChaosDegen" }, modType = "BASE" },
-	}, },
-{ label = "实际生命回复", haveOutput = "NetLifeRegen", { format = "{1:output:NetLifeRegen}", { breakdown = "NetLifeRegen" }, }, },
-{ label = "实际魔力回复", haveOutput = "NetManaRegen", { format = "{1:output:NetManaRegen}", { breakdown = "NetManaRegen" }, }, },
 } },
-{ 1, "MiscDefences", 3, "其他防御", colorCodes.DEFENCE, {
+
+
+{ 1, "MiscDefences", 3, colorCodes.DEFENCE, {
+{ defaultCollapsed = false, label = "其他防御", data = {
 { label = "移动速度", { format = "x {2:output:EffectiveMovementSpeedMod}", { breakdown = "EffectiveMovementSpeedMod" }, { modName = "MovementSpeed" }, }, },
-{ label = "攻击躲避几率", { format = "{0:output:AttackDodgeChance}%", { modName = "AttackDodgeChance" }, }, },
-{ label = "法术躲避几率", { format = "{0:output:SpellDodgeChance}%", { modName = "SpellDodgeChance" }, }, }, 
-{ label = "攻击格挡几率", { format = "{0:output:BlockChance}%",
-		{ breakdown = "BlockChance" },
-		{ modName = "BlockChance" }, 
-	}, },
-{ label = "法术格挡几率", { format = "{0:output:SpellBlockChance}%", 
-		{ breakdown = "SpellBlockChance" }, 
-		{ modName = { "SpellBlockChance", "BlockChanceConv" }, },
-	}, },
-{ label = "近战伤害避免几率", { format = "{0:output:MeleeAvoidChance}%", { breakdown = "MeleeAvoidChance" }, }, },
-{ label = "投射物避免几率", { format = "{0:output:ProjectileAvoidChance}%", { breakdown = "ProjectileAvoidChance" }, }, },
-{ label = "法术避免几率", { format = "{0:output:SpellAvoidChance}%", { breakdown = "SpellAvoidChance" }, }, },
-{ label = "晕眩避免几率", { format = "{0:output:StunAvoidChance}%", { modName = "AvoidStun" }, }, },
 { label = "晕眩持续时间", { format = "{2:output:StunDuration}s", 
 		{ breakdown = "StunDuration" },
 		{ modName = "StunRecovery" },
@@ -1096,4 +1110,352 @@ return {
 	}, },
 { label = "照亮范围加成", { format = "x {2:output:LightRadiusMod}", { breakdown = "LightRadiusMod" }, { modName = "LightRadius" }, }, },
 } },
+
+{ defaultCollapsed = false, label = "躲避", data = {
+	extra = "{0:output:AttackDodgeChance}%/{0:output:SpellDodgeChance}%",
+	{ label = "攻击躲避几率", { format = "{0:output:AttackDodgeChance}%", { modName = "AttackDodgeChance" }, }, },
+	{ label = "法术躲避几率", { format = "{0:output:SpellDodgeChance}%", { modName = "SpellDodgeChance" }, }, }, 
+} },
+{ defaultCollapsed = true, label = "伤害避免", data = {
+	{ label = "避免物理伤害几率", haveOutput = "AvoidPhysicalDamageChance", { format = "{0:output:AvoidPhysicalDamageChance}%", { modName = "AvoidPhysicalDamageChance" }, }, },
+	{ label = "避免闪电伤害几率", haveOutput = "AvoidLightningDamageChance", { format = "{0:output:AvoidLightningDamageChance}%", { modName = "AvoidLightningDamageChance" }, }, },
+	{ label = "避免冰霜伤害几率", haveOutput = "AvoidColdDamageChance", { format = "{0:output:AvoidColdDamageChance}%", { modName = "AvoidColdDamageChance" }, }, },
+	{ label = "避免火焰伤害几率", haveOutput = "AvoidFireDamageChance", { format = "{0:output:AvoidFireDamageChance}%", { modName = "AvoidFireDamageChance" }, }, },
+	{ label = "避免混沌伤害几率", haveOutput = "AvoidChaosDamageChance", { format = "{0:output:AvoidChaosDamageChance}%", { modName = "AvoidChaosDamageChance" }, }, },
+	{ label = "避免投射物伤害几率", haveOutput = "AvoidProjectilesChance", { format = "{0:output:AvoidProjectilesChance}%", { modName = "AvoidProjectilesChance" }, }, },
+} }, { defaultCollapsed = true, label = "状态避免", data = {
+	{ label = "避免晕眩几率", haveOutput = "StunAvoidChance", { format = "{0:output:StunAvoidChance}%", { modName = "AvoidStun" }, }, },
+	{ label = "避免打断几率", haveOutput = "InteruptStunAvoidChance", { format = "{0:output:InteruptStunAvoidChance}%", { modName = "AvoidInteruptStun" }, }, },
+	{ label = "避免感电几率", haveOutput = "ShockAvoidChance", { format = "{0:output:ShockAvoidChance}%", { modName = "AvoidShock" }, }, },
+	{ label = "避免冰冻几率", haveOutput = "FreezeAvoidChance", { format = "{0:output:FreezeAvoidChance}%", { modName = "AvoidFreeze" }, }, },
+	{ label = "避免冰缓几率", haveOutput = "ChillAvoidChance", { format = "{0:output:ChillAvoidChance}%", { modName = "AvoidChill" }, }, },
+	{ label = "避免点燃几率", haveOutput = "IgniteAvoidChance", { format = "{0:output:IgniteAvoidChance}%", { modName = "AvoidIgnite" }, }, },
+	{ label = "避免流血几率", haveOutput = "BleedAvoidChance", { format = "{0:output:BleedAvoidChance}%", { modName = "AvoidBleed" }, }, },
+	{ label = "避免中毒几率", haveOutput = "PoisonAvoidChance", { format = "{0:output:PoisonAvoidChance}%", { modName = "AvoidPoison" }, }, },
+	{ label = "爆伤减免", haveOutput = "CritExtraDamageReduction", { format = "{0:output:CritExtraDamageReduction}%", { modName = "ReduceCritExtraDamage" }, }, },
+} },
+
+} },
+{ 3, "DamageTaken", 1, colorCodes.DEFENCE, {{ defaultCollapsed = false, label = "伤害承受", data = {
+	colWidth = 114,
+	{
+		{ format = "物理:" },
+		{ format = "闪电:" },
+		{ format = "冰霜:" },
+		{ format = "火焰:" },
+		{ format = "混沌:" },
+	},
+	{ label = "承受击中伤害",
+		{ format = "x {2:output:PhysicalTakenHitMult}", 
+			{ breakdown = "PhysicalTakenHitMult" }, 
+			{ modName = { "DamageTaken", "DamageTakenWhenHit", "PhysicalDamageTaken", "PhysicalDamageTakenWhenHit", "PhysicalDamageTakenAsFire", "PhysicalDamageTakenAsCold", "PhysicalDamageTakenAsLightning", "PhysicalDamageTakenAsChaos" } } 
+		},
+		{ format = "x {2:output:LightningTakenHitMult}",
+			{ breakdown = "LightningTakenHitMult" }, 
+			{ modName = { "DamageTaken", "DamageTakenWhenHit", "LightningDamageTaken", "LightningDamageTakenWhenHit", "ElementalDamageTaken", "ElementalDamageTakenWhenHit", "LightningDamageTakenAsPhysical", "LightningDamageTakenAsFire", "LightningDamageTakenAsCold", "LightningDamageTakenAsChaos", "ElementalDamageTakenAsPhysical", "ElementalDamageTakenAsChaos" } }
+		},
+		{ format = "x {2:output:ColdTakenHitMult}",
+			{ breakdown = "ColdTakenHitMult" }, 
+			{ modName = { "DamageTaken", "DamageTakenWhenHit", "ColdDamageTaken", "ColdDamageTakenWhenHit", "ElementalDamageTaken", "ElementalDamageTakenWhenHit", "ColdDamageTakenAsPhysical", "ColdDamageTakenAsFire", "ColdDamageTakenAsLightning", "ColdDamageTakenAsChaos", "ElementalDamageTakenAsPhysical", "ElementalDamageTakenAsChaos" } }
+		},
+		{ format = "x {2:output:FireTakenHitMult}", 
+			{ breakdown = "FireTakenHitMult" }, 
+			{ modName = { "DamageTaken", "DamageTakenWhenHit", "FireDamageTaken", "FireDamageTakenWhenHit", "ElementalDamageTaken", "ElementalDamageTakenWhenHit", "FireDamageTakenAsPhysical", "FireDamageDamageTakenAsCold", "FireDamageTakenAsLightning", "FireDamageTakenAsChaos", "ElementalDamageTakenAsPhysical", "ElementalDamageTakenAsChaos" }  } 
+		},
+		{ format = "x {2:output:ChaosTakenHitMult}",
+			{ breakdown = "ChaosTakenHitMult" }, 
+			{ modName = { "DamageTaken", "DamageTakenWhenHit", "ChaosDamageTaken", "ChaosDamageTakenWhenHit", "ChaosDamageTakenAsPhysical", "ChaosDamageTakenAsFire", "ChaosDamageTakenAsCold", "ChaosDamageTakenAsLightning" } }
+		},
+	},
+	{ label = "承受持续伤害",
+		{ format = "x {2:output:PhysicalTakenDotMult}", 
+			{ breakdown = "PhysicalTakenDotMult" }, 
+			{ modName = { "DamageTaken", "DamageTakenOverTime", "PhysicalDamageTaken", "PhysicalDamageTakenOverTime" } } 
+		},
+		{ format = "x {2:output:LightningTakenDotMult}",
+			{ breakdown = "LightningTakenDotMult" }, 
+			{ modName = { "DamageTaken", "DamageTakenOverTime", "LightningDamageTaken", "LightningDamageTakenOverTime", "ElementalDamageTaken", "ElementalDamageTakenOverTime" } }
+		},
+		{ format = "x {2:output:ColdTakenDotMult}",
+			{ breakdown = "ColdTakenDotMult" }, 
+			{ modName = { "DamageTaken", "DamageTakenOverTime", "ColdDamageTaken", "ColdDamageTakenOverTime", "ElementalDamageTaken", "ElementalDamageTakenOverTime" } }
+		},
+		{ format = "x {2:output:FireTakenDotMult}", 
+			{ breakdown = "FireTakenDotMult" }, 
+			{ modName = { "DamageTaken", "DamageTakenOverTime", "FireDamageTaken", "FireDamageTakenOverTime", "ElementalDamageTaken", "ElementalDamageTakenOverTime" }  } 
+		},
+		{ format = "x {2:output:ChaosTakenDotMult}",
+			{ breakdown = "ChaosTakenDotMult" }, 
+			{ modName = { "DamageTaken", "DamageTakenOverTime", "ChaosDamageTaken", "ChaosDamageTakenOverTime" } }
+		},
+	},
+	{ label = "承受反射伤害", haveOutput = "AnyTakenReflect",
+		{ format = "x {2:output:PhysicalTakenReflectMult}", 
+			{ breakdown = "PhysicalTakenReflectMult" }, 
+			{ modName = { "DamageTaken", "DamageTakenWhenHit", "PhysicalDamageTaken", "PhysicalDamageTakenWhenHit", "PhysicalReflectedDamageTaken", "PhysicalDamageTakenAsFire", "PhysicalDamageTakenAsCold", "PhysicalDamageTakenAsLightning", "PhysicalDamageTakenAsChaos" } } 
+		},
+		{ format = "x {2:output:LightningTakenReflectMult}",
+			{ breakdown = "LightningTakenReflectMult" }, 
+			{ modName = { "DamageTaken", "DamageTakenWhenHit", "LightningDamageTaken", "LightningDamageTakenWhenHit", "LightningReflectedDamageTaken", "ElementalDamageTaken", "ElementalDamageTakenWhenHit", "ElementalReflectedDamageTaken", "LightningDamageTakenAsPhysical", "LightningDamageTakenAsFire", "LightningDamageTakenAsCold", "LightningDamageTakenAsChaos", "ElementalDamageTakenAsPhysical", "ElementalDamageTakenAsChaos" } }
+		},
+		{ format = "x {2:output:ColdTakenReflectMult}",
+			{ breakdown = "ColdTakenReflectMult" }, 
+			{ modName = { "DamageTaken", "DamageTakenWhenHit", "ColdDamageTaken", "ColdDamageTakenWhenHit", "ColdReflectedDamageTaken", "ElementalDamageTaken", "ElementalDamageTakenWhenHit", "ElementalReflectedDamageTaken", "ColdDamageTakenAsPhysical", "ColdDamageTakenAsFire", "ColdDamageTakenAsLightning", "ColdDamageTakenAsChaos", "ElementalDamageTakenAsPhysical", "ElementalDamageTakenAsChaos" } }
+		},
+		{ format = "x {2:output:FireTakenReflectMult}", 
+			{ breakdown = "FireTakenReflectMult" }, 
+			{ modName = { "DamageTaken", "DamageTakenWhenHit", "FireDamageTaken", "FireDamageTakenWhenHit", "FireReflectedDamageTaken", "ElementalDamageTaken", "ElementalDamageTakenWhenHit", "ElementalReflectedDamageTaken", "ElementalDamageTakenOverTime", "FireDamageTakenAsPhysical", "FireDamageDamageTakenAsCold", "FireDamageTakenAsLightning", "FireDamageTakenAsChaos", "ElementalDamageTakenAsPhysical", "ElementalDamageTakenAsChaos" }  } 
+		},
+		{ format = "x {2:output:ChaosTakenReflectMult}",
+			{ breakdown = "ChaosTakenReflectMult" }, 
+			{ modName = { "DamageTaken", "DamageTakenWhenHit", "ChaosDamageTaken", "ChaosDamageTakenWhenHit", "ChaosDamageTakenAsPhysical", "ChaosDamageTakenAsFire", "ChaosDamageTakenAsCold", "ChaosDamageTakenAsLightning" } }
+		},
+	},
+} }, { defaultCollapsed = false, label = "不被击中的几率", data = {
+	{ label = "近战 Ch.", { format = "{0:output:MeleeNotHitChance}%", { breakdown = "MeleeNotHitChance" }, }, },
+	{ label = "投射物 Ch.", { format = "{0:output:ProjectileNotHitChance}%", { breakdown = "ProjectileNotHitChance" }, }, },
+	{ label = "法术 Ch.", { format = "{0:output:SpellNotHitChance}%", { breakdown = "SpellNotHitChance" }, }, },
+}, }, { defaultCollapsed = false, label = "被击中时不承受伤害的几率", data = {
+	colWidth = 114,
+	{ label = "近战 Ch.",
+		{ format = "{1:output:PhysicalMeleeDamageChance}%", 
+			{ breakdown = "PhysicalMeleeDamageChance" }, 
+		},
+		{ format = "{1:output:LightningMeleeDamageChance}%",
+			{ breakdown = "LightningMeleeDamageChance" }, 
+		},
+		{ format = "{1:output:ColdMeleeDamageChance}%",
+			{ breakdown = "ColdMeleeDamageChance" }, 
+		},
+		{ format = "{1:output:FireMeleeDamageChance}%", 
+			{ breakdown = "FireMeleeDamageChance" }, 
+		},
+		{ format = "{1:output:ChaosMeleeDamageChance}%",
+			{ breakdown = "ChaosMeleeDamageChance" }, 
+		},
+	},
+	{ label = "投射物 Ch.",
+		{ format = "{1:output:PhysicalProjectileDamageChance}%", 
+			{ breakdown = "PhysicalProjectileDamageChance" }, 
+		},
+		{ format = "{1:output:LightningProjectileDamageChance}%",
+			{ breakdown = "LightningProjectileDamageChance" }, 
+		},
+		{ format = "{1:output:ColdProjectileDamageChance}%",
+			{ breakdown = "ColdProjectileDamageChance" }, 
+		},
+		{ format = "{1:output:FireProjectileDamageChance}%", 
+			{ breakdown = "FireProjectileDamageChance" }, 
+		},
+		{ format = "{1:output:ChaosProjectileDamageChance}%",
+			{ breakdown = "ChaosProjectileDamageChance" }, 
+		},
+	},
+	{ label = "法术 Ch.",
+		{ format = "{1:output:PhysicalSpellDamageChance}%", 
+			{ breakdown = "PhysicalSpellDamageChance" }, 
+		},
+		{ format = "{1:output:LightningSpellDamageChance}%",
+			{ breakdown = "LightningSpellDamageChance" }, 
+		},
+		{ format = "{1:output:ColdSpellDamageChance}%",
+			{ breakdown = "ColdSpellDamageChance" }, 
+		},
+		{ format = "{1:output:FireSpellDamageChance}%", 
+			{ breakdown = "FireSpellDamageChance" }, 
+		},
+		{ format = "{1:output:ChaosSpellDamageChance}%",
+			{ breakdown = "ChaosSpellDamageChance" }, 
+		},
+	},
+	{ label = "法术投射物 Ch.",
+		{ format = "{1:output:PhysicalSpellProjectileDamageChance}%", 
+			{ breakdown = "PhysicalSpellProjectileDamageChance" }, 
+		},
+		{ format = "{1:output:LightningSpellProjectileDamageChance}%",
+			{ breakdown = "LightningSpellProjectileDamageChance" }, 
+		},
+		{ format = "{1:output:ColdSpellProjectileDamageChance}%",
+			{ breakdown = "ColdSpellProjectileDamageChance" }, 
+		},
+		{ format = "{1:output:FireSpellProjectileDamageChance}%", 
+			{ breakdown = "FireSpellProjectileDamageChance" }, 
+		},
+		{ format = "{1:output:ChaosSpellProjectileDamageChance}%",
+			{ breakdown = "ChaosSpellProjectileDamageChance" }, 
+		},
+	},
+}, }, { defaultCollapsed = false, label = "\"生命\" 资源池", data = {
+	colWidth = 114,
+	{ label = "能量护盾穿透%", haveOutput = "AnyBypass",
+		{ format = "{0:output:PhysicalEnergyShieldBypass}", 
+			{ breakdown = "PhysicalEnergyShieldBypass" },
+			{ modName = "PhysicalEnergyShieldBypass" },			
+		},
+		{ format = "{0:output:LightningEnergyShieldBypass}",
+			{ breakdown = "LightningEnergyShieldBypass" }, 
+			{ modName = {"LightningEnergyShieldBypass"} },	
+		},
+		{ format = "{0:output:ColdEnergyShieldBypass}",
+			{ breakdown = "ColdEnergyShieldBypass" },
+			{ modName = "ColdEnergyShieldBypass" },	 
+		},
+		{ format = "{0:output:FireEnergyShieldBypass}", 
+			{ breakdown = "FireEnergyShieldBypass" }, 
+			{ modName = "FireEnergyShieldBypass" },	
+		},
+		{ format = "{0:output:ChaosEnergyShieldBypass}",
+			{ breakdown = "ChaosEnergyShieldBypass" }, 
+			{ modName = {"ChaosEnergyShieldBypass", "ChaosNotBypassEnergyShield"} },	
+		},
+	},
+	{ label = "心灵升华", haveOutput = "AnyMindOverMatter",
+		{ format = "{0:output:PhysicalMindOverMatter}", 
+			{ breakdown = "PhysicalMindOverMatter" },
+			{ modName = "DamageTakenFromManaBeforeLife" },			
+		},
+		{ format = "{0:output:LightningMindOverMatter}",
+			{ breakdown = "LightningMindOverMatter" }, 
+			{ modName = {"DamageTakenFromManaBeforeLife", "LightningDamageTakenFromManaBeforeLife"} },	
+		},
+		{ format = "{0:output:ColdMindOverMatter}",
+			{ breakdown = "ColdMindOverMatter" },
+			{ modName = "DamageTakenFromManaBeforeLife" },	 
+		},
+		{ format = "{0:output:FireMindOverMatter}", 
+			{ breakdown = "FireMindOverMatter" }, 
+			{ modName = "DamageTakenFromManaBeforeLife" },	
+		},
+		{ format = "{0:output:ChaosMindOverMatter}",
+			{ breakdown = "ChaosMindOverMatter" }, 
+			{ modName = {"DamageTakenFromManaBeforeLife", "ChaosDamageTakenFromManaBeforeLife"} },	
+		},
+	},
+	{ label = "总资源池",
+		{ format = "{0:output:PhysicalTotalPool}", 
+			{ breakdown = "PhysicalTotalPool" },			
+		},
+		{ format = "{0:output:LightningTotalPool}",
+			{ breakdown = "LightningTotalPool" }, 	
+		},
+		{ format = "{0:output:ColdTotalPool}",
+			{ breakdown = "ColdTotalPool" },
+		},
+		{ format = "{0:output:FireTotalPool}", 
+			{ breakdown = "FireTotalPool" }, 
+		},
+		{ format = "{0:output:ChaosTotalPool}",
+			{ breakdown = "ChaosTotalPool" }, 
+		},
+	}, 
+	{ label = "最大承受击中伤害",
+		{ format = "{0:output:PhysicalMaximumHitTaken}", 
+			{ breakdown = "PhysicalMaximumHitTaken" }, 
+		},
+		{ format = "{0:output:LightningMaximumHitTaken}",
+			{ breakdown = "LightningMaximumHitTaken" }, 
+		},
+		{ format = "{0:output:ColdMaximumHitTaken}",
+			{ breakdown = "ColdMaximumHitTaken" }, 
+		},
+		{ format = "{0:output:FireMaximumHitTaken}", 
+			{ breakdown = "FireMaximumHitTaken" }, 
+		},
+		{ format = "{0:output:ChaosMaximumHitTaken}",
+			{ breakdown = "ChaosMaximumHitTaken" }, 
+		},
+	},
+	{ label = "有效持续伤害资源池",
+		{ format = "{0:output:PhysicalDotEHP}", 
+			{ breakdown = "PhysicalDotEHP" }, 
+		},
+		{ format = "{0:output:LightningDotEHP}",
+			{ breakdown = "LightningDotEHP" }, 
+		},
+		{ format = "{0:output:ColdDotEHP}",
+			{ breakdown = "ColdDotEHP" }, 
+		},
+		{ format = "{0:output:FireDotEHP}", 
+			{ breakdown = "FireDotEHP" }, 
+		},
+		{ format = "{0:output:ChaosDotEHP}",
+			{ breakdown = "ChaosDotEHP" }, 
+		},
+	},
+	{ label = "有效击中伤害资源池",
+		{ format = "{0:output:PhysicalTotalEHP}", 
+			{ breakdown = "PhysicalTotalEHP" }, 
+		},
+		{ format = "{0:output:LightningTotalEHP}",
+			{ breakdown = "LightningTotalEHP" }, 
+		},
+		{ format = "{0:output:ColdTotalEHP}",
+			{ breakdown = "ColdTotalEHP" }, 
+		},
+		{ format = "{0:output:FireTotalEHP}", 
+			{ breakdown = "FireTotalEHP" }, 
+		},
+		{ format = "{0:output:ChaosTotalEHP}",
+			{ breakdown = "ChaosTotalEHP" }, 
+		},
+	}
+} }, { defaultCollapsed = false, label = "消减", data = {
+	colWidth = 114,
+	{ label = "消减", haveOutput = "TotalDegen",
+		{ format = "{0:output:PhysicalDegen}", 
+			{ breakdown = "PhysicalDegen" }, 
+			{ modName = "PhysicalDegen", }
+		},
+		{ format = "{0:output:LightningDegen}",
+			{ breakdown = "LightningDegen" }, 
+			{ modName = "LightningDegen", }
+		},
+		{ format = "{0:output:ColdDegen}",
+			{ breakdown = "ColdDegen" }, 
+			{ modName = "ColdDegen", }
+		},
+		{ format = "{0:output:FireDegen}", 
+			{ breakdown = "FireDegen" }, 
+			{ modName = "FireDegen", }
+		},
+		{ format = "{0:output:ChaosDegen}",
+			{ breakdown = "ChaosDegen" }, 
+			{ modName = "ChaosDegen", }
+		},
+	},
+{ label = "总降低回复", haveOutput = "TotalDegen", { format = "{1:output:TotalDegen}", 
+		{ breakdown = "TotalDegen" },
+{ label = "源", modName = { "PhysicalDegen", "FireDegen", "ColdDegen", "LightningDegen", "ChaosDegen" }, modType = "BASE" },
+	}, },
+{ label = "实际生命回复", haveOutput = "NetLifeRegen", { format = "{1:output:NetLifeRegen}", { breakdown = "NetLifeRegen" }, }, },
+{ label = "实际魔力回复", haveOutput = "NetManaRegen", { format = "{1:output:NetManaRegen}", { breakdown = "NetManaRegen" }, }, },
+} }
+} },
+
+
+
+
+
+{ 1, "Block", 3, colorCodes.DEFENCE, {{ defaultCollapsed = false, label = "格挡", data = {
+	extra = "{0:output:BlockChance}%/{0:output:SpellBlockChance}%",
+{ label = "攻击格挡几率", { format = "{0:output:BlockChance}%",
+		{ breakdown = "BlockChance" },
+		{ modName = "BlockChance" }, 
+	}, },
+{ label = "法术格挡几率", { format = "{0:output:SpellBlockChance}%", 
+		{ breakdown = "SpellBlockChance" }, 
+		{ modName = { "SpellBlockChance", "BlockChanceConv" }, },
+	}, },
+	{ label = "格挡承受的伤害", haveOutput = "ShowBlockEffect", { format = "{0:output:BlockEffect}%", 
+		{ breakdown = "BlockEffect" }, 
+		{ modName = { "BlockEffect" }, },
+	}, },
+	{ label = "格挡回复生命", { format = "{0:output:LifeOnBlock}", { modName = "LifeOnBlock" }, }, },
+	{ label = "格挡回复魔力", { format = "{0:output:ManaOnBlock}", { modName = "ManaOnBlock" }, }, },
+	{ label = "格挡回复能量护盾", { format = "{0:output:EnergyShieldOnBlock}", { modName = "EnergyShieldOnBlock" }, }, },
+} }, 
+} },
+
+
+
 }

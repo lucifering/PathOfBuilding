@@ -10,6 +10,19 @@ data.uniques.new = {
 
 --3.11 升级装
 [[
+荒野之律
+魔爪刃
+联盟: 古灵庄园
+源: 由传奇Boss【庄园化身欧莱娜】 专属掉落
+等级需求: 62, 131 Dex, 95 Int
+固定基底词缀: 1
+物理攻击伤害的 1.6% 会转化为生命偷取
+使用该武器暴击时，有 20% 几率触发 20 级的【召唤幽狼】
+攻击速度提高 (15-20)%
+该装备的攻击暴击率提高 (22-28)%
++(15-25)% 攻击和法术暴击伤害加成
+]],
+[[
 沧海桑田
 饰布腰带
 联盟: 古灵庄园
@@ -111,7 +124,7 @@ data.uniques.new = {
 烙印技能的持续时间延长 (50-100)%
 ]],	
 [[
-费尔博格獠牙
+费伯之牙
 黄晶护身符
 联盟: 古灵庄园
 等级需求: 61
@@ -120,9 +133,9 @@ data.uniques.new = {
 {tags:jewellery_attribute}+(30-50) 智慧
 {tags:caster}施法速度提高 (10-15)%
 范围效果扩大 (10-15)%
-如果敌人身上的诅咒时间已经消退了至少 25%，则会被缓速，使移动速度降低 25%
-如果敌人身上的诅咒时间已经消退了至少 50%，诅咒效果提高 25%
-如果敌人身上的诅咒时间已经消退了至少 75%，被你诅咒的敌人承受的伤害提高 25%
+若诅咒持续时间耗减了 25%，则被你诅咒的敌人也被【缓速】，移动速度减慢 25%
+若诅咒持续时间耗减了 50%，你的诅咒效果提高 25%
+若诅咒持续时间耗减了 75%，则被你诅咒的敌人受到的伤害提高 25%
 ]],
 [[
 魔蝎的呼唤
@@ -178,7 +191,7 @@ data.uniques.new = {
 【斗转星移】
 ]],
 [[
-熊之束
+熊之束腰
 皮革腰带
 联盟: 古灵庄园
 等级需求: 68
@@ -483,9 +496,10 @@ table.insert(data.uniques.new, table.concat(lines, '\n'))
 
 
 local linesForbiddenShako = {
-	"皇帝的野望",
+	"禁断的军帽",
 	"强化巨盔",
 	"联盟: 古灵庄园",
+	"源: 由传奇Boss【庄园化身欧莱娜】 专属掉落",
 	"等级需求: 68, 59 Str, 59 Int",
 	"Has Alt Variant: true",	
 	"+(25-30) 全属性",
@@ -494,7 +508,8 @@ local supports = { }
 for name, grantedEffect in pairs(data["3_0"].skills) do
 
 	if not grantedEffect.hidden and not grantedEffect.fromItem  and  grantedEffect.support and not grantedEffect.plusVersionOf then
-		table.insert(supports, grantedEffect.name)
+		local gem= grantedEffect.name:gsub("%(辅%)",""):gsub("（辅）","")
+		table.insert(supports,gem)
 	end
 end
 table.sort(supports)

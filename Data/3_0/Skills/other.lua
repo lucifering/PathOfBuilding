@@ -1904,41 +1904,7 @@ skills["TentacleSmash"] = {
 		[20] = { 20, baseMultiplier = 2.5, cooldown = 2, levelRequirement = 70, statInterpolation = { 1, }, },
 	},
 }
-skills["AvianTornado"] = {
-	name = "鸟之龙卷",
-	hidden = true,
-	color = 3,
-	baseEffectiveness = 2.1300001144409,
-	incrementalEffectiveness = 0.02559999935329,
-	description = "发出一个无法预测，带有穿刺特性的龙卷投射物，该投射物将随机移动一段时间，并反复对接触的敌人造成伤害。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Hit] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.PhysicalSkill] = true, },
-	statDescriptionScope = "skill_stat_descriptions",
-	castTime = 0.65,
-	fromItem = true,
-	baseFlags = {
-		spell = true,
-		projectile = true,
-		duration = true,
-	},
-	baseMods = {
-	},
-	qualityStats = {
-	},
-	stats = {
-		"spell_minimum_base_physical_damage",
-		"spell_maximum_base_physical_damage",
-		"base_skill_effect_duration",
-		"cast_on_gain_avians_flight_or_avians_might_%",
-		"global_chance_to_blind_on_hit_%",
-		"base_is_projectile",
-		"projectiles_nova",
-		"always_pierce",
-		"spell_uncastable_if_triggerable",
-	},
-	levels = {
-		[20] = { 0.80000001192093, 1.2000000476837, 2500, 25, 25, critChance = 6, levelRequirement = 70, statInterpolation = { 3, 3, 1, 1, 1, }, },
-	},
-}
+
 skills["VoidGaze"] = {
 	name = "虚空凝视",
 	hidden = true,
@@ -2352,5 +2318,42 @@ skills["SummonHarbingerOfTimeUber"] = {
 	},
 	levels = {
 		[1] = { 7, cooldown = 6, levelRequirement = 1, statInterpolation = { 1, }, },
+	},
+}
+
+
+skills["AvianTornado"] = {
+name = "鸟之龙卷",
+	hidden = true,
+	color = 3,
+	baseEffectiveness = 2.1300001144409,
+	incrementalEffectiveness = 0.02559999935329,
+	description = "发出一个无法预测，带有穿刺特性的龙卷投射物，该投射物将随机移动一段时间，并反复对接触的敌人造成伤害。",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Hit] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.PhysicalSkill] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 0.65,
+	fromItem = true,
+	baseFlags = {
+		spell = true,
+		projectile = true,
+		duration = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_physical_damage",
+		"spell_maximum_base_physical_damage",
+		"base_skill_effect_duration",
+		"cast_on_gain_avians_flight_or_avians_might_%",
+		"global_chance_to_blind_on_hit_%",
+		"base_is_projectile",
+		"projectiles_nova",
+		"always_pierce",
+		"spell_uncastable_if_triggerable",
+	},
+	levels = {
+		[20] = { 0.80000001192093, 1.2000000476837, 2500, 100, 25, critChance = 6, levelRequirement = 70, statInterpolation = { 3, 3, 1, 1, 1, }, },
 	},
 }

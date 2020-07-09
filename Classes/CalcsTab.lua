@@ -115,8 +115,10 @@ local CalcsTabClass = newClass("CalcsTab", "UndoHandler", "ControlHost", "Contro
 	self.sectionList = { }
 
 	-- Special section for skill/mode selection
-self:NewSection(3, "SkillSelect", 1, "查看技能详情", colorCodes.NORMAL, {
-{ label = "技能组", { controlName = "mainSocketGroup", 
+
+
+self:NewSection(3, "SkillSelect", 1, colorCodes.NORMAL, {{ defaultCollapsed = false, label = "查看技能详情", data = {
+		{ label = "技能组", { controlName = "mainSocketGroup", 
 			control = new("DropDownControl", nil, 0, 0, 300, 16, nil, function(index, value) 
 				self.input.skill_number = index 
 				self:AddUndoState()
@@ -429,7 +431,7 @@ Buff：光环和buff会生效，相当于你在藏身处的数值。
 { label = "光环和Buff技能", flag = "buffs", textSize = 12, { format = "{output:BuffList}", { breakdown = "SkillBuffs" } }, },
 { label = "战斗Buffs", flag = "combat", textSize = 12, { format = "{output:CombatList}" }, },
 { label = "诅咒和Debuff", flag = "effective", textSize = 12, { format = "{output:CurseList}", { breakdown = "SkillDebuffs" } }, },
-	}, function(section)
+	}}}, function(section)
 		self.build:RefreshSkillSelectControls(section.controls, self.input.skill_number, "Calcs")
 		section.controls.showMinion.state = self.input.showMinion
 		section.controls.mode:SelByValue(self.input.misc_buffMode, "buffMode")
@@ -501,7 +503,6 @@ function CalcsTabClass:Save(xml)
 	end
 	self.modFlag = false
 end
-
 function CalcsTabClass:Draw(viewPort, inputEvents)
 	self.x = viewPort.x
 	self.y = viewPort.y
@@ -519,14 +520,20 @@ function CalcsTabClass:Draw(viewPort, inputEvents)
 		if section.enabled then
 			local col
 			if section.group == 1 then
-				-- Group 1: Offense 
+				-- Group 1: Offense or 3 wide sections
 				-- This group is put into the first 3 columns, with each section placed into the highest available location
 				col = 1
-				local minY = colY[col] or baseY
-				for c = 2, 3 do
-					if (colY[c] or baseY) < minY then
-						col = c
-						minY = colY[c] or baseY
+				if section.width == self.colWidth then -- if 1 col wide
+					local minY = colY[col] or baseY
+					for c = 2, 3 do
+						if (colY[c] or baseY) < minY then
+							col = c
+							minY = colY[c] or baseY
+						end
+					end
+				else
+					for c = 2, 3 do
+						colY[col] = m_max(colY[col] or baseY, colY[c] or baseY)
 					end
 				end
 			elseif section.group == 2 then

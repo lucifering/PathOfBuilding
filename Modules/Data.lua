@@ -247,6 +247,10 @@ data.misc = { -- magic numbers
 	MineAuraRadiusBase = 35,
 	PurposefulHarbingerMaxBuffPercent = 40,
 	ImpaleDurationBase = 8,
+	ImpaleStacksMax =5,
+	RageMax = 50,
+	RageDurationBase = 0.5,
+	
 }
 
 ---------------------------

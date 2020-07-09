@@ -620,8 +620,12 @@ function calcs.perform(env)
 	if env.aegisModList then
 		env.player.itemList["Weapon 2"] = nil
 	end
-
+	
 	for _, activeSkill in ipairs(env.player.activeSkillList) do
+		if activeSkill.activeEffect.grantedEffect.name == "纯净之捷" then
+			local limit = activeSkill.skillModList:Sum("BASE", nil, "ActiveSentinelOfPurityLimit")
+			output.ActiveSentinelOfPurityLimit = m_max(limit, output.ActiveSentinelOfPurityLimit or 0)
+		end
 		if activeSkill.skillFlags.golem then
 			local limit = activeSkill.skillModList:Sum("BASE", nil, "ActiveGolemLimit")
 			output.ActiveGolemLimit = m_max(limit, output.ActiveGolemLimit or 0)
@@ -629,6 +633,31 @@ function calcs.perform(env)
 		if activeSkill.skillFlags.totem then
 			local limit = env.player.mainSkill.skillModList:Sum("BASE", env.player.mainSkill.skillCfg, "ActiveTotemLimit")
 			output.ActiveTotemLimit = m_max(limit, output.ActiveTotemLimit or 0)
+		end
+		if activeSkill.skillFlags.brand then
+			local attachLimit = env.player.mainSkill.skillModList:Sum("BASE", env.player.mainSkill.skillCfg, "BrandsAttachedLimit")
+			local attachLimitOver = env.player.mainSkill.skillModList:Override(nil, "Multiplier:BrandsAttachedLimit") 
+			if attachLimitOver then 
+				attachLimit = attachLimitOver
+			end
+			modDB:NewMod("Multiplier:BrandsAttachedToEnemy", "BASE", attachLimit, "Config")
+			enemyDB:NewMod("Multiplier:BrandsAttached", "BASE", attachLimit, "Config")
+		end
+		if activeSkill.activeEffect.grantedEffect.name == "召唤魔侍" then
+			local limit = env.player.mainSkill.skillModList:Sum("BASE", env.player.mainSkill.skillCfg, "ActiveSkeletonLimit")
+			output.ActiveSkeletonLimit = m_max(limit, output.ActiveSkeletonLimit or 0)
+		end
+		if activeSkill.activeEffect.grantedEffect.name == "魔卫复苏" then
+			local limit = env.player.mainSkill.skillModList:Sum("BASE", env.player.mainSkill.skillCfg, "ActiveZombieLimit")
+			output.ActiveZombieLimit = m_max(limit, output.ActiveZombieLimit or 0)
+		end
+		if activeSkill.activeEffect.grantedEffect.name == "召唤愤怒狂灵" then
+			local limit = env.player.mainSkill.skillModList:Sum("BASE", env.player.mainSkill.skillCfg, "ActiveRagingSpiritLimit")
+			output.ActiveRagingSpiritLimit = m_max(limit, output.ActiveRagingSpiritLimit or 0)
+		end
+		if activeSkill.activeEffect.grantedEffect.name == "召唤灵体" then
+			local limit = env.player.mainSkill.skillModList:Sum("BASE", env.player.mainSkill.skillCfg, "ActiveSpectreLimit")
+			output.ActiveSpectreLimit = m_max(limit, output.ActiveSpectreLimit or 0)
 		end
 	end
 	

@@ -1776,10 +1776,14 @@ function PassiveSpecClass:allocTimeJew()
 										 
 												t_insert( list1,modLib.createMod("BlockChance", "MORE", 100, "Tree"..specNode.id))					 
 												t_insert( list2,modLib.createMod("SpellBlockChance", "MORE", 100, "Tree"..specNode.id))	
-												--t_insert( list3,modLib.createMod("LightningResist", "MORE", -50, "Tree"..specNode.id))													
+												t_insert( list3,modLib.createMod("BlockEffect", "BASE", 50, "Tree"..specNode.id))	
+											
+
+
+											--t_insert( list3,modLib.createMod("LightningResist", "MORE", -50, "Tree"..specNode.id))													
 												newmodList1["list"] =  list1
 												newmodList2["list"] =  list2
-												newmodList3["list"] =  nil
+												newmodList3["list"] =  list3
 												specNode.mods={newmodList1,newmodList2,newmodList3}
 											end 	
 									
@@ -1815,9 +1819,13 @@ function PassiveSpecClass:allocTimeJew()
 										 
 												t_insert( list1,modLib.createMod("Condition:CanGainRage", "FLAG", true,"Tree"..specNode.id))			
 												t_insert( list1,modLib.createMod("Dummy", "DUMMY", 1, "Tree"..specNode.id))					 
-																									
+												t_insert( list1,modLib.createMod("RageRegen", "BASE", 3, "Tree"..specNode.id))	
+
+												t_insert( list2,modLib.createMod("ManaRegenToRageRegen", "FLAG", true, "Tree"..specNode.id))																
+														
+												
 												newmodList1["list"] =  list1
-												newmodList2["list"] =  nil
+												newmodList2["list"] =  list2
 												newmodList3["list"] =  nil
 												specNode.mods={newmodList1,newmodList2,newmodList3}
 											end 
@@ -2138,13 +2146,21 @@ t_insert( list2,modLib.createMod("NoAttributeBonus", "FLAG", true, "Tree"..specN
 												list3={}
 												newmodList1={}
 												newmodList2={}	
-												newmodList3={}												
+												newmodList3={}		
+
+t_insert( list1,modLib.createMod("PhysicalEnergyShieldBypass", "BASE", 100, "Tree"..specNode.id))
+t_insert( list1,modLib.createMod("LightningEnergyShieldBypass", "BASE", 100, "Tree"..specNode.id))
+t_insert( list1,modLib.createMod("ColdEnergyShieldBypass", "BASE", 100, "Tree"..specNode.id))
+t_insert( list1,modLib.createMod("FireEnergyShieldBypass", "BASE", 100, "Tree"..specNode.id))
+
+
+												
 												t_insert( list2,modLib.createMod("ColdDamageTakenAsChaos", "BASE", 50, "Tree"..specNode.id))
 t_insert( list2,modLib.createMod("LightningDamageTakenAsChaos", "BASE", 50, "Tree"..specNode.id))
 t_insert( list2,modLib.createMod("FireDamageTakenAsChaos", "BASE", 50, "Tree"..specNode.id))
 t_insert( list3,modLib.createMod("ChaosResistMax", "BASE", 10, "Tree"..specNode.id))										
 											
-												newmodList1["list"] =  nil
+												newmodList1["list"] =  list1
 												newmodList2["list"] =  list2
 												newmodList3["list"] =  list3
 												specNode.mods={newmodList1,newmodList2,newmodList3}
@@ -2256,7 +2272,13 @@ t_insert( list2,modLib.createMod("MaxLifeLeechRate", "MORE", -50, "Tree"..specNo
 												newmodList2={}	
 												t_insert( list2,modLib.createMod("LifeGainAsEnergyShield", "BASE", 20, "Tree"..specNode.id))
  									 
-												newmodList1["list"] =  nil
+									 
+												 t_insert( list1,modLib.createMod("PhysicalEnergyShieldBypass", "BASE", 50, "Tree"..specNode.id))
+												  t_insert( list1,modLib.createMod("LightningEnergyShieldBypass", "BASE", 50, "Tree"..specNode.id))
+												  t_insert( list1,modLib.createMod("ColdEnergyShieldBypass", "BASE", 50, "Tree"..specNode.id))
+												  t_insert( list1,modLib.createMod("FireEnergyShieldBypass", "BASE", 50, "Tree"..specNode.id))
+												 
+												newmodList1["list"] =  list1
 												newmodList2["list"] =  list2			 
 												specNode.mods={newmodList1,newmodList2}
 											end 

@@ -1424,7 +1424,8 @@ function ItemsTabClass:CraftClusterJewel()
 	
 	if skill.enchant then 
 		for i = 1,  #skill.enchant do
-			t_insert(item.enchantModLines, { line = skill.enchant[i], crafted = true })
+			local str = skill.enchant[i]:gsub("^%s+", ""):gsub("%s+$", "")
+			t_insert(item.enchantModLines, { line = str, crafted = true })
 		end
 	end 
 	

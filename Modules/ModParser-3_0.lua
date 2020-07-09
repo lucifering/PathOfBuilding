@@ -5000,16 +5000,17 @@ for baseName, jewel in pairs(data["3_0"].clusterJewels.jewels) do
 		if skill.enchant then 
 		for i = 1,  #skill.enchant do
 			
+			local str = skill.enchant[i]:lower():gsub("^%s+", ""):gsub("%s+$", "")
 			 
 			if skill.enchant[i] == '其中 1 个增加的天赋为【珠宝槽】' then 
-			 clusterJewelSkills[skill.enchant[i]:lower()] = { mod("JewelData", "LIST", { key = "clusterJewelSocketCount", value = 1 }) }	
+			 clusterJewelSkills[str] = { mod("JewelData", "LIST", { key = "clusterJewelSocketCount", value = 1 }) }	
 				
 			elseif skill.enchant[i] == '其中 2 个增加的天赋为【珠宝槽】' then 
 			
-				 clusterJewelSkills[skill.enchant[i]:lower()] = { mod("JewelData", "LIST", { key = "clusterJewelSocketCount", value = 2 }) }	
+				 clusterJewelSkills[str] = { mod("JewelData", "LIST", { key = "clusterJewelSocketCount", value = 2 }) }	
 				 
 			else 					 
-				clusterJewelSkills[skill.enchant[i]:lower()] = { mod("JewelData", "LIST", { key = "clusterJewelSkill", value = skillId }) }	
+				clusterJewelSkills[str] = { mod("JewelData", "LIST", { key = "clusterJewelSkill", value = skillId }) }	
 			end 
 			
 		end 

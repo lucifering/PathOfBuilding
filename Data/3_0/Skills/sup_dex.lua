@@ -560,7 +560,7 @@ description = "必须同时连接一个攻击技能和一个法术技能才能�
 	},
 }
 skills["SupportCastOnCritTriggered"] = {
-name = "暴击时施放(辅)",
+name = "暴击时施放(辅)(被触发的)",
 description = "必须同时连接一个攻击技能和一个法术技能才能生效. 法术技能会在攻击技能暴击敌人时施放. 无法辅助图腾, 陷阱或地雷. 瓦尔技能、持续吟唱类技能和魔力保留类技能无法被触发施放",
 	color = 2,
 	support = true,
@@ -672,7 +672,7 @@ description = "必须同时连接一个攻击技能和一个法术技能才能�
 	},
 }
 skills["SupportCastOnCritTriggeredPlus"] = {
-name = "暴击时施放（强辅）",
+name = "暴击时施放（强辅）(被触发的)",
 description = "必须同时连接一个攻击技能和一个法术技能才能生效. 法术技能会在攻击技能暴击敌人时施放. 无法辅助图腾, 陷阱或地雷. 瓦尔技能、持续吟唱类技能和魔力保留类技能无法被触发施放",
 	color = 2,
 	support = true,

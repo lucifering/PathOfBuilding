@@ -97,7 +97,7 @@ skills["InfernalCryOnHitExplosion"] = {
 	name = "燃尽",
 	color = 1,
 	description = "对一片区域造成攻击伤害。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.Melee] = true, },
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.Melee] = true,  [SkillType.TriggeredGrantedSkill] = true, },
 	weaponTypes = {
 		["None"] = true,
 		["One Handed Mace"] = true,
@@ -113,6 +113,9 @@ skills["InfernalCryOnHitExplosion"] = {
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	baseFlags = {
+		attack = true,
+		melee = true,
+		area = true,
 	},
 	baseMods = {
 	skill("showAverage", true)
@@ -1925,6 +1928,11 @@ description = "凝聚冰霜之力，转换一部分的物理伤害为冰霜伤�
 	},
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
+	statMap = {
+		["glacial_hammer_third_hit_freeze_as_though_dealt_damage_+%"] = {
+			mod("FreezeAsThoughDealing", "MORE", nil)
+		},
+	},
 	baseFlags = {
 		attack = true,
 		melee = true,
@@ -3059,6 +3067,9 @@ description = "施加一个增益效果，增加护甲值，并在耗尽前替�
 	statMap = {
 		["base_physical_damage_reduction_rating"] = {
 			mod("Armour", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
+		},
+		["vaal_molten_shall_armour_+%_final"] = {
+			mod("Armour", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
 		},
 	},
 	baseFlags = {

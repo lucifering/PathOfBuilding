@@ -227,7 +227,7 @@ local modNameList = {
 	["火焰持续伤害加成"] = "FireDotMultiplier",
 	["混沌持续伤害加成"] = "ChaosDotMultiplier",
 	["几率造成双倍伤害"] = "DoubleDamageChance",
-	["异常状态持续时间"] = { "EnemyShockDuration", "EnemyFreezeDuration", "EnemyChillDuration", "EnemyIgniteDuration", "EnemyPoisonDuration", "EnemyBleedDuration" },
+	["异常状态持续时间"] = { "EnemyShockDuration", "EnemyFreezeDuration", "EnemyChillDuration", "EnemyIgniteDuration", "EnemyPoisonDuration", "EnemyBleedDuration", "EnemyScorchDuration", "EnemyBrittleDuration", "EnemySapDuration"  },
 	["非异常状态的持续混沌伤害加成"] = "NonAilmentChaosDotMultiplier",
 	["非异常状态的持续混沌伤害额外加成"] = "NonAilmentChaosDotMultiplier",
 	["持续混沌伤害额外加成"] = "ChaosDotMultiplier",
@@ -601,14 +601,14 @@ local modNameList = {
 	["感电效果"] = "EnemyShockEffect", --备注：effect of shock
 	["冰缓效果"] = "EnemyChillEffect", --备注：effect of chill
 	["你受到的冰缓效果"] = "SelfChillEffect", --备注：effect of chill on you
-	["对敌人施加的非伤害性异常状态效果的伤害"] = { "EnemyShockEffect", "EnemyChillEffect", "EnemyFreezeEffech" }, --备注：effect of non-damaging ailments
+	["对敌人施加的非伤害性异常状态效果的伤害"] = { "EnemyShockEffect", "EnemyChillEffect", "EnemyFreezeEffech", "EnemyScorchEffect", "EnemyBrittleEffect", "EnemySapEffect"  }, --备注：effect of non-damaging ailments
 	["敌人的感电持续时间"] = "EnemyShockDuration", --备注：shock duration
 	["敌人被冰冻的持续时间"] = "EnemyFreezeDuration", --备注：freeze duration
 	["敌人被冰缓的持续时间"] = "EnemyChillDuration", --备注：chill duration
 	["敌人被点燃的持续时间"] = "EnemyIgniteDuration", --备注：ignite duration
-	["敌人受到的元素异常状态时间"] = { "EnemyShockDuration", "EnemyFreezeDuration", "EnemyChillDuration", "EnemyIgniteDuration" }, --备注：duration of elemental ailments
-	["duration of elemental status ailments"] = { "EnemyShockDuration", "EnemyFreezeDuration", "EnemyChillDuration", "EnemyIgniteDuration" },
-	["duration of ailments"] = { "EnemyShockDuration", "EnemyFreezeDuration", "EnemyChillDuration", "EnemyIgniteDuration", "EnemyPoisonDuration", "EnemyBleedDuration" },
+	["敌人受到的元素异常状态时间"] = { "EnemyShockDuration", "EnemyFreezeDuration", "EnemyChillDuration", "EnemyIgniteDuration" , "EnemyScorchDuration", "EnemyBrittleDuration", "EnemySapDuration" }, --备注：duration of elemental ailments
+	["duration of elemental status ailments"] = { "EnemyShockDuration", "EnemyFreezeDuration", "EnemyChillDuration", "EnemyIgniteDuration" , "EnemyScorchDuration", "EnemyBrittleDuration", "EnemySapDuration" },
+	["duration of ailments"] = { "EnemyShockDuration", "EnemyFreezeDuration", "EnemyChillDuration", "EnemyIgniteDuration", "EnemyPoisonDuration", "EnemyBleedDuration" , "EnemyScorchDuration", "EnemyBrittleDuration", "EnemySapDuration" },
 	-- Other ailments
 	["to poison"] = "PoisonChance",
 	["to cause poison"] = "PoisonChance",
@@ -736,7 +736,7 @@ local modFlagList = {
 	["火焰、冰霜、闪电技能的"] = { keywordFlags = bor(KeywordFlag.Lightning, KeywordFlag.Cold, KeywordFlag.Fire) },
 	["元素技能的"] = { keywordFlags = bor(KeywordFlag.Lightning, KeywordFlag.Cold, KeywordFlag.Fire) },
 	["烙印技能的"] ={ tag = { type = "SkillType", skillType = SkillType.Brand } },
-	["烙印的"] ={ tag = { type = "SkillType", skillType = SkillType.Brand } },
+	["烙印的"] = { tag = { type = "SkillType", skillType = SkillType.Brand } },
 	["烙印技能"] = { tag = { type = "SkillType", skillType = SkillType.Brand } },
 	["异常状态"] = { flags = ModFlag.Ailment },
 	["闪电技能的"] = { keywordFlags = KeywordFlag.Lightning }, --备注：with lightning skills
@@ -906,6 +906,7 @@ local preFlagList = {
 		["^单手近战武器攻击造成的"] = { flags = bor(ModFlag.Weapon1H, ModFlag.WeaponMelee) },
 		["^双手近战武器攻击造成的"] = { flags = bor(ModFlag.Weapon2H, ModFlag.WeaponMelee) },
 		["^远程武器攻击造成的"] = { flags = ModFlag.WeaponRanged },
+	["^技能被【法术节魔】辅助时，其"] = { tag = { type = "Condition", var = "SupportedBySpellslinger" } },
 		-- Damage types
 	--【中文化程序额外添加结束】
 	-- Weapon types
@@ -1969,8 +1970,11 @@ local specialModList = {
 	["对感电敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end, 
 	["对感电敌人的暴击几率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end, 
 	["对感电目标的暴击率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end, 
-	["你击中造成的感电，必定会使对方所承受伤害提高至少 (%d+)%%"] = function(num) return { mod("EnemyShockEffect", "BASE", num) } end,
-	["药剂持续期间，使周围的敌人感电，他们受到的伤害提高 (%d+)%%"]  = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("SelfShockEffect", "BASE", num)} , { type = "Condition", var = "UsingFlask" }) } end,
+	["你击中造成的感电，必定会使对方所承受伤害提高至少 (%d+)%%"] = function(num) return { 
+	mod("EnemyShockEffect", "BASE", num) } end,
+	["药剂持续期间，使周围的敌人感电，他们受到的伤害提高 (%d+)%%"]  = function(num) return { mod("EnemyModifier", "LIST", { mod = 
+	mod("SelfShockEffect", "BASE", num)} , { type = "Condition", var = "UsingFlask" }),
+	 } end,
 	["近期有感电过敌人，伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", num,{ type = "Condition", var = "ShockedEnemyRecently"  })  } end, 
 	["对被冰冻敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Frozen" })  } end, 
 	["对被感电敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end, 
@@ -2126,12 +2130,18 @@ local specialModList = {
 	["敌人身上的非伤害异常状态效果提高 (%d+)%%"] = function(num) return { 
 	mod("EnemyShockEffect", "INC", num,nil,ModFlag.Ailment) ,
 		mod("EnemyChillEffect", "INC", num,nil,ModFlag.Ailment) ,
-		mod("EnemyFreezeEffech", "INC", num,nil,ModFlag.Ailment) 
+		mod("EnemyFreezeEffect", "INC", num,nil,ModFlag.Ailment) ,
+		mod("EnemyScorchEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
+	mod("EnemyBrittleEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
+	mod("EnemySapEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
 	} end,
 	["非伤害型异常状态效果提高 (%d+)%%"] = function(num) return { 
 	mod("EnemyShockEffect", "INC", num,nil,ModFlag.Ailment) ,
 		mod("EnemyChillEffect", "INC", num,nil,ModFlag.Ailment) ,
-		mod("EnemyFreezeEffech", "INC", num,nil,ModFlag.Ailment) 
+		mod("EnemyFreezeEffect", "INC", num,nil,ModFlag.Ailment) ,
+		mod("EnemyScorchEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
+	mod("EnemyBrittleEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
+	mod("EnemySapEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
 	} end,
 	["周围友军伤害提高 (%d+)%%"]  = function(num) return { mod("ExtraAura", "LIST",{ mod =mod("Damage", "INC", num), onlyAllies = true} )} end,
 	["周围友军获得每秒回复 ([%d%.]+)%% 生命"] = function(num) return { mod("ExtraAura", "LIST",{ mod =mod("LifeRegenPercent", "BASE", num), onlyAllies = true} )} end,
@@ -2205,13 +2215,23 @@ local specialModList = {
 	["用该武器击中时，触发 (%d+) 级的【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end, 
 	["获得 (%d+) 级的主动技能【(.+)】，且可被此道具上的技能石辅助"] = function(num, _, skill) return extraSkill(skill, num) end, --备注：grants level (%d+) (.+)
 	["获得 (%d+) 级【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end,
-	["造成的异常状态持续时间缩短 (%d+)%%"] = function(num) return { mod("EnemyShockDuration", "INC", -num),mod("EnemyFreezeDuration", "INC", -num),mod("EnemyChillDuration", "INC", -num),mod("EnemyIgniteDuration", "INC", -num),mod("EnemyBleedDuration", "INC", -num),mod("EnemyPoisonDuration", "INC", -num)} end,
+	["造成的异常状态持续时间缩短 (%d+)%%"] = function(num) return {
+	 mod("EnemyShockDuration", "INC", -num),mod("EnemyFreezeDuration", "INC", -num),mod("EnemyChillDuration", "INC", -num),mod("EnemyIgniteDuration", "INC", -num),mod("EnemyBleedDuration", "INC", -num),
+	 mod("EnemyPoisonDuration", "INC", -num),
+	  mod("EnemyScorchDuration", "INC", -num),
+	   mod("EnemyBrittleDuration", "INC", -num),
+	    mod("EnemySapDuration", "INC", -num),
+	 } end,
 	["造成的异常状态持续时间延长 (%d+)%%"] = function(num) return { 
 	mod("EnemyShockDuration", "INC", num),
 	mod("EnemyFreezeDuration", "INC", num),
 	mod("EnemyChillDuration", "INC", num),
 	mod("EnemyIgniteDuration", "INC", num),
-	mod("EnemyBleedDuration", "INC", num),mod("EnemyPoisonDuration", "INC", num)} end,
+	mod("EnemyBleedDuration", "INC", num),mod("EnemyPoisonDuration", "INC", num),
+	mod("EnemyScorchDuration", "INC", num),
+	mod("EnemyBrittleDuration", "INC", num),
+	mod("EnemySapDuration", "INC", num),
+	} end,
 	["([%d%.]+) 每秒生命回复"] = function(num) return {  mod("LifeRegen", "BASE", num)  } end,
 	["([%d%.]+) 每秒魔力回复"] = function(num) return {  mod("ManaRegen", "BASE", num)  } end,
 	["魔力回复 ([%d%.]+)"] = function(num) return {  mod("ManaRegen", "BASE", num)  } end,
@@ -2239,7 +2259,11 @@ local specialModList = {
 	["每装备 1 个【裂界之器】，非伤害性异常状态的效果便提高 (%d+)%%"]= function(num) return {  
 	mod("EnemyShockEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }) ,
 	mod("EnemyChillEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }) ,
-	mod("EnemyFreezeEffech", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" })  } end,
+	mod("EnemyFreezeEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
+	mod("EnemyScorchEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
+	mod("EnemyBrittleEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
+	mod("EnemySapEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
+	  } end,
 	["【(.+)魔像】的伤害提高 (%d+)%%"] = function(_, skill_name, num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) },{ type = "SkillName", skillName = "召唤"..skill_name:gsub("雷电","闪电").."魔像" or "Unknown" })  } end,
 	["【幻化(.+)】的伤害提高 (%d+)%%"] = function(_, skill_name, num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) },{ type = "SkillName", skillName = "幻化"..skill_name or "Unknown" })  } end,
 	["【魔侍造成】的伤害提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) },{ type = "SkillName", skillName = "召唤魔侍" })  } end,
@@ -3237,6 +3261,9 @@ local specialModList = {
 	["以(.+)的名义用  (%d+) 名祭品之血浸染 范围内的天赋被瓦尔抑制"]= function(_, npcName, num) return {  
 	flag("光彩夺目"),
 	flag("TimelessJewelNPC"..npcName)} end, 
+	["以(.+)的名义用 (%d+) 名祭品之血浸染 范围内的天赋被瓦尔抑制"]= function(_, npcName, num) return {  
+	flag("光彩夺目"),
+	flag("TimelessJewelNPC"..npcName)} end, 
 	["赞美 (%d+) 名被高阶圣堂武僧(.+)转化的新信徒"]= function(_, num, npcName) return {  flag("TimelessJewelNPC"..npcName)} end, 
 	["赞美 (%d+) 名被高阶圣堂武僧(.+)转化的新信徒范围内的天赋被圣堂抑制"]= function(_, num, npcName) return { 
 	 flag("好战的信仰"),
@@ -3830,9 +3857,9 @@ local specialModList = {
 	return { mod("ExtraSkill", "LIST", {  skillId ="AvianTornado", level = tonumber(num)})} end,
 	["你获得【鸟之力量】或【鸟之斗魄】时触发 (%d+) 级的【鸟之龙卷】"] = function(num, _, skill) 
 	return { mod("ExtraSkill", "LIST", {  skillId ="AvianTornado", level = tonumber(num)})} end,
-	["【猫之隐匿】的持续时间 ([%+%-]%d+) 秒"] = function(num) return { mod("PrimaryDuration", "BASE", num, { type = "SkillName", skillName = "猫之势" }) } end,
-	["【鸟之力量】的持续时间 ([%+%-]%d+) 秒"] = function(num) return { mod("PrimaryDuration", "BASE", num, { type = "SkillName", skillName = "鸟之势" }) } end,
-	["【鸟之斗魄】的持续时间 ([%+%-]%d+) 秒"] = function(num) return { mod("SecondaryDuration", "BASE", num, { type = "SkillName", skillName = "鸟之势" }) } end,
+	["【猫之隐匿】的持续时间 ([%+%-][%d%.]+) 秒"] = function(num) return { mod("PrimaryDuration", "BASE", num, { type = "SkillName", skillName = "猫之势" }) } end,
+	["【鸟之力量】的持续时间 ([%+%-][%d%.]+) 秒"] = function(num) return { mod("PrimaryDuration", "BASE", num, { type = "SkillName", skillName = "鸟之势" }) } end,
+	["【鸟之斗魄】的持续时间 ([%+%-][%d%.]+) 秒"] = function(num) return { mod("SecondaryDuration", "BASE", num, { type = "SkillName", skillName = "鸟之势" }) } end,
 	["弓技能 ([%+%-]?%d+)%% 持续伤害加成"] = function(num) return { mod("DotMultiplier", "BASE",
 	 num, nil,nil,KeywordFlag.Bow ) } end,
 	["弓技能的技能效果延长 (%d+)%%"] = function(num) return { mod("Duration", "INC",
@@ -3844,10 +3871,32 @@ local specialModList = {
 	mod("EnemyIgniteDuration", "INC", num, { type = "Condition", var = "UsingBow" } ),
 	mod("EnemyPoisonDuration", "INC", num, { type = "Condition", var = "UsingBow" } ),
 	mod("EnemyBleedDuration", "INC", num, { type = "Condition", var = "UsingBow" } ),
+	mod("EnemyScorchDuration", "INC", num, { type = "Condition", var = "UsingBow" } ),
+	mod("EnemyBrittleDuration", "INC", num, { type = "Condition", var = "UsingBow" } ),
+	mod("EnemySapDuration", "INC", num, { type = "Condition", var = "UsingBow" } ),
 	 } end,
-	["critical strikes inflict scorch, brittle and sapped"] = { flag("CritAlwaysAltAilments") },
+	["【迷踪】状态下，周围敌人的总命中值额外降低 (%d+)%%"] =
+	 function(num) return { mod("EnemyModifier", "LIST", { mod = mod("Accuracy", "MORE", -num) }, { type = "Condition", var = "Phasing" } )} end,
+	["暴击造成烧灼、脆弱和精疲力尽"] = { flag("CritAlwaysAltAilments") },
 	["魔力回复速度的加快和减慢效果也作用与怒火回复速度"] = { flag("ManaRegenToRageRegen") },
 	["在药剂生效期间，你造成的中毒总伤害有 (%d+)%% 几率额外提高 (%d+)%%"] = function(num, _, more) return { mod("Damage", "MORE", tonumber(more) * num / 100, nil, 0, KeywordFlag.Poison, { type = "Condition", var = "UsingFlask" }) } end,
+	["你的感电效果可以提高承受伤害，最大 (%d+)%%"] = function(num) return { mod("ShockMax", "OVERRIDE", num) } end,
+	["你的感电效果所提供的提高承受伤害的效果最高提高 (%d+)%%"] = function(num) return { mod("ShockMax", "OVERRIDE", num) } end,
+	["如同额外造成 (%d+)%% 总伤害来计算感电门槛"] = function(num) return { mod("ShockAsThoughDealing", "MORE", num) } end,
+	["使敌人感电如同总伤害额外提高 (%d+)%%"] = function(num) return { mod("ShockAsThoughDealing", "MORE", num) } end,
+		["施加的非伤害型异常状态如同总伤害额外提高 (%d+)%%"] = function(num) return {
+			mod("ShockAsThoughDealing", "MORE", num),
+			mod("ChillAsThoughDealing", "MORE", num),
+			mod("FreezeAsThoughDealing", "MORE", num)
+		} end,
+	["(%d+)%% 几率造成焦灼"] = function(num) return { mod("ScorchChance", "BASE", num ) } end,
+	["(%d+)%% 几率造成烧灼"] = function(num) return { mod("ScorchChance", "BASE", num ) } end,
+	["(%d+)%% 几率造成脆弱"] = function(num) return { mod("BrittleChance", "BASE", num ) } end,
+	["(%d+)%% 几率造成精疲力尽"] = function(num) return { mod("SapChance", "BASE", num ) } end,
+	["(%d+)%% 几率焦灼敌人"] = function(num) return { mod("ScorchChance", "BASE", num ) } end,
+	["(%d+)%% 几率烧灼敌人"] = function(num) return { mod("ScorchChance", "BASE", num ) } end,
+	["(%d+)%% 几率脆弱敌人"] = function(num) return { mod("BrittleChance", "BASE", num ) } end,
+	["(%d+)%% 几率精疲力尽敌人"] = function(num) return { mod("SapChance", "BASE", num ) } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

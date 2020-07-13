@@ -507,6 +507,7 @@ mod("ColdDamageTakenOverTime", "INC", nil, 0, 0, { type = "GlobalEffect", effect
 		},
 	},
 	baseMods = {
+		skill("supportBonechill", true),
 	},
 	qualityStats = {
 		{ "chill_duration_+%", 1 },
@@ -1491,7 +1492,7 @@ name = "元素集中(辅)",
 description = "辅助任意能击中或点燃敌人的技能",
 	color = 3,
 	support = true,
-	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.CausesBurning, },
+	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.CausesBurning, SkillType.NonHitChill },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
 	statDescriptionScope = "gem_stat_descriptions",
@@ -1557,7 +1558,7 @@ name = "元素集中（强辅）",
 description = "辅助任意能击中或点燃敌人的技能",
 	color = 3,
 	support = true,
-	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.CausesBurning, },
+	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.CausesBurning, SkillType.NonHitChill,  },
 	addSkillTypes = { },
 	excludeSkillTypes = { },
 	plusVersionOf = "SupportElementalFocus",
@@ -4031,10 +4032,10 @@ skills["SupportRapidActivation"] = {
 			mod("BrandActivationFrequency", "MORE", nil),
 		},
 		["support_rapid_activation_brand_skill_only_primary_duration_+%_final"] = {
-			mod("PrimaryDuration", "MORE", nil),
+			mod("PrimaryDuration", "MORE", nil, 0, KeywordFlag.Brand),
 		},
 		["support_rapid_activation_brand_skill_only_secondary_duration_+%_final"] = {
-			mod("SecondaryDuration", "MORE", nil),
+			mod("SecondaryDuration", "MORE", nil, 0, KeywordFlag.Brand),
 		},
 	},
 	baseMods = {

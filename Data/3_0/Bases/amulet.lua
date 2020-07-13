@@ -181,7 +181,7 @@ itemBases["巨颚魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "攻击与施法速度提高 (6-10)%",
-	implicitModTypes = { { "speed", "jewellery_attack", "jewellery_caster" }, },
+	implicitModTypes = { { "speed", "jewellery_attack", "jewellery_caster" , "attack", "caster" }, },
 	req = { },
 }
 itemBases["虫蛹魔符"] = {
@@ -197,7 +197,7 @@ itemBases["狂癫魔符"] = {
 	subType = "Talisman",
 	tags = { default = true, amulet = true, talisman = true, },
 	implicit = "攻击伤害提高 (20-30)%",
-	implicitModTypes = { { "jewellery_attack" }, },
+	implicitModTypes = { { "jewellery_attack", "attack"  }, },
 	req = { },
 }
 itemBases["幻爪魔符"] = {

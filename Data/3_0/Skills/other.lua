@@ -2339,6 +2339,7 @@ name = "鸟之龙卷",
 		duration = true,
 	},
 	baseMods = {
+		skill("showAverage", true),
 	},
 	qualityStats = {
 	},

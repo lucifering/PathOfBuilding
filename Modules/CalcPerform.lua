@@ -199,6 +199,15 @@ local function doActorAttribsPoolsConditions(env, actor)
 		if actor.mainSkill.skillFlags.mine then
 			condList["DetonatedMinesRecently"] = true
 		end
+		if modDB:Sum("BASE", nil, "ScorchChance") > 0 or modDB:Flag(nil, "CritAlwaysAltAilments") and not modDB:Flag(nil, "NeverCrit") then
+			condList["CanInflictScorch"] = true
+		end
+		if modDB:Sum("BASE", nil, "BrittleChance") > 0 or modDB:Flag(nil, "CritAlwaysAltAilments") and not modDB:Flag(nil, "NeverCrit") then
+			condList["CanInflictBrittle"] = true
+		end
+		if modDB:Sum("BASE", nil, "SapChance") > 0 or modDB:Flag(nil, "CritAlwaysAltAilments") and not modDB:Flag(nil, "NeverCrit") then
+			condList["CanInflictSap"] = true
+		end
 	end
 --计算 属性
 	-- Calculate attributes
@@ -643,6 +652,12 @@ function calcs.perform(env)
 			modDB:NewMod("Multiplier:BrandsAttachedToEnemy", "BASE", attachLimit, "Config")
 			enemyDB:NewMod("Multiplier:BrandsAttached", "BASE", attachLimit, "Config")
 		end
+		if activeSkill.skillData.supportBonechill then
+			if activeSkill.skillTypes[SkillType.ChillingArea] or (activeSkill.skillTypes[SkillType.NonHitChill] and not activeSkill.skillModList:Flag(nil, "CannotChill")) then
+				output.BonechillDotEffect = m_floor(10 * (1 + activeSkill.skillModList:Sum("INC", nil, "EnemyChillEffect") / 100))
+			end
+			output.BonechillEffect = m_max(output.BonechillEffect or 0, modDB:Override(nil, "BonechillEffect") or output.BonechillDotEffect or 0)
+		end
 		if activeSkill.activeEffect.grantedEffect.name == "召唤魔侍" then
 			local limit = env.player.mainSkill.skillModList:Sum("BASE", env.player.mainSkill.skillCfg, "ActiveSkeletonLimit")
 			output.ActiveSkeletonLimit = m_max(limit, output.ActiveSkeletonLimit or 0)
@@ -658,6 +673,19 @@ function calcs.perform(env)
 		if activeSkill.activeEffect.grantedEffect.name == "召唤灵体" then
 			local limit = env.player.mainSkill.skillModList:Sum("BASE", env.player.mainSkill.skillCfg, "ActiveSpectreLimit")
 			output.ActiveSpectreLimit = m_max(limit, output.ActiveSpectreLimit or 0)
+		end
+		if activeSkill.skillData.triggeredByBrand then
+			local spellCount, quality = 0
+			for _, skill in ipairs(env.player.activeSkillList) do
+				if skill.socketGroup == activeSkill.socketGroup and skill.skillData.triggeredByBrand then
+					spellCount = spellCount + 1
+				end
+				if skill.socketGroup == activeSkill.socketGroup and skill.activeEffect.grantedEffect.name == "奥法烙印" then
+					quality = skill.activeEffect.quality / 2
+				end
+			end
+			activeSkill.skillModList:NewMod("ArcanistSpellsLinked", "BASE", spellCount, "Skill")
+			activeSkill.skillModList:NewMod("BrandActivationFrequency", "INC", quality, "Skill")
 		end
 	end
 	
@@ -913,6 +941,13 @@ function calcs.perform(env)
 		modDB.multipliers["Herald"] = (modDB.multipliers["Herald"] or 0) + 1
 		modDB.conditions["AffectedByHerald"] = true
 	end
+	-- Apply effect of Bonechill support
+	if output.BonechillEffect then 
+		enemyDB:NewMod("ColdDamageTaken", "INC", output.BonechillEffect, 
+		"彻骨", { type = "GlobalEffect", effectType = "Debuff", effectName = "彻骨承受冰持续伤" }, { type = "Limit", limit = 30 },
+		{ type = "Condition", var = "Chilled" } )
+	end
+
 	-- Combine buffs/debuffs  
 	output.EnemyCurseLimit = modDB:Sum("BASE", nil, "EnemyCurseLimit")
 
@@ -1264,7 +1299,16 @@ function calcs.perform(env)
 			env.minion.modDB:AddList(slot.minionBuffModList)
 		end
 	end
-
+	
+	output.MaximumShock = modDB:Override(nil, "ShockMax") or 50
+-- Calculates maximum Shock, then applies the configured Shock effect to the enemy
+	if enemyDB:Sum("BASE", nil, "ShockVal") > 0 and not enemyDB:Flag(nil, "Condition:AlreadyShocked") then
+		
+		output.CurrentShock = m_min(enemyDB:Sum("BASE", nil, "ShockVal"), output.MaximumShock)
+		enemyDB:NewMod("DamageTaken", "INC", output.CurrentShock, "Shock", { type = "Condition", var = "Shocked"} )
+		enemyDB:NewMod("Condition:AlreadyShocked", "FLAG", true, { type = "Condition", var = "Shocked"} ) -- Prevents Shock from applying doubly for minions
+	end
+	
 	-- Check for extra auras
 	for _, value in ipairs(modDB:List(nil, "ExtraAura")) do
 		local modList = { value.mod }

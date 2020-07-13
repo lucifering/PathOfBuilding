@@ -369,7 +369,8 @@ function GemSelectClass:AddGemTooltip(gemInstance)
 	self.tooltip.color = colorCodes.GEM
 	local primary = gemInstance.gemData.grantedEffect
 	local secondary = gemInstance.gemData.secondaryGrantedEffect
-	if secondary and (not secondary.support or gemInstance.gemData.secondaryEffectName) then
+	--and (not secondary.support or gemInstance.gemData.secondaryEffectName)
+	if secondary  then
 		local grantedEffect = gemInstance.gemData.VaalGem and secondary or primary
 		local grantedEffectSecondary = gemInstance.gemData.VaalGem and primary or secondary
 		self.tooltip:AddLine(20, colorCodes.GEM..grantedEffect.name)

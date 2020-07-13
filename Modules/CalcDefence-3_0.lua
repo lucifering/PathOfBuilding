@@ -604,34 +604,90 @@ label = "持续伤害加成:",
 			end
 		end
 	end
+	
 	if output.TotalDegen then
-		if output.PhysicalMindOverMatter > 0 and output.LifeRegen >= output.EnergyShieldRegen then
-			local lifeDegen = output.TotalDegen * (1 - output.PhysicalMindOverMatter / 100)
-			local manaDegen = output.TotalDegen * output.PhysicalMindOverMatter / 100
-			output.NetLifeRegen = output.LifeRegen - lifeDegen
-			output.NetManaRegen = output.ManaRegen - manaDegen
-			if breakdown then
-				breakdown.NetLifeRegen = {
-					s_format("%.1f ^8(总生命回复)", output.LifeRegen),
-					s_format("- %.1f ^8(总生命消减)", lifeDegen),
-					s_format("= %.1f", output.NetLifeRegen),
+		output.NetLifeRegen = output.LifeRegen
+		output.NetManaRegen = output.ManaRegen
+		output.NetEnergyShieldRegen = output.EnergyShieldRegen
+		local totalLifeDegen = 0
+		local totalManaDegen = 0
+		local totalEnergyShieldDegen = 0
+		if breakdown then
+			breakdown.NetLifeRegen = { 
+					label = "总生命消减",
+					rowList = { },
+					colList = {
+						{ label = "【类型】", key = "type" },
+						{ label = "【消减】", key = "degen" },
+					},
 				}
-				breakdown.NetManaRegen = {
-					s_format("%.1f ^8(总魔力回复)", output.ManaRegen),
-					s_format("- %.1f ^8(总魔力消减)", manaDegen),
-					s_format("= %.1f", output.NetManaRegen),
+			breakdown.NetManaRegen = { 
+					label = "总魔力消减",
+					rowList = { },
+					colList = {
+						{ label = "【类型】", key = "type" },
+						{ label = "【消减】", key = "degen" },
+					},
 				}
+			breakdown.NetEnergyShieldRegen = { 
+					label = "总能量护盾消减",
+					rowList = { },
+					colList = {
+						{ label = "【类型】", key = "type" },
+						{ label = "【消减】", key = "degen" },
+					},
+				}
+		end
+		for _, damageType in ipairs(dmgTypeList) do
+			if output[damageType.."Degen"] then 
+				local energyShieldDegen = 0
+				local lifeDegen = 0
+				local manaDegen = 0
+				if output.EnergyShieldRegen > 0 then 
+					if modDB:Flag(nil, "EnergyShieldProtectsMana") then
+						lifeDegen = output[damageType.."Degen"] * (1 - output[damageType.."MindOverMatter"] / 100)
+						energyShieldDegen = output[damageType.."Degen"] * (1 - output[damageType.."EnergyShieldBypass"] / 100) * (output[damageType.."MindOverMatter"] / 100)
+					else
+						lifeDegen = output[damageType.."Degen"] * (output[damageType.."EnergyShieldBypass"] / 100) * (1 - output[damageType.."MindOverMatter"] / 100)
+						energyShieldDegen = output[damageType.."Degen"] * (1 - output[damageType.."EnergyShieldBypass"] / 100)
+					end
+					manaDegen = output[damageType.."Degen"] * (output[damageType.."EnergyShieldBypass"] / 100) * (output[damageType.."MindOverMatter"] / 100)
+				else
+					lifeDegen = output[damageType.."Degen"] * (1 - output[damageType.."MindOverMatter"] / 100)
+					manaDegen = output[damageType.."Degen"] * (output[damageType.."MindOverMatter"] / 100)
+				end
+				totalLifeDegen = totalLifeDegen + lifeDegen
+				totalManaDegen = totalManaDegen + manaDegen
+				totalEnergyShieldDegen = totalEnergyShieldDegen + energyShieldDegen
+				if breakdown then
+					t_insert(breakdown.NetLifeRegen.rowList, {
+						type = s_format("%s", damageType),
+						degen = s_format("%.2f", lifeDegen),
+					})
+					t_insert(breakdown.NetManaRegen.rowList, {
+						type = s_format("%s", damageType),
+						degen = s_format("%.2f", manaDegen),
+					})
+					t_insert(breakdown.NetEnergyShieldRegen.rowList, {
+						type = s_format("%s", damageType),
+						degen = s_format("%.2f", energyShieldDegen),
+					})
+				end
 			end
-		else
-			local totalRegen = output.LifeRegen + (modDB:Flag(nil, "EnergyShieldProtectsMana") and 0 or output.EnergyShieldRegen)
-			output.NetLifeRegen = totalRegen - output.TotalDegen
-			if breakdown then
-				breakdown.NetLifeRegen = {
-					s_format("%.1f ^8(总生命%s 回复)", totalRegen, modDB:Flag(nil, "EnergyShieldProtectsMana") and "" or " + energy shield"),	
-					s_format("- %.1f ^8(总消减)", output.TotalDegen),
-					s_format("= %.1f", output.NetLifeRegen),
-				}
-			end
+		end
+		output.NetLifeRegen = output.NetLifeRegen - totalLifeDegen
+		output.NetManaRegen = output.NetManaRegen - totalManaDegen
+		output.NetEnergyShieldRegen = output.NetEnergyShieldRegen - totalEnergyShieldDegen
+		if breakdown then
+			t_insert(breakdown.NetLifeRegen, s_format("%.1f ^8(总生命消减)", output.LifeRegen))
+			t_insert(breakdown.NetLifeRegen, s_format("- %.1f ^8(总生命消减)", totalLifeDegen))
+			t_insert(breakdown.NetLifeRegen, s_format("= %.1f", output.NetLifeRegen))
+			t_insert(breakdown.NetManaRegen, s_format("%.1f ^8(总魔力消减)", output.ManaRegen))
+			t_insert(breakdown.NetManaRegen, s_format("- %.1f ^8(总魔力消减)", totalManaDegen))
+			t_insert(breakdown.NetManaRegen, s_format("= %.1f", output.NetManaRegen))
+			t_insert(breakdown.NetEnergyShieldRegen, s_format("%.1f ^8(总能量护盾消减)", output.EnergyShieldRegen))
+			t_insert(breakdown.NetEnergyShieldRegen, s_format("- %.1f ^8(总能量护盾消减)", totalEnergyShieldDegen))
+			t_insert(breakdown.NetEnergyShieldRegen, s_format("= %.1f", output.NetEnergyShieldRegen))
 		end
 	end
 	output.AnyTakenReflect = 0
@@ -640,6 +696,7 @@ label = "持续伤害加成:",
 			output.AnyTakenReflect = true
 		end
 	end
+
 
 	-- Incoming hit damage multipliers
 	-- Incoming hit damage multipliers
@@ -701,7 +758,7 @@ label = "持续伤害加成:",
 					output.PhysicalDamageReduction = resist
 					if breakdown then
 						breakdown.PhysicalDamageReduction = {
-							s_format("Enemy Physical Hit Damage: %d ^8(%s 配置界面配置)", damage, env.configInput.enemyPhysicalHit and "overridden from" or "can be overridden in"),
+							s_format("敌人的物理击中伤害: %d ^8(%s 配置界面配置)", damage, env.configInput.enemyPhysicalHit and "已经从" or "可以从"),
 						}
 						if portion < 100 then
 							t_insert(breakdown.PhysicalDamageReduction, s_format("承受的物理部分: %d%%", portion))

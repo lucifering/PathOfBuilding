@@ -136,6 +136,13 @@ modList:NewMod("Multiplier:BannerStage", "BASE", m_min(val, 50), "Config", { typ
 		end	
 	end },
 	
+{ label = "彻骨:", ifSkill = "彻骨（辅）" },
+	{ var = "bonechillEffect", type = "count", label = "冰缓效果:",
+	tooltip = "如果你有稳定的冰缓来源，那么冰缓效果会自动计算\n你也可以在这里填写数值来覆盖.", 
+	ifSkill = "彻骨（辅）", apply = function(val, modList, enemyModList)
+		modList:NewMod("BonechillEffect", "OVERRIDE", m_min(val, 30), "Config")
+	end },
+	
 { label = "烙印技能:", ifSkillList = { "末日烙印", "风暴烙印","奥法烙印" ,"忏悔烙印","冬潮烙印"} }, -- I barely resisted the temptation to label this "Generic Brand:"
 { var = "BrandsAttachedToEnemy", type = "count", label = "附着到敌人身上的烙印：", ifSkillList = {  "末日烙印", "风暴烙印","奥法烙印" ,"忏悔烙印","冬潮烙印"}, apply = function(val, modList, enemyModList)
 	modList:NewMod("Multiplier:BrandsAttachedLimit", "OVERRIDE", val, "Config")
@@ -575,7 +582,8 @@ end },
 { var = "conditionAlliesOnFungalGround", type = "check", label = "友军和敌人正在【真菌地表】上?", tooltip = "当你处于【真菌地表】状态时干啥干啥的词缀生效,\n同时也会启用【真菌地表】buff本身:\n在你真菌地表上的友军将获得 10% 的非混沌伤害的额外混沌伤害。\n在你真菌地表上的敌人造成的伤害降低 10%。",
 ifCond = "OnFungalGround",
  apply = function(val, modList, enemyModList)
-		modList:NewMod("Condition:OnFungalGround", "FLAG", true, "Config", { type = "Condition", var = "Combat" })		
+		modList:NewMod("Condition:OnFungalGround", "FLAG", true, "Config", { type = "Condition", var = "Combat" })	
+		enemyModList:NewMod("Condition:OnFungalGround", "FLAG", true, "Config", { type = "Condition", var = "Combat" })			
 	
 	end },
 { var = "conditionOnConsecratedGround", type = "check", label = "你正在【奉献地面】上?", tooltip = "当你处于【奉献地面】状态时干啥干啥的词缀生效,\n同时也会启用【奉献地面】buff本身:6%每秒生命回复.", apply = function(val, modList, enemyModList)
@@ -896,11 +904,27 @@ ifCond = "OnFungalGround",
 { var = "conditionEnemyIgnited", type = "check", label = "敌人被点燃?", implyCond = "Burning", tooltip = "这也意味着敌人被燃烧.", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Condition:Ignited", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
+{ var = "conditionEnemyScorched", type = "check", ifFlag = "inflictScorch", label = "敌人被烧灼?", 
+tooltip = "被烧灼的敌人降低元素抗性, 最大 -30%.\n勾选这个选项后可以在下面配置具体的烧灼效果", apply = function(val, modList, enemyModList)
+		enemyModList:NewMod("Condition:Scorched", "FLAG", true, "Config", { type = "Condition", var = "Effective" }, { type = "ActorCondition", actor = "enemy", var = "CanInflictScorch" })
+	end },
+{ var = "conditionScorchedEffect", type = "count", label = "【烧灼】效果:", ifOption = "conditionEnemyScorched", 
+tooltip = "你可以对敌人造成烧灼的时候可以起作用.", apply = function(val, modList, enemyModList)
+		enemyModList:NewMod("ElementalResist", "BASE", -m_min(val, 30), "Config", { type = "Condition", var = "Scorched" }, { type = "ActorCondition", actor = "enemy", var = "CanInflictScorch" })
+	end },
 { var = "conditionEnemyChilled", type = "check", label = "敌人被冰缓?", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Condition:Chilled", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
 { var = "conditionEnemyFrozen", type = "check", label = "敌人被冰冻?", implyCond = "Chilled", tooltip = "这也意味着敌人被冰冻.", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Condition:Frozen", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+	end },
+{ var = "conditionEnemyBrittle", type = "check", ifFlag = "inflictBrittle", label = "敌人被脆弱?", 
+tooltip = "对脆弱的敌人的时提高自己的基础暴击率，最多 +15% \n勾选这个选项后可以在下面配置具体的脆弱效果", apply = function(val, modList, enemyModList)
+		enemyModList:NewMod("Condition:Brittle", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+	end },
+	{ var = "conditionBrittleEffect", type = "count", label = "【脆弱】效果:", ifOption = "conditionEnemyBrittle",
+	tooltip = "你可以对敌人造成脆弱的时候可以起作用.", apply = function(val, modList, enemyModList)
+		enemyModList:NewMod("SelfCritChance", "BASE", m_min(val, 15), "Config", { type = "Condition", var = "Brittle" }, { type = "ActorCondition", actor = "enemy", var = "CanInflictBrittle" })
 	end },
 { var = "conditionEnemyShocked", type = "check", label = "敌人被感电?", tooltip = "启用“对感电敌人什么什么”的词缀,\n这也会让敌人感电承受额外伤害.", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Condition:Shocked", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
@@ -908,6 +932,11 @@ ifCond = "OnFungalGround",
 { var = "baseShockEffect", type = "integer", label = "强制固定感电的伤害加成", tooltip = "强制固定感电的伤害加成，其他不会感电加成不起作用，最高是 承受的总伤害额外提高 50%", ifOption = "conditionEnemyShocked",
 		apply = function(val, modList, enemyModList) 
 			modList:NewMod("EnemyShockEffect", "OVERRIDE", m_min(tonumber(val), 50), "Config") 
+			enemyModList:NewMod("ShockVal", "BASE", val, "Shock", { type = "Condition", var = "Shocked" })
+	end },
+{ var = "conditionEnemySapped", type = "check", ifFlag = "inflictSap", label = "敌人精疲力尽?", 
+tooltip = "精疲力尽的敌人总伤害额外降低，最多降低 20%.", apply = function(val, modList, enemyModList)
+		enemyModList:NewMod("Condition:Sapped", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
 { var = "multiplierFreezeShockIgniteOnEnemy", type = "count", label = "敌人身上的点燃感电冰缓数量:", ifMult = "FreezeShockIgniteOnEnemy", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:FreezeShockIgniteOnEnemy", "BASE", val, "Config", { type = "Condition", var = "Effective" })

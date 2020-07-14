@@ -1321,11 +1321,12 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 							resist = m_max(0, enemyDB:Sum("BASE", nil, "PhysicalDamageReduction") + skillModList:Sum("BASE", cfg, "EnemyPhysicalDamageReduction") + armourReduction)
 						--	print("resist="..resist)
 						else
-							
+							resist = enemyDB:Sum("BASE", nil, damageType.."Resist")
 							if isElemental[damageType] then
-								local base = resist + enemyDB:Sum("BASE", nil, "ElementalResist")
-								resist = base * calcLib.mod(enemyDB, nil, damageType.."Resist")
 								
+								resist = resist + enemyDB:Sum("BASE", nil, "ElementalResist")								
+								local base = resist 
+								resist = base * calcLib.mod(enemyDB, nil, damageType.."Resist")
 								
 								if  skillModList:Flag(cfg,"CannotElementalPenetration") or skillModList:Flag(cfg,"Cannot"..damageType.."Penetration")  then
 									pen = 0
@@ -1725,8 +1726,11 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 					
 						
 					if isElemental[damageType] then
-						local base = resist + enemyDB:Sum("BASE", dotTypeCfg, "ElementalResist")
+					
+					 
+						local base = resist + enemyDB:Sum("BASE", nil, damageType.."Resist")
 						resist = base * calcLib.mod(enemyDB, nil, damageType.."Resist")
+						
 						takenInc = takenInc + enemyDB:Sum("INC", dotTypeCfg, "ElementalDamageTaken")
 					end
 					

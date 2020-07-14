@@ -3264,11 +3264,17 @@ local specialModList = {
 	["以(.+)的名义用 (%d+) 名祭品之血浸染 范围内的天赋被瓦尔抑制"]= function(_, npcName, num) return {  
 	flag("光彩夺目"),
 	flag("TimelessJewelNPC"..npcName)} end, 
+	["以(.+)的名义用(%d+)名祭品之血浸染范围内的天赋被瓦尔抑制"]= function(_, npcName, num) return {  
+	flag("光彩夺目"),
+	flag("TimelessJewelNPC"..npcName)} end, 
 	["赞美 (%d+) 名被高阶圣堂武僧(.+)转化的新信徒"]= function(_, num, npcName) return {  flag("TimelessJewelNPC"..npcName)} end, 
 	["赞美 (%d+) 名被高阶圣堂武僧(.+)转化的新信徒范围内的天赋被圣堂抑制"]= function(_, num, npcName) return { 
 	 flag("好战的信仰"),
 	 flag("TimelessJewelNPC"..npcName)} end, 
 	["赞美 (%d+) 名被高阶圣堂武僧(.+)转化的新信徒  范围内的天赋被圣堂抑制"]= function(_, num, npcName) return { 
+	 flag("好战的信仰"),
+	 flag("TimelessJewelNPC"..npcName)} end, 
+	["赞美 (%d+) 名被神主(.+)转化的新信徒范围内的天赋被圣堂教团抑制"]= function(_, num, npcName) return { 
 	 flag("好战的信仰"),
 	 flag("TimelessJewelNPC"..npcName)} end, 
 	["赞美 (%d+) 名被神主(.+)转化的新信徒"]= function(_, num, npcName) return {  flag("TimelessJewelNPC"..npcName)} end, 
@@ -3279,11 +3285,17 @@ local specialModList = {
 	["在(.+)的阿卡拉中指派 (%d+) 名德卡拉的服务  范围中的天赋被马拉克斯抑制"]= function(_, npcName, num) return {  
 	 flag("残酷的约束"),
 	flag("TimelessJewelNPC"..npcName)} end, 
+	["在(.+)的阿卡拉中指派 (%d+) 名德卡拉的服务范围中的天赋被马拉克斯抑制"]= function(_, npcName, num) return {  
+	 flag("残酷的约束"),
+	flag("TimelessJewelNPC"..npcName)} end, 
 	["用 (%d+) 枚金币纪念(.+)"]= function(_, num, npcName) return {  flag("TimelessJewelNPC"..npcName)} end, 
 	["用 (%d+) 枚金币纪念(.+)范围内的天赋被永恒帝国抑制"]= function(_, num, npcName) return {  
 	flag("优雅的狂妄") ,
 	flag("TimelessJewelNPC"..npcName)} end, 
 	["用 (%d+) 枚金币纪念(.+)  范围内的天赋被永恒帝国抑制"]= function(_, num, npcName) return {  
+	flag("优雅的狂妄") ,
+	flag("TimelessJewelNPC"..npcName)} end, 
+	["用 (%d+) 枚金币纪念(.+)范围内的天赋被永恒帝国抑制"]= function(_, num, npcName) return {  
 	flag("优雅的狂妄") ,
 	flag("TimelessJewelNPC"..npcName)} end, 
 	["内在信念"] =  { mod("Keystone", "LIST", "内在信念") },
@@ -3897,6 +3909,11 @@ local specialModList = {
 	["(%d+)%% 几率烧灼敌人"] = function(num) return { mod("ScorchChance", "BASE", num ) } end,
 	["(%d+)%% 几率脆弱敌人"] = function(num) return { mod("BrittleChance", "BASE", num ) } end,
 	["(%d+)%% 几率精疲力尽敌人"] = function(num) return { mod("SapChance", "BASE", num ) } end,
+	["插槽内的法术获得 %+([%d%.]+)%% 法术基础暴击率"] = function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("CritChance", "BASE", num) }, { addToSkill = { type = "SocketedIn", slotName = "{SlotName}", keyword = "spell" }} ) } end,
+	["【天雷之兆】的风暴击中敌人的频率提高 (%d+)%%"] = function(num) return { mod("HeraldStormFrequency", "INC", num ) } end,
+	["【闪电之捷】的风暴击中敌人的频率提高 (%d+)%%"] = function(num) return { mod("HeraldStormFrequency", "INC", num ) } end,
+	["若周围最多有一个稀有或传奇敌人，你造成的总伤害额外提高 (%d+)%%"] = function(num) return { mod("Damage", "MORE", num, nil, 0, { type = "Condition", var = "AtMostOneNearbyRareOrUniqueEnemy" }) } end,
+	["若周围至少有两个稀有或传奇敌人时，则受到的伤害降低 (%d+)%%"] = function(num) return { mod("DamageTaken", "INC", -num, nil, 0, { type = "MultiplierThreshold", var = "NearbyRareOrUniqueEnemies", threshold = 2 }) } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

@@ -9,6 +9,8 @@ return {
 --
 -- Skill data modifiers
 --
+
+
 ["base_skill_effect_duration"] = {
 	skill("duration", nil),
 	div = 1000,

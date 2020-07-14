@@ -87,9 +87,9 @@ local function calcDamage(activeSkill, output, cfg, breakdown, damageType, typeF
 		if breakdown and (addMin ~= 0 or addMax ~= 0) then
 			t_insert(breakdown.damageTypes, {
 				source = damageType,
-				convSrc = (addMin ~= 0 or addMax ~= 0) and (addMin .. " to " .. addMax),
-				total = addMin .. " to " .. addMax,
-				convDst = convDst and s_format("%d%% to %s", conversionTable[damageType][convDst] * 100, convDst),
+				convSrc = (addMin ~= 0 or addMax ~= 0) and (addMin .. " 至 " .. addMax),
+				total = addMin .. " 至 " .. addMax,
+				convDst = convDst and s_format("%d%% 至 %s", conversionTable[damageType][convDst] * 100, convDst),
 			})
 		end
 		return addMin, addMax
@@ -109,24 +109,24 @@ local function calcDamage(activeSkill, output, cfg, breakdown, damageType, typeF
 		if damageType == 'Physical' then  
 		t_insert(breakdown.damageTypes, {
 			source = damageType,
-			base = baseMin .. " to " .. baseMax,
+			base = baseMin .. " 至 " .. baseMax,
 			inc = (inc ~= 1 and "x "..inc),
 			more = (more ~= 1 and "x "..more),
 			moreMin = (moreMin ~= 1 and "x "..moreMin),
 			moreMax = (moreMax ~= 1 and "x "..moreMax),
-			convSrc = (addMin ~= 0 or addMax ~= 0) and (addMin .. " to " .. addMax),
-			total = (round(baseMin * inc * more) + addMin)*moreMin .. " to " .. (round(baseMax * inc * more) + addMax)*moreMax,
-			convDst = convDst and conversionTable[damageType][convDst] > 0 and s_format("%d%% to %s", conversionTable[damageType][convDst] * 100, convDst),
+			convSrc = (addMin ~= 0 or addMax ~= 0) and (addMin .. " 至 " .. addMax),
+			total = (round(baseMin * inc * more) + addMin)*moreMin .. " 至 " .. (round(baseMax * inc * more) + addMax)*moreMax,
+			convDst = convDst and conversionTable[damageType][convDst] > 0 and s_format("%d%% 至 %s", conversionTable[damageType][convDst] * 100, convDst),
 		})
 		else
 		t_insert(breakdown.damageTypes, {
 			source = damageType,
-			base = baseMin .. " to " .. baseMax,
+			base = baseMin .. " 至 " .. baseMax,
 			inc = (inc ~= 1 and "x "..inc),
 			more = (more ~= 1 and "x "..more),			
-			convSrc = (addMin ~= 0 or addMax ~= 0) and (addMin .. " to " .. addMax),
-			total = (round(baseMin * inc * more) + addMin) .. " to " .. (round(baseMax * inc * more) + addMax),
-			convDst = convDst and conversionTable[damageType][convDst] > 0 and s_format("%d%% to %s", conversionTable[damageType][convDst] * 100, convDst),
+			convSrc = (addMin ~= 0 or addMax ~= 0) and (addMin .. " 至 " .. addMax),
+			total = (round(baseMin * inc * more) + addMin) .. " 至 " .. (round(baseMax * inc * more) + addMax),
+			convDst = convDst and conversionTable[damageType][convDst] > 0 and s_format("%d%% 至 %s", conversionTable[damageType][convDst] * 100, convDst),
 		})
 		end 
 		
@@ -152,9 +152,9 @@ local function calcAilmentSourceDamage(activeSkill, output, cfg, breakdown, dama
 	local convMult = activeSkill.conversionTable[damageType].mult
 	if breakdown and convMult ~= 1 then
 t_insert(breakdown, "源伤害:")
-t_insert(breakdown, s_format("%d to %d ^8(所有伤害)", min, max))
+t_insert(breakdown, s_format("%d 至 %d ^8(所有伤害)", min, max))
 t_insert(breakdown, s_format("x %g ^8(%g%% 转化为其他伤害)", convMult, (1-convMult)*100))
-		t_insert(breakdown, s_format("= %d to %d", min * convMult, max * convMult))
+		t_insert(breakdown, s_format("= %d 至 %d", min * convMult, max * convMult))
 	end
 	return min * convMult, max * convMult
 end
@@ -506,7 +506,7 @@ total = s_format("= %.2f ^8每秒", output.TrapThrowingSpeed),
 				breakdown.TrapCooldown = {
 s_format("%.2fs ^8(基础)", skillData.trapCooldown or skillData.cooldown or 4),
 s_format("/ %.2f ^8(提高/降低 冷却回复速度)", 1 + skillModList:Sum("INC", skillCfg, "CooldownRecovery") / 100),
-					s_format("= %.2fs", output.TrapCooldown)
+					s_format("= %.2f秒", output.TrapCooldown)
 				}
 			end
 		end
@@ -524,7 +524,7 @@ s_format("/ %.2f ^8(提高/降低 冷却回复速度)", 1 + skillModList:Sum("IN
 --s_format("%.2fs ^8(基础)", skillData.cooldown),
 s_format("%.2fs ^8(基础)", skillData.cooldown + skillModList:Sum("BASE", skillCfg, "CooldownRecovery")),
 s_format("/ %.2f ^8(提高/降低 冷却回复速度)", 1 + skillModList:Sum("INC", skillCfg, "CooldownRecovery") / 100),
-				s_format("= %.2fs", output.Cooldown)
+				s_format("= %.2f秒", output.Cooldown)
 			}
 		end
 	end
@@ -647,7 +647,7 @@ env.data.monsterAllyLifeTable[skillData.totemLevel].." ^8("..skillData.totemLeve
 			end
 			if breakdown and output.Duration ~= durationBase then
 				breakdown.Duration = {
-					s_format("%.2fs ^8(base)", durationBase),
+					s_format("%.2fs ^8(基础)", durationBase),
 				}
 				if output.DurationMod ~= 1 then
 t_insert(breakdown.Duration, s_format("x %.2f ^8(持续时间加成)", output.DurationMod))
@@ -655,7 +655,7 @@ t_insert(breakdown.Duration, s_format("x %.2f ^8(持续时间加成)", output.Du
 				if skillData.debuff and debuffDurationMult ~= 1 then
 t_insert(breakdown.Duration, s_format("/ %.2f ^8(debuff更快或更慢消退)", 1 / debuffDurationMult))
 				end
-				t_insert(breakdown.Duration, s_format("= %.2fs", output.Duration))
+				t_insert(breakdown.Duration, s_format("= %.2f秒", output.Duration))
 			end
 		end
 		durationBase = (skillData.durationSecondary or 0) + skillModList:Sum("BASE", skillCfg, "Duration", "SecondaryDuration")
@@ -675,7 +675,7 @@ t_insert(breakdown.DurationSecondary, s_format("x %.2f ^8(持续时间修饰)", 
 				if skillData.debuffSecondary and debuffDurationMult ~= 1 then
 t_insert(breakdown.DurationSecondary, s_format("/ %.2f ^8(debuff更快或更慢消退)", 1 / debuffDurationMult))
 				end
-				t_insert(breakdown.DurationSecondary, s_format("= %.2fs", output.DurationSecondary))
+				t_insert(breakdown.DurationSecondary, s_format("= %.2f秒", output.DurationSecondary))
 			end
 		end
 		durationBase = (skillData.auraDuration or 0)
@@ -684,9 +684,9 @@ t_insert(breakdown.DurationSecondary, s_format("/ %.2f ^8(debuff更快或更慢�
 			output.AuraDuration = durationBase * durationMod
 			if breakdown and output.AuraDuration ~= durationBase then
 				breakdown.AuraDuration = {
-					s_format("%.2fs ^8(base)", durationBase),
-					s_format("x %.2f ^8(duration modifier)", durationMod),
-					s_format("= %.2fs", output.AuraDuration),
+					s_format("%.2fs ^8(基础)", durationBase),
+					s_format("x %.2f ^8(持续时间加成)", durationMod),
+					s_format("= %.2f秒", output.AuraDuration),
 				}
 			end
 		end
@@ -696,9 +696,9 @@ t_insert(breakdown.DurationSecondary, s_format("/ %.2f ^8(debuff更快或更慢�
 			output.ReserveDuration = durationBase * durationMod
 			if breakdown and output.ReserveDuration ~= durationBase then
 				breakdown.ReserveDuration = {
-					s_format("%.2fs ^8(base)", durationBase),
-					s_format("x %.2f ^8(duration modifier)", durationMod),
-					s_format("= %.2fs", output.ReserveDuration),
+					s_format("%.2fs ^8(基础)", durationBase),
+					s_format("x %.2f ^8(持续时间加成)", durationMod),
+					s_format("= %.2f秒", output.ReserveDuration),
 				}
 			end
 		end	
@@ -1191,17 +1191,17 @@ t_insert(breakdown[damageType], "基础伤害:")
 					local plus = ""
 					if (source[damageTypeMin] or 0) ~= 0 or (source[damageTypeMax] or 0) ~= 0 then
 						if baseMultiplier ~= 1 then
-t_insert(breakdown[damageType], s_format("(%d to %d) x %.2f ^8(来自基础伤害额外总加成 %s 的额外总加成基础伤害)", source[damageTypeMin], source[damageTypeMax], baseMultiplier, source.type and "武器" or "技能"))
+t_insert(breakdown[damageType], s_format("(%d 至 %d) x %.2f ^8(来自基础伤害额外总加成 %s 的额外总加成基础伤害)", source[damageTypeMin], source[damageTypeMax], baseMultiplier, source.type and "武器" or "技能"))
 						else
-t_insert(breakdown[damageType], s_format("%d to %d ^8(基础伤害来自 %s)", source[damageTypeMin], source[damageTypeMax], source.type and "武器" or "技能"))
+t_insert(breakdown[damageType], s_format("%d 至 %d ^8(基础伤害来自 %s)", source[damageTypeMin], source[damageTypeMax], source.type and "武器" or "技能"))
 						end
 						plus = "+ "
 					end
 					if addedMin ~= 0 or addedMax ~= 0 then
 						if damageEffectiveness ~= 1 then
-t_insert(breakdown[damageType], s_format("%s(%d to %d) x %.2f ^8(技能伤害效用调整附加点伤)", plus, addedMin, addedMax, damageEffectiveness))
+t_insert(breakdown[damageType], s_format("%s(%d 至 %d) x %.2f ^8(技能伤害效用调整附加点伤)", plus, addedMin, addedMax, damageEffectiveness))
 						else
-t_insert(breakdown[damageType], s_format("%s%d to %d ^8(附加伤害)", plus, addedMin, addedMax))
+t_insert(breakdown[damageType], s_format("%s%d 至 %d ^8(附加伤害)", plus, addedMin, addedMax))
 						end
 					end
 					
@@ -1211,24 +1211,24 @@ t_insert(breakdown[damageType], s_format("%s%d to %d ^8(附加伤害)", plus, ad
 --	print("moreMax>>="..moreMax)
 					if damageType == 'Physical'   then
 						if moreMin~=nil and moreMin~=1 and moreMax~=nil and moreMax~=1 then
-							t_insert(breakdown[damageType], s_format("= %.1f to %.1f", baseMin, baseMax))								
+							t_insert(breakdown[damageType], s_format("= %.1f 至 %.1f", baseMin, baseMax))								
 							t_insert(breakdown[damageType], s_format("最小总物理伤害 x %.1f", moreMin))
 							t_insert(breakdown[damageType], s_format("最大总物理伤害 x %.1f", moreMax))				
-							t_insert(breakdown[damageType], s_format("= %.1f to %.1f", baseMin*moreMin, baseMax*moreMax))	
+							t_insert(breakdown[damageType], s_format("= %.1f 至 %.1f", baseMin*moreMin, baseMax*moreMax))	
 							
 						elseif moreMin~=nil and moreMin~=1 then 
-							t_insert(breakdown[damageType], s_format("= %.1f to %.1f", baseMin, baseMax))								
+							t_insert(breakdown[damageType], s_format("= %.1f 至 %.1f", baseMin, baseMax))								
 							t_insert(breakdown[damageType], s_format("最小总物理伤害 x %.1f", moreMin))									
-							t_insert(breakdown[damageType], s_format("= %.1f to %.1f", baseMin*moreMin, baseMax))
+							t_insert(breakdown[damageType], s_format("= %.1f 至 %.1f", baseMin*moreMin, baseMax))
 						elseif moreMax~=nil and moreMax~=1  then
-							t_insert(breakdown[damageType], s_format("= %.1f to %.1f", baseMin, baseMax))								
+							t_insert(breakdown[damageType], s_format("= %.1f 至 %.1f", baseMin, baseMax))								
 							t_insert(breakdown[damageType], s_format("最大总物理伤害 x %.1f", moreMax))									
-							t_insert(breakdown[damageType], s_format("= %.1f to %.1f", baseMin, baseMax*moreMax))
+							t_insert(breakdown[damageType], s_format("= %.1f 至 %.1f", baseMin, baseMax*moreMax))
 						else						
-							t_insert(breakdown[damageType], s_format("= %.1f to %.1f", baseMin, baseMax))						
+							t_insert(breakdown[damageType], s_format("= %.1f 至 %.1f", baseMin, baseMax))						
 						end 
 					else
-						t_insert(breakdown[damageType], s_format("= %.1f to %.1f", baseMin, baseMax))
+						t_insert(breakdown[damageType], s_format("= %.1f 至 %.1f", baseMin, baseMax))
 					end 
 					
 				end
@@ -1264,7 +1264,7 @@ t_insert(breakdown[damageType], s_format("%s%d to %d ^8(附加伤害)", plus, ad
 					local convMult = activeSkill.conversionTable[damageType].mult
 					if pass == 2 and breakdown then
 t_insert(breakdown[damageType], "击中伤害:")
-t_insert(breakdown[damageType], s_format("%d to %d ^8(总伤害)", min, max))
+t_insert(breakdown[damageType], s_format("%d 至 %d ^8(总伤害)", min, max))
 						if convMult ~= 1 then
 t_insert(breakdown[damageType], s_format("x %g ^8(%g%% 转化为其他伤害)", convMult, (1-convMult)*100))
 						end
@@ -1408,7 +1408,7 @@ t_insert(breakdown[damageType], s_format("x %.3f ^8(有效 DPS 加成)", effMult
 						end
 					end
 					if pass == 2 and breakdown then
-						t_insert(breakdown[damageType], s_format("= %d to %d", min, max))
+						t_insert(breakdown[damageType], s_format("= %d 至 %d", min, max))
 					end
 					--Beginning of Leech Calculation for this DamageType
 					if skillFlags.mine or skillFlags.trap or skillFlags.totem then
@@ -1723,13 +1723,13 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
 				if damageType == "Physical" then
 					resist = enemyDB:Sum("BASE", nil, "PhysicalDamageReduction")
 				else
-					
+					resist = enemyDB:Sum("BASE", nil, damageType.."Resist")
 						
 					if isElemental[damageType] then
 					
-					 
-						local base = resist + enemyDB:Sum("BASE", nil, damageType.."Resist")
-						resist = base * calcLib.mod(enemyDB, nil, damageType.."Resist")
+						resist = resist + enemyDB:Sum("BASE", nil, "ElementalResist")		
+						local base = resist 
+						resist = base * calcLib.mod(enemyDB, nil, damageType.."Resist")					
 						
 						takenInc = takenInc + enemyDB:Sum("INC", dotTypeCfg, "ElementalDamageTaken")
 					end
@@ -1997,7 +1997,7 @@ t_insert(breakdownChance, s_format("+ %d x %.4f ^8(暴击时的几率)", chanceO
 t_insert(breakdownDPS, "总伤害:")
 t_insert(breakdownDPS, s_format("%.1f ^8(来源伤害)",sourceHitDmg))
 					if sourceMult > 1 then
-						t_insert(breakdownDPS, s_format("x %.2f ^8(inflicting as though dealing more damage)", sourceMult))
+						t_insert(breakdownDPS, s_format("x %.2f ^8(视为更多伤害来计算)", sourceMult))
 						t_insert(breakdownDPS, s_format("= %.1f", baseVal * sourceMult))
 					end
 				else
@@ -2026,7 +2026,7 @@ t_insert(breakdownDPS, "总伤害:")
 			return baseVal
 		end
 
-		-- Calculate bleeding chance and damage
+		
 		local function calcAilmentDamage(type, sourceHitDmg, sourceCritDmg)
 			-- Calculate the inflict chance and base damage of a secondary effect (bleed/poison/ignite/shock/freeze)
 			local chanceOnHit, chanceOnCrit = output[type.."ChanceOnHit"], output[type.."ChanceOnCrit"]
@@ -2103,6 +2103,113 @@ t_insert(breakdownDPS, "总伤害:")
 				end
 			end
 			return baseVal
+		end
+-- Calculate bleeding chance and damage
+
+		-- Calculate bleeding chance and damage
+		if canDeal.Physical and (output.BleedChanceOnHit + output.BleedChanceOnCrit) > 0 then
+			if not activeSkill.bleedCfg then
+				activeSkill.bleedCfg = {
+					skillName = skillCfg.skillName,
+					skillPart = skillCfg.skillPart,
+					skillTypes = skillCfg.skillTypes,
+					slotName = skillCfg.slotName,
+					flags = bor(ModFlag.Dot, ModFlag.Ailment, band(cfg.flags, ModFlag.WeaponMask), band(cfg.flags, ModFlag.Melee) ~= 0 and ModFlag.MeleeHit or 0),
+					keywordFlags = bor(band(cfg.keywordFlags, bnot(KeywordFlag.Hit)), KeywordFlag.Bleed, KeywordFlag.Ailment, KeywordFlag.PhysicalDot),
+					skillCond = { },
+				}
+			end
+			local dotCfg = activeSkill.bleedCfg
+			local sourceHitDmg, sourceCritDmg
+			if breakdown then
+				breakdown.BleedPhysical = { damageTypes = { } }
+			end
+			for pass = 1, 2 do
+				if not skillModList:Flag(dotCfg, "AilmentsAreNeverFromCrit") then
+					dotCfg.skillCond["CriticalStrike"] = (pass == 1)
+				end
+				local min, max = calcAilmentSourceDamage(activeSkill, output, dotCfg, pass == 2 and breakdown and breakdown.BleedPhysical, "Physical", 0)
+				output.BleedPhysicalMin = min
+				output.BleedPhysicalMax = max
+				if pass == 1 then
+					sourceCritDmg = (min + max) / 2 * (1 + skillModList:Sum("BASE", dotCfg, "DotMultiplier", "PhysicalDotMultiplier") / 100 + output.BonusCritDotMultiplier)
+				else
+					sourceHitDmg = (min + max) / 2 * (1 + skillModList:Sum("BASE", dotCfg, "DotMultiplier", "PhysicalDotMultiplier") / 100)
+				end
+			end
+			local basePercent = skillData.bleedBasePercent or data.misc.BleedPercentBase
+			local baseVal = calcAilmentDamage("Bleed", sourceHitDmg, sourceCritDmg) * basePercent / 100 * output.RuthlessBlowEffect * output.FistOfWarAilmentEffect
+			if baseVal > 0 then
+				skillFlags.bleed = true
+				skillFlags.duration = true
+				local effMult = 1
+				if env.mode_effective then
+					local resist = enemyDB:Sum("BASE", nil, "PhysicalDamageReduction")
+					local takenInc = enemyDB:Sum("INC", dotCfg, "DamageTaken", "DamageTakenOverTime", "PhysicalDamageTaken", "PhysicalDamageTakenOverTime")
+					local takenMore = enemyDB:More(dotCfg, "DamageTaken", "DamageTakenOverTime", "PhysicalDamageTaken", "PhysicalDamageTakenOverTime")
+					effMult = (1 - resist / 100) * (1 + takenInc / 100) * takenMore
+					globalOutput["BleedEffMult"] = effMult
+					if breakdown and effMult ~= 1 then
+						globalBreakdown.BleedEffMult = breakdown.effMult("Physical", resist, 0, takenInc, effMult, takenMore)
+					end
+				end
+				
+				local mult = skillModList:Sum("BASE", dotCfg, "DotMultiplier", "PhysicalDotMultiplier")
+				local effectMod = calcLib.mod(skillModList, dotCfg, "AilmentEffect")
+				local rateMod = calcLib.mod(skillModList, cfg, "BleedFaster")
+				local maxStacks = skillModList:Override(cfg, "BleedStacksMax") or skillModList:Sum("BASE", cfg, "BleedStacksMax")
+				local configStacks = enemyDB:Sum("BASE", nil, "Multiplier:BleedStacks")
+				local bleedStacks = configStacks > 0 and m_min(configStacks, maxStacks) or maxStacks
+				output.BaseBleedDPS = baseVal * effectMod * rateMod * effMult
+				output.BleedDPS = (baseVal * effectMod * rateMod * effMult) * bleedStacks
+				local durationBase
+				if skillData.bleedDurationIsSkillDuration then
+					durationBase = skillData.duration
+				else
+					durationBase = data.misc.BleedDurationBase
+				end
+				local durationMod = calcLib.mod(skillModList, dotCfg, "EnemyBleedDuration", "SkillAndDamagingAilmentDuration", skillData.bleedIsSkillEffect and "Duration" or nil) * calcLib.mod(enemyDB, nil, "SelfBleedDuration")
+				globalOutput.BleedDuration = durationBase * durationMod / rateMod * debuffDurationMult
+				globalOutput.BleedDamage = output.BaseBleedDPS * globalOutput.BleedDuration
+				globalOutput.BleedStacksMax = maxStacks
+				globalOutput.BleedStacks = bleedStacks
+				if breakdown then
+					t_insert(breakdown.BleedDPS, s_format("x %.2f ^8(流血每秒造成基础伤害的 %d%%)", basePercent/100, basePercent))
+					if effectMod ~= 1 then
+						t_insert(breakdown.BleedDPS, s_format("x %.2f ^8(异常效果加成)", effectMod))
+					end
+					if output.RuthlessBlowEffect ~= 0 then
+						t_insert(breakdown.BleedDPS, s_format("x %.2f ^8(【无情一击】加成)", output.RuthlessBlowEffect))
+					end
+					if output.FistOfWarAilmentEffect ~= 0 then
+						t_insert(breakdown.BleedDPS, s_format("x %.2f ^8(【战争铁拳】加成)", output.FistOfWarAilmentEffect))
+					end
+					t_insert(breakdown.BleedDPS, s_format("= %.1f", baseVal))
+					breakdown.multiChain(breakdown.BleedDPS, {
+						label = "流血 DPS:",
+						base = s_format("%.1f ^8(每秒总伤害)", baseVal), 
+						{ "%.2f ^8(异常效果加成)", effectMod },
+						{ "%.2f ^8(速率加成)", rateMod },
+						{ "%.3f ^8(有效DPS加成)", effMult },
+						total = s_format("= %.1f ^8 每秒", output.BleedDPS),
+					})
+					if globalOutput.BleedDuration ~= durationBase then
+						globalBreakdown.BleedDuration = {
+							s_format("%.2fs ^8(基础持续时间)", durationBase)
+						}
+						if durationMod ~= 1 then
+							t_insert(globalBreakdown.BleedDuration, s_format("x %.2f ^8(持续时间加成)", durationMod))
+						end
+						if rateMod ~= 1 then
+							t_insert(globalBreakdown.BleedDuration, s_format("/ %.2f ^8(伤害速率加成)", rateMod))
+						end
+						if debuffDurationMult ~= 1 then
+							t_insert(globalBreakdown.BleedDuration, s_format("/ %.2f ^8(减益消退速度加快或减慢)", 1 / debuffDurationMult))
+						end
+						t_insert(globalBreakdown.BleedDuration, s_format("= %.2f秒", globalOutput.BleedDuration))
+					end
+				end
+			end
 		end
 
 		-- Calculate poison chance and damage
@@ -2410,7 +2517,7 @@ t_insert(breakdown.IgniteDamage, s_format("= %.1f ^8每层点燃伤害", output.
 								t_insert(breakdown.TotalIgniteStacks, pass.label..":")
 							end
 							breakdown.multiChain(breakdown.TotalIgniteStacks, {
-								base = s_format("%.2fs ^8(ignite duration)", globalOutput.IgniteDuration),
+								base = s_format("%.2fs ^8(点燃持续时间)", globalOutput.IgniteDuration),
 { "%.2f ^8(点燃几率)", output.IgniteChance / 100 },
 { "%.2f ^8(命中几率)", output.HitChance / 100 },
 { "%.2f ^8(每秒击中)", globalOutput.HitSpeed or globalOutput.Speed },
@@ -2421,7 +2528,7 @@ t_insert(breakdown.IgniteDamage, s_format("= %.1f ^8每层点燃伤害", output.
 					end
 					if globalOutput.IgniteDuration ~= 4 then
 						globalBreakdown.IgniteDuration = {
-							s_format("4.00s ^8(base duration)", durationBase)
+							s_format("4.00s ^8(基础持续时间)", durationBase)
 						}
 						if incDur ~= 0 then
 t_insert(globalBreakdown.IgniteDuration, s_format("x %.2f ^8(延长/缩短 持续时间)", 1 + incDur/100))
@@ -2435,7 +2542,7 @@ t_insert(globalBreakdown.IgniteDuration, s_format("/ %.2f ^8(燃烧速率加成)
 						if debuffDurationMult ~= 1 then
 t_insert(globalBreakdown.IgniteDuration, s_format("/ %.2f ^8(更快或较慢 debuff消退)", 1 / debuffDurationMult))
 						end
-						t_insert(globalBreakdown.IgniteDuration, s_format("= %.2fs", globalOutput.IgniteDuration))
+						t_insert(globalBreakdown.IgniteDuration, s_format("= %.2f秒", globalOutput.IgniteDuration))
 					end
 				end
 			end
@@ -2678,7 +2785,7 @@ t_insert(globalBreakdown.IgniteDuration, s_format("/ %.2f ^8(更快或较慢 deb
 		if breakdown then
 			if output.EnemyStunDuration ~= base then
 				breakdown.EnemyStunDuration = {
-					s_format("%.2fs ^8(base duration)", base),
+					s_format("%.2fs ^8(基础持续时间)", base),
 				}
 				if incDur ~= 0 then
 t_insert(breakdown.EnemyStunDuration, s_format("x %.2f ^8(延长/缩短 晕眩持续时间)", 1 + incDur/100))
@@ -2686,7 +2793,7 @@ t_insert(breakdown.EnemyStunDuration, s_format("x %.2f ^8(延长/缩短 晕眩�
 				if incRecov ~= 0 then
 t_insert(breakdown.EnemyStunDuration, s_format("/ %.2f ^8(延长/缩短 敌人晕眩回复)", 1 + incRecov/100))
 				end
-				t_insert(breakdown.EnemyStunDuration, s_format("= %.2fs", output.EnemyStunDuration))
+				t_insert(breakdown.EnemyStunDuration, s_format("= %.2f秒", output.EnemyStunDuration))
 			end
 		end
 		
@@ -2889,7 +2996,7 @@ t_insert(breakdown.DecayDuration, s_format("x %.2f ^8(持续时间加成)", dura
 				if debuffDurationMult ~= 1 then
 t_insert(breakdown.DecayDuration, s_format("/ %.2f ^8(更快或较慢 debuff消退)", 1 / debuffDurationMult))
 				end
-				t_insert(breakdown.DecayDuration, s_format("= %.2fs", output.DecayDuration))
+				t_insert(breakdown.DecayDuration, s_format("= %.2f秒", output.DecayDuration))
 			end
 		end
 	end

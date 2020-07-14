@@ -625,9 +625,20 @@ ifCond = "OnFungalGround",
 { var = "multiplierPoisonOnSelf", type = "count", label = "你身上的中毒层数:", ifMult = "PoisonStack", implyCond = "Poisoned", tooltip = "这也意味着你中毒了.", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:PoisonStack", "BASE", val, "Config", { type = "Condition", var = "Effective" })
 	end },
-{ var = "conditionOnlyOneNearbyEnemy", type = "check", label = "附近只有一个怪物?", ifCond = "OnlyOneNearbyEnemy", apply = function(val, modList, enemyModList)
-		modList:NewMod("Condition:OnlyOneNearbyEnemy", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+
+{ var = "multiplierNearbyEnemies", type = "count", label = "# 附近敌人数量:", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:NearbyEnemies", "BASE", val, "Config", { type = "Condition", var = "Combat" })
+		modList:NewMod("Condition:OnlyOneNearbyEnemy", "FLAG", val == 1, "Config", { type = "Condition", var = "Combat" })
 	end },
+
+{ var = "multiplierNearbyRareOrUniqueEnemies", type = "countAllowZero", label = "# 附近稀有或传奇敌人数量:", ifMult = "NearbyRareOrUniqueEnemies", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:NearbyRareOrUniqueEnemies", "BASE", val, "Config", { type = "Condition", var = "Combat" })
+		modList:NewMod("Multiplier:NearbyEnemies", "BASE", val, "Config", { type = "Condition", var = "Combat" })
+		modList:NewMod("Condition:AtMostOneNearbyRareOrUniqueEnemy", "FLAG", val <= 1, "Config", { type = "Condition", var = "Combat" })
+		enemyModList:NewMod("Condition:NearbyRareOrUniqueEnemy", "FLAG", val >= 1, "Config", { type = "Condition", var = "Combat" })
+	end },
+	
+	
 { var = "conditionHitRecently", type = "check", label = "你近期有击中过敌人?", ifCond = "HitRecently", tooltip = "如果你的主要技能是自主施放，那么自动认为你近期有击中过\n若有必要，你可以强制修改它.", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:HitRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },

@@ -709,6 +709,7 @@ description = "创造独立飞行的飞刃或虚空的武器，并持续一段�
 	},
 	baseMods = {
 		skill("hitTimeOverride", 0.133),
+		skill("radius", 15),
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 0.5 },
@@ -784,6 +785,10 @@ description = "召唤出从天空降下的虚空武器,随着刀雨的远离, �
 		area = true,
 	},
 	baseMods = {
+		skill("radius", 44),
+		skill("radiusLabel", "刀雨矩阵宽度:"),
+		skill("radiusSecondary", 12),
+		skill("radiusSecondaryLabel", "刀雨矩阵长度:"),
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 0.5 },
@@ -1188,6 +1193,7 @@ description = "射出一发带有火焰能量的箭矢, 接触到敌人时会爆
 		vaal = true,
 	},
 	baseMods = {
+	skill("radius", 16),
 	},
 	qualityStats = {
 		{ "fire_dot_multiplier_+", 0.5 },
@@ -1358,6 +1364,10 @@ description = "向你朝向的方向吟唱并发射一个幻象。幻象移动�
 		area = true,
 	},
 	baseMods = {
+		skill("radius", 12),
+		skill("radiusLabel", "路径起始:"),
+		skill("radiusSecondary", 22),
+		skill("radiusSecondaryLabel", "路径结束:"),
 	},
 	qualityStats = {
 		{ "attack_speed_+%", 0.5 },
@@ -1520,6 +1530,7 @@ name = "灵柩爆炸",
 	},
 	baseMods = {
 		skill("explodeCorpse", true, { type = "SkillPart", skillPart = 2 }),
+		skill("radius", 15),
 	},
 	qualityStats = {
 		{ "fire_damage_+%", 1 },
@@ -1890,6 +1901,7 @@ description = "腐化一块地面, 召唤灵柩并对所有站在该地面上的
 	},
 	baseMods = {
 		skill("dotIsArea", true),
+		skill("radius", 12),
 	},
 	qualityStats = {
 		{ "base_cast_speed_+%", 1 },
@@ -2054,6 +2066,7 @@ name = "灵柩爆炸",
 	},
 	baseMods = {
 		skill("explodeCorpse", true, { type = "SkillPart", skillPart = 2 }),
+		skill("radius", 24),
 	},
 	qualityStats = {
 		{ "area_damage_+%", 1 },
@@ -2398,10 +2411,10 @@ name = "闪电",
 		flag("DealNoCold", { type = "SkillPart", skillPart = 3 }),
 		flag("DealNoLightning", { type = "SkillPart", skillPart = 1 }),
 		flag("DealNoLightning", { type = "SkillPart", skillPart = 2 }),
-		mod("AreaOfEffect", "MORE", 80, 0, 0, { type = "ActorCondition", actor = "enemy", var = "Ignited" }, { type = "SkillPart", skillPart = 1 }),
-		mod("AreaOfEffect", "MORE", 80, 0, 0, { type = "ActorCondition", actor = "enemy", var = "Chilled" }, { type = "SkillPart", skillPart = 2 }),
-		mod("AreaOfEffect", "MORE", 80, 0, 0, { type = "ActorCondition", actor = "enemy", var = "Frozen" }, { type = "SkillPart", skillPart = 2 }),
-		mod("AreaOfEffect", "MORE", 80, 0, 0, { type = "ActorCondition", actor = "enemy", var = "Shocked" }, { type = "SkillPart", skillPart = 3 }),
+		mod("AreaOfEffect", "MORE", 80, 0, 0, { type = "ActorCondition", actor = "enemy", varList = { "Ignited", "Scorched" } }, { type = "SkillPart", skillPart = 1 }),
+		mod("AreaOfEffect", "MORE", 80, 0, 0, { type = "ActorCondition", actor = "enemy", varList = { "Chilled", "Frozen", "Brittle" } }, { type = "SkillPart", skillPart = 2 }),
+		mod("AreaOfEffect", "MORE", 80, 0, 0, { type = "ActorCondition", actor = "enemy", varList = { "Shocked", "Sapped" } }, { type = "SkillPart", skillPart = 3 }),
+		
 		mod("Multiplier:ElementalHitAilmentOnEnemy", "BASE", 1, 0, 0, { type = "ActorCondition", actor = "enemy", var = "Ignited" }),
 		mod("Multiplier:ElementalHitAilmentOnEnemy", "BASE", 1, 0, 0, { type = "ActorCondition", actor = "enemy", var = "Chilled" }),
 		mod("Multiplier:ElementalHitAilmentOnEnemy", "BASE", 1, 0, 0, { type = "ActorCondition", actor = "enemy", var = "Frozen" }),
@@ -2410,6 +2423,7 @@ name = "闪电",
 		mod("Multiplier:ElementalHitAilmentOnEnemy", "BASE", 1, 0, 0, { type = "ActorCondition", actor = "enemy", var = "Brittle" }),
 		mod("Multiplier:ElementalHitAilmentOnEnemy", "BASE", 1, 0, 0, { type = "ActorCondition", actor = "enemy", var = "Sapped" }),
 		mod("Damage", "MORE", 10, 0, 0, { type = "Multiplier", var = "ElementalHitAilmentOnEnemy" }),
+		skill("radius", 10),
 	},
 	qualityStats = {
 		{ "elemental_damage_+%", 1 },
@@ -2755,6 +2769,10 @@ description = "投掷陷阱，触发后造成大面积的爆炸，在区域内�
 		area = true,
 	},
 	baseMods = {
+	skill("radius", 12),
+		skill("radiusLabel", "初爆炸:"),
+		skill("radiusSecondary", 7),
+		skill("radiusSecondaryLabel", "小爆炸:"),
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 0.5 },
@@ -2915,6 +2933,7 @@ description = "投掷陷阱，触发后向不同方向喷射烈焰。烈焰持�
 		duration = true,
 	},
 	baseMods = {
+	skill("radius", 32),
 	},
 	qualityStats = {
 		{ "fire_damage_+%", 1 },
@@ -3272,6 +3291,7 @@ name = "扇形区域",
 		area = true,
 	},
 	baseMods = {
+	skill("radius", 28),
 	},
 	qualityStats = {
 		{ "base_projectile_speed_+%", 1 },
@@ -4009,6 +4029,12 @@ description = "抛出一个触发时会制造一连串冰霜印记爆破的陷�
 		area = true,
 	},
 	baseMods = {
+		skill("radius", 18),
+		skill("radiusLabel", "初次爆炸:"),
+		skill("radiusSecondary", 9),
+		skill("radiusSecondaryLabel", "次级爆炸:"),
+		skill("radiusTertiary", 6),
+		skill("radiusTertiaryLabel", "三次爆炸:"),
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 0.5 },
@@ -4257,6 +4283,7 @@ description = "射出一发充满闪电能量的箭矢, 对敌人造成伤害的
 		projectile = true,
 	},
 	baseMods = {
+		skill("radius", 18),
 	},
 	qualityStats = {
 		{ "base_chance_to_shock_%", 1 },
@@ -5322,7 +5349,7 @@ description = "向空中射出多支箭矢，飞行一段时间后陆续抵达�
 		area = true,
 	},
 	baseMods = {
-		skill("radius", 24),
+		skill("radius", 10),
 		flag("OneShotProj"),
 	},
 	qualityStats = {
@@ -5397,6 +5424,7 @@ description = "向空中射出多支箭矢，飞行一段时间后陆续抵达�
 		vaal = true,
 	},
 	baseMods = {
+	skill("radius", 10),
 		flag("OneShotProj"),
 	},
 	qualityStats = {
@@ -5859,6 +5887,7 @@ name = "扇形区域",
 		area = true,
 	},
 	baseMods = {
+		skill("radius", 28),
 	},
 	qualityStats = {
 		{ "impale_debuff_effect_+%", 1 },
@@ -5933,6 +5962,7 @@ description = "投掷陷阱，触发后会在一定时间内持续发射冲击�
 		duration = true,
 	},
 	baseMods = {
+	skill("radius", 12),
 	},
 	qualityStats = {
 		{ "physical_damage_+%", 1 },
@@ -6167,6 +6197,7 @@ description = "投掷一个地雷，当它引爆时将你传送至该地雷所�
 		buff = true,
 	},
 	baseMods = {
+	skill("radius", 10),
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 2 },
@@ -6486,6 +6517,9 @@ description = "向天空射出一串箭矢，并洒向目标区域，对击中�
 	},
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 1,
+	preDamageFunc = function(activeSkill, output)
+		activeSkill.skillData.dpsMultiplier = math.min(activeSkill.skillData.podOverlapMultiplier or 1, output.ProjectileCount)
+	end,
 	baseFlags = {
 		attack = true,
 		projectile = true,
@@ -6493,7 +6527,10 @@ description = "向天空射出一串箭矢，并洒向目标区域，对击中�
 	},
 	baseMods = {
 		skill("dotIsArea", true),
+		flag("DotCanStack"),
 		flag("OneShotProj"),
+		skill("radius", 18),
+		skill("radiusLabel", "孢囊范围:"),
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 0.5 },
@@ -7140,6 +7177,7 @@ name = "灵柩爆炸",
 	},
 	baseMods = {
 		skill("explodeCorpse", true, { type = "SkillPart", skillPart = 2 }),
+		skill("radius", 15),
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 0.5 },
@@ -7341,6 +7379,7 @@ name = "冰霜波",
 		mod("PhysicalDamageConvertToFire", "BASE", 100, 0, 0, { type = "SkillPart", skillPartList =  { 1, 2 } }),
 		mod("PhysicalDamageConvertToLightning", "BASE", 100, 0, 0, { type = "SkillPart", skillPartList =  { 3, 4 } }),
 		mod("PhysicalDamageConvertToCold", "BASE", 100, 0, 0, { type = "SkillPart", skillPartList =  { 5, 6 } }),
+		skill("radius", 24, { type = "SkillPart", skillPart = 2 }),
 	},
 	qualityStats = {
 		{ "elemental_damage_+%", 1 },
@@ -7405,11 +7444,19 @@ description = "获得迷和灵巧，后者是一种随时间衰减的增益效�
 	skillTypes = { [SkillType.TravelSkill] = true, [SkillType.Buff] = true, [SkillType.Instant] = true, [SkillType.Area] = true, [SkillType.ChaosSkill] = true, [SkillType.MovementSkill] = true, [SkillType.BlinkSkill] = true, [SkillType.Spell] = true, [SkillType.Triggerable] = true, [SkillType.Duration] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 0,
+	statMap = {
+		["slither_wither_stacks"] = {
+			flag("Condition:CanWither"),
+		},
+	},
 	baseFlags = {
 		spell = true,
 		duration = true,
 	},
 	baseMods = {
+	flag("Condition:CanBeElusive", { type = "GlobalEffect", effectType = "Buff" }),
+		mod("Dummy", "DUMMY", 1, 0, 0, { type = "Condition", var = "CanBeElusive" }),
+		skill("radius", 26),
 	},
 	qualityStats = {
 		{ "elusive_effect_+%", 0.5 },

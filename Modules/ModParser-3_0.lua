@@ -299,6 +299,7 @@ local modNameList = {
 	["反射的元素伤害"] = "ElementalReflectedDamageTaken",
 	["对投射物伤害格挡几率"] = "ProjectileBlockChance",
 	["对投射物格挡几率"] = "ProjectileBlockChance",
+	["你身上的秘术增强效果"] = "秘术增强Effect",
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -884,7 +885,7 @@ local preFlagList = {
 	["^持续吟唱技能"] = { tag = { type = "SkillType", skillType = SkillType.Channelled } },
 	["地雷所使用的技能"] = { keywordFlags = KeywordFlag.Mine },
 	["^你和友军受你的光环技能影响时，"] = { affectedByAura = true },
-	["^防卫技能的"] = { tag = { type = "SkillType", skillType = SkillType.Guard } },
+	["^防卫技能的"] = { tag = { type = "SkillType", skillType = SkillType.GuardSkill } },
 	-- Weapon types
 		["^斧攻击造成的"] = { flags = ModFlag.Axe },
 		["^斧或剑攻击造成的"] = { tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Axe, ModFlag.Sword) } },
@@ -1288,6 +1289,7 @@ local modTagList = {
 	["处于【沙姿态】时，"] = { tag = { type = "Condition", var = "SandStance" } },	
 	["血姿态下，"] = { tag = { type = "Condition", var = "BloodStance" } },	
 	["沙姿态下，"] = { tag = { type = "Condition", var = "SandStance" } },	
+	--["每个【召唤灵体】会使"] = { tag = { type = "PerStat", stat = "ActiveSpectreLimit" } },
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -1971,10 +1973,32 @@ local specialModList = {
 	["对感电敌人的暴击几率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end, 
 	["对感电目标的暴击率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end, 
 	["你击中造成的感电，必定会使对方所承受伤害提高至少 (%d+)%%"] = function(num) return { 
-	mod("EnemyShockEffect", "BASE", num) } end,
+	mod("ShockBase", "BASE", num)
+	 } end,
 	["药剂持续期间，使周围的敌人感电，他们受到的伤害提高 (%d+)%%"]  = function(num) return { mod("EnemyModifier", "LIST", { mod = 
 	mod("SelfShockEffect", "BASE", num)} , { type = "Condition", var = "UsingFlask" }),
 	 } end,
+	["敌人若位于你近期所生成的灵柩周围，则使其受到冰缓和感电"] = {
+			mod("EnemyModifier", "LIST", { mod = mod("Condition:Chilled", "FLAG", true) }, { type = "Condition", var = "SpawnedCorpseRecently" }),
+			mod("EnemyModifier", "LIST", { mod = mod("Condition:Shocked", "FLAG", true) }, { type = "Condition", var = "SpawnedCorpseRecently" }),
+			mod("ShockBase", "BASE", 15, { type = "Condition", var = "SpawnedCorpseRecently"}),
+		},
+	["对被你击中所造成冰缓的敌人造成感电"] = { 
+			mod("ShockBase", "BASE", 15, { type = "ActorCondition", actor = "enemy", var = "ChilledByYourHits" } ),
+			mod("EnemyModifier", "LIST", { mod = mod("Condition:Shocked", "FLAG", true, { type = "Condition", var = "ChilledByYourHits" } ) } )
+		},
+	["格挡时有 (%d+)%% 几率使攻击者感电 (%d+) 秒"] = { mod("ShockBase", "BASE", 15) },
+		["shock nearby enemies for (%d+) seconds when you focus"]  = { 
+			mod("ShockBase", "BASE", 15, { type = "Condition", var = "Focused" }),
+			mod("EnemyModifier", "LIST", { mod = flag("Condition:Shocked") }, { type = "Condition", var = "Focused" } ),
+		},
+	["移动时留下【感电地面】，持续 (%d+) 秒 (%d+)"] = { mod("ShockOverride", "BASE", 10, { type = "ActorCondition", actor = "enemy", var = "OnShockedGround"} ) },
+	["左戒指栏位：用插入的【诅咒】替换你【冰冷的飞掠者】的光环"] = { flag("SkitterbotsCannotChill", { type = "SlotNumber", num = 1 }) },
+	["右戒指栏位：用插入的【诅咒】替换你【电震的飞掠者】的光环"] = { flag("SkitterbotsCannotShock", { type = "SlotNumber", num = 2 }) },
+	["药剂持续期间，使周围的敌人感电，他们受到的伤害提高 (%d+)%%"] = function(num) return { 
+		--	mod("EnemyModifier", "LIST", { mod = mod("Condition:Shocked", "FLAG", true) } ),
+			mod("ShockOverride", "BASE", num, { type = "Condition", var = "UsingFlask" } )
+		} end,
 	["近期有感电过敌人，伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", num,{ type = "Condition", var = "ShockedEnemyRecently"  })  } end, 
 	["对被冰冻敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Frozen" })  } end, 
 	["对被感电敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end, 
@@ -3128,6 +3152,10 @@ local specialModList = {
 				mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }),
 					mod("RageRegen", "BASE", num) 
 		}end,
+	 ["若你的怒火少于 25 点，则战吼每 5 【威力值】即可获得 10 点怒火"]= function(num) return { 	
+				flag("Condition:CanGainRage"),
+				mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }),
+		}end,
 	["攻击击中获得 %d+ 点怒火。每 [%d%.]+ 秒只会发生一次"] = {
 			flag("Condition:CanGainRage"),
 			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }) -- Make the Configuration option appear
@@ -3703,10 +3731,6 @@ local specialModList = {
 	  mod("ManaLeechRate", "INC", num),
 	  mod("EnergyShieldLeechRate", "INC", num)
 	 } end, 
-	["战吼增助的攻击伤害提高 (%d+)%%"]= function(num) return { 
-	 mod("Damage", "INC", num,nil, ModFlag.Attack, { type = "Condition", var = "EmpowerAttack" } )  } end, 
-	["若近期战吼有献祭怒火，被战吼增助的攻击总伤害额外提高 (%d+)%%"]= function(num) return { 
-	 mod("Damage", "MORE", num,nil, ModFlag.Attack, { type = "Condition", var = "EmpowerAttack" }, { type = "Condition", var = "WarcrySacrificedRage" } )  } end, 
 	["战吼技能冷却时间为 (%d+) 秒"]= function(num) return { 
 	mod("CooldownRecovery", "OVERRIDE", num, nil, 0, KeywordFlag.Warcry)
 	} end, 
@@ -3914,6 +3938,54 @@ local specialModList = {
 	["【闪电之捷】的风暴击中敌人的频率提高 (%d+)%%"] = function(num) return { mod("HeraldStormFrequency", "INC", num ) } end,
 	["若周围最多有一个稀有或传奇敌人，你造成的总伤害额外提高 (%d+)%%"] = function(num) return { mod("Damage", "MORE", num, nil, 0, { type = "Condition", var = "AtMostOneNearbyRareOrUniqueEnemy" }) } end,
 	["若周围至少有两个稀有或传奇敌人时，则受到的伤害降低 (%d+)%%"] = function(num) return { mod("DamageTaken", "INC", -num, nil, 0, { type = "MultiplierThreshold", var = "NearbyRareOrUniqueEnemies", threshold = 2 }) } end,
+		["战吼有，额外造成 (%d+) 【威力值】数量下限"] = { flag("CryWolfMinimumPower") },
+	["战吼额外增助 (%d+) 次攻击"] = function(num) return { mod("ExtraExertedAttacks", "BASE", num) } end,
+		["战吼立即施放"] = { flag("InstantWarcry") },
+	-- Exerted Attacks
+		["战吼增助的攻击伤害提高 (%d+)%%"] = function(num) return { mod("ExertIncrease", "INC", num, nil, ModFlag.Attack, 0) } end,
+		["若近期战吼有献祭怒火，被战吼增助的攻击总伤害额外提高 (%d+)%%"] = function(num) return { mod("ExertIncrease", "MORE", num, nil, ModFlag.Attack, 0) } end,
+		["被战吼增助的攻击有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("ExertDoubleDamageChance", "BASE", num, nil, ModFlag.Attack, 0) } end,
+	["你应用到敌人身上的非诅咒光环效果提高 (%d+)%%"] = function(num) return {
+			mod("DebuffEffect", "INC", num, { type = "SkillType", skillType = SkillType.Aura }),
+			mod("AuraEffect", "INC", num, { type = "SkillName", skillName = "死神光环" }),
+		} end,
+	["放置的旗帜可使你和周围友军的攻击伤害提高 (%d+)%%"] = function(num) return { mod("ExtraAura", "LIST", { mod = mod("Damage", "INC", num, nil, ModFlag.Attack) }, { type = "Condition", var = "BannerPlanted" }) } end,
+	["最近你每消耗 (%d+) 点魔力，你身上的秘术增强效果提高 (%d+)%%，最多 (%d+)%%"] = function(_,num1,num2,num3)return { 
+	 mod("秘术增强Effect", "INC", tonumber(num2),
+	 { type = "Multiplier", var = "ManaSpentRecently", div = tonumber(num1) , limit = tonumber(num3), limitTotal = true}) } end,   
+	["拥有【秘术增强】时免疫元素异常状态"]= function() return { 
+	mod("AvoidShock", "BASE", 100, { type = "Condition", var = "AffectedBy秘术增强" } ),
+	mod("AvoidFrozen", "BASE", 100, { type = "Condition", var = "AffectedBy秘术增强" } ),
+	mod("AvoidChilled", "BASE", 100, { type = "Condition", var = "AffectedBy秘术增强" } ),
+	mod("AvoidIgnite", "BASE", 100, { type = "Condition", var = "AffectedBy秘术增强" } ),
+	} end, 
+	["你制造的奉献地面将会是亵渎地面"] = { 
+			flag("Condition:CreateProfaneGround"),
+			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CreateProfaneGround" }), -- Make the Configuration option appear
+		},
+	["创造【渎神地面】来代替【奉献地面】"] = { 
+			flag("Condition:CreateProfaneGround"),
+			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CreateProfaneGround" }), -- Make the Configuration option appear
+		},
+	["免疫致盲"] = { mod("AvoidBlind", "BASE", 100) },
+	["目盲不会影响你的命中率"] = { flag("IgnoreBlindHitChance") },
+	["你的暴击有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("CritDoubleDamageChance", "BASE", num) } end,
+	["使用战吼时，每 (%d+) 【威力值】可使护甲提高 (%d+)%%，持续 8 秒，最多提高 (%d+)%%"] = function(mp, _, num, max_inc) return {
+		mod("Armour", "INC", num, { type = "Multiplier", var = "WarcryPower", div = tonumber(mp), limit = tonumber(max_inc), limitTotal = true }, { type = "Condition", var = "UsedWarcryInPast8Seconds" })
+		} end,
+	["【鸟之势】也会使周围友军获得【鸟之力量】和【鸟之斗魄】"] = { mod("ExtraSkillMod", "LIST", { mod = mod("BuffEffectOnMinion", "MORE", 100) }, { type = "SkillName", skillName = "鸟之势" }) },
+	["被击中时，护甲值不对物理伤害生效，改为对火焰、冰霜、闪电伤害生效"] = { 
+	flag("ArmourAppliesToFireDamageTaken"), 
+	flag("ArmourAppliesToColdDamageTaken"), 
+	flag("ArmourAppliesToLightningDamageTaken"),
+	 flag("ArmourDoesNotApplyToPhysicalDamageTaken") },
+		["承受伤害减免的最大上限为 (%d+)%%"] = function(num) return { mod("DamageReductionMax", "OVERRIDE", num) } end,
+		["被击中受到闪电伤害时也套用护甲值"] = { flag("ArmourAppliesToLightningDamageTaken") },
+		["闪电抗性不对承受的闪电伤害生效"] = { flag("SelfIgnoreLightningResistance") },
+	["(%d+)%% 几率以双倍护甲进行防御"] = function(num) return { mod("DoubleArmourChance", "BASE", num ) } end,
+	["召唤生物在满血时有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("MinionModifier", "LIST", 
+	{ mod = mod("DoubleDamageChance", "BASE", num,{ type = "Condition", var = "FullLife" }) }) ,
+	 } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

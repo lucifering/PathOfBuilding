@@ -647,6 +647,58 @@ self.controls.displayItemSynthesis = new("ButtonControl", {"TOPLEFT",self.contro
 						
 						tooltip:AddLine(16, "类型: "..tagsStr)
 					end
+					local notableName = mod[1] and mod[1]:match("其中 1 个增加的天赋为【(.+)】")
+					
+					local node = notableName and self.build.spec.tree.clusterNodeMap[notableName]
+					if node then
+						tooltip:AddSeparator(14)
+
+						-- Node name
+						self.socketViewer:AddNodeName(tooltip, node, self.build)
+
+						-- Node description
+						
+						if node.sd[1] then
+							tooltip:AddLine(16, "")
+							for i, line in ipairs(node.sd) do
+								tooltip:AddLine(16, ((node.mods[i].extra or not node.mods[i].list) and colorCodes.UNSUPPORTED or colorCodes.MAGIC)..line)
+							end
+						end
+
+						-- Reminder text
+						if node.reminderText then
+							tooltip:AddSeparator(14)
+							for _, line in ipairs(node.reminderText) do
+								tooltip:AddLine(14, "^xA0A080"..line)
+							end
+						end
+
+						-- Comparison
+						tooltip:AddSeparator(14)
+						self:AppendAnointTooltip(tooltip, node, "分配")
+
+						-- Information of for this notable appears
+						local clusterInfo = self.build.data.clusterJewelInfoForNotable[notableName]
+						if clusterInfo then
+							tooltip:AddSeparator(14)
+							tooltip:AddLine(20, "^7"..notableName.." 可以出现在:")
+							local isFirstSize = true
+							for size, v in pairs(clusterInfo.size) do
+								tooltip:AddLine(18, colorCodes.MAGIC..size..":")
+								local sizeSkills = self.build.data.clusterJewels.jewels[size].skills
+								for i, type in ipairs(clusterInfo.jewelTypes) do
+									if sizeSkills[type] then
+										tooltip:AddLine(14, "^7    "..sizeSkills[type].name)
+									end
+								end
+								if not isFirstSize then
+									tooltip:AddLine(10, "")
+								end
+								isFirstSize = false
+							end
+						end
+					end
+					
 				else
 					tooltip:AddLine(16, "^7"..#modList.." Tiers")
 					local minMod = self.displayItem.affixes[modList[1]]
@@ -745,7 +797,7 @@ self.controls.displayItemAddCustom = new("ButtonControl", {"TOPLEFT",self.contro
 		self:AddCustomModifierToDisplayItem()
 	end)
 	self.controls.displayItemAddCustom.shown = function()
-	-- print_r(self.displayItem.slot)
+	
 return self.displayItem.rarity == "魔法" or self.displayItem.rarity == "稀有"
 or self.displayItem.name=='扼息者, 火蝮鳞手套' 	
 	 or self.displayItem.name=='孢囊守卫, 圣者链甲'   or self.displayItem.name=='奔逃之, 暗影之靴'  
@@ -960,13 +1012,15 @@ function ItemsTabClass:Draw(viewPort, inputEvents)
 	self.controls.scrollBarV.y = viewPort.y
 	do
 		local maxY = select(2, self.lastSlot:GetPos()) + 24
+		local maxX = self.anchorDisplayItem:GetPos() + 462
 		if self.displayItem then
 			local x, y = self.controls.displayItemTooltipAnchor:GetPos()
-			local ttW, ttH = self.displayItemTooltip:GetSize()
+			local ttW, ttH = self.displayItemTooltip:GetDynamicSize(viewPort)
 			maxY = m_max(maxY, y + ttH + 4)
+			maxX = m_max(maxX, x + ttW + 80)
 		end
 		local contentHeight = maxY - self.y
-		local contentWidth = self.anchorDisplayItem:GetPos() + 462 - self.x
+		local contentWidth = maxX - self.x
 		local v = contentHeight > viewPort.height
 		local h = contentWidth > viewPort.width - (v and 20 or 0)
 		if h then
@@ -2065,6 +2119,138 @@ main:OpenPopup(568, 128, "追忆物品词缀", controls)
 end
 -- 【【】】
 
+
+
+---Gets the name of the anointed node on an item
+---@param item table @The item to get the anoint from
+---@return string @The name of the anointed node, or nil if there is no anoint
+function ItemsTabClass:getAnoint(item)
+	local result = { }
+	if item then
+		for _, modList in ipairs{item.enchantModLines, item.implicitModLines, item.explicitModLines} do
+			for _, mod in ipairs(modList) do
+				local line = mod.line
+				local anoint = line:find("Allocates ([a-zA-Z ]+)")
+				if anoint then
+					local nodeName = line:sub(anoint + string.len("Allocates "))
+					t_insert(result, nodeName)
+				end
+			end
+		end
+	end
+	return result
+end
+
+---Returns a copy of the currently displayed item, but anointed with a new node.
+---Removes any existing enchantments before anointing. (Anoints are considered enchantments)
+---@param node table @The passive tree node to anoint, or nil to just remove existing anoints.
+---@return table @The new item
+function ItemsTabClass:anointItem(node)
+	self.anointEnchantSlot = self.anointEnchantSlot or 1
+	local item = new("Item", self.build.targetVersion, self.displayItem:BuildRaw())
+	item.id = self.displayItem.id
+	if #item.enchantModLines >= self.anointEnchantSlot then
+		t_remove(item.enchantModLines, self.anointEnchantSlot)
+	end
+	if node then
+		t_insert(item.enchantModLines, self.anointEnchantSlot, { crafted = true, line = "分配" .. node.dn })
+	end
+	
+	item:BuildAndParseRaw()
+	return item
+end
+
+---Appends tooltip information for anointing a new passive tree node onto the currently editing amulet
+---@param tooltip table @The tooltip to append into
+---@param node table @The passive tree node that will be anointed, or nil to remove the current anoint.
+function ItemsTabClass:AppendAnointTooltip(tooltip, node, actionText)
+	if not self.displayItem then
+		return
+	end
+
+	if not actionText then
+		actionText = "涂油"
+	end
+
+	local header
+	if node then
+		if self.build.spec.allocNodes[node.id] then
+			tooltip:AddLine(14, "^7"..actionText.." "..node.dn.." 没有变化，因为这个天赋点已经分配了")
+			return
+		end
+
+		local curAnoints = self:getAnoint(self.displayItem)
+		if curAnoints and #curAnoints > 0 then
+			for _, curAnoint in ipairs(curAnoints) do
+				if curAnoint == node.dn then
+					tooltip:AddLine(14, "^7"..actionText.." "..node.dn.." 没有变化，因为这个天赋点已经涂油了.")
+					return
+				end
+			end
+		end
+
+		header = "^7"..actionText.." "..node.dn.." 会给你带来: "
+	else
+		header = "^7"..actionText.." 没有变化: "
+	end
+	local calcFunc = self.build.calcsTab:GetMiscCalculator()
+	local outputBase = calcFunc({ repSlotName = "Amulet", repItem = self.displayItem })
+	local outputNew = calcFunc({ repSlotName = "Amulet", repItem = self:anointItem(node) })
+	
+	
+	if node then 
+		--outputNew = calcFunc({ addNodes = { [node] = true } })
+	end
+	
+	local numChanges = self.build:AddStatComparesToTooltip(tooltip, outputBase, outputNew, header)
+	print("numChanges="..numChanges)
+	if node and numChanges == 0 then
+		
+		tooltip:AddLine(14, "^7"..actionText.." "..node.dn.." 没有变化")
+	end
+end
+
+-- Opens the item anointing popup
+function ItemsTabClass:AnointDisplayItem(enchantSlot)
+	self.anointEnchantSlot = enchantSlot or 1
+
+	local controls = { } 
+	controls.notableDB = new("NotableDBControl", {"TOPLEFT",nil,"TOPLEFT"}, 10, 60, 360, 360, self, self.build.spec.tree.nodes, "ANOINT")
+
+	local function saveLabel()
+		local node = controls.notableDB.selValue
+		if node then
+			return "Anoint " .. node.dn
+		end
+		local curAnoints = self:getAnoint(self.displayItem)
+		if curAnoints and #curAnoints >= self.anointEnchantSlot then
+			return "Remove "..curAnoints[self.anointEnchantSlot]
+		end
+		return "No Anoint"
+	end
+	local function saveLabelWidth()
+		local label = saveLabel()
+		return DrawStringWidth(16, "VAR", label) + 10
+	end
+	local function saveLabelX()
+		local width = saveLabelWidth()
+		return -(width + 90) / 2
+	end
+	controls.save = new("ButtonControl", {"BOTTOMLEFT", nil, "BOTTOM" }, saveLabelX, -4, saveLabelWidth, 20, saveLabel, function()
+		self:SetDisplayItem(self:anointItem(controls.notableDB.selValue))
+		main:ClosePopup()
+	end)
+	controls.save.tooltipFunc = function(tooltip)
+		tooltip:Clear()
+		self:AppendAnointTooltip(tooltip, controls.notableDB.selValue)
+	end	
+	controls.close = new("ButtonControl", {"TOPLEFT", controls.save, "TOPRIGHT" }, 10, 0, 80, 20, "Cancel", function()
+		main:ClosePopup()
+	end)
+	main:OpenPopup(380, 448, "物品涂油", controls)
+end
+
+
 -- Opens the item corrupting popup
 function ItemsTabClass:CorruptDisplayItem()
 	local controls = { } 
@@ -2231,7 +2417,7 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 				 
 				t_insert(spTip,table.concat(passives, "\n"))
 				
-					--print_r(passives)
+					
 					t_insert(modList, {
 						label = passives.name,
 						mod = {passives.name},

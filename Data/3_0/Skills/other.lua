@@ -1311,6 +1311,7 @@ skills["TriggeredShockedGround"] = {
 		duration = true,
 	},
 	baseMods = {
+	mod("ShockedGroundEffect", "BASE", 15)	
 	},
 	qualityStats = {
 	},
@@ -1819,6 +1820,14 @@ skills["SummonRigwaldsPack"] = {
 	minionList = {
 		"SummonedSpectralWolf",
 	},
+	statMap = {
+		["spectral_wolf_grants_attack_minimum_added_physical_damage"] = {
+			mod("PhysicalMin", "BASE", nil, 0, KeywordFlag.Attack, { type = "Multiplier", var = "SpectralWolfCount" }, { type = "GlobalEffect", effectType = "Buff", effectName = "召唤幽狼" }),
+		},
+		["spectral_wolf_grants_attack_maximum_added_physical_damage"] = {
+			mod("PhysicalMax", "BASE", nil, 0, KeywordFlag.Attack, { type = "Multiplier", var = "SpectralWolfCount" }, { type = "GlobalEffect", effectType = "Buff", effectName = "召唤幽狼" }),
+		},
+	},
 	baseFlags = {
 		spell = true,
 		minion = true,
@@ -1834,10 +1843,16 @@ skills["SummonRigwaldsPack"] = {
 		"chance_to_cast_on_kill_%_target_self",
 		"display_minion_monster_type",
 		"display_minion_monster_level",
+		"spectral_wolf_grants_attack_minimum_added_physical_damage",
+		"spectral_wolf_grants_attack_maximum_added_physical_damage",
 		"spell_uncastable_if_triggerable",
+		"modifiers_to_claw_critical_strike_chance_apply_minion_critical_strike_chance",
+		"modifiers_to_claw_critical_strike_multiplier_apply_minion_critical_strike_multiplier",
+		"skill_has_trigger_from_unique_item",
 	},
 	levels = {
-		[18] = { 30000, 20, 10, 8, 65, levelRequirement = 66, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[10] = { 30000, 10, 10, 8, 65, 3, 6, levelRequirement = 55, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[20] = { 30000, 10, 10, 8, 65, 8, 16, levelRequirement = 70, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
 	},
 }
 skills["SummonVoidSphere"] = {

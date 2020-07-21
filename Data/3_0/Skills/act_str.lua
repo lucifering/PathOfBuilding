@@ -13,15 +13,15 @@ skills["AbyssalCry"] = {
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 0.8,
 	statMap = {
-		["base_movement_velocity_+%"] = {
+		["skill_empowers_next_x_melee_attacks"] = {
+			mod("InfernalExertedAttacks", "BASE", nil),
 		},
-		
+		["infernal_cry_covered_in_ash_fire_damage_taken_"] = {
+			mod("InfernalAshEffectPer5MP", "BASE", nil),
+		},
 		["infernal_cry_covered_in_ash_fire_damage_taken_%_per_5_monster_power"] = {
-			mod("DamageTaken", "INC", nil, 0, 0,  { type = "Multiplier", var = "WarcryPowerCount", div = 5 , limit = 20, limitTotal = true} ,
-			{ type = "GlobalEffect", effectType = "Buff" }),
-			
+			mod("InfernalFireTakenPer5MP", "BASE", nil),
 		},
-		
 		
 		
 	},
@@ -32,6 +32,10 @@ skills["AbyssalCry"] = {
 		chaos = true,
 	},
 	baseMods = {
+		skill("radius", 60),
+		skill("radiusLabel", "战吼范围:"),
+		skill("radiusSecondary", 22),
+		skill("radiusSecondaryLabel", "爆炸范围:"),
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 1 },
@@ -935,7 +939,8 @@ name = "震波",
 		melee = true,
 	},
 	baseMods = {
-	skill("radius", 12),
+	skill("radius", 24),
+		skill("radiusExtra", 1, { type = "Multiplier", var = "Rage" , div = 5 }),
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 0.5 },
@@ -1098,7 +1103,7 @@ description = "重击目标地点。若目标周围有敌人，你可以短距�
 		duration = true,
 	},
 	baseMods = {
-	skill("radius", 28),
+	skill("radius", 23),
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 0.5 },
@@ -1757,17 +1762,14 @@ description = "发出怒吼, 嘲讽周围的敌人来攻击自己. 视周围被�
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 0.8,
 	statMap = {
-		["base_life_regeneration_rate_per_minute"] = {
-			mod("LifeRegen", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
-			div = 60,
+		["regenerate_X_life_over_1_second_on_cast"] = {
+			mod("EnduringCryLifeRegen", "BASE", nil),
 		},
 		["resist_all_elements_%_per_endurance_charge"] = {
-			mod("ElementalResist", "BASE", nil, 0, 0, { type = "Multiplier", var = "EnduranceCharge" },{ type = "GlobalEffect", effectType = "Buff" }),
-			 
+			mod("EnduringCryElementalResist", "BASE", nil),
 		},
 		["physical_damage_reduction_%_per_endurance_charge"] = {
-			mod("PhysicalDamageReduction", "BASE", nil, 0, 0, { type = "Multiplier", var = "EnduranceCharge" },{ type = "GlobalEffect", effectType = "Buff" }),
-			 
+			mod("EnduringCryPhysicalDamageReduction", "BASE", nil),
 		},
 		
 		 
@@ -1779,8 +1781,7 @@ description = "发出怒吼, 嘲讽周围的敌人来攻击自己. 视周围被�
 	},
 	baseMods = {
 		skill("radius", 60),
-		flag("Condition:PerformsWarcry"),
-		mod("Dummy", "DUMMY", 1, 0, 0, { type = "Condition", var = "PerformsWarcry" }),
+		
 	},
 	qualityStats = {
 			{ "skill_effect_duration_+%", 1 },
@@ -2019,6 +2020,7 @@ description = "凝聚冰霜之力，转换一部分的物理伤害为冰霜伤�
 		duration = true,
 	},
 	baseMods = {
+	skill("radius", 20),
 	},
 	qualityStats = {
 		{ "chill_duration_+%", 2 },
@@ -2190,6 +2192,7 @@ description = "角色使用长杖、斧头或锤类重击地面，制造出一�
 		area = true,
 	},
 	baseMods = {
+	skill("radius", 39),
 	},
 	qualityStats = {
 		{ "base_stun_duration_+%", 1 },
@@ -2333,6 +2336,9 @@ description = "于手中凝聚火焰之力, 为物理伤害额外增加火焰伤
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.CausesBurning] = true, [SkillType.Area] = true, [SkillType.DamageOverTime] = true, [SkillType.FireSkill] = true, [SkillType.Type27] = true, [SkillType.Herald] = true, [SkillType.Duration] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.Type85] = true, [SkillType.Type86] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 0,
+	preDamageFunc = function(activeSkill, output)
+		activeSkill.skillData.FireDot = (activeSkill.skillData.hoaOverkill or 0) * (1 + activeSkill.skillData.hoaMoreBurn / 100) * activeSkill.skillData.hoaOverkillPercent
+	end,
 	statMap = {
 		["herald_of_ash_fire_damage_+%"] = {
 			mod("FireDamage", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
@@ -2342,6 +2348,13 @@ description = "于手中凝聚火焰之力, 为物理伤害额外增加火焰伤
 		},
 		["physical_damage_%_to_add_as_fire"] = {
 			mod("PhysicalDamageGainAsFire", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" })
+		},
+		["herald_of_ash_burning_damage_+%_final"] = {
+			skill("hoaMoreBurn", nil),
+		},
+		["herald_of_ash_burning_%_overkill_damage_per_minute"] = {
+			skill("hoaOverkillPercent", nil),
+			div = 6000,
 		},
 	},
 	baseFlags = {
@@ -2985,13 +2998,21 @@ description = "施加一个增益效果，增加护甲值，并在耗尽前替�
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Type31] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.Triggerable] = true, [SkillType.GuardSkill] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 0,
+	preDamageFunc = function(activeSkill, output)
+		local add = (activeSkill.skillData.MoltenShellDamageMitigated or 0) * activeSkill.skillData.moltenShellReflect / 100
+		activeSkill.skillData.FireMin = add
+		activeSkill.skillData.FireMax = add
+	end,
 	statMap = {
 		["base_physical_damage_reduction_rating"] = {
 			mod("Armour", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
 		},
+		["molten_shell_%_of_absorbed_damage_dealt_as_reflected_fire"] = {
+			skill("moltenShellReflect", nil),
+		},
 	},
 	baseFlags = {
-		spell = true,
+		hit = true,
 		area = true,
 		duration = true,
 	},
@@ -3064,6 +3085,11 @@ description = "施加一个增益效果，增加护甲值，并在耗尽前替�
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTotem] = true, [SkillType.Type31] = true, [SkillType.FireSkill] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.Vaal] = true, [SkillType.Type86] = true, [SkillType.Type85] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
+	preDamageFunc = function(activeSkill, output)
+		local add = (activeSkill.skillData.VaalMoltenShellDamageMitigated or 0) * activeSkill.skillData.moltenShellReflect / 100
+		activeSkill.skillData.FireMin = add
+		activeSkill.skillData.FireMax = add
+	end,
 	statMap = {
 		["base_physical_damage_reduction_rating"] = {
 			mod("Armour", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
@@ -3071,9 +3097,12 @@ description = "施加一个增益效果，增加护甲值，并在耗尽前替�
 		["vaal_molten_shall_armour_+%_final"] = {
 			mod("Armour", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
 		},
+		["molten_shell_%_of_absorbed_damage_dealt_as_reflected_fire"] = {
+			skill("moltenShellReflect", nil),
+		},
 	},
 	baseFlags = {
-		spell = true,
+		hit = true,
 		area = true,
 		duration = true,
 	},
@@ -3187,6 +3216,13 @@ name = "熔岩球",
 		area = true,
 	},
 	baseMods = {
+	skill("projectileSpeedAppliesToMSAreaOfEffect", true),
+		skill("radius", 9, { type = "SkillPart", skillPart = 2 }),
+		skill("radiusLabel", "Ball area:", { type = "SkillPart", skillPart = 2 }),
+		skill("radiusSecondary", 2, { type = "SkillPart", skillPart = 2 }),
+		skill("radiusSecondaryLabel", "连锁最小距离:", { type = "SkillPart", skillPart = 2 }),
+		skill("radiusTertiary", 25, { type = "SkillPart", skillPart = 2 }),
+		skill("radiusTertiaryLabel", "连锁最大距离:", { type = "SkillPart", skillPart = 2 }),
 	},
 	qualityStats = {
 		{ "fire_damage_+%", 1 },
@@ -3270,6 +3306,9 @@ description = "重击地面，产生前进的多重尖刺伤害敌人。\n在血
 		["blood_spears_damage_+%_final_in_blood_stance"] = {
 			mod("Damage", "MORE", nil, 0, 0, { type = "Condition", var = "BloodStance" })
 		},
+		["blood_spears_additional_number_of_spears_if_changed_stance_recently"] = {
+			mod("Multiplier:PerforateMaxSpikes", "BASE", nil, 0, 0, { type = "Condition", var = "ChangedStanceRecently"}),
+		},
 		
 	},
 	baseFlags = {
@@ -3279,6 +3318,9 @@ description = "重击地面，产生前进的多重尖刺伤害敌人。\n在血
 	},
 	baseMods = {
 		skill("dpsMultiplier", 1, { type = "Multiplier", var = "PerforateSpikeOverlap", limitVar = "PerforateMaxSpikes" }, { type = "Condition", var = "BloodStance" }),
+		skill("radius", 11, { type = "Condition", var = "SandStance" }),
+		skill("radius", 8, { type = "Condition", var = "BloodStance" }),
+		
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 0.5 },
@@ -3344,20 +3386,13 @@ description = "施放一个光环，使你周围的敌人受到的物理伤害�
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.Type27] = true, [SkillType.ManaCostPercent] = true, [SkillType.SkillCanTotem] = true, [SkillType.Aura] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.AuraDebuff] = true, [SkillType.CanHaveBlessing] = true, [SkillType.Type85] = true, [SkillType.Type86] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
-	parts = {
-		{
-name = "初始效果",
-		},
-		{
-name = "最大效果",
-		},
-	},
+	 
 	statMap = {
 		["physical_damage_aura_nearby_enemies_physical_damage_taken_+%"] = {
-			mod("PhysicalDamageTaken", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "AuraDebuff", modCond = "MinEffect" }),
+			mod("PhysicalDamageTaken", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "AuraDebuff", modCond = "PrideMinEffect" }),
 		},
 		["physical_damage_aura_nearby_enemies_physical_damage_taken_+%_max"] = {
-			mod("PhysicalDamageTaken", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "AuraDebuff", modCond = "MaxEffect" }),
+			mod("PhysicalDamageTaken", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "AuraDebuff", modCond = "PrideMaxEffect" }),
 		},
 	},
 	baseFlags = {
@@ -3366,8 +3401,7 @@ name = "最大效果",
 		area = true,
 	},
 	baseMods = {
-		flag("Condition:MinEffect", { type = "SkillPart", skillPart = 1 }),
-		flag("Condition:MaxEffect", { type = "SkillPart", skillPart = 2 }),
+		
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 2 },
@@ -3662,8 +3696,20 @@ description = "施展战吼, 使自身和盟友伤害和魔力恢复增加. 伤�
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.25,
 	statMap = {
-	
-		
+		["rallying_cry_damage_+%_final_from_osm_per_nearby_ally"] = {
+			mod("RallyingCryExertDamageBonus", "BASE", nil),
+		},
+		["skill_empowers_next_x_melee_attacks"] = {
+			mod("RallyingExertedAttacks", "BASE", nil),
+		},
+		["rallying_cry_weapon_damage_%_for_allies_per_5_monster_power"] = {
+			mod("RallyingCryAllyDamageBonusPer5Power", "BASE", nil),
+			mod("Dummy", "DUMMY", 1, 0, 0, { type = "Multiplier", var = "NearbyAlly"}),
+		},
+		["rallying_cry_buff_effect_on_minions_+%_final"] = {
+			mod("RallyingCryMinionDamageBonusMultiplier", "BASE", nil),
+			div = 100
+		},
 	 
 		
 	},
@@ -3673,10 +3719,10 @@ description = "施展战吼, 使自身和盟友伤害和魔力恢复增加. 伤�
 		duration = true,
 	},
 	baseMods = {
-	skill("radius", 24),
 		skill("buffAllies", true),
-		flag("Condition:PerformsWarcry"),
-		mod("Dummy", "DUMMY", 1, 0, 0, { type = "Condition", var = "PerformsWarcry" }),
+	--	skill("buffNotPlayer", true),
+		skill("radius", 60),
+		
 	},
 	qualityStats = {
 		{ "skill_effect_duration_+%", 1.5 },
@@ -3761,6 +3807,7 @@ description = "当盾牌格档时对敌人进行一次迅速的反击. 此反击
 		melee = true,
 	},
 	baseMods = {
+	skill("radius", 35),
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 0.5 },
@@ -3985,6 +4032,12 @@ description = "向一个目标冲锋, 使用盾牌对其猛击的同时也用近
 		shieldAttack = true,
 	},
 	baseMods = {
+	skill("radius", 28),
+		skill("radiusLabel", "结束锥形范围:"),
+		skill("radiusSecondary", 16),
+		skill("radiusSecondaryLabel", "结束圆形范围:"),
+		skill("radiusTertiary", 8),
+		skill("radiusTertiaryLabel", "冲锋范围:"),
 	},
 	qualityStats = {
 		{ "base_movement_velocity_+%", 1 },
@@ -4163,6 +4216,7 @@ description = "发动一次近战攻击，用闪电攻击目标区域或周围�
 		area = true,
 	},
 	baseMods = {
+	skill("radius", 15),
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 0.5 },
@@ -4272,8 +4326,8 @@ description = "使用近战武器攻击，如果击中目标则获得一个增�
 		duration = true,
 	},
 	baseMods = {
-		skill("hitTimeOverride", 0.4 / (1+1*0.1), { type = "SkillPart", skillPart = 2 }),
-		skill("hitTimeOverride", 0.4 / (1+3*0.1), { type = "SkillPart", skillPart = 3 }),
+		
+		skill("radius", 20),
 	},
 	qualityStats = {
 		{ "skill_effect_duration_+%", 1 },
@@ -4561,7 +4615,8 @@ skills["NewSunder"] = {
 name = "大地震击",
 	color = 1,
 description = "用锤类、短杖、斧类或长杖重击地面，创造一道冲击波，对前方一片区域内的敌人造成伤害。被冲击波击中的敌人会释放出一道圆形震波，对其周围的敌人造成伤害。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, },
+skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Slam] = true, },
+	
 	weaponTypes = {
 		["None"] = true,
 		["One Handed Mace"] = true,
@@ -4575,7 +4630,10 @@ description = "用锤类、短杖、斧类或长杖重击地面，创造一道�
 	castTime = 1,
 	parts = {
 		{
-name = "初始冲击波",
+name = "初始冲击波区域",
+		},
+				{
+name = "最终冲击波区域",
 		},
 		{
 name = "冲击波",
@@ -4583,11 +4641,14 @@ name = "冲击波",
 	},
 	statMap = {
 		["shockwave_slam_explosion_damage_+%_final"] = {
-			mod("Damage", "MORE", nil, 0, 0, { type = "SkillPart", skillPart = 2 }),
+			mod("Damage", "MORE", nil, 0, 0, { type = "SkillPart", skillPart = 3 }),
 		},
 		["active_skill_area_of_effect_+%_final"] = {
 			mod("AreaOfEffect", "MORE", nil),
 		},
+		["sunder_wave_radius_+_per_step"] = {
+			skill("radiusExtra", nil, { type = "Multiplier", var = "SunderWaveArea" }),
+		}
 	},
 	baseFlags = {
 		attack = true,
@@ -4595,6 +4656,8 @@ name = "冲击波",
 		area = true,
 	},
 	baseMods = {
+		skill("radius", 12),
+		mod("Multiplier:SunderWaveArea", "BASE", 4, 0, 0, { type = "SkillPart", skillPart = 2 }),
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 0.5 },
@@ -4761,6 +4824,10 @@ description = "重击地面，在前方制造一道灼热的裂隙，造成范�
 		area = true,
 	},
 	baseMods = {
+	skill("radius", 15),
+		skill("radiusLabel", "裂隙矩形长度:"),
+		skill("radiusSecondary", 7),
+		skill("radiusSecondaryLabel", "裂隙矩形宽度:"),
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 0.5 },
@@ -5305,20 +5372,17 @@ skills["AncestralCry"] = {
 	castTime = 0.8,
 	statMap = {
 	
-	--需要处理
-		["ancestral_cry_physical_damage_reduction_rating_per_5_MP"] = {
-			mod("Armour", "BASE", nil, 0, 0,  { type = "Multiplier", var = "WarcryPowerCount", div = 5 , limit = 1540, limitTotal = true} ,
-			{ type = "GlobalEffect", effectType = "Buff" }),
-			
+	["skill_empowers_next_x_melee_attacks"] = {
+			mod("AncestralExertedAttacks", "BASE", nil),
 		},
-		
 		["ancestral_cry_x_melee_range_per_5_monster_power"] = {
-			mod("MeleeWeaponRange", "BASE", nil, 0, 0,  { type = "Multiplier", var = "WarcryPowerCount", div = 5 , limit = 6, limitTotal = true} ,
-			{ type = "GlobalEffect", effectType = "Buff" }),
-
-		mod("UnarmedRange", "BASE", nil, 0, 0,  { type = "Multiplier", var = "WarcryPowerCount", div = 5 , limit = 6, limitTotal = true} ,
-			{ type = "GlobalEffect", effectType = "Buff" }),
-			
+			mod("AncestralMeleeWeaponRangePer5MP", "BASE", nil),
+		},
+		["ancestral_cry_physical_damage_reduction_rating_per_5_MP"] = {
+			mod("AncestralArmourPer5MP", "BASE", nil),
+		},
+		["ancestral_cry_max_physical_damage_reduction_rating"] = {
+			mod("AncestralArmourMax", "BASE", nil),
 		},
 		 
 		
@@ -5330,9 +5394,8 @@ skills["AncestralCry"] = {
 	},
 	
 	baseMods = {
-		skill("radius", 16),
-	flag("Condition:PerformsWarcry"),
-		mod("Dummy", "DUMMY", 1, 0, 0, { type = "Condition", var = "PerformsWarcry" }),
+		skill("radius", 60),
+	
 	},
 	qualityStats = {
 		{ "base_cooldown_speed_+%", 0.5 },
@@ -5400,15 +5463,22 @@ skills["GeneralsCry"] = {
 	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Warcry] = true, [SkillType.Type90] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.8,
+	statMap = {
+		["spiritual_cry_doubles_summoned_per_5_MP+%"] = {
+			mod("GeneralsCryDoubleMPCount", "BASE", nil),
+		},
+		["maximum_number_of_spiritual_cry_warriors"] = {
+			mod("GeneralsCryDoubleMaxCount", "BASE", nil),
+		},
+	},
 	baseFlags = {
 		warcry = true,
 		area = true,
 		duration = true,
 	},
 	baseMods = {
-		skill("radius", 24),
-	flag("Condition:PerformsWarcry"),
-		mod("Dummy", "DUMMY", 1, 0, 0, { type = "Condition", var = "PerformsWarcry" }),
+		skill("radius", 60),
+	
 	},
 	qualityStats = {
 		{ "base_cooldown_speed_+%", 0.5 },
@@ -5479,8 +5549,7 @@ skills["GeneralsCrySupport"] = {
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
 		["support_spiritual_cry_damage_+%_final"] = {
-			mod("Damage", "MORE", nil)
-			
+			mod("GeneralsCryMirageWarriorLessDamage", "BASE", nil),
 		},	
 		 
 		 
@@ -5549,17 +5618,14 @@ skills["IntimidatingCry"] = {
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.8,
 	statMap = {
+		["skill_empowers_next_x_melee_attacks"] = {
+			mod("IntimidatingExertedAttacks", "BASE", nil),
+		},
 		["intimidating_cry_enemy_phys_reduction_%_penalty_vs_hit_per_5_MP"] = {
-			mod("EnemyPhysicalDamageReduction", "BASE", nil, 0, 0,  { type = "Multiplier", var = "WarcryPowerCount", div = 5 , limit = 30, limitTotal = true} ,
-			{ type = "GlobalEffect", effectType = "Buff" }),
-			mult = -1,
+			mod("IntimidatingPDRPer5MP", "BASE", nil),
 		},
 		
-		["intimidating_cry_empowerd_attacks_deal_double_damage_display"] = {
-			mod("DoubleDamageChance", "BASE", 100,ModFlag.Melee,  0, { type = "Condition", var = "EmpowerAttack" } ,
-			{ type = "GlobalEffect", effectType = "Buff" }),	
-		},
-		 
+		
 		
 	},
 	baseFlags = {
@@ -5568,9 +5634,9 @@ skills["IntimidatingCry"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("radius", 10),
-	flag("Condition:PerformsWarcry"),
-		mod("Dummy", "DUMMY", 1, 0, 0, { type = "Condition", var = "PerformsWarcry" }),
+	
+	skill("radius", 60),
+	 
 	},
 	qualityStats = {
 		{ "base_cooldown_speed_+%", 0.5 },
@@ -5638,21 +5704,15 @@ skills["SeismicCry"] = {
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.8,
 	statMap = {
+		["skill_empowers_next_x_melee_attacks"] = {
+			mod("SeismicExertedAttacks", "BASE", nil),
+		},
+		["seismic_cry_slam_skill_damage_+%_final_increase_per_repeat"] = {
+			mod("SeismicHitMultiplier", "BASE", nil),
+		},
 		["seismic_cry_+%_enemy_stun_threshold_per_5_MP"] = {
-			mod("EnemyStunThreshold", "INC", nil, 0, 0,  { type = "Multiplier", var = "WarcryPowerCount", div = 5 , limit = 30, limitTotal = true} ,
-			{ type = "GlobalEffect", effectType = "Buff" }),
-			mult = -1,
+			mod("SeismicStunThresholdPer5MP", "BASE", nil),
 		},
-		
-		["seismic_cry_base_slam_skill_damage_+%_final"] = {
-			mod("Damage", "MORE", nil, ModFlag.Attack, 0,  { type = "Condition", var = "EmpowerAttack" } ,{ type = "SkillType", skillType = SkillType.Slam },
-			{ type = "GlobalEffect", effectType = "Buff" }),	
-		},
-		["seismic_cry_base_slam_skill_area_+%"] = {
-			mod("AreaOfEffect", "INC", nil, 0, 0,  { type = "Condition", var = "EmpowerAttack" } ,{ type = "SkillType", skillType = SkillType.Slam },
-			{ type = "GlobalEffect", effectType = "Buff" }),	
-		},
-		
 	},
 	baseFlags = {
 		warcry = true,
@@ -5660,9 +5720,8 @@ skills["SeismicCry"] = {
 		duration = true,
 	},
 	baseMods = {
-		skill("radius", 16),
-		flag("Condition:PerformsWarcry"),
-		mod("Dummy", "DUMMY", 1, 0, 0, { type = "Condition", var = "PerformsWarcry" }),
+		skill("radius", 60),
+		 
 	},
 	qualityStats = {
 		{ "base_cooldown_speed_+%", 0.5 },
@@ -5756,7 +5815,7 @@ name = "尖刺破碎",
 	},
 	statMap = {
 		["active_skill_area_of_effect_+%_final"] = {
-			mod("AreaOfEffect", "MORE", nil, 0, 0, { type = "SkillPart", skillPart = 1 }),
+			mod("AreaOfEffect", "MORE", nil),
 		},
 		["spike_slam_explosion_damage_+%_final"] = {
 			mod("Damage", "MORE", nil,0, 0, { type = "SkillPart", skillPart = 2 }),
@@ -5769,7 +5828,7 @@ name = "尖刺破碎",
 		duration = true,
 	},
 	baseMods = {
-	skill("radius", 12),
+	skill("radius", 20, { type = "SkillPart", skillPart = 1 }),
 	},
 	qualityStats = {
 		{ "base_skill_area_of_effect_+%", 0.5 },

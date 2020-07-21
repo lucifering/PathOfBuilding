@@ -39,6 +39,16 @@ function calcs.armourReduction(armour, raw)
 	return round(calcs.armourReductionF(armour, raw))
 end
 
+--- Calculates Damage Reduction from Armour
+---@param armour number
+---@param damage number
+---@param doubleChance number @Chance to Defend with Double Armour 
+---@return number @Damage Reduction
+function calcs.armourReductionDouble(armour, damage, doubleChance)
+	return calcs.armourReduction(armour, damage) * (1 - doubleChance) + calcs.armourReduction(armour * 2, damage) * doubleChance
+end
+
+
 -- Performs all defensive calculations
 function calcs.defence(env, actor)
 	local modDB = actor.modDB
@@ -55,8 +65,9 @@ function calcs.defence(env, actor)
 	end
 
 	-- Resistances
-	output.PhysicalResist = m_min(90, modDB:Sum("BASE", nil, "PhysicalDamageReduction"))
-	output.PhysicalResistWhenHit = m_min(90, output.PhysicalResist + modDB:Sum("BASE", nil, "PhysicalDamageReductionWhenHit"))
+	output.DamageReductionMax =  modDB:Override(nil, "DamageReductionMax") or data.misc.DamageReductionCap
+	output.PhysicalResist = m_min(output.DamageReductionMax, modDB:Sum("BASE", nil, "PhysicalDamageReduction"))
+	output.PhysicalResistWhenHit = m_min(output.DamageReductionMax, output.PhysicalResist + modDB:Sum("BASE", nil, "PhysicalDamageReductionWhenHit"))
 	for _, elem in ipairs(resistTypeList) do
 		local max, total
 		if elem == "Chaos" and modDB:Flag(nil, "ChaosInoculation") then
@@ -234,6 +245,7 @@ function calcs.defence(env, actor)
 		end		
 		
 		output.Armour = m_max(round(armour), 0)
+		output.DoubleArmourChance = m_min(modDB:Sum("BASE", nil, "DoubleArmourChance"), 100)
 		output.Evasion = m_max(round(evasion), 0)
 		output.LowestOfArmourAndEvasion = m_min(output.Armour, output.Evasion)
 		output["Gear:EnergyShield"] = gearEnergyShield
@@ -248,18 +260,23 @@ function calcs.defence(env, actor)
 			 
 			output.EvadeChance = 100 - (calcs.hitChance(output.Evasion, enemyAccuracy) - modDB:Sum("BASE", nil, "EvadeChance")) 
 			* calcLib.mod(enemyDB, nil, "HitChance")
+			output.MeleeEvadeChance = m_max(0, m_min(95, output.EvadeChance * calcLib.mod(modDB, nil, "EvadeChance", "MeleeEvadeChance")))
+			output.ProjectileEvadeChance = m_max(0, m_min(95, output.EvadeChance * calcLib.mod(modDB, nil, "EvadeChance", "ProjectileEvadeChance")))
 			
 			if breakdown then
-				breakdown.EvadeChance = {
+				breakdown.MeleeEvadeChance  = {
 s_format("敌人等级: %d ^8(%s 配置界面配置)", env.enemyLevel, env.configInput.enemyLevel and "覆盖了" or "可以从"),
 s_format("平均敌人命中: %d", enemyAccuracy),
-s_format("近似闪避几率: %d%%", output.EvadeChance),
+s_format("近似近战闪避率: %d%%", output.MeleeEvadeChance),
+				}
+				breakdown.ProjectileEvadeChance = {
+					s_format("敌人等级: %d ^8(%s 配置界面配置)", env.enemyLevel, env.configInput.enemyLevel and "覆盖了" or "可以从"),
+					s_format("平均敌人命中: %d", enemyAccuracy),
+					s_format("近似投射物闪避率: %d%%", output.ProjectileEvadeChance),
 				}
 			end
 			 
-			output.MeleeEvadeChance = m_max(0, m_min(data.misc.EvadeChanceCap, output.EvadeChance * calcLib.mod(modDB, nil, "EvadeChance", "MeleeEvadeChance")))
-			output.ProjectileEvadeChance = m_max(0, m_min(data.misc.EvadeChanceCap, output.EvadeChance * calcLib.mod(modDB, nil, "EvadeChance", "ProjectileEvadeChance")))
-		
+			
 		 
 		end
 	end
@@ -549,13 +566,13 @@ s_format("/ %.2f ^8(更快开始)", 1 + modDB:Sum("INC", nil, "EnergyShieldRecha
 				takenInc = takenInc + modDB:Sum("INC", nil, "ElementalDamageTakenOverTime")
 				takenMore = takenMore * modDB:More(nil, "ElementalDamageTakenOverTime")
 			end
-			local resist = output[damageType.."Resist"]
+			local resist = modDB:Flag(nil, "SelfIgnore"..damageType.."Resistance") and 0 or output[damageType.."Resist"]
 			output[damageType.."TakenDotMult"] = (1 - resist / 100) * (1 + takenInc / 100) * takenMore
 			if breakdown then
 				breakdown[damageType.."TakenDotMult"] = { }
 				breakdown.multiChain(breakdown[damageType.."TakenDotMult"], {
 label = "持续伤害加成:",
-{ "%.2f ^8(%s)", (1 - output[damageType.."Resist"] / 100), damageType == "Physical" and "物理伤害减免" or "抗性" },
+{ "%.2f ^8(%s)", (1 - resist / 100), damageType == "Physical" and "物理伤害减免" or "抗性" },
 { "%.2f ^8(提高/降低 伤害承受)", (1 + takenInc / 100) },
 { "%.2f ^8(额外提高/降低 伤害承受)", takenMore },
 					total = s_format("= %.2f", output[damageType.."TakenDotMult"]),
@@ -698,8 +715,9 @@ label = "持续伤害加成:",
 	end
 
 
+	 
 	-- Incoming hit damage multipliers
-	-- Incoming hit damage multipliers
+	local doubleArmourChance = (output.DoubleArmourChance == 100 or env.configInput.armourCalculationMode == "MAX") and 1 or env.configInput.armourCalculationMode == "MIN" and 0 or output.DoubleArmourChance / 100
 	actor.damageShiftTable = wipeTable(actor.damageShiftTable)
 	for _, damageType in ipairs(dmgTypeList) do
 		-- Build damage shift table
@@ -749,21 +767,35 @@ label = "持续伤害加成:",
 		for _, destType in ipairs(dmgTypeList) do
 			local portion = shiftTable[destType]
 			if portion > 0 then
-				local resist = output[destType.."ResistWhenHit"] or output[destType.."Resist"]
-				if damageType == "Physical" and destType == "Physical" then
-					-- Factor in armour for Physical taken as Physical
-					local damage = env.configInput.enemyPhysicalHit or env.data.monsterDamageTable[env.enemyLevel] * 1.5
-					local armourReduct = calcs.armourReduction(output.Armour, damage * portion / 100)
-					resist = m_min(data.misc.PhysicalDamageReductionCap, resist + armourReduct)
-					output.PhysicalDamageReduction = resist
-					if breakdown then
-						breakdown.PhysicalDamageReduction = {
-							s_format("敌人的物理击中伤害: %d ^8(%s 配置界面配置)", damage, env.configInput.enemyPhysicalHit and "已经从" or "可以从"),
-						}
-						if portion < 100 then
-							t_insert(breakdown.PhysicalDamageReduction, s_format("承受的物理部分: %d%%", portion))
+				local resist = modDB:Flag(nil, "SelfIgnore"..destType.."Resistance") and 0 or output[destType.."ResistWhenHit"] or output[destType.."Resist"]
+				if destType == "Physical" or modDB:Flag(nil, "ArmourAppliesTo"..destType.."DamageTaken") then
+					local damage = env.configInput.enemyHit or env.data.monsterDamageTable[env.enemyLevel] * 1.5
+					local armourReduct = 0
+					local portionArmour = 100
+					if destType == "Physical" then
+						if not modDB:Flag(nil, "ArmourDoesNotApplyToPhysicalDamageTaken") then
+							armourReduct = calcs.armourReductionDouble(output.Armour, damage * portion / 100, doubleArmourChance)
+							resist = m_min(output.DamageReductionMax, resist + armourReduct)
 						end
-						t_insert(breakdown.PhysicalDamageReduction, s_format("从护甲减伤: %d%%", armourReduct))
+					else
+						portionArmour = 100 - resist
+						armourReduct = calcs.armourReductionDouble(output.Armour, damage * portion / 100 * portionArmour / 100, doubleArmourChance)
+						resist = resist + m_min(output.DamageReductionMax, armourReduct) * portionArmour / 100
+					end
+					if damageType == destType then
+						output[damageType.."DamageReduction"] = damageType == "Physical" and resist or m_min(output.DamageReductionMax, armourReduct) * portionArmour / 100
+						if breakdown then
+							breakdown[damageType.."DamageReduction"] = {
+								s_format("敌人击中伤害: %d ^8(%s 配置界面配置)", damage, env.configInput.enemyHit and "已经在" or "可以从"),
+							}
+							if portion < 100 then
+								t_insert(breakdown[damageType.."DamageReduction"], s_format("部分承受为 %s: %d%%", damageType, portion))
+							end
+							if portionArmour < 100 then
+								t_insert(breakdown[damageType.."DamageReduction"], s_format("被护甲减免部分: %d%%", portionArmour))
+							end
+							t_insert(breakdown[damageType.."DamageReduction"], s_format("来自护甲的减伤: %d%%", armourReduct))
+						end
 					end
 				end
 				local takenMult = output[destType.."TakenHit"]
@@ -774,14 +806,14 @@ label = "持续伤害加成:",
 				multReflect = multReflect + finalReflect
 				if breakdown then
 					t_insert(breakdown[damageType.."TakenHitMult"].rowList, {
-						type = s_format("%d%% 为 %s", portion, destType),
+						type = s_format("%d%% as %s", portion, destType),
 						resist = s_format("x %.2f", 1 - resist / 100),
 						taken = takenMult ~= 1 and s_format("x %.2f", takenMult),
 						final = s_format("x %.2f", final),
 					})
 					if output.AnyTakenReflect then
 						t_insert(breakdown[damageType.."TakenReflectMult"].rowList, {
-							type = s_format("%d%% 为 %s", portion, destType),
+							type = s_format("%d%% as %s", portion, destType),
 							resist = s_format("x %.2f", 1 - resist / 100),
 							taken = takenMultReflect ~= 1 and s_format("x %.2f", takenMultReflect),
 							finalReflect = s_format("x %.2f", finalReflect),
@@ -795,6 +827,7 @@ label = "持续伤害加成:",
 			output[damageType.."TakenReflectMult"] = multReflect
 		end
 	end
+
 
 	-- Other defences: block, dodge, stun recovery/avoidance
 	do
@@ -919,6 +952,7 @@ label = "持续伤害加成:",
 			end
 		end
 		output.InteruptStunAvoidChance = m_min(modDB:Sum("BASE", nil, "AvoidInteruptStun"), 100)
+		output.BlindAvoidChance = m_min(modDB:Sum("BASE", nil, "AvoidBlind"), 100)
 		output.ShockAvoidChance = m_min(modDB:Sum("BASE", nil, "AvoidShock"), 100)
 		output.FreezeAvoidChance = m_min(modDB:Sum("BASE", nil, "AvoidFreeze"), 100)
 		output.ChillAvoidChance = m_min(modDB:Sum("BASE", nil, "AvoidChill"), 100)

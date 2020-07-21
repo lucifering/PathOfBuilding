@@ -226,6 +226,7 @@ data.misc = { -- magic numbers
 	ServerTickRate = 30,
 	TemporalChainsEffectCap = 75,
 	PhysicalDamageReductionCap = 90,
+	DamageReductionCap = 90,
 	MaxResistCap = 90,
 	EvadeChanceCap = 95,
 	DodgeChanceCap = 75,
@@ -294,6 +295,45 @@ for _, targetVersion in ipairs(targetVersionList) do
 	if targetVersion ~= "2_6" then	
 		verData.clusterJewels = dataModule("ClusterJewels")
 		verData.harvestSeedEnchantments = dataModule("ModHarvestSeed")
+		
+		-- Create a quick lookup cache from cluster jewel skill to the notables which use that skill
+		---@type table<string, table<string>>
+		local clusterSkillToNotables = { }
+		for notableKey, notableInfo in pairs(verData.itemMods.JewelCluster) do
+			-- Translate the notable key to its name
+			local notableName = notableInfo[1] and notableInfo[1]:match("其中 1 个增加的天赋为【(.+)】")
+			if notableName then
+				for weightIndex, clusterSkill in pairs(notableInfo.weightKey) do
+					if notableInfo.weightVal[weightIndex] > 0 then
+						if not clusterSkillToNotables[clusterSkill] then
+							clusterSkillToNotables[clusterSkill] = { }
+						end
+						table.insert(clusterSkillToNotables[clusterSkill], notableName)
+					end
+				end
+			end
+		end
+
+		-- Create easy lookup from cluster node name -> cluster jewel size and types
+		verData.clusterJewelInfoForNotable = { }
+		for size, jewel in pairs(verData.clusterJewels.jewels) do
+			for skill, skillInfo in pairs(jewel.skills) do
+				local notables = clusterSkillToNotables[skill]
+				if notables then
+					for _, notableKey in ipairs(notables) do
+						if not verData.clusterJewelInfoForNotable[notableKey] then
+							verData.clusterJewelInfoForNotable[notableKey] = { }
+							verData.clusterJewelInfoForNotable[notableKey].jewelTypes = { }
+							verData.clusterJewelInfoForNotable[notableKey].size = { }
+						end
+						local curJewelInfo = verData.clusterJewelInfoForNotable[notableKey]
+						curJewelInfo.size[size] = true
+						table.insert(curJewelInfo.jewelTypes, skill)
+					end
+				end
+			end
+		end
+		
 	end
 	verData.delve = dataModule("ModDelve")
 	verData.incursion = dataModule("ModIncursion")

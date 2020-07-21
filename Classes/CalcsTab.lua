@@ -744,13 +744,18 @@ function CalcsTabClass:BuildPower()
 	end
 end
 
+
 -- Estimate the offensive and defensive power of all unallocated nodes
 function CalcsTabClass:PowerBuilder()
 	local calcFunc, calcBase = self:GetNodeCalculator()
 	local cache = { }
-	local newPowerMax = { 
-		offence = 0, 
-		defence = 0
+	local newPowerMax = {
+		singleStat = 0,
+		singleStatPerPoint = 0,
+		offence = 0,
+		offencePerPoint = 0,
+		defence = 0,
+		defencePerPoint = 0
 	}
 	if not self.powerMax then
 		self.powerMax = newPowerMax
@@ -766,20 +771,33 @@ function CalcsTabClass:PowerBuilder()
 				cache[node.modKey] = calcFunc({node})
 			end
 			local output = cache[node.modKey]
-			if calcBase.Minion then
-				node.power.offence = (output.Minion.CombinedDPS - calcBase.Minion.CombinedDPS) / calcBase.Minion.CombinedDPS
+			if self.powerStat and self.powerStat.stat and not self.powerStat.ignoreForNodes then
+				node.power.singleStat = self:CalculatePowerStat(self.powerStat, output, calcBase)
+				if (node.path or node.recipe) and not node.ascendancyName then
+					newPowerMax.singleStat = m_max(newPowerMax.singleStat, node.power.singleStat)
+					local pathCost = node.path and #node.path or 1
+					newPowerMax.singleStatPerPoint = m_max(node.power.singleStat / pathCost, newPowerMax.singleStatPerPoint)
+				end
 			else
-				node.power.offence = (output.CombinedDPS - calcBase.CombinedDPS) / calcBase.CombinedDPS
-			end
-			node.power.defence = (output.LifeUnreserved - calcBase.LifeUnreserved) / m_max(3000, calcBase.Life) + 
-							 (output.Armour - calcBase.Armour) / m_max(10000, calcBase.Armour) + 
-							 (output.EnergyShield - calcBase.EnergyShield) / m_max(3000, calcBase.EnergyShield) + 
-							 (output.Evasion - calcBase.Evasion) / m_max(10000, calcBase.Evasion) +
-							 (output.LifeRegen - calcBase.LifeRegen) / 500 +
-							 (output.EnergyShieldRegen - calcBase.EnergyShieldRegen) / 1000
-			if node.path then
-				newPowerMax.offence = m_max(newPowerMax.offence, node.power.offence)
-				newPowerMax.defence = m_max(newPowerMax.defence, node.power.defence)
+				if calcBase.Minion then
+					node.power.offence = (output.Minion.CombinedDPS - calcBase.Minion.CombinedDPS) / calcBase.Minion.CombinedDPS
+				else
+					node.power.offence = (output.CombinedDPS - calcBase.CombinedDPS) / calcBase.CombinedDPS
+				end
+				node.power.defence = (output.LifeUnreserved - calcBase.LifeUnreserved) / m_max(3000, calcBase.Life) +
+								(output.Armour - calcBase.Armour) / m_max(10000, calcBase.Armour) +
+								(output.EnergyShield - calcBase.EnergyShield) / m_max(3000, calcBase.EnergyShield) +
+								(output.Evasion - calcBase.Evasion) / m_max(10000, calcBase.Evasion) +
+								(output.LifeRegen - calcBase.LifeRegen) / 500 +
+								(output.EnergyShieldRegen - calcBase.EnergyShieldRegen) / 1000
+				if (node.path or node.recipe) and not node.ascendancyName then
+					newPowerMax.offence = m_max(newPowerMax.offence, node.power.offence)
+					newPowerMax.defence = m_max(newPowerMax.defence, node.power.defence)
+					local pathCost = node.path and #node.path or 1
+					newPowerMax.offencePerPoint = m_max(newPowerMax.offencePerPoint, node.power.offence / pathCost)
+					newPowerMax.defencePerPoint = m_max(newPowerMax.defencePerPoint, node.power.defence / pathCost)
+
+				end
 			end
 		end
 		if coroutine.running() and GetTime() - start > 100 then

@@ -243,7 +243,7 @@ mod("Speed", "INC", nil, ModFlag.Cast, 0, { type = "GlobalEffect", effectType = 
 		},
 		["support_arcane_surge_mana_regeneration_rate_per_minute_%"] = {
 mod("ManaRegenPercent", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "秘术增强" }),
-			div = 60,
+			div = 60.0001,
 		},
 		["support_arcane_surge_spell_damage_+%_final"] = {
 mod("Damage", "MORE", nil, ModFlag.Spell, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "秘术增强" }),
@@ -1250,6 +1250,12 @@ description = "必须同时连接一个能击中敌人的技能和一个诅咒�
 	ignoreMinionTypes = true,
 	plusVersionOf = "SupportCurseOnHit",
 	statDescriptionScope = "gem_stat_descriptions",
+	 statMap = {
+		["number_of_additional_curses_allowed"] = {
+			mod("AdditionalCurse", "BASE", nil),
+			flag("CanHaveAdditionalCurse"),
+		},
+	},
 	baseMods = {
 	},
 	qualityStats = {

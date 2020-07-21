@@ -12,7 +12,7 @@ return {
 { section = "常规", col = 1 },
 { var = "resistancePenalty", type = "list", label = "抗性 惩罚:", ifVer = "3_0", list = {{val=0,label="无"},{val=-30,label="第五章 (-30%)"},{val=nil,label="第十章 (-60%)"}} },
 { var = "enemyLevel", type = "count", label = "敌人 等级:", tooltip = "敌人等级的设置会影响你命中率和闪避率的估算\n默认的等级和你角色等级相同，上限是84级\n这个估算和游戏中的面板中相同。" },
-{ var = "enemyPhysicalHit", type = "count", label = "敌人物理击中伤害:", tooltip = "这个会影响你的护甲所能带来的物理伤害减免的估算\n 默认是 1.5 倍敌人的基础伤害\n这个估算和游戏中的面板中相同。" },
+{ var = "enemyHit", type = "count", label = "敌人击中伤害:", tooltip = "这个会影响你的护甲所能带来的伤害减免的估算\n 默认是 1.5 倍敌人的基础伤害\n这个估算和游戏中的面板中相同。" },
 { var = "detonateDeadCorpseLife", type = "count", label = "敌人尸体的生命:", tooltip = "设置【爆灵术】和类似的灵柩爆炸技能.\n作为参考，70级怪物的生命为："..data["3_0"].monsterLifeTable[70].." ，80级怪物的生命为： "..data["3_0"].monsterLifeTable[80]..".", apply = function(val, modList, enemyModList)
 		modList:NewMod("SkillData", "LIST", { key = "corpseLife", value = val }, "Config")
 	end },
@@ -34,15 +34,19 @@ return {
 { var = "conditionHaveEnergyShield", type = "check", label = "你经常保持有能量护盾?", ifCond = "HaveEnergyShield", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:HaveEnergyShield", "FLAG", true, "Config")
 	end },
-{ var = "conditionMinionsFullLife", type = "check", label = "你的召唤生物处于满血状态?", ifMinionCond = "FullLife", apply = function(val, modList, enemyModList)
+{ var = "conditionMinionsFullLife", type = "check", label = "你的召唤生物处于满血状态?",  apply = function(val, modList, enemyModList)
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Condition:FullLife", "FLAG", true, "Config") }, "Config")
 	end },
 { var = "igniteMode", type = "list", label = "点燃计算模式:", tooltip = "目前以火焰基础点伤来计算点燃伤害:\n平均伤害：点燃是基于平均伤害计算.\n暴击伤害：点燃基于暴击伤害计算.", list = {{val="AVERAGE",label="平均伤害"},{val="CRIT",label="暴击伤害"}} },
+{ var = "armourCalculationMode", type = "list", label = "护甲计算模式:", 
+tooltip = "配置护甲的计算方式\n\t最小：不计算双倍护甲\n\t平均：根据双倍护甲的几率进行计算预期减伤\n\t最大：始终使用100% 双倍护甲计算，如果有 100% 几率双倍护甲，那么此配置无效\n\t", 
+list = {{val="MIN",label="最小"},{val="AVERAGE",label="平均"},{val="MAX",label="最大"}} },
+
 
 	-- Section: Skill-specific options
 { section = "技能选项", col = 2 },
 
-{ label = "高等施法回响:", ifSkill =  "高等施法回响"  },
+{ label = "【高等施法回响】:", ifSkill =  "高等施法回响"  },
 	{ var = "spellEchoCount", type = "list", label = "回响次数:", ifSkill =  "高等施法回响" , list = {{val="0",label="无回响"},{val="1",label="回响1次"},{val="2",label="回响2次"}}, apply = function(val, modList, enemyModList)
 		 
 			
@@ -50,7 +54,7 @@ return {
 			modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Multiplier:spellEchoCount", "BASE", m_min(tonumber(val), 2), "Config") }, "Config")
 		 
 	end },
-{ label = "多重打击:", ifSkill =  "多重打击(辅)"  },
+{ label = "【多重打击】:", ifSkill =  "多重打击(辅)"  },
 	{ var = "multistrikeIndex", type = "list", label = "多重次数:", ifSkill =  "多重打击(辅)" , list = {{val="0",label="无重复"},{val="1",label="重复1次"},{val="2",label="重复2次"}}, apply = function(val, modList, enemyModList)
 		 
 		   if val =="1" then 
@@ -63,7 +67,7 @@ return {
 			 
 		 
 	end },
-{ label = "多重打击（强辅）:", ifSkill =  "多重打击（强辅）"  },
+{ label = "【多重打击（强辅）】:", ifSkill =  "多重打击（强辅）"  },
 	{ var = "multistrikeIndex", type = "list", label = "多重次数:", ifSkill =  "多重打击（强辅）" , 
 	list = {{val="0",label="无重复"},
 	{val="1",label="重复1次"},{val="2",label="重复2次"}
@@ -112,14 +116,15 @@ enemyModList:NewMod("Multiplier:Spider's WebStack", "BASE", val, "Config")
 
 { label = "旗帜技能:", ifSkillList = { "恐怖之旗", "战旗" } },
 { var = "conditionBannerPlanted", type = "check", label = "旗帜放置?", ifSkillList = { "恐怖之旗", "战旗"}, apply = function(val, modList, enemyModList)
-modList:NewMod("Condition:BannerPlanted", "FLAG", true, "Config", { type = "SkillName", skillNameList = { "恐怖之旗", "战旗" } })
+
+modList:NewMod("Condition:BannerPlanted", "FLAG", true, "Config")
 	end },
 { var = "bannerStages", type = "count", label = "旗帜阶层:", ifSkillList = { "恐怖之旗", "战旗" }, apply = function(val, modList, enemyModList)
 modList:NewMod("Multiplier:BannerStage", "BASE", m_min(val, 50), "Config", { type = "SkillName", skillNameList = { "恐怖之旗", "战旗" } })
 	end },
 
 	-- 3.7 技能
-{ label = "剑刃风暴:", ifSkill = "剑刃风暴" },
+{ label = "【剑刃风暴】:", ifSkill = "剑刃风暴" },
 	{ var = "conditionBladestormInBloodstorm", type = "check", label = "你处于血姿态?", ifSkill = "剑刃风暴", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:BladestormInBloodstorm", "FLAG", true, "Config", { type = "SkillName", skillName = "剑刃风暴" })
 	end },
@@ -136,11 +141,12 @@ modList:NewMod("Multiplier:BannerStage", "BASE", m_min(val, 50), "Config", { typ
 		end	
 	end },
 	
-{ label = "彻骨:", ifSkill = "彻骨（辅）" },
+{ label = "【彻骨】:", ifSkill = "彻骨（辅）" },
 	{ var = "bonechillEffect", type = "count", label = "冰缓效果:",
 	tooltip = "如果你有稳定的冰缓来源，那么冰缓效果会自动计算\n你也可以在这里填写数值来覆盖.", 
 	ifSkill = "彻骨（辅）", apply = function(val, modList, enemyModList)
 		modList:NewMod("BonechillEffect", "OVERRIDE", m_min(val, 30), "Config")
+		modList:NewMod("DesiredBonechillEffect", "BASE", m_min(val, 30), "Config")
 	end },
 	
 { label = "烙印技能:", ifSkillList = { "末日烙印", "风暴烙印","奥法烙印" ,"忏悔烙印","冬潮烙印"} }, -- I barely resisted the temptation to label this "Generic Brand:"
@@ -150,15 +156,15 @@ modList:NewMod("Multiplier:BannerStage", "BASE", m_min(val, 50), "Config", { typ
 
  	
 	
-{ label = "暗夜血契:", ifSkill = "暗夜血契" },
+{ label = "【暗夜血契】:", ifSkill = "暗夜血契" },
 { var = "darkPactSkeletonLife", type = "count", label = "魔侍 生命:", ifSkill = "暗夜血契", tooltip = "设置使用【暗夜血契】时，魔侍的最大生命.", apply = function(val, modList, enemyModList)
 modList:NewMod("SkillData", "LIST", { key = "skeletonLife", value = val }, "Config", { type = "SkillName", skillName = "暗夜血契" })
 	end },
-{ label = "亡印（辅）:", ifSkill = "亡印（辅）" },
+{ label = "【亡印（辅）】:", ifSkill = "亡印（辅）" },
 	{ var = "conditionEnemyHasDeathmark", type = "check", label = "敌人被标记?", ifSkill = "亡印（辅）", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:EnemyHasDeathmark", "FLAG", true, "Config")
 	end },
-	{ label = "狂噬（辅）:", ifSkill = "狂噬（辅）" }, 
+	{ label = "【狂噬（辅）】:", ifSkill = "狂噬（辅）" }, 
 	
 { var = "conditionFeedingFrenzyActive", type = "check", label = "启用狂噬增益效果?", ifSkill = "狂噬（辅）", tooltip = "狂噬增益效果:所有的召唤生物获得\n召唤生物移动速度提高 15%\n召唤生物攻击和施法速度提高 15%", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:FeedingFrenzyActive", "FLAG", true, "Config")
@@ -166,11 +172,11 @@ modList:NewMod("SkillData", "LIST", { key = "skeletonLife", value = val }, "Conf
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("MovementSpeed", "INC", 15, "狂噬（辅）") }, "Config")
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Speed", "INC", 15, "狂噬（辅）") }, "Config")
 	end },
-{ label = "苦痛之捷:", ifSkill = "苦痛之捷" },
+{ label = "【苦痛之捷】:", ifSkill = "苦痛之捷" },
 { var = "heraldOfAgonyVirulenceStack", type = "count", label = "# 【毒力】层数:", ifSkill = "苦痛之捷", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:VirulenceStack", "BASE", val, "Config")
 	end },
-{ label = "冰霜新星:", ifSkill = "冰霜新星" },
+{ label = "【冰霜新星】:", ifSkill = "冰霜新星" },
 { var = "conditionCastOnFrostbolt", type = "check", label = "是否由【寒冰弹】触发?", ifSkill = "冰霜新星", apply = function(val, modList, enemyModList)
 modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "SkillName", skillName = "冰霜新星" })
 	end },
@@ -187,15 +193,29 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 	{ var = "intensifyIntensity", type = "count", label = "# 层【法术凝聚】:", ifSkill = "法术凝聚（辅）", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:Intensity", "BASE", m_min(val, 4), "Config")
 	end },
-{ label = "肉盾（辅）:", ifSkill = "肉盾（辅）" },
+{ label = "【肉盾（辅）】:", ifSkill = "肉盾（辅）" },
 	{ var = "conditionMeatShieldEnemyNearYou", type = "check", label = "敌人在你附近?", ifSkill = "肉盾（辅）", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:MeatShieldEnemyNearYou", "FLAG", true, "Config")
 	end },
-{ label = "召唤灵体:", ifSkill = "召唤灵体" },
+{ label = "【凿击】:", ifSkill = "凿击"},
+	{ var = "perforateSpikeOverlap", type = "count", label = "# 凿击的尖刺:", tooltip = "影响凿击在血姿势模式下的伤害\n最大数量取决于凿击技能.", 
+	ifSkill = "凿击", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:PerforateSpikeOverlap", "BASE", val, "Config", { type = "SkillName", skillName = "凿击" })
+	end },
+	{ label = "【尊严】:", ifSkill = "尊严" },
+	{ var = "prideEffect", type = "list", label = "尊严光环效果:", ifSkill = "尊严", 
+	list = {{val="MIN",label="初始效果"},{val="MAX",label="最大效果"}}, apply = function(val, modList, enemyModList)
+		if val == "MIN" then
+			modList:NewMod("Condition:PrideMinEffect", "FLAG", true, "Config")
+		elseif val == "MAX" then
+			modList:NewMod("Condition:PrideMaxEffect", "FLAG", true, "Config")
+		end
+	end },
+{ label = "【召唤灵体】:", ifSkill = "召唤灵体" },
 { var = "raiseSpectreSpectreLevel", type = "count", label = "灵体等级:", ifSkill = "召唤灵体", ifVer = "2_6", tooltip = "设置灵体等级.\n默认等级是【召唤灵体】技能石的需求等级.", apply = function(val, modList, enemyModList)
 modList:NewMod("SkillData", "LIST", { key = "minionLevel", value = val }, "Config", { type = "SkillName", skillName = "召唤灵体" })
 	end },
-{ label = "虹吸陷阱:", ifSkill = "虹吸陷阱" },
+{ label = "【虹吸陷阱】:", ifSkill = "虹吸陷阱" },
 { var = "siphoningTrapAffectedEnemies", type = "count", label = "# 受到影响的敌人数量:", ifSkill = "虹吸陷阱", tooltip = "设置受到【虹吸陷阱】影响的敌人数量.", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:EnemyAffectedBySiphoningTrap", "BASE", val, "Config")
 		modList:NewMod("Condition:SiphoningTrapSiphoning", "FLAG", true, "Config")
@@ -207,6 +227,11 @@ modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", 
 
 
 	end },
+{ label = "【召唤幽狼】:", ifSkill = "召唤幽狼" },
+	{ var = "configSpectralWolfCount", type = "count", label = "幽狼数量:", 
+	ifSkill = "召唤幽狼", tooltip = "设置幽狼的数量.\n最大是 10.", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:SpectralWolfCount", "BASE", m_min(val, 10), "Config")
+	end },
 { var = "raiseSpectreBladeVortexBladeCount", type = "count", label = "飞刃风暴层数:", ifSkillList = {"DemonModularBladeVortexSpectre","GhostPirateBladeVortexSpectre"}, tooltip = "设置灵体使用的【飞刃风暴】层数.\n默认是 1; 最大是  5.", apply = function(val, modList, enemyModList)
 		modList:NewMod("SkillData", "LIST", { key = "dpsMultiplier", value = val }, "Config", { type = "SkillId", skillId = "DemonModularBladeVortexSpectre" })
 		modList:NewMod("SkillData", "LIST", { key = "dpsMultiplier", value = val }, "Config", { type = "SkillId", skillId = "GhostPirateBladeVortexSpectre" })
@@ -215,20 +240,29 @@ modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", 
 		modList:NewMod("Multiplier:KaomFireBeamTotemStage", "BASE", val, "Config")
 	end },
 	
-{ label = "召唤圣物:", ifSkill = "召唤圣物" },
+{ label = "【召唤圣物】:", ifSkill = "召唤圣物" },
 { var = "summonHolyRelicEnableHolyRelicBoon", type = "check", label = "启用圣物的加成光环:", ifSkill = "召唤圣物", apply = function(val, modList, enemyModList)
 		modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", { type = "SkillId", skillId = "RelicTriggeredNova" })
 	end },
 	
-{ label = "召唤闪电魔像:", ifSkill = "召唤闪电魔像" },
+{ label = "【召唤闪电魔像】:", ifSkill = "召唤闪电魔像" },
 { var = "summonLightningGolemEnableWrath", type = "check", label = "启用魔像【雷霆】光环:", ifSkill = "召唤闪电魔像", apply = function(val, modList, enemyModList)
 		modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", { type = "SkillId", skillId = "LightningGolemWrath" })
 	end },
-{ label = "漩涡 :", ifSkill = "漩涡 " },
+{ label = "【毒雨】:", ifSkill = "毒雨" },
+	{ var = "toxicRainPodOverlap", type = "count", label = "孢囊数量:", tooltip = "最大是投射物数量.", ifSkill = "毒雨", apply = function(val, modList, enemyModList)
+		modList:NewMod("SkillData", "LIST", { key = "podOverlapMultiplier", value = val }, "Config", { type = "SkillName", skillName = "毒雨" })
+	end },
+	{ label = "【灰烬之捷】:", ifSkill = "灰烬之捷" },
+	{ var = "hoaOverkill", type = "count", label = "溢出的伤害:", tooltip = "溢出的伤害将会以持续伤害的形式扩散至附近的敌人", ifSkill = "灰烬之捷", 
+	apply = function(val, modList, enemyModList)
+		modList:NewMod("SkillData", "LIST", { key = "hoaOverkill", value = val }, "Config", { type = "SkillName", skillName = "灰烬之捷" })
+	end },
+{ label = "【漩涡】 :", ifSkill = "漩涡 " },
 { var = "conditionCastOnFrostbolt", type = "check", label = "由【寒冰弹】触发?", ifSkill = "漩涡", apply = function(val, modList, enemyModList)
 modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "SkillName", skillName = "漩涡" })
 	end },
-{ label = "定罪波:", ifSkill = "定罪波" },
+{ label = "【定罪波】:", ifSkill = "定罪波" },
 	{ var = "waveOfConvictionExposureType", type = "list", label = "易伤负面效果类型:", ifSkill = "定罪波", list = {{val=0,label="无"},{val="Fire",label="火焰"},{val="Cold",label="冰霜"},{val="Lightning",label="闪电"}}, apply = function(val, modList, enemyModList)
 		if val == "Fire" then
 			modList:NewMod("Condition:WaveOfConvictionFireExposureActive", "FLAG", true, "Config")
@@ -239,7 +273,7 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 		end
 	end },
 	
-{ label = "元素大军（辅）:", ifSkill = "元素大军（辅）" },
+{ label = "【元素大军（辅）】:", ifSkill = "元素大军（辅）" },
 	{ var = "ElementalArmyExposureTypeTest1", type = "list", label = "曝露效果类型:", ifSkill = "元素大军（辅）", list = {{val=0,label="无"},{val="Fire",label="火焰"},{val="Cold",label="冰霜"},{val="Lightning",label="闪电"}}, apply = function(val, modList, enemyModList)
 		if val == "Fire" then
 			modList:NewMod("Condition:ElementalArmyFireExposureType", "FLAG", true, "Config")
@@ -250,12 +284,12 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 		end
 	end },
 	
-{ label = "寒冬宝珠:", ifSkill = "寒冬宝珠" },
+{ label = "【寒冬宝珠】:", ifSkill = "寒冬宝珠" },
 { var = "winterOrbStages", type = "count", label = "阶层:", ifSkill = "寒冬宝珠", apply = function(val, modList, enemyModList)
 modList:NewMod("Multiplier:WinterOrbStage", "BASE", val, "Config", { type = "SkillName", skillName = "寒冬宝珠" })
 	end },
 	
-	{ label = "死亡凋零:", ifCond = "CanWither"},
+	{ label = "【死亡凋零】:", ifCond = "CanWither"},
 { var = "witheringTouchWitheredStackCount", type = "count", label = "# 【死亡凋零】层数:", 
 ifCond = "CanWither", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:WitheredStackCount", "BASE", val, "Config", { type = "Condition", var = "Effective" })
@@ -266,7 +300,7 @@ ifCond = "CanWither", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:GhostShroud", "BASE", m_min(val, 3), "Config")
 	end },
 	
-{ label = "狙击:", ifCond = "CanSnipeStage"},
+{ label = "【狙击】:", ifCond = "CanSnipeStage"},
 { var = "snipeStageCount", type = "count", label = "# 【狙击】层数:", tooltip="持续吟唱给弓箭充能，积累层数，最大 6 层。",
 ifCond = "CanSnipeStage", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:SnipeStage", "BASE", m_min(val, 6), "Config", { type = "Condition", var = "Effective" })
@@ -278,19 +312,25 @@ ifCond = "CanSnipeStage", apply = function(val, modList, enemyModList)
 	
 	
 
-{ label = "战吼:", ifCond = "PerformsWarcry",},
-{ var = "performsWarcryPowerCount", type = "count", label = "威力值:", ifCond = "PerformsWarcry", tooltip = "设置战吼的威力值.\n普通敌人提供 1 点威力值，\n魔法敌人提供 2 点，\n稀有敌人提供 10 点，\n传奇敌人提供 20 点\n，玩家则提供 5 点", apply = function(val, modList, enemyModList)
-		
-		modList:NewMod("Multiplier:WarcryPowerCount", "BASE", val, "Config", { type = "Condition", var = "Effective" })
+{ label = "战吼:", ifSkillList = { "炼狱呼嚎", "先祖战吼", "坚决战吼", "将军之吼", "威吓战吼", "激励战吼", "震地战吼" } },
+{ var = "multiplierWarcryPower", type = "count", label = "威力值:", ifSkillList = { "炼狱呼嚎", "先祖战吼", "坚决战吼", "将军之吼", "威吓战吼", "激励战吼", "震地战吼" }
+, tooltip = "设置战吼的威力值.\n普通敌人提供 1 点威力值，\n魔法敌人提供 2 点，\n稀有敌人提供 10 点，\n传奇敌人提供 20 点\n，玩家则提供 5 点", apply = function(val, modList, enemyModList)
+		modList:NewMod("WarcryPower", "OVERRIDE", val, "Config")		
 	end },
-{ var = "isEmpowerAttack", type = "check", label = "攻击被战吼增助？", ifCond = "PerformsWarcry",
- tooltip = "使用战吼后可以增助接下来的几次攻击", apply = function(val, modList, enemyModList)		
-		modList:NewMod("Condition:EmpowerAttack", "FLAG", true, "Config", { type = "Condition", var = "Combat" })		
-	end },
-	
-{ label = "冬潮烙印:", ifSkill = "冬潮烙印" },
+
+{ label = "【冬潮烙印】:", ifSkill = "冬潮烙印" },
 { var = "wintertideBrandStages", type = "count", label = "敌人减益层数:",tooltip = "默认最大 20 层 ，迷宫附魔可以 +4 层", ifSkill = "冬潮烙印", apply = function(val, modList, enemyModList)
 	modList:NewMod("Multiplier:WintertideBrandStages", "BASE", m_min(val, 24), "Config", { type = "SkillName", skillName = "冬潮烙印" })
+	end },
+{ label = "【熔岩护盾】:", ifSkill = "熔岩护盾" },
+	{ var = "MoltenShellDamageMitigated", type = "count", label = "减免的伤害数值:", tooltip = "被熔岩护盾减免的伤害", 
+	ifSkill = "熔岩护盾", apply = function(val, modList, enemyModList)
+		modList:NewMod("SkillData", "LIST", { key = "MoltenShellDamageMitigated", value = val }, "Config", { type = "SkillName", skillName = "熔岩护盾" })
+	end },
+{ label = "【瓦尔.熔岩护盾】:", ifSkill = "瓦尔.熔岩护盾" },
+{ var = "VaalMoltenShellDamageMitigated", type = "count", label = "减免的伤害数值:", 
+tooltip = "最后一秒被瓦尔.熔岩护盾减免的伤害", ifSkill = "瓦尔.熔岩护盾", apply = function(val, modList, enemyModList)
+		modList:NewMod("SkillData", "LIST", { key = "VaalMoltenShellDamageMitigated", value = val }, "Config", { type = "SkillName", skillName = "熔岩护盾" })
 	end },
 	
 	
@@ -601,6 +641,9 @@ ifCond = "OnFungalGround",
 		modList:NewMod("Condition:OnShockedGround", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 		modList:NewMod("Condition:Shocked", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
+{ var = "conditionBlinded", type = "check", label = "你被致盲？", ifCond = "Blinded", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:Blinded", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
 { var = "conditionBurning", type = "check", label = "你被燃烧?", ifCond = "Burning", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:Burning", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
@@ -820,6 +863,7 @@ ifCond = "OnFungalGround",
 { var = "multiplierCorpseConsumedRecently", type = "count", label = "近期消耗的灵柩数量:", ifMult = "CorpseConsumedRecently", implyCond = "ConsumedCorpseRecently", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:CorpseConsumedRecently", "BASE", val, "Config", { type = "Condition", var = "Combat" })
 		modList:NewMod("Condition:ConsumedCorpseRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+		
 	end },
 { var = "conditionTauntedEnemyRecently", type = "check", label = "近期嘲讽过怪物?", ifCond = "TauntedEnemyRecently", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:TauntedEnemyRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
@@ -874,6 +918,13 @@ ifCond = "OnFungalGround",
 
 { var = "conditionEnemyOnConsecratedGround", type = "check", label = "敌人在奉献地面上?", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Condition:OnConsecratedGround", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+	end },	
+{ var = "conditionEnemyOnProfaneGround", type = "check", label = "敌人在亵渎地面上?", ifCond = "CreateProfaneGround",
+ tooltip = "亵渎地面上的敌人 -10% 所有抗性，并对它们的击中 +1% 暴击率", apply = function(val, modList, enemyModList)
+		enemyModList:NewMod("Condition:OnProfaneGround", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+		enemyModList:NewMod("ElementalResist", "BASE", -10, "Config", { type = "Condition", var = "OnProfaneGround" })
+		enemyModList:NewMod("ChaosResist", "BASE", -10, "Config", { type = "Condition", var = "OnProfaneGround" })
+		modList:NewMod("CritChance", "BASE", 1, "Config", { type = "ActorCondition", actor = "enemy", var = "OnProfaneGround" })
 	end },
 { var = "conditionEnemyFullLife", type = "check", label = "敌人满血状态?", ifEnemyCond = "FullLife", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Condition:FullLife", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
@@ -926,6 +977,11 @@ tooltip = "你可以对敌人造成烧灼的时候可以起作用.", apply = fun
 { var = "conditionEnemyChilled", type = "check", label = "敌人被冰缓?", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Condition:Chilled", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
+{ var = "conditionEnemyChilledByYourHits", type = "check", ifEnemyCond = "ChilledByYourHits", label = "敌人是被你的击中所冰缓?",
+ apply = function(val, modList, enemyModList)
+		enemyModList:NewMod("Condition:Chilled", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+		enemyModList:NewMod("Condition:ChilledByYourHits", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+	end },
 { var = "conditionEnemyFrozen", type = "check", label = "敌人被冰冻?", implyCond = "Chilled", tooltip = "这也意味着敌人被冰冻.", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Condition:Frozen", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
@@ -939,11 +995,21 @@ tooltip = "对脆弱的敌人的时提高自己的基础暴击率，最多 +15% 
 	end },
 { var = "conditionEnemyShocked", type = "check", label = "敌人被感电?", tooltip = "启用“对感电敌人什么什么”的词缀,\n这也会让敌人感电承受额外伤害.", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Condition:Shocked", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+		enemyModList:NewMod("Condition:ShockedConfig", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+			
 	end },
-{ var = "baseShockEffect", type = "integer", label = "强制固定感电的伤害加成", tooltip = "强制固定感电的伤害加成，其他不会感电加成不起作用，最高是 承受的总伤害额外提高 50%", ifOption = "conditionEnemyShocked",
+{ var = "baseShockEffect", type = "integer", label = "强制固定感电的伤害加成",
+ tooltip = "强制固定感电的伤害加成，其他不会感电加成不起作用，最高是 承受的总伤害额外提高 50%", ifOption = "conditionEnemyShocked",
 		apply = function(val, modList, enemyModList) 
 			modList:NewMod("EnemyShockEffect", "OVERRIDE", m_min(tonumber(val), 50), "Config") 
-			enemyModList:NewMod("ShockVal", "BASE", val, "Shock", { type = "Condition", var = "Shocked" })
+			enemyModList:NewMod("ShockVal", "BASE", val, "Shock", { type = "Condition", var = "ShockedConfig" })
+			enemyModList:NewMod("DesiredShockVal", "BASE", val, "Shock", { type = "Condition", var = "ShockedConfig", neg = true })
+				 
+	end },
+{ var = "conditionEnemyOnShockedGround", type = "check", label = "敌人在感电地面上?", 
+tooltip = "勾选后敌人也被感电.", ifEnemyCond = "OnShockedGround", apply = function(val, modList, enemyModList)
+		enemyModList:NewMod("Condition:Shocked", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+		enemyModList:NewMod("Condition:OnShockedGround", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
 { var = "conditionEnemySapped", type = "check", ifFlag = "inflictSap", label = "敌人精疲力尽?", 
 tooltip = "精疲力尽的敌人总伤害额外降低，最多降低 20%.", apply = function(val, modList, enemyModList)
@@ -963,25 +1029,49 @@ tooltip = "精疲力尽的敌人总伤害额外降低，最多降低 20%.", appl
 	end },
 	
 { var = "conditionEnemyCoveredInAsh", type = "check", label = "敌人【灰烬缠身】?", tooltip = "这个会附加词缀:\n额外降低敌人 20% 移动速度\n提高 20% 敌人承受的火焰伤害", apply = function(val, modList, enemyModList)
-		enemyModList:NewMod("FireDamageTaken", "INC", 20, "Ash")
+		
+		enemyModList:NewMod("FireDamageTaken", "INC", 20, "灰烬缠身")
+		modList:NewMod("CoveredInAsh", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
 { var = "conditionEnemyRareOrUnique", type = "check", label = "敌人是传奇或稀有怪物?", ifEnemyCond  = "EnemyRareOrUnique", tooltip = "如果boss类型选项选择的是boss，那么这里会默认为传奇或稀有怪物.", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Condition:RareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
  
-{ var = "enemyIsBoss", type = "list", ifVer = "3_0", label = "敌人是boss?", tooltip = "普通boss有以下词缀：\n额外降低 33% 诅咒效果\n+40% 火焰、冰霜、闪电抗性\n+25% 混沌抗性\n\n塑界者/塑界守卫有以下词缀：\n额外降低 66% 诅咒效果\n+50% 火焰、冰霜、闪电抗性\n+30% 混沌抗性\n总护甲额外提高 33%", list = {{val="NONE",label="不是"},{val=true,label="普通boss"},{val="SHAPER",label="塑界者/塑界守卫"}}, apply = function(val, modList, enemyModList)
-		if val == true then
+{ var = "enemyIsBoss", type = "list", ifVer = "3_0", label = "敌人是boss?", 
+tooltip = "普通boss有以下词缀：\n额外降低 33% 诅咒效果\n+40% 火焰、冰霜、闪电抗性\n+25% 混沌抗性\n\n塑界者/塑界守卫有以下词缀：\n额外降低 66% 诅咒效果\n+50% 火焰、冰霜、闪电抗性\n+30% 混沌抗性\n总护甲额外提高 33%\n\n诸界觉者希鲁斯有以下词缀：\n额外降低 66% 诅咒效果\n+50% 火焰、冰霜、闪电抗性\n+30% 混沌抗性\n总护甲额外提高 100%",
+list = {{val="NONE",label="不是"},{val="Uber Atziri",label="普通Boss"},
+{val="Shaper",label="塑界者/塑界守卫"},
+{val="Sirus",label="诸界觉者希鲁斯"}},
+ apply = function(val, modList, enemyModList)
+		if val == "Uber Atziri" then
 			enemyModList:NewMod("Condition:RareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 			enemyModList:NewMod("CurseEffectOnSelf", "MORE", -33, "Boss")
 			enemyModList:NewMod("ElementalResist", "BASE", 40, "Boss")
 			enemyModList:NewMod("ChaosResist", "BASE", 25, "Boss")
-		elseif val == "SHAPER" then
+			enemyModList:NewMod("AilmentThreshold", "BASE", 2190202, "Boss")
+			modList:NewMod("WarcryPower", "BASE", 20, "Boss")
+		elseif val == "Shaper" then
 			enemyModList:NewMod("Condition:RareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 			enemyModList:NewMod("CurseEffectOnSelf", "MORE", -66, "Boss")
 			enemyModList:NewMod("ElementalResist", "BASE", 50, "Boss")
 			enemyModList:NewMod("ChaosResist", "BASE", 30, "Boss")
 			enemyModList:NewMod("Armour", "MORE", 33, "Boss")
+			enemyModList:NewMod("AilmentThreshold", "BASE", 44360789, "Boss")
+			modList:NewMod("WarcryPower", "BASE", 20, "Boss")
+		elseif val == "Sirus" then
+			enemyModList:NewMod("Condition:RareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+			enemyModList:NewMod("CurseEffectOnSelf", "MORE", -66, "Boss")
+			enemyModList:NewMod("ElementalResist", "BASE", 50, "Boss")
+			enemyModList:NewMod("ChaosResist", "BASE", 30, "Boss")
+			enemyModList:NewMod("Armour", "MORE", 100, "Boss")
+			enemyModList:NewMod("AilmentThreshold", "BASE", 37940148, "Boss")
+			modList:NewMod("WarcryPower", "BASE", 20, "Boss")
 		end
+	end },
+	
+{ var = "enemyAwakeningLevel", type = "count", label = "觉醒等级:", tooltip = "每层觉醒等级可以让boss的总生命额外提高 3%", apply = function(val, modList, enemyModList)
+		enemyModList:NewMod("Life", "MORE", 3 * m_min(val, 8), "Config")
+		modList:NewMod("AwakeningLevel", "BASE", m_min(val, 8), "Config")
 	end },
 { var = "enemyPhysicalReduction", type = "integer", label = "敌人物理伤害减伤:", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("PhysicalDamageReduction", "BASE", val, "Config")

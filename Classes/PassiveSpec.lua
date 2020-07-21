@@ -1583,9 +1583,14 @@ function PassiveSpecClass:allocTimeJew()
 								
 										t_insert( list1,modLib.createMod("FireResistMax", "BASE", -5, "Tree"..specNode.id))
 										t_insert( list1,modLib.createMod("ColdResistMax", "BASE", -5, "Tree"..specNode.id))		
-										t_insert( list1,modLib.createMod("LightningResistMax", "BASE", -5, "Tree"..specNode.id))												
+										t_insert( list1,modLib.createMod("LightningResistMax", "BASE", -5, "Tree"..specNode.id))	
+t_insert( list2,modLib.createMod("ArmourAppliesToFireDamageTaken", "FLAG", true,"Tree"..specNode.id))	
+t_insert( list2,modLib.createMod("ArmourAppliesToColdDamageTaken", "FLAG", true,"Tree"..specNode.id))	
+t_insert( list2,modLib.createMod("ArmourAppliesToLightningDamageTaken", "FLAG", true,"Tree"..specNode.id))	
+t_insert( list2,modLib.createMod("ArmourDoesNotApplyToPhysicalDamageTaken", "FLAG", true,"Tree"..specNode.id))	
+											
 										newmodList1["list"] =  list1
-										newmodList2["list"] =  nil
+										newmodList2["list"] =  list2
 										specNode.mods={newmodList1,newmodList2}
 									end 
 									

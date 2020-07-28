@@ -3297,7 +3297,9 @@ description = "重击地面，产生前进的多重尖刺伤害敌人。\n在血
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	preDamageFunc = function(activeSkill, output)
+		
 		activeSkill.skillData.dpsMultiplier = math.max(activeSkill.skillData.dpsMultiplier or 1, 1)
+		
 	end,
 	statMap = {
 		["blood_spears_base_number_of_spears"] = {
@@ -5543,19 +5545,21 @@ skills["GeneralsCrySupport"] = {
 	color = 1,
 	support = true,
 	requireSkillTypes = { SkillType.Melee, SkillType.Attack, SkillType.AND, },
-	addSkillTypes = { SkillType.Unknown96, SkillType.Unknown97, },
+	addSkillTypes = { SkillType.Unknown96, SkillType.GeneralsCryTriggered},
 	excludeSkillTypes = { SkillType.Totem, SkillType.Trap, SkillType.Mine, SkillType.ManaCostReserved, SkillType.Vaal, SkillType.Instant, SkillType.Spell, SkillType.Triggered, SkillType.TriggeredGrantedSkill, },
 	ignoreMinionTypes = true,
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
 		["support_spiritual_cry_damage_+%_final"] = {
-			mod("GeneralsCryMirageWarriorLessDamage", "BASE", nil),
+			mod("Damage", "MORE", nil),
 		},	
 		 
 		 
 		
 	},
 	baseMods = {
+	
+	flag("SupportedByGeneralsCry"),
 	},
 	qualityStats = {
 	},

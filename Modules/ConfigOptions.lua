@@ -37,11 +37,22 @@ return {
 { var = "conditionMinionsFullLife", type = "check", label = "你的召唤生物处于满血状态?",  apply = function(val, modList, enemyModList)
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Condition:FullLife", "FLAG", true, "Config") }, "Config")
 	end },
-{ var = "igniteMode", type = "list", label = "点燃计算模式:", tooltip = "目前以火焰基础点伤来计算点燃伤害:\n平均伤害：点燃是基于平均伤害计算.\n暴击伤害：点燃基于暴击伤害计算.", list = {{val="AVERAGE",label="平均伤害"},{val="CRIT",label="暴击伤害"}} },
+{ var = "igniteMode", type = "list", label = "异常计算模式:", tooltip = "目前以基础点伤来计算异常伤害:\n平均伤害：异常是基于平均伤害计算，区分暴击和非暴击.\n暴击伤害：异常基于暴击计算.", list = {{val="AVERAGE",label="平均伤害"},{val="CRIT",label="暴击伤害"}} },
 { var = "armourCalculationMode", type = "list", label = "护甲计算模式:", 
 tooltip = "配置护甲的计算方式\n\t最小：不计算双倍护甲\n\t平均：根据双倍护甲的几率进行计算预期减伤\n\t最大：始终使用100% 双倍护甲计算，如果有 100% 几率双倍护甲，那么此配置无效\n\t", 
 list = {{val="MIN",label="最小"},{val="AVERAGE",label="平均"},{val="MAX",label="最大"}} },
 
+{ var = "warcryMode", type = "list", label = "战吼计算模式:", ifSkillList = { "炼狱呼嚎", "先祖战吼", "坚决战吼", "将军之吼", "威吓战吼", 
+"激励战吼", "震地战吼" },
+ tooltip = "控制战吼的增助攻击的计算模式：\n平均：根据施法/攻击/战吼冷却速度来计算\n最大击中：所有战吼按照最大击中计算",
+ list = {{val="AVERAGE",label="平均"},{val="MAX",label="最大击中"}}, apply = function(val, modList, enemyModList)
+		if val == "MAX" then
+			modList:NewMod("Condition:WarcryMaxHit", "FLAG", true, "Config")
+		end
+	end },
+	{ var = "EVBypass", type = "check", label = "禁用【皇帝的警戒】的无法规避能量护盾", ifCond = "EVBypass", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:EVBypass", "FLAG", true, "Config")
+	end },
 
 	-- Section: Skill-specific options
 { section = "技能选项", col = 2 },
@@ -151,7 +162,8 @@ modList:NewMod("Multiplier:BannerStage", "BASE", m_min(val, 50), "Config", { typ
 	
 { label = "烙印技能:", ifSkillList = { "末日烙印", "风暴烙印","奥法烙印" ,"忏悔烙印","冬潮烙印"} }, -- I barely resisted the temptation to label this "Generic Brand:"
 { var = "BrandsAttachedToEnemy", type = "count", label = "附着到敌人身上的烙印：", ifSkillList = {  "末日烙印", "风暴烙印","奥法烙印" ,"忏悔烙印","冬潮烙印"}, apply = function(val, modList, enemyModList)
-	modList:NewMod("Multiplier:BrandsAttachedLimit", "OVERRIDE", val, "Config")
+	
+		modList:NewMod("Multiplier:ConfigBrandsAttachedToEnemy", "BASE", val, "Config")
 	end },
 
  	
@@ -168,10 +180,23 @@ modList:NewMod("SkillData", "LIST", { key = "skeletonLife", value = val }, "Conf
 	
 { var = "conditionFeedingFrenzyActive", type = "check", label = "启用狂噬增益效果?", ifSkill = "狂噬（辅）", tooltip = "狂噬增益效果:所有的召唤生物获得\n召唤生物移动速度提高 15%\n召唤生物攻击和施法速度提高 15%", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:FeedingFrenzyActive", "FLAG", true, "Config")
-	
+		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Damage", "MORE", 10, "狂噬（辅）") }, "Config")
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("MovementSpeed", "INC", 15, "狂噬（辅）") }, "Config")
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Speed", "INC", 15, "狂噬（辅）") }, "Config")
 	end },
+	
+	
+{ label = "【召唤高等时空先驱者】:", ifSkill =  "召唤高等时空先驱者" },
+	{ var = "greaterHarbingerOfTimeSlipstream", type = "check", label = "开启时空先驱者光环?:", ifSkill =  "召唤高等时空先驱者", 
+	tooltip = "【召唤高等时空先驱者】增益效果：\n动作速度提高 20%\n增益影响玩家和友军\n增益效果持续 8 秒，并且有 10 秒冷却时间", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:GreaterHarbingerOfTime", "FLAG", true, "Config")
+	end },
+	{ label = "【召唤时空先驱者】:", ifSkill =  "召唤时空先驱者" },
+	{ var = "harbingerOfTimeSlipstream", type = "check", label = "开启时空先驱者光环?:", ifSkill =  "召唤时空先驱者", 
+	tooltip = "【召唤时空先驱者】增益效果:\n动作速度提高 20%\n增益影响小范围内的友军，玩家和敌人\n增益效果持续 8 秒，并且有 20 秒冷却时间", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:HarbingerOfTime", "FLAG", true, "Config")
+	end },
+	
 { label = "【苦痛之捷】:", ifSkill = "苦痛之捷" },
 { var = "heraldOfAgonyVirulenceStack", type = "count", label = "# 【毒力】层数:", ifSkill = "苦痛之捷", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:VirulenceStack", "BASE", val, "Config")
@@ -205,9 +230,7 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 	{ label = "【尊严】:", ifSkill = "尊严" },
 	{ var = "prideEffect", type = "list", label = "尊严光环效果:", ifSkill = "尊严", 
 	list = {{val="MIN",label="初始效果"},{val="MAX",label="最大效果"}}, apply = function(val, modList, enemyModList)
-		if val == "MIN" then
-			modList:NewMod("Condition:PrideMinEffect", "FLAG", true, "Config")
-		elseif val == "MAX" then
+		if val == "MAX" then
 			modList:NewMod("Condition:PrideMaxEffect", "FLAG", true, "Config")
 		end
 	end },
@@ -240,6 +263,9 @@ modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", 
 		modList:NewMod("Multiplier:KaomFireBeamTotemStage", "BASE", val, "Config")
 	end },
 	
+{ var = "changedStance", type = "check", label = "最近有切换姿态模式?", ifCond = "ChangedStanceRecently", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:ChangedStanceRecently", "FLAG", true, "Config")
+	end },
 { label = "【召唤圣物】:", ifSkill = "召唤圣物" },
 { var = "summonHolyRelicEnableHolyRelicBoon", type = "check", label = "启用圣物的加成光环:", ifSkill = "召唤圣物", apply = function(val, modList, enemyModList)
 		modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", { type = "SkillId", skillId = "RelicTriggeredNova" })
@@ -564,17 +590,21 @@ end },
 { var = "buffAdrenaline", type = "check", label = "你是否处于【肾上腺素】状态?", tooltip = "这个会启用【肾上腺素】buff:\n提高 100% 伤害\n提高 25% 攻击、施法和移动速度\n10%额外物理伤害减伤", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:Adrenaline", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
+{ var = "buffAlchemistsGenius", type = "check", label = "你是否处于【炼金术天才】状态?", ifCond = "CanHaveAlchemistGenius", 
+tooltip = "这个配置可以启用【炼金术天才】增益:\n药剂充能提高 20%\n药剂效果提高 20%", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:AlchemistsGenius", "FLAG", true, "Config", { type = "Condition", varList = { "Combat", "CanHaveAlchemistGenius" } })
+	end },
 { var = "buffDivinity", type = "check", label = "你处于【神圣】状态?",ifCond = "Divinity", tooltip = "获得【神性】Buff:\n火焰、冰霜、闪电总伤害额外提高 50%\n承受的火焰、冰霜、闪电总伤害额外降低 20% ", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:Divinity", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
 	
 { var = "multiplierRage", type = "count", label = "怒火层数:", ifCond = "CanGainRage", apply = function(val, modList, enemyModList)
-		modList:NewMod("Multiplier:Rage", "BASE", val, "Config", { type = "IgnoreCond" }, { type = "Condition", var = "Combat" }, { type = "Condition", var = "CanGainRage" })
+--		modList:NewMod("Multiplier:Rage", "BASE", val, "Config", { type = "IgnoreCond" }, { type = "Condition", var = "Combat" }, { type = "Condition", var = "CanGainRage" })
+	modList:NewMod("Multiplier:RageStack", "BASE", val, "Config", { type = "IgnoreCond" }, { type = "Condition", var = "Combat" }, { type = "Condition", var = "CanGainRage" })
+
+	
 	end },
-{ var = "isSacrificedRage", type = "check", label = "怒火被战吼献祭？", tooltip = "暴徒升华：至少 25 层怒火时，使用战吼会献祭 10 层，\n献祭后增助的攻击获得更多伤害",
-ifCond = "CanGainRage", apply = function(val, modList, enemyModList)
-		modList:NewMod("Condition:WarcrySacrificedRage", "FLAG", true, "Config",{ type = "Condition", var = "Combat" }, { type = "Condition", var = "CanGainRage" })
-	end },
+
 	
 	
 { var = "conditionLeeching", type = "check", label = "你正在偷取?", ifCond = "Leeching", apply = function(val, modList, enemyModList)
@@ -729,6 +759,12 @@ ifCond = "OnFungalGround",
 { var = "conditionFrozenEnemyRecently", type = "check", label = "近期有冰冻过怪物?", ifCond = "FrozenEnemyRecently", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:FrozenEnemyRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
+	
+{ var = "conditionChilledEnemyRecently", type = "check", label = "近期有冰缓过怪物?", ifCond = "ChilledEnemyRecently", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:ChilledEnemyRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },	
+	
+
 { var = "conditionShatteredEnemyRecently", type = "check", label = "近期有粉碎过怪物?", ifCond = "ShatteredEnemyRecently", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:ShatteredEnemyRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
@@ -925,6 +961,11 @@ ifCond = "OnFungalGround",
 		enemyModList:NewMod("ElementalResist", "BASE", -10, "Config", { type = "Condition", var = "OnProfaneGround" })
 		enemyModList:NewMod("ChaosResist", "BASE", -10, "Config", { type = "Condition", var = "OnProfaneGround" })
 		modList:NewMod("CritChance", "BASE", 1, "Config", { type = "ActorCondition", actor = "enemy", var = "OnProfaneGround" })
+		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("CritChance", "BASE", 1, { type = "ActorCondition", actor = "enemy", var = "OnProfaneGround" }) }, "Config")
+		
+	end },
+{ var = "conditionEnemyInChillingArea", type = "check", label = "敌人在冰缓区域上?", ifEnemyCond = "InChillingArea", apply = function(val, modList, enemyModList)
+		enemyModList:NewMod("Condition:InChillingArea", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
 { var = "conditionEnemyFullLife", type = "check", label = "敌人满血状态?", ifEnemyCond = "FullLife", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Condition:FullLife", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
@@ -1030,8 +1071,10 @@ tooltip = "精疲力尽的敌人总伤害额外降低，最多降低 20%.", appl
 	
 { var = "conditionEnemyCoveredInAsh", type = "check", label = "敌人【灰烬缠身】?", tooltip = "这个会附加词缀:\n额外降低敌人 20% 移动速度\n提高 20% 敌人承受的火焰伤害", apply = function(val, modList, enemyModList)
 		
-		enemyModList:NewMod("FireDamageTaken", "INC", 20, "灰烬缠身")
-		modList:NewMod("CoveredInAsh", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+		
+		modList:NewMod("CoveredInAshEffect", "BASE", 20, "灰烬缠身")
+		
+		
 	end },
 { var = "conditionEnemyRareOrUnique", type = "check", label = "敌人是传奇或稀有怪物?", ifEnemyCond  = "EnemyRareOrUnique", tooltip = "如果boss类型选项选择的是boss，那么这里会默认为传奇或稀有怪物.", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Condition:RareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })

@@ -185,6 +185,31 @@ total = s_format("= %.1f ^8每秒", total),
 	})
 end
 
+
+function breakdown.critDot(dotMulti, critMulti, dotChance, critChance)
+	local combined = (dotMulti * dotChance) + (critMulti * critChance)
+	local out = { }
+	if dotChance > 0 then
+		t_insert(out, s_format("非暴击:"))
+		t_insert(out, s_format("%.2f ^8(非暴击的持续伤害加成)", dotMulti))
+		t_insert(out, s_format("x %.4f ^8(非暴击创建的实例)", dotChance))
+		t_insert(out, s_format("= %.2f", dotMulti * dotChance))
+	end
+	if critChance > 0 then
+		t_insert(out, s_format("暴击:"))
+		t_insert(out, s_format("%.2f ^8(暴击时的持续伤害加成)", critMulti))
+		t_insert(out, s_format("x %.4f ^8(暴击创建的实例)", critChance))
+		t_insert(out, s_format("= %.2f", critMulti * critChance))
+	end
+	if (dotChance > 0 and critChance > 0) and (dotMulti ~= critMulti)then
+		t_insert(out, s_format("有效持续伤害加成:"))
+		t_insert(out, s_format("%.2f + %.2f", dotMulti * dotChance, critMulti * critChance))
+		t_insert(out, s_format("= %.2f", combined))
+	end
+	return out
+end		
+
+
 function breakdown.leech(instant, instantRate, instances, pool, rate, max, dur)
 	local out = { }
 	if actor.mainSkill.skillData.showAverage then

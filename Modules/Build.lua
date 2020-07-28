@@ -251,6 +251,7 @@ main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会�
 { stat = "CombinedDPS", label = "合计 DPS", fmt = ".1f", compPercent = true },
 { stat = "Cooldown", label = "技能CD", fmt = ".2fs", lowerIsBetter = true },
 { stat = "AreaOfEffectRadius", label = "范围半径", fmt = "d" },
+{ stat = "BrandTicks", label = "烙印激活频率", fmt = "d", flag = "brand" },
 { stat = "ManaCost", label = "魔力消耗", fmt = "d", compPercent = true, lowerIsBetter = true, condFunc = function() return true end },
 		{ },
 { stat = "Str", label = "力量", fmt = "d" },

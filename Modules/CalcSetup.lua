@@ -28,8 +28,10 @@ function calcs.initModDB(env, modDB)
 	modDB:NewMod("InspirationChargesMax", "BASE", 5, "Base")
 	modDB:NewMod("MaxLifeLeechRate", "BASE", 20, "Base")
 	modDB:NewMod("MaxManaLeechRate", "BASE", 20, "Base")
+	modDB:NewMod("Multiplier:VirulenceStacksMax", "BASE", 40, "Base")
 	modDB:NewMod("BleedStacksMax", "BASE", 1, "Base")
 	modDB:NewMod("ActiveBrandLimit", "BASE", 3, "Base")
+	modDB:NewMod("BrandsAttachedLimit", "BASE", 1, "Base")
 	
 	if env.build.targetVersion ~= "2_6" then
 		modDB:NewMod("MaxEnergyShieldLeechRate", "BASE", 10, "Base")
@@ -68,6 +70,7 @@ function calcs.initModDB(env, modDB)
 	modDB:NewMod("UnholyMight", "FLAG", true, "Base", { type = "Condition", var = "UnholyMight" })
 	modDB:NewMod("Tailwind", "FLAG", true, "Base", { type = "Condition", var = "Tailwind" })
 	modDB:NewMod("Adrenaline", "FLAG", true, "Base", { type = "Condition", var = "Adrenaline" })
+	modDB:NewMod("AlchemistsGenius", "FLAG", true, "Base", { type = "Condition", var = "AlchemistsGenius" })
 	modDB.conditions["Buffed"] = env.mode_buffs
 	modDB.conditions["Combat"] = env.mode_combat
 	modDB.conditions["Effective"] = env.mode_effective
@@ -108,6 +111,18 @@ function calcs.buildModListForNode(env, node)
 		if rad.nodes[node.id] and (rad.type == "Threshold" or (rad.type == "Self" and env.allocNodes[node.id]) or (rad.type == "SelfUnalloc" and not env.allocNodes[node.id])) then
 			rad.func(node, modList, rad.data)
 		end
+	end
+	
+	if modList:Flag(nil, "PassiveSkillHasOtherEffect") then
+		for i, mod in ipairs(modList:List(skillCfg, "NodeModifier")) do	
+			if i == 1 then
+			wipeTable(modList)							
+			end
+			
+			modList:AddMod(mod.mod)
+		end
+		
+
 	end
 
 	return modList
@@ -235,10 +250,12 @@ function calcs.initEnv(build, mode, override)
 	modDB:NewMod("PhysicalDamageReduction", "BASE", 4, "Base", { type = "Multiplier", var = "EnduranceCharge" })
 	modDB:NewMod("ElementalResist", "BASE", 4, "Base", { type = "Multiplier", var = "EnduranceCharge" })
 	modDB:NewMod("Multiplier:RageEffect", "BASE", 1, "Base")
-	modDB:NewMod("Damage", "INC", 1, "Base", ModFlag.Attack, { type = "Multiplier", var = "Rage", limit = 50 }, { type = "Multiplier", var = "RageEffect" })
-	modDB:NewMod("Speed", "INC", 1, "Base", ModFlag.Attack, { type = "Multiplier", var = "Rage", limit = 25, div = 2 }, { type = "Multiplier", var = "RageEffect" })
-	modDB:NewMod("MovementSpeed", "INC", 1, "Base", { type = "Multiplier", var = "Rage", limit = 10, div = 5 }, { type = "Multiplier", var = "RageEffect" })
-	 
+	modDB:NewMod("Damage", "INC", 1, "Base", ModFlag.Attack, { type = "Multiplier", var = "Rage" }, { type = "Multiplier", var = "RageEffect" })
+	modDB:NewMod("Speed", "INC", 1, "Base", ModFlag.Attack, { type = "Multiplier", var = "Rage",  div = 2 }, { type = "Multiplier", var = "RageEffect" })
+	modDB:NewMod("MovementSpeed", "INC", 1, "Base", { type = "Multiplier", var = "Rage", div = 5 }, { type = "Multiplier", var = "RageEffect" })
+	 modDB:NewMod("MaximumRage", "BASE", 50, "Base")
+	 modDB:NewMod("Damage", "INC", 2, "Base", { type = "Multiplier", var = "Rampage", limit = 50, div = 20 })
+	modDB:NewMod("MovementSpeed", "INC", 1, "Base", { type = "Multiplier", var = "Rampage", limit = 50, div = 20 })
 	if build.targetVersion == "2_6" then
 		modDB:NewMod("ActiveTrapLimit", "BASE", 3, "Base")
 		modDB:NewMod("ActiveMineLimit", "BASE", 5, "Base")
@@ -260,7 +277,8 @@ function calcs.initEnv(build, mode, override)
 		modDB:NewMod("Damage", "MORE", 200, "Base", 0, KeywordFlag.Bleed, { type = "ActorCondition", actor = "enemy", var = "Moving" }, { type = "Condition", var = "NoExtraBleedDamageToMovingEnemy", neg = true })
 	end
 	modDB:NewMod("Condition:BloodStance", "FLAG", true, "Base", { type = "Condition", var = "SandStance", neg = true })
-	
+	modDB:NewMod("Condition:PrideMinEffect", "FLAG", true, "Base", { type = "Condition", var = "PrideMaxEffect", neg = true })
+
 	-- Add bandit mods
 	if build.targetVersion == "2_6" then
 		if build.banditNormal == "Alira" then

@@ -302,6 +302,9 @@ t_insert(combatList, "提速尾流")
 		if env.modDB:Flag(nil, "Adrenaline") then
 t_insert(combatList, "肾上腺素")
 		end
+		if env.modDB:Flag(nil, "AlchemistsGenius") then
+			t_insert(combatList, "炼金术天才")
+		end
 		if env.modDB:Flag(nil, "HerEmbrace") then
 t_insert(combatList, "女神之拥")
 		end

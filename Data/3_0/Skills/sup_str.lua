@@ -2293,6 +2293,7 @@ description = "辅助近战攻击技能, 使该技能在使用时被自动重复
 		},
 	},
 	baseMods = {
+		flag("SupportedByMultistrike"),
 	},
 	qualityStats = {
 		{ "melee_physical_damage_+%", 0.5 },
@@ -3215,7 +3216,7 @@ skills["AncestralSlamSupport"] = {
 	support = true,
 	requireSkillTypes = { SkillType.Slam, },
 	addSkillTypes = { },
-	excludeSkillTypes = { SkillType.Totem, SkillType.Trap, SkillType.Mine, SkillType.Unknown97, SkillType.Vaal, },
+	excludeSkillTypes = { SkillType.Totem, SkillType.Trap, SkillType.Mine, SkillType.GeneralsCryTriggered, SkillType.Vaal, },
 	ignoreMinionTypes = true,
 	statDescriptionScope = "gem_stat_descriptions",
 
@@ -3224,7 +3225,7 @@ skills["AncestralSlamSupport"] = {
 			mod("FistOfWarHitMultiplier", "BASE", nil, ModFlag.Melee),
 		},
 		["support_ancestral_slam_big_hit_ailment_damage_+%_final"] = {
-			mod("FistOfWarAilmentMultiplier", "BASE", nil, bit.bor(ModFlag.Melee, ModFlag.Ailment)),
+			mod("FistOfWarAilmentMultiplier", "BASE", nil, bit.band(ModFlag.Melee, ModFlag.Ailment)),
 		},
 		["ancestral_slam_interval_duration"] = {
 			mod("FistOfWarCooldown", "BASE", nil),

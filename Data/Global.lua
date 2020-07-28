@@ -239,7 +239,9 @@ SkillType = {
  	Unknown92= 102,
 	CantUseFistOfWar= 103,
 	Slam = 104,
-	  StanceSkill = 105,
+	StanceSkill = 105,
+	GeneralsCryTriggered = 106,
+	 --将军之吼触发的
 	 
 	--SkillCanBarrage = 97, --Skill can be supported by Barrage Support
 --	SkillCanSequentialProj = 98, --Skill can receive the Sequential Projectiles bonus from Barrage Support

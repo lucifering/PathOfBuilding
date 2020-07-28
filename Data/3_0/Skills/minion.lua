@@ -1203,7 +1203,7 @@ name = "召唤物聚能",
 		[1] = { },
 	},
 }
-skills["BeaconCausticCloud"] = {
+skills["SiegebreakerCausticGroud"] = {
 name = "腐蚀毒云",
 	hidden = true,
 	color = 4,
@@ -1214,7 +1214,7 @@ name = "腐蚀毒云",
 	},
 	skillTypes = { },
 	baseMods = {
-		skill("ChaosDot", 1, { type = "PerStat", stat = "Life", div = 10 }),
+		skill("ChaosDot", 1, { type = "PerStat", stat = "Life", div = 5 }),
 		skill("dotIsArea", true),
 	},
 	qualityStats = {

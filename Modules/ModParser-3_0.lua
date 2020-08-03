@@ -2422,10 +2422,10 @@ local specialModList = {
 	["([%+%-]?%d+) 【魔卫复苏】数量上限"]= function(num) return {  mod("ActiveZombieLimit", "BASE", num)  } end,
 	["【复苏的魔卫】最大数量降低 (%d+)%%"]= function(num) return {  mod("ActiveZombieLimit", "INC", -num)  } end,
 	["【魔卫复苏】最大数量降低 (%d+)%%"]= function(num) return {  mod("ActiveZombieLimit", "INC", -num)  } end,
-	["([%+%-]?%d+) 最大怒火"]= function(num) return {  mod("RageMax", "BASE", num)  } end,
+	["([%+%-]?%d+) 最大怒火"]= function(num) return {  mod("MaximumRage", "BASE", num)  } end,
 	["失去怒火的速度减慢 (%d+)%%"]= function(num) return {  mod("RageDuration", "INC", num)  } end,
 	["持握剑类时，([%+%-]?%d+) 最大怒火"]= function(num) return {  
-	mod("RageMax", "BASE", num,{ type = "Condition", varList ={ "UsingSword" }})
+	mod("MaximumRage", "BASE", num,{ type = "Condition", varList ={ "UsingSword" }})
 	 } end,
 	["持握斧类时，每点【怒火】都使【流血】 ([%+%-]?%d+)%% 持续伤害加成"]= function(num) return {  
 		mod( "DotMultiplier","BASE", num,nil,nil,  KeywordFlag.Bleed,
@@ -2774,6 +2774,7 @@ local specialModList = {
 	["使用【尊严】时有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("DoubleDamageChance", "BASE", num,{ type = "Condition", var = "UsedBy尊严" }) } end,
 	["使用【尊严】时，攻击击中有 (%d+)%% 几率穿刺敌人"]= function(num) return { mod("ImpaleChance", "BASE", num,{ type = "Condition", var = "UsedBy尊严" }) } end,
 	["使用【尊严】时，你造成的穿刺效果会造成 (%d+) 次额外击中"]= function(num) return { mod("ImpaleStacksMax", "BASE", num,{ type = "Condition", var = "UsedBy尊严" }) } end,
+	["法术有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("DoubleDamageChance", "BASE", num, nil, ModFlag.Spell) } end,
 	["技能效果持续时间延长 ([%+%-]?%d+)%%"]= function(num) return {  mod("Duration", "INC", num)  } end, 
 	["技能效果持续时间缩短 ([%+%-]?%d+)%%"]= function(num) return {  mod("Duration", "INC", -num)  } end, 
 	["对燃烧的敌人附加 (%d+) %- (%d+) 火焰伤害"]= function(_,num1,num2) return { 	
@@ -3807,53 +3808,23 @@ local specialModList = {
 	 } end, 
 	["召集部队"] = { mod("Keystone", "LIST", "召集部队") },
 	["【斗转星移】"] = { mod("Keystone", "LIST", "斗转星移") },
-	["品质不提高物理伤害"] =  { mod("WeaponData", "LIST", { key = "QualityNotBonusPhysicalDamage", value = true}) }, 
-	["品质不提高防御属性"] =  { mod("ArmourData", "LIST", { key = "QualityNotBonusDefences", value = true}) }, 
-	["每 (%d+)%% 品质使元素伤害提高 (%d+)%%"] = function(_,num1,num2) return { 
-	 mod("ElementalDamage", "INC", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
-	 } end, 
-	["每 (%d+)%% 品质使范围效果扩大 (%d+)%%"] = function(_,num1,num2) return { 
-	 mod("AreaOfEffect", "INC", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
-	 } end, 
-	["每 (%d+)%% 品质使命中值提高提高 (%d+)%%"] = function(_,num1,num2) return { 
-	 mod("Accuracy", "INC", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
-	 } end, 
-	["每 (%d+)%% 品质使命中值提高 (%d+)%%"] = function(_,num1,num2) return { 
-	 mod("Accuracy", "INC", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
-	 } end, 
-	["每 (%d+)%% 品质使攻击速度加快 (%d+)%%"] = function(_,num1,num2) return { 
-	 mod("Speed", "INC", tonumber(num2),nil, ModFlag.Attack,  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
-	 } end, 
-	["每 (%d+)%% 品质使暴击率提高 (%d+)%%"] = function(_,num1,num2) return { 
-	 mod("CritChance", "INC", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
-	 } end,
-	["每 (%d+)%% 品质 %+(%d+) 武器范围"] = function(_,num1,num2) return { 
-	 mod("MeleeWeaponRange", "BASE", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
-	 } end,
-	["每 (%d+)%% 品质 %+(%d+) 力量"] = function(_,num1,num2) return { 
-	 mod("Str", "BASE", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
-	 } end,
-	["每 (%d+)%% 品质 %+(%d+) 智慧"] = function(_,num1,num2) return { 
-	 mod("Int", "BASE", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
-	 } end,
-	["每 (%d+)%% 品质 %+(%d+) 敏捷"] = function(_,num1,num2) return { 
-	 mod("Dex", "BASE", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
-	 } end,
-	["每 (%d+)%% 品质 %+(%d+) 最大生命"] = function(_,num1,num2) return { 
-	 mod("Life", "BASE", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
-	 } end,
-	["每 (%d+)%% 品质 %+(%d+) 最大魔力"] = function(_,num1,num2) return { 
-	 mod("Mana", "BASE", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
-	 } end,
-	["每 (%d+)%% 品质 %+(%d+)%% 火焰抗性"] = function(_,num1,num2) return { 
-	 mod("FireResist", "BASE", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
-	 } end,
-	["每 (%d+)%% 品质 %+(%d+)%% 冰霜抗性"] = function(_,num1,num2) return { 
-	 mod("ColdResist", "BASE", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
-	 } end,
-	["每 (%d+)%% 品质 %+(%d+)%% 闪电抗性"] = function(_,num1,num2) return { 
-	 mod("LightningResist", "BASE", tonumber(num2),  { type = "PerStat", stat = "QualityOn{SlotName}", div = tonumber(num1) } )
-	 } end,
+	["品质不提高物理伤害"] = { mod("AlternateQualityWeapon", "BASE", 1) },
+		["每 4%% 品质使暴击率提高 (%d+)%%"] = function(num) return { mod("AlternateQualityLocalCritChancePer4Quality", "INC", num) } end,
+		["每 (%d+)%% 品质使命中值提高提高 (%d+)%%"] = function( _,div, num) return { mod("Accuracy", "INC", num, { type = "Condition", var = "{Hand}Attack" }, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+		["每 (%d+)%% 品质使命中值提高 (%d+)%%"] = function( _,div, num) return { mod("Accuracy", "INC", num, { type = "Condition", var = "{Hand}Attack" }, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+		["每 8%% 品质使攻击速度加快 (%d+)%%"] = function(num) return { mod("AlternateQualityLocalAttackSpeedPer8Quality", "INC", num) } end,
+		["每 10%% 品质 %+(%d+) 武器范围"] = function(num) return { mod("AlternateQualityLocalWeaponRangePer10Quality", "BASE", num) } end,
+		["每 (%d+)%% 品质使元素伤害提高 (%d+)%%"] = function( _,div, num) return { mod("ElementalDamage", "INC", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+		["每 (%d+)%% 品质使范围效果扩大 (%d+)%%"] = function(_,div, num) return { mod("AreaOfEffect", "INC", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+		["品质不提高防御属性"] = { mod("AlternateQualityArmour", "BASE", 1) },
+		["每 (%d+)%% 品质 %+(%d+) 最大生命"] = function(_,div, num) return { mod("Life", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+		["每 (%d+)%% 品质 %+(%d+) 最大魔力"] = function(_,div, num) return { mod("Mana", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+		["每 (%d+)%% 品质 %+(%d+) 力量"] = function(_,div, num) return { mod("Str", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+		["每 (%d+)%% 品质 %+(%d+) 敏捷"] = function(_,div, num) return { mod("Dex", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+		["每 (%d+)%% 品质 %+(%d+) 智慧"] = function(_,div, num) return { mod("Int", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+		["每 (%d+)%% 品质 %+(%d+)%% 火焰抗性"] = function(_,div, num) return { mod("FireResist", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+		["每 (%d+)%% 品质 %+(%d+)%% 冰霜抗性"] = function(_,div, num) return { mod("ColdResist", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+		["每 (%d+)%% 品质 %+(%d+)%% 闪电抗性"] = function(_,div, num) return { mod("LightningResist", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
 	["被击中时有 (%d+)%% 几率避免火焰伤害"]= function(num) return { 
 	 mod("AvoidFireDamageChance", "BASE", num )  } end, 
 	["被击中时有 (%d+)%% 几率避免冰霜伤害"]= function(num) return { 
@@ -4027,7 +3998,7 @@ local specialModList = {
 	["周围敌人被冰缓"] = { mod("EnemyModifier", "LIST", { mod = mod("Condition:Chilled", "FLAG", true) }) },
 	["使用药剂时获得【炼金术天才】状态"] = {
 			flag("Condition:CanHaveAlchemistGenius"),
-			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanHaveAlcehmistGenius" }), -- Make the Configuration option appear			
+			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanHaveAlchemistGenius" }), -- Make the Configuration option appear			
 		},
 	["击中有 5 层或少于 5 层【死亡凋零】减益状态的敌人时，有 (%d+)%% 几率施加持续 (%d+) 秒的【死亡凋零】"] = { flag("Condition:CanWither") },
 	["使用战吼时，你和周围友军获得【猛攻】状态，持续 4 秒"] = { mod("ExtraAura", "LIST", { mod = flag("Onslaught") }, { type = "Condition", var = "UsedWarcryRecently" }) },
@@ -4896,7 +4867,7 @@ local jewelOtherFuncs = {
 						end
 						
 					end 
-				--	print_r(mod.value.mod)
+				
 				elseif mod.name =='TotemLife' and mod.type == thetype then
 					out:MergeNewMod('TotemLife', mod.type, -mod.value, mod.source, mod.flags, mod.keywordFlags, unpack(mod))
 					out:MergeNewMod('TotemEnergyShield', mod.type, mod.value, mod.source, mod.flags, mod.keywordFlags, unpack(mod))
@@ -4957,7 +4928,7 @@ local jewelOtherFuncs = {
 						end
 						
 					end 
-				--	print_r(mod.value.mod)
+				
 				elseif mod.name =='TotemLife' and mod.type == thetype then
 					out:MergeNewMod('TotemLife', mod.type, -mod.value, mod.source, mod.flags, mod.keywordFlags, unpack(mod))
 				--	out:MergeNewMod('TotemMana', mod.type, math.floor(mod.value * factor), mod.source, mod.flags, mod.keywordFlags, unpack(mod))

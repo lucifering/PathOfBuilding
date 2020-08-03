@@ -2203,7 +2203,7 @@ function ItemsTabClass:AppendAnointTooltip(tooltip, node, actionText)
 	end
 	
 	local numChanges = self.build:AddStatComparesToTooltip(tooltip, outputBase, outputNew, header)
-	print("numChanges="..numChanges)
+	
 	if node and numChanges == 0 then
 		
 		tooltip:AddLine(14, "^7"..actionText.." "..node.dn.." 没有变化")
@@ -2335,7 +2335,7 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 	local modList = { }
 	local function buildMods(sourceId)
 		wipeTable(modList)
-		print("sourceId="..sourceId)
+		
 		if sourceId == "MASTER" then
 			for _, craft in ipairs(self.build.data.masterMods) do
 				if craft.types[self.displayItem.type] then
@@ -2411,7 +2411,7 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 		elseif sourceId == "BLIGHT" then
 		
 			for _, passives in ipairs(self.build.data.blightPassives) do
-				--print(">>>>>>>>>>>>>>>>>>")
+				
 				spTip={}
 				t_insert(spTip,passives.oils)
 				 
@@ -2471,16 +2471,7 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 			end)
 		end
 	end
-	if self.build.targetVersion ~= "2_6" and self.displayItem.base.weapon  then 
 	
-		t_insert(sourceList, { label = "收割种子", sourceId = "HarvestSeedWeapon" })
-	
-	end
-	if self.build.targetVersion ~= "2_6" and self.displayItem.type == "Body Armour"  then 
-	
-		t_insert(sourceList, { label = "收割种子", sourceId = "HarvestSeedBodyArmour" })
-	
-	end
 	
 	if ((self.build.targetVersion ~= "2_6" 	
 	and 	self.displayItem.base.subType ~= "Abyss") or (self.displayItem.type ~= "Jewel" and self.displayItem.type ~= "Flask") ) and  (self.displayItem.rarity == "魔法" or self.displayItem.rarity == "稀有")	
@@ -2508,6 +2499,16 @@ t_insert(sourceList, { label = "穿越", sourceId = "INCURSION" })
 	
 	end
 	
+	if self.build.targetVersion ~= "2_6" and self.displayItem.base.weapon  then 
+	
+		t_insert(sourceList, { label = "收割种子", sourceId = "HarvestSeedWeapon" })
+	
+	end
+	if self.build.targetVersion ~= "2_6" and self.displayItem.type == "Body Armour"  then 
+	
+		t_insert(sourceList, { label = "收割种子", sourceId = "HarvestSeedBodyArmour" })
+	
+	end
 	if not self.displayItem.crafted and (self.displayItem.rarity == "魔法" or self.displayItem.rarity == "稀有") then
 t_insert(sourceList, { label = "【前缀】", sourceId = "PREFIX" })
 t_insert(sourceList, { label = "【后缀】", sourceId = "SUFFIX" })
@@ -2943,12 +2944,12 @@ tooltip:AddLine(16, "^x7F7F7F插槽: "..line)
 				local grad = flaskData.lifeBase * (1 - instantPerc / 100) * (1 + lifeInc / 100) * (1 + effectInc / 100) * (1 + durInc / 100) * output.LifeRecoveryRateMod
 				local lifeDur = flaskData.duration * (1 + durInc / 100) / (1 + rateInc / 100) / (1 + lifeRateInc / 100)
 				if inst > 0 and grad > 0 then
-					t_insert(stats, s_format("^8Life recovered: ^7%d ^8(^7%d^8 instantly, plus ^7%d ^8over^7 %.2fs^8)", inst + grad, inst, grad, lifeDur))
+					t_insert(stats, s_format("^8生命回复: ^7%d ^8(^7%d^8 立即, 加 ^7%d ^8持续^7 %.2f秒^8)", inst + grad, inst, grad, lifeDur))
 				elseif inst + grad ~= flaskData.lifeTotal or (inst == 0 and lifeDur ~= flaskData.duration) then
 					if inst > 0 then
-						t_insert(stats, s_format("^8Life recovered: ^7%d ^8instantly", inst))
+						t_insert(stats, s_format("^8生命回复: ^7%d ^8立即", inst))
 					elseif grad > 0 then
-						t_insert(stats, s_format("^8Life recovered: ^7%d ^8over ^7%.2fs", grad, lifeDur))
+						t_insert(stats, s_format("^8生命回复: ^7%d ^8持续 ^7%.2f秒", grad, lifeDur))
 					end
 				end
 			end
@@ -2959,12 +2960,12 @@ tooltip:AddLine(16, "^x7F7F7F插槽: "..line)
 				local grad = flaskData.manaBase * (1 - instantPerc / 100) * (1 + manaInc / 100) * (1 + effectInc / 100) * (1 + durInc / 100) * output.ManaRecoveryRateMod
 				local manaDur = flaskData.duration * (1 + durInc / 100) / (1 + rateInc / 100) / (1 + manaRateInc / 100)
 				if inst > 0 and grad > 0 then
-					t_insert(stats, s_format("^8Mana recovered: ^7%d ^8(^7%d^8 instantly, plus ^7%d ^8over^7 %.2fs^8)", inst + grad, inst, grad, manaDur))
+					t_insert(stats, s_format("^8魔力回复: ^7%d ^8(^7%d^8 立即, 加 ^7%d ^8持续^7 %.2f秒^8)", inst + grad, inst, grad, manaDur))
 				elseif inst + grad ~= flaskData.manaTotal or (inst == 0 and manaDur ~= flaskData.duration) then
 					if inst > 0 then
-						t_insert(stats, s_format("^8Mana recovered: ^7%d ^8instantly", inst))
+						t_insert(stats, s_format("^8魔力回复: ^7%d ^8立即", inst))
 					elseif grad > 0 then
-						t_insert(stats, s_format("^8Mana recovered: ^7%d ^8over ^7%.2fs", grad, manaDur))
+						t_insert(stats, s_format("^8魔力回复: ^7%d ^8持续 ^7%.2f秒", grad, manaDur))
 					end
 				end
 			end

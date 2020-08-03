@@ -121,7 +121,7 @@ self.controls.groupEnabled = new("CheckBoxControl", {"LEFT",self.controls.groupS
 	
 	if self.displayGroup and self.displayGroup.gemList[1] then 
 			local gemInstance = self.displayGroup.gemList[1]
-			-- print_r(gemInstance)
+			
 				if gemInstance  and  gemInstance.grantedEffect then
 				local displayInstance = gemInstance.displayEffect or gemInstance
 				local grantedEffect=gemInstance.grantedEffect;
@@ -437,7 +437,7 @@ function SkillsTabClass:CreateGemSlot(index)
 	slot.delete = new("ButtonControl", nil, 0, 0, 20, 20, "x", function()
 	 
 	
-		--local skillitem=self.displayGroup.gemList[index]
+		 
 	
 		t_remove(self.displayGroup.gemList, index)
 		for index2 = index, #self.displayGroup.gemList do
@@ -448,45 +448,7 @@ function SkillsTabClass:CreateGemSlot(index)
 			self.gemSlots[index2].quality:SetText(gemInstance.quality)
 			self.gemSlots[index2].enabled.state = gemInstance.enabled
 		end
-	--[[
-		if skillitem and skillitem.supportEffect
-		and skillitem.supportEffect.gemData
-		and skillitem.supportEffect.gemData.grantedEffect
-		and skillitem.supportEffect.gemData.grantedEffect.statMap then 
-			for index3, stat in ipairs(skillitem.supportEffect.gemData.grantedEffect.stats) do
-				if skillitem.supportEffect.gemData.grantedEffect.statMap[stat] then 
-					local sMapItem=skillitem.supportEffect.gemData.grantedEffect.statMap[stat]
-					if sMapItem then
-						
-						for _, mod in ipairs(sMapItem) do
-						
-							for mindex =1,#mod do
-								 
-								if mod[mindex] and mod[mindex].type == 'Condition' then 
-									if mod[mindex].var then 
-										local currCond = "condition"..mod[mindex].var
-										print(currCond)
-										self.build.configTab:DeleteCondition(currCond)
-									elseif mod[mindex].varList then 
-										for lindex =1,#mod[mindex].varList do
-											local currCondItem = "condition"..mod[mindex].varList[lindex]
-											print(currCondItem)
-											self.build.configTab:DeleteCondition(currCondItem)
-										end
-									end 
-									
-								end 
-								
-							end 
-						 
-							
-						end
-					end
-				end 
-			end
-			 
-		end 
-		]]--
+	 
 		self:AddUndoState()
 		self.build.buildFlag = true
 	end)

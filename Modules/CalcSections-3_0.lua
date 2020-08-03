@@ -717,7 +717,7 @@ extra = "{0:output:RageStacks}",
 flag = "rage", 
 
 { label = "配置怒火层数", { format = "{0:output:RageStacks}", }},
-{ label = "最大怒火层数", { format = "{0:output:MaxRageStacks}",{ modName = "RageMax"} }},
+{ label = "最大怒火层数", { format = "{0:output:MaxRageStacks}",{ modName = "MaximumRage"} }},
 { label = "每秒怒火回复", haveOutput = "RageRegen", { format = "{2:output:RageRegen}",
 		{ breakdown = "RageRegen" },
 		{ modName = "RageRegen" },

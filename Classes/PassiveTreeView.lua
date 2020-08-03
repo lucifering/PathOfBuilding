@@ -857,8 +857,7 @@ tooltip:AddLine(14, colorCodes.TIP.."提示: 按住Shift隐藏提示.")
 	if node.sd[1] then
 		tooltip:AddLine(16, "")
 		for i, line in ipairs(node.sd) do
-		--	print(">>>>>>")
-		--	print_r(node.mods[i])
+		
 			if node.mods[i] and  node.mods[i].list then
 				if launch.devModeAlt then
 					-- Modifier debugging info

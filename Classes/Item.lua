@@ -960,17 +960,19 @@ function ItemClass:BuildModListForSlotNum(baseList, slotNum)
 			end
 		end
 	end
-	
+	if self.quality then
+		modList:NewMod("Multiplier:QualityOn"..slotName, "BASE", self.quality, "Quality")
+	end
 	if self.base.weapon then
 		local weaponData = { }
 		self.weaponData[slotNum] = weaponData
 		weaponData.type = self.base.type
 		weaponData.name = self.name
-		weaponData.AttackSpeedInc = sumLocal(modList, "Speed", "INC", ModFlag.Attack)
+		weaponData.AttackSpeedInc =  sumLocal(modList, "Speed", "INC", ModFlag.Attack) + m_floor(self.quality / 8 * sumLocal(modList, "AlternateQualityLocalAttackSpeedPer8Quality", "INC", 0))
 		weaponData.AttackRate = round(self.base.weapon.AttackRateBase * (1 + weaponData.AttackSpeedInc / 100), 2)
 		weaponData.quality = self.quality
 		 
-		weaponData.range = self.base.weapon.Range + sumLocal(modList, "WeaponRange", "BASE", 0)
+		weaponData.range = self.base.weapon.Range + sumLocal(modList, "WeaponRange", "BASE", 0) + m_floor(self.quality / 10 * sumLocal(modList, "AlternateQualityLocalWeaponRangePer10Quality", "BASE", 0))
 		
 		for _, value in ipairs(modList:List(nil, "WeaponData")) do
 			weaponData[value.key] = value.value
@@ -983,14 +985,13 @@ function ItemClass:BuildModListForSlotNum(baseList, slotNum)
 				local physInc = sumLocal(modList, "PhysicalDamage", "INC", 0)
 				
 				--品质加成		
-				
-				if  weaponData.QualityNotBonusPhysicalDamage then				
-					min = round(min * (1 + (physInc ) / 100))
-					max = round(max * (1 + (physInc ) / 100))
-				else				
-					min = round(min * (1 + (physInc + self.quality) / 100))
-					max = round(max * (1 + (physInc + self.quality) / 100))
+				local qualityScalar = self.quality
+				if sumLocal(modList, "AlternateQualityWeapon", "BASE", 0) > 0 then
+					qualityScalar = 0
 				end
+				min = round(min * (1 + (physInc + qualityScalar) / 100))
+				max = round(max * (1 + (physInc + qualityScalar) / 100))
+				
 				 
 			end
 			if min > 0 and max > 0 then
@@ -1003,7 +1004,7 @@ function ItemClass:BuildModListForSlotNum(baseList, slotNum)
 				end
 			end
 		end
-		weaponData.CritChance = round(self.base.weapon.CritChanceBase * (1 + sumLocal(modList, "CritChance", "INC", 0) / 100), 2)
+		weaponData.CritChance = round(self.base.weapon.CritChanceBase * (1 + (sumLocal(modList, "CritChance", "INC", 0) + m_floor(self.quality / 4 * sumLocal(modList, "AlternateQualityLocalCritChancePer4Quality", "INC", 0))) / 100), 2)
 		for _, value in ipairs(modList:List(nil, "WeaponData")) do
 			weaponData[value.key] = value.value
 		end
@@ -1045,18 +1046,16 @@ function ItemClass:BuildModListForSlotNum(baseList, slotNum)
 		local energyShieldInc = sumLocal(modList, "EnergyShield", "INC", 0)
 		local armourEnergyShieldInc = sumLocal(modList, "ArmourAndEnergyShield", "INC", 0)
 		local defencesInc = sumLocal(modList, "Defences", "INC", 0)
-		for _, value in ipairs(modList:List(nil, "ArmourData")) do
-			armourData[value.key] = value.value
-		end
 		
-		local qualityBonus = self.quality
-		if  armourData.QualityNotBonusDefences then 
-			qualityBonus = 0
+		local qualityScalar = self.quality
+		if sumLocal(modList, "AlternateQualityArmour", "BASE", 0) > 0 then
+			qualityScalar = 0
 		end
+		armourData.Armour = round((armourBase + armourEvasionBase + armourEnergyShieldBase) * (1 + (armourInc + armourEvasionInc + armourEnergyShieldInc + defencesInc + qualityScalar) / 100))
+		armourData.Evasion = round((evasionBase + armourEvasionBase + evasionEnergyShieldBase) * (1 + (evasionInc + armourEvasionInc + evasionEnergyShieldInc + defencesInc + qualityScalar) / 100))
+		armourData.EnergyShield = round((energyShieldBase + evasionEnergyShieldBase + armourEnergyShieldBase) * (1 + (energyShieldInc + armourEnergyShieldInc + evasionEnergyShieldInc + defencesInc + qualityScalar) / 100))
+		 
 		
-		armourData.Armour = round((armourBase + armourEvasionBase + armourEnergyShieldBase) * (1 + (armourInc + armourEvasionInc + armourEnergyShieldInc + defencesInc + qualityBonus) / 100))
-		armourData.Evasion = round((evasionBase + armourEvasionBase + evasionEnergyShieldBase) * (1 + (evasionInc + armourEvasionInc + evasionEnergyShieldInc + defencesInc + qualityBonus) / 100))
-		armourData.EnergyShield = round((energyShieldBase + evasionEnergyShieldBase + armourEnergyShieldBase) * (1 + (energyShieldInc + armourEnergyShieldInc + evasionEnergyShieldInc + defencesInc + qualityBonus) / 100))
 		if self.base.armour.BlockChance then
 			armourData.BlockChance = self.base.armour.BlockChance + sumLocal(modList, "BlockChance", "BASE", 0)
 		end

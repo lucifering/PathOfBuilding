@@ -70,25 +70,7 @@ local function mergeKeystones(env)
 		end
 	end
 end
---[[
-local function mergeNotable(env)
-	local modDB = env.modDB
 
-	for _, name in ipairs(modDB:List(nil, "Notable")) do
-		name =fuckCnNotable(name)
-		if not env.notableAdded[name] then
-			env.notableAdded[name] = true	
-			if env.spec.allocNodes[env.spec.tree.notableMap[name].id]~=nil   then 
-				--print("已经点了")
-			else 			
-				--print("没点："..name)
-				--print_r(env.spec.tree.notableMap[name])
-				modDB:AddList(env.spec.tree.notableMap[name].modList)
-			end
-		end
-	end
-end
-]]--
 
 
 -- Calculate attributes and life/mana pools, and set conditions
@@ -526,7 +508,7 @@ modDB:NewMod("ActionSpeed", "INC", -effect, "冰冻")
 		end
 		if modDB:Flag(nil, "Condition:CanGainRage") or modDB:Sum("BASE", nil, "RageRegen") > 0 then
 			output.MaximumRage = modDB:Sum("BASE", skillCfg, "MaximumRage")
-			print("output.MaximumRage="..output.MaximumRage)
+			
 			modDB:NewMod("Multiplier:Rage", "BASE", 1, "Base", { type = "Multiplier", var = "RageStack", limit = output.MaximumRage })
 		end
 		if modDB:Sum("BASE", nil, "CoveredInAshEffect") > 0 then

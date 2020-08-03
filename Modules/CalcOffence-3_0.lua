@@ -1446,7 +1446,7 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 					end
 					t_insert(globalBreakdown.ExertedAttackUptimeRatio, s_format("= %d%%", globalOutput.ExertedAttackUptimeRatio))
 				end
-				print("globalOutput.ExertedAttackUptimeRatio ="..globalOutput.ExertedAttackUptimeRatio )
+				
 				if globalOutput.ExertedAttackUptimeRatio > 0 then
 					local incExertedAttacks = skillModList:Sum("INC", cfg, "ExertIncrease")
 					local moreExertedAttacks = skillModList:Sum("MORE", cfg, "ExertIncrease")
@@ -1677,8 +1677,8 @@ t_insert(breakdown[damageType], s_format("%s%d 至 %d ^8(附加伤害)", plus, a
 					
 					local moreMin = m_floor(skillModList:More(cfg, damageType.."Min") * 100 + 0.50000001) / 100
 					local moreMax = m_floor(skillModList:More(cfg, damageType.."Max") * 100 + 0.50000001) / 100
---	print("moreMin>>="..moreMin)
---	print("moreMax>>="..moreMax)
+
+
 					if damageType == 'Physical'   then
 						if moreMin~=nil and moreMin~=1 and moreMax~=nil and moreMax~=1 then
 							t_insert(breakdown[damageType], s_format("= %.1f 至 %.1f", baseMin, baseMax))								
@@ -1747,7 +1747,7 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 						if output.FistOfWarHitEffect ~= 1 then
 						t_insert(breakdown[damageType], s_format("x %.2f ^8(【战争铁拳】加成)", output.FistOfWarHitEffect))
 						end
-						print("globalOutput.OffensiveWarcryEffect="..globalOutput.OffensiveWarcryEffect)
+						
 						if globalOutput.OffensiveWarcryEffect ~= 1  and not activeSkill.skillModList:Flag(nil, "Condition:WarcryMaxHit") then
 							t_insert(breakdown[damageType], s_format("x %.2f ^8(综合战吼增助效果加成)", globalOutput.OffensiveWarcryEffect))
 						end
@@ -3365,9 +3365,10 @@ t_insert(breakdown.EnemyStunDuration, s_format("/ %.2f ^8(延长/缩短 敌人�
 		if skillModList:Flag(cfg, "Condition:CanGainRage")  then
 			skillFlags.rage = true
 			local rageStacks =  skillModList:Sum("BASE", cfg, "Multiplier:Rage") +skillModList:Sum("BASE", cfg, "Rage")			
-			local maxRageStacks = data.misc.RageMax + skillModList:Sum("BASE", cfg, "RageMax")
+			local maxRageStacks =skillModList:Sum("BASE", cfg, "MaximumRage")
 			local rageDuration = (data.misc.RageDurationBase + skillModList:Sum("BASE", cfg, "RageDuration"))*
 			calcLib.mod(skillModList, cfg,  "RageDuration")
+			
 			globalOutput.RageStacks = rageStacks
 			globalOutput.MaxRageStacks = maxRageStacks
 			globalOutput.RageDuration = rageDuration

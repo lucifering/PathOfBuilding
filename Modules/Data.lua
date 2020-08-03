@@ -249,7 +249,7 @@ data.misc = { -- magic numbers
 	PurposefulHarbingerMaxBuffPercent = 40,
 	ImpaleDurationBase = 8,
 	ImpaleStacksMax =5,
-	RageMax = 50,
+	MaximumRage = 50,
 	RageDurationBase = 0.5,
 	
 }

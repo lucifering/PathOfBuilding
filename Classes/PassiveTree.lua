@@ -97,14 +97,12 @@ page = getFile("https://poe.game.qq.com/passive-skill-tree/")
 	for k, v in pairs(assert(loadstring(treeText))()) do
 		self[k] = v
 	end
-	--print_r(self.nodes[34098]);
+	
 	--永恒珠宝重点核心
 	--print("永恒珠宝重点核心:"..self.targetVersion)
 	for _, jewkey in ipairs(data[self.targetVersion].timelessJewelKeystone ) do
 	
-		 --print_r(self.nodes[#self.nodes-1]);
-		--local test={[jewkey.id]=jewkey}
-		
+		 
 		if versionNum >= 3.10 then
 			 local tnode = {}
 			 
@@ -134,7 +132,7 @@ page = getFile("https://poe.game.qq.com/passive-skill-tree/")
 			self.nodes[jewkey.id]=jewkey
 		end
 		 
-	--	 print_r(jewkey);
+	
 	end
 	
 	

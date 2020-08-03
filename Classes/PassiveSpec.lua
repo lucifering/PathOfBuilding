@@ -1211,8 +1211,7 @@ function PassiveSpecClass:allocTimeJew()
 						 --TimelessJewelNPC
 						 
 					end
-					--print(">>>>>>>>>>>jewName="..jewName);
-					--print(">>>>>>>>>>>npcName="..npcName);
+					
 					if  string.find(jewName, '残酷的约束') then  
 					
 						 for effectNodeId in pairs(node.nodesInRadius[3]) do

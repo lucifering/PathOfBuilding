@@ -36795,7 +36795,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/CorpsesNotable.png",
 			["stats"]= {
 				"近期内你若有消耗灵柩，则伤害提高 30%",
-				"【亵渎】和【亵渎之矛】 \\+(\\d+|(\\d+\\.\\d+)) 灵枢上限",
+				"【亵渎】和【亵渎之矛】 +2 灵枢上限",
 				"近期内你若有吞噬 1 个灵柩，则每秒回复 2% 最大生命"
 			},
 			["reminderText"]= {

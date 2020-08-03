@@ -10,6 +10,8 @@
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/tree-3_9.zip" part="tree-3_9"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/tree-3_10.zip" part="tree-3_10"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/tree.zip" part="tree"/>
+	
+	
 	<File sha1="1c5fc8635c60af26a1edd42a4067003f156a9b9c" name="Assets/patreon_logo.png" part="program"/>
 <File sha1="e08946c39a0509e744153b6e8d023e31ae7cf2ee" name="Launch.lua" part="program"/>
 <File sha1="b289483bf70febb92ec20a1fd4fe0a8d332b5bf4" name="GameVersions.lua" part="program"/>
@@ -132,7 +134,7 @@
 <File sha1="8b4d5923fda0b731d29df80b5b6e67e3ac1705bf" name="Data/3_0/Gems.lua" part="program"/>
 <File sha1="5071033b4058c0952e6d671cbf2a50ea969bb3c1" name="Data/3_0/Minions.lua" part="program"/>
 <File sha1="18e39c27008f5454d2ff643a05769de114bed5cc" name="Data/3_0/Misc.lua" part="program"/>
-<File sha1="abfe848496298d9f83a524a5c3d215093e87c018" name="Data/3_0/ModCache.lua" part="program"/>
+<File sha1="a82b17468561d32d0e29a053a9fbf143c44cd09d" name="Data/3_0/ModCache.lua" part="program"/>
 <File sha1="ecded1fbaf29069cac2c5ee5e124c335c24e71b2" name="Data/3_0/ModFlask.lua" part="program"/>
 <File sha1="48c7b090ee38128411e32e29484b905362025f5f" name="Data/3_0/ModItem.lua" part="program"/>
 <File sha1="4c857ae7eee20c19fdffc44a684b1e9322e8c0f0" name="Data/3_0/ModJewel.lua" part="program"/>
@@ -419,7 +421,6 @@
 <File sha1="351b940efd39cf3210babd01f8843b930a3c6165" name="TreeData/3_11/groups-3.png" part="program"/>
 <File sha1="4cc0cbd8db82bde4022e61b2ce2cdd14a97ffc78" name="TreeData/3_11/skills-3.jpg" part="program"/>
 <File sha1="59605ed221f67079e11263f6db657df024dcdd39" name="TreeData/3_11/skills-disabled-3.jpg" part="program"/>
-<File sha1="1e8ad8340fc134b240fd350d440a16486b1fbe1e" name="TreeData/3_11/tree.lua" part="program"/>
-
+<File sha1="a88c68089f17e0e821ff172f9222f4433b44b7a6" name="TreeData/3_11/tree.lua" part="program"/>
 
 </PoBVersion>

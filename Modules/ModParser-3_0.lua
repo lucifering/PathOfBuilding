@@ -1568,6 +1568,9 @@ end
 local gemIdLookup = { 
 ["power charge on critical strike"] = "SupportPowerChargeOnCrit"
 }
+local gemIdLookupPlayer = { 
+["power charge on critical strike"] = "SupportPowerChargeOnCrit"
+}
 
 local function  FuckSkillSupportCnName(support_skillname)
 
@@ -1580,8 +1583,19 @@ support_skillname=support_skillname:gsub("灵魂滋养","启迪（辅）"):gsub(
 :gsub("启迪辅助","启迪（辅）")
 :gsub("链爆地雷辅助","链爆地雷（辅）")
 
+return
+ gemIdLookupPlayer[support_skillname] or gemIdLookupPlayer[support_skillname:gsub("^提高","")] or
+ gemIdLookupPlayer[support_skillname.."(辅)"] or 
+ gemIdLookupPlayer[support_skillname.."（辅）"]   
+ or gemIdLookupPlayer[support_skillname:gsub("^提高","增加").."(辅)"]  
+ or gemIdLookupPlayer[support_skillname:gsub("^提高","增加").."（辅）"]  
+or gemIdLookupPlayer[support_skillname:gsub("先祖呼唤","先祖召唤").."(辅)"] 
+or gemIdLookupPlayer[support_skillname:gsub("先祖呼唤","先祖召唤").."（辅）"] 
+or gemIdLookupPlayer[support_skillname:gsub("渎神","诅咒光环").."(辅)"] 
+or gemIdLookupPlayer[support_skillname:gsub("渎神","诅咒光环").."（辅）"] 
+or gemIdLookupPlayer[support_skillname.."辅助"]
 
-return gemIdLookup[support_skillname] or gemIdLookup[support_skillname:gsub("^提高","")] or gemIdLookup[support_skillname.."(辅)"] or gemIdLookup[support_skillname.."（辅）"]   or gemIdLookup[support_skillname:gsub("^提高","增加").."(辅)"]  
+or gemIdLookup[support_skillname] or gemIdLookup[support_skillname:gsub("^提高","")] or gemIdLookup[support_skillname.."(辅)"] or gemIdLookup[support_skillname.."（辅）"]   or gemIdLookup[support_skillname:gsub("^提高","增加").."(辅)"]  
  or gemIdLookup[support_skillname:gsub("^提高","增加").."（辅）"]  
 or gemIdLookup[support_skillname:gsub("先祖呼唤","先祖召唤").."(辅)"] 
 or gemIdLookup[support_skillname:gsub("先祖呼唤","先祖召唤").."（辅）"] 
@@ -1618,7 +1632,14 @@ end
 
 
 for name, grantedEffect in pairs(data["3_0"].skills) do
-	--if not grantedEffect.hidden or grantedEffect.fromItem then
+		 if not grantedEffect.hidden or grantedEffect.fromItem then
+			if not gemIdLookupPlayer[grantedEffect.name:lower()] then
+				gemIdLookupPlayer[grantedEffect.name:lower()] = grantedEffect.id
+			elseif  not grantedEffect.hidden or grantedEffect.fromItem then
+				gemIdLookupPlayer[grantedEffect.name:lower()] = grantedEffect.id
+			end 
+		 end
+		 
 		if not gemIdLookup[grantedEffect.name:lower()] then
 			gemIdLookup[grantedEffect.name:lower()] = grantedEffect.id
 		elseif  not grantedEffect.hidden or grantedEffect.fromItem then
@@ -1628,6 +1649,12 @@ for name, grantedEffect in pairs(data["3_0"].skills) do
 end
 local function extraSkill(name, level, noSupports)
 	name = name:gsub(" skill","")
+	
+	if gemIdLookupPlayer[name] then
+		return { 
+			mod("ExtraSkill", "LIST", { skillId = gemIdLookupPlayer[name], level = level, noSupports = noSupports }) 
+		}
+	end
 	if gemIdLookup[name] then
 		return { 
 			mod("ExtraSkill", "LIST", { skillId = gemIdLookup[name], level = level, noSupports = noSupports }) 
@@ -1902,6 +1929,7 @@ local specialModList = {
 	["【异灵魔侍】的击中无法闪避"] = { mod("MinionModifier", "LIST", { mod = flag("CannotBeEvaded") }, { type = "SkillName", skillName = "召唤魔侍" }) }, --备注：summoned skeletons' hits can't be evaded
 	["每有 (%d+) 点敏捷，你的攻城炮台图腾数量上限便提高 1 个"] = function(num) return { mod("ActiveTotemLimit", "BASE", 1, { type = "SkillName", skillName = "攻城炮台" }, { type = "PerStat", stat = "Dex", div = num }) } end, 
 	["每有 (%d+) 敏捷，攻城炮台 %+1 召唤图腾数量上限"] = function(num) return { mod("ActiveTotemLimit", "BASE", 1, { type = "SkillName", skillName = "攻城炮台" }, { type = "PerStat", stat = "Dex", div = num }) } end, 
+	["每有 (%d+) 力量，散射弩炮 %+1 召唤图腾数量上限"] = function(num) return { mod("ActiveTotemLimit", "BASE", 1, { type = "SkillName", skillName = "散射弩炮" }, { type = "PerStat", stat = "Str", div = num }) } end, 
 	["【愤怒狂灵】击中后必定造成点燃"] = { mod("MinionModifier", "LIST", { mod = mod("EnemyIgniteChance", "BASE", 100) }, { type = "SkillName", skillName = "召唤愤怒狂灵" }) }, --备注：raging spirits' hits always 
 	["所有身上穿戴的物品皆为已腐化时，每秒回复 (%d+) 魔力"] = function(num) return {  mod("ManaRegen", "BASE", num,{ type = "MultiplierThreshold", var = "NonCorruptedItem", threshold = 0, upper = true })  } end,
 	["身上未装备已腐化的物品时，每秒回复 (%d+) 生命"] = function(num) return {  mod("LifeRegen", "BASE", num,{ type = "MultiplierThreshold", var = "CorruptedItem", threshold = 0, upper = true })  } end,
@@ -2444,7 +2472,11 @@ local specialModList = {
 	["若你至少拥有 (%d+) 层能量护盾，则每秒回复 (%d+) 生命"]= function(num1,_,num2) return { 
 	mod("LifeRegen", "BASE", num2,{ type = "StatThreshold", stat = "EnergyShield", threshold = num1 })  } end,
 	["血魔法"] = { mod("Keystone", "LIST", "祭血术") },
+	["凡人信念"] = { mod("Keystone", "LIST", "凡人的信念") },
+	["凡人的信念"] = { mod("Keystone", "LIST", "凡人的信念") },
 	["致死定罪"] = { mod("Keystone", "LIST", "致死定罪") },
+	["腐化的灵魂"] = { mod("Keystone", "LIST", "腐化的灵魂") },
+	["不朽野望"] = { mod("Keystone", "LIST", "不朽野望") },
 	["近距离用弓击中后的总伤害额外提高 (%d+)%%"] = function(num) return {  mod("Damage", "MORE", num,nil,bor(ModFlag.Bow, ModFlag.Hit) , { type = "Condition", var = "AtCloseRange" } )  } end,
 	["每个狂怒球可使攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack, { type = "Multiplier", var = "FrenzyCharge" })  } end, 
 	["移动时每有 1 个狂怒球，则每秒受到 (%d+) 冰霜伤害"]= function(num) return {  mod("ColdDegen", "BASE", num,{ type = "Multiplier", var = "FrenzyCharge" },{ type = "Condition", var = "Moving" })  } end, 
@@ -2754,6 +2786,7 @@ local specialModList = {
 		["近期内你若打出过暴击，则获得【玫红之舞】"] = { mod("Keystone", "LIST", "玫红之舞", { type = "Condition", var = "CritRecently" }) }, --备注：you have crimson dance if 
 	["近期内你若打出过暴击，则获得【瓦尔冥约】"] = { mod("Keystone", "LIST", "瓦尔冥约", { type = "Condition", var = "CritRecently" }) }, --备注：you have vaal pact if you've dealt a critical strike recently
 	["近期内你若没有被击中，则获得【狂热誓言】"] = { mod("Keystone", "LIST", "狂热誓言", { type = "Condition", var = "BeenHitRecently", neg = true }) }, --备注：you have zealot's oath if you haven't been hit recently
+	["近期内你若打出过暴击，则获得【完美苦痛】"] = { mod("Keystone", "LIST", "完美苦痛", { type = "Condition", var = "CritRecently" }) }, 
 	["魔像总伤害额外降低 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "MORE", -num) },{ type = "SkillType", skillType = SkillType.Golem })  } end,
 	["魔像总生命额外降低 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "MORE", -num) },{ type = "SkillType", skillType = SkillType.Golem })  } end,
 	["魔像的总伤害额外降低 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "MORE", -num) },{ type = "SkillType", skillType = SkillType.Golem })  } end,
@@ -4050,6 +4083,50 @@ local specialModList = {
 	 } end,
 	["敌人在你造成的冰缓区域里，受到的闪电伤害提高 (%d+)%%"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("LightningDamageTaken", "INC", num) }, { type = "ActorCondition", actor = "enemy", var = "InChillingArea" }) } end,
 	["有 (%d+)%% 几率使冰缓区域中的敌人【精疲力尽】"] = function(num) return { mod("SapChance", "BASE", num, { type = "ActorCondition", actor = "enemy", var = "InChillingArea" } ) } end,
+	["你没有智慧"] = function() return { mod("Int", "OVERRIDE", 0) } end,
+	["使用此武器的攻击有 (%d+)%% 暴击率"] = function(num) 
+		return { mod("CritChance", "OVERRIDE", num, { type = "Condition",  var = "{Hand}Attack" } ) } end,
+	["周围每个灵枢使你每秒回复 ([%d%.]+)%% 生命，每秒最多 ([%d%.]+)%%"] = function(num, _, limit) 
+	 return {  
+	 mod("LifeRegenPercent", "BASE", num,{ type = "Multiplier", var = "NearbyCorpse", limit = tonumber(limit), limitTotal = true })
+	  } end,
+	["每个激活的图腾提供 %+(%d+) 护甲"] = function(num) 
+		return { mod("Armour", "BASE", num, { type = "PerStat",  stat = "ActiveTotemLimit" } ) } end,
+	["每个烙印可使暴击几率提高 (%d+)%%"] = function(num) 
+		return { mod("CritChance", "INC", num, { type = "PerStat", stat = "ActiveBrandLimit" }) } end,
+	["对敌人的闪电异常效果持续时间延长 (%d+)%%"] = function(num) return { 
+		mod("EnemyShockDuration", "INC", num),
+		mod("EnemySapDuration", "INC", num)
+		} end,
+	["对敌人的冰霜异常效果持续时间延长 (%d+)%%"] = function(num) return { 
+		mod("EnemyFreezeDuration", "INC", num),
+		mod("EnemyChillDuration", "INC", num),
+		mod("EnemyBrittleDuration", "INC", num)
+		} end,
+	["对敌人的火焰异常效果持续时间延长 (%d+)%%"] = function(num) return { 
+		mod("EnemyIgniteDuration", "INC", num),
+		mod("EnemyScorchDuration", "INC", num)
+		} end,
+	["闪电异常效果提高 (%d+)%%"] = function(num) return { 
+		mod("EnemyShockEffect", "INC", num),
+		mod("EnemySapEffect", "INC", num)
+		} end,
+	["冰霜异常效果提高 (%d+)%%"] = function(num) return { 
+		mod("EnemyFreezeEffect", "INC", num),
+		mod("EnemyChillEffect", "INC", num),
+		mod("EnemyBrittleEffect", "INC", num)
+		} end,
+	["火焰异常效果提高 (%d+)%%"] = function(num) return { 
+		mod("EnemyIgniteEffect", "INC", num),
+		mod("EnemyScorchEffect", "INC", num)
+		} end,
+	["若近期你没有格挡，则暴击几率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", tonumber(num),{ type = "Condition", var = "BlockedRecently" , neg = true}  )  } end, 
+	["【闪现射击】和【魅影射击】的冷却回复速度提高 (%d+)%%"]= function(num) return {  
+	mod("CooldownRecovery", "INC", tonumber(num),{ type = "SkillName", skillName = "闪现射击" }  ),
+	mod("CooldownRecovery", "INC", tonumber(num),{ type = "SkillName", skillName = "魅影射击" }  )
+	  } end, 
+	["【风暴烙印】的伤害会穿透带有烙印敌人闪电抗性的 (%d+)%%"]= function(num) return {  
+	mod("LightningPenetration", "BASE", tonumber(num),{ type = "SkillName", skillName = "风暴烙印" },{ type = "MultiplierThreshold", var = "BrandsAttachedToEnemy", threshold = 1 }  )  } end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded
@@ -4284,7 +4361,7 @@ minus = -tonumber(minus)
 	["[at][tr][ti][ag][cg][ke]r? w?i?t?h? (.+) when you take a critical strike"] = function( _, skill) return extraSkill(skill, 1, true) end,
 	["暴击时触发【(.+)】"] = function( _, skill) return extraSkill(skill, 1, true) end, --备注：trigger (.+) on critical strike
 	["你被暴击时触发【(.+)】"] = function( _, skill) return extraSkill(skill, 1, true) end, --备注：triggers? (.+) when you take a critical strike
-	["此物品上的【(.+)技能石】由 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = gemIdLookup[support] or gemIdLookup[support:gsub("^increased ","")] or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
+	["此物品上的【(.+)技能石】由 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support) or FuckSkillSupportCnName(support:gsub("^increased ","")) or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
 	-- Conversion
 	["召唤生物伤害提高或降低，将同样套用于自身"] = { flag("MinionDamageAppliesToPlayer") }, --备注：increases and reductions to minion damage also affects? you
 	["召唤生物攻击速度的加成同时套用于你身上"] = { flag("MinionAttackSpeedAppliesToPlayer") }, --备注：increases and reductions to minion attack speed also affects? you
@@ -4391,7 +4468,7 @@ minus = -tonumber(minus)
 		mod("EnemyModifier", "LIST", { mod = mod("ElementalResist", "BASE", num, { type = "MultiplierThreshold", var = "Spider's WebStack", threshold = 1 }) }),
 		mod("EnemyModifier", "LIST", { mod = mod("ChaosResist", "BASE", num, { type = "MultiplierThreshold", var = "Spider's WebStack", threshold = 1 }) }),
 	} end,
-	["你受到 (%d+) 级【(%D+)】的诅咒"] = function(num, _, name) return { mod("ExtraCurse", "LIST", { skillId = gemIdLookup[name], level = num, applyToPlayer = true }) } end, --备注：you are cursed with level (%d+) (%D+)
+	["你受到 (%d+) 级【(%D+)】的诅咒"] = function(num, _, name) return { mod("ExtraCurse", "LIST", { skillId = FuckSkillSupportCnName(name), level = num, applyToPlayer = true }) } end, --备注：you are cursed with level (%d+) (%D+)
 	["you count as on low life while you are cursed with vulnerability"] = { flag("Condition:LowLife", { type = "Condition", var = "AffectedByVulnerability" }) },
 	["近期内你每吞噬过 1 个灵柩，你和周围队友每秒回复 (%d+)%% 生命"] = function (num) return { mod("ExtraAura", "LIST", { mod = mod("LifeRegenPercent", "BASE", num) }, { type = "Condition", var = "ConsumedCorpseRecently" }) } end, --备注：if you consumed a corpse recently, you and nearby allies regenerate (%d+)%% of life per second
 	-- Traps, Mines and Totems
@@ -4541,7 +4618,7 @@ minus = -tonumber(minus)
 	["使用时制造奉献地面"] = { }, --备注：creates consecrated ground on use
 	["药剂持续期间，获得不洁之力"] = { flag("Condition:UnholyMight", { type = "Condition", var = "UsingFlask" }) }, --备注：gain unholy might during flask effect
 	["药剂持续期间获得【狂热誓言】"] = { mod("ZealotsOath", "FLAG", true, { type = "Condition", var = "UsingFlask" }) }, --备注：zealot's oath during flask effect
-	["药剂持续期间，获得 (%d+) 级的【(.+)】诅咒光环"] = function(num, _, skill) return { mod("ExtraCurse", "LIST", { skillId = gemIdLookup[skill:gsub(" skill","")] or "Unknown", level = num }, { type = "Condition", var = "UsingFlask" }) } end, --备注：grants level (%d+) (.+) curse aura during flask effect
+	["药剂持续期间，获得 (%d+) 级的【(.+)】诅咒光环"] = function(num, _, skill) return { mod("ExtraCurse", "LIST", { skillId = FuckSkillSupportCnName(skill:gsub(" skill","")) or "Unknown", level = num }, { type = "Condition", var = "UsingFlask" }) } end, --备注：grants level (%d+) (.+) curse aura during flask effect
 	["药剂持续期间，你绝对抗性最低的元素属性，会使你受到的该属性伤害降低 (%d+)%%"] = function(num) return { --备注：during flask effect, (%d+)%% reduced damage taken of each element for which your uncapped elemental resistance is lowest
 		mod("LightningDamageTaken", "INC", -num, { type = "StatThreshold", stat = "LightningResistTotal", thresholdStat = "ColdResistTotal", upper = true }, { type = "StatThreshold", stat = "LightningResistTotal", thresholdStat = "FireResistTotal", upper = true }),
 		mod("ColdDamageTaken", "INC", -num, { type = "StatThreshold", stat = "ColdResistTotal", thresholdStat = "LightningResistTotal", upper = true }, { type = "StatThreshold", stat = "ColdResistTotal", thresholdStat = "FireResistTotal", upper = true }),

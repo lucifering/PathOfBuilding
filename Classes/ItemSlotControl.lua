@@ -59,6 +59,12 @@ local typeLabel = {
 { label = "深渊珠宝#14", slotName = "Abyssal #14" },
 { label = "深渊珠宝#15", slotName = "Abyssal #15" },
 
+{ label = "深渊珠宝#16", slotName = "Abyssal #16" },
+{ label = "深渊珠宝#17", slotName = "Abyssal #17" },
+{ label = "深渊珠宝#18", slotName = "Abyssal #18" },
+{ label = "深渊珠宝#19", slotName = "Abyssal #19" },
+{ label = "深渊珠宝#20", slotName = "Abyssal #20" },
+{ label = "深渊珠宝#21", slotName = "Abyssal #21" },
 
 }
 local ItemSlotClass = newClass("ItemSlotControl", "DropDownControl", function(self, anchor, x, y, itemsTab, slotName, slotLabel, nodeId)

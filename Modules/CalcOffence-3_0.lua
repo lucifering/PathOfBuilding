@@ -1542,6 +1542,7 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 				local base = skillModList:Sum("BASE", cfg, "CritChance") + (env.mode_effective and enemyDB:Sum("BASE", nil, "SelfCritChance") or 0)
 				local inc = skillModList:Sum("INC", cfg, "CritChance") + (env.mode_effective and enemyDB:Sum("INC", nil, "SelfCritChance") or 0)
 				local more = skillModList:More(cfg, "CritChance")
+				local override = skillModList:Override(cfg, "CritChance")
 				output.CritChance = (baseCrit + base) * (1 + inc / 100) * more
 				local preCapCritChance = output.CritChance
 				output.CritChance = m_min(output.CritChance, 100)
@@ -1553,6 +1554,8 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 				if env.mode_effective and skillModList:Flag(cfg, "CritChanceLucky") then
 					output.CritChance = (1 - (1 - output.CritChance / 100) ^ 2) * 100
 				end
+				
+				output.CritChance = override or output.CritChance
 				local preHitCheckCritChance = output.CritChance
 				if env.mode_effective then
 					output.CritChance = output.CritChance * output.HitChance / 100
@@ -1579,6 +1582,9 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 						t_insert(breakdown.CritChance, "暴击几率是幸运的:")
 						t_insert(breakdown.CritChance, s_format("1 - (1 - %.4f) x (1 - %.4f)", preLuckyCritChance / 100, preLuckyCritChance / 100))
 						t_insert(breakdown.CritChance, s_format("= %.2f%%", preHitCheckCritChance))
+					end
+					if override  then 
+						t_insert(breakdown.CritChance, s_format("暴击率覆盖:%.2f%%", override))				
 					end
 					if env.mode_effective and output.HitChance < 100 then
 						t_insert(breakdown.CritChance, "暴击确认:")

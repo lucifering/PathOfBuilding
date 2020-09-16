@@ -147,7 +147,18 @@ self.controls.setManage = new("ButtonControl", {"LEFT",self.controls.setSelect,"
 				swapSlot.abyssalSocketList[i] = abyssal
 			end
 		end
-		if slotName == "Weapon 1" or slotName == "Weapon 2" or slotName == "Helmet" or slotName == "Gloves" or slotName == "Body Armour" or slotName == "Boots" or slotName == "Belt" then
+		if slotName == "Body Armour" then 
+		-- Add Abyssal Socket slots
+			for i = 1, 6 do
+				local abyssal = new("ItemSlotControl", {"TOPLEFT",prevSlot,"BOTTOMLEFT"}, 0, 0, self, slotName.." Abyssal Socket "..i, "Abyssal #"..i)					
+				addSlot(abyssal)
+				abyssal.parentSlot = slot			
+				 
+				slot.abyssalSocketList[i] = abyssal
+				
+			end
+		end 
+		if slotName == "Weapon 1" or slotName == "Weapon 2" or slotName == "Helmet" or slotName == "Gloves"  or slotName == "Boots" or slotName == "Belt" then
 			-- Add Abyssal Socket slots
 			for i = 1, 2 do
 				local abyssal = new("ItemSlotControl", {"TOPLEFT",prevSlot,"BOTTOMLEFT"}, 0, 0, self, slotName.." Abyssal Socket "..i, "Abyssal #"..i)					

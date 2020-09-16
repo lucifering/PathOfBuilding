@@ -97,6 +97,19 @@ for line in io.lines("luafiles-tree-3_11.txt") do
 			fileW:flush()			 
 			
 end	
+for line in io.lines("luafiles-tree-3_12.txt") do		
+		
+			 
+			local fileR = io.open(path..line, "rb")
+			print(line)
+			local content = fileR:read("*a")
+			fileR:close()
+			fileW:write("<File sha1=\""..sha1(content).."\" name=\""..line.."\" part=\"program\"/>\r\n")
+			fileW:flush()			 
+			
+end	
+
+
 fileW:close()
 
  

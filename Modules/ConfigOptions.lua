@@ -216,7 +216,7 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 	end },
 { label = "【法术凝聚】:", ifSkill = "法术凝聚（辅）" },
 	{ var = "intensifyIntensity", type = "count", label = "# 层【法术凝聚】:", ifSkill = "法术凝聚（辅）", apply = function(val, modList, enemyModList)
-		modList:NewMod("Multiplier:Intensity", "BASE", m_min(val, 4), "Config")
+		modList:NewMod("Multiplier:Intensity", "BASE",val, "Config")
 	end },
 { label = "【肉盾（辅）】:", ifSkill = "肉盾（辅）" },
 	{ var = "conditionMeatShieldEnemyNearYou", type = "check", label = "敌人在你附近?", ifSkill = "肉盾（辅）", apply = function(val, modList, enemyModList)

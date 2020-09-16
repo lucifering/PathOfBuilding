@@ -194,7 +194,8 @@ local function doActorAttribsPoolsConditions(env, actor)
 --计算 属性
 	-- Calculate attributes
 	for _, stat in pairs({"Str","Dex","Int","Devotion"}) do
-		output[stat] = m_max(round(calcLib.val(modDB, stat)), 0)
+		output[stat] = m_max(round(calcLib.val(modDB, stat)), 0)		
+		output[stat] = modDB:Override(nil,stat)	 or output[stat]
 		if breakdown then
 			breakdown[stat] = breakdown.simple(nil, nil, output[stat], stat)
 		end
@@ -209,11 +210,14 @@ local function doActorAttribsPoolsConditions(env, actor)
 	condList["StrHigherThanInt"] = output.Str > output.Int
 --大于小于之后重新计算属性（如：力量高于智慧时，敏捷提高 15%）
 	for _, stat in pairs({"Str","Dex","Int"}) do
-		output[stat] = m_max(round(calcLib.val(modDB, stat)), 0)
+		output[stat] = m_max(round(calcLib.val(modDB, stat)), 0)		
+		output[stat] = modDB:Override(nil,stat)	 or output[stat]
 		if breakdown then
 			breakdown[stat] = breakdown.simple(nil, nil, output[stat], stat)
 		end
 	end
+	
+	
 	-- Add attribute bonuses
 	if not modDB:Flag(nil, "NoStrBonusToLife") and not modDB:Flag(nil, "NoAttributeBonus") then
 		modDB:NewMod("Life", "BASE", m_floor(output.Str / 2), "力量")

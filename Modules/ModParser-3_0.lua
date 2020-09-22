@@ -300,6 +300,7 @@ local modNameList = {
 	["对投射物伤害格挡几率"] = "ProjectileBlockChance",
 	["对投射物格挡几率"] = "ProjectileBlockChance",
 	["你身上的秘术增强效果"] = "秘术增强Effect",
+	 ["魔蛊持续时间"] = { "Duration", tag = { type = "SkillType", skillType = SkillType.Hex } },
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -760,6 +761,9 @@ local modFlagList = {
 	["爪或匕首攻击时，"] = { flags = ModFlag.Hit, tag = { type = "ModFlagOr", modFlags = bor(ModFlag.Claw, ModFlag.Dagger) } },
 	["吟唱技能的"] = { tag = { type = "SkillType", skillType = SkillType.Channelled } },
 	["弓技能的"] = { keywordFlags = KeywordFlag.Bow },
+	["魔蛊技能的"] = { tag = { type = "SkillType", skillType = SkillType.Hex } },
+		["魔蛊的"] = { tag = { type = "SkillType", skillType = SkillType.Hex } },
+		["魔蛊技能"] = { tag = { type = "SkillType", skillType = SkillType.Hex } },
 	--【中文化程序额外添加结束】
 	["斧类攻击的"] = { flags = bor(ModFlag.Axe, ModFlag.Hit) }, --备注：with axes
 	["to axe attacks"] = { flags = bor(ModFlag.Axe, ModFlag.Hit) },
@@ -1294,6 +1298,9 @@ local modTagList = {
 	["处于【沙姿态】时，"] = { tag = { type = "Condition", var = "SandStance" } },	
 	["血姿态下，"] = { tag = { type = "Condition", var = "BloodStance" } },	
 	["沙姿态下，"] = { tag = { type = "Condition", var = "SandStance" } },	
+	["对咒印标记的敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Marked" }, keywordFlags = KeywordFlag.Hit },
+		["击中被咒印标记的敌人时会"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Marked" }, keywordFlags = KeywordFlag.Hit },
+		["来自被咒印标记的敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Marked" } },
 	["若近期内有冰冻过敌人，则"] = { tag = { type = "Condition", var = "FrozenEnemyRecently" } },
 		["若近期内有冰缓过敌人，则"] = { tag = { type = "Condition", var = "ChilledEnemyRecently" } },
 		["若近期内有点燃过敌人，则"] = { tag = { type = "Condition", var = "IgnitedEnemyRecently" } },
@@ -2534,6 +2541,7 @@ local specialModList = {
 	mod("ChaosMin", "BASE", tonumber(num1), { type = "InSlot", num = 2 }),
 	mod("ChaosMax", "BASE", tonumber(num2), { type = "InSlot", num = 2 }),
 	} end, 
+	["不洁之力"] = { flag("Condition:UnholyMight") }, 
 	["点燃敌人时获得 %d+ 秒【她的拥抱】效果"] = { flag("Condition:CanGainHerEmbrace") }, 
 	["召唤生物的攻击额外造成 (%d+) %- (%d+) 物理伤害"]= function(_,num1,num2) return {mod("MinionModifier", "LIST", {mod=mod("PhysicalMin","BASE",num1,nil,ModFlag.Attack )  }),mod("MinionModifier", "LIST", { mod = mod("PhysicalMax", "BASE", num2,nil,ModFlag.Attack )})} end,
 	["近期内你若被击中过，则每有 1 个耐力球，就会每秒受到 (%d+) 火焰伤害"]
@@ -3730,11 +3738,11 @@ local specialModList = {
 	 ["你对敌人造成的每个凋零使其承受的击中元素伤害提高 (%d+)%%"] = function(num) return {
 	 mod("ExtraSkillMod", "LIST", { 
 	 mod = mod("ElementalDamageTaken", "INC", tonumber(num), 
-	 { type = "GlobalEffect", effectType = "Debuff", effectName = "死亡凋零", effectStackVar = "WitheredStackCount" }) }) } end,
+	 { type = "GlobalEffect", effectType = "Debuff", effectName = "死亡凋零", effectStackVar = "WitheredStack" }) }) } end,
 	 ["给敌人施加的每个【枯萎】都使它们从你的击中中受到的元素伤害提高 (%d+)%%"] = function(num) return {
 	 mod("ExtraSkillMod", "LIST", { 
 	 mod = mod("ElementalDamageTaken", "INC", tonumber(num), 
-	 { type = "GlobalEffect", effectType = "Debuff", effectName = "死亡凋零", effectStackVar = "WitheredStackCount" }) }) } end,
+	 { type = "GlobalEffect", effectType = "Debuff", effectName = "死亡凋零", effectStackVar = "WitheredStack" }) }) } end,
 	["你的击中无法穿透或忽视元素抗性"] = { flag("CannotIgnoreElementalResistances"),flag("CannotElementalPenetration")},
 	["你的击中无法穿透或无视元素抗性"] = { flag("CannotIgnoreElementalResistances"),flag("CannotElementalPenetration")},
 	["无法造成非闪电伤害"] = {  flag("DealNoCold"), flag("DealNoFire"), flag("DealNoPhysical"), flag("DealNoChaos")},
@@ -4127,6 +4135,36 @@ local specialModList = {
 	  } end, 
 	["【风暴烙印】的伤害会穿透带有烙印敌人闪电抗性的 (%d+)%%"]= function(num) return {  
 	mod("LightningPenetration", "BASE", tonumber(num),{ type = "SkillName", skillName = "风暴烙印" },{ type = "MultiplierThreshold", var = "BrandsAttachedToEnemy", threshold = 1 }  )  } end, 
+	["施放光环图腾技能时需要的魔力降低 (%d+)%%"] = function(num) return { 
+		mod("ManaCost", "INC", -num,nil,nil, KeywordFlag.Totem,{ type = "SkillType", skillType = SkillType.Aura }),
+		} end,
+	["非持续吟唱技能总魔力消耗 %-(%d+)"] = function(num) return { 
+		mod("ManaCost", "BASE", -num,{ type = "SkillType", skillType = SkillType.Channelled, neg = true } ),
+		} end,
+	["受到【清晰】影响时，非持续吟唱技能的总魔力消耗 %-(%d+)"] = function(num) return { 
+		mod("ManaCost", "BASE", -num,{ type = "SkillType", skillType = SkillType.Channelled, neg = true },{ type = "Condition", var = "AffectedBy清晰" } ),
+		} end,
+	["装备在主手时，召唤的魔侍复制此武器"] =  
+		   { mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "minionUses", value = "Weapon 1" }) },
+			{ type = "SkillName", skillNameList = { "召唤魔侍"} },{ type = "SlotNumber", num = 1 }) },	
+	["当你近期使用此武器击中时，召唤的魔侍使用此武器的伤害为三倍"]	
+		 = {  
+		 mod("MinionModifier", "LIST", { mod =
+		 mod("DoubleDamageChance", "BASE", 100, nil, ModFlag.Hit, { type = "Condition", var = "MainHandAttack" }) }) 
+		 }, 
+	["被咒印标记的敌人承受的伤害提高 (%d+)%%"] = function(num) return {
+			mod("EnemyModifier", "LIST", { mod = mod("DamageTaken", "INC", num) }, {type = "ActorCondition", actor = "enemy", var = "Marked"}),
+		} end,
+	["被咒印标记的敌人命中率降低 (%d+)%%"] = function(num) return {
+			mod("EnemyModifier", "LIST", { mod = mod("Accuracy", "INC", -num) }, {type = "ActorCondition", actor = "enemy", var = "Marked"}),
+		} end,
+	["你施放的魔蛊有 %+(%d+) 层末日之力数量上限"] = function(num) return { mod("MaxDoom", "BASE", num) } end,	
+		["魔蛊技能范围提高 (%d+)%%"]= function(num) return { mod("AreaOfEffect", "INC", num, { type = "SkillType", skillType = SkillType.Hex } ) } end,
+	["被【法术凝聚（辅）】辅助的技能有 %+(%d) 最大层"] = function(num) return { mod("Multiplier:IntensityLimit", "BASE", num) } end,
+		["freeze chilled enemies as though dealing (%d+)%% more damage"] = function(num) return { mod("FreezeAsThoughDealing", "MORE", num, { type = "ActorCondition", actor = "enemy", var = "Chilled" } ) } end,
+		["you have perfect agony if you've dealt a critical strike recently"] = {mod("Keystone", "LIST", "Perfect Agony", { type = "Condition", var = "CritRecently" })},
+		["grants eldritch battery during flask effect"] = { mod("Keystone", "LIST", "Eldritch Battery", { type = "Condition", var = "UsingFlask" }) },
+		["increases and reductions to cast speed apply to attack speed at (%d+)%% of their value"] =  function(num) return { flag("CastSpeedAppliesToAttacks"), mod("ImprovedCastSpeedAppliesToAttacks", "INC", num) } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded
@@ -4720,33 +4758,8 @@ minus = -tonumber(minus)
 	["【幻化之刃德尔维希】会使你主手和副手武器装备栏失效"] = { }, --备注：manifeste?d? dancing dervish disables both weapon slots
 	["【幻化之刃德尔维希】在暴走结束时死亡"] = { }, --备注：manifeste?d? dancing dervish dies when rampage ends
 }
-local keystoneList = {
-	-- List of keystones that can be found on uniques
-"移形换影",
-"先祖魂约",
-"箭矢闪跃",
-"火之化身",
-"祭血术",
-"能量连接",
-"玫红之舞",
-"异能魔力",
-"元素之相",
-"元素超载",
-"灵能护体",
-"钢铁之握",
-"霸体",
-"心灵升华",
-"复仇之灵",
-"苦痛灵曲",
-"完美苦痛",
-"移灵换影",
-"零点射击",
-"坚毅之心",
-"烈士意志",
-"瓦尔冥约",
-"狂热誓言",
-}
-for _, name in pairs(keystoneList) do
+
+for _, name in pairs(data.keystones) do
 	specialModList[name:lower()] = { mod("Keystone", "LIST", name) }
 end
 local oldList = specialModList
@@ -5324,6 +5337,10 @@ local jewelThresholdFuncs = {
 	["若范围内含有 40 点力量，则【劈砍】击中时获得护体效果"] = getThreshold("Str", "ExtraSkillMod", "LIST", { mod = mod("Condition:Fortify", "FLAG", true) }, { type = "SkillName", skillName = "劈砍" }),
 	["若范围内至少有 40 点智慧，【火球】无法【点燃】"] = getThreshold("Int", "ExtraSkillMod", "LIST", { mod = mod("CannotIgnite", "FLAG", true) }, { type = "SkillName", skillName = "火球" }),	
 
+["若范围内至少有 40 点智慧，【解放】的总范围效果额外缩小 60%"] = getThreshold("Int", "ExtraSkillMod", "LIST", { mod = mod("AreaOfEffect", "MORE", -60) }, { type = "SkillName", skillName = "解放" }),	
+
+["若范围内至少有 40 点智慧，【解放】的总伤害额外降低 60%"] = getThreshold("Int", "ExtraSkillMod", "LIST", { mod = mod("Damage", "MORE", -60) }, { type = "SkillName", skillName = "解放" }),	
+["若范围内至少有 40 点智慧，【解放】的基础冷却时间为 250 毫秒"] = getThreshold("Int", "CooldownRecovery", "OVERRIDE", 0.25, { type = "SkillName", skillName = "解放" }),
 
 	
 	

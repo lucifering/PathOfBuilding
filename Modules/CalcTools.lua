@@ -156,6 +156,13 @@ function calcLib.getGemStatRequirement(level, isSupport, multi)
     return req < 14 and 0 or req
 end
 
+function string.starts(String,Start)
+   return string.sub(String,1,string.len(Start))==Start
+end
+function string.ends(String,End)
+   return End=='' or string.sub(String,-string.len(End))==End
+end
+
 function print_r ( t )  
     local print_r_cache={}
     local function sub_print_r(t,indent)
@@ -187,7 +194,7 @@ function print_r ( t )
     end
     if (type(t)=="table") then
         print(tostring(t).." {")
-        sub_print_r(t,"  ")
+       sub_print_r(t,"  ")
         print("}")
     else
         sub_print_r(t,"  ")
@@ -195,13 +202,22 @@ function print_r ( t )
     print()
 end
 -- Build table of stats for the given skill instance
-function calcLib.buildSkillInstanceStats(skillInstance, grantedEffect)
+function calcLib.buildSkillInstanceStats(skillInstance, grantedEffect, spGemQuality)
 
 	
 	local stats = { }
 	if skillInstance.quality > 0 then
-		for _, stat in ipairs(grantedEffect.qualityStats) do
-			stats[stat[1]] = (stats[stat[1]] or 0) + m_floor(stat[2] * skillInstance.quality)
+		local qualityId = skillInstance.qualityId or "Default"
+		local qualityStats = grantedEffect.qualityStats[qualityId]
+		if not qualityStats then
+			qualityStats = grantedEffect.qualityStats
+		end
+		for _, stat in ipairs(qualityStats) do
+			if spGemQuality then 
+				stats["[GEM_Q]"..stat[1]] = (stats[stat[1]] or 0) + m_floor(stat[2] * skillInstance.quality)
+			else
+				stats[stat[1]] = (stats[stat[1]] or 0) + m_floor(stat[2] * skillInstance.quality)
+			end 
 		end
 	end
 	local level = grantedEffect.levels[skillInstance.level]
@@ -209,6 +225,7 @@ function calcLib.buildSkillInstanceStats(skillInstance, grantedEffect)
 	local actorLevel = skillInstance.actorLevel or level.levelRequirement
 	
 	for index, stat in ipairs(grantedEffect.stats) do
+				
 		local statValue
 	--	print_r(skillInstance)
 		if level.statInterpolation[index] == 3 then

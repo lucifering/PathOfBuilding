@@ -159,14 +159,17 @@ modList:NewMod("Multiplier:BannerStage", "BASE", m_min(val, 50), "Config", { typ
 		modList:NewMod("BonechillEffect", "OVERRIDE", m_min(val, 30), "Config")
 		modList:NewMod("DesiredBonechillEffect", "BASE", m_min(val, 30), "Config")
 	end },
-	
+
 { label = "烙印技能:", ifSkillList = { "末日烙印", "风暴烙印","奥法烙印" ,"忏悔烙印","冬潮烙印"} }, -- I barely resisted the temptation to label this "Generic Brand:"
 { var = "BrandsAttachedToEnemy", type = "count", label = "附着到敌人身上的烙印：", ifSkillList = {  "末日烙印", "风暴烙印","奥法烙印" ,"忏悔烙印","冬潮烙印"}, apply = function(val, modList, enemyModList)
 	
 		modList:NewMod("Multiplier:ConfigBrandsAttachedToEnemy", "BASE", val, "Config")
 	end },
 
- 	
+{ label = "腐化魔像:", ifSkill = "召唤腐化魔像" },
+	{ var = "carrionGolemNearbyMinion", type = "count", label = "#周围非魔像召唤生物数量:", ifSkill = "召唤腐化魔像", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:NearbyNonGolemMinion", "BASE", val, "Config")
+	end }, 	
 	
 { label = "【暗夜血契】:", ifSkill = "暗夜血契" },
 { var = "darkPactSkeletonLife", type = "count", label = "魔侍 生命:", ifSkill = "暗夜血契", tooltip = "设置使用【暗夜血契】时，魔侍的最大生命.", apply = function(val, modList, enemyModList)
@@ -196,7 +199,10 @@ modList:NewMod("SkillData", "LIST", { key = "skeletonLife", value = val }, "Conf
 	tooltip = "【召唤时空先驱者】增益效果:\n动作速度提高 20%\n增益影响小范围内的友军，玩家和敌人\n增益效果持续 8 秒，并且有 20 秒冷却时间", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:HarbingerOfTime", "FLAG", true, "Config")
 	end },
-	
+{ label = "魔蛊:", ifSkillFlag = "hex" },
+	{ var = "multiplierHexDoom", type = "count", label = "末日之力层数:", ifSkillFlag = "hex", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:HexDoomStack", "BASE", val, "Config")
+	end },
 { label = "【苦痛之捷】:", ifSkill = "苦痛之捷" },
 { var = "heraldOfAgonyVirulenceStack", type = "count", label = "# 【毒力】层数:", ifSkill = "苦痛之捷", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:VirulenceStack", "BASE", val, "Config")
@@ -214,8 +220,8 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 	{ var = "conditionInfusionActive", type = "check", label = "激活【灌注】?", ifSkill = "灌能吟唱(辅)", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:InfusionActive", "FLAG", true, "Config")
 	end },
-{ label = "【法术凝聚】:", ifSkill = "法术凝聚（辅）" },
-	{ var = "intensifyIntensity", type = "count", label = "# 层【法术凝聚】:", ifSkill = "法术凝聚（辅）", apply = function(val, modList, enemyModList)
+{ label = "【法术凝聚】:", ifSkillList = {"法术凝聚（辅）","电殛长枪"} },
+	{ var = "intensifyIntensity", type = "count", label = "# 层【法术凝聚】:", ifSkillList = {"法术凝聚（辅）","电殛长枪"} , apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:Intensity", "BASE",val, "Config")
 	end },
 { label = "【肉盾（辅）】:", ifSkill = "肉盾（辅）" },
@@ -318,7 +324,7 @@ modList:NewMod("Multiplier:WinterOrbStage", "BASE", val, "Config", { type = "Ski
 	{ label = "【死亡凋零】:", ifCond = "CanWither"},
 { var = "witheringTouchWitheredStackCount", type = "count", label = "# 【死亡凋零】层数:", 
 ifCond = "CanWither", apply = function(val, modList, enemyModList)
-		modList:NewMod("Multiplier:WitheredStackCount", "BASE", val, "Config", { type = "Condition", var = "Effective" })
+		enemyModList:NewMod("Multiplier:WitheredStack", "BASE", val, "Config", { type = "Condition", var = "Effective" })
 	end },
 	
 { label = "欺诈师升华天赋:",    ifNode = 28884},
@@ -543,12 +549,23 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 { var = "minionsUsePowerCharges", type = "check", label = "你的召唤生物有暴击球?", ifFlag = "haveMinion", apply = function(val, modList, enemyModList)
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("UsePowerCharges", "FLAG", true, "Config", { type = "Condition", var = "Combat" }) }, "Config")
 	end },
+{ var = "minionsOverridePowerCharges", type = "count", label = "#召唤生物的暴击球数量 (如果不是最大值的话):", ifFlag = "haveMinion", ifOption = "minionsUsePowerCharges", apply = function(val, modList, enemyModList)
+		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("PowerCharges", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" }) }, "Config")
+	end },
 { var = "minionsUseFrenzyCharges", type = "check", label = "你的召唤生物有狂怒球?", ifFlag = "haveMinion", apply = function(val, modList, enemyModList)
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("UseFrenzyCharges", "FLAG", true, "Config", { type = "Condition", var = "Combat" }) }, "Config")
+	end },
+{ var = "minionsOverrideFrenzyCharges", type = "count", label = "召唤生物的狂怒球数量 (如果不是最大值的话):", ifFlag = "haveMinion", ifOption = "minionsUseFrenzyCharges", apply = function(val, modList, enemyModList)
+		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("FrenzyCharges", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" }) }, "Config")
 	end },
 { var = "minionsUseEnduranceCharges", type = "check", label = "你的召唤生物有耐力球?", ifFlag = "haveMinion", apply = function(val, modList, enemyModList)
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("UseEnduranceCharges", "FLAG", true, "Config", { type = "Condition", var = "Combat" }) }, "Config")
 	end },
+	{ var = "minionsOverrideEnduranceCharges", type = "count", label = "召唤生物的耐力球数量 (如果不是最大值的话):", ifFlag = "haveMinion", ifOption = "minionsUseEnduranceCharges", apply = function(val, modList, enemyModList)
+		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("EnduranceCharges", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" }) }, "Config")
+	end },
+	
+
 { var = "conditionFocused", type = "check", label = "你处于专注期间?", ifCond = "Focused", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:Focused", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
@@ -954,6 +971,7 @@ ifCond = "OnFungalGround",
 
 { var = "conditionEnemyOnConsecratedGround", type = "check", label = "敌人在奉献地面上?", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Condition:OnConsecratedGround", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+		
 	end },	
 { var = "conditionEnemyOnProfaneGround", type = "check", label = "敌人在亵渎地面上?", ifCond = "CreateProfaneGround",
  tooltip = "亵渎地面上的敌人 -10% 所有抗性，并对它们的击中 +1% 暴击率", apply = function(val, modList, enemyModList)

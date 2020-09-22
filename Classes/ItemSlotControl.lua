@@ -201,10 +201,15 @@ function ItemSlotClass:Draw(viewPort)
 	if not main.popups[1] and self.nodeId and not self.dropped and ( (self:IsMouseOver() and (self.otherDragSource or not self.itemsTab.selControl))) then
 		SetDrawLayer(nil, 15)
 		-- x + width + 5
-		
+		local viewerY
+		if self.DropDownControl.dropUp and self.DropDownControl.dropped then
+			viewerY = y + 20
+		else
+			viewerY = m_min(y - 300 - 5, viewPort.y + viewPort.height - 304)
+		end
 		local viewerX =x 
 		--m_min(y, viewPort.y + viewPort.height - 304)
-		local viewerY = m_min(y - 300 - 5, viewPort.y + viewPort.height - 304)
+		--local viewerY = m_min(y - 300 - 5, viewPort.y + viewPort.height - 304)
 		 
 		SetDrawColor(1, 1, 1)
 		DrawImage(nil, viewerX, viewerY, 304, 304)

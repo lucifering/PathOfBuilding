@@ -52,7 +52,7 @@ end
 function calcs.mergeSkillInstanceMods(env, modList, skillEffect, extraStats)
 	calcLib.validateGemLevel(skillEffect)
 	local grantedEffect = skillEffect.grantedEffect	
-	local stats = calcLib.buildSkillInstanceStats(skillEffect, grantedEffect)
+	local stats = calcLib.buildSkillInstanceStats(skillEffect, grantedEffect,false)
 	if extraStats and extraStats[1] then
 		for _, stat in pairs(extraStats) do
 			stats[stat.key] = (stats[stat.key] or 0) + stat.value
@@ -493,7 +493,15 @@ activeEffect.grantedEffectLevel = activeGrantedEffect.levels[activeEffect.level]
 			-- fix minion level between 1 and 100
 			minion.level = m_min(m_max(minion.level,1),100) 
 			minion.itemList = { }
-			minion.uses = activeGrantedEffect.minionUses
+			
+			
+			if activeSkill.skillData and activeSkill.skillData.minionUses == "Weapon 1" then 
+				minion.uses = { ["Weapon 1"] =true}
+			else
+				minion.uses = activeGrantedEffect.minionUses
+			end 
+			
+			
 			minion.lifeTable = isSpectre and env.data.monsterLifeTable or env.data.monsterAllyLifeTable
 			local attackTime = minion.minionData.attackTime * (1 - (minion.minionData.damageFixup or 0))
 			local damage = env.data.monsterDamageTable[minion.level] * minion.minionData.damage * attackTime

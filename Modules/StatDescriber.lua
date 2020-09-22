@@ -12,6 +12,41 @@ local s_format = string.format
 
 local scopes = { }
 
+local hideText ={
+"trap_override_pvp_scaling_time_ms",
+"base_deal_no_damage",
+"display_",
+"skill_cannot_",
+"is_area_damage",
+"base_skill_show_average_damage_instead_of_dps",
+"consolw_skill_dont_chase",
+"skill_can_add_multiple_charges_per_action",
+"skill_override_pvp_scaling_time_ms",
+"base_skill_is_mined",
+"base_skill_is_",
+"projectile_speed_variation_",
+"skill_visual_scale_",
+"spell_maximum_base_",
+"attack_maximum_added",
+"base_is_",
+"secondary_maximum_base_",
+"base_totem_range",
+"modifiers_to_totem_duration_also_affect_soul_prevention_duration",
+"ancestor_totem_parent_activiation_range",
+"cannot_cancel_skill_before_contact_point",
+"totem_ignores_vaal_skill_cost",
+"shock_art_variation",
+"ignite_art_variation",
+"visual_hit_effect",
+"arc_chain_distance",
+		"arc_enhanced_behaviour",
+		"disable_visual_hit_effect",
+		"skill_can_",
+		"override_turn_duration_ms",
+		"projectile_remove_default_spread",
+		"additional_projectiles_fired_with_distance_offset",
+		"projectile_spread_radius",
+}
 local function getScope(scopeName)
 	if scopeName == nil then 
 		return nil
@@ -141,6 +176,18 @@ local function applySpecial(val, spec)
 		--ConPrintf("Unknown description function: %s", spec.k)
 	end
 end
+function ishideText(lineInfo)
+
+	for index,text in pairs(hideText) do
+		
+		if  string.starts(lineInfo,text) then 
+			return true
+		end
+	end 	
+	return false
+   
+end
+
 
 return function(stats, scopeName)
 	local rootScope = getScope(scopeName)
@@ -150,12 +197,36 @@ return function(stats, scopeName)
 		for s, v in pairs(stats) do
 			if (type(v) == "number" and v ~= 0) or (type(v) == "table" and (v.min ~= 0 or v.max ~= 0)) then	
 				for depth, scope in ipairs(rootScope.scopeList) do
-					if scope[s] then
-						local descriptor = scope[scope[s]]
-						if descriptor and  descriptor.lang then
-							describeStats[descriptor.stats[1]] = { depth = depth, order = scope[s], description = scope[scope[s]] }
+					local isgemquality = false 
+					
+					local strline = s
+					if  string.starts(strline ,"[GEM_Q]")  then 			
+						isgemquality = true
+						strline = string.sub(strline,8);
+						
+					end
+					if scope[strline] then
+						local descriptor = scope[scope[strline]]
+						if descriptor and  descriptor.lang then							
+							if isgemquality then  
+								
+								
+								local scopeval =scope[scope[strline]]								
+								scopeval.isgemquality = true								
+								describeStats[descriptor.stats[1]] = { depth = depth, order = scope[strline], description = scopeval ,isgemquality = isgemquality}
+							else 
+								describeStats[descriptor.stats[1]] = { depth = depth, order = scope[strline], description = scope[scope[strline]] ,isgemquality = isgemquality}
+							end 
+							
+							
+						else 
+							
+							describeStats[strline] = { depth = -9999, order = 9999, description = strline ,isgemquality = isgemquality}
 						end
 						break
+					else 						
+						describeStats[strline] = { depth = -9999, order = 9999, description = strline ,isgemquality = isgemquality}
+						
 					end
 				end
 			end
@@ -172,55 +243,108 @@ return function(stats, scopeName)
 		local out = { }
 		for _, descriptor in ipairs(descOrdered) do
 			local val = { }
-			for i, s in ipairs(descriptor.description.stats) do
-				if stats[s] then
+			if descriptor.description.stats then 
+				for i, s in ipairs(descriptor.description.stats) do
+				 
+				if stats[s] and stats["[GEM_Q]"..s] then
+					 
+					if descriptor.description.isgemquality then 
+						
+						if type(stats["[GEM_Q]"..s]) == "number" then
+							val[i] = { min = stats["[GEM_Q]"..s]+stats[s], max = stats["[GEM_Q]"..s]+stats[s] }
+						else
+							val[i] = stats["[GEM_Q]"..s]+stats[s]
+						end
+					end
+					
+				elseif stats[s] then
+				
 					if type(stats[s]) == "number" then
 						val[i] = { min = stats[s], max = stats[s] }
 					else
 						val[i] = stats[s]
 					end
+					 
+					
+				elseif  stats["[GEM_Q]"..s] then
+				
+					if type(stats["[GEM_Q]"..s]) == "number" then
+						val[i] = { min = stats["[GEM_Q]"..s], max = stats["[GEM_Q]"..s] }
+					else
+						val[i] = stats["[GEM_Q]"..s]
+					end
 				else
 					val[i] = { min = 0, max = 0 }
 				end
 				val[i].fmt = "d"
-			end
-	local desc = matchLimit(descriptor.description.lang["Simplified Chinese"], val)
-			if desc then
-				for _, spec in ipairs(desc) do
-					applySpecial(val, spec)
 				end
-				local statDesc = desc.text:gsub("%%(%d)%%", function(n) 
-					local v = val[tonumber(n)]
-					if v.min == v.max then
-						return s_format("%"..v.fmt, v.min)
-					else
-						return s_format("(%"..v.fmt.."-%"..v.fmt..")", v.min, v.max)
+				
+				
+				local desc = matchLimit(descriptor.description.lang["Simplified Chinese"], val)
+				
+				--print_r(desc)
+				if desc then
+					
+					for _, spec in ipairs(desc) do
+						applySpecial(val, spec)
 					end
-				end):gsub("%%d", function() 
-					local v = val[1]
-					if v.min == v.max then
-						return s_format("%"..v.fmt, v.min)
-					else
-						return s_format("(%"..v.fmt.."-%"..v.fmt..")", v.min, v.max)
-					end
-				end):gsub("%%(%d)$(%+?)d", function(n, fmt)
-					local v = val[tonumber(n)]
-					if v.min == v.max then
-						return s_format("%"..fmt..v.fmt, v.min)
-					elseif fmt == "+" then
-						if v.max < 0 then
-							return s_format("-(%d-%d)", -v.min, -v.max)
+					local statDesc = desc.text:gsub("%%(%d)%%", function(n) 
+						local v = val[tonumber(n)]
+						if v.min == v.max then
+							return s_format("%"..v.fmt, v.min)
 						else
-							return s_format("+(%d-%d)", v.min, v.max)
+							return s_format("(%"..v.fmt.."-%"..v.fmt..")", v.min, v.max)
 						end
-					else
-						return s_format("(%"..fmt..v.fmt.."-%"..fmt..v.fmt..")", v.min, v.max)
+					end):gsub("%%d", function() 
+						local v = val[1]
+						if v.min == v.max then
+							return s_format("%"..v.fmt, v.min)
+						else
+							return s_format("(%"..v.fmt.."-%"..v.fmt..")", v.min, v.max)
+						end
+					end):gsub("%%(%d)$(%+?)d", function(n, fmt)
+						local v = val[tonumber(n)]
+						if v.min == v.max then
+							return s_format("%"..fmt..v.fmt, v.min)
+						elseif fmt == "+" then
+							if v.max < 0 then
+								return s_format("-(%d-%d)", -v.min, -v.max)
+							else
+								return s_format("+(%d-%d)", v.min, v.max)
+							end
+						else
+							return s_format("(%"..fmt..v.fmt.."-%"..fmt..v.fmt..")", v.min, v.max)
+						end
+					end):gsub("%%%%","%%")
+					for line in (statDesc.."\\n"):gmatch("([^\\]+)\\n") do
+						if descriptor.isgemquality then 
+							
+							t_insert(out, colorCodes.NORMAL..line)
+						else 
+							t_insert(out,colorCodes.MAGIC..line)
+						end 
+						
 					end
-				end):gsub("%%%%","%%")
-				for line in (statDesc.."\\n"):gmatch("([^\\]+)\\n") do
-					t_insert(out, line)
+				else 
+					--print("不显示")
+					 --不显示
 				end
-			end
+			else 
+			
+				if not ishideText(descriptor.description)				
+				then
+					if descriptor.isgemquality then 			
+						
+						t_insert(out, colorCodes.NORMAL..descriptor.description)
+					else 
+						t_insert(out, colorCodes.MAGIC..descriptor.description)
+					end 
+				end 
+				
+				
+			end 
+			
+			
 		end
 		return out
 	end 

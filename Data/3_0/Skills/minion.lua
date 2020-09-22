@@ -12,7 +12,7 @@ name = "冰川之刺",
 	color = 3,
 	baseEffectiveness = 1.9800000190735,
 	incrementalEffectiveness = 0.037999998778105,
-	description = "从地面上不断的冒出冰结之刺, 宛如川流一般向前攻击并对敌人造成伤害.",
+description = "从地面上不断的冒出冰结之刺, 宛如川流一般向前攻击并对敌人造成伤害.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.ColdSkill] = true, [SkillType.PhysicalSkill] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.8,
@@ -74,7 +74,7 @@ name = "献祭",
 	color = 4,
 	baseEffectiveness = 1.3999999761581,
 	incrementalEffectiveness = 0.041999999433756,
-	description = "召唤一个图腾, 它会持续的对附近的敌人喷射火焰.",
+description = "召唤一个图腾, 它会持续的对附近的敌人喷射火焰.",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Hit] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Totem] = true, [SkillType.FireSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	skillTotemId = 8,
@@ -107,7 +107,7 @@ name = "岩浆球",
 	color = 4,
 	baseEffectiveness = 4.2666997909546,
 	incrementalEffectiveness = 0.032000001519918,
-	description = "通用的怪物炮击技能. 与怪物投射物相似, 但带有冲击效果.",
+description = "通用的怪物炮击技能. 与怪物投射物相似, 但带有冲击效果.",
 	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -138,7 +138,7 @@ name = "火焰震波",
 	color = 3,
 	baseEffectiveness = 2.9867000579834,
 	incrementalEffectiveness = 0.031700000166893,
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.AreaSpell] = true, [SkillType.Type90] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.AreaSpell] = true, [SkillType.Type96] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.935,
 	baseFlags = {
@@ -365,7 +365,7 @@ skills["SpectralSkullShieldCharge"] = {
 name = "重盾冲锋",
 	hidden = true,
 	color = 4,
-	description = "向一个目标冲锋, 使用盾牌对其猛击的同时也用近战武器顺手补刀. 此攻击将会击退目标并将其击晕, 在路径上的敌人将会被推向两旁. 伤害与击晕几率将视冲锋距离而定. ",
+description = "向一个目标冲锋, 使用盾牌对其猛击的同时也用近战武器顺手补刀. 此攻击将会击退目标并将其击晕, 在路径上的敌人将会被推向两旁. 伤害与击晕几率将视冲锋距离而定. ",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.MovementSkill] = true, [SkillType.TravelSkill] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -400,10 +400,10 @@ name = "重盾冲锋",
 	},
 }
 skills["RagingSpiritMeleeAttack"] = {
-	name = "普通攻击",
+name = "默认攻击",
 	hidden = true,
 	color = 4,
-	description = "对你的敌人无情痛击.",
+description = "对你的敌人无情痛击.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.ProjectileAttack] = true, [SkillType.SkillCanMirageArcher] = true, [SkillType.Projectile] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.SkillCanVolley] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -553,7 +553,7 @@ skills["RockGolemWhirlingBlades"] = {
 name = "回旋之刃",
 	hidden = true,
 	color = 4,
-	description = "迅速穿越敌人并同时造成武器伤害. 限定匕首, 爪以及单手剑. ",
+description = "迅速穿越敌人并同时造成武器伤害. 限定匕首, 爪以及单手剑. ",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.MovementSkill] = true, [SkillType.TravelSkill] = true, },
 	weaponTypes = {
 		["Thrusting One Handed Sword"] = true,
@@ -616,12 +616,12 @@ name = "重击",
 	},
 }
 skills["SummonedSpiderViperStrike"] = {
-	name = "毒蛇打击",
+name = "毒蛇打击",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 0.64999997615814,
 	incrementalEffectiveness = 0.025499999523163,
-	description = "击中敌人，额外造成等同于部分物理伤害的混沌伤害，并使敌人中毒。该技能受技能持续时间词缀影响。双持武器时会用两把武器同时攻击。限定爪类、匕首与剑类。",
+description = "击中敌人，额外造成等同于部分物理伤害的混沌伤害，并使敌人中毒。该技能受技能持续时间词缀影响。双持武器时会用两把武器同时攻击。限定爪类、匕首与剑类。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Duration] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, [SkillType.DamageOverTime] = true, [SkillType.ChaosSkill] = true, },
 	weaponTypes = {
 		["Claw"] = true,
@@ -645,13 +645,14 @@ skills["SummonedSpiderViperStrike"] = {
 		"base_chance_to_poison_on_hit_%",
 		"base_skill_effect_duration",
 		"poison_duration_is_skill_duration",
+		"visual_hit_effect_chaos_is_green",
 	},
 	levels = {
 		[1] = { 25, 100, 8000, levelRequirement = 1, statInterpolation = { 1, 1, 1, }, },
 	},
 }
 skills["DancingDervishCyclone"] = {
-	name = "旋风斩",
+name = "旋风斩",
 	hidden = true,
 	color = 2,
 	description = "对周围敌人造成伤害, 接而进行一连串的旋转攻击, 边向目标地点前进边攻击路径上的敌人, 无法被多重打击和无情辅助.",
@@ -727,7 +728,7 @@ skills["HeraldOfAgonyMinionMortar"] = {
 name = "炮击",
 	hidden = true,
 	color = 4,
-	description = "通用的怪物炮击技能. 与怪物投射物相似, 但带有冲击效果.",
+description = "通用的怪物炮击技能. 与怪物投射物相似, 但带有冲击效果.",
 	skillTypes = { [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.Attack] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 2,
@@ -749,6 +750,7 @@ name = "炮击",
 		"is_area_damage",
 		"base_is_projectile",
 		"distribute_additional_projectiles_over_contact_points",
+		"visual_hit_effect_chaos_is_green",
 	},
 	levels = {
 		[1] = { 20, 10, 5, -35, 50, damageEffectiveness = 0.4, cooldown = 7.5, baseMultiplier = 0.4, levelRequirement = 1, statInterpolation = { 1, 1, 1, 1, 1, }, },
@@ -775,6 +777,7 @@ name = "尾刺",
 		"active_skill_attack_speed_+%_final",
 		"number_of_additional_projectiles",
 		"base_is_projectile",
+		"visual_hit_effect_chaos_is_green",
 	},
 	levels = {
 		[1] = { 39, 0, 0, 4, levelRequirement = 1, statInterpolation = { 1, 1, 1, 1, }, },
@@ -784,7 +787,7 @@ skills["HeraldOfAgonyMinionCleave"] = {
 name = "横扫",
 	hidden = true,
 	color = 1,
-	description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 对前方区域的怪物造成伤害。限定斧类与剑类。",
+description = "在身体前方以弧状挥动武器（双持时则挥动两把武器）, 对前方区域的怪物造成伤害。限定斧类与剑类。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Type53] = true, [SkillType.PhysicalSkill] = true, },
 	weaponTypes = {
 		["Two Handed Axe"] = true,
@@ -806,6 +809,7 @@ name = "横扫",
 	},
 	stats = {
 		"is_area_damage",
+		"visual_hit_effect_chaos_is_green",
 	},
 	levels = {
 		[1] = { levelRequirement = 1, statInterpolation = { }, },
@@ -878,6 +882,7 @@ mod("LifeRegen", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura"
 		spell = true,
 	},
 	baseMods = {
+		skill("showAverage", true),
 	},
 	qualityStats = {
 	},
@@ -931,10 +936,10 @@ mod("LifeRegen", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura"
 	},
 }
 skills["DominatingBlowMinionCharge"] = {
-	name = "重盾冲锋",
+name = "重盾冲锋",
 	hidden = true,
 	color = 4,
-	description = "向目标区域或敌人冲锋，在路径上的敌人将会被推向两旁，并反复对你前方小范围区域内造成伤害。 抵达目标处时造成大范围伤害。伤害与击晕几率将视冲锋距离而定。无法被多重打击辅助。",
+description = "向目标区域或敌人冲锋，在路径上的敌人将会被推向两旁，并反复对你前方小范围区域内造成伤害。 抵达目标处时造成大范围伤害。伤害与击晕几率将视冲锋距离而定。无法被多重打击辅助。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Shield] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.MovementSkill] = true, [SkillType.TravelSkill] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -968,10 +973,10 @@ skills["DominatingBlowMinionCharge"] = {
 	},
 }
 skills["SummonedRhoaShieldCharge"] = {
-	name = "重盾冲锋",
+name = "重盾冲锋",
 	hidden = true,
 	color = 4,
-	description = "向目标区域或敌人冲锋，在路径上的敌人将会被推向两旁，并反复对你前方小范围区域内造成伤害。 抵达目标处时造成大范围伤害。伤害与击晕几率将视冲锋距离而定。无法被多重打击辅助。",
+description = "向目标区域或敌人冲锋，在路径上的敌人将会被推向两旁，并反复对你前方小范围区域内造成伤害。 抵达目标处时造成大范围伤害。伤害与击晕几率将视冲锋距离而定。无法被多重打击辅助。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Shield] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.MovementSkill] = true, [SkillType.TravelSkill] = true, },
 	weaponTypes = {
 		["None"] = true,
@@ -1031,11 +1036,11 @@ name = "混沌投射物",
 	},
 }
 skills["DropBearSummonedGroundSlam"] = {
-	name = "裂地之击",
+name = "裂地之击",
 	hidden = true,
 	color = 4,
-	description = "以长杖、锤类、短杖重击地面，制造出一道向前释放的冲击波，被此冲击波击中的敌人将会受到伤害并有较高几率被击晕。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.Slam] = true, },
+description = "以长杖、锤类、短杖重击地面，制造出一道向前释放的冲击波，被此冲击波击中的敌人将会受到伤害并有较高几率被击晕。",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.SlamSkill] = true, },
 	weaponTypes = {
 		["None"] = true,
 		["One Handed Mace"] = true,
@@ -1063,11 +1068,11 @@ skills["DropBearSummonedGroundSlam"] = {
 	},
 }
 skills["DropBearSummonedRallyingCry"] = {
-	name = "激励战吼",
+name = "激励战吼",
 	hidden = true,
 	color = 1,
-	description = "施展战吼, 使自身和盟友伤害和魔力恢复增加. 伤害增加量随着周围敌人数量提升. 嘲讽周围所有敌人, 使他们攻击施放者. 与其他战吼技能共享技能冷却.",
-	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Warcry] = true, [SkillType.Type90] = true, },
+description = "施展战吼, 使自身和盟友伤害和魔力恢复增加. 伤害增加量随着周围敌人数量提升. 嘲讽周围所有敌人, 使他们攻击施放者. 与其他战吼技能共享技能冷却.",
+	skillTypes = { [SkillType.Buff] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.Warcry] = true, [SkillType.Type96] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.25,
 	statMap = {
@@ -1102,6 +1107,16 @@ name = "连击",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Melee] = true, [SkillType.MeleeSingleTarget] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
+	statMap = {
+		["bone_golem_attack_speed_+%_final_after_third_combo_index"] = {
+			mod("Speed", "MORE", nil, 0, KeywordFlag.Attack),
+			div = 1.5,
+		},
+		["bone_golem_damage_+%_final_after_third_combo_index"] = {
+			mod("Damage", "MORE", nil),
+			div = 1.5,
+		},
+	},
 	baseFlags = {
 		attack = true,
 		melee = true,
@@ -1131,6 +1146,7 @@ name = "冰川之刺",
 		area = true,
 	},
 	baseMods = {
+		skill("showAverage", true),
 	},
 	qualityStats = {
 	},
@@ -1144,11 +1160,11 @@ name = "冰川之刺",
 	},
 }
 skills["BoneGolemLeapSlam"] = {
-	name = "跃击",
+name = "跃击",
 	hidden = true,
 	color = 4,
-	description = "一跃而起，落地时用武器对敌人造成伤害，并击退敌人。被踩到的敌人会被推出去。限定斧头、锤类、短杖、剑类或长杖。无法被被多重打击辅助。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.MovementSkill] = true, [SkillType.TravelSkill] = true, [SkillType.Slam] = true, },
+description = "一跃而起，落地时用武器对敌人造成伤害，并击退敌人。被踩到的敌人会被推出去。限定斧头、锤类、短杖、剑类或长杖。无法被被多重打击辅助。",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.MovementSkill] = true, [SkillType.TravelSkill] = true, [SkillType.SlamSkill] = true, },
 	weaponTypes = {
 		["One Handed Mace"] = true,
 		["Sceptre"] = true,
@@ -1168,6 +1184,7 @@ skills["BoneGolemLeapSlam"] = {
 		area = true,
 	},
 	baseMods = {
+		skill("showAverage", true),
 	},
 	qualityStats = {
 	},
@@ -1177,6 +1194,27 @@ skills["BoneGolemLeapSlam"] = {
 	},
 	levels = {
 		[1] = { attackSpeedMultiplier = -44, cooldown = 4, damageEffectiveness = 1.8, baseMultiplier = 1.8, levelRequirement = 1, statInterpolation = { }, },
+	},
+}
+skills["SkitterbotWait"] = {
+name = "飞掠者待机",
+	hidden = true,
+	color = 4,
+	skillTypes = { },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		duration = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+	},
+	levels = {
+		[1] = { 200, levelRequirement = 0, statInterpolation = { 1, }, },
 	},
 }
 skills["MinionInstability"] = {
@@ -1195,15 +1233,15 @@ name = "召唤物聚能",
 		skill("showAverage", true),
 		skill("radius", 22),
 	},
-	qualityStats = {
-	},
 	stats = {
+	},
+	levelMods = {
 	},
 	levels = {
 		[1] = { },
 	},
 }
-skills["SiegebreakerCausticGroud"] = {
+skills["SiegebreakerCausticGround"] = {
 name = "腐蚀毒云",
 	hidden = true,
 	color = 4,
@@ -1215,28 +1253,6 @@ name = "腐蚀毒云",
 	skillTypes = { },
 	baseMods = {
 		skill("ChaosDot", 1, { type = "PerStat", stat = "Life", div = 5 }),
-		skill("dotIsArea", true),
-	},
-	qualityStats = {
-	},
-	stats = {
-	},
-	levels = {
-		[1] = { },
-	},
-}
-skills["BeaconZombieCausticCloud"] = {
-name = "腐蚀毒云",
-	hidden = true,
-	color = 4,
-	baseFlags = {
-		cast = true,
-		area = true,
-		chaos = true,
-	},
-	skillTypes = { },
-	baseMods = {
-		skill("ChaosDot", 1, { type = "PerStat", stat = "Life", div = 2 }),
 		skill("dotIsArea", true),
 	},
 	qualityStats = {
@@ -1269,10 +1285,30 @@ name = "炼狱军团",
 	},
 }
 
-
+skills["BeaconZombieCausticCloud"] = {
+name = "腐蚀毒云",
+	hidden = true,
+	color = 4,
+	baseFlags = {
+		cast = true,
+		area = true,
+		chaos = true,
+	},
+	skillTypes = { },
+	baseMods = {
+		skill("ChaosDot", 1, { type = "PerStat", stat = "Life", div = 2 }),
+		skill("dotIsArea", true),
+	},
+	qualityStats = {
+	},
+	stats = {
+	},
+	levels = {
+		[1] = { },
+	},
+}
 
 --lucifer
-
 
 skills["SlavedriverFlameWhip"] = {
 	name = "闪电奔腾",
@@ -1365,27 +1401,5 @@ name = "青蛙跃击",
 	},
 	levels = {
 		[1] = { 1, -25, damageEffectiveness = 1.5, baseMultiplier = 1.5, levelRequirement = 2, statInterpolation = { 1, 1, }, },
-	},
-}
-
-skills["SkitterbotWait"] = {
-	name = "飞掠者待机",
-	hidden = true,
-	color = 4,
-	skillTypes = { },
-	statDescriptionScope = "skill_stat_descriptions",
-	castTime = 1,
-	baseFlags = {
-		duration = true,
-	},
-	baseMods = {
-	},
-	qualityStats = {
-	},
-	stats = {
-		"base_skill_effect_duration",
-	},
-	levels = {
-		[1] = { 200, levelRequirement = 0, statInterpolation = { 1, }, },
 	},
 }

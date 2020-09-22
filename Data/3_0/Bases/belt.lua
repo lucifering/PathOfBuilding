@@ -6,28 +6,28 @@ itemBases["素布腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, },
 	implicit = "物理伤害提高 (12-24)%",
-	implicitModTypes = { { "physical" }, },
+	implicitModTypes = { {  "physical_damage", "damage", "physical"}, },
 	req = { },
 }
 itemBases["扣链腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, },
 	implicit = "+(9-20) 最大能量护盾",
-	implicitModTypes = { { "defences", "jewellery_defense" }, },
+	implicitModTypes = { {  "energy_shield", "defences" }, },
 	req = { },
 }
 itemBases["皮革腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, },
 	implicit = "+(25-40) 最大生命",
-	implicitModTypes = { { "life" }, },
+	implicitModTypes = { {"resource", "life"  }, },
 	req = { level = 8, },
 }
 itemBases["重革腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, },
 	implicit = "+(25-35) 力量",
-	implicitModTypes = { { "jewellery_attribute" }, },
+	implicitModTypes = { { "attribute" }, },
 	req = { level = 8, },
 }
 itemBases["饰布腰带"] = {
@@ -48,14 +48,14 @@ itemBases["先锋腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, not_for_sale = true, atlas_base_type = true, beltatlas1 = true, },
 	implicit = "+(260-320) 护甲和闪避值",
-	implicitModTypes = { { "defences", "jewellery_defense" }, },
+	implicitModTypes = { { "armour", "evasion", "defences" }, },
 	req = { level = 78, },
 }
 itemBases["水晶腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, not_for_sale = true, atlas_base_type = true, beltatlas2 = true, },
 	implicit = "+(60-80) 最大能量护盾",
-	implicitModTypes = { { "defences", "jewellery_defense" }, },
+	implicitModTypes = { {  "energy_shield", "defences" }, },
 	req = { level = 79, },
 }
 itemBases["深渊腰带"] = {
@@ -73,4 +73,19 @@ itemBases["金羽腰带"] = {
 	implicit = "物品稀有度提高 (20-30)%",
 	implicitModTypes = { {  }, },
 	req = { },
+}
+
+itemBases["Micro-Distillery Belt"] = {
+	type = "Belt",
+	tags = { default = true, belt = true, },
+	implicit = "你身上的药剂效果提高 20%\n无法使用第五个插槽的药剂",
+	implicitModTypes = { {  }, {  }, },
+	req = { level = 24, },
+}
+itemBases["Mechalarm Belt"] = {
+	type = "Belt",
+	tags = { default = true, belt = true, },
+	implicit = "使用药剂时触发等级 20 的【召唤嘲讽装置】",
+	implicitModTypes = { {  }, },
+	req = { level = 56, },
 }

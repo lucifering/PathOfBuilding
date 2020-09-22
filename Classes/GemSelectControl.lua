@@ -461,18 +461,18 @@ self.tooltip:AddLine(16, string.format("^x7F7F7F品质: "..colorCodes.MAGIC.."+%
 	end
 	if self.skillsTab.build.data.describeStats then
 		self.tooltip:AddSeparator(10)
-		local stats = calcLib.buildSkillInstanceStats(displayInstance, grantedEffect)
+		local stats = calcLib.buildSkillInstanceStats(displayInstance, grantedEffect,true)
 		if grantedEffectLevel.baseMultiplier then
 			stats["active_skill_attack_damage_final_permyriad"] = (grantedEffectLevel.baseMultiplier - 1) * 10000
 		end
 		if mergeStatsFrom then
-			for stat, val in pairs(calcLib.buildSkillInstanceStats(displayInstance, mergeStatsFrom)) do
+			for stat, val in pairs(calcLib.buildSkillInstanceStats(displayInstance, mergeStatsFrom,true)) do
 				stats[stat] = (stats[stat] or 0) + val
 			end
 		end
 		local descriptions = self.skillsTab.build.data.describeStats(stats, grantedEffect.statDescriptionScope)
 		for _, line in ipairs(descriptions) do
-			self.tooltip:AddLine(16, colorCodes.MAGIC..line)
+			self.tooltip:AddLine(16, line)
 		end
 	end
 end

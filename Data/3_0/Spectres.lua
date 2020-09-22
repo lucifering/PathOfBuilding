@@ -1906,17 +1906,17 @@ minions["Metadata/Monsters/Necromancer/NecromancerProjectileWeakness"] = {
 	skillList = {
 		"Melee",
 		"NecromancerReviveSkeleton",
-		"NecromancerProjectileWeakness",
+		"NecromancerEnfeeble",
 	},
 	modList = {
 		-- MonsterRaisesUndeadText [monster_raises_undead_text = 1]
 		mod("Speed", "INC", -80, ModFlag.Cast, KeywordFlag.Curse), -- MonsterCurseCastSpeedPenalty [curse_cast_speed_+% = -80]
-		-- MonsterCastsProjectileWeaknessCurseText [monster_casts_projectile_vulnerability_curse_text = 1]
+		-- MonsterCastsEnfeebleCurseText [monster_casts_enfeeble_curse_text = 1]
 	},
 	modListSP = {
 		"复活不死生物", 
 		"怪物诅咒施法速度惩罚", 
-		"施放投射物要害", 
+		"施放衰弱", 
 	},
 }
 minions["Metadata/Monsters/Necromancer/NecromancerVulnerability"] = {
@@ -2457,9 +2457,9 @@ minions["Metadata/Monsters/Skeletons/SkeletonBowProjectileWeaknessCurse"] = {
 		"施放投射物要害", 
 	},
 }
-minions["Metadata/Monsters/Skeletons/SkeletonMeleeKnightElementalSwordIncursionChampionDelve"] = {
+minions["Metadata/Monsters/Skeletons/SkeletonMeleeKnightElementalSwordIncursionChampion"] = {
 	name = "强大的瓦尔堕灵",
-	life = 4.5,
+	life = 2.25,
 	armour = 1,
 	fireResist = 35,
 	coldResist = 35,
@@ -2478,6 +2478,8 @@ minions["Metadata/Monsters/Skeletons/SkeletonMeleeKnightElementalSwordIncursionC
 	},
 	modList = {
 		-- MonsterCastsElementalHitText [monster_casts_elemental_hit_text = 1]
+		-- MonsterIncursionDropModifiers__ [monster_slain_experience_+% = 0] [monster_dropped_item_quantity_+% = 35] [monster_dropped_item_rarity_+% = 2500] [monster_no_map_drops = 1]
+		
 	},
 	modListSP = {
 		"击中造成点燃、冰冻、冰缓或感电效果", 
@@ -3329,6 +3331,7 @@ minions["Metadata/Monsters/AtlasExiles/CrusaderInfluenceMonsters/CrusaderBlackgu
 
 
 --Baranite Preacher
+
 minions["Metadata/Monsters/AtlasExiles/CrusaderInfluenceMonsters/CrusaderTemplarJudgeSpectre"] = {
 	name = "追随巴兰的教士",
 	life = 1.68,
@@ -3561,14 +3564,14 @@ minions["Metadata/Monsters/LeagueSynthesis/SynthesisWyvernSpectre"] = {
 }
 
 -- Redemption Sentry
-minions["Metadata/Monsters/AtlasExiles/EyrieInfluenceMonsters/EyrieSeraphArcher"] = {
+minions["Metadata/Monsters/AtlasExiles/EyrieInfluenceMonsters/EyrieSeraphArcherSpectre"] = {
 	name = "救赎哨兵",
-	life = 4.05,
+	life = 2.7,
 	fireResist = 0,
 	coldResist = 75,
 	lightningResist = 0,
 	chaosResist = 0,
-	damage = 1.5,
+	damage = 1,
 	damageSpread = 0.2,
 	attackTime = 1.5,
 	attackRange = 70,
@@ -3691,5 +3694,114 @@ minions["Metadata/Monsters/SandLeaper/SandLeaperBreachSpectre_"] = {
 		  "怪物掉落调整数量提高 700%", 
 		  "怪物掉落调整稀有度提高 1000%", 
 		  "怪物召唤超越传送门几率 -66%",
+	},
+}
+
+-- Baranite Sister
+minions["Metadata/Monsters/AtlasExiles/CrusaderInfluenceMonsters/CrusaderBlessedSisterSpectre"] = {
+	name = "追随巴兰的修女",
+	life = 1.2,
+	energyShield = 0.4,
+	fireResist = 0,
+	coldResist = 0,
+	lightningResist = 40,
+	chaosResist = 0,
+	damage = 1.2,
+	damageSpread = 0.2,
+	attackTime = 1.8,
+	attackRange = 8,
+	accuracy = 1,
+	skillList = {
+		"AtlasCrusaderSisterMortarSpectre",
+		"WalkEmergeAtlasInfluenceMonster",
+	},
+	modList = {
+	},
+	modListSP = {
+		
+	},
+}
+
+-- Redemption Knight
+minions["Metadata/Monsters/AtlasExiles/EyrieInfluenceMonsters/EyrieSeraphFighterSpectre_"] = {
+	name = "救赎骑士",
+	life = 2.7,
+	fireResist = 0,
+	coldResist = 75,
+	lightningResist = 0,
+	chaosResist = 0,
+	damage = 1,
+	damageSpread = 0.2,
+	attackTime = 1.17,
+	attackRange = 14,
+	accuracy = 1,
+	weaponType1 = "One Handed Sword",
+	weaponType2 = "Shield",
+	skillList = {
+		"MeleeCold",
+		"WalkEmergeAtlasInfluenceMonster",
+		"AtlasEyrieFighterSlash",
+		"EmptyActionAttackEyrieFighter",
+	},
+	modList = {
+	},modListSP = {
+		
+	},
+}
+-- Primal Crushclaw
+minions["Metadata/Monsters/LeagueHarvest/Blue/HarvestNessaCrabT3Spectre"] = {
+	name = "原始利爪",
+	life = 12,
+	armour = 1,
+	fireResist = 20,
+	coldResist = 20,
+	lightningResist = 20,
+	chaosResist = 0,
+	damage = 1.2,
+	damageSpread = 0.2,
+	attackTime = 1.17,
+	attackRange = 14,
+	accuracy = 1,
+	skillList = {
+		"MeleeCold",
+		"HarvestCrabDashSlam",
+		"GAHarvestCrabDashSlam",
+		"HarvestNessaCrabScreech",
+		"HarvestCrabAbyssSlam",
+		"EASHarvestEmerge",
+	},
+	modList = {
+		-- MonsterHarvestT3DropModifiers [monster_slain_experience_+% = 0] [monster_dropped_item_quantity_+% = 720] [monster_dropped_item_rarity_+% = 1500] [monster_no_map_drops = 0]
+		-- BreachReducedBeyondPortalChance [monster_beyond_portal_chance_+%_final = -66]
+		-- MapMonsterReducedCurseEffect [unique_boss_curse_effect_on_self_+%_final = -33]
+	},
+}
+-- Templar Tactician
+minions["Metadata/Monsters/LegionLeague/LegionTemplarCaster1Spectre"] = {
+	name = "圣堂战术家",
+	life = 3.45,
+	energyShield = 0.4,
+	armour = 0.5,
+	fireResist = 20,
+	coldResist = 20,
+	lightningResist = 20,
+	chaosResist = 0,
+	damage = 1.5,
+	damageSpread = 0.2,
+	attackTime = 1.17,
+	attackRange = 10,
+	accuracy = 1,
+	skillList = {
+		"Melee",
+		"LegionTemplarJudgeStormCall",
+		"LegionTemplarJudgeBallLightning",
+		"GeometryTriggerLegionTemplarCasterStormCall",
+	},
+	modList = {
+		-- MonsterIgnoresDelveDarkness [monster_ignores_delve_darkness_mechanic = 1]
+		-- MonsterLegionDropModifiers_ [monster_slain_experience_+% = 0] [monster_dropped_item_quantity_+% = 125] [monster_dropped_item_rarity_+% = 750] [monster_no_map_drops = 1]
+		-- BreachReducedBeyondPortalChance [monster_beyond_portal_chance_+%_final = -66]
+	},modListSP = {
+		
 	},
 }

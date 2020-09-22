@@ -8,6 +8,7 @@ itemBases["铁锻胫甲"] = {
 	subType = "Armour",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 6, },
 	req = { str = 8, },
 }
@@ -16,6 +17,7 @@ itemBases["冷钢胫甲"] = {
 	subType = "Armour",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 32, },
 	req = { level = 9, str = 21, },
 }
@@ -24,6 +26,7 @@ itemBases["坚铁胫甲"] = {
 	subType = "Armour",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 77, },
 	req = { level = 23, str = 44, },
 }
@@ -32,6 +35,7 @@ itemBases["强化胫甲"] = {
 	subType = "Armour",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 109, },
 	req = { level = 33, str = 60, },
 }
@@ -40,6 +44,7 @@ itemBases["古钢胫甲"] = {
 	subType = "Armour",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 122, },
 	req = { level = 37, str = 67, },
 }
@@ -48,6 +53,7 @@ itemBases["远古胫甲"] = {
 	subType = "Armour",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 151, },
 	req = { level = 46, str = 82, },
 }
@@ -56,6 +62,7 @@ itemBases["巨灵胫甲"] = {
 	subType = "Armour",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 177, },
 	req = { level = 54, str = 95, },
 }
@@ -64,6 +71,7 @@ itemBases["瓦尔胫甲"] = {
 	subType = "Armour",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 220, },
 	req = { level = 62, str = 117, },
 }
@@ -72,6 +80,7 @@ itemBases["巨人胫甲"] = {
 	subType = "Armour",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 241, },
 	req = { level = 68, str = 120, },
 }
@@ -81,6 +90,7 @@ itemBases["生皮短靴"] = {
 	subType = "Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, dex_armour = true, },
+	implicitModTypes = { },
 	armour = { EvasionBase = 13, },
 	req = { dex = 11, },
 }
@@ -89,6 +99,7 @@ itemBases["羊皮短靴"] = {
 	subType = "Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, dex_armour = true, },
+	implicitModTypes = { },
 	armour = { EvasionBase = 42, },
 	req = { level = 12, dex = 26, },
 }
@@ -97,6 +108,7 @@ itemBases["鹿皮短靴"] = {
 	subType = "Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, dex_armour = true, },
+	implicitModTypes = { },
 	armour = { EvasionBase = 74, },
 	req = { level = 22, dex = 42, },
 }
@@ -105,6 +117,7 @@ itemBases["砂影短靴"] = {
 	subType = "Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, dex_armour = true, },
+	implicitModTypes = { },
 	armour = { EvasionBase = 113, },
 	req = { level = 34, dex = 62, },
 }
@@ -113,6 +126,7 @@ itemBases["鳗皮短靴"] = {
 	subType = "Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, dex_armour = true, },
+	implicitModTypes = { },
 	armour = { EvasionBase = 129, },
 	req = { level = 39, dex = 70, },
 }
@@ -121,6 +135,7 @@ itemBases["鲨皮短靴"] = {
 	subType = "Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, dex_armour = true, },
+	implicitModTypes = { },
 	armour = { EvasionBase = 145, },
 	req = { level = 44, dex = 79, },
 }
@@ -129,6 +144,7 @@ itemBases["粗革短靴"] = {
 	subType = "Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, dex_armour = true, },
+	implicitModTypes = { },
 	armour = { EvasionBase = 180, },
 	req = { level = 55, dex = 97, },
 }
@@ -137,6 +153,7 @@ itemBases["匿踪短靴"] = {
 	subType = "Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, dex_armour = true, },
+	implicitModTypes = { },
 	armour = { EvasionBase = 220, },
 	req = { level = 62, dex = 117, },
 }
@@ -145,6 +162,7 @@ itemBases["迷踪短靴"] = {
 	subType = "Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, dex_armour = true, },
+	implicitModTypes = { },
 	armour = { EvasionBase = 246, },
 	req = { level = 69, dex = 120, },
 }
@@ -154,6 +172,7 @@ itemBases["羊毛之鞋"] = {
 	subType = "Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, int_armour = true, },
+	implicitModTypes = { },
 	armour = { EnergyShieldBase = 4, },
 	req = { int = 11, },
 }
@@ -162,6 +181,7 @@ itemBases["丝绒便鞋"] = {
 	subType = "Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, int_armour = true, },
+	implicitModTypes = { },
 	armour = { EnergyShieldBase = 8, },
 	req = { level = 9, int = 21, },
 }
@@ -170,6 +190,7 @@ itemBases["丝绸便鞋"] = {
 	subType = "Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, int_armour = true, },
+	implicitModTypes = { },
 	armour = { EnergyShieldBase = 15, },
 	req = { level = 22, int = 42, },
 }
@@ -178,6 +199,7 @@ itemBases["学者长靴"] = {
 	subType = "Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, int_armour = true, },
+	implicitModTypes = { },
 	armour = { EnergyShieldBase = 21, },
 	req = { level = 32, int = 59, },
 }
@@ -186,6 +208,7 @@ itemBases["缎布便鞋"] = {
 	subType = "Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, int_armour = true, },
+	implicitModTypes = { },
 	armour = { EnergyShieldBase = 25, },
 	req = { level = 38, int = 69, },
 }
@@ -194,6 +217,7 @@ itemBases["绣布便鞋"] = {
 	subType = "Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, int_armour = true, },
+	implicitModTypes = { },
 	armour = { EnergyShieldBase = 29, },
 	req = { level = 44, int = 79, },
 }
@@ -202,6 +226,7 @@ itemBases["咒者长靴"] = {
 	subType = "Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, int_armour = true, },
+	implicitModTypes = { },
 	armour = { EnergyShieldBase = 34, },
 	req = { level = 53, int = 94, },
 }
@@ -210,6 +235,7 @@ itemBases["秘术便鞋"] = {
 	subType = "Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, int_armour = true, },
+	implicitModTypes = { },
 	armour = { EnergyShieldBase = 45, },
 	req = { level = 61, int = 119, },
 }
@@ -218,6 +244,7 @@ itemBases["术士长靴"] = {
 	subType = "Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, int_armour = true, },
+	implicitModTypes = { },
 	armour = { EnergyShieldBase = 49, },
 	req = { level = 67, int = 123, },
 }
@@ -227,6 +254,7 @@ itemBases["粗鳞皮靴"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_dex_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 12, EvasionBase = 12, },
 	req = { level = 6, str = 9, dex = 9, },
 }
@@ -235,6 +263,7 @@ itemBases["铁影长靴"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_dex_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 34, EvasionBase = 34, },
 	req = { level = 18, str = 19, dex = 19, },
 }
@@ -243,6 +272,7 @@ itemBases["铜影长靴"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_dex_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 55, EvasionBase = 55, },
 	req = { level = 30, str = 30, dex = 30, },
 }
@@ -251,6 +281,7 @@ itemBases["钢影长靴"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_dex_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 65, EvasionBase = 65, },
 	req = { level = 36, str = 35, dex = 35, },
 }
@@ -259,6 +290,7 @@ itemBases["蛇鳞长靴"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_dex_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 76, EvasionBase = 76, },
 	req = { level = 42, str = 40, dex = 40, },
 }
@@ -267,6 +299,7 @@ itemBases["地蝮鳞长靴"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_dex_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 92, EvasionBase = 92, },
 	req = { level = 51, str = 48, dex = 48, },
 }
@@ -275,6 +308,7 @@ itemBases["火蝮鳞长靴"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_dex_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 106, EvasionBase = 106, },
 	req = { level = 59, str = 56, dex = 56, },
 }
@@ -283,6 +317,7 @@ itemBases["龙鳞长靴"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_dex_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 121, EvasionBase = 121, },
 	req = { level = 65, str = 62, dex = 62, },
 }
@@ -293,6 +328,7 @@ itemBases["链甲长靴"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_int_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 11, EnergyShieldBase = 3, },
 	req = { level = 5, str = 8, int = 8, },
 }
@@ -301,6 +337,7 @@ itemBases["环甲筒靴"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_int_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 25, EnergyShieldBase = 5, },
 	req = { level = 13, str = 15, int = 15, },
 }
@@ -309,6 +346,7 @@ itemBases["网眼长靴"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_int_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 51, EnergyShieldBase = 10, },
 	req = { level = 28, str = 28, int = 28, },
 }
@@ -317,6 +355,7 @@ itemBases["仪式短靴"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_int_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 65, EnergyShieldBase = 13, },
 	req = { level = 36, str = 35, int = 35, },
 }
@@ -325,6 +364,7 @@ itemBases["狂热者长靴"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_int_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 73, EnergyShieldBase = 14, },
 	req = { level = 40, str = 38, int = 38, },
 }
@@ -333,6 +373,7 @@ itemBases["战士之靴"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_int_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 88, EnergyShieldBase = 17, },
 	req = { level = 49, str = 47, int = 47, },
 }
@@ -341,6 +382,7 @@ itemBases["军团长靴"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_int_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 104, EnergyShieldBase = 20, },
 	req = { level = 58, str = 54, int = 54, },
 }
@@ -349,6 +391,7 @@ itemBases["圣战长靴"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, str_int_armour = true, },
+	implicitModTypes = { },
 	armour = { ArmourBase = 121, EnergyShieldBase = 24, },
 	req = { level = 64, str = 62, int = 62, },
 }
@@ -358,6 +401,7 @@ itemBases["裹趾凉鞋"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, dex_int_armour = true, },
+	implicitModTypes = { },
 	armour = { EvasionBase = 12, EnergyShieldBase = 3, },
 	req = { level = 6, dex = 9, int = 9, },
 }
@@ -366,6 +410,7 @@ itemBases["扣环短靴"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, dex_int_armour = true, },
+	implicitModTypes = { },
 	armour = { EvasionBase = 30, EnergyShieldBase = 6, },
 	req = { level = 16, dex = 18, int = 18, },
 }
@@ -374,6 +419,7 @@ itemBases["环带长靴"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, dex_int_armour = true, },
+	implicitModTypes = { },
 	armour = { EvasionBase = 50, EnergyShieldBase = 10, },
 	req = { level = 27, dex = 27, int = 27, },
 }
@@ -382,6 +428,7 @@ itemBases["缚足长靴"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, dex_int_armour = true, },
+	implicitModTypes = { },
 	armour = { EvasionBase = 62, EnergyShieldBase = 12, },
 	req = { level = 34, dex = 34, int = 34, },
 }
@@ -390,6 +437,7 @@ itemBases["猎人之靴"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, dex_int_armour = true, },
+	implicitModTypes = { },
 	armour = { EvasionBase = 74, EnergyShieldBase = 15, },
 	req = { level = 41, dex = 40, int = 40, },
 }
@@ -398,6 +446,7 @@ itemBases["伏击之靴"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, dex_int_armour = true, },
+	implicitModTypes = { },
 	armour = { EvasionBase = 85, EnergyShieldBase = 17, },
 	req = { level = 47, dex = 45, int = 45, },
 }
@@ -406,6 +455,7 @@ itemBases["禁礼之靴"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, dex_int_armour = true, },
+	implicitModTypes = { },
 	armour = { EvasionBase = 99, EnergyShieldBase = 19, },
 	req = { level = 55, dex = 52, int = 52, },
 }
@@ -414,6 +464,7 @@ itemBases["暗影之靴"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, dex_int_armour = true, },
+	implicitModTypes = { },
 	armour = { EvasionBase = 121, EnergyShieldBase = 24, },
 	req = { level = 63, dex = 62, int = 62, },
 }
@@ -422,6 +473,7 @@ itemBases["暗影者长靴"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, dex_int_armour = true, },
+	implicitModTypes = { },
 	armour = { EvasionBase = 185, EnergyShieldBase = 17, },
 	req = { level = 69, dex = 82, int = 42, },
 }
@@ -432,6 +484,7 @@ itemBases["黄金缠鞋"] = {
 	hidden = true,
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, not_for_sale = true, },
+	implicitModTypes = { { "elemental", "resistance" }, },
 	implicit = "+(8-16)% 所有元素抗性",
 	armour = { },
 	req = { level = 12, },
@@ -444,6 +497,7 @@ itemBases["异色鞋 (冰闪)"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, not_for_sale = true, atlas_base_type = true, bootsatlas1 = true, dex_int_armour = true, },
+	implicitModTypes = { { "elemental", "cold", "lightning", "resistance" }, },
 	implicit = "+(8-12)% 冰霜与闪电抗性",
 	armour = { EvasionBase = 126, EnergyShieldBase = 24, },
 	req = { level = 70, dex = 62, int = 62, },
@@ -453,6 +507,7 @@ itemBases["异色鞋 (火闪)"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, not_for_sale = true, atlas_base_type = true, bootsatlas3 = true, str_int_armour = true, },
+	implicitModTypes = { { "elemental", "fire", "lightning", "resistance" }, },
 	implicit = "+(8-12)% 火焰与闪电抗性",
 	armour = { ArmourBase = 126, EnergyShieldBase = 24, },
 	req = { level = 70, str = 62, int = 62, },
@@ -462,6 +517,7 @@ itemBases["异色鞋 (火冰)"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, not_for_sale = true, atlas_base_type = true, bootsatlas2 = true, str_dex_armour = true, },
+	implicitModTypes = { { "elemental", "fire", "cold", "resistance" }, },
 	implicit = "+(8-12)% 火焰与冰霜抗性",
 	armour = { ArmourBase = 126, EvasionBase = 126, },
 	req = { level = 70, str = 62, dex = 62, },
@@ -473,6 +529,7 @@ itemBases["异色鞋(冰闪)"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, not_for_sale = true, atlas_base_type = true, bootsatlas1 = true, dex_int_armour = true, },
+	implicitModTypes = { { "elemental", "cold", "lightning", "resistance" }, },
 	implicit = "+(8-12)% 冰霜与闪电抗性",
 	armour = { EvasionBase = 126, EnergyShieldBase = 24, },
 	req = { level = 70, dex = 62, int = 62, },
@@ -482,6 +539,7 @@ itemBases["异色鞋(火闪)"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, not_for_sale = true, atlas_base_type = true, bootsatlas3 = true, str_int_armour = true, },
+	implicitModTypes = { { "elemental", "fire", "lightning", "resistance" }, },
 	implicit = "+(8-12)% 火焰与闪电抗性",
 	armour = { ArmourBase = 126, EnergyShieldBase = 24, },
 	req = { level = 70, str = 62, int = 62, },
@@ -491,6 +549,7 @@ itemBases["异色鞋(火冰)"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, boots = true, not_for_sale = true, atlas_base_type = true, bootsatlas2 = true, str_dex_armour = true, },
+	implicitModTypes = { { "elemental", "fire", "cold", "resistance" }, },
 	implicit = "+(8-12)% 火焰与冰霜抗性",
 	armour = { ArmourBase = 126, EvasionBase = 126, },
 	req = { level = 70, str = 62, dex = 62, },

@@ -222,6 +222,45 @@ data.specialBaseTags = {
 	["Sceptre"] = { shaper = "sceptre_shaper", elder = "sceptre_elder",  crusader="sceptre_crusader", redeemer = "sceptre_eyrie",hunter ="sceptre_basilisk",warlord="sceptre_adjudicator" },
 }
 
+---@type string[] @List of keystones that can be found on unique items.
+data.keystones = {
+	"移形换影",
+	"先祖魂约",
+	"箭矢闪跃",
+	"火之化身",
+	"祭血术",
+	"召集部队",
+	"能量连接",
+	"玫红之舞",
+	"异能魔力",
+	"元素之相",
+	"元素超载",
+	"青春永驻",
+	"灵能护体",
+	"斗转星移",
+	"失衡卫士",
+	"钢铁之握",
+	"霸体",
+	"心灵升华",
+	"复仇之灵",
+	"凡人的信念",
+	"苦痛灵曲",
+	"完美苦痛",
+	"移灵换影",
+	"零点射击",
+	"坚毅之心",
+	"符文绑定者",
+	"无上自我",
+	"惘信者",
+	"穿刺者",
+	"烈士意志",
+	"瓦尔冥约",
+	"恶毒结界",
+	"风舞者",
+	"狂热誓言",
+}
+
+
 data.misc = { -- magic numbers
 	ServerTickRate = 30,
 	TemporalChainsEffectCap = 75,

@@ -694,37 +694,12 @@ elseif item.rarity == "魔法" then
 				-- Add extra supports from the item this group is socketed in
 				for _, value in ipairs(env.modDB:List(groupCfg, "ExtraSupport")) do
 					local grantedEffect = env.data.skills[value.skillId]
-					
-					 
-					if value.skillId=='SupportCastWhileChannelling' then 
-					
-						local grantedEffectTriggered = env.data.skills['SupportCastWhileChannellingTriggered']
-						t_insert(supportList, { 
-							grantedEffect = grantedEffectTriggered,
-							level = value.level,
-							quality = 0,
-							enabled = true,
-						})
-					elseif value.skillId=='SupportCastOnCrit' then
-					 
-						local grantedEffectTriggered = env.data.skills['SupportCastOnCritTriggered']
-						t_insert(supportList, { 
-							grantedEffect = grantedEffectTriggered,
-							level = value.level,
-							quality = 0,
-							enabled = true,
-						})
-					elseif value.skillId == 'SupportCastOnMeleeKill' then
-					 		 
-					local grantedEffectTriggered = env.data.skills['SupportCastOnMeleeKillTriggered']
-						t_insert(supportList, { 
-							grantedEffect = grantedEffectTriggered,
-							level = value.level,
-							quality = 0,
-							enabled = true,
-						})
-					end 
-					
+					-- Some skill gems share the same name as support gems, e.g. Barrage.
+					-- Since a support gem is expected here, if the first lookup returns a skill, then
+					-- prepending "Support" to the skillId will find the support version of the gem.
+					if grantedEffect and not grantedEffect.support then
+						grantedEffect = env.data.skills["Support"..value.skillId]
+					end
 					if grantedEffect then
 						t_insert(supportList, { 
 							grantedEffect = grantedEffect,
@@ -750,6 +725,7 @@ elseif item.rarity == "魔法" then
 							grantedEffect = grantedEffect,
 							level = gemInstance.level,
 							quality = gemInstance.quality,
+							qualityId = gemInstance.qualityId,
 							srcInstance = gemInstance,
 							gemData = gemInstance.gemData,
 							superseded = false,
@@ -816,6 +792,7 @@ elseif item.rarity == "魔法" then
 							local activeEffect = {
 								grantedEffect = grantedEffect,
 								level = gemInstance.level,
+								qualityId = gemInstance.qualityId,
 								quality = gemInstance.quality,
 								srcInstance = gemInstance,
 								gemData = gemInstance.gemData,

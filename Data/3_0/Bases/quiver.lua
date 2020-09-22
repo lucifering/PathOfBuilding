@@ -6,6 +6,7 @@ itemBases["火焰箭袋"] = {
 	type = "Quiver",
 	hidden = true,
 	tags = { default = true, quiver = true, },
+	implicitModTypes = { { "elemental_damage", "damage", "elemental", "fire", "attack" }, },
 	implicit = "攻击附加 2 - 4 基础火焰伤害",
 	req = { },
 }
@@ -13,6 +14,7 @@ itemBases["冰晶箭袋"] = {
 	type = "Quiver",
 	hidden = true,
 	tags = { default = true, quiver = true, },
+	implicitModTypes = { { "elemental_damage", "damage", "elemental", "cold", "attack" }, },
 	implicit = "攻击附加 2 - 3 基础冰霜伤害",
 	req = { },
 }
@@ -20,6 +22,7 @@ itemBases["电光箭袋"] = {
 	type = "Quiver",
 	hidden = true,
 	tags = { default = true, quiver = true, },
+	implicitModTypes = { { "elemental_damage", "damage", "elemental", "lightning", "attack" }, },
 	implicit = "攻击附加 1 - 5 基础闪电伤害",
 	req = { },
 }
@@ -27,6 +30,7 @@ itemBases["重矢箭袋"] = {
 	type = "Quiver",
 	hidden = true,
 	tags = { default = true, quiver = true, },
+	implicitModTypes = { { "physical_damage", "damage", "physical", "attack" }, },
 	implicit = "攻击附加 1 - 4 基础物理伤害",
 	req = { level = 5, },
 }
@@ -34,60 +38,70 @@ itemBases["轻巧箭袋"] = {
 	type = "Quiver",
 	hidden = true,
 	tags = { default = true, quiver = true, },
+	implicitModTypes = { { "attribute" }, },
 	implicit = "+(30-40) 敏捷",
 	req = { level = 12, },
 }
 itemBases["锯齿箭袋"] = {
 	type = "Quiver",
 	tags = { default = true, quiver = true, },
+	implicitModTypes = { { "physical_damage", "damage", "physical", "attack" }, },
 	implicit = "持弓攻击附加 1 - 4 基础物理伤害",
 	req = { level = 5, },
 }
 itemBases["双锋箭袋"] = {
 	type = "Quiver",
 	tags = { default = true, quiver = true, },
+	implicitModTypes = { { "attack" }, },
 	implicit = "命中值提高 (20-30)%",
 	req = { level = 4, },
 }
 itemBases["鲨齿箭袋"] = {
 	type = "Quiver",
 	tags = { default = true, quiver = true, },
+	implicitModTypes = { { "resource", "life", "attack" }, },
 	implicit = "你的攻击击中每个敌人会回复 +(3-4) 生命",
 	req = { level = 10, },
 }
 itemBases["钝矢箭袋"] = {
 	type = "Quiver",
 	tags = { default = true, quiver = true, },
+	implicitModTypes = { {  }, },
 	implicit = "敌人被晕眩时间延长 (25-35)%",
 	req = { level = 16, },
 }
 itemBases["火灵箭袋"] = {
 	type = "Quiver",
 	tags = { default = true, quiver = true, },
+	implicitModTypes = { { "elemental_damage", "damage", "elemental", "fire", "attack" }, },
 	implicit = "持弓攻击附加 4 - 8 基础火焰伤害",
 	req = { level = 22, },
 }
 itemBases["宽矢箭袋"] = {
 	type = "Quiver",
 	tags = { default = true, quiver = true, },
+	implicitModTypes = { { "physical_damage", "damage", "physical", "attack" }, },
 	implicit = "持弓攻击附加 6 - 12 基础物理伤害",
 	req = { level = 28, },
 }
 itemBases["穿射箭袋"] = {
 	type = "Quiver",
 	tags = { default = true, quiver = true, },
+	implicitModTypes = { { "attack" }, },
 	implicit = "箭矢会穿透 1 个额外目标",
 	req = { level = 36, },
 }
 itemBases["刺锋箭袋"] = {
 	type = "Quiver",
 	tags = { default = true, quiver = true, },
+	implicitModTypes = { { "critical" }, },
 	implicit = "攻击和法术暴击率提高 (20-30)%",
 	req = { level = 45, },
 }
 itemBases["华美箭袋"] = {
 	type = "Quiver",
 	tags = { default = true, quiver = true, not_for_sale = true, },
+	implicitModTypes = { {  }, },
 	implicit = "有 1 个插槽",
 	req = { level = 45, },
 }

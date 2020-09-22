@@ -398,7 +398,7 @@ control = new("ButtonControl", nil, 0, 0, 100, 16, "灵体管理...", function()
 							local descriptions = self.build.data.describeStats(stats, grantedEffect.statDescriptionScope )
 							 
 							for _, line in ipairs(descriptions) do
-								tooltip:AddLine(16, colorCodes.MAGIC..line)
+								tooltip:AddLine(16, line)
 							end
 						end
 						

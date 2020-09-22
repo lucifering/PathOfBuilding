@@ -330,10 +330,10 @@ local function runSkillFunc(name)
 	
 	
 	if skillModList:Flag(nil, "IronGrip") then
-		skillModList:NewMod("PhysicalDamage", "INC", actor.strDmgBonus, "Strength", bor(ModFlag.Attack, ModFlag.Projectile))
+		skillModList:NewMod("PhysicalDamage", "INC", actor.strDmgBonus or 0, "Strength", bor(ModFlag.Attack, ModFlag.Projectile))		
 	end
 	if skillModList:Flag(nil, "IronWill") then
-		skillModList:NewMod("Damage", "INC", actor.strDmgBonus, "Strength", ModFlag.Spell)
+		skillModList:NewMod("Damage", "INC", actor.strDmgBonus or 0, "Strength", ModFlag.Spell)
 	end
 
 	if skillModList:Flag(nil, "MinionDamageAppliesToPlayer") then
@@ -368,6 +368,23 @@ local function runSkillFunc(name)
 			local mod = value.mod
 			if band(mod.flags, ModFlag.Spell) ~= 0 then
 				skillModList:NewMod("Damage", "INC", mod.value * spellConvPercent / 100, mod.source, bor(band(mod.flags, bnot(ModFlag.Spell)), ModFlag.Attack), mod.keywordFlags, unpack(mod))
+			end
+		end
+	end
+	if skillModList:Flag(nil, "CastSpeedAppliesToAttacks") then
+		-- Get all increases for this; assumption is that multiple sources would not stack, so find the max
+		local maxIncrease = 0
+		for i, value in ipairs(skillModList:Tabulate("INC", skillCfg, "ImprovedCastSpeedAppliesToAttacks")) do
+			maxIncrease = m_max(maxIncrease, value.mod.value)
+		end
+		-- Convert from percent to fraction
+		local multiplier = maxIncrease / 100.
+		for i, value in ipairs(skillModList:Tabulate("INC", { flags = ModFlag.Cast }, "Speed")) do
+			local mod = value.mod
+			-- Add a new mod for all mods that are cast only
+			-- Replace this with a single mod for the sum?
+			if band(mod.flags, ModFlag.Cast) ~= 0 then
+				skillModList:NewMod("Speed", "INC", mod.value * multiplier, mod.source, bor(band(mod.flags, bnot(ModFlag.Cast)), ModFlag.Attack), mod.keywordFlags, unpack(mod))
 			end
 		end
 	end
@@ -845,7 +862,7 @@ t_insert(breakdown.DurationSecondary, s_format("/ %.2f ^8(debuff更快或更慢�
 		end
 	end
 
- 
+	
 	runSkillFunc("preDamageFunc")
 
 
@@ -1061,8 +1078,13 @@ t_insert(breakdown[stat], s_format("x %.3f ^8(副手创建的实例部分)", off
 		elseif skillData.fixedCastTime then
 			output.Time = activeSkill.activeEffect.grantedEffect.castTime
 			output.Speed = 1 / output.Time
-		elseif skillData.triggeredByBrand then
+		elseif skillData.triggerTime and skillData.triggered then
+			output.Time = skillData.triggerTime / (1 + skillModList:Sum("INC", cfg, "CooldownRecovery") / 100) * (skillModList:Sum("BASE", cfg, "CastWhileChannellingSpellsLinked") or 1)
+			output.TriggerTime = output.Time
+			output.Speed = 1 / output.Time
+		elseif skillData.triggeredByBrand and skillData.triggered then
 			output.Time = 1 / (1 + skillModList:Sum("INC", cfg, "Speed", "BrandActivationFrequency") / 100) / skillModList:More(cfg, "BrandActivationFrequency") * (skillModList:Sum("BASE", cfg, "ArcanistSpellsLinked") or 1)
+			output.TriggerTime = output.Time
 			output.Speed = 1 / output.Time
 		else
 			local baseTime
@@ -1332,7 +1354,7 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 						globalOutput.TheoreticalMaxOffensiveWarcryEffect = globalOutput.TheoreticalMaxOffensiveWarcryEffect * globalOutput.RallyingMaxHitEffect
 						globalOutput.RallyingCryCalculated = true
 
-					elseif value.activeEffect.grantedEffect.name == "震地战吼" and activeSkill.skillTypes[SkillType.Slam] and not globalOutput.SeismicCryCalculated then
+					elseif value.activeEffect.grantedEffect.name == "震地战吼" and activeSkill.skillTypes[SkillType.SlamSkill] and not globalOutput.SeismicCryCalculated then
 						globalOutput.CreateWarcryOffensiveCalcSection = true
 						globalOutput.SeismicCryDuration = calcSkillDuration(value.skillModList, value.skillCfg, value.skillData, env, enemyDB)
 						globalOutput.SeismicCryCooldown = calcSkillCooldown(value.skillModList, value.skillCfg, value.skillData)
@@ -1487,7 +1509,7 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 
 			globalOutput.FistOfWarCooldown = skillModList:Sum("BASE", cfg, "FistOfWarCooldown") or 0
 			-- If Fist of War & Active Skill is a Slam Skill & NOT a Vaal Skill
-			if globalOutput.FistOfWarCooldown ~= 0 and activeSkill.skillTypes[SkillType.Slam] and not activeSkill.skillTypes[SkillType.Vaal] then
+			if globalOutput.FistOfWarCooldown ~= 0 and activeSkill.skillTypes[SkillType.SlamSkill] and not activeSkill.skillTypes[SkillType.Vaal] then
 				globalOutput.FistOfWarHitMultiplier = skillModList:Sum("BASE", cfg, "FistOfWarHitMultiplier") / 100
 				globalOutput.FistOfWarAilmentMultiplier = skillModList:Sum("BASE", cfg, "FistOfWarAilmentMultiplier") / 100
 				globalOutput.FistOfWarUptimeRatio = m_min( (1 / output.Speed) / globalOutput.FistOfWarCooldown, 1) * 100
@@ -1630,6 +1652,8 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 		end
 		
  -- Calculate chance and multiplier for dealing double damage on Normal and Crit
+		local tripleChance = m_min(skillModList:Sum("BASE", cfg, "TripleDamageChance"), 100)
+					
 		output.DoubleDamageChanceOnCrit = m_min(skillModList:Sum("BASE", cfg, "DoubleDamageChanceOnCrit"), 100)
 		output.DoubleDamageChance = m_min(skillModList:Sum("BASE", cfg, "DoubleDamageChance") + (env.mode_effective and enemyDB:Sum("BASE", cfg, "SelfDoubleDamageChance") or 0) + (output.DoubleDamageChanceOnCrit * output.CritChance / 100), 100)
 		if globalOutput.IntimidatingUpTimeRatio and activeSkill.skillModList:Flag(nil, "Condition:WarcryMaxHit") then
@@ -1637,7 +1661,16 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 		elseif globalOutput.IntimidatingUpTimeRatio then
 			output.DoubleDamageChance = m_min(output.DoubleDamageChance + globalOutput.IntimidatingUpTimeRatio, 100)
 		end
-		output.DoubleDamageEffect = 1 + output.DoubleDamageChance / 100
+		if tripleChance == 100 then 
+			output.TripleDamageChance = tripleChance
+			output.DoubleDamageChance = 0
+			output.TripleDamageEffect = 2 + output.TripleDamageChance / 100
+			output.DoubleDamageEffect = 1
+		else 
+			output.TripleDamageEffect = 1
+			output.DoubleDamageEffect = 1 + output.DoubleDamageChance / 100
+		end 
+		
 		
 		
 		-- Calculate base hit damage
@@ -1747,6 +1780,9 @@ t_insert(breakdown[damageType], s_format("x %g ^8(%g%% 转化为其他伤害)", 
 						if output.DoubleDamageEffect ~= 1 then
 t_insert(breakdown[damageType], s_format("x %.2f ^8(几率造成双倍伤害)", output.DoubleDamageEffect))
 						end
+						if output.TripleDamageEffect ~= 1 then
+t_insert(breakdown[damageType], s_format("x %.2f ^8(几率造成三倍伤害)", output.TripleDamageEffect))
+						end
 						if output.RuthlessBlowEffect ~= 1 then
 t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", output.RuthlessBlowEffect))
 						end
@@ -1764,9 +1800,9 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 						
 					end
 					if activeSkill.skillModList:Flag(nil, "Condition:WarcryMaxHit") then
-						output.allMult = convMult * output.DoubleDamageEffect * output.RuthlessBlowEffect * output.FistOfWarHitEffect * globalOutput.MaxOffensiveWarcryEffect
+						output.allMult = convMult * output.DoubleDamageEffect* output.TripleDamageEffect  * output.RuthlessBlowEffect * output.FistOfWarHitEffect * globalOutput.MaxOffensiveWarcryEffect
 					else
-						output.allMult = convMult * output.DoubleDamageEffect * output.RuthlessBlowEffect * output.FistOfWarHitEffect * globalOutput.OffensiveWarcryEffect
+						output.allMult = convMult * output.DoubleDamageEffect* output.TripleDamageEffect  * output.RuthlessBlowEffect * output.FistOfWarHitEffect * globalOutput.OffensiveWarcryEffect
 					end
 					
 					local allMult = output.allMult
@@ -1794,6 +1830,19 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 						local pen = 0
 						local takenInc = enemyDB:Sum("INC", cfg, "DamageTaken", damageType.."DamageTaken")
 						local takenMore = enemyDB:More(cfg, "DamageTaken", damageType.."DamageTaken")
+						-- Check if player is supposed to ignore a damage type, or if it's ignored on enemy side
+						local useThisResist = function(damageType) 
+							return (skillModList:Flag(cfg,
+									 "CannotIgnoreElementalResistances")
+									or  
+									not skillModList:Flag(cfg, 
+									"Ignore"..damageType.."Resistance", 
+									isElemental[damageType] 
+									and "IgnoreElementalResistances" or nil)
+									)
+									and not enemyDB:Flag(nil, "SelfIgnore"..damageType.."Resistance")							
+							
+						end
 						local isIgnoreResist = false
 						local isIgnorePen = false
 						local isResistIsEnemy = false
@@ -1835,6 +1884,16 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 								end
 							elseif damageType == "Chaos" then
 								pen = skillModList:Sum("BASE", cfg, "ChaosPenetration")
+								if skillModList:Flag(cfg, "ChaosDamageUsesLowestResistance") then
+									--Find the lowest resist of all the elements and use that if it's lower than chaos
+									for _, damageTypeForChaos in ipairs(dmgTypeList) do
+										if isElemental[damageTypeForChaos] and useThisResist(damageTypeForChaos) then
+											local elementalResistForChaos = enemyDB:Sum("BASE", nil, damageTypeForChaos.."Resist")
+											local base = elementalResistForChaos + enemyDB:Sum("BASE", dotTypeCfg, "ElementalResist")
+											resist = m_min(resist, base * calcLib.mod(enemyDB, nil, damageType.."Resist"))
+										end
+									end
+								end
 							end
 							
 							resist = m_min(resist, 75)
@@ -1853,23 +1912,15 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 						--[[如果不是元素  或者 不是 无视元素抗性 那么计算抗性收益
 						
 						]]--
-						 
-						if 
-						 (skillModList:Flag(cfg,
-						 "CannotIgnoreElementalResistances")
-						or  
-						not skillModList:Flag(cfg, 
-						"Ignore"..damageType.."Resistance", 
-						isElemental[damageType] 
-						and "IgnoreElementalResistances" or nil)
-						)
-						and not enemyDB:Flag(nil, "SelfIgnore"..damageType.."Resistance")
-						then
-						--来计算抗性
+						if skillModList:Flag(cfg, isElemental[damageType] and "CannotElePenIgnore" or nil) then
+							effMult = effMult * (1 - resist / 100)
+						elseif useThisResist(damageType) then
 							effMult = effMult * (1 - (resist - pen) / 100)
 						else 
 							isIgnoreResist = true
 						end
+						 
+						
 						if  isChaos[damageType] and (skillModList:Flag(cfg, "IgnoreChaosResistances") or enemyDB:Flag(nil, "SelfIgnoreChaosResistance"))   then
 							effMult = effMultChaos
 						end
@@ -2593,9 +2644,9 @@ t_insert(breakdownDPS, "总伤害:")
 					end
 				end
 				
-				local mult = skillModList:Sum("BASE", dotCfg, "DotMultiplier", "PhysicalDotMultiplier")
-				local effectMod = calcLib.mod(skillModList, dotCfg, "AilmentEffect")
-				local rateMod = calcLib.mod(skillModList, cfg, "BleedFaster")
+				local mult = skillModList:Sum("BASE", dotCfg, "DotMultiplier", "PhysicalDotMultiplier", "BleedMultiplier")
+				local effectMod = calcLib.mod(skillModList, dotCfg, "AilmentEffect")				
+				local rateMod = calcLib.mod(skillModList, cfg, "BleedFaster") + enemyDB:Sum("INC", nil, "SelfBleedFaster")  / 100
 				local maxStacks = skillModList:Override(cfg, "BleedStacksMax") or skillModList:Sum("BASE", cfg, "BleedStacksMax")
 				local configStacks = enemyDB:Sum("BASE", nil, "Multiplier:BleedStacks")
 				local bleedStacks = configStacks > 0 and m_min(configStacks, maxStacks) or maxStacks
@@ -2770,7 +2821,7 @@ t_insert(breakdownDPS, "总伤害:")
 				--异常伤害效果
 				local effectMod = calcLib.mod(skillModList, dotCfg, "AilmentEffect")
 				--中毒消化速度
-				local rateMod = calcLib.mod(skillModList, cfg, "PoisonFaster")
+				local rateMod = calcLib.mod(skillModList, cfg, "PoisonFaster") + enemyDB:Sum("INC", nil, "SelfPoisonFaster")  / 100
 				output.PoisonDPS = baseVal * effectMod * rateMod * effMult 
 				local durationBase
 				if skillData.poisonDurationIsSkillDuration then
@@ -2949,7 +3000,7 @@ s_format("点燃计算模式: %s ^8(可以在配置面板修改)", igniteMode ==
 					end
 				end
 				local effectMod = calcLib.mod(skillModList, dotCfg, "AilmentEffect")
-				local rateMod = calcLib.mod(skillModList, cfg, "IgniteBurnFaster") / calcLib.mod(skillModList, cfg, "IgniteBurnSlower")
+				local rateMod = (calcLib.mod(skillModList, cfg, "IgniteBurnFaster") + enemyDB:Sum("INC", nil, "SelfIgniteBurnFaster") / 100)  / calcLib.mod(skillModList, cfg, "IgniteBurnSlower")
 				output.IgniteDPS = baseVal * effectMod * rateMod * effMult				
 				local incDur = skillModList:Sum("INC", dotCfg, "EnemyIgniteDuration", "SkillAndDamagingAilmentDuration") + enemyDB:Sum("INC", nil, "SelfIgniteDuration")
 				local moreDur = enemyDB:More(nil, "SelfIgniteDuration")
@@ -3060,7 +3111,7 @@ t_insert(globalBreakdown.IgniteDuration, s_format("/ %.2f ^8(更快或较慢 deb
 				 
 				output.ShockEffectMod = skillModList:Sum("INC", cfg, "EnemyShockEffect")
 				local maximum = skillModList:Override(nil, "ShockMax") or 50
-				local current = m_min(output.CurrentShock or 0, maximum)
+				local current = m_min(globalOutput.CurrentShock or 0, maximum)
 				local desired = m_min(enemyDB:Sum("BASE", nil, "DesiredShockVal"), maximum)
 				local enemyThreshold = enemyDB:Sum("BASE", nil, "AilmentThreshold") * enemyDB:More(nil, "Life")
 				local effList = { 5, 15, 50 }

@@ -8,6 +8,7 @@ itemBases["粗铁盔"] = {
 	subType = "Armour",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 9, },
 	req = { str = 9, },
 }
@@ -16,6 +17,7 @@ itemBases["锥顶盔"] = {
 	subType = "Armour",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 38, },
 	req = { level = 7, str = 21, },
 }
@@ -24,6 +26,7 @@ itemBases["轻骑盔"] = {
 	subType = "Armour",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 92, },
 	req = { level = 18, str = 42, },
 }
@@ -32,6 +35,7 @@ itemBases["护面盔"] = {
 	subType = "Armour",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 130, },
 	req = { level = 26, str = 58, },
 }
@@ -40,6 +44,7 @@ itemBases["角斗者之盔"] = {
 	subType = "Armour",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 174, },
 	req = { level = 35, str = 75, },
 }
@@ -48,6 +53,7 @@ itemBases["掠夺者之盔"] = {
 	subType = "Armour",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 198, },
 	req = { level = 40, str = 85, },
 }
@@ -56,6 +62,7 @@ itemBases["破城之盔"] = {
 	subType = "Armour",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 237, },
 	req = { level = 48, str = 101, },
 }
@@ -64,6 +71,7 @@ itemBases["绣领之盔"] = {
 	subType = "Armour",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 276, },
 	req = { level = 55, str = 114, },
 }
@@ -72,6 +80,7 @@ itemBases["艾兹麦坚盔"] = {
 	subType = "Armour",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 346, },
 	req = { level = 60, str = 138, },
 }
@@ -80,6 +89,7 @@ itemBases["皇室坚盔"] = {
 	subType = "Armour",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 377, },
 	req = { level = 65, str = 148, },
 }
@@ -88,6 +98,7 @@ itemBases["永恒坚盔"] = {
 	subType = "Armour",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 373, },
 	req = { level = 69, str = 138, },
 }
@@ -97,6 +108,7 @@ itemBases["皮帽"] = {
 	subType = "Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, dex_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EvasionBase = 19, },
 	req = { dex = 13, },
 }
@@ -105,6 +117,7 @@ itemBases["三角帽"] = {
 	subType = "Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, dex_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EvasionBase = 53, },
 	req = { level = 10, dex = 27, },
 }
@@ -113,6 +126,7 @@ itemBases["革兜"] = {
 	subType = "Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, dex_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EvasionBase = 101, },
 	req = { level = 20, dex = 46, },
 }
@@ -121,6 +135,7 @@ itemBases["狼首皮盔"] = {
 	subType = "Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, dex_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EvasionBase = 150, },
 	req = { level = 30, dex = 66, },
 }
@@ -129,6 +144,7 @@ itemBases["猎者之兜"] = {
 	subType = "Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, dex_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EvasionBase = 203, },
 	req = { level = 41, dex = 87, },
 }
@@ -137,6 +153,7 @@ itemBases["贵族三角帽"] = {
 	subType = "Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, dex_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EvasionBase = 232, },
 	req = { level = 47, dex = 99, },
 }
@@ -145,6 +162,7 @@ itemBases["熊首皮盔"] = {
 	subType = "Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, dex_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EvasionBase = 276, },
 	req = { level = 55, dex = 114, },
 }
@@ -153,6 +171,7 @@ itemBases["绸缎之兜"] = {
 	subType = "Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, dex_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EvasionBase = 346, },
 	req = { level = 60, dex = 138, },
 }
@@ -161,6 +180,7 @@ itemBases["罪者之帽"] = {
 	subType = "Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, dex_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EvasionBase = 369, },
 	req = { level = 64, dex = 138, },
 }
@@ -169,6 +189,7 @@ itemBases["狮首皮盔"] = {
 	subType = "Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, dex_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EvasionBase = 380, },
 	req = { level = 70, dex = 150, },
 }
@@ -178,6 +199,7 @@ itemBases["藤蔓之冠"] = {
 	subType = "Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EnergyShieldBase = 6, },
 	req = { int = 13, },
 }
@@ -186,6 +208,7 @@ itemBases["铁锻之冠"] = {
 	subType = "Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EnergyShieldBase = 10, },
 	req = { level = 8, int = 23, },
 }
@@ -194,6 +217,7 @@ itemBases["刑罚头笼"] = {
 	subType = "Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EnergyShieldBase = 19, },
 	req = { level = 17, int = 40, },
 }
@@ -202,6 +226,7 @@ itemBases["祭仪之冠"] = {
 	subType = "Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EnergyShieldBase = 27, },
 	req = { level = 26, int = 58, },
 }
@@ -210,6 +235,7 @@ itemBases["灵骨之冠"] = {
 	subType = "Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EnergyShieldBase = 34, },
 	req = { level = 34, int = 73, },
 }
@@ -218,6 +244,7 @@ itemBases["月影之冠"] = {
 	subType = "Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EnergyShieldBase = 38, },
 	req = { level = 39, int = 83, },
 }
@@ -226,6 +253,7 @@ itemBases["冷钢之冠"] = {
 	subType = "Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EnergyShieldBase = 46, },
 	req = { level = 48, int = 101, },
 }
@@ -234,6 +262,7 @@ itemBases["操灵者之冠"] = {
 	subType = "Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EnergyShieldBase = 52, },
 	req = { level = 54, int = 112, },
 }
@@ -242,6 +271,7 @@ itemBases["日耀之冠"] = {
 	subType = "Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EnergyShieldBase = 57, },
 	req = { level = 59, int = 122, },
 }
@@ -250,6 +280,7 @@ itemBases["灵能之笼"] = {
 	subType = "Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EnergyShieldBase = 69, },
 	req = { level = 65, int = 138, },
 }
@@ -258,6 +289,7 @@ itemBases["灵主之环"] = {
 	subType = "Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EnergyShieldBase = 76, },
 	req = { level = 69, int = 154, },
 }
@@ -267,6 +299,7 @@ itemBases["残破之盔"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_dex_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 13, EvasionBase = 13, },
 	req = { str = 8, dex = 8, },
 }
@@ -275,6 +308,7 @@ itemBases["轻铁护盔"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_dex_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 37, EvasionBase = 37, },
 	req = { level = 13, str = 18, dex = 18, },
 }
@@ -283,6 +317,7 @@ itemBases["清视护盔"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_dex_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 64, EvasionBase = 64, },
 	req = { level = 23, str = 28, dex = 28, },
 }
@@ -291,6 +326,7 @@ itemBases["金面护盔"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_dex_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 90, EvasionBase = 90, },
 	req = { level = 33, str = 38, dex = 38, },
 }
@@ -299,6 +335,7 @@ itemBases["精兵之盔"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_dex_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 98, EvasionBase = 98, },
 	req = { level = 36, str = 42, dex = 42, },
 }
@@ -307,6 +344,7 @@ itemBases["击剑士之盔"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_dex_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 117, EvasionBase = 117, },
 	req = { level = 43, str = 49, dex = 49, },
 }
@@ -315,6 +353,7 @@ itemBases["漆彩之盔"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_dex_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 138, EvasionBase = 138, },
 	req = { level = 51, str = 57, dex = 57, },
 }
@@ -323,6 +362,7 @@ itemBases["全罩战盔"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_dex_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 160, EvasionBase = 160, },
 	req = { level = 58, str = 64, dex = 64, },
 }
@@ -331,6 +371,7 @@ itemBases["猪面头盔"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_dex_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 229, EvasionBase = 159, },
 	req = { level = 63, str = 85, dex = 62, },
 }
@@ -339,6 +380,7 @@ itemBases["梦魇战盔"] = {
 	subType = "Armour/Evasion",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_dex_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 162, EvasionBase = 233, },
 	req = { level = 67, str = 62, dex = 85, },
 }
@@ -348,6 +390,7 @@ itemBases["锈铁链盔"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 16, EnergyShieldBase = 4, },
 	req = { level = 5, str = 9, int = 9, },
 }
@@ -356,6 +399,7 @@ itemBases["士兵之盔"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 34, EnergyShieldBase = 8, },
 	req = { level = 12, str = 16, int = 16, },
 }
@@ -364,6 +408,7 @@ itemBases["巨盔"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 61, EnergyShieldBase = 13, },
 	req = { level = 22, str = 27, int = 27, },
 }
@@ -372,6 +417,7 @@ itemBases["圣战之盔"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 85, EnergyShieldBase = 17, },
 	req = { level = 31, str = 36, int = 36, },
 }
@@ -380,6 +426,7 @@ itemBases["战意之盔"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 101, EnergyShieldBase = 20, },
 	req = { level = 37, str = 42, int = 42, },
 }
@@ -388,6 +435,7 @@ itemBases["热战之盔"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 119, EnergyShieldBase = 24, },
 	req = { level = 44, str = 50, int = 50, },
 }
@@ -396,6 +444,7 @@ itemBases["强化巨盔"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 143, EnergyShieldBase = 28, },
 	req = { level = 53, str = 59, int = 59, },
 }
@@ -404,6 +453,7 @@ itemBases["行政者战冠"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 160, EnergyShieldBase = 31, },
 	req = { level = 58, str = 64, int = 64, },
 }
@@ -412,6 +462,7 @@ itemBases["箴言战冠"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 224, EnergyShieldBase = 30, },
 	req = { level = 63, str = 85, int = 62, },
 }
@@ -420,6 +471,7 @@ itemBases["领主战冠"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, str_int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { ArmourBase = 161, EnergyShieldBase = 48, },
 	req = { level = 68, str = 62, int = 91, },
 }
@@ -428,6 +480,7 @@ itemBases["唤骨头盔"] = {
 	subType = "Armour/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, not_for_sale = true, atlas_base_type = true, helmetatlas1 = true, str_int_armour = true, },
+	implicitModTypes = { { "damage", "minion" }, },
 	implicit = "召唤生物的伤害提高 (15-20)%",
 	armour = { ArmourBase = 197, EnergyShieldBase = 38, },
 	req = { level = 73, str = 76, int = 76, },
@@ -438,6 +491,7 @@ itemBases["幽惧之面"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, dex_int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EvasionBase = 13, EnergyShieldBase = 4, },
 	req = { dex = 8, int = 8, },
 }
@@ -446,6 +500,7 @@ itemBases["疫灾之面"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, dex_int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EvasionBase = 29, EnergyShieldBase = 7, },
 	req = { level = 10, dex = 14, int = 14, },
 }
@@ -454,6 +509,7 @@ itemBases["铁锻之面"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, dex_int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EvasionBase = 48, EnergyShieldBase = 10, },
 	req = { level = 17, dex = 21, int = 21, },
 }
@@ -462,6 +518,7 @@ itemBases["节庆之面"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, dex_int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EvasionBase = 77, EnergyShieldBase = 16, },
 	req = { level = 28, dex = 33, int = 33, },
 }
@@ -470,6 +527,7 @@ itemBases["黄金之面"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, dex_int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EvasionBase = 96, EnergyShieldBase = 19, },
 	req = { level = 35, dex = 40, int = 40, },
 }
@@ -478,6 +536,7 @@ itemBases["祸鸦之面"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, dex_int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EvasionBase = 104, EnergyShieldBase = 21, },
 	req = { level = 38, dex = 44, int = 44, },
 }
@@ -486,6 +545,7 @@ itemBases["无情之面"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, dex_int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EvasionBase = 122, EnergyShieldBase = 24, },
 	req = { level = 45, dex = 51, int = 51, },
 }
@@ -494,6 +554,7 @@ itemBases["弑君之面"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, dex_int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EvasionBase = 141, EnergyShieldBase = 28, },
 	req = { level = 52, dex = 58, int = 58, },
 }
@@ -502,6 +563,7 @@ itemBases["鹰喙之面"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, dex_int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EvasionBase = 157, EnergyShieldBase = 31, },
 	req = { level = 57, dex = 64, int = 64, },
 }
@@ -510,6 +572,7 @@ itemBases["瓦尔之面"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, dex_int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EvasionBase = 207, EnergyShieldBase = 36, },
 	req = { level = 62, dex = 79, int = 72, },
 }
@@ -518,6 +581,7 @@ itemBases["弑神之面"] = {
 	subType = "Evasion/Energy Shield",
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, dex_int_armour = true, },
+	implicitModTypes = { {  }, },
 	armour = { EvasionBase = 190, EnergyShieldBase = 45, },
 	req = { level = 67, dex = 73, int = 88, },
 }
@@ -527,6 +591,7 @@ itemBases["金黄花环"] = {
 	hidden = true,
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, not_for_sale = true, },
+	implicitModTypes = { { "attribute" }, },
 	implicit = "+(16-24) 全属性",
 	armour = { },
 	req = { level = 12, },
@@ -537,6 +602,7 @@ itemBases["金色面具"] = {
 	hidden = true,
 	socketLimit = 4,
 	tags = { default = true, armour = true, helmet = true, not_for_sale = true, },
+	implicitModTypes = { { "elemental", "resistance" }, },
 	implicit = "+(8-16)% 所有元素抗性",
 	armour = { },
 	req = { level = 12, },

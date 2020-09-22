@@ -63,7 +63,7 @@ local function mergeKeystones(env)
 	for _, name in ipairs(modDB:List(nil, "Keystone")) do
 		name =fuckCnKeystones(name)
 		
-		if not env.keystonesAdded[name] then
+		if not env.keystonesAdded[name]  and env.spec.tree.keystoneMap[name] then
 			env.keystonesAdded[name] = true		
 			
 			modDB:AddList(env.spec.tree.keystoneMap[name].modList)
@@ -665,13 +665,25 @@ function calcs.perform(env)
 			
 			 
 			local attached = modDB:Sum("BASE", nil, "Multiplier:ConfigBrandsAttachedToEnemy")
+			local activeBrands = modDB:Sum("BASE", nil, "Multiplier:ConfigActiveBrands")
 			local actual = m_min(attachLimit, attached)
 			 
-			
+			-- Cap the number of active brands by the limit, which is 3 by default
+			modDB.multipliers["ActiveBrand"] = m_min(activeBrands, modDB:Sum("BASE", nil, "ActiveBrandLimit"))
 			modDB.multipliers["BrandsAttachedToEnemy"] = m_max(actual, modDB.multipliers["BrandsAttachedToEnemy"] or 0)
 			enemyDB.multipliers["BrandsAttached"] = m_max(actual, enemyDB.multipliers["BrandsAttached"] or 0)
 			
 			 
+		end
+		-- The actual hexes as opposed to hex related skills all have the curse flag. Type31 is to remove blasphemy
+		-- Note that this doesn't work for triggers yet, insufficient support
+		if activeSkill.skillFlags.hex and activeSkill.skillFlags.curse and not activeSkill.skillTypes[SkillType.Type31] then
+			local hexDoom = modDB:Sum("BASE", nil, "Multiplier:HexDoomStack")
+			local maxDoom = activeSkill.skillModList:Sum("BASE", nil, "MaxDoom") or 30
+			-- Update the max doom limit
+			output.HexDoomLimit = m_max(maxDoom, output.HexDoomLimit or 0)
+			-- Update the Hex Doom to apply
+			modDB.multipliers["HexDoom"] =  m_min(m_max(hexDoom, modDB.multipliers["HexDoom"] or 0), output.HexDoomLimit)
 		end
 		if activeSkill.skillData.supportBonechill then
 			if activeSkill.skillTypes[SkillType.ChillingArea] or (activeSkill.skillTypes[SkillType.NonHitChill] and not activeSkill.skillModList:Flag(nil, "CannotChill")) and not (activeSkill.activeEffect.grantedEffect.name == "Summon Skitterbots" and activeSkill.skillModList:Flag(nil, "SkitterbotsCannotChill")) then
@@ -690,6 +702,16 @@ function calcs.perform(env)
 		end
 		if activeSkill.skillModList:Flag(nil, "CanHaveAdditionalCurse") then
 			output.GemCurseLimit = activeSkill.skillModList:Sum("BASE", nil, "AdditionalCurse")
+		end
+		if activeSkill.skillModList:Flag(nil, "Condition:CanWither") and not modDB:Flag(nil, "AlreadyWithered") then
+			modDB:NewMod("Condition:CanWither", "FLAG", true, "Config")
+			modDB:NewMod("Dummy", "DUMMY", 1, "Config", { type = "Condition", var = "CanWither" })
+			local effect = m_floor(6 * (1 + modDB:Sum("INC", nil, "WitherEffect") / 100))
+			enemyDB:NewMod("ChaosDamageTaken", "INC", effect, "Withered", { type = "Multiplier", var = "WitheredStack", limit = 15 } )
+			if modDB:Flag(nil, "Condition:CanElementalWithered") then
+				enemyDB:NewMod("ElementalDamageTaken", "INC", 4, "Withered", ModFlag.Hit, { type = "Multiplier", var = "WitheredStack", limit = 15 } )
+			end
+			modDB:NewMod("AlreadyWithered", "FLAG", true, "Config") -- Prevents effect from applying multiple times
 		end
 		if activeSkill.skillFlags.warcry and not modDB:Flag(nil, "AlreadyGlobalWarcryCooldown") then
 			local cooldown = calcSkillCooldown(activeSkill.skillModList, activeSkill.skillCfg, activeSkill.skillData)
@@ -815,8 +837,10 @@ function calcs.perform(env)
 			end
 		end
 		
+		
 		 
-		if activeSkill.skillData.triggeredByBrand then
+		if activeSkill.skillData.triggeredByBrand and not activeSkill.skillFlags.minion then
+			activeSkill.skillData.triggered = true
 			local spellCount, quality = 0
 			for _, skill in ipairs(env.player.activeSkillList) do
 				if skill.socketGroup == activeSkill.socketGroup and skill.skillData.triggeredByBrand then
@@ -826,8 +850,36 @@ function calcs.perform(env)
 					quality = skill.activeEffect.quality / 2
 				end
 			end
+			for i, value in ipairs(activeSkill.skillModList:Tabulate("INC", env.player.mainSkill.skillCfg, "TriggeredDamage")) do
+				activeSkill.skillModList:NewMod("Damage", "INC", value.mod.value, value.mod.source, value.mod.flags, value.mod.keywordFlags, unpack(value.mod))
+			end
+			for i, value in ipairs(activeSkill.skillModList:Tabulate("MORE", env.player.mainSkill.skillCfg, "TriggeredDamage")) do
+				activeSkill.skillModList:NewMod("Damage", "MORE", value.mod.value, value.mod.source, value.mod.flags, value.mod.keywordFlags, unpack(value.mod))
+			end
 			activeSkill.skillModList:NewMod("ArcanistSpellsLinked", "BASE", spellCount, "Skill")
 			activeSkill.skillModList:NewMod("BrandActivationFrequency", "INC", quality, "Skill")
+			
+			
+		end
+		if activeSkill.skillData.triggeredWhileChannelling and not activeSkill.skillFlags.minion then
+			activeSkill.skillData.triggered = true
+			local spellCount, trigTime = 0
+			for _, skill in ipairs(env.player.activeSkillList) do
+				if skill.socketGroup == activeSkill.socketGroup and skill.skillData.triggerTime or 0 > 0 then
+					trigTime = skill.skillData.triggerTime
+				end
+				if skill.socketGroup == activeSkill.socketGroup and skill.skillData.triggeredWhileChannelling then
+					spellCount = spellCount + 1
+				end
+			end
+			for i, value in ipairs(activeSkill.skillModList:Tabulate("INC", env.player.mainSkill.skillCfg, "TriggeredDamage")) do
+				activeSkill.skillModList:NewMod("Damage", "INC", value.mod.value, value.mod.source, value.mod.flags, value.mod.keywordFlags, unpack(value.mod))
+			end
+			for i, value in ipairs(activeSkill.skillModList:Tabulate("MORE", env.player.mainSkill.skillCfg, "TriggeredDamage")) do
+				activeSkill.skillModList:NewMod("Damage", "MORE", value.mod.value, value.mod.source, value.mod.flags, value.mod.keywordFlags, unpack(value.mod))
+			end
+			activeSkill.skillModList:NewMod("CastWhileChannellingSpellsLinked", "BASE", spellCount, "Skill")
+			activeSkill.skillData.triggerTime = trigTime
 		end
 	end
 	
@@ -1213,9 +1265,14 @@ function calcs.perform(env)
 						name = buff.name,
 						fromPlayer = true,
 						priority = activeSkill.skillTypes[SkillType.Aura] and 3 or 1,
+						isMark = activeSkill.skillTypes[SkillType.Mark],
 					}
 					local inc = skillModList:Sum("INC", skillCfg, "CurseEffect") + enemyDB:Sum("INC", nil, "CurseEffectOnSelf")
-					local more = skillModList:More(skillCfg, "CurseEffect") * enemyDB:More(nil, "CurseEffectOnSelf")
+					local more = skillModList:More(skillCfg, "CurseEffect")
+					-- This is non-ideal, but the only More for enemy is the boss effect
+					if not curse.isMark then
+						more = more * enemyDB:More(nil, "CurseEffectOnSelf")
+					end
 					if buff.type == "Curse" then
 						curse.modList = new("ModList")
 						curse.modList:ScaleAddList(buff.modList, (1 + inc / 100) * more)
@@ -1378,10 +1435,19 @@ function calcs.perform(env)
 	-- Assign curses to slots
 	local curseSlots = { }
 	env.curseSlots = curseSlots
+	-- Currently assume only 1 mark is possible
+	local markSlotted = false
 	for _, source in ipairs({curses, minionCurses}) do
 		for _, curse in ipairs(source) do
 			local slot
 			for i = 1, source.limit do
+				--Prevent multiple marks from being considered
+				if curse.isMark then
+					if markSlotted then
+						slot = nil
+						break
+					end
+				end
 				if not curseSlots[i] then
 					slot = i
 					break
@@ -1397,7 +1463,13 @@ function calcs.perform(env)
 				end
 			end
 			if slot then
+				if curseSlots[slot] and curseSlots[slot].isMark then
+					markSlotted = false
+				end
 				curseSlots[slot] = curse
+				if curse.isMark then
+					markSlotted = true
+				end
 			end
 		end
 	end
@@ -1428,6 +1500,9 @@ function calcs.perform(env)
 	local affectedByCurse = { }
 	for _, slot in ipairs(curseSlots) do
 		enemyDB.conditions["Cursed"] = true
+		if slot.isMark then
+			enemyDB.conditions["Marked"] = true
+		end
 		if slot.fromPlayer then
 			affectedByCurse[env.enemy] = true
 		end

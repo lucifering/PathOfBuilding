@@ -18,7 +18,17 @@ description = "辅助任意击中敌人的技能",
 	baseMods = {
 	},
 	qualityStats = {
-		{ "fire_damage_+%", 0.5 },
+		Default = {
+			{ "fire_damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "fire_damage_+%", -1 },
+		
+			{ "fire_dot_multiplier_+", 1 },
+		},
+		Alternate2 = {
+			{ "skill_physical_damage_%_to_convert_to_fire", 1 },
+		},
 	},
 	stats = {
 		"physical_damage_%_to_add_as_fire",
@@ -84,7 +94,9 @@ description = "辅助任意击中敌人的技能",
 	baseMods = {
 	},
 	qualityStats = {
-		{ "fire_damage_+%", 1 },
+		Default = {
+			{ "fire_damage_+%", 1 },
+		},
 	},
 	stats = {
 		"physical_damage_%_to_add_as_fire",
@@ -131,7 +143,15 @@ description = "能够辅助单体近战攻击技能，使该技能可以同时�
 	baseMods = {
 	},
 	qualityStats = {
-		{ "attack_speed_+%", 0.5 },
+		Default = {
+			{ "attack_speed_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "base_skill_area_of_effect_+%", 0.5 },
+		},
+		Alternate2 = {
+			{ "melee_range_+", 0.2 },
+		},
 	},
 	stats = {
 		"melee_attack_number_of_spirit_strikes",
@@ -199,8 +219,11 @@ description = "能够辅助单体近战攻击技能，使该技能可以同时�
 	baseMods = {
 	},
 	qualityStats = {
-		{ "attack_speed_+%", 0.5 },
-		{ "extra_target_targeting_distance_+%", 1 },
+		Default = {
+			{ "attack_speed_+%", 0.5 },
+		
+			{ "extra_target_targeting_distance_+%", 1 },
+		},
 	},
 	stats = {
 		"melee_attack_number_of_spirit_strikes",
@@ -241,7 +264,15 @@ description = "辅助任意技能",
 	baseMods = {
 	},
 	qualityStats = {
-		{ "base_mana_cost_-%", 0.5 },
+		Default = {
+			{ "base_mana_cost_-%", 0.5 },
+		},
+		Alternate1 = {
+			{ "base_mana_reservation_+%", -0.05 },
+		},
+		Alternate2 = {
+			{ "damage_+%_when_on_low_life", 3 },
+		},
 	},
 	stats = {
 		"base_use_life_in_place_of_mana",
@@ -306,7 +337,15 @@ description = "辅助近战攻击技能, 使该技能对流血敌人造成更多
 	baseMods = {
 	},
 	qualityStats = {
-		{ "melee_damage_vs_bleeding_enemies_+%", 0.5 },
+		Default = {
+			{ "melee_damage_vs_bleeding_enemies_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "crush_for_2_seconds_on_hit_%_chance", 0.5 },
+		},
+		Alternate2 = {
+			{ "refresh_bleeding_duration_on_hit_%_chance", 0.5 },
+		},
 	},
 	stats = {
 		"support_bloodlust_melee_physical_damage_+%_final_vs_bleeding_enemies",
@@ -372,7 +411,15 @@ description = "辅助任意击中敌人的技能",
 	baseMods = {
 	},
 	qualityStats = {
-		{ "physical_damage_+%", 0.5 },
+		Default = {
+			{ "physical_damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "bleed_on_hit_with_attacks_%", 0.5 },
+		},
+		Alternate2 = {
+			{ "enemy_phys_reduction_%_penalty_vs_hit", 0.25 },
+		},
 	},
 	stats = {
 		"support_brutality_physical_damage_+%_final",
@@ -440,8 +487,11 @@ description = "辅助任意击中敌人的技能",
 	baseMods = {
 	},
 	qualityStats = {
-		{ "physical_damage_+%", 0.5 },
-		{ "enemy_phys_reduction_%_penalty_vs_hit", 0.5 },
+		Default = {
+			{ "physical_damage_+%", 0.5 },
+		
+			{ "enemy_phys_reduction_%_penalty_vs_hit", 0.5 },
+		},
 	},
 	stats = {
 		"support_brutality_physical_damage_+%_final",
@@ -488,7 +538,15 @@ description = "辅助任意能击中敌人或能直接造成燃烧伤害的技�
 	baseMods = {
 	},
 	qualityStats = {
-		{ "burn_damage_+%", 0.5 },
+		Default = {
+			{ "burn_damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "ignite_duration_+%", 1 },
+		},
+		Alternate2 = {
+			{ "non_damaging_ailment_effect_+%", 2 },
+		},
 	},
 	stats = {
 		"support_burning_damage_+%_final",
@@ -554,8 +612,11 @@ description = "辅助任意能击中敌人或能直接造成燃烧伤害的技�
 	baseMods = {
 	},
 	qualityStats = {
-		{ "burn_damage_+%", 0.5 },
-		{ "fire_dot_multiplier_+", 0.5 },
+		Default = {
+			{ "burn_damage_+%", 0.5 },
+		
+			{ "fire_dot_multiplier_+", 0.5 },
+		},
 	},
 	stats = {
 		"support_burning_damage_+%_final",
@@ -596,7 +657,15 @@ description = "必须同时连接一个近战攻击技能和一个法术技能�
 	baseMods = {
 	},
 	qualityStats = {
-		{ "attack_damage_+%", 0.5 },
+		Default = {
+			{ "attack_damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "attack_damage_+%", 3 },
+		},
+		Alternate2 = {
+			{ "dummy_stat_display_nothing", 0 },
+		},
 	},
 	stats = {
 		"cast_linked_spells_on_melee_kill_%",
@@ -650,7 +719,7 @@ description = "必须同时连接一个近战攻击技能和一个法术技能�
 	color = 1,
 	support = true,
 	requireSkillTypes = { SkillType.Spell, SkillType.Triggerable, SkillType.AND, },
-	addSkillTypes = { SkillType.Triggered, SkillType.Type90, },
+	addSkillTypes = { SkillType.Triggered, SkillType.Type96, },
 	excludeSkillTypes = { SkillType.Trap, SkillType.Mine, SkillType.Totem, SkillType.ManaCostReserved, SkillType.TriggeredGrantedSkill, },
 	ignoreMinionTypes = true,
 	statDescriptionScope = "gem_stat_descriptions",
@@ -662,7 +731,15 @@ description = "必须同时连接一个近战攻击技能和一个法术技能�
 	baseMods = {
 	},
 	qualityStats = {
-		{ "spell_damage_+%", 0.5 },
+		Default = {
+			{ "spell_damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "dummy_stat_display_nothing", 0 },
+		},
+		Alternate2 = {
+			{ "base_cooldown_speed_+%", 1 },
+		},
 	},
 	stats = {
 		"support_cast_on_melee_kill_spell_damage_+%_final",
@@ -719,7 +796,7 @@ description = "所有被辅助的法术技能会记录你受到的伤害, 当受
 	color = 1,
 	support = true,
 	requireSkillTypes = { SkillType.Spell, SkillType.Triggerable, SkillType.AND, },
-	addSkillTypes = { SkillType.Triggered, SkillType.Type90, },
+	addSkillTypes = { SkillType.Triggered, SkillType.Type96, },
 	excludeSkillTypes = { SkillType.Trap, SkillType.Mine, SkillType.Totem, SkillType.Aura, SkillType.TriggeredGrantedSkill, },
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
@@ -730,7 +807,15 @@ description = "所有被辅助的法术技能会记录你受到的伤害, 当受
 	baseMods = {
 	},
 	qualityStats = {
-		{ "damage_+%", 0.5 },
+		Default = {
+			{ "damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "skill_effect_duration_+%", 1 },
+		},
+		Alternate2 = {
+			{ "cast_when_damage_taken_trigger_threshold_+%", -1 },
+		},
 	},
 	stats = {
 		"cast_on_damage_taken_%",
@@ -802,7 +887,15 @@ description = "辅助攻击技能. 无法辅助召唤生物",
 	baseMods = {
 	},
 	qualityStats = {
-		{ "bleeding_damage_+%", 0.5 },
+		Default = {
+			{ "bleeding_damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "base_bleed_duration_+%", 1 },
+		},
+		Alternate2 = {
+			{ "added_damage_+%_final", 1 },
+		},
 	},
 	stats = {
 		"bleed_on_hit_with_attacks_%",
@@ -865,8 +958,17 @@ description = "辅助任意击中敌人的技能",
 	baseMods = {
 	},
 	qualityStats = {
-		{ "cold_damage_+%", 0.5 },
-		{ "fire_damage_+%", 0.5 },
+		Default = {
+			{ "cold_damage_+%", 0.5 },
+		
+			{ "fire_damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "skill_cold_damage_%_to_convert_to_fire", 0.5 },
+		},
+		Alternate2 = {
+			{ "base_poison_damage_+%", 3 },
+		},
 	},
 	stats = {
 		"skill_cold_damage_%_to_convert_to_fire",
@@ -932,7 +1034,15 @@ description = "辅助攻击技能, 当你满生命值时该技能造成的所有
 	baseMods = {
 	},
 	qualityStats = {
-		{ "damage_+%", 0.5 },
+		Default = {
+			{ "damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "base_life_leech_from_attack_damage_permyriad", 2.5 },
+		},
+		Alternate2 = {
+			{ "damage_+%_vs_enemies_on_full_life", 2 },
+		},
 	},
 	stats = {
 		"support_damage_while_on_full_life_+%_final",
@@ -997,7 +1107,15 @@ description = "辅助攻击技能",
 	baseMods = {
 	},
 	qualityStats = {
-		{ "elemental_damage_with_attack_skills_+%", 0.5 },
+		Default = {
+			{ "elemental_damage_with_attack_skills_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "chance_to_freeze_shock_ignite_%", 0.25 },
+		},
+		Alternate2 = {
+			{ "base_mana_leech_from_elemental_damage_permyriad", 2.5 },
+		},
 	},
 	stats = {
 		"support_attack_skills_elemental_damage_+%_final",
@@ -1063,7 +1181,9 @@ description = "辅助攻击技能",
 	baseMods = {
 	},
 	qualityStats = {
-		{ "elemental_damage_with_attack_skills_+%", 1 },
+		Default = {
+			{ "elemental_damage_with_attack_skills_+%", 1 },
+		},
 	},
 	stats = {
 		"support_attack_skills_elemental_damage_+%_final",
@@ -1109,7 +1229,12 @@ description = "辅助任意技能. 当该宝石达到 2 级或以上时, 提升�
 	baseMods = {
 	},
 	qualityStats = {
-		{ "local_gem_experience_gain_+%", 5 },
+		Default = {
+			{ "local_gem_experience_gain_+%", 5 },
+		},
+		Alternate1 = {
+			{ "local_gem_str_requirement_+%", -3 },
+		},
 	},
 	stats = {
 		"supported_active_skill_gem_level_+",
@@ -1144,7 +1269,15 @@ description = "辅助近战攻击技能",
 	baseMods = {
 	},
 	qualityStats = {
-		{ "base_stun_duration_+%", 1 },
+		Default = {
+			{ "base_stun_duration_+%", 1 },
+		},
+		Alternate1 = {
+			{ "damage_+%_per_endurance_charge", 0.1 },
+		},
+		Alternate2 = {
+			{ "damage_+%_if_lost_endurance_charge_in_past_8_seconds", 1 },
+		},
 	},
 	stats = {
 		"base_stun_threshold_reduction_+%",
@@ -1206,7 +1339,15 @@ description = "辅助任意击中敌人的技能, 使击中能穿透敌人的火
 	baseMods = {
 	},
 	qualityStats = {
-		{ "fire_damage_+%", 0.5 },
+		Default = {
+			{ "fire_damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "burn_damage_+%", 3 },
+		},
+		Alternate2 = {
+			{ "base_chance_to_destroy_corpse_on_kill_%_vs_ignited", 5 },
+		},
 	},
 	stats = {
 		"base_reduce_enemy_fire_resistance_%",
@@ -1267,7 +1408,9 @@ description = "辅助任意击中敌人的技能, 使击中能穿透敌人的火
 	baseMods = {
 	},
 	qualityStats = {
-		{ "fire_damage_+%", 1 },
+		Default = {
+			{ "fire_damage_+%", 1 },
+		},
 	},
 	stats = {
 		"base_reduce_enemy_fire_resistance_%",
@@ -1295,6 +1438,93 @@ description = "辅助任意击中敌人的技能, 使击中能穿透敌人的火
 		[20] = { 50, manaMultiplier = 40, levelRequirement = 100, statInterpolation = { 1, }, },
 	},
 }
+skills["AncestralSlamSupport"] = {
+name = "战争铁拳（辅）",
+description = "辅助打击技能，使它们在使用时得到强力加持，并延缓下一次得到加持的时间。不能辅助瓦尔技能或触发技能。不能调整召唤生物技能。只有你自己能施放的技能可以得到加持。",
+	color = 1,
+	support = true,
+	requireSkillTypes = { SkillType.SlamSkill, },
+	addSkillTypes = { },
+	excludeSkillTypes = { SkillType.Totem, SkillType.Trap, SkillType.Mine, SkillType.Type102, SkillType.Vaal, },
+	ignoreMinionTypes = true,
+	statDescriptionScope = "gem_stat_descriptions",
+	statMap = {
+		["support_ancestral_slam_big_hit_hit_damage_+%_final"] = {
+			mod("FistOfWarHitMultiplier", "BASE", nil, ModFlag.Melee),
+		},
+		["support_ancestral_slam_big_hit_ailment_damage_+%_final"] = {
+			mod("FistOfWarAilmentMultiplier", "BASE", nil, bit.band(ModFlag.Melee, ModFlag.Ailment)),
+		},
+		["ancestral_slam_interval_duration"] = {
+			mod("FistOfWarCooldown", "BASE", nil),
+			div = 1000,
+		},
+	},
+	baseMods = {
+	},
+	qualityStats = {
+		Default = {
+			{ "base_skill_area_of_effect_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "attack_speed_+%", -1 },
+		
+			{ "damage_+%", 3 },
+		},
+		Alternate2 = {
+			{ "ancestral_slam_stun_threshold_reduction_+%", 0.5 },
+		},
+	},
+	stats = {
+		"support_ancestral_slam_big_hit_max_count",
+		"support_ancestral_slam_big_hit_hit_damage_+%_final",
+		"support_ancestral_slam_big_hit_ailment_damage_+%_final",
+		"support_ancestral_slam_big_hit_area_+%",
+		"ancestral_slam_interval_duration",
+	},
+	levels = {
+		[1] = { 1, 110, 70, 40, 2500, manaMultiplier = 20, levelRequirement = 38, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[2] = { 1, 112, 72, 41, 2460, manaMultiplier = 20, levelRequirement = 40, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[3] = { 1, 114, 73, 42, 2430, manaMultiplier = 20, levelRequirement = 42, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[4] = { 1, 116, 75, 43, 2390, manaMultiplier = 20, levelRequirement = 44, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[5] = { 1, 118, 76, 44, 2350, manaMultiplier = 20, levelRequirement = 46, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[6] = { 1, 120, 78, 45, 2320, manaMultiplier = 20, levelRequirement = 48, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[7] = { 1, 122, 79, 46, 2280, manaMultiplier = 20, levelRequirement = 50, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[8] = { 1, 124, 81, 47, 2240, manaMultiplier = 20, levelRequirement = 52, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[9] = { 1, 126, 83, 48, 2210, manaMultiplier = 20, levelRequirement = 54, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[10] = { 1, 128, 84, 49, 2170, manaMultiplier = 20, levelRequirement = 56, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[11] = { 1, 130, 86, 50, 2130, manaMultiplier = 20, levelRequirement = 58, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[12] = { 1, 132, 87, 51, 2090, manaMultiplier = 20, levelRequirement = 60, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[13] = { 1, 134, 89, 52, 2060, manaMultiplier = 20, levelRequirement = 62, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[14] = { 1, 136, 91, 53, 2020, manaMultiplier = 20, levelRequirement = 64, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[15] = { 1, 138, 92, 54, 1980, manaMultiplier = 20, levelRequirement = 65, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[16] = { 1, 140, 94, 55, 1950, manaMultiplier = 20, levelRequirement = 66, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[17] = { 1, 142, 95, 56, 1910, manaMultiplier = 20, levelRequirement = 67, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[18] = { 1, 144, 97, 57, 1870, manaMultiplier = 20, levelRequirement = 68, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[19] = { 1, 146, 98, 58, 1840, manaMultiplier = 20, levelRequirement = 69, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[20] = { 1, 148, 100, 59, 1800, manaMultiplier = 20, levelRequirement = 70, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[21] = { 1, 150, 102, 60, 1760, manaMultiplier = 20, levelRequirement = 72, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[22] = { 1, 152, 103, 61, 1730, manaMultiplier = 20, levelRequirement = 74, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[23] = { 1, 154, 105, 62, 1690, manaMultiplier = 20, levelRequirement = 76, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[24] = { 1, 156, 106, 63, 1650, manaMultiplier = 20, levelRequirement = 78, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[25] = { 1, 158, 108, 64, 1620, manaMultiplier = 20, levelRequirement = 80, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[26] = { 1, 160, 109, 65, 1580, manaMultiplier = 20, levelRequirement = 82, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[27] = { 1, 162, 111, 66, 1540, manaMultiplier = 20, levelRequirement = 84, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[28] = { 1, 164, 113, 67, 1510, manaMultiplier = 20, levelRequirement = 86, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[29] = { 1, 166, 114, 68, 1470, manaMultiplier = 20, levelRequirement = 88, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[30] = { 1, 168, 116, 69, 1430, manaMultiplier = 20, levelRequirement = 90, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[31] = { 1, 169, 117, 69, 1410, manaMultiplier = 20, levelRequirement = 91, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[32] = { 1, 170, 117, 70, 1390, manaMultiplier = 20, levelRequirement = 92, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[33] = { 1, 171, 118, 70, 1380, manaMultiplier = 20, levelRequirement = 93, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[34] = { 1, 172, 119, 71, 1360, manaMultiplier = 20, levelRequirement = 94, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[35] = { 1, 173, 120, 71, 1340, manaMultiplier = 20, levelRequirement = 95, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[36] = { 1, 174, 121, 72, 1320, manaMultiplier = 20, levelRequirement = 96, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[37] = { 1, 175, 121, 72, 1300, manaMultiplier = 20, levelRequirement = 97, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[38] = { 1, 176, 122, 73, 1280, manaMultiplier = 20, levelRequirement = 98, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[39] = { 1, 177, 123, 73, 1270, manaMultiplier = 20, levelRequirement = 99, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[40] = { 1, 178, 124, 74, 1250, manaMultiplier = 20, levelRequirement = 100, statInterpolation = { 1, 1, 1, 1, 1, }, },
+	},
+}
 skills["SupportFortify"] = {
 name = "护体(辅)",
 description = "辅助并非被触发施放的近战攻击技能",
@@ -1302,7 +1532,7 @@ description = "辅助并非被触发施放的近战攻击技能",
 	support = true,
 	requireSkillTypes = { SkillType.Melee, },
 	addSkillTypes = { },
-	excludeSkillTypes = { SkillType.TriggeredGrantedSkill, },
+	excludeSkillTypes = { SkillType.Triggered, },
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
 		["support_fortify_melee_damage_+%_final"] = {
@@ -1315,7 +1545,15 @@ description = "辅助并非被触发施放的近战攻击技能",
 	baseMods = {
 	},
 	qualityStats = {
-		{ "attack_damage_+%", 0.5 },
+		Default = {
+			{ "attack_damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "fortify_effect_+%", 0.2 },
+		},
+		Alternate2 = {
+			{ "overwhelm_%_physical_damage_reduction_while_fortified", 0.25 },
+		},
 	},
 	stats = {
 		"chance_to_fortify_on_melee_hit_+%",
@@ -1373,7 +1611,7 @@ description = "辅助影响你和友军的光环技能. 增加光环对除你外
 	support = true,
 	requireSkillTypes = { SkillType.Aura, },
 	addSkillTypes = { },
-	excludeSkillTypes = { SkillType.Totem, SkillType.Curse, SkillType.AuraDebuff, },
+	excludeSkillTypes = { SkillType.Totem, SkillType.AppliesCurse, SkillType.AuraDebuff, },
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
 		["aura_cannot_affect_self"] = {
@@ -1383,7 +1621,17 @@ description = "辅助影响你和友军的光环技能. 增加光环对除你外
 	baseMods = {
 	},
 	qualityStats = {
-		{ "base_aura_area_of_effect_+%", 2 },
+		Default = {
+			{ "base_aura_area_of_effect_+%", 2 },
+		},
+		Alternate1 = {
+			{ "non_curse_aura_effect_+%", 0.25 },
+		},
+		Alternate2 = {
+			{ "base_aura_area_of_effect_+%", 5 },
+		
+			{ "base_mana_reservation_+%", 0.5 },
+		},
 	},
 	stats = {
 		"non_curse_aura_effect_+%",
@@ -1439,19 +1687,25 @@ description = "辅助影响你和友军的光环技能. 增加光环对除你外
 	support = true,
 	requireSkillTypes = { SkillType.Aura, },
 	addSkillTypes = { },
-	excludeSkillTypes = { SkillType.Totem, SkillType.Curse, SkillType.AuraDebuff, },
+	excludeSkillTypes = { SkillType.Totem, SkillType.AppliesCurse, SkillType.AuraDebuff, },
 	plusVersionOf = "SupportGenerosity",
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
 		["aura_cannot_affect_self"] = {
 			skill("auraCannotAffectSelf", true),
 		},
+		["supported_aura_skill_gem_level_+"] = {
+			mod("SupportedGemProperty", "LIST", { keyword = "active_skill", key = "level", value = nil }, 0, 0, { type = "SkillType", skillType = SkillType.Aura }),
+		},
 	},
 	baseMods = {
 	},
 	qualityStats = {
-		{ "base_aura_area_of_effect_+%", 2 },
-		{ "supported_aura_skill_gem_level_+", 0.05 },
+		Default = {
+			{ "base_aura_area_of_effect_+%", 2 },
+		
+			{ "supported_aura_skill_gem_level_+", 0.05 },
+		},
 	},
 	stats = {
 		"non_curse_aura_effect_+%",
@@ -1492,7 +1746,17 @@ description = "辅助任意有持续时间的技能",
 	baseMods = {
 	},
 	qualityStats = {
-		{ "skill_effect_duration_+%", 0.5 },
+		Default = {
+			{ "skill_effect_duration_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "base_mana_cost_-%", 1 },
+		
+			{ "skill_effect_duration_+%", -0.5 },
+		},
+		Alternate2 = {
+			{ "base_all_ailment_duration_+%", 1 },
+		},
 	},
 	stats = {
 		"skill_effect_duration_+%",
@@ -1552,7 +1816,17 @@ description = "辅助发射投射物的攻击技能, 使力量属性也会像增
 	baseMods = {
 	},
 	qualityStats = {
-		{ "projectile_damage_+%", 0.5 },
+		Default = {
+			{ "projectile_damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "attack_speed_+%", -0.5 },
+		
+			{ "damage_+%", 2 },
+		},
+		Alternate2 = {
+			{ "base_projectile_speed_+%", 0.5 },
+		},
 	},
 	stats = {
 		"projectile_damage_+%",
@@ -1613,7 +1887,17 @@ description = "辅助法术技能. 使力量属性也会像增加近战物理伤
 	baseMods = {
 	},
 	qualityStats = {
-		{ "spell_damage_+%", 0.5 },
+		Default = {
+			{ "spell_damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "base_cast_speed_+%", -0.5 },
+		
+			{ "damage_+%", 2 },
+		},
+		Alternate2 = {
+			{ "base_projectile_speed_+%", 0.5 },
+		},
 	},
 	stats = {
 		"spell_damage_+%",
@@ -1674,7 +1958,9 @@ description = "辅助任意能击败敌人的技能",
 	baseMods = {
 	},
 	qualityStats = {
-		{ "base_killed_monster_dropped_item_quantity_+%", 0.35 },
+		Default = {
+			{ "base_killed_monster_dropped_item_quantity_+%", 0.35 },
+		},
 	},
 	stats = {
 		"base_killed_monster_dropped_item_quantity_+%",
@@ -1734,7 +2020,15 @@ description = "辅助任意击中敌人的技能",
 	baseMods = {
 	},
 	qualityStats = {
-		{ "base_global_chance_to_knockback_%", 0.5 },
+		Default = {
+			{ "base_global_chance_to_knockback_%", 0.5 },
+		},
+		Alternate1 = {
+			{ "damage_+%", 0.5 },
+		},
+		Alternate2 = {
+			{ "knockback_distance_+%", 2 },
+		},
 	},
 	stats = {
 		"base_global_chance_to_knockback_%",
@@ -1803,7 +2097,15 @@ description = "辅助任意有持续时间的技能",
 	baseMods = {
 	},
 	qualityStats = {
-		{ "support_reduced_duration_skill_effect_duration_+%_final", -0.5 },
+		Default = {
+			{ "support_reduced_duration_skill_effect_duration_+%_final", -0.5 },
+		},
+		Alternate1 = {
+			{ "attack_and_cast_speed_+%", 0.5 },
+		},
+		Alternate2 = {
+			{ "faster_bleed_%", 0.5 },
+		},
 	},
 	stats = {
 		"support_reduced_duration_skill_effect_duration_+%_final",
@@ -1864,7 +2166,15 @@ description = "辅助攻击技能",
 	baseMods = {
 	},
 	qualityStats = {
-		{ "base_life_gain_per_target", 0.5 },
+		Default = {
+			{ "base_life_gain_per_target", 0.5 },
+		},
+		Alternate1 = {
+			{ "damage_+%_when_on_full_life", 2 },
+		},
+		Alternate2 = {
+			{ "mana_gain_per_target", 0.1 },
+		},
 	},
 	stats = {
 		"base_life_gain_per_target",
@@ -1924,7 +2234,15 @@ description = "辅助任意击中敌人的技能, 击中造成的伤害偷取生
 	baseMods = {
 	},
 	qualityStats = {
-		{ "damage_+%_while_life_leeching", 0.5 },
+		Default = {
+			{ "damage_+%_while_life_leeching", 0.5 },
+		},
+		Alternate1 = {
+			{ "damage_+%_when_on_full_life", 2 },
+		},
+		Alternate2 = {
+			{ "maximum_life_leech_amount_per_leech_+%", 5 },
+		},
 	},
 	stats = {
 		"life_leech_from_any_damage_permyriad",
@@ -1992,7 +2310,15 @@ mod("PhysicalDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType
 	baseMods = {
 	},
 	qualityStats = {
-		{ "physical_damage_+%", 0.5 },
+		Default = {
+			{ "physical_damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "maim_effect_+%", 1 },
+		},
+		Alternate2 = {
+			{ "chance_to_bleed_on_hit_%_vs_maimed", 0.5 },
+		},
 	},
 	stats = {
 		"maim_on_hit_%",
@@ -2062,7 +2388,15 @@ description = "辅助近战攻击技能",
 	baseMods = {
 	},
 	qualityStats = {
-		{ "melee_physical_damage_+%", 0.5 },
+		Default = {
+			{ "melee_physical_damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "melee_range_+", 0.1 },
+		},
+		Alternate2 = {
+			{ "enemy_phys_reduction_%_penalty_vs_hit", 0.25 },
+		},
 	},
 	stats = {
 		"support_melee_physical_damage_+%_final",
@@ -2132,8 +2466,11 @@ description = "辅助近战攻击技能",
 	baseMods = {
 	},
 	qualityStats = {
-		{ "melee_physical_damage_+%", 0.5 },
-		{ "chance_to_intimidate_on_hit_%", 0.5 },
+		Default = {
+			{ "melee_physical_damage_+%", 0.5 },
+		
+			{ "chance_to_intimidate_on_hit_%", 0.5 },
+		},
 	},
 	stats = {
 		"support_melee_physical_damage_+%_final",
@@ -2174,13 +2511,22 @@ description = "辅助近战打击技能, 使该技能的近战打击对目标周
 	baseMods = {
 	},
 	qualityStats = {
-		{ "base_skill_area_of_effect_+%", 0.5 },
+		Default = {
+			{ "base_skill_area_of_effect_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "melee_damage_+%", 1 },
+		},
+		Alternate2 = {
+			{ "support_melee_splash_damage_+%_final_for_splash", 2 },
+		},
 	},
 	stats = {
 		"support_melee_splash_damage_+%_final",
 		"support_melee_splash_damage_+%_final_for_splash",
 		"melee_splash_area_of_effect_+%_final",
 		"melee_splash",
+		"quality_display_melee_splash_is_gem",
 	},
 	levels = {
 		[1] = { 0, -50, 0, manaMultiplier = 40, levelRequirement = 8, statInterpolation = { 1, 1, 1, }, },
@@ -2238,13 +2584,16 @@ description = "辅助近战打击技能, 使该技能的近战打击对目标周
 	baseMods = {
 	},
 	qualityStats = {
-		{ "base_skill_area_of_effect_+%", 1 },
+		Default = {
+			{ "base_skill_area_of_effect_+%", 1 },
+		},
 	},
 	stats = {
 		"support_melee_splash_damage_+%_final",
 		"support_melee_splash_damage_+%_final_for_splash",
 		"melee_splash_area_of_effect_+%_final",
 		"melee_splash",
+		"quality_display_melee_splash_is_gem",
 	},
 	levels = {
 		[1] = { 0, -40, 60, manaMultiplier = 40, levelRequirement = 72, statInterpolation = { 1, 1, 1, }, },
@@ -2276,27 +2625,37 @@ description = "辅助近战攻击技能, 使该技能在使用时被自动重复
 	support = true,
 	requireSkillTypes = { SkillType.AttackCanRepeat, },
 	addSkillTypes = { },
-		excludeSkillTypes = { SkillType.Vaal, SkillType.Unknown96, SkillType.CreatesMinion, SkillType.NOT, SkillType.AND, },
+	excludeSkillTypes = { SkillType.Vaal, SkillType.Type101, SkillType.CreatesMinion, SkillType.NOT, SkillType.AND, },
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
-		["support_multiple_attack_damage_+%_final"] = {
-			mod("Damage", "MORE", nil, ModFlag.Attack),
-		},
-		["support_multiple_attacks_melee_attack_speed_+%_final"] = {
-			mod("Speed", "MORE", nil, bit.bor(ModFlag.Attack, ModFlag.Melee)),
-		},
 		["multistrike_damage_+%_final_on_first_repeat"] = {
 			mod("Damage", "MORE", nil, ModFlag.Melee,0, { type = "Condition", var = "MultistrikeFirstRepeat" }),
 		},
 		["multistrike_damage_+%_final_on_second_repeat"] = {
 			mod("Damage", "MORE", nil, ModFlag.Melee,0, { type = "Condition", var = "MultistrikeSecondRepeat" }),
 		},
+		["support_multiple_attack_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, ModFlag.Attack),
+		},
+		["support_multiple_attacks_melee_attack_speed_+%_final"] = {
+			mod("Speed", "MORE", nil, bit.bor(ModFlag.Attack, ModFlag.Melee)),
+		},
 	},
 	baseMods = {
 		flag("SupportedByMultistrike"),
 	},
 	qualityStats = {
-		{ "melee_physical_damage_+%", 0.5 },
+		Default = {
+			{ "melee_physical_damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "attack_speed_+%", -1 },
+		
+			{ "multistrike_area_of_effect_+%_per_repeat", 1 },
+		},
+		Alternate2 = {
+			{ "attack_speed_+%", 0.5 },
+		},
 	},
 	stats = {
 		"base_melee_attack_repeat_count",
@@ -2356,17 +2715,11 @@ description = "辅助近战攻击技能，使该技能在使用时自动重复�
 	support = true,
 	requireSkillTypes = { SkillType.AttackCanRepeat, },
 	addSkillTypes = { },
-	excludeSkillTypes = { SkillType.Vaal, SkillType.Unknown96, SkillType.CreatesMinion, SkillType.NOT, SkillType.AND, },
+	excludeSkillTypes = { SkillType.Vaal, SkillType.Type101, SkillType.CreatesMinion, SkillType.NOT, SkillType.AND, },
 	plusVersionOf = "SupportMultistrike",
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
-		["support_multiple_attack_damage_+%_final"] = {
-			mod("Damage", "MORE", nil, ModFlag.Attack),
-		},
-		["support_multiple_attacks_melee_attack_speed_+%_final"] = {
-			mod("Speed", "MORE", nil, bit.bor(ModFlag.Attack, ModFlag.Melee)),
-		},
-		["multistrike_damage_+%_final_on_first_repeat"] = {
+			["multistrike_damage_+%_final_on_first_repeat"] = {
 			mod("Damage", "MORE", nil, ModFlag.Melee,0, { type = "Condition", var = "MultistrikeFirstRepeat" }),
 		},
 		["multistrike_damage_+%_final_on_second_repeat"] = {
@@ -2375,12 +2728,21 @@ description = "辅助近战攻击技能，使该技能在使用时自动重复�
 		["multistrike_damage_+%_final_on_third_repeat"] = {
 			mod("Damage", "MORE", nil, ModFlag.Melee,0, { type = "Condition", var = "MultistrikeThirdRepeat" }),
 		},
+		["support_multiple_attack_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, ModFlag.Attack),
+		},
+		["support_multiple_attacks_melee_attack_speed_+%_final"] = {
+			mod("Speed", "MORE", nil, bit.bor(ModFlag.Attack, ModFlag.Melee)),
+		},
 	},
 	baseMods = {
 	},
 	qualityStats = {
-		{ "melee_physical_damage_+%", 0.5 },
-		{ "attack_speed_+%", 0.5 },
+		Default = {
+			{ "melee_physical_damage_+%", 0.5 },
+		
+			{ "attack_speed_+%", 0.5 },
+		},
 	},
 	stats = {
 		"base_melee_attack_repeat_count",
@@ -2431,7 +2793,15 @@ description = "可召唤图腾的技能。",
 	baseMods = {
 	},
 	qualityStats = {
-		{ "summon_totem_cast_speed_+%", 1 },
+		Default = {
+			{ "summon_totem_cast_speed_+%", 1 },
+		},
+		Alternate1 = {
+			{ "totem_duration_+%", 1 },
+		},
+		Alternate2 = {
+			{ "totem_damage_+%", 0.5 },
+		},
 	},
 	stats = {
 		"base_number_of_totems_allowed",
@@ -2501,7 +2871,17 @@ description = "辅助近战攻击技能",
 	baseMods = {
 	},
 	qualityStats = {
-		{ "area_damage_+%", 0.5 },
+		Default = {
+			{ "area_damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "base_skill_area_of_effect_+%", 0.5 },
+		},
+		Alternate2 = {
+			{ "support_pulverise_attack_speed_+%_final", -0.5 },
+		
+			{ "support_pulverise_melee_area_damage_+%_final", 1 },
+		},
 	},
 	stats = {
 		"support_pulverise_melee_area_damage_+%_final",
@@ -2565,7 +2945,7 @@ description = "辅助近战攻击技能。召唤生物无法获得怒火。",
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
 		["support_rage_gain_rage_on_melee_hit_cooldown_ms"] = {
-			flag("Condition:CanGainRage"),
+			flag("Condition:CanGainRage", { type = "GlobalEffect", effectType = "Buff" } ),
 			mod("Dummy", "DUMMY", 1, 0, 0, { type = "Condition", var = "CanGainRage" }),
 		},
 		["attack_minimum_added_physical_damage_with_at_least_10_rage"] = {
@@ -2575,17 +2955,24 @@ description = "辅助近战攻击技能。召唤生物无法获得怒火。",
 			mod("PhysicalMax", "BASE", nil, bit.bor(ModFlag.Attack, ModFlag.Weapon), 0, { type = "MultiplierThreshold", var = "Rage", threshold = 10 })
 		},
 		["attack_minimum_added_physical_damage_per_10_rage"] = {
-			mod("PhysicalMin", "BASE", nil, bit.bor(ModFlag.Attack, ModFlag.Weapon), 0, { type = "Multiplier", var = "Rage", div = 10, limit = 5 })
+			mod("PhysicalMin", "BASE", nil, bit.bor(ModFlag.Attack, ModFlag.Weapon), 0, { type = "Multiplier", var = "Rage", div = 10 })
 		},
 		["attack_maximum_added_physical_damage_per_10_rage"] = {
-			mod("PhysicalMax", "BASE", nil, bit.bor(ModFlag.Attack, ModFlag.Weapon), 0, { type = "Multiplier", var = "Rage", div = 10, limit = 5 })
+			mod("PhysicalMax", "BASE", nil, bit.bor(ModFlag.Attack, ModFlag.Weapon), 0, { type = "Multiplier", var = "Rage", div = 10 })
 		},
 	},
-	
 	baseMods = {
 	},
 	qualityStats = {
-		{ "attack_damage_+%", 0.5 },
+		Default = {
+			{ "attack_damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "attack_speed_+%_with_atleast_20_rage", 0.5 },
+		},
+		Alternate2 = {
+			{ "gain_1_rage_on_use_%_chance", 1 },
+		},
 	},
 	stats = {
 		"support_rage_gain_rage_on_melee_hit_cooldown_ms",
@@ -2649,6 +3036,7 @@ description = "辅助任意弓类或法杖技能，改为召唤一个弩炮图�
 	statDescriptionScope = "gem_stat_descriptions",
 	addFlags = {
 		totem = true,
+		ballista = true,
 	},
 	statMap = {
 		["support_attack_totem_attack_speed_+%_final"] = {
@@ -2661,13 +3049,23 @@ description = "辅助任意弓类或法杖技能，改为召唤一个弩炮图�
 	baseMods = {
 	},
 	qualityStats = {
-		{ "summon_totem_cast_speed_+%", 1 },
+		Default = {
+			{ "summon_totem_cast_speed_+%", 1 },
+		},
+		Alternate1 = {
+			{ "totem_duration_+%", 1 },
+		},
+		Alternate2 = {
+			{ "totem_range_+%", 1 },
+		},
+		Alternate3 = {
+			{ "projectile_return_%_chance", 0.5 },
+		},
 	},
 	stats = {
 		"is_totem",
 		"base_totem_duration",
 		"base_totem_range",
-		"totem_support_gem_level",
 		"support_totem_damage_+%_final",
 		"support_attack_totem_attack_speed_+%_final",
 		"attack_skills_additional_ballista_totems_allowed",
@@ -2677,46 +3075,46 @@ description = "辅助任意弓类或法杖技能，改为召唤一个弩炮图�
 		"is_ranged_attack_totem",
 	},
 	levels = {
-		[1] = { 1, 8000, 60, 8, -42, -50, 2, 200, manaMultiplier = 20, levelRequirement = 8, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[2] = { 1, 8000, 60, 10, -42, -50, 2, 200, manaMultiplier = 20, levelRequirement = 10, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[3] = { 1, 8000, 60, 13, -41, -50, 2, 200, manaMultiplier = 20, levelRequirement = 13, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[4] = { 1, 8000, 60, 17, -41, -50, 2, 200, manaMultiplier = 20, levelRequirement = 17, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[5] = { 1, 8000, 60, 21, -40, -50, 2, 200, manaMultiplier = 20, levelRequirement = 21, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[6] = { 1, 8000, 60, 25, -40, -50, 2, 200, manaMultiplier = 20, levelRequirement = 25, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[7] = { 1, 8000, 60, 29, -39, -50, 2, 200, manaMultiplier = 20, levelRequirement = 29, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[8] = { 1, 8000, 60, 33, -39, -50, 2, 200, manaMultiplier = 20, levelRequirement = 33, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[9] = { 1, 8000, 60, 37, -38, -50, 2, 200, manaMultiplier = 20, levelRequirement = 37, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[10] = { 1, 8000, 60, 40, -38, -50, 2, 200, manaMultiplier = 20, levelRequirement = 40, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[11] = { 1, 8000, 60, 43, -37, -50, 2, 200, manaMultiplier = 20, levelRequirement = 43, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[12] = { 1, 8000, 60, 46, -37, -50, 2, 200, manaMultiplier = 20, levelRequirement = 46, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[13] = { 1, 8000, 60, 49, -36, -50, 2, 200, manaMultiplier = 20, levelRequirement = 49, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[14] = { 1, 8000, 60, 52, -36, -50, 2, 200, manaMultiplier = 20, levelRequirement = 52, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[15] = { 1, 8000, 60, 55, -35, -50, 2, 200, manaMultiplier = 20, levelRequirement = 55, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[16] = { 1, 8000, 60, 58, -35, -50, 2, 200, manaMultiplier = 20, levelRequirement = 58, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[17] = { 1, 8000, 60, 61, -34, -50, 2, 200, manaMultiplier = 20, levelRequirement = 61, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[18] = { 1, 8000, 60, 64, -34, -50, 2, 200, manaMultiplier = 20, levelRequirement = 64, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[19] = { 1, 8000, 60, 67, -33, -50, 2, 200, manaMultiplier = 20, levelRequirement = 67, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[20] = { 1, 8000, 60, 70, -33, -50, 2, 200, manaMultiplier = 20, levelRequirement = 70, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[21] = { 1, 8000, 60, 72, -33, -50, 2, 200, manaMultiplier = 20, levelRequirement = 72, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[22] = { 1, 8000, 60, 74, -32, -50, 2, 200, manaMultiplier = 20, levelRequirement = 74, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[23] = { 1, 8000, 60, 76, -32, -50, 2, 200, manaMultiplier = 20, levelRequirement = 76, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[24] = { 1, 8000, 60, 78, -31, -50, 2, 200, manaMultiplier = 20, levelRequirement = 78, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[25] = { 1, 8000, 60, 80, -31, -50, 2, 200, manaMultiplier = 20, levelRequirement = 80, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[26] = { 1, 8000, 60, 82, -30, -50, 2, 200, manaMultiplier = 20, levelRequirement = 82, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[27] = { 1, 8000, 60, 84, -30, -50, 2, 200, manaMultiplier = 20, levelRequirement = 84, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[28] = { 1, 8000, 60, 86, -29, -50, 2, 200, manaMultiplier = 20, levelRequirement = 86, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[29] = { 1, 8000, 60, 88, -29, -50, 2, 200, manaMultiplier = 20, levelRequirement = 88, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[30] = { 1, 8000, 60, 90, -28, -50, 2, 200, manaMultiplier = 20, levelRequirement = 90, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[31] = { 1, 8000, 60, 91, -28, -50, 2, 200, manaMultiplier = 20, levelRequirement = 91, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[32] = { 1, 8000, 60, 92, -28, -50, 2, 200, manaMultiplier = 20, levelRequirement = 92, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[33] = { 1, 8000, 60, 93, -28, -50, 2, 200, manaMultiplier = 20, levelRequirement = 93, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[34] = { 1, 8000, 60, 94, -27, -50, 2, 200, manaMultiplier = 20, levelRequirement = 94, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[35] = { 1, 8000, 60, 95, -27, -50, 2, 200, manaMultiplier = 20, levelRequirement = 95, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[36] = { 1, 8000, 60, 96, -27, -50, 2, 200, manaMultiplier = 20, levelRequirement = 96, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[37] = { 1, 8000, 60, 97, -27, -50, 2, 200, manaMultiplier = 20, levelRequirement = 97, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[38] = { 1, 8000, 60, 98, -26, -50, 2, 200, manaMultiplier = 20, levelRequirement = 98, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[39] = { 1, 8000, 60, 99, -26, -50, 2, 200, manaMultiplier = 20, levelRequirement = 99, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
-		[40] = { 1, 8000, 60, 100, -26, -50, 2, 200, manaMultiplier = 20, levelRequirement = 100, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, 1, }, },
+		[1] = { 1, 8000, 60, -42, -50, 2, 200, manaMultiplier = 20, levelRequirement = 8, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[2] = { 1, 8000, 60, -42, -50, 2, 200, manaMultiplier = 20, levelRequirement = 10, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[3] = { 1, 8000, 60, -41, -50, 2, 200, manaMultiplier = 20, levelRequirement = 13, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[4] = { 1, 8000, 60, -41, -50, 2, 200, manaMultiplier = 20, levelRequirement = 17, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[5] = { 1, 8000, 60, -40, -50, 2, 200, manaMultiplier = 20, levelRequirement = 21, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[6] = { 1, 8000, 60, -40, -50, 2, 200, manaMultiplier = 20, levelRequirement = 25, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[7] = { 1, 8000, 60, -39, -50, 2, 200, manaMultiplier = 20, levelRequirement = 29, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[8] = { 1, 8000, 60, -39, -50, 2, 200, manaMultiplier = 20, levelRequirement = 33, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[9] = { 1, 8000, 60, -38, -50, 2, 200, manaMultiplier = 20, levelRequirement = 37, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[10] = { 1, 8000, 60, -38, -50, 2, 200, manaMultiplier = 20, levelRequirement = 40, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[11] = { 1, 8000, 60, -37, -50, 2, 200, manaMultiplier = 20, levelRequirement = 43, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[12] = { 1, 8000, 60, -37, -50, 2, 200, manaMultiplier = 20, levelRequirement = 46, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[13] = { 1, 8000, 60, -36, -50, 2, 200, manaMultiplier = 20, levelRequirement = 49, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[14] = { 1, 8000, 60, -36, -50, 2, 200, manaMultiplier = 20, levelRequirement = 52, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[15] = { 1, 8000, 60, -35, -50, 2, 200, manaMultiplier = 20, levelRequirement = 55, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[16] = { 1, 8000, 60, -35, -50, 2, 200, manaMultiplier = 20, levelRequirement = 58, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[17] = { 1, 8000, 60, -34, -50, 2, 200, manaMultiplier = 20, levelRequirement = 61, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[18] = { 1, 8000, 60, -34, -50, 2, 200, manaMultiplier = 20, levelRequirement = 64, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[19] = { 1, 8000, 60, -33, -50, 2, 200, manaMultiplier = 20, levelRequirement = 67, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[20] = { 1, 8000, 60, -33, -50, 2, 200, manaMultiplier = 20, levelRequirement = 70, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[21] = { 1, 8000, 60, -33, -50, 2, 200, manaMultiplier = 20, levelRequirement = 72, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[22] = { 1, 8000, 60, -32, -50, 2, 200, manaMultiplier = 20, levelRequirement = 74, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[23] = { 1, 8000, 60, -32, -50, 2, 200, manaMultiplier = 20, levelRequirement = 76, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[24] = { 1, 8000, 60, -31, -50, 2, 200, manaMultiplier = 20, levelRequirement = 78, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[25] = { 1, 8000, 60, -31, -50, 2, 200, manaMultiplier = 20, levelRequirement = 80, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[26] = { 1, 8000, 60, -30, -50, 2, 200, manaMultiplier = 20, levelRequirement = 82, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[27] = { 1, 8000, 60, -30, -50, 2, 200, manaMultiplier = 20, levelRequirement = 84, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[28] = { 1, 8000, 60, -29, -50, 2, 200, manaMultiplier = 20, levelRequirement = 86, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[29] = { 1, 8000, 60, -29, -50, 2, 200, manaMultiplier = 20, levelRequirement = 88, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[30] = { 1, 8000, 60, -28, -50, 2, 200, manaMultiplier = 20, levelRequirement = 90, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[31] = { 1, 8000, 60, -28, -50, 2, 200, manaMultiplier = 20, levelRequirement = 91, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[32] = { 1, 8000, 60, -28, -50, 2, 200, manaMultiplier = 20, levelRequirement = 92, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[33] = { 1, 8000, 60, -28, -50, 2, 200, manaMultiplier = 20, levelRequirement = 93, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[34] = { 1, 8000, 60, -27, -50, 2, 200, manaMultiplier = 20, levelRequirement = 94, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[35] = { 1, 8000, 60, -27, -50, 2, 200, manaMultiplier = 20, levelRequirement = 95, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[36] = { 1, 8000, 60, -27, -50, 2, 200, manaMultiplier = 20, levelRequirement = 96, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[37] = { 1, 8000, 60, -27, -50, 2, 200, manaMultiplier = 20, levelRequirement = 97, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[38] = { 1, 8000, 60, -26, -50, 2, 200, manaMultiplier = 20, levelRequirement = 98, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[39] = { 1, 8000, 60, -26, -50, 2, 200, manaMultiplier = 20, levelRequirement = 99, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[40] = { 1, 8000, 60, -26, -50, 2, 200, manaMultiplier = 20, levelRequirement = 100, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
 	},
 }
 skills["SupportReducedMana"] = {
@@ -2739,7 +3137,15 @@ description = "辅助任意技能。召唤生物、图腾、陷阱、地雷无�
 	baseMods = {
 	},
 	qualityStats = {
-		{ "inspiration_charge_duration_+%", 1 },
+		Default = {
+			{ "inspiration_charge_duration_+%", 1 },
+		},
+		Alternate1 = {
+			{ "critical_strike_chance_+%", 1 },
+		},
+		Alternate2 = {
+			{ "base_mana_cost_-%", 0.5 },
+		},
 	},
 	stats = {
 		"base_mana_cost_-%",
@@ -2815,7 +3221,17 @@ description = "辅助近战攻击技能. 每当第 3 次使用该技能时, 该�
 	baseMods = {
 	},
 	qualityStats = {
-		{ "attack_damage_+%", 0.5 },
+		Default = {
+			{ "attack_damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "attack_speed_+%", 0.5 },
+		},
+		Alternate2 = {
+			{ "attack_speed_+%", -1 },
+		
+			{ "support_ruthless_big_hit_damage_+%_final", 1 },
+		},
 	},
 	stats = {
 		"support_ruthless_big_hit_max_count",
@@ -2879,7 +3295,15 @@ description = "助近战攻击技能。不能辅助触发攻击技能、使用�
 	baseMods = {
 	},
 	qualityStats = {
-		{ "melee_damage_+%", 0.5 },
+		Default = {
+			{ "melee_damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "base_skill_area_of_effect_+%", 0.5 },
+		},
+		Alternate2 = {
+			{ "dummy_stat_display_nothing", 0 },
+		},
 	},
 	stats = {
 		"support_blunt_chance_to_trigger_shockwave_on_hit_%",
@@ -2929,7 +3353,7 @@ description = "助近战攻击技能。不能辅助触发攻击技能、使用�
 	},
 }
 skills["SupportBluntWeaponShockwave"] = {
-name = "震波",
+name = "震波（辅）",
 	color = 1,
 description = "对区域内造成攻击伤害.",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.Melee] = true, },
@@ -2947,10 +3371,18 @@ description = "对区域内造成攻击伤害.",
 		area = true,
 	},
 	baseMods = {
-	skill("showAverage", true),
+		skill("showAverage", true),
 	},
 	qualityStats = {
-		{ "melee_damage_+%", 0.5 },
+		Default = {
+			{ "melee_damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "base_skill_area_of_effect_+%", 0.5 },
+		},
+		Alternate2 = {
+			{ "base_cooldown_speed_+%", 0.5 },
+		},
 	},
 	stats = {
 		"active_skill_base_radius_+",
@@ -3025,58 +3457,65 @@ description = "辅助非触发类法术技能, 你将不再直接施放被辅助
 	baseMods = {
 	},
 	qualityStats = {
-		{ "summon_totem_cast_speed_+%", 1 },
+		Default = {
+			{ "summon_totem_cast_speed_+%", 1 },
+		},
+		Alternate1 = {
+			{ "totem_duration_+%", 1 },
+		},
+		Alternate2 = {
+			{ "totem_range_+%", 1 },
+		},
 	},
 	stats = {
 		"is_totem",
 		"base_totem_duration",
 		"base_totem_range",
-		"totem_support_gem_level",
 		"support_totem_damage_+%_final",
 		"support_spell_totem_cast_speed_+%_final",
 		"base_skill_is_totemified",
 	},
 	levels = {
-		[1] = { 1, 8000, 60, 8, -35, -30, manaMultiplier = 100, levelRequirement = 8, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[2] = { 1, 8000, 60, 10, -35, -30, manaMultiplier = 100, levelRequirement = 10, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[3] = { 1, 8000, 60, 13, -34, -30, manaMultiplier = 100, levelRequirement = 13, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[4] = { 1, 8000, 60, 17, -34, -30, manaMultiplier = 100, levelRequirement = 17, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[5] = { 1, 8000, 60, 21, -33, -30, manaMultiplier = 100, levelRequirement = 21, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[6] = { 1, 8000, 60, 25, -33, -30, manaMultiplier = 100, levelRequirement = 25, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[7] = { 1, 8000, 60, 29, -32, -30, manaMultiplier = 100, levelRequirement = 29, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[8] = { 1, 8000, 60, 33, -32, -30, manaMultiplier = 100, levelRequirement = 33, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[9] = { 1, 8000, 60, 37, -31, -30, manaMultiplier = 100, levelRequirement = 37, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[10] = { 1, 8000, 60, 40, -31, -30, manaMultiplier = 100, levelRequirement = 40, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[11] = { 1, 8000, 60, 43, -30, -30, manaMultiplier = 100, levelRequirement = 43, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[12] = { 1, 8000, 60, 46, -30, -30, manaMultiplier = 100, levelRequirement = 46, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[13] = { 1, 8000, 60, 49, -29, -30, manaMultiplier = 100, levelRequirement = 49, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[14] = { 1, 8000, 60, 52, -29, -30, manaMultiplier = 100, levelRequirement = 52, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[15] = { 1, 8000, 60, 55, -28, -30, manaMultiplier = 100, levelRequirement = 55, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[16] = { 1, 8000, 60, 58, -28, -30, manaMultiplier = 100, levelRequirement = 58, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[17] = { 1, 8000, 60, 61, -27, -30, manaMultiplier = 100, levelRequirement = 61, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[18] = { 1, 8000, 60, 64, -27, -30, manaMultiplier = 100, levelRequirement = 64, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[19] = { 1, 8000, 60, 67, -26, -30, manaMultiplier = 100, levelRequirement = 67, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[20] = { 1, 8000, 60, 70, -26, -30, manaMultiplier = 100, levelRequirement = 70, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[21] = { 1, 8000, 60, 72, -25, -30, manaMultiplier = 100, levelRequirement = 72, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[22] = { 1, 8000, 60, 74, -25, -30, manaMultiplier = 100, levelRequirement = 74, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[23] = { 1, 8000, 60, 76, -24, -30, manaMultiplier = 100, levelRequirement = 76, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[24] = { 1, 8000, 60, 78, -24, -30, manaMultiplier = 100, levelRequirement = 78, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[25] = { 1, 8000, 60, 80, -23, -30, manaMultiplier = 100, levelRequirement = 80, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[26] = { 1, 8000, 60, 82, -23, -30, manaMultiplier = 100, levelRequirement = 82, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[27] = { 1, 8000, 60, 84, -22, -30, manaMultiplier = 100, levelRequirement = 84, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[28] = { 1, 8000, 60, 86, -22, -30, manaMultiplier = 100, levelRequirement = 86, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[29] = { 1, 8000, 60, 88, -21, -30, manaMultiplier = 100, levelRequirement = 88, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[30] = { 1, 8000, 60, 90, -21, -30, manaMultiplier = 100, levelRequirement = 90, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[31] = { 1, 8000, 60, 91, -21, -30, manaMultiplier = 100, levelRequirement = 91, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[32] = { 1, 8000, 60, 92, -20, -30, manaMultiplier = 100, levelRequirement = 92, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[33] = { 1, 8000, 60, 93, -20, -30, manaMultiplier = 100, levelRequirement = 93, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[34] = { 1, 8000, 60, 94, -20, -30, manaMultiplier = 100, levelRequirement = 94, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[35] = { 1, 8000, 60, 95, -20, -30, manaMultiplier = 100, levelRequirement = 95, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[36] = { 1, 8000, 60, 96, -19, -30, manaMultiplier = 100, levelRequirement = 96, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[37] = { 1, 8000, 60, 97, -19, -30, manaMultiplier = 100, levelRequirement = 97, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[38] = { 1, 8000, 60, 98, -19, -30, manaMultiplier = 100, levelRequirement = 98, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[39] = { 1, 8000, 60, 99, -19, -30, manaMultiplier = 100, levelRequirement = 99, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
-		[40] = { 1, 8000, 60, 100, -18, -30, manaMultiplier = 100, levelRequirement = 100, statInterpolation = { 1, 1, 1, 1, 1, 1, }, },
+		[1] = { 1, 8000, 60, -35, -30, manaMultiplier = 100, levelRequirement = 8, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[2] = { 1, 8000, 60, -35, -30, manaMultiplier = 100, levelRequirement = 10, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[3] = { 1, 8000, 60, -34, -30, manaMultiplier = 100, levelRequirement = 13, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[4] = { 1, 8000, 60, -34, -30, manaMultiplier = 100, levelRequirement = 17, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[5] = { 1, 8000, 60, -33, -30, manaMultiplier = 100, levelRequirement = 21, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[6] = { 1, 8000, 60, -33, -30, manaMultiplier = 100, levelRequirement = 25, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[7] = { 1, 8000, 60, -32, -30, manaMultiplier = 100, levelRequirement = 29, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[8] = { 1, 8000, 60, -32, -30, manaMultiplier = 100, levelRequirement = 33, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[9] = { 1, 8000, 60, -31, -30, manaMultiplier = 100, levelRequirement = 37, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[10] = { 1, 8000, 60, -31, -30, manaMultiplier = 100, levelRequirement = 40, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[11] = { 1, 8000, 60, -30, -30, manaMultiplier = 100, levelRequirement = 43, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[12] = { 1, 8000, 60, -30, -30, manaMultiplier = 100, levelRequirement = 46, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[13] = { 1, 8000, 60, -29, -30, manaMultiplier = 100, levelRequirement = 49, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[14] = { 1, 8000, 60, -29, -30, manaMultiplier = 100, levelRequirement = 52, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[15] = { 1, 8000, 60, -28, -30, manaMultiplier = 100, levelRequirement = 55, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[16] = { 1, 8000, 60, -28, -30, manaMultiplier = 100, levelRequirement = 58, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[17] = { 1, 8000, 60, -27, -30, manaMultiplier = 100, levelRequirement = 61, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[18] = { 1, 8000, 60, -27, -30, manaMultiplier = 100, levelRequirement = 64, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[19] = { 1, 8000, 60, -26, -30, manaMultiplier = 100, levelRequirement = 67, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[20] = { 1, 8000, 60, -26, -30, manaMultiplier = 100, levelRequirement = 70, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[21] = { 1, 8000, 60, -25, -30, manaMultiplier = 100, levelRequirement = 72, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[22] = { 1, 8000, 60, -25, -30, manaMultiplier = 100, levelRequirement = 74, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[23] = { 1, 8000, 60, -24, -30, manaMultiplier = 100, levelRequirement = 76, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[24] = { 1, 8000, 60, -24, -30, manaMultiplier = 100, levelRequirement = 78, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[25] = { 1, 8000, 60, -23, -30, manaMultiplier = 100, levelRequirement = 80, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[26] = { 1, 8000, 60, -23, -30, manaMultiplier = 100, levelRequirement = 82, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[27] = { 1, 8000, 60, -22, -30, manaMultiplier = 100, levelRequirement = 84, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[28] = { 1, 8000, 60, -22, -30, manaMultiplier = 100, levelRequirement = 86, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[29] = { 1, 8000, 60, -21, -30, manaMultiplier = 100, levelRequirement = 88, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[30] = { 1, 8000, 60, -21, -30, manaMultiplier = 100, levelRequirement = 90, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[31] = { 1, 8000, 60, -21, -30, manaMultiplier = 100, levelRequirement = 91, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[32] = { 1, 8000, 60, -20, -30, manaMultiplier = 100, levelRequirement = 92, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[33] = { 1, 8000, 60, -20, -30, manaMultiplier = 100, levelRequirement = 93, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[34] = { 1, 8000, 60, -20, -30, manaMultiplier = 100, levelRequirement = 94, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[35] = { 1, 8000, 60, -20, -30, manaMultiplier = 100, levelRequirement = 95, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[36] = { 1, 8000, 60, -19, -30, manaMultiplier = 100, levelRequirement = 96, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[37] = { 1, 8000, 60, -19, -30, manaMultiplier = 100, levelRequirement = 97, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[38] = { 1, 8000, 60, -19, -30, manaMultiplier = 100, levelRequirement = 98, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[39] = { 1, 8000, 60, -19, -30, manaMultiplier = 100, levelRequirement = 99, statInterpolation = { 1, 1, 1, 1, 1, }, },
+		[40] = { 1, 8000, 60, -18, -30, manaMultiplier = 100, levelRequirement = 100, statInterpolation = { 1, 1, 1, 1, 1, }, },
 	},
 }
 skills["SupportStun"] = {
@@ -3091,7 +3530,15 @@ description = "辅助任意击中敌人的技能, 使技能更容易晕眩敌人
 	baseMods = {
 	},
 	qualityStats = {
-		{ "base_stun_duration_+%", 1.5 },
+		Default = {
+			{ "base_stun_duration_+%", 1.5 },
+		},
+		Alternate1 = {
+			{ "chance_to_double_stun_duration_%", 0.2 },
+		},
+		Alternate2 = {
+			{ "recover_%_life_when_stunning_an_enemy_permyriad", 5 },
+		},
 	},
 	stats = {
 		"base_stun_threshold_reduction_+%",
@@ -3139,10 +3586,9 @@ description = "辅助任意击中敌人的技能, 使技能更容易晕眩敌人
 		[40] = { 64, levelRequirement = 100, statInterpolation = { 1, }, },
 	},
 }
-
 skills["SupportUrgentOrders"] = {
-	name = "紧急号令（辅）",
-	description = "辅助战吼技能.",
+name = "紧急号令（辅）",
+description = "辅助战吼技能。",
 	color = 1,
 	support = true,
 	requireSkillTypes = { SkillType.Warcry, },
@@ -3158,7 +3604,17 @@ skills["SupportUrgentOrders"] = {
 	baseMods = {
 	},
 	qualityStats = {
-		{ "warcry_speed_+%", 0.5 },
+		Default = {
+			{ "warcry_speed_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "base_cooldown_speed_+%", -1 },
+		
+			{ "skill_buff_effect_+%", 0.5 },
+		},
+		Alternate2 = {
+			{ "minimum_power_from_quality", 0.5 },
+		},
 	},
 	stats = {
 		"warcry_speed_+%",
@@ -3205,85 +3661,5 @@ skills["SupportUrgentOrders"] = {
 		[38] = { 63, 2000, manaMultiplier = 30, levelRequirement = 98, statInterpolation = { 1, 1, }, },
 		[39] = { 63, 2000, manaMultiplier = 30, levelRequirement = 99, statInterpolation = { 1, 1, }, },
 		[40] = { 64, 2000, manaMultiplier = 30, levelRequirement = 100, statInterpolation = { 1, 1, }, },
-	},
-}
-
-
-skills["AncestralSlamSupport"] = {
-	name = "战争铁拳（辅）",
-	description = "辅助猛击技能，每隔一段时间提供一个强力的增助攻击。无法辅助瓦尔或触发技能。无法辅助召唤生物使用的技能。只有你自己使用的技能可以获得强力增助。",
-	color = 1,
-	support = true,
-	requireSkillTypes = { SkillType.Slam, },
-	addSkillTypes = { },
-	excludeSkillTypes = { SkillType.Totem, SkillType.Trap, SkillType.Mine, SkillType.GeneralsCryTriggered, SkillType.Vaal, },
-	ignoreMinionTypes = true,
-	statDescriptionScope = "gem_stat_descriptions",
-
-	statMap = {
-		["support_ancestral_slam_big_hit_hit_damage_+%_final"] = {
-			mod("FistOfWarHitMultiplier", "BASE", nil, ModFlag.Melee),
-		},
-		["support_ancestral_slam_big_hit_ailment_damage_+%_final"] = {
-			mod("FistOfWarAilmentMultiplier", "BASE", nil, bit.band(ModFlag.Melee, ModFlag.Ailment)),
-		},
-		["ancestral_slam_interval_duration"] = {
-			mod("FistOfWarCooldown", "BASE", nil),
-			div = 1000,
-		},
-	},
-	baseMods = {
-	},
-	qualityStats = {
-		{ "base_skill_area_of_effect_+%", 0.5 },
-	},
-	stats = {
-		"support_ancestral_slam_big_hit_max_count",
-		"support_ancestral_slam_big_hit_hit_damage_+%_final",
-		"support_ancestral_slam_big_hit_ailment_damage_+%_final",
-		"support_ancestral_slam_big_hit_area_+%",
-		"ancestral_slam_interval_duration",
-	},
-	levels = {
-		[1] = { 1, 110, 70, 40, 2500, manaMultiplier = 20, levelRequirement = 38, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[2] = { 1, 112, 72, 41, 2460, manaMultiplier = 20, levelRequirement = 40, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[3] = { 1, 114, 73, 42, 2430, manaMultiplier = 20, levelRequirement = 42, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[4] = { 1, 116, 75, 43, 2390, manaMultiplier = 20, levelRequirement = 44, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[5] = { 1, 118, 76, 44, 2350, manaMultiplier = 20, levelRequirement = 46, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[6] = { 1, 120, 78, 45, 2320, manaMultiplier = 20, levelRequirement = 48, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[7] = { 1, 122, 79, 46, 2280, manaMultiplier = 20, levelRequirement = 50, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[8] = { 1, 124, 81, 47, 2240, manaMultiplier = 20, levelRequirement = 52, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[9] = { 1, 126, 83, 48, 2210, manaMultiplier = 20, levelRequirement = 54, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[10] = { 1, 128, 84, 49, 2170, manaMultiplier = 20, levelRequirement = 56, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[11] = { 1, 130, 86, 50, 2130, manaMultiplier = 20, levelRequirement = 58, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[12] = { 1, 132, 87, 51, 2090, manaMultiplier = 20, levelRequirement = 60, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[13] = { 1, 134, 89, 52, 2060, manaMultiplier = 20, levelRequirement = 62, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[14] = { 1, 136, 91, 53, 2020, manaMultiplier = 20, levelRequirement = 64, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[15] = { 1, 138, 92, 54, 1980, manaMultiplier = 20, levelRequirement = 65, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[16] = { 1, 140, 94, 55, 1950, manaMultiplier = 20, levelRequirement = 66, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[17] = { 1, 142, 95, 56, 1910, manaMultiplier = 20, levelRequirement = 67, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[18] = { 1, 144, 97, 57, 1870, manaMultiplier = 20, levelRequirement = 68, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[19] = { 1, 146, 98, 58, 1840, manaMultiplier = 20, levelRequirement = 69, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[20] = { 1, 148, 100, 59, 1800, manaMultiplier = 20, levelRequirement = 70, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[21] = { 1, 150, 102, 60, 1760, manaMultiplier = 20, levelRequirement = 72, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[22] = { 1, 152, 103, 61, 1730, manaMultiplier = 20, levelRequirement = 74, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[23] = { 1, 154, 105, 62, 1690, manaMultiplier = 20, levelRequirement = 76, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[24] = { 1, 156, 106, 63, 1650, manaMultiplier = 20, levelRequirement = 78, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[25] = { 1, 158, 108, 64, 1620, manaMultiplier = 20, levelRequirement = 80, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[26] = { 1, 160, 109, 65, 1580, manaMultiplier = 20, levelRequirement = 82, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[27] = { 1, 162, 111, 66, 1540, manaMultiplier = 20, levelRequirement = 84, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[28] = { 1, 164, 113, 67, 1510, manaMultiplier = 20, levelRequirement = 86, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[29] = { 1, 166, 114, 68, 1470, manaMultiplier = 20, levelRequirement = 88, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[30] = { 1, 168, 116, 69, 1430, manaMultiplier = 20, levelRequirement = 90, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[31] = { 1, 169, 117, 69, 1410, manaMultiplier = 20, levelRequirement = 91, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[32] = { 1, 170, 117, 70, 1390, manaMultiplier = 20, levelRequirement = 92, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[33] = { 1, 171, 118, 70, 1380, manaMultiplier = 20, levelRequirement = 93, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[34] = { 1, 172, 119, 71, 1360, manaMultiplier = 20, levelRequirement = 94, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[35] = { 1, 173, 120, 71, 1340, manaMultiplier = 20, levelRequirement = 95, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[36] = { 1, 174, 121, 72, 1320, manaMultiplier = 20, levelRequirement = 96, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[37] = { 1, 175, 121, 72, 1300, manaMultiplier = 20, levelRequirement = 97, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[38] = { 1, 176, 122, 73, 1280, manaMultiplier = 20, levelRequirement = 98, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[39] = { 1, 177, 123, 73, 1270, manaMultiplier = 20, levelRequirement = 99, statInterpolation = { 1, 1, 1, 1, 1, }, },
-		[40] = { 1, 178, 124, 74, 1250, manaMultiplier = 20, levelRequirement = 100, statInterpolation = { 1, 1, 1, 1, 1, }, },
 	},
 }

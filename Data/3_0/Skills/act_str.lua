@@ -905,7 +905,7 @@ description = "以极快速度消耗怒火，产生一个强力增益效果，�
 skills["Bladestorm"] = {
 name = "剑刃风暴",
 	color = 1,
-	description = "Perform a spinning attack, damaging enemies around you and creating a bladestorm matching your stance. The bladestorm repeatedly damages enemies, based on your weapon damage and attack time, for a duration. Blood bladestorms are stationary and cause Bleeding, while Sand bladestorms move slowly forwards and Blind enemies. Requires a Sword or Axe. You are in Blood Stance by default.",
+description = "发动一次旋转攻击，对你周围的敌人反复造成伤害，并根据你的姿态创造剑刃风暴，根据你的武器伤害和攻击速度对敌人造成伤害，并持续一段时间。血姿态下的剑刃风暴静止不动，并造成流血状态。沙姿态下的剑刃风暴会缓慢向前移动，并使敌人目盲。需要剑类和斧类。默认为血姿态。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Melee] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.AttackCanRepeat] = true, },
 	weaponTypes = {
 		["Two Handed Axe"] = true,
@@ -1038,16 +1038,16 @@ mod("AreaOfEffect", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Bu
 mod("Damage", "MORE", nil, ModFlag.Area, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "沙姿态", effectCond = "SandStance"}, { type = "SkillType", skillType = SkillType.Melee })
 		},
 		["projectile_attack_damage_+%_in_blood_stance"] = {
-			mod("ProjectileSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Sand", effectCond = "SandStance"})
+mod("Damage", "INC", nil, bit.bor(ModFlag.Attack, ModFlag.Projectile), 0, { type = "GlobalEffect", effectType = "Buff", effectName = "血姿态", effectCond = "BloodStance"})
 		},
 		["projectile_speed_+%_in_sand_stance"] = {
-			mod("Damage", "INC", nil, bit.bor(ModFlag.Attack, ModFlag.Projectile), 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Blood", effectCond = "BloodStance"})
+mod("ProjectileSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "沙姿态", effectCond = "SandStance"})
 		},
 		["spell_area_damage_+%_in_blood_stance"] = {
-			mod("AreaOfEffect", "INC", nil, bit.bor(ModFlag.Area, ModFlag.Spell), 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Sand", effectCond = "SandStance"})
+mod("Damage", "INC", nil, bit.bor(ModFlag.Area, ModFlag.Spell), 0, { type = "GlobalEffect", effectType = "Buff", effectName = "血姿态", effectCond = "BloodStance"})
 		},
 		["spell_area_of_effect_+%_in_sand_stance"] = {
-			mod("Damage", "INC", nil, bit.bor(ModFlag.Area, ModFlag.Spell), 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Blood", effectCond = "BloodStance"})
+mod("AreaOfEffect", "INC", nil, bit.bor(ModFlag.Area, ModFlag.Spell), 0, { type = "GlobalEffect", effectType = "Buff", effectName = "沙姿态", effectCond = "SandStance"})
 		},
 	},
 	baseFlags = {
@@ -4326,7 +4326,7 @@ description = "施放一个光环，使你周围的敌人受到的物理伤害�
 skills["Punishment"] = {
 name = "惩戒",
 	color = 1,
-	description = "Curses all targets in an area, causing them be debilitated when they hit enemies and increasing damage they take while on low life. Some overkill damage from a killing blow on a cursed enemy will be reflected to surrounding targets.",
+description = "诅咒一片区域的所有目标，使它们击中敌人会获得疲惫状态，并使它们在低血时受到更多伤害。对它们造成的致命一击溢出的伤害会反射给周围的其它目标。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.Type91] = true, [SkillType.Type92] = true, [SkillType.Hex] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -6250,8 +6250,8 @@ description = "施放一个光环, 使你与受光环影响友军获得额外的
 	statDescriptionScope = "aura_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
-		["life_regeneration_rate_per_minute_%"] = {
-			mod("LifeRegenPercent", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
+		["base_life_regeneration_rate_per_minute"] = {
+			mod("LifeRegen", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
 			div = 60,
 		},
 		["damage_+%_when_on_full_life"] = {
@@ -6328,7 +6328,7 @@ description = "施放一个光环, 使你与受光环影响友军获得额外的
 skills["Vulnerability"] = {
 name = "脆弱",
 	color = 1,
-	description = "Curse all targets in an area, causing them to take increased physical damage. Attacks against the cursed enemies have a chance to inflict bleeding, and ailments inflicted on them will deal damage faster.",
+description = "诅咒一片区域的所有目标，提高它们受到的物理伤害。攻击它们有几率施加流血，以及一个导致伤害生效更快的异常状态。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, [SkillType.Type91] = true, [SkillType.Type92] = true, [SkillType.Hex] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -6424,7 +6424,7 @@ name = "脆弱",
 skills["WarlordsMark"] = {
 name = "督军印记",
 	color = 1,
-	description = "Curses a single enemy, giving a chance to double the duration of stuns on them. Attacking the cursed enemy will leech life and mana, stunning them will grant rage, and killing it will grant an endurance charge. You can only have one Mark at a time.",
+description = "诅咒单个敌人，使它身上的眩晕持续时间有几率翻倍。攻击该敌人会获得生命和魔力偷取，使它眩晕可以获得怒火，击败它可以获得一个耐力球。你同时只能施加一个咒印。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.Type91] = true, [SkillType.Type92] = true, [SkillType.Mark] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,

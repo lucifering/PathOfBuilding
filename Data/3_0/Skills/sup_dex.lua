@@ -136,6 +136,11 @@ description = "辅助攻击技能",
 	addSkillTypes = { },
 	excludeSkillTypes = { },
 	statDescriptionScope = "gem_stat_descriptions",
+	statMap = {
+		["attack_damage_+%_per_1000_accuracy_rating"] = {
+			mod("Damage", "INC", nil, ModFlag.Attack, 0, { type = "PerStat", div = 1000, stat = "Accuracy"})
+		}
+	},
 	baseMods = {
 	},
 	qualityStats = {
@@ -566,6 +571,11 @@ description = "必须同时连接一个攻击技能和一个法术技能才能�
 	excludeSkillTypes = { SkillType.Trap, SkillType.Mine, SkillType.Totem, SkillType.ManaCostReserved, },
 	ignoreMinionTypes = true,
 	statDescriptionScope = "gem_stat_descriptions",
+	statMap = {
+		["support_cast_on_crit_quality_attack_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, ModFlag.Attack, 0)
+		}
+	},
 	baseMods = {
 	},
 	qualityStats = {
@@ -816,6 +826,13 @@ description = "所有被辅助的法术技能会在你被击败时施放. 无法
 		},
 		["cast_on_death_damage_+%_final_while_dead"] = {
 			mod("Damage", "MORE", nil),
+		},
+		["additional_critical_strike_chance_permyriad_while_dead"] = {
+			mod("CritChance", "BASE", nil),
+			div = 100
+		},
+		["skill_effect_duration_+%_while_dead"] = {
+			mod("Duration", "INC", nil),
 		},
 	},
 	baseMods = {
@@ -1082,6 +1099,11 @@ description = "辅助陷阱技能",
 	addSkillTypes = { },
 	excludeSkillTypes = { },
 	statDescriptionScope = "gem_stat_descriptions",
+	statMap = {
+		["trap_trigger_radius_"] = {
+			mod("TrapTriggerAreaOfEffect", "INC", nil, 0, 0, { type = "Multiplier", var = "PowerCharge" } )
+		},
+	},
 	baseMods = {
 	},
 	qualityStats = {
@@ -2156,6 +2178,9 @@ description = "辅助任意造成伤害的技能",
 		["support_hypothermia_cold_damage_over_time_+%_final"] = {
 			mod("ColdDamage", "MORE", nil, 0, KeywordFlag.ColdDot),
 		},
+		["freeze_applies_cold_resistance_+"] = {
+			mod("EnemyModifier", "LIST", { mod = mod("ColdResist", "BASE", nil, 0, 0, {type = "Condition", var = "Frozen" }) }),
+		},
 	},
 	baseMods = {
 	},
@@ -2531,6 +2556,11 @@ description = "辅助击中敌人的攻击技能，基于击中造成的伤害�
 	addSkillTypes = { },
 	excludeSkillTypes = { },
 	statDescriptionScope = "gem_stat_descriptions",
+	statMap = {
+		["damage_+%_per_200_mana_spent_recently"] = {
+			mod("Damage", "INC", nil, 0, 0, {type = "Multiplier", div = 200, var = "ManaSpentRecently"})
+		}
+	},
 	baseMods = {
 	},
 	qualityStats = {
@@ -2832,6 +2862,11 @@ description = "辅助任意击中敌人的技能",
 	addSkillTypes = { },
 	excludeSkillTypes = { },
 	statDescriptionScope = "gem_stat_descriptions",
+	statMap = {
+		["attack_and_cast_speed_+%_during_onslaught"] = {
+			mod("Speed", "INC", nil, 0, 0, {type = "Condition", var = "Onslaught"})
+		}
+	},
 	baseMods = {
 	},
 	qualityStats = {
@@ -2979,6 +3014,9 @@ description = "辅助投射物技能",
 	statMap = {
 		["keystone_point_blank"] = {
 			flag("PointBlank"),
+		},
+		["knockback_chance_%_at_close_range"] = {
+			mod("EnemyKnockbackChance", "BASE", nil, 0, KeywordFlag.Hit),
 		},
 	},
 	baseMods = {
@@ -3202,6 +3240,9 @@ description = "辅助投射物技能",
 		["support_slower_projectiles_damage_+%_final"] = {
 			mod("Damage", "MORE", nil, ModFlag.Projectile),
 		},
+		["projectiles_damage_+%_to_nearby_targets"] = {
+			mod("Damage", "INC", nil, ModFlag.Projectile)
+		}
 	},
 	baseMods = {
 	},
@@ -4135,9 +4176,7 @@ description = "辅助攻击技能",
 	excludeSkillTypes = { },
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
-		["withered_on_hit_chance_%"] = {
-			flag("Condition:CanWither"),
-		},
+		
 	},
 	baseMods = {
 	},

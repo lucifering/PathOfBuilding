@@ -170,13 +170,16 @@ modList:NewMod("Multiplier:BannerStage", "BASE", m_min(val, 50), "Config", { typ
 	{ var = "carrionGolemNearbyMinion", type = "count", label = "#周围非魔像召唤生物数量:", ifSkill = "召唤腐化魔像", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:NearbyNonGolemMinion", "BASE", val, "Config")
 	end }, 	
-	
+{ label = "旋风斩:", ifSkill = "旋风斩" },
+	{ var = "channellingCycloneCheck", type = "check", label = "你正在吟唱旋风斩?", ifSkill = "Cyclone", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:ChannellingCyclone", "FLAG", true, "Config")
+	end },
 { label = "【暗夜血契】:", ifSkill = "暗夜血契" },
 { var = "darkPactSkeletonLife", type = "count", label = "魔侍 生命:", ifSkill = "暗夜血契", tooltip = "设置使用【暗夜血契】时，魔侍的最大生命.", apply = function(val, modList, enemyModList)
 modList:NewMod("SkillData", "LIST", { key = "skeletonLife", value = val }, "Config", { type = "SkillName", skillName = "暗夜血契" })
 	end },
-{ label = "【亡印（辅）】:", ifSkill = "亡印（辅）" },
-	{ var = "conditionEnemyHasDeathmark", type = "check", label = "敌人被标记?", ifSkill = "亡印（辅）", apply = function(val, modList, enemyModList)
+{ label = "【掠食（辅）】:", ifSkill = "掠食（辅）" },
+	{ var = "conditionEnemyHasDeathmark", type = "check", label = "敌人被标记?", ifSkill = "掠食（辅）", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:EnemyHasDeathmark", "FLAG", true, "Config")
 	end },
 	{ label = "【狂噬（辅）】:", ifSkill = "狂噬（辅）" }, 
@@ -187,8 +190,14 @@ modList:NewMod("SkillData", "LIST", { key = "skeletonLife", value = val }, "Conf
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("MovementSpeed", "INC", 15, "狂噬（辅）") }, "Config")
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Speed", "INC", 15, "狂噬（辅）") }, "Config")
 	end },
-	
-	
+{ label = "寒冰弹:", ifSkill = "寒冰弹" },
+	{ var = "frostboltExposure", type = "check", label = "造成冰霜曝露?", ifSkill = "寒冰弹", apply = function(val, modList, enemyModList)
+		modList:NewMod("ColdExposureChance", "BASE", 20, "Config")
+	end },
+{ label = "冰霜护盾:", ifSkill = "冰霜护盾" },
+	{ var = "frostShieldStages", type = "count", label = "层数:", ifSkill = "冰霜护盾", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:FrostShieldStage", "BASE", val, "Config")
+	end },
 { label = "【召唤高等时空先驱者】:", ifSkill =  "召唤高等时空先驱者" },
 	{ var = "greaterHarbingerOfTimeSlipstream", type = "check", label = "开启时空先驱者光环?:", ifSkill =  "召唤高等时空先驱者", 
 	tooltip = "【召唤高等时空先驱者】增益效果：\n动作速度提高 20%\n增益影响玩家和友军\n增益效果持续 8 秒，并且有 10 秒冷却时间", apply = function(val, modList, enemyModList)
@@ -220,8 +229,8 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 	{ var = "conditionInfusionActive", type = "check", label = "激活【灌注】?", ifSkill = "灌能吟唱(辅)", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:InfusionActive", "FLAG", true, "Config")
 	end },
-{ label = "【法术凝聚】:", ifSkillList = {"法术凝聚（辅）","电殛长枪"} },
-	{ var = "intensifyIntensity", type = "count", label = "# 层【法术凝聚】:", ifSkillList = {"法术凝聚（辅）","电殛长枪"} , apply = function(val, modList, enemyModList)
+{ label = "【法术凝聚】:", ifSkillList = {"法术凝聚（辅）","电殛长枪","会心一击（辅）"} },
+	{ var = "intensifyIntensity", type = "count", label = "# 层【法术凝聚】:", ifSkillList = {"法术凝聚（辅）","电殛长枪","会心一击（辅）"} , apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:Intensity", "BASE",val, "Config")
 	end },
 { label = "【肉盾（辅）】:", ifSkill = "肉盾（辅）" },
@@ -233,6 +242,10 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 	ifSkill = "凿击", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:PerforateSpikeOverlap", "BASE", val, "Config", { type = "SkillName", skillName = "凿击" })
 	end },
+{ label = "物理神盾:", ifSkill = "物理神盾" },
+	{ var = "innervateInnervation", type = "check", label = "物理神盾耗尽了?", ifSkill = "物理神盾", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:PhysicalAegisDepleted", "FLAG", true, "Config")
+	end },
 	{ label = "【尊严】:", ifSkill = "尊严" },
 	{ var = "prideEffect", type = "list", label = "尊严光环效果:", ifSkill = "尊严", 
 	list = {{val="MIN",label="初始效果"},{val="MAX",label="最大效果"}}, apply = function(val, modList, enemyModList)
@@ -243,6 +256,10 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 { label = "【召唤灵体】:", ifSkill = "召唤灵体" },
 { var = "raiseSpectreSpectreLevel", type = "count", label = "灵体等级:", ifSkill = "召唤灵体", ifVer = "2_6", tooltip = "设置灵体等级.\n默认等级是【召唤灵体】技能石的需求等级.", apply = function(val, modList, enemyModList)
 modList:NewMod("SkillData", "LIST", { key = "minionLevel", value = val }, "Config", { type = "SkillName", skillName = "召唤灵体" })
+	end },
+{ label = "威能法印:", ifSkill = "威能法印" },
+	{ var = "sigilOfPowerStages", type = "count", label = "层数:", ifSkill = "威能法印", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:SigilOfPowerStage", "BASE", val, "Config")
 	end },
 { label = "【虹吸陷阱】:", ifSkill = "虹吸陷阱" },
 { var = "siphoningTrapAffectedEnemies", type = "count", label = "# 受到影响的敌人数量:", ifSkill = "虹吸陷阱", tooltip = "设置受到【虹吸陷阱】影响的敌人数量.", apply = function(val, modList, enemyModList)
@@ -272,6 +289,14 @@ modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", 
 { var = "changedStance", type = "check", label = "最近有切换姿态模式?", ifCond = "ChangedStanceRecently", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:ChangedStanceRecently", "FLAG", true, "Config")
 	end },
+{ label = "钢系技能:", ifSkillList = { "分裂钢刃", "破碎铁刃", "断金之刃" } },
+	{ var = "shardsConsumed", type = "count", label = "消耗钢刃碎片:", ifSkillList = { "分裂钢刃", "破碎铁刃", "断金之刃" }, apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:SteelShardConsumed", "BASE", m_min(val, 12), "Config")
+	end },
+{ var = "steelWards", type = "count", label = "钢刃结界:", ifSkill = "破碎铁刃", tooltip = "消耗至少 2 个钢刃碎片时，获得一个钢刃结界，最多 6 个\n每个钢刃结界都使投射物攻击伤害的格挡率 +4%", apply = function(val, modList, enemyModList)
+		modList:NewMod("ProjectileBlockChance", "BASE", m_min(val * 4, 24), "Config")
+	end },
+
 { label = "【召唤圣物】:", ifSkill = "召唤圣物" },
 { var = "summonHolyRelicEnableHolyRelicBoon", type = "check", label = "启用圣物的加成光环:", ifSkill = "召唤圣物", apply = function(val, modList, enemyModList)
 		modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", { type = "SkillId", skillId = "RelicTriggeredNova" })
@@ -308,11 +333,11 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 { label = "【元素大军（辅）】:", ifSkill = "元素大军（辅）" },
 	{ var = "ElementalArmyExposureTypeTest1", type = "list", label = "曝露效果类型:", ifSkill = "元素大军（辅）", list = {{val=0,label="无"},{val="Fire",label="火焰"},{val="Cold",label="冰霜"},{val="Lightning",label="闪电"}}, apply = function(val, modList, enemyModList)
 		if val == "Fire" then
-			modList:NewMod("Condition:ElementalArmyFireExposureType", "FLAG", true, "Config")
+			modList:NewMod("FireExposureChance", "BASE", 100, "Config")
 		elseif val == "Cold" then
-			modList:NewMod("Condition:ElementalArmyColdExposureType", "FLAG", true, "Config")
+			modList:NewMod("ColdExposureChance", "BASE", 100, "Config")
 		elseif val == "Lightning" then
-			modList:NewMod("Condition:ElementalArmyLightningExposureType", "FLAG", true, "Config")
+			modList:NewMod("LightningExposureChance", "BASE", 100, "Config")
 		end
 	end },
 	
@@ -657,6 +682,9 @@ end },
 		
 	end },
 	
+{ var = "conditionSummonedGolemInPast8Sec", type = "check", label = "过去 8 秒有召唤过魔像?", ifCond = "SummonedGolemInPast8Sec", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:SummonedGolemInPast8Sec", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
 { var = "multiplierNearbyAlly", type = "count", label = "附近友军数量：", ifMult = "NearbyAlly", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:NearbyAlly", "BASE", val, "Config", { type = "Condition", var = "Combat" })
 	end },
@@ -799,6 +827,9 @@ ifCond = "OnFungalGround",
 	end },
 { var = "conditionBeenCritRecently", type = "check", label = "你近期有承受过暴击?", ifCond = "BeenCritRecently", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:BeenCritRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
+{ var = "conditionGainedPowerChargeRecently", type = "check", label = "近期有获得暴击球?", ifCond = "GainedPowerChargeRecently", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:GainedPowerChargeRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
 { var = "conditionBeenSavageHitRecently", type = "check", label = "近期你有承受过【残暴打击】?", ifCond = "BeenSavageHitRecently", implyCond = "BeenHitRecently", tooltip = "这也意味着近期内你被击中过.", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:BeenSavageHitRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
@@ -1076,6 +1107,15 @@ tooltip = "精疲力尽的敌人总伤害额外降低，最多降低 20%.", appl
 	end },
 { var = "multiplierFreezeShockIgniteOnEnemy", type = "count", label = "敌人身上的点燃感电冰缓数量:", ifMult = "FreezeShockIgniteOnEnemy", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:FreezeShockIgniteOnEnemy", "BASE", val, "Config", { type = "Condition", var = "Effective" })
+	end },
+{ var = "conditionEnemyFireExposure", type = "check", label = "敌人被火焰曝露影响?", ifFlag = "applyFireExposure", tooltip = "降低敌人 10% 火焰抗性.", apply = function(val, modList, enemyModList)
+		enemyModList:NewMod("FireExposure", "BASE", -10, "Config", { type = "Condition", var = "Effective" }, { type = "ActorCondition", actor = "enemy", var = "CanApplyFireExposure" })
+	end },
+{ var = "conditionEnemyColdExposure", type = "check", label = "敌人被冰霜曝露影响?", ifFlag = "applyColdExposure", tooltip = "降低敌人 10% 冰霜抗性", apply = function(val, modList, enemyModList)
+		enemyModList:NewMod("ColdExposure", "BASE", -10, "Config", { type = "Condition", var = "Effective" }, { type = "ActorCondition", actor = "enemy", var = "CanApplyColdExposure" })
+	end },
+{ var = "conditionEnemyLightningExposure", type = "check", label = "敌人被闪电曝露影响?", ifFlag = "applyLightningExposure", tooltip = "降低敌人 10% 闪电抗性", apply = function(val, modList, enemyModList)
+		enemyModList:NewMod("LightningExposure", "BASE", -10, "Config", { type = "Condition", var = "Effective" }, { type = "ActorCondition", actor = "enemy", var = "CanApplyLightningExposure" })
 	end },
 { var = "conditionEnemyIntimidated", type = "check", ifVer = "2_6", label = "敌人被恐吓?", tooltip = "这个会附加词缀:\n提高 10% 敌人承受的伤害", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("DamageTaken", "INC", 10, "Intimidate")

@@ -95,17 +95,17 @@ itemBases["大理石护身符"] = {
 	req = { level = 74, },
 }
 
-itemBases["Astrolabe Amulet"] = {
+itemBases["星盘项链"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, not_for_sale = true, },
-	implicit = "固定基底词缀无法变更\n拥有塑界者、裂界者和所有征服者影响",
+	implicit = "具有裂界者、塑界者和所有征服者影响效果\n基底词缀不能改变",
 	implicitModTypes = { {  }, {  }, },
 	req = { level = 69, },
 }
-itemBases["Simplex Amulet"] = {
+itemBases["朴实项链"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, not_for_sale = true, },
-	implicit = "-1 前缀数量上限\n-1 后缀数量上限\n固定基底词缀无法变更\n该装备的词缀效果提高 25%",
+	implicit = "允许的前缀 -1\n允许的后缀 -1\n基底词缀不能改变\n该装备的词缀效果提高 25%",
 	implicitModTypes = { {  }, {  }, {  }, },
 	req = { level = 24, },
 }

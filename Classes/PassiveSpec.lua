@@ -503,26 +503,34 @@ end
 function PassiveSpecClass:BuildAllDependsAndPaths()
 	-- This table will keep track of which nodes have been visited during each path-finding attempt
 	local visited = { }
-
+	local attributes = { "Dexterity", "Intelligence", "Strength" }
 	-- Check all nodes for other nodes which depend on them (i.e are only connected to the tree through that node)
 	for id, node in pairs(self.nodes) do
 		node.depends = wipeTable(node.depends)
 		node.dependsOnIntuitiveLeapLike  = false
+		node.conqueredBy = nil
+
+		-- ignore cluster jewel nodes that don't have an id in the tree
+		if self.tree.nodes[id] then
+			self:ReplaceNode(node,self.tree.nodes[id])
+		end
 		if node.type ~= "ClassStart" and node.type ~= "Socket"  then
 			for nodeId, itemId in pairs(self.jewels) do
 				if self.build.itemsTab.items[itemId] and self.build.itemsTab.items[itemId].jewelRadiusIndex then
 					local radiusIndex = self.build.itemsTab.items[itemId].jewelRadiusIndex
 					if self.allocNodes[nodeId] and self.nodes[nodeId].nodesInRadius and self.nodes[nodeId].nodesInRadius[radiusIndex][node.id] then
-						if itemId ~= 0
-							and self.build.itemsTab.items[itemId].jewelData
-							and self.build.itemsTab.items[itemId].jewelData.intuitiveLeapLike then
-							-- This node depends on Intuitive Leap-like behaviour
-							-- This flag:
-							-- 1. Prevents generation of paths from this node
-							-- 2. Prevents this node from being deallocted via dependancy
-							-- 3. Prevents allocation of path nodes when this node is being allocated
-							node.dependsOnIntuitiveLeapLike = true
-							break
+						if itemId ~= 0 and self.build.itemsTab.items[itemId].jewelData then
+							if self.build.itemsTab.items[itemId].jewelData.intuitiveLeapLike then
+								-- This node depends on Intuitive Leap-like behaviour
+								-- This flag:
+								-- 1. Prevents generation of paths from this node
+								-- 2. Prevents this node from being deallocted via dependancy
+								-- 3. Prevents allocation of path nodes when this node is being allocated
+								node.dependsOnIntuitiveLeapLike = true
+							end
+							if self.build.itemsTab.items[itemId].jewelData.conqueredBy then
+								node.conqueredBy = self.build.itemsTab.items[itemId].jewelData.conqueredBy
+							end
 						end
 					end
 				end
@@ -535,6 +543,62 @@ function PassiveSpecClass:BuildAllDependsAndPaths()
 		end
 		 
 	end
+	for id, node in pairs(self.nodes) do
+		-- If node is conquered, replace it or add mods
+		if node.conqueredBy and node.type ~= "Socket" then
+			local conqueredBy = node.conqueredBy
+			local legionNodes = self.tree.legion.nodes
+
+			-- Replace with edited node if applicable
+			if self.tree.legion.editedNodes and self.tree.legion.editedNodes[conqueredBy.id] and self.tree.legion.editedNodes[conqueredBy.id][node.id] then
+				local editedNode = self.tree.legion.editedNodes[conqueredBy.id][node.id]
+				node.dn = editedNode.dn
+				node.sd = editedNode.sd
+				node.sprites = editedNode.sprites
+				node.mods = editedNode.mods
+				node.modList = editedNode.modList
+				node.modKey = editedNode.modKey
+			else
+				if node.type == "Keystone" then
+					local legionNode = legionNodes[conqueredBy.conqueror.type.."_keystone_"..conqueredBy.conqueror.id]
+					self:ReplaceNode(node, legionNode)
+				elseif conqueredBy.conqueror.type == "eternal" and node.type == "Normal"  then
+					local legionNode =legionNodes["eternal_small_blank"]
+					self:ReplaceNode(node,legionNode)
+				elseif conqueredBy.conqueror.type == "templar" then
+					if isValueInArray(attributes, node.dn) then
+						local legionNode =legionNodes["templar_devotion_node"]
+						self:ReplaceNode(node,legionNode)
+					else
+						self:NodeAdditionOrReplacementFromString(node,"+5 奉献")
+					end
+				elseif conqueredBy.conqueror.type == "maraketh" and node.type == "Normal" then
+					local dex = isValueInArray(attributes, node.dn) and "2" or "4"
+					self:NodeAdditionOrReplacementFromString(node,"+"..dex.." 敏捷")
+				elseif conqueredBy.conqueror.type == "karui" and node.type == "Normal" then
+					local str = isValueInArray(attributes, node.dn) and "2" or "4"
+					self:NodeAdditionOrReplacementFromString(node,"+"..str.." 力量")
+				elseif conqueredBy.conqueror.type == "vaal" and node.type == "Normal" then
+					local legionNode =legionNodes["vaal_small_fire_resistance"]
+					node.dn = "瓦尔小天赋点"
+					node.sd = {"右键设置词缀"}
+					node.sprites = legionNode.sprites
+					node.mods = {""}
+					node.modList = new("ModList")
+					node.modKey = ""
+				elseif conqueredBy.conqueror.type == "vaal" and node.type == "Notable" then
+					local legionNode =legionNodes["vaal_notable_curse_1"]
+					node.dn = "瓦尔核心天赋"
+					node.sd = {"右键设置词缀"}
+					node.sprites = legionNode.sprites
+					node.mods = {""}
+					node.modList = new("ModList")
+					node.modKey = ""
+				end
+			end
+		end
+	end
+
 	for id, node in pairs(self.allocNodes) do
 		node.visited = true
 
@@ -623,7 +687,17 @@ function PassiveSpecClass:BuildAllDependsAndPaths()
 		
 end
 
-
+function PassiveSpecClass:ReplaceNode(old, new)
+	-- Edited nodes can share a name
+	if old.sd == new.sd then return 1 end
+	old.dn = new.dn
+	old.sd = new.sd
+	old.mods = new.mods
+	old.modKey = new.modKey
+	old.modList = new.modList
+	old.sprites = new.sprites
+	old.keystoneMod = new.keystoneMod
+end
 function PassiveSpecClass:BuildClusterJewelGraphs()
 	-- Remove old subgraphs
 	for id, subGraph in pairs(self.subGraphs) do
@@ -1065,112 +1139,8 @@ return false
 end
 
 
-function PassiveSpecClass:resetAll()
- 
-self:resetAllocTimeJew()
 
-end
-function PassiveSpecClass:resetAllocTimeJew()
 
- 
-local build=_build
-if not build or  not build.spec or  not build.spec.nodes  then 
-	return
-end 
-
-  				
-	for nodeId, specNode in pairs(build.spec.nodes) do
-		if specNode.dn_bak then 
-			specNode.dn=specNode.dn_bak;
-		end 
-		if specNode.reminderText_bak then 
-			specNode.reminderText=table.shallow_copy(specNode.reminderText_bak);
-		elseif specNode.reminderText then 
-			specNode.reminderText=nil;
-		end 
-		if specNode and specNode.type == "Keystone" then
-			if self:hasDiyModItem(specNode.keystoneMod) then 
-				
-			
-			specNode.dn=specNode.dn_bak;
-			specNode.sd=table.shallow_copy(specNode.sd_bak);
-			specNode.reminderText=table.shallow_copy(specNode.reminderText_bak);
-			specNode.isTimeless=0;	
-			  
-			specNode.keystoneMod=specNode.keystoneMod_bak;
-			 
-			for i = 1, #specNode.mods do
-				specNode.mods[i]=nil
-			end
-			specNode.mods=table.shallow_copy(specNode.mods_bak);
-			
-			for i = 1, #specNode.mods_bak do
-				specNode.mods[i]=table.shallow_copy(specNode.mods_bak[i]									)
-			end
-			specNode.mods_bak=nil
-		--	specNode.modList_bak=nil
-			specNode.sd_bak=nil;
-			specNode.dn_bak=nil;
-			specNode.reminderText_bak=nil;
-				 		
-			end 
-		elseif specNode then
-			if self:hasDiyMod(specNode.modList)   then 
-				
-			 
-			specNode.dn=specNode.dn_bak; 
-			if specNode.sd_bak then 
-				 
-				specNode.sd=table.shallow_copy(specNode.sd_bak);
-				for i = 1, #specNode.sd_bak do
-					specNode.sd[i]=specNode.sd_bak[i]
-				end
-			end 
-			
-			specNode.reminderText=table.shallow_copy(specNode.reminderText_bak);
-			specNode.isTimeless=0;	
-			for i = 1, #specNode.modList do
-				specNode.modList[i]=nil
-			end
-			
-			
-			--specNode.modList=table.shallow_copy(specNode.modList_bak);
-			--specNode.modList.ModStore=table.shallow_copy(specNode.modList.ModStore_bak);		 
-			--specNode.modList.Object =table.shallow_copy(specNode.modList.Object_bak);	
-			if specNode.modList_bak~=nil then 
-				for i = 1, #specNode.modList_bak do
-					specNode.modList[i]=table.shallow_copy(specNode.modList_bak[i])		
-					specNode.modList[i].isDIY=nil
-					
-				end 
-			end 
-			if specNode.mods ~= nil then 
-				for i = 1, #specNode.mods do
-					specNode.mods[i]=nil
-				end
-			end 
-			
-			if specNode.mods_bak ~=nil then
-				specNode.mods=table.shallow_copy(specNode.mods_bak);
-				for i = 1, #specNode.mods_bak do
-					specNode.mods[i]=table.shallow_copy(specNode.mods_bak[i]									)
-					
-					specNode.mods[i].isDIY=nil
-				end
-			end 
-			--specNode.mods_bak=nil
-		--	specNode.modList_bak=nil
-			--specNode.sd_bak=nil;
-			--specNode.dn_bak=nil;
-			specNode.reminderText_bak=nil;
-				 	
-			end 
-		end --end of type
-		
-	end --end of for
-	
-	self:allocTimeJew();
-end
 
 local PathJewelList={"Split Personality"}
 
@@ -1183,1123 +1153,99 @@ local TimelessJewelList={"残酷的约束",
 
 --展示效果
 --实际生效在 TimelessJewelKeystone.lua 
-function PassiveSpecClass:allocTimeJew()
-	 local build=_build
-	if not build or  not build.spec or  not build.spec.nodes then 
-		return
-	end 
-	
-	for nodeId, node in pairs(build.spec.allocNodes) do
-		if  node.type == "Socket"  then 
-			local socket, jewel = build.itemsTab:GetSocketAndJewelForNodeID(nodeId)
-			if  jewel and  jewel.name and jewel.baseModList then
-					
-					 
-					if node.nodesInRadius and node.nodesInRadius[3] then 					
-					local jewName="";
-					local npcName="";
-					for i = 1, #jewel.baseModList do
-						 for _, timelessJewelname in pairs(TimelessJewelList) do 
-							 if jewel.baseModList[i].name==timelessJewelname then
-								jewName=jewel.baseModList[i].name;
-							 end 
-						 end				
-						
-						 if string.find(jewel.baseModList[i].name, 'TimelessJewelNPC')  then
-							npcName=string.sub(jewel.baseModList[i].name,17);
-						 end 
-						 --TimelessJewelNPC
-						 
+
+
+
+function PassiveSpecClass:SetWindowTitleWithBuildClass()
+	main:SetWindowTitleSubtext(string.format("%s (%s)", self.build.buildName, self.curAscendClassId == 0 and self.curClassName or self.curAscendClassName))
+end
+
+--- Adds a line to or replaces a node given a line to add/replace with
+--- @param node table The node to replace/add to
+--- @param sd string The line being parsed and added
+--- @param replacement boolean true to replace the node with the new mod, false to simply add it
+function PassiveSpecClass:NodeAdditionOrReplacementFromString(node,sd,replacement)
+	local addition = {}
+	addition.sd = {sd}
+	addition.mods = { }
+	addition.modList = new("ModList")
+	addition.modKey = ""
+	local i = 1
+	while addition.sd[i] do
+		if addition.sd[i]:match("\n") then
+			local line = addition.sd[i]
+			local lineIdx = i
+			t_remove(addition.sd, i)
+			for line in line:gmatch("[^\n]+") do
+				t_insert(addition.sd, lineIdx, line)
+				lineIdx = lineIdx + 1
+			end
+		end
+		local line = addition.sd[i]
+		local parsedMod, unrecognizedMod = modLib.parseMod[self.build.targetVersion](line)
+		if not parsedMod or unrecognizedMod then
+			-- Try to combine it with one or more of the lines that follow this one
+			local endI = i + 1
+			while addition.sd[endI] do
+				local comb = line
+				for ci = i + 1, endI do
+					comb = comb .. " " .. addition.sd[ci]
+				end
+				parsedMod, unrecognizedMod = modLib.parseMod[self.build.targetVersion](comb, true)
+				if parsedMod and not unrecognizedMod then
+					-- Success, add dummy mod lists to the other lines that were combined with this one
+					for ci = i + 1, endI do
+						addition.mods[ci] = { list = { } }
 					end
-					
-					if  string.find(jewName, '残酷的约束') then  
-					
-						 for effectNodeId in pairs(node.nodesInRadius[3]) do
-							local specNode = build.spec.nodes[effectNodeId];
-							if specNode and specNode.type == "Normal" then
-							-- 
-								if not self:hasDiyMod(specNode.modList) then 
-									specNode.sd_bak=table.shallow_copy(specNode.sd);
-									specNode.dn_bak=specNode.dn;
-									specNode.reminderText_bak=specNode.reminderText;
-									 specNode.modList_bak={};
-									 
-									local addNum=2;
-									
-									if specNode.dn=='智慧' or specNode.dn=='敏捷' or specNode.dn=='力量' then		 
-									 
-										addNum=2;
-									else									 
-										 
-										addNum=4;
-									end	 
-									specNode.dn="马拉克斯";
-									specNode.reminderText={"范围中的天赋被马拉克斯抑制","(该天赋会多一条【+"..addNum.." 敏捷】词缀，未支持)"};								 
-								end 							
-							elseif specNode and specNode.type == "Notable" then
-								if not self:hasDiyMod(specNode.modList) then 
-									specNode.sd_bak=table.shallow_copy(specNode.sd);
-									specNode.dn_bak=specNode.dn;
-									specNode.reminderText_bak=specNode.reminderText;
-									 specNode.modList_bak={};
-									specNode.dn="马拉克斯";
-									specNode.reminderText={"范围中的天赋被马拉克斯抑制","(该天赋会额外多一条随机词缀，未支持)"};
-								end 
-							elseif specNode and specNode.type == "Keystone" then
-								if npcName =='迪虚瑞特' then 
-								--遗产
-								if not self:hasDiyModItem(specNode.keystoneMod) then 
-										specNode.sd_bak=table.shallow_copy(specNode.sd);
-										specNode.dn_bak=specNode.dn;
-										specNode.reminderText_bak=specNode.reminderText;
-										specNode.modList_bak={};
-										  
-										specNode.mods_bak=table.shallow_copy(specNode.mods);
-										
-										for i = 1, #specNode.mods do
-											 
-											specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-										end								
-										
-										specNode.dn="风舞者";
-										specNode.sd={"近期内如果没有被击中，则承受的总伤害额外降低 20%","近期内如果没有被击中，则总闪避值额外降低 40%","如果近期内被击中，则总闪避值额外提高 20%"};
-										
-										specNode.reminderText={"( 近期内意指 4 秒内 )"};
-										specNode.isTimeless=1;									 
-										newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
-										newmod1.isDIY=1;	
-										specNode.keystoneMod=newmod1;			
-										specNode.hide=nil;						
-										
-										list1={}
-										list2={}
-										list3={}
-										newmodList1={}
-										newmodList2={}	
-										newmodList3={}												
-										t_insert( list1,modLib.createMod("DamageTaken", "MORE", -20,"Tree"..specNode.id, { type = "Condition", var = "BeenHitRecently" , neg = true}))
-										t_insert( list2,modLib.createMod("Evasion", "MORE", -40,"Tree"..specNode.id, { type = "Condition", var = "BeenHitRecently" , neg = true}))
-										 
-										t_insert( list3,modLib.createMod("Evasion", "MORE", 20,"Tree"..specNode.id, { type = "Condition", var = "BeenHitRecently" }))
-										newmodList1["list"] =  list1
-										newmodList2["list"] =  list2
-										newmodList3["list"] =  list3
-										specNode.mods={newmodList1,newmodList2,newmodList3,newmodList4}
-									end 
-								elseif npcName =='巴巴拉' then 
-									if not self:hasDiyModItem(specNode.keystoneMod) then 
-										specNode.sd_bak=table.shallow_copy(specNode.sd);
-										specNode.dn_bak=specNode.dn;
-										specNode.reminderText_bak=specNode.reminderText;
-										specNode.modList_bak={};
-										  
-										specNode.mods_bak=table.shallow_copy(specNode.mods);
-										
-										for i = 1, #specNode.mods do
-											 
-											specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-										end								
-										
-										specNode.dn="叛徒";
-										specNode.sd={"每有一个空药水栏都每 5 秒获得 4 次药剂使用次数"};
-										
-										specNode.reminderText={""};
-										specNode.isTimeless=1;									 
-										newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
-										newmod1.isDIY=1;	
-										specNode.keystoneMod=newmod1;			
-										specNode.hide=nil;						
-										
-										list1={}										 
-										newmodList1={}									 	 
-										newmodList1["list"] =  nil
-										 
-										specNode.mods={newmodList1}
-									end 
-								elseif npcName =='安赛娜丝' then 
-									if not self:hasDiyModItem(specNode.keystoneMod) then 
-										specNode.sd_bak=table.shallow_copy(specNode.sd);
-										specNode.dn_bak=specNode.dn;
-										specNode.reminderText_bak=specNode.reminderText;
-										specNode.modList_bak={};
-										  
-										specNode.mods_bak=table.shallow_copy(specNode.mods);
-										
-										for i = 1, #specNode.mods do
-											 
-											specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-										end								
-										
-										specNode.dn="与亡共舞";
-										specNode.sd={"无法使用头部装备","暴击率特别幸运","暴击伤害特别幸运","敌人对你造成的暴击伤害特别幸运"};
-										specNode.reminderText={"(重复判断2次数值, 取其中好的结果生效）"};
-										specNode.isTimeless=1;									 
-										newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
-										newmod1.isDIY=1;	
-										specNode.keystoneMod=newmod1;			
-										specNode.hide=nil;						
-										
-										list1={}
-										 
-										newmodList1={}
-										newmodList2={}	
-										newmodList3={}
-										newmodList4={}											
-										t_insert( list1,modLib.createMod("CritChanceLucky", "FLAG", true,"Tree"..specNode.id))										 
-										newmodList1["list"] =  nil
-										newmodList2["list"] =  list1
-										newmodList3["list"] =  nil
-										newmodList4["list"] =  nil
-										specNode.mods={newmodList1,newmodList2,newmodList3,newmodList4}
-									end 
-								
-								elseif npcName =='纳西玛' or npcName =='娜斯玛' then 
-									if not self:hasDiyModItem(specNode.keystoneMod) then 
-										specNode.sd_bak=table.shallow_copy(specNode.sd);
-										specNode.dn_bak=specNode.dn;
-										specNode.reminderText_bak=specNode.reminderText;
-										specNode.modList_bak={};
-										  
-										specNode.mods_bak=table.shallow_copy(specNode.mods);
-										
-										for i = 1, #specNode.mods do
-											 
-											specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-										end								
-										
-										specNode.dn="先见之明";
-										specNode.sd={"你瞎了","目盲不影响你的照亮范围","目盲时总近战暴击率额外提高 25%"};
-										specNode.reminderText={"( 你被致盲 )","( 被致盲时命中率减半 )"};
-										specNode.isTimeless=1;									 
-										newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
-										newmod1.isDIY=1;	
-										specNode.keystoneMod=newmod1;			
-										specNode.hide=nil;	
-										list1={}
-										list2={}
-										list3={}
-										newmodList1={}
-										newmodList2={}	
-										newmodList3={}									 								
-										t_insert(list1,modLib.createMod("Condition:Blinded", "FLAG", true,"Tree"..specNode.id))
-										t_insert( list2, nil)
-									 	t_insert( list3,modLib.createMod("CritChance", "MORE", 25,"Tree"..specNode.id, ModFlag.Melee,{ type = "Condition", var = "Blinded" }))
-										
-										
-										
-										newmodList1["list"] =  list1
-										newmodList2["list"] =  list2
-										newmodList3["list"] =  list3
-										specNode.mods={newmodList1,newmodList2,newmodList3,newmodList4}
-									end 
-								end
-							end --end of specNode.type == "Normal"
-							
-						 end
-					elseif string.find(jewName, '好战的信仰') then 
-						 for effectNodeId in pairs(node.nodesInRadius[3]) do
-							local specNode = build.spec.nodes[effectNodeId];
-							if specNode and specNode.type == "Normal" then
-							-- diy词缀：奉献
-								if not self:hasDiyMod(specNode.modList) then 
-									
-									specNode.sd_bak=table.shallow_copy(specNode.sd);
-									specNode.dn_bak=specNode.dn;
-									specNode.reminderText_bak=specNode.reminderText;
-									 specNode.modList_bak={};
-									specNode.modList.Object_bak=table.shallow_copy(specNode.modList.Object);
-									specNode.modList.ModStore_bak=table.shallow_copy(specNode.modList.ModStore);
-									for i = 1, #specNode.modList do
-										specNode.modList_bak[i]=table.shallow_copy(specNode.modList[i]									)
-									end
-									
-									specNode.mods_bak=table.shallow_copy(specNode.mods);
-									
-									for i = 1, #specNode.mods do
-										 
-										specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-																		 
-									end	
+					break
+				end
+				endI = endI + 1
+			end
+		end
+		if not parsedMod then
+			-- Parser had no idea how to read this modifier
+			addition.unknown = true
+		elseif unrecognizedMod then
+			-- Parser recognised this as a modifier but couldn't understand all of it
+			addition.extra = true
+		else
+			for _, mod in ipairs(parsedMod) do
+				addition.modKey = addition.modKey.."["..modLib.formatMod(mod).."]"
+			end
+		end
+		addition.mods[i] = { list = parsedMod, extra = unrecognizedMod }
+		i = i + 1
+		while addition.mods[i] do
+			-- Skip any lines with dummy lists added by the line combining code
+			i = i + 1
+		end
+	end
 
-									local addNum=5;
-									
-									if specNode.dn=='智慧' or specNode.dn=='敏捷' or specNode.dn=='力量' then		 
-									 
-										addNum=10;
-									else									 
-										 
-										addNum=5;
-									end	
-									
-									
-									specNode.dn="奉献";
-									specNode.sd={"+"..addNum.." 奉献"};
-									specNode.reminderText={"(范围内的天赋被圣堂抑制)"};
-									specNode.isTimeless=1;
-									specNode.modList = new("ModList")
-									newmod = modLib.createMod("Devotion", "BASE", addNum,"Tree:"..specNode.id);
-									newmod.isDIY=1;
-									specNode.modList[#specNode.modList+1]=newmod;								
-									
-									list={}
-									newmodList={}
-									--list.isTimeless=1
-									t_insert( list,newmod)
-									newmodList["list"] =  list
-									specNode.mods={newmodList}
-									
-									
-								end 
-								
-							elseif specNode and specNode.type == "Notable" then
-								if not self:hasDiyMod(specNode.modList) then 
-									specNode.sd_bak=table.shallow_copy(specNode.sd);
-										specNode.dn_bak=specNode.dn;
-										specNode.reminderText_bak=specNode.reminderText;
-										 specNode.modList_bak={};
-										specNode.modList.Object_bak=table.shallow_copy(specNode.modList.Object);
-										specNode.modList.ModStore_bak=table.shallow_copy(specNode.modList.ModStore);
-										for i = 1, #specNode.modList do
-											specNode.modList_bak[i]=table.shallow_copy(specNode.modList[i]									)
-										end									
-										specNode.mods_bak=table.shallow_copy(specNode.mods);								
-										for i = 1, #specNode.mods do
-											 
-											specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-										end
-										 
-										specNode.sd={};
-										specNode.reminderText={"范围内的天赋被圣堂抑制","(总奉献值达到150的时候，该天赋有可能会被替换成一条随机词缀或新增一条 +5 奉献，未支持)","(总奉献值小于150的时候，该天赋新增一条 +5 奉献，未支持)"};
-										specNode.isTimeless=1;
-										specNode.modList = new("ModList")
-										newmod = modLib.createMod("好战的信仰", "BASE", 0);
-										newmod.isDIY=1;
-										specNode.modList[#specNode.modList+1]=newmod;
-										list={}
-										newmodList={}
-									--	list.isTimeless=1
-										t_insert( list,newmod)
-										newmodList["list"] =  list
-										specNode.mods={newmodList}
-										 
-								end
-							elseif specNode and specNode.type == "Keystone" then
-								--重点核心
-								
-								if npcName =='神主' or npcName =='多米纳斯' then 
-									if not self:hasDiyModItem(specNode.keystoneMod) then 
-										specNode.sd_bak=table.shallow_copy(specNode.sd);
-										specNode.dn_bak=specNode.dn;
-										specNode.reminderText_bak=specNode.reminderText;
-										specNode.modList_bak={};
-										  
-										specNode.mods_bak=table.shallow_copy(specNode.mods);
-										
-										for i = 1, #specNode.mods do
-											 
-											specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-										end								
-										
-										specNode.dn="内在信念";
-										specNode.sd={"每个暴击球使法术总伤害额外提高 3%","获得暴击球来替代狂怒球"};
-										specNode.reminderText={"（每个暴击球使法术总伤害额外提高 3%。获得暴击球来替代狂怒球）"};
-										specNode.isTimeless=1;									 
-										newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
-										newmod1.isDIY=1;	
-										specNode.keystoneMod=newmod1;			
-										specNode.hide=nil;						
-										
-										list1={}
-										list2={}
-										newmodList1={}
-										newmodList2={}										 
-										t_insert( list1,modLib.createMod("Damage", "MORE", 3,"Tree"..specNode.id, ModFlag.Spell,{ type = "Multiplier", var = "PowerCharge" }))										 
-										newmodList1["list"] =  list1
-										newmodList2["list"] =  nil
-										specNode.mods={newmodList1,newmodList2}
-									end 
-								elseif npcName =='威纳留斯' or npcName =='维纳留斯' then
-								--旧版
-									if not self:hasDiyModItem(specNode.keystoneMod) then 
-											specNode.sd_bak=table.shallow_copy(specNode.sd);
-											specNode.dn_bak=specNode.dn;
-											specNode.reminderText_bak=specNode.reminderText;
-											specNode.modList_bak={};
-											  
-											specNode.mods_bak=table.shallow_copy(specNode.mods);
-											
-											for i = 1, #specNode.mods do
-												 
-												specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-											end								
-											
-											specNode.dn="惘信者";
-											specNode.sd={"最大能量护盾为 0","非满血状态时，每秒献祭 20% 魔力来回复同等数值的生命"};
-											specNode.reminderText=nil;
-											specNode.isTimeless=1;									 
-											newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
-											newmod1.isDIY=1;	
-											specNode.keystoneMod=newmod1;			
-											specNode.hide=nil;						
-											
-											list1={}
-											list2={}
-											newmodList1={}
-											newmodList2={}										 
-											t_insert( list1,modLib.createMod("EnergyShield", "OVERRIDE", 0, "Tree"..specNode.id))										 
-											newmodList1["list"] =  list1
-											newmodList2["list"] =  nil
-											specNode.mods={newmodList1,newmodList2}
-										end 
-									
-								elseif npcName =='玛萨留斯'  then 
-									if not self:hasDiyModItem(specNode.keystoneMod) then 
-										specNode.sd_bak=table.shallow_copy(specNode.sd);
-										specNode.dn_bak=specNode.dn;
-										specNode.reminderText_bak=specNode.reminderText;
-										specNode.modList_bak={};
-										  
-										specNode.mods_bak=table.shallow_copy(specNode.mods);
-										
-										for i = 1, #specNode.mods do
-											 
-											specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-										end								
-										
-										specNode.dn="超然飞升";
-										specNode.sd={"-5% 最大元素抗性","被击中时，护甲值不对物理伤害生效，改为对火焰、冰霜、闪电伤害生效"};
-										specNode.reminderText=nil;
-										specNode.isTimeless=1;									 
-										newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
-										newmod1.isDIY=1;	
-										specNode.keystoneMod=newmod1;			
-										specNode.hide=nil;						
-										
-										list1={}
-										list2={}
-										newmodList1={}
-										newmodList2={}	
-								
-										t_insert( list1,modLib.createMod("FireResistMax", "BASE", -5, "Tree"..specNode.id))
-										t_insert( list1,modLib.createMod("ColdResistMax", "BASE", -5, "Tree"..specNode.id))		
-										t_insert( list1,modLib.createMod("LightningResistMax", "BASE", -5, "Tree"..specNode.id))	
-t_insert( list2,modLib.createMod("ArmourAppliesToFireDamageTaken", "FLAG", true,"Tree"..specNode.id))	
-t_insert( list2,modLib.createMod("ArmourAppliesToColdDamageTaken", "FLAG", true,"Tree"..specNode.id))	
-t_insert( list2,modLib.createMod("ArmourAppliesToLightningDamageTaken", "FLAG", true,"Tree"..specNode.id))	
-t_insert( list2,modLib.createMod("ArmourDoesNotApplyToPhysicalDamageTaken", "FLAG", true,"Tree"..specNode.id))	
-											
-										newmodList1["list"] =  list1
-										newmodList2["list"] =  list2
-										specNode.mods={newmodList1,newmodList2}
-									end 
-									
-								elseif npcName =='阿瓦留斯' then 
-									
-									if not self:hasDiyModItem(specNode.keystoneMod) then 
-										specNode.sd_bak=table.shallow_copy(specNode.sd);
-										specNode.dn_bak=specNode.dn;
-										specNode.reminderText_bak=specNode.reminderText;
-										specNode.modList_bak={};
-										  
-										specNode.mods_bak=table.shallow_copy(specNode.mods);
-										
-										for i = 1, #specNode.mods do
-											 
-											specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-										end								
-										
-										specNode.dn="决心之力";
-										specNode.sd={"最大魔力的 80% 转化为双倍的护甲"};
-										specNode.reminderText=nil;
-										specNode.isTimeless=1;									 
-										newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
-										newmod1.isDIY=1;	
-										specNode.keystoneMod=newmod1;			
-										specNode.hide=nil;						
-										
-										list1={}										
-										newmodList1={}																	 
-										t_insert( list1,modLib.createMod("ManaConvertToDoubleArmour", "BASE", 80, "Tree"..specNode.id))										 
-										newmodList1["list"] =  list1										 
-										specNode.mods={newmodList1}
-									end 
-								
-								end 
-							
-								
-								
-							
-							end --end of specNode.type == "Normal"
-							
-						 end--end of  for
-					
-					
-					elseif string.find(jewName, '致命的骄傲') then 
-					
-						for effectNodeId in pairs(node.nodesInRadius[3]) do
-								local specNode = build.spec.nodes[effectNodeId];
-								if specNode and specNode.type == "Normal" then
-								-- diy词缀：力量
-									if not self:hasDiyMod(specNode.modList) then 
-										
-									 specNode.sd_bak=table.shallow_copy(specNode.sd);
-									specNode.dn_bak=specNode.dn;
-									specNode.reminderText_bak=specNode.reminderText;
-									 specNode.modList_bak={};
-									 
-									local addNum=2;
-									
-									 if specNode.dn=='智慧' or specNode.dn=='敏捷' or specNode.dn=='力量' then		 
-									 
-										addNum=2;
-									else									 
-										 
-										addNum=4;
-									end									
-									specNode.dn="卡鲁";	
-									specNode.reminderText={"范围内的天赋被卡鲁抑制","(该天赋会多一条【+"..addNum.." 力量】词缀，未支持)"};
-									 
-									end 
-								elseif specNode and specNode.type == "Notable" then
-								if not self:hasDiyMod(specNode.modList) then 
-									specNode.sd_bak=table.shallow_copy(specNode.sd);
-									specNode.dn_bak=specNode.dn;
-									specNode.reminderText_bak=specNode.reminderText;
-									 specNode.modList_bak={};
-									specNode.dn="卡鲁";
-									specNode.reminderText={"范围内的天赋被卡鲁抑制","(该天赋会额外多一条随机词缀，未支持)"};
-								end
-								
-								elseif specNode and specNode.type == "Keystone" then
-									--重点核心
-									
-									if npcName =='冈姆' then 
-											if not self:hasDiyModItem(specNode.keystoneMod) then 
-												specNode.sd_bak=table.shallow_copy(specNode.sd);
-												specNode.dn_bak=specNode.dn;
-												specNode.reminderText_bak=specNode.reminderText;
-												specNode.modList_bak={};
-												  
-												specNode.mods_bak=table.shallow_copy(specNode.mods);
-												
-												for i = 1, #specNode.mods do
-													 
-													specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-												end								
-												
-												specNode.dn="鲜血之力";
-												specNode.sd={"无法使用生命偷取的恢复效果","生命偷取的每秒恢复效果每 2% 使受到的总伤害额外降低 1%"};
-												specNode.reminderText=nil;
-												specNode.isTimeless=1;									 
-												newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
-												newmod1.isDIY=1;	
-												specNode.keystoneMod=newmod1;			
-												specNode.hide=nil;						
-												
-												list1={}
-												list2={}
-												newmodList1={}
-												newmodList2={}										 
-												t_insert( list1,modLib.createMod("LifeLeechRate", "MORE", -100, "Tree"..specNode.id));
-												
-												t_insert( list2,modLib.createMod("DamageTaken", "MORE", -1, "Tree"..specNode.id,{ type = "PerStat", stat = "MaxLifeLeechRatePercentage", div = 2 },{ type = "Condition", var = "LeechingLife" } ));									 
-												newmodList1["list"] =  list1
-												newmodList2["list"] =  list2
-												specNode.mods={newmodList1,newmodList2}
-											end 	
-											
-									elseif npcName =='拉其塔' or npcName =='拉凯尔塔' then 
-										 if not self:hasDiyModItem(specNode.keystoneMod) then 
-												specNode.sd_bak=table.shallow_copy(specNode.sd);
-												specNode.dn_bak=specNode.dn;
-												specNode.reminderText_bak=specNode.reminderText;
-												specNode.modList_bak={};
-												  
-												specNode.mods_bak=table.shallow_copy(specNode.mods);
-												
-												for i = 1, #specNode.mods do
-													 
-													specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-												end								
-												
-												specNode.dn="战争锤炼";
-												specNode.sd={"受到的冰霜和闪电伤害有 50% 视为火焰伤害","总冰霜抗性额外降低 50%","总闪电抗性额外降低 50%"};
-												specNode.reminderText=nil;
-												specNode.isTimeless=1;									 
-												newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
-												newmod1.isDIY=1;	
-												specNode.keystoneMod=newmod1;			
-												specNode.hide=nil;						
-												
-												list1={}
-												list2={}
-												list3={}
-												newmodList1={}
-												newmodList2={}	
-												newmodList3={}												
-												t_insert( list1,modLib.createMod("ColdDamageTakenAsFire", "BASE", 50, "Tree"..specNode.id))
-												t_insert( list1,modLib.createMod("LightningDamageTakenAsFire", "BASE", 50, "Tree"..specNode.id))					 
-												t_insert( list2,modLib.createMod("ColdResist", "MORE", -50, "Tree"..specNode.id))	
-												t_insert( list3,modLib.createMod("LightningResist", "MORE", -50, "Tree"..specNode.id))													
-												newmodList1["list"] =  list1
-												newmodList2["list"] =  list2
-												newmodList3["list"] =  list3
-												specNode.mods={newmodList1,newmodList2,newmodList3}
-											end 	
-										
-									elseif npcName =='基洛瓦'  or  npcName =='克洛瓦' then
-									--遗产
-										if not self:hasDiyModItem(specNode.keystoneMod) then 
-												specNode.sd_bak=table.shallow_copy(specNode.sd);
-												specNode.dn_bak=specNode.dn;
-												specNode.reminderText_bak=specNode.reminderText;
-												specNode.modList_bak={};
-												  
-												specNode.mods_bak=table.shallow_copy(specNode.mods);
-												
-												for i = 1, #specNode.mods do
-													 
-													specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-												end								
-												
-												specNode.dn="斗转星移";
-												specNode.sd={"攻击格挡率翻倍","法术格挡率翻倍","被格挡的击中对你造成 50% 伤害"};
-												specNode.reminderText=nil;
-												specNode.isTimeless=1;									 
-												newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
-												newmod1.isDIY=1;	
-												specNode.keystoneMod=newmod1;			
-												specNode.hide=nil;						
-												
-												list1={}
-												list2={}
-												list3={}
-												newmodList1={}
-												newmodList2={}	
-												newmodList3={}												
-										 
-												t_insert( list1,modLib.createMod("BlockChance", "MORE", 100, "Tree"..specNode.id))					 
-												t_insert( list2,modLib.createMod("SpellBlockChance", "MORE", 100, "Tree"..specNode.id))	
-												t_insert( list3,modLib.createMod("BlockEffect", "BASE", 50, "Tree"..specNode.id))	
-											
-
-
-											--t_insert( list3,modLib.createMod("LightningResist", "MORE", -50, "Tree"..specNode.id))													
-												newmodList1["list"] =  list1
-												newmodList2["list"] =  list2
-												newmodList3["list"] =  list3
-												specNode.mods={newmodList1,newmodList2,newmodList3}
-											end 	
-									
-									elseif  npcName =='阿克雅'  then 
-										if not self:hasDiyModItem(specNode.keystoneMod) then 
-												specNode.sd_bak=table.shallow_copy(specNode.sd);
-												specNode.dn_bak=specNode.dn;
-												specNode.reminderText_bak=specNode.reminderText;
-												specNode.modList_bak={};
-												  
-												specNode.mods_bak=table.shallow_copy(specNode.mods);
-												
-												for i = 1, #specNode.mods do
-													 
-													specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-												end								
-												
-												specNode.dn="破枷除锁";
-												specNode.sd={"每秒回复 3 点怒火","魔力回复速度的加快和减慢效果也作用与怒火回复速度","你击中敌人时失去 5 点怒火，每 0.3 秒只发生一次"};
-												specNode.reminderText=nil;
-												specNode.isTimeless=1;									 
-												newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
-												newmod1.isDIY=1;	
-												specNode.keystoneMod=newmod1;			
-												specNode.hide=nil;						
-												
-												list1={}
-												list2={}
-												list3={}
-												newmodList1={}
-												newmodList2={}	
-												newmodList3={}												
-										 
-												t_insert( list1,modLib.createMod("Condition:CanGainRage", "FLAG", true,"Tree"..specNode.id))			
-												t_insert( list1,modLib.createMod("Dummy", "DUMMY", 1, "Tree"..specNode.id))					 
-												t_insert( list1,modLib.createMod("RageRegen", "BASE", 3, "Tree"..specNode.id))	
-
-												t_insert( list2,modLib.createMod("ManaRegenToRageRegen", "FLAG", true, "Tree"..specNode.id))																
-														
-												
-												newmodList1["list"] =  list1
-												newmodList2["list"] =  list2
-												newmodList3["list"] =  nil
-												specNode.mods={newmodList1,newmodList2,newmodList3}
-											end 
-										 
-									
-									end 
-								
-									
-									
-								
-								end --end of specNode.type == "Normal"
-								
-						end--end of  for
-					
-					elseif string.find(jewName, '优雅的狂妄') then 
-						for effectNodeId in pairs(node.nodesInRadius[3]) do
-								local specNode = build.spec.nodes[effectNodeId];
-								if specNode and specNode.type == "Normal" then
-								-- 
-									if not self:hasDiyMod(specNode.modList) then 
-								
-									
-										specNode.sd_bak=table.shallow_copy(specNode.sd);
-										specNode.dn_bak=specNode.dn;
-										specNode.reminderText_bak=specNode.reminderText;
-										 specNode.modList_bak={};
-										specNode.modList.Object_bak=table.shallow_copy(specNode.modList.Object);
-										specNode.modList.ModStore_bak=table.shallow_copy(specNode.modList.ModStore);
-										for i = 1, #specNode.modList do
-											specNode.modList_bak[i]=table.shallow_copy(specNode.modList[i]									)
-										end									
-										specNode.mods_bak=table.shallow_copy(specNode.mods);								
-										for i = 1, #specNode.mods do
-											 
-											specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-										end
-										specNode.dn="荣耀的代价";
-										specNode.sd={};
-										specNode.reminderText={"(范围内的天赋被永恒帝国抑制)"};
-										specNode.isTimeless=1;
-										specNode.modList = new("ModList")
-										newmod = modLib.createMod("荣耀的代价", "BASE", 0);
-										newmod.isDIY=1;
-										specNode.modList[#specNode.modList+1]=newmod;
-										list={}
-										newmodList={}
-									--	list.isTimeless=1
-										t_insert( list,newmod)
-										newmodList["list"] =  list
-										specNode.mods={newmodList}
-										 
-									end 
-								elseif specNode and specNode.type == "Notable" then
-								if not self:hasDiyMod(specNode.modList) then 
-									specNode.sd_bak=table.shallow_copy(specNode.sd);
-										specNode.dn_bak=specNode.dn;
-										specNode.reminderText_bak=specNode.reminderText;
-										 specNode.modList_bak={};
-										specNode.modList.Object_bak=table.shallow_copy(specNode.modList.Object);
-										specNode.modList.ModStore_bak=table.shallow_copy(specNode.modList.ModStore);
-										for i = 1, #specNode.modList do
-											specNode.modList_bak[i]=table.shallow_copy(specNode.modList[i]									)
-										end									
-										specNode.mods_bak=table.shallow_copy(specNode.mods);								
-										for i = 1, #specNode.mods do
-											 
-											specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-										end
-										 
-										specNode.sd={};
-										specNode.reminderText={"范围内的天赋被永恒帝国抑制","(该天赋会被替换成一条随机词缀，未支持)"};
-										specNode.isTimeless=1;
-										specNode.modList = new("ModList")
-										newmod = modLib.createMod("优雅的狂妄", "BASE", 0);
-										newmod.isDIY=1;
-										specNode.modList[#specNode.modList+1]=newmod;
-										list={}
-										newmodList={}
-									--	list.isTimeless=1
-										t_insert( list,newmod)
-										newmodList["list"] =  list
-										specNode.mods={newmodList}
-										 
-								end
-								elseif specNode and specNode.type == "Keystone" then
-									--重点核心
-									
-									if npcName =='卡迪罗' then 
-											if not self:hasDiyModItem(specNode.keystoneMod) then 
-												specNode.sd_bak=table.shallow_copy(specNode.sd);
-												specNode.dn_bak=specNode.dn;
-												specNode.reminderText_bak=specNode.reminderText;
-												specNode.modList_bak={};
-												  
-												specNode.mods_bak=table.shallow_copy(specNode.mods);
-												
-												for i = 1, #specNode.mods do
-													 
-													specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-												end								
-												
-												specNode.dn="无上衰败";
-												specNode.sd={"从药剂获得的生命回复同样作用于能量护盾","从药剂获得的生命回复额外降低 30%"};
-												specNode.reminderText={"(生命药剂的效果维持到生命全满)"};
-												specNode.isTimeless=1;									 
-												newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
-												newmod1.isDIY=1;	
-												specNode.keystoneMod=newmod1;			
-												specNode.hide=nil;						
-												
-												list1={}
-												list2={}
-												newmodList1={}
-												newmodList2={}										 
-												t_insert( list2,modLib.createMod("FlaskLifeRecovery", "MORE", -30, "Tree"..specNode.id))										 
-												newmodList1["list"] =  nil
-												newmodList2["list"] =  nil
-												specNode.mods={newmodList1,newmodList2}
-											end 	
-									elseif npcName =='维多里奥'  then 
-										 if not self:hasDiyModItem(specNode.keystoneMod) then 
-												specNode.sd_bak=table.shallow_copy(specNode.sd);
-												specNode.dn_bak=specNode.dn;
-												specNode.reminderText_bak=specNode.reminderText;
-												specNode.modList_bak={};
-												  
-												specNode.mods_bak=table.shallow_copy(specNode.mods);
-												
-												for i = 1, #specNode.mods do
-													 
-													specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-												end								
-												
-												specNode.dn="无上之秀";
-												specNode.sd={"周围的友军和敌人跟你共享能量球","击中你的敌人有 10% 的几率获得一个耐力球，狂怒球或暴击球"};
-												specNode.reminderText=nil;
-												specNode.isTimeless=1;									 
-												newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
-												newmod1.isDIY=1;	
-												specNode.keystoneMod=newmod1;			
-												specNode.hide=nil;						
-												
-												list1={}
-												list2={}
-												newmodList1={}
-												newmodList2={}										 
-												t_insert( list1,newmod1)										 
-												newmodList1["list"] =  nil
-												newmodList2["list"] =  nil
-												specNode.mods={newmodList1,newmodList2}
-											end 
-									elseif npcName =='切特斯'   then 
-										 --遗产
-										 if not self:hasDiyModItem(specNode.keystoneMod) then 
-												specNode.sd_bak=table.shallow_copy(specNode.sd);
-												specNode.dn_bak=specNode.dn;
-												specNode.reminderText_bak=specNode.reminderText;
-												specNode.modList_bak={};
-												  
-												specNode.mods_bak=table.shallow_copy(specNode.mods);
-												
-												for i = 1, #specNode.mods do
-													 
-													specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-												end								
-												
-												specNode.dn="无上自我";
-												specNode.sd={"你只能从技能中得到一种非旗帜光环。","光环技能不能影响友军","你的光环技能对自身造成的总效果额外提高 50%","总魔力保留额外提高 50%"};
-												specNode.reminderText=nil;
-												specNode.isTimeless=1;									 
-												newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
-												newmod1.isDIY=1;	
-												specNode.keystoneMod=newmod1;			
-												specNode.hide=nil;						
-												
-												list1={}
-												list2={}
-												list3={}
-												list4={}
-												newmodList1={}
-												newmodList2={}	
-												newmodList3={}
-												newmodList4={}		
-t_insert( list2,modLib.createMod("SelfAurasCannotAffectAllies", "FLAG", true, "Tree"..specNode.id))
-t_insert( list3,modLib.createMod("AuraEffectOnSelf", "MORE", 50, "Tree"..specNode.id))
-t_insert( list4,modLib.createMod("ManaReserved", "MORE", 50, "Tree"..specNode.id))													
-												--t_insert( list1,newmod1)										 
-												newmodList1["list"] =  nil
-												newmodList2["list"] =  list2
-												newmodList3["list"] =  list3
-												newmodList4["list"] =  list4
-												specNode.mods={newmodList1,newmodList2,newmodList3,newmodList4}
-											end 
-									elseif npcName =='卡斯皮罗'   then  
-										 
-										  if not self:hasDiyModItem(specNode.keystoneMod) then 
-												specNode.sd_bak=table.shallow_copy(specNode.sd);
-												specNode.dn_bak=specNode.dn;
-												specNode.reminderText_bak=specNode.reminderText;
-												specNode.modList_bak={};
-												  
-												specNode.mods_bak=table.shallow_copy(specNode.mods);
-												
-												for i = 1, #specNode.mods do
-													 
-													specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-												end								
-												
-												specNode.dn="无上宣示";
-												specNode.sd={"无视属性需求","无法获得属性加成"};
-												specNode.reminderText=nil;
-												specNode.isTimeless=1;									 
-												newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
-												newmod1.isDIY=1;	
-												specNode.keystoneMod=newmod1;			
-												specNode.hide=nil;			
-												
-												list1={}
-												list2={}												
-												newmodList1={}
-												newmodList2={}													
-t_insert( list1,modLib.createMod("GlobalNoAttributeRequirements", "FLAG", true, "Tree"..specNode.id))
-t_insert( list2,modLib.createMod("NoAttributeBonus", "FLAG", true, "Tree"..specNode.id))											
-												--t_insert( list1,newmod1)										 
-												newmodList1["list"] =  list1
-												newmodList2["list"] =  list2											
-												specNode.mods={newmodList1,newmodList2}
-											end 
-									
-									end 
-								
-									
-									
-								
-								end --end of specNode.type == "Normal"
-								
-						end--end of  for
-					elseif string.find(jewName, '光彩夺目') then 
-						for effectNodeId in pairs(node.nodesInRadius[3]) do
-								local specNode = build.spec.nodes[effectNodeId];
-								if specNode and specNode.type == "Normal" then
-								-- 
-									if not self:hasDiyMod(specNode.modList) then 
-								
-								
-										specNode.sd_bak=table.shallow_copy(specNode.sd);
-										specNode.dn_bak=specNode.dn;
-										specNode.reminderText_bak=specNode.reminderText;
-										 specNode.modList_bak={};
-										specNode.modList.Object_bak=table.shallow_copy(specNode.modList.Object);
-										specNode.modList.ModStore_bak=table.shallow_copy(specNode.modList.ModStore);
-										for i = 1, #specNode.modList do
-											specNode.modList_bak[i]=table.shallow_copy(specNode.modList[i]									)
-										end									
-										specNode.mods_bak=table.shallow_copy(specNode.mods);								
-										for i = 1, #specNode.mods do
-											 
-											specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-										end
-										
-										
-										specNode.dn="瓦尔";
-										specNode.reminderText={"(天赋小点会被替换成瓦尔词缀-【未支持】)"};
-										  
-										specNode.sd={"天赋小点会被替换成瓦尔词缀"};
-										specNode.isTimeless=1;
-										specNode.modList = new("ModList")
-										newmod = modLib.createMod("光彩夺目", "BASE", 0);
-										newmod.isDIY=1;
-										specNode.modList[#specNode.modList+1]=newmod;
-										list={}
-										newmodList={}
-									--	list.isTimeless=1
-										t_insert( list,newmod)
-										newmodList["list"] =  nil
-										specNode.mods={newmodList}
-										 
-										 
-										 
-									end 
-								elseif specNode and specNode.type == "Notable" then
-								if not self:hasDiyMod(specNode.modList) then 
-									specNode.sd_bak=table.shallow_copy(specNode.sd);
-									specNode.dn_bak=specNode.dn;
-									specNode.reminderText_bak=specNode.reminderText;
-									 specNode.modList_bak={};
-									 
-									specNode.reminderText={"范围内的天赋被瓦尔抑制","(该天赋会额外多一条随机词缀，未支持)"};
-								end	
-								elseif specNode and specNode.type == "Keystone" then
-									--重点核心
-									
-									if npcName =='赛巴昆' or  npcName=='夏巴夸亚' then 
-											if not self:hasDiyModItem(specNode.keystoneMod) then 
-												specNode.sd_bak=table.shallow_copy(specNode.sd);
-												specNode.dn_bak=specNode.dn;
-												specNode.reminderText_bak=specNode.reminderText;
-												specNode.modList_bak={};
-												  
-												specNode.mods_bak=table.shallow_copy(specNode.mods);
-												
-												for i = 1, #specNode.mods do
-													 
-													specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-												end								
-												
-												specNode.dn="神圣血肉";
-												specNode.sd={"受到的所有伤害穿透护盾","受到的元素伤害有 50% 视为混沌伤害","+10% 混沌抗性上限"};
-												specNode.reminderText={"（最大抗性不能超过 90%）"};
-												specNode.isTimeless=1;									 
-												newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
-												newmod1.isDIY=1;	
-												specNode.keystoneMod=newmod1;			
-												specNode.hide=nil;						
-												
-												list1={}
-												list2={}
-												list3={}
-												newmodList1={}
-												newmodList2={}	
-												newmodList3={}		
-
-t_insert( list1,modLib.createMod("PhysicalEnergyShieldBypass", "BASE", 100, "Tree"..specNode.id))
-t_insert( list1,modLib.createMod("LightningEnergyShieldBypass", "BASE", 100, "Tree"..specNode.id))
-t_insert( list1,modLib.createMod("ColdEnergyShieldBypass", "BASE", 100, "Tree"..specNode.id))
-t_insert( list1,modLib.createMod("FireEnergyShieldBypass", "BASE", 100, "Tree"..specNode.id))
-
-
-												
-												t_insert( list2,modLib.createMod("ColdDamageTakenAsChaos", "BASE", 50, "Tree"..specNode.id))
-t_insert( list2,modLib.createMod("LightningDamageTakenAsChaos", "BASE", 50, "Tree"..specNode.id))
-t_insert( list2,modLib.createMod("FireDamageTakenAsChaos", "BASE", 50, "Tree"..specNode.id))
-t_insert( list3,modLib.createMod("ChaosResistMax", "BASE", 10, "Tree"..specNode.id))										
-											
-												newmodList1["list"] =  list1
-												newmodList2["list"] =  list2
-												newmodList3["list"] =  list3
-												specNode.mods={newmodList1,newmodList2,newmodList3}
-											end 	
-									elseif npcName =='泽佛伊'  then 
-									--遗产
-										if not self:hasDiyModItem(specNode.keystoneMod) then 
-												specNode.sd_bak=table.shallow_copy(specNode.sd);
-												specNode.dn_bak=specNode.dn;
-												specNode.reminderText_bak=specNode.reminderText;
-												specNode.modList_bak={};
-												  
-												specNode.mods_bak=table.shallow_copy(specNode.mods);
-												
-												for i = 1, #specNode.mods do
-													 
-													specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-												end								
-												
-												specNode.dn="青春永驻";
-												specNode.sd={"生命回复额外降低 50%","从生命偷取中获得的每秒最大总恢复量降低 50%","能量护盾回复改为恢复生命"};
-												specNode.reminderText=nil;
-												specNode.isTimeless=1;									 
-												newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
-												newmod1.isDIY=1;	
-												specNode.keystoneMod=newmod1;			
-												specNode.hide=nil;						
-												
-												list1={}
-												list2={}
-												list3={}
-												newmodList1={}
-												newmodList2={}	
-												newmodList3={}	
-
-t_insert( list1,modLib.createMod("LifeRecoveryRate", "MORE", -50, "Tree"..specNode.id))
-t_insert( list2,modLib.createMod("MaxLifeLeechRate", "MORE", -50, "Tree"..specNode.id))
- 
-											 									 
-												newmodList1["list"] =  list1
-												newmodList2["list"] =  list2
-												newmodList3["list"] =  nil
-												specNode.mods={newmodList1,newmodList2,newmodList3}
-											end 
-									elseif npcName =='阿华纳'  then 
-									
-										 if not self:hasDiyModItem(specNode.keystoneMod) then 
-												specNode.sd_bak=table.shallow_copy(specNode.sd);
-												specNode.dn_bak=specNode.dn;
-												specNode.reminderText_bak=specNode.reminderText;
-												specNode.modList_bak={};
-												  
-												specNode.mods_bak=table.shallow_copy(specNode.mods);
-												
-												for i = 1, #specNode.mods do
-													 
-													specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-												end								
-												
-												specNode.dn="不朽野望";
-												specNode.sd={"能量护盾初始为 0","无法回复，也无法补充","能量护盾每秒损失 5%","满血时无法移除生命偷取效果","生命偷取在满血时恢复能量护盾"};
-												specNode.reminderText=nil;
-												specNode.isTimeless=1; 
-												newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
-												newmod1.isDIY=1;	
-												specNode.keystoneMod=newmod1;			
-												specNode.hide=nil;	
-												list1={}
-												list2={}
-												list3={}
-												list4={}
-												newmodList1={}
-												newmodList2={}	
-												newmodList3={}	
-												newmodList4={}	
-											--	t_insert( list2,modLib.createMod("LifeGainAsEnergyShield", "BASE", 20, "Tree"..specNode.id))
- 									 
-												newmodList1["list"] =  nil
-												newmodList2["list"] =  nil	
-												newmodList3["list"] =  nil
-												newmodList4["list"] =  nil												
-												specNode.mods={newmodList1,newmodList2,newmodList3,newmodList4}
-											end 
-									elseif npcName =='多里亚尼'   then 
-										  if not self:hasDiyModItem(specNode.keystoneMod) then 
-												specNode.sd_bak=table.shallow_copy(specNode.sd);
-												specNode.dn_bak=specNode.dn;
-												specNode.reminderText_bak=specNode.reminderText;
-												specNode.modList_bak={};
-												  
-												specNode.mods_bak=table.shallow_copy(specNode.mods);
-												
-												for i = 1, #specNode.mods do
-													 
-													specNode.mods_bak[i]=table.shallow_copy(specNode.mods[i]									)
-												end								
-												
-												specNode.dn="腐化的灵魂";
-												specNode.sd={"受到的非混沌伤害有 50% 穿透能量护盾","获得等同 20% 最大生命的额外最大能量护盾"};
-												specNode.reminderText=nil;
-												specNode.isTimeless=1; 
-												newmod1 = modLib.createMod("Keystone", "LIST", specNode.dn, "Tree"..specNode.id)
-												newmod1.isDIY=1;	
-												specNode.keystoneMod=newmod1;			
-												specNode.hide=nil;	
-												list1={}
-												list2={}
-												newmodList1={}
-												newmodList2={}	
-												t_insert( list2,modLib.createMod("LifeGainAsEnergyShield", "BASE", 20, "Tree"..specNode.id))
- 									 
-									 
-												 t_insert( list1,modLib.createMod("PhysicalEnergyShieldBypass", "BASE", 50, "Tree"..specNode.id))
-												  t_insert( list1,modLib.createMod("LightningEnergyShieldBypass", "BASE", 50, "Tree"..specNode.id))
-												  t_insert( list1,modLib.createMod("ColdEnergyShieldBypass", "BASE", 50, "Tree"..specNode.id))
-												  t_insert( list1,modLib.createMod("FireEnergyShieldBypass", "BASE", 50, "Tree"..specNode.id))
-												 
-												newmodList1["list"] =  list1
-												newmodList2["list"] =  list2			 
-												specNode.mods={newmodList1,newmodList2}
-											end 
-										 
-									
-									end 
-								 
-								end --end of specNode.type == "Normal"
-								
-						end--end of  for
-					
-					end --end of if jewel.name 
-					
-					end --end of if node.nodesInRadius
-					
-				
-			end--end of if jewel 
-		end--end of type == "Socket"
-	end--end of for nodeId, node
+	-- Build unified list of modifiers from all recognised modifier lines
+	for _, mod in pairs(addition.mods) do
+		if mod.list and not mod.extra then
+			for i, mod in ipairs(mod.list) do
+				mod.source = "Tree:"..node.id
+				if type(mod.value) == "table" and mod.value.mod then
+					mod.value.mod.source = mod.source
+				end
+				addition.modList:AddMod(mod)
+			end
+		end
+	end
+	if replacement then
+		node.sd = addition.sd
+		node.mods = addition.mods
+		node.modKey = addition.modKey
+	else
+		node.sd = tableConcat(node.sd, addition.sd)
+		node.mods = tableConcat(node.mods, addition.mods)
+		node.modKey = node.modKey .. addition.modKey
+	end
+	local modList = new("ModList")
+	modList:AddList(addition.modList)
+	if not replacement then
+		modList:AddList(node.modList)
+	end
+	node.modList = modList
 end

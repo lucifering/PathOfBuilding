@@ -184,16 +184,16 @@ weapon_can_roll_minion_modifiers = true,
 	weapon = { PhysicalMin = 30, PhysicalMax = 56, CritChanceBase = 7, AttackRateBase = 1.4, Range = 120, },
 	req = { level = 72, int = 242, },
 }
-itemBases["Assembler Wand"] = {
+itemBases["装配法杖"] = {
 	type = "Wand",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, wand = true, ranged = true, one_hand_weapon = true, not_for_sale = true, },
-	implicit = "每 6 秒获得一个耐力球，狂怒球或暴击球",
+	implicit = "每 6 秒获得一个耐力球、狂怒球或暴击球",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 16, PhysicalMax = 30, CritChanceBase = 7.5, AttackRateBase = 1.4, Range = 120, },
 	req = { level = 30, int = 101, },
 }
-itemBases["Congregator Wand"] = {
+itemBases["集合法杖"] = {
 	type = "Wand",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, wand = true, ranged = true, one_hand_weapon = true, not_for_sale = true, },
@@ -202,7 +202,7 @@ itemBases["Congregator Wand"] = {
 	weapon = { PhysicalMin = 25, PhysicalMax = 46, CritChanceBase = 7.5, AttackRateBase = 1.4, Range = 120, },
 	req = { level = 50, int = 168, },
 }
-itemBases["Accumulator Wand"] = {
+itemBases["蓄能法杖"] = {
 	type = "Wand",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, wand = true, ranged = true, one_hand_weapon = true, not_for_sale = true, },

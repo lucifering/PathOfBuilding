@@ -1265,6 +1265,9 @@ description = "辅助近战攻击技能",
 		["endurance_charge_on_melee_stun_damage_+%_final_per_endurance_charge"] = {
 			mod("Damage", "MORE", nil, 0, 0, { type = "Multiplier", var = "EnduranceCharge" }),
 		},
+		["damage_+%_if_lost_endurance_charge_in_past_8_seconds"] = {
+			mod("Damage", "INC", nil, 0, 0, { type = "Condition", var = "LostEnduranceChargeInPast8Sec" }),
+		}
 	},
 	baseMods = {
 	},
@@ -1459,6 +1462,9 @@ description = "辅助打击技能，使它们在使用时得到强力加持，�
 			mod("FistOfWarCooldown", "BASE", nil),
 			div = 1000,
 		},
+		["ancestral_slam_stun_threshold_reduction_+%"] = {
+			mod("EnemyStunThreshold", "INC", nil, ModFlag.Attack)
+		},
 	},
 	baseMods = {
 	},
@@ -1540,6 +1546,12 @@ description = "辅助并非被触发施放的近战攻击技能",
 		},
 		["support_fortify_ailment_damage_+%_final_from_melee_hits"] = {
 			mod("Damage", "MORE", nil, bit.bor(ModFlag.MeleeHit, ModFlag.Ailment)),
+		},
+		["fortify_effect_+%"] = {
+			mod("FortifyEffectOnSelf", "INC", nil)
+		},
+		["support_fortify_ailment_damage_+%_final_from_melee_hits"] = {
+			mod("EnemyPhysicalDamageReduction", "INC", nil, bit.bor(ModFlag.MeleeHit, ModFlag.Ailment), 0, { type = "Condition", var = "Fortify"}),
 		},
 	},
 	baseMods = {
@@ -2231,6 +2243,11 @@ description = "辅助任意击中敌人的技能, 击中造成的伤害偷取生
 	addSkillTypes = { },
 	excludeSkillTypes = { },
 	statDescriptionScope = "gem_stat_descriptions",
+	statMap = {
+		["maximum_life_leech_amount_per_leech_+%"] = {
+			mod("MaxLifeLeechRate", "INC", nil)
+		}
+	},
 	baseMods = {
 	},
 	qualityStats = {
@@ -2306,6 +2323,9 @@ description = "辅助攻击技能，或者其他可以造成瘫痪的技能",
 		["support_maimed_enemies_physical_damage_taken_+%"] = {
 mod("PhysicalDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "瘫痪" }, { type = "Condition", var = "Maimed" }),
 		},
+		["chance_to_bleed_on_hit_%_vs_maimed"] = {
+			mod("BleedChance", "BASE", nil, 0, 0, { type = "ActorCondition", actor = "enemy", condition = "Maimed"})
+		}
 	},
 	baseMods = {
 	},
@@ -2640,6 +2660,9 @@ description = "辅助近战攻击技能, 使该技能在使用时被自动重复
 		["support_multiple_attacks_melee_attack_speed_+%_final"] = {
 			mod("Speed", "MORE", nil, bit.bor(ModFlag.Attack, ModFlag.Melee)),
 		},
+		["multistrike_area_of_effect_+%_per_repeat"] = {
+			mod("AreaOfEffect", "INC", nil)
+		}
 	},
 	baseMods = {
 		flag("SupportedByMultistrike"),
@@ -2960,6 +2983,9 @@ description = "辅助近战攻击技能。召唤生物无法获得怒火。",
 		["attack_maximum_added_physical_damage_per_10_rage"] = {
 			mod("PhysicalMax", "BASE", nil, bit.bor(ModFlag.Attack, ModFlag.Weapon), 0, { type = "Multiplier", var = "Rage", div = 10 })
 		},
+		["attack_speed_+%_with_atleast_20_rage"] = {
+			mod("Speed", "INC", nil, ModFlag.Attack, 0, { type = "MultiplierThreshold", var = "Rage", threshold = 20 })
+		}
 	},
 	baseMods = {
 	},

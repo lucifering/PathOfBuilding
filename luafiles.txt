@@ -221,3 +221,7 @@ Data/3_0/EnchantmentBelts.lua
 Data/3_0/ModHarvestSeed.lua
 TreeData/JewelSocketActiveLegionAlt.png
 TreeData/JewelSocketActiveLegion.png
+TreeData/legion/skills-additional-3.jpg
+TreeData/legion/skills-additional-disabled-3.jpg
+TreeData/legion/tree-legion.lua
+Data/3_0/LegionPassives.lua

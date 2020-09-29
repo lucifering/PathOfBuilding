@@ -673,7 +673,7 @@ itemBases["精致之刃"] = {
 	req = { level = 70, str = 119, dex = 131, },
 }
 
-itemBases["Fickle Spiritblade"] = {
+itemBases["无常魂刃"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, not_for_sale = true, },
@@ -682,7 +682,7 @@ itemBases["Fickle Spiritblade"] = {
 	weapon = { PhysicalMin = 18, PhysicalMax = 33, CritChanceBase = 6, AttackRateBase = 1.6, Range = 11, },
 	req = { level = 30, str = 54, dex = 54, },
 }
-itemBases["Capricious Spiritblade"] = {
+itemBases["莫测魂刃"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, not_for_sale = true, },
@@ -691,7 +691,7 @@ itemBases["Capricious Spiritblade"] = {
 	weapon = { PhysicalMin = 27, PhysicalMax = 51, CritChanceBase = 6, AttackRateBase = 1.6, Range = 11, },
 	req = { level = 50, str = 94, dex = 94, },
 }
-itemBases["Anarchic Spiritblade"] = {
+itemBases["无序魂刃"] = {
 	type = "One Handed Sword",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, not_for_sale = true, },
@@ -700,29 +700,29 @@ itemBases["Anarchic Spiritblade"] = {
 	weapon = { PhysicalMin = 34, PhysicalMax = 63, CritChanceBase = 6, AttackRateBase = 1.6, Range = 11, },
 	req = { level = 70, str = 121, dex = 121, },
 }
-itemBases["Rebuking Blade"] = {
+itemBases["责难刀"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, not_for_sale = true, },
-	implicit = "攻击造成暴击时无视目标的元素抗性",
+	implicit = "暴击攻击无视敌人的元素抗性",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 34, PhysicalMax = 63, CritChanceBase = 6, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 30, str = 54, dex = 54, },
 }
-itemBases["Blasting Blade"] = {
+itemBases["爆破刀"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, not_for_sale = true, },
-	implicit = "攻击造成暴击时无视目标的元素抗性",
+	implicit = "暴击攻击无视敌人的元素抗性",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 52, PhysicalMax = 97, CritChanceBase = 6, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 50, str = 86, dex = 86, },
 }
-itemBases["Banishing Blade"] = {
+itemBases["放逐刀"] = {
 	type = "Two Handed Sword",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, sword = true, two_hand_weapon = true, not_for_sale = true, },
-	implicit = "攻击造成暴击时无视目标的元素抗性",
+	implicit = "暴击攻击无视敌人的元素抗性",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 61, PhysicalMax = 114, CritChanceBase = 6, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 70, str = 130, dex = 130, },

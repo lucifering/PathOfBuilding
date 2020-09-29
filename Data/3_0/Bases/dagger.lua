@@ -230,56 +230,56 @@ itemBases["战叉"] = {
 	req = { level = 70, dex = 121, int = 121, },
 }
 
-itemBases["Hollowpoint Dagger"] = {
+itemBases["折叠匕首"] = {
 	type = "Dagger",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, dagger = true, one_hand_weapon = true, not_for_sale = true, },
-	implicit = "此武器攻击造成的所有伤害都可以造成中毒",
+	implicit = "用该武器击中时，所有伤害都导致中毒",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 12, PhysicalMax = 46, CritChanceBase = 6.3, AttackRateBase = 1.4, Range = 10, },
 	req = { level = 30, dex = 54, int = 54, },
 }
-itemBases["Pressurised Dagger"] = {
+itemBases["冲压匕首"] = {
 	type = "Dagger",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, dagger = true, one_hand_weapon = true, not_for_sale = true, },
-	implicit = "此武器攻击造成的所有伤害都可以造成中毒",
+	implicit = "用该武器击中时，所有伤害都导致中毒",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 18, PhysicalMax = 71, CritChanceBase = 6.3, AttackRateBase = 1.4, Range = 10, },
 	req = { level = 50, dex = 86, int = 86, },
 }
-itemBases["Pneumatic Dagger"] = {
+itemBases["气动匕首"] = {
 	type = "Dagger",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, dagger = true, one_hand_weapon = true, not_for_sale = true, },
-	implicit = "此武器攻击造成的所有伤害都可以造成中毒",
+	implicit = "用该武器击中时，所有伤害都导致中毒",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 20, PhysicalMax = 79, CritChanceBase = 6.3, AttackRateBase = 1.4, Range = 10, },
 	req = { level = 70, dex = 121, int = 121, },
 }
-itemBases["Flickerflame Blade"] = {
+itemBases["火焰刀"] = {
 	type = "Dagger",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, dagger = true, one_hand_weapon = true, not_for_sale = true, },
-	implicit = "使用插槽内的技能时触发等级 10 的【烈焰冲刺】",
+	implicit = "你使用插入的技能时触发 10 级烈焰冲刺",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 12, PhysicalMax = 47, CritChanceBase = 6.3, AttackRateBase = 1.45, Range = 10, },
 	req = { level = 30, dex = 54, int = 54, },
 }
-itemBases["Flashfire Blade"] = {
+itemBases["闪火刀"] = {
 	type = "Dagger",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, dagger = true, one_hand_weapon = true, not_for_sale = true, },
-	implicit = "使用插槽内的技能时触发等级 20 的【烈焰冲刺】",
+	implicit = "你使用插入的技能时触发 20 级烈焰冲刺",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 18, PhysicalMax = 73, CritChanceBase = 6.3, AttackRateBase = 1.45, Range = 10, },
 	req = { level = 50, dex = 86, int = 86, },
 }
-itemBases["Infernal Blade"] = {
+itemBases["炼狱刀"] = {
 	type = "Dagger",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, dagger = true, one_hand_weapon = true, not_for_sale = true, },
-	implicit = "使用插槽内的技能时触发等级 30 的【烈焰冲刺】",
+	implicit = "你使用插入的技能时触发 30 级烈焰冲刺",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 21, PhysicalMax = 85, CritChanceBase = 6.3, AttackRateBase = 1.45, Range = 10, },
 	req = { level = 70, dex = 121, int = 121, },

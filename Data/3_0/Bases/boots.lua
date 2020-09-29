@@ -489,6 +489,16 @@ itemBases["黄金缠鞋"] = {
 	armour = { },
 	req = { level = 12, },
 }
+itemBases["飞羽便鞋"] = {
+	type = "Boots",
+	hidden = true,
+	socketLimit = 4,
+	tags = { default = true, armour = true, boots = true, not_for_sale = true, },
+	implicitModTypes = { { "speed" }, },
+	implicit = "移动速度提高 10%",
+	armour = { },
+	req = {  },
+}
 
 
 
@@ -554,3 +564,4 @@ itemBases["异色鞋(火冰)"] = {
 	armour = { ArmourBase = 126, EvasionBase = 126, },
 	req = { level = 70, str = 62, dex = 62, },
 }
+

@@ -201,56 +201,56 @@ itemBases["审判长杖"] = {
 	weapon = { PhysicalMin = 73, PhysicalMax = 136, CritChanceBase = 6.5, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 68, str = 113, int = 113, },
 }
-itemBases["Transformer Staff"] = {
+itemBases["变形长杖"] = {
 	type = "Staff",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, staff = true, two_hand_weapon = true, not_for_sale = true, },
-	implicit = "施放插槽内的技能时优先消耗能量护盾而非魔力\n+(66-80) 最大能量护盾",
+	implicit = "施放插入的技能时，在消耗魔力前先消耗能量护盾\n+(66-80) 最大能量护盾",
 	implicitModTypes = { {  }, {  }, },
 	weapon = { PhysicalMin = 36, PhysicalMax = 66, CritChanceBase = 6, AttackRateBase = 1.25, Range = 13, },
 	req = { level = 30, str = 54, int = 54, },
 }
-itemBases["Reciprocation Staff"] = {
+itemBases["交换长杖"] = {
 	type = "Staff",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, staff = true, two_hand_weapon = true, not_for_sale = true, },
-	implicit = "施放插槽内的技能时优先消耗能量护盾而非魔力\n+(100-120) 最大能量护盾",
+	implicit = "施放插入的技能时，在消耗魔力前先消耗能量护盾\n+(100-120) 最大能量护盾",
 	implicitModTypes = { {  }, {  }, },
 	weapon = { PhysicalMin = 55, PhysicalMax = 102, CritChanceBase = 6, AttackRateBase = 1.25, Range = 13, },
 	req = { level = 50, str = 86, int = 86, },
 }
-itemBases["Battery Staff"] = {
+itemBases["蓄能长杖"] = {
 	type = "Staff",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, staff = true, two_hand_weapon = true, not_for_sale = true, },
-	implicit = "施放插槽内的技能时优先消耗能量护盾而非魔力\n+(140-165) 最大能量护盾",
+	implicit = "施放插入的技能时，在消耗魔力前先消耗能量护盾\n+(140-165) 最大能量护盾",
 	implicitModTypes = { {  }, {  }, },
 	weapon = { PhysicalMin = 65, PhysicalMax = 120, CritChanceBase = 6, AttackRateBase = 1.25, Range = 13, },
 	req = { level = 70, str = 117, int = 117, },
 }
-itemBases["Capacity Rod"] = {
+itemBases["载荷之杖"] = {
 	type = "Staff",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, staff = true, two_hand_weapon = true, not_for_sale = true, },
-	implicit = "+1 暴击球和耐力球数量上限",
+	implicit = "暴击球和耐力球上限 +1",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 39, PhysicalMax = 73, CritChanceBase = 7, AttackRateBase = 1.25, Range = 13, },
 	req = { level = 30, str = 54, int = 54, },
 }
-itemBases["Potentiality Rod"] = {
+itemBases["潜力之杖"] = {
 	type = "Staff",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, staff = true, two_hand_weapon = true, not_for_sale = true, },
-	implicit = "+1 暴击球和耐力球数量上限",
+	implicit = "暴击球和耐力球上限 +1",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 61, PhysicalMax = 113, CritChanceBase = 7, AttackRateBase = 1.25, Range = 13, },
 	req = { level = 50, str = 86, int = 86, },
 }
-itemBases["Eventuality Rod"] = {
+itemBases["潜能之杖"] = {
 	type = "Staff",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, staff = true, two_hand_weapon = true, not_for_sale = true, },
-	implicit = "+1 暴击球和耐力球数量上限",
+	implicit = "暴击球和耐力球上限 +1",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 78, PhysicalMax = 144, CritChanceBase = 7, AttackRateBase = 1.25, Range = 13, },
 	req = { level = 70, str = 117, int = 117, },

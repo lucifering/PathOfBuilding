@@ -357,6 +357,11 @@ description = "辅助击中造成伤害并消耗魔力的技能。不能辅助�
 			mod("LightningMax", "BASE", nil, 0, 0, { type = "PerStat", stat = "ManaCost" }),
 			div = 100,
 		},
+		["manaweave_added_cold_damage_%_cost_if_payable"] = {
+			mod("ColdMin", "BASE", nil, 0, 0, { type = "PerStat", stat = "ManaCost" }),
+			mod("ColdMax", "BASE", nil, 0, 0, { type = "PerStat", stat = "ManaCost" }),
+			div = 100,
+		},
 	},
 	baseMods = {
 	},
@@ -424,7 +429,7 @@ description = "辅助击中造成伤害并消耗魔力的技能。不能辅助�
 }
 skills["SupportBlasphemy"] = {
 name = "诅咒光环(辅)",
-	description = "Supports hex curse skills, turning them into auras that will apply their effect to all enemies in an area around you.",
+description = "辅助魔蛊技能，将其变为光环，并将它的效果施加给你周围的所有敌人。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.AppliesCurse, SkillType.Hex, SkillType.AND, },
@@ -497,7 +502,7 @@ name = "诅咒光环(辅)",
 }
 skills["SupportBlasphemyPlus"] = {
 name = "渎神（强辅）",
-	description = "Supports hex curse skills, turning them into auras that will apply their effect to all enemies in an area around you.",
+description = "辅助魔蛊技能，将其变为光环，并将它的效果施加给你周围的所有敌人。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.AppliesCurse, SkillType.Hex, SkillType.AND, },
@@ -1044,6 +1049,9 @@ description = "辅助投掷地雷技能.",
 		["mine_critical_strike_chance_+%_per_power_charge"] = {
 			mod("CritChance", "INC", nil, 0, KeywordFlag.Mine, { type = "Multiplier", var = "PowerCharge" }),
 		},
+		["mine_projectile_speed_+%_per_frenzy_charge"] = {
+			mod("ProjectileSpeed", "INC", nil, 0, 0, { type = "Multiplier", var = "FrenzyCharge" })
+		},
 	},
 	baseMods = {
 	},
@@ -1314,8 +1322,8 @@ description = "辅助能造成伤害的攻击或法术技能",
 	},
 }
 skills["SupportCurseOnHit"] = {
-	name = "蛊咒(辅)",
-	description = "Must support both a skill that hits enemies, and a hex curse skill to work. The hex will be applied when enemies are hit by the other skill. Cannot support totems, traps, or mines. Minions cannot apply hexes this way.",
+	name = "蛊咒（辅）",
+description = "必须辅助击中敌人并施加魔蛊的技能。该魔蛊会在敌人被其它技能击中时施加给它们。不能辅助图腾、陷阱和地雷。召唤生物不能通过这种方式施加魔蛊。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, SkillType.Hit, SkillType.AppliesCurse, SkillType.Hex, SkillType.AND, },
@@ -1323,6 +1331,11 @@ skills["SupportCurseOnHit"] = {
 	excludeSkillTypes = { SkillType.Trap, SkillType.Mine, SkillType.Totem, SkillType.AuraDebuff, },
 	ignoreMinionTypes = true,
 	statDescriptionScope = "gem_stat_descriptions",
+	statMap = {
+		["damage_vs_cursed_enemies_per_enemy_curse_+%"] = {
+			mod("Damage", "INC", nil, 0, 0, { type = "Multiplier", var = "CurseOnEnemy" })
+		}
+	},
 	baseMods = {
 	},
 	qualityStats = {
@@ -1387,8 +1400,8 @@ skills["SupportCurseOnHit"] = {
 	},
 }
 skills["SupportCurseOnHitPlus"] = {
-	name = "蛊咒(强辅)",
-	description = "Must support both a skill that hits enemies, and a hex curse skill to work. The hex will be applied when enemies are hit by the other skill. Cannot support totems, traps, or mines. Minions cannot apply hexes this way.",
+	name = "蛊咒【强辅】",
+description = "必须辅助击中敌人并施加魔蛊的技能。该魔蛊会在敌人被其它技能击中时施加给它们。不能辅助图腾、陷阱和地雷。召唤生物不能通过这种方式施加魔蛊。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Attack, SkillType.Hit, SkillType.AppliesCurse, SkillType.Hex, SkillType.AND, },
@@ -1442,7 +1455,7 @@ skills["SupportCurseOnHitPlus"] = {
 	},
 }
 skills["SupportMinionFocusFire"] = {
-	name = "掠食(辅)",
+	name = "掠食（辅）",
 description = "辅助创造召唤物技能.",
 	color = 3,
 	support = true,
@@ -1456,6 +1469,12 @@ description = "辅助创造召唤物技能.",
 		},
 		["support_minion_focus_fire_damage_+%_final_vs_focussed_target"] = {
 			mod("MinionModifier", "LIST", { mod = mod("Damage", "MORE", nil) }, 0, 0, { type = "Condition", var = "EnemyHasDeathmark" }),
+		},
+		["support_minion_focus_fire_critical_strike_chance_+%_final_vs_focussed_target"] = {
+			mod("MinionModifier", "LIST", { mod = mod("CritChance", "BASE", nil) }, 0, 0, { type = "Condition", var = "EnemyHasDeathmark" }),
+		},
+		["support_minion_focus_fire_critical_strike_multiplier_+%_final_vs_focussed_target"] = {
+			mod("MinionModifier", "LIST", { mod = mod("CritMultiplier", "BASE", nil) }, 0, 0, { type = "Condition", var = "EnemyHasDeathmark" }),
 		},
 	},
 	baseMods = {
@@ -1519,6 +1538,74 @@ description = "辅助创造召唤物技能.",
 		[38] = { 33, 34, manaMultiplier = 30, levelRequirement = 98, statInterpolation = { 1, 1, }, },
 		[39] = { 34, 34, manaMultiplier = 30, levelRequirement = 99, statInterpolation = { 1, 1, }, },
 		[40] = { 34, 35, manaMultiplier = 30, levelRequirement = 100, statInterpolation = { 1, 1, }, },
+	},
+}
+skills["MinionFocusFire"] = {
+name = "掠食信标",
+	color = 3,
+description = "给一个指定的敌人施加减益效果，使你的召唤生物把它当作掠食目标。所有由【掠食】辅助的技能产生的召唤生物都会以它为目标。你一次只能有一个【掠食信标】。该技能不能用于图腾、陷阱和地雷。",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Instant] = true, [SkillType.Minion] = true, [SkillType.Triggerable] = true, [SkillType.Duration] = true, [SkillType.Type92] = true, [SkillType.Type96] = true, },
+	statDescriptionScope = "debuff_skill_stat_descriptions",
+	castTime = 0,
+	baseFlags = {
+	},
+	baseMods = {
+	},
+	qualityStats = {
+		Default = {
+			{ "dummy_stat_display_nothing", 0 },
+		},
+		Alternate1 = {
+			{ "resist_all_%", -0.2 },
+		},
+		Alternate2 = {
+			{ "dummy_stat_display_nothing", 0 },
+		},
+	},
+	stats = {
+		"base_deal_no_damage",
+	},
+	levels = {
+		[1] = { levelRequirement = 18, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[2] = { levelRequirement = 22, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[3] = { levelRequirement = 26, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[4] = { levelRequirement = 29, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[5] = { levelRequirement = 32, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[6] = { levelRequirement = 35, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[7] = { levelRequirement = 38, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[8] = { levelRequirement = 41, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[9] = { levelRequirement = 44, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[10] = { levelRequirement = 47, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[11] = { levelRequirement = 50, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[12] = { levelRequirement = 53, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[13] = { levelRequirement = 56, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[14] = { levelRequirement = 58, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[15] = { levelRequirement = 60, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[16] = { levelRequirement = 62, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[17] = { levelRequirement = 64, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[18] = { levelRequirement = 66, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[19] = { levelRequirement = 68, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[20] = { levelRequirement = 70, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[21] = { levelRequirement = 72, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[22] = { levelRequirement = 74, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[23] = { levelRequirement = 76, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[24] = { levelRequirement = 78, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[25] = { levelRequirement = 80, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[26] = { levelRequirement = 82, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[27] = { levelRequirement = 84, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[28] = { levelRequirement = 86, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[29] = { levelRequirement = 88, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[30] = { levelRequirement = 90, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[31] = { levelRequirement = 91, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[32] = { levelRequirement = 92, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[33] = { levelRequirement = 93, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[34] = { levelRequirement = 94, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[35] = { levelRequirement = 95, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[36] = { levelRequirement = 96, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[37] = { levelRequirement = 97, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[38] = { levelRequirement = 98, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[39] = { levelRequirement = 99, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
+		[40] = { levelRequirement = 100, cooldown = 0.8, duration = 8, manaMultiplier = 30, statInterpolation = { }, },
 	},
 }
 skills["SupportDecay"] = {
@@ -1802,9 +1889,11 @@ description = "辅助任意能击中敌人或对敌人造成元素异常状态�
 	excludeSkillTypes = { },
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
-		["support_elemental_proliferation_damage_+%_final"] = {
-			mod("Damage", "MORE", nil),
-		},
+		["damage_+%_vs_enemies_per_freeze_shock_ignite"] = {
+			mod("Damage", "INC", nil, 0, 0, { type = "ActorCondition", actor = "enemy", var = "Ignited" }),
+			mod("Damage", "INC", nil, 0, 0, { type = "ActorCondition", actor = "enemy", var = "Frozen" }),
+			mod("Damage", "INC", nil, 0, 0, { type = "ActorCondition", actor = "enemy", var = "Shocked" }),
+		}
 	},
 	baseMods = {
 	},
@@ -1884,6 +1973,9 @@ description = "辅助任何会击中敌人的技能，使击中后可以偷取�
 		["support_energy_shield_leech_damage_+%_while_leeching_energy_shield_final"] = {
 			mod("Damage", "MORE", nil, 0, 0, { type = "Condition", var = "LeechingEnergyShield" }),
 		},
+		["maximum_energy_shield_leech_amount_per_leech_+%"] = {
+			mod("MaxEnergyShieldLeechRate", "INC", nil)
+		}
 	},
 	baseMods = {
 	},
@@ -1956,6 +2048,11 @@ description = "辅助任意技能. 当该宝石达到 2 级或以上时, 降低�
 	excludeSkillTypes = { },
 	supportGemsOnly = true,
 	statDescriptionScope = "gem_stat_descriptions",
+	statMap = {
+		["local_gem_int_requirement_+%"] = {
+			mod("IntRequirement", "INC", nil)
+		}
+	},
 	baseMods = {
 	},
 	qualityStats = {
@@ -2358,8 +2455,8 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["ViciousHexSupport"] = {
-	name = "末日将至(辅)",
-	description = "Supports hex curse skills, causing them to trigger Doom Blast when the hex ends. Cannot support curse skills which are triggered or applied as an aura.",
+	name = "末日将至（辅）",
+description = "辅助魔蛊技能，使魔蛊在结束时触发【末日爆炸】。不能辅助触发型和光环类诅咒技能。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hex, SkillType.AppliesCurse, SkillType.AND, },
@@ -2426,11 +2523,11 @@ skills["ViciousHexSupport"] = {
 	},
 }
 skills["ViciousHexExplosion"] = {
-	name = "末日将至",
+	name = "末日爆炸",
 	color = 3,
 	baseEffectiveness = 0.67199999094009,
 	incrementalEffectiveness = 0.039000000804663,
-	description = "Deals chaos damage in an area based on the amount of Doom on the triggering Hex.",
+description = "基于触发魔蛊所拥有的灭能数量对范围目标造成对应的基础混沌伤害",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.AreaSpell] = true, [SkillType.ChaosSkill] = true, [SkillType.Type96] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
@@ -2786,6 +2883,12 @@ description = "辅助创造召唤物技能.",
 			div = 60,
 			mod("ExtraMinionSkill", "LIST", { skillId = "InfernalLegion" }),
 		},
+		["minion_burning_damage_"] = {
+			mod("MinionModifier", "LIST", { mod = mod("FireDamage", "INC", nil, 0, KeywordFlag.FireDot) }),
+		},
+		["minion_fire_damage_taken_+%"] = {
+			mod("MinionModifier", "LIST", { mod = mod("FireDamageTaken", "INC", nil) }),
+		}
 	},
 	baseMods = {
 	},
@@ -2875,6 +2978,21 @@ mod("Condition:HaveFireInfusion", "FLAG", true, 0, 0, { type = "GlobalEffect", e
 mod("Condition:HaveColdInfusion", "FLAG", true, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌注", effectCond = "InfusionActive", modCond = "ColdInfusion" }),
 mod("Condition:HaveLightningInfusion", "FLAG", true, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌注", effectCond = "InfusionActive", modCond = "LightningInfusion" }),
 mod("Condition:HaveChaosInfusion", "FLAG", true, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "灌注", effectCond = "InfusionActive", modCond = "ChaosInfusion" }),
+		},
+		["infusion_grants_life_regeneration_rate_per_minute_%"] = {
+			mod("LifeRegenPercent", "BASE", true, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Infusion", effectCond = "InfusionActive", modCond = "PhysicalInfusion" }),
+			mod("LifeRegenPercent", "BASE", true, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Infusion", effectCond = "InfusionActive", modCond = "FireInfusion" }),
+			mod("LifeRegenPercent", "BASE", true, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Infusion", effectCond = "InfusionActive", modCond = "ColdInfusion" }),
+			mod("LifeRegenPercent", "BASE", true, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Infusion", effectCond = "InfusionActive", modCond = "LightningInfusion" }),
+			mod("LifeRegenPercent", "BASE", true, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Infusion", effectCond = "InfusionActive", modCond = "ChaosInfusion" }),
+			div = 60
+		},
+		["infusion_effect_+%"] = {
+			mod("BuffEffect", "INC", true, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Infusion" }),
+			mod("BuffEffect", "INC", true, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Infusion" }),
+			mod("BuffEffect", "INC", true, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Infusion" }),
+			mod("BuffEffect", "INC", true, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Infusion" }),
+			mod("BuffEffect", "INC", true, 0, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "Infusion" }),
 		},
 	},
 	baseMods = {
@@ -3049,7 +3167,7 @@ description = "辅助对自己施放的法术。无法辅助触发类技能、�
 		},
 	},
 	baseMods = {
-		mod("Multiplier:IntensityLimit", "BASE", 4),
+		
 	},
 	qualityStats = {
 		Default = {
@@ -3306,6 +3424,9 @@ description = "辅助创造召唤物技能.",
 		["support_minion_defensive_stance_minion_damage_+%_final_against_enemies_near_you"] = {
 			mod("MinionModifier", "LIST", { mod = mod("Damage", "MORE", nil) }, 0, 0, { type = "Condition", var = "MeatShieldEnemyNearYou" }),
 		},
+		["minion_block_%"] = {
+			mod("MinionModifier", "LIST", { mod = mod("BlockChance", "BASE", nil) }),
+		}
 	},
 	baseMods = {
 	},
@@ -3459,6 +3580,9 @@ description = "辅助创造召唤物技能.",
 		["support_minion_damage_+%_final"] = {
 			mod("MinionModifier", "LIST", { mod = mod("Damage", "MORE", nil) }),
 		},
+		["minion_ailment_damage_+%"] = {
+			mod("MinionModifier", "LIST", { mod = mod("Damage", "MORE", nil, 0, KeywordFlag.Ailment) }),
+		},
 	},
 	baseMods = {
 	},
@@ -3579,6 +3703,9 @@ description = "辅助创造召唤物技能.",
 	statMap = {
 		["support_minion_maximum_life_+%_final"] = {
 			mod("MinionModifier", "LIST", { mod = mod("Life", "MORE", nil) }),
+		},
+		["minion_damage_+%_on_full_life"] = {
+			mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", nil, 0, 0, {type = "Condition", var = "FullLife"}) }),
 		},
 	},
 	baseMods = {
@@ -3723,15 +3850,15 @@ description = "辅助创造召唤物技能.",
 		["support_minion_totem_resistance_elemental_damage_+%_final"] = {
 			mod("MinionModifier", "LIST", { mod = mod("ElementalDamage", "MORE", nil) }),
 		},
+		["minion_life_leech_from_elemental_damage_permyriad"] = {
+			mod("MinionModifier", "LIST", { mod = mod("FireDamageLeech", "BASE", nil) }),
+			mod("MinionModifier", "LIST", { mod = mod("LightningDamageLeech", "BASE", nil) }),
+			mod("MinionModifier", "LIST", { mod = mod("ColdDamageLeech", "BASE", nil) }),
+			div = 100
+		}
 	},
 	baseMods = {
-	flag("Condition:ElementalArmyFireExposureTypemodCond", { type = "Condition", var = "ElementalArmyFireExposureType" }),
-			flag("Condition:ElementalArmyColdExposureTypemodCond", { type = "Condition", var = "ElementalArmyColdExposureType" }),
-			flag("Condition:ElementalArmyLightningExposureTypemodCond", { type = "Condition", var = "ElementalArmyLightningExposureType" }),
-			mod("FireResist", "BASE", -10, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "火焰曝露", modCond = "ElementalArmyFireExposureTypemodCond" }),
-mod("ColdResist", "BASE", -10, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "冰霜曝露", modCond = "ElementalArmyColdExposureTypemodCond" }),
-mod("LightningResist", "BASE", -10, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "闪电曝露", modCond = "ElementalArmyLightningExposureTypemodCond" })
-
+	
 	},
 	qualityStats = {
 		Default = {
@@ -3802,6 +3929,11 @@ description = "辅助任意击中敌人的技能",
 	addSkillTypes = { },
 	excludeSkillTypes = { },
 	statDescriptionScope = "gem_stat_descriptions",
+	statMap = {
+		["enemies_you_shock_take_%_increased_physical_damage"] = {
+			mod("EnemyModifier", "LIST", { mod = mod("PhysicalDamageTaken", "INC", nil) }, 0, 0, { type = "ActorCondition", actor = "enemy", var = "Shocked" })
+		}
+	},
 	baseMods = {
 	},
 	qualityStats = {
@@ -3865,8 +3997,8 @@ description = "辅助任意击中敌人的技能",
 	},
 }
 skills["SupportProjectileIntensity"] = {
-	name = "会心一击(辅)",
-	description = "Supports projectile spells you cast yourself. Cannot support triggered skills, Vaal skills, instant skills, channelling skills, skills which reserve mana, or skills used by totems, traps, or mines. Cannot modify the skills of minions.",
+	name = "会心一击（辅）",
+description = "辅助对自己施放的投射物法术。无法辅助触发类技能、瓦尔技能、瞬发技能、持续吟唱技能，保留魔力技能，或图腾、陷阱和地雷使用的技能。无法影响召唤生物的技能。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Projectile, SkillType.Spell, SkillType.AND, },
@@ -3875,16 +4007,17 @@ skills["SupportProjectileIntensity"] = {
 	statDescriptionScope = "gem_stat_descriptions",
     statMap = {
 	    ["additional_projectiles_per_intensity"] = {
-			mod("ProjectileCount", "BASE", nil, 0, 0, { type = "Multiplier", var = "Intensity" , limit = 3 }),
+			mod("ProjectileCount", "BASE", nil, 0, 0, { type = "Multiplier", var = "Intensity" , limitVar = "IntensityLimit" }),
 		},
 		["support_greater_projectile_intensity_projectile_damage_+%_final"] = {
 			mod("Damage", "MORE", nil, ModFlag.Projectile),
 		},
 		["greater_projectile_intensity_projectile_damage_+%_final_per_intensity"] = {
-			mod("Damage", "MORE", nil, 0, 0, { type = "Multiplier", var = "Intensity" , limit = 3 }),
+			mod("Damage", "MORE", nil, ModFlag.Projectile, 0, { type = "Multiplier", var = "Intensity" , limitVar = "IntensityLimit" }),
 		},
 	},
 	baseMods = {
+		
 	},
 	qualityStats = {
 		Default = {
@@ -4262,6 +4395,11 @@ description = "辅助法术技能, 使该技能在使用时被自动重复 1 次
 		["support_multicast_cast_speed_+%_final"] = {
 			mod("Speed", "MORE", nil, ModFlag.Cast),
 		},
+		["support_spell_echo_final_repeat_damage_+%_final"] = {
+			mod("Damage", "MORE", nil),
+			--Average out over the casts
+			div = 3
+		}
 	},
 	baseMods = {
 		flag("Condition:HaveSpellEcho"),
@@ -4391,7 +4529,7 @@ description = "辅助法术技能, 使该技能在使用时被自动重复 1 次
 	},
 }
 skills["SupportSummonGhostOnKill"] = {
-name = "击败召唤幻影(辅)",
+name = "召唤幻影（辅）",
 description = "能够辅助可以击中敌人或召唤生物的技能。当该技能或召唤生物击败敌人，有一定几率召唤一个幽灵生物，该生物可以使用投射物穿刺法术造成物理伤害。",
 	color = 3,
 	support = true,
@@ -4409,6 +4547,9 @@ description = "能够辅助可以击中敌人或召唤生物的技能。当该�
 		["base_number_of_support_ghosts_allowed"] = {
 			mod("ActivePhantasmLimit", "BASE", nil),
 		},
+		["damage_+%_for_non_minions"] = {
+			-- mod("Damage", "INC", nil, 0, 0, {type = "Actor"})
+		}
 	},
 	baseMods = {
 	},
@@ -4494,6 +4635,9 @@ description = "辅助创造烙印的技能。",
 		["support_rapid_activation_brand_skill_only_secondary_duration_+%_final"] = {
 			mod("SecondaryDuration", "MORE", nil, 0, KeywordFlag.Brand),
 		},
+		["from_quality_brand_activation_rate_+%_final_if_75%_attached_duration_expired"] = {
+			mod("BrandActivationFrequency", "MORE", nil, 0, 0, {type = "Condition", var = "BrandLastQuarter"})
+		},
 	},
 	baseMods = {
 	},
@@ -4561,7 +4705,7 @@ description = "辅助创造烙印的技能。",
 }
 skills["SupportAilments"] = {
 name = "异常爆发(辅)",
-	description = "Supports any skill that hits enemies or inflicts ailments",
+description = "辅助任意可以击中敌人或施加异常状态的技能。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.CauseElementalStatus, },
@@ -4572,6 +4716,9 @@ name = "异常爆发(辅)",
 		["support_unbound_ailments_ailment_damage_+%_final"] = {
 			mod("Damage", "MORE", nil, 0, bit.bor(KeywordFlag.Bleed, KeywordFlag.Poison, KeywordFlag.Ignite)),
 		},
+		["base_damage_+%_while_an_ailment_on_you"] = {
+			mod("Damage", "INC", nil, 0, 0, {type = "Condition", varList = { "Frozen","Chilled","Shocked","Ignited","Scorched","Brittle","Sapped","Poisoned","Bleeding" }})
+		}
 	},
 	baseMods = {
 	},
@@ -4636,7 +4783,7 @@ name = "异常爆发(辅)",
 }
 skills["SupportUnboundAilmentsPlus"] = {
 name = "异常爆发（强辅）",
-	description = "Supports any skill that hits enemies or inflicts ailments",
+description = "辅助任意可以击中敌人或施加异常状态的技能。",
 	color = 3,
 	support = true,
 	requireSkillTypes = { SkillType.Hit, SkillType.Attack, SkillType.CauseElementalStatus, },
@@ -4803,5 +4950,71 @@ description = "辅助法术类技能，使其在施放时效果可以重复。�
 		[18] = { 3, 590, -2, manaMultiplier = 40, levelRequirement = 98, statInterpolation = { 1, 1, 1, }, },
 		[19] = { 3, 585, -1, manaMultiplier = 40, levelRequirement = 99, statInterpolation = { 1, 1, 1, }, },
 		[20] = { 3, 580, -1, manaMultiplier = 40, levelRequirement = 100, statInterpolation = { 1, 1, 1, }, },
+	},
+}
+
+skills["SupportElementalPenetration"] = {
+name = "元素穿透（辅）",
+description = "辅助任意击中敌人的技能，使它们能穿透敌人的元素抗性。",
+	color = 3,
+	support = true,
+	requireSkillTypes = { SkillType.Hit, SkillType.Attack, },
+	addSkillTypes = { },
+	excludeSkillTypes = { },
+	statDescriptionScope = "gem_stat_descriptions",	
+	baseMods = {
+	},
+	qualityStats = {
+		Default = {
+			{ "elemental_damage_+%", 0.5 },
+		},
+		Alternate1 = {
+			{ "non_damaging_ailment_effect_+%", 0.5 },
+		},
+	},
+	stats = {
+		"reduce_enemy_elemental_resistance_%",
+	},
+	levels = {
+		[1] = { 13, manaMultiplier = 40, levelRequirement = 31, statInterpolation = { 1, }, },
+		[2] = { 14, manaMultiplier = 40, levelRequirement = 34, statInterpolation = { 1, }, },
+		[3] = { 15, manaMultiplier = 40, levelRequirement = 36, statInterpolation = { 1, }, },
+		[4] = { 16, manaMultiplier = 40, levelRequirement = 38, statInterpolation = { 1, }, },
+		[5] = { 17, manaMultiplier = 40, levelRequirement = 40, statInterpolation = { 1, }, },
+		[6] = { 18, manaMultiplier = 40, levelRequirement = 42, statInterpolation = { 1, }, },
+		[7] = { 19, manaMultiplier = 40, levelRequirement = 44, statInterpolation = { 1, }, },
+		[8] = { 20, manaMultiplier = 40, levelRequirement = 46, statInterpolation = { 1, }, },
+		[9] = { 21, manaMultiplier = 40, levelRequirement = 48, statInterpolation = { 1, }, },
+		[10] = { 22, manaMultiplier = 40, levelRequirement = 50, statInterpolation = { 1, }, },
+		[11] = { 23, manaMultiplier = 40, levelRequirement = 52, statInterpolation = { 1, }, },
+		[12] = { 24, manaMultiplier = 40, levelRequirement = 54, statInterpolation = { 1, }, },
+		[13] = { 25, manaMultiplier = 40, levelRequirement = 56, statInterpolation = { 1, }, },
+		[14] = { 26, manaMultiplier = 40, levelRequirement = 58, statInterpolation = { 1, }, },
+		[15] = { 27, manaMultiplier = 40, levelRequirement = 60, statInterpolation = { 1, }, },
+		[16] = { 28, manaMultiplier = 40, levelRequirement = 62, statInterpolation = { 1, }, },
+		[17] = { 29, manaMultiplier = 40, levelRequirement = 64, statInterpolation = { 1, }, },
+		[18] = { 30, manaMultiplier = 40, levelRequirement = 66, statInterpolation = { 1, }, },
+		[19] = { 31, manaMultiplier = 40, levelRequirement = 68, statInterpolation = { 1, }, },
+		[20] = { 32, manaMultiplier = 40, levelRequirement = 70, statInterpolation = { 1, }, },
+		[21] = { 33, manaMultiplier = 40, levelRequirement = 72, statInterpolation = { 1, }, },
+		[22] = { 34, manaMultiplier = 40, levelRequirement = 74, statInterpolation = { 1, }, },
+		[23] = { 35, manaMultiplier = 40, levelRequirement = 76, statInterpolation = { 1, }, },
+		[24] = { 36, manaMultiplier = 40, levelRequirement = 78, statInterpolation = { 1, }, },
+		[25] = { 37, manaMultiplier = 40, levelRequirement = 80, statInterpolation = { 1, }, },
+		[26] = { 38, manaMultiplier = 40, levelRequirement = 82, statInterpolation = { 1, }, },
+		[27] = { 39, manaMultiplier = 40, levelRequirement = 84, statInterpolation = { 1, }, },
+		[28] = { 40, manaMultiplier = 40, levelRequirement = 86, statInterpolation = { 1, }, },
+		[29] = { 41, manaMultiplier = 40, levelRequirement = 88, statInterpolation = { 1, }, },
+		[30] = { 42, manaMultiplier = 40, levelRequirement = 90, statInterpolation = { 1, }, },
+		[31] = { 42, manaMultiplier = 40, levelRequirement = 91, statInterpolation = { 1, }, },
+		[32] = { 43, manaMultiplier = 40, levelRequirement = 92, statInterpolation = { 1, }, },
+		[33] = { 43, manaMultiplier = 40, levelRequirement = 93, statInterpolation = { 1, }, },
+		[34] = { 44, manaMultiplier = 40, levelRequirement = 94, statInterpolation = { 1, }, },
+		[35] = { 44, manaMultiplier = 40, levelRequirement = 95, statInterpolation = { 1, }, },
+		[36] = { 45, manaMultiplier = 40, levelRequirement = 96, statInterpolation = { 1, }, },
+		[37] = { 45, manaMultiplier = 40, levelRequirement = 97, statInterpolation = { 1, }, },
+		[38] = { 46, manaMultiplier = 40, levelRequirement = 98, statInterpolation = { 1, }, },
+		[39] = { 46, manaMultiplier = 40, levelRequirement = 99, statInterpolation = { 1, }, },
+		[40] = { 47, manaMultiplier = 40, levelRequirement = 100, statInterpolation = { 1, }, },
 	},
 }

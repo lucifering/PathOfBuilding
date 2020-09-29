@@ -448,14 +448,13 @@ description = "创造一个可以附着于周围某个敌人的魔法烙印。�
 skills["AssassinsMark"] = {
 name = "暗影印记",
 	color = 3,
-	description = "Curses a single enemy, making them more vulnerable to Critical Strikes. Killing the cursed enemy will grant life and mana, and a power charge. You can only have one Mark at a time.",
+description = "诅咒单个敌人，使它更弱暴击。击败它可以获得生命和魔力，以及一个暴击球。你同时只能施加一个咒印。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.Type91] = true, [SkillType.Type92] = true, [SkillType.Mark] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
 	statMap = {
-		["base_self_critical_strike_multiplier_-%"] = {
-			mod("SelfCritMultiplier", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
-			mult = -1,
+		["enemy_additional_critical_strike_multiplier_against_self"] = {
+			mod("SelfCritMultiplier", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
 		},
 		["enemy_additional_critical_strike_chance_against_self"] = {
 			mod("SelfCritChance", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
@@ -633,7 +632,7 @@ name = "混沌之毒",
 	color = 3,
 	baseEffectiveness = 4.6849999427795,
 	incrementalEffectiveness = 0.047100000083447,
-	description = "Applies a debuff to enemies in an area, which deals chaos damage over Time. Linked hex curses are also applied to those enemies. The debuff deals more damage and lasts longer for each hex applied this way.  This skill cannot be used by Totems, Traps, or Mines.",
+description = "对一片区域里的敌人施加减益效果，造成持续混沌伤害，并把连接的魔蛊技能施加给它们。通过这种方式每施加一种魔蛊，就能使该减益效果的伤害更高，持续越久。该技能不能用于图腾、陷阱和地雷。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.DamageOverTime] = true, [SkillType.ChaosSkill] = true, [SkillType.SpellCanRepeat] = true, [SkillType.SpellCanCascade] = true, [SkillType.Triggerable] = true, [SkillType.Type59] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.Hex] = true, },
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 0.6,
@@ -811,6 +810,19 @@ skills["Ember"] = {
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.SkillCanTotem] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.Projectile] = true, [SkillType.SkillCanVolley] = true, [SkillType.SpellCanRepeat] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.7,
+	parts = {
+		{
+name = "1 个投射物",
+		},
+		{
+name = "所有投射物",
+		},
+	},
+	preDamageFunc = function(activeSkill, output)
+		if activeSkill.skillPart == 2 then
+			activeSkill.skillData.dpsMultiplier = output.ProjectileCount
+		end
+	end,
 	baseFlags = {
 		spell = true,
 		area = true,
@@ -1257,7 +1269,7 @@ description = "献祭一具灵柩, 使你的召唤生物获得格挡攻击与法
 skills["SigilRecall"] = {
 name = "烙印召回",
 	color = 3,
-	description = "Recall your brands to you, detaching them from enemies and increasing attachment range until they next attach to an enemy. Spends a portion of each recalled brand's mana cost to cause it to activate.",
+description = "将烙印从敌人身上解除，并召回你身边，随后将烙印激活。再次附加在敌人身上时，附加范围会扩大。消耗每个召回烙印的部分魔力来激活它们。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Triggerable] = true, [SkillType.Instant] = true, [SkillType.Type96] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
@@ -1642,7 +1654,7 @@ skill("radiusLabel", "初始范围:"),
 skills["Conductivity"] = {
 name = "导电",
 	color = 3,
-	description = "Curses all targets in an area, lowering their lightning resistance and giving them a chance to be shocked when hit.",
+description = "诅咒一片区域的所有目标，降低它们的闪电抗性，并使它们被击中时有几率获得感电效果。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.LightningSkill] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.Type91] = true, [SkillType.Type92] = true, [SkillType.Hex] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -1987,11 +1999,9 @@ skills["Disintegrate"] = {
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.7,
 	statMap = {
-	    ["disintegrate_base_radius_+_per_intensify"] = {
-			skill("radiusExtra", nil, { type = "Multiplier", var = "Intensity"}),
-		},
+	    
 		["disintegrate_damage_+%_final_per_intensity"] = {
-			mod("Damage", "MORE", nil, 0, 0, { type = "Multiplier", var = "Intensity"}),
+			mod("Damage", "MORE", nil, 0, 0, { type = "Multiplier", var = "Intensity", limitVar = "IntensityLimit" }),
 		},
 	},
 	baseFlags = {
@@ -2185,7 +2195,7 @@ name = "绝望",
 	color = 3,
 	baseEffectiveness = 0.66670000553131,
 	incrementalEffectiveness = 0.016000000759959,
-	description = "Curses all targets in an area, lowering their chaos resistance and increasing damage over time they take. All hits will deal added chaos damage to the cursed enemies.",
+description = "诅咒一片区域的所有目标，降低它们的混沌抗性，并使它们受到更高的持续伤害。对它们造成的所有击中都附加混沌伤害。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.ChaosSkill] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.Type91] = true, [SkillType.Type92] = true, [SkillType.Hex] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -2289,8 +2299,13 @@ description = "释放角色身上所有的能量球并对周围所有敌人造�
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.75,
 	statMap = {
-		["discharge_triggered_damage_+%_final"] = {
-			mod("Damage", "MORE", nil, ModFlag.Spell, 0, { type = "Condition", var = "SkillIsTriggered" }),
+		["area_of_effect_+%_per_removable_power_frenzy_or_endurance_charge"] = {
+			mod("AreaOfEffect", "INC", nil, ModFlag.Spell, 0, { type = "Multiplier", var = "RemovableEnduranceCharge" }),
+			mod("AreaOfEffect", "INC", nil, ModFlag.Spell, 0, { type = "Multiplier", var = "RemovableFrenzyCharge" }),
+			mod("AreaOfEffect", "INC", nil, ModFlag.Spell, 0, { type = "Multiplier", var = "RemovablePowerCharge" }),
+		},
+		["active_skill_ailment_damage_+%_final"] = {
+			mod("Damage", "MORE", nil,  ModFlag.Ailment),
 		},
 	},
 	baseFlags = {
@@ -2653,7 +2668,7 @@ name = "20 阶释放",
 skills["ElementalWeakness"] = {
 name = "元素要害",
 	color = 3,
-	description = "Curses all targets in an area, lowering their elemental resistances.",
+description = "诅咒一片区域的所有目标，降低它们的元素抗性。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.Type91] = true, [SkillType.Type92] = true, [SkillType.Hex] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -2738,7 +2753,7 @@ name = "元素要害",
 skills["Enfeeble"] = {
 name = "衰弱",
 	color = 3,
-	description = "Curses all targets in an area, reducing their accuracy and making them deal less damage.",
+description = "诅咒一片区域的所有目标，降低它们的命中值，使它们造成的伤害更低。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.Type91] = true, [SkillType.Type92] = true, [SkillType.Hex] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -3295,12 +3310,28 @@ skills["Firewall"] = {
 	skillTypes = { [SkillType.Spell] = true, [SkillType.DamageOverTime] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Triggerable] = true, [SkillType.AreaSpell] = true, [SkillType.SkillCanTotem] = true, [SkillType.FireSkill] = true, [SkillType.Type59] = true, [SkillType.CanRapidFire] = true, [SkillType.SpellCanRepeat] = true, [SkillType.SpellCanCascade] = true, [SkillType.CausesBurning] = true, },
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 0.5,
+	parts = {
+		{
+			name = "Primary Debuff",
+		},
+		{
+			name = "Secondary Debuff",
+		},
+	},
     statMap = {
+		["base_fire_damage_to_deal_per_minute"] = {
+			skill("FireDot", nil, { type = "SkillPart", skillPart = 1 }),
+			div = 60,
+		},
+		["secondary_base_fire_damage_to_deal_per_minute"] = {
+			skill("FireDot", nil, { type = "SkillPart", skillPart = 2 }),
+			div = 60,
+		},
 		["wall_maximum_length"] = {
 			skill("radius", nil),
 		},
 		["firewall_applies_%_fire_exposure"] = {
-		    mod("EnemyModifier", "LIST", { mod = mod("FireExposure", "BASE", -10) }, { type = "Condition", var = "Effective" }),
+		    mod("FireExposure", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff" }),
 		}
 	},
 	baseFlags = {
@@ -3691,7 +3722,7 @@ name = "最大阶",
 skills["Flammability"] = {
 name = "易燃",
 	color = 3,
-	description = "Curses all targets in an area, lowering their fire resistance and giving them a chance to be ignited when hit.",
+description = "诅咒一片区域的所有目标，降低它们的火焰抗性，并使它们被击中时有几率被点燃。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.FireSkill] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.Type91] = true, [SkillType.Type92] = true, [SkillType.Hex] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -3966,7 +3997,7 @@ description = "创造出一个冰晶, 不断地释放冰霜的能量, 降低其�
 	castTime = 0.5,
 	statMap = {
 		["base_cold_damage_resistance_%"] = {
-			mod("ColdResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff" , effectName = "冰霜曝露" }),
+			mod("ColdExposure", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff" }),
 		},
 		["energy_shield_recharge_rate_+%"] = {
 			mod("EnergyShieldRecharge", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff" }),
@@ -4060,6 +4091,14 @@ skills["FrostGlobe"] = {
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 0.5,
 	statMap = {
+		["frost_globe_additional_spell_base_critical_strike_chance_per_stage"] = {
+			mod("CritChance", "BASE", nil, ModFlag.Spell, 0, { type = "Multiplier", var = "FrostShieldStage", limit = 4 }, { type = "GlobalEffect", effectType = "Buff", effectName = "Frost Shield" }),
+			div = 100,
+		},
+		["energy_shield_lost_per_minute"] = {
+			mod("EnergyShieldDegen", "BASE", nil, 0, 0, { type = "MultiplierThreshold", var = "FrostShieldStage", threshold = 1 }, { type = "GlobalEffect", effectType = "Buff", effectName = "Frost Shield" }),
+			div = 60,
+		},
 	},
 	baseFlags = {
 		spell = true,
@@ -4215,7 +4254,7 @@ description = "聚集空气中的水分, 制造一堵能阻挡敌人行动的冰
 skills["Frostbite"] = {
 name = "冻伤",
 	color = 3,
-	description = "Curses all targets in an area, lowering their cold resistance and giving them a chance to be frozen when hit.",
+description = "诅咒一片区域的所有目标，降低它们的冰霜抗性，并使它们被击中时有几率被冻结。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.ColdSkill] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.Type91] = true, [SkillType.Type92] = true, [SkillType.Hex] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -4399,9 +4438,7 @@ description = "发射出一个缓慢移动并可以穿透敌人的投射物, 造
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.75,
 	 statMap = {
-        ["base_inflict_cold_exposure_on_hit_%_chance"] = {
-            mod("EnemyModifier", "LIST", { mod = mod("ColdExposure", "BASE", -25) }, { type = "Condition", var = "Effective" }),
-        },
+        
         ["frostbolt_projectile_speed_+%_final"] = {
             mod("ProjectileSpeed", "MORE", nil),
         },
@@ -4482,16 +4519,30 @@ name = "冰川之刺",
 	color = 3,
 	baseEffectiveness = 0.7354000210762,
 	incrementalEffectiveness = 0.037000000476837,
-	description = "Icicles emerge from the ground in a series of small bursts, each damaging enemies caught in the area and knocking them back in the direction of the next burst.",
+description = "从地面的一系列爆发中冒出冰结之刺，每一次都对该区域内的敌人造成伤害，并将它们击退到下一次爆发的距离。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.ColdSkill] = true, [SkillType.PhysicalSkill] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.6,
+	parts = {
+		{
+			name = "Initial Bursts",
+		},
+		{
+			name = "Final Burst",
+		},
+	},
+	statMap = {
+		["glacial_cascade_final_spike_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, 0, 0, { type = "SkillPart", skillPart = 2 }),
+		},
+	},
 	baseFlags = {
 		spell = true,
 		area = true,
 	},
 	baseMods = {
 		skill("radius", 12),
+		mod("AreaOfEffect", "MORE", 100, 0, 0, { type = "SkillPart", skillPart = 2 }),
 	},
 	qualityStats = {
 		Default = {
@@ -4584,10 +4635,20 @@ skills["DoomBlast"] = {
 	},
 	baseMods = {
 	skill("showAverage", true),
-		flag("ChaosCanIgnite"),
-		flag("ChaosCanChill"),
-		flag("ChaosCanShock"),
 		flag("ChaosDamageUsesLowestResistance"),
+		flag("PhysicalCanIgnite"),
+		flag("LightningCanIgnite"),
+		flag("ColdCanIgnite"),
+		flag("ChaosCanIgnite"),	
+		flag("PhysicalCanFreeze"),
+		flag("LightningCanFreeze"),
+		flag("FireCanFreeze"),
+		flag("ChaosCanFreeze"),
+		flag("PhysicalCanShock"),
+		flag("ColdCanShock"),
+		flag("FireCanShock"),
+		flag("ChaosCanShock"),
+		
 	},
 	qualityStats = {
 		Default = {
@@ -4665,7 +4726,7 @@ name = "闪电之捷",
 	color = 3,
 	baseEffectiveness = 1.375,
 	incrementalEffectiveness = 0.023000000044703,
-	description = "Grants a buff which adds lightning damage to spells and attacks. If you kill a shocked enemy, this skill will create a storm, causing lightning bolts to strike enemies around you for a duration. The damage inflicted by this skill is not affected by modifiers to spell damage.",
+description = "获得一个增益效果，给法术和攻击增添闪电伤害。如被击败的是感电的敌人，则该技能会创造一个风暴，在一段时间内用闪电打击你周围的敌人。该技能施加的伤害不套用调整法术伤害的词缀。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.LightningSkill] = true, [SkillType.Type27] = true, [SkillType.Herald] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.Type91] = true, [SkillType.Type92] = true, [SkillType.Type96] = true, },
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 0,
@@ -7394,7 +7455,8 @@ name = "8 阶",
 	},
 	statMap = {
 		["base_fire_damage_resistance_%"] = {
-mod("FireResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "火焰曝露", effectCond = "ScorchingRayMaxStages" }),
+
+mod("FireExposure", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "火焰曝露", effectCond = "ScorchingRayMaxStages" }),
 		},
 	},
 	baseFlags = {
@@ -7580,7 +7642,15 @@ skills["CircleOfPower"] = {
 	castTime = 0.5,
 	statMap = {
         ["circle_of_power_skill_cost_mana_cost_+%"] = {
-            mod("ManaCost", "INC", nil, 0, 0, { type = "Condition", var = "InSigilOfPower" }),
+           mod("ManaCost", "INC", nil, 0, 0, { type = "MultiplierThreshold", var = "SigilOfPowerStage", threshold = 1 }, { type = "GlobalEffect", effectType = "Buff", effectName = "Sigil of Power" }),
+		},
+		["circle_of_power_min_added_lightning_per_stage"] = {
+			mod("LightningMin", "BASE", nil, 0, 0, { type = "Multiplier", var = "SigilOfPowerStage", limit = 4 }, { type = "GlobalEffect", effectType = "Buff", effectName = "Sigil of Power" }),
+			mod("LightningMin", "BASE", nil, 0, 0, { type = "Multiplier", actor = "parent", var = "SigilOfPowerStage", limit = 4 }, { type = "GlobalEffect", effectType = "Buff", effectName = "Sigil of Power" }),
+		},
+		["circle_of_power_max_added_lightning_per_stage"] = {
+			mod("LightningMax", "BASE", nil, 0, 0, { type = "Multiplier", var = "SigilOfPowerStage", limit = 4 }, { type = "GlobalEffect", effectType = "Buff", effectName = "Sigil of Power" }),
+			mod("LightningMax", "BASE", nil, 0, 0, { type = "Multiplier", actor = "parent", var = "SigilOfPowerStage", limit = 4 }, { type = "GlobalEffect", effectType = "Buff", effectName = "Sigil of Power" }),
         },
     },
 	baseFlags = {
@@ -7590,6 +7660,7 @@ skills["CircleOfPower"] = {
 		lightning = true,
 	},
 	baseMods = {
+		skill("buffAllies", true),
 	},
 	qualityStats = {
 		Default = {
@@ -10056,9 +10127,9 @@ description = "一股逐渐拓展的能量波向前涌动，在一段时间内�
 	castTime = 0.7,
 	statMap = {
 		["purge_expose_resist_%_matching_highest_element_damage"] = {
-mod("FireResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "火焰曝露", effectCond = "WaveOfConvictionFireExposureActive" }),
-mod("ColdResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "冰霜曝露", effectCond = "WaveOfConvictionColdExposureActive" }),
-mod("LightningResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "闪电曝露", effectCond = "WaveOfConvictionLightningExposureActive" }),
+mod("FireExposure", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "火焰曝露", effectCond = "WaveOfConvictionFireExposureActive" }),
+mod("ColdExposure", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "冰霜曝露", effectCond = "WaveOfConvictionColdExposureActive" }),
+mod("LightningExposure", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "闪电曝露", effectCond = "WaveOfConvictionLightningExposureActive" }),
 		},
 	},
 	baseFlags = {

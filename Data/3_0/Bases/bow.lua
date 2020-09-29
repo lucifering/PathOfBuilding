@@ -215,29 +215,29 @@ itemBases["马拉克斯弓"] = {
 	req = { level = 71, dex = 222, },
 }
 
-itemBases["Hedron Bow"] = {
+itemBases["多面弓"] = {
 	type = "Bow",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, bow = true, ranged = true, two_hand_weapon = true, not_for_sale = true, },
-	implicit = "附加 (40-48) - (60-72) 火焰伤害",
+	implicit = "该装备附加 (40-48) - (60-72) 基础火焰伤害",
 	implicitModTypes = { { "elemental_damage", "damage", "elemental", "fire", "attack" }, },
 	weapon = { PhysicalMin = 9, PhysicalMax = 13, CritChanceBase = 5.5, AttackRateBase = 1.3, Range = 120, },
 	req = { level = 30, dex = 101, },
 }
-itemBases["Foundry Bow"] = {
+itemBases["铸造弓"] = {
 	type = "Bow",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, bow = true, ranged = true, two_hand_weapon = true, not_for_sale = true, },
-	implicit = "附加 (70-84) - (110-124) 火焰伤害",
+	implicit = "该装备附加 (70-84) - (110-124) 基础火焰伤害",
 	implicitModTypes = { { "elemental_damage", "damage", "elemental", "fire", "attack" }, },
 	weapon = { PhysicalMin = 13, PhysicalMax = 20, CritChanceBase = 5.5, AttackRateBase = 1.3, Range = 120, },
 	req = { level = 50, dex = 161, },
 }
-itemBases["Solarine Bow"] = {
+itemBases["日裔弓"] = {
 	type = "Bow",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, bow = true, ranged = true, two_hand_weapon = true, not_for_sale = true, },
-	implicit = "附加 (105-116) - (160-172) 火焰伤害",
+	implicit = "该装备附加 (105-116) - (160-172) 基础火焰伤害",
 	implicitModTypes = { { "elemental_damage", "damage", "elemental", "fire", "attack" }, },
 	weapon = { PhysicalMin = 16, PhysicalMax = 24, CritChanceBase = 5.5, AttackRateBase = 1.3, Range = 120, },
 	req = { level = 70, dex = 212, },

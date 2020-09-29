@@ -227,29 +227,29 @@ itemBases["双子战爪"] = {
 	weapon = { PhysicalMin = 23, PhysicalMax = 68, CritChanceBase = 6.3, AttackRateBase = 1.5, Range = 11, },
 	req = { level = 72, dex = 121, int = 121, },
 }
-itemBases["Shadow Fangs"] = {
+itemBases["暗影之牙"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, not_for_sale = true, },
-	implicit = "附加 (23-33) - (45-60) 混沌伤害",
+	implicit = "附加 (23-33) - (45-60) 基础混沌伤害",
 	implicitModTypes = { { "damage", "chaos", "attack" }, },
 	weapon = { PhysicalMin = 13, PhysicalMax = 24, CritChanceBase = 6, AttackRateBase = 1.6, Range = 11, },
 	req = { level = 30, dex = 54, int = 54, },
 }
-itemBases["Malign Fangs"] = {
+itemBases["恶毒之牙"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, not_for_sale = true, },
-	implicit = "附加 (38-48) - (70-90) 混沌伤害",
+	implicit = "附加 (38-48) - (70-90) 基础混沌伤害",
 	implicitModTypes = { { "damage", "chaos", "attack" }, },
 	weapon = { PhysicalMin = 20, PhysicalMax = 37, CritChanceBase = 6, AttackRateBase = 1.6, Range = 11, },
 	req = { level = 50, dex = 86, int = 86, },
 }
-itemBases["Void Fangs"] = {
+itemBases["虚空之牙"] = {
 	type = "Claw",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, claw = true, one_hand_weapon = true, not_for_sale = true, },
-	implicit = "附加 (40-55) - (80-98) 混沌伤害",
+	implicit = "附加 (40-55) - (80-98) 基础混沌伤害",
 	implicitModTypes = { { "damage", "chaos", "attack" }, },
 	weapon = { PhysicalMin = 22, PhysicalMax = 41, CritChanceBase = 6, AttackRateBase = 1.6, Range = 11, },
 	req = { level = 70, dex = 113, int = 113, },

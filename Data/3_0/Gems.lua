@@ -2883,7 +2883,7 @@ return {
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SupportGemCurseOnHit"] = {
-		name = "蛊咒(辅)",
+		name = "蛊咒（辅）",
 		grantedEffectId = "SupportCurseOnHit",
 		tags = {
 			curse = true,
@@ -6778,7 +6778,7 @@ return {
 		defaultLevel = 5,
 	},
 	["Metadata/Items/Gems/SupportGemCurseOnHitPlus"] = {
-		name = "蛊咒（强辅）",
+		name = "蛊咒【强辅】",
 		grantedEffectId = "SupportCurseOnHitPlus",
 		tags = {
 			curse = true,
@@ -7201,7 +7201,7 @@ return {
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SupportGemElementalPenetration"] = {
-		name = "元素穿透(辅)",
+		name = "元素穿透（辅）",
 		grantedEffectId = "SupportElementalPenetration",
 		tags = {
 			intelligence = true,
@@ -7333,7 +7333,7 @@ return {
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SupportGemImpendingDoom"] = {
-		name = "魔蛊爆炸",
+		name = "末日将至（辅）",
 		grantedEffectId = "ViciousHexSupport",
 		secondaryGrantedEffectId = "ViciousHexExplosion",
 		tags = {
@@ -7369,7 +7369,7 @@ return {
 		defaultLevel = 20,
 	},
 	["Metadata/Items/Gems/SupportGemPinpoint"] = {
-		name = "会心一击",
+		name = "会心一击（辅）",
 		grantedEffectId = "SupportProjectileIntensity",
 		tags = {
 			intelligence = true,

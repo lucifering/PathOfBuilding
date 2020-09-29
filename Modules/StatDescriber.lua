@@ -138,11 +138,6 @@ local function applySpecial(val, spec)
 		val[spec.v].min = val[spec.v].min / 1000
 		val[spec.v].max = val[spec.v].max / 1000
 		val[spec.v].fmt = "g"
-	elseif spec.k == "milliseconds_to_seconds_1dp" then
-		
-		val[spec.v].min = val[spec.v].min / 1000
-		val[spec.v].max = val[spec.v].max / 1000
-		val[spec.v].fmt = "g"
 	elseif spec.k == "milliseconds_to_seconds_0dp" then
 		val[spec.v].min = val[spec.v].min / 1000
 		val[spec.v].max = val[spec.v].max / 1000
@@ -284,26 +279,32 @@ return function(stats, scopeName)
 				
 				--print_r(desc)
 				if desc then
-					
 					for _, spec in ipairs(desc) do
 						applySpecial(val, spec)
 					end
-					local statDesc = desc.text:gsub("%%(%d)%%", function(n) 
-						local v = val[tonumber(n)]
+					local statDesc = desc.text:gsub("{(%d)}", function(n) 
+						local v = val[tonumber(n)+1]
 						if v.min == v.max then
 							return s_format("%"..v.fmt, v.min)
 						else
 							return s_format("(%"..v.fmt.."-%"..v.fmt..")", v.min, v.max)
 						end
-					end):gsub("%%d", function() 
+					end):gsub("{}", function() 
 						local v = val[1]
 						if v.min == v.max then
 							return s_format("%"..v.fmt, v.min)
 						else
 							return s_format("(%"..v.fmt.."-%"..v.fmt..")", v.min, v.max)
 						end
-					end):gsub("%%(%d)$(%+?)d", function(n, fmt)
-						local v = val[tonumber(n)]
+					end):gsub("{:%+?d}", function() 
+						local v = val[1]
+						if v.min == v.max then
+							return s_format("%"..v.fmt, v.min)
+						else
+							return s_format("(%"..v.fmt.."-%"..v.fmt..")", v.min, v.max)
+						end
+					end):gsub("{(%d):(%+?)d}", function(n, fmt)
+						local v = val[tonumber(n)+1]
 						if v.min == v.max then
 							return s_format("%"..fmt..v.fmt, v.min)
 						elseif fmt == "+" then

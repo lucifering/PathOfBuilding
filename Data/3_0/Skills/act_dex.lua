@@ -39,6 +39,9 @@ name = "幻化武器",
 		["attack_maximum_added_physical_damage"] = {
 			mod("MinionModifier", "LIST", { mod = mod("PhysicalMax", "BASE", nil, 0, KeywordFlag.Attack) }),
 		},
+		["minion_global_maximum_added_lightning_damage"] = {
+			mod("MinionModifier", "LIST", { mod = mod("LightningMax", "BASE", nil, 0, KeywordFlag.Attack) }),
+		},
 	},
 	baseFlags = {
 		spell = true,
@@ -310,6 +313,13 @@ name = "所有投射物",
 			activeSkill.skillData.dpsMultiplier = output.ProjectileCount
 		end
 	end,
+	statMap = {
+		["non_damaging_ailments_as_though_damage_+%_final"] = {
+			mod("ShockAsThoughDealing", "MORE", nil),
+			mod("ChillAsThoughDealing", "MORE", nil),
+			mod("FreezeAsThoughDealing", "MORE", nil)
+		}
+	},
 	baseFlags = {
 		attack = true,
 		projectile = true,
@@ -608,6 +618,12 @@ name = "6 阶时释放",
 	statMap = {
 		["base_skill_show_average_damage_instead_of_dps"] = {
 		},
+		["blade_flurry_elemental_damage_+%_while_channeling"] = {
+			mod("ElementalDamage", "INC", nil, 0, 0, { type = "SkillPart", skillPartList = {1, 2} })
+		},
+		["blade_flurry_final_flurry_area_of_effect_+%"] = {
+			mod("AreaOfEffect", "INC", nil, 0, 0,  { type = "SkillPart", skillPart = 3 })
+		}
 	},
 	baseFlags = {
 		attack = true,
@@ -713,6 +729,9 @@ name = "10 飞刃",
 		},
 		["base_skill_show_average_damage_instead_of_dps"] = {
 		},
+		["blade_vortex_damage_+%_with_5_or_fewer_blades"] = {
+			mod("Damage", "INC", nil, 0, 0, { type = "SkillPart", skillPartList = {1, 2} }),
+		}
 	},
 	baseFlags = {
 		spell = true,
@@ -988,6 +1007,14 @@ name = "所有投射物",
 			activeSkill.skillData.dpsMultiplier = output.ProjectileCount
 		end
 	end,
+	statMap = {
+		["blast_rain_damage_+%_vs_distant_enemies"] = { 
+			mod("Damage", "INC", nil, bit.bor(ModFlag.Attack, ModFlag.Projectile), 0, { type = "DistanceRamp", ramp = {{35,0},{70,1}} }) 
+		},
+		["blast_rain_area_of_effect_+%"] = {
+			-- Only affects primary area for overlaps
+		}
+	},
 	baseFlags = {
 		attack = true,
 		projectile = true,
@@ -1178,6 +1205,12 @@ description = "使用后将会给予角色时间内一个物理攻击增益. 此
 		["attack_speed_+%_granted_from_skill"] = {
 			mod("Speed", "INC", nil, ModFlag.Attack, 0, { type = "GlobalEffect", effectType = "Buff" }),
 		},
+		["blood_rage_life_leech_from_elemental_damage_permyriad"] = {
+			mod("FireDamageLifeLeech", "BASE", nil, ModFlag.Attack, 0),
+			mod("ColdDamageLifeLeech", "BASE", nil, ModFlag.Attack, 0),
+			mod("LightningDamageLifeLeech", "BASE", nil, ModFlag.Attack, 0),
+			div = 100
+		}
 	},
 	baseFlags = {
 		spell = true,
@@ -1521,6 +1554,30 @@ description = "射出一发带有腐蚀效果的箭矢, 对击中的敌人造成
 		[40] = { 2000, 16.666667039196, 60, 12, 12, damageEffectiveness = 0.74, baseMultiplier = 0.743, levelRequirement = 100, manaCost = 15, statInterpolation = { 1, 3, 1, 1, 1, }, },
 	},
 }
+skills["ImpactingSteelReload"] = {
+name = "钢铁呼唤",
+	hidden = true,
+	color = 1,
+description = "移除你周围一大片区域里所有敌人身上的穿刺减益效果（不论是否被击败），对原本穿刺周围小范围内造成反射伤害。它会持续为你提供钢刃碎片，直到回满或使用它们为止。",
+	skillTypes = { [SkillType.Type96] = true, [SkillType.Area] = true, [SkillType.SteelSkill] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 0.5,
+	baseFlags = {
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"call_of_steel_reload_amount",
+		"call_of_steel_reload_time",
+		"skill_is_steel_skill_reload",
+	},
+	levels = {
+		[1] = { 4, 500, damageEffectiveness = 1.3, cooldown = 0.2, baseMultiplier = 1.3, levelRequirement = 1, statInterpolation = { 1, 1, }, },
+	},
+}
 skills["ChargedDash"] = {
 name = "蓄力疾风闪",
 	color = 2,
@@ -1730,6 +1787,21 @@ name = "灵柩爆炸",
 			cast =  true,
 		},
 	},
+	statMap = {
+		["cremation_base_fires_projectile_every_x_ms"] = {
+			skill("cremationFireRate", nil),
+			div = 1000
+		},
+		["cremation_fires_projectiles_faster_+%_final"] = {
+			skill("cremationFireRateIncrease", nil),
+			div = 100
+		}
+	},
+	preDamageFunc = function(activeSkill, output)
+		if activeSkill.skillPart == 1 then
+			activeSkill.skillData.hitTimeOverride = activeSkill.skillData.cremationFireRate * ((activeSkill.skillData.cremationFireRateIncrease or 0) + 1)
+		end
+	end,
 	baseFlags = {
 		spell = true,
 		projectile = true,
@@ -1847,6 +1919,9 @@ name = "最大阶数",
 		},
 		["cyclone_area_of_effect_+%_per_additional_melee_range"] = {
 			mod("AreaOfEffect", "INC", nil, 0, 0, { type = "Multiplier", var = "AdditionalMeleeRange"}),
+		},
+		["cyclone_movement_speed_+%_final"] = {
+			mod("MovementSpeed", "MORE", nil, 0, 0, { type = "Condition", var = "ChannellingCyclone"}, { type = "GlobalEffect", effectType = "Buff" }),
 		},
 	},
 	initialFunc = function(activeSkill, output)
@@ -2587,6 +2662,18 @@ description = "使用两把武器对目标同时进行攻击并造成伤害. 限
 		["dual_strike_damage_+%_final_against_enemies_on_full_life"] = {
 			mod("Damage", "MORE", nil, 0, bit.bor(KeywordFlag.Hit, KeywordFlag.Ailment), { type = "ActorCondition", actor = "enemy", var = "FullLife" })
 		},
+		["active_skill_added_damage_+%_final"] = {
+			mod("PhysicalMax", "MORE", nil),
+			mod("FireMax", "MORE", nil),
+			mod("ColdMax", "MORE", nil),
+			mod("LightningMax", "MORE", nil),
+			mod("ChaosMax", "MORE", nil),
+			mod("PhysicalMin", "MORE", nil),
+			mod("FireMin", "MORE", nil),
+			mod("ColdMin", "MORE", nil),
+			mod("LightningMin", "MORE", nil),
+			mod("ChaosMin", "MORE", nil),
+		}
 	},
 	baseFlags = {
 		attack = true,
@@ -2790,6 +2877,9 @@ description = "射出一支箭矢，在击中最后的目标后留在地面，�
 	statMap = {
 		["tethered_enemies_take_attack_projectile_damage_taken_+%"] = {
 			mod("ProjectileAttackDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "Ensnared", effectStackVar = "EnsnareStackCount", effectStackLimit = 1 }),
+		},
+		["ensnaring_arrow_enemy_spell_damage_taken_+%"] = {
+			mod("SpellDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "Ensnared", effectStackVar = "EnsnareStackCount", effectStackLimit = 1 }),
 		},
 	},
 	baseFlags = {
@@ -2997,6 +3087,9 @@ name = "箭矢",
 		},
 		["explosive_arrow_hit_and_ailment_damage_+%_final_per_stack"] = {
 			mod("Damage", "MORE", nil, 0, bit.bor(KeywordFlag.Hit, KeywordFlag.Ailment), { type = "Multiplier", var = "ExplosiveArrowFuse" }),
+		},
+		["active_skill_quality_duration_+%_final"] = {
+			mod("Duration", "INC", nil)
 		},
 	},
 	baseFlags = {
@@ -3747,6 +3840,15 @@ description = "施放一个光环, 使你与受光环影响友军获得额外的
 		["base_evasion_rating"] = {
 			mod("Evasion", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
 		},
+		["avoid_all_elemental_status_%"] = {
+			mod("AvoidShock", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
+			mod("AvoidChill", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
+			mod("AvoidFreeze", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
+			mod("AvoidIgnite", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
+		},
+		["avoid_chaos_damage_%"] = {
+			mod("AvoidChaosDamageChance", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" })
+		},
 	},
 	baseFlags = {
 		spell = true,
@@ -3912,6 +4014,15 @@ description = "施放一个光环, 使你与受光环影响友军获得额外的
 		},
 		["base_movement_velocity_+%"] = {
 			mod("MovementSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
+		},
+		["summon_totem_cast_speed_+%"] = {
+			mod("TotemPlacementSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" })
+		},
+		["base_projectile_speed_+%"] = {
+			mod("ProjectileSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" })
+		},
+		["buff_time_passed_+%_only_buff_category"] = {
+			mod("BuffExpireFaster", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" })
 		},
 	},
 	baseFlags = {
@@ -4087,6 +4198,9 @@ description = "施放一个光环, 使你与受光环影响友军获得额外冰
 		["hatred_aura_cold_damage_+%_final"] = {
 			mod("ColdDamage", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
 		},
+		["movement_velocity_+%_on_chilled_ground"] = {
+			mod("MovementSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }, {type = "Condition", var = "OnChilledGround"})
+		}
 	},
 	baseFlags = {
 		spell = true,
@@ -4188,6 +4302,12 @@ description = "给予一个增益效果，使中毒伤害提高，并有几率�
 		["scorpion_minion_maximum_added_physical_damage"] = {
 			mod("MinionModifier", "LIST", { type = "HeraldOfAgonySpiderPlated", mod = mod("PhysicalMax", "BASE", nil, 0, 0, { type = "Multiplier", actor = "parent", var = "VirulenceStack", limitVar = "VirulenceStacksMax", limitActor = "parent" })})
 		},
+		["active_skill_minion_damage_+%_final"] = {
+			mod("MinionModifier", "LIST", { mod = mod("Damage", "MORE", nil) }),
+		},
+		["withered_on_hit_for_2_seconds_%_chance"] = {
+			flag("Condition:CanWither"),
+		}
 	},
 	baseFlags = {
 		cast = true,
@@ -4268,7 +4388,7 @@ name = "寒冰之捷",
 	color = 2,
 	baseEffectiveness = 1.3636000156403,
 	incrementalEffectiveness = 0.023000000044703,
-	description = "Grants a buff adding cold damage to spells and attacks. If you shatter an enemy, this skill will cause them to explode and deal AoE cold damage to enemies near them. This damage is not affected by modifiers to spell damage.",
+description = "获得一个增益效果，给法术和攻击增添冰霜伤害。如敌人被你粉碎，则该技能将其引爆，对周围的敌人造成范围冰霜伤害。该伤害不套用调整法术伤害的词缀。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.ColdSkill] = true, [SkillType.Type27] = true, [SkillType.Herald] = true, [SkillType.Instant] = true, [SkillType.AreaSpell] = true, [SkillType.Type91] = true, [SkillType.Type92] = true, [SkillType.Type96] = true, },
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 0,
@@ -4288,6 +4408,9 @@ name = "寒冰之捷",
 		["attack_maximum_added_cold_damage"] = {
 			mod("ColdMax", "BASE", nil, 0, KeywordFlag.Attack, { type = "GlobalEffect", effectType = "Buff" }),
 		},
+		["skill_buff_grants_chance_to_freeze_%"] = {
+			mod("FreezeChance", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
+		}
 	},
 	baseFlags = {
 		cast = true,
@@ -4653,7 +4776,7 @@ name = "断金之刃",
 	color = 2,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.023299999535084,
-	description = "Thrust an Axe or Sword forward, consuming your Steel Shards to form a cluster of shards in front of you. The cluster will fire a number of projectiles in sequence, aiming at enemies in front of or close to it. Steel Shards are gained with the Call of Steel Skill.",
+description = "向前投掷一把剑或斧头，消耗钢刃碎片在前方凝聚一团剑刃。它会依次对前方或靠近它的敌人发射投射物。钢刃碎片由【钢铁呼唤】提供。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.Hit] = true, [SkillType.ProjectileDamage] = true, [SkillType.ProjectileAttack] = true, [SkillType.PhysicalSkill] = true, [SkillType.Type83] = true, [SkillType.SteelSkill] = true, },
 	weaponTypes = {
 		["Two Handed Axe"] = true,
@@ -4664,6 +4787,24 @@ name = "断金之刃",
 	},
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
+	parts = {
+		{
+name = "单个投射物击中",
+		},
+		{
+name = "所有投射物击中",
+		},
+	},
+	preDamageFunc = function(activeSkill, output)
+		if activeSkill.skillPart == 2 then
+			activeSkill.skillData.dpsMultiplier = 1 + 0.4 * (output.ProjectileCount - 1)
+		end
+	end,
+	statMap = {
+		["number_of_projectiles_to_fire_+%_final_per_steel_ammo_consumed"] = {
+			mod("ProjectileCount", "MORE", nil, 0, 0, { type = "Multiplier", var = "SteelShardConsumed", limit = 4 } )
+		},
+	},
 	baseFlags = {
 		attack = true,
 		projectile = true,
@@ -4859,6 +5000,9 @@ name = "投射物",
 	statMap = {
 		["active_skill_damage_over_time_from_projectile_hits_+%_final"] = {
 			mod("Damage", "MORE", nil, ModFlag.Dot, 0, { type = "SkillPart", skillPart = 2 })
+		},
+		["projectile_base_number_of_targets_to_pierce"] = {
+			mod("PierceCount", "BASE", nil, 0, 0, { type = "SkillPart", skillPart = 2 }),
 		},
 	},
 	baseFlags = {
@@ -5389,7 +5533,7 @@ name = "盗猎者印记",
 	color = 2,
 	baseEffectiveness = 0.43999999761581,
 	incrementalEffectiveness = 0.016000000759959,
-	description = "Curses a single enemy, lowering their physical damage reduction, and adding physical damage to all hits against them. Attacking the cursed enemy will grant life and mana, and killing them will grant a frenzy charge. You can only have one Mark at a time.",
+description = "诅咒单个敌人，降低它的物理伤害减免，并使它受到的任何击中都附加物理伤害。攻击它会获得生命和魔力，击败它会获得一个狂怒球。你同时只能施加一个咒印。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.Type91] = true, [SkillType.Type92] = true, [SkillType.Mark] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -5498,6 +5642,12 @@ description = "施放一个光环, 使你与受光环影响友军获得命中和
 		},
 		["critical_strike_chance_+%"] = {
 			mod("CritChance", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
+		},
+		["auras_grant_damage_+%_to_you_and_your_allies"] = {
+			mod("Damage", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" })
+		},
+		["precision_grants_area_of_effect_+%_final"] = {
+			mod("AreaOfEffect", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" })
 		},
 	},
 	baseFlags = {
@@ -5765,6 +5915,12 @@ description = "施放一个光环, 使你与受光环影响的友军获得额外
 		},
 		["base_maximum_cold_damage_resistance_%"] = {
 			mod("ColdResistMax", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
+		},
+		["base_avoid_freeze_%"] = {
+			mod("AvoidFreeze", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
+		},
+		["base_reduce_enemy_cold_resistance_%"] = {
+			mod("ColdPenetration", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
 		},
 	},
 	baseFlags = {
@@ -6490,7 +6646,7 @@ name = "破碎铁刃",
 	color = 2,
 	baseEffectiveness = 1,
 	incrementalEffectiveness = 0.023299999535084,
-	description = "Swing an Axe or Sword, consuming Steel Shards to gain a Steel Ward that protects you for a duration, and fire projectiles which shatter on impact or soon after being launched, dealing area damage in front of where they shatter. Steel Shards are gained with the Call of Steel Skill.",
+description = "挥舞斧类或剑类，消耗【钢刃碎片】，产生一个保护你一段时间的钢刃结界。它会发射投射物，并在撞击或发射后不久粉碎，对前方敌人造成范围伤害。钢刃碎片由【钢铁呼唤】技能提供。",
 	skillTypes = { [SkillType.Attack] = true, [SkillType.Projectile] = true, [SkillType.Hit] = true, [SkillType.ProjectileDamage] = true, [SkillType.ProjectileAttack] = true, [SkillType.Area] = true, [SkillType.PhysicalSkill] = true, [SkillType.SkillCanVolley] = true, [SkillType.SteelSkill] = true, },
 	weaponTypes = {
 		["Two Handed Axe"] = true,
@@ -6503,22 +6659,18 @@ name = "破碎铁刃",
 	castTime = 1,
 	parts = {
 		{
-name = "单个投射物击中",
+name = "投射物",
 			area = false,
 		},
 		{
-name = "所有投射物击中",
-			area = false,
-		},
-		{
-name = "单个范围伤害",
+name = "圆锥范围",
 		},
 	},
-	preDamageFunc = function(activeSkill, output)
-		if activeSkill.skillPart == 2 then
-			activeSkill.skillData.dpsMultiplier = output.ProjectileCount
-		end
-	end,
+	statMap = {
+		["shattering_steel_damage_+%_final_scaled_by_projectile_distance_per_ammo_consumed"] = {
+			mod("Damage", "MORE", nil, 0, bit.bor(KeywordFlag.Hit, KeywordFlag.Ailment), { type = "Multiplier", var = "SteelShardConsumed", limit = 2 }, { type = "DistanceRamp", ramp = {{10,1},{70,0} } } ),
+		},
+	},
 	baseFlags = {
 		attack = true,
 		projectile = true,
@@ -6878,6 +7030,9 @@ description = "投掷一个地雷，当它引爆时将你传送至该地雷所�
 		["base_movement_velocity_+%"] = {
 			mod("MovementSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
 		},
+		["skill_buff_grants_attack_and_cast_speed_+%"] = {
+			mod("Speed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
+		},
 	},
 	baseFlags = {
 		spell = true,
@@ -6979,6 +7134,9 @@ name = "碎片",
 		["thrown_shield_secondary_projectile_damage_+%_final"] = {
 			mod("Damage", "MORE", nil, 0, 0, { type = "SkillPart", skillPart = 2 }),
 		},
+		["critical_multiplier_+%_per_100_max_es_on_shield"] = {
+			mod("CritMultiplier", "BASE", nil, 0, 0, {type = "PerStat", div = 100, stat = "EnergyShieldOnWeapon 2"})
+		}
 	},
 	baseFlags = {
 		attack = true,
@@ -7422,6 +7580,22 @@ skills["ImpactingSteel"] = {
 	},
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
+	parts = {
+		{
+name = "主投射物",
+		},
+		{
+name = "分裂投射物",
+		},
+	},
+	statMap = {
+		["impacting_steel_secondary_projectile_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, 0, 0, { type = "SkillPart", skillPart = 2 } )
+		},
+		["splitting_steel_area_+%_final_after_splitting"] = {
+			mod("AreaOfEffect", "MORE", nil, 0, 0, { type = "SkillPart", skillPart = 2 } )
+		},
+	},
 	baseFlags = {
 		attack = true,
 		projectile = true,
@@ -7602,7 +7776,7 @@ description = "召唤寒冰魔像, 启动时会使你提高暴击和命中. 寒�
 skills["TemporalChains"] = {
 name = "时空锁链",
 	color = 2,
-	description = "Curses all enemies in an area, lowering their action speed and making other effects on them expire more slowly.",
+description = "诅咒一片区域的所有敌人，降低它们的行动速度，并使它们身上的效果消减得更慢。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.SpellCanCascade] = true, [SkillType.AppliesCurse] = true, [SkillType.CanRapidFire] = true, [SkillType.AreaSpell] = true, [SkillType.Type91] = true, [SkillType.Type92] = true, [SkillType.Hex] = true, },
 	statDescriptionScope = "curse_skill_stat_descriptions",
 	castTime = 0.5,
@@ -8161,6 +8335,11 @@ description = "迅速穿越敌人并同时造成武器伤害. 限定匕首, 爪�
 	},
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 2.6,
+	statMap = {
+		["whirling_blades_evasion_rating_+%_while_moving"] = {
+			mod("Evasion", "INC", nil, 0, 0, { type = "Condition", var = "Moving" } )
+		},
+	},
 	baseFlags = {
 		attack = true,
 		melee = true,

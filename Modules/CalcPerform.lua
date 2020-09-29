@@ -191,6 +191,17 @@ local function doActorAttribsPoolsConditions(env, actor)
 			condList["CanInflictSap"] = true
 		end
 	end
+	if env.mode_effective then
+		if modDB:Sum("BASE", nil, "FireExposureChance") > 0 then
+			condList["CanApplyFireExposure"] = true
+		end
+		if modDB:Sum("BASE", nil, "ColdExposureChance") > 0 then
+			condList["CanApplyColdExposure"] = true
+		end
+		if modDB:Sum("BASE", nil, "LightningExposureChance") > 0 then
+			condList["CanApplyLightningExposure"] = true
+		end
+	end
 --计算 属性
 	-- Calculate attributes
 	for _, stat in pairs({"Str","Dex","Int","Devotion"}) do
@@ -414,6 +425,7 @@ local function doActorMisc(env, actor)
 	end
 	output.WarcryPower = modDB:Override(nil, "WarcryPower") or modDB:Sum("BASE", nil, "WarcryPower") or 0
 	output.CrabBarriers = m_min(modDB:Override(nil, "CrabBarriers") or output.CrabBarriersMax, output.CrabBarriersMax)
+	output.TotalCharges = output.PowerCharges + output.FrenzyCharges + output.EnduranceCharges
 	modDB.multipliers["WarcryPower"] = output.WarcryPower
 	modDB.multipliers["PowerCharge"] = output.PowerCharges
 	modDB.multipliers["RemovablePowerCharge"] = output.RemovablePowerCharges
@@ -421,6 +433,7 @@ local function doActorMisc(env, actor)
 	modDB.multipliers["RemovableFrenzyCharge"] = output.RemovableFrenzyCharges
 	modDB.multipliers["EnduranceCharge"] = output.EnduranceCharges
 	modDB.multipliers["RemovableEnduranceCharge"] = output.RemovableEnduranceCharges
+	modDB.multipliers["TotalCharges"] = output.TotalCharges
 	modDB.multipliers["SiphoningCharge"] = output.SiphoningCharges
 	modDB.multipliers["ChallengerCharge"] = output.ChallengerCharges
 	modDB.multipliers["BlitzCharge"] = output.BlitzCharges
@@ -680,9 +693,11 @@ function calcs.perform(env)
 		if activeSkill.skillFlags.hex and activeSkill.skillFlags.curse and not activeSkill.skillTypes[SkillType.Type31] then
 			local hexDoom = modDB:Sum("BASE", nil, "Multiplier:HexDoomStack")
 			local maxDoom = activeSkill.skillModList:Sum("BASE", nil, "MaxDoom") or 30
+			local doomEffect = modDB:Sum("BASE", nil, "DoomEffect") or 1
 			-- Update the max doom limit
 			output.HexDoomLimit = m_max(maxDoom, output.HexDoomLimit or 0)
 			-- Update the Hex Doom to apply
+			modDB:NewMod("CurseEffect", "INC", m_min(hexDoom, output.HexDoomLimit) * doomEffect, "Doom")
 			modDB.multipliers["HexDoom"] =  m_min(m_max(hexDoom, modDB.multipliers["HexDoom"] or 0), output.HexDoomLimit)
 		end
 		if activeSkill.skillData.supportBonechill then
@@ -741,6 +756,9 @@ function calcs.perform(env)
 		if activeSkill.activeEffect.grantedEffect.name == "召唤愤怒狂灵" then
 			local limit = env.player.mainSkill.skillModList:Sum("BASE", env.player.mainSkill.skillCfg, "ActiveRagingSpiritLimit")
 			output.ActiveRagingSpiritLimit = m_max(limit, output.ActiveRagingSpiritLimit or 0)
+		elseif activeSkill.activeEffect.grantedEffect.name == "召唤幻灵" then
+			local limit = env.player.mainSkill.skillModList:Sum("BASE", env.player.mainSkill.skillCfg, "ActivePhantasmLimit")
+			output.ActivePhantasmLimit = m_max(limit, output.ActivePhantasmLimit or 0)
 		end
 		if activeSkill.activeEffect.grantedEffect.name == "召唤灵体" then
 			local limit = env.player.mainSkill.skillModList:Sum("BASE", nil, "ActiveSpectreLimit")
@@ -960,6 +978,7 @@ function calcs.perform(env)
 	-- Merge keystones again to catch any that were added by flasks
 	mergeKeystones(env)
 	--mergeNotable(env)
+	
 	-- Calculate attributes and life/mana pools
 	
 	doActorAttribsPoolsConditions(env, env.player)
@@ -1203,10 +1222,17 @@ function calcs.perform(env)
 						activeSkill.buffSkill = true
 						affectedByAura[env.player] = true
 						modDB.conditions["AffectedBy"..buff.name:gsub(" ","")] = true
-						modDB.conditions["UsedBy"..buff.name:gsub(" ","")] = true
 						local srcList = new("ModList")
-						local inc = skillModList:Sum("INC", skillCfg, "AuraEffect", "BuffEffect", "BuffEffectOnSelf", "AuraEffectOnSelf")
-						local more = skillModList:More(skillCfg, "AuraEffect", "BuffEffect", "BuffEffectOnSelf", "AuraEffectOnSelf")
+						local inc = skillModList:Sum("INC", skillCfg, "AuraEffect", "BuffEffect", "BuffEffectOnSelf", "AuraEffectOnSelf", "AuraBuffEffect", "SkillAuraEffectOnSelf")
+
+						-- Take the Purposeful Harbinger buffs into account.
+						-- These are capped to 40% increased buff effect, no matter the amount allocated
+						local incFromPurposefulHarbinger = math.min(
+							skillModList:Sum("INC", skillCfg, "PurpHarbAuraBuffEffect"),
+							data.misc.PurposefulHarbingerMaxBuffPercent)
+						inc = inc + incFromPurposefulHarbinger
+
+						local more = skillModList:More(skillCfg, "AuraEffect", "BuffEffect", "BuffEffectOnSelf", "AuraEffectOnSelf", "AuraBuffEffect", "SkillAuraEffectOnSelf")
 						srcList:ScaleAddList(buff.modList, (1 + inc / 100) * more)
 						srcList:ScaleAddList(extraAuraModList, (1 + inc / 100) * more)
 						mergeBuff(srcList, buffs, buff.name)
@@ -1589,6 +1615,19 @@ function calcs.perform(env)
 	end
 	doActorMisc(env, env.enemy)
 
+-- Apply exposures
+	for _, element in pairs({"Fire", "Cold", "Lightning"}) do
+		local min = math.huge
+		for _, mod in ipairs(enemyDB:Tabulate("BASE", nil, element.."Exposure")) do
+			if mod.value < min then
+				min = mod.value
+			end
+		end
+		if min ~= math.huge then
+			enemyDB:NewMod(element.."Resist", "BASE", min, element.." Exposure")
+		end
+	end
+	
 	-- Defence/offence calculations
 	calcs.defence(env, env.player)
 	calcs.offence(env, env.player, env.player.mainSkill)

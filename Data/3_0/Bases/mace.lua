@@ -654,34 +654,34 @@ itemBases["花冠重锤"] = {
 }
 
 
-itemBases["Flare Mace"] = {
+itemBases["明亮锤"] = {
 	type = "One Handed Mace",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, not_for_sale = true, },
-	implicit = "此武器近战攻击击中触发等级 10 的【Fiery Impact】",
+	implicit = "使用该武器近战击中时触发 10 级火烈冲击",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 20, PhysicalMax = 41, CritChanceBase = 5, AttackRateBase = 1.3, Range = 11, },
 	req = { level = 30, str = 101, },
 }
-itemBases["Crack Mace"] = {
+itemBases["开裂锤"] = {
 	type = "One Handed Mace",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, not_for_sale = true, },
-	implicit = "此武器近战攻击击中触发等级 15 的【Fiery Impact】",
+	implicit = "使用该武器近战击中时触发 15 级火烈冲击",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 31, PhysicalMax = 64, CritChanceBase = 5, AttackRateBase = 1.3, Range = 11, },
 	req = { level = 50, str = 161, },
 }
-itemBases["Boom Mace"] = {
+itemBases["风雷锤"] = {
 	type = "One Handed Mace",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, not_for_sale = true, },
-	implicit = "此武器近战攻击击中触发等级 20 的【Fiery Impact】",
+	implicit = "使用该武器近战击中时触发 20 级火烈冲击",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 39, PhysicalMax = 81, CritChanceBase = 5, AttackRateBase = 1.3, Range = 11, },
 	req = { level = 70, str = 218, },
 }
-itemBases["Oscillating Sceptre"] = {
+itemBases["摇摆短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, not_for_sale = true, },
@@ -690,7 +690,7 @@ itemBases["Oscillating Sceptre"] = {
 	weapon = { PhysicalMin = 23, PhysicalMax = 34, CritChanceBase = 6.3, AttackRateBase = 1.45, Range = 11, },
 	req = { level = 30, str = 44, int = 64, },
 }
-itemBases["Stabilising Sceptre"] = {
+itemBases["平稳短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, not_for_sale = true, },
@@ -699,7 +699,7 @@ itemBases["Stabilising Sceptre"] = {
 	weapon = { PhysicalMin = 35, PhysicalMax = 52, CritChanceBase = 6.3, AttackRateBase = 1.45, Range = 11, },
 	req = { level = 50, str = 71, int = 102, },
 }
-itemBases["Alternating Sceptre"] = {
+itemBases["变化短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, not_for_sale = true, },
@@ -708,29 +708,29 @@ itemBases["Alternating Sceptre"] = {
 	weapon = { PhysicalMin = 41, PhysicalMax = 61, CritChanceBase = 6.3, AttackRateBase = 1.45, Range = 11, },
 	req = { level = 70, str = 95, int = 131, },
 }
-itemBases["Blunt Force Condenser"] = {
+itemBases["钝击之力凝聚器"] = {
 	type = "Two Handed Mace",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, not_for_sale = true, },
-	implicit = "战吼额外增助 1 次攻击",
+	implicit = "战吼增助 1 次额外攻击",
 	implicitModTypes = { },
 	weapon = { PhysicalMin = 39, PhysicalMax = 64, CritChanceBase = 5, AttackRateBase = 1.15, Range = 13, },
 	req = { level = 30, str = 101, },
 }
-itemBases["Crushing Force Magnifier"] = {
+itemBases["破坏之力放大器"] = {
 	type = "Two Handed Mace",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, not_for_sale = true, },
-	implicit = "战吼额外增助 1 次攻击",
+	implicit = "战吼增助 1 次额外攻击",
 	implicitModTypes = { },
 	weapon = { PhysicalMin = 62, PhysicalMax = 103, CritChanceBase = 5, AttackRateBase = 1.15, Range = 13, },
 	req = { level = 50, str = 161, },
 }
-itemBases["Impact Force Propagator"] = {
+itemBases["冲击之力扩散器"] = {
 	type = "Two Handed Mace",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, mace = true, two_hand_weapon = true, not_for_sale = true, },
-	implicit = "战吼额外增助 1 次攻击",
+	implicit = "战吼增助 1 次额外攻击",
 	implicitModTypes = { },
 	weapon = { PhysicalMin = 81, PhysicalMax = 135, CritChanceBase = 5, AttackRateBase = 1.15, Range = 13, },
 	req = { level = 70, str = 220, },

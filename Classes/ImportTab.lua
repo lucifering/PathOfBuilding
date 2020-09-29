@@ -463,7 +463,7 @@ self.charImportStatus = colorCodes.POSITIVE.."天赋树和珠宝导入成功."
 	self.build.itemsTab:AddUndoState()
 	self.build.spec:ImportFromNodeList(charData.classId, charData.ascendancyClass, charPassiveData.hashes)
 	self.build.spec:AddUndoState()
-	self.build.spec:resetAllocTimeJew(); 
+	--self.build.spec:resetAllocTimeJew(); 
 	self.build.characterLevel = charData.level
 	self.build.controls.characterLevel:SetText(charData.level)
 	self.build.buildFlag = true
@@ -777,6 +777,26 @@ elseif property.name == "仅限" then
 	end
 end
 
+
+-- parse real gem name by ommiting the first word if alt qual is set
+function ImportTabClass:GetBaseNameAndQuality(gemTypeLine)
+	if gemTypeLine then
+		local firstword, otherwords = gemTypeLine:match("(%w+)%s(.+)")
+		if firstword and otherwords then
+			for indx, entry in ipairs(self.build.skillsTab.getAlternateGemQualityList()) do
+				ConPrintf("checking if '"..firstword.."' matches label '"..entry.label.."'? "..tostring(firstword==entry.label))
+
+				if firstword == entry.label then
+					return otherwords, entry.type
+				end
+			end
+		end
+	end
+
+	return gemTypeLine, "Default"
+end
+
+
 function ImportTabClass:ImportSocketedItems(item, socketedItems, slotName)
 	-- Build socket group list
 	local itemSocketGroupList = { }
@@ -786,16 +806,19 @@ function ImportTabClass:ImportSocketedItems(item, socketedItems, slotName)
 			self:ImportItem(socketedItem, slotName .. " Abyssal Socket "..abyssalSocketId)
 			abyssalSocketId = abyssalSocketId + 1
 		elseif not self.controls.charImportItemsClearSkills.state then 
-			local gemId = self.build.data.gemForBaseName[socketedItem.typeLine] 
+			local normalizedBasename, qualityType = self:GetBaseNameAndQuality(socketedItem.typeLine)
+			local gemId = self.build.data.gemForBaseName[normalizedBasename] 
 			if not gemId and socketedItem.hybrid then
 				-- Dual skill gems (currently just Stormbind) show the second skill as the typeLine, which won't match the actual gem
 				-- Luckily the primary skill name is also there, so we can find the gem using that
-				gemId = self.build.data.gemForBaseName[socketedItem.hybrid.baseTypeName]
+				normalizedBasename, qualityType  = self:GetBaseNameAndQuality(socketedItem.hybrid.baseTypeName)
+				gemId = self.build.data.gemForBaseName[normalizedBasename]
 			end
 			if gemId then
 				local gemInstance = { level = 20, quality = 0, enabled = true, enableGlobal1 = true, gemId = gemId }
 				gemInstance.nameSpec = self.build.data.gems[gemId].name
 				gemInstance.support = socketedItem.support
+				gemInstance.qualityId = qualityType
 				for _, property in pairs(socketedItem.properties) do
 					if property.name == "等级" then
 						gemInstance.level = tonumber(property.values[1][1]:match("%d+"))

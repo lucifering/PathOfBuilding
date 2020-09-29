@@ -415,6 +415,24 @@ local function runSkillFunc(name)
 			end
 		end
 	end
+	if skillModList:Flag(nil, "ClawCritChanceAppliesToMinions") then
+		-- Claw Crit Chance conversion from Law of the Wilds
+		for i, value in ipairs(skillModList:Tabulate("INC", { flags = bor(ModFlag.Claw, ModFlag.Hit) }, "CritChance")) do
+			local mod = value.mod
+			if band(mod.flags, ModFlag.Claw) ~= 0 then
+            env.minion.modDB:NewMod("CritChance", mod.type, mod.value, mod.source)
+			end
+		end
+	end
+   if skillModList:Flag(nil, "ClawCritMultiplierAppliesToMinions") then
+		-- Claw Crit Multi conversion from Law of the Wilds
+		for i, value in ipairs(skillModList:Tabulate("BASE", { flags = bor(ModFlag.Claw, ModFlag.Hit) }, "CritMultiplier")) do
+			local mod = value.mod
+			if band(mod.flags, ModFlag.Claw) ~= 0 then
+				env.minion.modDB:NewMod("CritMultiplier", mod.type, mod.value, mod.source)
+			end
+		end
+	end
 	if skillModList:Flag(nil, "LightRadiusAppliesToAccuracy") then
 		-- Light Radius conversion from Corona Solaris
 		for i, value in ipairs(skillModList:Tabulate("INC",  { }, "LightRadius")) do
@@ -590,7 +608,7 @@ output.PierceCountString = "所有目标"
 			breakdown.AuraEffectOnSelfMod = breakdown.mod(skillCfg, "AuraEffectOnSelf","AuraEffect") 
 		end
 	end
-	if activeSkill.skillTypes[SkillType.Curse] then
+	if activeSkill.skillTypes[SkillType.Hex] or activeSkill.skillTypes[SkillType.Mark]then
 		output.CurseEffectMod = calcLib.mod(skillModList, skillCfg, "CurseEffect")
 		if breakdown then
 			breakdown.CurseEffectMod = breakdown.mod(skillCfg, "CurseEffect")
@@ -1626,10 +1644,11 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 				end
 				if env.mode_effective then
 					local enemyInc = 1 + enemyDB:Sum("INC", nil, "SelfCritMultiplier") / 100
+					extraDamage = extraDamage + enemyDB:Sum("BASE", nil, "SelfCritMultiplier") / 100
 					extraDamage = round(extraDamage * enemyInc, 2)
 					if breakdown and enemyInc ~= 1 then
 						breakdown.CritMultiplier = {
-							s_format("%d%% ^8(额外伤害)", skillModList:Sum("BASE", cfg, "CritMultiplier") / 100),
+							s_format("%d%% ^8(额外伤害)", (enemyDB:Sum("BASE", nil, "SelfCritMultiplier")+skillModList:Sum("BASE", cfg, "CritMultiplier")) / 100),
 							s_format("x %.2f ^8(敌人承受额外暴击伤害的提高/降低 )", enemyInc),
 							s_format("= %d%% ^8(额外暴击伤害)", extraDamage * 100),
 						}
@@ -1814,8 +1833,11 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 					min = min * allMult
 					max = max * allMult
 					
-					if skillModList:Flag(skillCfg, "LuckyHits") or (pass == 2 and damageType == "Lightning" 
-					and skillModList:Flag(skillCfg, "LightningNoCritLucky")) then
+					if skillModList:Flag(skillCfg, "LuckyHits") or 
+					(pass == 2 and damageType == "Lightning" and skillModList:Flag(skillCfg, "LightningNoCritLucky"))  
+					or (damageType == "Lightning" or damageType == "Cold" or damageType == "Fire" and skillModList:Flag(skillCfg, "ElementalLuckHits"))
+					or (pass == 1 and skillModList:Flag(skillCfg, "CritLucky"))
+					then
 					-- 幸运的伤害
 						damageTypeHitAvg = (min / 3 + 2 * max / 3)
 					else
@@ -2127,6 +2149,9 @@ t_insert(breakdown[damageType], s_format("占总伤害的: %d%%", output[damageT
 					t_insert(breakdown.AverageHit, s_format("(1/3) x %d + (2/3) x %d = %.1f ^8(幸运击中-来自非暴击的平均伤害)", totalHitMin, totalHitMax, totalHitAvg))
 					t_insert(breakdown.AverageHit, s_format("(1/3) x %d + (2/3) x %d = %.1f ^8(幸运击中-来自暴击的平均伤害)", totalCritMin, totalCritMax, totalCritAvg))
 					t_insert(breakdown.AverageHit, "")
+				elseif skillModList:Flag(skillCfg, "CritLucky") then
+					t_insert(breakdown.AverageHit, s_format("(1/3) x %d + (2/3) x %d = %.1f ^8(来自暴击的平均伤害)", totalCritMin, totalCritMax, totalCritAvg))
+					t_insert(breakdown.AverageHit, "")
 				end
 				t_insert(breakdown.AverageHit, s_format("%.1f x (1 - %.4f) ^8(来自非暴击的伤害)", totalHitAvg, output.CritChance / 100))
 				t_insert(breakdown.AverageHit, s_format("+ %.1f x %.4f ^8(来自暴击的伤害)", totalCritAvg, output.CritChance / 100))
@@ -2407,6 +2432,15 @@ t_insert(breakdown.TotalDPS, s_format("x %g ^8(技能 DPS 加成)", skillData.dp
         else
             output.ImpaleChance = m_min(100, skillModList:Sum("BASE", cfg, "ImpaleChance"))
         end
+		if skillModList:Sum("BASE", cfg, "FireExposureChance") > 0 then
+			skillFlags.applyFireExposure = true
+		end
+		if skillModList:Sum("BASE", cfg, "ColdExposureChance") > 0 then
+			skillFlags.applyColdExposure = true
+		end
+		if skillModList:Sum("BASE", cfg, "LightningExposureChance") > 0 then
+			skillFlags.applyLightningExposure = true
+		end
 		if env.mode_effective then
 			local bleedMult = (1 - enemyDB:Sum("BASE", nil, "AvoidBleed") / 100)
 			output.BleedChanceOnHit = output.BleedChanceOnHit * bleedMult
@@ -2834,6 +2868,7 @@ t_insert(breakdownDPS, "总伤害:")
 				output.PoisonDamage = output.PoisonDPS * globalOutput.PoisonDuration
 				if skillData.showAverage then
 					output.TotalPoisonAverageDamage = output.HitChance / 100 * output.PoisonChance / 100 * output.PoisonDamage
+					output.TotalPoisonDPS = output.PoisonDPS
 				else
 					output.TotalPoisonStacks = output.HitChance / 100 * output.PoisonChance / 100 * globalOutput.PoisonDuration * (globalOutput.HitSpeed or globalOutput.Speed) * (skillData.dpsMultiplier or 1)
 					output.TotalPoisonDPS = output.PoisonDPS * output.TotalPoisonStacks
@@ -3314,9 +3349,25 @@ t_insert(globalBreakdown.IgniteDuration, s_format("/ %.2f ^8(更快或较慢 deb
 				sourceHitDmg = sourceHitDmg + output.ColdHitAverage
 				sourceCritDmg = sourceCritDmg + output.ColdCritAverage
 			end
+			if canDeal.Physical and skillModList:Flag(cfg, "PhysicalCanFreeze") then
+				sourceHitDmg = sourceHitDmg + output.PhysicalHitAverage
+				sourceCritDmg = sourceCritDmg + output.PhysicalCritAverage
+			end
 			if canDeal.Lightning and skillModList:Flag(cfg, "LightningCanFreeze") then
 				sourceHitDmg = sourceHitDmg + output.LightningHitAverage
 				sourceCritDmg = sourceCritDmg + output.LightningCritAverage
+			end
+			if canDeal.Cold and skillModList:Flag(cfg, "ColdCanFreeze") then
+				sourceHitDmg = sourceHitDmg + output.ColdHitAverage
+				sourceCritDmg = sourceCritDmg + output.ColdCritAverage
+			end
+			if canDeal.Fire and skillModList:Flag(cfg, "FireCanFreeze") then
+				sourceHitDmg = sourceHitDmg + output.FireHitAverage
+				sourceCritDmg = sourceCritDmg + output.FireCritAverage
+			end
+			if canDeal.Chaos and skillModList:Flag(cfg, "ChaosCanFreeze") then
+				sourceHitDmg = sourceHitDmg + output.ChaosHitAverage
+				sourceCritDmg = sourceCritDmg + output.ChaosCritAverage
 			end
 			local baseVal = calcAilmentDamage("Freeze", sourceHitDmg, sourceCritDmg) * skillModList:More(cfg, "FreezeAsThoughDealing")
 			if baseVal > 0 then
@@ -3713,8 +3764,13 @@ t_insert(breakdown.DecayDuration, s_format("/ %.2f ^8(更快或较慢 debuff消�
 
 
 	-- Calculate combined DPS estimate, including DoTs
-	local baseDPS = output[(skillData.showAverage and "AverageDamage") or "TotalDPS"] + output.TotalDot
+	local baseDPS = output[(skillData.showAverage and "AverageDamage") or "TotalDPS"]
 	output.CombinedDPS = baseDPS
+	output.CombinedAvg = baseDPS
+	if skillFlags.dot then
+		output.CombinedDPS = output.CombinedDPS + (output.TotalDot or 0)
+		output.WithDotDPS = baseDPS + (output.TotalDot or 0)
+	end
 	if skillData.showAverage then
 		output.CombinedDPS = output.CombinedDPS + (output.TotalPoisonAverageDamage or 0)
 		output.WithPoisonAverageDamage = baseDPS + (output.TotalPoisonAverageDamage or 0)
@@ -3741,6 +3797,8 @@ t_insert(breakdown.DecayDuration, s_format("/ %.2f ^8(更快或较慢 debuff消�
 	if skillFlags.decay then
 		output.CombinedDPS = output.CombinedDPS + output.DecayDPS
 	end
+	output.TotalDotDPS = (output.TotalDot or 0) + (output.TotalPoisonDPS or 0) + (output.TotalIgniteDPS or output.IgniteDPS or 0) + (output.BleedDPS or 0) + (output.DecayDPS or 0)
+	
 
 end
 

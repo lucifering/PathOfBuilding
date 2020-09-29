@@ -1208,7 +1208,7 @@ function ItemsTabClass:PopulateSlots()
 		slot:Populate()
 	end
 	if self.build and self.build.spec then 
-	self.build.spec:resetAllocTimeJew()
+	--self.build.spec:resetAllocTimeJew()
 	end 
 end
 
@@ -1284,7 +1284,7 @@ function ItemsTabClass:AddItem(item, noAutoEquip, index)
 	local replacing = self.items[item.id]
 	self.items[item.id] = item
 	item:BuildModList()
-	if replacing and (replacing.clusterJewel or item.clusterJewel) then
+	if replacing and (replacing.clusterJewel or item.clusterJewel or replacing.baseName == "永恒珠宝") then
 		-- We're replacing an existing item, and either the new or old one is a cluster jewel
 		if isValueInTable(self.build.spec.jewels, item.id) then
 			-- Item is currently equipped, so we need to rebuild the graphs

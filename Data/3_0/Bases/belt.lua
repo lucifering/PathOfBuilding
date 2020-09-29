@@ -75,17 +75,17 @@ itemBases["金羽腰带"] = {
 	req = { },
 }
 
-itemBases["Micro-Distillery Belt"] = {
+itemBases["低酿腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, },
-	implicit = "你身上的药剂效果提高 20%\n无法使用第五个插槽的药剂",
+	implicit = "不能使用第五栏的药剂\n你身上的药剂效果提高 20%",
 	implicitModTypes = { {  }, {  }, },
 	req = { level = 24, },
 }
-itemBases["Mechalarm Belt"] = {
+itemBases["警戒腰带"] = {
 	type = "Belt",
 	tags = { default = true, belt = true, },
-	implicit = "使用药剂时触发等级 20 的【召唤嘲讽装置】",
+	implicit = "你使用药剂时触发 20 级召唤嘲讽装置",
 	implicitModTypes = { {  }, },
 	req = { level = 56, },
 }

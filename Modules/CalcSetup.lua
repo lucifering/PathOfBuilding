@@ -254,6 +254,7 @@ function calcs.initEnv(build, mode, override)
 	modDB:NewMod("Speed", "INC", 1, "Base", ModFlag.Attack, { type = "Multiplier", var = "Rage",  div = 2 }, { type = "Multiplier", var = "RageEffect" })
 	modDB:NewMod("MovementSpeed", "INC", 1, "Base", { type = "Multiplier", var = "Rage", div = 5 }, { type = "Multiplier", var = "RageEffect" })
 	 modDB:NewMod("MaximumRage", "BASE", 50, "Base")
+	 modDB:NewMod("Multiplier:IntensityLimit", "BASE", 3, "Base")
 	 modDB:NewMod("Damage", "INC", 2, "Base", { type = "Multiplier", var = "Rampage", limit = 50, div = 20 })
 	modDB:NewMod("MovementSpeed", "INC", 1, "Base", { type = "Multiplier", var = "Rampage", limit = 50, div = 20 })
 	if build.targetVersion == "2_6" then
@@ -497,7 +498,7 @@ function calcs.initEnv(build, mode, override)
 				env.modDB.multipliers["AbyssJewel"] = (env.modDB.multipliers["AbyssJewel"] or 0) + 1
 			end
 			-- 灵能神盾
-			if item.type == "Shield" and nodes[45175] then
+			if item.type == "Shield" and nodes[45175] and nodes[45175].dn == "灵能神盾" then
 				-- Special handling for Necromantic Aegis
 				env.aegisModList = new("ModList")
 				for _, mod in ipairs(srcList) do

@@ -25,6 +25,9 @@ local resistTypeList = { "Fire", "Cold", "Lightning", "Chaos" }
 
 -- Calculate hit chance
 function calcs.hitChance(evasion, accuracy)
+	if accuracy < 0 then
+		return 5
+	end
 	local rawChance = accuracy / (accuracy + (evasion / 4) ^ 0.8) * 115
 	return m_max(m_min(round(rawChance), 100), 5)	
 end
@@ -92,6 +95,7 @@ function calcs.defence(env, actor)
 		output[elem.."ResistTotal"] = total
 		output[elem.."ResistOverCap"] = m_max(0, total - max)
 		output[elem.."ResistOver75"] = m_max(0, final - 75)
+		output["Missing"..elem.."Resist"] = m_max(0, max - final)
 		if breakdown then
 			breakdown[elem.."Resist"] = {
 				"Max: "..max.."%",
@@ -393,7 +397,7 @@ modDB:NewMod("EnergyShieldRegenPercent", "BASE", lifePercent, "狂热誓言")
 			output.EnergyShieldRegen = esBase * output.EnergyShieldRecoveryRateMod * calcLib.mod(modDB, nil, "EnergyShieldRegen")
 			output.EnergyShieldRegenPercent = round(output.EnergyShieldRegen / output.EnergyShield * 100, 1)
 		else
-			output.EnergyShieldRegen = 0
+			output.EnergyShieldRegen = 0 - modDB:Sum("BASE", nil, "EnergyShieldDegen")
 		end
 	end
 	if modDB:Sum("BASE", nil, "RageRegen") > 0 then
@@ -421,35 +425,60 @@ modDB:NewMod("EnergyShieldRegenPercent", "BASE", lifePercent, "狂热誓言")
 	else
 		local inc = modDB:Sum("INC", nil, "EnergyShieldRecharge")
 		local more = modDB:More(nil, "EnergyShieldRecharge")
-		local recharge = output.EnergyShield * 0.2 * (1 + inc/100) * more
-		output.EnergyShieldRecharge = round(recharge * output.EnergyShieldRecoveryRateMod)
+		if modDB:Flag(nil, "EnergyShieldRechargeAppliesToLife") then
+			
+			output.EnergyShieldRechargeAppliesToLife = true
+			local recharge = output.Life * data.misc.EnergyShieldRechargeBase * (1 + inc/100) * more
+			output.LifeRecharge = round(recharge * output.LifeRecoveryRateMod)
+			if breakdown then
+				breakdown.LifeRecharge = { }
+				breakdown.multiChain(breakdown.LifeRecharge, {
+					label = "能量护盾充能速率:",
+					base = s_format("%.1f ^8(20%% 每秒)", output.Life * data.misc.EnergyShieldRechargeBase),
+					{ "%.2f ^8(提高/降低)", 1 + inc/100 },
+					{ "%.2f ^8(额外提高/降低)", more },
+					total = s_format("= %.1f ^8每秒", recharge),
+				})
+				breakdown.multiChain(breakdown.LifeRecharge, {
+					label = "能量护盾充能速率:",
+					base = s_format("%.1f", recharge),
+					{ "%.2f ^8(回复速率加成)", output.LifeRecoveryRateMod },
+					total = s_format("= %.1f ^8每秒", output.LifeRecharge),
+				})	
+			end
+		else
+			output.EnergyShieldRechargeAppliesToEnergyShield = true
+			local recharge = output.EnergyShield * data.misc.EnergyShieldRechargeBase * (1 + inc/100) * more
+			output.EnergyShieldRecharge = round(recharge * output.EnergyShieldRecoveryRateMod)
+			if breakdown then
+				breakdown.EnergyShieldRecharge = { }
+				breakdown.multiChain(breakdown.EnergyShieldRecharge, {
+					label = "能量护盾充能速率:",
+					base = s_format("%.1f ^8(20%% 每秒)", output.EnergyShield * data.misc.EnergyShieldRechargeBase),
+					{ "%.2f ^8(提高/降低)", 1 + inc/100 },
+					{ "%.2f ^8(额外提高/降低)", more },
+					total = s_format("= %.1f ^8每秒", recharge),
+				})
+				breakdown.multiChain(breakdown.EnergyShieldRecharge, {
+					label = "有效能量护盾充能速率:",
+					base = s_format("%.1f", recharge),
+					{ "%.2f ^8(回复速率加成)", output.EnergyShieldRecoveryRateMod },
+					total = s_format("= %.1f ^8每秒", output.EnergyShieldRecharge),
+				})
+			end
+		end
 		output.EnergyShieldRechargeDelay = 2 / (1 + modDB:Sum("INC", nil, "EnergyShieldRechargeFaster") / 100)
 		if breakdown then
-			breakdown.EnergyShieldRecharge = { }
-			breakdown.multiChain(breakdown.EnergyShieldRecharge, {
-label = "能量护盾充能速率:",
-base = s_format("%.1f ^8(20%% 每秒)", output.EnergyShield * 0.2),
-{ "%.2f ^8(提高/降低)", 1 + inc/100 },
-{ "%.2f ^8(额外提高/降低)", more },
-total = s_format("= %.1f ^8每秒", recharge),
-			})
-			breakdown.multiChain(breakdown.EnergyShieldRecharge, {
-label = "有效能量护盾充能速率:",
-				base = s_format("%.1f", recharge),
-{ "%.2f ^8(回复速率加成)", output.EnergyShieldRecoveryRateMod },
-total = s_format("= %.1f ^8每秒", output.EnergyShieldRecharge),
-			})				
 			if output.EnergyShieldRechargeDelay ~= 2 then
 				breakdown.EnergyShieldRechargeDelay = {
-"2.00s ^8(基础)",
-s_format("/ %.2f ^8(更快开始)", 1 + modDB:Sum("INC", nil, "EnergyShieldRechargeFaster") / 100),
+					"2.00s ^8(基础)",
+					s_format("/ %.2f ^8(更快开始)", 1 + modDB:Sum("INC", nil, "EnergyShieldRechargeFaster") / 100),
 					s_format("= %.2fs", output.EnergyShieldRechargeDelay)
 				}
 			end
 		end
 	end
-
-
+	
 
 	-- Other defences: block, dodge, stun recovery/avoidance
 	output.MovementSpeedMod = modDB:Override(nil, "MovementSpeed") or calcLib.mod(modDB, nil, "MovementSpeed")

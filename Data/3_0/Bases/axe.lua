@@ -387,56 +387,56 @@ itemBases["裂肉者"] = {
 	weapon = { PhysicalMin = 97, PhysicalMax = 152, CritChanceBase = 5, AttackRateBase = 1.2, Range = 13, },
 	req = { level = 70, str = 156, dex = 84, },
 }
-itemBases["Maltreatment Axe"] = {
+itemBases["凌虐斧"] = {
 	type = "One Handed Axe",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, axe = true, one_hand_weapon = true, not_for_sale = true, },
-	implicit = "+10 怒火数量上限",
+	implicit = "+10 最大怒火",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 21, PhysicalMax = 44, CritChanceBase = 5, AttackRateBase = 1.3, Range = 11, },
 	req = { level = 30, str = 78, dex = 34, },
 }
-itemBases["Disapprobation Axe"] = {
+itemBases["否认斧"] = {
 	type = "One Handed Axe",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, axe = true, one_hand_weapon = true, not_for_sale = true, },
-	implicit = "+10 怒火数量上限",
+	implicit = "+10 最大怒火",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 32, PhysicalMax = 67, CritChanceBase = 5, AttackRateBase = 1.3, Range = 11, },
 	req = { level = 50, str = 124, dex = 54, },
 }
-itemBases["Psychotic Axe"] = {
+itemBases["癫狂斧"] = {
 	type = "One Handed Axe",
 	socketLimit = 3,
 	tags = { default = true, weapon = true, onehand = true, axe = true, one_hand_weapon = true, not_for_sale = true, },
-	implicit = "+10 怒火数量上限",
+	implicit = "+10 最大怒火",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 38, PhysicalMax = 79, CritChanceBase = 5, AttackRateBase = 1.3, Range = 11, },
 	req = { level = 70, str = 163, dex = 84, },
 }
-itemBases["Prime Cleaver"] = {
+itemBases["首要砍刀"] = {
 	type = "Two Handed Axe",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, axe = true, two_hand_weapon = true, not_for_sale = true, },
-	implicit = "+20% 品质上限",
+	implicit = "品质上限 +20%",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 36, PhysicalMax = 56, CritChanceBase = 5, AttackRateBase = 1.35, Range = 13, },
 	req = { level = 30, },
 }
-itemBases["Honed Cleaver"] = {
+itemBases["磨利砍刀"] = {
 	type = "Two Handed Axe",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, axe = true, two_hand_weapon = true, not_for_sale = true, },
-	implicit = "+20% 品质上限",
+	implicit = "最大品质 +20%",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 55, PhysicalMax = 86, CritChanceBase = 5, AttackRateBase = 1.35, Range = 13, },
 	req = { level = 50, },
 }
-itemBases["Apex Cleaver"] = {
+itemBases["锋锐砍刀"] = {
 	type = "Two Handed Axe",
 	socketLimit = 6,
 	tags = { default = true, weapon = true, twohand = true, axe = true, two_hand_weapon = true, not_for_sale = true, },
-	implicit = "+20% 品质上限",
+	implicit = "最大品质 +20%",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 65, PhysicalMax = 101, CritChanceBase = 5, AttackRateBase = 1.35, Range = 13, },
 	req = { level = 70, },

@@ -889,92 +889,92 @@ itemBases["黄金圣炎"] = {
 	armour = { BlockChance = 20, MovementPenalty = 3, },
 	req = { level = 15, },
 }
-itemBases["Exothermic Tower Shield"] = {
+itemBases["排热型塔盾"] = {
 	type = "Shield",
 	subType = "Armour",
 	socketLimit = 3,
 	tags = { default = true, armour = true, shield = true, str_armour = true, str_shield = true, not_for_sale = true, },
-	implicit = "成功格挡敌人的伤害时对其造成烧灼",
+	implicit = "你格挡敌人的伤害时灼烧敌人",
 	implicitModTypes = { {  }, },
 	armour = { BlockChance = 23, ArmourBase = 125, MovementPenalty = 3, },
 	req = { level = 30, str = 76, },
 }
-itemBases["Magmatic Tower Shield"] = {
+itemBases["熔岩塔盾"] = {
 	type = "Shield",
 	subType = "Armour",
 	socketLimit = 3,
 	tags = { default = true, armour = true, shield = true, str_armour = true, str_shield = true, not_for_sale = true, },
-	implicit = "成功格挡敌人的伤害时对其造成烧灼",
+	implicit = "你格挡敌人的伤害时灼烧敌人",
 	implicitModTypes = { {  }, },
 	armour = { BlockChance = 23, ArmourBase = 205, MovementPenalty = 3, },
 	req = { level = 50, str = 121, },
 }
-itemBases["Heat-attuned Tower Shield"] = {
+itemBases["适热型塔盾"] = {
 	type = "Shield",
 	subType = "Armour",
 	socketLimit = 3,
 	tags = { default = true, armour = true, shield = true, str_armour = true, str_shield = true, not_for_sale = true, },
-	implicit = "成功格挡敌人的伤害时对其造成烧灼",
+	implicit = "你格挡敌人的伤害时灼烧敌人",
 	implicitModTypes = { {  }, },
 	armour = { BlockChance = 23, ArmourBase = 440, MovementPenalty = 3, },
 	req = { level = 70, str = 159, },
 }
-itemBases["Endothermic Buckler"] = {
+itemBases["吸热型轻盾"] = {
 	type = "Shield",
 	subType = "Evasion",
 	socketLimit = 3,
 	tags = { default = true, armour = true, shield = true, dex_armour = true, dex_shield = true, not_for_sale = true, },
-	implicit = "成功格挡敌人的伤害时对其造成脆弱",
+	implicit = "你格挡敌人的伤害时，给它们施加脆弱",
 	implicitModTypes = { {  }, },
 	armour = { BlockChance = 22, EvasionBase = 112, MovementPenalty = 3, },
 	req = { level = 30, dex = 76, },
 }
-itemBases["Polar Buckler"] = {
+itemBases["极地轻盾"] = {
 	type = "Shield",
 	subType = "Evasion",
 	socketLimit = 3,
 	tags = { default = true, armour = true, shield = true, dex_armour = true, dex_shield = true, not_for_sale = true, },
-	implicit = "成功格挡敌人的伤害时对其造成脆弱",
+	implicit = "你格挡敌人的伤害时，给它们施加脆弱",
 	implicitModTypes = { {  }, },
 	armour = { BlockChance = 22, EvasionBase = 185, MovementPenalty = 3, },
 	req = { level = 50, dex = 121, },
 }
-itemBases["Cold-attuned Buckler"] = {
+itemBases["适寒型轻盾"] = {
 	type = "Shield",
 	subType = "Evasion",
 	socketLimit = 3,
 	tags = { default = true, armour = true, shield = true, dex_armour = true, dex_shield = true, not_for_sale = true, },
-	implicit = "成功格挡敌人的伤害时对其造成脆弱",
+	implicit = "你格挡敌人的伤害时，给它们施加脆弱",
 	implicitModTypes = { {  }, },
 	armour = { BlockChance = 22, EvasionBase = 302, MovementPenalty = 3, },
 	req = { level = 70, dex = 159, },
 }
-itemBases["Exhausting Spirit Shield"] = {
+itemBases["力竭魔盾"] = {
 	type = "Shield",
 	subType = "Energy Shield",
 	socketLimit = 3,
 	tags = { default = true, armour = true, shield = true, int_armour = true, focus = true, not_for_sale = true, },
-	implicit = "成功格挡敌人的伤害时对其造成精疲力尽",
+	implicit = "你格挡敌人的伤害时使它们精疲力尽",
 	implicitModTypes = { {  }, },
 	armour = { BlockChance = 20, EnergyShieldBase = 23, MovementPenalty = 3, },
 	req = { level = 30, int = 76, },
 }
-itemBases["Subsuming Spirit Shield"] = {
+itemBases["归纳魔盾"] = {
 	type = "Shield",
 	subType = "Energy Shield",
 	socketLimit = 3,
 	tags = { default = true, armour = true, shield = true, int_armour = true, focus = true, not_for_sale = true, },
-	implicit = "成功格挡敌人的伤害时对其造成精疲力尽",
+	implicit = "你格挡敌人的伤害时使它们精疲力尽",
 	implicitModTypes = { {  }, },
 	armour = { BlockChance = 20, EnergyShieldBase = 36, MovementPenalty = 3, },
 	req = { level = 50, int = 121, },
 }
-itemBases["Transfer-attuned Spirit Shield"] = {
+itemBases["适应型魔盾"] = {
 	type = "Shield",
 	subType = "Energy Shield",
 	socketLimit = 3,
 	tags = { default = true, armour = true, shield = true, int_armour = true, focus = true, not_for_sale = true, },
-	implicit = "成功格挡敌人的伤害时对其造成精疲力尽",
+	implicit = "你格挡敌人的伤害时使它们精疲力尽",
 	implicitModTypes = { {  }, },
 	armour = { BlockChance = 20, EnergyShieldBase = 53, MovementPenalty = 3, },
 	req = { level = 70, int = 159, },

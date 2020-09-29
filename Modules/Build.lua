@@ -75,7 +75,7 @@ self.controls.back = new("ButtonControl", {"LEFT",self.anchorTopBarLeft,"RIGHT"}
 			 
 		
 			self:CloseBuild()
-			self.spec:resetAll(); 
+			--self.spec:resetAll(); 
 		end
 	end)
 	self.controls.buildName = new("Control", {"LEFT",self.controls.back,"RIGHT"}, 8, 0, 0, 20)
@@ -195,14 +195,14 @@ self.controls.characterLevel = new("EditControl", {"LEFT",self.controls.pointDis
 			if self.spec:CountAllocNodes() == 0 or self.spec:IsClassConnected(value.classId) then
 				self.spec:SelectClass(value.classId)
 				self.spec:AddUndoState()
-				self.spec:resetAllocTimeJew(); 
+				--self.spec:resetAllocTimeJew(); 
 				--self.build.spec:allocTimeJew(); 				
 				self.buildFlag = true
 			else
 main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会重置你目前的天赋树.\n你可以考虑连接当前的天赋点到 "..value.label.."\n这样出门点就不会被重置了。", "继续", function()
 					self.spec:SelectClass(value.classId)
 					self.spec:AddUndoState()
-					self.spec:resetAllocTimeJew(); 
+					--self.spec:resetAllocTimeJew(); 
 					--self.build.spec:allocTimeJew(); 
 				
 					self.buildFlag = true					
@@ -249,7 +249,8 @@ main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会�
 { stat = "WithPoisonDPS", label = "总DPS（包含中毒伤害）", fmt = ".1f", compPercent = true, flag = "poison", condFunc = function(v,o) return v ~= o.TotalDPS end },
 { stat = "WithPoisonAverageDamage", label = "平均伤害（包含中毒伤害）", fmt = ".1f", compPercent = true, flag = "poison", condFunc = function(v,o) return v ~= o.AverageDamage end },
 { stat = "DecayDPS", label = "腐化 DPS", fmt = ".1f", compPercent = true },
-{ stat = "CombinedDPS", label = "合计 DPS", fmt = ".1f", compPercent = true },
+{ stat = "TotalDotDPS", label = "总持续伤害 DPS", fmt = ".1f", compPercent = true, condFunc = function(v,o) return v ~= o.TotalDot and v ~= o.ImpaleDPS and v ~= o.TotalPoisonDPS and v ~= (o.TotalIgniteDPS or o.IgniteDPS) and v ~= o.BleedDPS end }, 
+{ stat = "CombinedDPS", label = "合计 DPS", fmt = ".1f", compPercent = true, flag = "notAverage", condFunc = function(v,o) return v ~= ((o.TotalDPS or 0) + (o.TotalDot or 0)) and v ~= o.WithImpaleDPS and v ~= o.WithPoisonDPS and v ~= o.WithIgniteDPS and v ~= o.WithBleedDPS end },
 { stat = "Cooldown", label = "技能CD", fmt = ".2fs", lowerIsBetter = true },
 { stat = "AreaOfEffectRadius", label = "范围半径", fmt = "d" },
 { stat = "BrandTicks", label = "烙印激活频率", fmt = "d", flag = "brand" },
@@ -321,6 +322,7 @@ main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会�
 { stat = "HitSpeed", label = "击中速率", fmt = ".2f" },
 { stat = "TotalDPS", label = "总 DPS", fmt = ".1f", compPercent = true },
 { stat = "TotalDot", label = "持续伤害 DPS", fmt = ".1f", compPercent = true },
+{ stat = "WithDotDPS", label = "总DPS（包含持续伤害）", fmt = ".1f", compPercent = true, flag = "notAverage", condFunc = function(v,o) return v ~= o.TotalDPS and (o.PoisonDPS or 0) == 0 and (o.IgniteDPS or 0 == 0) and (o.ImpaleDPS or 0) == 0 and (o.BleedDPS or 0) == 0 end },
 { stat = "BleedDPS", label = "流血 DPS", fmt = ".1f", compPercent = true },
 { stat = "IgniteDPS", label = "点燃 DPS", fmt = ".1f", compPercent = true },
 { stat = "WithPoisonDPS", label = "总DPS（包含中毒伤害）", fmt = ".1f", compPercent = true },

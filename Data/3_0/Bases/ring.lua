@@ -183,18 +183,18 @@ itemBases["杰特戒指"] = {
 	implicitModTypes = { { "defences" }, },
 	req = { },
 }
-itemBases["Cogwork Ring"] = {
+itemBases["齿轮戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, not_for_sale = true, },
-	implicit = "-1 前缀数量上限\n+1 后缀数量上限\n固定基底词缀无法变更",
+	implicit = "允许的前缀 -1\n允许的后缀 +1\n基底词缀不能改变",
 	implicitModTypes = { {  }, {  }, {  }, },
-	req = { level = 24, },
+	req = { level = 25, },
 }
-itemBases["Geodesic Ring"] = {
+itemBases["地线戒指"] = {
 	type = "Ring",
 	tags = { default = true, ring = true, not_for_sale = true, },
-	implicit = "+1 前缀数量上限\n-1 后缀数量上限\n固定基底词缀无法变更",
+	implicit = "允许的前缀 +1\n允许的后缀 -1\n基底词缀不能改变",
 	implicitModTypes = { {  }, {  }, {  }, },
-	req = { level = 24, },
+	req = { level = 25, },
 }
 

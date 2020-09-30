@@ -277,6 +277,7 @@ function SkillsTabClass:ParseGemAltQuality(gemName, qualityId)
 			end
 		end
 	end
+	return "Default"
 end
 
 -- parse real gem name by ommiting the first word if alt qual is set

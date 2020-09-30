@@ -296,6 +296,12 @@ t_insert(combatList, "猛攻")
 		if env.modDB:Flag(nil, "UnholyMight") then
 t_insert(combatList, "不洁之力")
 		end
+		if env.modDB:Flag(nil, "LesserMassiveShrine") then
+t_insert(combatList, "次级威猛神龛")
+		end
+		if env.modDB:Flag(nil, "LesserBrutalShrine") then
+t_insert(combatList, "次级狂击神龛")
+		end		
 		if env.modDB:Flag(nil, "Tailwind") then
 t_insert(combatList, "提速尾流")
 		end

@@ -9,6 +9,7 @@ local pairs = pairs
 local ipairs = ipairs
 local unpack = unpack
 local t_insert = table.insert
+local m_abs = math.abs
 local m_floor = math.floor
 local m_ceil = math.ceil
 local m_modf = math.modf
@@ -549,28 +550,53 @@ output.ChainMaxString = "无法连锁"
 	end
 	if skillFlags.projectile then
 		if skillModList:Flag(nil, "PointBlank") then
-			skillModList:NewMod("Damage", "MORE", 30, "Point Blank", bor(ModFlag.Attack, ModFlag.Projectile), { type = "DistanceRamp", ramp = {{10,1},{35,0},{150,-1}} })
+			skillModList:NewMod("Damage", "MORE", 30, "零点射击", bor(ModFlag.Attack, ModFlag.Projectile), { type = "DistanceRamp", ramp = {{10,1},{35,0},{150,-1}} })
 		end
 		if skillModList:Flag(nil, "FarShot") then
-			skillModList:NewMod("Damage", "MORE", 30, "Far Shot", bor(ModFlag.Attack, ModFlag.Projectile), { type = "DistanceRamp", ramp = {{35,0},{70,1}} })
+			skillModList:NewMod("Damage", "MORE", 30, "远射", bor(ModFlag.Attack, ModFlag.Projectile), { type = "DistanceRamp", ramp = {{35,0},{70,1}} })
 		end
-		output.ProjectileCount = skillModList:Sum("BASE", skillCfg, "ProjectileCount")*(1+skillModList:Sum("INC", skillCfg, "ProjectileCount")/100)*(1+skillModList:Sum("MORE", skillCfg, "ProjectileCount")/100)
-	 
-		if skillModList:Flag(skillCfg, "CannotPierce") then
-output.PierceCountString = "无法穿透"	
+		
+		if skillModList:Flag(skillCfg, "NoAdditionalProjectiles") then
+			output.ProjectileCount = 1
 		else
-		if skillModList:Flag(skillCfg, "PierceAllTargets") or enemyDB:Flag(nil, "AlwaysPierceSelf") then
-			output.PierceCount = 100
-output.PierceCountString = "所有目标"
+			local projBase = skillModList:Sum("BASE", skillCfg, "ProjectileCount")
+			local projMore = skillModList:More(skillCfg, "ProjectileCount")
+			output.ProjectileCount = m_floor(projBase * projMore)
+		end
+		
+		if skillModList:Flag(skillCfg, "CannotFork") then
+			output.ForkCountString = "无法分叉"
+		elseif skillModList:Flag(skillCfg, "ForkOnce") then
+			skillFlags.forking = true
+			if skillModList:Flag(skillCfg, "ForkTwice") then
+				output.ForkCountMax = m_min(skillModList:Sum("BASE", skillCfg, "ForkCountMax"), 2)
+			else
+				output.ForkCountMax = m_min(skillModList:Sum("BASE", skillCfg, "ForkCountMax"), 1)
+			end
+			output.ForkedCount = m_min(output.ForkCountMax, skillModList:Sum("BASE", skillCfg, "ForkedCount"))
+			output.ForkCountString = output.ForkCountMax
+			output.ForkRemaining = m_max(0, output.ForkCountMax - output.ForkedCount)
+		else
+			output.ForkCountString = "0"
+		end
+		if skillModList:Flag(skillCfg, "CannotPierce") then
+			output.PierceCount = 0
+			output.PierceCountString = "无法穿透"
+		else
+			if skillModList:Flag(skillCfg, "PierceAllTargets") or enemyDB:Flag(nil, "AlwaysPierceSelf") then
+				output.PierceCount = 100
+				output.PierceCountString = "所有目标"
 			else
 				output.PierceCount = skillModList:Sum("BASE", skillCfg, "PierceCount")
 				output.PierceCountString = output.PierceCount
+			end
 		end
-	end
 		output.ProjectileSpeedMod = calcLib.mod(skillModList, skillCfg, "ProjectileSpeed")
 		if breakdown then
-			breakdown.ProjectileSpeedMod = breakdown.mod(skillCfg, "ProjectileSpeed")
+			breakdown.ProjectileSpeedMod = breakdown.mod(skillModList, skillCfg, "ProjectileSpeed")
 		end
+		
+		 
 	end
 	if skillFlags.melee then
 		if skillFlags.weapon1Attack then
@@ -856,7 +882,10 @@ t_insert(breakdown.DurationSecondary, s_format("/ %.2f ^8(debuff更快或更慢�
 		if skillData.baseManaCostIsAtLeastPercentUnreservedMana then
 			manaCost = m_max(manaCost, m_floor((output.ManaUnreserved or 0) * skillData.baseManaCostIsAtLeastPercentUnreservedMana / 100))
 		end
-		output.ManaCost = m_floor(m_max(0, manaCost * mult * more * (1 + inc / 100) + base))
+		output.ManaCost = m_floor(manaCost * mult)
+		output.ManaCost = m_floor(m_abs(inc / 100) * output.ManaCost) * (inc >= 0 and 1 or -1) + output.ManaCost
+		output.ManaCost = m_floor(m_abs(more - 1) * output.ManaCost) * (more >= 1 and 1 or -1) + output.ManaCost
+		output.ManaCost = m_max(0, m_floor(output.ManaCost + base))
 		if activeSkill.skillTypes[SkillType.ManaCostPercent] and skillFlags.totem then
 			output.ManaCost = m_floor(output.Mana * output.ManaCost / 100)
 		end
@@ -870,7 +899,7 @@ t_insert(breakdown.DurationSecondary, s_format("/ %.2f ^8(debuff更快或更慢�
 			if inc ~= 0 then
 				t_insert(breakdown.ManaCost, s_format("x %.2f ^8(提高/降低 魔力消耗)", 1 + inc/100))
 			end	
-			if more ~= 0 then
+			if more ~= 1 then
 				t_insert(breakdown.ManaCost, s_format("x %.2f ^8(额外提高/降低总魔力消耗)", more))
 			end	
 			if base ~= 0 then
@@ -1835,7 +1864,7 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 					
 					if skillModList:Flag(skillCfg, "LuckyHits") or 
 					(pass == 2 and damageType == "Lightning" and skillModList:Flag(skillCfg, "LightningNoCritLucky"))  
-					or (damageType == "Lightning" or damageType == "Cold" or damageType == "Fire" and skillModList:Flag(skillCfg, "ElementalLuckHits"))
+					or ((damageType == "Lightning" or damageType == "Cold" or damageType == "Fire") and skillModList:Flag(skillCfg, "ElementalLuckHits")) 
 					or (pass == 1 and skillModList:Flag(skillCfg, "CritLucky"))
 					then
 					-- 幸运的伤害
@@ -1907,14 +1936,23 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 							elseif damageType == "Chaos" then
 								pen = skillModList:Sum("BASE", cfg, "ChaosPenetration")
 								if skillModList:Flag(cfg, "ChaosDamageUsesLowestResistance") then
-									--Find the lowest resist of all the elements and use that if it's lower than chaos
+									-- Default to using Chaos
+									local elementUsed = "Chaos"
+									-- Find the lowest resist of all the elements and use that if it's lower than chaos
 									for _, damageTypeForChaos in ipairs(dmgTypeList) do
 										if isElemental[damageTypeForChaos] and useThisResist(damageTypeForChaos) then
 											local elementalResistForChaos = enemyDB:Sum("BASE", nil, damageTypeForChaos.."Resist")
 											local base = elementalResistForChaos + enemyDB:Sum("BASE", dotTypeCfg, "ElementalResist")
-											resist = m_min(resist, base * calcLib.mod(enemyDB, nil, damageType.."Resist"))
-										end
+											local currentElementResist = base * calcLib.mod(enemyDB, nil, damageType.."Resist")
+											-- If it's explicitly lower, then use the resist and update which element we're using to account for penetration
+											if resist > currentElementResist then
+												resist = currentElementResist
+												elementUsed = damageTypeForChaos
+											end
+										end										
 									end
+									--Update the penetration based on the element used
+									pen = skillModList:Sum("BASE", cfg, elementUsed.."Penetration", "ElementalPenetration")
 								end
 							end
 							
@@ -2143,20 +2181,20 @@ t_insert(breakdown[damageType], s_format("占总伤害的: %d%%", output[damageT
 
 		if breakdown then
 			if output.CritEffect ~= 1 then
-				breakdown.AverageHit = { }
 				
-				if skillModList:Flag(skillCfg, "LuckyHits") then 
-					t_insert(breakdown.AverageHit, s_format("(1/3) x %d + (2/3) x %d = %.1f ^8(幸运击中-来自非暴击的平均伤害)", totalHitMin, totalHitMax, totalHitAvg))
-					t_insert(breakdown.AverageHit, s_format("(1/3) x %d + (2/3) x %d = %.1f ^8(幸运击中-来自暴击的平均伤害)", totalCritMin, totalCritMax, totalCritAvg))
-					t_insert(breakdown.AverageHit, "")
-				elseif skillModList:Flag(skillCfg, "CritLucky") then
+				breakdown.AverageHit = { }
+				if skillModList:Flag(skillCfg, "LuckyHits") then
+					t_insert(breakdown.AverageHit, s_format("(1/3) x %d + (2/3) x %d = %.1f ^8(来自非暴击的平均伤害)", totalHitMin, totalHitMax, totalHitAvg))
+				end
+				if skillModList:Flag(skillCfg, "CritLucky") or skillModList:Flag(skillCfg, "LuckyHits") then
 					t_insert(breakdown.AverageHit, s_format("(1/3) x %d + (2/3) x %d = %.1f ^8(来自暴击的平均伤害)", totalCritMin, totalCritMax, totalCritAvg))
 					t_insert(breakdown.AverageHit, "")
 				end
 				t_insert(breakdown.AverageHit, s_format("%.1f x (1 - %.4f) ^8(来自非暴击的伤害)", totalHitAvg, output.CritChance / 100))
 				t_insert(breakdown.AverageHit, s_format("+ %.1f x %.4f ^8(来自暴击的伤害)", totalCritAvg, output.CritChance / 100))
 				t_insert(breakdown.AverageHit, s_format("= %.1f", output.AverageHit))
-			 
+				
+				 
 			end
 			if isAttack then
 				breakdown.AverageDamage = { }

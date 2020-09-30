@@ -446,9 +446,7 @@ mod("CritMultiplier", "BASE", nil, 0, 0, { type = "Condition", var = "Elusive" }
 ["secondary_skill_effect_duration_+%"] = {
 	mod("SecondaryDuration", "INC", nil),
 },
-["active_skill_quality_duration_+%_final"] = {
-	mod("Duration", "MORE", nil),
-},
+
 ["fortify_duration_+%"] = {
 	mod("FortifyDuration", "INC", nil),
 },
@@ -1364,6 +1362,9 @@ mod("CritMultiplier", "BASE", nil, 0, 0, { type = "Condition", var = "Elusive" }
 ["active_skill_minion_damage_+%_final"] = {
 	mod("MinionModifier", "LIST", { mod = mod("Damage", "MORE", nil) }),
 },
+["active_skill_minion_attack_speed_+%_final"] = {
+	mod("MinionModifier", "LIST", { mod = mod("Speed", "MORE", nil, ModFlag.Attack) }),
+},
 ["active_skill_minion_physical_damage_+%_final"] = {
 	mod("MinionModifier", "LIST", { mod = mod("PhysicalDamage", "MORE", nil) }),
 },
@@ -1381,7 +1382,7 @@ mod("CritMultiplier", "BASE", nil, 0, 0, { type = "Condition", var = "Elusive" }
 	div = 60,
 },
 ["minions_deal_%_of_physical_damage_as_additional_chaos_damage"] = {
-	mod("MinionModifier", "LIST", { mod("PhysicalDamageGainAsChaos", "BASE", nil) }),
+	mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageGainAsChaos", "BASE", nil) }),
 },
 --Golem
 ["golem_buff_effect_+%"] = {

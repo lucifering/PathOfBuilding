@@ -986,7 +986,7 @@ Sockets: W
 {variant:1}{tags:jewellery_elemental}10% increased Damage per Freeze, Shock and Ignite on Enemy
 {variant:2}{tags:jewellery_elemental}对被冰冻、感电、点燃敌人的击中伤害和异常状态伤害提高 20%
 ]],[[
-塔萨里之印
+塔萨里奥之印
 蓝玉戒指
 联盟: 血族
 版本: 2.6.0以前

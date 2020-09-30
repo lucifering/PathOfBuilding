@@ -812,6 +812,8 @@ self.controls.displayItemAddCustom = new("ButtonControl", {"TOPLEFT",self.contro
 return self.displayItem.rarity == "魔法" or self.displayItem.rarity == "稀有"
 or self.displayItem.name=='扼息者, 火蝮鳞手套' 	
 	 or self.displayItem.name=='孢囊守卫, 圣者链甲'   or self.displayItem.name=='奔逃之, 暗影之靴'  
+	 or self.displayItem.name=='溃败, 暗影之靴'  
+	 or self.displayItem.name=='溃败【仿品】, 暗影之靴'  
 	 or self.displayItem.name=='嗜寒之冠, 绸缎之兜' 
 	 or self.displayItem.name=='嗜雷之冠, 日耀之冠' 
 	 or self.displayItem.name=='嗜火之冠, 艾兹麦坚盔' 

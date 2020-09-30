@@ -3312,10 +3312,10 @@ skills["Firewall"] = {
 	castTime = 0.5,
 	parts = {
 		{
-			name = "Primary Debuff",
+name = "初次减益效果",
 		},
 		{
-			name = "Secondary Debuff",
+name = "二次减益效果",
 		},
 	},
     statMap = {
@@ -3332,7 +3332,13 @@ skills["Firewall"] = {
 		},
 		["firewall_applies_%_fire_exposure"] = {
 		    mod("FireExposure", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff" }),
-		}
+		},
+		["flame_wall_minimum_added_fire_damage"] = {
+mod("FireMin", "BASE", nil, ModFlag.Projectile, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "烈焰之墙", effectCond = "FlameWallAddedDamage" }),
+		},
+		["flame_wall_maximum_added_fire_damage"] = {
+mod("FireMax", "BASE", nil, ModFlag.Projectile, 0, { type = "GlobalEffect", effectType = "Buff", effectName = "烈焰之墙", effectCond = "FlameWallAddedDamage" }),
+		},
 	},
 	baseFlags = {
 		spell = true,
@@ -4626,6 +4632,16 @@ skills["DoomBlast"] = {
 		},
 		["hexblast_ailment_damage_+%_final_per_5_doom_on_consumed_curse"] = {
 			mod("Damage", "MORE", nil, 0, KeywordFlag.Ailment, { type = "Multiplier", var = "HexDoom", div = 5 })
+		},
+	},
+	parts = {
+		{
+name = "单体目标",
+			area = false,
+		},
+		{
+name = "范围爆炸",
+			area = true,
 		},
 	},
 	baseFlags = {
@@ -10633,6 +10649,9 @@ description = "施放一个光环, 使你与受光环影响的友军获得伤害
 		["spell_critical_strike_chance_+%"] = {
 			mod("CritChance", "INC", nil, ModFlag.Spell, 0, { type = "GlobalEffect", effectType = "Aura" }),
 		},
+		["base_critical_strike_multiplier_+"] = {
+			mod("CritMultiplier", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
+		}
 	},
 	baseFlags = {
 		spell = true,

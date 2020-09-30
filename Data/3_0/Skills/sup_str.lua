@@ -1550,8 +1550,8 @@ description = "辅助并非被触发施放的近战攻击技能",
 		["fortify_effect_+%"] = {
 			mod("FortifyEffectOnSelf", "INC", nil)
 		},
-		["support_fortify_ailment_damage_+%_final_from_melee_hits"] = {
-			mod("EnemyPhysicalDamageReduction", "INC", nil, bit.bor(ModFlag.MeleeHit, ModFlag.Ailment), 0, { type = "Condition", var = "Fortify"}),
+		["overwhelm_%_physical_damage_reduction_while_fortified"] = {
+			mod("EnemyPhysicalDamageReduction", "BASE", nil, 0, KeywordFlag.Hit, { type = "Condition", var = "Fortify"}),
 		},
 	},
 	baseMods = {
@@ -2324,7 +2324,7 @@ description = "辅助攻击技能，或者其他可以造成瘫痪的技能",
 mod("PhysicalDamageTaken", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "瘫痪" }, { type = "Condition", var = "Maimed" }),
 		},
 		["chance_to_bleed_on_hit_%_vs_maimed"] = {
-			mod("BleedChance", "BASE", nil, 0, 0, { type = "ActorCondition", actor = "enemy", condition = "Maimed"})
+			mod("BleedChance", "BASE", nil, 0, 0, { type = "ActorCondition", actor = "enemy", var = "Maimed" })
 		}
 	},
 	baseMods = {

@@ -7359,6 +7359,8 @@ skills["AtlasEyrieKiwethMortarShards"] = {
     statDescriptionScope = "skill_stat_descriptions",
     castTime = 1,
     baseFlags = {
+		spell = true,
+		hit = true,
         projectile = true,
     },
     baseMods = {
@@ -7375,7 +7377,7 @@ skills["AtlasEyrieKiwethMortarShards"] = {
         [1] = {0.8, 1.2, critChance = 5, levelRequirement = 0, statInterpolation = {3, 3},  },
     },
 }
-skills["AtlasEyrieKiwethMortar"] = {
+skills["AtlasEyrieKiwethMortarSpectre"] = {
     name = "炮击",
     hidden = true,
     color = 4,
@@ -7410,13 +7412,14 @@ description = "通用的怪物炮击技能. 与怪物投射物相似, 但带有�
         "projectile_spread_radius",
         "spell_minimum_base_cold_damage",
         "spell_maximum_base_cold_damage",
+		"number_of_projectiles_override",
         "is_area_damage",
         "base_is_projectile",
         "projectile_uses_contact_position",
         "use_scaled_contact_offset",
     },
     levels = {
-        [1] = {0, 0.8, 1.2, critChance = 5, levelRequirement = 0, statInterpolation = {1, 3, 3},  },
+       [1] = { 0, 0.80000001192093, 1.2000000476837, 1, critChance = 5, cooldown = 10, levelRequirement = 0, statInterpolation = { 1, 3, 3, 1, }, },
     },
 }
 skills["WalkEmergeAtlasInfluenceMonster"] = {
@@ -7718,3 +7721,116 @@ skills["GAHeistThugRangedShotgun"] = {
 	},
 }
 
+skills["GSHeistRobotPyreBeamBlast"] = {
+	name = "光束爆炸",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 3.2000000476837,
+	incrementalEffectiveness = 0.03999999910593,
+	skillTypes = { [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.5,
+	baseFlags = {
+		spell = true,
+		hit = true,
+		area = true,
+		triggerable = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"spell_maximum_action_distance_+%",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 0.80000001192093, 1.2000000476837, -50, critChance = 5, levelRequirement = 1, statInterpolation = { 3, 3, 1, }, },
+	},
+}
+skills["GSHeistRobotPyreNukeBeam"] = {
+	name = "光束",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 4,
+	incrementalEffectiveness = 0.050000000745058,
+	skillTypes = { [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 4.5,
+	baseFlags = {
+		spell = true,
+		hit = true,
+		area = true,
+		triggerable = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 0.80000001192093, 1.2000000476837, critChance = 5, cooldown = 13, levelRequirement = 1, statInterpolation = { 3, 3, }, },
+	},
+}
+skills["GSHeistRobotPyreNukeBeamChannelled"] = {
+	name = "持续吟唱光束",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 4,
+	incrementalEffectiveness = 0.045000001788139,
+	skillTypes = { [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 0.54,
+	baseFlags = {
+		spell = true,
+		hit = true,
+		area = true,
+		triggerable = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 0.80000001192093, 1.2000000476837, critChance = 5, cooldown = 13, levelRequirement = 1, statInterpolation = { 3, 3, }, },
+	},
+}
+skills["GSHeistRobotPyreBeamSweepBeam"] = {
+	name = "光束扫描",
+	hidden = true,
+	color = 4,
+	baseEffectiveness = 2.5,
+	incrementalEffectiveness = 0.03999999910593,
+	skillTypes = { [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		spell = true,
+		hit = true,
+		area = true,
+		triggerable = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"spell_minimum_base_fire_damage",
+		"spell_maximum_base_fire_damage",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 0.80000001192093, 1.2000000476837, critChance = 5, levelRequirement = 1, statInterpolation = { 3, 3, }, },
+	},
+}

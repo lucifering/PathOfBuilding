@@ -480,6 +480,21 @@ modDB:NewMod("AttackDodgeChance", "BASE", dodgeChanceEffect, "灵巧")
 
 			modDB.multipliers["BuffOnSelf"] = (modDB.multipliers["BuffOnSelf"] or 0) + 1
 		end
+		if modDB:Flag(nil, "LesserBrutalShrine") then
+			local effect = (1 + modDB:Sum("INC", nil, "ShrineEffect", "BuffEffectOnSelf") / 100)
+			local effectDamage = m_floor(20 * effect)
+			local effectDuration  = m_floor(20 * effect)
+			modDB:NewMod("Damage", "INC", effectDamage, "次级狂击神龛")
+			modDB:NewMod("EnemyKnockbackChance", "BASE", 100, "次级狂击神龛")
+			modDB:NewMod("EnemyStunDuration", "INC", effectDuration, "次级狂击神龛")			
+		end
+		if modDB:Flag(nil, "LesserMassiveShrine") then
+			local effect = (1 + modDB:Sum("INC", nil, "ShrineEffect", "BuffEffectOnSelf") / 100)
+			local effectAreaOfEffect = m_floor(20 * effect)
+			local effectLife  = m_floor(20 * effect)
+			modDB:NewMod("AreaOfEffect", "INC", effectAreaOfEffect, "次级威猛神龛")
+			modDB:NewMod("Life", "INC", effectLife, "次级威猛神龛")		
+		end
 		if modDB:Flag(nil, "Onslaught") then
 			local effect = m_floor(20 * (1 + modDB:Sum("INC", nil, "OnslaughtEffect", "BuffEffectOnSelf") / 100))
 modDB:NewMod("Speed", "INC", effect, "猛攻")

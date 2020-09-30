@@ -190,6 +190,10 @@ modList:NewMod("SkillData", "LIST", { key = "skeletonLife", value = val }, "Conf
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("MovementSpeed", "INC", 15, "狂噬（辅）") }, "Config")
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Speed", "INC", 15, "狂噬（辅）") }, "Config")
 	end },
+{ label = "烈焰之墙:", ifSkill = "烈焰之墙" },
+	{ var = "flameWallAddedDamage", type = "check", label = "投射物穿过了烈焰之墙?", ifSkill = "烈焰之墙", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:FlameWallAddedDamage", "FLAG", true, "Config")
+	end },
 { label = "寒冰弹:", ifSkill = "寒冰弹" },
 	{ var = "frostboltExposure", type = "check", label = "造成冰霜曝露?", ifSkill = "寒冰弹", apply = function(val, modList, enemyModList)
 		modList:NewMod("ColdExposureChance", "BASE", 20, "Config")
@@ -256,6 +260,9 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 { label = "【召唤灵体】:", ifSkill = "召唤灵体" },
 { var = "raiseSpectreSpectreLevel", type = "count", label = "灵体等级:", ifSkill = "召唤灵体", ifVer = "2_6", tooltip = "设置灵体等级.\n默认等级是【召唤灵体】技能石的需求等级.", apply = function(val, modList, enemyModList)
 modList:NewMod("SkillData", "LIST", { key = "minionLevel", value = val }, "Config", { type = "SkillName", skillName = "召唤灵体" })
+	end },
+{ var = "animateWeaponLingeringBlade", type = "check", label = "幻化【徘徊之刃】?", ifSkill = "幻化武器", tooltip = "启用幻化【徘徊之刃】的伤害加成\n徘徊之刃的具体的武器基低尚不清楚，但是接近于匕首【玻璃利片】", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:AnimatingLingeringBlades", "FLAG", true, "Config")
 	end },
 { label = "威能法印:", ifSkill = "威能法印" },
 	{ var = "sigilOfPowerStages", type = "count", label = "层数:", ifSkill = "威能法印", apply = function(val, modList, enemyModList)

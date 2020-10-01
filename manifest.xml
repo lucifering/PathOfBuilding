@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PoBVersion>
-	<Version number="1.4.170.20" platform="win32" branch="master"/>
+	<Version number="1.4.170.21" platform="win32" branch="master"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/runtime-win32.zip" part="runtime" platform="win32"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/" part="program"/>
 	<Source url="https://raw.githubusercontent.com/lucifering/PathOfBuilding/{branch}/tree-2_6.zip" part="tree-2_6"/>
@@ -198,7 +198,7 @@
 <File sha1="62f9591ef92ca41ab7d2ed95595dab4071cfac96" name="Modules/ModTools.lua" part="program"/>
 <File sha1="8019c4b62e17d50069ca716a5ad6a2a862dda5a6" name="Modules/StatDescriber.lua" part="program"/>
 <File sha1="99875159b3a8bd510f4df09dfcb749f770f65eda" name="Classes/AboutTab.lua" part="program"/>
-<File sha1="95d77253e8c70981349a0bd85f6a70f69f5e0a2f" name="changelog.txt" part="program"/>
+<File sha1="9831d713a22bc72446047b917a143cf078a0cbd2" name="changelog.txt" part="program"/>
 <File sha1="ba1e7d1d4c270b4b66116b5d313629e2a826d619" name="Launch.dl" part="program"/>
 <File sha1="706c299c6989845664581bf4ac38a92e22b4b855" name="Data/3_0/StatDescriptions/active_skill_gem_stat_descriptions.lua" part="program"/>
 <File sha1="a9d3529f6eecd0c61ddfb4b7bbc5a10618f2dc28" name="Data/3_0/StatDescriptions/aura_skill_stat_descriptions.lua" part="program"/>
@@ -227,7 +227,7 @@
 <File sha1="2ed79a89eb0c451e1f3cf3b87c3d9da080df0cc4" name="Data/3_0/BlightPassives.lua" part="program"/>
 <File sha1="b9f508cad73647d8036d5be974e341f2dfcd1d99" name="Classes/SearchHost.lua" part="program"/>
 <File sha1="feaa70a37ce64f49aa9fcdce73d8c5385b1e7f99" name="Data/3_0/ModJewelCluster.lua" part="program"/>
-<File sha1="bcf5a387a78877413676d5b548bdda5e63374de9" name="Data/3_0/ClusterJewels.lua" part="program"/>
+<File sha1="3a765d7371e88a2d3bd87aa344debd214414ab74" name="Data/3_0/ClusterJewels.lua" part="program"/>
 <File sha1="3ffda41cd695d5c42fd362324d64b8ca701cc11e" name="Data/2_6/EnchantmentBelts.lua" part="program"/>
 <File sha1="174d7c35693fefe82ed0eeebb8c0e73882896412" name="Data/3_0/EnchantmentBelts.lua" part="program"/>
 <File sha1="e0a04ac9ad57008745ec32791a8367c3dd1c2cc2" name="Data/3_0/ModHarvestSeed.lua" part="program"/>

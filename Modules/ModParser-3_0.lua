@@ -4591,6 +4591,10 @@ local specialModList = {
 	["法术伤害击中有 ([%d%.]+)%% 几率施加【中毒】"]= function(num) return {  mod("PoisonChance", "BASE", num,nil, ModFlag.Spell)  } end, 
 	["法术击中时有 ([%d%.]+)%% 几率使目标中毒"]= function(num) return {  mod("PoisonChance", "BASE", num,nil, ModFlag.Spell)  } end, 
 	["法术技能 ([%+%-]?%d+)%% 中毒持续伤害加成"]= function(num) return {  mod("DotMultiplier", "BASE", num, 0, 0, KeywordFlag.Spell)  } end, 
+	["每 (%d+) 点敏捷可使召唤生物的攻击速度提高 (%d+)%%"]= function(_,num1,num2) return { mod("MinionModifier", "LIST", 
+	{ mod = mod("Speed", "INC", tonumber(num2),nil, ModFlag.Attack )}, { type = "PerStat", stat = "Dex", div = tonumber(num1) })  } end, 
+	["每 (%d+) 点敏捷可使召唤生物的移动速度提高 (%d+)%%"]= function(_,num1,num2) return { mod("MinionModifier", "LIST", 
+	{ mod = mod("MovementSpeed", "INC", tonumber(num2))}, { type = "PerStat", stat = "Dex", div = tonumber(num1) })  } end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

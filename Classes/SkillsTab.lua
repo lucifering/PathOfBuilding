@@ -44,9 +44,9 @@ local sortGemTypeList ={
 }
 local alternateGemQualityList ={
 	{label = "精良的", type = "Default"},
-	{label = "异常 ", type = "Alternate1"},
-	{label = "分歧 ", type = "Alternate2"},
-	{label = "魅影 ", type = "Alternate3"},
+	{label = "异常", type = "Alternate1"},
+	{label = "分歧", type = "Alternate2"},
+	{label = "魅影", type = "Alternate3"},
 }
 
 
@@ -284,7 +284,7 @@ end
 function SkillsTabClass:GetBaseNameAndQuality(gemTypeLine, quality)
 	-- if quality is default or nil check the gem type line if we have alt qual by comparing to the existing list
 	if gemTypeLine and (quality == nil or quality == 'Default') then
-		local firstword, otherwords = gemTypeLine:match("(%w+)%s(.+)")
+		local firstword, otherwords = gemTypeLine:match("(.+) (.+)")
 		if firstword and otherwords then
 			for _, entry in ipairs(alternateGemQualityList) do
 				if firstword == entry.label then

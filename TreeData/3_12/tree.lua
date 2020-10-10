@@ -15195,7 +15195,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/ManaandArcaneSurge.png",
 			["stats"]= {
 				"最大魔力提高 15%",
-				"最近你每消耗 200 点魔力\n你身上的秘术增强效果提高 10%，最多 50%",
+				"最近你每消耗 200 点魔力，你身上的秘术增强效果提高 10%，最多 50%",
 				"你击败敌人时有 10% 几率获得【秘术增强】"
 			},
 			["reminderText"]= {
@@ -53518,7 +53518,7 @@ return {
 			["name"]= "幽灵舞步",
 			["icon"]= "Art/2DArt/SkillIcons/passives/Trickster/AcrobaticWillpower.png",
 			["stats"]= {
-				"拥有能量护盾时躲避几率 +3%",
+				"拥有能量护盾时闪避几率 +3%",
 				"每层【鬼影缠身】会使承受的伤害降低 2%",
 				"每 2 秒获得一个幽魂缠身，最大数量为 3",
 				"被击中时，失去一层【鬼影缠身】，并恢复等同于你闪避值 4% 的能量护盾",

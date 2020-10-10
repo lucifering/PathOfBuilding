@@ -37,7 +37,7 @@ return {
 { var = "conditionMinionsFullLife", type = "check", label = "你的召唤生物处于满血状态?",  apply = function(val, modList, enemyModList)
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Condition:FullLife", "FLAG", true, "Config") }, "Config")
 	end },
-{ var = "igniteMode", type = "list", label = "异常计算模式:", tooltip = "目前以基础点伤来计算异常伤害:\n平均伤害：异常是基于平均伤害计算，区分暴击和非暴击.\n暴击伤害：异常基于暴击计算.", list = {{val="AVERAGE",label="平均伤害"},{val="CRIT",label="暴击伤害"}} },
+{ var = "igniteMode", type = "list", label = "异常计算模式:", tooltip = "目前以基础点伤来计算异常效果:\n平均伤害：异常是基于平均伤害计算，区分暴击和非暴击.\n暴击伤害：异常基于暴击计算.", list = {{val="AVERAGE",label="平均伤害"},{val="CRIT",label="暴击伤害"}} },
 { var = "armourCalculationMode", type = "list", label = "护甲计算模式:", 
 tooltip = "配置护甲的计算方式\n\t最小：不计算双倍护甲\n\t平均：根据双倍护甲的几率进行计算预期减伤\n\t最大：始终使用100% 双倍护甲计算，如果有 100% 几率双倍护甲，那么此配置无效\n\t", 
 list = {{val="MIN",label="最小"},{val="AVERAGE",label="平均"},{val="MAX",label="最大"}} },
@@ -178,8 +178,12 @@ modList:NewMod("Multiplier:BannerStage", "BASE", m_min(val, 50), "Config", { typ
 { var = "darkPactSkeletonLife", type = "count", label = "魔侍 生命:", ifSkill = "暗夜血契", tooltip = "设置使用【暗夜血契】时，魔侍的最大生命.", apply = function(val, modList, enemyModList)
 modList:NewMod("SkillData", "LIST", { key = "skeletonLife", value = val }, "Config", { type = "SkillName", skillName = "暗夜血契" })
 	end },
+{ label = "死亡之愿:", ifSkill = "死亡之愿" },
+	{ var = "deathWishStageCount", type = "count", label = "层数:", ifSkill = "死亡之愿", tooltip = "死亡之愿持续吟唱时获得:\n\t每层可以给 1 只召唤生物提供加成：攻击、施法和移动速度提高 40%, 最多 13 只。\n死亡之愿爆炸加成:\n\t每层提供 击中和异常总伤害额外提高 10%", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:DeathWishStageCount", "BASE", val, "Config")
+	end },
 { label = "【掠食（辅）】:", ifSkill = "掠食（辅）" },
-	{ var = "conditionEnemyHasDeathmark", type = "check", label = "敌人被标记?", ifSkill = "掠食（辅）", apply = function(val, modList, enemyModList)
+{ var = "conditionEnemyHasDeathmark", type = "check", label = "敌人被标记?", ifSkill = "掠食（辅）", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:EnemyHasDeathmark", "FLAG", true, "Config")
 	end },
 	{ label = "【狂噬（辅）】:", ifSkill = "狂噬（辅）" }, 
@@ -274,11 +278,16 @@ modList:NewMod("SkillData", "LIST", { key = "minionLevel", value = val }, "Confi
 		modList:NewMod("Condition:SiphoningTrapSiphoning", "FLAG", true, "Config")
 	end },
 { var = "raiseSpectreEnableCurses", type = "check", label = "灵体自带诅咒、增益和光环:", ifSkill = "召唤灵体", tooltip = "激活你的灵体带的诅咒、增益和光环.", apply = function(val, modList, enemyModList)
-modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", { type = "SkillType", skillType = SkillType.Curse }, { type = "SkillName", skillName = "召唤灵体", summonSkill = true })
 modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", { type = "SkillType", skillType = SkillType.Aura }, { type = "SkillName", skillName = "召唤灵体", summonSkill = true })
 modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", { type = "SkillType", skillType = SkillType.Buff }, { type = "SkillName", skillName = "召唤灵体", summonSkill = true })
-
-
+modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", { type = "SkillType", skillType = SkillType.Hex }, { type = "SkillName", skillName = "Raise Spectre", summonSkill = true })
+modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", { type = "SkillType", skillType = SkillType.Mark }, { type = "SkillName", skillName = "Raise Spectre", summonSkill = true })
+		
+		
+	end },
+{ label = "狙击:", ifSkill = "狙击" },
+	{ var = "configSnipeStages", type = "count", label = "狙击层数:", ifSkill = "狙击", tooltip = "释放狙击之前吟唱的层数.", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:SnipeStage", "BASE", m_min(val, 6), "Config")
 	end },
 { label = "【召唤幽狼】:", ifSkill = "召唤幽狼" },
 	{ var = "configSpectralWolfCount", type = "count", label = "幽狼数量:", 
@@ -1146,7 +1155,7 @@ tooltip = "精疲力尽的敌人总伤害额外降低，最多降低 20%.", appl
 	end },
  
 { var = "enemyIsBoss", type = "list", ifVer = "3_0", label = "敌人是boss?", 
-tooltip = "普通boss有以下词缀：\n额外降低 33% 诅咒效果\n+40% 火焰、冰霜、闪电抗性\n+25% 混沌抗性\n\n塑界者/塑界守卫有以下词缀：\n额外降低 66% 诅咒效果\n+50% 火焰、冰霜、闪电抗性\n+30% 混沌抗性\n总护甲额外提高 33%\n\n诸界觉者希鲁斯有以下词缀：\n额外降低 66% 诅咒效果\n+50% 火焰、冰霜、闪电抗性\n+30% 混沌抗性\n总护甲额外提高 100%",
+tooltip = "普通boss有以下词缀：\n额外降低 33% 魔蛊效果\n+40% 火焰、冰霜、闪电抗性\n+25% 混沌抗性\n\n塑界者/塑界守卫有以下词缀：\n额外降低 66% 魔蛊效果\n+50% 火焰、冰霜、闪电抗性\n+30% 混沌抗性\n总护甲额外提高 33%\n\n诸界觉者希鲁斯有以下词缀：\n额外降低 66% 魔蛊效果\n+50% 火焰、冰霜、闪电抗性\n+30% 混沌抗性\n总护甲额外提高 100%",
 list = {{val="NONE",label="不是"},{val="Uber Atziri",label="普通Boss"},
 {val="Shaper",label="塑界者/塑界守卫"},
 {val="Sirus",label="诸界觉者希鲁斯"}},

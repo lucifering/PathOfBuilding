@@ -280,14 +280,25 @@ function SkillsTabClass:ParseGemAltQuality(gemName, qualityId)
 	return "Default"
 end
 
--- parse real gem name by ommiting the first word if alt qual is set
-function SkillsTabClass:ParseBaseGemName(gemInstance)
-	if gemInstance.qualityId and gemInstance.nameSpec then
-		_, gemName = gemInstance.nameSpec:match("(%w+)(.+)")
-		return gemName
+-- parse real gem name and quality by ommiting the first word if alt qual is set
+function SkillsTabClass:GetBaseNameAndQuality(gemTypeLine, quality)
+	-- if quality is default or nil check the gem type line if we have alt qual by comparing to the existing list
+	if gemTypeLine and (quality == nil or quality == 'Default') then
+		local firstword, otherwords = gemTypeLine:match("(%w+)%s(.+)")
+		if firstword and otherwords then
+			for _, entry in ipairs(alternateGemQualityList) do
+				if firstword == entry.label then
+					-- return the gem name minus <altqual> without a leading space and the new resolved type
+					return otherwords, entry.type
+				end
+			end
+		end
 	end
-	return gemInstance.nameSpec
+	-- no alt qual found, return gemTypeLine as is and either existing quality or Default if none is set
+    return gemTypeLine, quality or 'Default'
 end
+
+
 
 function SkillsTabClass:Load(xml, fileName)
 	self.defaultGemLevel = tonumber(xml.attrib.defaultGemLevel)
@@ -330,8 +341,10 @@ function SkillsTabClass:Load(xml, fileName)
 				end
 				gemInstance.level = tonumber(child.attrib.level)
 				gemInstance.quality = tonumber(child.attrib.quality)
-				gemInstance.qualityId = SkillsTabClass:ParseGemAltQuality(gemInstance.nameSpec, child.attrib.qualityId)
-				gemInstance.nameSpec = SkillsTabClass:ParseBaseGemName(gemInstance)
+				local nameSpecOverride, qualityOverrideId = SkillsTabClass:GetBaseNameAndQuality(gemInstance.nameSpec, child.attrib.qualityId)
+                gemInstance.nameSpec = nameSpecOverride
+                gemInstance.qualityId = qualityOverrideId
+ 
 				if gemInstance.gemData then
 					gemInstance.qualityId.list = self:getGemAltQualityList(gemInstance.gemData)
 				end
@@ -412,7 +425,7 @@ function SkillsTabClass:Draw(viewPort, inputEvents)
 	self.height = viewPort.height
 
 	for id, event in ipairs(inputEvents) do
-		if event.type == "KeyDown" then	
+		if event.type == "KeyDown" then
 			if event.key == "z" and IsKeyDown("CTRL") then
 				self:Undo()
 				self.build.buildFlag = true
@@ -999,6 +1012,4 @@ function SkillsTabClass:RestoreUndoState(state)
 	end
 end
 
-function SkillsTabClass:getAlternateGemQualityList()
-	return alternateGemQualityList
-end 
+

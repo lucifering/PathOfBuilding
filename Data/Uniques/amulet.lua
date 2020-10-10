@@ -25,9 +25,9 @@ return {
 {tags:jewellery_attribute}+(30-50) 智慧
 {tags:caster}施法速度提高 (10-15)%
 范围效果扩大 (10-15)%
-若诅咒持续时间耗减了 25%，则被你诅咒的敌人也被【缓速】，移动速度减慢 25%
-若诅咒持续时间耗减了 50%，你的诅咒效果提高 25%
-若诅咒持续时间耗减了 75%，则被你诅咒的敌人受到的伤害提高 25%
+{tags:caster}若诅咒持续时间耗减了 25%，则被你诅咒的敌人也被【缓速】，移动速度减慢 25%
+{tags:caster}若诅咒持续时间耗减了 50%，你的诅咒效果提高 25%
+{tags:caster}若诅咒持续时间耗减了 75%，则被你诅咒的敌人受到的伤害提高 25%
 ]],
 [[
 柳树之赐
@@ -708,14 +708,14 @@ Talisman Tier: 2
 等级需求: 28
 固定基底词缀: 1
 {tags:jewellery_resistance}+(20-30)% 火焰抗性
-冰霜伤害提高 (30-50)%
+{tags:jewellery_elemental}(冰霜伤害提高 (30-50)%
 {tags:jewellery_resistance}获得 +(10-15)% 火焰、冰霜、闪电抗性
-{variant:1}30% increased Radius of Curse Skills
-{variant:2,3}诅咒范围扩大 60%
-免疫沉默诅咒
+{variant:1}{tags:caster}30% increased Radius of Curse Skills
+{variant:2,3}{tags:caster}诅咒范围扩大 60%
+{tags:caster}免疫沉默诅咒
 {variant:1,2}获得 20 级的【幻象传送】
 {variant:3}获得 10 级的【冰霜闪现】
-{variant:3}【冰霜闪现】的持续时间延长 50%
+{variant:3}{tags:caster}【冰霜闪现】的持续时间延长 50%
 已腐化
 ]],[[
 拉兹瓦的灵石

@@ -565,7 +565,7 @@ description = "射出一个移动缓慢的天雷之珠, 将会周期性的对周
 		projectile = true,
 	},
 	baseMods = {
-		skill("radius", 22),
+		skill("radius", 18),
 	},
 	qualityStats = {
 		Default = {
@@ -2676,6 +2676,12 @@ description = "诅咒一片区域的所有目标，降低它们的元素抗性�
 		["base_resist_all_elements_%"] = {
 			mod("ElementalResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
 		},
+		["self_elemental_status_duration_-%"] = {
+			mod("SelfIgniteDuration", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+			mod("SelfChillDuration", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+			mod("SelfFreezeDuration", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+			mod("SelfShockDuration", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Curse" }),
+		}
 	},
 	baseFlags = {
 		spell = true,
@@ -3349,6 +3355,7 @@ mod("FireMax", "BASE", nil, ModFlag.Projectile, 0, { type = "GlobalEffect", effe
 	baseMods = {
 		skill("radiusLabel", "Flame Wall Length:"),
 		skill("dotIsArea", true),
+		skill("buffAllies", true),
 	},
 	qualityStats = {
 		Default = {
@@ -4531,10 +4538,10 @@ description = "从地面的一系列爆发中冒出冰结之刺，每一次都�
 	castTime = 0.6,
 	parts = {
 		{
-			name = "Initial Bursts",
+name = "初始几波",
 		},
 		{
-			name = "Final Burst",
+name = "最终一波",
 		},
 	},
 	statMap = {
@@ -4622,7 +4629,7 @@ skills["DoomBlast"] = {
 	color = 3,
 	baseEffectiveness = 2.1621999740601,
 	incrementalEffectiveness = 0.036100000143051,
-	description = "对目标敌人造成混沌伤害。如果敌人本身已经中蛊，那么它会移除目标身上的魔蛊，并基于移除的魔蛊灭能造成更多伤害，并对它周围的敌人制造伤害（它同样会移除周围敌人身上的已有的魔蛊，并造成更多伤害）。",
+	description = "对目标敌人造成混沌伤害。如果敌人本身已经中蛊，那么它会移除目标身上的魔蛊。并基于移除的魔蛊灭能造成更多伤害。并对它周围的敌人制造伤害（它同样会移除周围敌人身上的已有的魔蛊，并造成更多伤害）。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.ChaosSkill] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanTotem] = true, [SkillType.SkillCanMine] = true, [SkillType.SpellCanRepeat] = true, [SkillType.Triggerable] = true, [SkillType.CanRapidFire] = true, [SkillType.Hex] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.6,
@@ -5454,7 +5461,8 @@ description = "用法杖发射一枚投射物，会定期或击中敌人时改�
 	castTime = 1,
 	statMap = {
 		["active_skill_additive_spell_damage_modifiers_apply_to_attack_damage_at_%_value"] = {
-			flag("ImprovedSpellDamageAppliesToAttacks"),
+			flag("SpellDamageAppliesToAttacks"),
+			mod("ImprovedSpellDamageAppliesToAttacks", "INC", nil),
 		},
 		["cast_speed_+%_applies_to_attack_speed_at_%_of_original_value"] = {
 			flag("CastSpeedAppliesToAttacks"),
@@ -6892,9 +6900,7 @@ description = "施放一个光环，使你和周围友军受到的闪电伤害�
 		["hits_ignore_my_lightning_resistance"] = {
 			flag("SelfIgnoreLightningResistance", { type = "GlobalEffect", effectType = "Debuff" })
 		},
-		["impurity_lightning_damage_taken_+%_final"] = {
-			mod("LightningDamageTaken", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
-		},
+		
 	},
 	baseFlags = {
 		spell = true,

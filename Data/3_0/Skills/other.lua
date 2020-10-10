@@ -382,6 +382,7 @@ name = "卡普里的意志",
 	statDescriptionScope = "gem_stat_descriptions",
 	fromItem = true,
 	baseMods = {
+		skill("showAverage", true),
 	},
 	qualityStats = {
 	},
@@ -971,21 +972,67 @@ description = "在你移动时，该技能会引爆周围的灵柩，造成火�
 	},
 }
 skills["DeathWish"] = {
-	name = "Death Wish",
+name = "死亡之愿",
 	hidden = true,
 	color = 4,
 	baseEffectiveness = 1.5319999456406,
 	incrementalEffectiveness = 0.032299999147654,
-	description = "As you channel this spell, it spreads its effect to more of your minions. When you stop channelling, each affected minion explodes, and this skill deals spell damage around them.  The explosion of the minion is not affected by modifiers to spell damage, and cannot be reflected.",
+description = "吟唱该法术可以把它的效果扩散给你的召唤生物。一旦吟唱停止，受影响的召唤生物就会爆炸，对它们周围造成法术伤害。召唤生物的爆炸伤害不受调整法术伤害的词缀影响，也不能反射。",
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Channelled] = true, [SkillType.AreaSpell] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.Minion] = true, [SkillType.FireSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.2,
 	fromItem = true,
+	parts = {
+		{
+name = "持续吟唱",
+			spell = true,
+			cast = false,
+		},
+		{
+name = "召唤生物爆炸",
+			spell = false,
+			cast = true,
+		},
+	},
+	preDamageFunc = function(activeSkill, output)
+		if activeSkill.skillPart == 2 then
+			local skillData = activeSkill.skillData
+			skillData.FireBonusMin = output.Life * skillData.selfFireExplosionLifeMultiplier
+			skillData.FireBonusMax = output.Life * skillData.selfFireExplosionLifeMultiplier
+		end
+	end,
+	statMap = {
+		["spell_minimum_base_fire_damage"] = {
+			skill("FireMin", nil, { type = "SkillPart", skillPart = 2 }),
+		},
+		["spell_maximum_base_fire_damage"] = {
+			skill("FireMax", nil, { type = "SkillPart", skillPart = 2 }),
+		},
+		["death_wish_attack_speed_+%"] = {
+			mod("Speed", "INC", nil, ModFlag.Attack, 0, { type = "GlobalEffect", effectType = "Buff" }),
+		},
+		["death_wish_cast_speed_+%"] = {
+			mod("Speed", "INC", nil, ModFlag.Cast, 0, { type = "GlobalEffect", effectType = "Buff" }),
+		},
+		["death_wish_movement_speed_+%"] = {
+			mod("MovementSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
+		},
+		["death_wish_hit_and_ailment_damage_+%_final_per_stage"] = {
+			mod("Damage", "MORE", nil, 0, bit.bor(KeywordFlag.Hit, KeywordFlag.Ailment), { type = "Multiplier", var = "DeathWishStageCount", limitVar = "DeathWishMaxStages" }, { type = "SkillPart", skillPart = 2 }),
+		},
+		["death_wish_max_stages"] = {
+			mod("Multiplier:DeathWishMaxStages", "BASE", nil),
+		},
+	},
 	baseFlags = {
 		spell = true,
 		area = true,
 	},
 	baseMods = {
+		skill("explodeCorpse", true, { type = "SkillPart", skillPart = 2 }),
+		skill("radius", 10, { type = "SkillPart", skillPart = 2 }),
+		skill("buffMinions", true),
+		skill("buffNotPlayer", true),
 	},
 	qualityStats = {
 	},

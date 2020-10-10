@@ -778,24 +778,6 @@ elseif property.name == "仅限" then
 end
 
 
--- parse real gem name by ommiting the first word if alt qual is set
-function ImportTabClass:GetBaseNameAndQuality(gemTypeLine)
-	if gemTypeLine then
-		local firstword, otherwords = gemTypeLine:match("(%w+)%s(.+)")
-		if firstword and otherwords then
-			for indx, entry in ipairs(self.build.skillsTab.getAlternateGemQualityList()) do
-				ConPrintf("checking if '"..firstword.."' matches label '"..entry.label.."'? "..tostring(firstword==entry.label))
-
-				if firstword == entry.label then
-					return otherwords, entry.type
-				end
-			end
-		end
-	end
-
-	return gemTypeLine, "Default"
-end
-
 
 function ImportTabClass:ImportSocketedItems(item, socketedItems, slotName)
 	-- Build socket group list
@@ -806,12 +788,12 @@ function ImportTabClass:ImportSocketedItems(item, socketedItems, slotName)
 			self:ImportItem(socketedItem, slotName .. " Abyssal Socket "..abyssalSocketId)
 			abyssalSocketId = abyssalSocketId + 1
 		elseif not self.controls.charImportItemsClearSkills.state then 
-			local normalizedBasename, qualityType = self:GetBaseNameAndQuality(socketedItem.typeLine)
+			local normalizedBasename, qualityType = self.build.skillsTab:GetBaseNameAndQuality(socketedItem.typeLine, nil)
 			local gemId = self.build.data.gemForBaseName[normalizedBasename] 
 			if not gemId and socketedItem.hybrid then
 				-- Dual skill gems (currently just Stormbind) show the second skill as the typeLine, which won't match the actual gem
 				-- Luckily the primary skill name is also there, so we can find the gem using that
-				normalizedBasename, qualityType  = self:GetBaseNameAndQuality(socketedItem.hybrid.baseTypeName)
+				normalizedBasename, qualityType  = self.build.skillsTab:GetBaseNameAndQuality(socketedItem.hybrid.baseTypeName, nil)
 				gemId = self.build.data.gemForBaseName[normalizedBasename]
 			end
 			if gemId then

@@ -5843,7 +5843,7 @@ return {
 		defaultLevel = 6,
 	},
 	["Metadata/Items/Gems/SkillGemBerserk"] = {
-		name = "狂怒",
+		name = "盛怒",
 		grantedEffectId = "Berserk",
 		tags = {
 			strength = true,

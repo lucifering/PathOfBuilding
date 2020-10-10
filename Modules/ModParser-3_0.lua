@@ -13,8 +13,8 @@ local bnot = bit.bnot
 
 local conquerorList = {
 	["xibaqua"]		=	{id = 1, type = "vaal"},
-	["doryani"]		=	{id = 2, type = "vaal"},
-	["zerphi"]		=	{id = 3, type = "vaal"},
+	["zerphi"]		=	{id = 2, type = "vaal"},
+	["doryani"]		=	{id = 3, type = "vaal"},
 	["ahuana"]		=	{id = "2_v2", type = "vaal"},
 	["deshret"]		=	{id = 1, type = "maraketh"},
 	["asenath"]		=	{id = 2, type = "maraketh"},
@@ -34,8 +34,9 @@ local conquerorList = {
 	["maxarius"]	=	{id = "1_v2", type = "templar"},
 	
 	["夏巴夸亚"]		=	{id = 1, type = "vaal"},
-	["多里亚尼"]		=	{id = 2, type = "vaal"},
-	["泽佛伊"]		=	{id = 3, type = "vaal"},
+	["泽佛伊"]		=	{id = 2, type = "vaal"},
+	["多里亚尼"]		=	{id = 3, type = "vaal"},
+	
 	["阿华纳"]		=	{id = "2_v2", type = "vaal"},	
 	["迪虚瑞特"]		=	{id = 1, type = "maraketh"},
 	["安赛娜丝"]		=	{id = 2, type = "maraketh"},
@@ -144,7 +145,12 @@ local formList = {
 -- Map of modifier names
 local modNameList = {
 	--【中文化程序额外添加开始】
+	["你技能给予召唤生物的非诅咒光环效果"] = { "AuraEffectOnSelf", addToMinion = true },
 	["魔像提供的增益效果"] = { "BuffEffect", tag = { type = "SkillType", skillType = SkillType.Golem } },
+	 ["魔蛊技能的效果区域"] = { "AreaOfEffect", tag = { type = "SkillType", skillType = SkillType.Hex } },
+	  ["魔蛊技能的范围效果"] = { "AreaOfEffect", tag = { type = "SkillType", skillType = SkillType.Hex } },
+	  ["魔蛊的效果区域"] = { "AreaOfEffect", tag = { type = "SkillType", skillType = SkillType.Hex } },
+	  ["魔蛊的范围效果"] = { "AreaOfEffect", tag = { type = "SkillType", skillType = SkillType.Hex } },
 	["攻击和移动速度"] = { "Speed", "MovementSpeed" },
 	["攻击速度，施法速度和移动速度"] = { "Speed", "MovementSpeed" },
 	["不被攻击击中"] = "AttackDodgeChance", 
@@ -822,6 +828,8 @@ local modFlagList = {
 	["咒印技能的"] = { tag = { type = "SkillType", skillType = SkillType.Mark } },
 	["咒印的"] = { tag = { type = "SkillType", skillType = SkillType.Mark } },
 	["咒印技能"] = { tag = { type = "SkillType", skillType = SkillType.Mark } },
+	["诅咒光环技能的"] = { tag = { type = "SkillType", skillType = SkillType.Aura }, keywordFlags = KeywordFlag.Curse },
+		["诅咒光环的"] = { keywordFlags = bor(KeywordFlag.Curse, KeywordFlag.Aura, KeywordFlag.MatchAll) },
 	--【中文化程序额外添加结束】
 	["斧类攻击的"] = { flags = bor(ModFlag.Axe, ModFlag.Hit) }, --备注：with axes
 	["to axe attacks"] = { flags = bor(ModFlag.Axe, ModFlag.Hit) },
@@ -1153,11 +1161,11 @@ local modTagList = {
 	["近期内你若使用过位移技能，则"] = { tag = { type = "Condition", var = "UsedMovementSkillRecently" } },
 	["每个暴击球"] = { tag = { type = "Multiplier", var = "PowerCharge" } }, --备注：per power charge
 	["每个暴击球造成"] = { tag = { type = "Multiplier", var = "PowerCharge" } },
-	["对流血敌人"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Bleeding" }, keywordFlags = KeywordFlag.Hit }, 
-	["流血敌人时"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Bleeding" }, keywordFlags = KeywordFlag.Hit }, --备注：against bleeding enemies
-	["被点燃敌人时"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Ignited" }, keywordFlags = KeywordFlag.Hit }, --备注：to ignited enemies
-	["被点燃的敌人时，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Ignited" }, keywordFlags = KeywordFlag.Hit }, --备注：to ignited enemies
-	["对中毒敌人"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Poisoned" }, keywordFlags = KeywordFlag.Hit },
+	["对流血敌人"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Bleeding" } }, 
+	["流血敌人时"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Bleeding" } }, --备注：against bleeding enemies
+	["被点燃敌人时"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Ignited" } }, --备注：to ignited enemies
+	["被点燃的敌人时，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Ignited" } }, --备注：to ignited enemies
+	["对中毒敌人"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Poisoned" }},
 	["药剂持续期间，"] = { tag = { type = "Condition", var = "UsingFlask" } }, --备注：while using a flask	
 	["感电时"] = { tag = { type = "Condition", var = "Shocked" } }, --备注：while shocked	
 	["每一级为你的"] = { tag = { type = "Multiplier", var = "Level" } },
@@ -1189,7 +1197,7 @@ local modTagList = {
 	["近期内你若有过格挡，"] = { tag = { type = "Condition", var = "BlockedRecently" } }, 
 	["每个轮回球可使"] = { tag = { type = "Multiplier", var = "SiphoningCharge" } }, 
 	["每 (%d+) 命中值可使"] = function(num) return { tag = { type = "PerStat", stat = "Accuracy", div = num } } end, 
-	["对致盲的敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Blinded" }, keywordFlags = KeywordFlag.Hit }, --备注：against blinded enemies
+	["对致盲的敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Blinded" }}, --备注：against blinded enemies
 	["每拥有 1 个暴击球，有 "] = { tag = { type = "Multiplier", var = "PowerCharge" } }, --备注：per power charge
 	["在低血时，"] = { tag = { type = "Condition", var = "LowLife" } },
 	["低血时，"] = { tag = { type = "Condition", var = "LowLife" } },
@@ -1198,17 +1206,17 @@ local modTagList = {
 	["每 (%d+) 点智慧可以为"] = function(num) return { tag = { type = "PerStat", stat = "Int", div = num } } end, --备注：per (%d+) intelligence
 	["每 (%d+) 点敏捷可以为"] = function(num) return { tag = { type = "PerStat", stat = "Dex", div = num } } end, 
 	["每 (%d+) 点力量可以为 "] = function(num) return { tag = { type = "PerStat", stat = "Str", div = num } } end, --备注：per (%d+) strength
-	["对冰缓的目标的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" }, keywordFlags = KeywordFlag.Hit },
-	["对致盲的敌人时，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Blinded" }, keywordFlags = KeywordFlag.Hit },
+	["对冰缓的目标的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" } },
+	["对致盲的敌人时，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Blinded" } },
 	["每个暴击球为"] = { tag = { type = "Multiplier", var = "PowerCharge" } }, --备注：per power charge
 	["狂怒球达到上限时，"] = { tag = { type = "StatThreshold", stat = "FrenzyCharges", thresholdStat = "FrenzyChargesMax" } }, --备注：while at maximum frenzy charges
 	["近期内你若被击中，"] = { tag = { type = "Condition", var = "BeenHitRecently" } },	
-	["对冰缓敌人造成的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" }, keywordFlags = KeywordFlag.Hit },
-	["对冰缓敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" }, keywordFlags = KeywordFlag.Hit }, 
-	["对冰缓敌人时，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" }, keywordFlags = KeywordFlag.Hit }, 
+	["对冰缓敌人造成的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" }},
+	["对冰缓敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" } }, 
+	["对冰缓敌人时，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" } }, 
 	["在主手时，"] = { tag = { type = "SlotNumber", num = 1 } }, --备注：when in main hand
-	["击中冰缓敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" }, keywordFlags = KeywordFlag.Hit }, --备注：against chilled  
-	["对被点燃敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Ignited" }, keywordFlags = KeywordFlag.Hit }, 
+	["击中冰缓敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" }}, --备注：against chilled  
+	["对被点燃敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Ignited" }}, 
 	["每 (%d+) 点力量可使"] = function(num) return { tag = { type = "PerStat", stat = "Str", div = num } } end, --备注：per (%d+) strength
 	["你获得【猫之隐匿】时"] = { tag = { type = "Condition", var = "AffectedBy猫之隐匿" } }, --备注：while you have cat's stealth
 	["每 (%d+) 点力量使"] = function(num) return { tag = { type = "PerStat", stat = "Str", div = num } } end, --备注：per (%d+) strength		
@@ -1323,8 +1331,8 @@ local modTagList = {
 	["若近期有引爆过地雷，则"] = { tag = { type = "Condition", var = "DetonatedMinesRecently" } },
 	["近期内你若引爆过地雷，则"] = { tag = { type = "Condition", var = "DetonatedMinesRecently" } },
 	["若你近期内引爆过地雷，则"] = { tag = { type = "Condition", var = "DetonatedMinesRecently" } },
-	["对燃烧的敌人，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Burning" }, keywordFlags = KeywordFlag.Hit },
-	["对燃烧敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Burning" }, keywordFlags = KeywordFlag.Hit },
+	["对燃烧的敌人，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Burning" } },
+	["对燃烧敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Burning" } },
 	 ["处于【灵巧】状态时，"] = { tag = { type = "Condition", var = "Elusive" } }, 
 	 ["【灵巧】效果下，"] = { tag = { type = "Condition", var = "Elusive" } }, 
 	 ["每个图腾使你"] = { tag = { type = "PerStat", stat = "ActiveTotemLimit" } },
@@ -1345,9 +1353,9 @@ local modTagList = {
 		, "AffectedBy灰烬之捷"
 		, "AffectedBy闪电之捷"
 		} } }, 
-	["对抗被嘲讽的敌人时，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Taunted" }, keywordFlags = KeywordFlag.Hit },
-	["对被嘲讽敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Taunted" }, keywordFlags = KeywordFlag.Hit },
-	["对被嘲讽敌人"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Taunted" }, keywordFlags = KeywordFlag.Hit },
+	["对抗被嘲讽的敌人时，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Taunted" } },
+	["对被嘲讽敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Taunted" } },
+	["对被嘲讽敌人"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Taunted" } },
 	["任何魔力药剂作用时间内，"] = { tag = { type = "Condition", var = "UsingManaFlask" } },
 	["在任何生命药剂作用时间内，"] = { tag = { type = "Condition", var = "UsingLifeFlask" } },
 	["任意生命和魔力药剂持续期间，"] = { tag = { type = "Condition", varList = { "UsingManaFlask", "UsingLifeFlask" } } },
@@ -1358,9 +1366,9 @@ local modTagList = {
 	["处于【沙姿态】时，"] = { tag = { type = "Condition", var = "SandStance" } },	
 	["血姿态下，"] = { tag = { type = "Condition", var = "BloodStance" } },	
 	["沙姿态下，"] = { tag = { type = "Condition", var = "SandStance" } },	
-	["对抗标记的敌人时，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Marked" }, keywordFlags = KeywordFlag.Hit },
-	["对咒印标记的敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Marked" }, keywordFlags = KeywordFlag.Hit },
-		["击中被咒印标记的敌人时会"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Marked" }, keywordFlags = KeywordFlag.Hit },
+	["对抗标记的敌人时，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Marked" }},
+	["对咒印标记的敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Marked" } },
+		["击中被咒印标记的敌人时会"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Marked" } },
 		["来自被咒印标记的敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Marked" } },
 	["若近期内有冰冻过敌人，则"] = { tag = { type = "Condition", var = "FrozenEnemyRecently" } },
 		["若近期内有冰缓过敌人，则"] = { tag = { type = "Condition", var = "ChilledEnemyRecently" } },
@@ -1400,7 +1408,7 @@ local modTagList = {
 	["for each equipped unique item"] = { tag = { type = "Multiplier", var = "UniqueItem" } },
 	["每装备 1 个【裂界之器】，"] = { tag = { type = "Multiplier", var = "ElderItem" } }, --备注：per elder item equipped
 	["per shaper item equipped"] = { tag = { type = "Multiplier", var = "ShaperItem" } },
-	["每装备 1 个【裂界之器】或【塑界之器】，便"] = { tag = { type = "Multiplier", varList = { "ElderItem", "ShaperItem" } } }, --备注：per elder or shaper item equipped
+	["每装备 1 个【裂界之器】或【塑界之器】，便"] = { tag = { type = "Multiplier", var = "ShaperOrElderItem" } }, --备注：per elder or shaper item equipped
 	["每装备 1 个被腐化的物品，"] = { tag = { type = "Multiplier", var = "CorruptedItem" } }, --备注：for each equipped corrupted item
 	["每个影响你的【深渊珠宝】可使"] = { tag = { type = "Multiplier", var = "AbyssJewel" } }, --备注：per abyssa?l? jewel affecting you
 	["每种影响你的【深渊珠宝】可使"] = { tag = { type = "Multiplier", var = "AbyssJewelType" } }, --备注：for each type of abyssa?l? jewel affecting you
@@ -1595,42 +1603,42 @@ local modTagList = {
 	["近期内若有能量护盾开始回复，则"] = { tag = { type = "Condition", var = "EnergyShieldRechargeRecently" } }, --备注：if energy shield recharge has started recently
 	["在【寒冰弹】上施放时，"] = { tag = { type = "Condition", var = "CastOnFrostbolt" } }, --备注：when cast on frostbolt
 	-- Enemy status conditions
-	["at close range"] = { tag = { type = "Condition", var = "AtCloseRange" }, flags = ModFlag.Hit },
-	["against rare and unique enemies"] = { tag = { type = "ActorCondition", actor = "enemy", var = "RareOrUnique" }, flags = ModFlag.Hit },
-	["against enemies on full life"] = { tag = { type = "ActorCondition", actor = "enemy", var = "FullLife" }, keywordFlags = KeywordFlag.Hit },
-	["对满血敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "FullLife" }, keywordFlags = KeywordFlag.Hit }, --备注：against enemies that are on full life
-	["对低血敌人，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "LowLife" }, keywordFlags = KeywordFlag.Hit }, --备注：against enemies on low life
-	["击中低血的敌人时，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "LowLife" }, keywordFlags = KeywordFlag.Hit }, --备注：against enemies that are on low life
-	["已被诅咒的敌人"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Cursed" }, keywordFlags = KeywordFlag.Hit }, --备注：against cursed enemies
+	["at close range"] = { tag = { type = "Condition", var = "AtCloseRange" }},
+	["against rare and unique enemies"] = { tag = { type = "ActorCondition", actor = "enemy", var = "RareOrUnique" } },
+	["against enemies on full life"] = { tag = { type = "ActorCondition", actor = "enemy", var = "FullLife" } },
+	["对满血敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "FullLife" } }, --备注：against enemies that are on full life
+	["对低血敌人，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "LowLife" } }, --备注：against enemies on low life
+	["击中低血的敌人时，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "LowLife" } }, --备注：against enemies that are on low life
+	["已被诅咒的敌人"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Cursed" } }, --备注：against cursed enemies
 	["攻击击中被诅咒敌人时有"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Cursed" }, keywordFlags = KeywordFlag.Hit }, --备注：when hitting cursed enemies
-	["攻击被嘲讽的敌人时，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Taunted" }, keywordFlags = KeywordFlag.Hit }, --备注：against taunted enemies
-	["对流血敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Bleeding" }, keywordFlags = KeywordFlag.Hit }, --备注：against bleeding enemies
-	["to bleeding enemies"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Bleeding" }, keywordFlags = KeywordFlag.Hit },
-	["对中毒敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Poisoned" }, keywordFlags = KeywordFlag.Hit }, --备注：against poisoned enemies
-	["to poisoned enemies"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Poisoned" }, keywordFlags = KeywordFlag.Hit },
+	["攻击被嘲讽的敌人时，"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Taunted" } }, --备注：against taunted enemies
+	["对流血敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Bleeding" }}, --备注：against bleeding enemies
+	["to bleeding enemies"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Bleeding" } },
+	["对中毒敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Poisoned" } }, --备注：against poisoned enemies
+	["to poisoned enemies"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Poisoned" }},
 	["against enemies affected by (%d+) or more poisons"] = function(num) return { tag = { type = "MultiplierThreshold", actor = "enemy", var = "PoisonStack", threshold = num } } end,
 	["against enemies affected by at least (%d+) poisons"] = function(num) return { tag = { type = "MultiplierThreshold", actor = "enemy", var = "PoisonStack", threshold = num } } end,
-	["对被干扰敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Hindered" }, keywordFlags = KeywordFlag.Hit }, --备注：against hindered enemies
-	["against maimed enemies"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Maimed" }, keywordFlags = KeywordFlag.Hit },
-	["对致盲敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Blinded" }, keywordFlags = KeywordFlag.Hit }, --备注：against blinded enemies
-	["against burning enemies"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Burning" }, keywordFlags = KeywordFlag.Hit },
-	["对点燃敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Ignited" }, keywordFlags = KeywordFlag.Hit }, --备注：against ignited enemies
-	["被点燃敌人时"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Ignited" }, keywordFlags = KeywordFlag.Hit }, --备注：to ignited enemies
-	["对感电敌人的击中"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Shocked" }, keywordFlags = KeywordFlag.Hit }, --备注：against shocked enemies
-	["to shocked enemies"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Shocked" }, keywordFlags = KeywordFlag.Hit },
-	["对被冰冻敌人的击中"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Frozen" }, keywordFlags = KeywordFlag.Hit }, --备注：against frozen enemies
-	["to frozen enemies"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Frozen" }, keywordFlags = KeywordFlag.Hit },
-	["对冰缓敌人"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" }, keywordFlags = KeywordFlag.Hit }, --备注：against chilled enemies
-	["to chilled enemies"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" }, keywordFlags = KeywordFlag.Hit },
+	["对被干扰敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Hindered" }}, --备注：against hindered enemies
+	["against maimed enemies"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Maimed" }},
+	["对致盲敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Blinded" } }, --备注：against blinded enemies
+	["against burning enemies"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Burning" } },
+	["对点燃敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Ignited" } }, --备注：against ignited enemies
+	["被点燃敌人时"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Ignited" }}, --备注：to ignited enemies
+	["对感电敌人的击中"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Shocked" } }, --备注：against shocked enemies
+	["to shocked enemies"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Shocked" } },
+	["对被冰冻敌人的击中"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Frozen" }}, --备注：against frozen enemies
+	["to frozen enemies"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Frozen" }},
+	["对冰缓敌人"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" } }, --备注：against chilled enemies
+	["to chilled enemies"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" } },
 	["inflicted on chilled enemies"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" } },
-	["被冰缓的敌人"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" }, keywordFlags = KeywordFlag.Hit }, --备注：enemies which are chilled
-	["对被冰冻、感电、点燃敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", varList = {"Frozen","Shocked","Ignited"} }, keywordFlags = KeywordFlag.Hit }, --备注：against frozen, shocked or ignited enemies
-	["against enemies affected by elemental ailments"] = { tag = { type = "ActorCondition", actor = "enemy", varList = {"Frozen","Chilled","Shocked","Ignited"} }, keywordFlags = KeywordFlag.Hit },
-	["对元素异常状态的敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", varList = {"Frozen","Chilled","Shocked","Ignited"} }, fkeywordFlags = KeywordFlag.Hit }, --备注：against enemies that are affected by elemental ailments
-	["对没有受到元素异常状态的敌人的"] = { tagList = { { type = "ActorCondition", actor = "enemy", varList = {"Frozen","Chilled","Shocked","Ignited"}, neg = true }, { type = "Condition", var = "Effective" } }, keywordFlags = KeywordFlag.Hit }, --备注：against enemies that are affected by no elemental ailments
+	["被冰缓的敌人"] = { tag = { type = "ActorCondition", actor = "enemy", var = "Chilled" } }, --备注：enemies which are chilled
+	["对被冰冻、感电、点燃敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", varList = {"Frozen","Shocked","Ignited"} } }, --备注：against frozen, shocked or ignited enemies
+	["against enemies affected by elemental ailments"] = { tag = { type = "ActorCondition", actor = "enemy", varList = {"Frozen","Chilled","Shocked","Ignited"} }},
+	["对元素异常状态的敌人的"] = { tag = { type = "ActorCondition", actor = "enemy", varList = {"Frozen","Chilled","Shocked","Ignited"} }}, --备注：against enemies that are affected by elemental ailments
+	["对没有受到元素异常状态的敌人的"] = { tagList = { { type = "ActorCondition", actor = "enemy", varList = {"Frozen","Chilled","Shocked","Ignited"}, neg = true }, { type = "Condition", var = "Effective" } } }, --备注：against enemies that are affected by no elemental ailments
 	["对受 (%d+) 层蜘蛛网影响的敌人，"] = function(num) return { tag = { type = "MultiplierThreshold", actor = "enemy", var = "Spider's WebStack", threshold = num } } end, --备注：against enemies affected by (%d+) spider's webs
 	-- Enemy multipliers
-	["per freeze, shock and ignite on enemy"] = { tag = { type = "Multiplier", var = "FreezeShockIgniteOnEnemy" }, keywordFlags = KeywordFlag.Hit },
+	["per freeze, shock and ignite on enemy"] = { tag = { type = "Multiplier", var = "FreezeShockIgniteOnEnemy" } },
 	["per poison affecting enemy"] = { tag = { type = "Multiplier", actor = "enemy", var = "PoisonStack" } },
 	["per poison affecting enemy, up to %+([%d%.]+)%%"] = function(num) return { tag = { type = "Multiplier", actor = "enemy", var = "PoisonStack", limit = num, limitTotal = true } } end,
 	["敌人身上每有 1 层蜘蛛网，则"] = { tag = { type = "Multiplier", actor = "enemy", var = "Spider's WebStack" } }, --备注：for each spider's web on the enemy
@@ -2084,6 +2092,10 @@ local specialModList = {
 	mod("PhysicalMin", "BASE", tonumber(num2),nil,ModFlag.Attack , { type = "PerStat", stat = "Str", div = tonumber(num1) }),
 	mod("PhysicalMax", "BASE", tonumber(num3),nil,ModFlag.Attack , { type = "PerStat", stat = "Str", div = tonumber(num1) }),
 	 } end, 
+	["每有 (%d+) 点力量就给攻击附加 (%d+) 到 (%d+) 点混沌伤害"] = function(_,num1,num2,num3) return { 
+	mod("ChaosMin", "BASE", tonumber(num2),nil,ModFlag.Attack , { type = "PerStat", stat = "Str", div = tonumber(num1) }),
+	mod("ChaosMax", "BASE", tonumber(num3),nil,ModFlag.Attack , { type = "PerStat", stat = "Str", div = tonumber(num1) }),
+	 } end, 
 	["【愤怒狂灵】击中后必定造成点燃"] = { mod("MinionModifier", "LIST", { mod = mod("EnemyIgniteChance", "BASE", 100) }, { type = "SkillName", skillName = "召唤愤怒狂灵" }) }, --备注：raging spirits' hits always 
 	["所有身上穿戴的物品皆为已腐化时，每秒回复 (%d+) 魔力"] = function(num) return {  mod("ManaRegen", "BASE", num,{ type = "MultiplierThreshold", var = "NonCorruptedItem", threshold = 0, upper = true })  } end,
 	["身上未装备已腐化的物品时，每秒回复 (%d+) 生命"] = function(num) return {  mod("LifeRegen", "BASE", num,{ type = "MultiplierThreshold", var = "CorruptedItem", threshold = 0, upper = true })  } end,
@@ -2418,9 +2430,19 @@ local specialModList = {
 	["每有一个暴击球，你受到伤害的 ([%d%.]+)%% 由魔力先承担"]= function(num) return {  mod("DamageTakenFromManaBeforeLife", "BASE", num, { type = "Multiplier", var = "PowerCharge" } )  } end,
 	["装备时触发等级 20 闪电圣盾"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="LightningAegis", level = 20})   } end,
 	["获得等级 22 的 精准 技能"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="AccuracyAndCritsAura", level = 22})   } end,
+	["提供 20 级死亡之愿"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="DeathWish", level = 20})   } end,
 	["获得 20 级的【狙击】技能"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="ChannelledSnipe", level = 22})   } end,
-	["插入的非持续吟唱型弓类技能被【狙击】触发"] = function(num) return { mod("ExtraSupport", "LIST", { skillId = "ChannelledSnipeSupport", level = 20 }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
 	["插入的弓类技能触发时，造成的总伤害额外降低 (%d+)%%"]= function(num) return {  } end, 
+	["插入的非吟唱型弓类技能被【狙击】触发"] = { 
+			mod("ExtraSkillMod", "LIST", { mod = flag("TriggeredBySnipe") },  { type = "SocketedIn", slotName = "{SlotName}", keyword = "bow" }, { type = "SkillType", skillType = SkillType.Triggerable } ),
+			mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "showAverage", value = true } ) }, { type = "SocketedIn", slotName = "{SlotName}", keyword = "bow" }, { type = "SkillType", skillType = SkillType.Triggerable } ),
+			mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "triggered", value = 1 } ) }, { type = "SocketedIn", slotName = "{SlotName}", keyword = "bow" }, { type = "SkillType", skillType = SkillType.Triggerable } ),
+		},
+	["插入的非持续吟唱型弓类技能被【狙击】触发"] = { 
+			mod("ExtraSkillMod", "LIST", { mod = flag("TriggeredBySnipe") },  { type = "SocketedIn", slotName = "{SlotName}", keyword = "bow" }, { type = "SkillType", skillType = SkillType.Triggerable } ),
+			mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "showAverage", value = true } ) }, { type = "SocketedIn", slotName = "{SlotName}", keyword = "bow" }, { type = "SkillType", skillType = SkillType.Triggerable } ),
+			mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "triggered", value = 1 } ) }, { type = "SocketedIn", slotName = "{SlotName}", keyword = "bow" }, { type = "SkillType", skillType = SkillType.Triggerable } ),
+		},
 	--["获得等级 20 的【骨制战甲】技能"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="BoneArmour", level = 20})   } end,
 	["击败敌人时触发 10 级的【玷污】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="CreateFungalGroundOnKill", level = 10})   } end,
 	["你的暴击加成为 (%d+)%%"]= function(num) return {  mod("CritMultiplier", "OVERRIDE", num, { type = "Global" } )  } end,
@@ -2969,10 +2991,10 @@ local specialModList = {
 	["受到【纪律】影响时，每击中一个敌人便会获得 %+(%d+) 能量护盾"]= function(num) return {  mod("EnergyShieldOnHit", "BASE", num,{ type = "Condition", var = "AffectedBy纪律" })  } end, 
 	["受到【活力】影响时，每击中一个敌人便会获得 %+(%d+) 生命"]= function(num) return {  mod("LifeOnHit", "BASE", num,{ type = "Condition", var = "AffectedBy活力" })  } end, 
 	["使用尊严时有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("DoubleDamageChance", "BASE", num,{ type = "Condition", var = "UsedBy尊严" }) } end,
-	["使用尊严时，攻击击中时有 (%d+)%% 几率穿刺敌人"]= function(num) return { mod("ImpaleChance", "BASE", num, 0, KeywordFlag.Attack,{ type = "Condition", var = "UsedBy尊严" }) } end,
+	["使用尊严时，攻击击中时有 (%d+)%% 几率穿刺敌人"]= function(num) return { mod("ImpaleChance", "BASE", num, 0, 0, KeywordFlag.Attack,{ type = "Condition", var = "UsedBy尊严" }) } end,
 	["使用尊严时，你造成的穿刺效果会额外持续 (%d+) 次击中"]= function(num) return { mod("ImpaleStacksMax", "BASE", num,{ type = "Condition", var = "UsedBy尊严" }) } end,
 	["使用【尊严】时有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("DoubleDamageChance", "BASE", num,{ type = "Condition", var = "UsedBy尊严" }) } end,
-	["使用【尊严】时，攻击击中有 (%d+)%% 几率穿刺敌人"]= function(num) return { mod("ImpaleChance", "BASE", num, 0, KeywordFlag.Attack,{ type = "Condition", var = "UsedBy尊严" }) } end,
+	["使用【尊严】时，攻击击中有 (%d+)%% 几率穿刺敌人"]= function(num) return { mod("ImpaleChance", "BASE", num, 0, 0, KeywordFlag.Attack,{ type = "Condition", var = "UsedBy尊严" }) } end,
 	["使用【尊严】时，你造成的穿刺效果会造成 (%d+) 次额外击中"]= function(num) return { mod("ImpaleStacksMax", "BASE", num,{ type = "Condition", var = "UsedBy尊严" }) } end,
 	["法术有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("DoubleDamageChance", "BASE", num, nil, ModFlag.Spell) } end,
 	["技能效果持续时间延长 ([%+%-]?%d+)%%"]= function(num) return {  mod("Duration", "INC", num)  } end, 
@@ -3152,6 +3174,7 @@ local specialModList = {
 	 } end,
 	["药剂持续期间，被点燃的敌人承受的火焰伤害提高 (%d+)%%"]=   function(num) return { mod("EnemyModifier", "LIST", { mod = mod("FireDamageTaken", "INC", num) },{ type = "ActorCondition", actor = "enemy", var = "Ignited" },{ type = "Condition", var = "UsingFlask" }) } end,
 	["药剂持续期间，被你点燃的敌人受到的伤害提高 (%d+)%%"]=   function(num) return { mod("EnemyModifier", "LIST", { mod = mod("DamageTaken", "INC", num) },{ type = "ActorCondition", actor = "enemy", var = "Ignited" },{ type = "Condition", var = "UsingFlask" }) } end,
+	["被你点燃的敌人火焰抗性 ([%+%-]?%d+)%%"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("FireResist", "BASE", num) },{ type = "ActorCondition", actor = "enemy", var = "Ignited" }) } end,
 	["此武器的攻击对敌人造成双倍伤害"] = { mod("DoubleDamageChance", "BASE", 100, nil, ModFlag.Hit, { type = "Condition", var = "{Hand}Attack" }) }, 
 	["此武器的攻击造成双倍伤害"] = { mod("DoubleDamageChance", "BASE", 100, nil, ModFlag.Hit, { type = "Condition", var = "{Hand}Attack" }) }, 
 	["你若过去 8 秒内使用过战吼，则有 (%d+)%% 几率造成双倍伤害"]= function(num) return { mod("DoubleDamageChance", "BASE", num, { type = "Condition", var = "UsedWarcryInPast8Seconds" } ) } end, 
@@ -3255,6 +3278,7 @@ local specialModList = {
 	["不能点燃"] = { flag("CannotIgnite") },
 	["无法造成冻结或冰缓"] = { flag("CannotFreeze"), flag("CannotChill") },
 	["无法造成感电"] = { flag("CannotShock") },
+	["无法点燃、冰缓、冻结、感电"] = {  flag("CannotIgnite") ,flag("CannotFreeze"), flag("CannotChill"),flag("CannotShock") },
 	["你的元素伤害可以造成感电"] = { flag("ColdCanShock"), flag("FireCanShock") },
 	["近期内你若击中敌人，你和周围友军每秒回复 ([%d%.]+)%% 生命"]= function(num) return { 
 	mod("ExtraAura", "LIST", { mod = mod("LifeRegenPercent", "BASE", num) },  { type = "Condition", var = "HitRecently" })} end,
@@ -3306,6 +3330,7 @@ local specialModList = {
 	["持续吟唱时，有 (%d+)%% 几率免疫晕眩"] = function(num) return {  mod("AvoidStun", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end, 
 	["持续吟唱时，每秒回复 ([%d%.]+)%% 最大生命"] = function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end, 
 	["拥有能量护盾时法术躲避几率 %+(%d+)%%"] = function(num) return {  mod("SpellDodgeChance", "BASE", num,{ type = "Condition", var = "HaveEnergyShield" })  } end, 
+	["拥有能量护盾时闪避几率 %+(%d+)%%"] = function(num) return {  mod("EvadeChance", "BASE", num,{ type = "Condition", var = "HaveEnergyShield" })  } end, 
 	["你没有能量护盾时无法格挡"] = function() return { 
 	 flag("CannotBlockAttacks",{ type = "Condition", var = "HaveEnergyShield", neg = true }),
 	 flag("CannotBlockSpells",{ type = "Condition", var = "HaveEnergyShield", neg = true })
@@ -3467,10 +3492,10 @@ local specialModList = {
 	["无法造成混沌伤害"] = { flag("DealNoChaos") },
 	 ["近期内你若穿刺过敌人，你和周围友军获得护甲 %+(%d+)"] = function (num) return { mod("ExtraAura", "LIST", { mod = mod("Armour", "BASE", num) }, { type = "Condition", var = "ImpaledRecently" }) } end,
 	["攻击击中时有 (%d+)%% 几率穿刺敌人"]= function(num) return { 	
-	mod("ImpaleChance", "BASE", num, 0, KeywordFlag.Attack) 
+	mod("ImpaleChance", "BASE", num, 0, 0, KeywordFlag.Attack) 
 	}end,
 	["法术击中有 (%d+)%% 几率穿刺敌人"]= function(num) return { 	
-	mod("ImpaleChance", "BASE", num, 0, KeywordFlag.Spell) 
+	mod("ImpaleChance", "BASE", num, 0, 0, KeywordFlag.Spell) 
 	}end,
 	["你造成的穿刺效果会额外持续 (%d+) 次击中"]= function(num) return { 	
 	mod("ImpaleStacksMax", "BASE", num) 
@@ -3710,7 +3735,6 @@ local specialModList = {
 	["近期内如果没有被击中，则承受的总伤害额外降低 (%d+)%%"] = function(num) return {  mod("DamageTaken", "MORE", -num,{ type = "Condition", var = "BeenHitRecently", neg = true })  }
 	 end,   
 	["近期内如果没有被击中，则总闪避值额外降低 (%d+)%%"] = function(num) return {  mod("Evasion", "MORE", -num,{ type = "Condition", var = "BeenHitRecently", neg = true })  } end,   
-	["持法杖时，对法术伤害的增幅与减益也会套用于攻击上"] = { flag("SpellDamageAppliesToAttacks") },
 	["盾牌上每有 (%d+) 护甲或闪避值可使攻击伤害提高 (%d+)%%"]= function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2),{ type = "PerStat", stat = "EvasionOnWeapon 2", div = tonumber(num1) } ),
 	mod("Damage", "INC", tonumber(num2),{ type = "PerStat", stat = "ArmourOnWeapon 2", div = tonumber(num1) } )
 	  }end,
@@ -3747,8 +3771,11 @@ local specialModList = {
 			mod("ElementalDamage", "INC", num, { type = "Multiplier", var = "GrandSpectrum" }), 
 			mod("Multiplier:GrandSpectrum", "BASE", 1) 
 		} end,
-	["对法术伤害的增幅与减益也套用于攻击，等于其数值的 150%%"] = { flag("SpellDamageAppliesToAttacksAt150Percent") },
-	["对法术伤害的增幅与减益也会套用于攻击上，相当于其效果的 150%%"] = { flag("SpellDamageAppliesToAttacksAt150Percent") },
+	["持法杖时，对法术伤害的增幅与减益也会套用于攻击上"] = { flag("SpellDamageAppliesToAttacks"), mod("ImprovedSpellDamageAppliesToAttacks", "INC", 100) },
+		["increases and reductions to cast speed apply to attack speed at (%d+)%% of their value"] =  function(num) return { flag("CastSpeedAppliesToAttacks"), mod("ImprovedCastSpeedAppliesToAttacks", "INC", num) } end,
+		["对法术伤害的增幅与减益也会套用于攻击上"] = { flag("SpellDamageAppliesToAttacks"), mod("ImprovedSpellDamageAppliesToAttacks", "INC", 100) },
+		["对法术伤害的增幅与减益也套用于攻击，等于其数值的 (%d+)%%"] = function(num) return { flag("SpellDamageAppliesToAttacks"), mod("ImprovedSpellDamageAppliesToAttacks", "INC", num) } end,
+	["对法术伤害的增幅与减益也会套用于攻击上，相当于其效果的 (%d+)%%"] = function(num) return { flag("SpellDamageAppliesToAttacks"), mod("ImprovedSpellDamageAppliesToAttacks", "INC", num) } end,
 	["你的光环技能被禁用"] = { flag("DisableSkill", { type = "SkillType", skillType = SkillType.Aura}) }, 
 	["你身上的捷技能增益的总效果额外提高 (%d+)%%"] = function(num) return {  
 			mod("BuffEffect", "MORE", num, { type = "SkillType", skillType = SkillType.Herald }),		 
@@ -3982,6 +4009,7 @@ local specialModList = {
 	 } end, 
 	["召集部队"] = { mod("Keystone", "LIST", "召集部队") },
 	["【斗转星移】"] = { mod("Keystone", "LIST", "斗转星移") },
+	["钢铁意志"] = { flag("IronWill") },
 	["品质不提高物理伤害"] = { mod("AlternateQualityWeapon", "BASE", 1) },
 		["每 4%% 品质使暴击率提高 (%d+)%%"] = function(num) return { mod("AlternateQualityLocalCritChancePer4Quality", "INC", num) } end,
 		["每 (%d+)%% 品质使命中值提高提高 (%d+)%%"] = function( _,div, num) return { mod("Accuracy", "INC", num, { type = "Condition", var = "{Hand}Attack" }, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
@@ -4131,6 +4159,9 @@ local specialModList = {
 		} end,
 	["放置的旗帜可使你和周围友军的攻击伤害提高 (%d+)%%"] = function(num) return { mod("ExtraAura", "LIST", { mod = mod("Damage", "INC", num, nil, ModFlag.Attack) }, { type = "Condition", var = "BannerPlanted" }) } end,
 	["最近你每消耗 (%d+) 点魔力，你身上的秘术增强效果提高 (%d+)%%，最多 (%d+)%%"] = function(_,num1,num2,num3)return { 
+	 mod("秘术增强Effect", "INC", tonumber(num2),
+	 { type = "Multiplier", var = "ManaSpentRecently", div = tonumber(num1) , limit = tonumber(num3), limitTotal = true}) } end,   
+	["最近你每消耗 (%d+) 点魔力\n你身上的秘术增强效果提高 (%d+)%%，最多 (%d+)%%"] = function(_,num1,num2,num3)return { 
 	 mod("秘术增强Effect", "INC", tonumber(num2),
 	 { type = "Multiplier", var = "ManaSpentRecently", div = tonumber(num1) , limit = tonumber(num3), limitTotal = true}) } end,   
 	["拥有【秘术增强】时免疫元素异常状态"]= function() return { 
@@ -4327,6 +4358,7 @@ local specialModList = {
 	["将承受的 (%d+)%% 火焰伤害视为闪电伤害"]= function(num) return { mod("FireDamageTakenAsLightning", "BASE", num ) } end,
 	["周围敌人被【冰缓】"] = { mod("EnemyModifier", "LIST", { mod = mod("Condition:Chilled", "FLAG", true) }) },
 	["无法造成非混沌伤害"] = { flag("DealNoPhysical"),flag("DealNoLightning"), flag("DealNoCold"), flag("DealNoFire") },
+	["不能造成非混沌伤害"] = { flag("DealNoPhysical"),flag("DealNoLightning"), flag("DealNoCold"), flag("DealNoFire") },
 	["(%d+)%% 几率免疫中毒"]= function(num) return { mod("AvoidPoison", "BASE", num ) } end,
 	["无法偷取或自然回复魔力"] = { flag("CannotLeechMana") ,flag("NoManaRegen") }, 
 	["无法造成冰霜伤害"] = { flag("DealNoCold")},
@@ -4411,7 +4443,7 @@ local specialModList = {
 		},
 	["你被感电时，元素伤害击中特别幸运"] = { flag("ElementalLuckHits", { type = "Condition", var = "Shocked" }) },
 	--SummonedGolemInPast8Sec
-	["你造成的咒术效果为厄运的 2 倍"] = { mod("DoomEffect", "BASE", 2) },
+	["你造成的咒术效果为厄运的 2 倍"] = { mod("DoomEffect", "MORE", 100) },
 	["若你近期内没有格挡过敌人，则法术伤害格挡率 %+(%d+)%%"] = function(num) return { mod("SpellBlockChance", "BASE", num, { type = "Condition", var = "BlockedRecently", neg = true }) } end,
 	["同时可以放置的陷阱减少 (%d+) 个"] = function(num) return { mod("ActiveTrapLimit", "BASE", -num) } end,
 	["魔像在召唤后的 8 秒内伤害提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num, { type = "ActorCondition", actor = "parent", var = "SummonedGolemInPast8Sec" }) }, { type = "SkillType", skillType = SkillType.Golem }) } end,
@@ -4464,6 +4496,10 @@ local specialModList = {
 		}end,
 	["暴击伤害特别幸运"] = { flag("CritLucky") },
 	["你击中稀有或传奇敌人时触发 (%d+) 级(.+)"] = function(num, _, skill) return extraSkill(skill, num) end,
+	["格挡时用(%D+)诅咒敌人，其效果提高 (%d+)%%"] = function(_, skill, num) return {
+			mod("ExtraSkill", "LIST", { skillId = gemIdLookup[skill], level = 1 }),
+			mod("CurseEffect", "INC", tonumber(num), { type = "SkillName", skillName = gemIdLookup[skill] }),
+		} end,
 	["击中时用(%D+)诅咒敌人，它的效果提高 (%d+)%%"] = function(_, skill, num) return {
 			mod("ExtraSkill", "LIST", { skillId = gemIdLookup[skill], level = 1 }),
 			mod("CurseEffect", "INC", tonumber(num), { type = "SkillName", skillName = gemIdLookup[skill] }),
@@ -4476,6 +4512,14 @@ local specialModList = {
 			mod("ExtraSkill", "LIST", { skillId = gemIdLookup[skill], level = 1 }),
 			mod("CurseEffect", "INC", tonumber(num), { type = "SkillName", skillName = gemIdLookup[skill] }),
 		} end,
+	["击中时有 (%d+)%% 几率用(.+)诅咒敌人，它的效果提高 (%d+)%%"] = function(_,_, skill, num) return {
+			mod("ExtraSkill", "LIST", { skillId = gemIdLookup[skill], level = 1 }),
+			mod("CurseEffect", "INC", tonumber(num), { type = "SkillName", skillName = gemIdLookup[skill] }),
+		} end,
+		["你被(%D+)诅咒，其效果提高 (%d+)%%"] = function( _,name, num) return {
+		mod("ExtraCurse", "LIST", { skillId = FuckSkillSupportCnName(name), level = 1, applyToPlayer = true }),
+		mod("CurseEffectOnSelf", "INC", tonumber(num), { type = "SkillName", skillName = FuckSkillSupportCnName(name) }),
+		} end, 
 	["每个暴击球可使每秒回复 ([%d%.]+)%% 生命"] = function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Multiplier", var = "PowerCharge" })  } end,
 	["【迷踪】状态下，%+(%d+)%% 避免元素伤害几率"]= function(num) return { 
 	 mod("AvoidFireDamageChance", "BASE", num, { type = "Condition", var = "Phasing" } ) ,
@@ -4519,6 +4563,34 @@ local specialModList = {
 	return {  
 	mod("Damage", "INC", num,{ type = "Condition", var = "ConnectedTo贵族Start" })
 	  } end,
+	["最大魔力的 (%d+)%% 转化为双倍的护甲"] = function(num) return {
+			mod("ManaConvertToArmour", "BASE", num),
+		} end,
+	["获得等同 (%d+)%% 最大生命的额外护甲"] = function(num) return {
+			mod("LifeGainAsArmour", "BASE", num),
+		} end,
+	["击中时 (%d+)%% 几率触发插槽内的闪电法术"] = function(num) return { mod("ExtraSupport", "LIST", { skillId = "SupportUniqueMjolnerLightningSpellsCastOnHit", level = 1 }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
+	["击中时触发插槽内的闪电法术"] = { mod("ExtraSupport", "LIST", { skillId = "SupportUniqueMjolnerLightningSpellsCastOnHit", level = 1 }, { type = "SocketedIn", slotName = "{SlotName}" }) },
+	["近战暴击时触发插槽内的冰霜技能"] = { mod("ExtraSupport", "LIST", { skillId = "SupportUniqueCosprisMaliceColdSpellsCastOnMeleeCriticalStrike", level = 1 }, { type = "SocketedIn", slotName = "{SlotName}" }) },
+	["【炼狱之击】的减益效果每层可额外造成 (%d+)%% 伤害"] = function(num) return { mod("DebuffEffect", "BASE", num, 
+	{ type = "SkillName", skillName = "炼狱之击"}) } end,
+	["击中被诅咒的敌人时造成中毒"] = function() return {
+			mod("PoisonChance", "BASE", 100,{ type = "ActorCondition", actor = "enemy", var = "Cursed" }),
+		} end,
+	["你的魔蛊可以影响无咒的敌人"] = { flag("CursesIgnoreHexproof") },
+	["你能施加一个额外诅咒"] = { mod("EnemyCurseLimit", "BASE", 1) }, 
+	["你技能给予召唤生物的非诅咒光环效果提高 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("AuraEffectOnSelf", "INC", num) })  } end,
+	["左戒指栏位：你的冰冷的飞掠者用插入的魔蛊替代光环"] = { flag("SkitterbotsCannotChill", { type = "SlotNumber", num = 1 }) },
+	["右戒指栏位：电震的飞掠者用插入的魔蛊替代光环"] = { flag("SkitterbotsCannotShock", { type = "SlotNumber", num = 2 }) },
+	["你的攻击给敌人施加的每个诅咒都使你获得 (%d+) 点生命"] = function(num) return { mod("LifeOnHit", "BASE", num, { type = "ActorCondition", actor = "enemy", var = "Cursed"})} end,
+		["你的攻击给敌人施加的每个诅咒都使你获得 (%d+) 点魔力"] = function(num) return { mod("ManaOnHit", "BASE", num, { type = "ActorCondition", actor = "enemy", var = "Cursed"})} end,
+	["解除护甲和最大能量护盾"] = { 
+			mod("Armour", "MORE", -100),
+			mod("EnergyShield", "MORE", -100),
+		},
+	["法术伤害击中有 ([%d%.]+)%% 几率施加【中毒】"]= function(num) return {  mod("PoisonChance", "BASE", num,nil, ModFlag.Spell)  } end, 
+	["法术击中时有 ([%d%.]+)%% 几率使目标中毒"]= function(num) return {  mod("PoisonChance", "BASE", num,nil, ModFlag.Spell)  } end, 
+	["法术技能 ([%+%-]?%d+)%% 中毒持续伤害加成"]= function(num) return {  mod("DotMultiplier", "BASE", num, 0, 0, KeywordFlag.Spell)  } end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded
@@ -5059,10 +5131,10 @@ minus = -tonumber(minus)
 	["无法造成火焰、冰霜、闪电伤害"] = { flag("DealNoLightning"), flag("DealNoCold"), flag("DealNoFire") }, --备注：deal no elemental damage
 	["无法造成非火焰、冰霜、闪电伤害"] = { flag("DealNoPhysical"), flag("DealNoChaos") }, --备注：deal no non%-elemental damage
 	["所有攻击都受到血魔法辅助"] = { flag("SkillBloodMagic", nil, ModFlag.Attack) }, --备注：attacks have blood magic
-	["(%d+)%% chance to cast a? ?socketed lightning spells? on hit"] = function(num) return { mod("ExtraSupport", "LIST", { name = "SupportUniqueMjolnerLightningSpellsCastOnHit", level = 1 }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
-	["cast a socketed lightning spell on hit"] = { mod("ExtraSupport", "LIST", { name = "SupportUniqueMjolnerLightningSpellsCastOnHit", level = 1 }, { type = "SocketedIn", slotName = "{SlotName}" }) },
-	["trigger a socketed lightning spell on hit"] = { mod("ExtraSupport", "LIST", { name = "SupportUniqueMjolnerLightningSpellsCastOnHit", level = 1 }, { type = "SocketedIn", slotName = "{SlotName}" }) },
-	["近战暴击时触发插槽内的冰霜技能"] = { mod("ExtraSupport", "LIST", { name = "SupportUniqueCosprisMaliceColdSpellsCastOnMeleeCriticalStrike", level = 1 }, { type = "SocketedIn", slotName = "{SlotName}" }) }, --备注：cast a socketed cold s[pk][ei]ll on melee critical strike
+	["(%d+)%% chance to cast a? ?socketed lightning spells? on hit"] = function(num) return { mod("ExtraSupport", "LIST", { skillId = "SupportUniqueMjolnerLightningSpellsCastOnHit", level = 1 }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
+	["cast a socketed lightning spell on hit"] = { mod("ExtraSupport", "LIST", { skillId = "SupportUniqueMjolnerLightningSpellsCastOnHit", level = 1 }, { type = "SocketedIn", slotName = "{SlotName}" }) },
+	["trigger a socketed lightning spell on hit"] = { mod("ExtraSupport", "LIST", { skillId = "SupportUniqueMjolnerLightningSpellsCastOnHit", level = 1 }, { type = "SocketedIn", slotName = "{SlotName}" }) },
+	["近战暴击时触发插槽内的冰霜技能"] = { mod("ExtraSupport", "LIST", { skillId = "SupportUniqueCosprisMaliceColdSpellsCastOnMeleeCriticalStrike", level = 1 }, { type = "SocketedIn", slotName = "{SlotName}" }) }, --备注：cast a socketed cold s[pk][ei]ll on melee critical strike
 	["你的诅咒对有【无咒】词缀的敌人依然有效"] = { flag("CursesIgnoreHexproof") }, --备注：your curses can apply to hexproof enemies
 	["当你拥有护体时获得【猛攻】状态"] = { flag("Condition:Onslaught", { type = "Condition", var = "Fortify" }) }, --备注：you have onslaught while you have fortify
 	["保留 (%d+)%% 生命"] = function(num) return { mod("ExtraLifeReserved", "BASE", num) } end, --备注：reserves (%d+)%% of life
@@ -5632,6 +5704,7 @@ local function getThreshold(attrib, name, modType, value, ...)
 		end
 	end
 end
+
 local jewelThresholdFuncs = {
 	["若范围内含有 40 点敏捷，【冰霜之刃】造成的近战伤害穿透 15% 冰霜抗性"] = getThreshold("Dex", "ColdPenetration", "BASE", 15, ModFlag.Melee, { type = "SkillName", skillName = "冰霜之刃" }), --备注：With at least 40 Dexterity in Radius, Frost Blades Melee Damage Penetrates 15% Cold Resistance
 	["若范围内含有 40 点敏捷，【冰霜之刃】造成的近战伤害穿透 15% 冰霜抗性"] = getThreshold("Dex", "ColdPenetration", "BASE", 15, ModFlag.Melee, { type = "SkillName", skillName = "冰霜之刃" }), --备注：With at least 40 Dexterity in Radius, Melee Damage dealt by Frost Blades Penetrates 15% Cold Resistance
@@ -5703,6 +5776,11 @@ local jewelThresholdFuncs = {
 ["若范围内至少有 40 点智慧，【解放】的基础冷却时间为 250 毫秒"] = getThreshold("Int", "CooldownRecovery", "OVERRIDE", 0.25, { type = "SkillName", skillName = "解放" }),
 ["若范围内至少有 40 点智慧，解放的冷却时间为 250 毫秒"] = getThreshold("Int", "CooldownRecovery", "OVERRIDE", 0.25, { type = "SkillName", skillName = "解放" }),
 
+["若范围内至少有 40 点敏捷，【双持打击】持握斧类时击中恐吓敌人 4 秒"] = function() return end,
+["若范围内至少有 40 点敏捷，【双持打击】持握爪类时攻击速度加快 (%d+)%%"] = function(num) return getThreshold("Dex", "Speed", "INC", num, { type = "SkillName", skillName = "双持打击" }, { type = "Condition", var = "UsingClaw" }) end,
+["若范围内至少有 40 点敏捷，【双持打击】持握匕首时 %+(%d+)%% 暴击伤害加成"] = function(num) return getThreshold("Dex", "CritMultiplier", "BASE", num, { type = "SkillName", skillName = "双持打击" }, { type = "Condition", var = "UsingDagger" }) end,
+["若范围内至少有 40 点敏捷，【双持打击】持握锤类时对周围目标造成溅射伤害"] = function() return end,
+["若范围内至少有 40 点敏捷，【双持打击】持握剑类时命中值提高 (%d+)%%"] = function(num) return getThreshold("Dex", "Accuracy", "INC", num, { type = "SkillName", skillName = "双持打击" }, { type = "Condition", var = "UsingSword" }) end,
 	
 	
 }

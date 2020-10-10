@@ -569,6 +569,9 @@ elseif item.rarity == "魔法" then
 				else
 					env.modDB.multipliers.NonElderItem = (env.modDB.multipliers.NonElderItem or 0) + 1
 				end
+				if item.shaper or item.elder then
+					env.modDB.multipliers.ShaperOrElderItem = (env.modDB.multipliers.ShaperOrElderItem or 0) + 1
+				end
 			end
 		end
 	end

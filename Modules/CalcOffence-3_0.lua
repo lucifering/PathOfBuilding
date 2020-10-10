@@ -353,25 +353,22 @@ local function runSkillFunc(name)
 			end
 		end
 	end
-	local spellConvPercent = 0
-	if skillData.spellDamageAppliesToAttackAtPercentValue then
-		spellConvPercent = m_max(spellConvPercent, skillData.spellDamageAppliesToAttackAtPercentValue)
-	end
-	if skillModList:Flag(nil, "SpellDamageAppliesToAttacksAt150Percent") then
-		spellConvPercent = m_max(spellConvPercent, 150)
-	end
 	if skillModList:Flag(nil, "SpellDamageAppliesToAttacks") then
-		spellConvPercent = m_max(spellConvPercent, 100)
-	end
-	if spellConvPercent > 0 then
-		-- Spell Damage conversion
+		-- Spell Damage conversion from Crown of Eyes, Kinetic Bolt, and the Wandslinger notable
+		local maxIncrease = 0
+		for i, value in ipairs(skillModList:Tabulate("INC", skillCfg, "ImprovedSpellDamageAppliesToAttacks")) do
+			maxIncrease = m_max(maxIncrease, value.mod.value)
+		end
+		-- Convert from percent to fraction
+		local multiplier = maxIncrease / 100.
 		for i, value in ipairs(skillModList:Tabulate("INC", { flags = ModFlag.Spell }, "Damage")) do
 			local mod = value.mod
 			if band(mod.flags, ModFlag.Spell) ~= 0 then
-				skillModList:NewMod("Damage", "INC", mod.value * spellConvPercent / 100, mod.source, bor(band(mod.flags, bnot(ModFlag.Spell)), ModFlag.Attack), mod.keywordFlags, unpack(mod))
+				skillModList:NewMod("Damage", "INC", mod.value * multiplier, mod.source, bor(band(mod.flags, bnot(ModFlag.Spell)), ModFlag.Attack), mod.keywordFlags, unpack(mod))
 			end
 		end
 	end
+
 	if skillModList:Flag(nil, "CastSpeedAppliesToAttacks") then
 		-- Get all increases for this; assumption is that multiple sources would not stack, so find the max
 		local maxIncrease = 0
@@ -487,7 +484,9 @@ local function runSkillFunc(name)
 			skillModList:NewMod("AreaOfEffectTertiary", "MORE", mod.value, mod.source, mod.flags, mod.keywordFlags, unpack(mod))
 		end
 	end
-	if skillModList:Flag(nil, "SequentialProjectiles") and not skillModList:Flag(nil, "OneShotProj") and not skillModList:Flag(nil,"NoAdditionalProjectiles") then
+	if skillModList:Flag(nil, "SequentialProjectiles") and not skillModList:Flag(nil, "OneShotProj") and not skillModList:Flag(nil,"NoAdditionalProjectiles") 
+	and not skillModList:Flag(nil, "TriggeredBySnipe")
+	then
 		-- Applies DPS multiplier based on projectile count
 		skillData.dpsMultiplier = skillModList:Sum("BASE", skillCfg, "ProjectileCount")
 	end
@@ -518,6 +517,10 @@ local function runSkillFunc(name)
 				skillModList:NewMod(damageType.."Max", "BASE", (actor.weaponData2[damageType.."Max"] or 0) * mult, "Spellslinger")
 			end
 		end
+	end
+	if skillModList:Flag(nil, "TriggeredBySnipe") and activeSkill.skillTypes[SkillType.Triggerable] then
+		skillModList:NewMod("Damage", "MORE", 165, "Config", ModFlag.Hit, { type = "Multiplier", var = "SnipeStage" } )
+		skillModList:NewMod("Damage", "MORE", 120, "Config", ModFlag.Ailment, { type = "Multiplier", var = "SnipeStage" } )
 	end
 	if skillModList:Sum("BASE", nil, "CritMultiplierAppliesToDegen") > 0 then
 		for i, value in ipairs(skillModList:Tabulate("BASE", skillCfg, "CritMultiplier")) do
@@ -916,8 +919,8 @@ t_insert(breakdown.DurationSecondary, s_format("/ %.2f ^8(debuff更快或更慢�
 	-- Handle corpse explosions
 	if skillData.explodeCorpse and skillData.corpseLife then
 		local damageType = skillData.corpseExplosionDamageType or "Fire"
-		skillData[damageType.."BonusMin"] = skillData.corpseLife * skillData.corpseExplosionLifeMultiplier
-		skillData[damageType.."BonusMax"] = skillData.corpseLife * skillData.corpseExplosionLifeMultiplier
+		skillData[damageType.."BonusMin"] = skillData.corpseLife * ( skillData.corpseExplosionLifeMultiplier or skillData.selfFireExplosionLifeMultiplier )
+		skillData[damageType.."BonusMax"] = skillData.corpseLife * ( skillData.corpseExplosionLifeMultiplier or skillData.selfFireExplosionLifeMultiplier )
 	end
 
 	-- Cache global damage disabling flags
@@ -1520,11 +1523,11 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 					local incExertedAttacks = skillModList:Sum("INC", cfg, "ExertIncrease")
 					local moreExertedAttacks = skillModList:Sum("MORE", cfg, "ExertIncrease")
 					if activeSkill.skillModList:Flag(nil, "Condition:WarcryMaxHit") then
-						skillModList:NewMod("Damage", "INC", incExertedAttacks, "增助攻击", ModFlag.Melee)
-						skillModList:NewMod("Damage", "MORE", moreExertedAttacks, "增助攻击", ModFlag.Melee)
+						skillModList:NewMod("Damage", "INC", incExertedAttacks, "增助攻击")
+						skillModList:NewMod("Damage", "MORE", moreExertedAttacks, "增助攻击")
 					else
-						skillModList:NewMod("Damage", "INC", incExertedAttacks * globalOutput.ExertedAttackUptimeRatio / 100, "增助效果覆盖率加成后增助攻击", ModFlag.Melee)
-						skillModList:NewMod("Damage", "MORE", moreExertedAttacks * globalOutput.ExertedAttackUptimeRatio / 100, "增助效果覆盖率加成后增助攻击", ModFlag.Melee)
+						skillModList:NewMod("Damage", "INC", incExertedAttacks * globalOutput.ExertedAttackUptimeRatio / 100, "增助效果覆盖率加成后增助攻击")
+						skillModList:NewMod("Damage", "MORE", moreExertedAttacks * globalOutput.ExertedAttackUptimeRatio / 100, "增助效果覆盖率加成后增助攻击")
 					end
 					globalOutput.ExertedAttackAvgDmg = calcLib.mod(skillModList, skillCfg, "ExertIncrease")
 					globalOutput.ExertedAttackHitEffect = globalOutput.ExertedAttackAvgDmg * globalOutput.ExertedAttackUptimeRatio / 100
@@ -1879,6 +1882,7 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 						-- Apply enemy resistances and damage taken modifiers
 						local resist = 0
 						local pen = 0
+						local sourceRes = 0
 						local takenInc = enemyDB:Sum("INC", cfg, "DamageTaken", damageType.."DamageTaken")
 						local takenMore = enemyDB:More(cfg, "DamageTaken", damageType.."DamageTaken")
 						-- Check if player is supposed to ignore a damage type, or if it's ignored on enemy side
@@ -1943,7 +1947,7 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 										if isElemental[damageTypeForChaos] and useThisResist(damageTypeForChaos) then
 											local elementalResistForChaos = enemyDB:Sum("BASE", nil, damageTypeForChaos.."Resist")
 											local base = elementalResistForChaos + enemyDB:Sum("BASE", dotTypeCfg, "ElementalResist")
-											local currentElementResist = base * calcLib.mod(enemyDB, nil, damageType.."Resist")
+											local currentElementResist = base * calcLib.mod(enemyDB, nil, damageTypeForChaos.."Resist")
 											-- If it's explicitly lower, then use the resist and update which element we're using to account for penetration
 											if resist > currentElementResist then
 												resist = currentElementResist
@@ -1953,6 +1957,7 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 									end
 									--Update the penetration based on the element used
 									pen = skillModList:Sum("BASE", cfg, elementUsed.."Penetration", "ElementalPenetration")
+									sourceRes = elementUsed
 								end
 							end
 							
@@ -2007,7 +2012,7 @@ t_insert(breakdown[damageType], s_format("x %.3f ^8(有效 DPS 加成)", effMult
 								end 
 							 
 							end 
-							breakdown[damageType.."EffMult"] = breakdown.effMult(damageType, resist, pen, takenInc, effMult, takenMore, spString)
+							breakdown[damageType.."EffMult"] = breakdown.effMult(damageType, resist, pen, takenInc, effMult, takenMore, sourceRes, spString)
 						end
 					end
 					if pass == 2 and breakdown then
@@ -2699,6 +2704,11 @@ t_insert(breakdownDPS, "总伤害:")
 			if igniteMode == "CRIT" then
 				output.BleedChanceOnHit = 0
 			end
+			if globalBreakdown then
+				globalBreakdown.BleedDPS = {
+					s_format("异常计算模式: %s ^8(在配置界面配置)", igniteMode == "CRIT" and "暴击伤害" or "平均伤害")
+				}
+			end
 			local basePercent = skillData.bleedBasePercent or data.misc.BleedPercentBase
 			local baseVal = calcAilmentDamage("Bleed", sourceHitDmg, sourceCritDmg) * basePercent / 100 * output.RuthlessBlowEffect * output.FistOfWarAilmentEffect * globalOutput.AilmentWarcryEffect
 			if baseVal > 0 then
@@ -2712,7 +2722,7 @@ t_insert(breakdownDPS, "总伤害:")
 					effMult = (1 - resist / 100) * (1 + takenInc / 100) * takenMore
 					globalOutput["BleedEffMult"] = effMult
 					if breakdown and effMult ~= 1 then
-						globalBreakdown.BleedEffMult = breakdown.effMult("Physical", resist, 0, takenInc, effMult, takenMore)
+						globalBreakdown.BleedEffMult = breakdown.effMult("Physical", resist, 0, takenInc, effMult, takenMore, sourceRes)
 					end
 				end
 				
@@ -2871,6 +2881,11 @@ t_insert(breakdownDPS, "总伤害:")
 			if igniteMode == "CRIT" then
 				output.PoisonChanceOnHit = 0
 			end
+			if globalBreakdown then
+				globalBreakdown.PoisonDPS = {
+					s_format("异常计算模式: %s ^8(可以在配置界面修改)", igniteMode == "CRIT" and "暴击伤害" or "平均伤害")
+				}
+			end
 			--local baseVal = calcAilmentDamage("Poison", sourceHitDmg, sourceCritDmg) * 0.20
 			local baseVal = calcAilmentDamage("Poison", sourceHitDmg, sourceCritDmg) * data.misc.PoisonPercentBase * output.FistOfWarAilmentEffect * globalOutput.AilmentWarcryEffect
 			if baseVal > 0 then
@@ -2885,7 +2900,7 @@ t_insert(breakdownDPS, "总伤害:")
 					effMult = (1 - resist / 100) * (1 + takenInc / 100) * takenMore
 					globalOutput["PoisonEffMult"] = effMult
 					if breakdown and effMult ~= 1 then
-						globalBreakdown.PoisonEffMult = breakdown.effMult("Chaos", resist, 0, takenInc, effMult, takenMore)
+						globalBreakdown.PoisonEffMult = breakdown.effMult("Chaos", resist, 0, takenInc, effMult, takenMore, sourceRes)
 					end
 				end
 			 
@@ -3049,7 +3064,7 @@ base = s_format("%.2fs ^8(中毒持续时间)", globalOutput.PoisonDuration),
 			end
 			if globalBreakdown then
 				globalBreakdown.IgniteDPS = {
-s_format("点燃计算模式: %s ^8(可以在配置面板修改)", igniteMode == "CRIT" and "暴击伤害" or "平均伤害")
+s_format("异常计算模式: %s ^8(可以在配置面板修改)", igniteMode == "CRIT" and "暴击伤害" or "平均伤害")
 				}
 			end
 			--local baseVal = calcAilmentDamage("Ignite", sourceHitDmg, sourceCritDmg) * 0.5
@@ -3069,7 +3084,7 @@ s_format("点燃计算模式: %s ^8(可以在配置面板修改)", igniteMode ==
 					globalOutput["IgniteEffMult"] = effMult				
 					
 					if breakdown and effMult ~= 1 then
-						globalBreakdown.IgniteEffMult = breakdown.effMult("Fire", resist, 0, takenInc, effMult, takenMore)
+						globalBreakdown.IgniteEffMult = breakdown.effMult("Fire", resist, 0, takenInc, effMult, takenMore, sourceRes)
 					end
 				end
 				local effectMod = calcLib.mod(skillModList, dotCfg, "AilmentEffect")
@@ -3078,14 +3093,12 @@ s_format("点燃计算模式: %s ^8(可以在配置面板修改)", igniteMode ==
 				local incDur = skillModList:Sum("INC", dotCfg, "EnemyIgniteDuration", "SkillAndDamagingAilmentDuration") + enemyDB:Sum("INC", nil, "SelfIgniteDuration")
 				local moreDur = enemyDB:More(nil, "SelfIgniteDuration")
 				globalOutput.IgniteDuration = 4 * (1 + incDur / 100) * moreDur / rateMod * debuffDurationMult
+				globalOutput.IgniteDamage = output.IgniteDPS * globalOutput.IgniteDuration
+			
 				if skillFlags.igniteCanStack then
 					output.IgniteDamage = output.IgniteDPS * globalOutput.IgniteDuration
-					if skillData.showAverage then
-						output.TotalIgniteAverageDamage = output.HitChance / 100 * output.IgniteChance / 100 * output.IgniteDamage
-					else
-						output.TotalIgniteStacks = output.HitChance / 100 * output.IgniteChance / 100 * globalOutput.IgniteDuration * (globalOutput.HitSpeed or globalOutput.Speed) * (skillData.dpsMultiplier or 1)
-						output.TotalIgniteDPS = output.IgniteDPS * output.TotalIgniteStacks
-					end
+					output.TotalIgniteStacks = 1 + skillModList:Sum("BASE", cfg, "IgniteStacks")
+					output.TotalIgniteDPS = output.IgniteDPS * output.TotalIgniteStacks
 				end
 				if breakdown then
 t_insert(breakdown.IgniteDPS, "x 0.5 ^8(点燃每秒造成 50% 伤害)")
@@ -3176,7 +3189,11 @@ t_insert(globalBreakdown.IgniteDuration, s_format("/ %.2f ^8(更快或较慢 deb
 				sourceHitDmg = sourceHitDmg + output.ChaosHitAverage
 				sourceCritDmg = sourceCritDmg + output.ChaosCritAverage
 			end
-			
+			if globalBreakdown then
+				globalBreakdown.ShockDurationMod = {
+					s_format("异常计算模式: %s ^8(可以在配置界面修改)", igniteMode == "CRIT" and "暴击伤害" or "平均伤害")
+				}
+			end
 			local baseVal = calcAilmentDamage("Shock", sourceHitDmg, sourceCritDmg) * skillModList:More(cfg, "ShockAsThoughDealing")
 			if baseVal > 0 then
 				skillFlags.shock = true
@@ -3288,11 +3305,16 @@ t_insert(globalBreakdown.IgniteDuration, s_format("/ %.2f ^8(更快或较慢 deb
 				sourceHitDmg = sourceHitDmg + output.ChaosHitAverage
 				sourceCritDmg = sourceCritDmg + output.ChaosCritAverage
 			end
+			if globalBreakdown then
+				globalBreakdown.ChillDurationMod = {
+					s_format("异常计算模式: %s ^8(可以从配置界面修改)", igniteMode == "CRIT" and "暴击伤害" or "平均伤害")
+				}
+			end
 			local baseVal = calcAilmentDamage("Chill", sourceHitDmg, sourceCritDmg) * skillModList:More(cfg, "ChillAsThoughDealing")
 			if baseVal > 0 then
 				skillFlags.chill = true
 				output.ChillEffectMod = skillModList:Sum("INC", cfg, "EnemyChillEffect")
-				output.ChillDurationMod = 1 + skillModList:Sum("INC", cfg, "EnemyChillDuration") / 100
+				output.ChillDurationMod = 1 + (skillModList:Sum("INC", cfg, "EnemyChillDuration") + enemyDB:Sum("INC", nil, "SelfChillDuration")) / 100
 				local enemyThreshold = enemyDB:Sum("BASE", nil, "AilmentThreshold") * enemyDB:More(nil, "Life")
 				effList = { 5, 10, 30 }
 				local desired = skillModList:Sum("BASE", nil, "DesiredBonechillEffect") or 0
@@ -3407,6 +3429,11 @@ t_insert(globalBreakdown.IgniteDuration, s_format("/ %.2f ^8(更快或较慢 deb
 				sourceHitDmg = sourceHitDmg + output.ChaosHitAverage
 				sourceCritDmg = sourceCritDmg + output.ChaosCritAverage
 			end
+			if globalBreakdown then
+				globalBreakdown.FreezeDurationMod = {
+					s_format("异常计算模式: %s ^8(可以从配置界面修改)", igniteMode == "CRIT" and "暴击伤害" or "平均伤害")
+				}
+			end
 			local baseVal = calcAilmentDamage("Freeze", sourceHitDmg, sourceCritDmg) * skillModList:More(cfg, "FreezeAsThoughDealing")
 			if baseVal > 0 then
 				skillFlags.freeze = true
@@ -3429,6 +3456,10 @@ t_insert(globalBreakdown.IgniteDuration, s_format("/ %.2f ^8(更快或较慢 deb
 				sourceHitDmg = sourceHitDmg + output.FireHitAverage
 				sourceCritDmg = sourceCritDmg + output.FireCritAverage
 			end
+			local igniteMode = env.configInput.igniteMode or "AVERAGE"
+			if igniteMode == "CRIT" then
+				output.ScorchChanceOnHit = 0
+			end
 			local baseVal = calcAilmentDamage("Scorch", sourceHitDmg, sourceCritDmg)
 			if baseVal > 0 then
 				skillFlags.scorch = true
@@ -3446,6 +3477,10 @@ t_insert(globalBreakdown.IgniteDuration, s_format("/ %.2f ^8(更快或较慢 deb
 				sourceHitDmg = sourceHitDmg + output.ColdHitAverage
 				sourceCritDmg = sourceCritDmg + output.ColdCritAverage
 			end
+			local igniteMode = env.configInput.igniteMode or "AVERAGE"
+			if igniteMode == "CRIT" then
+				output.BrittleChanceOnHit = 0
+			end
 			local baseVal = calcAilmentDamage("Brittle", sourceHitDmg, sourceCritDmg)
 			if baseVal > 0 then
 				skillFlags.brittle = true
@@ -3462,6 +3497,10 @@ t_insert(globalBreakdown.IgniteDuration, s_format("/ %.2f ^8(更快或较慢 deb
 			if canDeal.Lightning then
 				sourceHitDmg = sourceHitDmg + output.LightningHitAverage
 				sourceCritDmg = sourceCritDmg + output.LightningCritAverage
+			end
+			local igniteMode = env.configInput.igniteMode or "AVERAGE"
+			if igniteMode == "CRIT" then
+				output.SapChanceOnHit = 0
 			end
 			local baseVal = calcAilmentDamage("Sap", sourceHitDmg, sourceCritDmg)
 			if baseVal > 0 then
@@ -3616,12 +3655,12 @@ t_insert(breakdown.ImpaleModifier, s_format("x %.2f ^8(穿刺几率)", impaleCha
 		combineStat("BleedDPS", "CHANCE", "BleedChance")
 		combineStat("PoisonChance", "AVERAGE")
 		combineStat("PoisonDPS", "CHANCE", "PoisonChance")
+		combineStat("TotalPoisonDPS", "DPS")
 		combineStat("PoisonDamage", "CHANCE", "PoisonChance")
 		if skillData.showAverage then
 			combineStat("TotalPoisonAverageDamage", "DPS")
 		else
 			combineStat("TotalPoisonStacks", "DPS")
-			combineStat("TotalPoisonDPS", "DPS")
 		end
 		combineStat("IgniteChance", "AVERAGE")
 		combineStat("IgniteDPS", "CHANCE", "IgniteChance")
@@ -3629,6 +3668,8 @@ t_insert(breakdown.ImpaleModifier, s_format("x %.2f ^8(穿刺几率)", impaleCha
 			combineStat("IgniteDamage", "CHANCE", "IgniteChance")
 			if skillData.showAverage then
 				combineStat("TotalIgniteAverageDamage", "DPS")
+				combineStat("TotalIgniteStacks", "DPS")
+				combineStat("TotalIgniteDPS", "DPS")
 			else
 				combineStat("TotalIgniteStacks", "DPS")
 				combineStat("TotalIgniteDPS", "DPS")
@@ -3681,7 +3722,7 @@ t_insert(breakdown.ImpaleModifier, s_format("x %.2f ^8(穿刺几率)", impaleCha
 			effMult = (1 - resist / 100) * (1 + takenInc / 100) * takenMore
 			output["DecayEffMult"] = effMult
 			if breakdown and effMult ~= 1 then
-				breakdown.DecayEffMult = breakdown.effMult("Chaos", resist, 0, takenInc, effMult, takenMore)
+				breakdown.DecayEffMult = breakdown.effMult("Chaos", resist, 0, takenInc, effMult, takenMore, sourceRes)
 			end
 		end
 		local inc = skillModList:Sum("INC", dotCfg, "Damage", "ChaosDamage")
@@ -3765,7 +3806,7 @@ t_insert(breakdown.DecayDuration, s_format("/ %.2f ^8(更快或较慢 debuff消�
 				effMult = (1 - resist / 100) * (1 + takenInc / 100) * takenMore
 				output[damageType.."DotEffMult"] = effMult
 				if breakdown and effMult ~= 1 then
-					breakdown[damageType.."DotEffMult"] = breakdown.effMult(damageType, resist, 0, takenInc, effMult, takenMore)
+					breakdown[damageType.."DotEffMult"] = breakdown.effMult(damageType, resist, 0, takenInc, effMult, takenMore, sourceRes)
 				end
 			end
 			local inc = skillModList:Sum("INC", dotTypeCfg, "Damage", damageType.."Damage", isElemental[damageType] and "ElementalDamage" or nil)
@@ -3819,18 +3860,35 @@ t_insert(breakdown.DecayDuration, s_format("/ %.2f ^8(更快或较慢 debuff消�
 	if skillFlags.ignite then
 		if skillFlags.igniteCanStack then
 			if skillData.showAverage then
-				output.CombinedDPS = output.CombinedDPS + output.TotalIgniteAverageDamage
-				output.WithIgniteAverageDamage = baseDPS + output.TotalIgniteAverageDamage
+				output.CombinedDPS = output.CombinedDPS + output.TotalIgniteDPS
+				output.CombinedAvg = output.CombinedDPS + output.IgniteDamage
 			else
 				output.CombinedDPS = output.CombinedDPS + output.TotalIgniteDPS
 				output.WithIgniteDPS = baseDPS + output.TotalIgniteDPS
 			end
+		elseif skillData.showAverage then
+			
+			output.WithIgniteDPS = baseDPS + output.IgniteDamage
+			output.CombinedDPS = output.CombinedDPS + output.IgniteDPS
+			output.CombinedAvg = output.CombinedAvg + output.IgniteDamage
 		else
+			output.WithIgniteDPS = baseDPS + output.IgniteDPS
 			output.CombinedDPS = output.CombinedDPS + output.IgniteDPS
 		end
+	else
+		output.WithIgniteDPS = baseDPS
 	end
 	if skillFlags.bleed then
-		output.CombinedDPS = output.CombinedDPS + output.BleedDPS
+		if skillData.showAverage then
+			output.WithBleedDPS = baseDPS + output.BleedDamage
+			output.CombinedDPS = output.CombinedDPS + output.BleedDPS
+			output.CombinedAvg = output.CombinedAvg + output.BleedDamage
+		else
+			output.WithBleedDPS = baseDPS + output.BleedDPS
+			output.CombinedDPS = output.CombinedDPS + output.BleedDPS
+		end
+	else
+		output.WithBleedDPS = baseDPS
 	end
 	if skillFlags.decay then
 		output.CombinedDPS = output.CombinedDPS + output.DecayDPS

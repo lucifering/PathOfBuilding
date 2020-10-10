@@ -1204,14 +1204,6 @@ end
 local PathJewelList={"Split Personality"}
 
 
-local TimelessJewelList={"残酷的约束",
-"优雅的狂妄",
-"光彩夺目",
-"致命的骄傲",
-"好战的信仰"}
-
---展示效果
---实际生效在 TimelessJewelKeystone.lua 
 
 
 

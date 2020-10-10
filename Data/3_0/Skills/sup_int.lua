@@ -513,7 +513,7 @@ description = "辅助魔蛊技能，将其变为光环，并将它的效果施�
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
 		["supported_curse_skill_gem_level_+"] = {
-			mod("SupportedGemProperty", "LIST", { keyword = "active_skill", key = "level", value = nil }, 0, 0, { type = "SkillType", skillType = SkillType.Hex }),
+				mod("SupportedGemProperty", "LIST", { keyword = "active_skill", key = "level", value = nil }, 0, KeywordFlag.Curse),
 		},
 	},
 	baseMods = {

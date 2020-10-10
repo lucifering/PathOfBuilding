@@ -6003,9 +6003,7 @@ description = "施放一个光环，使你和周围友军受到的冰霜伤害�
 		["hits_ignore_my_cold_resistance"] = {
 			flag("SelfIgnoreColdResistance", { type = "GlobalEffect", effectType = "Debuff" }),
 		},
-		["impurity_cold_damage_taken_+%_final"] = {
-			mod("ColdDamageTaken", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
-		},
+		
 	},
 	baseFlags = {
 		spell = true,
@@ -7411,7 +7409,7 @@ description = "向天空射出一串箭矢，并洒向目标区域，对击中�
 		flag("DotCanStack"),
 		flag("OneShotProj"),
 		skill("radius", 18),
-		skill("radiusLabel", "Pod Area:"),
+skill("radiusLabel", "孢囊范围:"),
 	},
 	qualityStats = {
 		Default = {

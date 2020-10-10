@@ -10,6 +10,32 @@ data.uniques.new = {
 
 --3.12
 [[
+雏鸟
+漆彩之盔
+源: 传奇【契约：荣誉之心 家族契约】Boss专属掉落
+等级需求: 51, 57 Str, 57 Dex
+固定基底词缀: 0
+该装备的护甲与闪避提高 (150-200)%
+投射物速度提高 (30-50)%
+投射物伤害提高 (30-50)%
+投射物不能弹开近程的敌人
+远射
+]],
+[[
+领袖的代价
+黑曜护身符
+等级需求: 68
+源: 传奇【契约：罪恶双生 复仇契约】双Boss专属掉落
+固定基底词缀: 1
+{tags:jewellery_attribute}+(10-16) 全属性
+{tags:jewellery_resistance}+(-3-3)% 火焰抗性上限
+{tags:jewellery_resistance}+(-3-3)% 冰霜抗性上限
+{tags:jewellery_resistance}+(-3-3)% 闪电抗性上限
+若你最高的两种属性相等，则你获得灼热汇流、脆弱汇流、力竭汇流
+无法点燃、冰缓、冻结、感电
+已腐化
+]],
+[[
 破裂碎片
 绯红圆盾
 等级需求: 49, 64 Str, 64 Dex
@@ -31,12 +57,12 @@ data.uniques.new = {
 你的击中造成的元素伤害由最低的抗性来抵抗
 ]],
 [[
-Maw of Mischief
+害人之口
 唤骨头盔
 等级需求: 73, 76 Str, 76 Int
 固定基底词缀: 1
 召唤生物的伤害提高 (15-20)%
-Grants Level 20 Death Wish Skill
+提供 20 级死亡之愿
 +(45-65) 最大生命
 召唤生物技能的魔力消耗降低 (20-30)%
 召唤生物转为【侵略】
@@ -119,6 +145,7 @@ Grants Level 20 Death Wish Skill
 [[
 低谷状态
 钴蓝珠宝
+源: 传奇【契约：牢不可破 预防契约】Boss专属掉落
 仅限: 1
 等级需求: 20
 固定基底词缀: 0
@@ -129,6 +156,7 @@ Grants Level 20 Death Wish Skill
 [[
 巅峰状态
 钴蓝珠宝
+源: 传奇【契约：牢不可破 预防契约】Boss专属掉落
 仅限: 1
 等级需求: 20
 固定基底词缀: 0
@@ -557,7 +585,7 @@ replica: true
 持长杖时攻击伤害格挡几率 +12%
 物理伤害提高 100%
 攻击速度提高 (5-10)%
-格挡成功时对敌人施放提高 20% 效果的【易燃】
+格挡时用易燃诅咒敌人，其效果提高 20%
 攻击者格挡时反射 (22-44) 物理伤害
 ]],
 [[
@@ -639,8 +667,8 @@ replica: true
 +(180-220) 护甲
 +(9-12)% 混沌抗性
 移动速度提高 20%
-无法造成非混沌伤害
-每 50 点力量可使攻击附加 1 - 80 基础混沌伤害
+不能造成非混沌伤害
+每有 50 点力量就给攻击附加 1 到 80 点混沌伤害
 ]],
 [[
 超越壁垒【仿品】
@@ -1553,8 +1581,7 @@ local linesForbiddenShakoReplica = {
 	"强化巨盔",
 	"联盟: 夺宝奇兵",	
 	"等级需求: 53, 59 Str, 59 Int",
-	"Has Alt Variant: true",
-	"（第一个辅助等级1~10，第二个辅助25~35）",
+	"Has Alt Variant: true",	
 	"+(25-30) 全属性",
 }
 local supports = { }
@@ -1568,9 +1595,15 @@ end
 table.sort(supports)
 for index, name in ipairs(supports) do
 	table.insert(linesForbiddenShako, "版本: "..name)
-	table.insert(linesForbiddenShakoReplica, "版本: "..name)	
+	
+	
+	table.insert(linesForbiddenShakoReplica, "版本: "..name.. " (低等级)")
+	table.insert(linesForbiddenShakoReplica, "{variant:"..(index * 2 - 1).."}此物品上的技能石受到 (1-10) 级的 "..name.." 辅助")
+	table.insert(linesForbiddenShakoReplica, "版本: "..name.. " (高等级)")
+	table.insert(linesForbiddenShakoReplica, "{variant:"..(index * 2).."}此物品上的技能石受到 (25-35) 级的 "..name.." 辅助")
+	
 	table.insert(linesForbiddenShako, "{variant:"..index.."}此物品上的技能石受到 (15-25) 级的 "..name.." 辅助")
-	table.insert(linesForbiddenShakoReplica, "{variant:"..index.."}此物品上的技能石受到 (1-35) 级的 "..name.." 辅助")
+	
 	
 	
 end

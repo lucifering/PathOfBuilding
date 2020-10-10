@@ -140,7 +140,7 @@ s_format("x %.2f ^8(面积加成开平方根)", m_sqrt(areaMod)),
 	end
 end
 
-function breakdown.effMult(damageType, resist, pen, taken, mult,takenMore,spString)
+function breakdown.effMult(damageType, resist, pen, taken, mult,takenMore,sourceRes,spString)
 	local out = { }
 local resistForm = (damageType == "物理") and "物理伤害减伤" or "抗性"
 	
@@ -148,7 +148,12 @@ local resistForm = (damageType == "物理") and "物理伤害减伤" or "抗性"
 		t_insert(out, spString)
 	end 
 	if resist ~= 0 then
-		t_insert(out, s_format("敌人 %s: %d%%", resistForm, resist))
+		if sourceRes ~= 0 then
+			t_insert(out, s_format("敌人 %s: %d%% ^8(%s)", resistForm, resist, sourceRes))
+		else
+			t_insert(out, s_format("敌人 %s: %d%%", resistForm, resist))
+		end
+		
 	end	
 	if pen ~= 0 then
 		t_insert(out, "有效抗性:")

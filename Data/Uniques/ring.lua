@@ -4,13 +4,17 @@ return {
 [[
 渎神代理
 潜能之戒
+版本: 3.12.0以前
+版本: 当前
 固定基底词缀: 1
 有 1 个插槽
-此物品上装备的【诅咒技能石】等级 +3
+{tags:caster}此物品上装备的【诅咒技能石】等级 +3
 {tags:jewellery_resistance}+(20-30)% 冰霜抗性
 {tags:jewellery_resistance}+(20-30)% 闪电抗性
-左戒指栏位：用插入的【诅咒】替换你【冰冷的飞掠者】的光环
-右戒指栏位：用插入的【诅咒】替换你【电震的飞掠者】的光环
+{variant:1}{tags:caster}左戒指栏位：用插入的【诅咒】替换你【冰冷的飞掠者】的光环
+{variant:1}{tags:caster}右戒指栏位：用插入的【诅咒】替换你【电震的飞掠者】的光环
+{variant:2}{tags:caster}左戒指栏位：你的冰冷的飞掠者用插入的魔蛊替代光环
+{variant:2}{tags:caster}右戒指栏位：电震的飞掠者用插入的魔蛊替代光环
 ]],
 
 [[
@@ -533,7 +537,7 @@ Has Alt Variant: true
 {tags:jewellery_attribute}+(5-10) 智慧
 {tags:jewellery_resistance}获得 +5% 火焰、冰霜、闪电抗性
 {tags:mana}击败敌人回复 +5 魔力
-可以对敌人施放 1 个额外诅咒
+{tags:caster}可以对敌人施放 1 个额外诅咒
 ]],[[
 梦语之痕
 蓝玉戒指
@@ -565,8 +569,8 @@ Has Alt Variant: true
 {variant:2,3}你可以对敌人造成额外 1 个点燃效果
 {variant:1}你的暴击不造成额外暴击伤害
 {variant:1}燃烧总伤害额外降低 80%
-{variant:2}被点燃敌人的燃烧减缓 65%
-{variant:3}被点燃敌人的燃烧减缓 50%
+{variant:2}{tags:jewellery_elemental}被点燃敌人的燃烧减缓 65%
+{variant:3}{tags:jewellery_elemental}被点燃敌人的燃烧减缓 50%
 ]],[[
 菁华蠕虫
 潜能之戒
@@ -647,8 +651,8 @@ Has Alt Variant: true
 {variant:1}{tags:life}(13-17) 每秒生命回复
 {variant:2}{tags:life}每级获得每秒回复 1 生命
 {tags:mana}魔力回复速度提高 (20-40)%
-{variant:1}你受到的诅咒效果降低 20%
-{variant:2}你受到的诅咒效果降低 40%
+{variant:1}{tags:caster}你受到的诅咒效果降低 20%
+{variant:2}{tags:caster}你受到的诅咒效果降低 40%
 ]],[[
 英灵宝环
 锻铁戒指
@@ -1019,7 +1023,7 @@ Sockets: W
 不能使用其他戒指
 {variant:1,2,3}{tags:jewellery_resistance}获得 +(8-12)% 火焰、冰霜、闪电抗性
 {variant:4}{tags:jewellery_resistance}获得 +(16-24)% 火焰、冰霜、闪电抗性
-你受到的诅咒效果降低 50%
+{tags:caster}你受到的诅咒效果降低 50%
 {variant:1,2,3}{tags:attack,life}你的攻击击中每个敌人会回复 +(20-30) 生命
 {variant:4}{tags:attack,life}你的攻击击中每个敌人会回复 +(40-60) 生命
 {variant:1,2,3}{tags:attack,mana}你的攻击击中每个敌人会回复 +15 魔力
@@ -1220,5 +1224,16 @@ Sockets: W
 {tags:jewellery_attribute}+20 敏捷
 {tags:jewellery_defense}最大能量护盾提高 5%
 {tags:life}最大生命提高 5%
+]],
+[[
+屈服印记
+潜能之戒
+等级需求: 24
+版本: 3.12.0以前
+版本: 当前
+固定基底词缀: 1
+有 1 个插槽
+{variant:1}击中时使用插槽内的诅咒宝石对目标施放诅咒
+{variant:2}{tags:caster}击中时用插入的魔蛊诅咒敌人
 ]],
 }

@@ -274,7 +274,7 @@ activeSkill.disableReason = "没有可用武器"
 	if skillTypes[SkillType.Aura] then
 		skillKeywordFlags = bor(skillKeywordFlags, KeywordFlag.Aura)
 	end
-	if skillTypes[SkillType.Curse] then
+	if skillTypes[SkillType.Hex] or skillTypes[SkillType.Mark] then
 		skillKeywordFlags = bor(skillKeywordFlags, KeywordFlag.Curse)
 	end
 	if skillTypes[SkillType.Warcry] then

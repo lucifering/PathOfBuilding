@@ -201,6 +201,11 @@ return {
 	skill("selfFireExplosionLifeMultiplier", nil),
 	div = 100,
 },
+-- for some reason DeathWish adds another stat with same effect as above
+["skill_minion_explosion_life_%"] = {
+	skill("selfFireExplosionLifeMultiplier", nil),
+	div = 100,
+},
 ["deal_chaos_damage_per_second_for_10_seconds_on_hit"] = {
 	mod("SkillData", "LIST", { key = "decay", value = nil, merge = "MAX" }),
 },
@@ -428,7 +433,7 @@ mod("CritMultiplier", "BASE", nil, 0, 0, { type = "Condition", var = "Elusive" }
 	mod("CritChance", "BASE", nil, 0, 0, { type = "ActorCondition", actor = "enemy", var = "FullLife" })
 },
 ["critical_strike_chance_+%_vs_blinded_enemies"] = {
-	mod("CritChance", "BASE", nil, 0, 0, { type = "ActorCondition", actor = "enemy", var = "Blinded"})
+	mod("CritChance", "INC", nil, 0, 0, { type = "ActorCondition", actor = "enemy", var = "Blinded"})
 },
 -- Duration
 ["buff_effect_duration_+%_per_removable_endurance_charge"] = {
@@ -681,9 +686,9 @@ mod("CritMultiplier", "BASE", nil, 0, 0, { type = "Condition", var = "Elusive" }
 	mod("SkillFireDamageConvertToChaos", "BASE", nil),
 },
 ["skill_convert_%_physical_damage_to_random_element"] = {
-	mod("PhysicalDamageConvertToFire", "BASE", tonumber(num), { type = "Condition", var = "PhysicsRandomElementFire" }),
-  mod("PhysicalDamageConvertToCold", "BASE", tonumber(num), { type = "Condition", var = "PhysicsRandomElementCold" }),
-  mod("PhysicalDamageConvertToLightning", "BASE", tonumber(num), { type = "Condition", var = "PhysicsRandomElementLightning" }),
+	mod("PhysicalDamageConvertToFire", "BASE", nil, 0, 0, { type = "Condition", var = "PhysicsRandomElementFire" }),
+  mod("PhysicalDamageConvertToCold", "BASE", nil, 0, 0, { type = "Condition", var = "PhysicsRandomElementCold" }),
+  mod("PhysicalDamageConvertToLightning", "BASE", nil, 0, 0, { type = "Condition", var = "PhysicsRandomElementLightning" }),
 },
 -- Ailments
 ["bleed_on_hit_with_attacks_%"] = {
@@ -1464,6 +1469,18 @@ mod("CritMultiplier", "BASE", nil, 0, 0, { type = "Condition", var = "Elusive" }
 },
 ["base_avoid_stun_%"] = {
 	mod("AvoidStun", "BASE", nil),
+},
+["base_immune_to_shock"] = {
+	mod("AvoidShock", "BASE", 100),
+},
+["base_immune_to_chill"] = {
+	mod("AvoidChill", "BASE", 100),
+},
+["base_immune_to_freeze"] = {
+	mod("AvoidFreeze", "BASE", 100),
+},
+["base_immune_to_ignite"] = {
+	mod("AvoidIgnite", "BASE", 100),
 },
 ["avoid_interruption_while_using_this_skill_%"] = {
 	mod("AvoidInterruptStun", "BASE", nil)

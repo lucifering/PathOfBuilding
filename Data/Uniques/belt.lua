@@ -251,7 +251,7 @@ return {
 {variant:2}{tags:attack,life}对被冰缓敌人所造成的攻击伤害的 1% 转化为生命偷取
 {variant:1}{tags:jewellery_elemental,attack}攻击被点燃敌人会使燃烧加快 20%
 {variant:2}{tags:jewellery_elemental,attack}攻击被点燃敌人会使燃烧加快 35%
-没有物理伤害
+无法造成物理伤害
 ]],[[
 饥荒之结
 素布腰带

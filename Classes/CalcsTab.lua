@@ -747,7 +747,7 @@ end
 
 -- Estimate the offensive and defensive power of all unallocated nodes
 function CalcsTabClass:PowerBuilder()
-	local calcFunc, calcBase = self:GetNodeCalculator()
+	local calcFunc, calcBase = self:GetMiscCalculator()
 	local cache = { }
 	local newPowerMax = {
 		singleStat = 0,
@@ -764,19 +764,18 @@ function CalcsTabClass:PowerBuilder()
 		coroutine.yield()
 	end
 	local start = GetTime()
-	for _, node in pairs(self.build.spec.nodes) do
+	for nodeId, node in pairs(self.build.spec.nodes) do
 		wipeTable(node.power)
-		if not node.alloc and node.modKey ~= "" then
+		if not node.alloc and node.modKey ~= "" and not self.mainEnv.grantedPassives[nodeId] then
 			if not cache[node.modKey] then
-				cache[node.modKey] = calcFunc({node})
+				cache[node.modKey] = calcFunc({ addNodes = { [node] = true } })
 			end
 			local output = cache[node.modKey]
 			if self.powerStat and self.powerStat.stat and not self.powerStat.ignoreForNodes then
 				node.power.singleStat = self:CalculatePowerStat(self.powerStat, output, calcBase)
-				if (node.path or node.recipe) and not node.ascendancyName then
+				if node.path and not node.ascendancyName then
 					newPowerMax.singleStat = m_max(newPowerMax.singleStat, node.power.singleStat)
-					local pathCost = node.path and #node.path or 1
-					newPowerMax.singleStatPerPoint = m_max(node.power.singleStat / pathCost, newPowerMax.singleStatPerPoint)
+					newPowerMax.singleStatPerPoint = m_max(node.power.singleStat / node.pathDist, newPowerMax.singleStatPerPoint)
 				end
 			else
 				if calcBase.Minion then
@@ -790,12 +789,11 @@ function CalcsTabClass:PowerBuilder()
 								(output.Evasion - calcBase.Evasion) / m_max(10000, calcBase.Evasion) +
 								(output.LifeRegen - calcBase.LifeRegen) / 500 +
 								(output.EnergyShieldRegen - calcBase.EnergyShieldRegen) / 1000
-				if (node.path or node.recipe) and not node.ascendancyName then
+				if node.path and not node.ascendancyName then
 					newPowerMax.offence = m_max(newPowerMax.offence, node.power.offence)
 					newPowerMax.defence = m_max(newPowerMax.defence, node.power.defence)
-					local pathCost = node.path and #node.path or 1
-					newPowerMax.offencePerPoint = m_max(newPowerMax.offencePerPoint, node.power.offence / pathCost)
-					newPowerMax.defencePerPoint = m_max(newPowerMax.defencePerPoint, node.power.defence / pathCost)
+					newPowerMax.offencePerPoint = m_max(newPowerMax.offencePerPoint, node.power.offence / node.pathDist)
+					newPowerMax.defencePerPoint = m_max(newPowerMax.defencePerPoint, node.power.defence / node.pathDist)
 
 				end
 			end
@@ -804,8 +802,46 @@ function CalcsTabClass:PowerBuilder()
 			coroutine.yield()
 			start = GetTime()
 		end
-	end	
+	end
+
+	-- Calculate the impact of every cluster notable
+	-- used for the power report screen
+	for nodeName, node in pairs(self.build.spec.tree.clusterNodeMap) do
+		if not node.power then
+			node.power = {}
+		end
+		wipeTable(node.power)
+		if not node.alloc and node.modKey ~= "" and not self.mainEnv.grantedPassives[nodeId] then
+			if not cache[node.modKey] then
+				cache[node.modKey] = calcFunc({ addNodes = { [node] = true } })
+			end
+			local output = cache[node.modKey]
+			if self.powerStat and self.powerStat.stat and not self.powerStat.ignoreForNodes then
+				node.power.singleStat = self:CalculatePowerStat(self.powerStat, output, calcBase)
+			end
+		end
+		if coroutine.running() and GetTime() - start > 100 then
+			coroutine.yield()
+			start = GetTime()
+		end
+	end
 	self.powerMax = newPowerMax
+end
+
+
+
+function CalcsTabClass:CalculatePowerStat(selection, original, modified)
+	if modified.Minion then
+		original = original.Minion
+		modified = modified.Minion
+	end
+	local originalValue = original[selection.stat] or 0
+	local modifiedValue = modified[selection.stat] or 0
+	if selection.transform then
+		originalValue = selection.transform(originalValue)
+		modifiedValue = selection.transform(modifiedValue)
+	end
+	return originalValue - modifiedValue
 end
 
 function CalcsTabClass:GetNodeCalculator()

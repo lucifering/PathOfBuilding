@@ -1077,66 +1077,102 @@ label = "持续伤害加成:",
 					{ "%.2f ^8(格挡失败的几率)", 1 - BlockChance / 100 },
 					{ "%d%% 从格挡承受的伤害", output.BlockEffect },
 					{ "%.2f ^8(避免伤害失败的几率)", 1 - AvoidChance / 100 },
-					total = s_format("= %d%% ^8(承受来自 %s 伤害的几率)", 100 - output[outputName], outputText),
+					total = s_format("= %d%% ^8(来自 %s 承受伤害的几率)", 100 - output[outputName], outputText),
 				})
 			else
 				breakdown.multiChain(breakdown[outputName], {
 					{ "%.2f ^8(格挡失败的几率)", 1 - BlockChance / 100 },
 					{ "%.2f ^8(避免伤害失败的几率)", 1 - AvoidChance / 100 },
-					total = s_format("= %d%% ^8(承受来自 %s 伤害的几率)", 100 - output[outputName], outputText),
+					total = s_format("= %d%% ^8(来自 %s 承受伤害的几率)", 100 - output[outputName], outputText),
 				})
 			end
 		end
 	end
+
 	for _, damageType in ipairs(dmgTypeList) do
 		chanceToNotTakeDamage("近战攻击", damageType.."MeleeDamageChance", output.BlockChance, output["Avoid"..damageType.."DamageChance"])
 		chanceToNotTakeDamage("投射物攻击", damageType.."ProjectileDamageChance", output.ProjectileBlockChance, m_min(output["Avoid"..damageType.."DamageChance"] + output.AvoidProjectilesChance, data.misc.AvoidChanceCap))
 		chanceToNotTakeDamage("法术", damageType.."SpellDamageChance", output.SpellBlockChance, output["Avoid"..damageType.."DamageChance"])
-		chanceToNotTakeDamage("法术投射物", damageType.."SpellProjectileDamageChance", output.SpellProjectileBlockChance, m_min(output["Avoid"..damageType.."DamageChance"] + output.AvoidProjectilesChance, data.misc.AvoidChanceCap))
+		chanceToNotTakeDamage("投射物法术", damageType.."SpellProjectileDamageChance", output.SpellProjectileBlockChance, m_min(output["Avoid"..damageType.."DamageChance"] + output.AvoidProjectilesChance, data.misc.AvoidChanceCap))
 		--average
 		output[damageType.."AverageDamageChance"] = (output[damageType.."MeleeDamageChance"] + output[damageType.."ProjectileDamageChance"] + output[damageType.."SpellDamageChance"] + output[damageType.."SpellProjectileDamageChance"] ) / 4
 	end
-	
+
+	--effective health pool vs dots
+	for _, damageType in ipairs(dmgTypeList) do
+		output[damageType.."DotEHP"] = output[damageType.."TotalPool"] / output[damageType.."TakenDotMult"]
+		if breakdown then
+			breakdown[damageType.."DotEHP"] = {
+				s_format("总资源池: %d", output[damageType.."TotalPool"]),
+				s_format("持续伤害承受加成: %.2f", output[damageType.."TakenDotMult"]),
+				s_format("总有效资源池: %d", output[damageType.."DotEHP"]),
+			}
+		end
+	end
+
 	--maximum hit taken
 	--FIX X TAKEN AS Y (output[damageType.."TotalPool"] should use the damage types that are converted to in output[damageType.."TakenHitMult"])
 	for _, damageType in ipairs(dmgTypeList) do
 		output[damageType.."MaximumHitTaken"] = output[damageType.."TotalPool"] / output[damageType.."TakenHitMult"]
 		if breakdown then
 			breakdown[damageType.."MaximumHitTaken"] = {
-				s_format("总资源: %d", output[damageType.."TotalPool"]),
-				s_format("伤害承受词缀: %.2f", output[damageType.."TakenHitMult"]),
-				s_format("你能承受的最大击中伤害: %d", output[damageType.."MaximumHitTaken"]),
+				s_format("总资源池: %d", output[damageType.."TotalPool"]),
+				s_format("承受伤害加成: %.2f", output[damageType.."TakenHitMult"]),
+				s_format("可承受的最大击中伤害: %d", output[damageType.."MaximumHitTaken"]),
 			}
 		end
 	end
-	
-	--effective health pool vs dots
-	for _, damageType in ipairs(dmgTypeList) do
-		output[damageType.."DotEHP"] = output[damageType.."TotalPool"] / output[damageType.."TakenDotMult"]
-		if breakdown then
-			breakdown[damageType.."DotEHP"] = {
-				s_format("总资源: %d", output[damageType.."TotalPool"]),
-				s_format("持续伤害承受词缀: %.2f", output[damageType.."TakenDotMult"]),
-				s_format("总有效持续伤害资源池: %d", output[damageType.."DotEHP"]),
-			}
+
+	local DamageTypeConfig = env.configInput.EhpCalcMode or "Average"
+	local minimumEHP = 2147483648
+	local minimumEHPMode = "NONE"
+	if DamageTypeConfig == "Minimum" then
+		DamageTypeConfig = {"Melee", "Projectile", "Spell", "SpellProjectile"}
+		minimumEHPMode = "Melee"
+	else
+		DamageTypeConfig = {DamageTypeConfig}
+	end
+	for _, DamageType in ipairs(DamageTypeConfig) do
+		--total EHP
+		for _, damageType in ipairs(dmgTypeList) do
+			local convertedAvoidance = 0
+			for _, damageConvertedType in ipairs(dmgTypeList) do
+				convertedAvoidance = convertedAvoidance + output[damageConvertedType..DamageType.."DamageChance"] * actor.damageShiftTable[damageType][damageConvertedType] / 100
+			end
+			output[damageType.."TotalEHP"] = output[damageType.."MaximumHitTaken"] / (1 - output[DamageType.."NotHitChance"] / 100) / (1 - convertedAvoidance / 100)
+			if minimumEHPMode ~= "NONE" then
+				if output[damageType.."TotalEHP"] < minimumEHP then
+					minimumEHP = output[damageType.."TotalEHP"]
+					minimumEHPMode = DamageType
+				end
+			elseif breakdown then
+				breakdown[damageType.."TotalEHP"] = {
+				s_format("EHP 计算模式: %s", DamageType),
+				s_format("可承受最大击中: %d", output[damageType.."MaximumHitTaken"]),
+				s_format("%s 不被击中几率: %d%%", DamageType, output[DamageType.."NotHitChance"]),
+				s_format("%s 被击中时不承受伤害几率: %d%%", DamageType, convertedAvoidance),
+				s_format("总有效资源池: %d", output[damageType.."TotalEHP"]),
+				}
+			end
 		end
 	end
-	
-	--total EHP
-	for _, damageType in ipairs(dmgTypeList) do
-		local convertedAvoidance = 0
-		for _, damageConvertedType in ipairs(dmgTypeList) do
-			convertedAvoidance = convertedAvoidance + output[damageConvertedType.."AverageDamageChance"] * actor.damageShiftTable[damageType][damageConvertedType] / 100
-		end
-		output[damageType.."TotalEHP"] = output[damageType.."MaximumHitTaken"] / (1 - output.AverageNotHitChance / 100) / (1 - convertedAvoidance / 100)
-		if breakdown then
-			breakdown[damageType.."TotalEHP"] = {
-			s_format("最大承受击中: %d", output[damageType.."MaximumHitTaken"]),
-			s_format("不被击中的平均几率: %d%%", output.AverageNotHitChance),
-			s_format("被击中时不承受伤害的平均几率: %d%%", convertedAvoidance),
-			s_format("总有效击中资源池: %d", output[damageType.."TotalEHP"]),
-			}
+	if minimumEHPMode ~= "NONE" then
+		for _, damageType in ipairs(dmgTypeList) do
+			local convertedAvoidance = 0
+			for _, damageConvertedType in ipairs(dmgTypeList) do
+				convertedAvoidance = convertedAvoidance + output[damageConvertedType..minimumEHPMode.."DamageChance"] * actor.damageShiftTable[damageType][damageConvertedType] / 100
+			end
+			output[damageType.."TotalEHP"] = output[damageType.."MaximumHitTaken"] / (1 - output[minimumEHPMode.."NotHitChance"] / 100) / (1 - convertedAvoidance / 100)
+			if breakdown then
+				breakdown[damageType.."TotalEHP"] = {
+				s_format("EHP 计算模式: Minimum"),
+				s_format("最小类型 %s", minimumEHPMode),
+				s_format("可承受最大击中: %d", output[damageType.."MaximumHitTaken"]),
+				s_format("%s 不被击中几率: %d%%", minimumEHPMode, output[minimumEHPMode.."NotHitChance"]),
+				s_format("%s 被击中时不承受伤害几率: %d%%", minimumEHPMode, convertedAvoidance),
+				s_format("总有效资源池: %d", output[damageType.."TotalEHP"]),
+				}
+			end
 		end
 	end
 end
-

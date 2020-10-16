@@ -145,6 +145,54 @@ end
 
 data = { }
 
+
+data.powerStatList = {
+	{ stat=nil, label="伤害/防御", combinedOffDef=true, ignoreForItems=true },
+	{ stat=nil, label="Name", itemField="Name", ignoreForNodes=true, reverseSort=true, transform=function(value) return value:gsub("^The ","") end},
+	{ stat="CombinedDPS", label="包含所有的 DPS" },
+	{ stat="TotalDPS", label="总 DPS" },
+	--{ stat="WithImpaleDPS", label="Impale + Total DPS" },
+	{ stat="AverageDamage", label="平均击中伤害" },
+	{ stat="Speed", label="攻击/施法 速度" },
+	{ stat="TotalDot", label="持续伤害 DPS" },
+	{ stat="BleedDPS", label="流血 DPS" },
+	{ stat="IgniteDPS", label="点燃 DPS" },
+	{ stat="PoisonDPS", label="中毒 DPS" },
+	{ stat="Life", label="生命" },
+	{ stat="LifeRegen", label="生命回复" },
+	{ stat="LifeLeechRate", label="生命偷取" },
+	{ stat="EnergyShield", label=" 能量护盾" },
+	{ stat="EnergyShieldRegen", label="能量护盾回复" },
+	{ stat="EnergyShieldLeechRate", label="能量护盾偷取" },
+	{ stat="Mana", label="魔力" },
+	{ stat="ManaRegen", label="魔力回复" },
+	{ stat="ManaLeechRate", label="魔力偷取" },
+	{ stat="Str", label="力量" },
+	{ stat="Dex", label="敏捷" },
+	{ stat="Int", label="智力" },
+	{ stat="TotalAttr", label="所有属性" },
+	{ stat="MeleeAvoidChance", label="近战伤害避免几率" },
+	{ stat="SpellAvoidChance", label="法术伤害避免几率" },
+	{ stat="ProjectileAvoidChance", label="投射物伤害避免几率" },
+	{ stat="PhysicalTotalEHP", label="eHP-对抗物理击中" },
+	{ stat="LightningTotalEHP", label="eHP-对抗闪电击中" },
+	{ stat="ColdTotalEHP", label="eHP-对抗冰霜击中" },
+	{ stat="FireTotalEHP", label="eHP-对抗火焰击中" },
+	{ stat="ChaosTotalEHP", label="eHP-对抗混沌击中" },
+	{ stat="PhysicalTakenHitMult", label="承受物理伤害", transform=function(value) return 1-value end },
+	{ stat="LightningTakenDotMult", label="承受闪电伤害", transform=function(value) return 1-value end },
+	{ stat="ColdTakenDotMult", label="承受冰霜伤害", transform=function(value) return 1-value end },
+	{ stat="FireTakenDotMult", label="承受火焰伤害", transform=function(value) return 1-value end },
+	{ stat="ChaosTakenHitMult", label="承受混沌伤害", transform=function(value) return 1-value end },
+	{ stat="CritChance", label="暴击几率" },
+	{ stat="CritMultiplier", label="暴击伤害" },
+	{ stat="BleedChance", label="流血几率" },
+	{ stat="FreezeChance", label="冰冻几率" },
+	{ stat="IgniteChance", label="点燃几率" },
+	{ stat="ShockChance", label="感电几率" },
+	{ stat="EffectiveMovementSpeedMod", label="移动速度" },
+}
+
 data.skillColorMap = { colorCodes.STRENGTH, colorCodes.DEXTERITY, colorCodes.INTELLIGENCE, colorCodes.NORMAL }
 
 data.jewelRadius = {

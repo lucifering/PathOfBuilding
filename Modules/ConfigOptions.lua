@@ -968,6 +968,13 @@ ifCond = "OnFungalGround",
 { var = "conditionTauntedEnemyRecently", type = "check", label = "近期嘲讽过怪物?", ifCond = "TauntedEnemyRecently", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:TauntedEnemyRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
+{ var = "conditionLostEnduranceChargeInPast8Sec", type = "check", label = "过去 8 秒有失去过耐力球?", ifNode = 32249, apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:LostEnduranceChargeInPast8Sec", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
+{ var = "multiplierEnduranceChargesLostRecently", type = "count", label = "# 近期失去耐力球的数量:", ifMult = "EnduranceChargesLostRecently", implyCond = "LostEnduranceChargeInPast8Sec", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:EnduranceChargesLostRecently", "BASE", val, "Config", { type = "Condition", var = "Combat" })
+		modList:NewMod("Condition:LostEnduranceChargeInPast8Sec", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
 { var = "conditionUsedFireSkillInPast10Sec", type = "check", ifVer = "2_6", label = "过去10秒内有使用过火焰技能?", ifNode = 61259, apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:UsedFireSkillInPast10Sec", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },

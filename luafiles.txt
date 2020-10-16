@@ -225,3 +225,4 @@ TreeData/legion/skills-additional-3.jpg
 TreeData/legion/skills-additional-disabled-3.jpg
 TreeData/legion/tree-legion.lua
 Data/3_0/LegionPassives.lua
+Classes/PowerReportListControl.lua

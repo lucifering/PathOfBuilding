@@ -106,7 +106,7 @@ itemBases["朴实项链"] = {
 	type = "Amulet",
 	tags = { default = true, amulet = true, not_for_sale = true, },
 	implicit = "允许的前缀 -1\n允许的后缀 -1\n基底词缀不能改变\n该装备的词缀效果提高 25%",
-	implicitModTypes = { {  }, {  }, {  }, },
+	implicitModTypes = { {  }, {  }, {  }, {  }, },
 	req = { level = 24, },
 }
 

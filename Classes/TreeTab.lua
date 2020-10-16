@@ -7,7 +7,11 @@
 
 local ipairs = ipairs
 local t_insert = table.insert
+local t_sort = table.sort
+local m_max = math.max
 local m_min = math.min
+local m_floor = math.floor
+local s_format = string.format
 
 local TreeTabClass = newClass("TreeTab", "ControlHost", function(self, build)
 	self.ControlHost()
@@ -21,7 +25,7 @@ local TreeTabClass = newClass("TreeTab", "ControlHost", function(self, build)
 	self:SetActiveSpec(1)
 
 	self.anchorControls = new("Control", nil, 0, 0, 0, 20)
-	self.controls.specSelect = new("DropDownControl", {"LEFT",self.anchorControls,"RIGHT"}, 0, 0, 150, 20, nil, function(index, value)
+	self.controls.specSelect = new("DropDownControl", {"LEFT",self.anchorControls,"RIGHT"}, 0, 0, 190, 20, nil, function(index, value)
 		if self.specList[index] then
 			self.build.modFlag = true
 			self:SetActiveSpec(index)
@@ -87,11 +91,47 @@ self.controls.treeSearch = new("EditControl", {"LEFT",self.controls.export,"RIGH
 	end)
 self.controls.treeHeatMap = new("CheckBoxControl", {"LEFT",self.controls.treeSearch,"RIGHT"}, 130, 0, 20, "高亮天赋树节点:", function(state)	
 		self.viewer.showHeatMap = state
+		self.controls.treeHeatMapStatSelect.shown = state
+	end)
+	self.controls.treeHeatMapStatSelect = new("DropDownControl", {"LEFT",self.controls.treeHeatMap,"RIGHT"}, 8, 0, 150, 20, nil, function(index, value)
+		self:SetPowerCalc(value)
 	end)
 	self.controls.treeHeatMap.tooltipText = function()
 		local offCol, defCol = main.nodePowerTheme:match("(%a+)/(%a+)")
 return "启用时, 会高亮显示你已点亮的天赋树路径\n未点亮的天赋会更加暗淡.\n攻击型大点会显示 "..offCol:lower().."色, 防御型大点会显示"..defCol:lower().."色."
 	end
+	
+	self.powerStatList = { }
+	for _, stat in ipairs(data.powerStatList) do
+		if not stat.ignoreForNodes then
+			t_insert(self.powerStatList, stat)
+		end
+	end
+
+	self.controls.treeHeatMapTopStat = new("CheckBoxControl", {"LEFT", self.controls.treeHeatMapStatSelect,"RIGHT"}, 110, 0, 20, "显示最强节点:", function(state)
+		self.viewer.heatMapTopPick = state
+	end )
+
+	self.controls.treeHeatMapTopStat.tooltipText = function()
+		return "勾选后只显示对应状态的最高加成节点"
+	end
+
+	self.controls.treeHeatMapStatPerPoint = new("CheckBoxControl", {"LEFT", self.controls.treeHeatMapTopStat,"RIGHT"}, 115, 0, 20, "平均每点加成:", function(state)
+		self.viewer.heatMapStatPerPoint = state
+	end )
+
+	self.controls.treeHeatMapStatPerPoint.tooltipText = function()
+		return "勾选后，节点高亮将除与到节点所需天赋树数量\n越近的节点越高亮"
+	end
+
+	self.controls.powerReport = new("ButtonControl", {"LEFT", self.controls.treeHeatMapStatPerPoint, "RIGHT"}, 8, 0, 120, 20, "高亮节点报表", function()
+		self:ShowPowerReport()
+	end)
+	self.controls.powerReport.tooltipText = function()
+		return "根据当前选择的高亮节点模式来查看节点报表信息"
+	end
+	
+	
 self.controls.specConvertText = new("LabelControl", {"BOTTOMLEFT",self.controls.specSelect,"TOPLEFT"}, 0, -14, 0, 16, "^7这是一个旧版本的天赋树，也许无法完整地转换为当前游戏版本.")
 	self.controls.specConvertText.shown = function()
 		return self.showConvert
@@ -132,32 +172,67 @@ function TreeTabClass:Draw(viewPort, inputEvents)
 	end
 	self:ProcessControlsInput(inputEvents, viewPort)
 
-	local treeViewPort = { x = viewPort.x, y = viewPort.y, width = viewPort.width, height = viewPort.height - (self.showConvert and 64 or 32) }	
+-- Determine positions if one line of controls doesn't fit in the screen width
+	local twoLineHeight = self.controls.treeHeatMap.y == 24 and 26 or 0
+	if(select(1, self.controls.powerReport:GetPos()) + select(1, self.controls.powerReport:GetSize()) > viewPort.x + viewPort.width) then
+		twoLineHeight = 26
+		self.controls.treeHeatMap:SetAnchor("BOTTOMLEFT",self.controls.specSelect,"BOTTOMLEFT",nil,nil,nil)
+		self.controls.treeHeatMap.y = 24
+		self.controls.treeHeatMap.x = 125
+
+		self.controls.specSelect.y = -24
+		self.controls.specConvertText.y = -16
+	elseif viewPort.x + viewPort.width - (select(1, self.controls.treeSearch:GetPos()) + select(1, self.controls.treeSearch:GetSize())) > (select(1, self.controls.powerReport:GetPos()) + select(1, self.controls.powerReport:GetSize())) - viewPort.x  then
+		twoLineHeight = 0
+		self.controls.treeHeatMap:SetAnchor("LEFT",self.controls.treeSearch,"RIGHT",nil,nil,nil)
+		self.controls.treeHeatMap.y = 0
+		self.controls.treeHeatMap.x = 130
+
+		self.controls.specSelect.y = 0
+		self.controls.specConvertText.y = -14
+	end
+
+
+	local treeViewPort = { x = viewPort.x, y = viewPort.y, width = viewPort.width, height = viewPort.height - (self.showConvert and 64 + twoLineHeight or 32 + twoLineHeight)}
+	if self.jumpToNode then
+		self.viewer:Focus(self.jumpToX, self.jumpToY, treeViewPort, self.build)
+		self.jumpToNode = false
+	end
 	self.viewer:Draw(self.build, treeViewPort, inputEvents)
 
 	self.controls.specSelect.selIndex = self.activeSpec
 	wipeTable(self.controls.specSelect.list)
 	for id, spec in ipairs(self.specList) do
-t_insert(self.controls.specSelect.list, (spec.treeVersion ~= self.build.targetVersionData.latestTreeVersion and ("["..treeVersions[spec.treeVersion].short.."] ") or "")..(spec.title or "Default"))
+		t_insert(self.controls.specSelect.list, (spec.treeVersion ~= self.build.targetVersionData.latestTreeVersion and ("["..treeVersions[spec.treeVersion].short.."] ") or "")..(spec.title or "Default"))
 	end
-t_insert(self.controls.specSelect.list, "管理天赋树...")
+	t_insert(self.controls.specSelect.list, "管理天赋树...")
+	
 	if not self.controls.treeSearch.hasFocus then
 		self.controls.treeSearch:SetText(self.viewer.searchStr)
 	end
+	
 	self.controls.treeHeatMap.state = self.viewer.showHeatMap
 
+	self.controls.treeHeatMapStatSelect.list = self.powerStatList
+	self.controls.treeHeatMapStatSelect.selIndex = 1
+	if self.build.calcsTab.powerStat then
+		self.controls.treeHeatMapStatSelect:SelByValue(self.build.calcsTab.powerStat.stat, "stat")
+	end
+	
 	SetDrawLayer(1)
 
 	SetDrawColor(0.05, 0.05, 0.05)
-	DrawImage(nil, viewPort.x, viewPort.y + viewPort.height - 28, viewPort.width, 28)
+	DrawImage(nil, viewPort.x, viewPort.y + viewPort.height - (28 + twoLineHeight), viewPort.width, 28 + twoLineHeight)
 	SetDrawColor(0.85, 0.85, 0.85)
-	DrawImage(nil, viewPort.x, viewPort.y + viewPort.height - 32, viewPort.width, 4)
+	DrawImage(nil, viewPort.x, viewPort.y + viewPort.height - (32 + twoLineHeight), viewPort.width, 4)
+
 	if self.showConvert then
 		SetDrawColor(0.05, 0.05, 0.05)
-		DrawImage(nil, viewPort.x, viewPort.y + viewPort.height - 60, viewPort.width, 28)
+		DrawImage(nil, viewPort.x, viewPort.y + viewPort.height - (60 + twoLineHeight), viewPort.width, 28)
 		SetDrawColor(0.85, 0.85, 0.85)
-		DrawImage(nil, viewPort.x, viewPort.y + viewPort.height - 64, viewPort.width, 4)
+		DrawImage(nil, viewPort.x, viewPort.y + viewPort.height - (64 + twoLineHeight), viewPort.width, 4)
 	end
+
 	self:DrawControls(viewPort)
 end
 
@@ -189,6 +264,7 @@ function TreeTabClass:Load(xml, dbFileName)
 	end
 	self:SetActiveSpec(tonumber(xml.attrib.activeSpec) or 1)
 end
+
 
 function TreeTabClass:PostLoad()
 	for _, spec in ipairs(self.specList) do
@@ -224,6 +300,7 @@ function TreeTabClass:SetActiveSpec(specId)
 	local curSpec = self.specList[self.activeSpec]
 	self.build.spec = curSpec
 	self.build.buildFlag = true
+	self.build.spec:SetWindowTitleWithBuildClass()
 	for _, slot in pairs(self.build.itemsTab.slots) do
 		if slot.nodeId then
 			if prevSpec then
@@ -241,9 +318,14 @@ function TreeTabClass:SetActiveSpec(specId)
 		-- Update item slots if items have been loaded already
 		self.build.itemsTab:PopulateSlots()
 	end
-	--self.build.spec:resetAllocTimeJew(); 
-			--	self.build.spec:allocTimeJew(); 
-				
+end
+
+function TreeTabClass:SetPowerCalc(selection)
+	self.viewer.showHeatMap = true
+	self.build.buildFlag = true
+	self.build.powerBuildFlag = true
+	self.build.calcsTab.powerStat = selection
+	self.build.calcsTab:BuildPower()
 end
 
 function TreeTabClass:OpenSpecManagePopup()
@@ -500,4 +582,129 @@ function TreeTabClass:ModifyNodePopup(selectedNode)
 	end)
 	main:OpenPopup(800, 105, "替换天赋点词缀", controls, "save")
 	constructUI(modGroups[1])
+end
+
+
+function TreeTabClass:ShowPowerReport()
+	local report = {}
+	local currentStat = self.build.calcsTab.powerStat
+	
+	-- the report doesn't support listing the "offense/defense" hybrid heatmap, as it is not a single scalar and im unsure how to quantify numerically
+	-- especially given the heatmap's current approach of using the sqrt() of both components. that number is cryptic to users, i suspect.
+	if not currentStat or not currentStat.stat then
+		main:OpenMessagePopup("选择高亮节点模式", "【伤害/防御】模式没有报表信息，请切换其他模式")
+		return
+	end
+
+	-- locate formatting information for the type of heat map being used.
+	-- maybe a better place to find this? At the moment, it is the only place
+	-- in the code that has this information in a tidy place.
+	local currentStatLabel = currentStat.label
+	local displayStat = nil
+
+	for index, ds in ipairs(self.build.displayStats) do
+		if ds.stat == currentStat.stat then
+			displayStat = ds
+			break
+		end
+	end
+
+	-- not every heat map has an associated "stat" in the displayStats table
+	-- this is due to not every stat being displayed in the sidebar, I believe.
+	-- But, we do want to use the formatting knowledge stored in that table rather than duplicating it here.
+	-- If no corresponding stat is found, just default to a generic stat display (>0=good, one digit of precision).
+	if not displayStat then
+		displayStat = {
+			fmt = ".1f"
+		}
+	end
+
+	-- search all nodes, ignoring ascendcies, sockets, etc.
+	for nodeId, node in pairs(self.build.spec.nodes) do
+		local isAlloc = node.alloc or self.build.calcsTab.mainEnv.grantedPassives[nodeId]
+		if not isAlloc and (node.type == "Normal" or node.type == "Keystone" or node.type == "Notable") and not node.ascendancyName then
+			local nodePower = (node.power.singleStat or 0) * ((displayStat.pc or displayStat.mod) and 100 or 1)
+			print(displayStat.fmt)
+			local nodePowerStr = s_format("%"..displayStat.fmt, nodePower)
+
+			if main.showThousandsCalcs then
+				nodePowerStr = formatNumSep(nodePowerStr)
+			end
+			
+			if (nodePower > 0 and not displayStat.lowerIsBetter) or (nodePower < 0 and displayStat.lowerIsBetter) then
+				nodePowerStr = colorCodes.POSITIVE .. nodePowerStr
+			elseif (nodePower < 0 and not displayStat.lowerIsBetter) or (nodePower > 0 and displayStat.lowerIsBetter) then
+				nodePowerStr = colorCodes.NEGATIVE .. nodePowerStr
+			end
+			
+			t_insert(report, {
+				name = node.dn,
+				power = nodePower,
+				powerStr = nodePowerStr,
+				id = node.id,
+				x = node.x,
+				y = node.y,
+				type = node.type,
+				pathDist = node.pathDist
+			})
+		end
+	end
+
+	-- search all cluster notables and add to the list
+	for nodeName, node in pairs(self.build.spec.tree.clusterNodeMap) do
+		local isAlloc = node.alloc
+		if not isAlloc then			
+			local nodePower = (node.power.singleStat or 0) * ((displayStat.pc or displayStat.mod) and 100 or 1)
+			local nodePowerStr = s_format("%"..displayStat.fmt, nodePower)
+
+			if main.showThousandsCalcs then
+				nodePowerStr = formatNumSep(nodePowerStr)
+			end
+			
+			if (nodePower > 0 and not displayStat.lowerIsBetter) or (nodePower < 0 and displayStat.lowerIsBetter) then
+				nodePowerStr = colorCodes.POSITIVE .. nodePowerStr
+			elseif (nodePower < 0 and not displayStat.lowerIsBetter) or (nodePower > 0 and displayStat.lowerIsBetter) then
+				nodePowerStr = colorCodes.NEGATIVE .. nodePowerStr
+			end
+			
+			t_insert(report, {
+				name = node.dn,
+				power = nodePower,
+				powerStr = nodePowerStr,
+				id = node.id,
+				type = node.type,
+				pathDist = "Cluster"
+			})
+		end
+	end
+
+	-- sort it
+	if displayStat.lowerIsBetter then
+		t_sort(report, function (a,b)
+			return (a.power) < (b.power)
+		end)
+	else
+		t_sort(report, function (a,b)
+			return (a.power) > (b.power)
+		end)
+	end
+
+	-- present the UI
+	local controls = {}
+	controls.powerReport = new("PowerReportListControl", nil, 0, 0, 550, 450, report, currentStatLabel, function(selectedNode)
+		-- this code is called by the list control when the user "selects" one of the passives in the list.
+		-- we use this to set a flag which causes the next Draw() to recenter the passive tree on the desired node.
+		if(selectedNode.x) then
+			self.jumpToNode = true
+			self.jumpToX = selectedNode.x
+			self.jumpToY = selectedNode.y
+			main:ClosePopup()
+		end		
+	end)
+	
+	controls.done = new("ButtonControl", nil, 0, 490, 100, 20, "关闭", function()
+		main:ClosePopup()
+	end)
+
+	popup = main:OpenPopup(600, 500, "高亮节点信息报表: " .. currentStatLabel, controls, "done", "list")
 end

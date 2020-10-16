@@ -1159,6 +1159,7 @@ end
 
 function PassiveSpecClass:RestoreUndoState(state)
 	self:ImportFromNodeList(state.classId, state.ascendClassId, state.hashList)
+	self:SetWindowTitleWithBuildClass()
 end
  
 function table.shallow_copy(t)
@@ -1208,7 +1209,9 @@ local PathJewelList={"Split Personality"}
 
 
 function PassiveSpecClass:SetWindowTitleWithBuildClass()
+
 	main:SetWindowTitleSubtext(string.format("%s (%s)", self.build.buildName, self.curAscendClassId == 0 and self.curClassName or self.curAscendClassName))
+	
 end
 
 --- Adds a line to or replaces a node given a line to add/replace with

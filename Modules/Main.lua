@@ -524,6 +524,7 @@ function main:OpenOptionsPopup()
 	controls.proxyType = new("DropDownControl", {"TOPLEFT",nil,"TOPLEFT"}, 150, 20, 80, 18, {
 		{ label = "HTTP", scheme = "http" },
 		{ label = "SOCKS", scheme = "socks5" },
+		{ label = "SOCKS5H", scheme = "socks5h" },
 	})
 controls.proxyLabel = new("LabelControl", {"RIGHT",controls.proxyType,"LEFT"}, -4, 0, 0, 16, "^7代理服务器:")
 	controls.proxyURL = new("EditControl", {"LEFT",controls.proxyType,"RIGHT"}, 4, 0, 206, 18)
@@ -899,6 +900,14 @@ function main:OpenNewFolderPopup(path, onClose)
 		main:ClosePopup()
 	end)
 main:OpenPopup(370, 100, "新文件夹", controls, "create", "edit", "cancel")	
+end
+
+function main:SetWindowTitleSubtext(subtext)
+	if not subtext or not self.showTitlebarName then
+		SetWindowTitle("Path of Building")
+	else
+		SetWindowTitle("Path of Building - "..subtext)
+	end
 end
 
 do

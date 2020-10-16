@@ -4595,6 +4595,11 @@ local specialModList = {
 	{ mod = mod("Speed", "INC", tonumber(num2),nil, ModFlag.Attack )}, { type = "PerStat", stat = "Dex", div = tonumber(num1) })  } end, 
 	["每 (%d+) 点敏捷可使召唤生物的移动速度提高 (%d+)%%"]= function(_,num1,num2) return { mod("MinionModifier", "LIST", 
 	{ mod = mod("MovementSpeed", "INC", tonumber(num2))}, { type = "PerStat", stat = "Dex", div = tonumber(num1) })  } end, 
+	["你的击中造成的元素伤害由最低的抗性来抵抗"] = { flag("ElementalDamageUsesLowestElementalResistance") },
+	["若过去 8 秒你有失去过耐力球，则总伤害额外提高 (%d+)%%"] = function(num) return { mod("Damage", "MORE", num, { type = "Condition", var = "LostEnduranceChargeInPast8Sec" })	} end,
+	["近期内每失去一个耐力球就使总伤害额外提高 (%d+)%%，最大 (%d+)%%"] = function(num, _, limit) return {
+			mod("Damage", "MORE", num, { type = "Multiplier", var = "EnduranceChargesLostRecently", limit = tonumber(limit), limitTotal = true }),
+		} end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded
@@ -4768,7 +4773,7 @@ minus = -tonumber(minus)
 	["没有插槽"] = { flag("NoSockets") }, --备注：has no sockets
 	["有 (%d+) 个插槽"] = function(num) return { mod("SocketCount", "BASE", num) } end, --备注：has (%d+) sockets?
 	["拥有 (%d+) 个深渊插槽"] = function(num) return { mod("AbyssalSocketCount", "BASE", num) } end, --备注：has (%d+) abyssal sockets?
-	["无法造成物理伤害"] = { mod("WeaponData", "LIST", { key = "PhysicalMin" }), mod("WeaponData", "LIST", { key = "PhysicalMax" }), mod("WeaponData", "LIST", { key = "PhysicalDPS" }) }, --备注：no physical damage
+	["没有物理伤害"] = { mod("WeaponData", "LIST", { key = "PhysicalMin" }), mod("WeaponData", "LIST", { key = "PhysicalMax" }), mod("WeaponData", "LIST", { key = "PhysicalDPS" }) }, --备注：no physical damage
 	["此武器进行的所有攻击皆是暴击"] = { mod("WeaponData", "LIST", { key = "CritChance", value = 100 }) }, --备注：all attacks with this weapon are critical strikes
 	["视作双持武器"] = { mod("WeaponData", "LIST", { key = "countsAsDualWielding", value = true}) }, --备注：counts as dual wielding
 	["可视为所有类型的单手近战武器"] = { mod("WeaponData", "LIST", { key = "countsAsAll1H", value = true }) }, --备注：counts as all one handed melee weapon types
@@ -5131,7 +5136,7 @@ minus = -tonumber(minus)
 	["iron will"] = { flag("IronWill") },
 	["iron reflexes while stationary"] = { mod("Keystone", "LIST", "Iron Reflexes", { type = "Condition", var = "Stationary" }) },
 	["you have zealot's oath if you haven't been hit recently"] = { mod("Keystone", "LIST", "Zealot's Oath", { type = "Condition", var = "BeenHitRecently", neg = true }) },
-	["没有物理伤害"] = { flag("DealNoPhysical") }, --备注：deal no physical damage
+	["无法造成物理伤害"] = { flag("DealNoPhysical") }, --备注：deal no physical damage
 	["无法造成火焰、冰霜、闪电伤害"] = { flag("DealNoLightning"), flag("DealNoCold"), flag("DealNoFire") }, --备注：deal no elemental damage
 	["无法造成非火焰、冰霜、闪电伤害"] = { flag("DealNoPhysical"), flag("DealNoChaos") }, --备注：deal no non%-elemental damage
 	["所有攻击都受到血魔法辅助"] = { flag("SkillBloodMagic", nil, ModFlag.Attack) }, --备注：attacks have blood magic

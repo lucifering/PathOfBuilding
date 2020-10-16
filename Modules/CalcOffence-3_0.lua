@@ -1920,6 +1920,7 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 							resist = enemyDB:Sum("BASE", nil, damageType.."Resist")
 							if isElemental[damageType] then
 								
+								
 								resist = resist + enemyDB:Sum("BASE", nil, "ElementalResist")								
 								local base = resist 
 								resist = base * calcLib.mod(enemyDB, nil, damageType.."Resist")
@@ -1929,6 +1930,27 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 									isIgnorePen = true
 								else
 									pen = skillModList:Sum("BASE", cfg, damageType.."Penetration", "ElementalPenetration")
+									if skillModList:Flag(cfg, "ElementalDamageUsesLowestElementalResistance") then
+										-- Default to using Elemental
+										local elementUsed = damageType
+										-- Find the lowest resist of all the elements and use that if it's lower than chaos
+										for _, damageTypeFor in ipairs(dmgTypeList) do
+											if isElemental[damageTypeFor] and useThisResist(damageTypeFor) then
+												local elementalResistFor = enemyDB:Sum("BASE", nil, damageTypeFor.."Resist")
+												local base = elementalResistFor + enemyDB:Sum("BASE", dotTypeCfg, "ElementalResist")
+												local currentElementResist = base * calcLib.mod(enemyDB, nil, damageTypeFor.."Resist")
+												-- If it's explicitly lower, then use the resist and update which element we're using to account for penetration
+												if resist > currentElementResist then
+													resist = currentElementResist
+													elementUsed = damageTypeFor
+												end
+											end										
+										end
+										--Update the penetration based on the element used
+										pen = skillModList:Sum("BASE", cfg, elementUsed.."Penetration", "ElementalPenetration")
+										sourceRes = elementUsed
+									end
+									
 								end						
 								
 								takenInc = takenInc + enemyDB:Sum("INC", nil, "ElementalDamageTaken")
@@ -1937,6 +1959,8 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 									resist = globalOutput[damageType.."ResistTotal"]
 									isResistIsEnemy = true
 								end
+								
+								
 							elseif damageType == "Chaos" then
 								pen = skillModList:Sum("BASE", cfg, "ChaosPenetration")
 								if skillModList:Flag(cfg, "ChaosDamageUsesLowestResistance") then

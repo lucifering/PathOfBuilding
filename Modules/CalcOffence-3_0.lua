@@ -337,52 +337,95 @@ local function runSkillFunc(name)
 		skillModList:NewMod("Damage", "INC", actor.strDmgBonus or 0, "Strength", ModFlag.Spell)
 	end
 
+
+	if skillModList:Flag(nil, "TransfigurationOfBody") then
+		skillModList:NewMod("Damage", "INC", m_floor(skillModList:Sum("INC", nil, "Life") * 0.3), "躯体幻化", ModFlag.Attack)
+	end
+	if skillModList:Flag(nil, "TransfigurationOfMind") then
+		skillModList:NewMod("Damage", "INC", m_floor(skillModList:Sum("INC", nil, "Mana") * 0.3), "心灵幻化")
+	end
+	if skillModList:Flag(nil, "TransfigurationOfSoul") then
+		skillModList:NewMod("Damage", "INC", m_floor(skillModList:Sum("INC", nil, "EnergyShield") * 0.3), "灵魂幻化", ModFlag.Spell)
+	end
+	
+	
+	-- modType: To look for "INC" or "BASE" for getting the percent conversion
+	-- modName: Mod name to look for getting the percent conversion
+	local getConversionMultiplier = function(modType, modName)
+		-- Default to 100% conversion
+		local multiplier = 1
+		if modType and modName then
+			local maxIncrease = 0
+			for i, value in ipairs(skillModList:Tabulate(modType, skillCfg, modName)) do
+				maxIncrease = m_max(maxIncrease, value.mod.value)
+			end
+			-- Convert from percent to fraction
+			multiplier = maxIncrease / 100.
+		end
+		return multiplier
+	end
+	
+	-- Correct the tags on conversion with multipliers so they carry over correctly
+	local getConvertedModTags = function(mod, multiplier, minionMods)
+		local modifiers = modLib.extractModTags(mod)
+		for k, value in ipairs(modifiers) do
+			if minionMods and value.type == "ActorCondition" and value.actor == "parent" then
+				modifiers[k] = { type = "Condition", var = value.var }
+			elseif value.limitTotal then
+				-- LimitTotal can apply to 'per stat' or 'multiplier', so just copy the whole and update the limit
+				local copy = copyTable(value)
+				copy.limit = copy.limit * multiplier
+				modifiers[k] = copy
+			end
+		end
+		return modifiers
+	end
+
+
 	if skillModList:Flag(nil, "MinionDamageAppliesToPlayer") then
-		-- Minion Damage conversion from The Scourge
+		-- Minion Damage conversion from Spiritual Aid and The Scourge
+		local multiplier = getConversionMultiplier("INC", "ImprovedMinionDamageAppliesToPlayer")
 		for _, value in ipairs(skillModList:List(skillCfg, "MinionModifier")) do
 			if value.mod.name == "Damage" and value.mod.type == "INC" then
-				skillModList:AddMod(value.mod)
+				local mod = value.mod
+				local modifiers = getConvertedModTags(mod, multiplier, true)
+				skillModList:NewMod("Damage", "INC", mod.value * multiplier, mod.source, mod.flags, mod.keywordFlags, unpack(modifiers))
 			end
 		end
 	end
 	if skillModList:Flag(nil, "MinionAttackSpeedAppliesToPlayer") then
+		-- Minion Damage conversion from Spiritual Command
+		local multiplier = getConversionMultiplier("INC", "ImprovedMinionAttackSpeedAppliesToPlayer")
 		-- Minion Attack Speed conversion from Spiritual Command
 		for _, value in ipairs(skillModList:List(skillCfg, "MinionModifier")) do
 			if value.mod.name == "Speed" and value.mod.type == "INC" and (value.mod.flags == 0 or band(value.mod.flags, ModFlag.Attack) ~= 0) then
-				skillModList:NewMod("Speed", "INC", value.mod.value, value.mod.source, ModFlag.Attack, value.mod.keywordFlags, unpack(value.mod))
+				local modifiers = getConvertedModTags(value.mod, multiplier, true)
+				skillModList:NewMod("Speed", "INC", value.mod.value * multiplier, value.mod.source, ModFlag.Attack, value.mod.keywordFlags, unpack(modifiers))
 			end
 		end
 	end
 	if skillModList:Flag(nil, "SpellDamageAppliesToAttacks") then
 		-- Spell Damage conversion from Crown of Eyes, Kinetic Bolt, and the Wandslinger notable
-		local maxIncrease = 0
-		for i, value in ipairs(skillModList:Tabulate("INC", skillCfg, "ImprovedSpellDamageAppliesToAttacks")) do
-			maxIncrease = m_max(maxIncrease, value.mod.value)
-		end
-		-- Convert from percent to fraction
-		local multiplier = maxIncrease / 100.
+		local multiplier = getConversionMultiplier("INC", "ImprovedSpellDamageAppliesToAttacks")
 		for i, value in ipairs(skillModList:Tabulate("INC", { flags = ModFlag.Spell }, "Damage")) do
 			local mod = value.mod
 			if band(mod.flags, ModFlag.Spell) ~= 0 then
-				skillModList:NewMod("Damage", "INC", mod.value * multiplier, mod.source, bor(band(mod.flags, bnot(ModFlag.Spell)), ModFlag.Attack), mod.keywordFlags, unpack(mod))
+				local modifiers = getConvertedModTags(mod, multiplier)
+				skillModList:NewMod("Damage", "INC", mod.value * multiplier, mod.source, bor(band(mod.flags, bnot(ModFlag.Spell)), ModFlag.Attack), mod.keywordFlags, unpack(modifiers))
 			end
 		end
 	end
 
 	if skillModList:Flag(nil, "CastSpeedAppliesToAttacks") then
 		-- Get all increases for this; assumption is that multiple sources would not stack, so find the max
-		local maxIncrease = 0
-		for i, value in ipairs(skillModList:Tabulate("INC", skillCfg, "ImprovedCastSpeedAppliesToAttacks")) do
-			maxIncrease = m_max(maxIncrease, value.mod.value)
-		end
-		-- Convert from percent to fraction
-		local multiplier = maxIncrease / 100.
+		local multiplier = getConversionMultiplier("INC", "ImprovedCastSpeedAppliesToAttacks")
 		for i, value in ipairs(skillModList:Tabulate("INC", { flags = ModFlag.Cast }, "Speed")) do
 			local mod = value.mod
 			-- Add a new mod for all mods that are cast only
 			-- Replace this with a single mod for the sum?
 			if band(mod.flags, ModFlag.Cast) ~= 0 then
-				skillModList:NewMod("Speed", "INC", mod.value * multiplier, mod.source, bor(band(mod.flags, bnot(ModFlag.Cast)), ModFlag.Attack), mod.keywordFlags, unpack(mod))
+				local modifiers = getConvertedModTags(mod, multiplier)
+				skillModList:NewMod("Speed", "INC", mod.value * multiplier, mod.source, bor(band(mod.flags, bnot(ModFlag.Cast)), ModFlag.Attack), mod.keywordFlags, unpack(modifiers))
 			end
 		end
 	end
@@ -490,15 +533,9 @@ local function runSkillFunc(name)
 		-- Applies DPS multiplier based on projectile count
 		skillData.dpsMultiplier = skillModList:Sum("BASE", skillCfg, "ProjectileCount")
 	end
-	if skillModList:Flag(nil, "TransfigurationOfBody") then
-		skillModList:NewMod("Damage", "INC", m_floor(skillModList:Sum("INC", nil, "Life") * 0.3), "躯体幻化", ModFlag.Attack)
-	end
-	if skillModList:Flag(nil, "TransfigurationOfMind") then
-		skillModList:NewMod("Damage", "INC", m_floor(skillModList:Sum("INC", nil, "Mana") * 0.3), "心灵幻化")
-	end
-	if skillModList:Flag(nil, "TransfigurationOfSoul") then
-		skillModList:NewMod("Damage", "INC", m_floor(skillModList:Sum("INC", nil, "EnergyShield") * 0.3), "灵魂幻化", ModFlag.Spell)
-	end
+	
+	
+
 	if skillData.gainPercentBaseWandDamage then
 		local mult = skillData.gainPercentBaseWandDamage / 100
 		if actor.weaponData1.type == "Wand" and actor.weaponData2.type == "Wand" then
@@ -1080,10 +1117,10 @@ t_insert(breakdown[stat], s_format("x %.3f ^8(副手创建的实例部分)", off
 		local globalOutput, globalBreakdown = output, breakdown
 		local source, output, cfg, breakdown = pass.source, pass.output, pass.cfg, pass.breakdown
 		
-		-- Calculate hit chance
+		-- Calculate hit chance 
 		 
 		
-		output.Accuracy = calcLib.val(skillModList, "Accuracy", cfg)
+		output.Accuracy = m_max(0, calcLib.val(skillModList, "Accuracy", cfg))
 		if breakdown then
 			breakdown.Accuracy = breakdown.simple(nil, cfg, output.Accuracy, "Accuracy")
 		end

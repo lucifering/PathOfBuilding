@@ -2486,8 +2486,12 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 	end
 	
 	
-	if ((self.build.targetVersion ~= "2_6" 	
-	and 	self.displayItem.base.subType ~= "Abyss") or (self.displayItem.type ~= "Jewel" and self.displayItem.type ~= "Flask") ) and  (self.displayItem.rarity == "魔法" or self.displayItem.rarity == "稀有")	
+	if (
+	(self.build.targetVersion ~= "2_6" 		and 	self.displayItem.base.subType ~= "Abyss") 
+	or (self.displayItem.type ~= "Jewel" and self.displayItem.type ~= "Flask")
+	) 
+	and  (self.displayItem.rarity == "魔法" or self.displayItem.rarity == "稀有")	
+	or (self.displayItem.name == '悖论【仿品】, 瓦尔细剑'  or  self.displayItem.name == '悖论, 瓦尔细剑'  or  self.displayItem.name == '女王的饥饿, 瓦尔法衣' )
 	
 	then
 t_insert(sourceList, { label = "工艺工作台", sourceId = "MASTER" })

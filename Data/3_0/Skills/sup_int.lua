@@ -3245,10 +3245,10 @@ description = "辅助任意能击败敌人的技能",
 	},
 	qualityStats = {
 		Default = {
-			{ "base_killed_monster_dropped_item_rarity_+%", 0.0025 },
+			{ "base_killed_monster_dropped_item_rarity_+%", 0.5 },
 		},
 		Alternate1 = {
-			{ "chance_for_coin_shower_on_kill_%", 0.0005 },
+			{ "chance_for_coin_shower_on_kill_%", 0.1 },
 		},
 	},
 	stats = {

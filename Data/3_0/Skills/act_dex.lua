@@ -6002,6 +6002,8 @@ description = "施放一个光环，使你和周围友军受到的冰霜伤害�
 	statMap = {
 		["hits_ignore_my_cold_resistance"] = {
 			flag("SelfIgnoreColdResistance", { type = "GlobalEffect", effectType = "Debuff" }),
+		},["base_maximum_cold_damage_resistance_%"] = {
+			mod("ColdResistMax", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
 		},
 		
 	},

@@ -258,15 +258,22 @@ local function doActorAttribsPoolsConditions(env, actor)
 		modDB:NewMod("Mana", "BASE", round(output.Int / 2), "智慧")
 	end
 	
-
-
+	--涉及到生命 需要这里处理
+	if env.mode_combat then
+		if modDB:Flag(nil, "LesserMassiveShrine") then
+				local effect = (1 + modDB:Sum("INC", nil, "ShrineEffect", "BuffEffectOnSelf") / 100)
+				local effectAreaOfEffect = m_floor(20 * effect)
+				local effectLife  = m_floor(20 * effect)			
+				modDB:NewMod("Life", "INC", effectLife, "次级威猛神龛")		
+		end
+	end
 	-- Life/mana pools
 	if modDB:Flag(nil, "ChaosInoculation") then
 		output.Life = 1
 		condList["FullLife"] = true
 	else
 		local base = modDB:Sum("BASE", nil, "Life")
-		local inc = modDB:Sum("INC", nil, "Life")
+		local inc = modDB:Sum("INC", nil, "Life")		
 		local more = modDB:More(nil, "Life")
 	 
 		local conv = modDB:Sum("BASE", nil, "LifeConvertToEnergyShield")
@@ -497,7 +504,7 @@ modDB:NewMod("AttackDodgeChance", "BASE", dodgeChanceEffect, "灵巧")
 			local effectAreaOfEffect = m_floor(20 * effect)
 			local effectLife  = m_floor(20 * effect)
 			modDB:NewMod("AreaOfEffect", "INC", effectAreaOfEffect, "次级威猛神龛")
-			modDB:NewMod("Life", "INC", effectLife, "次级威猛神龛")		
+			--生命在其他地方处理
 		end
 		if modDB:Flag(nil, "Onslaught") then
 			local effect = m_floor(20 * (1 + modDB:Sum("INC", nil, "OnslaughtEffect", "BuffEffectOnSelf") / 100))

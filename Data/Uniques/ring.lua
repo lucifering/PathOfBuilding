@@ -988,7 +988,7 @@ Sockets: W
 {variant:1}{tags:jewellery_elemental}5% 几率造成冰冻、感电与点燃效果
 {variant:2}{tags:jewellery_elemental}10% 几率造成冰冻、感电与点燃效果
 {variant:1}{tags:jewellery_elemental}10% increased Damage per Freeze, Shock and Ignite on Enemy
-{variant:2}{tags:jewellery_elemental}对被冰冻、感电、点燃敌人的击中伤害和异常状态伤害提高 20%
+{variant:2}{tags:jewellery_elemental}若敌人身上有冻结、感电、点燃效果，每有一种都使对它的击中和异常状态伤害提高 20%
 ]],[[
 塔萨里奥之印
 蓝玉戒指

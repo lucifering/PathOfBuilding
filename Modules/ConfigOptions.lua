@@ -171,7 +171,7 @@ modList:NewMod("Multiplier:BannerStage", "BASE", m_min(val, 50), "Config", { typ
 		modList:NewMod("Multiplier:NearbyNonGolemMinion", "BASE", val, "Config")
 	end }, 	
 { label = "旋风斩:", ifSkill = "旋风斩" },
-	{ var = "channellingCycloneCheck", type = "check", label = "你正在吟唱旋风斩?", ifSkill = "Cyclone", apply = function(val, modList, enemyModList)
+	{ var = "channellingCycloneCheck", type = "check", label = "你正在吟唱旋风斩?", ifSkill = "旋风斩", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:ChannellingCyclone", "FLAG", true, "Config")
 	end },
 { label = "【暗夜血契】:", ifSkill = "暗夜血契" },
@@ -405,7 +405,10 @@ ifCond = "CanSnipeStage", apply = function(val, modList, enemyModList)
 tooltip = "最后一秒被瓦尔.熔岩护盾减免的伤害", ifSkill = "瓦尔.熔岩护盾", apply = function(val, modList, enemyModList)
 		modList:NewMod("SkillData", "LIST", { key = "VaalMoltenShellDamageMitigated", value = val }, "Config", { type = "SkillName", skillName = "熔岩护盾" })
 	end },
-	
+{ label = "破盾击:", ifSkill = "破盾击" },
+	{ var = "innervateInnervation", type = "check", label = "破盾击触发?", ifSkill = "破盾击", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:ShieldShatterTrigger", "FLAG", true, "Config")
+	end },
 	
 	-- Section: Map modifiers/curses
 { section = "地图词缀和玩家 Debuff", col = 2 },

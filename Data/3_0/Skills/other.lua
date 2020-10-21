@@ -72,10 +72,10 @@ description = "引爆一个地雷，启动传爆序列。它将持续引爆周�
 	},
 	qualityStats = {
 		Default = {
-			{ "mine_detonation_speed_+%", 0.05 },
+			{ "mine_detonation_speed_+%", 1 },
 		},
 		Alternate1 = {
-			{ "detonate_mines_recover_permyriad_of_life_per_mine_detonated", 0.05 },
+			{ "detonate_mines_recover_permyriad_of_life_per_mine_detonated", 1 },
 		},
 	},
 	stats = {
@@ -109,10 +109,10 @@ name = "时空之门",
 	},
 	qualityStats = {
 		Default = {
-			{ "base_cast_speed_+%", 0.015 },
+			{ "base_cast_speed_+%", 3 },
 		},
 		Alternate1 = {
-			{ "portal_alternate_destination_chance_permyriad", 0.005 },
+			{ "portal_alternate_destination_chance_permyriad", 1 },
 		},
 	},
 	stats = {
@@ -2637,7 +2637,7 @@ description = "制造一个奇点并向最近的敌人移动，过程中发出�
 	},
 }
 skills["ShieldShatter"] = {
-name = "盾牌碎片",
+name = "破盾击",
 	hidden = true,
 	color = 1,
 	baseEffectiveness = 0.34000000357628,
@@ -2647,11 +2647,41 @@ description = "盾牌破碎，根据盾牌品质，对一片区域内的敌人�
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 1,
 	fromItem = true,
+	statMap = {
+		["spell_minimum_base_physical_damage_per_shield_quality"] = {
+			skill("PhysicalMin", nil, {type = "PerStat", div = 1, stat = "QualityOnWeapon 2"})
+		},
+		["spell_maximum_base_physical_damage_per_shield_quality"] = {
+			skill("PhysicalMax", nil,  {type = "PerStat", div = 1, stat = "QualityOnWeapon 2"})		
+		},		
+		["buff_added_spell_minimum_base_physical_damage_per_shield_quality"] = {
+			mod("PhysicalMin", "BASE", nil, 0, KeywordFlag.Spell,  {type = "PerStat", div = 1, stat = "QualityOnWeapon 2"}, 
+			{ type = "GlobalEffect", effectType = "Buff" },{ type = "Condition", var = "ShieldShatterTrigger" }),	
+		},
+		["buff_added_spell_maximum_base_physical_damage_per_shield_quality"] = {			
+			mod("PhysicalMax", "BASE", nil, 0, KeywordFlag.Spell,  {type = "PerStat", div = 1, stat = "QualityOnWeapon 2"}, 
+			{ type = "GlobalEffect", effectType = "Buff" },{ type = "Condition", var = "ShieldShatterTrigger" }),
+	
+		}
+		
+	},
 	baseFlags = {
 		spell = true,
 		area = true,
 	},
 	baseMods = {
+		skill("showAverage", true),
+		flag("CannotBlockAttacks", 
+			{ type = "GlobalEffect", effectType = "Buff" },{ type = "Condition", var = "ShieldShatterTrigger" }),
+		flag("CannotBlockSpells", 
+			{ type = "GlobalEffect", effectType = "Buff" },{ type = "Condition", var = "ShieldShatterTrigger" }),
+		
+		
+		flag("NoDefencesOnWeapon 2", 
+			{ type = "GlobalEffect", effectType = "Buff" },{ type = "Condition", var = "ShieldShatterTrigger" }) ,
+		
+
+		
 	},
 	qualityStats = {
 	},

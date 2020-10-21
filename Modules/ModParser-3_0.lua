@@ -1750,6 +1750,9 @@ end
 local specialModList = {
 	--【中文化程序额外添加开始】
 	-- Legion modifiers
+	["能量护盾回复率提高 (%d+)%%"] = function(num) return {  mod("EnergyShieldRecoveryRate", "INC", num)  } end,  
+	["魔力回复率提高 (%d+)%%"] = function(num) return {  mod("ManaRecoveryRate", "INC", num)  } end,  
+	["生命回复率提高 (%d+)%%"] = function(num) return {  mod("LifeRecoveryRate", "INC", num)  } end,  
 		["passives in radius are conquered by the (%D+)"] = { },
 		["historic"] = { },
 	["获得(.+)麾下 (%d+) 名武士的领导权"]= function(_, npcName, num) return {  mod("JewelData", "LIST",
@@ -4600,6 +4603,15 @@ local specialModList = {
 	["近期内每失去一个耐力球就使总伤害额外提高 (%d+)%%，最大 (%d+)%%"] = function(num, _, limit) return {
 			mod("Damage", "MORE", num, { type = "Multiplier", var = "EnduranceChargesLostRecently", limit = tonumber(limit), limitTotal = true }),
 		} end,
+	["若敌人身上有冻结、感电、点燃效果，每有一种都使对它的击中和异常状态伤害提高 (%d+)%%"] = function(num) return { 
+	 mod("Damage", "INC", num,nil,0,bor(KeywordFlag.Hit, KeywordFlag.Ailment) , { type = "Multiplier", var = "FreezeShockIgniteOnEnemy" }) 
+	 } end, 
+	["对被冰冻、感电、点燃敌人的击中伤害和异常状态伤害提高 (%d+)%%"] = function(num) return { 
+	 mod("Damage", "INC", num,nil,0,bor(KeywordFlag.Hit, KeywordFlag.Ailment) , { type = "Multiplier", var = "FreezeShockIgniteOnEnemy" }) 
+	 } end, 
+	["连锁的投射物将 (%d+)%% 非混沌伤害作为其额外混沌伤害"] = function(num) return { mod("NonChaosDamageGainAsChaos", "BASE", num, nil, ModFlag.Projectile, { type = "StatThreshold", stat = "Chain", threshold = 1 }) } end,
+	["连锁的投射物获得额外混沌伤害，其数值等同于非混沌伤害的 (%d+)%%"] = function(num) return { mod("NonChaosDamageGainAsChaos", "BASE", num, nil, ModFlag.Projectile, { type = "StatThreshold", stat = "Chain", threshold = 1 }) } end,
+	["你格挡时触发 (%d+) 级破盾击"]= function(num)return {   mod("ExtraSkill", "LIST", {  skillId ="ShieldShatter", level = tonumber(num)})   } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded
@@ -4836,9 +4848,9 @@ minus = -tonumber(minus)
 	["你被暴击时触发【(.+)】"] = function( _, skill) return extraSkill(skill, 1, true) end, --备注：triggers? (.+) when you take a critical strike
 	["此物品上的【(.+)技能石】由 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support) or FuckSkillSupportCnName(support:gsub("^increased ","")) or "Unknown", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
 	-- Conversion
-	["召唤生物伤害提高或降低，将同样套用于自身"] = { flag("MinionDamageAppliesToPlayer") }, --备注：increases and reductions to minion damage also affects? you
-	["召唤生物攻击速度的加成同时套用于你身上"] = { flag("MinionAttackSpeedAppliesToPlayer") }, --备注：increases and reductions to minion attack speed also affects? you
-	["对法术伤害的增幅与减益也会套用于攻击上"] ={ flag("SpellDamageAppliesToAttacks") }, --备注：increases and reductions to spell damage also apply to attacks
+	["召唤生物伤害提高或降低，将同样套用于自身"] = { flag("MinionDamageAppliesToPlayer") , mod("ImprovedMinionDamageAppliesToPlayer", "INC", 100) }, --备注：increases and reductions to minion damage also affects? you
+	["召唤生物攻击速度的加成同时套用于你身上"] = { flag("MinionAttackSpeedAppliesToPlayer") , mod("ImprovedMinionAttackSpeedAppliesToPlayer", "INC", 100)}, --备注：increases and reductions to minion attack speed also affects? you
+	["对法术伤害的增幅与减益也会套用于攻击上"] ={ flag("SpellDamageAppliesToAttacks"), mod("ImprovedSpellDamageAppliesToAttacks", "INC", 100)  }, --备注：increases and reductions to spell damage also apply to attacks
 	
 	["modifiers to claw damage also apply to unarmed"] = { flag("ClawDamageAppliesToUnarmed") },
 	["对爪类武器的伤害加成同时套用于空手攻击伤害上"] = { flag("ClawDamageAppliesToUnarmed") }, --备注：modifiers to claw damage also apply to unarmed attack damage

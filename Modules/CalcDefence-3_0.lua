@@ -128,9 +128,14 @@ function calcs.defence(env, actor)
 			end 
 			
 			if armourData then		
-			
+				
 				slotCfg.slotName = slot
-				energyShieldBase = armourData.EnergyShield or 0
+				--LUCIFER
+				if modDB:Flag(nil, "NoDefencesOn"..slot) or modDB:Flag(nil, "NoEnergyShieldOn"..slot) then 
+					energyShieldBase = 0
+				else
+					energyShieldBase = armourData.EnergyShield or 0
+				end				
 				if energyShieldBase > 0 then
 					output["EnergyShieldOn"..slot] = energyShieldBase
 					energyShield = energyShield + energyShieldBase * calcLib.mod(modDB, slotCfg, "EnergyShield", "Defences")
@@ -139,19 +144,29 @@ function calcs.defence(env, actor)
 						breakdown.slot(slot, nil, slotCfg, energyShieldBase, nil, "EnergyShield", "Defences")
 					end
 				end
-				armourBase = armourData.Armour or 0
+				--LUCIFER
+				if modDB:Flag(nil, "NoDefencesOn"..slot) or modDB:Flag(nil, "NoArmourOn"..slot) or modDB:Flag(nil, "NoArmourAndEvasionOn"..slot) then 
+					armourBase = 0
+				else
+					armourBase = armourData.Armour or 0
+				end					
 				if armourBase > 0 then
 					output["ArmourOn"..slot] = armourBase
 					if slot == "Body Armour" and modDB:Flag(nil, "Unbreakable") then
 						armourBase = armourBase * 2
-					end
+					end					
 					armour = armour + armourBase * calcLib.mod(modDB, slotCfg, "Armour", "ArmourAndEvasion", "Defences")
 					gearArmour = gearArmour + armourBase
 					if breakdown then
 						breakdown.slot(slot, nil, slotCfg, armourBase, nil, "Armour", "ArmourAndEvasion", "Defences")
 					end
 				end
-				evasionBase = armourData.Evasion or 0
+				--LUCIFER
+				if modDB:Flag(nil, "NoDefencesOn"..slot) or modDB:Flag(nil, "NoEvasionOn"..slot) or modDB:Flag(nil, "NoArmourAndEvasionOn"..slot) then 
+					evasionBase = 0
+				else
+					evasionBase = armourData.Evasion or 0
+				end					
 				if evasionBase > 0 then
 					output["EvasionOn"..slot] = evasionBase
 					if ironReflexes then

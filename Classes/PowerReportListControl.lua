@@ -12,55 +12,53 @@ local PowerReportListClass = newClass("PowerReportListControl", "ListControl", f
 
 	self.originalList = report
 
-	self.ListControl(anchor, 0, 75, width, height-50, 20, false, false, self:ReList())
+	self.ListControl(anchor, 0, 50, width, height-50, 20, false, false, self:ReList())
 
 	self.colList = {
-		{ width = width * 0.15, label = "天赋点类型" },
+		{ width = width * 0.15, label = "天赋点类型", sortable = true  },
 		{ width = width * 0.50, label = "节点名称" },
-		{ width = width * 0.18, label = powerLabel },
-		{ width = width * 0.12, label = "距离" }
+		{ width = width * 0.18, label = powerLabel , sortable = true },
+		{ width = width * 0.12, label = "距离", sortable = true  }
 	}
 	self.label = "点击在天赋树查看节点"
 	self.colLabels = true
 	self.nodeSelectCallback = nodeSelectCallback
 	self.showClusters = false
-	self.onlyNotables = false
+	
 	
 	self.controls.showClusters = new("CheckBoxControl", {"BOTTOMRIGHT",self,"TOPRIGHT"}, 0, -2, 18, "显示星团珠宝:", function(state)
 		self.showClusters = state
 		self:ReList()
-		self:ReSort()
+		
 	end, "显示星团珠宝的节点")
-	self.controls.onlyNotables = new("CheckBoxControl", {"BOTTOMRIGHT", self.controls.showClusters, "TOPRIGHT"}, 0, 0, 18, "只显示核心天赋:", function(state)
-		self.onlyNotables = state
-		self:ReList()
-		self:ReSort()
-	end)
-
-	self.controls.sortLabel = new("LabelControl", {"BOTTOMLEFT", self, "TOPLEFT"}, 0, -22, 0, 16, "^7排序:")
-	self.controls.sortBy = new("DropDownControl", {"LEFT", self.controls.sortLabel, "RIGHT"}, 5, 0, 150, 20, {powerLabel, "距离"}, function(sel)
-		self:ReSort()		
-	end)
-
+	 
 end)
 
-function PowerReportListClass:ReSort()
-	if (self.controls.sortBy.selIndex == 1) then
+
+function PowerReportListClass:ReSort(colIndex)
+	if colIndex == 1 then
 		t_sort(self.list, function (a,b)
-			return (a.power) > (b.power)
+			if a.type == b.type then
+				return a.power > b.power
+			end
+			return a.type < b.type
 		end)
-	elseif (self.controls.sortBy.selIndex == 2) then
+	elseif colIndex == 3 then
 		t_sort(self.list, function (a,b)
-			if (a.pathDist == "Anoint") or (a.pathDist == "Cluster") then
+			return a.power > b.power
+		end)
+	elseif colIndex == 4 then
+		t_sort(self.list, function (a,b)
+			if a.pathDist == "Anoint" or a.pathDist == "Cluster" then
 				return false
 			end
-			if (b.pathDist == "Anoint") or (b.pathDist == "Cluster") then
+			if b.pathDist == "Anoint" or b.pathDist == "Cluster" then
 				return true
 			end
-			if (a.pathDist == b.pathDist) then
-				return (a.power) > (b.power)
+			if a.pathDist == b.pathDist then
+				return a.power > b.power
 			end
-			return (a.pathDist) < (b.pathDist)
+			return a.pathDist < b.pathDist
 		end)
 	end
 end
@@ -76,9 +74,6 @@ function PowerReportListClass:ReList()
 			insert = false
 		end
 		if (not self.showClusters) and (self.originalList[iterate].pathDist == "Cluster") then
-			insert = false
-		end
-		if (self.onlyNotables) and (self.originalList[iterate].type ~= "Notable") then
 			insert = false
 		end
 

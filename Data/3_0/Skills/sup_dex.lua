@@ -1038,10 +1038,10 @@ description = "辅助任意击中敌人的技能",
 	},
 	qualityStats = {
 		Default = {
-			{ "global_hit_causes_monster_flee_%", 0.005 },
+			{ "global_hit_causes_monster_flee_%", 1 },
 		},
 		Alternate1 = {
-			{ "base_cast_speed_+%", -0.0025 },
+			{ "base_cast_speed_+%", -0.5},
 		},
 	},
 	stats = {

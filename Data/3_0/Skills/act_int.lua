@@ -6726,6 +6726,9 @@ description = "施放一个光环, 使你与受光环影响友军获得额外的
 		["base_resist_all_elements_%"] = {
 			mod("ElementalResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
 		},
+		["reduce_enemy_elemental_resistance_%"] = {
+			mod("ElementalPenetration", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
+		},
 		["avoid_all_elemental_status_%"] = {
 		    mod("AvoidShock", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
 		    mod("AvoidFreeze", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
@@ -8903,6 +8906,31 @@ description = "在你持续吟唱时，创造能量球，并不断跳向目标�
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.SkillCanTotem] = true, [SkillType.LightningSkill] = true, [SkillType.Channelled] = true, [SkillType.Area] = true, [SkillType.Duration] = true, [SkillType.AreaSpell] = true, [SkillType.PhysicalSkill] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.25,
+	parts = {
+		{
+name = "1 能量球"
+		},
+		{
+name = "最大吟唱能量球"
+		}
+	},
+	preDamageFunc = function(activeSkill, output)
+		if activeSkill.skillPart == 2 then
+			local duration = activeSkill.skillData.duration * output.DurationMod
+			-- duration * 10 / (jump * 10), instead of duration / jump to avoid floating point issues
+			local jumpPeriod = activeSkill.skillData.repeatFrequency * 10
+			activeSkill.skillData.dpsMultiplier = math.floor(duration * 10 / jumpPeriod)
+		end
+	end,
+	statMap = {
+		["storm_burst_zap_area_of_effect_+%"] = {
+			mod("AreaOfEffect", "INC", nil, 0, 0,  { type = "SkillPart", skillPart = 2 }),
+		},
+		["display_storm_burst_jump_time_ms"] = {
+			skill("repeatFrequency", nil),
+			div = 1000,
+		}
+	},
 	baseFlags = {
 		spell = true,
 		area = true,

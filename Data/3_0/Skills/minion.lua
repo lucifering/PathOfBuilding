@@ -1403,3 +1403,26 @@ name = "青蛙跃击",
 		[1] = { 1, -25, damageEffectiveness = 1.5, baseMultiplier = 1.5, levelRequirement = 2, statInterpolation = { 1, 1, }, },
 	},
 }
+
+
+skills["TauntingContraptionTaunt"] = {
+	name = "嘲讽",	
+	hidden = true,
+	color = 4,
+	skillTypes = { [SkillType.Spell] = true, [SkillType.SkillCanTrap] = true, [SkillType.SkillCanMine] = true, [SkillType.Area] = true, [SkillType.Totem] = true, [SkillType.SpellCanRepeat] = true, [SkillType.AreaSpell] = true, [SkillType.Type96] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1.2,
+	baseFlags = {
+		spell = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+	},
+	statInterpolation = { },
+	levels = {
+		[1] = { cooldown = 100, levelRequirement = 0, },
+	},
+}

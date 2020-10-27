@@ -664,7 +664,7 @@ function calcs.createMinionSkills(env, activeSkill)
 			level = 1,
 			quality = 0,
 		}
-		if #activeEffect.grantedEffect.levels > 1 then
+		if activeEffect.grantedEffect and  activeEffect.grantedEffect.levels   and #activeEffect.grantedEffect.levels > 1 then
 			for level, levelData in ipairs(activeEffect.grantedEffect.levels) do
 				if levelData[1] > minion.level then
 					break

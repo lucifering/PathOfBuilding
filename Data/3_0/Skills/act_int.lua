@@ -3353,7 +3353,7 @@ mod("FireMax", "BASE", nil, ModFlag.Projectile, 0, { type = "GlobalEffect", effe
 		fire = true,
 	},
 	baseMods = {
-		skill("radiusLabel", "Flame Wall Length:"),
+skill("radiusLabel", "火墙长度:"),
 		skill("dotIsArea", true),
 		skill("buffAllies", true),
 	},
@@ -10686,7 +10686,11 @@ description = "施放一个光环, 使你与受光环影响的友军获得伤害
 		},
 		["base_critical_strike_multiplier_+"] = {
 			mod("CritMultiplier", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
-		}
+		},
+		["life_regeneration_rate_per_minute_%"] = {
+			mod("LifeRegenPercent", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
+			div = 60,
+		},
 	},
 	baseFlags = {
 		spell = true,

@@ -4002,3 +4002,30 @@ name = "雪凶鸟",
 		
 	},
 }
+
+
+-- lucifer
+--Hyrri's Watch
+minions["Metadata/Monsters/LegionLeague/LegionKaruiArcher"] = {
+    name = "西里的守望",
+    life = 2.25,
+    fireResist = 20,
+    coldResist = 20,
+    lightningResist = 20,
+    chaosResist = 0,
+    damage = 1.1,
+    damageSpread = 0.2,
+    attackTime = 1.5,
+    attackRange = 50,
+    accuracy = 1,
+    weaponType1 = "Bow",
+    skillList = {
+        "MeleeKaruiArcher",
+        "LegionKaruiArcherSnipe",
+    },
+    modList = {
+    },modListSP = {
+		
+	},
+}
+

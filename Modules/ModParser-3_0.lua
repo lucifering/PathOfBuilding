@@ -3155,6 +3155,8 @@ local specialModList = {
 	["周围敌人获得 (%-%d+)%% 闪电抗性"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("LightningResist", "BASE", num) }) } end,
 	["每一个周围的敌人 %+(%d+)%% 暴击伤害加成，最大%+(%d+)%%"] = function(_,num1,num2) return {  mod("CritMultiplier", "BASE", tonumber(num1),{ type = "Multiplier", var = "NearbyEnemy", limit = tonumber(num2), limitTotal = true }) } end,
 	["每装备 1 个未腐化的物品，每秒回复 (%d+) 生命"]= function(num) return {  mod("LifeRegen", "BASE", tonumber(num),{ type = "Multiplier", var = "NonCorruptedItem" })  } end,
+	["每装备一个未腐化的物品，便每秒回复 (%d+) 生命"]= function(num) return {  mod("LifeRegen", "BASE", tonumber(num),{ type = "Multiplier", var = "NonCorruptedItem" })  } end,
+	["每装备一个【被腐化的物品】，技能的总魔力消耗 %-(%d+)"]= function(num) return {  mod("ManaCost", "BASE", tonumber(num),{ type = "Multiplier", var = "CorruptedItem" })  } end,
 	["该武器击中后造成的 (%d+)%% 物理伤害转换为一种随机元素伤害"]= function(num) return { 
 	 mod("PhysicalDamageConvertToFire", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementFire" }),
 	  mod("PhysicalDamageConvertToCold", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementCold" }),
@@ -4347,8 +4349,10 @@ local specialModList = {
 	["你施放的魔蛊有 %+(%d+) 层末日之力数量上限"] = function(num) return { mod("MaxDoom", "BASE", num) } end,	
 		["魔蛊技能范围提高 (%d+)%%"]= function(num) return { mod("AreaOfEffect", "INC", num, { type = "SkillType", skillType = SkillType.Hex } ) } end,
 	["被【法术凝聚（辅）】辅助的技能有 %+(%d) 最大层"] = function(num) return { mod("Multiplier:IntensityLimit", "BASE", num) } end,
-	["插槽内的技能石造成双倍伤害"]= function() return { mod("ExtraSkillMod", "LIST", { mod = mod("DoubleDamageChance", "BASE", 100) }, { addToSkill = { type = "SocketedIn", slotName = "{SlotName}" }} ) } end,
-	["插入的技能伤害翻倍"]= function() return { mod("ExtraSkillMod", "LIST", { mod = mod("DoubleDamageChance", "BASE", 100) }, { addToSkill = { type = "SocketedIn", slotName = "{SlotName}" }} ) } end,
+	["插槽内的技能石造成双倍伤害"]= { mod("ExtraSkillMod", "LIST", 
+		{ mod = mod("DoubleDamageChance", "BASE", 100) }, { type = "SocketedIn", slotName = "{SlotName}" }) },
+	["插入的技能伤害翻倍"]= { mod("ExtraSkillMod", "LIST", 
+		{ mod = mod("DoubleDamageChance", "BASE", 100) }, { type = "SocketedIn", slotName = "{SlotName}" }) },
 	["冻结冰缓的敌人如同总伤害额外提高 (%d+)%%"] = function(num) return { mod("FreezeAsThoughDealing", "MORE", num, { type = "ActorCondition", actor = "enemy", var = "Chilled" } ) } end,
 	["对冰缓的敌人如同额外造成 (%d+)%% 总伤害来计算冰冻门槛"] = function(num) return { mod("FreezeAsThoughDealing", "MORE", num, { type = "ActorCondition", actor = "enemy", var = "Chilled" } ) } end,
 		["you have perfect agony if you've dealt a critical strike recently"] = {mod("Keystone", "LIST", "Perfect Agony", { type = "Condition", var = "CritRecently" })},
@@ -4612,6 +4616,8 @@ local specialModList = {
 	["连锁的投射物将 (%d+)%% 非混沌伤害作为其额外混沌伤害"] = function(num) return { mod("NonChaosDamageGainAsChaos", "BASE", num, nil, ModFlag.Projectile, { type = "StatThreshold", stat = "Chain", threshold = 1 }) } end,
 	["连锁的投射物获得额外混沌伤害，其数值等同于非混沌伤害的 (%d+)%%"] = function(num) return { mod("NonChaosDamageGainAsChaos", "BASE", num, nil, ModFlag.Projectile, { type = "StatThreshold", stat = "Chain", threshold = 1 }) } end,
 	["你格挡时触发 (%d+) 级破盾击"]= function(num)return {   mod("ExtraSkill", "LIST", {  skillId ="ShieldShatter", level = tonumber(num)})   } end,
+	["你使用药剂时触发 (%d+) 级召唤嘲讽装置"]= function(num)return {   mod("ExtraSkill", "LIST", {  skillId ="SummonTauntingContraption", level = tonumber(num)})   } end,
+	["使用该武器近战击中时触发 (%d+) 级火烈冲击"]= function(num)return {   mod("ExtraSkill", "LIST", {  skillId ="FieryImpactHeistMaceImplicit", level = tonumber(num)})   } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

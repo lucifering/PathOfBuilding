@@ -2854,3 +2854,81 @@ skills["CreateFungalGroundOnKill"] = {
 
 
 
+--lucifer2
+
+skills["FieryImpactHeistMaceImplicit"] = {
+	name = "火烈冲击",
+	hidden = true,
+	color = 4,
+	description = "对一片区域造成攻击伤害。",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Hit] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.Melee] = true, [SkillType.TriggeredGrantedSkill] = true, },
+	weaponTypes = {
+		["One Handed Mace"] = true,
+		["Sceptre"] = true,
+		["Thrusting One Handed Sword"] = true,
+		["Two Handed Sword"] = true,
+		["Dagger"] = true,
+		["Staff"] = true,
+		["Two Handed Axe"] = true,
+		["Two Handed Mace"] = true,
+		["One Handed Axe"] = true,
+		["Claw"] = true,
+		["One Handed Sword"] = true,
+	},
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	fromItem = true,
+	baseFlags = {
+		attack = true,
+		melee = true,
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"skill_physical_damage_%_to_convert_to_fire",
+		"is_area_damage",
+		"skill_has_trigger_from_unique_item",
+	},
+	statInterpolation = { 1, },
+	levels = {
+		[10] = { 60, damageEffectiveness = 2, cooldown = 2, baseMultiplier = 2, levelRequirement = 30, },
+		[15] = { 60, damageEffectiveness = 2.5, cooldown = 2, baseMultiplier = 2.5, levelRequirement = 50, },
+		[20] = { 60, damageEffectiveness = 3, cooldown = 2, baseMultiplier = 3, levelRequirement = 70, },
+	},
+}
+skills["SummonTauntingContraption"] = {
+	name = "召唤嘲讽装置",
+	hidden = true,
+	color = 4,
+	description = "召唤一个嘲讽装置，嘲讽周围的敌人。",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Minion] = true, [SkillType.CreatesMinion] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.Buff] = true, },
+	statDescriptionScope = "minion_spell_skill_stat_descriptions",
+	castTime = 0,
+	fromItem = true,
+	minionList = {
+		"TauntingContraption",
+	},
+	baseFlags = {
+		spell = true,
+		minion = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"cast_on_flask_use_%",
+		"display_minion_monster_type",
+		"display_minion_monster_level",
+		"minion_maximum_life_+%",
+		"base_deal_no_damage",
+		"spell_uncastable_if_triggerable",
+	},
+	statInterpolation = { 1, 1, 1, 1, },
+	levels = {
+		[20] = { 100, 17, 70, 150, levelRequirement = 70, duration = 4, cooldown = 8, },
+	},
+}

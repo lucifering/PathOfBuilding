@@ -768,3 +768,30 @@ minions["SkitterbotLightning"] = {
 		"怪物无物品掉落或经验获取", 
 	},
 }
+
+
+--lucifer2
+
+
+minions["TauntingContraption"] = {
+	name = "嘲讽装置",
+	life = 1.8,
+	fireResist = 40,
+	coldResist = 40,
+	lightningResist = 40,
+	chaosResist = 20,
+	damage = 1,
+	damageSpread = 0,
+	attackTime = 1,
+	attackRange = 6,
+	accuracy = 1,
+	skillList = {
+		"TauntingContraptionTaunt",
+	},
+	modList = {
+		-- MonsterNoDropsOrExperience [monster_no_drops_or_experience = 1]
+	},
+	modListSP = {
+		"怪物无物品掉落或经验获取", 
+	},
+}

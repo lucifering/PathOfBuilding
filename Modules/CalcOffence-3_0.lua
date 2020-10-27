@@ -1271,7 +1271,9 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 
 		if env.mode_buffs then
 			-- Iterative over all the active skills to account for exerted attacks provided by warcries
-			if not activeSkill.skillTypes[SkillType.Vaal] and not activeSkill.skillTypes[SkillType.Channelled] and not activeSkill.skillModList:Flag(cfg, "SupportedByMultistrike") then
+			if not activeSkill.skillTypes[SkillType.Vaal] and 
+			
+			 not activeSkill.skillModList:Flag(cfg, "SupportedByMultistrike") then
 				for index, value in ipairs(actor.activeSkillList) do
 				
 					if value.activeEffect.grantedEffect.name == "将军之吼" and  not globalOutput.GeneralsCryCalculated and  activeSkill.skillModList:Flag(cfg, "SupportedByGeneralsCry") then
@@ -1294,7 +1296,7 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 						globalOutput.GeneralsCryCalculated = true
 						
 
-					elseif value.activeEffect.grantedEffect.name == "先祖战吼" and activeSkill.skillTypes[SkillType.MeleeSingleTarget] and not globalOutput.AncestralCryCalculated then
+					elseif not activeSkill.skillTypes[SkillType.Channelled]  and value.activeEffect.grantedEffect.name == "先祖战吼" and activeSkill.skillTypes[SkillType.MeleeSingleTarget] and not globalOutput.AncestralCryCalculated then
 						globalOutput.CreateWarcryOffensiveCalcSection = true
 						globalOutput.AncestralCryDuration = calcSkillDuration(value.skillModList, value.skillCfg, value.skillData, env, enemyDB)
 						globalOutput.AncestralCryCooldown = calcSkillCooldown(value.skillModList, value.skillCfg, value.skillData)
@@ -1319,7 +1321,7 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 							t_insert(globalBreakdown.AncestralUpTimeRatio, s_format("= %d%%", globalOutput.AncestralUpTimeRatio))
 						end
 						globalOutput.AncestralCryCalculated = true
-					elseif value.activeEffect.grantedEffect.name == "炼狱呼嚎" and not globalOutput.InfernalCryCalculated then
+					elseif not activeSkill.skillTypes[SkillType.Channelled]  and  value.activeEffect.grantedEffect.name == "炼狱呼嚎" and not globalOutput.InfernalCryCalculated then
 						globalOutput.CreateWarcryOffensiveCalcSection = true
 						globalOutput.InfernalCryDuration = calcSkillDuration(value.skillModList, value.skillCfg, value.skillData, env, enemyDB)
 						globalOutput.InfernalCryCooldown = calcSkillCooldown(value.skillModList, value.skillCfg, value.skillData)
@@ -1346,7 +1348,7 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 							end
 						end
 						globalOutput.InfernalCryCalculated = true
-					elseif value.activeEffect.grantedEffect.name == "威吓战吼" and activeSkill.skillTypes[SkillType.Melee] and not globalOutput.IntimidatingCryCalculated then
+					elseif  not activeSkill.skillTypes[SkillType.Channelled]  and value.activeEffect.grantedEffect.name == "威吓战吼" and activeSkill.skillTypes[SkillType.Melee] and not globalOutput.IntimidatingCryCalculated then
 						globalOutput.CreateWarcryOffensiveCalcSection = true
 						globalOutput.IntimidatingCryDuration = calcSkillDuration(value.skillModList, value.skillCfg, value.skillData, env, enemyDB)
 						globalOutput.IntimidatingCryCooldown = calcSkillCooldown(value.skillModList, value.skillCfg, value.skillData)
@@ -1393,7 +1395,7 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 						globalOutput.TheoreticalOffensiveWarcryEffect = globalOutput.TheoreticalOffensiveWarcryEffect * globalOutput.IntimidatingHitEffect
 						globalOutput.TheoreticalMaxOffensiveWarcryEffect = globalOutput.TheoreticalMaxOffensiveWarcryEffect * globalOutput.IntimidatingMaxHitEffect
 						globalOutput.IntimidatingCryCalculated = true
-					elseif value.activeEffect.grantedEffect.name == "激励战吼" and activeSkill.skillTypes[SkillType.Melee] and not globalOutput.RallyingCryCalculated then
+					elseif  not activeSkill.skillTypes[SkillType.Channelled]  and value.activeEffect.grantedEffect.name == "激励战吼" and activeSkill.skillTypes[SkillType.Melee] and not globalOutput.RallyingCryCalculated then
 						globalOutput.CreateWarcryOffensiveCalcSection = true
 						globalOutput.RallyingCryDuration = calcSkillDuration(value.skillModList, value.skillCfg, value.skillData, env, enemyDB)
 						globalOutput.RallyingCryCooldown = calcSkillCooldown(value.skillModList, value.skillCfg, value.skillData)
@@ -1441,7 +1443,7 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 						globalOutput.TheoreticalMaxOffensiveWarcryEffect = globalOutput.TheoreticalMaxOffensiveWarcryEffect * globalOutput.RallyingMaxHitEffect
 						globalOutput.RallyingCryCalculated = true
 
-					elseif value.activeEffect.grantedEffect.name == "震地战吼" and activeSkill.skillTypes[SkillType.SlamSkill] and not globalOutput.SeismicCryCalculated then
+					elseif  not activeSkill.skillTypes[SkillType.Channelled]  and value.activeEffect.grantedEffect.name == "震地战吼" and activeSkill.skillTypes[SkillType.SlamSkill] and not globalOutput.SeismicCryCalculated then
 						globalOutput.CreateWarcryOffensiveCalcSection = true
 						globalOutput.SeismicCryDuration = calcSkillDuration(value.skillModList, value.skillCfg, value.skillData, env, enemyDB)
 						globalOutput.SeismicCryCooldown = calcSkillCooldown(value.skillModList, value.skillCfg, value.skillData)

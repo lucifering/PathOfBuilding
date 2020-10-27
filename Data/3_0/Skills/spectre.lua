@@ -7886,3 +7886,88 @@ name = "寒气吐息",
 	},
 	
 }
+
+
+skills["MeleeKaruiArcher"] = {
+    name = "默认攻击",
+    hidden = true,
+    color = 4,
+    baseEffectiveness = 0,
+    incrementalEffectiveness = 0,
+    description = "对你的敌人无情痛击",
+    skillTypes = {
+        [SkillType.Attack] = true,
+        [SkillType.ProjectileAttack] = true,
+        [SkillType.SkillCanMirageArcher] = true,
+        [SkillType.Projectile] = true,
+        [SkillType.MeleeSingleTarget] = true,
+        [SkillType.AttackCanRepeat] = true,
+        [SkillType.Melee] = true,
+        [SkillType.SkillCanVolley] = true,
+    },
+    statDescriptionScope = "skill_stat_descriptions",
+    castTime = 1,
+    baseFlags = {
+        attack = true,
+        melee = true,
+        projectile = true,
+    },
+    baseMods = {
+    },
+    qualityStats = {
+    },
+    stats = {
+        "arrow_projectile_variation",
+        "skill_physical_damage_%_to_convert_to_cold",
+        "active_skill_damage_+%_final",
+        "skill_can_fire_arrows",
+    },
+    levels = {
+        [1] = {18, 75, 0, levelRequirement = 1, statInterpolation = {1, 1, 2},  },
+        [2] = {18, 75, 0, levelRequirement = 19, statInterpolation = {1, 1, 2},  },
+        [3] = {18, 75, 1, levelRequirement = 20, statInterpolation = {1, 1, 2},  },
+        [4] = {18, 75, 200, levelRequirement = 84, statInterpolation = {1, 1, 2},  },
+    },
+}
+
+skills["LegionKaruiArcherSnipe"] = {
+    name = "狙击",
+    hidden = true,
+    color = 4,
+    baseEffectiveness = 1,
+    incrementalEffectiveness = 0,
+    skillTypes = {
+        [SkillType.Attack] = true,
+        [SkillType.ProjectileAttack] = true,
+        [SkillType.SkillCanMirageArcher] = true,
+        [SkillType.Projectile] = true,
+        [SkillType.SkillCanVolley] = true,
+        [SkillType.Hit] = true,
+        [SkillType.Triggerable] = true,
+    },
+    statDescriptionScope = "skill_stat_descriptions",
+    castTime = 2.5,
+    baseFlags = {
+        attack = true,
+        projectile = true,
+    },
+    baseMods = {
+    },
+    qualityStats = {
+    },
+    stats = {
+        "skill_physical_damage_%_to_convert_to_cold",
+        "active_skill_attack_speed_+%_final",
+        "monster_projectile_variation",
+        "active_skill_damage_+%_final",
+        "base_is_projectile",
+        "always_pierce",
+        "skill_can_fire_arrows",
+    },
+    levels = {
+        [1] = {75, -50, 69, 0, baseMultiplier = 1.65, levelRequirement = 1, statInterpolation = {1, 1, 1, 2},  },
+        [2] = {75, -50, 69, 0, baseMultiplier = 1.65, levelRequirement = 20, statInterpolation = {1, 1, 1, 2},  },
+        [3] = {75, -50, 69, 1, baseMultiplier = 1.65, levelRequirement = 21, statInterpolation = {1, 1, 1, 2},  },
+        [4] = {75, -50, 69, 200, baseMultiplier = 1.65, levelRequirement = 84, statInterpolation = {1, 1, 1, 2},  },
+    },
+}

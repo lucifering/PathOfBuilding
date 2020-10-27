@@ -2457,6 +2457,7 @@ description = "辅助近战攻击技能。这些技能可以被将军之吼召�
 		},
 	},
 	baseMods = {
+		flag("SupportedByGeneralsCry")
 	},
 	qualityStats = {
 	},

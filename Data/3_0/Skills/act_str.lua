@@ -2453,11 +2453,13 @@ description = "辅助近战攻击技能。这些技能可以被将军之吼召�
 	statDescriptionScope = "gem_stat_descriptions",
 	statMap = {
 		["support_spiritual_cry_damage_+%_final"] = {
-			mod("GeneralsCryMirageWarriorLessDamage", "BASE", nil),
+			--mod("GeneralsCryMirageWarriorLessDamage", "BASE", nil),
+			mod("Damage", "MORE", nil),			
 		},
 	},
 	baseMods = {
-		flag("SupportedByGeneralsCry")
+		flag("SupportedByGeneralsCry"),
+		skill("showAverage", true),
 	},
 	qualityStats = {
 	},

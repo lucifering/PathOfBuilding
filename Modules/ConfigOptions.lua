@@ -37,6 +37,9 @@ return {
 { var = "conditionMinionsFullLife", type = "check", label = "你的召唤生物处于满血状态?",  apply = function(val, modList, enemyModList)
 		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Condition:FullLife", "FLAG", true, "Config") }, "Config")
 	end },
+{ var = "minionsConditionCreatedRecently", type = "check", label = "你的召唤物的近期内召唤的？", ifCond = "MinionsCreatedRecently", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:MinionsCreatedRecently", "FLAG", true, "Config")
+	end },
 { var = "igniteMode", type = "list", label = "异常计算模式:", tooltip = "目前以基础点伤来计算异常效果:\n平均伤害：异常是基于平均伤害计算，区分暴击和非暴击.\n暴击伤害：异常基于暴击计算.", list = {{val="AVERAGE",label="平均伤害"},{val="CRIT",label="暴击伤害"}} },
 { var = "armourCalculationMode", type = "list", label = "护甲计算模式:", 
 tooltip = "配置护甲的计算方式\n\t最小：不计算双倍护甲\n\t平均：根据双倍护甲的几率进行计算预期减伤\n\t最大：始终使用100% 双倍护甲计算，如果有 100% 几率双倍护甲，那么此配置无效\n\t", 

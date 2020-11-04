@@ -1021,7 +1021,7 @@ ifCond = "OnFungalGround",
 { var = "skillChainCount", type = "count", label = "连锁过的次数:", ifFlag = "chaining", apply = function(val, modList, enemyModList)
 		modList:NewMod("ChainCount", "BASE", val, "Config", { type = "Condition", var = "Effective" })
 	end },
-{ var = "projectileDistance", type = "count", label = "投射物飞行距离:", ifFlag = "projectile" },
+{ var = "projectileDistance", type = "count", label = "投射物飞行距离:" },
 { var = "conditionAtCloseRange", type = "check", label = "怪物在近距离范围内?", ifCond = "AtCloseRange", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:AtCloseRange", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
@@ -1139,21 +1139,28 @@ tooltip = "精疲力尽的敌人总伤害额外降低，最多降低 20%.", appl
 	end },
 { var = "conditionEnemyFireExposure", type = "check", label = "敌人被火焰曝露影响?", ifFlag = "applyFireExposure", tooltip = "降低敌人 10% 火焰抗性.", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("FireExposure", "BASE", -10, "Config", { type = "Condition", var = "Effective" }, { type = "ActorCondition", actor = "enemy", var = "CanApplyFireExposure" })
+		enemyModList:NewMod("Condition:HaveExposure", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
 { var = "conditionEnemyColdExposure", type = "check", label = "敌人被冰霜曝露影响?", ifFlag = "applyColdExposure", tooltip = "降低敌人 10% 冰霜抗性", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("ColdExposure", "BASE", -10, "Config", { type = "Condition", var = "Effective" }, { type = "ActorCondition", actor = "enemy", var = "CanApplyColdExposure" })
-	end },
+		enemyModList:NewMod("Condition:HaveExposure", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
+	end 
+},
 { var = "conditionEnemyLightningExposure", type = "check", label = "敌人被闪电曝露影响?", ifFlag = "applyLightningExposure", tooltip = "降低敌人 10% 闪电抗性", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("LightningExposure", "BASE", -10, "Config", { type = "Condition", var = "Effective" }, { type = "ActorCondition", actor = "enemy", var = "CanApplyLightningExposure" })
+		enemyModList:NewMod("Condition:HaveExposure", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
 { var = "conditionEnemyIntimidated", type = "check", ifVer = "2_6", label = "敌人被恐吓?", tooltip = "这个会附加词缀:\n提高 10% 敌人承受的伤害", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("DamageTaken", "INC", 10, "Intimidate")
+		enemyModList:NewMod("Condition:Intimidate", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
 { var = "conditionEnemyIntimidated", type = "check", ifVer = "3_0", label = "敌人被恐吓?", tooltip = "这个会附加词缀:\n提高 10% 敌人承受的攻击伤害", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("DamageTaken", "INC", 10, "Intimidate", ModFlag.Attack)
+		enemyModList:NewMod("Condition:Intimidate", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
 { var = "conditionEnemyUnnerved", type = "check", ifVer = "3_0", label = "敌人被恐惧?", tooltip = "这个会附加词缀:\n提高 10% 敌人承受的法术伤害", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("DamageTaken", "INC", 10, "Unnerve", ModFlag.Spell)
+		enemyModList:NewMod("Condition:Unnerve", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
 	
 { var = "conditionEnemyCoveredInAsh", type = "check", label = "敌人【灰烬缠身】?", tooltip = "这个会附加词缀:\n额外降低敌人 20% 移动速度\n提高 20% 敌人承受的火焰伤害", apply = function(val, modList, enemyModList)

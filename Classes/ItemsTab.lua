@@ -2957,32 +2957,32 @@ tooltip:AddLine(16, "^x7F7F7F插槽: "..line)
 			if item.base.flask.life then
 				local lifeInc = modDB:Sum("INC", nil, "FlaskLifeRecovery")
 				local lifeRateInc = modDB:Sum("INC", nil, "FlaskLifeRecoveryRate")
-				local inst = flaskData.lifeBase * instantPerc / 100 * (1 + lifeInc / 100) * (1 + effectInc / 100) * output.LifeRecoveryMod
-				local grad = flaskData.lifeBase * (1 - instantPerc / 100) * (1 + lifeInc / 100) * (1 + effectInc / 100) * (1 + durInc / 100) * output.LifeRecoveryRateMod
+				local inst = flaskData.lifeTotal * instantPerc / 100 * (1 + lifeInc / 100) * (1 + effectInc / 100) * output.LifeRecoveryMod
+				local grad = flaskData.lifeTotal * (1 - instantPerc / 100) * (1 + lifeInc / 100) * (1 + effectInc / 100) * (1 + durInc / 100) * output.LifeRecoveryRateMod
 				local lifeDur = flaskData.duration * (1 + durInc / 100) / (1 + rateInc / 100) / (1 + lifeRateInc / 100)
 				if inst > 0 and grad > 0 then
-					t_insert(stats, s_format("^8生命回复: ^7%d ^8(^7%d^8 立即, 加 ^7%d ^8持续^7 %.2f秒^8)", inst + grad, inst, grad, lifeDur))
+					t_insert(stats, s_format("^8生命一共回复: ^7%d ^8(其中 ^7%d^8 立即, 加 ^7%d ^8持续^7 %.2f秒^8)", inst + grad, inst, grad, lifeDur))
 				elseif inst + grad ~= flaskData.lifeTotal or (inst == 0 and lifeDur ~= flaskData.duration) then
 					if inst > 0 then
-						t_insert(stats, s_format("^8生命回复: ^7%d ^8立即", inst))
+						t_insert(stats, s_format("^8生命一共回复: ^7%d （^8立即）", inst))
 					elseif grad > 0 then
-						t_insert(stats, s_format("^8生命回复: ^7%d ^8持续 ^7%.2f秒", grad, lifeDur))
+						t_insert(stats, s_format("^8生命一共回复: ^7%d （^8持续 ^7%.2f秒）", grad, lifeDur))
 					end
 				end
 			end
 			if item.base.flask.mana then
 				local manaInc = modDB:Sum("INC", nil, "FlaskManaRecovery")
 				local manaRateInc = modDB:Sum("INC", nil, "FlaskManaRecoveryRate")
-				local inst = flaskData.manaBase * instantPerc / 100 * (1 + manaInc / 100) * (1 + effectInc / 100) * output.ManaRecoveryMod
-				local grad = flaskData.manaBase * (1 - instantPerc / 100) * (1 + manaInc / 100) * (1 + effectInc / 100) * (1 + durInc / 100) * output.ManaRecoveryRateMod
+				local inst = flaskData.manaTotal * instantPerc / 100 * (1 + manaInc / 100) * (1 + effectInc / 100) * output.ManaRecoveryMod
+				local grad = flaskData.manaTotal * (1 - instantPerc / 100) * (1 + manaInc / 100) * (1 + effectInc / 100) * (1 + durInc / 100) * output.ManaRecoveryRateMod
 				local manaDur = flaskData.duration * (1 + durInc / 100) / (1 + rateInc / 100) / (1 + manaRateInc / 100)
 				if inst > 0 and grad > 0 then
-					t_insert(stats, s_format("^8魔力回复: ^7%d ^8(^7%d^8 立即, 加 ^7%d ^8持续^7 %.2f秒^8)", inst + grad, inst, grad, manaDur))
+					t_insert(stats, s_format("^8魔力一共回复: ^7%d ^8(其中 ^7%d^8 立即, 加 ^7%d ^8持续^7 %.2f秒^8)", inst + grad, inst, grad, manaDur))
 				elseif inst + grad ~= flaskData.manaTotal or (inst == 0 and manaDur ~= flaskData.duration) then
 					if inst > 0 then
-						t_insert(stats, s_format("^8魔力回复: ^7%d ^8立即", inst))
+						t_insert(stats, s_format("^8魔力一共回复: ^7%d （^8立即）", inst))
 					elseif grad > 0 then
-						t_insert(stats, s_format("^8魔力回复: ^7%d ^8持续 ^7%.2f秒", grad, manaDur))
+						t_insert(stats, s_format("^8魔力一共回复: ^7%d （^8持续 ^7%.2f秒）", grad, manaDur))
 					end
 				end
 			end

@@ -664,14 +664,27 @@ output.ChainMaxString = "无法连锁"
 	if skillFlags.area or skillData.radius or (skillFlags.mine and activeSkill.skillTypes[SkillType.Aura]) then
 		calcAreaOfEffect(skillModList, skillCfg, skillData, skillFlags, output, breakdown)
 	end
-	if activeSkill.skillTypes[SkillType.Aura] then
+	if activeSkill.skillTypes[SkillType.Aura] then	
+		
+		local incFromPurposefulHarbinger = math.min(
+							skillModList:Sum("INC", skillCfg, "PurpHarbAuraBuffEffect"),
+							data.misc.PurposefulHarbingerMaxBuffPercent) / 100
+				
+		
 		output.AuraEffectMod = calcLib.mod(skillModList, skillCfg, "AuraEffect")
 		if breakdown then
-			breakdown.AuraEffectMod = breakdown.mod(skillCfg, "AuraEffect")
+			breakdown.AuraEffectMod = breakdown.mod(skillCfg, "AuraEffect") 
 		end
-		output.AuraEffectOnSelfMod=  calcLib.mod(skillModList, skillCfg, "AuraEffectOnSelf","AuraEffect")  
+		output.AuraEffectOnSelfMod=  calcLib.mod(skillModList, skillCfg, "AuraEffectOnSelf","AuraEffect")  + incFromPurposefulHarbinger
 		if breakdown then			
-			breakdown.AuraEffectOnSelfMod = breakdown.mod(skillCfg, "AuraEffectOnSelf","AuraEffect") 
+			breakdown.AuraEffectOnSelfMod = breakdown.mod(skillCfg, "AuraEffectOnSelf","AuraEffect")  			 
+			if incFromPurposefulHarbinger > 0  then 
+				if not breakdown.AuraEffectOnSelfMod then 
+					breakdown.AuraEffectOnSelfMod = {}
+				end 
+				t_insert(breakdown.AuraEffectOnSelfMod,"多个【勇毅先驱】最大效果 40%")
+				
+			end 
 		end
 	end
 	if activeSkill.skillTypes[SkillType.Hex] or activeSkill.skillTypes[SkillType.Mark]then

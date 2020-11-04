@@ -1384,6 +1384,7 @@ local modTagList = {
 	["冰缓时，"] = { tag = { type = "Condition", var = "Chilled" } },
 	["被点燃时，"] = { tag = { type = "Condition", var = "Ignited" } },
 	["被点燃时"] = { tag = { type = "Condition", var = "Ignited" } },
+	["每 (%d+) 点护甲都使"] = function(num) return { tag = { type = "PerStat", stat = "Armour", div = num } } end, 
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -2165,6 +2166,7 @@ local specialModList = {
 	["冰霜伤害的 ([%d%.]+)%% 转化为能量护盾偷取"]= function(num) return {  mod("ColdDamageEnergyShieldLeech", "BASE", num)  } end, 
 	["闪电伤害的 ([%d%.]+)%% 转化为能量护盾偷取"]= function(num) return {  mod("LightningDamageEnergyShieldLeech", "BASE", num)  } end, 
 	["法术伤害的 ([%d%.]+)%% 转化为能量护盾偷取"]= function(num) return {  mod("DamageEnergyShieldLeech", "BASE", num,nil, ModFlag.Spell)  } end, 
+	["混沌伤害的 ([%d%.]+)%% 会转化为能量护盾偷取"]= function(num) return {  mod("ChaosDamageEnergyShieldLeech", "BASE", num)  } end, 
 	["敌人身上每有 1 个诅咒，法术伤害的 ([%d%.]+)%% 会转化为能量护盾偷取"] = function(num) return {  mod("DamageEnergyShieldLeech", "BASE", num,nil, ModFlag.Spell,{ type = "Multiplier", var = "CurseOnEnemy" })  } end, 
 	["敌人身上每有 1 个诅咒，法术伤害的 ([%d%.]+)%% 便转化为能量护盾偷取"] = function(num) return {  mod("DamageEnergyShieldLeech", "BASE", num,nil, ModFlag.Spell,{ type = "Multiplier", var = "CurseOnEnemy" })  } end, 
 	["每个生命偷取实例降低 (%d+)%% 最大回复"] = function(num) return {  mod("MaxLifeLeechInstance", "INC", -num)  } end, 
@@ -2933,6 +2935,7 @@ local specialModList = {
 	  mod("EnemyShockChance", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  ,
 	   mod("EnemyIgniteChance", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name })   } end, 
 	["【([^\\x00-\\xff]*)】额外连锁弹射 (%d+) 次"]=  function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ChainCountMax", "BASE", tonumber(num)) }, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) } ) } end,
+	["【([^\\x00-\\xff]*)】有额外 (%d+) 次连锁弹射"]=  function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ChainCountMax", "BASE", tonumber(num)) }, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) } ) } end,
 	["【([^\\x00-\\xff]*)】会额外连锁 (%d+) 次"]=  function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ChainCountMax", "BASE", tonumber(num)) }, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) } ) } end,
 	["【灵魂奉献】给予等同 %+(%d+)%% 物理伤害的额外混沌伤害"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("PhysicalDamageGainAsChaos", "BASE", tonumber(num), { type = "GlobalEffect", effectType = "Buff" }) }, { type = "SkillName", skillName = "灵魂奉献" }) } end,
 	["闪电陷阱的伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", tonumber(num),{ type = "SkillName", skillName ="闪电陷阱" })  } end, 
@@ -3938,9 +3941,10 @@ local specialModList = {
 		{ mod("MinionModifier", "LIST", { mod =  mod("LifeConvertToEnergyShield", "BASE", tonumber(num2)	
 		,{ type = "PerStat", stat = "ChaosResist", div = tonumber(num1) }
 		)  })  } end,
-	["每受到一个捷技能影响，你身上的光环技能的效果提高 (%d+)%%，最多提高 (%d+)%%"] =function(_,num1,num2) return {  
-	mod("AuraEffectOnSelf", "INC", tonumber(num1),nil,nil,KeywordFlag.Aura,{ type = "Multiplier", var = "AffectedByHeraldCount" ,
-	 limit = tonumber(num2), limitTotal = true}  )  } end,
+	["每受到一个捷技能影响，你身上的光环技能的效果提高 (%d+)%%，最多提高 (%d+)%%"] = function(num, _, limit) return {
+			mod("PurpHarbAuraBuffEffect", "INC", num, { type = "Multiplier", var = "AffectedByHeraldCount" })
+			-- Maximum buff effect is handled in CalcPerform, PurpHarbAuraBuffEffect is capped with a constant there.
+		} end,
 	["每消耗 1 具灵柩后的短时间内，攻击和施法速度提高 (%d+)%%，最多提高 (%d+)%%"] = function(_,num1,num2) return {
 			mod("Speed", "INC", tonumber(num1),  { type = "Multiplier", var = "CorpseConsumedRecently"  ,
 	 limit = tonumber(num2), limitTotal = true} )
@@ -4254,7 +4258,7 @@ local specialModList = {
 	["你的暴击有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("DoubleDamageChanceOnCrit", "BASE", num) } end,
 	["格挡击中造成的伤害无法规避能量护盾"] = { flag("BlockedDamageDoesntBypassES", { type = "Condition", var = "EVBypass", neg = true }) },
 	["非格挡击中造成的伤害始终规避能量护盾"] = { flag("UnblockedDamageDoesBypassES", { type = "Condition", var = "EVBypass", neg = true }) },
-	["你的召唤生物死亡时产生腐蚀地面，每秒造成等同它们 20%% 最大生命的混沌伤害"] = { mod("ExtraMinionSkill", "LIST", { skillId = "SiegebreakerCausticGroud" }) },
+	["你的召唤生物死亡时产生腐蚀地面，每秒造成等同它们 20%% 最大生命的混沌伤害"] = { mod("ExtraMinionSkill", "LIST", { skillId = "SiegebreakerCausticGround" }) },
 	["%+(%d) 最大毒力"] = function(num) return { mod("Multiplier:VirulenceStacksMax", "BASE", num) } end,
 	["【凿击】创造 %+(%d+) 根尖刺"] = function(num) return { mod("Multiplier:PerforateMaxSpikes", "BASE", num) } end,
 	["燃尽的范围效果扩大 (%d+)%%"]  = function(num) return {  mod("AreaOfEffect", "INC", num, { type = "SkillName", skillName = "燃尽"})  } end,
@@ -4621,7 +4625,26 @@ local specialModList = {
 	["使用该武器近战击中时触发 (%d+) 级火烈冲击"]= function(num)return {   mod("ExtraSkill", "LIST", {  skillId ="FieryImpactHeistMaceImplicit", level = tonumber(num)})   } end,
 	["召唤生物攻击击中时有 (%d+)%% 几率穿刺目标"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("ImpaleChance", "BASE", num, 0, 0, KeywordFlag.Attack) })  } end,
 	["近期所召唤的召唤生物的攻击和施法速度提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Speed", "INC", num) }, { type = "Condition", var = "MinionsCreatedRecently" }) } end,
-		["近期所召唤的召唤生物的移动速度提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("MovementSpeed", "INC", num) }, { type = "Condition", var = "MinionsCreatedRecently" }) } end,
+	["近期所召唤的召唤生物的移动速度提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("MovementSpeed", "INC", num) }, { type = "Condition", var = "MinionsCreatedRecently" }) } end,
+	["被你枯萎的敌人 (%-%d+)%% 所有抗性"]= function(num) return { 
+	mod("EnemyModifier", "LIST", { mod = mod("ChaosResist", "BASE", num,{ type = "GlobalEffect", effectType = "Debuff", effectName = "被凋零敌人减抗" }, { type = "MultiplierThreshold",  var = "WitheredStack", threshold = 1 }) }),
+	mod("EnemyModifier", "LIST", { mod = mod("ElementalResist", "BASE", num,{ type = "GlobalEffect", effectType = "Debuff", effectName = "被凋零敌人减抗" }, { type = "MultiplierThreshold",  var = "WitheredStack", threshold = 1 }) }),
+		 } end, 
+	["被你凋零的敌人 (%-%d+)%% 所有抗性"]= function(num) return { 
+	mod("EnemyModifier", "LIST", { mod = mod("ChaosResist", "BASE", num,{ type = "GlobalEffect", effectType = "Debuff", effectName = "被凋零敌人减抗" }, { type = "MultiplierThreshold",  var = "WitheredStack", threshold = 1 }) }),
+	mod("EnemyModifier", "LIST", { mod = mod("ElementalResist", "BASE", num,{ type = "GlobalEffect", effectType = "Debuff", effectName = "被凋零敌人减抗" }, { type = "MultiplierThreshold",  var = "WitheredStack", threshold = 1 }) }),
+		 } end, 
+	["击中被你恐惧的敌人时，法术暴击率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", num,nil, ModFlag.Spell,{ type = "ActorCondition", actor = "enemy", var = "Unnerve" })  } end, 
+	["对抗被你恐吓的敌人时，它们的眩晕持续时间延长 (%d+)%%"]= function(num) return {  mod("EnemyStunDuration", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "Intimidate" })  } end, 
+	["施加在被你曝露的敌人身上的元素异常状态持续时间延长 20%"]= function(num) return {  
+	mod("EnemyShockDuration", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "HaveExposure" }),
+	mod("EnemyFreezeDuration", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "HaveExposure" }),
+	mod("EnemyChillDuration", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "HaveExposure" }),
+	mod("EnemyIgniteDuration", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "HaveExposure" }),
+	mod("EnemyScorchDuration", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "HaveExposure" }),
+	mod("EnemyBrittleDuration", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "HaveExposure" }),
+	mod("EnemySapDuration", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "HaveExposure" }),
+	} end, 
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

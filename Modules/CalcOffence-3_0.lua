@@ -2032,7 +2032,9 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 										end										
 									end
 									--Update the penetration based on the element used
-									pen = skillModList:Sum("BASE", cfg, elementUsed.."Penetration", "ElementalPenetration")
+									if isElemental[elementUsed] then 
+										pen = skillModList:Sum("BASE", cfg, elementUsed.."Penetration", "ElementalPenetration")									
+									end 
 									sourceRes = elementUsed
 								end
 							end

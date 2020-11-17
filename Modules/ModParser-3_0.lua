@@ -2746,6 +2746,11 @@ local specialModList = {
 	["【(.+)】的魔力消耗降低 (%d+)%%"] = function( _,skill_name, num) return { mod("ManaCost", "INC",-num, { type = "SkillName", skillName = FuckSkillActivityCnName(skill_name) }) } end, 	
 	["技能的总魔力消耗额外降低 (%d+)%%"] = function( num) return { mod("ManaCost", "MORE",-num) } end, 	
 	["技能总魔力消耗额外降低 (%d+)%%"] = function( num) return { mod("ManaCost", "MORE",-num) } end, 	
+	["召唤生物有 (%d+)%% 几率冰冻、感电、点燃敌人"] = function(num) return { 
+	mod("MinionModifier", "LIST", { mod = mod("EnemyFreezeChance", "BASE", num) }),
+	mod("MinionModifier", "LIST", { mod = mod("EnemyShockChance", "BASE", num) }),
+	mod("MinionModifier", "LIST", { mod = mod("EnemyIgniteChance", "BASE", num) }),
+	  } end,
 	["持续吟唱技能总魔力消耗 ([%+%-]?%d+)"] =function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ManaCost", "BASE", num, nil, 0, { type = "SkillType", skillType = SkillType.Channelled }) })}end,	
 	["插槽内的移动技能不消耗魔力"] = function() return { mod("ExtraSkillMod", "LIST", { mod = mod("ManaCost", "MORE", -100, nil, 0,  KeywordFlag.Movement) }, { type = "SocketedIn", slotName = "{SlotName}" })}end,	
 	["插槽内攻击技能的总魔力消耗 ([%+%-]?%d+)"]= function(num) return { mod("ManaCost", "BASE",num, { type = "SocketedIn", slotName = "{SlotName}", keyword = "attack" }  ) } end, 	
@@ -3780,7 +3785,9 @@ local specialModList = {
 			mod("ElementalDamage", "INC", num, { type = "Multiplier", var = "GrandSpectrum" }), 
 			mod("Multiplier:GrandSpectrum", "BASE", 1) 
 		} end,
-	["持法杖时，对法术伤害的增幅与减益也会套用于攻击上"] = { flag("SpellDamageAppliesToAttacks"), mod("ImprovedSpellDamageAppliesToAttacks", "INC", 100) },
+	["持法杖时，对法术伤害的增幅与减益也会套用于攻击上"] = { 
+	flag("SpellDamageAppliesToAttacks",{ type = "Condition", var = "UsingWand" }), 
+	mod("ImprovedSpellDamageAppliesToAttacks", "INC", 100,{ type = "Condition", var = "UsingWand" }) },
 		["increases and reductions to cast speed apply to attack speed at (%d+)%% of their value"] =  function(num) return { flag("CastSpeedAppliesToAttacks"), mod("ImprovedCastSpeedAppliesToAttacks", "INC", num) } end,
 		["对法术伤害的增幅与减益也会套用于攻击上"] = { flag("SpellDamageAppliesToAttacks"), mod("ImprovedSpellDamageAppliesToAttacks", "INC", 100) },
 		["对法术伤害的增幅与减益也套用于攻击，等于其数值的 (%d+)%%"] = function(num) return { flag("SpellDamageAppliesToAttacks"), mod("ImprovedSpellDamageAppliesToAttacks", "INC", num) } end,

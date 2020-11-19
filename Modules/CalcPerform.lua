@@ -37,8 +37,12 @@ local function mergeBuff(src, destTable, destKey)
 			end
 		else
 			--lucifer buff叠加计算
-			for index, destMod in ipairs(dest) do
-				if mod.value and mod.value.mod and destMod.value and destMod.value.mod then
+			for index, destMod in ipairs(dest) do			
+				if mod.value 
+				and type(mod.value) ~= "number"
+				and mod.value.mod 				
+				and type(destMod.value) ~= "number"
+				and destMod.value and destMod.value.mod then
 					if modLib.compareModParams(mod.value.mod, destMod.value.mod) then
 						
 						if type(destMod.value.mod.value) == "number" and mod.value.mod.value > destMod.value.mod.value then

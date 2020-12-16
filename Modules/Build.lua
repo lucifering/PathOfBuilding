@@ -14,24 +14,6 @@ local m_floor = math.floor
 local m_abs = math.abs
 local s_format = string.format
 
-local normalBanditDropList = {
-	{ label = "Passive point", banditId = "None" },
-	{ label = "Oak (Life)", banditId = "Oak" },
-	{ label = "Kraityn (Resists)", banditId = "Kraityn" },
-	{ label = "Alira (Mana)", banditId = "Alira" },
-}
-local cruelBanditDropList = {
-	{ label = "Passive point", banditId = "None" },
-	{ label = "Oak (Endurance)", banditId = "Oak" },
-	{ label = "Kraityn (Frenzy)", banditId = "Kraityn" },
-	{ label = "Alira (Power)", banditId = "Alira" },
-}
-local mercilessBanditDropList = {
-	{ label = "Passive point", banditId = "None" },
-	{ label = "Oak (Phys Dmg)", banditId = "Oak" },
-	{ label = "Kraityn (Att. Speed)", banditId = "Kraityn" },
-	{ label = "Alira (Cast Speed)", banditId = "Alira" },
-}
 local fooBanditDropList = {
 { label = "全杀（2点天赋点）", banditId = "None" },
 { label = "欧克 (生命回复，物理伤害，物理减伤)", banditId = "Oak" },
@@ -41,7 +23,7 @@ local fooBanditDropList = {
 
 local buildMode = new("ControlHost")
 
-function buildMode:Init(dbFileName, buildName, buildXML, targetVersion)
+function buildMode:Init(dbFileName, buildName, buildXML, convertBuild)
 	self.dbFileName = dbFileName
 	self.buildName = buildName
 	if dbFileName then
@@ -53,11 +35,39 @@ function buildMode:Init(dbFileName, buildName, buildXML, targetVersion)
 		main:SetMode("LIST")
 	end
 
-	if not dbFileName and not targetVersion and not buildXML then
-		targetVersion = liveTargetVersion
-		--self.targetVersion = nil
-		--self:OpenTargetVersionPopup(true)
-		--return
+	-- Load build file
+	self.xmlSectionList = { }
+	self.spectreList = { }
+	self.viewMode = "TREE"	
+	self.characterLevel = 1
+	self.targetVersion = liveTargetVersion
+	self.bandit = "None"
+	self.pantheonMajorGod = "None"
+	self.pantheonMinorGod = "None"
+
+			
+	if buildXML then
+		if self:LoadDB(buildXML, "Unnamed build") then
+			self:CloseBuild()
+			return
+		end
+		self.modFlag = true
+	else
+		if self:LoadDBFile() then
+			self:CloseBuild()
+			return
+		end
+		self.modFlag = false
+	end
+
+	if convertBuild then
+		self.targetVersion = liveTargetVersion
+	end
+
+	if self.targetVersion ~= liveTargetVersion then
+		self.targetVersion = nil
+		self:OpenConversionPopup()
+		return		
 	end
 
 	self.abortSave = true
@@ -135,7 +145,7 @@ self.controls.saveAs = new("ButtonControl", {"LEFT",self.controls.save,"RIGHT"},
 	end
 	self.controls.pointDisplay.width = function(control)
 		local used, ascUsed = self.spec:CountAllocNodes()
-		local usedMax = 99 + (self.targetVersion == "2_6" and 21 or 22) + (self.calcsTab.mainOutput.ExtraPoints or 0)
+		local usedMax = 99 + 22 + (self.calcsTab.mainOutput.ExtraPoints or 0)
 		local ascMax = 8	
 		control.str = string.format("%s%3d / %3d   %s%d / %d", used > usedMax and "^1" or "^7", used, usedMax, ascUsed > ascMax and "^1" or "^7", ascUsed, ascMax)
 		control.req = "需求等级: "..m_max(1, (100 + used - usedMax))
@@ -163,6 +173,8 @@ self.controls.characterLevel = new("EditControl", {"LEFT",self.controls.pointDis
 		self.modFlag = true
 		self.buildFlag = true
 	end)
+	
+	self.controls.characterLevel:SetText(tostring(self.characterLevel))
 	self.controls.characterLevel.tooltipFunc = function(tooltip)
 		if tooltip:CheckForUpdate(self.characterLevel) then
 			tooltip:AddLine(16, "经验加成:")
@@ -352,37 +364,7 @@ main:OpenConfirmPopup("职业更改", "更改职业为 "..value.label.." 将会�
 		"ActiveTotemLimit",
 		"ActiveMinionLimit",
 	}
-
-	self.viewMode = "TREE"
-
-	self.targetVersion = defaultTargetVersion
-	self.characterLevel = 1
-	self.controls.characterLevel:SetText(tostring(self.characterLevel))
-	self.banditNormal = "None"
-	self.banditCruel = "None"
-	self.banditMerciless = "None"
-	self.spectreList = { }
-
-	-- Load build file
-	self.xmlSectionList = { }
-	if buildXML then
-		if self:LoadDB(buildXML, "Unnamed build") then
-			self:CloseBuild()
-			return
-		end
-		self.modFlag = true
-	else
-		if self:LoadDBFile() then
-			self:CloseBuild()
-			return
-		end
-		self.modFlag = false
-	end
-
-	if targetVersion then
-		self.targetVersion = targetVersion
-	end
-	self.targetVersionData = targetVersions[self.targetVersion]
+ 
 
 	if buildName == "~~temp~~" then
 		-- Remove temporary build file
@@ -435,33 +417,14 @@ self.controls.modeCalcs = new("ButtonControl", {"LEFT",self.controls.modeItems,"
 		self.viewMode = "CALCS"
 	end)
 	self.controls.modeCalcs.locked = function() return self.viewMode == "CALCS" end
-	if self.targetVersion == "2_6" then
-		self.controls.banditNormal = new("DropDownControl", {"TOPLEFT",self.anchorSideBar,"TOPLEFT"}, 0, 70, 100, 16, normalBanditDropList, function(index, value)
-			self.banditNormal = value.banditId
-			self.modFlag = true
-			self.buildFlag = true
-		end)
-		self.controls.banditNormalLabel = new("LabelControl", {"BOTTOMLEFT",self.controls.banditNormal,"TOPLEFT"}, 0, 0, 0, 14, "^7Normal Bandit:")
-		self.controls.banditCruel = new("DropDownControl", {"LEFT",self.controls.banditNormal,"RIGHT"}, 0, 0, 100, 16, mercilessBanditDropList, function(index, value)
-			self.banditCruel = value.banditId
-			self.modFlag = true
-			self.buildFlag = true
-		end)
-		self.controls.banditCruelLabel = new("LabelControl", {"BOTTOMLEFT",self.controls.banditCruel,"TOPLEFT"}, 0, 0, 0, 14, "^7Cruel Bandit:")
-		self.controls.banditMerciless = new("DropDownControl", {"LEFT",self.controls.banditCruel,"RIGHT"}, 0, 0, 100, 16, cruelBanditDropList, function(index, value)
-			self.banditMerciless = value.banditId
-			self.modFlag = true
-			self.buildFlag = true
-		end)
-		self.controls.banditMercilessLabel = new("LabelControl", {"BOTTOMLEFT",self.controls.banditMerciless,"TOPLEFT"}, 0, 0, 0, 14, "^7Merciless Bandit:")
-	else
-		self.controls.bandit = new("DropDownControl", {"TOPLEFT",self.anchorSideBar,"TOPLEFT"}, 0, 70, 300, 16, fooBanditDropList, function(index, value)
+	
+	self.controls.bandit = new("DropDownControl", {"TOPLEFT",self.anchorSideBar,"TOPLEFT"}, 0, 70, 300, 16, fooBanditDropList, function(index, value)
 			self.bandit = value.banditId
 			self.modFlag = true
 			self.buildFlag = true
 		end)
 self.controls.banditLabel = new("LabelControl", {"BOTTOMLEFT",self.controls.bandit,"TOPLEFT"}, 0, 0, 0, 14, "^7盗贼:")
-	end	
+
 self.controls.mainSkillLabel = new("LabelControl", {"TOPLEFT",self.anchorSideBar,"TOPLEFT"}, 0, 95, 300, 16, "^7主要技能：")
 	self.controls.mainSocketGroup = new("DropDownControl", {"TOPLEFT",self.controls.mainSkillLabel,"BOTTOMLEFT"}, 0, 2, 300, 16, nil, function(index, value)
 		self.mainSocketGroup = index
@@ -487,7 +450,19 @@ self.controls.mainSkillLabel = new("LabelControl", {"TOPLEFT",self.anchorSideBar
 		self.modFlag = true
 		self.buildFlag = true
 	end)
-	self.controls.mainSkillMineCountLabel = new("LabelControl", {"TOPLEFT",self.controls.mainSkillPart,"BOTTOMLEFT",true}, 0, 3, 0, 16, "^7Active Mines:") {
+self.controls.mainSkillStageCountLabel = new("LabelControl", {"TOPLEFT",self.controls.mainSkillPart,"BOTTOMLEFT",true}, 0, 3, 0, 16, "^7层数:") {
+		shown = function()
+			return self.controls.mainSkillStageCount:IsShown()
+		end,
+	}
+	self.controls.mainSkillStageCount = new("EditControl", {"LEFT",self.controls.mainSkillStageCountLabel,"RIGHT",true}, 2, 0, 60, 18, nil, nil, "%D", nil, function(buf)
+		local mainSocketGroup = self.skillsTab.socketGroupList[self.mainSocketGroup]
+		local srcInstance = mainSocketGroup.displaySkillList[mainSocketGroup.mainActiveSkill].activeEffect.srcInstance
+		srcInstance.skillStageCount = tonumber(buf)
+		self.modFlag = true
+		self.buildFlag = true
+	end)
+	self.controls.mainSkillMineCountLabel = new("LabelControl", {"TOPLEFT",self.controls.mainSkillStageCountLabel,"BOTTOMLEFT",true}, 0, 3, 0, 16, "^7激活的地雷:") {
 		shown = function()
 			return self.controls.mainSkillMineCount:IsShown()
 		end,
@@ -547,9 +522,9 @@ self.controls.mainSkillMinionLibrary = new("ButtonControl", {"LEFT",self.control
 		return main.screenH - main.mainBarHeight - 4 - y
 	end
 
-	-- Initialise build components
-	self.data = data[self.targetVersion]
-	self.latestTree = main.tree[self.targetVersionData.latestTreeVersion]
+	-- Initialise build components	
+	self.data = data
+	self.latestTree = main.tree[latestTreeVersion]
 	self.importTab = new("ImportTab", self)
 	self.notesTab = new("NotesTab", self)
 	self.configTab = new("ConfigTab", self)
@@ -637,7 +612,7 @@ self.aboutTab = new("AboutTab", self)--lucifer
 end
 
 function buildMode:CanExit(mode)
-	if not self.targetVersion or not self.unsaved then
+	if not self.unsaved then
 		return true
 	end
 	self:OpenSavePopup(mode)
@@ -669,20 +644,20 @@ function buildMode:CloseBuild()
 end
 
 function buildMode:Load(xml, fileName)
-	self.targetVersion = data[xml.attrib.targetVersion] and xml.attrib.targetVersion or defaultTargetVersion
+	self.targetVersion = xml.attrib.targetVersion or legacyTargetVersion
 	if xml.attrib.viewMode then
 		self.viewMode = xml.attrib.viewMode
 	end
 	self.characterLevel = tonumber(xml.attrib.level) or 1
-	self.controls.characterLevel:SetText(tostring(self.characterLevel))
-	for _, diff in pairs({"bandit","banditNormal","banditCruel","banditMerciless"}) do
+	
+	for _, diff in pairs({"bandit"}) do
 		self[diff] = xml.attrib[diff] or "None"
 	end
 	self.mainSocketGroup = tonumber(xml.attrib.mainSkillIndex) or tonumber(xml.attrib.mainSocketGroup) or 1
 	wipeTable(self.spectreList)
 	for _, child in ipairs(xml) do
 		if child.elem == "Spectre" then
-			if child.attrib.id and data[self.targetVersion].minions[child.attrib.id] then
+			if child.attrib.id and data.minions[child.attrib.id] then
 				t_insert(self.spectreList, child.attrib.id)
 			end
 		end
@@ -696,10 +671,7 @@ function buildMode:Save(xml)
 		level = tostring(self.characterLevel),
 		className = self.spec.curClassName,
 		ascendClassName = self.spec.curAscendClassName,
-		bandit = self.bandit,
-		banditNormal = self.banditNormal,
-		banditCruel = self.banditCruel,
-		banditMerciless = self.banditMerciless,
+		bandit = self.bandit,		
 		mainSocketGroup = tostring(self.mainSocketGroup),
 	}
 	for _, id in ipairs(self.spectreList) do
@@ -733,6 +705,7 @@ function buildMode:Save(xml)
 end
 
 function buildMode:OnFrame(inputEvents)
+-- Stop at drawing the background if the loaded build needs to be converted
 	if not self.targetVersion then
 		main:DrawBackground(main.viewPort)
 		return
@@ -789,7 +762,7 @@ function buildMode:OnFrame(inputEvents)
 	self.controls.classDrop:SelByValue(self.spec.curClassId, "classId")
 	self.controls.ascendDrop:SelByValue(self.spec.curAscendClassId, "ascendClassId")
 
-	for _, diff in pairs({"bandit","banditNormal","banditCruel","banditMerciless"}) do
+	for _, diff in pairs({"bandit"}) do
 		if self.controls[diff] then
 			self.controls[diff]:SelByValue(self[diff], "banditId")
 		end
@@ -855,50 +828,46 @@ function buildMode:OnFrame(inputEvents)
 	self:DrawControls(main.viewPort)
 end
 
+
 -- Opens the game version selection popup
-function buildMode:OpenTargetVersionPopup(initial)
+function buildMode:OpenConversionPopup()
 	local controls = { }
-	local function setVersion(version)
-		if version == self.targetVersion then
-			main:ClosePopup()
-			return
-		end
-		if initial then
-			main:ClosePopup()
-			self:Shutdown()
-			self:Init(false, self.buildName, nil, version)
-		end
-	end
-	controls.label = new("LabelControl", nil, 0, 20, 0, 16, "^7Which game version will this build use?")
-	controls.version2_6 = new("ButtonControl", nil, -90, 50, 170, 20, "2.6 (Atlas of Worlds)", function()
-		setVersion("2_6")
-	end)
-	controls.version3_0 = new("ButtonControl", nil, 90, 50, 170, 20, "3.0 (Fall of Oriath)", function()
-		setVersion("3_0")
-	end)
-	controls.note = new("LabelControl", nil, 0, 80, 0, 14, "^7Tip: Existing builds can be converted between versions\nusing the 'Game Version' option in the Configuration tab.")
-	controls.cancel = new("ButtonControl", nil, 0, 120, 80, 20, "Cancel", function()
+	local currentVersion = treeVersions[latestTreeVersion].display
+	controls.note = new("LabelControl", nil, 0, 20, 0, 16, colorCodes.TIP..[[
+信息:^7 你正在尝试加载一个旧版本POB的bd信息，你可以转化为当前版本。
+如果想转化为新版本，那么点击转化。
+如果想查看旧版本的bd，
+可以尝试使用旧版本的pob进行加载。
+]])
+	controls.label = new("LabelControl", nil, 0, 110, 0, 16, colorCodes.WARNING..[[
+提醒:^7 转化为新版会出现有部分无法转化的情况，例如天赋树的变更。
+建议先存一份旧版的bd信息在进行转化。
+]])
+	controls.convert = new("ButtonControl", nil, -80, 170, 180, 20, "转化为 ".. currentVersion, function()
 		main:ClosePopup()
-		if initial then
-			self:CloseBuild()
-		end
+		self:Shutdown()
+		self:Init(self.dbFileName, self.buildName, nil, true)
 	end)
-	main:OpenPopup(370, 150, "Game Version", controls, nil, nil, "cancel")
+	controls.cancel = new("ButtonControl", nil, 80, 170, 70, 20, "取消", function()
+		main:ClosePopup()
+		self:CloseBuild()
+	end)
+	main:OpenPopup(580, 200, "游戏版本", controls, "convert", nil, "cancel")
 end
 
-function buildMode:OpenSavePopup(mode, newVersion)
+
+function buildMode:OpenSavePopup(mode)
 	local modeDesc = {
 		["LIST"] = "现在，",
 		["EXIT"] = "退出前,",
 		["UPDATE"] = "更新前,",
-		["VERSION"] = ">转换前,",
+		
 	}
 	local controls = { }
 controls.label = new("LabelControl", nil, 0, 20, 0, 16, modeDesc[mode].."^7这个Build有修改的地方还没有保存.\n你想要保存它们吗? ")
 	controls.save = new("ButtonControl", nil, -90, 70, 80, 20, "Save", function()
 		main:ClosePopup()
-		self.actionOnSave = mode
-		self.versionOnSave = newVersion
+		self.actionOnSave = mode		
 		self:SaveDBFile()
 		self.spec.isFirstLoad=0;
 	end)
@@ -909,10 +878,7 @@ controls.noSave = new("ButtonControl", nil, 0, 70, 80, 20, "不保存", function
 		elseif mode == "EXIT" then
 			Exit()
 		elseif mode == "UPDATE" then
-			launch:ApplyUpdate(launch.updateAvailable)
-		elseif mode == "VERSION" then
-			self:Shutdown()
-			self:Init(self.dbFileName, self.buildName, nil, newVersion)
+			launch:ApplyUpdate(launch.updateAvailable)		
 		end
 	end)
 controls.close = new("ButtonControl", nil, 90, 70, 80, 20, "取消", function()
@@ -964,7 +930,7 @@ controls.save = new("ButtonControl", nil, -45, 225, 80, 20, "保存", function()
 controls.close = new("ButtonControl", nil, 45, 225, 80, 20, "取消", function()
 		main:ClosePopup()
 		self.actionOnSave = nil
-		self.versionOnSave = nil
+		
 	end)
 main:OpenPopup(470, 255, self.dbFileName and "另存为" or "保存", controls, "save", "edit", "close")
 end
@@ -1010,6 +976,7 @@ controls.mainSocketGroup.list[1] = { val = 1, label = "<未添加技能>" }
 		controls.mainSkill.shown = false
 		controls.mainSkillPart.shown = false
 		controls.mainSkillMineCount.shown = false
+		controls.mainSkillStageCount.shown = false
 		controls.mainSkillMinion.shown = false
 		controls.mainSkillMinionSkill.shown = false
 	else
@@ -1025,6 +992,7 @@ controls.mainSocketGroup.list[1] = { val = 1, label = "<未添加技能>" }
 		controls.mainSkill.shown = true
 		controls.mainSkillPart.shown = false
 		controls.mainSkillMineCount.shown = false
+		controls.mainSkillStageCount.shown = false
 		controls.mainSkillMinion.shown = false
 		controls.mainSkillMinionLibrary.shown = false
 		controls.mainSkillMinionSkill.shown = false
@@ -1043,6 +1011,10 @@ controls.mainSocketGroup.list[1] = { val = 1, label = "<未添加技能>" }
 				if activeSkill.skillFlags.mine then
 					controls.mainSkillMineCount.shown = true
 					controls.mainSkillMineCount.buf = tostring(activeEffect.srcInstance["skillMineCount"..suffix] or "")
+				end
+				if activeSkill.skillFlags.multiStage then
+					controls.mainSkillStageCount.shown = true
+					controls.mainSkillStageCount.buf = tostring(activeEffect.srcInstance["skillStageCount"..suffix] or "")
 				end
 				if not activeSkill.skillFlags.disable and (activeEffect.grantedEffect.minionList or activeSkill.minionList[1]) then
 					wipeTable(controls.mainSkillMinion.list)
@@ -1195,13 +1167,13 @@ do
 		if level and level > 0 then
 t_insert(req, s_format("^x7F7F7FLevel %s%d", main:StatColor(level, nil, self.characterLevel), level))
 		end
-		if str and (str > 14 or str > self.calcsTab.mainOutput.Str) then
+		if str and (str >= 14 or str > self.calcsTab.mainOutput.Str) then
 t_insert(req, s_format("%s%d ^x7F7F7F力量", main:StatColor(str, strBase, self.calcsTab.mainOutput.Str), str))
 		end
-		if dex and (dex > 14 or dex > self.calcsTab.mainOutput.Dex) then
+		if dex and (dex >= 14 or dex > self.calcsTab.mainOutput.Dex) then
 t_insert(req, s_format("%s%d ^x7F7F7F敏捷", main:StatColor(dex, dexBase, self.calcsTab.mainOutput.Dex), dex))
 		end
-		if int and (int > 14 or int > self.calcsTab.mainOutput.Int) then
+		if int and (int >= 14 or int > self.calcsTab.mainOutput.Int) then
 t_insert(req, s_format("%s%d ^x7F7F7F智慧", main:StatColor(int, intBase, self.calcsTab.mainOutput.Int), int))
 		end
 		if req[1] then
@@ -1284,10 +1256,7 @@ function buildMode:SaveDBFile()
 		self:OpenSaveAsPopup()
 		return
 	end
-	if self.versionOnSave then
-		self.targetVersion = self.versionOnSave
-		self.versionOnSave = nil
-	end
+	
 	local xmlText = self:SaveDB(self.dbFileName)
 	if not xmlText then
 		return true
@@ -1306,10 +1275,7 @@ main:OpenMessagePopup("错误", "不能保存当前bd文件:\n"..self.dbFileName
 	elseif action == "EXIT" then
 		Exit()
 	elseif action == "UPDATE" then
-		launch:ApplyUpdate(launch.updateAvailable)
-	elseif action == "VERSION" then
-		self:Shutdown()
-		self:Init(self.dbFileName, self.buildName)
+		launch:ApplyUpdate(launch.updateAvailable)	
 	end
 end
 

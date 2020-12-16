@@ -159,6 +159,26 @@ function ModStoreClass:Tabulate(modType, cfg, ...)
 	return result
 end
 
+
+---HasMod
+---  Checks if a mod exists with the given properties.
+---  Useful for determining if the other aggregate functions will find
+---  anything to aggregate.
+---@param modType string @Mod type to match
+---@param cfg table @Optional configuration to use - contains flags, keywordFlags, and source to match
+---@param ... string @Mod name(s) to check for.
+---@return boolean @true if the mod is found, false otherwise.
+function ModStoreClass:HasMod(modType, cfg, ...)
+	local flags, keywordFlags = 0, 0
+	local source
+	if cfg then
+		flags = cfg.flags or 0
+		keywordFlags = cfg.keywordFlags or 0
+		source = cfg.source
+	end
+	return self:HasModInternal(modType, flags, keywordFlags, source, ...)
+end
+
 function ModStoreClass:GetCondition(var, cfg, noMod)
 	return self.conditions[var] or (self.parent and self.parent:GetCondition(var, cfg, true)) or (not noMod and self:Flag(cfg, conditionName[var]))
 end

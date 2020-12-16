@@ -187,13 +187,17 @@ description = "消耗部分魔力，获得一个增益效果，在耗尽前承�
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 0,
 	statMap = {
+		
+		["arcane_cloak_damage_absorbed_%"] = {
+			mod("GuardAbsorbRate", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Guard" }),
+		},
 		["arcane_cloak_consume_%_of_mana"] = {
-			mod("Multiplier:ArcaneCloakConsumedMana", "BASE", nil, 0, 0, { type = "PerStat", stat = "ManaUnreserved" }, { type = "GlobalEffect", effectType = "Buff" }),
+			mod("Multiplier:ArcaneCloakConsumedMana", "BASE", nil, 0, 0, { type = "PerStat", stat = "ManaUnreserved" }, { type = "GlobalEffect", effectType = "Guard" }),
 			div = 100,
 		},
 		["arcane_cloak_gain_%_of_consumed_mana_as_lightning_damage"] = {
-			mod("LightningMin", "BASE", nil, 0, 0, { type = "Multiplier", var = "ArcaneCloakConsumedMana" }, { type = "GlobalEffect", effectType = "Buff" }),
-			mod("LightningMax", "BASE", nil, 0, 0, { type = "Multiplier", var = "ArcaneCloakConsumedMana" }, { type = "GlobalEffect", effectType = "Buff" }),
+			mod("LightningMin", "BASE", nil, 0, 0, { type = "Multiplier", var = "ArcaneCloakConsumedMana" }, { type = "GlobalEffect", effectType = "Guard" }),
+			mod("LightningMax", "BASE", nil, 0, 0, { type = "Multiplier", var = "ArcaneCloakConsumedMana" }, { type = "GlobalEffect", effectType = "Guard" }),
 			div = 100,
 		},
 	},
@@ -202,6 +206,7 @@ description = "消耗部分魔力，获得一个增益效果，在耗尽前承�
 		duration = true,
 	},
 	baseMods = {
+		mod("GuardAbsorbLimit", "BASE", 1, 0, 0, { type = "Multiplier", var = "ArcaneCloakConsumedMana" }, { type = "GlobalEffect", effectType = "Guard" }),
 	},
 	qualityStats = {
 		Default = {
@@ -900,12 +905,22 @@ description = "持续吟唱该技能会对前方锥形范围内的敌人造成�
 	skillTypes = { [SkillType.Spell] = true, [SkillType.ChaosSkill] = true, [SkillType.Area] = true, [SkillType.SkillCanTotem] = true, [SkillType.Channelled] = true, [SkillType.Duration] = true, [SkillType.DamageOverTime] = true, [SkillType.Type59] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 0.3,
+	parts = {
+		{
+name = "手动叠层"
+		},
+		{
+name = "最大叠层"
+		},
+	},
 	baseFlags = {
 		spell = true,
 		duration = true,
 		area = true,
 	},
 	baseMods = {
+	mod("Multiplier:枯萎MaxStagesAfterFirst", "BASE", 19, 0, 0, { type = "SkillPart", skillPart = 1 } ),
+		mod("Damage", "MORE", 100, 0, 0, { type = "Multiplier", var = "枯萎StageAfterFirst" } ),
 		skill("debuff", true),
 		skill("debuffSecondary", true),
 		skill("radius", 26),
@@ -2568,23 +2583,20 @@ name = "持续吟唱期间",
 			area = false,
 		},
 		{
-name = "10 阶释放",
+name = "释放",
 			area = true,
 		},
-		{
-name = "20 阶释放",
-			area = true,
-		},
+		
 	},
 	statMap = {
 		["divine_tempest_damage_+%_final_while_channelling"] = {
 			mod("Damage", "MORE", nil, 0, 0, { type = "SkillPart", skillPart = 1 }),
 		},
 		["divine_tempest_hit_damage_+%_final_per_stage"] = {
-			mod("Damage", "MORE", nil, 0, KeywordFlag.Hit, { type = "Multiplier", var = "StageAfterFirst" }),
+			mod("Damage", "MORE", nil, 0, KeywordFlag.Hit, { type = "Multiplier", var = "圣怨StageAfterFirst" }),
 		},
 		["divine_tempest_ailment_damage_+%_final_per_stage"] = {
-			mod("Damage", "MORE", nil, 0, KeywordFlag.Ailment, { type = "Multiplier", var = "StageAfterFirst" }),
+			mod("Damage", "MORE", nil, 0, KeywordFlag.Ailment, { type = "Multiplier", var = "圣怨StageAfterFirst" }),
 		},
 	},
 	baseFlags = {
@@ -2592,9 +2604,8 @@ name = "20 阶释放",
 		area = true,
 	},
 	baseMods = {
-		skill("showAverage", true, { type = "SkillPart", skillPartList = { 2, 3 } }),
-		mod("Multiplier:StageAfterFirst", "BASE", 9, 0, 0, { type = "SkillPart", skillPart = 2 }),
-		mod("Multiplier:StageAfterFirst", "BASE", 19, 0, 0, { type = "SkillPart", skillPart = 3 }),
+		skill("showAverage", true, { type = "SkillPart", skillPart = 2 }),
+		mod("Multiplier:圣怨MaxStagesAfterFirst", "BASE", 19, 0, 0, { type = "SkillPart", skillPart = 2 } ),
 		skill("radius", 38),
 	},
 	qualityStats = {
@@ -3523,31 +3534,24 @@ description = "可蓄力（持续施放）来施放大型的爆炸. 蓄力的时
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Hit] = true, [SkillType.Area] = true, [SkillType.SkillCanTotem] = true, [SkillType.FireSkill] = true, [SkillType.Channelled] = true, [SkillType.AreaSpell] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.2,
-	parts = {
-		{
-name = "1 阶",
-		},
-		{
-name = "10 阶",
-		},
-	},
+	
 	statMap = {
 		["charged_blast_spell_damage_+%_final_per_stack"] = {
-			mod("Damage", "MORE", nil, 0, KeywordFlag.Hit, { type = "Multiplier", var = "FlameblastStage" }),
+			mod("Damage", "MORE", nil, 0, KeywordFlag.Hit, { type = "Multiplier", var = "烈焰爆破StageAfterFirst" }),
 		},
 		["flameblast_ailment_damage_+%_final_per_stack"] = {
-			mod("Damage", "MORE", nil, 0, KeywordFlag.Ailment, { type = "Multiplier", var = "FlameblastStage" }),
+			mod("Damage", "MORE", nil, 0, KeywordFlag.Ailment, { type = "Multiplier", var = "烈焰爆破StageAfterFirst" }),
 		},
 		["flameblast_ignite_chance_+%_per_stage"] = {
-			mod("EnemyIgniteChance", "BASE", nil, 0, 0, { type = "Multiplier", var = "FlameblastStage" }),
+			mod("EnemyIgniteChance", "BASE", nil, 0, 0, { type = "Multiplier", var = "烈焰爆破StageAfterFirst" }),
 		},
 		["base_skill_show_average_damage_instead_of_dps"] = {
 		},
 		["flameblast_maximum_stages"] = {
-		    mod("Multiplier:FlameblastMaxStages", "BASE", nil),
+		    mod("Multiplier:烈焰爆破MaxStages", "BASE", nil),
 		},
 		["flameblast_area_+%_final_per_stage"] = {
-		    mod("AreaOfEffect", "MORE", nil, 0, 0, { type = "Multiplier", var = "FlameblastStage" }),
+		    mod("AreaOfEffect", "MORE", nil, 0, 0, { type = "Multiplier", var = "烈焰爆破Stage" }),
 		},
 	},
 	baseFlags = {
@@ -3555,10 +3559,10 @@ name = "10 阶",
 		area = true,
 	},
 	baseMods = {
-		mod("Multiplier:FlameblastStage", "BASE", 9, 0, 0, { type = "SkillPart", skillPart = 2 }),
-		skill("dpsMultiplier", 0.1, { type = "SkillPart", skillPart = 2 }),
-		skill("radius", 2, { type = "SkillPart", skillPart = 1 }),
-		skill("radius", 29, { type = "SkillPart", skillPart = 2 }),
+		mod("Multiplier:烈焰爆破MaxStagesAfterFirst", "BASE", 9),
+		skill("radius", 2),
+		skill("radiusExtra", 3, { type = "Multiplier", var = "烈焰爆破StageAfterFirst" } ),
+		skill("showAverage", true),
 	},
 	qualityStats = {
 		Default = {
@@ -3653,16 +3657,16 @@ name = "最大阶",
 	},
 	statMap = {
 		["charged_blast_spell_damage_+%_final_per_stack"] = {
-			mod("Damage", "MORE", nil, 0, KeywordFlag.Hit, { type = "Multiplier", var = "VaalFlameblastStage" }),
+			mod("Damage", "MORE", nil, 0, KeywordFlag.Hit, { type = "Multiplier", var = "瓦尔.烈焰爆破Stage" }),
 		},
 		["flameblast_ailment_damage_+%_final_per_stack"] = {
-			mod("Damage", "MORE", nil, 0, KeywordFlag.Ailment, { type = "Multiplier", var = "VaalFlameblastStage" }),
+			mod("Damage", "MORE", nil, 0, KeywordFlag.Ailment, { type = "Multiplier", var = "瓦尔.烈焰爆破Stage" }),
 		},
 		["flameblast_ignite_chance_+%_per_stage"] = {
-			mod("EnemyIgniteChance", "BASE", nil, 0, 0, { type = "Multiplier", var = "VaalFlameblastStage" }),
+			mod("EnemyIgniteChance", "BASE", nil, 0, 0, { type = "Multiplier", var = "瓦尔.烈焰爆破Stage" }),
 		},
 		["vaal_flameblast_radius_+_per_stage"] = {
-			skill("radiusExtra", nil, { type = "Multiplier", var = "VaalFlameblastStage" }),
+			skill("radiusExtra", nil, { type = "Multiplier", var = "瓦尔.烈焰爆破Stage" }),
 		},
 	},
 	baseFlags = {
@@ -3670,7 +3674,7 @@ name = "最大阶",
 		area = true,
 	},
 	baseMods = {
-		mod("Multiplier:VaalFlameblastStage", "BASE", 14, 0, 0, { type = "SkillPart", skillPart = 2 }),
+		mod("Multiplier:瓦尔.烈焰爆破Stage", "BASE", 14, 0, 0, { type = "SkillPart", skillPart = 2 }),
 		skill("radius", 35),
 	},
 	qualityStats = {
@@ -4105,11 +4109,11 @@ skills["FrostGlobe"] = {
 	castTime = 0.5,
 	statMap = {
 		["frost_globe_additional_spell_base_critical_strike_chance_per_stage"] = {
-			mod("CritChance", "BASE", nil, ModFlag.Spell, 0, { type = "Multiplier", var = "FrostShieldStage", limit = 4 }, { type = "GlobalEffect", effectType = "Buff", effectName = "Frost Shield" }),
+			mod("CritChance", "BASE", nil, ModFlag.Spell, 0, { type = "Multiplier", var = "冰霜护盾Stage", limit = 4 }, { type = "GlobalEffect", effectType = "Buff", effectName = "Frost Shield" }),
 			div = 100,
 		},
 		["energy_shield_lost_per_minute"] = {
-			mod("EnergyShieldDegen", "BASE", nil, 0, 0, { type = "MultiplierThreshold", var = "FrostShieldStage", threshold = 1 }, { type = "GlobalEffect", effectType = "Buff", effectName = "Frost Shield" }),
+			mod("EnergyShieldDegen", "BASE", nil, 0, 0, { type = "MultiplierThreshold", var = "冰霜护盾Stage", threshold = 1 }, { type = "GlobalEffect", effectType = "Buff", effectName = "Frost Shield" }),
 			div = 60,
 		},
 	},
@@ -5235,33 +5239,27 @@ description = "持续从手中发出烈焰洪流，反复对敌人造成伤害�
 	castTime = 0.2,
 	parts = {
 		{
-name = "0 阶",
+name = "持续吟唱期间",
 		},
 		{
-name = "一半阶数",
-		},
-		{
-name = "最大阶数",
-		},
-		{
-name = "释放"
+name = "释放",
 		},
 	},
 	statMap = {
 		["grant_expanding_fire_cone_release_ignite_damage_+%_final"] = {
-			mod("Damage", "MORE", nil, 0, KeywordFlag.Ignite, { type = "SkillPart", skillPart = 4 }),
+			mod("Damage", "MORE", nil, 0, KeywordFlag.Ignite, { type = "SkillPart", skillPart = 2 }),
 		},
 		["expanding_fire_cone_release_hit_damage_+%_final"] = {
-			mod("Damage", "MORE", nil, 0, KeywordFlag.Hit, { type = "SkillPart", skillPart = 4 }),
+			mod("Damage", "MORE", nil, 0, KeywordFlag.Hit, { type = "SkillPart", skillPart = 2 }),
 		},
 		["flamethrower_damage_+%_per_stage_final"] = {
-			mod("Damage", "MORE", nil, 0, 0, { type = "Multiplier", var = "IncinerateStage" }),
+			mod("Damage", "MORE", nil, 0, 0, { type = "Multiplier", var = "烧毁Stage" }),
 		},
 		["expanding_fire_cone_radius_+_per_stage"] = {
-			skill("radiusExtra", nil, { type = "Multiplier", var = "IncinerateStage", limitVar = "IncinerateRadiusLimit", limitTotal = true }),
+			skill("radiusExtra", nil, { type = "Multiplier", var = "烧毁Stage", limitVar = "IncinerateRadiusLimit", limitTotal = true }),
 		},
 		["expanding_fire_cone_final_wave_always_ignite"] = {
-			mod("EnemyIgniteChance", "BASE", nil, 0, 0, { type = "SkillPart", skillPart = 4 }),
+			mod("EnemyIgniteChance", "BASE", nil, 0, 0, { type = "SkillPart", skillPart = 2 }),
 			value = 100,
 		},
 		["expanding_fire_cone_radius_limit"] = {
@@ -5273,13 +5271,13 @@ name = "释放"
 		area = true,
 	},
 	baseMods = {
-		mod("Multiplier:IncinerateStage", "BASE", 3, 0, 0, { type = "SkillPart", skillPart = 2 }),
-		mod("Multiplier:IncinerateStage", "BASE", 7, 0, 0, { type = "SkillPart", skillPartList = { 3, 4 }  }),
-		skill("showAverage", true, { type = "SkillPart", skillPart = 4 }),
+		mod("Multiplier:烧毁MaxStages", "BASE", 8),
+		mod("Damage", "MORE", 25, 0, bit.bor(KeywordFlag.Hit, KeywordFlag.Ignite), { type = "Multiplier", var = "烧毁Stage" } ),
+		skill("showAverage", true, { type = "SkillPart", skillPart = 2 }),
 		skill("radius", 25),
-		skill("radiusLabel", "Flame Length:"),
+skill("radiusLabel", "火焰长度:"),
 		skill("radiusSecondary", 20),
-		skill("radiusSecondaryLabel", "Flame Width:"),
+skill("radiusSecondaryLabel", "火焰宽度:"),
 	},
 	qualityStats = {
 		Default = {
@@ -6335,32 +6333,23 @@ description = "创造一道魔法烙印，附着在周围一个敌人身上。�
 	end,
 	parts = {
 		{
-name = "1 层能量爆炸",
+name = "能量爆炸",
 		},
 		{
-name = "5 层能量爆炸",
+name = "每个烙印最大爆炸",
 		},
 		{
-name = "10 层能量爆炸",
-		},
-		{
-name = "15 层能量爆炸",
-		},
-		{
-name = "20 层能量爆炸",
-		},
-		{
-name = "20 层能量辐射",
+name = "最大层能量辐射",
 		},
 	},
 	statMap = {
 		["base_skill_show_average_damage_instead_of_dps"] = {
 		},
 		["magma_brand_hit_damage_+%_final_per_additional_pustule"] = {
-			mod("Damage", "MORE", nil, 0, KeywordFlag.Hit, { type = "Multiplier", var = "EnergyLevel" }),
+			mod("Damage", "MORE", nil, 0, KeywordFlag.Hit, { type = "Multiplier", var = "忏悔烙印StageAfterFirst" }),
 		},
 		["magma_brand_ailment_damage_+%_final_per_additional_pustule"] = {
-			mod("Damage", "MORE", nil, 0, KeywordFlag.Ailment, { type = "Multiplier", var = "EnergyLevel" }),
+			mod("Damage", "MORE", nil, 0, KeywordFlag.Ailment, { type = "Multiplier", var = "忏悔烙印StageAfterFirst" }),
 		},
 	},
 	baseFlags = {
@@ -6370,14 +6359,13 @@ name = "20 层能量辐射",
 		brand = true,
 	},
 	baseMods = {
-		skill("showAverage", true, { type = "SkillPart", skillPartList = { 1, 2, 3, 4, 5 }}),
-		mod("Multiplier:EnergyLevel", "BASE", 4, 0, 0, { type = "SkillPart", skillPart = 2 }),
-		mod("Multiplier:EnergyLevel", "BASE", 9, 0, 0, { type = "SkillPart", skillPart = 3 }),
-		mod("Multiplier:EnergyLevel", "BASE", 14, 0, 0, { type = "SkillPart", skillPart = 4 }),
-		mod("Multiplier:EnergyLevel", "BASE", 19, 0, 0, { type = "SkillPart", skillPart = 5 }),
-		mod("Damage", "MORE", 50, 0, bit.bor(KeywordFlag.Hit, KeywordFlag.Ailment), { type = "SkillPart", skillPart = 6 }),
+		skill("showAverage", true, { type = "SkillPart", skillPartList = { 1, 2 }}),
+		mod("Damage", "MORE", 50, 0, bit.bor(KeywordFlag.Hit, KeywordFlag.Ailment), { type = "SkillPart", skillPart = 3 } ),
+		
 		skill("radius", 8),
-		skill("radiusExtra", 1, { type = "Multiplier", var = "EnergyLevel" }, { type = "SkillPart", skillPartList = { 1, 2, 3, 4, 5 }}),
+		skill("radiusExtra", 1, { type = "Multiplier", var = "忏悔烙印StageAfterFirst" } ),
+		mod("Multiplier:忏悔烙印MaxStagesAfterFirst", "BASE", 19, 0, 0, { type = "SkillPart", skillPart = 1 } )
+		
 	},
 	qualityStats = {
 		Default = {
@@ -7469,19 +7457,17 @@ description = "发出一束灼热光线, 被击中的敌人会受到不断叠加
 	castTime = 0.5,
 	parts = {
 		{
-name = "1 阶",
+name = "手动叠层"
 		},
 		{
-name = "4 阶",
+name = "最大叠层"
 		},
-		{
-name = "8 阶",
-		},
+		
 	},
 	statMap = {
 		["base_fire_damage_resistance_%"] = {
 
-mod("FireExposure", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "火焰曝露", effectCond = "ScorchingRayMaxStages" }),
+mod("FireExposure", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectName = "火焰曝露", effectCond = "灼热光线MaxStages" }),
 		},
 	},
 	baseFlags = {
@@ -7489,9 +7475,9 @@ mod("FireExposure", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "De
 		duration = true,
 	},
 	baseMods = {
-		flag("Condition:ScorchingRayMaxStages", { type = "SkillPart", skillPart = 3 }),
-		mod("Damage", "MORE", 180, 0, 0, { type = "SkillPart", skillPart = 2 }),
-		mod("Damage", "MORE", 420, 0, 0, { type = "SkillPart", skillPart = 3 }),
+		mod("Condition:灼热光线MaxStages", "FLAG", true, 0, 0, { type = "MultiplierThreshold", var = "灼热光线StageAfterFirst", threshold = 7 } ),
+		mod("Multiplier:灼热光线MaxStagesAfterFirst", "BASE", 7, 0, 0, { type = "SkillPart", skillPart = 1 } ),
+		mod("Damage", "MORE", 60, 0, 0, { type = "Multiplier", var = "灼热光线StageAfterFirst" }),
 	},
 	qualityStats = {
 		Default = {
@@ -7667,15 +7653,15 @@ skills["CircleOfPower"] = {
 	castTime = 0.5,
 	statMap = {
         ["circle_of_power_skill_cost_mana_cost_+%"] = {
-           mod("ManaCost", "INC", nil, 0, 0, { type = "MultiplierThreshold", var = "SigilOfPowerStage", threshold = 1 }, { type = "GlobalEffect", effectType = "Buff", effectName = "Sigil of Power" }),
+           mod("ManaCost", "INC", nil, 0, 0, { type = "MultiplierThreshold", var = "威能法印Stage", threshold = 1 }, { type = "GlobalEffect", effectType = "Buff", effectName = "威能法印" }),
 		},
 		["circle_of_power_min_added_lightning_per_stage"] = {
-			mod("LightningMin", "BASE", nil, 0, 0, { type = "Multiplier", var = "SigilOfPowerStage", limit = 4 }, { type = "GlobalEffect", effectType = "Buff", effectName = "Sigil of Power" }),
-			mod("LightningMin", "BASE", nil, 0, 0, { type = "Multiplier", actor = "parent", var = "SigilOfPowerStage", limit = 4 }, { type = "GlobalEffect", effectType = "Buff", effectName = "Sigil of Power" }),
+			mod("LightningMin", "BASE", nil, 0, 0, { type = "Multiplier", var = "威能法印Stage", limit = 4 }, { type = "GlobalEffect", effectType = "Buff", effectName = "威能法印" }),
+			mod("LightningMin", "BASE", nil, 0, 0, { type = "Multiplier", actor = "parent", var = "威能法印Stage", limit = 4 }, { type = "GlobalEffect", effectType = "Buff", effectName = "威能法印" }),
 		},
 		["circle_of_power_max_added_lightning_per_stage"] = {
-			mod("LightningMax", "BASE", nil, 0, 0, { type = "Multiplier", var = "SigilOfPowerStage", limit = 4 }, { type = "GlobalEffect", effectType = "Buff", effectName = "Sigil of Power" }),
-			mod("LightningMax", "BASE", nil, 0, 0, { type = "Multiplier", actor = "parent", var = "SigilOfPowerStage", limit = 4 }, { type = "GlobalEffect", effectType = "Buff", effectName = "Sigil of Power" }),
+			mod("LightningMax", "BASE", nil, 0, 0, { type = "Multiplier", var = "威能法印Stage", limit = 4 }, { type = "GlobalEffect", effectType = "Buff", effectName = "威能法印" }),
+			mod("LightningMax", "BASE", nil, 0, 0, { type = "Multiplier", actor = "parent", var = "威能法印Stage", limit = 4 }, { type = "GlobalEffect", effectType = "Buff", effectName = "威能法印" }),
         },
     },
 	baseFlags = {
@@ -10286,17 +10272,18 @@ name = "空闲",
 		["base_skill_show_average_damage_instead_of_dps"] = {
 		},
 		["frost_fury_fire_speed_+%_per_stage"] = {
-			mod("HitRate", "INC", nil, 0, 0, { type = "Multiplier", var = "WinterOrbStage", limitVar = "WinterOrbMaxStage" }),
+			mod("HitRate", "INC", nil, 0, 0, { type = "Multiplier", var = "寒冬宝珠StageAfterFirst" }),
 		},
 		["frost_fury_max_number_of_stages"] = {
-			mod("Multiplier:WinterOrbMaxStage", "BASE", nil),
+			mod("Multiplier:寒冬宝珠MaxStagesAfterFirst", "BASE", nil),
+			div = 10 / 9,
 		},
 		["frost_fury_base_fire_interval_ms"] = {
 			skill("repeatFrequency", nil),
 			div = 1000,
 		},
 		["frost_fury_duration_+%_per_stage"] = {
-			mod("Duration", "INC", nil, 0, 0, { type = "Multiplier", var = "WinterOrbStage", limitVar = "WinterOrbMaxStage" }),
+			mod("Duration", "INC", nil, 0, 0, { type = "Multiplier", var = "寒冬宝珠StageAfterFirst" }),
 		},
 		["frost_fury_fire_speed_+%_final_while_channelling"] = {
 			mod("HitRate", "MORE", nil, 0, 0, { type = "SkillPart", skillPart = 1 }),
@@ -10402,10 +10389,10 @@ description = "创造一道魔法烙印，附着在周围一个敌人身上，�
 		["base_skill_show_average_damage_instead_of_dps"] = {
 		},
 		["immolation_brand_burn_damage_+%_final_per_stage"] = {
-			mod("Damage", "MORE", nil, 0, 0, { type = "Multiplier", var = "WintertideBrandStage", limitVar = "WintertideBrandMaxStage" }),
+			mod("Damage", "MORE", nil, 0, 0, { type = "Multiplier", var = "WintertideBrandStage", limitVar = "冬潮烙印MaxStages" }),
 		},
 		["winter_brand_max_number_of_stages"] = {
-			mod("Multiplier:WintertideBrandMaxStage", "BASE", nil)
+			mod("Multiplier:冬潮烙印MaxStages", "BASE", nil)
 		},
 	},
 	baseFlags = {

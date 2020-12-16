@@ -23,9 +23,9 @@ LoadModule("Modules/ItemTools")
 LoadModule("Modules/CalcTools")
 
 --[[if launch.devMode then
-	for skillName, skill in pairs(data["3_0"].enchantments.Helmet) do
+	for skillName, skill in pairs(data.enchantments.Helmet) do
 		for _, mod in ipairs(skill.ENDGAME) do
-			local modList, extra = modLib.parseMod["3_0"](mod)
+			local modList, extra = modLib.parseMod(mod)
 			if not modList or extra then
 				ConPrintf("%s: '%s' '%s'", skillName, mod, extra or "")
 			end
@@ -59,39 +59,34 @@ function main:Init()
 		self.rebuildModCache = true
 	else
 		-- Load mod caches
-		for _, targetVersion in ipairs(targetVersionList) do
-			LoadModule("Data/"..targetVersion.."/ModCache", modLib.parseModCache[targetVersion])
-		end
+		LoadModule("Data/ModCache", modLib.parseModCache)
 	end
 	if launch.devMode and IsKeyDown("CTRL") and IsKeyDown("SHIFT") then
 		self.allowTreeDownload = true
 	end
 	self.tree = { }
-	for _, versionData in pairs(targetVersions) do
-		for _, treeVersion in ipairs(versionData.treeVersionList) do
-			self.tree[treeVersion] = new("PassiveTree", treeVersion)
-		end
+	for _, treeVersion in ipairs(treeVersionList) do
+		self.tree[treeVersion] = new("PassiveTree", treeVersion)
 	end
 
 	ConPrintf("Loading item databases...")
 	self.uniqueDB = { }
 	self.rareDB = { }
-	for _, targetVersion in ipairs(targetVersionList) do
-		self.uniqueDB[targetVersion] = { list = { } }
+	self.uniqueDB = { list = { } }
 		for type, typeList in pairs(data.uniques) do
 			for _, raw in pairs(typeList) do
-local newItem = new("Item", targetVersion, "稀 有 度: 传奇\n"..raw)
+local newItem = new("Item",  "稀 有 度: 传奇\n"..raw)
 				if newItem.base then
 					newItem:NormaliseQuality()
-					self.uniqueDB[targetVersion].list[newItem.name] = newItem
+					self.uniqueDB.list[newItem.name] = newItem
 				elseif launch.devMode then
 					ConPrintf("Unique DB unrecognised item of type '%s':\n%s", type, raw)
 				end
 			end
 		end
-		self.rareDB[targetVersion] = { list = { } }
-		for _, raw in pairs(data[targetVersion].rares) do
-local newItem = new("Item", targetVersion, "稀 有 度: 稀有\n"..raw)
+		self.rareDB = { list = { } }
+		for _, raw in pairs(data.rares) do
+local newItem = new("Item",  "稀 有 度: 稀有\n"..raw)
 			if newItem.base then
 				newItem:NormaliseQuality()
 				if newItem.crafted then
@@ -103,19 +98,18 @@ local newItem = new("Item", targetVersion, "稀 有 度: 稀有\n"..raw)
 					end
 					newItem:Craft()
 				end
-				self.rareDB[targetVersion].list[newItem.name] = newItem
+				self.rareDB.list[newItem.name] = newItem
 			elseif launch.devMode then
 				ConPrintf("Rare DB unrecognised item:\n%s", raw)
 			end
 		end
-	end
+		
 
 	if self.rebuildModCache then
 		-- Update mod caches
-		for _, targetVersion in ipairs(targetVersionList) do
-			local out = io.open("Data/"..targetVersion.."/ModCache.lua", "w")
+		local out = io.open("Data/ModCache.lua", "w")
 			out:write('local c=...')
-			for line, dat in pairs(modLib.parseModCache[targetVersion]) do
+			for line, dat in pairs(modLib.parseModCache) do
 				if not dat[1] or not dat[1][1] or dat[1][1].name ~= "JewelFunc" then
 					out:write('c["', line:gsub("\n","\\n"), '"]={')
 					if dat[1] then
@@ -131,7 +125,6 @@ local newItem = new("Item", targetVersion, "稀 有 度: 稀有\n"..raw)
 				end
 			end
 			out:close()
-		end
 	end
 
 	self.sharedItemList = { }
@@ -425,30 +418,26 @@ launch:ShowErrMsg("^1文件解析失败 'Settings.xml':  'Mode' 节点错误")
 			elseif node.elem == "SharedItems" then
 				for _, child in ipairs(node) do
 					if child.elem == "Item" then
-						local verItem = { raw = "" }
+						local rawItem = { raw = "" }
 						for _, subChild in ipairs(child) do
 							if type(subChild) == "string" then
-								verItem.raw = subChild
+								rawItem.raw = subChild
 							end
 						end
-						for _, targetVersion in ipairs(targetVersionList) do			
-							verItem[targetVersion] = new("Item", targetVersion, verItem.raw)
-						end
-						t_insert(self.sharedItemList, verItem)
+						local newItem = new("Item", rawItem.raw)
+						t_insert(self.sharedItemList, newItem)
 					elseif child.elem == "ItemSet" then
 						local sharedItemSet = { title = child.attrib.title, slots = { } }
 						for _, grandChild in ipairs(child) do
 							if grandChild.elem == "Item" then
-								local verItem = { raw = "" }
+								local rawItem = { raw = "" }
 								for _, subChild in ipairs(grandChild) do
 									if type(subChild) == "string" then
-										verItem.raw = subChild
+										rawItem.raw = subChild
 									end
 								end
-								for _, targetVersion in ipairs(targetVersionList) do			
-									verItem[targetVersion] = new("Item", targetVersion, verItem.raw)
-								end
-								sharedItemSet.slots[grandChild.attrib.slotName] = verItem
+								local newItem = new("Item", rawItem.raw)
+								sharedItemSet.slots[grandChild.attrib.slotName] = newItem
 							end
 						end
 						t_insert(self.sharedItemSetList, sharedItemSet)
@@ -646,8 +635,8 @@ controls.close = new("ButtonControl", {"TOPRIGHT",nil,"TOPRIGHT"}, -10, 10, 50, 
 		self:ClosePopup()
 	end)
 controls.version = new("LabelControl", nil, 0, 18, 0, 18, "Path of Building v"..launch.versionNumber.." 作者：Openarl 国服版：光影路西法")
-controls.forum = new("ButtonControl", nil, 0, 42, 450, 18, "国服版反馈: ^x4040FFhttp://bbs.17173.com/forum.php?mod=viewthread&tid=10923378", function(control)
-OpenURL("http://bbs.17173.com/forum.php?mod=viewthread&tid=10923378")
+controls.forum = new("ButtonControl", nil, 0, 42, 450, 18, "国服版反馈: ^x4040FFhttps://www.caimogu.net/post/16678.html", function(control)
+OpenURL("https://www.caimogu.net/post/16678.html")
 	end)
 controls.github = new("ButtonControl", nil, 0, 64, 450, 18, "项目: ^x4040FFhttps://dev.tencent.com/u/lucifering/p/PathOfBuilding?from=coding", function(control)
 OpenURL("https://dev.tencent.com/u/lucifering/p/PathOfBuilding?from=coding")
@@ -659,7 +648,7 @@ OpenURL("https://dev.tencent.com/u/lucifering/p/PathOfBuilding?from=coding")
 controls.patreon.tooltipText = "点击给 【光影路西法】 捐款赞助!"
 controls.verLabel = new("LabelControl", {"TOPLEFT",nil,"TOPLEFT"}, 10, 82, 0, 18, "点击图片打开")
 	controls.changelog = new("TextListControl", nil, 0, 100, 630, 290, nil, changeList)
-self:OpenPopup(650, 400, "【  17173·国服版  】", controls)
+self:OpenPopup(650, 400, "【  POB·国服版  】", controls)
 end
 
 function main:DrawBackground(viewPort)

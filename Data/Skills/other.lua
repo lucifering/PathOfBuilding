@@ -292,8 +292,10 @@ description = "你使用猛击技能时会触发该技能，召唤一个蜃影�
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.Instant] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0,
+	fromTree = true,
 	baseFlags = {
 		spell = true,
+		duration = true,
 	},
 	baseMods = {
 	},
@@ -435,11 +437,21 @@ description = "给你和你的每个召唤生物施加一个增益效果，在�
 	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Instant] = true, [SkillType.Duration] = true, [SkillType.Triggerable] = true, [SkillType.GuardSkill] = true, [SkillType.Minion] = true, [SkillType.Type96] = true, },
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 0,
+	fromTree = true,
+	statMap = {
+		["quick_guard_damage_absorbed_%"] = {
+			mod("GuardAbsorbRate", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Guard" }),
+		},
+		["quick_guard_damage_absorb_limit"] = {
+			mod("GuardAbsorbLimit", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Guard" }),
+		},
+	},
 	baseFlags = {
 		duration = true,
 		spell = true,
 	},
 	baseMods = {
+		mod("AvoidBleed", "BASE", 100, 0, 0, { type = "GlobalEffect", effectType = "Guard" }),
 	},
 	qualityStats = {
 	},
@@ -591,7 +603,7 @@ description = "对目标射出一发高伤害且必中的箭矢. 此攻击速度
 	castTime = 1,
 	fromItem = true,
 	initialFunc = function(activeSkill, output)
-		activeSkill.skillData.dpsMultiplier = 1 / math.max(activeSkill.skillModList:Sum("BASE", cfg, "Multiplier:SnipeStage"), 1)
+		activeSkill.skillData.dpsMultiplier = 1 / math.max(activeSkill.skillModList:Sum("BASE", cfg, "Multiplier:狙击Stage"), 1)
 	end,
 	baseFlags = {
 		attack = true,
@@ -1018,10 +1030,10 @@ name = "召唤生物爆炸",
 			mod("MovementSpeed", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
 		},
 		["death_wish_hit_and_ailment_damage_+%_final_per_stage"] = {
-			mod("Damage", "MORE", nil, 0, bit.bor(KeywordFlag.Hit, KeywordFlag.Ailment), { type = "Multiplier", var = "DeathWishStageCount", limitVar = "DeathWishMaxStages" }, { type = "SkillPart", skillPart = 2 }),
+			mod("Damage", "MORE", nil, 0, bit.bor(KeywordFlag.Hit, KeywordFlag.Ailment), { type = "Multiplier", var = "死亡之愿Stage" }, { type = "SkillPart", skillPart = 2 }),
 		},
 		["death_wish_max_stages"] = {
-			mod("Multiplier:DeathWishMaxStages", "BASE", nil),
+			mod("Multiplier:死亡之愿MaxStages", "BASE", nil, 0, 0, { type = "SkillPart", skillPart = 2 }),
 		},
 	},
 	baseFlags = {

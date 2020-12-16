@@ -83,11 +83,17 @@ function(plus, min, max)
 
 end
 
--- Clean item text by removing or replacing unsupported or redundant characters or sequences
---lucifer
+--- Clean item text by removing or replacing unsupported or redundant characters or sequences
+---@param text string
+---@return string
+--lucifer  注意会出现基底消失的bug
 function itemLib.sanitiseItemText(text)
-	-- Something something unicode support something grumble
+
+ 
+	
 	return text:gsub("^%s+",""):gsub("%s+$",""):gsub("\r\n","\n"):gsub("%b<>",""):gsub("^%s*(.-)%s*$", "%1")
+	
+	
 	--:gsub("?,"-")
 	--:gsub("?,"o")
 	--:gsub("\195\182","o"):gsub("[\128-\255]","?"):gsub("\226\128\147","-"):gsub("\226\136\146","-")

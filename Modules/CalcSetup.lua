@@ -33,20 +33,14 @@ function calcs.initModDB(env, modDB)
 	modDB:NewMod("ActiveBrandLimit", "BASE", 3, "Base")
 	modDB:NewMod("BrandsAttachedLimit", "BASE", 1, "Base")
 	
-	if env.build.targetVersion ~= "2_6" then
-		modDB:NewMod("MaxEnergyShieldLeechRate", "BASE", 10, "Base")
-		modDB:NewMod("MaxLifeLeechInstance", "BASE", 10, "Base")
-		modDB:NewMod("MaxManaLeechInstance", "BASE", 10, "Base")
-		modDB:NewMod("MaxEnergyShieldLeechInstance", "BASE", 10, "Base")
-	end
+	modDB:NewMod("MaxEnergyShieldLeechRate", "BASE", 10, "Base")
+	modDB:NewMod("MaxLifeLeechInstance", "BASE", 10, "Base")
+	modDB:NewMod("MaxManaLeechInstance", "BASE", 10, "Base")
+	modDB:NewMod("MaxEnergyShieldLeechInstance", "BASE", 10, "Base")
 	
-	if env.build.targetVersion == "2_6" then
-		modDB:NewMod("TrapThrowingTime", "BASE", 0.5, "Base")
-		modDB:NewMod("MineLayingTime", "BASE", 0.5, "Base")
-	else
-		modDB:NewMod("TrapThrowingTime", "BASE", 0.6, "Base")
-		modDB:NewMod("MineLayingTime", "BASE", 0.3, "Base")
-	end
+	modDB:NewMod("TrapThrowingTime", "BASE", 0.6, "Base")
+	modDB:NewMod("MineLayingTime", "BASE", 0.3, "Base")
+		
 	modDB:NewMod("WarcryCastTime", "BASE", 0.8, "Base")
 	modDB:NewMod("TotemPlacementTime", "BASE", 0.6, "Base")
 	modDB:NewMod("ActiveTotemLimit", "BASE", 1, "Base")
@@ -125,6 +119,18 @@ function calcs.buildModListForNode(env, node)
 		end
 		
 
+	end
+	
+	node.grantedSkills = { }
+	for _, skill in ipairs(modList:List(nil, "ExtraSkill")) do
+		if skill.name ~= "Unknown" then
+			t_insert(node.grantedSkills, {
+				skillId = skill.skillId,
+				level = skill.level,
+				noSupports = true,
+				source = "Tree:"..node.id
+			})
+		end
 	end
 
 	return modList
@@ -242,11 +248,7 @@ function calcs.initEnv(build, mode, override)
 	modDB:NewMod("ColdResist", "BASE", env.configInput.resistancePenalty or -60, "Base")
 	modDB:NewMod("LightningResist", "BASE", env.configInput.resistancePenalty or -60, "Base")
 	modDB:NewMod("ChaosResist", "BASE", env.configInput.resistancePenalty or -60, "Base")
-	if build.targetVersion == "2_6" then
-		modDB:NewMod("CritChance", "INC", 50, "Base", { type = "Multiplier", var = "PowerCharge" })
-	else
-		modDB:NewMod("CritChance", "INC", 40, "Base", { type = "Multiplier", var = "PowerCharge" })
-	end
+	modDB:NewMod("CritChance", "INC", 40, "Base", { type = "Multiplier", var = "PowerCharge" })
 	modDB:NewMod("Speed", "INC", 4, "Base", { type = "Multiplier", var = "FrenzyCharge" })
 	modDB:NewMod("Damage", "MORE", 4, "Base", { type = "Multiplier", var = "FrenzyCharge" })
 	modDB:NewMod("PhysicalDamageReduction", "BASE", 4, "Base", { type = "Multiplier", var = "EnduranceCharge" })
@@ -259,13 +261,8 @@ function calcs.initEnv(build, mode, override)
 	 modDB:NewMod("Multiplier:IntensityLimit", "BASE", 3, "Base")
 	 modDB:NewMod("Damage", "INC", 2, "Base", { type = "Multiplier", var = "Rampage", limit = 50, div = 20 })
 	modDB:NewMod("MovementSpeed", "INC", 1, "Base", { type = "Multiplier", var = "Rampage", limit = 50, div = 20 })
-	if build.targetVersion == "2_6" then
-		modDB:NewMod("ActiveTrapLimit", "BASE", 3, "Base")
-		modDB:NewMod("ActiveMineLimit", "BASE", 5, "Base")
-	else
-		modDB:NewMod("ActiveTrapLimit", "BASE", 15, "Base")
-		modDB:NewMod("ActiveMineLimit", "BASE", 15, "Base")
-	end
+	modDB:NewMod("ActiveTrapLimit", "BASE", 15, "Base")
+	modDB:NewMod("ActiveMineLimit", "BASE", 15, "Base")
 	modDB:NewMod("ActiveMineLimit", "BASE", 5, "Base")
 	
 	modDB:NewMod("EnemyCurseLimit", "BASE", 1, "Base")
@@ -274,45 +271,14 @@ function calcs.initEnv(build, mode, override)
 	--3.11 双持武器：不再使总物理攻击伤害额外提高 20% 了。但它仍然使总攻击速度额外提高 10%，并提供 15% 攻击击中格挡率。
 --	modDB:NewMod("PhysicalDamage", "MORE", 20, "Base", ModFlag.Attack, { type = "Condition", var = "DualWielding" })
 	modDB:NewMod("BlockChance", "BASE", 15, "Base", { type = "Condition", var = "DualWielding" })
-	if build.targetVersion == "2_6" then
-		modDB:NewMod("Damage", "MORE", 500, "Base", 0, KeywordFlag.Bleed, { type = "ActorCondition", actor = "enemy", var = "Moving" })
-	else
-		modDB:NewMod("Damage", "MORE", 200, "Base", 0, KeywordFlag.Bleed, { type = "ActorCondition", actor = "enemy", var = "Moving" }, { type = "Condition", var = "NoExtraBleedDamageToMovingEnemy", neg = true })
-	end
+	
+	modDB:NewMod("Damage", "MORE", 200, "Base", 0, KeywordFlag.Bleed, { type = "ActorCondition", actor = "enemy", var = "Moving" }, { type = "Condition", var = "NoExtraBleedDamageToMovingEnemy", neg = true })
+	
 	modDB:NewMod("Condition:BloodStance", "FLAG", true, "Base", { type = "Condition", var = "SandStance", neg = true })
 	modDB:NewMod("Condition:PrideMinEffect", "FLAG", true, "Base", { type = "Condition", var = "PrideMaxEffect", neg = true })
 
 	-- Add bandit mods
-	if build.targetVersion == "2_6" then
-		if build.banditNormal == "Alira" then
-			modDB:NewMod("Mana", "BASE", 60, "Bandit")
-		elseif build.banditNormal == "Kraityn" then
-			modDB:NewMod("ElementalResist", "BASE", 10, "Bandit")
-		elseif build.banditNormal == "Oak" then
-			modDB:NewMod("Life", "BASE", 40, "Bandit")
-		else
-			modDB:NewMod("ExtraPoints", "BASE", 1, "Bandit")
-		end
-		if build.banditCruel == "Alira" then
-			modDB:NewMod("Speed", "INC", 5, "Bandit", ModFlag.Cast)
-		elseif build.banditCruel == "Kraityn" then
-			modDB:NewMod("Speed", "INC", 8, "Bandit", ModFlag.Attack)
-		elseif build.banditCruel == "Oak" then
-			modDB:NewMod("PhysicalDamage", "INC", 16, "Bandit")
-		else
-			modDB:NewMod("ExtraPoints", "BASE", 1, "Bandit")
-		end
-		if build.banditMerciless == "Alira" then
-			modDB:NewMod("PowerChargesMax", "BASE", 1, "Bandit")
-		elseif build.banditMerciless == "Kraityn" then
-			modDB:NewMod("FrenzyChargesMax", "BASE", 1, "Bandit")
-		elseif build.banditMerciless == "Oak" then
-			modDB:NewMod("EnduranceChargesMax", "BASE", 1, "Bandit")
-		else
-			modDB:NewMod("ExtraPoints", "BASE", 1, "Bandit")
-		end
-	else
-		if build.bandit == "Alira" then
+	if build.bandit == "Alira" then
 			modDB:NewMod("ManaRegen", "BASE", 5, "Bandit")
 			modDB:NewMod("CritMultiplier", "BASE", 20, "Bandit")
 			modDB:NewMod("ElementalResist", "BASE", 15, "Bandit")
@@ -326,7 +292,6 @@ function calcs.initEnv(build, mode, override)
 			modDB:NewMod("PhysicalDamage", "INC", 20, "Bandit")
 		else
 			modDB:NewMod("ExtraPoints", "BASE", 2, "Bandit")
-		end
 	end
 
 	-- Initialise enemy modifier database
@@ -380,7 +345,7 @@ function calcs.initEnv(build, mode, override)
 	env.radiusJewelList = wipeTable(env.radiusJewelList)	
 	env.extraRadiusNodeList = wipeTable(env.extraRadiusNodeList)
 	env.player.itemList = { }
-	env.itemGrantedSkills = { }
+	env.grantedSkills = { }
 	env.flasks = { }
 	for _, slot in pairs(build.itemsTab.orderedSlots) do
 		local slotName = slot.slotName
@@ -402,7 +367,7 @@ function calcs.initEnv(build, mode, override)
 				local grantedSkill = copyTable(skill)
 				grantedSkill.sourceItem = item
 				grantedSkill.slotName = slotName
-				t_insert(env.itemGrantedSkills, grantedSkill)
+				t_insert(env.grantedSkills, grantedSkill)
 			end
 		end
 		if slot.weaponSet and slot.weaponSet ~= (build.itemsTab.activeItemSet.useSecondWeaponSet and 2 or 1) then			
@@ -584,10 +549,36 @@ elseif item.rarity == "魔法" then
 		end
 	end
 	
-	if env.mode == "MAIN" then
-		-- Process extra skills granted by items
+	-- Add granted passives
+	env.grantedPassives = { }
+	for _, passive in pairs(env.modDB:List(nil, "GrantedPassive")) do
+		local node = env.spec.tree.notableMap[passive]
+		if node then
+			if env.spec.nodes[node.id] and env.spec.nodes[node.id].conqueredBy and env.spec.tree.legion.editedNodes and env.spec.tree.legion.editedNodes[env.spec.nodes[node.id].conqueredBy.id] then
+				nodes[node.id] = env.spec.tree.legion.editedNodes[env.spec.nodes[node.id].conqueredBy.id][node.id] or node
+			else
+				nodes[node.id] = node
+			end
+			env.grantedPassives[node.id] = true
+		end
+	end
+
+	-- Merge modifiers for allocated passives
+	env.modDB:AddList(calcs.buildModListForNodeList(env, nodes, true))
+
+	-- Find skills granted by tree nodes
+	for _, node in pairs(env.allocNodes) do
+		for _, skill in ipairs(node.grantedSkills) do
+			local grantedSkill = copyTable(skill)
+			grantedSkill.sourceNode = node
+			t_insert(env.grantedSkills, grantedSkill)
+		end
+	end
+	
+	if env.mode == "MAIN" then	
+		-- Process extra skills granted by items or tree nodes
 		local markList = wipeTable(tempTable1)
-		for _, grantedSkill in ipairs(env.itemGrantedSkills) do	
+		for _, grantedSkill in ipairs(env.grantedSkills) do
 			-- Check if a matching group already exists
 			local group
 			for index, socketGroup in pairs(build.skillsTab.socketGroupList) do
@@ -608,6 +599,7 @@ elseif item.rarity == "魔法" then
 
 			-- Update the group
 			group.sourceItem = grantedSkill.sourceItem
+			group.sourceNode = grantedSkill.sourceNode
 			local activeGemInstance = group.gemList[1] or {
 				skillId = grantedSkill.skillId,
 				quality = 0,
@@ -659,25 +651,7 @@ elseif item.rarity == "魔法" then
 	else
 		env.player.weaponData2 = env.player.itemList["Weapon 2"] and env.player.itemList["Weapon 2"].weaponData and env.player.itemList["Weapon 2"].weaponData[2] or { }
 	end
-	-- Add granted passives
-	env.grantedPassives = { }
-	for _, passive in pairs(env.modDB:List(nil, "GrantedPassive")) do
-		local node = env.spec.tree.notableMap[passive]
-		
-		if node and  node.ascendancyName == nil  then
-			 
-			if env.spec.nodes[node.id] and env.spec.nodes[node.id].conqueredBy and env.spec.tree.legion.editedNodes and env.spec.tree.legion.editedNodes[env.spec.nodes[node.id].conqueredBy.id] then
-				nodes[node.id] = env.spec.tree.legion.editedNodes[env.spec.nodes[node.id].conqueredBy.id][node.id] or node
-			else
-				nodes[node.id] = node
-			end
-			env.grantedPassives[node.id] = true
-		end
-	end
 	
-	-- Merge modifiers for allocated passives
-	env.modDB:AddList(calcs.buildModListForNodeList(env, nodes, true))
-
 	-- Determine main skill group
 	if env.mode == "CALCS" then
 		env.calcsInput.skill_number = m_min(m_max(#build.skillsTab.socketGroupList, 1), env.calcsInput.skill_number or 1)

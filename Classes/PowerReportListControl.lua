@@ -49,10 +49,10 @@ function PowerReportListClass:ReSort(colIndex)
 		end)
 	elseif colIndex == 4 then
 		t_sort(self.list, function (a,b)
-			if a.pathDist == "Anoint" or a.pathDist == "Cluster" then
+			if a.pathDist == "涂油" or a.pathDist == "星团" then
 				return false
 			end
-			if b.pathDist == "Anoint" or b.pathDist == "Cluster" then
+			if b.pathDist == "涂油" or b.pathDist == "星团" then
 				return true
 			end
 			if a.pathDist == b.pathDist then
@@ -73,7 +73,7 @@ function PowerReportListClass:ReList()
 		if (self.originalList[iterate].power <= 0) then
 			insert = false
 		end
-		if (not self.showClusters) and (self.originalList[iterate].pathDist == "Cluster") then
+		if (not self.showClusters) and (self.originalList[iterate].pathDist == "星团") then
 			insert = false
 		end
 
@@ -113,7 +113,7 @@ function PowerReportListClass:GetRowValue(column, index, report)
 		return report.powerStr
 	elseif column == 4 then
 		if report.pathDist == 1000 then
-			return "Anoint"
+			return "涂油"
 		else
 			return report.pathDist
 		end

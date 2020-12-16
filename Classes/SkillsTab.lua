@@ -133,16 +133,21 @@ self.controls.groupEnabled = new("CheckBoxControl", {"LEFT",self.controls.groupS
 	
 	self.controls.sourceNoteSkillName.enabled=false;
 	self.controls.sourceNoteSkillName.tooltipFunc = function(tooltip, mode, index, value)
-	
+	 
+		
 	if self.displayGroup and self.displayGroup.gemList[1] then 
+			
+					
 			local gemInstance = self.displayGroup.gemList[1]
 			
-				if gemInstance  and  gemInstance.grantedEffect then
+			
+				if gemInstance  and  (gemInstance.grantedEffect or (gemInstance.gemData and gemInstance.gemData.grantedEffect) ) then
 				local displayInstance = gemInstance.displayEffect or gemInstance
-				local grantedEffect=gemInstance.grantedEffect;
+				local grantedEffect=gemInstance.grantedEffect  or (gemInstance.gemData and gemInstance.gemData.grantedEffect);
 				local grantedEffectLevel = grantedEffect.levels[displayInstance.level]
 						
 						 if tooltip:CheckForUpdate(grantedEffect.id, self.displayGroup)  then 
+						
 							 tooltip.center = true
 							 tooltip.color = colorCodes.GEM
 							
@@ -239,17 +244,20 @@ self.controls.groupEnabled = new("CheckBoxControl", {"LEFT",self.controls.groupS
 		return self.displayGroup.source ~= nil
 	end
 	self.controls.sourceNote.label = function()
-		local item = self.displayGroup.sourceItem or { rarity = "NORMAL", name = "?" }
-		local itemName = colorCodes[item.rarity]..item.name.."^7"
+		
+		local source = self.displayGroup.sourceItem or (self.displayGroup.sourceNode and { rarity = "NORMAL", name = self.displayGroup.sourceNode.name }) or { rarity = "NORMAL", name = "?" }
+		local sourceName = colorCodes[source.rarity]..source.name.."^7"
+		
+		
 		local activeGem = self.displayGroup.gemList[1]
 		
 		self.controls.sourceNoteSkillName:SetText(activeGem.color..(activeGem.grantedEffect and activeGem.grantedEffect.name or activeGem.nameSpec))
 local label = [[^7这个特殊的技能组: ']]..activeGem.color..(activeGem.grantedEffect and activeGem.grantedEffect.name or activeGem.nameSpec)..[[^7'
- 是由物品【']]..itemName..[['】自带的。
+ 是由物品【']]..sourceName..[['】自带的。
 你不能手动删除它.但是你可以取消该装备，它就会自动消失]]
 		if not self.displayGroup.noSupports then
 label = label .. "\n\n" .. [[你不能为这组技能增加辅助技能，
-但是其他任意插入这个物品：【 ']]..itemName..[['】
+但是其他任意插入这个物品：【 ']]..sourceName..[['】
 的辅助技能都会自动辅助这一组.]]
 		end
 		return label
@@ -353,6 +361,8 @@ function SkillsTabClass:Load(xml, fileName)
 				gemInstance.enableGlobal2 = child.attrib.enableGlobal2 == "true"
 				gemInstance.skillPart = tonumber(child.attrib.skillPart)
 				gemInstance.skillPartCalcs = tonumber(child.attrib.skillPartCalcs)
+				gemInstance.skillStageCount = tonumber(child.attrib.skillStageCount)
+				gemInstance.skillStageCountCalcs = tonumber(child.attrib.skillStageCountCalcs)
 				gemInstance.skillMineCount = tonumber(child.attrib.skillMineCount)
 				gemInstance.skillMineCountCalcs = tonumber(child.attrib.skillMineCountCalcs)
 				gemInstance.skillMinion = child.attrib.skillMinion
@@ -403,6 +413,8 @@ function SkillsTabClass:Save(xml)
 				enableGlobal2 = tostring(gemInstance.enableGlobal2),
 				skillPart = gemInstance.skillPart and tostring(gemInstance.skillPart),
 				skillPartCalcs = gemInstance.skillPartCalcs and tostring(gemInstance.skillPartCalcs),
+				skillStageCount = gemInstance.skillStageCount and tostring(gemInstance.skillStageCount),
+				skillStageCountCalcs = gemInstance.skillStageCountCalcs and tostring(gemInstance.skillStageCountCalcs),
 				skillMineCount = gemInstance.skillMineCount and tostring(gemInstance.skillMineCount),
 				skillMineCountCalcs = gemInstance.skillMineCountCalcs and tostring(gemInstance.skillMineCountCalcs),
 				skillMinion = gemInstance.skillMinion,
@@ -811,7 +823,7 @@ end
 -- Processes the given socket group, filling in information that will be used for display or calculations
 function SkillsTabClass:ProcessSocketGroup(socketGroup)
 	-- Loop through the skill gem list
-	local verData = self.build.data
+	local data = self.build.data
 	for _, gemInstance in ipairs(socketGroup.gemList) do
 		gemInstance.color = "^8"
 		gemInstance.nameSpec = gemInstance.nameSpec or ""
@@ -821,7 +833,7 @@ function SkillsTabClass:ProcessSocketGroup(socketGroup)
 			-- Specified by gem ID
 			-- Used for skills granted by skill gems
 			gemInstance.errMsg = nil
-			gemInstance.gemData = verData.gems[gemInstance.gemId]
+			gemInstance.gemData = data.gems[gemInstance.gemId]
 			if gemInstance.gemData then
 				gemInstance.nameSpec = gemInstance.gemData.name
 				gemInstance.skillId = gemInstance.gemData.grantedEffectId
@@ -830,11 +842,11 @@ function SkillsTabClass:ProcessSocketGroup(socketGroup)
 			-- Specified by skill ID
 			-- Used for skills granted by items
 			gemInstance.errMsg = nil
-			local gemId = verData.gemForSkill[gemInstance.skillId]
+			local gemId = data.gemForSkill[gemInstance.skillId]
 			if gemId then
-				gemInstance.gemData = verData.gems[gemId]
+				gemInstance.gemData = data.gems[gemId]
 			else
-				gemInstance.grantedEffect = verData.skills[gemInstance.skillId]
+				gemInstance.grantedEffect = data.skills[gemInstance.skillId]
 			end
 		elseif gemInstance.nameSpec:match("%S") then
 			-- Specified by gem/skill name, try to match it
@@ -909,9 +921,10 @@ function SkillsTabClass:AddSocketGroupTooltip(tooltip, socketGroup)
 	if socketGroup.enabled and not socketGroup.slotEnabled then
 tooltip:AddLine(16, "^7注意: 这组技能已禁用，因为插在了不启用的武器上.")
 	end
-	if socketGroup.sourceItem then
-		tooltip:AddLine(18, "^7来自: ")
-		tooltip:AddLine(18, colorCodes[socketGroup.sourceItem.rarity]..socketGroup.sourceItem.name)
+	local source = socketGroup.sourceItem or socketGroup.sourceNode
+	
+	if source then	
+		tooltip:AddLine(18, colorCodes[source.rarity or "NORMAL"].."^7来自: "..source.name)	
 		tooltip:AddSeparator(10)
 	end
 	local gemShown = { }

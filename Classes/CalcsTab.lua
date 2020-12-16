@@ -14,12 +14,9 @@ local m_min = math.min
 local m_floor = math.floor
 local band = bit.band
 
-local calcs = { }
-local sectionData = { } 
-for _, targetVersion in ipairs(targetVersionList) do
-	calcs[targetVersion] = LoadModule("Modules/Calcs", targetVersion)
-	sectionData[targetVersion] = LoadModule("Modules/CalcSections-"..targetVersion)
-end
+
+
+
 
 local buffModeDropList = {
 { label = "无buff", buffMode = "UNBUFFED" },
@@ -105,7 +102,7 @@ local CalcsTabClass = newClass("CalcsTab", "UndoHandler", "ControlHost", "Contro
 
 	self.build = build
 
-	self.calcs = calcs[build.targetVersion]
+	self.calcs = LoadModule("Modules/Calcs")
 
 	self.input = { }
 	self.input.skill_number = 1
@@ -139,11 +136,19 @@ self:NewSection(3, "SkillSelect", 1, colorCodes.NORMAL, {{ defaultCollapsed = fa
 				self.build.buildFlag = true
 			end)
 		}, },
-{ label = "Skill Part", playerFlag = "multiPart", { controlName = "mainSkillPart", 
+{ label = "技能 分段", playerFlag = "multiPart", { controlName = "mainSkillPart", 
 			control = new("DropDownControl", nil, 0, 0, 150, 16, nil, function(index, value)
 				local mainSocketGroup = self.build.skillsTab.socketGroupList[self.input.skill_number]
 				local srcInstance = mainSocketGroup.displaySkillListCalcs[mainSocketGroup.mainActiveSkillCalcs].activeEffect.srcInstance
 				srcInstance.skillPartCalcs = index
+				self:AddUndoState()
+				self.build.buildFlag = true
+			end)
+}, },{ label = "技能 层数", playerFlag = "multiStage", { controlName = "mainSkillStageCount",
+			control = new("EditControl", nil, 0, 0, 52, 16, nil, nil, "%D", nil, function(buf)
+				local mainSocketGroup = self.build.skillsTab.socketGroupList[self.input.skill_number]
+				local srcInstance = mainSocketGroup.displaySkillListCalcs[mainSocketGroup.mainActiveSkillCalcs].activeEffect.srcInstance
+				srcInstance.skillStageCountCalcs = tonumber(buf)
 				self:AddUndoState()
 				self.build.buildFlag = true
 			end)
@@ -439,7 +444,8 @@ Buff：光环和buff会生效，相当于你在藏身处的数值。
 	 
 
 	-- Add sections from the CalcSections module
-	for _, section in ipairs(sectionData[build.targetVersion]) do
+	local sectionData = LoadModule("Modules/CalcSections")
+	for _, section in ipairs(sectionData) do
 		self:NewSection(unpack(section))
 	end
 

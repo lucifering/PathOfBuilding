@@ -23,26 +23,14 @@ local ImportTabClass = newClass("ImportTab", "ControlHost", "Control", function(
 
 	self.build = build
 
-	self.charImportMode = build.targetVersion == liveTargetVersion and "GETACCOUNTNAME" or "VERSIONWARNING"
+	self.charImportMode = "GETACCOUNTNAME"
 	self.charImportStatus = "Idle"
 self.controls.sectionCharImport = new("SectionControl", {"TOPLEFT",self,"TOPLEFT"}, 10, 18, 600, 250, "【导入国服角色】")
-	self.controls.charImportVersionWarning = new("LabelControl", {"TOPLEFT",self.controls.sectionCharImport,"TOPLEFT"}, 6, 20, 0, 16, colorCodes.WARNING..[[
-角色导入可能会出现问题，
-比如游戏版本和pob支持的版本不同。
-一些天赋点可能出现错位，一些新技能可能导入失败。
-最好导入前确定下pob是否支持该版本。]])
-	self.controls.charImportVersionWarning.shown = function()
-		return self.charImportMode == "VERSIONWARNING"
-	end
-self.controls.charImportVersionWarningGo = new("ButtonControl", {"TOPLEFT",self.controls.charImportVersionWarning,"TOPLEFT"}, 0, 70, 80, 20, "继续", function()
-		self.charImportMode = "GETACCOUNTNAME"
-	end)
+	
 	self.controls.charImportStatusLabel = new("LabelControl", {"TOPLEFT",self.controls.sectionCharImport,"TOPLEFT"}, 6, 14, 200, 16, function()
 return "^7角色导入状态: "..self.charImportStatus
 	end)
-	self.controls.charImportStatusLabel.shown = function()
-		return self.charImportMode ~= "VERSIONWARNING"
-	end
+	
 
 	-- Stage: input account name
 self.controls.accountNameHeader = new("LabelControl", {"TOPLEFT",self.controls.sectionCharImport,"TOPLEFT"}, 6, 40, 200, 16, "^7请输入你的论坛名（登录官网论坛头像下的那个）:")
@@ -152,7 +140,7 @@ self.controls.charDone = new("ButtonControl", {"TOPLEFT",self.controls.charImpor
 
 	-- Build import/export
 self.controls.sectionBuild = new("SectionControl", {"TOPLEFT",self.controls.sectionCharImport,"BOTTOMLEFT"}, 0, 18, 600, 200, "Build分享")
-self.controls.generateCodeLabel = new("LabelControl", {"TOPLEFT",self.controls.sectionBuild,"TOPLEFT"}, 6, 14, 0, 16, "^7生成代码给其他POB用户（仅限17173国服版）:")
+self.controls.generateCodeLabel = new("LabelControl", {"TOPLEFT",self.controls.sectionBuild,"TOPLEFT"}, 6, 14, 0, 16, "^7生成代码给其他POB用户（仅限POB国服版）:")
 self.controls.generateCode = new("ButtonControl", {"LEFT",self.controls.generateCodeLabel,"RIGHT"}, 4, 0, 80, 20, "生成", function()
 		self.controls.generateCodeOut:SetText(common.base64.encode(Deflate(self.build:SaveDB("code"))):gsub("+","-"):gsub("/","_"))
 	end)
@@ -210,7 +198,7 @@ self.controls.generateCodePastebin.label = "生成Pastebin地址"
 		return #self.controls.generateCodeOut.buf > 0 and not self.controls.generateCodeOut.buf:match("pastebin%.com")
 	end
 self.controls.generateCodeNote = new("LabelControl", {"TOPLEFT",self.controls.generateCodeOut,"BOTTOMLEFT"}, 0, 4, 0, 14, "^7注意: 这个代码很长，你可以用【生成Pastebin链接】来简化.")
-self.controls.importCodeHeader = new("LabelControl", {"TOPLEFT",self.controls.generateCodeNote,"BOTTOMLEFT"}, 0, 26, 0, 16, "^7从代码中导入（仅限17173国服版代码）:")
+self.controls.importCodeHeader = new("LabelControl", {"TOPLEFT",self.controls.generateCodeNote,"BOTTOMLEFT"}, 0, 26, 0, 16, "^7从代码中导入（仅限POB国服版代码）:")
 self.controls.importCodeIn = new("EditControl", {"TOPLEFT",self.controls.importCodeHeader,"BOTTOMLEFT"}, 0, 4, 250, 20, "", nil, "^%w_%-=", nil, function(buf)
 		if #buf == 0 then
 			self.importCodeState = nil
@@ -499,7 +487,7 @@ self.charImportStatus = colorCodes.POSITIVE.."物品和技能导入成功."
 					elseif itemData.inventoryId == "Flask" then
 						slotName = "Flask "..(itemData.x + 1)
 					else
-					--print(">>[itemData.inventoryId]"..itemData.inventoryId)
+					
 						slotName = slotMap[itemData.inventoryId]
 					end
 				if  slotName then
@@ -573,7 +561,7 @@ function ImportTabClass:ImportItem(itemData, slotName)
 		return
 	end
 
-	local item = new("Item", self.build.targetVersion)
+	local item = new("Item")
 	-- Determine rarity, display name and base type of the item
 	item.rarity = rarityMap[itemData.frameType]
 	if #itemData.name > 0 then
@@ -709,7 +697,7 @@ elseif property.name == "仅限" then
 		for _, line in ipairs(itemData.enchantMods) do
 		
 			for line in line:gmatch("[^\n]+") do
-				local modList, extra = modLib.parseMod[self.build.targetVersion](line)
+				local modList, extra = modLib.parseMod(line)				
 				t_insert(item.enchantModLines, { line = line, extra = extra, mods = modList or { }, crafted = true })
 			end
 			
@@ -719,7 +707,7 @@ elseif property.name == "仅限" then
 		
 		for _, line in ipairs(itemData.implicitMods) do
 			for line in line:gmatch("[^\n]+") do
-				local modList, extra = modLib.parseMod[self.build.targetVersion](line)
+				local modList, extra = modLib.parseMod(line)
 				t_insert(item.implicitModLines, { line = line, extra = extra, mods = modList or { } })
 			end
 		end
@@ -727,7 +715,7 @@ elseif property.name == "仅限" then
 	if itemData.fracturedMods then
 		for _, line in ipairs(itemData.fracturedMods) do
 			for line in line:gmatch("[^\n]+") do
-				local modList, extra = modLib.parseMod[self.build.targetVersion](line)
+				local modList, extra = modLib.parseMod(line)
 				t_insert(item.explicitModLines, { line = line, extra = extra, mods = modList or { }, fractured = true })
 			end
 		end
@@ -739,7 +727,7 @@ elseif property.name == "仅限" then
 				end
 			for line in line:gmatch("[^\n]+") do
 				
-				local modList, extra = modLib.parseMod[self.build.targetVersion](line)
+				local modList, extra = modLib.parseMod(line)
 				t_insert(item.explicitModLines, { line = line, extra = extra, mods = modList or { } })
 			end
 		end
@@ -747,7 +735,7 @@ elseif property.name == "仅限" then
 	if itemData.craftedMods then
 		for _, line in ipairs(itemData.craftedMods) do
 			for line in line:gmatch("[^\n]+") do
-				local modList, extra = modLib.parseMod[self.build.targetVersion](line)
+				local modList, extra = modLib.parseMod(line)
 				t_insert(item.explicitModLines, { line = line, extra = extra, mods = modList or { }, crafted = true })
 			end
 		end
@@ -784,18 +772,23 @@ function ImportTabClass:ImportSocketedItems(item, socketedItems, slotName)
 	local itemSocketGroupList = { }
 	local abyssalSocketId = 1
 	for _, socketedItem in ipairs(socketedItems) do
+	
 		if socketedItem.abyssJewel then
 			self:ImportItem(socketedItem, slotName .. " Abyssal Socket "..abyssalSocketId)
 			abyssalSocketId = abyssalSocketId + 1
 		elseif not self.controls.charImportItemsClearSkills.state then 
 			local normalizedBasename, qualityType = self.build.skillsTab:GetBaseNameAndQuality(socketedItem.typeLine, nil)
+			
 			local gemId = self.build.data.gemForBaseName[normalizedBasename] 
+			
 			if not gemId and socketedItem.hybrid then
 				-- Dual skill gems (currently just Stormbind) show the second skill as the typeLine, which won't match the actual gem
 				-- Luckily the primary skill name is also there, so we can find the gem using that
 				normalizedBasename, qualityType  = self.build.skillsTab:GetBaseNameAndQuality(socketedItem.hybrid.baseTypeName, nil)
 				gemId = self.build.data.gemForBaseName[normalizedBasename]
 			end
+			
+			
 			if gemId then
 				local gemInstance = { level = 20, quality = 0, enabled = true, enableGlobal1 = true, gemId = gemId }
 				gemInstance.nameSpec = self.build.data.gems[gemId].name
@@ -848,7 +841,7 @@ elseif property.name == "品质" then
 	end
 
 	-- Import the socket groups
-	for _, itemSocketGroup in pairs(itemSocketGroupList) do
+	for _, itemSocketGroup in pairs(itemSocketGroupList) do	
 		-- Check if this socket group matches an existing one
 		local repGroup
 		for index, socketGroup in pairs(self.build.skillsTab.socketGroupList) do
@@ -876,6 +869,7 @@ elseif property.name == "品质" then
 		else
 			t_insert(self.build.skillsTab.socketGroupList, itemSocketGroup)
 		end
+		
 		self.build.skillsTab:ProcessSocketGroup(itemSocketGroup)
 	end	
 end
@@ -895,7 +889,7 @@ function ImportTabClass:SupportHybridSkillName(typeLine)
 end
 function ImportTabClass:OpenPastebinImportPopup()
 	local controls = { }
-controls.editLabel = new("LabelControl", nil, 0, 20, 0, 16, "输入Pastebin链接（由17173国服版分享的）:")
+controls.editLabel = new("LabelControl", nil, 0, 20, 0, 16, "输入Pastebin链接（由POB国服版分享的）:")
 	controls.edit = new("EditControl", nil, 0, 40, 250, 18, "", nil, "^%w%p%s", nil, function(buf)
 		controls.msg.label = ""
 	end)

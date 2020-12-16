@@ -45,11 +45,8 @@ function modLib.createMod(modName, modType, modVal, ...)
 	}
 end
 
-modLib.parseMod = { }
-modLib.parseModCache = { }
-for _, targetVersion in pairs(targetVersionList) do
-	modLib.parseMod[targetVersion], modLib.parseModCache[targetVersion] = LoadModule("Modules/ModParser-"..targetVersion, launch)
-end
+
+modLib.parseMod, modLib.parseModCache = LoadModule("Modules/ModParser", launch)
 
 function modLib.compareModParams(modA, modB)
 

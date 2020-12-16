@@ -744,6 +744,9 @@ mod("CritMultiplier", "BASE", nil, 0, 0, { type = "Condition", var = "Elusive" }
 	flag("CannotChill"),
 	flag("CannotFreeze"),
 	flag("CannotIgnite"),
+	flag("CannotScorch"),
+	flag("CannotBrittle"),
+	flag("CannotSap"),
 },
 ["chill_effect_+%"] = {
 	mod("EnemyChillEffect", "INC", nil),
@@ -1494,10 +1497,10 @@ mod("CritMultiplier", "BASE", nil, 0, 0, { type = "Condition", var = "Elusive" }
 	
 },
 ["snipe_triggered_skill_hit_damage_+%_final_per_stage"] = {
-	mod("Damage", "MORE", nil, ModFlag.Hit, 0, { type = "Multiplier", var = "SnipeStage" }),
+	mod("Damage", "MORE", nil, ModFlag.Hit, 0, { type = "Multiplier", var = "狙击Stage" }),
 },
 ["snipe_triggered_skill_ailment_damage_+%_final_per_stage"] = {
-	mod("Damage", "MORE", nil, ModFlag.Ailment, 0, { type = "Multiplier", var = "SnipeStage" }),
+	mod("Damage", "MORE", nil, ModFlag.Ailment, 0, { type = "Multiplier", var = "狙击Stage" }),
 },
 ["withered_on_hit_chance_%"] = {
 	flag("Condition:CanWither"),

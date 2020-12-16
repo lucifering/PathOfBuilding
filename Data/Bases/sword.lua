@@ -727,3 +727,16 @@ itemBases["放逐刀"] = {
 	weapon = { PhysicalMin = 61, PhysicalMax = 114, CritChanceBase = 6, AttackRateBase = 1.3, Range = 13, },
 	req = { level = 70, str = 130, dex = 130, },
 }
+
+
+itemBases["黄金之刃"] = {
+	type = "One Handed Sword",
+	socketLimit = 3,
+	tags = { default = true, weapon = true, onehand = true, sword = true, one_hand_weapon = true, not_for_sale = true,},
+	implicitModTypes = { { "attribute" }, },
+	implicit = "+(16-24) 全属性",
+	weapon = { PhysicalMin = 4, PhysicalMax = 23, CritChanceBase = 5, AttackRateBase = 1.1, Range = 11, },
+	req = { },
+}
+
+

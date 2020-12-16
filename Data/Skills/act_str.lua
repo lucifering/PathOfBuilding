@@ -1667,6 +1667,9 @@ description = "凝聚霸气, 对目标造成猛力的一击. 受到霸气灌体,
 	statMap = {
 		["sentinel_minion_cooldown_speed_+%"] = {
 			mod("MinionModifier", "LIST", {mod = mod("CooldownRecovery", "INC", nil, 0, 0)})
+		},
+		["damage_+%"] = {
+			mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", nil) } )
 		}
 	},
 	baseFlags = {
@@ -3381,13 +3384,13 @@ description = "短期内受到的物理伤害和元素伤害降低。最多消�
 	castTime = 0,
 	statMap = {
 		["mortal_call_elemental_damage_taken_+%_final"] = {
-			mod("ElementalDamageTaken", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
+			mod("ElementalDamageTaken", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Guard" }),
 		},
 		["mortal_call_physical_damage_taken_+%_final"] = {
-			mod("PhysicalDamageTaken", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
+			mod("PhysicalDamageTaken", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Guard" }),
 		},
 		["mortal_call_physical_damage_taken_per_endurance_charge_consumed_final_permyriad"] = {
-			mod("PhysicalDamageTaken", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }, { type = "Multiplier", var = "RemovableEnduranceCharge", limit = 5 }),
+			mod("PhysicalDamageTaken", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Guard" }, { type = "Multiplier", var = "RemovableEnduranceCharge", limit = 5 }),
 			div = 100,
 		},
 	},
@@ -3474,6 +3477,7 @@ description = "仰天怒吼，释放耐力球，使角色在短时间内无敌�
 		duration = true,
 	},
 	baseMods = {
+		flag("Condition:CannotDie", { type = "GlobalEffect", effectType = "Guard" }),
 	},
 	qualityStats = {
 		Default = {
@@ -3860,7 +3864,17 @@ description = "施加一个增益效果，增加护甲值，并在耗尽前替�
 	end,
 	statMap = {
 		["base_physical_damage_reduction_rating"] = {
-			mod("Armour", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
+			mod("Armour", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Guard" }),
+		},
+		["molten_shell_damage_absorbed_%"] = {
+			mod("GuardAbsorbRate", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Guard" }),
+		},
+		["molten_shell_damage_absorb_limit_%_of_armour"] = {
+			mod("GuardAbsorbLimit", "BASE", nil, 0, 0, { type = "PerStat", stat = "Armour", limitVar = "GuardAbsorbMax", limitTotal = true }, { type = "GlobalEffect", effectType = "Guard" }),
+			div = 100,
+		},
+		["molten_shell_max_damage_absorbed"] = {
+			mod("Multiplier:GuardAbsorbMax", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Guard" }),
 		},
 		["molten_shell_%_of_absorbed_damage_dealt_as_reflected_fire"] = {
 			skill("moltenShellReflect", nil),
@@ -3959,7 +3973,17 @@ description = "施加一个增益效果，提升护甲值，并在耗尽前替�
 	end,
 	statMap = {
 		["base_physical_damage_reduction_rating"] = {
-			mod("Armour", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
+			mod("Armour", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Guard" }),
+		},
+		["molten_shell_damage_absorbed_%"] = {
+			mod("GuardAbsorbRate", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Guard" }),
+		},
+		["molten_shell_damage_absorb_limit_%_of_armour"] = {
+			mod("GuardAbsorbLimit", "BASE", nil, 0, 0, { type = "PerStat", stat = "Armour", limitVar = "GuardAbsorbMax", limitTotal = true }, { type = "GlobalEffect", effectType = "Guard" }),
+			div = 100,
+		},
+		["molten_shell_max_damage_absorbed"] = {
+			mod("Multiplier:GuardAbsorbMax", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Guard" }),
 		},
 		["vaal_molten_shall_armour_+%_final"] = {
 			mod("Armour", "MORE", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff" }),
@@ -5523,8 +5547,18 @@ description = "施加一个增益效果，在其耗尽之前替你承受部分�
 	castTime = 0,
 	statMap = {
 		["resist_all_%"] = {
-			mod("ElementalResist", "BASE", nil, 0, 0)
-		}
+			mod("ElementalResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Guard" }),
+			mod("ChaosResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Guard" }),
+		},
+		["quick_guard_damage_absorbed_%"] = {
+			mod("GuardAbsorbRate", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Guard" }),
+		},
+		["quick_guard_damage_absorb_limit"] = {
+			mod("GuardAbsorbLimit", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Guard" }),
+		},
+		["steelskin_damage_limit_+%"] = {
+			mod("GuardAbsorbLimit", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Guard" }),
+		},
 	},
 	baseFlags = {
 		spell = true,

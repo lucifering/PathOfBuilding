@@ -10,6 +10,13 @@ data.uniques.new = {
 
 --3.12
 [[
+升华权威
+黄金之刃
++(16-24) 全属性
+你和周围友军的物品稀有度提高 30%
+角色体型增大 5%
+]],
+[[
 雏鸟
 漆彩之盔
 源: 传奇【契约：荣誉之心 家族契约】Boss专属掉落
@@ -1561,7 +1568,7 @@ local lines = {
 	"增加的小天赋无效果",
 }
 local notables = { }
-for name in pairs(data["3_0"].clusterJewels.notableSortOrder) do
+for name in pairs(data.clusterJewels.notableSortOrder) do
 	table.insert(notables, name)
 end
 table.sort(notables)
@@ -1592,7 +1599,7 @@ local linesForbiddenShakoReplica = {
 	"+(25-30) 全属性",
 }
 local supports = { }
-for name, grantedEffect in pairs(data["3_0"].skills) do
+for name, grantedEffect in pairs(data.skills) do
 
 	if not grantedEffect.hidden and not grantedEffect.fromItem  and  grantedEffect.support and not grantedEffect.plusVersionOf then
 		local gem= grantedEffect.name:gsub("%(辅%)",""):gsub("（辅）","")

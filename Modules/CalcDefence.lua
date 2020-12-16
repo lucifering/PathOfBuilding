@@ -729,6 +729,34 @@ modDB:NewMod("EnergyShieldRegenPercent", "BASE", lifePercent, "狂热誓言")
 			output[damageType.."EffectiveLife"] = output.LifeUnreserved
 		end
 	end
+	
+	-- Guard
+	output.AnyGuard = 0
+	for _, damageType in ipairs(dmgTypeList) do
+		output[damageType.."GuardAbsorbRate"] = m_min(modDB:Sum("BASE", nil, "GuardAbsorbRate") + modDB:Sum("BASE", nil, damageType.."GuardAbsorbRate"), 100)
+		if output[damageType.."GuardAbsorbRate"] > 0 then
+			output.AnyGuard = output.AnyGuard + output[damageType.."GuardAbsorbRate"]
+			output[damageType.."GuardAbsorb"] = calcLib.val(modDB, "GuardAbsorbLimit") + calcLib.val(modDB, damageType.."GuardAbsorbLimit")
+			local poolProtected = output[damageType.."GuardAbsorb"] / (output[damageType.."GuardAbsorbRate"] / 100) * (1 - output[damageType.."GuardAbsorbRate"] / 100)
+			if output[damageType.."GuardAbsorbRate"] >= 100 then
+				output[damageType.."EffectiveLife"] = output[damageType.."EffectiveLife"] + output[damageType.."GuardAbsorb"]
+			else
+				output[damageType.."EffectiveLife"] = m_max(output[damageType.."EffectiveLife"] - poolProtected, 0) + m_min(output[damageType.."EffectiveLife"], poolProtected) / (1 - output[damageType.."GuardAbsorbRate"] / 100)
+			end
+			if breakdown then
+				breakdown[damageType.."GuardAbsorb"] = {
+					s_format("总生命防卫:"),
+					s_format("%d ^8(防卫上限)", output[damageType.."GuardAbsorb"]),
+					s_format("/ %.2f ^8(从防卫承受的部分)", output[damageType.."GuardAbsorbRate"] / 100),
+					s_format("x %.2f ^8(从生命承受的部分)", 1 - output[damageType.."GuardAbsorbRate"] / 100),
+					s_format("= %d", poolProtected),
+					s_format("有效生命: %d", output[damageType.."EffectiveLife"])
+				}
+			end
+		end
+	end
+
+
 	--total pool
 	for _, damageType in ipairs(dmgTypeList) do
 		output[damageType.."TotalPool"] = output[damageType.."EffectiveLife"]

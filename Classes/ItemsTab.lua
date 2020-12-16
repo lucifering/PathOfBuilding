@@ -178,6 +178,7 @@ self.controls.setManage = new("ButtonControl", {"LEFT",self.controls.setSelect,"
 	end
 	self.sockets = { }
 	local socketOrder = { }
+	
 	for _, node in pairs(build.latestTree.nodes) do
 		if node.type == "Socket" then
 			t_insert(socketOrder, node)
@@ -245,7 +246,7 @@ self.controls.selectDBLabel = new("LabelControl", {"TOPLEFT",self.controls.itemL
 self.controls.selectDB = new("DropDownControl", {"LEFT",self.controls.selectDBLabel,"RIGHT"}, 4, 0, 150, 18, { "内置传奇", "金装模板"  })
 
 	-- Unique database
-	self.controls.uniqueDB = new("ItemDBControl", {"TOPLEFT",self.controls.itemList,"BOTTOMLEFT"}, 0, 76, 360, function(c) return m_min(244, self.maxY - select(2, c:GetPos())) end, self, main.uniqueDB[build.targetVersion], "UNIQUE")
+	self.controls.uniqueDB = new("ItemDBControl", {"TOPLEFT",self.controls.itemList,"BOTTOMLEFT"}, 0, 76, 360, function(c) return m_min(244, self.maxY - select(2, c:GetPos())) end, self, main.uniqueDB, "UNIQUE")
 	self.controls.uniqueDB.y = function()
 		return self.controls.selectDBLabel:IsShown() and 98 or 76
 	end
@@ -254,7 +255,7 @@ self.controls.selectDB = new("DropDownControl", {"LEFT",self.controls.selectDBLa
 	end
 
 	-- Rare template database
-	self.controls.rareDB = new("ItemDBControl", {"TOPLEFT",self.controls.itemList,"BOTTOMLEFT"}, 0, 76, 360, function(c) return m_min(260, self.maxY - select(2, c:GetPos())) end, self, main.rareDB[build.targetVersion], "RARE")
+	self.controls.rareDB = new("ItemDBControl", {"TOPLEFT",self.controls.itemList,"BOTTOMLEFT"}, 0, 76, 360, function(c) return m_min(260, self.maxY - select(2, c:GetPos())) end, self, main.rareDB, "RARE")
 	self.controls.rareDB.y = function()
 		return self.controls.selectDBLabel:IsShown() and 78 or 376
 	end
@@ -886,7 +887,7 @@ function ItemsTabClass:Load(xml, dbFileName)
 	self.itemSetOrderList = { }
 	for _, node in ipairs(xml) do
 		if node.elem == "Item" then
-			local item = new("Item", self.build.targetVersion, "")
+			local item = new("Item",  "")
 			item.id = tonumber(node.attrib.id)
 			item.variant = tonumber(node.attrib.variant)
 			if node.attrib.variantAlt then
@@ -1179,7 +1180,7 @@ function ItemsTabClass:EquipItemInSet(item, itemSetId)
 		slotName = slotName .. " Swap"
 	end
 	if not item.id or not self.items[item.id] then
-		item = new("Item", self.build.targetVersion, item.raw)
+		item = new("Item",  item.raw)
 		self:AddItem(item, true)
 	end
 	local altSlot = slotName:gsub("1","2")
@@ -1381,7 +1382,7 @@ end
 
 -- Attempt to create a new item from the given item raw text and sets it as the new display item
 function ItemsTabClass:CreateDisplayItemFromRaw(itemRaw, normalise)
-	local newItem = new("Item", self.build.targetVersion, itemRaw)
+	local newItem = new("Item",  itemRaw)
 	if newItem.base then
 		if normalise then
 			newItem:NormaliseQuality()
@@ -1772,7 +1773,7 @@ end
 function ItemsTabClass:CraftItem()
 	local controls = { }
 	local function makeItem(base)
-		local item = new("Item", self.build.targetVersion)
+		local item = new("Item")
 		item.name = base.name
 		item.base = base.base
 		item.baseName = base.name
@@ -1798,7 +1799,7 @@ function ItemsTabClass:CraftItem()
 		if base.base.implicit then
 			local implicitIndex = 1
 			for line in base.base.implicit:gmatch("[^\n]+") do
-				local modList, extra = modLib.parseMod[self.build.targetVersion](line)
+				local modList, extra = modLib.parseMod(line)
 				t_insert(item.implicitModLines, { line = line, extra = extra, modList = modList or { }, modTags = base.base.implicitModTypes and base.base.implicitModTypes[implicitIndex] or { } })
 				implicitIndex = implicitIndex + 1
 			end
@@ -1876,12 +1877,12 @@ controls.save = new("ButtonControl", nil, -45, 470, 80, 20, self.displayItem and
 		main:ClosePopup()
 	end)
 	controls.save.enabled = function()
-		local item = new("Item", self.build.targetVersion, buildRaw())
+		local item = new("Item", buildRaw())
 		return item.base ~= nil
 	end
 	controls.save.tooltipFunc = function(tooltip)
 		tooltip:Clear()
-		local item = new("Item", self.build.targetVersion, buildRaw())
+		local item = new("Item", buildRaw())
 		if item.base then
 			self:AddItemTooltip(tooltip, item, nil, true)
 		else
@@ -1957,7 +1958,7 @@ function ItemsTabClass:EnchantDisplayItem()
 	buildLabyrinthList()
 	buildEnchantmentList()
 	local function enchantItem()
-		local item = new("Item", self.build.targetVersion, self.displayItem:BuildRaw())
+		local item = new("Item",  self.displayItem:BuildRaw())
 		item.id = self.displayItem.id
 		
 		wipeTable(item.enchantModLines)
@@ -2073,7 +2074,7 @@ local controls = { }
 		control:SelByValue(selfMod, "mod")
 	end
 	local function synthesisedItem()
-		local item = new("Item", self.build.targetVersion, self.displayItem:BuildRaw())
+		local item = new("Item",  self.displayItem:BuildRaw())
 		item.id = self.displayItem.id		
 		local newImplicit = { }
 		for _, control in ipairs{controls.implicit, controls.implicit2, controls.implicit3} do
@@ -2160,7 +2161,7 @@ end
 ---@return table @The new item
 function ItemsTabClass:anointItem(node)
 	self.anointEnchantSlot = self.anointEnchantSlot or 1
-	local item = new("Item", self.build.targetVersion, self.displayItem:BuildRaw())
+	local item = new("Item",  self.displayItem:BuildRaw())
 	item.id = self.displayItem.id
 	if #item.enchantModLines >= self.anointEnchantSlot then
 		t_remove(item.enchantModLines, self.anointEnchantSlot)
@@ -2295,7 +2296,7 @@ function ItemsTabClass:CorruptDisplayItem()
 		control:SelByValue(selfMod, "mod")
 	end
 	local function corruptItem()
-		local item = new("Item", self.build.targetVersion, self.displayItem:BuildRaw())
+		local item = new("Item", self.displayItem:BuildRaw())
 		item.id = self.displayItem.id
 		item.corrupted = true
 		local newImplicit = { }
@@ -2487,7 +2488,7 @@ function ItemsTabClass:AddCustomModifierToDisplayItem()
 	
 	
 	if (
-	(self.build.targetVersion ~= "2_6" 		and 	self.displayItem.base.subType ~= "Abyss") 
+	(self.displayItem.base.subType ~= "Abyss") 
 	or (self.displayItem.type ~= "Jewel" and self.displayItem.type ~= "Flask")
 	) 
 	and  (self.displayItem.rarity == "魔法" or self.displayItem.rarity == "稀有")	
@@ -2516,12 +2517,12 @@ t_insert(sourceList, { label = "穿越", sourceId = "INCURSION" })
 	
 	end
 	
-	if self.build.targetVersion ~= "2_6" and self.displayItem.base.weapon  then 
+	if  self.displayItem.base.weapon  then 
 	
 		t_insert(sourceList, { label = "收割种子", sourceId = "HarvestSeedWeapon" })
 	
 	end
-	if self.build.targetVersion ~= "2_6" and self.displayItem.type == "Body Armour"  then 
+	if  self.displayItem.type == "Body Armour"  then 
 	
 		t_insert(sourceList, { label = "收割种子", sourceId = "HarvestSeedBodyArmour" })
 	
@@ -2533,7 +2534,7 @@ t_insert(sourceList, { label = "【后缀】", sourceId = "SUFFIX" })
 t_insert(sourceList, { label = "自定义", sourceId = "CUSTOM" })
 	buildMods(sourceList[1].sourceId)
 	local function addModifier()
-		local item = new("Item", self.build.targetVersion, self.displayItem:BuildRaw())
+		local item = new("Item",  self.displayItem:BuildRaw())
 		item.id = self.displayItem.id
 		local sourceId = sourceList[controls.source.selIndex].sourceId
 		if sourceId == "CUSTOM" then
@@ -2951,9 +2952,7 @@ tooltip:AddLine(16, "^x7F7F7F插槽: "..line)
 		if item.base.flask.life or item.base.flask.mana then
 			local rateInc = modDB:Sum("INC", nil, "FlaskRecoveryRate")
 			local instantPerc = flaskData.instantPerc
-			if self.build.targetVersion == "2_6" and instantPerc > 0 then
-				instantPerc = m_min(instantPerc + effectInc, 100)
-			end
+			
 			if item.base.flask.life then
 				local lifeInc = modDB:Sum("INC", nil, "FlaskLifeRecovery")
 				local lifeRateInc = modDB:Sum("INC", nil, "FlaskLifeRecoveryRate")

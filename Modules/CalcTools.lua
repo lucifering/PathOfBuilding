@@ -214,9 +214,9 @@ function calcLib.buildSkillInstanceStats(skillInstance, grantedEffect, spGemQual
 		end
 		for _, stat in ipairs(qualityStats) do
 			if spGemQuality then 
-				stats["[GEM_Q]"..stat[1]] = (stats[stat[1]] or 0) + m_floor(stat[2] * skillInstance.quality)
+				stats["[GEM_Q]"..stat[1]] = (stats[stat[1]] or 0) + math.modf(stat[2] * skillInstance.quality)
 			else
-				stats[stat[1]] = (stats[stat[1]] or 0) + m_floor(stat[2] * skillInstance.quality)
+				stats[stat[1]] = (stats[stat[1]] or 0) + math.modf(stat[2] * skillInstance.quality)
 			end 
 		end
 	end

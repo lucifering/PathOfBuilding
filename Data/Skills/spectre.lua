@@ -1374,7 +1374,7 @@ description = "发出一束灼热光线, 被击中的敌人会受到不断叠加
 	castTime = 0.5,
 	statMap = {
 		["fire_beam_enemy_fire_resistance_%_per_stack"] = {
-			mod("FireResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectStackVar = "KaomFireBeamTotemStage", effectStackLimit = 24 }),
+			mod("FireResist", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Debuff", effectStackVar = "灼热奔流图腾Stage", effectStackLimit = 24 }),
 		},
 	},
 	baseFlags = {
@@ -1383,7 +1383,7 @@ description = "发出一束灼热光线, 被击中的敌人会受到不断叠加
 		duration = true,
 	},
 	baseMods = {
-		mod("Damage", "MORE", 60, 0, 0, { type = "Multiplier", actor = "parent", var = "KaomFireBeamTotemStage", base = -60, limit = 8 }),
+		mod("Damage", "MORE", 60, 0, 0, { type = "Multiplier", actor = "parent", var = "灼热奔流图腾Stage", base = -60, limit = 8 }),
 	},
 	qualityStats = {
 	},

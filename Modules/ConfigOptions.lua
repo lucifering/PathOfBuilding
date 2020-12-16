@@ -10,10 +10,10 @@ local m_max = math.max
 return {
 	-- Section: General options
 { section = "常规", col = 1 },
-{ var = "resistancePenalty", type = "list", label = "抗性 惩罚:", ifVer = "3_0", list = {{val=0,label="无"},{val=-30,label="第五章 (-30%)"},{val=nil,label="第十章 (-60%)"}} },
+{ var = "resistancePenalty", type = "list", label = "抗性 惩罚:",  list = {{val=0,label="无"},{val=-30,label="第五章 (-30%)"},{val=nil,label="第十章 (-60%)"}} },
 { var = "enemyLevel", type = "count", label = "敌人 等级:", tooltip = "敌人等级的设置会影响你命中率和闪避率的估算\n默认的等级和你角色等级相同，上限是84级\n这个估算和游戏中的面板中相同。" },
 { var = "enemyHit", type = "count", label = "敌人击中伤害:", tooltip = "这个会影响你的护甲所能带来的伤害减免的估算\n 默认是 1.5 倍敌人的基础伤害\n这个估算和游戏中的面板中相同。" },
-{ var = "detonateDeadCorpseLife", type = "count", label = "敌人尸体的生命:", tooltip = "设置【爆灵术】和类似的灵柩爆炸技能.\n作为参考，70级怪物的生命为："..data["3_0"].monsterLifeTable[70].." ，80级怪物的生命为： "..data["3_0"].monsterLifeTable[80]..".", apply = function(val, modList, enemyModList)
+{ var = "detonateDeadCorpseLife", type = "count", label = "敌人尸体的生命:", tooltip = "设置【爆灵术】和类似的灵柩爆炸技能.\n作为参考，70级怪物的生命为："..data.monsterLifeTable[70].." ，80级怪物的生命为： "..data.monsterLifeTable[80]..".", apply = function(val, modList, enemyModList)
 		modList:NewMod("SkillData", "LIST", { key = "corpseLife", value = val }, "Config")
 	end },
 { var = "conditionStationary", type = "check", label = "你静止不移动?", ifCond = "Stationary", apply = function(val, modList, enemyModList)
@@ -181,10 +181,7 @@ modList:NewMod("Multiplier:BannerStage", "BASE", m_min(val, 50), "Config", { typ
 { var = "darkPactSkeletonLife", type = "count", label = "魔侍 生命:", ifSkill = "暗夜血契", tooltip = "设置使用【暗夜血契】时，魔侍的最大生命.", apply = function(val, modList, enemyModList)
 modList:NewMod("SkillData", "LIST", { key = "skeletonLife", value = val }, "Config", { type = "SkillName", skillName = "暗夜血契" })
 	end },
-{ label = "死亡之愿:", ifSkill = "死亡之愿" },
-	{ var = "deathWishStageCount", type = "count", label = "层数:", ifSkill = "死亡之愿", tooltip = "死亡之愿持续吟唱时获得:\n\t每层可以给 1 只召唤生物提供加成：攻击、施法和移动速度提高 40%, 最多 13 只。\n死亡之愿爆炸加成:\n\t每层提供 击中和异常总伤害额外提高 10%", apply = function(val, modList, enemyModList)
-		modList:NewMod("Multiplier:DeathWishStageCount", "BASE", val, "Config")
-	end },
+
 { label = "【掠食（辅）】:", ifSkill = "掠食（辅）" },
 { var = "conditionEnemyHasDeathmark", type = "check", label = "敌人被标记?", ifSkill = "掠食（辅）", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:EnemyHasDeathmark", "FLAG", true, "Config")
@@ -265,9 +262,7 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 		end
 	end },
 { label = "【召唤灵体】:", ifSkill = "召唤灵体" },
-{ var = "raiseSpectreSpectreLevel", type = "count", label = "灵体等级:", ifSkill = "召唤灵体", ifVer = "2_6", tooltip = "设置灵体等级.\n默认等级是【召唤灵体】技能石的需求等级.", apply = function(val, modList, enemyModList)
-modList:NewMod("SkillData", "LIST", { key = "minionLevel", value = val }, "Config", { type = "SkillName", skillName = "召唤灵体" })
-	end },
+
 { var = "animateWeaponLingeringBlade", type = "check", label = "幻化【徘徊之刃】?", ifSkill = "幻化武器", tooltip = "启用幻化【徘徊之刃】的伤害加成\n徘徊之刃的具体的武器基低尚不清楚，但是接近于匕首【玻璃利片】", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:AnimatingLingeringBlades", "FLAG", true, "Config")
 	end },
@@ -360,10 +355,7 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 		end
 	end },
 	
-{ label = "【寒冬宝珠】:", ifSkill = "寒冬宝珠" },
-{ var = "winterOrbStages", type = "count", label = "阶层:", ifSkill = "寒冬宝珠", apply = function(val, modList, enemyModList)
-modList:NewMod("Multiplier:WinterOrbStage", "BASE", val, "Config", { type = "SkillName", skillName = "寒冬宝珠" })
-	end },
+
 	
 	{ label = "【死亡凋零】:", ifCond = "CanWither"},
 { var = "witheringTouchWitheredStackCount", type = "count", label = "# 【死亡凋零】层数:", 
@@ -394,10 +386,7 @@ ifCond = "CanSnipeStage", apply = function(val, modList, enemyModList)
 		modList:NewMod("WarcryPower", "OVERRIDE", val, "Config")		
 	end },
 
-{ label = "【冬潮烙印】:", ifSkill = "冬潮烙印" },
-{ var = "wintertideBrandStages", type = "count", label = "敌人减益层数:",tooltip = "默认最大 20 层 ，迷宫附魔可以 +4 层", ifSkill = "冬潮烙印", apply = function(val, modList, enemyModList)
-	modList:NewMod("Multiplier:WintertideBrandStages", "BASE", m_min(val, 24), "Config", { type = "SkillName", skillName = "冬潮烙印" })
-	end },
+
 { label = "【熔岩护盾】:", ifSkill = "熔岩护盾" },
 	{ var = "MoltenShellDamageMitigated", type = "count", label = "减免的伤害数值:", tooltip = "被熔岩护盾减免的伤害", 
 	ifSkill = "熔岩护盾", apply = function(val, modList, enemyModList)
@@ -515,7 +504,7 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 { var = "playerCursedWithConductivity", type = "count", label = "导电:", tooltip = "设置玩家身上的【导电】诅咒等级.", apply = function(val, modList, enemyModList)
 		modList:NewMod("ExtraCurse", "LIST", { skillId = "Conductivity", level = val, applyToPlayer = true })
 	end },
-{ var = "playerCursedWithDespair", type = "count", ifVer = "3_0", label = "绝望:", tooltip = "设置玩家身上的【绝望】诅咒等级.", apply = function(val, modList, enemyModList)
+{ var = "playerCursedWithDespair", type = "count",  label = "绝望:", tooltip = "设置玩家身上的【绝望】诅咒等级.", apply = function(val, modList, enemyModList)
 		modList:NewMod("ExtraCurse", "LIST", { skillId = "Despair", level = val, applyToPlayer = true })
 	end },
 { var = "playerCursedWithElementalWeakness", type = "count", label = "元素要害:", tooltip = "设置玩家身上的【元素要害】诅咒等级.\n中阶地图词缀的等级是 10.\n高阶地图词缀的等级是 15.", apply = function(val, modList, enemyModList)
@@ -883,10 +872,8 @@ ifCond = "OnFungalGround",
 { var = "conditionEnergyShieldRechargeRecently", type = "check", label = "近期内能量护盾开始回复?", ifCond = "EnergyShieldRechargeRecently", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:EnergyShieldRechargeRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
-{ var = "buffPendulum", type = "check", ifVer = "2_6", label = "【毁灭光炮塔】升华天赋激活?", ifNode = 57197, apply = function(val, modList, enemyModList)
-		modList:NewMod("Condition:PendulumOfDestruction", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
-	end },
-{ var = "buffPendulum", type = "list", ifVer = "3_0", label = "【毁灭光炮塔】升华天赋激活?", ifNode = 57197, list = {{val=0,label="不起作用"},{val="AREA",label="范围效果"},{val="DAMAGE",label="元素伤害"}}, apply = function(val, modList, enemyModList)
+
+{ var = "buffPendulum", type = "list",  label = "【毁灭光炮塔】升华天赋激活?", ifNode = 57197, list = {{val=0,label="不起作用"},{val="AREA",label="范围效果"},{val="DAMAGE",label="元素伤害"}}, apply = function(val, modList, enemyModList)
 		if val == "AREA" then
 			modList:NewMod("Condition:PendulumOfDestructionAreaOfEffect", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 		elseif val == "DAMAGE" then
@@ -981,26 +968,14 @@ ifCond = "OnFungalGround",
 		modList:NewMod("Multiplier:EnduranceChargesLostRecently", "BASE", val, "Config", { type = "Condition", var = "Combat" })
 		modList:NewMod("Condition:LostEnduranceChargeInPast8Sec", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
-{ var = "conditionUsedFireSkillInPast10Sec", type = "check", ifVer = "2_6", label = "过去10秒内有使用过火焰技能?", ifNode = 61259, apply = function(val, modList, enemyModList)
-		modList:NewMod("Condition:UsedFireSkillInPast10Sec", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
-	end },
-{ var = "conditionUsedColdSkillInPast10Sec", type = "check", ifVer = "2_6", label = "过去10秒内有使用过冰霜技能?", ifNode = 61259, apply = function(val, modList, enemyModList)
-		modList:NewMod("Condition:UsedColdSkillInPast10Sec", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
-	end },
-{ var = "conditionUsedLightningSkillInPast10Sec", type = "check", ifVer = "2_6", label = "过去10秒内有使用过闪电技能?", ifNode = 61259, apply = function(val, modList, enemyModList)
-		modList:NewMod("Condition:UsedLightningSkillInPast10Sec", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
-	end },
-{ var = "conditionBlockedHitFromUniqueEnemyRecently", type = "check", ifVer = "2_6", label = "近期格挡过传奇怪物的击中?", ifNode = 63490, implyCond = "BlockedRecently", tooltip = "这也意味着你近期格挡过.", apply = function(val, modList, enemyModList)
-		modList:NewMod("Condition:BlockedHitFromUniqueEnemyRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
-		modList:NewMod("Condition:BlockedRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
-	end },
-{ var = "conditionBlockedHitFromUniqueEnemyInPast10Sec", type = "check", ifVer = "3_0", label = "过去10秒内有成功格挡过传奇敌人的击中?", ifNode = 63490, apply = function(val, modList, enemyModList)
+
+{ var = "conditionBlockedHitFromUniqueEnemyInPast10Sec", type = "check",  label = "过去10秒内有成功格挡过传奇敌人的击中?", ifNode = 63490, apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:BlockedHitFromUniqueEnemyInPast10Sec", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
 { var = "conditionCriticalStrike", type = "check", label = "解析【暴击时】词缀?", ifCond = "CriticalStrike", tooltip = "用于判官升华：无视元素抗性。",apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:CriticalStrike", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
-{ var = "conditionImpaledRecently", type = "check", ifVer="3_0", label = "近期有穿刺过敌人?", apply = function(val, modList, enemyModLIst)
+{ var = "conditionImpaledRecently", type = "check", label = "近期有穿刺过敌人?", apply = function(val, modList, enemyModLIst)
 		modList:NewMod("Condition:ImpaledRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
 { var = "meleeDistanceWithEnemy", type = "count", label = "# 近战和敌人距离（15下拿满40+不起效）:" , ifCond = "CanMeleeDistanceRamp" },
@@ -1150,15 +1125,12 @@ tooltip = "精疲力尽的敌人总伤害额外降低，最多降低 20%.", appl
 		enemyModList:NewMod("LightningExposure", "BASE", -10, "Config", { type = "Condition", var = "Effective" }, { type = "ActorCondition", actor = "enemy", var = "CanApplyLightningExposure" })
 		enemyModList:NewMod("Condition:HaveExposure", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
-{ var = "conditionEnemyIntimidated", type = "check", ifVer = "2_6", label = "敌人被恐吓?", tooltip = "这个会附加词缀:\n提高 10% 敌人承受的伤害", apply = function(val, modList, enemyModList)
-		enemyModList:NewMod("DamageTaken", "INC", 10, "Intimidate")
-		enemyModList:NewMod("Condition:Intimidate", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
-	end },
-{ var = "conditionEnemyIntimidated", type = "check", ifVer = "3_0", label = "敌人被恐吓?", tooltip = "这个会附加词缀:\n提高 10% 敌人承受的攻击伤害", apply = function(val, modList, enemyModList)
+
+{ var = "conditionEnemyIntimidated", type = "check",  label = "敌人被恐吓?", tooltip = "这个会附加词缀:\n提高 10% 敌人承受的攻击伤害", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("DamageTaken", "INC", 10, "Intimidate", ModFlag.Attack)
 		enemyModList:NewMod("Condition:Intimidate", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
-{ var = "conditionEnemyUnnerved", type = "check", ifVer = "3_0", label = "敌人被恐惧?", tooltip = "这个会附加词缀:\n提高 10% 敌人承受的法术伤害", apply = function(val, modList, enemyModList)
+{ var = "conditionEnemyUnnerved", type = "check",  label = "敌人被恐惧?", tooltip = "这个会附加词缀:\n提高 10% 敌人承受的法术伤害", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("DamageTaken", "INC", 10, "Unnerve", ModFlag.Spell)
 		enemyModList:NewMod("Condition:Unnerve", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
@@ -1174,7 +1146,7 @@ tooltip = "精疲力尽的敌人总伤害额外降低，最多降低 20%.", appl
 		enemyModList:NewMod("Condition:RareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
  
-{ var = "enemyIsBoss", type = "list", ifVer = "3_0", label = "敌人是boss?", 
+{ var = "enemyIsBoss", type = "list",  label = "敌人是boss?", 
 tooltip = "普通boss有以下词缀：\n额外降低 33% 魔蛊效果\n+40% 火焰、冰霜、闪电抗性\n+25% 混沌抗性\n\n塑界者/塑界守卫有以下词缀：\n额外降低 66% 魔蛊效果\n+50% 火焰、冰霜、闪电抗性\n+30% 混沌抗性\n总护甲额外提高 33%\n\n诸界觉者希鲁斯有以下词缀：\n额外降低 66% 魔蛊效果\n+50% 火焰、冰霜、闪电抗性\n+30% 混沌抗性\n总护甲额外提高 100%",
 list = {{val="NONE",label="不是"},{val="Uber Atziri",label="普通Boss"},
 {val="Shaper",label="塑界者/塑界守卫"},
@@ -1255,7 +1227,7 @@ end },
 { var = "raiseSpidersSpiderCount", type = "count", label = "蜘蛛数量:", ifSkill = "召唤毒蛛", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:RaisedSpider", "BASE", m_min(val, 20), "Config")
 	end },
-{ var = "physicsRandomElement", type = "list", ifVer = "3_0", label = "随机元素想要随机哪一个？", tooltip = "【注意】随机元素在游戏内是随机计算的，\n这里允许你选择其一种或不生效，\n所以模拟这个伤害和真实情况是会有差距的，\n新手请勿选择.", list = {{val="NONE",label="不生效"},{val="Fire",label="随机到火焰"},{val="Cold",label="随机到冰霜"},{val="Lightning",label="随机到闪电"}}, apply = function(val, modList, enemyModList)
+{ var = "physicsRandomElement", type = "list",  label = "随机元素想要随机哪一个？", tooltip = "【注意】随机元素在游戏内是随机计算的，\n这里允许你选择其一种或不生效，\n所以模拟这个伤害和真实情况是会有差距的，\n新手请勿选择.", list = {{val="NONE",label="不生效"},{val="Fire",label="随机到火焰"},{val="Cold",label="随机到冰霜"},{val="Lightning",label="随机到闪电"}}, apply = function(val, modList, enemyModList)
 		if val == "Fire" then
 				modList:NewMod("Condition:PhysicsRandomElementFire", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 				modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Condition:PhysicsRandomElementFire", "FLAG", true, "Config") }, "Config", { type = "Condition", var = "Effective" })

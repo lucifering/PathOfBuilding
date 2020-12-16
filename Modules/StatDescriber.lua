@@ -3,7 +3,7 @@
 -- Module: Stat Describer
 -- Manages stat description files, and provides stat descriptions
 --
-local targetVersion = ...
+
 
 local pairs = pairs
 local ipairs = ipairs
@@ -52,7 +52,7 @@ local function getScope(scopeName)
 		return nil
 	end 
 	if not scopes[scopeName] then
-		local scope = LoadModule("Data/"..targetVersion.."/StatDescriptions/"..scopeName)
+		local scope = LoadModule("Data/StatDescriptions/"..scopeName)
 		scope.name = scopeName
 		if scope.parent then
 			local parentScope = getScope(scope.parent)

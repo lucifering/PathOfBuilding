@@ -140,6 +140,12 @@ local formList = {
 	["攻击和法术附加 (%d+) %- (%d+) 基础([^\\x00-\\xff]*)伤害"] = "DMGBOTH", -- o_O --备注：adds (%d+)%-(%d+) (%a+) damage to spells and attacks
 	["adds (%d+) to (%d+) (%a+) damage to hits"] = "DMGBOTH",
 	["adds (%d+)%-(%d+) (%a+) damage to hits"] = "DMGBOTH",
+	["给攻击附加 (%d+) %- (%d+) 基础([^\\x00-\\xff]*)伤害"] = "DMGATTACKS", 	
+	["给法术附加 (%d+) %- (%d+) 基础([^\\x00-\\xff]*)伤害"] = "DMGSPELLS", 	
+	["给攻击和法术附加 (%d+) %- (%d+) 基础([^\\x00-\\xff]*)伤害"] = "DMGBOTH", 
+	["给攻击附加 (%d+) %- (%d+) 点([^\\x00-\\xff]*)伤害"] = "DMGATTACKS", 	
+	["给法术附加 (%d+) %- (%d+) 点([^\\x00-\\xff]*)伤害"] = "DMGSPELLS", 	
+	["给攻击和法术附加 (%d+) %- (%d+) 点([^\\x00-\\xff]*)伤害"] = "DMGBOTH", 
 }
 
 -- Map of modifier names
@@ -1385,6 +1391,11 @@ local modTagList = {
 	["被点燃时，"] = { tag = { type = "Condition", var = "Ignited" } },
 	["被点燃时"] = { tag = { type = "Condition", var = "Ignited" } },
 	["每 (%d+) 点护甲都使"] = function(num) return { tag = { type = "PerStat", stat = "Armour", div = num } } end, 
+	["受到非瓦尔护卫技能影响时，"] = { tag = { type = "Condition", var =  "AffectedByNonVaalGuardSkill" } },
+	["受到非瓦尔防卫技能影响时获得"] = { tag = { type = "Condition", var =  "AffectedByNonVaalGuardSkill" } },
+	["受到防卫技能增益效果影响时，获得"] = { tag = { type = "Condition", var = "AffectedByGuardSkill" } },
+	["受到防卫技能增益效果影响时，"] = { tag = { type = "Condition", var = "AffectedByGuardSkill" } },
+	["被防卫技能的增益效果影响时，"] = { tag = { type = "Condition", var = "AffectedByGuardSkill" } },
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -1716,18 +1727,18 @@ end
 end
 
 
-for name, grantedEffect in pairs(data["3_0"].skills) do
-		 if not grantedEffect.hidden or grantedEffect.fromItem then
+for name, grantedEffect in pairs(data.skills) do
+		 if not grantedEffect.hidden or grantedEffect.fromItem  or grantedEffect.fromTree then
 			if not gemIdLookupPlayer[grantedEffect.name:lower()] then
 				gemIdLookupPlayer[grantedEffect.name:lower()] = grantedEffect.id
-			elseif  not grantedEffect.hidden or grantedEffect.fromItem then
+			elseif  not grantedEffect.hidden or grantedEffect.fromItem  or grantedEffect.fromTree then
 				gemIdLookupPlayer[grantedEffect.name:lower()] = grantedEffect.id
 			end 
 		 end
 		 
 		if not gemIdLookup[grantedEffect.name:lower()] then
 			gemIdLookup[grantedEffect.name:lower()] = grantedEffect.id
-		elseif  not grantedEffect.hidden or grantedEffect.fromItem then
+		elseif  not grantedEffect.hidden or grantedEffect.fromItem  or grantedEffect.fromTree then
 			gemIdLookup[grantedEffect.name:lower()] = grantedEffect.id
 		end 
 	--end
@@ -1751,6 +1762,8 @@ end
 local specialModList = {
 	--【中文化程序额外添加开始】
 	-- Legion modifiers
+	["主手总攻击速度额外加快 (%d+)%%"] = function(num) return { mod("Speed", "MORE", num,nil, ModFlag.Attack, { type = "Condition", var = "MainHandAttack" },{ type = "SkillType", skillType = SkillType.Attack }) } end,
+	["副手暴击率 %+([%d%.]+)%%"] = function(num) return { mod("CritChance", "BASE", num, { type = "Condition", var = "OffHandAttack" },{ type = "SkillType", skillType = SkillType.Attack }) } end,
 	["能量护盾回复率提高 (%d+)%%"] = function(num) return {  mod("EnergyShieldRecoveryRate", "INC", num)  } end,  
 	["魔力回复率提高 (%d+)%%"] = function(num) return {  mod("ManaRecoveryRate", "INC", num)  } end,  
 	["生命回复率提高 (%d+)%%"] = function(num) return {  mod("LifeRecoveryRate", "INC", num)  } end,  
@@ -2549,7 +2562,7 @@ local specialModList = {
 	["召唤生物获得等同 (%d+)%% 物理伤害的额外冰霜伤害"]=function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageGainAsCold", "BASE", num) })  } end,
 	["召唤生物获得等同于 (%d+)%% 物理伤害的额外火焰伤害"]=function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageGainAsFire", "BASE", num) })  } end,
 	["(%d+)%% 较少(.+)时间"]= function(_, num,skill_name)  return {  mod("Duration", "MORE", -num,{ type = "SkillName", skillName = FuckSkillActivityCnName(skill_name)})  } end,
-	["击败敌人时有 (%d+)%% 几率触发 (%d+) 级的【(.+)】"]= function(_, num,levelname,skill_name)return {   mod("ExtraSkill", "LIST", { type = "SkillName",skillName =FuckSkillActivityCnName(skill_name), level = levelname})   } end,
+	["击败敌人时有 (%d+)%% 几率触发 (%d+) 级的【(.+)】"]= function(_, num,levelname,skill_name)return extraSkill(skill_name, levelname) end, 
 	["物理伤害的 (%d+)%% 转换为闪电伤害"] = function(num) return { mod("PhysicalDamageConvertToLightning", "BASE", num) } end,
 	["闪电法术的 (%d+)%% 物理伤害转换为闪电伤害"] = function(num) return { mod("PhysicalDamageConvertToLightning", "BASE", num, nil, ModFlag.Spell, KeywordFlag.Lightning) } end,
 	["火焰法术的 (%d+)%% 物理伤害转换为火焰伤害"] = function(num) return { mod("PhysicalDamageConvertToFire", "BASE", num, nil, ModFlag.Spell, KeywordFlag.Fire) } end,
@@ -2595,6 +2608,9 @@ local specialModList = {
 	["近期内你若有使用战吼你和周围友军的攻击速度提高 (%d+)%%"] = function(num) return {  
 		 mod("ExtraAura", "LIST", { mod =  mod("Speed", "INC", num,nil, ModFlag.Attack) },{ type = "Condition", var = "UsedWarcryRecently" }) ,
 		 } end, 
+	["你和周围友军的物品稀有度提高 (%d+)%%"] = function(num) return {  
+		 mod("ExtraAura", "LIST", { mod =  mod("LootRarity", "INC", num) }) ,
+		 } end, 	 
 	["近期内你若有使用战吼，你和周围友军的攻击，施法和移动速度提高 (%d+)%%"] = function(num) return {  
 	 mod("ExtraAura", "LIST", { mod =  mod("Speed", "INC", num) },{ type = "Condition", var = "UsedWarcryRecently" }) ,
 	 mod("ExtraAura", "LIST", { mod =  mod("MovementSpeed", "INC", num) },{ type = "Condition", var = "UsedWarcryRecently" })
@@ -2917,12 +2933,6 @@ local specialModList = {
 	["冰霜新星有 %+(%d+)%% 冰冻几率"]= function(num) return {  mod("EnemyFreezeChance", "BASE", tonumber(num),{ type = "SkillName", skillName ="冰霜新星" })  } end, 
 	["冰霜之锤有 %+(%d+)%% 几率冰冻"]= function(num) return {  mod("EnemyFreezeChance", "BASE", tonumber(num),{ type = "SkillName", skillName ="冰霜之锤" })  } end, 
 	["【燃火烧尽】范围效果扩大 (%d+)%%"]= function(num) return {  mod("AreaOfEffect", "INC", tonumber(num),{ type = "SkillName", skillName ="烧毁" })  } end, 
-	["【燃火烧尽】最多 %+(%d+) 阶"]= function(num) return {
-			mod("Multiplier:IncinerateStage", "BASE", tonumber(num)/2, 0, 0, { type = "SkillPart", skillPart = 2 }),
-			mod("Multiplier:IncinerateStage", "BASE", tonumber(num), 0, 0, { type = "SkillPart", skillPart = 3 })	} end,	
-	["【烧毁】最多 %+(%d+) 阶"]= function(num) return {
-			mod("Multiplier:IncinerateStage", "BASE", tonumber(num)/2, 0, 0, { type = "SkillPart", skillPart = 2 }),
-			mod("Multiplier:IncinerateStage", "BASE", tonumber(num), 0, 0, { type = "SkillPart", skillPart = 3 })	} end,	
 	["回春图腾的光环效果提高 (%d+)%%"]= function(num) return {  mod("AuraEffect", "INC", tonumber(num),{ type = "SkillName", skillName ="回春图腾" })  } end, 
 	["火球有 %+(%d+)%% 几率点燃"]= function(num) return {  mod("EnemyIgniteChance", "BASE", tonumber(num),{ type = "SkillName", skillName ="火球" })  } end, 
 	["【([^\\x00-\\xff]*)】有 %+(%d+)%% 的几率点燃"]=  function(_,skill_name,num)  return {  mod("EnemyIgniteChance", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
@@ -3063,6 +3073,7 @@ local specialModList = {
 	["魔卫复苏伤害提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", tonumber(num),nil,ModFlag.Attack )},{ type = "SkillName", skillName = "魔卫复苏" })  } end, 
 	["复苏的魔卫最大生命提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "INC", tonumber(num) )},{ type = "SkillName", skillName = "魔卫复苏" })  } end, 
 	["魔卫的最大生命提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "INC", tonumber(num) )},{ type = "SkillName", skillName = "魔卫复苏" })  } end, 
+	["魔卫复苏最大生命提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "INC", tonumber(num) )},{ type = "SkillName", skillName = "魔卫复苏" })  } end, 
 	["药剂持续期间，(%d+)%% 承受的击中物理伤害转化为冰霜伤害"] = function(num) return {  mod("PhysicalDamageTakenAsCold", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
 	["([%+%-]?%d+)%% 闪避几率"]= function(num) return {  mod("EvadeChance", "BASE", num)  } end, 
 	["对投射物攻击的总闪避率额外提高 (%d+)%% "]= function(num) return {  mod("ProjectileEvadeChance", "MORE", num)  } end, 
@@ -3207,11 +3218,10 @@ local specialModList = {
 	 ["召唤图腾数量上限 ([%+%-]?%d+)"] = function(num) return { mod("ActiveTotemLimit", "BASE", num) } end, 
 	 ["召唤图腾的上限 ([%+%-]?%d+)"] = function(num) return { mod("ActiveTotemLimit", "BASE", num) } end, 
 	 ["召唤图腾的上限 ([%+%-]?%d+)。"] = function(num) return { mod("ActiveTotemLimit", "BASE", num) } end, 
+	 ["攻击的技能 ([%+%-]?%d+) 召唤图腾数量上限"] = function(num) return { mod("ActiveTotemLimit", "BASE", num, nil, 0, KeywordFlag.Attack) } end, 
 	 ["每个图腾额外提高 (%d+)%% 总伤害"] = function(num) return { mod("Damage", "MORE", num, { type = "PerStat", stat = "ActiveTotemLimit" }) } end, 
 	 ["每存在 1 个图腾，总伤害额外提高 (%d+)%%"] = function(num) return { mod("Damage", "MORE", num, { type = "PerStat", stat = "ActiveTotemLimit" }) } end, 
 	 ["([%+%-]?%d+)%% 额外总冰霜持续伤害效果"] = function(num) return { mod("ColdDotMultiplier", "BASE", num) } end,
-	 ["寒冬宝珠的最大等阶 %+(%d+)"] = function(num) return { mod("Multiplier:WinterOrbMaxStage", "BASE", num) } end,
-	 ["%+(%d+) 【寒冬宝珠】最大阶"] = function(num) return { mod("Multiplier:WinterOrbMaxStage", "BASE", num) } end,
 	["寒冬宝珠每阶可使范围效果扩大 (%d+)%%"] = function(num) return { mod("AreaOfEffect", "INC", num, { type = "SkillName", skillName = "寒冬宝珠"}, { type = "Multiplier", var = "WinterOrbStage" }) } end, 
 		["【寒冬宝珠】每一阶范围效果扩大 (%d+)%%"] = function(num) return { mod("AreaOfEffect", "INC", num, { type = "SkillName", skillName = "寒冬宝珠"}, { type = "Multiplier", var = "WinterOrbStage" }) } end,
 	 ["【旗帜技能】不保留魔力"] = { mod("SkillData", "LIST", { key = "manaCostForced", value = 0 }, { type = "SkillName", skillNameList = { "恐怖之旗", "战旗" } }) },
@@ -4455,7 +4465,7 @@ local specialModList = {
 	["若你的耐力球、狂怒球或暴击球总共有 (%d+) 个时，将伤害的 ([%d%.]+)%% 转化为生命偷取"] = function(_,num1,num2) return {  
 	mod("DamageLifeLeech", "BASE", tonumber(num2),{ type = "MultiplierThreshold", var = "TotalCharges", threshold = tonumber(num1) } )  } end, 
 	["你格挡时触发 (%d+) 级(.+)"] = function(num, _, skill) return extraSkill(skill, num) end,
-	["你的所有伤害均可造成冰冻"] = { flag("PhysicalCanFreeze"), flag("LightningCanFreeze"), flag("ColdCanFreeze"), flag("FireCanFreeze"), flag("ChaosCanFreeze") },
+	["你的所有伤害均可造成冰冻"] = { flag("PhysicalCanFreeze"), flag("LightningCanFreeze"),  flag("FireCanFreeze"), flag("ChaosCanFreeze") },
 	["格挡时使攻击者感电 (%d+) 秒"]  = {
 			mod("ShockBase", "BASE", 15, { type = "Condition", var = "BlockedRecently" }),
 			mod("EnemyModifier", "LIST", { mod = flag("Condition:Shocked") }, { type = "Condition", var = "BlockedRecently" } ),
@@ -4549,7 +4559,6 @@ local specialModList = {
 	["迷踪状态下，被击中时避免物理伤害的几率 %+(%d+)%%"]= function(num) return { 
 	 mod("AvoidPhysicalDamageChance", "BASE", num, { type = "Condition", var = "Phasing" } ) ,	 	  
 	  } end, 
-	["主手总攻击速度额外加快 (%d+)%%"] = function(num) return { mod("Speed", "MORE", num,nil, ModFlag.Attack,  { type = "InSlot", num = 1 }) } end,
 	["你在天赋树上连接到野蛮人的出发位置时，你获得：每秒生命再生 ([%d%.]+)%%"]= function(num) 
 	return {  mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "ConnectedTo野蛮人Start" })  } end,
 	["你在天赋树上连接到决斗者的出发位置时，你获得：近战打击距离 %+(%d+)"]= function(num) 
@@ -4652,6 +4661,28 @@ local specialModList = {
 	mod("EnemyBrittleDuration", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "HaveExposure" }),
 	mod("EnemySapDuration", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "HaveExposure" }),
 	} end, 
+	["受到防卫技能增益效果影响时，获得额外 ([%d%.]+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "AffectedByGuardSkill" })  } end, 
+	["受到非瓦尔防卫技能影响时获得 ([%d%.]+)%% 物理伤害减伤"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "AffectedByNonVaalGuardSkill" })  } end, 
+	["受到非瓦尔护卫技能影响时， ([%d%.]+)%% 物理伤害减伤"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "AffectedByNonVaalGuardSkill" })  } end, 
+	["受到非瓦尔护卫技能影响时，%+(%d+)%% 所有元素抗性和所有元素抗性上限"]= function(num) return {  
+	mod("ElementalResist", "BASE", num,{ type = "Condition", var = "AffectedByNonVaalGuardSkill" }),
+	mod("FireResistMax", "BASE", num,{ type = "Condition", var = "AffectedByNonVaalGuardSkill" }),
+	mod("ColdResistMax", "BASE", num,{ type = "Condition", var = "AffectedByNonVaalGuardSkill" }),
+	mod("LightningResistMax", "BASE", num,{ type = "Condition", var = "AffectedByNonVaalGuardSkill" }),
+	} end, 
+	["被防卫技能的增益效果影响时，每秒回复 ([%d%.]+)%% 生命"]= function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "AffectedByGuardSkill" })  } end, 
+	["当你使用非瓦尔的猛击技能攻击敌人时触发等级 20 的【塔赫亚神选】"] = function()return {   mod("ExtraSkill", "LIST", {  skillId ="SummonMirageChieftain", level = 20})   } end,
+	["每层威能法印增益效果都使暴击率提高 (%d+)%%"] = function(num) return { mod("CritChance", "INC", num, 0, 0, { type = "Multiplier", var = "SigilOfPowerStage", limit = 4 }, { type = "GlobalEffect", effectType = "Buff", effectName = "威能法印" } ) } end,
+	["【燃火烧尽】最多 %+(%d+) 阶"]= function(num) return {
+			mod("Multiplier:烧毁MaxStages", "BASE", tonumber(num)/2, 0, 0, { type = "SkillPart", skillPart = 2 }),
+			mod("Multiplier:烧毁MaxStages", "BASE", tonumber(num), 0, 0, { type = "SkillPart", skillPart = 3 })	} end,	
+	["【烧毁】最多 %+(%d+) 阶"]= function(num) return {
+			mod("Multiplier:烧毁MaxStages", "BASE", tonumber(num)/2, 0, 0, { type = "SkillPart", skillPart = 2 }),
+			mod("Multiplier:烧毁MaxStages", "BASE", tonumber(num), 0, 0, { type = "SkillPart", skillPart = 3 })	} end,	
+	["寒冬宝珠的最大等阶 %+(%d+)"] = function(num) return { mod("Multiplier:寒冬宝珠MaxStagesAfterFirst", "BASE", num) } end,
+	["%+(%d+) 【寒冬宝珠】最大阶"] = function(num) return { mod("Multiplier:寒冬宝珠MaxStagesAfterFirst", "BASE", num) } end,	
+	["冬潮烙印 %+(%d+) 最大层数"] = function(num) return { mod("Multiplier:冬潮烙印MaxStages", "BASE", num, { type = "SkillName", skillName = "冬潮烙印" }) } end,
+	["incinerate has %+(%d+) to maximum stages"] = function(num) return { mod("Multiplier:IncinerateMaxStages", "BASE", num, { type = "SkillName", skillName = "烧毁" }) } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded
@@ -5333,7 +5364,7 @@ local preSkillNameList = { }
 	 skillNameList["【旋涡】"] = { tag = { type = "SkillName", skillName = “漩涡” } }
 	  skillNameList["先祖战士长图腾"] = { tag = { type = "SkillName", skillName = 先祖战士长 } }
 	--【中文化程序额外添加结束】
-for gemId, gemData in pairs(data["3_0"].gems) do
+for gemId, gemData in pairs(data.gems) do
 	local grantedEffect = gemData.grantedEffect
 	if not grantedEffect.hidden and not grantedEffect.support then
 		local skillName = grantedEffect.name
@@ -5879,7 +5910,7 @@ for k, v in pairs(jewelThresholdFuncs) do
 end
 -- Generate list of cluster jewel skills
 local clusterJewelSkills = {}
-for baseName, jewel in pairs(data["3_0"].clusterJewels.jewels) do
+for baseName, jewel in pairs(data.clusterJewels.jewels) do
 	for skillId, skill in pairs(jewel.skills) do		
 		if skill.enchant then 
 		for i = 1,  #skill.enchant do
@@ -5902,16 +5933,16 @@ for baseName, jewel in pairs(data["3_0"].clusterJewels.jewels) do
 	
 	end
 end
-for notable in pairs(data["3_0"].clusterJewels.notableSortOrder) do
+for notable in pairs(data.clusterJewels.notableSortOrder) do
 	clusterJewelSkills["1 added passive skill is "..notable:lower()] = { mod("ClusterJewelNotable", "LIST", notable) }
 end
-for notable in pairs(data["3_0"].clusterJewels.notableSortOrder) do
+for notable in pairs(data.clusterJewels.notableSortOrder) do
 	clusterJewelSkills["其中 1 个增加的天赋为【"..notable:lower().."】"] = { mod("ClusterJewelNotable", "LIST", notable) }
 end
-for _, keystone in ipairs(data["3_0"].clusterJewels.keystones) do
+for _, keystone in ipairs(data.clusterJewels.keystones) do
 	clusterJewelSkills["adds "..keystone:lower()] = { mod("JewelData", "LIST", { key = "clusterJewelKeystone", value = keystone }) }
 end
-for _, keystone in ipairs(data["3_0"].clusterJewels.keystones) do
+for _, keystone in ipairs(data.clusterJewels.keystones) do
 	clusterJewelSkills["增加【"..keystone:lower().."】"] = { mod("JewelData", "LIST", { key = "clusterJewelKeystone", value = keystone }) }
 end
 -- Scan a line for the earliest and longest match from the pattern list

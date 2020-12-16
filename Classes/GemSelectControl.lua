@@ -325,6 +325,9 @@ function GemSelectClass:Draw(viewPort)
 				else
 					gemList[self.index] = nil
 				end
+				self:AddGemTooltip(gemInstance)
+				self.tooltip:AddSeparator(10)
+				
 				self.skillsTab.build:AddStatComparesToTooltip(self.tooltip, calcBase, output, "^7选择这个技能能获得:")
 				self.tooltip:Draw(x, y + height + 2 + (self.hoverSel - 1) * (height - 4) - scrollBar.offset, width, height - 4, viewPort)
 			end
@@ -451,7 +454,11 @@ self.tooltip:AddLine(16, string.format("^x7F7F7F品质: "..colorCodes.MAGIC.."+%
 	end
 	self.tooltip:AddSeparator(10)
 	if addReq then
-		self.skillsTab.build:AddRequirementsToTooltip(self.tooltip, gemInstance.reqLevel, gemInstance.reqStr, gemInstance.reqDex, gemInstance.reqInt)
+		local reqLevel = grantedEffect.levels[gemInstance.level].levelRequirement
+		local reqStr = calcLib.getGemStatRequirement(reqLevel, grantedEffect.support, gemInstance.gemData.reqStr)
+		local reqDex = calcLib.getGemStatRequirement(reqLevel, grantedEffect.support, gemInstance.gemData.reqDex)
+		local reqInt = calcLib.getGemStatRequirement(reqLevel, grantedEffect.support, gemInstance.gemData.reqInt)
+		self.skillsTab.build:AddRequirementsToTooltip(self.tooltip, reqLevel, reqStr, reqDex, reqInt)
 	end
 	if grantedEffect.description then
 		local wrap = main:WrapString(grantedEffect.description:gsub("。\n","。"):gsub("。","。\n"), 16, m_max(DrawStringWidth(16, "VAR", gemInstance.gemData.tagString), 400))

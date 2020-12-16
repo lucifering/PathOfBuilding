@@ -148,7 +148,7 @@ local resistForm = (damageType == "物理") and "物理伤害减伤" or "抗性"
 		t_insert(out, spString)
 	end 
 	if resist ~= 0 then
-		if sourceRes ~= 0 then
+		if sourceRes and sourceRes ~= 0 then
 			t_insert(out, s_format("敌人 %s: %d%% ^8(%s)", resistForm, resist, sourceRes))
 		else
 			t_insert(out, s_format("敌人 %s: %d%%", resistForm, resist))

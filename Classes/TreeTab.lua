@@ -21,7 +21,7 @@ local TreeTabClass = newClass("TreeTab", "ControlHost", function(self, build)
 	self.viewer = new("PassiveTreeView")
 
 	self.specList = { }
-	self.specList[1] = new("PassiveSpec", build, build.targetVersionData.latestTreeVersion)
+	self.specList[1] = new("PassiveSpec", build, latestTreeVersion)
 	self:SetActiveSpec(1)
 
 	self.anchorControls = new("Control", nil, 0, 0, 0, 20)
@@ -67,7 +67,7 @@ tooltip:AddLine(16, "^7切换到这个天赋树需要 "..respec.." 后悔点.")
 						end
 					end
 				end
-				tooltip:AddLine(16, "游戏版本: "..treeVersions[spec.treeVersion].short)
+				tooltip:AddLine(16, "游戏版本: "..treeVersions[spec.treeVersion].display)
 			end
 		end
 	end
@@ -136,8 +136,8 @@ self.controls.specConvertText = new("LabelControl", {"BOTTOMLEFT",self.controls.
 	self.controls.specConvertText.shown = function()
 		return self.showConvert
 	end
-self.controls.specConvert = new("ButtonControl", {"LEFT",self.controls.specConvertText,"RIGHT"}, 8, 0, 120, 20, "^2转化为  "..treeVersions[self.build.targetVersionData.latestTreeVersion].short, function()
-		local newSpec = new("PassiveSpec", self.build, self.build.targetVersionData.latestTreeVersion)
+self.controls.specConvert = new("ButtonControl", {"LEFT",self.controls.specConvertText,"RIGHT"}, 8, 0, 120, 20, "^2转化为  "..treeVersions[latestTreeVersion].display, function()
+		local newSpec = new("PassiveSpec", self.build, latestTreeVersion)
 		newSpec.title = self.build.spec.title
 		newSpec.jewels = copyTable(self.build.spec.jewels)
 		--newSpec:DecodeURL(self.build.spec:EncodeURL())
@@ -147,7 +147,7 @@ self.controls.specConvert = new("ButtonControl", {"LEFT",self.controls.specConve
 		t_insert(self.specList, self.activeSpec + 1, newSpec)
 		self:SetActiveSpec(self.activeSpec + 1)
 		self.modFlag = true
-main:OpenMessagePopup("天赋树转换完成", "天赋树转化为 "..treeVersions[self.build.targetVersionData.latestTreeVersion].short..".\n注意，游戏天赋树的版本变动可能回导致一些天赋点在转化后会被取消.\n\n你可以使用左下方的天赋树切换来切换到旧版本的.")
+main:OpenMessagePopup("天赋树转换完成", "天赋树转化为 "..treeVersions[latestTreeVersion].display..".\n注意，游戏天赋树的版本变动可能回导致一些天赋点在转化后会被取消.\n\n你可以使用左下方的天赋树切换来切换到旧版本的.")
 	end)
 end)
 
@@ -203,7 +203,8 @@ function TreeTabClass:Draw(viewPort, inputEvents)
 	self.controls.specSelect.selIndex = self.activeSpec
 	wipeTable(self.controls.specSelect.list)
 	for id, spec in ipairs(self.specList) do
-		t_insert(self.controls.specSelect.list, (spec.treeVersion ~= self.build.targetVersionData.latestTreeVersion and ("["..treeVersions[spec.treeVersion].short.."] ") or "")..(spec.title or "Default"))
+		t_insert(self.controls.specSelect.list, (spec.treeVersion ~= latestTreeVersion and ("["..treeVersions[spec.treeVersion].display.."] ") or "")..(spec.title or "Default"))
+
 	end
 	t_insert(self.controls.specSelect.list, "管理天赋树...")
 	
@@ -240,7 +241,7 @@ function TreeTabClass:Load(xml, dbFileName)
 	self.specList = { }
 	if xml.elem == "Spec" then
 		-- Import single spec from old build
-		self.specList[1] = new("PassiveSpec", self.build, self.build.targetVersionData.defaultTreeVersion)
+		self.specList[1] = new("PassiveSpec", self.build, defaultTreeVersion)
 		self.specList[1]:Load(xml, dbFileName)
 		self.activeSpec = 1
 		self.build.spec = self.specList[1]
@@ -250,17 +251,17 @@ function TreeTabClass:Load(xml, dbFileName)
 		if type(node) == "table" then
 			if node.elem == "Spec" then
 				if node.attrib.treeVersion and not treeVersions[node.attrib.treeVersion] then
-					main:OpenMessagePopup("Unknown Passive Tree Version", "The build you are trying to load uses an unrecognised version of the passive skill tree.\nYou may need to update the program before loading this build.")
+					main:OpenMessagePopup("未知天赋树版本", "The build you are trying to load uses an unrecognised version of the passive skill tree.\nYou may need to update the program before loading this build.")
 					return true
 				end
-				local newSpec = new("PassiveSpec", self.build, node.attrib.treeVersion or self.build.targetVersionData.defaultTreeVersion)			
+				local newSpec = new("PassiveSpec", self.build, node.attrib.treeVersion or defaultTreeVersion)			
 				newSpec:Load(node, dbFileName)
 				t_insert(self.specList, newSpec)
 			end
 		end
 	end
 	if not self.specList[1] then
-		self.specList[1] = new("PassiveSpec", self.build, self.build.targetVersionData.latestTreeVersion)
+		self.specList[1] = new("PassiveSpec", self.build, latestTreeVersion)
 	end
 	self:SetActiveSpec(tonumber(xml.attrib.activeSpec) or 1)
 end
@@ -313,7 +314,7 @@ function TreeTabClass:SetActiveSpec(specId)
 			end
 		end
 	end
-	self.showConvert = curSpec.treeVersion ~= self.build.targetVersionData.latestTreeVersion
+	self.showConvert = curSpec.treeVersion ~= latestTreeVersion
 	if self.build.itemsTab.itemOrderList[1] then
 		-- Update item slots if items have been loaded already
 		self.build.itemsTab:PopulateSlots()
@@ -438,7 +439,7 @@ function TreeTabClass:ModifyNodePopup(selectedNode)
 	if not self.build.latestTree.legion.editedNodes then
 		self.build.latestTree.legion.editedNodes = { }
 	end
-	print(selectedNode.conqueredBy.conqueror.type)
+	
 	local function buildMods(selectedNode)
 		wipeTable(modGroups)
 		for _, node in pairs(self.build.latestTree.legion.nodes) do
@@ -498,9 +499,7 @@ function TreeTabClass:ModifyNodePopup(selectedNode)
 		if not self.build.latestTree.legion.editedNodes[selectedNode.conqueredBy.id] then			
 			t_insert(self.build.latestTree.legion.editedNodes, selectedNode.conqueredBy.id, {})
 		end
-		print("selectedNode.id="..selectedNode.id)
-		print(self.build.latestTree.legion.editedNodes[selectedNode.conqueredBy.id])
-		print(selectedNode)
+		
 		t_insert(self.build.latestTree.legion.editedNodes[selectedNode.conqueredBy.id], selectedNode.id, copyTable(selectedNode, true))
 	end
 
@@ -673,7 +672,7 @@ function TreeTabClass:ShowPowerReport()
 				powerStr = nodePowerStr,
 				id = node.id,
 				type = node.type,
-				pathDist = "Cluster"
+				pathDist = "星团"
 			})
 		end
 	end

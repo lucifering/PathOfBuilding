@@ -1908,17 +1908,17 @@ name = "旋风斩",
 	},
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
-	parts = {
+parts = {
 		{
 name = "不叠层",
 		},
 		{
-name = "最大阶数",
+name = "最大阶",
 		},
 	},
 	statMap = {
 		["cyclone_max_number_of_stages"] = {
-			mod("Multiplier:CycloneMaxStages", "BASE", nil),
+			mod("Multiplier:旋风斩MaxStages", "BASE", nil),
 		},
 		["cyclone_area_of_effect_+%_per_additional_melee_range"] = {
 			mod("AreaOfEffect", "INC", nil, 0, 0, { type = "Multiplier", var = "AdditionalMeleeRange"}),
@@ -1935,7 +1935,7 @@ name = "最大阶数",
 		if activeSkill.skillFlags.weapon2Attack then
 			rangePlus = math.max(rangePlus, activeSkill.actor.weaponData2.range and activeSkill.skillModList:Sum("BASE", activeSkill.weapon2Cfg, "MeleeWeaponRange") or activeSkill.skillModList:Sum("BASE", activeSkill.skillCfg, "UnarmedRange"))
 		end
-		activeSkill.skillModList:NewMod("Multiplier:AdditionalMeleeRange", "BASE", rangePlus, "Skill:Cyclone")
+		activeSkill.skillModList:NewMod("Multiplier:AdditionalMeleeRange", "BASE", rangePlus, "Skill:旋风斩")
 	end,
 	baseFlags = {
 		attack = true,
@@ -1944,8 +1944,7 @@ name = "最大阶数",
 	},
 	baseMods = {
 		skill("radius", 11),
-		mod("Multiplier:CycloneStage", "BASE", 1, 0, 0, { type = "Multiplier", var = "CycloneMaxStages" }, { type = "SkillPart", skillPart = 2 }),
-		skill("radiusExtra", 1, { type = "Multiplier", var = "CycloneStage" }),
+		skill("radiusExtra", 1, { type = "Multiplier", var = "旋风斩Stage" }),
 	},
 	qualityStats = {
 		Default = {
@@ -6253,20 +6252,10 @@ description = "对前方一小块区域进行攻击, 每击中一个敌人将会
 	},
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
-	parts = {
-		{
-name = "0 阶",
-		},
-		{
-name = "4 阶",
-		},
-		{ 
-name = "8 阶",
-		},
-	},
+	
 	statMap = {
 		["reave_area_of_effect_+%_final_per_stage"] = {
-			mod("AreaOfEffect", "MORE", nil, 0, 0, { type = "Multiplier", var = "ReaveStage" }),
+			mod("AreaOfEffect", "MORE", nil, 0, 0, { type = "Multiplier", var = "冲击波Stage" }),
 		},
 	},
 	baseFlags = {
@@ -6276,8 +6265,7 @@ name = "8 阶",
 	},
 	baseMods = {
 		skill("radius", 20),
-		mod("Multiplier:ReaveStage", "BASE", 4, 0, 0, { type = "SkillPart", skillPart = 2 }),
-		mod("Multiplier:ReaveStage", "BASE", 8, 0, 0, { type = "SkillPart", skillPart = 3 }),
+		mod("Multiplier:冲击波MaxStages", "BASE", 8),
 	},
 	qualityStats = {
 		Default = {
@@ -6355,20 +6343,10 @@ description = "重复对不同方向进行范围攻击. 每击中一个敌人将
 	},
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
-	parts = {
-		{
-name = "不叠层",
-		},
-		{
-name = "4 阶",
-		},
-		{ 
-name = "8 阶",
-		},
-	},
+	
 	statMap = {
 		["reave_area_of_effect_+%_final_per_stage"] = {
-			mod("AreaOfEffect", "MORE", nil, 0, 0, { type = "Multiplier", var = "ReaveStage" }),
+			mod("AreaOfEffect", "MORE", nil, 0, 0, { type = "Multiplier", var = "冲击波Stage" }),
 		},
 	},
 	baseFlags = {
@@ -6379,8 +6357,7 @@ name = "8 阶",
 	},
 	baseMods = {
 		skill("radius", 12),
-		mod("Multiplier:ReaveStage", "BASE", 4, 0, 0, { type = "SkillPart", skillPart = 2 }),
-		mod("Multiplier:ReaveStage", "BASE", 8, 0, 0, { type = "SkillPart", skillPart = 3 }),
+		mod("Multiplier:冲击波MaxStages", "BASE", 8),
 	},
 	qualityStats = {
 		Default = {
@@ -6545,12 +6522,12 @@ description = "通过吟唱给一支箭矢灌注混沌能量，可以蓄力积�
 	},
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
+	initialFunc = function(activeSkill, output)
+		activeSkill.skillData.dpsMultiplier = 1 / math.max(activeSkill.skillModList:Sum("BASE", cfg, "Multiplier:天灾之箭Stage"), 1)
+	end,
 	parts = {
 		{
-name = "0 阶",
-		},
-		{
-name = "5 阶释放",
+name = "释放",
 		},
 		{ 
 name = "荆棘箭",
@@ -6558,10 +6535,10 @@ name = "荆棘箭",
 	},
 	statMap = {
 		["virulent_arrow_damage_+%_final_per_stage"] = {
-			mod("Damage", "MORE", nil, 0, bit.bor(KeywordFlag.Hit, KeywordFlag.Ailment), { type = "Multiplier", var = "ScourgeArrowStage" }),
+			mod("Damage", "MORE", nil, 0, bit.bor(KeywordFlag.Hit, KeywordFlag.Ailment), { type = "Multiplier", var = "天灾之箭Stage" }),
 		},
 		["virulent_arrow_pod_projectile_damage_+%_final"] = {
-			mod("Damage", "MORE", nil, 0, 0, { type= "SkillPart", skillPart = 3 }),
+			mod("Damage", "MORE", nil, 0, 0, { type= "SkillPart", skillPart = 2 }),
 		},
 	},
 	baseFlags = {
@@ -6569,8 +6546,7 @@ name = "荆棘箭",
 		projectile = true,
 	},
 	baseMods = {
-		mod("Multiplier:ScourgeArrowStage", "BASE", 5, 0, 0, { type = "SkillPart", skillPartList = { 2, 3 } }),
-		skill("dpsMultiplier", 0.2, { type = "SkillPart", skillPart = 2 }),
+		mod("Multiplier:天灾之箭MaxStages", "BASE", 5),
 	},
 	qualityStats = {
 		Default = {

@@ -200,6 +200,7 @@ local function doActorAttribsPoolsConditions(env, actor)
 		if actor.mainSkill.skillFlags.mine then
 			condList["DetonatedMinesRecently"] = true
 		end
+		
 		if modDB:Sum("BASE", nil, "ScorchChance") > 0 or modDB:Flag(nil, "CritAlwaysAltAilments") and not modDB:Flag(nil, "NeverCrit") then
 			condList["CanInflictScorch"] = true
 		end
@@ -485,11 +486,7 @@ local function doActorMisc(env, actor)
 					modDB:NewMod("Evasion", "MORE", effect, "护体")
 			else 
 					local effect = m_floor(20 * (1 + modDB:Sum("INC", nil, "FortifyEffectOnSelf", "BuffEffectOnSelf") / 100))
-					if env.build.targetVersion == "2_6" then
-						modDB:NewMod("DamageTakenWhenHit", "INC", -effect, "护体")
-					else
-						modDB:NewMod("DamageTakenWhenHit", "MORE", -effect, "护体")						
-					end
+					modDB:NewMod("DamageTakenWhenHit", "MORE", -effect, "护体")			
 					
 			end
 				
@@ -644,11 +641,9 @@ function calcs.perform(env)
 		env.minion.modDB:NewMod("PhysicalDamageReduction", "BASE", 15, "Base", { type = "Multiplier", var = "EnduranceCharge" })
 		env.minion.modDB:NewMod("ElementalResist", "BASE", 15, "Base", { type = "Multiplier", var = "EnduranceCharge" })
 		env.minion.modDB:NewMod("ProjectileCount", "BASE", 1, "Base")
-		if env.build.targetVersion ~= "2_6" then
-			env.minion.modDB:NewMod("Damage", "MORE", -50, "Base", 0, KeywordFlag.Poison)
-			env.minion.modDB:NewMod("Damage", "MORE", -50, "Base", 0, KeywordFlag.Ignite)
-			env.minion.modDB:NewMod("SkillData", "LIST", { key = "bleedBasePercent", value = 70/6 }, "Base")
-		end
+		env.minion.modDB:NewMod("Damage", "MORE", -50, "Base", 0, KeywordFlag.Poison)
+		env.minion.modDB:NewMod("Damage", "MORE", -50, "Base", 0, KeywordFlag.Ignite)
+		env.minion.modDB:NewMod("SkillData", "LIST", { key = "bleedBasePercent", value = 70/6 }, "Base")
 		env.minion.modDB:NewMod("Damage", "MORE", 500, "Base", 0, KeywordFlag.Bleed, { type = "ActorCondition", actor = "enemy", var = "Moving" })
 		for _, mod in ipairs(env.minion.minionData.modList) do
 			env.minion.modDB:AddMod(mod)
@@ -717,7 +712,10 @@ function calcs.perform(env)
 		end
 		if activeSkill.skillFlags.brand then
 			local attachLimit = env.player.mainSkill.skillModList:Sum("BASE", env.player.mainSkill.skillCfg, "BrandsAttachedLimit")
-			if activeSkill.activeEffect.grantedEffect.name == "冬潮烙印" then
+			
+			if activeSkill.activeEffect.grantedEffect.name == "奥法烙印" then
+				attachLimit = activeSkill.skillModList:Sum("BASE", activeSkill.skillCfg, "BrandsAttachedLimit")
+			elseif  activeSkill.activeEffect.grantedEffect.name == "冬潮烙印" then
 				attachLimit = attachLimit + 1
 			end
 			
@@ -733,6 +731,7 @@ function calcs.perform(env)
 			
 			 
 		end
+		
 		-- The actual hexes as opposed to hex related skills all have the curse flag. Type31 is to remove blasphemy
 		-- Note that this doesn't work for triggers yet, insufficient support
 		if activeSkill.skillFlags.hex and activeSkill.skillFlags.curse and not activeSkill.skillTypes[SkillType.Type31] then
@@ -1215,6 +1214,7 @@ function calcs.perform(env)
 
 	local buffs = { }
 	env.buffs = buffs
+	local guards = { }
 	local minionBuffs = { }
 	env.minionBuffs = minionBuffs
 	local debuffs = { }
@@ -1263,6 +1263,19 @@ function calcs.perform(env)
 						local more = modStore:More(skillCfg, "BuffEffect") * env.minion.modDB:More(nil, "BuffEffectOnSelf")
 						srcList:ScaleAddList(buff.modList, (1 + inc / 100) * more)
 						mergeBuff(srcList, minionBuffs, buff.name)					 
+					end
+				end
+			elseif buff.type == "Guard" then
+				if env.mode_buffs and (not activeSkill.skillFlags.totem or buff.allowTotemBuff) then
+					local skillCfg = buff.activeSkillBuff and skillCfg
+					local modStore = buff.activeSkillBuff and skillModList or modDB
+				 	if not buff.applyNotPlayer then
+						activeSkill.buffSkill = true
+						local srcList = new("ModList")
+						local inc = modStore:Sum("INC", skillCfg, "BuffEffect", "BuffEffectOnSelf", "BuffEffectOnPlayer")
+						local more = modStore:More(skillCfg, "BuffEffect", "BuffEffectOnSelf")
+						srcList:ScaleAddList(buff.modList, (1 + inc / 100) * more)
+						mergeBuff(srcList, guards, buff.name)
 					end
 				end
 			elseif buff.type == "Aura" then
@@ -1549,6 +1562,30 @@ function calcs.perform(env)
 		end
 	end
 
+-- Process guard buffs
+	local guardSlots = { }
+	local nonVaal = false
+	for name, modList in pairs(guards) do
+		if name == "瓦尔.熔岩护盾" then
+			wipeTable(guardSlots)
+			nonVaal = false
+			t_insert(guardSlots, { name = name, modList = modList })
+			break
+		elseif name:match("^瓦尔") then
+			t_insert(guardSlots, { name = name, modList = modList })
+		elseif not nonVaal then
+			t_insert(guardSlots, { name = name, modList = modList })
+			nonVaal = true
+		end
+	end
+	if nonVaal then
+		modDB.conditions["AffectedByNonVaalGuardSkill"] = true
+	end
+	for _, guard in ipairs(guardSlots) do
+		modDB.conditions["AffectedByGuardSkill"] = true
+		modDB.conditions["AffectedBy"..guard.name:gsub(" ","")] = true
+		mergeBuff(guard.modList, buffs, guard.name)
+	end
 	-- Apply buff/debuff modifiers
 	for _, modList in pairs(buffs) do
 		modDB:AddList(modList)
@@ -1591,6 +1628,48 @@ function calcs.perform(env)
 			env.minion.modDB:AddList(slot.minionBuffModList)
 		end
 	end
+	
+	
+	
+	for _, activeSkill in ipairs(env.player.activeSkillList) do -- Do another pass on the SkillList to catch effects of buffs, if needed
+		if activeSkill.activeEffect.grantedEffect.name == "枯萎" and activeSkill.skillPart == 2 then
+			local rate = (1 / 0.3) * calcLib.mod(activeSkill.skillModList, activeSkill.skillCfg, "Speed")
+			local duration = calcSkillDuration(activeSkill.skillModList, activeSkill.skillCfg, activeSkill.skillData, env.player, enemyDB)
+			local maximum = m_min((m_floor(rate * duration) - 1), 19)
+			activeSkill.skillModList:NewMod("Multiplier:枯萎MaxStagesAfterFirst", "BASE", maximum, "Base")
+			activeSkill.skillModList:NewMod("Multiplier:枯萎StageAfterFirst", "BASE", maximum, "Base")
+		end
+		if activeSkill.activeEffect.grantedEffect.name == "忏悔烙印" and activeSkill.skillPart == 2 then
+			local rate = 1 / (activeSkill.skillData.repeatFrequency / (1 + env.player.mainSkill.skillModList:Sum("INC", env.player.mainSkill.skillCfg, "Speed", "BrandActivationFrequency") / 100) / activeSkill.skillModList:More(activeSkill.skillCfg, "BrandActivationFrequency"))
+			local duration = calcSkillDuration(activeSkill.skillModList, activeSkill.skillCfg, activeSkill.skillData, env.player, enemyDB)
+			local ticks = m_min((m_floor(rate * duration) - 1), 19)
+			activeSkill.skillModList:NewMod("Multiplier:忏悔烙印MaxStagesAfterFirst", "BASE", ticks, "Base")
+			activeSkill.skillModList:NewMod("Multiplier:忏悔烙印StageAfterFirst", "BASE", ticks, "Base")
+		end
+		if activeSkill.activeEffect.grantedEffect.name == "灼热光线" and activeSkill.skillPart == 2 then
+			local rate = (1 / 0.5) * calcLib.mod(activeSkill.skillModList, activeSkill.skillCfg, "Speed")
+			local duration = calcSkillDuration(activeSkill.skillModList, activeSkill.skillCfg, activeSkill.skillData, env.player, enemyDB)
+			local maximum = m_min((m_floor(rate * duration) - 1), 7)
+			activeSkill.skillModList:NewMod("Multiplier:灼热光线MaxStagesAfterFirst", "BASE", maximum, "Base")
+			activeSkill.skillModList:NewMod("Multiplier:灼热光线StageAfterFirst", "BASE", maximum, "Base")
+			if maximum >= 7 then
+				activeSkill.skillModList:NewMod("Condition:灼热光线MaxStages", "FLAG", true, "Config")
+				enemyDB:NewMod("FireResist", "BASE", -25, "灼热光线", { type = "GlobalEffect", effectType = "Debuff" } )
+			end
+		end
+	end
+	
+	-- Fix the configured impale stacks on the enemy
+	-- 		If the config is missing (blank), then use the maximum number of stacks
+	--		If the config is larger than the maximum number of stacks, replace it with the correct maximum
+	local maxImpaleStacks = modDB:Sum("BASE", nil, "ImpaleStacksMax")
+	if not enemyDB:HasMod("BASE", nil, "Multiplier:ImpaleStacks") then
+		enemyDB:NewMod("Multiplier:ImpaleStacks", "BASE", maxImpaleStacks, "Config", { type = "Condition", var = "Combat" })
+	elseif enemyDB:Sum("BASE", nil, "Multiplier:ImpaleStacks") > maxImpaleStacks then
+		enemyDB:ReplaceMod("Multiplier:ImpaleStacks", "BASE", maxImpaleStacks, "Config", { type = "Condition", var = "Combat" })
+	end
+	
+	
 	
 	output.MaximumShock = modDB:Override(nil, "ShockMax") or 50
 -- Calculates maximum Shock, then applies the strongest Shock effect to the enemy

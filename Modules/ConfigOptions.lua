@@ -204,7 +204,7 @@ modList:NewMod("SkillData", "LIST", { key = "skeletonLife", value = val }, "Conf
 	end },
 { label = "冰霜护盾:", ifSkill = "冰霜护盾" },
 	{ var = "frostShieldStages", type = "count", label = "层数:", ifSkill = "冰霜护盾", apply = function(val, modList, enemyModList)
-		modList:NewMod("Multiplier:FrostShieldStage", "BASE", val, "Config")
+		modList:NewMod("Multiplier:冰霜护盾Stage", "BASE", val, "Config")
 	end },
 { label = "【召唤高等时空先驱者】:", ifSkill =  "召唤高等时空先驱者" },
 	{ var = "greaterHarbingerOfTimeSlipstream", type = "check", label = "开启时空先驱者光环?:", ifSkill =  "召唤高等时空先驱者", 
@@ -268,7 +268,7 @@ modList:NewMod("Condition:CastOnFrostbolt", "FLAG", true, "Config", { type = "Sk
 	end },
 { label = "威能法印:", ifSkill = "威能法印" },
 	{ var = "sigilOfPowerStages", type = "count", label = "层数:", ifSkill = "威能法印", apply = function(val, modList, enemyModList)
-		modList:NewMod("Multiplier:SigilOfPowerStage", "BASE", val, "Config")
+		modList:NewMod("Multiplier:威能法印Stage", "BASE", val, "Config")
 	end },
 { label = "【虹吸陷阱】:", ifSkill = "虹吸陷阱" },
 { var = "siphoningTrapAffectedEnemies", type = "count", label = "# 受到影响的敌人数量:", ifSkill = "虹吸陷阱", tooltip = "设置受到【虹吸陷阱】影响的敌人数量.", apply = function(val, modList, enemyModList)
@@ -285,7 +285,7 @@ modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", 
 	end },
 { label = "狙击:", ifSkill = "狙击" },
 	{ var = "configSnipeStages", type = "count", label = "狙击层数:", ifSkill = "狙击", tooltip = "释放狙击之前吟唱的层数.", apply = function(val, modList, enemyModList)
-		modList:NewMod("Multiplier:SnipeStage", "BASE", m_min(val, 6), "Config")
+		modList:NewMod("Multiplier:狙击Stage", "BASE", m_min(val, 6), "Config")
 	end },
 { label = "【召唤幽狼】:", ifSkill = "召唤幽狼" },
 	{ var = "configSpectralWolfCount", type = "count", label = "幽狼数量:", 
@@ -297,7 +297,7 @@ modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", 
 		modList:NewMod("SkillData", "LIST", { key = "dpsMultiplier", value = val }, "Config", { type = "SkillId", skillId = "GhostPirateBladeVortexSpectre" })
 	end },
 { var = "raiseSpectreKaomFireBeamTotemStage", type = "count", label = "灼热射线图腾数量:", ifSkill = "KaomFireBeamTotemSpectre", apply = function(val, modList, enemyModList)
-		modList:NewMod("Multiplier:KaomFireBeamTotemStage", "BASE", val, "Config")
+		modList:NewMod("Multiplier:灼热奔流图腾Stage", "BASE", val, "Config")
 	end },
 	
 { var = "changedStance", type = "check", label = "最近有切换姿态模式?", ifCond = "ChangedStanceRecently", apply = function(val, modList, enemyModList)
@@ -371,7 +371,7 @@ ifCond = "CanWither", apply = function(val, modList, enemyModList)
 { label = "【狙击】:", ifCond = "CanSnipeStage"},
 { var = "snipeStageCount", type = "count", label = "# 【狙击】层数:", tooltip="持续吟唱给弓箭充能，积累层数，最大 6 层。",
 ifCond = "CanSnipeStage", apply = function(val, modList, enemyModList)
-		modList:NewMod("Multiplier:SnipeStage", "BASE", m_min(val, 6), "Config", { type = "Condition", var = "Effective" })
+		modList:NewMod("Multiplier:狙击Stage", "BASE", m_min(val, 6), "Config", { type = "Condition", var = "Effective" })
 	end },
 	
 { var = "affectedByHeraldCount", type = "count", label = "你受到几个捷光环影响:", ifSkillList = {"灰烬之捷","寒冰之捷","闪电之捷","纯净之捷","苦痛之捷"}, tooltip = "设置受到几个捷光环影响.\n默认是 0; 最大是  5.", apply = function(val, modList, enemyModList)

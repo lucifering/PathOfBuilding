@@ -509,8 +509,10 @@ local modNameList = {
 	["击退距离"] = "EnemyKnockbackDistance", --备注：knockback distance
 	-- Auras/curses/buffs
 	["非诅咒类光环的效果"] = "AuraEffect", --备注：aura effect
-	["effect of non-curse auras you cast"] = "AuraEffect",
-	["effect of non-curse auras from your skills"] = "AuraEffect",
+	["effect of non-curse auras you cast"] = { "AuraEffect", tagList = { { type = "SkillType", skillType = SkillType.Aura }, { type = "SkillType", skillType = SkillType.AppliesCurse, neg = true } } },
+	["effect of non-curse auras from your skills"] = { "AuraEffect", tagList = { { type = "SkillType", skillType = SkillType.Aura }, { type = "SkillType", skillType = SkillType.AppliesCurse, neg = true } } },
+	["effect of non-curse auras from your skills on your minions"] = { "AuraEffectOnSelf", tagList = { { type = "SkillType", skillType = SkillType.Aura }, { type = "SkillType", skillType = SkillType.AppliesCurse, neg = true } }, addToMinion = true },
+	["effect of non-curse auras"] = { "AuraEffect", tag = { type = "SkillType", skillType = SkillType.AppliesCurse, neg = true } },	
 	["你所施放诅咒的效果"] = "CurseEffect", --备注：effect of your curses
 	["你身上的光环效果"] = "AuraEffectOnSelf", --备注：effect of auras on you
 	["召唤生物身上的光环效果"] = { "AuraEffectOnSelf", addToMinion = true }, --备注：effect of auras on your minions
@@ -1912,7 +1914,7 @@ local specialModList = {
 	["近期内你若有被击中，则每秒回复 ([%d%.]+)%% 生命"] = function(num) return { 
 	mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "BeenHitRecently" } )
 	  } end,  
-	["非诅咒类光环的效果提高 (%d+)%%"]= function(num) return {  mod("AuraEffect", "INC", tonumber(num))  } end,
+	["非诅咒类光环的效果提高 (%d+)%%"]= function(num) return {  mod("AuraEffect", "INC", tonumber(num),{ type = "SkillType", skillType = SkillType.Aura }, { type = "SkillType", skillType = SkillType.AppliesCurse, neg = true } )  } end,
 	["所有身上装备的物品皆为已腐化时，每秒回复 (%d+) 能量护盾"] = function(num) return {  mod("EnergyShieldRegen", "BASE", num,{ type = "MultiplierThreshold", var = "NonCorruptedItem", threshold = 0, upper = true })  } end,
 	["感电时，每秒回复 (%d+)%% 能量护盾"] = function(num) return {  mod("EnergyShieldRegenPercent", "BASE", num,{ type = "Condition", var = "Shocked" })  } end,
 	["此物品上装备的【技能石】品质 %+(%d+)%%"] = function(num) return { mod("GemProperty", "LIST",  { keyword = "all", key = "quality", value = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
@@ -2885,7 +2887,7 @@ local specialModList = {
 	["【([^\\x00-\\xff]*)】发射 (%d+) 支额外的箭矢"]= function(_,skill_name,num) return {  mod("ProjectileCount", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
 	["【([^\\x00-\\xff]*)】穿透 (%d+) 个额外的额外的目标"]= function(_,skill_name,num) return {  mod("PierceCount", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
 	["([^\\x00-\\xff]*)光环的效果提高 (%d+)%%"]= function(_, skill_name,num) return { 
-	skill_name=="非诅咒类" and   mod("AuraEffect", "INC", tonumber(num))   or  mod("AuraEffect", "INC", tonumber(num),  { type = "SkillName", skillName = FuckSkillActivityCnName(skill_name) })
+	skill_name=="非诅咒类" and   mod("AuraEffect", "INC", tonumber(num),{ type = "SkillType", skillType = SkillType.Aura }, { type = "SkillType", skillType = SkillType.AppliesCurse, neg = true } )   or  mod("AuraEffect", "INC", tonumber(num),  { type = "SkillName", skillName = FuckSkillActivityCnName(skill_name) })
 	 } end,
 	["【(.+)】的光环效果提高 (%d+)%%"]= function(_, skill_name,num) return {  mod("AuraEffect", "INC", tonumber(num),  { type = "SkillName", skillName = FuckSkillActivityCnName(skill_name) })  } end,
 	["此物品上的技能石总攻击和施法速度额外提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Speed", "MORE", tonumber(num)) },  { type = "SocketedIn", slotName ="{SlotName}"} ) } end,
@@ -3833,7 +3835,7 @@ local specialModList = {
 	["从你职业的出发位置到该珠宝槽之间\n每一点配置的天赋就使该珠宝插槽的效果提高 (%d+)%%"] = function(num) return { mod("JewelData", "LIST", { key = "jewelIncEffectFromClassStart", value = num }) } end,
 	["从你职业的出发位置到该珠宝槽之间每一点配置的天赋就使该珠宝插槽的效果提高 (%d+)%%"] = function(num) return { mod("JewelData", "LIST", { key = "jewelIncEffectFromClassStart", value = num }) } end,
 	["每一点配置的天赋就使该珠宝插槽的效果提高 (%d+)%%"] = function(num) return { mod("JewelData", "LIST", { key = "jewelIncEffectFromClassStart", value = num }) } end,
-	["你技能的非诅咒类光环效果提高 (%d+)%%"]= function(num) return {  mod("AuraEffect", "INC", tonumber(num),nil,nil,KeywordFlag.Aura)  } end,
+	["你技能的非诅咒类光环效果提高 (%d+)%%"]= function(num) return {  mod("AuraEffect", "INC", tonumber(num),{ type = "SkillType", skillType = SkillType.Aura }, { type = "SkillType", skillType = SkillType.AppliesCurse, neg = true } )  } end,
 	["每受到一个捷技能影响，你身上的来自光环技能的增益效果提高 (%d+)%%"] =function(num) return {  mod("AuraEffectOnSelf", "INC", num,nil,nil,KeywordFlag.Aura,{ type = "Multiplier", var = "AffectedByHeraldCount" }  )  } end,
 	["每有一个影响你的捷效果都使你身上来自技能的光环增益效果提高 (%d+)%%"] =function(num) return {  mod("AuraEffectOnSelf", "INC", num,nil,nil,KeywordFlag.Aura,{ type = "Multiplier", var = "AffectedByHeraldCount" }  )  } end,
 	["你的光环技能对自身造成的总效果额外提高 (%d+)%%"]= function(num) return { 
@@ -4181,7 +4183,7 @@ local specialModList = {
 		["若近期战吼有献祭怒火，被战吼增助的攻击总伤害额外提高 (%d+)%%"] = function(num) return { mod("ExertIncrease", "MORE", num, nil, ModFlag.Attack, 0) } end,
 		["被战吼增助的攻击有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("ExertDoubleDamageChance", "BASE", num, nil, ModFlag.Attack, 0) } end,
 	["你应用到敌人身上的非诅咒光环效果提高 (%d+)%%"] = function(num) return {
-			mod("DebuffEffect", "INC", num, { type = "SkillType", skillType = SkillType.Aura }),
+			mod("DebuffEffect", "INC", num, { type = "SkillType", skillType = SkillType.AppliesCurse, neg = true }),
 			mod("AuraEffect", "INC", num, { type = "SkillName", skillName = "死神光环" }),
 		} end,
 	["放置的旗帜可使你和周围友军的攻击伤害提高 (%d+)%%"] = function(num) return { mod("ExtraAura", "LIST", { mod = mod("Damage", "INC", num, nil, ModFlag.Attack) }, { type = "Condition", var = "BannerPlanted" }) } end,
@@ -4682,6 +4684,23 @@ local specialModList = {
 	["寒冬宝珠的最大等阶 %+(%d+)"] = function(num) return { mod("Multiplier:寒冬宝珠MaxStagesAfterFirst", "BASE", num) } end,
 	["%+(%d+) 【寒冬宝珠】最大阶"] = function(num) return { mod("Multiplier:寒冬宝珠MaxStagesAfterFirst", "BASE", num) } end,	
 	["冬潮烙印 %+(%d+) 最大层数"] = function(num) return { mod("Multiplier:冬潮烙印MaxStages", "BASE", num, { type = "SkillName", skillName = "冬潮烙印" }) } end,
+	["生命偷取在满血时恢复能量护盾"] = {
+			flag("ImmortalAmbition", { type = "Condition", var = "FullLife" }, { type = "Condition", var = "LeechingLife"} ),	
+		},
+	["在药剂持续期间，击败敌人会补充 (%d+)%% 的生命"] = function(num) return { mod("LifeOnKill", "BASE", 1, { type = "PerStat", stat = "Life", div = 100 / num }, { type = "Condition", var = "UsingFlask" } ) 
+		} end,
+	["在药剂持续期间，击败敌人会补充 (%d+)%% 的魔力"] = function(num) return { mod("ManaOnKill", "BASE", 1, { type = "PerStat", stat = "Mana", div = 100 / num }, { type = "Condition", var = "UsingFlask" } )
+		} end,
+	["在药剂持续期间，击败敌人会补充 (%d+)%% 的能量护盾"] = function(num) return { mod("EnergyShieldOnKill", "BASE", 1,  { type = "PerStat", stat = "EnergyShield", div = 100 / num }, { type = "Condition", var = "UsingFlask" } )
+		} end,
+	["药剂持续期间，你的技能不消耗魔力"] = { mod("ManaCost","MORE",-100, { type = "Condition", var = "UsingFlask" } ) },
+	["从药剂获得的生命回复同样作用于能量护盾"] = { flag("LifeFlaskAppliesToEnergyShield", { type = "Condition", var = "UsingFlask" } ) },
+	["立即回复 (%d+)%% 回复量"] = function(num) return { mod("FlaskInstantRecovery", "BASE", num) } end,
+	["立即回复(%d+)%% 回复量"] = function(num) return { mod("FlaskInstantRecovery", "BASE", num) } end,
+	-- Quality modifiers
+	["%+(%d+)%% 品质"] = function(num) return { mod("Quality", "BASE", num ) } end,
+	["品质上限 %+(%d+)%%"] = function(num) return { mod("Quality", "BASE", num ) } end,	
+	["品质上限 (%d+)%%"] = function(num) return { mod("Quality", "BASE", num) } end,
 	["incinerate has %+(%d+) to maximum stages"] = function(num) return { mod("Multiplier:IncinerateMaxStages", "BASE", num, { type = "SkillName", skillName = "烧毁" }) } end,
 	--【中文化程序额外添加结束】
 	-- Keystones

@@ -2665,7 +2665,7 @@ function ItemsTabClass:AddItemTooltip(tooltip, item, slot, dbMode)
 	if item.title then
 		tooltip:AddLine(20, rarityCode..item.title)
 		tooltip:AddLine(20, rarityCode..item.baseName:gsub(" %(.+%)",""))
-	else
+	elseif item.baseName then
 		tooltip:AddLine(20, rarityCode..item.namePrefix..item.baseName:gsub(" %(.+%)","")..item.nameSuffix)
 	end
 	
@@ -2732,7 +2732,8 @@ tooltip:AddLine(16, colorCodes.SOURCE..""..self:FormatItemSource(item.source))
 
 	local base = item.base
 	local slotNum = slot and slot.slotNum or (IsKeyDown("SHIFT") and 2 or 1)
-	local modList = item.modList or item.slotModList[slotNum]
+	--lucifer
+	local modList = item.modList or (item.slotModList and item.slotModList[slotNum])
 	if base.weapon then
 		-- Weapon-specific info
 		local weaponData = item.weaponData[slotNum]
@@ -2794,16 +2795,31 @@ tooltip:AddLine(16, s_format("^x7F7F7F能量护盾: %s%d", main:StatColor(armour
 tooltip:AddLine(16, s_format("^x7F7F7F品质: "..colorCodes.MAGIC.."+%d%%", item.quality))
 		end
 		if flaskData.lifeTotal then
-tooltip:AddLine(16, s_format("^x7F7F7F回复 %s%d ^x7F7F7F生命 在 %s%.1f0 ^x7F7F7F秒内", 
-				main:StatColor(flaskData.lifeTotal, base.flask.life), flaskData.lifeTotal,
-				main:StatColor(flaskData.duration, base.flask.duration), flaskData.duration
-			))
+		
+	 
+		if flaskData.lifeGradual ~=0 then
+			tooltip:AddLine(16, s_format("^x7F7F7F回复 %s%d ^x7F7F7F生命 在 %s%.1f0 ^x7F7F7F秒内", 
+						main:StatColor(flaskData.lifeTotal, base.flask.life), flaskData.lifeGradual,
+						main:StatColor(flaskData.duration, base.flask.duration), flaskData.duration
+					))
+			end
+		if flaskData.lifeInstant ~=0 then
+			tooltip:AddLine(16, s_format("^x7F7F7F回复 %s%d ^x7F7F7F生命 立即", main:StatColor(flaskData.lifeTotal, base.flask.life), flaskData.lifeInstant ))
+		end
+		
+
 		end
 		if flaskData.manaTotal then
-tooltip:AddLine(16, s_format("^x7F7F7F回复 %s%d ^x7F7F7F魔力 在 %s%.1f0 ^x7F7F7F秒内", 
-				main:StatColor(flaskData.manaTotal, base.flask.mana), flaskData.manaTotal, 
-				main:StatColor(flaskData.duration, base.flask.duration), flaskData.duration
-			))
+		if flaskData.manaGradual then
+				tooltip:AddLine(16, s_format("^x7F7F7F回复 %s%d ^x7F7F7F魔力 在 %s%.1f0 ^x7F7F7F秒内", 
+						main:StatColor(flaskData.manaTotal, base.flask.mana), flaskData.manaGradual,
+						main:StatColor(flaskData.duration, base.flask.duration), flaskData.duration
+					))
+		end
+		if flaskData.manaInstant then
+			tooltip:AddLine(16, s_format("^x7F7F7F回复 %s%d ^x7F7F7F魔力 立即", main:StatColor(flaskData.manaTotal, base.flask.mana), flaskData.manaInstant ))
+		end
+
 		end
 		if not flaskData.lifeTotal and not flaskData.manaTotal then
 tooltip:AddLine(16, s_format("^x7F7F7F持续 %s%.2f ^x7F7F7F秒", main:StatColor(flaskData.duration, base.flask.duration), flaskData.duration))
@@ -2954,10 +2970,12 @@ tooltip:AddLine(16, "^x7F7F7F插槽: "..line)
 			local instantPerc = flaskData.instantPerc
 			
 			if item.base.flask.life then
-				local lifeInc = modDB:Sum("INC", nil, "FlaskLifeRecovery")
+				local lifeRecMod = calcLib.mod(modDB, nil, "FlaskLifeRecovery")
 				local lifeRateInc = modDB:Sum("INC", nil, "FlaskLifeRecoveryRate")
-				local inst = flaskData.lifeTotal * instantPerc / 100 * (1 + lifeInc / 100) * (1 + effectInc / 100) * output.LifeRecoveryMod
-				local grad = flaskData.lifeTotal * (1 - instantPerc / 100) * (1 + lifeInc / 100) * (1 + effectInc / 100) * (1 + durInc / 100) * output.LifeRecoveryRateMod
+				local inst = flaskData.lifeInstant * lifeRecMod * (1 + effectInc / 100)
+			--	local inst = flaskData.lifeTotal * instantPerc / 100 * (1 + lifeInc / 100) * (1 + effectInc / 100) * output.LifeRecoveryMod
+				local grad = flaskData.lifeGradual * lifeRecMod * (1 + effectInc / 100) * (1 + durInc / 100) * output.LifeRecoveryRateMod
+			--	local grad = flaskData.lifeTotal * (1 - instantPerc / 100) * (1 + lifeInc / 100) * (1 + effectInc / 100) * (1 + durInc / 100) * output.LifeRecoveryRateMod
 				local lifeDur = flaskData.duration * (1 + durInc / 100) / (1 + rateInc / 100) / (1 + lifeRateInc / 100)
 				if inst > 0 and grad > 0 then
 					t_insert(stats, s_format("^8生命一共回复: ^7%d ^8(其中 ^7%d^8 立即, 加 ^7%d ^8持续^7 %.2f秒^8)", inst + grad, inst, grad, lifeDur))
@@ -2968,12 +2986,24 @@ tooltip:AddLine(16, "^x7F7F7F插槽: "..line)
 						t_insert(stats, s_format("^8生命一共回复: ^7%d （^8持续 ^7%.2f秒）", grad, lifeDur))
 					end
 				end
+				
+				if modDB:Flag(nil, "LifeFlaskAppliesToEnergyShield") then
+					if inst > 0 and grad > 0 then
+						t_insert(stats, s_format("^8能量护盾回复: ^7%d ^8(^7%d^8 立即, 加 ^7%d ^8持续^7 %.2f秒^8)", inst + grad, inst, grad, lifeDur))
+					elseif inst > 0 and grad == 0 then
+						t_insert(stats, s_format("^8能量护盾回复: ^7%d ^8立即", inst))
+					elseif inst == 0 and grad > 0 then
+						t_insert(stats, s_format("^8能量护盾回复: ^7%d ^8持续 ^7%.2f秒", grad, lifeDur))
+					end
+				end
 			end
 			if item.base.flask.mana then
 				local manaInc = modDB:Sum("INC", nil, "FlaskManaRecovery")
 				local manaRateInc = modDB:Sum("INC", nil, "FlaskManaRecoveryRate")
-				local inst = flaskData.manaTotal * instantPerc / 100 * (1 + manaInc / 100) * (1 + effectInc / 100) * output.ManaRecoveryMod
-				local grad = flaskData.manaTotal * (1 - instantPerc / 100) * (1 + manaInc / 100) * (1 + effectInc / 100) * (1 + durInc / 100) * output.ManaRecoveryRateMod
+				local inst = flaskData.manaInstant * (1 + manaInc / 100) * (1 + effectInc / 100)
+				local grad = flaskData.manaGradual * (1 + manaInc / 100) * (1 + effectInc / 100) * (1 + durInc / 100) * output.ManaRecoveryRateMod
+				--local inst = flaskData.manaTotal * instantPerc / 100 * (1 + manaInc / 100) * (1 + effectInc / 100) * output.ManaRecoveryMod
+				--local grad = flaskData.manaTotal * (1 - instantPerc / 100) * (1 + manaInc / 100) * (1 + effectInc / 100) * (1 + durInc / 100) * output.ManaRecoveryRateMod
 				local manaDur = flaskData.duration * (1 + durInc / 100) / (1 + rateInc / 100) / (1 + manaRateInc / 100)
 				if inst > 0 and grad > 0 then
 					t_insert(stats, s_format("^8魔力一共回复: ^7%d ^8(其中 ^7%d^8 立即, 加 ^7%d ^8持续^7 %.2f秒^8)", inst + grad, inst, grad, manaDur))

@@ -3537,7 +3537,7 @@ description = "可蓄力（持续施放）来施放大型的爆炸. 蓄力的时
 	
 	statMap = {
 		["charged_blast_spell_damage_+%_final_per_stack"] = {
-			mod("Damage", "MORE", nil, 0, KeywordFlag.Hit, { type = "Multiplier", var = "烈焰爆破StageAfterFirst" }),
+			mod("Damage", "MORE", nil, 0, KeywordFlag.Hit, { type = "Multiplier", var = "烈焰爆破StageFirst" }),
 		},
 		["flameblast_ailment_damage_+%_final_per_stack"] = {
 			mod("Damage", "MORE", nil, 0, KeywordFlag.Ailment, { type = "Multiplier", var = "烈焰爆破StageAfterFirst" }),
@@ -7455,15 +7455,7 @@ description = "发出一束灼热光线, 被击中的敌人会受到不断叠加
 	skillTypes = { [SkillType.Spell] = true, [SkillType.SkillCanTotem] = true, [SkillType.DamageOverTime] = true, [SkillType.FireSkill] = true, [SkillType.CausesBurning] = true, [SkillType.Duration] = true, [SkillType.Channelled] = true, [SkillType.Type59] = true, },
 	statDescriptionScope = "debuff_skill_stat_descriptions",
 	castTime = 0.5,
-	parts = {
-		{
-name = "手动叠层"
-		},
-		{
-name = "最大叠层"
-		},
-		
-	},
+	
 	statMap = {
 		["base_fire_damage_resistance_%"] = {
 
@@ -7475,8 +7467,8 @@ mod("FireExposure", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "De
 		duration = true,
 	},
 	baseMods = {
-		mod("Condition:灼热光线MaxStages", "FLAG", true, 0, 0, { type = "MultiplierThreshold", var = "灼热光线StageAfterFirst", threshold = 7 } ),
-		mod("Multiplier:灼热光线MaxStagesAfterFirst", "BASE", 7, 0, 0, { type = "SkillPart", skillPart = 1 } ),
+	mod("Condition:灼热光线MaxStages", "FLAG", true, 0, 0, { type = "MultiplierThreshold", var = "灼热光线StageAfterFirst", threshold = 7 }),
+	mod("Multiplier:灼热光线MaxStagesAfterFirst", "BASE", 7),
 		mod("Damage", "MORE", 60, 0, 0, { type = "Multiplier", var = "灼热光线StageAfterFirst" }),
 	},
 	qualityStats = {
@@ -8905,7 +8897,8 @@ name = "最大吟唱能量球"
 			local duration = activeSkill.skillData.duration * output.DurationMod
 			-- duration * 10 / (jump * 10), instead of duration / jump to avoid floating point issues
 			local jumpPeriod = activeSkill.skillData.repeatFrequency * 10
-			activeSkill.skillData.dpsMultiplier = math.floor(duration * 10 / jumpPeriod)
+			-- additional 1 tick upon spawn of orb
+			activeSkill.skillData.dpsMultiplier = 1 + math.floor(duration * 10 / jumpPeriod)
 		end
 	end,
 	statMap = {
@@ -10678,6 +10671,7 @@ description = "施放一个光环, 使你与受光环影响的友军获得伤害
 			mod("LifeRegenPercent", "BASE", nil, 0, 0, { type = "GlobalEffect", effectType = "Aura" }),
 			div = 60,
 		},
+		
 	},
 	baseFlags = {
 		spell = true,

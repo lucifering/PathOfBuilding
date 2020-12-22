@@ -1505,6 +1505,9 @@ mod("CritMultiplier", "BASE", nil, 0, 0, { type = "Condition", var = "Elusive" }
 ["withered_on_hit_chance_%"] = {
 	flag("Condition:CanWither"),
 },
+["withered_on_hit_for_2_seconds_%_chance"] = {
+	flag("Condition:CanWither"),
+},
 ["discharge_damage_+%_if_3_charge_types_removed"] = {
 	mod("Damage", "INC", nil, 0, 0, { type = "Multiplier", var = "RemovableEnduranceCharge", limit = 1 }, { type = "Multiplier", var = "RemovableFrenzyCharge", limit = 1 }, { type = "Multiplier", var = "RemovablePowerCharge", limit = 1 }),
 },

@@ -689,13 +689,40 @@ modDB:NewMod("EnergyShieldRegenPercent", "BASE", lifePercent, "狂热誓言")
 		output[damageType.."EnergyShieldBypass"] = m_max(m_min(output[damageType.."EnergyShieldBypass"], 100), 0)
 	end
 
-
+-- Guard
+	output.AnyGuard = false
+	for _, damageType in ipairs(dmgTypeList) do
+		output[damageType.."GuardAbsorbRate"] = m_min(modDB:Sum("BASE", nil, "GuardAbsorbRate") + modDB:Sum("BASE", nil, damageType.."GuardAbsorbRate"), 100)
+		if output[damageType.."GuardAbsorbRate"] > 0 then
+			output.AnyGuard = true
+			output[damageType.."GuardAbsorb"] = calcLib.val(modDB, "GuardAbsorbLimit") + calcLib.val(modDB, damageType.."GuardAbsorbLimit")
+			local lifeProtected = output[damageType.."GuardAbsorb"] / (output[damageType.."GuardAbsorbRate"] / 100) * (1 - output[damageType.."GuardAbsorbRate"] / 100)
+			if output[damageType.."GuardAbsorbRate"] >= 100 then
+				output[damageType.."GuardEffectiveLife"] = output.LifeUnreserved + output[damageType.."GuardAbsorb"]
+			else
+				output[damageType.."GuardEffectiveLife"] = m_max(output.LifeUnreserved - lifeProtected, 0) + m_min(output.LifeUnreserved, lifeProtected) / (1 - output[damageType.."GuardAbsorbRate"] / 100)
+			end
+			if breakdown then
+				breakdown[damageType.."GuardAbsorb"] = {
+					s_format("总生命防卫:"),
+					s_format("%d ^8(防卫上限)", output[damageType.."GuardAbsorb"]),
+					s_format("/ %.2f ^8(防卫承受的部分)", output[damageType.."GuardAbsorbRate"] / 100),
+					s_format("x %.2f ^8(能量护盾和生命承受部分)", 1 - output[damageType.."GuardAbsorbRate"] / 100),
+					s_format("= %d", lifeProtected),
+					s_format("防卫技能生命保护: %d", output[damageType.."GuardEffectiveLife"] - output.LifeUnreserved)
+				}
+			end
+		else
+			output[damageType.."GuardEffectiveLife"] = output.LifeUnreserved
+		end
+	end
+	
 -- Mind over Matter
-	output.AnyMindOverMatter = 0
+	output.AnyMindOverMatter = false
 	for _, damageType in ipairs(dmgTypeList) do
 		output[damageType.."MindOverMatter"] = m_min(modDB:Sum("BASE", nil, "DamageTakenFromManaBeforeLife") + modDB:Sum("BASE", nil, damageType.."DamageTakenFromManaBeforeLife"), 100)
 		if output[damageType.."MindOverMatter"] > 0 then
-			output.AnyMindOverMatter = output.AnyMindOverMatter + output[damageType.."MindOverMatter"]
+			output.AnyMindOverMatter = true
 			local sourcePool = m_max(output.ManaUnreserved or 0, 0)
 			local manatext = "未保留的魔力"
 			if modDB:Flag(nil, "EnergyShieldProtectsMana") and output[damageType.."EnergyShieldBypass"] < 100 then
@@ -707,11 +734,11 @@ modDB:NewMod("EnergyShieldRegenPercent", "BASE", lifePercent, "狂热誓言")
 					sourcePool = sourcePool + output.EnergyShield
 				end
 			end
-			local lifeProtected = sourcePool / (output[damageType.."MindOverMatter"] / 100) * (1 - output[damageType.."MindOverMatter"] / 100)
+			local poolProtected = sourcePool / (output[damageType.."MindOverMatter"] / 100) * (1 - output[damageType.."MindOverMatter"] / 100)
 			if output[damageType.."MindOverMatter"] >= 100 then
-				output[damageType.."EffectiveLife"] = output.LifeUnreserved + sourcePool
+				output[damageType.."ManaEffectiveLife"] = output[damageType.."GuardEffectiveLife"] + sourcePool
 			else
-				output[damageType.."EffectiveLife"] = m_max(output.LifeUnreserved - lifeProtected, 0) + m_min(output.LifeUnreserved, lifeProtected) / (1 - output[damageType.."MindOverMatter"] / 100)
+				output[damageType.."ManaEffectiveLife"] = m_max(output[damageType.."GuardEffectiveLife"] - poolProtected, 0) + m_min(output[damageType.."GuardEffectiveLife"], poolProtected) / (1 - output[damageType.."MindOverMatter"] / 100)
 			end
 			if breakdown then
 				if output[damageType.."MindOverMatter"] then
@@ -720,46 +747,23 @@ modDB:NewMod("EnergyShieldRegenPercent", "BASE", lifePercent, "狂热誓言")
 						s_format("%d ^8(%s)", sourcePool, manatext),
 						s_format("/ %.2f ^8(魔力承受部分)", output[damageType.."MindOverMatter"] / 100),
 						s_format("x %.2f ^8(生命承受部分)", 1 - output[damageType.."MindOverMatter"] / 100),
-						s_format("= %d", lifeProtected),
-						s_format("有效生命: %d", output[damageType.."EffectiveLife"])
+						s_format("= %d", poolProtected),
+						s_format("有效生命: %d", output[damageType.."ManaEffectiveLife"])
 					}
 				end
 			end
 		else
-			output[damageType.."EffectiveLife"] = output.LifeUnreserved
+			output[damageType.."ManaEffectiveLife"] = output[damageType.."GuardEffectiveLife"]
 		end
 	end
 	
-	-- Guard
-	output.AnyGuard = 0
-	for _, damageType in ipairs(dmgTypeList) do
-		output[damageType.."GuardAbsorbRate"] = m_min(modDB:Sum("BASE", nil, "GuardAbsorbRate") + modDB:Sum("BASE", nil, damageType.."GuardAbsorbRate"), 100)
-		if output[damageType.."GuardAbsorbRate"] > 0 then
-			output.AnyGuard = output.AnyGuard + output[damageType.."GuardAbsorbRate"]
-			output[damageType.."GuardAbsorb"] = calcLib.val(modDB, "GuardAbsorbLimit") + calcLib.val(modDB, damageType.."GuardAbsorbLimit")
-			local poolProtected = output[damageType.."GuardAbsorb"] / (output[damageType.."GuardAbsorbRate"] / 100) * (1 - output[damageType.."GuardAbsorbRate"] / 100)
-			if output[damageType.."GuardAbsorbRate"] >= 100 then
-				output[damageType.."EffectiveLife"] = output[damageType.."EffectiveLife"] + output[damageType.."GuardAbsorb"]
-			else
-				output[damageType.."EffectiveLife"] = m_max(output[damageType.."EffectiveLife"] - poolProtected, 0) + m_min(output[damageType.."EffectiveLife"], poolProtected) / (1 - output[damageType.."GuardAbsorbRate"] / 100)
-			end
-			if breakdown then
-				breakdown[damageType.."GuardAbsorb"] = {
-					s_format("总生命防卫:"),
-					s_format("%d ^8(防卫上限)", output[damageType.."GuardAbsorb"]),
-					s_format("/ %.2f ^8(从防卫承受的部分)", output[damageType.."GuardAbsorbRate"] / 100),
-					s_format("x %.2f ^8(从生命承受的部分)", 1 - output[damageType.."GuardAbsorbRate"] / 100),
-					s_format("= %d", poolProtected),
-					s_format("有效生命: %d", output[damageType.."EffectiveLife"])
-				}
-			end
-		end
-	end
+	
 
 
 	--total pool
 	for _, damageType in ipairs(dmgTypeList) do
-		output[damageType.."TotalPool"] = output[damageType.."EffectiveLife"]
+		output[damageType.."TotalPool"] = output[damageType.."ManaEffectiveLife"]
+		output[damageType.."GuardEffectivePool"] = 0
 		local manatext = "魔力"
 		if output[damageType.."EnergyShieldBypass"] < 100 then 
 			if modDB:Flag(nil, "EnergyShieldProtectsMana") then
@@ -771,18 +775,37 @@ modDB:NewMod("EnergyShieldRegenPercent", "BASE", lifePercent, "狂热誓言")
 				else 
 					output[damageType.."TotalPool"] = output[damageType.."TotalPool"] + output.EnergyShield
 				end
+				if output[damageType.."GuardAbsorbRate"] > 0 then
+					local guardRemain = output[damageType.."GuardAbsorb"] - (output[damageType.."GuardEffectiveLife"] - output.LifeUnreserved)
+					if guardRemain > 0 then
+						local poolProtected = guardRemain / (output[damageType.."GuardAbsorbRate"] / 100) * (1 - output[damageType.."GuardAbsorbRate"] / 100)
+						if output[damageType.."GuardAbsorbRate"] >= 100 then
+							output[damageType.."GuardEffectivePool"] = guardRemain
+						else
+							output[damageType.."GuardEffectivePool"] = m_max(output[damageType.."TotalPool"] - poolProtected, 0) + m_min(output[damageType.."TotalPool"], poolProtected) / (1 - output[damageType.."GuardAbsorbRate"] / 100) - output[damageType.."TotalPool"]
+						end
+						output[damageType.."TotalPool"] = output[damageType.."TotalPool"] + output[damageType.."GuardEffectivePool"]
+					end
+				end
 			end
 		end
 		if breakdown then
 			breakdown[damageType.."TotalPool"] = {
-				s_format("生命: %d", output.LifeUnreserved),
-				s_format("MOM可用 %s: %d", manatext, output[damageType.."EffectiveLife"] - output.LifeUnreserved)
+				s_format("生命: %d", output.LifeUnreserved)
 			}
+			if output[damageType.."GuardEffectiveLife"] ~= output.LifeUnreserved then
+				t_insert(breakdown[damageType.."TotalPool"], s_format("防卫技能: %d", output[damageType.."GuardEffectiveLife"] - output.LifeUnreserved + output[damageType.."GuardEffectivePool"]))
+			end
+			if output[damageType.."ManaEffectiveLife"] ~= output[damageType.."GuardEffectiveLife"] then
+				t_insert(breakdown[damageType.."TotalPool"], s_format("%s 穿过心灵升华MOM: %d", manatext, output[damageType.."ManaEffectiveLife"] - output[damageType.."GuardEffectiveLife"]))
+			end
 			if (not modDB:Flag(nil, "EnergyShieldProtectsMana")) and output[damageType.."EnergyShieldBypass"] < 100 then
-				t_insert(breakdown[damageType.."TotalPool"], s_format("未穿透能量护盾: %d", output[damageType.."TotalPool"] 
-				- output[damageType.."EffectiveLife"]))
+				t_insert(breakdown[damageType.."TotalPool"], s_format("未穿透能量护盾: %d", output[damageType.."TotalPool"] - output[damageType.."ManaEffectiveLife"] - output[damageType.."GuardEffectivePool"]))
 			end
 			t_insert(breakdown[damageType.."TotalPool"], s_format("总资源: %d", output[damageType.."TotalPool"]))
+			if output[damageType.."GuardEffectivePool"] > 0 then
+				t_insert(breakdown[damageType.."GuardAbsorb"], s_format("防卫技能能量护盾保护: %d", output[damageType.."GuardEffectivePool"]))
+			end
 		end
 	end
 	

@@ -367,6 +367,8 @@ local modNameList = {
 	["愤怒狂灵数量上限"] = "ActiveRagingSpiritLimit",
 		["召唤的幻灵数量上限"] = "ActivePhantasmLimit",
 		["冰缓效果"] = "EnemyChillEffect",
+		["充能次数"] = "FlaskChargesUsed",
+		["充能上限"] = "FlaskCharges",
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -1766,83 +1768,83 @@ local specialModList = {
 	-- Legion modifiers
 	["主手总攻击速度额外加快 (%d+)%%"] = function(num) return { mod("Speed", "MORE", num,nil, ModFlag.Attack, { type = "Condition", var = "MainHandAttack" },{ type = "SkillType", skillType = SkillType.Attack }) } end,
 	["副手暴击率 %+([%d%.]+)%%"] = function(num) return { mod("CritChance", "BASE", num, { type = "Condition", var = "OffHandAttack" },{ type = "SkillType", skillType = SkillType.Attack }) } end,
-	["能量护盾回复率提高 (%d+)%%"] = function(num) return {  mod("EnergyShieldRecoveryRate", "INC", num)  } end,  
-	["魔力回复率提高 (%d+)%%"] = function(num) return {  mod("ManaRecoveryRate", "INC", num)  } end,  
-	["生命回复率提高 (%d+)%%"] = function(num) return {  mod("LifeRecoveryRate", "INC", num)  } end,  
-		["passives in radius are conquered by the (%D+)"] = { },
-		["historic"] = { },
+	["能量护盾回复率提高 (%d+)%%"] = function(num) return {  mod("EnergyShieldRecoveryRate", "INC", num)  } end,
+	["魔力回复率提高 (%d+)%%"] = function(num) return {  mod("ManaRecoveryRate", "INC", num)  } end,
+	["生命回复率提高 (%d+)%%"] = function(num) return {  mod("LifeRecoveryRate", "INC", num)  } end,
+	["passives in radius are conquered by the (%D+)"] = { },
+	["historic"] = { },
 	["获得(.+)麾下 (%d+) 名武士的领导权"]= function(_, npcName, num) return {  mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
-	["获得(.+)麾下 (%d+) 名武士的领导权  范围内的天赋被卡鲁抑制"]= function(_, npcName, num) return {  
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
+	["获得(.+)麾下 (%d+) 名武士的领导权  范围内的天赋被卡鲁抑制"]= function(_, npcName, num) return {
 	mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
-	["获得(.+)麾下 (%d+) 名武士的领导权范围内的天赋被卡鲁抑制"]= function(_, npcName, num) return {  
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
+	["获得(.+)麾下 (%d+) 名武士的领导权范围内的天赋被卡鲁抑制"]= function(_, npcName, num) return {
 	mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
 	["以(.+)的名义用 (%d+) 名祭品之血浸染"]= function(_, npcName, num) return {  mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
-	["以(.+)的名义用  (%d+) 名祭品之血浸染范围内的天赋被瓦尔抑制"]= function(_, npcName, num) return {  
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
+	["以(.+)的名义用  (%d+) 名祭品之血浸染范围内的天赋被瓦尔抑制"]= function(_, npcName, num) return {
 	mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
-	["以(.+)的名义用 (%d+) 名祭品之血浸染  范围内的天赋被瓦尔抑制"]= function(_, npcName, num) return {  
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
+	["以(.+)的名义用 (%d+) 名祭品之血浸染  范围内的天赋被瓦尔抑制"]= function(_, npcName, num) return {
 	mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
-	["以(.+)的名义用  (%d+) 名祭品之血浸染 范围内的天赋被瓦尔抑制"]= function(_, npcName, num) return {  
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
+	["以(.+)的名义用  (%d+) 名祭品之血浸染 范围内的天赋被瓦尔抑制"]= function(_, npcName, num) return {
 	mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
-	["以(.+)的名义用 (%d+) 名祭品之血浸染 范围内的天赋被瓦尔抑制"]= function(_, npcName, num) return {  
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
+	["以(.+)的名义用 (%d+) 名祭品之血浸染 范围内的天赋被瓦尔抑制"]= function(_, npcName, num) return {
 	mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
-	["以(.+)的名义用(%d+)名祭品之血浸染范围内的天赋被瓦尔抑制"]= function(_, npcName, num) return {  
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
+	["以(.+)的名义用(%d+)名祭品之血浸染范围内的天赋被瓦尔抑制"]= function(_, npcName, num) return {
 	mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
 	["赞美 (%d+) 名被高阶圣堂武僧(.+)转化的新信徒"]= function(_, num, npcName) return {  mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
-	["赞美 (%d+) 名被高阶圣堂武僧(.+)转化的新信徒范围内的天赋被圣堂抑制"]= function(_, num, npcName) return { 
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
+	["赞美 (%d+) 名被高阶圣堂武僧(.+)转化的新信徒范围内的天赋被圣堂抑制"]= function(_, num, npcName) return {
 	mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
-	["赞美 (%d+) 名被高阶圣堂武僧(.+)转化的新信徒  范围内的天赋被圣堂抑制"]= function(_, num, npcName) return { 
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
+	["赞美 (%d+) 名被高阶圣堂武僧(.+)转化的新信徒  范围内的天赋被圣堂抑制"]= function(_, num, npcName) return {
 	mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
-	["赞美 (%d+) 名被神主(.+)转化的新信徒范围内的天赋被圣堂教团抑制"]= function(_, num, npcName) return { 
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
+	["赞美 (%d+) 名被神主(.+)转化的新信徒范围内的天赋被圣堂教团抑制"]= function(_, num, npcName) return {
 	mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
 	["赞美 (%d+) 名被神主(.+)转化的新信徒"]= function(_, num, npcName) return {  mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
 	["在(.+)的阿卡拉中指派 (%d+) 名德卡拉的服务"]= function(_, npcName, num) return {  mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
-	["在(.+)的阿卡拉中指派 (%d+) 名德卡拉的服务范围中的天赋被马拉克斯抑制"]= function(_, npcName, num) return {  
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
+	["在(.+)的阿卡拉中指派 (%d+) 名德卡拉的服务范围中的天赋被马拉克斯抑制"]= function(_, npcName, num) return {
 	mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
-	["在(.+)的阿卡拉中指派 (%d+) 名德卡拉的服务  范围中的天赋被马拉克斯抑制"]= function(_, npcName, num) return {  
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
+	["在(.+)的阿卡拉中指派 (%d+) 名德卡拉的服务  范围中的天赋被马拉克斯抑制"]= function(_, npcName, num) return {
 	mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
-	["在(.+)的阿卡拉中指派 (%d+) 名德卡拉的服务范围中的天赋被马拉克斯抑制"]= function(_, npcName, num) return {  
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
+	["在(.+)的阿卡拉中指派 (%d+) 名德卡拉的服务范围中的天赋被马拉克斯抑制"]= function(_, npcName, num) return {
 	mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
 	["用 (%d+) 枚金币纪念(.+)"]= function(_, num, npcName) return {  mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
-	["用 (%d+) 枚金币纪念(.+)范围内的天赋被永恒帝国抑制"]= function(_, num, npcName) return {  
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
+	["用 (%d+) 枚金币纪念(.+)范围内的天赋被永恒帝国抑制"]= function(_, num, npcName) return {
 	mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
-	["用 (%d+) 枚金币纪念(.+)  范围内的天赋被永恒帝国抑制"]= function(_, num, npcName) return {  
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
+	["用 (%d+) 枚金币纪念(.+)  范围内的天赋被永恒帝国抑制"]= function(_, num, npcName) return {
 	mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
-	["用 (%d+) 枚金币纪念(.+)范围内的天赋被永恒帝国抑制"]= function(_, num, npcName) return {  
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
+	["用 (%d+) 枚金币纪念(.+)范围内的天赋被永恒帝国抑制"]= function(_, num, npcName) return {
 	mod("JewelData", "LIST",
-					{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end, 
+	{key = "conqueredBy", value = {id = num, conqueror = conquerorList[npcName:lower()] } })} end,
 	["内在信念"] =  { mod("Keystone", "LIST", "内在信念") },
-	["史实"] = { mod("Multiplier:HistoricItem", "BASE", 1) }, 
-	 ["([%+%-]?%d+) 奉献"]= function(num) return { 	
-	mod("Devotion", "BASE", num) 
+	["史实"] = { mod("Multiplier:HistoricItem", "BASE", 1) },
+	["([%+%-]?%d+) 奉献"]= function(num) return {
+	mod("Devotion", "BASE", num)
 	}end,
 	--能量护盾回复问题
 	--（有带“的”的词缀解析为充能速度，不带“的”的解析为回复速度）
-	["能量护盾的回复速度提高 (%d+)%%"] = function(num) return {  mod("EnergyShieldRecharge", "INC", num)  } end,  
-	["能量护盾的回复速度降低 (%d+)%%"] = function(num) return {  mod("EnergyShieldRecharge", "INC", -num)  } end,  
-	["能量护盾回复速度提高 (%d+)%%"] = function(num) return {  mod("EnergyShieldRecoveryRate", "INC", num)  } end,  
-	["能量护盾回复速度降低 (%d+)%%"] = function(num) return {  mod("EnergyShieldRecoveryRate", "INC", -num)  } end,  
-	-- 星团珠宝 
+	["能量护盾的回复速度提高 (%d+)%%"] = function(num) return {  mod("EnergyShieldRecharge", "INC", num)  } end,
+	["能量护盾的回复速度降低 (%d+)%%"] = function(num) return {  mod("EnergyShieldRecharge", "INC", -num)  } end,
+	["能量护盾回复速度提高 (%d+)%%"] = function(num) return {  mod("EnergyShieldRecoveryRate", "INC", num)  } end,
+	["能量护盾回复速度降低 (%d+)%%"] = function(num) return {  mod("EnergyShieldRecoveryRate", "INC", -num)  } end,
+	-- 星团珠宝
 	["附加 (%d+) 天赋点"] = function(num) return { mod("JewelData", "LIST", { key = "clusterJewelNodeCount", value = num }) } end,
 	["增加 (%d+) 个天赋技能"] = function(num) return { mod("JewelData", "LIST", { key = "clusterJewelNodeCount", value = num }) } end,
 	["其中 1 个增加的天赋为【珠宝槽】"] = { mod("JewelData", "LIST", { key = "clusterJewelSocketCount", value = 1 }) },
@@ -1861,65 +1863,65 @@ local specialModList = {
 	["获得 (%d+) 级的【召唤兽化恐喙鸟】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="SummonBeastialRhoa", level = num})   } end,
 	--这里不要less？
 	--local sumLocal
-	["该装备的攻击暴击率提高 (%d+)%%"] = function(num) return {  mod("CritChance", "INC", num)  } end,  
+	["该装备的攻击暴击率提高 (%d+)%%"] = function(num) return {  mod("CritChance", "INC", num)  } end,
 	--负数范围特殊处理
-	["提高 ([%+%-]?%d+)%% 药剂充能消耗"]= function(num) return {  mod("FlaskChargesUsed", "INC", num)  } end,  
-	["(%d+)%% 法术伤害格挡几率"] = function(num) return {  mod("SpellBlockChance", "BASE", num) } end,  
-	["(%d+)%% 法术格挡几率"] = function(num) return {  mod("SpellBlockChance", "BASE", num) } end,  
-	["(%d+)%% 攻击伤害格挡率"] = function(num) return {  mod("BlockChance", "BASE", num) } end,  
-	["(%d+)%% 攻击格挡几率"] = function(num) return {  mod("BlockChance", "BASE", num) } end,  
+	["提高 ([%+%-]?%d+)%% 药剂充能消耗"]= function(num) return {  mod("FlaskChargesUsed", "INC", num)  } end,
+	["(%d+)%% 法术伤害格挡几率"] = function(num) return {  mod("SpellBlockChance", "BASE", num) } end,
+	["(%d+)%% 法术格挡几率"] = function(num) return {  mod("SpellBlockChance", "BASE", num) } end,
+	["(%d+)%% 攻击伤害格挡率"] = function(num) return {  mod("BlockChance", "BASE", num) } end,
+	["(%d+)%% 攻击格挡几率"] = function(num) return {  mod("BlockChance", "BASE", num) } end,
 	["被诅咒时法术伤害格挡几率提高 (%d+)%%"]= function(num) return {  mod("SpellBlockChance", "BASE", num,{ type = "Condition", var = "Cursed" })  } end,
-	--处理【狂怒】和【狂怒】2个不同技能的附魔， 国服特别优秀的翻译  
-	["【狂怒】的伤害提高 (%d+)%%"]= function(num) return {  
-				mod("Damage", "INC", num, { type = "SkillId", skillId = "Frenzy" })			 
-			} end,		
-	["每个狂怒球可使狂怒伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", tonumber(num),{ type = "Multiplier", var = "FrenzyCharge" },{ type = "SkillId", skillId = "Frenzy" })  } end, 
+	--处理【狂怒】和【狂怒】2个不同技能的附魔， 国服特别优秀的翻译
+	["【狂怒】的伤害提高 (%d+)%%"]= function(num) return {
+	mod("Damage", "INC", num, { type = "SkillId", skillId = "Frenzy" })
+	} end,
+	["每个狂怒球可使狂怒伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", tonumber(num),{ type = "Multiplier", var = "FrenzyCharge" },{ type = "SkillId", skillId = "Frenzy" })  } end,
 	--Berserk
 	["【狂怒】的增益效果提高 25%"]= function(num) return {
-	mod("BuffEffect", "INC", num,{ type = "SkillId", skillId = "Berserk" })  
+	mod("BuffEffect", "INC", num,{ type = "SkillId", skillId = "Berserk" })
 	} end,
 	["【盛怒】的增益效果提高 25%"]= function(num) return {
-	mod("BuffEffect", "INC", num,{ type = "SkillId", skillId = "Berserk" })  
-	} end,	
-	["每 10 点智慧可以为攻击附加 0 %- 3 基础闪电伤害"]= function() return { 	
-		mod("LightningMax", "BASE", 3,nil, ModFlag.Attack,  { type = "PerStat", stat = "Int", div = 10 }) 
+	mod("BuffEffect", "INC", num,{ type = "SkillId", skillId = "Berserk" })
+	} end,
+	["每 10 点智慧可以为攻击附加 0 %- 3 基础闪电伤害"]= function() return {
+	mod("LightningMax", "BASE", 3,nil, ModFlag.Attack,  { type = "PerStat", stat = "Int", div = 10 })
 	}end,
 	--fu*k TX 格挡率用“提高”字样
-	["药剂持续期间，攻击伤害格挡几率 ([%+%-]?%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,  
-	["药剂持续期间，攻击格挡率提高 ([%+%-]?%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,  
-	["药剂持续期间，法术伤害格挡几率提高 ([%+%-]?%d+)%%"] = function(num) return {  mod("SpellBlockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,  
-	["药剂持续期间，法术格挡率提高 ([%+%-]?%d+)%%"] = function(num) return {  mod("SpellBlockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,  
-	["每个暴击球可使法术格挡几率提高 ([%+%-]?%d+)%%"] = function(num) return {  mod("SpellBlockChance", "BASE", num, { type = "Multiplier", var = "PowerCharge" })  } end,  
+	["药剂持续期间，攻击伤害格挡几率 ([%+%-]?%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
+	["药剂持续期间，攻击格挡率提高 ([%+%-]?%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
+	["药剂持续期间，法术伤害格挡几率提高 ([%+%-]?%d+)%%"] = function(num) return {  mod("SpellBlockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
+	["药剂持续期间，法术格挡率提高 ([%+%-]?%d+)%%"] = function(num) return {  mod("SpellBlockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
+	["每个暴击球可使法术格挡几率提高 ([%+%-]?%d+)%%"] = function(num) return {  mod("SpellBlockChance", "BASE", num, { type = "Multiplier", var = "PowerCharge" })  } end,
 	["每有 (%d+) 点力量，攻击伤害格挡几率额外 ([%+%-]?%d+)%%"] = function(_,num1,num2) return {  mod("BlockChance", "BASE", tonumber(num2),{ type = "PerStat", stat = "Str", div = tonumber(num1) })  } end,
-	["持长杖时，攻击格挡率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "UsingStaff" })  } end,  
-	["持长杖时法术伤害格挡几率提高 (%d+)%%"] = function(num) return {  mod("SpellBlockChance", "BASE", num,{ type = "Condition", var = "UsingStaff" })  } end,  
-	["持盾时攻击格挡率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num, { type = "Condition", var = "UsingShield" } )  } end,  
-	["持盾牌时法术格挡率提高 (%d+)%%"] = function(num) return {  mod("SpellBlockChance", "BASE", num, { type = "Condition", var = "UsingShield" } ) } end,  
-	["双持时攻击格挡率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num, { type = "Condition", var = "DualWielding" } )  } end,  
-	["双持攻击时武器暴击率提高 (%d+)%%"] = function(num) return {  mod("CritChance", "INC", num, { type = "Condition", var = "DualWielding" } )  } end, 
-	["双持或持盾牌时攻击格挡率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", varList = { "DualWielding", "UsingShield" } })  } end,  
-	["近期内你若因被击中而受伤，攻击格挡率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "BeenHitRecently" } )  } end,  
-	["持长杖时，攻击伤害格挡几率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "UsingStaff" })  } end,  
-	["持盾时攻击伤害格挡几率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num, { type = "Condition", var = "UsingShield" } )  } end,  
-	["持盾牌时攻击伤害格挡几率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num, { type = "Condition", var = "UsingShield" } )  } end,  
-	["持盾牌时法术伤害格挡几率提高 (%d+)%%"] = function(num) return {  mod("SpellBlockChance", "BASE", num, { type = "Condition", var = "UsingShield" } ) } end,  
-	["双持时攻击伤害格挡几率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num, { type = "Condition", var = "DualWielding" } )  } end,  
-	["双持或持盾牌时攻击伤害格挡几率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", varList = { "DualWielding", "UsingShield" } })  } end,  
-	["近期内你若因被击中而受伤，攻击伤害格挡几率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "BeenHitRecently" } )  } end,  
-	["(%d+)%% 攻击伤害格挡几率"] = function(num) return {  mod("BlockChance", "BASE", num)  } end, 
-	["近期内你若有被击中，则每秒回复 ([%d%.]+)%% 生命和魔力"] = function(num) return { 
+	["持长杖时，攻击格挡率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "UsingStaff" })  } end,
+	["持长杖时法术伤害格挡几率提高 (%d+)%%"] = function(num) return {  mod("SpellBlockChance", "BASE", num,{ type = "Condition", var = "UsingStaff" })  } end,
+	["持盾时攻击格挡率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num, { type = "Condition", var = "UsingShield" } )  } end,
+	["持盾牌时法术格挡率提高 (%d+)%%"] = function(num) return {  mod("SpellBlockChance", "BASE", num, { type = "Condition", var = "UsingShield" } ) } end,
+	["双持时攻击格挡率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num, { type = "Condition", var = "DualWielding" } )  } end,
+	["双持攻击时武器暴击率提高 (%d+)%%"] = function(num) return {  mod("CritChance", "INC", num, { type = "Condition", var = "DualWielding" } )  } end,
+	["双持或持盾牌时攻击格挡率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", varList = { "DualWielding", "UsingShield" } })  } end,
+	["近期内你若因被击中而受伤，攻击格挡率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "BeenHitRecently" } )  } end,
+	["持长杖时，攻击伤害格挡几率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "UsingStaff" })  } end,
+	["持盾时攻击伤害格挡几率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num, { type = "Condition", var = "UsingShield" } )  } end,
+	["持盾牌时攻击伤害格挡几率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num, { type = "Condition", var = "UsingShield" } )  } end,
+	["持盾牌时法术伤害格挡几率提高 (%d+)%%"] = function(num) return {  mod("SpellBlockChance", "BASE", num, { type = "Condition", var = "UsingShield" } ) } end,
+	["双持时攻击伤害格挡几率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num, { type = "Condition", var = "DualWielding" } )  } end,
+	["双持或持盾牌时攻击伤害格挡几率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", varList = { "DualWielding", "UsingShield" } })  } end,
+	["近期内你若因被击中而受伤，攻击伤害格挡几率提高 (%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "BeenHitRecently" } )  } end,
+	["(%d+)%% 攻击伤害格挡几率"] = function(num) return {  mod("BlockChance", "BASE", num)  } end,
+	["近期内你若有被击中，则每秒回复 ([%d%.]+)%% 生命和魔力"] = function(num) return {
 	mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "BeenHitRecently" } ),
 	mod("ManaRegenPercent", "BASE", num,{ type = "Condition", var = "BeenHitRecently" } ),
-	  } end,  
-	["近期内你若有被击中，则每秒回复 ([%d%.]+)%% 生命"] = function(num) return { 
+	} end,
+	["近期内你若有被击中，则每秒回复 ([%d%.]+)%% 生命"] = function(num) return {
 	mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "BeenHitRecently" } )
-	  } end,  
+	} end,
 	["非诅咒类光环的效果提高 (%d+)%%"]= function(num) return {  mod("AuraEffect", "INC", tonumber(num),{ type = "SkillType", skillType = SkillType.Aura }, { type = "SkillType", skillType = SkillType.AppliesCurse, neg = true } )  } end,
 	["所有身上装备的物品皆为已腐化时，每秒回复 (%d+) 能量护盾"] = function(num) return {  mod("EnergyShieldRegen", "BASE", num,{ type = "MultiplierThreshold", var = "NonCorruptedItem", threshold = 0, upper = true })  } end,
 	["感电时，每秒回复 (%d+)%% 能量护盾"] = function(num) return {  mod("EnergyShieldRegenPercent", "BASE", num,{ type = "Condition", var = "Shocked" })  } end,
 	["此物品上装备的【技能石】品质 %+(%d+)%%"] = function(num) return { mod("GemProperty", "LIST",  { keyword = "all", key = "quality", value = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	["此物品上装备的【辅助技能石】品质 %+(%d+)%%"] = function(num) return { mod("GemProperty", "LIST",  { keyword = "support", key = "quality", value = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
-	["此物品上装备的【([^\\x00-\\xff]*)石】等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", { 
+	["此物品上装备的【([^\\x00-\\xff]*)石】等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", {
 	keyword = type_Cn
 	:gsub("物理法术技能","physical_spell")
 	:gsub("混沌法术技能","chaos_spell")
@@ -1949,8 +1951,8 @@ local specialModList = {
 	:gsub("投射物技能","projectile")
 	:gsub("持续吟唱技能","channelling")
 	:gsub("范围效果技能","aoe")
-	, key = "level", value = tonumber(num) }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,  
-	["所有物品上装备的【([^\\x00-\\xff]*)石】等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", { 
+	, key = "level", value = tonumber(num) }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
+	["所有物品上装备的【([^\\x00-\\xff]*)石】等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", {
 	keywordList =  {"active_skill", type_Cn
 	:gsub("物理法术技能","physical_spell")
 	:gsub("混沌法术技能","chaos_spell")
@@ -1984,10 +1986,10 @@ local specialModList = {
 	:gsub("投射物技能","projectile")
 	:gsub("持续吟唱技能","channelling")
 	:gsub("范围效果技能","aoe")
-	}, key = "level", value = tonumber(num) }) } end,  
-	["所有法术技能石等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", { 
-	keywordList =  {"active_skill", "spell"}, key = "level", value = tonumber(num) }) } end,  
-	["所有([^\\x00-\\xff]*)法术技能石等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", { 
+	}, key = "level", value = tonumber(num) }) } end,
+	["所有法术技能石等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", {
+	keywordList =  {"active_skill", "spell"}, key = "level", value = tonumber(num) }) } end,
+	["所有([^\\x00-\\xff]*)法术技能石等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", {
 	keywordList =  {"active_skill", "spell",type_Cn
 	:gsub("光环","aura")
 	:gsub("绿色","dexterity")
@@ -2015,13 +2017,13 @@ local specialModList = {
 	:gsub("投射物","projectile")
 	:gsub("持续吟唱","channelling")
 	:gsub("范围效果","aoe")
-	}, key = "level", value = tonumber(num) }) } end,  
-	 ["所有魔卫复苏技能石等级 %+(%d+)"] = function(num)  return { mod("GemProperty", "LIST",  { type = "SkillName", skillName =FuckSkillActivityCnName('魔卫复苏'), key = "level", value = num }) } end,
+	}, key = "level", value = tonumber(num) }) } end,
+	["所有魔卫复苏技能石等级 %+(%d+)"] = function(num)  return { mod("GemProperty", "LIST",  { type = "SkillName", skillName =FuckSkillActivityCnName('魔卫复苏'), key = "level", value = num }) } end,
 	["所有召唤灵体技能石等级 %+(%d+)"] = function(num)  return { mod("GemProperty", "LIST",  { type = "SkillName", skillName =FuckSkillActivityCnName('召唤灵体'), key = "level", value = num }) } end,
 	["([%+%-]?%d+)%% 召唤灵体, 魔卫复苏, 召唤魔侍的暴击伤害"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("CritMultiplier", "BASE", num) },{ type = "SkillName", skillNameList = { "召唤灵体", "魔卫复苏", "召唤魔侍" } })  } end,
 	["【召唤魔侍】 (%d+)%% 的物理伤害会转化为混沌伤害"]
 	= function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageConvertToChaos", "BASE", num) }, { type = "SkillName", skillName = "召唤魔侍" }) } end,
-	["所有([^\\x00-\\xff]*)石等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", { 
+	["所有([^\\x00-\\xff]*)石等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", {
 	keywordList =  {"active_skill",  type_Cn
 	:gsub("物理法术技能","physical_spell")
 	:gsub("混沌法术技能","chaos_spell")
@@ -2055,67 +2057,67 @@ local specialModList = {
 	:gsub("投射物技能","projectile")
 	:gsub("持续吟唱技能","channelling")
 	:gsub("范围效果技能","aoe")
-	}, key = "level", value = tonumber(num) }) } end,  
-	["此物品上装备的【([^\\x00-\\xff]*)石】品质 %+(%d+)%%"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", { 
-		keyword = type_Cn:gsub("光环技能","aura")
-		:gsub("绿色技能","dexterity")
-		:gsub("蓝色技能","intelligence")
-		:gsub("红色技能","strength")
-		:gsub("闪电技能","lightning")
-		:gsub("辅助技能","support")
-		:gsub("火焰技能","fire")
-		:gsub("冰霜技能","cold")
-		:gsub("混沌技能","chaos")
-		:gsub("物理技能","physical")
-		:gsub("魔像技能","golem")
-		:gsub("召唤生物技能","minion")
-		:gsub("近战技能","melee")
-		:gsub("战吼技能","warcry")
-		:gsub("瓦尔技能","vaal")
-		:gsub("移动技能","movement")
-		:gsub("弓技能","bow")
-		:gsub("诅咒技能","curse")
-		:gsub("捷技能","herald")
-		:gsub("法术技能","spell")
-		:gsub("主动技能","active_skill")
-		:gsub("持续时间技能","duration")
-		:gsub("陷阱技能石】或【地雷技能","trap or mine")
-		:gsub("投射物技能","projectile")
-		:gsub("持续吟唱技能","channelling")
-		:gsub("范围效果技能","aoe")
-		:gsub("技能","all")
-		, key = "quality", value = tonumber(num) }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
+	}, key = "level", value = tonumber(num) }) } end,
+	["此物品上装备的【([^\\x00-\\xff]*)石】品质 %+(%d+)%%"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", {
+	keyword = type_Cn:gsub("光环技能","aura")
+	:gsub("绿色技能","dexterity")
+	:gsub("蓝色技能","intelligence")
+	:gsub("红色技能","strength")
+	:gsub("闪电技能","lightning")
+	:gsub("辅助技能","support")
+	:gsub("火焰技能","fire")
+	:gsub("冰霜技能","cold")
+	:gsub("混沌技能","chaos")
+	:gsub("物理技能","physical")
+	:gsub("魔像技能","golem")
+	:gsub("召唤生物技能","minion")
+	:gsub("近战技能","melee")
+	:gsub("战吼技能","warcry")
+	:gsub("瓦尔技能","vaal")
+	:gsub("移动技能","movement")
+	:gsub("弓技能","bow")
+	:gsub("诅咒技能","curse")
+	:gsub("捷技能","herald")
+	:gsub("法术技能","spell")
+	:gsub("主动技能","active_skill")
+	:gsub("持续时间技能","duration")
+	:gsub("陷阱技能石】或【地雷技能","trap or mine")
+	:gsub("投射物技能","projectile")
+	:gsub("持续吟唱技能","channelling")
+	:gsub("范围效果技能","aoe")
+	:gsub("技能","all")
+	, key = "quality", value = tonumber(num) }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	-- 一些涉及到技能名称的
 	["奉献技能的持续时间降低 (%d+)%%"] =  function(num) return {  mod("Duration", "INC", -num,
 	{ type = "SkillName", skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" ,"血脉奉献"} } )  } end,
 	["奉献技能的效果降低 (%d+)%%"] = function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("BuffEffect", "INC", -num) }, { type = "SkillName",
-	 skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" ,"血脉奉献"} }) } end,   
+	skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" ,"血脉奉献"} }) } end,
 	["奉献效果降低 (%d+)%%"] = function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("BuffEffect", "INC", -num) }, { type = "SkillName",
-	 skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" ,"血脉奉献"} }) } end,   
+	skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" ,"血脉奉献"} }) } end,
 	["奉献效果提高 (%d+)%%"] = function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("BuffEffect", "INC", num) }, { type = "SkillName",
-	 skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" ,"血脉奉献"} }) } end,   
+	skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" ,"血脉奉献"} }) } end,
 	["你的奉献技能会同时影响你"] = { mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "buffNotPlayer", value = false }) },
-		{ type = "SkillName", skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" ,"血脉奉献"} }) },	
+	{ type = "SkillName", skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" ,"血脉奉献"} }) },
 	["你的奉献技能对自身的效果降低 (%d+)%%"] = function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("BuffEffectOnPlayer", "INC", -num) }, { type = "SkillName",
-	 skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" ,"血脉奉献"} }) } end, 
+	skillNameList = { "骸骨奉献", "血肉奉献", "灵魂奉献" ,"血脉奉献"} }) } end,
 	["【闪现射击】和【魅影射击】冷却回复速度提高 (%d+)%%"] = function(num) return { --备注：(%d+)%% increased blink arrow and mirror arrow cooldown recovery speed
-			mod("CooldownRecovery", "INC", num, { type = "SkillName", skillName = "闪现射击" }),
-			mod("CooldownRecovery", "INC", num, { type = "SkillName", skillName = "魅影射击" }),
-		} end,
+	mod("CooldownRecovery", "INC", num, { type = "SkillName", skillName = "闪现射击" }),
+	mod("CooldownRecovery", "INC", num, { type = "SkillName", skillName = "魅影射击" }),
+	} end,
 	["【异灵魔侍】的击中无法闪避"] = { mod("MinionModifier", "LIST", { mod = flag("CannotBeEvaded") }, { type = "SkillName", skillName = "召唤魔侍" }) }, --备注：summoned skeletons' hits can't be evaded
-	["每有 (%d+) 点敏捷，你的攻城炮台图腾数量上限便提高 1 个"] = function(num) return { mod("ActiveTotemLimit", "BASE", 1, { type = "SkillName", skillName = "攻城炮台" }, { type = "PerStat", stat = "Dex", div = num }) } end, 
-	["每有 (%d+) 敏捷，攻城炮台 %+1 召唤图腾数量上限"] = function(num) return { mod("ActiveTotemLimit", "BASE", 1, { type = "SkillName", skillName = "攻城炮台" }, { type = "PerStat", stat = "Dex", div = num }) } end, 
-	["每有 (%d+) 力量，散射弩炮 %+1 召唤图腾数量上限"] = function(num) return { mod("ActiveTotemLimit", "BASE", 1, { type = "SkillName", skillName = "散射弩炮" }, { type = "PerStat", stat = "Str", div = num }) } end, 
-	["每 (%d+) 点力量都使散射弩炮的召唤图腾上限 %+1"] = function(num) return { mod("ActiveTotemLimit", "BASE", 1, { type = "SkillName", skillName = "散射弩炮" }, { type = "PerStat", stat = "Str", div = num }) } end, 
-	["每 (%d+) 点力量都使攻击附加 (%d+) 到 (%d+) 点物理伤害"] = function(_,num1,num2,num3) return { 
+	["每有 (%d+) 点敏捷，你的攻城炮台图腾数量上限便提高 1 个"] = function(num) return { mod("ActiveTotemLimit", "BASE", 1, { type = "SkillName", skillName = "攻城炮台" }, { type = "PerStat", stat = "Dex", div = num }) } end,
+	["每有 (%d+) 敏捷，攻城炮台 %+1 召唤图腾数量上限"] = function(num) return { mod("ActiveTotemLimit", "BASE", 1, { type = "SkillName", skillName = "攻城炮台" }, { type = "PerStat", stat = "Dex", div = num }) } end,
+	["每有 (%d+) 力量，散射弩炮 %+1 召唤图腾数量上限"] = function(num) return { mod("ActiveTotemLimit", "BASE", 1, { type = "SkillName", skillName = "散射弩炮" }, { type = "PerStat", stat = "Str", div = num }) } end,
+	["每 (%d+) 点力量都使散射弩炮的召唤图腾上限 %+1"] = function(num) return { mod("ActiveTotemLimit", "BASE", 1, { type = "SkillName", skillName = "散射弩炮" }, { type = "PerStat", stat = "Str", div = num }) } end,
+	["每 (%d+) 点力量都使攻击附加 (%d+) 到 (%d+) 点物理伤害"] = function(_,num1,num2,num3) return {
 	mod("PhysicalMin", "BASE", tonumber(num2),nil,ModFlag.Attack , { type = "PerStat", stat = "Str", div = tonumber(num1) }),
 	mod("PhysicalMax", "BASE", tonumber(num3),nil,ModFlag.Attack , { type = "PerStat", stat = "Str", div = tonumber(num1) }),
-	 } end, 
-	["每有 (%d+) 点力量就给攻击附加 (%d+) 到 (%d+) 点混沌伤害"] = function(_,num1,num2,num3) return { 
+	} end,
+	["每有 (%d+) 点力量就给攻击附加 (%d+) 到 (%d+) 点混沌伤害"] = function(_,num1,num2,num3) return {
 	mod("ChaosMin", "BASE", tonumber(num2),nil,ModFlag.Attack , { type = "PerStat", stat = "Str", div = tonumber(num1) }),
 	mod("ChaosMax", "BASE", tonumber(num3),nil,ModFlag.Attack , { type = "PerStat", stat = "Str", div = tonumber(num1) }),
-	 } end, 
-	["【愤怒狂灵】击中后必定造成点燃"] = { mod("MinionModifier", "LIST", { mod = mod("EnemyIgniteChance", "BASE", 100) }, { type = "SkillName", skillName = "召唤愤怒狂灵" }) }, --备注：raging spirits' hits always 
+	} end,
+	["【愤怒狂灵】击中后必定造成点燃"] = { mod("MinionModifier", "LIST", { mod = mod("EnemyIgniteChance", "BASE", 100) }, { type = "SkillName", skillName = "召唤愤怒狂灵" }) }, --备注：raging spirits' hits always
 	["所有身上穿戴的物品皆为已腐化时，每秒回复 (%d+) 魔力"] = function(num) return {  mod("ManaRegen", "BASE", num,{ type = "MultiplierThreshold", var = "NonCorruptedItem", threshold = 0, upper = true })  } end,
 	["身上未装备已腐化的物品时，每秒回复 (%d+) 生命"] = function(num) return {  mod("LifeRegen", "BASE", num,{ type = "MultiplierThreshold", var = "CorruptedItem", threshold = 0, upper = true })  } end,
 	["被点燃时，获得 (%d+) 每秒生命回复"] = function(num) return {  mod("LifeRegen", "BASE", num,{ type = "Condition", var = "Ignited" })  } end,
@@ -2126,12 +2128,12 @@ local specialModList = {
 	["每个耐力球提高 ([%d%.]+)%% 每秒生命回复"] = function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Multiplier", var = "EnduranceCharge" })  } end,
 	["每个暴击球每秒回复 ([%d%.]+) 魔力"] = function(num) return {  mod("ManaRegen", "BASE", num,{ type = "Multiplier", var = "PowerCharge" })  } end,
 	["每秒回复 ([%d%.]+) 魔力"] = function(num) return {  mod("ManaRegen", "BASE", num)  } end,
-	["击败敌人时，每个狂怒球可以回复 %+(%d+) 生命"] = function(num) return {  mod("LifeOnKill", "BASE", num,{ type = "Multiplier", var = "FrenzyCharge" } )  } end,  
-	["每个狂怒球每秒回复 ([%d%.]+)%% 生命"] = function(num) return {  mod("LifeRegen", "BASE", num,{ type = "Multiplier", var = "FrenzyCharge" } )  } end,  
-	["每个耐力球可使每秒生命回复提高 ([%d%.]+)"] = function(num) return {  mod("LifeRegen", "BASE", num,{ type = "Multiplier", var = "EnduranceCharge" } )  } end,  
-	["每级获得每秒回复 (%d+) 生命"] = function(num) return {  mod("LifeRegen", "BASE", num, { type = "Multiplier", var = "Level" })  } end,  
-	["击败敌人回复 %+(%d+) 生命"] = function(num) return {  mod("LifeOnKill", "BASE", num)  } end,  
-	["击败敌人回复 %+(%d+) 魔力"] = function(num) return {  mod("ManaOnKill", "BASE", num)  } end,  
+	["击败敌人时，每个狂怒球可以回复 %+(%d+) 生命"] = function(num) return {  mod("LifeOnKill", "BASE", num,{ type = "Multiplier", var = "FrenzyCharge" } )  } end,
+	["每个狂怒球每秒回复 ([%d%.]+)%% 生命"] = function(num) return {  mod("LifeRegen", "BASE", num,{ type = "Multiplier", var = "FrenzyCharge" } )  } end,
+	["每个耐力球可使每秒生命回复提高 ([%d%.]+)"] = function(num) return {  mod("LifeRegen", "BASE", num,{ type = "Multiplier", var = "EnduranceCharge" } )  } end,
+	["每级获得每秒回复 (%d+) 生命"] = function(num) return {  mod("LifeRegen", "BASE", num, { type = "Multiplier", var = "Level" })  } end,
+	["击败敌人回复 %+(%d+) 生命"] = function(num) return {  mod("LifeOnKill", "BASE", num)  } end,
+	["击败敌人回复 %+(%d+) 魔力"] = function(num) return {  mod("ManaOnKill", "BASE", num)  } end,
 	["闪电伤害击中时有 ([%+%-]?%d+)%% 几率使敌人受到感电效果影响"] =function(num) return {  mod("EnemyShockChance", "BASE", num)  } end,  --   "EnemyShockChance", --备注：to shock
 	["火焰伤害击中时有 ([%+%-]?%d+)%% 几率点燃敌人"] =function(num) return {  mod("EnemyIgniteChance", "BASE", num)  } end,  --   "EnemyShockChance", --备注：to shock
 	["法杖攻击 ([%+%-]?%d+)%% 暴击伤害加成"] = function(num) return {  mod("CritMultiplier", "BASE", num,nil, ModFlag.Wand)  } end,
@@ -2157,143 +2159,143 @@ local specialModList = {
 	["召唤生物有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("DoubleDamageChance", "BASE", num) })  } end,
 	["召唤生物获得等同 ([%d%.]+)%% 最大生命的额外能量护盾"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("LifeGainAsEnergyShield", "BASE", num) })  } end,
 	["召唤生物获得额外混沌伤害，其数值等同于元素伤害的 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("ElementalDamageGainAsChaos", "BASE", num) })  } end,
-	["召唤生物获得物理伤害 (%d+)%% 的额外火焰伤害"] = function(num) return { mod("MinionModifier", "LIST", 
+	["召唤生物获得物理伤害 (%d+)%% 的额外火焰伤害"] = function(num) return { mod("MinionModifier", "LIST",
 	{ mod = mod("PhysicalDamageGainAsFire", "BASE", num) })  } end,
 	["召唤生物总生命额外提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "MORE", num) })  } end,
 	["召唤生物每秒回复 ([%d%.]+) 生命"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("LifeRegen", "BASE", num) })  } end,
 	["召唤生物获得 ([%d%.]+)%% 生命偷取"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("DamageLifeLeech", "BASE", num) })  } end,
 	["持长杖时 ([%+%-]?%d+)%% 攻击和法术暴击伤害加成"] = function(num) return {  mod("CritMultiplier", "BASE", num, { type = "Global" } , { type = "Condition", var = "UsingStaff" })  } end,
-	["你的攻击击中每个敌人会回复 ([%+%-]?%d+) 生命"] = function(num) return {  mod("LifeOnHit", "BASE", num,nil, ModFlag.Attack)  } end, 
-	["你的法术击中每个敌人会回复 ([%+%-]?%d+) 生命"] = function(num) return {  mod("LifeOnHit", "BASE", num,nil, ModFlag.Spell)  } end, 
-	["你的攻击击中每个敌人会回复 ([%+%-]?%d+) 能量护盾"] = function(num) return {  mod("EnergyShieldOnHit" , "BASE", num,nil, ModFlag.Attack)  } end, 
-	["你的法术击中每个敌人会回复 ([%+%-]?%d+) 能量护盾"] = function(num) return {  mod("EnergyShieldOnHit" , "BASE", num,nil, ModFlag.Spell)  } end, 
-	["攻击击中每个敌人会回复 ([%+%-]?%d+) 生命"] = function(num) return {  mod("LifeOnHit", "BASE", num,nil, ModFlag.Attack)  } end, 
-	["法术击中每个敌人会回复 ([%+%-]?%d+) 生命"] = function(num) return {  mod("LifeOnHit", "BASE", num,nil, ModFlag.Spell)  } end, 
-	["击中每个敌人会回复 ([%+%-]?%d+) 生命"] = function(num) return {  mod("LifeOnHit", "BASE", num,nil, ModFlag.Hit)  } end, 
-	["你的攻击击中每个敌人会回复 ([%+%-]?%d+) 魔力"] = function(num) return {  mod("ManaOnHit", "BASE", num,nil, ModFlag.Attack)  } end, 
-	["攻击击中每个敌人会回复 ([%+%-]?%d+) 魔力"] = function(num) return {  mod("ManaOnHit", "BASE", num,nil, ModFlag.Attack)  } end, 
-	["物理攻击伤害的 ([%d%.]+)%% 会转化为生命偷取"]= function(num) return {  mod("PhysicalDamageLifeLeech", "BASE", num,nil, ModFlag.Attack)  } end, 
-	["火焰伤害的 ([%d%.]+)%% 会转化为能量护盾偷取"]= function(num) return {  mod("FireDamageEnergyShieldLeech", "BASE", num)  } end, 
-	["冰霜伤害的 ([%d%.]+)%% 会转化为能量护盾偷取"]= function(num) return {  mod("ColdDamageEnergyShieldLeech", "BASE", num)  } end, 
-	["闪电伤害的 ([%d%.]+)%% 会转化为能量护盾偷取"]= function(num) return {  mod("LightningDamageEnergyShieldLeech", "BASE", num)  } end, 
-	["法术伤害的 ([%d%.]+)%% 会转化为能量护盾偷取"]= function(num) return {  mod("DamageEnergyShieldLeech", "BASE", num,nil, ModFlag.Spell)  } end, 
-	["火焰伤害的 ([%d%.]+)%% 转化为能量护盾偷取"]= function(num) return {  mod("FireDamageEnergyShieldLeech", "BASE", num)  } end, 
-	["冰霜伤害的 ([%d%.]+)%% 转化为能量护盾偷取"]= function(num) return {  mod("ColdDamageEnergyShieldLeech", "BASE", num)  } end, 
-	["闪电伤害的 ([%d%.]+)%% 转化为能量护盾偷取"]= function(num) return {  mod("LightningDamageEnergyShieldLeech", "BASE", num)  } end, 
-	["法术伤害的 ([%d%.]+)%% 转化为能量护盾偷取"]= function(num) return {  mod("DamageEnergyShieldLeech", "BASE", num,nil, ModFlag.Spell)  } end, 
-	["混沌伤害的 ([%d%.]+)%% 会转化为能量护盾偷取"]= function(num) return {  mod("ChaosDamageEnergyShieldLeech", "BASE", num)  } end, 
-	["敌人身上每有 1 个诅咒，法术伤害的 ([%d%.]+)%% 会转化为能量护盾偷取"] = function(num) return {  mod("DamageEnergyShieldLeech", "BASE", num,nil, ModFlag.Spell,{ type = "Multiplier", var = "CurseOnEnemy" })  } end, 
-	["敌人身上每有 1 个诅咒，法术伤害的 ([%d%.]+)%% 便转化为能量护盾偷取"] = function(num) return {  mod("DamageEnergyShieldLeech", "BASE", num,nil, ModFlag.Spell,{ type = "Multiplier", var = "CurseOnEnemy" })  } end, 
-	["每个生命偷取实例降低 (%d+)%% 最大回复"] = function(num) return {  mod("MaxLifeLeechInstance", "INC", -num)  } end, 
-	["拥有【秘术增强】效果时，法术伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Spell,{ type = "Condition", var = "AffectedBy秘术增强" })  } end, 
-	["攻击伤害的 ([%d%.]+)%% 会转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack)  } end, 
-	["药剂持续期间，物理攻击伤害的 ([%d%.]+)%% 作为生命偷取"]= function(num) return {  mod("PhysicalDamageLifeLeech", "BASE", num,nil, ModFlag.Attack,{ type = "Condition", var = "UsingFlask" })  } end, 
-	["药剂持续期间，物理攻击伤害的 ([%d%.]+)%% 作为魔力偷取"]= function(num) return {  mod("PhysicalDamageManaLeech", "BASE", num,nil, ModFlag.Attack,{ type = "Condition", var = "UsingFlask" })  } end, 
-	["药剂持续期间，附加 (%d+)%% 火焰、冰霜、闪电抗性"]= function(num) return {  mod("ElementalResist", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end, 
-	["药剂持续期间，附加 (%d+)%% 元素抗性"]= function(num) return {  mod("ElementalResist", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end, 
-	["药剂持续期间，每秒回复 ([%d%.]+)%% 生命"]= function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end, 
-	["近期内你若有击败敌人，则造成伤害的 ([%d%.]+)%% 转化为生命和魔力偷取"]= function(num) return { 
+	["你的攻击击中每个敌人会回复 ([%+%-]?%d+) 生命"] = function(num) return {  mod("LifeOnHit", "BASE", num,nil, ModFlag.Attack)  } end,
+	["你的法术击中每个敌人会回复 ([%+%-]?%d+) 生命"] = function(num) return {  mod("LifeOnHit", "BASE", num,nil, ModFlag.Spell)  } end,
+	["你的攻击击中每个敌人会回复 ([%+%-]?%d+) 能量护盾"] = function(num) return {  mod("EnergyShieldOnHit" , "BASE", num,nil, ModFlag.Attack)  } end,
+	["你的法术击中每个敌人会回复 ([%+%-]?%d+) 能量护盾"] = function(num) return {  mod("EnergyShieldOnHit" , "BASE", num,nil, ModFlag.Spell)  } end,
+	["攻击击中每个敌人会回复 ([%+%-]?%d+) 生命"] = function(num) return {  mod("LifeOnHit", "BASE", num,nil, ModFlag.Attack)  } end,
+	["法术击中每个敌人会回复 ([%+%-]?%d+) 生命"] = function(num) return {  mod("LifeOnHit", "BASE", num,nil, ModFlag.Spell)  } end,
+	["击中每个敌人会回复 ([%+%-]?%d+) 生命"] = function(num) return {  mod("LifeOnHit", "BASE", num,nil, ModFlag.Hit)  } end,
+	["你的攻击击中每个敌人会回复 ([%+%-]?%d+) 魔力"] = function(num) return {  mod("ManaOnHit", "BASE", num,nil, ModFlag.Attack)  } end,
+	["攻击击中每个敌人会回复 ([%+%-]?%d+) 魔力"] = function(num) return {  mod("ManaOnHit", "BASE", num,nil, ModFlag.Attack)  } end,
+	["物理攻击伤害的 ([%d%.]+)%% 会转化为生命偷取"]= function(num) return {  mod("PhysicalDamageLifeLeech", "BASE", num,nil, ModFlag.Attack)  } end,
+	["火焰伤害的 ([%d%.]+)%% 会转化为能量护盾偷取"]= function(num) return {  mod("FireDamageEnergyShieldLeech", "BASE", num)  } end,
+	["冰霜伤害的 ([%d%.]+)%% 会转化为能量护盾偷取"]= function(num) return {  mod("ColdDamageEnergyShieldLeech", "BASE", num)  } end,
+	["闪电伤害的 ([%d%.]+)%% 会转化为能量护盾偷取"]= function(num) return {  mod("LightningDamageEnergyShieldLeech", "BASE", num)  } end,
+	["法术伤害的 ([%d%.]+)%% 会转化为能量护盾偷取"]= function(num) return {  mod("DamageEnergyShieldLeech", "BASE", num,nil, ModFlag.Spell)  } end,
+	["火焰伤害的 ([%d%.]+)%% 转化为能量护盾偷取"]= function(num) return {  mod("FireDamageEnergyShieldLeech", "BASE", num)  } end,
+	["冰霜伤害的 ([%d%.]+)%% 转化为能量护盾偷取"]= function(num) return {  mod("ColdDamageEnergyShieldLeech", "BASE", num)  } end,
+	["闪电伤害的 ([%d%.]+)%% 转化为能量护盾偷取"]= function(num) return {  mod("LightningDamageEnergyShieldLeech", "BASE", num)  } end,
+	["法术伤害的 ([%d%.]+)%% 转化为能量护盾偷取"]= function(num) return {  mod("DamageEnergyShieldLeech", "BASE", num,nil, ModFlag.Spell)  } end,
+	["混沌伤害的 ([%d%.]+)%% 会转化为能量护盾偷取"]= function(num) return {  mod("ChaosDamageEnergyShieldLeech", "BASE", num)  } end,
+	["敌人身上每有 1 个诅咒，法术伤害的 ([%d%.]+)%% 会转化为能量护盾偷取"] = function(num) return {  mod("DamageEnergyShieldLeech", "BASE", num,nil, ModFlag.Spell,{ type = "Multiplier", var = "CurseOnEnemy" })  } end,
+	["敌人身上每有 1 个诅咒，法术伤害的 ([%d%.]+)%% 便转化为能量护盾偷取"] = function(num) return {  mod("DamageEnergyShieldLeech", "BASE", num,nil, ModFlag.Spell,{ type = "Multiplier", var = "CurseOnEnemy" })  } end,
+	["每个生命偷取实例降低 (%d+)%% 最大回复"] = function(num) return {  mod("MaxLifeLeechInstance", "INC", -num)  } end,
+	["拥有【秘术增强】效果时，法术伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Spell,{ type = "Condition", var = "AffectedBy秘术增强" })  } end,
+	["攻击伤害的 ([%d%.]+)%% 会转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack)  } end,
+	["药剂持续期间，物理攻击伤害的 ([%d%.]+)%% 作为生命偷取"]= function(num) return {  mod("PhysicalDamageLifeLeech", "BASE", num,nil, ModFlag.Attack,{ type = "Condition", var = "UsingFlask" })  } end,
+	["药剂持续期间，物理攻击伤害的 ([%d%.]+)%% 作为魔力偷取"]= function(num) return {  mod("PhysicalDamageManaLeech", "BASE", num,nil, ModFlag.Attack,{ type = "Condition", var = "UsingFlask" })  } end,
+	["药剂持续期间，附加 (%d+)%% 火焰、冰霜、闪电抗性"]= function(num) return {  mod("ElementalResist", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
+	["药剂持续期间，附加 (%d+)%% 元素抗性"]= function(num) return {  mod("ElementalResist", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
+	["药剂持续期间，每秒回复 ([%d%.]+)%% 生命"]= function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
+	["近期内你若有击败敌人，则造成伤害的 ([%d%.]+)%% 转化为生命和魔力偷取"]= function(num) return {
 	mod("DamageLifeLeech", "BASE", num,{ type = "Condition", var = "KilledRecently" }) ,
-	mod("DamageManaLeech", "BASE", num,{ type = "Condition", var = "KilledRecently" })   } end, 
-	["近期内你若有击败敌人，则造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return { 
-	mod("DamageLifeLeech", "BASE", num,{ type = "Condition", var = "KilledRecently" })  } end, 
-	["对感电敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end, 
-	["对感电敌人的暴击几率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end, 
-	["对感电目标的暴击率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end, 
-	["你击中造成的感电，必定会使对方所承受伤害提高至少 (%d+)%%"] = function(num) return { 
+	mod("DamageManaLeech", "BASE", num,{ type = "Condition", var = "KilledRecently" })   } end,
+	["近期内你若有击败敌人，则造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {
+	mod("DamageLifeLeech", "BASE", num,{ type = "Condition", var = "KilledRecently" })  } end,
+	["对感电敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end,
+	["对感电敌人的暴击几率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end,
+	["对感电目标的暴击率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end,
+	["你击中造成的感电，必定会使对方所承受伤害提高至少 (%d+)%%"] = function(num) return {
 	mod("ShockBase", "BASE", num)
-	 } end,
-	["药剂持续期间，使周围的敌人感电，他们受到的伤害提高 (%d+)%%"]  = function(num) return { mod("EnemyModifier", "LIST", { mod = 
+	} end,
+	["药剂持续期间，使周围的敌人感电，他们受到的伤害提高 (%d+)%%"]  = function(num) return { mod("EnemyModifier", "LIST", { mod =
 	mod("SelfShockEffect", "BASE", num)} , { type = "Condition", var = "UsingFlask" }),
-	 } end,
+	} end,
 	["敌人若位于你近期所生成的灵柩周围，则使其受到冰缓和感电"] = {
-			mod("EnemyModifier", "LIST", { mod = mod("Condition:Chilled", "FLAG", true) }, { type = "Condition", var = "SpawnedCorpseRecently" }),
-			mod("EnemyModifier", "LIST", { mod = mod("Condition:Shocked", "FLAG", true) }, { type = "Condition", var = "SpawnedCorpseRecently" }),
-			mod("ShockBase", "BASE", 15, { type = "Condition", var = "SpawnedCorpseRecently"}),
-		},
-	["对被你击中所造成冰缓的敌人造成感电"] = { 
-			mod("ShockBase", "BASE", 15, { type = "ActorCondition", actor = "enemy", var = "ChilledByYourHits" } ),
-			mod("EnemyModifier", "LIST", { mod = mod("Condition:Shocked", "FLAG", true, { type = "Condition", var = "ChilledByYourHits" } ) } )
-		},
+	mod("EnemyModifier", "LIST", { mod = mod("Condition:Chilled", "FLAG", true) }, { type = "Condition", var = "SpawnedCorpseRecently" }),
+	mod("EnemyModifier", "LIST", { mod = mod("Condition:Shocked", "FLAG", true) }, { type = "Condition", var = "SpawnedCorpseRecently" }),
+	mod("ShockBase", "BASE", 15, { type = "Condition", var = "SpawnedCorpseRecently"}),
+	},
+	["对被你击中所造成冰缓的敌人造成感电"] = {
+	mod("ShockBase", "BASE", 15, { type = "ActorCondition", actor = "enemy", var = "ChilledByYourHits" } ),
+	mod("EnemyModifier", "LIST", { mod = mod("Condition:Shocked", "FLAG", true, { type = "Condition", var = "ChilledByYourHits" } ) } )
+	},
 	["格挡时有 (%d+)%% 几率使攻击者感电 (%d+) 秒"] = { mod("ShockBase", "BASE", 15) },
-		["shock nearby enemies for (%d+) seconds when you focus"]  = { 
-			mod("ShockBase", "BASE", 15, { type = "Condition", var = "Focused" }),
-			mod("EnemyModifier", "LIST", { mod = flag("Condition:Shocked") }, { type = "Condition", var = "Focused" } ),
-		},
+	["shock nearby enemies for (%d+) seconds when you focus"]  = {
+	mod("ShockBase", "BASE", 15, { type = "Condition", var = "Focused" }),
+	mod("EnemyModifier", "LIST", { mod = flag("Condition:Shocked") }, { type = "Condition", var = "Focused" } ),
+	},
 	["移动时留下【感电地面】，持续 (%d+) 秒 (%d+)"] = { mod("ShockOverride", "BASE", 10, { type = "ActorCondition", actor = "enemy", var = "OnShockedGround"} ) },
 	["左戒指栏位：用插入的【诅咒】替换你【冰冷的飞掠者】的光环"] = { flag("SkitterbotsCannotChill", { type = "SlotNumber", num = 1 }) },
 	["右戒指栏位：用插入的【诅咒】替换你【电震的飞掠者】的光环"] = { flag("SkitterbotsCannotShock", { type = "SlotNumber", num = 2 }) },
-	["药剂持续期间，使周围的敌人感电，他们受到的伤害提高 (%d+)%%"] = function(num) return { 
-		--	mod("EnemyModifier", "LIST", { mod = mod("Condition:Shocked", "FLAG", true) } ),
-			mod("ShockOverride", "BASE", num, { type = "Condition", var = "UsingFlask" } )
-		} end,
-	["近期有感电过敌人，伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", num,{ type = "Condition", var = "ShockedEnemyRecently"  })  } end, 
-	["对被冰冻敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Frozen" })  } end, 
-	["对被感电敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end, 
-	["对冰冻敌人造成伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("DamageManaLeech", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Frozen" })  } end, 
-	["对冰冻敌人造成伤害的 ([%d%.]+)%% 转化为能量护盾偷取"]= function(num) return {  mod("DamageEnergyShieldLeech", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Frozen" })  } end, 
-	["对感电敌人造成伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("DamageManaLeech", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end, 
-	["攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack)  } end, 
-	["攻击伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("DamageManaLeech", "BASE", num,nil, ModFlag.Attack)  } end, 
-	["法术伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("DamageManaLeech", "BASE", num,nil, ModFlag.Spell)  } end, 
-	["法术伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Spell)  } end, 
-	["击中时有 ([%d%.]+)%% 几率击退敌人"]= function(num) return {  mod("EnemyKnockbackChance", "BASE", num)  } end, 
-	["获得护体时护甲提高 ([%d%.]+)%%"]= function(num) return {  mod("Armour", "INC", num, { type = "Condition", var = "Fortify" } )  } end, 
-	["击中时有 ([%d%.]+)%% 几率使目标中毒"]= function(num) return {  mod("PoisonChance", "BASE", num)  } end, 
-	["击中时有 ([%d%.]+)%% 几率使目标流血"]= function(num) return {  mod("BleedChance", "BASE", num)  } end, 
-	["攻击击中时有 ([%d%.]+)%% 几率使目标中毒"]= function(num) return {  mod("PoisonChance", "BASE", num,nil, ModFlag.Attack)  } end, 
+	["药剂持续期间，使周围的敌人感电，他们受到的伤害提高 (%d+)%%"] = function(num) return {
+	--	mod("EnemyModifier", "LIST", { mod = mod("Condition:Shocked", "FLAG", true) } ),
+	mod("ShockOverride", "BASE", num, { type = "Condition", var = "UsingFlask" } )
+	} end,
+	["近期有感电过敌人，伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", num,{ type = "Condition", var = "ShockedEnemyRecently"  })  } end,
+	["对被冰冻敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Frozen" })  } end,
+	["对被感电敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end,
+	["对冰冻敌人造成伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("DamageManaLeech", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Frozen" })  } end,
+	["对冰冻敌人造成伤害的 ([%d%.]+)%% 转化为能量护盾偷取"]= function(num) return {  mod("DamageEnergyShieldLeech", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Frozen" })  } end,
+	["对感电敌人造成伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("DamageManaLeech", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Shocked" })  } end,
+	["攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack)  } end,
+	["攻击伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("DamageManaLeech", "BASE", num,nil, ModFlag.Attack)  } end,
+	["法术伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("DamageManaLeech", "BASE", num,nil, ModFlag.Spell)  } end,
+	["法术伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Spell)  } end,
+	["击中时有 ([%d%.]+)%% 几率击退敌人"]= function(num) return {  mod("EnemyKnockbackChance", "BASE", num)  } end,
+	["获得护体时护甲提高 ([%d%.]+)%%"]= function(num) return {  mod("Armour", "INC", num, { type = "Condition", var = "Fortify" } )  } end,
+	["击中时有 ([%d%.]+)%% 几率使目标中毒"]= function(num) return {  mod("PoisonChance", "BASE", num)  } end,
+	["击中时有 ([%d%.]+)%% 几率使目标流血"]= function(num) return {  mod("BleedChance", "BASE", num)  } end,
+	["攻击击中时有 ([%d%.]+)%% 几率使目标中毒"]= function(num) return {  mod("PoisonChance", "BASE", num,nil, ModFlag.Attack)  } end,
 	["匕首攻击的暴击有 (%d+)%% 几率使敌人中毒"] = function(num) return { mod("PoisonChance", "BASE", num, nil, ModFlag.Dagger, { type = "Condition", var = "CriticalStrike" }) } end, --备注：critical strikes with daggers have a (%d+)%% chance to poison the enemy
-	["地雷伤害可以穿透 (%d+)%% 元素抗性"]= function(num) return {  mod("ElementalPenetration", "BASE", num,nil,nil,   KeywordFlag.Mine)  } end, 
-	["暴击后的 8 秒内，火焰、冰霜和闪电总伤害额外提高 (%d+)%%"]= function(num) return {  mod("ElementalDamage", "MORE", num,{ type = "Condition", var = "CritInPast8Sec" })  } end, 
-	["过去 8 秒你若有造成暴击，火焰、冰霜和闪电总伤害额外提高 (%d+)%%"]= function(num) return {  mod("ElementalDamage", "MORE", num,{ type = "Condition", var = "CritInPast8Sec" })  } end, 
-	["你打出暴击后的 8 秒内，元素总伤害额外提高 (%d+)%%"]= function(num) return {  mod("ElementalDamage", "MORE", num,{ type = "Condition", var = "CritInPast8Sec" })  } end, 
+	["地雷伤害可以穿透 (%d+)%% 元素抗性"]= function(num) return {  mod("ElementalPenetration", "BASE", num,nil,nil,   KeywordFlag.Mine)  } end,
+	["暴击后的 8 秒内，火焰、冰霜和闪电总伤害额外提高 (%d+)%%"]= function(num) return {  mod("ElementalDamage", "MORE", num,{ type = "Condition", var = "CritInPast8Sec" })  } end,
+	["过去 8 秒你若有造成暴击，火焰、冰霜和闪电总伤害额外提高 (%d+)%%"]= function(num) return {  mod("ElementalDamage", "MORE", num,{ type = "Condition", var = "CritInPast8Sec" })  } end,
+	["你打出暴击后的 8 秒内，元素总伤害额外提高 (%d+)%%"]= function(num) return {  mod("ElementalDamage", "MORE", num,{ type = "Condition", var = "CritInPast8Sec" })  } end,
 	["没有暴击伤害加成"] = { flag("NoCritMultiplier") },
-	["所承受伤害的前 (%d+)%% 会扣除魔力，而非生命"]= function(num) return {  mod("DamageTakenFromManaBeforeLife", "BASE", num)  } end, 
-	["总魔力保留额外降低 (%d+)%%"]= function(num) return {  mod("ManaReserved", "MORE", -num)  } end, 
-	["总魔力保留额外提高 (%d+)%%"]= function(num) return {  mod("ManaReserved", "MORE", num)  } end, 
-	["技能的总魔力保留额外降低 (%d+)%%"]= function(num) return {  mod("ManaReserved", "MORE", -num)  } end, 
-	["【(.+)】的总魔力保留额外降低 (%d+)%%"]= function(_, skill_name, num) return {  mod("ManaReserved", "MORE", -num,{ type = "SkillName", skillName =  FuckSkillActivityCnName(skill_name)})  } end, 
-	["(.+)的总魔力保留额外降低 (%d+)%%"]= function(_, skill_name, num) return {  mod("ManaReserved", "MORE", -num,{ type = "SkillName", skillName =  FuckSkillActivityCnName(skill_name)})  } end, 
+	["所承受伤害的前 (%d+)%% 会扣除魔力，而非生命"]= function(num) return {  mod("DamageTakenFromManaBeforeLife", "BASE", num)  } end,
+	["总魔力保留额外降低 (%d+)%%"]= function(num) return {  mod("ManaReserved", "MORE", -num)  } end,
+	["总魔力保留额外提高 (%d+)%%"]= function(num) return {  mod("ManaReserved", "MORE", num)  } end,
+	["技能的总魔力保留额外降低 (%d+)%%"]= function(num) return {  mod("ManaReserved", "MORE", -num)  } end,
+	["【(.+)】的总魔力保留额外降低 (%d+)%%"]= function(_, skill_name, num) return {  mod("ManaReserved", "MORE", -num,{ type = "SkillName", skillName =  FuckSkillActivityCnName(skill_name)})  } end,
+	["(.+)的总魔力保留额外降低 (%d+)%%"]= function(_, skill_name, num) return {  mod("ManaReserved", "MORE", -num,{ type = "SkillName", skillName =  FuckSkillActivityCnName(skill_name)})  } end,
 	["此物品上的技能石魔力消耗倍率为原来的 (%d+)%%"] = function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("SupportManaMultiplier", "MORE", num - 100) }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
-	["总流血伤害额外降低 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", -num,nil,nil, KeywordFlag.Bleed)  } end, 
-	["对投射物攻击的总闪避率额外提高 (%d+)%%"]= function(num) return {  mod("ProjectileEvadeChance", "MORE", num)  } end, 
-	["对近战攻击的总闪避率额外降低 (%d+)%%"]= function(num) return {  mod("MeleeEvadeChance", "MORE", -num)  } end, 
-	["能量护盾回复总速度降低 (%d+)%%"]= function(num) return {  mod("EnergyShieldRecharge", "MORE", -num)  } end, 
-	["能量护盾充能总速度降低 (%d+)%%"]= function(num) return {  mod("EnergyShieldRecharge", "MORE", -num)  } end, 
-	["能量护盾总速度降低 (%d+)%%"]= function(num) return {  mod("EnergyShieldRecharge", "MORE", -num)  } end, 
-	["低血时法术总伤害额外提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num,nil, ModFlag.Spell,{ type = "Condition", var = "LowLife" })  } end, 
-	["召唤生物有 (%d+)%% 攻击格挡率"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("BlockChance", "BASE", num) })   } end, 
-	["召唤生物有 (%d+)%% 攻击伤害格挡几率"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("BlockChance", "BASE", num) })   } end, 
-	["召唤生物有%+(%d+)%% 攻击伤害格挡几率"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("BlockChance", "BASE", num) })   } end, 
-	["击中的总伤害额外降低 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", -num,nil,ModFlag.Hit)  } end, 
-	["击中总伤害降低 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", -num,nil,ModFlag.Hit)  } end, 
-	["地雷总伤害额外降低 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", -num,nil,KeywordFlag.Mine )  } end, 
+	["总流血伤害额外降低 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", -num,nil,nil, KeywordFlag.Bleed)  } end,
+	["对投射物攻击的总闪避率额外提高 (%d+)%%"]= function(num) return {  mod("ProjectileEvadeChance", "MORE", num)  } end,
+	["对近战攻击的总闪避率额外降低 (%d+)%%"]= function(num) return {  mod("MeleeEvadeChance", "MORE", -num)  } end,
+	["能量护盾回复总速度降低 (%d+)%%"]= function(num) return {  mod("EnergyShieldRecharge", "MORE", -num)  } end,
+	["能量护盾充能总速度降低 (%d+)%%"]= function(num) return {  mod("EnergyShieldRecharge", "MORE", -num)  } end,
+	["能量护盾总速度降低 (%d+)%%"]= function(num) return {  mod("EnergyShieldRecharge", "MORE", -num)  } end,
+	["低血时法术总伤害额外提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num,nil, ModFlag.Spell,{ type = "Condition", var = "LowLife" })  } end,
+	["召唤生物有 (%d+)%% 攻击格挡率"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("BlockChance", "BASE", num) })   } end,
+	["召唤生物有 (%d+)%% 攻击伤害格挡几率"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("BlockChance", "BASE", num) })   } end,
+	["召唤生物有%+(%d+)%% 攻击伤害格挡几率"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("BlockChance", "BASE", num) })   } end,
+	["击中的总伤害额外降低 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", -num,nil,ModFlag.Hit)  } end,
+	["击中总伤害降低 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", -num,nil,ModFlag.Hit)  } end,
+	["地雷总伤害额外降低 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", -num,nil,KeywordFlag.Mine )  } end,
 	["近期内，你或你的召唤生物每击败一个敌人，则每秒回复你 1%% 能量护盾，最多 (%d+)%%"] = function(num) return { mod("EnergyShieldRegenPercent", "BASE", 1, { type = "Multiplier", varList = {"EnemyKilledRecently","EnemyKilledByMinionsRecently"}, limit = tonumber(num), limitTotal = true } )  }end,
-	["点燃总伤害额外提高 (%d+)%%"] = function(num) return {  mod("Damage", "MORE", num,nil,nil,KeywordFlag.Ignite )  } end, 
-	["火焰、冰霜、闪电伤害的 ([%d%.]+)%% 转化为生命偷取"] = function(num) return {  mod("ElementalDamageLifeLeech", "BASE", num )  } end, 
-	["元素伤害的 ([%d%.]+)%% 转化为生命偷取"] = function(num) return {  mod("ElementalDamageLifeLeech", "BASE", num )  } end, 
-	["近期内你若使用了召唤生物技能，则召唤生物伤害提高 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num, { type = "Condition", var = "UsedMinionSkillRecently" } )})  } end, 
-	["近期内你若使用了召唤生物技能，则召唤生物的伤害提高 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num, { type = "Condition", var = "UsedMinionSkillRecently" } )})  } end, 
-	["近期内你若使用了召唤生物技能，则召唤生物的范围效果扩大 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("AreaOfEffect", "INC", num, { type = "Condition", var = "UsedMinionSkillRecently" } )})  } end, 
-	["你施放的光环每秒回复你和周围友军 ([%d%.]+)%% 最大生命"]= function(num) return {  mod("ExtraAura", "LIST", { mod =  mod("LifeRegenPercent", "BASE", num) }) } end, 
+	["点燃总伤害额外提高 (%d+)%%"] = function(num) return {  mod("Damage", "MORE", num,nil,nil,KeywordFlag.Ignite )  } end,
+	["火焰、冰霜、闪电伤害的 ([%d%.]+)%% 转化为生命偷取"] = function(num) return {  mod("ElementalDamageLifeLeech", "BASE", num )  } end,
+	["元素伤害的 ([%d%.]+)%% 转化为生命偷取"] = function(num) return {  mod("ElementalDamageLifeLeech", "BASE", num )  } end,
+	["近期内你若使用了召唤生物技能，则召唤生物伤害提高 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num, { type = "Condition", var = "UsedMinionSkillRecently" } )})  } end,
+	["近期内你若使用了召唤生物技能，则召唤生物的伤害提高 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num, { type = "Condition", var = "UsedMinionSkillRecently" } )})  } end,
+	["近期内你若使用了召唤生物技能，则召唤生物的范围效果扩大 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("AreaOfEffect", "INC", num, { type = "Condition", var = "UsedMinionSkillRecently" } )})  } end,
+	["你施放的光环每秒回复你和周围友军 ([%d%.]+)%% 最大生命"]= function(num) return {  mod("ExtraAura", "LIST", { mod =  mod("LifeRegenPercent", "BASE", num) }) } end,
 	["(%d+)%% 的伤害优先从魔力扣除"]= function(num) return {  mod("DamageTakenFromManaBeforeLife", "BASE", num)  } end,
-	["获得等同 (%d+)%% 魔力的额外能量护盾"]= function(num) return {  mod("ManaGainAsEnergyShield", "BASE", num)  } end, 
-	["获得等同 (%d+)%% 最大魔力的额外能量护盾"]= function(num) return {  mod("ManaGainAsEnergyShield", "BASE", num)  } end, 
-	["位于奉献地面上时，每秒回复 ([%d%.]+) 魔力"]= function(num) return {  
-		mod("ManaRegen", "BASE", num,{ type = "Condition", var = "OnConsecratedGround" } ) , 
-		 } end, 
-	["在奉献地面上时，每秒回复 ([%d%.]+) 魔力"]= function(num) return {  
-	mod("ManaRegen", "BASE", num,{ type = "Condition", var = "OnConsecratedGround" } ) , 
-	 } end, 
-	 ["位于奉献地面上时，每秒回复 ([%d%.]+) 能量护盾"]= function(num) return {  
-	mod("EnergyShieldRegen", "BASE", num,{ type = "Condition", var = "OnConsecratedGround" } ) , 
-	 } end,  
-	 ["在奉献地面上时，每秒回复 ([%d%.]+) 能量护盾"]= function(num) return {  
-	mod("EnergyShieldRegen", "BASE", num,{ type = "Condition", var = "OnConsecratedGround" } ) , 
-	 } end, 
-	["在奉献地面上时，每秒回复 ([%d%.]+)%% 最大魔力和能量护盾"]= function(num) return {  
-	mod("ManaRegenPercent", "BASE", num,{ type = "Condition", var = "OnConsecratedGround" } ) , 
-	 mod("EnergyShieldRegenPercent", "BASE", num,{ type = "Condition", var = "OnConsecratedGround" } ) ,} end, 
+	["获得等同 (%d+)%% 魔力的额外能量护盾"]= function(num) return {  mod("ManaGainAsEnergyShield", "BASE", num)  } end,
+	["获得等同 (%d+)%% 最大魔力的额外能量护盾"]= function(num) return {  mod("ManaGainAsEnergyShield", "BASE", num)  } end,
+	["位于奉献地面上时，每秒回复 ([%d%.]+) 魔力"]= function(num) return {
+	mod("ManaRegen", "BASE", num,{ type = "Condition", var = "OnConsecratedGround" } ) ,
+	} end,
+	["在奉献地面上时，每秒回复 ([%d%.]+) 魔力"]= function(num) return {
+	mod("ManaRegen", "BASE", num,{ type = "Condition", var = "OnConsecratedGround" } ) ,
+	} end,
+	["位于奉献地面上时，每秒回复 ([%d%.]+) 能量护盾"]= function(num) return {
+	mod("EnergyShieldRegen", "BASE", num,{ type = "Condition", var = "OnConsecratedGround" } ) ,
+	} end,
+	["在奉献地面上时，每秒回复 ([%d%.]+) 能量护盾"]= function(num) return {
+	mod("EnergyShieldRegen", "BASE", num,{ type = "Condition", var = "OnConsecratedGround" } ) ,
+	} end,
+	["在奉献地面上时，每秒回复 ([%d%.]+)%% 最大魔力和能量护盾"]= function(num) return {
+	mod("ManaRegenPercent", "BASE", num,{ type = "Condition", var = "OnConsecratedGround" } ) ,
+	mod("EnergyShieldRegenPercent", "BASE", num,{ type = "Condition", var = "OnConsecratedGround" } ) ,} end,
 	["受到击中物理伤害的 (%d+)%% 转化为火焰伤害"] = function(num) return {  mod("PhysicalDamageTakenAsFire", "BASE", num)  } end,
 	["受到击中物理伤害的 (%d+)%% 转化为冰霜伤害"] = function(num) return {  mod("PhysicalDamageTakenAsCold", "BASE", num)  } end,
 	["受到击中物理伤害的 (%d+)%% 转化为闪电伤害"] = function(num) return {  mod("PhysicalDamageTakenAsLightning", "BASE", num)  } end,
@@ -2315,13 +2317,13 @@ local specialModList = {
 	["承受的冰霜总伤害额外降低 (%d+)%%"] = function(num) return { mod("ColdDamageTaken", "MORE", -num) } end,
 	["承受的火焰总伤害额外降低 (%d+)%%"] = function(num) return { mod("FireDamageTaken", "MORE", -num) } end,
 	["近期内，你若被击中并受到火焰伤害，则每秒回复 ([%d%.]+)%% 生命"] = function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "HitByFireDamageRecently" })  } end,
-	["火焰伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("FireDamageLifeLeech", "BASE", num)  } end, 
-	["冰霜伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("ColdDamageLifeLeech", "BASE", num)  } end, 
-	["闪电伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("LightningDamageLifeLeech", "BASE", num)  } end, 
-	["混沌伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("ChaosDamageLifeLeech", "BASE", num)  } end, 
-	["物理伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("PhysicalDamageLifeLeech", "BASE", num)  } end, 
-	["近期内你若有击败敌人，则攻击伤害的 ([%d%.]+)%% 转化为偷取生命和魔力"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack, { type = "Condition", var = "KilledRecently" })  } end, 
-	["近期内你若受到【残暴打击】，则其伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,{ type = "Condition", var = "BeenSavageHitRecently" })  } end, 
+	["火焰伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("FireDamageLifeLeech", "BASE", num)  } end,
+	["冰霜伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("ColdDamageLifeLeech", "BASE", num)  } end,
+	["闪电伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("LightningDamageLifeLeech", "BASE", num)  } end,
+	["混沌伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("ChaosDamageLifeLeech", "BASE", num)  } end,
+	["物理伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("PhysicalDamageLifeLeech", "BASE", num)  } end,
+	["近期内你若有击败敌人，则攻击伤害的 ([%d%.]+)%% 转化为偷取生命和魔力"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack, { type = "Condition", var = "KilledRecently" })  } end,
+	["近期内你若受到【残暴打击】，则其伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,{ type = "Condition", var = "BeenSavageHitRecently" })  } end,
 	["总伤害额外提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num)  } end,
 	["每秒回复 ([%d%.]+)%% 能量护盾"]=function(num) return {  mod("EnergyShieldRegenPercent", "BASE", num)  } end,
 	["每秒回复 ([%d%.]+) 能量护盾"]=function(num) return {  mod("EnergyShieldRegen", "BASE", num)  } end,
@@ -2329,8 +2331,8 @@ local specialModList = {
 	["每秒回复 ([%d%.]+)%% 魔力"]=function(num) return {  mod("ManaRegenPercent", "BASE", num)  } end,
 	["近期内你若被击中，则每秒回复 ([%d%.]+)%% 生命"]=function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "BeenHitRecently" })  } end,
 	["(%d+)%% 的攻击格挡率同样套用于法术格挡"]=function(num) return {  mod("BlockChanceConv", "BASE", num)  } end,
-	["流血总伤害额外提高 (%d+)%%"]=function(num) return {  mod("Damage", "MORE", num,nil,nil, KeywordFlag.Bleed)  } end, 
-	["流血总伤害额外降低 (%d+)%%"]=function(num) return {  mod("Damage", "MORE", -num,nil,nil, KeywordFlag.Bleed)  } end, 
+	["流血总伤害额外提高 (%d+)%%"]=function(num) return {  mod("Damage", "MORE", num,nil,nil, KeywordFlag.Bleed)  } end,
+	["流血总伤害额外降低 (%d+)%%"]=function(num) return {  mod("Damage", "MORE", -num,nil,nil, KeywordFlag.Bleed)  } end,
 	["你可以对 1 个敌人造成最多 (%d+) 次流血"] = function(num) return { mod("BleedStacksMax", "OVERRIDE", num) } end,
 	["投掷地雷类技能的魔力保留降低 (%d+)%%"]=function(num) return {  mod("ManaReserved", "INC", -num,nil,KeywordFlag.Mine  )  } end,
 	["近期内你若引爆过地雷，则地雷放置投掷速度提高 (%d+)%%"]=function(num) return {  mod("MineLayingSpeed", "INC", num,{ type = "Condition", var = "DetonatedMinesRecently" })  } end,
@@ -2352,15 +2354,15 @@ local specialModList = {
 	["近期内你若有击败敌人，则总伤害额外提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num, { type = "Condition", var = "KilledRecently" })  } end,
 	["【猛攻】状态下闪避近战攻击的几率额外提高 (%d+)%%"] = function(num) return {  mod("MeleeEvadeChance", "MORE", num, { type = "Condition", var = "Onslaught" } )  } end,
 	["在【猛攻】状态期间闪避值提高 (%d+)%%"] = function(num) return {  mod("Evasion", "INC", num, { type = "Condition", var = "Onslaught" } )  } end,
-	["总闪避值额外提高 (%d+)%%"] = function(num) return {  mod("Evasion", "MORE", num)  } end, 
-	["闪避值额外提高 (%d+)%%"] = function(num) return {  mod("Evasion", "MORE", num)  } end, 
-	["如果近期内被击中，则总闪避值额外提高 (%d+)%%"] = function(num) return {  mod("Evasion", "MORE", num, { type = "Condition", var = "BeenHitRecently" })  } end, 
+	["总闪避值额外提高 (%d+)%%"] = function(num) return {  mod("Evasion", "MORE", num)  } end,
+	["闪避值额外提高 (%d+)%%"] = function(num) return {  mod("Evasion", "MORE", num)  } end,
+	["如果近期内被击中，则总闪避值额外提高 (%d+)%%"] = function(num) return {  mod("Evasion", "MORE", num, { type = "Condition", var = "BeenHitRecently" })  } end,
 	["【猛攻】状态下闪避投射物的总几率额外提高 (%d+)%%"]= function(num) return {  mod("ProjectileEvadeChance", "MORE", num,{ type = "Condition", var = "Onslaught" })  } end,
-	["药剂持续期间，有 ([%d%.]+)%% 几率击中时使敌人中毒"]= function(num) return {  mod("PoisonChance", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end, 
-	["药剂持续期间，有 (%d+)%% 几率冰冻，感电和点燃敌人"]= function(num) return {mod("EnemyFreezeChance", "BASE", num,{ type = "Condition", var = "UsingFlask" }),mod("EnemyShockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" }),mod("EnemyIgniteChance", "BASE", num,{ type ="Condition", var = "UsingFlask" })  } end, 
+	["药剂持续期间，有 ([%d%.]+)%% 几率击中时使敌人中毒"]= function(num) return {  mod("PoisonChance", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
+	["药剂持续期间，有 (%d+)%% 几率冰冻，感电和点燃敌人"]= function(num) return {mod("EnemyFreezeChance", "BASE", num,{ type = "Condition", var = "UsingFlask" }),mod("EnemyShockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" }),mod("EnemyIgniteChance", "BASE", num,{ type ="Condition", var = "UsingFlask" })  } end,
 	["投射物穿透目标后，投射物对它们的暴击率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", num,nil,ModFlag.Projectile ,{ type = "StatThreshold", stat = "PierceCount", threshold = 1 } )  } end,
 	["近期内你若使用过技能，每使用 1 个技能，你身上的【提速尾流】效果提高 (%d+)%%，最多 100%%"] = function(num) return {  mod("TailwindEffectOnSelf", "INC", num,{ type = "Multiplier", var = "SkillUsedRecently", limit = 100, limitTotal = true } )  } end,
-	["击中流血中的敌人时回复 %+(%d+) 生命"] = function(num) return {  mod("LifeOnHit", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Bleeding" })  } end,  
+	["击中流血中的敌人时回复 %+(%d+) 生命"] = function(num) return {  mod("LifeOnHit", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Bleeding" })  } end,
 	["陷阱所使用的技能范围扩大 (%d+)%%"] = function(num) return {  mod("AreaOfEffect", "INC", num,nil,nil, KeywordFlag.Trap)  } end,
 	["能量护盾全满时，总闪避率额外提高 (%d+)%%"]= function(num) return {  mod("EvadeChance", "MORE", num,{ type = "Condition", var = "FullEnergyShield" })  } end,
 	["持续性总伤害额外提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num,nil, ModFlag.Dot)  } end,
@@ -2373,26 +2375,26 @@ local specialModList = {
 	["法术获得 %+([%d%.]+)%% 基础暴击率"]= function(num) return {  mod("CritChance", "BASE", num,nil,ModFlag.Spell)  } end,
 	["近期你每造成一层中毒效果，中毒持续时间便延长 (%d+)%%"]= function(num) return {  mod("EnemyPoisonDuration", "INC", num, { type = "Multiplier", var = "PoisonAppliedRecently" })  } end,
 	["对中毒敌人时，获得额外混沌伤害，其数值等同于物理伤害的 (%d+)%%"]= function(num) return {  mod("PhysicalDamageGainAsChaos", "BASE", num,nil, ModFlag.Hit,{ type = "ActorCondition", actor = "enemy", var = "Poisoned"})  } end,
-	["暴击时攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack, { type = "Condition", var = "CriticalStrike" })  } end, 
-	["击中时有 ([%d%.]+)%% 几率使敌人中毒"]= function(num) return {  mod("PoisonChance", "BASE", num)  } end, 
-	["对中毒敌人造成攻击伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("DamageManaLeech", "BASE", num,nil, ModFlag.Attack, { type = "ActorCondition", actor = "enemy", var = "Poison" })  } end, 
-	["攻击瘫痪的敌人时，攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack, { type = "ActorCondition", actor = "enemy", var = "Maimed" })  } end, 
-	["对瘫痪敌人的攻击伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", num,nil, ModFlag.Attack, { type = "ActorCondition", actor = "enemy", var = "Maimed" })  } end, 
+	["暴击时攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack, { type = "Condition", var = "CriticalStrike" })  } end,
+	["击中时有 ([%d%.]+)%% 几率使敌人中毒"]= function(num) return {  mod("PoisonChance", "BASE", num)  } end,
+	["对中毒敌人造成攻击伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("DamageManaLeech", "BASE", num,nil, ModFlag.Attack, { type = "ActorCondition", actor = "enemy", var = "Poison" })  } end,
+	["攻击瘫痪的敌人时，攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack, { type = "ActorCondition", actor = "enemy", var = "Maimed" })  } end,
+	["对瘫痪敌人的攻击伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", num,nil, ModFlag.Attack, { type = "ActorCondition", actor = "enemy", var = "Maimed" })  } end,
 	["对低血敌人的击中和异常状态总伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num,nil,0,bor(KeywordFlag.Hit, KeywordFlag.Ailment) ,{ type = "ActorCondition", actor = "enemy", var = "LowLife" })  } end,
 	["对低血的敌人时，击中和异常状态总伤害额外提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num,nil,0,bor(KeywordFlag.Hit, KeywordFlag.Ailment) ,{ type = "ActorCondition", actor = "enemy", var = "LowLife" })  } end,
-	["敌人身上的非伤害异常状态效果提高 (%d+)%%"] = function(num) return { 
+	["敌人身上的非伤害异常状态效果提高 (%d+)%%"] = function(num) return {
 	mod("EnemyShockEffect", "INC", num,nil,ModFlag.Ailment) ,
-		mod("EnemyChillEffect", "INC", num,nil,ModFlag.Ailment) ,
-		mod("EnemyFreezeEffect", "INC", num,nil,ModFlag.Ailment) ,
-		mod("EnemyScorchEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
+	mod("EnemyChillEffect", "INC", num,nil,ModFlag.Ailment) ,
+	mod("EnemyFreezeEffect", "INC", num,nil,ModFlag.Ailment) ,
+	mod("EnemyScorchEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
 	mod("EnemyBrittleEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
 	mod("EnemySapEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
 	} end,
-	["非伤害型异常状态效果提高 (%d+)%%"] = function(num) return { 
+	["非伤害型异常状态效果提高 (%d+)%%"] = function(num) return {
 	mod("EnemyShockEffect", "INC", num,nil,ModFlag.Ailment) ,
-		mod("EnemyChillEffect", "INC", num,nil,ModFlag.Ailment) ,
-		mod("EnemyFreezeEffect", "INC", num,nil,ModFlag.Ailment) ,
-		mod("EnemyScorchEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
+	mod("EnemyChillEffect", "INC", num,nil,ModFlag.Ailment) ,
+	mod("EnemyFreezeEffect", "INC", num,nil,ModFlag.Ailment) ,
+	mod("EnemyScorchEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
 	mod("EnemyBrittleEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
 	mod("EnemySapEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
 	} end,
@@ -2401,37 +2403,37 @@ local specialModList = {
 	["周围友军获得 (%d+)%% 魔力回复"]  = function(num) return { mod("ExtraAura", "LIST",{ mod =mod("ManaRegen", "INC", num), onlyAllies = true} )} end,
 	["周围友军获得护体"] = function() return { mod("ExtraAura", "LIST",{ mod =flag("Condition:Fortify"), onlyAllies = true} )} end,
 	["周围友军 %+(%d+)%% 暴击伤害加成"]  = function(num) return { mod("ExtraAura", "LIST",{ mod =mod("CritMultiplier", "BASE", num, { type = "Global" } ), onlyAllies = true} )} end,
-	["此物品上的技能石受到 (%d+) 级的 【祝福】 辅助"] = function(num) return { mod("ExtraSupport", "LIST", { skillId = "SupportAuraDuration", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
-	["此物品上的技能石受到 (%d+) 级的 技能陷阱化 辅助"] = function(num) return { mod("ExtraSupport", "LIST", { skillId = "SupportTrap", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
-	["此物品上的技能石受到 (%d+) 级的 额外击中 辅助"] = function(num) return { mod("ExtraSupport", "LIST", { skillId = "SupportAdditionalAccuracy", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
-	["此物品上的技能石受到 (%d+) 级的 【(.+)】 辅助"] = function(num, _, support) return { 
-	mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
-	["物品上的技能石受到 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { 
-	mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
-	["此物品上的技能石受到 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { 
-	mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
+	["此物品上的技能石受到 (%d+) 级的 【祝福】 辅助"] = function(num) return { mod("ExtraSupport", "LIST", { skillId = "SupportAuraDuration", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
+	["此物品上的技能石受到 (%d+) 级的 技能陷阱化 辅助"] = function(num) return { mod("ExtraSupport", "LIST", { skillId = "SupportTrap", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
+	["此物品上的技能石受到 (%d+) 级的 额外击中 辅助"] = function(num) return { mod("ExtraSupport", "LIST", { skillId = "SupportAdditionalAccuracy", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
+	["此物品上的技能石受到 (%d+) 级的 【(.+)】 辅助"] = function(num, _, support) return {
+	mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
+	["物品上的技能石受到 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return {
+	mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
+	["此物品上的技能石受到 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return {
+	mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	["插槽内的的技能石被 (%d+) 级的【(.+)】辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
 	["插槽内的的技能石被 (%d+) 级的(.+)辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
 	["此物品上的技能石受到 (%d+) 级的【(.+)】辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	["此物品上的技能石受到 (%d+) 级的(.+)辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
 	["此物品上的技能石由 (%d+) 级的【(.+)】辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	["此物品上的技能石由 (%d+) 级的(.+)辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
-	["插槽内的的技能石被 (%d+) 级的 【(.+)】 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
+	["插槽内的的技能石被 (%d+) 级的 【(.+)】 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	["插槽内的的技能石被 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
-	["插槽内的技能石受到 (%d+) 级的 【(.+)】 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
+	["插槽内的技能石受到 (%d+) 级的 【(.+)】 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	["插槽内的技能石受到 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
 	["插槽内的技能石受到 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
 	["插槽内的技能石被 (%d+) 级的 【(.+)】 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	["插槽内的技能石被等级 (%d+) 的【(.+)】辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", { skillId = FuckSkillSupportCnName(support), level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, --备注：socketed [%a+]* ?gems a?r?e? ?supported by level (%d+) (.+)
-	["此物品上的【召唤生物技能石】由 (%d+) 级的 生命偷取 辅助"] = function(num) return { mod("ExtraSupport", "LIST", 
-	{ skillId = "SupportLifeLeech", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
-	["此物品上的诅咒技能石受到 (%d+) 级的 【(.+)】 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", 
+	["此物品上的【召唤生物技能石】由 (%d+) 级的 生命偷取 辅助"] = function(num) return { mod("ExtraSupport", "LIST",
+	{ skillId = "SupportLifeLeech", level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
+	["此物品上的诅咒技能石受到 (%d+) 级的 【(.+)】 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST",
 	{ skillId = FuckSkillSupportCnName(support), level = num },
-	{ type = "SocketedIn", slotName = "{SlotName}" }) } end, 
-	["此物品上的诅咒技能石受到 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST", 
+	{ type = "SocketedIn", slotName = "{SlotName}" }) } end,
+	["此物品上的诅咒技能石受到 (%d+) 级的 (.+) 辅助"] = function(num, _, support) return { mod("ExtraSupport", "LIST",
 	{ skillId = FuckSkillSupportCnName(support), level = num },
-	{ type = "SocketedIn", slotName = "{SlotName}" }) } end, 
-	["([%d%.]+)%% 额外物理伤害减伤"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num)  } end, 
+	{ type = "SocketedIn", slotName = "{SlotName}" }) } end,
+	["([%d%.]+)%% 额外物理伤害减伤"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num)  } end,
 	["受到击中冰霜伤害的 (%d+)%% 转为火焰伤害"] = function(num) return {  mod("ColdDamageTakenAsFire", "BASE", num)  } end,
 	["受到击中冰霜伤害的 (%d+)%% 转为闪电伤害"] = function(num) return {  mod("ColdDamageTakenAsLightning", "BASE", num)  } end,
 	["受到击中火焰伤害的 (%d+)%% 转为冰霜伤害"] = function(num) return {  mod("FireDamageTakenAsCold", "BASE", num)  } end,
@@ -2452,17 +2454,17 @@ local specialModList = {
 	["获得等级 22 的 精准 技能"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="AccuracyAndCritsAura", level = 22})   } end,
 	["提供 20 级死亡之愿"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="DeathWish", level = 20})   } end,
 	["获得 20 级的【狙击】技能"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="ChannelledSnipe", level = 22})   } end,
-	["插入的弓类技能触发时，造成的总伤害额外降低 (%d+)%%"]= function(num) return {  } end, 
-	["插入的非吟唱型弓类技能被【狙击】触发"] = { 
-			mod("ExtraSkillMod", "LIST", { mod = flag("TriggeredBySnipe") },  { type = "SocketedIn", slotName = "{SlotName}", keyword = "bow" }, { type = "SkillType", skillType = SkillType.Triggerable } ),
-			mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "showAverage", value = true } ) }, { type = "SocketedIn", slotName = "{SlotName}", keyword = "bow" }, { type = "SkillType", skillType = SkillType.Triggerable } ),
-			mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "triggered", value = 1 } ) }, { type = "SocketedIn", slotName = "{SlotName}", keyword = "bow" }, { type = "SkillType", skillType = SkillType.Triggerable } ),
-		},
-	["插入的非持续吟唱型弓类技能被【狙击】触发"] = { 
-			mod("ExtraSkillMod", "LIST", { mod = flag("TriggeredBySnipe") },  { type = "SocketedIn", slotName = "{SlotName}", keyword = "bow" }, { type = "SkillType", skillType = SkillType.Triggerable } ),
-			mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "showAverage", value = true } ) }, { type = "SocketedIn", slotName = "{SlotName}", keyword = "bow" }, { type = "SkillType", skillType = SkillType.Triggerable } ),
-			mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "triggered", value = 1 } ) }, { type = "SocketedIn", slotName = "{SlotName}", keyword = "bow" }, { type = "SkillType", skillType = SkillType.Triggerable } ),
-		},
+	["插入的弓类技能触发时，造成的总伤害额外降低 (%d+)%%"]= function(num) return {  } end,
+	["插入的非吟唱型弓类技能被【狙击】触发"] = {
+	mod("ExtraSkillMod", "LIST", { mod = flag("TriggeredBySnipe") },  { type = "SocketedIn", slotName = "{SlotName}", keyword = "bow" }, { type = "SkillType", skillType = SkillType.Triggerable } ),
+	mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "showAverage", value = true } ) }, { type = "SocketedIn", slotName = "{SlotName}", keyword = "bow" }, { type = "SkillType", skillType = SkillType.Triggerable } ),
+	mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "triggered", value = 1 } ) }, { type = "SocketedIn", slotName = "{SlotName}", keyword = "bow" }, { type = "SkillType", skillType = SkillType.Triggerable } ),
+	},
+	["插入的非持续吟唱型弓类技能被【狙击】触发"] = {
+	mod("ExtraSkillMod", "LIST", { mod = flag("TriggeredBySnipe") },  { type = "SocketedIn", slotName = "{SlotName}", keyword = "bow" }, { type = "SkillType", skillType = SkillType.Triggerable } ),
+	mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "showAverage", value = true } ) }, { type = "SocketedIn", slotName = "{SlotName}", keyword = "bow" }, { type = "SkillType", skillType = SkillType.Triggerable } ),
+	mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "triggered", value = 1 } ) }, { type = "SocketedIn", slotName = "{SlotName}", keyword = "bow" }, { type = "SkillType", skillType = SkillType.Triggerable } ),
+	},
 	--["获得等级 20 的【骨制战甲】技能"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="BoneArmour", level = 20})   } end,
 	["击败敌人时触发 10 级的【玷污】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="CreateFungalGroundOnKill", level = 10})   } end,
 	["你的暴击加成为 (%d+)%%"]= function(num) return {  mod("CritMultiplier", "OVERRIDE", num, { type = "Global" } )  } end,
@@ -2476,17 +2478,17 @@ local specialModList = {
 	["药剂持续期间，能量护盾延后 (%d+)%% 开始回复"]= function(num) return {  mod("EnergyShieldRechargeFaster", "INC", num,  { type = "Condition", var = "UsingFlask" }  )  } end,
 	["装备和技能石的属性需求提高 (%d+)%%"] = function(num) return { mod("GlobalAttributeRequirements", "INC", num) } end,
 	["攻击和法术总暴击率额外降低 (%d+)%%"] = function(num) return { mod("CritChance", "MORE", -num) } end,
-	["用该武器击中时，触发 (%d+) 级的【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end, 
+	["用该武器击中时，触发 (%d+) 级的【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end,
 	["获得 (%d+) 级的主动技能【(.+)】，且可被此道具上的技能石辅助"] = function(num, _, skill) return extraSkill(skill, num) end, --备注：grants level (%d+) (.+)
 	["获得 (%d+) 级【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end,
 	["造成的异常状态持续时间缩短 (%d+)%%"] = function(num) return {
-	 mod("EnemyShockDuration", "INC", -num),mod("EnemyFreezeDuration", "INC", -num),mod("EnemyChillDuration", "INC", -num),mod("EnemyIgniteDuration", "INC", -num),mod("EnemyBleedDuration", "INC", -num),
-	 mod("EnemyPoisonDuration", "INC", -num),
-	  mod("EnemyScorchDuration", "INC", -num),
-	   mod("EnemyBrittleDuration", "INC", -num),
-	    mod("EnemySapDuration", "INC", -num),
-	 } end,
-	["造成的异常状态持续时间延长 (%d+)%%"] = function(num) return { 
+	mod("EnemyShockDuration", "INC", -num),mod("EnemyFreezeDuration", "INC", -num),mod("EnemyChillDuration", "INC", -num),mod("EnemyIgniteDuration", "INC", -num),mod("EnemyBleedDuration", "INC", -num),
+	mod("EnemyPoisonDuration", "INC", -num),
+	mod("EnemyScorchDuration", "INC", -num),
+	mod("EnemyBrittleDuration", "INC", -num),
+	mod("EnemySapDuration", "INC", -num),
+	} end,
+	["造成的异常状态持续时间延长 (%d+)%%"] = function(num) return {
 	mod("EnemyShockDuration", "INC", num),
 	mod("EnemyFreezeDuration", "INC", num),
 	mod("EnemyChillDuration", "INC", num),
@@ -2503,16 +2505,16 @@ local specialModList = {
 	["每 (%d+) 点奉献便每秒回复 ([%d%.]+) 魔力"] = function(_,num1,num2) return {  mod("ManaRegen", "BASE", tonumber(num2),{ type = "PerStat", stat = "Devotion", div = tonumber(num1) })  } end,
 	["每秒 ([%d%.]+) 基础魔力回复"] = function(num) return {  mod("ManaRegen", "BASE", num)  } end,
 	["每秒 ([%d%.]+)%% 魔力回复"]= function(num) return {  mod("ManaRegenPercent", "BASE", num )  } end,
-	["物理攻击伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("PhysicalDamageManaLeech", "BASE", num,nil, ModFlag.Attack)  } end, 
+	["物理攻击伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("PhysicalDamageManaLeech", "BASE", num,nil, ModFlag.Attack)  } end,
 	["【(.+)】的魔力保留降低 ([%d%.]+)%%"] = function(_, skill_name, num) return { mod("ManaReserved", "INC",-num, { type = "SkillName", skillName =  FuckSkillActivityCnName(skill_name)}) } end,
-	["药剂持续期间，有 (%d+)%% 几率冰冻"]= function(num) return {mod("EnemyFreezeChance", "BASE", num,{ type = "Condition", var = "UsingFlask" }) } end, 
-	["药剂持续期间，有 (%d+)%% 几率感电"]= function(num) return {mod("EnemyShockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" }) } end, 
-	["药剂持续期间，有 (%d+)%% 几率点燃"]= function(num) return {mod("EnemyIgniteChance", "BASE", num,{ type ="Condition", var = "UsingFlask" })  } end, 
-	["每个暴击球所获得物理攻击伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("PhysicalDamageManaLeech", "BASE", num,nil, ModFlag.Attack,{ type = "Multiplier", var = "PowerCharge" })  } end, 
-	["每个暴击球会提供攻击伤害 ([%d%.]+)%% 的魔力偷取"]= function(num) return {  mod("DamageManaLeech", "BASE", num,nil, ModFlag.Attack,{ type = "Multiplier", var = "PowerCharge" })  } end, 
-	["对被冰缓敌人所造成的攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack,{ type = "ActorCondition", actor = "enemy", var = "Chilled" })  } end, 
-	["获得等同 ([%d%.]+)%% 最大生命的额外能量护盾"]= function(num) return {  mod("LifeGainAsEnergyShield", "BASE", num)  } end, 
-	["获得【(.+)】"] = function(_,skill) return extraSkill(skill) end, 
+	["药剂持续期间，有 (%d+)%% 几率冰冻"]= function(num) return {mod("EnemyFreezeChance", "BASE", num,{ type = "Condition", var = "UsingFlask" }) } end,
+	["药剂持续期间，有 (%d+)%% 几率感电"]= function(num) return {mod("EnemyShockChance", "BASE", num,{ type = "Condition", var = "UsingFlask" }) } end,
+	["药剂持续期间，有 (%d+)%% 几率点燃"]= function(num) return {mod("EnemyIgniteChance", "BASE", num,{ type ="Condition", var = "UsingFlask" })  } end,
+	["每个暴击球所获得物理攻击伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("PhysicalDamageManaLeech", "BASE", num,nil, ModFlag.Attack,{ type = "Multiplier", var = "PowerCharge" })  } end,
+	["每个暴击球会提供攻击伤害 ([%d%.]+)%% 的魔力偷取"]= function(num) return {  mod("DamageManaLeech", "BASE", num,nil, ModFlag.Attack,{ type = "Multiplier", var = "PowerCharge" })  } end,
+	["对被冰缓敌人所造成的攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack,{ type = "ActorCondition", actor = "enemy", var = "Chilled" })  } end,
+	["获得等同 ([%d%.]+)%% 最大生命的额外能量护盾"]= function(num) return {  mod("LifeGainAsEnergyShield", "BASE", num)  } end,
+	["获得【(.+)】"] = function(_,skill) return extraSkill(skill) end,
 	["暴走时触发 (%d+) 级的【(.+)】"]= function(num, _, skill) return extraSkill(skill, num) end,
 	["暴击时触发 (%d+) 级的【(.+)】"]= function(num, _, skill) return extraSkill(skill, num) end,
 	["插槽内的的近战技能石范围扩大 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("AreaOfEffect", "INC", num) }, { addToSkill = { type = "SocketedIn", slotName = "{SlotName}", keyword = "melee" }} ) } end,
@@ -2520,14 +2522,14 @@ local specialModList = {
 	["每装备 1 个【裂界之器】，异常状态的伤害便提高 (%d+)%%"] = function(num) return {  mod("Damage", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" })  } end,
 	--["每装备 1 个【裂界之器】，异常状态的持续伤害加成便提高 (%d+)%%"] = function(num) return {  mod("DotMultiplier", "BASE", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" })  } end,
 	["每装备 1 个【裂界之器】，最大生命提高 %+(%d+)"]= function(num) return {  mod("Life", "BASE", num,{ type = "Multiplier", var = "ElderItem" })  } end,
-	["每装备 1 个【裂界之器】，非伤害性异常状态的效果便提高 (%d+)%%"]= function(num) return {  
+	["每装备 1 个【裂界之器】，非伤害性异常状态的效果便提高 (%d+)%%"]= function(num) return {
 	mod("EnemyShockEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }) ,
 	mod("EnemyChillEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }) ,
 	mod("EnemyFreezeEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
 	mod("EnemyScorchEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
 	mod("EnemyBrittleEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
 	mod("EnemySapEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
-	  } end,
+	} end,
 	["【(.+)魔像】的伤害提高 (%d+)%%"] = function(_, skill_name, num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) },{ type = "SkillName", skillName = "召唤"..skill_name:gsub("雷电","闪电").."魔像" or "Unknown" })  } end,
 	["【幻化(.+)】的伤害提高 (%d+)%%"] = function(_, skill_name, num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) },{ type = "SkillName", skillName = "幻化"..skill_name or "Unknown" })  } end,
 	["【魔侍造成】的伤害提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) },{ type = "SkillName", skillName = "召唤魔侍" })  } end,
@@ -2536,24 +2538,24 @@ local specialModList = {
 	["【召唤圣物】的范围效果扩大 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("AreaOfEffect", "INC", num) },{ type = "SkillName", skillName = "召唤圣物" })  } end,
 	["召唤的圣物的增益效果提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("BuffEffect", "INC", num) },{ type = "SkillName", skillName = "召唤圣物" })  } end,
 	["【幻化([^\\x00-\\xff]*)】造成的伤害提高 (%d+)%%"] = function(_,skill_name,num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) },{ type = "SkillName", skillName = "幻化"..skill_name })  } end,
-	["(.+)地雷的伤害提高 (%d+)%%"] = function(_, skill_name, num) return { mod("Damage", "INC",num, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name.."地雷")}) } end, 
-	["(.+)地雷投掷速度提高 (%d+)%%"] = function(_, skill_name, num) return { mod("MineLayingSpeed", "INC",num, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name.."地雷")}) } end, 
-	["(.+)地雷的投掷速度提高 (%d+)%%"] = function(_, skill_name, num) return { mod("MineLayingSpeed", "INC",num, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name.."地雷")}) } end, 
-	["(.+)地雷光环效果提高 (%d+)%%"] = function(_, skill_name, num) return { mod("AuraEffect", "INC",num, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name.."地雷")}) } end, 
-	["【(.+)】的伤害提高 (%d+)%%"] = function(_, skill_name, num) return { mod("Damage", "INC",num, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name)}) } end, 
-	["【(.+)】的技能持续时间提高 (%d+)%%"] = function(_, skill_name, num) return { mod("Duration", "INC",num, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name)}) } end, 
-	["【(.+)】投射物速度提高 (%d+)%%"] = function(_, skill_name, num) return { mod("ProjectileSpeed", "INC",num, { type = "SkillName", skillName = FuckSkillActivityCnName(skill_name)}) } end, 
-	["【([^\\x00-\\xff]*)】造成的伤害提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("Damage", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
-	["【([^\\x00-\\xff]*)】获得等同其 (%d+)%% 物理伤害的额外冰霜伤害"]= function(_,skill_name,num) return {  mod("PhysicalDamageGainAsCold", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
-	["【([^\\x00-\\xff]*)】获得等同其 (%d+)%% 物理伤害的额外闪电伤害"]= function(_,skill_name,num) return {  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
-	["【([^\\x00-\\xff]*)】获得等同其 (%d+)%% 物理伤害的额外火焰伤害"]= function(_,skill_name,num) return {  mod("PhysicalDamageGainAsFire", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
-	["敌人身上每有 1 层蜘蛛网，则附加 (%d+) %- (%d+) 混沌伤害"] = function(_,num1,num2) return { 
-	 mod("ChaosMin", "BASE", num1,{ type = "Multiplier", actor = "enemy", var = "Spider's WebStack" } ), 
-	 mod("ChaosMax", "BASE", num2,{ type = "Multiplier", actor = "enemy", var = "Spider's WebStack" } ) } end,
+	["(.+)地雷的伤害提高 (%d+)%%"] = function(_, skill_name, num) return { mod("Damage", "INC",num, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name.."地雷")}) } end,
+	["(.+)地雷投掷速度提高 (%d+)%%"] = function(_, skill_name, num) return { mod("MineLayingSpeed", "INC",num, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name.."地雷")}) } end,
+	["(.+)地雷的投掷速度提高 (%d+)%%"] = function(_, skill_name, num) return { mod("MineLayingSpeed", "INC",num, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name.."地雷")}) } end,
+	["(.+)地雷光环效果提高 (%d+)%%"] = function(_, skill_name, num) return { mod("AuraEffect", "INC",num, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name.."地雷")}) } end,
+	["【(.+)】的伤害提高 (%d+)%%"] = function(_, skill_name, num) return { mod("Damage", "INC",num, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name)}) } end,
+	["【(.+)】的技能持续时间提高 (%d+)%%"] = function(_, skill_name, num) return { mod("Duration", "INC",num, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name)}) } end,
+	["【(.+)】投射物速度提高 (%d+)%%"] = function(_, skill_name, num) return { mod("ProjectileSpeed", "INC",num, { type = "SkillName", skillName = FuckSkillActivityCnName(skill_name)}) } end,
+	["【([^\\x00-\\xff]*)】造成的伤害提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("Damage", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
+	["【([^\\x00-\\xff]*)】获得等同其 (%d+)%% 物理伤害的额外冰霜伤害"]= function(_,skill_name,num) return {  mod("PhysicalDamageGainAsCold", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
+	["【([^\\x00-\\xff]*)】获得等同其 (%d+)%% 物理伤害的额外闪电伤害"]= function(_,skill_name,num) return {  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
+	["【([^\\x00-\\xff]*)】获得等同其 (%d+)%% 物理伤害的额外火焰伤害"]= function(_,skill_name,num) return {  mod("PhysicalDamageGainAsFire", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
+	["敌人身上每有 1 层蜘蛛网，则附加 (%d+) %- (%d+) 混沌伤害"] = function(_,num1,num2) return {
+	mod("ChaosMin", "BASE", num1,{ type = "Multiplier", actor = "enemy", var = "Spider's WebStack" } ),
+	mod("ChaosMax", "BASE", num2,{ type = "Multiplier", actor = "enemy", var = "Spider's WebStack" } ) } end,
 	["空手攻击时的物理总伤害额外提高 (%d+)%%"]= function(num) return { mod("PhysicalDamage", "MORE", num,nil, ModFlag.Unarmed ) } end,
-	["空手时攻击附加 (%d+) %- (%d+) 基础闪电伤害"] = function(_,num1,num2) return { 
-		 mod("LightningMin", "BASE", num1,nil,ModFlag.Unarmed ), 
-		 mod("LightningMax", "BASE", num2,nil,ModFlag.Unarmed  ) } end,
+	["空手时攻击附加 (%d+) %- (%d+) 基础闪电伤害"] = function(_,num1,num2) return {
+	mod("LightningMin", "BASE", num1,nil,ModFlag.Unarmed ),
+	mod("LightningMax", "BASE", num2,nil,ModFlag.Unarmed  ) } end,
 	["中毒持续总时间额外降低 (%d+)%%"] = function(num) return {  mod("EnemyPoisonDuration", "MORE", -num)  } end,
 	["火焰技能有 (%d+)%% 几率使敌人中毒"] = function(num) return {  mod("PoisonChance", "BASE", num,nil,nil,KeywordFlag.Fire)  } end,
 	["冰霜技能有 (%d+)%% 几率使敌人中毒"] = function(num) return {  mod("PoisonChance", "BASE", num,nil,nil,KeywordFlag.Cold)  } end,
@@ -2564,7 +2566,7 @@ local specialModList = {
 	["召唤生物获得等同 (%d+)%% 物理伤害的额外冰霜伤害"]=function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageGainAsCold", "BASE", num) })  } end,
 	["召唤生物获得等同于 (%d+)%% 物理伤害的额外火焰伤害"]=function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageGainAsFire", "BASE", num) })  } end,
 	["(%d+)%% 较少(.+)时间"]= function(_, num,skill_name)  return {  mod("Duration", "MORE", -num,{ type = "SkillName", skillName = FuckSkillActivityCnName(skill_name)})  } end,
-	["击败敌人时有 (%d+)%% 几率触发 (%d+) 级的【(.+)】"]= function(_, num,levelname,skill_name)return extraSkill(skill_name, levelname) end, 
+	["击败敌人时有 (%d+)%% 几率触发 (%d+) 级的【(.+)】"]= function(_, num,levelname,skill_name)return extraSkill(skill_name, levelname) end,
 	["物理伤害的 (%d+)%% 转换为闪电伤害"] = function(num) return { mod("PhysicalDamageConvertToLightning", "BASE", num) } end,
 	["闪电法术的 (%d+)%% 物理伤害转换为闪电伤害"] = function(num) return { mod("PhysicalDamageConvertToLightning", "BASE", num, nil, ModFlag.Spell, KeywordFlag.Lightning) } end,
 	["火焰法术的 (%d+)%% 物理伤害转换为火焰伤害"] = function(num) return { mod("PhysicalDamageConvertToFire", "BASE", num, nil, ModFlag.Spell, KeywordFlag.Fire) } end,
@@ -2578,51 +2580,51 @@ local specialModList = {
 	["(%d+)%% 物理伤害转化为闪电伤害"] = function(num) return { mod("PhysicalDamageConvertToLightning", "BASE", num) } end,
 	["(%d+)%% 物理伤害转化为火焰伤害"] = function(num) return { mod("PhysicalDamageConvertToFire", "BASE", num) } end,
 	["(%d+)%% 物理伤害转化为冰霜伤害"] = function(num) return { mod("PhysicalDamageConvertToCold", "BASE", num) } end,
-	["装备时触发 (%d+) 级的【元素神盾】"] = function(num) return{mod("ExtraSkill", "LIST", { skillId = "ElementalAegis", level = num}) }end, 
-	["装备时触发 (%d+) 级的【寒冰神盾】"] = function(num) return{mod("ExtraSkill", "LIST", { skillId = "ColdAegis", level = num}) }end, 
-	["装备时触发 (%d+) 级的【火焰神盾】"] = function(num) return{mod("ExtraSkill", "LIST", { skillId = "FireAegis", level = num}) }end, 
+	["装备时触发 (%d+) 级的【元素神盾】"] = function(num) return{mod("ExtraSkill", "LIST", { skillId = "ElementalAegis", level = num}) }end,
+	["装备时触发 (%d+) 级的【寒冰神盾】"] = function(num) return{mod("ExtraSkill", "LIST", { skillId = "ColdAegis", level = num}) }end,
+	["装备时触发 (%d+) 级的【火焰神盾】"] = function(num) return{mod("ExtraSkill", "LIST", { skillId = "FireAegis", level = num}) }end,
 	["低血时，(%d+)%% 的攻击格挡率套用于法术格挡"] = function(num) return {  mod("BlockChanceConv", "BASE", num, { type = "Condition", var = "LowLife" } )  } end,
 	["近期内你若有击败敌人，则范围效果扩大 (%d+)%%，最多 (%d+)%%"] = function(_,num1,num2) return { mod("AreaOfEffect", "INC", num1, { type = "Multiplier", var = "EnemyKilledRecently", limit = tonumber(num2), limitTotal = true } ) } end,
-	["格挡时，用 (%d+) 级的【(.+)】诅咒敌人"] = function(num, _, skill) return extraSkill(skill, num, true) end, 
-	["攻击被嘲讽的敌人时，攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack,{ type = "ActorCondition", actor = "enemy", var = "Taunted" })  } end, 
+	["格挡时，用 (%d+) 级的【(.+)】诅咒敌人"] = function(num, _, skill) return extraSkill(skill, num, true) end,
+	["攻击被嘲讽的敌人时，攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack,{ type = "ActorCondition", actor = "enemy", var = "Taunted" })  } end,
 	["你身上的每层中毒状态使你每秒回复 (%d+) 能量护盾，最多可有 (%d+) 秒"]= function(_,num1,num2) return {  mod("EnergyShieldRegen", "BASE", tonumber(num1),{ type = "Multiplier", var = "PoisonStack", limit = tonumber(num2), limitTotal = true })  } end,
-	["获得 (%d+) 级的【(.+)】"] =  function( _,num, skill) return extraSkill(skill, num) end, 
+	["获得 (%d+) 级的【(.+)】"] =  function( _,num, skill) return extraSkill(skill, num) end,
 	["【(.+)】技能石等级 %+(%d+)"] = function(_,skill_name,num)  return { mod("GemProperty", "LIST",  { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name), key = "level", value = num }) } end,
-	["对受诅咒敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num, nil, ModFlag.Hit,{ type = "ActorCondition", actor = "enemy", var = "Cursed" })  } end, 
-	["攻击击中被诅咒敌人时有 (%d+)%% 几率造成流血"]= function(num) return {  mod("BleedChance", "BASE", num, nil, ModFlag.Attack,{ type = "ActorCondition", actor = "enemy", var = "Cursed" })  } end, 
+	["对受诅咒敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num, nil, ModFlag.Hit,{ type = "ActorCondition", actor = "enemy", var = "Cursed" })  } end,
+	["攻击击中被诅咒敌人时有 (%d+)%% 几率造成流血"]= function(num) return {  mod("BleedChance", "BASE", num, nil, ModFlag.Attack,{ type = "ActorCondition", actor = "enemy", var = "Cursed" })  } end,
 	["当你拥有兽化的召唤生物时，投射物攻击击中时有 (%d+)%% 几率造成流血"] =  function(num) return 	{mod("BleedChance", "BASE", num,  { type = "SkillType", skillType = SkillType.Attack }, { type = "SkillType", skillType = SkillType.Projectile },{ type = "Condition", var = "HaveBestialMinion" }   ) }end,
 	["当你拥有兽化的召唤生物时，投射物攻击击中时有 (%d+)%% 几率造成中毒"] =  function(num) return 	{mod("PoisonChance", "BASE", num,  { type = "SkillType", skillType = SkillType.Attack }, { type = "SkillType", skillType = SkillType.Projectile },{ type = "Condition", var = "HaveBestialMinion" }   ) }end,
 	["击中时有 (%d+)%% 几率造成流血"] =  function(num) return 	{mod("BleedChance", "BASE", num, { type = "Condition", var = "{Hand}Attack" }) }end,
 	["击中时 (%d+)%% 几率造成流血"] =  function(num) return 	{mod("BleedChance", "BASE", num, { type = "Condition", var = "{Hand}Attack" }) }end,
 	["近战击中有 %d+%% 几率触发 (%d+) 级的【熔岩爆破】"] =  function( _, num) return 	{mod("ExtraSkill", "LIST", { skillId = "TriggeredMoltenStrike", level = num}) }end,
-	["暴击时偷取等同 ([%d%.]+)%% 伤害的生命"]= function(num) return {  mod("DamageLifeLeech", "BASE", num, { type = "Condition", var = "CriticalStrike" })  } end, 
+	["暴击时偷取等同 ([%d%.]+)%% 伤害的生命"]= function(num) return {  mod("DamageLifeLeech", "BASE", num, { type = "Condition", var = "CriticalStrike" })  } end,
 	["每 (%d+) 点力量会使武器物理伤害提高 (%d+)%%"] = function(_,num1,num2) return {  mod("PhysicalDamage", "INC", num2,nil, ModFlag.Weapon,{ type = "PerStat", stat = "Str", div = num1 })  } end,
 	["获得额外混沌伤害，其数值等同于火焰、冰霜、闪电伤害的 (%d+)%%"] = function(num) return {  mod("ElementalDamageGainAsChaos", "BASE", num)  } end,
 	["获得额外混沌伤害，其数值等同于元素伤害的 (%d+)%%"] = function(num) return {  mod("ElementalDamageGainAsChaos", "BASE", num)  } end,
 	["每有 1 个轮回球，便获得额外混沌伤害，其数值等同于非混沌伤害的 (%d+)%%"]
-	 = function(num) return {  mod("NonChaosDamageGainAsChaos", "BASE", num, { type = "Multiplier", var = "SiphoningCharge" })  } end,
+	= function(num) return {  mod("NonChaosDamageGainAsChaos", "BASE", num, { type = "Multiplier", var = "SiphoningCharge" })  } end,
 	["每有 1 个轮回球，便获得 ([%d%.]+)%% 击中物理伤害减免"]
-	 = function(num) return {  mod("PhysicalDamageReduction", "BASE", num, { type = "Multiplier", var = "SiphoningCharge" })  } end,
+	= function(num) return {  mod("PhysicalDamageReduction", "BASE", num, { type = "Multiplier", var = "SiphoningCharge" })  } end,
 	["每个轮回球可使伤害的 ([%d%.]+)%% 转化为生命偷取"]
-	 = function(num) return {  mod("DamageLifeLeech", "BASE", num, { type = "Multiplier", var = "SiphoningCharge" })  } end,
+	= function(num) return {  mod("DamageLifeLeech", "BASE", num, { type = "Multiplier", var = "SiphoningCharge" })  } end,
 	["近期内你若有使用技能，每有 1 个轮回球，则每秒受到 (%d+) 物理伤害"]
-	 = function(num) return {  mod("PhysicalDegen", "BASE", num, { type = "Multiplier", var = "SiphoningCharge" },{ type = "Condition", var = "UsedSkillRecently" })  } end,
-	["近期内你若有使用战吼你和周围友军的攻击速度提高 (%d+)%%"] = function(num) return {  
-		 mod("ExtraAura", "LIST", { mod =  mod("Speed", "INC", num,nil, ModFlag.Attack) },{ type = "Condition", var = "UsedWarcryRecently" }) ,
-		 } end, 
-	["你和周围友军的物品稀有度提高 (%d+)%%"] = function(num) return {  
-		 mod("ExtraAura", "LIST", { mod =  mod("LootRarity", "INC", num) }) ,
-		 } end, 	 
-	["近期内你若有使用战吼，你和周围友军的攻击，施法和移动速度提高 (%d+)%%"] = function(num) return {  
-	 mod("ExtraAura", "LIST", { mod =  mod("Speed", "INC", num) },{ type = "Condition", var = "UsedWarcryRecently" }) ,
-	 mod("ExtraAura", "LIST", { mod =  mod("MovementSpeed", "INC", num) },{ type = "Condition", var = "UsedWarcryRecently" })
-	 } end, 
-	 ["近期内你若有使用战吼，你和周围友军的攻击速度提高 (%d+)%%"] = function(num) return {  
-	 mod("ExtraAura", "LIST", { mod =  mod("Speed", "INC", num,nil, ModFlag.Attack) },{ type = "Condition", var = "UsedWarcryRecently" }) ,
-	 } end, 
-	 ["近期内你若有使用战吼，你和周围友军的伤害提高 (%d+)%%"] = function(num) return {  
-	 mod("ExtraAura", "LIST", { mod =  mod("Damage", "INC", num) },{ type = "Condition", var = "UsedWarcryRecently" }) ,
-	 } end, 
+	= function(num) return {  mod("PhysicalDegen", "BASE", num, { type = "Multiplier", var = "SiphoningCharge" },{ type = "Condition", var = "UsedSkillRecently" })  } end,
+	["近期内你若有使用战吼你和周围友军的攻击速度提高 (%d+)%%"] = function(num) return {
+	mod("ExtraAura", "LIST", { mod =  mod("Speed", "INC", num,nil, ModFlag.Attack) },{ type = "Condition", var = "UsedWarcryRecently" }) ,
+	} end,
+	["你和周围友军的物品稀有度提高 (%d+)%%"] = function(num) return {
+	mod("ExtraAura", "LIST", { mod =  mod("LootRarity", "INC", num) }) ,
+	} end,
+	["近期内你若有使用战吼，你和周围友军的攻击，施法和移动速度提高 (%d+)%%"] = function(num) return {
+	mod("ExtraAura", "LIST", { mod =  mod("Speed", "INC", num) },{ type = "Condition", var = "UsedWarcryRecently" }) ,
+	mod("ExtraAura", "LIST", { mod =  mod("MovementSpeed", "INC", num) },{ type = "Condition", var = "UsedWarcryRecently" })
+	} end,
+	["近期内你若有使用战吼，你和周围友军的攻击速度提高 (%d+)%%"] = function(num) return {
+	mod("ExtraAura", "LIST", { mod =  mod("Speed", "INC", num,nil, ModFlag.Attack) },{ type = "Condition", var = "UsedWarcryRecently" }) ,
+	} end,
+	["近期内你若有使用战吼，你和周围友军的伤害提高 (%d+)%%"] = function(num) return {
+	mod("ExtraAura", "LIST", { mod =  mod("Damage", "INC", num) },{ type = "Condition", var = "UsedWarcryRecently" }) ,
+	} end,
 	["([%+%-]?%d+) 灵体最大生命"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "BASE", num) },{ type = "SkillName", skillName = "召唤灵体" })  } end,
 	["被击中时承受额外 ([%+%-]?%d+) 火焰伤害"] = function(num) return {  mod("FireDamageTakenWhenHit", "BASE", num)  } end,
 	["被击中时承受额外 ([%+%-]?%d+) 混沌伤害"] = function(num) return {  mod("ChaosDamageTakenWhenHit", "BASE", num)  } end,
@@ -2657,24 +2659,24 @@ local specialModList = {
 	["([%+%-]?%d+) 暴击球和耐力球数量上限"]= function(num) return {  mod("PowerChargesMax", "BASE", num),mod("EnduranceChargesMax", "BASE", num)   } end,
 	["暴击球和耐力球上限 ([%+%-]?%d+)"]= function(num) return {  mod("PowerChargesMax", "BASE", num),mod("EnduranceChargesMax", "BASE", num)   } end,
 	["失去怒火的速度减慢 (%d+)%%"]= function(num) return {  mod("RageDuration", "INC", num)  } end,
-	["持握剑类时，([%+%-]?%d+) 最大怒火"]= function(num) return {  
+	["持握剑类时，([%+%-]?%d+) 最大怒火"]= function(num) return {
 	mod("MaximumRage", "BASE", num,{ type = "Condition", varList ={ "UsingSword" }})
-	 } end,
-	["持握斧类时，每点【怒火】都使【流血】 ([%+%-]?%d+)%% 持续伤害加成"]= function(num) return {  
-		mod( "DotMultiplier","BASE", num,nil,nil,  KeywordFlag.Bleed,
-		{ type = "Multiplier", var = "Rage"},
-		{ type = "Condition", varList ={ "UsingAxe" }}
-		)
-		  } end,
-	 ["可以对敌人附着 1 个额外烙印"] = { mod("BrandsAttachedLimit", "BASE", 1) },
-	["可以施放 (%d+) 个额外烙印"]= function(num) return {  mod("ActiveBrandLimit", "BASE", num)  } end, 
+	} end,
+	["持握斧类时，每点【怒火】都使【流血】 ([%+%-]?%d+)%% 持续伤害加成"]= function(num) return {
+	mod( "DotMultiplier","BASE", num,nil,nil,  KeywordFlag.Bleed,
+	{ type = "Multiplier", var = "Rage"},
+	{ type = "Condition", varList ={ "UsingAxe" }}
+	)
+	} end,
+	["可以对敌人附着 1 个额外烙印"] = { mod("BrandsAttachedLimit", "BASE", 1) },
+	["可以施放 (%d+) 个额外烙印"]= function(num) return {  mod("ActiveBrandLimit", "BASE", num)  } end,
 	["烙印的附着范围扩大 (%d+)%%"]= function(num) return {  mod("BrandAttachmentRange", "INC", num)  } end,
-	["你每使敌人附着一种烙印，它们受到的伤害便提高 (%d+)%%"] = function(num) return { 
+	["你每使敌人附着一种烙印，它们受到的伤害便提高 (%d+)%%"] = function(num) return {
 	mod("EnemyModifier", "LIST", { mod = mod("DamageTaken", "INC", num, { type = "Multiplier", var = "BrandsAttached" }) }) } end,
 	["召唤愤怒狂灵的最大数量减少 (%d+)%%"]= function(num) return {  mod("ActiveRagingSpiritLimit", "INC", -num)  } end,
 	["每有 (%d+) 层能量护盾可每秒回复 ([%d%.]+)%% 生命"]= function(_,num1,num2) return {  mod("LifeRegenPercent", "BASE", num2,{ type = "PerStat", stat = "EnergyShield", div = num1 })  } end,
-	["移动时获得额外 (%d+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "Moving" } )  } end, 
-	["若你至少拥有 (%d+) 层能量护盾，则每秒回复 (%d+) 生命"]= function(num1,_,num2) return { 
+	["移动时获得额外 (%d+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "Moving" } )  } end,
+	["若你至少拥有 (%d+) 层能量护盾，则每秒回复 (%d+) 生命"]= function(num1,_,num2) return {
 	mod("LifeRegen", "BASE", num2,{ type = "StatThreshold", stat = "EnergyShield", threshold = num1 })  } end,
 	["血魔法"] = { mod("Keystone", "LIST", "祭血术") },
 	["凡人信念"] = { mod("Keystone", "LIST", "凡人的信念") },
@@ -2684,8 +2686,8 @@ local specialModList = {
 	["不朽野望"] = { mod("Keystone", "LIST", "不朽野望") },
 	["苦难秘辛"] = { mod("Keystone", "LIST", "苦难秘辛") },
 	["近距离用弓击中后的总伤害额外提高 (%d+)%%"] = function(num) return {  mod("Damage", "MORE", num,nil,bor(ModFlag.Bow, ModFlag.Hit) , { type = "Condition", var = "AtCloseRange" } )  } end,
-	["每个狂怒球可使攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack, { type = "Multiplier", var = "FrenzyCharge" })  } end, 
-	["移动时每有 1 个狂怒球，则每秒受到 (%d+) 冰霜伤害"]= function(num) return {  mod("ColdDegen", "BASE", num,{ type = "Multiplier", var = "FrenzyCharge" },{ type = "Condition", var = "Moving" })  } end, 
+	["每个狂怒球可使攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack, { type = "Multiplier", var = "FrenzyCharge" })  } end,
+	["移动时每有 1 个狂怒球，则每秒受到 (%d+) 冰霜伤害"]= function(num) return {  mod("ColdDegen", "BASE", num,{ type = "Multiplier", var = "FrenzyCharge" },{ type = "Condition", var = "Moving" })  } end,
 	["药剂持续期间，获得 完美苦痛 天赋效果"] = { mod("Keystone", "LIST", "完美苦痛", { type = "Condition", var = "UsingFlask" }) }, --备注：grants perfect agony during flask effect
 	["武器总伤害额外降低 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", -num, nil,ModFlag.Weapon)  } end,
 	["总伤害额外降低 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", -num)  } end,
@@ -2695,21 +2697,21 @@ local specialModList = {
 	["生效期间，瓦尔技能的总伤害额外提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num,nil,nil,KeywordFlag.Vaal,{ type = "Condition", var = "UsingFlask" })  } end,
 	["药剂持续期间，近战物理总伤害额外提高 (%d+)%%"]= function(num) return {  mod("PhysicalDamage", "MORE", num,nil, ModFlag.Melee,{ type = "Condition", var = "UsingFlask" })  } end,
 	["药剂持续期间，物理伤害的 (%d+)%% 转换为闪电伤害"]= function(num) return {  mod("PhysicalDamageGainAsLightning", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
-	["药剂持续期间，闪电伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("LightningDamageLifeLeech", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end, 
-	["药剂持续期间，混沌伤害的 ([%d%.]+)%% 会转化为生命偷取"]= function(num) return {  mod("ChaosDamageLifeLeech", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end, 
-	["药剂持续期间，技能可以额外发射 (%d+) 个投射物"]= function(num) return {  mod("ProjectileCount", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end, 
+	["药剂持续期间，闪电伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("LightningDamageLifeLeech", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
+	["药剂持续期间，混沌伤害的 ([%d%.]+)%% 会转化为生命偷取"]= function(num) return {  mod("ChaosDamageLifeLeech", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
+	["药剂持续期间，技能可以额外发射 (%d+) 个投射物"]= function(num) return {  mod("ProjectileCount", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
 	["药剂持续期间，获得额外混沌伤害，其数值等同于 (%d+)%% 物理伤害"]= function(num) return {  mod("PhysicalDamageGainAsChaos", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
 	["药剂持续期间，获得额外混沌伤害，其数值等同于 (%d+)%% 火焰、冰霜、闪电伤害"]= function(num) return {  mod("ElementalDamageGainAsChaos", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
 	["药剂持续期间，获得额外混沌伤害，其数值等同于 (%d+)%% 元素伤害"]= function(num) return {  mod("ElementalDamageGainAsChaos", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
-	["近期内你若打出过暴击，则每有 1 个暴击球，就会每秒受到 (%d+) 闪电伤害"]= function(num) return {  mod("LightningDegen", "BASE", num,{ type = "Multiplier", var = "PowerCharge" },{ type = "Condition", var = "CritRecently" }) } end, 
-	["该武器击中致盲敌人时，附加 (%d+) %- (%d+) 基础火焰伤害"]= function(_,num1,num2) return { 
-		 mod("FireMin", "BASE", num1, { type = "Condition", var = "{Hand}Attack" } ,{ type = "ActorCondition", actor = "enemy", var = "Blinded" }),
-		 mod("FireMax", "BASE", num2, { type = "Condition", var = "{Hand}Attack" } ,{ type = "ActorCondition", actor = "enemy", var = "Blinded" })  } end, 
+	["近期内你若打出过暴击，则每有 1 个暴击球，就会每秒受到 (%d+) 闪电伤害"]= function(num) return {  mod("LightningDegen", "BASE", num,{ type = "Multiplier", var = "PowerCharge" },{ type = "Condition", var = "CritRecently" }) } end,
+	["该武器击中致盲敌人时，附加 (%d+) %- (%d+) 基础火焰伤害"]= function(_,num1,num2) return {
+	mod("FireMin", "BASE", num1, { type = "Condition", var = "{Hand}Attack" } ,{ type = "ActorCondition", actor = "enemy", var = "Blinded" }),
+	mod("FireMax", "BASE", num2, { type = "Condition", var = "{Hand}Attack" } ,{ type = "ActorCondition", actor = "enemy", var = "Blinded" })  } end,
 	["人物等级每到达 (%d+) 级，该插槽内的【主动技能石】等级 %+(%d+)"] = function(div, _,num )return { mod("GemProperty", "LIST", { keyword = "active_skill", key = "level", value = num }, { type = "SocketedIn", slotName = "{SlotName}" }, { type = "Multiplier", var = "Level", div = tonumber(div) }) } end,
 	["玩家等级每提高 (%d+) 级，该武器攻击时便附加 (%d+) %- (%d+) 物理伤害"]= function(_,level,num1,num2) return {
 	mod("PhysicalMin", "BASE", num1,nil,ModFlag.Attack,{ type = "Condition", var = "{Hand}Attack" },{ type = "Multiplier", var = "Level", div = level } ) ,
 	mod("PhysicalMax", "BASE", num2,nil,ModFlag.Attack,{ type = "Condition", var = "{Hand}Attack" },{ type = "Multiplier", var = "Level", div = level } ) } end,
-	["召唤生物击中时有 ([%d%.]+)%% 几率使目标中毒"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("PoisonChance", "BASE", num) })  } end,	
+	["召唤生物击中时有 ([%d%.]+)%% 几率使目标中毒"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("PoisonChance", "BASE", num) })  } end,
 	["召唤生物对中毒的敌人造成伤害的 ([%d%.]+)%% 转化为生命偷取"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Hit,{ type = "ActorCondition", actor = "enemy", var = "Poisoned"}) })  } end,
 	["获得额外火焰伤害，其数值等同于 (%d+)%% 剑类物理伤害"]= function(num) return {  mod("PhysicalDamageGainAsFire", "BASE", num,nil, ModFlag.Sword )  } end,
 	["该武器对被点燃敌人的击中伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", num,nil,ModFlag.Hit,{ type = "Condition", var = "{Hand}Attack" } ,{ type = "ActorCondition", actor = "enemy", var = "Ignited" })  } end,
@@ -2721,58 +2723,58 @@ local specialModList = {
 	["近期内你若被击中，技能可以额外发射 (%d+) 个投射物"]= function(num) return {  mod("ProjectileCount", "BASE", num, { type = "Condition", var = "BeenHitRecently" })  } end,
 	["武器上的每个红色插槽使物理伤害提高 (%d+)%%"]= function(num) return {  mod("PhysicalDamage", "INC", num,nil, ModFlag.Weapon, { type = "Multiplier", var = "RedSocketIn{SlotName}" })  } end,
 	["每个绿色插槽会使全局攻击速度提高 (%d+)%%"]= function(num) return {  mod("Speed", "INC", num,nil, ModFlag.Attack, { type = "Global" }, { type = "Multiplier", var = "GreenSocketIn{SlotName}" })  } end,
-	["每个蓝色插槽会使你物理攻击伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("PhysicalDamageManaLeech", "BASE", num,nil, ModFlag.Attack, { type = "Multiplier", var = "BlueSocketIn{SlotName}" })  } end, 
-	["每个白色插槽可以扩大 %+(%d+) 近战武器范围"]= function(num) return {  mod("MeleeWeaponRange", "BASE", num, { type = "Multiplier", var = "WhiteSocketIn{SlotName}" })  } end, 
-	["%+(%d+) 匕首近战范围"]= function(num) return {  mod("MeleeWeaponRange", "BASE", num,nil,ModFlag.Dagger   )  } end, 
-	["%+(%d+) 长杖类近战范围"]= function(num) return {  mod("MeleeWeaponRange", "BASE", num,nil,ModFlag.Staff   )  } end, 
-	["%+(%d+) 剑类近战范围"]= function(num) return {  mod("MeleeWeaponRange", "BASE", num,nil,ModFlag.Sword   )  } end, 
-	["%+(%d+) 爪类近战范围"]= function(num) return {  mod("MeleeWeaponRange", "BASE", num,nil,ModFlag.Claw   )  } end, 
-	["%+(%d+) 斧类近战范围"]= function(num) return {  mod("MeleeWeaponRange", "BASE", num,nil,ModFlag.Axe   )  } end, 
-	["%+(%d+) 锤类和短杖类近战范围"]= function(num) return {  mod("MeleeWeaponRange", "BASE", num,nil,ModFlag.Mace   )  } end, 
+	["每个蓝色插槽会使你物理攻击伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("PhysicalDamageManaLeech", "BASE", num,nil, ModFlag.Attack, { type = "Multiplier", var = "BlueSocketIn{SlotName}" })  } end,
+	["每个白色插槽可以扩大 %+(%d+) 近战武器范围"]= function(num) return {  mod("MeleeWeaponRange", "BASE", num, { type = "Multiplier", var = "WhiteSocketIn{SlotName}" })  } end,
+	["%+(%d+) 匕首近战范围"]= function(num) return {  mod("MeleeWeaponRange", "BASE", num,nil,ModFlag.Dagger   )  } end,
+	["%+(%d+) 长杖类近战范围"]= function(num) return {  mod("MeleeWeaponRange", "BASE", num,nil,ModFlag.Staff   )  } end,
+	["%+(%d+) 剑类近战范围"]= function(num) return {  mod("MeleeWeaponRange", "BASE", num,nil,ModFlag.Sword   )  } end,
+	["%+(%d+) 爪类近战范围"]= function(num) return {  mod("MeleeWeaponRange", "BASE", num,nil,ModFlag.Claw   )  } end,
+	["%+(%d+) 斧类近战范围"]= function(num) return {  mod("MeleeWeaponRange", "BASE", num,nil,ModFlag.Axe   )  } end,
+	["%+(%d+) 锤类和短杖类近战范围"]= function(num) return {  mod("MeleeWeaponRange", "BASE", num,nil,ModFlag.Mace   )  } end,
 	["被击中时承受 ([%+%-]?%d+) 物理伤害"] = function(num) return {  mod("PhysicalDamageTaken", "BASE", num)  } end,
 	["每等级被击中时，承受 ([%+%-]?%d+) 物理伤害"] = function(num) return {  mod("PhysicalDamageTaken", "BASE", num, { type = "Multiplier", var = "Level", div = tonumber(div) })  } end,
 	["静止时获得【霸体】"] = { mod("Keystone", "LIST", "霸体", { type = "Condition", var = "Stationary" }) },
-	["每个红色插槽会使你物理攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("PhysicalDamageLifeLeech", "BASE", num,nil, ModFlag.Attack, { type = "Multiplier", var = "RedSocketIn{SlotName}" })  } end, 
-	["每个绿色插槽 %+(%d+)%% 攻击和法术暴击伤害加成"]= function(num) return {  mod("CritMultiplier", "BASE", num,{ type = "Global" }, { type = "Multiplier", var = "GreenSocketIn{SlotName}" })  } end, 
-	["每个白色插槽会使防御提高 (%d+)%%"]= function(num) return {  mod("Defences", "INC", num,{ type = "Global" }, { type = "Multiplier", var = "WhiteSocketIn{SlotName}" })  } end, 
-	["装备于副手时有 (%d+)%% 额外格挡几率"]= function(num) return {  mod("BlockChance", "BASE", num, { type = "SlotNumber", num = 2 })  } end, 
-	["副手攻击和法术附加 (%d+) %- (%d+) 基础混沌伤害"]= function(_,num1,num2) return {  
+	["每个红色插槽会使你物理攻击伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("PhysicalDamageLifeLeech", "BASE", num,nil, ModFlag.Attack, { type = "Multiplier", var = "RedSocketIn{SlotName}" })  } end,
+	["每个绿色插槽 %+(%d+)%% 攻击和法术暴击伤害加成"]= function(num) return {  mod("CritMultiplier", "BASE", num,{ type = "Global" }, { type = "Multiplier", var = "GreenSocketIn{SlotName}" })  } end,
+	["每个白色插槽会使防御提高 (%d+)%%"]= function(num) return {  mod("Defences", "INC", num,{ type = "Global" }, { type = "Multiplier", var = "WhiteSocketIn{SlotName}" })  } end,
+	["装备于副手时有 (%d+)%% 额外格挡几率"]= function(num) return {  mod("BlockChance", "BASE", num, { type = "SlotNumber", num = 2 })  } end,
+	["副手攻击和法术附加 (%d+) %- (%d+) 基础混沌伤害"]= function(_,num1,num2) return {
 	mod("ChaosMin", "BASE", tonumber(num1), { type = "InSlot", num = 2 }),
 	mod("ChaosMax", "BASE", tonumber(num2), { type = "InSlot", num = 2 }),
-	} end, 
-	["神殿效果提高 (%d+)%%"]= function(num) return {  mod("ShrineEffect", "INC", num)  } end, 
-	["你具有次级威猛神龛效果"] = { flag("Condition:LesserMassiveShrine") }, 
-	["你具有次级狂击神龛效果"] = { flag("Condition:LesserBrutalShrine") }, 
-	["不洁之力"] = { flag("Condition:UnholyMight") }, 
-	["点燃敌人时获得 %d+ 秒【她的拥抱】效果"] = { flag("Condition:CanGainHerEmbrace") }, 
+	} end,
+	["神殿效果提高 (%d+)%%"]= function(num) return {  mod("ShrineEffect", "INC", num)  } end,
+	["你具有次级威猛神龛效果"] = { flag("Condition:LesserMassiveShrine") },
+	["你具有次级狂击神龛效果"] = { flag("Condition:LesserBrutalShrine") },
+	["不洁之力"] = { flag("Condition:UnholyMight") },
+	["点燃敌人时获得 %d+ 秒【她的拥抱】效果"] = { flag("Condition:CanGainHerEmbrace") },
 	["召唤生物的攻击额外造成 (%d+) %- (%d+) 物理伤害"]= function(_,num1,num2) return {mod("MinionModifier", "LIST", {mod=mod("PhysicalMin","BASE",num1,nil,ModFlag.Attack )  }),mod("MinionModifier", "LIST", { mod = mod("PhysicalMax", "BASE", num2,nil,ModFlag.Attack )})} end,
 	["近期内你若被击中过，则每有 1 个耐力球，就会每秒受到 (%d+) 火焰伤害"]
-	= function(num) return {  mod("FireDegen", "BASE", num, { type = "Multiplier", var = "EnduranceCharge" }, { type = "Condition", var = "BeenHitRecently" })  } end, 
-	["对流血敌人造成的攻击伤害的 (%d+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack,{ type = "ActorCondition", actor = "enemy", var = "Bleeding" })  } end, 
+	= function(num) return {  mod("FireDegen", "BASE", num, { type = "Multiplier", var = "EnduranceCharge" }, { type = "Condition", var = "BeenHitRecently" })  } end,
+	["对流血敌人造成的攻击伤害的 (%d+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack,{ type = "ActorCondition", actor = "enemy", var = "Bleeding" })  } end,
 	["游侠：移动速度提高 (%d+)%%"]= function(num) return {  mod("MovementSpeed", "INC", num,{ type = "Condition", var = "ConnectedTo游侠Start" })  } end,
 	["圣堂武僧：伤害穿透 (%d+)%% 火焰、冰霜、闪电抗性"]= function(num) return {  mod("ElementalPenetration", "BASE", num,{ type = "Condition", var = "ConnectedTo圣堂武僧Start" })  } end,
 	["圣堂武僧：伤害穿透 (%d+)%% 元素抗性"]= function(num) return {  mod("ElementalPenetration", "BASE", num,{ type = "Condition", var = "ConnectedTo圣堂武僧Start" })  } end,
 	["暗影：%+([%d%.]+)%% 暴击率"]= function(num) return {  mod("CritChance", "BASE", num,{ type = "Condition", var = "ConnectedTo暗影刺客Start" })  } end,
-	["贵族：%+(%d+) 所有属性"]= function(num) return { 
-	 mod("Str", "BASE", num,{ type = "Condition", var = "ConnectedTo贵族Start" }) ,
-	 mod("Dex", "BASE", num,{ type = "Condition", var = "ConnectedTo贵族Start" }) ,
-	 mod("Int", "BASE", num,{ type = "Condition", var = "ConnectedTo贵族Start" }) 
-	 } end,
-	["【(.+)】的持续时间缩短 (%d+)%%"]  = function( _,skill_name, num) return { mod("Duration", "INC",-num, { type = "SkillName", skillName = FuckSkillActivityCnName(skill_name) }) } end, 	
+	["贵族：%+(%d+) 所有属性"]= function(num) return {
+	mod("Str", "BASE", num,{ type = "Condition", var = "ConnectedTo贵族Start" }) ,
+	mod("Dex", "BASE", num,{ type = "Condition", var = "ConnectedTo贵族Start" }) ,
+	mod("Int", "BASE", num,{ type = "Condition", var = "ConnectedTo贵族Start" })
+	} end,
+	["【(.+)】的持续时间缩短 (%d+)%%"]  = function( _,skill_name, num) return { mod("Duration", "INC",-num, { type = "SkillName", skillName = FuckSkillActivityCnName(skill_name) }) } end,
 	["召唤生物有额外 (%d+)%% 躲避击中几率"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("AttackDodgeChance", "BASE", num) })  } end,
-	["灵体有 (%d+) 秒的持续时间"] = function(num) return { mod("SkillData", "LIST", { key = "duration", value = 6 }, { type = "SkillName", skillName = "召唤灵体" }) } end,	
-	["【(.+)】的魔力消耗降低 (%d+)%%"] = function( _,skill_name, num) return { mod("ManaCost", "INC",-num, { type = "SkillName", skillName = FuckSkillActivityCnName(skill_name) }) } end, 	
-	["技能的总魔力消耗额外降低 (%d+)%%"] = function( num) return { mod("ManaCost", "MORE",-num) } end, 	
-	["技能总魔力消耗额外降低 (%d+)%%"] = function( num) return { mod("ManaCost", "MORE",-num) } end, 	
-	["召唤生物有 (%d+)%% 几率冰冻、感电、点燃敌人"] = function(num) return { 
+	["灵体有 (%d+) 秒的持续时间"] = function(num) return { mod("SkillData", "LIST", { key = "duration", value = 6 }, { type = "SkillName", skillName = "召唤灵体" }) } end,
+	["【(.+)】的魔力消耗降低 (%d+)%%"] = function( _,skill_name, num) return { mod("ManaCost", "INC",-num, { type = "SkillName", skillName = FuckSkillActivityCnName(skill_name) }) } end,
+	["技能的总魔力消耗额外降低 (%d+)%%"] = function( num) return { mod("ManaCost", "MORE",-num) } end,
+	["技能总魔力消耗额外降低 (%d+)%%"] = function( num) return { mod("ManaCost", "MORE",-num) } end,
+	["召唤生物有 (%d+)%% 几率冰冻、感电、点燃敌人"] = function(num) return {
 	mod("MinionModifier", "LIST", { mod = mod("EnemyFreezeChance", "BASE", num) }),
 	mod("MinionModifier", "LIST", { mod = mod("EnemyShockChance", "BASE", num) }),
 	mod("MinionModifier", "LIST", { mod = mod("EnemyIgniteChance", "BASE", num) }),
-	  } end,
-	["持续吟唱技能总魔力消耗 ([%+%-]?%d+)"] =function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ManaCost", "BASE", num, nil, 0, { type = "SkillType", skillType = SkillType.Channelled }) })}end,	
-	["插槽内的移动技能不消耗魔力"] = function() return { mod("ExtraSkillMod", "LIST", { mod = mod("ManaCost", "MORE", -100, nil, 0,  KeywordFlag.Movement) }, { type = "SocketedIn", slotName = "{SlotName}" })}end,	
-	["插槽内攻击技能的总魔力消耗 ([%+%-]?%d+)"]= function(num) return { mod("ManaCost", "BASE",num, { type = "SocketedIn", slotName = "{SlotName}", keyword = "attack" }  ) } end, 	
-	["插槽内的法术魔力消耗降低 (%d+)%%"]= function(num) return { mod("ManaCost", "INC",-num, { type = "SocketedIn", slotName = "{SlotName}", keyword = "spell" }  ) } end, 	
+	} end,
+	["持续吟唱技能总魔力消耗 ([%+%-]?%d+)"] =function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ManaCost", "BASE", num, nil, 0, { type = "SkillType", skillType = SkillType.Channelled }) })}end,
+	["插槽内的移动技能不消耗魔力"] = function() return { mod("ExtraSkillMod", "LIST", { mod = mod("ManaCost", "MORE", -100, nil, 0,  KeywordFlag.Movement) }, { type = "SocketedIn", slotName = "{SlotName}" })}end,
+	["插槽内攻击技能的总魔力消耗 ([%+%-]?%d+)"]= function(num) return { mod("ManaCost", "BASE",num, { type = "SocketedIn", slotName = "{SlotName}", keyword = "attack" }  ) } end,
+	["插槽内的法术魔力消耗降低 (%d+)%%"]= function(num) return { mod("ManaCost", "INC",-num, { type = "SocketedIn", slotName = "{SlotName}", keyword = "spell" }  ) } end,
 	["野蛮人： 近战技能范围扩大 (%d+)%%"]= function(num) return {  mod("AreaOfEffect", "INC", num,nil, ModFlag.Melee,{ type = "Condition", var = "ConnectedTo野蛮人Start" })  } end,
 	["决斗者：攻击伤害的 ([%d%.]+)%% 会转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", num,nil, ModFlag.Attack,{ type = "Condition", var = "ConnectedTo决斗者Start" })  } end,
 	["女巫：每秒回复 ([%d%.]+)%% 最大魔力"]= function(num) return {  mod("ManaRegenPercent", "BASE", num, { type = "Condition", var = "ConnectedTo女巫Start" })  } end,
@@ -2785,99 +2787,99 @@ local specialModList = {
 	["【苦痛爬行者】的伤害提高 (%d+)%%"]= function(num) return {  mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) }, { type = "SkillId", skillId = "HeraldOfAgony" })   } end,
 	["召唤的苦痛爬行者伤害提高 (%d+)%%"]= function(num) return {  mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) }, { type = "SkillId", skillId = "HeraldOfAgony" })   } end,
 	["召唤的苦痛爬行者额外发射 (%d+) 的投射物"]= function(num) return {  mod("MinionModifier", "LIST", { mod = mod("ProjectileCount", "BASE", num) }, { type = "SkillId", skillId = "HeraldOfAgony" })   } end,
-	["受到【愤怒】影响时，(%d+)%% 的物理伤害转化为火焰伤害"]= function(num) return {  mod("PhysicalDamageConvertToFire", "BASE", num,{ type = "Condition", var = "AffectedBy愤怒" })  } end, 
-	["受到【愤怒】影响时，火焰伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("FireDamageLifeLeech", "BASE", num,{ type = "Condition", var = "AffectedBy愤怒" })  } end, 
-	["受到【愤怒】影响时，获得物理伤害 (%d+)%% 的额外火焰伤害"]= function(num) return {  mod("PhysicalDamageGainAsFire", "BASE", num,{ type = "Condition", var = "AffectedBy愤怒" })  } end, 
-	["受到【清晰】影响时，受到伤害的 (%d+)%% 伤害优先从魔力扣除"]= function(num) return {  mod("DamageTakenFromManaBeforeLife", "BASE", num,{ type = "Condition", var = "AffectedBy清晰" })  } end, 
-	["受到【清晰】影响时，获得等同最大魔力 (%d+)%% 的额外最大能量护盾"]= function(num) return {  mod("ManaGainAsEnergyShield", "BASE", num,{ type = "Condition", var = "AffectedBy清晰" })  } end, 
-	["受到【坚定】影响时，有 (%d+)%% 几率格挡"]= function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "AffectedBy坚定" })  } end, 
-	["受到【坚定】影响时攻击伤害格挡几率 %+(%d+)%%"]= function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "AffectedBy坚定" })  } end, 
-	["受到【坚定】影响时，获得额外 (%d+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "AffectedBy坚定" })  } end, 
-	["受到【纯净之捷】影响时，获得额外 (%d+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "AffectedBy纯净之捷" })  } end, 
-	["受到【纪律】影响时，最大能量护盾每秒回复 ([%d%.]+)%%"]= function(num) return {  mod("EnergyShieldRegenPercent", "BASE", num,{ type = "Condition", var = "AffectedBy纪律" })  } end, 
-	["受到【纪律】影响时，能量护盾提早 (%d+)%% 开始恢复"]= function(num) return {  mod("EnergyShieldRechargeFaster", "INC", num,{ type = "Condition", var = "AffectedBy纪律" })  } end, 
-	["受到【优雅】影响时，有 %+(%d+)%% 几率闪避攻击"]= function(num) return {  mod("EvadeChance", "BASE", num,{ type = "Condition", var = "AffectedBy优雅" })  } end, 
+	["受到【愤怒】影响时，(%d+)%% 的物理伤害转化为火焰伤害"]= function(num) return {  mod("PhysicalDamageConvertToFire", "BASE", num,{ type = "Condition", var = "AffectedBy愤怒" })  } end,
+	["受到【愤怒】影响时，火焰伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("FireDamageLifeLeech", "BASE", num,{ type = "Condition", var = "AffectedBy愤怒" })  } end,
+	["受到【愤怒】影响时，获得物理伤害 (%d+)%% 的额外火焰伤害"]= function(num) return {  mod("PhysicalDamageGainAsFire", "BASE", num,{ type = "Condition", var = "AffectedBy愤怒" })  } end,
+	["受到【清晰】影响时，受到伤害的 (%d+)%% 伤害优先从魔力扣除"]= function(num) return {  mod("DamageTakenFromManaBeforeLife", "BASE", num,{ type = "Condition", var = "AffectedBy清晰" })  } end,
+	["受到【清晰】影响时，获得等同最大魔力 (%d+)%% 的额外最大能量护盾"]= function(num) return {  mod("ManaGainAsEnergyShield", "BASE", num,{ type = "Condition", var = "AffectedBy清晰" })  } end,
+	["受到【坚定】影响时，有 (%d+)%% 几率格挡"]= function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "AffectedBy坚定" })  } end,
+	["受到【坚定】影响时攻击伤害格挡几率 %+(%d+)%%"]= function(num) return {  mod("BlockChance", "BASE", num,{ type = "Condition", var = "AffectedBy坚定" })  } end,
+	["受到【坚定】影响时，获得额外 (%d+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "AffectedBy坚定" })  } end,
+	["受到【纯净之捷】影响时，获得额外 (%d+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "AffectedBy纯净之捷" })  } end,
+	["受到【纪律】影响时，最大能量护盾每秒回复 ([%d%.]+)%%"]= function(num) return {  mod("EnergyShieldRegenPercent", "BASE", num,{ type = "Condition", var = "AffectedBy纪律" })  } end,
+	["受到【纪律】影响时，能量护盾提早 (%d+)%% 开始恢复"]= function(num) return {  mod("EnergyShieldRechargeFaster", "INC", num,{ type = "Condition", var = "AffectedBy纪律" })  } end,
+	["受到【优雅】影响时，有 %+(%d+)%% 几率闪避攻击"]= function(num) return {  mod("EvadeChance", "BASE", num,{ type = "Condition", var = "AffectedBy优雅" })  } end,
 	["受到【迅捷】影响时获得【迷踪】状态"]= { flag("Condition:Phasing", { type = "Condition", var = "AffectedBy迅捷" }) },
-	["受到【元素净化】影响时，受到击中物理伤害的 (%d+)%% 转换为冰霜伤害"]= function(num) return {  mod("PhysicalDamageTakenAsCold", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy元素净化" })  } end, 
-	["受到【元素净化】影响时，受到击中物理伤害的 (%d+)%% 转换为火焰伤害"]= function(num) return {  mod("PhysicalDamageTakenAsFire", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy元素净化" })  } end, 
-	["受到【元素净化】影响时，受到击中物理伤害的 (%d+)%% 转换为闪电伤害"]= function(num) return {  mod("PhysicalDamageTakenAsLightning", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy元素净化" })  } end, 
-	["受到【火焰净化】影响时，受到击中物理伤害的 (%d+)%% 转换为火焰伤害"]= function(num) return {  mod("PhysicalDamageTakenAsFire", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy火焰净化" })  } end, 
-	["受到【冰霜净化】影响时，受到击中物理伤害的 (%d+)%% 转换为冰霜伤害"]= function(num) return {  mod("PhysicalDamageTakenAsCold", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy冰霜净化" })  } end, 
-	["受到【闪电净化】影响时，受到击中物理伤害的 (%d+)%% 转换为闪电伤害"]= function(num) return {  mod("PhysicalDamageTakenAsLightning", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy闪电净化" })  } end, 
-	["受到【活力】影响时，伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy活力" })  } end, 
-	["受到【活力】影响时， 每秒回复 ([%d%.]+) 生命"]= function(num) return {  mod("LifeRegen", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy活力" })  } end, 
-	["受到【雷霆】影响时，闪电伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("LightningDamageManaLeech", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy雷霆" })  } end, 
-	["受到【雷霆】影响时，闪电伤害的 ([%d%.]+)%% 转化为能量护盾偷取"]= function(num) return {  mod("LightningDamageEnergyShieldLeech", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy雷霆" })  } end, 
-	["受到【雷霆】影响时，获得物理伤害 (%d+)%% 的额外闪电伤害"]= function(num) return {  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy雷霆" })  } end, 
-	["受到【雷霆】影响时，(%d+)%% 的物理伤害转化为闪电伤害"]= function(num) return {  mod("PhysicalDamageConvertToLightning", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy雷霆" })  } end, 
-	["受到【奋锐光环】影响时，位于奉献地面之上的敌人受到的暴击几率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy奋锐光环" },{ type = "ActorCondition", actor = "enemy", var = "OnConsecratedGround" })  } end, 
-	["受到【奋锐光环】影响时，从能量护盾偷取中获得的每秒最大总恢复量提高 (%d+)%%"]= function(num) return {  mod("MaxEnergyShieldLeechRate", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy奋锐光环" })  } end, 
-	["当你受到奋锐光环影响时，创造的【奉献地面】可以使敌人承受的伤害提高 (%d+)%%"]= function(num) return {  mod("EnemyModifier", "LIST", { mod = mod("DamageTaken", "INC", num) }, { type = "ActorCondition", actor = "enemy", var = "OnConsecratedGround" },{ type = "Condition", var = "AffectedBy奋锐光环" })  } end, 
-	["你创造的【奉献地面】可以使敌人承受的伤害提高 (%d+)%%"]= function(num) return {  
-	mod("EnemyModifier", "LIST", { mod = mod("DamageTaken", "INC", num) }, 
-	{ type = "ActorCondition", actor = "enemy", var = "OnConsecratedGround" })  } end, 
-	["受【奋锐光环】影响时，暴击穿透敌人 (%d+)%% 的元素抗性"]= function(num) return {  mod("ElementalPenetration", "BASE", tonumber(num), { type = "Condition", var = "CriticalStrike" },{ type = "Condition", var = "AffectedBy奋锐光环" })  } end, 
-	["受【怨毒光环】影响时，([%+%-]?%d+)%% 非异常状态的持续混沌伤害加成"]= function(num) return {  mod("NonAilmentChaosDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
-	["受【怨毒光环】影响时，([%+%-]?%d+)%% 非异常状态持续混沌伤害额外加成"]= function(num) return {  mod("NonAilmentChaosDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
-	["受到【怨毒光环】影响时，技能持续时间提高 (%d+)%%"]= function(num) return {  mod("Duration", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
-	["受【怨毒光环】影响时，你造成的伤害类异常状态的伤害生效速度提高 (%d+)%%"]= function(num) return { 
+	["受到【元素净化】影响时，受到击中物理伤害的 (%d+)%% 转换为冰霜伤害"]= function(num) return {  mod("PhysicalDamageTakenAsCold", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy元素净化" })  } end,
+	["受到【元素净化】影响时，受到击中物理伤害的 (%d+)%% 转换为火焰伤害"]= function(num) return {  mod("PhysicalDamageTakenAsFire", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy元素净化" })  } end,
+	["受到【元素净化】影响时，受到击中物理伤害的 (%d+)%% 转换为闪电伤害"]= function(num) return {  mod("PhysicalDamageTakenAsLightning", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy元素净化" })  } end,
+	["受到【火焰净化】影响时，受到击中物理伤害的 (%d+)%% 转换为火焰伤害"]= function(num) return {  mod("PhysicalDamageTakenAsFire", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy火焰净化" })  } end,
+	["受到【冰霜净化】影响时，受到击中物理伤害的 (%d+)%% 转换为冰霜伤害"]= function(num) return {  mod("PhysicalDamageTakenAsCold", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy冰霜净化" })  } end,
+	["受到【闪电净化】影响时，受到击中物理伤害的 (%d+)%% 转换为闪电伤害"]= function(num) return {  mod("PhysicalDamageTakenAsLightning", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy闪电净化" })  } end,
+	["受到【活力】影响时，伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy活力" })  } end,
+	["受到【活力】影响时， 每秒回复 ([%d%.]+) 生命"]= function(num) return {  mod("LifeRegen", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy活力" })  } end,
+	["受到【雷霆】影响时，闪电伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("LightningDamageManaLeech", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy雷霆" })  } end,
+	["受到【雷霆】影响时，闪电伤害的 ([%d%.]+)%% 转化为能量护盾偷取"]= function(num) return {  mod("LightningDamageEnergyShieldLeech", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy雷霆" })  } end,
+	["受到【雷霆】影响时，获得物理伤害 (%d+)%% 的额外闪电伤害"]= function(num) return {  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy雷霆" })  } end,
+	["受到【雷霆】影响时，(%d+)%% 的物理伤害转化为闪电伤害"]= function(num) return {  mod("PhysicalDamageConvertToLightning", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy雷霆" })  } end,
+	["受到【奋锐光环】影响时，位于奉献地面之上的敌人受到的暴击几率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy奋锐光环" },{ type = "ActorCondition", actor = "enemy", var = "OnConsecratedGround" })  } end,
+	["受到【奋锐光环】影响时，从能量护盾偷取中获得的每秒最大总恢复量提高 (%d+)%%"]= function(num) return {  mod("MaxEnergyShieldLeechRate", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy奋锐光环" })  } end,
+	["当你受到奋锐光环影响时，创造的【奉献地面】可以使敌人承受的伤害提高 (%d+)%%"]= function(num) return {  mod("EnemyModifier", "LIST", { mod = mod("DamageTaken", "INC", num) }, { type = "ActorCondition", actor = "enemy", var = "OnConsecratedGround" },{ type = "Condition", var = "AffectedBy奋锐光环" })  } end,
+	["你创造的【奉献地面】可以使敌人承受的伤害提高 (%d+)%%"]= function(num) return {
+	mod("EnemyModifier", "LIST", { mod = mod("DamageTaken", "INC", num) },
+	{ type = "ActorCondition", actor = "enemy", var = "OnConsecratedGround" })  } end,
+	["受【奋锐光环】影响时，暴击穿透敌人 (%d+)%% 的元素抗性"]= function(num) return {  mod("ElementalPenetration", "BASE", tonumber(num), { type = "Condition", var = "CriticalStrike" },{ type = "Condition", var = "AffectedBy奋锐光环" })  } end,
+	["受【怨毒光环】影响时，([%+%-]?%d+)%% 非异常状态的持续混沌伤害加成"]= function(num) return {  mod("NonAilmentChaosDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end,
+	["受【怨毒光环】影响时，([%+%-]?%d+)%% 非异常状态持续混沌伤害额外加成"]= function(num) return {  mod("NonAilmentChaosDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end,
+	["受到【怨毒光环】影响时，技能持续时间提高 (%d+)%%"]= function(num) return {  mod("Duration", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end,
+	["受【怨毒光环】影响时，你造成的伤害类异常状态的伤害生效速度提高 (%d+)%%"]= function(num) return {
 	mod("PoisonFaster", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" }) ,
 	mod("IgniteBurnFaster", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" }) ,
 	mod("BleedFaster", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" }) ,
-	 } end, 
-	 ["受【怨毒光环】影响时，([%+%-]?%d+)%% 持续伤害加成"]= function(num) return {  mod("DotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end,
-	["被【怨毒光环】影响时，([%+%-]?%d+)%% 伤害持续时间加成"]= function(num) return {  mod("DotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
-	["受【怨毒光环】影响时，([%+%-]?%d+)%% 非异常状态混沌伤害持续时间加成"]= function(num) return {  mod("NonAilmentChaosDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
-	["受【怨毒光环】影响时，([%+%-]?%d+)%% 持续冰霜伤害加成"]= function(num) return {  mod("ColdDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
-	["受【怨毒光环】影响时，([%+%-]?%d+)%% 冰霜伤害持续时间加成"]= function(num) return {  mod("ColdDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end, 
-	["受到【怨毒光环】影响时，生命和能量护盾回复率提高 (%d+)%%"]= function(num) return {  
+	} end,
+	["受【怨毒光环】影响时，([%+%-]?%d+)%% 持续伤害加成"]= function(num) return {  mod("DotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end,
+	["被【怨毒光环】影响时，([%+%-]?%d+)%% 伤害持续时间加成"]= function(num) return {  mod("DotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end,
+	["受【怨毒光环】影响时，([%+%-]?%d+)%% 非异常状态混沌伤害持续时间加成"]= function(num) return {  mod("NonAilmentChaosDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end,
+	["受【怨毒光环】影响时，([%+%-]?%d+)%% 持续冰霜伤害加成"]= function(num) return {  mod("ColdDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end,
+	["受【怨毒光环】影响时，([%+%-]?%d+)%% 冰霜伤害持续时间加成"]= function(num) return {  mod("ColdDotMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })  } end,
+	["受到【怨毒光环】影响时，生命和能量护盾回复率提高 (%d+)%%"]= function(num) return {
 	mod("EnergyShieldRecoveryRate", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" }),
 	mod("LifeRecoveryRate", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy怨毒光环" })
-	  } end, 
-	["装备时施放 (%d+) 级的【艾贝拉斯之怒】"]= function(num) return{mod("ExtraSkill", "LIST", { skillId = "RepeatingShockwave", level = tonumber(num)}) }end, 
-	["每 (%d+) 点敏捷提高 %+(%d+) 最大生命"] =function(_,num1,num2) return {  mod("Life", "BASE", tonumber(num2),{ type = "PerStat", stat = "Dex", div = tonumber(num1) })  } end, 
-	["最大魔力每有 (%d+) 点，则有 (%d+)%% 几率不被攻击和法术击中，最多 (%d+)%%"]=function(_,num1,num2,num3) return {  
+	} end,
+	["装备时施放 (%d+) 级的【艾贝拉斯之怒】"]= function(num) return{mod("ExtraSkill", "LIST", { skillId = "RepeatingShockwave", level = tonumber(num)}) }end,
+	["每 (%d+) 点敏捷提高 %+(%d+) 最大生命"] =function(_,num1,num2) return {  mod("Life", "BASE", tonumber(num2),{ type = "PerStat", stat = "Dex", div = tonumber(num1) })  } end,
+	["最大魔力每有 (%d+) 点，则有 (%d+)%% 几率不被攻击和法术击中，最多 (%d+)%%"]=function(_,num1,num2,num3) return {
 	mod("AttackDodgeChance", "BASE", num2,{ type = "PerStat", stat = "Mana", div = num1, limit = tonumber(num3), limitTotal = true }),
-	mod("SpellDodgeChance", "BASE", num2,{ type = "PerStat", stat = "Mana", div = num1, limit = tonumber(num3), limitTotal = true }) } end, 
+	mod("SpellDodgeChance", "BASE", num2,{ type = "PerStat", stat = "Mana", div = num1, limit = tonumber(num3), limitTotal = true }) } end,
 	["拥有【鸟之斗魄】时每秒回复 (%d+) 生命"]= function(num) return {  mod("LifeRegen", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy鸟之斗魄" } )  } end,
 	["拥有【鸟之斗魄】时每秒回复 (%d+) 魔力"]= function(num) return {  mod("ManaRegen", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy鸟之斗魄" } )  } end,
 	["每 (%d+) 点力量使最大能量护盾提高 %+(%d+)"]= function(_,num1,num2) return {  mod("EnergyShield", "BASE", num2,{ type = "PerStat", stat = "Str", div = num1 } )  } end,
-	["此物品上的【(.+)技能石】由 (%d+) 级的 (.+) 辅助"] = function( _,_2,num, support) return { mod("ExtraSupport", "LIST", 
-		{ skillId = FuckSkillSupportCnName(support), level = tonumber(num) }, { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
-	["每 (%d+) 闪避值提高 (%d+)%% 移动速度，最多 (%d+)%%"]=function(_,num1,num2,num3) return {  
-	mod("MovementSpeed", "INC", num2,{ type = "PerStat", stat = "Evasion", div = num1, limit = tonumber(num3), limitTotal = true }) } end, 
+	["此物品上的【(.+)技能石】由 (%d+) 级的 (.+) 辅助"] = function( _,_2,num, support) return { mod("ExtraSupport", "LIST",
+	{ skillId = FuckSkillSupportCnName(support), level = tonumber(num) }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
+	["每 (%d+) 闪避值提高 (%d+)%% 移动速度，最多 (%d+)%%"]=function(_,num1,num2,num3) return {
+	mod("MovementSpeed", "INC", num2,{ type = "PerStat", stat = "Evasion", div = num1, limit = tonumber(num3), limitTotal = true }) } end,
 	["当你使用物品上的技能时，有 (%d+)%% 的几率触发 (%d+) 级的 【暗影姿态】"]
-	 = function(_,num,levelnum) return{mod("ExtraSkill", "LIST", { skillId = "ShadeForm", level = levelnum}) }end, 
-	["近期内你若未被击中，则受到的总伤害额外降低 (%d+)%%"]= function(num) return {  mod("DamageTaken", "MORE", -tonumber(num), { type = "Condition", var = "BeenHitRecently", neg = true } )  } end, 
+	= function(_,num,levelnum) return{mod("ExtraSkill", "LIST", { skillId = "ShadeForm", level = levelnum}) }end,
+	["近期内你若未被击中，则受到的总伤害额外降低 (%d+)%%"]= function(num) return {  mod("DamageTaken", "MORE", -tonumber(num), { type = "Condition", var = "BeenHitRecently", neg = true } )  } end,
 	["不再通过力量获得伤害加成，每 (%d+) 点力量会使近战伤害提高 (%d+)%%"] = function( _,perStr, num) return { mod("StrDmgBonusRatioOverride", "BASE", tonumber(num) / tonumber(perStr)) } end,
 	["不再通过力量获得伤害加成，每 (%d+) 点力量会使近战物理伤害提高 (%d+)%%"] = function( _,perStr, num) return { mod("StrDmgBonusRatioOverride", "BASE", tonumber(num) / tonumber(perStr)) } end,
-	["【(.+)】的增益效果提高 (%d+)%%"] = function(_, skill_name,num) return { mod("BuffEffect", "INC", tonumber(num),{ type = "SkillName", skillName = FuckSkillActivityCnName(skill_name) } ) } end,	
+	["【(.+)】的增益效果提高 (%d+)%%"] = function(_, skill_name,num) return { mod("BuffEffect", "INC", tonumber(num),{ type = "SkillName", skillName = FuckSkillActivityCnName(skill_name) } ) } end,
 	["插槽内魔像技能攻击和施法速度提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Speed", "INC", tonumber(num)) },
-	{ type = "SkillType", skillType = SkillType.Golem },  { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
+	{ type = "SkillType", skillType = SkillType.Golem },  { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	["插槽内魔像技能的增益效果提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("BuffEffect", "INC", tonumber(num)) },
-	{ type = "SkillType", skillType = SkillType.Golem },  { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
+	{ type = "SkillType", skillType = SkillType.Golem },  { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	["插槽内魔像技能获得等同最大生命 (%d+)%% 的额外能量护盾"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("LifeGainAsEnergyShield", "BASE", num) },
-	{ type = "SkillType", skillType = SkillType.Golem },  { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
+	{ type = "SkillType", skillType = SkillType.Golem },  { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	["插槽内的魔像技能每秒回复 (%d+)%% 生命"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("LifeRegenPercent", "BASE", tonumber(num)) },
-	{ type = "SkillType", skillType = SkillType.Golem },  { type = "SocketedIn", slotName = "{SlotName}" }) } end, 
+	{ type = "SkillType", skillType = SkillType.Golem },  { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	["你受到的时空锁链效果降低 (%d+)%%"] = function(num) return { mod("CurseEffectOnSelf", "INC", -tonumber(num), { type = "SkillName", skillName = "时空锁链" }) } end,
 	["在奉献地面上时有 (%d+)%% 额外格挡率"]= function(num) return {  mod("BlockChance", "BASE", tonumber(num),{ type = "Condition", var = "OnConsecratedGround"})  } end,
 	["右戒指栏位：每秒回复 (%d+)%% 能量护盾"]=function(num) return {  mod("EnergyShieldRegenPercent", "BASE", tonumber(num),{ type = "SlotNumber", num = 2 })  } end,
 	["左戒指栏位：每秒回复 (%d+) 魔力"]=function(num) return {  mod("ManaRegen", "BASE", tonumber(num),{ type = "SlotNumber", num = 1 })  } end,
 	["异灵魔侍获得【火之化身】"] = { mod("MinionModifier", "LIST", { mod = mod("Keystone", "LIST", "火之化身") }, { type = "SkillName", skillName = "召唤魔侍" }) },
-	["此物品上的技能石额外造成 (%d+) %- (%d+) 火焰伤害"] = function(_,num1,num2) return { 
-	 mod("FireMin", "BASE", tonumber(num1),{ type = "SocketedIn", slotName = "{SlotName}" } ), 
-	 mod("FireMax", "BASE", tonumber(num2),{ type = "SocketedIn", slotName = "{SlotName}" } ) } end,
+	["此物品上的技能石额外造成 (%d+) %- (%d+) 火焰伤害"] = function(_,num1,num2) return {
+	mod("FireMin", "BASE", tonumber(num1),{ type = "SocketedIn", slotName = "{SlotName}" } ),
+	mod("FireMax", "BASE", tonumber(num2),{ type = "SocketedIn", slotName = "{SlotName}" } ) } end,
 	["生命偷取会套用于能量护盾"] = { flag("GhostReaver") },
 	["中毒 (%d+) 层以上的敌人被该武器攻击击中时，该武器附加 (%d+) %- (%d+) 混沌伤害"] = function(num1,num2,num3,num4) return {
-		 mod("ChaosMin", "BASE", tonumber(num3),{ type = "Condition", var = "{Hand}Attack" } , { type = "MultiplierThreshold", actor = "enemy", var = "PoisonStack", threshold = tonumber(num1) } ), 
-		 mod("ChaosMax", "BASE", tonumber(num4), { type = "Condition", var = "{Hand}Attack" } ,{ type = "MultiplierThreshold", actor = "enemy", var = "PoisonStack", threshold = tonumber(num1) } ) 
-		  } end, 
-	["使用该武器攻击可穿透 (%d+)%% 闪电抗性"]= function(num) return {  mod("LightningPenetration", "BASE", num,{ type = "Condition", var = "{Hand}Attack" } )  } end, 	  
-	["使用该武器攻击可穿透 (%d+)%% 火焰抗性"]= function(num) return {  mod("FirePenetration", "BASE", num,{ type = "Condition", var = "{Hand}Attack" } )  } end, 	
-	["使用该武器攻击可穿透 (%d+)%% 冰霜抗性"]= function(num) return {  mod("ColdPenetration", "BASE", num,{ type = "Condition", var = "{Hand}Attack" } )  } end, 	
-	["使用该武器攻击可穿透 (%d+)%% 元素抗性"]= function(num) return {  mod("ElementalPenetration", "BASE", num,{ type = "Condition", var = "{Hand}Attack" } )  } end, 	
-	["使用该武器攻击可穿透 (%d+)%% 混沌抗性"]= function(num) return {  mod("ChaosPenetration", "BASE", num,{ type = "Condition", var = "{Hand}Attack" } )  } end, 	
+	mod("ChaosMin", "BASE", tonumber(num3),{ type = "Condition", var = "{Hand}Attack" } , { type = "MultiplierThreshold", actor = "enemy", var = "PoisonStack", threshold = tonumber(num1) } ),
+	mod("ChaosMax", "BASE", tonumber(num4), { type = "Condition", var = "{Hand}Attack" } ,{ type = "MultiplierThreshold", actor = "enemy", var = "PoisonStack", threshold = tonumber(num1) } )
+	} end,
+	["使用该武器攻击可穿透 (%d+)%% 闪电抗性"]= function(num) return {  mod("LightningPenetration", "BASE", num,{ type = "Condition", var = "{Hand}Attack" } )  } end,
+	["使用该武器攻击可穿透 (%d+)%% 火焰抗性"]= function(num) return {  mod("FirePenetration", "BASE", num,{ type = "Condition", var = "{Hand}Attack" } )  } end,
+	["使用该武器攻击可穿透 (%d+)%% 冰霜抗性"]= function(num) return {  mod("ColdPenetration", "BASE", num,{ type = "Condition", var = "{Hand}Attack" } )  } end,
+	["使用该武器攻击可穿透 (%d+)%% 元素抗性"]= function(num) return {  mod("ElementalPenetration", "BASE", num,{ type = "Condition", var = "{Hand}Attack" } )  } end,
+	["使用该武器攻击可穿透 (%d+)%% 混沌抗性"]= function(num) return {  mod("ChaosPenetration", "BASE", num,{ type = "Condition", var = "{Hand}Attack" } )  } end,
 	["【([^\\x00-\\xff]*)】的伤害穿透 (%d+)%% 的闪电抗性"]= function(_,skill_name,num)  return {  mod("LightningPenetration", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
 	["【([^\\x00-\\xff]*)】的伤害穿透 (%d+)%% 的火焰抗性"]= function(_,skill_name,num)  return {  mod("FirePenetration", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
 	["【([^\\x00-\\xff]*)】的伤害穿透 (%d+)%% 的冰霜抗性"]= function(_,skill_name,num)  return {  mod("ColdPenetration", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
@@ -2886,23 +2888,23 @@ local specialModList = {
 	["【([^\\x00-\\xff]*)】发射一支额外的箭矢"]= function(_,skill_name) return {  mod("ProjectileCount", "BASE", 1,{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
 	["【([^\\x00-\\xff]*)】发射 (%d+) 支额外的箭矢"]= function(_,skill_name,num) return {  mod("ProjectileCount", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
 	["【([^\\x00-\\xff]*)】穿透 (%d+) 个额外的额外的目标"]= function(_,skill_name,num) return {  mod("PierceCount", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
-	["([^\\x00-\\xff]*)光环的效果提高 (%d+)%%"]= function(_, skill_name,num) return { 
+	["([^\\x00-\\xff]*)光环的效果提高 (%d+)%%"]= function(_, skill_name,num) return {
 	skill_name=="非诅咒类" and   mod("AuraEffect", "INC", tonumber(num),{ type = "SkillType", skillType = SkillType.Aura }, { type = "SkillType", skillType = SkillType.AppliesCurse, neg = true } )   or  mod("AuraEffect", "INC", tonumber(num),  { type = "SkillName", skillName = FuckSkillActivityCnName(skill_name) })
-	 } end,
+	} end,
 	["【(.+)】的光环效果提高 (%d+)%%"]= function(_, skill_name,num) return {  mod("AuraEffect", "INC", tonumber(num),  { type = "SkillName", skillName = FuckSkillActivityCnName(skill_name) })  } end,
 	["此物品上的技能石总攻击和施法速度额外提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Speed", "MORE", tonumber(num)) },  { type = "SocketedIn", slotName ="{SlotName}"} ) } end,
 	["此物品上的技能石火焰、冰霜、闪电总伤害额外提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ElementalDamage", "MORE", tonumber(num)) }, { type = "SocketedIn", slotName ="{SlotName}"} ) } end,
 	["此物品上的技能石元素总伤害额外提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ElementalDamage", "MORE", tonumber(num)) }, { type = "SocketedIn", slotName ="{SlotName}"} ) } end,
-	["承受的冰霜伤害降低 (%d+)%%"]= function(num) return {  mod("ColdDamageTaken", "INC", -tonumber(num))  } end, 
-	["承受的持续物理伤害降低 (%d+)%%"]= function(num) return {  mod("PhysicalDamageTakenOverTime", "INC", -tonumber(num))  } end, 
-	["承受的闪电伤害降低 (%d+)%%"]= function(num) return {  mod("LightningDamageTaken", "INC", -tonumber(num))  } end, 
-	["你的法术每击中 1 个敌人会回复 %+(%d+) 魔力"]= function(num) return {  mod("ManaOnHit", "BASE", tonumber(num),nil,ModFlag.Spell )  } end, 
-	["你的法术每击中 1 个敌人会回复 %+(%d+) 生命"]= function(num) return {  mod("LifeOnHit", "BASE", tonumber(num),nil,ModFlag.Spell )  } end, 
+	["承受的冰霜伤害降低 (%d+)%%"]= function(num) return {  mod("ColdDamageTaken", "INC", -tonumber(num))  } end,
+	["承受的持续物理伤害降低 (%d+)%%"]= function(num) return {  mod("PhysicalDamageTakenOverTime", "INC", -tonumber(num))  } end,
+	["承受的闪电伤害降低 (%d+)%%"]= function(num) return {  mod("LightningDamageTaken", "INC", -tonumber(num))  } end,
+	["你的法术每击中 1 个敌人会回复 %+(%d+) 魔力"]= function(num) return {  mod("ManaOnHit", "BASE", tonumber(num),nil,ModFlag.Spell )  } end,
+	["你的法术每击中 1 个敌人会回复 %+(%d+) 生命"]= function(num) return {  mod("LifeOnHit", "BASE", tonumber(num),nil,ModFlag.Spell )  } end,
 	["药剂持续期间，获得额外 (%d+)%% 物理伤害减免"] = function(num) return {  mod("PhysicalDamageReduction", "BASE", tonumber(num),  { type = "Condition", var = "UsingFlask" })  } end,
 	["此物品上的技能石持续总伤害额外提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Damage", "MORE", tonumber(num),nil,ModFlag.Dot) },  { type = "SocketedIn", slotName ="{SlotName}"} ) } end,
 	["击中时有 (%d+)%% 几率施放 (%d+) 级的【(.+)】"]= function( _,chance,num, skill) return extraSkill(skill, tonumber(num)) end,
-	["药剂持续期间，暴击几率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", tonumber(num),{ type = "Condition", var = "UsingFlask" } )  } end, 
-	["近期内你若没有击败过敌人，则伤害穿透 (%d+)%% 元素抗性"]= function(num) return {  mod("ElementalPenetration", "BASE", tonumber(num),{ type = "Condition", var = "KilledRecently", neg = true }  )  } end, 
+	["药剂持续期间，暴击几率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", tonumber(num),{ type = "Condition", var = "UsingFlask" } )  } end,
+	["近期内你若没有击败过敌人，则伤害穿透 (%d+)%% 元素抗性"]= function(num) return {  mod("ElementalPenetration", "BASE", tonumber(num),{ type = "Condition", var = "KilledRecently", neg = true }  )  } end,
 	["击中时触发【(.+)】"] = function(_, skill) return extraSkill(skill, 1, true) end,
 	["击败敌人时触发【(.+)】"] = function(_, skill) return extraSkill(skill, 1, true) end,
 	["击杀时触发【(.+)】"] = function(_, skill) return extraSkill(skill, 1, true) end,
@@ -2917,51 +2919,51 @@ local specialModList = {
 	["在【寒冰弹】上施放时，【漩涡】的范围效果扩大 (%d+)%%"]= function(num) return {  mod("AreaOfEffect", "INC", tonumber(num),{ type = "Condition", var = "CastOnFrostbolt" },{ type = "SkillName", skillName ="漩涡" })  } end,
 	["【([^\\x00-\\xff]*)】可以额外发射 (%d+) 个投射物"]= function(_,skill_name,num) return {  mod("ProjectileCount", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
 	["【([^\\x00-\\xff]*)】可以额外发射 (%d+) 个箭矢"]= function(_,skill_name,num) return {  mod("ProjectileCount", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
-	["【([^\\x00-\\xff]*)】有 (%d+)%% 几率造成双倍伤害"]= function(_,skill_name,num) return {  mod("DoubleDamageChance", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
-	["【([^\\x00-\\xff]*)】的总移动速度额外提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("MovementSpeed", "MORE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
-	["([^\\x00-\\xff]*)魔像给予你的增益效果提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("BuffEffect", "INC", tonumber(num),{ type = "SkillName", skillName ="召唤"..skill_name:gsub("雷电","闪电").."魔像" })  } end, 
-	["([^\\x00-\\xff]*)魔像给与你的增益效果提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("BuffEffect", "INC", tonumber(num),{ type = "SkillName", skillName ="召唤"..skill_name:gsub("雷电","闪电").."魔像" })  } end, 
+	["【([^\\x00-\\xff]*)】有 (%d+)%% 几率造成双倍伤害"]= function(_,skill_name,num) return {  mod("DoubleDamageChance", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
+	["【([^\\x00-\\xff]*)】的总移动速度额外提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("MovementSpeed", "MORE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
+	["([^\\x00-\\xff]*)魔像给予你的增益效果提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("BuffEffect", "INC", tonumber(num),{ type = "SkillName", skillName ="召唤"..skill_name:gsub("雷电","闪电").."魔像" })  } end,
+	["([^\\x00-\\xff]*)魔像给与你的增益效果提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("BuffEffect", "INC", tonumber(num),{ type = "SkillName", skillName ="召唤"..skill_name:gsub("雷电","闪电").."魔像" })  } end,
 	["%+(%d+)%% ([^\\x00-\\xff]*)魔像的火焰、冰霜、闪电抗性"] = function(_,num,skill_name) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num)) },{ type = "SkillName", skillName ="召唤"..skill_name:gsub("雷电","闪电").."魔像" })  } end,
 	["%+(%d+)%% ([^\\x00-\\xff]*)魔像的元素抗性"] = function(_,num,skill_name) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num)) },{ type = "SkillName", skillName ="召唤"..skill_name:gsub("雷电","闪电").."魔像" })  } end,
 	["召唤的([^\\x00-\\xff]*)魔像获得 %+(%d+)%% 所有元素抗性"] = function(_,num,skill_name) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num)) },{ type = "SkillName", skillName ="召唤"..skill_name:gsub("雷电","闪电").."魔像" })  } end,
-	["【([^\\x00-\\xff]*)】的范围扩大 (%d+)%%"]= function(_,skill_name,num) return {  mod("AreaOfEffect", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
-	["攻城炮台的放置速度提高 (%d+)%%"]= function(num) return {  mod("TotemPlacementSpeed", "INC", tonumber(num),{ type = "SkillName", skillName ="攻城炮台" })  } end, 
+	["【([^\\x00-\\xff]*)】的范围扩大 (%d+)%%"]= function(_,skill_name,num) return {  mod("AreaOfEffect", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
+	["攻城炮台的放置速度提高 (%d+)%%"]= function(num) return {  mod("TotemPlacementSpeed", "INC", tonumber(num),{ type = "SkillName", skillName ="攻城炮台" })  } end,
 	["%+(%d+)%% 幻化守卫的火焰、冰霜、闪电抗性"] = function(_,num,skill_name) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num)) },{ type = "SkillName", skillName ="幻化守卫" })  } end,
 	["%+(%d+)%% 幻化守卫的元素抗性"] = function(_,num,skill_name) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num)) },{ type = "SkillName", skillName ="幻化守卫" })  } end,
-	["【([^\\x00-\\xff]*)】爆炸范围扩大 (%d+)%%"]= function(_,skill_name,num) return {  mod("AreaOfEffectSecondary", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
-	["【([^\\x00-\\xff]*)】对流血敌人附加 (%d+) %- (%d+) 基础物理伤害"]= function(_,skill_name,num1,num2) return { 
-		 mod("PhysicalMin", "BASE", num1,nil,0, KeywordFlag.Hit, { type = "ActorCondition", actor = "enemy", var = "Bleeding" },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) }) ,
-		 mod("PhysicalMax", "BASE", num2, nil,0,KeywordFlag.Hit, { type = "ActorCondition", actor = "enemy", var = "Bleeding" },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) }) } end, 
-	["冰霜新星有 %+(%d+)%% 冰冻几率"]= function(num) return {  mod("EnemyFreezeChance", "BASE", tonumber(num),{ type = "SkillName", skillName ="冰霜新星" })  } end, 
-	["冰霜之锤有 %+(%d+)%% 几率冰冻"]= function(num) return {  mod("EnemyFreezeChance", "BASE", tonumber(num),{ type = "SkillName", skillName ="冰霜之锤" })  } end, 
-	["【燃火烧尽】范围效果扩大 (%d+)%%"]= function(num) return {  mod("AreaOfEffect", "INC", tonumber(num),{ type = "SkillName", skillName ="烧毁" })  } end, 
-	["回春图腾的光环效果提高 (%d+)%%"]= function(num) return {  mod("AuraEffect", "INC", tonumber(num),{ type = "SkillName", skillName ="回春图腾" })  } end, 
-	["火球有 %+(%d+)%% 几率点燃"]= function(num) return {  mod("EnemyIgniteChance", "BASE", tonumber(num),{ type = "SkillName", skillName ="火球" })  } end, 
-	["【([^\\x00-\\xff]*)】有 %+(%d+)%% 的几率点燃"]=  function(_,skill_name,num)  return {  mod("EnemyIgniteChance", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
-	["【([^\\x00-\\xff]*)】有 %+(%d+)%% 的几率感电"]=  function(_,skill_name,num)  return {  mod("EnemyShockChance", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
+	["【([^\\x00-\\xff]*)】爆炸范围扩大 (%d+)%%"]= function(_,skill_name,num) return {  mod("AreaOfEffectSecondary", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
+	["【([^\\x00-\\xff]*)】对流血敌人附加 (%d+) %- (%d+) 基础物理伤害"]= function(_,skill_name,num1,num2) return {
+	mod("PhysicalMin", "BASE", num1,nil,0, KeywordFlag.Hit, { type = "ActorCondition", actor = "enemy", var = "Bleeding" },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) }) ,
+	mod("PhysicalMax", "BASE", num2, nil,0,KeywordFlag.Hit, { type = "ActorCondition", actor = "enemy", var = "Bleeding" },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) }) } end,
+	["冰霜新星有 %+(%d+)%% 冰冻几率"]= function(num) return {  mod("EnemyFreezeChance", "BASE", tonumber(num),{ type = "SkillName", skillName ="冰霜新星" })  } end,
+	["冰霜之锤有 %+(%d+)%% 几率冰冻"]= function(num) return {  mod("EnemyFreezeChance", "BASE", tonumber(num),{ type = "SkillName", skillName ="冰霜之锤" })  } end,
+	["【燃火烧尽】范围效果扩大 (%d+)%%"]= function(num) return {  mod("AreaOfEffect", "INC", tonumber(num),{ type = "SkillName", skillName ="烧毁" })  } end,
+	["回春图腾的光环效果提高 (%d+)%%"]= function(num) return {  mod("AuraEffect", "INC", tonumber(num),{ type = "SkillName", skillName ="回春图腾" })  } end,
+	["火球有 %+(%d+)%% 几率点燃"]= function(num) return {  mod("EnemyIgniteChance", "BASE", tonumber(num),{ type = "SkillName", skillName ="火球" })  } end,
+	["【([^\\x00-\\xff]*)】有 %+(%d+)%% 的几率点燃"]=  function(_,skill_name,num)  return {  mod("EnemyIgniteChance", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
+	["【([^\\x00-\\xff]*)】有 %+(%d+)%% 的几率感电"]=  function(_,skill_name,num)  return {  mod("EnemyShockChance", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
 	["【([^\\x00-\\xff]*)】和其召唤生物的伤害提高 (%d+)%%"] = function(_,skill_name,num)  return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", tonumber(num)) },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
 	["【([^\\x00-\\xff]*)】和该技能的召唤生物攻击速度提高 (%d+)%%"] = function(_,skill_name,num)  return { mod("MinionModifier", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack) },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
-	["【火焰新星】的地雷伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", tonumber(num),{ type = "SkillName", skillName ="火焰新星地雷" })  } end, 
+	["【火焰新星】的地雷伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", tonumber(num),{ type = "SkillName", skillName ="火焰新星地雷" })  } end,
 	["【([^\\x00-\\xff]*)】会使攻击速度额外提高 (%d+)%%"]=  function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack,{ type = "GlobalEffect", effectType = "Buff" }) }, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) } ) } end,
-	["【([^\\x00-\\xff]*)】的护体持续时间延长 (%d+)%%"]= function(_,skill_name,num) return {  mod("FortifyDuration", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
+	["【([^\\x00-\\xff]*)】的护体持续时间延长 (%d+)%%"]= function(_,skill_name,num) return {  mod("FortifyDuration", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
 	["【([^\\x00-\\xff]*)】提供的攻击格挡率提高 %+(%d+)%%"]= function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("BlockChance", "BASE", tonumber(num),{ type = "GlobalEffect", effectType = "Buff" }) }, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) } ) } end,
-	["【飞刃风暴】的每片刀刃 %+(%d+)%% 攻击和法术暴击伤害加成"] = function(num) return { mod("CritMultiplier", "BASE", tonumber(num), { type = "Multiplier", var = "BladeVortexBlade" }, { type = "SkillName", skillName = "飞刃风暴" }) } end, 
-	["提高 (%d+)%% 幻化武器时间"]= function(num) return {  mod("Duration", "INC", tonumber(num),{ type = "SkillName", skillName ="幻化武器" })  } end, 
-	["【([^\\x00-\\xff]*)】造成冰冻，感电，点燃的几率提高 %+(%d+)%%"]= function(_,skill_name,num) return { 
-	 mod("EnemyFreezeChance", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  ,
-	  mod("EnemyShockChance", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  ,
-	   mod("EnemyIgniteChance", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name })   } end, 
+	["【飞刃风暴】的每片刀刃 %+(%d+)%% 攻击和法术暴击伤害加成"] = function(num) return { mod("CritMultiplier", "BASE", tonumber(num), { type = "Multiplier", var = "BladeVortexBlade" }, { type = "SkillName", skillName = "飞刃风暴" }) } end,
+	["提高 (%d+)%% 幻化武器时间"]= function(num) return {  mod("Duration", "INC", tonumber(num),{ type = "SkillName", skillName ="幻化武器" })  } end,
+	["【([^\\x00-\\xff]*)】造成冰冻，感电，点燃的几率提高 %+(%d+)%%"]= function(_,skill_name,num) return {
+	mod("EnemyFreezeChance", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  ,
+	mod("EnemyShockChance", "BASE", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  ,
+	mod("EnemyIgniteChance", "BASE", tonumber(num),{ type = "SkillName", skillName =skill_name })   } end,
 	["【([^\\x00-\\xff]*)】额外连锁弹射 (%d+) 次"]=  function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ChainCountMax", "BASE", tonumber(num)) }, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) } ) } end,
 	["【([^\\x00-\\xff]*)】有额外 (%d+) 次连锁弹射"]=  function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ChainCountMax", "BASE", tonumber(num)) }, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) } ) } end,
 	["【([^\\x00-\\xff]*)】会额外连锁 (%d+) 次"]=  function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ChainCountMax", "BASE", tonumber(num)) }, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) } ) } end,
 	["【灵魂奉献】给予等同 %+(%d+)%% 物理伤害的额外混沌伤害"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("PhysicalDamageGainAsChaos", "BASE", tonumber(num), { type = "GlobalEffect", effectType = "Buff" }) }, { type = "SkillName", skillName = "灵魂奉献" }) } end,
-	["闪电陷阱的伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", tonumber(num),{ type = "SkillName", skillName ="闪电陷阱" })  } end, 
-	["【([^\\x00-\\xff]*)】有 (%d+)%% 几率对流血敌人造成双倍伤害"]= function(_,skill_name,num) return {  mod("DoubleDamageChance", "BASE", tonumber(num),{ type = "ActorCondition", actor = "enemy", var = "Bleeding" },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
+	["闪电陷阱的伤害提高 (%d+)%%"]= function(num) return {  mod("Damage", "INC", tonumber(num),{ type = "SkillName", skillName ="闪电陷阱" })  } end,
+	["【([^\\x00-\\xff]*)】有 (%d+)%% 几率对流血敌人造成双倍伤害"]= function(_,skill_name,num) return {  mod("DoubleDamageChance", "BASE", tonumber(num),{ type = "ActorCondition", actor = "enemy", var = "Bleeding" },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
 	["踩中【捕熊陷阱】的敌人受到陷阱或地雷的击中伤害提高 (%d+)%%"] = function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("TrapMineDamageTaken", "INC", tonumber(num), { type = "GlobalEffect", effectType = "Debuff" }) }, { type = "SkillName", skillName = "捕熊陷阱" }) } end,
-	["【([^\\x00-\\xff]*)】对燃烧中敌人的伤害提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("Damage", "INC", tonumber(num),{ type = "ActorCondition", actor = "enemy", var = "Burning" },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
-	["【([^\\x00-\\xff]*)】的投掷伤害提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("Damage", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name)})  } end, 
-	["【([^\\x00-\\xff]*)】的投掷物速度提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("ProjectileSpeed", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name)})  } end, 
-	["【([^\\x00-\\xff]*)】技能会使减益效果的持续时间延长 (%d+)%%"]= function(_,skill_name,num) return {  mod("SecondaryDuration", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name)})  } end,   
+	["【([^\\x00-\\xff]*)】对燃烧中敌人的伤害提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("Damage", "INC", tonumber(num),{ type = "ActorCondition", actor = "enemy", var = "Burning" },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
+	["【([^\\x00-\\xff]*)】的投掷伤害提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("Damage", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name)})  } end,
+	["【([^\\x00-\\xff]*)】的投掷物速度提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("ProjectileSpeed", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name)})  } end,
+	["【([^\\x00-\\xff]*)】技能会使减益效果的持续时间延长 (%d+)%%"]= function(_,skill_name,num) return {  mod("SecondaryDuration", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name)})  } end,
 	["【([^\\x00-\\xff]*)】提供的召唤生物攻击速度提高 (%d+)%%"]= function(_,skill_name,num) return { mod("MinionModifier", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack,{ type = "GlobalEffect", effectType = "Buff" }) },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
 	["先祖战士长图腾生效时，你的近战伤害提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Damage", "INC", tonumber(num),nil, ModFlag.Melee,{ type = "GlobalEffect", effectType = "Buff" }) }, { type = "SkillName", skillName ="先祖战士长" } ) } end,
 	["当先祖卫士图腾存在时，攻击速度提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil, ModFlag.Attack,{ type = "GlobalEffect", effectType = "Buff" }) }, { type = "SkillName", skillName ="先祖卫士" } ) } end,
@@ -2969,36 +2971,36 @@ local specialModList = {
 	["%+(%d+)%% 唤醒灵体的火焰、冰霜、闪电抗性"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num)) },{ type = "SkillName", skillName ="召唤灵体" })  } end,
 	["%+(%d+)%% 召唤灵体的元素抗性"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num)) },{ type = "SkillName", skillName ="召唤灵体" })  } end,
 	["%+(%d+)%% 唤醒灵体的元素抗性"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num)) },{ type = "SkillName", skillName ="召唤灵体" })  } end,
-	["召唤愤怒狂灵的持续时间延长 (%d+)%%"]= function(num) return {  mod("Duration", "INC", tonumber(num),{ type = "SkillName", skillName ="召唤愤怒狂灵" })  } end, 
-	["你和友军受你的光环技能影响时，获得 %+([%d%.]+)%% 火焰、冰霜、闪电抗性"]= function(num) return {  mod("AffectedByAuraMod", "LIST", { mod =  mod("ElementalResist", "BASE", num) }) } end, 
-	["你和友军受你的光环技能影响时，伤害提高 ([%d%.]+)%%"]= function(num) return {  mod("AffectedByAuraMod", "LIST", { mod =  mod("Damage", "INC", num) }) } end, 
-	["你和友军受你的光环影响时，元素抗性 %+([%d%.]+)%%"]= function(num) return {  mod("AffectedByAuraMod", "LIST", { mod =  mod("ElementalResist", "BASE", num) }) } end, 
-	["你和友军受你的光环影响时，伤害提高 ([%d%.]+)%%"]= function(num) return {  mod("AffectedByAuraMod", "LIST", { mod =  mod("Damage", "INC", num) }) } end, 
-	["你技能的光环可使你和周围友军的攻击和施法速度提高 ([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("Speed", "INC", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end, 
-	["你技能的光环可使你和周围友方的物理伤害减免提高 %+([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("PhysicalDamageReduction", "BASE", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end, 
-	["你技能的光环给你和周围队友每秒回复 ([%d%.]+)%% 生命"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("LifeRegenPercent", "BASE", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end, 
-	["你和周围友军 %+([%d%.]+)%% 元素抗性"]= function(num) return {  mod("ExtraAura", "LIST", { mod =  mod("ElementalResist", "BASE", num) }) } end, 
-	["你和周围友军的魔力再生率提高 ([%d%.]+)%%"]= function(num) return {  mod("ExtraAura", "LIST", { mod =  mod("ManaRegenPercent", "BASE", num) }) } end, 
-	["【召唤愤怒狂灵】的生命提高 (%d+)%%"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("Life", "INC", num) }, { type = "SkillName", skillName = "召唤愤怒狂灵" })  } end, 
-	["愤怒狂灵的最大生命提高 (%d+)%%"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("Life", "INC", num) }, { type = "SkillName", skillName = "召唤愤怒狂灵" })  } end, 
-	 ["召唤愤怒狂灵的伤害提高 (%d+)%%"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) }, { type = "SkillName", skillName = "召唤愤怒狂灵" })  } end, 
-	["劈砍攻击速度提高 (%d+)%%"]= function(num) return {  mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack,{ type = "SkillName", skillName ="劈砍" })  } end, 
-	["每个狂怒球可使【([^\\x00-\\xff]*)】的伤害提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("Damage", "INC", tonumber(num),{ type = "Multiplier", var = "FrenzyCharge" },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
+	["召唤愤怒狂灵的持续时间延长 (%d+)%%"]= function(num) return {  mod("Duration", "INC", tonumber(num),{ type = "SkillName", skillName ="召唤愤怒狂灵" })  } end,
+	["你和友军受你的光环技能影响时，获得 %+([%d%.]+)%% 火焰、冰霜、闪电抗性"]= function(num) return {  mod("AffectedByAuraMod", "LIST", { mod =  mod("ElementalResist", "BASE", num) }) } end,
+	["你和友军受你的光环技能影响时，伤害提高 ([%d%.]+)%%"]= function(num) return {  mod("AffectedByAuraMod", "LIST", { mod =  mod("Damage", "INC", num) }) } end,
+	["你和友军受你的光环影响时，元素抗性 %+([%d%.]+)%%"]= function(num) return {  mod("AffectedByAuraMod", "LIST", { mod =  mod("ElementalResist", "BASE", num) }) } end,
+	["你和友军受你的光环影响时，伤害提高 ([%d%.]+)%%"]= function(num) return {  mod("AffectedByAuraMod", "LIST", { mod =  mod("Damage", "INC", num) }) } end,
+	["你技能的光环可使你和周围友军的攻击和施法速度提高 ([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("Speed", "INC", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end,
+	["你技能的光环可使你和周围友方的物理伤害减免提高 %+([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("PhysicalDamageReduction", "BASE", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end,
+	["你技能的光环给你和周围队友每秒回复 ([%d%.]+)%% 生命"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("LifeRegenPercent", "BASE", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end,
+	["你和周围友军 %+([%d%.]+)%% 元素抗性"]= function(num) return {  mod("ExtraAura", "LIST", { mod =  mod("ElementalResist", "BASE", num) }) } end,
+	["你和周围友军的魔力再生率提高 ([%d%.]+)%%"]= function(num) return {  mod("ExtraAura", "LIST", { mod =  mod("ManaRegenPercent", "BASE", num) }) } end,
+	["【召唤愤怒狂灵】的生命提高 (%d+)%%"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("Life", "INC", num) }, { type = "SkillName", skillName = "召唤愤怒狂灵" })  } end,
+	["愤怒狂灵的最大生命提高 (%d+)%%"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("Life", "INC", num) }, { type = "SkillName", skillName = "召唤愤怒狂灵" })  } end,
+	["召唤愤怒狂灵的伤害提高 (%d+)%%"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) }, { type = "SkillName", skillName = "召唤愤怒狂灵" })  } end,
+	["劈砍攻击速度提高 (%d+)%%"]= function(num) return {  mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack,{ type = "SkillName", skillName ="劈砍" })  } end,
+	["每个狂怒球可使【([^\\x00-\\xff]*)】的伤害提高 (%d+)%%"]= function(_,skill_name,num) return {  mod("Damage", "INC", tonumber(num),{ type = "Multiplier", var = "FrenzyCharge" },{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
 	["【([^\\x00-\\xff]*)】可使移动速度额外提高 (%d+)%%"]= function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("MovementSpeed", "INC", tonumber(num),{ type = "GlobalEffect", effectType = "Buff" }) }, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) } ) } end,
-	["【([^\\x00-\\xff]*)】的施放速度提高 (%d+)%%"]= function(_,skill_name,num)  return {  mod("Speed", "INC", tonumber(num),nil,ModFlag.Cast,{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
-	["诱饵图腾的生命提高 (%d+)%%"]= function(num) return {  mod("TotemLife", "INC", tonumber(num),{ type = "SkillName", skillName ="诱饵图腾" })  } end, 
-	["【([^\\x00-\\xff]*)】造成的燃烧地面持续时间延长 (%d+)%%"]= function(_,skill_name,num)  return {  mod("Duration", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end, 
-	["【灼热连接】放置速度提高 (%d+)%%"]= function(num)  return {  mod("TotemPlacementSpeed", "INC", tonumber(num),{ type = "SkillName", skillName ="灼热连接" })  } end, 
-	["【冰矛】第二阶段的暴击率提高 (%d+)%%"]= function(num)  return {  mod("CritChance", "INC", tonumber(num),{ type = "SkillName", skillName ="冰矛" },{ type = "SkillPart", skillPart = 2 })  } end, 
-	["受到【雷霆之捷】影响时，伤害穿透 (%d+)%% 闪电抗性"]= function(num) return {  mod("LightningPenetration", "BASE", num,{ type = "Condition", var = "AffectedBy闪电之捷" })  } end, 
+	["【([^\\x00-\\xff]*)】的施放速度提高 (%d+)%%"]= function(_,skill_name,num)  return {  mod("Speed", "INC", tonumber(num),nil,ModFlag.Cast,{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
+	["诱饵图腾的生命提高 (%d+)%%"]= function(num) return {  mod("TotemLife", "INC", tonumber(num),{ type = "SkillName", skillName ="诱饵图腾" })  } end,
+	["【([^\\x00-\\xff]*)】造成的燃烧地面持续时间延长 (%d+)%%"]= function(_,skill_name,num)  return {  mod("Duration", "INC", tonumber(num),{ type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) })  } end,
+	["【灼热连接】放置速度提高 (%d+)%%"]= function(num)  return {  mod("TotemPlacementSpeed", "INC", tonumber(num),{ type = "SkillName", skillName ="灼热连接" })  } end,
+	["【冰矛】第二阶段的暴击率提高 (%d+)%%"]= function(num)  return {  mod("CritChance", "INC", tonumber(num),{ type = "SkillName", skillName ="冰矛" },{ type = "SkillPart", skillPart = 2 })  } end,
+	["受到【雷霆之捷】影响时，伤害穿透 (%d+)%% 闪电抗性"]= function(num) return {  mod("LightningPenetration", "BASE", num,{ type = "Condition", var = "AffectedBy闪电之捷" })  } end,
 	["拥有【猫之隐匿】时获得【迷踪】状态"] = { flag("Condition:Phasing", { type = "Condition", var = "AffectedBy猫之隐匿" }) }, --备注：you have phasing while you have cat's stealth
 	["拥有【猫之隐匿】时，你的攻击必定造成流血"] = { mod("BleedChance", "BASE", 100, nil, ModFlag.Attack, { type = "Condition", var = "AffectedBy猫之隐匿" }) }, --备注：attacks always inflict bleeding while you have cat's stealth
 	["受到【脆弱】诅咒时，非满血时被视作低血状态"] = { flag("Condition:LowLife", { type = "Condition", var = "AffectedBy脆弱" }) }, --备注：you count as on low life while you are cursed with vulnerability
 	["拥有【猫之隐匿】时获得【玫红之舞】"] = { mod("Keystone", "LIST", "玫红之舞", { type = "Condition", var = "AffectedBy猫之隐匿" }) }, --备注：you have crimson dance while you have cat's stealth
-		["近期内你若打出过暴击，则获得【玫红之舞】"] = { mod("Keystone", "LIST", "玫红之舞", { type = "Condition", var = "CritRecently" }) }, --备注：you have crimson dance if 
+	["近期内你若打出过暴击，则获得【玫红之舞】"] = { mod("Keystone", "LIST", "玫红之舞", { type = "Condition", var = "CritRecently" }) }, --备注：you have crimson dance if
 	["近期内你若打出过暴击，则获得【瓦尔冥约】"] = { mod("Keystone", "LIST", "瓦尔冥约", { type = "Condition", var = "CritRecently" }) }, --备注：you have vaal pact if you've dealt a critical strike recently
 	["近期内你若没有被击中，则获得【狂热誓言】"] = { mod("Keystone", "LIST", "狂热誓言", { type = "Condition", var = "BeenHitRecently", neg = true }) }, --备注：you have zealot's oath if you haven't been hit recently
-	["近期内你若打出过暴击，则获得【完美苦痛】"] = { mod("Keystone", "LIST", "完美苦痛", { type = "Condition", var = "CritRecently" }) }, 
+	["近期内你若打出过暴击，则获得【完美苦痛】"] = { mod("Keystone", "LIST", "完美苦痛", { type = "Condition", var = "CritRecently" }) },
 	["魔像总伤害额外降低 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "MORE", -num) },{ type = "SkillType", skillType = SkillType.Golem })  } end,
 	["魔像总生命额外降低 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "MORE", -num) },{ type = "SkillType", skillType = SkillType.Golem })  } end,
 	["魔像的总伤害额外降低 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "MORE", -num) },{ type = "SkillType", skillType = SkillType.Golem })  } end,
@@ -3007,13 +3009,13 @@ local specialModList = {
 	["最多可同时召唤额外 ([%+%-]?%d+) 个魔像"] = function(num) return { mod("ActiveGolemLimit", "BASE", num) } end,
 	["魔像上限 ([%+%-]?%d+)"] = function(num) return { mod("ActiveGolemLimit", "BASE", num) } end,
 	["最多可同时召唤额外 (%d) 个魔像"] = function(num) return { mod("ActiveGolemLimit", "BASE", num) } end,
-	["你和周围友军的伤害提高 (%d+)%%"]= function(num) return {  mod("ExtraAura", "LIST", { mod =  mod("Damage", "INC", num) }) } end, 
-	["你和周围友军移动速度提高 (%d+)%%"]= function(num) return {  mod("ExtraAura", "LIST", { mod =  mod("MovementSpeed", "INC", num) }) } end, 
-	["你和周围友军的移动速度提高 (%d+)%%"]= function(num) return {  mod("ExtraAura", "LIST", { mod =  mod("MovementSpeed", "INC", num) }) } end, 
-	["近期内你若没被击中后受到伤害，则获得 ([%d%.]+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "BeenHitRecently", neg = true })  } end,  
-	["近期内你若被击中伤害，则有 ([%d%.]+)%% 几率格挡法术"]= function(num) return {  mod("SpellBlockChance", "BASE", num,{ type = "Condition", var = "BeenHitRecently"})  } end,  
-	["受到【纪律】影响时，每击中一个敌人便会获得 %+(%d+) 能量护盾"]= function(num) return {  mod("EnergyShieldOnHit", "BASE", num,{ type = "Condition", var = "AffectedBy纪律" })  } end, 
-	["受到【活力】影响时，每击中一个敌人便会获得 %+(%d+) 生命"]= function(num) return {  mod("LifeOnHit", "BASE", num,{ type = "Condition", var = "AffectedBy活力" })  } end, 
+	["你和周围友军的伤害提高 (%d+)%%"]= function(num) return {  mod("ExtraAura", "LIST", { mod =  mod("Damage", "INC", num) }) } end,
+	["你和周围友军移动速度提高 (%d+)%%"]= function(num) return {  mod("ExtraAura", "LIST", { mod =  mod("MovementSpeed", "INC", num) }) } end,
+	["你和周围友军的移动速度提高 (%d+)%%"]= function(num) return {  mod("ExtraAura", "LIST", { mod =  mod("MovementSpeed", "INC", num) }) } end,
+	["近期内你若没被击中后受到伤害，则获得 ([%d%.]+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "BeenHitRecently", neg = true })  } end,
+	["近期内你若被击中伤害，则有 ([%d%.]+)%% 几率格挡法术"]= function(num) return {  mod("SpellBlockChance", "BASE", num,{ type = "Condition", var = "BeenHitRecently"})  } end,
+	["受到【纪律】影响时，每击中一个敌人便会获得 %+(%d+) 能量护盾"]= function(num) return {  mod("EnergyShieldOnHit", "BASE", num,{ type = "Condition", var = "AffectedBy纪律" })  } end,
+	["受到【活力】影响时，每击中一个敌人便会获得 %+(%d+) 生命"]= function(num) return {  mod("LifeOnHit", "BASE", num,{ type = "Condition", var = "AffectedBy活力" })  } end,
 	["使用尊严时有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("DoubleDamageChance", "BASE", num,{ type = "Condition", var = "UsedBy尊严" }) } end,
 	["使用尊严时，攻击击中时有 (%d+)%% 几率穿刺敌人"]= function(num) return { mod("ImpaleChance", "BASE", num, 0, 0, KeywordFlag.Attack,{ type = "Condition", var = "UsedBy尊严" }) } end,
 	["使用尊严时，你造成的穿刺效果会额外持续 (%d+) 次击中"]= function(num) return { mod("ImpaleStacksMax", "BASE", num,{ type = "Condition", var = "UsedBy尊严" }) } end,
@@ -3021,149 +3023,149 @@ local specialModList = {
 	["使用【尊严】时，攻击击中有 (%d+)%% 几率穿刺敌人"]= function(num) return { mod("ImpaleChance", "BASE", num, 0, 0, KeywordFlag.Attack,{ type = "Condition", var = "UsedBy尊严" }) } end,
 	["使用【尊严】时，你造成的穿刺效果会造成 (%d+) 次额外击中"]= function(num) return { mod("ImpaleStacksMax", "BASE", num,{ type = "Condition", var = "UsedBy尊严" }) } end,
 	["法术有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("DoubleDamageChance", "BASE", num, nil, ModFlag.Spell) } end,
-	["技能效果持续时间延长 ([%+%-]?%d+)%%"]= function(num) return {  mod("Duration", "INC", num)  } end, 
-	["技能效果持续时间缩短 ([%+%-]?%d+)%%"]= function(num) return {  mod("Duration", "INC", -num)  } end, 
-	["对燃烧的敌人附加 (%d+) %- (%d+) 火焰伤害"]= function(_,num1,num2) return { 	
-		mod("FireMin", "BASE", tonumber(num1),nil, ModFlag.Hit, { type = "ActorCondition", actor = "enemy", var = "Burning" }),
-		mod("FireMax", "BASE", tonumber(num2), nil, ModFlag.Hit,{ type = "ActorCondition", actor = "enemy", var = "Burning" }) 
+	["技能效果持续时间延长 ([%+%-]?%d+)%%"]= function(num) return {  mod("Duration", "INC", num)  } end,
+	["技能效果持续时间缩短 ([%+%-]?%d+)%%"]= function(num) return {  mod("Duration", "INC", -num)  } end,
+	["对燃烧的敌人附加 (%d+) %- (%d+) 火焰伤害"]= function(_,num1,num2) return {
+	mod("FireMin", "BASE", tonumber(num1),nil, ModFlag.Hit, { type = "ActorCondition", actor = "enemy", var = "Burning" }),
+	mod("FireMax", "BASE", tonumber(num2), nil, ModFlag.Hit,{ type = "ActorCondition", actor = "enemy", var = "Burning" })
 	}end,
-	["每个红色插槽会使你和周围友军附加 (%d+) %- (%d+) 基础火焰伤害"]= function(_,num1,num2) return { 	
-	mod("ExtraAura", "LIST", 
+	["每个红色插槽会使你和周围友军附加 (%d+) %- (%d+) 基础火焰伤害"]= function(_,num1,num2) return {
+	mod("ExtraAura", "LIST",
 	{ mod = mod("FireMin", "BASE", tonumber(num1))},{ type = "Multiplier", var = "RedSocketIn{SlotName}" } ),
-	mod("ExtraAura", "LIST", 
+	mod("ExtraAura", "LIST",
 	{ mod = mod("FireMax", "BASE", tonumber(num2)) },{ type = "Multiplier", var = "RedSocketIn{SlotName}" }),
 	}end,
-	["每个绿色插槽会使你和周围友军附加 (%d+) %- (%d+) 基础冰霜伤害"]= function(_,num1,num2) return { 	
-	mod("ExtraAura", "LIST", 
+	["每个绿色插槽会使你和周围友军附加 (%d+) %- (%d+) 基础冰霜伤害"]= function(_,num1,num2) return {
+	mod("ExtraAura", "LIST",
 	{ mod = mod("ColdMin", "BASE", tonumber(num1))},{ type = "Multiplier", var = "GreenSocketIn{SlotName}" } ),
-	mod("ExtraAura", "LIST", 
+	mod("ExtraAura", "LIST",
 	{ mod = mod("ColdMax", "BASE", tonumber(num2))},{ type = "Multiplier", var = "GreenSocketIn{SlotName}" } ),
 	}end,
-	["每个蓝色插槽会使你和周围友军附加 (%d+) %- (%d+) 基础闪电伤害"]= function(_,num1,num2) return { 
-	mod("ExtraAura", "LIST", 
+	["每个蓝色插槽会使你和周围友军附加 (%d+) %- (%d+) 基础闪电伤害"]= function(_,num1,num2) return {
+	mod("ExtraAura", "LIST",
 	{ mod = mod("LightningMin", "BASE", tonumber(num1))},{ type = "Multiplier", var = "BlueSocketIn{SlotName}" } ),
-	mod("ExtraAura", "LIST", 
+	mod("ExtraAura", "LIST",
 	{ mod = mod("LightningMax", "BASE", tonumber(num2))},{ type = "Multiplier", var = "BlueSocketIn{SlotName}" } ),
 	}end,
-	["每个白色插槽会使你和周围友军附加 (%d+) %- (%d+) 基础混沌伤害"]= function(_,num1,num2) return { 
-	mod("ExtraAura", "LIST", 
+	["每个白色插槽会使你和周围友军附加 (%d+) %- (%d+) 基础混沌伤害"]= function(_,num1,num2) return {
+	mod("ExtraAura", "LIST",
 	{ mod = mod("ChaosMin", "BASE", tonumber(num1))},{ type = "Multiplier", var = "WhiteSocketIn{SlotName}" } ),
-	mod("ExtraAura", "LIST", 
+	mod("ExtraAura", "LIST",
 	{ mod = mod("ChaosMax", "BASE", tonumber(num2))},{ type = "Multiplier", var = "WhiteSocketIn{SlotName}" } ),
 	}end,
 	["获得额外混沌伤害，其数值等同于非混沌伤害的 (%d+)%%"] = function(num) return {  mod("NonChaosDamageGainAsChaos", "BASE", num)  } end,
-	["受到【雷霆】影响时，闪电伤害提高 (%d+)%%"]= function(num) return {  mod("LightningDamage", "INC", num,{ type = "Condition", var = "AffectedBy雷霆" })  } end, 
+	["受到【雷霆】影响时，闪电伤害提高 (%d+)%%"]= function(num) return {  mod("LightningDamage", "INC", num,{ type = "Condition", var = "AffectedBy雷霆" })  } end,
 	-- 国服目前 ManaRecoveryRate和ManaRegen 2个词缀共用“魔力回复速度”
-	["任何魔力药剂作用时间内，魔力回复速度提高 (%d+)%%"]= function(num) return {  mod("ManaRecoveryRate", "INC", num,{ type = "Condition", var = "UsingManaFlask" } )  } end, 
-	["受到【清晰】影响时，魔力回复速度提高 (%d+)%%"]= function(num) return {  mod("ManaRecoveryRate", "INC", num,{ type = "Condition", var = "AffectedBy清晰" })  } end, 
-	["受到【纪律】影响时，能量护盾回复速度提高 (%d+)%%"]= function(num) return {  mod("EnergyShieldRecoveryRate", "INC", num,{ type = "Condition", var = "AffectedBy纪律" })  } end, 
-	["受到【活力】影响时，药剂的生命回复提高 (%d+)%%"]= function(num) return {  mod("FlaskLifeRecovery", "INC", num,{ type = "Condition", var = "AffectedBy活力" })  } end, 
-	["受到【元素净化】影响时，%+(%d+)%% 混沌抗性"]= function(num) return {  mod("ChaosResist", "BASE", num,{ type = "Condition", var = "AffectedBy元素净化" })  } end, 
-	["受到【迅捷】影响时，移动技能的冷却速度提高 (%d+)%%"]= function(num) return {  mod("CooldownRecovery", "INC", num,nil, 0, KeywordFlag.Movement,{ type = "Condition", var = "AffectedBy迅捷" } )  } end, 
-	["魔卫的物理总伤害额外提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamage", "MORE", tonumber(num))},{ type = "SkillName", skillName = "魔卫复苏" } )  } end, 
-	["魔卫复苏物理总伤害额外提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamage", "MORE", tonumber(num))},{ type = "SkillName", skillName = "魔卫复苏" } )  } end, 
-	["复苏的魔卫物理总伤害额外提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamage", "MORE", tonumber(num))},{ type = "SkillName", skillName = "魔卫复苏" } )  } end, 
-	["【复苏的魔卫】的重击攻击效果范围扩大 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("AreaOfEffect", "INC", num,{ type = "SkillId", skillId = "ZombieSlam" })})  } end, 
+	["任何魔力药剂作用时间内，魔力回复速度提高 (%d+)%%"]= function(num) return {  mod("ManaRecoveryRate", "INC", num,{ type = "Condition", var = "UsingManaFlask" } )  } end,
+	["受到【清晰】影响时，魔力回复速度提高 (%d+)%%"]= function(num) return {  mod("ManaRecoveryRate", "INC", num,{ type = "Condition", var = "AffectedBy清晰" })  } end,
+	["受到【纪律】影响时，能量护盾回复速度提高 (%d+)%%"]= function(num) return {  mod("EnergyShieldRecoveryRate", "INC", num,{ type = "Condition", var = "AffectedBy纪律" })  } end,
+	["受到【活力】影响时，药剂的生命回复提高 (%d+)%%"]= function(num) return {  mod("FlaskLifeRecovery", "INC", num,{ type = "Condition", var = "AffectedBy活力" })  } end,
+	["受到【元素净化】影响时，%+(%d+)%% 混沌抗性"]= function(num) return {  mod("ChaosResist", "BASE", num,{ type = "Condition", var = "AffectedBy元素净化" })  } end,
+	["受到【迅捷】影响时，移动技能的冷却速度提高 (%d+)%%"]= function(num) return {  mod("CooldownRecovery", "INC", num,nil, 0, KeywordFlag.Movement,{ type = "Condition", var = "AffectedBy迅捷" } )  } end,
+	["魔卫的物理总伤害额外提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamage", "MORE", tonumber(num))},{ type = "SkillName", skillName = "魔卫复苏" } )  } end,
+	["魔卫复苏物理总伤害额外提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamage", "MORE", tonumber(num))},{ type = "SkillName", skillName = "魔卫复苏" } )  } end,
+	["复苏的魔卫物理总伤害额外提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamage", "MORE", tonumber(num))},{ type = "SkillName", skillName = "魔卫复苏" } )  } end,
+	["【复苏的魔卫】的重击攻击效果范围扩大 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("AreaOfEffect", "INC", num,{ type = "SkillId", skillId = "ZombieSlam" })})  } end,
 	["药剂效果套用于你的魔卫和灵体身上"] = { flag("FlasksApplyToMinion", { type = "SkillName", skillNameList = { "魔卫复苏", "召唤灵体" } }) }, --备注：flasks apply to your zombies and spectres
 	["药剂效果套用于魔卫复苏和灵体"] = { flag("FlasksApplyToMinion", { type = "SkillName", skillNameList = { "魔卫复苏", "召唤灵体" } }) },
-	["【魔卫】攻击速度提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack )},{ type = "SkillName", skillName = "魔卫复苏" })  } end, 
-	["魔卫复苏攻击速度提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack )},{ type = "SkillName", skillName = "魔卫复苏" })  } end, 
-	["魔卫抗性提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num))},{ type = "SkillName", skillName = "魔卫复苏" } )  } end, 
-	["%+(%d+)%% 魔卫的火焰、冰霜、闪电抗性"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num))},{ type = "SkillName", skillName = "魔卫复苏" } )  } end, 
-	["%+(%d+)%% 魔卫的元素抗性"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num))},{ type = "SkillName", skillName = "魔卫复苏" } )  } end, 
-	["【魔卫造成】的伤害提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", tonumber(num),nil,ModFlag.Attack )},{ type = "SkillName", skillName = "魔卫复苏" })  } end, 
-	["魔卫复苏伤害提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", tonumber(num),nil,ModFlag.Attack )},{ type = "SkillName", skillName = "魔卫复苏" })  } end, 
-	["复苏的魔卫最大生命提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "INC", tonumber(num) )},{ type = "SkillName", skillName = "魔卫复苏" })  } end, 
-	["魔卫的最大生命提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "INC", tonumber(num) )},{ type = "SkillName", skillName = "魔卫复苏" })  } end, 
-	["魔卫复苏最大生命提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "INC", tonumber(num) )},{ type = "SkillName", skillName = "魔卫复苏" })  } end, 
+	["【魔卫】攻击速度提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack )},{ type = "SkillName", skillName = "魔卫复苏" })  } end,
+	["魔卫复苏攻击速度提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil,ModFlag.Attack )},{ type = "SkillName", skillName = "魔卫复苏" })  } end,
+	["魔卫抗性提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num))},{ type = "SkillName", skillName = "魔卫复苏" } )  } end,
+	["%+(%d+)%% 魔卫的火焰、冰霜、闪电抗性"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num))},{ type = "SkillName", skillName = "魔卫复苏" } )  } end,
+	["%+(%d+)%% 魔卫的元素抗性"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("ElementalResist", "BASE", tonumber(num))},{ type = "SkillName", skillName = "魔卫复苏" } )  } end,
+	["【魔卫造成】的伤害提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", tonumber(num),nil,ModFlag.Attack )},{ type = "SkillName", skillName = "魔卫复苏" })  } end,
+	["魔卫复苏伤害提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", tonumber(num),nil,ModFlag.Attack )},{ type = "SkillName", skillName = "魔卫复苏" })  } end,
+	["复苏的魔卫最大生命提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "INC", tonumber(num) )},{ type = "SkillName", skillName = "魔卫复苏" })  } end,
+	["魔卫的最大生命提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "INC", tonumber(num) )},{ type = "SkillName", skillName = "魔卫复苏" })  } end,
+	["魔卫复苏最大生命提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "INC", tonumber(num) )},{ type = "SkillName", skillName = "魔卫复苏" })  } end,
 	["药剂持续期间，(%d+)%% 承受的击中物理伤害转化为冰霜伤害"] = function(num) return {  mod("PhysicalDamageTakenAsCold", "BASE", num,{ type = "Condition", var = "UsingFlask" })  } end,
-	["([%+%-]?%d+)%% 闪避几率"]= function(num) return {  mod("EvadeChance", "BASE", num)  } end, 
-	["对投射物攻击的总闪避率额外提高 (%d+)%% "]= function(num) return {  mod("ProjectileEvadeChance", "MORE", num)  } end, 
-		["对近战攻击的总闪避率额外降低 (%d+)%% "]= function(num) return {  mod("MeleeEvadeChance", "MORE", -num)  } end, 
-	["30%% 几率躲避攻击击中、总护甲降低 50%%、总能量护盾降低 30%%、攻击与法术伤害总格挡几率降低 30%%"] = { 
-			mod("AttackDodgeChance", "BASE", 30), 
-			mod("Armour", "MORE", -50), 
-			mod("EnergyShield", "MORE", -30), 
-			mod("BlockChance", "MORE", -30),
-			mod("SpellBlockChance", "MORE", -30) 
-		},
+	["([%+%-]?%d+)%% 闪避几率"]= function(num) return {  mod("EvadeChance", "BASE", num)  } end,
+	["对投射物攻击的总闪避率额外提高 (%d+)%% "]= function(num) return {  mod("ProjectileEvadeChance", "MORE", num)  } end,
+	["对近战攻击的总闪避率额外降低 (%d+)%% "]= function(num) return {  mod("MeleeEvadeChance", "MORE", -num)  } end,
+	["30%% 几率躲避攻击击中、总护甲降低 50%%、总能量护盾降低 30%%、攻击与法术伤害总格挡几率降低 30%%"] = {
+	mod("AttackDodgeChance", "BASE", 30),
+	mod("Armour", "MORE", -50),
+	mod("EnergyShield", "MORE", -30),
+	mod("BlockChance", "MORE", -30),
+	mod("SpellBlockChance", "MORE", -30)
+	},
 	-- 3.4
-		["你技能的光环可使你和周围友方的伤害提高 ([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("Damage", "INC", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end, 
-		["你技能的光环可使你和周围友军的伤害提高 ([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("Damage", "INC", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end, 
-		["你技能的光环可使你和周围友方的攻击和施法速度提高 ([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("Speed", "INC", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end, 
-	["你技能的光环可使你和周围友军的物理伤害减免提高 %+([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("PhysicalDamageReduction", "BASE", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end, 
-		["受到你嘲讽的敌人所承受的伤害提高 (%d+)%% "] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("DamageTaken", "INC", num, { type = "Condition", var = "Taunted" }) }) } end, 
-		["攻击技能可使混沌总伤害额外提高 (%d+)%%"] = function(num) return {  mod("ChaosDamage", "MORE", num, { type = "SkillType", skillType = SkillType.Attack }) } end, 
-	["在药剂生效期间，你造成的中毒效果有 40%% 几率伤害提高 (%d+)%%"] = function(num) return {  mod("Damage", "INC", num,nil,nil,KeywordFlag.Poison ,{ type = "Condition", var = "UsingFlask" }) } end, 
-	["你技能的光环每秒回复你和周围友军 ([%d%.]+)%% 最大生命"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("LifeRegenPercent", "BASE", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end, 
-	["周围至少有 1 个友军时，攻击总伤害额外提高 ([%d%.]+)%%"] = function(num) return {  mod("Damage", "MORE", num,{ type = "MultiplierThreshold", var = "NearbyAlly", threshold = 1 } ) } end, 
-	["周围至少有 1 个友军时，总伤害额外提高 ([%d%.]+)%%"] = function(num) return {  mod("Damage", "MORE", num,{ type = "MultiplierThreshold", var = "NearbyAlly", threshold = 1 } ) } end, 
+	["你技能的光环可使你和周围友方的伤害提高 ([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("Damage", "INC", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end,
+	["你技能的光环可使你和周围友军的伤害提高 ([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("Damage", "INC", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end,
+	["你技能的光环可使你和周围友方的攻击和施法速度提高 ([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("Speed", "INC", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end,
+	["你技能的光环可使你和周围友军的物理伤害减免提高 %+([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("PhysicalDamageReduction", "BASE", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end,
+	["受到你嘲讽的敌人所承受的伤害提高 (%d+)%% "] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("DamageTaken", "INC", num, { type = "Condition", var = "Taunted" }) }) } end,
+	["攻击技能可使混沌总伤害额外提高 (%d+)%%"] = function(num) return {  mod("ChaosDamage", "MORE", num, { type = "SkillType", skillType = SkillType.Attack }) } end,
+	["在药剂生效期间，你造成的中毒效果有 40%% 几率伤害提高 (%d+)%%"] = function(num) return {  mod("Damage", "INC", num,nil,nil,KeywordFlag.Poison ,{ type = "Condition", var = "UsingFlask" }) } end,
+	["你技能的光环每秒回复你和周围友军 ([%d%.]+)%% 最大生命"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("LifeRegenPercent", "BASE", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end,
+	["周围至少有 1 个友军时，攻击总伤害额外提高 ([%d%.]+)%%"] = function(num) return {  mod("Damage", "MORE", num,{ type = "MultiplierThreshold", var = "NearbyAlly", threshold = 1 } ) } end,
+	["周围至少有 1 个友军时，总伤害额外提高 ([%d%.]+)%%"] = function(num) return {  mod("Damage", "MORE", num,{ type = "MultiplierThreshold", var = "NearbyAlly", threshold = 1 } ) } end,
 	["当周围有至少 1 个友军，你与周围友军的总伤害额外提高 (%d+)%%"] = function(num) return { mod("ExtraAura", "LIST", { mod = mod("Damage", "MORE", num) }, { type = "MultiplierThreshold", var = "NearbyAlly", threshold = 1 }) } end,
 	["当周围有至少 5 个友军，你和周围的友军获得【猛攻】状态"] = { mod("ExtraAura", "LIST", { mod = flag("Onslaught") }, { type = "MultiplierThreshold", var = "NearbyAlly", threshold = 5 }) },
 	["周围友军的攻击，施法，移动速度提高 (%d+)%%"]  = function(num) return { mod("ExtraAura", "LIST", { onlyAllies = true, mod = mod("Speed", "INC", num ) }),
-	mod("ExtraAura", "LIST", { onlyAllies = true, mod = mod("MovementSpeed", "INC", num ) }) 
-	 } end,
+	mod("ExtraAura", "LIST", { onlyAllies = true, mod = mod("MovementSpeed", "INC", num ) })
+	} end,
 	["每 %d 秒攻击伤害格挡几率 %+(%d+)%%，持续 %d 秒"] = function(_,num,_2) return { mod("BlockChance", "BASE", num, { type = "Condition", var = "BastionOfHopeActive" }) } end,
-	["近期内你的技能若打出过暴击，则每有 1 个暴击球，就会每秒受到 (%d+) 闪电伤害"]= function(num) return {  mod("LightningDegen", "BASE", num,{ type = "Multiplier", var = "PowerCharge" },{ type = "Condition", var = "CritRecently" }) } end, 
-	["低血时，法术伤害格挡几率额外 %+(%d+)%%"]= function(num) return {  mod("SpellBlockChance", "BASE", num, { type = "Condition", var = "LowLife" }   ) } end, 
-	["法术伤害格挡几率额外 %+(%d+)%%"]= function(num) return {  mod("SpellBlockChance", "BASE", num  ) } end, 
-	["攻击伤害格挡几率额外 %+(%d+)%%"]= function(num) return {  mod("BlockChance", "BASE", num  ) } end, 
-	["【冰川之刺】的 (%d+)%% 物理伤害转换为冰霜伤害"]= function(num)  return {  mod("PhysicalDamageConvertToCold", "BASE", tonumber(num),{ type = "SkillName", skillName ="冰川之刺" })  } end, 
-	["获得 (%d+) 级的主动技能【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end, 
+	["近期内你的技能若打出过暴击，则每有 1 个暴击球，就会每秒受到 (%d+) 闪电伤害"]= function(num) return {  mod("LightningDegen", "BASE", num,{ type = "Multiplier", var = "PowerCharge" },{ type = "Condition", var = "CritRecently" }) } end,
+	["低血时，法术伤害格挡几率额外 %+(%d+)%%"]= function(num) return {  mod("SpellBlockChance", "BASE", num, { type = "Condition", var = "LowLife" }   ) } end,
+	["法术伤害格挡几率额外 %+(%d+)%%"]= function(num) return {  mod("SpellBlockChance", "BASE", num  ) } end,
+	["攻击伤害格挡几率额外 %+(%d+)%%"]= function(num) return {  mod("BlockChance", "BASE", num  ) } end,
+	["【冰川之刺】的 (%d+)%% 物理伤害转换为冰霜伤害"]= function(num)  return {  mod("PhysicalDamageConvertToCold", "BASE", tonumber(num),{ type = "SkillName", skillName ="冰川之刺" })  } end,
+	["获得 (%d+) 级的主动技能【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end,
 	["【(.+)】不保留魔力"] = function( _,skill) return { mod("SkillData", "LIST", { key = "manaCostForced", value = 0 }, { type = "SkillName", skillName = skill }) } end,
-	["获得 (%d+) 级的的主动技能【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end, 
+	["获得 (%d+) 级的的主动技能【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end,
 	["【(.+)】不保留魔力"] = function( _,skill) return { mod("SkillData", "LIST", { key = "manaCostForced", value = 0 }, { type = "SkillName", skillName = skill }) } end,
 	["装备的护盾格挡几率若不低于 (%d+)%%，则法术伤害的 ([%d%.]+)%% 转化为生命偷取"] = function(num, _,num2) return {  mod("DamageLifeLeech", "BASE", tonumber(num2),nil, ModFlag.Spell,{ type = "StatThreshold", stat = "ShieldBlockChance", threshold = tonumber(num) }) } end,
-	["插入苍白之凝珠宝时，召唤生物的命中值 %+(%d+)"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Accuracy", "BASE", num) }, { type = "Condition", var = "Have苍白之凝珠宝In{SlotName}" }) } end,  
-	["总命中值额外提高 (%d+)%%"] = function(num) return {  mod("Accuracy", "MORE", num ) } end, 
-	["全局命中值额外提高 (%d+)%%"] = function(num) return {  mod("Accuracy", "MORE", num ) } end, 
-	["周围敌人的火焰和冰霜抗性提高 (%d+)%%"] = function(num) return { 
+	["插入苍白之凝珠宝时，召唤生物的命中值 %+(%d+)"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Accuracy", "BASE", num) }, { type = "Condition", var = "Have苍白之凝珠宝In{SlotName}" }) } end,
+	["总命中值额外提高 (%d+)%%"] = function(num) return {  mod("Accuracy", "MORE", num ) } end,
+	["全局命中值额外提高 (%d+)%%"] = function(num) return {  mod("Accuracy", "MORE", num ) } end,
+	["周围敌人的火焰和冰霜抗性提高 (%d+)%%"] = function(num) return {
 	mod("EnemyModifier", "LIST", { mod = mod("FireResist", "INC", num) }),
 	mod("EnemyModifier", "LIST", { mod = mod("ColdResist", "INC", num) })
-	 } end,
-	["周围敌人的所有抗性提高 (%-%d+)%%"] = function(num) return { 
+	} end,
+	["周围敌人的所有抗性提高 (%-%d+)%%"] = function(num) return {
 	mod("EnemyModifier", "LIST", { mod = mod("ChaosResist", "BASE", num) }),
 	mod("EnemyModifier", "LIST", { mod = mod("ElementalResist", "BASE", num) }),
-	 } end, 
+	} end,
 	["每个红色插槽可为你和周围友军附加 (%d+) %- (%d+) 基础火焰伤害"] = function(_,num1,num2) return { mod("ExtraAura", "LIST", { mod = mod("FireMin", "BASE", tonumber(num1) )},{ type = "Multiplier", var = "RedSocketIn{SlotName}" }),
 	mod("ExtraAura", "LIST", { mod = mod("FireMax", "BASE", tonumber(num2)) },{ type = "Multiplier", var = "RedSocketIn{SlotName}" })
-	 } end, 
+	} end,
 	["每个绿色插槽可为你和周围友军附加 (%d+) %- (%d+) 基础冰霜伤害"]= function(_,num1,num2) return { mod("ExtraAura", "LIST", { mod = mod("ColdMin", "BASE", tonumber(num1) )},{ type = "Multiplier", var = "GreenSocketIn{SlotName}" }),
 	mod("ExtraAura", "LIST", { mod = mod("ColdMax", "BASE", tonumber(num2)) },{ type = "Multiplier", var = "GreenSocketIn{SlotName}" })
-	 } end, 
+	} end,
 	["每个蓝色插槽可为你和周围友军附加 (%d+) %- (%d+) 基础闪电伤害"]= function(_,num1,num2) return { mod("ExtraAura", "LIST", { mod = mod("LightningMin", "BASE", tonumber(num1) )},{ type = "Multiplier", var = "BlueSocketIn{SlotName}" }),
 	mod("ExtraAura", "LIST", { mod = mod("LightningMax", "BASE", tonumber(num2)) },{ type = "Multiplier", var = "BlueSocketIn{SlotName}" })
-	 } end,  
+	} end,
 	["每个白色插槽可为你和周围友军附加 (%d+) %- (%d+) 基础混沌伤害"]= function(_,num1,num2) return { mod("ExtraAura", "LIST", { mod = mod("ChaosMin", "BASE", tonumber(num1) )},{ type = "Multiplier", var = "WhiteSocketIn{SlotName}" }),
 	mod("ExtraAura", "LIST", { mod = mod("ChaosMax", "BASE", tonumber(num2)) },{ type = "Multiplier", var = "WhiteSocketIn{SlotName}" })
-	 } end,    
-	["每有一个耐力球，攻击伤害格挡几率额外 ([%+%-]?%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num , { type = "Multiplier", var = "EnduranceCharge" }) } end, 
-	["每有一个狂怒球，攻击伤害格挡几率额外 ([%+%-]?%d+)%%"]= function(num) return {  mod("BlockChance", "BASE", num , { type = "Multiplier", var = "FrenzyCharge" }) } end, 
-	["每有一个暴击球，攻击伤害格挡几率额外 ([%+%-]?%d+)%%"]= function(num) return {  mod("BlockChance", "BASE", num, { type = "Multiplier", var = "PowerCharge" } ) } end, 
-	["当暴击球达到上限时，你可以对敌人额外施加 1 个诅咒"]= function(num) return {mod("EnemyCurseLimit", "BASE", 1,{ type = "StatThreshold", stat = "PowerCharges", thresholdStat = "PowerChargesMax" }) } end, 
-	["耐力球达到上限时你无法被晕眩"]= function() return {mod("AvoidStun", "BASE", 100,{ type = "StatThreshold", stat = "EnduranceCharges", thresholdStat = "EnduranceChargesMax" }) } end, 
-	["每有一个狂怒球则获得额外混沌伤害， 其数值等同于冰霜伤害的 (%d+)%%"]= function(num) return {  mod("ColdDamageGainAsChaos", "BASE", num, { type = "Multiplier", var = "FrenzyCharge" }) } end, 
-	["每有一个耐力球则获得额外混沌伤害， 其数值等同于火焰伤害的 (%d+)%%"]= function(num) return {  mod("FireDamageGainAsChaos", "BASE", num, { type = "Multiplier", var = "EnduranceCharge" }) } end, 
-	["每有一个暴击球则获得额外混沌伤害， 其数值等同于闪电伤害的 (%d+)%%"]= function(num) return {  mod("LightningDamageGainAsChaos", "BASE", num, { type = "Multiplier", var = "PowerCharge" }) } end, 
-	["每个暴击球可使每秒生命回复提高 ([%d%.]+)%%"]= function(num) return {  mod("LifeRegen", "BASE", num, { type = "Multiplier", var = "PowerCharge" }) } end, 
+	} end,
+	["每有一个耐力球，攻击伤害格挡几率额外 ([%+%-]?%d+)%%"] = function(num) return {  mod("BlockChance", "BASE", num , { type = "Multiplier", var = "EnduranceCharge" }) } end,
+	["每有一个狂怒球，攻击伤害格挡几率额外 ([%+%-]?%d+)%%"]= function(num) return {  mod("BlockChance", "BASE", num , { type = "Multiplier", var = "FrenzyCharge" }) } end,
+	["每有一个暴击球，攻击伤害格挡几率额外 ([%+%-]?%d+)%%"]= function(num) return {  mod("BlockChance", "BASE", num, { type = "Multiplier", var = "PowerCharge" } ) } end,
+	["当暴击球达到上限时，你可以对敌人额外施加 1 个诅咒"]= function(num) return {mod("EnemyCurseLimit", "BASE", 1,{ type = "StatThreshold", stat = "PowerCharges", thresholdStat = "PowerChargesMax" }) } end,
+	["耐力球达到上限时你无法被晕眩"]= function() return {mod("AvoidStun", "BASE", 100,{ type = "StatThreshold", stat = "EnduranceCharges", thresholdStat = "EnduranceChargesMax" }) } end,
+	["每有一个狂怒球则获得额外混沌伤害， 其数值等同于冰霜伤害的 (%d+)%%"]= function(num) return {  mod("ColdDamageGainAsChaos", "BASE", num, { type = "Multiplier", var = "FrenzyCharge" }) } end,
+	["每有一个耐力球则获得额外混沌伤害， 其数值等同于火焰伤害的 (%d+)%%"]= function(num) return {  mod("FireDamageGainAsChaos", "BASE", num, { type = "Multiplier", var = "EnduranceCharge" }) } end,
+	["每有一个暴击球则获得额外混沌伤害， 其数值等同于闪电伤害的 (%d+)%%"]= function(num) return {  mod("LightningDamageGainAsChaos", "BASE", num, { type = "Multiplier", var = "PowerCharge" }) } end,
+	["每个暴击球可使每秒生命回复提高 ([%d%.]+)%%"]= function(num) return {  mod("LifeRegen", "BASE", num, { type = "Multiplier", var = "PowerCharge" }) } end,
 	["你在拥有最大数量的狂怒球时，得到【霸体】状态"] = { mod("Keystone", "LIST", "霸体", nil,{ type = "StatThreshold", stat = "FrenzyCharges", thresholdStat = "FrenzyChargesMax" }) },
 	["你在拥有最大数量的暴击能量球时，得到【心胜于物】状态"] = { mod("Keystone", "LIST", "心灵升华", nil,{ type = "StatThreshold", stat = "PowerCharges", thresholdStat = "PowerChargesMax" }) },
 	["你在拥有最大数量的耐力球时，获得【瓦尔冥约】状态"] = { mod("Keystone", "LIST", "瓦尔冥约", nil,{ type = "StatThreshold", stat = "EnduranceCharges", thresholdStat = "EnduranceChargesMax" }) },
-	["每有一个暴击球，可使你获得额外 (%d+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num, { type = "Multiplier", var = "PowerCharge" }) } end, 
-	["每有一个狂怒球，可使你获得额外 (%d+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num, { type = "Multiplier", var = "FrenzyCharge" }) } end, 
-	["每 (%d+) 点敏捷提高 (%d+)%% 召唤生物造成的伤害"] = function(_,num1,num2) return {  mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", tonumber(num2)) },{ type = "PerStat", stat = "Dex", div = tonumber(num1) })   } end, 
-	["近期你每消耗 (%d+) 魔力，法术伤害便提高 (%d+)%%"] = function(_,num1,num2)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "Multiplier", var = "ManaSpentRecently", div = tonumber(num1) }) } end,  
-	["近期你每消耗 (%d+) 魔力，法术伤害便提高 (%d+)%%,最多可提高 (%d+)%%"] = function(_,num1,num2,num3)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "Multiplier", var = "ManaSpentRecently", div = tonumber(num1) , limit = tonumber(num3), limitTotal = true}) } end,   
-	["近期你每消耗 (%d+) 魔力，法术伤害便提高 (%d+)%%，最多 (%d+)%%"] = function(_,num1,num2,num3)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "Multiplier", var = "ManaSpentRecently", div = tonumber(num1) , limit = tonumber(num3), limitTotal = true}) } end,  
-	["若近期总计消耗魔力超过 (%d+) 点，则你所施放诅咒的效果提高 (%d+)%%"] = function(_,num1,num2)return {  mod("CurseEffect", "INC", tonumber(num2), { type = "StatThreshold", stat = "ManaSpentRecently", threshold = tonumber(num1) }) } end,  
-	["身体护甲提供的能量护盾提高 (%d+)%%"] =  function(num) return {  mod("EnergyShield", "INC", num, { type = "SlotName", slotName = "Body Armour" }) } end, 
-	["盾牌提供的能量护盾提高 (%d+)%%"] =  function(num) return {  mod("EnergyShield", "INC", num, { type = "SlotName", slotName = "Weapon 2" }) } end, 
-	["每有 (%d+)%% 攻击格档率，伤害提高 (%d+)%%"] =  function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2),{ type = "PerStat", stat = "BlockChance", div = tonumber(num1) }  ) } end, 
-	["每 (%d+)%% 的攻击伤害格挡几率会使法术伤害提高 (%d+)%%"] =  function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "PerStat", stat = "BlockChance", div = tonumber(num1) }  ) } end, 
-	["每 (%d+)%% 的法术伤害格挡几率会使魔力回复速度提高 (%d+)%%"] =  function(_,num1,num2) return {  mod("ManaRegen", "INC", tonumber(num2),{ type = "PerStat", stat = "SpellBlockChance", div = tonumber(num1) }  ) } end, 
-	["每有 (%d+)%% 的法术伤害格挡几率，则魔力回复速度提高 (%d+)%%"] =  function(_,num1,num2) return {  mod("ManaRegen", "INC", tonumber(num2),{ type = "PerStat", stat = "SpellBlockChance", div = tonumber(num1) }  ) } end, 
-	["魔力回复速度加快 (%d+)%%"] =  function(num) return {  mod("ManaRegen", "INC", tonumber(num) ) } end, 
-	["每 (%d+)%% 的攻击格挡率会使法术伤害提高 (%d+)%%"]=function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "PerStat", stat = "BlockChance", div = tonumber(num1) }  ) } end, 
+	["每有一个暴击球，可使你获得额外 (%d+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num, { type = "Multiplier", var = "PowerCharge" }) } end,
+	["每有一个狂怒球，可使你获得额外 (%d+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num, { type = "Multiplier", var = "FrenzyCharge" }) } end,
+	["每 (%d+) 点敏捷提高 (%d+)%% 召唤生物造成的伤害"] = function(_,num1,num2) return {  mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", tonumber(num2)) },{ type = "PerStat", stat = "Dex", div = tonumber(num1) })   } end,
+	["近期你每消耗 (%d+) 魔力，法术伤害便提高 (%d+)%%"] = function(_,num1,num2)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "Multiplier", var = "ManaSpentRecently", div = tonumber(num1) }) } end,
+	["近期你每消耗 (%d+) 魔力，法术伤害便提高 (%d+)%%,最多可提高 (%d+)%%"] = function(_,num1,num2,num3)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "Multiplier", var = "ManaSpentRecently", div = tonumber(num1) , limit = tonumber(num3), limitTotal = true}) } end,
+	["近期你每消耗 (%d+) 魔力，法术伤害便提高 (%d+)%%，最多 (%d+)%%"] = function(_,num1,num2,num3)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "Multiplier", var = "ManaSpentRecently", div = tonumber(num1) , limit = tonumber(num3), limitTotal = true}) } end,
+	["若近期总计消耗魔力超过 (%d+) 点，则你所施放诅咒的效果提高 (%d+)%%"] = function(_,num1,num2)return {  mod("CurseEffect", "INC", tonumber(num2), { type = "StatThreshold", stat = "ManaSpentRecently", threshold = tonumber(num1) }) } end,
+	["身体护甲提供的能量护盾提高 (%d+)%%"] =  function(num) return {  mod("EnergyShield", "INC", num, { type = "SlotName", slotName = "Body Armour" }) } end,
+	["盾牌提供的能量护盾提高 (%d+)%%"] =  function(num) return {  mod("EnergyShield", "INC", num, { type = "SlotName", slotName = "Weapon 2" }) } end,
+	["每有 (%d+)%% 攻击格档率，伤害提高 (%d+)%%"] =  function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2),{ type = "PerStat", stat = "BlockChance", div = tonumber(num1) }  ) } end,
+	["每 (%d+)%% 的攻击伤害格挡几率会使法术伤害提高 (%d+)%%"] =  function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "PerStat", stat = "BlockChance", div = tonumber(num1) }  ) } end,
+	["每 (%d+)%% 的法术伤害格挡几率会使魔力回复速度提高 (%d+)%%"] =  function(_,num1,num2) return {  mod("ManaRegen", "INC", tonumber(num2),{ type = "PerStat", stat = "SpellBlockChance", div = tonumber(num1) }  ) } end,
+	["每有 (%d+)%% 的法术伤害格挡几率，则魔力回复速度提高 (%d+)%%"] =  function(_,num1,num2) return {  mod("ManaRegen", "INC", tonumber(num2),{ type = "PerStat", stat = "SpellBlockChance", div = tonumber(num1) }  ) } end,
+	["魔力回复速度加快 (%d+)%%"] =  function(num) return {  mod("ManaRegen", "INC", tonumber(num) ) } end,
+	["每 (%d+)%% 的攻击格挡率会使法术伤害提高 (%d+)%%"]=function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "PerStat", stat = "BlockChance", div = tonumber(num1) }  ) } end,
 	["召唤生物在低血时会爆炸，对周围敌人造成自身最大生命 33%% 的火焰伤害"] = { mod("ExtraMinionSkill", "LIST", { skillId = "MinionInstability" }) },
 	["召唤的哨兵会使用【圣战猛击】"] = { mod("ExtraMinionSkill", "LIST", { skillId = "SentinelHolySlam", minionList = { "AxisEliteSoldierHeraldOfLight", "AxisEliteSoldierDominatingBlow" } }) },
 	["([%+%-]?%d+) 纯净哨兵数量上限"]= function(num) return {  mod("ActiveSentinelOfPurityLimit", "BASE", num)  } end,
@@ -3179,77 +3181,77 @@ local specialModList = {
 	["每装备 1 个未腐化的物品，每秒回复 (%d+) 生命"]= function(num) return {  mod("LifeRegen", "BASE", tonumber(num),{ type = "Multiplier", var = "NonCorruptedItem" })  } end,
 	["每装备一个未腐化的物品，便每秒回复 (%d+) 生命"]= function(num) return {  mod("LifeRegen", "BASE", tonumber(num),{ type = "Multiplier", var = "NonCorruptedItem" })  } end,
 	["每装备一个【被腐化的物品】，技能的总魔力消耗 %-(%d+)"]= function(num) return {  mod("ManaCost", "BASE", tonumber(num),{ type = "Multiplier", var = "CorruptedItem" })  } end,
-	["该武器击中后造成的 (%d+)%% 物理伤害转换为一种随机元素伤害"]= function(num) return { 
-	 mod("PhysicalDamageConvertToFire", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementFire" }),
-	  mod("PhysicalDamageConvertToCold", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementCold" }),
-	  mod("PhysicalDamageConvertToLightning", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementLightning" }), 
-	 } end, 
-	["获得等同武器物理伤害 (%d+)%% 的随机一种额外火焰，冰霜，或者闪电伤害"]= function(num) return { 
-	 mod("PhysicalDamageGainAsFire", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementFire" }),
-	  mod("PhysicalDamageGainAsCold", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementCold" }),
-	  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementLightning" }), 
-	 } end,
-	["获得等同 (%d+)%% 物理伤害的 1 个随机火焰、冰霜、闪电伤害"]= function(num) return { 
-	 mod("PhysicalDamageGainAsFire", "BASE", tonumber(num), { type = "Condition", var = "PhysicsRandomElementFire" }),
-	  mod("PhysicalDamageGainAsCold", "BASE", tonumber(num),{ type = "Condition", var = "PhysicsRandomElementCold" }),
-	  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num),{ type = "Condition", var = "PhysicsRandomElementLightning" }),
-	 } end,
-	 ["获得等同 (%d+)%% 物理伤害的 1 个随机元素伤害"]= function(num) return { 
-	 mod("PhysicalDamageGainAsFire", "BASE", tonumber(num), { type = "Condition", var = "PhysicsRandomElementFire" }),
-	  mod("PhysicalDamageGainAsCold", "BASE", tonumber(num), { type = "Condition", var = "PhysicsRandomElementCold" }),
-	  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num), { type = "Condition", var = "PhysicsRandomElementLightning" }),
-	 } end,
+	["该武器击中后造成的 (%d+)%% 物理伤害转换为一种随机元素伤害"]= function(num) return {
+	mod("PhysicalDamageConvertToFire", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementFire" }),
+	mod("PhysicalDamageConvertToCold", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementCold" }),
+	mod("PhysicalDamageConvertToLightning", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementLightning" }),
+	} end,
+	["获得等同武器物理伤害 (%d+)%% 的随机一种额外火焰，冰霜，或者闪电伤害"]= function(num) return {
+	mod("PhysicalDamageGainAsFire", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementFire" }),
+	mod("PhysicalDamageGainAsCold", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementCold" }),
+	mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementLightning" }),
+	} end,
+	["获得等同 (%d+)%% 物理伤害的 1 个随机火焰、冰霜、闪电伤害"]= function(num) return {
+	mod("PhysicalDamageGainAsFire", "BASE", tonumber(num), { type = "Condition", var = "PhysicsRandomElementFire" }),
+	mod("PhysicalDamageGainAsCold", "BASE", tonumber(num),{ type = "Condition", var = "PhysicsRandomElementCold" }),
+	mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num),{ type = "Condition", var = "PhysicsRandomElementLightning" }),
+	} end,
+	["获得等同 (%d+)%% 物理伤害的 1 个随机元素伤害"]= function(num) return {
+	mod("PhysicalDamageGainAsFire", "BASE", tonumber(num), { type = "Condition", var = "PhysicsRandomElementFire" }),
+	mod("PhysicalDamageGainAsCold", "BASE", tonumber(num), { type = "Condition", var = "PhysicsRandomElementCold" }),
+	mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num), { type = "Condition", var = "PhysicsRandomElementLightning" }),
+	} end,
 	["药剂持续期间，被点燃的敌人承受的火焰伤害提高 (%d+)%%"]=   function(num) return { mod("EnemyModifier", "LIST", { mod = mod("FireDamageTaken", "INC", num) },{ type = "ActorCondition", actor = "enemy", var = "Ignited" },{ type = "Condition", var = "UsingFlask" }) } end,
 	["药剂持续期间，被你点燃的敌人受到的伤害提高 (%d+)%%"]=   function(num) return { mod("EnemyModifier", "LIST", { mod = mod("DamageTaken", "INC", num) },{ type = "ActorCondition", actor = "enemy", var = "Ignited" },{ type = "Condition", var = "UsingFlask" }) } end,
 	["被你点燃的敌人火焰抗性 ([%+%-]?%d+)%%"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("FireResist", "BASE", num) },{ type = "ActorCondition", actor = "enemy", var = "Ignited" }) } end,
-	["此武器的攻击对敌人造成双倍伤害"] = { mod("DoubleDamageChance", "BASE", 100, nil, ModFlag.Hit, { type = "Condition", var = "{Hand}Attack" }) }, 
-	["此武器的攻击造成双倍伤害"] = { mod("DoubleDamageChance", "BASE", 100, nil, ModFlag.Hit, { type = "Condition", var = "{Hand}Attack" }) }, 
-	["你若过去 8 秒内使用过战吼，则有 (%d+)%% 几率造成双倍伤害"]= function(num) return { mod("DoubleDamageChance", "BASE", num, { type = "Condition", var = "UsedWarcryInPast8Seconds" } ) } end, 
-	 ["投射物的伤害随着飞行距离提升，击中目标时最多提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num, nil, bor(ModFlag.Attack, ModFlag.Projectile), { type = "DistanceRamp", ramp = {{35,0},{70,1}} }) } end,
-	 ["当你没有获得【霸体】时，获得【远射】"] = { flag("FarShot", { type = "Condition", var = "Have霸体Keystone" ,neg = true}) },
-	 ["当你获得【霸体】时，近距离用弓击中后的总伤害额外提高 (%d+)%%"] = function(num) return { 	 
-		 mod("Damage", "MORE", num,nil,ModFlag.Hit, { type = "Condition", var = "AtCloseRange" }, { type = "Condition", var = "Have霸体Keystone"}) 	 
-	} end,  
+	["此武器的攻击对敌人造成双倍伤害"] = { mod("DoubleDamageChance", "BASE", 100, nil, ModFlag.Hit, { type = "Condition", var = "{Hand}Attack" }) },
+	["此武器的攻击造成双倍伤害"] = { mod("DoubleDamageChance", "BASE", 100, nil, ModFlag.Hit, { type = "Condition", var = "{Hand}Attack" }) },
+	["你若过去 8 秒内使用过战吼，则有 (%d+)%% 几率造成双倍伤害"]= function(num) return { mod("DoubleDamageChance", "BASE", num, { type = "Condition", var = "UsedWarcryInPast8Seconds" } ) } end,
+	["投射物的伤害随着飞行距离提升，击中目标时最多提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num, nil, bor(ModFlag.Attack, ModFlag.Projectile), { type = "DistanceRamp", ramp = {{35,0},{70,1}} }) } end,
+	["当你没有获得【霸体】时，获得【远射】"] = { flag("FarShot", { type = "Condition", var = "Have霸体Keystone" ,neg = true}) },
+	["当你获得【霸体】时，近距离用弓击中后的总伤害额外提高 (%d+)%%"] = function(num) return {
+	mod("Damage", "MORE", num,nil,ModFlag.Hit, { type = "Condition", var = "AtCloseRange" }, { type = "Condition", var = "Have霸体Keystone"})
+	} end,
 	["在【猛攻】状态期间，得到【迷踪】状态"] = { flag("Condition:Phasing", { type = "Condition", var = "Onslaught" }) },
-	 ["获得【远射】"] = { flag("FarShot") },
-	 ["远射"] = { flag("FarShot") },
-	 ["狙击"] = { flag("FarShot") }, 
-	 ["%-(%d+) 最大图腾数量"] = function(num) return { mod("ActiveTotemLimit", "BASE", -num) } end, 
-	 ["([%+%-]?%d+) 召唤图腾数量上限"] = function(num) return { mod("ActiveTotemLimit", "BASE", num) } end, 
-	 ["召唤图腾数量上限([%+%-]?%d+)"] = function(num) return { mod("ActiveTotemLimit", "BASE", num) } end, 
-	 ["召唤图腾数量上限 ([%+%-]?%d+)"] = function(num) return { mod("ActiveTotemLimit", "BASE", num) } end, 
-	 ["召唤图腾的上限 ([%+%-]?%d+)"] = function(num) return { mod("ActiveTotemLimit", "BASE", num) } end, 
-	 ["召唤图腾的上限 ([%+%-]?%d+)。"] = function(num) return { mod("ActiveTotemLimit", "BASE", num) } end, 
-	 ["攻击的技能 ([%+%-]?%d+) 召唤图腾数量上限"] = function(num) return { mod("ActiveTotemLimit", "BASE", num, nil, 0, KeywordFlag.Attack) } end, 
-	 ["每个图腾额外提高 (%d+)%% 总伤害"] = function(num) return { mod("Damage", "MORE", num, { type = "PerStat", stat = "ActiveTotemLimit" }) } end, 
-	 ["每存在 1 个图腾，总伤害额外提高 (%d+)%%"] = function(num) return { mod("Damage", "MORE", num, { type = "PerStat", stat = "ActiveTotemLimit" }) } end, 
-	 ["([%+%-]?%d+)%% 额外总冰霜持续伤害效果"] = function(num) return { mod("ColdDotMultiplier", "BASE", num) } end,
-	["寒冬宝珠每阶可使范围效果扩大 (%d+)%%"] = function(num) return { mod("AreaOfEffect", "INC", num, { type = "SkillName", skillName = "寒冬宝珠"}, { type = "Multiplier", var = "WinterOrbStage" }) } end, 
-		["【寒冬宝珠】每一阶范围效果扩大 (%d+)%%"] = function(num) return { mod("AreaOfEffect", "INC", num, { type = "SkillName", skillName = "寒冬宝珠"}, { type = "Multiplier", var = "WinterOrbStage" }) } end,
-	 ["【旗帜技能】不保留魔力"] = { mod("SkillData", "LIST", { key = "manaCostForced", value = 0 }, { type = "SkillName", skillNameList = { "恐怖之旗", "战旗" } }) },
-	 ["【(.+)】会发射 (%d+) 个额外投射物"]=  function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ProjectileCount", "BASE", tonumber(num)) }, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) } ) } end,
+	["获得【远射】"] = { flag("FarShot") },
+	["远射"] = { flag("FarShot") },
+	["狙击"] = { flag("FarShot") },
+	["%-(%d+) 最大图腾数量"] = function(num) return { mod("ActiveTotemLimit", "BASE", -num) } end,
+	["([%+%-]?%d+) 召唤图腾数量上限"] = function(num) return { mod("ActiveTotemLimit", "BASE", num) } end,
+	["召唤图腾数量上限([%+%-]?%d+)"] = function(num) return { mod("ActiveTotemLimit", "BASE", num) } end,
+	["召唤图腾数量上限 ([%+%-]?%d+)"] = function(num) return { mod("ActiveTotemLimit", "BASE", num) } end,
+	["召唤图腾的上限 ([%+%-]?%d+)"] = function(num) return { mod("ActiveTotemLimit", "BASE", num) } end,
+	["召唤图腾的上限 ([%+%-]?%d+)。"] = function(num) return { mod("ActiveTotemLimit", "BASE", num) } end,
+	["攻击的技能 ([%+%-]?%d+) 召唤图腾数量上限"] = function(num) return { mod("ActiveTotemLimit", "BASE", num, nil, 0, KeywordFlag.Attack) } end,
+	["每个图腾额外提高 (%d+)%% 总伤害"] = function(num) return { mod("Damage", "MORE", num, { type = "PerStat", stat = "ActiveTotemLimit" }) } end,
+	["每存在 1 个图腾，总伤害额外提高 (%d+)%%"] = function(num) return { mod("Damage", "MORE", num, { type = "PerStat", stat = "ActiveTotemLimit" }) } end,
+	["([%+%-]?%d+)%% 额外总冰霜持续伤害效果"] = function(num) return { mod("ColdDotMultiplier", "BASE", num) } end,
+	["寒冬宝珠每阶可使范围效果扩大 (%d+)%%"] = function(num) return { mod("AreaOfEffect", "INC", num, { type = "SkillName", skillName = "寒冬宝珠"}, { type = "Multiplier", var = "WinterOrbStage" }) } end,
+	["【寒冬宝珠】每一阶范围效果扩大 (%d+)%%"] = function(num) return { mod("AreaOfEffect", "INC", num, { type = "SkillName", skillName = "寒冬宝珠"}, { type = "Multiplier", var = "WinterOrbStage" }) } end,
+	["【旗帜技能】不保留魔力"] = { mod("SkillData", "LIST", { key = "manaCostForced", value = 0 }, { type = "SkillName", skillNameList = { "恐怖之旗", "战旗" } }) },
+	["【(.+)】会发射 (%d+) 个额外投射物"]=  function(_,skill_name,num) return { mod("ExtraSkillMod", "LIST", { mod = mod("ProjectileCount", "BASE", tonumber(num)) }, { type = "SkillName", skillName =FuckSkillActivityCnName(skill_name) } ) } end,
 	["被击中时，受到的闪电总伤害额外降低 (%d+)%%"] = function(num) return { mod("LightningDamageTaken", "MORE", -num) } end,
-	 ["被击中时，受到的冰霜总伤害额外降低 (%d+)%%"] = function(num) return { mod("ColdDamageTaken", "MORE", -num) } end,
-	 ["被击中时，受到的火焰总伤害额外降低 (%d+)%%"] = function(num) return { mod("FireDamageTaken", "MORE", -num) } end,
-	 ["静止时受到的元素伤害降低 (%d+)%%"] = function(num) return { mod("ElementalDamageTaken", "INC", -num, { type = "Condition", var = "Stationary" }) } end,
+	["被击中时，受到的冰霜总伤害额外降低 (%d+)%%"] = function(num) return { mod("ColdDamageTaken", "MORE", -num) } end,
+	["被击中时，受到的火焰总伤害额外降低 (%d+)%%"] = function(num) return { mod("FireDamageTaken", "MORE", -num) } end,
+	["静止时受到的元素伤害降低 (%d+)%%"] = function(num) return { mod("ElementalDamageTaken", "INC", -num, { type = "Condition", var = "Stationary" }) } end,
 	["静止时，每秒回复 ([%d%.]+)%% 能量护盾"] = function(num) return { mod("EnergyShieldRegenPercent", "BASE", num, { type = "Condition", var = "Stationary" }) } end,
-	 ["左戒指栏位：法术的投射物无法弹射"] = { flag("CannotChain", nil, bor(ModFlag.Spell, ModFlag.Projectile), { type = "SlotNumber", num = 1 }) },
+	["左戒指栏位：法术的投射物无法弹射"] = { flag("CannotChain", nil, bor(ModFlag.Spell, ModFlag.Projectile), { type = "SlotNumber", num = 1 }) },
 	["右戒指栏位：法术的投射物会额外弹射 1 次"] = { mod("ChainCountMax", "BASE", 1, nil, bor(ModFlag.Spell, ModFlag.Projectile), { type = "SlotNumber", num = 2 }) },
-		["法术的投射物无法穿透"] = { flag("CannotPierce", nil, ModFlag.Spell) },
-		["法术的投射物无法穿刺"] = { flag("CannotPierce", nil, ModFlag.Spell) },
-	 ["击败敌人时触发 1 级的【召唤毒蛛】"]= function() return {  mod("ExtraSkill", "LIST", { skillId ="TriggeredSummonSpider", level = 1})   } end,
-	  ["击败敌人时有 (%d+)%% 几率触发 1 级的【召唤毒蛛】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="TriggeredSummonSpider", level = 1})   } end,
-	["专注时，你的暴击率会特别幸运"] ={ flag("CritChanceLucky",  { type = "Condition", var = "Focused" }) }, 
-	["专注时获得额外 (%d+)%% 物理伤害减免"] = function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "Focused" } )  } end, 
-	["你在专注时获得【瓦尔冥约】状态"] = { mod("Keystone", "LIST", "瓦尔冥约", { type = "Condition", var = "Focused" }) }, 
-	["专注时，伤害的 (%d+)%% 转化为生命偷取"] = function(num) return {  mod("DamageLifeLeech", "BASE", num,{ type = "Condition", var = "Focused" })  } end, 
+	["法术的投射物无法穿透"] = { flag("CannotPierce", nil, ModFlag.Spell) },
+	["法术的投射物无法穿刺"] = { flag("CannotPierce", nil, ModFlag.Spell) },
+	["击败敌人时触发 1 级的【召唤毒蛛】"]= function() return {  mod("ExtraSkill", "LIST", { skillId ="TriggeredSummonSpider", level = 1})   } end,
+	["击败敌人时有 (%d+)%% 几率触发 1 级的【召唤毒蛛】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="TriggeredSummonSpider", level = 1})   } end,
+	["专注时，你的暴击率会特别幸运"] ={ flag("CritChanceLucky",  { type = "Condition", var = "Focused" }) },
+	["专注时获得额外 (%d+)%% 物理伤害减免"] = function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "Focused" } )  } end,
+	["你在专注时获得【瓦尔冥约】状态"] = { mod("Keystone", "LIST", "瓦尔冥约", { type = "Condition", var = "Focused" }) },
+	["专注时，伤害的 (%d+)%% 转化为生命偷取"] = function(num) return {  mod("DamageLifeLeech", "BASE", num,{ type = "Condition", var = "Focused" })  } end,
 	["装备时可以施放 (%d+) 级的【幽鬼之灵】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="SummonEssenceSpirits", level = num})   } end,
-	["插槽内的技能造成的法术总伤害额外提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Damage", "MORE", tonumber(num),nil, ModFlag.Spell) }, { type = "SocketedIn", slotName = "{SlotName}" })}end,	
+	["插槽内的技能造成的法术总伤害额外提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Damage", "MORE", tonumber(num),nil, ModFlag.Spell) }, { type = "SocketedIn", slotName = "{SlotName}" })}end,
 	["插槽内的技能造成的攻击总伤害额外提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Damage", "MORE", tonumber(num),nil, ModFlag.Attack) }, { type = "SocketedIn", slotName = "{SlotName}" })}end,
-	["插槽内的技能施法速度提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil, ModFlag.Cast) }, { type = "SocketedIn", slotName = "{SlotName}" })}end,	
-	["插槽内的技能攻击速度提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil, ModFlag.Attack) }, { type = "SocketedIn", slotName = "{SlotName}" })}end,	
-	["【风暴烙印】的伤害会穿透带有烙印敌人闪电抗性的 (%d+)%%"]= function(num) return {  mod("LightningPenetration", "BASE", num,{ type = "Condition", var = "BrandAttachedToEnemy" },{ type = "SkillName", skillName = "风暴烙印" })  } end, 
-	["此物品上的技能石获得 ([%d%.]+)%% 物理伤害，并转化为额外闪电伤害"]= function(num) return{ mod("ExtraSkillMod", "LIST", { mod = mod("PhysicalDamageGainAsLightning", "BASE", num) },{ type = "SocketedIn", slotName = "{SlotName}" })}end, 
+	["插槽内的技能施法速度提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil, ModFlag.Cast) }, { type = "SocketedIn", slotName = "{SlotName}" })}end,
+	["插槽内的技能攻击速度提高 (%d+)%%"]= function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Speed", "INC", tonumber(num),nil, ModFlag.Attack) }, { type = "SocketedIn", slotName = "{SlotName}" })}end,
+	["【风暴烙印】的伤害会穿透带有烙印敌人闪电抗性的 (%d+)%%"]= function(num) return {  mod("LightningPenetration", "BASE", num,{ type = "Condition", var = "BrandAttachedToEnemy" },{ type = "SkillName", skillName = "风暴烙印" })  } end,
+	["此物品上的技能石获得 ([%d%.]+)%% 物理伤害，并转化为额外闪电伤害"]= function(num) return{ mod("ExtraSkillMod", "LIST", { mod = mod("PhysicalDamageGainAsLightning", "BASE", num) },{ type = "SocketedIn", slotName = "{SlotName}" })}end,
 	["有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("DoubleDamageChance", "BASE", num) } end,
 	["专注时有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("DoubleDamageChance", "BASE", num,{ type = "Condition", var = "Focused" }) } end,
 	["若周围有稀有或传奇敌人，则 %+(%d+)%% 基础暴击伤害加成"] = function(num) return { mod("CritMultiplier", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "RareOrUnique" }) } end,
@@ -3267,8 +3269,8 @@ local specialModList = {
 	["每装备一个裂界者物品，就将物理伤害的 (%d+)%% 视为额外混沌伤害"]= function(num) return {  mod("PhysicalDamageGainAsChaos", "BASE", num,{ type = "Multiplier", varList = { "ElderItem" } } )  } end,
 	["药剂持续时间内对在奉献地面上的敌人的基础暴击提高 ([%d%.]+)%%"]= function(num) return {  mod("CritChance", "BASE", num,{ type = "Condition", var = "UsingFlask" },{ type = "ActorCondition", actor = "enemy", var = "OnConsecratedGround" })  } end,
 	["在效果持续期间，对位于奉献地面之上的敌人的暴击几率 %+([%d%.]+)%%"]= function(num) return {  mod("CritChance", "BASE", num,{ type = "Condition", var = "UsingFlask" },{ type = "ActorCondition", actor = "enemy", var = "OnConsecratedGround" })  } end,
-	["效果期间，你创造的【奉献地面】可以使敌人承受的伤害提高 (%d+)%%"]= function(num) return { mod("EnemyModifier", "LIST", { mod =  mod("DamageTaken", "INC", num)},{ type = "Condition", var = "UsingFlask" },{ type = "ActorCondition", actor = "enemy", var = "OnConsecratedGround" }) } end, 
-	["药剂持续时间内奉献地面上的敌人所受伤害提高 (%d+)%%"]= function(num) return { mod("EnemyModifier", "LIST", { mod =  mod("DamageTaken", "INC", num)},{ type = "Condition", var = "UsingFlask" },{ type = "ActorCondition", actor = "enemy", var = "OnConsecratedGround" }) } end, 
+	["效果期间，你创造的【奉献地面】可以使敌人承受的伤害提高 (%d+)%%"]= function(num) return { mod("EnemyModifier", "LIST", { mod =  mod("DamageTaken", "INC", num)},{ type = "Condition", var = "UsingFlask" },{ type = "ActorCondition", actor = "enemy", var = "OnConsecratedGround" }) } end,
+	["药剂持续时间内奉献地面上的敌人所受伤害提高 (%d+)%%"]= function(num) return { mod("EnemyModifier", "LIST", { mod =  mod("DamageTaken", "INC", num)},{ type = "Condition", var = "UsingFlask" },{ type = "ActorCondition", actor = "enemy", var = "OnConsecratedGround" }) } end,
 	["周围友军的行动速度无法被减速至基础以下"] = function() return { mod("ExtraAura", "LIST",{ mod = flag("ActionSpeedCannotBeBelowBase") , onlyAllies = true} )} end,
 	["周围队友的行动速度无法被减速至基础以下"] = function() return { mod("ExtraAura", "LIST",{ mod = flag("ActionSpeedCannotBeBelowBase") , onlyAllies = true} )} end,
 	["每 100 点力量可为周围友军的全局防御提高 (%d+)%%"] = function(num) return { mod("ExtraAura", "LIST",{ mod =mod("Defences", "INC", num), onlyAllies = true},{ type = "PerStat", stat = "Str", div = 100 } )} end,
@@ -3280,23 +3282,23 @@ local specialModList = {
 	["你每有 100 点力量，周围友军的防御属性便提高 (%d+)%%"] = function(num) return { mod("ExtraAura", "LIST",{ mod =mod("Defences", "INC", num), onlyAllies = true},{ type = "PerStat", stat = "Str", div = 100 } )} end,
 	["你每有 100 点敏捷，周围友军获得 %+(%d+)%% 暴击伤害加成"]  = function(num) return { mod("ExtraAura", "LIST", { onlyAllies = true, mod = mod("CritMultiplier", "BASE", num) }, { type = "PerStat", stat = "Dex", div = 100 }) } end,
 	["你每有 100 点智慧，周围友军的施法速度便提高 (%d+)%%"]  = function(num) return { mod("ExtraAura", "LIST", { onlyAllies = true, mod = mod("Speed", "INC", num, nil, ModFlag.Cast ) }, { type = "PerStat", stat = "Int", div = 100 }) } end,
-	["周围敌人受到的物理伤害提高 (%d+)%%"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("PhysicalDamageTaken", "INC", num) }) } end, 
-	["周围敌人受到的元素伤害提高 (%d+)%%"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("ElementalDamageTaken", "INC", num) }) } end, 
+	["周围敌人受到的物理伤害提高 (%d+)%%"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("PhysicalDamageTaken", "INC", num) }) } end,
+	["周围敌人受到的元素伤害提高 (%d+)%%"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("ElementalDamageTaken", "INC", num) }) } end,
 	["移动时无法被感电或点燃"] = function() return {  mod("AvoidShock", "BASE", 100,{ type = "Condition", var = "Moving" } ),
-	mod("AvoidIgnite", "BASE", 100,{ type = "Condition", var = "Moving" } ) 
-	  } end,
+	mod("AvoidIgnite", "BASE", 100,{ type = "Condition", var = "Moving" } )
+	} end,
 	["移动时无法被冰缓或冻结"] = function() return {  mod("AvoidChill", "BASE", 100,{ type = "Condition", var = "Moving" } ),
-	mod("AvoidFreeze", "BASE", 100,{ type = "Condition", var = "Moving" } ) 
-	  } end,
+	mod("AvoidFreeze", "BASE", 100,{ type = "Condition", var = "Moving" } )
+	} end,
 	["近期内你若击中敌人，则每秒回复 ([%d%.]+) 能量护盾"]  = function(num) return { mod("EnergyShieldRegen", "BASE", num,{ type = "Condition", var = "HitRecently" }) } end,
 	["近期内你若击中敌人，则每秒回复 ([%d%.]+) 魔力"]  = function(num) return { mod("ManaRegen", "BASE", num,{ type = "Condition", var = "HitRecently" }) } end,
 	["消耗总计 (%d+) 魔力后触发 (%d+) 级的【(.+)】"] = function( _,_2,num, skill) return extraSkill(skill, num) end,
 	["当你拥有阻灵术时获得【猛攻】状态"]= { flag("Condition:Onslaught", { type = "Condition", var = "SoulGainPrevention" }) },
-	["所有身上装备的物品皆为【塑界之器】时，击中无视目标的混沌抗性"] = { flag("IgnoreChaosResistances", { type = "MultiplierThreshold", var = "NonShaperItem", threshold = 0, upper = true }) }, 
-	["若全部装备塑界者物品，则击中无视敌方怪物的混沌抗性"] = { flag("IgnoreChaosResistances", { type = "MultiplierThreshold", var = "NonShaperItem", threshold = 0, upper = true }) }, 
-	["若全套装备均为裂界者物品，则击中无视敌人的混沌抗性"] = { flag("IgnoreChaosResistances", { type = "MultiplierThreshold", var = "NonElderItem", threshold = 0, upper = true }) }, 
+	["所有身上装备的物品皆为【塑界之器】时，击中无视目标的混沌抗性"] = { flag("IgnoreChaosResistances", { type = "MultiplierThreshold", var = "NonShaperItem", threshold = 0, upper = true }) },
+	["若全部装备塑界者物品，则击中无视敌方怪物的混沌抗性"] = { flag("IgnoreChaosResistances", { type = "MultiplierThreshold", var = "NonShaperItem", threshold = 0, upper = true }) },
+	["若全套装备均为裂界者物品，则击中无视敌人的混沌抗性"] = { flag("IgnoreChaosResistances", { type = "MultiplierThreshold", var = "NonElderItem", threshold = 0, upper = true }) },
 	["造成暴击时无视目标的元素抗性"] = { flag("IgnoreElementalResistances", { type = "Condition", var = "CriticalStrike" }) },
-	["非暴击伤害穿透敌人 (%d+)%% 的元素抗性"] = function(num) return { mod("ElementalPenetration", "BASE", num, { type = "Condition", var = "CriticalStrike", neg = true }) } end, 
+	["非暴击伤害穿透敌人 (%d+)%% 的元素抗性"] = function(num) return { mod("ElementalPenetration", "BASE", num, { type = "Condition", var = "CriticalStrike", neg = true }) } end,
 	["除火焰伤害外不造成其他伤害"] = { flag("DealNoPhysical"), flag("DealNoLightning"), flag("DealNoCold"), flag("DealNoChaos") },
 	["无法造成点燃"] = { flag("CannotIgnite") },
 	["无法造成元素伤害"] = { flag("DealNoLightning"), flag("DealNoCold"), flag("DealNoFire") }, --备注：deal no elemental damage
@@ -3306,102 +3308,102 @@ local specialModList = {
 	["无法造成感电"] = { flag("CannotShock") },
 	["无法点燃、冰缓、冻结、感电"] = {  flag("CannotIgnite") ,flag("CannotFreeze"), flag("CannotChill"),flag("CannotShock") },
 	["你的元素伤害可以造成感电"] = { flag("ColdCanShock"), flag("FireCanShock") },
-	["近期内你若击中敌人，你和周围友军每秒回复 ([%d%.]+)%% 生命"]= function(num) return { 
+	["近期内你若击中敌人，你和周围友军每秒回复 ([%d%.]+)%% 生命"]= function(num) return {
 	mod("ExtraAura", "LIST", { mod = mod("LifeRegenPercent", "BASE", num) },  { type = "Condition", var = "HitRecently" })} end,
 	["每秒对周围敌人造成【死亡凋零】，持续 15 秒"]= {
-			flag("Condition:CanWither"),
-			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanWither" }) -- Make the Configuration option appear
+	flag("Condition:CanWither"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanWither" }) -- Make the Configuration option appear
 	},
 	["用该武器击中时施加 2 秒枯萎"]= {
-			flag("Condition:CanWither"),
-			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanWither" }) -- Make the Configuration option appear
+	flag("Condition:CanWither"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanWither" }) -- Make the Configuration option appear
 	},
 	["用该武器击中时施加 2 秒凋零"]= {
-			flag("Condition:CanWither"),
-			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanWither" }) -- Make the Configuration option appear
+	flag("Condition:CanWither"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanWither" }) -- Make the Configuration option appear
 	},
-	["使用此武器击中有 (%d+)%% 几率附加凋零"]=function(num) return {  
+	["使用此武器击中有 (%d+)%% 几率附加凋零"]=function(num) return {
 	flag("Condition:CanWither"),
-			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanWither" })
-	 } end,
-	["用该武器击中时有 (%d+)%% 几率施加 2 秒枯萎"]=function(num) return {  
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanWither" })
+	} end,
+	["用该武器击中时有 (%d+)%% 几率施加 2 秒枯萎"]=function(num) return {
 	flag("Condition:CanWither"),
-			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanWither" })
-	 } end,
-	["用该武器击中时有 (%d+)%% 几率施加 2 秒凋零"]=function(num) return {  
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanWither" })
+	} end,
+	["用该武器击中时有 (%d+)%% 几率施加 2 秒凋零"]=function(num) return {
 	flag("Condition:CanWither"),
-			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanWither" })
-	 } end,
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanWither" })
+	} end,
 	["对周围敌人，攻击和法术暴击率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", num,{ type = "Global" })   } end,
-	["你的行动速度无法被减速至基础以下"] = { flag("ActionSpeedCannotBeBelowBase") }, 
+	["你的行动速度无法被减速至基础以下"] = { flag("ActionSpeedCannotBeBelowBase") },
 	["生命偷取总回复上限翻倍。"] = { mod("MaxLifeLeechRate", "MORE", 100) },
 	["从生命偷取中获得的每秒最大总恢复量翻倍。"] = { mod("MaxLifeLeechRate", "MORE", 100) },
 	["从生命偷取中获得的每秒最大总恢复量翻倍"] = { mod("MaxLifeLeechRate", "MORE", 100) },
-	["最近你若遭到【残暴打击】，那么从生命偷取中得到的每秒总回复量提高 ([%d%.]+)%%"]= function(num) return {  mod("MaxLifeLeechRate", "INC", num,{ type = "Condition", var = "BeenSavageHitRecently" })  } end, 
+	["最近你若遭到【残暴打击】，那么从生命偷取中得到的每秒总回复量提高 ([%d%.]+)%%"]= function(num) return {  mod("MaxLifeLeechRate", "INC", num,{ type = "Condition", var = "BeenSavageHitRecently" })  } end,
 	["生命偷取每秒总恢复量翻倍"] = { mod("LifeLeechRate", "MORE", 100) },
 	["能量护盾偷取总回复上限翻倍。"] = { mod("MaxEnergyShieldLeechRate", "MORE", 100) },
 	["从能量护盾偷取中获得的每秒最大总恢复量翻倍。"] = { mod("MaxEnergyShieldLeechRate", "MORE", 100) },
-	["从能量护盾偷取中获得的总最大恢复量额外降低 (%d+)%%"] = function(num) return {  mod("MaxEnergyShieldLeechRate", "MORE", -num)  } end,  
-	["能量护盾偷取总回复上限额外降低 (%d+)%%"] = function(num) return {  mod("MaxEnergyShieldLeechRate", "MORE", -num)  } end,  
-	["能量护盾偷取总回复上限提高 (%d+)%%"] = function(num) return {  mod("MaxEnergyShieldLeechRate", "INC", num)  } end,  
-	["不再获得生命回复效果"] = { flag("NoLifeRegen") },	
+	["从能量护盾偷取中获得的总最大恢复量额外降低 (%d+)%%"] = function(num) return {  mod("MaxEnergyShieldLeechRate", "MORE", -num)  } end,
+	["能量护盾偷取总回复上限额外降低 (%d+)%%"] = function(num) return {  mod("MaxEnergyShieldLeechRate", "MORE", -num)  } end,
+	["能量护盾偷取总回复上限提高 (%d+)%%"] = function(num) return {  mod("MaxEnergyShieldLeechRate", "INC", num)  } end,
+	["不再获得生命回复效果"] = { flag("NoLifeRegen") },
 	["从能量护盾偷取中获得的每秒最大总恢复量提高翻倍"] = { mod("MaxEnergyShieldLeechRate", "MORE", 100) },
 	["不再获得生命偷取，将其偷取效果套用于能量护盾"] = { flag("GhostReaver") },
 	["(%d+)%% 几率获得额外混沌伤害，其数值等同于非混沌伤害的 (%d+)%%"] = function(num, _, perc) return { mod("NonChaosDamageGainAsChaos", "BASE", num / 100 * tonumber(perc)) } end,
 	["有 (%d+)%% 几率获得额外混沌伤害，其数值等同于非混沌伤害的 (%d+)%%"] = function(num, _, perc) return { mod("NonChaosDamageGainAsChaos", "BASE", num / 100 * tonumber(perc)) } end,
-	["nearby allies have (%d+)%% increased defences per (%d+) strength you have"] = function(num, _, div) return { mod("ExtraAura", "LIST", { onlyAllies = true, mod = mod("Defences", "INC", num) }, { type = "PerStat", stat = "Str", div = tonumber(div) }) } end, 
-	["持续吟唱时，获得 (%d+)%% 额外物理伤害减伤"] = function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end,  
-	["持续吟唱时，有额外 (%d+)%% 几率躲避攻击击中"] = function(num) return {  mod("AttackDodgeChance", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end, 
-	["持续吟唱时有 (%d+)%% 几率不被攻击击中"] = function(num) return {  mod("AttackDodgeChance", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end, 
-	["持续吟唱时，有 (%d+)%% 几率免疫晕眩"] = function(num) return {  mod("AvoidStun", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end, 
-	["持续吟唱时，每秒回复 ([%d%.]+)%% 最大生命"] = function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end, 
-	["拥有能量护盾时法术躲避几率 %+(%d+)%%"] = function(num) return {  mod("SpellDodgeChance", "BASE", num,{ type = "Condition", var = "HaveEnergyShield" })  } end, 
-	["拥有能量护盾时闪避几率 %+(%d+)%%"] = function(num) return {  mod("EvadeChance", "BASE", num,{ type = "Condition", var = "HaveEnergyShield" })  } end, 
-	["你没有能量护盾时无法格挡"] = function() return { 
-	 flag("CannotBlockAttacks",{ type = "Condition", var = "HaveEnergyShield", neg = true }),
-	 flag("CannotBlockSpells",{ type = "Condition", var = "HaveEnergyShield", neg = true })
-	 } end, 
-	["持续吟唱时获得 (%d+)%% 额外物理伤害减伤"] = function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end, 
-	["神圣球达到上限时获得【神圣】状态"] = { 
-			mod("ElementalDamage", "MORE", 50, { type = "Condition", var = "Divinity" }),
-			mod("ElementalDamageTaken", "MORE", -20, { type = "Condition", var = "Divinity" }),
-		},
-	["满神圣球时，你获得【神性】，持续 10 秒"] = { 
-			mod("ElementalDamage", "MORE", 50, { type = "Condition", var = "Divinity" }),
-			mod("ElementalDamageTaken", "MORE", -20, { type = "Condition", var = "Divinity" }),
-		},	
+	["nearby allies have (%d+)%% increased defences per (%d+) strength you have"] = function(num, _, div) return { mod("ExtraAura", "LIST", { onlyAllies = true, mod = mod("Defences", "INC", num) }, { type = "PerStat", stat = "Str", div = tonumber(div) }) } end,
+	["持续吟唱时，获得 (%d+)%% 额外物理伤害减伤"] = function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end,
+	["持续吟唱时，有额外 (%d+)%% 几率躲避攻击击中"] = function(num) return {  mod("AttackDodgeChance", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end,
+	["持续吟唱时有 (%d+)%% 几率不被攻击击中"] = function(num) return {  mod("AttackDodgeChance", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end,
+	["持续吟唱时，有 (%d+)%% 几率免疫晕眩"] = function(num) return {  mod("AvoidStun", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end,
+	["持续吟唱时，每秒回复 ([%d%.]+)%% 最大生命"] = function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end,
+	["拥有能量护盾时法术躲避几率 %+(%d+)%%"] = function(num) return {  mod("SpellDodgeChance", "BASE", num,{ type = "Condition", var = "HaveEnergyShield" })  } end,
+	["拥有能量护盾时闪避几率 %+(%d+)%%"] = function(num) return {  mod("EvadeChance", "BASE", num,{ type = "Condition", var = "HaveEnergyShield" })  } end,
+	["你没有能量护盾时无法格挡"] = function() return {
+	flag("CannotBlockAttacks",{ type = "Condition", var = "HaveEnergyShield", neg = true }),
+	flag("CannotBlockSpells",{ type = "Condition", var = "HaveEnergyShield", neg = true })
+	} end,
+	["持续吟唱时获得 (%d+)%% 额外物理伤害减伤"] = function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "OnChannelling" })  } end,
+	["神圣球达到上限时获得【神圣】状态"] = {
+	mod("ElementalDamage", "MORE", 50, { type = "Condition", var = "Divinity" }),
+	mod("ElementalDamageTaken", "MORE", -20, { type = "Condition", var = "Divinity" }),
+	},
+	["满神圣球时，你获得【神性】，持续 10 秒"] = {
+	mod("ElementalDamage", "MORE", 50, { type = "Condition", var = "Divinity" }),
+	mod("ElementalDamageTaken", "MORE", -20, { type = "Condition", var = "Divinity" }),
+	},
 	["当你发射箭矢时，会消耗 1 个虚空之矢来触发 (%d+) 级的【虚空射击】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="VoidShot", level = num})   } end,
-	["追忆词缀"] = { mod("Multiplier:SynthesisedItem", "BASE", 1) }, 
-	["【定罪波】的特效会使元素抗性 ([%+%-]?%d+)%%"]	= function(num) return {  
+	["追忆词缀"] = { mod("Multiplier:SynthesisedItem", "BASE", 1) },
+	["【定罪波】的特效会使元素抗性 ([%+%-]?%d+)%%"]	= function(num) return {
 	mod("EnemyModifier", "LIST", { mod = mod("FireResist", "BASE", num,{ type = "GlobalEffect", effectType = "Debuff", effectName = "Fire Exposure", effectCond = "WaveOfConvictionFireExposureActive" }) }, { type = "Condition", var = "WaveOfConvictionFireExposureActive" }),
 	mod("EnemyModifier", "LIST", { mod = mod("ColdResist", "BASE", num,{ type = "GlobalEffect", effectType = "Debuff", effectName = "Cold Exposure", effectCond = "WaveOfConvictionColdExposureActive" }) }, { type = "Condition", var = "WaveOfConvictionColdExposureActive" }),
 	mod("EnemyModifier", "LIST", { mod = mod("LightningResist", "BASE", num,{ type = "GlobalEffect", effectType = "Debuff", effectName = "Lightning Exposure", effectCond = "WaveOfConvictionLightningExposureActive" }) }, { type = "Condition", var = "WaveOfConvictionLightningExposureActive" }),
-	} end,  
-	["被你嘲讽的敌人无法闪避攻击"] = { mod("EnemyModifier", "LIST", { mod = flag("CannotEvade", { type = "Condition", var = "Taunted" }) }) },
-	["当你在你在天赋树上连接到一个职业的出发位置时，你获得：野蛮人： 近战技能范围扩大 (%d+)%%决斗者：攻击伤害的 ([%d%.]+)%% 会转化为生命偷取游侠：移动速度提高 (%d+)%%暗影：%+([%d%.]+)%% 暴击率女巫：每秒回复 ([%d%.]+)%% 最大魔力圣堂武僧：伤害穿透 5%% 元素抗性贵族：%+25 所有属性"]= function(_,num_ymr,num_jdz,num_yx,num_ay,num_nw) return {   
-	mod("AreaOfEffect", "INC", tonumber(num_ymr),nil, ModFlag.Melee,{ type = "Condition", var = "ConnectedTo野蛮人Start" }) ,
-	mod("DamageLifeLeech", "BASE", tonumber(num_jdz),nil, ModFlag.Attack,{ type = "Condition", var = "ConnectedTo决斗者Start" }),
-	mod("MovementSpeed", "INC", tonumber(num_yx),{ type = "Condition", var = "ConnectedTo游侠Start" }) ,
-	mod("CritChance", "BASE", tonumber(num_ay),{ type = "Condition", var = "ConnectedTo暗影刺客Start" }),
-	mod("ManaRegenPercent", "BASE", tonumber(num_nw), { type = "Condition", var = "ConnectedTo女巫Start" }),
-	mod("ElementalPenetration", "BASE", 5,{ type = "Condition", var = "ConnectedTo圣堂武僧Start" }),
-		 mod("Str", "BASE", 25,{ type = "Condition", var = "ConnectedTo贵族Start" }) ,
-		 mod("Dex", "BASE", 25,{ type = "Condition", var = "ConnectedTo贵族Start" }) ,
-		 mod("Int", "BASE", 25,{ type = "Condition", var = "ConnectedTo贵族Start" }) 
 	} end,
-	["当你在你在天赋树上连接到一个职业的出发位置时，你获得：野蛮人： 近战技能范围扩大 (%d+)%%决斗者：攻击伤害的 ([%d%.]+)%% 会转化为生命偷取游侠：移动速度提高 (%d+)%%暗影：%+([%d%.]+)%% 暴击率女巫：每秒回复 ([%d%.]+)%% 魔力圣堂武僧：伤害穿透 5%% 元素抗性贵族：%+25 所有属性"]= function(_,num_ymr,num_jdz,num_yx,num_ay,num_nw) return {   
+	["被你嘲讽的敌人无法闪避攻击"] = { mod("EnemyModifier", "LIST", { mod = flag("CannotEvade", { type = "Condition", var = "Taunted" }) }) },
+	["当你在你在天赋树上连接到一个职业的出发位置时，你获得：野蛮人： 近战技能范围扩大 (%d+)%%决斗者：攻击伤害的 ([%d%.]+)%% 会转化为生命偷取游侠：移动速度提高 (%d+)%%暗影：%+([%d%.]+)%% 暴击率女巫：每秒回复 ([%d%.]+)%% 最大魔力圣堂武僧：伤害穿透 5%% 元素抗性贵族：%+25 所有属性"]= function(_,num_ymr,num_jdz,num_yx,num_ay,num_nw) return {
 	mod("AreaOfEffect", "INC", tonumber(num_ymr),nil, ModFlag.Melee,{ type = "Condition", var = "ConnectedTo野蛮人Start" }) ,
 	mod("DamageLifeLeech", "BASE", tonumber(num_jdz),nil, ModFlag.Attack,{ type = "Condition", var = "ConnectedTo决斗者Start" }),
 	mod("MovementSpeed", "INC", tonumber(num_yx),{ type = "Condition", var = "ConnectedTo游侠Start" }) ,
 	mod("CritChance", "BASE", tonumber(num_ay),{ type = "Condition", var = "ConnectedTo暗影刺客Start" }),
 	mod("ManaRegenPercent", "BASE", tonumber(num_nw), { type = "Condition", var = "ConnectedTo女巫Start" }),
 	mod("ElementalPenetration", "BASE", 5,{ type = "Condition", var = "ConnectedTo圣堂武僧Start" }),
-		 mod("Str", "BASE", 25,{ type = "Condition", var = "ConnectedTo贵族Start" }) ,
-		 mod("Dex", "BASE", 25,{ type = "Condition", var = "ConnectedTo贵族Start" }) ,
-		 mod("Int", "BASE", 25,{ type = "Condition", var = "ConnectedTo贵族Start" }) 
+	mod("Str", "BASE", 25,{ type = "Condition", var = "ConnectedTo贵族Start" }) ,
+	mod("Dex", "BASE", 25,{ type = "Condition", var = "ConnectedTo贵族Start" }) ,
+	mod("Int", "BASE", 25,{ type = "Condition", var = "ConnectedTo贵族Start" })
+	} end,
+	["当你在你在天赋树上连接到一个职业的出发位置时，你获得：野蛮人： 近战技能范围扩大 (%d+)%%决斗者：攻击伤害的 ([%d%.]+)%% 会转化为生命偷取游侠：移动速度提高 (%d+)%%暗影：%+([%d%.]+)%% 暴击率女巫：每秒回复 ([%d%.]+)%% 魔力圣堂武僧：伤害穿透 5%% 元素抗性贵族：%+25 所有属性"]= function(_,num_ymr,num_jdz,num_yx,num_ay,num_nw) return {
+	mod("AreaOfEffect", "INC", tonumber(num_ymr),nil, ModFlag.Melee,{ type = "Condition", var = "ConnectedTo野蛮人Start" }) ,
+	mod("DamageLifeLeech", "BASE", tonumber(num_jdz),nil, ModFlag.Attack,{ type = "Condition", var = "ConnectedTo决斗者Start" }),
+	mod("MovementSpeed", "INC", tonumber(num_yx),{ type = "Condition", var = "ConnectedTo游侠Start" }) ,
+	mod("CritChance", "BASE", tonumber(num_ay),{ type = "Condition", var = "ConnectedTo暗影刺客Start" }),
+	mod("ManaRegenPercent", "BASE", tonumber(num_nw), { type = "Condition", var = "ConnectedTo女巫Start" }),
+	mod("ElementalPenetration", "BASE", 5,{ type = "Condition", var = "ConnectedTo圣堂武僧Start" }),
+	mod("Str", "BASE", 25,{ type = "Condition", var = "ConnectedTo贵族Start" }) ,
+	mod("Dex", "BASE", 25,{ type = "Condition", var = "ConnectedTo贵族Start" }) ,
+	mod("Int", "BASE", 25,{ type = "Condition", var = "ConnectedTo贵族Start" })
 	} end,
 	--[[
-	["总属性每有 (%d+) 点，魔力保留降低 (%d+)%%"] = function(_,num1,num2) return {  mod("ManaReserved", "INC", -tonumber(num2),{ type = "PerStat", statList = { 'Str', 'Dex', 'Int' }, div = tonumber(num1),stat= "Dex" } )  } end,  
+	["总属性每有 (%d+) 点，魔力保留降低 (%d+)%%"] = function(_,num1,num2) return {  mod("ManaReserved", "INC", -tonumber(num2),{ type = "PerStat", statList = { 'Str', 'Dex', 'Int' }, div = tonumber(num1),stat= "Dex" } )  } end,
 	]]--
 	["最大物理攻击总伤害额外提高 (%d+)%%"]= function(num) return {  mod("PhysicalMax", "MORE", num,nil,ModFlag.Attack)   } end,
 	["最小物理攻击总伤害额外降低 (%d+)%%"]= function(num) return {  mod("PhysicalMin", "MORE", -num,nil,ModFlag.Attack)   } end,
@@ -3412,137 +3414,137 @@ local specialModList = {
 	["拥有幽灵护罩时免疫眩晕"]= function(num) return {  mod("AvoidStun", "BASE", 100,{ type = "MultiplierThreshold", var = "GhostShroud", threshold = 1 } )   } end,
 	["拥有鬼影缠身时免疫晕眩"]= function(num) return {  mod("AvoidStun", "BASE", 100,{ type = "MultiplierThreshold", var = "GhostShroud", threshold = 1 } )   } end,
 	["拥有鬼影缠身时免疫眩晕"]= function(num) return {  mod("AvoidStun", "BASE", 100,{ type = "MultiplierThreshold", var = "GhostShroud", threshold = 1 } )   } end,
-	["每 100 最大生命提高 (%d+)%% 法术暴击几率"]= function(num) return { 	
-	mod("CritChance", "INC", num,nil, ModFlag.Spell,  { type = "PerStat", stat = "PlayerLife", div = 100 }) 
+	["每 100 最大生命提高 (%d+)%% 法术暴击几率"]= function(num) return {
+	mod("CritChance", "INC", num,nil, ModFlag.Spell,  { type = "PerStat", stat = "PlayerLife", div = 100 })
 	}end,
-	["每 100 最大生命提高 (%d+)%% 法术伤害"]= function(num) return { 	
-	mod("Damage", "INC", num,nil, ModFlag.Spell,  { type = "PerStat", stat = "PlayerLife", div = 100 }) 
+	["每 100 最大生命提高 (%d+)%% 法术伤害"]= function(num) return {
+	mod("Damage", "INC", num,nil, ModFlag.Spell,  { type = "PerStat", stat = "PlayerLife", div = 100 })
 	}end,
-	["每 100 点最大生命使法术伤害提高 (%d+)%%"]= function(num) return { 	
-		mod("Damage", "INC", num,nil, ModFlag.Spell,  { type = "PerStat", stat = "PlayerLife", div = 100 }) 
-		}end,
-	["每 100 点最大生命会使法术暴击几率提高 (%d+)%%"]= function(num) return { 	
-		mod("CritChance", "INC", num,nil, ModFlag.Spell,  { type = "PerStat", stat = "PlayerLife", div = 100 }) 
-		}end,
-	["每 100 玩家最大生命提高 (%d+)%% 法术伤害"]= function(num) return { 	
-		mod("Damage", "INC", num,nil, ModFlag.Spell,  { type = "PerStat", stat = "PlayerLife", div = 100 }) 
-		}end,
-	["每 100 玩家最大生命提高 (%d+)%% 法术暴击几率"]= function(num) return { 	
-		mod("CritChance", "INC", num,nil, ModFlag.Spell,  { type = "PerStat", stat = "PlayerLife", div = 100 }) 
-		}end,
-	["总能量护盾每秒回复额外降低 (%d+)%%"]= function(num) return { 	
-	mod("EnergyShieldRegen", "MORE", -num) 
+	["每 100 点最大生命使法术伤害提高 (%d+)%%"]= function(num) return {
+	mod("Damage", "INC", num,nil, ModFlag.Spell,  { type = "PerStat", stat = "PlayerLife", div = 100 })
+	}end,
+	["每 100 点最大生命会使法术暴击几率提高 (%d+)%%"]= function(num) return {
+	mod("CritChance", "INC", num,nil, ModFlag.Spell,  { type = "PerStat", stat = "PlayerLife", div = 100 })
+	}end,
+	["每 100 玩家最大生命提高 (%d+)%% 法术伤害"]= function(num) return {
+	mod("Damage", "INC", num,nil, ModFlag.Spell,  { type = "PerStat", stat = "PlayerLife", div = 100 })
+	}end,
+	["每 100 玩家最大生命提高 (%d+)%% 法术暴击几率"]= function(num) return {
+	mod("CritChance", "INC", num,nil, ModFlag.Spell,  { type = "PerStat", stat = "PlayerLife", div = 100 })
+	}end,
+	["总能量护盾每秒回复额外降低 (%d+)%%"]= function(num) return {
+	mod("EnergyShieldRegen", "MORE", -num)
 	}end,
 	["武器攻击的基础暴击几率为 ([%d%.]+)%%"]= function(num) return { mod("WeaponBaseCritChance", "OVERRIDE", num) } end,
 	["基础武器暴击率为 ([%d%.]+)%%"]= function(num) return { mod("WeaponBaseCritChance", "OVERRIDE", num) } end,
 	["每次击中获得 %d+ 层怒火，最多每 [%d%.]+ 秒获得一次"] = {
-			flag("Condition:CanGainRage"),
-			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }) -- Make the Configuration option appear
+	flag("Condition:CanGainRage"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }) -- Make the Configuration option appear
 	},
-	["每秒回复 (%d+) 点怒火"]= function(num) return { 	
-				flag("Condition:CanGainRage"),
-				mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }),
-					mod("RageRegen", "BASE", num) 
-		}end,
-	 ["若你的怒火少于 25 点，则战吼每 5 【威力值】即可获得 10 点怒火"]= function(num) return { 	
-				flag("Condition:CanGainRage"),
-				mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }),
-		}end,
+	["每秒回复 (%d+) 点怒火"]= function(num) return {
+	flag("Condition:CanGainRage"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }),
+	mod("RageRegen", "BASE", num)
+	}end,
+	["若你的怒火少于 25 点，则战吼每 5 【威力值】即可获得 10 点怒火"]= function(num) return {
+	flag("Condition:CanGainRage"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }),
+	}end,
 	["攻击击中获得 %d+ 点怒火。每 [%d%.]+ 秒只会发生一次"] = {
-			flag("Condition:CanGainRage"),
-			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }) -- Make the Configuration option appear
+	flag("Condition:CanGainRage"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }) -- Make the Configuration option appear
 	},
 	["无视属性需求"] = {
-			flag("GlobalNoAttributeRequirements"),
+	flag("GlobalNoAttributeRequirements"),
 	},
 	["无法获得属性加成"] = {
-			flag("NoAttributeBonus"),
+	flag("NoAttributeBonus"),
 	},
 	["来自斧或剑的攻击击中时获得 %d+ 层怒火，每秒最多获得一层"] = {
-			flag("Condition:CanGainRage"),
-			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }) -- Make the Configuration option appear
-	}, 
-	["使用战吼时获得 %d+ 层怒火"] = {
-			flag("Condition:CanGainRage"),
-			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }) -- Make the Configuration option appear
+	flag("Condition:CanGainRage"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }) -- Make the Configuration option appear
 	},
-	["每 1 点怒火都获得额外火焰伤害， 其数值等同于物理伤害的 (%d+)%%"]= function(num) return { 	
-	mod("PhysicalDamageGainAsFire", "BASE", num, { type = "Multiplier", var = "Rage", div = 1 }) 
+	["使用战吼时获得 %d+ 层怒火"] = {
+	flag("Condition:CanGainRage"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }) -- Make the Configuration option appear
+	},
+	["每 1 点怒火都获得额外火焰伤害， 其数值等同于物理伤害的 (%d+)%%"]= function(num) return {
+	mod("PhysicalDamageGainAsFire", "BASE", num, { type = "Multiplier", var = "Rage", div = 1 })
 	}end,
 	["不损失怒火时，每一点怒火就会每秒失去 ([%d%.]+)%% 生命"] = function(num) return { mod("LifeDegen", "BASE", num / 100, { type = "PerStat", stat = "Life" }, { type = "Multiplier", var = "Rage" }) } end,
 	["当你没有损失怒火时，每点怒火使你每秒失去 ([%d%.]+)%% 的最大生命"] = function(num) return { mod("LifeDegen", "BASE", num / 100, { type = "PerStat", stat = "Life" }, { type = "Multiplier", var = "Rage"}) } end,
-	["每 4 层怒火有 (%d+)%% 几率造成双倍伤害"]= function(num) return { 	
-	mod("DoubleDamageChance", "BASE", num, { type = "Multiplier", var = "Rage", div = 4 }) 
+	["每 4 层怒火有 (%d+)%% 几率造成双倍伤害"]= function(num) return {
+	mod("DoubleDamageChance", "BASE", num, { type = "Multiplier", var = "Rage", div = 4 })
 	}end,
 	["【怒火】带来的固定效果变成三倍"] = { mod("Multiplier:RageEffect", "BASE", 2) },
 	["怒火的效果变为三倍"] = { mod("Multiplier:RageEffect", "BASE", 2) },
-	["投射物穿透 (%d+) 个额外目标"] = function(num) return { mod("PierceCount", "BASE", num) } end, 
-	["你造成的中毒伤害生效速度提高 (%d+)%%"]= function(num) return { 	
-	mod("PoisonFaster", "INC", num) 
+	["投射物穿透 (%d+) 个额外目标"] = function(num) return { mod("PierceCount", "BASE", num) } end,
+	["你造成的中毒伤害生效速度提高 (%d+)%%"]= function(num) return {
+	mod("PoisonFaster", "INC", num)
 	}end,
-	["中毒伤害额外提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num,nil,nil,KeywordFlag.Poison )  } end, 
-	["你造成的烈毒的伤害生效速度加快 (%d+)%%"]= function(num) return { 	
-	mod("PoisonFaster", "INC", num) 
+	["中毒伤害额外提高 (%d+)%%"]= function(num) return {  mod("Damage", "MORE", num,nil,nil,KeywordFlag.Poison )  } end,
+	["你造成的烈毒的伤害生效速度加快 (%d+)%%"]= function(num) return {
+	mod("PoisonFaster", "INC", num)
 	}end,
 	["你攻击造成的点燃的伤害生效速度加快 (%d+)%%"] = function(num) return { mod("IgniteBurnFaster", "INC", num, nil, ModFlag.Attack) } end,
 	["你造成的点燃的伤害生效速度加快 (%d+)%%"] = function(num) return { mod("IgniteBurnFaster", "INC", num) } end,
-	["你造成的流血伤害生效速度提高 (%d+)%%"]= function(num) return { 	
-	mod("BleedFaster", "INC", num) 
+	["你造成的流血伤害生效速度提高 (%d+)%%"]= function(num) return {
+	mod("BleedFaster", "INC", num)
 	}end,
-	["你造成的流血的伤害生效速度加快 (%d+)%%"]= function(num) return { 	
-	mod("BleedFaster", "INC", num) 
+	["你造成的流血的伤害生效速度加快 (%d+)%%"]= function(num) return {
+	mod("BleedFaster", "INC", num)
 	}end,
-	["每个挑战球使总攻击和移动速度额外提高 (%d+)%%"]= function(num) return { 	
+	["每个挑战球使总攻击和移动速度额外提高 (%d+)%%"]= function(num) return {
 	mod("Speed", "MORE", num,nil, ModFlag.Attack,{ type = "Multiplier", var = "ChallengerCharge" }) ,
-	mod("MovementSpeed", "MORE", num,{ type = "Multiplier", var = "ChallengerCharge" }) 
+	mod("MovementSpeed", "MORE", num,{ type = "Multiplier", var = "ChallengerCharge" })
 	}end,
-	["每个挑战球可使总攻击速度和移动速度额外提高 (%d+)%%"]= function(num) return { 	
+	["每个挑战球可使总攻击速度和移动速度额外提高 (%d+)%%"]= function(num) return {
 	mod("Speed", "MORE", num,nil, ModFlag.Attack,{ type = "Multiplier", var = "ChallengerCharge" }) ,
-	mod("MovementSpeed", "MORE", num,{ type = "Multiplier", var = "ChallengerCharge" }) 
+	mod("MovementSpeed", "MORE", num,{ type = "Multiplier", var = "ChallengerCharge" })
 	}end,
-	["每个疾电球可使暴击几率降低 (%d+)%%"]= function(num) return { 	
+	["每个疾电球可使暴击几率降低 (%d+)%%"]= function(num) return {
 	mod("CritChance", "INC", -num,{ type = "Multiplier", var = "BlitzCharge" }) ,
 	}end,
-	["每个疾电球可使总攻击速度额外提高 (%d+)%%"]= function(num) return { 	
+	["每个疾电球可使总攻击速度额外提高 (%d+)%%"]= function(num) return {
 	mod("Speed", "MORE", num,nil, ModFlag.Attack,{ type = "Multiplier", var = "BlitzCharge" }) ,
 	}end,
-	["每个疾电球可使暴击率降低 (%d+)%%"]= function(num) return { 	
+	["每个疾电球可使暴击率降低 (%d+)%%"]= function(num) return {
 	mod("CritChance", "INC", -num,{ type = "Multiplier", var = "BlitzCharge" }) ,
 	}end,
-	["每个疾电球使总攻击速度额外提高 (%d+)%%"]= function(num) return { 	
+	["每个疾电球使总攻击速度额外提高 (%d+)%%"]= function(num) return {
 	mod("Speed", "MORE", num,nil, ModFlag.Attack,{ type = "Multiplier", var = "BlitzCharge" }) ,
 	}end,
-	["总攻击速度额外降低 (%d+)%%"]= function(num) return { 	
+	["总攻击速度额外降低 (%d+)%%"]= function(num) return {
 	mod("Speed", "MORE", -num,nil, ModFlag.Attack) ,
 	}end,
 	["无法造成混沌伤害"] = { flag("DealNoChaos") },
-	 ["近期内你若穿刺过敌人，你和周围友军获得护甲 %+(%d+)"] = function (num) return { mod("ExtraAura", "LIST", { mod = mod("Armour", "BASE", num) }, { type = "Condition", var = "ImpaledRecently" }) } end,
-	["攻击击中时有 (%d+)%% 几率穿刺敌人"]= function(num) return { 	
-	mod("ImpaleChance", "BASE", num, 0, 0, KeywordFlag.Attack) 
+	["近期内你若穿刺过敌人，你和周围友军获得护甲 %+(%d+)"] = function (num) return { mod("ExtraAura", "LIST", { mod = mod("Armour", "BASE", num) }, { type = "Condition", var = "ImpaledRecently" }) } end,
+	["攻击击中时有 (%d+)%% 几率穿刺敌人"]= function(num) return {
+	mod("ImpaleChance", "BASE", num, 0, 0, KeywordFlag.Attack)
 	}end,
-	["法术击中有 (%d+)%% 几率穿刺敌人"]= function(num) return { 	
-	mod("ImpaleChance", "BASE", num, 0, 0, KeywordFlag.Spell) 
+	["法术击中有 (%d+)%% 几率穿刺敌人"]= function(num) return {
+	mod("ImpaleChance", "BASE", num, 0, 0, KeywordFlag.Spell)
 	}end,
-	["你造成的穿刺效果会额外持续 (%d+) 次击中"]= function(num) return { 	
-	mod("ImpaleStacksMax", "BASE", num) 
+	["你造成的穿刺效果会额外持续 (%d+) 次击中"]= function(num) return {
+	mod("ImpaleStacksMax", "BASE", num)
 	}end,
-	["敌人身上每有一个穿刺效果，你和周围友军的攻击便额外造成 (%d+) %- (%d+) 附加物理伤害"]= function (_,num1,num2) return { 
-	mod("ExtraAura", "LIST", 
+	["敌人身上每有一个穿刺效果，你和周围友军的攻击便额外造成 (%d+) %- (%d+) 附加物理伤害"]= function (_,num1,num2) return {
+	mod("ExtraAura", "LIST",
 	{ mod = mod("PhysicalMin", "BASE", tonumber(num1)) },  { type = "Multiplier", var = "ImpaleStack", actor = "enemy" }),
-	mod("ExtraAura", "LIST", 
+	mod("ExtraAura", "LIST",
 	{ mod = mod("PhysicalMax", "BASE", tonumber(num2)) },  { type = "Multiplier", var = "ImpaleStack", actor = "enemy" }),
 	} end,
-	["敌人身上每层穿刺效果可以为你和周围友军附加 (%d+) %- (%d+) 物理伤害"]= function (_,num1,num2) return { 
-	mod("ExtraAura", "LIST", 
+	["敌人身上每层穿刺效果可以为你和周围友军附加 (%d+) %- (%d+) 物理伤害"]= function (_,num1,num2) return {
+	mod("ExtraAura", "LIST",
 	{ mod = mod("PhysicalMin", "BASE", tonumber(num1)) },  { type = "Multiplier", var = "ImpaleStack", actor = "enemy" }),
-	mod("ExtraAura", "LIST", 
+	mod("ExtraAura", "LIST",
 	{ mod = mod("PhysicalMax", "BASE", tonumber(num2)) },  { type = "Multiplier", var = "ImpaleStack", actor = "enemy" }),
 	} end,
-	["根据和目标的距离来提升总近战伤害，最高额外提高 (%d+)%%"]= function(num) return { 	
+	["根据和目标的距离来提升总近战伤害，最高额外提高 (%d+)%%"]= function(num) return {
 	flag("Condition:CanMeleeDistanceRamp"),
 	mod("Damage", "MORE", num,nil, ModFlag.Melee, 0, { type = "DistanceRamp",  ramp = {{15,1},{40,0}}},{ type = "Condition", var = "CanMeleeDistanceRamp" }),
 	}end,
-	["基于距离对敌人的总近战伤害最多额外提高 (%d+)%%"]= function(num) return { 	
+	["基于距离对敌人的总近战伤害最多额外提高 (%d+)%%"]= function(num) return {
 	flag("Condition:CanMeleeDistanceRamp"),
 	mod("Damage", "MORE", num,nil, ModFlag.Melee, 0, { type = "DistanceRamp",  ramp = {{15,1},{40,0}}},{ type = "Condition", var = "CanMeleeDistanceRamp" }),
 	}end,
@@ -3550,107 +3552,107 @@ local specialModList = {
 	["照亮范围的扩大和缩小也同样作用于伤害"] = { flag("LightRadiusAppliesToDamage") },
 	["当你使用弓箭攻击时触发 (%d+) 级的【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end,
 	["你用弓类攻击时触发 (%d+) 级(.+)"] = function(num, _, skill) return extraSkill(skill, num) end,
-	["每个暴击球使法术总伤害额外提高 (%d+)%%"]= function(num) return { 	
+	["每个暴击球使法术总伤害额外提高 (%d+)%%"]= function(num) return {
 	mod("Damage", "MORE", num,nil, ModFlag.Spell,{ type = "Multiplier", var = "PowerCharge" }),
 	}end,
-	 ["范围内的天赋被圣堂抑制"] = { flag("好战的信仰") },
-	 ["范围中的天赋被马拉克斯抑制"] = { flag("残酷的约束") },
-	 ["范围内的天赋被永恒帝国抑制"] = { flag("优雅的狂妄") },
-	 ["范围内的天赋被卡鲁抑制"] = { flag("致命的骄傲") },
-	 ["范围内的天赋被瓦尔抑制"] = { flag("光彩夺目") },
-	 ["只影响小环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 4 }) },
+	["范围内的天赋被圣堂抑制"] = { flag("好战的信仰") },
+	["范围中的天赋被马拉克斯抑制"] = { flag("残酷的约束") },
+	["范围内的天赋被永恒帝国抑制"] = { flag("优雅的狂妄") },
+	["范围内的天赋被卡鲁抑制"] = { flag("致命的骄傲") },
+	["范围内的天赋被瓦尔抑制"] = { flag("光彩夺目") },
+	["只影响小环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 4 }) },
 	["只影响中环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 5 }) },
 	["只影响大环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 6 }) },
-	["只影响超大环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 7 }) }, 
-	["只影响巨环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 7 }) }, 
+	["只影响超大环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 7 }) },
+	["只影响巨环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 7 }) },
 	["影响小环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 4 }) },
 	["影响中环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 5 }) },
 	["影响大环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 6 }) },
-	["影响超大环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 7 }) }, 
-	["影响巨环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 7 }) }, 
+	["影响超大环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 7 }) },
+	["影响巨环内的天赋"] = { mod("JewelData", "LIST", { key = "radiusIndex", value = 7 }) },
 	["最大能量护盾为 (%d+)"]  = function(num) return { mod("EnergyShield", "OVERRIDE", tonumber(num)) } end,
-	["最大魔力的 (%d+)%% 转化为双倍的护甲"]  = function(num) return { mod("ManaConvertToDoubleArmour", "BASE", tonumber(num)) } end, 
-	["暴击率特别幸运"] = { flag("CritChanceLucky") }, 
+	["最大魔力的 (%d+)%% 转化为双倍的护甲"]  = function(num) return { mod("ManaConvertToDoubleArmour", "BASE", tonumber(num)) } end,
+	["暴击率特别幸运"] = { flag("CritChanceLucky") },
 	["你瞎了"] = { flag("Condition:Blinded") },
 	["目盲不影响你的照亮范围"] = {  },
 	["目盲时总近战暴击率额外提高 (%d+)%%"]= function(num) return { mod("CritChance", "MORE", num,nil, ModFlag.Melee,{ type = "Condition", var = "Blinded" }) } end,
-	["受到的冰霜和闪电伤害有 (%d+)%% 视为火焰伤害"]= function(num) return { 
-	 mod("ColdDamageTakenAsFire", "BASE", num),
-	 mod("LightningDamageTakenAsFire", "BASE", num),
-	 } end,
-	 ["受到的元素伤害有 (%d+)%% 视为混沌伤害"]= function(num) return { 
-	 mod("ColdDamageTakenAsChaos", "BASE", num),
-	 mod("LightningDamageTakenAsChaos", "BASE", num),
-	 mod("FireDamageTakenAsChaos", "BASE", num),
-	 } end,
-	["总冰霜抗性额外降低 (%d+)%%"]= function(num) return { 
-	 mod("ColdResist", "MORE", -num)
-	 } end, 
-	["总闪电抗性额外降低 (%d+)%%"]= function(num) return { 
-	 mod("LightningResist", "MORE", -num)
-	 } end, 
-	["攻击格挡率翻倍"]= function() return { 
-	 mod("BlockChance", "MORE", 100)
-	 } end, 
-	["法术格挡率翻倍"]= function() return { 
-	 mod("SpellBlockChance", "MORE", 100)
-	 } end, 
+	["受到的冰霜和闪电伤害有 (%d+)%% 视为火焰伤害"]= function(num) return {
+	mod("ColdDamageTakenAsFire", "BASE", num),
+	mod("LightningDamageTakenAsFire", "BASE", num),
+	} end,
+	["受到的元素伤害有 (%d+)%% 视为混沌伤害"]= function(num) return {
+	mod("ColdDamageTakenAsChaos", "BASE", num),
+	mod("LightningDamageTakenAsChaos", "BASE", num),
+	mod("FireDamageTakenAsChaos", "BASE", num),
+	} end,
+	["总冰霜抗性额外降低 (%d+)%%"]= function(num) return {
+	mod("ColdResist", "MORE", -num)
+	} end,
+	["总闪电抗性额外降低 (%d+)%%"]= function(num) return {
+	mod("LightningResist", "MORE", -num)
+	} end,
+	["攻击格挡率翻倍"]= function() return {
+	mod("BlockChance", "MORE", 100)
+	} end,
+	["法术格挡率翻倍"]= function() return {
+	mod("SpellBlockChance", "MORE", 100)
+	} end,
 	["光环效果对友军没有作用"] = { flag("SelfAurasCannotAffectAllies") },
 	["无法获得友军光环效果"] = { flag("AlliesAurasCannotAffectSelf") },
 	["光环技能不能影响友军"] = { flag("SelfAurasCannotAffectAllies") },
-	["总生命回复速度额外降低 (%d+)%%"]= function(num) return { 
-	 mod("LifeRecoveryRate", "MORE", -num)
-	 } end,  
-	["生命回复额外降低 (%d+)%%"]= function(num) return { 
-	 mod("LifeRecoveryRate", "MORE", -num)
-	 } end,  
-	["从药剂获得的生命回复额外降低 (%d+)%%"]= function(num) return { 
-	 mod("FlaskLifeRecovery", "MORE", -num)
-	 } end,  
-	["获得等同 ([%d%.]+)%% 最大生命的额外最大能量护盾"]= function(num) return {  mod("LifeGainAsEnergyShield", "BASE", num)  } end, 
-	["至少有 (%d+) 点奉献时，获得等同 (%d+)%% 最大魔力的额外最大能量护盾"]= function(_,num1,num2) return {  mod("ManaGainAsEnergyShield", "BASE", tonumber(num2),{ type = "StatThreshold", stat = "Devotion", threshold = tonumber(num1) })  } end, 
-	["至少 (%d+) 点奉献时，位于奉献地面之上免疫元素异常状态"]= function(num) return { 
-	 mod("AvoidShock", "BASE", 100,{ type = "Condition", var = "OnConsecratedGround" },{ type = "StatThreshold", stat = "Devotion", threshold = tonumber(num) })  ,
-	 mod("AvoidChilled", "BASE", 100,{ type = "Condition", var = "OnConsecratedGround" },{ type = "StatThreshold", stat = "Devotion", threshold = tonumber(num) })  ,
-	 mod("AvoidFrozen", "BASE", 100,{ type = "Condition", var = "OnConsecratedGround" },{ type = "StatThreshold", stat = "Devotion", threshold = tonumber(num) })  ,
-	 mod("AvoidIgnite", "BASE", 100,{ type = "Condition", var = "OnConsecratedGround" },{ type = "StatThreshold", stat = "Devotion", threshold = tonumber(num) })  ,
-	} end, 
-	["至少 (%d+) 点奉献时，额外获得 (%d+)%% 物理伤害减免"] = function(_,num1,num2) return {  mod("PhysicalDamageReduction", "BASE", tonumber(num2),{ type = "StatThreshold", stat = "Devotion", threshold = tonumber(num1) } )  } end, 
-	["无法使用生命偷取的恢复效果"]= function(num) return { 
-	 mod("LifeLeechRate", "MORE", -100)
-	 } end,  
-	["生命偷取的每秒恢复效果每 (%d+)%% 使受到的总伤害额外降低 (%d+)%%"] = function(_,num1,num2) return {  
-	mod("DamageTaken", "MORE", -tonumber(num2),{ type = "PerStat", stat = "MaxLifeLeechRatePercentage", div = tonumber(num1) },{ type = "Condition", var = "LeechingLife" } )  
-	} end, 
-	["从生命偷取中获得的每秒最大总恢复量额外降低 ([%d%.]+)%%"]= function(num) return {  
-	mod("MaxLifeLeechRate", "MORE", -num)  } end, 
-	["冰霜闪现的冷却回复速度提高 (%d+)%%"] = function(num) return {  
-				mod("CooldownRecovery", "INC", num, { type = "SkillName", skillName = "冰霜闪现" })			 
-			} end,
-	["所有物理法术技能石等级 %+(%d+)"] = function(num) return { mod("GemProperty", "LIST",  { keyword = "physical_spell", key = "level", value = num }) } end,
-	["每个红色插槽使召唤生物 (%d+)%% 的物理伤害转化为火焰伤害"]	
-	= function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageConvertToFire", "BASE", num) },{ type = "Multiplier", var = "RedSocketIn{SlotName}" }) } end,
-	["每个绿色插槽使召唤生物 (%d+)%% 的物理伤害转化为冰霜伤害"]	
-	= function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageConvertToCold", "BASE", num) },{ type = "Multiplier", var = "GreenSocketIn{SlotName}" }) } end,
-	["每个蓝色插槽使召唤生物 (%d+)%% 的物理伤害转化为闪电伤害"]	
-	= function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageConvertToLightning", "BASE", num) },{ type = "Multiplier", var = "BlueSocketIn{SlotName}" }) } end,
-	["每个白色插槽使召唤生物 (%d+)%% 的物理伤害转化为混沌伤害"]	
-	= function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageConvertToChaos", "BASE", num) },{ type = "Multiplier", var = "WhiteSocketIn{SlotName}" }) } end,
-	["旅行技能冷却回复速度提高 (%d+)%%"]= function(num) return {  mod("CooldownRecovery", "INC", num,{ type = "SkillType", skillType = SkillType.TravelSkill })  } end, 
-	["旅行技能的冷却回复速度提高 (%d+)%%"]= function(num) return {  mod("CooldownRecovery", "INC", num,{ type = "SkillType", skillType = SkillType.TravelSkill })  } end, 
-	["每个狂怒球可使旅行技能冷却回复速度提高 (%d+)%%"]= function(num) return {  mod("CooldownRecovery", "INC", tonumber(num),{ type = "SkillType", skillType = SkillType.TravelSkill },{ type = "Multiplier", var = "FrenzyCharge" })  } end, 
-	["每个狂怒球使旅行技能的冷却回复速度提高 (%d+)%%"]= function(num) return {  mod("CooldownRecovery", "INC", tonumber(num),{ type = "SkillType", skillType = SkillType.TravelSkill },{ type = "Multiplier", var = "FrenzyCharge" })  } end, 
-	["你的移动速度变为基础值的 (%d+)%%"] = function(num) return {  
-	mod("MovementSpeed", "OVERRIDE", tonumber(num)/100 )	
+	["总生命回复速度额外降低 (%d+)%%"]= function(num) return {
+	mod("LifeRecoveryRate", "MORE", -num)
 	} end,
-	["你的移动速度为基础移动速度的 (%d+)%%"] = function(num) return {  
-	mod("MovementSpeed", "OVERRIDE", tonumber(num)/100 )			 
+	["生命回复额外降低 (%d+)%%"]= function(num) return {
+	mod("LifeRecoveryRate", "MORE", -num)
+	} end,
+	["从药剂获得的生命回复额外降低 (%d+)%%"]= function(num) return {
+	mod("FlaskLifeRecovery", "MORE", -num)
+	} end,
+	["获得等同 ([%d%.]+)%% 最大生命的额外最大能量护盾"]= function(num) return {  mod("LifeGainAsEnergyShield", "BASE", num)  } end,
+	["至少有 (%d+) 点奉献时，获得等同 (%d+)%% 最大魔力的额外最大能量护盾"]= function(_,num1,num2) return {  mod("ManaGainAsEnergyShield", "BASE", tonumber(num2),{ type = "StatThreshold", stat = "Devotion", threshold = tonumber(num1) })  } end,
+	["至少 (%d+) 点奉献时，位于奉献地面之上免疫元素异常状态"]= function(num) return {
+	mod("AvoidShock", "BASE", 100,{ type = "Condition", var = "OnConsecratedGround" },{ type = "StatThreshold", stat = "Devotion", threshold = tonumber(num) })  ,
+	mod("AvoidChilled", "BASE", 100,{ type = "Condition", var = "OnConsecratedGround" },{ type = "StatThreshold", stat = "Devotion", threshold = tonumber(num) })  ,
+	mod("AvoidFrozen", "BASE", 100,{ type = "Condition", var = "OnConsecratedGround" },{ type = "StatThreshold", stat = "Devotion", threshold = tonumber(num) })  ,
+	mod("AvoidIgnite", "BASE", 100,{ type = "Condition", var = "OnConsecratedGround" },{ type = "StatThreshold", stat = "Devotion", threshold = tonumber(num) })  ,
+	} end,
+	["至少 (%d+) 点奉献时，额外获得 (%d+)%% 物理伤害减免"] = function(_,num1,num2) return {  mod("PhysicalDamageReduction", "BASE", tonumber(num2),{ type = "StatThreshold", stat = "Devotion", threshold = tonumber(num1) } )  } end,
+	["无法使用生命偷取的恢复效果"]= function(num) return {
+	mod("LifeLeechRate", "MORE", -100)
+	} end,
+	["生命偷取的每秒恢复效果每 (%d+)%% 使受到的总伤害额外降低 (%d+)%%"] = function(_,num1,num2) return {
+	mod("DamageTaken", "MORE", -tonumber(num2),{ type = "PerStat", stat = "MaxLifeLeechRatePercentage", div = tonumber(num1) },{ type = "Condition", var = "LeechingLife" } )
+	} end,
+	["从生命偷取中获得的每秒最大总恢复量额外降低 ([%d%.]+)%%"]= function(num) return {
+	mod("MaxLifeLeechRate", "MORE", -num)  } end,
+	["冰霜闪现的冷却回复速度提高 (%d+)%%"] = function(num) return {
+	mod("CooldownRecovery", "INC", num, { type = "SkillName", skillName = "冰霜闪现" })
+	} end,
+	["所有物理法术技能石等级 %+(%d+)"] = function(num) return { mod("GemProperty", "LIST",  { keyword = "physical_spell", key = "level", value = num }) } end,
+	["每个红色插槽使召唤生物 (%d+)%% 的物理伤害转化为火焰伤害"]
+	= function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageConvertToFire", "BASE", num) },{ type = "Multiplier", var = "RedSocketIn{SlotName}" }) } end,
+	["每个绿色插槽使召唤生物 (%d+)%% 的物理伤害转化为冰霜伤害"]
+	= function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageConvertToCold", "BASE", num) },{ type = "Multiplier", var = "GreenSocketIn{SlotName}" }) } end,
+	["每个蓝色插槽使召唤生物 (%d+)%% 的物理伤害转化为闪电伤害"]
+	= function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageConvertToLightning", "BASE", num) },{ type = "Multiplier", var = "BlueSocketIn{SlotName}" }) } end,
+	["每个白色插槽使召唤生物 (%d+)%% 的物理伤害转化为混沌伤害"]
+	= function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageConvertToChaos", "BASE", num) },{ type = "Multiplier", var = "WhiteSocketIn{SlotName}" }) } end,
+	["旅行技能冷却回复速度提高 (%d+)%%"]= function(num) return {  mod("CooldownRecovery", "INC", num,{ type = "SkillType", skillType = SkillType.TravelSkill })  } end,
+	["旅行技能的冷却回复速度提高 (%d+)%%"]= function(num) return {  mod("CooldownRecovery", "INC", num,{ type = "SkillType", skillType = SkillType.TravelSkill })  } end,
+	["每个狂怒球可使旅行技能冷却回复速度提高 (%d+)%%"]= function(num) return {  mod("CooldownRecovery", "INC", tonumber(num),{ type = "SkillType", skillType = SkillType.TravelSkill },{ type = "Multiplier", var = "FrenzyCharge" })  } end,
+	["每个狂怒球使旅行技能的冷却回复速度提高 (%d+)%%"]= function(num) return {  mod("CooldownRecovery", "INC", tonumber(num),{ type = "SkillType", skillType = SkillType.TravelSkill },{ type = "Multiplier", var = "FrenzyCharge" })  } end,
+	["你的移动速度变为基础值的 (%d+)%%"] = function(num) return {
+	mod("MovementSpeed", "OVERRIDE", tonumber(num)/100 )
+	} end,
+	["你的移动速度为基础移动速度的 (%d+)%%"] = function(num) return {
+	mod("MovementSpeed", "OVERRIDE", tonumber(num)/100 )
 	} end,
 	["你偷取生命，数值等同于你的地雷造成伤害的 ([%d%.]+)%%"] = function(num) return { mod("DamageLifeLeechToPlayer", "BASE", num, nil, 0, KeywordFlag.Mine) } end,
 	["地雷造成 ([%d%.]+)%% 的伤害转化为你的生命偷取"] = function(num) return { mod("DamageLifeLeechToPlayer", "BASE", num, nil, 0, KeywordFlag.Mine) } end,
 	["暴击造成异常状态时，用于暴击伤害加成的词缀也套用于持续伤害加成，等于其数值的 (%d+)%%"] = function(num) return { mod("CritMultiplierAppliesToDegen", "BASE", num) } end,
-	["暴击造成异常状态时，%+(%d+)%% 持续伤害加成"] = function(num) return {  
-	mod("DotMultiplier", "BASE", num,nil,ModFlag.Ailment, { type = "Condition", var = "CriticalStrike" }  )			 
+	["暴击造成异常状态时，%+(%d+)%% 持续伤害加成"] = function(num) return {
+	mod("DotMultiplier", "BASE", num,nil,ModFlag.Ailment, { type = "Condition", var = "CriticalStrike" }  )
 	} end,
 	["暴击伤害加成也会套用于异常状态的持续伤害加成，数值为 (%d+)%%"] = function(num) return { mod("CritMultiplierAppliesToDegen", "BASE", num) } end,
 	["周围至少有 1 个友军时，你和周围友军总伤害额外提高 (%d+)%%"] = function(num) return { mod("ExtraAura", "LIST", { mod = mod("Damage", "MORE", num) }, { type = "MultiplierThreshold", var = "NearbyAlly", threshold = 1 }) } end,
@@ -3662,12 +3664,12 @@ local specialModList = {
 	["近期每消耗 1 具灵柩，攻击和施法速度提高 (%d+)%%"] = function(num) return { mod("Speed", "INC", num,{ type = "Multiplier", var = "CorpseConsumedRecently" }) } end,
 	["异常状态伤害加成不计算来自暴击的部分"] = { flag("AilmentsAreNeverFromCrit") },
 	["你的火焰抗性为 (%d+)%%"] = function(num) return { mod("FireResist", "OVERRIDE", num) } end,
-		["你的冰霜抗性为 (%d+)%%"] = function(num) return { mod("ColdResist", "OVERRIDE", num) } end,
-		["你的闪电抗性为 (%d+)%%"] = function(num) return { mod("LightningResist", "OVERRIDE", num) } end,
+	["你的冰霜抗性为 (%d+)%%"] = function(num) return { mod("ColdResist", "OVERRIDE", num) } end,
+	["你的闪电抗性为 (%d+)%%"] = function(num) return { mod("LightningResist", "OVERRIDE", num) } end,
 	["火焰抗性 (%d+)%%"] = function(num) return { mod("FireResist", "OVERRIDE", num) } end,
 	["冰霜抗性 (%d+)%%"] = function(num) return { mod("ColdResist", "OVERRIDE", num) } end,
 	["闪电抗性 (%d+)%%"] = function(num) return { mod("LightningResist", "OVERRIDE", num) } end,
-		["混沌抗性翻倍"] = { mod("ChaosResist", "MORE", 100) },
+	["混沌抗性翻倍"] = { mod("ChaosResist", "MORE", 100) },
 	["你身上的药剂效果提高 (%d+)%%"] = function(num) return { mod("FlaskEffect", "INC", num) } end,
 	--["([%+%-]?%d+)%% 持续中毒伤害加成"] = function(num) return { mod("DotMultiplier", "BASE", num,nil,nil,  KeywordFlag.Poison) } end,
 	--["([%+%-]?%d+)%% 持续流血伤害加成"] = function(num) return { mod("DotMultiplier", "BASE", num,nil,nil,  KeywordFlag.Bleed ) } end,
@@ -3679,154 +3681,154 @@ local specialModList = {
 	["每个耐力球获得 ([%d%.]+)%% 每秒生命回复"] = function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Multiplier", var = "EnduranceCharge" })  } end,
 	["每个耐力球便使每秒回复 ([%d%.]+)%% 生命"] = function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Multiplier", var = "EnduranceCharge" })  } end,
 	["承受来自流血敌人的伤害降低 (%d+)%%"] = function(num) return { mod("DamageTaken", "INC", -num, { type = "ActorCondition", actor = "enemy", var = "Bleeding" })   } end,
-	["召唤生物有 (%d+)%% 法术伤害格挡几率"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("SpellBlockChance", "BASE", num) })   } end, 
-	["召唤生物获得 %+(%d+)%% 格挡法术伤害率"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("SpellBlockChance", "BASE", num) })   } end, 
+	["召唤生物有 (%d+)%% 法术伤害格挡几率"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("SpellBlockChance", "BASE", num) })   } end,
+	["召唤生物获得 %+(%d+)%% 格挡法术伤害率"]= function(num) return {   mod("MinionModifier", "LIST", { mod = mod("SpellBlockChance", "BASE", num) })   } end,
 	["魔像提供的增益效果提高 (%d+)%%"]  = function(num) return { mod("BuffEffect", "INC", num, { type = "SkillType", skillType = SkillType.Golem })   } end,
-	["每 (%d+) 点最大魔力会使法术伤害提高 (%d+)%%，最多 (%d+)%%"] = function(_,num1,num2,num3)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "PerStat", stat = "Mana", div = tonumber(num1), limit = tonumber(num3), limitTotal = true  }) } end,  
-	["每有 (%d+) 最大魔力，混沌伤害提高 (%d+)%% ，最多提高 (%d+)%%"] = function(_,num1,num2,num3)return {  mod("ChaosDamage", "INC", tonumber(num2), { type = "PerStat", stat = "Mana", div = tonumber(num1), limit = tonumber(num3), limitTotal = true  }) } end,  
-	["每 (%d+) 魔力提高 (%d+)%% 法术伤害，最多 (%d+)%%"] = function(_,num1,num2,num3)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "PerStat", stat = "Mana", div = tonumber(num1), limit = tonumber(num3), limitTotal = true  }) } end,  
+	["每 (%d+) 点最大魔力会使法术伤害提高 (%d+)%%，最多 (%d+)%%"] = function(_,num1,num2,num3)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "PerStat", stat = "Mana", div = tonumber(num1), limit = tonumber(num3), limitTotal = true  }) } end,
+	["每有 (%d+) 最大魔力，混沌伤害提高 (%d+)%% ，最多提高 (%d+)%%"] = function(_,num1,num2,num3)return {  mod("ChaosDamage", "INC", tonumber(num2), { type = "PerStat", stat = "Mana", div = tonumber(num1), limit = tonumber(num3), limitTotal = true  }) } end,
+	["每 (%d+) 魔力提高 (%d+)%% 法术伤害，最多 (%d+)%%"] = function(_,num1,num2,num3)return {  mod("Damage", "INC", tonumber(num2), nil,ModFlag.Spell,{ type = "PerStat", stat = "Mana", div = tonumber(num1), limit = tonumber(num3), limitTotal = true  }) } end,
 	["每 (%d+) 生命保留 %+(%d+) 最大能量护盾"] = function( _, num1,num2,limit)  return { mod("EnergyShield", "BASE", tonumber(num2), { type = "PerStat", stat = "LifeReserved", div = tonumber(num1), limit = tonumber(limit), limitTotal = true })   } end,
 	["每 (%d+) 点生命保留 %+(%d+) 最大能量护盾"] = function( _, num1,num2,limit)  return { mod("EnergyShield", "BASE", tonumber(num2), { type = "PerStat", stat = "LifeReserved", div = tonumber(num1), limit = tonumber(limit), limitTotal = true })   } end,
 	["每 (%d+) 点未保留的最大魔力使范围效果扩大 (%d+)%%，最大 (%d+)%%"] = function( _, num1,num2,limit)  return { mod("AreaOfEffect", "INC", tonumber(num2), { type = "PerStat", stat = "ManaUnreserved", div = tonumber(num1), limit = tonumber(limit), limitTotal = true })   } end,
 	["每有 (%d+) 未保留的魔力，范围效果扩大 (%d+)%%，最多 (%d+)%%"] = function( _, num1,num2,limit)  return { mod("AreaOfEffect", "INC", tonumber(num2), { type = "PerStat", stat = "ManaUnreserved", div = tonumber(num1), limit = tonumber(limit), limitTotal = true })   } end,
-	["近期你或你的召唤生物每击败 1 个敌人回复 (%d+)%% 能量护盾，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("EnergyShieldRegenPercent", "BASE", tonumber(num1), { type = "Multiplier", varList = {"EnemyKilledRecently","EnemyKilledByMinionsRecently"}, limit = tonumber(limit), limitTotal = true })   } end, 
-	["近期每有 1 个你的地雷被引爆，则每秒回复 (%d+)%% 生命，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("LifeRegenPercent", "BASE", tonumber(num1), { type = "Multiplier", var = "MineDetonatedRecently", limit = tonumber(limit), limitTotal = true })   } end, 
+	["近期你或你的召唤生物每击败 1 个敌人回复 (%d+)%% 能量护盾，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("EnergyShieldRegenPercent", "BASE", tonumber(num1), { type = "Multiplier", varList = {"EnemyKilledRecently","EnemyKilledByMinionsRecently"}, limit = tonumber(limit), limitTotal = true })   } end,
+	["近期每有 1 个你的地雷被引爆，则每秒回复 (%d+)%% 生命，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("LifeRegenPercent", "BASE", tonumber(num1), { type = "Multiplier", var = "MineDetonatedRecently", limit = tonumber(limit), limitTotal = true })   } end,
 	["近期每有 1 个你的陷阱被触发，则每秒回复 (%d+)%% 生命，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("LifeRegenPercent", "BASE", tonumber(num1), { type = "Multiplier", var = "TrapTriggeredRecently", limit = tonumber(limit), limitTotal = true })   } end,
-	["近期内，每个引爆的地雷使每秒回复 (%d+)%% 生命，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("LifeRegenPercent", "BASE", tonumber(num1), { type = "Multiplier", var = "MineDetonatedRecently", limit = tonumber(limit), limitTotal = true })   } end, 
+	["近期内，每个引爆的地雷使每秒回复 (%d+)%% 生命，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("LifeRegenPercent", "BASE", tonumber(num1), { type = "Multiplier", var = "MineDetonatedRecently", limit = tonumber(limit), limitTotal = true })   } end,
 	["近期内每个触发的陷阱使每秒回复 (%d+)%% 生命，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("LifeRegenPercent", "BASE", tonumber(num1), { type = "Multiplier", var = "TrapTriggeredRecently", limit = tonumber(limit), limitTotal = true })   } end,
-	["近期内每引爆一个地雷，暴击几率提高 (%d+)%%，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("CritChance", "INC", tonumber(num1), { type = "Multiplier", var = "MineDetonatedRecently", limit = tonumber(limit), limitTotal = true })   } end, 
-	["近期内每引爆一个地雷，([%+%-]?%d+)%% 暴击伤害加成，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("CritMultiplier", "BASE", tonumber(num1), { type = "Multiplier", var = "MineDetonatedRecently", limit = tonumber(limit), limitTotal = true })   } end, 
-	["近期每个引爆的地雷可使暴击率提高 (%d+)%%，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("CritChance", "INC", tonumber(num1), { type = "Multiplier", var = "MineDetonatedRecently", limit = tonumber(limit), limitTotal = true })   } end, 
-	["近期每个引爆的地雷可使暴击伤害 ([%+%-]?%d+)%%，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("CritMultiplier", "BASE", tonumber(num1), { type = "Multiplier", var = "MineDetonatedRecently", limit = tonumber(limit), limitTotal = true })   } end, 
-	["召唤飞掠者的魔力保留降低 (%d+)%%"] = function(num) return {  mod("ManaReserved", "INC", -num,{ type = "SkillId", skillId = "Skitterbots" })  } end, 
+	["近期内每引爆一个地雷，暴击几率提高 (%d+)%%，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("CritChance", "INC", tonumber(num1), { type = "Multiplier", var = "MineDetonatedRecently", limit = tonumber(limit), limitTotal = true })   } end,
+	["近期内每引爆一个地雷，([%+%-]?%d+)%% 暴击伤害加成，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("CritMultiplier", "BASE", tonumber(num1), { type = "Multiplier", var = "MineDetonatedRecently", limit = tonumber(limit), limitTotal = true })   } end,
+	["近期每个引爆的地雷可使暴击率提高 (%d+)%%，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("CritChance", "INC", tonumber(num1), { type = "Multiplier", var = "MineDetonatedRecently", limit = tonumber(limit), limitTotal = true })   } end,
+	["近期每个引爆的地雷可使暴击伤害 ([%+%-]?%d+)%%，最多 (%d+)%%"] = function( _, num1,limit)  return { mod("CritMultiplier", "BASE", tonumber(num1), { type = "Multiplier", var = "MineDetonatedRecently", limit = tonumber(limit), limitTotal = true })   } end,
+	["召唤飞掠者的魔力保留降低 (%d+)%%"] = function(num) return {  mod("ManaReserved", "INC", -num,{ type = "SkillId", skillId = "Skitterbots" })  } end,
 	["配置 (.+)"] =  function(_, passive) return { mod("GrantedPassive", "LIST", passive) } end,
 	["分配(.+)"] =  function(_, passive) return { mod("GrantedPassive", "LIST", passive) } end,
 	["身体幻化"] = { flag("TransfigurationOfBody") },
 	["躯体幻化"] = { flag("TransfigurationOfBody") },
-		["心灵幻化"] = { flag("TransfigurationOfMind") },
-		["灵魂幻化"] = { flag("TransfigurationOfSoul") },
-	["暴击时，有 (%d+)%% 几率获得【灵巧】状态"]= function(num) return { 
-			flag("Elusive"),
-			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "Elusive" }) 
-	    } end, 
-	["暴击时有 (%d+)%% 几率获得【灵巧】"]= function(num) return { 
-			flag("Elusive"),
-			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "Elusive" }) 
-	    } end, 
-	["暴击获得【灵巧】"]= function() return { 
-			flag("Elusive"),
-			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "Elusive" }) 
-	    } end, 
+	["心灵幻化"] = { flag("TransfigurationOfMind") },
+	["灵魂幻化"] = { flag("TransfigurationOfSoul") },
+	["暴击时，有 (%d+)%% 几率获得【灵巧】状态"]= function(num) return {
+	flag("Elusive"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "Elusive" })
+	} end,
+	["暴击时有 (%d+)%% 几率获得【灵巧】"]= function(num) return {
+	flag("Elusive"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "Elusive" })
+	} end,
+	["暴击获得【灵巧】"]= function() return {
+	flag("Elusive"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "Elusive" })
+	} end,
 	["当你施放法术, 牺牲所有魔力，附加等同於牺牲魔力 (%d+)%% 的最大闪电伤害，持续 4 秒"] =
-	 function(num)  return { mod("LightningMax", "BASE", 1, 
-	 { type = "PerStat", stat = "ManaUnreserved", div = (100/tonumber(num))})   } end,
+	function(num)  return { mod("LightningMax", "BASE", 1,
+	{ type = "PerStat", stat = "ManaUnreserved", div = (100/tonumber(num))})   } end,
 	["当你施放法术时，献祭所有魔力，获得等同于献祭魔力 (%d+)%% 的附加最大闪电伤害，持续 4 秒"] =
-	 function(num)  return { mod("LightningMax", "BASE", 1, 
-	 { type = "PerStat", stat = "ManaUnreserved", div = (100/tonumber(num))})   } end,
+	function(num)  return { mod("LightningMax", "BASE", 1,
+	{ type = "PerStat", stat = "ManaUnreserved", div = (100/tonumber(num))})   } end,
 	["最大生命和最大魔力，以及全局能量护盾提高 (%d+)%%"] =
-	 function(num)  return { 
-	 mod("Life", "INC", num),
+	function(num)  return {
+	mod("Life", "INC", num),
 	mod("Mana", "INC", num),
 	mod("EnergyShield", "INC", num,{ type = "Global" } )
-	 } end, 
+	} end,
 	["最大生命, 魔力与全域能量护盾提高 (%d+)%%"] =
-	 function(num)  return { 
-	 mod("Life", "INC", num),
+	function(num)  return {
+	mod("Life", "INC", num),
 	mod("Mana", "INC", num),
 	mod("EnergyShield", "INC", num,{ type = "Global" } )
-	 } end,
+	} end,
 	["优先使用能量护盾代替魔力消耗"] = { },
 	["周围每个灵枢使你和周围队友每秒回复 ([%d%.]+)%% 能量护盾，每秒最多 ([%d%.]+)%%"] = function(num, _, limit) return { mod("ExtraAura", "LIST", { mod = mod("EnergyShieldRegenPercent", "BASE", num) }, { type = "Multiplier", var = "NearbyCorpse", limit = tonumber(limit), limitTotal = true }) } end,
 	["周围每个灵枢使你和周围队友每秒回复 (%d+) 魔力，最多每秒 (%d+) 点"] = function(num, _, limit) return { mod("ExtraAura", "LIST", { mod = mod("ManaRegen", "BASE", num) }, { type = "Multiplier", var = "NearbyCorpse", limit = tonumber(limit), limitTotal = true }) } end,
 	["召唤生物的最大生命总值额外提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "MORE", num) })  } end,
 	["近期内你若有吞噬 1 个灵柩，你和你的召唤生物的范围效果提高 (%d+)%%"] = function(num) return { mod("AreaOfEffect", "INC", num, { type = "Condition", var = "ConsumedCorpseRecently" }), mod("MinionModifier", "LIST", { mod = mod("AreaOfEffect", "INC", num) }, { type = "Condition", var = "ConsumedCorpseRecently" }) } end,
 	["当周围有至少 1 个灵柩，你与周围友军的总伤害额外提高 (%d+)%%"] = function(num) return { mod("ExtraAura", "LIST", { mod = mod("Damage", "MORE", num) }, { type = "MultiplierThreshold", var = "NearbyCorpse", threshold = 1 }) } end,
-	["近期内，你或你的召唤生物每击败一个敌人则每秒回复你 (%d+)%% 能量护盾，每秒最多 (%d+)%%"] = function( _, num1,limit)  return { mod("EnergyShieldRegenPercent", "BASE", tonumber(num1), { type = "Multiplier", varList = {"EnemyKilledRecently","EnemyKilledByMinionsRecently"}, limit = tonumber(limit), limitTotal = true })   } end, 
-	["激活的先祖图腾使增益效果提高 (%d+)%%"] = function(num) return {  mod("BuffEffect", "INC", num,{ type = "SkillName", skillNameList = {  "先祖卫士", "先祖战士长","瓦尔.先祖战士长"  } })  } end, 
-	["新星法术的总范围效果额外缩小 (%d+)%%"] = function(num) return {  mod("AreaOfEffect", "MORE", -num,{ type = "SkillName", skillNameList = {  "冰霜新星", "瓦尔.冰霜新星 ","闪电新星", "解放","漩涡","暗夜血契","瓦尔.枯萎","震波图腾","永恒窥视","电击地面","血肉盛宴","秘术苏醒","风暴之诫","烈火之诫","雷电之诫"} })  } end, 
-	["新星法术的总范围效果缩小 (%d+)%%"] = function(num) return {  mod("AreaOfEffect", "MORE", -num,{ type = "SkillName", skillNameList = {  "冰霜新星", "瓦尔.冰霜新星 ","闪电新星", "解放","漩涡","暗夜血契","瓦尔.枯萎","震波图腾","永恒窥视","电击地面","血肉盛宴","秘术苏醒","风暴之诫","烈火之诫","雷电之诫"} })  } end, 
-	["投射物攻击近距离目标时造成的总伤害最多额外提高 30%%，但攻击远距离目标时总伤害则会额外降低"] = { flag("PointBlank") }, 
+	["近期内，你或你的召唤生物每击败一个敌人则每秒回复你 (%d+)%% 能量护盾，每秒最多 (%d+)%%"] = function( _, num1,limit)  return { mod("EnergyShieldRegenPercent", "BASE", tonumber(num1), { type = "Multiplier", varList = {"EnemyKilledRecently","EnemyKilledByMinionsRecently"}, limit = tonumber(limit), limitTotal = true })   } end,
+	["激活的先祖图腾使增益效果提高 (%d+)%%"] = function(num) return {  mod("BuffEffect", "INC", num,{ type = "SkillName", skillNameList = {  "先祖卫士", "先祖战士长","瓦尔.先祖战士长"  } })  } end,
+	["新星法术的总范围效果额外缩小 (%d+)%%"] = function(num) return {  mod("AreaOfEffect", "MORE", -num,{ type = "SkillName", skillNameList = {  "冰霜新星", "瓦尔.冰霜新星 ","闪电新星", "解放","漩涡","暗夜血契","瓦尔.枯萎","震波图腾","永恒窥视","电击地面","血肉盛宴","秘术苏醒","风暴之诫","烈火之诫","雷电之诫"} })  } end,
+	["新星法术的总范围效果缩小 (%d+)%%"] = function(num) return {  mod("AreaOfEffect", "MORE", -num,{ type = "SkillName", skillNameList = {  "冰霜新星", "瓦尔.冰霜新星 ","闪电新星", "解放","漩涡","暗夜血契","瓦尔.枯萎","震波图腾","永恒窥视","电击地面","血肉盛宴","秘术苏醒","风暴之诫","烈火之诫","雷电之诫"} })  } end,
+	["投射物攻击近距离目标时造成的总伤害最多额外提高 30%%，但攻击远距离目标时总伤害则会额外降低"] = { flag("PointBlank") },
 	["敌人对你的击中有 %-(%d+)%% 总物理伤害减伤"] = function(num) return {  mod("EnemyPhysicalDamageReduction", "BASE", -num)  }
-	 end,   
+	end,
 	["敌人对抗该武器击中的总物理伤害减免 %-(%d+)%%"] = function(num) return {  mod("EnemyPhysicalDamageReduction", "BASE", -num, { type = "Condition", var = "{Hand}Attack" })  }
-	 end,   	
+	end,
 	["你创造的【护体】改为使总闪避值额外提高 30%%"] =  { flag("FortifyBuffInsteadGrantEvasionRating") },
 	["压制敌人 (%d+)%% 总物理伤害减免"] = function(num) return {  mod("EnemyPhysicalDamageReduction", "BASE", -num)  }
-	 end,   
-	["站定时，脚下产生真菌地表"] = function() return { 
-		flag("Condition:OnFungalGround"),
-		mod("ExtraAura", "LIST",{ mod =mod("NonChaosDamageGainAsChaos", "BASE", 10), onlyAllies = true} ,{ type = "Condition", var = "OnFungalGround" }),
-		mod("EnemyModifier", "LIST", { mod = mod("Damage", "MORE", -10, {type = "ActorCondition", actor = "enemy", var = "OnFungalGround"})})
-		} end,
+	end,
+	["站定时，脚下产生真菌地表"] = function() return {
+	flag("Condition:OnFungalGround"),
+	mod("ExtraAura", "LIST",{ mod =mod("NonChaosDamageGainAsChaos", "BASE", 10), onlyAllies = true} ,{ type = "Condition", var = "OnFungalGround" }),
+	mod("EnemyModifier", "LIST", { mod = mod("Damage", "MORE", -10, {type = "ActorCondition", actor = "enemy", var = "OnFungalGround"})})
+	} end,
 	["近期内如果没有被击中，则承受的总伤害额外降低 (%d+)%%"] = function(num) return {  mod("DamageTaken", "MORE", -num,{ type = "Condition", var = "BeenHitRecently", neg = true })  }
-	 end,   
-	["近期内如果没有被击中，则总闪避值额外降低 (%d+)%%"] = function(num) return {  mod("Evasion", "MORE", -num,{ type = "Condition", var = "BeenHitRecently", neg = true })  } end,   
+	end,
+	["近期内如果没有被击中，则总闪避值额外降低 (%d+)%%"] = function(num) return {  mod("Evasion", "MORE", -num,{ type = "Condition", var = "BeenHitRecently", neg = true })  } end,
 	["盾牌上每有 (%d+) 护甲或闪避值可使攻击伤害提高 (%d+)%%"]= function(_,num1,num2) return {  mod("Damage", "INC", tonumber(num2),{ type = "PerStat", stat = "EvasionOnWeapon 2", div = tonumber(num1) } ),
 	mod("Damage", "INC", tonumber(num2),{ type = "PerStat", stat = "ArmourOnWeapon 2", div = tonumber(num1) } )
-	  }end,
+	}end,
 	["盾牌上每有 (%d+) 能量护盾可获得 %+(%d+)%% 暴击伤害"]= function(_,num1,num2) return {  mod("CritMultiplier", "BASE", tonumber(num2),{ type = "PerStat", stat = "EnergyShieldOnWeapon 2", div = tonumber(num1) } )  }end,
 	["若你已经持续吟唱至少 1 秒,则 %+(%d+)%% 暴击伤害"]= function(num) return {  mod("CritMultiplier", "BASE", tonumber(num),{ type = "Condition", var = "OnChannelling" } )  }end,
 	["持锤, 短杖或长杖时有 (%d+)%% 几率造成双倍伤害"] = function(num) return {  mod("DoubleDamageChance", "BASE", tonumber(num),{ type = "Condition", varList = { "UsingMace", "UsingStaff" } } )  }end,
 	["法杖攻击有 (%d+)%% 的物理伤害转换为闪电伤害"] = function(num) return {  mod("PhysicalDamageConvertToLightning", "BASE", num,nil, ModFlag.Wand)  } end,
 	["无法造成点燃，冰缓，冰冻或感电"]  = { flag("CannotFreeze"), flag("CannotChill"),flag("CannotIgnite"),flag("CannotShock") },
-	["攻击投射物必定造成流血和瘫痪，和击退敌人"] =function() return { 
-	 mod("BleedChance", "BASE", 100, nil,  bor(ModFlag.Projectile, ModFlag.Attack)),
+	["攻击投射物必定造成流血和瘫痪，和击退敌人"] =function() return {
+	mod("BleedChance", "BASE", 100, nil,  bor(ModFlag.Projectile, ModFlag.Attack)),
 	mod("EnemyKnockbackChance", "BASE", 100, nil,  bor(ModFlag.Projectile, ModFlag.Attack)),
 	mod("EnemyModifier", "LIST", { mod = mod("Condition:Maimed", "FLAG", true) }, nil,  bor(ModFlag.Projectile, ModFlag.Attack)),
 	} end,
 	["投射物无法穿透, 分裂或连锁"]  = { flag("CannotPierce", nil, ModFlag.Projectile), flag("CannotFork", nil, ModFlag.Projectile),flag("CannotChain", nil, ModFlag.Projectile) },
 	["若近期有击败敌人，则每秒回复 (%d+)%% 能量护盾"] = function(num) return {  mod("EnergyShieldRegenPercent", "BASE", num,{ type = "Condition", var = "KilledRecently" })  } end,
 	["你若近期内击败过敌人，则每秒回复 (%d+)%% 能量护盾"] = function(num) return {  mod("EnergyShieldRegenPercent", "BASE", num,{ type = "Condition", var = "KilledRecently" })  } end,
-	["每个聚光之石都使暴击率提高 (%d+)%%"] = function(num) return {  
-				mod("CritChance", "INC", num, { type = "Multiplier", var = "GrandSpectrum" }), 
-				mod("Multiplier:GrandSpectrum", "BASE", 1) 
-		} end,
-	["每 1 个聚光之石可使暴击几率提高 (%d+)%%"] = function(num) return {  
-			mod("CritChance", "INC", num, { type = "Multiplier", var = "GrandSpectrum" }), 
-			mod("Multiplier:GrandSpectrum", "BASE", 1) 
+	["每个聚光之石都使暴击率提高 (%d+)%%"] = function(num) return {
+	mod("CritChance", "INC", num, { type = "Multiplier", var = "GrandSpectrum" }),
+	mod("Multiplier:GrandSpectrum", "BASE", 1)
 	} end,
-	["每 1 个聚光之石获得 %+(%d+)%% 元素抗性"] = function(num) return {  
-			mod("ElementalResist", "BASE", num, { type = "Multiplier", var = "GrandSpectrum" }), 
-			mod("Multiplier:GrandSpectrum", "BASE", 1) 
+	["每 1 个聚光之石可使暴击几率提高 (%d+)%%"] = function(num) return {
+	mod("CritChance", "INC", num, { type = "Multiplier", var = "GrandSpectrum" }),
+	mod("Multiplier:GrandSpectrum", "BASE", 1)
 	} end,
-	["每个聚光之石都 %+(%d+)%% 所有元素抗性"] = function(num) return {  
-			mod("ElementalResist", "BASE", num, { type = "Multiplier", var = "GrandSpectrum" }), 
-			mod("Multiplier:GrandSpectrum", "BASE", 1) 
+	["每 1 个聚光之石获得 %+(%d+)%% 元素抗性"] = function(num) return {
+	mod("ElementalResist", "BASE", num, { type = "Multiplier", var = "GrandSpectrum" }),
+	mod("Multiplier:GrandSpectrum", "BASE", 1)
+	} end,
+	["每个聚光之石都 %+(%d+)%% 所有元素抗性"] = function(num) return {
+	mod("ElementalResist", "BASE", num, { type = "Multiplier", var = "GrandSpectrum" }),
+	mod("Multiplier:GrandSpectrum", "BASE", 1)
 	} end,
 	["每 1 个聚光之石可使元素伤害提高 (%d+)%%"] = function(num) return {  --备注：(%d+)%% increased elemental damage per grand spectrum
-			mod("ElementalDamage", "INC", num, { type = "Multiplier", var = "GrandSpectrum" }), 
-			mod("Multiplier:GrandSpectrum", "BASE", 1) 
-		} end,
-	["持法杖时，对法术伤害的增幅与减益也会套用于攻击上"] = { 
-	flag("SpellDamageAppliesToAttacks",{ type = "Condition", var = "UsingWand" }), 
+	mod("ElementalDamage", "INC", num, { type = "Multiplier", var = "GrandSpectrum" }),
+	mod("Multiplier:GrandSpectrum", "BASE", 1)
+	} end,
+	["持法杖时，对法术伤害的增幅与减益也会套用于攻击上"] = {
+	flag("SpellDamageAppliesToAttacks",{ type = "Condition", var = "UsingWand" }),
 	mod("ImprovedSpellDamageAppliesToAttacks", "INC", 100,{ type = "Condition", var = "UsingWand" }) },
-		["increases and reductions to cast speed apply to attack speed at (%d+)%% of their value"] =  function(num) return { flag("CastSpeedAppliesToAttacks"), mod("ImprovedCastSpeedAppliesToAttacks", "INC", num) } end,
-		["对法术伤害的增幅与减益也会套用于攻击上"] = { flag("SpellDamageAppliesToAttacks"), mod("ImprovedSpellDamageAppliesToAttacks", "INC", 100) },
-		["对法术伤害的增幅与减益也套用于攻击，等于其数值的 (%d+)%%"] = function(num) return { flag("SpellDamageAppliesToAttacks"), mod("ImprovedSpellDamageAppliesToAttacks", "INC", num) } end,
+	["increases and reductions to cast speed apply to attack speed at (%d+)%% of their value"] =  function(num) return { flag("CastSpeedAppliesToAttacks"), mod("ImprovedCastSpeedAppliesToAttacks", "INC", num) } end,
+	["对法术伤害的增幅与减益也会套用于攻击上"] = { flag("SpellDamageAppliesToAttacks"), mod("ImprovedSpellDamageAppliesToAttacks", "INC", 100) },
+	["对法术伤害的增幅与减益也套用于攻击，等于其数值的 (%d+)%%"] = function(num) return { flag("SpellDamageAppliesToAttacks"), mod("ImprovedSpellDamageAppliesToAttacks", "INC", num) } end,
 	["对法术伤害的增幅与减益也会套用于攻击上，相当于其效果的 (%d+)%%"] = function(num) return { flag("SpellDamageAppliesToAttacks"), mod("ImprovedSpellDamageAppliesToAttacks", "INC", num) } end,
-	["你的光环技能被禁用"] = { flag("DisableSkill", { type = "SkillType", skillType = SkillType.Aura}) }, 
-	["你身上的捷技能增益的总效果额外提高 (%d+)%%"] = function(num) return {  
-			mod("BuffEffect", "MORE", num, { type = "SkillType", skillType = SkillType.Herald }),		 
+	["你的光环技能被禁用"] = { flag("DisableSkill", { type = "SkillType", skillType = SkillType.Aura}) },
+	["你身上的捷技能增益的总效果额外提高 (%d+)%%"] = function(num) return {
+	mod("BuffEffect", "MORE", num, { type = "SkillType", skillType = SkillType.Herald }),
 	} end,
-	["捷技能的总击中伤害额外提高 (%d+)%%"] = function(num) return {  
-			mod("Damage", "MORE", num,nil, ModFlag.Hit, { type = "SkillType", skillType = SkillType.Herald }),		 
+	["捷技能的总击中伤害额外提高 (%d+)%%"] = function(num) return {
+	mod("Damage", "MORE", num,nil, ModFlag.Hit, { type = "SkillType", skillType = SkillType.Herald }),
 	} end,
-	["捷技能的总持续伤害额外提高 (%d+)%%"] = function(num) return {  
-			mod("Damage", "MORE", num,nil, ModFlag.Dot, { type = "SkillType", skillType = SkillType.Herald }),		 
+	["捷技能的总持续伤害额外提高 (%d+)%%"] = function(num) return {
+	mod("Damage", "MORE", num,nil, ModFlag.Dot, { type = "SkillType", skillType = SkillType.Herald }),
 	} end,
-	["捷技能的召唤生物总伤害额外提高 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "MORE", num )}, { type = "SkillType", skillType = SkillType.Herald })  } end, 
-	["每 (%d+) 智慧使冰霜伤害提高 (%d+)%%"] =function(_,num1,num2) return {  mod("ColdDamage", "INC", tonumber(num2),{ type = "PerStat", stat = "Int", div = tonumber(num1) })  } end, 
-	["每 (%d+) 力量使冰霜伤害提高 (%d+)%%"] =function(_,num1,num2) return {  mod("ColdDamage", "INC", tonumber(num2),{ type = "PerStat", stat = "Str", div = tonumber(num1) })  } end, 
-	["每 (%d+) 敏捷使冰霜伤害提高 (%d+)%%"] =function(_,num1,num2) return {  mod("ColdDamage", "INC", tonumber(num2),{ type = "PerStat", stat = "Dex", div = tonumber(num1) })  } end, 
+	["捷技能的召唤生物总伤害额外提高 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "MORE", num )}, { type = "SkillType", skillType = SkillType.Herald })  } end,
+	["每 (%d+) 智慧使冰霜伤害提高 (%d+)%%"] =function(_,num1,num2) return {  mod("ColdDamage", "INC", tonumber(num2),{ type = "PerStat", stat = "Int", div = tonumber(num1) })  } end,
+	["每 (%d+) 力量使冰霜伤害提高 (%d+)%%"] =function(_,num1,num2) return {  mod("ColdDamage", "INC", tonumber(num2),{ type = "PerStat", stat = "Str", div = tonumber(num1) })  } end,
+	["每 (%d+) 敏捷使冰霜伤害提高 (%d+)%%"] =function(_,num1,num2) return {  mod("ColdDamage", "INC", tonumber(num2),{ type = "PerStat", stat = "Dex", div = tonumber(num1) })  } end,
 	["持爪或匕首时，攻击技能发射一个额外的投射物"]=  function() return { mod("ExtraSkillMod", "LIST", { mod = mod("ProjectileCount", "BASE", 1,{ type = "SkillType", skillType = SkillType.Attack }) },   { type = "Condition", varList ={ "UsingClaw", "UsingDagger" } } ) } end,
 	["爪或匕首攻击时，([%+%-]?%d+)%% 暴击伤害"] = function(num) return {  mod("CritMultiplier", "BASE", num,nil, ModFlag.Hit,{ type = "ModFlagOr", modFlags = bor(ModFlag.Claw, ModFlag.Dagger) } )  } end,
 	["对被嘲讽敌人, ([%+%-]?%d+)%% 暴击伤害"] = function(num) return { mod("CritMultiplier", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Taunted" }) } end,
 	["【两手空空】状态下视为双持"] = function() return {  mod("Condition:DualWielding", "FLAG", true)  } end,
-	["【两手空空】状态下总攻击速度额外提高 (%d+)%%"] =function(num) return {  mod("Speed", "MORE", tonumber(num),nil,ModFlag.Attack,{ type = "Condition", var = "Unencumbered" })  } end, 
+	["【两手空空】状态下总攻击速度额外提高 (%d+)%%"] =function(num) return {  mod("Speed", "MORE", tonumber(num),nil,ModFlag.Attack,{ type = "Condition", var = "Unencumbered" })  } end,
 	["【两手空空】状态下每 (%d+) 点敏捷附加 (%d+) %- (%d+) 攻击物理伤害"] =function(_,num1,num2,num3) return {  mod("PhysicalMax", "BASE", tonumber(num3),{ type = "PerStat", stat = "Dex", div = tonumber(num1) },{ type = "Condition", var = "Unencumbered" }),
-		mod("PhysicalMin", "BASE", tonumber(num2),{ type = "PerStat", stat = "Dex", div = tonumber(num1) },{ type = "Condition", var = "Unencumbered" }),  } end, 
+	mod("PhysicalMin", "BASE", tonumber(num2),{ type = "PerStat", stat = "Dex", div = tonumber(num1) },{ type = "Condition", var = "Unencumbered" }),  } end,
 	["受到你诅咒的敌人承受的伤害提高 (%d+)%%"] = function(num) return { mod("AffectedByCurseMod", "LIST", { mod = mod("DamageTaken", "INC", num) }) } end,
-	["每保留有 1 次连锁，则投射物伤害提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num, nil, ModFlag.Projectile, { type = "PerStat", stat = "ChainRemaining" }) } end, 
+	["每保留有 1 次连锁，则投射物伤害提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num, nil, ModFlag.Projectile, { type = "PerStat", stat = "ChainRemaining" }) } end,
 	["面对被诅咒的敌人，有 (%d+)%% 几率躲避攻击击中"] = function(num) return { mod("AttackDodgeChance", "BASE",num,  { type = "ActorCondition", actor = "enemy", var = "Cursed" } ) } end,
 	["对被诅咒的敌人有 (%d+)%% 几率躲避攻击"] = function(num) return { mod("AttackDodgeChance", "BASE",num,  { type = "ActorCondition", actor = "enemy", var = "Cursed" } ) } end,
 	["诅咒技能石降低 (%d+)%% 魔力保留"]=function(num) return {  mod("ManaReserved", "INC", -num,nil,nil,KeywordFlag.Curse  )  } end,
@@ -3838,32 +3840,32 @@ local specialModList = {
 	["你技能的非诅咒类光环效果提高 (%d+)%%"]= function(num) return {  mod("AuraEffect", "INC", tonumber(num),{ type = "SkillType", skillType = SkillType.Aura }, { type = "SkillType", skillType = SkillType.AppliesCurse, neg = true } )  } end,
 	["每受到一个捷技能影响，你身上的来自光环技能的增益效果提高 (%d+)%%"] =function(num) return {  mod("AuraEffectOnSelf", "INC", num,nil,nil,KeywordFlag.Aura,{ type = "Multiplier", var = "AffectedByHeraldCount" }  )  } end,
 	["每有一个影响你的捷效果都使你身上来自技能的光环增益效果提高 (%d+)%%"] =function(num) return {  mod("AuraEffectOnSelf", "INC", num,nil,nil,KeywordFlag.Aura,{ type = "Multiplier", var = "AffectedByHeraldCount" }  )  } end,
-	["你的光环技能对自身造成的总效果额外提高 (%d+)%%"]= function(num) return { 
-	 mod("SkillAuraEffectOnSelf", "MORE", num,nil,nil,KeywordFlag.Aura)
-	 } end, 
+	["你的光环技能对自身造成的总效果额外提高 (%d+)%%"]= function(num) return {
+	mod("SkillAuraEffectOnSelf", "MORE", num,nil,nil,KeywordFlag.Aura)
+	} end,
 	["召唤生物身上的光环效果提高 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("AuraEffectOnSelf", "INC", num) })  } end,
 	["召唤生物身上的来自你技能的光环效果提高 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("AuraEffectOnSelf", "INC", num, num,nil,nil,KeywordFlag.Aura) })  } end,
-	["最近8秒内你若有使用战吼，则获得 (%d+)%% 额外物理伤害减伤"]= function(num) return { mod("PhysicalDamageReduction", "BASE", num, { type = "Condition", var = "UsedWarcryInPast8Seconds" } ) } end, 
-	["命中值提高 (%d+)%%"]= function(num) return { mod("Accuracy", "INC", num,{ type = "Global" } ) } end, 
-	["近期内你若有使用战吼，([%+%-]?%d+)%% 近战暴击伤害"]= function(num) return { mod("CritMultiplier", "BASE", num,nil,ModFlag.Melee , { type = "Condition", var = "UsedWarcryRecently" } ) } end, 
-	 ["你和周围友军的暴击几率提高 (%d+)%%"] = function(num) return {  
-		 mod("ExtraAura", "LIST", { mod =  mod("CritChance", "INC", num) }) ,
-		 } end, 
-	["你和周围友军 ([%+%-]?%d+)%% 暴击伤害"] = function(num) return {  
-		 mod("ExtraAura", "LIST", { mod =  mod("CritMultiplier", "BASE", num) }) ,
-		 } end, 
+	["最近8秒内你若有使用战吼，则获得 (%d+)%% 额外物理伤害减伤"]= function(num) return { mod("PhysicalDamageReduction", "BASE", num, { type = "Condition", var = "UsedWarcryInPast8Seconds" } ) } end,
+	["命中值提高 (%d+)%%"]= function(num) return { mod("Accuracy", "INC", num,{ type = "Global" } ) } end,
+	["近期内你若有使用战吼，([%+%-]?%d+)%% 近战暴击伤害"]= function(num) return { mod("CritMultiplier", "BASE", num,nil,ModFlag.Melee , { type = "Condition", var = "UsedWarcryRecently" } ) } end,
+	["你和周围友军的暴击几率提高 (%d+)%%"] = function(num) return {
+	mod("ExtraAura", "LIST", { mod =  mod("CritChance", "INC", num) }) ,
+	} end,
+	["你和周围友军 ([%+%-]?%d+)%% 暴击伤害"] = function(num) return {
+	mod("ExtraAura", "LIST", { mod =  mod("CritMultiplier", "BASE", num) }) ,
+	} end,
 	["旗帜技能的魔力保留降低 (%d+)%% "]=function(num) return {  mod("ManaReserved", "INC", -num,{ type = "SkillName", skillNameList = { "恐怖之旗", "战旗" } } )  } end,
 	["旗帜技能的魔力保留降低 (%d+)%%"]=function(num) return {  mod("ManaReserved", "INC", -num,{ type = "SkillName", skillNameList = { "恐怖之旗", "战旗" } } )  } end,
-	["伤害型异常状态生效速度加快 (%d+)%%"]= function(num) return { 
-		mod("PoisonFaster", "INC", tonumber(num)) ,
-		mod("IgniteBurnFaster", "INC", tonumber(num)) ,
-		mod("BleedFaster", "INC", tonumber(num)) ,
-		 } end, 
-	["异常造成的伤害的消失速度加快 (%d+)%%"]= function(num) return { 
-		mod("PoisonFaster", "INC", tonumber(num)) ,
-		mod("IgniteBurnFaster", "INC", tonumber(num)) ,
-		mod("BleedFaster", "INC", tonumber(num)) ,
-		 } end, 
+	["伤害型异常状态生效速度加快 (%d+)%%"]= function(num) return {
+	mod("PoisonFaster", "INC", tonumber(num)) ,
+	mod("IgniteBurnFaster", "INC", tonumber(num)) ,
+	mod("BleedFaster", "INC", tonumber(num)) ,
+	} end,
+	["异常造成的伤害的消失速度加快 (%d+)%%"]= function(num) return {
+	mod("PoisonFaster", "INC", tonumber(num)) ,
+	mod("IgniteBurnFaster", "INC", tonumber(num)) ,
+	mod("BleedFaster", "INC", tonumber(num)) ,
+	} end,
 	["箭矢飞得越远，暴击率越高，暴击率最多提高 (%d+)%%"] = function(num) return { mod("CritChance", "INC", num, nil, bor(ModFlag.Attack, ModFlag.Projectile,ModFlag.Bow), { type = "DistanceRamp", ramp = {{35,0},{70,1}} }) } end,
 	["箭矢投射物的暴击几率随着飞行距离提升，击中目标时最多提高 (%d+)%%"] = function(num) return { mod("CritChance", "INC", num, nil, bor(ModFlag.Attack, ModFlag.Projectile,ModFlag.Bow), { type = "DistanceRamp", ramp = {{35,0},{70,1}} }) } end,
 	["箭矢的伤害随着飞行距离提升，击中目标时最多提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num, nil, bor(ModFlag.Attack, ModFlag.Projectile,ModFlag.Bow), { type = "DistanceRamp", ramp = {{35,0},{70,1}} }) } end,
@@ -3873,64 +3875,64 @@ local specialModList = {
 	["斧类攻击造成的击中和异常状态伤害提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num, nil,ModFlag.Axe,bor(KeywordFlag.Hit, KeywordFlag.Ailment)) } end,
 	["剑类攻击造成的击中和异常状态伤害提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num, nil,ModFlag.Sword,bor(KeywordFlag.Hit, KeywordFlag.Ailment)) } end,
 	["锤类或短杖攻击造成的击中和异常状态伤害提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num, nil,ModFlag.Mace,bor(KeywordFlag.Hit, KeywordFlag.Ailment)) } end,
-	["%+(%d+) 武器范围"]= function(num) return {  mod("MeleeWeaponRange", "BASE", num )  } end, 
+	["%+(%d+) 武器范围"]= function(num) return {  mod("MeleeWeaponRange", "BASE", num )  } end,
 	["被你穿刺的敌人对穿刺伤害有获得 %-(%d+)%% 总物理伤害减伤"] = function(num) return {
-			mod("EnemyImpalePhysicalDamageReduction", "BASE", -num)
-		} end,
+	mod("EnemyImpalePhysicalDamageReduction", "BASE", -num)
+	} end,
 	["你造成的穿刺伤害压制敌人 (%d+)%% 总物理伤害减免"] = function(num) return {
-			mod("EnemyImpalePhysicalDamageReduction", "BASE", -num)
-		} end,	
+	mod("EnemyImpalePhysicalDamageReduction", "BASE", -num)
+	} end,
 	["你对已穿刺的敌人造成的穿刺伤害压制 (%d+)%% 物理伤害减免"] = function(num) return {
-			mod("EnemyImpalePhysicalDamageReduction", "BASE", -num)
-		} end,	
+	mod("EnemyImpalePhysicalDamageReduction", "BASE", -num)
+	} end,
 	["双手武器攻击击中时有 (%d+)%% 几率穿刺敌人"] = function(num) return { mod("ImpaleChance", "BASE", num,nil, ModFlag.Weapon2H) } end,
 	["穿刺持续时间延长 (%d+)%%"] = function(num) return { mod("ImpaleDuration", "INC", num) } end,
-	["【召唤纯净哨兵】的技能冷却速度提高 (%d+)%%"] = function(num) return { 
-	 mod("MinionModifier", "LIST", { mod = mod("CooldownRecovery", "INC", num) }, { type = "SkillId", skillId = "HeraldOfPurity" })   } end,
+	["【召唤纯净哨兵】的技能冷却速度提高 (%d+)%%"] = function(num) return {
+	mod("MinionModifier", "LIST", { mod = mod("CooldownRecovery", "INC", num) }, { type = "SkillId", skillId = "HeraldOfPurity" })   } end,
 	["在任何生命药剂作用时间内，获得护体效果"] = { flag("Condition:Fortify",{ type = "Condition", var = "UsingLifeFlask" } ) },
 	-- 友军问题 暂时不解析
 	-- ["周围友军击中造成的伤害特别幸运"] = { mod("ExtraAura", "LIST", { onlyAllies = true, mod = mod("LuckyHits", "FLAG", true) }) },
 	["非暴击造成的闪电伤害特别幸运"] = { flag("LightningNoCritLucky") },
 	["非暴击造成的闪电伤害是幸运的"] = { flag("LightningNoCritLucky") },
-	["每受到一个捷技能影响，召唤生物的移动速度提高 (%d+)%%"] 
-		= function(num) return { mod("MinionModifier", "LIST", { 
-		mod = mod("MovementSpeed", "INC", num, { type = "Multiplier", var = "AffectedByHeraldCount", actor = "parent" }) }) } end,
+	["每受到一个捷技能影响，召唤生物的移动速度提高 (%d+)%%"]
+	= function(num) return { mod("MinionModifier", "LIST", {
+	mod = mod("MovementSpeed", "INC", num, { type = "Multiplier", var = "AffectedByHeraldCount", actor = "parent" }) }) } end,
 	["你受捷影响时，召唤生物的伤害提高 (%d+)%%"] = function(num) return {
-		mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num, 
-		{ type = "ActorCondition", actor = "parent", var = "AffectedByHerald" }) }) } end,
+	mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num,
+	{ type = "ActorCondition", actor = "parent", var = "AffectedByHerald" }) }) } end,
 	["你受到捷技能影响时，召唤生物的伤害提高 (%d+)%%"] = function(num) return {
-		mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num, 
-		{ type = "ActorCondition", actor = "parent", var = "AffectedByHerald" }) }) } end,
+	mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num,
+	{ type = "ActorCondition", actor = "parent", var = "AffectedByHerald" }) }) } end,
 	["每个召唤的魔像可使它们为你提供的增益效果提高 (%d+)%%"] = function(num) return {
-			mod("BuffEffect", "INC", num,{ type = "SkillType", skillType = SkillType.Golem } , { type = "PerStat", stat = "ActiveGolemLimit" } )
-		} end,
+	mod("BuffEffect", "INC", num,{ type = "SkillType", skillType = SkillType.Golem } , { type = "PerStat", stat = "ActiveGolemLimit" } )
+	} end,
 	["每个召唤的魔像可使它们为你提供的增益效果提高 (%d+)%%"] = function(num) return {
-			mod("BuffEffect", "INC", num,{ type = "SkillType", skillType = SkillType.Golem } , { type = "PerStat", stat = "ActiveGolemLimit" } )
-		} end,	
-	["每个召唤出的魔像可使魔像伤害提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) }, 
+	mod("BuffEffect", "INC", num,{ type = "SkillType", skillType = SkillType.Golem } , { type = "PerStat", stat = "ActiveGolemLimit" } )
+	} end,
+	["每个召唤出的魔像可使魔像伤害提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Damage", "INC", num) },
 	{ type = "SkillType", skillType = SkillType.Golem }, { type = "PerStat", stat = "ActiveGolemLimit" }) } end,
 	["每个召唤的魔像可使伤害提高 (%d+)%%"] = function(num) return {
-			mod("Damage", "INC", num, { type = "PerStat", stat = "ActiveGolemLimit" } )
-		} end,
+	mod("Damage", "INC", num, { type = "PerStat", stat = "ActiveGolemLimit" } )
+	} end,
 	["当你有召唤的魔像存在时，伤害提高 (%d+)%%"] = function(num) return {
-			mod("Damage", "INC", num,{ type = "Condition", varList = { "HavePhysicalGolem", "HaveLightningGolem", "HaveColdGolem", "HaveFireGolem", "HaveChaosGolem", "HaveCarrionGolem" } }  )
-		} end,	
+	mod("Damage", "INC", num,{ type = "Condition", varList = { "HavePhysicalGolem", "HaveLightningGolem", "HaveColdGolem", "HaveFireGolem", "HaveChaosGolem", "HaveCarrionGolem" } }  )
+	} end,
 	["击中时有 (%d+)%% 机率造成凋零，持续 (%d+) 秒"] = function(num) return {
-			flag("Condition:CanWither"),
-			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanWither" }) 
-		} end,
+	flag("Condition:CanWither"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanWither" })
+	} end,
 	["击中有 (%d+)%% 几率施加【枯萎】，持续 (%d+) 秒"] = function(num) return {
-			flag("Condition:CanWither"),
-			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanWither" }) 
-		} end,	
-	 ["你对敌人造成的每个凋零使其承受的击中元素伤害提高 (%d+)%%"] = function(num) return {
-	 mod("ExtraSkillMod", "LIST", { 
-	 mod = mod("ElementalDamageTaken", "INC", tonumber(num), 
-	 { type = "GlobalEffect", effectType = "Debuff", effectName = "死亡凋零", effectStackVar = "WitheredStack" }) }) } end,
-	 ["给敌人施加的每个【枯萎】都使它们从你的击中中受到的元素伤害提高 (%d+)%%"] = function(num) return {
-	 mod("ExtraSkillMod", "LIST", { 
-	 mod = mod("ElementalDamageTaken", "INC", tonumber(num), 
-	 { type = "GlobalEffect", effectType = "Debuff", effectName = "死亡凋零", effectStackVar = "WitheredStack" }) }) } end,
+	flag("Condition:CanWither"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanWither" })
+	} end,
+	["你对敌人造成的每个凋零使其承受的击中元素伤害提高 (%d+)%%"] = function(num) return {
+	mod("ExtraSkillMod", "LIST", {
+	mod = mod("ElementalDamageTaken", "INC", tonumber(num),
+	{ type = "GlobalEffect", effectType = "Debuff", effectName = "死亡凋零", effectStackVar = "WitheredStack" }) }) } end,
+	["给敌人施加的每个【枯萎】都使它们从你的击中中受到的元素伤害提高 (%d+)%%"] = function(num) return {
+	mod("ExtraSkillMod", "LIST", {
+	mod = mod("ElementalDamageTaken", "INC", tonumber(num),
+	{ type = "GlobalEffect", effectType = "Debuff", effectName = "死亡凋零", effectStackVar = "WitheredStack" }) }) } end,
 	["你的击中无法穿透或忽视元素抗性"] = { flag("CannotIgnoreElementalResistances"),flag("CannotElementalPenetration")},
 	["你的击中无法穿透或无视元素抗性"] = { flag("CannotIgnoreElementalResistances"),flag("CannotElementalPenetration")},
 	["无法造成非闪电伤害"] = {  flag("DealNoCold"), flag("DealNoFire"), flag("DealNoPhysical"), flag("DealNoChaos")},
@@ -3941,201 +3943,216 @@ local specialModList = {
 	["周围敌人的闪电抗性等同于你的闪电抗性"] = {
 	flag("LightningResistIsEnemy")
 	},
-	["用该武器击中时，获得额外冰霜或闪电伤害，其数值等同于物理伤害的 (%d+)%%"]= function(num) return { 
-	  mod("PhysicalDamageGainAsCold", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementCold" }),
-	  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementLightning" }), 
-	 } end, 
+	["用该武器击中时，获得额外冰霜或闪电伤害，其数值等同于物理伤害的 (%d+)%%"]= function(num) return {
+	mod("PhysicalDamageGainAsCold", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementCold" }),
+	mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num), nil, ModFlag.Weapon,{ type = "Condition", var = "PhysicsRandomElementLightning" }),
+	} end,
 	["击中流血敌人时触发 (%d+) 级的【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end, --备注：triggers? level (%d+) (.+) when you kill a bleeding enemy
-	["当召唤生物有能量护盾时，它们的击中无视怪物的元素抗性"] = function() return { 
-		mod("MinionModifier", "LIST", { mod = flag("IgnoreElementalResistances",{ type = "StatThreshold", stat = "EnergyShield", threshold = 1 } ) })  } end,
-	["召唤生物有能量护盾时，它们的击中无视怪物的元素抗"] = function() return { 
-		mod("MinionModifier", "LIST", { mod = flag("IgnoreElementalResistances",{ type = "StatThreshold", stat = "EnergyShield", threshold = 1 } ) })  } end,
-	["召唤生物的能量护盾提前 (%d+)%% 开始回复"] = function(_,num) return 
-		{ mod("MinionModifier", "LIST", { mod =  mod("EnergyShieldRechargeFaster", "INC", tonumber(num)	)  })  } end,
-	["召唤生物每有 (%d+)%% 混沌抗性，转换 (%d+)%% 最大生命为最大能量护盾"] = function(_,num1,num2) return 
-		{ mod("MinionModifier", "LIST", { mod =  mod("LifeConvertToEnergyShield", "BASE", tonumber(num2)	
-		,{ type = "PerStat", stat = "ChaosResist", div = tonumber(num1) }
-		)  })  } end,
-	["召唤生物每有 (%d+)%% 混沌抗性就将其 (%d+)%% 最大生命转化为最大能量护盾"] = function(_,num1,num2) return 
-		{ mod("MinionModifier", "LIST", { mod =  mod("LifeConvertToEnergyShield", "BASE", tonumber(num2)	
-		,{ type = "PerStat", stat = "ChaosResist", div = tonumber(num1) }
-		)  })  } end,
+	["当召唤生物有能量护盾时，它们的击中无视怪物的元素抗性"] = function() return {
+	mod("MinionModifier", "LIST", { mod = flag("IgnoreElementalResistances",{ type = "StatThreshold", stat = "EnergyShield", threshold = 1 } ) })  } end,
+	["召唤生物有能量护盾时，它们的击中无视怪物的元素抗"] = function() return {
+	mod("MinionModifier", "LIST", { mod = flag("IgnoreElementalResistances",{ type = "StatThreshold", stat = "EnergyShield", threshold = 1 } ) })  } end,
+	["召唤生物的能量护盾提前 (%d+)%% 开始回复"] = function(_,num) return
+	{ mod("MinionModifier", "LIST", { mod =  mod("EnergyShieldRechargeFaster", "INC", tonumber(num)	)  })  } end,
+	["召唤生物每有 (%d+)%% 混沌抗性，转换 (%d+)%% 最大生命为最大能量护盾"] = function(_,num1,num2) return
+	{ mod("MinionModifier", "LIST", { mod =  mod("LifeConvertToEnergyShield", "BASE", tonumber(num2)
+	,{ type = "PerStat", stat = "ChaosResist", div = tonumber(num1) }
+	)  })  } end,
+	["召唤生物每有 (%d+)%% 混沌抗性就将其 (%d+)%% 最大生命转化为最大能量护盾"] = function(_,num1,num2) return
+	{ mod("MinionModifier", "LIST", { mod =  mod("LifeConvertToEnergyShield", "BASE", tonumber(num2)
+	,{ type = "PerStat", stat = "ChaosResist", div = tonumber(num1) }
+	)  })  } end,
 	["每受到一个捷技能影响，你身上的光环技能的效果提高 (%d+)%%，最多提高 (%d+)%%"] = function(num, _, limit) return {
-			mod("PurpHarbAuraBuffEffect", "INC", num, { type = "Multiplier", var = "AffectedByHeraldCount" })
-			-- Maximum buff effect is handled in CalcPerform, PurpHarbAuraBuffEffect is capped with a constant there.
-		} end,
+	mod("PurpHarbAuraBuffEffect", "INC", num, { type = "Multiplier", var = "AffectedByHeraldCount" })
+	-- Maximum buff effect is handled in CalcPerform, PurpHarbAuraBuffEffect is capped with a constant there.
+	} end,
 	["每消耗 1 具灵柩后的短时间内，攻击和施法速度提高 (%d+)%%，最多提高 (%d+)%%"] = function(_,num1,num2) return {
-			mod("Speed", "INC", tonumber(num1),  { type = "Multiplier", var = "CorpseConsumedRecently"  ,
-	 limit = tonumber(num2), limitTotal = true} )
-		} end,	
-	["若近期你没有被击中，闪避值提高 (%d+)%%"] = function(num) return {  
-	mod("Evasion", "INC", num,{ type = "Condition", var = "BeenHitRecently", neg = true })  } end,   
-	["每 (%d+) 点未保留的最大魔力 %+(%d+) 护甲"] = function( _, num1,num2)  return { mod("Armour", "BASE", 
+	mod("Speed", "INC", tonumber(num1),  { type = "Multiplier", var = "CorpseConsumedRecently"  ,
+	limit = tonumber(num2), limitTotal = true} )
+	} end,
+	["若近期你没有被击中，闪避值提高 (%d+)%%"] = function(num) return {
+	mod("Evasion", "INC", num,{ type = "Condition", var = "BeenHitRecently", neg = true })  } end,
+	["每 (%d+) 点未保留的最大魔力 %+(%d+) 护甲"] = function( _, num1,num2)  return { mod("Armour", "BASE",
 	tonumber(num2), { type = "PerStat", stat = "ManaUnreserved", div = tonumber(num1) })   } end,
 	["近期内你若有吞噬 1 个灵柩，则每秒回复 ([%d%.]+)%% 最大生命"] = function(num) return { mod("LifeRegenPercent", "BASE", num, { type = "Condition", var = "ConsumedCorpseRecently" }) } end,
 	["近期内你若没有被击中，则总承受的伤害额外降低 (%d+)%%"] = function(num) return {  mod("DamageTaken", "MORE", -num,{ type = "Condition", var = "BeenHitRecently", neg = true })  }
-	 end,   
-	["近期内你若没有被击中，则总闪避值额外降低 (%d+)%%"] = function(num) return {  mod("Evasion", "MORE", -num,{ type = "Condition", var = "BeenHitRecently", neg = true })  } end,   
+	end,
+	["近期内你若没有被击中，则总闪避值额外降低 (%d+)%%"] = function(num) return {  mod("Evasion", "MORE", -num,{ type = "Condition", var = "BeenHitRecently", neg = true })  } end,
 	["近期内你若有被击中，则总闪避值额外提高 (%d+)%%"] = function(num) return {  mod("Evasion", "MORE", num,
-	{ type = "Condition", var = "BeenHitRecently"})  } end,   
-	["投射物对发射的初始目标伤害提高 (%d+)%%，随着距离的提高逐渐降低到 0%%"]	
-		= function(num) return { mod("Damage", "INC", num, nil, ModFlag.Projectile, { type = "DistanceRamp", ramp = {{35,1},{70,0}} }) } end,
-	["你和周围友军每秒回复 ([%d%.]+)%% 最大生命"] = function(num) return { mod("ExtraAura", "LIST", { mod = mod("LifeRegenPercent", "BASE", num) }) } end, 
-	["被你造成中毒的敌人 (%-%d+)%% 混沌抗性"] = function(num) return { 
-	mod("EnemyModifier", "LIST", { mod = mod("ChaosResist", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "Poisoned"}) }) } end, 
+	{ type = "Condition", var = "BeenHitRecently"})  } end,
+	["投射物对发射的初始目标伤害提高 (%d+)%%，随着距离的提高逐渐降低到 0%%"]
+	= function(num) return { mod("Damage", "INC", num, nil, ModFlag.Projectile, { type = "DistanceRamp", ramp = {{35,1},{70,0}} }) } end,
+	["你和周围友军每秒回复 ([%d%.]+)%% 最大生命"] = function(num) return { mod("ExtraAura", "LIST", { mod = mod("LifeRegenPercent", "BASE", num) }) } end,
+	["被你造成中毒的敌人 (%-%d+)%% 混沌抗性"] = function(num) return {
+	mod("EnemyModifier", "LIST", { mod = mod("ChaosResist", "BASE", num) },
+	{ type = "ActorCondition", actor = "enemy", var = "Poisoned"}) } end,
 	["被诅咒时你近战攻击击中一个敌人，触发 (%d+) 级的【(.+)】"] = function(num, _, skill) return extraSkill(skill, num) end, --备注：trigger level (%d+) (.+) when you hit an enemy while cursed
-	["【(.+)】每次连锁，总伤害额外提高 (%d+)%%"] = function(   _1,skill_name,num,_0) return { 
-		mod("Damage", "MORE", tonumber(num), { type = "PerStat", stat = "Chain" },{ type = "SkillName", skillName =  FuckSkillActivityCnName(skill_name)}) } end, 
-	["【(.+)】的总伤害额外降低 (%d+)%%"] = function(   _1,skill_name,num,_0) return { 
-		mod("Damage", "MORE", tonumber(-num),{ type = "SkillName", skillName =  FuckSkillActivityCnName(skill_name)}) } end, 
+	["【(.+)】每次连锁，总伤害额外提高 (%d+)%%"] = function(   _1,skill_name,num,_0) return {
+	mod("Damage", "MORE", tonumber(num), { type = "PerStat", stat = "Chain" },{ type = "SkillName", skillName =  FuckSkillActivityCnName(skill_name)}) } end,
+	["【(.+)】的总伤害额外降低 (%d+)%%"] = function(   _1,skill_name,num,_0) return {
+	mod("Damage", "MORE", tonumber(-num),{ type = "SkillName", skillName =  FuckSkillActivityCnName(skill_name)}) } end,
 	["偷取每秒总恢复量提高 (%d+)%%"] = function(num) return {
-	  mod("LifeLeechRate", "INC", num),
-	  mod("ManaLeechRate", "INC", num),
-	  mod("EnergyShieldLeechRate", "INC", num)
-	 } end, 
-	["战吼技能冷却时间为 (%d+) 秒"]= function(num) return { 
+	mod("LifeLeechRate", "INC", num),
+	mod("ManaLeechRate", "INC", num),
+	mod("EnergyShieldLeechRate", "INC", num)
+	} end,
+	["充能次数减少 (%d+)%%"]= function(num) return {
+	mod("FlaskChargesUsed", "INC", -num )
+	} end,
+	["【召唤魔侍】有 %+(%d+) 秒冷却时间"]= function(num) return {
+	mod("CooldownRecovery", "OVERRIDE", num, { type = "SkillName", skillNameList = { "召唤魔侍"} })
+	} end,
+	["%+(%d+) 近战打击范围"]= function(num) return {
+	mod("MeleeWeaponRange", "BASE", num ) ,
+	mod("UnarmedRange", "BASE", num )
+	} end,
+	["你若近期内击败过敌人，%+(%d+) 近战打击范围"]= function(num) return {
+	mod("MeleeWeaponRange", "BASE", num,{ type = "Condition", var = "KilledRecently" } ) ,
+	mod("UnarmedRange", "BASE", num,{ type = "Condition", var = "KilledRecently" } )
+	} end,
+	["战吼技能冷却时间为 (%d+) 秒"]= function(num) return {
 	mod("CooldownRecovery", "OVERRIDE", num, nil, 0, KeywordFlag.Warcry)
-	} end, 
-	["你至少有 (%d+) 点怒火时，周围敌人被压垮"]= function(num) return { 	
-			mod("EnemyPhysicalDamageReduction", "BASE", -15, { type = "GlobalEffect", effectType = "Debuff", effectName = "压垮" }, 
-			{ type = "MultiplierThreshold", var = "Rage", threshold = tonumber(num) })} end, 
-	["每 (%d+) 点怒火使物理伤害提高 (%d+)%%"]= function(_,num1,num2) return { 
-	 mod("PhysicalDamage", "INC", tonumber(num2),{ type = "Multiplier", var = "Rage", div = tonumber(num1) } )  } end, 
-	["血姿态下获得 (%d+) 每秒生命回复"]= function(num) return { 
-	 mod("LifeRegen", "BASE", num, { type = "Condition", var = "BloodStance" } )  } end, 
-	["血姿态下，投射物伤害提高 (%d+)%%"]= function(num) return { 
-	 mod("Damage", "INC", num, nil, ModFlag.Projectile, { type = "Condition", var = "BloodStance" } )  } end, 
-	["沙姿态下 %+(%d+) 闪避值"]= function(num) return { 
-	 mod("Evasion", "BASE", num, { type = "Condition", var = "SandStance" } )  } end, 
-	["沙姿态下，范围效果扩大 (%d+)%%"]= function(num) return { 
-	 mod("AreaOfEffect", "INC", num, { type = "Condition", var = "SandStance" } )  } end, 
+	} end,
+	["你至少有 (%d+) 点怒火时，周围敌人被压垮"]= function(num) return {
+	mod("EnemyPhysicalDamageReduction", "BASE", -15, { type = "GlobalEffect", effectType = "Debuff", effectName = "压垮" },
+	{ type = "MultiplierThreshold", var = "Rage", threshold = tonumber(num) })} end,
+	["每 (%d+) 点怒火使物理伤害提高 (%d+)%%"]= function(_,num1,num2) return {
+	mod("PhysicalDamage", "INC", tonumber(num2),{ type = "Multiplier", var = "Rage", div = tonumber(num1) } )  } end,
+	["血姿态下获得 (%d+) 每秒生命回复"]= function(num) return {
+	mod("LifeRegen", "BASE", num, { type = "Condition", var = "BloodStance" } )  } end,
+	["血姿态下，投射物伤害提高 (%d+)%%"]= function(num) return {
+	mod("Damage", "INC", num, nil, ModFlag.Projectile, { type = "Condition", var = "BloodStance" } )  } end,
+	["沙姿态下 %+(%d+) 闪避值"]= function(num) return {
+	mod("Evasion", "BASE", num, { type = "Condition", var = "SandStance" } )  } end,
+	["沙姿态下，范围效果扩大 (%d+)%%"]= function(num) return {
+	mod("AreaOfEffect", "INC", num, { type = "Condition", var = "SandStance" } )  } end,
 	["获得【召唤高等不屈先驱者】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="SummonHarbingerOfFocusUber"})   } end,
 	["获得【召唤高等射术先驱者】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="SummonHarbingerOfDirectionsUber"})   } end,
 	["获得【召唤高等秘法先驱者】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="SummonHarbingerOfTheArcaneUber"})   } end,
 	["获得【召唤高等冰雷先驱者】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="SummonHarbingerOfStormsUber"})   } end,
 	["获得【召唤高等时空先驱者】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="SummonHarbingerOfTimeUber"})   } end,
 	["获得【召唤高等残暴先驱者】"]= function(num) return {  mod("ExtraSkill", "LIST", { skillId ="SummonHarbingerOfBrutalityUber"})   } end,
-	["你在【护体】状态下 %+(%d+) 护甲"]= function(num) return { 
-	 mod("Armour", "BASE", num, { type = "Condition", var = "Fortify" } )  } end, 
-	["你在【迷踪】状态下 %+(%d+) 闪避值"]= function(num) return { 
-	 mod("Evasion", "BASE", num, { type = "Condition", var = "Phasing" } )  } end, 
-	["你在【灵巧】状态下，有 (%d+)%% 几率避免元素异常状态"]= function(num) return { 
+	["你在【护体】状态下 %+(%d+) 护甲"]= function(num) return {
+	mod("Armour", "BASE", num, { type = "Condition", var = "Fortify" } )  } end,
+	["你在【迷踪】状态下 %+(%d+) 闪避值"]= function(num) return {
+	mod("Evasion", "BASE", num, { type = "Condition", var = "Phasing" } )  } end,
+	["你在【灵巧】状态下，有 (%d+)%% 几率避免元素异常状态"]= function(num) return {
 	mod("AvoidShock", "BASE", num, { type = "Condition", var = "Elusive" } ),
 	mod("AvoidFrozen", "BASE", num, { type = "Condition", var = "Elusive" } ),
 	mod("AvoidChilled", "BASE", num, { type = "Condition", var = "Elusive" } ),
 	mod("AvoidIgnite", "BASE", num, { type = "Condition", var = "Elusive" } ),
-	} end, 
-	["在【奉献地面】上，你身上的诅咒效果降低 (%d+)%%"]= function(num) return { 
-	 mod("CurseEffectOnSelf", "INC", -num, { type = "Condition", var = "OnConsecratedGround" } )  } end, 
-	["你具有【猛攻】的情况下，命中值提高 (%d+)%%"]= function(num) return { 
-	 mod("Accuracy", "INC", num, { type = "Condition", var = "Onslaught" } )  } end, 
-	["被你瘫痪的敌人受到的持续伤害提高 (%d+)%%"]= function(num) return { 
-	 mod("DamageTakenOverTime", "INC", num,  { type = "ActorCondition", actor = "enemy", var = "Maimed" } )  } end, 
-	["%-(%d+)%% 最大元素抗性"]= function(num) return { 
-	 mod("FireResistMax", "BASE", -num),
-	 mod("ColdResistMax", "BASE", -num),
-	 mod("LightningResistMax", "BASE", -num),
-	 } end, 
+	} end,
+	["在【奉献地面】上，你身上的诅咒效果降低 (%d+)%%"]= function(num) return {
+	mod("CurseEffectOnSelf", "INC", -num, { type = "Condition", var = "OnConsecratedGround" } )  } end,
+	["你具有【猛攻】的情况下，命中值提高 (%d+)%%"]= function(num) return {
+	mod("Accuracy", "INC", num, { type = "Condition", var = "Onslaught" } )  } end,
+	["被你瘫痪的敌人受到的持续伤害提高 (%d+)%%"]= function(num) return {
+	mod("DamageTakenOverTime", "INC", num,  { type = "ActorCondition", actor = "enemy", var = "Maimed" } )  } end,
+	["%-(%d+)%% 最大元素抗性"]= function(num) return {
+	mod("FireResistMax", "BASE", -num),
+	mod("ColdResistMax", "BASE", -num),
+	mod("LightningResistMax", "BASE", -num),
+	} end,
 	["召集部队"] = { mod("Keystone", "LIST", "召集部队") },
 	["【斗转星移】"] = { mod("Keystone", "LIST", "斗转星移") },
 	["钢铁意志"] = { flag("IronWill") },
 	["品质不提高物理伤害"] = { mod("AlternateQualityWeapon", "BASE", 1) },
-		["每 4%% 品质使暴击率提高 (%d+)%%"] = function(num) return { mod("AlternateQualityLocalCritChancePer4Quality", "INC", num) } end,
-		["每 (%d+)%% 品质使命中值提高提高 (%d+)%%"] = function( _,div, num) return { mod("Accuracy", "INC", num, { type = "Condition", var = "{Hand}Attack" }, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
-		["每 (%d+)%% 品质使命中值提高 (%d+)%%"] = function( _,div, num) return { mod("Accuracy", "INC", num, { type = "Condition", var = "{Hand}Attack" }, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
-		["每 8%% 品质使攻击速度加快 (%d+)%%"] = function(num) return { mod("AlternateQualityLocalAttackSpeedPer8Quality", "INC", num) } end,
-		["每 10%% 品质 %+(%d+) 武器范围"] = function(num) return { mod("AlternateQualityLocalWeaponRangePer10Quality", "BASE", num) } end,
-		["每 (%d+)%% 品质使元素伤害提高 (%d+)%%"] = function( _,div, num) return { mod("ElementalDamage", "INC", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
-		["每 (%d+)%% 品质使范围效果扩大 (%d+)%%"] = function(_,div, num) return { mod("AreaOfEffect", "INC", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
-		["品质不提高防御属性"] = { mod("AlternateQualityArmour", "BASE", 1) },
-		["每 (%d+)%% 品质 %+(%d+) 最大生命"] = function(_,div, num) return { mod("Life", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
-		["每 (%d+)%% 品质 %+(%d+) 最大魔力"] = function(_,div, num) return { mod("Mana", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
-		["每 (%d+)%% 品质 %+(%d+) 力量"] = function(_,div, num) return { mod("Str", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
-		["每 (%d+)%% 品质 %+(%d+) 敏捷"] = function(_,div, num) return { mod("Dex", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
-		["每 (%d+)%% 品质 %+(%d+) 智慧"] = function(_,div, num) return { mod("Int", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
-		["每 (%d+)%% 品质 %+(%d+)%% 火焰抗性"] = function(_,div, num) return { mod("FireResist", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
-		["每 (%d+)%% 品质 %+(%d+)%% 冰霜抗性"] = function(_,div, num) return { mod("ColdResist", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
-		["每 (%d+)%% 品质 %+(%d+)%% 闪电抗性"] = function(_,div, num) return { mod("LightningResist", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
-	["被击中时有 (%d+)%% 几率避免火焰伤害"]= function(num) return { 
-	 mod("AvoidFireDamageChance", "BASE", num )  } end, 
-	["被击中时有 (%d+)%% 几率避免冰霜伤害"]= function(num) return { 
-	 mod("AvoidColdDamageChance", "BASE", num )  } end, 
-	 ["被击中时有 (%d+)%% 几率避免闪电伤害"]= function(num) return { 
-	 mod("AvoidLightningDamageChance", "BASE", num )  } end, 
-	 ["被击中时有 (%d+)%% 几率避免物理伤害"]= function(num) return { 
-	 mod("AvoidPhysicalDamageChance", "BASE", num )  } end, 
-	 ["被击中时有 (%d+)%% 几率避免混沌伤害"]= function(num) return { 
-	 mod("AvoidChoasDamageChance", "BASE", num )  } end, 
-	   ["被击中时有 (%d+)%% 几率避免元素伤害"]= function(num) return { 
-	 mod("AvoidFireDamageChance", "BASE", num ) ,
-	 mod("AvoidColdDamageChance", "BASE", num ) ,
-	  mod("AvoidLightningDamageChance", "BASE", num ) ,
-	 } end, 
-	 ["被击中时有 (%d+)%% 几率避免投射物伤害"]= function(num) return { 
-	 mod("AvoidProjectilesChance", "BASE", num ) ,
-	 } end, 
-	   ["被击中时 (%d+)%% 的闪电伤害优先从魔力优先扣除"]= function(num) return { 
-	 mod("LightningDamageTakenFromManaBeforeLife", "BASE", num ) ,
-	 } end, 
+	["每 4%% 品质使暴击率提高 (%d+)%%"] = function(num) return { mod("AlternateQualityLocalCritChancePer4Quality", "INC", num) } end,
+	["每 (%d+)%% 品质使命中值提高提高 (%d+)%%"] = function( _,div, num) return { mod("Accuracy", "INC", num, { type = "Condition", var = "{Hand}Attack" }, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+	["每 (%d+)%% 品质使命中值提高 (%d+)%%"] = function( _,div, num) return { mod("Accuracy", "INC", num, { type = "Condition", var = "{Hand}Attack" }, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+	["每 8%% 品质使攻击速度加快 (%d+)%%"] = function(num) return { mod("AlternateQualityLocalAttackSpeedPer8Quality", "INC", num) } end,
+	["每 10%% 品质 %+(%d+) 武器范围"] = function(num) return { mod("AlternateQualityLocalWeaponRangePer10Quality", "BASE", num) } end,
+	["每 (%d+)%% 品质使元素伤害提高 (%d+)%%"] = function( _,div, num) return { mod("ElementalDamage", "INC", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+	["每 (%d+)%% 品质使范围效果扩大 (%d+)%%"] = function(_,div, num) return { mod("AreaOfEffect", "INC", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+	["品质不提高防御属性"] = { mod("AlternateQualityArmour", "BASE", 1) },
+	["每 (%d+)%% 品质 %+(%d+) 最大生命"] = function(_,div, num) return { mod("Life", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+	["每 (%d+)%% 品质 %+(%d+) 最大魔力"] = function(_,div, num) return { mod("Mana", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+	["每 (%d+)%% 品质 %+(%d+) 力量"] = function(_,div, num) return { mod("Str", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+	["每 (%d+)%% 品质 %+(%d+) 敏捷"] = function(_,div, num) return { mod("Dex", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+	["每 (%d+)%% 品质 %+(%d+) 智慧"] = function(_,div, num) return { mod("Int", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+	["每 (%d+)%% 品质 %+(%d+)%% 火焰抗性"] = function(_,div, num) return { mod("FireResist", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+	["每 (%d+)%% 品质 %+(%d+)%% 冰霜抗性"] = function(_,div, num) return { mod("ColdResist", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+	["每 (%d+)%% 品质 %+(%d+)%% 闪电抗性"] = function(_,div, num) return { mod("LightningResist", "BASE", num, { type = "Multiplier", var = "QualityOn{SlotName}", div = tonumber(div) }) } end,
+	["被击中时有 (%d+)%% 几率避免火焰伤害"]= function(num) return {
+	mod("AvoidFireDamageChance", "BASE", num )  } end,
+	["被击中时有 (%d+)%% 几率避免冰霜伤害"]= function(num) return {
+	mod("AvoidColdDamageChance", "BASE", num )  } end,
+	["被击中时有 (%d+)%% 几率避免闪电伤害"]= function(num) return {
+	mod("AvoidLightningDamageChance", "BASE", num )  } end,
+	["被击中时有 (%d+)%% 几率避免物理伤害"]= function(num) return {
+	mod("AvoidPhysicalDamageChance", "BASE", num )  } end,
+	["被击中时有 (%d+)%% 几率避免混沌伤害"]= function(num) return {
+	mod("AvoidChoasDamageChance", "BASE", num )  } end,
+	["被击中时有 (%d+)%% 几率避免元素伤害"]= function(num) return {
+	mod("AvoidFireDamageChance", "BASE", num ) ,
+	mod("AvoidColdDamageChance", "BASE", num ) ,
+	mod("AvoidLightningDamageChance", "BASE", num ) ,
+	} end,
+	["被击中时有 (%d+)%% 几率避免投射物伤害"]= function(num) return {
+	mod("AvoidProjectilesChance", "BASE", num ) ,
+	} end,
+	["被击中时 (%d+)%% 的闪电伤害优先从魔力优先扣除"]= function(num) return {
+	mod("LightningDamageTakenFromManaBeforeLife", "BASE", num ) ,
+	} end,
 	["混沌伤害不能穿透能量护盾"] = { flag("ChaosNotBypassEnergyShield") },
-		["承受的混沌伤害优先从魔力扣除"] = function() return { mod("ChaosDamageTakenFromManaBeforeLife", "BASE", 100) } end,
+	["承受的混沌伤害优先从魔力扣除"] = function() return { mod("ChaosDamageTakenFromManaBeforeLife", "BASE", 100) } end,
 	["不会承受反射的元素伤害"] = { mod("ElementalReflectedDamageTaken", "MORE", -100) },
-		["不会承受反射的物理伤害"] = { mod("PhysicalReflectedDamageTaken", "MORE", -100) },
-	["右戒指栏位：反射的物理伤害降低 (%d+)%%"]=function(num) return {  mod("PhysicalReflectedDamageTaken", "BASE", 
-	tonumber(num),{ type = "SlotNumber", num = 2 })  } end, 
+	["不会承受反射的物理伤害"] = { mod("PhysicalReflectedDamageTaken", "MORE", -100) },
+	["右戒指栏位：反射的物理伤害降低 (%d+)%%"]=function(num) return {  mod("PhysicalReflectedDamageTaken", "BASE",
+	tonumber(num),{ type = "SlotNumber", num = 2 })  } end,
 	["左戒指栏位：反射的元素伤害降低 (%d+)%%"]=function(num) return {  mod("ElementalReflectedDamageTaken", "BASE", tonumber(num),{ type = "SlotNumber", num = 1 })  } end,
 	["左戒指栏位：反射的火焰、冰霜、闪电伤害降低 (%d+)%%"]=function(num) return {  mod("ElementalReflectedDamageTaken", "BASE", tonumber(num),{ type = "SlotNumber", num = 1 })  } end,
 	["格挡时回复 (%d+) 生命"] = function(num) return { mod("LifeOnBlock", "BASE", num) } end,
-	 ["格挡时回复 (%d+)%% 生命"] = function(num) return { mod("LifeOnBlock", "BASE", 1,  { type = "PerStat", stat = "Life", div = 100 / num }) } end,
-		["格挡时回复 (%d+)%% 最大魔力"] = function(num) return { mod("ManaOnBlock", "BASE", 1,  { type = "PerStat", stat = "Mana", div = 100 / num }) } end,
-		["格挡时补充 (%d+)%% 的能量护盾"] = function(num) return { mod("EnergyShieldOnBlock", "BASE", 1,  { type = "PerStat", stat = "EnergyShield", div = 100 / num }) } end,
-		["格挡时回复能量护盾，数值等同于 (%d+)%% 的护甲"] = function(num) return { mod("EnergyShieldOnBlock", "BASE", 1,  { type = "PerStat", stat = "Armour", div = 100 / num }) } end,
-		["格挡时回复 (%d+)%% 的能量护盾"] = function(num) return { mod("EnergyShieldOnBlock", "BASE", 1,  { type = "PerStat", stat = "EnergyShield", div = 100 / num }) } end,
+	["格挡时回复 (%d+)%% 生命"] = function(num) return { mod("LifeOnBlock", "BASE", 1,  { type = "PerStat", stat = "Life", div = 100 / num }) } end,
+	["格挡时回复 (%d+)%% 最大魔力"] = function(num) return { mod("ManaOnBlock", "BASE", 1,  { type = "PerStat", stat = "Mana", div = 100 / num }) } end,
+	["格挡时补充 (%d+)%% 的能量护盾"] = function(num) return { mod("EnergyShieldOnBlock", "BASE", 1,  { type = "PerStat", stat = "EnergyShield", div = 100 / num }) } end,
+	["格挡时回复能量护盾，数值等同于 (%d+)%% 的护甲"] = function(num) return { mod("EnergyShieldOnBlock", "BASE", 1,  { type = "PerStat", stat = "Armour", div = 100 / num }) } end,
+	["格挡时回复 (%d+)%% 的能量护盾"] = function(num) return { mod("EnergyShieldOnBlock", "BASE", 1,  { type = "PerStat", stat = "EnergyShield", div = 100 / num }) } end,
 	["格挡时回复 %+(%d+) 生命"] = function(num) return { mod("LifeOnBlock", "BASE", num) } end,
 	["格挡时回复 %+(%d+) 魔力"] = function(num) return { mod("ManaOnBlock", "BASE", num) } end,
 	["格挡时回复 (%d+) 魔力"] = function(num) return { mod("ManaOnBlock", "BASE", num) } end,
 	["施法时有 (%d+)%% 几率免疫晕眩打断"] = function(num) return { mod("AvoidInteruptStun", "BASE", num) } end,
 	["被格挡的击中对你造成 (%d+)%% 伤害"] = function(num) return { mod("BlockEffect", "BASE", 100 - num) } end,
 	["受到的所有伤害穿透护盾"] = {
-			mod("PhysicalEnergyShieldBypass", "BASE", 100),
-			mod("LightningEnergyShieldBypass", "BASE", 100),
-			mod("ColdEnergyShieldBypass", "BASE", 100),
-			mod("FireEnergyShieldBypass", "BASE", 100),
-		},
-		["受到的非混沌伤害有 (%d+)%% 穿透能量护盾"] = function(num) return { 
-		mod("PhysicalEnergyShieldBypass", "BASE", num),
+	mod("PhysicalEnergyShieldBypass", "BASE", 100),
+	mod("LightningEnergyShieldBypass", "BASE", 100),
+	mod("ColdEnergyShieldBypass", "BASE", 100),
+	mod("FireEnergyShieldBypass", "BASE", 100),
+	},
+	["受到的非混沌伤害有 (%d+)%% 穿透能量护盾"] = function(num) return {
+	mod("PhysicalEnergyShieldBypass", "BASE", num),
 	mod("LightningEnergyShieldBypass", "BASE", num),
 	mod("ColdEnergyShieldBypass", "BASE", num),
 	mod("FireEnergyShieldBypass", "BASE", num),
-		} end,
+	} end,
 	["召唤的魔像免疫元素伤害"] = {
-			mod("MinionModifier", "LIST", { mod = mod("FireResist", "OVERRIDE", 100) }, { type = "SkillType", skillType = SkillType.Golem }),
-			mod("MinionModifier", "LIST", { mod = mod("FireResistMax", "OVERRIDE", 100) }, { type = "SkillType", skillType = SkillType.Golem }),
-			mod("MinionModifier", "LIST", { mod = mod("ColdResist", "OVERRIDE", 100) }, { type = "SkillType", skillType = SkillType.Golem }),
-			mod("MinionModifier", "LIST", { mod = mod("ColdResistMax", "OVERRIDE", 100) }, { type = "SkillType", skillType = SkillType.Golem }),
-			mod("MinionModifier", "LIST", { mod = mod("LightningResist", "OVERRIDE", 100) }, { type = "SkillType", skillType = SkillType.Golem }),
-			mod("MinionModifier", "LIST", { mod = mod("LightningResistMax", "OVERRIDE", 100) }, { type = "SkillType", skillType = SkillType.Golem }),
-		},
-	["每有 1 个召唤的魔像，便有 (%d+)%% 几率免疫元素异常状态"] = function(num) return { 
-		mod("AvoidChill", "BASE", num,{ type = "PerStat", stat = "ActiveGolemLimit" } ),
+	mod("MinionModifier", "LIST", { mod = mod("FireResist", "OVERRIDE", 100) }, { type = "SkillType", skillType = SkillType.Golem }),
+	mod("MinionModifier", "LIST", { mod = mod("FireResistMax", "OVERRIDE", 100) }, { type = "SkillType", skillType = SkillType.Golem }),
+	mod("MinionModifier", "LIST", { mod = mod("ColdResist", "OVERRIDE", 100) }, { type = "SkillType", skillType = SkillType.Golem }),
+	mod("MinionModifier", "LIST", { mod = mod("ColdResistMax", "OVERRIDE", 100) }, { type = "SkillType", skillType = SkillType.Golem }),
+	mod("MinionModifier", "LIST", { mod = mod("LightningResist", "OVERRIDE", 100) }, { type = "SkillType", skillType = SkillType.Golem }),
+	mod("MinionModifier", "LIST", { mod = mod("LightningResistMax", "OVERRIDE", 100) }, { type = "SkillType", skillType = SkillType.Golem }),
+	},
+	["每有 1 个召唤的魔像，便有 (%d+)%% 几率免疫元素异常状态"] = function(num) return {
+	mod("AvoidChill", "BASE", num,{ type = "PerStat", stat = "ActiveGolemLimit" } ),
 	mod("AvoidFreeze", "BASE", num,{ type = "PerStat", stat = "ActiveGolemLimit" } ),
 	mod("AvoidIgnite", "BASE", num,{ type = "PerStat", stat = "ActiveGolemLimit" } ),
 	mod("AvoidShock", "BASE", num,{ type = "PerStat", stat = "ActiveGolemLimit" } ),
-		} end,
-	["你获得【鸟之力量】或【鸟之斗魄】时会触发 (%d+) 级的【鸟之龙卷】"] = function(num, _, skill) 
+	} end,
+	["你获得【鸟之力量】或【鸟之斗魄】时会触发 (%d+) 级的【鸟之龙卷】"] = function(num, _, skill)
 	return { mod("ExtraSkill", "LIST", {  skillId ="AvianTornado", level = tonumber(num)})} end,
-	["你获得【鸟之力量】或【鸟之斗魄】时触发 (%d+) 级的【鸟之龙卷】"] = function(num, _, skill) 
+	["你获得【鸟之力量】或【鸟之斗魄】时触发 (%d+) 级的【鸟之龙卷】"] = function(num, _, skill)
 	return { mod("ExtraSkill", "LIST", {  skillId ="AvianTornado", level = tonumber(num)})} end,
 	["【猫之隐匿】的持续时间 ([%+%-][%d%.]+) 秒"] = function(num) return { mod("PrimaryDuration", "BASE", num, { type = "SkillName", skillName = "猫之势" }) } end,
 	["【鸟之力量】的持续时间 ([%+%-][%d%.]+) 秒"] = function(num) return { mod("PrimaryDuration", "BASE", num, { type = "SkillName", skillName = "鸟之势" }) } end,
 	["【鸟之斗魄】的持续时间 ([%+%-][%d%.]+) 秒"] = function(num) return { mod("SecondaryDuration", "BASE", num, { type = "SkillName", skillName = "鸟之势" }) } end,
 	["猫之敏捷持续时间 ([%+%-][%d%.]+) 秒"] = function(num) return { mod("PrimaryDuration", "BASE", num, { type = "SkillName", skillName = "猫之势" }) } end,
-	["你有猫之敏捷时，具有猛攻效果"] = { flag("Condition:Onslaught", { type = "Condition", var = "AffectedBy猫之敏捷" }) }, 
+	["你有猫之敏捷时，具有猛攻效果"] = { flag("Condition:Onslaught", { type = "Condition", var = "AffectedBy猫之敏捷" }) },
 	["弓技能 ([%+%-]?%d+)%% 持续伤害加成"] = function(num) return { mod("DotMultiplier", "BASE",
-	 num, nil,nil,KeywordFlag.Bow ) } end,
+	num, nil,nil,KeywordFlag.Bow ) } end,
 	["弓技能的技能效果延长 (%d+)%%"] = function(num) return { mod("Duration", "INC",
-	 num, nil,nil,KeywordFlag.Bow ) } end,
-	["持弓时，异常持续时间延长 (%d+)%%"] = function(num) return { 
+	num, nil,nil,KeywordFlag.Bow ) } end,
+	["持弓时，异常持续时间延长 (%d+)%%"] = function(num) return {
 	mod("EnemyShockDuration", "INC", num, { type = "Condition", var = "UsingBow" } ),
 	mod("EnemyFreezeDuration", "INC", num, { type = "Condition", var = "UsingBow" } ),
 	mod("EnemyChillDuration", "INC", num, { type = "Condition", var = "UsingBow" } ),
@@ -4145,9 +4162,9 @@ local specialModList = {
 	mod("EnemyScorchDuration", "INC", num, { type = "Condition", var = "UsingBow" } ),
 	mod("EnemyBrittleDuration", "INC", num, { type = "Condition", var = "UsingBow" } ),
 	mod("EnemySapDuration", "INC", num, { type = "Condition", var = "UsingBow" } ),
-	 } end,
+	} end,
 	["【迷踪】状态下，周围敌人的总命中值额外降低 (%d+)%%"] =
-	 function(num) return { mod("EnemyModifier", "LIST", { mod = mod("Accuracy", "MORE", -num) }, { type = "Condition", var = "Phasing" } )} end,
+	function(num) return { mod("EnemyModifier", "LIST", { mod = mod("Accuracy", "MORE", -num) }, { type = "Condition", var = "Phasing" } )} end,
 	["暴击造成烧灼、脆弱和精疲力尽"] = { flag("CritAlwaysAltAilments") },
 	["魔力回复速度的加快和减慢效果也作用与怒火回复速度"] = { flag("ManaRegenToRageRegen") },
 	["魔力再生率的加快和减慢效果也作用与怒火再生速度"] = { flag("ManaRegenToRageRegen") },
@@ -4156,11 +4173,11 @@ local specialModList = {
 	["你的感电效果所提供的提高承受伤害的效果最高提高 (%d+)%%"] = function(num) return { mod("ShockMax", "OVERRIDE", num) } end,
 	["如同额外造成 (%d+)%% 总伤害来计算感电门槛"] = function(num) return { mod("ShockAsThoughDealing", "MORE", num) } end,
 	["使敌人感电如同总伤害额外提高 (%d+)%%"] = function(num) return { mod("ShockAsThoughDealing", "MORE", num) } end,
-		["施加的非伤害型异常状态如同总伤害额外提高 (%d+)%%"] = function(num) return {
-			mod("ShockAsThoughDealing", "MORE", num),
-			mod("ChillAsThoughDealing", "MORE", num),
-			mod("FreezeAsThoughDealing", "MORE", num)
-		} end,
+	["施加的非伤害型异常状态如同总伤害额外提高 (%d+)%%"] = function(num) return {
+	mod("ShockAsThoughDealing", "MORE", num),
+	mod("ChillAsThoughDealing", "MORE", num),
+	mod("FreezeAsThoughDealing", "MORE", num)
+	} end,
 	["(%d+)%% 几率造成焦灼"] = function(num) return { mod("ScorchChance", "BASE", num ) } end,
 	["(%d+)%% 几率造成烧灼"] = function(num) return { mod("ScorchChance", "BASE", num ) } end,
 	["(%d+)%% 几率造成脆弱"] = function(num) return { mod("BrittleChance", "BASE", num ) } end,
@@ -4174,103 +4191,103 @@ local specialModList = {
 	["【闪电之捷】的风暴击中敌人的频率提高 (%d+)%%"] = function(num) return { mod("HeraldStormFrequency", "INC", num ) } end,
 	["若周围最多有一个稀有或传奇敌人，你造成的总伤害额外提高 (%d+)%%"] = function(num) return { mod("Damage", "MORE", num, nil, 0, { type = "Condition", var = "AtMostOneNearbyRareOrUniqueEnemy" }) } end,
 	["若周围至少有两个稀有或传奇敌人时，则受到的伤害降低 (%d+)%%"] = function(num) return { mod("DamageTaken", "INC", -num, nil, 0, { type = "MultiplierThreshold", var = "NearbyRareOrUniqueEnemies", threshold = 2 }) } end,
-		["战吼有，额外造成 (%d+) 【威力值】数量下限"] = { flag("CryWolfMinimumPower") },
+	["战吼有，额外造成 (%d+) 【威力值】数量下限"] = { flag("CryWolfMinimumPower") },
 	["战吼额外增助 (%d+) 次攻击"] = function(num) return { mod("ExtraExertedAttacks", "BASE", num) } end,
 	["战吼增助 (%d+) 次额外攻击"] = function(num) return { mod("ExtraExertedAttacks", "BASE", num) } end,
-		["战吼立即施放"] = { flag("InstantWarcry") },
+	["战吼立即施放"] = { flag("InstantWarcry") },
 	-- Exerted Attacks
-		["战吼增助的攻击伤害提高 (%d+)%%"] = function(num) return { mod("ExertIncrease", "INC", num, nil, ModFlag.Attack, 0) } end,
-		["若近期战吼有献祭怒火，被战吼增助的攻击总伤害额外提高 (%d+)%%"] = function(num) return { mod("ExertIncrease", "MORE", num, nil, ModFlag.Attack, 0) } end,
-		["被战吼增助的攻击有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("ExertDoubleDamageChance", "BASE", num, nil, ModFlag.Attack, 0) } end,
+	["战吼增助的攻击伤害提高 (%d+)%%"] = function(num) return { mod("ExertIncrease", "INC", num, nil, ModFlag.Attack, 0) } end,
+	["若近期战吼有献祭怒火，被战吼增助的攻击总伤害额外提高 (%d+)%%"] = function(num) return { mod("ExertIncrease", "MORE", num, nil, ModFlag.Attack, 0) } end,
+	["被战吼增助的攻击有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("ExertDoubleDamageChance", "BASE", num, nil, ModFlag.Attack, 0) } end,
 	["你应用到敌人身上的非诅咒光环效果提高 (%d+)%%"] = function(num) return {
-			mod("DebuffEffect", "INC", num, { type = "SkillType", skillType = SkillType.AppliesCurse, neg = true }),
-			mod("AuraEffect", "INC", num, { type = "SkillName", skillName = "死神光环" }),
-		} end,
+	mod("DebuffEffect", "INC", num, { type = "SkillType", skillType = SkillType.AppliesCurse, neg = true }),
+	mod("AuraEffect", "INC", num, { type = "SkillName", skillName = "死神光环" }),
+	} end,
 	["放置的旗帜可使你和周围友军的攻击伤害提高 (%d+)%%"] = function(num) return { mod("ExtraAura", "LIST", { mod = mod("Damage", "INC", num, nil, ModFlag.Attack) }, { type = "Condition", var = "BannerPlanted" }) } end,
-	["最近你每消耗 (%d+) 点魔力，你身上的秘术增强效果提高 (%d+)%%，最多 (%d+)%%"] = function(_,num1,num2,num3)return { 
-	 mod("秘术增强Effect", "INC", tonumber(num2),
-	 { type = "Multiplier", var = "ManaSpentRecently", div = tonumber(num1) , limit = tonumber(num3), limitTotal = true}) } end,   
-	["最近你每消耗 (%d+) 点魔力\n你身上的秘术增强效果提高 (%d+)%%，最多 (%d+)%%"] = function(_,num1,num2,num3)return { 
-	 mod("秘术增强Effect", "INC", tonumber(num2),
-	 { type = "Multiplier", var = "ManaSpentRecently", div = tonumber(num1) , limit = tonumber(num3), limitTotal = true}) } end,   
-	["拥有【秘术增强】时免疫元素异常状态"]= function() return { 
+	["最近你每消耗 (%d+) 点魔力，你身上的秘术增强效果提高 (%d+)%%，最多 (%d+)%%"] = function(_,num1,num2,num3)return {
+	mod("秘术增强Effect", "INC", tonumber(num2),
+	{ type = "Multiplier", var = "ManaSpentRecently", div = tonumber(num1) , limit = tonumber(num3), limitTotal = true}) } end,
+	["最近你每消耗 (%d+) 点魔力\n你身上的秘术增强效果提高 (%d+)%%，最多 (%d+)%%"] = function(_,num1,num2,num3)return {
+	mod("秘术增强Effect", "INC", tonumber(num2),
+	{ type = "Multiplier", var = "ManaSpentRecently", div = tonumber(num1) , limit = tonumber(num3), limitTotal = true}) } end,
+	["拥有【秘术增强】时免疫元素异常状态"]= function() return {
 	mod("AvoidShock", "BASE", 100, { type = "Condition", var = "AffectedBy秘术增强" } ),
 	mod("AvoidFrozen", "BASE", 100, { type = "Condition", var = "AffectedBy秘术增强" } ),
 	mod("AvoidChilled", "BASE", 100, { type = "Condition", var = "AffectedBy秘术增强" } ),
 	mod("AvoidIgnite", "BASE", 100, { type = "Condition", var = "AffectedBy秘术增强" } ),
-	} end, 
-	["你制造的奉献地面将会是亵渎地面"] = { 
-			flag("Condition:CreateProfaneGround"),
-			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CreateProfaneGround" }), -- Make the Configuration option appear
-		},
-	["创造【渎神地面】来代替【奉献地面】"] = { 
-			flag("Condition:CreateProfaneGround"),
-			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CreateProfaneGround" }), -- Make the Configuration option appear
-		},
+	} end,
+	["你制造的奉献地面将会是亵渎地面"] = {
+	flag("Condition:CreateProfaneGround"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CreateProfaneGround" }), -- Make the Configuration option appear
+	},
+	["创造【渎神地面】来代替【奉献地面】"] = {
+	flag("Condition:CreateProfaneGround"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CreateProfaneGround" }), -- Make the Configuration option appear
+	},
 	["免疫致盲"] = { mod("AvoidBlind", "BASE", 100) },
 	["目盲不会影响你的命中率"] = { flag("IgnoreBlindHitChance") },
 	["你的暴击有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("CritDoubleDamageChance", "BASE", num) } end,
 	["使用战吼时，每 (%d+) 【威力值】可使护甲提高 (%d+)%%，持续 8 秒，最多提高 (%d+)%%"] = function(mp, _, num, max_inc) return {
-		mod("Armour", "INC", num, { type = "Multiplier", var = "WarcryPower", div = tonumber(mp), limit = tonumber(max_inc), limitTotal = true }, { type = "Condition", var = "UsedWarcryInPast8Seconds" })
-		} end,
+	mod("Armour", "INC", num, { type = "Multiplier", var = "WarcryPower", div = tonumber(mp), limit = tonumber(max_inc), limitTotal = true }, { type = "Condition", var = "UsedWarcryInPast8Seconds" })
+	} end,
 	["【鸟之势】也会使周围友军获得【鸟之力量】和【鸟之斗魄】"] = { mod("ExtraSkillMod", "LIST", { mod = mod("BuffEffectOnMinion", "MORE", 100) }, { type = "SkillName", skillName = "鸟之势" }) },
-	["被击中时，护甲值不对物理伤害生效，改为对火焰、冰霜、闪电伤害生效"] = { 
-	flag("ArmourAppliesToFireDamageTaken"), 
-	flag("ArmourAppliesToColdDamageTaken"), 
+	["被击中时，护甲值不对物理伤害生效，改为对火焰、冰霜、闪电伤害生效"] = {
+	flag("ArmourAppliesToFireDamageTaken"),
+	flag("ArmourAppliesToColdDamageTaken"),
 	flag("ArmourAppliesToLightningDamageTaken"),
-	 flag("ArmourDoesNotApplyToPhysicalDamageTaken") },
-		["承受伤害减免的最大上限为 (%d+)%%"] = function(num) return { mod("DamageReductionMax", "OVERRIDE", num) } end,
-		["被击中受到闪电伤害时也套用护甲值"] = { flag("ArmourAppliesToLightningDamageTaken") },
-		["闪电抗性不对承受的闪电伤害生效"] = { flag("SelfIgnoreLightningResistance") },
+	flag("ArmourDoesNotApplyToPhysicalDamageTaken") },
+	["承受伤害减免的最大上限为 (%d+)%%"] = function(num) return { mod("DamageReductionMax", "OVERRIDE", num) } end,
+	["被击中受到闪电伤害时也套用护甲值"] = { flag("ArmourAppliesToLightningDamageTaken") },
+	["闪电抗性不对承受的闪电伤害生效"] = { flag("SelfIgnoreLightningResistance") },
 	["(%d+)%% 几率以双倍护甲进行防御"] = function(num) return { mod("DoubleArmourChance", "BASE", num ) } end,
-	["召唤生物在满血时有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("MinionModifier", "LIST", 
+	["召唤生物在满血时有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("MinionModifier", "LIST",
 	{ mod = mod("DoubleDamageChance", "BASE", num,{ type = "Condition", var = "FullLife" }) }) ,
-	 } end,
+	} end,
 	["你在专注时，冰缓周围敌人，使其行动速度降低 (%d+)%%"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("Condition:Chilled", "FLAG", true) },{ type = "Condition", var = "Focused" }) } end,
 	["对感电敌人的冰霜击中伤害提高 (%d+)%%"] = function(num) return { mod("ColdDamage", "INC", num,nil,0,KeywordFlag.Hit,{ type = "ActorCondition", actor = "enemy", var = "Shocked" } ) } end,
 	["对冰缓敌人的闪电击中伤害提高 (%d+)%%"] = function(num) return { mod("LightningDamage", "INC", num,nil,0,KeywordFlag.Hit,{ type = "ActorCondition", actor = "enemy", var = "Chilled" } ) } end,
-	["玩家使用药剂回复的生命和魔力提高 (%d+)%%"] = function(num) return { 
+	["玩家使用药剂回复的生命和魔力提高 (%d+)%%"] = function(num) return {
 	mod("FlaskLifeRecovery", "INC", num ),
 	mod("FlaskManaRecovery", "INC", num )
-	 } end, 
+	} end,
 	["周围敌人被冰缓"] = { mod("EnemyModifier", "LIST", { mod = mod("Condition:Chilled", "FLAG", true) }) },
 	["使用药剂时获得【炼金术天才】状态"] = {
-			flag("Condition:CanHaveAlchemistGenius"),
-			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanHaveAlchemistGenius" }), -- Make the Configuration option appear			
-		},
+	flag("Condition:CanHaveAlchemistGenius"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanHaveAlchemistGenius" }), -- Make the Configuration option appear
+	},
 	["击中有 5 层或少于 5 层【死亡凋零】减益状态的敌人时，有 (%d+)%% 几率施加持续 (%d+) 秒的【死亡凋零】"] = { flag("Condition:CanWither") },
 	["使用战吼时，你和周围友军获得【猛攻】状态，持续 4 秒"] = { mod("ExtraAura", "LIST", { mod = flag("Onslaught") }, { type = "Condition", var = "UsedWarcryRecently" }) },
 	["免疫点燃和感电"] = {
-			mod("AvoidIgnite", "BASE", 100),
-			mod("AvoidShock", "BASE", 100),
-		},
+	mod("AvoidIgnite", "BASE", 100),
+	mod("AvoidShock", "BASE", 100),
+	},
 	["在【迷踪】状态时免疫元素异常状态"] = {
-			mod("AvoidChill", "BASE", 100, { type = "Condition", var = "Phasing" }),
-			mod("AvoidFreeze", "BASE", 100, { type = "Condition", var = "Phasing" }),
-			mod("AvoidIgnite", "BASE", 100, { type = "Condition", var = "Phasing" }),
-			mod("AvoidShock", "BASE", 100, { type = "Condition", var = "Phasing" }),
-		},
+	mod("AvoidChill", "BASE", 100, { type = "Condition", var = "Phasing" }),
+	mod("AvoidFreeze", "BASE", 100, { type = "Condition", var = "Phasing" }),
+	mod("AvoidIgnite", "BASE", 100, { type = "Condition", var = "Phasing" }),
+	mod("AvoidShock", "BASE", 100, { type = "Condition", var = "Phasing" }),
+	},
 	["药剂持续期间，免疫元素异常状态"] = {
-			mod("AvoidChill", "BASE", 100, { type = "Condition", var = "UsingFlask" }),
-			mod("AvoidFreeze", "BASE", 100, { type = "Condition", var = "UsingFlask" }),
-			mod("AvoidIgnite", "BASE", 100, { type = "Condition", var = "UsingFlask" }),
-			mod("AvoidShock", "BASE", 100, { type = "Condition", var = "UsingFlask" }),
-		},
-		["位于奉献地面之上时，免疫元素异常状态"] = {
-			mod("AvoidChill", "BASE", 100, { type = "Condition", var = "OnConsecratedGround" }),
-			mod("AvoidFreeze", "BASE", 100, { type = "Condition", var = "OnConsecratedGround" }),
-			mod("AvoidIgnite", "BASE", 100, { type = "Condition", var = "OnConsecratedGround" }),
-			mod("AvoidShock", "BASE", 100, { type = "Condition", var = "OnConsecratedGround" }),
-		},
-	["药剂效果的持续时间延长 (%d+)%%"] = function(num) return { 
+	mod("AvoidChill", "BASE", 100, { type = "Condition", var = "UsingFlask" }),
+	mod("AvoidFreeze", "BASE", 100, { type = "Condition", var = "UsingFlask" }),
+	mod("AvoidIgnite", "BASE", 100, { type = "Condition", var = "UsingFlask" }),
+	mod("AvoidShock", "BASE", 100, { type = "Condition", var = "UsingFlask" }),
+	},
+	["位于奉献地面之上时，免疫元素异常状态"] = {
+	mod("AvoidChill", "BASE", 100, { type = "Condition", var = "OnConsecratedGround" }),
+	mod("AvoidFreeze", "BASE", 100, { type = "Condition", var = "OnConsecratedGround" }),
+	mod("AvoidIgnite", "BASE", 100, { type = "Condition", var = "OnConsecratedGround" }),
+	mod("AvoidShock", "BASE", 100, { type = "Condition", var = "OnConsecratedGround" }),
+	},
+	["药剂效果的持续时间延长 (%d+)%%"] = function(num) return {
 	mod("FlaskDuration", "INC", num )
-	 } end,
-	["非药剂效果持续时间，移动速度提高 (%d+)%%"] = function(num) return { 
+	} end,
+	["非药剂效果持续时间，移动速度提高 (%d+)%%"] = function(num) return {
 	mod("MovementSpeed", "INC", num, { type = "Condition", var = "UsingFlask" , neg = true} )
-	 } end,
-	["任意生命或魔力药剂持续期间，你身上诅咒的效果降低 (%d+)%%"] = function(num) return { 
+	} end,
+	["任意生命或魔力药剂持续期间，你身上诅咒的效果降低 (%d+)%%"] = function(num) return {
 	mod("CurseEffectOnSelf", "INC", -num, { type = "Condition", varList = { "UsingManaFlask", "UsingLifeFlask" } } )
-	 } end,
+	} end,
 	["【燃烧箭矢】的减益效果提高 (%d+)%%"] = function(num) return { mod("DebuffEffect", "INC", num, { type = "SkillName", skillName = "燃烧箭矢"}) } end,
 	["【燃烧箭矢】提高等同 (%d+)%% 物理伤害的火焰伤害"] = function(num) return {  mod("PhysicalDamageGainAsFire", "BASE", num, { type = "SkillName", skillName = "燃烧箭矢"})  } end,
 	["所有战吼技能共享冷却时间"] = { flag("WarcryShareCooldown") },
@@ -4281,107 +4298,107 @@ local specialModList = {
 	["%+(%d) 最大毒力"] = function(num) return { mod("Multiplier:VirulenceStacksMax", "BASE", num) } end,
 	["【凿击】创造 %+(%d+) 根尖刺"] = function(num) return { mod("Multiplier:PerforateMaxSpikes", "BASE", num) } end,
 	["燃尽的范围效果扩大 (%d+)%%"]  = function(num) return {  mod("AreaOfEffect", "INC", num, { type = "SkillName", skillName = "燃尽"})  } end,
-	["受到捷技能影响时，有 (%d+)%% 几率冰冻，感电和点燃敌人"]  = function(num) return { 
+	["受到捷技能影响时，有 (%d+)%% 几率冰冻，感电和点燃敌人"]  = function(num) return {
 	mod("EnemyFreezeChance", "BASE", num,{ type = "Condition", varList = { "AffectedBy苦痛之捷", "AffectedBy纯净之捷", "AffectedBy寒冰之捷", "AffectedBy灰烬之捷", "AffectedBy闪电之捷"} }),
 	mod("EnemyShockChance", "BASE", num,{ type = "Condition", varList = { "AffectedBy苦痛之捷", "AffectedBy纯净之捷", "AffectedBy寒冰之捷", "AffectedBy灰烬之捷", "AffectedBy闪电之捷"} }),
-	mod("EnemyIgniteChance", "BASE", num,{ type = "Condition", varList = { "AffectedBy苦痛之捷", "AffectedBy纯净之捷", "AffectedBy寒冰之捷", "AffectedBy灰烬之捷", "AffectedBy闪电之捷"} }) 
-	 } end,
+	mod("EnemyIgniteChance", "BASE", num,{ type = "Condition", varList = { "AffectedBy苦痛之捷", "AffectedBy纯净之捷", "AffectedBy寒冰之捷", "AffectedBy灰烬之捷", "AffectedBy闪电之捷"} })
+	} end,
 	["敌人在你造成的冰缓区域里，受到的闪电伤害提高 (%d+)%%"] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("LightningDamageTaken", "INC", num) }, { type = "ActorCondition", actor = "enemy", var = "InChillingArea" }) } end,
 	["有 (%d+)%% 几率使冰缓区域中的敌人【精疲力尽】"] = function(num) return { mod("SapChance", "BASE", num, { type = "ActorCondition", actor = "enemy", var = "InChillingArea" } ) } end,
 	["你没有智慧"] = function() return { mod("Int", "OVERRIDE", 0) } end,
-	["使用此武器的攻击有 (%d+)%% 暴击率"] = function(num) 
-		return { mod("CritChance", "OVERRIDE", num, { type = "Condition",  var = "{Hand}Attack" } ) } end,
-	["用该武器击中时，暴击率为 (%d+)%%"] = function(num) 
-		return { mod("CritChance", "OVERRIDE", num, { type = "Condition",  var = "{Hand}Attack" } ) } end,
-	["周围每个灵枢使你每秒回复 ([%d%.]+)%% 生命，每秒最多 ([%d%.]+)%%"] = function(num, _, limit) 
-	 return {  
-	 mod("LifeRegenPercent", "BASE", num,{ type = "Multiplier", var = "NearbyCorpse", limit = tonumber(limit), limitTotal = true })
-	  } end,
-	["每个激活的图腾提供 %+(%d+) 护甲"] = function(num) 
-		return { mod("Armour", "BASE", num, { type = "PerStat",  stat = "ActiveTotemLimit" } ) } end,
-	["每个烙印可使暴击几率提高 (%d+)%%"] = function(num) 
-		return { mod("CritChance", "INC", num, { type = "PerStat", stat = "ActiveBrandLimit" }) } end,
-	["对敌人的闪电异常效果持续时间延长 (%d+)%%"] = function(num) return { 
-		mod("EnemyShockDuration", "INC", num),
-		mod("EnemySapDuration", "INC", num)
-		} end,
-	["对敌人的冰霜异常效果持续时间延长 (%d+)%%"] = function(num) return { 
-		mod("EnemyFreezeDuration", "INC", num),
-		mod("EnemyChillDuration", "INC", num),
-		mod("EnemyBrittleDuration", "INC", num)
-		} end,
-	["对敌人的火焰异常效果持续时间延长 (%d+)%%"] = function(num) return { 
-		mod("EnemyIgniteDuration", "INC", num),
-		mod("EnemyScorchDuration", "INC", num)
-		} end,
-	["闪电异常效果提高 (%d+)%%"] = function(num) return { 
-		mod("EnemyShockEffect", "INC", num),
-		mod("EnemySapEffect", "INC", num)
-		} end,
-	["冰霜异常效果提高 (%d+)%%"] = function(num) return { 
-		mod("EnemyFreezeEffect", "INC", num),
-		mod("EnemyChillEffect", "INC", num),
-		mod("EnemyBrittleEffect", "INC", num)
-		} end,
-	["火焰异常效果提高 (%d+)%%"] = function(num) return { 
-		mod("EnemyIgniteEffect", "INC", num),
-		mod("EnemyScorchEffect", "INC", num)
-		} end,
-	["若近期你没有格挡，则暴击几率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", tonumber(num),{ type = "Condition", var = "BlockedRecently" , neg = true}  )  } end, 
-	["【闪现射击】和【魅影射击】的冷却回复速度提高 (%d+)%%"]= function(num) return {  
+	["使用此武器的攻击有 (%d+)%% 暴击率"] = function(num)
+	return { mod("CritChance", "OVERRIDE", num, { type = "Condition",  var = "{Hand}Attack" } ) } end,
+	["用该武器击中时，暴击率为 (%d+)%%"] = function(num)
+	return { mod("CritChance", "OVERRIDE", num, { type = "Condition",  var = "{Hand}Attack" } ) } end,
+	["周围每个灵枢使你每秒回复 ([%d%.]+)%% 生命，每秒最多 ([%d%.]+)%%"] = function(num, _, limit)
+	return {
+	mod("LifeRegenPercent", "BASE", num,{ type = "Multiplier", var = "NearbyCorpse", limit = tonumber(limit), limitTotal = true })
+	} end,
+	["每个激活的图腾提供 %+(%d+) 护甲"] = function(num)
+	return { mod("Armour", "BASE", num, { type = "PerStat",  stat = "ActiveTotemLimit" } ) } end,
+	["每个烙印可使暴击几率提高 (%d+)%%"] = function(num)
+	return { mod("CritChance", "INC", num, { type = "PerStat", stat = "ActiveBrandLimit" }) } end,
+	["对敌人的闪电异常效果持续时间延长 (%d+)%%"] = function(num) return {
+	mod("EnemyShockDuration", "INC", num),
+	mod("EnemySapDuration", "INC", num)
+	} end,
+	["对敌人的冰霜异常效果持续时间延长 (%d+)%%"] = function(num) return {
+	mod("EnemyFreezeDuration", "INC", num),
+	mod("EnemyChillDuration", "INC", num),
+	mod("EnemyBrittleDuration", "INC", num)
+	} end,
+	["对敌人的火焰异常效果持续时间延长 (%d+)%%"] = function(num) return {
+	mod("EnemyIgniteDuration", "INC", num),
+	mod("EnemyScorchDuration", "INC", num)
+	} end,
+	["闪电异常效果提高 (%d+)%%"] = function(num) return {
+	mod("EnemyShockEffect", "INC", num),
+	mod("EnemySapEffect", "INC", num)
+	} end,
+	["冰霜异常效果提高 (%d+)%%"] = function(num) return {
+	mod("EnemyFreezeEffect", "INC", num),
+	mod("EnemyChillEffect", "INC", num),
+	mod("EnemyBrittleEffect", "INC", num)
+	} end,
+	["火焰异常效果提高 (%d+)%%"] = function(num) return {
+	mod("EnemyIgniteEffect", "INC", num),
+	mod("EnemyScorchEffect", "INC", num)
+	} end,
+	["若近期你没有格挡，则暴击几率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", tonumber(num),{ type = "Condition", var = "BlockedRecently" , neg = true}  )  } end,
+	["【闪现射击】和【魅影射击】的冷却回复速度提高 (%d+)%%"]= function(num) return {
 	mod("CooldownRecovery", "INC", tonumber(num),{ type = "SkillName", skillName = "闪现射击" }  ),
 	mod("CooldownRecovery", "INC", tonumber(num),{ type = "SkillName", skillName = "魅影射击" }  )
-	  } end, 
-	["【风暴烙印】的伤害会穿透带有烙印敌人闪电抗性的 (%d+)%%"]= function(num) return {  
-	mod("LightningPenetration", "BASE", tonumber(num),{ type = "SkillName", skillName = "风暴烙印" },{ type = "MultiplierThreshold", var = "BrandsAttachedToEnemy", threshold = 1 }  )  } end, 
-	["施放光环图腾技能时需要的魔力降低 (%d+)%%"] = function(num) return { 
-		mod("ManaCost", "INC", -num,nil,nil, KeywordFlag.Totem,{ type = "SkillType", skillType = SkillType.Aura }),
-		} end,
-	["非持续吟唱技能总魔力消耗 %-(%d+)"] = function(num) return { 
-		mod("ManaCost", "BASE", -num,{ type = "SkillType", skillType = SkillType.Channelled, neg = true } ),
-		} end,
-	["受到【清晰】影响时，非持续吟唱技能的总魔力消耗 %-(%d+)"] = function(num) return { 
-		mod("ManaCost", "BASE", -num,{ type = "SkillType", skillType = SkillType.Channelled, neg = true },{ type = "Condition", var = "AffectedBy清晰" } ),
-		} end,	
-	["装备在主手时，召唤的魔侍复制此武器"] =  
-		   { mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "minionUses", value = "Weapon 1" }) },
-			{ type = "SkillName", skillNameList = { "召唤魔侍"} },{ type = "SlotNumber", num = 1 }) },	
-	["召唤魔侍勇士时，它会持握你主手武器的副本"] =  
-		   { mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "minionUses", value = "Weapon 1" }) },
-			{ type = "SkillName", skillNameList = { "召唤魔侍"} },{ type = "SlotNumber", num = 1 }) },	
-	["当你近期使用此武器击中时，召唤的魔侍使用此武器的伤害为三倍"]	
-		 = {  
-		 mod("MinionModifier", "LIST", { mod =
-		 mod("DoubleDamageChance", "BASE", 100, nil, ModFlag.Hit, { type = "Condition", var = "MainHandAttack" }) }) 	 
-		 }, 
-	["召唤魔侍勇士时，若你近期用该武器击中过敌人则它用该武器造成三倍伤害"]	
-		 = {  
-		 mod("MinionModifier", "LIST", { mod =
-		 mod("DoubleDamageChance", "BASE", 100, nil, ModFlag.Hit, { type = "Condition", var = "MainHandAttack" }) }) 	 
-		 }, 	
-	["则它用该武器造成三倍伤害"]	
-		 = {  
-		 mod("MinionModifier", "LIST", { mod =
-		 mod("DoubleDamageChance", "BASE", 100, nil, ModFlag.Hit, { type = "Condition", var = "MainHandAttack" }) }) 	 
-		 }, 
+	} end,
+	["【风暴烙印】的伤害会穿透带有烙印敌人闪电抗性的 (%d+)%%"]= function(num) return {
+	mod("LightningPenetration", "BASE", tonumber(num),{ type = "SkillName", skillName = "风暴烙印" },{ type = "MultiplierThreshold", var = "BrandsAttachedToEnemy", threshold = 1 }  )  } end,
+	["施放光环图腾技能时需要的魔力降低 (%d+)%%"] = function(num) return {
+	mod("ManaCost", "INC", -num,nil,nil, KeywordFlag.Totem,{ type = "SkillType", skillType = SkillType.Aura }),
+	} end,
+	["非持续吟唱技能总魔力消耗 %-(%d+)"] = function(num) return {
+	mod("ManaCost", "BASE", -num,{ type = "SkillType", skillType = SkillType.Channelled, neg = true } ),
+	} end,
+	["受到【清晰】影响时，非持续吟唱技能的总魔力消耗 %-(%d+)"] = function(num) return {
+	mod("ManaCost", "BASE", -num,{ type = "SkillType", skillType = SkillType.Channelled, neg = true },{ type = "Condition", var = "AffectedBy清晰" } ),
+	} end,
+	["装备在主手时，召唤的魔侍复制此武器"] =
+	{ mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "minionUses", value = "Weapon 1" }) },
+	{ type = "SkillName", skillNameList = { "召唤魔侍"} },{ type = "SlotNumber", num = 1 }) },
+	["召唤魔侍勇士时，它会持握你主手武器的副本"] =
+	{ mod("ExtraSkillMod", "LIST", { mod = mod("SkillData", "LIST", { key = "minionUses", value = "Weapon 1" }) },
+	{ type = "SkillName", skillNameList = { "召唤魔侍"} },{ type = "SlotNumber", num = 1 }) },
+	["当你近期使用此武器击中时，召唤的魔侍使用此武器的伤害为三倍"]
+	= {
+	mod("MinionModifier", "LIST", { mod =
+	mod("DoubleDamageChance", "BASE", 100, nil, ModFlag.Hit, { type = "Condition", var = "MainHandAttack" }) })
+	},
+	["召唤魔侍勇士时，若你近期用该武器击中过敌人则它用该武器造成三倍伤害"]
+	= {
+	mod("MinionModifier", "LIST", { mod =
+	mod("DoubleDamageChance", "BASE", 100, nil, ModFlag.Hit, { type = "Condition", var = "MainHandAttack" }) })
+	},
+	["则它用该武器造成三倍伤害"]
+	= {
+	mod("MinionModifier", "LIST", { mod =
+	mod("DoubleDamageChance", "BASE", 100, nil, ModFlag.Hit, { type = "Condition", var = "MainHandAttack" }) })
+	},
 	["被咒印标记的敌人承受的伤害提高 (%d+)%%"] = function(num) return {
-			mod("EnemyModifier", "LIST", { mod = mod("DamageTaken", "INC", num) }, {type = "ActorCondition", actor = "enemy", var = "Marked"}),
-		} end,
+	mod("EnemyModifier", "LIST", { mod = mod("DamageTaken", "INC", num) }, {type = "ActorCondition", actor = "enemy", var = "Marked"}),
+	} end,
 	["被咒印标记的敌人命中率降低 (%d+)%%"] = function(num) return {
-			mod("EnemyModifier", "LIST", { mod = mod("Accuracy", "INC", -num) }, {type = "ActorCondition", actor = "enemy", var = "Marked"}),
-		} end,
-	["你施放的魔蛊有 %+(%d+) 层末日之力数量上限"] = function(num) return { mod("MaxDoom", "BASE", num) } end,	
-		["魔蛊技能范围提高 (%d+)%%"]= function(num) return { mod("AreaOfEffect", "INC", num, { type = "SkillType", skillType = SkillType.Hex } ) } end,
+	mod("EnemyModifier", "LIST", { mod = mod("Accuracy", "INC", -num) }, {type = "ActorCondition", actor = "enemy", var = "Marked"}),
+	} end,
+	["你施放的魔蛊有 %+(%d+) 层末日之力数量上限"] = function(num) return { mod("MaxDoom", "BASE", num) } end,
+	["魔蛊技能范围提高 (%d+)%%"]= function(num) return { mod("AreaOfEffect", "INC", num, { type = "SkillType", skillType = SkillType.Hex } ) } end,
 	["被【法术凝聚（辅）】辅助的技能有 %+(%d) 最大层"] = function(num) return { mod("Multiplier:IntensityLimit", "BASE", num) } end,
-	["插槽内的技能石造成双倍伤害"]= { mod("ExtraSkillMod", "LIST", 
-		{ mod = mod("DoubleDamageChance", "BASE", 100) }, { type = "SocketedIn", slotName = "{SlotName}" }) },
-	["插入的技能伤害翻倍"]= { mod("ExtraSkillMod", "LIST", 
-		{ mod = mod("DoubleDamageChance", "BASE", 100) }, { type = "SocketedIn", slotName = "{SlotName}" }) },
+	["插槽内的技能石造成双倍伤害"]= { mod("ExtraSkillMod", "LIST",
+	{ mod = mod("DoubleDamageChance", "BASE", 100) }, { type = "SocketedIn", slotName = "{SlotName}" }) },
+	["插入的技能伤害翻倍"]= { mod("ExtraSkillMod", "LIST",
+	{ mod = mod("DoubleDamageChance", "BASE", 100) }, { type = "SocketedIn", slotName = "{SlotName}" }) },
 	["冻结冰缓的敌人如同总伤害额外提高 (%d+)%%"] = function(num) return { mod("FreezeAsThoughDealing", "MORE", num, { type = "ActorCondition", actor = "enemy", var = "Chilled" } ) } end,
 	["对冰缓的敌人如同额外造成 (%d+)%% 总伤害来计算冰冻门槛"] = function(num) return { mod("FreezeAsThoughDealing", "MORE", num, { type = "ActorCondition", actor = "enemy", var = "Chilled" } ) } end,
-		["you have perfect agony if you've dealt a critical strike recently"] = {mod("Keystone", "LIST", "Perfect Agony", { type = "Condition", var = "CritRecently" })},
-		["grants eldritch battery during flask effect"] = { mod("Keystone", "LIST", "Eldritch Battery", { type = "Condition", var = "UsingFlask" }) },
-		["increases and reductions to cast speed apply to attack speed at (%d+)%% of their value"] =  function(num) return { flag("CastSpeedAppliesToAttacks"), mod("ImprovedCastSpeedAppliesToAttacks", "INC", num) } end,
+	["you have perfect agony if you've dealt a critical strike recently"] = {mod("Keystone", "LIST", "Perfect Agony", { type = "Condition", var = "CritRecently" })},
+	["grants eldritch battery during flask effect"] = { mod("Keystone", "LIST", "Eldritch Battery", { type = "Condition", var = "UsingFlask" }) },
+	["increases and reductions to cast speed apply to attack speed at (%d+)%% of their value"] =  function(num) return { flag("CastSpeedAppliesToAttacks"), mod("ImprovedCastSpeedAppliesToAttacks", "INC", num) } end,
 	["装备时触发等级 20 的尸体行走"]= function() return {  mod("ExtraSkill", "LIST", { skillId ="CorpseWalk", level = 20})   } end,
 	["受到冰霜伤害的 (%d+)%% 转换为闪电伤害"]= function(num) return { mod("ColdDamageTakenAsLightning", "BASE", num ) } end,
 	["受到火焰伤害的 (%d+)%% 转换为闪电伤害"]= function(num) return { mod("FireDamageTakenAsLightning", "BASE", num ) } end,
@@ -4391,87 +4408,87 @@ local specialModList = {
 	["无法造成非混沌伤害"] = { flag("DealNoPhysical"),flag("DealNoLightning"), flag("DealNoCold"), flag("DealNoFire") },
 	["不能造成非混沌伤害"] = { flag("DealNoPhysical"),flag("DealNoLightning"), flag("DealNoCold"), flag("DealNoFire") },
 	["(%d+)%% 几率免疫中毒"]= function(num) return { mod("AvoidPoison", "BASE", num ) } end,
-	["无法偷取或自然回复魔力"] = { flag("CannotLeechMana") ,flag("NoManaRegen") }, 
+	["无法偷取或自然回复魔力"] = { flag("CannotLeechMana") ,flag("NoManaRegen") },
 	["无法造成冰霜伤害"] = { flag("DealNoCold")},
-	["可以对敌人施放 %-1 个额外诅咒"] = { mod("EnemyCurseLimit", "BASE", -1) }, 
+	["可以对敌人施放 %-1 个额外诅咒"] = { mod("EnemyCurseLimit", "BASE", -1) },
 	["魔卫复苏每秒将其最大生命的 ([%d%.]+)%% 转化为火焰伤害"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("FireDegen", "BASE", num/100, { type = "PerStat", stat = "Life", div = 1 }) }, { type = "SkillName", skillName = "魔卫复苏" }) } end,
 	["魔卫复苏获得【火之化身】"] = { mod("MinionModifier", "LIST", { mod = mod("Keystone", "LIST", "火之化身") }, { type = "SkillName", skillName = "魔卫复苏" }) },
-	["你的混沌伤害可以造成冰缓"] = { flag("ChaosCanChill")},	
+	["你的混沌伤害可以造成冰缓"] = { flag("ChaosCanChill")},
 	["你的物理伤害可以造成冰冻"] = { flag("PhysicalCanChill")},
 	["你的冰霜伤害无法冰冻"] = { flag("CannotFreeze") },
-	["用该武器击中时，所有伤害都导致中毒"] = { 
+	["用该武器击中时，所有伤害都导致中毒"] = {
 	flag("FireCanPoison", { type = "Condition", var = "{Hand}Attack" } ) ,
 	flag("ColdCanPoison", { type = "Condition", var = "{Hand}Attack" } ) ,
-	flag("LightningCanPoison", { type = "Condition", var = "{Hand}Attack" } ) 
-	}, 
+	flag("LightningCanPoison", { type = "Condition", var = "{Hand}Attack" } )
+	},
 	["你使用插入的技能时触发 (%d+) 级烈焰冲刺"] = function(num) return { mod("ExtraSkill", "LIST", { skillId = "FlameDash", level = num }) } end,
 	["你使用药剂时触发 (%d+) 级召唤嘲讽装置"] = function(num) return { mod("ExtraSkill", "LIST", { skillId = "SummonTauntingContraption", level = num }) } end,
 	["暴击攻击无视敌人的元素抗性"] = { flag("IgnoreElementalResistances", nil, ModFlag.Attack, { type = "Condition", var = "CriticalStrike" }) },
 	["装备时触发 20 级灵枢行走"]= function() return {  mod("ExtraSkill", "LIST", { skillId ="CorpseWalk", level = 20})   } end,
-	["周围每个灵枢都使你每秒再生 ([%d%.]+)%% 生命，最多 ([%d%.]+)%%"] = function(num, _, limit) 
-	 return {  
-	 mod("LifeRegenPercent", "BASE", num,{ type = "Multiplier", var = "NearbyCorpse", limit = tonumber(limit), limitTotal = true })
-	  } end,
+	["周围每个灵枢都使你每秒再生 ([%d%.]+)%% 生命，最多 ([%d%.]+)%%"] = function(num, _, limit)
+	return {
+	mod("LifeRegenPercent", "BASE", num,{ type = "Multiplier", var = "NearbyCorpse", limit = tonumber(limit), limitTotal = true })
+	} end,
 	["迷踪状态下，每隔 0.5 秒便触发 20 级隐形打击"]= function() return {  mod("ExtraSkill", "LIST", { skillId ="HiddenBlade", level = 20})   } end,
-	["迷踪状态下，攻击速度减慢 (%d+)%%"]= function(num) return { 
-	 mod("Speed", "INC", -num,nil, ModFlag.Attack, { type = "Condition", var = "Phasing" } )  } end, 
-	--["你被感电时，元素伤害击中特别幸运"] = { flag("LuckyHits",{ type = "Condition", var = "Shocked" } )},	
-	["你被冰缓时，伤害穿透 (%d+)%% 元素抗性"]= function(num) return { 
-	 mod("ElementalPenetration", "BASE", num, { type = "Condition", var = "Chilled" } )  } end, 
-	["你被点燃时，将物理伤害的 (%d+)%% 视为一种随机元素额外伤害"]= function(num) return { 
-		mod("PhysicalDamageGainAsFire", "BASE", tonumber(num), { type = "Condition", var = "PhysicsRandomElementFire" }, { type = "Condition", var = "Ignited" } ),
-		  mod("PhysicalDamageGainAsCold", "BASE", tonumber(num),{ type = "Condition", var = "PhysicsRandomElementCold" }, { type = "Condition", var = "Ignited" } ),
-		  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num),{ type = "Condition", var = "PhysicsRandomElementLightning" }, { type = "Condition", var = "Ignited" } ),
-	 } end, 
+	["迷踪状态下，攻击速度减慢 (%d+)%%"]= function(num) return {
+	mod("Speed", "INC", -num,nil, ModFlag.Attack, { type = "Condition", var = "Phasing" } )  } end,
+	--["你被感电时，元素伤害击中特别幸运"] = { flag("LuckyHits",{ type = "Condition", var = "Shocked" } )},
+	["你被冰缓时，伤害穿透 (%d+)%% 元素抗性"]= function(num) return {
+	mod("ElementalPenetration", "BASE", num, { type = "Condition", var = "Chilled" } )  } end,
+	["你被点燃时，将物理伤害的 (%d+)%% 视为一种随机元素额外伤害"]= function(num) return {
+	mod("PhysicalDamageGainAsFire", "BASE", tonumber(num), { type = "Condition", var = "PhysicsRandomElementFire" }, { type = "Condition", var = "Ignited" } ),
+	mod("PhysicalDamageGainAsCold", "BASE", tonumber(num),{ type = "Condition", var = "PhysicsRandomElementCold" }, { type = "Condition", var = "Ignited" } ),
+	mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num),{ type = "Condition", var = "PhysicsRandomElementLightning" }, { type = "Condition", var = "Ignited" } ),
+	} end,
 	["若你近期内获得过暴击球，则暴击伤害加成 ([%+%-]?%d+)%%"]= function(num) return {  mod("CritMultiplier", "BASE", num, { type = "StatThreshold", stat = "PowerCharges", threshold = 1 })  } end,
-	["暴击球总持续时间额外缩短 (%d+)%%"]= function(num) return {  mod("PowerChargesDuration", "MORE", -num)  } end, 
-	["暴击球总持续时间额外缩短 (%d+)%%"]= function(num) return {  mod("PowerChargesDuration", "MORE", -num)  } end, 
+	["暴击球总持续时间额外缩短 (%d+)%%"]= function(num) return {  mod("PowerChargesDuration", "MORE", -num)  } end,
+	["暴击球总持续时间额外缩短 (%d+)%%"]= function(num) return {  mod("PowerChargesDuration", "MORE", -num)  } end,
 	["【迷踪】状态下，附近的敌人获得火焰、冰霜、闪电曝露，并使它们的抗性 %-(%d+)%%"] = function(num) return {
-			mod("EnemyModifier", "LIST", { mod = mod("FireExposure", "BASE", -num) }, { type = "Condition", var = "Phasing" } ),
-			mod("EnemyModifier", "LIST", { mod = mod("ColdExposure", "BASE", -num) }, { type = "Condition", var = "Phasing" } ),
-			mod("EnemyModifier", "LIST", { mod = mod("LightningExposure", "BASE", -num) }, { type = "Condition", var = "Phasing" } ),
-		} end,
+	mod("EnemyModifier", "LIST", { mod = mod("FireExposure", "BASE", -num) }, { type = "Condition", var = "Phasing" } ),
+	mod("EnemyModifier", "LIST", { mod = mod("ColdExposure", "BASE", -num) }, { type = "Condition", var = "Phasing" } ),
+	mod("EnemyModifier", "LIST", { mod = mod("LightningExposure", "BASE", -num) }, { type = "Condition", var = "Phasing" } ),
+	} end,
 	["火焰技能有 (%d+)%% 几率击中附加火焰曝露"] = function(num) return { mod("FireExposureChance", "BASE", num) } end,
-		["冰霜技能有 (%d+)%% 几率击中附加冰霜曝露"] = function(num) return { mod("ColdExposureChance", "BASE", num) } end,
-		["闪电技能有 (%d+)%% 几率击中附加闪电曝露"] = function(num) return { mod("LightningExposureChance", "BASE", num) } end,
-		["周围敌人有火焰曝露"] = {
-			mod("EnemyModifier", "LIST", { mod = mod("FireExposure", "BASE", -10) }, { type = "Condition", var = "Effective" }),
-		},
-		["周围敌人有冰霜曝露"] = {
-			mod("EnemyModifier", "LIST", { mod = mod("ColdExposure", "BASE", -10) }, { type = "Condition", var = "Effective" }),
-		},
-		["周围敌人有闪电曝露"] = {
-			mod("EnemyModifier", "LIST", { mod = mod("LightningExposure", "BASE", -10) }, { type = "Condition", var = "Effective" }),
-		},
-		["你受到【灰烬之捷】影响时，附近的敌人获得火焰曝露"] = {
-			mod("EnemyModifier", "LIST", { mod = mod("FireExposure", "BASE", -10) }, { type = "Condition", var = "Effective" }, { type = "Condition", var = "AffectedByHeraldofAsh" }),
-		},
-		["你受到【寒冰之捷】影响时，附近的敌人获得冰霜曝露"] = {
-			mod("EnemyModifier", "LIST", { mod = mod("ColdExposure", "BASE", -10) }, { type = "Condition", var = "Effective" }, { type = "Condition", var = "AffectedByHeraldofIce" }),
-		},
-		["你受到【闪电之捷】影响时，附近的敌人获得闪电曝露"] = {
-			mod("EnemyModifier", "LIST", { mod = mod("LightningExposure", "BASE", -10) }, { type = "Condition", var = "Effective" }, { type = "Condition", var = "AffectedByHeraldofThunder" }),
-		},
-	["击中时有 (%d+)%% 几率施加畏火"]= function(num) return {  mod("FireExposureChance", "BASE", num)  } end, 
-	["击中时有 (%d+)%% 几率施加畏寒"]= function(num) return {  mod("FireExposureChance", "BASE", num)  } end, 
-	["击中时有 (%d+)%% 几率施加畏电"]= function(num) return {  mod("FireExposureChance", "BASE", num)  } end, 
-	["击中时有 (%d+)%% 几率施加火焰曝露"]= function(num) return {  mod("FireExposureChance", "BASE", num)  } end, 
-	["击中时有 (%d+)%% 几率施加冰霜曝露"]= function(num) return {  mod("FireExposureChance", "BASE", num)  } end, 
-	["击中时有 (%d+)%% 几率施加闪电曝露"]= function(num) return {  mod("FireExposureChance", "BASE", num)  } end, 
-	["总点燃持续时间额外缩短 (%d+)%%"]= function(num) return {  mod("EnemyIgniteDuration", "MORE", -num)  } end, 
-	["每失去 (%d+)%% 冰霜抗性，就使冰霜伤害提高 (%d+)%%"]= function(_,num1,num2) return {  
-	mod("ColdDamage", "INC", tonumber(num2),{ type = "PerStat", stat = "MissingColdResist", div = tonumber(num1) } )  } end, 
-	["每失去 (%d+)%% 火焰抗性，就使火焰伤害提高 (%d+)%%"]= function(_,num1,num2) return {  
-	mod("FireDamage", "INC", tonumber(num2),{ type = "PerStat", stat = "MissingFireResist", div = tonumber(num1) } )  } end, 
+	["冰霜技能有 (%d+)%% 几率击中附加冰霜曝露"] = function(num) return { mod("ColdExposureChance", "BASE", num) } end,
+	["闪电技能有 (%d+)%% 几率击中附加闪电曝露"] = function(num) return { mod("LightningExposureChance", "BASE", num) } end,
+	["周围敌人有火焰曝露"] = {
+	mod("EnemyModifier", "LIST", { mod = mod("FireExposure", "BASE", -10) }, { type = "Condition", var = "Effective" }),
+	},
+	["周围敌人有冰霜曝露"] = {
+	mod("EnemyModifier", "LIST", { mod = mod("ColdExposure", "BASE", -10) }, { type = "Condition", var = "Effective" }),
+	},
+	["周围敌人有闪电曝露"] = {
+	mod("EnemyModifier", "LIST", { mod = mod("LightningExposure", "BASE", -10) }, { type = "Condition", var = "Effective" }),
+	},
+	["你受到【灰烬之捷】影响时，附近的敌人获得火焰曝露"] = {
+	mod("EnemyModifier", "LIST", { mod = mod("FireExposure", "BASE", -10) }, { type = "Condition", var = "Effective" }, { type = "Condition", var = "AffectedByHeraldofAsh" }),
+	},
+	["你受到【寒冰之捷】影响时，附近的敌人获得冰霜曝露"] = {
+	mod("EnemyModifier", "LIST", { mod = mod("ColdExposure", "BASE", -10) }, { type = "Condition", var = "Effective" }, { type = "Condition", var = "AffectedByHeraldofIce" }),
+	},
+	["你受到【闪电之捷】影响时，附近的敌人获得闪电曝露"] = {
+	mod("EnemyModifier", "LIST", { mod = mod("LightningExposure", "BASE", -10) }, { type = "Condition", var = "Effective" }, { type = "Condition", var = "AffectedByHeraldofThunder" }),
+	},
+	["击中时有 (%d+)%% 几率施加畏火"]= function(num) return {  mod("FireExposureChance", "BASE", num)  } end,
+	["击中时有 (%d+)%% 几率施加畏寒"]= function(num) return {  mod("FireExposureChance", "BASE", num)  } end,
+	["击中时有 (%d+)%% 几率施加畏电"]= function(num) return {  mod("FireExposureChance", "BASE", num)  } end,
+	["击中时有 (%d+)%% 几率施加火焰曝露"]= function(num) return {  mod("FireExposureChance", "BASE", num)  } end,
+	["击中时有 (%d+)%% 几率施加冰霜曝露"]= function(num) return {  mod("FireExposureChance", "BASE", num)  } end,
+	["击中时有 (%d+)%% 几率施加闪电曝露"]= function(num) return {  mod("FireExposureChance", "BASE", num)  } end,
+	["总点燃持续时间额外缩短 (%d+)%%"]= function(num) return {  mod("EnemyIgniteDuration", "MORE", -num)  } end,
+	["每失去 (%d+)%% 冰霜抗性，就使冰霜伤害提高 (%d+)%%"]= function(_,num1,num2) return {
+	mod("ColdDamage", "INC", tonumber(num2),{ type = "PerStat", stat = "MissingColdResist", div = tonumber(num1) } )  } end,
+	["每失去 (%d+)%% 火焰抗性，就使火焰伤害提高 (%d+)%%"]= function(_,num1,num2) return {
+	mod("FireDamage", "INC", tonumber(num2),{ type = "PerStat", stat = "MissingFireResist", div = tonumber(num1) } )  } end,
 	["插入的旅行技能的总伤害额外提高 (%d+)%%"] = function(num) return { mod("ExtraSkillMod", "LIST", { mod = mod("Damage", "MORE", num) }, { type = "SocketedIn", slotName = "{SlotName}" }, { type = "SkillType", skillType = SkillType.TravelSkill } ) } end,
-	["若你的耐力球、狂怒球或暴击球总共有 (%d+) 个时，将伤害的 ([%d%.]+)%% 转化为生命偷取"] = function(_,num1,num2) return {  
-	mod("DamageLifeLeech", "BASE", tonumber(num2),{ type = "MultiplierThreshold", var = "TotalCharges", threshold = tonumber(num1) } )  } end, 
+	["若你的耐力球、狂怒球或暴击球总共有 (%d+) 个时，将伤害的 ([%d%.]+)%% 转化为生命偷取"] = function(_,num1,num2) return {
+	mod("DamageLifeLeech", "BASE", tonumber(num2),{ type = "MultiplierThreshold", var = "TotalCharges", threshold = tonumber(num1) } )  } end,
 	["你格挡时触发 (%d+) 级(.+)"] = function(num, _, skill) return extraSkill(skill, num) end,
 	["你的所有伤害均可造成冰冻"] = { flag("PhysicalCanFreeze"), flag("LightningCanFreeze"),  flag("FireCanFreeze"), flag("ChaosCanFreeze") },
 	["格挡时使攻击者感电 (%d+) 秒"]  = {
-			mod("ShockBase", "BASE", 15, { type = "Condition", var = "BlockedRecently" }),
-			mod("EnemyModifier", "LIST", { mod = flag("Condition:Shocked") }, { type = "Condition", var = "BlockedRecently" } ),
-		},
+	mod("ShockBase", "BASE", 15, { type = "Condition", var = "BlockedRecently" }),
+	mod("EnemyModifier", "LIST", { mod = flag("Condition:Shocked") }, { type = "Condition", var = "BlockedRecently" } ),
+	},
 	["你被感电时，元素伤害击中特别幸运"] = { flag("ElementalLuckHits", { type = "Condition", var = "Shocked" }) },
 	--SummonedGolemInPast8Sec
 	["你造成的咒术效果为厄运的 2 倍"] = { mod("DoomEffect", "MORE", 100) },
@@ -4484,158 +4501,158 @@ local specialModList = {
 	["攻击可以额外发射 1 个投射物"] = { mod("ProjectileCount", "BASE", 1, nil, ModFlag.Attack) },
 	["若你近期内被击中，则每秒失去 (%d+)%% 生命"] = function(num) return { mod("LifeDegen", "BASE", 1, { type = "PercentStat", stat = "Life", percent = num }, { type = "Condition", var = "BeenHitRecently" }) } end,
 	["防御为零"] = {
-			mod("Armour", "MORE", -100),
-			mod("EnergyShield", "MORE", -100),
-			mod("Evasion", "MORE", -100),
-		},
+	mod("Armour", "MORE", -100),
+	mod("EnergyShield", "MORE", -100),
+	mod("Evasion", "MORE", -100),
+	},
 	["物理神盾没有消散时，周围敌人会目盲"] = { mod("EnemyModifier", "LIST", { mod = mod("Condition:Blinded", "FLAG", true) }, { type = "Condition", var = "PhysicalAegisDepleted", neg = true }) },
 	["你至少有 (%d+) 点怒火时免疫诅咒"] = function(num) return { mod("AvoidCurse", "BASE", 100, { type = "MultiplierThreshold", var = "Rage", threshold = num }) } end,
 	["药剂持续期间具有异能魔力"] = { mod("Keystone", "LIST", "Eldritch Battery", { type = "Condition", var = "UsingFlask" }) },
 	["deal no damage"] = { flag("DealNoLightning"), flag("DealNoCold"), flag("DealNoFire"), flag("DealNoChaos"), flag("DealNoPhysical") },
 	["当不处于低血或低魔状态时，混沌伤害无法穿透能量护盾"] = { flag("ChaosNotBypassEnergyShield", { type = "Condition", varList = { "LowLife", "LowMana" }, neg = true }) },
 	["非低血状态时不造成伤害"] = {
-			flag("DealNoLightning", { type = "Condition", var = "LowLife", neg = true }),
-			flag("DealNoCold", { type = "Condition", var = "LowLife", neg = true }),
-			flag("DealNoFire", { type = "Condition", var = "LowLife", neg = true }),
-			flag("DealNoChaos",{ type = "Condition", var = "LowLife", neg = true }),
-			flag("DealNoPhysical", { type = "Condition", var = "LowLife", neg = true }),
-		},
-		["暴击获得【灵巧】"] = {
-			flag("Condition:CanBeElusive"),
-			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanBeElusive" }), -- Make the Configuration option appear
-		},
+	flag("DealNoLightning", { type = "Condition", var = "LowLife", neg = true }),
+	flag("DealNoCold", { type = "Condition", var = "LowLife", neg = true }),
+	flag("DealNoFire", { type = "Condition", var = "LowLife", neg = true }),
+	flag("DealNoChaos",{ type = "Condition", var = "LowLife", neg = true }),
+	flag("DealNoPhysical", { type = "Condition", var = "LowLife", neg = true }),
+	},
+	["暴击获得【灵巧】"] = {
+	flag("Condition:CanBeElusive"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanBeElusive" }), -- Make the Configuration option appear
+	},
 	["能量护盾每秒损失 (%d+)%%"] = function(num) return { mod("EnergyShieldDegen", "BASE", 1, { type = "PercentStat", stat = "EnergyShield", percent = num }) } end,
 	["无法回复，也无法补充"] = {
-			flag("NoEnergyShieldRecharge"),	
-			flag("NoEnergyShieldRegen")
-		},
+	flag("NoEnergyShieldRecharge"),
+	flag("NoEnergyShieldRegen")
+	},
 	["满血时无法移除生命偷取效果"] = {
-			flag("CanLeechLifeOnFullLife")		
-		},
+	flag("CanLeechLifeOnFullLife")
+	},
 	["生命偷取在满血时恢复能量护盾"] = {
-			 flag("GhostReaver", { type = "Condition", var = "FullLife" })		
-		},
+	flag("GhostReaver", { type = "Condition", var = "FullLife" })
+	},
 	["能量护盾回复改为恢复生命"] = { flag("EnergyShieldRechargeAppliesToLife") },
 	["你的混沌伤害可以点燃敌人"] = { flag("ChaosCanIgnite") },
 	["你的光环效果不影响友军"] = { flag("SelfAurasCannotAffectAllies") },
 	["你身上的光环总效果额外提高 (%d+)%%"] = function(num) return { mod("SkillAuraEffectOnSelf", "MORE", num) } end,
-	["如果近期内被击中，则闪避值提高 (%d+)%%"] = function(num) return {  mod("Evasion", "MORE", num, { type = "Condition", var = "BeenHitRecently" })  } end, 
-	["每秒再生 (%d+) 点怒火"]= function(num) return { 	
-				flag("Condition:CanGainRage"),
-				mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }),
-					mod("RageRegen", "BASE", num) 
-		}end,
+	["如果近期内被击中，则闪避值提高 (%d+)%%"] = function(num) return {  mod("Evasion", "MORE", num, { type = "Condition", var = "BeenHitRecently" })  } end,
+	["每秒再生 (%d+) 点怒火"]= function(num) return {
+	flag("Condition:CanGainRage"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainRage" }),
+	mod("RageRegen", "BASE", num)
+	}end,
 	["暴击伤害特别幸运"] = { flag("CritLucky") },
 	["你击中稀有或传奇敌人时触发 (%d+) 级(.+)"] = function(num, _, skill) return extraSkill(skill, num) end,
 	["格挡时用(%D+)诅咒敌人，其效果提高 (%d+)%%"] = function(_, skill, num) return {
-			mod("ExtraSkill", "LIST", { skillId = gemIdLookup[skill], level = 1 }),
-			mod("CurseEffect", "INC", tonumber(num), { type = "SkillName", skillName = gemIdLookup[skill] }),
-		} end,
+	mod("ExtraSkill", "LIST", { skillId = gemIdLookup[skill], level = 1 }),
+	mod("CurseEffect", "INC", tonumber(num), { type = "SkillName", skillName = gemIdLookup[skill] }),
+	} end,
 	["击中时用(%D+)诅咒敌人，它的效果提高 (%d+)%%"] = function(_, skill, num) return {
-			mod("ExtraSkill", "LIST", { skillId = gemIdLookup[skill], level = 1 }),
-			mod("CurseEffect", "INC", tonumber(num), { type = "SkillName", skillName = gemIdLookup[skill] }),
-		} end,
+	mod("ExtraSkill", "LIST", { skillId = gemIdLookup[skill], level = 1 }),
+	mod("CurseEffect", "INC", tonumber(num), { type = "SkillName", skillName = gemIdLookup[skill] }),
+	} end,
 	["击中时用(.+)诅咒敌人，它的效果提高 (%d+)%%"] = function(_, skill, num) return {
-			mod("ExtraSkill", "LIST", { skillId = gemIdLookup[skill], level = 1 }),
-			mod("CurseEffect", "INC", tonumber(num), { type = "SkillName", skillName = gemIdLookup[skill] }),
-		} end,
+	mod("ExtraSkill", "LIST", { skillId = gemIdLookup[skill], level = 1 }),
+	mod("CurseEffect", "INC", tonumber(num), { type = "SkillName", skillName = gemIdLookup[skill] }),
+	} end,
 	["击中时用(.+)诅咒敌人，他的效果提高 (%d+)%%"] = function(_, skill, num) return {
-			mod("ExtraSkill", "LIST", { skillId = gemIdLookup[skill], level = 1 }),
-			mod("CurseEffect", "INC", tonumber(num), { type = "SkillName", skillName = gemIdLookup[skill] }),
-		} end,
+	mod("ExtraSkill", "LIST", { skillId = gemIdLookup[skill], level = 1 }),
+	mod("CurseEffect", "INC", tonumber(num), { type = "SkillName", skillName = gemIdLookup[skill] }),
+	} end,
 	["击中时有 (%d+)%% 几率用(.+)诅咒敌人，它的效果提高 (%d+)%%"] = function(_,_, skill, num) return {
-			mod("ExtraSkill", "LIST", { skillId = gemIdLookup[skill], level = 1 }),
-			mod("CurseEffect", "INC", tonumber(num), { type = "SkillName", skillName = gemIdLookup[skill] }),
-		} end,
-		["你被(%D+)诅咒，其效果提高 (%d+)%%"] = function( _,name, num) return {
-		mod("ExtraCurse", "LIST", { skillId = FuckSkillSupportCnName(name), level = 1, applyToPlayer = true }),
-		mod("CurseEffectOnSelf", "INC", tonumber(num), { type = "SkillName", skillName = FuckSkillSupportCnName(name) }),
-		} end, 
+	mod("ExtraSkill", "LIST", { skillId = gemIdLookup[skill], level = 1 }),
+	mod("CurseEffect", "INC", tonumber(num), { type = "SkillName", skillName = gemIdLookup[skill] }),
+	} end,
+	["你被(%D+)诅咒，其效果提高 (%d+)%%"] = function( _,name, num) return {
+	mod("ExtraCurse", "LIST", { skillId = FuckSkillSupportCnName(name), level = 1, applyToPlayer = true }),
+	mod("CurseEffectOnSelf", "INC", tonumber(num), { type = "SkillName", skillName = FuckSkillSupportCnName(name) }),
+	} end,
 	["每个暴击球可使每秒回复 ([%d%.]+)%% 生命"] = function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Multiplier", var = "PowerCharge" })  } end,
-	["【迷踪】状态下，%+(%d+)%% 避免元素伤害几率"]= function(num) return { 
-	 mod("AvoidFireDamageChance", "BASE", num, { type = "Condition", var = "Phasing" } ) ,
-		 mod("AvoidColdDamageChance", "BASE", num, { type = "Condition", var = "Phasing" } ) ,
-		  mod("AvoidLightningDamageChance", "BASE", num, { type = "Condition", var = "Phasing" } ) ,	  
-	  } end, 
+	["【迷踪】状态下，%+(%d+)%% 避免元素伤害几率"]= function(num) return {
+	mod("AvoidFireDamageChance", "BASE", num, { type = "Condition", var = "Phasing" } ) ,
+	mod("AvoidColdDamageChance", "BASE", num, { type = "Condition", var = "Phasing" } ) ,
+	mod("AvoidLightningDamageChance", "BASE", num, { type = "Condition", var = "Phasing" } ) ,
+	} end,
 	["若近期内有过格挡，你则获得【迷踪】状态"] = { flag("Condition:Phasing", { type = "Condition", var = "BlockedRecently" }) },
-	["迷踪状态下，被击中时避免物理伤害的几率 %+(%d+)%%"]= function(num) return { 
-	 mod("AvoidPhysicalDamageChance", "BASE", num, { type = "Condition", var = "Phasing" } ) ,	 	  
-	  } end, 
-	["你在天赋树上连接到野蛮人的出发位置时，你获得：每秒生命再生 ([%d%.]+)%%"]= function(num) 
+	["迷踪状态下，被击中时避免物理伤害的几率 %+(%d+)%%"]= function(num) return {
+	mod("AvoidPhysicalDamageChance", "BASE", num, { type = "Condition", var = "Phasing" } ) ,
+	} end,
+	["你在天赋树上连接到野蛮人的出发位置时，你获得：每秒生命再生 ([%d%.]+)%%"]= function(num)
 	return {  mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "ConnectedTo野蛮人Start" })  } end,
-	["你在天赋树上连接到决斗者的出发位置时，你获得：近战打击距离 %+(%d+)"]= function(num) 
-	return {  
+	["你在天赋树上连接到决斗者的出发位置时，你获得：近战打击距离 %+(%d+)"]= function(num)
+	return {
 	mod("MeleeWeaponRange", "BASE", num,{ type = "Condition", var = "ConnectedTo决斗者Start" }),
 	mod("UnarmedRange", "BASE", num,{ type = "Condition", var = "ConnectedTo决斗者Start" }),
-	  } end,
-	["你在天赋树上连接到游侠的出发位置时，你获得: 药剂充能获取率提高 (%d+)%%"]= function(num) 
-	return {  
+	} end,
+	["你在天赋树上连接到游侠的出发位置时，你获得: 药剂充能获取率提高 (%d+)%%"]= function(num)
+	return {
 	mod("FlaskChargesGained", "INC", num,{ type = "Condition", var = "ConnectedTo游侠Start" })
-	  } end,
-	["你在天赋树上连接到游侠的出发位置时，你获得：药剂充能获取率提高 (%d+)%%"]= function(num) 
-	return {  
+	} end,
+	["你在天赋树上连接到游侠的出发位置时，你获得：药剂充能获取率提高 (%d+)%%"]= function(num)
+	return {
 	mod("FlaskChargesGained", "INC", num,{ type = "Condition", var = "ConnectedTo游侠Start" })
-	  } end,
-	["你在天赋树上连接到暗影的出发位置时，你获得：攻击和施法速度提高 (%d+)%%"]= function(num) 
-	return {  
+	} end,
+	["你在天赋树上连接到暗影的出发位置时，你获得：攻击和施法速度提高 (%d+)%%"]= function(num)
+	return {
 	mod("Speed", "INC", num,{ type = "Condition", var = "ConnectedTo暗影Start" })
-	  } end,
-	["你在天赋树上连接到女巫的出发位置时，你获得：技能效果持续时间延长 (%d+)%%"]= function(num) 
-	return {  
+	} end,
+	["你在天赋树上连接到女巫的出发位置时，你获得：技能效果持续时间延长 (%d+)%%"]= function(num)
+	return {
 	mod("Duration", "INC", num,{ type = "Condition", var = "ConnectedTo女巫Start" })
-	  } end,
-	["你在天赋树上连接到圣堂武僧的出发位置时，你获得：攻击和法术伤害格挡率 %+(%d+)%%"]= function(num) 
-	return {  
+	} end,
+	["你在天赋树上连接到圣堂武僧的出发位置时，你获得：攻击和法术伤害格挡率 %+(%d+)%%"]= function(num)
+	return {
 	mod("BlockChance", "BASE", num,{ type = "Condition", var = "ConnectedTo圣堂武僧Start" }),
 	mod("SpellBlockChance", "BASE", num,{ type = "Condition", var = "ConnectedTo圣堂武僧Start" }),
-	  } end,
-	["你在天赋树上连接到贵族的出发位置时，你获得：伤害提高 (%d+)%%"]= function(num) 
-	return {  
+	} end,
+	["你在天赋树上连接到贵族的出发位置时，你获得：伤害提高 (%d+)%%"]= function(num)
+	return {
 	mod("Damage", "INC", num,{ type = "Condition", var = "ConnectedTo贵族Start" })
-	  } end,
+	} end,
 	["最大魔力的 (%d+)%% 转化为双倍的护甲"] = function(num) return {
-			mod("ManaConvertToArmour", "BASE", num),
-		} end,
+	mod("ManaConvertToArmour", "BASE", num),
+	} end,
 	["获得等同 (%d+)%% 最大生命的额外护甲"] = function(num) return {
-			mod("LifeGainAsArmour", "BASE", num),
-		} end,
+	mod("LifeGainAsArmour", "BASE", num),
+	} end,
 	["击中时 (%d+)%% 几率触发插槽内的闪电法术"] = function(num) return { mod("ExtraSupport", "LIST", { skillId = "SupportUniqueMjolnerLightningSpellsCastOnHit", level = 1 }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	["击中时触发插槽内的闪电法术"] = { mod("ExtraSupport", "LIST", { skillId = "SupportUniqueMjolnerLightningSpellsCastOnHit", level = 1 }, { type = "SocketedIn", slotName = "{SlotName}" }) },
 	["近战暴击时触发插槽内的冰霜技能"] = { mod("ExtraSupport", "LIST", { skillId = "SupportUniqueCosprisMaliceColdSpellsCastOnMeleeCriticalStrike", level = 1 }, { type = "SocketedIn", slotName = "{SlotName}" }) },
-	["【炼狱之击】的减益效果每层可额外造成 (%d+)%% 伤害"] = function(num) return { mod("DebuffEffect", "BASE", num, 
+	["【炼狱之击】的减益效果每层可额外造成 (%d+)%% 伤害"] = function(num) return { mod("DebuffEffect", "BASE", num,
 	{ type = "SkillName", skillName = "炼狱之击"}) } end,
 	["击中被诅咒的敌人时造成中毒"] = function() return {
-			mod("PoisonChance", "BASE", 100,{ type = "ActorCondition", actor = "enemy", var = "Cursed" }),
-		} end,
+	mod("PoisonChance", "BASE", 100,{ type = "ActorCondition", actor = "enemy", var = "Cursed" }),
+	} end,
 	["你的魔蛊可以影响无咒的敌人"] = { flag("CursesIgnoreHexproof") },
-	["你能施加一个额外诅咒"] = { mod("EnemyCurseLimit", "BASE", 1) }, 
+	["你能施加一个额外诅咒"] = { mod("EnemyCurseLimit", "BASE", 1) },
 	["你技能给予召唤生物的非诅咒光环效果提高 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", { mod = mod("AuraEffectOnSelf", "INC", num) })  } end,
 	["左戒指栏位：你的冰冷的飞掠者用插入的魔蛊替代光环"] = { flag("SkitterbotsCannotChill", { type = "SlotNumber", num = 1 }) },
 	["右戒指栏位：电震的飞掠者用插入的魔蛊替代光环"] = { flag("SkitterbotsCannotShock", { type = "SlotNumber", num = 2 }) },
 	["你的攻击给敌人施加的每个诅咒都使你获得 (%d+) 点生命"] = function(num) return { mod("LifeOnHit", "BASE", num, { type = "ActorCondition", actor = "enemy", var = "Cursed"})} end,
-		["你的攻击给敌人施加的每个诅咒都使你获得 (%d+) 点魔力"] = function(num) return { mod("ManaOnHit", "BASE", num, { type = "ActorCondition", actor = "enemy", var = "Cursed"})} end,
-	["解除护甲和最大能量护盾"] = { 
-			mod("Armour", "MORE", -100),
-			mod("EnergyShield", "MORE", -100),
-		},
-	["法术伤害击中有 ([%d%.]+)%% 几率施加【中毒】"]= function(num) return {  mod("PoisonChance", "BASE", num,nil, ModFlag.Spell)  } end, 
-	["法术击中时有 ([%d%.]+)%% 几率使目标中毒"]= function(num) return {  mod("PoisonChance", "BASE", num,nil, ModFlag.Spell)  } end, 
-	["法术技能 ([%+%-]?%d+)%% 中毒持续伤害加成"]= function(num) return {  mod("DotMultiplier", "BASE", num, 0, 0, KeywordFlag.Spell)  } end, 
-	["每 (%d+) 点敏捷可使召唤生物的攻击速度提高 (%d+)%%"]= function(_,num1,num2) return { mod("MinionModifier", "LIST", 
-	{ mod = mod("Speed", "INC", tonumber(num2),nil, ModFlag.Attack )}, { type = "PerStat", stat = "Dex", div = tonumber(num1) })  } end, 
-	["每 (%d+) 点敏捷可使召唤生物的移动速度提高 (%d+)%%"]= function(_,num1,num2) return { mod("MinionModifier", "LIST", 
-	{ mod = mod("MovementSpeed", "INC", tonumber(num2))}, { type = "PerStat", stat = "Dex", div = tonumber(num1) })  } end, 
+	["你的攻击给敌人施加的每个诅咒都使你获得 (%d+) 点魔力"] = function(num) return { mod("ManaOnHit", "BASE", num, { type = "ActorCondition", actor = "enemy", var = "Cursed"})} end,
+	["解除护甲和最大能量护盾"] = {
+	mod("Armour", "MORE", -100),
+	mod("EnergyShield", "MORE", -100),
+	},
+	["法术伤害击中有 ([%d%.]+)%% 几率施加【中毒】"]= function(num) return {  mod("PoisonChance", "BASE", num,nil, ModFlag.Spell)  } end,
+	["法术击中时有 ([%d%.]+)%% 几率使目标中毒"]= function(num) return {  mod("PoisonChance", "BASE", num,nil, ModFlag.Spell)  } end,
+	["法术技能 ([%+%-]?%d+)%% 中毒持续伤害加成"]= function(num) return {  mod("DotMultiplier", "BASE", num, 0, 0, KeywordFlag.Spell)  } end,
+	["每 (%d+) 点敏捷可使召唤生物的攻击速度提高 (%d+)%%"]= function(_,num1,num2) return { mod("MinionModifier", "LIST",
+	{ mod = mod("Speed", "INC", tonumber(num2),nil, ModFlag.Attack )}, { type = "PerStat", stat = "Dex", div = tonumber(num1) })  } end,
+	["每 (%d+) 点敏捷可使召唤生物的移动速度提高 (%d+)%%"]= function(_,num1,num2) return { mod("MinionModifier", "LIST",
+	{ mod = mod("MovementSpeed", "INC", tonumber(num2))}, { type = "PerStat", stat = "Dex", div = tonumber(num1) })  } end,
 	["你的击中造成的元素伤害由最低的抗性来抵抗"] = { flag("ElementalDamageUsesLowestElementalResistance") },
 	["若过去 8 秒你有失去过耐力球，则总伤害额外提高 (%d+)%%"] = function(num) return { mod("Damage", "MORE", num, { type = "Condition", var = "LostEnduranceChargeInPast8Sec" })	} end,
 	["近期内每失去一个耐力球就使总伤害额外提高 (%d+)%%，最大 (%d+)%%"] = function(num, _, limit) return {
-			mod("Damage", "MORE", num, { type = "Multiplier", var = "EnduranceChargesLostRecently", limit = tonumber(limit), limitTotal = true }),
-		} end,
-	["若敌人身上有冻结、感电、点燃效果，每有一种都使对它的击中和异常状态伤害提高 (%d+)%%"] = function(num) return { 
-	 mod("Damage", "INC", num,nil,0,bor(KeywordFlag.Hit, KeywordFlag.Ailment) , { type = "Multiplier", var = "FreezeShockIgniteOnEnemy" }) 
-	 } end, 
-	["对被冰冻、感电、点燃敌人的击中伤害和异常状态伤害提高 (%d+)%%"] = function(num) return { 
-	 mod("Damage", "INC", num,nil,0,bor(KeywordFlag.Hit, KeywordFlag.Ailment) , { type = "Multiplier", var = "FreezeShockIgniteOnEnemy" }) 
-	 } end, 
+	mod("Damage", "MORE", num, { type = "Multiplier", var = "EnduranceChargesLostRecently", limit = tonumber(limit), limitTotal = true }),
+	} end,
+	["若敌人身上有冻结、感电、点燃效果，每有一种都使对它的击中和异常状态伤害提高 (%d+)%%"] = function(num) return {
+	mod("Damage", "INC", num,nil,0,bor(KeywordFlag.Hit, KeywordFlag.Ailment) , { type = "Multiplier", var = "FreezeShockIgniteOnEnemy" })
+	} end,
+	["对被冰冻、感电、点燃敌人的击中伤害和异常状态伤害提高 (%d+)%%"] = function(num) return {
+	mod("Damage", "INC", num,nil,0,bor(KeywordFlag.Hit, KeywordFlag.Ailment) , { type = "Multiplier", var = "FreezeShockIgniteOnEnemy" })
+	} end,
 	["连锁的投射物将 (%d+)%% 非混沌伤害作为其额外混沌伤害"] = function(num) return { mod("NonChaosDamageGainAsChaos", "BASE", num, nil, ModFlag.Projectile, { type = "StatThreshold", stat = "Chain", threshold = 1 }) } end,
 	["连锁的投射物获得额外混沌伤害，其数值等同于非混沌伤害的 (%d+)%%"] = function(num) return { mod("NonChaosDamageGainAsChaos", "BASE", num, nil, ModFlag.Projectile, { type = "StatThreshold", stat = "Chain", threshold = 1 }) } end,
 	["你格挡时触发 (%d+) 级破盾击"]= function(num)return {   mod("ExtraSkill", "LIST", {  skillId ="ShieldShatter", level = tonumber(num)})   } end,
@@ -4644,17 +4661,17 @@ local specialModList = {
 	["召唤生物攻击击中时有 (%d+)%% 几率穿刺目标"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("ImpaleChance", "BASE", num, 0, 0, KeywordFlag.Attack) })  } end,
 	["近期所召唤的召唤生物的攻击和施法速度提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Speed", "INC", num) }, { type = "Condition", var = "MinionsCreatedRecently" }) } end,
 	["近期所召唤的召唤生物的移动速度提高 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("MovementSpeed", "INC", num) }, { type = "Condition", var = "MinionsCreatedRecently" }) } end,
-	["被你枯萎的敌人 (%-%d+)%% 所有抗性"]= function(num) return { 
+	["被你枯萎的敌人 (%-%d+)%% 所有抗性"]= function(num) return {
 	mod("EnemyModifier", "LIST", { mod = mod("ChaosResist", "BASE", num,{ type = "GlobalEffect", effectType = "Debuff", effectName = "被凋零敌人减抗" }, { type = "MultiplierThreshold",  var = "WitheredStack", threshold = 1 }) }),
 	mod("EnemyModifier", "LIST", { mod = mod("ElementalResist", "BASE", num,{ type = "GlobalEffect", effectType = "Debuff", effectName = "被凋零敌人减抗" }, { type = "MultiplierThreshold",  var = "WitheredStack", threshold = 1 }) }),
-		 } end, 
-	["被你凋零的敌人 (%-%d+)%% 所有抗性"]= function(num) return { 
+	} end,
+	["被你凋零的敌人 (%-%d+)%% 所有抗性"]= function(num) return {
 	mod("EnemyModifier", "LIST", { mod = mod("ChaosResist", "BASE", num,{ type = "GlobalEffect", effectType = "Debuff", effectName = "被凋零敌人减抗" }, { type = "MultiplierThreshold",  var = "WitheredStack", threshold = 1 }) }),
 	mod("EnemyModifier", "LIST", { mod = mod("ElementalResist", "BASE", num,{ type = "GlobalEffect", effectType = "Debuff", effectName = "被凋零敌人减抗" }, { type = "MultiplierThreshold",  var = "WitheredStack", threshold = 1 }) }),
-		 } end, 
-	["击中被你恐惧的敌人时，法术暴击率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", num,nil, ModFlag.Spell,{ type = "ActorCondition", actor = "enemy", var = "Unnerve" })  } end, 
-	["对抗被你恐吓的敌人时，它们的眩晕持续时间延长 (%d+)%%"]= function(num) return {  mod("EnemyStunDuration", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "Intimidate" })  } end, 
-	["施加在被你曝露的敌人身上的元素异常状态持续时间延长 20%"]= function(num) return {  
+	} end,
+	["击中被你恐惧的敌人时，法术暴击率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", num,nil, ModFlag.Spell,{ type = "ActorCondition", actor = "enemy", var = "Unnerve" })  } end,
+	["对抗被你恐吓的敌人时，它们的眩晕持续时间延长 (%d+)%%"]= function(num) return {  mod("EnemyStunDuration", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "Intimidate" })  } end,
+	["施加在被你曝露的敌人身上的元素异常状态持续时间延长 20%"]= function(num) return {
 	mod("EnemyShockDuration", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "HaveExposure" }),
 	mod("EnemyFreezeDuration", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "HaveExposure" }),
 	mod("EnemyChillDuration", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "HaveExposure" }),
@@ -4662,46 +4679,47 @@ local specialModList = {
 	mod("EnemyScorchDuration", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "HaveExposure" }),
 	mod("EnemyBrittleDuration", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "HaveExposure" }),
 	mod("EnemySapDuration", "INC", num,{ type = "ActorCondition", actor = "enemy", var = "HaveExposure" }),
-	} end, 
-	["受到防卫技能增益效果影响时，获得额外 ([%d%.]+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "AffectedByGuardSkill" })  } end, 
-	["受到非瓦尔防卫技能影响时获得 ([%d%.]+)%% 物理伤害减伤"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "AffectedByNonVaalGuardSkill" })  } end, 
-	["受到非瓦尔护卫技能影响时， ([%d%.]+)%% 物理伤害减伤"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "AffectedByNonVaalGuardSkill" })  } end, 
-	["受到非瓦尔护卫技能影响时，%+(%d+)%% 所有元素抗性和所有元素抗性上限"]= function(num) return {  
+	} end,
+	["受到防卫技能增益效果影响时，获得额外 ([%d%.]+)%% 物理伤害减免"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "AffectedByGuardSkill" })  } end,
+	["受到非瓦尔防卫技能影响时获得 ([%d%.]+)%% 物理伤害减伤"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "AffectedByNonVaalGuardSkill" })  } end,
+	["受到非瓦尔护卫技能影响时， ([%d%.]+)%% 物理伤害减伤"]= function(num) return {  mod("PhysicalDamageReduction", "BASE", num,{ type = "Condition", var = "AffectedByNonVaalGuardSkill" })  } end,
+	["受到非瓦尔护卫技能影响时，%+(%d+)%% 所有元素抗性和所有元素抗性上限"]= function(num) return {
 	mod("ElementalResist", "BASE", num,{ type = "Condition", var = "AffectedByNonVaalGuardSkill" }),
 	mod("FireResistMax", "BASE", num,{ type = "Condition", var = "AffectedByNonVaalGuardSkill" }),
 	mod("ColdResistMax", "BASE", num,{ type = "Condition", var = "AffectedByNonVaalGuardSkill" }),
 	mod("LightningResistMax", "BASE", num,{ type = "Condition", var = "AffectedByNonVaalGuardSkill" }),
-	} end, 
-	["被防卫技能的增益效果影响时，每秒回复 ([%d%.]+)%% 生命"]= function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "AffectedByGuardSkill" })  } end, 
+	} end,
+	["被防卫技能的增益效果影响时，每秒回复 ([%d%.]+)%% 生命"]= function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "AffectedByGuardSkill" })  } end,
 	["当你使用非瓦尔的猛击技能攻击敌人时触发等级 20 的【塔赫亚神选】"] = function()return {   mod("ExtraSkill", "LIST", {  skillId ="SummonMirageChieftain", level = 20})   } end,
 	["每层威能法印增益效果都使暴击率提高 (%d+)%%"] = function(num) return { mod("CritChance", "INC", num, 0, 0, { type = "Multiplier", var = "SigilOfPowerStage", limit = 4 }, { type = "GlobalEffect", effectType = "Buff", effectName = "威能法印" } ) } end,
 	["【燃火烧尽】最多 %+(%d+) 阶"]= function(num) return {
-			mod("Multiplier:烧毁MaxStages", "BASE", tonumber(num)/2, 0, 0, { type = "SkillPart", skillPart = 2 }),
-			mod("Multiplier:烧毁MaxStages", "BASE", tonumber(num), 0, 0, { type = "SkillPart", skillPart = 3 })	} end,	
+	mod("Multiplier:烧毁MaxStages", "BASE", tonumber(num)/2, 0, 0, { type = "SkillPart", skillPart = 2 }),
+	mod("Multiplier:烧毁MaxStages", "BASE", tonumber(num), 0, 0, { type = "SkillPart", skillPart = 3 })	} end,
 	["【烧毁】最多 %+(%d+) 阶"]= function(num) return {
-			mod("Multiplier:烧毁MaxStages", "BASE", tonumber(num)/2, 0, 0, { type = "SkillPart", skillPart = 2 }),
-			mod("Multiplier:烧毁MaxStages", "BASE", tonumber(num), 0, 0, { type = "SkillPart", skillPart = 3 })	} end,	
+	mod("Multiplier:烧毁MaxStages", "BASE", tonumber(num)/2, 0, 0, { type = "SkillPart", skillPart = 2 }),
+	mod("Multiplier:烧毁MaxStages", "BASE", tonumber(num), 0, 0, { type = "SkillPart", skillPart = 3 })	} end,
 	["寒冬宝珠的最大等阶 %+(%d+)"] = function(num) return { mod("Multiplier:寒冬宝珠MaxStagesAfterFirst", "BASE", num) } end,
-	["%+(%d+) 【寒冬宝珠】最大阶"] = function(num) return { mod("Multiplier:寒冬宝珠MaxStagesAfterFirst", "BASE", num) } end,	
+	["%+(%d+) 【寒冬宝珠】最大阶"] = function(num) return { mod("Multiplier:寒冬宝珠MaxStagesAfterFirst", "BASE", num) } end,
 	["冬潮烙印 %+(%d+) 最大层数"] = function(num) return { mod("Multiplier:冬潮烙印MaxStages", "BASE", num, { type = "SkillName", skillName = "冬潮烙印" }) } end,
 	["生命偷取在满血时恢复能量护盾"] = {
-			flag("ImmortalAmbition", { type = "Condition", var = "FullLife" }, { type = "Condition", var = "LeechingLife"} ),	
-		},
-	["在药剂持续期间，击败敌人会补充 (%d+)%% 的生命"] = function(num) return { mod("LifeOnKill", "BASE", 1, { type = "PerStat", stat = "Life", div = 100 / num }, { type = "Condition", var = "UsingFlask" } ) 
-		} end,
+	flag("ImmortalAmbition", { type = "Condition", var = "FullLife" }, { type = "Condition", var = "LeechingLife"} ),
+	},
+	["在药剂持续期间，击败敌人会补充 (%d+)%% 的生命"] = function(num) return { mod("LifeOnKill", "BASE", 1, { type = "PerStat", stat = "Life", div = 100 / num }, { type = "Condition", var = "UsingFlask" } )
+	} end,
 	["在药剂持续期间，击败敌人会补充 (%d+)%% 的魔力"] = function(num) return { mod("ManaOnKill", "BASE", 1, { type = "PerStat", stat = "Mana", div = 100 / num }, { type = "Condition", var = "UsingFlask" } )
-		} end,
+	} end,
 	["在药剂持续期间，击败敌人会补充 (%d+)%% 的能量护盾"] = function(num) return { mod("EnergyShieldOnKill", "BASE", 1,  { type = "PerStat", stat = "EnergyShield", div = 100 / num }, { type = "Condition", var = "UsingFlask" } )
-		} end,
+	} end,
 	["药剂持续期间，你的技能不消耗魔力"] = { mod("ManaCost","MORE",-100, { type = "Condition", var = "UsingFlask" } ) },
 	["从药剂获得的生命回复同样作用于能量护盾"] = { flag("LifeFlaskAppliesToEnergyShield", { type = "Condition", var = "UsingFlask" } ) },
 	["立即回复 (%d+)%% 回复量"] = function(num) return { mod("FlaskInstantRecovery", "BASE", num) } end,
 	["立即回复(%d+)%% 回复量"] = function(num) return { mod("FlaskInstantRecovery", "BASE", num) } end,
 	-- Quality modifiers
 	["%+(%d+)%% 品质"] = function(num) return { mod("Quality", "BASE", num ) } end,
-	["品质上限 %+(%d+)%%"] = function(num) return { mod("Quality", "BASE", num ) } end,	
+	["品质上限 %+(%d+)%%"] = function(num) return { mod("Quality", "BASE", num ) } end,
 	["品质上限 (%d+)%%"] = function(num) return { mod("Quality", "BASE", num) } end,
 	["incinerate has %+(%d+) to maximum stages"] = function(num) return { mod("Multiplier:IncinerateMaxStages", "BASE", num, { type = "SkillName", skillName = "烧毁" }) } end,
+	["召唤生物持续时间延长 (%d+)%%"] = function(num) return { mod("Duration", "INC", num,{ type = "SkillType", skillType = SkillType.CreateMinion }) } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

@@ -181,3 +181,7 @@
 <File sha1="d75037ab31799cbcd74a883852bad9970c677e19" name="TreeData/3_12/skills-3.jpg" part="program"/>
 <File sha1="a33048a22c27d5776f9f2ef4e96302a7c29c8dac" name="TreeData/3_12/skills-disabled-3.jpg" part="program"/>
 <File sha1="f8373cbd2bf87cfe71748038a856b794276e3947" name="TreeData/3_12/tree.lua" part="program"/>
+<File sha1="5bfa14f0073f8835c12cb3297f0855dfc68eb869" name="TreeData/3_13/groups-3.png" part="program"/>
+<File sha1="4e066860145766ebe0c606833f4cf41fe4bf90e4" name="TreeData/3_13/skills-3.jpg" part="program"/>
+<File sha1="435f782d319f5457d75ca98fb3f1e75fac64e2c5" name="TreeData/3_13/skills-disabled-3.jpg" part="program"/>
+<File sha1="9183ac0bd80af9e8461f4139244c4eec845ee641" name="TreeData/3_13/tree.lua" part="program"/>

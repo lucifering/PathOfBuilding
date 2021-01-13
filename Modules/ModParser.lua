@@ -369,6 +369,7 @@ local modNameList = {
 		["冰缓效果"] = "EnemyChillEffect",
 		["充能次数"] = "FlaskChargesUsed",
 		["充能上限"] = "FlaskCharges",
+		["暴击球和耐力球数量上限"] = { "EnduranceChargesMax", "PowerChargesMax" }, 
 	--【中文化程序额外添加结束】
 	-- Attributes
 	["力量"] = "Str", --备注：strength
@@ -4720,6 +4721,9 @@ local specialModList = {
 	["品质上限 (%d+)%%"] = function(num) return { mod("Quality", "BASE", num) } end,
 	["incinerate has %+(%d+) to maximum stages"] = function(num) return { mod("Multiplier:IncinerateMaxStages", "BASE", num, { type = "SkillName", skillName = "烧毁" }) } end,
 	["召唤生物持续时间延长 (%d+)%%"] = function(num) return { mod("Duration", "INC", num,{ type = "SkillType", skillType = SkillType.CreateMinion }) } end,
+	["力量属性对近战攻击和投射物的攻击物理伤害均会加成"] = { flag("IronGrip") }, 
+	["总混沌伤害额外提高 (%d+)%%"] = function(num) return { mod("ChaosDamage", "MORE", num) } end,
+	["总冰霜伤害额外提高 (%d+)%%"] = function(num) return { mod("ColdDamage", "MORE", num) } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

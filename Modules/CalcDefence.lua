@@ -12,6 +12,7 @@ local m_ceil = math.ceil
 local m_floor = math.floor
 local m_min = math.min
 local m_max = math.max
+local m_huge = math.huge
 local s_format = string.format
 
 local tempTable1 = { }
@@ -497,8 +498,14 @@ modDB:NewMod("EnergyShieldRegenPercent", "BASE", lifePercent, "狂热誓言")
 		else
 			output.LifeRegen = 0
 		end
+		-- Don't add life recovery mod for this
+		if output.LifeRegen and modDB:Flag(nil, "LifeRegenerationRecoversEnergyShield") then
+			modDB:NewMod("EnergyShieldRecovery", "BASE", lifeBase * (1 + modDB:Sum("MORE", nil, "LifeRegen") / 100), "每秒生命回复也套用能量护盾回复")
+
+		end
 	end
-	output.LifeRegen = output.LifeRegen - modDB:Sum("BASE", nil, "LifeDegen")
+	
+	output.LifeRegen = output.LifeRegen - modDB:Sum("BASE", nil, "LifeDegen") + modDB:Sum("BASE", nil, "LifeRecovery") * output.LifeRecoveryRateMod
 	output.LifeRegenPercent = round(output.LifeRegen / output.Life * 100, 1)
 	if modDB:Flag(nil, "NoEnergyShieldRegen") then
 		output.EnergyShieldRegen = 0
@@ -515,6 +522,8 @@ modDB:NewMod("EnergyShieldRegenPercent", "BASE", lifePercent, "狂热誓言")
 			output.EnergyShieldRegen = 0 - modDB:Sum("BASE", nil, "EnergyShieldDegen")
 		end
 	end
+	output.EnergyShieldRegen = output.EnergyShieldRegen + modDB:Sum("BASE", nil, "EnergyShieldRecovery") * output.EnergyShieldRecoveryRateMod
+	output.EnergyShieldRegenPercent = round(output.EnergyShieldRegen / output.EnergyShield * 100, 1)
 	if modDB:Sum("BASE", nil, "RageRegen") > 0 then
 		local base = modDB:Sum("BASE", nil, "RageRegen")
 		if modDB:Flag(nil, "ManaRegenToRageRegen") then
@@ -664,13 +673,13 @@ modDB:NewMod("EnergyShieldRegenPercent", "BASE", lifePercent, "狂热誓言")
 	output.AnyBypass = false
 	for _, damageType in ipairs(dmgTypeList) do
 		if modDB:Flag(nil, "BlockedDamageDoesntBypassES") and modDB:Flag(nil, "UnblockedDamageDoesBypassES") then
-			local DamageTypeConfig = env.configInput.EhpCalcMode or "Average"
-			if DamageTypeConfig == "Minimum" then
+			local damageCategoryConfig = env.configInput.EhpCalcMode or "Average"
+			if damageCategoryConfig == "Minimum" then
 				output[damageType.."EnergyShieldBypass"] = 100 - m_min(output.BlockChance, output.ProjectileBlockChance, output.SpellBlockChance, output.SpellProjectileBlockChance)
-			elseif DamageTypeConfig == "Melee" then
+			elseif damageCategoryConfig == "Melee" then
 				output[damageType.."EnergyShieldBypass"] = 100 - output.BlockChance
 			else
-				output[damageType.."EnergyShieldBypass"] = 100 - output[DamageTypeConfig.."BlockChance"]
+				output[damageType.."EnergyShieldBypass"] = 100 - output[damageCategoryConfig.."BlockChance"]
 			end
 			output.AnyBypass = true
 		else
@@ -758,7 +767,17 @@ modDB:NewMod("EnergyShieldRegenPercent", "BASE", lifePercent, "狂热誓言")
 	end
 	
 	
-
+--aegis
+	output.AnyAegis = false
+	for _, damageType in ipairs(dmgTypeList) do
+		local aegisValue = modDB:Sum("BASE", nil, damageType.."AegisValue")
+		if aegisValue > 0 then
+			output.AnyAegis = true
+			output[damageType.."Aegis"] = aegisValue
+		else
+			output[damageType.."Aegis"] = 0
+		end
+	end
 
 	--total pool
 	for _, damageType in ipairs(dmgTypeList) do
@@ -789,6 +808,9 @@ modDB:NewMod("EnergyShieldRegenPercent", "BASE", lifePercent, "狂热誓言")
 				end
 			end
 		end
+		if output[damageType.."Aegis"] > 0 then
+			output[damageType.."TotalPool"] = output[damageType.."TotalPool"] + output[damageType.."Aegis"]
+		end
 		if breakdown then
 			breakdown[damageType.."TotalPool"] = {
 				s_format("生命: %d", output.LifeUnreserved)
@@ -800,7 +822,12 @@ modDB:NewMod("EnergyShieldRegenPercent", "BASE", lifePercent, "狂热誓言")
 				t_insert(breakdown[damageType.."TotalPool"], s_format("%s 穿过心灵升华MOM: %d", manatext, output[damageType.."ManaEffectiveLife"] - output[damageType.."GuardEffectiveLife"]))
 			end
 			if (not modDB:Flag(nil, "EnergyShieldProtectsMana")) and output[damageType.."EnergyShieldBypass"] < 100 then
-				t_insert(breakdown[damageType.."TotalPool"], s_format("未穿透能量护盾: %d", output[damageType.."TotalPool"] - output[damageType.."ManaEffectiveLife"] - output[damageType.."GuardEffectivePool"]))
+				
+				t_insert(breakdown[damageType.."TotalPool"], s_format("未穿透能量护盾: %d", output[damageType.."TotalPool"] - output[damageType.."ManaEffectiveLife"] - output[damageType.."GuardEffectivePool"] - output[damageType.."Aegis"]))
+			end
+			if output[damageType.."Aegis"] > 0 then
+				t_insert(breakdown[damageType.."TotalPool"], s_format("元素护盾守护: %d", output[damageType.."Aegis"]))
+				
 			end
 			t_insert(breakdown[damageType.."TotalPool"], s_format("总资源: %d", output[damageType.."TotalPool"]))
 			if output[damageType.."GuardEffectivePool"] > 0 then
@@ -1081,6 +1108,9 @@ label = "持续伤害加成:",
 				local final = portion / 100 * (1 - resist / 100) * takenMult
 				local finalReflect = portion / 100 * (1 - resist / 100) * takenMultReflect
 				mult = mult + final
+				if damageType == destType then
+					output[damageType.."BaseTakenHitMult"] = (1 - resist / 100) * takenMult
+				end
 				multReflect = multReflect + finalReflect
 				if breakdown then
 					t_insert(breakdown[damageType.."TakenHitMult"].rowList, {
@@ -1177,68 +1207,103 @@ label = "持续伤害加成:",
 	end
 
 	--maximum hit taken
-	--FIX X TAKEN AS Y (output[damageType.."TotalPool"] should use the damage types that are converted to in output[damageType.."TakenHitMult"])
+	--FIX ARMOUR MITIGATION FOR THIS, uses input damage to calculate mitigation from armour, instead of maximum hit taken
 	for _, damageType in ipairs(dmgTypeList) do
-		output[damageType.."MaximumHitTaken"] = output[damageType.."TotalPool"] / output[damageType.."TakenHitMult"]
 		if breakdown then
-			breakdown[damageType.."MaximumHitTaken"] = {
-				s_format("总资源池: %d", output[damageType.."TotalPool"]),
-				s_format("承受伤害加成: %.2f", output[damageType.."TakenHitMult"]),
-				s_format("可承受的最大击中伤害: %d", output[damageType.."MaximumHitTaken"]),
+			breakdown[damageType.."MaximumHitTaken"] = { 
+				label = "承受的最大击中 (使用最低值)",
+				rowList = { },
+				colList = {
+					{ label = "类型", key = "type" },
+					{ label = "总资源", key = "pool" },
+					{ label = "承受", key = "taken" },
+					{ label = "最终", key = "final" },
+				},
 			}
 		end
-	end
-
-	local DamageTypeConfig = env.configInput.EhpCalcMode or "Average"
-	local minimumEHP = 2147483648
-	local minimumEHPMode = "NONE"
-	if DamageTypeConfig == "Minimum" then
-		DamageTypeConfig = {"Melee", "Projectile", "Spell", "SpellProjectile"}
-		minimumEHPMode = "Melee"
-	else
-		DamageTypeConfig = {DamageTypeConfig}
-	end
-	for _, DamageType in ipairs(DamageTypeConfig) do
-		--total EHP
-		for _, damageType in ipairs(dmgTypeList) do
-			local convertedAvoidance = 0
-			for _, damageConvertedType in ipairs(dmgTypeList) do
-				convertedAvoidance = convertedAvoidance + output[damageConvertedType..DamageType.."DamageChance"] * actor.damageShiftTable[damageType][damageConvertedType] / 100
-			end
-			output[damageType.."TotalEHP"] = output[damageType.."MaximumHitTaken"] / (1 - output[DamageType.."NotHitChance"] / 100) / (1 - convertedAvoidance / 100)
-			if minimumEHPMode ~= "NONE" then
-				if output[damageType.."TotalEHP"] < minimumEHP then
-					minimumEHP = output[damageType.."TotalEHP"]
-					minimumEHPMode = DamageType
+		output[damageType.."MaximumHitTaken"] = m_huge
+		for _, damageConvertedType in ipairs(dmgTypeList) do
+			if actor.damageShiftTable[damageType][damageConvertedType] > 0 then
+				local hitTaken = output[damageConvertedType.."TotalPool"] / (actor.damageShiftTable[damageType][damageConvertedType] / 100) / output[damageConvertedType.."BaseTakenHitMult"]
+				if hitTaken < output[damageType.."MaximumHitTaken"] then
+					output[damageType.."MaximumHitTaken"] = hitTaken
 				end
-			elseif breakdown then
-				breakdown[damageType.."TotalEHP"] = {
-				s_format("EHP 计算模式: %s", DamageType),
-				s_format("可承受最大击中: %d", output[damageType.."MaximumHitTaken"]),
-				s_format("%s 不被击中几率: %d%%", DamageType, output[DamageType.."NotHitChance"]),
-				s_format("%s 被击中时不承受伤害几率: %d%%", DamageType, convertedAvoidance),
-				s_format("总有效资源池: %d", output[damageType.."TotalEHP"]),
-				}
+				
+				if breakdown then
+					t_insert(breakdown[damageType.."MaximumHitTaken"].rowList, {
+						type = s_format("%d%% as %s", actor.damageShiftTable[damageType][damageConvertedType], damageConvertedType),
+						pool = s_format("x %d", output[damageConvertedType.."TotalPool"]),
+						taken = s_format("/ %.2f", output[damageConvertedType.."BaseTakenHitMult"]),
+						final = s_format("x %.0f", hitTaken),
+					})
+				end
 			end
 		end
+		if breakdown then
+			 t_insert(breakdown[damageType.."MaximumHitTaken"], s_format("总资源: %d", output[damageType.."TotalPool"]))
+			 t_insert(breakdown[damageType.."MaximumHitTaken"], s_format("承受加成: %.2f",  output[damageType.."TotalPool"] / output[damageType.."MaximumHitTaken"]))
+			 t_insert(breakdown[damageType.."MaximumHitTaken"], s_format("你可以承受的最大击中: %d", output[damageType.."MaximumHitTaken"]))
+		end
 	end
-	if minimumEHPMode ~= "NONE" then
-		for _, damageType in ipairs(dmgTypeList) do
-			local convertedAvoidance = 0
-			for _, damageConvertedType in ipairs(dmgTypeList) do
-				convertedAvoidance = convertedAvoidance + output[damageConvertedType..minimumEHPMode.."DamageChance"] * actor.damageShiftTable[damageType][damageConvertedType] / 100
+	
+	local damageCategoryConfig = env.configInput.EhpCalcMode or "Average"
+	for _, damageType in ipairs(dmgTypeList) do
+		
+		local damageCategory = damageCategoryConfig
+		local minimumChanceToTakeDamage = -m_huge
+		local minimumEHPMode = "NONE"
+		if damageCategoryConfig == "Minimum" then
+			local damageCategorysList = {"Melee", "Projectile", "Spell", "SpellProjectile"}
+			minimumEHPMode = "Melee"
+			for _, damageCategorys in ipairs(damageCategorysList) do
+				local convertedAvoidance = 0
+				for _, damageConvertedType in ipairs(dmgTypeList) do
+					convertedAvoidance = convertedAvoidance + output[damageConvertedType..damageCategorys.."DamageChance"] * actor.damageShiftTable[damageType][damageConvertedType] / 100
+				end
+				local chanceToTakeDamage = (1 - output[damageCategorys.."NotHitChance"] / 100) / (1 - convertedAvoidance / 100)
+				if chanceToTakeDamage > minimumChanceToTakeDamage then
+					minimumChanceToTakeDamage = chanceToTakeDamage
+					minimumEHPMode = damageCategorys
+				end
 			end
-			output[damageType.."TotalEHP"] = output[damageType.."MaximumHitTaken"] / (1 - output[minimumEHPMode.."NotHitChance"] / 100) / (1 - convertedAvoidance / 100)
-			if breakdown then
-				breakdown[damageType.."TotalEHP"] = {
-				s_format("EHP 计算模式: Minimum"),
-				s_format("最小类型 %s", minimumEHPMode),
-				s_format("可承受最大击中: %d", output[damageType.."MaximumHitTaken"]),
-				s_format("%s 不被击中几率: %d%%", minimumEHPMode, output[minimumEHPMode.."NotHitChance"]),
-				s_format("%s 被击中时不承受伤害几率: %d%%", minimumEHPMode, convertedAvoidance),
-				s_format("总有效资源池: %d", output[damageType.."TotalEHP"]),
-				}
+			damageCategory = minimumEHPMode
+		end
+		local damage = env.configInput.enemyHit or env.data.monsterDamageTable[env.enemyLevel] * 1.5
+		--effective number of hits to deplete pool
+		output[damageType.."NumberOfHits"] = m_huge
+		local minimumDamageConvertedType = damageType -- this is used for the breakdown
+		for _, damageConvertedType in ipairs(dmgTypeList) do
+			local damageTaken = (damage  * actor.damageShiftTable[damageType][damageConvertedType] / 100 * output[damageConvertedType.."BaseTakenHitMult"])
+			local hitsTaken = math.ceil(output[damageConvertedType.."TotalPool"] / damageTaken)
+			hitsTaken = hitsTaken / (1 - output[damageCategory.."NotHitChance"] / 100)  / (1 - output[damageConvertedType..damageCategory.."DamageChance"] / 100)
+			if hitsTaken < output[damageType.."NumberOfHits"] then
+				output[damageType.."NumberOfHits"] = hitsTaken
+				minimumDamageConvertedType = damageConvertedType
 			end
+		end
+		if breakdown then
+			breakdown[damageType.."NumberOfHits"] = {
+				s_format("EHP 计算模式: %s", damageCategoryConfig),
+				s_format("总资源池: %d", output[damageType.."TotalPool"]),
+				s_format("减伤前的伤害: %d", damage),
+				s_format("每次击中承受伤害: %.2f", damage * output[minimumDamageConvertedType.."BaseTakenHitMult"]),
+				s_format("%s 不被击中的几率: %d%%", damageCategory, output[damageCategory.."NotHitChance"]),
+				s_format("%s 被击中时不承受伤害的几率: %d%%", DamageType, output[minimumDamageConvertedType..damageCategory.."DamageChance"]),
+				s_format("Average Number of hits you can take: %.2f", output[damageType.."NumberOfHits"]),
+			}
+		end
+	--total EHP
+		output[damageType.."TotalEHP"] = output[damageType.."NumberOfHits"] * damage
+		if breakdown then
+			breakdown[damageType.."TotalEHP"] = {
+			s_format("EHP 计算模式: %s", damageCategoryConfig),
+			}
+			if damageCategoryConfig == "Minimum" then
+				t_insert(breakdown[damageType.."TotalEHP"], s_format("最小 类型: %s", damageCategory))
+			end
+			t_insert(breakdown[damageType.."TotalEHP"], s_format("你可以承受的平均击中次数: %.2f", output[damageType.."NumberOfHits"]))
+			t_insert(breakdown[damageType.."TotalEHP"], s_format("减伤前的伤害: %d", damage))
+			t_insert(breakdown[damageType.."TotalEHP"], s_format("总有效击中资源池: %.0f", output[damageType.."TotalEHP"]))
 		end
 	end
 end

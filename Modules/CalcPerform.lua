@@ -252,6 +252,7 @@ local function doActorAttribsPoolsConditions(env, actor)
 	-- Calculate total attributes
 	output.TotalAttr = output.Str + output.Dex + output.Int
 
+	
 	 
 	-- Add attribute bonuses
 	if not modDB:Flag(nil, "NoStrBonusToLife") and not modDB:Flag(nil, "NoAttributeBonus") then
@@ -527,12 +528,18 @@ modDB:NewMod("AttackDodgeChance", "BASE", dodgeChanceEffect, "灵巧")
 modDB:NewMod("Speed", "INC", effect, "猛攻")
 modDB:NewMod("MovementSpeed", "INC", effect, "猛攻")
 		end		 
+		if modDB:Flag(nil, "Fanaticism") and actor.mainSkill and actor.mainSkill.skillFlags.selfCast then
+			local effect = m_floor(75 * (1 + modDB:Sum("INC", nil, "BuffEffectOnSelf") / 100))
+			modDB:NewMod("Speed", "MORE", effect, "狂热", ModFlag.Cast)
+			modDB:NewMod("ManaCost", "INC", -effect, "狂热")
+			modDB:NewMod("AreaOfEffect", "INC", effect, "狂热")
+		end
 		if modDB:Flag(nil, "UnholyMight") then
 			local effect = m_floor(30 * (1 + modDB:Sum("INC", nil, "BuffEffectOnSelf") / 100))
 modDB:NewMod("PhysicalDamageGainAsChaos", "BASE", effect, "不洁之力")
 		end
 		if modDB:Flag(nil, "Tailwind") then
-			local effect = m_floor(10 * (1 + modDB:Sum("INC", nil, "TailwindEffectOnSelf", "BuffEffectOnSelf") / 100))
+			local effect = m_floor(8 * (1 + modDB:Sum("INC", nil, "TailwindEffectOnSelf", "BuffEffectOnSelf") / 100))
 modDB:NewMod("ActionSpeed", "INC", effect, "提速尾流")
 		end
 		if modDB:Flag(nil, "Adrenaline") then
@@ -541,6 +548,10 @@ modDB:NewMod("Damage", "INC", m_floor(100 * effectMod), "肾上腺素")
 modDB:NewMod("Speed", "INC", m_floor(25 * effectMod), "肾上腺素")
 modDB:NewMod("MovementSpeed", "INC", m_floor(25 * effectMod), "肾上腺素")
 modDB:NewMod("PhysicalDamageReduction", "BASE", m_floor(10 * effectMod), "肾上腺素")
+		end
+		if modDB:Flag(nil, "Convergence") then
+			local effect = m_floor(30 * (1 + modDB:Sum("INC", nil, "BuffEffectOnSelf") / 100))
+			modDB:NewMod("ElementalDamage", "MORE", effect, "汇聚")
 		end
 		if modDB:Flag(nil, "HerEmbrace") then
 			condList["HerEmbrace"] = true
@@ -758,6 +769,27 @@ function calcs.perform(env)
 			local effect = activeSkill.skillModList:Sum("INC", { source = "Skill" }, "EnemyShockEffect")
 			modDB:NewMod("ShockOverride", "BASE", 15 * (1 + effect / 100), "召唤飞掠者")
 			enemyDB:NewMod("Condition:Shocked", "FLAG", true, "召唤飞掠者")
+		end
+		
+		
+			-- lucifer 各个守护翻译可能不一致 Elemental Aegis
+		if activeSkill.activeEffect.grantedEffect.name == "元素守护" or activeSkill.activeEffect.grantedEffect.name == "元素神盾"  then
+			modDB:NewMod("FireAegisValue", "BASE", 1000, "Config")
+			modDB:NewMod("ColdAegisValue", "BASE", 1000, "Config")
+			modDB:NewMod("LightningAegisValue", "BASE", 1000, "Config")
+		elseif activeSkill.activeEffect.grantedEffect.name == "烈焰守护" or activeSkill.activeEffect.grantedEffect.name == "火焰神盾" then
+				modDB:NewMod("FireAegisValue", "BASE", 1000, "Config")		
+		elseif activeSkill.activeEffect.grantedEffect.name == "凝冰守护" or activeSkill.activeEffect.grantedEffect.name == "寒冰神盾" then
+				modDB:NewMod("ColdAegisValue", "BASE", 1000, "Config")				
+		elseif activeSkill.activeEffect.grantedEffect.name == "闪电守护" or activeSkill.activeEffect.grantedEffect.name == "闪电神盾" then
+		--？
+				modDB:NewMod("LightningAegisValue", "BASE", 1000, "Config")
+		end
+			
+		if activeSkill.activeEffect.grantedEffect.name == "Elemental Aegis" then
+			modDB:NewMod("FireAegisValue", "BASE", 1000, "Config")
+			modDB:NewMod("ColdAegisValue", "BASE", 1000, "Config")
+			modDB:NewMod("LightningAegisValue", "BASE", 1000, "Config")
 		end
 		if activeSkill.skillModList:Flag(nil, "CanHaveAdditionalCurse") then
 			output.GemCurseLimit = activeSkill.skillModList:Sum("BASE", nil, "AdditionalCurse")
@@ -1752,10 +1784,18 @@ function calcs.perform(env)
 			end
 		end
 		if min ~= math.huge then
-			enemyDB:NewMod(element.."Resist", "BASE", min, element.." Exposure")
+			-- Modify the magnitude of all exposures
+			for _, value in ipairs(modDB:Tabulate("BASE", nil, "ExtraExposure")) do
+				local mod = value.mod
+				enemyDB:NewMod(element.."Resist", "BASE", mod.value, mod.source)
+			end
+			enemyDB:NewMod(element.."Resist", "BASE", min, element.." 曝露")
+			modDB:NewMod("Condition:AppliedExposureRecently", "FLAG", true, "")
+			
 		end
 	end
 	
+
 	-- Defence/offence calculations
 	calcs.defence(env, env.player)
 	calcs.offence(env, env.player, env.player.mainSkill)

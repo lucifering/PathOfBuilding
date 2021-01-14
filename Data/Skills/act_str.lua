@@ -2287,7 +2287,7 @@ description = "施放一个光环，影响你和周围的敌人，它的效果�
 		},
 		["evasion_and_physical_damage_reduction_rating_+%"] = {
 			mod("Evasion", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff"}),
-			mod("Armor", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff"})
+			mod("Armour", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff"})
 		},
 		["damage_+%_if_changed_stances_recently"] = {
 			mod("Damage", "INC", nil, 0, 0, { type = "GlobalEffect", effectType = "Buff"}, { type = "Condition", var = "ChangedStanceRecently" })

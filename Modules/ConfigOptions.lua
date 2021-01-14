@@ -657,7 +657,13 @@ tooltip = "这个配置可以启用【炼金术天才】增益:\n药剂充能提
 
 	
 	end },
+{ var = "multiplierGaleForce", type = "count", label = "【飓风之力】层数:", 
+tooltip="【飓风之力】每一层独自持续 4 秒。最多有 10层",
+ifCond = "CanGainGaleForce", apply = function(val, modList, enemyModList)
+	modList:NewMod("Multiplier:GaleForce", "BASE", val, "Config", { type = "IgnoreCond" }, { type = "Condition", var = "Combat" }, { type = "Condition", var = "CanGainGaleForce" })
 
+	
+end },
 	
 	
 { var = "conditionLeeching", type = "check", label = "你正在偷取?", ifCond = "Leeching", apply = function(val, modList, enemyModList)
@@ -714,6 +720,7 @@ ifCond = "OnFungalGround",
 	end },
 { var = "conditionOnConsecratedGround", type = "check", label = "你正在【奉献地面】上?", tooltip = "当你处于【奉献地面】状态时干啥干啥的词缀生效,\n同时也会启用【奉献地面】buff本身:6%每秒生命回复.", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:OnConsecratedGround", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+		modList:NewMod("MinionModifier", "LIST", { mod = modLib.createMod("Condition:OnConsecratedGround", "FLAG", true, "Config", { type = "Condition", var = "Combat" }) })
 	end },
 { var = "conditionOnBurningGround", type = "check", label = "你正在【燃烧地面】上?", ifCond = "OnBurningGround", implyCond = "Burning", tooltip = "这也意味着你被燃烧中.", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:OnBurningGround", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
@@ -873,6 +880,11 @@ ifCond = "OnFungalGround",
 		modList:NewMod("Condition:EnergyShieldRechargeRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
 
+{ var = "conditionConvergence", type = "check", label = "汇聚状态?", ifCond = "CanGainConvergence", apply = function(val, modList, enemyModList)
+
+		modList:NewMod("Condition:Convergence", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+		
+	end },
 { var = "buffPendulum", type = "list",  label = "【毁灭光炮塔】升华天赋激活?", ifNode = 57197, list = {{val=0,label="不起作用"},{val="AREA",label="范围效果"},{val="DAMAGE",label="元素伤害"}}, apply = function(val, modList, enemyModList)
 		if val == "AREA" then
 			modList:NewMod("Condition:PendulumOfDestructionAreaOfEffect", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
@@ -911,6 +923,9 @@ ifCond = "OnFungalGround",
 { var = "conditionCastSpellRecently", type = "check", label = "你近期有施法?", ifCond = "CastSpellRecently", implyCond = "UsedSkillRecently", tooltip = "这也意味着你近期有使用过技能.\n如果你的主要技能是法术技能，那么自动默认你近期有过施法,\n如果必要，可以在这里变更.", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:CastSpellRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 		modList:NewMod("Condition:UsedSkillRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
+{ var = "multiplierCastLast8Seconds", type = "count", label = "过去 8 秒施放多少次法术?", ifMult = "CastLast8Seconds", tooltip = "只算非立即触发的法术", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:CastLast8Seconds", "BASE", val, "Config", { type = "Condition", var = "Combat" })
 	end },
 { var = "conditionUsedFireSkillRecently", type = "check", label = "近期内你有使用过火焰技能?", ifCond = "UsedFireSkillRecently", implyCond = "UsedSkillRecently", tooltip = "这也意味着你近期有使用过技能.", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:UsedFireSkillRecently", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
@@ -984,6 +999,10 @@ ifCond = "OnFungalGround",
 	end },
 { var = "multiplierBleedsOnEnemy", type = "count", label = "# 敌人身上的流血数量(如果没达到最大值):", ifFlag = "bleed", tooltip = "设置【玫红之舞】天赋的流血次数", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Multiplier:BleedStacks", "BASE", val, "Config", { type = "Condition", var = "Combat" })
+	end },
+
+{ var = "buffFanaticism", type = "check", label = "你处于狂热状态?", ifCond = "CanGainFanaticism", tooltip = " (【狂热】可使你的自施法的法术的:\n总施法速度额外提高 75%，\n魔力消耗降低 75%，\n范围效果扩大 75%)", apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:Fanaticism", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
 	-- Section: Effective DPS options
 { section = "为了计算有效 DPS", col = 1 },
@@ -1146,6 +1165,15 @@ tooltip = "精疲力尽的敌人总伤害额外降低，最多降低 20%.", appl
 		enemyModList:NewMod("Condition:RareOrUnique", "FLAG", true, "Config", { type = "Condition", var = "Effective" })
 	end },
  
+ 
+ { var = "multiplierRuptureStacks", type = "count", label = "# 撕裂层数", ifCond = "CanInflictRupture", tooltip = "【撕裂】持续 3秒\n最多叠加 3 层\n【撕裂】可使目标承受的总流血伤害额外提高 25%，身上的流血消退速度提高 25%", 
+ apply = function(val, modList, enemyModList)
+		enemyModList:NewMod("Multiplier:RuptureStack", "BASE", val, "Config", { type = "Condition", var = "Effective" })
+		enemyModList:NewMod("DamageTaken", "MORE", 25, "撕裂", nil, KeywordFlag.Bleed, { type = "Multiplier", var = "RuptureStack", limit = 3}, { type = "ActorCondition", actor = "enemy", var = "CanInflictRupture" })
+		enemyModList:NewMod("SelfBleedFaster", "INC", 25, "撕裂", { type = "Multiplier", var = "RuptureStack", limit = 3}, { type = "ActorCondition", actor = "enemy", var = "CanInflictRupture" })
+	end },
+ 
+	
 { var = "enemyIsBoss", type = "list",  label = "敌人是boss?", 
 tooltip = "普通boss有以下词缀：\n额外降低 33% 魔蛊效果\n+40% 火焰、冰霜、闪电抗性\n+25% 混沌抗性\n\n塑界者/塑界守卫有以下词缀：\n额外降低 66% 魔蛊效果\n+50% 火焰、冰霜、闪电抗性\n+30% 混沌抗性\n总护甲额外提高 33%\n\n诸界觉者希鲁斯有以下词缀：\n额外降低 66% 魔蛊效果\n+50% 火焰、冰霜、闪电抗性\n+30% 混沌抗性\n总护甲额外提高 100%",
 list = {{val="NONE",label="不是"},{val="Uber Atziri",label="普通Boss"},

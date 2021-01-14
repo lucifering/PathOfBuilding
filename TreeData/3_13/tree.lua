@@ -279,8 +279,8 @@ return {
 	},
 	["groups"]= {
 		[1]= {
-			["x"]= -10525,
-			["y"]= 1982.94,
+			["x"]= -8500,
+			["y"]= 3700,
 			["orbits"]= {
 				0,
 				2,
@@ -306,8 +306,8 @@ return {
 			}
 		},
 		[2]= {
-			["x"]= -10230,
-			["y"]= 860.975,
+			["x"]= -8680,
+			["y"]= 2540,
 			["orbits"]= {
 				2
 			},
@@ -320,8 +320,8 @@ return {
 			}
 		},
 		[3]= {
-			["x"]= -10052.5,
-			["y"]= 542.695,
+			["x"]= -8500,
+			["y"]= 2200,
 			["orbits"]= {
 				0,
 				2,
@@ -351,8 +351,8 @@ return {
 			["nodes"]= {}
 		},
 		[5]= {
-			["x"]= -9146.96,
-			["y"]= 1977.69,
+			["x"]= -8500,
+			["y"]= -2200,
 			["orbits"]= {
 				0,
 				2,
@@ -376,8 +376,8 @@ return {
 			}
 		},
 		[6]= {
-			["x"]= -8871.1,
-			["y"]= 1824.3,
+			["x"]= -8224.14,
+			["y"]= -2353.4,
 			["orbits"]= {
 				0
 			},
@@ -386,8 +386,8 @@ return {
 			}
 		},
 		[7]= {
-			["x"]= -8870.92,
-			["y"]= 2131.54,
+			["x"]= -8223.95,
+			["y"]= -2046.16,
 			["orbits"]= {
 				0
 			},
@@ -396,8 +396,8 @@ return {
 			}
 		},
 		[8]= {
-			["x"]= -8513.96,
-			["y"]= 3161.46,
+			["x"]= -8500,
+			["y"]= 5200,
 			["orbits"]= {
 				2,
 				3
@@ -410,8 +410,8 @@ return {
 			}
 		},
 		[9]= {
-			["x"]= -8510.91,
-			["y"]= 3162.57,
+			["x"]= -8500,
+			["y"]= 5200,
 			["orbits"]= {
 				0,
 				2,
@@ -431,8 +431,8 @@ return {
 			}
 		},
 		[10]= {
-			["x"]= -8193.83,
-			["y"]= -2379.15,
+			["x"]= -8500,
+			["y"]= -3700,
 			["orbits"]= {
 				0,
 				2,
@@ -460,8 +460,8 @@ return {
 			}
 		},
 		[11]= {
-			["x"]= -8125.67,
-			["y"]= -3663.7,
+			["x"]= -8500,
+			["y"]= -5200,
 			["orbits"]= {
 				0,
 				2,
@@ -3232,8 +3232,8 @@ return {
 			}
 		},
 		[238]= {
-			["x"]= -2256.27,
-			["y"]= -8332.04,
+			["x"]= -1500,
+			["y"]= -7750,
 			["orbits"]= {
 				0,
 				2,
@@ -3438,8 +3438,8 @@ return {
 			}
 		},
 		[256]= {
-			["x"]= -1954.93,
-			["y"]= 7857,
+			["x"]= -1500,
+			["y"]= 7700,
 			["orbits"]= {
 				0,
 				2,
@@ -3939,8 +3939,8 @@ return {
 			}
 		},
 		[296]= {
-			["x"]= -1113.06,
-			["y"]= -7797.07,
+			["x"]= 0,
+			["y"]= -7750,
 			["orbits"]= {
 				0,
 				2,
@@ -4467,8 +4467,8 @@ return {
 			["nodes"]= {}
 		},
 		[336]= {
-			["x"]= -44.985,
-			["y"]= 8284.09,
+			["x"]= 0,
+			["y"]= 7700,
 			["orbits"]= {
 				0,
 				2,
@@ -4796,8 +4796,8 @@ return {
 			["nodes"]= {}
 		},
 		[360]= {
-			["x"]= 214.335,
-			["y"]= -7046.13,
+			["x"]= 1150,
+			["y"]= -7400,
 			["orbits"]= {
 				0
 			},
@@ -4854,8 +4854,8 @@ return {
 			}
 		},
 		[365]= {
-			["x"]= 379.225,
-			["y"]= -7402.3,
+			["x"]= 1315.439,
+			["y"]= -7756.3,
 			["orbits"]= {
 				0
 			},
@@ -5027,8 +5027,8 @@ return {
 			}
 		},
 		[379]= {
-			["x"]= 563.795,
-			["y"]= -7404.46,
+			["x"]= 1500,
+			["y"]= -7750,
 			["orbits"]= {
 				0,
 				2,
@@ -5743,8 +5743,8 @@ return {
 			}
 		},
 		[436]= {
-			["x"]= 1717.26,
-			["y"]= 7873.17,
+			["x"]= 1500,
+			["y"]= 7700,
 			["orbits"]= {
 				0,
 				3,
@@ -8763,8 +8763,8 @@ return {
 			}
 		},
 		[681]= {
-			["x"]= 8271.06,
-			["y"]= -4232.48,
+			["x"]= 8800,
+			["y"]= -5200,
 			["orbits"]= {
 				0,
 				2,
@@ -8802,8 +8802,8 @@ return {
 			}
 		},
 		[683]= {
-			["x"]= 8345.05,
-			["y"]= 2551.91,
+			["x"]= 8800,
+			["y"]= 3700,
 			["orbits"]= {
 				0,
 				2,
@@ -8829,8 +8829,8 @@ return {
 			}
 		},
 		[684]= {
-			["x"]= 8396.25,
-			["y"]= -3278.45,
+			["x"]=  8800,
+			["y"]= -3700,
 			["orbits"]= {
 				0,
 				2,
@@ -8897,8 +8897,8 @@ return {
 			}
 		},
 		[689]= {
-			["x"]= 8839.45,
-			["y"]= -1929.68,
+			["x"]= 8800,
+			["y"]= -2200,
 			["orbits"]= {
 				0,
 				2,
@@ -8935,8 +8935,8 @@ return {
 			}
 		},
 		[691]= {
-			["x"]= 9303.35,
-			["y"]= 3417.17,
+			["x"]= 8800,
+			["y"]= 5200,
 			["orbits"]= {
 				0,
 				2,
@@ -8978,8 +8978,8 @@ return {
 			["nodes"]= {}
 		},
 		[695]= {
-			["x"]= 9558.58,
-			["y"]= 1685.35,
+			["x"]= 8800,
+			["y"]= 2200,
 			["orbits"]= {
 				0,
 				2,
@@ -9748,7 +9748,7 @@ return {
 			["name"]= "廉简之途",
 			["icon"]= "Art/2DArt/SkillIcons/passives/Inquistitor/GloryOfTheSavant.png",
 			["stats"]= {
-				"你创建的奉献地面的生命再生效果也同样为你和友军回复能量护盾",
+				"你创建的奉献地面可使你和友军的生命再生效果也回复到能量护盾",
 				"你创建的奉献地面可使你和周围友军免疫元素异常",
 				"你创造的奉献地面效果可延续 4 秒"
 			},
@@ -9796,7 +9796,7 @@ return {
 				"+4 狂热球数量上限"
 			},
 			["reminderText"]= {
-				"（【狂热】可使你的自施法的法术的总施法速度额外提高 7%，魔力消耗降低 75%，范围效果扩大 75%）"
+				"（【狂热】可使你的自施法的法术的总施法速度额外提高 75%，魔力消耗降低 75%，范围效果扩大 75%）"
 			},
 			["group"]= 5,
 			["orbit"]= 4,
@@ -12222,7 +12222,7 @@ return {
 			["name"]= "锐眼",
 			["icon"]= "Art/2DArt/SkillIcons/passives/Ascendants/Deadeye.png",
 			["stats"]= {
-				"印记的效果提高 25%",
+				"咒印的效果提高 25%",
 				"投射物的伤害随着飞行距离提升，击中目标时最多提高 50%",
 				"技能可以额外发射 1 个投射物",
 				"你和周围友军获得【提速尾流】"
@@ -15259,7 +15259,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/ManaandArcaneSurge.png",
 			["stats"]= {
 				"最大魔力提高 15%",
-				"最近你每消耗 200 点魔力\n你身上的秘术增强效果提高 10%，最多 50%",
+				"最近你每消耗 200 点魔力，你身上的秘术增强效果提高 10%，最多 50%",
 				"你击败敌人时有 10% 几率获得【秘术增强】"
 			},
 			["reminderText"]= {
@@ -37197,7 +37197,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/CorpsesNotable.png",
 			["stats"]= {
 				"近期内你若有消耗灵柩，则伤害提高 30%",
-				"【亵渎】和【亵渎之矛】 \\+(\\d+|(\\d+\\.\\d+)) 灵枢上限",
+				"【亵渎】和【亵渎之矛】 +2 灵枢上限",
 				"近期内你若有吞噬 1 个灵柩，则每秒回复 2% 最大生命"
 			},
 			["reminderText"]= {
@@ -37498,7 +37498,7 @@ return {
 			["stats"]= {
 				"溢出伤害的 20% 转为生命偷取",
 				"偷取时攻击速度提高 20%",
-				"生命偷取时免疫晕眩",
+				"偷取时免疫晕眩",
 				"偷取时不受流血影响"
 			},
 			["reminderText"]= {
@@ -53187,7 +53187,7 @@ return {
 			["name"]= "制毒宗师",
 			["icon"]= "Art/2DArt/SkillIcons/passives/PathFinder/Master Toxicist.png",
 			["stats"]= {
-				"在药剂生效期间，你造成的中毒效果有 30% 几率伤害提高 100%",
+				"在药剂生效期间，你造成的中毒总伤害有 30% 几率额外提高 100%",
 				"在药剂持续期间，击败中毒的敌人时，可使周围敌人中毒"
 			},
 			["group"]= 683,
@@ -54372,7 +54372,7 @@ return {
 			["icon"]= "Art/2DArt/SkillIcons/passives/DeadEye/ProjectileDamageAttackSpeed.png",
 			["stats"]= {
 				"投射物伤害提高 10%",
-				"印记技能的施法速度加快 25%"
+				"咒印技能的施法速度加快 25%"
 			},
 			["group"]= 695,
 			["orbit"]= 3,
@@ -54569,9 +54569,9 @@ return {
 			["name"]= "Focal Point",
 			["icon"]= "Art/2DArt/SkillIcons/passives/Mark.png",
 			["stats"]= {
-				"印记的效果提高 75%",
-				"被你印记标记的敌人周围的其他敌人，对你造成的总伤害额外降低 25%",
-				"你施放的印记不会因目标死亡而移除"
+				"咒印的效果提高 75%",
+				"被你咒印标记的敌人周围的其他敌人，对你造成的总伤害额外降低 25%",
+				"你施放的咒印不会因目标死亡而移除"
 			},
 			["group"]= 695,
 			["orbit"]= 3,
@@ -59389,6 +59389,11 @@ return {
 			[0.2109]= "https://testingcdn.office.grindinggear.com/gen/image/WzIyLDE0LHsidCI6MTksInNwIjowLjIxMDl9XQ/5fe8932ab8/JewelSocketActiveGreen.png",
 			[0.2972]= "https://testingcdn.office.grindinggear.com/gen/image/WzIyLDE0LHsidCI6MTksInNwIjowLjI5NzJ9XQ/3cd5a0b92f/JewelSocketActiveGreen.png",
 			[0.3835]= "https://testingcdn.office.grindinggear.com/gen/image/WzIyLDE0LHsidCI6MTksInNwIjowLjM4MzV9XQ/943213c412/JewelSocketActiveGreen.png"
+		},["JewelSocketActiveTimeless"]= {
+			[0.1246]= "http://web.poecdn.com/gen/image/WzIyLCIyODAyNzk5YTkwYzZjYTU0ODA1MDIzNDQ5ZTAyNzk3NSIseyJ0Ijo1MSwic3AiOjAuMTI0Nn1d/cd042e73a3/JewelSocketActiveTimeless.png",
+			[0.2109]= "http://web.poecdn.com/gen/image/WzIyLCIyODAyNzk5YTkwYzZjYTU0ODA1MDIzNDQ5ZTAyNzk3NSIseyJ0Ijo1MSwic3AiOjAuMjEwOX1d/b7808f8b4c/JewelSocketActiveTimeless.png",
+			[0.2972]= "http://web.poecdn.com/gen/image/WzIyLCIyODAyNzk5YTkwYzZjYTU0ODA1MDIzNDQ5ZTAyNzk3NSIseyJ0Ijo1MSwic3AiOjAuMjk3Mn1d/9f66426097/JewelSocketActiveTimeless.png",
+			[0.3835]= "http://web.poecdn.com/gen/image/WzIyLCIyODAyNzk5YTkwYzZjYTU0ODA1MDIzNDQ5ZTAyNzk3NSIseyJ0Ijo1MSwic3AiOjAuMzgzNX1d/34efc26b2a/JewelSocketActiveTimeless.png"
 		},
 		["JewelSocketActiveRed"]= {
 			[0.1246]= "https://testingcdn.office.grindinggear.com/gen/image/WzIyLDE0LHsidCI6MjAsInNwIjowLjEyNDZ9XQ/7eceb234b2/JewelSocketActiveRed.png",

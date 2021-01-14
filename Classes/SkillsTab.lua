@@ -467,7 +467,7 @@ function SkillsTabClass:CopySocketGroup(socketGroup)
 		skillText = skillText .. "Slot: "..socketGroup.slot.."\r\n"
 	end
 	for _, gemInstance in ipairs(socketGroup.gemList) do
-skillText = skillText .. string.format("@%s %d/%d %s\r\n", gemInstance.nameSpec, gemInstance.level, gemInstance.quality, gemInstance.enabled and "" or "DISABLED")
+skillText = skillText .. string.format("@%s %d/%d %s %s\r\n", gemInstance.nameSpec, gemInstance.level, gemInstance.quality, gemInstance.qualityId, gemInstance.enabled and "" or "DISABLED")
 	end
 	Copy(skillText)
 end
@@ -484,8 +484,8 @@ function SkillsTabClass:PasteSocketGroup()
 		if slot then
 			newGroup.slot = slot
 		end
-for nameSpec, level, quality, state in skillText:gmatch("@([^\\x00-\\xff]*) (%d+)/(%d+) ?(%a*)") do
-			t_insert(newGroup.gemList, { nameSpec = nameSpec, level = tonumber(level) or 20, quality = tonumber(quality) or 0, enabled = state ~= "DISABLED" })
+for nameSpec, level, quality, qualityId, state in skillText:gmatch("@([^\\x00-\\xff]*) (%d+)/(%d+) (%a+%d?) ?(%a*)") do
+			t_insert(newGroup.gemList, { nameSpec = nameSpec, level = tonumber(level) or 20, quality = tonumber(quality) or 0, qualityId = qualityId, enabled = state ~= "DISABLED" })
 		end
 		if #newGroup.gemList > 0 then
 			t_insert(self.socketGroupList, newGroup)
@@ -593,6 +593,9 @@ function SkillsTabClass:CreateGemSlot(index)
 		self.build.buildFlag = true
 	end)
 	slot.level:AddToTabGroup(self.controls.groupLabel)
+	slot.level.enabled = function()
+		return index <= #self.displayGroup.gemList
+	end
 	self.controls["gemSlot"..index.."Level"] = slot.level
 
 -- Gem quality id
@@ -611,9 +614,12 @@ function SkillsTabClass:CreateGemSlot(index)
 		self:AddUndoState()
 		self.build.buildFlag = true
 	end)
-	slot.qualityId.tooltipFunc = function()
+	slot.qualityId.enabled = function()
+		return index <= #self.displayGroup.gemList
+	end
+	slot.qualityId.tooltipFunc = function(tooltip)
 		--Reset the tooltip
-		slot.qualityId.tooltip:Clear()
+		tooltip:Clear()
 		--Get the gem instance from the skills
 		local gemInstance = self.displayGroup.gemList[index]
 		if not gemInstance then
@@ -628,9 +634,9 @@ function SkillsTabClass:CreateGemSlot(index)
 		end
 		-- Function for both granted effect and secondary such as vaal
 		local addQualityLines = function(qualityList, grantedEffect)
-			slot.qualityId.tooltip:AddLine(18, colorCodes.GEM..grantedEffect.name)
+			tooltip:AddLine(18, colorCodes.GEM..grantedEffect.name)
 			-- Hardcoded to use 20% quality instead of grabbing from gem
-			slot.qualityId.tooltip:AddLine(16, colorCodes.NORMAL.."+20% 品质时:")
+			tooltip:AddLine(16, colorCodes.NORMAL.."+20% 品质时:")
 			for k, qual in pairs(qualityList) do
 				-- Do the stats one at a time because we're not guaranteed to get the descriptions in the same order we look at them here
 				local stats = { }
@@ -642,9 +648,9 @@ function SkillsTabClass:CreateGemSlot(index)
 					if line then
 						-- Check if we have a handler for the mod in the gem's statMap or in the shared stat map for skills
 						if grantedEffect.statMap[qual[1]] or self.build.data.skillStatMap[qual[1]] then
-							slot.qualityId.tooltip:AddLine(16, colorCodes.MAGIC..line)
+							tooltip:AddLine(16, colorCodes.MAGIC..line)
 						else
-							slot.qualityId.tooltip:AddLine(16, colorCodes.UNSUPPORTED..line)
+							tooltip:AddLine(16, colorCodes.UNSUPPORTED..line)
 						end
 					end
 				end
@@ -657,8 +663,21 @@ function SkillsTabClass:CreateGemSlot(index)
 		end
 		if gemData and gemData.secondaryGrantedEffect and gemData.secondaryGrantedEffect.qualityStats[hoveredQuality.type] then
 			local qualityTable = gemData.secondaryGrantedEffect.qualityStats[hoveredQuality.type]
-			slot.qualityId.tooltip:AddSeparator(10)
+			tooltip:AddSeparator(10)
 			addQualityLines(qualityTable, gemData.secondaryGrantedEffect)
+		end
+		-- Add stat comparisons for hovered quality (based on set quality)
+		if self.displayGroup.gemList[index] then
+			local calcFunc, calcBase = self.build.calcsTab:GetMiscCalculator(self.build)
+			if calcFunc then
+				local tempQual = self.displayGroup.gemList[index].qualityId
+				self.displayGroup.gemList[index].qualityId = hoveredQuality.type
+				self:ProcessSocketGroup(self.displayGroup)
+				local output = calcFunc()
+				self.displayGroup.gemList[index].qualityId = tempQual
+				tooltip:AddSeparator(10)
+				self.build:AddStatComparesToTooltip(tooltip, calcBase, output, "^7选择这个技能品质可以让你获得:")
+			end
 		end
 	end
 	slot.qualityId:AddToTabGroup(self.controls.groupLabel)
@@ -681,6 +700,9 @@ function SkillsTabClass:CreateGemSlot(index)
 		self.build.buildFlag = true
 	end)
 	slot.quality:AddToTabGroup(self.controls.groupLabel)
+	slot.quality.enabled = function()
+		return index <= #self.displayGroup.gemList
+	end
 	self.controls["gemSlot"..index.."Quality"] = slot.quality
 
 	-- Enable gem
@@ -712,6 +734,9 @@ self.build:AddStatComparesToTooltip(tooltip, calcBase, output, self.displayGroup
 				end
 			end
 		end
+	end
+	slot.enabled.enabled = function()
+		return index <= #self.displayGroup.gemList
 	end
 	self.controls["gemSlot"..index.."Enable"] = slot.enabled
 

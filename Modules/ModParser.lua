@@ -1401,6 +1401,7 @@ local modTagList = {
 	["受到防卫技能增益效果影响时，获得"] = { tag = { type = "Condition", var = "AffectedByGuardSkill" } },
 	["受到防卫技能增益效果影响时，"] = { tag = { type = "Condition", var = "AffectedByGuardSkill" } },
 	["被防卫技能的增益效果影响时，"] = { tag = { type = "Condition", var = "AffectedByGuardSkill" } },
+	["若近期你有施加曝露,则"] = { tag = { type = "Condition", var = "AppliedExposureRecently" } },
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -4391,6 +4392,7 @@ local specialModList = {
 	["你施放的魔蛊有 %+(%d+) 层末日之力数量上限"] = function(num) return { mod("MaxDoom", "BASE", num) } end,
 	["魔蛊技能范围提高 (%d+)%%"]= function(num) return { mod("AreaOfEffect", "INC", num, { type = "SkillType", skillType = SkillType.Hex } ) } end,
 	["被【法术凝聚（辅）】辅助的技能有 %+(%d) 最大层"] = function(num) return { mod("Multiplier:IntensityLimit", "BASE", num) } end,
+	["可以获得法术凝聚效果的法术有 %+(%d) 凝聚最大层"] = function(num) return { mod("Multiplier:IntensityLimit", "BASE", num) } end,
 	["插槽内的技能石造成双倍伤害"]= { mod("ExtraSkillMod", "LIST",
 	{ mod = mod("DoubleDamageChance", "BASE", 100) }, { type = "SocketedIn", slotName = "{SlotName}" }) },
 	["插入的技能伤害翻倍"]= { mod("ExtraSkillMod", "LIST",
@@ -4724,10 +4726,81 @@ local specialModList = {
 	["力量属性对近战攻击和投射物的攻击物理伤害均会加成"] = { flag("IronGrip") }, 
 	["总混沌伤害额外提高 (%d+)%%"] = function(num) return { mod("ChaosDamage", "MORE", num) } end,
 	["总冰霜伤害额外提高 (%d+)%%"] = function(num) return { mod("ColdDamage", "MORE", num) } end,
+	["暴击造成流血时也会造成撕裂"] = function() return {
+			flag("Condition:CanInflictRupture", { type = "Condition", neg = true, var = "NeverCrit"}),
+			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanInflictRupture" }), -- Make the Configuration option appear
+		} end,
+	["咒印的效果提高 (%d+)%%"] = function(num) return { mod("CurseEffect", "INC", num,{ type = "SkillType", skillType = SkillType.Mark }) } end,
+	["你和周围友军获得【提速尾流】"] = { mod("ExtraAura", "LIST", { mod = flag("Condition:Tailwind") }) }, 
+	["使用技能时获得 1 层飓风之力"] = { 
+	flag("Condition:CanGainGaleForce"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainGaleForce" }), -- Make the Configuration option appear
+	 }, 
+	["每层飓风之力可使你身上的【提速尾流】效果提高 (%d+)%%"] = function(num) return { 
+	mod("TailwindEffectOnSelf", "INC", num,{ type = "Multiplier", var = "GaleForce" }) } end,
+	["每层飓风之力可使你承受的伤害额外降低 (%d+)%%"] = function(num) return { 
+	mod("DamageTaken", "MORE", -num,{ type = "Multiplier", var = "GaleForce" }) } end,
+	["对传奇的敌人的击中总伤害和异常状态总伤害额外提高 (%d+)%%"] = function(num) return { mod("Damage", "MORE", num,nil,0,bor(KeywordFlag.Hit, KeywordFlag.Ailment) ,{ type = "ActorCondition", actor = "enemy", var = "RareOrUnique" }) } end,
+	["偷取时免疫晕眩"] = function() return {  mod("AvoidStun", "BASE", 100,{ type = "Condition", var = "Leeching" })  } end,
+	["获得等同双倍力量数值的命中值"] = function() return { mod("Accuracy", "BASE", 2,{ type = "PerStat", stat = "Str", div = 1 }) } end,
+	["你创建的奉献地面可使你和周围友军免疫元素异常"] = function() return {
+	 mod("ExtraAura", "LIST", { mod = mod("AvoidShock", "BASE", 100,{ type = "Condition", var = "OnConsecratedGround" })  }),
+	 mod("ExtraAura", "LIST", { mod = mod("AvoidChilled", "BASE", 100,{ type = "Condition", var = "OnConsecratedGround" })  }),
+	 mod("ExtraAura", "LIST", { mod = mod("AvoidFrozen", "BASE", 100,{ type = "Condition", var = "OnConsecratedGround" })  }),
+	 mod("ExtraAura", "LIST", { mod = mod("AvoidIgnite", "BASE", 100,{ type = "Condition", var = "OnConsecratedGround" })  }),
+	 }end,
+	["被你点燃的敌人承受的点燃伤害由火焰伤害替换为混沌伤害"] = { flag("IgniteToChaos") },
+	["你施加的曝露可使敌人 (%-?%d+)%% 对应被影响的抗性"] = function(num) return { mod("ExtraExposure", "BASE", num) } end,
+	["若近期你有施加曝露,则每秒回复 (%d+)%% 最大魔力"] = function(num) return { 
+	mod("ManaRegenPercent", "BASE", num,{ type = "Condition", var = "AppliedExposureRecently" }) } end,
+	["击中传奇敌人时获得汇聚效果，每 %d+ 秒可触发一次"] = { 
+			flag("Condition:CanGainConvergence"),
+			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainConvergence" }) -- Dummy mod so it appears on config tab
+		},
+	["若你没有获得汇聚，则范围效果扩大 (%d+)%%"] = function(num) return { mod("AreaOfEffect", "INC", num, { type = "Condition", neg = true, var = "Convergence" }) } end,
+	["战斗法师"] = { flag("WeaponDamageAppliesToSpells"), mod("ImprovedWeaponDamageAppliesToSpells", "INC", 100) },
+	["达到狂热球上限时获得持续 4 秒的狂热效果"] =function() return {
+	flag("Condition:CanGainFanaticism"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainFanaticism" })
+	} end ,
+	["力量或智慧数值较低的一方，每有 1 点可使暴击几率提高 (%d+)%%"] = function(num) return { 
+			mod("CritChance", "INC", num, { type = "PerStat", stat = "Str" }, { type = "Condition", var = "IntHigherThanStr" }), 
+			mod("CritChance", "INC", num, { type = "PerStat", stat = "Int" }, { type = "Condition", var = "StrHigherThanInt" }) 
+		} end,
+	["你创建的奉献地面可使你和友军的生命再生效果也回复到能量护盾"] = function(num) return { 
+			flag("LifeRegenerationRecoversEnergyShield", { type = "Condition", var = "OnConsecratedGround"}),
+			mod("MinionModifier", "LIST", { mod = flag("LifeRegenerationRecoversEnergyShield", { type = "Condition", var = "OnConsecratedGround"}) })
+		} end,
+	["过去 8 秒，每次施放的非立即施法法术可使你的攻击总伤害额外提高 (%d+)%%，最多提高 (%d+)%%"] = function(num, _, max) return { 
+			mod("Damage", "MORE", num, nil, ModFlag.Attack, { type = "Multiplier", var = "CastLast8Seconds", limit = max, limitTotal = true}),	
+		} end,
+	["若你的最高伤害类型是火焰，则你击中造成的总点燃伤害额外提高 (%d+)%%"] = function(num) return { mod("Damage", "MORE", num, nil, 0, KeywordFlag.Ignite, { type = "Condition", var = "FireIsHighestDamageType" } ) } end,
+		["若你的最高伤害类型是冰霜，则你击中造成的总冰霜异常效果额外提高 (%d+)%%"] = function(num) return { mod("EnemyChillEffect", "MORE", num, { type = "Condition", var = "ColdIsHighestDamageType" } ) } end,
+		["若你的最高伤害类型是闪电，则你击中造成的闪电异常效果额外提高 (%d+)%%"] = function(num) return { mod("EnemyShockEffect", "MORE", num, { type = "Condition", var = "LightningIsHighestDamageType" } ) } end,
+		["你的击中必定造成点燃"] = { mod("EnemyIgniteChance", "BASE", 100) },
+		["你的击中必定造成感电"] = { mod("EnemyShockChance", "BASE", 100) },
+		["所有的伤害类型都可以造成造成点燃"] = {
+			flag("PhysicalCanIgnite"),
+			flag("ColdCanIgnite"),
+			flag("LightningCanIgnite"),
+			flag("ChaosCanIgnite")
+		},
+		["所有的伤害类型都可以造成冰缓"] = {
+			flag("PhysicalCanChill"),
+			flag("FireCanChill"),
+			flag("LightningCanChill"),
+			flag("ChaosCanChill")
+		},
+		["所有的伤害类型都可以造成感电"] = {
+			flag("PhysicalCanShock"),
+			flag("FireCanShock"),
+			flag("ColdCanShock"),
+			flag("ChaosCanShock")
+		},	
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded
-	["无法造成暴击"] = { flag("NeverCrit") }, --备注：never deal critical strikes
+	["无法造成暴击"] = { flag("NeverCrit"), flag("Condition:NeverCrit") }, --备注：never deal critical strikes
 	["击中没有暴击伤害加成"] = { flag("NoCritMultiplier") }, --备注：no critical strike multiplier
 	["异常状态没有暴击伤害加成"] = { flag("NoCritDegenMultiplier") }, --备注：no damage multiplier for ailments from critical strikes
 	["力量属性对近战攻击和投射物的物理伤害均会加成"] = { flag("IronGrip") }, --备注：the increase to physical damage from strength applies to projectile attacks as well as melee attacks

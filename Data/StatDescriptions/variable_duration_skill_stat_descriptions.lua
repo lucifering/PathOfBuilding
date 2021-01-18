@@ -1,9 +1,5 @@
 return {
 	[1]={
-		stats={
-			[1]="active_skill_quality_duration_+%_final"
-		},
-		name="quality_duration_final",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -20,22 +16,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="总持续时间额外缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="总持续时间额外缩短 {0}%"
 				}
 			}
+		},
+		name="quality_duration_final",
+		stats={
+			[1]="active_skill_quality_duration_+%_final"
 		}
 	},
 	[2]={
-		stats={
-			[1]="skill_effect_and_damaging_ailment_duration_+%"
-		},
-		name="skill_and_damaging_ailment_duration_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -43,13 +39,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="此技能和伤害性异常状态时间延长 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="此技能和伤害性异常状态时间延长 {0}%"
 				},
 				[2]={
 					[1]={
@@ -60,22 +56,52 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="此技能和伤害性异常状态时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此技能和伤害性异常状态时间缩短 {0}%"
+				},
+				[3]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextDamagingAilments"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="이 스킬 및 피해를 주는 상태 이상 지속시간 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					[2]={
+						k="reminderstring",
+						v="ReminderTextDamagingAilments"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="이 스킬 및 피해를 주는 상태 이상 지속시간 {0}% 감소"
 				}
 			}
+		},
+		name="skill_and_damaging_ailment_duration_incr",
+		stats={
+			[1]="skill_effect_and_damaging_ailment_duration_+%"
 		}
 	},
 	[3]={
-		stats={
-			[1]="skill_effect_duration_+%"
-		},
-		name="skill_duration_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -92,22 +118,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="持续时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="持续时间缩短 {0}%"
 				}
 			}
+		},
+		name="skill_duration_incr",
+		stats={
+			[1]="skill_effect_duration_+%"
 		}
 	},
 	[4]={
-		stats={
-			[1]="support_reduced_duration_skill_effect_duration_+%_final"
-		},
-		name="support_less_duration",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -124,20 +150,24 @@ return {
 						k="negate",
 						v=1
 					},
-					text="总持续时间额外缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="总持续时间额外缩短 {0}%"
 				}
 			}
+		},
+		name="support_less_duration",
+		stats={
+			[1]="support_reduced_duration_skill_effect_duration_+%_final"
 		}
 	},
-	["support_reduced_duration_skill_effect_duration_+%_final"]=4,
-	["skill_effect_duration_+%"]=3,
-	["skill_effect_and_damaging_ailment_duration_+%"]=2,
 	["active_skill_quality_duration_+%_final"]=1,
-	parent="skill_stat_descriptions"
+	parent="skill_stat_descriptions",
+	["skill_effect_and_damaging_ailment_duration_+%"]=2,
+	["skill_effect_duration_+%"]=3,
+	["support_reduced_duration_skill_effect_duration_+%_final"]=4
 }

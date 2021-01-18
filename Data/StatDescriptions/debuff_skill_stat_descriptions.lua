@@ -1,9 +1,5 @@
 return {
 	[1]={
-		stats={
-			[1]="modifiers_to_buff_effect_duration_also_affect_soul_prevention_duration"
-		},
-		name="soul_prevention_buff_duration",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -14,15 +10,24 @@ return {
 						}
 					},
 					text="减益效果持续时间的加成也作用于此技能的【阻灵术】效果"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="디버프 지속시간 속성 부여 수치를 이 스킬의 영혼 획득 방지에도 적용"
 				}
 			}
+		},
+		name="soul_prevention_buff_duration",
+		stats={
+			[1]="modifiers_to_buff_effect_duration_also_affect_soul_prevention_duration"
 		}
 	},
 	[2]={
-		stats={
-			[1]="buff_effect_duration"
-		},
-		name="buff_duration",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -30,22 +35,22 @@ return {
 						k="milliseconds_to_seconds_2dp",
 						v=1
 					},
-					text="减益效果持续 {0} 秒",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="减益效果持续 {0} 秒"
 				}
 			}
+		},
+		name="buff_duration",
+		stats={
+			[1]="buff_effect_duration"
 		}
 	},
 	[3]={
-		stats={
-			[1]="secondary_buff_effect_duration"
-		},
-		name="secondary_buff_duration",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -53,22 +58,22 @@ return {
 						k="milliseconds_to_seconds_2dp",
 						v=1
 					},
-					text="额外减益效果持续 {0} 秒",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="额外减益效果持续 {0} 秒"
 				}
 			}
+		},
+		name="secondary_buff_duration",
+		stats={
+			[1]="secondary_buff_effect_duration"
 		}
 	},
 	[4]={
-		stats={
-			[1]="ice_siphon_trap_max_beam_targets"
-		},
-		name="ice_siphon_trap_max_targets",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -81,36 +86,32 @@ return {
 					text="向最近的 {0} 个敌人发射光线"
 				}
 			}
+		},
+		name="ice_siphon_trap_max_targets",
+		stats={
+			[1]="ice_siphon_trap_max_beam_targets"
 		}
 	},
 	[5]={
-		stats={
-			[1]="skill_life_regeneration_per_minute_with_at_least_1_affected_enemy"
-		},
-		name="life_regen_with_at_least_one_enemy",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
-					[1]={
-						k="per_minute_to_per_second",
-						v=1
-					},
-					text="若有任何敌人受到影响，则每秒回复 {0} 生命",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="向周围最近的 {0} 个流血的怪物发射光束"
 				}
 			}
+		},
+		name="vampiric_icon_max_targets",
+		stats={
+			[1]="vampiric_icon_max_bleeding_beam_targets"
 		}
 	},
 	[6]={
-		stats={
-			[1]="skill_mana_regeneration_per_minute_with_at_least_1_affected_enemy"
-		},
-		name="mana_regen_with_at_least_one_enemy",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -118,22 +119,22 @@ return {
 						k="per_minute_to_per_second",
 						v=1
 					},
-					text="若有任何敌人受到影响，则每秒回复 {0} 魔力",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="若有任何敌人受到影响，则每秒回复 {0} 生命"
 				}
 			}
+		},
+		name="life_regen_with_at_least_one_enemy",
+		stats={
+			[1]="skill_life_regeneration_per_minute_with_at_least_1_affected_enemy"
 		}
 	},
 	[7]={
-		stats={
-			[1]="skill_life_regeneration_per_minute_per_affected_enemy"
-		},
-		name="life_regen_per_enemy",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -141,22 +142,22 @@ return {
 						k="per_minute_to_per_second",
 						v=1
 					},
-					text="每有一个受影响的敌人便每秒回复 {0} 生命",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="若有任何敌人受到影响，则每秒回复 {0} 魔力"
 				}
 			}
+		},
+		name="mana_regen_with_at_least_one_enemy",
+		stats={
+			[1]="skill_mana_regeneration_per_minute_with_at_least_1_affected_enemy"
 		}
 	},
 	[8]={
-		stats={
-			[1]="skill_mana_regeneration_per_minute_per_affected_enemy"
-		},
-		name="mana_regen_per_enemy",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -164,22 +165,45 @@ return {
 						k="per_minute_to_per_second",
 						v=1
 					},
-					text="每有一个受影响的敌人便每秒回复 {0} 魔力",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="每有一个受影响的敌人便每秒回复 {0} 生命"
 				}
 			}
+		},
+		name="life_regen_per_enemy",
+		stats={
+			[1]="skill_life_regeneration_per_minute_per_affected_enemy"
 		}
 	},
 	[9]={
-		stats={
-			[1]="skill_damage_taken_+%_per_affected_enemy"
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					[1]={
+						k="per_minute_to_per_second",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="每有一个受影响的敌人便每秒回复 {0} 魔力"
+				}
+			}
 		},
-		name="damage_taken_incr_per_enemy",
+		name="mana_regen_per_enemy",
+		stats={
+			[1]="skill_mana_regeneration_per_minute_per_affected_enemy"
+		}
+	},
+	[10]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -196,22 +220,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="每个受到影响的敌人会使玩家承受的伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="每个受到影响的敌人会使玩家承受的伤害降低 {0}%"
 				}
 			}
+		},
+		name="damage_taken_incr_per_enemy",
+		stats={
+			[1]="skill_damage_taken_+%_per_affected_enemy"
 		}
 	},
-	[10]={
-		stats={
-			[1]="herald_of_ash_fire_damage_+%"
-		},
-		name="herald_of_ash_fire_damage_incr",
+	[11]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -224,13 +248,13 @@ return {
 					text="增益效果的火焰伤害提高 {0}%"
 				}
 			}
+		},
+		name="herald_of_ash_fire_damage_incr",
+		stats={
+			[1]="herald_of_ash_fire_damage_+%"
 		}
 	},
-	[11]={
-		stats={
-			[1]="skill_buff_effect_+%"
-		},
-		name="skill_buff_effect",
+	[12]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -247,22 +271,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="减益效果降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="减益效果降低 {0}%"
 				}
 			}
+		},
+		name="skill_buff_effect",
+		stats={
+			[1]="skill_buff_effect_+%"
 		}
 	},
-	[12]={
-		stats={
-			[1]="action_speed_-%"
-		},
-		name="action_speed_reduction",
+	[13]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -279,22 +303,44 @@ return {
 						k="negate",
 						v=1
 					},
-					text="敌人的行动速度降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="敌人的行动速度降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="적의 동작 속도가 {0}% 감소"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="적의 동작 속도가 {0}% 증가"
 				}
 			}
+		},
+		name="action_speed_reduction",
+		stats={
+			[1]="action_speed_-%"
 		}
 	},
-	[13]={
-		stats={
-			[1]="bane_enemies_explode_on_death_%_chance"
-		},
-		name="bane_enemies_explode_on_death_chance",
+	[14]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -304,16 +350,16 @@ return {
 							[2]="#"
 						}
 					},
-					text="敌人有 {0}% 几率在击败时爆炸，造成等同其最大生命四分之一的混沌伤害"
+					text="敌人有 {0}% 的几率在击败时爆炸，造成等同其最大生命四分之一的混沌伤害"
 				}
 			}
+		},
+		name="bane_enemies_explode_on_death_chance",
+		stats={
+			[1]="bane_enemies_explode_on_death_%_chance"
 		}
 	},
-	[14]={
-		stats={
-			[1]="base_chaos_damage_resistance_%"
-		},
-		name="chaos_res",
+	[15]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -326,13 +372,13 @@ return {
 					text="敌人获得 {0:+d}% 混沌抗性"
 				}
 			}
+		},
+		name="chaos_res",
+		stats={
+			[1]="base_chaos_damage_resistance_%"
 		}
 	},
-	[15]={
-		stats={
-			[1]="base_cold_damage_resistance_%"
-		},
-		name="cold_resist",
+	[16]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -343,15 +389,24 @@ return {
 						}
 					},
 					text="【畏寒】 {0:+d}% 冰霜抗性"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="냉기 노출에 냉기 저항 {0:+d}% 적용"
 				}
 			}
+		},
+		name="cold_resist",
+		stats={
+			[1]="base_cold_damage_resistance_%"
 		}
 	},
-	[16]={
-		stats={
-			[1]="base_fire_damage_resistance_%"
-		},
-		name="fire_resist",
+	[17]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -362,15 +417,24 @@ return {
 						}
 					},
 					text="【畏火】 {0:+d}% 火焰抗性"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="화염 노출에 화염 저항 {0:+d}% 적용"
 				}
 			}
+		},
+		name="fire_resist",
+		stats={
+			[1]="base_fire_damage_resistance_%"
 		}
 	},
-	[17]={
-		stats={
-			[1]="base_lightning_damage_resistance_%"
-		},
-		name="lightning_resist",
+	[18]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -381,15 +445,24 @@ return {
 						}
 					},
 					text="【弱电】 {0:+d}% 闪电抗性"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="번개 노출에 번개 저항 {0:+d}% 적용"
 				}
 			}
+		},
+		name="lightning_resist",
+		stats={
+			[1]="base_lightning_damage_resistance_%"
 		}
 	},
-	[18]={
-		stats={
-			[1]="bear_trap_damage_taken_+%_from_traps_and_mines"
-		},
-		name="trap_and_mine_damage_taken",
+	[19]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -406,22 +479,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="敌人受到陷阱或地雷的击中伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="敌人受到陷阱或地雷的击中伤害降低 {0}%"
 				}
 			}
+		},
+		name="trap_and_mine_damage_taken",
+		stats={
+			[1]="bear_trap_damage_taken_+%_from_traps_and_mines"
 		}
 	},
-	[19]={
-		stats={
-			[1]="bear_trap_movement_speed_+%_final"
-		},
-		name="bear_trap_slow",
+	[20]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -438,23 +511,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="当该减益效果生效时，敌人的总移动速度额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="当该减益效果生效时，敌人的总移动速度额外降低 {0}%"
 				}
 			}
+		},
+		name="bear_trap_slow",
+		stats={
+			[1]="bear_trap_movement_speed_+%_final"
 		}
 	},
-	[20]={
-		stats={
-			[1]="global_minimum_added_fire_damage",
-			[2]="global_maximum_added_fire_damage"
-		},
-		name="global_added_fire",
+	[21]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -468,17 +540,30 @@ return {
 							[2]="#"
 						}
 					},
-					text="附加 {0} - {1} 基础火焰伤害"
+					text="穿过火墙的投射物附加 {0} 到 {1} 点火焰伤害"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						},
+						[2]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="벽을 통과하는 투사체가 주는 화염 피해 {0}~{1} 추가"
 				}
 			}
+		},
+		name="firewall_added_fire",
+		stats={
+			[1]="flame_wall_minimum_added_fire_damage",
+			[2]="flame_wall_maximum_added_fire_damage"
 		}
 	},
-	[21]={
-		stats={
-			[1]="rain_of_spores_vines_movement_speed_+%_final",
-			[2]="minimum_rain_of_spores_movement_speed_+%_final_cap"
-		},
-		name="rain_of_spores_slow",
+	[22]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -490,7 +575,6 @@ return {
 						k="negate",
 						v=2
 					},
-					text="每个孢囊可使周围的敌人速度降低 {0}%，最多 {1}%",
 					limit={
 						[1]={
 							[1]="#",
@@ -500,16 +584,39 @@ return {
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="每个孢囊可使周围的敌人速度降低 {0}%，最多 {1}%"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					[2]={
+						k="negate",
+						v=2
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						},
+						[2]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="각 포자 주머니로 주변의 적의 이동 속도 {0}% 감폭, 최대 {1}%"
 				}
 			}
+		},
+		name="rain_of_spores_slow",
+		stats={
+			[1]="rain_of_spores_vines_movement_speed_+%_final",
+			[2]="minimum_rain_of_spores_movement_speed_+%_final_cap"
 		}
 	},
-	[22]={
-		stats={
-			[1]="resist_all_%"
-		},
-		name="all_resist",
+	[23]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -522,13 +629,13 @@ return {
 					text="减益效果使所有抗性 {0:+d}%"
 				}
 			}
+		},
+		name="all_resist",
+		stats={
+			[1]="resist_all_%"
 		}
 	},
-	[23]={
-		stats={
-			[1]="skill_energy_shield_regeneration_%_per_minute_per_affected_enemy"
-		},
-		name="es_regen_per_enemy",
+	[24]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -536,41 +643,46 @@ return {
 						k="per_minute_to_per_second",
 						v=1
 					},
-					text="每个受影响的敌人都使能量护盾每秒再生 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="每个受影响的敌人都使能量护盾每秒再生 {0}%"
 				}
 			}
+		},
+		name="es_regen_per_enemy",
+		stats={
+			[1]="skill_energy_shield_regeneration_%_per_minute_per_affected_enemy"
 		}
 	},
-	["skill_buff_effect_+%"]=11,
-	["base_chaos_damage_resistance_%"]=14,
-	parent="skill_stat_descriptions",
-	["skill_damage_taken_+%_per_affected_enemy"]=9,
-	["resist_all_%"]=22,
-	["bane_enemies_explode_on_death_%_chance"]=13,
-	["global_minimum_added_fire_damage"]=20,
-	["action_speed_-%"]=12,
-	["skill_mana_regeneration_per_minute_per_affected_enemy"]=8,
+	["action_speed_-%"]=13,
+	["bane_enemies_explode_on_death_%_chance"]=14,
+	["base_chaos_damage_resistance_%"]=15,
+	["base_cold_damage_resistance_%"]=16,
+	["base_fire_damage_resistance_%"]=17,
+	["base_lightning_damage_resistance_%"]=18,
+	["bear_trap_damage_taken_+%_from_traps_and_mines"]=19,
+	["bear_trap_movement_speed_+%_final"]=20,
 	["buff_effect_duration"]=2,
-	["skill_life_regeneration_per_minute_with_at_least_1_affected_enemy"]=5,
-	["skill_mana_regeneration_per_minute_with_at_least_1_affected_enemy"]=6,
-	["herald_of_ash_fire_damage_+%"]=10,
-	["base_lightning_damage_resistance_%"]=17,
+	["flame_wall_maximum_added_fire_damage"]=21,
+	["flame_wall_minimum_added_fire_damage"]=21,
+	["herald_of_ash_fire_damage_+%"]=11,
 	["ice_siphon_trap_max_beam_targets"]=4,
-	["rain_of_spores_vines_movement_speed_+%_final"]=21,
-	["bear_trap_damage_taken_+%_from_traps_and_mines"]=18,
-	["base_cold_damage_resistance_%"]=15,
-	["secondary_buff_effect_duration"]=3,
-	["global_maximum_added_fire_damage"]=20,
+	["minimum_rain_of_spores_movement_speed_+%_final_cap"]=22,
 	["modifiers_to_buff_effect_duration_also_affect_soul_prevention_duration"]=1,
-	["bear_trap_movement_speed_+%_final"]=19,
-	["skill_energy_shield_regeneration_%_per_minute_per_affected_enemy"]=23,
-	["base_fire_damage_resistance_%"]=16,
-	["minimum_rain_of_spores_movement_speed_+%_final_cap"]=21,
-	["skill_life_regeneration_per_minute_per_affected_enemy"]=7
+	parent="skill_stat_descriptions",
+	["rain_of_spores_vines_movement_speed_+%_final"]=22,
+	["resist_all_%"]=23,
+	["secondary_buff_effect_duration"]=3,
+	["skill_buff_effect_+%"]=12,
+	["skill_damage_taken_+%_per_affected_enemy"]=10,
+	["skill_energy_shield_regeneration_%_per_minute_per_affected_enemy"]=24,
+	["skill_life_regeneration_per_minute_per_affected_enemy"]=8,
+	["skill_life_regeneration_per_minute_with_at_least_1_affected_enemy"]=6,
+	["skill_mana_regeneration_per_minute_per_affected_enemy"]=9,
+	["skill_mana_regeneration_per_minute_with_at_least_1_affected_enemy"]=7,
+	["vampiric_icon_max_bleeding_beam_targets"]=5
 }

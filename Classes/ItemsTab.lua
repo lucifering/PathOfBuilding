@@ -633,13 +633,14 @@ self.controls.displayItemSynthesis = new("ButtonControl", {"TOPLEFT",self.contro
 			elseif tooltip:CheckForUpdate(modList) then
 				if value.modId or #modList == 1 then
 					local mod = self.displayItem.affixes[value.modId or modList[1]]
-					tooltip:AddLine(16, "^7Affix: "..mod.affix)
+					tooltip:AddLine(16, "^7词缀: "..mod.affix)
 					for _, line in ipairs(mod) do
 						tooltip:AddLine(14, "^7"..line)
 					end
 					if mod.level > 1 then
 						tooltip:AddLine(16, "等级: "..mod.level)
 					end
+					
 					if mod.modTags and #mod.modTags > 0 then					
 						
 						--lucifer 
@@ -778,9 +779,9 @@ self.controls.displayItemSynthesis = new("ButtonControl", {"TOPLEFT",self.contro
 				end
 				tooltip:AddSeparator(10)
 				if #modList > 1 then
-					tooltip:AddLine(16, "^7Affix: Tier "..(#modList - isValueInArray(modList, modId) + 1).." ("..mod.affix..")")
+					tooltip:AddLine(16, "^7词缀: Tier "..(#modList - isValueInArray(modList, modId) + 1).." ("..mod.affix..")")
 				else
-					tooltip:AddLine(16, "^7Affix: "..mod.affix)
+					tooltip:AddLine(16, "^7词缀: "..mod.affix)
 				end
 				for _, line in ipairs(mod) do
 					tooltip:AddLine(14, line)
@@ -2734,7 +2735,7 @@ tooltip:AddLine(16, colorCodes.SOURCE..""..self:FormatItemSource(item.source))
 	local slotNum = slot and slot.slotNum or (IsKeyDown("SHIFT") and 2 or 1)
 	--lucifer
 	local modList = item.modList or (item.slotModList and item.slotModList[slotNum])
-	if base.weapon then
+	if base and base.weapon then
 		-- Weapon-specific info
 		local weaponData = item.weaponData[slotNum]
 		tooltip:AddLine(16, s_format("^x7F7F7F%s", self.build.data.weaponTypeInfo[base.type].label or base.type))
@@ -2770,7 +2771,7 @@ tooltip:AddLine(16, s_format("^x7F7F7F每秒攻击次数: %s%.2f", main:StatColo
 		if weaponData.range < 120 then
 tooltip:AddLine(16, s_format("^x7F7F7F武器范围: %s%d", main:StatColor(weaponData.range, base.weapon.Range), weaponData.range))
 		end
-	elseif base.armour then
+	elseif base and base.armour then
 		-- Armour-specific info
 		local armourData = item.armourData
 		if item.quality > 0 then
@@ -2788,7 +2789,7 @@ tooltip:AddLine(16, s_format("^x7F7F7F闪避: %s%d", main:StatColor(armourData.E
 		if armourData.EnergyShield > 0 then
 tooltip:AddLine(16, s_format("^x7F7F7F能量护盾: %s%d", main:StatColor(armourData.EnergyShield, base.armour.EnergyShieldBase), armourData.EnergyShield))
 		end
-	elseif base.flask then
+	elseif base and base.flask then
 		-- Flask-specific info
 		local flaskData = item.flaskData
 		if item.quality > 0 then

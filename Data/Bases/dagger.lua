@@ -142,7 +142,7 @@ itemBases["魔灵短匕"] = {
 itemBases["玻璃利片"] = {
 	type = "Dagger",
 	socketLimit = 3,
-	tags = { default = true, weapon = true, onehand = true, attack_dagger = true, one_hand_weapon = true, },
+	tags = { default = true, weapon = true, onehand = true, attack_dagger = true, dagger = true, one_hand_weapon = true, },
 	implicitModTypes = { { "critical" }, },
 	implicit = "攻击和法术暴击率提高 30%",
 	weapon = { PhysicalMin = 6, PhysicalMax = 10, CritChanceBase = 6, AttackRateBase = 1.5, Range = 10, },
@@ -151,7 +151,7 @@ itemBases["玻璃利片"] = {
 itemBases["剥皮刀"] = {
 	type = "Dagger",
 	socketLimit = 3,
-	tags = { default = true, weapon = true, onehand = true, attack_dagger = true, one_hand_weapon = true, },
+	tags = { default = true, weapon = true, onehand = true, attack_dagger = true, dagger = true, one_hand_weapon = true, },
 	implicitModTypes = { { "critical" }, },
 	implicit = "攻击和法术暴击率提高 30%",
 	weapon = { PhysicalMin = 4, PhysicalMax = 17, CritChanceBase = 6, AttackRateBase = 1.45, Range = 10, },
@@ -160,7 +160,7 @@ itemBases["剥皮刀"] = {
 itemBases["锐利刺匕"] = {
 	type = "Dagger",
 	socketLimit = 3,
-	tags = { default = true, weapon = true, onehand = true, attack_dagger = true, one_hand_weapon = true, },
+	tags = { default = true, weapon = true, onehand = true, attack_dagger = true,  dagger = true,one_hand_weapon = true, },
 	implicitModTypes = { { "critical" }, },
 	implicit = "攻击和法术暴击率提高 30%",
 	weapon = { PhysicalMin = 7, PhysicalMax = 27, CritChanceBase = 6.1, AttackRateBase = 1.5, Range = 10, },
@@ -169,7 +169,7 @@ itemBases["锐利刺匕"] = {
 itemBases["尖耙短匕"] = {
 	type = "Dagger",
 	socketLimit = 3,
-	tags = { default = true, weapon = true, onehand = true, attack_dagger = true, one_hand_weapon = true, not_for_sale = true, maraketh = true, },
+	tags = { default = true, weapon = true, onehand = true, attack_dagger = true, dagger = true, one_hand_weapon = true, not_for_sale = true, maraketh = true, },
 	implicitModTypes = { { "block" }, },
 	implicit = "4% 攻击伤害格挡率",
 	weapon = { PhysicalMin = 14, PhysicalMax = 54, CritChanceBase = 6.2, AttackRateBase = 1.35, Range = 10, },
@@ -178,7 +178,7 @@ itemBases["尖耙短匕"] = {
 itemBases["残体利刃"] = {
 	type = "Dagger",
 	socketLimit = 3,
-	tags = { default = true, weapon = true, onehand = true, attack_dagger = true, one_hand_weapon = true, },
+	tags = { default = true, weapon = true, onehand = true, attack_dagger = true, dagger = true, one_hand_weapon = true, },
 	implicitModTypes = { { "critical" }, },
 	implicit = "攻击和法术暴击率提高 30%",
 	weapon = { PhysicalMin = 11, PhysicalMax = 45, CritChanceBase = 6, AttackRateBase = 1.4, Range = 10, },
@@ -187,7 +187,7 @@ itemBases["残体利刃"] = {
 itemBases["夺命刺"] = {
 	type = "Dagger",
 	socketLimit = 3,
-	tags = { default = true, weapon = true, onehand = true, attack_dagger = true, one_hand_weapon = true, },
+	tags = { default = true, weapon = true, onehand = true, attack_dagger = true, dagger = true, one_hand_weapon = true, },
 	implicitModTypes = { { "critical" }, },
 	implicit = "攻击和法术暴击率提高 30%",
 	weapon = { PhysicalMin = 13, PhysicalMax = 52, CritChanceBase = 6.1, AttackRateBase = 1.5, Range = 10, },
@@ -196,7 +196,7 @@ itemBases["夺命刺"] = {
 itemBases["三叉短匕"] = {
 	type = "Dagger",
 	socketLimit = 3,
-	tags = { default = true, weapon = true, onehand = true, attack_dagger = true, one_hand_weapon = true, not_for_sale = true, maraketh = true, },
+	tags = { default = true, weapon = true, onehand = true, attack_dagger = true, dagger = true, one_hand_weapon = true, not_for_sale = true, maraketh = true, },
 	implicitModTypes = { { "block" }, },
 	implicit = "4% 攻击伤害格挡率",
 	weapon = { PhysicalMin = 19, PhysicalMax = 74, CritChanceBase = 6.5, AttackRateBase = 1.35, Range = 10, },
@@ -205,7 +205,7 @@ itemBases["三叉短匕"] = {
 itemBases["重伤短刀"] = {
 	type = "Dagger",
 	socketLimit = 3,
-	tags = { default = true, weapon = true, onehand = true, attack_dagger = true, one_hand_weapon = true, },
+	tags = { default = true, weapon = true, onehand = true, attack_dagger = true, dagger = true, one_hand_weapon = true, },
 	implicitModTypes = { { "critical" }, },
 	implicit = "攻击和法术暴击率提高 30%",
 	weapon = { PhysicalMin = 19, PhysicalMax = 76, CritChanceBase = 6.5, AttackRateBase = 1.4, Range = 10, },
@@ -214,7 +214,7 @@ itemBases["重伤短刀"] = {
 itemBases["伏击刺刃"] = {
 	type = "Dagger",
 	socketLimit = 3,
-	tags = { default = true, weapon = true, onehand = true, attack_dagger = true, one_hand_weapon = true, },
+	tags = { default = true, weapon = true, onehand = true, attack_dagger = true, dagger = true, one_hand_weapon = true, },
 	implicitModTypes = { { "critical" }, },
 	implicit = "攻击和法术暴击率提高 30%",
 	weapon = { PhysicalMin = 19, PhysicalMax = 74, CritChanceBase = 6.1, AttackRateBase = 1.5, Range = 10, },
@@ -223,7 +223,7 @@ itemBases["伏击刺刃"] = {
 itemBases["战叉"] = {
 	type = "Dagger",
 	socketLimit = 3,
-	tags = { default = true, weapon = true, onehand = true, attack_dagger = true, one_hand_weapon = true, not_for_sale = true, maraketh = true, },
+	tags = { default = true, weapon = true, onehand = true, attack_dagger = true,  dagger = true,one_hand_weapon = true, not_for_sale = true, maraketh = true, },
 	implicitModTypes = { { "critical" }, },
 	implicit = "6% 攻击伤害格挡率",
 	weapon = { PhysicalMin = 22, PhysicalMax = 88, CritChanceBase = 6.2, AttackRateBase = 1.35, Range = 10, },

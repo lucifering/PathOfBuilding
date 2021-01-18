@@ -1,10 +1,5 @@
 return {
 	[1]={
-		stats={
-			[1]="attack_minimum_added_fire_damage",
-			[2]="attack_maximum_added_fire_damage"
-		},
-		name="attack_added_fire",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -21,14 +16,14 @@ return {
 					text="给攻击附加 {0} - {1} 点火焰伤害"
 				}
 			}
+		},
+		name="attack_added_fire",
+		stats={
+			[1]="attack_minimum_added_fire_damage",
+			[2]="attack_maximum_added_fire_damage"
 		}
 	},
 	[2]={
-		stats={
-			[1]="attack_minimum_added_cold_damage",
-			[2]="attack_maximum_added_cold_damage"
-		},
-		name="attack_added_cold",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -45,14 +40,14 @@ return {
 					text="给攻击附加 {0} - {1} 点冰霜伤害"
 				}
 			}
+		},
+		name="attack_added_cold",
+		stats={
+			[1]="attack_minimum_added_cold_damage",
+			[2]="attack_maximum_added_cold_damage"
 		}
 	},
 	[3]={
-		stats={
-			[1]="attack_minimum_added_lightning_damage",
-			[2]="attack_maximum_added_lightning_damage"
-		},
-		name="attack_added_lightning",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -69,14 +64,14 @@ return {
 					text="增益效果附加 {0} 至 {1} 点攻击闪电伤害"
 				}
 			}
+		},
+		name="attack_added_lightning",
+		stats={
+			[1]="attack_minimum_added_lightning_damage",
+			[2]="attack_maximum_added_lightning_damage"
 		}
 	},
 	[4]={
-		stats={
-			[1]="spell_minimum_added_lightning_damage",
-			[2]="spell_maximum_added_lightning_damage"
-		},
-		name="spell_added_lightning",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -93,13 +88,14 @@ return {
 					text="增益效果附加 {0} 至 {1} 点法术闪电伤害"
 				}
 			}
+		},
+		name="spell_added_lightning",
+		stats={
+			[1]="spell_minimum_added_lightning_damage",
+			[2]="spell_maximum_added_lightning_damage"
 		}
 	},
 	[5]={
-		stats={
-			[1]="critical_strike_chance_+%"
-		},
-		name="critical_strike_chance_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -116,22 +112,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="增益效果使暴击率降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="增益效果使暴击率降低 {0}%"
 				}
 			}
+		},
+		name="critical_strike_chance_incr",
+		stats={
+			[1]="critical_strike_chance_+%"
 		}
 	},
 	[6]={
-		stats={
-			[1]="herald_of_ash_burning_damage_+%_final"
-		},
-		name="herald_of_ash_burning_damage",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -148,22 +144,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="增益效果的总燃烧伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="增益效果的总燃烧伤害额外降低 {0}%"
 				}
 			}
+		},
+		name="herald_of_ash_burning_damage",
+		stats={
+			[1]="herald_of_ash_burning_damage_+%_final"
 		}
 	},
 	[7]={
-		stats={
-			[1]="herald_of_ash_spell_fire_damage_+%_final"
-		},
-		name="herald_of_ash_spell_fire_damage_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -180,22 +176,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="增益效果的总法术火焰伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="增益效果的总法术火焰伤害额外降低 {0}%"
 				}
 			}
+		},
+		name="herald_of_ash_spell_fire_damage_incr",
+		stats={
+			[1]="herald_of_ash_spell_fire_damage_+%_final"
 		}
 	},
 	[8]={
-		stats={
-			[1]="herald_of_ice_cold_damage_+%"
-		},
-		name="herald_of_ice_cold_damage_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -208,13 +204,13 @@ return {
 					text="增益效果的冰霜伤害提高 {0}%"
 				}
 			}
+		},
+		name="herald_of_ice_cold_damage_incr",
+		stats={
+			[1]="herald_of_ice_cold_damage_+%"
 		}
 	},
 	[9]={
-		stats={
-			[1]="herald_of_thunder_lightning_damage_+%"
-		},
-		name="herald_of_thunder_lightning_damage_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -227,13 +223,13 @@ return {
 					text="增益效果的闪电伤害提高 {0}%"
 				}
 			}
+		},
+		name="herald_of_thunder_lightning_damage_incr",
+		stats={
+			[1]="herald_of_thunder_lightning_damage_+%"
 		}
 	},
 	[10]={
-		stats={
-			[1]="phase_through_objects"
-		},
-		name="phasing",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -241,22 +237,22 @@ return {
 						k="reminderstring",
 						v="ReminderTextPhasing"
 					},
-					text="增益效果获得【迷踪】状态",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="增益效果获得【迷踪】状态"
 				}
 			}
+		},
+		name="phasing",
+		stats={
+			[1]="phase_through_objects"
 		}
 	},
 	[11]={
-		stats={
-			[1]="base_chance_to_shock_%"
-		},
-		name="shock_chance",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -264,22 +260,22 @@ return {
 						k="reminderstring",
 						v="ReminderTextShock"
 					},
-					text="增益效果使敌人有 {0}% 几率获得感电效果",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="增益效果使敌人有 {0}% 的几率获得感电效果"
 				}
 			}
+		},
+		name="shock_chance",
+		stats={
+			[1]="base_chance_to_shock_%"
 		}
 	},
 	[12]={
-		stats={
-			[1]="base_damage_taken_+%"
-		},
-		name="damage_taken_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -296,22 +292,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="增益效果使承受的伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="增益效果使承受的伤害降低 {0}%"
 				}
 			}
+		},
+		name="damage_taken_incr",
+		stats={
+			[1]="base_damage_taken_+%"
 		}
 	},
 	[13]={
-		stats={
-			[1]="base_movement_velocity_+%"
-		},
-		name="movement_speed_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -328,22 +324,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="增益效果使移动速度减慢 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="增益效果使移动速度减慢 {0}%"
 				}
 			}
+		},
+		name="movement_speed_incr",
+		stats={
+			[1]="base_movement_velocity_+%"
 		}
 	},
 	[14]={
-		stats={
-			[1]="base_physical_damage_reduction_rating"
-		},
-		name="base_armour",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -356,13 +352,13 @@ return {
 					text="增益效果 {0:+d} 护甲"
 				}
 			}
+		},
+		name="base_armour",
+		stats={
+			[1]="base_physical_damage_reduction_rating"
 		}
 	},
 	[15]={
-		stats={
-			[1]="berserk_spell_damage_+%_final"
-		},
-		name="berserk_spell_damage_final",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -379,23 +375,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="增益效果使总法术伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="增益效果使总法术伤害降低 {0}%"
 				}
 			}
+		},
+		name="berserk_spell_damage_final",
+		stats={
+			[1]="berserk_spell_damage_+%_final"
 		}
 	},
 	[16]={
-		stats={
-			[1]="buff_added_spell_minimum_base_physical_damage_per_shield_quality",
-			[2]="buff_added_spell_maximum_base_physical_damage_per_shield_quality"
-		},
-		name="buff_spell_phys",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -412,32 +407,37 @@ return {
 					text="每 1% 盾牌品质都使增益效果附加 {0} 到 {1} 点物理伤害"
 				}
 			}
+		},
+		name="buff_spell_phys",
+		stats={
+			[1]="buff_added_spell_minimum_base_physical_damage_per_shield_quality",
+			[2]="buff_added_spell_maximum_base_physical_damage_per_shield_quality"
 		}
 	},
 	[17]={
-		stats={
-			[1]="damage_taken_goes_to_mana_%"
-		},
-		name="skill_damage_taken_goes_to_mana",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextRecoup"
+					},
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
 					},
-					text="被击中时，在 4 秒内获得魔力，等于承受伤害的 {0}%"
+					text="将承受伤害的 {0}% 吸纳为魔力"
 				}
 			}
+		},
+		name="skill_damage_taken_goes_to_mana",
+		stats={
+			[1]="damage_taken_goes_to_mana_%"
 		}
 	},
 	[18]={
-		stats={
-			[1]="energy_shield_lost_per_minute"
-		},
-		name="energy_shield_loss",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -445,22 +445,22 @@ return {
 						k="per_minute_to_per_second",
 						v=1
 					},
-					text="你每秒失去 {0} 点能量护盾",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="你每秒失去 {0} 点能量护盾"
 				}
 			}
+		},
+		name="energy_shield_loss",
+		stats={
+			[1]="energy_shield_lost_per_minute"
 		}
 	},
 	[19]={
-		stats={
-			[1]="physical_damage_reduction_%_per_endurance_charge"
-		},
-		name="endurance_charge_phys_reduction",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -473,13 +473,13 @@ return {
 					text="每个耐力球使增益效果获得 {0}% 额外物理伤害减免"
 				}
 			}
+		},
+		name="endurance_charge_phys_reduction",
+		stats={
+			[1]="physical_damage_reduction_%_per_endurance_charge"
 		}
 	},
 	[20]={
-		stats={
-			[1]="physical_damage_reduction_rating_+%"
-		},
-		name="armour_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -496,22 +496,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="增益效果使护甲降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="增益效果使护甲降低 {0}%"
 				}
 			}
+		},
+		name="armour_incr",
+		stats={
+			[1]="physical_damage_reduction_rating_+%"
 		}
 	},
 	[21]={
-		stats={
-			[1]="resist_all_elements_%_per_endurance_charge"
-		},
-		name="endurance_charge_ele_resist",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -524,13 +524,13 @@ return {
 					text="每个耐力球使增益效果 {0:+d}% 所有元素抗性"
 				}
 			}
+		},
+		name="endurance_charge_ele_resist",
+		stats={
+			[1]="resist_all_elements_%_per_endurance_charge"
 		}
 	},
 	[22]={
-		stats={
-			[1]="resist_all_%"
-		},
-		name="all_resist",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -543,13 +543,13 @@ return {
 					text="增益效果使所有抗性 {0:+d}%"
 				}
 			}
+		},
+		name="all_resist",
+		stats={
+			[1]="resist_all_%"
 		}
 	},
 	[23]={
-		stats={
-			[1]="skill_buff_effect_+%"
-		},
-		name="skill_buff_effect",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -566,22 +566,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="增益效果降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="增益效果降低 {0}%"
 				}
 			}
+		},
+		name="skill_buff_effect",
+		stats={
+			[1]="skill_buff_effect_+%"
 		}
 	},
 	[24]={
-		stats={
-			[1]="skill_buff_grants_attack_and_cast_speed_+%"
-		},
-		name="buff_grants_attack_and_cast_speed",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -598,22 +598,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="增益效果使攻击和施法速度减慢 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="增益效果使攻击和施法速度减慢 {0}%"
 				}
 			}
+		},
+		name="buff_grants_attack_and_cast_speed",
+		stats={
+			[1]="skill_buff_grants_attack_and_cast_speed_+%"
 		}
 	},
 	[25]={
-		stats={
-			[1]="skill_buff_grants_chance_to_freeze_%"
-		},
-		name="buff_grants_chance_to_freeze",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -623,16 +623,16 @@ return {
 							[2]="#"
 						}
 					},
-					text="增益效果有 {0}% 几率导致冻结"
+					text="增益效果有 {0}% 的几率导致冻结"
 				}
 			}
+		},
+		name="buff_grants_chance_to_freeze",
+		stats={
+			[1]="skill_buff_grants_chance_to_freeze_%"
 		}
 	},
 	[26]={
-		stats={
-			[1]="skill_buff_grants_damage_+%"
-		},
-		name="buff_grants_damage_pluspercent",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -649,22 +649,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="增益效果使伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="增益效果使伤害降低 {0}%"
 				}
 			}
+		},
+		name="buff_grants_damage_pluspercent",
+		stats={
+			[1]="skill_buff_grants_damage_+%"
 		}
 	},
 	[27]={
-		stats={
-			[1]="spell_damage_+%"
-		},
-		name="spell_damage_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -681,22 +681,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="增益效果使法术伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="增益效果使法术伤害降低 {0}%"
 				}
 			}
+		},
+		name="spell_damage_incr",
+		stats={
+			[1]="spell_damage_+%"
 		}
 	},
 	[28]={
-		stats={
-			[1]="vaal_molten_shall_armour_+%_final"
-		},
-		name="vaal_molten_shall_armour_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -709,40 +709,44 @@ return {
 					text="增益效果使总护甲额外提高 {0}%"
 				}
 			}
+		},
+		name="vaal_molten_shall_armour_incr",
+		stats={
+			[1]="vaal_molten_shall_armour_+%_final"
 		}
 	},
-	["damage_taken_goes_to_mana_%"]=17,
-	["phase_through_objects"]=10,
-	["herald_of_ash_spell_fire_damage_+%_final"]=7,
+	["attack_maximum_added_cold_damage"]=2,
 	["attack_maximum_added_fire_damage"]=1,
-	["skill_buff_grants_damage_+%"]=26,
-	["herald_of_ash_burning_damage_+%_final"]=6,
-	["attack_minimum_added_fire_damage"]=1,
-	["herald_of_thunder_lightning_damage_+%"]=9,
 	["attack_maximum_added_lightning_damage"]=3,
-	["spell_maximum_added_lightning_damage"]=4,
-	["physical_damage_reduction_rating_+%"]=20,
+	["attack_minimum_added_cold_damage"]=2,
+	["attack_minimum_added_fire_damage"]=1,
 	["attack_minimum_added_lightning_damage"]=3,
-	["vaal_molten_shall_armour_+%_final"]=28,
+	["base_chance_to_shock_%"]=11,
 	["base_damage_taken_+%"]=12,
-	["resist_all_elements_%_per_endurance_charge"]=21,
-	["skill_buff_grants_attack_and_cast_speed_+%"]=24,
-	["spell_damage_+%"]=27,
-	["herald_of_ice_cold_damage_+%"]=8,
-	["resist_all_%"]=22,
-	["spell_minimum_added_lightning_damage"]=4,
+	["base_movement_velocity_+%"]=13,
 	["base_physical_damage_reduction_rating"]=14,
+	["berserk_spell_damage_+%_final"]=15,
+	["buff_added_spell_maximum_base_physical_damage_per_shield_quality"]=16,
 	["buff_added_spell_minimum_base_physical_damage_per_shield_quality"]=16,
 	["critical_strike_chance_+%"]=5,
-	["attack_minimum_added_cold_damage"]=2,
-	["base_movement_velocity_+%"]=13,
-	parent="skill_stat_descriptions",
-	["skill_buff_grants_chance_to_freeze_%"]=25,
-	["buff_added_spell_maximum_base_physical_damage_per_shield_quality"]=16,
+	["damage_taken_goes_to_mana_%"]=17,
 	["energy_shield_lost_per_minute"]=18,
-	["attack_maximum_added_cold_damage"]=2,
-	["base_chance_to_shock_%"]=11,
+	["herald_of_ash_burning_damage_+%_final"]=6,
+	["herald_of_ash_spell_fire_damage_+%_final"]=7,
+	["herald_of_ice_cold_damage_+%"]=8,
+	["herald_of_thunder_lightning_damage_+%"]=9,
+	parent="skill_stat_descriptions",
+	["phase_through_objects"]=10,
 	["physical_damage_reduction_%_per_endurance_charge"]=19,
-	["berserk_spell_damage_+%_final"]=15,
-	["skill_buff_effect_+%"]=23
+	["physical_damage_reduction_rating_+%"]=20,
+	["resist_all_%"]=22,
+	["resist_all_elements_%_per_endurance_charge"]=21,
+	["skill_buff_effect_+%"]=23,
+	["skill_buff_grants_attack_and_cast_speed_+%"]=24,
+	["skill_buff_grants_chance_to_freeze_%"]=25,
+	["skill_buff_grants_damage_+%"]=26,
+	["spell_damage_+%"]=27,
+	["spell_maximum_added_lightning_damage"]=4,
+	["spell_minimum_added_lightning_damage"]=4,
+	["vaal_molten_shall_armour_+%_final"]=28
 }

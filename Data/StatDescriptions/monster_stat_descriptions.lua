@@ -1,8 +1,5 @@
 return {
 	[1]={
-		stats={
-			[1]="physical_damage_%_to_add_as_fire"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -15,12 +12,12 @@ return {
 					text="额外火焰伤害"
 				}
 			}
+		},
+		stats={
+			[1]="physical_damage_%_to_add_as_fire"
 		}
 	},
 	[2]={
-		stats={
-			[1]="physical_damage_%_to_add_as_lightning"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -33,12 +30,12 @@ return {
 					text="额外闪电伤害"
 				}
 			}
+		},
+		stats={
+			[1]="physical_damage_%_to_add_as_lightning"
 		}
 	},
 	[3]={
-		stats={
-			[1]="physical_damage_%_to_add_as_cold"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -51,12 +48,12 @@ return {
 					text="额外冰霜伤害"
 				}
 			}
+		},
+		stats={
+			[1]="physical_damage_%_to_add_as_cold"
 		}
 	},
 	[4]={
-		stats={
-			[1]="physical_damage_%_to_add_as_chaos"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -69,12 +66,12 @@ return {
 					text="额外混沌伤害"
 				}
 			}
+		},
+		stats={
+			[1]="physical_damage_%_to_add_as_chaos"
 		}
 	},
 	[5]={
-		stats={
-			[1]="base_movement_velocity_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -87,12 +84,12 @@ return {
 					text="快速移动"
 				}
 			}
+		},
+		stats={
+			[1]="base_movement_velocity_+%"
 		}
 	},
 	[6]={
-		stats={
-			[1]="maximum_life_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -114,12 +111,12 @@ return {
 					text="较少生命"
 				}
 			}
+		},
+		stats={
+			[1]="maximum_life_+%"
 		}
 	},
 	[7]={
-		stats={
-			[1]="physical_damage_reduction_rating_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -132,12 +129,12 @@ return {
 					text="物理减伤"
 				}
 			}
+		},
+		stats={
+			[1]="physical_damage_reduction_rating_+%"
 		}
 	},
 	[8]={
-		stats={
-			[1]="damage_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -150,12 +147,12 @@ return {
 					text="额外伤害"
 				}
 			}
+		},
+		stats={
+			[1]="damage_+%"
 		}
 	},
 	[9]={
-		stats={
-			[1]="life_leech_from_physical_attack_damage_permyriad"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -168,12 +165,12 @@ return {
 					text="生命偷取"
 				}
 			}
+		},
+		stats={
+			[1]="life_leech_from_physical_attack_damage_permyriad"
 		}
 	},
 	[10]={
-		stats={
-			[1]="attack_speed_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -186,12 +183,12 @@ return {
 					text="快速攻击"
 				}
 			}
+		},
+		stats={
+			[1]="attack_speed_+%"
 		}
 	},
 	[11]={
-		stats={
-			[1]="life_regeneration_rate_per_minute_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -204,12 +201,12 @@ return {
 					text="生命回复"
 				}
 			}
+		},
+		stats={
+			[1]="life_regeneration_rate_per_minute_%"
 		}
 	},
 	[12]={
-		stats={
-			[1]="maximum_energy_shield_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -222,12 +219,12 @@ return {
 					text="额外能量护盾"
 				}
 			}
+		},
+		stats={
+			[1]="maximum_energy_shield_+%"
 		}
 	},
 	[13]={
-		stats={
-			[1]="accuracy_rating_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -240,12 +237,12 @@ return {
 					text="精准"
 				}
 			}
+		},
+		stats={
+			[1]="accuracy_rating_+%"
 		}
 	},
 	[14]={
-		stats={
-			[1]="evasion_rating_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -258,12 +255,12 @@ return {
 					text="闪避攻击"
 				}
 			}
+		},
+		stats={
+			[1]="evasion_rating_+%"
 		}
 	},
 	[15]={
-		stats={
-			[1]="base_cannot_be_stunned"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -276,12 +273,12 @@ return {
 					text="无法被晕眩"
 				}
 			}
+		},
+		stats={
+			[1]="base_cannot_be_stunned"
 		}
 	},
 	[16]={
-		stats={
-			[1]="display_monster_wealth_mod"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -294,12 +291,12 @@ return {
 					text="物品掉落提高"
 				}
 			}
+		},
+		stats={
+			[1]="display_monster_wealth_mod"
 		}
 	},
 	[17]={
-		stats={
-			[1]="number_of_additional_projectiles"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -312,12 +309,12 @@ return {
 					text="发射额外投射物"
 				}
 			}
+		},
+		stats={
+			[1]="number_of_additional_projectiles"
 		}
 	},
 	[18]={
-		stats={
-			[1]="critical_strike_chance_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -330,12 +327,12 @@ return {
 					text="暴击率与伤害提高"
 				}
 			}
+		},
+		stats={
+			[1]="critical_strike_chance_+%"
 		}
 	},
 	[19]={
-		stats={
-			[1]="immune_to_curses"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -348,12 +345,12 @@ return {
 					text="免疫诅咒"
 				}
 			}
+		},
+		stats={
+			[1]="immune_to_curses"
 		}
 	},
 	[20]={
-		stats={
-			[1]="hexproof"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -366,12 +363,12 @@ return {
 					text="无咒的"
 				}
 			}
+		},
+		stats={
+			[1]="hexproof"
 		}
 	},
 	[21]={
-		stats={
-			[1]="monster_grants_frenzy_charges_to_allies_within_distance_on_death"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -384,12 +381,12 @@ return {
 					text="死亡时同伴获得狂怒球"
 				}
 			}
+		},
+		stats={
+			[1]="monster_grants_frenzy_charges_to_allies_within_distance_on_death"
 		}
 	},
 	[22]={
-		stats={
-			[1]="gain_frenzy_charge_for_each_quarter_life_removed"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -402,12 +399,12 @@ return {
 					text="每损失四分之一血量便获得狂怒球"
 				}
 			}
+		},
+		stats={
+			[1]="gain_frenzy_charge_for_each_quarter_life_removed"
 		}
 	},
 	[23]={
-		stats={
-			[1]="gain_power_charge_for_each_quarter_life_removed"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -420,12 +417,12 @@ return {
 					text="每损失四分之一血量便获得暴击球"
 				}
 			}
+		},
+		stats={
+			[1]="gain_power_charge_for_each_quarter_life_removed"
 		}
 	},
 	[24]={
-		stats={
-			[1]="add_endurance_charge_on_skill_hit_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -438,12 +435,12 @@ return {
 					text="击中获得耐力球"
 				}
 			}
+		},
+		stats={
+			[1]="add_endurance_charge_on_skill_hit_%"
 		}
 	},
 	[25]={
-		stats={
-			[1]="add_frenzy_charge_on_skill_hit_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -456,12 +453,12 @@ return {
 					text="击中获得狂怒球"
 				}
 			}
+		},
+		stats={
+			[1]="add_frenzy_charge_on_skill_hit_%"
 		}
 	},
 	[26]={
-		stats={
-			[1]="add_power_charge_on_skill_hit_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -474,12 +471,12 @@ return {
 					text="击中获得暴击球"
 				}
 			}
+		},
+		stats={
+			[1]="add_power_charge_on_skill_hit_%"
 		}
 	},
 	[27]={
-		stats={
-			[1]="undead_description"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -492,12 +489,12 @@ return {
 					text="亡灵生物"
 				}
 			}
+		},
+		stats={
+			[1]="undead_description"
 		}
 	},
 	[28]={
-		stats={
-			[1]="monster_casts_arctic_breath_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -510,12 +507,12 @@ return {
 					text="施放极地吐息"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_arctic_breath_text"
 		}
 	},
 	[29]={
-		stats={
-			[1]="monster_casts_firestorm_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -528,12 +525,12 @@ return {
 					text="施放烈炎风暴"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_firestorm_text"
 		}
 	},
 	[30]={
-		stats={
-			[1]="monster_casts_puncture_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -546,12 +543,12 @@ return {
 					text="施放放血"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_puncture_text"
 		}
 	},
 	[31]={
-		stats={
-			[1]="monster_casts_coldsnap_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -564,12 +561,12 @@ return {
 					text="施放霜暴"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_coldsnap_text"
 		}
 	},
 	[32]={
-		stats={
-			[1]="monster_casts_assassins_mark_curse_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -582,12 +579,12 @@ return {
 					text="施放暗杀者印记"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_assassins_mark_curse_text"
 		}
 	},
 	[33]={
-		stats={
-			[1]="monster_casts_elementral_weakness_curse_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -600,12 +597,12 @@ return {
 					text="施放元素要害"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_elementral_weakness_curse_text"
 		}
 	},
 	[34]={
-		stats={
-			[1]="monster_casts_enfeeble_curse_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -618,12 +615,12 @@ return {
 					text="施放衰弱"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_enfeeble_curse_text"
 		}
 	},
 	[35]={
-		stats={
-			[1]="monster_casts_fireball_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -636,12 +633,12 @@ return {
 					text="施放火球"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_fireball_text"
 		}
 	},
 	[36]={
-		stats={
-			[1]="monster_casts_ice_nova_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -654,12 +651,12 @@ return {
 					text="施放冰霜新星"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_ice_nova_text"
 		}
 	},
 	[37]={
-		stats={
-			[1]="monster_casts_ice_spear_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -672,12 +669,12 @@ return {
 					text="施放冰矛"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_ice_spear_text"
 		}
 	},
 	[38]={
-		stats={
-			[1]="monster_casts_projectile_vulnerability_curse_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -690,12 +687,12 @@ return {
 					text="施放狙击之印"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_projectile_vulnerability_curse_text"
 		}
 	},
 	[39]={
-		stats={
-			[1]="monster_casts_shock_nova_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -708,12 +705,12 @@ return {
 					text="施放闪电新星"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_shock_nova_text"
 		}
 	},
 	[40]={
-		stats={
-			[1]="monster_casts_spark_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -726,12 +723,12 @@ return {
 					text="施放电球"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_spark_text"
 		}
 	},
 	[41]={
-		stats={
-			[1]="monster_casts_vulnerability_curse_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -744,12 +741,12 @@ return {
 					text="施放脆弱"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_vulnerability_curse_text"
 		}
 	},
 	[42]={
-		stats={
-			[1]="monster_casts_warlords_mark_curse_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -762,12 +759,12 @@ return {
 					text="施放督军印记"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_warlords_mark_curse_text"
 		}
 	},
 	[43]={
-		stats={
-			[1]="monster_detonates_corpses_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -780,12 +777,12 @@ return {
 					text="引爆灵柩"
 				}
 			}
+		},
+		stats={
+			[1]="monster_detonates_corpses_text"
 		}
 	},
 	[44]={
-		stats={
-			[1]="monster_explodes_on_its_target_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -807,12 +804,12 @@ return {
 					text="低血时自爆"
 				}
 			}
+		},
+		stats={
+			[1]="monster_explodes_on_its_target_text"
 		}
 	},
 	[45]={
-		stats={
-			[1]="monster_explodes_on_death_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -834,12 +831,12 @@ return {
 					text="死亡时自爆"
 				}
 			}
+		},
+		stats={
+			[1]="monster_explodes_on_death_text"
 		}
 	},
 	[46]={
-		stats={
-			[1]="monster_fires_a_rain_of_arrows_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -852,12 +849,12 @@ return {
 					text="使用箭雨"
 				}
 			}
+		},
+		stats={
+			[1]="monster_fires_a_rain_of_arrows_text"
 		}
 	},
 	[47]={
-		stats={
-			[1]="monster_fires_burning_arrows_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -870,12 +867,12 @@ return {
 					text="燃烧箭矢"
 				}
 			}
+		},
+		stats={
+			[1]="monster_fires_burning_arrows_text"
 		}
 	},
 	[48]={
-		stats={
-			[1]="monster_fires_explosive_arrows_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -888,12 +885,12 @@ return {
 					text="爆炸箭矢"
 				}
 			}
+		},
+		stats={
+			[1]="monster_fires_explosive_arrows_text"
 		}
 	},
 	[49]={
-		stats={
-			[1]="monster_fires_lightning_arrows_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -906,12 +903,12 @@ return {
 					text="闪电箭矢"
 				}
 			}
+		},
+		stats={
+			[1]="monster_fires_lightning_arrows_text"
 		}
 	},
 	[50]={
-		stats={
-			[1]="monster_fires_caustic_arrows_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -924,12 +921,12 @@ return {
 					text="使用腐蚀箭矢"
 				}
 			}
+		},
+		stats={
+			[1]="monster_fires_caustic_arrows_text"
 		}
 	},
 	[51]={
-		stats={
-			[1]="monster_fires_split_arrows_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -942,12 +939,12 @@ return {
 					text="分裂箭矢"
 				}
 			}
+		},
+		stats={
+			[1]="monster_fires_split_arrows_text"
 		}
 	},
 	[52]={
-		stats={
-			[1]="monster_leaps_onto_enemies_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -960,12 +957,12 @@ return {
 					text="跃击"
 				}
 			}
+		},
+		stats={
+			[1]="monster_leaps_onto_enemies_text"
 		}
 	},
 	[53]={
-		stats={
-			[1]="monster_raises_undead_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -978,12 +975,12 @@ return {
 					text="复活不死生物"
 				}
 			}
+		},
+		stats={
+			[1]="monster_raises_undead_text"
 		}
 	},
 	[54]={
-		stats={
-			[1]="monster_summons_exploding_spawn_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -996,12 +993,12 @@ return {
 					text="召唤自爆仆从"
 				}
 			}
+		},
+		stats={
+			[1]="monster_summons_exploding_spawn_text"
 		}
 	},
 	[55]={
-		stats={
-			[1]="monster_summons_monkeys_from_nearby_trees_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1014,12 +1011,12 @@ return {
 					text="呼唤树上猿猴"
 				}
 			}
+		},
+		stats={
+			[1]="monster_summons_monkeys_from_nearby_trees_text"
 		}
 	},
 	[56]={
-		stats={
-			[1]="monster_summons_skeletons_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1032,12 +1029,12 @@ return {
 					text="召唤魔侍"
 				}
 			}
+		},
+		stats={
+			[1]="monster_summons_skeletons_text"
 		}
 	},
 	[57]={
-		stats={
-			[1]="monster_summons_spawn_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1050,12 +1047,12 @@ return {
 					text="召唤仆从"
 				}
 			}
+		},
+		stats={
+			[1]="monster_summons_spawn_text"
 		}
 	},
 	[58]={
-		stats={
-			[1]="monster_uses_enduring_cry_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1068,12 +1065,12 @@ return {
 					text="使用坚决战吼"
 				}
 			}
+		},
+		stats={
+			[1]="monster_uses_enduring_cry_text"
 		}
 	},
 	[59]={
-		stats={
-			[1]="monster_uses_flicker_strike_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1086,12 +1083,12 @@ return {
 					text="使用闪现打击"
 				}
 			}
+		},
+		stats={
+			[1]="monster_uses_flicker_strike_text"
 		}
 	},
 	[60]={
-		stats={
-			[1]="monster_uses_glacial_hammer_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1104,12 +1101,12 @@ return {
 					text="使用冰霜之锤"
 				}
 			}
+		},
+		stats={
+			[1]="monster_uses_glacial_hammer_text"
 		}
 	},
 	[61]={
-		stats={
-			[1]="monster_uses_ground_slam_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1122,12 +1119,12 @@ return {
 					text="使用裂地之击"
 				}
 			}
+		},
+		stats={
+			[1]="monster_uses_ground_slam_text"
 		}
 	},
 	[62]={
-		stats={
-			[1]="monster_uses_lightning_strike_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1140,12 +1137,12 @@ return {
 					text="使用闪电打击"
 				}
 			}
+		},
+		stats={
+			[1]="monster_uses_lightning_strike_text"
 		}
 	},
 	[63]={
-		stats={
-			[1]="monster_uses_phase_run_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1158,12 +1155,12 @@ return {
 					text="使用暗影迷踪"
 				}
 			}
+		},
+		stats={
+			[1]="monster_uses_phase_run_text"
 		}
 	},
 	[64]={
-		stats={
-			[1]="monster_casts_shield_charge_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1176,12 +1173,12 @@ return {
 					text="冲锋"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_shield_charge_text"
 		}
 	},
 	[65]={
-		stats={
-			[1]="monster_casts_mass_frenzy_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1194,12 +1191,12 @@ return {
 					text="友军狂暴"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_mass_frenzy_text"
 		}
 	},
 	[66]={
-		stats={
-			[1]="monster_casts_temporal_chains_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1212,12 +1209,12 @@ return {
 					text="施放时空锁链"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_temporal_chains_text"
 		}
 	},
 	[67]={
-		stats={
-			[1]="monster_casts_frenzy_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1230,12 +1227,12 @@ return {
 					text="使用狂怒"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_frenzy_text"
 		}
 	},
 	[68]={
-		stats={
-			[1]="monster_casts_molten_shell_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1248,12 +1245,12 @@ return {
 					text="施放熔岩护盾"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_molten_shell_text"
 		}
 	},
 	[69]={
-		stats={
-			[1]="monster_casts_viper_strike_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1266,12 +1263,12 @@ return {
 					text="使用毒蛇打击"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_viper_strike_text"
 		}
 	},
 	[70]={
-		stats={
-			[1]="monster_casts_elemental_hit_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1282,14 +1279,23 @@ return {
 						}
 					},
 					text="击中造成点燃、冰冻、冰缓或感电效果"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="원소 상태 이상"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_elemental_hit_text"
 		}
 	},
 	[71]={
-		stats={
-			[1]="curse_on_hit_%_vulnerability"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1311,12 +1317,12 @@ return {
 					text="击中造成脆弱"
 				}
 			}
+		},
+		stats={
+			[1]="curse_on_hit_%_vulnerability"
 		}
 	},
 	[72]={
-		stats={
-			[1]="curse_on_hit_%_temporal_chains"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1329,12 +1335,12 @@ return {
 					text="击中造成时空锁链"
 				}
 			}
+		},
+		stats={
+			[1]="curse_on_hit_%_temporal_chains"
 		}
 	},
 	[73]={
-		stats={
-			[1]="base_physical_damage_%_to_convert_to_lightning"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1347,12 +1353,12 @@ return {
 					text="造成闪电伤害"
 				}
 			}
+		},
+		stats={
+			[1]="base_physical_damage_%_to_convert_to_lightning"
 		}
 	},
 	[74]={
-		stats={
-			[1]="base_physical_damage_%_to_convert_to_fire"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1365,12 +1371,12 @@ return {
 					text="造成火焰伤害"
 				}
 			}
+		},
+		stats={
+			[1]="base_physical_damage_%_to_convert_to_fire"
 		}
 	},
 	[75]={
-		stats={
-			[1]="base_physical_damage_%_to_convert_to_chaos"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1383,12 +1389,12 @@ return {
 					text="造成混沌伤害"
 				}
 			}
+		},
+		stats={
+			[1]="base_physical_damage_%_to_convert_to_chaos"
 		}
 	},
 	[76]={
-		stats={
-			[1]="base_physical_damage_%_to_convert_to_cold"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1401,12 +1407,12 @@ return {
 					text="造成冰冷伤害"
 				}
 			}
+		},
+		stats={
+			[1]="base_physical_damage_%_to_convert_to_cold"
 		}
 	},
 	[77]={
-		stats={
-			[1]="monster_gain_frenzy_charge_on_kin_death"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1419,12 +1425,12 @@ return {
 					text="同伴被杀时狂暴"
 				}
 			}
+		},
+		stats={
+			[1]="monster_gain_frenzy_charge_on_kin_death"
 		}
 	},
 	[78]={
-		stats={
-			[1]="monster_gain_power_charge_on_kin_death"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1437,12 +1443,12 @@ return {
 					text="同伴被杀时强化"
 				}
 			}
+		},
+		stats={
+			[1]="monster_gain_power_charge_on_kin_death"
 		}
 	},
 	[79]={
-		stats={
-			[1]="monster_ground_fire_on_death_%_max_damage_to_deal_per_minute"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1455,12 +1461,12 @@ return {
 					text="死亡时产生燃烧地面"
 				}
 			}
+		},
+		stats={
+			[1]="monster_ground_fire_on_death_%_max_damage_to_deal_per_minute"
 		}
 	},
 	[80]={
-		stats={
-			[1]="monster_ground_ice_on_death_base_area_of_effect_radius"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1473,12 +1479,12 @@ return {
 					text="死亡时冰缓大地"
 				}
 			}
+		},
+		stats={
+			[1]="monster_ground_ice_on_death_base_area_of_effect_radius"
 		}
 	},
 	[81]={
-		stats={
-			[1]="monster_ground_tar_on_death_base_area_of_effect_radius"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1491,12 +1497,12 @@ return {
 					text="死亡时喷洒焦油"
 				}
 			}
+		},
+		stats={
+			[1]="monster_ground_tar_on_death_base_area_of_effect_radius"
 		}
 	},
 	[82]={
-		stats={
-			[1]="monster_caustic_cloud_on_death_%_max_damage_to_deal_per_minute"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1509,12 +1515,12 @@ return {
 					text="死亡时产生腐蚀地面"
 				}
 			}
+		},
+		stats={
+			[1]="monster_caustic_cloud_on_death_%_max_damage_to_deal_per_minute"
 		}
 	},
 	[83]={
-		stats={
-			[1]="necromancer_additional_rarity_levels_can_be_raised"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1545,12 +1551,12 @@ return {
 					text="呼唤传奇、稀有或魔法怪物"
 				}
 			}
+		},
+		stats={
+			[1]="necromancer_additional_rarity_levels_can_be_raised"
 		}
 	},
 	[84]={
-		stats={
-			[1]="monster_uses_mass_endurance_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1563,12 +1569,12 @@ return {
 					text="周围友军获得耐力球"
 				}
 			}
+		},
+		stats={
+			[1]="monster_uses_mass_endurance_text"
 		}
 	},
 	[85]={
-		stats={
-			[1]="monster_uses_mass_power_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1581,12 +1587,12 @@ return {
 					text="强化周围友军"
 				}
 			}
+		},
+		stats={
+			[1]="monster_uses_mass_power_text"
 		}
 	},
 	[86]={
-		stats={
-			[1]="monster_uses_shockwave_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1599,12 +1605,12 @@ return {
 					text="施放震荡波"
 				}
 			}
+		},
+		stats={
+			[1]="monster_uses_shockwave_text"
 		}
 	},
 	[87]={
-		stats={
-			[1]="combined_base_block_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1615,14 +1621,23 @@ return {
 						}
 					},
 					text="格挡攻击"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="공격 막아냄"
 				}
 			}
+		},
+		stats={
+			[1]="combined_base_block_%"
 		}
 	},
 	[88]={
-		stats={
-			[1]="spell_block_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1635,12 +1650,12 @@ return {
 					text="格挡法术"
 				}
 			}
+		},
+		stats={
+			[1]="spell_block_%"
 		}
 	},
 	[89]={
-		stats={
-			[1]="monster_casts_ethereal_knives_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1653,12 +1668,12 @@ return {
 					text="施放虚空匕首"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_ethereal_knives_text"
 		}
 	},
 	[90]={
-		stats={
-			[1]="monster_throws_beartraps_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1671,12 +1686,12 @@ return {
 					text="投掷捕熊陷阱"
 				}
 			}
+		},
+		stats={
+			[1]="monster_throws_beartraps_text"
 		}
 	},
 	[91]={
-		stats={
-			[1]="monster_casts_lightning_thorns_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1689,12 +1704,12 @@ return {
 					text="施放闪电反伤盾"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_lightning_thorns_text"
 		}
 	},
 	[92]={
-		stats={
-			[1]="monster_throws_fire_bombs_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1707,12 +1722,12 @@ return {
 					text="投掷火焰炸弹"
 				}
 			}
+		},
+		stats={
+			[1]="monster_throws_fire_bombs_text"
 		}
 	},
 	[93]={
-		stats={
-			[1]="monster_throws_caustic_bombs_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1725,12 +1740,12 @@ return {
 					text="投掷腐蚀炸弹"
 				}
 			}
+		},
+		stats={
+			[1]="monster_throws_caustic_bombs_text"
 		}
 	},
 	[94]={
-		stats={
-			[1]="monster_throws_chaos_bombs_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1743,12 +1758,12 @@ return {
 					text="投掷混沌炸弹"
 				}
 			}
+		},
+		stats={
+			[1]="monster_throws_chaos_bombs_text"
 		}
 	},
 	[95]={
-		stats={
-			[1]="monster_casts_freezing_pulse_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1761,12 +1776,12 @@ return {
 					text="施放冰霜脉冲"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_freezing_pulse_text"
 		}
 	},
 	[96]={
-		stats={
-			[1]="monster_cleaves_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1779,12 +1794,12 @@ return {
 					text="使用劈砍"
 				}
 			}
+		},
+		stats={
+			[1]="monster_cleaves_text"
 		}
 	},
 	[97]={
-		stats={
-			[1]="monster_fires_ice_shot_arrows_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1797,12 +1812,12 @@ return {
 					text="冰霜射击"
 				}
 			}
+		},
+		stats={
+			[1]="monster_fires_ice_shot_arrows_text"
 		}
 	},
 	[98]={
-		stats={
-			[1]="monster_casts_conductivity_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1815,12 +1830,12 @@ return {
 					text="施放导电"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_conductivity_text"
 		}
 	},
 	[99]={
-		stats={
-			[1]="monster_casts_flammability_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1833,12 +1848,12 @@ return {
 					text="施放易燃"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_flammability_text"
 		}
 	},
 	[100]={
-		stats={
-			[1]="monster_casts_augmented_fireballs_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1851,12 +1866,12 @@ return {
 					text="施放强化火球"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_augmented_fireballs_text"
 		}
 	},
 	[101]={
-		stats={
-			[1]="monster_channels_lightning_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1869,12 +1884,12 @@ return {
 					text="闪电通道"
 				}
 			}
+		},
+		stats={
+			[1]="monster_channels_lightning_text"
 		}
 	},
 	[102]={
-		stats={
-			[1]="monster_casts_arc_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1887,12 +1902,12 @@ return {
 					text="施放电弧"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_arc_text"
 		}
 	},
 	[103]={
-		stats={
-			[1]="monster_raises_zombies_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1905,12 +1920,12 @@ return {
 					text="施放魔卫复苏"
 				}
 			}
+		},
+		stats={
+			[1]="monster_raises_zombies_text"
 		}
 	},
 	[104]={
-		stats={
-			[1]="monster_casts_ice_shield_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1923,12 +1938,12 @@ return {
 					text="施放极地装甲"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_ice_shield_text"
 		}
 	},
 	[105]={
-		stats={
-			[1]="monster_casts_unholy_fire_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1941,12 +1956,12 @@ return {
 					text="施放邪恶之火"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_unholy_fire_text"
 		}
 	},
 	[106]={
-		stats={
-			[1]="monster_casts_discharge_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1959,12 +1974,12 @@ return {
 					text="施放解放"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_discharge_text"
 		}
 	},
 	[107]={
-		stats={
-			[1]="display_summons_water_elementals_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1977,12 +1992,12 @@ return {
 					text="召唤水元素"
 				}
 			}
+		},
+		stats={
+			[1]="display_summons_water_elementals_text"
 		}
 	},
 	[108]={
-		stats={
-			[1]="display_monster_uses_double_strike_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1995,12 +2010,12 @@ return {
 					text="使用双重打击"
 				}
 			}
+		},
+		stats={
+			[1]="display_monster_uses_double_strike_text"
 		}
 	},
 	[109]={
-		stats={
-			[1]="display_monster_uses_whirling_blades_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2013,12 +2028,12 @@ return {
 					text="使用回旋之刃"
 				}
 			}
+		},
+		stats={
+			[1]="display_monster_uses_whirling_blades_text"
 		}
 	},
 	[110]={
-		stats={
-			[1]="display_monster_casts_lightning_warp_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2031,12 +2046,12 @@ return {
 					text="施放闪电传送"
 				}
 			}
+		},
+		stats={
+			[1]="display_monster_casts_lightning_warp_text"
 		}
 	},
 	[111]={
-		stats={
-			[1]="display_monster_casts_frostbite_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2049,12 +2064,12 @@ return {
 					text="施放冻伤"
 				}
 			}
+		},
+		stats={
+			[1]="display_monster_casts_frostbite_text"
 		}
 	},
 	[112]={
-		stats={
-			[1]="base_avoid_freeze_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2076,12 +2091,12 @@ return {
 					text="免疫冰冻"
 				}
 			}
+		},
+		stats={
+			[1]="base_avoid_freeze_%"
 		}
 	},
 	[113]={
-		stats={
-			[1]="base_avoid_chill_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2103,12 +2118,12 @@ return {
 					text="免疫冰缓"
 				}
 			}
+		},
+		stats={
+			[1]="base_avoid_chill_%"
 		}
 	},
 	[114]={
-		stats={
-			[1]="base_avoid_ignite_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2130,12 +2145,12 @@ return {
 					text="免疫点燃"
 				}
 			}
+		},
+		stats={
+			[1]="base_avoid_ignite_%"
 		}
 	},
 	[115]={
-		stats={
-			[1]="base_avoid_shock_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2157,12 +2172,12 @@ return {
 					text="免疫感电"
 				}
 			}
+		},
+		stats={
+			[1]="base_avoid_shock_%"
 		}
 	},
 	[116]={
-		stats={
-			[1]="curse_on_hit_%_flammability"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2175,12 +2190,12 @@ return {
 					text="击中造成易燃"
 				}
 			}
+		},
+		stats={
+			[1]="curse_on_hit_%_flammability"
 		}
 	},
 	[117]={
-		stats={
-			[1]="display_monster_spike_nova_on_death_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2193,12 +2208,12 @@ return {
 					text="死亡时射出尖刺"
 				}
 			}
+		},
+		stats={
+			[1]="display_monster_spike_nova_on_death_text"
 		}
 	},
 	[118]={
-		stats={
-			[1]="display_monster_ice_spear_nova_on_death_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2211,12 +2226,12 @@ return {
 					text="死亡时射出冰矛"
 				}
 			}
+		},
+		stats={
+			[1]="display_monster_ice_spear_nova_on_death_text"
 		}
 	},
 	[119]={
-		stats={
-			[1]="display_monster_uses_far_shot_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2229,12 +2244,12 @@ return {
 					text="远射"
 				}
 			}
+		},
+		stats={
+			[1]="display_monster_uses_far_shot_text"
 		}
 	},
 	[120]={
-		stats={
-			[1]="display_monster_uses_suppressing_fire_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2247,12 +2262,12 @@ return {
 					text="火力压制"
 				}
 			}
+		},
+		stats={
+			[1]="display_monster_uses_suppressing_fire_text"
 		}
 	},
 	[121]={
-		stats={
-			[1]="display_monster_casts_devouring_totem_skill_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2265,12 +2280,12 @@ return {
 					text="吞食灵柩"
 				}
 			}
+		},
+		stats={
+			[1]="display_monster_casts_devouring_totem_skill_text"
 		}
 	},
 	[122]={
-		stats={
-			[1]="display_monster_casts_lightning_nova_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2283,12 +2298,12 @@ return {
 					text="施放闪电新星"
 				}
 			}
+		},
+		stats={
+			[1]="display_monster_casts_lightning_nova_text"
 		}
 	},
 	[123]={
-		stats={
-			[1]="monster_casts_fire_nova_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2301,12 +2316,12 @@ return {
 					text="施放火焰新星"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_fire_nova_text"
 		}
 	},
 	[124]={
-		stats={
-			[1]="monster_casts_flask_charge_nova_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2319,12 +2334,12 @@ return {
 					text="移除药剂充能"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_flask_charge_nova_text"
 		}
 	},
 	[125]={
-		stats={
-			[1]="monster_casts_bleed_nova_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2337,12 +2352,12 @@ return {
 					text="造成流血"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_bleed_nova_text"
 		}
 	},
 	[126]={
-		stats={
-			[1]="monster_has_damage_taken_aura_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2355,12 +2370,12 @@ return {
 					text="提高敌人受到的伤害"
 				}
 			}
+		},
+		stats={
+			[1]="monster_has_damage_taken_aura_text"
 		}
 	},
 	[127]={
-		stats={
-			[1]="monster_has_temporal_chains_aura_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2373,12 +2388,12 @@ return {
 					text="敌人受到伤害时被时空锁链影响"
 				}
 			}
+		},
+		stats={
+			[1]="monster_has_temporal_chains_aura_text"
 		}
 	},
 	[128]={
-		stats={
-			[1]="monster_has_movement_skill_damage_aura_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2391,12 +2406,12 @@ return {
 					text="敌人使用位移技能时受到伤害"
 				}
 			}
+		},
+		stats={
+			[1]="monster_has_movement_skill_damage_aura_text"
 		}
 	},
 	[129]={
-		stats={
-			[1]="display_monster_casts_vaal_detonate_dead_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2409,12 +2424,12 @@ return {
 					text="施放瓦尔·爆灵术"
 				}
 			}
+		},
+		stats={
+			[1]="display_monster_casts_vaal_detonate_dead_text"
 		}
 	},
 	[130]={
-		stats={
-			[1]="display_monster_vaal_storm_call"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2427,12 +2442,12 @@ return {
 					text="施放瓦尔·风暴呼唤"
 				}
 			}
+		},
+		stats={
+			[1]="display_monster_vaal_storm_call"
 		}
 	},
 	[131]={
-		stats={
-			[1]="display_monster_uses_vaal_burning_arrow"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2445,12 +2460,12 @@ return {
 					text="使用瓦尔·燃烧箭矢"
 				}
 			}
+		},
+		stats={
+			[1]="display_monster_uses_vaal_burning_arrow"
 		}
 	},
 	[132]={
-		stats={
-			[1]="monster_casts_glacial_cascade_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2463,12 +2478,12 @@ return {
 					text="施放冰川之刺"
 				}
 			}
+		},
+		stats={
+			[1]="monster_casts_glacial_cascade_text"
 		}
 	},
 	[133]={
-		stats={
-			[1]="monster_enrages_on_low_life_text"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2481,12 +2496,12 @@ return {
 					text="低血时激怒"
 				}
 			}
+		},
+		stats={
+			[1]="monster_enrages_on_low_life_text"
 		}
 	},
 	[134]={
-		stats={
-			[1]="display_monster_casts_wither"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2499,12 +2514,12 @@ return {
 					text="使用死亡凋零"
 				}
 			}
+		},
+		stats={
+			[1]="display_monster_casts_wither"
 		}
 	},
 	[135]={
-		stats={
-			[1]="display_monster_causes_ground_desecration"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2517,13 +2532,12 @@ return {
 					text="施放腐化地面"
 				}
 			}
+		},
+		stats={
+			[1]="display_monster_causes_ground_desecration"
 		}
 	},
 	[136]={
-		stats={
-			[1]="chance_to_dodge_attacks_%_while_phasing",
-			[2]="chance_to_dodge_spells_%_while_phased"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2540,12 +2554,13 @@ return {
 					text="迷踪状态时躲避攻击击中"
 				}
 			}
+		},
+		stats={
+			[1]="chance_to_dodge_attacks_%_while_phasing",
+			[2]="chance_to_dodge_spells_%_while_phased"
 		}
 	},
 	[137]={
-		stats={
-			[1]="action_speed_cannot_be_reduced_below_base"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2558,12 +2573,12 @@ return {
 					text="免疫减速"
 				}
 			}
+		},
+		stats={
+			[1]="action_speed_cannot_be_reduced_below_base"
 		}
 	},
 	[138]={
-		stats={
-			[1]="action_speed_+%_minimum_value"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2576,13 +2591,12 @@ return {
 					text="无法被完全减速"
 				}
 			}
+		},
+		stats={
+			[1]="action_speed_+%_minimum_value"
 		}
 	},
 	[139]={
-		stats={
-			[1]="monster_base_block_%",
-			[2]="base_spell_block_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2623,15 +2637,54 @@ return {
 						}
 					},
 					text="格挡攻击和法术"
+				},
+				[4]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						},
+						[2]={
+							[1]=0,
+							[2]=0
+						}
+					},
+					text="공격 막아냄"
+				},
+				[5]={
+					limit={
+						[1]={
+							[1]=0,
+							[2]=0
+						},
+						[2]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="주문 막아냄"
+				},
+				[6]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						},
+						[2]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="공격 및 주문 막아냄"
 				}
 			}
+		},
+		stats={
+			[1]="monster_base_block_%",
+			[2]="base_spell_block_%"
 		}
 	},
 	[140]={
-		stats={
-			[1]="base_chance_to_dodge_%",
-			[2]="base_chance_to_dodge_spells_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2674,12 +2727,13 @@ return {
 					text="躲避攻击和法术"
 				}
 			}
+		},
+		stats={
+			[1]="base_chance_to_dodge_%",
+			[2]="base_chance_to_dodge_spells_%"
 		}
 	},
 	[141]={
-		stats={
-			[1]="cannot_have_life_leeched_from"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2690,14 +2744,23 @@ return {
 						}
 					},
 					text="无法被吸血"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="생명력 흡수 면역"
 				}
 			}
+		},
+		stats={
+			[1]="cannot_have_life_leeched_from"
 		}
 	},
 	[142]={
-		stats={
-			[1]="display_monster_may_inflict_bleeding"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2710,12 +2773,12 @@ return {
 					text="一定几率造成流血"
 				}
 			}
+		},
+		stats={
+			[1]="display_monster_may_inflict_bleeding"
 		}
 	},
 	[143]={
-		stats={
-			[1]="display_monster_may_inflict_maim"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2728,12 +2791,12 @@ return {
 					text="一定几率造成瘫痪"
 				}
 			}
+		},
+		stats={
+			[1]="display_monster_may_inflict_maim"
 		}
 	},
 	[144]={
-		stats={
-			[1]="is_blight_chaos_monster"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2746,12 +2809,12 @@ return {
 					text="忽略召唤防御塔"
 				}
 			}
+		},
+		stats={
+			[1]="is_blight_chaos_monster"
 		}
 	},
 	[145]={
-		stats={
-			[1]="is_blight_cold_monster"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2764,12 +2827,12 @@ return {
 					text="复原冰霜防御塔"
 				}
 			}
+		},
+		stats={
+			[1]="is_blight_cold_monster"
 		}
 	},
 	[146]={
-		stats={
-			[1]="is_blight_fire_monster"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2782,12 +2845,12 @@ return {
 					text="复原火焰防御塔"
 				}
 			}
+		},
+		stats={
+			[1]="is_blight_fire_monster"
 		}
 	},
 	[147]={
-		stats={
-			[1]="is_blight_lightning_monster"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2800,12 +2863,12 @@ return {
 					text="复原闪电防御塔"
 				}
 			}
+		},
+		stats={
+			[1]="is_blight_lightning_monster"
 		}
 	},
 	[148]={
-		stats={
-			[1]="is_blight_physical_monster"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2818,12 +2881,12 @@ return {
 					text="复原物理防御塔"
 				}
 			}
+		},
+		stats={
+			[1]="is_blight_physical_monster"
 		}
 	},
 	[149]={
-		stats={
-			[1]="metamorphosis_boss_item_reward_slot_1_index"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2831,21 +2894,21 @@ return {
 						k="metamorphosis_reward_description",
 						v=1
 					},
-					text="{0}",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="{0}"
 				}
 			}
+		},
+		stats={
+			[1]="metamorphosis_boss_item_reward_slot_1_index"
 		}
 	},
 	[150]={
-		stats={
-			[1]="metamorphosis_boss_item_reward_slot_2_index"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2853,21 +2916,21 @@ return {
 						k="metamorphosis_reward_description",
 						v=1
 					},
-					text="{0}",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="{0}"
 				}
 			}
+		},
+		stats={
+			[1]="metamorphosis_boss_item_reward_slot_2_index"
 		}
 	},
 	[151]={
-		stats={
-			[1]="metamorphosis_boss_item_reward_slot_3_index"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2875,21 +2938,21 @@ return {
 						k="metamorphosis_reward_description",
 						v=1
 					},
-					text="{0}",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="{0}"
 				}
 			}
+		},
+		stats={
+			[1]="metamorphosis_boss_item_reward_slot_3_index"
 		}
 	},
 	[152]={
-		stats={
-			[1]="metamorphosis_boss_item_reward_slot_4_index"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2897,21 +2960,21 @@ return {
 						k="metamorphosis_reward_description",
 						v=1
 					},
-					text="{0}",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="{0}"
 				}
 			}
+		},
+		stats={
+			[1]="metamorphosis_boss_item_reward_slot_4_index"
 		}
 	},
 	[153]={
-		stats={
-			[1]="metamorphosis_boss_item_reward_slot_5_index"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2919,21 +2982,21 @@ return {
 						k="metamorphosis_reward_description",
 						v=1
 					},
-					text="{0}",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="{0}"
 				}
 			}
+		},
+		stats={
+			[1]="metamorphosis_boss_item_reward_slot_5_index"
 		}
 	},
 	[154]={
-		stats={
-			[1]="trigger_charge_additional_block_chance_against_projectiles_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2946,163 +3009,166 @@ return {
 					text="冲锋时格挡投射物"
 				}
 			}
+		},
+		stats={
+			[1]="trigger_charge_additional_block_chance_against_projectiles_%"
 		}
 	},
-	["is_blight_chaos_monster"]=144,
-	["monster_casts_frenzy_text"]=67,
-	["monster_fires_caustic_arrows_text"]=50,
-	["monster_summons_skeletons_text"]=56,
-	["monster_explodes_on_death_text"]=45,
-	["monster_fires_a_rain_of_arrows_text"]=46,
-	["monster_has_movement_skill_damage_aura_text"]=128,
-	["cannot_have_life_leeched_from"]=141,
-	["monster_gain_power_charge_on_kin_death"]=78,
-	["monster_casts_mass_frenzy_text"]=65,
-	["display_monster_vaal_storm_call"]=130,
-	["monster_casts_conductivity_text"]=98,
-	["gain_power_charge_for_each_quarter_life_removed"]=23,
-	["monster_has_temporal_chains_aura_text"]=127,
-	["physical_damage_reduction_rating_+%"]=7,
-	["display_monster_uses_suppressing_fire_text"]=120,
+	["accuracy_rating_+%"]=13,
+	["action_speed_+%_minimum_value"]=138,
+	["action_speed_cannot_be_reduced_below_base"]=137,
 	["add_endurance_charge_on_skill_hit_%"]=24,
-	["undead_description"]=27,
-	["monster_throws_beartraps_text"]=90,
-	["monster_casts_puncture_text"]=30,
-	["evasion_rating_+%"]=14,
-	["monster_casts_ice_nova_text"]=36,
-	["monster_channels_lightning_text"]=101,
-	["monster_uses_enduring_cry_text"]=58,
-	["base_physical_damage_%_to_convert_to_fire"]=74,
-	["monster_casts_ice_shield_text"]=104,
-	["monster_casts_arctic_breath_text"]=28,
-	["display_monster_may_inflict_maim"]=143,
-	["monster_casts_warlords_mark_curse_text"]=42,
-	["life_leech_from_physical_attack_damage_permyriad"]=9,
-	["chance_to_dodge_attacks_%_while_phasing"]=136,
-	["metamorphosis_boss_item_reward_slot_1_index"]=149,
-	["display_monster_uses_whirling_blades_text"]=109,
-	["maximum_energy_shield_+%"]=12,
-	["monster_casts_discharge_text"]=106,
-	["monster_uses_mass_power_text"]=85,
-	["monster_raises_undead_text"]=53,
-	["chance_to_dodge_spells_%_while_phased"]=136,
-	["base_avoid_chill_%"]=113,
 	["add_frenzy_charge_on_skill_hit_%"]=25,
-	["monster_base_block_%"]=139,
-	["base_avoid_freeze_%"]=112,
-	["display_monster_casts_vaal_detonate_dead_text"]=129,
-	["monster_summons_exploding_spawn_text"]=54,
-	["display_monster_causes_ground_desecration"]=135,
-	["number_of_additional_projectiles"]=17,
-	["monster_casts_arc_text"]=102,
-	["display_monster_casts_lightning_warp_text"]=110,
-	["spell_block_%"]=88,
-	["maximum_life_+%"]=6,
+	["add_power_charge_on_skill_hit_%"]=26,
 	["attack_speed_+%"]=10,
-	["damage_+%"]=8,
+	["base_avoid_chill_%"]=113,
+	["base_avoid_freeze_%"]=112,
+	["base_avoid_ignite_%"]=114,
+	["base_avoid_shock_%"]=115,
+	["base_cannot_be_stunned"]=15,
+	["base_chance_to_dodge_%"]=140,
+	["base_chance_to_dodge_spells_%"]=140,
+	["base_movement_velocity_+%"]=5,
 	["base_physical_damage_%_to_convert_to_chaos"]=75,
-	["monster_casts_molten_shell_text"]=68,
-	["monster_uses_lightning_strike_text"]=62,
+	["base_physical_damage_%_to_convert_to_cold"]=76,
+	["base_physical_damage_%_to_convert_to_fire"]=74,
+	["base_physical_damage_%_to_convert_to_lightning"]=73,
+	["base_spell_block_%"]=139,
+	["cannot_have_life_leeched_from"]=141,
+	["chance_to_dodge_attacks_%_while_phasing"]=136,
+	["chance_to_dodge_spells_%_while_phased"]=136,
+	["combined_base_block_%"]=87,
+	["critical_strike_chance_+%"]=18,
+	["curse_on_hit_%_flammability"]=116,
+	["curse_on_hit_%_temporal_chains"]=72,
 	["curse_on_hit_%_vulnerability"]=71,
-	["monster_uses_flicker_strike_text"]=59,
-	["display_monster_uses_vaal_burning_arrow"]=131,
-	["monster_uses_shockwave_text"]=86,
-	["monster_uses_mass_endurance_text"]=84,
-	["monster_casts_fireball_text"]=35,
+	["damage_+%"]=8,
+	["display_monster_casts_devouring_totem_skill_text"]=121,
+	["display_monster_casts_frostbite_text"]=111,
+	["display_monster_casts_lightning_nova_text"]=122,
+	["display_monster_casts_lightning_warp_text"]=110,
+	["display_monster_casts_vaal_detonate_dead_text"]=129,
+	["display_monster_casts_wither"]=134,
+	["display_monster_causes_ground_desecration"]=135,
+	["display_monster_ice_spear_nova_on_death_text"]=118,
+	["display_monster_may_inflict_bleeding"]=142,
+	["display_monster_may_inflict_maim"]=143,
+	["display_monster_spike_nova_on_death_text"]=117,
+	["display_monster_uses_double_strike_text"]=108,
 	["display_monster_uses_far_shot_text"]=119,
-	["monster_casts_enfeeble_curse_text"]=34,
-	["monster_casts_elementral_weakness_curse_text"]=33,
-	["physical_damage_%_to_add_as_lightning"]=2,
-	["monster_casts_augmented_fireballs_text"]=100,
-	["monster_casts_vulnerability_curse_text"]=41,
-	["physical_damage_%_to_add_as_chaos"]=4,
-	["monster_casts_lightning_thorns_text"]=91,
-	["monster_casts_glacial_cascade_text"]=132,
-	["is_blight_physical_monster"]=148,
-	["monster_throws_caustic_bombs_text"]=93,
-	["monster_casts_assassins_mark_curse_text"]=32,
+	["display_monster_uses_suppressing_fire_text"]=120,
+	["display_monster_uses_vaal_burning_arrow"]=131,
+	["display_monster_uses_whirling_blades_text"]=109,
+	["display_monster_vaal_storm_call"]=130,
+	["display_monster_wealth_mod"]=16,
+	["display_summons_water_elementals_text"]=107,
+	["evasion_rating_+%"]=14,
+	["gain_frenzy_charge_for_each_quarter_life_removed"]=22,
+	["gain_power_charge_for_each_quarter_life_removed"]=23,
+	["hexproof"]=20,
+	["immune_to_curses"]=19,
+	["is_blight_chaos_monster"]=144,
 	["is_blight_cold_monster"]=145,
-	["monster_uses_glacial_hammer_text"]=60,
+	["is_blight_fire_monster"]=146,
+	["is_blight_lightning_monster"]=147,
+	["is_blight_physical_monster"]=148,
+	["life_leech_from_physical_attack_damage_permyriad"]=9,
+	["life_regeneration_rate_per_minute_%"]=11,
+	["maximum_energy_shield_+%"]=12,
+	["maximum_life_+%"]=6,
+	["metamorphosis_boss_item_reward_slot_1_index"]=149,
+	["metamorphosis_boss_item_reward_slot_2_index"]=150,
+	["metamorphosis_boss_item_reward_slot_3_index"]=151,
+	["metamorphosis_boss_item_reward_slot_4_index"]=152,
+	["metamorphosis_boss_item_reward_slot_5_index"]=153,
+	["monster_base_block_%"]=139,
+	["monster_casts_arc_text"]=102,
+	["monster_casts_arctic_breath_text"]=28,
+	["monster_casts_assassins_mark_curse_text"]=32,
+	["monster_casts_augmented_fireballs_text"]=100,
+	["monster_casts_bleed_nova_text"]=125,
+	["monster_casts_coldsnap_text"]=31,
+	["monster_casts_conductivity_text"]=98,
+	["monster_casts_discharge_text"]=106,
+	["monster_casts_elemental_hit_text"]=70,
+	["monster_casts_elementral_weakness_curse_text"]=33,
+	["monster_casts_enfeeble_curse_text"]=34,
+	["monster_casts_ethereal_knives_text"]=89,
+	["monster_casts_fire_nova_text"]=123,
+	["monster_casts_fireball_text"]=35,
+	["monster_casts_firestorm_text"]=29,
+	["monster_casts_flammability_text"]=99,
+	["monster_casts_flask_charge_nova_text"]=124,
+	["monster_casts_freezing_pulse_text"]=95,
+	["monster_casts_frenzy_text"]=67,
+	["monster_casts_glacial_cascade_text"]=132,
+	["monster_casts_ice_nova_text"]=36,
+	["monster_casts_ice_shield_text"]=104,
+	["monster_casts_ice_spear_text"]=37,
+	["monster_casts_lightning_thorns_text"]=91,
+	["monster_casts_mass_frenzy_text"]=65,
+	["monster_casts_molten_shell_text"]=68,
+	["monster_casts_projectile_vulnerability_curse_text"]=38,
+	["monster_casts_puncture_text"]=30,
+	["monster_casts_shield_charge_text"]=64,
+	["monster_casts_shock_nova_text"]=39,
+	["monster_casts_spark_text"]=40,
+	["monster_casts_temporal_chains_text"]=66,
+	["monster_casts_unholy_fire_text"]=105,
+	["monster_casts_viper_strike_text"]=69,
+	["monster_casts_vulnerability_curse_text"]=41,
+	["monster_casts_warlords_mark_curse_text"]=42,
+	["monster_caustic_cloud_on_death_%_max_damage_to_deal_per_minute"]=82,
+	["monster_channels_lightning_text"]=101,
+	["monster_cleaves_text"]=96,
+	["monster_detonates_corpses_text"]=43,
+	["monster_enrages_on_low_life_text"]=133,
+	["monster_explodes_on_death_text"]=45,
+	["monster_explodes_on_its_target_text"]=44,
+	["monster_fires_a_rain_of_arrows_text"]=46,
+	["monster_fires_burning_arrows_text"]=47,
+	["monster_fires_caustic_arrows_text"]=50,
+	["monster_fires_explosive_arrows_text"]=48,
 	["monster_fires_ice_shot_arrows_text"]=97,
 	["monster_fires_lightning_arrows_text"]=49,
-	["monster_leaps_onto_enemies_text"]=52,
-	["monster_casts_flammability_text"]=99,
-	["gain_frenzy_charge_for_each_quarter_life_removed"]=22,
-	["monster_fires_explosive_arrows_text"]=48,
-	["combined_base_block_%"]=87,
-	["monster_casts_freezing_pulse_text"]=95,
-	["base_cannot_be_stunned"]=15,
-	["accuracy_rating_+%"]=13,
-	hexproof=20,
-	["monster_throws_fire_bombs_text"]=92,
-	["metamorphosis_boss_item_reward_slot_2_index"]=150,
-	["metamorphosis_boss_item_reward_slot_5_index"]=153,
-	["monster_casts_unholy_fire_text"]=105,
-	["monster_casts_projectile_vulnerability_curse_text"]=38,
-	["metamorphosis_boss_item_reward_slot_4_index"]=152,
-	["display_monster_casts_devouring_totem_skill_text"]=121,
-	["monster_explodes_on_its_target_text"]=44,
-	["metamorphosis_boss_item_reward_slot_3_index"]=151,
-	["trigger_charge_additional_block_chance_against_projectiles_%"]=154,
-	["monster_casts_firestorm_text"]=29,
-	["monster_casts_bleed_nova_text"]=125,
-	["life_regeneration_rate_per_minute_%"]=11,
-	["is_blight_lightning_monster"]=147,
-	["base_movement_velocity_+%"]=5,
-	["is_blight_fire_monster"]=146,
-	["monster_summons_spawn_text"]=57,
-	["monster_casts_flask_charge_nova_text"]=124,
-	["display_monster_wealth_mod"]=16,
-	["display_monster_may_inflict_bleeding"]=142,
-	["base_chance_to_dodge_spells_%"]=140,
-	["monster_casts_coldsnap_text"]=31,
-	["display_monster_casts_frostbite_text"]=111,
-	["action_speed_+%_minimum_value"]=138,
-	["base_spell_block_%"]=139,
-	["action_speed_cannot_be_reduced_below_base"]=137,
-	["display_monster_casts_wither"]=134,
-	["monster_enrages_on_low_life_text"]=133,
-	["monster_summons_monkeys_from_nearby_trees_text"]=55,
-	["monster_ground_fire_on_death_%_max_damage_to_deal_per_minute"]=79,
-	["monster_casts_shock_nova_text"]=39,
-	["display_monster_ice_spear_nova_on_death_text"]=118,
-	["monster_has_damage_taken_aura_text"]=126,
-	["monster_uses_phase_run_text"]=63,
-	["base_avoid_shock_%"]=115,
-	["monster_throws_chaos_bombs_text"]=94,
-	["base_physical_damage_%_to_convert_to_lightning"]=73,
-	["display_summons_water_elementals_text"]=107,
-	["base_physical_damage_%_to_convert_to_cold"]=76,
-	["display_monster_spike_nova_on_death_text"]=117,
-	["monster_casts_ice_spear_text"]=37,
-	["physical_damage_%_to_add_as_cold"]=3,
-	["monster_gain_frenzy_charge_on_kin_death"]=77,
-	["curse_on_hit_%_flammability"]=116,
-	["monster_raises_zombies_text"]=103,
 	["monster_fires_split_arrows_text"]=51,
-	["immune_to_curses"]=19,
-	["monster_casts_spark_text"]=40,
+	["monster_gain_frenzy_charge_on_kin_death"]=77,
+	["monster_gain_power_charge_on_kin_death"]=78,
 	["monster_grants_frenzy_charges_to_allies_within_distance_on_death"]=21,
-	["monster_caustic_cloud_on_death_%_max_damage_to_deal_per_minute"]=82,
-	["monster_ground_tar_on_death_base_area_of_effect_radius"]=81,
-	["base_chance_to_dodge_%"]=140,
+	["monster_ground_fire_on_death_%_max_damage_to_deal_per_minute"]=79,
 	["monster_ground_ice_on_death_base_area_of_effect_radius"]=80,
-	["display_monster_casts_lightning_nova_text"]=122,
-	["curse_on_hit_%_temporal_chains"]=72,
-	["display_monster_uses_double_strike_text"]=108,
-	["add_power_charge_on_skill_hit_%"]=26,
-	["monster_fires_burning_arrows_text"]=47,
-	["necromancer_additional_rarity_levels_can_be_raised"]=83,
-	["monster_detonates_corpses_text"]=43,
-	["monster_cleaves_text"]=96,
-	["monster_casts_fire_nova_text"]=123,
-	["monster_casts_ethereal_knives_text"]=89,
-	["monster_casts_elemental_hit_text"]=70,
-	["critical_strike_chance_+%"]=18,
-	["monster_casts_viper_strike_text"]=69,
+	["monster_ground_tar_on_death_base_area_of_effect_radius"]=81,
+	["monster_has_damage_taken_aura_text"]=126,
+	["monster_has_movement_skill_damage_aura_text"]=128,
+	["monster_has_temporal_chains_aura_text"]=127,
+	["monster_leaps_onto_enemies_text"]=52,
+	["monster_raises_undead_text"]=53,
+	["monster_raises_zombies_text"]=103,
+	["monster_summons_exploding_spawn_text"]=54,
+	["monster_summons_monkeys_from_nearby_trees_text"]=55,
+	["monster_summons_skeletons_text"]=56,
+	["monster_summons_spawn_text"]=57,
+	["monster_throws_beartraps_text"]=90,
+	["monster_throws_caustic_bombs_text"]=93,
+	["monster_throws_chaos_bombs_text"]=94,
+	["monster_throws_fire_bombs_text"]=92,
+	["monster_uses_enduring_cry_text"]=58,
+	["monster_uses_flicker_strike_text"]=59,
+	["monster_uses_glacial_hammer_text"]=60,
 	["monster_uses_ground_slam_text"]=61,
-	["monster_casts_temporal_chains_text"]=66,
-	["monster_casts_shield_charge_text"]=64,
+	["monster_uses_lightning_strike_text"]=62,
+	["monster_uses_mass_endurance_text"]=84,
+	["monster_uses_mass_power_text"]=85,
+	["monster_uses_phase_run_text"]=63,
+	["monster_uses_shockwave_text"]=86,
+	["necromancer_additional_rarity_levels_can_be_raised"]=83,
+	["number_of_additional_projectiles"]=17,
+	["physical_damage_%_to_add_as_chaos"]=4,
+	["physical_damage_%_to_add_as_cold"]=3,
 	["physical_damage_%_to_add_as_fire"]=1,
-	["base_avoid_ignite_%"]=114
+	["physical_damage_%_to_add_as_lightning"]=2,
+	["physical_damage_reduction_rating_+%"]=7,
+	["spell_block_%"]=88,
+	["trigger_charge_additional_block_chance_against_projectiles_%"]=154,
+	["undead_description"]=27
 }

@@ -191,6 +191,8 @@ data.powerStatList = {
 	{ stat="IgniteChance", label="点燃几率" },
 	{ stat="ShockChance", label="感电几率" },
 	{ stat="EffectiveMovementSpeedMod", label="移动速度" },
+	{ stat="BlockChance", label="攻击格挡几率" },
+	{ stat="SpellBlockChance", label="法术格挡几率" },
 }
 
 data.skillColorMap = { colorCodes.STRENGTH, colorCodes.DEXTERITY, colorCodes.INTELLIGENCE, colorCodes.NORMAL }

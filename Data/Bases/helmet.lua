@@ -66,7 +66,7 @@ itemBases["破城之盔"] = {
 	armour = { ArmourBase = 237, },
 	req = { level = 48, str = 101, },
 }
-itemBases["绣领之盔"] = {
+itemBases["萨姆尼盔"] = {
 	type = "Helmet",
 	subType = "Armour",
 	socketLimit = 4,
@@ -75,6 +75,7 @@ itemBases["绣领之盔"] = {
 	armour = { ArmourBase = 276, },
 	req = { level = 55, str = 114, },
 }
+
 itemBases["艾兹麦坚盔"] = {
 	type = "Helmet",
 	subType = "Armour",
@@ -606,4 +607,96 @@ itemBases["金色面具"] = {
 	implicit = "+(8-16)% 所有元素抗性",
 	armour = { },
 	req = { level = 12, },
+}
+itemBases["悲伤面具"] = {
+	type = "Helmet",
+	subType = "Armour/Evasion",
+	socketLimit = 4,
+	tags = { default = true, armour = true, helmet = true, str_dex_armour = true, not_for_sale = true, },
+	implicit = "你身上的护体效果提高 (20-25)%\n你被碾压了\n-15% 额外物理伤害减伤",
+	implicitModTypes = { {  }, {  }, {  }, },
+	armour = { ArmourBase = 42, EvasionBase = 42, },
+	req = { level = 15, str = 20, dex = 20, },
+}
+itemBases["赎罪面具"] = {
+	type = "Helmet",
+	subType = "Armour/Evasion",
+	socketLimit = 4,
+	tags = { default = true, armour = true, helmet = true, str_dex_armour = true, not_for_sale = true, },
+	implicit = "你身上的护体效果提高 (20-25)%\n你被碾压了\n-15% 额外物理伤害减伤",
+	implicitModTypes = { {  }, {  }, {  }, },
+	armour = { ArmourBase = 122, EvasionBase = 122, },
+	req = { level = 45, str = 51, dex = 51, },
+}
+itemBases["忏悔面具"] = {
+	type = "Helmet",
+	subType = "Armour/Evasion",
+	socketLimit = 4,
+	tags = { default = true, armour = true, helmet = true, str_dex_armour = true, not_for_sale = true, },
+	implicit = "你身上的护体效果提高 (20-25)%\n你被碾压了\n-15% 额外物理伤害减伤",
+	implicitModTypes = { {  }, {  }, {  }, },
+	armour = { ArmourBase = 185, EvasionBase = 185, },
+	req = { level = 75, str = 79, dex = 79, },
+}
+
+
+itemBases["小鬼之冠"] = {
+	type = "Helmet",
+	subType = "Armour/Energy Shield",
+	socketLimit = 4,
+	tags = { default = true, armour = true, helmet = true, str_int_armour = true, not_for_sale = true, },
+	implicit = "-10% 所有元素抗性\n插入的技能击中时施加火焰、冰霜、闪电曝露效果",
+	implicitModTypes = { { "elemental", "resistance" }, { "elemental", "resistance" }, },
+	armour = { ArmourBase = 42, EnergyShieldBase = 9, },
+	req = { level = 15, str = 20, int = 20, },
+}
+itemBases["恶魔之冠"] = {
+	type = "Helmet",
+	subType = "Armour/Energy Shield",
+	socketLimit = 4,
+	tags = { default = true, armour = true, helmet = true, str_int_armour = true, not_for_sale = true, },
+	implicit = "-10% 所有元素抗性\n插入的技能击中时施加火焰、冰霜、闪电曝露效果",
+	implicitModTypes = { { "elemental", "resistance" }, { "elemental", "resistance" }, },
+	armour = { ArmourBase = 122, EnergyShieldBase = 24, },
+	req = { level = 45, str = 51, int = 51, },
+}
+itemBases["大恶魔之冠"] = {
+	type = "Helmet",
+	subType = "Armour/Energy Shield",
+	socketLimit = 4,
+	tags = { default = true, armour = true, helmet = true, str_int_armour = true, not_for_sale = true, },
+	implicit = "-10% 所有元素抗性\n插入的技能击中时施加火焰、冰霜、闪电曝露效果",
+	implicitModTypes = { { "elemental", "resistance" }, { "elemental", "resistance" }, },
+	armour = { ArmourBase = 185, EnergyShieldBase = 36, },
+	req = { level = 75, str = 79, int = 79, },
+}
+itemBases["飓风之冠"] = {
+	type = "Helmet",
+	subType = "Evasion/Energy Shield",
+	socketLimit = 4,
+	tags = { default = true, armour = true, helmet = true, dex_int_armour = true, not_for_sale = true, },
+	implicit = "附加 (75-85) - (115-128) 基础冰霜伤害\n你的击中将冰霜抗性视为比实际高 10%",
+	implicitModTypes = { { "elemental_damage", "damage", "elemental", "cold" }, { "elemental_damage", "damage", "elemental", "cold" }, },
+	armour = { EvasionBase = 42, EnergyShieldBase = 9, },
+	req = { level = 15, dex = 20, int = 20, },
+}
+itemBases["寒冬之冠"] = {
+	type = "Helmet",
+	subType = "Evasion/Energy Shield",
+	socketLimit = 4,
+	tags = { default = true, armour = true, helmet = true, dex_int_armour = true, not_for_sale = true, },
+	implicit = "附加 (75-85) - (115-128) 基础冰霜伤害\n你的击中将冰霜抗性视为比实际高 10%",
+	implicitModTypes = { { "elemental_damage", "damage", "elemental", "cold" }, { "elemental_damage", "damage", "elemental", "cold" }, },
+	armour = { EvasionBase = 122, EnergyShieldBase = 24, },
+	req = { level = 45, dex = 51, int = 51, },
+}
+itemBases["暴雪之冠"] = {
+	type = "Helmet",
+	subType = "Evasion/Energy Shield",
+	socketLimit = 4,
+	tags = { default = true, armour = true, helmet = true, dex_int_armour = true, not_for_sale = true, },
+	implicit = "附加 (75-85) - (115-128) 基础冰霜伤害\n你的击中将冰霜抗性视为比实际高 10%",
+	implicitModTypes = { { "elemental_damage", "damage", "elemental", "cold" }, { "elemental_damage", "damage", "elemental", "cold" }, },
+	armour = { EvasionBase = 185, EnergyShieldBase = 36, },
+	req = { level = 75, dex = 79, int = 79, },
 }

@@ -123,7 +123,7 @@ itemBases["月蚀长杖"] = {
 itemBases["铁锻长杖"] = {
 	type = "Staff",
 	socketLimit = 6,
-	tags = { default = true, weapon = true, twohand = true, attack_staff = true, two_hand_weapon = true, },
+	tags = { default = true, weapon = true, twohand = true, attack_staff = true, staff = true, two_hand_weapon = true, },
 	implicitModTypes = { { "block" }, },
 	implicit = "持长杖时攻击伤害格挡几率 +18%",
 	weapon = { PhysicalMin = 14, PhysicalMax = 42, CritChanceBase = 6.4, AttackRateBase = 1.3, Range = 13, },
@@ -132,7 +132,7 @@ itemBases["铁锻长杖"] = {
 itemBases["强化长杖"] = {
 	type = "Staff",
 	socketLimit = 6,
-	tags = { default = true, weapon = true, twohand = true, attack_staff = true, two_hand_weapon = true, },
+	tags = { default = true, weapon = true, twohand = true, attack_staff = true, staff = true, two_hand_weapon = true, },
 	implicitModTypes = { { "block" }, },
 	implicit = "持长杖时攻击伤害格挡几率 +20%",
 	weapon = { PhysicalMin = 27, PhysicalMax = 57, CritChanceBase = 6.2, AttackRateBase = 1.3, Range = 13, },
@@ -141,7 +141,7 @@ itemBases["强化长杖"] = {
 itemBases["毒牙长杖"] = {
 	type = "Staff",
 	socketLimit = 6,
-	tags = { default = true, weapon = true, twohand = true, attack_staff = true, two_hand_weapon = true, },
+	tags = { default = true, weapon = true, twohand = true, attack_staff = true, staff = true, two_hand_weapon = true, },
 	implicitModTypes = { { "block" }, },
 	implicit = "持长杖时攻击伤害格挡几率 +18%",
 	weapon = { PhysicalMin = 41, PhysicalMax = 76, CritChanceBase = 6.1, AttackRateBase = 1.3, Range = 13, },
@@ -150,7 +150,7 @@ itemBases["毒牙长杖"] = {
 itemBases["军用长杖"] = {
 	type = "Staff",
 	socketLimit = 6,
-	tags = { default = true, weapon = true, twohand = true, attack_staff = true, two_hand_weapon = true, },
+	tags = { default = true, weapon = true, twohand = true, attack_staff = true, staff = true, two_hand_weapon = true, },
 	implicitModTypes = { { "block" }, },
 	implicit = "持长杖时攻击伤害格挡几率 +18%",
 	weapon = { PhysicalMin = 38, PhysicalMax = 114, CritChanceBase = 6.6, AttackRateBase = 1.25, Range = 13, },
@@ -159,7 +159,7 @@ itemBases["军用长杖"] = {
 itemBases["蛇纹长杖"] = {
 	type = "Staff",
 	socketLimit = 6,
-	tags = { default = true, weapon = true, twohand = true, attack_staff = true, two_hand_weapon = true, },
+	tags = { default = true, weapon = true, twohand = true, attack_staff = true,  staff = true,two_hand_weapon = true, },
 	implicitModTypes = { { "block" }, },
 	implicit = "持长杖时攻击伤害格挡几率 +20%",
 	weapon = { PhysicalMin = 56, PhysicalMax = 117, CritChanceBase = 6.3, AttackRateBase = 1.25, Range = 13, },
@@ -168,7 +168,7 @@ itemBases["蛇纹长杖"] = {
 itemBases["恶灵长杖"] = {
 	type = "Staff",
 	socketLimit = 6,
-	tags = { default = true, weapon = true, twohand = true, attack_staff = true, two_hand_weapon = true, },
+	tags = { default = true, weapon = true, twohand = true, attack_staff = true, staff = true, two_hand_weapon = true, },
 	implicitModTypes = { { "block" }, },
 	implicit = "持长杖时攻击伤害格挡几率 +18%",
 	weapon = { PhysicalMin = 65, PhysicalMax = 121, CritChanceBase = 6.1, AttackRateBase = 1.3, Range = 13, },
@@ -177,7 +177,7 @@ itemBases["恶灵长杖"] = {
 itemBases["艾兹麦长杖"] = {
 	type = "Staff",
 	socketLimit = 6,
-	tags = { default = true, weapon = true, twohand = true, attack_staff = true, two_hand_weapon = true, },
+	tags = { default = true, weapon = true, twohand = true, attack_staff = true,  staff = true,two_hand_weapon = true, },
 	implicitModTypes = { { "block" }, },
 	implicit = "持长杖时攻击伤害格挡几率 +20%",
 	weapon = { PhysicalMin = 53, PhysicalMax = 160, CritChanceBase = 7.3, AttackRateBase = 1.25, Range = 13, },
@@ -186,7 +186,7 @@ itemBases["艾兹麦长杖"] = {
 itemBases["风暴长杖"] = {
 	type = "Staff",
 	socketLimit = 6,
-	tags = { default = true, weapon = true, twohand = true, attack_staff = true, two_hand_weapon = true, },
+	tags = { default = true, weapon = true, twohand = true, attack_staff = true,  staff = true,two_hand_weapon = true, },
 	implicitModTypes = { { "block" }, },
 	implicit = "持长杖时攻击伤害格挡几率 +25%",
 	weapon = { PhysicalMin = 71, PhysicalMax = 147, CritChanceBase = 6.8, AttackRateBase = 1.25, Range = 13, },
@@ -195,7 +195,7 @@ itemBases["风暴长杖"] = {
 itemBases["审判长杖"] = {
 	type = "Staff",
 	socketLimit = 6,
-	tags = { default = true, weapon = true, twohand = true, attack_staff = true, two_hand_weapon = true, },
+	tags = { default = true, weapon = true, twohand = true, attack_staff = true, staff = true, two_hand_weapon = true, },
 	implicitModTypes = { { "block" }, },
 	implicit = "持长杖时法术伤害格挡几率 +20%",
 	weapon = { PhysicalMin = 73, PhysicalMax = 136, CritChanceBase = 6.5, AttackRateBase = 1.3, Range = 13, },

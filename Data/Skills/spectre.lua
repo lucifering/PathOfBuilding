@@ -258,7 +258,7 @@ name = "震地",
 	hidden = true,
 	color = 1,
 description = "猛击地面，对周围造成大量伤害，并在地面上留下裂隙。一段时间过后，地面的裂隙将会释放冲击波造成更多的伤害。在冲击波还未释放前再次使用技能不会刷新地面的裂隙。需要斧类、锤类、短杖、长杖、徒手发动。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Duration] = true, [SkillType.SlamSkill] = true, },
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Duration] = true, [SkillType.SlamSkill] = true, [SkillType.Triggerable] = true,},
 	weaponTypes = {
 		["None"] = true,
 		["One Handed Mace"] = true,
@@ -897,7 +897,7 @@ name = "震地",
 	hidden = true,
 	color = 1,
 description = "猛击地面，对周围造成大量伤害，并在地面上留下裂隙。一段时间过后，地面的裂隙将会释放冲击波造成更多的伤害。在冲击波还未释放前再次使用技能不会刷新地面的裂隙。需要斧类、锤类、短杖、长杖、徒手发动。",
-	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Duration] = true, [SkillType.SlamSkill] = true, },
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Duration] = true, [SkillType.SlamSkill] = true, [SkillType.Triggerable] = true,},
 	weaponTypes = {
 		["None"] = true,
 		["One Handed Mace"] = true,
@@ -2723,7 +2723,7 @@ name = "督军印记",
 	},
 }
 skills["MotherOfFlamesMagmaOrb3"] = {
-name = "熔岩之核",
+name = "熔岩奔涌",
 	hidden = true,
 	color = 3,
 	baseEffectiveness = 2.7778000831604,
@@ -7433,21 +7433,22 @@ skills["WalkEmergeAtlasInfluenceMonster"] = {
         [1] = {225, levelRequirement = 0, statInterpolation = {1},  },
     },
 }
-skills["EmptyActionSpellSecretPoliceDaggers"] = {
-	name = "匕首触发法术",
+skills["EmptyActionAttackSecretPoliceDaggers"] = {
+	name = "攻击触发匕首",
 	hidden = true,
 	color = 4,
 	skillTypes = { },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.87,
 	baseFlags = {
-		spell = true,
+		attack  = true,
 	},
 	baseMods = {
 	},
 	qualityStats = {
 	},
 	stats = {
+	"cast_time_overrides_attack_duration",
 	},
 	levels = {
 		[1] = { levelRequirement = 0, statInterpolation = { }, },
@@ -7682,7 +7683,7 @@ skills["GAHeistThugRangedShotgun"] = {
 	name = "远程猎枪",
 	hidden = true,
 	color = 4,
-	skillTypes = { [SkillType.Triggerable] = true, },
+	skillTypes = { [SkillType.Triggerable] = true, [SkillType.Channelled] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.33,
 	baseFlags = {
@@ -7772,7 +7773,7 @@ skills["GSHeistRobotPyreNukeBeamChannelled"] = {
 	color = 4,
 	baseEffectiveness = 4,
 	incrementalEffectiveness = 0.045000001788139,
-	skillTypes = { [SkillType.Triggerable] = true, },
+	skillTypes = { [SkillType.Triggerable] = true, [SkillType.Channelled] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 0.54,
 	baseFlags = {
@@ -7843,6 +7844,7 @@ description = "对你的敌人无情痛击.",
 	stats = {
 		"skill_physical_damage_%_to_convert_to_cold",
 		"active_skill_damage_+%_final",
+		"base_knockback_speed_+%",
 		"knockback_speed_+%",
 		"skill_can_fire_arrows",
 		"skill_can_fire_wand_projectiles",

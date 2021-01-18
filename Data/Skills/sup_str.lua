@@ -23,7 +23,6 @@ description = "辅助任意击中敌人的技能",
 		},
 		Alternate1 = {
 			{ "fire_damage_+%", -1 },
-		
 			{ "fire_dot_multiplier_+", 1 },
 		},
 		Alternate2 = {
@@ -221,7 +220,6 @@ description = "能够辅助单体近战攻击技能，使该技能可以同时�
 	qualityStats = {
 		Default = {
 			{ "attack_speed_+%", 0.5 },
-		
 			{ "extra_target_targeting_distance_+%", 1 },
 		},
 	},
@@ -489,7 +487,6 @@ description = "辅助任意击中敌人的技能",
 	qualityStats = {
 		Default = {
 			{ "physical_damage_+%", 0.5 },
-		
 			{ "enemy_phys_reduction_%_penalty_vs_hit", 0.5 },
 		},
 	},
@@ -614,7 +611,6 @@ description = "辅助任意能击中敌人或能直接造成燃烧伤害的技�
 	qualityStats = {
 		Default = {
 			{ "burn_damage_+%", 0.5 },
-		
 			{ "fire_dot_multiplier_+", 0.5 },
 		},
 	},
@@ -960,7 +956,6 @@ description = "辅助任意击中敌人的技能",
 	qualityStats = {
 		Default = {
 			{ "cold_damage_+%", 0.5 },
-		
 			{ "fire_damage_+%", 0.5 },
 		},
 		Alternate1 = {
@@ -1474,7 +1469,6 @@ description = "辅助打击技能，使它们在使用时得到强力加持，�
 		},
 		Alternate1 = {
 			{ "attack_speed_+%", -1 },
-		
 			{ "damage_+%", 3 },
 		},
 		Alternate2 = {
@@ -1641,7 +1635,6 @@ description = "辅助影响你和友军的光环技能. 增加光环对除你外
 		},
 		Alternate2 = {
 			{ "base_aura_area_of_effect_+%", 5 },
-		
 			{ "base_mana_reservation_+%", 0.5 },
 		},
 	},
@@ -1715,7 +1708,6 @@ description = "辅助影响你和友军的光环技能. 增加光环对除你外
 	qualityStats = {
 		Default = {
 			{ "base_aura_area_of_effect_+%", 2 },
-		
 			{ "supported_aura_skill_gem_level_+", 0.05 },
 		},
 	},
@@ -1763,7 +1755,6 @@ description = "辅助任意有持续时间的技能",
 		},
 		Alternate1 = {
 			{ "base_mana_cost_-%", 1 },
-		
 			{ "skill_effect_duration_+%", -0.5 },
 		},
 		Alternate2 = {
@@ -1833,7 +1824,6 @@ description = "辅助发射投射物的攻击技能, 使力量属性也会像增
 		},
 		Alternate1 = {
 			{ "attack_speed_+%", -0.5 },
-		
 			{ "damage_+%", 2 },
 		},
 		Alternate2 = {
@@ -1904,7 +1894,6 @@ description = "辅助法术技能. 使力量属性也会像增加近战物理伤
 		},
 		Alternate1 = {
 			{ "base_cast_speed_+%", -0.5 },
-		
 			{ "damage_+%", 2 },
 		},
 		Alternate2 = {
@@ -2488,7 +2477,6 @@ description = "辅助近战攻击技能",
 	qualityStats = {
 		Default = {
 			{ "melee_physical_damage_+%", 0.5 },
-		
 			{ "chance_to_intimidate_on_hit_%", 0.5 },
 		},
 	},
@@ -2673,7 +2661,6 @@ description = "辅助近战攻击技能, 使该技能在使用时被自动重复
 		},
 		Alternate1 = {
 			{ "attack_speed_+%", -1 },
-		
 			{ "multistrike_area_of_effect_+%_per_repeat", 1 },
 		},
 		Alternate2 = {
@@ -2763,7 +2750,6 @@ description = "辅助近战攻击技能，使该技能在使用时自动重复�
 	qualityStats = {
 		Default = {
 			{ "melee_physical_damage_+%", 0.5 },
-		
 			{ "attack_speed_+%", 0.5 },
 		},
 	},
@@ -2902,7 +2888,6 @@ description = "辅助近战攻击技能",
 		},
 		Alternate2 = {
 			{ "support_pulverise_attack_speed_+%_final", -0.5 },
-		
 			{ "support_pulverise_melee_area_damage_+%_final", 1 },
 		},
 	},
@@ -3101,46 +3086,46 @@ description = "辅助任意弓类或法杖技能，改为召唤一个弩炮图�
 		"is_ranged_attack_totem",
 	},
 	levels = {
-		[1] = { 1, 8000, 60, -42, -50, 2, 200, manaMultiplier = 20, levelRequirement = 8, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[2] = { 1, 8000, 60, -42, -50, 2, 200, manaMultiplier = 20, levelRequirement = 10, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[3] = { 1, 8000, 60, -41, -50, 2, 200, manaMultiplier = 20, levelRequirement = 13, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[4] = { 1, 8000, 60, -41, -50, 2, 200, manaMultiplier = 20, levelRequirement = 17, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[5] = { 1, 8000, 60, -40, -50, 2, 200, manaMultiplier = 20, levelRequirement = 21, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[6] = { 1, 8000, 60, -40, -50, 2, 200, manaMultiplier = 20, levelRequirement = 25, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[7] = { 1, 8000, 60, -39, -50, 2, 200, manaMultiplier = 20, levelRequirement = 29, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[8] = { 1, 8000, 60, -39, -50, 2, 200, manaMultiplier = 20, levelRequirement = 33, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[9] = { 1, 8000, 60, -38, -50, 2, 200, manaMultiplier = 20, levelRequirement = 37, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[10] = { 1, 8000, 60, -38, -50, 2, 200, manaMultiplier = 20, levelRequirement = 40, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[11] = { 1, 8000, 60, -37, -50, 2, 200, manaMultiplier = 20, levelRequirement = 43, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[12] = { 1, 8000, 60, -37, -50, 2, 200, manaMultiplier = 20, levelRequirement = 46, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[13] = { 1, 8000, 60, -36, -50, 2, 200, manaMultiplier = 20, levelRequirement = 49, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[14] = { 1, 8000, 60, -36, -50, 2, 200, manaMultiplier = 20, levelRequirement = 52, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[15] = { 1, 8000, 60, -35, -50, 2, 200, manaMultiplier = 20, levelRequirement = 55, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[16] = { 1, 8000, 60, -35, -50, 2, 200, manaMultiplier = 20, levelRequirement = 58, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[17] = { 1, 8000, 60, -34, -50, 2, 200, manaMultiplier = 20, levelRequirement = 61, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[18] = { 1, 8000, 60, -34, -50, 2, 200, manaMultiplier = 20, levelRequirement = 64, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[19] = { 1, 8000, 60, -33, -50, 2, 200, manaMultiplier = 20, levelRequirement = 67, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[20] = { 1, 8000, 60, -33, -50, 2, 200, manaMultiplier = 20, levelRequirement = 70, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[21] = { 1, 8000, 60, -33, -50, 2, 200, manaMultiplier = 20, levelRequirement = 72, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[22] = { 1, 8000, 60, -32, -50, 2, 200, manaMultiplier = 20, levelRequirement = 74, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[23] = { 1, 8000, 60, -32, -50, 2, 200, manaMultiplier = 20, levelRequirement = 76, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[24] = { 1, 8000, 60, -31, -50, 2, 200, manaMultiplier = 20, levelRequirement = 78, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[25] = { 1, 8000, 60, -31, -50, 2, 200, manaMultiplier = 20, levelRequirement = 80, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[26] = { 1, 8000, 60, -30, -50, 2, 200, manaMultiplier = 20, levelRequirement = 82, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[27] = { 1, 8000, 60, -30, -50, 2, 200, manaMultiplier = 20, levelRequirement = 84, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[28] = { 1, 8000, 60, -29, -50, 2, 200, manaMultiplier = 20, levelRequirement = 86, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[29] = { 1, 8000, 60, -29, -50, 2, 200, manaMultiplier = 20, levelRequirement = 88, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[30] = { 1, 8000, 60, -28, -50, 2, 200, manaMultiplier = 20, levelRequirement = 90, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[31] = { 1, 8000, 60, -28, -50, 2, 200, manaMultiplier = 20, levelRequirement = 91, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[32] = { 1, 8000, 60, -28, -50, 2, 200, manaMultiplier = 20, levelRequirement = 92, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[33] = { 1, 8000, 60, -28, -50, 2, 200, manaMultiplier = 20, levelRequirement = 93, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[34] = { 1, 8000, 60, -27, -50, 2, 200, manaMultiplier = 20, levelRequirement = 94, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[35] = { 1, 8000, 60, -27, -50, 2, 200, manaMultiplier = 20, levelRequirement = 95, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[36] = { 1, 8000, 60, -27, -50, 2, 200, manaMultiplier = 20, levelRequirement = 96, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[37] = { 1, 8000, 60, -27, -50, 2, 200, manaMultiplier = 20, levelRequirement = 97, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[38] = { 1, 8000, 60, -26, -50, 2, 200, manaMultiplier = 20, levelRequirement = 98, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[39] = { 1, 8000, 60, -26, -50, 2, 200, manaMultiplier = 20, levelRequirement = 99, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
-		[40] = { 1, 8000, 60, -26, -50, 2, 200, manaMultiplier = 20, levelRequirement = 100, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[1] = { 1, 8000, 60, -32, -50, 2, 200, manaMultiplier = 20, levelRequirement = 8, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[2] = { 1, 8000, 60, -31, -50, 2, 200, manaMultiplier = 20, levelRequirement = 10, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[3] = { 1, 8000, 60, -31, -50, 2, 200, manaMultiplier = 20, levelRequirement = 13, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[4] = { 1, 8000, 60, -30, -50, 2, 200, manaMultiplier = 20, levelRequirement = 17, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[5] = { 1, 8000, 60, -29, -50, 2, 200, manaMultiplier = 20, levelRequirement = 21, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[6] = { 1, 8000, 60, -29, -50, 2, 200, manaMultiplier = 20, levelRequirement = 25, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[7] = { 1, 8000, 60, -28, -50, 2, 200, manaMultiplier = 20, levelRequirement = 29, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[8] = { 1, 8000, 60, -28, -50, 2, 200, manaMultiplier = 20, levelRequirement = 33, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[9] = { 1, 8000, 60, -27, -50, 2, 200, manaMultiplier = 20, levelRequirement = 37, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[10] = { 1, 8000, 60, -26, -50, 2, 200, manaMultiplier = 20, levelRequirement = 40, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[11] = { 1, 8000, 60, -26, -50, 2, 200, manaMultiplier = 20, levelRequirement = 43, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[12] = { 1, 8000, 60, -25, -50, 2, 200, manaMultiplier = 20, levelRequirement = 46, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[13] = { 1, 8000, 60, -24, -50, 2, 200, manaMultiplier = 20, levelRequirement = 49, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[14] = { 1, 8000, 60, -24, -50, 2, 200, manaMultiplier = 20, levelRequirement = 52, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[15] = { 1, 8000, 60, -23, -50, 2, 200, manaMultiplier = 20, levelRequirement = 55, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[16] = { 1, 8000, 60, -23, -50, 2, 200, manaMultiplier = 20, levelRequirement = 58, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[17] = { 1, 8000, 60, -22, -50, 2, 200, manaMultiplier = 20, levelRequirement = 61, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[18] = { 1, 8000, 60, -21, -50, 2, 200, manaMultiplier = 20, levelRequirement = 64, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[19] = { 1, 8000, 60, -21, -50, 2, 200, manaMultiplier = 20, levelRequirement = 67, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[20] = { 1, 8000, 60, -20, -50, 2, 200, manaMultiplier = 20, levelRequirement = 70, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[21] = { 1, 8000, 60, -19, -50, 2, 200, manaMultiplier = 20, levelRequirement = 72, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[22] = { 1, 8000, 60, -19, -50, 2, 200, manaMultiplier = 20, levelRequirement = 74, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[23] = { 1, 8000, 60, -18, -50, 2, 200, manaMultiplier = 20, levelRequirement = 76, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[24] = { 1, 8000, 60, -17, -50, 2, 200, manaMultiplier = 20, levelRequirement = 78, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[25] = { 1, 8000, 60, -17, -50, 2, 200, manaMultiplier = 20, levelRequirement = 80, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[26] = { 1, 8000, 60, -16, -50, 2, 200, manaMultiplier = 20, levelRequirement = 82, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[27] = { 1, 8000, 60, -16, -50, 2, 200, manaMultiplier = 20, levelRequirement = 84, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[28] = { 1, 8000, 60, -15, -50, 2, 200, manaMultiplier = 20, levelRequirement = 86, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[29] = { 1, 8000, 60, -14, -50, 2, 200, manaMultiplier = 20, levelRequirement = 88, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[30] = { 1, 8000, 60, -14, -50, 2, 200, manaMultiplier = 20, levelRequirement = 90, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[31] = { 1, 8000, 60, -13, -50, 2, 200, manaMultiplier = 20, levelRequirement = 91, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[32] = { 1, 8000, 60, -13, -50, 2, 200, manaMultiplier = 20, levelRequirement = 92, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[33] = { 1, 8000, 60, -13, -50, 2, 200, manaMultiplier = 20, levelRequirement = 93, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[34] = { 1, 8000, 60, -12, -50, 2, 200, manaMultiplier = 20, levelRequirement = 94, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[35] = { 1, 8000, 60, -12, -50, 2, 200, manaMultiplier = 20, levelRequirement = 95, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[36] = { 1, 8000, 60, -12, -50, 2, 200, manaMultiplier = 20, levelRequirement = 96, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[37] = { 1, 8000, 60, -11, -50, 2, 200, manaMultiplier = 20, levelRequirement = 97, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[38] = { 1, 8000, 60, -11, -50, 2, 200, manaMultiplier = 20, levelRequirement = 98, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[39] = { 1, 8000, 60, -11, -50, 2, 200, manaMultiplier = 20, levelRequirement = 99, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
+		[40] = { 1, 8000, 60, -11, -50, 2, 200, manaMultiplier = 20, levelRequirement = 100, statInterpolation = { 1, 1, 1, 1, 1, 1, 1, }, },
 	},
 }
 skills["SupportReducedMana"] = {
@@ -3255,7 +3240,6 @@ description = "辅助近战攻击技能. 每当第 3 次使用该技能时, 该�
 		},
 		Alternate2 = {
 			{ "attack_speed_+%", -1 },
-		
 			{ "support_ruthless_big_hit_damage_+%_final", 1 },
 		},
 	},
@@ -3635,7 +3619,6 @@ description = "辅助战吼技能。",
 		},
 		Alternate1 = {
 			{ "base_cooldown_speed_+%", -1 },
-		
 			{ "skill_buff_effect_+%", 0.5 },
 		},
 		Alternate2 = {

@@ -1,9 +1,5 @@
 return {
 	[1]={
-		stats={
-			[1]="attack_speed_+%"
-		},
-		name="attack_speed_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -20,22 +16,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物的攻击速度降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物的攻击速度降低 {0}%"
 				}
 			}
+		},
+		name="attack_speed_incr",
+		stats={
+			[1]="attack_speed_+%"
 		}
 	},
 	[2]={
-		stats={
-			[1]="accuracy_rating"
-		},
-		name="accuracy_rating",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -52,22 +48,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物的命中值 -{0}",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物的命中值 -{0}"
 				}
 			}
+		},
+		name="accuracy_rating",
+		stats={
+			[1]="accuracy_rating"
 		}
 	},
 	[3]={
-		stats={
-			[1]="accuracy_rating_+%"
-		},
-		name="accuracy_rating_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -84,22 +80,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物的命中值降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物的命中值降低 {0}%"
 				}
 			}
+		},
+		name="accuracy_rating_incr",
+		stats={
+			[1]="accuracy_rating_+%"
 		}
 	},
 	[4]={
-		stats={
-			[1]="critical_strike_chance_+%"
-		},
-		name="critical_strike_chance_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -116,22 +112,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物的暴击率降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物的暴击率降低 {0}%"
 				}
 			}
+		},
+		name="critical_strike_chance_incr",
+		stats={
+			[1]="critical_strike_chance_+%"
 		}
 	},
 	[5]={
-		stats={
-			[1]="base_critical_strike_multiplier_+"
-		},
-		name="critical_strike_multiplier_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -144,13 +140,13 @@ return {
 					text="此攻击和召唤生物获得 {0:+d}% 基础暴击伤害加成"
 				}
 			}
+		},
+		name="critical_strike_multiplier_incr",
+		stats={
+			[1]="base_critical_strike_multiplier_+"
 		}
 	},
 	[6]={
-		stats={
-			[1]="global_reduce_enemy_block_%"
-		},
-		name="reduce_block",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -163,13 +159,13 @@ return {
 					text="此攻击与召唤生物可以使敌人的攻击和法术格挡率降低 {0}%"
 				}
 			}
+		},
+		name="reduce_block",
+		stats={
+			[1]="global_reduce_enemy_block_%"
 		}
 	},
 	[7]={
-		stats={
-			[1]="life_gain_per_target"
-		},
-		name="life_gain_per_target",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -182,13 +178,13 @@ return {
 					text="此攻击与召唤生物击中回复 {0} 生命"
 				}
 			}
+		},
+		name="life_gain_per_target",
+		stats={
+			[1]="life_gain_per_target"
 		}
 	},
 	[8]={
-		stats={
-			[1]="life_leech_from_any_damage_permyriad"
-		},
-		name="life_leech_from_any",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -200,22 +196,22 @@ return {
 						k="reminderstring",
 						v="ReminderTextLifeLeech"
 					},
-					text="此攻击与召唤生物造成 {0}% 生命偷取",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="此攻击与召唤生物造成 {0}% 生命偷取"
 				}
 			}
+		},
+		name="life_leech_from_any",
+		stats={
+			[1]="life_leech_from_any_damage_permyriad"
 		}
 	},
 	[9]={
-		stats={
-			[1]="energy_shield_leech_from_any_damage_permyriad"
-		},
-		name="energy_shield_leech_from_any",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -227,22 +223,39 @@ return {
 						k="reminderstring",
 						v="ReminderTextEnergyShieldLeech"
 					},
-					text="此攻击与召唤生物造成伤害的 {0}% 转化为能量护盾偷取",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="此攻击与召唤生物造成伤害的 {0}% 转化为能量护盾偷取"
+				},
+				[2]={
+					[1]={
+						k="divide_by_one_hundred",
+						v=1
+					},
+					[2]={
+						k="reminderstring",
+						v="ReminderTextEnergyShieldLeech"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="이 공격 및 소환수가 피해의 {0}%를 에너지 보호막으로 흡수"
 				}
 			}
+		},
+		name="energy_shield_leech_from_any",
+		stats={
+			[1]="energy_shield_leech_from_any_damage_permyriad"
 		}
 	},
 	[10]={
-		stats={
-			[1]="base_global_chance_to_knockback_%"
-		},
-		name="knockback_chance",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -250,35 +263,35 @@ return {
 						k="reminderstring",
 						v="ReminderTextKnockback"
 					},
-					text="此攻击和召唤生物有额外 {0}% 几率击退敌人",
 					limit={
 						[1]={
 							[1]=1,
 							[2]=99
 						}
-					}
+					},
+					text="此攻击和召唤生物有额外 {0}% 的几率击退敌人"
 				},
 				[2]={
 					[1]={
 						k="reminderstring",
 						v="ReminderTextKnockback"
 					},
-					text="此攻击和召唤生物击中时击退敌人",
 					limit={
 						[1]={
 							[1]=100,
 							[2]="#"
 						}
-					}
+					},
+					text="此攻击和召唤生物击中时击退敌人"
 				}
 			}
+		},
+		name="knockback_chance",
+		stats={
+			[1]="base_global_chance_to_knockback_%"
 		}
 	},
 	[11]={
-		stats={
-			[1]="knockback_distance_+%"
-		},
-		name="knockback_distance",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -295,22 +308,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物的击退距离缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物的击退距离缩短 {0}%"
 				}
 			}
+		},
+		name="knockback_distance",
+		stats={
+			[1]="knockback_distance_+%"
 		}
 	},
 	[12]={
-		stats={
-			[1]="base_stun_threshold_reduction_+%"
-		},
-		name="stun_threshold_reduction_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -318,13 +331,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextStunThreshold"
 					},
-					text="此攻击与召唤生物会使敌人的晕眩门槛降低 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="此攻击与召唤生物会使敌人的晕眩门槛降低 {0}%"
 				},
 				[2]={
 					[1]={
@@ -335,22 +348,22 @@ return {
 						k="reminderstring",
 						v="ReminderTextStunThreshold"
 					},
-					text="此攻击与召唤生物会使敌人的晕眩门槛提高 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物会使敌人的晕眩门槛提高 {0}%"
 				}
 			}
+		},
+		name="stun_threshold_reduction_incr",
+		stats={
+			[1]="base_stun_threshold_reduction_+%"
 		}
 	},
 	[13]={
-		stats={
-			[1]="killed_monster_dropped_item_rarity_+%"
-		},
-		name="killed_monster_dropped_item_rarity_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -367,22 +380,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物会使物品稀有度降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物会使物品稀有度降低 {0}%"
 				}
 			}
+		},
+		name="killed_monster_dropped_item_rarity_incr",
+		stats={
+			[1]="killed_monster_dropped_item_rarity_+%"
 		}
 	},
 	[14]={
-		stats={
-			[1]="killed_monster_dropped_item_quantity_+%"
-		},
-		name="killed_monster_dropped_item_quantity_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -399,23 +412,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物会使物品掉落数量降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物会使物品掉落数量降低 {0}%"
 				}
 			}
+		},
+		name="killed_monster_dropped_item_quantity_incr",
+		stats={
+			[1]="killed_monster_dropped_item_quantity_+%"
 		}
 	},
 	[15]={
-		stats={
-			[1]="base_chance_to_freeze_%",
-			[2]="always_freeze"
-		},
-		name="freeze_chance",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -423,7 +435,6 @@ return {
 						k="reminderstring",
 						v="ReminderTextFreeze"
 					},
-					text="此攻击与召唤生物击中时必定冰冻敌人",
 					limit={
 						[1]={
 							[1]="#",
@@ -433,14 +444,14 @@ return {
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="此攻击与召唤生物击中时必定冰冻敌人"
 				},
 				[2]={
 					[1]={
 						k="reminderstring",
 						v="ReminderTextFreeze"
 					},
-					text="此攻击与召唤生物击中时有 {0}% 几率冰冻敌人",
 					limit={
 						[1]={
 							[1]=1,
@@ -450,16 +461,18 @@ return {
 							[1]=0,
 							[2]=0
 						}
-					}
+					},
+					text="此攻击与召唤生物击中时有 {0}% 的几率冰冻敌人"
 				}
 			}
+		},
+		name="freeze_chance",
+		stats={
+			[1]="base_chance_to_freeze_%",
+			[2]="always_freeze"
 		}
 	},
 	[16]={
-		stats={
-			[1]="base_chance_to_shock_%"
-		},
-		name="shock_chance",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -467,22 +480,22 @@ return {
 						k="reminderstring",
 						v="ReminderTextShock"
 					},
-					text="此攻击与召唤生物击中时有 {0}% 几率使敌人附加感电状态",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="此攻击与召唤生物击中时有 {0}% 的几率使敌人附加感电状态"
 				}
 			}
+		},
+		name="shock_chance",
+		stats={
+			[1]="base_chance_to_shock_%"
 		}
 	},
 	[17]={
-		stats={
-			[1]="base_chance_to_ignite_%"
-		},
-		name="burn_chance",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -490,22 +503,22 @@ return {
 						k="reminderstring",
 						v="ReminderTextIgnite"
 					},
-					text="此攻击与召唤生物造成的火焰伤害有 {0}% 几率点燃敌人",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="此攻击与召唤生物造成的火焰伤害有 {0}% 的几率点燃敌人"
 				}
 			}
+		},
+		name="burn_chance",
+		stats={
+			[1]="base_chance_to_ignite_%"
 		}
 	},
 	[18]={
-		stats={
-			[1]="global_hit_causes_monster_flee_%"
-		},
-		name="chance_to_flee",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -515,16 +528,16 @@ return {
 							[2]="#"
 						}
 					},
-					text="该攻击与召唤生物使怪物被击中时有 {0}% 几率使逃跑"
+					text="该攻击与召唤生物使怪物被击中时有 {0}% 的几率使逃跑"
 				}
 			}
+		},
+		name="chance_to_flee",
+		stats={
+			[1]="global_hit_causes_monster_flee_%"
 		}
 	},
 	[19]={
-		stats={
-			[1]="base_stun_duration_+%"
-		},
-		name="stun_duration_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -541,22 +554,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物对敌人的晕眩时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物对敌人的晕眩时间缩短 {0}%"
 				}
 			}
+		},
+		name="stun_duration_incr",
+		stats={
+			[1]="base_stun_duration_+%"
 		}
 	},
 	[20]={
-		stats={
-			[1]="ignite_duration_+%"
-		},
-		name="burn_duration",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -573,22 +586,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物对敌人的点燃时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物对敌人的点燃时间缩短 {0}%"
 				}
 			}
+		},
+		name="burn_duration",
+		stats={
+			[1]="ignite_duration_+%"
 		}
 	},
 	[21]={
-		stats={
-			[1]="chill_effect_+%"
-		},
-		name="chill_effect",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -605,22 +618,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物对敌人的冰缓效果降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物对敌人的冰缓效果降低 {0}%"
 				}
 			}
+		},
+		name="chill_effect",
+		stats={
+			[1]="chill_effect_+%"
 		}
 	},
 	[22]={
-		stats={
-			[1]="chill_duration_+%"
-		},
-		name="chill_duration",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -637,22 +650,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物对敌人的冰缓时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物对敌人的冰缓时间缩短 {0}%"
 				}
 			}
+		},
+		name="chill_duration",
+		stats={
+			[1]="chill_duration_+%"
 		}
 	},
 	[23]={
-		stats={
-			[1]="freeze_duration_+%"
-		},
-		name="freeze_duration",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -669,22 +682,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物对敌人的冰冻时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物对敌人的冰冻时间缩短 {0}%"
 				}
 			}
+		},
+		name="freeze_duration",
+		stats={
+			[1]="freeze_duration_+%"
 		}
 	},
 	[24]={
-		stats={
-			[1]="shock_duration_+%"
-		},
-		name="shock_duration",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -701,22 +714,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物对敌人的感电时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物对敌人的感电时间缩短 {0}%"
 				}
 			}
+		},
+		name="shock_duration",
+		stats={
+			[1]="shock_duration_+%"
 		}
 	},
 	[25]={
-		stats={
-			[1]="elemental_status_effect_aura_radius"
-		},
-		name="elemental_status_aura",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -724,22 +737,35 @@ return {
 						k="reminderstring",
 						v="ReminderTextElementalStatusAilments"
 					},
-					text="此攻击与召唤生物造成的元素异常状态，也会影响到其他附近的敌人",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="此攻击与召唤生物造成的元素异常状态，也会影响到其他附近的敌人"
+				},
+				[2]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextElementalStatusAilments"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="이 공격 또는 소환수로 인해 발생하는 원소 상태 이상이 주변의 다른 적에게 확산"
 				}
 			}
+		},
+		name="elemental_status_aura",
+		stats={
+			[1]="elemental_status_effect_aura_radius"
 		}
 	},
 	[26]={
-		stats={
-			[1]="support_ignite_proliferation_radius"
-		},
-		name="ignite_aura",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -750,15 +776,24 @@ return {
 						}
 					},
 					text="被辅助的攻击技能或召唤生物造成的点燃效果会扩散至附近的敌人"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="이 공격 또는 소환수로 인해 발생하는 점화가 주변의 다른 적에게 확산"
 				}
 			}
+		},
+		name="ignite_aura",
+		stats={
+			[1]="support_ignite_proliferation_radius"
 		}
 	},
 	[27]={
-		stats={
-			[1]="kill_enemy_on_hit_if_under_10%_life"
-		},
-		name="culling_strike",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -766,22 +801,22 @@ return {
 						k="reminderstring",
 						v="ReminderTextCullingStrike"
 					},
-					text="此攻击与召唤生物带有【终结】效果",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="此攻击与召唤生物带有【终结】效果"
 				}
 			}
+		},
+		name="culling_strike",
+		stats={
+			[1]="kill_enemy_on_hit_if_under_10%_life"
 		}
 	},
 	[28]={
-		stats={
-			[1]="keystone_point_blank"
-		},
-		name="point_blank",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -794,13 +829,13 @@ return {
 					text="此攻击与召唤生物带有【零点射击】效果"
 				}
 			}
+		},
+		name="point_blank",
+		stats={
+			[1]="keystone_point_blank"
 		}
 	},
 	[29]={
-		stats={
-			[1]="base_reduce_enemy_fire_resistance_%"
-		},
-		name="fire_penetration",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -813,13 +848,13 @@ return {
 					text="此攻击与召唤生物穿透 {0}% 火焰抗性"
 				}
 			}
+		},
+		name="fire_penetration",
+		stats={
+			[1]="base_reduce_enemy_fire_resistance_%"
 		}
 	},
 	[30]={
-		stats={
-			[1]="base_reduce_enemy_cold_resistance_%"
-		},
-		name="cold_penetration",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -832,13 +867,13 @@ return {
 					text="此攻击与召唤生物穿透 {0}% 冰冷抗性"
 				}
 			}
+		},
+		name="cold_penetration",
+		stats={
+			[1]="base_reduce_enemy_cold_resistance_%"
 		}
 	},
 	[31]={
-		stats={
-			[1]="reduce_enemy_elemental_resistance_%"
-		},
-		name="elemental_penetration",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -851,13 +886,13 @@ return {
 					text="此攻击与召唤生物穿透 {0}% 冰冷抗性"
 				}
 			}
+		},
+		name="elemental_penetration",
+		stats={
+			[1]="reduce_enemy_elemental_resistance_%"
 		}
 	},
 	[32]={
-		stats={
-			[1]="base_reduce_enemy_lightning_resistance_%"
-		},
-		name="lightning_penetration",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -870,13 +905,13 @@ return {
 					text="此攻击与召唤生物穿透 {0}% 闪电抗性"
 				}
 			}
+		},
+		name="lightning_penetration",
+		stats={
+			[1]="base_reduce_enemy_lightning_resistance_%"
 		}
 	},
 	[33]={
-		stats={
-			[1]="global_chance_to_blind_on_hit_%"
-		},
-		name="chance_to_blind",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -884,22 +919,22 @@ return {
 						k="reminderstring",
 						v="ReminderTextBlind"
 					},
-					text="此攻击与召唤生物击中时有 {0}% 几率致盲敌人",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="此攻击与召唤生物击中时有 {0}% 的几率致盲敌人"
 				}
 			}
+		},
+		name="chance_to_blind",
+		stats={
+			[1]="global_chance_to_blind_on_hit_%"
 		}
 	},
 	[34]={
-		stats={
-			[1]="blind_duration_+%"
-		},
-		name="blind_duration_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -916,22 +951,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物造成的致盲时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物造成的致盲时间缩短 {0}%"
 				}
 			}
+		},
+		name="blind_duration_incr",
+		stats={
+			[1]="blind_duration_+%"
 		}
 	},
 	[35]={
-		stats={
-			[1]="melee_splash"
-		},
-		name="base_melee_splash",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -944,13 +979,13 @@ return {
 					text="此攻击与召唤生物的近战打击技能会对周围目标造成溅射伤害"
 				}
 			}
+		},
+		name="base_melee_splash",
+		stats={
+			[1]="melee_splash"
 		}
 	},
 	[36]={
-		stats={
-			[1]="add_power_charge_on_critical_strike_%"
-		},
-		name="power_charge_on_crit_chance",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -960,7 +995,7 @@ return {
 							[2]=99
 						}
 					},
-					text="此攻击与召唤生物造成暴击时有 {0}% 几率获得暴击球"
+					text="此攻击与召唤生物造成暴击时有 {0}% 的几率获得暴击球"
 				},
 				[2]={
 					limit={
@@ -972,13 +1007,13 @@ return {
 					text="此攻击与召唤生物造成暴击时获得暴击球"
 				}
 			}
+		},
+		name="power_charge_on_crit_chance",
+		stats={
+			[1]="add_power_charge_on_critical_strike_%"
 		}
 	},
 	[37]={
-		stats={
-			[1]="support_multiple_attacks_melee_attack_speed_+%_final"
-		},
-		name="multiple_attacks_speed",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -995,22 +1030,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物的近战攻击总速度额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物的近战攻击总速度额外降低 {0}%"
 				}
 			}
+		},
+		name="multiple_attacks_speed",
+		stats={
+			[1]="support_multiple_attacks_melee_attack_speed_+%_final"
 		}
 	},
 	[38]={
-		stats={
-			[1]="base_skill_area_of_effect_+%"
-		},
-		name="area_of_effect_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1020,29 +1055,29 @@ return {
 							[2]="#"
 						}
 					},
-					text="此攻击与召唤生物会使范围效果扩大 {0}%"
+					text="此攻击与召唤生物会使效果区域扩大 {0}%"
 				},
 				[2]={
 					[1]={
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物会使范围效果缩小 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物会使效果区域缩小 {0}%"
 				}
 			}
+		},
+		name="area_of_effect_incr",
+		stats={
+			[1]="base_skill_area_of_effect_+%"
 		}
 	},
 	[39]={
-		stats={
-			[1]="support_concentrated_effect_skill_area_of_effect_+%_final"
-		},
-		name="concentrated_area_of_effect",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1059,22 +1094,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物会使效果总范围额外缩小 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物会使效果总范围额外缩小 {0}%"
 				}
 			}
+		},
+		name="concentrated_area_of_effect",
+		stats={
+			[1]="support_concentrated_effect_skill_area_of_effect_+%_final"
 		}
 	},
 	[40]={
-		stats={
-			[1]="burn_damage_+%"
-		},
-		name="burn_damage",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1091,23 +1126,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物会使燃烧伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物会使燃烧伤害降低 {0}%"
 				}
 			}
+		},
+		name="burn_damage",
+		stats={
+			[1]="burn_damage_+%"
 		}
 	},
 	[41]={
-		stats={
-			[1]="gain_endurance_charge_on_melee_stun",
-			[2]="gain_endurance_charge_on_melee_stun_%"
-		},
-		name="endurance_charge_on_stun",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1150,13 +1184,14 @@ return {
 					text="此攻击和召唤生物使用近战伤害晕眩敌人时获得耐力球"
 				}
 			}
+		},
+		name="endurance_charge_on_stun",
+		stats={
+			[1]="gain_endurance_charge_on_melee_stun",
+			[2]="gain_endurance_charge_on_melee_stun_%"
 		}
 	},
 	[42]={
-		stats={
-			[1]="attack_speed_+%_when_on_low_life"
-		},
-		name="attack_speed_incr_on_low_life",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1164,13 +1199,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextLowLife"
 					},
-					text="濒血时攻击与召唤生物的攻击速度提高 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="濒血时攻击与召唤生物的攻击速度提高 {0}%"
 				},
 				[2]={
 					[1]={
@@ -1181,22 +1216,22 @@ return {
 						k="reminderstring",
 						v="ReminderTextLowLife"
 					},
-					text="濒血时攻击与召唤生物的攻击速度降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="濒血时攻击与召唤生物的攻击速度降低 {0}%"
 				}
 			}
+		},
+		name="attack_speed_incr_on_low_life",
+		stats={
+			[1]="attack_speed_+%_when_on_low_life"
 		}
 	},
 	[43]={
-		stats={
-			[1]="support_attack_totem_attack_speed_+%_final"
-		},
-		name="totem_attack_speed",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1213,22 +1248,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物的总攻击速度额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物的总攻击速度额外降低 {0}%"
 				}
 			}
+		},
+		name="totem_attack_speed",
+		stats={
+			[1]="support_attack_totem_attack_speed_+%_final"
 		}
 	},
 	[44]={
-		stats={
-			[1]="support_bloodlust_melee_physical_damage_+%_final_vs_bleeding_enemies"
-		},
-		name="bloodlust_damage",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1245,22 +1280,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物攻击流血敌人时，近战物理总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物攻击流血敌人时，近战物理总伤害额外降低 {0}%"
 				}
 			}
+		},
+		name="bloodlust_damage",
+		stats={
+			[1]="support_bloodlust_melee_physical_damage_+%_final_vs_bleeding_enemies"
 		}
 	},
 	[45]={
-		stats={
-			[1]="melee_damage_vs_bleeding_enemies_+%"
-		},
-		name="bloodlust_damage_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1277,22 +1312,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物对流血的敌人降低 {0}% 近战伤害",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物对流血的敌人降低 {0}% 近战伤害"
 				}
 			}
+		},
+		name="bloodlust_damage_incr",
+		stats={
+			[1]="melee_damage_vs_bleeding_enemies_+%"
 		}
 	},
 	[46]={
-		stats={
-			[1]="chance_to_fortify_on_melee_hit_+%"
-		},
-		name="chance_to_fortify_on_melee_hit",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1300,35 +1335,35 @@ return {
 						k="reminderstring",
 						v="ReminderTextFortify"
 					},
-					text="此攻击与召唤生物在近战击中时有 {0}% 几率获得护体效果",
 					limit={
 						[1]={
 							[1]=1,
 							[2]=99
 						}
-					}
+					},
+					text="此攻击与召唤生物在近战击中时有 {0}% 的几率获得护体效果"
 				},
 				[2]={
 					[1]={
 						k="reminderstring",
 						v="ReminderTextFortify"
 					},
-					text="此攻击与召唤生物在近战击中时会获得护体效果",
 					limit={
 						[1]={
 							[1]=100,
 							[2]="#"
 						}
-					}
+					},
+					text="此攻击与召唤生物在近战击中时会获得护体效果"
 				}
 			}
+		},
+		name="chance_to_fortify_on_melee_hit",
+		stats={
+			[1]="chance_to_fortify_on_melee_hit_+%"
 		}
 	},
 	[47]={
-		stats={
-			[1]="additional_chance_to_freeze_chilled_enemies_%"
-		},
-		name="freeze_chance_vs_chilled",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1336,22 +1371,22 @@ return {
 						k="reminderstring",
 						v="ReminderTextFreeze"
 					},
-					text="此攻击与召唤生物有 {0:d}% 几率冰冻被冰缓的敌人",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="此攻击与召唤生物有 {0:d}% 的几率冰冻被冰缓的敌人"
 				}
 			}
+		},
+		name="freeze_chance_vs_chilled",
+		stats={
+			[1]="additional_chance_to_freeze_chilled_enemies_%"
 		}
 	},
 	[48]={
-		stats={
-			[1]="support_hypothermia_damage_+%_vs_chilled_enemies_final"
-		},
-		name="hypothermia_damage",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1359,13 +1394,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="此攻击与召唤生物攻击被冰缓的敌人时，击中和异常状态总伤害额外提高 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="此攻击与召唤生物攻击被冰缓的敌人时，击中和异常状态总伤害额外提高 {0}%"
 				},
 				[2]={
 					[1]={
@@ -1376,21 +1411,22 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="此攻击与召唤生物攻击被冰缓的敌人时，击中和异常状态总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物攻击被冰缓的敌人时，击中和异常状态总伤害额外降低 {0}%"
 				}
 			}
+		},
+		name="hypothermia_damage",
+		stats={
+			[1]="support_hypothermia_damage_+%_vs_chilled_enemies_final"
 		}
 	},
 	[49]={
-		stats={
-			[1]="support_spirit_strike_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1407,21 +1443,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此技能和召唤生物造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此技能和召唤生物造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_spirit_strike_damage_+%_final"
 		}
 	},
 	[50]={
-		stats={
-			[1]="support_trap_and_mine_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1438,22 +1474,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物的陷阱与地雷总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物的陷阱与地雷总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_trap_and_mine_damage_+%_final"
 		}
 	},
 	[51]={
-		stats={
-			[1]="support_better_ailments_ailment_damage_+%_final"
-		},
-		name="support_better_ailments_bonus",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1461,13 +1496,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="此攻击和召唤生物额外提高 {0}% 异常状态总伤害",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="此攻击和召唤生物额外提高 {0}% 异常状态总伤害"
 				},
 				[2]={
 					[1]={
@@ -1478,22 +1513,52 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="此攻击和召唤生物额外降低 {0}% 异常状态总伤害",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击和召唤生物额外降低 {0}% 异常状态总伤害"
+				},
+				[3]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextDamagingAilments"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="이 공격 및 소환수가 주는 상태 이상 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					[2]={
+						k="reminderstring",
+						v="ReminderTextDamagingAilments"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="이 공격 및 소환수가 주는 상태 이상 피해 {0}% 감폭"
 				}
 			}
+		},
+		name="support_better_ailments_bonus",
+		stats={
+			[1]="support_better_ailments_ailment_damage_+%_final"
 		}
 	},
 	[52]={
-		stats={
-			[1]="support_better_ailments_hit_damage_+%_final"
-		},
-		name="support_better_ailments_malus",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1510,22 +1575,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击和召唤生物的击中总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击和召唤生物的击中总伤害额外降低 {0}%"
 				}
 			}
+		},
+		name="support_better_ailments_malus",
+		stats={
+			[1]="support_better_ailments_hit_damage_+%_final"
 		}
 	},
 	[53]={
-		stats={
-			[1]="support_chance_to_ignite_fire_damage_+%_final"
-		},
-		name="support_chance_to_ignite_damage",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1542,22 +1607,44 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击和召唤生物的火焰总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击和召唤生物的火焰总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="이 공격 및 소환수가 주는 화염 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="이 공격 및 소환수가 주는 화염 피해 {0}% 감폭"
 				}
 			}
+		},
+		name="support_chance_to_ignite_damage",
+		stats={
+			[1]="support_chance_to_ignite_fire_damage_+%_final"
 		}
 	},
 	[54]={
-		stats={
-			[1]="support_ignite_prolif_ignite_damage_+%_final"
-		},
-		name="ignite_prolif_damage",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1574,22 +1661,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击和召唤生物的点燃总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击和召唤生物的点燃总伤害额外降低 {0}%"
 				}
 			}
+		},
+		name="ignite_prolif_damage",
+		stats={
+			[1]="support_ignite_prolif_ignite_damage_+%_final"
 		}
 	},
 	[55]={
-		stats={
-			[1]="support_rapid_decay_damage_over_time_+%_final"
-		},
-		name="rapid_decay",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1606,23 +1693,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤物的持续性总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤物的持续性总伤害额外降低 {0}%"
 				}
 			}
+		},
+		name="rapid_decay",
+		stats={
+			[1]="support_rapid_decay_damage_over_time_+%_final"
 		}
 	},
 	[56]={
-		stats={
-			[1]="support_debilitate_hit_damage_+%_final_per_poison_stack",
-			[2]="support_debilitate_hit_damage_max_poison_stacks"
-		},
-		name="support_debilitate_hit_damage",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1643,7 +1729,6 @@ return {
 						k="negate",
 						v=1
 					},
-					text="敌人每有一层中毒效果，此攻击和召唤生物的击中总伤害就额外降低 {0}%，最多 {1}",
 					limit={
 						[1]={
 							[1]="#",
@@ -1653,16 +1738,18 @@ return {
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="敌人每有一层中毒效果，此攻击和召唤生物的击中总伤害就额外降低 {0}%，最多 {1}"
 				}
 			}
+		},
+		name="support_debilitate_hit_damage",
+		stats={
+			[1]="support_debilitate_hit_damage_+%_final_per_poison_stack",
+			[2]="support_debilitate_hit_damage_max_poison_stacks"
 		}
 	},
 	[57]={
-		stats={
-			[1]="support_debilitate_poison_damage_+%_final"
-		},
-		name="support_debilitate_poison_damage",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1679,22 +1766,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击和召唤生物的中毒总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击和召唤生物的中毒总伤害额外降低 {0}%"
 				}
 			}
+		},
+		name="support_debilitate_poison_damage",
+		stats={
+			[1]="support_debilitate_poison_damage_+%_final"
 		}
 	},
 	[58]={
-		stats={
-			[1]="support_efficacy_damage_over_time_+%_final"
-		},
-		name="support_efficacy_dot",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1711,22 +1798,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤物的持续性总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤物的持续性总伤害额外降低 {0}%"
 				}
 			}
+		},
+		name="support_efficacy_dot",
+		stats={
+			[1]="support_efficacy_damage_over_time_+%_final"
 		}
 	},
 	[59]={
-		stats={
-			[1]="support_poison_poison_damage_+%_final"
-		},
-		name="support_poison_poison_damage",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1743,22 +1830,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击和召唤生物的中毒总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击和召唤生物的中毒总伤害额外降低 {0}%"
 				}
 			}
+		},
+		name="support_poison_poison_damage",
+		stats={
+			[1]="support_poison_poison_damage_+%_final"
 		}
 	},
 	[60]={
-		stats={
-			[1]="support_gem_elemental_damage_+%_final"
-		},
-		name="elemental_focus_damage",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1775,22 +1862,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击和召唤生物的元素总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击和召唤生物的元素总伤害额外降低 {0}%"
 				}
 			}
+		},
+		name="elemental_focus_damage",
+		stats={
+			[1]="support_gem_elemental_damage_+%_final"
 		}
 	},
 	[61]={
-		stats={
-			[1]="cannot_inflict_status_ailments"
-		},
-		name="cannot_inflict_ailments",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1798,22 +1885,35 @@ return {
 						k="reminderstring",
 						v="ReminderTextElementalStatusAilments"
 					},
-					text="此攻击和召唤生物无法造成元素异常状态",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="此攻击和召唤生物无法造成元素异常状态"
+				},
+				[2]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextElementalStatusAilments"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="이 공격 및 소환수 원소 상태 이상 유발 불가"
 				}
 			}
+		},
+		name="cannot_inflict_ailments",
+		stats={
+			[1]="cannot_inflict_status_ailments"
 		}
 	},
 	[62]={
-		stats={
-			[1]="damage_over_time_+%"
-		},
-		name="damage_over_time_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1830,22 +1930,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击和召唤生物的持续性伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击和召唤生物的持续性伤害降低 {0}%"
 				}
 			}
+		},
+		name="damage_over_time_incr",
+		stats={
+			[1]="damage_over_time_+%"
 		}
 	},
 	[63]={
-		stats={
-			[1]="global_poison_on_hit"
-		},
-		name="poison_on_hit",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1853,22 +1953,22 @@ return {
 						k="reminderstring",
 						v="ReminderTextPoison"
 					},
-					text="此攻击和召唤生物击中时会使敌人中毒",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="此攻击和召唤生物击中时会使敌人中毒"
 				}
 			}
+		},
+		name="poison_on_hit",
+		stats={
+			[1]="global_poison_on_hit"
 		}
 	},
 	[64]={
-		stats={
-			[1]="base_poison_damage_+%"
-		},
-		name="poison_damage",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1876,13 +1976,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextPoison"
 					},
-					text="此攻击和召唤生物造成的中毒伤害提高 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="此攻击和召唤生物造成的中毒伤害提高 {0}%"
 				},
 				[2]={
 					[1]={
@@ -1893,22 +1993,22 @@ return {
 						k="reminderstring",
 						v="ReminderTextPoison"
 					},
-					text="此攻击和召唤生物造成的中毒伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击和召唤生物造成的中毒伤害降低 {0}%"
 				}
 			}
+		},
+		name="poison_damage",
+		stats={
+			[1]="base_poison_damage_+%"
 		}
 	},
 	[65]={
-		stats={
-			[1]="base_poison_duration_+%"
-		},
-		name="poison_duration",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1925,22 +2025,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击和召唤生物造成的中毒持续时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击和召唤生物造成的中毒持续时间缩短 {0}%"
 				}
 			}
+		},
+		name="poison_duration",
+		stats={
+			[1]="base_poison_duration_+%"
 		}
 	},
 	[66]={
-		stats={
-			[1]="melee_splash_area_of_effect_+%_final"
-		},
-		name="melee_splash_radius",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1957,22 +2057,44 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击和召唤生物的近战溅射总范围额外缩小 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击和召唤生物的近战溅射总范围额外缩小 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="이 공격 및 소환수의 근접 범위 피해 효과 범위가 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="이 공격 및 소환수의 근접 범위 피해 효과 범위가 {0}% 감폭"
 				}
 			}
+		},
+		name="melee_splash_radius",
+		stats={
+			[1]="melee_splash_area_of_effect_+%_final"
 		}
 	},
 	[67]={
-		stats={
-			[1]="chance_to_summon_support_ghost_on_killing_blow_%"
-		},
-		name="ghost_chance",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1982,7 +2104,7 @@ return {
 							[2]=99
 						}
 					},
-					text="当此技能或非幻灵召唤生物击败敌人时，有 {0}% 几率召唤 1 个幻灵"
+					text="当此技能或非幻灵召唤生物击败敌人时，有 {0}% 的几率召唤 1 个幻灵"
 				},
 				[2]={
 					limit={
@@ -1994,13 +2116,13 @@ return {
 					text="当此技能或非幻灵召唤生物击败敌人时，召唤 1 个幻灵"
 				}
 			}
+		},
+		name="ghost_chance",
+		stats={
+			[1]="chance_to_summon_support_ghost_on_killing_blow_%"
 		}
 	},
 	[68]={
-		stats={
-			[1]="max_number_of_dominated_normal_monsters"
-		},
-		name="num_normal_dominated",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2020,15 +2142,33 @@ return {
 						}
 					},
 					text="最多召唤 {0} 个【普通统御哨兵】"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]=1
+						}
+					},
+					text="일반 지배의 파수꾼 최대 {0}명 소환"
+				},
+				[4]={
+					limit={
+						[1]={
+							[1]=2,
+							[2]="#"
+						}
+					},
+					text="일반 지배의 파수꾼 최대 {0}명 소환"
 				}
 			}
+		},
+		name="num_normal_dominated",
+		stats={
+			[1]="max_number_of_dominated_normal_monsters"
 		}
 	},
 	[69]={
-		stats={
-			[1]="max_number_of_dominated_magic_monsters"
-		},
-		name="num_magic_dominated",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2048,15 +2188,33 @@ return {
 						}
 					},
 					text="最多召唤 {0} 个【魔法统御哨兵】"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]=1
+						}
+					},
+					text="마법 지배의 파수꾼 최대 {0}명 소환"
+				},
+				[4]={
+					limit={
+						[1]={
+							[1]=2,
+							[2]="#"
+						}
+					},
+					text="마법 지배의 파수꾼 최대 {0}명 소환"
 				}
 			}
+		},
+		name="num_magic_dominated",
+		stats={
+			[1]="max_number_of_dominated_magic_monsters"
 		}
 	},
 	[70]={
-		stats={
-			[1]="max_number_of_dominated_rare_monsters"
-		},
-		name="num_rare_dominated",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2076,15 +2234,33 @@ return {
 						}
 					},
 					text="最多召唤 {0} 个【稀有统御哨兵】"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]=1
+						}
+					},
+					text="희귀 지배의 파수꾼 최대 {0}명 소환"
+				},
+				[4]={
+					limit={
+						[1]={
+							[1]=2,
+							[2]="#"
+						}
+					},
+					text="희귀 지배의 파수꾼 최대 {0}명 소환"
 				}
 			}
+		},
+		name="num_rare_dominated",
+		stats={
+			[1]="max_number_of_dominated_rare_monsters"
 		}
 	},
 	[71]={
-		stats={
-			[1]="support_ruthless_big_hit_max_count"
-		},
-		name="support_ruthless_count",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2097,13 +2273,13 @@ return {
 					text="此攻击技能或召唤生物每打出 3 次近战攻击，就会触发 1 次【无情一击】"
 				}
 			}
+		},
+		name="support_ruthless_count",
+		stats={
+			[1]="support_ruthless_big_hit_max_count"
 		}
 	},
 	[72]={
-		stats={
-			[1]="support_ruthless_big_hit_damage_+%_final"
-		},
-		name="support_ruthless_damage",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2116,13 +2292,13 @@ return {
 					text="此攻击技能或召唤生物的【无情一击】会使近战总伤害额外提高 {0}%"
 				}
 			}
+		},
+		name="support_ruthless_damage",
+		stats={
+			[1]="support_ruthless_big_hit_damage_+%_final"
 		}
 	},
 	[73]={
-		stats={
-			[1]="support_ruthless_blow_bleeding_damage_from_melee_hits_+%_final"
-		},
-		name="support_ruthless_bleeding_damage",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2135,13 +2311,13 @@ return {
 					text="此攻击技能或召唤生物的近战攻击击中时，所触发的【无情一击】会使流血总伤害额外提高 {0}%"
 				}
 			}
+		},
+		name="support_ruthless_bleeding_damage",
+		stats={
+			[1]="support_ruthless_blow_bleeding_damage_from_melee_hits_+%_final"
 		}
 	},
 	[74]={
-		stats={
-			[1]="support_ruthless_big_hit_stun_base_duration_override_ms"
-		},
-		name="support_ruthless_stun",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2149,22 +2325,22 @@ return {
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="此攻击技能或召唤生物的【无情一击】有 {0} 秒基础晕眩时间",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="此攻击技能或召唤生物的【无情一击】有 {0} 秒基础晕眩时间"
 				}
 			}
+		},
+		name="support_ruthless_stun",
+		stats={
+			[1]="support_ruthless_big_hit_stun_base_duration_override_ms"
 		}
 	},
 	[75]={
-		stats={
-			[1]="attack_skill_mana_leech_from_any_damage_permyriad"
-		},
-		name="mana_leech_from_any",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2176,22 +2352,39 @@ return {
 						k="reminderstring",
 						v="ReminderTextManaLeech"
 					},
-					text="此攻击与召唤生物的攻击技能造成 {0}% 魔力偷取",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="此攻击与召唤生物的攻击技能造成 {0}% 魔力偷取"
+				},
+				[2]={
+					[1]={
+						k="divide_by_one_hundred",
+						v=1
+					},
+					[2]={
+						k="reminderstring",
+						v="ReminderTextManaLeech"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="이 공격 및 소환수의 공격 스킬이 피해의 {0}%를 마나로 흡수"
 				}
 			}
+		},
+		name="mana_leech_from_any",
+		stats={
+			[1]="attack_skill_mana_leech_from_any_damage_permyriad"
 		}
 	},
 	[76]={
-		stats={
-			[1]="attacks_impale_on_hit_%_chance"
-		},
-		name="attack_impale_chance",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2199,35 +2392,35 @@ return {
 						k="reminderstring",
 						v="ReminderTextImpale"
 					},
-					text="该攻击和召唤生物的攻击击中时有 {0}% 几率穿刺敌人",
 					limit={
 						[1]={
 							[1]=1,
 							[2]=99
 						}
-					}
+					},
+					text="该攻击和召唤生物的攻击击中时有 {0}% 的几率穿刺敌人"
 				},
 				[2]={
 					[1]={
 						k="reminderstring",
 						v="ReminderTextImpale"
 					},
-					text="该攻击和召唤生物的攻击击中时总是穿刺敌人",
 					limit={
 						[1]={
 							[1]=100,
 							[2]="#"
 						}
-					}
+					},
+					text="该攻击和召唤生物的攻击击中时总是穿刺敌人"
 				}
 			}
+		},
+		name="attack_impale_chance",
+		stats={
+			[1]="attacks_impale_on_hit_%_chance"
 		}
 	},
 	[77]={
-		stats={
-			[1]="base_chance_to_poison_on_hit_%"
-		},
-		name="poison_chance",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2235,35 +2428,35 @@ return {
 						k="reminderstring",
 						v="ReminderTextPoison"
 					},
-					text="此攻击和召唤生物击中敌人后有 {0}% 几率使其中毒",
 					limit={
 						[1]={
 							[1]=1,
 							[2]=99
 						}
-					}
+					},
+					text="此攻击和召唤生物击中敌人后有 {0}% 的几率使其中毒"
 				},
 				[2]={
 					[1]={
 						k="reminderstring",
 						v="ReminderTextPoison"
 					},
-					text="此攻击和召唤生物击中敌人后会使其中毒",
 					limit={
 						[1]={
 							[1]=100,
 							[2]="#"
 						}
-					}
+					},
+					text="此攻击和召唤生物击中敌人后会使其中毒"
 				}
 			}
+		},
+		name="poison_chance",
+		stats={
+			[1]="base_chance_to_poison_on_hit_%"
 		}
 	},
 	[78]={
-		stats={
-			[1]="base_deal_no_chaos_damage"
-		},
-		name="deal_no_chaos",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2276,13 +2469,13 @@ return {
 					text="此攻击和召唤生物无法造成混沌伤害"
 				}
 			}
+		},
+		name="deal_no_chaos",
+		stats={
+			[1]="base_deal_no_chaos_damage"
 		}
 	},
 	[79]={
-		stats={
-			[1]="base_life_leech_from_chaos_damage_permyriad"
-		},
-		name="life_leech_from_chaos_damage",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2294,24 +2487,22 @@ return {
 						k="reminderstring",
 						v="ReminderTextLifeLeech"
 					},
-					text="该攻击和召唤生物将混沌伤害的 {0}% 转化为生命偷取",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="该攻击和召唤生物将混沌伤害的 {0}% 转化为生命偷取"
 				}
 			}
+		},
+		name="life_leech_from_chaos_damage",
+		stats={
+			[1]="base_life_leech_from_chaos_damage_permyriad"
 		}
 	},
 	[80]={
-		stats={
-			[1]="bleed_on_hit_with_attacks_%",
-			[2]="global_bleed_on_hit",
-			[3]="cannot_cause_bleeding"
-		},
-		name="bleeding_chance",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2319,7 +2510,6 @@ return {
 						k="reminderstring",
 						v="ReminderTextBleeding"
 					},
-					text="此攻击和召唤生物有 {0}% 几率造成流血",
 					limit={
 						[1]={
 							[1]=1,
@@ -2333,14 +2523,14 @@ return {
 							[1]=0,
 							[2]=0
 						}
-					}
+					},
+					text="此攻击和召唤生物有 {0}% 的几率造成流血"
 				},
 				[2]={
 					[1]={
 						k="reminderstring",
 						v="ReminderTextBleeding"
 					},
-					text="此攻击和召唤生物击中时造成流血",
 					limit={
 						[1]={
 							[1]=100,
@@ -2354,14 +2544,14 @@ return {
 							[1]=0,
 							[2]=0
 						}
-					}
+					},
+					text="此攻击和召唤生物击中时造成流血"
 				},
 				[3]={
 					[1]={
 						k="reminderstring",
 						v="ReminderTextBleeding"
 					},
-					text="此攻击和召唤生物击中时造成流血",
 					limit={
 						[1]={
 							[1]="#",
@@ -2375,7 +2565,8 @@ return {
 							[1]=0,
 							[2]=0
 						}
-					}
+					},
+					text="此攻击和召唤生物击中时造成流血"
 				},
 				[4]={
 					limit={
@@ -2395,13 +2586,15 @@ return {
 					text="此攻击和召唤生物无法造成流血"
 				}
 			}
+		},
+		name="bleeding_chance",
+		stats={
+			[1]="bleed_on_hit_with_attacks_%",
+			[2]="global_bleed_on_hit",
+			[3]="cannot_cause_bleeding"
 		}
 	},
 	[81]={
-		stats={
-			[1]="chance_to_fork_extra_projectile_%"
-		},
-		name="chance_to_fork_extra_projectile",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2411,16 +2604,16 @@ return {
 							[2]="#"
 						}
 					},
-					text="召唤生物发射的投射物分叉时，有 {0}% 几率产生一枚额外投射物"
+					text="召唤生物发射的投射物分叉时，有 {0}% 的几率产生一枚额外投射物"
 				}
 			}
+		},
+		name="chance_to_fork_extra_projectile",
+		stats={
+			[1]="chance_to_fork_extra_projectile_%"
 		}
 	},
 	[82]={
-		stats={
-			[1]="cold_ailment_effect_+%"
-		},
-		name="cold_ailment_effect_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2428,13 +2621,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextColdAilments"
 					},
-					text="T该攻击和召唤生物的冰霜异常状态效果提高 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="T该攻击和召唤生物的冰霜异常状态效果提高 {0}%"
 				},
 				[2]={
 					[1]={
@@ -2445,22 +2638,22 @@ return {
 						k="reminderstring",
 						v="ReminderTextColdAilments"
 					},
-					text="该攻击和召唤生物的冰霜异常状态效果降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="该攻击和召唤生物的冰霜异常状态效果降低 {0}%"
 				}
 			}
+		},
+		name="cold_ailment_effect_incr",
+		stats={
+			[1]="cold_ailment_effect_+%"
 		}
 	},
 	[83]={
-		stats={
-			[1]="critical_strike_chance_+%_vs_blinded_enemies"
-		},
-		name="critical_strike_chance_incr_vs_blinded_enemies",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2477,22 +2670,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="对抗目盲的敌人时，该攻击和召唤生物的暴击率降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="对抗目盲的敌人时，该攻击和召唤生物的暴击率降低 {0}%"
 				}
 			}
+		},
+		name="critical_strike_chance_incr_vs_blinded_enemies",
+		stats={
+			[1]="critical_strike_chance_+%_vs_blinded_enemies"
 		}
 	},
 	[84]={
-		stats={
-			[1]="damage_+%_vs_enemies_per_freeze_shock_ignite"
-		},
-		name="damage_incr_per_ailment",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2500,13 +2693,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="敌人身上每种冻结、感电、点燃效果都使该攻击和召唤生物的击中和异常状态伤害提高 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="敌人身上每种冻结、感电、点燃效果都使该攻击和召唤生物的击中和异常状态伤害提高 {0}%"
 				},
 				[2]={
 					[1]={
@@ -2517,22 +2710,22 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="敌人身上每种冻结、感电、点燃效果都使该攻击和召唤生物的击中和异常状态伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="敌人身上每种冻结、感电、点燃效果都使该攻击和召唤生物的击中和异常状态伤害降低 {0}%"
 				}
 			}
+		},
+		name="damage_incr_per_ailment",
+		stats={
+			[1]="damage_+%_vs_enemies_per_freeze_shock_ignite"
 		}
 	},
 	[85]={
-		stats={
-			[1]="damage_+%_while_es_leeching"
-		},
-		name="damage_while_es_leeching",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2549,22 +2742,44 @@ return {
 						k="negate",
 						v=1
 					},
-					text="偷取能量护盾时，此攻击和召唤生物造成的伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="偷取能量护盾时，此攻击和召唤生物造成的伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="에너지 보호막을 흡수하는 동안 이 공격 및 소환수가 주는 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="에너지 보호막을 흡수하는 동안 이 공격 및 소환수가 주는 피해 {0}% 감소"
 				}
 			}
+		},
+		name="damage_while_es_leeching",
+		stats={
+			[1]="damage_+%_while_es_leeching"
 		}
 	},
 	[86]={
-		stats={
-			[1]="damage_+%_while_life_leeching"
-		},
-		name="damage_while_life_leeching",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2581,22 +2796,44 @@ return {
 						k="negate",
 						v=1
 					},
-					text="偷取生命时，此攻击和召唤生物的伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="偷取生命时，此攻击和召唤生物的伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="생명력을 흡수하는 동안 이 공격 및 소환수가 주는 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="생명력을 흡수하는 동안 이 공격 및 소환수가 주는 피해 {0}% 감소"
 				}
 			}
+		},
+		name="damage_while_life_leeching",
+		stats={
+			[1]="damage_+%_while_life_leeching"
 		}
 	},
 	[87]={
-		stats={
-			[1]="damage_+%_while_mana_leeching"
-		},
-		name="damage_while_mana_leeching",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2613,22 +2850,44 @@ return {
 						k="negate",
 						v=1
 					},
-					text="偷取魔力时，此攻击和召唤生物的伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="偷取魔力时，此攻击和召唤生物的伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="마나를 흡수하는 동안 이 공격 및 소환수가 주는 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="마나를 흡수하는 동안 이 공격 및 소환수가 주는 피해 {0}% 감소"
 				}
 			}
+		},
+		name="damage_while_mana_leeching",
+		stats={
+			[1]="damage_+%_while_mana_leeching"
 		}
 	},
 	[88]={
-		stats={
-			[1]="damage_vs_cursed_enemies_per_enemy_curse_+%"
-		},
-		name="damage_per_enemy_curse_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2636,13 +2895,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="敌人身上的每个诅咒都使该攻击和召唤生物的击中和异常状态伤害提高 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="敌人身上的每个诅咒都使该攻击和召唤生物的击中和异常状态伤害提高 {0}%"
 				},
 				[2]={
 					[1]={
@@ -2653,22 +2912,22 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="敌人身上的每个诅咒都使该攻击和召唤生物的击中和异常状态伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="敌人身上的每个诅咒都使该攻击和召唤生物的击中和异常状态伤害降低 {0}%"
 				}
 			}
+		},
+		name="damage_per_enemy_curse_incr",
+		stats={
+			[1]="damage_vs_cursed_enemies_per_enemy_curse_+%"
 		}
 	},
 	[89]={
-		stats={
-			[1]="damage_vs_enemies_on_low_life_+%"
-		},
-		name="damage_vs_enemies_on_low_life_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2681,13 +2940,13 @@ return {
 					text="对抗低血敌人时，该攻击和召唤生物的击中伤害提高 {0}%"
 				}
 			}
+		},
+		name="damage_vs_enemies_on_low_life_incr",
+		stats={
+			[1]="damage_vs_enemies_on_low_life_+%"
 		}
 	},
 	[90]={
-		stats={
-			[1]="damaging_ailments_deal_damage_+%_faster"
-		},
-		name="damaging_ailments_deal_damage_faster",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2695,22 +2954,22 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="由该攻击或召唤生物造成的伤害施加的伤害型异常状态生效速度加快 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="由该攻击或召唤生物造成的伤害施加的伤害型异常状态生效速度加快 {0}%"
 				}
 			}
+		},
+		name="damaging_ailments_deal_damage_faster",
+		stats={
+			[1]="damaging_ailments_deal_damage_+%_faster"
 		}
 	},
 	[91]={
-		stats={
-			[1]="deal_chaos_damage_per_second_for_10_seconds_on_hit"
-		},
-		name="decay_on_hit",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2723,13 +2982,13 @@ return {
 					text="此攻击和召唤生物击中时附加腐蚀状态，每秒造成 {0} 混沌伤害，持续 8 秒"
 				}
 			}
+		},
+		name="decay_on_hit",
+		stats={
+			[1]="deal_chaos_damage_per_second_for_10_seconds_on_hit"
 		}
 	},
 	[92]={
-		stats={
-			[1]="deal_no_elemental_damage"
-		},
-		name="deal_no_elemental",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2742,13 +3001,13 @@ return {
 					text="此攻击和召唤生物无法造成元素伤害"
 				}
 			}
+		},
+		name="deal_no_elemental",
+		stats={
+			[1]="deal_no_elemental_damage"
 		}
 	},
 	[93]={
-		stats={
-			[1]="dominating_blow_chance_to_summon_on_hitting_unqiue_%"
-		},
-		name="dom_blow_unique_chance",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2758,7 +3017,7 @@ return {
 							[2]=99
 						}
 					},
-					text="击中传奇敌人时，有 {0}% 几率召唤 1 个【统御哨兵】"
+					text="击中传奇敌人时，有 {0}% 的几率召唤 1 个【统御哨兵】"
 				},
 				[2]={
 					limit={
@@ -2768,15 +3027,33 @@ return {
 						}
 					},
 					text="击中传奇敌人时召唤 1 个【统御哨兵】"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]=99
+						}
+					},
+					text="고유 몬스터 명중 시 {0}%의 확률로 일반 지배의 파수꾼 1명 소환"
+				},
+				[4]={
+					limit={
+						[1]={
+							[1]=100,
+							[2]="#"
+						}
+					},
+					text="고유 몬스터 명중 시 일반 지배의 파수꾼 1명 소환"
 				}
 			}
+		},
+		name="dom_blow_unique_chance",
+		stats={
+			[1]="dominating_blow_chance_to_summon_on_hitting_unqiue_%"
 		}
 	},
 	[94]={
-		stats={
-			[1]="enemies_you_shock_take_%_increased_physical_damage"
-		},
-		name="shocked_enemy_physical_damage",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2793,21 +3070,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="若敌人的感电来自该攻击和召唤生物，则它们承受的物理伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="若敌人的感电来自该攻击和召唤生物，则它们承受的物理伤害降低 {0}%"
 				}
 			}
+		},
+		name="shocked_enemy_physical_damage",
+		stats={
+			[1]="enemies_you_shock_take_%_increased_physical_damage"
 		}
 	},
 	[95]={
-		stats={
-			[1]="enemy_phys_reduction_%_penalty_vs_hit"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2815,22 +3093,68 @@ return {
 						k="reminderstring",
 						v="ReminderTextOverwhelm"
 					},
-					text="该攻击和召唤生物压制 {0}% 物理伤害减免",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="该攻击和召唤生物压制 {0}% 物理伤害减免"
 				}
 			}
+		},
+		stats={
+			[1]="enemy_phys_reduction_%_penalty_vs_hit"
 		}
 	},
 	[96]={
-		stats={
-			[1]="ignites_apply_fire_resistance_+"
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]=99
+						}
+					},
+					text="该攻击和召唤生物以致命一击击败一名至少中毒 5 层的敌人时，有 {0}% 的几率获得一个狂怒球"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]=100,
+							[2]="#"
+						}
+					},
+					text="该攻击和召唤生物以致命一击击败一名至少中毒 5 层的敌人时获得一个狂怒球"
+				}
+			}
 		},
-		name="ignites_apply_fire_res",
+		name="frenzy_on_kill_blow_vs_5_poison",
+		stats={
+			[1]="gain_frenzy_charge_on_killing_blow_vs_enemies_with_5+_poisons_%"
+		}
+	},
+	[97]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="该攻击和召唤生物有 {0}% 的几率在致命一击时获得一个暴击球"
+				}
+			}
+		},
+		name="gain_power_charge_on_kill_chance",
+		stats={
+			[1]="gain_power_charge_on_kill_with_hit_%"
+		}
+	},
+	[98]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2843,13 +3167,13 @@ return {
 					text="被此攻击或召唤生物点燃的敌人，其火焰抗性提高 {0:+d}%"
 				}
 			}
+		},
+		name="ignites_apply_fire_res",
+		stats={
+			[1]="ignites_apply_fire_resistance_+"
 		}
 	},
-	[97]={
-		stats={
-			[1]="impale_debuff_effect_+%"
-		},
-		name="impale_effect",
+	[99]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2866,21 +3190,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="该攻击和召唤生物的攻击使穿刺效果缩小 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="该攻击和召唤生物的攻击使穿刺效果缩小 {0}%"
 				}
 			}
+		},
+		name="impale_effect",
+		stats={
+			[1]="impale_debuff_effect_+%"
 		}
 	},
-	[98]={
-		stats={
-			[1]="impale_phys_reduction_%_penalty"
-		},
+	[100]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2888,22 +3213,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextOverwhelm"
 					},
-					text="该技能和召唤生物对已穿刺的敌人造成的穿刺伤害压制 {0}% 物理伤害减免",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="该技能和召唤生物对已穿刺的敌人造成的穿刺伤害压制 {0}% 物理伤害减免"
 				}
 			}
+		},
+		stats={
+			[1]="impale_phys_reduction_%_penalty"
 		}
 	},
-	[99]={
-		stats={
-			[1]="impale_support_physical_damage_+%_final"
-		},
-		name="impale_phys_damage",
+	[101]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2914,15 +3238,24 @@ return {
 						}
 					},
 					text="此攻击和召唤生物造成的物理总伤害额外提高 {0}%"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="이 공격 및 소환수가 주는 물리 피해 {0}% 증폭"
 				}
 			}
+		},
+		name="impale_phys_damage",
+		stats={
+			[1]="impale_support_physical_damage_+%_final"
 		}
 	},
-	[100]={
-		stats={
-			[1]="knockback_chance_%_at_close_range"
-		},
-		name="close_range_knockback",
+	[102]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2932,16 +3265,16 @@ return {
 							[2]="#"
 						}
 					},
-					text="该攻击和召唤生物近程击中时有 {0}% 几率击退敌人"
+					text="该攻击和召唤生物近程击中时有 {0}% 的几率击退敌人"
 				}
 			}
+		},
+		name="close_range_knockback",
+		stats={
+			[1]="knockback_chance_%_at_close_range"
 		}
 	},
-	[101]={
-		stats={
-			[1]="lightning_ailment_effect_+%"
-		},
-		name="lightning_ailment_effect_incr",
+	[103]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2949,13 +3282,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextLightningAilments"
 					},
-					text="该攻击和召唤生物的闪电异常状态效果提高 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="该攻击和召唤生物的闪电异常状态效果提高 {0}%"
 				},
 				[2]={
 					[1]={
@@ -2966,22 +3299,22 @@ return {
 						k="reminderstring",
 						v="ReminderTextLightningAilments"
 					},
-					text="该攻击和召唤生物的闪电异常状态效果降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="该攻击和召唤生物的闪电异常状态效果降低 {0}%"
 				}
 			}
+		},
+		name="lightning_ailment_effect_incr",
+		stats={
+			[1]="lightning_ailment_effect_+%"
 		}
 	},
-	[102]={
-		stats={
-			[1]="maim_on_hit_%"
-		},
-		name="maim_chance",
+	[104]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2991,7 +3324,7 @@ return {
 							[2]=99
 						}
 					},
-					text="此攻击和召唤生物击中敌人时有 {0}% 几率使其瘫痪"
+					text="此攻击和召唤生物击中敌人时有 {0}% 的几率使其瘫痪"
 				},
 				[2]={
 					limit={
@@ -3003,13 +3336,13 @@ return {
 					text="此攻击和召唤生物击中敌人时会使其瘫痪"
 				}
 			}
+		},
+		name="maim_chance",
+		stats={
+			[1]="maim_on_hit_%"
 		}
 	},
-	[103]={
-		stats={
-			[1]="virtual_number_of_spirit_strikes"
-		},
-		name="number_of_spirit_strikes",
+	[105]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3031,13 +3364,13 @@ return {
 					text="该技能可以额外设置 {0} 个周围的敌人为目标"
 				}
 			}
+		},
+		name="number_of_spirit_strikes",
+		stats={
+			[1]="virtual_number_of_spirit_strikes"
 		}
 	},
-	[104]={
-		stats={
-			[1]="multistrike_area_of_effect_+%_per_repeat"
-		},
-		name="multistrike_area_of_effect_per_repeat",
+	[106]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3054,22 +3387,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="该攻击和召唤生物的近战攻击每次重复都使效果区域缩小 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="该攻击和召唤生物的近战攻击每次重复都使效果区域缩小 {0}%"
 				}
 			}
+		},
+		name="multistrike_area_of_effect_per_repeat",
+		stats={
+			[1]="multistrike_area_of_effect_+%_per_repeat"
 		}
 	},
-	[105]={
-		stats={
-			[1]="multistrike_damage_+%_final_on_first_repeat"
-		},
-		name="multistrike_first_repeat_damage",
+	[107]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3086,22 +3419,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击和召唤生物重复的第一个近战攻击造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击和召唤生物重复的第一个近战攻击造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		name="multistrike_first_repeat_damage",
+		stats={
+			[1]="multistrike_damage_+%_final_on_first_repeat"
 		}
 	},
-	[106]={
-		stats={
-			[1]="multistrike_damage_+%_final_on_second_repeat"
-		},
-		name="multistrike_second_repeat_damage",
+	[108]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3118,22 +3451,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击和召唤生物重复的第二个近战攻击造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击和召唤生物重复的第二个近战攻击造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		name="multistrike_second_repeat_damage",
+		stats={
+			[1]="multistrike_damage_+%_final_on_second_repeat"
 		}
 	},
-	[107]={
-		stats={
-			[1]="multistrike_damage_+%_final_on_third_repeat"
-		},
-		name="multistrike_third_repeat_damage",
+	[109]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3150,22 +3483,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="该攻击和召唤生物近战攻击的第三次重复造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="该攻击和召唤生物近战攻击的第三次重复造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		name="multistrike_third_repeat_damage",
+		stats={
+			[1]="multistrike_damage_+%_final_on_third_repeat"
 		}
 	},
-	[108]={
-		stats={
-			[1]="projectile_damage_+%_if_pierced_enemy"
-		},
-		name="proj_damage_if_pierced",
+	[110]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3182,22 +3515,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="该攻击和召唤生物的贯穿投射物的伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="该攻击和召唤生物的贯穿投射物的伤害降低 {0}%"
 				}
 			}
+		},
+		name="proj_damage_if_pierced",
+		stats={
+			[1]="projectile_damage_+%_if_pierced_enemy"
 		}
 	},
-	[109]={
-		stats={
-			[1]="reduce_enemy_chaos_resistance_%"
-		},
-		name="chaos_penetration",
+	[111]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3210,13 +3543,13 @@ return {
 					text="该攻击和召唤生物穿透 {0}% 混沌抗性"
 				}
 			}
+		},
+		name="chaos_penetration",
+		stats={
+			[1]="reduce_enemy_chaos_resistance_%"
 		}
 	},
-	[110]={
-		stats={
-			[1]="support_brutality_physical_damage_+%_final"
-		},
-		name="brutality_phys_damage",
+	[112]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3233,22 +3566,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击和召唤生物的物理总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击和召唤生物的物理总伤害额外降低 {0}%"
 				}
 			}
+		},
+		name="brutality_phys_damage",
+		stats={
+			[1]="support_brutality_physical_damage_+%_final"
 		}
 	},
-	[111]={
-		stats={
-			[1]="support_chills_also_grant_cold_damage_taken_per_minute_+%"
-		},
-		name="support_chills_incr_cold_dot_taken",
+	[113]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3265,22 +3598,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被该技能或召唤生物所冰缓的敌人，其受到的冰霜持续伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被该技能或召唤生物所冰缓的敌人，其受到的冰霜持续伤害降低 {0}%"
 				}
 			}
+		},
+		name="support_chills_incr_cold_dot_taken",
+		stats={
+			[1]="support_chills_also_grant_cold_damage_taken_per_minute_+%"
 		}
 	},
-	[112]={
-		stats={
-			[1]="support_chills_also_grant_cold_damage_taken_+%_equal_to_slow_amount"
-		},
-		name="support_chills_incr_cold_damage_taken",
+	[114]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3293,13 +3626,13 @@ return {
 					text="被该技能或召唤生物冰缓的敌人，在冰缓效果下所受到的冰霜伤害提高"
 				}
 			}
+		},
+		name="support_chills_incr_cold_damage_taken",
+		stats={
+			[1]="support_chills_also_grant_cold_damage_taken_+%_equal_to_slow_amount"
 		}
 	},
-	[113]={
-		stats={
-			[1]="support_energy_shield_leech_damage_+%_while_leeching_energy_shield_final"
-		},
-		name="damage_while_es_leeching_more",
+	[115]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3316,22 +3649,44 @@ return {
 						k="negate",
 						v=1
 					},
-					text="偷取能量护盾时，此攻击和召唤生物造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="偷取能量护盾时，此攻击和召唤生物造成的总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="에너지 보호막을 흡수하는 동안 이 공격 및 소환수가 주는 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="에너지 보호막을 흡수하는 동안 이 공격 및 소환수가 주는 피해 {0}% 감폭"
 				}
 			}
+		},
+		name="damage_while_es_leeching_more",
+		stats={
+			[1]="support_energy_shield_leech_damage_+%_while_leeching_energy_shield_final"
 		}
 	},
-	[114]={
-		stats={
-			[1]="support_hypothermia_cold_damage_over_time_+%_final"
-		},
-		name="hypothermia_cold_damage",
+	[116]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3348,22 +3703,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤物的持续性冰霜总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤物的持续性冰霜总伤害额外降低 {0}%"
 				}
 			}
+		},
+		name="hypothermia_cold_damage",
+		stats={
+			[1]="support_hypothermia_cold_damage_over_time_+%_final"
 		}
 	},
-	[115]={
-		stats={
-			[1]="support_maimed_enemies_physical_damage_taken_+%"
-		},
-		name="maimed_phys_damage_taken_incr",
+	[117]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3380,23 +3735,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被此攻击和召唤生物瘫痪的敌人，所受到的物理总伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被此攻击和召唤生物瘫痪的敌人，所受到的物理总伤害降低 {0}%"
 				}
 			}
+		},
+		name="maimed_phys_damage_taken_incr",
+		stats={
+			[1]="support_maimed_enemies_physical_damage_taken_+%"
 		}
 	},
-	[116]={
-		stats={
-			[1]="global_minimum_added_fire_damage_vs_burning_enemies",
-			[2]="global_maximum_added_fire_damage_vs_burning_enemies"
-		},
-		name="added_fire_against_burning",
+	[118]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3413,13 +3767,14 @@ return {
 					text="此攻击和召唤生物对燃烧的敌人附加 {0} - {1} 火焰伤害"
 				}
 			}
+		},
+		name="added_fire_against_burning",
+		stats={
+			[1]="global_minimum_added_fire_damage_vs_burning_enemies",
+			[2]="global_maximum_added_fire_damage_vs_burning_enemies"
 		}
 	},
-	[117]={
-		stats={
-			[1]="support_power_charge_on_crit_damage_+%_final_per_power_charge"
-		},
-		name="power_charge_on_crit_damage",
+	[119]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3436,22 +3791,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="每个暴击球可使此攻击与召唤物的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="每个暴击球可使此攻击与召唤物的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		name="power_charge_on_crit_damage",
+		stats={
+			[1]="support_power_charge_on_crit_damage_+%_final_per_power_charge"
 		}
 	},
-	[118]={
-		stats={
-			[1]="support_pulverise_area_of_effect_+%_final"
-		},
-		name="pulverise_area_of_effect",
+	[120]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3461,29 +3816,29 @@ return {
 							[2]="#"
 						}
 					},
-					text="此攻击与召唤生物会使总范围效果额外扩大 {0}% "
+					text="此攻击与召唤生物会使总效果区域额外扩大 {0}% "
 				},
 				[2]={
 					[1]={
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物会使总范围效果额外缩小 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物会使总效果区域额外缩小 {0}%"
 				}
 			}
+		},
+		name="pulverise_area_of_effect",
+		stats={
+			[1]="support_pulverise_area_of_effect_+%_final"
 		}
 	},
-	[119]={
-		stats={
-			[1]="support_pulverise_attack_speed_+%_final"
-		},
-		name="pulverise_attack_speed",
+	[121]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3500,22 +3855,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击与召唤生物的总攻击速度额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击与召唤生物的总攻击速度额外降低 {0}%"
 				}
 			}
+		},
+		name="pulverise_attack_speed",
+		stats={
+			[1]="support_pulverise_attack_speed_+%_final"
 		}
 	},
-	[120]={
-		stats={
-			[1]="support_pulverise_melee_area_damage_+%_final"
-		},
-		name="pulverise_melee_area_damage",
+	[122]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3532,22 +3887,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="此攻击和召唤生物的近战范围总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="此攻击和召唤生物的近战范围总伤害额外降低 {0}%"
 				}
 			}
+		},
+		name="pulverise_melee_area_damage",
+		stats={
+			[1]="support_pulverise_melee_area_damage_+%_final"
 		}
 	},
-	[121]={
-		stats={
-			[1]="support_reduce_enemy_block_and_spell_block_%"
-		},
-		name="support_reduced_block_chance",
+	[123]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3560,13 +3915,13 @@ return {
 					text="敌人格挡来自该技能或召唤生物的攻击伤害或法术伤害的几率 -{0}%"
 				}
 			}
+		},
+		name="support_reduced_block_chance",
+		stats={
+			[1]="support_reduce_enemy_block_and_spell_block_%"
 		}
 	},
-	[122]={
-		stats={
-			[1]="support_reduce_enemy_dodge_and_spell_dodge_%"
-		},
-		name="support_reduced_dodge_chance",
+	[124]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3579,37 +3934,13 @@ return {
 					text="敌人躲避来自该技能或召唤生物的攻击击中或法术击中的几率 -{0}%"
 				}
 			}
+		},
+		name="support_reduced_dodge_chance",
+		stats={
+			[1]="support_reduce_enemy_dodge_and_spell_dodge_%"
 		}
 	},
-	[123]={
-		stats={
-			[1]="support_scion_onslaught_for_3_seconds_on_hitting_unique_enemy_%_chance"
-		},
-		name="support_scion_unique_chance",
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					[1]={
-						k="reminderstring",
-						v="ReminderTextOnslaught"
-					},
-					text="击中稀有或传奇敌人时，此技能和召唤生物有 {0}% 几率获得【猛攻】效果，持续 3 秒",
-					limit={
-						[1]={
-							[1]="#",
-							[2]="#"
-						}
-					}
-				}
-			}
-		}
-	},
-	[124]={
-		stats={
-			[1]="support_scion_onslaught_on_killing_blow_%_chance",
-			[2]="support_scion_onslaught_on_killing_blow_duration_ms"
-		},
-		name="support_scion_chance",
+	[125]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3621,7 +3952,6 @@ return {
 						k="reminderstring",
 						v="ReminderTextOnslaught"
 					},
-					text="此攻击和召唤生物击败敌人时，有 {0}% 几率获得持续 {1} 秒的【猛攻】状态",
 					limit={
 						[1]={
 							[1]="#",
@@ -3631,15 +3961,55 @@ return {
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="你击中传奇敌人时，该攻击和召唤生物有 {0}% 的几率获得 {1} 秒猛攻"
 				}
 			}
+		},
+		name="support_scion_unique_chance",
+		stats={
+			[1]="support_scion_onslaught_for_3_seconds_on_hitting_unique_enemy_%_chance",
+			[2]="support_scion_onslaught_on_unique_hit_duration_ms"
 		}
 	},
-	[125]={
-		stats={
-			[1]="support_slashing_damage_+%_final_from_distance"
+	[126]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					[1]={
+						k="milliseconds_to_seconds",
+						v=3
+					},
+					[2]={
+						k="reminderstring",
+						v="ReminderTextOnslaught"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						},
+						[2]={
+							[1]="#",
+							[2]="#"
+						},
+						[3]={
+							[1]="!",
+							[2]=0
+						}
+					},
+					text="该攻击和召唤生物造成致命一击时，\n有 {0}% 的几率获得 {2} 秒猛攻"
+				}
+			}
 		},
+		name="support_scion_chance",
+		stats={
+			[1]="support_scion_onslaught_on_killing_blow_%_chance",
+			[2]="support_scion_onslaught_on_killing_blow_duration_ms",
+			[3]="virtual_support_scion_onslaught_on_killing_blow_duration_ms"
+		}
+	},
+	[127]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3652,13 +4022,12 @@ return {
 					text="被辅助技能基于距离对敌人的总近战伤害最多额外提高 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_slashing_damage_+%_final_from_distance"
 		}
 	},
-	[126]={
-		stats={
-			[1]="withered_on_hit_chance_%"
-		},
-		name="withered_on_hit_chance",
+	[128]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3666,162 +4035,170 @@ return {
 						k="reminderstring",
 						v="ReminderTextWithered"
 					},
-					text="此攻击和召唤生物击中敌人后有 {0}% 几率造成【死亡凋零】",
 					limit={
 						[1]={
 							[1]=1,
 							[2]=99
 						}
-					}
+					},
+					text="此攻击和召唤生物击中敌人后有 {0}% 的几率造成【死亡凋零】"
 				},
 				[2]={
 					[1]={
 						k="reminderstring",
 						v="ReminderTextWithered"
 					},
-					text="此攻击和召唤生物击中敌人后造成【死亡凋零】",
 					limit={
 						[1]={
 							[1]=100,
 							[2]="#"
 						}
-					}
+					},
+					text="此攻击和召唤生物击中敌人后造成【死亡凋零】"
 				}
 			}
+		},
+		name="withered_on_hit_chance",
+		stats={
+			[1]="withered_on_hit_chance_%"
 		}
 	},
-	parent="minion_skill_stat_descriptions",
-	["max_number_of_dominated_magic_monsters"]=69,
-	["support_gem_elemental_damage_+%_final"]=60,
-	["enemy_phys_reduction_%_penalty_vs_hit"]=95,
-	["support_ruthless_big_hit_max_count"]=71,
-	["support_chance_to_ignite_fire_damage_+%_final"]=53,
-	["enemies_you_shock_take_%_increased_physical_damage"]=94,
-	["gain_endurance_charge_on_melee_stun"]=41,
-	["support_brutality_physical_damage_+%_final"]=110,
-	["multistrike_damage_+%_final_on_third_repeat"]=107,
-	["keystone_point_blank"]=28,
-	["support_hypothermia_cold_damage_over_time_+%_final"]=114,
-	["damage_+%_while_mana_leeching"]=87,
-	["support_ignite_prolif_ignite_damage_+%_final"]=54,
-	["base_poison_duration_+%"]=65,
-	["additional_chance_to_freeze_chilled_enemies_%"]=47,
-	["gain_endurance_charge_on_melee_stun_%"]=41,
-	["melee_splash"]=35,
-	["critical_strike_chance_+%"]=4,
-	["base_chance_to_freeze_%"]=15,
-	["elemental_status_effect_aura_radius"]=25,
 	["accuracy_rating"]=2,
-	["shock_duration_+%"]=24,
-	["support_poison_poison_damage_+%_final"]=59,
-	["damage_vs_cursed_enemies_per_enemy_curse_+%"]=88,
-	["impale_debuff_effect_+%"]=97,
-	["base_critical_strike_multiplier_+"]=5,
-	["reduce_enemy_chaos_resistance_%"]=109,
-	["melee_damage_vs_bleeding_enemies_+%"]=45,
-	["chill_duration_+%"]=22,
-	["blind_duration_+%"]=34,
-	["damage_over_time_+%"]=62,
-	["support_rapid_decay_damage_over_time_+%_final"]=55,
-	["base_reduce_enemy_lightning_resistance_%"]=32,
-	["support_attack_totem_attack_speed_+%_final"]=43,
-	["attack_speed_+%_when_on_low_life"]=42,
-	["chill_effect_+%"]=21,
-	["support_pulverise_area_of_effect_+%_final"]=118,
-	["base_reduce_enemy_fire_resistance_%"]=29,
-	["support_pulverise_attack_speed_+%_final"]=119,
-	["support_debilitate_hit_damage_max_poison_stacks"]=56,
-	["burn_damage_+%"]=40,
-	["global_maximum_added_fire_damage_vs_burning_enemies"]=116,
-	["life_leech_from_any_damage_permyriad"]=8,
-	["cannot_inflict_status_ailments"]=61,
-	["base_stun_duration_+%"]=19,
-	["dominating_blow_chance_to_summon_on_hitting_unqiue_%"]=93,
-	["support_better_ailments_ailment_damage_+%_final"]=51,
-	["support_concentrated_effect_skill_area_of_effect_+%_final"]=39,
-	["support_pulverise_melee_area_damage_+%_final"]=120,
-	["support_ruthless_blow_bleeding_damage_from_melee_hits_+%_final"]=73,
-	["base_skill_area_of_effect_+%"]=38,
-	["support_better_ailments_hit_damage_+%_final"]=52,
-	["support_hypothermia_damage_+%_vs_chilled_enemies_final"]=48,
-	["melee_splash_area_of_effect_+%_final"]=66,
-	["killed_monster_dropped_item_rarity_+%"]=13,
-	["life_gain_per_target"]=7,
-	["damage_vs_enemies_on_low_life_+%"]=89,
-	["support_debilitate_hit_damage_+%_final_per_poison_stack"]=56,
-	["global_bleed_on_hit"]=80,
-	["attacks_impale_on_hit_%_chance"]=76,
-	["damaging_ailments_deal_damage_+%_faster"]=90,
-	["support_reduce_enemy_block_and_spell_block_%"]=121,
-	["base_chance_to_shock_%"]=16,
-	["ignites_apply_fire_resistance_+"]=96,
-	["support_chills_also_grant_cold_damage_taken_+%_equal_to_slow_amount"]=112,
-	["support_scion_onslaught_for_3_seconds_on_hitting_unique_enemy_%_chance"]=123,
-	["reduce_enemy_elemental_resistance_%"]=31,
-	["attack_skill_mana_leech_from_any_damage_permyriad"]=75,
-	["critical_strike_chance_+%_vs_blinded_enemies"]=83,
-	["withered_on_hit_chance_%"]=126,
-	["support_slashing_damage_+%_final_from_distance"]=125,
-	["damage_+%_while_es_leeching"]=85,
-	["support_scion_onslaught_on_killing_blow_%_chance"]=124,
-	["support_reduce_enemy_dodge_and_spell_dodge_%"]=122,
-	["base_deal_no_chaos_damage"]=78,
-	["lightning_ailment_effect_+%"]=101,
-	["kill_enemy_on_hit_if_under_10%_life"]=27,
-	["support_ruthless_big_hit_stun_base_duration_override_ms"]=74,
-	["global_chance_to_blind_on_hit_%"]=33,
 	["accuracy_rating_+%"]=3,
-	["impale_phys_reduction_%_penalty"]=98,
-	["knockback_chance_%_at_close_range"]=100,
-	["chance_to_fork_extra_projectile_%"]=81,
-	["support_bloodlust_melee_physical_damage_+%_final_vs_bleeding_enemies"]=44,
-	["global_hit_causes_monster_flee_%"]=18,
-	["base_life_leech_from_chaos_damage_permyriad"]=79,
-	["base_global_chance_to_knockback_%"]=10,
-	["bleed_on_hit_with_attacks_%"]=80,
-	["support_scion_onslaught_on_killing_blow_duration_ms"]=124,
-	["impale_support_physical_damage_+%_final"]=99,
-	["support_maimed_enemies_physical_damage_taken_+%"]=115,
-	["cold_ailment_effect_+%"]=82,
-	["chance_to_fortify_on_melee_hit_+%"]=46,
-	["damage_+%_vs_enemies_per_freeze_shock_ignite"]=84,
-	["global_poison_on_hit"]=63,
-	["damage_+%_while_life_leeching"]=86,
-	["deal_no_elemental_damage"]=92,
-	["support_ruthless_big_hit_damage_+%_final"]=72,
-	["freeze_duration_+%"]=23,
 	["add_power_charge_on_critical_strike_%"]=36,
-	["base_stun_threshold_reduction_+%"]=12,
-	["multistrike_area_of_effect_+%_per_repeat"]=104,
-	["knockback_distance_+%"]=11,
-	["base_reduce_enemy_cold_resistance_%"]=30,
-	["support_efficacy_damage_over_time_+%_final"]=58,
-	["support_power_charge_on_crit_damage_+%_final_per_power_charge"]=117,
-	["deal_chaos_damage_per_second_for_10_seconds_on_hit"]=91,
-	["attack_speed_+%"]=1,
-	["support_trap_and_mine_damage_+%_final"]=50,
-	["virtual_number_of_spirit_strikes"]=103,
-	["base_poison_damage_+%"]=64,
-	["cannot_cause_bleeding"]=80,
-	["support_debilitate_poison_damage_+%_final"]=57,
-	["max_number_of_dominated_rare_monsters"]=70,
-	["support_spirit_strike_damage_+%_final"]=49,
-	["support_ignite_proliferation_radius"]=26,
-	["base_chance_to_ignite_%"]=17,
-	["global_reduce_enemy_block_%"]=6,
-	["energy_shield_leech_from_any_damage_permyriad"]=9,
-	["base_chance_to_poison_on_hit_%"]=77,
-	["max_number_of_dominated_normal_monsters"]=68,
+	["additional_chance_to_freeze_chilled_enemies_%"]=47,
 	["always_freeze"]=15,
-	["support_multiple_attacks_melee_attack_speed_+%_final"]=37,
-	["ignite_duration_+%"]=20,
-	["support_energy_shield_leech_damage_+%_while_leeching_energy_shield_final"]=113,
-	["support_chills_also_grant_cold_damage_taken_per_minute_+%"]=111,
-	["maim_on_hit_%"]=102,
-	["multistrike_damage_+%_final_on_first_repeat"]=105,
-	["multistrike_damage_+%_final_on_second_repeat"]=106,
-	["projectile_damage_+%_if_pierced_enemy"]=108,
-	["killed_monster_dropped_item_quantity_+%"]=14,
+	["attack_skill_mana_leech_from_any_damage_permyriad"]=75,
+	["attack_speed_+%"]=1,
+	["attack_speed_+%_when_on_low_life"]=42,
+	["attacks_impale_on_hit_%_chance"]=76,
+	["base_chance_to_freeze_%"]=15,
+	["base_chance_to_ignite_%"]=17,
+	["base_chance_to_poison_on_hit_%"]=77,
+	["base_chance_to_shock_%"]=16,
+	["base_critical_strike_multiplier_+"]=5,
+	["base_deal_no_chaos_damage"]=78,
+	["base_global_chance_to_knockback_%"]=10,
+	["base_life_leech_from_chaos_damage_permyriad"]=79,
+	["base_poison_damage_+%"]=64,
+	["base_poison_duration_+%"]=65,
+	["base_reduce_enemy_cold_resistance_%"]=30,
+	["base_reduce_enemy_fire_resistance_%"]=29,
+	["base_reduce_enemy_lightning_resistance_%"]=32,
+	["base_skill_area_of_effect_+%"]=38,
+	["base_stun_duration_+%"]=19,
+	["base_stun_threshold_reduction_+%"]=12,
+	["bleed_on_hit_with_attacks_%"]=80,
+	["blind_duration_+%"]=34,
+	["burn_damage_+%"]=40,
+	["cannot_cause_bleeding"]=80,
+	["cannot_inflict_status_ailments"]=61,
+	["chance_to_fork_extra_projectile_%"]=81,
+	["chance_to_fortify_on_melee_hit_+%"]=46,
 	["chance_to_summon_support_ghost_on_killing_blow_%"]=67,
-	["global_minimum_added_fire_damage_vs_burning_enemies"]=116
+	["chill_duration_+%"]=22,
+	["chill_effect_+%"]=21,
+	["cold_ailment_effect_+%"]=82,
+	["critical_strike_chance_+%"]=4,
+	["critical_strike_chance_+%_vs_blinded_enemies"]=83,
+	["damage_+%_vs_enemies_per_freeze_shock_ignite"]=84,
+	["damage_+%_while_es_leeching"]=85,
+	["damage_+%_while_life_leeching"]=86,
+	["damage_+%_while_mana_leeching"]=87,
+	["damage_over_time_+%"]=62,
+	["damage_vs_cursed_enemies_per_enemy_curse_+%"]=88,
+	["damage_vs_enemies_on_low_life_+%"]=89,
+	["damaging_ailments_deal_damage_+%_faster"]=90,
+	["deal_chaos_damage_per_second_for_10_seconds_on_hit"]=91,
+	["deal_no_elemental_damage"]=92,
+	["dominating_blow_chance_to_summon_on_hitting_unqiue_%"]=93,
+	["elemental_status_effect_aura_radius"]=25,
+	["enemies_you_shock_take_%_increased_physical_damage"]=94,
+	["enemy_phys_reduction_%_penalty_vs_hit"]=95,
+	["energy_shield_leech_from_any_damage_permyriad"]=9,
+	["freeze_duration_+%"]=23,
+	["gain_endurance_charge_on_melee_stun"]=41,
+	["gain_endurance_charge_on_melee_stun_%"]=41,
+	["gain_frenzy_charge_on_killing_blow_vs_enemies_with_5+_poisons_%"]=96,
+	["gain_power_charge_on_kill_with_hit_%"]=97,
+	["global_bleed_on_hit"]=80,
+	["global_chance_to_blind_on_hit_%"]=33,
+	["global_hit_causes_monster_flee_%"]=18,
+	["global_maximum_added_fire_damage_vs_burning_enemies"]=118,
+	["global_minimum_added_fire_damage_vs_burning_enemies"]=118,
+	["global_poison_on_hit"]=63,
+	["global_reduce_enemy_block_%"]=6,
+	["ignite_duration_+%"]=20,
+	["ignites_apply_fire_resistance_+"]=98,
+	["impale_debuff_effect_+%"]=99,
+	["impale_phys_reduction_%_penalty"]=100,
+	["impale_support_physical_damage_+%_final"]=101,
+	["keystone_point_blank"]=28,
+	["kill_enemy_on_hit_if_under_10%_life"]=27,
+	["killed_monster_dropped_item_quantity_+%"]=14,
+	["killed_monster_dropped_item_rarity_+%"]=13,
+	["knockback_chance_%_at_close_range"]=102,
+	["knockback_distance_+%"]=11,
+	["life_gain_per_target"]=7,
+	["life_leech_from_any_damage_permyriad"]=8,
+	["lightning_ailment_effect_+%"]=103,
+	["maim_on_hit_%"]=104,
+	["max_number_of_dominated_magic_monsters"]=69,
+	["max_number_of_dominated_normal_monsters"]=68,
+	["max_number_of_dominated_rare_monsters"]=70,
+	["melee_damage_vs_bleeding_enemies_+%"]=45,
+	["melee_splash"]=35,
+	["melee_splash_area_of_effect_+%_final"]=66,
+	["multistrike_area_of_effect_+%_per_repeat"]=106,
+	["multistrike_damage_+%_final_on_first_repeat"]=107,
+	["multistrike_damage_+%_final_on_second_repeat"]=108,
+	["multistrike_damage_+%_final_on_third_repeat"]=109,
+	parent="minion_skill_stat_descriptions",
+	["projectile_damage_+%_if_pierced_enemy"]=110,
+	["reduce_enemy_chaos_resistance_%"]=111,
+	["reduce_enemy_elemental_resistance_%"]=31,
+	["shock_duration_+%"]=24,
+	["support_attack_totem_attack_speed_+%_final"]=43,
+	["support_better_ailments_ailment_damage_+%_final"]=51,
+	["support_better_ailments_hit_damage_+%_final"]=52,
+	["support_bloodlust_melee_physical_damage_+%_final_vs_bleeding_enemies"]=44,
+	["support_brutality_physical_damage_+%_final"]=112,
+	["support_chance_to_ignite_fire_damage_+%_final"]=53,
+	["support_chills_also_grant_cold_damage_taken_+%_equal_to_slow_amount"]=114,
+	["support_chills_also_grant_cold_damage_taken_per_minute_+%"]=113,
+	["support_concentrated_effect_skill_area_of_effect_+%_final"]=39,
+	["support_debilitate_hit_damage_+%_final_per_poison_stack"]=56,
+	["support_debilitate_hit_damage_max_poison_stacks"]=56,
+	["support_debilitate_poison_damage_+%_final"]=57,
+	["support_efficacy_damage_over_time_+%_final"]=58,
+	["support_energy_shield_leech_damage_+%_while_leeching_energy_shield_final"]=115,
+	["support_gem_elemental_damage_+%_final"]=60,
+	["support_hypothermia_cold_damage_over_time_+%_final"]=116,
+	["support_hypothermia_damage_+%_vs_chilled_enemies_final"]=48,
+	["support_ignite_prolif_ignite_damage_+%_final"]=54,
+	["support_ignite_proliferation_radius"]=26,
+	["support_maimed_enemies_physical_damage_taken_+%"]=117,
+	["support_multiple_attacks_melee_attack_speed_+%_final"]=37,
+	["support_poison_poison_damage_+%_final"]=59,
+	["support_power_charge_on_crit_damage_+%_final_per_power_charge"]=119,
+	["support_pulverise_area_of_effect_+%_final"]=120,
+	["support_pulverise_attack_speed_+%_final"]=121,
+	["support_pulverise_melee_area_damage_+%_final"]=122,
+	["support_rapid_decay_damage_over_time_+%_final"]=55,
+	["support_reduce_enemy_block_and_spell_block_%"]=123,
+	["support_reduce_enemy_dodge_and_spell_dodge_%"]=124,
+	["support_ruthless_big_hit_damage_+%_final"]=72,
+	["support_ruthless_big_hit_max_count"]=71,
+	["support_ruthless_big_hit_stun_base_duration_override_ms"]=74,
+	["support_ruthless_blow_bleeding_damage_from_melee_hits_+%_final"]=73,
+	["support_scion_onslaught_for_3_seconds_on_hitting_unique_enemy_%_chance"]=125,
+	["support_scion_onslaught_on_killing_blow_%_chance"]=126,
+	["support_scion_onslaught_on_killing_blow_duration_ms"]=126,
+	["support_scion_onslaught_on_unique_hit_duration_ms"]=125,
+	["support_slashing_damage_+%_final_from_distance"]=127,
+	["support_spirit_strike_damage_+%_final"]=49,
+	["support_trap_and_mine_damage_+%_final"]=50,
+	["virtual_number_of_spirit_strikes"]=105,
+	["virtual_support_scion_onslaught_on_killing_blow_duration_ms"]=126,
+	["withered_on_hit_chance_%"]=128
 }

@@ -190,6 +190,9 @@ function GemSelectClass:SortGemList(gemList)
 	end)
 end
 
+function GemSelectClass:GetQualityType(gemId)
+	return gemId and gemId:gsub(":.+","") or "Default"
+end
 function GemSelectClass:UpdateGem(setText, addUndo)
 	local gemId = self.list[m_max(self.selIndex, 1)]
 	if self.buf:match("%S") and self.gems[gemId] then
@@ -202,6 +205,7 @@ function GemSelectClass:UpdateGem(setText, addUndo)
 		self:SetText(self.gemName)
 	end
 	self.gemChangeFunc(self.gemId, addUndo and self.gemName ~= self.initialBuf)
+	self.gemChangeFunc(self.gemId and self.gemId:gsub("%w+:", ""), self:GetQualityType(self.gemId), addUndo and self.gemName ~= self.initialBuf)
 end
 
 function GemSelectClass:ScrollSelIntoView()
@@ -314,12 +318,11 @@ function GemSelectClass:Draw(viewPort)
 				-- Create gemInstance to represent the hovered gem
 				local gemInstance = gemList[self.index]
 				if gemInstance.gemData and gemInstance.gemData.defaultLevel ~= gemData.defaultLevel then
-					gemData.level = self.skillsTab.defaultGemLevel or gemData.defaultLevel or 20
+					gemInstance.level = m_min(self.skillsTab.defaultGemLevel or gemData.defaultLevel, gemData.defaultLevel + 1)
 				end
 				gemInstance.gemData = gemData
-				if not gemData.grantedEffect.levels[gemInstance.level] then
-					gemInstance.level = gemData.defaultLevel
-				end
+				-- Clear the displayEffect so it only displays the temporary gem instance
+				gemInstance.displayEffect = nil
 				-- Add hovered gem to tooltip
 				self:AddGemTooltip(gemInstance)
 				-- Calculate with the new gem
@@ -329,6 +332,7 @@ function GemSelectClass:Draw(viewPort)
 				if oldGem then
 					gemInstance.gemData = oldGem.gemData
 					gemInstance.level = oldGem.level
+					gemInstance.displayEffect = oldGem.displayEffect
 				else
 					gemList[self.index] = nil
 				end

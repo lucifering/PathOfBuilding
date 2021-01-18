@@ -960,7 +960,7 @@ local preFlagList = {
 	["^冰霜法术的"] = { keywordFlags = KeywordFlag.Cold, flags = ModFlag.Spell },
 	["^火焰法术的"] = { keywordFlags = KeywordFlag.Fire, flags = ModFlag.Spell },
 	["^法术技能的"] = {  flags = ModFlag.Spell },
-	["^位移技能的"] = {  keywordFlags = KeywordFlag.Movement },
+	["^位移技能的"] = { type = "SkillType", skillType = SkillType.MovementSkill },
 	["^持续吟唱技能造成的"] = { tag = { type = "SkillType", skillType = SkillType.Channelled } },
 	["^持续吟唱技能的"] = { tag = { type = "SkillType", skillType = SkillType.Channelled } },
 	["^持续吟唱技能"] = { tag = { type = "SkillType", skillType = SkillType.Channelled } },
@@ -1402,6 +1402,11 @@ local modTagList = {
 	["受到防卫技能增益效果影响时，"] = { tag = { type = "Condition", var = "AffectedByGuardSkill" } },
 	["被防卫技能的增益效果影响时，"] = { tag = { type = "Condition", var = "AffectedByGuardSkill" } },
 	["若近期你有施加曝露,则"] = { tag = { type = "Condition", var = "AppliedExposureRecently" } },
+	["你有热情牺牲时，"] = { tag = { type = "Condition", var = "SacrificialZeal" } },
+	["每穿透 1 个敌人，"] = { tag = { type = "PerStat", stat = "PiercedCount" } },
+	["疯狂状态下，"] = { tag = { type = "Condition", var = "InSaneInsanity" } },
+	["理智状态下，"] = { tag = { type = "Condition", var = "SaneInsanity" } },
+	["若过去 8 秒内你造成过暴击，则"] = { tag = { type = "Condition", var = "CritRecently" } },
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -4750,6 +4755,7 @@ local specialModList = {
 	 mod("ExtraAura", "LIST", { mod = mod("AvoidIgnite", "BASE", 100,{ type = "Condition", var = "OnConsecratedGround" })  }),
 	 }end,
 	["被你点燃的敌人承受的点燃伤害由火焰伤害替换为混沌伤害"] = { flag("IgniteToChaos") },
+	["被你点燃的敌人承受混沌伤害来代替火焰伤害"] = { flag("IgniteToChaos") },
 	["你施加的曝露可使敌人 (%-?%d+)%% 对应被影响的抗性"] = function(num) return { mod("ExtraExposure", "BASE", num) } end,
 	["若近期你有施加曝露,则每秒回复 (%d+)%% 最大魔力"] = function(num) return { 
 	mod("ManaRegenPercent", "BASE", num,{ type = "Condition", var = "AppliedExposureRecently" }) } end,
@@ -4765,7 +4771,7 @@ local specialModList = {
 	} end ,
 	["力量或智慧数值较低的一方，每有 1 点可使暴击几率提高 (%d+)%%"] = function(num) return { 
 			mod("CritChance", "INC", num, { type = "PerStat", stat = "Str" }, { type = "Condition", var = "IntHigherThanStr" }), 
-			mod("CritChance", "INC", num, { type = "PerStat", stat = "Int" }, { type = "Condition", var = "StrHigherThanInt" }) 
+			mod("CritChance", "INC", num, { type = "PerStat", stat = "Int" }, { type = "Condition", neg = true, var = "IntHigherThanStr" }) 
 		} end,
 	["你创建的奉献地面可使你和友军的生命再生效果也回复到能量护盾"] = function(num) return { 
 			flag("LifeRegenerationRecoversEnergyShield", { type = "Condition", var = "OnConsecratedGround"}),
@@ -4797,6 +4803,62 @@ local specialModList = {
 			flag("ColdCanShock"),
 			flag("ChaosCanShock")
 		},	
+	["你使用技能时获得热情牺牲效果，每秒造成等于其魔力消耗 %d+%% 的物理伤害"] = {
+			flag("Condition:SacrificialZeal"),
+		},
+	["你有热情牺牲时，击中压制 (%d+)%% 物理伤害减免"] = function(num) return {
+			mod("EnemyPhysicalDamageReduction", "BASE", -num, nil, { type = "Condition", var = "SacrificialZeal" }),
+		} end,
+	["每穿透 1 个敌人，投射物的伤害就提高 (%d+)%%"] = function(num) return {
+			mod("Damage", "INC", num, nil, ModFlag.Projectile,  { type = "PerStat", stat = "PiercedCount" }),
+		} end,
+	["被格挡的攻击对你造成 (%d+)%% 伤害"] = function(num) return { mod("BlockEffect", "BASE", 100 - num) } end,
+	["每 (%d+) 点命中值都附加 (%d+) 到 (%d+) 点攻击闪电伤害"] = function(_,num1,num2,num3) return {
+		mod("LightningMin", "BASE", tonumber(num2),nil,ModFlag.Attack , { type = "PerStat", stat = "Accuracy", div = tonumber(num1) }),
+		mod("LightningMax", "BASE", tonumber(num3),nil,ModFlag.Attack , { type = "PerStat", stat = "Accuracy", div = tonumber(num1) }),
+		} end,
+	["总命中值额外降低 (%d+)%%"] = function(num) return { mod("Accuracy", "MORE", -num) } end,	
+	["位移技能的的冷却恢复速度提高 (%d+)%%"]= function(num) return {  mod("CooldownRecovery", "INC", num,{ type = "SkillType", skillType = SkillType.MovementSkill })  } end,
+	["主手攻击伤害降低 (%d+)%%"] = function(num) return { mod("Damage", "INC", -num,nil,ModFlag.Attack ,{ type = "Condition", var = "MainHandAttack" } ) } end,	
+	["副手攻击伤害提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num,nil,ModFlag.Attack ,{ type = "Condition", var = "OffHandAttack" } ) } end,	
+	["增助攻击的伤害提高 (%d+)%%"] = function(num) return { mod("ExertIncrease", "INC", num, nil, ModFlag.Attack, 0) } end,
+	["战吼技能冷却时间 %+(%d+) 秒"]= function(num) return {
+		mod("CooldownRecovery", "BASE", num, nil, 0, KeywordFlag.Warcry)
+		} end,
+	["水源法球的伤害提高 (%d+)%%"]= function(num) return {
+		mod("Damage", "INC", num, { type = "SkillId", skillId = "WaterSphere" })
+		} end,
+	["水源法球的脉冲频率加快 (%d+)%%"]= function(num) return {
+		mod("HydroSphereFrequency", "INC", num, { type = "SkillId", skillId = "WaterSphere" })
+		} end,
+	["你被碾压了"] = function(num) return { mod("PhysicalDamageReduction", "BASE", -15) } end,
+	["你每有一个暴击球便使召唤生物的暴击率提高 (%d+)%%"]= function(num) return { mod("MinionModifier", "LIST", 
+	{ mod = mod("CritChance", "INC", num, { type = "Multiplier", var = "PowerCharge" , actor = "parent"} )})  } end,
+	["召唤生物造成暴击后会在 5 秒内听到低语"] = {
+	flag("Condition:MinionsCanHearTheWhispers"),
+	mod("Dummy", "DUMMY", 1, { type = "Condition", var = "MinionsCanHearTheWhispers" }) -- Make the Configuration option appear
+	},
+	["若你近期内没有获得狂怒球，则攻击速度加快 (%d+)%%"]= function(num) return {
+		mod("Speed", "INC", num,nil, ModFlag.Attack, { type = "StatThreshold", stat = "FrenzyCharges", threshold = 0, upper = true } )
+		} end,
+	["若你近期内没有获得暴击球，则暴击率提高 (%d+)%%"]= function(num) return {
+		mod("CritChance", "INC", num,nil, ModFlag.Attack, { type = "StatThreshold", stat = "PowerCharges", threshold = 0, upper = true } )
+		} end,
+	["(%d+)%% 的几率躲避法术击中"]= function(num) return {
+		mod("SpellDodgeChance", "BASE", num )
+		} end,	
+	["若过去 8 秒内你造成过暴击，则每秒生命再生 ([%d%.]+)%%"]= function(num) return {  mod("LifeRegenPercent", "BASE", num,{ type = "Condition", var = "CritRecently" })  } end,
+	["对抗被诅咒的敌人时，击中和异常状态伤害提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num,nil,0,bor(KeywordFlag.Hit, KeywordFlag.Ailment) ,{ type = "ActorCondition", actor = "enemy", var = "Cursed" }) } end,
+	["每 (%d+) 点力量都使护甲降低 (%d+)%%"] = function(_,num1,num2) return {  
+	mod("Armour", "INC", -tonumber(num2),{ type = "PerStat", stat = "Str", div = tonumber(num1) })  } end,
+	["提供 (%d+) 级精神失常"]= function(num) return {
+	mod("ExtraSkill", "LIST", {  skillId ="Unhinge", level = tonumber(num)})   
+		} end,	
+	["疯狂状态下，总暴击率额外提高 (%d+)%%"] = function(num) return {  mod("CritChance", "MORE", num,{ type = "Condition", var = "InSaneInsanity" })  } end,
+	["理智状态下，承受的物理和混沌总伤害额外降低 (%d+)%%"] = function(num) return {  
+	mod("PhysicalDamageTaken", "MORE", -num,{ type = "Condition", var = "SaneInsanity" }),
+	mod("ChaosDamageTaken", "MORE", -num,{ type = "Condition", var = "SaneInsanity" }),
+	  } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

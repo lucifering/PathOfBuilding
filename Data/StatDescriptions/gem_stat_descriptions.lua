@@ -1,8 +1,5 @@
 return {
 	[1]={
-		stats={
-			[1]="support_melee_physical_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -19,21 +16,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的近战物理总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的近战物理总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 근접 물리 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 근접 물리 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_melee_physical_damage_+%_final"
 		}
 	},
 	[2]={
-		stats={
-			[1]="support_melee_physical_damage_poison_and_bleeding_damage_+%_final_from_melee_hits"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -50,21 +69,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能在近战击中时造成的流血和中毒总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能在近战击中时造成的流血和中毒总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_melee_physical_damage_poison_and_bleeding_damage_+%_final_from_melee_hits"
 		}
 	},
 	[3]={
-		stats={
-			[1]="curse_apply_as_aura"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -74,15 +93,15 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助技能以光环形式施放诅咒\n被辅助技能始终以光环形式施放诅咒"
+					text="被辅助技能以光环形式施放诅咒\n被辅助的诅咒技能视为光环技能"
 				}
 			}
+		},
+		stats={
+			[1]="curse_apply_as_aura"
 		}
 	},
 	[4]={
-		stats={
-			[1]="support_echo_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -99,21 +118,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_echo_damage_+%_final"
 		}
 	},
 	[5]={
-		stats={
-			[1]="support_elemental_proliferation_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -130,21 +149,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_elemental_proliferation_damage_+%_final"
 		}
 	},
 	[6]={
-		stats={
-			[1]="base_skill_is_instant"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -157,12 +176,12 @@ return {
 					text="被辅助技能立即施放"
 				}
 			}
+		},
+		stats={
+			[1]="base_skill_is_instant"
 		}
 	},
 	[7]={
-		stats={
-			[1]="support_damage_while_on_full_life_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -179,21 +198,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="满血时，被辅助的攻击技能造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="满血时，被辅助的攻击技能造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_damage_while_on_full_life_+%_final"
 		}
 	},
 	[8]={
-		stats={
-			[1]="support_attack_skills_elemental_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -210,21 +229,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助的攻击技能造成的元素总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助的攻击技能造成的元素总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 공격 스킬로 주는 원소 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 공격 스킬로 주는 원소 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_attack_skills_elemental_damage_+%_final"
 		}
 	},
 	[9]={
-		stats={
-			[1]="support_weapon_elemental_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -241,21 +282,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的武器元素总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的武器元素总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_weapon_elemental_damage_+%_final"
 		}
 	},
 	[10]={
-		stats={
-			[1]="support_area_concentrate_area_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -272,21 +313,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的范围总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的范围总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_area_concentrate_area_damage_+%_final"
 		}
 	},
 	[11]={
-		stats={
-			[1]="support_barrage_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -303,21 +344,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_barrage_damage_+%_final"
 		}
 	},
 	[12]={
-		stats={
-			[1]="support_multiple_projectile_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -334,21 +375,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的投射物总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的投射物总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_multiple_projectile_damage_+%_final"
 		}
 	},
 	[13]={
-		stats={
-			[1]="support_rain_projectile_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -365,21 +406,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的投射物总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的投射物总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_rain_projectile_damage_+%_final"
 		}
 	},
 	[14]={
-		stats={
-			[1]="support_lesser_multiple_projectile_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -396,21 +437,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的投射物总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的投射物总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_lesser_multiple_projectile_damage_+%_final"
 		}
 	},
 	[15]={
-		stats={
-			[1]="support_gem_mine_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -427,21 +468,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的地雷总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的地雷总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_gem_mine_damage_+%_final"
 		}
 	},
 	[16]={
-		stats={
-			[1]="support_totem_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -458,21 +499,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助的图腾的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助的图腾的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_totem_damage_+%_final"
 		}
 	},
 	[17]={
-		stats={
-			[1]="triggered_spell_spell_damage_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -489,21 +530,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助的法术造成的法术伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助的法术造成的法术伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 주문 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 주문 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="triggered_spell_spell_damage_+%"
 		}
 	},
 	[18]={
-		stats={
-			[1]="support_cast_on_crit_spell_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -520,21 +583,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的法术伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的法术伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 주문 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 주문 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_cast_on_crit_spell_damage_+%_final"
 		}
 	},
 	[19]={
-		stats={
-			[1]="support_cast_on_melee_kill_spell_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -551,21 +636,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助的法术造成的法术总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助的法术造成的法术总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 주문의 주문 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 주문의 주문 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_cast_on_melee_kill_spell_damage_+%_final"
 		}
 	},
 	[20]={
-		stats={
-			[1]="support_cast_while_channelling_triggered_skill_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -582,21 +689,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助的触发类法术造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助的触发类法术造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_cast_while_channelling_triggered_skill_damage_+%_final"
 		}
 	},
 	[21]={
-		stats={
-			[1]="base_mana_cost_-%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -613,21 +720,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的魔耗（不包括魔力保留类技能）提高 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的魔耗（不包括魔力保留类技能）提高 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="base_mana_cost_-%"
 		}
 	},
 	[22]={
-		stats={
-			[1]="melee_attack_number_of_spirit_strikes"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -649,12 +756,12 @@ return {
 					text="被辅助攻击技能可以额外设置 {0} 个周围的敌人为目标"
 				}
 			}
+		},
+		stats={
+			[1]="melee_attack_number_of_spirit_strikes"
 		}
 	},
 	[23]={
-		stats={
-			[1]="no_spirit_strikes"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -667,12 +774,12 @@ return {
 					text="被辅助的打击技能无法以额外的敌人为目标"
 				}
 			}
+		},
+		stats={
+			[1]="no_spirit_strikes"
 		}
 	},
 	[24]={
-		stats={
-			[1]="extra_target_targeting_distance_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -685,12 +792,12 @@ return {
 					text="被辅助技能可以设置距离 {0}% 以外的额外目标"
 				}
 			}
+		},
+		stats={
+			[1]="extra_target_targeting_distance_+%"
 		}
 	},
 	[25]={
-		stats={
-			[1]="base_skill_area_of_effect_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -700,28 +807,50 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助技能的范围效果扩大 {0}%"
+					text="被辅助技能的效果区域扩大 {0}%"
 				},
 				[2]={
 					[1]={
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的范围效果缩小 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的效果区域缩小 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 효과 범위 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 효과 범위 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="base_skill_area_of_effect_+%"
 		}
 	},
 	[26]={
-		stats={
-			[1]="support_concentrated_effect_skill_area_of_effect_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -731,28 +860,50 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助技能的总范围效果额外扩大 {0}%"
+					text="被辅助技能的总效果区域额外扩大 {0}%"
 				},
 				[2]={
 					[1]={
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的总范围效果额外缩小 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的总效果区域额外缩小 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 효과 범위 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 효과 범위 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_concentrated_effect_skill_area_of_effect_+%_final"
 		}
 	},
 	[27]={
-		stats={
-			[1]="area_of_effect_+%_while_dead"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -762,28 +913,50 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助技能会使死亡时产生的范围效果扩大 {0}%"
+					text="被辅助技能会使死亡时产生的效果区域扩大 {0}%"
 				},
 				[2]={
 					[1]={
 						k="negate",
 						v=1
 					},
-					text="被辅助技能会使死亡时产生的范围效果缩小 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能会使死亡时产生的效果区域缩小 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="죽음 상태에서 보조 대상 스킬의 효과 범위 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="죽음 상태에서 보조 대상 스킬의 효과 범위 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="area_of_effect_+%_while_dead"
 		}
 	},
 	[28]={
-		stats={
-			[1]="base_aura_area_of_effect_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -800,21 +973,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的光环范围缩小 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的光环范围缩小 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 오라 효과 범위 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 오라 효과 범위 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="base_aura_area_of_effect_+%"
 		}
 	},
 	[29]={
-		stats={
-			[1]="aura_effect_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -831,21 +1026,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的光环强度降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的光环强度降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 오라 효과 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 오라 효과 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="aura_effect_+%"
 		}
 	},
 	[30]={
-		stats={
-			[1]="support_multiple_projectiles_critical_strike_chance_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -862,21 +1079,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的攻击和法术总暴击率额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的攻击和法术总暴击率额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 치명타 확률 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 치명타 확률 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_multiple_projectiles_critical_strike_chance_+%_final"
 		}
 	},
 	[31]={
-		stats={
-			[1]="base_use_life_in_place_of_mana"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -889,12 +1128,12 @@ return {
 					text="被辅助技能的魔力消耗转为生命消耗"
 				}
 			}
+		},
+		stats={
+			[1]="base_use_life_in_place_of_mana"
 		}
 	},
 	[32]={
-		stats={
-			[1]="projectiles_rain"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -907,12 +1146,12 @@ return {
 					text="被辅助技能向空中发射一支负载箭矢\n被辅助技能的投射物在负载箭矢落地时发射"
 				}
 			}
+		},
+		stats={
+			[1]="projectiles_rain"
 		}
 	},
 	[33]={
-		stats={
-			[1]="support_ignite_proliferation_radius"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -925,19 +1164,12 @@ return {
 					text="被辅助技能会将点燃效果扩散给范围 {0} 内的敌人"
 				}
 			}
+		},
+		stats={
+			[1]="support_ignite_proliferation_radius"
 		}
 	},
 	[34]={
-		stats={
-			[1]="power_siphon_fire_at_all_targets",
-			[2]="total_number_of_projectiles_to_fire",
-			[3]="total_number_of_arrows_to_fire",
-			[4]="base_number_of_projectiles_in_spiral_nova",
-			[5]="projectile_spiral_nova_angle",
-			[6]="projectiles_nova",
-			[7]="projectiles_barrage",
-			[8]="rain_of_arrows_sequences_to_fire"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1126,12 +1358,19 @@ return {
 					text="被辅助技能连续发射投射物"
 				}
 			}
+		},
+		stats={
+			[1]="power_siphon_fire_at_all_targets",
+			[2]="total_number_of_projectiles_to_fire",
+			[3]="total_number_of_arrows_to_fire",
+			[4]="base_number_of_projectiles_in_spiral_nova",
+			[5]="projectile_spiral_nova_angle",
+			[6]="projectiles_nova",
+			[7]="projectiles_barrage",
+			[8]="rain_of_arrows_sequences_to_fire"
 		}
 	},
 	[35]={
-		stats={
-			[1]="elemental_status_effect_aura_radius"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1139,21 +1378,34 @@ return {
 						k="reminderstring",
 						v="ReminderTextElementalStatusAilments"
 					},
-					text="被辅助技能会将冰缓、冰冻、点燃和感电状态扩散至范围 {0} 内的敌人",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能会将冰缓、冰冻、点燃和感电状态扩散至范围 {0} 内的敌人"
+				},
+				[2]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextElementalStatusAilments"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 발생한 원소 상태 이상이 반경 {0} 이내의 다른 적에게 확산"
 				}
 			}
+		},
+		stats={
+			[1]="elemental_status_effect_aura_radius"
 		}
 	},
 	[36]={
-		stats={
-			[1]="kill_enemy_on_hit_if_under_10%_life"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1166,12 +1418,12 @@ return {
 					text="被辅助技能击中生命小于 10% 的敌人时，会将其秒杀"
 				}
 			}
+		},
+		stats={
+			[1]="kill_enemy_on_hit_if_under_10%_life"
 		}
 	},
 	[37]={
-		stats={
-			[1]="keystone_point_blank"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1184,12 +1436,12 @@ return {
 					text="被辅助技能的投射物攻击近距离目标时造成的总伤害最多额外提高 30%，但攻击远距离目标时总伤害则会额外降低"
 				}
 			}
+		},
+		stats={
+			[1]="keystone_point_blank"
 		}
 	},
 	[38]={
-		stats={
-			[1]="keystone_strong_bowman"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1202,12 +1454,12 @@ return {
 					text="被辅助技能的投射物攻击伤害可以同样获得力量伤害奖励"
 				}
 			}
+		},
+		stats={
+			[1]="keystone_strong_bowman"
 		}
 	},
 	[39]={
-		stats={
-			[1]="strong_casting"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1220,13 +1472,12 @@ return {
 					text="被辅助技能发所有法术伤害可以同样获得力量伤害奖励"
 				}
 			}
+		},
+		stats={
+			[1]="strong_casting"
 		}
 	},
 	[40]={
-		stats={
-			[1]="is_remote_mine",
-			[2]="number_of_mines_to_place"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1254,14 +1505,41 @@ return {
 						}
 					},
 					text="投掷 {1} 个遥控地雷，引爆时激活此技能"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						},
+						[2]={
+							[1]=1,
+							[2]=1
+						}
+					},
+					text="폭발 시 보조 대상 스킬을 사용하는 원격 지뢰 1개 투척"
+				},
+				[4]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						},
+						[2]={
+							[1]=2,
+							[2]="#"
+						}
+					},
+					text="폭발 시 보조 대상 스킬을 사용하는 원격 지뢰 {1}개 투척"
 				}
 			}
+		},
+		stats={
+			[1]="is_remote_mine",
+			[2]="number_of_mines_to_place"
 		}
 	},
 	[41]={
-		stats={
-			[1]="number_of_additional_traps_to_throw"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1283,12 +1561,12 @@ return {
 					text="被辅助的陷阱技能会投掷 {0} 个额外陷阱"
 				}
 			}
+		},
+		stats={
+			[1]="number_of_additional_traps_to_throw"
 		}
 	},
 	[42]={
-		stats={
-			[1]="support_additional_trap_mine_%_chance_for_1_additional_trap_mine"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1296,21 +1574,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextMultipleMines"
 					},
-					text="被辅助技能有 {0}% 几率投掷 1 个额外的陷阱或地雷",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能有 {0}% 的几率投掷 1 个额外的陷阱或地雷"
 				}
 			}
+		},
+		stats={
+			[1]="support_additional_trap_mine_%_chance_for_1_additional_trap_mine"
 		}
 	},
 	[43]={
-		stats={
-			[1]="support_additional_trap_mine_%_chance_for_2_additional_trap_mine"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1318,21 +1596,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextMultipleMines"
 					},
-					text="被辅助技能有 {0}% 几率投掷 2 个额外的陷阱或地雷",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能有 {0}% 的几率投掷 2 个额外的陷阱或地雷"
 				}
 			}
+		},
+		stats={
+			[1]="support_additional_trap_mine_%_chance_for_2_additional_trap_mine"
 		}
 	},
 	[44]={
-		stats={
-			[1]="support_additional_trap_mine_%_chance_for_3_additional_trap_mine"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1340,23 +1618,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextMultipleMines"
 					},
-					text="被辅助技能有 {0}% 几率投掷 3 个额外的陷阱或地雷",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能有 {0}% 的几率投掷 3 个额外的陷阱或地雷"
 				}
 			}
+		},
+		stats={
+			[1]="support_additional_trap_mine_%_chance_for_3_additional_trap_mine"
 		}
 	},
 	[45]={
-		stats={
-			[1]="is_totem",
-			[2]="number_of_totems_to_summon",
-			[3]="is_ranged_attack_totem"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1428,12 +1704,14 @@ return {
 					text="被辅助技能召唤 {0} 个使用该技能的弩炮图腾"
 				}
 			}
+		},
+		stats={
+			[1]="is_totem",
+			[2]="number_of_totems_to_summon",
+			[3]="is_ranged_attack_totem"
 		}
 	},
 	[46]={
-		stats={
-			[1]="base_totem_duration"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1441,21 +1719,21 @@ return {
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="图腾持续 {0} 秒",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="图腾持续 {0} 秒"
 				}
 			}
+		},
+		stats={
+			[1]="base_totem_duration"
 		}
 	},
 	[47]={
-		stats={
-			[1]="projectile_base_number_of_targets_to_pierce"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1465,7 +1743,7 @@ return {
 							[2]=1
 						}
 					},
-					text="被辅助技能的投射物可以穿透 1 个额外目标"
+					text="来自被辅助技能的投射物贯穿 {0} 个额外目标"
 				},
 				[2]={
 					limit={
@@ -1474,15 +1752,15 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助技能的投射物可以穿透 {0} 个额外目标"
+					text="来自被辅助技能的投射物贯穿 {0} 个额外目标"
 				}
 			}
+		},
+		stats={
+			[1]="projectile_base_number_of_targets_to_pierce"
 		}
 	},
 	[48]={
-		stats={
-			[1]="base_trap_duration"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1490,21 +1768,21 @@ return {
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="陷阱持续 {0} 秒",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="陷阱持续 {0} 秒"
 				}
 			}
+		},
+		stats={
+			[1]="base_trap_duration"
 		}
 	},
 	[49]={
-		stats={
-			[1]="base_mine_duration"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1512,21 +1790,21 @@ return {
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="地雷持续 {0} 秒",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="地雷持续 {0} 秒"
 				}
 			}
+		},
+		stats={
+			[1]="base_mine_duration"
 		}
 	},
 	[50]={
-		stats={
-			[1]="support_remote_mine_2_base_mine_duration"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1534,21 +1812,21 @@ return {
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="地雷持续 {0} 秒",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="地雷持续 {0} 秒"
 				}
 			}
+		},
+		stats={
+			[1]="support_remote_mine_2_base_mine_duration"
 		}
 	},
 	[51]={
-		stats={
-			[1]="attack_skills_additional_ballista_totems_allowed"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1561,12 +1839,12 @@ return {
 					text="被辅助技能获得 {0:+d} 召唤弩炮图腾数量上限"
 				}
 			}
+		},
+		stats={
+			[1]="attack_skills_additional_ballista_totems_allowed"
 		}
 	},
 	[52]={
-		stats={
-			[1]="base_number_of_totems_allowed"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1579,12 +1857,12 @@ return {
 					text="被辅助的技能 {0:+d} 召唤图腾数量上限"
 				}
 			}
+		},
+		stats={
+			[1]="base_number_of_totems_allowed"
 		}
 	},
 	[53]={
-		stats={
-			[1]="summon_2_totems"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1597,12 +1875,12 @@ return {
 					text="被辅助的技能召唤的图腾数量从一个增加为两个"
 				}
 			}
+		},
+		stats={
+			[1]="summon_2_totems"
 		}
 	},
 	[54]={
-		stats={
-			[1]="base_number_of_traps_allowed"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1624,12 +1902,12 @@ return {
 					text="最多可同时拥有 {0} 个陷阱"
 				}
 			}
+		},
+		stats={
+			[1]="base_number_of_traps_allowed"
 		}
 	},
 	[55]={
-		stats={
-			[1]="base_number_of_remote_mines_allowed"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1651,12 +1929,12 @@ return {
 					text="最多可同时拥有 {0} 个遥控地雷"
 				}
 			}
+		},
+		stats={
+			[1]="base_number_of_remote_mines_allowed"
 		}
 	},
 	[56]={
-		stats={
-			[1]="trap_duration_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1673,21 +1951,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的陷阱持续时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的陷阱持续时间缩短 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="trap_duration_+%"
 		}
 	},
 	[57]={
-		stats={
-			[1]="mine_duration_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1704,21 +1982,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助的地雷持续时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助的地雷持续时间缩短 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 지속시간 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 지속시간 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="mine_duration_+%"
 		}
 	},
 	[58]={
-		stats={
-			[1]="global_chance_to_blind_on_hit_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1726,21 +2026,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextBlind"
 					},
-					text="被辅助技能击中时会有 {0}% 几率致盲敌人",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能击中时会有 {0}% 的几率致盲敌人"
 				}
 			}
+		},
+		stats={
+			[1]="global_chance_to_blind_on_hit_%"
 		}
 	},
 	[59]={
-		stats={
-			[1]="blind_duration_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1757,21 +2057,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的致盲持续时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的致盲持续时间缩短 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="blind_duration_+%"
 		}
 	},
 	[60]={
-		stats={
-			[1]="critical_strike_chance_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1788,21 +2088,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的攻击和法术暴击率降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的攻击和法术暴击率降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="critical_strike_chance_+%"
 		}
 	},
 	[61]={
-		stats={
-			[1]="base_critical_strike_multiplier_+"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1815,12 +2115,12 @@ return {
 					text="被辅助技能获得 {0:+d}% 攻击和法术基础暴击伤害加成"
 				}
 			}
+		},
+		stats={
+			[1]="base_critical_strike_multiplier_+"
 		}
 	},
 	[62]={
-		stats={
-			[1]="base_reduce_enemy_fire_resistance_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1833,12 +2133,12 @@ return {
 					text="被辅助技能可以穿透 {0}% 火焰抗性"
 				}
 			}
+		},
+		stats={
+			[1]="base_reduce_enemy_fire_resistance_%"
 		}
 	},
 	[63]={
-		stats={
-			[1]="base_reduce_enemy_cold_resistance_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1851,12 +2151,12 @@ return {
 					text="被辅助技能可以穿透 {0}% 冰霜抗性"
 				}
 			}
+		},
+		stats={
+			[1]="base_reduce_enemy_cold_resistance_%"
 		}
 	},
 	[64]={
-		stats={
-			[1]="reduce_enemy_elemental_resistance_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1869,12 +2169,12 @@ return {
 					text="被辅助技能可以穿透 {0}% 元素抗性"
 				}
 			}
+		},
+		stats={
+			[1]="reduce_enemy_elemental_resistance_%"
 		}
 	},
 	[65]={
-		stats={
-			[1]="base_reduce_enemy_lightning_resistance_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1887,12 +2187,12 @@ return {
 					text="被辅助技能可以穿透 {0}% 闪电抗性"
 				}
 			}
+		},
+		stats={
+			[1]="base_reduce_enemy_lightning_resistance_%"
 		}
 	},
 	[66]={
-		stats={
-			[1]="number_of_chains"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1905,12 +2205,12 @@ return {
 					text="被辅助技能的投射物可以连锁弹射 {0:+d} 次"
 				}
 			}
+		},
+		stats={
+			[1]="number_of_chains"
 		}
 	},
 	[67]={
-		stats={
-			[1]="projectile_number_to_split"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1923,12 +2223,12 @@ return {
 					text="被辅助技能的投射物分裂攻击 {0} 个目标"
 				}
 			}
+		},
+		stats={
+			[1]="projectile_number_to_split"
 		}
 	},
 	[68]={
-		stats={
-			[1]="projectiles_fork"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1941,12 +2241,12 @@ return {
 					text="被辅助技能的投射物会在击中后分叉"
 				}
 			}
+		},
+		stats={
+			[1]="projectiles_fork"
 		}
 	},
 	[69]={
-		stats={
-			[1]="number_of_additional_forks_base"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1968,14 +2268,12 @@ return {
 					text="被辅助技能的投射物额外分叉 {0} 次"
 				}
 			}
+		},
+		stats={
+			[1]="number_of_additional_forks_base"
 		}
 	},
 	[70]={
-		stats={
-			[1]="projectiles_return",
-			[2]="projectiles_return_if_no_hit_object",
-			[3]="projectiles_chance_to_return_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -1989,11 +2287,15 @@ return {
 							[2]=0
 						},
 						[3]={
+							[1]=0,
+							[2]=0
+						},
+						[4]={
 							[1]=1,
 							[2]=99
 						}
 					},
-					text="投射物有 {2}% 几率从最后的目标返回"
+					text="来自被辅助技能的投射物有 {3}% 的几率从最后的目标返回"
 				},
 				[2]={
 					limit={
@@ -2006,16 +2308,20 @@ return {
 							[2]=0
 						},
 						[3]={
+							[1]=0,
+							[2]=0
+						},
+						[4]={
 							[1]=100,
 							[2]="#"
 						}
 					},
-					text="投射物从最后的目标返回"
+					text="来自被辅助技能的投射物从最后的目标返回"
 				},
 				[3]={
 					limit={
 						[1]={
-							[1]="!",
+							[1]=0,
 							[2]=0
 						},
 						[2]={
@@ -2023,11 +2329,15 @@ return {
 							[2]=0
 						},
 						[3]={
-							[1]="#",
-							[2]="#"
+							[1]=1,
+							[2]=99
+						},
+						[4]={
+							[1]=0,
+							[2]=0
 						}
 					},
-					text="投射物从最后的目标返回"
+					text="来自被辅助技能的投射物有 {2}% 的几率返回"
 				},
 				[4]={
 					limit={
@@ -2036,17 +2346,105 @@ return {
 							[2]=0
 						},
 						[2]={
+							[1]=0,
+							[2]=0
+						},
+						[3]={
+							[1]=100,
+							[2]="#"
+						},
+						[4]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="来自被辅助技能的投射物会返回"
+				},
+				[5]={
+					limit={
+						[1]={
+							[1]=0,
+							[2]=0
+						},
+						[2]={
+							[1]=0,
+							[2]=0
+						},
+						[3]={
+							[1]=1,
+							[2]=99
+						},
+						[4]={
+							[1]=1,
+							[2]=99
+						}
+					},
+					text="来自被辅助技能的投射物有 {2}% 的几率返回，从最后的目标返回的几率 +{3}%"
+				},
+				[6]={
+					limit={
+						[1]={
+							[1]=0,
+							[2]=0
+						},
+						[2]={
+							[1]=0,
+							[2]=0
+						},
+						[3]={
+							[1]=1,
+							[2]=99
+						},
+						[4]={
+							[1]=100,
+							[2]="#"
+						}
+					},
+					text="来自被辅助技能的投射物从最后的目标返回，有 {2}% 的几率在飞行结束后返回"
+				},
+				[7]={
+					limit={
+						[1]={
+							[1]="!",
+							[2]=0
+						},
+						[2]={
+							[1]=0,
+							[2]=0
+						},
+						[3]={
+							[1]="#",
+							[2]="#"
+						},
+						[4]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="来自被辅助技能的投射物从最后的目标返回"
+				},
+				[8]={
+					limit={
+						[1]={
+							[1]=0,
+							[2]=0
+						},
+						[2]={
 							[1]="!",
 							[2]=0
 						},
 						[3]={
 							[1]="#",
 							[2]="#"
+						},
+						[4]={
+							[1]="#",
+							[2]="#"
 						}
 					},
-					text="投射物在飞行结束后返回"
+					text="来自被辅助技能的投射物在飞行结束后返回"
 				},
-				[5]={
+				[9]={
 					limit={
 						[1]={
 							[1]="!",
@@ -2059,17 +2457,24 @@ return {
 						[3]={
 							[1]="#",
 							[2]="#"
+						},
+						[4]={
+							[1]="#",
+							[2]="#"
 						}
 					},
-					text="投射物会返回"
+					text="来自被辅助技能的投射物会返回"
 				}
 			}
+		},
+		stats={
+			[1]="projectiles_return",
+			[2]="projectiles_return_if_no_hit_object",
+			[3]="projectile_return_%_chance",
+			[4]="projectiles_chance_to_return_%_from_final_target"
 		}
 	},
 	[71]={
-		stats={
-			[1]="support_chain_hit_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2086,21 +2491,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能击中后的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能击中后的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_chain_hit_damage_+%_final"
 		}
 	},
 	[72]={
-		stats={
-			[1]="support_spirit_strike_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2117,21 +2522,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_spirit_strike_damage_+%_final"
 		}
 	},
 	[73]={
-		stats={
-			[1]="support_split_projectile_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2148,21 +2575,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的投射物总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的投射物总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_split_projectile_damage_+%_final"
 		}
 	},
 	[74]={
-		stats={
-			[1]="support_fork_projectile_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2179,22 +2606,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的投射物总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的投射物总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_fork_projectile_damage_+%_final"
 		}
 	},
 	[75]={
-		stats={
-			[1]="support_debilitate_hit_damage_+%_final_per_poison_stack",
-			[2]="support_debilitate_hit_damage_max_poison_stacks"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2215,7 +2641,6 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能击中中毒目标时，每层中毒效果造成的总伤害额外降低 {0}%，最多 {1} 层中毒效果",
 					limit={
 						[1]={
 							[1]="#",
@@ -2225,15 +2650,17 @@ return {
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能击中中毒目标时，每层中毒效果造成的总伤害额外降低 {0}%，最多 {1} 层中毒效果"
 				}
 			}
+		},
+		stats={
+			[1]="support_debilitate_hit_damage_+%_final_per_poison_stack",
+			[2]="support_debilitate_hit_damage_max_poison_stacks"
 		}
 	},
 	[76]={
-		stats={
-			[1]="support_debilitate_poison_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2250,21 +2677,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的中毒总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的中毒总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_debilitate_poison_damage_+%_final"
 		}
 	},
 	[77]={
-		stats={
-			[1]="support_poison_poison_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2281,21 +2708,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的中毒总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的中毒总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_poison_poison_damage_+%_final"
 		}
 	},
 	[78]={
-		stats={
-			[1]="support_return_projectile_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2312,21 +2739,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的投射物总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的投射物总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_return_projectile_damage_+%_final"
 		}
 	},
 	[79]={
-		stats={
-			[1]="support_void_manipulation_chaos_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2343,21 +2770,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的混沌总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的混沌总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_void_manipulation_chaos_damage_+%_final"
 		}
 	},
 	[80]={
-		stats={
-			[1]="support_controlled_destruction_spell_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2374,21 +2801,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的法术总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的法术总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_controlled_destruction_spell_damage_+%_final"
 		}
 	},
 	[81]={
-		stats={
-			[1]="support_efficacy_spell_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2405,21 +2832,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的法术总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的法术总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_efficacy_spell_damage_+%_final"
 		}
 	},
 	[82]={
-		stats={
-			[1]="support_rapid_decay_damage_over_time_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2436,21 +2863,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的持续性总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的持续性总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_rapid_decay_damage_over_time_+%_final"
 		}
 	},
 	[83]={
-		stats={
-			[1]="support_efficacy_damage_over_time_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2467,21 +2894,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的持续性总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的持续性总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_efficacy_damage_over_time_+%_final"
 		}
 	},
 	[84]={
-		stats={
-			[1]="support_additional_totem_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2498,21 +2925,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_additional_totem_damage_+%_final"
 		}
 	},
 	[85]={
-		stats={
-			[1]="support_better_ailments_ailment_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2520,13 +2947,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="被辅助技能对异常状态的总伤害额外提高 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能对异常状态的总伤害额外提高 {0}%"
 				},
 				[2]={
 					[1]={
@@ -2537,21 +2964,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="被辅助技能对异常状态的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能对异常状态的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_better_ailments_ailment_damage_+%_final"
 		}
 	},
 	[86]={
-		stats={
-			[1]="support_better_ailments_hit_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2568,21 +2995,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能击中后的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能击中后的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_better_ailments_hit_damage_+%_final"
 		}
 	},
 	[87]={
-		stats={
-			[1]="support_brutality_physical_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2599,21 +3026,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的物理总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的物理总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_brutality_physical_damage_+%_final"
 		}
 	},
 	[88]={
-		stats={
-			[1]="support_chance_to_ignite_fire_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2630,21 +3057,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的火焰总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的火焰总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_chance_to_ignite_fire_damage_+%_final"
 		}
 	},
 	[89]={
-		stats={
-			[1]="support_gem_elemental_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2661,21 +3088,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的元素总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的元素总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_gem_elemental_damage_+%_final"
 		}
 	},
 	[90]={
-		stats={
-			[1]="support_ignite_prolif_ignite_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2692,21 +3119,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的点燃总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的点燃总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_ignite_prolif_ignite_damage_+%_final"
 		}
 	},
 	[91]={
-		stats={
-			[1]="support_maim_chance_physical_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2723,21 +3150,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的物理总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的物理总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_maim_chance_physical_damage_+%_final"
 		}
 	},
 	[92]={
-		stats={
-			[1]="base_life_gain_per_target"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2750,12 +3177,12 @@ return {
 					text="被辅助的攻击技能击中每个敌人会回复 {0:+d} 生命"
 				}
 			}
+		},
+		stats={
+			[1]="base_life_gain_per_target"
 		}
 	},
 	[93]={
-		stats={
-			[1]="support_melee_splash_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2772,21 +3199,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能对主要目标造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能对主要目标造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_melee_splash_damage_+%_final"
 		}
 	},
 	[94]={
-		stats={
-			[1]="melee_splash"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2797,15 +3224,23 @@ return {
 						}
 					},
 					text="被辅助的单体近战攻击技能对周围目标造成溅射伤害"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주변 대상에게 범위 피해를 줌"
 				}
 			}
+		},
+		stats={
+			[1]="melee_splash"
 		}
 	},
 	[95]={
-		stats={
-			[1]="support_melee_splash_damage_+%_final_for_splash",
-			[2]="quality_display_melee_splash_is_gem"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2826,7 +3261,6 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能对周围目标造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
@@ -2836,14 +3270,14 @@ return {
 							[1]="!",
 							[2]=0
 						}
-					}
+					},
+					text="被辅助技能对周围目标造成的总伤害额外降低 {0}%"
 				},
 				[3]={
 					[1]={
 						k="negate",
 						v=1
 					},
-					text="被辅助技能对周围目标造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
@@ -2853,15 +3287,17 @@ return {
 							[1]=0,
 							[2]=0
 						}
-					}
+					},
+					text="被辅助技能对周围目标造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_melee_splash_damage_+%_final_for_splash",
+			[2]="quality_display_melee_splash_is_gem"
 		}
 	},
 	[96]={
-		stats={
-			[1]="base_melee_attack_repeat_count"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2874,12 +3310,12 @@ return {
 					text="被辅助的近战攻击技能可额外重复 {0} 次"
 				}
 			}
+		},
+		stats={
+			[1]="base_melee_attack_repeat_count"
 		}
 	},
 	[97]={
-		stats={
-			[1]="base_spell_repeat_count"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2901,12 +3337,12 @@ return {
 					text="辅助的法术技能可重复 {0} 次"
 				}
 			}
+		},
+		stats={
+			[1]="base_spell_repeat_count"
 		}
 	},
 	[98]={
-		stats={
-			[1]="support_multicast_cast_speed_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2923,21 +3359,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的总施法速度额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的总施法速度额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_multicast_cast_speed_+%_final"
 		}
 	},
 	[99]={
-		stats={
-			[1]="support_multiple_attacks_melee_attack_speed_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2954,21 +3390,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的总近战攻击速度额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的总近战攻击速度额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_multiple_attacks_melee_attack_speed_+%_final"
 		}
 	},
 	[100]={
-		stats={
-			[1]="support_multiple_attack_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -2985,21 +3421,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的攻击总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的攻击总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_multiple_attack_damage_+%_final"
 		}
 	},
 	[101]={
-		stats={
-			[1]="support_trap_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3016,21 +3452,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的陷阱总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的陷阱总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 덫 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 덫 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_trap_damage_+%_final"
 		}
 	},
 	[102]={
-		stats={
-			[1]="support_multithrow_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3047,21 +3505,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_multithrow_damage_+%_final"
 		}
 	},
 	[103]={
-		stats={
-			[1]="cast_on_death_damage_+%_final_while_dead"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3078,21 +3536,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="死亡时总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="死亡时总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="cast_on_death_damage_+%_final_while_dead"
 		}
 	},
 	[104]={
-		stats={
-			[1]="cast_on_damage_taken_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3109,21 +3567,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="cast_on_damage_taken_damage_+%_final"
 		}
 	},
 	[105]={
-		stats={
-			[1]="summon_fire_resistance_+"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3136,12 +3616,12 @@ return {
 					text="被辅助技能召唤的图腾和召唤生物有 {0:+d}% 火焰抗性"
 				}
 			}
+		},
+		stats={
+			[1]="summon_fire_resistance_+"
 		}
 	},
 	[106]={
-		stats={
-			[1]="summon_cold_resistance_+"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3154,12 +3634,12 @@ return {
 					text="被辅助技能召唤的图腾和召唤生物有 {0:+d}% 冰霜抗性"
 				}
 			}
+		},
+		stats={
+			[1]="summon_cold_resistance_+"
 		}
 	},
 	[107]={
-		stats={
-			[1]="summon_lightning_resistance_+"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3172,12 +3652,12 @@ return {
 					text="被辅助技能召唤的图腾和召唤生物有 {0:+d}% 闪电抗性"
 				}
 			}
+		},
+		stats={
+			[1]="summon_lightning_resistance_+"
 		}
 	},
 	[108]={
-		stats={
-			[1]="apply_linked_curses_on_hit_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3187,7 +3667,7 @@ return {
 							[2]=99
 						}
 					},
-					text="被辅助技能击中时有 {0}% 几率触发连接的诅咒"
+					text="被辅助技能击中时有 {0}% 的几率触发连接的诅咒"
 				},
 				[2]={
 					limit={
@@ -3199,12 +3679,12 @@ return {
 					text="被辅助技能击中时会触发连接的诅咒"
 				}
 			}
+		},
+		stats={
+			[1]="apply_linked_curses_on_hit_%"
 		}
 	},
 	[109]={
-		stats={
-			[1]="cannot_cast_curses"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3217,12 +3697,12 @@ return {
 					text="你不能施放被辅助的诅咒法术"
 				}
 			}
+		},
+		stats={
+			[1]="cannot_cast_curses"
 		}
 	},
 	[110]={
-		stats={
-			[1]="cast_linked_spells_on_attack_crit_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3232,7 +3712,7 @@ return {
 							[2]=99
 						}
 					},
-					text="暴击时，被辅助的攻击技能有 {0}% 几率触发连接的法术"
+					text="暴击时，被辅助的攻击技能有 {0}% 的几率触发连接的法术"
 				},
 				[2]={
 					limit={
@@ -3244,12 +3724,12 @@ return {
 					text="暴击时，被辅助的攻击技能会触发连接的法术"
 				}
 			}
+		},
+		stats={
+			[1]="cast_linked_spells_on_attack_crit_%"
 		}
 	},
 	[111]={
-		stats={
-			[1]="cast_linked_spells_on_melee_kill_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3259,7 +3739,7 @@ return {
 							[2]=99
 						}
 					},
-					text="击败敌人时，被辅助的近战攻击技能有 {0}% 几率触发连接的法术"
+					text="击败敌人时，被辅助的近战攻击技能有 {0}% 的几率触发连接的法术"
 				},
 				[2]={
 					limit={
@@ -3271,12 +3751,12 @@ return {
 					text="击败敌人时，被辅助的近战攻击技能会触发连接的法术"
 				}
 			}
+		},
+		stats={
+			[1]="cast_linked_spells_on_melee_kill_%"
 		}
 	},
 	[112]={
-		stats={
-			[1]="trigger_vicious_hex_explosion_when_curse_ends"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3298,13 +3778,12 @@ return {
 					text="被辅助的诅咒技能施放的魔蛊结束时，触发末日爆炸"
 				}
 			}
+		},
+		stats={
+			[1]="trigger_vicious_hex_explosion_when_curse_ends"
 		}
 	},
 	[113]={
-		stats={
-			[1]="spell_uncastable_if_triggerable",
-			[2]="spell_only_castable_on_death"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3321,12 +3800,13 @@ return {
 					text="无法直接施放被辅助的触发类法术"
 				}
 			}
+		},
+		stats={
+			[1]="spell_uncastable_if_triggerable",
+			[2]="spell_only_castable_on_death"
 		}
 	},
 	[114]={
-		stats={
-			[1]="cast_on_death_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3336,15 +3816,15 @@ return {
 							[2]="#"
 						}
 					},
-					text="有 {0}% 几率在死亡时触发被辅助的非召唤生物法术"
+					text="有 {0}% 的几率在死亡时触发被辅助的非召唤生物法术"
 				}
 			}
+		},
+		stats={
+			[1]="cast_on_death_%"
 		}
 	},
 	[115]={
-		stats={
-			[1]="cast_on_stunned_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3354,15 +3834,15 @@ return {
 							[2]="#"
 						}
 					},
-					text="你被晕眩或格挡晕眩时有 {0}% 几率触发连接的法术"
+					text="你被晕眩或格挡晕眩时有 {0}% 的几率触发连接的法术"
 				}
 			}
+		},
+		stats={
+			[1]="cast_on_stunned_%"
 		}
 	},
 	[116]={
-		stats={
-			[1]="spellslinger_trigger_on_wand_attack_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3372,7 +3852,7 @@ return {
 							[2]=99
 						}
 					},
-					text="你用非触发型法杖攻击发射的投射物有 {0}% 几率触发被辅助的法术"
+					text="你用非触发型法杖攻击发射的投射物有 {0}% 的几率触发被辅助的法术"
 				},
 				[2]={
 					limit={
@@ -3384,13 +3864,12 @@ return {
 					text="你用非触发型法杖攻击发射的投射物触发被辅助的法术"
 				}
 			}
+		},
+		stats={
+			[1]="spellslinger_trigger_on_wand_attack_%"
 		}
 	},
 	[117]={
-		stats={
-			[1]="cast_on_damage_taken_%",
-			[2]="cast_on_damage_taken_threshold"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3400,11 +3879,15 @@ return {
 							[2]=99
 						},
 						[2]={
+							[1]="#",
+							[2]="#"
+						},
+						[3]={
 							[1]=1,
 							[2]="#"
 						}
 					},
-					text="累计受到 {1} 伤害时有 {0}% 几率触发连接的法术"
+					text="你累计受到 {2} 点伤害时，有 {0}% 的几率触发被辅助的法术"
 				},
 				[2]={
 					limit={
@@ -3413,19 +3896,25 @@ return {
 							[2]="#"
 						},
 						[2]={
+							[1]="#",
+							[2]="#"
+						},
+						[3]={
 							[1]=1,
 							[2]="#"
 						}
 					},
-					text="累计受到 {1} 伤害时触发连接的法术"
+					text="你累计受到 {2} 点伤害时触发被辅助的法术"
 				}
 			}
+		},
+		stats={
+			[1]="cast_on_damage_taken_%",
+			[2]="virtual_cast_when_damage_taken_threshold",
+			[3]="cast_on_damage_taken_threshold"
 		}
 	},
 	[118]={
-		stats={
-			[1]="cast_while_channelling_time_ms"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3433,21 +3922,21 @@ return {
 						k="milliseconds_to_seconds_2dp",
 						v=1
 					},
-					text="吟唱被辅助技能过程中，每 {0} 秒触发 1 次被连接的法术",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="吟唱被辅助技能过程中，每 {0} 秒触发 1 次被连接的法术"
 				}
 			}
+		},
+		stats={
+			[1]="cast_while_channelling_time_ms"
 		}
 	},
 	[119]={
-		stats={
-			[1]="base_chaos_damage_to_deal_per_minute"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3455,21 +3944,21 @@ return {
 						k="per_minute_to_per_second",
 						v=1
 					},
-					text="每秒造成 {0} 基础混沌伤害",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="每秒造成 {0} 基础混沌伤害"
 				}
 			}
+		},
+		stats={
+			[1]="base_chaos_damage_to_deal_per_minute"
 		}
 	},
 	[120]={
-		stats={
-			[1]="base_fire_damage_to_deal_per_minute"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3477,21 +3966,21 @@ return {
 						k="per_minute_to_per_second",
 						v=1
 					},
-					text="每秒造成 {0} 基础火焰伤害",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="每秒造成 {0} 基础火焰伤害"
 				}
 			}
+		},
+		stats={
+			[1]="base_fire_damage_to_deal_per_minute"
 		}
 	},
 	[121]={
-		stats={
-			[1]="secondary_base_fire_damage_to_deal_per_minute"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3499,21 +3988,21 @@ return {
 						k="per_minute_to_per_second",
 						v=1
 					},
-					text="次要减益效果每秒造成 {0} 点基础火焰伤害",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="次要减益效果每秒造成 {0} 点基础火焰伤害"
 				}
 			}
+		},
+		stats={
+			[1]="secondary_base_fire_damage_to_deal_per_minute"
 		}
 	},
 	[122]={
-		stats={
-			[1]="base_cold_damage_to_deal_per_minute"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3521,21 +4010,21 @@ return {
 						k="per_minute_to_per_second",
 						v=1
 					},
-					text="每秒造成 {0} 基础冰霜伤害",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="每秒造成 {0} 基础冰霜伤害"
 				}
 			}
+		},
+		stats={
+			[1]="base_cold_damage_to_deal_per_minute"
 		}
 	},
 	[123]={
-		stats={
-			[1]="curse_effect_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3552,21 +4041,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助的诅咒效果降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助的诅咒效果降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="curse_effect_+%"
 		}
 	},
 	[124]={
-		stats={
-			[1]="support_spell_totem_cast_speed_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3583,21 +4072,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="图腾施放的法术的总施法速度额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="图腾施放的法术的总施法速度额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_spell_totem_cast_speed_+%_final"
 		}
 	},
 	[125]={
-		stats={
-			[1]="support_attack_totem_attack_speed_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3614,21 +4103,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="图腾施放的攻击技能的总攻击速度额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="图腾施放的攻击技能的总攻击速度额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_attack_totem_attack_speed_+%_final"
 		}
 	},
 	[126]={
-		stats={
-			[1]="bleed_on_hit_base_duration"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3640,21 +4129,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextBleeding"
 					},
-					text="击中敌人时造成流血，持续 {0} 秒",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="击中敌人时造成流血，持续 {0} 秒"
 				}
 			}
+		},
+		stats={
+			[1]="bleed_on_hit_base_duration"
 		}
 	},
 	[127]={
-		stats={
-			[1]="aura_cannot_affect_self"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3667,12 +4156,12 @@ return {
 					text="被辅助的光环对你本人无效"
 				}
 			}
+		},
+		stats={
+			[1]="aura_cannot_affect_self"
 		}
 	},
 	[128]={
-		stats={
-			[1]="support_bloodlust_melee_physical_damage_+%_final_vs_bleeding_enemies"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3689,21 +4178,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能对流血敌人造成的物理总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能对流血敌人造成的物理总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_bloodlust_melee_physical_damage_+%_final_vs_bleeding_enemies"
 		}
 	},
 	[129]={
-		stats={
-			[1]="support_slower_projectiles_projectile_speed_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3720,21 +4209,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的投射物总速度额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的投射物总速度额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_slower_projectiles_projectile_speed_+%_final"
 		}
 	},
 	[130]={
-		stats={
-			[1]="support_reduced_duration_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3751,21 +4240,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_reduced_duration_damage_+%_final"
 		}
 	},
 	[131]={
-		stats={
-			[1]="support_reduced_duration_skill_effect_duration_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3782,22 +4293,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的技能效果总持续时间额外缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的技能效果总持续时间额外缩短 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 스킬 효과 지속시간 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 스킬 효과 지속시간 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_reduced_duration_skill_effect_duration_+%_final"
 		}
 	},
 	[132]={
-		stats={
-			[1]="support_rapid_activation_brand_skill_only_primary_duration_+%_final",
-			[2]="quality_display_swiftbrand_is_gem"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3818,7 +4350,6 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的总附着持续时间额外缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
@@ -3828,14 +4359,14 @@ return {
 							[1]="!",
 							[2]=0
 						}
-					}
+					},
+					text="被辅助技能的总附着持续时间额外缩短 {0}%"
 				},
 				[3]={
 					[1]={
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的总附着持续时间额外缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
@@ -3845,15 +4376,17 @@ return {
 							[1]=0,
 							[2]=0
 						}
-					}
+					},
+					text="被辅助技能的总附着持续时间额外缩短 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_rapid_activation_brand_skill_only_primary_duration_+%_final",
+			[2]="quality_display_swiftbrand_is_gem"
 		}
 	},
 	[133]={
-		stats={
-			[1]="support_rapid_activation_brand_skill_only_secondary_duration_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3870,21 +4403,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的总解除持续时间额外缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的总解除持续时间额外缩短 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_rapid_activation_brand_skill_only_secondary_duration_+%_final"
 		}
 	},
 	[134]={
-		stats={
-			[1]="gain_elusive_on_crit_%_chance"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3892,34 +4425,34 @@ return {
 						k="reminderstring",
 						v="ReminderTextElusive"
 					},
-					text="被辅助技能暴击时有 {0}% 几率获得【灵巧】",
 					limit={
 						[1]={
 							[1]=1,
 							[2]=99
 						}
-					}
+					},
+					text="被辅助技能暴击时有 {0}% 的几率获得【灵巧】"
 				},
 				[2]={
 					[1]={
 						k="reminderstring",
 						v="ReminderTextElusive"
 					},
-					text="被辅助技能暴击时会获得【灵巧】",
 					limit={
 						[1]={
 							[1]=100,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能暴击时会获得【灵巧】"
 				}
 			}
+		},
+		stats={
+			[1]="gain_elusive_on_crit_%_chance"
 		}
 	},
 	[135]={
-		stats={
-			[1]="global_poison_on_hit"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3927,21 +4460,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextPoison"
 					},
-					text="被辅助技能击中敌人时会使其中毒",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能击中敌人时会使其中毒"
 				}
 			}
+		},
+		stats={
+			[1]="global_poison_on_hit"
 		}
 	},
 	[136]={
-		stats={
-			[1]="base_chance_to_poison_on_hit_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3949,34 +4482,34 @@ return {
 						k="reminderstring",
 						v="ReminderTextPoison"
 					},
-					text="被辅助技能在击中时有 {0}% 几率使敌人中毒",
 					limit={
 						[1]={
 							[1]=1,
 							[2]=99
 						}
-					}
+					},
+					text="被辅助技能在击中时有 {0}% 的几率使敌人中毒"
 				},
 				[2]={
 					[1]={
 						k="reminderstring",
 						v="ReminderTextPoison"
 					},
-					text="被辅助技能在击中时会使敌人中毒",
 					limit={
 						[1]={
 							[1]=100,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能在击中时会使敌人中毒"
 				}
 			}
+		},
+		stats={
+			[1]="base_chance_to_poison_on_hit_%"
 		}
 	},
 	[137]={
-		stats={
-			[1]="withered_on_hit_chance_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -3984,34 +4517,34 @@ return {
 						k="reminderstring",
 						v="ReminderTextWithered"
 					},
-					text="被辅助技能击中敌人后有 {0}% 几率造成【死亡凋零】",
 					limit={
 						[1]={
 							[1]=1,
 							[2]=99
 						}
-					}
+					},
+					text="被辅助技能击中敌人后有 {0}% 的几率造成【死亡凋零】"
 				},
 				[2]={
 					[1]={
 						k="reminderstring",
 						v="ReminderTextWithered"
 					},
-					text="被辅助技能击中敌人后造成【死亡凋零】",
 					limit={
 						[1]={
 							[1]=100,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能击中敌人后造成【死亡凋零】"
 				}
 			}
+		},
+		stats={
+			[1]="withered_on_hit_chance_%"
 		}
 	},
 	[138]={
-		stats={
-			[1]="cannot_inflict_status_ailments"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4019,21 +4552,34 @@ return {
 						k="reminderstring",
 						v="ReminderTextElementalStatusAilments"
 					},
-					text="被辅助技能无法造成点燃、冰冻、冰缓和感电状态",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能无法造成点燃、冰冻、冰缓和感电状态"
+				},
+				[2]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextElementalStatusAilments"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 원소 상태 이상 유발 불가"
 				}
 			}
+		},
+		stats={
+			[1]="cannot_inflict_status_ailments"
 		}
 	},
 	[139]={
-		stats={
-			[1]="freeze_mine_cold_resistance_+_while_frozen"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4041,21 +4587,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被冰冻时，敌人的冰霜抗性降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被冰冻时，敌人的冰霜抗性降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="freeze_mine_cold_resistance_+_while_frozen"
 		}
 	},
 	[140]={
-		stats={
-			[1]="critical_strike_multiplier_+_while_affected_by_elusive"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4068,12 +4614,12 @@ return {
 					text="【灵巧】效果下，被辅助技能获得 {0:+d}% 暴击伤害加成"
 				}
 			}
+		},
+		stats={
+			[1]="critical_strike_multiplier_+_while_affected_by_elusive"
 		}
 	},
 	[141]={
-		stats={
-			[1]="support_arcane_surge_gain_buff_on_mana_use_threshold"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4086,14 +4632,12 @@ return {
 					text="被辅助技能总计消耗 {0} 魔力后获得【秘术增强】效果"
 				}
 			}
+		},
+		stats={
+			[1]="support_arcane_surge_gain_buff_on_mana_use_threshold"
 		}
 	},
 	[142]={
-		stats={
-			[1]="support_arcane_surge_spell_damage_+%_final",
-			[2]="support_arcane_surge_cast_speed_+%",
-			[3]="support_arcane_surge_mana_regeneration_rate_per_minute_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4101,7 +4645,27 @@ return {
 						k="per_minute_to_per_second",
 						v=3
 					},
-					text="【秘术增强】会使法术总伤害额外提高 {0}%\n【秘术增强】会使施法速度额外提高 {1}%\n【秘术增强】会使你获得 {2}% 每秒魔力回复",
+					limit={
+						[1]={
+							[1]=0,
+							[2]=0
+						},
+						[2]={
+							[1]=0,
+							[2]=0
+						},
+						[3]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="秘术增强每秒提供 {2}% 魔力再生"
+				},
+				[2]={
+					[1]={
+						k="per_minute_to_per_second",
+						v=3
+					},
 					limit={
 						[1]={
 							[1]="#",
@@ -4115,15 +4679,18 @@ return {
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="秘术增强使总法术伤害提高 {0}%\n秘术增强使施法速度加快 {1}%\n秘术增强每秒提供 {2}% 魔力再生 "
 				}
 			}
+		},
+		stats={
+			[1]="support_arcane_surge_spell_damage_+%_final",
+			[2]="support_arcane_surge_cast_speed_+%",
+			[3]="support_arcane_surge_mana_regeneration_rate_per_minute_%"
 		}
 	},
 	[143]={
-		stats={
-			[1]="support_arcane_surge_base_duration_ms"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4131,34 +4698,34 @@ return {
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="【秘术增强】持续 1 秒",
 					limit={
 						[1]={
 							[1]=1000,
 							[2]=1000
 						}
-					}
+					},
+					text="【秘术增强】持续 1 秒"
 				},
 				[2]={
 					[1]={
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="【秘术增强】持续 {0} 秒",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="【秘术增强】持续 {0} 秒"
 				}
 			}
+		},
+		stats={
+			[1]="support_arcane_surge_base_duration_ms"
 		}
 	},
 	[144]={
-		stats={
-			[1]="support_withered_base_duration_ms"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4166,34 +4733,34 @@ return {
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="【死亡凋零】持续 {0} 秒",
 					limit={
 						[1]={
 							[1]=1000,
 							[2]=1000
 						}
-					}
+					},
+					text="【死亡凋零】持续 {0} 秒"
 				},
 				[2]={
 					[1]={
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="【死亡凋零】持续 {0} 秒",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="【死亡凋零】持续 {0} 秒"
 				}
 			}
+		},
+		stats={
+			[1]="support_withered_base_duration_ms"
 		}
 	},
 	[145]={
-		stats={
-			[1]="active_skill_withered_base_duration_ms"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4205,13 +4772,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextWithered"
 					},
-					text="【死亡凋零】持续 {0} 秒",
 					limit={
 						[1]={
 							[1]=1000,
 							[2]=1000
 						}
-					}
+					},
+					text="【死亡凋零】持续 {0} 秒"
 				},
 				[2]={
 					[1]={
@@ -4222,21 +4789,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextWithered"
 					},
-					text="【死亡凋零】持续 {0} 秒",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="【死亡凋零】持续 {0} 秒"
 				}
 			}
+		},
+		stats={
+			[1]="active_skill_withered_base_duration_ms"
 		}
 	},
 	[146]={
-		stats={
-			[1]="support_arcane_surge_duration_ms"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4244,34 +4811,34 @@ return {
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="【秘术增强】持续 1 秒",
 					limit={
 						[1]={
 							[1]=1000,
 							[2]=1000
 						}
-					}
+					},
+					text="【秘术增强】持续 1 秒"
 				},
 				[2]={
 					[1]={
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="【秘术增强】持续 {0} 秒",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="【秘术增强】持续 {0} 秒"
 				}
 			}
+		},
+		stats={
+			[1]="support_arcane_surge_duration_ms"
 		}
 	},
 	[147]={
-		stats={
-			[1]="support_withered_base_duration_ms"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4279,34 +4846,34 @@ return {
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="【死亡凋零】持续 {0} 秒",
 					limit={
 						[1]={
 							[1]=1000,
 							[2]=1000
 						}
-					}
+					},
+					text="【死亡凋零】持续 {0} 秒"
 				},
 				[2]={
 					[1]={
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="【死亡凋零】持续 {0} 秒",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="【死亡凋零】持续 {0} 秒"
 				}
 			}
+		},
+		stats={
+			[1]="support_withered_base_duration_ms"
 		}
 	},
 	[148]={
-		stats={
-			[1]="support_arcane_surge_base_duration_ms"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4314,34 +4881,34 @@ return {
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="【秘术增强】持续 1 秒",
 					limit={
 						[1]={
 							[1]=1000,
 							[2]=1000
 						}
-					}
+					},
+					text="【秘术增强】持续 1 秒"
 				},
 				[2]={
 					[1]={
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="【秘术增强】持续 {0} 秒",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="【秘术增强】持续 {0} 秒"
 				}
 			}
+		},
+		stats={
+			[1]="support_arcane_surge_base_duration_ms"
 		}
 	},
 	[149]={
-		stats={
-			[1]="support_innervate_gain_buff_on_killing_shocked_enemy"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4354,13 +4921,12 @@ return {
 					text="使用被辅助技能击败带有感电状态的怪物时获得【闪电支配】"
 				}
 			}
+		},
+		stats={
+			[1]="support_innervate_gain_buff_on_killing_shocked_enemy"
 		}
 	},
 	[150]={
-		stats={
-			[1]="support_innervate_minimum_added_lightning_damage",
-			[2]="support_innervate_maximum_added_lightning_damage"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4377,12 +4943,13 @@ return {
 					text="【闪电支配】附加  {0} - {1} 基础闪电伤害"
 				}
 			}
+		},
+		stats={
+			[1]="support_innervate_minimum_added_lightning_damage",
+			[2]="support_innervate_maximum_added_lightning_damage"
 		}
 	},
 	[151]={
-		stats={
-			[1]="support_innervate_buff_base_duration_ms"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4390,34 +4957,34 @@ return {
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="【闪电支配】持续 {0} 秒",
 					limit={
 						[1]={
 							[1]=1000,
 							[2]=1000
 						}
-					}
+					},
+					text="【闪电支配】持续 {0} 秒"
 				},
 				[2]={
 					[1]={
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="【闪电支配】持续 {0} 秒",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="【闪电支配】持续 {0} 秒"
 				}
 			}
+		},
+		stats={
+			[1]="support_innervate_buff_base_duration_ms"
 		}
 	},
 	[152]={
-		stats={
-			[1]="support_ruthless_big_hit_max_count"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4430,12 +4997,12 @@ return {
 					text="每打出 3 次被辅助的近战攻击，就会触发 1 次【无情一击】"
 				}
 			}
+		},
+		stats={
+			[1]="support_ruthless_big_hit_max_count"
 		}
 	},
 	[153]={
-		stats={
-			[1]="support_ruthless_big_hit_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4448,12 +5015,12 @@ return {
 					text="被辅助技能会使【无情一击】的近战总伤害额外提高 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_ruthless_big_hit_damage_+%_final"
 		}
 	},
 	[154]={
-		stats={
-			[1]="support_ruthless_blow_bleeding_damage_from_melee_hits_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4466,12 +5033,12 @@ return {
 					text="被辅助技能会使【无情一击】在近战击中时的流血总伤害额外提高 {0}% "
 				}
 			}
+		},
+		stats={
+			[1]="support_ruthless_blow_bleeding_damage_from_melee_hits_+%_final"
 		}
 	},
 	[155]={
-		stats={
-			[1]="support_ruthless_big_hit_stun_base_duration_override_ms"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4479,21 +5046,21 @@ return {
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="被辅助技能会使【无情一击】带有 {0} 秒基础晕眩效果",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能会使【无情一击】带有 {0} 秒基础晕眩效果"
 				}
 			}
+		},
+		stats={
+			[1]="support_ruthless_big_hit_stun_base_duration_override_ms"
 		}
 	},
 	[156]={
-		stats={
-			[1]="chance_to_summon_support_ghost_on_killing_blow_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4503,7 +5070,7 @@ return {
 							[2]=99
 						}
 					},
-					text="当被辅助技能、或被辅助技能召唤的非幻灵召唤生物击败敌人时，有 {0}% 几率召唤 1 个幻灵"
+					text="当被辅助技能、或被辅助技能召唤的非幻灵召唤生物击败敌人时，有 {0}% 的几率召唤 1 个幻灵"
 				},
 				[2]={
 					limit={
@@ -4515,12 +5082,12 @@ return {
 					text="当被辅助技能、或被辅助技能召唤的非幻灵召唤生物击败敌人时，召唤 1 个幻灵"
 				}
 			}
+		},
+		stats={
+			[1]="chance_to_summon_support_ghost_on_killing_blow_%"
 		}
 	},
 	[157]={
-		stats={
-			[1]="chill_effect_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4537,21 +5104,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能对敌人冰缓的效果降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能对敌人冰缓的效果降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="chill_effect_+%"
 		}
 	},
 	[158]={
-		stats={
-			[1]="chill_duration_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4568,21 +5135,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能对敌人冰缓的持续时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能对敌人冰缓的持续时间缩短 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬이 적에게 적용하는 냉각 지속시간 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬이 적에게 적용하는 냉각 지속시간 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="chill_duration_+%"
 		}
 	},
 	[159]={
-		stats={
-			[1]="support_chills_also_grant_cold_damage_taken_per_minute_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4590,13 +5179,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextChill"
 					},
-					text="被辅助技能所冰缓的敌人，其受到的冰霜持续伤害提高 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能所冰缓的敌人，其受到的冰霜持续伤害提高 {0}%"
 				},
 				[2]={
 					[1]={
@@ -4607,21 +5196,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextChill"
 					},
-					text="被辅助技能所冰缓的敌人，其受到的冰霜持续伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能所冰缓的敌人，其受到的冰霜持续伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_chills_also_grant_cold_damage_taken_per_minute_+%"
 		}
 	},
 	[160]={
-		stats={
-			[1]="support_chills_also_grant_cold_damage_taken_+%_equal_to_slow_amount"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4629,21 +5218,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextChill"
 					},
-					text="被辅助技能冰缓的敌人，在冰缓效果下所受到的冰霜伤害提高",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能冰缓的敌人，在冰缓效果下所受到的冰霜伤害提高"
 				}
 			}
+		},
+		stats={
+			[1]="support_chills_also_grant_cold_damage_taken_+%_equal_to_slow_amount"
 		}
 	},
 	[161]={
-		stats={
-			[1]="support_chilling_areas_also_grant_cold_damage_taken_per_minute_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4651,13 +5240,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextChillingArea"
 					},
-					text="被辅助技能造成的冰缓区域内的敌人，其受到的冰霜持续伤害提高 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能造成的冰缓区域内的敌人，其受到的冰霜持续伤害提高 {0}%"
 				},
 				[2]={
 					[1]={
@@ -4668,21 +5257,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextChillingArea"
 					},
-					text="被辅助技能造成的冰缓区域内的敌人，其受到的冰霜持续伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的冰缓区域内的敌人，其受到的冰霜持续伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_chilling_areas_also_grant_cold_damage_taken_per_minute_+%"
 		}
 	},
 	[162]={
-		stats={
-			[1]="support_chilling_areas_also_grant_cold_damage_taken_+%_equal_to_slow_amount"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4690,21 +5279,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextChillingArea"
 					},
-					text="敌人若位于辅助技能所造成的冰缓区域，则在冰缓效果下所受到的冰霜伤害提高",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="敌人若位于辅助技能所造成的冰缓区域，则在冰缓效果下所受到的冰霜伤害提高"
 				}
 			}
+		},
+		stats={
+			[1]="support_chilling_areas_also_grant_cold_damage_taken_+%_equal_to_slow_amount"
 		}
 	},
 	[163]={
-		stats={
-			[1]="mine_throwing_speed_+%_per_frenzy_charge"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4721,21 +5310,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="每个狂怒球使被辅助技能的地雷投掷速度降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="每个狂怒球使被辅助技能的地雷投掷速度降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="mine_throwing_speed_+%_per_frenzy_charge"
 		}
 	},
 	[164]={
-		stats={
-			[1]="mine_critical_strike_chance_+%_per_power_charge"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4752,21 +5341,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="暴击球用于地雷时，每个可使被辅助技能的暴击率提高 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="暴击球用于地雷时，每个可使被辅助技能的暴击率提高 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="mine_critical_strike_chance_+%_per_power_charge"
 		}
 	},
 	[165]={
-		stats={
-			[1]="minion_elemental_resistance_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4777,14 +5366,23 @@ return {
 						}
 					},
 					text="被辅助技能创造的召唤生物获得 {0:+d}% 全元素抗性"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 소환된 소환수의 모든 원소 저항 {0:+d}%"
 				}
 			}
+		},
+		stats={
+			[1]="minion_elemental_resistance_%"
 		}
 	},
 	[166]={
-		stats={
-			[1]="minion_maximum_all_elemental_resistances_%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4792,21 +5390,34 @@ return {
 						k="reminderstring",
 						v="ReminderTextMaximumResistance"
 					},
-					text="被辅助技能创造的召唤生物获得 {0:+d}% 最大全元素抗性",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能创造的召唤生物获得 {0:+d}% 最大全元素抗性"
+				},
+				[2]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextMaximumResistance"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 소환된 소환수의 모든 원소 저항 최대치 {0:+d}%"
 				}
 			}
+		},
+		stats={
+			[1]="minion_maximum_all_elemental_resistances_%"
 		}
 	},
 	[167]={
-		stats={
-			[1]="minion_fire_damage_%_of_maximum_life_taken_per_minute"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4814,21 +5425,34 @@ return {
 						k="per_minute_to_per_second",
 						v=1
 					},
-					text="被辅助技能创造的召唤生物每秒受到等同 {0}% 最大生命的火焰伤害",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能创造的召唤生物每秒受到等同 {0}% 最大生命的火焰伤害"
+				},
+				[2]={
+					[1]={
+						k="per_minute_to_per_second",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 소환된 소환수가 1초마다 소환수의 최대 생명력의 {0}%를 화염 피해로 받음"
 				}
 			}
+		},
+		stats={
+			[1]="minion_fire_damage_%_of_maximum_life_taken_per_minute"
 		}
 	},
 	[168]={
-		stats={
-			[1]="minion_fire_damage_taken_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4845,21 +5469,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能创造的召唤生物承受的火焰伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能创造的召唤生物承受的火焰伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="minion_fire_damage_taken_+%"
 		}
 	},
 	[169]={
-		stats={
-			[1]="support_minion_instability_minion_base_fire_area_damage_per_minute"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4867,21 +5491,21 @@ return {
 						k="per_minute_to_per_second",
 						v=1
 					},
-					text="被辅助技能创造的召唤生物每秒对它们周围的敌人造成 {0} 火焰伤害",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能创造的召唤生物每秒对它们周围的敌人造成 {0} 火焰伤害"
 				}
 			}
+		},
+		stats={
+			[1]="support_minion_instability_minion_base_fire_area_damage_per_minute"
 		}
 	},
 	[170]={
-		stats={
-			[1]="infernal_legion_minions_have_burning_effect_radius_+"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4894,12 +5518,12 @@ return {
 					text="被辅助技能创造的召唤生物 {0:+d}% 燃烧效果范围"
 				}
 			}
+		},
+		stats={
+			[1]="infernal_legion_minions_have_burning_effect_radius_+"
 		}
 	},
 	[171]={
-		stats={
-			[1]="ancestral_slam_interval_duration"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4907,21 +5531,21 @@ return {
 						k="milliseconds_to_seconds_2dp_if_required",
 						v=1
 					},
-					text="被辅助技能的攻击得到先祖加持，每 {0} 秒只会发生一次\n先祖加持对重复的攻击无效",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能的攻击得到先祖加持，每 {0} 秒只会发生一次\n先祖加持对重复的攻击无效"
 				}
 			}
+		},
+		stats={
+			[1]="ancestral_slam_interval_duration"
 		}
 	},
 	[172]={
-		stats={
-			[1]="support_ancestral_slam_big_hit_hit_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4938,21 +5562,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="先祖加持的猛击击中的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="先祖加持的猛击击中的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_ancestral_slam_big_hit_hit_damage_+%_final"
 		}
 	},
 	[173]={
-		stats={
-			[1]="support_ancestral_slam_big_hit_ailment_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4969,21 +5593,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="先祖加持的猛击异常状态的总伤害额外提高 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="先祖加持的猛击异常状态的总伤害额外提高 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_ancestral_slam_big_hit_ailment_damage_+%_final"
 		}
 	},
 	[174]={
-		stats={
-			[1]="support_ancestral_slam_big_hit_area_+%"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -4993,28 +5617,130 @@ return {
 							[2]="#"
 						}
 					},
-					text="先祖加持的猛击范围效果扩大 {0}%"
+					text="先祖加持的猛击效果区域扩大 {0}%"
 				},
 				[2]={
 					[1]={
 						k="negate",
 						v=1
 					},
-					text="先祖加持的猛击范围效果缩小 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="先祖加持的猛击效果区域缩小 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_ancestral_slam_big_hit_area_+%"
 		}
 	},
 	[175]={
-		stats={
-			[1]="accuracy_rating"
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextResonance"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="被辅助技能击中时，造成最高伤害的元素类型会提供 25 点其它元素的共振效果，持续 2 秒\n每有一种没有获得共振效果的元素使你每秒失去 5 点共振"
+				}
+			}
 		},
+		stats={
+			[1]="gain_resonance_of_majority_damage_on_hit_for_2_seconds"
+		}
+	},
+	[176]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="每 5 点最低的共振效果使被辅助技能造成的总元素伤害额外提高 {0}%"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="每 5 点最低的共振效果使被辅助技能造成的总元素伤害额外降低 {0}%"
+				}
+			}
+		},
+		stats={
+			[1]="elemental_damage_+%_final_per_5_lowest_resonance"
+		}
+	},
+	[177]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="每种至少 25 点的共振使被辅助技能穿透 {0}% 元素抗性 "
+				}
+			}
+		},
+		stats={
+			[1]="damage_penetrates_%_elemental_resistances_while_all_resonance_is_25"
+		}
+	},
+	[178]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="每种至少 25 点的共振使被辅助技能的攻击和施法速度加快 {0}%"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="每种至少 25 点的共振使被辅助技能的攻击和施法速度减慢 {0}%"
+				}
+			}
+		},
+		stats={
+			[1]="attack_and_cast_speed_+%_while_all_resonance_is_at_least_25"
+		}
+	},
+	[179]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5025,14 +5751,23 @@ return {
 						}
 					},
 					text="被辅助技能会使命中值提高 {0:+d} "
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 정확도 {0:+d}"
 				}
 			}
+		},
+		stats={
+			[1]="accuracy_rating"
 		}
 	},
-	[176]={
-		stats={
-			[1]="accuracy_rating_+%"
-		},
+	[180]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5049,21 +5784,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能会使命中值降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能会使命中值降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 정확도 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 정확도 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="accuracy_rating_+%"
 		}
 	},
-	[177]={
-		stats={
-			[1]="active_skill_additive_spell_damage_modifiers_apply_to_attack_damage_at_%_value"
-		},
+	[181]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5085,12 +5842,12 @@ return {
 					text="对法术伤害的增幅与减益也套用于该技能的攻击伤害，等于其数值的 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="active_skill_additive_spell_damage_modifiers_apply_to_attack_damage_at_%_value"
 		}
 	},
-	[178]={
-		stats={
-			[1]="add_power_charge_on_critical_strike_%"
-		},
+	[182]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5100,7 +5857,7 @@ return {
 							[2]=99
 						}
 					},
-					text="被辅助技能暴击时有 {0}% 几率获得暴击球"
+					text="被辅助技能暴击时有 {0}% 的几率获得暴击球"
 				},
 				[2]={
 					limit={
@@ -5110,14 +5867,32 @@ return {
 						}
 					},
 					text="被辅助技能暴击时会获得暴击球"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]=99
+						}
+					},
+					text="보조 대상 스킬 치명타 명중 시 {0}%의 확률로 권능 충전 획득"
+				},
+				[4]={
+					limit={
+						[1]={
+							[1]=100,
+							[2]="#"
+						}
+					},
+					text="치명타 명중 시 보조 대상 스킬로 권능 충전 획득"
 				}
 			}
+		},
+		stats={
+			[1]="add_power_charge_on_critical_strike_%"
 		}
 	},
-	[179]={
-		stats={
-			[1]="add_power_charge_on_kill_%_chance"
-		},
+	[183]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5127,15 +5902,15 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助技能击败敌人时，有 {0}% 几率获得一个暴击球"
+					text="被辅助技能击败敌人时，有 {0}% 的几率获得一个暴击球"
 				}
 			}
+		},
+		stats={
+			[1]="add_power_charge_on_kill_%_chance"
 		}
 	},
-	[180]={
-		stats={
-			[1]="added_damage_+%_final"
-		},
+	[184]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5152,21 +5927,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的总附加伤害额外降低 {}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的总附加伤害额外降低 {}%"
 				}
 			}
+		},
+		stats={
+			[1]="added_damage_+%_final"
 		}
 	},
-	[181]={
-		stats={
-			[1]="additional_base_critical_strike_chance"
-		},
+	[185]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5174,21 +5949,34 @@ return {
 						k="divide_by_one_hundred",
 						v=1
 					},
-					text="被辅助技能的攻击和法术基础暴击率提高 {0:+d}% ",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能的攻击和法术基础暴击率提高 {0:+d}% "
+				},
+				[2]={
+					[1]={
+						k="divide_by_one_hundred",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 치명타 확률 {0:+d}%"
 				}
 			}
+		},
+		stats={
+			[1]="additional_base_critical_strike_chance"
 		}
 	},
-	[182]={
-		stats={
-			[1]="additional_chance_to_freeze_chilled_enemies_%"
-		},
+	[186]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5196,21 +5984,56 @@ return {
 						k="reminderstring",
 						v="ReminderTextFreeze"
 					},
-					text="被辅助技能有 {0:+d}% 几率冰冻被冰缓的敌人",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能有 {0:+d}% 的几率冰冻被冰缓的敌人"
+				},
+				[2]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextFreeze"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 냉각된 적 동결 확률 {0:+d}%"
 				}
 			}
+		},
+		stats={
+			[1]="additional_chance_to_freeze_chilled_enemies_%"
 		}
 	},
-	[183]={
+	[187]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					[1]={
+						k="divide_by_one_hundred",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="被击败时，被辅助技能的暴击率 {:+d}% "
+				}
+			}
+		},
 		stats={
 			[1]="additional_critical_strike_chance_permyriad_while_dead"
-		},
+		}
+	},
+	[188]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5218,43 +6041,21 @@ return {
 						k="divide_by_one_hundred",
 						v=1
 					},
-					text="被击败时，被辅助技能的暴击率 {:+d}% ",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="【灵巧】效果下，被辅助技能获得 {0:+d}% 暴击几率"
 				}
 			}
-		}
-	},
-	[184]={
+		},
 		stats={
 			[1]="additional_critical_strike_chance_permyriad_while_affected_by_elusive"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					[1]={
-						k="divide_by_one_hundred",
-						v=1
-					},
-					text="【灵巧】效果下，被辅助技能获得 {0:+d}% 暴击几率",
-					limit={
-						[1]={
-							[1]="#",
-							[2]="#"
-						}
-					}
-				}
-			}
 		}
 	},
-	[185]={
-		stats={
-			[1]="additional_projectiles_per_intensity"
-		},
+	[189]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5289,21 +6090,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="施放被辅助法术可以获得凝聚，最大 3 层\n每层凝聚使被辅助技能减少 {0} 枚投射物",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="施放被辅助法术可以获得凝聚，最大 3 层\n每层凝聚使被辅助技能减少 {0} 枚投射物"
 				}
 			}
+		},
+		stats={
+			[1]="additional_projectiles_per_intensity"
 		}
 	},
-	[186]={
-		stats={
-			[1]="ancestral_slam_stun_threshold_reduction_+%"
-		},
+	[190]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5311,13 +6112,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextStunThreshold"
 					},
-					text="先祖加持的猛击使敌人眩晕门槛降低 {}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="先祖加持的猛击使敌人眩晕门槛降低 {}%"
 				},
 				[2]={
 					[1]={
@@ -5328,21 +6129,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextStunThreshold"
 					},
-					text="先祖加持的猛击使敌人眩晕门槛提高  {}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="先祖加持的猛击使敌人眩晕门槛提高  {}%"
 				}
 			}
+		},
+		stats={
+			[1]="ancestral_slam_stun_threshold_reduction_+%"
 		}
 	},
-	[187]={
-		stats={
-			[1]="apply_overpowered_on_enemy_block_reduced_block_and_spell_block_%"
-		},
+	[191]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5355,12 +6156,12 @@ return {
 					text="【碾压】会使攻击伤害和法术伤害格挡几率 -{0}%"
 				}
 			}
+		},
+		stats={
+			[1]="apply_overpowered_on_enemy_block_reduced_block_and_spell_block_%"
 		}
 	},
-	[188]={
-		stats={
-			[1]="area_damage_+%"
-		},
+	[192]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5377,21 +6178,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能会使范围伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能会使范围伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 범위 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 범위 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="area_damage_+%"
 		}
 	},
-	[189]={
-		stats={
-			[1]="attack_and_cast_speed_+%"
-		},
+	[193]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5408,21 +6231,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的攻击和施法速度减慢 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的攻击和施法速度减慢 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="attack_and_cast_speed_+%"
 		}
 	},
-	[190]={
-		stats={
-			[1]="attack_and_cast_speed_+%_during_onslaught"
-		},
+	[194]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5439,21 +6262,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="猛攻期间，被辅助技能的攻击和施法速度减慢 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="猛攻期间，被辅助技能的攻击和施法速度减慢 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="attack_and_cast_speed_+%_during_onslaught"
 		}
 	},
-	[191]={
-		stats={
-			[1]="attack_critical_strike_chance_+%"
-		},
+	[195]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5470,21 +6293,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的攻击暴击率降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的攻击暴击率降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 공격 치명타 확률 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 공격 치명타 확률 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="attack_critical_strike_chance_+%"
 		}
 	},
-	[192]={
-		stats={
-			[1]="attack_damage_+%"
-		},
+	[196]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5501,21 +6346,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的攻击伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的攻击伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 공격 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 공격 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="attack_damage_+%"
 		}
 	},
-	[193]={
-		stats={
-			[1]="attack_damage_+%_per_1000_accuracy_rating"
-		},
+	[197]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5532,22 +6399,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="每 1000 点命中值都使被辅助技能的攻击伤害降低  {}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="每 1000 点命中值都使被辅助技能的攻击伤害降低  {}%"
 				}
 			}
+		},
+		stats={
+			[1]="attack_damage_+%_per_1000_accuracy_rating"
 		}
 	},
-	[194]={
-		stats={
-			[1]="attack_minimum_added_physical_damage_per_10_rage",
-			[2]="attack_maximum_added_physical_damage_per_10_rage"
-		},
+	[198]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5564,13 +6430,13 @@ return {
 					text="每 10 点怒火使被辅助的武器攻击附加 {0} - {1} 物理伤害"
 				}
 			}
+		},
+		stats={
+			[1]="attack_minimum_added_physical_damage_per_10_rage",
+			[2]="attack_maximum_added_physical_damage_per_10_rage"
 		}
 	},
-	[195]={
-		stats={
-			[1]="attack_minimum_added_physical_damage_with_at_least_10_rage",
-			[2]="attack_maximum_added_physical_damage_with_at_least_10_rage"
-		},
+	[199]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5587,13 +6453,13 @@ return {
 					text="至少有 10 点怒火时，被辅助的武器攻击附加 {0} - {1} 物理伤害"
 				}
 			}
+		},
+		stats={
+			[1]="attack_minimum_added_physical_damage_with_at_least_10_rage",
+			[2]="attack_maximum_added_physical_damage_with_at_least_10_rage"
 		}
 	},
-	[196]={
-		stats={
-			[1]="attack_minimum_added_physical_damage_with_weapons",
-			[2]="attack_maximum_added_physical_damage_with_weapons"
-		},
+	[200]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5610,12 +6476,13 @@ return {
 					text="被辅助的武器攻击技能附加 {0} - {1} 基础物理伤害"
 				}
 			}
+		},
+		stats={
+			[1]="attack_minimum_added_physical_damage_with_weapons",
+			[2]="attack_maximum_added_physical_damage_with_weapons"
 		}
 	},
-	[197]={
-		stats={
-			[1]="attack_skill_mana_leech_from_any_damage_permyriad"
-		},
+	[201]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5627,21 +6494,38 @@ return {
 						k="reminderstring",
 						v="ReminderTextManaLeech"
 					},
-					text="被辅助攻击的 {0}% 伤害会转化为魔力偷取",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助攻击的 {0}% 伤害会转化为魔力偷取"
+				},
+				[2]={
+					[1]={
+						k="divide_by_one_hundred",
+						v=1
+					},
+					[2]={
+						k="reminderstring",
+						v="ReminderTextManaLeech"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 공격 스킬이 피해의 {0}%를 마나로 흡수"
 				}
 			}
+		},
+		stats={
+			[1]="attack_skill_mana_leech_from_any_damage_permyriad"
 		}
 	},
-	[198]={
-		stats={
-			[1]="attack_speed_+%"
-		},
+	[202]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5658,21 +6542,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的攻击速度降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的攻击速度降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 공격 속도 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 공격 속도 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="attack_speed_+%"
 		}
 	},
-	[199]={
-		stats={
-			[1]="attack_speed_+%_with_atleast_20_rage"
-		},
+	[203]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5689,21 +6595,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="你至少有 20 点怒火时，被辅助技能的攻击速度减慢 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="你至少有 20 点怒火时，被辅助技能的攻击速度减慢 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="attack_speed_+%_with_atleast_20_rage"
 		}
 	},
-	[200]={
-		stats={
-			[1]="attacks_impale_on_hit_%_chance"
-		},
+	[204]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5711,34 +6617,34 @@ return {
 						k="reminderstring",
 						v="ReminderTextImpale"
 					},
-					text="被辅助的攻击击中时有 {0}% 几率穿刺敌人",
 					limit={
 						[1]={
 							[1]=1,
 							[2]=99
 						}
-					}
+					},
+					text="被辅助的攻击击中时有 {0}% 的几率穿刺敌人"
 				},
 				[2]={
 					[1]={
 						k="reminderstring",
 						v="ReminderTextImpale"
 					},
-					text="被辅助的攻击击中时总是穿刺敌人",
 					limit={
 						[1]={
 							[1]=100,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助的攻击击中时总是穿刺敌人"
 				}
 			}
+		},
+		stats={
+			[1]="attacks_impale_on_hit_%_chance"
 		}
 	},
-	[201]={
-		stats={
-			[1]="avoid_interruption_while_using_this_skill_%"
-		},
+	[205]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5748,7 +6654,7 @@ return {
 							[2]="#"
 						}
 					},
-					text="使用该技能时，被辅助技能有 {0}% 几率避免被眩晕打断"
+					text="使用该技能时，被辅助技能有 {0}% 的几率避免被眩晕打断"
 				},
 				[2]={
 					limit={
@@ -5760,12 +6666,12 @@ return {
 					text="使用该技能时，被辅助技能不能被眩晕打断"
 				}
 			}
+		},
+		stats={
+			[1]="avoid_interruption_while_using_this_skill_%"
 		}
 	},
-	[202]={
-		stats={
-			[1]="barrage_support_projectile_spread_+%"
-		},
+	[206]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5782,35 +6688,74 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能发射投射物的扩散范围缩小 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能发射投射物的扩散范围缩小 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="barrage_support_projectile_spread_+%"
 		}
 	},
-	[203]={
+	[207]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextDamagingAilments"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="被辅助技能的异常状态伤害提高 {0}%"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					[2]={
+						k="reminderstring",
+						v="ReminderTextDamagingAilments"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="被辅助技能的异常状态异常状态伤害降低 {0}%"
+				}
+			}
+		},
 		stats={
 			[1]="base_ailment_damage_+%"
-		},
+		}
+	},
+	[208]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
 					[1]={
 						k="reminderstring",
-						v="ReminderTextDamagingAilments"
+						v="ReminderTextStatusAilments"
 					},
-					text="被辅助技能的异常状态伤害提高 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能会使敌人受到的冰缓、点燃、冰冻、流血、中毒和感电状态持续时间延长 {0}%"
 				},
 				[2]={
 					[1]={
@@ -5819,62 +6764,23 @@ return {
 					},
 					[2]={
 						k="reminderstring",
-						v="ReminderTextDamagingAilments"
+						v="ReminderTextStatusAilments"
 					},
-					text="被辅助技能的异常状态异常状态伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能会使敌人受到的冰缓、点燃、冰冻、流血、中毒和感电状态持续时间缩短 {0}%"
 				}
 			}
-		}
-	},
-	[204]={
+		},
 		stats={
 			[1]="base_all_ailment_duration_+%"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					[1]={
-						k="reminderstring",
-						v="ReminderTextStatusAilments"
-					},
-					text="被辅助技能会使敌人受到的冰缓、点燃、冰冻、流血、中毒和感电状态持续时间延长 {0}%",
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					}
-				},
-				[2]={
-					[1]={
-						k="negate",
-						v=1
-					},
-					[2]={
-						k="reminderstring",
-						v="ReminderTextStatusAilments"
-					},
-					text="被辅助技能会使敌人受到的冰缓、点燃、冰冻、流血、中毒和感电状态持续时间缩短 {0}%",
-					limit={
-						[1]={
-							[1]="#",
-							[2]=-1
-						}
-					}
-				}
-			}
 		}
 	},
-	[205]={
-		stats={
-			[1]="base_bleed_duration_+%"
-		},
+	[209]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5891,21 +6797,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助攻击的流血持续时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助攻击的流血持续时间缩短 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="base_bleed_duration_+%"
 		}
 	},
-	[206]={
-		stats={
-			[1]="base_cast_speed_+%"
-		},
+	[210]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5922,21 +6828,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的施法速度降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的施法速度降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 시전 속도 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 시전 속도 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="base_cast_speed_+%"
 		}
 	},
-	[207]={
-		stats={
-			[1]="base_chance_to_destroy_corpse_on_kill_%_vs_ignited"
-		},
+	[211]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5946,25 +6874,15 @@ return {
 							[2]=99
 						}
 					},
-					text="被辅助技能击败敌人时，有 {}% 几率摧毁被点燃的灵枢"
-				},
-				[2]={
-					limit={
-						[1]={
-							[1]=100,
-							[2]="#"
-						}
-					},
-					text="被辅助技能击败敌人时摧毁被点燃的灵枢"
+					text="被辅助技能击败敌人时，有 {}% 的几率摧毁被点燃的灵枢"
 				}
 			}
+		},
+		stats={
+			[1]="base_chance_to_destroy_corpse_on_kill_%_vs_ignited"
 		}
 	},
-	[208]={
-		stats={
-			[1]="base_chance_to_freeze_%",
-			[2]="always_freeze"
-		},
+	[212]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -5972,7 +6890,6 @@ return {
 						k="reminderstring",
 						v="ReminderTextFreeze"
 					},
-					text="被辅助技能击中时必定冰冻敌人",
 					limit={
 						[1]={
 							[1]="#",
@@ -5982,14 +6899,14 @@ return {
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能击中时必定冰冻敌人"
 				},
 				[2]={
 					[1]={
 						k="reminderstring",
 						v="ReminderTextFreeze"
 					},
-					text="被辅助技能有 {0}% 几率冰冻敌人",
 					limit={
 						[1]={
 							[1]=1,
@@ -5999,85 +6916,173 @@ return {
 							[1]=0,
 							[2]=0
 						}
-					}
+					},
+					text="被辅助技能有 {0}% 的几率冰冻敌人"
+				},
+				[3]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextFreeze"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						},
+						[2]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="명중 시 보조 대상 스킬로 항상 동결 유발"
+				},
+				[4]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextFreeze"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]=99
+						},
+						[2]={
+							[1]=0,
+							[2]=0
+						}
+					},
+					text="보조 대상 스킬이 {0}%의 확률로 적 동결"
 				}
 			}
+		},
+		stats={
+			[1]="base_chance_to_freeze_%",
+			[2]="always_freeze"
 		}
 	},
-	[209]={
+	[213]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextIgnite"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]=99
+						}
+					},
+					text="被辅助技能有 {0}% 的几率点燃敌人"
+				},
+				[2]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextIgnite"
+					},
+					limit={
+						[1]={
+							[1]=100,
+							[2]="#"
+						}
+					},
+					text="被辅助技能必定点燃敌人"
+				},
+				[3]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextIgnite"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]=99
+						}
+					},
+					text="보조 대상 스킬이 {0}%의 확률로 적 점화"
+				},
+				[4]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextIgnite"
+					},
+					limit={
+						[1]={
+							[1]=100,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 항상 점화 유발"
+				}
+			}
+		},
 		stats={
 			[1]="base_chance_to_ignite_%"
-		},
+		}
+	},
+	[214]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
 					[1]={
 						k="reminderstring",
-						v="ReminderTextIgnite"
+						v="ReminderTextShock"
 					},
-					text="被辅助技能有 {0}% 几率点燃敌人",
 					limit={
 						[1]={
 							[1]=1,
 							[2]=99
 						}
-					}
+					},
+					text="被辅助技能有 {0}% 的几率使敌人感电"
 				},
 				[2]={
 					[1]={
 						k="reminderstring",
-						v="ReminderTextIgnite"
+						v="ReminderTextShock"
 					},
-					text="被辅助技能必定点燃敌人",
 					limit={
 						[1]={
 							[1]=100,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能必定使敌人感电"
+				},
+				[3]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextShock"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]=99
+						}
+					},
+					text="보조 대상 스킬이 {0}%의 확률로 적 감전"
+				},
+				[4]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextShock"
+					},
+					limit={
+						[1]={
+							[1]=100,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 항상 감전 유발"
 				}
 			}
-		}
-	},
-	[210]={
+		},
 		stats={
 			[1]="base_chance_to_shock_%"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					[1]={
-						k="reminderstring",
-						v="ReminderTextShock"
-					},
-					text="被辅助技能有 {0}% 几率使敌人感电",
-					limit={
-						[1]={
-							[1]=1,
-							[2]=99
-						}
-					}
-				},
-				[2]={
-					[1]={
-						k="reminderstring",
-						v="ReminderTextShock"
-					},
-					text="被辅助技能必定使敌人感电",
-					limit={
-						[1]={
-							[1]=100,
-							[2]="#"
-						}
-					}
-				}
-			}
 		}
 	},
-	[211]={
-		stats={
-			[1]="base_cooldown_modifier_ms"
-		},
+	[215]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6085,21 +7090,21 @@ return {
 						k="milliseconds_to_seconds_2dp_if_required",
 						v=1
 					},
-					text="被辅助技能 {0:+d} 秒冷却时间",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能 {0:+d} 秒冷却时间"
 				}
 			}
+		},
+		stats={
+			[1]="base_cooldown_modifier_ms"
 		}
 	},
-	[212]={
-		stats={
-			[1]="base_cooldown_speed_+%"
-		},
+	[216]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6116,21 +7121,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的冷却回复速度减慢 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的冷却回复速度减慢 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="base_cooldown_speed_+%"
 		}
 	},
-	[213]={
-		stats={
-			[1]="base_curse_duration_+%"
-		},
+	[217]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6147,21 +7152,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助的诅咒技能持续时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助的诅咒技能持续时间缩短 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 저주 지속시간 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 저주 지속시간 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="base_curse_duration_+%"
 		}
 	},
-	[214]={
-		stats={
-			[1]="base_damage_+%_while_an_ailment_on_you"
-		},
+	[218]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6178,21 +7205,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="你被异常状态影响时，被辅助技能的伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="你被异常状态影响时，被辅助技能的伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="base_damage_+%_while_an_ailment_on_you"
 		}
 	},
-	[215]={
-		stats={
-			[1]="base_deal_no_chaos_damage"
-		},
+	[219]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6205,12 +7232,12 @@ return {
 					text="被辅助技能无法造成混沌伤害"
 				}
 			}
+		},
+		stats={
+			[1]="base_deal_no_chaos_damage"
 		}
 	},
-	[216]={
-		stats={
-			[1]="base_global_chance_to_knockback_%"
-		},
+	[220]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6218,21 +7245,34 @@ return {
 						k="reminderstring",
 						v="ReminderTextKnockback"
 					},
-					text="被辅助技能击中时有 {0}% 几率击退敌人",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能击中时有 {0}% 的几率击退敌人"
+				},
+				[2]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextKnockback"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬 명중 시 {0}%의 확률로 적을 밀어냄"
 				}
 			}
+		},
+		stats={
+			[1]="base_global_chance_to_knockback_%"
 		}
 	},
-	[217]={
-		stats={
-			[1]="base_killed_monster_dropped_item_quantity_+%"
-		},
+	[221]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6249,21 +7289,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能击败敌人时物品掉落数量降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能击败敌人时物品掉落数量降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 처치한 적이 떨어뜨리는 아이템 수량 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 처치한 적이 떨어뜨리는 아이템 수량 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="base_killed_monster_dropped_item_quantity_+%"
 		}
 	},
-	[218]={
-		stats={
-			[1]="base_killed_monster_dropped_item_rarity_+%"
-		},
+	[222]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6280,21 +7342,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能击败敌人时物品稀有度降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能击败敌人时物品稀有度降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 처치한 적이 떨어뜨리는 아이템 희귀도 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 처치한 적이 떨어뜨리는 아이템 희귀도 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="base_killed_monster_dropped_item_rarity_+%"
 		}
 	},
-	[219]={
-		stats={
-			[1]="base_life_gain_per_target"
-		},
+	[223]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6305,14 +7389,49 @@ return {
 						}
 					},
 					text="被辅助技能击中时回复 {0:+d} 生命"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬 공격으로 피격당한 적 하나당 획득하는 생명력 {0:+d}"
 				}
 			}
+		},
+		stats={
+			[1]="base_life_gain_per_target"
 		}
 	},
-	[220]={
+	[224]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					[1]={
+						k="divide_by_one_hundred",
+						v=1
+					},
+					[2]={
+						k="reminderstring",
+						v="ReminderTextLifeLeech"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="被辅助技能将攻击伤害的 {0}% 转化为生命偷取"
+				}
+			}
+		},
 		stats={
 			[1]="base_life_leech_from_attack_damage_permyriad"
-		},
+		}
+	},
+	[225]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6324,47 +7443,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextLifeLeech"
 					},
-					text="被辅助技能将攻击伤害的 {0}% 转化为生命偷取",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能将混沌伤害的 {0}% 转化为生命偷取"
 				}
 			}
-		}
-	},
-	[221]={
+		},
 		stats={
 			[1]="base_life_leech_from_chaos_damage_permyriad"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					[1]={
-						k="divide_by_one_hundred",
-						v=1
-					},
-					[2]={
-						k="reminderstring",
-						v="ReminderTextLifeLeech"
-					},
-					text="被辅助技能将混沌伤害的 {0}% 转化为生命偷取",
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					}
-				}
-			}
 		}
 	},
-	[222]={
-		stats={
-			[1]="base_mana_reservation_+%"
-		},
+	[226]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6381,21 +7474,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的魔力保留降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的魔力保留降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="base_mana_reservation_+%"
 		}
 	},
-	[223]={
-		stats={
-			[1]="base_mine_detonation_time_ms"
-		},
+	[227]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6403,21 +7496,21 @@ return {
 						k="milliseconds_to_seconds_2dp",
 						v=1
 					},
-					text="被辅助技能的地雷基础引爆时间为 {0} 秒",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能的地雷基础引爆时间为 {0} 秒"
 				}
 			}
+		},
+		stats={
+			[1]="base_mine_detonation_time_ms"
 		}
 	},
-	[224]={
-		stats={
-			[1]="base_number_of_support_ghosts_allowed"
-		},
+	[228]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6439,12 +7532,12 @@ return {
 					text="最多召唤 {0} 个幻灵"
 				}
 			}
+		},
+		stats={
+			[1]="base_number_of_support_ghosts_allowed"
 		}
 	},
-	[225]={
-		stats={
-			[1]="base_physical_damage_%_to_convert_to_lightning"
-		},
+	[229]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6455,14 +7548,23 @@ return {
 						}
 					},
 					text="被辅助技能的 {0}% 物理伤害转换为闪电伤害"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 {0}%의 물리 피해를 번개 피해로 전환"
 				}
 			}
+		},
+		stats={
+			[1]="base_physical_damage_%_to_convert_to_lightning"
 		}
 	},
-	[226]={
-		stats={
-			[1]="base_poison_damage_+%"
-		},
+	[230]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6479,21 +7581,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的中毒伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的中毒伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="base_poison_damage_+%"
 		}
 	},
-	[227]={
-		stats={
-			[1]="base_poison_duration_+%"
-		},
+	[231]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6510,21 +7612,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的中毒持续时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的中毒持续时间缩短 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 중독 지속시간 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 중독 지속시간 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="base_poison_duration_+%"
 		}
 	},
-	[228]={
-		stats={
-			[1]="base_projectile_speed_+%"
-		},
+	[232]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6541,21 +7665,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的投射物速度降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的投射物速度降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 투사체 속도 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 투사체 속도 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="base_projectile_speed_+%"
 		}
 	},
-	[229]={
-		stats={
-			[1]="base_stun_duration_+%"
-		},
+	[233]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6572,21 +7718,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能会使敌人的晕眩时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能会使敌人的晕眩时间缩短 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬이 적에게 적용하는 기절 지속시간 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬이 적에게 적용하는 기절 지속시간 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="base_stun_duration_+%"
 		}
 	},
-	[230]={
-		stats={
-			[1]="base_stun_threshold_reduction_+%"
-		},
+	[234]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6594,13 +7762,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextStunThreshold"
 					},
-					text="被辅助技能会使敌人晕眩门槛降低 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能会使敌人晕眩门槛降低 {0}%"
 				},
 				[2]={
 					[1]={
@@ -6611,52 +7779,96 @@ return {
 						k="reminderstring",
 						v="ReminderTextStunThreshold"
 					},
-					text="被辅助技能会使敌人晕眩门槛提高 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
-				}
-			}
-		}
-	},
-	[231]={
-		stats={
-			[1]="bleed_on_hit_with_attacks_%",
-			[2]="global_bleed_on_hit",
-			[3]="cannot_cause_bleeding"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
+					},
+					text="被辅助技能会使敌人晕眩门槛提高 {0}%"
+				},
+				[3]={
 					[1]={
 						k="reminderstring",
-						v="ReminderTextBleeding"
+						v="ReminderTextStunThreshold"
 					},
-					text="被辅助的攻击技能有 {0}% 几率使敌人流血",
 					limit={
 						[1]={
 							[1]=1,
-							[2]=99
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 적 기절 한계치 {0}% 감소"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					[2]={
+						k="reminderstring",
+						v="ReminderTextStunThreshold"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 적 기절 한계치 {0}% 증가"
+				}
+			}
+		},
+		stats={
+			[1]="base_stun_threshold_reduction_+%"
+		}
+	},
+	[235]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
 						},
 						[2]={
-							[1]=0,
-							[2]=0
+							[1]="#",
+							[2]="#"
 						},
 						[3]={
-							[1]=0,
+							[1]="!",
 							[2]=0
 						}
-					}
+					},
+					text="被辅助攻击不能导致流血"
 				},
 				[2]={
 					[1]={
 						k="reminderstring",
 						v="ReminderTextBleeding"
 					},
-					text="被辅助的攻击技能会使敌人流血",
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						},
+						[2]={
+							[1]="!",
+							[2]=0
+						},
+						[3]={
+							[1]=0,
+							[2]=0
+						}
+					},
+					text="被辅助攻击导致流血"
+				},
+				[3]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextBleeding"
+					},
 					limit={
 						[1]={
 							[1]=100,
@@ -6670,53 +7882,39 @@ return {
 							[1]=0,
 							[2]=0
 						}
-					}
+					},
+					text="被辅助攻击导致流血"
 				},
-				[3]={
+				[4]={
 					[1]={
 						k="reminderstring",
 						v="ReminderTextBleeding"
 					},
-					text="被辅助的攻击技能会使敌人流血",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						},
 						[2]={
-							[1]="#",
-							[2]="#"
+							[1]=0,
+							[2]=0
 						},
 						[3]={
 							[1]=0,
 							[2]=0
 						}
-					}
-				},
-				[4]={
-					limit={
-						[1]={
-							[1]="#",
-							[2]="#"
-						},
-						[2]={
-							[1]="#",
-							[2]="#"
-						},
-						[3]={
-							[1]="#",
-							[2]="#"
-						}
 					},
-					text="被辅助的攻击技能无法使敌人流血"
+					text="被辅助攻击有 {0}% 的几率导致流血"
 				}
 			}
+		},
+		stats={
+			[1]="bleed_on_hit_with_attacks_%",
+			[2]="global_bleed_on_hit",
+			[3]="cannot_cause_bleeding"
 		}
 	},
-	[232]={
-		stats={
-			[1]="bleeding_damage_+%"
-		},
+	[236]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6733,21 +7931,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助的攻击技能造成的流血伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助的攻击技能造成的流血伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="bleeding_damage_+%"
 		}
 	},
-	[233]={
-		stats={
-			[1]="burn_damage_+%"
-		},
+	[237]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6764,21 +7962,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的燃烧伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的燃烧伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 화상 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 화상 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="burn_damage_+%"
 		}
 	},
-	[234]={
-		stats={
-			[1]="cast_when_damage_taken_trigger_threshold_+%"
-		},
+	[238]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6788,28 +8008,28 @@ return {
 							[2]="#"
 						}
 					},
-					text="触发需要的伤害降低 {0}%"
+					text="被辅助技能需要承受的伤害量提高 {0}% 才能触发"
 				},
 				[2]={
 					[1]={
 						k="negate",
 						v=1
 					},
-					text="触发需要的总伤害额外提高 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能需要承受的伤害量降低 {0}% 才能触发"
 				}
 			}
+		},
+		stats={
+			[1]="cast_when_damage_taken_trigger_threshold_+%"
 		}
 	},
-	[235]={
-		stats={
-			[1]="chaining_range_+%"
-		},
+	[239]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6826,21 +8046,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的连锁范围缩小 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的连锁范围缩小 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="chaining_range_+%"
 		}
 	},
-	[236]={
-		stats={
-			[1]="chance_for_coin_shower_on_kill_%"
-		},
+	[240]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6850,15 +8070,15 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助技能击败敌人时有 {}% 几率产生撒钱效果"
+					text="被辅助技能击败敌人时有 {}% 的几率产生撒钱效果"
 				}
 			}
+		},
+		stats={
+			[1]="chance_for_coin_shower_on_kill_%"
 		}
 	},
-	[237]={
-		stats={
-			[1]="chance_for_extra_damage_roll_%"
-		},
+	[241]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6866,34 +8086,34 @@ return {
 						k="reminderstring",
 						v="ReminderTextLucky"
 					},
-					text="被辅助技能有 {}% 几率使伤害具有幸运一击效果",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能有 {}% 的几率使伤害具有幸运一击效果"
 				},
 				[2]={
 					[1]={
 						k="reminderstring",
 						v="ReminderTextUnlucky"
 					},
-					text="被辅助技能有 {}% 几率使伤害具有厄运一击效果",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能有 {}% 的几率使伤害具有厄运一击效果"
 				}
 			}
+		},
+		stats={
+			[1]="chance_for_extra_damage_roll_%"
 		}
 	},
-	[238]={
-		stats={
-			[1]="chance_to_bleed_on_hit_%_vs_maimed"
-		},
+	[242]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6901,21 +8121,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextBleeding"
 					},
-					text="被辅助技能对瘫痪的敌人有 {}% 几率施加流血",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能对瘫痪的敌人有 {}% 的几率施加流血"
 				}
 			}
+		},
+		stats={
+			[1]="chance_to_bleed_on_hit_%_vs_maimed"
 		}
 	},
-	[239]={
-		stats={
-			[1]="chance_to_double_stun_duration_%"
-		},
+	[243]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6925,15 +8145,15 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助技能有 {0}% 几率使晕眩持续时间翻倍"
+					text="被辅助技能有 {0}% 的几率使晕眩持续时间翻倍"
 				}
 			}
+		},
+		stats={
+			[1]="chance_to_double_stun_duration_%"
 		}
 	},
-	[240]={
-		stats={
-			[1]="chance_to_fork_extra_projectile_%"
-		},
+	[244]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6943,15 +8163,15 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助技能发射的投射物在分叉时，有 {0}% 几率产生一枚额外投射物"
+					text="被辅助技能发射的投射物在分叉时，有 {0}% 的几率产生一枚额外投射物"
 				}
 			}
+		},
+		stats={
+			[1]="chance_to_fork_extra_projectile_%"
 		}
 	},
-	[241]={
-		stats={
-			[1]="chance_to_fortify_on_melee_hit_+%"
-		},
+	[245]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -6959,34 +8179,60 @@ return {
 						k="reminderstring",
 						v="ReminderTextFortify"
 					},
-					text="被辅助技能在近战击中时获得护体效果",
 					limit={
 						[1]={
 							[1]=100,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能在近战击中时获得护体效果"
 				},
 				[2]={
 					[1]={
 						k="reminderstring",
 						v="ReminderTextFortify"
 					},
-					text="被辅助技能在近战击中时有 {0}% 几率获得护体效果",
 					limit={
 						[1]={
 							[1]=1,
 							[2]=99
 						}
-					}
+					},
+					text="被辅助技能在近战击中时有 {0}% 的几率获得护体效果"
+				},
+				[3]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextFortify"
+					},
+					limit={
+						[1]={
+							[1]=100,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 근접 명중 시 방어 상승 적용"
+				},
+				[4]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextFortify"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]=99
+						}
+					},
+					text="보조 대상 스킬로 근접 명중 시 {0}%의 확률로 방어 상승 보유"
 				}
 			}
+		},
+		stats={
+			[1]="chance_to_fortify_on_melee_hit_+%"
 		}
 	},
-	[242]={
-		stats={
-			[1]="chance_to_freeze_shock_ignite_%"
-		},
+	[246]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7008,7 +8254,7 @@ return {
 							[2]=99
 						}
 					},
-					text="被辅助技能有 {0}% 几率导致冻结、感电和点燃效果"
+					text="被辅助技能有 {0}% 的几率导致冻结、感电和点燃效果"
 				},
 				[2]={
 					[1]={
@@ -7032,12 +8278,12 @@ return {
 					text="被辅助技能始终导致冻结、感电和点燃效果"
 				}
 			}
+		},
+		stats={
+			[1]="chance_to_freeze_shock_ignite_%"
 		}
 	},
-	[243]={
-		stats={
-			[1]="chance_to_gain_frenzy_charge_on_killing_frozen_enemy_%"
-		},
+	[247]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7047,7 +8293,7 @@ return {
 							[2]=99
 						}
 					},
-					text="被辅助技能击败冰冻敌人时有 {0}% 几率获得狂怒球"
+					text="被辅助技能击败冰冻敌人时有 {0}% 的几率获得狂怒球"
 				},
 				[2]={
 					limit={
@@ -7057,14 +8303,32 @@ return {
 						}
 					},
 					text="被辅助技能击败冰冻敌人时会获得狂怒球"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]=99
+						}
+					},
+					text="보조 대상 스킬로 동결된 적 처치 시 {0}%의 확률로 격분 충전 획득"
+				},
+				[4]={
+					limit={
+						[1]={
+							[1]=100,
+							[2]="#"
+						}
+					},
+					text="동결된 적 처치 시 보조 대상 스킬로 격분 충전 획득"
 				}
 			}
+		},
+		stats={
+			[1]="chance_to_gain_frenzy_charge_on_killing_frozen_enemy_%"
 		}
 	},
-	[244]={
-		stats={
-			[1]="chance_to_ignore_hexproof_%"
-		},
+	[248]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7074,15 +8338,15 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助诅咒施加的魔蛊有 {0}% 几率影响无咒的敌人"
+					text="被辅助诅咒施加的魔蛊有 {0}% 的几率影响无咒的敌人"
 				}
 			}
+		},
+		stats={
+			[1]="chance_to_ignore_hexproof_%"
 		}
 	},
-	[245]={
-		stats={
-			[1]="chance_to_inflict_additional_impale_%"
-		},
+	[249]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7090,21 +8354,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextImpale"
 					},
-					text="被辅助技能对被它穿刺的敌人有 {0}% 几率施加一次额外穿刺",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能对被它穿刺的敌人有 {0}% 的几率施加一次额外穿刺"
 				}
 			}
+		},
+		stats={
+			[1]="chance_to_inflict_additional_impale_%"
 		}
 	},
-	[246]={
-		stats={
-			[1]="chance_to_place_an_additional_mine_%"
-		},
+	[250]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7112,21 +8376,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextMultipleMines"
 					},
-					text="被辅助技能有 {0}% 几率投掷 1 个额外地雷",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能有 {0}% 的几率投掷 1 个额外地雷"
 				}
 			}
+		},
+		stats={
+			[1]="chance_to_place_an_additional_mine_%"
 		}
 	},
-	[247]={
-		stats={
-			[1]="chance_to_summon_support_ghost_on_hitting_rare_or_unique_%"
-		},
+	[251]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7136,7 +8400,7 @@ return {
 							[2]=99
 						}
 					},
-					text="当被辅助技能、或被辅助技能召唤的非幻灵召唤生物击中稀有或传奇敌人时，有 {0}% 几率召唤 1 个幻灵"
+					text="当被辅助技能、或被辅助技能召唤的非幻灵召唤生物击中稀有或传奇敌人时，有 {0}% 的几率召唤 1 个幻灵"
 				},
 				[2]={
 					limit={
@@ -7146,14 +8410,32 @@ return {
 						}
 					},
 					text="当被辅助技能、或被辅助技能召唤的非幻灵召唤生物击中稀有或传奇敌人时，召唤 1 个幻灵"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]=99
+						}
+					},
+					text="보조 대상 스킬이, 또는 보조 대상 스킬로 소환된 비-환영 소환수가\n희귀 또는 고유 적 명중 시 {0}%의 확률로 환영 1개체 소환"
+				},
+				[4]={
+					limit={
+						[1]={
+							[1]=100,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬이, 또는 보조 대상 스킬로 소환된 비-환영 소환수가\n희귀 또는 고유 적 명중 시 환영 1개체 소환"
 				}
 			}
+		},
+		stats={
+			[1]="chance_to_summon_support_ghost_on_hitting_rare_or_unique_%"
 		}
 	},
-	[248]={
-		stats={
-			[1]="channelled_skill_damage_+%"
-		},
+	[252]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7170,21 +8452,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助持续吟唱技能的伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助持续吟唱技能的伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 집중 유지 스킬로 주는 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 집중 유지 스킬로 주는 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="channelled_skill_damage_+%"
 		}
 	},
-	[249]={
-		stats={
-			[1]="chaos_damage_+%"
-		},
+	[253]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7201,21 +8505,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的混沌伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的混沌伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="chaos_damage_+%"
 		}
 	},
-	[250]={
-		stats={
-			[1]="close_combat_damage_to_close_range_+%"
-		},
+	[254]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7228,12 +8532,12 @@ return {
 					text="对近距离敌人的伤害提高 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="close_combat_damage_to_close_range_+%"
 		}
 	},
-	[251]={
-		stats={
-			[1]="cold_ailment_effect_+%"
-		},
+	[255]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7241,13 +8545,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextColdAilments"
 					},
-					text="被辅助技能的冰霜异常状态效果提高 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能的冰霜异常状态效果提高 {0}%"
 				},
 				[2]={
 					[1]={
@@ -7258,21 +8562,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextColdAilments"
 					},
-					text="被辅助技能的冰霜异常状态效果降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的冰霜异常状态效果降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="cold_ailment_effect_+%"
 		}
 	},
-	[252]={
-		stats={
-			[1]="cold_damage_%_to_add_as_fire"
-		},
+	[256]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7283,14 +8587,23 @@ return {
 						}
 					},
 					text="被辅助技能获得额外 {0}% 冰霜伤害，并转化为火焰伤害"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 냉기 피해의 {0}%를 추가 화염 피해로 획득"
 				}
 			}
+		},
+		stats={
+			[1]="cold_damage_%_to_add_as_fire"
 		}
 	},
-	[253]={
-		stats={
-			[1]="cold_damage_+%"
-		},
+	[257]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7307,21 +8620,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的冰霜伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的冰霜伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 냉기 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 냉기 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="cold_damage_+%"
 		}
 	},
-	[254]={
-		stats={
-			[1]="combat_rush_effect_+%"
-		},
+	[258]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7338,21 +8673,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能提供的贴身战斗效果降低  {}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能提供的贴身战斗效果降低  {}%"
 				}
 			}
+		},
+		stats={
+			[1]="combat_rush_effect_+%"
 		}
 	},
-	[255]={
-		stats={
-			[1]="critical_ailment_dot_multiplier_+"
-		},
+	[259]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7365,12 +8700,12 @@ return {
 					text="被辅助技能的暴击造成异常状态时，持续伤害加成 {0:+d}%"
 				}
 			}
+		},
+		stats={
+			[1]="critical_ailment_dot_multiplier_+"
 		}
 	},
-	[256]={
-		stats={
-			[1]="critical_strike_chance_+%_vs_blinded_enemies"
-		},
+	[260]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7387,21 +8722,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能对抗目盲的敌人时，暴击率降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能对抗目盲的敌人时，暴击率降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="critical_strike_chance_+%_vs_blinded_enemies"
 		}
 	},
-	[257]={
-		stats={
-			[1]="crush_for_2_seconds_on_hit_%_chance"
-		},
+	[261]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7409,34 +8744,34 @@ return {
 						k="reminderstring",
 						v="ReminderTextCrushed"
 					},
-					text="被辅助技能击中时，有 {}% 几率碾压敌人 2 秒",
 					limit={
 						[1]={
 							[1]=1,
 							[2]=99
 						}
-					}
+					},
+					text="被辅助技能击中时，有 {}% 的几率碾压敌人 2 秒"
 				},
 				[2]={
 					[1]={
 						k="reminderstring",
 						v="ReminderTextCrushed"
 					},
-					text="被辅助技能击中时碾压敌人 2 秒",
 					limit={
 						[1]={
 							[1]=100,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能击中时碾压敌人 2 秒"
 				}
 			}
+		},
+		stats={
+			[1]="crush_for_2_seconds_on_hit_%_chance"
 		}
 	},
-	[258]={
-		stats={
-			[1]="curse_area_of_effect_+%"
-		},
+	[262]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7453,21 +8788,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助诅咒的效果区域缩小 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助诅咒的效果区域缩小 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="curse_area_of_effect_+%"
 		}
 	},
-	[259]={
-		stats={
-			[1]="curse_skill_doom_gain_per_minute"
-		},
+	[263]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7475,21 +8810,21 @@ return {
 						k="per_minute_to_per_second",
 						v=1
 					},
-					text="施放该法术施加的诅咒每秒获得 {0} 点灭能",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="施放该法术施加的诅咒每秒获得 {0} 点灭能"
 				}
 			}
+		},
+		stats={
+			[1]="curse_skill_doom_gain_per_minute"
 		}
 	},
-	[260]={
-		stats={
-			[1]="damage_over_time_+%"
-		},
+	[264]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7506,21 +8841,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的持续性伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的持续性伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 지속 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 지속 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="damage_over_time_+%"
 		}
 	},
-	[261]={
-		stats={
-			[1]="damage_+%"
-		},
+	[265]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7537,21 +8894,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="damage_+%"
 		}
 	},
-	[262]={
-		stats={
-			[1]="damage_+%_for_non_minions"
-		},
+	[266]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7568,21 +8947,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="非召唤生物的伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="非召唤生物的伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="damage_+%_for_non_minions"
 		}
 	},
-	[263]={
-		stats={
-			[1]="damage_+%_if_lost_endurance_charge_in_past_8_seconds"
-		},
+	[267]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7599,21 +8978,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="若你在过去 8 秒内失去过耐力球，则被辅助技能的伤害降低  {}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="若你在过去 8 秒内失去过耐力球，则被辅助技能的伤害降低  {}%"
 				}
 			}
+		},
+		stats={
+			[1]="damage_+%_if_lost_endurance_charge_in_past_8_seconds"
 		}
 	},
-	[264]={
-		stats={
-			[1]="damage_+%_per_200_mana_spent_recently"
-		},
+	[268]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7630,21 +9009,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="近期内你每消耗 200 点魔力，就使被辅助技能的伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="近期内你每消耗 200 点魔力，就使被辅助技能的伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="damage_+%_per_200_mana_spent_recently"
 		}
 	},
-	[265]={
-		stats={
-			[1]="damage_+%_per_endurance_charge"
-		},
+	[269]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7661,21 +9040,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="每个耐力球都使被辅助技能的伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="每个耐力球都使被辅助技能的伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="damage_+%_per_endurance_charge"
 		}
 	},
-	[266]={
-		stats={
-			[1]="damage_+%_per_frenzy_charge"
-		},
+	[270]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7692,21 +9071,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="每个狂怒球都使被辅助技能的伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="每个狂怒球都使被辅助技能的伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="damage_+%_per_frenzy_charge"
 		}
 	},
-	[267]={
-		stats={
-			[1]="damage_+%_per_power_charge"
-		},
+	[271]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7723,21 +9102,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="每个暴击球都使被辅助技能的伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="每个暴击球都使被辅助技能的伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="damage_+%_per_power_charge"
 		}
 	},
-	[268]={
-		stats={
-			[1]="damage_+%_vs_enemies_on_full_life"
-		},
+	[272]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7754,21 +9133,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="对抗满血敌人时，被辅助技能的击中和异常状态伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="对抗满血敌人时，被辅助技能的击中和异常状态伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="damage_+%_vs_enemies_on_full_life"
 		}
 	},
-	[269]={
-		stats={
-			[1]="damage_+%_vs_enemies_per_freeze_shock_ignite"
-		},
+	[273]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7776,13 +9155,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="敌人身上每种冻结、感电、点燃效果都使被辅助技能的击中和异常状态伤害提高 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="敌人身上每种冻结、感电、点燃效果都使被辅助技能的击中和异常状态伤害提高 {0}%"
 				},
 				[2]={
 					[1]={
@@ -7793,21 +9172,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="敌人身上每种冻结、感电、点燃效果都使被辅助技能的击中和异常状态伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="敌人身上每种冻结、感电、点燃效果都使被辅助技能的击中和异常状态伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="damage_+%_vs_enemies_per_freeze_shock_ignite"
 		}
 	},
-	[270]={
-		stats={
-			[1]="damage_+%_vs_frozen_enemies"
-		},
+	[274]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7824,21 +9203,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能对被冰冻敌人的伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能对被冰冻敌人的伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="damage_+%_vs_frozen_enemies"
 		}
 	},
-	[271]={
-		stats={
-			[1]="damage_+%_on_full_energy_shield"
-		},
+	[275]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7855,21 +9234,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="能量护盾全满时，被辅助技能的伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="能量护盾全满时，被辅助技能的伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="damage_+%_on_full_energy_shield"
 		}
 	},
-	[272]={
-		stats={
-			[1]="damage_+%_when_on_full_life"
-		},
+	[276]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7886,35 +9265,74 @@ return {
 						k="negate",
 						v=1
 					},
-					text="满血时，被辅助技能的伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="满血时，被辅助技能的伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="damage_+%_when_on_full_life"
 		}
 	},
-	[273]={
+	[277]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextLowLife"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="低血时，被辅助技能的伤害提高 {0}%"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					[2]={
+						k="reminderstring",
+						v="ReminderTextLowLife"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="低血时，被辅助技能的伤害降低 {0}%"
+				}
+			}
+		},
 		stats={
 			[1]="damage_+%_when_on_low_life"
-		},
+		}
+	},
+	[278]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
 					[1]={
 						k="reminderstring",
-						v="ReminderTextLowLife"
+						v="ReminderTextStatusAilments"
 					},
-					text="低血时，被辅助技能的伤害提高 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="你被异常状态影响时，被辅助技能的伤害提高 {0}%"
 				},
 				[2]={
 					[1]={
@@ -7923,62 +9341,23 @@ return {
 					},
 					[2]={
 						k="reminderstring",
-						v="ReminderTextLowLife"
+						v="ReminderTextStatusAilments"
 					},
-					text="低血时，被辅助技能的伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="你被异常状态影响时，被辅助技能的伤害降低 {0}%"
 				}
 			}
-		}
-	},
-	[274]={
+		},
 		stats={
 			[1]="damage_+%_while_an_ailment_on_you"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					[1]={
-						k="reminderstring",
-						v="ReminderTextStatusAilments"
-					},
-					text="你被异常状态影响时，被辅助技能的伤害提高 {0}%",
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					}
-				},
-				[2]={
-					[1]={
-						k="negate",
-						v=1
-					},
-					[2]={
-						k="reminderstring",
-						v="ReminderTextStatusAilments"
-					},
-					text="你被异常状态影响时，被辅助技能的伤害降低 {0}%",
-					limit={
-						[1]={
-							[1]="#",
-							[2]=-1
-						}
-					}
-				}
-			}
 		}
 	},
-	[275]={
-		stats={
-			[1]="damage_+%_while_es_leeching"
-		},
+	[279]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -7995,21 +9374,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="偷取能量护盾时，被辅助技能造成的伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="偷取能量护盾时，被辅助技能造成的伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="에너지 보호막을 흡수하는 동안 보조 대상 스킬로 주는 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="에너지 보호막을 흡수하는 동안 보조 대상 스킬로 주는 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="damage_+%_while_es_leeching"
 		}
 	},
-	[276]={
-		stats={
-			[1]="damage_+%_while_life_leeching"
-		},
+	[280]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8026,21 +9427,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="偷取生命时，被辅助技能的伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="偷取生命时，被辅助技能的伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="생명력을 흡수하는 동안 보조 대상 스킬로 주는 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="생명력을 흡수하는 동안 보조 대상 스킬로 주는 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="damage_+%_while_life_leeching"
 		}
 	},
-	[277]={
-		stats={
-			[1]="damage_+%_while_mana_leeching"
-		},
+	[281]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8057,21 +9480,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="偷取魔力时，被辅助技能的伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="偷取魔力时，被辅助技能的伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="마나를 흡수하는 동안 보조 대상 스킬로 주는 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="마나를 흡수하는 동안 보조 대상 스킬로 주는 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="damage_+%_while_mana_leeching"
 		}
 	},
-	[278]={
-		stats={
-			[1]="damage_vs_cursed_enemies_per_enemy_curse_+%"
-		},
+	[282]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8079,13 +9524,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="敌人身上的每个诅咒都使被辅助技能的击中和异常状态伤害提高 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="敌人身上的每个诅咒都使被辅助技能的击中和异常状态伤害提高 {0}%"
 				},
 				[2]={
 					[1]={
@@ -8096,21 +9541,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="敌人身上的每个诅咒都使被辅助技能的击中和异常状态伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="敌人身上的每个诅咒都使被辅助技能的击中和异常状态伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="damage_vs_cursed_enemies_per_enemy_curse_+%"
 		}
 	},
-	[279]={
-		stats={
-			[1]="damage_vs_enemies_on_low_life_+%"
-		},
+	[283]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8123,12 +9568,12 @@ return {
 					text="对抗低血敌人时，被辅助技能的击中伤害提高 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="damage_vs_enemies_on_low_life_+%"
 		}
 	},
-	[280]={
-		stats={
-			[1]="damaging_ailments_deal_damage_+%_faster"
-		},
+	[284]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8136,21 +9581,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="被辅助技能施加的伤害型异常状态生效速度加快 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能施加的伤害型异常状态生效速度加快 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="damaging_ailments_deal_damage_+%_faster"
 		}
 	},
-	[281]={
-		stats={
-			[1]="deal_chaos_damage_per_second_for_10_seconds_on_hit"
-		},
+	[285]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8163,12 +9608,12 @@ return {
 					text="被辅助技能击中时附加腐蚀状态，每秒造成 {0} 混沌伤害，持续8秒"
 				}
 			}
+		},
+		stats={
+			[1]="deal_chaos_damage_per_second_for_10_seconds_on_hit"
 		}
 	},
-	[282]={
-		stats={
-			[1]="deal_no_elemental_damage"
-		},
+	[286]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8181,12 +9626,12 @@ return {
 					text="被辅助技能无法造成元素伤害"
 				}
 			}
+		},
+		stats={
+			[1]="deal_no_elemental_damage"
 		}
 	},
-	[283]={
-		stats={
-			[1]="deathmark_minion_damage_+%_final"
-		},
+	[287]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8203,21 +9648,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被被辅助技能创造的召唤生物造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被被辅助技能创造的召唤生物造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="deathmark_minion_damage_+%_final"
 		}
 	},
-	[284]={
-		stats={
-			[1]="display_base_intensity_loss"
-		},
+	[288]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8225,21 +9670,21 @@ return {
 						k="milliseconds_to_seconds_2dp",
 						v=1
 					},
-					text="被辅助法术在移动时每隔 0.25 秒失去 1 层凝聚，传送时会立刻失去",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助法术在移动时每隔 0.25 秒失去 1 层凝聚，传送时会立刻失去"
 				}
 			}
+		},
+		stats={
+			[1]="display_base_intensity_loss"
 		}
 	},
-	[285]={
-		stats={
-			[1]="display_totems_no_infusion"
-		},
+	[289]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8252,12 +9697,12 @@ return {
 					text="图腾无法获得灌注"
 				}
 			}
+		},
+		stats={
+			[1]="display_totems_no_infusion"
 		}
 	},
-	[286]={
-		stats={
-			[1]="dot_multiplier_+"
-		},
+	[290]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8270,12 +9715,12 @@ return {
 					text="被辅助技能的持续伤害加成 {0:+d}%"
 				}
 			}
+		},
+		stats={
+			[1]="dot_multiplier_+"
 		}
 	},
-	[287]={
-		stats={
-			[1]="elemental_damage_+%"
-		},
+	[291]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8292,21 +9737,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的元素伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的元素伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="elemental_damage_+%"
 		}
 	},
-	[288]={
-		stats={
-			[1]="elusive_effect_+%"
-		},
+	[292]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8314,13 +9759,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextElusive"
 					},
-					text="被辅助技能创造的【灵巧】效果提高 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能创造的【灵巧】效果提高 {0}%"
 				},
 				[2]={
 					[1]={
@@ -8331,21 +9776,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextElusive"
 					},
-					text="被辅助技能创造的【灵巧】降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能创造的【灵巧】降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="elusive_effect_+%"
 		}
 	},
-	[289]={
-		stats={
-			[1]="enemies_you_shock_take_%_increased_physical_damage"
-		},
+	[293]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8362,21 +9807,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能使敌人感电时，它承受的物理伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能使敌人感电时，它承受的物理伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="enemies_you_shock_take_%_increased_physical_damage"
 		}
 	},
-	[290]={
-		stats={
-			[1]="enemy_phys_reduction_%_penalty_vs_hit"
-		},
+	[294]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8384,21 +9829,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextOverwhelm"
 					},
-					text="被辅助技能压制 {0}% 物理伤害减免",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能压制 {0}% 物理伤害减免"
 				}
 			}
+		},
+		stats={
+			[1]="enemy_phys_reduction_%_penalty_vs_hit"
 		}
 	},
-	[291]={
-		stats={
-			[1]="energy_shield_leech_from_any_damage_permyriad"
-		},
+	[295]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8410,21 +9855,38 @@ return {
 						k="reminderstring",
 						v="ReminderTextEnergyShieldLeech"
 					},
-					text="被辅助技能的 {0}% 伤害会转化为能量护盾偷取",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能的 {0}% 伤害会转化为能量护盾偷取"
+				},
+				[2]={
+					[1]={
+						k="divide_by_one_hundred",
+						v=1
+					},
+					[2]={
+						k="reminderstring",
+						v="ReminderTextEnergyShieldLeech"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬이 흡수한 피해의 {0}%를 에너지 보호막으로 흡수"
 				}
 			}
+		},
+		stats={
+			[1]="energy_shield_leech_from_any_damage_permyriad"
 		}
 	},
-	[292]={
-		stats={
-			[1]="faster_bleed_%"
-		},
+	[296]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8432,21 +9894,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextDealsDamageFaster"
 					},
-					text="被辅助技能施加的流血效果伤害生效速度加快 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能施加的流血效果伤害生效速度加快 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="faster_bleed_%"
 		}
 	},
-	[293]={
-		stats={
-			[1]="faster_burn_%"
-		},
+	[297]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8454,34 +9916,34 @@ return {
 						k="reminderstring",
 						v="ReminderTextDealsDamageFaster"
 					},
-					text="被辅助技能施加的点燃效果伤害生效速度加快 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能施加的点燃效果伤害生效速度加快 {0}%"
 				},
 				[2]={
 					[1]={
 						k="negate",
 						v=1
 					},
-					text="被辅助技能施加的点燃效果伤害生效速度减慢 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能施加的点燃效果伤害生效速度减慢 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="faster_burn_%"
 		}
 	},
-	[294]={
-		stats={
-			[1]="faster_poison_%"
-		},
+	[298]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8493,21 +9955,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextDealsDamageFaster"
 					},
-					text="被辅助技能施加的中毒效果伤害生效速度加快 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能施加的中毒效果伤害生效速度加快 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="faster_poison_%"
 		}
 	},
-	[295]={
-		stats={
-			[1]="fire_damage_+%"
-		},
+	[299]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8524,21 +9986,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的火焰伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的火焰伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 화염 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 화염 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="fire_damage_+%"
 		}
 	},
-	[296]={
-		stats={
-			[1]="fire_dot_multiplier_+"
-		},
+	[300]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8551,12 +10035,81 @@ return {
 					text="被辅助技能的持续火焰伤害加成 {0:+d}%"
 				}
 			}
+		},
+		stats={
+			[1]="fire_dot_multiplier_+"
 		}
 	},
-	[297]={
+	[301]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextFortify"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="被辅助技能会使护体效果持续时间延长 {0}%"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					[2]={
+						k="reminderstring",
+						v="ReminderTextFortify"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="被辅助技能会使护体效果持续时间缩短 {0}%"
+				},
+				[3]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextFortify"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 방어 상승 지속시간 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					[2]={
+						k="reminderstring",
+						v="ReminderTextFortify"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 방어 상승 지속시간 {0}% 감소"
+				}
+			}
+		},
 		stats={
 			[1]="fortify_duration_+%"
-		},
+		}
+	},
+	[302]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8564,13 +10117,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextFortify"
 					},
-					text="被辅助技能会使护体效果持续时间延长 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能的护体效果提高 {0}%"
 				},
 				[2]={
 					[1]={
@@ -8581,60 +10134,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextFortify"
 					},
-					text="被辅助技能会使护体效果持续时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的护体效果降低 {0}%"
 				}
 			}
-		}
-	},
-	[298]={
+		},
 		stats={
 			[1]="fortify_effect_+%"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					[1]={
-						k="reminderstring",
-						v="ReminderTextFortify"
-					},
-					text="被辅助技能的护体效果提高 {0}%",
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					}
-				},
-				[2]={
-					[1]={
-						k="negate",
-						v=1
-					},
-					[2]={
-						k="reminderstring",
-						v="ReminderTextFortify"
-					},
-					text="被辅助技能的护体效果降低 {0}%",
-					limit={
-						[1]={
-							[1]="#",
-							[2]=-1
-						}
-					}
-				}
-			}
 		}
 	},
-	[299]={
-		stats={
-			[1]="freeze_applies_cold_resistance_+"
-		},
+	[303]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8647,12 +10161,12 @@ return {
 					text="被辅助技能导致敌人冻结时，它的冰霜抗性 {:+d}% "
 				}
 			}
+		},
+		stats={
+			[1]="freeze_applies_cold_resistance_+"
 		}
 	},
-	[300]={
-		stats={
-			[1]="freeze_duration_+%"
-		},
+	[304]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8669,21 +10183,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能对敌人的冰冻持续时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能对敌人的冰冻持续时间缩短 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬이 적에게 적용하는 동결 지속시간 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬이 적에게 적용하는 동결 지속시간 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="freeze_duration_+%"
 		}
 	},
-	[301]={
-		stats={
-			[1]="from_quality_brand_activation_rate_+%_final_if_75%_attached_duration_expired"
-		},
+	[305]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8696,12 +10232,12 @@ return {
 					text="若被辅助技能的附着持续时间消减了 75%，则它的总激活频率额外提高 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="from_quality_brand_activation_rate_+%_final_if_75%_attached_duration_expired"
 		}
 	},
-	[302]={
-		stats={
-			[1]="gain_%_of_base_wand_damage_as_added_spell_damage"
-		},
+	[306]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8714,12 +10250,12 @@ return {
 					text="被辅助技能附加法术伤害，等于所装备法杖伤害的 {0}%\n若装备有两个法杖，则计入每根伤害的一半"
 				}
 			}
+		},
+		stats={
+			[1]="gain_%_of_base_wand_damage_as_added_spell_damage"
 		}
 	},
-	[303]={
-		stats={
-			[1]="gain_1_rage_on_use_%_chance"
-		},
+	[307]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8729,16 +10265,15 @@ return {
 							[2]="#"
 						}
 					},
-					text="你使用被辅助技能有 {0}% 几率获得 1 点怒火"
+					text="你使用被辅助技能有 {0}% 的几率获得 1 点怒火"
 				}
 			}
+		},
+		stats={
+			[1]="gain_1_rage_on_use_%_chance"
 		}
 	},
-	[304]={
-		stats={
-			[1]="gain_endurance_charge_on_melee_stun",
-			[2]="gain_endurance_charge_on_melee_stun_%"
-		},
+	[308]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8781,12 +10316,13 @@ return {
 					text="当你使用被辅助技能近战命中并晕眩敌人时，获得 1 个耐力球"
 				}
 			}
+		},
+		stats={
+			[1]="gain_endurance_charge_on_melee_stun",
+			[2]="gain_endurance_charge_on_melee_stun_%"
 		}
 	},
-	[305]={
-		stats={
-			[1]="gain_frenzy_charge_on_kill_vs_enemies_with_5+_poisons_%"
-		},
+	[309]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8796,15 +10332,51 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助技能在击败一名至少中毒 5 层的敌人时，有 {0}% 几率获得一个狂怒球"
+					text="被辅助技能在击败一名至少中毒 5 层的敌人时，有 {0}% 的几率获得一个狂怒球"
 				}
 			}
+		},
+		stats={
+			[1]="gain_frenzy_charge_on_kill_vs_enemies_with_5+_poisons_%"
 		}
 	},
-	[306]={
-		stats={
-			[1]="gain_righteous_charge_on_mana_spent_%"
+	[310]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="被辅助技能以致命一击击败一名至少中毒 5 层的敌人时，有 {0}% 的几率获得一个狂怒球"
+				}
+			}
 		},
+		stats={
+			[1]="gain_frenzy_charge_on_killing_blow_vs_enemies_with_5+_poisons_%"
+		}
+	},
+	[311]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="被辅助技能有 {0}% 的几率在致命一击时获得一个暴击球"
+				}
+			}
+		},
+		stats={
+			[1]="gain_power_charge_on_kill_with_hit_%"
+		}
+	},
+	[312]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8814,7 +10386,7 @@ return {
 							[2]=99
 						}
 					},
-					text="当你为被辅助技能消耗魔力时，有 {0}% 几率获得激励球"
+					text="当你为被辅助技能消耗魔力时，有 {0}% 的几率获得激励球"
 				},
 				[2]={
 					limit={
@@ -8824,14 +10396,32 @@ return {
 						}
 					},
 					text="当你为被辅助技能消耗魔力时，获得激励球"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]=99
+						}
+					},
+					text="보조 대상 스킬로 마나 소모 시 {0}%의 확률로 영감 충전 획득"
+				},
+				[4]={
+					limit={
+						[1]={
+							[1]=100,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 마나 소모 시 영감 충전 획득"
 				}
 			}
+		},
+		stats={
+			[1]="gain_righteous_charge_on_mana_spent_%"
 		}
 	},
-	[307]={
-		stats={
-			[1]="gain_vaal_soul_on_hit_cooldown_ms"
-		},
+	[313]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8839,21 +10429,34 @@ return {
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="被辅助技能击中时获得 1 个瓦尔之灵\n每 {0} 秒最多获得 1 个瓦尔之灵",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能击中时获得 1 个瓦尔之灵\n每 {0} 秒最多获得 1 个瓦尔之灵"
+				},
+				[2]={
+					[1]={
+						k="milliseconds_to_seconds",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="명중 시 보조 대상 스킬로 바알 영혼 획득\n{0}초마다 영혼 1개만 생성 가능"
 				}
 			}
+		},
+		stats={
+			[1]="gain_vaal_soul_on_hit_cooldown_ms"
 		}
 	},
-	[308]={
-		stats={
-			[1]="global_hit_causes_monster_flee_%"
-		},
+	[314]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8863,16 +10466,24 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助技能有 {:d}% 几率使敌人逃跑"
+					text="被辅助技能有 {:d}% 的几率使敌人逃跑"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬이 {:d}%의 확률로 몬스터를 도망치게 함"
 				}
 			}
+		},
+		stats={
+			[1]="global_hit_causes_monster_flee_%"
 		}
 	},
-	[309]={
-		stats={
-			[1]="global_minimum_added_chaos_damage",
-			[2]="global_maximum_added_chaos_damage"
-		},
+	[315]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8887,15 +10498,28 @@ return {
 						}
 					},
 					text="被辅助技能附加 {0} - {1} 基础混沌伤害"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						},
+						[2]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 카오스 피해 {0}~{1} 추가"
 				}
 			}
+		},
+		stats={
+			[1]="global_minimum_added_chaos_damage",
+			[2]="global_maximum_added_chaos_damage"
 		}
 	},
-	[310]={
-		stats={
-			[1]="global_minimum_added_cold_damage",
-			[2]="global_maximum_added_cold_damage"
-		},
+	[316]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8910,15 +10534,28 @@ return {
 						}
 					},
 					text="被辅助技能附加 {0} - {1} 基础冰霜伤害"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						},
+						[2]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 냉기 피해 {0}~{1} 추가"
 				}
 			}
+		},
+		stats={
+			[1]="global_minimum_added_cold_damage",
+			[2]="global_maximum_added_cold_damage"
 		}
 	},
-	[311]={
-		stats={
-			[1]="global_minimum_added_fire_damage",
-			[2]="global_maximum_added_fire_damage"
-		},
+	[317]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8933,15 +10570,28 @@ return {
 						}
 					},
 					text="被辅助技能附加 {0} - {1} 基础火焰伤害"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						},
+						[2]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 화염 피해 {0}~{1} 추가"
 				}
 			}
+		},
+		stats={
+			[1]="global_minimum_added_fire_damage",
+			[2]="global_maximum_added_fire_damage"
 		}
 	},
-	[312]={
-		stats={
-			[1]="global_minimum_added_lightning_damage",
-			[2]="global_maximum_added_lightning_damage"
-		},
+	[318]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8956,15 +10606,28 @@ return {
 						}
 					},
 					text="被辅助技能附加 {0} - {1} 基础闪电伤害"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						},
+						[2]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 번개 피해 {0}~{1} 추가"
 				}
 			}
+		},
+		stats={
+			[1]="global_minimum_added_lightning_damage",
+			[2]="global_maximum_added_lightning_damage"
 		}
 	},
-	[313]={
-		stats={
-			[1]="global_minimum_added_physical_damage",
-			[2]="global_maximum_added_physical_damage"
-		},
+	[319]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8979,14 +10642,28 @@ return {
 						}
 					},
 					text="被辅助技能附加 {0} - {1} 基础物理伤害"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						},
+						[2]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 물리 피해 {0}~{1} 추가"
 				}
 			}
+		},
+		stats={
+			[1]="global_minimum_added_physical_damage",
+			[2]="global_maximum_added_physical_damage"
 		}
 	},
-	[314]={
-		stats={
-			[1]="global_reduce_enemy_block_%"
-		},
+	[320]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -8997,14 +10674,23 @@ return {
 						}
 					},
 					text="被辅助技能会使敌人的格挡率降低 {0}%"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 적 막기 확률 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="global_reduce_enemy_block_%"
 		}
 	},
-	[315]={
-		stats={
-			[1]="greater_projectile_intensity_projectile_damage_+%_final_per_intensity"
-		},
+	[321]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9021,21 +10707,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="每层凝聚都使被辅助技能的投射物击中总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="每层凝聚都使被辅助技能的投射物击中总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="greater_projectile_intensity_projectile_damage_+%_final_per_intensity"
 		}
 	},
-	[316]={
-		stats={
-			[1]="hit_and_poison_damage_+%"
-		},
+	[322]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9052,21 +10738,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="击中伤害和中毒伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="击中伤害和中毒伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="적중 및 중독 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="적중 및 중독 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="hit_and_poison_damage_+%"
 		}
 	},
-	[317]={
-		stats={
-			[1]="hit_and_poison_damage_+%_per_poison_on_enemy"
-		},
+	[323]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9083,21 +10791,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="敌人的每层中毒状态会使击中伤害和中毒伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="敌人的每层中毒状态会使击中伤害和中毒伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="중독된 적 하나당 적중 및 중독 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="중독된 적 하나당 적중 및 중독 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="hit_and_poison_damage_+%_per_poison_on_enemy"
 		}
 	},
-	[318]={
-		stats={
-			[1]="hit_damage_+%"
-		},
+	[324]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9114,21 +10844,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的击中伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的击中伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="hit_damage_+%"
 		}
 	},
-	[319]={
-		stats={
-			[1]="ignite_duration_+%"
-		},
+	[325]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9145,21 +10875,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能对敌人的点燃持续时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能对敌人的点燃持续时间缩短 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬이 적에게 적용하는 점화 지속시간 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬이 적에게 적용하는 점화 지속시간 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="ignite_duration_+%"
 		}
 	},
-	[320]={
-		stats={
-			[1]="ignites_apply_fire_resistance_+"
-		},
+	[326]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9172,12 +10924,12 @@ return {
 					text="被辅助技能点燃的敌人，其火焰抗性提高 {0:+d}%"
 				}
 			}
+		},
+		stats={
+			[1]="ignites_apply_fire_resistance_+"
 		}
 	},
-	[321]={
-		stats={
-			[1]="impale_debuff_effect_+%"
-		},
+	[327]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9194,21 +10946,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助的攻击使穿刺效果降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助的攻击使穿刺效果降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="impale_debuff_effect_+%"
 		}
 	},
-	[322]={
-		stats={
-			[1]="impale_phys_reduction_%_penalty"
-		},
+	[328]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9216,21 +10968,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextOverwhelm"
 					},
-					text="被辅助技能对已穿刺的敌人造成的穿刺伤害压制 {0}% 物理伤害减免",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能对已穿刺的敌人造成的穿刺伤害压制 {0}% 物理伤害减免"
 				}
 			}
+		},
+		stats={
+			[1]="impale_phys_reduction_%_penalty"
 		}
 	},
-	[323]={
-		stats={
-			[1]="impale_support_physical_damage_+%_final"
-		},
+	[329]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9241,14 +10993,23 @@ return {
 						}
 					},
 					text="被辅助技能造成的物理总伤害额外提高 {0}%"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 물리 피해 {0}% 증폭"
 				}
 			}
+		},
+		stats={
+			[1]="impale_support_physical_damage_+%_final"
 		}
 	},
-	[324]={
-		stats={
-			[1]="inc_aoe_plus_more_area_damage_+%_final"
-		},
+	[330]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9265,21 +11026,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的范围总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的范围总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="inc_aoe_plus_more_area_damage_+%_final"
 		}
 	},
-	[325]={
-		stats={
-			[1]="infusion_grants_life_regeneration_rate_per_minute_%"
-		},
+	[331]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9287,21 +11048,21 @@ return {
 						k="per_minute_to_per_second",
 						v=1
 					},
-					text="灌注提供每秒生命再生 {}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="灌注提供每秒生命再生 {}%"
 				}
 			}
+		},
+		stats={
+			[1]="infusion_grants_life_regeneration_rate_per_minute_%"
 		}
 	},
-	[326]={
-		stats={
-			[1]="inspiration_charge_duration_+%"
-		},
+	[332]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9318,21 +11079,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的启迪球持续时间降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的启迪球持续时间降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="inspiration_charge_duration_+%"
 		}
 	},
-	[327]={
-		stats={
-			[1]="intensity_loss_frequency_while_moving_+%"
-		},
+	[333]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9342,28 +11103,28 @@ return {
 							[2]="#"
 						}
 					},
-					text="移动时，凝聚丧失速度加快 {0}%"
+					text="移动时，被辅助法术失去凝聚的频率提高 {0}%"
 				},
 				[2]={
 					[1]={
 						k="negate",
 						v=1
 					},
-					text="移动时，凝聚丧失速度减慢 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="移动时，被辅助法术失去凝聚的频率降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="intensity_loss_frequency_while_moving_+%"
 		}
 	},
-	[328]={
-		stats={
-			[1]="is_empowered"
-		},
+	[334]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9376,12 +11137,12 @@ return {
 					text="被辅助技能的攻击视为被增助"
 				}
 			}
+		},
+		stats={
+			[1]="is_empowered"
 		}
 	},
-	[329]={
-		stats={
-			[1]="knockback_chance_%_at_close_range"
-		},
+	[335]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9391,15 +11152,15 @@ return {
 							[2]="#"
 						}
 					},
-					text="近程击中时，被辅助技能有 {0}% 几率击退敌人"
+					text="近程击中时，被辅助技能有 {0}% 的几率击退敌人"
 				}
 			}
+		},
+		stats={
+			[1]="knockback_chance_%_at_close_range"
 		}
 	},
-	[330]={
-		stats={
-			[1]="knockback_distance_+%"
-		},
+	[336]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9416,21 +11177,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的击退距离缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的击退距离缩短 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 밀어내기 거리 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 밀어내기 거리 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="knockback_distance_+%"
 		}
 	},
-	[331]={
-		stats={
-			[1]="life_leech_from_any_damage_permyriad"
-		},
+	[337]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9442,21 +11225,38 @@ return {
 						k="reminderstring",
 						v="ReminderTextLifeLeech"
 					},
-					text="被辅助技能的 {0}% 伤害会转化为生命偷取",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能的 {0}% 伤害会转化为生命偷取"
+				},
+				[2]={
+					[1]={
+						k="divide_by_one_hundred",
+						v=1
+					},
+					[2]={
+						k="reminderstring",
+						v="ReminderTextLifeLeech"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬 피해의 {0}%를 생명력으로 흡수"
 				}
 			}
+		},
+		stats={
+			[1]="life_leech_from_any_damage_permyriad"
 		}
 	},
-	[332]={
-		stats={
-			[1]="lightning_ailment_effect_+%"
-		},
+	[338]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9464,13 +11264,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextLightningAilments"
 					},
-					text="被辅助技能的闪电异常状态效果提高 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能的闪电异常状态效果提高 {0}%"
 				},
 				[2]={
 					[1]={
@@ -9481,21 +11281,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextLightningAilments"
 					},
-					text="被辅助技能的闪电异常状态效果降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的闪电异常状态效果降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="lightning_ailment_effect_+%"
 		}
 	},
-	[333]={
-		stats={
-			[1]="lightning_damage_+%"
-		},
+	[339]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9512,21 +11312,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的闪电伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的闪电伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 번개 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 번개 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="lightning_damage_+%"
 		}
 	},
-	[334]={
-		stats={
-			[1]="local_gem_dex_requirement_+%"
-		},
+	[340]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9543,21 +11365,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="敏捷需求降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="敏捷需求降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="local_gem_dex_requirement_+%"
 		}
 	},
-	[335]={
-		stats={
-			[1]="local_gem_int_requirement_+%"
-		},
+	[341]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9574,21 +11396,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="智慧需求降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="智慧需求降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="local_gem_int_requirement_+%"
 		}
 	},
-	[336]={
-		stats={
-			[1]="local_gem_str_requirement_+%"
-		},
+	[342]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9605,21 +11427,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="力量需求降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="力量需求降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="local_gem_str_requirement_+%"
 		}
 	},
-	[337]={
-		stats={
-			[1]="maim_effect_+%"
-		},
+	[343]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9636,21 +11458,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的瘫痪效果降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的瘫痪效果降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="maim_effect_+%"
 		}
 	},
-	[338]={
-		stats={
-			[1]="maim_on_hit_%"
-		},
+	[344]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9658,34 +11480,34 @@ return {
 						k="reminderstring",
 						v="ReminderTextMaim"
 					},
-					text="被辅助的攻击技能击中时有 {0}% 几率瘫痪敌人",
 					limit={
 						[1]={
 							[1]=1,
 							[2]=99
 						}
-					}
+					},
+					text="被辅助的攻击技能击中时有 {0}% 的几率瘫痪敌人"
 				},
 				[2]={
 					[1]={
 						k="reminderstring",
 						v="ReminderTextMaim"
 					},
-					text="被辅助的攻击技能击中时必定瘫痪敌人",
 					limit={
 						[1]={
 							[1]=100,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助的攻击技能击中时必定瘫痪敌人"
 				}
 			}
+		},
+		stats={
+			[1]="maim_on_hit_%"
 		}
 	},
-	[339]={
-		stats={
-			[1]="mana_gain_per_target"
-		},
+	[345]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9698,12 +11520,12 @@ return {
 					text="被辅助技能的攻击每击中一个敌人都使魔力 {0:+d}"
 				}
 			}
+		},
+		stats={
+			[1]="mana_gain_per_target"
 		}
 	},
-	[340]={
-		stats={
-			[1]="mana_leech_from_any_damage_permyriad"
-		},
+	[346]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9715,22 +11537,38 @@ return {
 						k="reminderstring",
 						v="ReminderTextManaLeech"
 					},
-					text="被辅助技能的 {0}% 伤害会转化为魔力偷取",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能的 {0}% 伤害会转化为魔力偷取"
+				},
+				[2]={
+					[1]={
+						k="divide_by_one_hundred",
+						v=1
+					},
+					[2]={
+						k="reminderstring",
+						v="ReminderTextManaLeech"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 피해의 {0}%를 마나로 흡수"
 				}
 			}
+		},
+		stats={
+			[1]="mana_leech_from_any_damage_permyriad"
 		}
 	},
-	[341]={
-		stats={
-			[1]="manaweave_cost_equals_%_unreserved_mana",
-			[2]="manaweave_added_lightning_damage_%_cost_if_payable"
-		},
+	[347]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9751,7 +11589,6 @@ return {
 						k="negate",
 						v=2
 					},
-					text="被辅助技能失去等于魔力消耗 {1}% 的附加闪电伤害，只要魔力消耗不高于你可以花费的最大值",
 					limit={
 						[1]={
 							[1]="#",
@@ -9761,15 +11598,17 @@ return {
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能失去等于魔力消耗 {1}% 的附加闪电伤害，只要魔力消耗不高于你可以花费的最大值"
 				}
 			}
+		},
+		stats={
+			[1]="manaweave_cost_equals_%_unreserved_mana",
+			[2]="manaweave_added_lightning_damage_%_cost_if_payable"
 		}
 	},
-	[342]={
-		stats={
-			[1]="manaweave_added_cold_damage_%_cost_if_payable"
-		},
+	[348]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9782,12 +11621,12 @@ return {
 					text="被辅助技能获得等于魔力消耗 {0}% 的附加冰霜伤害，只要魔力消耗不高于你可以花费的最大值"
 				}
 			}
+		},
+		stats={
+			[1]="manaweave_added_cold_damage_%_cost_if_payable"
 		}
 	},
-	[343]={
-		stats={
-			[1]="maximum_energy_shield_leech_amount_per_leech_+%"
-		},
+	[349]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9804,21 +11643,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="每次能量护盾偷取都使被辅助技能的最大回复率降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="每次能量护盾偷取都使被辅助技能的最大回复率降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="maximum_energy_shield_leech_amount_per_leech_+%"
 		}
 	},
-	[344]={
-		stats={
-			[1]="maximum_intensify_stacks"
-		},
+	[350]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9831,12 +11670,12 @@ return {
 					text="最大凝聚 {0:+d}"
 				}
 			}
+		},
+		stats={
+			[1]="maximum_intensify_stacks"
 		}
 	},
-	[345]={
-		stats={
-			[1]="maximum_life_leech_amount_per_leech_+%"
-		},
+	[351]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9853,21 +11692,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="每次生命偷取都使被辅助技能的最大回复率降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="每次生命偷取都使被辅助技能的最大回复率降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="maximum_life_leech_amount_per_leech_+%"
 		}
 	},
-	[346]={
-		stats={
-			[1]="melee_damage_+%"
-		},
+	[352]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9884,21 +11723,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的近战伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的近战伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="melee_damage_+%"
 		}
 	},
-	[347]={
-		stats={
-			[1]="melee_damage_vs_bleeding_enemies_+%"
-		},
+	[353]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9915,21 +11754,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能对流血敌人的近战伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能对流血敌人的近战伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬이 출혈 중인 적을 상대로 주는 근접 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬이 출혈 중인 적을 상대로 주는 근접 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="melee_damage_vs_bleeding_enemies_+%"
 		}
 	},
-	[348]={
-		stats={
-			[1]="melee_physical_damage_+%"
-		},
+	[354]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9946,21 +11807,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的近战物理伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的近战物理伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 근접 물리 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 근접 물리 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="melee_physical_damage_+%"
 		}
 	},
-	[349]={
-		stats={
-			[1]="melee_range_+"
-		},
+	[355]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9968,21 +11851,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextMeleeStrikeRange"
 					},
-					text="被辅助技能的近战打击距离 {0:+d}",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能的近战打击距离 {0:+d}"
 				}
 			}
+		},
+		stats={
+			[1]="melee_range_+"
 		}
 	},
-	[350]={
-		stats={
-			[1]="melee_splash_area_of_effect_+%_final"
-		},
+	[356]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -9999,21 +11882,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能会使近战技能溅射总范围额外缩小 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能会使近战技能溅射总范围额外缩小 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 근접 범위 피해 효과 범위 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 근접 범위 피해 효과 범위 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="melee_splash_area_of_effect_+%_final"
 		}
 	},
-	[351]={
-		stats={
-			[1]="mine_detonation_radius_+%"
-		},
+	[357]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10030,21 +11935,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助的地雷技能的引爆范围缩小 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助的地雷技能的引爆范围缩小 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 지뢰 폭파 효과 범위 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 지뢰 폭파 효과 범위 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="mine_detonation_radius_+%"
 		}
 	},
-	[352]={
-		stats={
-			[1]="mine_detonation_speed_+%"
-		},
+	[358]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10061,21 +11988,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能创造的地雷引爆速度降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能创造的地雷引爆速度降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="mine_detonation_speed_+%"
 		}
 	},
-	[353]={
-		stats={
-			[1]="mine_laying_speed_+%"
-		},
+	[359]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10092,21 +12019,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助的地雷技能的投掷速度缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助的地雷技能的投掷速度缩短 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 지뢰 투척 속도 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 지뢰 투척 속도 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="mine_laying_speed_+%"
 		}
 	},
-	[354]={
-		stats={
-			[1]="mine_projectile_speed_+%_per_frenzy_charge"
-		},
+	[360]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10123,22 +12072,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能由地雷使用时，每个狂怒球都使投射物速度减慢 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能由地雷使用时，每个狂怒球都使投射物速度减慢 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="mine_projectile_speed_+%_per_frenzy_charge"
 		}
 	},
-	[355]={
-		stats={
-			[1]="minimum_added_cold_damage_per_frenzy_charge",
-			[2]="maximum_added_cold_damage_per_frenzy_charge"
-		},
+	[361]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10155,12 +12103,13 @@ return {
 					text="每个狂怒球会使被辅助技能附加 {0} - {1} 基础冰霜伤害"
 				}
 			}
+		},
+		stats={
+			[1]="minimum_added_cold_damage_per_frenzy_charge",
+			[2]="maximum_added_cold_damage_per_frenzy_charge"
 		}
 	},
-	[356]={
-		stats={
-			[1]="minimum_power_from_quality"
-		},
+	[362]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10168,21 +12117,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextPower"
 					},
-					text="被辅助技能的最小威力值为 {0}",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能的最小威力值为 {0}"
 				}
 			}
+		},
+		stats={
+			[1]="minimum_power_from_quality"
 		}
 	},
-	[357]={
-		stats={
-			[1]="minion_additional_physical_damage_reduction_%"
-		},
+	[363]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10192,15 +12141,15 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助技能创造的召唤生物有 {0}% 几率获得额外的物理伤害减免"
+					text="被辅助技能创造的召唤生物有 {0}% 的几率获得额外的物理伤害减免"
 				}
 			}
+		},
+		stats={
+			[1]="minion_additional_physical_damage_reduction_%"
 		}
 	},
-	[358]={
-		stats={
-			[1]="minion_ailment_damage_+%"
-		},
+	[364]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10217,21 +12166,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能召唤生物时，它们的异常状态伤害降低  {}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能召唤生物时，它们的异常状态伤害降低  {}%"
 				}
 			}
+		},
+		stats={
+			[1]="minion_ailment_damage_+%"
 		}
 	},
-	[359]={
-		stats={
-			[1]="minion_attack_speed_+%"
-		},
+	[365]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10248,21 +12197,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的召唤生物攻击速度降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的召唤生物攻击速度降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 소환수 공격 속도 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 소환수 공격 속도 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="minion_attack_speed_+%"
 		}
 	},
-	[360]={
-		stats={
-			[1]="minion_block_%"
-		},
+	[366]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10275,12 +12246,12 @@ return {
 					text="被辅助技能召唤生物时，它们的攻击伤害格挡几率 {0:+d}%"
 				}
 			}
+		},
+		stats={
+			[1]="minion_block_%"
 		}
 	},
-	[361]={
-		stats={
-			[1]="minion_burning_damage_+%"
-		},
+	[367]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10297,21 +12268,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能召唤生物时，它们的燃烧伤害降低  {}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能召唤生物时，它们的燃烧伤害降低  {}%"
 				}
 			}
+		},
+		stats={
+			[1]="minion_burning_damage_+%"
 		}
 	},
-	[362]={
-		stats={
-			[1]="minion_cast_speed_+%"
-		},
+	[368]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10328,21 +12299,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的召唤生物施法速度降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的召唤生物施法速度降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 소환수 시전 속도 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 소환수 시전 속도 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="minion_cast_speed_+%"
 		}
 	},
-	[363]={
-		stats={
-			[1]="minion_chance_to_deal_double_damage_%"
-		},
+	[369]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10352,15 +12345,15 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助技能召唤生物时，它们有 {0}% 几率伤害翻倍"
+					text="被辅助技能召唤生物时，它们有 {0}% 的几率伤害翻倍"
 				}
 			}
+		},
+		stats={
+			[1]="minion_chance_to_deal_double_damage_%"
 		}
 	},
-	[364]={
-		stats={
-			[1]="minion_chance_to_taunt_on_hit_%"
-		},
+	[370]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10370,15 +12363,24 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助技能创造的召唤生物击中时有 {0}% 几率嘲讽"
+					text="被辅助技能创造的召唤生物击中时有 {0}% 的几率嘲讽"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 소환된 소환수가 적 적중 시 {0}%의 확률로 도발"
 				}
 			}
+		},
+		stats={
+			[1]="minion_chance_to_taunt_on_hit_%"
 		}
 	},
-	[365]={
-		stats={
-			[1]="minion_cooldown_recovery_+%"
-		},
+	[371]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10395,21 +12397,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能召唤生物时，它们的冷却回复率降低  {}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能召唤生物时，它们的冷却回复率降低  {}%"
 				}
 			}
+		},
+		stats={
+			[1]="minion_cooldown_recovery_+%"
 		}
 	},
-	[366]={
-		stats={
-			[1]="minion_damage_+%"
-		},
+	[372]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10426,21 +12428,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能创造的召唤生物伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能创造的召唤生物伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="minion_damage_+%"
 		}
 	},
-	[367]={
-		stats={
-			[1]="minion_damage_+%_on_full_life"
-		},
+	[373]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10457,21 +12459,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能召唤生物时，它们满血时的伤害降低  {}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能召唤生物时，它们满血时的伤害降低  {}%"
 				}
 			}
+		},
+		stats={
+			[1]="minion_damage_+%_on_full_life"
 		}
 	},
-	[368]={
-		stats={
-			[1]="minion_grant_puppet_master_buff_to_parent_on_hit_%"
-		},
+	[374]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10479,21 +12481,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextFeedingFrenzy"
 					},
-					text="被辅助技能创造的召唤生物击中有 {0}% 几率获得【狂噬】",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能创造的召唤生物击中有 {0}% 的几率获得【狂噬】"
 				}
 			}
+		},
+		stats={
+			[1]="minion_grant_puppet_master_buff_to_parent_on_hit_%"
 		}
 	},
-	[369]={
-		stats={
-			[1]="minion_life_leech_from_elemental_damage_permyriad"
-		},
+	[375]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10505,21 +12507,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextLifeLeech"
 					},
-					text="被辅助技能召唤生物时，它们将 {}% 的元素伤害转化为生命偷取",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能召唤生物时，它们将 {}% 的元素伤害转化为生命偷取"
 				}
 			}
+		},
+		stats={
+			[1]="minion_life_leech_from_elemental_damage_permyriad"
 		}
 	},
-	[370]={
-		stats={
-			[1]="minion_maximum_life_+%"
-		},
+	[376]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10536,21 +12538,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的召唤生物最大生命降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的召唤生物最大生命降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 소환수 최대 생명력 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 소환수 최대 생명력 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="minion_maximum_life_+%"
 		}
 	},
-	[371]={
-		stats={
-			[1]="minion_movement_speed_+%"
-		},
+	[377]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10567,21 +12591,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的召唤生物移动速度降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的召唤生物移动速度降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 소환수 이동 속도 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 소환수 이동 속도 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="minion_movement_speed_+%"
 		}
 	},
-	[372]={
-		stats={
-			[1]="minion_projectile_speed_+%"
-		},
+	[378]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10598,21 +12644,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能召唤生物时，它们的投射物速度减慢 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能召唤生物时，它们的投射物速度减慢 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="minion_projectile_speed_+%"
 		}
 	},
-	[373]={
-		stats={
-			[1]="minion_recover_%_maximum_life_on_hit"
-		},
+	[379]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10625,12 +12671,12 @@ return {
 					text="被辅助技能召唤生物时，它们击中回复 {0}% 生命"
 				}
 			}
+		},
+		stats={
+			[1]="minion_recover_%_maximum_life_on_hit"
 		}
 	},
-	[374]={
-		stats={
-			[1]="minions_inflict_exposure_on_hit_%_chance"
-		},
+	[380]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10640,7 +12686,7 @@ return {
 							[2]=99
 						}
 					},
-					text="被辅助技能创造的召唤生物击中敌人有 {0}% 几率施加【曝露】，使其 -10% 元素抗性，其类型由该敌人所受最高伤害类型决定"
+					text="被辅助技能创造的召唤生物击中敌人有 {0}% 的几率施加【曝露】，使其 -10% 元素抗性，其类型由该敌人所受最高伤害类型决定"
 				},
 				[2]={
 					limit={
@@ -10652,12 +12698,12 @@ return {
 					text="被辅助技能创造的召唤生物击中敌人后施加【曝露】，使其 -10% 元素抗性，其类型由该敌人所受最高伤害类型决定"
 				}
 			}
+		},
+		stats={
+			[1]="minions_inflict_exposure_on_hit_%_chance"
 		}
 	},
-	[375]={
-		stats={
-			[1]="mirage_archer_number_of_additional_projectiles"
-		},
+	[381]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10670,12 +12716,12 @@ return {
 					text="幻影弓手的被辅助技能发射 {0} 枚额外投射物"
 				}
 			}
+		},
+		stats={
+			[1]="mirage_archer_number_of_additional_projectiles"
 		}
 	},
-	[376]={
-		stats={
-			[1]="multiple_projectiles_projectile_spread_+%"
-		},
+	[382]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10692,21 +12738,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能发射投射物的扩散范围缩小 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能发射投射物的扩散范围缩小 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="multiple_projectiles_projectile_spread_+%"
 		}
 	},
-	[377]={
-		stats={
-			[1]="multistrike_area_of_effect_+%_per_repeat"
-		},
+	[383]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10723,21 +12769,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能每次重复都使效果区域缩小 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能每次重复都使效果区域缩小 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="multistrike_area_of_effect_+%_per_repeat"
 		}
 	},
-	[378]={
-		stats={
-			[1]="multistrike_damage_+%_final_on_first_repeat"
-		},
+	[384]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10754,21 +12800,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="第一个重复的被辅助技能造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="第一个重复的被辅助技能造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="multistrike_damage_+%_final_on_first_repeat"
 		}
 	},
-	[379]={
-		stats={
-			[1]="multistrike_damage_+%_final_on_second_repeat"
-		},
+	[385]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10785,21 +12831,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="第二个重复的被辅助技能造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="第二个重复的被辅助技能造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="multistrike_damage_+%_final_on_second_repeat"
 		}
 	},
-	[380]={
-		stats={
-			[1]="multistrike_damage_+%_final_on_third_repeat"
-		},
+	[386]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10816,21 +12862,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="第三个重复的被辅助技能造成的总伤害额外提高 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="第三个重复的被辅助技能造成的总伤害额外提高 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="multistrike_damage_+%_final_on_third_repeat"
 		}
 	},
-	[381]={
-		stats={
-			[1]="nightblade_elusive_grants_critical_strike_multiplier_+_to_supported_skills"
-		},
+	[387]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10843,12 +12889,12 @@ return {
 					text="被辅助技能创造的【灵巧】对被夜刃辅助的技能还提供 {0:+d}% 暴击伤害加成"
 				}
 			}
+		},
+		stats={
+			[1]="nightblade_elusive_grants_critical_strike_multiplier_+_to_supported_skills"
 		}
 	},
-	[382]={
-		stats={
-			[1]="non_curse_aura_effect_+%"
-		},
+	[388]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10865,21 +12911,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的非诅咒类光环效果降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的非诅咒类光环效果降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 비-저주 오라 효과 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 비-저주 오라 효과 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="non_curse_aura_effect_+%"
 		}
 	},
-	[383]={
-		stats={
-			[1]="non_damaging_ailment_effect_+%"
-		},
+	[389]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10887,13 +12955,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextNonDamagingAilments"
 					},
-					text="被辅助技能对敌人施加的非伤害性异常状态效果提高 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能对敌人施加的非伤害性异常状态效果提高 {0}%"
 				},
 				[2]={
 					[1]={
@@ -10904,21 +12972,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextNonDamagingAilments"
 					},
-					text="被辅助技能对敌人施加的非伤害性异常状态效果降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能对敌人施加的非伤害性异常状态效果降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="non_damaging_ailment_effect_+%"
 		}
 	},
-	[384]={
-		stats={
-			[1]="number_of_additional_curses_allowed"
-		},
+	[390]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10940,12 +13008,12 @@ return {
 					text="被辅助技能可以施加 {0} 个额外诅咒"
 				}
 			}
+		},
+		stats={
+			[1]="number_of_additional_curses_allowed"
 		}
 	},
-	[385]={
-		stats={
-			[1]="number_of_additional_mines_to_place"
-		},
+	[391]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -10953,34 +13021,34 @@ return {
 						k="reminderstring",
 						v="ReminderTextMultipleMines"
 					},
-					text="被辅助技能可以额外投掷 1 个地雷",
 					limit={
 						[1]={
 							[1]=1,
 							[2]=1
 						}
-					}
+					},
+					text="被辅助技能可以额外投掷 1 个地雷"
 				},
 				[2]={
 					[1]={
 						k="reminderstring",
 						v="ReminderTextMultipleMines"
 					},
-					text="被辅助技能可以额外投掷 {0} 个地雷",
 					limit={
 						[1]={
 							[1]=2,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能可以额外投掷 {0} 个地雷"
 				}
 			}
+		},
+		stats={
+			[1]="number_of_additional_mines_to_place"
 		}
 	},
-	[386]={
-		stats={
-			[1]="number_of_additional_projectiles"
-		},
+	[392]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11002,12 +13070,12 @@ return {
 					text="被辅助技能可以发射 {0} 个额外投射物"
 				}
 			}
+		},
+		stats={
+			[1]="number_of_additional_projectiles"
 		}
 	},
-	[387]={
-		stats={
-			[1]="number_of_additional_remote_mines_allowed"
-		},
+	[393]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11027,14 +13095,32 @@ return {
 						}
 					},
 					text="被辅助技能最多同时可额外放置 {0} 个地雷"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]=1
+						}
+					},
+					text="보조 대상 스킬로 한 번에 원격 지뢰 최대 {0}개 추가 설치"
+				},
+				[4]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 한 번에 원격 지뢰 최대 {0}개 추가 설치"
 				}
 			}
+		},
+		stats={
+			[1]="number_of_additional_remote_mines_allowed"
 		}
 	},
-	[388]={
-		stats={
-			[1]="number_of_additional_traps_allowed"
-		},
+	[394]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11054,14 +13140,32 @@ return {
 						}
 					},
 					text="被辅助技能最多同时可额外放置 {0} 个陷阱"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]=1
+						}
+					},
+					text="보조 대상 스킬로 한 번에 덫 최대 {0}개 추가 설치"
+				},
+				[4]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 한 번에 덫 최대 {0}개 추가 설치"
 				}
 			}
+		},
+		stats={
+			[1]="number_of_additional_traps_allowed"
 		}
 	},
-	[389]={
-		stats={
-			[1]="onslaught_time_granted_on_killing_shocked_enemy_ms"
-		},
+	[395]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11073,21 +13177,38 @@ return {
 						k="reminderstring",
 						v="ReminderTextOnslaught"
 					},
-					text="被辅助技能击败受感电影响的敌人时，获得【猛攻】，持续 {0} 秒",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能击败受感电影响的敌人时，获得【猛攻】，持续 {0} 秒"
+				},
+				[2]={
+					[1]={
+						k="milliseconds_to_seconds",
+						v=1
+					},
+					[2]={
+						k="reminderstring",
+						v="ReminderTextOnslaught"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="감전된 적 처치 시 보조 대상 스킬로 {0}초 동안 맹공 획득"
 				}
 			}
+		},
+		stats={
+			[1]="onslaught_time_granted_on_killing_shocked_enemy_ms"
 		}
 	},
-	[390]={
-		stats={
-			[1]="overpowered_effect_+%"
-		},
+	[396]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11095,13 +13216,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextOverpowered"
 					},
-					text="被辅助技能的逼迫效果提高 {}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能的逼迫效果提高 {}%"
 				},
 				[2]={
 					[1]={
@@ -11112,21 +13233,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextOverpowered"
 					},
-					text="被辅助技能的压迫效果降低  {}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的压迫效果降低  {}%"
 				}
 			}
+		},
+		stats={
+			[1]="overpowered_effect_+%"
 		}
 	},
-	[391]={
-		stats={
-			[1]="overwhelm_%_physical_damage_reduction_while_fortified"
-		},
+	[397]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11134,21 +13255,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextOverwhelm"
 					},
-					text="你在护体状态下时，被辅助技能的击中压制{}% 的物理伤害减免",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="你在护体状态下时，被辅助技能的击中压制{}% 的物理伤害减免"
 				}
 			}
+		},
+		stats={
+			[1]="overwhelm_%_physical_damage_reduction_while_fortified"
 		}
 	},
-	[392]={
-		stats={
-			[1]="parallel_projectile_firing_point_x_dist_+%"
-		},
+	[398]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11165,21 +13286,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="发射点之间的距离减少 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="发射点之间的距离减少 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="parallel_projectile_firing_point_x_dist_+%"
 		}
 	},
-	[393]={
-		stats={
-			[1]="%_chance_to_gain_frenzy_charge_on_mine_detonated_targeting_an_enemy"
-		},
+	[399]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11189,7 +13310,7 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助技能\n使地雷以敌人为目标引爆时，有 {0}% 几率获得一个狂怒球"
+					text="被辅助技能\n使地雷以敌人为目标引爆时，有 {0}% 的几率获得一个狂怒球"
 				},
 				[2]={
 					limit={
@@ -11201,12 +13322,12 @@ return {
 					text="被辅助技能\n使地雷以敌人为目标引爆时，获得一个狂怒球"
 				}
 			}
+		},
+		stats={
+			[1]="%_chance_to_gain_frenzy_charge_on_mine_detonated_targeting_an_enemy"
 		}
 	},
-	[394]={
-		stats={
-			[1]="%_chance_to_gain_frenzy_charge_on_trap_triggered_by_an_enemy"
-		},
+	[400]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11228,12 +13349,12 @@ return {
 					text="当你的陷阱被敌人触发时，被辅助技能获得 1 个狂怒球"
 				}
 			}
+		},
+		stats={
+			[1]="%_chance_to_gain_frenzy_charge_on_trap_triggered_by_an_enemy"
 		}
 	},
-	[395]={
-		stats={
-			[1]="%_chance_to_gain_power_charge_on_mine_detonated_targeting_an_enemy"
-		},
+	[401]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11243,7 +13364,7 @@ return {
 							[2]="#"
 						}
 					},
-					text="地雷以敌人为目标引爆时，被辅助技能\n有 {0}% 几率获得一个暴击球"
+					text="地雷以敌人为目标引爆时，被辅助技能\n有 {0}% 的几率获得一个暴击球"
 				},
 				[2]={
 					limit={
@@ -11255,12 +13376,12 @@ return {
 					text="地雷以敌人为目标引爆时，被辅助技能\n获得一个暴击球"
 				}
 			}
+		},
+		stats={
+			[1]="%_chance_to_gain_power_charge_on_mine_detonated_targeting_an_enemy"
 		}
 	},
-	[396]={
-		stats={
-			[1]="%_chance_to_gain_power_charge_on_trap_triggered_by_an_enemy"
-		},
+	[402]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11282,12 +13403,12 @@ return {
 					text="当你的陷阱被敌人触发时，被辅助技能获得 1 个暴击球"
 				}
 			}
+		},
+		stats={
+			[1]="%_chance_to_gain_power_charge_on_trap_triggered_by_an_enemy"
 		}
 	},
-	[397]={
-		stats={
-			[1]="physical_damage_%_to_add_as_chaos"
-		},
+	[403]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11300,12 +13421,12 @@ return {
 					text="被辅助技能额外获得 {0}% 物理伤害，并转化为混沌伤害"
 				}
 			}
+		},
+		stats={
+			[1]="physical_damage_%_to_add_as_chaos"
 		}
 	},
-	[398]={
-		stats={
-			[1]="physical_damage_%_to_add_as_fire"
-		},
+	[404]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11316,14 +13437,23 @@ return {
 						}
 					},
 					text="被辅助技能额外获得 {0}% 物理伤害，并转化为火焰伤害"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 물리 피해의 {0}%를 추가 화염 피해로 획득"
 				}
 			}
+		},
+		stats={
+			[1]="physical_damage_%_to_add_as_fire"
 		}
 	},
-	[399]={
-		stats={
-			[1]="physical_damage_%_to_add_as_lightning"
-		},
+	[405]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11334,14 +13464,23 @@ return {
 						}
 					},
 					text="被辅助技能额外获得 {0}% 物理伤害，并转化为闪电伤害"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 물리 피해의 {0}%를 추가 번개 피해로 획득"
 				}
 			}
+		},
+		stats={
+			[1]="physical_damage_%_to_add_as_lightning"
 		}
 	},
-	[400]={
-		stats={
-			[1]="physical_damage_+%"
-		},
+	[406]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11358,21 +13497,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的物理伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的物理伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 물리 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 물리 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="physical_damage_+%"
 		}
 	},
-	[401]={
-		stats={
-			[1]="placing_traps_cooldown_recovery_+%"
-		},
+	[407]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11389,21 +13550,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助陷阱技能冷却回复速度降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助陷阱技能冷却回复速度降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="덫 투척 시 보조 대상 스킬의 재사용 대기시간 회복 속도 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="덫 투척 시 보조 대상 스킬의 재사용 대기시간 회복 속도 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="placing_traps_cooldown_recovery_+%"
 		}
 	},
-	[402]={
-		stats={
-			[1]="projectile_chance_to_not_pierce_%"
-		},
+	[408]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11413,7 +13596,7 @@ return {
 							[2]=99
 						}
 					},
-					text="被辅助技能发射的投射物有 {0}% 几率不会贯穿敌人"
+					text="被辅助技能发射的投射物有 {0}% 的几率不会贯穿敌人"
 				},
 				[2]={
 					limit={
@@ -11425,12 +13608,12 @@ return {
 					text="被辅助技能发射的投射物，它们不会贯穿敌人"
 				}
 			}
+		},
+		stats={
+			[1]="projectile_chance_to_not_pierce_%"
 		}
 	},
-	[403]={
-		stats={
-			[1]="projectile_damage_+%"
-		},
+	[409]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11447,21 +13630,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助的投射物技能伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助的投射物技能伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 투사체 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 투사체 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="projectile_damage_+%"
 		}
 	},
-	[404]={
-		stats={
-			[1]="projectile_damage_+%_if_pierced_enemy"
-		},
+	[410]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11478,21 +13683,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="若投射物来自被辅助的技能，则它们的贯穿伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="若投射物来自被辅助的技能，则它们的贯穿伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="projectile_damage_+%_if_pierced_enemy"
 		}
 	},
-	[405]={
-		stats={
-			[1]="projectile_maximum_range_override"
-		},
+	[411]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11505,30 +13710,12 @@ return {
 					text="被辅助技能的投射物范围受限"
 				}
 			}
+		},
+		stats={
+			[1]="projectile_maximum_range_override"
 		}
 	},
-	[406]={
-		stats={
-			[1]="projectile_return_%_chance"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]="#",
-							[2]="#"
-						}
-					},
-					text="被辅助技能发射的投射物有 {0}% 几率返回"
-				}
-			}
-		}
-	},
-	[407]={
-		stats={
-			[1]="projectiles_damage_+%_to_nearby_targets"
-		},
+	[412]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11538,28 +13725,28 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助技能对周围敌人的投射物伤害提高 {0}%"
+					text="来自被辅助技能的投射物击中周围敌人时伤害提高 {0}%"
 				},
 				[2]={
 					[1]={
 						k="negate",
 						v=1
 					},
-					text="被辅助技能对周围敌人的投射物伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="来自被辅助技能的投射物击中周围敌人时投射物击中伤害降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="projectile_damage_+%_vs_nearby_enemies"
 		}
 	},
-	[408]={
-		stats={
-			[1]="projectiles_pierce_all_targets_in_x_range"
-		},
+	[413]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11572,12 +13759,12 @@ return {
 					text="来自被辅助技能的投射物会贯穿 {0} 格内的所有目标"
 				}
 			}
+		},
+		stats={
+			[1]="projectiles_pierce_all_targets_in_x_range"
 		}
 	},
-	[409]={
-		stats={
-			[1]="recover_%_life_when_stunning_an_enemy_permyriad"
-		},
+	[414]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11585,21 +13772,21 @@ return {
 						k="divide_by_one_hundred",
 						v=1
 					},
-					text="你用被辅助技能眩晕敌人时，回复 {0}% 生命",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="你用被辅助技能眩晕敌人时，回复 {0}% 生命"
 				}
 			}
+		},
+		stats={
+			[1]="recover_%_life_when_stunning_an_enemy_permyriad"
 		}
 	},
-	[410]={
-		stats={
-			[1]="recover_%_maximum_life_on_cull"
-		},
+	[415]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11612,12 +13799,12 @@ return {
 					text="被辅助技能终结敌人时，回复 {}% 生命"
 				}
 			}
+		},
+		stats={
+			[1]="recover_%_maximum_life_on_cull"
 		}
 	},
-	[411]={
-		stats={
-			[1]="reduce_enemy_chaos_resistance_%"
-		},
+	[416]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11630,12 +13817,12 @@ return {
 					text="被辅助技能穿透 {0}% 混沌抗性"
 				}
 			}
+		},
+		stats={
+			[1]="reduce_enemy_chaos_resistance_%"
 		}
 	},
-	[412]={
-		stats={
-			[1]="reduce_enemy_dodge_%"
-		},
+	[417]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11648,12 +13835,12 @@ return {
 					text="被辅助技能会使敌人的躲避击中的几率降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="reduce_enemy_dodge_%"
 		}
 	},
-	[413]={
-		stats={
-			[1]="refresh_bleeding_duration_on_hit_%_chance"
-		},
+	[418]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11663,7 +13850,7 @@ return {
 							[2]=99
 						}
 					},
-					text="被辅助技能击中时有 {}% 几率刷新流血持续时间"
+					text="被辅助技能击中时有 {}% 的几率刷新流血持续时间"
 				},
 				[2]={
 					limit={
@@ -11675,12 +13862,12 @@ return {
 					text="被辅助技能击中时会刷新流血持续时间"
 				}
 			}
+		},
+		stats={
+			[1]="refresh_bleeding_duration_on_hit_%_chance"
 		}
 	},
-	[414]={
-		stats={
-			[1]="regenerate_%_life_over_1_second_on_cast"
-		},
+	[419]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11693,12 +13880,12 @@ return {
 					text="你使用被辅助技能时，在 1 秒内再生 {0}% 生命"
 				}
 			}
+		},
+		stats={
+			[1]="regenerate_%_life_over_1_second_on_skill_use"
 		}
 	},
-	[415]={
-		stats={
-			[1]="shock_duration_+%"
-		},
+	[420]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11715,21 +13902,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能对敌人的感电持续时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能对敌人的感电持续时间缩短 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬이 적에게 적용하는 감전 지속시간 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬이 적에게 적용하는 감전 지속시간 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="shock_duration_+%"
 		}
 	},
-	[416]={
-		stats={
-			[1]="sigil_repeat_frequency_+%"
-		},
+	[421]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11746,21 +13955,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的激活频率减慢 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的激活频率减慢 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 활성화 빈도 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 활성화 빈도 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="sigil_repeat_frequency_+%"
 		}
 	},
-	[417]={
-		stats={
-			[1]="skill_buff_effect_+%"
-		},
+	[422]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11777,21 +14008,39 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的增益效果降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的增益效果降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="skill_buff_effect_+%"
 		}
 	},
-	[418]={
-		stats={
-			[1]="skill_cold_damage_%_to_convert_to_fire"
+	[423]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="最多召唤 1 个幻影弓手"
+				}
+			}
 		},
+		stats={
+			[1]="skill_can_own_mirage_archers"
+		}
+	},
+	[424]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11802,14 +14051,41 @@ return {
 						}
 					},
 					text="被辅助技能的 {0}% 冰霜伤害转换为火焰伤害"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 냉기 피해의 {0}%를 화염 피해로 전환"
 				}
 			}
+		},
+		stats={
+			[1]="skill_cold_damage_%_to_convert_to_fire"
 		}
 	},
-	[419]={
-		stats={
-			[1]="skill_effect_and_damaging_ailment_duration_+%"
+	[425]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="被辅助技能将物理伤害的 {0}% 转化为一种随机元素"
+				}
+			}
 		},
+		stats={
+			[1]="skill_convert_%_physical_damage_to_random_element"
+		}
+	},
+	[426]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11817,13 +14093,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="被辅助技能和该技能造成的伤害类异常状态持续时间延长 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能和该技能造成的伤害类异常状态持续时间延长 {0}%"
 				},
 				[2]={
 					[1]={
@@ -11834,21 +14110,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="被辅助技能和该技能造成的伤害类异常状态持续时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能和该技能造成的伤害类异常状态持续时间缩短 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="skill_effect_and_damaging_ailment_duration_+%"
 		}
 	},
-	[420]={
-		stats={
-			[1]="skill_effect_duration_+%"
-		},
+	[427]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11865,21 +14141,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的持续时间缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的持续时间缩短 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 스킬 효과 지속시간 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 스킬 효과 지속시간 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="skill_effect_duration_+%"
 		}
 	},
-	[421]={
-		stats={
-			[1]="skill_effect_duration_+%_while_dead"
-		},
+	[428]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11896,21 +14194,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被击败时，被辅助技能的技能效果持续时间缩短  {}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被击败时，被辅助技能的技能效果持续时间缩短  {}%"
 				}
 			}
+		},
+		stats={
+			[1]="skill_effect_duration_+%_while_dead"
 		}
 	},
-	[422]={
-		stats={
-			[1]="skill_physical_damage_%_to_convert_to_chaos"
-		},
+	[429]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11923,12 +14221,12 @@ return {
 					text="被辅助技能将物理伤害的 {0}% 转化为混沌伤害"
 				}
 			}
+		},
+		stats={
+			[1]="skill_physical_damage_%_to_convert_to_chaos"
 		}
 	},
-	[423]={
-		stats={
-			[1]="skill_physical_damage_%_to_convert_to_cold"
-		},
+	[430]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11936,17 +14234,22 @@ return {
 						[1]={
 							[1]=1,
 							[2]="#"
+						},
+						[2]={
+							[1]=0,
+							[2]=0
 						}
 					},
 					text="被辅助技能将物理伤害的 {0}% 转化为冰霜伤害"
 				}
 			}
+		},
+		stats={
+			[1]="skill_physical_damage_%_to_convert_to_cold",
+			[2]="active_skill_display_suppress_physical_to_cold_damage_conversion"
 		}
 	},
-	[424]={
-		stats={
-			[1]="skill_physical_damage_%_to_convert_to_fire"
-		},
+	[431]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11959,12 +14262,12 @@ return {
 					text="被辅助技能将物理伤害的 {0}% 转化为火焰伤害"
 				}
 			}
+		},
+		stats={
+			[1]="skill_physical_damage_%_to_convert_to_fire"
 		}
 	},
-	[425]={
-		stats={
-			[1]="skill_physical_damage_%_to_convert_to_lightning"
-		},
+	[432]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11975,14 +14278,23 @@ return {
 						}
 					},
 					text="被辅助技能的 {0}% 物理伤害转换为闪电伤害"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 {0}%의 물리 피해를 번개 피해로 전환"
 				}
 			}
+		},
+		stats={
+			[1]="skill_physical_damage_%_to_convert_to_lightning"
 		}
 	},
-	[426]={
-		stats={
-			[1]="spell_critical_strike_chance_+%"
-		},
+	[433]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -11999,21 +14311,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的法术暴击率降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的法术暴击率降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 주문 치명타 확률 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 주문 치명타 확률 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="spell_critical_strike_chance_+%"
 		}
 	},
-	[427]={
-		stats={
-			[1]="spell_damage_+%"
-		},
+	[434]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12030,21 +14364,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的法术伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的法术伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 주문 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 주문 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="spell_damage_+%"
 		}
 	},
-	[428]={
-		stats={
-			[1]="spell_echo_plus_chance_double_damage_%_final"
-		},
+	[435]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12054,15 +14410,15 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助技能最后一次重复有 {0}% 几率造成双倍伤害"
+					text="被辅助技能最后一次重复有 {0}% 的几率造成双倍伤害"
 				}
 			}
+		},
+		stats={
+			[1]="spell_echo_plus_chance_double_damage_%_final"
 		}
 	},
-	[429]={
-		stats={
-			[1]="static_strike_base_zap_frequency_ms"
-		},
+	[436]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12070,34 +14426,34 @@ return {
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="波束每 {0} 秒击中敌人",
 					limit={
 						[1]={
 							[1]=1000,
 							[2]=1000
 						}
-					}
+					},
+					text="波束每 {0} 秒击中敌人"
 				},
 				[2]={
 					[1]={
 						k="milliseconds_to_seconds_2dp",
 						v=1
 					},
-					text="波束每 {0} 秒击中敌人",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="波束每 {0} 秒击中敌人"
 				}
 			}
+		},
+		stats={
+			[1]="static_strike_base_zap_frequency_ms"
 		}
 	},
-	[430]={
-		stats={
-			[1]="static_strike_zap_speed_+%"
-		},
+	[437]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12110,12 +14466,12 @@ return {
 					text="波束频率提高 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="static_strike_zap_speed_+%"
 		}
 	},
-	[431]={
-		stats={
-			[1]="summon_mirage_archer_on_hit"
-		},
+	[438]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12128,12 +14484,12 @@ return {
 					text="当你用被辅助技能发射的箭矢击中敌人时，召唤 1 个会使用此技能的【幻影弓手】"
 				}
 			}
+		},
+		stats={
+			[1]="summon_mirage_archer_on_hit"
 		}
 	},
-	[432]={
-		stats={
-			[1]="support_added_cooldown_count_if_not_instant"
-		},
+	[439]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12143,7 +14499,7 @@ return {
 							[2]=1
 						}
 					},
-					text="被辅助的非立即生效技能 {0:+d} 冷却时间次数"
+					text="被辅助的非立即生效技能冷却时间次数 {0:+d}"
 				},
 				[2]={
 					limit={
@@ -12152,15 +14508,15 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助的非立即生效技能 {0:+d} 冷却时间次数"
+					text="被辅助的非立即生效技能冷却时间次数 {0:+d}"
 				}
 			}
+		},
+		stats={
+			[1]="support_added_cooldown_count_if_not_instant"
 		}
 	},
-	[433]={
-		stats={
-			[1]="support_additional_trap_%_chance_for_1_additional_trap"
-		},
+	[440]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12170,15 +14526,15 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助技能有 {0}% 几率投掷一个额外陷阱"
+					text="被辅助技能有 {0}% 的几率投掷一个额外陷阱"
 				}
 			}
+		},
+		stats={
+			[1]="support_additional_trap_%_chance_for_1_additional_trap"
 		}
 	},
-	[434]={
-		stats={
-			[1]="support_anticipation_charge_gain_frequency_+%"
-		},
+	[441]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12195,21 +14551,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的封印获取频率降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的封印获取频率降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_anticipation_charge_gain_frequency_+%"
 		}
 	},
-	[435]={
-		stats={
-			[1]="support_arcane_surge_spell_damage_+%_final_while_you_have_arcane_surge"
-		},
+	[442]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12226,21 +14582,78 @@ return {
 						k="negate",
 						v=1
 					},
-					text="你拥有【秘术增强】时，被辅助技能造成的法术总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="你拥有【秘术增强】时，被辅助技能造成的法术总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="비전 쇄도 상태에서 보조 대상 스킬로 주는 주문 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="비전 쇄도 상태에서 보조 대상 스킬로 주는 주문 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_arcane_surge_spell_damage_+%_final_while_you_have_arcane_surge"
 		}
 	},
-	[436]={
+	[443]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					[1]={
+						k="milliseconds_to_seconds_2dp",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="光环持续 {0} 秒"
+				},
+				[2]={
+					[1]={
+						k="milliseconds_to_seconds_2dp",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="{0}초간 오라 지속"
+				}
+			}
+		},
 		stats={
 			[1]="support_aura_duration_base_buff_duration"
-		},
+		}
+	},
+	[444]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12248,43 +14661,34 @@ return {
 						k="milliseconds_to_seconds_2dp",
 						v=1
 					},
-					text="光环持续 {0} 秒",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="魔力保留持续 {0} 秒"
+				},
+				[2]={
+					[1]={
+						k="milliseconds_to_seconds_2dp",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="{0}초간 마나 점유 지속"
 				}
 			}
-		}
-	},
-	[437]={
+		},
 		stats={
 			[1]="support_aura_duration_base_reserve_duration"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					[1]={
-						k="milliseconds_to_seconds_2dp",
-						v=1
-					},
-					text="魔力保留持续 {0} 秒",
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					}
-				}
-			}
 		}
 	},
-	[438]={
-		stats={
-			[1]="support_barrage_attack_time_+%_per_projectile_fired"
-		},
+	[445]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12301,21 +14705,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="每个投射物使被辅助技能总攻击间隔额外缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="每个投射物使被辅助技能总攻击间隔额外缩短 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_barrage_attack_time_+%_per_projectile_fired"
 		}
 	},
-	[439]={
-		stats={
-			[1]="support_barrage_trap_and_mine_throwing_time_+%_final_per_projectile_fired"
-		},
+	[446]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12332,21 +14736,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="每个投射物使被辅助技能的陷阱和地雷总投掷速度额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="每个投射物使被辅助技能的陷阱和地雷总投掷速度额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_barrage_trap_and_mine_throwing_time_+%_final_per_projectile_fired"
 		}
 	},
-	[440]={
-		stats={
-			[1]="support_blunt_chance_to_trigger_shockwave_on_hit_%"
-		},
+	[447]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12356,7 +14760,7 @@ return {
 							[2]=99
 						}
 					},
-					text="被辅助技能在近战范围击中时有 {0}% 几率触发【震波】"
+					text="被辅助技能在近战范围击中时有 {0}% 的几率触发【震波】"
 				},
 				[2]={
 					limit={
@@ -12368,12 +14772,12 @@ return {
 					text="被辅助技能在近战范围击中时会触发【震波】"
 				}
 			}
+		},
+		stats={
+			[1]="support_blunt_chance_to_trigger_shockwave_on_hit_%"
 		}
 	},
-	[441]={
-		stats={
-			[1]="support_brand_area_of_effect_+%_final"
-		},
+	[448]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12383,28 +14787,28 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助技能的总范围效果额外扩大 {0}%"
+					text="被辅助技能的总效果区域额外扩大 {0}%"
 				},
 				[2]={
 					[1]={
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的总范围效果额外缩小 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的总效果区域额外缩小 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_brand_area_of_effect_+%_final"
 		}
 	},
-	[442]={
-		stats={
-			[1]="support_brand_damage_+%_final"
-		},
+	[449]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12421,21 +14825,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_brand_damage_+%_final"
 		}
 	},
-	[443]={
-		stats={
-			[1]="support_burning_damage_+%_final"
-		},
+	[450]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12452,21 +14856,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的燃烧总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的燃烧总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 화상 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 화상 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_burning_damage_+%_final"
 		}
 	},
-	[444]={
-		stats={
-			[1]="support_cast_on_crit_quality_attack_damage_+%_final"
-		},
+	[451]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12483,21 +14909,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的攻击总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的攻击总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_cast_on_crit_quality_attack_damage_+%_final"
 		}
 	},
-	[445]={
-		stats={
-			[1]="support_chance_to_bleed_bleeding_damage_+%_final"
-		},
+	[452]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12514,21 +14940,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助的攻击技能造成的流血总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助的攻击技能造成的流血总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_chance_to_bleed_bleeding_damage_+%_final"
 		}
 	},
-	[446]={
-		stats={
-			[1]="support_chaos_attacks_damage_+%_final"
-		},
+	[453]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12545,21 +14971,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的混沌总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的混沌总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_chaos_attacks_damage_+%_final"
 		}
 	},
-	[447]={
-		stats={
-			[1]="support_clustertrap_damage_+%_final"
-		},
+	[454]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12576,21 +15002,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_clustertrap_damage_+%_final"
 		}
 	},
-	[448]={
-		stats={
-			[1]="support_energy_shield_leech_damage_+%_on_full_energy_shield_final"
-		},
+	[455]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12607,21 +15055,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="满能量护盾时，被辅助技能造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="满能量护盾时，被辅助技能造成的总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="에너지 보호막이 최대일 때 보조 대상 스킬로 주는 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="에너지 보호막이 최대일 때 보조 대상 스킬로 주는 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_energy_shield_leech_damage_+%_on_full_energy_shield_final"
 		}
 	},
-	[449]={
-		stats={
-			[1]="support_energy_shield_leech_damage_+%_while_leeching_energy_shield_final"
-		},
+	[456]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12638,21 +15108,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="偷取能量护盾时，被辅助技能造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="偷取能量护盾时，被辅助技能造成的总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="에너지 보호막을 흡수하는 동안 보조 대상 스킬로 주는 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="에너지 보호막을 흡수하는 동안 보조 대상 스킬로 주는 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_energy_shield_leech_damage_+%_while_leeching_energy_shield_final"
 		}
 	},
-	[450]={
-		stats={
-			[1]="support_fortify_ailment_damage_+%_final_from_melee_hits"
-		},
+	[457]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12669,21 +15161,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能在近战击中时造成的异常状态总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能在近战击中时造成的异常状态总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_fortify_ailment_damage_+%_final_from_melee_hits"
 		}
 	},
-	[451]={
-		stats={
-			[1]="support_fortify_melee_damage_+%_final"
-		},
+	[458]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12700,21 +15192,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的近战物理总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的近战物理总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_fortify_melee_damage_+%_final"
 		}
 	},
-	[452]={
-		stats={
-			[1]="support_ghost_base_duration"
-		},
+	[459]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12722,21 +15214,21 @@ return {
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="【幻灵】持续 {0} 秒",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="【幻灵】持续 {0} 秒"
 				}
 			}
+		},
+		stats={
+			[1]="support_ghost_base_duration"
 		}
 	},
-	[453]={
-		stats={
-			[1]="support_greater_projectile_intensity_projectile_damage_+%_final"
-		},
+	[460]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12753,21 +15245,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的投射物总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的投射物总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_greater_projectile_intensity_projectile_damage_+%_final"
 		}
 	},
-	[454]={
-		stats={
-			[1]="support_hypothermia_cold_damage_over_time_+%_final"
-		},
+	[461]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12784,21 +15276,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的持续性冰霜总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的持续性冰霜总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_hypothermia_cold_damage_over_time_+%_final"
 		}
 	},
-	[455]={
-		stats={
-			[1]="support_hypothermia_damage_+%_vs_chilled_enemies_final"
-		},
+	[462]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12806,13 +15298,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="敌人被冰缓时，辅助技能的总伤害（击中和异常状态）额外提高 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="敌人被冰缓时，辅助技能的总伤害（击中和异常状态）额外提高 {0}%"
 				},
 				[2]={
 					[1]={
@@ -12823,21 +15315,51 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="敌人被冰缓时，辅助技能的总伤害（击中和异常状态）缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="敌人被冰缓时，辅助技能的总伤害（击中和异常状态）缩短 {0}%"
+				},
+				[3]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextDamagingAilments"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 냉각된 적에 대한 적중 및 상태 이상 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					[2]={
+						k="reminderstring",
+						v="ReminderTextDamagingAilments"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 냉각된 적에 대한 적중 및 상태 이상 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_hypothermia_damage_+%_vs_chilled_enemies_final"
 		}
 	},
-	[456]={
-		stats={
-			[1]="support_innervate_chance_to_gain_buff_on_shock_vs_unique_%"
-		},
+	[463]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12847,7 +15369,7 @@ return {
 							[2]=99
 						}
 					},
-					text="你用被辅助技能使传奇敌人感电时，有 {}% 几率获得闪电支配"
+					text="你用被辅助技能使传奇敌人感电时，有 {}% 的几率获得闪电支配"
 				},
 				[2]={
 					limit={
@@ -12859,12 +15381,12 @@ return {
 					text="你用被辅助技能使传奇敌人感电时获得闪电支配"
 				}
 			}
+		},
+		stats={
+			[1]="support_innervate_chance_to_gain_buff_on_shock_vs_unique_%"
 		}
 	},
-	[457]={
-		stats={
-			[1]="support_maimed_enemies_physical_damage_taken_+%"
-		},
+	[464]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12881,21 +15403,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能使敌人瘫痪时，它受到的物理伤害降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能使敌人瘫痪时，它受到的物理伤害降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 힘줄 절단된 적이 받는 물리 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 힘줄 절단된 적이 받는 물리 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="support_maimed_enemies_physical_damage_taken_+%"
 		}
 	},
-	[458]={
-		stats={
-			[1]="support_minefield_mine_damage_+%_final"
-		},
+	[465]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12912,21 +15456,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_minefield_mine_damage_+%_final"
 		}
 	},
-	[459]={
-		stats={
-			[1]="support_minefield_mine_throwing_speed_+%_final"
-		},
+	[466]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12943,22 +15509,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助的地雷技能的总投掷速度额外缩短 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助的地雷技能的总投掷速度额外缩短 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 지뢰 투척 속도 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 지뢰 투척 속도 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_minefield_mine_throwing_speed_+%_final"
 		}
 	},
-	[460]={
-		stats={
-			[1]="global_minimum_added_fire_damage_vs_burning_enemies",
-			[2]="global_maximum_added_fire_damage_vs_burning_enemies"
-		},
+	[467]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12973,14 +15560,28 @@ return {
 						}
 					},
 					text="被辅助技能对燃烧的敌人附加 {0} - {1} 火焰伤害"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						},
+						[2]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 화상 상태의 적에게 주는 화염 피해 {0}~{1} 추가"
 				}
 			}
+		},
+		stats={
+			[1]="global_minimum_added_fire_damage_vs_burning_enemies",
+			[2]="global_maximum_added_fire_damage_vs_burning_enemies"
 		}
 	},
-	[461]={
-		stats={
-			[1]="support_minion_damage_+%_final"
-		},
+	[468]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -12997,21 +15598,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被被辅助技能创造的召唤生物造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被被辅助技能创造的召唤生物造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_minion_damage_+%_final"
 		}
 	},
-	[462]={
-		stats={
-			[1]="support_minion_defensive_stance_minion_damage_+%_final_against_enemies_near_you"
-		},
+	[469]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13028,21 +15629,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能创造的召唤生物对你周围的敌人造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能创造的召唤生物对你周围的敌人造成的总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 소환된 소환수가 플레이어 주변의 적에게 주는 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬 소환된 소환수가 플레이어 주변의 적에게 주는 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_minion_defensive_stance_minion_damage_+%_final_against_enemies_near_you"
 		}
 	},
-	[463]={
-		stats={
-			[1]="support_minion_defensive_stance_minion_damage_taken_+%_final"
-		},
+	[470]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13059,21 +15682,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能创造的召唤生物的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能创造的召唤生物的总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 소환된 소환수가 받는 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 소환된 소환수가 받는 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_minion_defensive_stance_minion_damage_taken_+%_final"
 		}
 	},
-	[464]={
-		stats={
-			[1]="support_minion_focus_fire_critical_strike_chance_+%_vs_focused_target"
-		},
+	[471]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13090,21 +15735,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="来自被辅助技能的召唤生物对猎物的暴击率降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="来自被辅助技能的召唤生物对猎物的暴击率降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_minion_focus_fire_critical_strike_chance_+%_vs_focused_target"
 		}
 	},
-	[465]={
-		stats={
-			[1]="support_minion_focus_fire_critical_strike_multiplier_+_vs_focused_target"
-		},
+	[472]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13117,12 +15762,12 @@ return {
 					text="来自被辅助技能的召唤生物对猎物的暴击伤害加成 {0:+d}% "
 				}
 			}
+		},
+		stats={
+			[1]="support_minion_focus_fire_critical_strike_multiplier_+_vs_focused_target"
 		}
 	},
-	[466]={
-		stats={
-			[1]="support_minion_focus_fire_damage_+%_final_vs_focussed_target"
-		},
+	[473]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13139,21 +15784,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="来自被辅助技能的召唤生物对猎物的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="来自被辅助技能的召唤生物对猎物的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_minion_focus_fire_damage_+%_final_vs_focussed_target"
 		}
 	},
-	[467]={
-		stats={
-			[1]="support_minion_maximum_life_+%_final"
-		},
+	[474]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13170,21 +15815,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的召唤生物最大生命总值额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的召唤生物最大生命总值额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_minion_maximum_life_+%_final"
 		}
 	},
-	[468]={
-		stats={
-			[1]="support_minion_offensive_stance_minion_damage_+%_final_while_you_have_puppet_master"
-		},
+	[475]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13201,21 +15846,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="【狂噬】状态下，被辅助技能创造的召唤生物造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="【狂噬】状态下，被辅助技能创造的召唤生物造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_minion_offensive_stance_minion_damage_+%_final_while_you_have_puppet_master"
 		}
 	},
-	[469]={
-		stats={
-			[1]="support_minion_totem_resistance_elemental_damage_+%_final"
-		},
+	[476]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13232,21 +15877,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能创造的召唤生物的元素总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能创造的召唤生物的元素总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 소환된 소환수가 주는 원소 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 소환된 소환수가 주는 원소 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_minion_totem_resistance_elemental_damage_+%_final"
 		}
 	},
-	[470]={
-		stats={
-			[1]="support_minion_use_focussed_target"
-		},
+	[477]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13259,12 +15926,12 @@ return {
 					text="来自被辅助技能的召唤生物始终以猎物为目标"
 				}
 			}
+		},
+		stats={
+			[1]="support_minion_use_focussed_target"
 		}
 	},
-	[471]={
-		stats={
-			[1]="support_mirage_archer_attack_speed_+%_final"
-		},
+	[478]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13281,21 +15948,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="【幻影弓手】使用被辅助技能时，总攻击速度额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="【幻影弓手】使用被辅助技能时，总攻击速度额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_mirage_archer_attack_speed_+%_final"
 		}
 	},
-	[472]={
-		stats={
-			[1]="support_mirage_archer_damage_+%_final"
+	[479]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					[1]={
+						k="milliseconds_to_seconds",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="幻影弓手持续 {0} 秒"
+				}
+			}
 		},
+		stats={
+			[1]="support_mirage_archer_base_duration"
+		}
+	},
+	[480]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13312,21 +16001,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="【幻影弓手】使用被辅助技能时所造成的伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="【幻影弓手】使用被辅助技能时所造成的伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_mirage_archer_damage_+%_final"
 		}
 	},
-	[473]={
-		stats={
-			[1]="support_overpowered_base_duration_ms"
-		},
+	[481]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13338,21 +16027,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextOverpowered"
 					},
-					text="被辅助技能被格挡时施加 {0} 秒逼迫",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能被格挡时施加 {0} 秒逼迫"
 				}
 			}
+		},
+		stats={
+			[1]="support_overpowered_base_duration_ms"
 		}
 	},
-	[474]={
-		stats={
-			[1]="support_parallel_projectile_number_of_points_per_side"
-		},
+	[482]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13374,12 +16063,12 @@ return {
 					text="被辅助技能还会在你身体两侧发射投射物，最多 {0} 个发射点"
 				}
 			}
+		},
+		stats={
+			[1]="support_parallel_projectile_number_of_points_per_side"
 		}
 	},
-	[475]={
-		stats={
-			[1]="support_parallel_projectiles_damage_+%_final"
-		},
+	[483]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13396,21 +16085,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的投射物总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的投射物总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_parallel_projectiles_damage_+%_final"
 		}
 	},
-	[476]={
-		stats={
-			[1]="support_phys_chaos_projectile_chaos_damage_over_time_+%_final"
-		},
+	[484]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13427,21 +16116,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的持续性混沌总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的持续性混沌总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 지속 카오스 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 지속 카오스 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_phys_chaos_projectile_chaos_damage_over_time_+%_final"
 		}
 	},
-	[477]={
-		stats={
-			[1]="support_phys_chaos_projectile_physical_damage_over_time_+%_final"
-		},
+	[485]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13458,21 +16169,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的持续性物理总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的持续性物理总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 지속 물리 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 지속 물리 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_phys_chaos_projectile_physical_damage_over_time_+%_final"
 		}
 	},
-	[478]={
-		stats={
-			[1]="support_phys_chaos_projectile_spell_physical_projectile_damage_+%_final"
-		},
+	[486]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13489,21 +16222,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助的攻击技能额外降低 {0}% 投射物法术总伤害",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助的攻击技能额外降低 {0}% 投射物法术总伤害"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 물리 투사체 주문 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 물리 투사체 주문 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_phys_chaos_projectile_spell_physical_projectile_damage_+%_final"
 		}
 	},
-	[479]={
-		stats={
-			[1]="support_phys_proj_attack_damage_bleeing_and_poison_damage_+%_final_from_projectile_hits"
-		},
+	[487]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13520,21 +16275,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助攻击技能的投射物击中造成的流血和中毒总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助攻击技能的投射物击中造成的流血和中毒总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_phys_proj_attack_damage_bleeing_and_poison_damage_+%_final_from_projectile_hits"
 		}
 	},
-	[480]={
-		stats={
-			[1]="support_pierce_projectile_damage_+%_final"
-		},
+	[488]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13551,21 +16306,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能额外降低 {0}% 投射物总伤害",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能额外降低 {0}% 投射物总伤害"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 투사체 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 투사체 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_pierce_projectile_damage_+%_final"
 		}
 	},
-	[481]={
-		stats={
-			[1]="support_power_charge_on_crit_damage_+%_final_per_power_charge"
-		},
+	[489]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13582,21 +16359,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="每个暴击球可使被辅助技能造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="每个暴击球可使被辅助技能造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_power_charge_on_crit_damage_+%_final_per_power_charge"
 		}
 	},
-	[482]={
-		stats={
-			[1]="support_projectile_attack_physical_damage_+%_final"
-		},
+	[490]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13613,21 +16390,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助的攻击技能额外降低 {0}% 投射物物理总伤害",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助的攻击技能额外降低 {0}% 投射物物理总伤害"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 물리 투사체 공격 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 물리 투사체 공격 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_projectile_attack_physical_damage_+%_final"
 		}
 	},
-	[483]={
-		stats={
-			[1]="support_projectile_attack_speed_+%_final"
-		},
+	[491]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13644,21 +16443,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能额外降低 {0}% 投射物攻击总速度",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能额外降低 {0}% 投射物攻击总速度"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 투사체 공격 속도 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 투사체 공격 속도 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_projectile_attack_speed_+%_final"
 		}
 	},
-	[484]={
-		stats={
-			[1]="support_pulverise_area_of_effect_+%_final"
-		},
+	[492]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13668,28 +16489,28 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助技能的总范围效果额外扩大 {0}%"
+					text="被辅助技能的总效果区域额外扩大 {0}%"
 				},
 				[2]={
 					[1]={
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的总范围效果额外缩小 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的总效果区域额外缩小 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_pulverise_area_of_effect_+%_final"
 		}
 	},
-	[485]={
-		stats={
-			[1]="support_pulverise_attack_speed_+%_final"
-		},
+	[493]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13706,21 +16527,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的总攻击速度额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的总攻击速度额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_pulverise_attack_speed_+%_final"
 		}
 	},
-	[486]={
-		stats={
-			[1]="support_pulverise_melee_area_damage_+%_final"
-		},
+	[494]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13737,21 +16558,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的近战范围总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的近战范围总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_pulverise_melee_area_damage_+%_final"
 		}
 	},
-	[487]={
-		stats={
-			[1]="support_greater_volley_projectile_damage_+%_final"
-		},
+	[495]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13768,21 +16589,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的投射物总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的投射物总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_greater_volley_projectile_damage_+%_final"
 		}
 	},
-	[488]={
-		stats={
-			[1]="support_rage_gain_rage_on_melee_hit_cooldown_ms"
-		},
+	[496]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13794,21 +16615,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextRage"
 					},
-					text="被辅助的技能近战击中获得 1 点怒火。每 {0} 秒只会发生一次",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助的技能近战击中获得 1 点怒火。每 {0} 秒只会发生一次"
 				}
 			}
+		},
+		stats={
+			[1]="support_rage_gain_rage_on_melee_hit_cooldown_ms"
 		}
 	},
-	[489]={
-		stats={
-			[1]="support_rapid_activation_brand_activation_rate_+%_final"
-		},
+	[497]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13825,21 +16646,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的总激活频率额外减慢 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的总激活频率额外减慢 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_rapid_activation_brand_activation_rate_+%_final"
 		}
 	},
-	[490]={
-		stats={
-			[1]="support_reduce_enemy_block_and_spell_block_%"
-		},
+	[498]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13852,12 +16673,12 @@ return {
 					text="敌人格挡来自被辅助技能的攻击伤害或法术伤害的几率 -{0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_reduce_enemy_block_and_spell_block_%"
 		}
 	},
-	[491]={
-		stats={
-			[1]="support_reduce_enemy_dodge_and_spell_dodge_%"
-		},
+	[499]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13870,12 +16691,12 @@ return {
 					text="敌人躲避来自被辅助技能的攻击击中或法术击中的几率 -{0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_reduce_enemy_dodge_and_spell_dodge_%"
 		}
 	},
-	[492]={
-		stats={
-			[1]="critical_strike_chance_+%_per_righteous_charge"
-		},
+	[500]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13892,21 +16713,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="每有 1 个激励球，被辅助技能的攻击和法术暴击率降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="每有 1 个激励球，被辅助技能的攻击和法术暴击率降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="영감 충전 하나당 보조 대상 스킬의 치명타 확률 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="영감 충전 하나당 보조 대상 스킬의 치명타 확률 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="critical_strike_chance_+%_per_righteous_charge"
 		}
 	},
-	[493]={
-		stats={
-			[1]="elemental_damage_+%_final_per_righteous_charge"
-		},
+	[501]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13923,21 +16766,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="每有 1 个激励球，被辅助技能造成的元素总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="每有 1 个激励球，被辅助技能造成的元素总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="영감 충전 하나당 보조 대상 스킬로 주는 원소 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="영감 충전 하나당 보조 대상 스킬로 주는 원소 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="elemental_damage_+%_final_per_righteous_charge"
 		}
 	},
-	[494]={
-		stats={
-			[1]="lose_all_righteous_charges_on_mana_use_threshold"
-		},
+	[502]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13948,14 +16813,23 @@ return {
 						}
 					},
 					text="被辅助技能消耗总计 {0} 魔力后，失去所有启迪球"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 총 {0}의 마나 소모 시 모든 영감 충전 상실"
 				}
 			}
+		},
+		stats={
+			[1]="lose_all_righteous_charges_on_mana_use_threshold"
 		}
 	},
-	[495]={
-		stats={
-			[1]="support_remote_mine_2_base_mine_detonation_time_ms"
-		},
+	[503]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13963,21 +16837,21 @@ return {
 						k="milliseconds_to_seconds_2dp",
 						v=1
 					},
-					text="被辅助技能的地雷基础引爆时间为 {0} 秒",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能的地雷基础引爆时间为 {0} 秒"
 				}
 			}
+		},
+		stats={
+			[1]="support_remote_mine_2_base_mine_detonation_time_ms"
 		}
 	},
-	[496]={
-		stats={
-			[1]="support_remote_mine_2_damage_+%_final"
-		},
+	[504]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -13994,21 +16868,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的地雷总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的地雷总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_remote_mine_2_damage_+%_final"
 		}
 	},
-	[497]={
-		stats={
-			[1]="support_remote_mine_damage_+%_final_per_mine_detonation_cascade"
-		},
+	[505]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -14025,21 +16899,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="传爆序列中，每个之前的地雷都使被辅助技能造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="传爆序列中，每个之前的地雷都使被辅助技能造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_remote_mine_damage_+%_final_per_mine_detonation_cascade"
 		}
 	},
-	[498]={
-		stats={
-			[1]="support_remote_mine_hit_damage_+%_final"
-		},
+	[506]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -14056,21 +16930,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助的技能石击中时额外降低 {0}% 地雷总伤害",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助的技能石击中时额外降低 {0}% 地雷总伤害"
 				}
 			}
+		},
+		stats={
+			[1]="support_remote_mine_hit_damage_+%_final"
 		}
 	},
-	[499]={
-		stats={
-			[1]="support_scion_onslaught_for_3_seconds_on_hitting_unique_enemy_%_chance"
-		},
+	[507]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -14078,22 +16952,82 @@ return {
 						k="reminderstring",
 						v="ReminderTextOnslaught"
 					},
-					text="击中稀有或传奇敌人时，被辅助技能有 {0}% 几率获得【猛攻】效果，持续 3 秒",
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="猛攻持续时间延长 {0}%"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					[2]={
+						k="reminderstring",
+						v="ReminderTextOnslaught"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="猛攻持续时间缩短 {0}%"
+				}
+			}
+		},
+		stats={
+			[1]="support_scion_onslaught_duration_+%"
+		}
+	},
+	[508]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextOnslaught"
+					},
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
+						},
+						[2]={
+							[1]="#",
+							[2]="#"
 						}
-					}
+					},
+					text="你击中传奇敌人时，被辅助技能有 {0}% 的几率获得 3 秒猛攻"
+				},
+				[2]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextOnslaught"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						},
+						[2]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="플레이어가 고유 적 명중 시 보조 대상 스킬이 {0}%의 확률로 3초 동안 지속되는 맹공 획득"
 				}
 			}
+		},
+		stats={
+			[1]="support_scion_onslaught_for_3_seconds_on_hitting_unique_enemy_%_chance",
+			[2]="support_scion_onslaught_on_unique_hit_duration_ms"
 		}
 	},
-	[500]={
-		stats={
-			[1]="support_scion_onslaught_on_killing_blow_%_chance",
-			[2]="support_scion_onslaught_on_killing_blow_duration_ms"
-		},
+	[509]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -14105,25 +17039,31 @@ return {
 						k="reminderstring",
 						v="ReminderTextOnslaught"
 					},
-					text="被辅助技能击败时有 {0}% 几率获得持续 {1} 秒的猛攻状态",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						},
 						[2]={
+							[1]="!",
+							[2]=0
+						},
+						[3]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能造成致命一击时，\n有 {0}% 的几率获得 {1} 秒猛攻"
 				}
 			}
+		},
+		stats={
+			[1]="support_scion_onslaught_on_killing_blow_%_chance",
+			[2]="support_scion_onslaught_on_killing_blow_duration_ms",
+			[3]="virtual_support_scion_onslaught_on_killing_blow_duration_ms"
 		}
 	},
-	[501]={
-		stats={
-			[1]="support_slashing_buff_base_duration_ms"
-		},
+	[510]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -14131,34 +17071,34 @@ return {
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="被辅助的技能击中获得【战斗冲击】\n【战斗冲击】持续 {0} 秒，或直到你使用旅行技能",
 					limit={
 						[1]={
 							[1]=1000,
 							[2]=1000
 						}
-					}
+					},
+					text="被辅助的技能击中获得【战斗冲击】\n【战斗冲击】持续 {0} 秒，或直到你使用旅行技能"
 				},
 				[2]={
 					[1]={
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="被辅助的技能击中获得【战斗冲击】\n【战斗冲击】持续 {0} 秒，或直到你使用旅行技能",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助的技能击中获得【战斗冲击】\n【战斗冲击】持续 {0} 秒，或直到你使用旅行技能"
 				}
 			}
+		},
+		stats={
+			[1]="support_slashing_buff_base_duration_ms"
 		}
 	},
-	[502]={
-		stats={
-			[1]="support_slashing_buff_attack_cast_speed_+%_final_to_grant"
-		},
+	[511]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -14175,21 +17115,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="如果旅行技能没有受到【贴身战斗】辅助，【战斗冲击】则使该技能的总攻击和施法速度额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="如果旅行技能没有受到【贴身战斗】辅助，【战斗冲击】则使该技能的总攻击和施法速度额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_slashing_buff_attack_cast_speed_+%_final_to_grant"
 		}
 	},
-	[503]={
-		stats={
-			[1]="support_slashing_damage_+%_final_from_distance"
-		},
+	[512]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -14202,12 +17142,12 @@ return {
 					text="被辅助技能基于距离对敌人的总近战伤害最多额外提高 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_slashing_damage_+%_final_from_distance"
 		}
 	},
-	[504]={
-		stats={
-			[1]="support_slower_projectiles_damage_+%_final"
-		},
+	[513]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -14224,22 +17164,43 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助的投射物技能额外降低 {0}% 投射物总伤害",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助的投射物技能额外降低 {0}% 投射物总伤害"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 투사체 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 투사체 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_slower_projectiles_damage_+%_final"
 		}
 	},
-	[505]={
-		stats={
-			[1]="support_spell_boost_area_damage_+%_final_per_charge",
-			[2]="support_spell_boost_area_of_effect_+%_final_per_charge"
-		},
+	[514]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -14260,7 +17221,6 @@ return {
 						k="negate",
 						v=1
 					},
-					text="施放被辅助法术可以获得凝聚，最大 3 层\n被辅助法术击中的总区域伤害额外降低 {0}%\n每层凝聚使被辅助法术的总效果区域额外扩大 {1}%",
 					limit={
 						[1]={
 							[1]="#",
@@ -14270,14 +17230,14 @@ return {
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="施放被辅助法术可以获得凝聚，最大 3 层\n被辅助法术击中的总区域伤害额外降低 {0}%\n每层凝聚使被辅助法术的总效果区域额外扩大 {1}%"
 				},
 				[3]={
 					[1]={
 						k="negate",
 						v=2
 					},
-					text="施放被辅助法术可以获得凝聚，最大 3 层\n每层凝聚使被辅助法术的总区域伤害额外提高 {0}%\n每层凝聚使被辅助法术的总效果区域额外缩小 {1}%",
 					limit={
 						[1]={
 							[1]=1,
@@ -14287,7 +17247,8 @@ return {
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="施放被辅助法术可以获得凝聚，最大 3 层\n每层凝聚使被辅助法术的总区域伤害额外提高 {0}%\n每层凝聚使被辅助法术的总效果区域额外缩小 {1}%"
 				},
 				[4]={
 					[1]={
@@ -14298,7 +17259,6 @@ return {
 						k="negate",
 						v=2
 					},
-					text="施放被辅助法术可以获得凝聚，最大 3 层\n每层凝聚使被辅助法术的总区域伤害额外降低 {0}%\n每层凝聚使被辅助法术的总效果区域额外缩小 {1}%",
 					limit={
 						[1]={
 							[1]="#",
@@ -14308,15 +17268,17 @@ return {
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="施放被辅助法术可以获得凝聚，最大 3 层\n每层凝聚使被辅助法术的总区域伤害额外降低 {0}%\n每层凝聚使被辅助法术的总效果区域额外缩小 {1}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_spell_boost_area_damage_+%_final_per_charge",
+			[2]="support_spell_boost_area_of_effect_+%_final_per_charge"
 		}
 	},
-	[506]={
-		stats={
-			[1]="support_spell_cascade_area_delay_+%"
-		},
+	[515]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -14333,21 +17295,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能在受影响区域之间的延迟降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能在受影响区域之间的延迟降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_spell_cascade_area_delay_+%"
 		}
 	},
-	[507]={
-		stats={
-			[1]="support_spell_cascade_area_of_effect_+%_final"
-		},
+	[516]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -14357,28 +17319,50 @@ return {
 							[2]="#"
 						}
 					},
-					text="被辅助技能的总范围效果额外扩大 {0}%"
+					text="被辅助技能的总效果区域额外扩大 {0}%"
 				},
 				[2]={
 					[1]={
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的总范围效果额外缩小 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的总效果区域额外缩小 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 효과 범위 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 효과 범위 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_spell_cascade_area_of_effect_+%_final"
 		}
 	},
-	[508]={
-		stats={
-			[1]="support_spell_cascade_damage_+%_final"
-		},
+	[517]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -14395,22 +17379,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_spell_cascade_damage_+%_final"
 		}
 	},
-	[509]={
-		stats={
-			[1]="support_spell_cascade_number_of_cascades_per_side",
-			[2]="support_spell_cascade_sideways"
-		},
+	[518]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -14440,12 +17423,13 @@ return {
 					text="被辅助的范围技能同样影响目标地点的前后左右区域"
 				}
 			}
+		},
+		stats={
+			[1]="support_spell_cascade_number_of_cascades_per_side",
+			[2]="support_spell_cascade_sideways"
 		}
 	},
-	[510]={
-		stats={
-			[1]="support_spell_echo_final_repeat_damage_+%_final"
-		},
+	[519]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -14462,21 +17446,21 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能最后一次重复的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能最后一次重复的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_spell_echo_final_repeat_damage_+%_final"
 		}
 	},
-	[511]={
-		stats={
-			[1]="support_spiritual_cry_damage_+%_final"
-		},
+	[520]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -14493,21 +17477,82 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能的总伤害额外降低 {0}%"
 				}
 			}
+		},
+		stats={
+			[1]="support_spiritual_cry_damage_+%_final"
 		}
 	},
-	[512]={
+	[521]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					[1]={
+						k="milliseconds_to_seconds",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]=1000,
+							[2]=1000
+						}
+					},
+					text="持续吟唱结束后，【灌注】持续 {0} 秒"
+				},
+				[2]={
+					[1]={
+						k="milliseconds_to_seconds",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="持续吟唱结束后，【灌注】持续 {0} 秒"
+				},
+				[3]={
+					[1]={
+						k="milliseconds_to_seconds",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]=1000,
+							[2]=1000
+						}
+					},
+					text="집중 유지를 끝낸 후 {0}초간 주입 지속"
+				},
+				[4]={
+					[1]={
+						k="milliseconds_to_seconds",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="집중 유지를 끝낸 후 {0}초간 주입 지속"
+				}
+			}
+		},
 		stats={
 			[1]="support_storm_barrier_damage_buff_base_duration_ms"
-		},
+		}
+	},
+	[522]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -14515,1269 +17560,60 @@ return {
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="持续吟唱结束后，【灌注】持续 {0} 秒",
 					limit={
 						[1]={
 							[1]=1000,
 							[2]=1000
 						}
-					}
+					},
+					text="持续吟唱一个被辅助技能 {0} 秒后获得【灌注】"
 				},
 				[2]={
 					[1]={
 						k="milliseconds_to_seconds",
 						v=1
 					},
-					text="持续吟唱结束后，【灌注】持续 {0} 秒",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="持续吟唱一个被辅助技能 {0} 秒后获得【灌注】"
+				},
+				[3]={
+					[1]={
+						k="milliseconds_to_seconds",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]=1000,
+							[2]=1000
+						}
+					},
+					text="{0}초 동안 보조 대상 스킬을 집중 유지한 후 주입 획득"
+				},
+				[4]={
+					[1]={
+						k="milliseconds_to_seconds",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="{0}초 동안 보조 대상 스킬을 집중 유지한 후 주입 획득"
 				}
 			}
-		}
-	},
-	["local_gem_int_requirement_+%"]=335,
-	["cast_when_damage_taken_trigger_threshold_+%"]=234,
-	["support_innervate_chance_to_gain_buff_on_shock_vs_unique_%"]=456,
-	["support_scion_onslaught_on_killing_blow_%_chance"]=500,
-	["support_gem_elemental_damage_+%_final"]=89,
-	["aura_cannot_affect_self"]=127,
-	["critical_strike_multiplier_+_while_affected_by_elusive"]=140,
-	["summon_cold_resistance_+"]=106,
-	["chance_for_extra_damage_roll_%"]=237,
-	["melee_damage_+%"]=346,
-	["support_phys_proj_attack_damage_bleeing_and_poison_damage_+%_final_from_projectile_hits"]=479,
-	["mine_detonation_speed_+%"]=352,
-	["projectile_damage_+%_if_pierced_enemy"]=404,
-	["cast_on_stunned_%"]=115,
-	["support_brutality_physical_damage_+%_final"]=87,
-	["support_minion_defensive_stance_minion_damage_+%_final_against_enemies_near_you"]=462,
-	["base_cast_speed_+%"]=206,
-	[513]={
+		},
 		stats={
 			[1]="support_storm_barrier_damage_buff_time_threshold_ms"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					[1]={
-						k="milliseconds_to_seconds",
-						v=1
-					},
-					text="持续吟唱一个被辅助技能 {0} 秒后获得【灌注】",
-					limit={
-						[1]={
-							[1]=1000,
-							[2]=1000
-						}
-					}
-				},
-				[2]={
-					[1]={
-						k="milliseconds_to_seconds",
-						v=1
-					},
-					text="持续吟唱一个被辅助技能 {0} 秒后获得【灌注】",
-					limit={
-						[1]={
-							[1]="#",
-							[2]="#"
-						}
-					}
-				}
-			}
-		}
-	},
-	["skill_physical_damage_%_to_convert_to_cold"]=423,
-	[521]={
-		stats={
-			[1]="supported_curse_skill_gem_level_+"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]="#",
-							[2]="#"
-						}
-					},
-					text="被辅助的诅咒技能石等级 {0:+d}"
-				}
-			}
-		}
-	},
-	["damage_+%_while_life_leeching"]=276,
-	[529]={
-		stats={
-			[1]="trap_spread_+%"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					},
-					text="被辅助技能的陷阱扩散扩大 {0}%"
-				},
-				[2]={
-					[1]={
-						k="negate",
-						v=1
-					},
-					text="被辅助技能的陷阱扩散缩小 {0}%",
-					limit={
-						[1]={
-							[1]="#",
-							[2]=-1
-						}
-					}
-				}
-			}
-		}
-	},
-	["support_ignite_prolif_ignite_damage_+%_final"]=90,
-	[537]={
-		stats={
-			[1]="triggered_skill_damage_+%"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					},
-					text="被辅助的触发类法术造成的总伤害额外提高 {0}%"
-				},
-				[2]={
-					[1]={
-						k="negate",
-						v=1
-					},
-					text="被辅助的触发类法术造成的总伤害额外降低 {0}%",
-					limit={
-						[1]={
-							[1]="#",
-							[2]=-1
-						}
-					}
-				}
-			}
-		}
-	},
-	["melee_splash"]=94,
-	["support_trap_damage_+%_final"]=101,
-	["support_pierce_projectile_damage_+%_final"]=480,
-	["critical_strike_chance_+%"]=60,
-	["maximum_intensify_stacks"]=344,
-	["elemental_status_effect_aura_radius"]=35,
-	["support_spell_totem_cast_speed_+%_final"]=124,
-	["gain_righteous_charge_on_mana_spent_%"]=306,
-	["support_chilling_areas_also_grant_cold_damage_taken_+%_equal_to_slow_amount"]=162,
-	["base_number_of_support_ghosts_allowed"]=224,
-	["shock_duration_+%"]=415,
-	["energy_shield_leech_from_any_damage_permyriad"]=291,
-	["spell_echo_plus_chance_double_damage_%_final"]=428,
-	["mine_projectile_speed_+%_per_frenzy_charge"]=354,
-	["support_barrage_trap_and_mine_throwing_time_+%_final_per_projectile_fired"]=439,
-	["bleeding_damage_+%"]=232,
-	["supported_skill_can_only_use_mace_and_staff"]=525,
-	["mine_throwing_speed_+%_per_frenzy_charge"]=163,
-	["support_spell_cascade_area_of_effect_+%_final"]=507,
-	["damage_over_time_+%"]=260,
-	["support_aura_duration_base_reserve_duration"]=437,
-	["ancestral_slam_interval_duration"]=171,
-	["base_reduce_enemy_cold_resistance_%"]=63,
-	["support_multiple_projectile_damage_+%_final"]=12,
-	["manaweave_cost_equals_%_unreserved_mana"]=341,
-	["support_arcane_surge_spell_damage_+%_final"]=142,
-	["support_pulverise_area_of_effect_+%_final"]=484,
-	["attack_speed_+%"]=198,
-	["support_minion_focus_fire_damage_+%_final_vs_focussed_target"]=466,
-	["support_remote_mine_2_base_mine_detonation_time_ms"]=495,
-	["secondary_base_fire_damage_to_deal_per_minute"]=121,
-	["global_minimum_added_cold_damage"]=310,
-	["support_burning_damage_+%_final"]=443,
-	["support_rage_gain_rage_on_melee_hit_cooldown_ms"]=488,
-	["support_slower_projectiles_damage_+%_final"]=504,
-	["support_additional_trap_%_chance_for_1_additional_trap"]=433,
-	["support_mirage_archer_attack_speed_+%_final"]=471,
-	["global_maximum_added_fire_damage_vs_burning_enemies"]=460,
-	["global_maximum_added_cold_damage"]=310,
-	["support_spell_cascade_area_delay_+%"]=506,
-	["dot_multiplier_+"]=286,
-	["trap_critical_strike_multiplier_+_per_power_charge"]=527,
-	["summon_fire_resistance_+"]=105,
-	["support_better_ailments_ailment_damage_+%_final"]=85,
-	["support_arcane_surge_spell_damage_+%_final_while_you_have_arcane_surge"]=435,
-	["support_minion_instability_minion_base_fire_area_damage_per_minute"]=169,
-	["support_concentrated_effect_skill_area_of_effect_+%_final"]=26,
-	["base_fire_damage_to_deal_per_minute"]=120,
-	["skill_physical_damage_%_to_convert_to_chaos"]=422,
-	["damage_+%_vs_frozen_enemies"]=270,
-	["chance_for_coin_shower_on_kill_%"]=236,
-	["area_damage_+%"]=188,
-	["total_number_of_projectiles_to_fire"]=34,
-	["overwhelm_%_physical_damage_reduction_while_fortified"]=391,
-	["maim_effect_+%"]=337,
-	["projectile_base_number_of_targets_to_pierce"]=47,
-	[522]={
-		stats={
-			[1]="supported_skill_can_only_use_axe_and_sword"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]="#",
-							[2]="#"
-						}
-					},
-					text="被辅助技能只能由斧类或剑类发动"
-				}
-			}
-		}
-	},
-	["attacks_impale_on_hit_%_chance"]=200,
-	["support_minion_maximum_life_+%_final"]=467,
-	[530]={
-		stats={
-			[1]="trap_throwing_speed_+%"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					},
-					text="被辅助技能提高 {0}% 陷阱投掷速度"
-				},
-				[2]={
-					[1]={
-						k="negate",
-						v=1
-					},
-					text="被辅助技能降低 {0}% 陷阱投掷速度",
-					limit={
-						[1]={
-							[1]="#",
-							[2]=-1
-						}
-					}
-				}
-			}
-		}
-	},
-	["damage_+%_per_power_charge"]=267,
-	["support_minion_use_focussed_target"]=470,
-	["fortify_duration_+%"]=297,
-	[546]={
-		stats={
-			[1]="support_remote_mine_2_chance_to_deal_double_damage_%_against_enemies_near_mines"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]="#",
-							[2]="#"
-						}
-					},
-					text="被辅助的技能使每个地雷有 {0}% 几率对附近被击中的敌人造成双倍伤害，最高 100%"
-				}
-			}
-		}
-	},
-	["chance_to_place_an_additional_mine_%"]=246,
-	["ignites_apply_fire_resistance_+"]=320,
-	["base_melee_attack_repeat_count"]=96,
-	["wither_applies_additional_wither_%"]=542,
-	["support_clustertrap_damage_+%_final"]=447,
-	["reduce_enemy_elemental_resistance_%"]=64,
-	["base_life_leech_from_chaos_damage_permyriad"]=221,
-	["minion_attack_speed_+%"]=359,
-	["support_multiple_projectiles_critical_strike_chance_+%_final"]=30,
-	["kill_enemy_on_hit_if_under_10%_life"]=36,
-	["physical_damage_+%"]=400,
-	["chance_to_summon_support_ghost_on_hitting_rare_or_unique_%"]=247,
-	["support_bloodlust_melee_physical_damage_+%_final_vs_bleeding_enemies"]=128,
-	["support_arcane_surge_mana_regeneration_rate_per_minute_%"]=142,
-	["maximum_added_cold_damage_per_frenzy_charge"]=355,
-	["support_scion_onslaught_on_killing_blow_duration_ms"]=500,
-	["cold_ailment_effect_+%"]=251,
-	["minion_damage_+%"]=366,
-	["base_mine_duration"]=49,
-	["summon_mirage_archer_on_hit"]=431,
-	["base_stun_threshold_reduction_+%"]=230,
-	["base_chaos_damage_to_deal_per_minute"]=119,
-	["knockback_distance_+%"]=330,
-	["support_withered_base_duration_ms"]=147,
-	["deal_chaos_damage_per_second_for_10_seconds_on_hit"]=281,
-	["base_ailment_damage_+%"]=203,
-	["trap_trigger_radius_+%_per_power_charge"]=533,
-	["minion_block_%"]=360,
-	["support_phys_chaos_projectile_chaos_damage_over_time_+%_final"]=476,
-	["support_efficacy_damage_over_time_+%_final"]=83,
-	["recover_%_life_when_stunning_an_enemy_permyriad"]=409,
-	["trap_duration_+%"]=56,
-	["support_barrage_attack_time_+%_per_projectile_fired"]=438,
-	["added_damage_+%_final"]=180,
-	["damage_+%_while_an_ailment_on_you"]=274,
-	["ignite_duration_+%"]=319,
-	["support_energy_shield_leech_damage_+%_while_leeching_energy_shield_final"]=449,
-	["projectile_maximum_range_override"]=405,
-	["spellslinger_trigger_on_wand_attack_%"]=116,
-	["support_ancestral_slam_big_hit_hit_damage_+%_final"]=172,
-	["physical_damage_%_to_add_as_fire"]=398,
-	["from_quality_brand_activation_rate_+%_final_if_75%_attached_duration_expired"]=301,
-	["base_life_leech_from_attack_damage_permyriad"]=220,
-	["trap_throwing_speed_+%"]=530,
-	["chance_to_freeze_shock_ignite_%"]=242,
-	["non_damaging_ailment_effect_+%"]=383,
-	["ancestral_slam_stun_threshold_reduction_+%"]=186,
-	["support_remote_mine_hit_damage_+%_final"]=498,
-	["support_multithrow_damage_+%_final"]=102,
-	["maximum_life_leech_amount_per_leech_+%"]=345,
-	["support_ignite_proliferation_radius"]=33,
-	["multistrike_damage_+%_final_on_third_repeat"]=380,
-	["keystone_point_blank"]=37,
-	["support_hypothermia_cold_damage_over_time_+%_final"]=454,
-	["skill_effect_and_damaging_ailment_duration_+%"]=419,
-	["minion_cast_speed_+%"]=362,
-	["support_brand_area_of_effect_+%_final"]=441,
-	["minion_projectile_speed_+%"]=372,
-	["channelled_skill_damage_+%"]=248,
-	["gain_1_rage_on_use_%_chance"]=303,
-	["support_rapid_activation_brand_skill_only_primary_duration_+%_final"]=132,
-	["base_chance_to_ignite_%"]=209,
-	["projectiles_fork"]=68,
-	["manaweave_added_lightning_damage_%_cost_if_payable"]=341,
-	[547]={
-		stats={
-			[1]="minion_larger_aggro_radius"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					[1]={
-						k="reminderstring",
-						v="ReminderTextAggressiveMinions"
-					},
-					text="被辅助技能创造的召唤生物转为【侵略】",
-					limit={
-						[1]={
-							[1]="#",
-							[2]="#"
-						}
-					}
-				}
-			}
-		}
-	},
-	["keystone_strong_bowman"]=38,
-	["support_spell_rapid_fire_repeat_use_damage_+%_final"]=545,
-	["chance_to_gain_frenzy_charge_on_killing_frozen_enemy_%"]=243,
-	["base_chance_to_destroy_corpse_on_kill_%_vs_ignited"]=207,
-	["support_cast_on_crit_spell_damage_+%_final"]=18,
-	["projectiles_nova"]=34,
-	["base_number_of_traps_allowed"]=54,
-	["intensity_loss_frequency_while_moving_+%"]=327,
-	["support_aura_duration_base_buff_duration"]=436,
-	["minion_additional_physical_damage_reduction_%"]=357,
-	["refresh_bleeding_duration_on_hit_%_chance"]=413,
-	["elemental_damage_+%"]=287,
-	["global_maximum_added_lightning_damage"]=312,
-	["base_projectile_speed_+%"]=228,
-	["support_fortify_ailment_damage_+%_final_from_melee_hits"]=450,
-	["display_base_intensity_loss"]=284,
-	["projectile_damage_+%"]=403,
-	["avoid_interruption_while_using_this_skill_%"]=201,
-	["support_innervate_minimum_added_lightning_damage"]=150,
-	["minion_movement_speed_+%"]=371,
-	["support_ruthless_big_hit_damage_+%_final"]=153,
-	["projectile_number_to_split"]=67,
-	["chill_effect_+%"]=157,
-	["regenerate_%_life_over_1_second_on_cast"]=414,
-	["minion_larger_aggro_radius"]=547,
-	["support_ancestral_slam_big_hit_ailment_damage_+%_final"]=173,
-	["global_minimum_added_physical_damage"]=313,
-	["is_totem"]=45,
-	["projectile_spiral_nova_angle"]=34,
-	["damage_+%_if_lost_endurance_charge_in_past_8_seconds"]=263,
-	["support_storm_barrier_skill_type_damage_+%_final"]=516,
-	["base_cold_damage_to_deal_per_minute"]=122,
-	["is_empowered"]=328,
-	["additional_critical_strike_chance_permyriad_while_dead"]=183,
-	["skill_cold_damage_%_to_convert_to_fire"]=418,
-	["chance_to_inflict_additional_impale_%"]=245,
-	["support_chain_hit_damage_+%_final"]=71,
-	["support_weapon_elemental_damage_+%_final"]=9,
-	["minion_recover_%_maximum_life_on_hit"]=373,
-	["mine_critical_strike_chance_+%_per_power_charge"]=164,
-	["additional_base_critical_strike_chance"]=181,
-	["projectiles_damage_+%_to_nearby_targets"]=407,
-	["base_skill_area_of_effect_+%"]=25,
-	["support_chance_to_bleed_bleeding_damage_+%_final"]=445,
-	["global_reduce_enemy_block_%"]=314,
-	["support_controlled_destruction_spell_damage_+%_final"]=80,
-	["damage_vs_enemies_on_low_life_+%"]=279,
-	["minion_grant_puppet_master_buff_to_parent_on_hit_%"]=368,
-	["support_phys_chaos_projectile_spell_physical_projectile_damage_+%_final"]=478,
-	[516]={
-		stats={
-			[1]="support_storm_barrier_skill_type_damage_+%_final"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					[1]={
-						k="reminderstring",
-						v="ReminderTextDamageTypes"
-					},
-					text="根据被辅助宝石对应的伤害种类，【灌注】赋予 {0}% 的总伤害提高",
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					}
-				},
-				[2]={
-					[1]={
-						k="negate",
-						v=1
-					},
-					[2]={
-						k="reminderstring",
-						v="ReminderTextDamageTypes"
-					},
-					text="根据被辅助宝石对应的伤害种类，【灌注】赋予 {0}% 的总伤害降低",
-					limit={
-						[1]={
-							[1]="#",
-							[2]=-1
-						}
-					}
-				}
-			}
-		}
-	},
-	["support_chaos_attacks_damage_+%_final"]=446,
-	["support_minion_focus_fire_critical_strike_multiplier_+_vs_focused_target"]=465,
-	[524]={
-		stats={
-			[1]="supported_skill_can_only_use_dagger_and_claw"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					[1]={
-						k="reminderstring",
-						v="ReminderTextDaggerRuneDagger"
-					},
-					text="被辅助技能只能由爪类或匕首发动",
-					limit={
-						[1]={
-							[1]="#",
-							[2]="#"
-						}
-					}
-				}
-			}
-		}
-	},
-	["cast_linked_spells_on_attack_crit_%"]=110,
-	["supported_skill_can_only_use_axe_and_sword"]=522,
-	[532]={
-		stats={
-			[1]="trap_trigger_radius_+%"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					},
-					text="被辅助技能扩大 {0}% 陷阱引爆范围"
-				},
-				[2]={
-					[1]={
-						k="negate",
-						v=1
-					},
-					text="被辅助技能缩小 {0}% 陷阱引爆范围",
-					limit={
-						[1]={
-							[1]="#",
-							[2]=-1
-						}
-					}
-				}
-			}
-		}
-	},
-	["support_energy_shield_leech_damage_+%_on_full_energy_shield_final"]=448,
-	["support_rapid_activation_brand_skill_only_secondary_duration_+%_final"]=133,
-	["damage_+%_per_200_mana_spent_recently"]=264,
-	["gain_frenzy_charge_on_kill_vs_enemies_with_5+_poisons_%"]=305,
-	["base_chance_to_shock_%"]=210,
-	[548]={
-		stats={
-			[1]="minions_are_defensive"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					[1]={
-						k="reminderstring",
-						v="ReminderTextDefensiveMinions"
-					},
-					text="被辅助技能创造的召唤生物转为【防御】",
-					limit={
-						[1]={
-							[1]="#",
-							[2]="#"
-						}
-					}
-				}
-			}
-		}
-	},
-	["support_blunt_chance_to_trigger_shockwave_on_hit_%"]=440,
-	["infernal_legion_minions_have_burning_effect_radius_+"]=170,
-	["support_chills_also_grant_cold_damage_taken_+%_equal_to_slow_amount"]=160,
-	["hit_and_poison_damage_+%_per_poison_on_enemy"]=317,
-	["number_of_additional_traps_allowed"]=388,
-	["support_spell_cascade_number_of_cascades_per_side"]=509,
-	["support_reduced_duration_damage_+%_final"]=130,
-	["chaining_range_+%"]=235,
-	["trigger_vicious_hex_explosion_when_curse_ends"]=112,
-	["lightning_ailment_effect_+%"]=332,
-	["fire_dot_multiplier_+"]=296,
-	["support_minion_offensive_stance_minion_damage_+%_final_while_you_have_puppet_master"]=468,
-	["%_chance_to_gain_frenzy_charge_on_mine_detonated_targeting_an_enemy"]=393,
-	["support_arcane_surge_base_duration_ms"]=148,
-	["base_global_chance_to_knockback_%"]=216,
-	["curse_apply_as_aura"]=3,
-	["projectiles_return_if_no_hit_object"]=70,
-	["support_maimed_enemies_physical_damage_taken_+%"]=457,
-	["damage_+%_on_full_energy_shield"]=271,
-	["support_gem_mine_damage_+%_final"]=15,
-	["damage_+%_when_on_low_life"]=273,
-	["support_spiritual_cry_damage_+%_final"]=511,
-	["lightning_damage_+%"]=333,
-	["chance_to_ignore_hexproof_%"]=244,
-	["support_unbound_ailments_ailment_damage_+%_final"]=520,
-	["support_trap_and_mine_damage_+%_final"]=518,
-	["support_power_charge_on_crit_damage_+%_final_per_power_charge"]=481,
-	["infusion_grants_life_regeneration_rate_per_minute_%"]=325,
-	["cannot_cause_bleeding"]=231,
-	["support_debilitate_poison_damage_+%_final"]=76,
-	["support_minefield_mine_damage_+%_final"]=458,
-	["skill_can_only_use_bow"]=523,
-	["base_killed_monster_dropped_item_quantity_+%"]=217,
-	["support_multiple_attacks_melee_attack_speed_+%_final"]=99,
-	["support_chills_also_grant_cold_damage_taken_per_minute_+%"]=159,
-	["support_area_concentrate_area_damage_+%_final"]=10,
-	["base_number_of_projectiles_in_spiral_nova"]=34,
-	["number_of_chains"]=66,
-	["projectiles_pierce_all_targets_in_x_range"]=408,
-	["skill_effect_duration_+%_while_dead"]=421,
-	["support_lesser_multiple_projectile_damage_+%_final"]=14,
-	["support_slashing_buff_attack_cast_speed_+%_final_to_grant"]=502,
-	["support_slower_projectiles_projectile_speed_+%_final"]=129,
-	parent="stat_descriptions",
-	["critical_ailment_dot_multiplier_+"]=255,
-	["enemy_phys_reduction_%_penalty_vs_hit"]=290,
-	["support_cast_on_crit_quality_attack_damage_+%_final"]=444,
-	["support_spell_cascade_sideways"]=509,
-	["support_ruthless_big_hit_max_count"]=152,
-	["enemies_you_shock_take_%_increased_physical_damage"]=289,
-	["multistrike_damage_+%_final_on_second_repeat"]=379,
-	["skill_physical_damage_%_to_convert_to_lightning"]=425,
-	["trap_spread_+%"]=529,
-	["sigil_repeat_frequency_+%"]=416,
-	[517]={
-		stats={
-			[1]="support_storm_barrier_skill_type_damage_taken_when_hit_+%_final"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					[1]={
-						k="negate",
-						v=1
-					},
-					[2]={
-						k="reminderstring",
-						v="ReminderTextDamageTypes"
-					},
-					text="当持续吟唱一个被辅助技能时，被辅助宝石对应的伤害种类所造成的击中总伤害降低 {0}%",
-					limit={
-						[1]={
-							[1]="#",
-							[2]="#"
-						}
-					}
-				}
-			}
-		}
-	},
-	["strong_casting"]=39,
-	["cannot_cast_curses"]=109,
-	["minion_chance_to_taunt_on_hit_%"]=364,
-	["%_chance_to_gain_power_charge_on_trap_triggered_by_an_enemy"]=396,
-	[533]={
-		stats={
-			[1]="trap_trigger_radius_+%_per_power_charge"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					},
-					text="每个暴击球都使被辅助技能的陷阱触发范围扩大 {}%"
-				},
-				[2]={
-					[1]={
-						k="negate",
-						v=1
-					},
-					text="每个暴击球都使被辅助技能的陷阱触发范围缩小  {}%",
-					limit={
-						[1]={
-							[1]="#",
-							[2]=-1
-						}
-					}
-				}
-			}
-		}
-	},
-	["global_hit_causes_monster_flee_%"]=308,
-	["minion_life_leech_from_elemental_damage_permyriad"]=369,
-	["base_chance_to_freeze_%"]=208,
-	["accuracy_rating"]=175,
-	["support_poison_poison_damage_+%_final"]=77,
-	["critical_strike_chance_+%_per_righteous_charge"]=492,
-	["damage_vs_cursed_enemies_per_enemy_curse_+%"]=278,
-	["base_critical_strike_multiplier_+"]=61,
-	["spell_only_castable_on_death"]=113,
-	["support_arcane_surge_gain_buff_on_mana_use_threshold"]=141,
-	["melee_damage_vs_bleeding_enemies_+%"]=347,
-	["onslaught_time_granted_on_killing_shocked_enemy_ms"]=389,
-	["chill_duration_+%"]=158,
-	["blind_duration_+%"]=59,
-	["trap_throwing_speed_+%_per_frenzy_charge"]=531,
-	["number_of_additional_projectiles"]=386,
-	["base_curse_duration_+%"]=213,
-	["global_minimum_added_chaos_damage"]=309,
-	["base_mana_cost_-%"]=21,
-	["greater_projectile_intensity_projectile_damage_+%_final_per_intensity"]=315,
-	["attack_maximum_added_physical_damage_per_10_rage"]=194,
-	["damage_+%"]=261,
-	["attack_and_cast_speed_+%_during_onslaught"]=190,
-	["global_maximum_added_chaos_damage"]=309,
-	["summon_lightning_resistance_+"]=107,
-	["base_cooldown_modifier_ms"]=211,
-	["%_chance_to_gain_frenzy_charge_on_trap_triggered_by_an_enemy"]=394,
-	["melee_physical_damage_+%"]=348,
-	["supported_skill_can_only_use_dagger_and_claw"]=524,
-	["curse_effect_+%"]=123,
-	["hit_damage_+%"]=318,
-	["support_ruthless_big_hit_stun_base_duration_override_ms"]=155,
-	["base_stun_duration_+%"]=229,
-	["support_reduced_duration_skill_effect_duration_+%_final"]=131,
-	["cast_on_damage_taken_%"]=117,
-	["support_innervate_buff_base_duration_ms"]=151,
-	["spell_critical_strike_chance_+%"]=426,
-	["mana_gain_per_target"]=339,
-	["projectiles_return"]=70,
-	["support_better_ailments_hit_damage_+%_final"]=86,
-	["faster_poison_%"]=294,
-	["spell_uncastable_if_triggerable"]=113,
-	["non_curse_aura_effect_+%"]=382,
-	["support_greater_projectile_intensity_projectile_damage_+%_final"]=453,
-	[518]={
-		stats={
-			[1]="support_trap_and_mine_damage_+%_final"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					},
-					text="被辅助技能额外提高 {0}% 陷阱和地雷总伤害"
-				},
-				[2]={
-					[1]={
-						k="negate",
-						v=1
-					},
-					text="被辅助技能额外降低 {0}% 陷阱和地雷总伤害",
-					limit={
-						[1]={
-							[1]="#",
-							[2]=-1
-						}
-					}
-				}
-			}
-		}
-	},
-	["global_bleed_on_hit"]=231,
-	["support_spell_echo_final_repeat_damage_+%_final"]=510,
-	["number_of_additional_mines_to_place"]=385,
-	[526]={
-		stats={
-			[1]="skill_can_only_use_non_melee_weapons"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]="#",
-							[2]="#"
-						}
-					},
-					text="被辅助技能只能由弓类和法杖发动"
-				}
-			}
-		}
-	},
-	["accuracy_rating_+%"]=176,
-	["base_cooldown_speed_+%"]=212,
-	["number_of_additional_traps_to_throw"]=41,
-	[542]={
-		stats={
-			[1]="wither_applies_additional_wither_%"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					},
-					text="被辅助技能有 {0}% 几率施加一层额外枯萎"
-				},
-				[2]={
-					limit={
-						[1]={
-							[1]=100,
-							[2]="#"
-						}
-					},
-					text="被辅助技能会施加一层额外枯萎"
-				}
-			}
-		}
-	},
-	["minion_chance_to_deal_double_damage_%"]=363,
-	["mine_duration_+%"]=57,
-	["minion_ailment_damage_+%"]=358,
-	["reduce_enemy_dodge_%"]=412,
-	["number_of_additional_remote_mines_allowed"]=387,
-	["attack_skill_mana_leech_from_any_damage_permyriad"]=197,
-	["projectiles_rain"]=32,
-	["trap_trigger_radius_+%"]=532,
-	["support_split_projectile_damage_+%_final"]=73,
-	["aura_effect_+%"]=29,
-	["global_chance_to_blind_on_hit_%"]=58,
-	["support_brand_damage_+%_final"]=442,
-	["cold_damage_%_to_add_as_fire"]=252,
-	["base_mine_detonation_time_ms"]=223,
-	["base_skill_is_instant"]=6,
-	["additional_critical_strike_chance_permyriad_while_affected_by_elusive"]=184,
-	["projectile_chance_to_not_pierce_%"]=402,
-	["skill_effect_duration_+%"]=420,
-	["mana_leech_from_any_damage_permyriad"]=340,
-	["deal_no_elemental_damage"]=282,
-	["base_physical_damage_%_to_convert_to_lightning"]=225,
-	["damage_+%_vs_enemies_on_full_life"]=268,
-	["minion_fire_damage_taken_+%"]=168,
-	["support_storm_barrier_damage_+%_final"]=514,
-	["minions_inflict_exposure_on_hit_%_chance"]=374,
-	["minion_maximum_life_+%"]=370,
-	["%_chance_to_gain_power_charge_on_mine_detonated_targeting_an_enemy"]=395,
-	["attack_damage_+%_per_1000_accuracy_rating"]=193,
-	["parallel_projectile_firing_point_x_dist_+%"]=392,
-	["damage_+%_while_es_leeching"]=275,
-	["maim_on_hit_%"]=338,
-	["chance_to_fortify_on_melee_hit_+%"]=241,
-	["minions_are_defensive"]=548,
-	["support_remote_mine_2_chance_to_deal_double_damage_%_against_enemies_near_mines"]=546,
-	["support_parallel_projectile_number_of_points_per_side"]=474,
-	[545]={
-		stats={
-			[1]="support_spell_rapid_fire_repeat_use_damage_+%_final"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					},
-					text="被辅助技能重复施放时，造成的总伤害额外提高 {0}%"
-				},
-				[2]={
-					[1]={
-						k="negate",
-						v=1
-					},
-					text="被辅助技能重复施放时，造成的总伤害额外降低 {0}%",
-					limit={
-						[1]={
-							[1]="#",
-							[2]=-1
-						}
-					}
-				}
-			}
-		}
-	},
-	["lose_all_righteous_charges_on_mana_use_threshold"]=494,
-	["support_pulverise_melee_area_damage_+%_final"]=486,
-	["support_anticipation_rapid_fire_count"]=544,
-	["unleash_support_seal_gain_frequency_+%_while_not_channelling"]=539,
-	["support_anticipation_charge_gain_interval_ms"]=544,
-	["support_additional_trap_mine_%_chance_for_2_additional_trap_mine"]=43,
-	["number_of_mines_to_place"]=40,
-	["you_and_enemy_movement_velocity_+%_while_affected_by_ailment_you_inflicted"]=543,
-	[543]={
-		stats={
-			[1]="you_and_enemy_movement_velocity_+%_while_affected_by_ailment_you_inflicted"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					},
-					text="若施加的异常状态来自被辅助技能，则你和敌人的移动速度加快 {0}%"
-				},
-				[2]={
-					[1]={
-						k="negate",
-						v=1
-					},
-					text="若施加的异常状态来自被辅助技能，你和敌人的移动速度减慢 {0}%",
-					limit={
-						[1]={
-							[1]="#",
-							[2]=-1
-						}
-					}
-				}
-			}
-		}
-	},
-	["weapon_elemental_damage_+%"]=541,
-	[541]={
-		stats={
-			[1]="weapon_elemental_damage_+%"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					},
-					text="被辅助技能提高 {0}% 武器元素伤害"
-				},
-				[2]={
-					[1]={
-						k="negate",
-						v=1
-					},
-					text="被辅助技能降低 {0}% 武器元素伤害",
-					limit={
-						[1]={
-							[1]="#",
-							[2]=-1
-						}
-					}
-				}
-			}
-		}
-	},
-	["support_storm_barrier_damage_buff_time_threshold_ms"]=513,
-	[540]={
-		stats={
-			[1]="warcry_speed_+%"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					},
-					text="被辅助技能战吼速度加快 {0}%"
-				},
-				[2]={
-					[1]={
-						k="negate",
-						v=1
-					},
-					text="被辅助技能战吼速度减慢 {0}%",
-					limit={
-						[1]={
-							[1]="#",
-							[2]=-1
-						}
-					}
-				}
-			}
-		}
-	},
-	["virtual_support_anticipation_charge_gain_interval_ms"]=544,
-	["support_elemental_proliferation_damage_+%_final"]=5,
-	[539]={
-		stats={
-			[1]="unleash_support_seal_gain_frequency_+%_while_not_channelling"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					},
-					text="你没有吟唱时，被辅助技能的封印获取频率提高 {0}%"
-				},
-				[2]={
-					[1]={
-						k="negate",
-						v=1
-					},
-					text="你没有吟唱时，被辅助技能的封印获取频率降低 {0}%",
-					limit={
-						[1]={
-							[1]="#",
-							[2]=-1
-						}
-					}
-				}
-			}
-		}
-	},
-	["unleash_support_seal_gain_frequency_+%_while_channelling"]=538,
-	[538]={
-		stats={
-			[1]="unleash_support_seal_gain_frequency_+%_while_channelling"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					},
-					text="你在吟唱时，被辅助技能的封印获取频率提高 {0}%"
-				},
-				[2]={
-					[1]={
-						k="negate",
-						v=1
-					},
-					text="你在吟唱时，被辅助技能的封印获取频率降低 {0}%",
-					limit={
-						[1]={
-							[1]="#",
-							[2]=-1
-						}
-					}
-				}
-			}
-		}
-	},
-	["triggered_skill_damage_+%"]=537,
-	["triggered_by_spiritual_cry"]=536,
-	[536]={
-		stats={
-			[1]="triggered_by_spiritual_cry"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]="#",
-							[2]="#"
-						}
-					},
-					text="被辅助技能被【将军之吼】召唤的蜃影武士使用\n被辅助技能视为被触发"
-				}
-			}
-		}
-	},
-	["support_efficacy_spell_damage_+%_final"]=81,
-	["support_chance_to_ignite_fire_damage_+%_final"]=88,
-	["triggered_by_brand_support"]=535,
-	[535]={
-		stats={
-			[1]="triggered_by_brand_support"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]="#",
-							[2]="#"
-						}
-					},
-					text="被辅助技能被【奥法烙印】所在地点触发"
-				}
-			}
-		}
-	},
-	["trigger_brand_support_hit_ailment_damage_+%_final_vs_branded_enemy"]=534,
-	["support_minefield_mine_throwing_speed_+%_final"]=459,
-	[534]={
-		stats={
-			[1]="trigger_brand_support_hit_ailment_damage_+%_final_vs_branded_enemy"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					},
-					text="被辅助技能对带有烙印的敌人造成的总伤害额外提高 {0}%"
-				},
-				[2]={
-					[1]={
-						k="negate",
-						v=1
-					},
-					text="被辅助技能对带有烙印的敌人造成的总伤害额外降低 {0}%",
-					limit={
-						[1]={
-							[1]="#",
-							[2]=-1
-						}
-					}
-				}
-			}
-		}
-	},
-	[531]={
-		stats={
-			[1]="trap_throwing_speed_+%_per_frenzy_charge"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					},
-					text="每有一个狂怒球，被辅助技能提高 {0}% 陷阱投掷速度"
-				},
-				[2]={
-					[1]={
-						k="negate",
-						v=1
-					},
-					text="每有一个狂怒球，被辅助技能降低 {0}% 陷阱投掷速度",
-					limit={
-						[1]={
-							[1]="#",
-							[2]=-1
-						}
-					}
-				}
-			}
-		}
-	},
-	["trap_damage_+%"]=528,
-	["support_melee_splash_damage_+%_final"]=93,
-	[527]={
-		stats={
-			[1]="trap_critical_strike_multiplier_+_per_power_charge"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]="#",
-							[2]="#"
-						}
-					},
-					text="使用陷阱时，每个暴击球可使被辅助技能 {0:+d}% 暴击伤害加成"
-				}
-			}
-		}
-	},
-	["skill_can_only_use_non_melee_weapons"]=526,
-	[525]={
-		stats={
-			[1]="supported_skill_can_only_use_mace_and_staff"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					[1]={
-						k="reminderstring",
-						v="ReminderTextStaffWarstaff"
-					},
-					text="被辅助技能只能由锤类、短杖、长杖发动",
-					limit={
-						[1]={
-							[1]="#",
-							[2]="#"
-						}
-					}
-				}
-			}
 		}
 	},
 	[523]={
-		stats={
-			[1]="skill_can_only_use_bow"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]="#",
-							[2]="#"
-						}
-					},
-					text="被辅助技能只能由弓类发动"
-				}
-			}
-		}
-	},
-	["supported_curse_skill_gem_level_+"]=521,
-	["damage_+%_per_endurance_charge"]=265,
-	["attack_speed_+%_with_atleast_20_rage"]=199,
-	[519]={
-		stats={
-			[1]="support_trap_hit_damage_+%_final"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					},
-					text="被辅助的技能石击中时额外提高 {0}% 陷阱总伤害"
-				},
-				[2]={
-					[1]={
-						k="negate",
-						v=1
-					},
-					text="被辅助的技能石击中时额外降低 {0}% 陷阱总伤害",
-					limit={
-						[1]={
-							[1]="#",
-							[2]=-1
-						}
-					}
-				}
-			}
-		}
-	},
-	["support_trap_hit_damage_+%_final"]=519,
-	["support_storm_barrier_skill_type_damage_taken_when_hit_+%_final"]=517,
-	["support_storm_barrier_physical_damage_taken_when_hit_+%_final"]=515,
-	["bleed_on_hit_base_duration"]=126,
-	[515]={
-		stats={
-			[1]="support_storm_barrier_physical_damage_taken_when_hit_+%_final"
-		},
-		lang={
-			["Simplified Chinese"]={
-				[1]={
-					limit={
-						[1]={
-							[1]=1,
-							[2]="#"
-						}
-					},
-					text="持续吟唱被辅助技能时，受到的击中物理总伤害额外提高 {0}%"
-				},
-				[2]={
-					[1]={
-						k="negate",
-						v=1
-					},
-					text="持续吟唱被辅助技能时，受到的击中物理总伤害额外降低 {0}%",
-					limit={
-						[1]={
-							[1]="#",
-							[2]=-1
-						}
-					}
-				}
-			}
-		}
-	},
-	["local_gem_str_requirement_+%"]=336,
-	["base_poison_duration_+%"]=227,
-	["additional_chance_to_freeze_chilled_enemies_%"]=182,
-	["support_void_manipulation_chaos_damage_+%_final"]=79,
-	[514]={
-		stats={
-			[1]="support_storm_barrier_damage_+%_final"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -15794,139 +17630,245 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能造成的总伤害额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能造成的总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 피해 {0}% 감폭"
 				}
 			}
+		},
+		stats={
+			[1]="support_storm_barrier_damage_+%_final"
 		}
 	},
-	["overpowered_effect_+%"]=390,
-	["warcry_speed_+%"]=540,
-	["support_remote_mine_damage_+%_final_per_mine_detonation_cascade"]=497,
-	["projectiles_chance_to_return_%"]=70,
-	["elusive_effect_+%"]=288,
-	["curse_skill_doom_gain_per_minute"]=259,
-	["support_spell_cascade_damage_+%_final"]=508,
-	["support_spell_boost_area_of_effect_+%_final_per_charge"]=505,
-	["add_power_charge_on_critical_strike_%"]=178,
-	["faster_burn_%"]=293,
-	["cast_on_death_damage_+%_final_while_dead"]=103,
-	["support_slashing_damage_+%_final_from_distance"]=503,
-	["support_rain_projectile_damage_+%_final"]=13,
-	["attack_maximum_added_physical_damage_with_weapons"]=196,
-	["support_scion_onslaught_for_3_seconds_on_hitting_unique_enemy_%_chance"]=499,
-	["support_echo_damage_+%_final"]=4,
-	["mirage_archer_number_of_additional_projectiles"]=375,
-	["elemental_damage_+%_final_per_righteous_charge"]=493,
-	["support_reduce_enemy_dodge_and_spell_dodge_%"]=491,
-	["support_minion_defensive_stance_minion_damage_taken_+%_final"]=463,
-	["gain_elusive_on_crit_%_chance"]=134,
-	["base_number_of_totems_allowed"]=52,
-	["manaweave_added_cold_damage_%_cost_if_payable"]=342,
-	["support_reduce_enemy_block_and_spell_block_%"]=490,
-	["support_rapid_activation_brand_activation_rate_+%_final"]=489,
-	["support_spell_boost_area_damage_+%_final_per_charge"]=505,
-	["skill_max_unleash_seals"]=544,
-	["reduce_enemy_chaos_resistance_%"]=411,
-	["global_maximum_added_physical_damage"]=313,
-	["support_projectile_attack_speed_+%_final"]=483,
-	["base_aura_area_of_effect_+%"]=28,
-	["support_projectile_attack_physical_damage_+%_final"]=482,
-	["mine_laying_speed_+%"]=353,
-	["support_fortify_melee_damage_+%_final"]=451,
-	["chance_to_summon_support_ghost_on_killing_blow_%"]=156,
-	["support_maim_chance_physical_damage_+%_final"]=91,
-	["quality_display_swiftbrand_is_gem"]=132,
-	["melee_range_+"]=349,
-	["projectiles_barrage"]=34,
-	["barrage_support_projectile_spread_+%"]=202,
-	["damage_+%_per_frenzy_charge"]=266,
-	["area_of_effect_+%_while_dead"]=27,
-	["static_strike_base_zap_frequency_ms"]=429,
-	["support_rapid_decay_damage_over_time_+%_final"]=82,
-	["rain_of_arrows_sequences_to_fire"]=34,
-	["base_reduce_enemy_lightning_resistance_%"]=65,
-	["support_minion_focus_fire_critical_strike_chance_+%_vs_focused_target"]=464,
-	["placing_traps_cooldown_recovery_+%"]=401,
-	["freeze_applies_cold_resistance_+"]=299,
-	["display_totems_no_infusion"]=285,
-	["support_spirit_strike_damage_+%_final"]=72,
-	["deathmark_minion_damage_+%_final"]=283,
-	["apply_overpowered_on_enemy_block_reduced_block_and_spell_block_%"]=187,
-	["support_barrage_damage_+%_final"]=11,
-	["support_parallel_projectiles_damage_+%_final"]=475,
-	["nightblade_elusive_grants_critical_strike_multiplier_+_to_supported_skills"]=381,
-	["minion_cooldown_recovery_+%"]=365,
-	["curse_area_of_effect_+%"]=258,
-	["support_pulverise_attack_speed_+%_final"]=485,
-	["support_added_cooldown_count_if_not_instant"]=432,
-	["support_melee_physical_damage_poison_and_bleeding_damage_+%_final_from_melee_hits"]=2,
-	["global_minimum_added_lightning_damage"]=312,
-	["global_maximum_added_fire_damage"]=311,
-	["attack_and_cast_speed_+%"]=189,
-	["total_number_of_arrows_to_fire"]=34,
-	["support_arcane_surge_cast_speed_+%"]=142,
-	["base_totem_duration"]=46,
-	["minimum_added_cold_damage_per_frenzy_charge"]=355,
-	["inc_aoe_plus_more_area_damage_+%_final"]=324,
-	["damaging_ailments_deal_damage_+%_faster"]=280,
-	["minion_burning_damage_+%"]=361,
-	["support_storm_barrier_damage_buff_base_duration_ms"]=512,
-	["damage_+%_vs_enemies_per_freeze_shock_ignite"]=269,
-	["burn_damage_+%"]=233,
-	["freeze_duration_+%"]=300,
-	["active_skill_additive_spell_damage_modifiers_apply_to_attack_damage_at_%_value"]=177,
-	["cast_linked_spells_on_melee_kill_%"]=111,
-	["extra_target_targeting_distance_+%"]=24,
-	["physical_damage_%_to_add_as_lightning"]=399,
-	["life_leech_from_any_damage_permyriad"]=331,
-	["chance_to_bleed_on_hit_%_vs_maimed"]=238,
-	["faster_bleed_%"]=292,
-	["physical_damage_%_to_add_as_chaos"]=397,
-	["cannot_inflict_status_ailments"]=138,
-	["close_combat_damage_to_close_range_+%"]=250,
-	["chaos_damage_+%"]=249,
-	["cold_damage_+%"]=253,
-	["hit_and_poison_damage_+%"]=316,
-	["support_melee_splash_damage_+%_final_for_splash"]=95,
-	["support_cast_while_channelling_triggered_skill_damage_+%_final"]=20,
-	["minimum_power_from_quality"]=356,
-	["chance_to_fork_extra_projectile_%"]=240,
-	["support_ancestral_slam_big_hit_area_+%"]=174,
-	["impale_phys_reduction_%_penalty"]=322,
-	["inspiration_charge_duration_+%"]=326,
-	["base_trap_duration"]=48,
-	["attack_minimum_added_physical_damage_per_10_rage"]=194,
-	["support_ruthless_blow_bleeding_damage_from_melee_hits_+%_final"]=154,
-	["support_attack_totem_attack_speed_+%_final"]=125,
-	["attack_minimum_added_physical_damage_with_at_least_10_rage"]=195,
-	["global_poison_on_hit"]=135,
-	["withered_on_hit_chance_%"]=137,
-	["support_melee_physical_damage_+%_final"]=1,
-	["critical_strike_chance_+%_vs_blinded_enemies"]=256,
-	["support_hypothermia_damage_+%_vs_chilled_enemies_final"]=455,
-	["support_arcane_surge_duration_ms"]=146,
-	["mine_detonation_radius_+%"]=351,
-	["base_life_gain_per_target"]=219,
-	["support_slashing_buff_base_duration_ms"]=501,
-	["additional_projectiles_per_intensity"]=185,
-	["attack_damage_+%"]=192,
-	["number_of_additional_forks_base"]=69,
-	["no_spirit_strikes"]=23,
-	["minion_elemental_resistance_%"]=165,
-	["support_debilitate_hit_damage_+%_final_per_poison_stack"]=75,
-	["fire_damage_+%"]=295,
-	["power_siphon_fire_at_all_targets"]=34,
-	["minion_maximum_all_elemental_resistances_%"]=166,
-	[520]={
-		stats={
-			[1]="support_unbound_ailments_ailment_damage_+%_final"
+	[524]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="持续吟唱被辅助技能时，受到的击中物理总伤害额外提高 {0}%"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="持续吟唱被辅助技能时，受到的击中物理总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬을 집중 유지하는 동안 피격 시 물리 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬을 집중 유지하는 동안 피격 시 물리 피해 {0}% 감폭"
+				}
+			}
 		},
+		stats={
+			[1]="support_storm_barrier_physical_damage_taken_when_hit_+%_final"
+		}
+	},
+	[525]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextDamageTypes"
+					},
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="根据被辅助宝石对应的伤害种类，【灌注】赋予 {0}% 的总伤害提高"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					[2]={
+						k="reminderstring",
+						v="ReminderTextDamageTypes"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="根据被辅助宝石对应的伤害种类，【灌注】赋予 {0}% 的总伤害降低"
+				}
+			}
+		},
+		stats={
+			[1]="support_storm_barrier_skill_type_damage_+%_final"
+		}
+	},
+	[526]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					[2]={
+						k="reminderstring",
+						v="ReminderTextDamageTypes"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="当持续吟唱一个被辅助技能时，被辅助宝石对应的伤害种类所造成的击中总伤害降低 {0}%"
+				}
+			}
+		},
+		stats={
+			[1]="support_storm_barrier_skill_type_damage_taken_when_hit_+%_final"
+		}
+	},
+	[527]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="被辅助技能额外提高 {0}% 陷阱和地雷总伤害"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="被辅助技能额外降低 {0}% 陷阱和地雷总伤害"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 덫 및 지뢰 피해 {0}% 증폭"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 덫 및 지뢰 피해 {0}% 감폭"
+				}
+			}
+		},
+		stats={
+			[1]="support_trap_and_mine_damage_+%_final"
+		}
+	},
+	[528]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="被辅助的技能石击中时额外提高 {0}% 陷阱总伤害"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="被辅助的技能石击中时额外降低 {0}% 陷阱总伤害"
+				}
+			}
+		},
+		stats={
+			[1]="support_trap_hit_damage_+%_final"
+		}
+	},
+	[529]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -15934,13 +17876,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="被辅助技能额外提高 {0}% 异常效果总伤害",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助技能额外提高 {0}% 异常效果总伤害"
 				},
 				[2]={
 					[1]={
@@ -15951,24 +17893,168 @@ return {
 						k="reminderstring",
 						v="ReminderTextDamagingAilments"
 					},
-					text="被辅助技能额外降低 {0}% 异常效果总伤害",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能额外降低 {0}% 异常效果总伤害"
 				}
 			}
+		},
+		stats={
+			[1]="support_unbound_ailments_ailment_damage_+%_final"
 		}
 	},
-	["support_additional_trap_mine_%_chance_for_1_additional_trap_mine"]=42,
-	["support_phys_chaos_projectile_physical_damage_over_time_+%_final"]=477,
-	["combat_rush_effect_+%"]=254,
-	[528]={
-		stats={
-			[1]="trap_damage_+%"
+	[530]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="被辅助的诅咒技能石等级 {0:+d}"
+				}
+			}
 		},
+		stats={
+			[1]="supported_curse_skill_gem_level_+"
+		}
+	},
+	[531]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="被辅助技能只能由斧类或剑类发动"
+				}
+			}
+		},
+		stats={
+			[1]="supported_skill_can_only_use_axe_and_sword"
+		}
+	},
+	[532]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="被辅助技能只能由弓类发动"
+				}
+			}
+		},
+		stats={
+			[1]="skill_can_only_use_bow"
+		}
+	},
+	[533]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextDaggerRuneDagger"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="被辅助技能只能由爪类或匕首发动"
+				}
+			}
+		},
+		stats={
+			[1]="supported_skill_can_only_use_dagger_and_claw"
+		}
+	},
+	[534]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextStaffWarstaff"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="被辅助技能只能由锤类、短杖、长杖发动"
+				},
+				[2]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextStaffWarstaff"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="철퇴, 셉터나 지팡이로만 보조 대상 스킬 사용 가능"
+				}
+			}
+		},
+		stats={
+			[1]="supported_skill_can_only_use_mace_and_staff"
+		}
+	},
+	[535]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="被辅助技能只能由弓类和法杖发动"
+				}
+			}
+		},
+		stats={
+			[1]="skill_can_only_use_non_melee_weapons"
+		}
+	},
+	[536]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="使用陷阱时，每个暴击球可使被辅助技能 {0:+d}% 暴击伤害加成"
+				}
+			}
+		},
+		stats={
+			[1]="trap_critical_strike_multiplier_+_per_power_charge"
+		}
+	},
+	[537]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -15985,31 +18071,566 @@ return {
 						k="negate",
 						v=1
 					},
-					text="被辅助技能降低 {0}% 陷阱伤害",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="被辅助技能降低 {0}% 陷阱伤害"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 주는 덫 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬로 주는 덫 피해 {0}% 감소"
 				}
 			}
+		},
+		stats={
+			[1]="trap_damage_+%"
 		}
 	},
-	["support_innervate_gain_buff_on_killing_shocked_enemy"]=149,
-	["impale_support_physical_damage_+%_final"]=323,
-	["chance_to_double_stun_duration_%"]=239,
-	["maximum_energy_shield_leech_amount_per_leech_+%"]=343,
-	["melee_splash_area_of_effect_+%_final"]=350,
-	["summon_2_totems"]=53,
-	["support_attack_skills_elemental_damage_+%_final"]=8,
-	[544]={
-		stats={
-			[1]="support_anticipation_charge_gain_interval_ms",
-			[2]="virtual_support_anticipation_charge_gain_interval_ms",
-			[3]="support_anticipation_rapid_fire_count",
-			[4]="skill_max_unleash_seals"
+	[538]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="被辅助技能的陷阱扩散扩大 {0}%"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="被辅助技能的陷阱扩散缩小 {0}%"
+				}
+			}
 		},
+		stats={
+			[1]="trap_spread_+%"
+		}
+	},
+	[539]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="被辅助技能提高 {0}% 陷阱投掷速度"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="被辅助技能降低 {0}% 陷阱投掷速度"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 덫 투척 속도 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 덫 투척 속도 {0}% 감소"
+				}
+			}
+		},
+		stats={
+			[1]="trap_throwing_speed_+%"
+		}
+	},
+	[540]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="每有一个狂怒球，被辅助技能提高 {0}% 陷阱投掷速度"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="每有一个狂怒球，被辅助技能降低 {0}% 陷阱投掷速度"
+				}
+			}
+		},
+		stats={
+			[1]="trap_throwing_speed_+%_per_frenzy_charge"
+		}
+	},
+	[541]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="被辅助技能扩大 {0}% 陷阱引爆范围"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="被辅助技能缩小 {0}% 陷阱引爆范围"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬의 덫 발동 효과 범위 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 스킬의 덫 발동 효과 범위 {0}% 감소"
+				}
+			}
+		},
+		stats={
+			[1]="trap_trigger_radius_+%"
+		}
+	},
+	[542]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="每个暴击球都使被辅助技能的陷阱触发范围扩大 {}%"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="每个暴击球都使被辅助技能的陷阱触发范围缩小  {}%"
+				}
+			}
+		},
+		stats={
+			[1]="trap_trigger_radius_+%_per_power_charge"
+		}
+	},
+	[543]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="被辅助技能对带有烙印的敌人造成的总伤害额外提高 {0}%"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="被辅助技能对带有烙印的敌人造成的总伤害额外降低 {0}%"
+				}
+			}
+		},
+		stats={
+			[1]="trigger_brand_support_hit_ailment_damage_+%_final_vs_branded_enemy"
+		}
+	},
+	[544]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="被辅助技能被【奥法烙印】所在地点触发"
+				}
+			}
+		},
+		stats={
+			[1]="triggered_by_brand_support"
+		}
+	},
+	[545]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="被辅助技能被【将军之吼】召唤的蜃影武士使用\n被辅助技能视为被触发"
+				}
+			}
+		},
+		stats={
+			[1]="triggered_by_spiritual_cry"
+		}
+	},
+	[546]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="被辅助的触发类法术造成的总伤害额外提高 {0}%"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="被辅助的触发类法术造成的总伤害额外降低 {0}%"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="보조 대상 발동형 주문으로 주는 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="보조 대상 발동형 주문으로 주는 피해 {0}% 감소"
+				}
+			}
+		},
+		stats={
+			[1]="triggered_skill_damage_+%"
+		}
+	},
+	[547]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="你在吟唱时，被辅助技能的封印获取频率提高 {0}%"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="你在吟唱时，被辅助技能的封印获取频率降低 {0}%"
+				}
+			}
+		},
+		stats={
+			[1]="unleash_support_seal_gain_frequency_+%_while_channelling"
+		}
+	},
+	[548]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="你没有吟唱时，被辅助技能的封印获取频率提高 {0}%"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="你没有吟唱时，被辅助技能的封印获取频率降低 {0}%"
+				}
+			}
+		},
+		stats={
+			[1]="unleash_support_seal_gain_frequency_+%_while_not_channelling"
+		}
+	},
+	[549]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="被辅助技能战吼速度加快 {0}%"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="被辅助技能战吼速度减慢 {0}%"
+				}
+			}
+		},
+		stats={
+			[1]="warcry_speed_+%"
+		}
+	},
+	[550]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="被辅助技能提高 {0}% 武器元素伤害"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="被辅助技能降低 {0}% 武器元素伤害"
+				},
+				[3]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="무기 사용 시 보조 대상 스킬로 주는 원소 피해 {0}% 증가"
+				},
+				[4]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="무기 사용 시 보조 대상 스킬로 주는 원소 피해 {0}% 감소"
+				}
+			}
+		},
+		stats={
+			[1]="weapon_elemental_damage_+%"
+		}
+	},
+	[551]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="被辅助技能有 {0}% 的几率施加一层额外枯萎"
+				},
+				[2]={
+					limit={
+						[1]={
+							[1]=100,
+							[2]="#"
+						}
+					},
+					text="被辅助技能会施加一层额外枯萎"
+				}
+			}
+		},
+		stats={
+			[1]="wither_applies_additional_wither_%"
+		}
+	},
+	[552]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="若施加的异常状态来自被辅助技能，则你和敌人的移动速度加快 {0}%"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="若施加的异常状态来自被辅助技能，你和敌人的移动速度减慢 {0}%"
+				}
+			}
+		},
+		stats={
+			[1]="you_and_enemy_movement_velocity_+%_while_affected_by_ailment_you_inflicted"
+		}
+	},
+	[553]={
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -16021,7 +18642,6 @@ return {
 						k="reminderstring",
 						v="ReminderTextReoccurringSpell"
 					},
-					text="被辅助法术每 {0} 秒获得一个封印，最多 {2} 个\n被辅助法术施放时会解除封印，每失去一个封印，该法术的效果便重复一次",
 					limit={
 						[1]={
 							[1]=1,
@@ -16039,88 +18659,723 @@ return {
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="被辅助法术每 {0} 秒获得一个封印，最多 {2} 个\n被辅助法术施放时会解除封印，每失去一个封印，该法术的效果便重复一次"
 				}
 			}
+		},
+		stats={
+			[1]="support_anticipation_charge_gain_interval_ms",
+			[2]="virtual_support_anticipation_charge_gain_interval_ms",
+			[3]="support_anticipation_rapid_fire_count",
+			[4]="skill_max_unleash_seals"
 		}
 	},
-	["add_power_charge_on_kill_%_chance"]=179,
-	["support_minion_totem_resistance_elemental_damage_+%_final"]=469,
-	["fortify_effect_+%"]=298,
-	["is_remote_mine"]=40,
-	["attack_skills_additional_ballista_totems_allowed"]=51,
-	["support_totem_damage_+%_final"]=16,
-	["minion_damage_+%_on_full_life"]=367,
-	["number_of_totems_to_summon"]=45,
-	["base_reduce_enemy_fire_resistance_%"]=62,
-	["cast_while_channelling_time_ms"]=118,
-	["base_killed_monster_dropped_item_rarity_+%"]=218,
-	["damage_+%_while_mana_leeching"]=277,
-	["base_bleed_duration_+%"]=205,
-	["attack_minimum_added_physical_damage_with_weapons"]=196,
-	["base_chance_to_poison_on_hit_%"]=136,
-	["support_remote_mine_2_base_mine_duration"]=50,
-	["cast_on_damage_taken_threshold"]=117,
-	["support_multicast_cast_speed_+%_final"]=98,
-	["support_mirage_archer_damage_+%_final"]=472,
-	["apply_linked_curses_on_hit_%"]=108,
-	["attack_maximum_added_physical_damage_with_at_least_10_rage"]=195,
-	["quality_display_melee_splash_is_gem"]=95,
-	["gain_vaal_soul_on_hit_cooldown_ms"]=307,
-	["support_innervate_maximum_added_lightning_damage"]=150,
-	["freeze_mine_cold_resistance_+_while_frozen"]=139,
-	["triggered_spell_spell_damage_+%"]=17,
-	["skill_physical_damage_%_to_convert_to_fire"]=424,
-	["knockback_chance_%_at_close_range"]=329,
-	["support_greater_volley_projectile_damage_+%_final"]=487,
-	["support_chilling_areas_also_grant_cold_damage_taken_per_minute_+%"]=161,
-	["damage_+%_when_on_full_life"]=272,
-	["base_damage_+%_while_an_ailment_on_you"]=214,
-	["impale_debuff_effect_+%"]=321,
-	["base_mana_reservation_+%"]=222,
-	["support_multiple_attack_damage_+%_final"]=100,
-	["gain_endurance_charge_on_melee_stun"]=304,
-	["damage_+%_for_non_minions"]=262,
-	["gain_endurance_charge_on_melee_stun_%"]=304,
-	["support_debilitate_hit_damage_max_poison_stacks"]=75,
-	["number_of_additional_curses_allowed"]=384,
-	["support_additional_trap_mine_%_chance_for_3_additional_trap_mine"]=44,
-	["minion_fire_damage_%_of_maximum_life_taken_per_minute"]=167,
-	["multistrike_damage_+%_final_on_first_repeat"]=378,
-	["crush_for_2_seconds_on_hit_%_chance"]=257,
-	["base_number_of_remote_mines_allowed"]=55,
-	["base_all_ailment_duration_+%"]=204,
-	["multiple_projectiles_projectile_spread_+%"]=376,
-	["multistrike_area_of_effect_+%_per_repeat"]=377,
-	["static_strike_zap_speed_+%"]=430,
-	["support_overpowered_base_duration_ms"]=473,
-	["base_use_life_in_place_of_mana"]=31,
-	["attack_critical_strike_chance_+%"]=191,
+	[554]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]=1,
+							[2]="#"
+						}
+					},
+					text="被辅助技能重复施放时，造成的总伤害额外提高 {0}%"
+				},
+				[2]={
+					[1]={
+						k="negate",
+						v=1
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]=-1
+						}
+					},
+					text="被辅助技能重复施放时，造成的总伤害额外降低 {0}%"
+				}
+			}
+		},
+		stats={
+			[1]="support_spell_rapid_fire_repeat_use_damage_+%_final"
+		}
+	},
+	[555]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="被辅助的技能使每个地雷有 {0}% 的几率对附近被击中的敌人造成双倍伤害，最高 100%"
+				}
+			}
+		},
+		stats={
+			[1]="support_remote_mine_2_chance_to_deal_double_damage_%_against_enemies_near_mines"
+		}
+	},
+	[556]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextAggressiveMinions"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="被辅助技能创造的召唤生物转为【侵略】"
+				}
+			}
+		},
+		stats={
+			[1]="minion_larger_aggro_radius"
+		}
+	},
+	[557]={
+		lang={
+			["Simplified Chinese"]={
+				[1]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextDefensiveMinions"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="被辅助技能创造的召唤生物转为【防御】"
+				},
+				[2]={
+					[1]={
+						k="reminderstring",
+						v="ReminderTextDefensiveMinions"
+					},
+					limit={
+						[1]={
+							[1]="#",
+							[2]="#"
+						}
+					},
+					text="보조 대상 스킬로 소환된 소환수가 방어적으로 행동"
+				}
+			}
+		},
+		stats={
+			[1]="minions_are_defensive"
+		}
+	},
+	["%_chance_to_gain_frenzy_charge_on_mine_detonated_targeting_an_enemy"]=399,
+	["%_chance_to_gain_frenzy_charge_on_trap_triggered_by_an_enemy"]=400,
+	["%_chance_to_gain_power_charge_on_mine_detonated_targeting_an_enemy"]=401,
+	["%_chance_to_gain_power_charge_on_trap_triggered_by_an_enemy"]=402,
+	["accuracy_rating"]=179,
+	["accuracy_rating_+%"]=180,
+	["active_skill_additive_spell_damage_modifiers_apply_to_attack_damage_at_%_value"]=181,
+	["active_skill_display_suppress_physical_to_cold_damage_conversion"]=430,
 	["active_skill_withered_base_duration_ms"]=145,
-	["cast_on_death_%"]=114,
-	["global_minimum_added_fire_damage_vs_burning_enemies"]=460,
-	["bleed_on_hit_with_attacks_%"]=231,
-	["support_additional_totem_damage_+%_final"]=84,
-	["support_cast_on_melee_kill_spell_damage_+%_final"]=19,
-	["is_ranged_attack_totem"]=45,
-	["support_return_projectile_damage_+%_final"]=78,
-	["support_remote_mine_2_damage_+%_final"]=496,
-	["local_gem_dex_requirement_+%"]=334,
-	["projectile_return_%_chance"]=406,
+	["add_power_charge_on_critical_strike_%"]=182,
+	["add_power_charge_on_kill_%_chance"]=183,
+	["added_damage_+%_final"]=184,
+	["additional_base_critical_strike_chance"]=185,
+	["additional_chance_to_freeze_chilled_enemies_%"]=186,
+	["additional_critical_strike_chance_permyriad_while_affected_by_elusive"]=188,
+	["additional_critical_strike_chance_permyriad_while_dead"]=187,
+	["additional_projectiles_per_intensity"]=189,
+	["always_freeze"]=212,
+	["ancestral_slam_interval_duration"]=171,
+	["ancestral_slam_stun_threshold_reduction_+%"]=190,
+	["apply_linked_curses_on_hit_%"]=108,
+	["apply_overpowered_on_enemy_block_reduced_block_and_spell_block_%"]=191,
+	["area_damage_+%"]=192,
+	["area_of_effect_+%_while_dead"]=27,
+	["attack_and_cast_speed_+%"]=193,
+	["attack_and_cast_speed_+%_during_onslaught"]=194,
+	["attack_and_cast_speed_+%_while_all_resonance_is_at_least_25"]=178,
+	["attack_critical_strike_chance_+%"]=195,
+	["attack_damage_+%"]=196,
+	["attack_damage_+%_per_1000_accuracy_rating"]=197,
+	["attack_maximum_added_physical_damage_per_10_rage"]=198,
+	["attack_maximum_added_physical_damage_with_at_least_10_rage"]=199,
+	["attack_maximum_added_physical_damage_with_weapons"]=200,
+	["attack_minimum_added_physical_damage_per_10_rage"]=198,
+	["attack_minimum_added_physical_damage_with_at_least_10_rage"]=199,
+	["attack_minimum_added_physical_damage_with_weapons"]=200,
+	["attack_skill_mana_leech_from_any_damage_permyriad"]=201,
+	["attack_skills_additional_ballista_totems_allowed"]=51,
+	["attack_speed_+%"]=202,
+	["attack_speed_+%_with_atleast_20_rage"]=203,
+	["attacks_impale_on_hit_%_chance"]=204,
+	["aura_cannot_affect_self"]=127,
+	["aura_effect_+%"]=29,
+	["avoid_interruption_while_using_this_skill_%"]=205,
+	["barrage_support_projectile_spread_+%"]=206,
+	["base_ailment_damage_+%"]=207,
+	["base_all_ailment_duration_+%"]=208,
+	["base_aura_area_of_effect_+%"]=28,
+	["base_bleed_duration_+%"]=209,
+	["base_cast_speed_+%"]=210,
+	["base_chance_to_destroy_corpse_on_kill_%_vs_ignited"]=211,
+	["base_chance_to_freeze_%"]=212,
+	["base_chance_to_ignite_%"]=213,
+	["base_chance_to_poison_on_hit_%"]=136,
+	["base_chance_to_shock_%"]=214,
+	["base_chaos_damage_to_deal_per_minute"]=119,
+	["base_cold_damage_to_deal_per_minute"]=122,
+	["base_cooldown_modifier_ms"]=215,
+	["base_cooldown_speed_+%"]=216,
+	["base_critical_strike_multiplier_+"]=61,
+	["base_curse_duration_+%"]=217,
+	["base_damage_+%_while_an_ailment_on_you"]=218,
+	["base_deal_no_chaos_damage"]=219,
+	["base_fire_damage_to_deal_per_minute"]=120,
+	["base_global_chance_to_knockback_%"]=220,
+	["base_killed_monster_dropped_item_quantity_+%"]=221,
+	["base_killed_monster_dropped_item_rarity_+%"]=222,
+	["base_life_gain_per_target"]=223,
+	["base_life_leech_from_attack_damage_permyriad"]=224,
+	["base_life_leech_from_chaos_damage_permyriad"]=225,
+	["base_mana_cost_-%"]=21,
+	["base_mana_reservation_+%"]=226,
+	["base_melee_attack_repeat_count"]=96,
+	["base_mine_detonation_time_ms"]=227,
+	["base_mine_duration"]=49,
+	["base_number_of_projectiles_in_spiral_nova"]=34,
+	["base_number_of_remote_mines_allowed"]=55,
+	["base_number_of_support_ghosts_allowed"]=228,
+	["base_number_of_totems_allowed"]=52,
+	["base_number_of_traps_allowed"]=54,
+	["base_physical_damage_%_to_convert_to_lightning"]=229,
+	["base_poison_damage_+%"]=230,
+	["base_poison_duration_+%"]=231,
+	["base_projectile_speed_+%"]=232,
+	["base_reduce_enemy_cold_resistance_%"]=63,
+	["base_reduce_enemy_fire_resistance_%"]=62,
+	["base_reduce_enemy_lightning_resistance_%"]=65,
+	["base_skill_area_of_effect_+%"]=25,
+	["base_skill_is_instant"]=6,
 	["base_spell_repeat_count"]=97,
-	["recover_%_maximum_life_on_cull"]=410,
-	["skill_buff_effect_+%"]=417,
-	["global_minimum_added_fire_damage"]=311,
-	["always_freeze"]=208,
-	["support_anticipation_charge_gain_frequency_+%"]=434,
-	["base_poison_damage_+%"]=226,
-	["spell_damage_+%"]=427,
-	["support_damage_while_on_full_life_+%_final"]=7,
-	["support_fork_projectile_damage_+%_final"]=74,
-	["melee_attack_number_of_spirit_strikes"]=22,
-	["gain_%_of_base_wand_damage_as_added_spell_damage"]=302,
+	["base_stun_duration_+%"]=233,
+	["base_stun_threshold_reduction_+%"]=234,
+	["base_totem_duration"]=46,
+	["base_trap_duration"]=48,
+	["base_use_life_in_place_of_mana"]=31,
+	["bleed_on_hit_base_duration"]=126,
+	["bleed_on_hit_with_attacks_%"]=235,
+	["bleeding_damage_+%"]=236,
+	["blind_duration_+%"]=59,
+	["burn_damage_+%"]=237,
+	["cannot_cast_curses"]=109,
+	["cannot_cause_bleeding"]=235,
+	["cannot_inflict_status_ailments"]=138,
+	["cast_linked_spells_on_attack_crit_%"]=110,
+	["cast_linked_spells_on_melee_kill_%"]=111,
+	["cast_on_damage_taken_%"]=117,
 	["cast_on_damage_taken_damage_+%_final"]=104,
-	["support_ghost_base_duration"]=452,
-	["base_deal_no_chaos_damage"]=215,
-	["support_minion_damage_+%_final"]=461
+	["cast_on_damage_taken_threshold"]=117,
+	["cast_on_death_%"]=114,
+	["cast_on_death_damage_+%_final_while_dead"]=103,
+	["cast_on_stunned_%"]=115,
+	["cast_when_damage_taken_trigger_threshold_+%"]=238,
+	["cast_while_channelling_time_ms"]=118,
+	["chaining_range_+%"]=239,
+	["chance_for_coin_shower_on_kill_%"]=240,
+	["chance_for_extra_damage_roll_%"]=241,
+	["chance_to_bleed_on_hit_%_vs_maimed"]=242,
+	["chance_to_double_stun_duration_%"]=243,
+	["chance_to_fork_extra_projectile_%"]=244,
+	["chance_to_fortify_on_melee_hit_+%"]=245,
+	["chance_to_freeze_shock_ignite_%"]=246,
+	["chance_to_gain_frenzy_charge_on_killing_frozen_enemy_%"]=247,
+	["chance_to_ignore_hexproof_%"]=248,
+	["chance_to_inflict_additional_impale_%"]=249,
+	["chance_to_place_an_additional_mine_%"]=250,
+	["chance_to_summon_support_ghost_on_hitting_rare_or_unique_%"]=251,
+	["chance_to_summon_support_ghost_on_killing_blow_%"]=156,
+	["channelled_skill_damage_+%"]=252,
+	["chaos_damage_+%"]=253,
+	["chill_duration_+%"]=158,
+	["chill_effect_+%"]=157,
+	["close_combat_damage_to_close_range_+%"]=254,
+	["cold_ailment_effect_+%"]=255,
+	["cold_damage_%_to_add_as_fire"]=256,
+	["cold_damage_+%"]=257,
+	["combat_rush_effect_+%"]=258,
+	["critical_ailment_dot_multiplier_+"]=259,
+	["critical_strike_chance_+%"]=60,
+	["critical_strike_chance_+%_per_righteous_charge"]=500,
+	["critical_strike_chance_+%_vs_blinded_enemies"]=260,
+	["critical_strike_multiplier_+_while_affected_by_elusive"]=140,
+	["crush_for_2_seconds_on_hit_%_chance"]=261,
+	["curse_apply_as_aura"]=3,
+	["curse_area_of_effect_+%"]=262,
+	["curse_effect_+%"]=123,
+	["curse_skill_doom_gain_per_minute"]=263,
+	["damage_+%"]=265,
+	["damage_+%_for_non_minions"]=266,
+	["damage_+%_if_lost_endurance_charge_in_past_8_seconds"]=267,
+	["damage_+%_on_full_energy_shield"]=275,
+	["damage_+%_per_200_mana_spent_recently"]=268,
+	["damage_+%_per_endurance_charge"]=269,
+	["damage_+%_per_frenzy_charge"]=270,
+	["damage_+%_per_power_charge"]=271,
+	["damage_+%_vs_enemies_on_full_life"]=272,
+	["damage_+%_vs_enemies_per_freeze_shock_ignite"]=273,
+	["damage_+%_vs_frozen_enemies"]=274,
+	["damage_+%_when_on_full_life"]=276,
+	["damage_+%_when_on_low_life"]=277,
+	["damage_+%_while_an_ailment_on_you"]=278,
+	["damage_+%_while_es_leeching"]=279,
+	["damage_+%_while_life_leeching"]=280,
+	["damage_+%_while_mana_leeching"]=281,
+	["damage_over_time_+%"]=264,
+	["damage_penetrates_%_elemental_resistances_while_all_resonance_is_25"]=177,
+	["damage_vs_cursed_enemies_per_enemy_curse_+%"]=282,
+	["damage_vs_enemies_on_low_life_+%"]=283,
+	["damaging_ailments_deal_damage_+%_faster"]=284,
+	["deal_chaos_damage_per_second_for_10_seconds_on_hit"]=285,
+	["deal_no_elemental_damage"]=286,
+	["deathmark_minion_damage_+%_final"]=287,
+	["display_base_intensity_loss"]=288,
+	["display_totems_no_infusion"]=289,
+	["dot_multiplier_+"]=290,
+	["elemental_damage_+%"]=291,
+	["elemental_damage_+%_final_per_5_lowest_resonance"]=176,
+	["elemental_damage_+%_final_per_righteous_charge"]=501,
+	["elemental_status_effect_aura_radius"]=35,
+	["elusive_effect_+%"]=292,
+	["enemies_you_shock_take_%_increased_physical_damage"]=293,
+	["enemy_phys_reduction_%_penalty_vs_hit"]=294,
+	["energy_shield_leech_from_any_damage_permyriad"]=295,
+	["extra_target_targeting_distance_+%"]=24,
+	["faster_bleed_%"]=296,
+	["faster_burn_%"]=297,
+	["faster_poison_%"]=298,
+	["fire_damage_+%"]=299,
+	["fire_dot_multiplier_+"]=300,
+	["fortify_duration_+%"]=301,
+	["fortify_effect_+%"]=302,
+	["freeze_applies_cold_resistance_+"]=303,
+	["freeze_duration_+%"]=304,
+	["freeze_mine_cold_resistance_+_while_frozen"]=139,
+	["from_quality_brand_activation_rate_+%_final_if_75%_attached_duration_expired"]=305,
+	["gain_%_of_base_wand_damage_as_added_spell_damage"]=306,
+	["gain_1_rage_on_use_%_chance"]=307,
+	["gain_elusive_on_crit_%_chance"]=134,
+	["gain_endurance_charge_on_melee_stun"]=308,
+	["gain_endurance_charge_on_melee_stun_%"]=308,
+	["gain_frenzy_charge_on_kill_vs_enemies_with_5+_poisons_%"]=309,
+	["gain_frenzy_charge_on_killing_blow_vs_enemies_with_5+_poisons_%"]=310,
+	["gain_power_charge_on_kill_with_hit_%"]=311,
+	["gain_resonance_of_majority_damage_on_hit_for_2_seconds"]=175,
+	["gain_righteous_charge_on_mana_spent_%"]=312,
+	["gain_vaal_soul_on_hit_cooldown_ms"]=313,
+	["global_bleed_on_hit"]=235,
+	["global_chance_to_blind_on_hit_%"]=58,
+	["global_hit_causes_monster_flee_%"]=314,
+	["global_maximum_added_chaos_damage"]=315,
+	["global_maximum_added_cold_damage"]=316,
+	["global_maximum_added_fire_damage"]=317,
+	["global_maximum_added_fire_damage_vs_burning_enemies"]=467,
+	["global_maximum_added_lightning_damage"]=318,
+	["global_maximum_added_physical_damage"]=319,
+	["global_minimum_added_chaos_damage"]=315,
+	["global_minimum_added_cold_damage"]=316,
+	["global_minimum_added_fire_damage"]=317,
+	["global_minimum_added_fire_damage_vs_burning_enemies"]=467,
+	["global_minimum_added_lightning_damage"]=318,
+	["global_minimum_added_physical_damage"]=319,
+	["global_poison_on_hit"]=135,
+	["global_reduce_enemy_block_%"]=320,
+	["greater_projectile_intensity_projectile_damage_+%_final_per_intensity"]=321,
+	["hit_and_poison_damage_+%"]=322,
+	["hit_and_poison_damage_+%_per_poison_on_enemy"]=323,
+	["hit_damage_+%"]=324,
+	["ignite_duration_+%"]=325,
+	["ignites_apply_fire_resistance_+"]=326,
+	["impale_debuff_effect_+%"]=327,
+	["impale_phys_reduction_%_penalty"]=328,
+	["impale_support_physical_damage_+%_final"]=329,
+	["inc_aoe_plus_more_area_damage_+%_final"]=330,
+	["infernal_legion_minions_have_burning_effect_radius_+"]=170,
+	["infusion_grants_life_regeneration_rate_per_minute_%"]=331,
+	["inspiration_charge_duration_+%"]=332,
+	["intensity_loss_frequency_while_moving_+%"]=333,
+	["is_empowered"]=334,
+	["is_ranged_attack_totem"]=45,
+	["is_remote_mine"]=40,
+	["is_totem"]=45,
+	["keystone_point_blank"]=37,
+	["keystone_strong_bowman"]=38,
+	["kill_enemy_on_hit_if_under_10%_life"]=36,
+	["knockback_chance_%_at_close_range"]=335,
+	["knockback_distance_+%"]=336,
+	["life_leech_from_any_damage_permyriad"]=337,
+	["lightning_ailment_effect_+%"]=338,
+	["lightning_damage_+%"]=339,
+	["local_gem_dex_requirement_+%"]=340,
+	["local_gem_int_requirement_+%"]=341,
+	["local_gem_str_requirement_+%"]=342,
+	["lose_all_righteous_charges_on_mana_use_threshold"]=502,
+	["maim_effect_+%"]=343,
+	["maim_on_hit_%"]=344,
+	["mana_gain_per_target"]=345,
+	["mana_leech_from_any_damage_permyriad"]=346,
+	["manaweave_added_cold_damage_%_cost_if_payable"]=348,
+	["manaweave_added_lightning_damage_%_cost_if_payable"]=347,
+	["manaweave_cost_equals_%_unreserved_mana"]=347,
+	["maximum_added_cold_damage_per_frenzy_charge"]=361,
+	["maximum_energy_shield_leech_amount_per_leech_+%"]=349,
+	["maximum_intensify_stacks"]=350,
+	["maximum_life_leech_amount_per_leech_+%"]=351,
+	["melee_attack_number_of_spirit_strikes"]=22,
+	["melee_damage_+%"]=352,
+	["melee_damage_vs_bleeding_enemies_+%"]=353,
+	["melee_physical_damage_+%"]=354,
+	["melee_range_+"]=355,
+	["melee_splash"]=94,
+	["melee_splash_area_of_effect_+%_final"]=356,
+	["mine_critical_strike_chance_+%_per_power_charge"]=164,
+	["mine_detonation_radius_+%"]=357,
+	["mine_detonation_speed_+%"]=358,
+	["mine_duration_+%"]=57,
+	["mine_laying_speed_+%"]=359,
+	["mine_projectile_speed_+%_per_frenzy_charge"]=360,
+	["mine_throwing_speed_+%_per_frenzy_charge"]=163,
+	["minimum_added_cold_damage_per_frenzy_charge"]=361,
+	["minimum_power_from_quality"]=362,
+	["minion_additional_physical_damage_reduction_%"]=363,
+	["minion_ailment_damage_+%"]=364,
+	["minion_attack_speed_+%"]=365,
+	["minion_block_%"]=366,
+	["minion_burning_damage_+%"]=367,
+	["minion_cast_speed_+%"]=368,
+	["minion_chance_to_deal_double_damage_%"]=369,
+	["minion_chance_to_taunt_on_hit_%"]=370,
+	["minion_cooldown_recovery_+%"]=371,
+	["minion_damage_+%"]=372,
+	["minion_damage_+%_on_full_life"]=373,
+	["minion_elemental_resistance_%"]=165,
+	["minion_fire_damage_%_of_maximum_life_taken_per_minute"]=167,
+	["minion_fire_damage_taken_+%"]=168,
+	["minion_grant_puppet_master_buff_to_parent_on_hit_%"]=374,
+	["minion_larger_aggro_radius"]=556,
+	["minion_life_leech_from_elemental_damage_permyriad"]=375,
+	["minion_maximum_all_elemental_resistances_%"]=166,
+	["minion_maximum_life_+%"]=376,
+	["minion_movement_speed_+%"]=377,
+	["minion_projectile_speed_+%"]=378,
+	["minion_recover_%_maximum_life_on_hit"]=379,
+	["minions_are_defensive"]=557,
+	["minions_inflict_exposure_on_hit_%_chance"]=380,
+	["mirage_archer_number_of_additional_projectiles"]=381,
+	["multiple_projectiles_projectile_spread_+%"]=382,
+	["multistrike_area_of_effect_+%_per_repeat"]=383,
+	["multistrike_damage_+%_final_on_first_repeat"]=384,
+	["multistrike_damage_+%_final_on_second_repeat"]=385,
+	["multistrike_damage_+%_final_on_third_repeat"]=386,
+	["nightblade_elusive_grants_critical_strike_multiplier_+_to_supported_skills"]=387,
+	["no_spirit_strikes"]=23,
+	["non_curse_aura_effect_+%"]=388,
+	["non_damaging_ailment_effect_+%"]=389,
+	["number_of_additional_curses_allowed"]=390,
+	["number_of_additional_forks_base"]=69,
+	["number_of_additional_mines_to_place"]=391,
+	["number_of_additional_projectiles"]=392,
+	["number_of_additional_remote_mines_allowed"]=393,
+	["number_of_additional_traps_allowed"]=394,
+	["number_of_additional_traps_to_throw"]=41,
+	["number_of_chains"]=66,
+	["number_of_mines_to_place"]=40,
+	["number_of_totems_to_summon"]=45,
+	["onslaught_time_granted_on_killing_shocked_enemy_ms"]=395,
+	["overpowered_effect_+%"]=396,
+	["overwhelm_%_physical_damage_reduction_while_fortified"]=397,
+	["parallel_projectile_firing_point_x_dist_+%"]=398,
+	parent="stat_descriptions",
+	["physical_damage_%_to_add_as_chaos"]=403,
+	["physical_damage_%_to_add_as_fire"]=404,
+	["physical_damage_%_to_add_as_lightning"]=405,
+	["physical_damage_+%"]=406,
+	["placing_traps_cooldown_recovery_+%"]=407,
+	["power_siphon_fire_at_all_targets"]=34,
+	["projectile_base_number_of_targets_to_pierce"]=47,
+	["projectile_chance_to_not_pierce_%"]=408,
+	["projectile_damage_+%"]=409,
+	["projectile_damage_+%_if_pierced_enemy"]=410,
+	["projectile_damage_+%_vs_nearby_enemies"]=412,
+	["projectile_maximum_range_override"]=411,
+	["projectile_number_to_split"]=67,
+	["projectile_return_%_chance"]=70,
+	["projectile_spiral_nova_angle"]=34,
+	["projectiles_barrage"]=34,
+	["projectiles_chance_to_return_%_from_final_target"]=70,
+	["projectiles_fork"]=68,
+	["projectiles_nova"]=34,
+	["projectiles_pierce_all_targets_in_x_range"]=413,
+	["projectiles_rain"]=32,
+	["projectiles_return"]=70,
+	["projectiles_return_if_no_hit_object"]=70,
+	["quality_display_melee_splash_is_gem"]=95,
+	["quality_display_swiftbrand_is_gem"]=132,
+	["rain_of_arrows_sequences_to_fire"]=34,
+	["recover_%_life_when_stunning_an_enemy_permyriad"]=414,
+	["recover_%_maximum_life_on_cull"]=415,
+	["reduce_enemy_chaos_resistance_%"]=416,
+	["reduce_enemy_dodge_%"]=417,
+	["reduce_enemy_elemental_resistance_%"]=64,
+	["refresh_bleeding_duration_on_hit_%_chance"]=418,
+	["regenerate_%_life_over_1_second_on_skill_use"]=419,
+	["secondary_base_fire_damage_to_deal_per_minute"]=121,
+	["shock_duration_+%"]=420,
+	["sigil_repeat_frequency_+%"]=421,
+	["skill_buff_effect_+%"]=422,
+	["skill_can_only_use_bow"]=532,
+	["skill_can_only_use_non_melee_weapons"]=535,
+	["skill_can_own_mirage_archers"]=423,
+	["skill_cold_damage_%_to_convert_to_fire"]=424,
+	["skill_convert_%_physical_damage_to_random_element"]=425,
+	["skill_effect_and_damaging_ailment_duration_+%"]=426,
+	["skill_effect_duration_+%"]=427,
+	["skill_effect_duration_+%_while_dead"]=428,
+	["skill_max_unleash_seals"]=553,
+	["skill_physical_damage_%_to_convert_to_chaos"]=429,
+	["skill_physical_damage_%_to_convert_to_cold"]=430,
+	["skill_physical_damage_%_to_convert_to_fire"]=431,
+	["skill_physical_damage_%_to_convert_to_lightning"]=432,
+	["spell_critical_strike_chance_+%"]=433,
+	["spell_damage_+%"]=434,
+	["spell_echo_plus_chance_double_damage_%_final"]=435,
+	["spell_only_castable_on_death"]=113,
+	["spell_uncastable_if_triggerable"]=113,
+	["spellslinger_trigger_on_wand_attack_%"]=116,
+	["static_strike_base_zap_frequency_ms"]=436,
+	["static_strike_zap_speed_+%"]=437,
+	["strong_casting"]=39,
+	["summon_2_totems"]=53,
+	["summon_cold_resistance_+"]=106,
+	["summon_fire_resistance_+"]=105,
+	["summon_lightning_resistance_+"]=107,
+	["summon_mirage_archer_on_hit"]=438,
+	["support_added_cooldown_count_if_not_instant"]=439,
+	["support_additional_totem_damage_+%_final"]=84,
+	["support_additional_trap_%_chance_for_1_additional_trap"]=440,
+	["support_additional_trap_mine_%_chance_for_1_additional_trap_mine"]=42,
+	["support_additional_trap_mine_%_chance_for_2_additional_trap_mine"]=43,
+	["support_additional_trap_mine_%_chance_for_3_additional_trap_mine"]=44,
+	["support_ancestral_slam_big_hit_ailment_damage_+%_final"]=173,
+	["support_ancestral_slam_big_hit_area_+%"]=174,
+	["support_ancestral_slam_big_hit_hit_damage_+%_final"]=172,
+	["support_anticipation_charge_gain_frequency_+%"]=441,
+	["support_anticipation_charge_gain_interval_ms"]=553,
+	["support_anticipation_rapid_fire_count"]=553,
+	["support_arcane_surge_base_duration_ms"]=148,
+	["support_arcane_surge_cast_speed_+%"]=142,
+	["support_arcane_surge_duration_ms"]=146,
+	["support_arcane_surge_gain_buff_on_mana_use_threshold"]=141,
+	["support_arcane_surge_mana_regeneration_rate_per_minute_%"]=142,
+	["support_arcane_surge_spell_damage_+%_final"]=142,
+	["support_arcane_surge_spell_damage_+%_final_while_you_have_arcane_surge"]=442,
+	["support_area_concentrate_area_damage_+%_final"]=10,
+	["support_attack_skills_elemental_damage_+%_final"]=8,
+	["support_attack_totem_attack_speed_+%_final"]=125,
+	["support_aura_duration_base_buff_duration"]=443,
+	["support_aura_duration_base_reserve_duration"]=444,
+	["support_barrage_attack_time_+%_per_projectile_fired"]=445,
+	["support_barrage_damage_+%_final"]=11,
+	["support_barrage_trap_and_mine_throwing_time_+%_final_per_projectile_fired"]=446,
+	["support_better_ailments_ailment_damage_+%_final"]=85,
+	["support_better_ailments_hit_damage_+%_final"]=86,
+	["support_bloodlust_melee_physical_damage_+%_final_vs_bleeding_enemies"]=128,
+	["support_blunt_chance_to_trigger_shockwave_on_hit_%"]=447,
+	["support_brand_area_of_effect_+%_final"]=448,
+	["support_brand_damage_+%_final"]=449,
+	["support_brutality_physical_damage_+%_final"]=87,
+	["support_burning_damage_+%_final"]=450,
+	["support_cast_on_crit_quality_attack_damage_+%_final"]=451,
+	["support_cast_on_crit_spell_damage_+%_final"]=18,
+	["support_cast_on_melee_kill_spell_damage_+%_final"]=19,
+	["support_cast_while_channelling_triggered_skill_damage_+%_final"]=20,
+	["support_chain_hit_damage_+%_final"]=71,
+	["support_chance_to_bleed_bleeding_damage_+%_final"]=452,
+	["support_chance_to_ignite_fire_damage_+%_final"]=88,
+	["support_chaos_attacks_damage_+%_final"]=453,
+	["support_chilling_areas_also_grant_cold_damage_taken_+%_equal_to_slow_amount"]=162,
+	["support_chilling_areas_also_grant_cold_damage_taken_per_minute_+%"]=161,
+	["support_chills_also_grant_cold_damage_taken_+%_equal_to_slow_amount"]=160,
+	["support_chills_also_grant_cold_damage_taken_per_minute_+%"]=159,
+	["support_clustertrap_damage_+%_final"]=454,
+	["support_concentrated_effect_skill_area_of_effect_+%_final"]=26,
+	["support_controlled_destruction_spell_damage_+%_final"]=80,
+	["support_damage_while_on_full_life_+%_final"]=7,
+	["support_debilitate_hit_damage_+%_final_per_poison_stack"]=75,
+	["support_debilitate_hit_damage_max_poison_stacks"]=75,
+	["support_debilitate_poison_damage_+%_final"]=76,
+	["support_echo_damage_+%_final"]=4,
+	["support_efficacy_damage_over_time_+%_final"]=83,
+	["support_efficacy_spell_damage_+%_final"]=81,
+	["support_elemental_proliferation_damage_+%_final"]=5,
+	["support_energy_shield_leech_damage_+%_on_full_energy_shield_final"]=455,
+	["support_energy_shield_leech_damage_+%_while_leeching_energy_shield_final"]=456,
+	["support_fork_projectile_damage_+%_final"]=74,
+	["support_fortify_ailment_damage_+%_final_from_melee_hits"]=457,
+	["support_fortify_melee_damage_+%_final"]=458,
+	["support_gem_elemental_damage_+%_final"]=89,
+	["support_gem_mine_damage_+%_final"]=15,
+	["support_ghost_base_duration"]=459,
+	["support_greater_projectile_intensity_projectile_damage_+%_final"]=460,
+	["support_greater_volley_projectile_damage_+%_final"]=495,
+	["support_hypothermia_cold_damage_over_time_+%_final"]=461,
+	["support_hypothermia_damage_+%_vs_chilled_enemies_final"]=462,
+	["support_ignite_prolif_ignite_damage_+%_final"]=90,
+	["support_ignite_proliferation_radius"]=33,
+	["support_innervate_buff_base_duration_ms"]=151,
+	["support_innervate_chance_to_gain_buff_on_shock_vs_unique_%"]=463,
+	["support_innervate_gain_buff_on_killing_shocked_enemy"]=149,
+	["support_innervate_maximum_added_lightning_damage"]=150,
+	["support_innervate_minimum_added_lightning_damage"]=150,
+	["support_lesser_multiple_projectile_damage_+%_final"]=14,
+	["support_maim_chance_physical_damage_+%_final"]=91,
+	["support_maimed_enemies_physical_damage_taken_+%"]=464,
+	["support_melee_physical_damage_+%_final"]=1,
+	["support_melee_physical_damage_poison_and_bleeding_damage_+%_final_from_melee_hits"]=2,
+	["support_melee_splash_damage_+%_final"]=93,
+	["support_melee_splash_damage_+%_final_for_splash"]=95,
+	["support_minefield_mine_damage_+%_final"]=465,
+	["support_minefield_mine_throwing_speed_+%_final"]=466,
+	["support_minion_damage_+%_final"]=468,
+	["support_minion_defensive_stance_minion_damage_+%_final_against_enemies_near_you"]=469,
+	["support_minion_defensive_stance_minion_damage_taken_+%_final"]=470,
+	["support_minion_focus_fire_critical_strike_chance_+%_vs_focused_target"]=471,
+	["support_minion_focus_fire_critical_strike_multiplier_+_vs_focused_target"]=472,
+	["support_minion_focus_fire_damage_+%_final_vs_focussed_target"]=473,
+	["support_minion_instability_minion_base_fire_area_damage_per_minute"]=169,
+	["support_minion_maximum_life_+%_final"]=474,
+	["support_minion_offensive_stance_minion_damage_+%_final_while_you_have_puppet_master"]=475,
+	["support_minion_totem_resistance_elemental_damage_+%_final"]=476,
+	["support_minion_use_focussed_target"]=477,
+	["support_mirage_archer_attack_speed_+%_final"]=478,
+	["support_mirage_archer_base_duration"]=479,
+	["support_mirage_archer_damage_+%_final"]=480,
+	["support_multicast_cast_speed_+%_final"]=98,
+	["support_multiple_attack_damage_+%_final"]=100,
+	["support_multiple_attacks_melee_attack_speed_+%_final"]=99,
+	["support_multiple_projectile_damage_+%_final"]=12,
+	["support_multiple_projectiles_critical_strike_chance_+%_final"]=30,
+	["support_multithrow_damage_+%_final"]=102,
+	["support_overpowered_base_duration_ms"]=481,
+	["support_parallel_projectile_number_of_points_per_side"]=482,
+	["support_parallel_projectiles_damage_+%_final"]=483,
+	["support_phys_chaos_projectile_chaos_damage_over_time_+%_final"]=484,
+	["support_phys_chaos_projectile_physical_damage_over_time_+%_final"]=485,
+	["support_phys_chaos_projectile_spell_physical_projectile_damage_+%_final"]=486,
+	["support_phys_proj_attack_damage_bleeing_and_poison_damage_+%_final_from_projectile_hits"]=487,
+	["support_pierce_projectile_damage_+%_final"]=488,
+	["support_poison_poison_damage_+%_final"]=77,
+	["support_power_charge_on_crit_damage_+%_final_per_power_charge"]=489,
+	["support_projectile_attack_physical_damage_+%_final"]=490,
+	["support_projectile_attack_speed_+%_final"]=491,
+	["support_pulverise_area_of_effect_+%_final"]=492,
+	["support_pulverise_attack_speed_+%_final"]=493,
+	["support_pulverise_melee_area_damage_+%_final"]=494,
+	["support_rage_gain_rage_on_melee_hit_cooldown_ms"]=496,
+	["support_rain_projectile_damage_+%_final"]=13,
+	["support_rapid_activation_brand_activation_rate_+%_final"]=497,
+	["support_rapid_activation_brand_skill_only_primary_duration_+%_final"]=132,
+	["support_rapid_activation_brand_skill_only_secondary_duration_+%_final"]=133,
+	["support_rapid_decay_damage_over_time_+%_final"]=82,
+	["support_reduce_enemy_block_and_spell_block_%"]=498,
+	["support_reduce_enemy_dodge_and_spell_dodge_%"]=499,
+	["support_reduced_duration_damage_+%_final"]=130,
+	["support_reduced_duration_skill_effect_duration_+%_final"]=131,
+	["support_remote_mine_2_base_mine_detonation_time_ms"]=503,
+	["support_remote_mine_2_base_mine_duration"]=50,
+	["support_remote_mine_2_chance_to_deal_double_damage_%_against_enemies_near_mines"]=555,
+	["support_remote_mine_2_damage_+%_final"]=504,
+	["support_remote_mine_damage_+%_final_per_mine_detonation_cascade"]=505,
+	["support_remote_mine_hit_damage_+%_final"]=506,
+	["support_return_projectile_damage_+%_final"]=78,
+	["support_ruthless_big_hit_damage_+%_final"]=153,
+	["support_ruthless_big_hit_max_count"]=152,
+	["support_ruthless_big_hit_stun_base_duration_override_ms"]=155,
+	["support_ruthless_blow_bleeding_damage_from_melee_hits_+%_final"]=154,
+	["support_scion_onslaught_duration_+%"]=507,
+	["support_scion_onslaught_for_3_seconds_on_hitting_unique_enemy_%_chance"]=508,
+	["support_scion_onslaught_on_killing_blow_%_chance"]=509,
+	["support_scion_onslaught_on_killing_blow_duration_ms"]=509,
+	["support_scion_onslaught_on_unique_hit_duration_ms"]=508,
+	["support_slashing_buff_attack_cast_speed_+%_final_to_grant"]=511,
+	["support_slashing_buff_base_duration_ms"]=510,
+	["support_slashing_damage_+%_final_from_distance"]=512,
+	["support_slower_projectiles_damage_+%_final"]=513,
+	["support_slower_projectiles_projectile_speed_+%_final"]=129,
+	["support_spell_boost_area_damage_+%_final_per_charge"]=514,
+	["support_spell_boost_area_of_effect_+%_final_per_charge"]=514,
+	["support_spell_cascade_area_delay_+%"]=515,
+	["support_spell_cascade_area_of_effect_+%_final"]=516,
+	["support_spell_cascade_damage_+%_final"]=517,
+	["support_spell_cascade_number_of_cascades_per_side"]=518,
+	["support_spell_cascade_sideways"]=518,
+	["support_spell_echo_final_repeat_damage_+%_final"]=519,
+	["support_spell_rapid_fire_repeat_use_damage_+%_final"]=554,
+	["support_spell_totem_cast_speed_+%_final"]=124,
+	["support_spirit_strike_damage_+%_final"]=72,
+	["support_spiritual_cry_damage_+%_final"]=520,
+	["support_split_projectile_damage_+%_final"]=73,
+	["support_storm_barrier_damage_+%_final"]=523,
+	["support_storm_barrier_damage_buff_base_duration_ms"]=521,
+	["support_storm_barrier_damage_buff_time_threshold_ms"]=522,
+	["support_storm_barrier_physical_damage_taken_when_hit_+%_final"]=524,
+	["support_storm_barrier_skill_type_damage_+%_final"]=525,
+	["support_storm_barrier_skill_type_damage_taken_when_hit_+%_final"]=526,
+	["support_totem_damage_+%_final"]=16,
+	["support_trap_and_mine_damage_+%_final"]=527,
+	["support_trap_damage_+%_final"]=101,
+	["support_trap_hit_damage_+%_final"]=528,
+	["support_unbound_ailments_ailment_damage_+%_final"]=529,
+	["support_void_manipulation_chaos_damage_+%_final"]=79,
+	["support_weapon_elemental_damage_+%_final"]=9,
+	["support_withered_base_duration_ms"]=147,
+	["supported_curse_skill_gem_level_+"]=530,
+	["supported_skill_can_only_use_axe_and_sword"]=531,
+	["supported_skill_can_only_use_dagger_and_claw"]=533,
+	["supported_skill_can_only_use_mace_and_staff"]=534,
+	["total_number_of_arrows_to_fire"]=34,
+	["total_number_of_projectiles_to_fire"]=34,
+	["trap_critical_strike_multiplier_+_per_power_charge"]=536,
+	["trap_damage_+%"]=537,
+	["trap_duration_+%"]=56,
+	["trap_spread_+%"]=538,
+	["trap_throwing_speed_+%"]=539,
+	["trap_throwing_speed_+%_per_frenzy_charge"]=540,
+	["trap_trigger_radius_+%"]=541,
+	["trap_trigger_radius_+%_per_power_charge"]=542,
+	["trigger_brand_support_hit_ailment_damage_+%_final_vs_branded_enemy"]=543,
+	["trigger_vicious_hex_explosion_when_curse_ends"]=112,
+	["triggered_by_brand_support"]=544,
+	["triggered_by_spiritual_cry"]=545,
+	["triggered_skill_damage_+%"]=546,
+	["triggered_spell_spell_damage_+%"]=17,
+	["unleash_support_seal_gain_frequency_+%_while_channelling"]=547,
+	["unleash_support_seal_gain_frequency_+%_while_not_channelling"]=548,
+	["virtual_cast_when_damage_taken_threshold"]=117,
+	["virtual_support_anticipation_charge_gain_interval_ms"]=553,
+	["virtual_support_scion_onslaught_on_killing_blow_duration_ms"]=509,
+	["warcry_speed_+%"]=549,
+	["weapon_elemental_damage_+%"]=550,
+	["wither_applies_additional_wither_%"]=551,
+	["withered_on_hit_chance_%"]=137,
+	["you_and_enemy_movement_velocity_+%_while_affected_by_ailment_you_inflicted"]=552
 }

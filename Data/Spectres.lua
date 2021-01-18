@@ -3875,7 +3875,7 @@ minions["Metadata/Monsters/LeagueBetrayal/BetrayalSecretPolice2Spectre_"] = {
 		"Melee",
 		"WalkEmergeBetrayal",
 		"BetrayalSecretPoliceCurveDagger1",
-		"EmptyActionSpellSecretPoliceDaggers",
+		"EmptyActionAttackSecretPoliceDaggers",
 	},
 	modList = {
 	},modListSP = {

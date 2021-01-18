@@ -816,9 +816,7 @@ mod("CritMultiplier", "BASE", nil, 0, 0, { type = "Condition", var = "Elusive" }
 ["poison_dot_multiplier_+"] = {
 	mod("DotMultiplier", "BASE", nil, 0, KeywordFlag.Poison),
 },
-["critical_ailment_dot_multiplier_+"] = {
-	mod("DotMultiplier", "BASE", nil, KeywordFlag.Ailment, { type = "Condition", var = "CriticalStrike" }),
-},
+
 ["fire_dot_multiplier_+"] = {
 	mod("FireDotMultiplier", "BASE", nil),
 },

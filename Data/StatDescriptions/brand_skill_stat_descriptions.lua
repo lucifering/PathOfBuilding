@@ -5,10 +5,6 @@ return {
 		}
 	},
 	[2]={
-		stats={
-			[1]="armageddon_brand_brands_attach_to_new_enemy_each_activation_%_chance"
-		},
-		name="armageddon_brand_reattach_each_activation_chance",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -18,16 +14,16 @@ return {
 							[2]="#"
 						}
 					},
-					text="烙印每次启动都有 {0}% 几率附着一个新敌人"
+					text="烙印每次启动都有 {0}% 的几率附着一个新敌人"
 				}
 			}
+		},
+		name="armageddon_brand_reattach_each_activation_chance",
+		stats={
+			[1]="armageddon_brand_brands_attach_to_new_enemy_each_activation_%_chance"
 		}
 	},
 	[3]={
-		stats={
-			[1]="base_secondary_skill_effect_duration"
-		},
-		name="base_secondary_duration_identifier",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -35,23 +31,22 @@ return {
 						k="milliseconds_to_seconds_2dp",
 						v=1
 					},
-					text="解除附着后可获得总计 {0} 秒的持续时间",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="解除附着后可获得总计 {0} 秒的持续时间"
 				}
 			}
+		},
+		name="base_secondary_duration_identifier",
+		stats={
+			[1]="base_secondary_skill_effect_duration"
 		}
 	},
 	[4]={
-		stats={
-			[1]="base_skill_effect_duration",
-			[2]="quality_display_base_duration_is_gem"
-		},
-		name="base_duration_identifier",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -59,7 +54,6 @@ return {
 						k="milliseconds_to_seconds_2dp",
 						v=1
 					},
-					text="附着后可获得总计 {0} 秒的持续时间",
 					limit={
 						[1]={
 							[1]="#",
@@ -69,16 +63,18 @@ return {
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="附着后可获得总计 {0} 秒的持续时间"
 				}
 			}
+		},
+		name="base_duration_identifier",
+		stats={
+			[1]="base_skill_effect_duration",
+			[2]="quality_display_base_duration_is_quality"
 		}
 	},
 	[5]={
-		stats={
-			[1]="base_tertiary_skill_effect_duration"
-		},
-		name="base_tertiary_duration_identifier",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -86,22 +82,22 @@ return {
 						k="milliseconds_to_seconds_2dp",
 						v=1
 					},
-					text="减益效果基础持续时间为 {0} 秒",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="减益效果基础持续时间为 {0} 秒"
 				}
 			}
+		},
+		name="base_tertiary_duration_identifier",
+		stats={
+			[1]="base_tertiary_skill_effect_duration"
 		}
 	},
 	[6]={
-		stats={
-			[1]="brands_per_target_limit"
-		},
-		name="brand_target_limit",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -123,13 +119,13 @@ return {
 					text="可以对敌人附着 {0} 个烙印"
 				}
 			}
+		},
+		name="brand_target_limit",
+		stats={
+			[1]="brands_per_target_limit"
 		}
 	},
 	[7]={
-		stats={
-			[1]="conduit_sigil_number_of_beam_targets"
-		},
-		name="storm_brand_beam_num",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -151,13 +147,13 @@ return {
 					text="向 {0} 个敌人，包括带有烙印的敌人发射光线"
 				}
 			}
+		},
+		name="storm_brand_beam_num",
+		stats={
+			[1]="conduit_sigil_number_of_beam_targets"
 		}
 	},
 	[8]={
-		stats={
-			[1]="secondary_skill_effect_duration"
-		},
-		name="secondary_skill_duration",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -165,22 +161,22 @@ return {
 						k="milliseconds_to_seconds_2dp",
 						v=1
 					},
-					text="解除附着后可获得总计 {0} 秒的持续时间",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="解除附着后可获得总计 {0} 秒的持续时间"
 				}
 			}
+		},
+		name="secondary_skill_duration",
+		stats={
+			[1]="secondary_skill_effect_duration"
 		}
 	},
 	[9]={
-		stats={
-			[1]="sigil_attached_target_damage_+%_final"
-		},
-		name="sigil_attached_target_damage_final",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -197,22 +193,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="对带有烙印的敌人造成的总伤害最多额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="对带有烙印的敌人造成的总伤害最多额外降低 {0}%"
 				}
 			}
+		},
+		name="sigil_attached_target_damage_final",
+		stats={
+			[1]="sigil_attached_target_damage_+%_final"
 		}
 	},
 	[10]={
-		stats={
-			[1]="sigil_repeat_frequency_ms"
-		},
-		name="sigil_activate_frequency",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -220,35 +216,35 @@ return {
 						k="milliseconds_to_seconds_2dp",
 						v=1
 					},
-					text="附着后每 {0} 秒激活一次",
 					limit={
 						[1]={
 							[1]=1000,
 							[2]=1000
 						}
-					}
+					},
+					text="附着后每 {0} 秒激活一次"
 				},
 				[2]={
 					[1]={
 						k="milliseconds_to_seconds_2dp",
 						v=1
 					},
-					text="附着后每 {0} 秒激活一次",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="附着后每 {0} 秒激活一次"
 				}
 			}
+		},
+		name="sigil_activate_frequency",
+		stats={
+			[1]="sigil_repeat_frequency_ms"
 		}
 	},
 	[11]={
-		stats={
-			[1]="skill_effect_duration"
-		},
-		name="skill_duration",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -256,22 +252,22 @@ return {
 						k="milliseconds_to_seconds_2dp",
 						v=1
 					},
-					text="附着后可获得总计 {0} 秒的持续时间",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="附着后可获得总计 {0} 秒的持续时间"
 				}
 			}
+		},
+		name="skill_duration",
+		stats={
+			[1]="skill_effect_duration"
 		}
 	},
 	[12]={
-		stats={
-			[1]="tertiary_buff_effect_duration"
-		},
-		name="tertiary_buff_duration",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -279,29 +275,33 @@ return {
 						k="milliseconds_to_seconds_2dp",
 						v=1
 					},
-					text="减益效果持续 {0} 秒",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="减益效果持续 {0} 秒"
 				}
 			}
+		},
+		name="tertiary_buff_duration",
+		stats={
+			[1]="tertiary_buff_effect_duration"
 		}
 	},
 	["armageddon_brand_brands_attach_to_new_enemy_each_activation_%_chance"]=2,
-	["secondary_skill_effect_duration"]=8,
-	["quality_display_base_duration_is_gem"]=4,
-	parent="skill_stat_descriptions",
-	["sigil_repeat_frequency_ms"]=10,
-	["base_secondary_skill_effect_duration"]=3,
-	["tertiary_buff_effect_duration"]=12,
-	["skill_effect_duration"]=11,
 	["base_number_of_sigils_allowed_per_target"]=1,
+	["base_secondary_skill_effect_duration"]=3,
 	["base_skill_effect_duration"]=4,
 	["base_tertiary_skill_effect_duration"]=5,
-	["sigil_attached_target_damage_+%_final"]=9,
+	["brands_per_target_limit"]=6,
 	["conduit_sigil_number_of_beam_targets"]=7,
-	["brands_per_target_limit"]=6
+	parent="skill_stat_descriptions",
+	["quality_display_base_duration_is_quality"]=4,
+	["secondary_skill_effect_duration"]=8,
+	["sigil_attached_target_damage_+%_final"]=9,
+	["sigil_repeat_frequency_ms"]=10,
+	["skill_effect_duration"]=11,
+	["tertiary_buff_effect_duration"]=12
 }

@@ -1,9 +1,5 @@
 return {
 	[1]={
-		stats={
-			[1]="projectile_number_to_split"
-		},
-		name="base_split_num",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -25,6 +21,10 @@ return {
 					text="射线会分裂射击 {0} 个额外目标"
 				}
 			}
+		},
+		name="base_split_num",
+		stats={
+			[1]="projectile_number_to_split"
 		}
 	},
 	parent="skill_stat_descriptions",

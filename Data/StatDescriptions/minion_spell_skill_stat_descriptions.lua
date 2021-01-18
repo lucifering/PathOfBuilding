@@ -1,9 +1,5 @@
 return {
 	[1]={
-		stats={
-			[1]="base_cast_speed_+%"
-		},
-		name="cast_speed_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -20,22 +16,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="该法术与召唤生物的施法速度降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="该法术与召唤生物的施法速度降低 {0}%"
 				}
 			}
+		},
+		name="cast_speed_incr",
+		stats={
+			[1]="base_cast_speed_+%"
 		}
 	},
 	[2]={
-		stats={
-			[1]="cast_speed_+%_when_on_low_life"
-		},
-		name="cast_speed_incr_on_low_life",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -43,13 +39,13 @@ return {
 						k="reminderstring",
 						v="ReminderTextLowLife"
 					},
-					text="当低血时，该法术与召唤生物的施法速度提高 {0}%",
 					limit={
 						[1]={
 							[1]=1,
 							[2]="#"
 						}
-					}
+					},
+					text="当低血时，该法术与召唤生物的施法速度提高 {0}%"
 				},
 				[2]={
 					[1]={
@@ -60,22 +56,22 @@ return {
 						k="reminderstring",
 						v="ReminderTextLowLife"
 					},
-					text="当低血时，该法术与召唤生物的施法速度降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="当低血时，该法术与召唤生物的施法速度降低 {0}%"
 				}
 			}
+		},
+		name="cast_speed_incr_on_low_life",
+		stats={
+			[1]="cast_speed_+%_when_on_low_life"
 		}
 	},
 	[3]={
-		stats={
-			[1]="support_multicast_cast_speed_+%_final"
-		},
-		name="multicast_cast_speed_incr",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -92,22 +88,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="该法术与召唤生物的总施法速度额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="该法术与召唤生物的总施法速度额外降低 {0}%"
 				}
 			}
+		},
+		name="multicast_cast_speed_incr",
+		stats={
+			[1]="support_multicast_cast_speed_+%_final"
 		}
 	},
 	[4]={
-		stats={
-			[1]="support_spell_totem_cast_speed_+%_final"
-		},
-		name="totem_cast_speed",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -124,22 +120,22 @@ return {
 						k="negate",
 						v=1
 					},
-					text="该法术与召唤生物的总施法速度额外降低 {0}%",
 					limit={
 						[1]={
 							[1]="#",
 							[2]=-1
 						}
-					}
+					},
+					text="该法术与召唤生物的总施法速度额外降低 {0}%"
 				}
 			}
+		},
+		name="totem_cast_speed",
+		stats={
+			[1]="support_spell_totem_cast_speed_+%_final"
 		}
 	},
 	[5]={
-		stats={
-			[1]="summon_raging_spirit_melee_splash_fire_damage_only"
-		},
-		name="melee_splash_fire_only",
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -152,12 +148,13 @@ return {
 					text="召唤生物的近战打击技能对周围敌人造成火焰限定溅射伤害"
 				}
 			}
+		},
+		name="melee_splash_fire_only",
+		stats={
+			[1]="summon_raging_spirit_melee_splash_fire_damage_only"
 		}
 	},
 	[6]={
-		stats={
-			[1]="support_additional_trap_mine_%_chance_for_1_additional_trap_mine"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -165,21 +162,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextMultipleMines"
 					},
-					text="该技能和召唤生物有 {0}% 几率投掷 1 个额外的陷阱或地雷",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="该技能和召唤生物有 {0}% 的几率投掷 1 个额外的陷阱或地雷"
 				}
 			}
+		},
+		stats={
+			[1]="support_additional_trap_mine_%_chance_for_1_additional_trap_mine"
 		}
 	},
 	[7]={
-		stats={
-			[1]="support_additional_trap_mine_%_chance_for_2_additional_trap_mine"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -187,21 +184,21 @@ return {
 						k="reminderstring",
 						v="ReminderTextMultipleMines"
 					},
-					text="该技能和召唤生物有 {0}% 几率投掷 2 个额外的陷阱或地雷",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="该技能和召唤生物有 {0}% 的几率投掷 2 个额外的陷阱或地雷"
 				}
 			}
+		},
+		stats={
+			[1]="support_additional_trap_mine_%_chance_for_2_additional_trap_mine"
 		}
 	},
 	[8]={
-		stats={
-			[1]="support_additional_trap_mine_%_chance_for_3_additional_trap_mine"
-		},
 		lang={
 			["Simplified Chinese"]={
 				[1]={
@@ -209,24 +206,27 @@ return {
 						k="reminderstring",
 						v="ReminderTextMultipleMines"
 					},
-					text="该技能和召唤生物有 {0}% 几率投掷 3 个额外的陷阱或地雷",
 					limit={
 						[1]={
 							[1]="#",
 							[2]="#"
 						}
-					}
+					},
+					text="该技能和召唤生物有 {0}% 的几率投掷 3 个额外的陷阱或地雷"
 				}
 			}
+		},
+		stats={
+			[1]="support_additional_trap_mine_%_chance_for_3_additional_trap_mine"
 		}
 	},
 	["base_cast_speed_+%"]=1,
-	["support_additional_trap_mine_%_chance_for_2_additional_trap_mine"]=7,
 	["cast_speed_+%_when_on_low_life"]=2,
 	parent="minion_skill_stat_descriptions",
-	["support_spell_totem_cast_speed_+%_final"]=4,
 	["summon_raging_spirit_melee_splash_fire_damage_only"]=5,
-	["support_multicast_cast_speed_+%_final"]=3,
+	["support_additional_trap_mine_%_chance_for_1_additional_trap_mine"]=6,
+	["support_additional_trap_mine_%_chance_for_2_additional_trap_mine"]=7,
 	["support_additional_trap_mine_%_chance_for_3_additional_trap_mine"]=8,
-	["support_additional_trap_mine_%_chance_for_1_additional_trap_mine"]=6
+	["support_multicast_cast_speed_+%_final"]=3,
+	["support_spell_totem_cast_speed_+%_final"]=4
 }

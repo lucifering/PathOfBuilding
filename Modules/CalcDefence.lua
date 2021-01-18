@@ -394,6 +394,7 @@ s_format("近似近战闪避率: %d%%", output.MeleeEvadeChance),
 		output.BlockEffect = 100
 	else
 		output.ShowBlockEffect = true
+		output.DamageTakenOnBlock = 100 - output.BlockEffect
 	end
 	output.LifeOnBlock = modDB:Sum("BASE", nil, "LifeOnBlock")
 	output.ManaOnBlock = modDB:Sum("BASE", nil, "ManaOnBlock")
@@ -1108,9 +1109,8 @@ label = "持续伤害加成:",
 				local final = portion / 100 * (1 - resist / 100) * takenMult
 				local finalReflect = portion / 100 * (1 - resist / 100) * takenMultReflect
 				mult = mult + final
-				if damageType == destType then
-					output[damageType.."BaseTakenHitMult"] = (1 - resist / 100) * takenMult
-				end
+				output[damageType..destType.."BaseTakenHitMult"] = (1 - resist / 100) * takenMult
+				
 				multReflect = multReflect + finalReflect
 				if breakdown then
 					t_insert(breakdown[damageType.."TakenHitMult"].rowList, {
@@ -1224,7 +1224,7 @@ label = "持续伤害加成:",
 		output[damageType.."MaximumHitTaken"] = m_huge
 		for _, damageConvertedType in ipairs(dmgTypeList) do
 			if actor.damageShiftTable[damageType][damageConvertedType] > 0 then
-				local hitTaken = output[damageConvertedType.."TotalPool"] / (actor.damageShiftTable[damageType][damageConvertedType] / 100) / output[damageConvertedType.."BaseTakenHitMult"]
+				local hitTaken = output[damageConvertedType.."TotalPool"] / (actor.damageShiftTable[damageType][damageConvertedType] / 100) / output[damageType..damageConvertedType.."BaseTakenHitMult"]
 				if hitTaken < output[damageType.."MaximumHitTaken"] then
 					output[damageType.."MaximumHitTaken"] = hitTaken
 				end
@@ -1233,7 +1233,7 @@ label = "持续伤害加成:",
 					t_insert(breakdown[damageType.."MaximumHitTaken"].rowList, {
 						type = s_format("%d%% as %s", actor.damageShiftTable[damageType][damageConvertedType], damageConvertedType),
 						pool = s_format("x %d", output[damageConvertedType.."TotalPool"]),
-						taken = s_format("/ %.2f", output[damageConvertedType.."BaseTakenHitMult"]),
+						taken = s_format("/ %.2f", output[damageType..damageConvertedType.."BaseTakenHitMult"]),
 						final = s_format("x %.0f", hitTaken),
 					})
 				end
@@ -1253,17 +1253,17 @@ label = "持续伤害加成:",
 		local minimumChanceToTakeDamage = -m_huge
 		local minimumEHPMode = "NONE"
 		if damageCategoryConfig == "Minimum" then
-			local damageCategorysList = {"Melee", "Projectile", "Spell", "SpellProjectile"}
+			local damageCategoriesList = {"Melee", "Projectile", "Spell", "SpellProjectile"}
 			minimumEHPMode = "Melee"
-			for _, damageCategorys in ipairs(damageCategorysList) do
+			for _, damageCategories in ipairs(damageCategoriesList) do
 				local convertedAvoidance = 0
 				for _, damageConvertedType in ipairs(dmgTypeList) do
-					convertedAvoidance = convertedAvoidance + output[damageConvertedType..damageCategorys.."DamageChance"] * actor.damageShiftTable[damageType][damageConvertedType] / 100
+					convertedAvoidance = convertedAvoidance + output[damageConvertedType..damageCategories.."DamageChance"] * actor.damageShiftTable[damageType][damageConvertedType] / 100
 				end
-				local chanceToTakeDamage = (1 - output[damageCategorys.."NotHitChance"] / 100) / (1 - convertedAvoidance / 100)
+				local chanceToTakeDamage = (1 - output[damageCategories.."NotHitChance"] / 100) / (1 - convertedAvoidance / 100)
 				if chanceToTakeDamage > minimumChanceToTakeDamage then
 					minimumChanceToTakeDamage = chanceToTakeDamage
-					minimumEHPMode = damageCategorys
+					minimumEHPMode = damageCategories
 				end
 			end
 			damageCategory = minimumEHPMode
@@ -1273,20 +1273,22 @@ label = "持续伤害加成:",
 		output[damageType.."NumberOfHits"] = m_huge
 		local minimumDamageConvertedType = damageType -- this is used for the breakdown
 		for _, damageConvertedType in ipairs(dmgTypeList) do
-			local damageTaken = (damage  * actor.damageShiftTable[damageType][damageConvertedType] / 100 * output[damageConvertedType.."BaseTakenHitMult"])
-			local hitsTaken = math.ceil(output[damageConvertedType.."TotalPool"] / damageTaken)
-			hitsTaken = hitsTaken / (1 - output[damageCategory.."NotHitChance"] / 100)  / (1 - output[damageConvertedType..damageCategory.."DamageChance"] / 100)
-			if hitsTaken < output[damageType.."NumberOfHits"] then
-				output[damageType.."NumberOfHits"] = hitsTaken
-				minimumDamageConvertedType = damageConvertedType
+			if actor.damageShiftTable[damageType][damageConvertedType] > 0 then
+				local damageTaken = (damage  * actor.damageShiftTable[damageType][damageConvertedType] / 100 * output[damageType..damageConvertedType.."BaseTakenHitMult"])
+				local hitsTaken = math.ceil(output[damageConvertedType.."TotalPool"] / damageTaken)
+				hitsTaken = hitsTaken / (1 - output[damageCategory.."NotHitChance"] / 100)  / (1 - output[damageConvertedType..damageCategory.."DamageChance"] / 100)
+				if hitsTaken < output[damageType.."NumberOfHits"] then
+					output[damageType.."NumberOfHits"] = hitsTaken
+					minimumDamageConvertedType = damageConvertedType
+				end
 			end
 		end
 		if breakdown then
 			breakdown[damageType.."NumberOfHits"] = {
 				s_format("EHP 计算模式: %s", damageCategoryConfig),
 				s_format("总资源池: %d", output[damageType.."TotalPool"]),
-				s_format("减伤前的伤害: %d", damage),
-				s_format("每次击中承受伤害: %.2f", damage * output[minimumDamageConvertedType.."BaseTakenHitMult"]),
+				s_format("减伤前的伤害: %d", damage),			
+				s_format("每次击中承受伤害: %.2f", damage * output[damageType..minimumDamageConvertedType.."BaseTakenHitMult"]),
 				s_format("%s 不被击中的几率: %d%%", damageCategory, output[damageCategory.."NotHitChance"]),
 				s_format("%s 被击中时不承受伤害的几率: %d%%", DamageType, output[minimumDamageConvertedType..damageCategory.."DamageChance"]),
 				s_format("Average Number of hits you can take: %.2f", output[damageType.."NumberOfHits"]),

@@ -639,6 +639,10 @@ output.ChainMaxString = "无法连锁"
 				output.PierceCount = skillModList:Sum("BASE", skillCfg, "PierceCount")
 				output.PierceCountString = output.PierceCount
 			end
+			if output.PierceCount > 0 then
+				skillFlags.piercing = true
+			end
+			output.PiercedCount = m_min(output.PierceCount, skillModList:Sum("BASE", skillCfg, "PiercedCount"))
 		end
 		output.ProjectileSpeedMod = calcLib.mod(skillModList, skillCfg, "ProjectileSpeed")
 		if breakdown then
@@ -971,7 +975,14 @@ t_insert(breakdown.DurationSecondary, s_format("/ %.2f ^8(debuff更快或更慢�
 		end
 	end
 
-	
+	-- account for Sacrificial Zeal
+	-- Note: Sacrificial Zeal grants Added Spell Physical Damage equal to 25% of the Skill's Mana Cost, and causes you to take Physical Damage over Time, for 4 seconds
+	if skillModList:Flag(nil, "Condition:SacrificialZeal") then
+		local multiplier = 0.25
+		skillModList:NewMod("PhysicalMin", "BASE", m_floor(output.ManaCost * multiplier), "热情牺牲", ModFlag.Spell)
+		skillModList:NewMod("PhysicalMax", "BASE", m_floor(output.ManaCost * multiplier), "热情牺牲", ModFlag.Spell)
+	end
+
 	runSkillFunc("preDamageFunc")
 
 
@@ -2211,23 +2222,23 @@ t_insert(breakdown[damageType], s_format("x %.3f ^8(有效 DPS 加成)", effMult
 			 
 		end
 		local highestType = "Physical"
-		if breakdown then
-			-- For each damage type, calculate percentage of total damage. Also tracks the highest damage type and outputs a Condition:TypeIsHighestDamageType flag for whichever the highest type is
-			
-			for _, damageType in ipairs(dmgTypeList) do
-				if output[damageType.."HitAverage"] > 0 then
-					local portion = output[damageType.."HitAverage"] / totalHitAvg * 100
-					local highestPortion = output[highestType.."HitAverage"] / totalHitAvg * 100
-					if portion > highestPortion then
-						highestType = damageType
-						highestPortion = portion
-					end
+		
+		-- For each damage type, calculate percentage of total damage. Also tracks the highest damage type and outputs a Condition:TypeIsHighestDamageType flag for whichever the highest type is
+		for _, damageType in ipairs(dmgTypeList) do
+			if output[damageType.."HitAverage"] > 0 then
+				local portion = output[damageType.."HitAverage"] / totalHitAvg * 100
+				local highestPortion = output[highestType.."HitAverage"] / totalHitAvg * 100
+				if portion > highestPortion then
+					highestType = damageType
+					highestPortion = portion
+				end
+				if breakdown then
 					t_insert(breakdown[damageType], s_format("占总伤害的: %d%%", portion))
-
 				end
 			end
-			skillModList:NewMod("Condition:"..highestType.."IsHighestDamageType", "FLAG", true, "Config")
 		end
+		skillModList:NewMod("Condition:"..highestType.."IsHighestDamageType", "FLAG", true, "Config")
+		
 
 		local hitRate = output.HitChance / 100 * (globalOutput.HitSpeed or globalOutput.Speed) * (skillData.dpsMultiplier or 1)
 
@@ -3172,7 +3183,13 @@ s_format("异常计算模式: %s ^8(可以在配置面板修改)", igniteMode ==
 				}
 			end
 			--local baseVal = calcAilmentDamage("Ignite", sourceHitDmg, sourceCritDmg) * 0.5
-			local baseVal = calcAilmentDamage("Ignite", sourceHitDmg, sourceCritDmg) * data.misc.IgnitePercentBase * output.FistOfWarAilmentEffect * globalOutput.AilmentWarcryEffect
+			local baseVal = calcAilmentDamage("Ignite", sourceHitDmg, sourceCritDmg) *
+			data.misc.IgnitePercentBase * output.FistOfWarAilmentEffect * globalOutput.AilmentWarcryEffect
+			
+			print("3204--output.baseVal--"..baseVal);
+			print("3204--output.sourceHitDmg--"..sourceHitDmg);
+			print("3204--output.sourceCritDmg--"..sourceCritDmg);
+				
 			if baseVal > 0 then
 				skillFlags.ignite = true
 				local effMult = 1
@@ -3200,7 +3217,9 @@ s_format("异常计算模式: %s ^8(可以在配置面板修改)", igniteMode ==
 				end
 				local effectMod = calcLib.mod(skillModList, dotCfg, "AilmentEffect")
 				local rateMod = (calcLib.mod(skillModList, cfg, "IgniteBurnFaster") + enemyDB:Sum("INC", nil, "SelfIgniteBurnFaster") / 100)  / calcLib.mod(skillModList, cfg, "IgniteBurnSlower")
-				output.IgniteDPS = baseVal * effectMod * rateMod * effMult				
+				output.IgniteDPS = baseVal * effectMod * rateMod * effMult	
+				
+				
 				local incDur = skillModList:Sum("INC", dotCfg, "EnemyIgniteDuration", "SkillAndDamagingAilmentDuration") + enemyDB:Sum("INC", nil, "SelfIgniteDuration")
 				local moreDur = enemyDB:More(nil, "SelfIgniteDuration")
 				globalOutput.IgniteDuration = 4 * (1 + incDur / 100) * moreDur / rateMod * debuffDurationMult

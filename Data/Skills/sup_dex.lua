@@ -136,7 +136,7 @@ description = "辅助攻击技能",
 	addSkillTypes = { },
 	excludeSkillTypes = { },
 	statDescriptionScope = "gem_stat_descriptions",
-	statMap = {
+    statMap = {
 		["attack_damage_+%_per_1000_accuracy_rating"] = {
 			mod("Damage", "INC", nil, ModFlag.Attack, 0, { type = "PerStat", div = 1000, stat = "Accuracy"})
 		}
@@ -226,7 +226,6 @@ description = "辅助将箭矢像投射物一般向前发射的弓箭技能。�
 		},
 		Alternate2 = {
 			{ "base_projectile_speed_+%", -2 },
-		
 			{ "damage_+%", 1 },
 		},
 	},
@@ -993,7 +992,6 @@ description = "辅助投射物和其他任意能连锁的技能",
 	qualityStats = {
 		Default = {
 			{ "base_projectile_speed_+%", 1 },
-		
 			{ "attack_and_cast_speed_+%", 0.5 },
 		},
 	},
@@ -1041,7 +1039,7 @@ description = "辅助任意击中敌人的技能",
 			{ "global_hit_causes_monster_flee_%", 1 },
 		},
 		Alternate1 = {
-			{ "base_cast_speed_+%", -0.5},
+			{ "base_cast_speed_+%", -0.5 },
 		},
 	},
 	stats = {
@@ -1112,7 +1110,6 @@ description = "辅助陷阱技能",
 		},
 		Alternate1 = {
 			{ "%_chance_to_gain_power_charge_on_trap_triggered_by_an_enemy", 0.5 },
-		
 			{ "%_chance_to_gain_frenzy_charge_on_trap_triggered_by_an_enemy", 0.5 },
 		},
 		Alternate2 = {
@@ -1453,7 +1450,6 @@ description = "辅助任意击中敌人的技能, 如果敌人在被击中后小
 	qualityStats = {
 		Default = {
 			{ "attack_speed_+%", 0.5 },
-		
 			{ "base_cast_speed_+%", 0.5 },
 		},
 		Alternate1 = {
@@ -1540,7 +1536,6 @@ description = "辅助任意击中敌人的技能",
 		},
 		Alternate2 = {
 			{ "dot_multiplier_+", 0.5 },
-		
 			{ "support_better_ailments_hit_damage_+%_final", -3 },
 		},
 	},
@@ -1767,7 +1762,6 @@ description = "辅助投射物技能",
 	qualityStats = {
 		Default = {
 			{ "attack_speed_+%", 0.5 },
-		
 			{ "base_cast_speed_+%", 0.5 },
 		},
 		Alternate1 = {
@@ -1775,7 +1769,6 @@ description = "辅助投射物技能",
 		},
 		Alternate2 = {
 			{ "base_projectile_speed_+%", 0.5 },
-		
 			{ "projectile_damage_+%", 0.5 },
 		},
 	},
@@ -1971,12 +1964,10 @@ description = "辅助投射物技能",
 	qualityStats = {
 		Default = {
 			{ "attack_speed_+%", 0.5 },
-		
 			{ "base_cast_speed_+%", 0.5 },
 		},
 		Alternate1 = {
 			{ "base_mana_cost_-%", 1 },
-		
 			{ "base_projectile_speed_+%", 0.5 },
 		},
 		Alternate2 = {
@@ -2052,7 +2043,6 @@ description = "辅助投射物技能",
 	qualityStats = {
 		Default = {
 			{ "attack_speed_+%", 1 },
-		
 			{ "base_cast_speed_+%", 1 },
 		},
 	},
@@ -2414,12 +2404,10 @@ description = "辅助投射物技能",
 	qualityStats = {
 		Default = {
 			{ "attack_speed_+%", 0.5 },
-		
 			{ "base_cast_speed_+%", 0.5 },
 		},
 		Alternate1 = {
 			{ "base_mana_cost_-%", 1 },
-		
 			{ "base_projectile_speed_+%", 0.5 },
 		},
 		Alternate2 = {
@@ -2493,7 +2481,7 @@ description = "辅助任意击中敌人的技能",
 			{ "base_poison_damage_+%", 0.5 },
 		},
 		Alternate1 = {
-			{ "gain_frenzy_charge_on_killing_blow_vs_enemies_with_5+_poisons_%", 0.2 },
+			{ "base_poison_duration_+%", 0.5 },
 		},
 		Alternate2 = {
 			{ "hit_damage_+%", 1 },
@@ -2638,7 +2626,6 @@ description = "能够辅助使用弓的攻击技能。被辅助的技能只能�
 		},
 		Alternate1 = {
 			{ "mirage_archer_number_of_additional_projectiles", 0.1 },
-		
 			{ "support_mirage_archer_base_duration", -100 },
 		},
 		Alternate2 = {
@@ -3170,7 +3157,6 @@ description = "辅助有冷却时间的技能。 不能辅助触发技能。",
 		},
 		Alternate1 = {
 			{ "support_added_cooldown_count_if_not_instant", 0.05 },
-		
 			{ "base_cooldown_speed_+%", -0.5 },
 		},
 		Alternate2 = {
@@ -3326,7 +3312,6 @@ description = "辅助任意有持续时间或能通过击中造成异常状态�
 		},
 		Alternate1 = {
 			{ "attack_and_cast_speed_+%", 0.25 },
-		
 			{ "base_projectile_speed_+%", 0.5 },
 		},
 		Alternate2 = {
@@ -3400,7 +3385,6 @@ description = "辅助任意有持续时间或能通过击中造成异常状态�
 	qualityStats = {
 		Default = {
 			{ "damage_over_time_+%", 0.5 },
-		
 			{ "dot_multiplier_+", 0.5 },
 		},
 	},
@@ -3445,7 +3429,6 @@ description = "辅助投掷陷阱或地雷技能.",
 	qualityStats = {
 		Default = {
 			{ "mine_laying_speed_+%", 0.5 },
-		
 			{ "trap_throwing_speed_+%", 0.5 },
 		},
 		Alternate1 = {
@@ -3453,7 +3436,6 @@ description = "辅助投掷陷阱或地雷技能.",
 		},
 		Alternate2 = {
 			{ "trap_throwing_speed_+%_per_frenzy_charge", 0.1 },
-		
 			{ "mine_throwing_speed_+%_per_frenzy_charge", 0.1 },
 		},
 	},
@@ -3682,7 +3664,6 @@ description = "辅助投掷陷阱或地雷技能.",
 		},
 		Alternate1 = {
 			{ "base_mana_cost_-%", 0.5 },
-		
 			{ "base_mana_reservation_+%", -0.5 },
 		},
 		Alternate2 = {
@@ -3768,7 +3749,6 @@ description = "辅助发射投射物的攻击技能",
 		},
 		Alternate1 = {
 			{ "bleed_on_hit_with_attacks_%", 0.5 },
-		
 			{ "base_chance_to_poison_on_hit_%", 0.5 },
 		},
 		Alternate2 = {
@@ -3987,7 +3967,6 @@ description = "辅助任意造成伤害的技能",
 		},
 		Alternate1 = {
 			{ "base_skill_area_of_effect_+%", 0.25 },
-		
 			{ "attack_and_cast_speed_+%", 0.25 },
 		},
 		Alternate2 = {
@@ -4175,9 +4154,6 @@ description = "辅助攻击技能",
 	addSkillTypes = { SkillType.Duration, },
 	excludeSkillTypes = { },
 	statDescriptionScope = "gem_stat_descriptions",
-	statMap = {
-		
-	},
 	baseMods = {
 	},
 	qualityStats = {

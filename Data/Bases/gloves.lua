@@ -508,3 +508,93 @@ itemBases["黄金臂甲"] = {
 	armour = { },
 	req = { level = 12, },
 }
+itemBases["沉重手甲"] = {
+	type = "Gloves",
+	subType = "Armour",
+	socketLimit = 4,
+	tags = { default = true, armour = true, gloves = true, str_armour = true, not_for_sale = true, },
+	implicit = "增助攻击的伤害提高 (40-50)%\n战吼技能冷却时间 +2 秒",
+	implicitModTypes = { { "attack" }, { "attack" }, },
+	armour = { ArmourBase = 35, },
+	req = { level = 10, str = 18, },
+}
+itemBases["磨人手甲"] = {
+	type = "Gloves",
+	subType = "Armour",
+	socketLimit = 4,
+	tags = { default = true, armour = true, gloves = true, str_armour = true, not_for_sale = true, },
+	implicit = "增助攻击的伤害提高 (40-50)%\n战吼技能冷却时间 +2 秒",
+	implicitModTypes = { { "attack" }, { "attack" }, },
+	armour = { ArmourBase = 132, },
+	req = { level = 40, str = 59, },
+}
+itemBases["衰弱手甲"] = {
+	type = "Gloves",
+	subType = "Armour",
+	socketLimit = 4,
+	tags = { default = true, armour = true, gloves = true, str_armour = true, not_for_sale = true, },
+	implicit = "增助攻击的伤害提高 (40-50)%\n战吼技能冷却时间 +2 秒",
+	implicitModTypes = { { "attack" }, { "attack" }, },
+	armour = { ArmourBase = 236, },
+	req = { level = 70, str = 101, },
+}
+itemBases["笨重手套"] = {
+	type = "Gloves",
+	subType = "Evasion",
+	socketLimit = 4,
+	tags = { default = true, armour = true, gloves = true, dex_armour = true, not_for_sale = true, },
+	implicit = "主手攻击伤害降低 25%\n副手攻击伤害提高 (40-50)%",
+	implicitModTypes = { { "attack" }, { "attack" }, },
+	armour = { EvasionBase = 35, },
+	req = { level = 10, dex = 18, },
+}
+itemBases["南风手套"] = {
+	type = "Gloves",
+	subType = "Evasion",
+	socketLimit = 4,
+	tags = { default = true, armour = true, gloves = true, dex_armour = true, not_for_sale = true, },
+	implicit = "主手攻击伤害降低 25%\n副手攻击伤害提高 (40-50)%",
+	implicitModTypes = { { "attack" }, { "attack" }, },
+	armour = { EvasionBase = 132, },
+	req = { level = 40, dex = 59, },
+}
+itemBases["左旋手套"] = {
+	type = "Gloves",
+	subType = "Evasion",
+	socketLimit = 4,
+	tags = { default = true, armour = true, gloves = true, dex_armour = true, not_for_sale = true, },
+	implicit = "主手攻击伤害降低 25%\n副手攻击伤害提高 (40-50)%",
+	implicitModTypes = { { "attack" }, { "attack" }, },
+	armour = { EvasionBase = 236, },
+	req = { level = 70, dex = 101, },
+}
+itemBases["雷线手套"] = {
+	type = "Gloves",
+	subType = "Energy Shield",
+	socketLimit = 4,
+	tags = { default = true, armour = true, gloves = true, int_armour = true, not_for_sale = true, },
+	implicit = "最大魔力降低 30%\n你施放技能时有 (25-30)% 的几率获得其等量的魔力",
+	implicitModTypes = { { "resource", "mana" }, { "resource", "mana" }, },
+	armour = { EnergyShieldBase = 8, },
+	req = { level = 10, int = 18, },
+}
+itemBases["灵风手套"] = {
+	type = "Gloves",
+	subType = "Energy Shield",
+	socketLimit = 4,
+	tags = { default = true, armour = true, gloves = true, int_armour = true, not_for_sale = true, },
+	implicit = "最大魔力降低 30%\n你施放技能时有 (25-30)% 的几率获得其等量的魔力",
+	implicitModTypes = { { "resource", "mana" }, { "resource", "mana" }, },
+	armour = { EnergyShieldBase = 26, },
+	req = { level = 40, int = 59, },
+}
+itemBases["枢纽手套"] = {
+	type = "Gloves",
+	subType = "Energy Shield",
+	socketLimit = 4,
+	tags = { default = true, armour = true, gloves = true, int_armour = true, not_for_sale = true, },
+	implicit = "最大魔力降低 30%\n你施放技能时有 (25-30)% 的几率获得其等量的魔力",
+	implicitModTypes = { { "resource", "mana" }, { "resource", "mana" }, },
+	armour = { EnergyShieldBase = 45, },
+	req = { level = 70, int = 101, },
+}

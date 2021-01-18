@@ -796,7 +796,7 @@ name = "凝冰守护",
 	hidden = true,
 	color = 4,
 description = "灵唤一个守护护盾，在消散前抵挡击中造成的冰霜伤害。该护盾在一段时间未受到冰霜伤害后会自动回复满值。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true,[SkillType.Aegis] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -811,11 +811,12 @@ description = "灵唤一个守护护盾，在消散前抵挡击中造成的冰�
 	stats = {
 		"aegis_unique_shield_max_value",
 		"active_skill_display_aegis_variation",
+		"aegis_recharge_delay_ms",
 		"cast_on_gain_skill",
 		"spell_uncastable_if_triggerable",
 	},
 	levels = {
-		[20] = { 1000, 1, levelRequirement = 1, statInterpolation = { 1, 1, }, },
+		[20] = { 1000, 1, 10000, levelRequirement = 1, statInterpolation = { 1, 1, 1, }, },
 	},
 }
 skills["PhysicalAegis"] = {
@@ -823,7 +824,7 @@ name = "物理神盾",
 	hidden = true,
 	color = 4,
 description = "击中的物理伤害会优先从该神盾上扣除，其次再是生命或能量护盾。如果你在一定时间内不再承受击中的物理伤害，则该神盾会恢复到满值。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.Aegis] = true,},
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -838,11 +839,12 @@ description = "击中的物理伤害会优先从该神盾上扣除，其次再�
 	stats = {
 		"aegis_unique_shield_max_value",
 		"active_skill_display_aegis_variation",
-		"cast_on_gain_skill",
+		"aegis_recharge_delay_ms",
+		"cast_on_gain_skill",		
 		"spell_uncastable_if_triggerable",
 	},
 	levels = {
-		[20] = { 1000, 4, levelRequirement = 1, statInterpolation = { 1, 1, }, },
+		[20] = { 1000, 4, 10000, levelRequirement = 1, statInterpolation = { 1, 1, 1, }, },
 	},
 }
 skills["CorpseWalk"] = {
@@ -1139,7 +1141,7 @@ name = "元素守护",
 	hidden = true,
 	color = 4,
 description = "灵唤一个守护护盾，在消散前抵挡击中造成的元素伤害。该护盾在一段时间未受到元素伤害后会自动回复满值。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.Aegis] = true,},
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -1154,11 +1156,12 @@ description = "灵唤一个守护护盾，在消散前抵挡击中造成的元�
 	stats = {
 		"aegis_unique_shield_max_value",
 		"active_skill_display_aegis_variation",
+		"aegis_recharge_delay_ms",
 		"cast_on_gain_skill",
 		"spell_uncastable_if_triggerable",
 	},
 	levels = {
-		[20] = { 1000, 2, levelRequirement = 1, statInterpolation = { 1, 1, }, },
+		[20] = { 1000, 2, 10000, levelRequirement = 1, statInterpolation = { 1, 1, 1, }, },
 	},
 }
 
@@ -1265,7 +1268,7 @@ name = "烈焰守护",
 	hidden = true,
 	color = 4,
 description = "灵唤一个守护护盾，在消散前抵挡击中造成的火焰伤害。该护盾在一段时间未受到火焰伤害后会自动回复满值。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true,[SkillType.Aegis] = true, },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -1280,11 +1283,12 @@ description = "灵唤一个守护护盾，在消散前抵挡击中造成的火�
 	stats = {
 		"aegis_unique_shield_max_value",
 		"active_skill_display_aegis_variation",
-		"cast_on_gain_skill",
+		"aegis_recharge_delay_ms",
+		"cast_on_gain_skill",		
 		"spell_uncastable_if_triggerable",
 	},
 	levels = {
-		[20] = { 1000, 0, levelRequirement = 1, statInterpolation = { 1, 1, }, },
+		[20] = { 1000, 0, 10000, levelRequirement = 1, statInterpolation = { 1, 1, 1, }, },
 	},
 }
 skills["FireBurstOnHit"] = {
@@ -1471,7 +1475,7 @@ description = "从被击败的敌人周围发射一圈寒冰投射物，并将�
 	},
 	stats = {
 		"number_of_additional_projectiles",
-		"trigger_on_kill_vs_frozen_enemy_%",
+		"trigger_on_hit_vs_frozen_enemy_%",
 		"monster_projectile_variation",
 		"skill_physical_damage_%_to_convert_to_cold",
 		"projectiles_nova",
@@ -1513,7 +1517,7 @@ name = "闪电神盾",
 	hidden = true,
 	color = 4,
 description = "召唤一个守护护盾，在消散前抵挡击中造成的闪电伤害。该护盾在一段时间未受到闪电伤害后会自动回复满值。",
-	skillTypes = { [SkillType.Spell] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, },
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true,[SkillType.Aegis] = true,  },
 	statDescriptionScope = "skill_stat_descriptions",
 	castTime = 1,
 	cannotBeSupported = true,
@@ -1528,11 +1532,12 @@ description = "召唤一个守护护盾，在消散前抵挡击中造成的闪�
 	stats = {
 		"aegis_unique_shield_max_value",
 		"active_skill_display_aegis_variation",
+		"aegis_recharge_delay_ms",
 		"cast_on_gain_skill",
 		"spell_uncastable_if_triggerable",
 	},
 	levels = {
-		[20] = { 1000, 3, levelRequirement = 1, statInterpolation = { 1, 1, }, },
+		[20] = { 1000, 3, 10000, levelRequirement = 1, statInterpolation = { 1, 1, 1, }, },
 	},
 }
 skills["LightningSpell"] = {
@@ -2655,7 +2660,7 @@ name = "破盾击",
 	baseEffectiveness = 0.34000000357628,
 	incrementalEffectiveness = 0.045000001788139,
 description = "盾牌破碎，根据盾牌品质，对一片区域内的敌人造成物理法术伤害。之后短时间内你都不能格挡，也不能从盾牌中得到防御值，但你的法术附加物理伤害。",
-	skillTypes = { [SkillType.Hit] = true, [SkillType.PhysicalSkill] = true, [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, },
+	skillTypes = { [SkillType.Hit] = true, [SkillType.PhysicalSkill] = true, [SkillType.Spell] = true, [SkillType.Area] = true, [SkillType.AreaSpell] = true, [SkillType.NovaSpell] = true, [SkillType.Triggerable] = true, [SkillType.Triggered] = true, [SkillType.TriggeredGrantedSkill] = true, [SkillType.Duration] = true,},
 	statDescriptionScope = "buff_skill_stat_descriptions",
 	castTime = 1,
 	fromItem = true,
@@ -2942,5 +2947,32 @@ skills["SummonTauntingContraption"] = {
 	statInterpolation = { 1, 1, 1, 1, },
 	levels = {
 		[20] = { 100, 17, 70, 150, levelRequirement = 70, duration = 4, cooldown = 8, },
+	},
+}
+
+
+skills["Unhinge"] = {
+	name = "精神失常",
+	hidden = true,
+	color = 4,
+	description = "从现实种放手。",
+	skillTypes = { [SkillType.Spell] = true, [SkillType.Buff] = true, [SkillType.Instant] = true, [SkillType.Type91] = true, [SkillType.Type92] = true, [SkillType.ManaCostReserved] = true, [SkillType.ManaCostPercent] = true, [SkillType.Type96] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 0,
+	fromItem = true,
+	baseFlags = {
+		spell = true,
+		aura = true,
+		area = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"display_unhinge_grant_insane",
+	},
+	levels = {
+		[20] = { cooldown = 5, levelRequirement = 70, statInterpolation = { }, },
 	},
 }

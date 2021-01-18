@@ -614,19 +614,17 @@ function ItemClass:GetModSpawnWeight(mod, extraTags)
 			end
 			return false
 		end
+
 		for i, key in ipairs(mod.weightKey) do
 			if self.base.tags[key] or (extraTags and extraTags[key]) or HasInfluenceTag(key) then
-			 
 				weight = mod.weightVal[i]
 				break
 			end
 		end
-		if mod.weightMultiplierKey then 
-			for i, key in ipairs(mod.weightMultiplierKey) do
-				if self.base.tags[key] or (extraTags and extraTags[key]) or HasInfluenceTag(key) then
-					weight = weight * mod.weightMultiplierVal[i] / 100
-					break
-				end
+		for i, key in ipairs(mod.weightMultiplierKey) do
+			if self.base.tags[key] or (extraTags and extraTags[key]) or HasInfluenceTag(key) then
+				weight = weight * mod.weightMultiplierVal[i] / 100
+				break
 			end
 		end
 	end

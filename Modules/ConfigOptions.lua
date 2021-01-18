@@ -287,6 +287,10 @@ modList:NewMod("SkillData", "LIST", { key = "enable", value = true }, "Config", 
 	{ var = "configSnipeStages", type = "count", label = "狙击层数:", ifSkill = "狙击", tooltip = "释放狙击之前吟唱的层数.", apply = function(val, modList, enemyModList)
 		modList:NewMod("Multiplier:狙击Stage", "BASE", m_min(val, 6), "Config")
 	end },
+{ label = "三位一体（辅）:", ifSkill = "三位一体（辅）" },
+	{ var = "configResonanceCount", type = "count", label = "最低的共振效果数量:", ifSkill = "三位一体（辅）", tooltip = "设置最低的共振效果的数值.", apply = function(val, modList, enemyModList)
+		modList:NewMod("Multiplier:ResonanceCount", "BASE", m_max(m_min(val, 50), 0), "Config")
+	end },
 { label = "【召唤幽狼】:", ifSkill = "召唤幽狼" },
 	{ var = "configSpectralWolfCount", type = "count", label = "幽狼数量:", 
 	ifSkill = "召唤幽狼", tooltip = "设置幽狼的数量.\n最大是 10.", apply = function(val, modList, enemyModList)
@@ -401,6 +405,30 @@ tooltip = "最后一秒被瓦尔.熔岩护盾减免的伤害", ifSkill = "瓦尔
 	{ var = "innervateInnervation", type = "check", label = "破盾击触发?", ifSkill = "破盾击", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:ShieldShatterTrigger", "FLAG", true, "Config")
 	end },
+{ label = "上古之颅:", ifCond = "MinionsCanHearTheWhispers" },
+	{ var = "innervateInnervation", type = "check", label = "召唤生物听到低语?", tooltip="（听到低语的召唤生物:\n每秒受到等于其 20% 最大生命的混沌伤害，\n攻击速度加快 50%，\n攻击伤害提高 50%，\n并且不会听从你的命令）",
+	ifCond = "MinionsCanHearTheWhispers", apply = function(val, modList, enemyModList)
+
+modList:NewMod("MinionModifier", "LIST", { mod = modLib.
+createMod("ChaosDegen", "BASE", 20/100, "Config", { type = "PerStat", stat = "Life", div = 1 },{ type = "Condition", var = "Combat" }) }, "Config",{ type = "Condition", var = "MinionsCanHearTheWhispers" })
+modList:NewMod("MinionModifier", "LIST", { mod = modLib.
+createMod("Speed", "INC", 50, "Config", ModFlag.Attack, { type = "Condition", var = "Combat" }) }, "Config",{ type = "Condition", var = "MinionsCanHearTheWhispers" })
+modList:NewMod("MinionModifier", "LIST", { mod = modLib.
+createMod("Damage", "INC", 50, "Config", { type = "Condition", var = "Combat" }) }, "Config",{ type = "Condition", var = "MinionsCanHearTheWhispers" })
+
+
+	end },	
+	
+	{ label = "变形者外衣:", ifSkillList = { "精神失常"} },
+	{ var = "conditionSandStance", type = "list", label = "错乱效果:", ifSkillList = { "精神失常" }, 
+	list = {{val="SANE",label="理智"},{val="INSANE",label="疯狂"}}, apply = function(val, modList, enemyModList)
+		if val == "SANE" then
+			modList:NewMod("Condition:SaneInsanity", "FLAG", true, "Config")
+		elseif  val == "INSANE" then
+			modList:NewMod("Condition:InSaneInsanity", "FLAG", true, "Config")
+		end	
+	end },
+	
 	
 	-- Section: Map modifiers/curses
 { section = "地图词缀和玩家 Debuff", col = 2 },
@@ -645,7 +673,7 @@ end },
 	end },
 { var = "buffAlchemistsGenius", type = "check", label = "你是否处于【炼金术天才】状态?", ifCond = "CanHaveAlchemistGenius", 
 tooltip = "这个配置可以启用【炼金术天才】增益:\n药剂充能提高 20%\n药剂效果提高 20%", apply = function(val, modList, enemyModList)
-		modList:NewMod("Condition:AlchemistsGenius", "FLAG", true, "Config", { type = "Condition", varList = { "Combat", "CanHaveAlchemistGenius" } })
+		modList:NewMod("Condition:AlchemistsGenius", "FLAG", true, "Config", { type = "Condition", var = "Combat" }, { type = "Condition", var = "CanHaveAlchemistGenius" })
 	end },
 { var = "buffDivinity", type = "check", label = "你处于【神圣】状态?",ifCond = "Divinity", tooltip = "获得【神性】Buff:\n火焰、冰霜、闪电总伤害额外提高 50%\n承受的火焰、冰霜、闪电总伤害额外降低 20% ", apply = function(val, modList, enemyModList)
 		modList:NewMod("Condition:Divinity", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
@@ -882,7 +910,7 @@ ifCond = "OnFungalGround",
 
 { var = "conditionConvergence", type = "check", label = "汇聚状态?", ifCond = "CanGainConvergence", apply = function(val, modList, enemyModList)
 
-		modList:NewMod("Condition:Convergence", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+		modList:NewMod("Condition:Convergence", "FLAG", true, "Config", { type = "Condition", var = "Combat" }, { type = "Condition", var = "CanGainConvergence" })
 		
 	end },
 { var = "buffPendulum", type = "list",  label = "【毁灭光炮塔】升华天赋激活?", ifNode = 57197, list = {{val=0,label="不起作用"},{val="AREA",label="范围效果"},{val="DAMAGE",label="元素伤害"}}, apply = function(val, modList, enemyModList)
@@ -1002,7 +1030,7 @@ ifCond = "OnFungalGround",
 	end },
 
 { var = "buffFanaticism", type = "check", label = "你处于狂热状态?", ifCond = "CanGainFanaticism", tooltip = " (【狂热】可使你的自施法的法术的:\n总施法速度额外提高 75%，\n魔力消耗降低 75%，\n范围效果扩大 75%)", apply = function(val, modList, enemyModList)
-		modList:NewMod("Condition:Fanaticism", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+		modList:NewMod("Condition:Fanaticism", "FLAG", true, "Config", { type = "Condition", var = "Combat" }, { type = "Condition", var = "CanGainFanaticism" })
 	end },
 	-- Section: Effective DPS options
 { section = "为了计算有效 DPS", col = 1 },
@@ -1014,6 +1042,9 @@ ifCond = "OnFungalGround",
 	
 { var = "skillChainCount", type = "count", label = "连锁过的次数:", ifFlag = "chaining", apply = function(val, modList, enemyModList)
 		modList:NewMod("ChainCount", "BASE", val, "Config", { type = "Condition", var = "Effective" })
+	end },
+{ var = "skillPierceCount", type = "count", label = "穿透敌人数量:", ifFlag = "piercing", apply = function(val, modList, enemyModList)
+		modList:NewMod("PiercedCount", "BASE", val, "Config", { type = "Condition", var = "Effective" })
 	end },
 { var = "projectileDistance", type = "count", label = "投射物飞行距离:" },
 { var = "conditionAtCloseRange", type = "check", label = "怪物在近距离范围内?", ifCond = "AtCloseRange", apply = function(val, modList, enemyModList)
@@ -1170,7 +1201,7 @@ tooltip = "精疲力尽的敌人总伤害额外降低，最多降低 20%.", appl
  apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("Multiplier:RuptureStack", "BASE", val, "Config", { type = "Condition", var = "Effective" })
 		enemyModList:NewMod("DamageTaken", "MORE", 25, "撕裂", nil, KeywordFlag.Bleed, { type = "Multiplier", var = "RuptureStack", limit = 3}, { type = "ActorCondition", actor = "enemy", var = "CanInflictRupture" })
-		enemyModList:NewMod("SelfBleedFaster", "INC", 25, "撕裂", { type = "Multiplier", var = "RuptureStack", limit = 3}, { type = "ActorCondition", actor = "enemy", var = "CanInflictRupture" })
+		modList:NewMod("EnemyBleedDuration", "INC", -25, "撕裂", { type = "Multiplier", var = "RuptureStack", limit = 3, actor = "enemy" }, { type = "ActorCondition", var = "CanInflictRupture" })
 	end },
  
 	

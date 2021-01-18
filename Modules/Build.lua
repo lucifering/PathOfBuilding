@@ -1218,6 +1218,7 @@ function buildMode:LoadDBFile()
 	ConPrintf("Loading '%s'...", self.dbFileName)
 	local file = io.open(self.dbFileName, "r")
 	if not file then
+		self.dbFileName = nil
 		return true
 	end
 	local xmlText = file:read("*a")

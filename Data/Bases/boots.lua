@@ -565,3 +565,94 @@ itemBases["异色鞋(火冰)"] = {
 	req = { level = 70, str = 62, dex = 62, },
 }
 
+itemBases["劣金之履"] = {
+	type = "Boots",
+	subType = "Armour",
+	socketLimit = 4,
+	tags = { default = true, armour = true, boots = true, str_armour = true, not_for_sale = true, },
+	implicit = "+(4-5)% 攻击伤害格挡几率\n被格挡的攻击对你造成 20% 伤害",
+	implicitModTypes = { { "block" }, { "block" }, },
+	armour = { ArmourBase = 68, },
+	req = { level = 20, str = 39, },
+}
+itemBases["乌钢之履"] = {
+	type = "Boots",
+	subType = "Armour",
+	socketLimit = 4,
+	tags = { default = true, armour = true, boots = true, str_armour = true, not_for_sale = true, },
+	implicit = "+(4-5)% 攻击伤害格挡几率\n被格挡的攻击对你造成 20% 伤害",
+	implicitModTypes = { { "block" }, { "block" }, },
+	armour = { ArmourBase = 164, },
+	req = { level = 50, str = 89, },
+}
+itemBases["踏烟之履"] = {
+	type = "Boots",
+	subType = "Armour",
+	socketLimit = 4,
+	tags = { default = true, armour = true, boots = true, str_armour = true, not_for_sale = true, },
+	implicit = "+(4-5)% 攻击伤害格挡几率\n被格挡的攻击对你造成 20% 伤害",
+	implicitModTypes = { { "block" }, { "block" }, },
+	armour = { ArmourBase = 236, },
+	req = { level = 80, str = 124, },
+}
+
+itemBases["唤云之靴"] = {
+	type = "Boots",
+	subType = "Evasion",
+	socketLimit = 4,
+	tags = { default = true, armour = true, boots = true, dex_armour = true, not_for_sale = true, },
+	implicit = "每 200 点命中值都附加 1 到 (5-6) 点攻击闪电伤害\n总命中值额外降低 25%",
+	implicitModTypes = { { "attack" }, { "attack" }, },
+	armour = { EvasionBase = 68, },
+	req = { level = 20, dex = 39, },
+}
+itemBases["破风之靴"] = {
+	type = "Boots",
+	subType = "Evasion",
+	socketLimit = 4,
+	tags = { default = true, armour = true, boots = true, dex_armour = true, not_for_sale = true, },
+	implicit = "每 200 点命中值都附加 1 到 (5-6) 点攻击闪电伤害\n总命中值额外降低 25%",
+	implicitModTypes = { { "attack" }, { "attack" }, },
+	armour = { EvasionBase = 164, },
+	req = { level = 50, dex = 89, },
+}
+itemBases["御风之靴"] = {
+	type = "Boots",
+	subType = "Evasion",
+	socketLimit = 4,
+	tags = { default = true, armour = true, boots = true, dex_armour = true, not_for_sale = true, },
+	implicit  = "每 200 点命中值都附加 1 到 (5-6) 点攻击闪电伤害\n总命中值额外降低 25%",
+	implicitModTypes = { { "attack" }, { "attack" }, },
+	armour = { EvasionBase = 236, },
+	req = { level = 80, dex = 124, },
+}
+itemBases["踏暮之鞋"] = {
+	type = "Boots",
+	subType = "Energy Shield",
+	socketLimit = 4,
+	tags = { default = true, armour = true, boots = true, int_armour = true, not_for_sale = true, },
+	implicit ="移动速度降低 10%\n位移技能的的冷却恢复速度提高 (30-40)%",
+	implicitModTypes = { { "speed" }, { "speed" }, },
+	armour = { EnergyShieldBase = 14, },
+	req = { level = 20, int = 39, },
+}
+itemBases["夜风之鞋"] = {
+	type = "Boots",
+	subType = "Energy Shield",
+	socketLimit = 4,
+	tags = { default = true, armour = true, boots = true, int_armour = true, not_for_sale = true, },
+	implicit = "移动速度降低 10%\n位移技能的的冷却恢复速度提高 (30-40)%",
+	implicitModTypes = { { "speed" }, { "speed" }, },
+	armour = { EnergyShieldBase = 32, },
+	req = { level = 50, int = 89, },
+}
+itemBases["探梦之鞋"] = {
+	type = "Boots",
+	subType = "Energy Shield",
+	socketLimit = 4,
+	tags = { default = true, armour = true, boots = true, int_armour = true, not_for_sale = true, },
+	implicit = "移动速度降低 10%\n位移技能的的冷却恢复速度提高 (30-40)%",
+	implicitModTypes = { { "speed" }, { "speed" }, },
+	armour = { EnergyShieldBase = 47, },
+	req = { level = 80, int = 124, },
+}

@@ -167,6 +167,7 @@ return {
 					tag = "affliction_fire_damage_over_time_multiplier",
 					stats = { "+4% 火焰持续伤害加成" },
 					enchant = {
+						"其中 1 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：+4% 火焰持续伤害加成",
 					},
 				},
@@ -177,6 +178,7 @@ return {
 					tag = "affliction_chaos_damage_over_time_multiplier",
 					stats = { "+4% 混沌持续伤害加成" },
 					enchant = {
+						"其中 1 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：+4% 混沌持续伤害加成",
 					},
 				},
@@ -187,6 +189,7 @@ return {
 					tag = "affliction_physical_damage_over_time_multiplier",
 					stats = { "+4% 物理持续伤害加成" },
 					enchant = {
+						"其中 1 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：+4% 物理持续伤害加成",
 					},
 				},
@@ -197,6 +200,7 @@ return {
 					tag = "affliction_cold_damage_over_time_multiplier",
 					stats = { "+4% 冰霜持续伤害加成" },
 					enchant = {
+						"其中 1 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：+4% 冰霜持续伤害加成",
 					},
 				},
@@ -207,6 +211,7 @@ return {
 					tag = "affliction_damage_over_time_multiplier",
 					stats = { "+4% 持续伤害加成" },
 					enchant = {
+						"其中 1 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：+4% 持续伤害加成",
 					},
 				},
@@ -217,6 +222,7 @@ return {
 					tag = "affliction_effect_of_non-damaging_ailments",
 					stats = { "非伤害型异常状态效果提高 10%" },
 					enchant = {
+						"其中 1 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：非伤害型异常状态效果提高 10%",
 					},
 				},
@@ -227,6 +233,7 @@ return {
 					tag = "affliction_aura_effect",
 					stats = { "你技能的非诅咒类光环效果提高 3%" },
 					enchant = {
+						"其中 1 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：你技能的非诅咒类光环效果提高 3%",
 					},
 				},
@@ -237,6 +244,7 @@ return {
 					tag = "affliction_curse_effect",
 					stats = { "你所施放诅咒的效果提高 3%" },
 					enchant = {
+						"其中 1 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：你所施放诅咒的效果提高 3%",
 					},
 				},
@@ -247,6 +255,7 @@ return {
 					tag = "affliction_damage_while_you_have_a_herald",
 					stats = { "受捷影响时，伤害提高 10%" },
 					enchant = {
+						"其中 1 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：受捷影响时，伤害提高 10%",
 					},
 				},
@@ -257,6 +266,7 @@ return {
 					tag = "affliction_minion_damage_while_you_have_a_herald",
 					stats = { "你受捷影响时，召唤生物的伤害提高 10%" },
 					enchant = {
+						"其中 1 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：你受捷影响时，召唤生物的伤害提高 10%",
 					},
 				},
@@ -267,6 +277,7 @@ return {
 					tag = "affliction_warcry_buff_effect",
 					stats = { "增助攻击的伤害提高 20%" },
 					enchant = {
+						"其中 1 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：增助攻击的伤害提高 20%",
 					},
 				},
@@ -277,6 +288,7 @@ return {
 					tag = "affliction_critical_chance",
 					stats = { "攻击与法术暴击率提高 15%" },
 					enchant = {
+						"其中 1 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：攻击与法术暴击率提高 15%",
 					},
 				},
@@ -287,6 +299,7 @@ return {
 					tag = "affliction_minion_life",
 					stats = { "召唤生物的最大生命提高 12%" },
 					enchant = {
+						"其中 1 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：召唤生物的最大生命提高 12%",
 					},
 				},
@@ -297,6 +310,7 @@ return {
 					tag = "affliction_area_damage",
 					stats = { "范围伤害提高 10%" },
 					enchant = {
+						"其中 1 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：范围伤害提高 10%",
 					},
 				},
@@ -307,6 +321,7 @@ return {
 					tag = "affliction_projectile_damage",
 					stats = { "投射物伤害提高 10%" },
 					enchant = {
+						"其中 1 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：投射物伤害提高 10%",
 					},
 				},
@@ -317,6 +332,7 @@ return {
 					tag = "affliction_trap_and_mine_damage",
 					stats = { "陷阱伤害提高 12%", "地雷伤害提高 12%" },
 					enchant = {
+						"其中 1 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：陷阱伤害提高 12%",
 						"增加的小天赋获得：地雷伤害提高 12%",
 					},
@@ -328,6 +344,7 @@ return {
 					tag = "affliction_totem_damage",
 					stats = { "图腾伤害提高 12%" },
 					enchant = {
+						"其中 1 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：图腾伤害提高 12%",
 					},
 				},
@@ -338,6 +355,7 @@ return {
 					tag = "affliction_brand_damage",
 					stats = { "烙印伤害提高 12%" },
 					enchant = {
+						"其中 1 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：烙印伤害提高 12%",
 					},
 				},
@@ -348,6 +366,7 @@ return {
 					tag = "affliction_channelling_skill_damage",
 					stats = { "持续吟唱技能伤害提高 12%" },
 					enchant = {
+						"其中 1 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：持续吟唱技能伤害提高 12%",
 					},
 				},
@@ -358,6 +377,7 @@ return {
 					tag = "affliction_flask_duration",
 					stats = { "药剂效果的持续时间延长 6%" },
 					enchant = {
+						"其中 1 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：药剂效果的持续时间延长 6%",
 					},
 				},
@@ -368,6 +388,7 @@ return {
 					tag = "affliction_life_and_mana_recovery_from_flasks",
 					stats = { "药剂回复的生命提高 10%", "药剂回复的魔力提高 10%" },
 					enchant = {
+						"其中 1 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：药剂回复的生命提高 10%",
 						"增加的小天赋获得：药剂回复的魔力提高 10%",
 					},
@@ -391,6 +412,7 @@ return {
 					tag = "affliction_axe_and_sword_damage",
 					stats = { "斧类攻击造成的击中和异常状态伤害提高 12%", "剑类攻击造成的击中和异常状态伤害提高 12%" },
 					enchant = {
+						"其中 2 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：斧类攻击造成的击中和异常状态伤害提高 12%",
 						"增加的小天赋获得：剑类攻击造成的击中和异常状态伤害提高 12%",
 					},
@@ -402,8 +424,9 @@ return {
 					tag = "affliction_mace_and_staff_damage",
 					stats = { "长杖攻击造成的击中和异常状态伤害提高 12%", "锤类或短杖攻击造成的击中和异常状态伤害提高 12%" },
 					enchant = {
-						"增加的小天赋获得：长杖攻击造成的击中和异常状态伤害提高 12%",
+						"其中 2 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：锤类或短杖攻击造成的击中和异常状态伤害提高 12%",
+						"增加的小天赋获得：长杖攻击造成的击中和异常状态伤害提高 12%",
 					},
 				},
 				["affliction_dagger_and_claw_damage"] = {
@@ -413,8 +436,9 @@ return {
 					tag = "affliction_dagger_and_claw_damage",
 					stats = { "爪类攻击造成的击中和异常状态伤害提高 12%", "匕首攻击造成的击中和异常状态伤害提高 12%" },
 					enchant = {
-						"增加的小天赋获得：爪类攻击造成的击中和异常状态伤害提高 12%",
+						"其中 2 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：匕首攻击造成的击中和异常状态伤害提高 12%",
+						"增加的小天赋获得：爪类攻击造成的击中和异常状态伤害提高 12%",
 					},
 				},
 				["affliction_bow_damage"] = {
@@ -424,6 +448,7 @@ return {
 					tag = "affliction_bow_damage",
 					stats = { "弓类的伤害提高 12%", "弓类技能的持续伤害效果提高 12%" },
 					enchant = {
+						"其中 2 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：弓类的伤害提高 12%",
 						"增加的小天赋获得：弓类技能的持续伤害效果提高 12%",
 					},
@@ -435,6 +460,7 @@ return {
 					tag = "affliction_wand_damage",
 					stats = { "法杖攻击造成的击中和异常状态伤害提高 12%" },
 					enchant = {
+						"其中 2 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：法杖攻击造成的击中和异常状态伤害提高 12%",
 					},
 				},
@@ -445,6 +471,7 @@ return {
 					tag = "affliction_damage_with_two_handed_melee_weapons",
 					stats = { "双手武器的攻击伤害提高 12%" },
 					enchant = {
+						"其中 2 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：双手武器的攻击伤害提高 12%",
 					},
 				},
@@ -455,6 +482,7 @@ return {
 					tag = "affliction_attack_damage_while_dual_wielding_",
 					stats = { "双持武器时，攻击伤害提高 12%" },
 					enchant = {
+						"其中 2 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：双持武器时，攻击伤害提高 12%",
 					},
 				},
@@ -463,8 +491,9 @@ return {
 					icon = "Art/2DArt/SkillIcons/passives/NodeHoldingShieldDamage.png",
 					masteryIcon = "Art/2DArt/SkillIcons/passives/AltMasteryGroupShield.png",
 					tag = "affliction_attack_damage_while_holding_a_shield",
-					stats = { "持盾牌时造成的攻击伤害提高 12% " },
+					stats = { "持盾牌时造成的攻击伤害提高 12%" },
 					enchant = {
+						"其中 2 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：持盾牌时造成的攻击伤害提高 12%",
 					},
 				},
@@ -475,6 +504,7 @@ return {
 					tag = "affliction_attack_damage_",
 					stats = { "攻击伤害提高 10%" },
 					enchant = {
+						"其中 2 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：攻击伤害提高 10%",
 					},
 				},
@@ -485,6 +515,7 @@ return {
 					tag = "affliction_spell_damage",
 					stats = { "法术伤害提高 10%" },
 					enchant = {
+						"其中 2 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：法术伤害提高 10%",
 					},
 				},
@@ -495,6 +526,7 @@ return {
 					tag = "affliction_elemental_damage",
 					stats = { "元素伤害提高 10%" },
 					enchant = {
+						"其中 2 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：元素伤害提高 10%",
 					},
 				},
@@ -505,6 +537,7 @@ return {
 					tag = "affliction_physical_damage",
 					stats = { "物理伤害提高 12%" },
 					enchant = {
+						"其中 2 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：物理伤害提高 12%",
 					},
 				},
@@ -515,6 +548,7 @@ return {
 					tag = "affliction_fire_damage",
 					stats = { "火焰伤害提高 12%" },
 					enchant = {
+						"其中 2 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：火焰伤害提高 12%",
 					},
 				},
@@ -525,6 +559,7 @@ return {
 					tag = "affliction_lightning_damage",
 					stats = { "闪电伤害提高 12%" },
 					enchant = {
+						"其中 2 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：闪电伤害提高 12%",
 					},
 				},
@@ -535,6 +570,7 @@ return {
 					tag = "affliction_cold_damage",
 					stats = { "冰霜伤害提高 12%" },
 					enchant = {
+						"其中 2 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：冰霜伤害提高 12%",
 					},
 				},
@@ -545,6 +581,7 @@ return {
 					tag = "affliction_chaos_damage",
 					stats = { "混沌伤害提高 12%" },
 					enchant = {
+						"其中 2 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：混沌伤害提高 12%",
 					},
 				},
@@ -555,6 +592,7 @@ return {
 					tag = "affliction_minion_damage",
 					stats = { "召唤生物的伤害提高 10%" },
 					enchant = {
+						"其中 2 个增加的天赋为【珠宝槽】",
 						"增加的小天赋获得：召唤生物的伤害提高 10%",
 					},
 				},

@@ -106,7 +106,9 @@ local formList = {
 	["你获得 ([%d%.]+)"] = "BASE", --备注：^you gain ([%d%.]+)
 	["^gains? ([%d%.]+)%% of"] = "BASE",
 	["([%+%-]?%d+)%% 几率"] = "CHANCE", --备注：^([%+%-]?%d+)%% chance
+	["有 ([%+%-]?%d+)%% 的几率"] = "CHANCE", 
 	["^([%+%-]?%d+)%% additional chance"] = "CHANCE",
+	["^([%+%-]?%d+)%% 的几率"] = "CHANCE", 
 	["穿透? (%d+)%%"] = "PEN", --备注：penetrates? (%d+)%%
 	["penetrates (%d+)%% of"] = "PEN",
 	["penetrates (%d+)%% of enemy"] = "PEN",
@@ -1407,6 +1409,7 @@ local modTagList = {
 	["疯狂状态下，"] = { tag = { type = "Condition", var = "InSaneInsanity" } },
 	["理智状态下，"] = { tag = { type = "Condition", var = "SaneInsanity" } },
 	["若过去 8 秒内你造成过暴击，则"] = { tag = { type = "Condition", var = "CritRecently" } },
+	["若你近期内击中敌人，则"] = { tag = { type = "Condition", var = "HitRecently"} },
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -2249,7 +2252,9 @@ local specialModList = {
 	["击中时有 ([%d%.]+)%% 几率击退敌人"]= function(num) return {  mod("EnemyKnockbackChance", "BASE", num)  } end,
 	["获得护体时护甲提高 ([%d%.]+)%%"]= function(num) return {  mod("Armour", "INC", num, { type = "Condition", var = "Fortify" } )  } end,
 	["击中时有 ([%d%.]+)%% 几率使目标中毒"]= function(num) return {  mod("PoisonChance", "BASE", num)  } end,
+	["击中时有 ([%d%.]+)%% 的几率使目标中毒"]= function(num) return {  mod("PoisonChance", "BASE", num)  } end,
 	["击中时有 ([%d%.]+)%% 几率使目标流血"]= function(num) return {  mod("BleedChance", "BASE", num)  } end,
+	["击中时有 ([%d%.]+)%% 的几率使目标流血"]= function(num) return {  mod("BleedChance", "BASE", num)  } end,
 	["攻击击中时有 ([%d%.]+)%% 几率使目标中毒"]= function(num) return {  mod("PoisonChance", "BASE", num,nil, ModFlag.Attack)  } end,
 	["匕首攻击的暴击有 (%d+)%% 几率使敌人中毒"] = function(num) return { mod("PoisonChance", "BASE", num, nil, ModFlag.Dagger, { type = "Condition", var = "CriticalStrike" }) } end, --备注：critical strikes with daggers have a (%d+)%% chance to poison the enemy
 	["地雷伤害可以穿透 (%d+)%% 元素抗性"]= function(num) return {  mod("ElementalPenetration", "BASE", num,nil,nil,   KeywordFlag.Mine)  } end,
@@ -3103,7 +3108,6 @@ local specialModList = {
 	["你技能的光环可使你和周围友军的物理伤害减免提高 %+([%d%.]+)%%"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("PhysicalDamageReduction", "BASE", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end,
 	["受到你嘲讽的敌人所承受的伤害提高 (%d+)%% "] = function(num) return { mod("EnemyModifier", "LIST", { mod = mod("DamageTaken", "INC", num, { type = "Condition", var = "Taunted" }) }) } end,
 	["攻击技能可使混沌总伤害额外提高 (%d+)%%"] = function(num) return {  mod("ChaosDamage", "MORE", num, { type = "SkillType", skillType = SkillType.Attack }) } end,
-	["在药剂生效期间，你造成的中毒效果有 40%% 几率伤害提高 (%d+)%%"] = function(num) return {  mod("Damage", "INC", num,nil,nil,KeywordFlag.Poison ,{ type = "Condition", var = "UsingFlask" }) } end,
 	["你技能的光环每秒回复你和周围友军 ([%d%.]+)%% 最大生命"]= function(num) return {  mod("ExtraAuraEffect", "LIST", { mod =  mod("LifeRegenPercent", "BASE", num,{ type = "GlobalEffect", effectType = "ExtraAuraEffect" }) }) } end,
 	["周围至少有 1 个友军时，攻击总伤害额外提高 ([%d%.]+)%%"] = function(num) return {  mod("Damage", "MORE", num,{ type = "MultiplierThreshold", var = "NearbyAlly", threshold = 1 } ) } end,
 	["周围至少有 1 个友军时，总伤害额外提高 ([%d%.]+)%%"] = function(num) return {  mod("Damage", "MORE", num,{ type = "MultiplierThreshold", var = "NearbyAlly", threshold = 1 } ) } end,
@@ -4175,7 +4179,6 @@ local specialModList = {
 	["暴击造成烧灼、脆弱和精疲力尽"] = { flag("CritAlwaysAltAilments") },
 	["魔力回复速度的加快和减慢效果也作用与怒火回复速度"] = { flag("ManaRegenToRageRegen") },
 	["魔力再生率的加快和减慢效果也作用与怒火再生速度"] = { flag("ManaRegenToRageRegen") },
-	["在药剂生效期间，你造成的中毒总伤害有 (%d+)%% 几率额外提高 (%d+)%%"] = function(num, _, more) return { mod("Damage", "MORE", tonumber(more) * num / 100, nil, 0, KeywordFlag.Poison, { type = "Condition", var = "UsingFlask" }) } end,
 	["你的感电效果可以提高承受伤害，最大 (%d+)%%"] = function(num) return { mod("ShockMax", "OVERRIDE", num) } end,
 	["你的感电效果所提供的提高承受伤害的效果最高提高 (%d+)%%"] = function(num) return { mod("ShockMax", "OVERRIDE", num) } end,
 	["如同额外造成 (%d+)%% 总伤害来计算感电门槛"] = function(num) return { mod("ShockAsThoughDealing", "MORE", num) } end,
@@ -4859,6 +4862,49 @@ local specialModList = {
 	mod("PhysicalDamageTaken", "MORE", -num,{ type = "Condition", var = "SaneInsanity" }),
 	mod("ChaosDamageTaken", "MORE", -num,{ type = "Condition", var = "SaneInsanity" }),
 	  } end,
+	["在药剂生效期间，你造成的中毒总伤害有 (%d+)%% 几率额外提高 (%d+)%%"] = function(num, _, more) return { mod("Damage", "MORE", tonumber(more) * num / 100, nil, 0, KeywordFlag.Poison, { type = "Condition", var = "UsingFlask" }) } end,
+	["在药剂生效期间，你造成的中毒效果有 (%d+)%% 几率伤害提高 (%d+)%%"] = function(num, _, more) return {  mod("Damage", "MORE", tonumber(more) * num / 100,nil,nil,KeywordFlag.Poison ,{ type = "Condition", var = "UsingFlask" }) } end,
+	["使用此武器攻击所造成的中毒效果有 (%d+)%% 的几率使中毒伤害提高 (%d+)%%"] = function(num, _, more) return {
+			mod("Damage", "MORE", tonumber(more) * num / 200, nil, 0, KeywordFlag.Poison, { type = "Condition", var = "DualWielding"}, { type = "SkillType", skillType = SkillType.Attack }),
+			mod("Damage", "MORE", tonumber(more) * num / 100, nil, 0, KeywordFlag.Poison, { type = "Condition", var = "DualWielding", neg = true }, { type = "SkillType", skillType = SkillType.Attack })
+		} end,
+	["使用此武器攻击所造成的流血效果有 (%d+)%% 的几率使流血伤害提高 (%d+)%%"] = function(num, _, more) return {
+			mod("Damage", "MORE", tonumber(more) * num / 200, nil, 0, KeywordFlag.Bleed, { type = "Condition", var = "DualWielding"}, { type = "SkillType", skillType = SkillType.Attack }),
+			mod("Damage", "MORE", tonumber(more) * num / 100, nil, 0, KeywordFlag.Bleed, { type = "Condition", var = "DualWielding", neg = true }, { type = "SkillType", skillType = SkillType.Attack })
+		} end,
+	["若你近期内击中敌人，则每秒回复 ([%d%.]+)%% 能量护盾"] = function(num) return {  
+	mod("EnergyShieldRegenPercent", "BASE", num, { type = "Condition", var = "HitRecently"})  } end,
+	["若你近期内击中敌人，则每秒回复 ([%d%.]+)%% 魔力"] = function(num) return {  
+	mod("ManaRegenPercent", "BASE", num, { type = "Condition", var = "HitRecently"})  } end,
+	["(%d+)%% 的几率免疫中毒"]= function(num) return { mod("AvoidPoison", "BASE", num ) } end,
+	["(%d+)%% 的几率免疫流血"]= function(num) return { mod("AvoidBleed", "BASE", num ) } end,
+	["(%d+)%% 的几率免疫点燃"]= function(num) return { mod("AvoidIgnite", "BASE", num ) } end,
+	["施法时有 (%d+)%% 的几率免疫晕眩打断"] = function(num) return { mod("AvoidInteruptStun", "BASE", num) } end,
+	["(%d+)%% 的几率免疫投射物"]= function(num) return {
+		mod("AvoidProjectilesChance", "BASE", num ) ,
+		} end,
+	["攻击击中时有 (%d+)%% 的几率穿刺敌人"]= function(num) return {
+		mod("ImpaleChance", "BASE", num, 0, 0, KeywordFlag.Attack)
+		}end,
+	["对被点燃敌人附加 (%d+) %- (%d+) 基础火焰伤害"]= function(_,num1,num2) return {
+		mod("FireMin", "BASE", tonumber(num1),  { type = "ActorCondition", actor = "enemy", var = "Ignited" } ),
+		mod("FireMax", "BASE", tonumber(num2),  { type = "ActorCondition", actor = "enemy", var = "Ignited" } ),
+		} end,
+	["对被冰缓或被冰冻敌人附加 (%d+) %- (%d+) 基础冰霜伤害"]= function(_,num1,num2) return {
+		mod("ColdMin", "BASE", tonumber(num1),  { type = "ActorCondition",actor = "enemy", varList = { "Frozen", "Chilled" } } ),
+		mod("ColdMax", "BASE", tonumber(num2),  { type = "ActorCondition",actor = "enemy", varList = { "Frozen", "Chilled" } } ),
+		} end,
+	["闪电伤害击中时有 (%d+)%% 的几率使敌人受到感电效果影响"]= function(num) return {
+		mod("EnemyShockChance", "BASE", num)
+		}end,
+	["对被感电敌人附加 (%d+) %- (%d+) 基础闪电伤害"]= function(_,num1,num2) return {
+		mod("LightningMin", "BASE", tonumber(num1),  { type = "ActorCondition", actor = "enemy", var = "Shocked" } ),
+		mod("LightningMax", "BASE", tonumber(num2),  { type = "ActorCondition", actor = "enemy", var = "Shocked" } ),
+		} end,
+	["有 (%d+)%% 的几率以双倍护甲防御"] = function(num) return { mod("DoubleArmourChance", "BASE", num ) } end,
+	["%+(%d+)%% 闪避攻击击中率"] = function(num) return { mod("Evasion", "BASE", num ) } end,
+	["若你近期内被击中，则攻击速度提高 (%d+)%%"] = function(num) return { mod("Speed", "INC", num,nil, ModFlag.Attack, { type = "Condition", var = "BeenHitRecently" }) } end,
+	["效果区域扩大 (%d+)%%"] = function(num) return { mod("AreaOfEffect", "INC", num) } end,
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

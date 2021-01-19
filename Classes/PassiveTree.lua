@@ -98,42 +98,6 @@ page = getFile("https://poe.game.qq.com/passive-skill-tree/")
 		self[k] = v
 	end
 	
-	--永恒珠宝重点核心
-
-	for _, jewkey in ipairs(data.timelessJewelKeystone ) do
-	
-		 
-		if versionNum >= 3.10 then
-			 local tnode = {}
-			 
-			 tnode.skill=jewkey.id;
-			 tnode.name=jewkey.dn;
-			 tnode.stats=copyTable(jewkey.sd);
-			 tnode.icon=jewkey.icon;
-			 tnode.isKeystone = jewkey.ks
-			 tnode.isNotable = jewkey["not"] 
-			 tnode.isMastery = jewkey.m
-			 tnode.isAscendancyStart = jewkey.isAscendancyStart
-			 tnode.isJewelSocket = jewkey.isJewelSocket
-			 tnode.isMultipleChoiceOption=jewkey.isMultipleChoiceOption;
-			 tnode.isMultipleChoice=jewkey.isMultipleChoice;
-			 tnode.passivePointsGranted=jewkey.passivePointsGranted;
-			 if jewkey.g~= 0 then 
-				tnode.group=jewkey.g;
-			 end
-			 tnode.orbit=jewkey.o;
-			 tnode.orbitIndex=jewkey.oidx;
-			 tnode["out"]=jewkey["out"];
-			 tnode["in"]=jewkey["in"];
-			 
-			 self.nodes[jewkey.id]=tnode;
-			 
-		else
-			self.nodes[jewkey.id]=jewkey
-		end
-		 
-	
-	end
 	
 	
 	

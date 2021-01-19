@@ -1722,6 +1722,11 @@ function ItemsTabClass:IsItemValidForSlot(item, slotName, itemSet)
 	if not slotType then
 		slotType = slotName
 	end
+	if not item.base then 
+		print("没有基底")
+		print_r(item)
+		return false
+	end 
 	
 	if slotType == "Jewel" then
 		-- Special checks for jewel sockets
@@ -1743,7 +1748,7 @@ function ItemsTabClass:IsItemValidForSlot(item, slotName, itemSet)
 	elseif item.type == "Jewel" and item.base.subType == "Abyss" and slotName:match("Abyssal Socket") then
 		return true
 	elseif slotName == "Weapon 1" or slotName == "Weapon 1 Swap" or slotName == "Weapon" then
-		return item.base.weapon ~= nil
+		return item.base and item.base.weapon ~= nil
 	elseif slotName == "Weapon 2" or slotName == "Weapon 2 Swap" then
 		local weapon1Sel = itemSet[slotName == "Weapon 2" and "Weapon 1" or "Weapon 1 Swap"].selItemId or 0
 		local weapon1Type = weapon1Sel > 0 and   self.items[weapon1Sel]  and self.items[weapon1Sel].base and self.items[weapon1Sel].base.type or "None"
@@ -2732,6 +2737,11 @@ tooltip:AddLine(16, colorCodes.SOURCE..""..self:FormatItemSource(item.source))
 	end
 
 	local base = item.base
+	if not base then 
+		print("基底错误")
+		print_r(item)
+		return ;
+	end 
 	local slotNum = slot and slot.slotNum or (IsKeyDown("SHIFT") and 2 or 1)
 	--lucifer
 	local modList = item.modList or (item.slotModList and item.slotModList[slotNum])
@@ -2958,7 +2968,7 @@ tooltip:AddLine(16, "^x7F7F7F插槽: "..line)
 
 	-- Stat differences
 	local calcFunc, calcBase = self.build.calcsTab:GetMiscCalculator()
-	if base.flask then
+	if base and base.flask then
 		-- Special handling for flasks
 		local stats = { }
 		local flaskData = item.flaskData

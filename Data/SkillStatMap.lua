@@ -9,9 +9,7 @@ return {
 --
 -- Skill data modifiers
 --
-["chance_to_deal_double_damage_%"] = {
-			mod("DoubleDamageChance", "BASE", nil),
-		},
+
 
 ["base_skill_effect_duration"] = {
 	skill("duration", nil),

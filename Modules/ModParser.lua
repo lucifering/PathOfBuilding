@@ -1410,6 +1410,7 @@ local modTagList = {
 	["理智状态下，"] = { tag = { type = "Condition", var = "SaneInsanity" } },
 	["若过去 8 秒内你造成过暴击，则"] = { tag = { type = "Condition", var = "CritRecently" } },
 	["若你近期内击中敌人，则"] = { tag = { type = "Condition", var = "HitRecently"} },
+	["处于【灌注】状态时，"] = { tag = { type = "Condition", var = "InfusionActive" } },
 	--【中文化程序额外添加结束】
 	["on enemies"] = { },
 	["while active"] = { },
@@ -3264,6 +3265,9 @@ local specialModList = {
 	["【风暴烙印】的伤害会穿透带有烙印敌人闪电抗性的 (%d+)%%"]= function(num) return {  mod("LightningPenetration", "BASE", num,{ type = "Condition", var = "BrandAttachedToEnemy" },{ type = "SkillName", skillName = "风暴烙印" })  } end,
 	["此物品上的技能石获得 ([%d%.]+)%% 物理伤害，并转化为额外闪电伤害"]= function(num) return{ mod("ExtraSkillMod", "LIST", { mod = mod("PhysicalDamageGainAsLightning", "BASE", num) },{ type = "SocketedIn", slotName = "{SlotName}" })}end,
 	["有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("DoubleDamageChance", "BASE", num) } end,
+	["有 (%d+)%% 几率造成三倍伤害"] = function(num) return { mod("TripleDamageChance", "BASE", num) } end,
+	["有 (%d+)%% 的几率造成双倍伤害"] = function(num) return { mod("DoubleDamageChance", "BASE", num) } end,
+	["有 (%d+)%% 的几率造成三倍伤害"] = function(num) return { mod("TripleDamageChance", "BASE", num) } end,
 	["专注时有 (%d+)%% 几率造成双倍伤害"] = function(num) return { mod("DoubleDamageChance", "BASE", num,{ type = "Condition", var = "Focused" }) } end,
 	["若周围有稀有或传奇敌人，则 %+(%d+)%% 基础暴击伤害加成"] = function(num) return { mod("CritMultiplier", "BASE", num,{ type = "ActorCondition", actor = "enemy", var = "RareOrUnique" }) } end,
 	["对传奇的敌人的击中和异常状态伤害提高 (%d+)%%"] = function(num) return { mod("Damage", "INC", num,nil,0,bor(KeywordFlag.Hit, KeywordFlag.Ailment) ,{ type = "ActorCondition", actor = "enemy", var = "RareOrUnique" }) } end,
@@ -4905,6 +4909,16 @@ local specialModList = {
 	["%+(%d+)%% 闪避攻击击中率"] = function(num) return { mod("Evasion", "BASE", num ) } end,
 	["若你近期内被击中，则攻击速度提高 (%d+)%%"] = function(num) return { mod("Speed", "INC", num,nil, ModFlag.Attack, { type = "Condition", var = "BeenHitRecently" }) } end,
 	["效果区域扩大 (%d+)%%"] = function(num) return { mod("AreaOfEffect", "INC", num) } end,
+	["无法回复，也无法补充"] = { flag("NoEnergyShieldRecharge"), flag("NoEnergyShieldRegen") },
+	["能量护盾每秒损失 (%d+)%%"] = function(num) return { mod("EnergyShieldDegen", "BASE", 1, { type = "PercentStat", stat = "EnergyShield", percent = num }) } end,
+	["满血时无法移除生命偷取效果"] = { flag("CanLeechLifeOnFullLife") },
+	["生命偷取在满血时恢复能量护盾"] = { flag("ImmortalAmbition", { type = "Condition", var = "FullLife" }, { type = "Condition", var = "LeechingLife"}) },
+	["生命回满时不会取消生命偷取效果"] = { flag("CanLeechLifeOnFullLife") },
+	["攻击带来的能量护盾偷取效果不会在能量护盾全满时移除"] = { flag("CanLeechLifeOnFullEnergyShield") },
+	["无法自动回复能量护盾" ] = { flag("NoEnergyShieldRegen") },
+	["左戒指栏位：不能再生能量护盾"] = { flag("NoEnergyShieldRecharge", { type = "SlotNumber", num = 1 }), flag("NoEnergyShieldRegen", { type = "SlotNumber", num = 1 }) },
+	["左戒指栏位：不能回复能量护盾"] = { flag("NoEnergyShieldRecharge", { type = "SlotNumber", num = 1 }), flag("NoEnergyShieldRegen", { type = "SlotNumber", num = 1 }) },
+	["无法获得能量护盾"] = { flag("NoEnergyShieldRegen"), flag("NoEnergyShieldRecharge"), flag("CannotLeechEnergyShield") },
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

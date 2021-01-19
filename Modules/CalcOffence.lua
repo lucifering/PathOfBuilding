@@ -1774,9 +1774,15 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 			end
 		end
 		
- -- Calculate chance and multiplier for dealing double damage on Normal and Crit
-		local tripleChance = m_min(skillModList:Sum("BASE", cfg, "TripleDamageChance"), 100)
-					
+ output.ScaledDamageEffect = 1
+	
+		-- Calculate chance and multiplier for dealing triple damage on Normal and Crit
+		output.TripleDamageChanceOnCrit = m_min(skillModList:Sum("BASE", cfg, "TripleDamageChanceOnCrit"), 100)
+		output.TripleDamageChance = m_min(skillModList:Sum("BASE", cfg, "TripleDamageChance") or 0 + (env.mode_effective and enemyDB:Sum("BASE", cfg, "SelfTripleDamageChance") or 0) + (output.TripleDamageChanceOnCrit * output.CritChance / 100), 100)
+		output.TripleDamageEffect = 1 + (2 * output.TripleDamageChance / 100)
+		output.ScaledDamageEffect = output.ScaledDamageEffect * output.TripleDamageEffect
+
+		-- Calculate chance and multiplier for dealing double damage on Normal and Crit
 		output.DoubleDamageChanceOnCrit = m_min(skillModList:Sum("BASE", cfg, "DoubleDamageChanceOnCrit"), 100)
 		output.DoubleDamageChance = m_min(skillModList:Sum("BASE", cfg, "DoubleDamageChance") + (env.mode_effective and enemyDB:Sum("BASE", cfg, "SelfDoubleDamageChance") or 0) + (output.DoubleDamageChanceOnCrit * output.CritChance / 100), 100)
 		if globalOutput.IntimidatingUpTimeRatio and activeSkill.skillModList:Flag(nil, "Condition:WarcryMaxHit") then
@@ -1784,15 +1790,13 @@ total = s_format("= %.2f ^8每秒", output.Speed)
 		elseif globalOutput.IntimidatingUpTimeRatio then
 			output.DoubleDamageChance = m_min(output.DoubleDamageChance + globalOutput.IntimidatingUpTimeRatio, 100)
 		end
-		if tripleChance == 100 then 
-			output.TripleDamageChance = tripleChance
-			output.DoubleDamageChance = 0
-			output.TripleDamageEffect = 2 + output.TripleDamageChance / 100
-			output.DoubleDamageEffect = 1
-		else 
-			output.TripleDamageEffect = 1
-			output.DoubleDamageEffect = 1 + output.DoubleDamageChance / 100
-		end 
+		-- Triple Damage overrides Double Damage. If you have both, it's the same as just having Triple
+		-- We need to subtract the probability of both happening in favor of Triple Damage
+		if output.TripleDamageChance > 0 then
+			output.DoubleDamageChance = m_max(output.DoubleDamageChance - output.TripleDamageChance * output.DoubleDamageChance / 100, 0)
+		end
+		output.DoubleDamageEffect = 1 + output.DoubleDamageChance / 100
+		output.ScaledDamageEffect = output.ScaledDamageEffect * output.DoubleDamageEffect
 		
 		
 		
@@ -1900,12 +1904,17 @@ t_insert(breakdown[damageType], s_format("%d 至 %d ^8(总伤害)", min, max))
 						if convMult ~= 1 then
 t_insert(breakdown[damageType], s_format("x %g ^8(%g%% 转化为其他伤害)", convMult, (1-convMult)*100))
 						end
-						if output.DoubleDamageEffect ~= 1 then
-t_insert(breakdown[damageType], s_format("x %.2f ^8(几率造成双倍伤害)", output.DoubleDamageEffect))
+						if output.ScaledDamageEffect ~= 1 then
+							t_insert(breakdown[damageType], s_format("x %.2f ^8(多倍伤害加成)", output.ScaledDamageEffect))
+						
+							if output.TripleDamageEffect ~= 1 then
+								t_insert(breakdown[damageType], s_format("其中x %.2f ^8(加成来自 %.2f%% 几率造成三倍伤害)", output.TripleDamageEffect, output.TripleDamageChance))
+							end
+							if output.DoubleDamageEffect ~= 1 then
+								t_insert(breakdown[damageType], s_format("其中x %.2f ^8(加成来自 %.2f%% 几率造成双倍伤害)", output.DoubleDamageEffect, output.DoubleDamageChance))
+							end	
 						end
-						if output.TripleDamageEffect ~= 1 then
-t_insert(breakdown[damageType], s_format("x %.2f ^8(几率造成三倍伤害)", output.TripleDamageEffect))
-						end
+											
 						if output.RuthlessBlowEffect ~= 1 then
 t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", output.RuthlessBlowEffect))
 						end
@@ -1923,9 +1932,9 @@ t_insert(breakdown[damageType], s_format("x %.2f ^8(【无情一击】加成)", 
 						
 					end
 					if activeSkill.skillModList:Flag(nil, "Condition:WarcryMaxHit") then
-						output.allMult = convMult * output.DoubleDamageEffect* output.TripleDamageEffect  * output.RuthlessBlowEffect * output.FistOfWarHitEffect * globalOutput.MaxOffensiveWarcryEffect
+						output.allMult = convMult * output.ScaledDamageEffect  * output.RuthlessBlowEffect * output.FistOfWarHitEffect * globalOutput.MaxOffensiveWarcryEffect
 					else
-						output.allMult = convMult * output.DoubleDamageEffect* output.TripleDamageEffect  * output.RuthlessBlowEffect * output.FistOfWarHitEffect * globalOutput.OffensiveWarcryEffect
+						output.allMult = convMult * output.ScaledDamageEffect  * output.RuthlessBlowEffect * output.FistOfWarHitEffect * globalOutput.OffensiveWarcryEffect
 					end
 					
 					local allMult = output.allMult
@@ -3186,9 +3195,7 @@ s_format("异常计算模式: %s ^8(可以在配置面板修改)", igniteMode ==
 			local baseVal = calcAilmentDamage("Ignite", sourceHitDmg, sourceCritDmg) *
 			data.misc.IgnitePercentBase * output.FistOfWarAilmentEffect * globalOutput.AilmentWarcryEffect
 			
-			print("3204--output.baseVal--"..baseVal);
-			print("3204--output.sourceHitDmg--"..sourceHitDmg);
-			print("3204--output.sourceCritDmg--"..sourceCritDmg);
+		
 				
 			if baseVal > 0 then
 				skillFlags.ignite = true

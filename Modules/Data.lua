@@ -378,8 +378,7 @@ data.clusterJewels = LoadModule("Data/ClusterJewels")
 data.harvestSeedEnchantments = LoadModule("Data/ModHarvestSeed")
 data.delve = LoadModule("Data/ModDelve")
 data.incursion = LoadModule("Data/ModIncursion")
-data.timelessJewelKeystone = LoadModule("Data/TimelessJewel/TimelessJewelKeystone")
-		
+	
 data.blightPassives= LoadModule("Data/BlightPassives")
 		
 table.sort(data.blightPassives, function(a, b) 

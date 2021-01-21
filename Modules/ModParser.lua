@@ -330,7 +330,7 @@ local modNameList = {
 	["几率穿刺敌人"] = "ImpaleChance",
 	["技能的魔力消耗"] = "ManaCost",
 	["从药剂获得的生命回复"] = "FlaskLifeRecovery",
-	["对敌人施加的非伤害异常状态效果"] = { "EnemyShockEffect", "EnemyChillEffect", "EnemyFreezeEffech" }, 
+	["对敌人施加的非伤害异常状态效果"] = { "EnemyShockEffect", "EnemyChillEffect", "EnemyFreezeEffech" ,"EnemyScorchEffect","EnemyBrittleEffect","EnemySapEffect"}, 
 	["非诅咒类光环效果"] = "AuraEffect", --备注：aura effect
 	["所有最大抗性"] = { "FireResistMax", "ColdResistMax", "LightningResistMax", "ChaosResistMax" }, 
 	["生命和能量护盾回复速度"] = { "LifeRecoveryRate", "EnergyShieldRecoveryRate" },
@@ -2399,17 +2399,17 @@ local specialModList = {
 	mod("EnemyShockEffect", "INC", num,nil,ModFlag.Ailment) ,
 	mod("EnemyChillEffect", "INC", num,nil,ModFlag.Ailment) ,
 	mod("EnemyFreezeEffect", "INC", num,nil,ModFlag.Ailment) ,
-	mod("EnemyScorchEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
-	mod("EnemyBrittleEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
-	mod("EnemySapEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
+	mod("EnemyScorchEffect", "INC", num,nil,ModFlag.Ailment),
+	mod("EnemyBrittleEffect", "INC", num,nil,ModFlag.Ailment),
+	mod("EnemySapEffect", "INC", num,nil,ModFlag.Ailment),
 	} end,
 	["非伤害型异常状态效果提高 (%d+)%%"] = function(num) return {
 	mod("EnemyShockEffect", "INC", num,nil,ModFlag.Ailment) ,
 	mod("EnemyChillEffect", "INC", num,nil,ModFlag.Ailment) ,
 	mod("EnemyFreezeEffect", "INC", num,nil,ModFlag.Ailment) ,
-	mod("EnemyScorchEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
-	mod("EnemyBrittleEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
-	mod("EnemySapEffect", "INC", num,nil,ModFlag.Ailment,{ type = "Multiplier", var = "ElderItem" }),
+	mod("EnemyScorchEffect", "INC", num,nil,ModFlag.Ailment),
+	mod("EnemyBrittleEffect", "INC", num,nil,ModFlag.Ailment),
+	mod("EnemySapEffect", "INC", num,nil,ModFlag.Ailment),
 	} end,
 	["周围友军伤害提高 (%d+)%%"]  = function(num) return { mod("ExtraAura", "LIST",{ mod =mod("Damage", "INC", num), onlyAllies = true} )} end,
 	["周围友军获得每秒回复 ([%d%.]+)%% 生命"] = function(num) return { mod("ExtraAura", "LIST",{ mod =mod("LifeRegenPercent", "BASE", num), onlyAllies = true} )} end,
@@ -2672,6 +2672,7 @@ local specialModList = {
 	["([%+%-]?%d+) 暴击球和耐力球数量上限"]= function(num) return {  mod("PowerChargesMax", "BASE", num),mod("EnduranceChargesMax", "BASE", num)   } end,
 	["暴击球和耐力球上限 ([%+%-]?%d+)"]= function(num) return {  mod("PowerChargesMax", "BASE", num),mod("EnduranceChargesMax", "BASE", num)   } end,
 	["失去怒火的速度减慢 (%d+)%%"]= function(num) return {  mod("RageDuration", "INC", num)  } end,
+	["【怒火】的衰减速度减缓 (%d+)%%"]= function(num) return {  mod("RageDuration", "INC", num)  } end,
 	["持握剑类时，([%+%-]?%d+) 最大怒火"]= function(num) return {
 	mod("MaximumRage", "BASE", num,{ type = "Condition", varList ={ "UsingSword" }})
 	} end,
@@ -3020,6 +3021,7 @@ local specialModList = {
 	["魔像的总生命额外降低 (%d+)%%"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("Life", "MORE", -num) },{ type = "SkillType", skillType = SkillType.Golem })  } end,
 	["([%+%-]?%d+) 魔像数量上限"] = function(num) return { mod("ActiveGolemLimit", "BASE", num) } end,
 	["最多可同时召唤额外 ([%+%-]?%d+) 个魔像"] = function(num) return { mod("ActiveGolemLimit", "BASE", num) } end,
+	["召唤魔像的数量上限 ([%+%-]?%d+)"] = function(num) return { mod("ActiveGolemLimit", "BASE", num) } end,
 	["魔像上限 ([%+%-]?%d+)"] = function(num) return { mod("ActiveGolemLimit", "BASE", num) } end,
 	["最多可同时召唤额外 (%d) 个魔像"] = function(num) return { mod("ActiveGolemLimit", "BASE", num) } end,
 	["你和周围友军的伤害提高 (%d+)%%"]= function(num) return {  mod("ExtraAura", "LIST", { mod =  mod("Damage", "INC", num) }) } end,
@@ -4358,6 +4360,7 @@ local specialModList = {
 	mod("EnemyIgniteEffect", "INC", num),
 	mod("EnemyScorchEffect", "INC", num)
 	} end,
+	["若近期你没有格挡，则暴击几率提高  (%d+)%%"]= function(num) return {  mod("CritChance", "INC", tonumber(num),{ type = "Condition", var = "BlockedRecently" , neg = true}  )  } end,
 	["若近期你没有格挡，则暴击几率提高 (%d+)%%"]= function(num) return {  mod("CritChance", "INC", tonumber(num),{ type = "Condition", var = "BlockedRecently" , neg = true}  )  } end,
 	["【闪现射击】和【魅影射击】的冷却回复速度提高 (%d+)%%"]= function(num) return {
 	mod("CooldownRecovery", "INC", tonumber(num),{ type = "SkillName", skillName = "闪现射击" }  ),
@@ -4919,6 +4922,76 @@ local specialModList = {
 	["左戒指栏位：不能再生能量护盾"] = { flag("NoEnergyShieldRecharge", { type = "SlotNumber", num = 1 }), flag("NoEnergyShieldRegen", { type = "SlotNumber", num = 1 }) },
 	["左戒指栏位：不能回复能量护盾"] = { flag("NoEnergyShieldRecharge", { type = "SlotNumber", num = 1 }), flag("NoEnergyShieldRegen", { type = "SlotNumber", num = 1 }) },
 	["无法获得能量护盾"] = { flag("NoEnergyShieldRegen"), flag("NoEnergyShieldRecharge"), flag("CannotLeechEnergyShield") },
+	["获得 (%d+) 级的【疯狂之拥】技能"] = function(num) return {
+	mod("ExtraSkill", "LIST", {  skillId ="EmbraceMadness", level = tonumber(num)})   
+		} end,	
+	["暴击时触发 (%d+) 级的【奉献】"] = function(num) return {
+	mod("ExtraSkill", "LIST", {  skillId ="TriggeredConsecrate", level = tonumber(num)})   
+		} end,	
+	["受【疯狂荣光】影响时，所有伤害都施加【中毒】"] = function(num) return { 
+	flag("FireCanPoison", { type = "Condition", var = "AffectedBy疯狂荣光" } ) ,
+		flag("ColdCanPoison", { type = "Condition", var = "AffectedBy疯狂荣光" } ) ,
+		flag("LightningCanPoison", { type = "Condition", var = "AffectedBy疯狂荣光" })	
+	 } end,
+	["受【疯狂荣光】影响时，免疫元素异常状态"] = function() return { 
+	mod("AvoidChill", "BASE", num,{ type = "Condition", var = "AffectedBy疯狂荣光" } ),
+		mod("AvoidFreeze", "BASE", num,{ type = "Condition", var = "AffectedBy疯狂荣光" } ),
+		mod("AvoidIgnite", "BASE", num,{ type = "Condition", var = "AffectedBy疯狂荣光" } ),
+		mod("AvoidShock", "BASE", num,{ type = "Condition", var = "AffectedBy疯狂荣光" } ),	
+	 } end,
+	["受【疯狂荣光】影响时，你身上的【护体】效果提高 (%d+)%%"] = function(num) return { 
+	 mod("FortifyEffectOnSelf", "INC", tonumber(num),{ type = "Condition", var = "AffectedBy疯狂荣光" })  } end,
+	["受【疯狂荣光】影响时有 (%d+)%% 几率造成双倍伤害"] = function(num) return { 
+	 mod("DoubleDamageChance", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy疯狂荣光" })  } end,
+	["装备时触发 (%d+) 级的主动技能【失明光环】"] = function(num) return {
+	mod("ExtraSkill", "LIST", {  skillId ="CastAuraBlinding", level = tonumber(num)})   
+		} end,	
+	["装备时触发 (%d+) 级的主动技能【失明光环】"] = function(num) return {
+	mod("ExtraSkill", "LIST", {  skillId ="CastAuraBlinding", level = tonumber(num)})   
+		} end,	
+	["每 5 秒触发 (%d+) 级的【血肉盛宴】"] = function(num) return {
+	mod("ExtraSkill", "LIST", {  skillId ="FeastOfFlesh", level = tonumber(num)})   
+		} end,	
+	["插槽内的技能石被 (%d+) 级的 闪电支配 辅助"] = function(num) return { mod("ExtraSupport", "LIST", { skillId = 'SupportOnslaughtOnSlayingShockedEnemy', level = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
+	["格挡时回复 (%d+)%% 最大生命"] = function(num) return { mod("LifeOnBlock", "BASE", 1,  { type = "PerStat", stat = "Life", div = 100 / num }) } end,
+	["%−(%d+)%% 全部抗性上限"] = function(num) return { 
+	mod("FireResistMax", "BASE", -num),
+	mod("ColdResistMax", "BASE", -num),
+	mod("LightningResistMax", "BASE", -num),
+	mod("ChaosResistMax", "BASE", -num)
+	} end,
+	["提供 (%d+) 级鲜血渴求技能"] = function(num) return {
+	mod("ExtraSkill", "LIST", {  skillId ="VampiricIcon", level = tonumber(num)})   
+		} end,	
+	["用该武器击中时，流血的持续伤害加成 %+(%d+)%%"]= function(num) return {
+		mod("DotMultiplier", "BASE", num / 2, nil, 0, KeywordFlag.Bleed, { type = "Condition", var = "DualWielding"}, { type = "SkillType", skillType = SkillType.Attack }),
+			mod("DotMultiplier", "BASE", num, nil, 0, KeywordFlag.Bleed, { type = "Condition", var = "DualWielding", neg = true }, { type = "SkillType", skillType = SkillType.Attack })
+		} end,
+	["调整暴击球数量下限的词缀改为调整榨取球数量下限"] = { flag("MinimumAbsorptionChargesModInsteadToMinimumPowerCharges") },
+	["调整狂怒球数量下限词缀改为调整痛苦球数量下限"] = { flag("MinimumAfflictionChargesModInsteadToMinimumFrenzyCharges") },
+	["调整耐力球数量下限的词缀改为调整残暴球数量下限"] = { flag("MinimumBrutalChargesModInsteadToMinimumEnduranceCharges") },
+	["榨取球数量上限等于暴击球数量上限"] = { flag("MaximumAbsorptionChargesIsMaximumPowerCharges") },
+	["痛苦球数量上限等于狂怒球数量上限"] = { flag("MaximumAfflictionChargesIsMaximumFrenzyCharges") },
+	["残暴球数量上限等于耐力球数量上限"] = { flag("MaximumBrutalChargesIsMaximumEnduranceCharges") },
+	["获得榨取球替代暴击球"] = { 
+	flag("GainAbsorptionChargesInsteadPowerCharges"),
+	mod("PowerCharges", "OVERRIDE", 0),
+	flag("Condition:CanGainAbsorptionCharges"),
+			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainAbsorptionCharges" }) 
+	 },
+	["获得痛苦球替代狂怒球"]  = { 
+	flag("GainAfflictionChargesInsteadFrenzyCharges"),
+	mod("FrenzyCharges", "OVERRIDE", 0),
+	flag("Condition:CanGainAfflictionCharges"),
+			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainAfflictionCharges" }) 
+	 },
+	["获得残暴球替代耐力球"]  = { 
+	flag("GainBrutalChargesInsteadEnduranceCharges"),
+	mod("EnduranceCharges", "OVERRIDE", 0),
+	flag("Condition:CanGainBrutalCharges"),
+			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainBrutalCharges" }) 
+	 },
+	["右戒指栏位：不能回复魔力"] = { flag("NoManaRegen", { type = "SlotNumber", num = 2 }) },
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

@@ -407,6 +407,7 @@ end
 function GemSelectClass:AddCommonGemInfo(gemInstance, grantedEffect, addReq, mergeStatsFrom)
 	local displayInstance = gemInstance.displayEffect or gemInstance
 	local grantedEffectLevel = grantedEffect.levels[displayInstance.level]
+	
 	if addReq then
 self.tooltip:AddLine(16, string.format("^x7F7F7F等级: ^7%d%s%s",
 			gemInstance.level, 
@@ -414,7 +415,8 @@ self.tooltip:AddLine(16, string.format("^x7F7F7F等级: ^7%d%s%s",
 			(gemInstance.level >= gemInstance.gemData.defaultLevel) and " (Max)" or ""
 		))
 	end
-	if grantedEffect.support then
+	--lucifer
+	if grantedEffect.support and grantedEffectLevel then
 		if grantedEffectLevel.manaMultiplier then
 self.tooltip:AddLine(16, string.format("^x7F7F7F魔力消耗倍率: ^7%d%%", grantedEffectLevel.manaMultiplier + 100))
 		end
@@ -480,7 +482,7 @@ self.tooltip:AddLine(16, string.format("^x7F7F7F品质: "..colorCodes.MAGIC.."+%
 	if self.skillsTab.build.data.describeStats then
 		self.tooltip:AddSeparator(10)
 		local stats = calcLib.buildSkillInstanceStats(displayInstance, grantedEffect,true)
-		if grantedEffectLevel.baseMultiplier then
+		if grantedEffectLevel and grantedEffectLevel.baseMultiplier then
 			stats["active_skill_attack_damage_final_permyriad"] = (grantedEffectLevel.baseMultiplier - 1) * 10000
 		end
 		if mergeStatsFrom then

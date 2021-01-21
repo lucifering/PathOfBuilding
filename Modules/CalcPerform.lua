@@ -394,10 +394,33 @@ local function doActorMisc(env, actor)
 	output.PowerChargesMax = modDB:Sum("BASE", nil, "PowerChargesMax")
 	output.FrenzyChargesMin = modDB:Sum("BASE", nil, "FrenzyChargesMin")
 	output.FrenzyChargesMax = modDB:Flag(nil, "MaximumFrenzyChargesIsMaximumPowerCharges") and output.PowerChargesMax or modDB:Sum("BASE", nil, "FrenzyChargesMax")	
-	
-	
+		
 	output.EnduranceChargesMin = modDB:Sum("BASE", nil, "EnduranceChargesMin")
 	output.EnduranceChargesMax = modDB:Flag(nil, "MaximumEnduranceChargesIsMaximumFrenzyCharges") and output.FrenzyChargesMax or modDB:Sum("BASE", nil, "EnduranceChargesMax")	
+	
+	output.BrutalChargesMax= modDB:Flag(nil, "MaximumBrutalChargesIsMaximumEnduranceCharges") and output.EnduranceChargesMax or modDB:Sum("BASE", nil, "BrutalChargesMax")	
+	output.AbsorptionChargesMax= modDB:Flag(nil, "MaximumAbsorptionChargesIsMaximumPowerCharges") and output.PowerChargesMax or modDB:Sum("BASE", nil, "AbsorptionChargesMax")	
+	output.AfflictionChargesMax= modDB:Flag(nil, "MaximumAfflictionChargesIsMaximumFrenzyCharges") and output.FrenzyChargesMax or modDB:Sum("BASE", nil, "AfflictionChargesMax")	
+	
+		
+	if modDB:Flag(nil, "MinimumBrutalChargesModInsteadToMinimumEnduranceCharges") then 
+		output.BrutalChargesMin = output.EnduranceChargesMin
+		output.EnduranceChargesMin = 0
+	else 
+		output.BrutalChargesMin = modDB:Sum("BASE", nil, "BrutalChargesMin")
+	end 
+	if modDB:Flag(nil, "MinimumAbsorptionChargesModInsteadToMinimumPowerCharges") then 
+		output.AbsorptionChargesMin = output.PowerChargesMin
+		output.PowerChargesMin = 0
+	else 
+		output.AbsorptionChargesMin = modDB:Sum("BASE", nil, "AbsorptionChargesMin")
+	end 
+	if modDB:Flag(nil, "MinimumAfflictionChargesModInsteadToMinimumFrenzyCharges") then 
+		output.AfflictionChargesMin = output.FrenzyChargesMin
+		output.FrenzyChargesMin = 0
+	else 
+		output.AfflictionChargesMin = modDB:Sum("BASE", nil, "AfflictionChargesMin")
+	end 		
 	
 	
 	output.SiphoningChargesMax = modDB:Sum("BASE", nil, "SiphoningChargesMax")
@@ -405,27 +428,54 @@ local function doActorMisc(env, actor)
 	output.BlitzChargesMax = modDB:Sum("BASE", nil, "BlitzChargesMax")
 	output.InspirationChargesMax = modDB:Sum("BASE", nil, "InspirationChargesMax")
 	output.CrabBarriersMax = modDB:Sum("BASE", nil, "CrabBarriersMax")
-	if modDB:Flag(nil, "UsePowerCharges") then
+	if modDB:Flag(nil, "UsePowerCharges") and  not modDB:Flag(nil, "GainAbsorptionChargesInsteadPowerCharges") then
 		output.PowerCharges = modDB:Override(nil, "PowerCharges") or output.PowerChargesMax
 	else
 		output.PowerCharges = 0
 	end
 	output.PowerCharges = m_max(output.PowerCharges, m_min(output.PowerChargesMax, output.PowerChargesMin))
 	output.RemovablePowerCharges = m_max(output.PowerCharges - output.PowerChargesMin, 0)
-	if modDB:Flag(nil, "UseFrenzyCharges") then
+	if modDB:Flag(nil, "UseFrenzyCharges") and  not modDB:Flag(nil, "GainAfflictionChargesInsteadFrenzyCharges") then
 		output.FrenzyCharges = modDB:Override(nil, "FrenzyCharges") or output.FrenzyChargesMax
 	else
 		output.FrenzyCharges = 0
 	end
 	output.FrenzyCharges = m_max(output.FrenzyCharges, m_min(output.FrenzyChargesMax, output.FrenzyChargesMin))
 	output.RemovableFrenzyCharges = m_max(output.FrenzyCharges - output.FrenzyChargesMin, 0)
-	if modDB:Flag(nil, "UseEnduranceCharges") then
+	if modDB:Flag(nil, "UseEnduranceCharges") and  not modDB:Flag(nil, "GainBrutalChargesInsteadEnduranceCharges") then
 		output.EnduranceCharges = modDB:Override(nil, "EnduranceCharges") or output.EnduranceChargesMax
 	else
 		output.EnduranceCharges = 0
 	end
 	output.EnduranceCharges = m_max(output.EnduranceCharges, m_min(output.EnduranceChargesMax, output.EnduranceChargesMin))
 	output.RemovableEnduranceCharges = m_max(output.EnduranceCharges - output.EnduranceChargesMin, 0)
+	
+	--新3球
+	if modDB:Flag(nil, "UseBrutalCharges") then
+		output.BrutalCharges = modDB:Override(nil, "BrutalCharges") or output.BrutalChargesMax
+	else
+		output.BrutalCharges = 0
+	end
+	output.BrutalCharges = m_max(output.BrutalCharges, m_min(output.BrutalChargesMax, output.BrutalChargesMin))
+	output.RemovableBrutalCharges = m_max(output.BrutalCharges - output.BrutalChargesMin, 0)
+	
+	if modDB:Flag(nil, "UseAfflictionCharges") then
+		output.AfflictionCharges = modDB:Override(nil, "AfflictionCharges") or output.AfflictionChargesMax
+	else
+		output.AfflictionCharges = 0
+	end
+	output.AfflictionCharges = m_max(output.AfflictionCharges, m_min(output.AfflictionChargesMax, output.AfflictionChargesMin))
+	output.RemovableAfflictionCharges = m_max(output.AfflictionCharges - output.AfflictionChargesMin, 0)
+	
+	if modDB:Flag(nil, "UseAbsorptionCharges") then
+		output.AbsorptionCharges = modDB:Override(nil, "AbsorptionCharges") or output.AbsorptionChargesMax
+	else
+		output.AbsorptionCharges = 0
+	end
+	output.AbsorptionCharges = m_max(output.AbsorptionCharges, m_min(output.AbsorptionChargesMax, output.AbsorptionChargesMin))
+	output.RemovableAbsorptionCharges = m_max(output.AbsorptionCharges - output.AbsorptionChargesMin, 0)
+	
+	
 	if modDB:Flag(nil, "UseSiphoningCharges") then
 		output.SiphoningCharges = modDB:Override(nil, "SiphoningCharges") or output.SiphoningChargesMax
 	else
@@ -472,7 +522,12 @@ local function doActorMisc(env, actor)
 	modDB.multipliers["InspirationCharge"] = output.InspirationCharges
 	modDB.multipliers["CrabBarrier"] = output.CrabBarriers
 	
-
+	modDB.multipliers["BrutalCharge"] = output.BrutalCharges
+	modDB.multipliers["RemovableBrutalCharge"] = output.RemovableBrutalCharges
+	modDB.multipliers["AfflictionCharge"] = output.AfflictionCharges
+	modDB.multipliers["RemovableAfflictionCharge"] = output.RemovableAfflictionCharges
+	modDB.multipliers["AbsorptionCharge"] = output.AbsorptionCharges
+	modDB.multipliers["RemovableAbsorptionCharge"] = output.RemovableAbsorptionCharges
 	-- Process enemy modifiers 
 	for _, value in ipairs(modDB:List(nil, "EnemyModifier")) do
 		enemyDB:AddMod(value.mod)

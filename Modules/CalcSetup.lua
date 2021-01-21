@@ -33,6 +33,12 @@ function calcs.initModDB(env, modDB)
 	modDB:NewMod("ActiveBrandLimit", "BASE", 3, "Base")
 	modDB:NewMod("BrandsAttachedLimit", "BASE", 1, "Base")
 	
+	--腰带3球
+	modDB:NewMod("BrutalChargesMax", "BASE", 3, "Base")
+	modDB:NewMod("AbsorptionChargesMax", "BASE", 3, "Base")
+	modDB:NewMod("AfflictionChargesMax", "BASE", 3, "Base")
+	
+	
 	modDB:NewMod("MaxEnergyShieldLeechRate", "BASE", 10, "Base")
 	modDB:NewMod("MaxLifeLeechInstance", "BASE", 10, "Base")
 	modDB:NewMod("MaxManaLeechInstance", "BASE", 10, "Base")
@@ -256,6 +262,17 @@ function calcs.initEnv(build, mode, override)
 	modDB:NewMod("Damage", "MORE", 4, "Base", { type = "Multiplier", var = "FrenzyCharge" })
 	modDB:NewMod("PhysicalDamageReduction", "BASE", 4, "Base", { type = "Multiplier", var = "EnduranceCharge" })
 	modDB:NewMod("ElementalResist", "BASE", 4, "Base", { type = "Multiplier", var = "EnduranceCharge" })
+	--新3球
+	modDB:NewMod("TripleDamageChance", "BASE", 3, "Base", { type = "Multiplier", var = "BrutalCharge" })
+	modDB:NewMod("StunThreshold", "INC", 10, "Base", { type = "Multiplier", var = "BrutalCharge" })
+	modDB:NewMod("Damage", "MORE", 8, "Base",ModFlag.Ailment, { type = "Multiplier", var = "AfflictionCharge" }) 	
+	modDB:NewMod("EnemyShockEffect", "INC", 8, "Base",{ type = "Multiplier", var = "AfflictionCharge" }) 
+	modDB:NewMod("EnemyChillEffect", "INC", 8, "Base",{ type = "Multiplier", var = "AfflictionCharge" }) 
+	modDB:NewMod("EnemyFreezeEffect", "INC", 8, "Base",{ type = "Multiplier", var = "AfflictionCharge" }) 
+	modDB:NewMod("EnemyScorchEffect", "INC", 8, "Base",{ type = "Multiplier", var = "AfflictionCharge" })
+	modDB:NewMod("EnemyBrittleEffect", "INC", 8, "Base",{ type = "Multiplier", var = "AfflictionCharge" })
+	modDB:NewMod("EnemySapEffect", "INC", 8, "Base",{ type = "Multiplier", var = "AfflictionCharge" })
+	
 	modDB:NewMod("Multiplier:RageEffect", "BASE", 1, "Base")
 	modDB:NewMod("Damage", "INC", 1, "Base", ModFlag.Attack, { type = "Multiplier", var = "Rage" }, { type = "Multiplier", var = "RageEffect" })
 	modDB:NewMod("Speed", "INC", 1, "Base", ModFlag.Attack, { type = "Multiplier", var = "Rage",  div = 2 }, { type = "Multiplier", var = "RageEffect" })

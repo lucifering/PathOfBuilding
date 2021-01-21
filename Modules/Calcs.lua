@@ -269,6 +269,17 @@ t_insert(combatList, s_format("%d 狂怒球", output.FrenzyCharges))
 		if output.EnduranceCharges > 0 then
 t_insert(combatList, s_format("%d 耐力球", output.EnduranceCharges))
 		end
+		--新3球
+		if output.BrutalCharges > 0 then
+t_insert(combatList, s_format("%d 残暴球", output.BrutalCharges))
+		end
+		if output.AfflictionCharges > 0 then
+t_insert(combatList, s_format("%d 痛苦球", output.AfflictionCharges))
+		end
+		if output.AbsorptionCharges > 0 then
+t_insert(combatList, s_format("%d 榨取球", output.AbsorptionCharges))
+		end
+		
 		if output.SiphoningCharges > 0 then
 t_insert(combatList, s_format("%d 轮回球", output.SiphoningCharges))
 		end

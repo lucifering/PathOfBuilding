@@ -429,6 +429,13 @@ createMod("Damage", "INC", 50, "Config", { type = "Condition", var = "Combat" })
 		end	
 	end },
 	
+	{ label = "疯狂的象征:", ifSkill = "疯狂之拥" },
+	{ var = "innervateInnervation", type = "check", label = "被【疯狂之拥】影响?", ifSkill = "疯狂之拥", 
+	tooltip="受【疯狂荣光】影响时有XX的词缀生效用\n【疯狂荣光】每秒施加一个随机【触动】减益效果（迷雾里经常遇到）\n减益效果有4种,每种最多10层，pob暂时不支持。"..
+	"\n 1 Diluting touch：每层使药剂充能和药剂效果降低\n 2 Eroding touch:每层使承受的伤害提高 6%\n 3 Paralysing touch:每层使动作速度 -6%\n 4 Wasting Touch:每层使生命和能量护盾回复速率 -9%",
+	apply = function(val, modList, enemyModList)
+		modList:NewMod("Condition:AffectedBy疯狂荣光", "FLAG", true, "Config")
+	end },
 	
 	-- Section: Map modifiers/curses
 { section = "地图词缀和玩家 Debuff", col = 2 },
@@ -580,12 +587,40 @@ modList:NewMod("Keystone", "LIST", "零点射击", "Config")
 { var = "overrideFrenzyCharges", type = "count", label = "狂怒球数量(如果没达到最大值):", ifOption = "useFrenzyCharges", apply = function(val, modList, enemyModList)
 		modList:NewMod("FrenzyCharges", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" })
 	end },
+
 { var = "useEnduranceCharges", type = "check", label = "你是否有耐力球?", apply = function(val, modList, enemyModList)
 		modList:NewMod("UseEnduranceCharges", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },
 { var = "overrideEnduranceCharges", type = "count", label = "耐力球数量(如果没达到最大值):", ifOption = "useEnduranceCharges", apply = function(val, modList, enemyModList)
 		modList:NewMod("EnduranceCharges", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" })
 	end },
+{ var = "useAbsorptionCharges", type = "check", label = "你是否有榨取球?", 
+tooltip="（每个榨取球使玩家将受到元素伤害的 14% 回收为能量护盾。）\n（仅能回收击中伤害，它在击中 4 秒内回收）",
+ifCond = "CanGainAbsorptionCharges", apply = function(val, modList, enemyModList)
+		modList:NewMod("UseAbsorptionCharges", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
+{ var = "overrideAbsorptionCharges", type = "count", label = "榨取球数量(如果没达到最大值):",
+ ifOption = "useAbsorptionCharges", apply = function(val, modList, enemyModList)
+		modList:NewMod("AbsorptionCharges", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" })
+	end },
+{ var = "useAfflictionCharges", type = "check", label = "你是否有痛苦球?",
+tooltip="（每个痛苦球使玩家异常状态总伤害额外提高 8%，非伤害型异常状态总效果额外提高 8%）",
+ ifCond = "CanGainAfflictionCharges", apply = function(val, modList, enemyModList)
+		modList:NewMod("UseAfflictionCharges", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
+{ var = "overrideAfflictionCharges", type = "count", label = "痛苦球数量(如果没达到最大值):", 
+ifOption = "useAfflictionCharges", apply = function(val, modList, enemyModList)
+		modList:NewMod("AfflictionCharges", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" })
+	end },
+{ var = "useBrutalCharges", type = "check", label = "你是否有残暴球?",
+tooltip="（每个残暴球使玩家有 3% 几率造成三倍伤害，眩晕门槛提高 10%）",
+ ifCond = "CanGainBrutalCharges", apply = function(val, modList, enemyModList)
+		modList:NewMod("UseBrutalCharges", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+	end },
+{ var = "overrideBrutalCharges", type = "count", label = "残暴球数量(如果没达到最大值):", ifOption = "useBrutalCharges", apply = function(val, modList, enemyModList)
+		modList:NewMod("BrutalCharges", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" })
+	end },
+	
 { var = "useSiphoningCharges", type = "check", label = "你是否有轮回球?", ifMult = "SiphoningCharge", apply = function(val, modList, enemyModList)
 		modList:NewMod("UseSiphoningCharges", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
 	end },

@@ -42,6 +42,7 @@ end
 
 -- Validate the level of the given gem
 function calcLib.validateGemLevel(gemInstance)
+
 	local grantedEffect = gemInstance.grantedEffect or gemInstance.gemData.grantedEffect
 	if not grantedEffect.levels[gemInstance.level] then
 		if gemInstance.gemData and gemInstance.gemData.defaultLevel then

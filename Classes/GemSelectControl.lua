@@ -320,9 +320,18 @@ function GemSelectClass:Draw(viewPort)
 				if gemInstance.gemData and gemInstance.gemData.defaultLevel ~= gemData.defaultLevel then
 					gemInstance.level = m_min(self.skillsTab.defaultGemLevel or gemData.defaultLevel, gemData.defaultLevel + 1)
 				end
+				--lucifer？
+				if gemInstance.gemData and gemInstance.gemData.defaultLevel ~= self.skillsTab.defaultGemLevel then
+					gemInstance.level = m_min(self.skillsTab.defaultGemLevel or gemData.defaultLevel, gemData.defaultLevel + 1)
+				end
+				
 				gemInstance.gemData = gemData
 				-- Clear the displayEffect so it only displays the temporary gem instance
 				gemInstance.displayEffect = nil
+				-- Check valid qualityId, set to 'Default' if missing
+				if gemInstance.qualityId == nil or gemInstance.qualityId == "" then
+					gemInstance.qualityId = "Default"
+				end
 				-- Add hovered gem to tooltip
 				self:AddGemTooltip(gemInstance)
 				-- Calculate with the new gem
@@ -363,6 +372,10 @@ function GemSelectClass:Draw(viewPort)
 		if mOver and (not self.skillsTab.selControl or self.skillsTab.selControl._className ~= "GemSelectControl" or not self.skillsTab.selControl.dropped) then
 			local gemInstance = self.skillsTab.displayGroup.gemList[self.index]
 			if gemInstance and gemInstance.gemData then
+				-- Check valid qualityId, set to 'Default' if missing
+				if gemInstance.qualityId == nil or gemInstance.qualityId == "" then
+					gemInstance.qualityId = "Default"
+				end
 				SetDrawLayer(nil, 10)
 				self.tooltip:Clear()
 				self:AddGemTooltip(gemInstance)
@@ -426,7 +439,7 @@ self.tooltip:AddLine(16, string.format("^x7F7F7F魔力保留修正: ^7%d%%", gra
 		if grantedEffectLevel.cooldown then
 self.tooltip:AddLine(16, string.format("^x7F7F7F冷却时间: ^7%.2f 秒", grantedEffectLevel.cooldown))
 		end
-	else
+	elseif grantedEffectLevel then 
 		if grantedEffectLevel.manaCost then
 			if grantedEffect.skillTypes[SkillType.ManaCostReserved] then
 				if grantedEffect.skillTypes[SkillType.ManaCostPercent] then
@@ -466,7 +479,7 @@ self.tooltip:AddLine(16, string.format("^x7F7F7F品质: "..colorCodes.MAGIC.."+%
 		))
 	end
 	self.tooltip:AddSeparator(10)
-	if addReq then
+	if addReq and grantedEffect.levels[gemInstance.level] then
 		local reqLevel = grantedEffect.levels[gemInstance.level].levelRequirement
 		local reqStr = calcLib.getGemStatRequirement(reqLevel, grantedEffect.support, gemInstance.gemData.reqStr)
 		local reqDex = calcLib.getGemStatRequirement(reqLevel, grantedEffect.support, gemInstance.gemData.reqDex)
@@ -479,7 +492,7 @@ self.tooltip:AddLine(16, string.format("^x7F7F7F品质: "..colorCodes.MAGIC.."+%
 			self.tooltip:AddLine(16, colorCodes.GEM..line)
 		end
 	end
-	if self.skillsTab.build.data.describeStats then
+	if self.skillsTab.build.data.describeStats and grantedEffectLevel then
 		self.tooltip:AddSeparator(10)
 		local stats = calcLib.buildSkillInstanceStats(displayInstance, grantedEffect,true)
 		if grantedEffectLevel and grantedEffectLevel.baseMultiplier then

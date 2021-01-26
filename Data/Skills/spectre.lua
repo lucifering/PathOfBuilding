@@ -7973,3 +7973,72 @@ skills["LegionKaruiArcherSnipe"] = {
         [4] = {75, -50, 69, 200, baseMultiplier = 1.65, levelRequirement = 84, statInterpolation = {1, 1, 1, 2},  },
     },
 }
+skills["SecretDesecrateMonsterEarthquakeTriggered"] = {
+	name = "震地（余震）",
+	hidden = true,
+	color = 4,
+	description = "猛击地面，对周围造成大量伤害，并在地面上留下裂隙。一段时间过后，地面的裂隙将会释放冲击波造成更多的伤害。在冲击波还未释放前再次使用技能不会刷新地面的裂隙。需要斧类、锤类、短杖、长杖、徒手发动。",
+	skillTypes = { [SkillType.Attack] = true, [SkillType.Area] = true, [SkillType.Melee] = true, [SkillType.AttackCanRepeat] = true, [SkillType.Duration] = true, [SkillType.SlamSkill] = true, [SkillType.Triggerable] = true, },
+	weaponTypes = {
+		["None"] = true,
+		["One Handed Mace"] = true,
+		["Sceptre"] = true,
+		["Two Handed Mace"] = true,
+		["One Handed Axe"] = true,
+		["Two Handed Axe"] = true,
+		["Staff"] = true,
+	},
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,	
+	statMap = {
+		["quake_slam_fully_charged_explosion_damage_+%_final"] = {
+			mod("Damage", "MORE", nil, 0, bit.bor(KeywordFlag.Hit, KeywordFlag.Ailment)),
+		},
+	},
+	baseFlags = {
+		attack = true,
+		hit = true,
+		melee = true,
+		area = true,
+		duration = true,
+		triggerable = true,
+	},
+	baseMods = {
+		
+	},
+	qualityStats = {
+	},
+	stats = {
+		"base_skill_effect_duration",
+		"quake_slam_fully_charged_explosion_damage_+%_final",
+		"is_area_damage",
+	},
+	levels = {
+		[1] = { 10, 50, levelRequirement = 1, statInterpolation = { 1, 1, }, },
+	},
+}
+skills["SecretDesecrateMonsterMultiSlash"] = {
+	name = "多重砍",
+	hidden = true,
+	color = 1,
+	skillTypes = { [SkillType.Triggerable] = true, },
+	statDescriptionScope = "skill_stat_descriptions",
+	castTime = 1,
+	baseFlags = {
+		attack = true,
+		hit = true,
+		area = true,
+		triggerable = true,
+	},
+	baseMods = {
+	},
+	qualityStats = {
+	},
+	stats = {
+		"is_area_damage",
+		"skill_is_attack",
+	},
+	levels = {
+		[1] = { attackSpeedMultiplier = -33, levelRequirement = 0, statInterpolation = { }, },
+	},
+}

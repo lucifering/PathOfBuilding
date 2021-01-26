@@ -1484,7 +1484,7 @@ description = "从被击败的敌人周围发射一圈寒冰投射物，并将�
 		"never_freeze",
 	},
 	levels = {
-		[20] = { 8, 100, 38, 100, cooldown = 0.5, levelRequirement = 1, statInterpolation = { 1, 1, 1, 1, }, },
+		[20] = { 8, 100, 38, 100,cooldown = 0.5, levelRequirement = 1, statInterpolation = { 1, 1, 1, 1, }, },
 	},
 }
 skills["MerveilWarp"] = {

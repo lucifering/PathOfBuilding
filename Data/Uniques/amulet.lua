@@ -3,6 +3,88 @@ return {
 -- Amulet
 
 [[
+冬之心【仿品】
+帝金护身符
+等级需求: 42
+联盟: 夺宝奇兵
+固定基底词缀: 1
+物品稀有度提高 (12-20)%
+{tags:jewellery_attribute}+(20-30) 敏捷
+{tags:jewellery_defense}+(50-70) 最大能量护盾
+{tags:jewellery_resistance}+75% 闪电抗性
+{tags:jewellery_defense}感电时，每秒回复 5% 能量护盾
+不受感电影响
+]],
+[[
+卡鲁的战徽【仿品】
+翠玉护身符
+等级需求: 5
+replica: true
+联盟: 夺宝奇兵
+固定基底词缀: 1
+{tags:jewellery_attribute}+(20-30) 敏捷
+{tags:jewellery_attribute}+(20-30) 智慧
+{tags:attack}+100 命中值
+移动速度提高 10%
+范围效果扩大 30%
+范围伤害提高 30%
+]],
+[[
+西里的真相【仿品】
+翠玉护身符
+等级需求: 64
+replica: true
+联盟: 夺宝奇兵
+固定基底词缀: 1
+{tags:jewellery_attribute}+(20-30) 敏捷
+获得 22 级的主动技能【憎恨】，且可被此道具上的技能石辅助
+{tags:jewellery_attribute}+(25-35) 敏捷
+{tags:attack}攻击附加 (12-15) - (24-28) 基础物理伤害
+{tags:jewellery_elemental,attack}攻击附加 (11-15) - (23-28) 基础冰霜伤害
++(23-28)% 攻击和法术暴击伤害加成
+{tags:attack,life}冰霜伤害的 (0.8-1)% 转化为生命偷取
+{tags:mana}憎恨的总魔力保留额外降低 50%
+]],
+[[
+阿兹里圣徽【仿品】
+海灵护身符
+等级需求: 16
+replica: true
+联盟: 夺宝奇兵
+固定基底词缀: 1
+每秒回复 1.62% 生命
++100 最大生命
+生命回复速度提高 21% 
+装备和技能石的属性需求降低 25%
+]],
+[[
+短暂羁绊
+海玉护身符
+等级需求: 68
+固定基底词缀: 1
+{tags:jewellery_attribute}+(20-30) 智慧
+{tags:mana}魔力回复速度提高 (25-40)%
+{tags:jewellery_resistance}+(15-25)% 所有元素抗性
+若你近期内获得过暴击球，则暴击伤害加成 +(30-40)%
+{tags:jewellery_elemental}每个暴击球造成 (1-2) - (36-40) 闪电伤害
+暴击球总持续时间额外缩短 90%
+]],
+[[
+领袖的代价
+黑曜护身符
+等级需求: 68
+源: 传奇【契约：罪恶双生 复仇契约】双Boss专属掉落
+联盟: 夺宝奇兵
+固定基底词缀: 1
+{tags:jewellery_attribute}+(10-16) 全属性
+{tags:jewellery_resistance}+(-3-3)% 火焰抗性上限
+{tags:jewellery_resistance}+(-3-3)% 冰霜抗性上限
+{tags:jewellery_resistance}+(-3-3)% 闪电抗性上限
+若你最高的两种属性相等，则你获得灼热汇流、脆弱汇流、力竭汇流
+无法点燃、冰缓、冻结、感电
+已腐化
+]],
+[[
 复仇的魅力
 黄晶护身符
 联盟: 古灵庄园

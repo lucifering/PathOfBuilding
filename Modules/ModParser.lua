@@ -2128,6 +2128,10 @@ local specialModList = {
 	mod("ChaosMin", "BASE", tonumber(num2),nil,ModFlag.Attack , { type = "PerStat", stat = "Str", div = tonumber(num1) }),
 	mod("ChaosMax", "BASE", tonumber(num3),nil,ModFlag.Attack , { type = "PerStat", stat = "Str", div = tonumber(num1) }),
 	} end,
+	["每 (%d+) 点力量都使攻击附加 (%d+) 到 (%d+) 点混沌伤害"] = function(_,num1,num2,num3) return {
+	mod("ChaosMin", "BASE", tonumber(num2),nil,ModFlag.Attack , { type = "PerStat", stat = "Str", div = tonumber(num1) }),
+	mod("ChaosMax", "BASE", tonumber(num3),nil,ModFlag.Attack , { type = "PerStat", stat = "Str", div = tonumber(num1) }),
+	} end,
 	["【愤怒狂灵】击中后必定造成点燃"] = { mod("MinionModifier", "LIST", { mod = mod("EnemyIgniteChance", "BASE", 100) }, { type = "SkillName", skillName = "召唤愤怒狂灵" }) }, --备注：raging spirits' hits always
 	["所有身上穿戴的物品皆为已腐化时，每秒回复 (%d+) 魔力"] = function(num) return {  mod("ManaRegen", "BASE", num,{ type = "MultiplierThreshold", var = "NonCorruptedItem", threshold = 0, upper = true })  } end,
 	["身上未装备已腐化的物品时，每秒回复 (%d+) 生命"] = function(num) return {  mod("LifeRegen", "BASE", num,{ type = "MultiplierThreshold", var = "CorruptedItem", threshold = 0, upper = true })  } end,
@@ -4992,6 +4996,34 @@ local specialModList = {
 			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainBrutalCharges" }) 
 	 },
 	["右戒指栏位：不能回复魔力"] = { flag("NoManaRegen", { type = "SlotNumber", num = 2 }) },
+	["烙印伤害提高 (%d+)%%"]= function(num) return {
+		mod("Damage", "INC", num ,{ type = "SkillType", skillType = SkillType.Brand } )
+		} end,	
+	["每失去 (%d+)%% 冰霜抗性，冰霜伤害就提高 (%d+)%%，最多提高 300%%"]= function(_,num1,num2) return {
+		mod("ColdDamage", "INC", tonumber(num2),
+		{ type = "Condition", var = "DualWielding", neg = true },
+		{ type = "PerStat", stat = "MissingColdResist", div = tonumber(num1) ,	limit = 300, limitTotal = true }),
+		mod("ColdDamage", "INC", tonumber(num2),
+		{ type = "Condition", var = "DualWielding" },
+		{ type = "PerStat", stat = "MissingColdResist", div = tonumber(num1) ,	limit = 150, limitTotal = true }),	
+		} end,
+	["每失去 (%d+)%% 火焰抗性，火焰伤害就提高 (%d+)%%，最多提高 300%%"]= function(_,num1,num2) return {
+		mod("FireDamage", "INC", tonumber(num2),
+		{ type = "Condition", var = "DualWielding", neg = true },
+		{ type = "PerStat", stat = "MissingFireResist", div = tonumber(num1) ,limit =300, limitTotal = true } ) ,
+		mod("FireDamage", "INC", tonumber(num2),
+		{ type = "Condition", var = "DualWielding"},
+		{ type = "PerStat", stat = "MissingFireResist", div = tonumber(num1) ,limit =150, limitTotal = true } ) ,	
+		} end,
+	["你击中被冻结的敌人时触发 (%d+) 级的【爆环冰刺】"] = function(num) return {
+	mod("ExtraSkill", "LIST", {  skillId ="TriggeredIcicleNova", level = tonumber(num)})   
+		} end,	
+	["你击败被冻结的敌人时触发 (%d+) 级的【爆环冰刺】"] = function(num) return {
+	mod("ExtraSkill", "LIST", {  skillId ="TriggeredIcicleNova", level = tonumber(num)})   
+		} end,	
+	["你击中冻结的敌人时触发 (%d+) 级爆环冰刺"] = function(num) return {
+	mod("ExtraSkill", "LIST", {  skillId ="TriggeredIcicleNova", level = tonumber(num)})   
+		} end,	
 	--【中文化程序额外添加结束】
 	-- Keystones
 	["你的攻击和法术无法被闪避"] = { flag("CannotBeEvaded") }, --备注：your hits can't be evaded

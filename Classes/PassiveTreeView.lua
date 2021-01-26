@@ -287,8 +287,8 @@ function PassiveTreeViewClass:Draw(build, viewPort, inputEvents)
 					Karui (Lethal Pride):			only notables, +str already set
 					Templar (Militant Faith):		any non-keystone, non-notables add devotion or replace with devotion
 			]]--
-			elseif hoverNode and hoverNode.conqueredBy and
-					(hoverNode.conqueredBy.conqueror.type == "vaal"
+		elseif hoverNode and hoverNode.conqueredBy and
+					((hoverNode.conqueredBy.conqueror.type == "vaal" and not hoverNode.isKeystone)
 					or hoverNode.isNotable) then
 				build.treeTab:ModifyNodePopup(hoverNode)
 				build.buildFlag = true
@@ -949,6 +949,13 @@ tooltip:AddLine(14, colorCodes.TIP.."提示: 按住Shift隐藏提示.")
 		end
 	end
 
+-- Conqueror node editing
+	if node and node.conqueredBy and
+			(node.conqueredBy.conqueror.type == "vaal"
+			or node.isNotable) then
+		tooltip:AddSeparator(14)
+		tooltip:AddLine(14, colorCodes.TIP.."提示: 右键点击可以编辑这个天赋点的词缀")
+	end
 	-- Mod differences
 	if self.showStatDifferences then
 		local calcFunc, calcBase = build.calcsTab:GetMiscCalculator(build)

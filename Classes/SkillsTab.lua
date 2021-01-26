@@ -297,6 +297,9 @@ function SkillsTabClass:GetBaseNameAndQuality(gemTypeLine, quality)
 			for _, entry in ipairs(alternateGemQualityList) do
 				if firstword == entry.label then
 					-- return the gem name minus <altqual> without a leading space and the new resolved type
+					if entry.type == nil or entry.type == "" then
+						entry.type = "Default"
+					end
 					return otherwords, entry.type
 				end
 			end
@@ -549,7 +552,7 @@ function SkillsTabClass:CreateGemSlot(index)
 		if not gemInstance then
 			if not gemId then
 				return
-			end
+			end	
 			gemInstance = { nameSpec = "", level = self.defaultGemLevel or 20, quality = self.defaultGemQuality or 0, qualityId = "Default", enabled = true, enableGlobal1 = true, new = true }
 			self.displayGroup.gemList[index] = gemInstance
 			slot.level:SetText(gemInstance.level)
@@ -559,7 +562,7 @@ function SkillsTabClass:CreateGemSlot(index)
 			slot.enableGlobal1.state = true
 		elseif gemId == gemInstance.gemId then
 			return
-		end
+		end		
 		gemInstance.gemId = gemId
 		gemInstance.skillId = nil
 		self:ProcessSocketGroup(self.displayGroup)
@@ -853,6 +856,7 @@ function SkillsTabClass:ProcessSocketGroup(socketGroup)
 		gemInstance.color = "^8"
 		gemInstance.nameSpec = gemInstance.nameSpec or ""
 		local prevDefaultLevel = gemInstance.gemData and gemInstance.gemData.defaultLevel or (gemInstance.new and (self.defaultGemLevel or 20))
+		
 		gemInstance.gemData, gemInstance.grantedEffect = nil
 		if gemInstance.gemId then
 			-- Specified by gem ID
@@ -902,9 +906,11 @@ function SkillsTabClass:ProcessSocketGroup(socketGroup)
 				gemInstance.color = colorCodes.NORMAL
 			end
 			if prevDefaultLevel and gemInstance.gemData and gemInstance.gemData.defaultLevel ~= prevDefaultLevel then
-				gemInstance.level = (gemInstance.gemData.defaultLevel == 20) and self.defaultGemLevel or gemInstance.gemData.defaultLevel
+				gemInstance.level = m_min(self.defaultGemLevel or gemInstance.gemData.defaultLevel, gemInstance.gemData.defaultLevel + 1)
+				
 				gemInstance.defaultLevel = gemInstance.level
 			end
+			
 			calcLib.validateGemLevel(gemInstance)
 			if gemInstance.gemData then
 				gemInstance.reqLevel = grantedEffect.levels[gemInstance.level].levelRequirement

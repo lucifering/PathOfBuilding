@@ -3,6 +3,113 @@ return {
 -- Belt
 
 [[
+突围者【仿品】
+重革腰带
+等级需求: 10
+联盟: 夺宝奇兵
+固定基底词缀: 1
+{tags:jewellery_attribute}+(25-35) 力量
+{tags:jewellery_defense}最大能量护盾提高 (6-10)%
+{tags:life}最大生命提高 (6-10)%
+{tags:jewellery_resistance}+(15-25)% 火焰抗性
+{tags:jewellery_elemental}你的召唤生物死亡时产生燃烧地面，每秒造成等同它们最大生命 20% 的火焰伤害
+{tags:attack}召唤生物的攻击击中有 5% 几率瘫痪敌人
+]],
+[[
+幻彩菱织【仿品】
+素布腰带
+等级需求: 25
+replica: true
+联盟: 夺宝奇兵
+固定基底词缀: 1
+物理伤害提高 (12-24)%
+{tags:jewellery_elemental,caster}法术附加 (7-8) - (15-16) 基础火焰伤害
+{tags:jewellery_elemental,caster}法术附加 (5-6) - (12-14) 基础冰霜伤害
+{tags:jewellery_elemental,caster}法术附加 1 - (30-34) 基础闪电伤害
+{tags:jewellery_resistance}+(6-8)% 所有元素抗性
+{tags:jewellery_elemental}元素伤害提高 10%
+{tags:jewellery_elemental}药剂持续期间，元素伤害提高 30%
+]],
+[[
+猎首【仿品】
+皮革腰带
+等级需求: 40
+replica: true
+联盟: 夺宝奇兵
+固定基底词缀: 1
+{tags:life}+(25-40) 最大生命
+{tags:jewellery_attribute}+(40-55) 力量
+{tags:jewellery_attribute}+(40-55) 敏捷
+{tags:life}+(50-60) 最大生命
+对抗魔法怪物时，击中伤害提高 (20-30)%
+击败魔法敌人时，有 20% 几率获得它的非血族词缀，持续 20 秒
+]],
+[[
+灵魂羁绊【仿品】
+饰布腰带
+等级需求: 48
+replica: true
+联盟: 夺宝奇兵
+固定基底词缀: 1
+晕眩回复和格挡回复提高 (15-25)%
+{tags:jewellery_attribute}+(20-40) 力量
+{tags:jewellery_defense,life}获得等同 (4-6)% 最大生命的额外能量护盾
+腐化的灵魂
+]],
+[[
+凝息【仿品】
+扣链腰带
+等级需求: 22
+联盟: 夺宝奇兵
+replica: true
+固定基底词缀: 1
+{tags:jewellery_defense}+(9-20) 最大能量护盾
+{tags:jewellery_attribute}+(15-25) 智慧
+伤害提高 10%
+钓鱼池消耗量提高 50%
+钓鱼范围扩大 20%
+钓鱼稀有度提高 (20-30)%
+]],
+[[
+复苏之药
+饰布腰带
+等级需求: 48
+固定基底词缀: 1
+晕眩回复和格挡回复提高 (15-25)%
+{tags:jewellery_attribute}+(20-30) 全属性
+药剂充能获取提高 (15-25)%
+药剂充能使用提高 (10-20)%
+药剂效果的持续时间延长 (10-20)%
+生命药剂每 3 秒获得 1 次使用次数
+药剂回复的 100% 生命改为给周围友军回复
+]],
+[[
+脱缚之锁
+扣链腰带
+源: 传奇【契约：贩奴之王 义警契约】Boss专属掉落
+联盟: 夺宝奇兵
+等级需求: 61
+固定基底词缀: 1
+{tags:jewellery_defense}+(9-20) 最大能量护盾
+{tags:life}+(60-80) 最大生命
+{tags:jewellery_resistance}+(17-23)% 混沌抗性
+敌人的击中给你施加时空锁链
+你失去时空锁链时，获得最大怒火
+你至少有 25 点怒火时免疫诅咒
+]],
+[[
+火爆之拥
+皮革腰带
+等级需求: 43
+固定基底词缀: 1
+{tags:life}+(25-40) 最大生命
+{tags:jewellery_attribute}+(30-40) 敏捷
+{tags:jewellery_defense}+(300-500) 点闪避值
+敌人受到的元素异常状态时间延长 (10-15)%
+被你点燃的敌人将它们物理伤害的 (10-15)% 转化为火焰伤害
+被你感电的敌人将物理伤害的 (10-15)% 转化为闪电伤害
+]],
+[[
 熊之束腰
 皮革腰带
 联盟: 古灵庄园
@@ -45,13 +152,15 @@ return {
 [[
 圣体之绳
 皮革腰带
+版本: 3.13.0以前
+版本: 当前
 源: 传奇Boss【诸界觉者希鲁斯】 专属掉落
 等级需求: 49
 固定基底词缀: 1
 {tags:life}+(25-40) 最大生命
 {tags:jewellery_attribute}+(15-20) 全属性
 {tags:life}+(50-70) 最大生命
-奉献效果降低 25%
+{variant:1}奉献效果降低 25%
 你可以拥有每种奉献各一个
 奉献技能的持续时间降低 50%
 ]],

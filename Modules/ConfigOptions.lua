@@ -601,7 +601,7 @@ ifCond = "CanGainAbsorptionCharges", apply = function(val, modList, enemyModList
 	end },
 { var = "overrideAbsorptionCharges", type = "count", label = "榨取球数量(如果没达到最大值):",
  ifOption = "useAbsorptionCharges", apply = function(val, modList, enemyModList)
-		modList:NewMod("AbsorptionCharges", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" })
+		modList:NewMod("AbsorptionCharges", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" },{type = "Condition", var = "CanGainAbsorptionCharges" })
 	end },
 { var = "useAfflictionCharges", type = "check", label = "你是否有痛苦球?",
 tooltip="（每个痛苦球使玩家异常状态总伤害额外提高 8%，非伤害型异常状态总效果额外提高 8%）",
@@ -610,15 +610,16 @@ tooltip="（每个痛苦球使玩家异常状态总伤害额外提高 8%，非�
 	end },
 { var = "overrideAfflictionCharges", type = "count", label = "痛苦球数量(如果没达到最大值):", 
 ifOption = "useAfflictionCharges", apply = function(val, modList, enemyModList)
-		modList:NewMod("AfflictionCharges", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" })
+		modList:NewMod("AfflictionCharges", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" },{type = "Condition", var = "CanGainAfflictionCharges" })
 	end },
 { var = "useBrutalCharges", type = "check", label = "你是否有残暴球?",
 tooltip="（每个残暴球使玩家有 3% 几率造成三倍伤害，眩晕门槛提高 10%）",
  ifCond = "CanGainBrutalCharges", apply = function(val, modList, enemyModList)
 		modList:NewMod("UseBrutalCharges", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
+		 
 	end },
 { var = "overrideBrutalCharges", type = "count", label = "残暴球数量(如果没达到最大值):", ifOption = "useBrutalCharges", apply = function(val, modList, enemyModList)
-		modList:NewMod("BrutalCharges", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" })
+		modList:NewMod("BrutalCharges", "OVERRIDE", val, "Config", { type = "Condition", var = "Combat" },{type = "Condition", var = "CanGainBrutalCharges" })
 	end },
 	
 { var = "useSiphoningCharges", type = "check", label = "你是否有轮回球?", ifMult = "SiphoningCharge", apply = function(val, modList, enemyModList)

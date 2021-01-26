@@ -34,9 +34,9 @@ function calcs.initModDB(env, modDB)
 	modDB:NewMod("BrandsAttachedLimit", "BASE", 1, "Base")
 	
 	--腰带3球
-	modDB:NewMod("BrutalChargesMax", "BASE", 3, "Base")
-	modDB:NewMod("AbsorptionChargesMax", "BASE", 3, "Base")
-	modDB:NewMod("AfflictionChargesMax", "BASE", 3, "Base")
+	modDB:NewMod("BrutalChargesMax", "BASE", 0, "Base")
+	modDB:NewMod("AbsorptionChargesMax", "BASE", 0, "Base")
+	modDB:NewMod("AfflictionChargesMax", "BASE", 0, "Base")
 	
 	
 	modDB:NewMod("MaxEnergyShieldLeechRate", "BASE", 10, "Base")

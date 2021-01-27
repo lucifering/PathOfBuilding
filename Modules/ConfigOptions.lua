@@ -692,11 +692,14 @@ modList:NewMod("LuckyHits", "FLAG", true, "Config", { type = "Condition", varLis
 { type = "SkillName", skillNameList = { "电弧", "瓦尔.电弧" } })
 
 end },
-{ var = "buffElusive", type = "check", label = "你是否处于【灵巧】状态?", tooltip="这个会启用【灵巧】buff (\n·15% 几率躲避攻击伤害 \n·15% 几率躲避法术伤害\n·移动速度提高 30%)\n灵巧效果会随着时间不断削弱，每秒降低 20%\n在已经获得【灵巧】的情况下，无法再次获得【灵巧】)",ifCond = "Elusive", apply = function(val, modList, enemyModList)
-		modList:NewMod("Condition:Elusive", "FLAG", true, "Config", { type = "Condition", var = "Combat" })
-		modList:NewMod("Elusive", "FLAG", true, "Config", { type = "Condition", varList = { "Combat", "Elusive" } })
+{ var = "buffElusive", type = "check", label = "你是否处于【灵巧】状态?", tooltip="这个会启用【灵巧】buff (\n·15% 几率躲避攻击伤害 \n·15% 几率躲避法术伤害\n·移动速度提高 30%)\n灵巧效果会随着时间不断削弱，每秒降低 20%\n在已经获得【灵巧】的情况下，无法再次获得【灵巧】)",
+ifCond = "CanBeElusive", apply = function(val, modList, enemyModList)
+	
+		modList:NewMod("Condition:Elusive", "FLAG", true, "Config", { type = "Condition", var = "Combat" }, { type = "Condition", var = "CanBeElusive" })
+		modList:NewMod("Elusive", "FLAG", true, "Config", { type = "Condition", var = "Combat" }, { type = "Condition", var = "CanBeElusive" })
+
 	end },
-{ var = "multiplierBuffElusiveHasLasted", type = "count", label = "【灵巧】持续几秒了:",ifCond = "Elusive", tooltip="灵巧效果会随着时间不断削弱，每秒降低 20%\n在已经获得【灵巧】的情况下，无法再次获得【灵巧】",apply = function(val, modList, enemyModList)
+{ var = "multiplierBuffElusiveHasLasted", type = "count", label = "【灵巧】持续几秒了:",ifCond = "CanBeElusive", tooltip="灵巧效果会随着时间不断削弱，每秒降低 20%\n在已经获得【灵巧】的情况下，无法再次获得【灵巧】",apply = function(val, modList, enemyModList)
 		modList:NewMod("ElusiveEffectOnSelf", "INC", val*(-20), "Config")
 	end },
 	
@@ -1274,8 +1277,8 @@ list = {{val="NONE",label="不是"},{val="Uber Atziri",label="普通Boss"},
 	end },
 	
 { var = "enemyAwakeningLevel", type = "count", label = "觉醒等级:", tooltip = "每层觉醒等级可以让boss的总生命额外提高 3%", apply = function(val, modList, enemyModList)
-		enemyModList:NewMod("Life", "MORE", 3 * m_min(val, 8), "Config")
-		modList:NewMod("AwakeningLevel", "BASE", m_min(val, 8), "Config")
+		enemyModList:NewMod("Life", "MORE", 3 * m_min(val, 9), "Config")
+		modList:NewMod("AwakeningLevel", "BASE", m_min(val, 9), "Config")
 	end },
 { var = "enemyPhysicalReduction", type = "integer", label = "敌人物理伤害减伤:", apply = function(val, modList, enemyModList)
 		enemyModList:NewMod("PhysicalDamageReduction", "BASE", val, "Config")

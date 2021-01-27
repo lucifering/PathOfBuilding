@@ -2247,6 +2247,10 @@ description = "辅助攻击技能",
 		["impale_support_physical_damage_+%_final"] = {
 			mod("PhysicalDamage", "MORE", nil),
 		},
+		["impale_phys_reduction_%_penalty"] = {
+			mod("EnemyImpalePhysicalDamageReduction", "BASE", nil),
+			mult = -1,
+		}
 	},
 	baseMods = {
 	},

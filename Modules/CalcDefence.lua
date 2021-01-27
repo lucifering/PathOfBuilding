@@ -400,8 +400,11 @@ s_format("近似近战闪避率: %d%%", output.MeleeEvadeChance),
 	output.ManaOnBlock = modDB:Sum("BASE", nil, "ManaOnBlock")
 	output.EnergyShieldOnBlock = modDB:Sum("BASE", nil, "EnergyShieldOnBlock")
 	-- Dodge
-	output.AttackDodgeChance = m_min(modDB:Sum("BASE", nil, "AttackDodgeChance"), data.misc.DodgeChanceCap)
-	output.SpellDodgeChance = m_min(modDB:Sum("BASE", nil, "SpellDodgeChance"), data.misc.DodgeChanceCap)
+	output.AttackDodgeChanceMax = modDB:Sum("BASE", nil, "AttackDodgeChanceMax")
+	output.SpellDodgeChanceMax = modDB:Sum("BASE", nil, "SpellDodgeChanceMax")
+	
+	output.AttackDodgeChance = m_min(modDB:Sum("BASE", nil, "AttackDodgeChance"), output.AttackDodgeChanceMax)
+	output.SpellDodgeChance = m_min(modDB:Sum("BASE", nil, "SpellDodgeChance"), output.SpellDodgeChanceMax )
 	if env.mode_effective and modDB:Flag(nil, "DodgeChanceIsUnlucky") then
 		output.AttackDodgeChance = output.AttackDodgeChance / 100 * output.AttackDodgeChance
 		output.SpellDodgeChance = output.SpellDodgeChance / 100 * output.SpellDodgeChance

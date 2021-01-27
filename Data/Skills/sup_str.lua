@@ -1546,6 +1546,7 @@ description = "辅助并非被触发施放的近战攻击技能",
 		},
 		["overwhelm_%_physical_damage_reduction_while_fortified"] = {
 			mod("EnemyPhysicalDamageReduction", "BASE", nil, 0, KeywordFlag.Hit, { type = "Condition", var = "Fortify"}),
+			mult = -1,
 		},
 	},
 	baseMods = {

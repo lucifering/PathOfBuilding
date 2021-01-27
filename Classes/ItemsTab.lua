@@ -722,11 +722,15 @@ self.controls.displayItemSynthesis = new("ButtonControl", {"TOPLEFT",self.contro
 						local start = 1
 						tooltip:AddLine(14, minLine:gsub("%d[%d%.]*", function(min)
 							local s, e, max = maxLine:find("(%d[%d%.]*)", start)
-							start = e + 1
+							if e then 
+								start = e + 1
+							end 							
 							if min == max then
 								return min
-							else
+							elseif min and max then
 								return "("..min.."-"..max..")"
+							else 
+								return ""
 							end
 						end))
 					end
@@ -1613,9 +1617,14 @@ function ItemsTabClass:UpdateAffixControl(control, item, type, outputTable, outp
 		for _, modId in ipairs(affixList) do
 			local mod = item.affixes[modId]
 			if not lastSeries or lastSeries.statOrderKey ~= mod.statOrderKey then
+				local preStr=""
+				
+				if mod.affix and string.find(mod.affix,"尊崇") then  				
+					preStr = '【★】'				
+				end
 				local modString = table.concat(mod, "/")
 				lastSeries = {
-					label = modString,
+					label = preStr..modString,
 					modList = { },
 					haveRange = modString:match("%(%-?[%d%.]+%-[%d%.]+%)"),
 					statOrderKey = mod.statOrderKey,

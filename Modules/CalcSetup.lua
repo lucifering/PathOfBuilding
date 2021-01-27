@@ -33,6 +33,9 @@ function calcs.initModDB(env, modDB)
 	modDB:NewMod("ActiveBrandLimit", "BASE", 3, "Base")
 	modDB:NewMod("BrandsAttachedLimit", "BASE", 1, "Base")
 	
+	modDB:NewMod("AttackDodgeChanceMax", "BASE", data.misc.DodgeChanceCap, "Base")
+	modDB:NewMod("SpellDodgeChanceMax", "BASE", data.misc.DodgeChanceCap, "Base")
+	
 	--腰带3球
 	modDB:NewMod("BrutalChargesMax", "BASE", 0, "Base")
 	modDB:NewMod("AbsorptionChargesMax", "BASE", 0, "Base")

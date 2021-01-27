@@ -683,7 +683,8 @@ function calcs.createMinionSkills(env, activeSkill)
 		}
 		if activeEffect.grantedEffect and  activeEffect.grantedEffect.levels   and #activeEffect.grantedEffect.levels > 1 then
 			for level, levelData in ipairs(activeEffect.grantedEffect.levels) do
-				if levelData[1] > minion.level then
+			--The first element of skill level data was historically used to store the actor level requirement for a skill before the introduction of the dedicated `levelRequirement` field. This use site still reads from the first elemement and as such, compares against an unrelated value.
+				if levelData.levelRequirement > minion.level then
 					break
 				else
 					activeEffect.level = level

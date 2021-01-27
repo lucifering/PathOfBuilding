@@ -641,7 +641,7 @@ function TreeTabClass:ShowPowerReport()
 		local isAlloc = node.alloc or self.build.calcsTab.mainEnv.grantedPassives[nodeId]
 		if not isAlloc and (node.type == "Normal" or node.type == "Keystone" or node.type == "Notable") and not node.ascendancyName then
 			local nodePower = (node.power.singleStat or 0) * ((displayStat.pc or displayStat.mod) and 100 or 1)
-			print(displayStat.fmt)
+			
 			local nodePowerStr = s_format("%"..displayStat.fmt, nodePower)
 
 			if main.showThousandsCalcs then

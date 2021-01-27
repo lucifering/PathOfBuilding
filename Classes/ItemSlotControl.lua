@@ -87,7 +87,9 @@ local ItemSlotClass = newClass("ItemSlotControl", "DropDownControl", function(se
 	self.items = { }
 	self.selItemId = 0
 	self.slotName = slotName
-	self.slotNum = tonumber(slotName:match("%d+"))
+	--Slots with names like "Weapon 2 Abyssal Socket #1" will match the first group of digits as the slotNum for abyssal sockets, which is checked against the abyssal socket count on the parent item when considering whether an abyssal socket is active or not.
+--This fix ensures that we if possible match against the end of the string by anchoring the match, falling back on matching anywhere if that's not possible. This ensures that the match for items like "Weapon 2Swap" is still correct.
+	self.slotNum = tonumber(slotName:match("%d+$") or slotName:match("%d+"))
 	if slotName:match("Flask") then
 self.controls.activate = new("CheckBoxControl", {"RIGHT",self,"LEFT"}, -2, 0, 20, nil, function(state)
 			self.active = state

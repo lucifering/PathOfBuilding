@@ -6815,7 +6815,7 @@ return {
 		defaultLevel = 5,
 	},
 	["Metadata/Items/Gems/SupportGemIncreasedAreaOfEffectPlus"] = {
-		name = "范围效果扩大（强辅）",
+		name = "增大范围（强辅）",
 		grantedEffectId = "SupportIncreasedAreaOfEffectPlus",
 		tags = {
 			intelligence = true,

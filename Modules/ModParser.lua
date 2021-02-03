@@ -1693,6 +1693,8 @@ support_skillname=support_skillname:gsub("灵魂滋养","启迪（辅）"):gsub(
 :gsub("召唤幻影辅助","召唤幻影（辅）")
 :gsub("启迪辅助","启迪（辅）")
 :gsub("链爆地雷辅助","链爆地雷（辅）")
+:gsub("范围效果扩大（强辅）","增大范围（强辅）")
+:gsub("范围效果扩大（辅）","增大范围（辅）")
 
 return
  gemIdLookupPlayer[support_skillname] or gemIdLookupPlayer[support_skillname:gsub("^提高","")] or
@@ -1934,6 +1936,7 @@ local specialModList = {
 	["此物品上装备的【辅助技能石】品质 %+(%d+)%%"] = function(num) return { mod("GemProperty", "LIST",  { keyword = "support", key = "quality", value = num }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	["此物品上装备的【([^\\x00-\\xff]*)石】等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", {
 	keyword = type_Cn
+	:gsub("效果区域技能","aoe")
 	:gsub("物理法术技能","physical_spell")
 	:gsub("混沌法术技能","chaos_spell")
 	:gsub("光环技能","aura")
@@ -1965,6 +1968,7 @@ local specialModList = {
 	, key = "level", value = tonumber(num) }, { type = "SocketedIn", slotName = "{SlotName}" }) } end,
 	["所有物品上装备的【([^\\x00-\\xff]*)石】等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", {
 	keywordList =  {"active_skill", type_Cn
+	:gsub("效果区域技能","aoe")
 	:gsub("物理法术技能","physical_spell")
 	:gsub("混沌法术技能","chaos_spell")
 	:gsub("光环技能","aura")
@@ -2002,6 +2006,7 @@ local specialModList = {
 	keywordList =  {"active_skill", "spell"}, key = "level", value = tonumber(num) }) } end,
 	["所有([^\\x00-\\xff]*)法术技能石等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", {
 	keywordList =  {"active_skill", "spell",type_Cn
+	:gsub("效果区域技能","aoe")
 	:gsub("光环","aura")
 	:gsub("绿色","dexterity")
 	:gsub("蓝色","intelligence")
@@ -2036,6 +2041,7 @@ local specialModList = {
 	= function(num) return { mod("MinionModifier", "LIST", { mod = mod("PhysicalDamageConvertToChaos", "BASE", num) }, { type = "SkillName", skillName = "召唤魔侍" }) } end,
 	["所有([^\\x00-\\xff]*)石等级 %+(%d+)"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", {
 	keywordList =  {"active_skill",  type_Cn
+	:gsub("效果区域技能","aoe")
 	:gsub("物理法术技能","physical_spell")
 	:gsub("混沌法术技能","chaos_spell")
 	:gsub("敏捷技能","dexterity")
@@ -2071,6 +2077,7 @@ local specialModList = {
 	}, key = "level", value = tonumber(num) }) } end,
 	["此物品上装备的【([^\\x00-\\xff]*)石】品质 %+(%d+)%%"] = function( _, type_Cn,num) return { mod("GemProperty", "LIST", {
 	keyword = type_Cn:gsub("光环技能","aura")
+	:gsub("效果区域技能","aoe")
 	:gsub("绿色技能","dexterity")
 	:gsub("蓝色技能","intelligence")
 	:gsub("红色技能","strength")
@@ -2826,6 +2833,7 @@ local specialModList = {
 	["受到【闪电净化】影响时，受到击中物理伤害的 (%d+)%% 转换为闪电伤害"]= function(num) return {  mod("PhysicalDamageTakenAsLightning", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy闪电净化" })  } end,
 	["受到【活力】影响时，伤害的 ([%d%.]+)%% 转化为生命偷取"]= function(num) return {  mod("DamageLifeLeech", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy活力" })  } end,
 	["受到【活力】影响时， 每秒回复 ([%d%.]+) 生命"]= function(num) return {  mod("LifeRegen", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy活力" })  } end,
+	["被活力影响时每秒再生 ([%d%.]+)%% 生命"]= function(num) return {  mod("LifeRegenPercent", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy活力" })  } end,
 	["受到【雷霆】影响时，闪电伤害的 ([%d%.]+)%% 转化为魔力偷取"]= function(num) return {  mod("LightningDamageManaLeech", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy雷霆" })  } end,
 	["受到【雷霆】影响时，闪电伤害的 ([%d%.]+)%% 转化为能量护盾偷取"]= function(num) return {  mod("LightningDamageEnergyShieldLeech", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy雷霆" })  } end,
 	["受到【雷霆】影响时，获得物理伤害 (%d+)%% 的额外闪电伤害"]= function(num) return {  mod("PhysicalDamageGainAsLightning", "BASE", tonumber(num),{ type = "Condition", var = "AffectedBy雷霆" })  } end,
@@ -4067,8 +4075,9 @@ local specialModList = {
 	mod("CurseEffectOnSelf", "INC", -num, { type = "Condition", var = "OnConsecratedGround" } )  } end,
 	["你具有【猛攻】的情况下，命中值提高 (%d+)%%"]= function(num) return {
 	mod("Accuracy", "INC", num, { type = "Condition", var = "Onslaught" } )  } end,
-	["被你瘫痪的敌人受到的持续伤害提高 (%d+)%%"]= function(num) return {
-	mod("DamageTakenOverTime", "INC", num,  { type = "ActorCondition", actor = "enemy", var = "Maimed" } )  } end,
+	["被你瘫痪的敌人受到的持续伤害提高 (%d+)%%"] = function(num) return { 
+	mod("EnemyModifier", "LIST", { mod = mod("DamageTakenOverTime", "INC", num, { type = "Condition", var = "Maimed" }) })
+	 } end, 
 	["%-(%d+)%% 最大元素抗性"]= function(num) return {
 	mod("FireResistMax", "BASE", -num),
 	mod("ColdResistMax", "BASE", -num),
@@ -4305,9 +4314,12 @@ local specialModList = {
 	["非药剂效果持续时间，移动速度提高 (%d+)%%"] = function(num) return {
 	mod("MovementSpeed", "INC", num, { type = "Condition", var = "UsingFlask" , neg = true} )
 	} end,
-	["任意生命或魔力药剂持续期间，你身上诅咒的效果降低 (%d+)%%"] = function(num) return {
-	mod("CurseEffectOnSelf", "INC", -num, { type = "Condition", varList = { "UsingManaFlask", "UsingLifeFlask" } } )
+	["非药剂效果持续期间，移动速度提高 (%d+)%%"] = function(num) return {
+	mod("MovementSpeed", "INC", num, { type = "Condition", var = "UsingFlask" , neg = true} )
 	} end,
+	["任意生命或魔力药剂持续期间，你身上诅咒的效果降低 (%d+)%%"] = function(num) return {
+		mod("CurseEffectOnSelf", "INC", -num, { type = "Condition", varList = { "UsingManaFlask", "UsingLifeFlask" } } )
+		} end,
 	["【燃烧箭矢】的减益效果提高 (%d+)%%"] = function(num) return { mod("DebuffEffect", "INC", num, { type = "SkillName", skillName = "燃烧箭矢"}) } end,
 	["【燃烧箭矢】提高等同 (%d+)%% 物理伤害的火焰伤害"] = function(num) return {  mod("PhysicalDamageGainAsFire", "BASE", num, { type = "SkillName", skillName = "燃烧箭矢"})  } end,
 	["所有战吼技能共享冷却时间"] = { flag("WarcryShareCooldown") },
@@ -4431,6 +4443,7 @@ local specialModList = {
 	["不能造成非混沌伤害"] = { flag("DealNoPhysical"),flag("DealNoLightning"), flag("DealNoCold"), flag("DealNoFire") },
 	["(%d+)%% 几率免疫中毒"]= function(num) return { mod("AvoidPoison", "BASE", num ) } end,
 	["无法偷取或自然回复魔力"] = { flag("CannotLeechMana") ,flag("NoManaRegen") },
+	["无法偷取或自然再生魔力"] = { flag("CannotLeechMana") ,flag("NoManaRegen") },
 	["无法造成冰霜伤害"] = { flag("DealNoCold")},
 	["可以对敌人施放 %-1 个额外诅咒"] = { mod("EnemyCurseLimit", "BASE", -1) },
 	["魔卫复苏每秒将其最大生命的 ([%d%.]+)%% 转化为火焰伤害"] = function(num) return { mod("MinionModifier", "LIST", { mod = mod("FireDegen", "BASE", num/100, { type = "PerStat", stat = "Life", div = 1 }) }, { type = "SkillName", skillName = "魔卫复苏" }) } end,
@@ -4995,6 +5008,7 @@ local specialModList = {
 	flag("Condition:CanGainBrutalCharges"),
 			mod("Dummy", "DUMMY", 1, { type = "Condition", var = "CanGainBrutalCharges" }) 
 	 },
+	["右戒指栏位：不能再生魔力"] = { flag("NoManaRegen", { type = "SlotNumber", num = 2 }) },
 	["右戒指栏位：不能回复魔力"] = { flag("NoManaRegen", { type = "SlotNumber", num = 2 }) },
 	["烙印伤害提高 (%d+)%%"]= function(num) return {
 		mod("Damage", "INC", num ,{ type = "SkillType", skillType = SkillType.Brand } )

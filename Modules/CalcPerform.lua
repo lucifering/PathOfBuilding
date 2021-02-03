@@ -939,6 +939,9 @@ function calcs.perform(env)
 			local globalCooldown = modDB:Sum("BASE", nil, "GlobalWarcryCooldown")
 			local globalCount = modDB:Sum("BASE", nil, "GlobalWarcryCount")
 			local uptime = m_min(full_duration / actual_cooldown, 1)
+			if modDB:Flag(nil, "Condition:WarcryMaxHit") then
+				uptime = 1;
+			end
 			local buff_inc = 1 + activeSkill.skillModList:Sum("INC", activeSkill.skillCfg, "BuffEffect") / 100
 			local warcryPowerBonus = m_floor((modDB:Override(nil, "WarcryPower") or modDB:Sum("BASE", nil, "WarcryPower") or 0) / 5)
 			if modDB:Flag(nil, "WarcryShareCooldown") then
@@ -947,6 +950,7 @@ function calcs.perform(env)
 			if activeSkill.activeEffect.grantedEffect.name == "先祖战吼" and not modDB:Flag(nil, "AncestralActive") then
 				local ancestralArmour = activeSkill.skillModList:Sum("BASE", env.player.mainSkill.skillCfg, "AncestralArmourPer5MP")
 				local ancestralArmourMax = activeSkill.skillModList:Sum("BASE", env.player.mainSkill.skillCfg, "AncestralArmourMax")
+				local ancestralArmourIncrease = activeSkill.skillModList:Sum("INC", env.player.mainSkill.skillCfg, "AncestralArmourMax")
 				local ancestralStrikeRange = activeSkill.skillModList:Sum("BASE", env.player.mainSkill.skillCfg, "AncestralMeleeWeaponRangePer5MP")
 				local ancestralStrikeRangeMax = m_floor(6 * buff_inc)
 				env.player.modDB:NewMod("NumAncestralExerts", "BASE", activeSkill.skillModList:Sum("BASE", env.player.mainSkill.skillCfg, "AncestralExertedAttacks") + extraExertions)
@@ -954,8 +958,13 @@ function calcs.perform(env)
 				if warcryPowerBonus ~= 0 then
 					ancestralArmour = m_floor(ancestralArmour * warcryPowerBonus * buff_inc) / warcryPowerBonus
 					ancestralStrikeRange = m_floor(ancestralStrikeRange * warcryPowerBonus * buff_inc) / warcryPowerBonus
+				else
+					-- Since no buff happens, you don't get the divergent increase.
+					ancestralArmourIncrease = 0
 				end
-				env.player.modDB:NewMod("Armour", "BASE", 257 * uptime, "先祖战吼", { type = "Multiplier", var = "WarcryPower", div = 5, limit = ancestralArmourMax, limitTotal = true })
+				env.player.modDB:NewMod("Armour", "BASE", ancestralArmour * uptime, "先祖战吼", { type = "Multiplier", var = "WarcryPower", div = 5, limit = ancestralArmourMax, limitTotal = true })
+				env.player.modDB:NewMod("Armour", "INC", ancestralArmourIncrease * uptime, "先祖战吼")
+							
 				env.player.modDB:NewMod("MeleeWeaponRange", "BASE", ancestralStrikeRange * uptime, "先祖战吼", { type = "Multiplier", var = "WarcryPower", div = 5, limit = ancestralStrikeRangeMax, limitTotal = true })
 				modDB:NewMod("AncestralActive", "FLAG", true) -- Prevents effect from applying multiple times
 			elseif activeSkill.activeEffect.grantedEffect.name == "坚决战吼" and not modDB:Flag(nil, "EnduringActive") then
@@ -983,7 +992,7 @@ function calcs.perform(env)
 				env.player.modDB:NewMod("EnemyPhysicalDamageReduction", "BASE", -intimidatingOverwhelmEffect * uptime, "威吓战吼增益", { type = "Multiplier", var = "WarcryPower", div = 5, limit = 6 })
 				modDB:NewMod("IntimidatingActive", "FLAG", true) -- Prevents effect from applying multiple times
 			elseif activeSkill.activeEffect.grantedEffect.name == "激励战吼" and not modDB:Flag(nil, "RallyingActive") then
-				local extraExertions = activeSkill.skillModList:Sum("BASE", nil, "ExtraExertedAttacks") or 0
+				
 				env.player.modDB:NewMod("NumRallyingExerts", "BASE", activeSkill.skillModList:Sum("BASE", env.player.mainSkill.skillCfg, "RallyingExertedAttacks") + extraExertions)
 				env.player.modDB:NewMod("RallyingExertMoreDamagePerAlly",  "BASE", activeSkill.skillModList:Sum("BASE", env.player.mainSkill.skillCfg, "RallyingCryExertDamageBonus"))
 				local rallyingWeaponEffect = activeSkill.skillModList:Sum("BASE", env.player.mainSkill.skillCfg, "RallyingCryAllyDamageBonusPer5Power")

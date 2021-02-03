@@ -684,7 +684,7 @@ itemBases["风雷锤"] = {
 itemBases["摇摆短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
-	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, not_for_sale = true, },
+	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, not_for_sale = true, sceptre = true, },
 	implicit = "元素超载",
 	implicitModTypes = { { "elemental_damage", "damage", "elemental", "critical" }, },
 	weapon = { PhysicalMin = 23, PhysicalMax = 34, CritChanceBase = 6.3, AttackRateBase = 1.45, Range = 11, },
@@ -693,7 +693,7 @@ itemBases["摇摆短杖"] = {
 itemBases["平稳短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
-	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, not_for_sale = true, },
+	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, not_for_sale = true, sceptre = true,  },
 	implicit = "元素之相",
 	implicitModTypes = { { "elemental_damage", "damage", "elemental" }, },
 	weapon = { PhysicalMin = 35, PhysicalMax = 52, CritChanceBase = 6.3, AttackRateBase = 1.45, Range = 11, },
@@ -702,7 +702,7 @@ itemBases["平稳短杖"] = {
 itemBases["变化短杖"] = {
 	type = "Sceptre",
 	socketLimit = 3,
-	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, not_for_sale = true, },
+	tags = { default = true, weapon = true, onehand = true, mace = true, one_hand_weapon = true, not_for_sale = true, sceptre = true,  },
 	implicit = "苦难秘辛",
 	implicitModTypes = { {  }, },
 	weapon = { PhysicalMin = 41, PhysicalMax = 61, CritChanceBase = 6.3, AttackRateBase = 1.45, Range = 11, },
